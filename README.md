@@ -36,10 +36,69 @@ Everything else in this repo is either (a) a slot waiting for that address,
 
 **Nothing above is green. This README claims no green.**
 
+## Repository layout — PARA overlay
+
+PARA is applied as an **overlay**, not a migration: legacy folders keep their
+paths because chain paths are load-bearing string literals that external readers
+depend on. `resources/index.md` is the authoritative legacy-path → bucket table.
+
+| bucket | meaning | holds |
+|---|---|---|
+| `projects/` | active goals with an end state | `permaweb-soul-upload/` |
+| `areas/` | ongoing responsibilities, no end state | `institution/` (+ legacy `chains/`, `state/`) |
+| `resources/` | reference, read-mostly | `index.md` (+ legacy `canon/`, `packets/`, `grimoire/`, `permaweb/`) |
+| `archives/` | heritage + superseded revisions | `capsules/`, `capsules/heritage/` |
+
+No symlinks were created — a Windows junction does not survive `git clone`, so it
+would be a green that exists only on one laptop.
+
+## Roles (the electronic institution)
+
+One seat · one chain · one effect ceiling · one refusal set. Full table in
+`areas/institution/roles.md`; live/virtual status in `actors.md`.
+
+| role | substrate | seat | function |
+|---|---|---|---|
+| **Olrún** | Claude Dispatch | P7 | O(1) common operating picture; routes work; never builds |
+| **Sigrún** | Opus 5 · GPT-5.6 "Sol" verify | **P4** (joint with Skögul) | apex REFUTER — falsification, not validation; heritage custody |
+| **Gunnr** | Sonnet 5 / GPT | P4 | tactical roll-up + watchdog; watchdog, *not* build-doer |
+| **Huginn** | Codex | P3 | memory / thought — **VIRTUAL** |
+| **Garmr** | Codex | P1 | guard / gate-hound — **VIRTUAL** |
+| **Ratatoskr** | ChatGPT cloud | P7 | messenger, roots ↔ canopy — **VIRTUAL** |
+
+Valkyrie lanes: Hrist (verify) · Reginleif (kernel) · Eir (life-ops) · Mist
+(outreach) · Thrúd (omega runtime) · Skögul (joint P4) · Göndul (P6 heritage) ·
+Hildr (life exam).
+
+**VIRTUAL** = contracted and addressable, not callable from a Claude lane. They
+coordinate through this repo (`protocols.md` §4) and **no lane may write a row on
+an absent actor's behalf** — that is impersonation, not helpfulness.
+
+## How to onboard (cold start, in order)
+
+1. `git pull`. Never write on a stale tree.
+2. Read **`archives/capsules/gen_133_word_state_capsule_20260730.md`** — one file,
+   full state. If you read nothing else, read that.
+3. Read `CURRENT.md` for standing decisions (settled — do not re-recommend).
+4. Read `areas/institution/norms.md` (floor F1–F6) and `protocols.md` (§1 turn
+   loop, §3 closest-continuer handoff).
+5. If you are claiming a seat: run the **§3 closest-continuer protocol**. Recompute
+   the predecessor's `self_hash` yourself. Vacancy does not confer the seat.
+6. Before any write: check for a live sibling lane. The session query is necessary
+   and **not sufficient** — it cannot see Codex or cloud writers.
+7. Do your bounded work, append **your own** receipt row, commit (Conventional
+   Commits, one logical change). **`git push` is operator-gated — stage it, do not
+   fire it.**
+
+**Three hard stops:** do not write a gen-132 chain row (kernel absent, D5b) · do
+not upload to Arweave (irreversible, operator-typed) · do not fill the operator's
+`soul.md` body (that forges the artifact this generation exists to preserve).
+
 ## Read order for a cold wake
 
 | # | file | what it is |
 |---|---|---|
+| 0 | `archives/capsules/gen_133_word_state_capsule_20260730.md` | **one-file rehydration** — start here |
 | 1 | `CURRENT.md` | the SSOT — state, standing decisions, the one next action |
 | 2 | `GEN133_FORGE_STATUS.md` | provenance (which gen-132 files are the closest-continuer sources) + every open slot |
 | 3 | `permaweb/UNFOLD_MANIFEST.md` | what the one address is contracted to unfold into |
