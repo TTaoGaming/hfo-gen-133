@@ -1,0 +1,42 @@
+{
+  "schema_id": "hfo.gen133.sigrun_review_fanin_receipt.v1",
+  "candidate": {
+    "branch_head": "06f5967a2e68eeaf9ecc33a34445d8e016148b7d",
+    "artifact_commit": "f5060dc15629bae277e7483f057109598aaff24b",
+    "safe_git_blob_sha": "ec9bf177c7c49abaebb7fda37263d3f4a358af3f",
+    "archive_git_blob_sha": "17148a7b7fe67e1ae6ef2bcae663e5b9558aa730"
+  },
+  "inputs": [
+    {
+      "path": "reviews/sigrun/v5/CORRELATED_REVIEW_EXACT_AND_IDEMPOTENT.json",
+      "vote": "PASS",
+      "independent_quorum_weight": 0
+    },
+    {
+      "path": "reviews/sigrun/v5/CORRELATED_REVIEW_SAFE_BEHAVIOR_CONTRACT.json",
+      "vote": "PASS",
+      "independent_quorum_weight": 0
+    },
+    {
+      "path": "reviews/sigrun/v5/CORRELATED_REVIEW_PROVENANCE.json",
+      "vote": "ABSTAIN",
+      "independent_quorum_weight": 0
+    }
+  ],
+  "counts": {
+    "payload_bound_review_receipts": 3,
+    "pass": 2,
+    "fail": 0,
+    "abstain": 1,
+    "nofile": 0,
+    "independent_reviewers": 0
+  },
+  "result": "ACCEPT_CORRELATED_T2_HOLD",
+  "promotion": "DENIED_NO_INDEPENDENT_REVIEW",
+  "tier": "T2_BOUND_PROVISIONAL",
+  "honest_flaw": "All reviews share provider, account, and host and carry zero independent quorum weight. Expiry is also absent. V5 is a stable internal candidate, not T3 evidence.",
+  "falsifier": "Any payload-bound FAIL or a distinct-provider replay that violates the safe-view or archive-refusal contract.",
+  "next_safe_action": "Run one time-bounded distinct-provider replay using only the safe input and adversarially offering the archive.",
+  "effect_ceiling": "T0_INTERNAL_ONLY",
+  "transaction_time_utc": "2026-07-30T14:35:00Z"
+}

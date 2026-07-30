@@ -1,0 +1,30 @@
+{
+  "schema_id": "hfo.gen133.sigrun_slack_projection_hold_receipt.v1",
+  "destination": {
+    "workspace": "hfo",
+    "channel_id": "C0BGC646A1H",
+    "channel_name": "hfo-synthesis",
+    "thread_ts": "1785073442.724479"
+  },
+  "candidate_authority": {
+    "artifact_commit": "f5060dc15629bae277e7483f057109598aaff24b",
+    "branch_readback_commit": "06f5967a2e68eeaf9ecc33a34445d8e016148b7d",
+    "review_fanin_path": "reviews/sigrun/v5/REVIEW_FANIN_RECEIPT.json"
+  },
+  "candidate_message_body": "[SIGRUN 4,4][GEN133 V5][T2 BOUND PROVISIONAL][HOLD]\nGit authority: https://github.com/TTaoGaming/hfo-gen-133/tree/06f5967a2e68eeaf9ecc33a34445d8e016148b7d/capsules/sigrun/v5\n- Safe input: ec9bf177c7c49abaebb7fda37263d3f4a358af3f | 9,245 B | sha256 c918ecf1f6793d7c49ffa4bc29ee85730cee1282d5736398240d73ac6f5739b5 | self-hash PASS\n- Raw archive: 17148a7b7fe67e1ae6ef2bcae663e5b9558aa730 | 230,492 B | archival only; refuse as prompt\n- Local verification: 89 unique checks PASS; deterministic rebuild zero delta\n- Correlated review: 2 PASS, 1 ABSTAIN, 0 independent quorum weight\nStill HOLD: distinct-provider behavioral replay, Gen132 commit-tree readback, rights clearance, ConsumerAck, and Arweave publication are absent.\nNext safe action: one time-bounded distinct-provider replay using only the safe input.",
+  "candidate_message_utf8_bytes": 809,
+  "candidate_message_sha256": "99ec8f7c1672ff8ecd5426c395227e2d32698e2abe9d00eadc047b3743afc0a6",
+  "collision_observation": {
+    "active_draft_count": 1,
+    "draft_body": "NOT_READ",
+    "draft_mutated": false,
+    "observed_via": "signed-in Slack web exact-thread read"
+  },
+  "result": "HOLD_ACTIVE_DRAFT",
+  "send_performed": false,
+  "send_condition": "Remote readback of this receipt commit plus a fresh exact-thread read showing zero active drafts.",
+  "honest_flaw": "The candidate is a Slack projection of Git evidence. Slack delivery would not prove ConsumerAck, independent review, runtime, rights, or permaweb publication.",
+  "falsifier": "The candidate hash fails recomputation, remote readback differs, the Slack draft remains active, or a payload-bound v5 FAIL appears.",
+  "effect_ceiling": "T0_INTERNAL_ONLY",
+  "transaction_time_utc": "2026-07-30T14:35:00Z"
+}
