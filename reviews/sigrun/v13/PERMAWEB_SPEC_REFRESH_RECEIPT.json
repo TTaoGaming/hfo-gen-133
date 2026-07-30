@@ -1,0 +1,33 @@
+{
+  "schema_id": "hfo.gen133.sigrun_permaweb_spec_refresh.v13",
+  "state": "SPEC_BOUND_PREUPLOAD_HOLD",
+  "observed_date": "2026-07-30",
+  "official_sources": [
+    "https://docs.ar.io/build/upload",
+    "https://docs.ar.io/build/upload/tagging",
+    "https://docs.ar.io/build/upload/manifests",
+    "https://docs.ar.io/build/upload/receipts/"
+  ],
+  "requirements": {
+    "content_type": "application/json",
+    "versioned_app_name": true,
+    "raw_upload_receipt_required": true,
+    "exact_byte_retrieval_readback_required": true,
+    "distinct_gateway_count": 2,
+    "durability_checkpoints": [
+      "T_PLUS_7_DAYS",
+      "T_PLUS_30_DAYS"
+    ]
+  },
+  "claim_boundary": {
+    "size_eligibility_is_upload": false,
+    "upload_receipt_is_retrieval": false,
+    "retrieval_is_permanence": false,
+    "wallet_authorized": false,
+    "spend_authorized": false,
+    "publication_authorized": false
+  },
+  "effect_ceiling": "T0_PREFLIGHT_ONLY",
+  "result": "PASS_SPEC_ONLY_NO_PUBLICATION",
+  "next_safe_action": "Keep the exact root on HOLD until remote Git binding, distinct privacy-rights review, and explicit operator authorization all exist."
+}
