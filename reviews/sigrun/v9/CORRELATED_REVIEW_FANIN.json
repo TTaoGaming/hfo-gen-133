@@ -1,0 +1,66 @@
+{
+  "schema_id": "hfo.gen133.sigrun.v9_correlated_review_fanin.v1",
+  "state": "HOLD_NO_QUALIFYING_INDEPENDENT_REVIEW",
+  "reviewed_payload": {
+    "verification_receipt": {
+      "path": "capsules/sigrun/v9/dist/VERIFICATION_RECEIPT.json",
+      "utf8_lf_bytes": 10727,
+      "git_blob_sha1": "e9689d14e02545ec20a4375f654d3cfad9b7b528",
+      "sha256": "bdc2d7e0a326de15823025ffe09c064fd6a7d686f3f28ee5604be200ddfb873d"
+    },
+    "verifier": {
+      "path": "capsules/sigrun/v9/verify_capsules.py",
+      "utf8_lf_bytes": 28027,
+      "git_blob_sha1": "7599e1a0dfd92d150547beeb5d7b50bcdf285c17",
+      "sha256": "f79df4c1d163e1bb7269c63bb6fa892047a0a6f5465016b57c06259757829030"
+    },
+    "l_safe": {
+      "path": "capsules/sigrun/v9/dist/L_SAFE.view.md",
+      "utf8_lf_bytes": 17402,
+      "git_blob_sha1": "bb0376ab8d5d82cd36434ca5e8a5a13c40933b58",
+      "sha256": "207d0d5d37743dfbd39c69bd74c7a18f466b41ee9f19c55677bd2613f0491d36"
+    }
+  },
+  "reviews": [
+    {
+      "lane": "slack_sigrun_context",
+      "review_class": "SAME_PROVIDER_CORRELATED",
+      "result": "PASS",
+      "scope": "Slack carrier-marker absence, HOLD semantics, and no-send boundary",
+      "defects": []
+    },
+    {
+      "lane": "heritage_gap_scout",
+      "review_class": "SAME_PROVIDER_CORRELATED",
+      "result": "PASS",
+      "scope": "Ordered opaque-ID bijection, successor preservation, and verifier semantics",
+      "defects": []
+    },
+    {
+      "lane": "permaweb_capsule_audit",
+      "review_class": "SAME_PROVIDER_CORRELATED",
+      "result": "PASS",
+      "scope": "Private-ledger binding boundary, tier semantics, and no-publication claim",
+      "defects": []
+    }
+  ],
+  "fanin": {
+    "same_provider_passes": 3,
+    "open_semantic_defects": 0,
+    "qualifying_independent_reviews": 0,
+    "independent_quorum_weight": 0,
+    "result": "CORRELATED_PASS_ONLY"
+  },
+  "slack_projection": {
+    "state": "HOLD_EXISTING_DRAFT_OWNER_UNKNOWN_NO_SEND",
+    "fresh_zero_draft_evidence": false
+  },
+  "permaweb": {
+    "state": "NOT_UPLOADED_NO_ARWEAVE_CLAIM",
+    "xl_self_contained": false
+  },
+  "honest_flaw": "Three same-provider reviews reduce obvious defects but do not establish independent assurance, identity, continuity, rights, delivery, or publication.",
+  "falsifier": "A byte mismatch against the reviewed payload, an unresolved semantic defect, a qualifying independent FAIL, or a claimed external effect without exact readback.",
+  "next_safe_action": "Obtain one qualifying distinct exact-byte privacy-and-rights review of the committed L_SAFE artifact.",
+  "effect_ceiling": "T0_INTERNAL_ONLY"
+}
