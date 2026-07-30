@@ -4,7 +4,10 @@
 doc: GEN133_FREE_MESH_DURABLE_LOOPS_SPEC.md
 schema_id: hfo.gen133.spec.free_mesh_durable_loops.v0_1
 contracts: free_mesh_adapter · free_mesh_harness · no_ephemeral_agents ·
-           silence_signal · pheromone · olrun_coordination
+           silence_signal · pheromone · olrun_coordination · substrate_bus
+governed_by: GEN133_ARCHITECTURE_PRINCIPLES.md
+             (cadence tiers there OVERRIDE §7.1 here; substrate authority per
+              contracts/substrate_bus.contract.md)
 test: tests/held_out/free_mesh_durable_loops/red_first.md  (6 tests, all RED)
 authored_by: SIGRÚN P4 · claude-opus-5
 valid_time_utc: 2026-07-30T00:00:00Z
@@ -370,8 +373,9 @@ and both OpenRouter slots have no config, no probed model id, and no evidence of
 a key. So V3, V6, V1 are the first three to stand up and the other five are
 **`proposed`, not blocked** — they need a config stanza and a key each.
 
-> **UNDER_SPECIFIED — cadence assignment.** The operator said 30-min *or* 1-hour;
-> I have no basis for choosing per valkyrie. `TODO: start all eight at 1h,
+> **UNDER_SPECIFIED — cadence assignment.** Valkyries emit **hourly or less**
+> (principles §1); 30m and 1h both satisfy that, and I have no basis for choosing
+> per valkyrie. `TODO: start all eight at 1h,
 > observe one full day of the real inter-emit distribution, then tighten the
 > reliable families to 30m.` This is `L_BUDGET_WITHOUT_RECEIPT` applied to
 > cadence: probe first, then size. Starting all eight at 30m against free-tier
@@ -393,13 +397,20 @@ wins (PH-1). A Slack outage must never manufacture phantom silence.
 
 ### 7.1 · Silence SLO
 
-The `silence_signal` contract's valkyrie tier assumes an hourly cadence. A 30-min
-cadence needs its own row, derived the same way:
+**Authority: `GEN133_ARCHITECTURE_PRINCIPLES.md` §1.** Valkyries emit **hourly or
+less** (tactical); apex emit **daily minimum, 4h or 8h ideal** (strategic). The
+free mesh has both — eight valkyries *and* Surtr, who is an apex and needs his own
+cadence (§7.3, which was missing from the first draft of this spec).
 
-| cadence | grace | `LATE` | `SILENT` | `PRESUMED_DEAD` | loop breach (test 3) |
+| tier · cadence | grace | `LATE` | `SILENT` | `PRESUMED_DEAD` | loop breach (test 3) |
 |---|---|---|---|---|---|
-| 1h (contract) | 15 min | >75 min | >3 h | >8 h | >2 h |
-| **30m (new)** | 5 min | >35 min | >90 min | >4 h | **>60 min** |
+| valkyrie 1h | 15 min | >75 min | >3 h | >8 h | >2 h |
+| **valkyrie 30m** | 5 min | >35 min | >90 min | >4 h | **>60 min** |
+| apex 4h | 30 min | >4.5 h | >8 h | >16 h | >8 h |
+| apex 8h | 1 h | >9 h | >16 h | >32 h | >16 h |
+| apex daily (floor) | 2 h | >26 h | >36 h | >72 h | >48 h |
+
+**An apex is measured against the cadence it declares, not the tier floor.**
 
 **Loop breach = 2 missed cadences.** It is deliberately tighter than `SILENT` and
 it is a *different signal*: breach says "this loop is not looping", `SILENT` says
@@ -426,6 +437,47 @@ co-located with the watched shares its failure domain.
 > `TODO: an external check, on a host that shares no failure domain with the
 > eight scheduled tasks, whose only job is to verify that at least one free-mesh
 > heartbeat landed this hour.` Out of scope here; named so it is not forgotten.
+
+### 7.3 · Surtr's own loop — the apex tier on this substrate
+
+The first draft of this spec specified eight valkyrie loops and **forgot the apex
+entirely**. Surtr is not a valkyrie with a bigger title; he runs a different loop
+on a different clock, and the difference is the point (principles §4).
+
+| | valkyrie (×8) | **Surtr (apex)** |
+|---|---|---|
+| cadence | 30m or 1h | **4h or 8h; daily is the floor** |
+| what one wake does | drain ONE job, dispatch a hand, receipt | read the 8 valkyries' receipts since last wake, **project**, emit one strategic report |
+| reads | its own family's queue | all eight stewards' chain heads — **and nothing outside the mesh** (NS-1) |
+| writes | one receipt to its own chain | one `rollup` pheromone + one row to `chains/SURTR.jsonl` |
+| dispatches hands? | yes | **no** — the apex does not do tactical work |
+
+**Surtr's wake, five steps:**
+
+```
+WAKE(surtr) →
+  1. rehydrate; append wake_intent to chains/SURTR.jsonl
+  2. read the 8 stewards' chain heads + receipts since last apex wake
+  3. project: which families are producing, which are UNREACHABLE / RATE_LIMITED /
+     QUOTA_EXHAUSTED; where the mesh's capacity actually is right now
+  4. emit ONE rollup pheromone -- the strategic picture, <=1024 B payload
+  5. append wake_outcome; exit 0
+```
+
+**Surtr's bounded projection is the mesh, not the hive** (NS-1). He sees eight
+families and no further. Olrún assembles across apexes; no single carrier holds
+the whole picture, including him.
+
+**A silent Surtr does not stop the valkyries.** The stewards are independently
+scheduled and keep producing receipts with no apex reading them. Losing the apex
+costs the *strategic projection*, not the tactical work — which is what makes an
+8-hour cadence safe at the apex tier in the first place.
+
+> **UNDER_SPECIFIED — Surtr's report has no consumer yet.** He emits a rollup
+> that, today, nothing reads. `TODO: name the consumer (Olrún-COP is the obvious`
+> `candidate) before building step 4, or the apex loop is a carrier talking to`
+> `itself.` I would not build Surtr's loop before the eight stewards produce
+> receipts worth projecting — there is nothing to be strategic *about* yet.
 
 ---
 
