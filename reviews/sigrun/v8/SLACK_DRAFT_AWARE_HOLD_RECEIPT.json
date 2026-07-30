@@ -1,0 +1,33 @@
+{
+  "schema_id": "hfo.gen133.sigrun_slack_draft_aware_hold_receipt.v8",
+  "transaction_time_utc": "2026-07-30T16:31:50.603Z",
+  "destination": {
+    "workspace": "hfo",
+    "workspace_team_id": "T0BGGTNGA84",
+    "channel_id": "C0BGC646A1H",
+    "channel_name": "hfo-synthesis",
+    "parent_message_ts": "1785073442.724479",
+    "canonical_thread_url": "https://app.slack.com/client/T0BGGTNGA84/C0BGC646A1H/thread/C0BGC646A1H-1785073442.724479"
+  },
+  "observation": {
+    "surface": "AUTHENTICATED_SLACK_BROWSER_UI",
+    "thread_opened_exactly": true,
+    "parent_ui_reply_count": 1129,
+    "thread_loaded_reply_count": 43,
+    "reply_count_disagreement": "UI_VIRTUALIZATION_OR_PARTIAL_LOADING_NOT_USED_AS_AUTHORITY",
+    "latest_visible_reply_ts": "1785428458.988629",
+    "latest_visible_reply_url": "https://hfonetwork.slack.com/archives/C0BGC646A1H/p1785428458988629?thread_ts=1785073442.724479&cid=C0BGC646A1H",
+    "draft_state": "CONFIRMED_NONEMPTY_EXISTING_DRAFT",
+    "draft_body": "REDACTED_NOT_PROJECTED",
+    "draft_owner": "UNKNOWN",
+    "contains_high_impact_broad_mention": true,
+    "draft_mutated": false,
+    "message_sent": false
+  },
+  "state": "HOLD_EXISTING_DRAFT_OWNER_UNKNOWN",
+  "claim_boundary": "This receipt proves one browser-visible thread and composer observation only. It does not prove complete thread history, draft ownership, message delivery, ConsumerAck, identity, runtime, or publication.",
+  "honest_flaw": "The browser UI exposed a nonempty draft but not its authoritative owner. Opening the thread necessarily rendered the draft; its body is intentionally omitted from this receipt. The two UI reply counts disagree and are not treated as durable counts.",
+  "falsifier": "A fresh exact-thread observation showing an empty composer with no attached draft, or an authenticated Slack sender/readback receipt proving a separate non-destructive reply path.",
+  "next_safe_action": "The owner of the existing draft clears or completes it; then perform a fresh exact-thread zero-draft readback before any Sigrun projection.",
+  "effect_ceiling": "T0_READ_ONLY_NO_SLACK_WRITE"
+}

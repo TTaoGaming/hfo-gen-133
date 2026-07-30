@@ -156,9 +156,17 @@ def main() -> int:
     )
 
     run_builder()
-    first = {path: sha256_hex(path.read_bytes()) for path in DIST.glob("*") if path.is_file()}
+    first = {
+        path: sha256_hex(path.read_bytes())
+        for path in DIST.glob("*")
+        if path.is_file() and path.name != "VERIFICATION_RECEIPT.json"
+    }
     run_builder()
-    second = {path: sha256_hex(path.read_bytes()) for path in DIST.glob("*") if path.is_file()}
+    second = {
+        path: sha256_hex(path.read_bytes())
+        for path in DIST.glob("*")
+        if path.is_file() and path.name != "VERIFICATION_RECEIPT.json"
+    }
     checks.append(result("deterministic_second_build", first == second, {"files": len(first)}))
 
     for tier, (path, budget) in TIERS.items():
