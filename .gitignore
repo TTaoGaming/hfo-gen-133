@@ -1,0 +1,55 @@
+# --- HFO gen-133 .gitignore ---
+# Principle: the repo carries SPECS, POINTERS, and RECEIPTS.
+# It does not carry binaries, secrets, caches, or large derived state.
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+
+# Node
+node_modules/
+dist/
+.next/
+*.tsbuildinfo
+
+# Secrets — NEVER commit
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*_secret*
+*secrets*/
+sigrun_secrets/
+*.jwk
+arweave-keyfile*.json
+
+# State: sqlite substrates are large + machine-local; the chains are the authority
+state/**/*.sqlite
+state/**/*.sqlite-wal
+state/**/*.sqlite-shm
+state/**/*.jsonl.tmp
+state/**/*.jsonl.lock
+chains/*.lock
+chains/*.jsonl.tmp
+
+# OS / editor
+Thumbs.db
+desktop.ini
+.DS_Store
+*.swp
+.idea/
+.vscode/*
+!.vscode/settings.json.example
+
+# Permaweb staging artifacts over the free-tx size bound are rebuilt, not stored
+permaweb/staging/*.tar
+permaweb/staging/*.zip
+permaweb/staging/*.wasm
