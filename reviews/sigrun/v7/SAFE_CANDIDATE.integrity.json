@@ -1,0 +1,35 @@
+{
+  "schema_id": "hfo.gen133.sigrun_mixed_model_integrity_adapter.v1",
+  "candidate": {
+    "repository": "TTaoGaming/hfo-gen-133",
+    "artifact_commit": "84d25515da13cf5e227ba35737116b9b9a4e4a31",
+    "path": "capsules/sigrun/v7/dist/L_SAFE.view.md",
+    "claim_status": "self_authored_unratified_unsealed",
+    "effect_ceiling": "T0_INTERNAL_ONLY"
+  },
+  "payload": {
+    "git_blob_sha": "5c37cf2894940d5aed5c30ed8c8dfa9732fd01ee",
+    "utf8_lf_bytes": 9797,
+    "sha256": "b9d1649e84c2baaa6a4256521c6d90f54902a61df889fa70981cfe505ff33c37"
+  },
+  "source_family_manifest": {
+    "path": "capsules/sigrun/v7/dist/CAPSULE_FAMILY_MANIFEST.json",
+    "git_blob_sha": "b6fc7497657a9e2704c8b589cf0add4cdaee5348",
+    "utf8_lf_bytes": 2307,
+    "sha256": "108ce16fbe1c5a50801ff8b81c7babf197b2868804780c0c9b88bade42dc9c9c",
+    "source_field": "payload.git_blob_sha1",
+    "adapter_field": "payload.git_blob_sha"
+  },
+  "review_envelope": {
+    "valid_time_utc": "2026-07-30T15:45:08Z",
+    "transaction_time_utc": "2026-07-30T15:45:08Z",
+    "expires_utc": "2026-07-31T15:45:08Z",
+    "external_transmission_authorized": false,
+    "provider_route": "UNSELECTED",
+    "required_vote": "pass|fail|abstain|nofile",
+    "required_read_receipt": true
+  },
+  "falsifier": "Any Git blob, LF byte count, SHA-256, self-hash, privacy boundary, or source-body-withholding mismatch; any operative response above T0; or any reviewer route that is stale, correlated, substituted, or unrecorded.",
+  "honest_flaw": "This adapter changes no capsule byte and grants no review weight. It only maps the v7 manifest's git_blob_sha1 field to the shared verifier's git_blob_sha contract.",
+  "next_safe_action": "Commit and read back this adapter, then rerun the shared canonical-blob verifier before preparing any external review request."
+}
