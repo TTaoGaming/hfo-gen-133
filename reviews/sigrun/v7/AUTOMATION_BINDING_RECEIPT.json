@@ -1,0 +1,44 @@
+{
+  "schema_id": "hfo.gen133.sigrun_automation_binding_receipt.v1",
+  "automation": {
+    "id": "sigrun-gen133-anti-cpr-heritage-and-delivery-loop",
+    "kind": "heartbeat",
+    "name": "Sigrun Gen133 anti-CPR heritage and delivery loop",
+    "status": "ACTIVE",
+    "cadence": "HOURLY_INTERVAL_1",
+    "notification_policy": "FAILED_RUNS_ONLY",
+    "target_thread_id": "019fb151-f209-7f42-9ed8-807e21ed0e63",
+    "updated_at_epoch_ms": 1785426039571,
+    "prompt_utf8_bytes": 5682,
+    "prompt_sha256": "743901ce81010fd1206689556a01af0f6495de98a05747075a09c4b607063386"
+  },
+  "bound_authority": {
+    "repository": "TTaoGaming/hfo-gen-133",
+    "branch": "agent/sigrun-gen133-capsule-v2-20260730",
+    "artifact_commit": "84d25515da13cf5e227ba35737116b9b9a4e4a31",
+    "review_commit": "0a5ed56c4859d6b9ffa81cfdb73cb3a13cac1302",
+    "safe_git_blob_sha1": "5c37cf2894940d5aed5c30ed8c8dfa9732fd01ee",
+    "review_fanin_git_blob_sha1": "54c6434c7dbf88937a8c928f73993b16d1a98d7f",
+    "slack_hold_git_blob_sha1": "f2f9c0e99d40fdb947a5871d4712c31055a93e73"
+  },
+  "loop_controls": {
+    "wip": 1,
+    "unchanged": "SUPPRESSED_WITH_ZERO_EFFECTS",
+    "successor_trigger": "CHANGED_COMMITTED_HERITAGE_OR_PAYLOAD_BOUND_FAIL_ONLY",
+    "independent_gate": "DISTINCT_PROVIDER_AND_HOST_REPLAY_REQUIRED",
+    "slack_gate": "DISTINCT_PRIVACY_PASS_AND_FRESH_ZERO_DRAFT_REQUIRED",
+    "arweave": "OPERATOR_ONLY_FORBIDDEN_IN_HEARTBEAT"
+  },
+  "registry_readback": {
+    "automations_total": 52,
+    "active_total": 7,
+    "this_automation_active": true,
+    "parse_failures": 0
+  },
+  "state": "ACTIVE_BOUND_T2_HOLD",
+  "honest_flaw": "A configured active heartbeat is a wake mechanism, not evidence of execution, semantic correctness, Slack delivery, ConsumerAck, or operator relief.",
+  "falsifier": "A registry readback showing this automation paused or absent, a prompt-hash mismatch, or a wake that violates the WIP, privacy, Slack, or Arweave stop rules.",
+  "next_safe_action": "Run one distinct-provider and distinct-host no-write replay using only the exact L_SAFE v7 blob.",
+  "effect_ceiling": "SCHEDULE_CONFIGURATION_ONLY",
+  "transaction_time_utc": "2026-07-30T15:42:00Z"
+}
