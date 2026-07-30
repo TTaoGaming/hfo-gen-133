@@ -1,0 +1,118 @@
+{
+  "schema_id": "hfo.gen133.sigrun.v9_local_mixed_model_route_attempt.v1",
+  "state": "HOLD_NO_ADMISSIBLE_LOCAL_REVIEW",
+  "candidate": {
+    "repository": "TTaoGaming/hfo-gen-133",
+    "commit": "880f2b1efc536bdff9ebabe8a02a0cce0b3cdac5",
+    "path": "capsules/sigrun/v9/dist/L_SAFE.view.md",
+    "git_blob_sha": "bb0376ab8d5d82cd36434ca5e8a5a13c40933b58",
+    "utf8_lf_bytes": 17402,
+    "sha256": "207d0d5d37743dfbd39c69bd74c7a18f466b41ee9f19c55677bd2613f0491d36",
+    "self_hash": "92883868d90858bc73d192d9b52a6d1414b3d0e43580ec002aacf3e191ac1dbf"
+  },
+  "canonical_binding_verifier": {
+    "tool": "hfo-mixed-model-review/scripts/verify_canonical_blob.py",
+    "checks": {
+      "blob": true,
+      "bytes": true,
+      "sha256": true
+    },
+    "verdict": "PASS",
+    "evidence_ceiling": "Canonical Git content binding only"
+  },
+  "coordination_facade": {
+    "fanout_packet": {
+      "state": "NOFILE_CONFIGURED_REPOSITORY_ROOT_DOES_NOT_CONTAIN_GEN133_V9",
+      "capsule_text_rendered": false,
+      "capsule_text_sent": false
+    },
+    "empty_route_preflight": {
+      "route_count": 0,
+      "leaf_plan_verdict": "HOLD",
+      "campaign_plan_verdict": "HOLD",
+      "evidence_ceiling": "Planning only; no route authentication or provider call"
+    }
+  },
+  "local_route": {
+    "carrier": "ollama_loopback_windows",
+    "provider_account_domain": "LOCAL_NONE",
+    "harness": "ollama_http_api",
+    "platform": "windows_same_host",
+    "vendor": "local_open_weights",
+    "api_tags_readback": {
+      "reachable": true,
+      "declared_model_count": 11
+    },
+    "independence_weight": 0,
+    "correlation_reason": "Same host and operator-controlled carrier as the maker session"
+  },
+  "attempts": [
+    {
+      "model": "qwen3.5:9b",
+      "family": "qwen35",
+      "model_digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+      "started_utc": "2026-07-30T17:46:26Z",
+      "ended_utc": "2026-07-30T17:47:50Z",
+      "capsule_text_included": true,
+      "external_transmission": false,
+      "response_received": false,
+      "request_hash_status": "UNKNOWN_INSTRUMENTATION_ERROR",
+      "failure_kind": "LOOPBACK_CONNECTION_FORCIBLY_CLOSED",
+      "vote": "abstain"
+    },
+    {
+      "model": "llama3.2:3b",
+      "family": "llama",
+      "model_digest": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+      "started_utc": "2026-07-30T17:49:15Z",
+      "ended_utc": "2026-07-30T17:49:41Z",
+      "capsule_text_included": true,
+      "external_transmission": false,
+      "request_sha256": "c20055f9071d44ed4b12c3f65bd278b7775307a388a28088b8cb0347eec03eb8",
+      "response_received": false,
+      "failure_kind": "HTTP_500",
+      "observed_loaded_context_length": 4096,
+      "root_cause": "UNKNOWN",
+      "vote": "abstain"
+    },
+    {
+      "model": "llama3.2:3b",
+      "family": "llama",
+      "model_digest": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+      "started_utc": "2026-07-30T17:50:26Z",
+      "ended_utc": "2026-07-30T17:51:47Z",
+      "capsule_text_included": true,
+      "external_transmission": false,
+      "request_sha256": "013ee24ba5d5d5bcd0a7a58899837ffcee2f02bf90e21523dee208d4f7618a09",
+      "requested_context_tokens": 8192,
+      "response_received": false,
+      "failure_kind": "HTTP_500",
+      "root_cause": "UNKNOWN",
+      "vote": "abstain"
+    }
+  ],
+  "reduction": {
+    "route_attempts": 3,
+    "model_assignments": 2,
+    "structured_reviews_returned": 0,
+    "admitted_votes": 0,
+    "abstained_assignments": 2,
+    "qualifying_independent_reviews": 0,
+    "model_unloaded_after_attempts": true,
+    "result": "HOLD"
+  },
+  "effects": {
+    "external_provider_called": false,
+    "external_capsule_transmission": false,
+    "credentials_read": false,
+    "spend": false,
+    "slack_send": false,
+    "permaweb_upload": false
+  },
+  "valid_time_utc": "2026-07-30T17:51:47Z",
+  "transaction_time_utc": "2026-07-30T17:51:47Z",
+  "honest_flaw": "The local failures do not prove the models are incapable of review. No structured response or HTTP error body was retained, root causes remain unknown, the first request hash was not captured, and local same-host output would still carry zero independent weight.",
+  "falsifier": "A fresh structured review with a direct reading receipt bound to the exact committed blob, byte count, SHA-256, actual route, and a concrete falsifier.",
+  "next_safe_action": "Use the pending packet only after the operator explicitly names and authorizes one non-OpenAI provider route for the exact sanitized L_SAFE bytes.",
+  "effect_ceiling": "T0_LOCAL_REVIEW_ATTEMPT_ONLY"
+}

@@ -1,0 +1,51 @@
+{
+  "schema_id": "hfo.gen133.sigrun.v9_mixed_model_fanin.v2",
+  "state": "HOLD_NO_QUALIFYING_INDEPENDENT_REVIEW",
+  "candidate": {
+    "commit": "880f2b1efc536bdff9ebabe8a02a0cce0b3cdac5",
+    "path": "capsules/sigrun/v9/dist/L_SAFE.view.md",
+    "git_blob_sha": "bb0376ab8d5d82cd36434ca5e8a5a13c40933b58",
+    "utf8_lf_bytes": 17402,
+    "sha256": "207d0d5d37743dfbd39c69bd74c7a18f466b41ee9f19c55677bd2613f0491d36"
+  },
+  "observations": [
+    {
+      "source": "reviews/sigrun/v9/CORRELATED_REVIEW_FANIN.json",
+      "review_class": "SAME_PROVIDER_CORRELATED",
+      "passes": 3,
+      "admitted_independent_weight": 0
+    },
+    {
+      "source": "reviews/sigrun/v9/LOCAL_MIXED_MODEL_ROUTE_ATTEMPT_RECEIPT.json",
+      "source_git_blob_sha": "7a0b843fdc33375ee90091ab2cd7f38c9f7adb55",
+      "source_utf8_lf_bytes": 4634,
+      "source_sha256": "1cd8fddd6e6bb83c4c2bf9bf857841fcc61d0324dd618207e732d7088cff40f5",
+      "review_class": "LOCAL_SAME_HOST_ROUTE_FAILURE",
+      "passes": 0,
+      "abstained_assignments": 2,
+      "route_attempts": 3,
+      "admitted_independent_weight": 0
+    }
+  ],
+  "reduction": {
+    "same_provider_correlated_passes": 3,
+    "local_route_abstained_assignments": 2,
+    "local_route_attempts": 3,
+    "structured_local_reviews": 0,
+    "qualifying_independent_reviews": 0,
+    "independent_quorum_weight": 0,
+    "result": "HOLD"
+  },
+  "slack_projection": {
+    "state": "HOLD_EXISTING_DRAFT_OWNER_UNKNOWN_NO_SEND",
+    "fresh_zero_draft_evidence": false
+  },
+  "permaweb": {
+    "state": "NOT_UPLOADED_NO_ARWEAVE_CLAIM",
+    "xl_self_contained": false
+  },
+  "honest_flaw": "The new local attempts add route-failure evidence, not semantic review evidence. The prior three passes remain same-provider correlated and cannot establish independent assurance.",
+  "falsifier": "A fresh payload-bound structured review from a named and authenticated distinct route, or any exact-byte mismatch in the candidate.",
+  "next_safe_action": "Obtain explicit operator authorization for one named non-OpenAI provider route, then transmit only the exact sanitized L_SAFE payload once.",
+  "effect_ceiling": "T0_INTERNAL_ONLY"
+}
