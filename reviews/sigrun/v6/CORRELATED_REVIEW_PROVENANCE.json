@@ -1,0 +1,56 @@
+{
+  "schema_id": "hfo.gen133.sigrun_correlated_review.v1",
+  "candidate": {
+    "repository": "TTaoGaming/hfo-gen-133",
+    "ref": "refs/heads/agent/sigrun-gen133-capsule-v2-20260730",
+    "commit": "1e08abb0ed292579cb3a67272f0265f8e47325ff",
+    "safe_path": "capsules/sigrun/v6/dist/L_SAFE.view.md",
+    "safe_git_blob_sha1": "d110a58b5a75af7949075c230e5a094061813c33",
+    "safe_bytes": 16914,
+    "safe_sha256": "b4e253ef8c6a686a41e9ffd632a5eccd31901aec93b1b79493b5c6dac607826f"
+  },
+  "reviewer": {
+    "role": "provenance_privacy",
+    "provider_family": "OpenAI",
+    "host": "shared",
+    "independent_quorum_weight": 0
+  },
+  "vote": "FAIL",
+  "verdict_code": "FAIL_PROTECTED_POINTER_METADATA_REMOTE_DISCLOSURE",
+  "checks": {
+    "source_metadata_schema": "PASS_23_UNIQUE_COMPLETE",
+    "exact_source_binding": "PASS_21_TWO_PUBLIC_POINTERS_UNVERIFIED",
+    "body_embedding": "PASS_ZERO_NEW_BODIES",
+    "legacy_operative_quarantine": "PASS",
+    "remote_local_distinction": "PASS",
+    "public_rights_review": "HOLD_ABSENT",
+    "pointer_metadata_privacy": "FAIL"
+  },
+  "machine_readable_findings": {
+    "protected_records_projected": 4,
+    "affected_classes": [
+      "PRIVATE_POINTER_ONLY",
+      "INTERNAL_OPERATOR_CONTEXT",
+      "INTERNAL_REVIEW_LOCAL_CONTEXT"
+    ],
+    "disclosed_field_classes": [
+      "semantic_source_identifier",
+      "repository_or_local_alias",
+      "source_path",
+      "commit",
+      "blob",
+      "byte_count",
+      "sha256"
+    ],
+    "source_bodies_disclosed": 0,
+    "absolute_host_paths_disclosed": 0,
+    "required_remediation": "OPAQUE_RANDOM_RECEIPTS_REMOTE_EXACT_MAPPING_LOCAL_ONLY"
+  },
+  "correlation": "SHARED_OPENAI_PROVIDER_AND_HOST",
+  "tier": "T0_HOLD",
+  "honest_flaw": "No source body or absolute host path was disclosed. The FAIL concerns protected metadata and topology. Same-provider correlation gives this review zero independent quorum weight but does not invalidate a fail-closed safety finding.",
+  "falsifier": "An operator-approved policy, bound before publication, explicitly authorizing remote release of exact metadata for every affected class plus an independent readback of that authorization.",
+  "exactly_one_fix": "Create a successor whose remote safe tiers use random opaque receipt IDs for every non-public source while retaining exact mappings only in a local operator ledger.",
+  "effect_ceiling": "T0_INTERNAL_ONLY",
+  "transaction_time_utc": "2026-07-30T15:15:00Z"
+}

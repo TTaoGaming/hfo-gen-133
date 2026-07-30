@@ -1,0 +1,45 @@
+{
+  "schema_id": "hfo.gen133.sigrun_correlated_review.v1",
+  "candidate": {
+    "repository": "TTaoGaming/hfo-gen-133",
+    "ref": "refs/heads/agent/sigrun-gen133-capsule-v2-20260730",
+    "commit": "1e08abb0ed292579cb3a67272f0265f8e47325ff",
+    "commit_tree": "19551c65ebed81447b7698ad4f9180236bdfa924",
+    "safe_path": "capsules/sigrun/v6/dist/L_SAFE.view.md",
+    "safe_git_blob_sha1": "d110a58b5a75af7949075c230e5a094061813c33",
+    "safe_bytes": 16914,
+    "safe_sha256": "b4e253ef8c6a686a41e9ffd632a5eccd31901aec93b1b79493b5c6dac607826f",
+    "archive_path": "capsules/sigrun/v6/dist/L_LARGE.bound.md",
+    "archive_git_blob_sha1": "637e938d6622bb2b24abba9a63e5ffd2a756ca53",
+    "archive_bytes": 238971,
+    "archive_sha256": "b0a5ca3273c3b22722e0c99c8e2e72fd7562a5b03b4e2b2df830ae222fca3488"
+  },
+  "reviewer": {
+    "role": "exactness_and_idempotence",
+    "provider_family": "OpenAI",
+    "host": "shared",
+    "independent_quorum_weight": 0
+  },
+  "remote_readback": "PASS",
+  "checks": {
+    "payload_bindings": "PASS",
+    "verification_receipt": "101_OF_101_PASS",
+    "safe_self_hash": "PASS",
+    "archive_chunk_reconstruction": "PASS",
+    "archive_chunk_merkle": "PASS",
+    "embedded_source_bindings": "14_OF_14_PASS",
+    "pointer_delta_materialization": "23_OF_23_PASS",
+    "added_source_bodies_embedded": 0,
+    "tier_budgets": "PASS",
+    "stored_second_build_zero_delta": "PASS",
+    "reviewer_independent_rebuild": "ABSTAIN_NOT_RUN"
+  },
+  "vote": "PASS",
+  "correlation": "SHARED_OPENAI_PROVIDER_AND_HOST",
+  "tier": "T2_BOUND_PROVISIONAL",
+  "honest_flaw": "Exact bytes and internal deterministic relations pass, but same-provider and same-host correlation makes this review weight zero. The reviewer did not independently re-read all 23 external pointer targets.",
+  "falsifier": "Any remote-ref movement, byte mismatch, pointer-target mismatch, repeat-build divergence, body embedding, admitted legacy command, or distinct privacy defect.",
+  "next_safe_action": "Run one distinct-provider no-write behavioral replay using only the exact safe view.",
+  "effect_ceiling": "T0_INTERNAL_ONLY",
+  "transaction_time_utc": "2026-07-30T15:10:00Z"
+}

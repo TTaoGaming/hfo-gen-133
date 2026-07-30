@@ -1,0 +1,47 @@
+{
+  "schema_id": "hfo.gen133.sigrun_review_fanin_receipt.v1",
+  "candidate": {
+    "repository": "TTaoGaming/hfo-gen-133",
+    "ref": "refs/heads/agent/sigrun-gen133-capsule-v2-20260730",
+    "commit": "1e08abb0ed292579cb3a67272f0265f8e47325ff",
+    "safe_path": "capsules/sigrun/v6/dist/L_SAFE.view.md",
+    "safe_git_blob_sha1": "d110a58b5a75af7949075c230e5a094061813c33",
+    "safe_bytes": 16914,
+    "safe_sha256": "b4e253ef8c6a686a41e9ffd632a5eccd31901aec93b1b79493b5c6dac607826f"
+  },
+  "reviews": [
+    {
+      "path": "reviews/sigrun/v6/CORRELATED_REVIEW_EXACT_AND_IDEMPOTENT.json",
+      "role": "exactness_and_idempotence",
+      "vote": "PASS",
+      "independent_quorum_weight": 0
+    },
+    {
+      "path": "reviews/sigrun/v6/CORRELATED_REVIEW_SAFE_BEHAVIOR_CONTRACT.json",
+      "role": "safe_behavior_contract",
+      "vote": "ABSTAIN",
+      "independent_quorum_weight": 0
+    },
+    {
+      "path": "reviews/sigrun/v6/CORRELATED_REVIEW_PROVENANCE.json",
+      "role": "provenance_privacy",
+      "vote": "FAIL",
+      "independent_quorum_weight": 0
+    }
+  ],
+  "counts": {
+    "pass": 1,
+    "abstain": 1,
+    "fail": 1,
+    "independent_pass_weight": 0
+  },
+  "state": "FAIL_PROTECTED_POINTER_METADATA_REMOTE_DISCLOSURE",
+  "promotion": "DENIED",
+  "tier": "T0_HOLD",
+  "correlation": "ALL_REVIEWS_SHARED_OPENAI_PROVIDER_AND_HOST",
+  "honest_flaw": "The review fan-in is correlated and supplies no independent quorum. Its privacy FAIL is nevertheless a payload-bound stop signal. It does not prove that prior Git disclosure has been erased.",
+  "falsifier": "An exact operator authorization predating publication or a corrected successor that passes the same privacy checks changes the current disposition but cannot erase historical v6 exposure.",
+  "next_safe_action": "Create and verify one forward-safe v7 successor with random opaque remote receipt IDs and a local-only exact provenance ledger.",
+  "effect_ceiling": "T0_INTERNAL_ONLY",
+  "transaction_time_utc": "2026-07-30T15:15:00Z"
+}
