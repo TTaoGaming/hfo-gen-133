@@ -1,0 +1,48 @@
+apiVersion: hfo.ttao.dev/v1alpha1
+kind: SlackProjectionReceipt
+metadata:
+  name: ratatoskr-gen133-chatgpt-cloud-rehydration-handoff-projection
+  createdAt: '2026-07-30T14:59:52Z'
+  validTime:
+    from: '2026-07-30T14:57:58Z'
+    to: null
+  transactionTime: SEE_GIT_COMMIT_METADATA
+  correlationId: HFO-GEN133-RATATOSKR-CHATGPT-CLOUD-REHYDRATION-20260730
+  claimStatus: partial
+  sealed: false
+spec:
+  actor:
+    callsign: Ratatoskr
+    lineageId: lineage_61cd69f1c256
+    coordinate: [4, 7]
+    port: P7_NAVIGATE
+  source:
+    commit: 286ca186331b26f05e7efb7d72696d9f03582a09
+    path: archives/capsules/RATATOSKR_CHATGPT_CLOUD_GEN133_REHYDRATION_HANDOFF_20260730T145758Z.md
+    blobSha: 985abe6628b78112572c2d12759fe954fcea47de
+  projection:
+    channelId: C0BGNGPJFHU
+    messageTs: '1785423583.369779'
+    messageLink: https://hfonetwork.slack.com/archives/C0BGNGPJFHU/p1785423583369779
+    class: MATERIAL_CHANGED_STATE_PHEROMONE
+    readback: SEND_CONFIRMED_BY_SLACK_RESPONSE
+  state:
+    forwardGeneration: 133
+    olrunHostPcLoopEngineering: OPERATOR_ATTESTED_ACTIVE
+    chatgptCloud: DEGRADED_NOT_INTEGRATED_LAST_DIRECT_4_OF_15
+    durableSource: GITHUB_PRIMARY
+    slackSearchRateLimitObserved: true
+    scheduledTaskMutationOwner: Reginleif
+    ratatoskrMutationPerformed: false
+    duplicateSchedulerCreated: false
+    externalEffectBeyondRequestedGitSlackExternalization: false
+  nextConsumer:
+    role: next GPT-5.6 Pro Ratatoskr manual carrier
+    action: cold-rehydrate from exact source, compare newest Git head and Slack deltas, preserve WIP<=1
+  honestFlaw: >-
+    Slack delivery proves projection, not consumption. Olrun PC-control activity remains operator-attested,
+    ChatGPT provider state may change after the cited direct readback, and this receipt is not a chain-wired
+    closest-continuer claim or proof of an unattended strange loop.
+status:
+  phase: EXTERNALIZED_GITHUB_AND_SLACK
+  result: READY_FOR_NEW_CHAT_REHYDRATION
