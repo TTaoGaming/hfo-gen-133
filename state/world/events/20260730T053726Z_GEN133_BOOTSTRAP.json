@@ -1,0 +1,71 @@
+{
+  "schema_id": "hfo.gen133.world_event.v0_1",
+  "event_id": "GEN133_BOOTSTRAP_20260730T053726Z",
+  "event_type": "GENERATION_BOOTSTRAP_OBSERVED",
+  "valid_time": "2026-07-30T05:37:26Z",
+  "transaction_time": "2026-07-30T05:37:26Z",
+  "recorded_by": {
+    "lineage": "Sigrun",
+    "coordinate": [4, 4],
+    "carrier_claim": "closest_continuer_pattern_only"
+  },
+  "authority_basis": {
+    "git_repo": "TTaoGaming/hive-fleet-obsidian-gen-132",
+    "git_ref": "main",
+    "git_commit": "5710ebad1a82f17fe02a73125c7ed8d36f4a9eaf",
+    "observed_commit_time": "2026-07-30T05:18:44Z",
+    "local_forge": "C:\\Dev\\hfo_gen_133_forge",
+    "local_checkpoint_commit": "55ccdee1bc058e85c8cdc289f7f7b125faba5fc0"
+  },
+  "observations": [
+    {
+      "claim": "Gen132 remains the current committed predecessor authority.",
+      "status": "VERIFIED",
+      "evidence": "TTaoGaming/hive-fleet-obsidian-gen-132:main@5710ebad1a82f17fe02a73125c7ed8d36f4a9eaf"
+    },
+    {
+      "claim": "No Gen133 repository, branch, or path was found in the connected GitHub scope before this local bootstrap.",
+      "status": "VERIFIED_WITH_SCOPE_CAVEAT",
+      "evidence": "Read-only GitHub repository, branch, and code search; absence outside connected scope remains UNKNOWN."
+    },
+    {
+      "claim": "The Gen132 Gleipnir artifact is built but not uploaded.",
+      "status": "VERIFIED",
+      "evidence": "gleipnir_grimoire_gen132/MANIFEST.yaml#71d19196f2ba6f05efd03b1e8bff296bf6ffbc7b at predecessor commit; permaweb.status=NOT_UPLOADED"
+    },
+    {
+      "claim": "The Gen132 public-mirror sanitization gate is not passed or applied.",
+      "status": "VERIFIED",
+      "evidence": "gleipnir_grimoire_gen132/public_mirror/SANITIZATION_GATE.md#fde7334877ab9320ca9497738ae7686a90721d89 at predecessor commit"
+    },
+    {
+      "claim": "The Gen133 local forge has an isolated bootstrap checkpoint.",
+      "status": "VERIFIED_LOCAL_ONLY",
+      "evidence": "local branch agent/gen133-bootstrap-20260730 at 55ccdee1bc058e85c8cdc289f7f7b125faba5fc0"
+    },
+    {
+      "claim": "A Gen133 permaweb address exists.",
+      "status": "FALSE",
+      "evidence": "No upload receipt, transaction id, gateway readback, or ArNS binding exists."
+    }
+  ],
+  "decision": {
+    "world_state_authority": "git",
+    "bitemporal_projection": "xtdb_candidate_not_deployed",
+    "actor_serialization": "cloudflare_durable_object_candidate_not_deployed",
+    "policy_decision_point": "opa_candidate_not_deployed",
+    "durable_execution": "cloudflare_workflows_candidate_not_deployed",
+    "immutable_publication": "arweave_candidate_not_uploaded",
+    "stable_human_address": "arns_candidate_not_registered"
+  },
+  "claim_status": "partial",
+  "remaining_risk": [
+    "The local forge is not yet bound to a GitHub branch.",
+    "The inherited Sigrun soul is a v0 seed and remains unratified.",
+    "Operator soul and spell contents are intentionally absent.",
+    "No runtime, independent held-out replay, ConsumerAck, upload, or gateway readback has occurred."
+  ],
+  "next_safe_action": "Bind this local checkpoint to a named candidate branch in the private Gen132 repository, read it back, then project only the Git pointer and HOLD state to the canonical Slack thread.",
+  "honest_flaw": "This event is a local authored observation, not an independent verifier receipt, and its transaction time is the file authoring time rather than an XTDB-issued system timestamp.",
+  "sealed": false
+}
