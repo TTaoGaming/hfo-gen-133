@@ -1,0 +1,45 @@
+{
+  "schema": "hfo.gen133.sigrun_correlated_review_receipt.v1",
+  "scope": "capsules/sigrun/v12 and reviews/sigrun/v12",
+  "review_class": "CORRELATED_INTERNAL_ZERO_INDEPENDENT_WEIGHT",
+  "independent_review_claim": false,
+  "privacy_review": {
+    "result": "PASS_AFTER_CACHE_REMOVAL",
+    "candidate_exact_value_leaks": 0,
+    "windows_absolute_paths": 0,
+    "file_uri_signatures": 0,
+    "credential_signatures": 0,
+    "source_body_violations": 0,
+    "opaque_receipt_rows": 183,
+    "opaque_receipt_field_violations": 0,
+    "slack_delivery_claim_violations": 0,
+    "note": "The final delta review found one file URI signature only inside generated Python bytecode. The cache was moved recoverably outside the public v12 tree; no source or public artifact bytes were destroyed."
+  },
+  "permaweb_review": {
+    "initial_result": "FAIL",
+    "initial_findings": [
+      "Proposed upload tags used unresolved Git placeholders.",
+      "Retrieval readback did not specify exact two-gateway evidence fields."
+    ],
+    "repairs": [
+      "Removed unresolved Git values from proposed tags and made exact Git commit, repository, and rights-review binding mandatory post-commit tags.",
+      "Added two-distinct-gateway exact-byte, content-type, status, hash, and cross-match readback requirements plus T+7 and T+30 checkpoints."
+    ],
+    "final_result": "PASS",
+    "root_bundle_bytes": 53326,
+    "root_bundle_sha256": "fe595c4298890cd93f07f14374f96f760f1d0fc972e4c72b2047c98be862a525",
+    "preupload_packet_bytes": 4498,
+    "preupload_packet_sha256": "2d131e217968dbbff65cb710815e6235e603e7e759af1460a875c66a486a9fae",
+    "upload_receipt": "ABSENT",
+    "retrieval_readback": "ABSENT",
+    "publication_claim": false
+  },
+  "effects": {
+    "network_write": false,
+    "slack_send": false,
+    "permaweb_upload": false,
+    "wallet_use": false
+  },
+  "result": "PASS_WITH_ZERO_INDEPENDENT_WEIGHT",
+  "next_gate": "Exact remote Git readback, distinct privacy-rights review, and explicit operator authorization are still required before any upload."
+}

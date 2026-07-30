@@ -1,0 +1,45 @@
+{
+  "schema_id": "hfo.gen133.sigrun.v12_permaweb_spec_refresh_receipt.v1",
+  "observed_utc": "2026-07-30T19:24:17Z",
+  "state": "PASS_ADVISORY_SPEC_REFRESH_NO_PUBLICATION_EFFECT",
+  "sources": [
+    {
+      "authority": "AR_IO_DOCUMENTATION",
+      "url": "https://docs.ar.io/build/upload",
+      "observed_fact": "Turbo documentation currently describes uploads under 100 KiB as free."
+    },
+    {
+      "authority": "AR_IO_DOCUMENTATION",
+      "url": "https://docs.ar.io/build/upload/tagging",
+      "observed_fact": "Content-Type is essential and a versioned App-Name is recommended."
+    },
+    {
+      "authority": "AR_IO_DOCUMENTATION",
+      "url": "https://docs.ar.io/build/upload/manifests",
+      "observed_fact": "Path manifests require the application/x.arweave-manifest+json transaction tag and arweave/paths version 0.2.0 JSON."
+    },
+    {
+      "authority": "AR_IO_DOCUMENTATION",
+      "url": "https://docs.ar.io/build/upload/receipts/",
+      "observed_fact": "Turbo receipts attest upload acceptance but do not replace independent retrieval and finality checks."
+    }
+  ],
+  "design_decision": {
+    "artifact_kind": "ONE_SELF_CONTAINED_JSON_ROOT_BUNDLE_NOT_PATH_MANIFEST",
+    "content_type": "application/json",
+    "strict_local_size_ceiling_bytes": 100000,
+    "service_eligibility_claim": "UNVERIFIED_UNTIL_EXECUTION",
+    "required_raw_receipt": true,
+    "required_two_gateway_exact_byte_readback": true
+  },
+  "claim_boundary": {
+    "web_documentation_is_mutable": true,
+    "size_eligibility_is_upload_acceptance": false,
+    "upload_acceptance_is_permanence": false,
+    "network_effect": "NONE"
+  },
+  "honest_flaw": "Current documentation can change and cannot establish a future service quote, upload acceptance, gateway delivery, finality, or durability.",
+  "falsifier": "A current primary-service response that rejects the frozen byte size or contradicts the documented content-type, receipt, or retrieval expectations.",
+  "next_safe_action": "Freeze the exact v12 root-bundle Git commit, blob, byte count, SHA-256, and HOLD tag packet before requesting one exact-byte operator authorization.",
+  "effect_ceiling": "T0_READ_ONLY_ADVISORY_RECEIPT"
+}

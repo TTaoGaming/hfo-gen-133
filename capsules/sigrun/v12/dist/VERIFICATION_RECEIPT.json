@@ -1,0 +1,245 @@
+{
+  "checks": [
+    {
+      "check": "schema_and_source_counts",
+      "evidence": {
+        "delta_count": 8,
+        "source_count": 183
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "v11_local_binding_and_full_prefix",
+      "evidence": {
+        "prior_rows": 175,
+        "private_prefix_preserved": true,
+        "public_prefix_preserved": true
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "candidate_packet_exact_binding",
+      "evidence": {
+        "bodies_opened": false,
+        "bytes": 9284,
+        "candidate_count": 8,
+        "sha256_match": true
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "candidate_collision_and_metadata_only_object_binding",
+      "evidence": {
+        "body_reads": 0,
+        "candidate_count": 8,
+        "collision_count": 0
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "ledger_delta_exact_and_quarantined",
+      "evidence": {
+        "delta_rows": 8,
+        "quarantine_count": 8
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "candidate_consumed_once_receipt",
+      "evidence": {
+        "body_reads": 0,
+        "state": "CONSUMED_EXACTLY_ONCE_DURING_INITIALIZATION"
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "public_record_allowlist_and_fail_closed",
+      "evidence": {
+        "allowed_keys": [
+          "body_embedding",
+          "disposition",
+          "opaque_receipt_id",
+          "visibility_class"
+        ],
+        "record_count": 183
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "opaque_id_format_uniqueness_and_generation_separation",
+      "evidence": {
+        "total": 183,
+        "unique": 183,
+        "v12_delta": 8
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "aggregate_heritage_receipts",
+      "evidence": {
+        "candidate_count": 8,
+        "coverage": "PARTIAL"
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "v11_exact_commit_blob_byte_bindings",
+      "evidence": {
+        "capsules/sigrun/v11/dist/CAPSULE_FAMILY_MANIFEST.json": {
+          "tree_matches": true,
+          "worktree_matches_tree": true
+        },
+        "capsules/sigrun/v11/dist/L_SAFE.view.md": {
+          "tree_matches": true,
+          "worktree_matches_tree": true
+        },
+        "capsules/sigrun/v11/dist/SOURCE_BINDING_RECEIPT.json": {
+          "tree_matches": true,
+          "worktree_matches_tree": true
+        },
+        "capsules/sigrun/v11/opaque_source_receipts.json": {
+          "tree_matches": true,
+          "worktree_matches_tree": true
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "one_time_overwrite_and_in_worktree_refusal",
+      "evidence": {
+        "in_worktree_refused": true,
+        "overwrite_refused": true
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "deterministic_repeated_build",
+      "evidence": {
+        "byte_hashes_equal": true,
+        "expected_file_set": true,
+        "file_count": 8
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "s_small_budget_and_self_hash",
+      "evidence": {
+        "budget": 4096,
+        "bytes": 2380
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "m_medium_budget_and_self_hash",
+      "evidence": {
+        "budget": 8192,
+        "bytes": 3240
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "l_safe_budget_and_self_hash",
+      "evidence": {
+        "budget": 32768,
+        "bytes": 22872
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "tier_hold_semantics",
+      "evidence": {
+        "tier_count": 3
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "tier_manifest_xl_and_source_bindings",
+      "evidence": {
+        "candidate_binding": true,
+        "tier_count": 3
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "successor_publication_hold",
+      "evidence": {
+        "publication_status": "NOT_UPLOADED_NO_ARWEAVE_CLAIM",
+        "successor_commit_bound": true
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "heritage_receipt_exact_public_binding",
+      "evidence": {
+        "bytes": 2333,
+        "sha256": "6baee9a7a82aada505a77e4a5a48436ba3953c26f5f979509fae060c409ed8c3"
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "root_bundle_self_contained_child_reproduction",
+      "evidence": {
+        "budget_exclusive": 100000,
+        "bytes": 53326,
+        "child_bytes_reproduced": true,
+        "record_count": 6
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "root_bundle_no_external_urls_or_mutable_refs",
+      "evidence": {
+        "external_url_hits": 0,
+        "mutable_ref_field_hits": 0
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "preupload_exact_root_binding_and_hold_gates",
+      "evidence": {
+        "receipt_status": "ABSENT",
+        "retrieval_status": "ABSENT",
+        "root_bytes": 53326,
+        "root_sha256": "fe595c4298890cd93f07f14374f96f760f1d0fc972e4c72b2047c98be862a525",
+        "tag_count": 23
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "protected_values_and_absolute_paths_absent",
+      "evidence": {
+        "absolute_path_hit_count": 0,
+        "protected_value_leak_count": 0,
+        "values_redacted": true
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "public_utf8_lf_canonical",
+      "evidence": {
+        "file_count": 19
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "verification_receipt_self_leak_guard",
+      "evidence": {
+        "leak_count": 0,
+        "values_redacted": true
+      },
+      "result": "PASS"
+    }
+  ],
+  "effect_ceiling": "T0_INTERNAL_ONLY",
+  "falsifier": "Any failed check, changed v11 prefix, protected mapping in public bytes, source-body access, nondeterministic rebuild, root-child mismatch, wallet material, upload command, or publication claim.",
+  "honest_flaw": "The verifier proves deterministic public-byte relations and absence of tested exact identifiers. Filename-guided discovery is incomplete, the local source commit is not current remote main, and no rights, identity, continuity, independent review, delivery, or publication is proven.",
+  "independent_review_status": "ABSENT",
+  "next_safe_action": "Obtain one distinct privacy-and-rights review of the eight-row v12 delta before any body access or publication authorization.",
+  "operator_ratification": "ABSENT",
+  "public_rights_review": "ABSENT",
+  "publication_status": "NOT_UPLOADED_NO_ARWEAVE_CLAIM",
+  "result": "PASS",
+  "schema_id": "hfo.gen133.sigrun_capsule_verification_receipt.v12",
+  "sealed": false,
+  "source_bodies": "WITHHELD"
+}
