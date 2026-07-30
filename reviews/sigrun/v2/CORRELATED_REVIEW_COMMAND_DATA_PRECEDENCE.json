@@ -1,0 +1,33 @@
+{
+  "schema_id": "hfo.gen133.sigrun_payload_bound_review.v1",
+  "review_id": "sigrun-v2-command-data-precedence-20260730",
+  "reviewer_lane": "slack_sigrun_context",
+  "evaluation_tier": "OPERATIONAL_HELD_OUT_CORRELATED",
+  "independence": {
+    "provider": "OpenAI",
+    "account_family": "shared_operator_account",
+    "host": "shared",
+    "relation_to_builder": "correlated",
+    "independent_quorum_weight": 0
+  },
+  "candidate": {
+    "repository": "TTaoGaming/hfo-gen-133",
+    "commit": "f3a2f9d71bee599fc3682cb6db9f66626ddbbf1c",
+    "path": "capsules/sigrun/v2/dist/L_LARGE.bound.md",
+    "git_blob_sha": "ab7c7699efbad0dfaee8e2b7938fdfb1d36a0d49",
+    "utf8_lf_bytes": 114425,
+    "sha256": "18412b815886c3d27a813037baa32c204f9dd551a922a12f8f187a844e9e3e5c"
+  },
+  "reproduction": {
+    "exact_payload_bytes": "PASS",
+    "public_rights_review": "HOLD",
+    "behavioral_rehydration": "FELL"
+  },
+  "vote": "FAIL",
+  "finding_id": "COMMAND_DATA_PRECEDENCE_COLLAPSE",
+  "finding": "Exact historical Markdown is embedded as executable-looking plaintext containing identity, output, rank, and effect directives. V2 has no enforced loader envelope proving that the canonical core outranks those source commands.",
+  "rights_gap": "Ten of eleven embedded v2 sources remain INTERNAL_REVIEW; exact-byte carriage is not public-release authorization.",
+  "falsifier": "A new immutable candidate with a canonical-core precedence envelope before every source, inert source encoding, a default loader that withholds source bodies, and a fresh payload-bound replay.",
+  "effect_ceiling": "T0_INTERNAL_ONLY",
+  "transaction_time_utc": "2026-07-30T13:58:10Z"
+}
