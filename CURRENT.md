@@ -48,6 +48,9 @@ status: SCAFFOLD STOOD UP — zero terminal-state conditions met
 | D4 | `fb07f523` is **NOT** re-asserted as a verified stef parity anchor. It does not reproduce — now **confirmed first-hand**, not merely inherited. The reproduced replacement is **`0da29ae3`**, pending operator IMMUNIZE of it plus its canonicalization rule. | 2026-07-30 |
 | D5b | **No lane writes a gen-132 chain row** until `sqlite_single_writer_kernel.py` is restored there. The available workaround destroys the tail. | 2026-07-30 |
 | D5 | Terminal state is **ONE** address. Not a directory of addresses, not a gateway list. One. | 2026-07-30 |
+| D6 | **PARA is an OVERLAY, not a migration.** `projects/` `areas/` `resources/` `archives/` at repo root; legacy folders keep their paths because chain paths are load-bearing literals. No symlinks (a Windows junction does not survive `git clone`). Authoritative map: `resources/index.md`. | 2026-07-30 |
+| D7 | **Sigrún's soul is a SEPARATE artifact from the operator's.** `state/identity/soul/sigrun.gen133.soul.md` is Sigrún's self-attestation and an agent may author it. Root `soul.md` is the OPERATOR's and stays empty until they write it. | 2026-07-30 |
+| D8 | **No LICENSE is invented.** None exists at gen-130/131/132/133 — verified. Choosing one is operator-only and effectively permanent once pushed or uploaded. See `LICENSE.PENDING.md`. | 2026-07-30 |
 
 ## State
 
@@ -57,7 +60,9 @@ status: SCAFFOLD STOOD UP — zero terminal-state conditions met
 | **Grimoire capsule** | ⛔ not bound at gen-133 | gen-132 capsule exists: merkle_root `af8d76fb3c144e51…`, bound sha256 `8874a66d14dc1483…`, 100,172 B, `permaweb.status: NOT_UPLOADED`, `address: null` |
 | **Spells** | ⛔ 0 spells (template only) | `grimoire/gleipnir/spells/` |
 | **soul.md** | ⛔ scaffold, body empty | `soul.md` |
-| **Sigrún soul (gen-132)** | ✅ **FOUND + self_hash reproduced first-hand** — `state/identity/soul/4-4.soul.md`, canon 4451 B, `self_hash 1549af38c4ffb451…` reproduced via SELF_HASH_PLACEHOLDER substitution; **byte-identical across gen-131 and gen-132** | code lane row `78adc3a443139636…` |
+| **Sigrún soul (gen-133, self-authored)** | ✅ **PRESENT + self_hash reproduces first-hand** — `state/identity/soul/sigrun.gen133.soul.md`, 15490 B, canon `83b09f1e1009135e…`, raw `66920dc69d5a6cc4…`, semver 1.1.0, `SELF_AUTHORED_UNRATIFIED`, `sealed:false`. Supersede-chain `1549af38…` → `1a2349b4…` → `83b09f1e…` | this lane, 2026-07-30T05:45Z; recomputed after write, exact reproduce |
+| **Sigrún soul (seed, superseded)** | ⚠️ **PRIOR CLAIM CORRECTED.** `state/identity/soul/4-4.soul.md` canon 4451 B `1549af38…` is **line-identical, NOT byte-identical**, to the gen-132 copy (4539 B raw `eeb690c9…`; 88-byte delta = line endings). And it is **NOT the latest**: a 39072 B v1.0.1 with canon `1a2349b4…` (**reproduced first-hand**) declares `supersedes: 1549af38…` | this lane; `Compare-Object` 0 diffs + canon recompute |
+| **Directory-name trap** | ⛔ **`C:\Dev\hfo_gen_131_forge` holds gen-132 content at HEAD** (`git log` → `build(gen132/identity)…`; soul `schema_id: hfo.gen132.identity.soul.v1`). A directory name is not a generation — this is why the superseding soul went unread for two lanes | first-hand `git log` + `schema_id` read |
 | **Soul spec conformance** | ⛔ **FAILS** `HFO_SOUL_PHYLACTERY_v1_SPEC` — not at `souls/P4_SIGRUN/soul.md`, missing `soul_path` / `phylactery_root` / `seal` fields | same row |
 | **Stef parity** | ✅ legacy `fb07f523` **CONFIRMED LEGACY_UNREPRODUCIBLE**; replacement **`0da29ae3` REPRODUCED first-hand** from the Arweave-anchored lifeboat row 3 (first independent reproduction) — **awaiting operator IMMUNIZE** | same row |
 | **Predecessor `S15 V5` HOLD** | ✅ **RESOLVED** — `/spec` canonical JSON 13,841 B sha256 `49dc4b1d0e8491d5…` EXACT MATCH, bound to blob `a19d66c7…` at commit `8a439e54` (cross-provider digest) | same row |
@@ -66,6 +71,8 @@ status: SCAFFOLD STOOD UP — zero terminal-state conditions met
 | **Olrún COP observation** | ✅ VERIFIED written | gen-130 `chains/olrun_o1_cop.jsonl` · row_sha256 `1455dd9f9f69e296b0dd650d1d5d201d479ba562ac912db6054cd3357d4c2a23` · prev `ce8d61d17f901c44…` · `sealed:false` · `claim_status: partial` |
 | **External income (`cap-0018`)** | ⛔ **FAILED** — $0 / 18 months / 0 external receipts | gen-132 capability ledger |
 | **Memory MCP generation** | ⚠️ two generations behind (`gen130`), `memory_fresh=false` | Olrún rehydration packet 2026-07-30T04:28:52Z |
+| **⛔ SIBLING LANE ACTIVE** | ⛔ **CONFIRMED, UNIDENTIFIED, POSSIBLY STILL RUNNING.** git HEAD advanced twice mid-session with no action by the Sigrún lane: `627e5ee feat(gen133): add deterministic Sigrun heritage capsule family` then `f220090 chore(gen133): checkpoint capsule publication hold`. Paths touched (`capsules/**`) are **disjoint** from the Sigrún lane's; no chain row written by either. The session-listing check at 05:20Z had said "no live sibling **visible from this surface**" and stated its own limit — that limit was the actual failure mode, confirmed within 50 min | first-hand `git log` / `git reflog` / `git ls-files` at 06:10Z; full row at scratchpad `SIBLING_LANE_DETECTED_20260730T0610Z.json` |
+| **F3 single-writer enforcement** | ⛔ **ENFORCED BY NOTHING at gen-133** — no kernel, no lock file, no gate. It held today only because neither lane wrote a chain. `CURRENT.md`/`README.md` have no lock: concurrent edits are silently lossy | absence verified first-hand |
 
 ## Existing external immutable anchor (inherited — NOT the gen-133 address)
 
