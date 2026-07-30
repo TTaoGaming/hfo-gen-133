@@ -15,7 +15,7 @@ supplemental_to:
 canonical_repo: TTaoGaming/hfo-gen-133
 canonical_branch_observed: agent/gen133-bootstrap-20260730
 base_commit_observed: 1fa3555e19c6aacfd91e6d018e333ba9519cd66b
-slack_projection: PENDING
+slack_projection: https://hfonetwork.slack.com/archives/C0BGNGPJFHU/p1785423696079689
 ---
 
 # Reginleif — ChatGPT Cloud transition handoff
