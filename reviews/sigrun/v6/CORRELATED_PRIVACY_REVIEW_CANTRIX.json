@@ -1,0 +1,48 @@
+{
+  "schema_id": "hfo.gen133.sigrun_correlated_privacy_review.v1",
+  "candidate": {
+    "repository": "TTaoGaming/hive-fleet-obsidian-gen-132",
+    "source_ref": "refs/heads/agent/olrun-local-gate-selftest",
+    "commit": "37b8dbb698475e039b721821f222353e119751ea",
+    "path": "canon/process/HFO_CANTRIX_SONGLINE_PHEROMONE_DUAL_REGISTER_V0_1_20260726T231540Z.md",
+    "git_blob_sha1": "bc1034574ccb527b09702b875f6b79b6d4146dea",
+    "bytes": 9070,
+    "sha256": "dcf618694e5879b978c0ba1af0b7f9231bb58bfa4e38b3139b4017c824815454"
+  },
+  "reviewer": {
+    "role": "correlated_non_author_privacy_review",
+    "provider_family": "OpenAI",
+    "host": "shared",
+    "independent_quorum_weight": 0
+  },
+  "binding_checks": {
+    "commit_path_blob": "PASS",
+    "byte_count": "PASS",
+    "sha256": "PASS"
+  },
+  "findings": {
+    "common_secret_or_pii_patterns": 0,
+    "raw_finance_property_medical_account_credential_or_contact_data": "NOT_OBSERVED",
+    "operational_context_present": [
+      "repository namespace",
+      "schema and document identifiers",
+      "pseudonymous roles",
+      "operator phrase",
+      "fixed routine schedule"
+    ],
+    "rights_assertion": "ABSENT",
+    "independent_sigrun_authorship_or_approval": "ABSENT"
+  },
+  "vote": "ABSTAIN",
+  "result": "ABSTAIN_CORRELATED_POINTER_METADATA_SAFE",
+  "admission": {
+    "pointer_metadata": "ALLOW_T0_INTERNAL",
+    "body_embedding": "PROHIBITED",
+    "rights_status": "UNKNOWN"
+  },
+  "honest_flaw": "This is a same-provider shared-host heuristic review, not legal review or independent quorum evidence.",
+  "falsifier": "Any sensitive value in the exact blob, inclusion of body excerpts or schedules in v6, or a distinct payload-bound reviewer finding a rights or privacy conflict.",
+  "next_safe_action": "Keep the exact body withheld and route only the bound pointer to a distinct reviewer.",
+  "effect_ceiling": "T0_INTERNAL_ONLY",
+  "transaction_time_utc": "2026-07-30T14:55:00Z"
+}
