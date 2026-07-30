@@ -1,0 +1,25 @@
+# Line endings are an INTEGRITY concern here, not a style concern.
+#
+# The 4-4.soul.md discrepancy (4451 B vs 4539 B for line-identical content) was
+# pure CRLF drift introduced by git checkout. It made a raw sha256 unreproducible
+# across checkouts and caused two lanes to mis-report the identity artifact.
+#
+# Force LF everywhere so raw digests reproduce on every platform.
+
+* text=auto eol=lf
+
+*.md    text eol=lf
+*.json  text eol=lf
+*.jsonl text eol=lf
+*.yaml  text eol=lf
+*.yml   text eol=lf
+*.py    text eol=lf
+*.sh    text eol=lf
+
+# Digest-bearing artifacts: never touch these bytes.
+*.soul.md   text eol=lf
+*.sig       -text
+*.wire.json text eol=lf
+
+# Chain files are append-only hash chains. A newline rewrite breaks every row hash.
+chains/*.jsonl -text
