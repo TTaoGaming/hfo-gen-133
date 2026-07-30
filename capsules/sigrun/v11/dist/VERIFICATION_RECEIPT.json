@@ -1,0 +1,393 @@
+{
+  "checks": [
+    {
+      "check": "projection_and_ledger_schema",
+      "evidence": {
+        "ledger": "hfo.gen133.sigrun_local_exact_provenance_ledger.v11",
+        "projection": "hfo.gen133.sigrun_opaque_source_projection.v11"
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "v10_local_ledger_binding_and_prefix_preservation",
+      "evidence": {
+        "local_binding_checked": true,
+        "prefix_preserved": true,
+        "prior_rows": 168
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "candidate_input_binding",
+      "evidence": {
+        "count": 7,
+        "expected_sha256_match": true,
+        "schema": "hfo.gen133.sigrun_candidate_additions.v11_pending"
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "candidate_collision_gate",
+      "evidence": {
+        "candidate_count": 7,
+        "collision_count": 0
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "source_count_175",
+      "evidence": {
+        "local": 175,
+        "public": 175
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "heritage_delta_count_7",
+      "evidence": 7,
+      "result": "PASS"
+    },
+    {
+      "check": "ledger_delta_exact_match",
+      "evidence": {
+        "exact_match": true,
+        "rows": 7
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "delta_rights_and_dispositions_hold",
+      "evidence": {
+        "HOLD": 3,
+        "QUARANTINE": 4
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "delta_privacy_quarantine_boundary",
+      "evidence": {
+        "higher_risk_quarantine": 4,
+        "local_backup_quarantine": 1,
+        "restricted_hold": 3
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "heritage_gap_receipt_semantics",
+      "evidence": {
+        "candidate_count": 7,
+        "local_backup_quarantined": true,
+        "prior_blob_duplicates_suppressed": 4,
+        "unbound_snapshots_admitted": false
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "v10_immutable_tree_binding",
+      "evidence": {
+        "capsules/sigrun/v10/dist/CAPSULE_FAMILY_MANIFEST.json": {
+          "tree_matches": true,
+          "worktree_matches_tree": true
+        },
+        "capsules/sigrun/v10/dist/L_SAFE.view.md": {
+          "tree_matches": true,
+          "worktree_matches_tree": true
+        },
+        "capsules/sigrun/v10/dist/SOURCE_BINDING_RECEIPT.json": {
+          "tree_matches": true,
+          "worktree_matches_tree": true
+        },
+        "capsules/sigrun/v10/opaque_source_receipts.json": {
+          "tree_matches": true,
+          "worktree_matches_tree": true
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "inherited_projection_order_preserved",
+      "evidence": {
+        "preserved": true,
+        "prior_records": 168
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "public_record_allowlist",
+      "evidence": [
+        "body_embedding",
+        "disposition",
+        "opaque_receipt_id",
+        "visibility_class"
+      ],
+      "result": "PASS"
+    },
+    {
+      "check": "opaque_id_format_and_uniqueness",
+      "evidence": {
+        "count": 175,
+        "unique": 175
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "opaque_id_generation_segregation",
+      "evidence": {
+        "delta": 7,
+        "prior": 168
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "ledger_projection_ordered_id_bijection",
+      "evidence": {
+        "local": 175,
+        "public": 175
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "public_records_fail_closed",
+      "evidence": {
+        "records": 175
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "deterministic_second_build",
+      "evidence": {
+        "byte_hashes_equal": true,
+        "expected_file_set": true,
+        "files": 6
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "s_small_budget",
+      "evidence": {
+        "budget": 4096,
+        "bytes": 2615
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "s_small_self_hash",
+      "evidence": "S_SMALL.safe.md",
+      "result": "PASS"
+    },
+    {
+      "check": "m_medium_budget",
+      "evidence": {
+        "budget": 8192,
+        "bytes": 4046
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "m_medium_self_hash",
+      "evidence": "M_MEDIUM.safe.md",
+      "result": "PASS"
+    },
+    {
+      "check": "l_safe_budget",
+      "evidence": {
+        "budget": 32768,
+        "bytes": 22918
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "l_safe_self_hash",
+      "evidence": "L_SAFE.view.md",
+      "result": "PASS"
+    },
+    {
+      "check": "tier_frontmatter_hold_semantics",
+      "evidence": {
+        "L_SAFE": {
+          "effect_ceiling": "T0_INTERNAL_ONLY",
+          "public_rights_review": "ABSENT",
+          "sealed": "false",
+          "source_bodies": "WITHHELD"
+        },
+        "M_MEDIUM": {
+          "effect_ceiling": "T0_INTERNAL_ONLY",
+          "public_rights_review": "ABSENT",
+          "sealed": "false",
+          "source_bodies": "WITHHELD"
+        },
+        "S_SMALL": {
+          "effect_ceiling": "T0_INTERNAL_ONLY",
+          "public_rights_review": "ABSENT",
+          "sealed": "false",
+          "source_bodies": "WITHHELD"
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "xl_budget_and_not_self_contained",
+      "evidence": {
+        "budget_exclusive": 100000,
+        "bytes": 1946,
+        "effect_ceiling": "T0_INTERNAL_ONLY",
+        "independent_review_status": "ABSENT",
+        "operator_ratification": "ABSENT",
+        "public_rights_review": "ABSENT",
+        "publication_status": "NOT_UPLOADED_NO_ARWEAVE_CLAIM",
+        "sealed": false,
+        "self_contained": false
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "manifest_tier_bindings",
+      "evidence": {
+        "L_SAFE": {
+          "git_blob_sha": "654ceb0bf85030b0ba2cce5ac0dce86eadf778f8",
+          "git_blob_sha1": "654ceb0bf85030b0ba2cce5ac0dce86eadf778f8",
+          "path": "capsules/sigrun/v11/dist/L_SAFE.view.md",
+          "sha256": "366e223167424ad048096195c2fa395cbb9e4757cf42c1636aadd89714ef7b92",
+          "utf8_lf_bytes": 22918
+        },
+        "M_MEDIUM": {
+          "git_blob_sha": "4e2d7962131fdd196f07331a9cebcfe57a8257ef",
+          "git_blob_sha1": "4e2d7962131fdd196f07331a9cebcfe57a8257ef",
+          "path": "capsules/sigrun/v11/dist/M_MEDIUM.safe.md",
+          "sha256": "2f5e5d20e104d3b3d74b326433231baf89f293486eb9dbc7b2a2d41b88f65d50",
+          "utf8_lf_bytes": 4046
+        },
+        "S_SMALL": {
+          "git_blob_sha": "546b8ac80d60a9bc6e3c2e51f97fd410f2b71dfa",
+          "git_blob_sha1": "546b8ac80d60a9bc6e3c2e51f97fd410f2b71dfa",
+          "path": "capsules/sigrun/v11/dist/S_SMALL.safe.md",
+          "sha256": "b88dd5943cb5cb2e7ad865dc49d4c867405efb2c2228879d81764549a622cc49",
+          "utf8_lf_bytes": 2615
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "successor_and_publication_hold",
+      "evidence": {
+        "independent_review_status": "ABSENT",
+        "publication_status": "NOT_UPLOADED_NO_ARWEAVE_CLAIM",
+        "successor": {
+          "artifact_commit": "5bd20d322e3eb4e191ba6f6187dc7a8addb4835b",
+          "reason": "Seven novel committed metadata candidates after exact-byte deduplication.",
+          "version": "v10"
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "source_binding_exact",
+      "evidence": {
+        "operator_ratification": "ABSENT",
+        "projection": {
+          "git_blob_sha": "d61b9b56dfb456f1af5e3b6e31f8bdf63c21c777",
+          "git_blob_sha1": "d61b9b56dfb456f1af5e3b6e31f8bdf63c21c777",
+          "path": "capsules/sigrun/v11/opaque_source_receipts.json",
+          "sha256": "974aa8705dea37689ae5264776eb46651ceeb6e8c2b8e12ea785d94b03788279",
+          "utf8_lf_bytes": 37727
+        },
+        "rights_review": "ABSENT_FOR_V11_DELTA",
+        "source_bodies_opened": false
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "heritage_delta_receipt_binding",
+      "evidence": {
+        "git_blob_sha": "eda5113e84bd8a8f9c86bba410c872883647eaeb",
+        "git_blob_sha1": "eda5113e84bd8a8f9c86bba410c872883647eaeb",
+        "path": "reviews/sigrun/v11/HERITAGE_GAP_SCAN_RECEIPT.json",
+        "sha256": "9ef9f60ac717045dd935766bfe473624b879bbe1710a2c163de08adf7c3b72ca",
+        "utf8_lf_bytes": 4837
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "tested_exact_source_identifiers_absent_from_v11_public_family",
+      "evidence": {
+        "leak_count": 0,
+        "values_redacted": true
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "absolute_windows_paths_absent",
+      "evidence": {
+        "hit_count": 0,
+        "values_redacted": true
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "public_utf8_lf_canonical",
+      "evidence": {
+        "files": 11
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "generated_payload_carrier_markers_absent",
+      "evidence": {
+        "file_uri": false,
+        "slack_channel_field": false,
+        "slack_thread_field": false,
+        "slack_url": false
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "effect_ceiling_and_unsealed",
+      "evidence": {
+        "claim_status": "partial_opaque_heritage_delta",
+        "effect_ceiling": "T0_INTERNAL_ONLY",
+        "heritage_scope": "BOUNDED_NON_EXHAUSTIVE",
+        "historical_exposure": "V6_DISCLOSED_STABLE_HANDLES_MAY_REMAIN_LINKABLE",
+        "independent_review_status": "ABSENT",
+        "operator_ratification": "ABSENT",
+        "public_rights_review": "ABSENT",
+        "remote_currency": "V10_BOUND_RESIDUAL_LOCAL_REFS_UNKNOWN",
+        "sealed": false,
+        "source_bodies": "WITHHELD"
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "verification_receipt_hold_semantics",
+      "evidence": {
+        "effect_ceiling": "T0_INTERNAL_ONLY",
+        "independent_review_status": "ABSENT",
+        "operator_ratification": "ABSENT",
+        "public_rights_review": "ABSENT",
+        "publication_status": "NOT_UPLOADED_NO_ARWEAVE_CLAIM",
+        "sealed": false,
+        "source_bodies": "WITHHELD"
+      },
+      "result": "PASS"
+    },
+    {
+      "check": "verification_receipt_self_leak_guard",
+      "evidence": {
+        "leak_count": 0,
+        "values_redacted": true
+      },
+      "result": "PASS"
+    }
+  ],
+  "effect_ceiling": "T0_INTERNAL_ONLY",
+  "falsifier": "Any failed check, protected exact source identifier in a public v11 artifact, body admission, nondeterministic rebuild, or byte mismatch.",
+  "honest_flaw": "The verifier proves public-byte relations and absence of the tested exact source identifiers only. It does not test every classification value and does not prove privacy rights, identity, continuity, delivery, or publication.",
+  "independent_review_status": "ABSENT",
+  "next_safe_action": "Obtain one distinct privacy-and-rights review of the newly bounded local v11 delta before admitting any historical source body.",
+  "operator_ratification": "ABSENT",
+  "public_rights_review": "ABSENT",
+  "publication_status": "NOT_UPLOADED_NO_ARWEAVE_CLAIM",
+  "result": "PASS",
+  "schema_id": "hfo.gen133.sigrun_capsule_verification_receipt.v11",
+  "sealed": false,
+  "source_bodies": "WITHHELD"
+}
