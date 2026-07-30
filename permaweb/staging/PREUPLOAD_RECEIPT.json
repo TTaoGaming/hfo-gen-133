@@ -1,0 +1,43 @@
+{
+  "schema_id": "hfo.gen133.permaweb.preupload_receipt.v0_1",
+  "valid_time": "2026-07-30T05:52:06Z",
+  "transaction_time": "2026-07-30T05:52:06Z",
+  "candidate_path": "permaweb/staging/GEN133_PREUPLOAD_CANDIDATE.json",
+  "candidate_bytes": 3941,
+  "candidate_sha256": "9c32680cd1f8d63f003525da0149cee72be25b47ef86137ca86a28e525ebeefc",
+  "threshold_contract": {
+    "comparison": "candidate_bytes < 100000",
+    "result": "PASS",
+    "margin_bytes": 96059,
+    "service_policy_live_verified": false
+  },
+  "checks": {
+    "json_parse": "PASS",
+    "git_diff_check": "PASS",
+    "secret_scan": {
+      "result": "PASS_WITH_BENIGN_CONTEXT_HIT",
+      "reviewed_hits": [
+        {
+          "line": 75,
+          "term": "address",
+          "classification": "architectural prose, not a personal or payment address"
+        }
+      ]
+    },
+    "distinct_privacy_review": "PENDING",
+    "held_out_verifier": "PENDING",
+    "consumer_ack": "PENDING",
+    "operator_upload_authorization": "PENDING",
+    "upload_receipt": "ABSENT",
+    "gateway_readback": "ABSENT",
+    "arns_binding": "ABSENT"
+  },
+  "claim_status": "partial",
+  "verifier_result": "SELF_PREFLIGHT_PASS_DISTINCT_REVIEW_PENDING",
+  "publication_status": "HOLD_NOT_AUTHORIZED_NOT_UPLOADED",
+  "falsifier": "A recomputed byte count or SHA-256 mismatch, a non-benign public-safety finding, missing authorization, or any upload/readback mismatch.",
+  "next_safe_action": "A distinct non-author reviewer verifies the exact 3941-byte candidate and returns PASS, FAIL, or ABSTAIN.",
+  "honest_flaw": "The same carrier authored and checked the candidate. The threshold arithmetic is proven locally, but current provider policy, upload availability, authorship, public safety, and durability are not.",
+  "effect_ceiling": "NO_UPLOAD_NO_DEPLOY_NO_SPEND_NO_CREDENTIALS",
+  "sealed": false
+}
