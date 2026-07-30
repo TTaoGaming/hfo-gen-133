@@ -1,0 +1,47 @@
+{
+  "schema_id": "hfo.gen133.sigrun.v11_loop_and_slack_gate_receipt.v1",
+  "observed_utc": "2026-07-30T18:57:56Z",
+  "state": "PASS_SINGLE_LOOP_ACTIVE_SLACK_HOLD",
+  "automation": {
+    "id": "sigrun-gen133-anti-cpr-heritage-and-delivery-loop",
+    "kind": "heartbeat",
+    "status": "ACTIVE",
+    "cadence": "HOURLY",
+    "destination": "CURRENT_THREAD",
+    "notification_policy": "FAILED_RUNS_ONLY",
+    "matching_registry_entries": 1,
+    "observed_baseline_commit": "0a701452880e94d3496a5c24b4353e27d61ae3a5",
+    "observed_artifact_commit": "35bb33162f58ee3c2a43e00c33a40a8f5666dddf",
+    "config_bytes": 4759,
+    "config_sha256": "b5f6159983853255e8a11f558ad18e1481eaa48f7256bd24730968b0a53e8277",
+    "wip_limit": 1,
+    "unchanged_evidence_effect": "NO_MUTATION_STOP",
+    "duplicate_schedule_created": false
+  },
+  "slack_gate": {
+    "workspace_alias": "hfo",
+    "canonical_channel_id": "C0BGC646A1H",
+    "canonical_thread_ts": "1785073442.724479",
+    "last_authenticated_draft_observation": "NONEMPTY_2059_CHARACTERS_UNKNOWN_OWNER",
+    "current_draft_state": "UNKNOWN_NO_FRESH_READ_CAPABILITY",
+    "sender_capability": "UNKNOWN_NOT_CALLABLE_CURRENT_WAKE",
+    "exact_thread_readback_capability": "UNKNOWN_NOT_CALLABLE_CURRENT_WAKE",
+    "pheromone_renderer_is_sender": false,
+    "message_sent": false,
+    "draft_inspected": false,
+    "draft_mutated": false,
+    "delivery_claim": "NOT_MADE"
+  },
+  "claim_boundary": {
+    "schedule_configuration_is_execution": false,
+    "heartbeat_activity_is_progress": false,
+    "slack_projection_is_git_authority": false,
+    "identity_continuity": "UNPROVEN",
+    "independent_review": "ABSENT",
+    "publication": "NOT_UPLOADED_NO_ARWEAVE_CLAIM"
+  },
+  "honest_flaw": "The hourly heartbeat is configured, but configuration does not prove a successful future tick; Slack delivery is held because neither a current zero-draft readback nor a callable sender-plus-readback pair is available in this wake.",
+  "falsifier": "A missing or duplicate registry entry, inactive or non-hourly configuration, baseline drift, a fresh exact zero-draft readback, or a callable sender-plus-exact-readback pair.",
+  "next_safe_action": "Commit and remotely read back this receipt, then advance the same automation baseline to the containing commit without creating another schedule.",
+  "effect_ceiling": "T0_LOCAL_AUTOMATION_CONFIG_AND_GIT_RECEIPT_ONLY"
+}
