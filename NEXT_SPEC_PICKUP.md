@@ -22,6 +22,26 @@ a 134-pointer index. All on a fresh sibling branch, local commits only.
 
 **Nothing is built. 0 of 134 pointers is `LANDED` as a result of this lane.**
 
+## Addendum — second half of session (operator deltas folded in)
+
+Landed after the first two commits: **3 adapter contracts** (chatgpt_cloud,
+codex, free_mesh — the parallel sonnet-5 builder lane's targets) ·
+`contracts/olrun_pilot.contract.md` · `FRONTMATTER_v3_SPEC.md` ·
+`PDCA_AGENT_SKILLS.md` · `OLRUN_ACTIVATION.md` ·
+`CODEX_SIBLING_RECONCILIATION.md` ·
+`projects/experiments/chatgpt_cloud_15x_soak.md` ·
+`parking_lot/apex_sonnet5_naming.md`. Corrections applied: Gunnr apex→valkyrie ·
+capsules 3 sizes→4 (`S`/`M`/`L`/`XL`) · real substrate roster · apex tier closes
+at 8 · new blocker **B5 surtr STUCK**.
+
+**For the parallel builder lane:** build against
+`contracts/{chatgpt_cloud,codex,free_mesh}_adapter.contract.md`. Do **not**
+re-spec the six live Codex scheduled tasks; reference them.
+
+**For the parallel apex-wake lane:** the capsule schema is locked at spec §6.1 /
+§6.1.1. Write to `capsules/apex/<callsign>/{S,M,L,XL}.json`. **At most 20 of 32
+are buildable today** — A3 `TBD_APEX_SONNET5` is unnamed and A8 `surtr` is stuck.
+
 ## ⭐ THE ONE NEXT SAFE ACTION
 
 > **Write `state/roster/ROSTER.json`.**

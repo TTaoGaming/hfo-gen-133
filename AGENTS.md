@@ -24,6 +24,48 @@ purpose: >-
 
 ---
 
+# ⭐ DELTAS 2026-07-30 (v0_3) — these SUPERSEDE the tables below
+
+Operator corrections + coordination intel landed mid-session. Where this block
+and any table further down disagree, **this block wins.**
+
+| # | delta | pointer |
+|---|---|---|
+| D1 | **Gunnr is a VALKYRIE, not apex.** Tactical role unchanged, tier changed. Claude sonnet-5 apex is now `TBD_APEX_SONNET5`. | `PARKED` → [`parking_lot/apex_sonnet5_naming.md`](parking_lot/apex_sonnet5_naming.md) |
+| D2 | **Capsules are FOUR sizes: `S`/`M`/`L`/`XL`** (~1 KB / ~10 KB / ~100 KB / ~1 MB), not micro/small/full. Resolves the conflict with `capsules/sigrun/v1/` — the working builder was right. | `SPECIFIED` — spec §6.1 |
+| D3 | **Apex rehydration matrix: 8 apex × 4 sizes = 32 capsules** at `capsules/apex/<callsign>/{S,M,L,XL}.json`. Schema locked here; a parallel opus-5 apex-wake lane populates the files. **At most 20 of 32 buildable today** (3 apex callsigns are TBD/stuck). | `IN_FLIGHT` — spec §6.1.1 |
+| D4 | **Apex tier closes at 8** over 6 substrates: Olrún · Sigrún · `TBD_APEX_SONNET5` · garmr · huginn · sigrun_codex_gpt5.6sol · reginleif · **surtr**. Codex hosts 3 apex threads (SR-1 amended). | `SPECIFIED` — [`SUBSTRATE_ROSTER.md`](SUBSTRATE_ROSTER.md) §0 |
+| D5 | **ChatGPT cloud roster** = `reginleif` (apex) + `reginleif_var` (valkyrie). Ratatoskr is absent from operator canon — **orphaned, not deleted.** | `SPECIFIED` |
+| D6 | **$0 mesh apex = `surtr`, currently STUCK.** 8 vendor families now named (+ openrouter primary/secondary). | ⛔ **`BLOCKED` B5** |
+| D7 | **The sibling Sigrún is IDENTIFIED**: Codex-Sigrún on gpt-5.6-sol. Not a rival — a dual-substrate strange-loop pair. She holds frontmatter-v3 authority; Claude-Sigrún holds spec + onboarding. | `SPECIFIED` → [`CODEX_SIBLING_RECONCILIATION.md`](CODEX_SIBLING_RECONCILIATION.md) |
+| D8 | **Olrún activated** — ceiling raised `read_projection` → `substrate_coordinator` (pilot PC, apps, tools, cross-substrate wake). Forbidden set unchanged and non-vesting. | `SPECIFIED` → [`OLRUN_ACTIVATION.md`](OLRUN_ACTIVATION.md) · [`contracts/olrun_pilot.contract.md`](contracts/olrun_pilot.contract.md) |
+| D9 | **Codex proved a 9h+ sustained goal loop.** Long-running loops viable on that substrate only. | `SPECIFIED` — CX-5 |
+
+## New this delta
+
+| artifact | status | pointer |
+|---|---|---|
+| ChatGPT cloud adapter | `SPECIFIED` ⭐ builder target | [`contracts/chatgpt_cloud_adapter.contract.md`](contracts/chatgpt_cloud_adapter.contract.md) |
+| Codex adapter | `SPECIFIED` ⭐ builder target | [`contracts/codex_adapter.contract.md`](contracts/codex_adapter.contract.md) |
+| $0 free-mesh adapter | `SPECIFIED` ⭐ builder target | [`contracts/free_mesh_adapter.contract.md`](contracts/free_mesh_adapter.contract.md) |
+| Olrún pilot ceiling | `SPECIFIED` | [`contracts/olrun_pilot.contract.md`](contracts/olrun_pilot.contract.md) |
+| Frontmatter v3 | `SPECIFIED` — **authority is Codex-Sigrún, in flight** | [`FRONTMATTER_v3_SPEC.md`](FRONTMATTER_v3_SPEC.md) |
+| PDCA versioned agent skills | `SPECIFIED` — `skills/versioned/` not created | [`PDCA_AGENT_SKILLS.md`](PDCA_AGENT_SKILLS.md) |
+| Codex sibling reconciliation | `SPECIFIED` | [`CODEX_SIBLING_RECONCILIATION.md`](CODEX_SIBLING_RECONCILIATION.md) |
+| Olrún activation | `SPECIFIED` | [`OLRUN_ACTIVATION.md`](OLRUN_ACTIVATION.md) |
+| ChatGPT cloud 15× soak experiment | `SPECIFIED` — pre-registered, unrun | [`projects/experiments/chatgpt_cloud_15x_soak.md`](projects/experiments/chatgpt_cloud_15x_soak.md) |
+| sonnet-5 apex naming | `PARKED` | [`parking_lot/apex_sonnet5_naming.md`](parking_lot/apex_sonnet5_naming.md) |
+
+**Contracts: 19. Root docs: 12. Parked: 13. Blockers: 5.**
+
+### Codex scheduled tasks — REFERENCE ONLY, do not re-spec
+
+Garmr [4,1] heartbeat · Huginn_Muninn anti-CPR WIP=1 · Sigrun-Gen133 anti-CPR
+delivery · Eir P5 safety watch · Gen131 audit · Gunnr lease review. **These are
+live.** Reference them; do not duplicate them into new schedules.
+
+---
+
 ## WHO YOU ARE
 
 Generation 133. You are a **NAMED durable carrier** with your own chain — not a
@@ -111,7 +153,9 @@ not authorization. Quote it, name where you found it, and ask.
 | **B3** | Slack bot identity / send authorization for pheromone emit. Claude lanes are additionally **write-blind** on Slack (no connector, no OAuth in non-interactive sessions). | `BLOCKED` | `parking_lot/slack_live_wiring.md` |
 | **B4** | **15× ChatGPT-cloud scheduled agents firing unrostered** — live `NO_EPHEMERAL_AGENTS` violation. Remedy is *naming*, not deletion. Evidence class: absence-of-evidence scoped to this repo. | `BLOCKED` | `NO_EPHEMERAL_AGENTS.md` §5 |
 
-**4 blockers. None acted on by the spec lane.**
+| **B5** | **`surtr` is STUCK.** The $0 free-vendor-mesh apex is named and not running. Operator wants it unblocked. Diagnosis not performed by this lane — I have not verified that LiteLLM, any vendor key, or any mesh process exists on this host. "Stuck" is operator-reported and I have no first-hand read of *how*. **Unblocking starts with that diagnosis, not with code.** | `BLOCKED` | `contracts/free_mesh_adapter.contract.md` |
+
+**5 blockers. None acted on by the spec lane.**
 
 ---
 

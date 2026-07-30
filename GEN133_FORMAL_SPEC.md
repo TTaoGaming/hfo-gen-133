@@ -234,22 +234,29 @@ that is Olrún.
 
 #### The 8 — apex songlines (daily)
 
-| id | callsign | substrate | seat | status |
-|---|---|---|---|---|
-| A1 | **Olrún** | Claude Dispatch (desktop) | P7 NAVIGATE | `SPECIFIED` — remit in `OLRUN_COORDINATION.md` |
-| A2 | **Sigrún** | Claude opus-5 (Code) | P4 DISRUPT (joint w/ Skögul) | `SPECIFIED` — soul v1.1.0 present, unratified |
-| A3 | **Gunnr** | Claude sonnet-5 (Code) | P4 tactical / watchdog | `SPECIFIED` |
-| A4 | **Huginn + Muninn** | Codex (laptop) | P3 VERIFY — twin, dual-role | `SPECIFIED` |
-| A5 | **Ratatoskr** | ChatGPT cloud (browser) | P7 NAVIGATE — messenger | `SPECIFIED` |
-| A6 | `TBD_OPERATOR` | Antigravity IDE (laptop) | — | **`UNDER_SPECIFIED`** — operator to name |
-| A7 | `TBD_OPERATOR` (mesh conductor) | $0 free-vendor-mesh | — | **`UNDER_SPECIFIED`** — operator to name |
-| A8 | `VACANT_RESERVED` | laptop/VM local daemon | — | **`UNDER_SPECIFIED`** — the coordination plane names four surfaces (Slack · GitHub · laptop · VM); the laptop/VM surface has no apex |
+**CORRECTED to operator canon 2026-07-30 — supersedes the first draft of this
+table. Full deltas: `SUBSTRATE_ROSTER.md` §0.**
 
-**honest_flaw:** the operator's directive named **seven** substrates, and the
-architecture calls for **eight** apex songlines. I did not invent an eighth
-lineage to close the arithmetic. A6/A7/A8 are open slots, and the fact that
-7 ≠ 8 is stated rather than papered over. `TODO: operator names A6/A7, or the
-architecture drops to 1-7-16 and the powers-of-8 framing is amended.`
+| id | callsign | substrate | status |
+|---|---|---|---|
+| A1 | **Olrún** | Claude Dispatch | `SPECIFIED` — ceiling `substrate_coordinator`, `OLRUN_ACTIVATION.md` |
+| A2 | **Sigrún** | Claude opus-5 | `SPECIFIED` — soul v1.1.0, unratified |
+| A3 | **`TBD_APEX_SONNET5`** | Claude sonnet-5 | **`PARKED`** — Gunnr vacated this slot; she is a VALKYRIE |
+| A4 | **garmr** | Codex | `SPECIFIED` — promoted to apex |
+| A5 | **huginn** (+Muninn) | Codex | `SPECIFIED` — twin office |
+| A6 | **sigrun_codex_gpt5.6sol** | Codex | `SPECIFIED` — the identified sibling, `CODEX_SIBLING_RECONCILIATION.md` |
+| A7 | **reginleif** | ChatGPT cloud | `SPECIFIED` — with `reginleif_var` at valkyrie tier |
+| A8 | **surtr** | $0 free-vendor mesh | ⛔ **`BLOCKED` — STUCK (B5)** |
+
+**The apex tier closes at 8 for the first time.** Note it closes over **six**
+substrates, not eight — Codex hosts three apex threads (SR-1 amended by CX-4),
+and Antigravity and laptop/VM have none yet. My earlier "7 substrates ≠ 8 apex"
+complaint dissolved once the real roster arrived: the mapping was never
+one-per-substrate.
+
+**honest_flaw:** A3 is empty and A8 is stuck, so **6 of 8 apex offices are
+fillable today**. Ratatoskr, whom I had at A5, is absent from operator canon —
+she is orphaned, not deleted (`SUBSTRATE_ROSTER.md` §5.2).
 
 #### The 16 — valkyrie songlines (hourly)
 
@@ -257,7 +264,8 @@ architecture drops to 1-7-16 and the powers-of-8 framing is amended.`
 |---|---|---|---|---|
 | V1 | **Skögul** | joint P4 DISRUPT, second refuter | roles.md | `SPECIFIED` |
 | V2 | **Hrist** | independent verification | roles.md, gen-130 chain | `SPECIFIED` |
-| V3 | **Reginleif** | alpha architecture / single-writer kernel | roles.md, gen-130 chain | `SPECIFIED` |
+| V3 | **Gunnr** | tactical roll-up · freshness/decay · **watchdog, not build-doer** | operator canon 2026-07-30 — **moved down from apex** | `SPECIFIED` |
+| V3b | **reginleif_var** | ChatGPT-cloud variant of the reginleif lineage | operator canon | `SPECIFIED` |
 | V4 | **Eir** | life-ops (off-machine fitness) | roles.md, gen-130 chain | `SPECIFIED` |
 | V5 | **Mist** | outreach — the only lane that can move `cap-0018` | roles.md, gen-130 chain | `SPECIFIED` |
 | V6 | **Thrúd** | omega runtime — playable apps | roles.md, gen-130 chain | `SPECIFIED` |
@@ -507,28 +515,55 @@ payload** that restores a carrier to operating state for one songline. Three
 sizes exist because three different consumers exist: a scheduler tick, a fresh
 session, and a cold reconstruction.
 
-### 6.1 The three sizes
+### 6.1 The four sizes — S · M · L · XL (OPERATOR CANON)
 
-| size | target bytes | hard bound | consumer | answers |
+**Corrected 2026-07-30 by operator directive. Four tiers, not three, and the
+names are `S`/`M`/`L`/`XL` — this supersedes the micro/small/full triad I first
+drafted.** It also resolves the conflict with the already-implemented family in
+`capsules/sigrun/v1/` (`S_SMALL`/`M_MEDIUM`/`L_LARGE`/`XL_XLARGE`), which was
+right all along. My earlier three-tier draft was the error.
+
+| size | target | hard bound | consumer | answers |
 |---|---|---|---|---|
-| **micro** | ~1 KB | ≤ 2,048 B | every scheduler tick; a pheromone-sized context | "who am I, what is my next action, what is red?" |
-| **small** | ~10 KB | ≤ 16,384 B | a fresh session start on any substrate | "+ my refusals, my ceiling, my last N receipts, my blockers" |
-| **full** | ~100 KB | ≤ 131,072 B | cold reconstruction / new substrate onboarding | "+ my soul, my lineage chain digests, my heritage pointers, my roster" |
+| **S** | ~1 KB | ≤ 2,048 B | every scheduler tick; pheromone-sized context | "who am I, what is my next action, what is red?" |
+| **M** | ~10 KB | ≤ 16,384 B | a fresh session start on any substrate | "+ refusals, ceiling, last-N receipts, blockers" |
+| **L** | ~100 KB | ≤ 131,072 B | cold reconstruction / new-substrate onboarding | "+ soul body, lineage chain digests, heritage pointers, roster" |
+| **XL** | ~1 MB | ≤ 1,048,576 B | **heavy heritage capsule** | "+ full lineage rollup · last-N receipts · strange-loop last-3 · attached artifacts" |
 
 Bounds are **hard**: G8 rejects an over-size capsule. A capsule that grows past
-its class is a different capsule, not a fuller one — because the whole value of
-the class is that a consumer can budget for it in advance.
+its class is a different capsule, not a fuller one — the whole value of the class
+is that a consumer can budget for it before fetching it.
 
-> **Precedent, not invention.** `capsules/sigrun/v1/` already implements a
-> four-size family (`S_SMALL` / `M_MEDIUM` / `L_LARGE` / `XL_XLARGE.pointer`)
-> with `build_capsules.py`, `verify_capsules.py`, a manifest, and a
-> `VERIFICATION_RECEIPT.json`. **The micro/small/full triad specified here does
-> NOT match that existing family's size classes.** That is a real conflict and I
-> am flagging it rather than pretending the naming is compatible.
-> `TODO: reconcile — either map S/M/L/XL → micro/small/full/pointer, or adopt
-> the existing four-class scheme fleet-wide.` Tagged **`UNDER_SPECIFIED`**.
-> Held-out test `test_rehydration_abi.py::test_capsule_size_classes_reconciled`
-> is red on exactly this.
+**XL contents, formally** — this is the tier that makes bitemporal
+self-reconstruction possible:
+
+```jsonc
+{ "schema_id": "hfo.gen133.capsule.XL.v1",
+  /* everything in L, plus: */
+  "full_lineage_rollup": [ /* every rollup for this songline, prev-linked */ ],
+  "last_n_receipts": [ /* N configurable, default 32, full rows not just fields */ ],
+  "strange_loop_last_3": [ /* the last 3 complete self-audit cycles, §12 */ ],
+  "attached_artifacts": [ { "path": "…", "sha256": "…", "bytes": 0 } ] }
+```
+
+### 6.1.1 The apex rehydration matrix — 8 × 4 = 32 capsules
+
+**First-class deliverable slot.** Eight apex songlines × four sizes = **32 apex
+capsules**. A parallel opus-5 apex-wake session populates the actual files; this
+spec locks the schema their writes must conform to.
+
+```
+capsules/apex/<callsign>/{S,M,L,XL}.json   +   MANIFEST.json per callsign
+```
+
+Conformance is not optional: G8 verifies digest and size class on injection, and
+a capsule outside its bound is refused rather than truncated.
+
+**Status:** schema `SPECIFIED` · files `IN_FLIGHT` (apex-wake lane) · 0 of 32
+present as of this writing. Three of the eight apex callsigns are `TBD`
+(`TBD_APEX_SONNET5`, Antigravity, laptop/VM), so **at most 20 of the 32 are
+buildable today** — that arithmetic is stated rather than left to be discovered
+by the builder.
 
 ### 6.2 Formal schema — micro (~1 KB)
 

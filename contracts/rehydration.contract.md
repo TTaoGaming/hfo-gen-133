@@ -9,13 +9,18 @@ status: SPECIFIED — CONFLICTS with capsules/sigrun/v1 size classes
 sealed: false
 ```
 
-## Size classes
+## Size classes — FOUR, operator canon 2026-07-30
 
 | size | target | **hard bound** | consumer |
 |---|---|---|---|
-| micro | ~1 KB | 2,048 B | every scheduler tick |
-| small | ~10 KB | 16,384 B | fresh session on any substrate |
-| full | ~100 KB | 131,072 B | cold reconstruction / new substrate |
+| `S` | ~1 KB | 2,048 B | every scheduler tick |
+| `M` | ~10 KB | 16,384 B | fresh session on any substrate |
+| `L` | ~100 KB | 131,072 B | cold reconstruction / new substrate |
+| `XL` | ~1 MB | 1,048,576 B | heavy heritage: full lineage rollup + last-N receipts + strange-loop last-3 + attached artifacts |
+
+**Apex matrix: 8 apex × 4 sizes = 32 capsules** at
+`capsules/apex/<callsign>/{S,M,L,XL}.json`. Schema locked here; files populated
+by the parallel apex-wake lane.
 
 Bounds are hard. G8 rejects an over-size capsule. **A capsule that outgrows its
 class is a different capsule, not a fuller one** — the entire value of the class
@@ -77,17 +82,21 @@ Idempotent: same inputs ⇒ same bytes, modulo `transaction_time_utc`.
 | $0 mesh | harness injects capsule as system-prompt prefix; vendor runs no code |
 | Claude Dispatch | MCP tool `hfo_rehydrate(callsign, size)` over the same builder |
 
-## ⛔ Known conflict — UNRECONCILED
+## ✅ Conflict RESOLVED — operator canon picked the existing family
 
-`capsules/sigrun/v1/` already implements a **four**-size family
-(`S_SMALL` / `M_MEDIUM` / `L_LARGE` / `XL_XLARGE.pointer`) with
-`build_capsules.py`, `verify_capsules.py`, a manifest, and a
-`VERIFICATION_RECEIPT.json`. Those classes do **not** map onto micro/small/full.
+I first drafted a three-tier `micro`/`small`/`full` scheme without reconciling it
+against `capsules/sigrun/v1/`, which already implements
+`S_SMALL`/`M_MEDIUM`/`L_LARGE`/`XL_XLARGE` with `build_capsules.py`,
+`verify_capsules.py`, a manifest, and a `VERIFICATION_RECEIPT.json`.
 
-`TODO: reconcile — either map S/M/L/XL → micro/small/full/pointer, or adopt the
-existing four-class scheme fleet-wide.` Until then, two incompatible capsule
-vocabularies exist in one repo. Held-out test
-`test_capsule_size_classes_reconciled` is red on exactly this.
+**Operator canon 2026-07-30: four tiers, `S`/`M`/`L`/`XL`.** The working builder
+was right and my draft was the error. The mapping is direct:
+`S_SMALL→S · M_MEDIUM→M · L_LARGE→L · XL_XLARGE→XL`.
+
+Residual: the **byte bounds** above are still targets I chose, not measurements
+of the existing dist files. `TODO: measure capsules/sigrun/v1/dist/* and confirm
+each fits its bound.` That measurement is the remaining half of the
+reconciliation and it is one command.
 
 ## Honest flaw
 
