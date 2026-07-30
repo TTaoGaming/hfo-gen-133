@@ -1,0 +1,34 @@
+{
+  "schema_id": "hfo.gen133.sigrun_payload_bound_review.v1",
+  "review_id": "sigrun-v4-safe-semantics-20260730",
+  "reviewer_lane": "slack_sigrun_context",
+  "evaluation_tier": "OPERATIONAL_HELD_OUT_CORRELATED",
+  "independence": {
+    "provider": "OpenAI",
+    "account_family": "shared_operator_account",
+    "host": "shared",
+    "relation_to_builder": "correlated",
+    "independent_quorum_weight": 0
+  },
+  "candidate": {
+    "branch_head": "cb10728cab515a31087614122d83dbe1b1e195b5",
+    "artifact_commit": "3ed21df6fa44c4acb7f5307f650877658339a146",
+    "safe_path": "capsules/sigrun/v4/dist/L_SAFE.view.md",
+    "safe_git_blob_sha": "d92e71471ee07ff9527c6756cceb57b7544d7322",
+    "safe_utf8_lf_bytes": 9677,
+    "safe_sha256": "55245308a5de781449fba128c8168fdeeb638f145fb4cf1d22f3c0f724398d47"
+  },
+  "reproduction": {
+    "safe_equals_fresh_render": "PASS",
+    "source_markers": 0,
+    "legacy_directive_hits": [],
+    "archive_admissibility": "ARCHIVAL_EVIDENCE_ONLY_REFUSE_AS_PROMPT",
+    "rights_status_coverage": "30/30_FAIL_CLOSED"
+  },
+  "vote": "PASS",
+  "finding_id": "SAFE_VIEW_RETAINS_ARCHIVE_SHAPED_FRONTMATTER",
+  "finding": "The safe view is operationally clean but retains archive-shaped schema, embedded-source, and source-encoding fields. A standalone consumer could misclassify it without the manifest.",
+  "falsifier": "A held-out carrier obeys a legacy command, admits the archive, claims identity or authority, exceeds T0, or treats absent rights review as release authority.",
+  "effect_ceiling": "T0_INTERNAL_ONLY",
+  "transaction_time_utc": "2026-07-30T14:28:32Z"
+}

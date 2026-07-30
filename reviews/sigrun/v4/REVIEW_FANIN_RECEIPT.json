@@ -1,0 +1,42 @@
+{
+  "schema_id": "hfo.gen133.sigrun_review_fanin_receipt.v1",
+  "candidate": {
+    "branch_head": "cb10728cab515a31087614122d83dbe1b1e195b5",
+    "artifact_commit": "3ed21df6fa44c4acb7f5307f650877658339a146",
+    "safe_git_blob_sha": "d92e71471ee07ff9527c6756cceb57b7544d7322",
+    "archive_git_blob_sha": "ac7a15612a9eb1f4dc5e99398c8383378d5f6c2d"
+  },
+  "inputs": [
+    {
+      "path": "reviews/sigrun/v4/CORRELATED_REVIEW_SAFE_SELF_HASH.json",
+      "vote": "FAIL",
+      "independent_quorum_weight": 0
+    },
+    {
+      "path": "reviews/sigrun/v4/CORRELATED_REVIEW_SAFE_SEMANTICS.json",
+      "vote": "PASS",
+      "independent_quorum_weight": 0
+    },
+    {
+      "path": "reviews/sigrun/v4/CORRELATED_REVIEW_PROVENANCE.json",
+      "vote": "ABSTAIN",
+      "independent_quorum_weight": 0
+    }
+  ],
+  "counts": {
+    "payload_bound_review_receipts": 3,
+    "pass": 1,
+    "fail": 1,
+    "abstain": 1,
+    "nofile": 0,
+    "independent_reviewers": 0
+  },
+  "result": "REJECT_V4",
+  "promotion": "DENIED",
+  "tier": "T2_BOUND_PROVISIONAL",
+  "honest_flaw": "The three reviews share provider, account, and host and have zero independent quorum weight. The payload-bound FAIL still rejects v4.",
+  "falsifier": "A new immutable safe view has a dedicated schema and recomputable self_hash, then receives distinct-provider review.",
+  "next_safe_action": "Build immutable v5 with a dedicated self-sealed safe-view schema.",
+  "effect_ceiling": "T0_INTERNAL_ONLY",
+  "transaction_time_utc": "2026-07-30T14:28:32Z"
+}
