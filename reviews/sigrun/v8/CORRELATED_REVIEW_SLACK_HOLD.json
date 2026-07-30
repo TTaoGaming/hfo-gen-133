@@ -1,0 +1,34 @@
+{
+  "schema_id": "hfo.gen133.sigrun.correlated_review.v1",
+  "subject": "draft-aware Slack HOLD checkpoint",
+  "reviewed_commit": "c2bf2de341ced11b34085e0b7df4e0ab3fbe66e8",
+  "reviewer_class": "SAME_PROVIDER_CORRELATED",
+  "independent_quorum_weight": 0,
+  "scoped_verdict": "PASS",
+  "evidence": {
+    "slack_receipt": {
+      "path": "reviews/sigrun/v8/SLACK_DRAFT_AWARE_HOLD_RECEIPT.json",
+      "blob_sha1": "61160a8df14089633349760553235ec2115b2450"
+    },
+    "goal_audit": {
+      "path": "reviews/sigrun/v8/GOAL_PROGRESS_AUDIT.json",
+      "blob_sha1": "a33b0c4555d77992951559ab8966888b38106c8a"
+    },
+    "verifier": {
+      "path": "capsules/sigrun/v8/verify_capsules.py",
+      "blob_sha1": "a236b101a997fa97c92a59a58d9e3922ec219834",
+      "stability_fix": "VERIFICATION_RECEIPT.json excluded from both deterministic snapshots"
+    },
+    "verification_receipt_blob_sha1": "f9e4390821020afef253b4fbcf0eded6dd6b224a"
+  },
+  "defects": [],
+  "claim_boundary": [
+    "Confirms the immutable reviewed tree contains the scoped blobs.",
+    "Does not independently re-observe Slack or browser state.",
+    "Does not independently prove verifier execution.",
+    "Does not prove delivery, ownership, ConsumerAck, identity, continuity, rights, runtime, or quorum."
+  ],
+  "effect_ceiling": "T0_REVIEW_RECEIPT_ONLY",
+  "message_sent": false,
+  "external_provider_called": false
+}
