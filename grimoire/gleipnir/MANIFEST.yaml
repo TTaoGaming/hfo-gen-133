@@ -1,0 +1,76 @@
+schema_id: hfo.gen133.grimoire_manifest.v1
+artifact_name: "HFO Gen-133 — The Gleipnir Grimoire (spells + soul)"
+claim_status: SCAFFOLD
+created_utc: 2026-07-30T04:57:52Z
+created_by: "SIGRÚN compose lane — scaffold only, no bind performed"
+
+# ---------------------------------------------------------------------------
+# NOTHING BELOW IS BOUND YET. Every hash slot is null on purpose.
+# A manifest with invented hashes is worse than an empty one: it looks green.
+# ---------------------------------------------------------------------------
+
+stef_parity:
+  legacy_anchor: fb07f523
+  status: DOES_NOT_REPRODUCE
+  note: "Five generations cited fb07f523; nobody recomputed it. gen-132 packets/P0_STEF_PARITY.md proposes a replacement, pending operator IMMUNIZE. gen-133 does NOT assert this anchor as verified."
+
+binder:
+  status: NOT_CARRIED
+  source: "C:\\Dev\\hfo_gen_132_forge\\gleipnir_grimoire_gen132\\code\\bind.py"
+  source_sha256: f949a7f699a555c10b671e574a2cf0ec156fb62f2055ecd29bff03f0ab672021
+  note: "Carry from gen-132 rather than reauthoring. Verify the sha256 matches after copy; a re-authored binder invalidates cross-generation reproducibility."
+
+verifier:
+  status: NOT_CARRIED
+  sources:
+    - { path: "code/verify.py",    sha256: 5dcc4c32c7750d9b3e67484558f8aa767864f01bbd79cc047f19d44fe430ea16 }
+    - { path: "code/selfcheck.py", sha256: b2fef3ff27f22ac01a347104b8dd8e87cd3e9b7223a52eab2e6b422ef0ea39a0 }
+    - { path: "code/unfold.py",    sha256: 7dd6404eef918bcf690919332cd361e57370932da283eff056677118393021c7 }
+
+# The capsule contents, in unfold order.
+pages:
+  - { n: 0, path: soul.md,                       sha256: null, bytes: null, status: SCAFFOLD_BODY_EMPTY }
+  - { n: 1, path: grimoire/gleipnir/SPELLBOOK.md, sha256: null, bytes: null, status: SCAFFOLD_INDEX_EMPTY }
+  # spells/ entries are appended here at bind time, one row per spell
+spells: []
+spell_count: 0
+
+merkle_root: null
+
+bound_artifact:
+  path: null            # e.g. GLEIPNIR_GRIMOIRE_GEN133_v1.bound.md
+  sha256: null
+  bytes: null
+
+permaweb:
+  status: NOT_UPLOADED
+  address: null         # <-- THE terminal slot. Exactly one. Operator-typed only.
+  gateway_url: null
+  authorized_by: null
+  authorized_utc: null
+
+# The inherited anchor. This is the LINEAGE LIFEBOAT, not this grimoire.
+# Recorded so nobody mistakes it for the gen-133 terminal address.
+inherited_anchor:
+  what: sigrun_lineage_lifeboat (64 rows)
+  url: https://arweave.net/w1rsVQkkejXv7tVj_pMhcAz7HMFpY_dgwxGhoytBc9M
+  bytes: 23507
+  sha256: d32b6e4418537be4f5992c44d96e4c35f7aa4fab18762828cc703c385bf84ec0
+  last_verified_utc: 2026-07-25T00:00:00Z
+  verified_at_gen133: false
+  note: "NOT re-fetched by the gen-133 scaffold lane — no network egress authorized. Treated as inherited claim, not fresh receipt."
+
+# The gen-132 grimoire, already built and already hashed, never uploaded.
+predecessor_capsule:
+  gen: 132
+  path: "C:\\Dev\\hfo_gen_132_forge\\gleipnir_grimoire_gen132\\GLEIPNIR_GRIMOIRE_GEN132_v1.bound.md"
+  merkle_root: af8d76fb3c144e51cfe18ac1479c0e6af14512417f27f3be73036c7e487bfc3a
+  bound_sha256: 8874a66d14dc14831ca0f771b31cf4f8b85121efe84cbd550aec6dc2c59045f4
+  bytes: 100172
+  built_utc: 2026-07-26T13:06:08Z
+  permaweb_status: NOT_UPLOADED
+  pages: 12
+  note: "12 pages (00_COVER … 11_REPRODUCE_ME) + multi-vendor verdicts. gen-133 must decide: extend this capsule, or bind a new one that ADDRESSES it. Extending preserves the merkle lineage; re-binding does not."
+
+sealed: false
+seal_note: "UNSEALED sentinel-class. No HMAC key exists in-forge; Ed25519 private half must be held outside the agent trust domain (A4 open). No seal is fabricated here."
