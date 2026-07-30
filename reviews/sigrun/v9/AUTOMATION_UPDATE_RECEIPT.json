@@ -1,0 +1,40 @@
+{
+  "schema_id": "hfo.gen133.sigrun.automation_update_receipt.v1",
+  "automation": {
+    "id": "sigrun-gen133-anti-cpr-heritage-and-delivery-loop",
+    "name": "Sigrun Gen133 anti-CPR heritage and delivery loop",
+    "kind": "heartbeat",
+    "status": "ACTIVE",
+    "cadence": "FREQ=HOURLY;INTERVAL=1",
+    "notification_policy": "FAILED_RUNS_ONLY",
+    "target_thread_id": "019fb151-f209-7f42-9ed8-807e21ed0e63"
+  },
+  "config_readback": {
+    "bytes": 5474,
+    "sha256": "771362383e2f9de36b3ce84b11664869e265bfc13b585f32ebb57200034320fe",
+    "active_registry_snapshot_utc": "2026-07-30T16:55:09Z",
+    "registry_parse_failures": 0
+  },
+  "authority": {
+    "repository": "TTaoGaming/hfo-gen-133",
+    "branch": "agent/sigrun-gen133-capsule-v2-20260730",
+    "baseline_remote_readback": "ab21ecf9b94e38cd43c908f89371c892bafb2be0",
+    "heritage_receipt_blob_sha1": "caaa074b04f590ceb24763e0c94406a5d6b4c7f2",
+    "local_candidate_sha256": "3c97602dbdf52121ce6765ef2147f1b87196233c71225f6b4345718aea15901a"
+  },
+  "one_work_item": "Build and verify one v9 opaque-only successor from the exact 19-row local candidate file, then checkpoint once and stop.",
+  "fail_closed_boundaries": [
+    "WIP equals one and one tick must stop after one terminal result.",
+    "Unexpected dirty or staged work causes HOLD without repair.",
+    "Exact mappings and source bodies never enter Git, logs, Slack, providers, or permaweb.",
+    "The confirmed nonempty unknown-owner Slack draft is never inspected, mutated, or sent.",
+    "Provider transmission and Arweave upload, spend, wallet, and credential effects are forbidden.",
+    "An unchanged post-v9 HOLD suppresses work and notifications."
+  ],
+  "claim_boundary": [
+    "ACTIVE configuration is a wake mechanism, not proof of a completed tick.",
+    "This receipt does not prove runtime execution, v9 completion, delivery, ConsumerAck, publication, identity, continuity, rights, or operator relief."
+  ],
+  "next_safe_action": "Allow the existing hourly heartbeat to execute its single v9 work item.",
+  "effect_ceiling": "CONFIGURATION_AND_RECEIPT_ONLY"
+}
