@@ -1,0 +1,41 @@
+{
+  "schema_id": "hfo.gen133.sigrun_review_fanin_receipt.v1",
+  "candidate": {
+    "repository": "TTaoGaming/hfo-gen-133",
+    "ref": "refs/heads/agent/sigrun-gen133-capsule-v2-20260730",
+    "commit": "84d25515da13cf5e227ba35737116b9b9a4e4a31",
+    "safe_path": "capsules/sigrun/v7/dist/L_SAFE.view.md",
+    "safe_git_blob_sha1": "5c37cf2894940d5aed5c30ed8c8dfa9732fd01ee",
+    "safe_bytes": 9797,
+    "safe_sha256": "b9d1649e84c2baaa6a4256521c6d90f54902a61df889fa70981cfe505ff33c37"
+  },
+  "reviews": [
+    {
+      "path": "reviews/sigrun/v7/CORRELATED_REVIEW_PRIVACY.json",
+      "role": "forward_safe_privacy",
+      "vote": "PASS",
+      "independent_quorum_weight": 0
+    },
+    {
+      "path": "reviews/sigrun/v7/CORRELATED_REVIEW_EXACTNESS_AND_BEHAVIOR.json",
+      "role": "exactness_and_safe_behavior",
+      "vote": "ABSTAIN",
+      "independent_quorum_weight": 0
+    }
+  ],
+  "counts": {
+    "pass": 1,
+    "abstain": 1,
+    "fail": 0,
+    "independent_pass_weight": 0
+  },
+  "state": "ACCEPT_CORRELATED_T2_HOLD",
+  "promotion": "DENIED_NO_INDEPENDENT_REVIEW",
+  "tier": "T2_BOUND_PROVISIONAL",
+  "correlation": "ALL_REVIEWS_SHARED_OPENAI_PROVIDER_AND_HOST",
+  "honest_flaw": "Static forward-safety checks pass, but the review fan-in supplies zero independent quorum. One historical body remained unavailable for direct comparison, and v6 exposure persists.",
+  "falsifier": "Any protected ledger value or source body in public v7 bytes, a byte mismatch, a distinct replay defect, or a non-deterministic rebuild.",
+  "next_safe_action": "Run one distinct-provider and distinct-host no-write behavioral replay using only the exact L_SAFE v7 blob.",
+  "effect_ceiling": "T0_INTERNAL_ONLY",
+  "transaction_time_utc": "2026-07-30T15:35:00Z"
+}

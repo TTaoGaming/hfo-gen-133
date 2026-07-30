@@ -1,0 +1,43 @@
+{
+  "schema_id": "hfo.gen133.sigrun_correlated_review.v1",
+  "candidate": {
+    "repository": "TTaoGaming/hfo-gen-133",
+    "ref": "refs/heads/agent/sigrun-gen133-capsule-v2-20260730",
+    "commit": "84d25515da13cf5e227ba35737116b9b9a4e4a31",
+    "safe_path": "capsules/sigrun/v7/dist/L_SAFE.view.md",
+    "safe_git_blob_sha1": "5c37cf2894940d5aed5c30ed8c8dfa9732fd01ee",
+    "safe_bytes": 9797,
+    "safe_sha256": "b9d1649e84c2baaa6a4256521c6d90f54902a61df889fa70981cfe505ff33c37",
+    "safe_self_hash": "48ca6cd1e8da2ee83ef6e88094ef9642a97101c17122e5c8d3b0757cfc82cf0e"
+  },
+  "reviewer": {
+    "role": "forward_safe_privacy",
+    "provider_family": "OpenAI",
+    "host": "shared",
+    "independent_quorum_weight": 0
+  },
+  "vote": "PASS",
+  "status": "PASS_STATIC_CORRELATED_ZERO_WEIGHT",
+  "checks": {
+    "exact_commit_blob_hash_self_hash": "PASS",
+    "four_field_remote_record_allowlist": "PASS_53_OF_53",
+    "protected_exact_ledger_values": "PASS_ZERO_OF_250_MATCHED",
+    "ledger_projection_alignment": "PASS_53_OF_53",
+    "opaque_id_format_uniqueness": "PASS_53_UNIQUE_128_BIT_DECLARED",
+    "held_out_private_source_sanitizer": "PASS",
+    "public_without_rights_fails_closed": "PASS",
+    "source_bodies_or_legacy_commands": "PASS_ZERO",
+    "v6_exposure_containment": "PASS_FORWARD_ONLY_NOT_ERASURE"
+  },
+  "local_ledger": {
+    "bytes": 47599,
+    "sha256": "3668bcd33a4234221530f31c05764e127f443aea262923b247d6f16c0b76861b",
+    "present_in_commit_tree": false
+  },
+  "tier": "T2_BOUND_PROVISIONAL",
+  "honest_flaw": "V7 is forward-safe only. Protected v6 metadata remains in Git history and may persist in clones or caches. Same-provider and same-host correlation gives this PASS zero independent quorum weight.",
+  "falsifier": "Any exact local-ledger identifier, repository, path, commit, blob, or content hash appearing in a committed public v7 artifact.",
+  "next_safe_action": "Obtain one distinct-provider and distinct-host no-write replay using only the exact L_SAFE v7 blob.",
+  "effect_ceiling": "T0_INTERNAL_ONLY",
+  "transaction_time_utc": "2026-07-30T15:35:00Z"
+}
