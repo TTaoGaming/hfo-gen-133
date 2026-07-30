@@ -1,0 +1,50 @@
+{
+  "schema_id": "hfo.gen133.sigrun.v9_slack_projection_pending.v1",
+  "state": "PENDING_ZERO_DRAFT_READBACK",
+  "source": {
+    "repository": "TTaoGaming/hfo-gen-133",
+    "commit": "d1b3bb02bdb10a621695abe1128d3d1b3d754efc",
+    "fanin_path": "reviews/sigrun/v9/MIXED_MODEL_FANIN_V2.json",
+    "fanin_git_blob_sha": "689c925ed77dfe7631e4304e8f55551c17cc7830",
+    "fanin_sha256": "c762755a0949344fe2578479e2e5317c22607d6c9af557084622608fac689d11",
+    "draft_hold_receipt": {
+      "path": "reviews/sigrun/v9/SLACK_DRAFT_AWARE_HOLD_RECEIPT_V2.json",
+      "git_blob_sha": "f5cdbf676bf0ef83fa933b27990d4d0253caa3c4",
+      "utf8_lf_bytes": 2357,
+      "sha256": "5df3d934ebfb23da07ef3295e4740b6cc60500e4d50735e6f2bb0fca24ddeeeb"
+    }
+  },
+  "destination": {
+    "workspace": "hfo",
+    "team_id": "T0BGGTNGA84",
+    "channel_id": "C0BGC646A1H",
+    "thread_parent_ts": "1785073442.724479",
+    "mode": "THREAD_REPLY"
+  },
+  "pheromone": {
+    "schema_id": "hfo.gen132.pheromone.v0_1",
+    "event_id": "2fc0273418fa8bf22939fb4f9cebfd0407e6351dcf2cb783ae24349aa38ad075",
+    "state": "HOLD",
+    "subject": "Sigrun [4,4] Gen133 v9 review gate",
+    "evidence_refs": [
+      "fanin:c762755a0949344fe2578479e2e5317c22607d6c9af557084622608fac689d11"
+    ],
+    "valid_time_utc": "2026-07-30T18:04:08Z",
+    "transaction_time_utc": "2026-07-30T18:04:08Z",
+    "expires_utc": "2026-07-31T18:04:08Z",
+    "strongest_falsifier": "Any unauthenticated, stale, correlated, or payload-mismatched review.",
+    "effect_ceiling": "T0"
+  },
+  "message_text": "PHEROMONE | Sigrun [4,4] Gen133 v9 review gate | HOLD | 2fc0273418fa8bf22939fb4f9cebfd0407e6351dcf2cb783ae24349aa38ad075 | next_consumer:operator | T0",
+  "transmission": {
+    "capsule_text_included": false,
+    "source_identifiers_included": false,
+    "mentions_included": false,
+    "sent": false,
+    "reason": "Fresh authenticated readback found a nonempty unknown-owner thread draft."
+  },
+  "honest_flaw": "This is a prepared hash-only projection, not Slack delivery or ConsumerAck. The pheromone generator reduces the source fan-in to HOLD and does not establish independent review.",
+  "falsifier": "Any mismatch in the source fan-in hash or event ID, expiry, a nonempty draft at send time, or missing post-send exact-thread readback.",
+  "next_safe_action": "After the operator resolves the existing draft, perform one fresh zero-draft readback and send this exact hash-only reply once.",
+  "effect_ceiling": "PREPARATION_ONLY_NO_SEND"
+}

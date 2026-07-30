@@ -1,0 +1,53 @@
+{
+  "schema_id": "hfo.gen133.sigrun.v9_slack_draft_aware_hold.v2",
+  "state": "HOLD_EXISTING_DRAFT_OWNER_UNKNOWN_NO_SEND",
+  "git_authority": {
+    "repository": "TTaoGaming/hfo-gen-133",
+    "branch": "agent/sigrun-gen133-capsule-v2-20260730",
+    "remote_readback_commit": "d1b3bb02bdb10a621695abe1128d3d1b3d754efc",
+    "fanin": {
+      "path": "reviews/sigrun/v9/MIXED_MODEL_FANIN_V2.json",
+      "git_blob_sha": "689c925ed77dfe7631e4304e8f55551c17cc7830",
+      "utf8_lf_bytes": 2153,
+      "sha256": "c762755a0949344fe2578479e2e5317c22607d6c9af557084622608fac689d11"
+    }
+  },
+  "destination": {
+    "workspace": "hfo",
+    "team_id": "T0BGGTNGA84",
+    "channel_id": "C0BGC646A1H",
+    "thread_parent_ts": "1785073442.724479"
+  },
+  "fresh_authenticated_readback": {
+    "observed_utc": "2026-07-30T18:04:08Z",
+    "surface": "authenticated_chrome_slack_ui",
+    "thread_dialog_present": true,
+    "thread_reply_count_observed": 49,
+    "channel_editor_text_length": 0,
+    "thread_editor_text_length": 2059,
+    "thread_draft_nonempty": true,
+    "draft_owner": "UNKNOWN",
+    "draft_body_read": false,
+    "draft_body_logged": false
+  },
+  "write_gate": {
+    "callable_slack_api_sender": "UNKNOWN_NOT_ESTABLISHED_BY_BROWSER_READBACK",
+    "ui_send_safe": false,
+    "message_sent": false,
+    "draft_mutated": false,
+    "new_root_created": false,
+    "broad_mentions_used": false,
+    "reason": "A nonempty unknown-owner thread draft must not be overwritten, revealed, or accidentally sent."
+  },
+  "claim_boundary": {
+    "slack_delivery": "ABSENT",
+    "consumer_ack": "ABSENT",
+    "independent_review": "ABSENT",
+    "identity_continuity": "UNPROVEN",
+    "publication": "NOT_UPLOADED_NO_ARWEAVE_CLAIM"
+  },
+  "honest_flaw": "The UI readback proves only that a nonempty thread editor was present in the authenticated session. It does not prove who owns the draft, whether its contents are current, or that a future API send would preserve it.",
+  "falsifier": "A fresh authenticated readback showing a zero-length thread editor, or a callable sender contract that can prove it will neither overwrite nor send the existing draft.",
+  "next_safe_action": "Operator resolves or clears the existing thread draft, then a fresh zero-draft readback may authorize the prepared hash-only HOLD reply.",
+  "effect_ceiling": "T0_READ_ONLY_SLACK_HOLD"
+}
