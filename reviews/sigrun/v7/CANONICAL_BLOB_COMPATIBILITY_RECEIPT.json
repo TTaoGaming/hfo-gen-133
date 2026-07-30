@@ -1,0 +1,53 @@
+{
+  "schema_id": "hfo.gen133.sigrun_canonical_blob_compatibility_receipt.v1",
+  "candidate": {
+    "repository": "TTaoGaming/hfo-gen-133",
+    "artifact_commit": "84d25515da13cf5e227ba35737116b9b9a4e4a31",
+    "path": "capsules/sigrun/v7/dist/L_SAFE.view.md",
+    "git_blob_sha": "5c37cf2894940d5aed5c30ed8c8dfa9732fd01ee",
+    "utf8_lf_bytes": 9797,
+    "sha256": "b9d1649e84c2baaa6a4256521c6d90f54902a61df889fa70981cfe505ff33c37"
+  },
+  "shared_verifier": {
+    "workflow": "hfo-mixed-model-review/scripts/verify_canonical_blob.py",
+    "evidence_ceiling": "CANONICAL_GIT_CONTENT_BINDING_ONLY"
+  },
+  "initial_result": {
+    "ref": "84d25515da13cf5e227ba35737116b9b9a4e4a31",
+    "integrity_path": "capsules/sigrun/v7/dist/CAPSULE_FAMILY_MANIFEST.json",
+    "verdict": "REJECT",
+    "checks": {
+      "blob": false,
+      "bytes": true,
+      "sha256": true
+    },
+    "root_cause": "FIELD_ABI_MISMATCH_git_blob_sha1_VERSUS_git_blob_sha"
+  },
+  "adapter": {
+    "commit": "5a94558030bcd17ca42f85e2209346ca48246384",
+    "path": "reviews/sigrun/v7/SAFE_CANDIDATE.integrity.json",
+    "git_blob_sha": "c5f9fbd7a54236d3381e35edd1b2abf3d1f66ae2",
+    "utf8_lf_bytes": 1818,
+    "sha256": "86e86c50a090e82b76153f853783b6b6472e37aa671f8cb933757e367df855d5",
+    "kind": "FIELD_ALIAS_ONLY"
+  },
+  "final_result": {
+    "ref": "5a94558030bcd17ca42f85e2209346ca48246384",
+    "integrity_path": "reviews/sigrun/v7/SAFE_CANDIDATE.integrity.json",
+    "verdict": "PASS",
+    "checks": {
+      "blob": true,
+      "bytes": true,
+      "sha256": true
+    }
+  },
+  "capsule_bytes_changed": false,
+  "independent_review": "ABSENT",
+  "external_transmission": false,
+  "tier": "T2_BOUND_PROVISIONAL",
+  "honest_flaw": "The shared verifier validates only three payload-binding fields. Its PASS does not validate self-hash, privacy, behavior, reviewer independence, identity, authority, runtime, or publication.",
+  "falsifier": "Any adapter/source-manifest tuple mismatch, mutation accepted by the shared verifier, or change to the exact L_SAFE blob, bytes, or SHA-256.",
+  "next_safe_action": "Obtain operator authorization for one named non-OpenAI remote provider route and probe route/account/host metadata before transmitting the capsule.",
+  "effect_ceiling": "T0_INTERNAL_ONLY",
+  "transaction_time_utc": "2026-07-30T15:50:24Z"
+}

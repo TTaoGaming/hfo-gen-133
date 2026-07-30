@@ -1,0 +1,32 @@
+{
+  "schema_id": "hfo.gen133.sigrun_slack_readback_hold_receipt.v1",
+  "destination": {
+    "channel_id": "C0BGC646A1H",
+    "parent_message_ts": "1785073442.724479",
+    "new_root_allowed": false,
+    "broad_mentions": false
+  },
+  "readback": {
+    "exact_thread_reader_callable": true,
+    "tail_pagination_complete": true,
+    "latest_reply_ts": "1785425072.465339",
+    "latest_reply_classification": "OTHER_LANE_PRIVATE_OPERATIONAL_CONTEXT_REDACTED",
+    "draft_state": "UNKNOWN_NOT_EXPOSED_BY_READER"
+  },
+  "collision_rule": "UNKNOWN_OR_NONZERO_DRAFT_STATE_MEANS_NO_DRAFT_AND_NO_SEND",
+  "candidate_from_prior_receipt": {
+    "path": "reviews/sigrun/v7/SLACK_PROJECTION_HOLD_RECEIPT.json",
+    "git_blob_sha": "f2f9c0e99d40fdb947a5871d4712c31055a93e73",
+    "body_sha256": "e3e9ad361d962476133f162eb200d14883720d51f067503d03dffdcbe53640f5",
+    "state": "STALE_AFTER_NEW_INTEGRITY_ADAPTER_AND_ROUTE_HOLD"
+  },
+  "draft_created": false,
+  "draft_modified": false,
+  "message_sent": false,
+  "state": "HOLD_SLACK_DRAFT_STATE_UNKNOWN",
+  "honest_flaw": "The exact thread is readable, but the reader does not expose draft state. A message-tail readback cannot falsify a hidden draft collision.",
+  "falsifier": "A fresh callable draft-aware exact-thread readback showing zero active drafts plus all independent-review and candidate-freshness gates.",
+  "next_safe_action": "Obtain operator authorization for one named non-OpenAI remote provider route and probe route/account/host metadata before transmitting the capsule.",
+  "effect_ceiling": "NO_SLACK_WRITE",
+  "transaction_time_utc": "2026-07-30T15:50:24Z"
+}
