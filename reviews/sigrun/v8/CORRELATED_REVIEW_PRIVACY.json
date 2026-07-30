@@ -1,0 +1,30 @@
+{
+  "schema_id": "hfo.gen133.sigrun_correlated_review.v8",
+  "review_lane": "public_privacy_surface",
+  "reviewer_class": "same_provider_same_host_correlated",
+  "independent_quorum_weight": 0,
+  "reviewed_candidate": {
+    "commit": "9d8a5528b73e837c6841e08777906acec92641d5",
+    "tree": "a746bc68fb430aaa369dc7583db0ee309c133535",
+    "path": "capsules/sigrun/v8/dist/L_SAFE.view.md",
+    "git_blob_sha1": "fb9732c0e223056fb06c2521998d4c9b4139e6e8",
+    "utf8_lf_bytes": 15379,
+    "sha256": "ce6145ae8f4a950128483db9164f3c270eb117400d76fdf4021f6518842eb5a9"
+  },
+  "vote": "PASS_CORRELATED_ONLY",
+  "rights_admission": "HOLD_UNKNOWN",
+  "checks": {
+    "four_field_projection_allowlist": "PASS",
+    "opaque_id_format_uniqueness_and_128_bit_decoding": "PASS",
+    "cohort_counts_53_v7_plus_51_v8": "PASS",
+    "body_embedding_prohibited": "PASS",
+    "public_rights_review_absent_disclosed": "PASS",
+    "v6_prior_exposure_caveat_retained": "PASS",
+    "common_secret_and_local_path_scan": "PASS",
+    "fourteen_public_pointer_bindings": "PASS"
+  },
+  "honest_flaw": "Format and uniqueness do not prove random unlinkability. Reusing 53 stable v7 handles exposes cohort cardinality and order, and the prior v6 disclosure may permit positional correlation. Opacity cannot undo prior exposure. Rights remain absent.",
+  "falsifier": "Any byte mismatch, fifth projection field, historical body or exact source value in the public family, proof of handle derivation or positional linkage to v6, or a claim that this correlated PASS is independent rights review.",
+  "next_safe_action": "Have one distinct non-author provider run a payload-bound linkage and privacy-rights test, returning only a committed PASS FAIL or ABSTAIN receipt.",
+  "effect_ceiling": "T0_INTERNAL_ONLY"
+}

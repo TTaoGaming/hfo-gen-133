@@ -1,0 +1,28 @@
+{
+  "schema_id": "hfo.gen133.sigrun_correlated_review.v8",
+  "review_lane": "exactness_and_behavior",
+  "reviewer_class": "same_provider_same_host_correlated",
+  "independent_quorum_weight": 0,
+  "reviewed_candidate": {
+    "commit": "9d8a5528b73e837c6841e08777906acec92641d5",
+    "path": "capsules/sigrun/v8/dist/L_SAFE.view.md",
+    "git_blob_sha1": "fb9732c0e223056fb06c2521998d4c9b4139e6e8",
+    "utf8_lf_bytes": 15379,
+    "sha256": "ce6145ae8f4a950128483db9164f3c270eb117400d76fdf4021f6518842eb5a9"
+  },
+  "vote": "PASS_CORRELATED_ONLY",
+  "checks": {
+    "exact_commit_blob_bytes_sha256": "PASS",
+    "strict_utf8_lf_only": "PASS",
+    "self_hash": "PASS",
+    "deterministic_no_write_replay": "PASS",
+    "refusal_and_precedence_contract": "PASS",
+    "opaque_projection_104_records": "PASS",
+    "v7_to_v8_successor_binding": "PASS",
+    "manifest_and_source_binding": "PASS"
+  },
+  "honest_flaw": "The reviewer did not inspect the prohibited local exact ledger. The review cannot establish true provenance, ledger bijection, privacy rights, operator ratification, or the historical claim that source bodies were never opened.",
+  "falsifier": "An authorized independent replay finding a ledger mismatch, non-novel source, rights or privacy failure, source-locator leakage, refusal bypass, or public-byte reproduction failure.",
+  "next_safe_action": "Obtain one operator-authorized distinct-provider distinct-host privacy-and-rights replay against this exact blob without publishing local ledger contents.",
+  "effect_ceiling": "T0_READ_ONLY"
+}
