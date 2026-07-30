@@ -1,0 +1,45 @@
+{
+  "schema_id": "hfo.gen133.sigrun_automation_binding_receipt.v8",
+  "automation": {
+    "id": "sigrun-gen133-anti-cpr-heritage-and-delivery-loop",
+    "kind": "heartbeat",
+    "name": "Sigrun Gen133 anti-CPR heritage and delivery loop",
+    "status": "ACTIVE",
+    "cadence": "HOURLY",
+    "notification_policy": "failed_runs_only",
+    "target_thread_id": "019fb151-f209-7f42-9ed8-807e21ed0e63"
+  },
+  "configuration_readback": {
+    "bytes": 5076,
+    "sha256": "782cd6a68ec69859b5c3025e16ecccf0752612c98487569049b043d2b8603b32",
+    "updated_at_epoch_ms": 1785428673081,
+    "registry_snapshot_utc": "2026-07-30T16:24:38Z",
+    "registry_status": "ACTIVE",
+    "registry_enabled": true,
+    "registry_paused": false,
+    "duplicate_created": false
+  },
+  "bound_authority": {
+    "repository": "TTaoGaming/hfo-gen-133",
+    "branch": "agent/sigrun-gen133-capsule-v2-20260730",
+    "remote_readback_head": "4562fd3793020ab24167491a0bc0bccb6ef59ec0",
+    "artifact_commit": "9d8a5528b73e837c6841e08777906acec92641d5",
+    "review_hold_commit": "4562fd3793020ab24167491a0bc0bccb6ef59ec0",
+    "payload_path": "capsules/sigrun/v8/dist/L_SAFE.view.md",
+    "payload_git_blob_sha1": "fb9732c0e223056fb06c2521998d4c9b4139e6e8",
+    "payload_utf8_lf_bytes": 15379,
+    "payload_sha256": "ce6145ae8f4a950128483db9164f3c270eb117400d76fdf4021f6518842eb5a9"
+  },
+  "loop_contract": {
+    "wip": 1,
+    "execution": "ONE_BOUNDED_TICK_THEN_STOP",
+    "unchanged_hold": "SUPPRESS_WITH_ZERO_EFFECTS",
+    "provider_transmission": "REQUIRES_EXPLICIT_NAMED_NON_OPENAI_AUTHORIZATION_AND_METADATA_ONLY_ROUTE_PROBE",
+    "slack_send": "HOLD_WHILE_DRAFT_STATE_UNKNOWN",
+    "arweave": "OPERATOR_ONLY_FORBIDDEN_IN_HEARTBEAT"
+  },
+  "claim_boundary": "This receipt proves configuration and registry readback only. It does not prove a heartbeat executed, delivered a provider response, sent Slack, published to Arweave, or relieved operator work.",
+  "falsifier": "A current registry readback showing paused, missing, duplicated, differently bound, or a prompt that permits effects on unchanged HOLD.",
+  "next_safe_action": "Allow the hourly wake to suppress unchanged state; intervene only to name and authorize one non-OpenAI provider route for the exact v8 payload.",
+  "effect_ceiling": "CONFIGURATION_ONLY"
+}
