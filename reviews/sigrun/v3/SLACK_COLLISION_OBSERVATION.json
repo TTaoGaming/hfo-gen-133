@@ -1,0 +1,24 @@
+{
+  "schema_id": "hfo.gen133.slack_collision_observation.v1",
+  "destination": {
+    "workspace": "hfo",
+    "channel_id": "C0BGC646A1H",
+    "channel_name": "hfo-synthesis",
+    "thread_ts": "1785073442.724479"
+  },
+  "observation": {
+    "method": "signed-in Slack web read",
+    "thread_button_text": "1,117 replies & 1 draft",
+    "active_draft_count": 1,
+    "draft_body": "NOT_READ",
+    "draft_mutated": false
+  },
+  "result": "HOLD_ACTIVE_DRAFT",
+  "send_performed": false,
+  "stale_v2_candidate_send_allowed": false,
+  "honest_flaw": "Visible Slack UI state is a point-in-time projection. It does not bind the draft author, body, or current state after this observation.",
+  "falsifier": "A fresh exact-thread read shows zero active drafts and a current remotely bound candidate message exists.",
+  "next_safe_action": "Preserve the draft and retry only after a changed Slack collision fingerprint.",
+  "effect_ceiling": "T0_INTERNAL_ONLY",
+  "transaction_time_utc": "2026-07-30T14:15:51Z"
+}

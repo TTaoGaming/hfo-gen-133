@@ -1,0 +1,34 @@
+{
+  "schema_id": "hfo.gen133.sigrun_payload_bound_review.v1",
+  "review_id": "sigrun-v3-provenance-monotonicity-20260730",
+  "reviewer_lane": "local_sigrun_archaeology",
+  "evaluation_tier": "OPERATIONAL_HELD_OUT_CORRELATED",
+  "independence": {
+    "provider": "OpenAI",
+    "account_family": "shared_operator_account",
+    "host": "shared",
+    "relation_to_builder": "correlated",
+    "independent_quorum_weight": 0
+  },
+  "candidate": {
+    "repository": "TTaoGaming/hfo-gen-133",
+    "commit": "db79e8d8a94265c08b5e4b14946bdf6f40bb4e15",
+    "path": "capsules/sigrun/v3/dist/L_LARGE.bound.md",
+    "git_blob_sha": "baeba80369dc5b53bcdcbd5a8ad0315a57d780f3",
+    "utf8_lf_bytes": 230563,
+    "sha256": "f0d29456af873c397844142da186930a175f7f1e52fb059719d3cd73af298492"
+  },
+  "reproduction": {
+    "aggregate_source_monotonicity": "PASS_27_TO_30",
+    "tier_budgets": "PASS",
+    "chunk_reconstruction": "PASS",
+    "three_added_body_hashes": "PASS",
+    "gen132_commit_path_to_blob_readback": "UNKNOWN_IN_ISOLATED_OBJECT_STORE"
+  },
+  "vote": "ABSTAIN",
+  "finding_id": "GEN132_COMMIT_TREE_RELATION_NOT_INDEPENDENTLY_READ_BACK",
+  "finding": "Decoded added bodies reproduce their declared Git blob IDs, but the isolated Gen133 object store lacks the three source commits and blobs, so the declared Gen132 commit:path to blob relations and a clean source-repository rebuild were not independently reproduced.",
+  "falsifier": "A distinct Git readback resolves any declared Gen132 commit:path to a different blob, or a clean rebuild produces different artifacts.",
+  "effect_ceiling": "T0_INTERNAL_ONLY",
+  "transaction_time_utc": "2026-07-30T14:15:51Z"
+}

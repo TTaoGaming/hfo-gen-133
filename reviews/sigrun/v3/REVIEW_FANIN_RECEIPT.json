@@ -1,0 +1,44 @@
+{
+  "schema_id": "hfo.gen133.sigrun_review_fanin_receipt.v1",
+  "candidate": {
+    "repository": "TTaoGaming/hfo-gen-133",
+    "commit": "db79e8d8a94265c08b5e4b14946bdf6f40bb4e15",
+    "path": "capsules/sigrun/v3/dist/L_LARGE.bound.md",
+    "git_blob_sha": "baeba80369dc5b53bcdcbd5a8ad0315a57d780f3",
+    "utf8_lf_bytes": 230563,
+    "sha256": "f0d29456af873c397844142da186930a175f7f1e52fb059719d3cd73af298492"
+  },
+  "inputs": [
+    {
+      "path": "reviews/sigrun/v3/CORRELATED_REVIEW_VERIFIER_IDEMPOTENCE.json",
+      "vote": "FAIL",
+      "independent_quorum_weight": 0
+    },
+    {
+      "path": "reviews/sigrun/v3/CORRELATED_REVIEW_SAFE_LOADING.json",
+      "vote": "PASS",
+      "independent_quorum_weight": 0
+    },
+    {
+      "path": "reviews/sigrun/v3/CORRELATED_REVIEW_PROVENANCE_MONOTONICITY.json",
+      "vote": "ABSTAIN",
+      "independent_quorum_weight": 0
+    }
+  ],
+  "counts": {
+    "payload_bound_review_receipts": 3,
+    "pass": 1,
+    "fail": 1,
+    "abstain": 1,
+    "nofile": 0,
+    "independent_reviewers": 0
+  },
+  "result": "REJECT_V3",
+  "promotion": "DENIED",
+  "tier": "T2_BOUND_PROVISIONAL",
+  "honest_flaw": "All reviews are correlated and carry zero independent quorum weight. The FAIL still rejects v3; the PASS and ABSTAIN preserve useful evidence without establishing admission.",
+  "falsifier": "A new immutable candidate fixes receipt idempotence and receives a payload-bound distinct-provider PASS.",
+  "next_safe_action": "Build immutable v4 with a fresh-receipt verifier and a separately bound safe rehydration view.",
+  "effect_ceiling": "T0_INTERNAL_ONLY",
+  "transaction_time_utc": "2026-07-30T14:15:51Z"
+}
