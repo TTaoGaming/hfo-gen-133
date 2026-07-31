@@ -1,0 +1,139 @@
+---
+schema_id: hfo.gen133.s03_reducer_route.v1
+receipt_id: S03_SPATIAL_FACTORY_GOLDEN_APP_001_REVISE_20260731T230800Z
+result: REVISE
+terminal: false
+work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001
+correlation_id: SPATIAL_FACTORY_GOLDEN_APP_001
+callsign_or_seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+carrier_task_id_expected: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_observed: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_match: true
+wip: 1
+valid_time_utc: 2026-07-31T23:08:00Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+effect_ceiling: INTERNAL_REDUCTION_AND_VERIFICATION_ROUTE_ONLY
+binding_weight: 0
+same_provider_status: SAME_PROVIDER_NONBINDING
+sealed: false
+---
+
+self_probe:
+  task_identity_source: native_scheduled_task_inventory_readback
+  tools_observed:
+    github: read_write
+    slack: read_write
+    native_tasks: read_only_for_this_seat
+  prohibited_effects_observed: none
+
+changed_edge:
+  class: CLAIM_AND_PARTIAL_RETURN_EXPIRED_WITHOUT_BINDING_VERDICT
+  observed_at_utc: 2026-07-31T23:08:00Z
+  material_reason:
+    - the S07 producer return expired at 2026-07-31T22:45:00Z
+    - the S02 claim lease expired at 2026-07-31T23:04:00Z
+    - no exact distinct-provider STOOD or FELL tied to the producer-return digest was found
+    - no explicit named ConsumerAck tied to this WorkItem and producer digest was found
+
+bindings:
+  claim:
+    commit: 289654cf70754738531470c83f6e5f756465ff6a
+    path: projects/spatial-app-factory/claims/20260731T190400Z_SPATIAL_FACTORY_GOLDEN_APP_001_S02.claim.yaml
+    blob: 08f1a7690613570d46c92f3e22eef6ba0ac6ea5f
+    lease_expires_utc: 2026-07-31T23:04:00Z
+    state_at_reduction: EXPIRED
+  executor_packet:
+    commit: 7b5a36f6c4790ed99f80c71b4c8fc57816db8bdc
+    path: projects/spatial-app-factory/dispatch/20260731T212211Z_SPATIAL_FACTORY_GOLDEN_APP_001_S06_EXECUTOR.packet.yaml
+    blob: 2f0fae7cb03e7211de68ccf575fe776854cca89f
+  producer_return:
+    commit: 30ef5fb486653a23786b828a686fef4a80b0c33e
+    path: state/coordination/receipts/chatgpt_runtime/seat-07/20260731T223240Z_SPATIAL_FACTORY_GOLDEN_APP_001_PARTIAL_PRODUCER_RETURN.yaml
+    blob: 986d3c31f3e9e7334c027c52330aff769c5dfa33
+    result: HOLD
+    expiry_utc: 2026-07-31T22:45:00Z
+    state_at_reduction: EXPIRED_PARTIAL_RETURN
+  target_branch:
+    repository: TTaoGaming/TAGS
+    branch: agent/spatial-golden-app-001-20260731
+    base_sha: 1271e25306fe8ef8baea32704cf022435703d498
+    producer_head_sha: fee50a70188b510695e8e5fad2ebadc6cba0535a
+  heritage_offer:
+    commit: 8382aeb66adea6ec312411a7f3550683f495258a
+    path: projects/spatial-app-factory/heritage/20260731T225548Z_S15_FAB_NATIVE_BUTTON_AND_SCRIPT_SEAM_SOURCE_POINTER.yaml
+    result: RETURN_REUSABLE_PRIOR_SOURCE_POINTER
+    expiry_utc: 2026-07-31T23:04:00Z
+    state_at_reduction: EXPIRED_UNACKNOWLEDGED_OFFER
+
+producer_evidence_reduced:
+  exact_byte_readback:
+    adapter_blob: c90a715c72735f0c04d60c91cd9c9afb0f2ddec4
+    unit_test_blob: 9416a2e34c331ab46dd2f04c8d8664dbc0088405
+    smoke_specimen_blob: 2f0e2795fe81910e82b9dc9ff697b86ff5e16231
+  executed_commands:
+    - command: node --version && python3 --version && git --version
+      exit_code: 0
+      reported_output: node_v22.16.0_python_3.13.5_git_2.47.3
+    - command: node --test /tmp/hfo-s07-spatial/tests/spatial-input-adapter.test.mjs
+      exit_code: 0
+      reported_output: 4_tests_4_pass_0_fail
+    - command: git hash-object /tmp/hfo-s07-spatial/prototypes/spatial-input-adapter.js
+      exit_code: 0
+      reported_output: c90a715c72735f0c04d60c91cd9c9afb0f2ddec4
+    - command: git hash-object /tmp/hfo-s07-spatial/tests/spatial-input-adapter.test.mjs
+      exit_code: 0
+      reported_output: 9416a2e34c331ab46dd2f04c8d8664dbc0088405
+  missing_or_failed_evidence:
+    - A7_STATIC_SMOKE explicitly fell because fab-prototype.html did not load the adapter
+    - full-branch git status, rev-parse, diff-check, combined Node suite, static server, and curl gate were not run
+    - browser behavior, trusted activation, native mouse/touch/keyboard fallback, focus, and accessibility were not demonstrated
+    - the newer exactly-once target activation contract raised by S08 and S09 was not implemented or tested in this producer digest
+
+reduction:
+  decision: REVISE
+  reason: >-
+    The bound return is honest but incomplete and expired. It proves four isolated Node tests over exact
+    adapter/test bytes, not integration or the frozen A1-A9 acceptance contract. A7 fell, the claim lease
+    expired, no distinct verifier returned STOOD or FELL against blob 986d3c31f3e9e7334c027c52330aff769c5dfa33,
+    and no named consumer acknowledged a stood result. This WorkItem cannot advance to terminal closure.
+  not_claimed:
+    - no producer repair or continuation was performed by S03
+    - no PASS, STOOD, FELL, ConsumerAck, merge, deployment, publication, or terminal receipt is claimed
+    - S08 and S09 ChatGPT-carried revisions remain advisory same-provider evidence with binding weight zero
+
+verification_route:
+  named_distinct_verifier: Sigrun/P4_APEX_FALSIFICATION_or_other_distinct_provider_nonproducer
+  route_expiry_utc: 2026-08-01T00:08:00Z
+  exact_packet:
+    subject_work_item: SPATIAL_FACTORY_GOLDEN_APP_001
+    claim_blob: 08f1a7690613570d46c92f3e22eef6ba0ac6ea5f
+    producer_return_blob: 986d3c31f3e9e7334c027c52330aff769c5dfa33
+    producer_head_sha: fee50a70188b510695e8e5fad2ebadc6cba0535a
+    required_transition:
+      - confirm whether the target branch still resolves to the bound producer head or name a newer producer digest
+      - reproduce from base SHA 1271e25306fe8ef8baea32704cf022435703d498
+      - require the additive HTML script-load seam while preserving the native FAB activation path
+      - require target-specific exactly-once activation after one valid pinch release and zero activation for held, invalid, missing, or low-confidence samples
+      - run the frozen A1-through-A9 command set with exact commands, outputs, exit codes, changed paths, final branch SHA, rollback, expiry, and honest flaw
+      - return only STOOD or FELL tied to the final producer-return blob and final target SHA
+      - do not upgrade static evidence into a browser or trusted-user-activation claim
+  same_provider_preflight_allowed: true
+  same_provider_preflight_binding_weight: 0
+
+consumer_ack_gate:
+  consumer: Olrun/Claude-Dispatch
+  required_after: exact_distinct_STOOD_only
+  required_form: explicit_CONSUMED_or_REJECTED_WITH_REASON_bound_to_work_item_and_final_producer_digest
+  implicit_ack_forbidden: true
+
+rollback:
+  source_mutation_performed: false
+  candidate_edit_performed: false
+  safe_reversal: this immutable nonterminal route may be superseded only by a newer exact producer return, distinct STOOD_or_FELL, or terminal receipt; do not delete history
+
+honest_flaw: >-
+  This reducer is a ChatGPT same-provider carrier and cannot provide binding independent verification. The
+  distinct-provider verifier ingress is named but was not directly invokable from this execution surface;
+  the Slack pointer is routing evidence, not verifier consumption. Repository search can establish that no
+  matching durable verdict or ConsumerAck was found on the read surfaces, but cannot prove that no private or
+  not-yet-synchronized verifier work exists elsewhere.
