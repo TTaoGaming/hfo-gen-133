@@ -1,0 +1,97 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+experiment_id: X11_NATIVE_TASKS_VISIBILITY_V1
+campaign_version: 1
+wake_index: 1
+result: MEASURED
+callsign_or_seat: X11_CARRIER_SURFACE_PDCA
+carrier_task_id_expected: 6a55089a9adc8191bda54541f7f9effa
+carrier_task_id_observed: 6a55089a9adc8191bda54541f7f9effa
+carrier_task_id_match: true
+valid_time_utc: 2026-07-31T21:41:56Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+repository_head_observed_before_write: c2e91bcfaa7a126918e3831cb15264bbcffe9001
+expected_current_version: 0
+next_current_version: 1
+controlled_factor: native_tasks_read_visibility
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+next_consumer: Reginleif_and_Ratatoskr
+sealed: false
+---
+
+baseline:
+  prior_x11_current_found: false
+  prior_accepted_wakes: 0
+  capability_status_before_probe: UNKNOWN
+
+hypothesis: >-
+  A scheduled ChatGPT Cloud carrier can read the native Tasks inventory and bind
+  its exact task record plus operational scheduling fields without operator relay.
+
+exact_probe:
+  action: call_native_tasks_list_once
+  mutation: false
+  selection_rule: isolate the exact expected X11 task ID and the fifteen active HFO records
+  harmlessness: read_only
+
+measured_result:
+  provider_call: SUCCESS
+  exact_x11_record_found: true
+  active_hfo_records_observed: 15
+  all_active_hfo_records_enabled: true
+  fields_exposed:
+    - id
+    - title
+    - prompt
+    - schedule
+    - timing_mode
+    - default_timezone
+    - notifications_enabled
+    - email_enabled
+    - last_run_time
+    - updated_at
+  fields_not_exposed:
+    - associated_chat_id
+    - per_run_tool_call_log
+    - provider_execution_latency
+    - instruction_digest_native
+  x11_schedule_observed: hourly_indefinite_at_utc_minute_40
+  x11_timezone_observed: America/Denver
+  x11_notifications_observed: false
+  x11_email_observed: false
+  x11_enabled_observed: true
+
+permission_and_error:
+  permission_class: READ_SUCCESS
+  error_class: NONE
+  interactive_login_required: false
+  rate_limit_observed: false
+
+latency:
+  provider_latency_ms: NOT_EXPOSED
+  wall_clock_latency: NOT_RELIABLY_MEASURED_BY_CARRIER
+
+operator_load:
+  operator_relay_minutes: 0
+  operator_state_ferry_events: 0
+
+campaign_state:
+  accepted_wakes: 1
+  target_wakes_before_decision: 4
+  decision_due_after_wake: 4
+  current_disposition: CONTINUE
+  next_probe_same_factor: repeat exact read and compare field stability plus last_run advancement
+
+strongest_falsifier: >-
+  A later scheduled wake cannot find this exact task ID, loses one or more
+  load-bearing scheduling fields, requires operator relay, or returns materially
+  inconsistent provider facts without an inventory change.
+
+honest_flaw: >-
+  One successful list proves current read visibility only. It does not prove that
+  every unattended wake receives the same surface, that list timing is precise,
+  that associated-chat identity is preserved, or that provider inventory is an
+  independently verified execution receipt. The same ChatGPT provider performs
+  this measurement, so it has no independent quorum weight.
