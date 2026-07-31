@@ -2,16 +2,17 @@
 schema_id: hfo.gen133.x14.false_green_current.v1
 experiment_id: X14_FALSE_GREEN_MUTATION_001
 object_id: X14_FALSE_GREEN_CAMPAIGN_STATE
-version: 1
-expected_previous_version: 0
-previous_pointer_state: ABSENT
-accepted_wakes: 1
+version: 2
+expected_previous_version: 1
+previous_pointer_blob_sha: 189d342d349521ae4362e4e5743d7743262ba968
+accepted_wakes: 2
 campaign_length: 4
 current_status: MUTANT_CREATED_AWAITING_VERDICT
-current_mutation_class: TASK_ID_MISMATCH
-next_mutation_class: ACTOR_CARRIER_CONFLATION
+current_mutation_class: ACTOR_CARRIER_CONFLATION
+next_mutation_class: STALE_SOURCE_DIGEST
 carrier_task_id: 6a513e4d9c4c81919db728f85db2dd79
-valid_time_utc: 2026-07-31T21:52:58Z
+carrier_task_id_verified_from_native_inventory: true
+valid_time_utc: 2026-07-31T22:55:02Z
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 canonical_repository: TTaoGaming/hfo-gen-133
 canonical_branch: agent/gen133-bootstrap-20260730
@@ -20,32 +21,44 @@ sealed: false
 ---
 
 source_candidate:
-  commit: 18a9edd9146a0975366a859808d5200f43a8d617
-  path: state/coordination/experiments/cots_connector_x13/20260731T214800Z_DBOS_PYTHON_PHASE1_OFFICIAL_CONTRACT_BASELINE.md
-  git_blob_sha1: 2f41ee5970ca8f856897a39461c2462cf453b8b7
+  commit: 209ef850d1eb756cf0cef3356a5b6dcb5b7d7bfe
+  path: state/coordination/experiments/cots_connector_x13/20260731T225132Z_DBOS_PYTHON_PHASE2_EXECUTION_SURFACE_HOLD.md
+  git_blob_sha1: 9b68e762087bc59f3429ead3c31110e41fedf3d8
   authoring_seat: X13_COTS_CONNECTOR_PDCA
+  prior_x14_mutation_at_source_digest: false
 
 latest_mutant:
-  mutant_id: X14_MUTANT_001_70422e566d98
-  commit: 87227e451a141d3293eedc00af07bbd0f243915e
-  path: state/coordination/experiments/false_green_x14/quarantine/20260731T215258Z_X13_DBOS_TASK_ID_MISMATCH.mutant.yaml
-  git_blob_sha1: e7b1192942e2388e65ab990e837a3213eae74425
-  canonical_mutation_digest_sha256: 70422e566d9826c561624daf0f23d29743e1922b95ea97b1b09d602a477495ba
+  mutant_id: X14_MUTANT_002_ff440b04baf5
+  commit: 282e4905911bee0854b6a78cfe3739db57c2b2e8
+  path: state/coordination/experiments/false_green_x14/quarantine/20260731T225502Z_X13_DBOS_ACTOR_CARRIER_CONFLATION.mutant.yaml
+  git_blob_sha1: d75b24107689b8e27ee40b8dc950490816f3ad01
+  canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_mutation_digest_sha256: ff440b04baf594f2447b567bd64e272a01a44a939a013660c7dee2447c9d0576
   expected_verdict: REVISE
-  named_gate: S04_TASK_BINDING_RECOMPUTE
-  expires_utc: 2026-08-01T01:52:58Z
+  named_gate: S04_ACTOR_CARRIER_SEPARATION
+  expires_utc: 2026-08-01T02:55:02Z
+
+prior_wake_verdict:
+  mutant_id: X14_MUTANT_001_70422e566d98
+  verdict_commit: 0913e022096c7bf1f6eda6e2454e1c611b703c65
+  result: REVISE
+  intended_mutant_caught: true
+  evidence_class: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  independent_verification_status: NOT_CLOSED
 
 routing:
   structural_preflight: S04_STRUCTURAL_PREFLIGHT
-  distinct_falsification: Sigrun/P4_APEX_FALSIFICATION
+  distinct_falsification: SIGRUN_P4_APEX_FALSIFICATION_WHEN_AVAILABLE
   consumer: X14_CAMPAIGN_REDUCER_AND_RATATOSKR
-  verdict_status: NOT_YET_CONSUMED
+  current_verdict_status: NOT_YET_CONSUMED
 
 campaign_decision:
   due_after_accepted_wake: 4
   allowed: [KEEP_GATE, REVISE_GATE, ADD_MUTATION, HOLD]
 
 honest_flaw: >-
-  The first mutant is header-scoped and the pointer advance is a second Git commit. Git therefore
-  provides auditability but no cross-file transaction between the immutable mutant and this CURRENT
-  projection. A distinct-provider verdict has been requested but not observed.
+  The actor/carrier distinction is inferred from source authorship, `seat`, and native task mapping;
+  no registered repository schema formally defines those semantics for the X13 event. Git also places
+  the immutable mutant and this CURRENT projection in separate commits, so there is no cross-file
+  transaction or exactly-once guarantee. Distinct-provider review remains requested, not observed.
