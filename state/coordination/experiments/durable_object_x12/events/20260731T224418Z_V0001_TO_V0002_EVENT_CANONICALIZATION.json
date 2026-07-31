@@ -1,0 +1,52 @@
+{
+  "canonical_transition": {
+    "acceptance": {
+      "canonicalization_algorithm": "JCS_LIKE_V1: Unicode NFC; UTF-8; JSON objects sorted lexicographically by key; arrays preserve order; integers only for versions; booleans/literals lowercase; separators comma/colon; no insignificant whitespace; LF only",
+      "expected_recomputation": "sha256(canonical_json_utf8(canonical_transition)) equals event_digest_sha256",
+      "next_wake_requirement": "Recompute this event digest from exact source bytes, reject this idempotency key as a duplicate, and reject any transition whose expected_version is not CURRENT.version."
+    },
+    "campaign": {
+      "campaign_id": "X12_EVENT_CANONICALIZATION_C1",
+      "factor": "event_canonicalization",
+      "wake_ordinal": 2,
+      "wake_target": 4
+    },
+    "consumer": "Reginleif/Olrun",
+    "effect_ceiling": "FILE_AND_SANITIZED_SLACK_ONLY",
+    "evidence_class": "DIRECT_GITHUB_READBACK_PLUS_LOCAL_DETERMINISTIC_CANONICALIZATION_PROBE",
+    "expected_version": 1,
+    "expiry_utc": "2026-08-01T02:44:00Z",
+    "experiment": {
+      "baseline": "Wake 1 immutable event declared JCS_LIKE_V1 and digest 9c5084d0... but had not yet recorded a key-order invariance probe.",
+      "controlled_factor": "JSON object insertion order only; semantic values unchanged.",
+      "exact_probe": "Parse the wake-1 canonical_transition, construct a recursively reversed-key insertion-order clone, serialize both with UTF-8, sort_keys=true, separators comma/colon, ensure_ascii=false, then compare exact bytes and SHA-256.",
+      "hypothesis": "JCS_LIKE_V1 canonicalization makes map insertion order irrelevant for this event shape.",
+      "measured_result": {
+        "canonical_bytes_equal": true,
+        "digest_a_sha256": "9c5084d04d07395252e281ee23cf065c27ad3164106f09f8adeb825b86bb9f95",
+        "digest_b_sha256": "9c5084d04d07395252e281ee23cf065c27ad3164106f09f8adeb825b86bb9f95",
+        "expected_prior_digest_sha256": "9c5084d04d07395252e281ee23cf065c27ad3164106f09f8adeb825b86bb9f95",
+        "latency": "NOT_EXPOSED",
+        "operator_relay_minutes": 0,
+        "permission_error_class": "NONE",
+        "prior_digest_match": true
+      },
+      "strongest_falsifier": "A distinct implementation given the same exact semantic object emits different canonical bytes or digest, or an allowed Unicode/number edge case breaks equivalence."
+    },
+    "honest_flaw": "The probe covers this event shape only. Python sort_keys JSON is JCS-like, not a proof of full RFC 8785 compliance; Unicode normalization and non-integer numeric edge cases were not independently tested. GitHub event creation and CURRENT update remain two separate commits with no cross-file transaction, lock, or exactly-once guarantee.",
+    "idempotency_key": "a8ed2f5b42f9baaf5ade3b6bcfea7b077038cebe5106a694f63a108d3a06fe09",
+    "next_version": 2,
+    "nonce": "x12-20260731T224418Z-4fec2f19",
+    "object_id": "HFO_X12_WORKFLOW_OBJECT_001",
+    "prior_digest_sha256": "9c5084d04d07395252e281ee23cf065c27ad3164106f09f8adeb825b86bb9f95",
+    "prior_version": 1,
+    "rollback": "Do not delete this immutable event. If invalidated after pointer advance, append a compensating event from the then-current version and update CURRENT using that pointer's exact blob SHA.",
+    "task_id": "6a506f83df208191815dd17a8fd5baa3",
+    "transaction_time_utc": "SEE_GITHUB_COMMIT_METADATA",
+    "valid_time_utc": "2026-07-31T22:44:18Z",
+    "verifier": "S04_STRUCTURAL_PREFLIGHT_WEIGHT_0_THEN_SIGRUN_P4_DISTINCT"
+  },
+  "canonicalization": "JCS_LIKE_V1",
+  "event_digest_sha256": "4eba0bcadaa1923a7ac6b3eaabe081e307bf4fad6c894e5758876a86fef2d89f",
+  "schema_id": "hfo.gen133.x12.durable_object_event.v1"
+}
