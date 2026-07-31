@@ -1,0 +1,105 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+experiment_id: X11_NATIVE_TASKS_VISIBILITY_V1
+campaign_version: 2
+wake_index: 2
+result: MEASURED_STABLE
+callsign_or_seat: X11_CARRIER_SURFACE_PDCA
+carrier_task_id_expected: 6a55089a9adc8191bda54541f7f9effa
+carrier_task_id_observed: 6a55089a9adc8191bda54541f7f9effa
+carrier_task_id_match: true
+valid_time_utc: 2026-07-31T22:40:27Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+expected_current_version: 1
+next_current_version: 2
+controlled_factor: native_tasks_read_visibility
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+next_consumer: Reginleif_and_Ratatoskr
+sealed: false
+---
+
+baseline:
+  prior_current_version: 1
+  prior_accepted_wakes: 1
+  prior_event_commit: 8ba928895354831132405a28e9fa5fbcdd4d6553
+  prior_event_blob: 7585369162667e2c74f589a7fcaae11df134e318
+  prior_event_valid_time_utc: 2026-07-31T21:41:56Z
+  prior_result: MEASURED
+  prior_capability_status: READ_SUCCESS
+
+hypothesis: >-
+  Repeating the same read-only native Tasks inventory probe on a later wake will
+  preserve the load-bearing X11 task fields and expose a last-run timestamp newer
+  than the prior wake event without operator relay.
+
+exact_probe:
+  action: call_native_tasks_list_once
+  mutation: false
+  selection_rule: isolate the exact expected X11 task ID and count the active HFO Gen-133 records
+  comparison_rule: compare task identity and load-bearing scheduling fields to wake 1; compare provider last_run_time to wake-1 event valid time
+  harmlessness: read_only
+
+measured_result:
+  provider_call: SUCCESS
+  exact_x11_record_found: true
+  active_hfo_gen133_records_observed: 15
+  all_active_hfo_gen133_records_enabled: true
+  x11_title_observed: HFO X11 Carrier Surface PDCA Lab
+  x11_schedule_observed: hourly_indefinite_at_utc_minute_40
+  x11_timing_mode_observed: exact_schedule
+  x11_timezone_observed: America/Denver
+  x11_notifications_observed: false
+  x11_email_observed: false
+  x11_enabled_observed: true
+  x11_last_run_time_observed_utc: 2026-07-31T21:44:28.138933Z
+  x11_updated_at_observed_utc: 2026-07-31T21:44:50.374900Z
+  last_run_time_newer_than_wake_1_event_valid_time: true
+  updated_at_newer_than_wake_1_event_valid_time: true
+  load_bearing_field_stability_against_wake_1:
+    task_id: STABLE
+    title: STABLE
+    schedule_semantics: STABLE
+    timing_mode: STABLE
+    timezone: STABLE
+    notifications_enabled: STABLE
+    email_enabled: STABLE
+    enabled_state: STABLE
+  prompt_byte_stability: NOT_PROVEN_PRIOR_DIGEST_NOT_PERSISTED
+  associated_chat_visibility: NOT_EXPOSED
+  current_inflight_wake_completion_visibility: NOT_EXPECTED_DURING_INFLIGHT_RUN
+
+permission_and_error:
+  permission_class: READ_SUCCESS
+  error_class: NONE
+  interactive_login_required: false
+  rate_limit_observed: false
+
+latency:
+  provider_latency_ms: NOT_EXPOSED
+  wall_clock_latency: NOT_RELIABLY_MEASURED_BY_CARRIER
+
+operator_load:
+  operator_relay_minutes: 0
+  operator_state_ferry_events: 0
+
+campaign_state:
+  accepted_wakes: 2
+  target_wakes_before_decision: 4
+  decision_due_after_wake: 4
+  current_disposition: CONTINUE
+  next_probe_same_factor: repeat exact read; persist the observed prior last_run_time and test monotonic advancement plus field stability on wake 3
+
+strongest_falsifier: >-
+  A later accepted wake cannot find the exact task ID, loses a load-bearing field,
+  requires operator relay, shows a non-monotonic completed-run timestamp without a
+  documented inventory reset, or returns materially inconsistent provider facts.
+
+honest_flaw: >-
+  Wake 1 did not persist its exact observed last_run_time or a native prompt digest,
+  so this wake proves only that the current completed-run timestamp is newer than
+  wake 1's event valid time and that selected fields remain stable. It does not prove
+  byte-for-byte prompt stability, current in-flight completion, associated-chat
+  continuity, precise provider latency, or independent execution truth. This is
+  same-provider descriptive evidence with binding weight zero.
