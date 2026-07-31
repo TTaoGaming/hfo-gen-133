@@ -1,7 +1,7 @@
 {
   "canonical_projection": {
     "campaign": {
-      "accepted_wakes": 1,
+      "accepted_wakes": 2,
       "campaign_id": "X12_EVENT_CANONICALIZATION_C1",
       "factor": "event_canonicalization",
       "next_factor_after_decision": "pointer_update_pattern",
@@ -11,19 +11,23 @@
     "effect_ceiling": "FILE_AND_SANITIZED_SLACK_ONLY",
     "expiry_utc": "2026-08-01T02:44:00Z",
     "latest_event": {
-      "blob": "dd8a8eec042fc874f2e636b208e6e3772ba2a017",
-      "commit": "c7060528ddb518f7bcc69924d13381b6c4e8085c",
-      "digest_sha256": "9c5084d04d07395252e281ee23cf065c27ad3164106f09f8adeb825b86bb9f95",
-      "idempotency_key": "391c44c96071daa258b25cc1167144aa738fbba46cc13ea02aca6b5c46d3078c",
-      "path": "state/coordination/experiments/durable_object_x12/events/20260731T214236Z_V0000_TO_V0001_EVENT_CANONICALIZATION.json"
+      "blob": "c7f2f8b8ee23430d1323a65adb9f261cc53051b8",
+      "commit": "e5fa6adbe436e07705bf47d5b86e7b21abc132ba",
+      "digest_sha256": "4eba0bcadaa1923a7ac6b3eaabe081e307bf4fad6c894e5758876a86fef2d89f",
+      "idempotency_key": "a8ed2f5b42f9baaf5ade3b6bcfea7b077038cebe5106a694f63a108d3a06fe09",
+      "path": "state/coordination/experiments/durable_object_x12/events/20260731T224418Z_V0001_TO_V0002_EVENT_CANONICALIZATION.json"
     },
     "object_id": "HFO_X12_WORKFLOW_OBJECT_001",
     "state": "ACTIVE_CAMPAIGN",
     "task_id": "6a506f83df208191815dd17a8fd5baa3",
+    "version": 2
+  },
+  "expected_previous_pointer": {
+    "blob": "de5effa3277956a1be038217610d3c0af05e8c75",
+    "projection_digest_sha256": "2cfd2d83207993ec70f9105bffe4a1e8c5883f186259012a363a8c9940175142",
     "version": 1
   },
-  "expected_previous_pointer": "ABSENT_GENESIS_VERSION_0",
-  "honest_atomicity_limit": "CURRENT creation was a second Git commit after the immutable event. GitHub Contents API did not provide a transaction spanning both paths. Future CURRENT updates must supply the exact current blob SHA, which detects stale writes on this pointer but does not prevent competing event creation.",
-  "projection_digest_sha256": "2cfd2d83207993ec70f9105bffe4a1e8c5883f186259012a363a8c9940175142",
+  "honest_atomicity_limit": "The immutable v1→v2 event was committed before this pointer update. GitHub Contents API checks the supplied prior CURRENT blob SHA for this one file, which detects a stale pointer write, but there is no atomic transaction across event and pointer, no lock, and no exactly-once guarantee; competing immutable events can still exist.",
+  "projection_digest_sha256": "fc23ec5a0aeb4aad10d4f716797ecbd867fe72dee9680da6612b95ff9566bf26",
   "schema_id": "hfo.gen133.x12.durable_object_current.v1"
 }
