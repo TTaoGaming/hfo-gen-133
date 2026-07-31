@@ -1,0 +1,34 @@
+{
+  "canonical_transition": {
+    "acceptance": {
+      "canonicalization_algorithm": "JCS_LIKE_V1: Unicode NFC; UTF-8; JSON objects sorted lexicographically by key; arrays preserve order; integers only for versions; booleans/literals lowercase; separators comma/colon; no insignificant whitespace; LF only",
+      "expected_recomputation": "sha256(canonical_json_utf8) equals event_digest_sha256",
+      "next_wake_requirement": "recompute the same projection from the immutable event and reject any duplicate idempotency key or stale expected_version"
+    },
+    "campaign": {
+      "campaign_id": "X12_EVENT_CANONICALIZATION_C1",
+      "factor": "event_canonicalization",
+      "wake_ordinal": 1,
+      "wake_target": 4
+    },
+    "consumer": "Reginleif/Olrun",
+    "effect_ceiling": "FILE_AND_SANITIZED_SLACK_ONLY",
+    "evidence_class": "DIRECT_NATIVE_TASK_SELF_PROBE_PLUS_GITHUB_CONTENTS_WRITE_READBACK",
+    "expiry_utc": "2026-08-01T02:44:00Z",
+    "honest_flaw": "GitHub Contents API gives per-file optimistic concurrency when updating an existing file by blob SHA, but this genesis transition requires two commits (immutable event then CURRENT pointer). The pair is not atomic, no database transaction or exactly-once guarantee exists, and concurrent writers could create competing immutable events before one CURRENT update loses.",
+    "idempotency_key": "391c44c96071daa258b25cc1167144aa738fbba46cc13ea02aca6b5c46d3078c",
+    "next_version": 1,
+    "nonce": "x12-20260731T214236Z-4f2c7a91",
+    "object_id": "HFO_X12_WORKFLOW_OBJECT_001",
+    "prior_digest_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "prior_version": 0,
+    "rollback": "Do not delete this immutable event. If invalidated, append a compensating event from the then-current version and update CURRENT using its exact prior blob SHA.",
+    "task_id": "6a506f83df208191815dd17a8fd5baa3",
+    "transaction_time_utc": "SEE_GITHUB_COMMIT_METADATA",
+    "valid_time_utc": "2026-07-31T21:42:36Z",
+    "verifier": "S04_STRUCTURAL_PREFLIGHT_WEIGHT_0_THEN_SIGRUN_P4_DISTINCT"
+  },
+  "canonicalization": "JCS_LIKE_V1",
+  "event_digest_sha256": "9c5084d04d07395252e281ee23cf065c27ad3164106f09f8adeb825b86bb9f95",
+  "schema_id": "hfo.gen133.x12.durable_object_event.v1"
+}
