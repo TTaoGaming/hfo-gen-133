@@ -1,0 +1,127 @@
+---
+schema_id: hfo.gen133.heritage_reuse_result.v1
+result_id: S15_SPATIAL_GOLDEN_001_PINCH_CORE_REUSE_20260731T215445Z
+result: RETURN_REUSABLE_PRIOR_ARTIFACT_WITH_FAILURE_ANTIBODY
+valid_time_utc: 2026-07-31T21:54:45Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+seat: 15
+wip: 1
+carrier_identity: DISPOSABLE_SCHEDULED_CARRIER_NOT_LINEAGE
+expected_task_id: 6a52f485409c8191aa06ea7911add3f3
+observed_task_id: 6a52f485409c8191aa06ea7911add3f3
+task_id_match: true
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+sealed: false
+---
+
+self_probe:
+  model_claim: GPT-5.6 Thinking
+  model_attestation_ceiling: runtime claim only; no cryptographic model attestation available
+  tools_observed:
+    github: read_write
+    slack: read_write
+    file_library: available_but_not_used
+    google_drive_docs_sheets_slides: available_via_connector_but_not_used
+    task_management: not_called
+  effect_ceiling_honored: true
+
+current_work_item:
+  work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001
+  claim:
+    commit: 289654cf70754738531470c83f6e5f756465ff6a
+    path: projects/spatial-app-factory/claims/20260731T190400Z_SPATIAL_FACTORY_GOLDEN_APP_001_S02.claim.yaml
+    blob: 08f1a7690613570d46c92f3e22eef6ba0ac6ea5f
+    lease_expires_utc: 2026-07-31T23:04:00Z
+  executor_packet:
+    path: projects/spatial-app-factory/dispatch/20260731T212211Z_SPATIAL_FACTORY_GOLDEN_APP_001_S06_EXECUTOR.packet.yaml
+    blob: 2f0fae7cb03e7211de68ccf575fe776854cca89f
+    expiry_utc: 2026-07-31T22:45:00Z
+  named_evidence_gap:
+    - A3_PINCH_EDGE requires one down edge, no duplicate while held, and one up edge on release
+    - A4_INVALID_INPUT requires invalid or below-confidence samples to emit nothing
+
+search_and_dedup:
+  gen133_searched_first: true
+  exact_source_pointer_query: Precision-Pinch-Roadmap.md ac21e92554a302afe43360ffeeba8902d9bf42e3
+  exact_source_pointer_matches_in_gen133: 0
+  semantic_query: pinch pointermove pointerdown pointerup
+  semantic_matches_in_gen133:
+    - projects/spatial-app-factory/dispatch/20260731T212211Z_SPATIAL_FACTORY_GOLDEN_APP_001_S06_EXECUTOR.packet.yaml
+  duplicate_result_found: false
+  minimum_older_cluster_read:
+    repository: TTaoGaming/Tectangle
+    path: HiveFleetObsidian/tools/pinch_core_portable.mjs
+    commit: 49da03bd595d364789c219382ec6bec6f56b552d
+    blob: 2902f80d2d955bf56d26dccde112d5c62ae087da
+
+heritage_source:
+  artifact_kind: dependency_free_pinch_state_core
+  repository: TTaoGaming/Tectangle
+  path: HiveFleetObsidian/tools/pinch_core_portable.mjs
+  commit: 49da03bd595d364789c219382ec6bec6f56b552d
+  blob: 2902f80d2d955bf56d26dccde112d5c62ae087da
+  source_snapshot_date_utc: 2025-09-22T20:00:03Z
+  date_basis: timestamp visible in the pinned commit snapshot; original file creation time was not established
+  body_copied_to_gen133: false
+
+supported_claims:
+  - The pinned file is a small dependency-free ES module with an explicit up/down pinch state.
+  - Separate enter and exit thresholds implement hysteresis.
+  - A debounce interval and state guard suppress repeated down events while pinch remains held.
+  - The module emits distinct pinch-down and pinch-up transitions and exposes current state.
+  - Hand-span normalization is present as a reusable design seam.
+
+excluded_claims:
+  - It does not map normalized coordinates to viewport pointer position.
+  - It emits custom pinch events, not ordinary pointermove, pointerdown, or pointerup descriptors.
+  - It does not validate confidence, finite coordinates, or complete landmarks.
+  - Missing landmarks can collapse to zero-like defaults and therefore can create false transitions.
+  - Its palm-cone parameter is explicitly a placeholder and is not enforced.
+  - It does not prove native mouse, touch, keyboard, or click fallback preservation.
+  - It provides no pinned test receipt or real execution evidence for the current WorkItem.
+
+reuse_contract:
+  consume_only:
+    - the explicit up/down state transition pattern
+    - separated enter and exit thresholds
+    - held-state duplicate suppression
+  must_not_copy_as_complete_adapter: true
+  required_repairs_for_current_work_item:
+    - reject missing, non-finite, and below-confidence samples before any state transition
+    - map valid normalized coordinates to deterministic viewport pointermove descriptors
+    - emit ordinary pointerdown and pointerup descriptors through injected factories and targets
+    - preserve native click, keyboard, mouse, and touch paths without preventDefault or interception
+  acceptance_relevance:
+    A3_PINCH_EDGE: strong_partial_reuse
+    A4_INVALID_INPUT: failure_antibody_and_required_repair
+    A2_POINTER_POSITION: not_supported
+    A5_NATIVE_FALLBACK: not_supported
+  consumption_status: OFFERED_TO_ACTIVE_WORK_ITEM_NOT_YET_ACKNOWLEDGED
+  credit_rule: no heritage credit unless the producer return binds this receipt and shows the consumed transition pattern or explicitly rejects it with evidence
+
+privacy_ceiling:
+  source_visibility: not_asserted
+  source_body_location: remains_in_source_repository
+  gen133_content: sanitized pointer, metadata, supported claims, exclusions, and reuse contract only
+  secrets_or_private_facts_copied: false
+
+consumer:
+  primary: Olrun/Claude-Dispatch
+  execution_consumer: S06 real producer for SPATIAL_FACTORY_GOLDEN_APP_001
+  required_ack: bind this receipt path and state CONSUMED or REJECTED_WITH_REASON in the producer return
+
+verifier:
+  named: Sigrun/P4_APEX_FALSIFICATION
+  independence: distinct_provider_or_nonproducer
+  verification_target:
+    - source commit, path, and blob resolve
+    - current implementation does not inherit the invalid-input false-transition flaw
+    - A3 and A4 evidence binds the actual producer commit and test exit codes
+
+expiry:
+  heritage_offer_expires_utc: 2026-07-31T22:45:00Z
+  after_expiry: no fitness credit without a new live consumer binding
+
+honest_flaw: >-
+  The source file was read at a pinned repository snapshot, but this carrier did not execute it and did not establish its original creation date. The source is useful only as a narrow state-machine pattern. Copying it wholesale would fail the current pointer-event contract and could preserve a dangerous invalid-input behavior. No consumer acknowledgement or independent verifier verdict exists at write time.
