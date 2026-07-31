@@ -1,0 +1,72 @@
+{
+  "canonical_transition": {
+    "acceptance": {
+      "canonicalization_algorithm": "JCS_LIKE_V1: recursively normalize JSON object keys and string values to Unicode NFC; UTF-8; objects sorted lexicographically by normalized key; arrays preserve order; integers only for versions; booleans/literals lowercase; separators comma/colon; no insignificant whitespace; LF only",
+      "expected_recomputation": "sha256(canonical_json_utf8(canonical_transition)) equals event_digest_sha256",
+      "next_wake_requirement": "At wake 4, recompute this digest from exact bytes, reject this idempotency key as a duplicate, run one final integer/version canonicalization guard, then issue KEEP | REVISE | RESEAT_VARIABLE | HOLD for campaign X12_EVENT_CANONICALIZATION_C1."
+    },
+    "campaign": {
+      "campaign_id": "X12_EVENT_CANONICALIZATION_C1",
+      "factor": "event_canonicalization",
+      "wake_ordinal": 3,
+      "wake_target": 4
+    },
+    "consumer": "Reginleif/Olrun",
+    "effect_ceiling": "FILE_AND_SANITIZED_SLACK_ONLY",
+    "evidence_class": "DIRECT_NATIVE_TASK_SELF_PROBE_PLUS_GITHUB_EXACT_BYTES_READBACK_PLUS_LOCAL_DETERMINISTIC_UNICODE_NFC_PROBE",
+    "expected_version": 2,
+    "experiment": {
+      "baseline": "Wake 2 established key-insertion-order invariance for the current event shape but did not test the declared Unicode NFC rule.",
+      "controlled_factor": "Unicode representation only: composed versus canonically decomposed code points in both object keys and string values; semantic text, integer version, and nesting unchanged.",
+      "exact_probe": "Construct baseline {\"café\":{\"Å\":\"résumé\",\"plain\":\"stable\"},\"version\":2} and a variant using cafe+U+0301, A+U+030A, and decomposed acute accents; recursively NFC-normalize keys and string values; reject normalized-key collisions; JSON serialize UTF-8 with sorted keys and comma/colon separators; compare exact bytes and SHA-256.",
+      "hypothesis": "The declared JCS_LIKE_V1 NFC step makes canonically equivalent Unicode spellings produce identical canonical bytes for this bounded specimen.",
+      "measured_result": {
+        "canonical_bytes_equal": true,
+        "canonical_length_bytes": 56,
+        "digest_a_sha256": "1eb7922838218726adce8a94b1169fd277fbbe91dd4da45f3e111ab1c906b40d",
+        "digest_b_sha256": "1eb7922838218726adce8a94b1169fd277fbbe91dd4da45f3e111ab1c906b40d",
+        "latency": "NOT_EXPOSED",
+        "normalized_key_collision": false,
+        "operator_relay_minutes": 0,
+        "permission_error_class": "NONE",
+        "prior_event_digest_recomputed": true,
+        "prior_event_digest_sha256": "4eba0bcadaa1923a7ac6b3eaabe081e307bf4fad6c894e5758876a86fef2d89f"
+      },
+      "strongest_falsifier": "A distinct implementation applying the stated NFC-and-sort rules to the exact specimen emits different bytes/digest, or a normalized-key collision is silently overwritten rather than rejected."
+    },
+    "expiry_utc": "2026-08-01T02:44:00Z",
+    "honest_flaw": "This is one bounded Unicode specimen, not proof of full RFC 8785 compliance. It does not cover normalized-key collisions, lone surrogates, locale-sensitive behavior, arrays with Unicode variants, or non-integer numeric serialization. Python's Unicode database/version may differ from another carrier. GitHub event creation and CURRENT update are separate commits: there is no cross-file transaction, lock, linearizable compare-and-swap, or exactly-once guarantee, and a competing immutable event may remain if the pointer update loses.",
+    "idempotency_key": "e4f3d19ae122bbcf394cb1014aa0295ead9542b6e04f21507cf33fc6c0f66cf6",
+    "next_version": 3,
+    "nonce": "x12-20260731T234431Z-dac19275",
+    "object_id": "HFO_X12_WORKFLOW_OBJECT_001",
+    "prior_digest_sha256": "4eba0bcadaa1923a7ac6b3eaabe081e307bf4fad6c894e5758876a86fef2d89f",
+    "prior_version": 2,
+    "rollback": "Do not delete this immutable event. If later invalidated, append a compensating event from the then-current version and update CURRENT only with that pointer's exact prior blob SHA.",
+    "self_probe": {
+      "expected_task_id": "6a506f83df208191815dd17a8fd5baa3",
+      "observed_task_id": "6a506f83df208191815dd17a8fd5baa3",
+      "task_id_match": true,
+      "tools_observed": [
+        "NATIVE_TASK_INVENTORY_READ",
+        "GITHUB_CONTENTS_READ_WRITE",
+        "SLACK_SEND",
+        "LOCAL_PYTHON_DETERMINISTIC_PROBE"
+      ]
+    },
+    "source_binding": {
+      "current_pointer_blob": "926192e4f9a3121a7caea76289a4189dbbacdce8",
+      "current_projection_digest_sha256": "fc23ec5a0aeb4aad10d4f716797ecbd867fe72dee9680da6612b95ff9566bf26",
+      "prior_event_blob": "c7f2f8b8ee23430d1323a65adb9f261cc53051b8",
+      "prior_event_commit": "e5fa6adbe436e07705bf47d5b86e7b21abc132ba",
+      "prior_event_path": "state/coordination/experiments/durable_object_x12/events/20260731T224418Z_V0001_TO_V0002_EVENT_CANONICALIZATION.json"
+    },
+    "task_id": "6a506f83df208191815dd17a8fd5baa3",
+    "transaction_time_utc": "SEE_GITHUB_COMMIT_METADATA",
+    "valid_time_utc": "2026-07-31T23:44:31Z",
+    "verifier": "S04_STRUCTURAL_PREFLIGHT_WEIGHT_0_THEN_SIGRUN_P4_DISTINCT"
+  },
+  "canonicalization": "JCS_LIKE_V1",
+  "event_digest_sha256": "05fb755de4838983e600061def9f51888fc744d402d70bf4e48a823e06fa2998",
+  "schema_id": "hfo.gen133.x12.durable_object_event.v1"
+}
