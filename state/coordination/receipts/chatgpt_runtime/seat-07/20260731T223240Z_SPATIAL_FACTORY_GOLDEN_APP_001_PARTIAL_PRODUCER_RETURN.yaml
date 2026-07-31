@@ -1,0 +1,159 @@
+---
+schema_id: hfo.gen133.s07_producer_return.v1
+receipt_id: S07_SPATIAL_FACTORY_GOLDEN_APP_001_20260731T223240Z
+result: HOLD
+work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001
+callsign_or_seat: S07_BOUNDED_CODE_PATCH_BUILDER
+carrier_task_id_expected: 6a506f6dc5c08191b95f1707d7f00c2d
+carrier_task_id_observed: 6a506f6dc5c08191b95f1707d7f00c2d
+carrier_task_id_match: true
+wip: 1
+valid_time_utc: 2026-07-31T22:32:40Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+expiry_utc: 2026-07-31T22:45:00Z
+effect_ceiling: BRANCH_FILE_TEST
+execution_state: PARTIAL_EXACT_BLOB_TESTED_FULL_CHECKOUT_BLOCKED
+sealed: false
+---
+
+bindings:
+  claim:
+    commit: 289654cf70754738531470c83f6e5f756465ff6a
+    path: projects/spatial-app-factory/claims/20260731T190400Z_SPATIAL_FACTORY_GOLDEN_APP_001_S02.claim.yaml
+    blob: 08f1a7690613570d46c92f3e22eef6ba0ac6ea5f
+    lease_expires_utc: 2026-07-31T23:04:00Z
+  executor_packet:
+    commit: 7b5a36f6c4790ed99f80c71b4c8fc57816db8bdc
+    path: projects/spatial-app-factory/dispatch/20260731T212211Z_SPATIAL_FACTORY_GOLDEN_APP_001_S06_EXECUTOR.packet.yaml
+    blob: 2f0fae7cb03e7211de68ccf575fe776854cca89f
+  target:
+    repository: TTaoGaming/TAGS
+    base_sha: 1271e25306fe8ef8baea32704cf022435703d498
+    branch: agent/spatial-golden-app-001-20260731
+    final_sha: fee50a70188b510695e8e5fad2ebadc6cba0535a
+    merge_base_sha: 1271e25306fe8ef8baea32704cf022435703d498
+    ahead_by: 3
+    behind_by: 0
+
+producer:
+  substrate: ChatGPT Cloud scheduled carrier plus isolated container execution surface
+  model: GPT-5.6 Thinking
+  runtime_versions:
+    node: v22.16.0
+    python: 3.13.5
+    git: 2.47.3
+  repository_checkout_available: false
+  github_connector_branch_write_available: true
+
+changed_paths:
+  - path: tests/spatial-input-adapter.test.mjs
+    status: added_test_first
+    commit: 80a317dc2992e72452078f8f457058212cd1c56a
+    blob: 9416a2e34c331ab46dd2f04c8d8664dbc0088405
+  - path: tests/fab-prototype-smoke.test.mjs
+    status: added_red_integration_specimen
+    commit: d13aef654ad6b21e22fc4c2c54bb41b55804e486
+    blob: 2f0e2795fe81910e82b9dc9ff697b86ff5e16231
+  - path: prototypes/spatial-input-adapter.js
+    status: added_smallest_dependency_free_core
+    commit: fee50a70188b510695e8e5fad2ebadc6cba0535a
+    blob: c90a715c72735f0c04d60c91cd9c9afb0f2ddec4
+
+commands:
+  - command: node --version && python3 --version && git --version
+    exit_code: 0
+    output: "node v22.16.0; Python 3.13.5; git 2.47.3"
+  - command: node --test /tmp/hfo-s07-spatial/tests/spatial-input-adapter.test.mjs
+    exit_code: 0
+    output: "4 tests; 4 pass; 0 fail; duration 81.663218 ms"
+  - command: git hash-object /tmp/hfo-s07-spatial/prototypes/spatial-input-adapter.js
+    exit_code: 0
+    output: c90a715c72735f0c04d60c91cd9c9afb0f2ddec4
+  - command: git hash-object /tmp/hfo-s07-spatial/tests/spatial-input-adapter.test.mjs
+    exit_code: 0
+    output: 9416a2e34c331ab46dd2f04c8d8664dbc0088405
+  - command: git status --short
+    status: NOT_RUN
+    blocker: no authenticated exact repository checkout was exposed to the container
+  - command: git rev-parse HEAD
+    status: NOT_RUN
+    blocker: no authenticated exact repository checkout was exposed to the container
+  - command: git diff --check
+    status: NOT_RUN
+    blocker: no authenticated exact repository checkout was exposed to the container
+  - command: node --test tests/spatial-input-adapter.test.mjs tests/fab-prototype-smoke.test.mjs
+    status: NOT_RUN_AS_FULL_BRANCH
+    blocker: exact base HTML was readable through the connector but not mounted into the execution surface
+  - command: python3 -m http.server 4173 --directory prototypes
+    status: NOT_RUN
+    blocker: incomplete integration and no exact checkout
+  - command: curl -fsS http://127.0.0.1:4173/fab-prototype.html | grep -q spatial-input-adapter
+    status: NOT_RUN
+    blocker: prototypes/fab-prototype.html was not modified to load the adapter
+
+acceptance:
+  A1_SOURCE_PIN: STOOD_CONNECTOR_READBACK
+  A2_POINTER_POSITION: STOOD_EXACT_BLOB_UNIT_TEST
+  A3_PINCH_EDGE: STOOD_EXACT_BLOB_UNIT_TEST
+  A4_INVALID_INPUT: STOOD_EXACT_BLOB_UNIT_TEST
+  A5_NATIVE_FALLBACK: PARTIAL_SOURCE_READBACK_ONLY
+  A6_NO_EXTERNAL_DEPENDENCY: STOOD_DIFF_METADATA_NO_DEPENDENCY_OR_LOCKFILE_CHANGE
+  A7_STATIC_SMOKE: FELL_INTEGRATION_MISSING
+  A8_BOUNDED_DIFF: PARTIAL_ONLY_THREE_ALLOWED_PATHS_CHANGED_DIFF_CHECK_NOT_RUN
+  A9_REAL_READBACK: PARTIAL_BRANCH_SHA_BLOBS_AND_REAL_EXIT_CODES_PRESENT
+
+measured_result:
+  supported:
+    - exact Git branch starts from the pinned base and is three commits ahead with zero behind
+    - exact adapter and unit-test blobs match the locally executed bytes
+    - deterministic normalized pointer mapping, pinch edge suppression, release, invalid-input rejection, and injected dispatch passed four Node tests
+    - only three explicitly allowed paths changed and no dependency, lockfile, workflow, credential, deployment, or unrelated path changed
+  excluded:
+    - no claim that the FAB prototype loads or calls the adapter
+    - no claim that the smoke test, static server, curl gate, browser behavior, touch fallback, keyboard fallback, or complete frozen suite passed
+    - no claim of deployment, publication, merge, release, or distinct-provider verification
+
+blocker: >-
+  The existing prototypes/fab-prototype.html requires a one-line script-load integration edit. The available
+  GitHub contents connector replaces whole files rather than applying a bounded patch, while the private
+  repository was not mounted into the container. Reconstructing and replacing the full 1,000-plus-line HTML
+  file would create avoidable corruption risk inside this bounded wake. The red smoke specimen intentionally
+  preserves that missing edge for a host with an authenticated checkout or a patch-capable Git surface.
+
+rollback:
+  default: do not merge the isolated branch
+  if_reversal_needed: create ordinary revert commits for fee50a70188b510695e8e5fad2ebadc6cba0535a, d13aef654ad6b21e22fc4c2c54bb41b55804e486, and 80a317dc2992e72452078f8f457058212cd1c56a on the same branch
+  destructive_ref_change: forbidden_and_not_used
+  external_effect: none
+
+effect_ceiling_readback:
+  honored: true
+  branch_created: agent/spatial-golden-app-001-20260731
+  merge: false
+  force_push: false
+  rebase_or_reset: false
+  deployment_or_publication: false
+  send_or_spend: false
+  secret_use: false
+
+verifier:
+  structural: S04_Hrist_same_provider_binding_weight_0
+  binding: Sigrun/P4_APEX_FALSIFICATION_or_other_distinct_provider_nonproducer
+  requested_verification: reproduce from base SHA, add only the missing bounded HTML script seam, run A1 through A9, and bind this return plus final branch digest
+
+consumer:
+  next: Olrun/Claude-Dispatch
+  reducer: S03_task_6a539fc5130c81918c13624739fb2a60
+  exact_next_transition: use a patch-capable authenticated checkout to add the script-load seam, run the frozen full command set, and return a new producer digest; do not treat this HOLD as green
+
+remaining_risk:
+  - browser PointerEvent compatibility and target selection remain untested
+  - a pointerdown dispatched to the FAB may trigger browser click synthesis differently across browsers
+  - touch and keyboard fallbacks are unchanged in source but not behaviorally exercised
+  - the smoke test is expected to fail until the HTML load seam is added
+
+honest_flaw: >-
+  This return advances code and exact-byte unit evidence but does not finish the WorkItem. The carrier could
+  write new files and execute their exact bytes, yet could not safely apply the required one-line edit to the
+  existing private HTML through the exposed surfaces. Any summary that calls this PATCH_RETURNED, PASS, green,
+  integrated, or verified would be false.
