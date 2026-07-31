@@ -1,0 +1,108 @@
+---
+schema_id: hfo.gen133.spatial_factory.s02_claim.v1
+claim_id: S02_SPATIAL_FACTORY_GOLDEN_APP_001_20260731T190400Z
+work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001
+result: CLAIMED
+callsign_or_seat: S02_ADMISSION_PULL
+carrier_task_id: 6a55088a3d308191ac1cda97221f0957
+carrier_identity_claim: DISPOSABLE_SCHEDULED_CARRIER_NOT_LINEAGE
+controller: operator_direct
+wip: 1
+valid_time_utc: 2026-07-31T19:04:00Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+lease_expires_utc: 2026-07-31T23:04:00Z
+packet_authority_expires_utc: 2026-08-03T17:57:17Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+repository_head_observed_before_write: 41b6f0f556e3e6261206005bd3dc2f68b1c23f28
+claim_status: immutable_admitted_claim
+sealed: false
+---
+
+source:
+  commit: b9d0f66cb64feeccef8472b1830fbcb5e1796551
+  path: projects/spatial-app-factory/packets/20260731T175717Z_REGINLEIF_SCHEDULED_LOOPS_PDCA_OPERATOR_DIRECTIVE.packet.md
+  blob: 04e3fc472c65f58fb2e189f546371eb9a2899330
+  authority: exact_operator_activated_directive
+
+referenced_golden_path:
+  commit: 85e706e2152a7c7cdc751148c35abd6cbf2b99de
+  path: projects/spatial-app-factory/packets/20260731T174610Z_CHATGPT_CLOUD_LOOP_ENGINEERING_AND_GOLDEN_PATH.packet.md
+  blob: 40dbd592afbfed50c6ebdc5460f1456679982ba7
+
+acceptance_contract:
+  canonical_text: exact-one-claim;source-commit-path-blob-bound;idempotency-key-bound;lease-expiry-bound;effect-ceiling-file-and-message-only;next-consumer-olrun-claude-dispatch;verifier-sigrun-p4;no-duplicate-claim;second-unchanged-wake-yield-silent
+  sha256: 63c725fb7a149066f79f4067ad1e711bcdedecffa1360fc42d2099b539c174b4
+  tests:
+    - exactly one immutable claim exists for this idempotency key
+    - source commit, path, and blob resolve to the activated operator directive
+    - claim binds one lease, one effect ceiling, one next consumer, one verifier, and one expiry
+    - no new queue, architecture root, application implementation, deployment, merge, publication, send, or spend occurs
+    - the next eligible wake with unchanged inputs produces YIELD_SILENT with no Git or Slack artifact
+
+idempotency:
+  canonicalization: sha256 UTF-8 of work_item_id, source_commit, source_path, and acceptance_contract_sha256 joined by LF
+  key: 741400e912ded60247923737138e470167c29c511cdba8b169ffdd661e4ef316
+  duplicate_search_before_write:
+    exact_key_matches: 0
+    semantic_claim_matches: 0
+
+producer_contract:
+  next_consumer: Olrun/Claude-Dispatch
+  requested_transition: route exactly one real producer to return tested or source-read-back spatial-app evidence bound to this claim
+  required_return:
+    - bind this claim commit and exact claim bytes
+    - name producer substrate, vendor/model or runtime, repository, branch, and SHA
+    - include exact changed paths or source-system pointers
+    - include exact build/test commands and real exit codes where applicable
+    - include outputs, rollback, effect ceiling, expiry, and honest flaw
+    - preserve native mouse, touch, and keyboard fallback
+    - provide deterministic evidence for pointer position plus one pinch or activation event
+  forbidden:
+    - synthetic producer return
+    - implicit execution claim
+    - deployment
+    - merge
+    - publication
+    - send
+    - spend
+    - account or security mutation
+
+verifier:
+  named: Sigrun/P4_APEX_FALSIFICATION
+  independence_required: distinct_provider_or_nonproducer
+  terminal_vocabulary: [STOOD, FELL]
+  same_provider_s04_weight: 0
+
+world_effect_ceiling:
+  allowed:
+    - immutable Gen-133 claim file
+    - exact Git readback
+    - one concise Slack pointer after readback
+    - bounded producer routing by Olrun
+  forbidden:
+    - app implementation by S02
+    - new queue or architecture root
+    - send, spend, payment, deployment, merge, publication, permanent deletion
+    - account or security mutation
+    - seal, IMMUNIZE, or permaweb upload
+
+self_probe:
+  task_id_expected: 6a55088a3d308191ac1cda97221f0957
+  task_id_observed: 6a55088a3d308191ac1cda97221f0957
+  task_id_match: true
+  tools_observed:
+    native_tasks_inventory: read
+    github: read_write
+    slack: read_write
+  missing_required_tool: false
+
+next_state:
+  owner: Olrun/Claude-Dispatch
+  state: CLAIM_READY_FOR_REAL_PRODUCER
+  producer_return_due_utc: 2026-07-31T23:04:00Z
+  deadman: one browser nudge maximum only after a required edge misses its expiry
+  next_s02_wake_expected_behavior: YIELD_SILENT_IF_INPUTS_UNCHANGED
+
+honest_flaw: >-
+  This claim proves admission and exact Git write/read capability only. It does not prove that Olrun has consumed the claim, that a host producer can reproduce the spatial artifact, that a distinct verifier will return STOOD, or that ConsumerAck will close. The READY WorkItem is activated inside the operator directive rather than as a separate pre-existing WorkItem object; this claim binds that exact operator-authorized source and does not infer any implementation outcome.
