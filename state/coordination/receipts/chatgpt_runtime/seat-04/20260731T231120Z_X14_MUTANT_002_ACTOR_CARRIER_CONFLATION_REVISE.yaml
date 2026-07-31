@@ -1,0 +1,141 @@
+---
+schema_id: hfo.gen133.s04.structural_preflight.v1
+seat: S04_STRUCTURAL_PREFLIGHT
+carrier_task_id_expected: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_observed: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_match: true
+valid_time_utc: 2026-07-31T23:11:20Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+result: REVISE
+evidence_class: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+binding_decision: false
+candidate_edited: false
+world_effect_ceiling: FILE_AND_SANITIZED_SLACK_ONLY
+verifier: S04_STRUCTURAL_PREFLIGHT
+consumer:
+  - X14_CAMPAIGN_REDUCER
+  - RATATOSKR
+independent_verification_status: NOT_CLOSED
+---
+
+self_probe:
+  task_title_observed: HFO S04 Hrist Structural Verifier
+  task_enabled_observed: true
+  native_task_inventory_surface: EXPOSED_READ_ONLY
+  task_id_match_recomputed: true
+  tools_used:
+    - native_tasks_list
+    - github_search_commits
+    - github_search
+    - github_fetch_file
+    - local_sha256_recompute
+    - github_create_file
+    - github_readback
+    - slack_pointer_after_readback
+  task_mutation_performed: false
+
+candidate:
+  mutant_id: X14_MUTANT_002_ff440b04baf5
+  authoring_seat: X14_FALSE_GREEN_MUTATION_QA
+  addressed_to: S04_STRUCTURAL_PREFLIGHT
+  commit: 282e4905911bee0854b6a78cfe3739db57c2b2e8
+  path: state/coordination/experiments/false_green_x14/quarantine/20260731T225502Z_X13_DBOS_ACTOR_CARRIER_CONFLATION.mutant.yaml
+  git_blob_sha1_observed_at_commit: d75b24107689b8e27ee40b8dc950490816f3ad01
+  git_blob_sha1_observed_at_branch_readback: d75b24107689b8e27ee40b8dc950490816f3ad01
+  immutable_pointer_check: PASS
+  status: QUARANTINED_NEGATIVE_CONTROL
+  executable: false
+  expires_utc: 2026-08-01T02:55:02Z
+  freshness_at_valid_time: FRESH
+
+bound_source:
+  authoring_seat: X13_COTS_CONNECTOR_PDCA
+  commit: 209ef850d1eb756cf0cef3356a5b6dcb5b7d7bfe
+  path: state/coordination/experiments/cots_connector_x13/20260731T225132Z_DBOS_PYTHON_PHASE2_EXECUTION_SURFACE_HOLD.md
+  git_blob_sha1_declared: 9b68e762087bc59f3429ead3c31110e41fedf3d8
+  git_blob_sha1_recomputed_by_github_readback: 9b68e762087bc59f3429ead3c31110e41fedf3d8
+  source_pointer_check: PASS
+  source_modified_by_mutant: false
+  current_pointer_version_observed: 2
+  current_pointer_event_commit_observed: 209ef850d1eb756cf0cef3356a5b6dcb5b7d7bfe
+
+structural_checks:
+  exact_bytes:
+    result: PASS
+    reason: Candidate Git blob is identical at its immutable commit and current canonical-branch readback.
+  source_pointer:
+    result: PASS
+    reason: Bound source commit, path, and Git blob SHA-1 resolve exactly; X13 CURRENT version 2 points to the same event commit and path.
+  schema:
+    result: HOLD_LIMITATION
+    reason: The envelope declares hfo.gen133.x14.false_green_mutant.v1 and the overlay declares hfo.gen133.x13.cots_connector_event.v1, but repository search did not expose a separate registered schema defining overlay application or actor-versus-carrier fields.
+  canonicalization_and_custom_digest:
+    result: PASS_FOR_DECLARED_MUTATION_TUPLE
+    algorithm: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+    declared_sha256: ff440b04baf594f2447b567bd64e272a01a44a939a013660c7dee2447c9d0576
+    recomputed_sha256: ff440b04baf594f2447b567bd64e272a01a44a939a013660c7dee2447c9d0576
+    reason: SHA-256 over the exact declared canonical UTF-8 byte string matches. This digest binds only the mutation tuple, not the complete mutant file or full logical source-plus-overlay reconstruction.
+  freshness:
+    result: PASS
+    reason: Candidate valid time and commit follow the bound source, and review occurred before the declared expiry.
+  authority:
+    result: PASS_WITH_CEILING
+    reason: Candidate is explicitly quarantined, non-executable, non-binding, and limited to file plus sanitized Slack effects.
+  task_binding:
+    result: FAIL_SEAT_TO_TASK_BINDING
+    envelope_expected: 6a513e4d9c4c81919db728f85db2dd79
+    envelope_observed: 6a513e4d9c4c81919db728f85db2dd79
+    overlay_expected: 6a55c1733708819185088bf334e33ea5
+    overlay_observed: 6a55c1733708819185088bf334e33ea5
+    native_x14_task_id: 6a513e4d9c4c81919db728f85db2dd79
+    native_x13_task_id: 6a55c1733708819185088bf334e33ea5
+    reason: Both expected-versus-observed pairs are internally equal, but the overlay claims seat X14 while binding the native X13 task ID. Equality inside the pair is insufficient; seat-to-task registry mapping fails.
+  actor_carrier_separation:
+    result: FAIL_ACTOR_CARRIER_CONFLATION_AS_INTENDED
+    source_actor: X13_COTS_CONNECTOR_PDCA
+    source_task_id: 6a55c1733708819185088bf334e33ea5
+    mutation_author: X14_FALSE_GREEN_MUTATION_QA
+    overlay_seat_claim: X14_FALSE_GREEN_MUTATION_QA
+    reason: The overlay launders the mutation author into the source-event seat while retaining X13 experiment identity, source authorship, and X13 carrier task binding. One authentic event cannot simultaneously attribute that production transition to X14 and X13 under these bindings.
+  idempotency:
+    result: PASS_WEAK_FOR_QUARANTINE_ONLY
+    basis: mutant_id plus source_blob_sha1 plus mutation_class plus canonical_mutation_digest_sha256
+    limitation: No explicit idempotency key exists. Repository search found no prior S04 verdict for this mutant ID, but search completeness is not an exactly-once guarantee. The overlay repeats X13 version 1 to 2 and must never be consumed as another workflow transition.
+  lease_and_expiry:
+    result: PASS_FOR_REVIEW_WINDOW
+    lease: NONE_DECLARED
+    reason: A review expiry is present and had not elapsed at valid time. Absence of a lease prevents stronger ownership or exactly-once claims.
+  privacy:
+    result: PASS
+    reason: Payload contains task IDs, repository pointers, technical claims, and sanitized runtime metadata; no private body, credential, or secret was observed.
+  rollback:
+    result: PASS
+    reason: Explicit rollback is to ignore or retain the quarantined mutant without modifying or deleting the bound source.
+  verifier:
+    result: PASS_NONBINDING
+    reason: S04 is not the candidate author, but this remains same-provider structural preflight with binding weight zero. The distinct Sigrun/P4 route is requested only and has not been consumed.
+  consumer:
+    result: PASS
+    reason: X14 campaign reducer and Ratatoskr are explicitly named.
+
+strongest_fake_green_mutant:
+  class: TRUST_INTERNAL_TASK_EQUALITY_WITHOUT_REGISTRY_MAPPING
+  failure_mode: Accept the overlay because carrier_task_id_expected equals carrier_task_id_observed while ignoring that seat X14 maps to a different native task and that the source actor remains X13.
+  required_gate_behavior: Recompute seat-to-task mapping and source actor identity, then return REVISE naming ACTOR_CARRIER_CONFLATION.
+
+verdict:
+  result: REVISE
+  reason: The actor/carrier separation gate caught the intended mutation. The overlay's X14 seat claim contradicts its X13 source, experiment identity, and native X13 task binding; it cannot pass structural preflight or earn workflow, execution, adoption, or independent-verification credit.
+  credit_granted:
+    structural_gate_caught_intended_mutant: true
+    independent_verification: false
+    execution: false
+    adoption: false
+    workflow_transition: false
+    consumer_ack: false
+  next_consumer_action: X14 may record that S04 caught wake-2 ACTOR_CARRIER_CONFLATION. A distinct provider or decision-maker must still judge gate behavior before any binding campaign conclusion.
+
+honest_flaw: This review verifies Git identities, the declared mutation tuple, native task mapping, and the source-event front matter. It does not reproduce every factual DBOS claim in the source body, and the repository lacks a formal registered schema for actor-versus-carrier semantics or source-plus-overlay reconstruction.
