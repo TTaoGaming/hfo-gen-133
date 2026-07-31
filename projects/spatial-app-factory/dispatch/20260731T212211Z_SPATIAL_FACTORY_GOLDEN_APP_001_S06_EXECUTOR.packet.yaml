@@ -1,0 +1,227 @@
+---
+schema_id: hfo.gen133.spatial_factory.s06_executor_packet.v1
+packet_id: S06_SPATIAL_FACTORY_GOLDEN_APP_001_EXECUTOR_20260731T212211Z
+result: DISPATCHED
+callsign_or_seat: S06_CODE_WORK_PACKET_COMPILER
+carrier_task_id: 6a57972b9df081918680ce67c4ecb197
+carrier_identity_claim: DISPOSABLE_SCHEDULED_CARRIER_NOT_LINEAGE
+controller: operator_direct
+wip: 1
+valid_time_utc: 2026-07-31T21:22:11Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+repository_head_observed_before_write: ec34e99e41aeaf0b7c6bd0c4e9fddaf666102b6b
+claim_status: executor_packet_ready_not_execution
+sealed: false
+expiry_utc: 2026-07-31T22:45:00Z
+---
+
+self_probe:
+  expected_task_id: 6a57972b9df081918680ce67c4ecb197
+  observed_task_id: 6a57972b9df081918680ce67c4ecb197
+  task_id_match: true
+  tools_observed:
+    native_tasks_inventory: read
+    github: read_write
+    slack: read_write
+    direct_codex_ingress: unavailable
+    direct_claude_host_ingress: unavailable
+    shell_or_build_runtime: unavailable
+  missing_required_compiler_tool: false
+  execution_claim_permitted: false
+
+work_item:
+  work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001
+  claim:
+    commit: 289654cf70754738531470c83f6e5f756465ff6a
+    path: projects/spatial-app-factory/claims/20260731T190400Z_SPATIAL_FACTORY_GOLDEN_APP_001_S02.claim.yaml
+    blob: 08f1a7690613570d46c92f3e22eef6ba0ac6ea5f
+    idempotency_key: 741400e912ded60247923737138e470167c29c511cdba8b169ffdd661e4ef316
+    lease_expires_utc: 2026-07-31T23:04:00Z
+  authority:
+    commit: b9d0f66cb64feeccef8472b1830fbcb5e1796551
+    path: projects/spatial-app-factory/packets/20260731T175717Z_REGINLEIF_SCHEDULED_LOOPS_PDCA_OPERATOR_DIRECTIVE.packet.md
+    blob: 04e3fc472c65f58fb2e189f546371eb9a2899330
+
+executor:
+  requested_owner: Olrun/Claude-Dispatch
+  permitted_runtime: one real Codex, Claude host, or operator-approved local/VM code executor
+  required_branch: agent/spatial-golden-app-001-20260731
+  time_budget_minutes: 75
+  direct_cost_ceiling_usd: 0
+  network_budget: repository access only; no paid APIs, telemetry egress, or third-party service signup
+
+source_target:
+  repository: TTaoGaming/TAGS
+  visibility: private
+  default_branch: main
+  base_commit: 1271e25306fe8ef8baea32704cf022435703d498
+  app_source:
+    path: prototypes/fab-prototype.html
+    blob: 63e5bfe5a158781c207c5636537172bdbc838023
+  package_metadata:
+    path: package.json
+    blob: ad608a51a2cf60b89e5c1f69b305dfb391c46365
+    declared_license: MIT
+  source_selection_reason: >-
+    The activated golden-path packet explicitly names the existing TAGS FAB prototype as reusable heritage.
+    It is a single-browser-page target, already exposes a native clickable control surface, and can accept a
+    narrow adapter without introducing auth, backend, payment, deployment, or account dependencies.
+
+current_red_evidence:
+  - no real producer return binds claim commit 289654cf70754738531470c83f6e5f756465ff6a
+  - no exact build or test commands and exit codes exist for the golden app WorkItem
+  - no deterministic pointer-position plus pinch-or-activation behavior trace exists
+  - native mouse, touch, and keyboard fallback preservation is unverified
+  - no distinct-provider STOOD or FELL verdict exists
+  - no explicit Olrun ConsumerAck or terminal Gen-133 receipt exists
+
+bounded_goal: >-
+  Add one reusable, dependency-free spatial-input adapter to the pinned FAB prototype. The adapter must map
+  normalized hand samples into ordinary pointer semantics and one pinch activation transition while leaving
+  native mouse, touch, keyboard, and existing click behavior available. Return reproducible code and test
+  evidence only; do not release or deploy the app.
+
+allowed_paths:
+  modify:
+    - prototypes/fab-prototype.html
+  create:
+    - prototypes/spatial-input-adapter.js
+    - tests/spatial-input-adapter.test.mjs
+    - tests/fab-prototype-smoke.test.mjs
+  forbidden_even_if_related:
+    - package-lock.json
+    - node_modules/**
+    - credentials/**
+    - secrets/**
+    - deployment/**
+    - .github/workflows/**
+    - any path outside the four listed allowed paths
+
+implementation_contract:
+  adapter_surface:
+    - export a pure mapping seam from normalized sample fields to ordinary pointer event descriptors
+    - support normalized x and y positions with deterministic viewport conversion
+    - emit pointermove for a valid tracked sample
+    - emit exactly one pointerdown on pinch threshold crossing and exactly one pointerup on release
+    - suppress duplicate pointerdown while pinch remains held
+    - ignore invalid, missing, non-finite, or below-confidence samples
+    - permit injected event factories and targets so Node tests do not require a browser DOM
+  integration_surface:
+    - load the adapter from prototypes/fab-prototype.html without external dependencies
+    - connect through one explicit custom spatial-input seam or equally narrow adapter call
+    - do not remove, intercept, preventDefault, or replace native click, keyboard, mouse, or touch paths
+    - camera or MediaPipe integration is out of scope; deterministic synthetic samples are sufficient for this proof
+  code_quality:
+    - smallest patch that satisfies the frozen tests
+    - no framework, bundler, backend, auth, analytics, or new dependency
+    - comments explain public adapter contract and fallback boundary, not architecture speculation
+
+required_commands:
+  - command: git status --short
+    expected_exit_code: 0
+  - command: git rev-parse HEAD
+    expected_stdout_exact: 1271e25306fe8ef8baea32704cf022435703d498
+    expected_exit_code: 0
+  - command: git diff --check
+    expected_exit_code: 0
+  - command: node --test tests/spatial-input-adapter.test.mjs tests/fab-prototype-smoke.test.mjs
+    expected_exit_code: 0
+  - command: python3 -m http.server 4173 --directory prototypes >/tmp/hfo-spatial-golden-001-http.log 2>&1 & echo $! >/tmp/hfo-spatial-golden-001-http.pid
+    expected_exit_code: 0
+  - command: curl -fsS http://127.0.0.1:4173/fab-prototype.html | grep -q 'spatial-input-adapter'
+    expected_exit_code: 0
+  - command: kill "$(cat /tmp/hfo-spatial-golden-001-http.pid)"
+    expected_exit_code: 0
+
+frozen_acceptance_tests:
+  - id: A1_SOURCE_PIN
+    pass: executor starts from exact base commit 1271e25306fe8ef8baea32704cf022435703d498
+  - id: A2_POINTER_POSITION
+    pass: a valid normalized sample deterministically produces one pointermove descriptor with expected viewport coordinates
+  - id: A3_PINCH_EDGE
+    pass: threshold crossing produces one pointerdown, held pinch produces no second pointerdown, and release produces one pointerup
+  - id: A4_INVALID_INPUT
+    pass: invalid, non-finite, missing, or below-confidence samples produce no dispatched ordinary event
+  - id: A5_NATIVE_FALLBACK
+    pass: smoke test proves the original FAB remains a native button/control and existing native click path is not removed or canceled
+  - id: A6_NO_EXTERNAL_DEPENDENCY
+    pass: adapter and tests run with the pinned repository plus system Node/Python/curl only; no dependency or lockfile changes
+  - id: A7_STATIC_SMOKE
+    pass: pinned prototype serves locally and references the adapter; curl returns success
+  - id: A8_BOUNDED_DIFF
+    pass: only allowed paths change and git diff --check exits zero
+  - id: A9_REAL_READBACK
+    pass: producer return contains exact commands, actual exit codes, relevant stdout/stderr, branch, commit SHA, changed paths, and Git blob/readback pointers
+
+producer_return_contract:
+  required_fields:
+    - producer substrate, vendor/model or runtime, and tool versions when observable
+    - target repository and exact base commit
+    - branch and final commit SHA
+    - exact changed paths and resulting blob SHAs
+    - every command actually run with exit code and concise output
+    - frozen acceptance result A1 through A9 with STOOD, FELL, or NOT_RUN per test
+    - rollback procedure and current rollback status
+    - effect ceiling honored or exact violation
+    - blockers and remaining risk
+    - honest flaw
+  forbidden_substitutions:
+    - prose or code review in place of execution
+    - synthetic exit codes
+    - screenshot-only PASS
+    - same-provider self-verification as terminal verdict
+    - commit existence treated as tested artifact
+
+world_effect_ceiling:
+  allowed:
+    - read the pinned private repository and exact source files
+    - create one dedicated agent branch
+    - modify or create only the allowed paths
+    - run local deterministic tests and local static server
+    - commit branch/file/test artifacts
+    - return exact Git and execution evidence to Gen-133
+  forbidden:
+    - merge, pull request approval, force push, rebase, reset, or deletion of shared refs
+    - deployment, publication, release, app-store listing, public hosting, or customer effect
+    - email, outreach, application, submission, payment, spend, account or security mutation
+    - secret exposure, telemetry egress, unrelated refactor, second app, new queue, or architecture root
+
+rollback:
+  default: do not merge the isolated branch
+  if_code_reversal_is_needed: create an ordinary revert commit on the same branch; do not force-push or delete shared history
+  external_effect_rollback: none required because deployment, publication, send, and spend are forbidden
+
+verification:
+  structural_preflight: S04_Hrist_same_provider_weight_0
+  binding_verifier: Sigrun/P4_APEX_FALSIFICATION_or_other_distinct_provider_nonproducer
+  verifier_must_bind:
+    - claim commit and blob
+    - this executor packet commit and blob
+    - producer return digest
+    - frozen acceptance tests A1 through A9
+  terminal_vocabulary: [STOOD, FELL]
+
+consumer:
+  routing_consumer: Olrun/Claude-Dispatch
+  final_consumer_ack_required_from: Olrun/Claude-Dispatch_as_spatial_factory_coordinator
+  reducer_after_real_return: S03_task_6a539fc5130c81918c13624739fb2a60
+
+strongest_falsifier: >-
+  The packet fails if a real clean execution cannot produce a passing pointer/pinch behavior trace while
+  preserving the native FAB click/keyboard/touch surface, or if the result requires unpinned dependencies,
+  touches forbidden paths, lacks exact exit codes, or cannot be independently reproduced from the pinned base.
+
+routing:
+  durable_ingress: this exact Gen-133 packet
+  direct_codex_or_claude_host_ingress_available_to_s06: false
+  slack_signal_after_git_readback: C0BGNGPJFHU
+  interpretation: packet routing is not producer execution and earns no terminal fitness
+
+honest_flaw: >-
+  This carrier can compile and publish the exact executor packet but cannot directly invoke Codex, Claude host,
+  a VM shell, or browser runtime in this wake. The TAGS repository is private and its package metadata declares
+  MIT, but this packet does not independently prove that every historical asset in the prototype has complete
+  third-party rights. Build, behavior, branch mutation, producer identity, and execution evidence remain unproven
+  until a direct host return binds this packet.
