@@ -1,0 +1,111 @@
+---
+schema_id: hfo.gen133.s04.structural_preflight.v1
+seat: S04_STRUCTURAL_PREFLIGHT
+carrier_task_id_expected: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_observed: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_match: true
+valid_time_utc: 2026-07-31T22:12:40Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+result: REVISE
+evidence_class: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+binding_decision: false
+candidate_edited: false
+world_effect_ceiling: FILE_AND_SANITIZED_SLACK_ONLY
+verifier: S04_STRUCTURAL_PREFLIGHT
+consumer:
+  - X14_CAMPAIGN_REDUCER
+  - RATATOSKR
+independent_verification_status: NOT_CLOSED
+---
+
+candidate:
+  mutant_id: X14_MUTANT_001_70422e566d98
+  authoring_seat: X14_FALSE_GREEN_MUTATION_QA
+  addressed_to: S04_STRUCTURAL_PREFLIGHT
+  commit: 87227e451a141d3293eedc00af07bbd0f243915e
+  path: state/coordination/experiments/false_green_x14/quarantine/20260731T215258Z_X13_DBOS_TASK_ID_MISMATCH.mutant.yaml
+  git_blob_sha1_observed_at_commit: e7b1192942e2388e65ab990e837a3213eae74425
+  git_blob_sha1_observed_at_branch_readback: e7b1192942e2388e65ab990e837a3213eae74425
+  immutable_pointer_check: PASS
+  status: QUARANTINED_NEGATIVE_CONTROL
+  executable: false
+  expires_utc: 2026-08-01T01:52:58Z
+  freshness_at_valid_time: FRESH
+
+bound_source:
+  authoring_seat: X13_COTS_CONNECTOR_PDCA
+  commit: 18a9edd9146a0975366a859808d5200f43a8d617
+  path: state/coordination/experiments/cots_connector_x13/20260731T214800Z_DBOS_PYTHON_PHASE1_OFFICIAL_CONTRACT_BASELINE.md
+  git_blob_sha1_declared: 2f41ee5970ca8f856897a39461c2462cf453b8b7
+  git_blob_sha1_recomputed_by_github_readback: 2f41ee5970ca8f856897a39461c2462cf453b8b7
+  source_pointer_check: PASS
+  source_modified_by_mutant: false
+
+structural_checks:
+  exact_bytes:
+    result: PASS
+    reason: Candidate blob is identical at the immutable candidate commit and current branch readback.
+  source_pointer:
+    result: PASS
+    reason: Bound source commit, path, and Git blob SHA-1 resolve exactly.
+  schema:
+    result: HOLD_LIMITATION
+    reason: The payload declares hfo.gen133.x14.false_green_mutant.v1, but no separate registered schema definition was found in the repository search used by this carrier.
+  canonicalization_and_custom_digest:
+    result: HOLD_LIMITATION
+    declared_sha256: 70422e566d9826c561624daf0f23d29743e1922b95ea97b1b09d602a477495ba
+    reason: The payload does not bind a canonical serialization algorithm or exact canonical byte string, so the custom SHA-256 cannot be independently reproduced. Git blob identities remain independently read back.
+  authority:
+    result: PASS_WITH_CEILING
+    reason: Candidate is explicitly non-executable, non-binding, quarantined, and limited to file plus sanitized Slack effects.
+  task_binding:
+    result: FAIL_TASK_ID_MISMATCH
+    expected: 6a55c173370881918680ce67c4ecb197
+    observed: 6a513e4d9c4c81919db728f85db2dd79
+    recomputed_match: false
+    declared_match: true
+    reason: The copied X13 candidate's expected and observed task IDs differ. The declared true boolean is internally inconsistent and cannot be trusted.
+  actor_carrier_separation:
+    result: FAIL_IN_MUTANT_CANDIDATE_AS_INTENDED
+    reason: The negative-control envelope correctly identifies X14 as mutation author and X13 as source author, but the copied candidate retains X13 seat identity while injecting the X14 carrier task ID and falsely declaring a match.
+  idempotency:
+    result: PASS_WEAK_NONBINDING
+    basis: mutant_id plus source_blob plus mutation_class
+    limitation: No explicit idempotency key or lease is present. Repository search found no earlier S04 verdict for this mutant ID, but search completeness is not an exactly-once guarantee.
+  lease_and_expiry:
+    result: PASS_FOR_REVIEW_WINDOW
+    lease: NONE_DECLARED
+    reason: A review expiry is present and had not elapsed at valid time; absence of a lease prevents stronger ownership/exactly-once claims.
+  privacy:
+    result: PASS
+    reason: Payload contains repository metadata, task IDs, and public/internal technical claims only; no private body or secret was observed.
+  rollback:
+    result: PASS
+    reason: Explicit rollback is to ignore or retain quarantine without modifying or deleting the source.
+  verifier:
+    result: PASS_NONBINDING
+    reason: S04 is a non-author structural preflight carrier, but it is same-provider evidence with binding weight zero. The distinct Sigrun/P4 route is only requested and not consumed.
+  consumer:
+    result: PASS
+    reason: X14 campaign reducer and Ratatoskr are explicitly named.
+
+strongest_fake_green_mutant:
+  class: TRUST_DECLARED_DERIVED_BOOLEAN
+  failure_mode: Accept carrier_task_id_match=true without recomputing expected == observed.
+  required_gate_behavior: Reject with REVISE and name TASK_ID_MISMATCH.
+
+verdict:
+  result: REVISE
+  reason: Task binding recomputes false; the candidate must not pass structural preflight or advance X13 Phase 2 on this mutant payload.
+  credit_granted:
+    structural_gate_caught_intended_mutant: true
+    independent_verification: false
+    execution: false
+    adoption: false
+    consumer_ack: false
+  next_consumer_action: X14 may record that the S04 gate caught wake-1 TASK_ID_MISMATCH; a distinct verifier must still judge gate behavior before any binding campaign conclusion.
+
+honest_flaw: This review verifies the negative-control envelope and exact bound source pointers, not every factual claim in the 179-line DBOS research body. The custom mutation SHA-256 remains non-reproducible without a canonicalization contract.
