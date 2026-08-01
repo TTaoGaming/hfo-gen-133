@@ -1,7 +1,7 @@
 {
   "canonical_projection": {
     "campaign": {
-      "accepted_wakes": 0,
+      "accepted_wakes": 1,
       "campaign_id": "X12_POINTER_UPDATE_PATTERN_C2",
       "factor": "pointer_update_pattern",
       "selected_by_event_version": 4,
@@ -18,23 +18,31 @@
       "factor": "event_canonicalization"
     },
     "latest_event": {
-      "blob": "324c98ff1c123250337372622234768bac174aca",
-      "commit": "c10e50a443ce6feaf33eee4bce1f301cd934ead7",
-      "digest_sha256": "0c431dfadd112879975dabcd986a7eb959b5520944ffa4048ade1e4474459489",
-      "idempotency_key": "db2737a18f68efd8e5d534423131c079d612ba60cbf69f7eb380eb969662fe8e",
-      "path": "state/coordination/experiments/durable_object_x12/events/20260801T004455Z_V0003_TO_V0004_EVENT_CANONICALIZATION_DECISION_KEEP.json"
+      "blob": "37f89aabbf00d74431603d3527db002ede9415ec",
+      "commit": "e48da8aa471fd7c1cf503264387a41a1355bdfbe",
+      "digest_sha256": "a1dbfb6f141f6969936d78a8968a118c79b17fd8c60c220974e41f3f56533c44",
+      "idempotency_key": "5113a92ea2ac3d08113a871b05de2f01a1bd7158da70d950fa41dcf9fafe2365",
+      "path": "state/coordination/experiments/durable_object_x12/events/20260801T014556Z_V0004_TO_V0005_POINTER_UPDATE_PATTERN.json"
     },
     "object_id": "HFO_X12_WORKFLOW_OBJECT_001",
+    "pointer_update_measurement": {
+      "accepted_wake_ordinal": 1,
+      "event_digest_recomputed_from_readback": true,
+      "event_first": true,
+      "event_readback_blob_verified": true,
+      "guard": "EXACT_PRIOR_CURRENT_BLOB_SHA",
+      "stale_or_duplicate_replay": "NOT_EXECUTED_THIS_WAKE"
+    },
     "state": "ACTIVE_CAMPAIGN",
     "task_id": "6a506f83df208191815dd17a8fd5baa3",
-    "version": 4
+    "version": 5
   },
   "expected_previous_pointer": {
-    "blob": "3c9121653cf1bf168d90cfb905c71fa476798eb4",
-    "projection_digest_sha256": "d1d9a936e53ae1e9f9148b4846075e18a4eaa96ea9b67277fe1e37e4fe92831b",
-    "version": 3
+    "blob": "f9340224cb0c450fd0ac66e3bb0f5d522df16f5c",
+    "projection_digest_sha256": "4f4c9f8e3df29e4aa4c7c5188558cda7637c0b1be1f7a4fd06c7ce022e84c8a1",
+    "version": 4
   },
-  "honest_atomicity_limit": "The immutable v3→v4 event was committed before this pointer replacement. GitHub Contents API checks the supplied prior CURRENT blob SHA for this one file and can reject a stale replacement, but the event and pointer are separate commits with no cross-file atomic transaction, lock, linearizable compare-and-swap, exactly-once guarantee, or automatic cleanup of a losing writer's immutable event.",
-  "projection_digest_sha256": "4f4c9f8e3df29e4aa4c7c5188558cda7637c0b1be1f7a4fd06c7ce022e84c8a1",
+  "honest_atomicity_limit": "The immutable v4→v5 event was committed and read back before this pointer replacement. GitHub Contents API checks the supplied prior CURRENT blob SHA only for this one file. The event and CURRENT are separate commits with no cross-file atomic transaction, lock, linearizable compare-and-swap, exactly-once guarantee, concurrent-writer proof, duplicate-wake proof, or automatic cleanup of an orphan event when pointer replacement fails.",
+  "projection_digest_sha256": "eba970fc05eb5922c670934113a6dfc6d7322448f0a5ee5b3b7e2904aca56c2e",
   "schema_id": "hfo.gen133.x12.durable_object_current.v1"
 }
