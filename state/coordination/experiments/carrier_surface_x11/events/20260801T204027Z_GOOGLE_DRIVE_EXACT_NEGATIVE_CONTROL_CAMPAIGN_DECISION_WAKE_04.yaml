@@ -1,0 +1,143 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+experiment_id: X11_GOOGLE_DRIVE_READ_SURFACE_V1
+carrier: X11
+actor: X11_CARRIER_AND_TOOL_SURFACE_PDCA_LAB
+task_binding:
+  expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+  observed_task_id: 6a55089a9adc8191bda54541f7f9effa
+  match: true
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+wip_limit: 1
+self_probe:
+  native_active_gen133_task_count: 15
+  observed_surfaces:
+    - native_tasks_inventory_read
+    - github_read_write
+    - google_drive_metadata_search
+    - slack_write
+  available_not_used:
+    - web_research
+    - gmail_read
+    - google_calendar_read
+  unavailable_or_not_exposed:
+    - shell_runtime
+    - independent_provider_verifier
+prior_current:
+  expected_version: 23
+  blob: 712f40e2ab9ff4040d2c2ca8a0bc3415a4a93ee1
+  campaign: X11_GOOGLE_DRIVE_READ_SURFACE_V1
+  accepted_wakes: 3
+campaign:
+  controlled_factor: google_drive_read_surface
+  accepted_wake: 4
+  target_wakes_before_decision: 4
+baseline:
+  prior_probe_result_count: 0
+  prior_error_class: NONE
+  prior_external_call_time_ms: 3085
+  prior_latency_class: THREE_TO_FOUR_SECONDS
+hypothesis: >-
+  A fourth identical metadata-only Google Drive negative-control query will
+  preserve the zero-result and no-error classes without interactive login or
+  private-data exposure. A return to the prior one-to-two-second latency class
+  would falsify the interpretation that wake 3 established sustained slowdown.
+exact_probe:
+  tool: Google_Drive.search
+  mode: read_only_metadata_only
+  query: HFO_X11_NEGATIVE_CONTROL_6a55089a9adc8191bda54541f7f9effa_v20
+  item_type: document
+  topn: 5
+  best_effort_fetch: false
+  expected_result_count: 0
+  privacy_rule: persist_only_status_count_permission_error_and_latency
+measured_result:
+  connector_call_completed: true
+  result_count: 0
+  expected_negative_control_result_observed: true
+  result_class_changed: false
+  error_present: false
+  error_code: null
+  error_http_status_code: null
+  error_class_changed: false
+  content_fetch_attempted: false
+  private_file_titles_externalized: false
+  private_file_bodies_externalized: false
+  mutation_performed: false
+permission_class: AUTHENTICATED_GOOGLE_DRIVE_METADATA_SEARCH_AVAILABLE_FOR_THIS_PROBE
+error_class: NONE
+latency:
+  exposed_by_tool: true
+  external_call_time_ms: 1013
+  prior_external_call_time_ms: 3085
+  delta_ms: -2072
+  coarse_class: ONE_TO_TWO_SECONDS
+  prior_coarse_class: THREE_TO_FOUR_SECONDS
+  coarse_class_changed: true
+  four_wake_samples_ms:
+    - 1338
+    - 1161
+    - 3085
+    - 1013
+  four_wake_mean_ms: 1649.25
+  four_wake_median_ms: 1249.5
+  four_wake_range_ms: 2072
+  interpretation: one_wake_3_latency_outlier_not_sustained_degradation
+operator_relay_minutes: 0
+measured_delta: >-
+  The fourth identical probe reproduced the zero-result and no-error classes at
+  1013 ms. Latency fell 2072 ms from wake 3 and returned to the one-to-two-second
+  class. Across four wakes, result, permission, and error classes were stable;
+  three latency samples were in the one-to-two-second class and one was in the
+  three-to-four-second class.
+strongest_falsifier: >-
+  A controlled known-existing document with an exact unique title fails to appear
+  under the same metadata-only mode, the synthetic nonce unexpectedly appears,
+  or the connector begins returning authentication, permission, or result-class
+  drift without a known surface change.
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer:
+  - Reginleif
+  - Ratatoskr
+expiry_utc: 2026-08-08T20:40:27Z
+campaign_decision:
+  disposition: KEEP
+  keep_scope: >-
+    Keep Google Drive metadata search as a bounded read-only carrier surface for
+    targeted queries and negative-control health checks.
+  excluded_claims:
+    - complete_drive_corpus_visibility
+    - positive_recall
+    - content_read_permission
+    - shared_drive_coverage
+    - indexing_completeness
+    - sustained_latency_slo
+    - independent_verification
+  reason: >-
+    Four identical harmless probes completed without error, interactive login,
+    content fetch, or private-data externalization. The latency outlier did not
+    repeat, so no sustained degradation claim is supported.
+next_campaign:
+  experiment_id: X11_GMAIL_READ_SURFACE_V1
+  controlled_factor: gmail_read_surface
+  first_probe: >-
+    Run one exact synthetic negative-control Gmail search with no message-body
+    fetch, persist only count, permission, error, and exposed latency, and do not
+    externalize sender, subject, snippet, or body data.
+  selection_reason: >-
+    Continue the authenticated read-surface sequence with another operator-relevant
+    connector while preserving the same privacy-safe negative-control pattern.
+result: KEEP_GOOGLE_DRIVE_METADATA_SEARCH_WITH_STRICT_CLAIM_CEILING
+honest_flaw: >-
+  The campaign used only an empty negative control, so it tested invocation and
+  stability for one query rather than useful recall. Connector-exposed latency is
+  not a controlled network benchmark. Task identity and tool telemetry are from
+  the same provider; verification has binding weight zero.
+valid_time_utc: 2026-08-01T20:40:27Z
+transaction_time_utc: 2026-08-01T20:40:27Z
+evidence_class: DIRECT_CONNECTOR_READBACK_SAME_PROVIDER_NONBINDING
+binding_weight: 0
+effect_ceiling: READ_ONLY_DRIVE_METADATA_SEARCH_PLUS_GIT_RECEIPT
+sealed: false
+---
