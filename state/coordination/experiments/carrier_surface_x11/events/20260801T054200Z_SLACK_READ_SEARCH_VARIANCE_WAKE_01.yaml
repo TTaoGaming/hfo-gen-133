@@ -1,0 +1,106 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+experiment_id: X11_SLACK_READ_WRITE_READBACK_V1
+campaign_wake: 1
+campaign_target_wakes: 4
+result: MEASURED_READ_SEARCH_VARIANCE
+accepted: true
+carrier:
+  seat: X11
+  expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+  observed_task_id: 6a55089a9adc8191bda54541f7f9effa
+  identity_evidence_class: runtime_instruction_only
+  wip: 1
+self_probe:
+  github_tools_exposed:
+    - fetch_file
+    - create_file
+    - update_file
+    - fetch_blob
+  slack_tools_exposed:
+    - slack_read_channel
+    - slack_search_public
+    - slack_send_message
+  native_task_inventory_tool_exposed_this_wake: false
+  account_scope_headers_exposed: false
+baseline:
+  current_pointer_version: 8
+  accepted_wakes_before: 0
+  prior_campaign_disposition: REVISE
+  prior_x11_slack_pointer:
+    channel_id: C0BGNGPJFHU
+    message_ts: '1785559545.955429'
+    message_local_time: '2026-07-31 22:45:45 MDT'
+    bound_event_commit: 1fd8d6aa9c51cad75d2c93d2eeb5e6edc7bf2b93
+    bound_event_path: state/coordination/experiments/carrier_surface_x11/events/20260801T044341Z_GIT_CAMPAIGN_DECISION_WAKE_04.yaml
+hypothesis: >-
+  An authenticated Slack public-message search and an authenticated direct channel read
+  will both retrieve the exact prior X11 pointer when queried by its unique commit or
+  exact phrase; a material pointer write should return a stable channel/message locator
+  that the next wake can read back without operator relay.
+controlled_factor: slack_read_write
+exact_probe:
+  search_by_unique_commit:
+    tool: slack_search_public
+    query: '1fd8d6aa in:<#C0BGNGPJFHU>'
+    result_count: 0
+  search_by_exact_phrase:
+    tool: slack_search_public
+    query: '"X11 campaign decision" in:<#C0BGNGPJFHU> after:2026-07-31'
+    result_count: 0
+  direct_channel_read:
+    tool: slack_read_channel
+    channel_id: C0BGNGPJFHU
+    limit: 20
+    response_format: detailed
+    located_exact_pointer: true
+    located_message_ts: '1785559545.955429'
+    located_commit: 1fd8d6aa9c51cad75d2c93d2eeb5e6edc7bf2b93
+measured_result:
+  direct_channel_read: PASS
+  public_search_exact_token: ZERO_RESULT_FALSE_NEGATIVE_OR_INDEX_VARIANCE
+  public_search_exact_phrase: ZERO_RESULT_FALSE_NEGATIVE_OR_INDEX_VARIANCE
+  changed_capability_fact: >-
+    Direct channel history is sufficient to recover an exact known X11 pointer and raw
+    Slack message timestamp, while public search returned zero results for two queries
+    whose target was present in the same accessible channel history.
+permission_error_class:
+  direct_read: AUTHENTICATED_ALLOWED
+  public_search: AUTHENTICATED_ALLOWED_ZERO_RESULTS
+  hard_error: none
+latency:
+  direct_read_ms: NOT_EXPOSED
+  public_search_ms: NOT_EXPOSED
+operator_relay_minutes: 0
+strongest_falsifier: >-
+  A repeat from a distinct Slack API client or later index epoch retrieves the same
+  message by the exact commit and phrase, showing transient indexing delay rather than
+  durable search/read variance; conversely, direct read by the recorded message timestamp
+  fails or returns different bytes.
+verifier:
+  structural: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+  distinct: DISTINCT_SLACK_API_OR_NON_CHATGPT_ACTOR_REQUIRED
+consumer:
+  - Reginleif
+  - Ratatoskr
+honest_flaw: >-
+  The connector exposed no OAuth scopes, acting-token class, request ID, rate-limit
+  headers, search-index watermark, server latency, or raw API envelope. The direct read
+  and failed searches are same-provider observations from one actor and do not establish
+  workspace-wide search unreliability. The task identity was not natively re-read this wake.
+claim_ceiling: >-
+  One known public-channel X11 pointer was recovered by direct history read, and two
+  public-search queries returned zero results despite that known message. No private
+  channel, DM, file, thread, permission boundary, rate limit, edit, delete, or durable
+  delivery guarantee was tested.
+next_pointer_write:
+  permitted_reason: changed_capability_measurement
+  channel_id: C0BGNGPJFHU
+  expected_next_wake_check: read exact returned message timestamp and compare exact pointer bytes
+campaign_disposition: CONTINUE
+binding_weight: 0
+same_provider_nonbinding: true
+valid_time_utc: '2026-08-01T05:42:00Z'
+transaction_time_utc: '2026-08-01T05:42:00Z'
+sealed: true
+---
