@@ -1,0 +1,81 @@
+{
+  "canonical_transition": {
+    "acceptance": {
+      "duplicate_search_matches": 0,
+      "idempotency_formula": "sha256(object_id|expected_version|next_version|campaign_id|wake_ordinal|prior_digest|current_blob|task_id|transition_kind|decision)",
+      "pointer_gate": "event-first readback; second CURRENT read; require version 13 and exact blob; single-file SHA-guarded update; postwrite readback",
+      "search_authority": "BEST_EFFORT_NONATOMIC"
+    },
+    "campaign": {
+      "accepted_wake_ordinal": 2,
+      "campaign_id": "X12_STALE_CONCURRENT_WRITER_SIMULATION_C4",
+      "factor": "stale_concurrent_writer_simulation",
+      "target_wakes": 4
+    },
+    "consumer": "Reginleif/Olrun",
+    "effect_ceiling": "GIT_EVENT_AND_CURRENT_POINTER; SANITIZED_SLACK_POINTER",
+    "evidence_class": "PROMPT_TASK_BINDING+EXACT_GITHUB_READBACK+LOCAL_SYNTHETIC_TWO_PROPOSAL_PREFLIGHT+SINGLE_FILE_SHA_GUARD",
+    "expected_version": 13,
+    "experiment": {
+      "baseline": "CURRENT v13 at blob e8c8abaf235a7efba5f132819915874053d1ea0d; C4 1/4",
+      "controlled_factor": "stale/concurrent-writer simulation only",
+      "exact_probe": {
+        "proposal_a": {
+          "expected_version": 13,
+          "pointer_blob": "e8c8abaf235a7efba5f132819915874053d1ea0d",
+          "prewrite_result": "ELIGIBLE_AT_SHARED_SNAPSHOT",
+          "selected_for_transition": true
+        },
+        "proposal_b": {
+          "expected_version": 13,
+          "pointer_blob": "e8c8abaf235a7efba5f132819915874053d1ea0d",
+          "post_advance_expected_result": "REJECT_STALE_VERSION_AND_BLOB",
+          "prewrite_result": "ELIGIBLE_AT_SHARED_SNAPSHOT",
+          "stale_api_call_attempted": false,
+          "synthetic_idempotency_key": "808c6afdc7574022fed2ae840179faf3962d88605b3749d282710bc7c7c511d3"
+        }
+      },
+      "hypothesis": "Two proposals can both appear eligible against one Git snapshot; after proposal A advances CURRENT, proposal B must be rejected as stale by exact version and blob checks.",
+      "measured_result": {
+        "operator_relay_minutes": 0,
+        "permission_error_class": "NONE",
+        "simulation_scope": "LOCAL_SERIAL_TWO_PROPOSAL_PRE_AND_POST_COMMIT"
+      },
+      "strongest_falsifier": "Proposal B remains eligible after CURRENT advances, proposal A advances without the exact v13/blob gate, the idempotency key already exists, or any event/pointer readback fails."
+    },
+    "expiry_utc": "2026-08-01T14:42:21Z",
+    "honest_flaw": "This is a serial two-proposal simulation, not overlapping writers. Both proposals were only evaluated locally at the shared snapshot; proposal B will not make a stale GitHub API call. Git event and CURRENT remain separate commits. The single-file blob-SHA guard does not provide cross-file atomicity, reservations, locks, linearizability, exactly-once execution, database durability, Slack atomicity, or orphan-event cleanup.",
+    "idempotency_key": "0dafe057d5f951f759362c9d4e2b552126b2f3153b68947f5736a61e2e402838",
+    "next_version": 14,
+    "nonce": "x12-c4-w2-v13-v14-0dafe057",
+    "object_id": "HFO_X12_WORKFLOW_OBJECT_001",
+    "prior_digest_sha256": "d825e4d6868905c1cbd0ac4f492cd583a6c7bb31faa6e5e53e3d112a37e8a1dd",
+    "prior_version": 13,
+    "rollback": "Append a compensating event from the then-current version; retain immutable history.",
+    "self_probe": {
+      "expected_task_id": "6a506f83df208191815dd17a8fd5baa3",
+      "observed_task_id": null,
+      "tools": [
+        "GITHUB_READ_WRITE",
+        "GITHUB_SEARCH",
+        "LOCAL_SHA256",
+        "SLACK_POINTER_POST"
+      ]
+    },
+    "source_binding": {
+      "current_pointer_blob": "e8c8abaf235a7efba5f132819915874053d1ea0d",
+      "current_projection_digest_sha256": "221b862d135dd2ba682b099366f3d86dac4921c2993f3b80831d8b93361d29d3",
+      "prior_event_blob": "c9255b3ee1d52eca66e708e73c8ad835ac10ab8c",
+      "prior_event_commit": "c97a7d3024149a238686b13cb4895e540128356c",
+      "prior_event_path": "state/coordination/experiments/durable_object_x12/events/20260801T094706Z_V0012_TO_V0013_STALE_CONCURRENT_WRITER_SIMULATION.json"
+    },
+    "task_id": "6a506f83df208191815dd17a8fd5baa3",
+    "transaction_time_evidence": "AUTOMATION_RUNTIME_TIMESTAMP; not a database transaction boundary",
+    "transaction_time_utc": "2026-08-01T10:42:21Z",
+    "valid_time_utc": "2026-08-01T10:42:21Z",
+    "verifier": "S04_WEIGHT_0_THEN_DISTINCT_SIGRUN_P4"
+  },
+  "canonicalization": "JCS_LIKE_V1",
+  "event_digest_sha256": "bca34b6ab5c4d2b7a919a6a8488087bd9725dfc7a1bc8a509cf62e4535f40ec9",
+  "schema_id": "hfo.gen133.x12.durable_object_event.v1"
+}
