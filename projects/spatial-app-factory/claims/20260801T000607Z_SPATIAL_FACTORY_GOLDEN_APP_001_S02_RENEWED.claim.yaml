@@ -1,0 +1,193 @@
+---
+schema_id: hfo.gen133.spatial_factory.s02_claim.v2
+claim_id: S02_SPATIAL_FACTORY_GOLDEN_APP_001_RENEWED_20260801T000607Z
+work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001
+result: CLAIMED
+callsign_or_seat: S02_ADMISSION_PULL
+carrier_task_id_expected: 6a55088a3d308191ac1cda97221f0957
+carrier_task_id_observed: 6a55088a3d308191ac1cda97221f0957
+carrier_task_id_match: true
+carrier_identity_claim: DISPOSABLE_SCHEDULED_CARRIER_NOT_LINEAGE
+controller: operator_direct
+wip: 1
+valid_time_utc: 2026-08-01T00:06:07Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+lease_expires_utc: 2026-08-01T04:06:07Z
+packet_authority_expires_utc: 2026-08-03T17:57:17Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+repository_head_observed_before_write: e183d0c96c72147b95defa9fe6dc2bc7eac46d88
+claim_status: immutable_renewed_superseding_claim
+sealed: false
+---
+
+self_probe:
+  task_identity_source: native_scheduled_task_inventory_readback
+  tools_observed:
+    native_tasks_inventory: read
+    github: read_write
+    slack: read_write
+  missing_required_tool: false
+  prohibited_effects_observed: none
+
+source:
+  commit: b9d0f66cb64feeccef8472b1830fbcb5e1796551
+  path: projects/spatial-app-factory/packets/20260731T175717Z_REGINLEIF_SCHEDULED_LOOPS_PDCA_OPERATOR_DIRECTIVE.packet.md
+  blob: 04e3fc472c65f58fb2e189f546371eb9a2899330
+  authority: exact_operator_activated_directive
+  status_at_claim: READY_WORKITEM_AUTHORITY_UNEXPIRED
+
+changed_admission_evidence:
+  reducer_route:
+    commit: bee76930b35812aeb8761c40403c0e5efbff4f91
+    path: state/coordination/receipts/chatgpt_runtime/seat-03/20260731T230800Z_SPATIAL_FACTORY_GOLDEN_APP_001_REVISE_ROUTE.yaml
+    blob: a4a4205b06cac5547b390ebbfb0e071b4eab4bd7
+    result: REVISE
+    observed_gap: expired_claim_and_expired_partial_return_without_bound_verdict_or_consumer_ack
+  recovery_sequence_vote:
+    commit: 1eaea116d21e3b346e41cc3af999804bd9bb48d9
+    path: state/coordination/votes/20260731T233200Z_S09_GOLDEN_APP_RECOVERY_SEQUENCE.vote.md
+    blob: 1c4804cb0d9b83764b5901953fa7161a50c25de5
+    result: REVISE_RECLAIM_PATCH_THEN_VERIFY
+    evidence_ceiling: SAME_PROVIDER_ADVISORY_NONBINDING_WEIGHT_0
+  heritage_acceptance_offer:
+    commit: e183d0c96c72147b95defa9fe6dc2bc7eac46d88
+    path: projects/spatial-app-factory/heritage/20260731T235613Z_S15_GESTURECUE_FALSE_TRIGGER_CONTROL_REUSE.yaml
+    blob: c23ab6fc6cd6aac8abdd8ea9b4bc1a37680bbd49
+    result: RETURN_REUSABLE_PRIOR_ARTIFACT
+    consumed_here_as: acceptance_pattern_only_not_implementation_or_test_proof
+
+supersession:
+  prior_claim:
+    commit: 289654cf70754738531470c83f6e5f756465ff6a
+    path: projects/spatial-app-factory/claims/20260731T190400Z_SPATIAL_FACTORY_GOLDEN_APP_001_S02.claim.yaml
+    blob: 08f1a7690613570d46c92f3e22eef6ba0ac6ea5f
+    lease_expired_utc: 2026-07-31T23:04:00Z
+    preserved_state: EXPIRED_NOT_DELETED_NOT_CLOSED
+  prior_producer_return:
+    commit: 30ef5fb486653a23786b828a686fef4a80b0c33e
+    path: state/coordination/receipts/chatgpt_runtime/seat-07/20260731T223240Z_SPATIAL_FACTORY_GOLDEN_APP_001_PARTIAL_PRODUCER_RETURN.yaml
+    blob: 986d3c31f3e9e7334c027c52330aff769c5dfa33
+    producer_head_sha: fee50a70188b510695e8e5fad2ebadc6cba0535a
+    preserved_state: EXPIRED_PARTIAL_HOLD_NOT_PASS
+  rule: this claim supersedes only the expired lease and acceptance packet; it does not erase, pass, or terminally grade the prior claim or producer return
+
+acceptance_contract:
+  canonicalization: UTF-8 LF-delimited exact lines in canonical_text_block
+  canonical_text_block: |-
+    same-work-item-only
+    explicitly-supersedes-claim-289654cf70754738531470c83f6e5f756465ff6a-blob-08f1a7690613570d46c92f3e22eef6ba0ac6ea5f
+    preserves-expired-partial-return-30ef5fb486653a23786b828a686fef4a80b0c33e-blob-986d3c31f3e9e7334c027c52330aff769c5dfa33-as-historical-HOLD
+    target-TTaoGaming/TAGS-branch-agent/spatial-golden-app-001-20260731-base-1271e25306fe8ef8baea32704cf022435703d498
+    allowed-paths-only-prototypes/fab-prototype.html,prototypes/spatial-input-adapter.js,tests/spatial-input-adapter.test.mjs,tests/fab-prototype-smoke.test.mjs
+    require-additive-classic-script-load-seam
+    require-target-specific-injected-activation
+    require-exactly-once-activation-after-one-valid-pinch-release
+    require-zero-activation-for-held-invalid-missing-nonfinite-low-confidence-or-disarmed-input
+    preserve-native-mouse-touch-keyboard-and-existing-click-fallback
+    require-full-A1-through-A9-command-evidence-with-real-exit-codes-and-final-branch-SHA
+    forbid-browser-or-trusted-user-activation-claim-without-browser-execution
+    producer-S07-or-one-authorized-real-host
+    verifier-distinct-provider-or-nonproducer-Sigrun/P4
+    consumer-Olrun/Claude-Dispatch
+    rollback-ordinary-revert-or-unmerged-branch-discard-without-history-deletion
+    effect-ceiling-BRANCH_FILE_TEST-on-exact-target-and-internal-Git-Slack-coordination-only
+    forbid-send-spend-deployment-merge-publication-account-security-change-secret-exposure-permanent-deletion
+  sha256: ffaa1a6fa0637039abd6ab9e43b1b978d1505edd0575ab020ca7256e3a45a8cb
+  tests:
+    - A1 source remains pinned to base 1271e25306fe8ef8baea32704cf022435703d498
+    - A2 valid normalized input deterministically maps pointer position
+    - A3 one valid pinch release produces exactly one target-specific activation and held pinch produces no repeat
+    - A4 invalid, missing, non-finite, below-confidence, or disarmed input produces zero activation
+    - A5 original FAB remains a native control and native mouse, touch, keyboard, and click paths are not removed or canceled
+    - A6 no external dependency or lockfile change is introduced
+    - A7 fab-prototype.html loads the adapter through the additive script seam and local curl smoke passes
+    - A8 only the four exact allowed paths change and git diff --check exits zero
+    - A9 producer return binds final branch SHA, blob readbacks, exact commands, actual exit codes, rollback, expiry, and honest flaw
+    - no browser, trusted-user-activation, focus, accessibility, or soak PASS is claimed unless actually executed
+
+idempotency:
+  canonicalization: sha256 UTF-8 of work_item_id, source_commit, source_path, source_blob, and acceptance_contract_sha256 joined by LF
+  canonical_input: |-
+    SPATIAL_FACTORY_GOLDEN_APP_001
+    b9d0f66cb64feeccef8472b1830fbcb5e1796551
+    projects/spatial-app-factory/packets/20260731T175717Z_REGINLEIF_SCHEDULED_LOOPS_PDCA_OPERATOR_DIRECTIVE.packet.md
+    04e3fc472c65f58fb2e189f546371eb9a2899330
+    ffaa1a6fa0637039abd6ab9e43b1b978d1505edd0575ab020ca7256e3a45a8cb
+  key: 868c92febed6f1f359cde2ba7a8dba8977dc665d0df9329a7da574a4d8ae7f44
+  duplicate_search_before_write:
+    exact_key_matches: 0
+    prior_same_work_item_claims: 1
+    prior_same_work_item_claim_disposition: expired_and_explicitly_superseded
+
+producer_contract:
+  producer: S07_BOUNDED_CODE_PATCH_BUILDER_or_one_authorized_real_host
+  routing_consumer: Olrun/Claude-Dispatch
+  target:
+    repository: TTaoGaming/TAGS
+    branch: agent/spatial-golden-app-001-20260731
+    base_sha: 1271e25306fe8ef8baea32704cf022435703d498
+    prior_observed_head_sha: fee50a70188b510695e8e5fad2ebadc6cba0535a
+  allowed_paths:
+    modify:
+      - prototypes/fab-prototype.html
+      - prototypes/spatial-input-adapter.js
+      - tests/spatial-input-adapter.test.mjs
+      - tests/fab-prototype-smoke.test.mjs
+    forbidden: every other path
+  required_return:
+    - bind this claim commit and exact claim blob after creation
+    - name producer substrate, runtime/model when observable, repository, branch, base SHA, and final SHA
+    - include exact changed paths and resulting blob SHAs
+    - include all commands actually run, actual exit codes, and concise output
+    - report A1 through A9 as STOOD, FELL, or NOT_RUN without upgrading static evidence into browser proof
+    - preserve the expired partial return as historical HOLD and name the supersession edge
+    - include rollback, effect ceiling, expiry, remaining risk, and honest flaw
+  producer_return_due_utc: 2026-08-01T03:06:07Z
+
+verifier:
+  named: Sigrun/P4_APEX_FALSIFICATION_or_other_distinct_provider_nonproducer
+  independence_required: true
+  terminal_vocabulary: [STOOD, FELL]
+  verifier_must_bind:
+    - this renewed claim commit and blob
+    - final producer-return digest
+    - final target branch SHA
+    - acceptance contract sha256 ffaa1a6fa0637039abd6ab9e43b1b978d1505edd0575ab020ca7256e3a45a8cb
+  same_provider_S04_preflight_allowed: true
+  same_provider_binding_weight: 0
+
+consumer:
+  named: Olrun/Claude-Dispatch_as_spatial_factory_coordinator
+  explicit_ack_required_after: distinct_STOOD_only
+  implicit_ack_forbidden: true
+  reducer_after_return: S03_task_6a539fc5130c81918c13624739fb2a60
+
+world_effect_ceiling:
+  S02_allowed:
+    - one immutable renewed claim file
+    - exact Git readback
+    - one concise Slack pointer after readback
+  downstream_producer_allowed:
+    - BRANCH_FILE_TEST on the exact private target branch and four allowed paths
+    - local deterministic tests and local static server
+    - ordinary commit and exact producer return
+  forbidden:
+    - task mutation
+    - merge, deployment, publication, release, send, spend, payment, application, or outreach
+    - account or security change, secret exposure, permanent deletion, force push, rebase, or reset
+    - new queue, second WorkItem, unrelated refactor, second app, seal, IMMUNIZE, or permaweb upload
+
+rollback:
+  S02_claim: immutable history; supersede with a later exact receipt only, never edit or delete
+  producer_branch: leave unmerged or create an ordinary revert commit on the same branch
+  external_effect: none authorized
+
+next_state:
+  owner: S06_CODE_PACKET_COMPILER_then_S07_or_authorized_host
+  state: RENEWED_CLAIM_READY_FOR_REVISED_PACKET
+  required_next_transition: compile one revised executor packet bound to this claim and the exact acceptance digest, then obtain one new producer digest
+  silence_rule: unchanged wakes create no duplicate claim, no Git receipt, and no Slack post
+
+honest_flaw: >-
+  This renewed claim is based on an unexpired operator directive plus changed reducer, advisory-vote, and heritage evidence. The S09 vote and S15 offer are same-provider, nonbinding inputs; they do not prove that the producer can finish the patch or that a distinct verifier is available. The target branch head was taken from the latest bound producer evidence, not re-read directly in this wake. This claim creates no code, test result, browser proof, STOOD/FELL verdict, ConsumerAck, merge, deployment, publication, or external outcome.
