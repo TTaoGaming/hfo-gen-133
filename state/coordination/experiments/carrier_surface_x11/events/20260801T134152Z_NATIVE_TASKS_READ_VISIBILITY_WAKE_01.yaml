@@ -1,0 +1,97 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+experiment_id: X11_NATIVE_TASKS_READ_VISIBILITY_V1
+carrier: X11
+actor: X11_CARRIER_AND_TOOL_SURFACE_PDCA_LAB
+task_binding:
+  expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+  observed_task_id: 6a55089a9adc8191bda54541f7f9effa
+  match: true
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+wip_limit: 1
+prior_current:
+  expected_version: 16
+  blob: 1a35b1dee88de27d319a0c28f2b6ad1640e6da61
+  campaign: X11_WEB_RESEARCH_SURFACE_V1
+  disposition: KEEP
+campaign:
+  controlled_factor: native_tasks_read_visibility
+  accepted_wake: 1
+  target_wakes_before_decision: 4
+baseline:
+  direct_native_inventory_previously_measured_in_this_campaign: false
+  expected_x11_task_metadata_known_from_operator_prompt: true
+hypothesis: >-
+  A read-only native Tasks inventory call will expose the expected X11 task ID,
+  title, enabled state, schedule, timezone, timing mode, and recent run/update
+  timestamps without task mutation, interactive login, or operator relay.
+exact_probe:
+  tool: automations.list
+  mode: read_only
+  query_scope: provider_inventory
+  checked_fields:
+    - id
+    - title
+    - is_enabled
+    - schedule
+    - default_timezone
+    - timing_mode
+    - updated_at
+    - last_run_time
+  privacy_rule: do_not_copy_unrelated_task_prompt_bodies_to_git_or_slack
+measured_result:
+  provider_call_status: SUCCESS
+  expected_task_visible: true
+  observed_title: HFO X11 Carrier Surface PDCA Lab
+  observed_enabled: true
+  observed_schedule: |-
+    BEGIN:VEVENT
+    DTSTART;TZID=UTC:20260728T234000
+    RRULE:FREQ=HOURLY;BYMINUTE=40;BYSECOND=0
+    END:VEVENT
+  observed_default_timezone: America/Denver
+  observed_timing_mode: exact_schedule
+  observed_updated_at_utc: 2026-08-01T12:44:56.639548Z
+  observed_last_run_time_utc: 2026-08-01T12:44:35.120845Z
+  active_hfo_gen133_task_count_observed: 15
+  field_level_projection_available: false
+  broad_inventory_included_prompt_bodies: true
+  mutation_performed: false
+permission_class: AUTHENTICATED_NATIVE_READ_AVAILABLE
+error_class: NONE
+latency:
+  exposed_by_tool: false
+  measured_ms: null
+operator_relay_minutes: 0
+capability_delta: >-
+  Native Tasks read visibility is directly available in this carrier and exposes
+  exact identity, schedule, enabled state, timezone, timing mode, and timestamps.
+  The listing is broad rather than field-selective and also returns unrelated
+  prompt bodies, so downstream persistence must sanitize aggressively.
+strongest_falsifier: >-
+  Repeat the same read and observe the expected task missing, mismatched, or
+  metadata fields omitted, or obtain a field-selective native read that disproves
+  the broad-surface privacy limitation.
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer:
+  - Reginleif
+  - Ratatoskr
+expiry_utc: 2026-08-08T13:41:52Z
+result: NATIVE_TASKS_READ_WAKE_01_ACCEPTED
+next_probe: >-
+  Repeat one read-only listing and test whether exact active inventory count and
+  X11 metadata remain stable while avoiding persistence of unrelated prompt bodies.
+honest_flaw: >-
+  This is same-provider telemetry with no independent witness and no exposed raw
+  request latency. The provider returned a broad inventory containing prompt
+  bodies; X11 sanitized its durable receipt, but the read surface itself is not
+  least-data or field-selective. A visible task record does not prove future wake
+  execution, liveness, or exactly-once scheduling.
+valid_time_utc: 2026-08-01T13:41:52Z
+transaction_time_utc: 2026-08-01T13:41:52Z
+evidence_class: DIRECT_PROVIDER_READBACK_SAME_PROVIDER_NONBINDING
+binding_weight: 0
+effect_ceiling: READ_ONLY_PROVIDER_METADATA_PLUS_GIT_RECEIPT_AND_SANITIZED_SLACK_POINTER
+sealed: false
+---
