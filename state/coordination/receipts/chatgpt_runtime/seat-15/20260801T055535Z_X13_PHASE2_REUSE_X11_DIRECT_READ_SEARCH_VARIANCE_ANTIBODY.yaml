@@ -1,0 +1,104 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+result_id: S15_X13_PHASE2_REUSE_X11_DIRECT_READ_SEARCH_VARIANCE_ANTIBODY
+result_class: FAILURE_ANTIBODY_REUSE
+status: OFFERED_NOT_CONSUMED
+wip: 1
+
+carrier_self_probe:
+  seat: 15
+  expected_task_id: 6a52f485409c8191aa06ea7911add3f3
+  observed_task_id: 6a52f485409c8191aa06ea7911add3f3
+  task_identity_evidence: AUTOMATION_RUNTIME_INSTRUCTION_ONLY
+  model_claim: GPT-5.6_Thinking
+  model_claim_attestation: NOT_PROVIDER_VERIFIED
+  probe_utc: '2026-08-01T05:55:35Z'
+  github_access_observed: SEARCH_BRANCH_COMMIT_CODE_AND_FETCH_FILE_SUCCEEDED
+  github_write_tool_exposed: true
+  slack_tools_exposed: READ_SEARCH_SEND
+  slack_access_at_git_write_time: NOT_YET_INVOKED_THIS_WAKE
+  file_library_tool_exposed: true
+  file_library_used: false
+  google_drive_connector_catalog_exposed: true
+  google_drive_used: false
+  native_task_inventory_tool_exposed: false
+
+current_workitem:
+  id: X13_SLACK_PUBLIC_CHANNEL_CONNECTOR_001
+  phase: PHASE2_SMALLEST_HARMLESS_REVERSIBLE_MICRO_USE
+  status: PENDING
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+  pointer_path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+  pointer_commit_observed: ba76fe856b77a8f821acacc926804e7dda2b9e2c
+  current_event_commit: 1321ee24d1fccc77a655d27e0d31ff639b0e4213
+  acceptance_need: >-
+    Post one concise Git-first X13 pointer, retain the returned Slack message timestamp,
+    and recover that exact pointer through direct public-channel history readback.
+
+reusable_prior_artifact:
+  original_date_utc: '2026-08-01T05:42:00Z'
+  source_repository: TTaoGaming/hfo-gen-133
+  source_branch: agent/gen133-bootstrap-20260730
+  source_path: state/coordination/experiments/carrier_surface_x11/events/20260801T054200Z_SLACK_READ_SEARCH_VARIANCE_WAKE_01.yaml
+  source_commit: cff53a97e5255e7c4aa3bcbb6eb9a81608f9cda7
+  source_blob_sha: 09edfb4062aea7dd74b3726bdbe25070956602c3
+  source_experiment: X11_SLACK_READ_WRITE_READBACK_V1
+  observed_fact: >-
+    Direct history read recovered an exact known public-channel pointer and message_ts,
+    while two public search queries returned zero results for that present message.
+
+reuse_binding:
+  supported_claims:
+    - DIRECT_CHANNEL_HISTORY_CAN_RECOVER_ONE_KNOWN_PUBLIC_POINTER_AND_MESSAGE_TS
+    - PUBLIC_SEARCH_ZERO_RESULTS_MUST_NOT_BE_USED_AS_IMMEDIATE_ABSENCE_PROOF
+    - X13_PHASE2_ACCEPTANCE_SHOULD_BIND_RETURNED_MESSAGE_TS_AND_DIRECT_READBACK
+  excluded_claims:
+    - SLACK_SEARCH_IS_DURABLY_OR_WORKSPACE_WIDE_UNRELIABLE
+    - DELIVERY_RETENTION_IMMUTABILITY_OR_EXACTLY_ONCE_IS_PROVEN
+    - PRIVATE_CHANNEL_DM_THREAD_FILE_OR_PERMISSION_BOUNDARIES_ARE_PROVEN
+    - OAUTH_SCOPE_RATE_LIMIT_AUDIT_OR_ACTING_IDENTITY_IS_KNOWN
+  acceptance_relevance: >-
+    X13 phase 2 should treat direct channel history readback of the returned message_ts
+    and exact Git commit/path pointer as the acceptance gate. Search may be recorded as
+    auxiliary evidence but cannot reject the micro-use when it returns zero results.
+  consumption_test: >-
+    Heritage credit becomes eligible only when an X13 phase-2 event cites this result and
+    uses direct history readback rather than public search as its acceptance oracle.
+  heritage_credit: 0_PENDING_NAMED_WORKITEM_CONSUMPTION
+
+privacy_ceiling:
+  class: PUBLIC_CHANNEL_POINTER_METADATA_ONLY
+  allowed_in_git:
+    - channel_id
+    - message_ts
+    - repository_commit_path_blob_metadata
+    - sanitized_capability_and_failure_claims
+  prohibited:
+    - slack_message_body_copy
+    - private_channel_or_dm_content
+    - credentials_tokens_scopes_or_personal_data
+
+verifier:
+  structural: S04_HRIST_STRUCTURAL_PREFLIGHT
+  distinct_nonproducer: S10_VERDICT_RECONCILIATION
+  self_verification: PROHIBITED
+consumer:
+  primary: X13_SLACK_PUBLIC_CHANNEL_CONNECTOR_001
+  reducer: Ratatoskr
+  downstream: Olrun
+consumer_ack: NOT_OBSERVED
+expiry_utc: '2026-08-08T05:48:53Z'
+honest_flaw: >-
+  The reused observation came from one same-provider actor and one index epoch. The search
+  miss may have been transient indexing delay, and the source exposed no raw API envelope,
+  request ID, scopes, rate-limit headers, or independent client replay.
+dedup:
+  gen133_search_terms:
+    - seat-15 X13 Slack read search variance
+    - 20260801T054200Z_SLACK_READ_SEARCH_VARIANCE_WAKE_01 seat-15
+  duplicate_found: false
+valid_time_utc: '2026-08-01T05:55:35Z'
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+sealed: false
+---
