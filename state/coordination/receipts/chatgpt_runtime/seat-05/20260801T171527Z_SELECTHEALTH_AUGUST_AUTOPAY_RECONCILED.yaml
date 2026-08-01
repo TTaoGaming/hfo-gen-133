@@ -1,0 +1,68 @@
+schema: hfo.gen133.operator_relief.receipt.v1
+seat: S05
+carrier_role: Operator-Relief Cell
+task_id: 6a55c182078c8191b89f2dd15f5f640c
+self_probe:
+  task_id_matched: true
+  readable_surfaces:
+    - Gmail
+    - Google_Calendar
+    - Google_Contacts
+    - GitHub
+    - Slack
+    - native_tasks_inventory
+result: STATUS_RECONCILED
+transaction_time_utc: 2026-08-01T17:15:27Z
+valid_time_utc: 2026-08-01T16:46:08Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+wip_limit: 1
+active_item:
+  id: SELECTHEALTH_AUGUST_AUTOPAY_STATUS
+  status: APPROVED_RECEIPT_CONFIRMED
+  sanitized_fact: The scheduled SelectHealth automatic payment of USD 105.91 for 2026-08-01 was approved; the amount matches the approved June and July payments.
+  source_system: Gmail
+  source_pointers:
+    - gmail_message_id: 19f847a6d7cea098
+      evidence: payment_scheduled
+      observed_utc: 2026-07-21T10:57:07Z
+    - gmail_message_id: 19fbe3801260fdd1
+      evidence: payment_approved
+      observed_utc: 2026-08-01T16:46:08Z
+    - gmail_message_id: 19f1ecf0b6ced33d
+      evidence: prior_month_amount_match
+      observed_utc: 2026-07-01T17:51:51Z
+    - gmail_message_id: 19e8465bb84ae162
+      evidence: prior_month_amount_match
+      observed_utc: 2026-06-01T18:15:19Z
+transition:
+  type: close_waiting_loop_through_source_readback
+  waiting_loop_closed: August SelectHealth automatic-payment execution status
+  readback_confirmed: true
+  calendar_match_found: false
+  saved_contact_match_found: false
+  action_required_from_receipt_alone: false
+priority_state:
+  p0:
+    id: OCOOPA_SAFETY_DRAFTS
+    status: OPEN
+  p1:
+    - id: PARTY_SAFARI_PERMISSION_SLIP
+      status: OPEN
+    - id: REED_HVAC_130_FEE_VERIFICATION
+      status: CALENDAR_BOUND
+operator_minutes_removed_estimate: 5
+next_consumer: operator
+privacy:
+  private_bodies_externalized: false
+  payment_account_identifier_externalized: false
+  credentials_externalized: false
+  sanitized_only: true
+effect_ceiling:
+  gmail_read: bounded status reconciliation
+  calendar_write: none
+  contact_write: none
+  email_send: none
+  payment: none
+  account_change: none
+honest_flaw: Payment approval confirms the transaction status only. It does not prove current insurance coverage, policy standing, absence of a later reversal, or the date and amount of the next automatic payment.
