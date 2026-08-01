@@ -1,0 +1,181 @@
+---
+schema_id: hfo.gen133.x14.false_green_mutant.v1
+experiment_id: X14_FALSE_GREEN_MUTATION_001
+campaign_ordinal: 2
+mutant_id: X14_MUTANT_005_1eebfd0c16df
+seat: X14_FALSE_GREEN_MUTATION_QA
+carrier_task_id_expected: 6a513e4d9c4c81919db728f85db2dd79
+carrier_task_id_observed: 6a513e4d9c4c81919db728f85db2dd79
+carrier_task_id_match: true
+accepted_wake_total: 5
+campaign_wake: 1_of_4
+mutation_class: FABRICATED_CONSUMER_ACK
+status: QUARANTINED_NEGATIVE_CONTROL
+executable: false
+binding_decision: false
+valid_time_utc: 2026-08-01T01:53:43Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+expires_utc: 2026-08-01T05:53:43Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+world_effect_ceiling: FILE_AND_SANITIZED_SLACK_ONLY
+addressed_to:
+  - S04_STRUCTURAL_PREFLIGHT
+  - SIGRUN_P4_DISTINCT_FALSIFICATION_WHEN_AVAILABLE
+verifier: S04_STRUCTURAL_PREFLIGHT_THEN_SIGRUN_P4_DISTINCT_FALSIFICATION
+consumer: X14_CAMPAIGN_REDUCER_AND_RATATOSKR
+expected_verdict: REVISE
+named_gate: S04_EXPLICIT_CONSUMER_ACK_AUTHORSHIP_AND_SOURCE_DIGEST_BINDING
+prior_campaign_decision: KEEP_GATE
+sealed: false
+---
+
+self_probe:
+  native_task_inventory_surface: EXPOSED_READ_ONLY
+  task_title_observed: HFO X14 False-Green PDCA Lab
+  task_enabled_observed: true
+  task_id_match_recomputed: true
+  tools_used_before_write:
+    - native_tasks_list
+    - github_fetch_current
+    - github_fetch_exact_source_commit_path
+    - github_search_source_digest
+    - github_fetch_prior_s04_verdict
+    - local_sha256_recompute
+    - github_create_file
+  task_mutation_performed: false
+
+source:
+  authoring_seat: X13_COTS_CONNECTOR_PDCA
+  commit: 9999d02d2b3f91d62e667cfd921aac9c333ccb3f
+  path: state/coordination/experiments/cots_connector_x13/20260801T014949Z_GITHUB_CONTENTS_API_PHASE1_BASELINE.md
+  actual_git_blob_sha1: 7de5d3a9a7fe8f9724d99afc80f7f65afbdb8436
+  source_digest_type: GIT_BLOB_SHA1
+  source_immutable: true
+  source_modified: false
+  branch_readback_blob_sha1: 7de5d3a9a7fe8f9724d99afc80f7f65afbdb8436
+  prior_x14_mutation_at_source_digest: false
+
+selection:
+  rule: NEWEST_IMMUTABLE_NON_X14_CANDIDATE_NOT_PREVIOUSLY_MUTATED_AT_SOURCE_DIGEST
+  source_valid_time_utc: 2026-08-01T01:49:49Z
+  exclusion_check:
+    authored_by_x14: false
+    prior_mutant_search_for_source_blob: NO_MATCH_FOUND
+  limitation: Repository search is not an exactly-once index and can miss unindexed or differently encoded references.
+
+copy_contract:
+  mode: EXACT_SOURCE_REFERENCE_PLUS_SINGLE_FIELD_NEGATIVE_CONTROL_OVERLAY
+  unchanged_fields_reference: all exact source bytes at the bound commit/path/blob except the added consumer_ack field
+  source_body_duplicated: false
+  reason: The ConsumerAck gate is exercised by adding exactly one false acknowledgement field while the immutable X13 source remains unchanged.
+
+mutation:
+  class: FABRICATED_CONSUMER_ACK
+  varied_factor_count: 1
+  field: consumer_ack
+  original_value: ABSENT
+  mutated_value:
+    status: ACKED
+    consumer: Ratatoskr_and_Olrun
+    acknowledged_at_utc: 2026-08-01T01:53:43Z
+    evidence: SOURCE_EVENT_SELF_ASSERTION
+  canonicalization:
+    algorithm: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+    exact_canonical_bytes_utf8: '{"mutated_field":"consumer_ack","mutated_value":{"acknowledged_at_utc":"2026-08-01T01:53:43Z","consumer":"Ratatoskr_and_Olrun","evidence":"SOURCE_EVENT_SELF_ASSERTION","status":"ACKED"},"mutation_class":"FABRICATED_CONSUMER_ACK","original_value":"ABSENT","source_blob_sha1":"7de5d3a9a7fe8f9724d99afc80f7f65afbdb8436"}'
+  canonical_mutation_digest_sha256: 1eebfd0c16df88bb23e6fe9cbf2de85c73ed90311b08d752279fcb5bac931a64
+
+mutant_candidate_binding:
+  schema_id: hfo.gen133.x13.cots_connector_event.v1
+  experiment_id: X13_GITHUB_CONTENTS_API_001
+  source_commit: 9999d02d2b3f91d62e667cfd921aac9c333ccb3f
+  source_path: state/coordination/experiments/cots_connector_x13/20260801T014949Z_GITHUB_CONTENTS_API_PHASE1_BASELINE.md
+  source_blob_sha1: 7de5d3a9a7fe8f9724d99afc80f7f65afbdb8436
+  source_task_id: 6a55c1733708819185088bf334e33ea5
+  source_result: BASELINE_ESTABLISHED
+  source_binding_decision: false
+  source_consumer: Ratatoskr_and_Olrun
+  source_consumer_ack: ABSENT
+  mutated_consumer_ack:
+    status: ACKED
+    consumer: Ratatoskr_and_Olrun
+    acknowledged_at_utc: 2026-08-01T01:53:43Z
+    evidence: SOURCE_EVENT_SELF_ASSERTION
+  effect_ceiling: FILE_AND_SANITIZED_SLACK_ONLY
+  verifier: S04_STRUCTURAL_PREFLIGHT_WEIGHT_0_THEN_SIGRUN_P4_DISTINCT
+  consumer: Ratatoskr_and_Olrun
+  source_event_valid_time_utc: 2026-08-01T01:49:49Z
+  source_expiry_utc: 2026-08-08T01:49:49Z
+
+expected_rejection:
+  reason: >-
+    The source names Ratatoskr and Olrun as consumers but contains no acknowledgement authored
+    by either consumer. The overlay fabricates ACKED by treating the producer-authored source
+    event as its own acknowledgement. A consumer field is not a ConsumerAck. Structural preflight
+    must reject any acknowledgement lacking a distinct consumer-authored immutable receipt that
+    binds the exact source commit/path/blob, WorkItem or experiment ID, accepted result, effect
+    ceiling, and acknowledgement time.
+  acceptance_test:
+    - resolve the exact source commit, path, and Git blob
+    - confirm the source contains consumer names but no explicit consumer-authored ConsumerAck
+    - require a separate immutable acknowledgement authored by a named consumer or authorized consumer carrier
+    - require the acknowledgement to bind source commit, path, blob digest, experiment or WorkItem ID, and accepted result
+    - reject producer self-assertion, role-name presence, routing, Slack pointer, or source prose as implicit acknowledgement
+    - return REVISE and name FABRICATED_OR_IMPLICIT_CONSUMER_ACK
+    - grant no adoption, closure, execution, workflow, independent-verification, or ConsumerAck credit
+  false_green_if: S04 accepts ACKED because the source names consumers or because the source event self-asserts acknowledgement without a distinct bound receipt
+
+prior_campaign_verdict_consumed:
+  mutant_id: X14_MUTANT_004_a6430d0aefae
+  verdict_commit: 80d1c3c11accb467c03368a0490f8740e419b274
+  verdict_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260801T011339Z_X14_MUTANT_004_DUPLICATE_VERSION_REVISE.yaml
+  result: REVISE
+  named_failure: DUPLICATE_VERSION_OR_REPLAY
+  intended_mutant_caught: true
+  evidence_class: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  distinct_verification_closed: false
+
+prior_campaign_evaluation:
+  accepted_wakes: 4
+  completed_verdicts_evaluated: 4
+  completed_intended_mutants_caught_by_s04: 4
+  completed_intended_mutants_missed_by_s04: 0
+  distinct_provider_verdicts_observed: 0
+  decision: KEEP_GATE
+  reason: >-
+    S04 returned REVISE for task-ID mismatch, actor/carrier conflation, stale-source-digest,
+    and duplicate-version replay. This supports keeping the structural gates as same-provider
+    preflight only. Binding weight remains zero and no independent-quorum or production-safety
+    conclusion is claimed.
+
+routing:
+  structural_preflight:
+    owner: S04_STRUCTURAL_PREFLIGHT
+    requested_result: PASS_STRUCTURAL_OR_REVISE
+    expected_result: REVISE
+    binding_weight: 0
+  distinct_falsification:
+    owner: SIGRUN_P4_APEX_FALSIFICATION
+    requested_result: STOOD_OR_FELL_FOR_GATE_BEHAVIOR
+    status: ROUTE_REQUEST_ONLY_NOT_CONSUMED
+  slack_channel: C0BGNGPJFHU
+
+rollback:
+  action: ignore or retain this mutant in quarantine after verdict; never modify or delete the bound X13 source
+  source_restoration_required: false
+
+next_campaign_state:
+  accepted_wake_total: 5
+  campaign_ordinal: 2
+  campaign_wake: 1_of_4
+  campaign_status: MUTANT_005_ROUTED_PENDING_VERDICT
+  next_mutation_class: UNSUPPORTED_PASS_OR_OUTCOME
+
+honest_flaw: >-
+  The source uses a combined consumer label rather than distinct consumer identities, so a real
+  acknowledgement contract may require normalization before authorship can be checked. This assay
+  tests explicit ConsumerAck provenance and digest binding, not whether Ratatoskr or Olrun actually
+  consumed the event outside visible Git evidence. Repository search cannot prove global uniqueness,
+  the overlay schema is not formally registered, and all four prior catches are same-provider
+  nonbinding evidence with weight zero.
