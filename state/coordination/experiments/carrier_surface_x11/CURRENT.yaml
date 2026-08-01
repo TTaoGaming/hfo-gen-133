@@ -1,22 +1,31 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_NATIVE_TASKS_VISIBILITY_V1
-current_version: 3
-accepted_wakes: 3
+current_version: 4
+accepted_wakes: 4
 target_wakes_before_decision: 4
 controlled_factor: native_tasks_read_visibility
-current_disposition: CONTINUE
+campaign_status: CLOSED
+current_disposition: KEEP
 last_event:
-  commit: c33bffb43c14aedde52ca3a07bf9e18240c841ea
-  path: state/coordination/experiments/carrier_surface_x11/events/20260731T233904Z_NATIVE_TASKS_VISIBILITY_WAKE_03.yaml
-  blob: 66f7a21cc23c54b5b09e43f2171ab92dc46e4dc6
-last_result: MEASURED_MONOTONIC
-last_observed_completed_run_time_utc: 2026-07-31T22:43:10.635167Z
-next_probe: repeat exact native Tasks read on wake 4; issue campaign decision and select next factor
+  commit: 2e8e6cc6d6c0f5c36c7a3f5b8ca9282afb3c4522
+  path: state/coordination/experiments/carrier_surface_x11/events/20260801T004028Z_NATIVE_TASKS_VISIBILITY_WAKE_04_DECISION.yaml
+  blob: 2071dbac17e59ba22a351bf67ed13523bf47a73f
+last_result: KEEP
+last_observed_completed_run_time_utc: 2026-07-31T23:40:53.484123Z
+campaign_claim_ceiling: provider_inventory_metadata_telemetry_only
+next_campaign:
+  experiment_id: X11_GIT_READ_WRITE_READBACK_V1
+  controlled_factor: git_read_write_readback
+  accepted_wakes: 0
+  target_wakes_before_decision: 4
+  first_probe: read exact CURRENT blob; create harmless immutable deterministic specimen; fetch exact bytes and blob; classify write/readback and pointer-CAS limits
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 next_consumer: Reginleif_and_Ratatoskr
-updated_valid_time_utc: 2026-07-31T23:39:04Z
+updated_valid_time_utc: 2026-08-01T00:40:28Z
 sealed: false
 ---
 
-No independent verdict exists. Decision is deferred until the fourth accepted wake.
+The native Tasks visibility campaign is closed with KEEP at binding weight zero.
+The next accepted wake begins X11_GIT_READ_WRITE_READBACK_V1; Git contents writes and
+CURRENT pointer updates must remain described as separate commits, not database transactions.
