@@ -1,0 +1,111 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+event_id: X11_SLACK_READ_WRITE_READBACK_V1_WAKE_04
+seat: X11
+expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+self_probe:
+  task_binding: PROMPT_BOUND_NOT_INDEPENDENTLY_READ
+  exposed_tools:
+    - GitHub.fetch_file
+    - GitHub.create_file
+    - GitHub.update_file
+    - Slack.slack_read_channel
+    - Slack.slack_search_public
+    - Slack.slack_send_message
+    - web.run
+  missing_surfaces:
+    - native_task_inventory_read
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+prior_current_version: 11
+next_current_version: 12
+accepted_wake: 4
+target_wakes_before_decision: 4
+campaign_status: DECIDED
+controlled_factor: slack_read_write
+varied_probe: repeated_query_token_granularity_and_channel_history_timestamp_boundary
+baseline:
+  target_pointer_channel_id: C0BGNGPJFHU
+  target_pointer_ts: '1785563052.487809'
+  target_event_commit: cff53a97e5255e7c4aa3bcbb6eb9a81608f9cda7
+  target_event_short_commit: cff53a97
+  target_event_filename: 20260801T054200Z_SLACK_READ_SEARCH_VARIANCE_WAKE_01.yaml
+  wake_3_observation:
+    direct_equal_boundary_result_count: 0
+    direct_one_second_envelope_result_count: 1
+    full_commit_search_result_count: 0
+    short_commit_search_result_count: 1
+    exact_filename_search_result_count: 1
+    broad_path_token_search_result_count: 6
+hypothesis: repeated_probes_will_preserve_direct_history_boundary_behavior_and_exact_filename_recovery_while_query_counts_change_when_later_campaign_posts_repeat_the_same_tokens
+exact_probe:
+  - read_channel_with_oldest_and_latest_both_equal_to_1785563052_487809
+  - read_channel_with_one_second_envelope_1785563052_000000_to_1785563053_000000
+  - search_public_for_full_40_character_commit_in_channel_with_bots_included
+  - search_public_for_cff53a97_in_channel_with_bots_included
+  - search_public_for_exact_filename_in_channel_with_bots_included
+  - search_public_for_carrier_surface_x11_AND_events_in_channel_with_bots_included
+  - compare_each_result_to_the_known_pointer_timestamp_and_message_bytes
+measured_result:
+  direct_equal_boundary_read_result_count: 0
+  direct_one_second_envelope_result_count: 1
+  direct_envelope_returned_message_ts: '1785563052.487809'
+  direct_envelope_event_commit_bytes_match_expected: true
+  direct_envelope_event_filename_bytes_match_expected: true
+  full_commit_search_result_count: 0
+  short_commit_search_result_count: 2
+  short_commit_exact_pointer_match_count: 1
+  short_commit_additional_result_reason: later_X11_campaign_pointer_repeated_the_short_commit_token
+  exact_filename_search_result_count: 1
+  exact_filename_exact_pointer_match_count: 1
+  broad_path_token_search_result_count: 7
+  broad_path_token_exact_pointer_match_count: 1
+  broad_path_count_delta_from_wake_3: 1
+  result: REPEATED_BOUNDARY_STABILITY_WITH_QUERY_SELF_CONTAMINATION
+permission_error_class: AUTHENTICATED_ALLOWED_WITH_STABLE_EQUAL_TIMESTAMP_EXCLUSION_AND_CORPUS_DEPENDENT_QUERY_RESULTS
+latency:
+  connector_call_latency_exposed: false
+  indexing_latency_measured: false
+operator_relay_minutes: 0
+campaign_decision:
+  disposition: REVISE
+  accepted_wakes: 4
+  target_wakes: 4
+  retained_capability:
+    - exact known public-channel pointer recovery by one-second direct-history envelope
+    - exact filename search followed by timestamp and byte comparison
+    - explicit empty-result handling without interpreting absence as authorization or existence evidence
+  revision_required:
+    - do not use equal oldest/latest bounds for exact-pointer readback on this connector
+    - do not use a full 40-character commit search as the sole lookup key
+    - do not treat short commit or broad path-token result counts as stable or unique because later receipts repeat those tokens
+    - bind successful search recovery to exact channel timestamp and expected message bytes
+    - treat observed behavior as connector-and-corpus specific rather than native Slack semantics
+  claim_ceiling: one_known_public_channel_pointer_was_recovered_twice_by_a_one_second_history_envelope_and_by_exact_filename_search;_equal_timestamp_bounds_returned_zero_twice;full_commit_search_returned_zero_again;short_commit_and_broad_token_counts_changed_as_the_campaign_added_self_referential_posts
+  next_factor: web_research
+  next_campaign_id: X11_WEB_RESEARCH_SURFACE_V1
+  next_probe: search_for_and_directly_open_one_official_RFC_Editor_primary_document_then_compare_document_identity_date_and_one_noncontroversial_metadata_fact_without_relying_on_secondary_results
+capability_change: campaign_decision_revises_safe_Slack_readback_pattern_and_reseats_the_next_control_variable_to_web_research
+strongest_falsifier: an_independent_native_Slack_client_or_repeat_connector_probe_shows_equal_timestamp_bounds_are_inclusive_full_commit_search_is_reliably_exact_or_identical_queries_change_without_any_corpus_index_or_connector_change
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer:
+  - Reginleif
+  - Ratatoskr
+honest_flaw: one_public_message_and_one_same_provider_connector_cannot_separate_native_Slack_semantics_from_connector_parsing_indexing_or_result_filtering;the_campaign_posts_themselves_repeat_lookup_tokens_and therefore contaminate_precision_measurements
+evidence_class: SAME_PROVIDER_DESCRIPTIVE_NONBINDING
+binding_weight: 0
+effect_ceiling: read_only_Slack_probe_plus_Git_experiment_receipt_and_one_campaign_decision_pointer
+evidence_expiry_utc: 2026-08-08T08:42:02Z
+valid_time_utc: 2026-08-01T08:42:02Z
+transaction_time_utc: 2026-08-01T08:42:02Z
+sealed: true
+---
+
+Wake 4 accepted. Direct history behavior repeated: equal timestamp bounds returned no
+message, while a one-second envelope recovered the exact pointer and expected bytes.
+Exact filename search again recovered only the target. Full-commit search again
+returned no result. Short-commit and broad-token counts increased because later X11
+receipts repeated those tokens, proving those result counts are corpus-dependent and
+not safe uniqueness evidence. Campaign disposition is REVISE; next factor is bounded
+web-research surface behavior. Same-provider binding weight remains zero.
