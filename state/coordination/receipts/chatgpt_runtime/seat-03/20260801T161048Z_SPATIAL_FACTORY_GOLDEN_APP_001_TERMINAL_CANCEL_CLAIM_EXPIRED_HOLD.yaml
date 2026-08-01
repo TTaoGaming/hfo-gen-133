@@ -1,0 +1,154 @@
+---
+schema_id: hfo.gen133.s03.expiry_hold.v2
+result: HOLD
+work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001
+correlation_id: SPATIAL_FACTORY_GOLDEN_APP_001_TERMINAL_CANCEL_1F0C0A7
+seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+carrier_task_id_expected: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_observed: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_match: true
+carrier_identity_claim: DISPOSABLE_SCHEDULED_CARRIER_NOT_LINEAGE
+wip: 1
+valid_time_utc: 2026-08-01T16:10:48Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+binding_weight: 0
+same_provider_status: SAME_PROVIDER_NONBINDING
+terminal_receipt: false
+---
+
+self_probe:
+  native_task_inventory: read_only
+  current_task_title_observed: HFO S03 Ratatoskr Pacemaker
+  current_task_enabled_observed: true
+  current_task_last_completed_run_observed_utc: 2026-08-01T15:08:29.188647Z
+  github_connector: authenticated_read_write_with_exact_file_readback
+  slack_connector: authenticated_public_channel_read_write
+  direct_distinct_provider_execution_ingress: unavailable
+  authenticated_git_checkout: unavailable_to_this_reducer
+  task_mutation_performed: false
+  prohibited_effects_observed: none
+
+selected_correlation:
+  id: SPATIAL_FACTORY_GOLDEN_APP_001_TERMINAL_CANCEL_1F0C0A7
+  reason: live_claim_lease_and_verifier_route_crossed_their_bound_expiries_without_a_digest_bound_distinct_verdict_or_explicit_named_consumer_ack
+
+claim_binding:
+  commit: 84531dbda83bad271843312f9c18515e3ad14796
+  path: projects/spatial-app-factory/claims/20260801T120929Z_SPATIAL_FACTORY_GOLDEN_APP_001_S02_TERMINAL_CANCEL.claim.yaml
+  blob: 054747b6d9cf372af969dd63522cbaa3c2424205
+  acceptance_contract_sha256: 1beef244aaeee326ae19ed7e42da55057b691b106ecfa01a49ddaece09bc35a2
+  producer_return_due_utc: 2026-08-01T15:09:29Z
+  lease_expires_utc: 2026-08-01T16:09:29Z
+  status_at_observation: EXPIRED_NOT_CLOSED
+
+producer_return_binding:
+  commit: 22e92d32623843934c7dc76a19a7ec492b971d59
+  path: state/coordination/receipts/chatgpt_runtime/seat-07/20260801T123556Z_SPATIAL_FACTORY_GOLDEN_APP_001_TERMINAL_CANCEL_PATCH_RETURNED.yaml
+  blob: 2ed9c4996a412b7de9c1304354dbf96c41c0edc8
+  producer_provider: OpenAI
+  producer_runtime: ChatGPT_cloud_with_GitHub_connector_and_ephemeral_Linux_shell
+  producer_model: GPT-5.6_Thinking
+  target_repository: TTaoGaming/TAGS
+  target_branch: agent/spatial-golden-app-001-20260731
+  target_final_sha: e0e3125e1ef6bb33e189c91b485ec341f2d3cd52
+  changed_paths:
+    - prototypes/spatial-input-adapter.js
+    - tests/spatial-input-adapter.test.mjs
+  preserved_command_evidence:
+    - command: node --test /mnt/data/s07/tests/spatial-input-adapter.test.mjs
+      exit_code: 1
+      output_summary: 9_total_7_pass_2_fail
+    - command: node --test /mnt/data/s07/tests/spatial-input-adapter.test.mjs
+      exit_code: 0
+      output_summary: 9_total_9_pass_0_fail
+    - command: node --test /mnt/data/s07/tests/spatial-input-adapter.test.mjs
+      exit_code: 1
+      output_summary: 10_total_9_pass_1_fail
+    - command: node --test /mnt/data/s07/tests/spatial-input-adapter.test.mjs
+      exit_code: 0
+      output_summary: 10_total_10_pass_0_fail
+    - command: node --check /mnt/data/s07/prototypes/spatial-input-adapter.js
+      exit_code: 0
+  effect_ceiling: BRANCH_FILE_TEST
+  rollback: leave_branch_unmerged_or_apply_ordinary_revert_commits_without_force_push_rebase_or_reset
+  honest_flaw: deterministic_Node_seams_only_no_browser_or_distinct_provider_execution
+  status_at_observation: PRODUCER_RETURN_PRESERVED_NONBINDING
+
+verifier_route_binding:
+  commit: 5bd11400c1065cf0879223fcaf6aa1a142c5427d
+  path: state/coordination/receipts/chatgpt_runtime/seat-03/20260801T130917Z_SPATIAL_FACTORY_GOLDEN_APP_001_TERMINAL_CANCEL_DISTINCT_VERIFIER_REVISE.yaml
+  blob: 18c28ae40838a5b91cfc33d59b16c47b6eb5c251
+  producer_bundle_sha256: df82aec8fd8dfc1fbde77863a1cf8ba61e67a82a5dd6e91b1ac9170a54e93cad
+  addressee: Sigrun/P4_APEX_FALSIFICATION_or_other_distinct_provider_nonproducer
+  required_result: STOOD_or_FELL_only
+  route_expires_utc: 2026-08-01T15:09:29Z
+  status_at_observation: EXPIRED_WITHOUT_VERDICT
+
+changed_evidence_read:
+  native_task_inventory:
+    exact_task_id_match: true
+    task_enabled: true
+  github:
+    newest_observed_commit_before_write: 955200e56cc5b5c651d768e62d94bbc6080e89b2
+    newest_observed_commit_time_utc: 2026-08-01T15:58:01Z
+    exact_distinct_verdict_bound_to_bundle: not_found
+    exact_consumer_ack_bound_to_post_STOOD_verdict: not_found
+    later_S03_terminal_receipt_for_this_correlation: not_found
+  slack:
+    channel_id: C0BGNGPJFHU
+    latest_observed_message_ts: 1785599896.076799
+    latest_observed_message_time_utc: 2026-08-01T15:58:16Z
+    messages_after_latest_observed_ts: 0
+    exact_digest_bound_STOOD_or_FELL: not_found
+    explicit_Olrun_or_Claude_Dispatch_ConsumerAck: not_found
+  consistency_limit: GitHub_code_search_and_Slack_search_or_history_are_not_transactional_or_complete_consistency_mechanisms_but_no_exact_binding_receipt_was_present_in_the_authoritative_Git_history_or_observed_control_channel_before_expiry
+
+missing_binding_evidence:
+  - distinct nonproducer STOOD or FELL bound to claim blob 054747b6d9cf372af969dd63522cbaa3c2424205
+  - verdict bound to producer-return blob 2ed9c4996a412b7de9c1304354dbf96c41c0edc8
+  - verdict bound to producer bundle sha256 df82aec8fd8dfc1fbde77863a1cf8ba61e67a82a5dd6e91b1ac9170a54e93cad
+  - verdict bound to final target SHA e0e3125e1ef6bb33e189c91b485ec341f2d3cd52
+  - verdict bound to acceptance contract 1beef244aaeee326ae19ed7e42da55057b691b106ecfa01a49ddaece09bc35a2
+  - explicit named ConsumerAck after a valid distinct STOOD
+
+prior_terminal_or_hold_receipts:
+  prior_expiry_hold:
+    commit: c3a5b2754623f41477bfbbcaa4cd4d7672cf7416
+    path: state/coordination/receipts/chatgpt_runtime/seat-03/20260801T110747Z_SPATIAL_FACTORY_GOLDEN_APP_001_CLAIM_ROUTE_EXPIRED_HOLD.yaml
+    blob: ea416e3493e9c23aebd087d4c9e8d86d87a9f3ad
+    correlation: prior_superseded_claim_and_bundle
+  current_terminal_receipt: absent
+
+reducer_disposition:
+  state: CLAUDE_DESKTOP_SHARED_LOOP_INGRESS_EGRESS_UNWIRED
+  result: HOLD
+  terminal_receipt_written: false
+  verdict_consumed: false
+  consumer_ack_requested: false
+  implicit_consumer_ack: false
+  producer_repair_requested: false
+  route_reused_or_extended: false
+  operator_ferry_requested: false
+  reason: >-
+    The producer return remains useful historical branch-and-test evidence, but the exact verifier route expired at
+    2026-08-01T15:09:29Z and the superseding claim lease expired at 2026-08-01T16:09:29Z. No distinct verdict bound
+    to the producer digest arrived before route expiry, and no valid post-STOOD ConsumerAck exists. S03 therefore
+    holds the consumer edge and does not silently extend the route, reuse the expired claim, grade producer work,
+    imply acceptance, or write a terminal closed-loop receipt.
+
+allowed_next_transition:
+  owner: Ratatoskr/P7_with_Olrun/Claude-Dispatch
+  action: create_or_admit_one_bounded_repair_WorkItem_for_the_existing_Claude_Desktop_Git_Slack_pickup_and_machine_readable_return_edge_before_rerouting_production_verification
+  constraints:
+    - no operator packet ferry
+    - no reuse or silent extension of the expired claim or verifier route
+    - no new producer patch unless a future valid distinct FELL binds an unexpired claim and exact producer digest
+    - no terminal green without exact distinct STOOD and explicit named ConsumerAck
+  next_consumer: Ratatoskr/P7
+
+honest_flaw: >-
+  This hold is authored by another OpenAI/ChatGPT carrier and has binding weight zero. S03 cannot directly inspect a
+  private Claude Desktop session or invoke the named distinct verifier, and GitHub/Slack observations are
+  point-in-time. The receipt proves only that no exact institutional verdict or ConsumerAck was present in the
+  inspected canonical Git history and shared control channel by the bound expiries.
+---
