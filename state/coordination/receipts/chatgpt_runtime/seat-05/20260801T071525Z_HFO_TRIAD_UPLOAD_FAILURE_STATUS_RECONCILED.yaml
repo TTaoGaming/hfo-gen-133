@@ -1,0 +1,107 @@
+schema: hfo.gen133.operator_relief_receipt.v1
+receipt_id: S05-20260801T071525Z-HFO-TRIAD-UPLOAD-FAILURE
+immutable: true
+task_id: 6a55c182078c8191b89f2dd15f5f640c
+seat: S05
+result: STATUS_RECONCILED_NO_SEND_PACKET_READY
+material_change: true
+valid_time_utc: 2026-08-01T07:01:15Z
+transaction_time_utc: 2026-08-01T07:15:25Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+wip_limit: 1
+self_probe:
+  identity: HFO_GEN133_S05_OPERATOR_RELIEF
+  expected_task_id_match: true
+  readable_surfaces:
+    - Gmail
+    - Google_Calendar
+    - Google_Contacts
+    - GitHub
+    - Slack
+  writable_surfaces_used:
+    - GitHub
+    - Slack
+active_item:
+  id: HFO_TRIAD_AGGREGATION_UPLOAD_FAILURE_30688431591
+  state: ROOT_CAUSE_RECONCILED_NO_SEND_PACKET_READY
+  owner: TTao_operator_or_designated_codespaces_repo_producer
+changed_evidence:
+  gmail:
+    source_system: Gmail
+    pointer: message:19fbc15ddb545a83
+    sanitized_fact: A new unread GitHub Actions notification reported that Aggregate HFO Organ Triads run 30688431591 failed on main.
+  github:
+    source_system: GitHub
+    repository: TTaoGaming/codespaces-tectangle-hexagonal
+    source_commit: ec08e0b887a94036050f3d23f523a330862ff5a3
+    current_head_at_readback: ec08e0b887a94036050f3d23f523a330862ff5a3
+    workflow_path: .github/workflows/aggregate-triads.yml
+    workflow_blob_sha: adbf19e8ff79931d076b20ba881cffd4a901f4d5
+    run_id: 30688431591
+    job_id: 91338683184
+    exact_status:
+      aggregation_command: SUCCESS
+      aggregation_slug_capture_step: SUCCESS_WITH_UNBOUND_GITHUB_OUTPUT
+      artifact_upload_step: FAILURE
+      job_conclusion: FAILURE
+    sanitized_root_cause: The Python capture step opens the literal path '$GITHUB_OUTPUT' inside a single-quoted heredoc instead of the environment-provided GitHub output file. Step outputs are therefore empty; upload-artifact receives an empty path and fails with 'Input required and not supplied: path'.
+    generated_before_failure:
+      slug: 2026-08-01T06-49-11Z
+      output_classes:
+        - aggregate_readme
+        - organ_index
+        - diagram_compendium
+        - summary
+        - digest
+      persistence_status: GENERATED_ON_EPHEMERAL_RUNNER_NOT_PROVEN_UPLOADED
+    evidence_packet_sha256: e9f4683f71d6fa8b1989b1c892b1267adf7bf90a34414c9a3928d88ccde5bb6a
+transition:
+  prior_state: The operator had only an undifferentiated all-jobs-failed email alert.
+  next_state: The failure is narrowed to one workflow-output binding defect, with an exact no-send producer packet and acceptance gate. No operator log triage is required before delegation.
+  code_change_performed: false
+  workflow_rerun_performed: false
+  email_send_performed: false
+  spend_performed: false
+  private_body_externalized: false
+no_send_approval_packet:
+  mode: NO_SEND_NO_EXECUTION
+  target_repository: TTaoGaming/codespaces-tectangle-hexagonal
+  source_commit: ec08e0b887a94036050f3d23f523a330862ff5a3
+  source_workflow_blob: adbf19e8ff79931d076b20ba881cffd4a901f4d5
+  bounded_change: Replace the literal-file write with Python access to os.environ['GITHUB_OUTPUT']; preserve the aggregation command and the existing four step-output names.
+  acceptance:
+    - Capture step emits nonempty slug, run_dir, summary_path, and digest_path outputs.
+    - Upload aggregation artefacts receives the generated run_dir and completes successfully.
+    - Artifact name includes the nonempty aggregation slug.
+    - Summary and digest upload steps complete successfully.
+    - A fresh GitHub Actions run concludes success and exposes readback for the uploaded artifact set.
+  excluded_claims:
+    - No claim that the generated files were durably uploaded in run 30688431591.
+    - No claim that fixing this defect guarantees no later independent failure.
+  verifier: Fresh GitHub Actions run with job-step and artifact-list readback
+  consumer: TTao_operator_or_designated_codespaces_repo_producer
+priority_control:
+  p0:
+    id: OCOOPA_SAFETY_RECALL_DRAFTS
+    state: OPERATOR_REVIEW_AND_SEND_REQUIRED
+    bound_time_local: 2026-08-01T09:40:00-06:00
+  p1:
+    - id: HFO_TRIAD_AGGREGATION_UPLOAD_FAILURE_30688431591
+      state: NO_SEND_PACKET_READY
+    - id: PARTY_SAFARI_PERMISSION
+      due: 2026-08-04
+operator_relief:
+  estimated_minutes_removed: 8
+  next_consumer: TTao_operator_or_designated_codespaces_repo_producer
+  next_action: Approve or delegate the bounded workflow-output fix; require the fresh-run acceptance readback before closing.
+privacy:
+  git_and_slack_ceiling: SANITIZED_FACTS_AND_SOURCE_POINTERS_ONLY
+  excluded_from_git_and_slack:
+    - private_email_body
+    - notification_tokens
+    - account_addresses
+rollback:
+  receipt: Immutable receipt requires no rollback; supersede with a correcting receipt if evidence is disproved.
+  proposed_code_change: Revert the producer's workflow commit if the fresh run fails or broadens scope.
+honest_flaw: The diagnosis binds the current workflow bytes and observed run, but no fix or fresh verification run was executed. A corrected output binding may expose a separate downstream failure.
