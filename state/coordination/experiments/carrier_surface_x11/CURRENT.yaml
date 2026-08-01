@@ -1,36 +1,39 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_WEB_RESEARCH_SURFACE_V1
-current_version: 15
-accepted_wakes: 3
+current_version: 16
+accepted_wakes: 4
 target_wakes_before_decision: 4
 controlled_factor: web_research
-campaign_status: ACTIVE
-current_disposition: CONTINUE
+campaign_status: DECIDED
+current_disposition: KEEP
 last_event:
-  commit: c04e5797184859042691e67636f2dfe90ead3dde
-  path: state/coordination/experiments/carrier_surface_x11/events/20260801T113918Z_WEB_RESEARCH_XML_JSON_FAILURE_CLASS_WAKE_03.yaml
-  blob: 92b5a333706e62b100e4ea88a1e5e9edc3789218
+  commit: 9940ce54ae3270eae1c216669c53f8da5430ff96
+  path: state/coordination/experiments/carrier_surface_x11/events/20260801T124156Z_WEB_RESEARCH_PDF_FAILURE_CLASS_WAKE_04_DECISION.yaml
+  blob: 5620254460f9d3e30e3fdfc111a5101b4b7625b5
 baseline_result:
   official_primary_search_and_direct_open: SUCCESS
   official_html_and_plain_text_direct_open: SUCCESS
   selected_metadata_fields_match_across_search_html_and_text: true
+  official_info_positive_control: SUCCESS
+  selected_json_metadata_path: SUCCESS
+  clean_not_found_semantics_established: false
   format_specific_parser_variance_observed: true
-  planned_negative_control_json_path_was_real: true
-  direct_xml_url_safe_precondition: REJECTED
-  official_bibxml_click: CONNECTOR_FETCH_ERROR_400_OK_AMBIGUOUS
-  claim_ceiling: the_web_surface_recovered_RFC_8259_metadata_from_HTML_TXT_and_JSON_paths_but_XML_behavior_remains_ambiguous_and_no_raw_HTTP_origin_status_or_latency_was_exposed
-last_result: WEB_RESEARCH_WAKE_03_ACCEPTED_NEGATIVE_CONTROL_ASSUMPTION_FALSIFIED
-next_probe: for_wake_04_use_the_official_RFC_8259_info_page_as_the_positive_control_and_attempt_one_same_domain_non_document_format_path_rfc8259.pdf_without_assuming_its_existence_then_issue_KEEP_REVISE_RESEAT_VARIABLE_or_HOLD_for_the_four_wake_web_research_campaign
+  ambiguous_connector_failure_observed: true
+  raw_http_status_headers_and_latency_exposed: false
+  claim_ceiling: bounded_official_public_HTML_TXT_and_selected_JSON_research_is_useful_with_cross_check_and_claim_ceiling_gates_but_connector_failures_do_not_establish_origin_HTTP_status_availability_or_permission
+last_result: WEB_RESEARCH_WAKE_04_DECISION_KEEP_WITH_GATES
+next_campaign:
+  controlled_factor: native_tasks_read_visibility
+  first_probe: perform_one_read_only_native_task_inventory_listing_and_measure_whether_expected_X11_task_ID_title_enabled_state_and_schedule_are_visible_without_externalizing_unrelated_prompt_bodies
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 next_consumer: Reginleif_and_Ratatoskr
-updated_valid_time_utc: 2026-08-01T11:39:18Z
+updated_valid_time_utc: 2026-08-01T12:41:56Z
 sealed: false
 ---
 
-Web-research campaign wake 3 of 4 accepted as a falsification. The presumed negative
-control at rfc8259.json returned RFC metadata. The direct rfc8259.xml attempt was
-rejected by the tool safe-URL precondition, while the RFC Editor's official XML citation
-link on bib.ietf.org returned a connector fetch error with contradictory "400 OK" text.
-No origin-level availability claim is admitted. Same-provider binding weight remains
-zero.
+Web-research campaign wake 4 of 4 accepted. The official RFC 8259 info page succeeded,
+while the unadvertised PDF path produced only a connector internal error without origin
+status. Decision: KEEP the bounded web-research surface with official-source,
+cross-check, and strict claim-ceiling gates. Next factor is native Tasks read visibility.
+Same-provider binding weight remains zero.
