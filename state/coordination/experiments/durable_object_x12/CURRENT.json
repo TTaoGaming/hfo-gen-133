@@ -1,7 +1,7 @@
 {
   "canonical_projection": {
     "campaign": {
-      "accepted_wakes": 2,
+      "accepted_wakes": 3,
       "campaign_id": "X12_POINTER_UPDATE_PATTERN_C2",
       "factor": "pointer_update_pattern",
       "selected_by_event_version": 4,
@@ -18,35 +18,37 @@
       "factor": "event_canonicalization"
     },
     "latest_event": {
-      "blob": "27a140868e3de1a745acc628f7de26f241625f9d",
-      "commit": "9b1a806e6c89cd3bd551d78b7102bae03ecd2c0b",
-      "digest_sha256": "7d76d07632bc46b6a131b437b030a92f3e7852ceed83d303723b49a2362f82d1",
-      "idempotency_key": "edcac844424e950d6e71075ac43f543271b7deca37815b6f3ad76f9811237742",
-      "path": "state/coordination/experiments/durable_object_x12/events/20260801T024315Z_V0005_TO_V0006_POINTER_UPDATE_PATTERN.json"
+      "blob": "e14b43403fb2926c785364f6345a870b32beb590",
+      "commit": "0ac9a7f48376a67a614239ed71c259979453bb32",
+      "digest_sha256": "ca6c6d2074901a8ac4fa52e039697090b3101ae2b6ad41c073818e8fc669f934",
+      "idempotency_key": "5935c2cfa9a8fda113eb8a860fae3b51ac5392954a956b1c32281b0c0af2471b",
+      "path": "state/coordination/experiments/durable_object_x12/events/20260801T034417Z_V0006_TO_V0007_POINTER_UPDATE_PATTERN.json"
     },
     "object_id": "HFO_X12_WORKFLOW_OBJECT_001",
     "pointer_update_measurement": {
-      "accepted_wake_ordinal": 2,
-      "current_first_read_blob": "b59255459187e4b92dbf86000ed36d381874bb3c",
-      "current_second_read_blob": "b59255459187e4b92dbf86000ed36d381874bb3c",
+      "accepted_wake_ordinal": 3,
+      "current_first_read_blob": "aa81a159308d91565a859bd4a1f40551a4ffd421",
+      "current_second_read_blob": "aa81a159308d91565a859bd4a1f40551a4ffd421",
       "current_second_read_unchanged": true,
       "event_digest_recomputed_from_readback": true,
       "event_first": true,
       "event_readback_blob_verified": true,
       "guard": "SECOND_EXACT_CURRENT_READ_BLOB_SHA",
+      "post_write_dual_readback_required": true,
       "race_window_after_second_read": "STILL_PRESENT_UNTIL_UPDATE_ACCEPTANCE",
+      "returned_content_blob_sha_embedded": "NOT_POSSIBLE_WITHOUT_SELF_REFERENCE",
       "stale_or_duplicate_replay": "NOT_EXECUTED_THIS_WAKE"
     },
     "state": "ACTIVE_CAMPAIGN",
     "task_id": "6a506f83df208191815dd17a8fd5baa3",
-    "version": 6
+    "version": 7
   },
   "expected_previous_pointer": {
-    "blob": "b59255459187e4b92dbf86000ed36d381874bb3c",
-    "projection_digest_sha256": "eba970fc05eb5922c670934113a6dfc6d7322448f0a5ee5b3b7e2904aca56c2e",
-    "version": 5
+    "blob": "aa81a159308d91565a859bd4a1f40551a4ffd421",
+    "projection_digest_sha256": "d7cd0f6330307cbb172d148d6d3d9eda2d43844c352336fb7f0192a7f8108311",
+    "version": 6
   },
-  "honest_atomicity_limit": "The immutable v5→v6 event was committed and read back, then CURRENT was fetched a second time and confirmed unchanged before this replacement. GitHub Contents API checks the supplied prior CURRENT blob SHA only for this one file. The second read narrows but does not eliminate the race before update acceptance. The event and CURRENT are separate commits with no cross-file atomic transaction, lock, linearizable compare-and-swap, exactly-once guarantee, concurrent-writer proof, duplicate-wake proof, or automatic cleanup of an orphan event when pointer replacement fails.",
-  "projection_digest_sha256": "d7cd0f6330307cbb172d148d6d3d9eda2d43844c352336fb7f0192a7f8108311",
+  "honest_atomicity_limit": "The immutable v6→v7 event was committed and read back, then CURRENT was fetched a second time and confirmed unchanged before this replacement. GitHub Contents API checks the supplied prior CURRENT blob SHA only for this one file. After replacement, the carrier must verify the exact intended CURRENT bytes both by the content blob SHA returned from the update and by the branch path; the returned blob SHA cannot be embedded in the same bytes without self-reference. Dual readback detects some post-write connector/ref variance but does not eliminate the race before update acceptance. The event and CURRENT are separate commits with no cross-file atomic transaction, lock, linearizable compare-and-swap, exactly-once guarantee, concurrent-writer proof, duplicate-wake proof, or automatic cleanup of an orphan event when pointer replacement fails.",
+  "projection_digest_sha256": "5fc7aec078e62b26852fcb251a1e0a822e1bbf7a2b2dd043d7e4d04b7dafa744",
   "schema_id": "hfo.gen133.x12.durable_object_current.v1"
 }
