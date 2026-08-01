@@ -1,7 +1,7 @@
 {
   "canonical_projection": {
     "campaign": {
-      "accepted_wakes": 0,
+      "accepted_wakes": 1,
       "campaign_id": "X12_IDEMPOTENCY_STRATEGY_C3",
       "factor": "idempotency_strategy",
       "selected_by_event_version": 8,
@@ -9,7 +9,19 @@
     },
     "consumer": "Reginleif/Olrun",
     "effect_ceiling": "FILE_AND_SANITIZED_SLACK_ONLY",
-    "expiry_utc": "2026-08-01T07:44:00Z",
+    "expiry_utc": "2026-08-01T08:44:11Z",
+    "idempotency_measurement": {
+      "accepted_wake_ordinal": 1,
+      "duplicate_replay_key": "ba8c9fa2cf34d8167eabe7c02af962058dcde0df925c794b7add5e8f1782af8d",
+      "duplicate_replay_status": "REJECTED_NO_WRITE_NO_ADVANCE",
+      "event_digest_recomputed_from_readback": true,
+      "event_first": true,
+      "event_readback_blob_verified": true,
+      "new_key_preflight_observed_match_count": 0,
+      "new_key_search_authority": "BEST_EFFORT_NONATOMIC_POSSIBLY_STALE",
+      "post_write_dual_readback_required": true,
+      "strategy": "VERSION_SCOPED_KEY_PLUS_EXACT_PRIOR_EVENT_REPLAY_CHECK_PLUS_BEST_EFFORT_REPO_SEARCH_V1"
+    },
     "last_campaign_decision": {
       "accepted_wakes": 4,
       "campaign_id": "X12_POINTER_UPDATE_PATTERN_C2",
@@ -18,40 +30,23 @@
       "factor": "pointer_update_pattern"
     },
     "latest_event": {
-      "blob": "ea8debc3cb6079b795285d21faa08887b7444f3a",
-      "commit": "13b6988f86d4157dfd052b1e7e496e31b957f232",
-      "digest_sha256": "7c72a193912fc3f03f706365f1ae575b60d08ec0f0e483a7dfc6dd0ddab1d641",
-      "idempotency_key": "ba8c9fa2cf34d8167eabe7c02af962058dcde0df925c794b7add5e8f1782af8d",
-      "path": "state/coordination/experiments/durable_object_x12/events/20260801T044700Z_V0007_TO_V0008_POINTER_UPDATE_PATTERN_CAMPAIGN_DECISION.json"
+      "blob": "1cd51d9e4a04e3b120621e3d72ef1f90711c033d",
+      "commit": "cb8e4125c456290847c104157bced695ccf58318",
+      "digest_sha256": "49d6b216f81f8663ba548ba1df2d4e2844a9d391994ba7a7bf5da500bda585a4",
+      "idempotency_key": "a5a824132b6e4208f0a60365a6ab0e6820280b09ac811f69637d00b429dfe1a3",
+      "path": "state/coordination/experiments/durable_object_x12/events/20260801T054411Z_V0008_TO_V0009_IDEMPOTENCY_STRATEGY.json"
     },
     "object_id": "HFO_X12_WORKFLOW_OBJECT_001",
-    "pointer_update_measurement": {
-      "accepted_wake_ordinal": 4,
-      "campaign_closed": true,
-      "campaign_decision": "KEEP",
-      "current_first_read_blob": "3a58405d383408331df2bae562e486901bd60426",
-      "current_second_read_blob": "3a58405d383408331df2bae562e486901bd60426",
-      "current_second_read_unchanged": true,
-      "event_digest_recomputed_from_readback": true,
-      "event_first": true,
-      "event_readback_blob_verified": true,
-      "guard": "SECOND_EXACT_CURRENT_READ_BLOB_SHA",
-      "next_factor": "idempotency_strategy",
-      "post_write_dual_readback_required": true,
-      "race_window_after_second_read": "STILL_PRESENT_UNTIL_UPDATE_ACCEPTANCE",
-      "returned_content_blob_sha_embedded": "NOT_POSSIBLE_WITHOUT_SELF_REFERENCE",
-      "stale_or_duplicate_replay": "NOT_EXECUTED_THIS_WAKE"
-    },
     "state": "ACTIVE_CAMPAIGN",
     "task_id": "6a506f83df208191815dd17a8fd5baa3",
-    "version": 8
+    "version": 9
   },
   "expected_previous_pointer": {
-    "blob": "3a58405d383408331df2bae562e486901bd60426",
-    "projection_digest_sha256": "5fc7aec078e62b26852fcb251a1e0a822e1bbf7a2b2dd043d7e4d04b7dafa744",
-    "version": 7
+    "blob": "e4f58b2f45f02ad884422b94b069bcab77d3a878",
+    "projection_digest_sha256": "a70aec8cea80c4a4d5d269098e7ed0e7b0db25b54d6a23208c343e53a340f91c",
+    "version": 8
   },
-  "honest_atomicity_limit": "The immutable v7→v8 event was committed and read back, then CURRENT was fetched a second time and confirmed unchanged before this replacement. GitHub Contents API checks the supplied prior CURRENT blob SHA only for this one file. After replacement, the carrier must verify exact intended CURRENT bytes through both the content blob SHA returned by the update and the branch path. The four-wake KEEP decision describes this serialized connector pattern only. It does not establish cross-file atomicity, locks, linearizable compare-and-swap, exactly-once execution, concurrent-writer safety, duplicate-wake rejection, database durability, or automatic orphan-event cleanup. A crash can still leave Git advanced without a Slack pointer.",
-  "projection_digest_sha256": "a70aec8cea80c4a4d5d269098e7ed0e7b0db25b54d6a23208c343e53a340f91c",
+  "honest_atomicity_limit": "The v8→v9 event was committed and read back before CURRENT was fetched a second time and confirmed unchanged. GitHub Contents API guards only this single CURRENT replacement with the supplied prior blob SHA. Event and pointer are separate commits. Code search is best-effort and not a uniqueness constraint. Exact post-write readback through the returned blob and branch path is required. This does not establish cross-file atomicity, locks, linearizable compare-and-swap, exactly-once execution, concurrent-writer safety, database durability, or automatic orphan-event cleanup; Git can advance without Slack.",
+  "projection_digest_sha256": "38050025e3aec7218f66bf6f845092c735515c6f4bd68132764824887688ebf7",
   "schema_id": "hfo.gen133.x12.durable_object_current.v1"
 }
