@@ -1,0 +1,155 @@
+---
+schema_id: hfo.gen133.s04.structural_preflight.v1
+seat: S04_STRUCTURAL_PREFLIGHT
+carrier_task_id_expected: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_observed: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_match: true
+valid_time_utc: 2026-08-01T11:13:11Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+result: REVISE
+evidence_class: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+binding_decision: false
+candidate_edited: false
+world_effect_ceiling: ONE_IMMUTABLE_GIT_RECEIPT_AND_ONE_SANITIZED_SLACK_POINTER
+verifier: S04_STRUCTURAL_PREFLIGHT
+consumer:
+  - X14_CAMPAIGN_REDUCER
+  - RATATOSKR
+independent_verification_status: NOT_CLOSED
+---
+
+self_probe:
+  task_title_observed: HFO S04 Hrist Structural Verifier
+  task_enabled_observed: true
+  native_task_inventory_surface: EXPOSED_READ_ONLY
+  task_id_match_recomputed: true
+  tools_used:
+    - native_automations_inventory_read
+    - github_recent_commits
+    - github_search
+    - github_fetch_file
+    - github_branch_readback
+    - local_sha256_recompute
+    - github_create_file
+    - github_readback
+    - slack_pointer_after_readback
+  task_mutation_performed: false
+
+candidate:
+  mutant_id: X14_MUTANT_014_e7874dce9600
+  authoring_seat: X14_FALSE_GREEN_MUTATION_QA
+  addressed_to: S04_STRUCTURAL_PREFLIGHT
+  commit: 1963b088847a804d4a0b6264e429d3db1879db1c
+  path: state/coordination/experiments/false_green_x14/quarantine/20260801T105322Z_X13_GMAIL_ACTOR_CARRIER_CONFLATION.mutant.yaml
+  git_blob_sha1_observed_at_commit: 868fcb3ba9c1621e017c6dbac63c482a0a540178
+  git_blob_sha1_observed_at_branch_readback: 868fcb3ba9c1621e017c6dbac63c482a0a540178
+  immutable_pointer_check: PASS
+  status: QUARANTINED_NEGATIVE_CONTROL
+  executable: false
+  declared_sealed: false
+  expires_utc: 2026-08-01T14:53:22Z
+  freshness_at_valid_time: FRESH
+
+bound_source:
+  authoring_seat: X13_COTS_AND_CONNECTOR_PDCA_LAB
+  authoring_seat_binding: DERIVED_FROM_NATIVE_TASK_TITLE_AND_X13_SCHEMA_NOT_EXPLICIT_SOURCE_ACTOR_FIELD
+  commit: a909b47eb74f3c34866ea0750abdbb10e0efd62b
+  path: state/coordination/experiments/cots_connector_x13/20260801T104849Z_GMAIL_LABEL_COUNTS_PHASE2_READ_ONLY_MICRO_USE.md
+  git_blob_sha1_declared: 2fe987da24624d91a631a6948a7340027086f58d
+  git_blob_sha1_recomputed_by_github_readback: 2fe987da24624d91a631a6948a7340027086f58d
+  source_pointer_check: PASS
+  source_modified_by_mutant: false
+  source_schema_id: hfo.gen133.x13.cots_connector_event.v1
+  source_explicit_actor_field_present: false
+  source_carrier_task_id: 6a55c1733708819185088bf334e33ea5
+  source_review_expiry_utc: 2026-08-08T10:48:49Z
+
+structural_checks:
+  exact_bytes:
+    result: PASS
+    reason: Candidate Git blob is identical at its immutable commit and current canonical-branch readback. Review binds the commit-addressed blob; declared sealed=false does not grant mutation authority or make the source executable.
+  source_pointer:
+    result: PASS
+    reason: Bound source commit, path, and Git blob SHA-1 resolve exactly and match the candidate declarations.
+  schema:
+    result: HOLD_LIMITATION
+    reason: The envelope declares hfo.gen133.x14.false_green_mutant.v1 and the source declares hfo.gen133.x13.cots_connector_event.v1, but no separately registered actor-identity schema was established in the inspected evidence. The absence cannot be filled by deriving actor identity from provider task metadata.
+  canonicalization_and_custom_digest:
+    result: PASS_FOR_DECLARED_MUTATION_TUPLE
+    algorithm: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+    exact_canonical_byte_count_declared: 258
+    exact_canonical_byte_count_recomputed: 258
+    declared_sha256: e7874dce9600d42407d4996c3c143e35eaede32353eef1f342128211cf22c681
+    recomputed_sha256: e7874dce9600d42407d4996c3c143e35eaede32353eef1f342128211cf22c681
+    reason: SHA-256 over the exact declared canonical UTF-8 mutation tuple matches. This digest binds the tuple, not the complete mutant file or a formal source-plus-overlay object.
+  freshness:
+    result: PASS
+    reason: Candidate valid time follows the source event, and this review occurred before candidate and source review expiries.
+  authority:
+    result: PASS_WITH_CEILING
+    reason: Candidate is explicitly quarantined, non-executable, non-binding, and restricted to repository plus sanitized Slack routing effects.
+  task_binding:
+    result: PASS_FOR_CARRIER_RECORDS_ONLY
+    s04_native_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+    x14_envelope_task_id: 6a513e4d9c4c81919db728f85db2dd79
+    x14_native_task_id: 6a513e4d9c4c81919db728f85db2dd79
+    x13_source_task_id: 6a55c1733708819185088bf334e33ea5
+    x13_native_task_id: 6a55c1733708819185088bf334e33ea5
+    reason: S04, X14, and X13 provider task IDs match their native task records. These matches establish carrier binding only; they do not establish actor identity, lineage, authority principal, or verifier independence.
+  actor_carrier_separation:
+    result: FAIL_ACTOR_CARRIER_CONFLATION_AS_INTENDED
+    source_explicit_actor_field_present: false
+    overlay_field: derived_actor_binding.actor_id
+    overlay_original_value: X13_COTS_AND_CONNECTOR_PDCA_LAB
+    overlay_mutated_value: 6a55c1733708819185088bf334e33ea5
+    carrier_task_id: 6a55c1733708819185088bf334e33ea5
+    actor_equals_carrier_task_id: true
+    reason: The source defines a carrier task ID but no actor-identity field. The overlay manufactures actor identity and assigns the exact provider task ID. A task record cannot be promoted into durable actor identity, lineage, authority, or independent-verifier status by equality or task-title derivation.
+  idempotency:
+    result: PASS_WEAK_FOR_QUARANTINE_ONLY
+    basis: mutant_id plus source_blob_sha1 plus mutation_class plus canonical_mutation_digest_sha256
+    limitation: No explicit idempotency key exists. Recent-commit and repository searches found no prior S04 verdict bound to mutant 014 before this write, but indexing is best-effort and not an exactly-once guarantee.
+  lease_and_expiry:
+    result: PASS_FOR_REVIEW_WINDOW
+    lease: NONE_DECLARED
+    reason: A review expiry exists and had not elapsed. Absence of a lease prevents ownership, locking, or exactly-once claims.
+  privacy:
+    result: PASS
+    reason: Payload contains sanitized repository, task, connector, and aggregate-status metadata; no message bodies, exact private counts, credentials, or secrets were observed.
+  rollback:
+    result: PASS
+    reason: Rollback is to retain or ignore the quarantined artifact while preserving the immutable X13 source; no compensating world effect is required.
+  verifier:
+    result: PASS_NONBINDING
+    reason: S04 is distinct from the X14 candidate author but remains the same ChatGPT provider. This structural preflight has binding weight zero and cannot close independent verification. The Sigrun/P4 route is requested only and was not consumed.
+  consumer:
+    result: PASS
+    reason: X14 campaign reducer and Ratatoskr are explicitly named.
+
+strongest_fake_green_mutant:
+  class: PROMOTE_MATCHING_ENABLED_TASK_ID_TO_ACTOR_IDENTITY
+  failure_mode: Accept the overlay because the X13 carrier task exists, is enabled, and exactly matches the mutated actor_id, while ignoring that the source contains no actor field and that carrier metadata is a separate namespace.
+  required_gate_behavior: Resolve the exact source bytes, distinguish carrier binding from actor identity, refuse task-title derivation as exact actor evidence, and return REVISE.
+
+verdict:
+  result: REVISE
+  reason_code: ACTOR_ID_CONFLATED_WITH_CARRIER_TASK_ID_AND_SOURCE_ACTOR_BINDING_IS_NOT_EXPLICIT
+  reason: The intended actor/carrier separation gate caught mutant 014. Exact task-ID matches are valid carrier telemetry, but the source has no actor-identity field and the overlay cannot manufacture one from the X13 task ID. The mutant cannot pass structural preflight or earn workflow, adoption, authority, execution, ConsumerAck, or independent-verification credit.
+  credit_granted:
+    structural_gate_caught_intended_mutant: true
+    independent_verification: false
+    execution: false
+    adoption: false
+    workflow_transition: false
+    consumer_ack: false
+  next_consumer_action: X14 may consume this exact receipt as a direct same-provider gate catch for campaign wake 1 of 4. A distinct provider or decision-maker must still judge gate behavior before any binding campaign conclusion.
+
+honest_flaw: >-
+  This review verifies repository identities, exact source and candidate blobs, the declared canonical mutation tuple,
+  current native carrier-task mappings, and the absence of an explicit actor field in the inspected X13 source.
+  It does not inspect the Gmail connector's hidden OAuth scope, internal call sequence, exact quota consumption, or
+  private mailbox state. The repository evidence does not establish a formal actor-versus-carrier schema, and GitHub
+  search/deduplication remains best-effort. SAME_PROVIDER_NONBINDING; binding weight 0.
