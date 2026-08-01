@@ -1,101 +1,106 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
-experiment_id: X13_GMAIL_READONLY_CONNECTOR_001
-version: 16
-prior_version: 15
-candidate: Gmail_read_only_search_and_message_metadata_connector
-candidate_contract_reference: official_Gmail_labels_list_label_resource_scopes_quota_errors_plus_direct_connector_receipts
-campaign_wake: 4_of_4
-campaign_status: COMPLETE
+experiment_id: X13_GOOGLE_CALENDAR_READONLY_CONNECTOR_001
+version: 17
+prior_version: 16
+candidate: Calendar_read_only_event_search_and_free_busy_connector
+candidate_contract_reference: official_Google_Calendar_events_list_freebusy_query_scopes_quota_plus_direct_connector_receipts
+campaign_wake: 1_of_4
+campaign_status: IN_PROGRESS
 phase_1_completed: true
-phase_2_completed: true
-phase_3_completed: true
-phase_4_completed: true
-phase_4_decision: ADOPT_WITH_GATES
+phase_2_completed: false
+phase_3_completed: false
+phase_4_completed: false
+phase_4_decision: PENDING
 binding_architecture_decision: false
-last_event_commit: 7a72ec06c8c4c94f6b88c4303066a3fac71ebd8c
-last_event_path: state/coordination/experiments/cots_connector_x13/20260801T125010Z_GMAIL_READONLY_PHASE4_ADOPT_WITH_GATES_CORRECTED.md
-last_event_blob_sha: 3b8445aeaf4a94edfb88c205da086f2287211ef2
-noncanonical_event:
-  commit: dcba6818933485a4b786133616b5b89dc886cf06
-  path: state/coordination/experiments/cots_connector_x13/20260801T124817Z_GMAIL_READONLY_PHASE4_ADOPT_WITH_GATES.md
-  treatment: ORPHANED_DO_NOT_CONSUME_FALSE_PHASE1_AND_PHASE2_COMMIT_BINDINGS
-adoption_credit: 4
-adoption_credit_basis: OFFICIAL_CONTRACT_PLUS_ID_ONLY_BASELINE_PLUS_AGGREGATE_STATUS_MICRO_USE_PLUS_ABSENT_LABEL_VARIANCE_PROBE_PLUS_GATED_DECISION
+last_event_commit: d9d13734a133c06258bb324118ac6e2b66a7b224
+last_event_path: state/coordination/experiments/cots_connector_x13/20260801T134733Z_GOOGLE_CALENDAR_READONLY_PHASE1_BASELINE.md
+last_event_blob_sha: fc4fdb3484e9b931d561886f7dd984cdf3a63e3a
+adoption_credit: 1
+adoption_credit_basis: OFFICIAL_CONTRACT_PLUS_BOUNDED_SYNTHETIC_EVENT_SEARCH_PLUS_PRIVACY_NARROW_FREEBUSY_BASELINE
 fitness_credit: 0_UNTIL_CONSUMED_BY_WORKITEM
 carrier_task_id: 6a55c1733708819185088bf334e33ea5
 carrier_task_id_match: true
 carrier_task_id_observation_source: AUTOMATION_RUNTIME_PROMPT
-native_task_inventory_read_this_wake: false
-effect_ceiling: PHASE4_DECISION_ONLY_NO_NEW_MAILBOX_READ_NO_WRITE
+effect_ceiling: READ_ONLY_CALENDAR_SEARCH_AND_FREEBUSY_BASELINE_NO_EVENT_BODY_PERSISTENCE_NO_WRITE
 operator_relay_minutes: 0
-operator_minutes_removed_estimate: 1_to_3_PER_CONSUMED_STATUS_CHECK_UNVALIDATED
+operator_minutes_removed_estimate: 2_to_5_PER_CONSUMED_CHECK_UNVALIDATED
 custom_code_avoided_estimate:
-  label_status: 30_to_100_LOC_UNVALIDATED
-  id_discovery: 25_to_80_LOC_UNVALIDATED
+  bounded_event_search_pagination_normalization: 40_to_120_LOC_UNVALIDATED
+  freebusy_request_response_normalization: 30_to_80_LOC_UNVALIDATED
+  authentication_token_management: MATERIAL_BUT_UNQUANTIFIED
   additive_total: NOT_CLAIMED_OVERLAPPING_FUNCTIONS
-paid_cost_usd_observed: 0
-official_method_quota_units:
-  labels_list: 1
-  labels_get: 1
-  messages_list: 5
-  messages_get: 20
-direct_connector_quota_units_observed: NOT_EXPOSED
+paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
+official_quota_model_current:
+  per_minute_per_project_requests: 10000
+  per_minute_per_user_per_project_requests: 600
+  daily_billing_threshold_requests: 1000000
+  standard_use_below_threshold: NO_ADDITIONAL_COST
+  charges_above_limits: PLANNED_LATER_2026_WITH_AT_LEAST_90_DAYS_NOTICE
+direct_connector_request_count: NOT_EXPOSED
 actual_project_quota_class: UNKNOWN
-future_pricing_change_risk: MATERIAL_RECHECK_BEFORE_SCALE
 connector_authenticated: true
 live_authentication_identity: UNKNOWN
 live_authentication_token_type: UNKNOWN
 live_authentication_scope: UNKNOWN
+credential_custody: UNKNOWN
 live_quota_headers: NOT_EXPOSED
 connector_internal_call_sequence: UNKNOWN
-adopted_scope:
-  - BOUNDED_EXACT_KNOWN_LABEL_STATUS_AGGREGATES_FOR_OPERATOR_RELIEF
-  - BOUNDED_ID_ONLY_MESSAGE_DISCOVERY_WHEN_AGGREGATES_CANNOT_ANSWER_THE_QUESTION
-excluded_or_deferred_scope:
-  - MESSAGE_METADATA_FETCH_WITHOUT_EXPLICIT_FORMAT_AND_HEADER_CONTROLS
-  - MESSAGE_BODY_OR_ATTACHMENT_READ_BY_DEFAULT
-  - HIGH_RATE_POLLING_OR_BULK_MAILBOX_MINING
-  - RAW_PERMISSION_QUOTA_OR_PROVIDER_ERROR_CLAIMS_FROM_WRAPPER_EMPTY_RESULTS
-  - DURABLE_WORKFLOW_OR_EXACTLY_ONCE_CLAIMS
-privacy_externalization: NO_EXACT_PRIVATE_COUNTS_MESSAGE_ID_PAGE_TOKEN_HEADER_BODY_OR_ATTACHMENT_WRITTEN_TO_GIT_OR_SLACK
-observed_failure_behavior: ABSENT_EXACT_LABEL_NAME_RETURNS_SUCCESS_EMPTY_ARRAY_NOT_ERROR
-permission_failure_behavior: NOT_PROBED_SCOPE_CANNOT_BE_SAFELY_VARIED
+direct_probe_receipts:
+  event_search:
+    action: search_events
+    connector_id: connector_947e0d954944416db111db556030eea6
+    bounded_query: X13_NONEXISTENT_SENTINEL_20260801
+    max_results: 5
+    result: SUCCESS_EMPTY
+    next_page_token: null
+    latency_ms: 191
+  freebusy:
+    action: get_availability
+    connector_id: connector_947e0d954944416db111db556030eea6
+    calendar_selector: primary
+    result: SUCCESS_CALENDAR_ERROR_NULL_BUSY_VALUES_NOT_PERSISTED
+    latency_ms: 155
+privacy_externalization: NO_EVENT_TITLE_BODY_ATTENDEE_DESCRIPTION_LOCATION_EXACT_BUSY_INTERVAL_OR_CALENDAR_ID_WRITTEN_TO_GIT_OR_SLACK
+observed_failure_behavior: NOT_PROBED_PHASE1
 empty_result_semantics: NOT_FOUND_OR_UNKNOWN_DO_NOT_INFER_PERMISSION_OR_GLOBAL_ABSENCE
-durability: MAILBOX_PROVIDER_DURABILITY_ONLY_NO_WORKFLOW_REPLAY_RESUME_OR_EXACTLY_ONCE_CLAIM
-observability: SUCCESS_OUTPUT_SHAPE_LATENCY_CONNECTOR_AND_ACTION_IDS_EXPOSED_SCOPE_RAW_HTTP_QUOTA_RETRY_AUDIT_AND_INTERNAL_CALL_SEQUENCE_HIDDEN
-portability: MEDIUM_WITHIN_MEASURED_GMAIL_CONNECTOR_ACTIONS_LOW_TO_OTHER_MAIL_PROVIDERS_UNTESTED
-mandatory_gates:
-  - PRIVATE_BODIES_HEADERS_IDS_TOKENS_ATTACHMENTS_AND_EXACT_COUNTS_STAY_IN_SOURCE_SYSTEMS_UNLESS_AN_EXPLICIT_WORKITEM_REQUIRES_THEM
-  - PREFER_LABEL_AGGREGATES_OVER_MESSAGE_LISTING_FOR_STATUS_QUESTIONS
-  - USE_EXACT_KNOWN_LABEL_NAMES_AND_TREAT_EMPTY_RESULTS_AS_NOT_FOUND_OR_UNKNOWN
-  - DO_NOT_INFER_GLOBAL_ABSENCE_PERMISSION_STATE_OR_RAW_GMAIL_FAILURE_CLASS_FROM_EMPTY_SUCCESS
+durability: CALENDAR_PROVIDER_DURABILITY_ONLY_NO_WORKFLOW_REPLAY_RESUME_TRANSACTION_OR_EXACTLY_ONCE_CLAIM
+observability: ACTION_CONNECTOR_ID_NORMALIZED_RESULT_LATENCY_AND_ERROR_ENVELOPE_EXPOSED_RAW_HTTP_HEADERS_QUOTA_RETRY_AUDIT_IDENTITY_AND_INTERNAL_CALL_SEQUENCE_HIDDEN
+portability: MEDIUM_AT_CALENDAR_AND_FREEBUSY_SEMANTICS_LOW_FOR_WRAPPER_SPECIFIC_SCHEMA_OTHER_PROVIDERS_UNTESTED
+provisional_gates:
+  - PREFER_FREEBUSY_FOR_AVAILABILITY_USE_EVENT_SEARCH_ONLY_FOR_KNOWN_OBLIGATION_POINTERS
+  - EXPLICIT_TIME_WINDOW_AND_LOW_RESULT_CAP_REQUIRED
+  - EVENT_BODIES_ATTENDEES_DESCRIPTIONS_LOCATIONS_EXACT_PRIVATE_BUSY_INTERVALS_AND_CALENDAR_IDS_STAY_IN_SOURCE_SYSTEMS_UNLESS_EXPLICITLY_REQUIRED
+  - EMPTY_SEARCH_IS_NOT_FOUND_OR_UNKNOWN_NOT_PERMISSION_PROOF_OR_GLOBAL_ABSENCE
   - LIVE_SCOPE_UNKNOWN_MUST_NOT_BE_DESCRIBED_AS_LEAST_PRIVILEGE
-  - METADATA_ONLY_MESSAGE_GET_NOT_ADMITTED_UNTIL_EXPLICIT_FORMAT_AND_HEADER_CONTROLS_EXIST
-  - CONNECTOR_FILTERING_ENRICHMENT_CALL_SEQUENCE_AND_ACTUAL_QUOTA_COST_UNKNOWN
-  - LOW_RATE_BOUNDED_CALLS_ONLY_WHILE_PROJECT_QUOTA_BILLING_AND_RETRY_TELEMETRY_ARE_HIDDEN
-  - NO_UNBOUNDED_AUTOMATIC_RETRY
-  - NO_DURABILITY_EXACTLY_ONCE_OR_INDEPENDENT_VERIFICATION_CLAIM
-  - DISTINCT_NONPRODUCER_BEFORE_HIGHER_EFFECT_PRIVACY_PERMISSION_COST_OR_INTERNAL_CALL_SEQUENCE_CLAIM
-verifier: S04_STRUCTURAL_PREFLIGHT_THEN_DISTINCT_NONPRODUCER_FOR_SCOPE_PRIVACY_PERMISSION_COST_OR_INTERNAL_CALL_SEQUENCE_CLAIMS
-consumer: S05_OPERATOR_RELIEF_CELL_AND_RATATOSKR
+  - LOW_RATE_BOUNDED_CALLS_ONLY_WHILE_RAW_QUOTA_RETRIES_BILLING_CLASS_AND_INTERNAL_CALL_SEQUENCE_ARE_HIDDEN
+  - NO_PROVIDER_DURABILITY_AS_WORKFLOW_DURABILITY_OR_EXACTLY_ONCE_CLAIM
+verifier: S04_STRUCTURAL_PREFLIGHT_THEN_DISTINCT_NONPRODUCER_FOR_SCOPE_PRIVACY_QUOTA_OR_INTERNAL_CALL_SEQUENCE_CLAIMS
+consumer: S05_OPERATOR_RELIEF_CELL_AND_X11_CARRIER_SURFACE_LAB
 consumer_ack: NOT_OBSERVED
 same_provider_binding_weight: 0
-strongest_falsifier: A_DISTINCT_REVIEW_OR_DIRECT_CONNECTOR_INSPECTION_SHOWS_LABEL_AGGREGATES_REQUIRE_BODY_BEARING_READS_OR_EXCESS_HIDDEN_CALLS_OR_A_REPEAT_KNOWN_LABEL_PROBE_RETURNS_EMPTY_WITHOUT_MAILBOX_CHANGE_OR_A_PROVEN_METADATA_ONLY_GET_CHANGES_THE_ADOPTION_BOUNDARY
-review_expiry_utc: 2026-08-08T12:50:10Z
-next_campaign:
-  experiment_id: X13_GOOGLE_CALENDAR_READONLY_CONNECTOR_001
-  candidate: Calendar_read_only_event_search_and_free_busy_connector
-  next_phase: PHASE1_OFFICIAL_CONTRACT_AND_DIRECT_CAPABILITY_BASELINE
-valid_time_utc: 2026-08-01T12:50:10Z
+strongest_falsifier: DISTINCT_REVIEW_OR_DIRECT_INSPECTION_SHOWS_FREEBUSY_CAUSES_HIDDEN_BODY_READS_OR_EXCESS_CALLS_OR_A_KNOWN_EXISTING_BOUNDED_EVENT_CANNOT_BE_FOUND_OR_LIVE_SCOPE_IS_MATERIALLY_BROADER_THAN_REQUIRED_AND_CANNOT_BE_GATED
+review_expiry_utc: 2026-08-08T13:47:33Z
+next_phase:
+  phase: 2
+  name: SMALLEST_HARMLESS_READ_ONLY_MICRO_USE
+  candidate_workitem: RECONCILE_ALREADY_EXTERNALIZED_REED_HVAC_VERIFICATION_EVENT_WITHOUT_PRIVATE_BODY_PERSISTENCE
+valid_time_utc: 2026-08-01T13:47:33Z
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 sealed: true
 prior_campaign:
+  experiment_id: X13_GMAIL_READONLY_CONNECTOR_001
+  final_version: 16
+  decision: ADOPT_WITH_GATES
+  decision_commit: 7a72ec06c8c4c94f6b88c4303066a3fac71ebd8c
+  corrected_event_blob_sha: 3b8445aeaf4a94edfb88c205da086f2287211ef2
+  noncanonical_event_commit: dcba6818933485a4b786133616b5b89dc886cf06
+prior_prior_campaign:
   experiment_id: X13_SLACK_PUBLIC_CHANNEL_CONNECTOR_001
   final_version: 12
   decision: ADOPT_WITH_GATES
   decision_commit: 86e2995365911ef5b7cd2b0d59a4e05d1cbac1b3
-prior_prior_campaign:
+prior_prior_prior_campaign:
   experiment_id: X13_GITHUB_CONTENTS_API_001
   final_version: 8
   decision: ADOPT_WITH_GATES
@@ -104,21 +109,17 @@ prior_prior_campaign:
 
 # X13 current campaign
 
-The Gmail read-only connector campaign is complete with `ADOPT_WITH_GATES`.
+The Google Calendar read-only event-search and free/busy campaign has completed phase 1.
 
-Admit exact known-label aggregate status first. Admit bounded message-ID discovery only when label
-aggregates cannot answer the question. Do not admit general message-metadata or body-bearing reads,
-bulk mining, high-rate polling, least-privilege claims, exact quota claims, or workflow durability.
+A bounded synthetic event search succeeded with an empty result, and a bounded primary-calendar
+free/busy request succeeded without exposing event content. Exact busy values were deliberately not
+persisted. These calls establish direct connector availability only; they do not establish least-
+privilege scope, secondary-calendar access, provider failure semantics, one-to-one upstream request
+count, billing safety, workflow durability, or independent verification.
 
-The connector's exact-label filter and aggregate enrichment are wrapper behavior. A successful empty
-result means only `not found or unknown`; it does not prove permission state, global absence, raw Gmail
-failure behavior, or one provider request. Official Gmail documentation says current standard use
-below the daily threshold has no additional charge, while charging above request limits is planned
-later in 2026, so cost and quota assumptions must be rechecked before scale.
+Prefer free/busy for availability questions. Event search remains a higher-privacy surface and must be
+bounded to an exact time window, low result cap, and known obligation pointer. Same-provider binding
+weight remains zero and fitness credit remains zero until a WorkItem consumes the capability.
 
-A first phase-4 event remains orphaned and noncanonical because two source commit bindings were false.
-The corrected event was read back and is the only phase-4 event referenced by this pointer.
-
-Same-provider binding weight remains zero. Fitness credit remains zero until a WorkItem consumes the
-capability and records measured operator relief. Next campaign: Calendar read-only event search and
-free/busy capability, phase 1.
+Next phase: smallest harmless read-only micro-use against the already-externalized Reed HVAC calendar
+obligation, with no private event-body persistence.
