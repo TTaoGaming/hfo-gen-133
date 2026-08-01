@@ -1,32 +1,32 @@
 {
   "canonical_projection": {
     "campaign": {
-      "accepted_wakes": 2,
+      "accepted_wakes": 3,
       "campaign_id": "X12_STALE_CONCURRENT_WRITER_SIMULATION_C4",
       "factor": "stale_concurrent_writer_simulation",
       "selected_by_event_version": 12,
       "target_wakes": 4
     },
     "conflict_measurement": {
-      "accepted_wake_ordinal": 2,
-      "current_snapshot_blob": "e8c8abaf235a7efba5f132819915874053d1ea0d",
-      "current_snapshot_version": 13,
+      "accepted_wake_ordinal": 3,
+      "current_snapshot_blob": "9502525add791a452f7ad2f0ef23216d3e5c8175",
+      "current_snapshot_version": 14,
       "event_first": true,
       "event_readback_blob_verified": true,
-      "proposal_a_preflight": "ELIGIBLE_AT_SHARED_SNAPSHOT",
-      "proposal_b_post_advance_preflight": "REJECT_STALE_VERSION_AND_BLOB",
-      "proposal_b_prewrite_preflight": "ELIGIBLE_AT_SHARED_SNAPSHOT",
-      "proposal_b_synthetic_idempotency_key": "808c6afdc7574022fed2ae840179faf3962d88605b3749d282710bc7c7c511d3",
+      "proposal_a_preflight": "ELIGIBLE_AT_EXACT_VERSION_AND_BLOB",
+      "proposal_a_replay_post_advance_preflight": "REJECT_STALE_VERSION_AND_BLOB",
+      "proposal_b_blob_mismatch_preflight": "REJECT_BLOB_MISMATCH",
+      "proposal_c_version_mismatch_preflight": "REJECT_VERSION_MISMATCH",
       "proposed_key_observed_match_count": 0,
       "search_authority": "BEST_EFFORT_NONATOMIC_POSSIBLY_STALE",
-      "simulation_scope": "LOCAL_SERIAL_TWO_PROPOSAL_PRE_AND_POST_COMMIT",
+      "simulation_scope": "LOCAL_SERIAL_ORTHOGONAL_MISMATCH_MATRIX",
       "stale_write_api_call_attempted": false
     },
     "consumer": "Reginleif/Olrun",
     "effect_ceiling": "FILE_AND_SANITIZED_SLACK_ONLY",
-    "expiry_utc": "2026-08-01T14:42:21Z",
+    "expiry_utc": "2026-08-01T15:43:53Z",
     "idempotency_measurement": {
-      "idempotency_key": "0dafe057d5f951f759362c9d4e2b552126b2f3153b68947f5736a61e2e402838",
+      "idempotency_key": "88df5b07d28dc78110089bcd442abd1b0b7408673d4b2b9bbaa8e80d6f9378b4",
       "strategy": "SEMANTIC_TRANSITION_TUPLE_EXCLUDING_PROBE_METADATA_V3"
     },
     "last_campaign_decision": {
@@ -37,23 +37,23 @@
       "factor": "idempotency_strategy"
     },
     "latest_event": {
-      "blob": "40dd302c46c4a7488b511d0a5d96cf3395ccc747",
-      "commit": "3414131fae00541561f2035a30c455570afbe446",
-      "digest_sha256": "bca34b6ab5c4d2b7a919a6a8488087bd9725dfc7a1bc8a509cf62e4535f40ec9",
-      "idempotency_key": "0dafe057d5f951f759362c9d4e2b552126b2f3153b68947f5736a61e2e402838",
-      "path": "state/coordination/experiments/durable_object_x12/events/20260801T104221Z_V0013_TO_V0014_STALE_CONCURRENT_WRITER_SIMULATION.json"
+      "blob": "0acb79c642f2fe2ea5e57a6eca98578ab0b017ba",
+      "commit": "f67dceb56c94aa71e33fb2ba9b589e610892e832",
+      "digest_sha256": "21bb8af03ebb152279e8ddabbf4d083bef0ebf8d6ed2c63bbf4d227c3c5d7915",
+      "idempotency_key": "88df5b07d28dc78110089bcd442abd1b0b7408673d4b2b9bbaa8e80d6f9378b4",
+      "path": "state/coordination/experiments/durable_object_x12/events/20260801T114353Z_V0014_TO_V0015_STALE_CONCURRENT_WRITER_SIMULATION.json"
     },
     "object_id": "HFO_X12_WORKFLOW_OBJECT_001",
     "state": "ACTIVE_CAMPAIGN",
     "task_id": "6a506f83df208191815dd17a8fd5baa3",
-    "version": 14
+    "version": 15
   },
   "expected_previous_pointer": {
-    "blob": "e8c8abaf235a7efba5f132819915874053d1ea0d",
-    "projection_digest_sha256": "221b862d135dd2ba682b099366f3d86dac4921c2993f3b80831d8b93361d29d3",
-    "version": 13
+    "blob": "9502525add791a452f7ad2f0ef23216d3e5c8175",
+    "projection_digest_sha256": "ef7b693353b69a8e0580ed94dbe6528c47a2df73cb92796b94bcb4aabbe06753",
+    "version": 14
   },
-  "honest_atomicity_limit": "The v13→v14 event was committed and read back before CURRENT was fetched again and confirmed unchanged at exact version 13 and blob e8c8abaf235a7efba5f132819915874053d1ea0d. Two proposals were locally eligible against the same snapshot; only proposal A was submitted. Proposal B was classified stale after the v14 advance by local version/blob comparison, without a stale GitHub API call. Event and pointer remain separate commits. The blob-SHA guard applies to one file and does not provide cross-file atomicity, reservations, locks, linearizability, exactly-once execution, database durability, true concurrent-writer safety, Slack atomicity, or automatic orphan-event cleanup.",
-  "projection_digest_sha256": "ef7b693353b69a8e0580ed94dbe6528c47a2df73cb92796b94bcb4aabbe06753",
+  "honest_atomicity_limit": "The v14→v15 event was committed and read back before CURRENT was fetched again and confirmed unchanged at exact version 14 and blob 9502525add791a452f7ad2f0ef23216d3e5c8175. Orthogonal local comparisons rejected a matching-version/stale-blob proposal and a stale-version/matching-blob proposal; the accepted v14 pair becomes stale under v15. No stale GitHub API call or overlapping writer was attempted. Event and pointer remain separate commits. The blob-SHA guard applies to one file and does not provide cross-file atomicity, reservations, locks, linearizability, exactly-once execution, database durability, true concurrent-writer safety, Slack atomicity, or automatic orphan-event cleanup.",
+  "projection_digest_sha256": "5f727b4e615ee976a5596e8a88df8568791273de99f8220e7d5cafe5e5c4b39e",
   "schema_id": "hfo.gen133.x12.durable_object_current.v1"
 }
