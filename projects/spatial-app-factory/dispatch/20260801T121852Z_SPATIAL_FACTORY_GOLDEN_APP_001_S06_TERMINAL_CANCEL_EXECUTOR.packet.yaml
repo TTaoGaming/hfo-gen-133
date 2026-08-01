@@ -1,0 +1,302 @@
+---
+schema_id: hfo.gen133.spatial_factory.s06_executor_packet.v3
+packet_id: S06_SPATIAL_FACTORY_GOLDEN_APP_001_TERMINAL_CANCEL_EXECUTOR_20260801T121852Z
+result: DISPATCHED
+callsign_or_seat: S06_CODE_WORK_PACKET_COMPILER
+carrier_task_id_expected: 6a57972b9df081918680ce67c4ecb197
+carrier_task_id_observed: 6a57972b9df081918680ce67c4ecb197
+carrier_task_id_match: true
+carrier_identity_claim: DISPOSABLE_SCHEDULED_CARRIER_NOT_LINEAGE
+controller: operator_direct
+wip: 1
+valid_time_utc: 2026-08-01T12:18:52Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+repository_head_observed_before_write: 8299d5c6d1836f73610751e4426c3bd99ae69679
+packet_state: EXACT_EXECUTOR_PACKET_READY_NOT_EXECUTION
+sealed: false
+expiry_utc: 2026-08-01T15:09:29Z
+---
+
+self_probe:
+  expected_task_id: 6a57972b9df081918680ce67c4ecb197
+  observed_task_id: 6a57972b9df081918680ce67c4ecb197
+  task_id_match: true
+  tools_observed:
+    github_connector: authenticated_read_write_and_exact_file_readback
+    slack_connector: authenticated_read_write
+    direct_codex_ingress: unavailable
+    direct_claude_host_ingress: unavailable
+    authenticated_target_checkout_or_shell: unavailable
+    browser_runtime: unavailable
+  production_execution_performed: false
+  direct_producer_route_claimed: false
+  missing_required_compiler_tool: false
+
+selection:
+  work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001
+  selection_reason: newest changed unexpired claim requiring a bounded code patch, tests, exact repository inspection, and producer command evidence
+  duplicate_packet_search:
+    exact_claim_commit_match_before_write: 0
+    method: repository_code_search
+    limitation: GitHub code search is not atomic and can lag writes
+  dispatch_idempotency:
+    canonicalization: sha256 UTF-8 LF-joined work_item_id, claim_commit, claim_blob, acceptance_digest, required_start_sha
+    canonical_input: |-
+      SPATIAL_FACTORY_GOLDEN_APP_001
+      84531dbda83bad271843312f9c18515e3ad14796
+      054747b6d9cf372af969dd63522cbaa3c2424205
+      1beef244aaeee326ae19ed7e42da55057b691b106ecfa01a49ddaece09bc35a2
+      1f0c0a7831db6f4476a703856855ff7ccc4f454b
+    key: 2d5d88327547903873193848bbf82dc89f9fa2cb1b5607abe0cc8b75e9a1f4fc
+
+claim_binding:
+  commit: 84531dbda83bad271843312f9c18515e3ad14796
+  path: projects/spatial-app-factory/claims/20260801T120929Z_SPATIAL_FACTORY_GOLDEN_APP_001_S02_TERMINAL_CANCEL.claim.yaml
+  blob: 054747b6d9cf372af969dd63522cbaa3c2424205
+  claim_id: S02_SPATIAL_FACTORY_GOLDEN_APP_001_TERMINAL_CANCEL_20260801T120929Z
+  claim_idempotency_key: 2d276d17ae2bf101c4e45e3e7ec854e77d45a78e4ac0c1151337399eda49f163
+  acceptance_contract_sha256: 1beef244aaeee326ae19ed7e42da55057b691b106ecfa01a49ddaece09bc35a2
+  lease_expires_utc: 2026-08-01T16:09:29Z
+  producer_return_due_utc: 2026-08-01T15:09:29Z
+  status_at_compile: CHANGED_UNEXPIRED_CLAIM
+
+research_binding:
+  commit: cfcf74c0e36ddf87d30e0e6d6e88d261688ae933
+  path: projects/spatial-app-factory/research/20260801T112954Z_S08_TAGS_1F0C0A7_POINTER_CANCEL_TERMINATION_EVIDENCE_CARD.md
+  blob: 49c6061343c558e6349915706e62adf19fb4f6fe
+  result: REVISE
+  evidence_ceiling: SAME_PROVIDER_RESEARCH_NONBINDING_WEIGHT_0
+
+executor:
+  primary_producer: S07_BOUNDED_CODE_PATCH_BUILDER_or_one_operator_authorized_real_host
+  routing_consumer: Olrun/Claude-Dispatch_as_spatial_factory_coordinator
+  permitted_runtime: authenticated clean checkout with Git and Node.js
+  time_budget_minutes: 45
+  direct_cost_ceiling_usd: 0
+  operator_relay_budget_minutes: 0
+  network_budget: Git repository access only
+  stop_on:
+    - target branch head differs from 1f0c0a7831db6f4476a703856855ff7ccc4f454b before any producer edit
+    - claim, packet, or producer-return deadline is expired
+    - checkout is dirty before work
+    - any changed path falls outside the two-path allowlist
+    - exact command output or real exit codes cannot be captured
+    - implementation requires dependency, lockfile, workflow, HTML, deployment, credential, account, secret, or external-system mutation
+
+source_target:
+  repository: TTaoGaming/TAGS
+  branch: agent/spatial-golden-app-001-20260731
+  required_start_sha: 1f0c0a7831db6f4476a703856855ff7ccc4f454b
+  branch_exists_observed: true
+  branch_head_directly_resolved_by_compiler: false
+  precondition: producer must prove git rev-parse HEAD equals required_start_sha or return HOLD without edits
+  exact_input_blobs:
+    prototypes/spatial-input-adapter.js: ca327ea46049f499d0afe1be4f9632ee086f2637
+    tests/spatial-input-adapter.test.mjs: 2e523f5c373203ae4f5e0f1a48a52d1570f0682a
+
+current_red_evidence:
+  - processSample calls clearCycle and returns no terminal descriptor when the adapter is disarmed
+  - processSample calls clearCycle and returns no terminal descriptor for invalid tracking or an invalid pinch value
+  - reset calls clearCycle directly and emits no terminal cancellation signal
+  - setArmed(false) calls clearCycle directly and emits no terminal cancellation signal
+  - dispatchSample clears an active cycle when the active target is unusable but exposes no returned or injected host-cleanup cancellation signal
+  - the adapter stores activeTarget and pinchHeld but does not retain last-known pointer coordinates needed for terminal cancellation
+  - pointerDescriptor has no pointercancel branch; its generic descriptor is cancelable true, while the claim requires cancellation to be cancelable false with buttons zero
+  - the existing interruption test proves only zero activation after invalid input, reset, disarm, or target loss; it does not prove exactly one terminal cancel, ordering before local clear, dead-target host cleanup, duplicate suppression, or fresh-cycle recovery
+  - no direct producer command transcript, final branch SHA, distinct-provider verdict, or ConsumerAck exists for this renewed claim
+
+bounded_goal: >-
+  Add one application-level terminal cancellation path for an active synthetic pointer cycle without broad refactor.
+  After pointerdown, invalid tracking, reset, disarm, or target loss must terminate the active cycle exactly once before
+  local state is cleared and must never activate. When the active target is still usable, dispatch one untrusted
+  pointercancel to that same target with the same pointer identity, last-known coordinates, isPrimary true,
+  cancelable false, buttons zero, and no activation. When the active target is unusable, do not dispatch to it;
+  instead expose exactly one returned or injected cancellation signal for host cleanup. Repeated interruption or a
+  later release must not duplicate cancellation, and the next valid pinch must begin a fresh cycle. Preserve fixed
+  target continuity, exactly-one valid-release activation, held/repeated-release protections, and native
+  mouse/touch/keyboard fallback. No browser-trusted activation, pointer-capture, deployment, or production claim.
+
+allowed_paths:
+  modify_only:
+    - prototypes/spatial-input-adapter.js
+    - tests/spatial-input-adapter.test.mjs
+  forbidden: every_other_repository_path
+  forbidden_even_if_related:
+    - package.json
+    - package-lock.json
+    - node_modules/**
+    - prototypes/*.html
+    - .github/workflows/**
+    - manifests/**
+    - credentials/**
+    - secrets/**
+    - deployment/**
+
+implementation_contract:
+  terminal_cancel_state:
+    - retain active target, pointer identity, and last-known valid coordinates after pointerdown until normal pointerup or terminal cancellation completes
+    - centralize interruption handling so invalid tracking, reset, disarm, and target loss share duplicate-safe terminal behavior
+    - clear local held/target/coordinate state only after the one terminal cancellation signal has been produced or deliberately routed to the host-cleanup seam
+  usable_target_path:
+    - dispatch exactly one event with type pointercancel to the active target
+    - event must be synthetic and untrusted; do not claim trusted user activation
+    - preserve pointerId, pointerType, isPrimary, and last-known clientX/clientY from the active cycle
+    - set cancelable false, buttons 0, button 0 or another explicitly tested terminal value, bubbles true, and invoke no activation callback
+  unusable_target_path:
+    - never dispatch an event to a target whose isConnected is false or whose dispatchEvent is unavailable
+    - expose exactly one host-observable cancellation signal through a minimal injected callback or explicit return value
+    - bind the signal to the same pointer identity and last-known coordinates and label the reason
+  duplicate_and_recovery_rules:
+    - repeated invalid samples, reset, disarm, target-loss observations, or later release after cancellation produce no second cancel and no activation
+    - re-arming alone must not resurrect the cancelled held cycle
+    - the next new threshold-crossing pinch emits one new pointerdown and may later complete through one normal pointerup and one activation
+  compatibility_rules:
+    - preserve deterministic coordinate mapping, hysteresis, fixed-target continuity, valid-release exactly-once activation, and held/repeated-release behavior
+    - preserve current module/global export shape and dependency-free Node-test seam
+    - smallest patch satisfying the acceptance contract; no new framework, generalized gesture architecture, second app, or unrelated cleanup
+
+required_commands:
+  - id: C1_EXACT_CHECKOUT
+    command: git fetch origin agent/spatial-golden-app-001-20260731 && git checkout agent/spatial-golden-app-001-20260731 && test "$(git rev-parse HEAD)" = 1f0c0a7831db6f4476a703856855ff7ccc4f454b
+    expected_exit_code: 0
+  - id: C2_CLEAN_PRECONDITION
+    command: test -z "$(git status --porcelain)"
+    expected_exit_code: 0
+  - id: C3_BASELINE_TEST
+    command: node --test tests/spatial-input-adapter.test.mjs
+    expected_exit_code_before_new_tests: 0
+    rule: passing baseline proves only the existing suite and its cancellation blind spot
+  - id: C4_TEST_FIRST_RED
+    command: node --test tests/spatial-input-adapter.test.mjs
+    expected_exit_code_after_adding_cancel_tests_before_adapter_patch: nonzero
+    rule: record the actual exit code and failure text; if it unexpectedly passes, stop and explain why the falsifier failed
+  - id: C5_FINAL_NODE_TEST
+    command: node --test tests/spatial-input-adapter.test.mjs
+    expected_exit_code_after_patch: 0
+  - id: C6_DIFF_CHECK
+    command: git diff --check
+    expected_exit_code: 0
+  - id: C7_ALLOWED_PATHS
+    command: git diff --name-only 1f0c0a7831db6f4476a703856855ff7ccc4f454b..HEAD
+    expected_exit_code: 0
+    expected_set_exact:
+      - prototypes/spatial-input-adapter.js
+      - tests/spatial-input-adapter.test.mjs
+  - id: C8_NO_FORBIDDEN_CHANGES
+    command: git diff --quiet 1f0c0a7831db6f4476a703856855ff7ccc4f454b..HEAD -- package.json package-lock.json .github prototypes/fab-prototype.html
+    expected_exit_code: 0
+  - id: C9_FINAL_READBACK
+    command: git status --short && git rev-parse HEAD && git ls-tree HEAD prototypes/spatial-input-adapter.js tests/spatial-input-adapter.test.mjs
+    expected_exit_code: 0
+    rule: producer return must include exact stdout and the committed final branch SHA
+
+acceptance_tests:
+  - id: A1_SOURCE_PIN
+    pass: producer starts from exact SHA 1f0c0a7831db6f4476a703856855ff7ccc4f454b on the named branch
+  - id: A2_BOUNDED_DIFF
+    pass: exactly the adapter and its Node test change; every other path is unchanged
+  - id: A3_INVALID_TRACKING_CANCEL
+    pass: after one active pointerdown, invalid tracking emits exactly one terminal cancellation before local state clear and zero activation
+  - id: A4_RESET_CANCEL
+    pass: after one active pointerdown, reset emits exactly one terminal cancellation before local state clear and zero activation
+  - id: A5_DISARM_CANCEL
+    pass: after one active pointerdown, setArmed(false) emits exactly one terminal cancellation before local state clear and zero activation
+  - id: A6_USABLE_TARGET_POINTERCANCEL
+    pass: a usable active target receives one untrusted pointercancel with the same pointerId, pointerType, isPrimary, last-known coordinates, cancelable false, buttons zero, and zero activation
+  - id: A7_DEAD_TARGET_HOST_SIGNAL
+    pass: an unusable active target receives no event and exactly one returned or injected host-cleanup cancellation signal
+  - id: A8_DUPLICATE_SUPPRESSION
+    pass: repeated interruption, target-loss observation, reset, disarm, or later release after cancellation produces no duplicate cancel and no activation
+  - id: A9_FRESH_CYCLE_RECOVERY
+    pass: the next valid pinch after cancellation begins one fresh cycle with one pointerdown and can complete through one normal release
+  - id: A10_REGRESSION
+    pass: coordinate mapping, hysteresis, fixed-target continuity, one valid-release activation, and held/repeated-release protections remain green
+  - id: A11_NO_EXTERNAL_EFFECT
+    pass: no dependency, manifest, lockfile, HTML, task, account, workflow, deployment, external system, send, spend, merge, or publication change occurs
+  - id: A12_PRODUCER_RETURN
+    pass: return binds the claim and packet, runtime/model, branch, input and final SHA, exact changed blobs, all commands with actual exit codes and concise outputs, rollback, remaining risk, expiry, and honest flaw
+
+strongest_falsifier: >-
+  From the exact base, add tests that hold a real active cycle and then exercise invalid tracking, reset, disarm,
+  target disconnection, repeated interruption, and a later release. The packet FELL if any path silently clears without
+  one host-observable terminal signal, sends to a dead target, emits more than one cancel, changes pointer identity or
+  last-known coordinates, marks cancelable true, leaves buttons pressed, activates, resurrects the old cycle, or
+  prevents the next fresh pinch from completing normally.
+
+producer_return_contract:
+  required_fields:
+    - producer_callsign_or_host
+    - provider_runtime_and_model_when_observable
+    - claim_commit_84531dbda83bad271843312f9c18515e3ad14796
+    - claim_blob_054747b6d9cf372af969dd63522cbaa3c2424205
+    - packet_commit_and_blob_after_readback
+    - repository_TTaoGaming/TAGS
+    - branch_agent/spatial-golden-app-001-20260731
+    - input_sha_1f0c0a7831db6f4476a703856855ff7ccc4f454b
+    - final_committed_sha
+    - exact_changed_paths_and_blob_shas
+    - every_required_command_actual_exit_code_and_concise_output
+    - A1_through_A12_as_STOOD_FELL_or_NOT_RUN
+    - blockers_and_remaining_risk
+    - rollback
+    - expiry
+    - honest_flaw
+  forbidden_return_claims:
+    - PASS_without_real_command_evidence
+    - browser_or_cross_browser_proof_from_Node_only
+    - trusted_user_activation
+    - independent_verification_by_the_producer
+    - deployment_publication_merge_or_customer_outcome
+
+verifier:
+  named: Sigrun/P4_APEX_FALSIFICATION_or_other_distinct_provider_nonproducer
+  independence_required: true
+  terminal_vocabulary: [STOOD, FELL]
+  same_provider_S04_preflight_allowed: true
+  same_provider_binding_weight: 0
+  must_bind:
+    - claim commit and blob
+    - this packet commit and blob
+    - final producer-return digest
+    - final target branch SHA
+    - acceptance contract sha256 1beef244aaeee326ae19ed7e42da55057b691b106ecfa01a49ddaece09bc35a2
+
+consumer:
+  named: Olrun/Claude-Dispatch_as_spatial_factory_coordinator
+  explicit_ack_required_after: distinct_STOOD_only
+  implicit_ack_forbidden: true
+  reducer_after_return: S03_task_6a539fc5130c81918c13624739fb2a60
+
+world_effect_ceiling:
+  allowed:
+    - edit and commit only the two allowed files on the exact unmerged target branch
+    - execute deterministic local Node and Git commands
+    - write one exact producer return to Gen-133 Git and one sanitized Slack pointer
+  forbidden:
+    - task mutation
+    - merge, deployment, publication, release, send, spend, payment, application, outreach, or production effect
+    - account or security change, credential or secret use, force push, rebase, reset, history deletion, or permanent deletion
+    - dependency, package, lockfile, workflow, HTML, manifest, service-worker, or external-system change
+    - new queue, second WorkItem, unrelated refactor, general architecture, second app, seal, or independent-quorum claim
+
+rollback:
+  packet: immutable_history_supersede_only_never_edit_or_delete
+  producer_branch: leave_unmerged_or create_an_ordinary_revert_commit_on_the_same_branch
+  external_effect: none_authorized
+
+routing:
+  git_packet: THIS_FILE_AFTER_COMMIT_AND_READBACK
+  slack_channel: C0BGNGPJFHU
+  direct_codex_ingress: unavailable
+  direct_claude_or_host_ingress: unavailable
+  route_claim: Git_and_Slack_coordination_only_not_execution
+  next_consumer: S07_BOUNDED_CODE_PATCH_BUILDER_or_Olrun/Claude-Dispatch
+
+honest_flaw: >-
+  S06 could read the exact claim and pinned source/test bytes but had no authenticated target checkout, shell, browser,
+  direct Codex ingress, or direct Claude-host ingress. The target branch name was visible, but this compiler could not
+  independently resolve its current head SHA through the available branch-search surface. The packet therefore makes
+  exact-head verification the producer's first fail-closed command. No test was run, no code was changed, and no
+  producer execution or outcome is claimed.
