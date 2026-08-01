@@ -1,0 +1,54 @@
+schema: hfo.gen133.operator_relief.receipt.v1
+seat: S05
+carrier_role: Operator-Relief Cell
+task_id: 6a55c182078c8191b89f2dd15f5f640c
+result: DEADLINE_BOUND
+transaction_time_utc: 2026-08-01T15:16:08Z
+valid_time_utc: 2026-08-01T14:35:01Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+wip_limit: 1
+active_item:
+  id: REPLIT_EXPIRED_PROOF_APPS_DECISION
+  status: CALENDAR_BOUND
+  sanitized_fact: Two named free-tier proof/demo deployments expired on 2026-08-01.
+  source_system: Gmail
+  source_pointers:
+    - gmail_message_id: 19fbdbff79dcaf3a
+      observed_utc: 2026-08-01T14:35:01Z
+    - gmail_message_id: 19fbdbffc2200f1e
+      observed_utc: 2026-08-01T14:35:02Z
+transition:
+  type: bind_deadline_and_decision_block
+  calendar_event_id: 93rkkl8fupi21f528t11k2b5r0
+  start: 2026-08-03T14:30:00-06:00
+  end: 2026-08-03T14:50:00-06:00
+  timezone: America/Denver
+  readback_confirmed: true
+  decision_options:
+    - REPUBLISH
+    - MIGRATE
+    - ARCHIVE
+  paid_upgrade_forbidden_without_explicit_approval: true
+priority_state:
+  p0:
+    id: OCOOPA_SAFETY_DRAFTS
+    status: OPEN
+  p1:
+    - id: PARTY_SAFARI_PERMISSION_SLIP
+      status: OPEN
+    - id: REED_HVAC_130_FEE_VERIFICATION
+      status: CALENDAR_BOUND
+operator_minutes_removed_estimate: 7
+next_consumer: operator
+privacy:
+  private_bodies_externalized: false
+  credentials_externalized: false
+  sanitized_only: true
+effect_ceiling:
+  calendar_write: one private event
+  email_send: none
+  purchase_or_upgrade: none
+  deployment: none
+  account_change: none
+honest_flaw: The expiry notices establish loss of free-tier availability, but not whether either app currently has users, revenue, or a required public URL. The decision block may conclude that both should remain archived.
