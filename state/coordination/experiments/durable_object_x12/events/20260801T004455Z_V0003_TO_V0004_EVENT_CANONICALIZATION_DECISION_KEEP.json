@@ -1,0 +1,94 @@
+{
+  "canonical_transition": {
+    "acceptance": {
+      "canonicalization_algorithm": "JCS_LIKE_V1: recursively normalize JSON object keys and string values to Unicode NFC; UTF-8; objects sorted lexicographically by normalized key; arrays preserve order; version fields require JSON integer type exactly (booleans, floats, and numeric strings rejected); separators comma/colon; no insignificant whitespace; LF only",
+      "expected_recomputation": "sha256(canonical_json_utf8(canonical_transition)) equals event_digest_sha256",
+      "idempotency_formula": "sha256(object_id|expected_version|next_version|campaign_id|wake_ordinal|prior_digest_sha256|current_pointer_blob|controlled_probe_name)",
+      "next_wake_requirement": "Start campaign X12_POINTER_UPDATE_PATTERN_C2 at object version 4; vary only pointer update pattern and preserve the accepted canonicalization gates."
+    },
+    "campaign": {
+      "campaign_id": "X12_EVENT_CANONICALIZATION_C1",
+      "factor": "event_canonicalization",
+      "wake_ordinal": 4,
+      "wake_target": 4
+    },
+    "consumer": "Reginleif/Olrun",
+    "decision": {
+      "result": "KEEP",
+      "rationale": "Keep the bounded JCS_LIKE_V1 event encoding for this internal object because exact prior-event recomputation, insertion-order invariance, Unicode NFC equivalence, duplicate rejection, and strict monotonic integer-version guards all behaved as specified in the tested specimens.",
+      "gates_retained": [
+        "RECURSIVE_NFC_ON_KEYS_AND_STRING_VALUES",
+        "REJECT_NORMALIZED_KEY_COLLISIONS",
+        "SORT_NORMALIZED_OBJECT_KEYS",
+        "STRICT_JSON_INTEGER_VERSION_FIELDS_NOT_BOOL_FLOAT_OR_STRING",
+        "EXPECTED_AND_PRIOR_VERSION_EQUAL_CURRENT",
+        "NEXT_VERSION_EQUALS_CURRENT_PLUS_ONE",
+        "REJECT_SEEN_IDEMPOTENCY_KEY",
+        "INDEPENDENT_IMPLEMENTATION_VERIFICATION_REMAINS_OPEN"
+      ],
+      "next_campaign_id": "X12_POINTER_UPDATE_PATTERN_C2",
+      "next_factor": "pointer_update_pattern"
+    },
+    "effect_ceiling": "FILE_AND_SANITIZED_SLACK_ONLY",
+    "evidence_class": "DIRECT_NATIVE_TASK_SELF_PROBE_PLUS_GITHUB_EXACT_BYTES_READBACK_PLUS_LOCAL_DETERMINISTIC_VERSION_TYPE_AND_IDEMPOTENCY_GUARD",
+    "expected_version": 3,
+    "experiment": {
+      "baseline": "Wake 3 established Unicode NFC equivalence and required exact prior-event digest recomputation, duplicate-key rejection, and a final integer/version guard before campaign decision.",
+      "controlled_factor": "JSON type and monotonicity of expected_version, prior_version, and next_version only; all object identity, source bindings, prior digest, campaign, task binding, and effect ceiling held constant.",
+      "exact_probe": "Recompute wake-3 event_digest_sha256 from canonical_transition exact semantic bytes; submit baseline {expected_version:3, prior_version:3, next_version:4}; then vary one version representation or relation at a time: expected_version=3.0, prior_version=\"3\", next_version=true, expected_version=2, next_version=5. Separately resubmit the wake-3 idempotency key against the seen-key set. Accept only exact JSON integers with expected=prior=CURRENT.version and next=CURRENT.version+1, and reject the seen key.",
+      "hypothesis": "The bounded guard accepts the exact monotonic integer tuple 3/3/4 while rejecting float, numeric-string, boolean, stale, skipped-version, and duplicate-idempotency variants without advancing state.",
+      "measured_result": {
+        "baseline_accepted": true,
+        "baseline_canonical_bytes_utf8": "{\"expected_version\":3,\"next_version\":4,\"prior_version\":3}",
+        "baseline_digest_sha256": "db875254058fb4ffa3e5132fb2590a2d58f46c664ed9090015889d23f6f27a1e",
+        "duplicate_idempotency_key_tested": "e4f3d19ae122bbcf394cb1014aa0295ead9542b6e04f21507cf33fc6c0f66cf6",
+        "duplicate_idempotency_result": "REJECT_DUPLICATE_IDEMPOTENCY_KEY",
+        "float_expected_result": "REJECT_NON_INTEGER_EXPECTED_VERSION_FLOAT",
+        "string_prior_result": "REJECT_NON_INTEGER_PRIOR_VERSION_STR",
+        "boolean_next_result": "REJECT_NON_INTEGER_NEXT_VERSION_BOOL",
+        "stale_expected_result": "REJECT_STALE_EXPECTED_VERSION",
+        "skipped_next_result": "REJECT_NON_MONOTONIC_NEXT_VERSION",
+        "prior_event_digest_recomputed": true,
+        "prior_event_digest_sha256": "05fb755de4838983e600061def9f51888fc744d402d70bf4e48a823e06fa2998",
+        "latency": "NOT_EXPOSED",
+        "operator_relay_minutes": 0,
+        "permission_error_class": "NONE"
+      },
+      "strongest_falsifier": "A distinct implementation given the exact wake-1 through wake-4 specimens emits different canonical bytes/digests, accepts a normalized-key collision or non-integer version, or advances CURRENT on a seen idempotency key or stale expected version."
+    },
+    "expiry_utc": "2026-08-01T06:44:00Z",
+    "honest_flaw": "KEEP applies only to this bounded internal schema and the tested specimens; it is not RFC 8785 compliance, cross-language portability, or proof against all Unicode and numeric edge cases. No distinct-provider verifier has recomputed the campaign. GitHub event creation and CURRENT replacement remain separate commits: Contents API blob-SHA checking is per-file optimistic concurrency, not a database transaction, lock, linearizable compare-and-swap across files, exactly-once execution, or prevention of competing orphan events.",
+    "idempotency_key": "db2737a18f68efd8e5d534423131c079d612ba60cbf69f7eb380eb969662fe8e",
+    "next_version": 4,
+    "nonce": "x12-c1-w4-v3-v4-db2737a1",
+    "object_id": "HFO_X12_WORKFLOW_OBJECT_001",
+    "prior_digest_sha256": "05fb755de4838983e600061def9f51888fc744d402d70bf4e48a823e06fa2998",
+    "prior_version": 3,
+    "rollback": "Do not delete this immutable event. If later invalidated, append a compensating event from the then-current version and replace CURRENT only using that pointer file's exact then-current blob SHA.",
+    "self_probe": {
+      "expected_task_id": "6a506f83df208191815dd17a8fd5baa3",
+      "observed_task_id": "6a506f83df208191815dd17a8fd5baa3",
+      "task_id_match": true,
+      "tools_observed": [
+        "NATIVE_TASK_INVENTORY_READ",
+        "GITHUB_CONTENTS_READ_WRITE",
+        "SLACK_SEND_AVAILABLE",
+        "LOCAL_PYTHON_DETERMINISTIC_PROBE"
+      ]
+    },
+    "source_binding": {
+      "current_pointer_blob": "3c9121653cf1bf168d90cfb905c71fa476798eb4",
+      "current_projection_digest_sha256": "d1d9a936e53ae1e9f9148b4846075e18a4eaa96ea9b67277fe1e37e4fe92831b",
+      "prior_event_blob": "eb0e70e221073821663cabaaae534d2c2de56852",
+      "prior_event_commit": "da51b6573202afb27485cddcf9ff0ed500b9ef74",
+      "prior_event_path": "state/coordination/experiments/durable_object_x12/events/20260731T234431Z_V0002_TO_V0003_EVENT_CANONICALIZATION.json"
+    },
+    "task_id": "6a506f83df208191815dd17a8fd5baa3",
+    "transaction_time_utc": "SEE_GITHUB_COMMIT_METADATA",
+    "valid_time_utc": "2026-08-01T00:44:55Z",
+    "verifier": "S04_STRUCTURAL_PREFLIGHT_WEIGHT_0_THEN_SIGRUN_P4_DISTINCT"
+  },
+  "canonicalization": "JCS_LIKE_V1",
+  "event_digest_sha256": "0c431dfadd112879975dabcd986a7eb959b5520944ffa4048ade1e4474459489",
+  "schema_id": "hfo.gen133.x12.durable_object_event.v1"
+}
