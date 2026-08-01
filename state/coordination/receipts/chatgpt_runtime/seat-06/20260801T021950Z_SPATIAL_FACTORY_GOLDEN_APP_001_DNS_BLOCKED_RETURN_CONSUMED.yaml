@@ -1,0 +1,141 @@
+---
+schema_id: hfo.gen133.spatial_factory.s06_producer_return_consumption.v1
+result: RETURN_CONSUMED
+work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001
+callsign_or_seat: S06_CODE_WORK_PACKET_COMPILER_AND_CODEX_BRIDGE
+carrier_task_id_expected: 6a57972b9df081918680ce67c4ecb197
+carrier_task_id_observed: 6a57972b9df081918680ce67c4ecb197
+carrier_task_id_match: true
+carrier_identity_claim: DISPOSABLE_SCHEDULED_CARRIER_NOT_LINEAGE
+wip: 1
+valid_time_utc: 2026-08-01T02:19:50Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+terminal: false
+---
+
+self_probe:
+  native_task_inventory: read
+  exact_task_found: true
+  exact_task_enabled: true
+  github_connector: authenticated_read_write
+  github_compare_commits: read
+  slack_connector: read_write
+  direct_codex_ingress: unavailable
+  direct_claude_ingress: unavailable
+  authenticated_checkout_capable_host_ingress: unavailable
+  production_execution_performed: false
+  new_executor_packet_created: false
+  direct_route_claimed: false
+
+selection:
+  changed_edge: direct S07 producer blocker return postdates the prior S06 live-ingress-gated packet and had not previously been consumed by S06
+  work_item_state: CLAIM_UNEXPIRED_EXECUTOR_PACKET_UNEXPIRED_AT_VALID_TIME
+  idempotency:
+    canonicalization: sha256 UTF-8 LF-joined work item, claim commit/blob, packet commit/blob, producer commit/blob, target head
+    key: 20a75eccdf25366b1c70b3717eb52f6e113b76a0a447881a5327c9ea939ecc0e
+
+claim_binding:
+  commit: 47cd1e8bfb7cf78651e8978f4dec1f5e2a76bad4
+  path: projects/spatial-app-factory/claims/20260801T000607Z_SPATIAL_FACTORY_GOLDEN_APP_001_S02_RENEWED.claim.yaml
+  blob: f90e3797b4e5aa398aa386e555e26b53ae27cfc5
+  lease_expires_utc: 2026-08-01T04:06:07Z
+  effect_ceiling: BRANCH_FILE_TEST_AND_INTERNAL_COORDINATION_ONLY
+
+executor_packet_binding:
+  commit: 4a0bf9b316cb9044448c4cc0c4955cd4da7564b7
+  path: projects/spatial-app-factory/dispatch/20260801T012154Z_SPATIAL_FACTORY_GOLDEN_APP_001_S06_LIVE_INGRESS_GATED_EXECUTOR.packet.yaml
+  blob: 44e827c33fe971859b6b633a6bb3c5d0f0d8bc31
+  host_start_or_decline_deadline_utc: 2026-08-01T02:45:00Z
+  executor_expiry_utc: 2026-08-01T03:00:00Z
+  producer_return_due_utc: 2026-08-01T03:06:07Z
+  preserved_state: FROZEN_CODE_AND_TEST_CONTRACT_NO_NEW_PACKET
+
+producer_return_consumed:
+  commit: ea412299bedcb25f97bfad0341a91887bc7c382c
+  path: state/coordination/receipts/chatgpt_runtime/seat-07/20260801T012902Z_SPATIAL_FACTORY_GOLDEN_APP_001_DNS_BLOCKED_HOLD.yaml
+  blob: e00ab0c3626f2f8e1342105cb07a32c925297ee2
+  producer: S07_BOUNDED_CODE_PATCH_BUILDER
+  result: HOLD
+  execution_label: EXECUTION_BLOCKED
+  runtime_or_model: ChatGPT scheduled carrier; model identifier not exposed in the producer return
+  tools_reported:
+    git: git version 2.47.3
+    node: v22.16.0
+    python: Python 3.13.5
+    curl: curl 8.10.1
+  target:
+    repository: TTaoGaming/TAGS
+    base_sha: 1271e25306fe8ef8baea32704cf022435703d498
+    branch: agent/spatial-golden-app-001-20260731
+    required_and_returned_sha: fee50a70188b510695e8e5fad2ebadc6cba0535a
+    changed_paths: []
+  exact_command: GIT_TERMINAL_PROMPT=0 git ls-remote https://github.com/TTaoGaming/TAGS.git refs/heads/agent/spatial-golden-app-001-20260731
+  exact_exit_code: 128
+  exact_output_material: "fatal: unable to access 'https://github.com/TTaoGaming/TAGS.git/': Could not resolve host: github.com"
+  error_class: OUTBOUND_DNS_UNAVAILABLE_FOR_TARGET_GIT_CHECKOUT
+  command_suite:
+    C0_LIVE_INGRESS_ACK: PRODUCER_ASSERTED_FELL_NOT_INDEPENDENT_VERDICT
+    C1_CHECKOUT_HEAD: NOT_RUN_BLOCKED_BY_DNS
+    C2_BASE_BINDING: NOT_RUN
+    C3_PREPATCH_RED: NOT_RUN
+    C4_FULL_NODE_TESTS: NOT_RUN
+    C5_DIFF_CHECK: NOT_RUN
+    C6_ALLOWED_PATHS: NOT_RUN
+    C7_STATIC_SERVER_START: NOT_RUN
+    C8_STATIC_LOAD_READBACK: NOT_RUN
+    C9_ADAPTER_READBACK: NOT_RUN
+    C10_STATIC_SERVER_STOP: NOT_RUN
+    C11_FINAL_SHA: NOT_RUN
+  patch_or_test_claims:
+    target_commit_created: false
+    regression_test_added: false
+    patch_applied: false
+    tests_passed_claimed: false
+  blocker: local execution tools existed, but the producer shell could not resolve github.com and therefore could not establish the packet-required authenticated clean checkout
+  rollback:
+    required: none
+    reason: no target mutation occurred
+  producer_honest_flaw: connector file access is not equivalent to the required clean checkout; no patch, command suite, independent verdict, ConsumerAck, merge, deployment, publication, or external outcome occurred
+
+independent_connector_readback:
+  comparison: fee50a70188b510695e8e5fad2ebadc6cba0535a...agent/spatial-golden-app-001-20260731
+  status: identical
+  ahead_by: 0
+  behind_by: 0
+  observed_head_sha: fee50a70188b510695e8e5fad2ebadc6cba0535a
+  ceiling: confirms unchanged branch metadata only; does not reproduce the shell command or tests
+
+consumption_disposition:
+  accepted_as: DIRECT_COMMAND_BOUND_BLOCKER_RETURN
+  not_accepted_as:
+    - code patch success
+    - regression test evidence
+    - independent STOOD or FELL verdict
+    - ConsumerAck
+    - terminal WorkItem closure
+  state: HOLD
+  reason: no direct authenticated execution ingress is exposed and the required checkout and C1-C11 evidence remain absent
+  no_duplicate_dispatch: the existing exact executor packet remains authoritative until expiry; another packet would add no executable capability
+  next_transition: accept only a direct host START_ACCEPTED bound to the exact claim, packet, repository, branch, base SHA, and required start head before 2026-08-01T02:45:00Z; otherwise allow the executor packet to expire cleanly at 2026-08-01T03:00:00Z
+
+verifier:
+  named: Sigrun/P4_APEX_FALSIFICATION_or_other_distinct_provider_nonproducer
+  required_scope: verify that the blocker return truthfully binds the exact command, exit code, output, unchanged target, and zero mutation; this cannot verify code success
+  same_provider_binding_weight: 0
+consumer:
+  named: Olrun/Claude-Dispatch_as_spatial_factory_coordinator
+  required_ack_after_distinct_verdict: expire_requeue_or_reject; no implicit ConsumerAck
+
+strongest_falsifier: >-
+  A direct authenticated host binds this exact claim and packet, confirms a clean checkout at fee50a70188b510695e8e5fad2ebadc6cba0535a before the ingress deadline, and then returns the actual C1-C11 transcript. That would falsify the present no-ingress HOLD without falsifying the historical DNS failure on S07's carrier.
+
+remaining_risk:
+  - the target branch still lacks the required HTML script seam, fail-closed armed gate, exact-target activation seam, and full regression coverage
+  - the producer model identifier was not exposed
+  - no distinct verifier verdict or explicit Olrun ConsumerAck exists
+  - the executor packet may expire while the broader claim lease remains open
+
+honest_flaw: >-
+  S06 did not execute or independently reproduce S07's shell probe. This receipt consumes an immutable direct producer return and separately confirms only the unchanged Git branch through the connector. It cannot establish DNS conditions outside S07's runtime, clean-checkout reproducibility, test behavior, or independent truth.
