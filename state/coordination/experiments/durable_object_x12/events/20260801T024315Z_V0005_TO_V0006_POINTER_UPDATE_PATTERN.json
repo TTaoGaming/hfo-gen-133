@@ -1,0 +1,74 @@
+{
+  "canonical_transition": {
+    "acceptance": {
+      "canonicalization_algorithm": "JCS_LIKE_V1: recursively normalize JSON object keys and string values to Unicode NFC; UTF-8; objects sorted lexicographically by normalized key; arrays preserve order; version fields require JSON integer type exactly (booleans, floats, and numeric strings rejected); separators comma/colon; no insignificant whitespace; LF only",
+      "expected_recomputation": "sha256(canonical_json_utf8(canonical_transition)) equals event_digest_sha256",
+      "idempotency_formula": "sha256(object_id|expected_version|next_version|campaign_id|wake_ordinal|prior_digest_sha256|current_pointer_blob|controlled_probe_name)",
+      "next_wake_requirement": "Continue X12_POINTER_UPDATE_PATTERN_C2 from object version 6; vary only the pointer update pattern while preserving the accepted canonicalization, strict integer-version, source-binding, and idempotency gates.",
+      "pointer_update_gate": "Create and read back the immutable transition event first; then re-fetch CURRENT and require the same exact blob SHA and version 5 observed before event creation; replace CURRENT only with that revalidated blob SHA; finally fetch CURRENT and require version 6 plus exact latest-event digest/path/blob/commit binding. Any changed second read, stale-SHA conflict, or mismatched final readback must not be called an accepted transition."
+    },
+    "campaign": {
+      "campaign_id": "X12_POINTER_UPDATE_PATTERN_C2",
+      "factor": "pointer_update_pattern",
+      "wake_ordinal": 2,
+      "wake_target": 4
+    },
+    "consumer": "Reginleif/Olrun",
+    "effect_ceiling": "FILE_AND_SANITIZED_SLACK_ONLY",
+    "evidence_class": "AUTOMATION_CONTEXT_TASK_ID_PLUS_GITHUB_CONTENTS_EXACT_BYTES_READBACK_PLUS_EVENT_FIRST_DOUBLE_CURRENT_READ_PLUS_SINGLE_FILE_BLOB_SHA_GUARDED_POINTER_REPLACEMENT_PLUS_LOCAL_DETERMINISTIC_DIGEST",
+    "expected_version": 5,
+    "experiment": {
+      "baseline": "Campaign C2 wake 1 advanced object version 4→5 using event-first creation, exact prior CURRENT blob-SHA replacement, and final readback. CURRENT now binds event digest a1dbfb6f141f6969936d78a8968a118c79b17fd8c60c220974e41f3f56533c44 with one accepted wake.",
+      "controlled_factor": "Pointer update pattern only: add a second exact CURRENT read after immutable-event creation and event readback, before pointer replacement. Object identity, versions, canonicalization, task binding, evidence ceiling, verifier, consumer, expiry, and rollback semantics remain fixed.",
+      "controlled_probe_name": "EVENT_FIRST_DOUBLE_CURRENT_READ_EXACT_BLOB_REPLACE_READBACK_W2",
+      "exact_probe": "Fetch CURRENT and require version 5 with blob b59255459187e4b92dbf86000ed36d381874bb3c. Derive, commit, and read back one immutable v5→v6 event. Re-fetch CURRENT and require version 5 and the same blob b59255459187e4b92dbf86000ed36d381874bb3c. Only then replace CURRENT using that exact blob SHA. Fetch CURRENT again and require version 6, campaign accepted_wakes 2, and exact latest-event path/blob/commit/digest/idempotency bindings. A changed second read yields HOLD/conflict and no pointer update.",
+      "hypothesis": "A second CURRENT read immediately before replacement narrows the stale-read window and detects an intervening pointer change before the write attempt, while preserving explicit orphan-event risk because event creation and pointer replacement remain separate commits.",
+      "measured_result": {
+        "current_first_read_blob": "b59255459187e4b92dbf86000ed36d381874bb3c",
+        "current_first_read_exact": true,
+        "current_first_read_projection_digest_sha256": "eba970fc05eb5922c670934113a6dfc6d7322448f0a5ee5b3b7e2904aca56c2e",
+        "current_first_read_version": 5,
+        "event_readback_required_before_second_current_read": true,
+        "operator_relay_minutes": 0,
+        "permission_error_class": "NONE_ON_FIRST_READ_PRECONDITION",
+        "pointer_replace_guard": "SECOND_EXACT_CURRENT_READ_BLOB_SHA",
+        "post_replace_acceptance_rule": "Accepted only if event readback succeeds, the second CURRENT read is unchanged at version 5 and blob b59255459187e4b92dbf86000ed36d381874bb3c, GitHub update succeeds with that blob, and exact final CURRENT readback binds version 6 plus this event's path, blob, commit, digest, and idempotency key."
+      },
+      "strongest_falsifier": "The event bytes fail digest recomputation; the second CURRENT read differs but the pointer is still advanced; CURRENT replacement succeeds with a stale or wrong prior blob SHA; final CURRENT does not bind the exact event; a duplicate wake advances the version again; or a distinct implementation cannot reproduce the event and projection digests from the exact semantic objects."
+    },
+    "expiry_utc": "2026-08-01T06:44:00Z",
+    "honest_flaw": "The extra read reduces but does not eliminate the race between the second read and the single-file update. This wake cannot prove concurrent safety, linearizable compare-and-swap, exactly-once execution, duplicate-wake rejection, cross-file atomicity, database durability, or cleanup of an immutable event left orphaned if the second read changes or CURRENT replacement fails. The event and CURRENT remain separate Git commits.",
+    "idempotency_key": "edcac844424e950d6e71075ac43f543271b7deca37815b6f3ad76f9811237742",
+    "next_version": 6,
+    "nonce": "x12-c2-w2-v5-v6-edcac844",
+    "object_id": "HFO_X12_WORKFLOW_OBJECT_001",
+    "prior_digest_sha256": "a1dbfb6f141f6969936d78a8968a118c79b17fd8c60c220974e41f3f56533c44",
+    "prior_version": 5,
+    "rollback": "Do not delete the immutable event. If this transition is later invalidated, append a compensating event from the then-current version and replace CURRENT only with that pointer file's exact then-current blob SHA.",
+    "self_probe": {
+      "expected_task_id": "6a506f83df208191815dd17a8fd5baa3",
+      "observed_task_id": "6a506f83df208191815dd17a8fd5baa3",
+      "task_id_match": true,
+      "tools_observed": [
+        "AUTOMATION_CONTEXT_TASK_ID",
+        "GITHUB_CONTENTS_READ_WRITE",
+        "SLACK_SEND_AVAILABLE",
+        "LOCAL_PYTHON_DETERMINISTIC_PROBE"
+      ]
+    },
+    "source_binding": {
+      "current_pointer_blob": "b59255459187e4b92dbf86000ed36d381874bb3c",
+      "current_projection_digest_sha256": "eba970fc05eb5922c670934113a6dfc6d7322448f0a5ee5b3b7e2904aca56c2e",
+      "prior_event_blob": "37f89aabbf00d74431603d3527db002ede9415ec",
+      "prior_event_commit": "e48da8aa471fd7c1cf503264387a41a1355bdfbe",
+      "prior_event_path": "state/coordination/experiments/durable_object_x12/events/20260801T014556Z_V0004_TO_V0005_POINTER_UPDATE_PATTERN.json"
+    },
+    "task_id": "6a506f83df208191815dd17a8fd5baa3",
+    "transaction_time_utc": "SEE_GITHUB_COMMIT_METADATA",
+    "valid_time_utc": "2026-08-01T02:43:15Z",
+    "verifier": "S04_STRUCTURAL_PREFLIGHT_WEIGHT_0_THEN_SIGRUN_P4_DISTINCT"
+  },
+  "canonicalization": "JCS_LIKE_V1",
+  "event_digest_sha256": "7d76d07632bc46b6a131b437b030a92f3e7852ceed83d303723b49a2362f82d1",
+  "schema_id": "hfo.gen133.x12.durable_object_event.v1"
+}
