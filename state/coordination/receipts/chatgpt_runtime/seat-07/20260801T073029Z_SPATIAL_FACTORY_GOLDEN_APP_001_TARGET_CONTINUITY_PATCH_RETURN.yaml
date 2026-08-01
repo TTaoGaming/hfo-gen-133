@@ -1,0 +1,130 @@
+---
+schema_id: hfo.gen133.s07.producer_return.v1
+result: PATCH_RETURNED
+work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001
+correlation_id: SPATIAL_FACTORY_GOLDEN_APP_001_TARGET_CONTINUITY_FEE50A7
+producer: S07_BOUNDED_CODE_PATCH_BUILDER
+carrier_task_id_expected: 6a506f6dc5c08191b95f1707d7f00c2d
+carrier_task_id_observed_from_runtime_instruction: 6a506f6dc5c08191b95f1707d7f00c2d
+carrier_task_id_match: true
+wip: 1
+valid_time_utc: 2026-08-01T07:30:29Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+expiry_utc: 2026-08-01T11:04:38Z
+effect_ceiling: BRANCH_FILE_TEST
+binding_claim:
+  repository: TTaoGaming/hfo-gen-133
+  commit: 4ecc5350fe918b1ff466708a148dc0012f810ab8
+  path: projects/spatial-app-factory/claims/20260801T070438Z_SPATIAL_FACTORY_GOLDEN_APP_001_S02_TARGET_CONTINUITY.claim.yaml
+  blob: ae178695e5faf33f15f4b9388bbbc274c4142651
+  acceptance_contract_sha256: 9a2a1e90301f74c556ec00bc3050c35e05cf4a3508135c3c6cc4951a113560a0
+  producer_return_due_utc: 2026-08-01T10:04:38Z
+  lease_expires_utc: 2026-08-01T11:04:38Z
+self_probe:
+  github_connector: authenticated_read_write_with_exact_blob_readback
+  slack_connector: authenticated_public_channel_write_available
+  execution_surface: local_linux_container
+  node_version: v22.16.0
+  git_version: 2.47.3
+  browser_runtime: unavailable
+  full_remote_checkout: unavailable_due_to_dns_resolution_failure
+  native_task_inventory: not_exposed_in_this_carrier
+precondition:
+  target_repository: TTaoGaming/TAGS
+  target_branch: agent/spatial-golden-app-001-20260731
+  required_input_sha: fee50a70188b510695e8e5fad2ebadc6cba0535a
+  observed_before_first_write:
+    method: github_compare_commits_required_sha_to_branch
+    status: identical
+    ahead_by: 0
+    behind_by: 0
+  allowed_paths:
+    - prototypes/fab-prototype.html
+    - prototypes/spatial-input-adapter.js
+    - tests/spatial-input-adapter.test.mjs
+    - tests/fab-prototype-smoke.test.mjs
+  rollback: leave_branch_unmerged_or_apply_ordinary_revert_commits_without_history_rewrite
+test_first:
+  regression_commit: 42ffb473c153de2c12df22fae2c9e86325cefd30
+  changed_path: tests/spatial-input-adapter.test.mjs
+  blob: 2e523f5c373203ae4f5e0f1a48a52d1570f0682a
+  exact_local_baseline_adapter_blob: c90a715c72735f0c04d60c91cd9c9afb0f2ddec4
+  command: cd /tmp/hfo-s07 && node --test tests/spatial-input-adapter.test.mjs
+  exit_code: 1
+  measured_summary:
+    tests: 7
+    passed: 4
+    failed: 3
+    failures:
+      - pinch_down_target_was_not_retained_through_cross_target_release
+      - no_programmatic_activation_occurred
+      - setArmed_lifecycle_control_was_absent
+patch:
+  final_branch_sha: 1f0c0a7831db6f4476a703856855ff7ccc4f454b
+  branch_head_readback:
+    method: github_compare_commits_final_sha_to_branch
+    status: identical
+    ahead_by: 0
+    behind_by: 0
+  commits_from_input: 2
+  changed_paths:
+    - path: prototypes/spatial-input-adapter.js
+      prior_blob: c90a715c72735f0c04d60c91cd9c9afb0f2ddec4
+      final_blob: ca327ea46049f499d0afe1be4f9632ee086f2637
+      sha256: dbea6097b308268bb757622126eef7133e81aaf5ce2917653bc88ef62c04aa47
+      change: retain_one_active_target_from_pointerdown_through_held_and_pointerup; invoke_injected_activationCallback_once_after_uncancelled_release; clear_cycle_on_invalid_reset_disarm_or_target_loss
+    - path: tests/spatial-input-adapter.test.mjs
+      prior_blob: 9416a2e34c331ab46dd2f04c8d8664dbc0088405
+      final_blob: 2e523f5c373203ae4f5e0f1a48a52d1570f0682a
+      sha256: 1d1036fa74eb28e7125a3e9c3b83fe5a8a93e61d317722c3d8d098041259ecd0
+      change: add_cross_target_A_down_B_up_activation_repeat_invalid_reset_disarm_and_target_loss_regressions
+  compare_summary:
+    prototypes/spatial-input-adapter.js: 73_additions_8_deletions
+    tests/spatial-input-adapter.test.mjs: 103_additions_0_deletions
+    every_other_path: unchanged
+execution_evidence:
+  - command: node --check prototypes/spatial-input-adapter.js
+    exit_code: 0
+  - command: node --test tests/spatial-input-adapter.test.mjs
+    exit_code: 0
+    measured_summary: 7_tests_7_pass_0_fail
+    output_sha256: 769d8125b940995b6e7a8cdb9dcd0469a3e41eca06e2186f9c6956a1380129bc
+  - command: git diff --check
+    exit_code: 0
+    scope: exact_final_changed_bytes_materialized_as_intent_to_add_in_a_local_empty_baseline_repository
+readback:
+  adapter_commit: 1f0c0a7831db6f4476a703856855ff7ccc4f454b
+  adapter_blob: ca327ea46049f499d0afe1be4f9632ee086f2637
+  test_commit: 1f0c0a7831db6f4476a703856855ff7ccc4f454b
+  test_blob: 2e523f5c373203ae4f5e0f1a48a52d1570f0682a
+  local_git_hash_object_matches_github_blobs: true
+observed_behavior_not_verdict:
+  - deterministic_A_down_B_up_specimen_routes_held_move_and_release_only_to_A_and_calls_A_activation_once
+  - repeated_release_does_not_repeat_activation
+  - invalid_nonfinite_reset_disarm_and_disconnected_target_clear_cycle_without_activation
+  - no_dependency_manifest_or_lockfile_changed
+not_run_or_not_proven:
+  - tests/fab-prototype-smoke.test.mjs
+  - browser_execution
+  - trusted_user_activation
+  - native_pointer_capture
+  - accessibility_focus_or_cross_browser_behavior
+  - deployment_publication_merge_or_production_outcome
+remaining_risk:
+  - The exact fab-prototype HTML blob was unchanged. Exact source readback found no spatial-input-adapter.js script reference, while the existing smoke test expects one; a verifier should treat full golden-app wiring as unresolved and run that smoke test on a complete checkout.
+  - Synthetic PointerEvent dispatch remains untrusted browser script activity; the deterministic tests prove adapter routing only.
+  - activationCallback is injected and tested with target.click(), but no browser page wiring to native mainFab was added in this patch.
+verifier:
+  named: Sigrun/P4_APEX_FALSIFICATION_or_other_distinct_provider_nonproducer
+  required_binding:
+    - claim_blob_ae178695e5faf33f15f4b9388bbbc274c4142651
+    - final_branch_sha_1f0c0a7831db6f4476a703856855ff7ccc4f454b
+    - adapter_blob_ca327ea46049f499d0afe1be4f9632ee086f2637
+    - test_blob_2e523f5c373203ae4f5e0f1a48a52d1570f0682a
+    - acceptance_contract_9a2a1e90301f74c556ec00bc3050c35e05cf4a3508135c3c6cc4951a113560a0
+consumer:
+  named: Olrun/Claude-Dispatch_as_spatial_factory_coordinator
+  consumer_ack: absent
+honest_flaw: >-
+  This is a tested adapter-level branch patch, not a completed browser-integrated golden app. The local execution used exact read-back bytes for the two changed files, but not a full remote checkout. The existing HTML was not modified, the smoke test was not executed, and exact source inspection indicates its script-loading assertion is unresolved. This producer return is not a verifier verdict and must not be upgraded to STOOD, merged, deployed, or consumed without distinct verification and explicit ConsumerAck.
+---
