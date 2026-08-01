@@ -1,0 +1,125 @@
+---
+schema_id: hfo.gen133.heritage_reuse_result.v1
+result_id: S15_X14_MUTANT017_REUSE_PRIOR_CONSUMER_ACK_GATE_20260801T140119Z
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: NOT_EXPOSED_BY_RUNTIME_TO_THIS_CARRIER
+task_id_match: UNVERIFIED
+wip_limit: 1
+result: RETURN_REUSABLE_PRIOR_ARTIFACT
+artifact_class: PRIOR_EXACT_MUTATION_CLASS_GATE_SPECIFICATION
+valid_time_utc: 2026-08-01T14:01:19Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+expires_utc: 2026-08-01T17:53:14Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+privacy_ceiling: SANITIZED_PUBLIC_REPOSITORY_METADATA_AND_CLAIM_CEILINGS_ONLY
+world_effect_ceiling: ONE_GIT_RECEIPT_AND_ONE_SANITIZED_SLACK_POINTER_ONLY
+binding_decision: false
+heritage_credit: 0_PENDING_EXACT_CONSUMER_ACK
+sealed: false
+---
+
+self_probe:
+  identity_claim: HFO_GEN133_S15_HERITAGE_REUSE_AND_DEDUP_CELL
+  expected_task_id: 6a52f485409c8191aa06ea7911add3f3
+  observed_task_id: NOT_EXPOSED_BY_RUNTIME_TO_THIS_CARRIER
+  tools_available_and_used:
+    - github_search_branches
+    - github_search_recent_commits
+    - github_fetch_commit
+    - github_search_code
+    - github_fetch_file
+    - github_create_file
+    - github_readback
+    - slack_send_sanitized_pointer
+  task_mutation_performed: false
+
+current_workitem:
+  workitem_id: X14_MUTANT_017_6bbb5767d89b
+  mutation_class: FABRICATED_CONSUMER_ACK
+  status: QUARANTINED_ROUTED_PENDING_VERDICTS
+  current_pointer_commit: 4c793c70b0ba515f3ea0362907dfbdfe1d602126
+  current_pointer_path: state/coordination/experiments/false_green_x14/CURRENT.yaml
+  current_pointer_blob_sha1: fb6b4b2b09cf1a68c825b041b9d5844c7e974fd8
+  candidate_commit: ef5b4a1f085ebfb9c7802a102ee969d0322a9e53
+  candidate_path: state/coordination/experiments/false_green_x14/quarantine/20260801T135314Z_X13_CALENDAR_FABRICATED_CONSUMER_ACK.mutant.yaml
+  candidate_blob_sha1: 6d1d2d6158360d14ff0b9c2a4e45055f756b758d
+  canonical_mutation_digest_sha256: 6bbb5767d89b7717d91af1f886005770a713bcc413c6124079a952b93daddbfb
+  source_commit: d9d13734a133c06258bb324118ac6e2b66a7b224
+  source_path: state/coordination/experiments/cots_connector_x13/20260801T134733Z_GOOGLE_CALENDAR_READONLY_PHASE1_BASELINE.md
+  source_blob_sha1: fc4fdb3484e9b931d561886f7dd984cdf3a63e3a
+  source_consumer_ack: NOT_PRESENT_IN_EXACT_SOURCE_BYTES
+  fabricated_consumer: S05_OPERATOR_RELIEF_CELL
+  expected_verdict: REVISE
+  named_gate: S04_EXPLICIT_CONSUMER_ACK_BINDING_GATE
+  verifier: S04_STRUCTURAL_PREFLIGHT
+  consumer:
+    - X14_CAMPAIGN_REDUCER
+    - RATATOSKR
+  expiry_utc: 2026-08-01T17:53:14Z
+
+reused_prior_artifact:
+  original_date_utc: 2026-08-01T01:53:43Z
+  source_repository: TTaoGaming/hfo-gen-133
+  source_commit: 81d9af9c67eeb2152e99ba0e51476f0db05f9ad1
+  source_path: state/coordination/experiments/false_green_x14/quarantine/20260801T015343Z_X13_GITHUB_CONTENTS_FABRICATED_CONSUMER_ACK.mutant.yaml
+  source_blob_sha1: 9f111f4f4abef8f75803d9bafb9e513d125cde4f
+  prior_mutant_id: X14_MUTANT_005_1eebfd0c16df
+  prior_mutation_class: FABRICATED_CONSUMER_ACK
+  original_expiry_utc: 2026-08-01T05:53:43Z
+  reuse_mode: HISTORICAL_GATE_PATTERN_ONLY_NOT_FRESH_CAMPAIGN_EVIDENCE
+  reusable_rule: >-
+    A consumer name, routing field, producer self-assertion, source prose, or Slack pointer is not a
+    ConsumerAck. Require a distinct consumer-authored immutable receipt that binds the exact source
+    commit, path, blob digest, WorkItem or experiment ID, accepted result, effect ceiling, and
+    acknowledgement time; otherwise return REVISE and grant no consumption or fitness credit.
+
+supported_claims:
+  - The prior artifact exercises the same FABRICATED_CONSUMER_ACK mutation class as the current WorkItem.
+  - The prior gate requires distinct consumer authorship plus exact source-digest and WorkItem binding.
+  - The current mutant explicitly records no consumer-authored receipt, no ack digest, and no exact WorkItem correlation for its asserted S05 ACKED label.
+  - The prior gate is directly acceptance-relevant as a reusable structural checklist for S04 review of mutant 017.
+
+excluded_claims:
+  - This receipt is not a verdict on mutant 017.
+  - The expired prior artifact is not fresh evidence that any current consumer did or did not act.
+  - It does not prove that S05 failed to consume the Calendar baseline outside visible Git evidence.
+  - It does not test forged signatures, compromised consumer identity, replay of a once-valid acknowledgement, or verdict/ack race conditions.
+  - It grants no adoption, campaign closure, execution, workflow, independent-verification, ConsumerAck, or fitness credit.
+
+acceptance_relevance:
+  exact_overlap: SAME_MUTATION_CLASS_AND_SAME_MISSING_CONSUMER_AUTHORED_DIGEST_BOUND_RECEIPT
+  expected_use: S04 may reuse the prior rule as a checklist while independently resolving the current mutant and source bytes.
+  required_current_checks:
+    - resolve mutant 017 at its exact commit, path, blob, and canonical mutation digest
+    - resolve the Calendar source at its exact commit, path, and blob
+    - confirm the source contains no explicit ConsumerAck
+    - require an S05-authored immutable receipt bound to the exact source digest and current WorkItem
+    - reject producer, carrier, router, mutant, or role-name assertions as ConsumerAck
+    - return REVISE if the asserted ACK lacks the exact consumer-authored binding
+  heritage_credit_condition: >-
+    Credit remains zero unless S04 or the named X14 consumer explicitly binds this exact result ID,
+    commit, path, and blob as CONSUMED and states which gate checks were reused.
+
+verifier: S04_STRUCTURAL_PREFLIGHT
+next_consumer: X14_CAMPAIGN_REDUCER_AND_RATATOSKR
+
+expiry:
+  result_expiry_utc: 2026-08-01T17:53:14Z
+  earlier_invalidation:
+    - an exact S04 verdict for mutant 017 is committed
+    - mutant 017 is superseded or withdrawn
+    - the current source, mutant blob, or canonical mutation digest no longer matches
+
+rollback:
+  action: ignore or supersede this immutable offer
+  source_restoration_required: false
+  external_effect_compensation_required: false
+
+honest_flaw: >-
+  The reused artifact is an expired prior negative-control specification, not an observed S04 catch or
+  independent failure antibody. Its structural rule is relevant, but it carries no fresh verdict weight.
+  Repository search is nontransactional and may miss an unindexed duplicate or a newly committed verdict.
+  This runtime did not expose a native observed task ID, so the expected carrier ID could not be independently
+  matched. No distinct-provider verifier was callable, and all resulting evidence remains nonbinding.
