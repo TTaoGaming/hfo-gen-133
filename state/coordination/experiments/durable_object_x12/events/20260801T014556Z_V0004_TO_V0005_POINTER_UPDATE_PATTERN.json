@@ -1,0 +1,76 @@
+{
+  "canonical_transition": {
+    "acceptance": {
+      "canonicalization_algorithm": "JCS_LIKE_V1: recursively normalize JSON object keys and string values to Unicode NFC; UTF-8; objects sorted lexicographically by normalized key; arrays preserve order; version fields require JSON integer type exactly (booleans, floats, and numeric strings rejected); separators comma/colon; no insignificant whitespace; LF only",
+      "expected_recomputation": "sha256(canonical_json_utf8(canonical_transition)) equals event_digest_sha256",
+      "idempotency_formula": "sha256(object_id|expected_version|next_version|campaign_id|wake_ordinal|prior_digest_sha256|current_pointer_blob|controlled_probe_name)",
+      "next_wake_requirement": "Continue X12_POINTER_UPDATE_PATTERN_C2 from object version 5; vary only the pointer update pattern while preserving the accepted canonicalization, strict integer-version, source-binding, and idempotency gates.",
+      "pointer_update_gate": "Create the immutable transition event first; replace CURRENT only by supplying the exact blob SHA read for CURRENT version 4; then fetch CURRENT and require version 5 plus exact latest-event digest/path binding. Any stale-SHA conflict or mismatched readback must not be called an accepted transition."
+    },
+    "campaign": {
+      "campaign_id": "X12_POINTER_UPDATE_PATTERN_C2",
+      "factor": "pointer_update_pattern",
+      "wake_ordinal": 1,
+      "wake_target": 4
+    },
+    "consumer": "Reginleif/Olrun",
+    "effect_ceiling": "FILE_AND_SANITIZED_SLACK_ONLY",
+    "evidence_class": "DIRECT_NATIVE_TASK_SELF_PROBE_PLUS_GITHUB_CONTENTS_EXACT_BYTES_READBACK_PLUS_SINGLE_FILE_BLOB_SHA_GUARDED_POINTER_REPLACEMENT_PLUS_LOCAL_DETERMINISTIC_DIGEST",
+    "expected_version": 4,
+    "experiment": {
+      "baseline": "Campaign C1 ended KEEP at object version 4. CURRENT bound the v3→v4 immutable event digest 0c431dfadd112879975dabcd986a7eb959b5520944ffa4048ade1e4474459489 and selected pointer_update_pattern with zero accepted wakes.",
+      "controlled_factor": "Pointer update pattern only: immutable event first, then one CURRENT replacement using the exact prior CURRENT blob SHA, followed by exact CURRENT readback. Object identity, versions, canonicalization, task binding, evidence ceiling, verifier, consumer, expiry, and rollback semantics remain fixed.",
+      "controlled_probe_name": "EVENT_FIRST_EXACT_BLOB_SHA_REPLACE_READBACK_W1",
+      "exact_probe": "Fetch CURRENT and require version 4 with blob f9340224cb0c450fd0ac66e3bb0f5d522df16f5c. Derive and commit one immutable v4→v5 event. Fetch that event and bind its blob. Replace CURRENT using only the exact prior CURRENT blob SHA. Fetch CURRENT again and require version 5, campaign accepted_wakes 1, and exact latest-event path/blob/commit/digest/idempotency bindings. Do not claim duplicate or stale-writer rejection unless a later bounded probe directly observes it.",
+      "hypothesis": "The event-first plus exact-prior-blob pointer replacement pattern will advance the projection from version 4 to 5 exactly once on this accepted write and provide unambiguous readback, while preserving an explicit orphan-event risk because event creation and pointer replacement are separate commits.",
+      "measured_result": {
+        "current_pre_read_blob": "f9340224cb0c450fd0ac66e3bb0f5d522df16f5c",
+        "current_pre_read_exact": true,
+        "current_pre_read_projection_digest_sha256": "4f4c9f8e3df29e4aa4c7c5188558cda7637c0b1be1f7a4fd06c7ce022e84c8a1",
+        "current_pre_read_version": 4,
+        "duplicate_or_stale_replay": "NOT_EXECUTED_THIS_WAKE",
+        "event_first_order_selected": true,
+        "latency": "NOT_EXPOSED",
+        "operator_relay_minutes": 0,
+        "permission_error_class": "NONE_ON_READ_PRECONDITION",
+        "pointer_replace_guard": "EXACT_PRIOR_CURRENT_BLOB_SHA",
+        "post_replace_acceptance_rule": "Accepted only if GitHub update succeeds and exact CURRENT readback binds version 5 plus this event's path, blob, commit, digest, and idempotency key."
+      },
+      "strongest_falsifier": "The created event bytes fail digest recomputation; CURRENT replacement succeeds with a stale or wrong prior blob SHA; final CURRENT does not bind the exact event; a duplicate wake advances the version again; or a distinct implementation cannot reproduce the event and projection digests from the exact semantic objects."
+    },
+    "expiry_utc": "2026-08-01T06:44:00Z",
+    "honest_flaw": "This wake can directly prove only one successful event-first, single-file blob-SHA-guarded pointer replacement and readback. It does not prove duplicate or stale-writer rejection, concurrent safety, linearizable compare-and-swap, exactly-once execution, cross-file atomicity, database durability, or cleanup of an immutable event left orphaned if CURRENT replacement fails. The event and CURRENT remain separate Git commits.",
+    "idempotency_key": "5113a92ea2ac3d08113a871b05de2f01a1bd7158da70d950fa41dcf9fafe2365",
+    "next_version": 5,
+    "nonce": "x12-c2-w1-v4-v5-5113a92e",
+    "object_id": "HFO_X12_WORKFLOW_OBJECT_001",
+    "prior_digest_sha256": "0c431dfadd112879975dabcd986a7eb959b5520944ffa4048ade1e4474459489",
+    "prior_version": 4,
+    "rollback": "Do not delete the immutable event. If this transition is later invalidated, append a compensating event from the then-current version and replace CURRENT only with that pointer file's exact then-current blob SHA.",
+    "self_probe": {
+      "expected_task_id": "6a506f83df208191815dd17a8fd5baa3",
+      "observed_task_id": "6a506f83df208191815dd17a8fd5baa3",
+      "task_id_match": true,
+      "tools_observed": [
+        "NATIVE_TASK_INVENTORY_READ",
+        "GITHUB_CONTENTS_READ_WRITE",
+        "SLACK_SEND_AVAILABLE",
+        "LOCAL_PYTHON_DETERMINISTIC_PROBE"
+      ]
+    },
+    "source_binding": {
+      "current_pointer_blob": "f9340224cb0c450fd0ac66e3bb0f5d522df16f5c",
+      "current_projection_digest_sha256": "4f4c9f8e3df29e4aa4c7c5188558cda7637c0b1be1f7a4fd06c7ce022e84c8a1",
+      "prior_event_blob": "324c98ff1c123250337372622234768bac174aca",
+      "prior_event_commit": "c10e50a443ce6feaf33eee4bce1f301cd934ead7",
+      "prior_event_path": "state/coordination/experiments/durable_object_x12/events/20260801T004455Z_V0003_TO_V0004_EVENT_CANONICALIZATION_DECISION_KEEP.json"
+    },
+    "task_id": "6a506f83df208191815dd17a8fd5baa3",
+    "transaction_time_utc": "SEE_GITHUB_COMMIT_METADATA",
+    "valid_time_utc": "2026-08-01T01:45:56Z",
+    "verifier": "S04_STRUCTURAL_PREFLIGHT_WEIGHT_0_THEN_SIGRUN_P4_DISTINCT"
+  },
+  "canonicalization": "JCS_LIKE_V1",
+  "event_digest_sha256": "a1dbfb6f141f6969936d78a8968a118c79b17fd8c60c220974e41f3f56533c44",
+  "schema_id": "hfo.gen133.x12.durable_object_event.v1"
+}
