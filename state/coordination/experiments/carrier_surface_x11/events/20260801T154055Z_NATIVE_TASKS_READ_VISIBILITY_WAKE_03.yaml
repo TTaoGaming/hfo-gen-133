@@ -1,0 +1,120 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+experiment_id: X11_NATIVE_TASKS_READ_VISIBILITY_V1
+carrier: X11
+actor: X11_CARRIER_AND_TOOL_SURFACE_PDCA_LAB
+task_binding:
+  expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+  observed_task_id: 6a55089a9adc8191bda54541f7f9effa
+  match: true
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+wip_limit: 1
+self_probe:
+  exposed_tools:
+    - native_tasks_inventory_read
+    - github_read_write
+    - slack_write
+  unavailable_or_not_used:
+    - shell_runtime
+    - independent_provider_verifier
+prior_current:
+  expected_version: 18
+  blob: 66cd32ddd24a9288d45f678fc1bd57f78da3cd3d
+  campaign: X11_NATIVE_TASKS_READ_VISIBILITY_V1
+  accepted_wakes: 2
+campaign:
+  controlled_factor: native_tasks_read_visibility
+  accepted_wake: 3
+  target_wakes_before_decision: 4
+baseline:
+  prior_observed_last_run_time_utc: 2026-08-01T13:43:47.916025Z
+  prior_observed_updated_at_utc: 2026-08-01T13:44:11.036855Z
+  prior_active_hfo_gen133_task_count_observed: 15
+  prior_sanitized_stable_tuple_sha256: e366749e72124c30a00a1c030b9183bbfb783b3d36d9fbda42243d003b48aeb3
+hypothesis: >-
+  After one more completed provider epoch, the X11 stable metadata and active
+  Gen-133 task count will remain unchanged while last_run_time and updated_at
+  advance by approximately one hourly schedule interval. The currently in-flight
+  wake will still not appear as completed-run telemetry.
+exact_probe:
+  tool: automations.list
+  mode: read_only
+  query_scope: provider_inventory
+  stable_fields_compared:
+    - id
+    - title
+    - is_enabled
+    - schedule
+    - default_timezone
+    - timing_mode
+    - active_hfo_gen133_task_count
+  volatile_fields_observed:
+    - updated_at
+    - last_run_time
+  privacy_rule: do_not_copy_unrelated_task_prompt_bodies_to_git_or_slack
+measured_result:
+  provider_call_status: SUCCESS
+  expected_task_visible: true
+  observed_title: HFO X11 Carrier Surface PDCA Lab
+  observed_enabled: true
+  observed_schedule: |-
+    BEGIN:VEVENT
+    DTSTART;TZID=UTC:20260728T234000
+    RRULE:FREQ=HOURLY;BYMINUTE=40;BYSECOND=0
+    END:VEVENT
+  observed_default_timezone: America/Denver
+  observed_timing_mode: exact_schedule
+  observed_updated_at_utc: 2026-08-01T14:43:06.887597Z
+  observed_last_run_time_utc: 2026-08-01T14:42:45.380237Z
+  prior_to_current_last_run_delta_seconds: 3537.464212
+  prior_to_current_updated_at_delta_seconds: 3535.850742
+  approximately_hourly_advance_observed: true
+  current_wake_started_utc: 2026-08-01T15:40:55Z
+  current_inflight_wake_reflected_in_last_run_time: false
+  active_hfo_gen133_task_count_observed: 15
+  stable_fields_match_prior_wakes: true
+  active_count_matches_prior_wakes: true
+  sanitized_stable_tuple_sha256: e366749e72124c30a00a1c030b9183bbfb783b3d36d9fbda42243d003b48aeb3
+  field_level_projection_available: false
+  broad_inventory_included_prompt_bodies: true
+  mutation_performed: false
+permission_class: AUTHENTICATED_NATIVE_READ_AVAILABLE
+error_class: NONE
+latency:
+  exposed_by_tool: false
+  measured_ms: null
+operator_relay_minutes: 0
+capability_delta: >-
+  Across a third wake, the X11 stable tuple and fifteen-task active Gen-133 count
+  remained identical. The prior completed-run timestamps advanced by about 58
+  minutes 57 seconds, consistent with an approximately hourly cadence, while the
+  current in-flight wake was still absent from completed-run telemetry.
+strongest_falsifier: >-
+  A future read shows stable-field drift without provider mutation, a non-fifteen
+  active Gen-133 count, a completed-run timestamp that does not advance after a
+  known completed epoch, or a field-selective inventory surface that removes the
+  broad prompt-body exposure.
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer:
+  - Reginleif
+  - Ratatoskr
+expiry_utc: 2026-08-08T15:40:55Z
+result: NATIVE_TASKS_READ_WAKE_03_ACCEPTED
+next_probe: >-
+  Run the fourth read-only listing, decide KEEP, REVISE, RESEAT_VARIABLE, or HOLD,
+  and select the next controlled factor. Do not treat registration or timestamps
+  as proof of successful execution, exactly-once delivery, or future liveness.
+honest_flaw: >-
+  This is same-provider telemetry with no independent witness, no exposed request
+  latency, and no provider contract for timestamp publication semantics. The broad
+  inventory still returned unrelated prompt bodies. The approximately-hourly
+  timestamp delta is observational and does not prove execution success, delivery
+  guarantees, or schedule durability.
+valid_time_utc: 2026-08-01T15:40:55Z
+transaction_time_utc: 2026-08-01T15:40:55Z
+evidence_class: DIRECT_PROVIDER_READBACK_SAME_PROVIDER_NONBINDING
+binding_weight: 0
+effect_ceiling: READ_ONLY_PROVIDER_METADATA_PLUS_GIT_RECEIPT_AND_SANITIZED_SLACK_POINTER
+sealed: false
+---
