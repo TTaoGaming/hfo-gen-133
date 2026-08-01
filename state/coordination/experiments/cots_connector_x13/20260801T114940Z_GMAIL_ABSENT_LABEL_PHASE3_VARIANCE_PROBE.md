@@ -1,0 +1,113 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_GMAIL_READONLY_CONNECTOR_001
+phase: 3
+phase_name: FAILURE_PERMISSION_PORTABILITY_AND_CONNECTOR_VARIANCE_PROBE
+campaign_wake: 3_of_4
+expected_prior_version: 14
+next_version: 15
+candidate: Gmail_read_only_search_and_message_metadata_connector
+carrier_task_id: 6a55c1733708819185088bf334e33ea5
+carrier_task_id_match: true
+carrier_task_id_observation_source: AUTOMATION_RUNTIME_PROMPT
+native_task_inventory_read_this_wake: false
+wip: 1
+valid_time_utc: 2026-08-01T11:49:40Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+evidence_class:
+  - DIRECT_GMAIL_CONNECTOR_RECEIPT
+  - OFFICIAL_GOOGLE_GMAIL_API_DOCUMENTATION
+  - SAME_PROVIDER_NONBINDING_PREFLIGHT
+binding_weight: 0
+effect_ceiling: ONE_BOUNDED_READ_ONLY_ABSENT_LABEL_NAME_PROBE_NO_MESSAGE_READ_NO_WRITE
+controlled_uncertainty: CONNECTOR_BEHAVIOR_WHEN_LABEL_NAME_FILTER_DOES_NOT_EXIST
+connector_action: Gmail.list_labels
+connector_filter: __HFO_X13_ABSENT_LABEL_20260801__
+connector_authenticated: true
+external_call_time_ms: 279
+call_succeeded: true
+returned_label_count: 0
+error_returned: false
+error_code_returned: false
+error_http_status_returned: false
+classification_id_returned: false
+message_ids_returned: false
+headers_returned: false
+bodies_returned: false
+attachments_returned: false
+write_effect_observed: false
+operator_relay_minutes: 0
+operator_minutes_removed_estimate: 0_THIS_PROBE
+custom_code_avoided_estimate: 15_to_40_LOC_FOR_LABEL_ENUMERATION_EXACT_NAME_FILTERING_AND_EMPTY_RESULT_NORMALIZATION_UNVALIDATED
+credentials_required_observed: ONE_PREEXISTING_AUTHENTICATED_GMAIL_CONNECTOR_NO_NEW_LOGIN_OR_SECRET_HANDLING
+paid_cost_usd_observed: 0
+direct_quota_units_observed: NOT_EXPOSED
+official_raw_labels_list_name_filter: NONE_DOCUMENTED
+official_raw_labels_list_success_shape: LABELS_ARRAY
+official_labels_get_missing_label_behavior: NOT_DIRECTLY_PROBED
+quota_caveat: CONNECTOR_NAME_FILTER_IS_WRAPPER_SPECIFIC_AND_INTERNAL_ENUMERATION_OR_ENRICHMENT_CALL_SEQUENCE_IS_HIDDEN
+durability: GMAIL_PROVIDER_MAILBOX_STATE_ONLY_NO_WORKFLOW_REPLAY_RESUME_OR_EXACTLY_ONCE_CLAIM
+observability: SUCCESS_EMPTY_ARRAY_LATENCY_CONNECTOR_AND_ACTION_IDS_EXPOSED_RAW_HTTP_SCOPE_QUOTA_RETRY_AUDIT_AND_INTERNAL_CALL_SEQUENCE_HIDDEN
+portability: MEDIUM_WITHIN_THIS_CONNECTOR_LOW_TO_OTHER_MAIL_PROVIDERS_BECAUSE_LABEL_NAME_FILTER_AND_EMPTY_RESULT_SEMANTICS_ARE_WRAPPER_SPECIFIC
+failure_behavior: ABSENT_EXACT_LABEL_NAME_RETURNS_SUCCESS_WITH_EMPTY_LABEL_ARRAY_NOT_AN_ERROR
+permission_probe_result: NOT_PROBED_LIVE_SCOPE_CANNOT_BE_SAFELY_VARIED_AND_SCOPE_REMAINS_UNKNOWN
+connector_variance:
+  - label_names_is_a_connector_level_filter_not_a_documented_users_labels_list_request_parameter
+  - absent_name_is_normalized_to_empty_success_without_provider_http_or_error_class
+  - empty_success_cannot_by_itself_distinguish_true_absence_from_wrapper_filtering_or_hidden_permission_behavior
+comparison_to_phase2: SAME_ACTION_RETURNED_ONE_INBOX_LABEL_FOR_A_KNOWN_EXISTING_SYSTEM_NAME_AND_ZERO_FOR_THE_SYNTHETIC_ABSENT_NAME
+supported_claims:
+  - THE_CONNECTOR_CAN_RETURN_A_BOUNDED_EMPTY_RESULT_FOR_AN_ABSENT_EXACT_LABEL_NAME_WITHOUT_READING_MESSAGES_OR_WRITING_MAILBOX_STATE
+  - CALLERS_CAN_TREAT_ZERO_MATCHES_AS_A_NORMAL_CONNECTOR_RESULT_AT_THIS_OUTPUT_BOUNDARY
+excluded_claims:
+  - THE_RAW_GMAIL_API_SUPPORTS_LABEL_NAME_FILTERING
+  - ZERO_MATCHES_PROVE_THE_LABEL_IS_GLOBALLY_ABSENT
+  - ZERO_MATCHES_DISTINGUISH_ABSENCE_FROM_PERMISSION_FILTERING
+  - THE_CONNECTOR_USED_ONLY_ONE_GMAIL_API_REQUEST
+  - THE_LIVE_OAUTH_SCOPE_IS_LEAST_PRIVILEGE
+  - EXACT_QUOTA_OR_BILLING_COST
+mandatory_gates:
+  - TREAT_EMPTY_LABEL_FILTER_RESULT_AS_NOT_FOUND_OR_UNKNOWN_NOT_AS_PROVIDER_ERROR
+  - DO_NOT_INFER_PERMISSION_STATE_FROM_AN_EMPTY_RESULT
+  - LIVE_SCOPE_UNKNOWN_MUST_NOT_BE_DESCRIBED_AS_LEAST_PRIVILEGE
+  - CONNECTOR_FILTERING_AND_ENRICHMENT_CALL_SEQUENCE_AND_ACTUAL_QUOTA_COST_UNKNOWN
+  - LOW_RATE_BOUNDED_CALLS_WHILE_LIVE_QUOTA_AND_BILLING_CLASS_ARE_HIDDEN
+  - NO_DURABILITY_OR_EXACTLY_ONCE_CLAIM
+  - DISTINCT_NONPRODUCER_BEFORE_HIGHER_EFFECT_PRIVACY_OR_PERMISSION_CLAIM
+strongest_falsifier: A_KNOWN_EXISTING_EXACT_LABEL_NAME_REPEATED_UNDER_THE_SAME_CONNECTOR_AND_MAILBOX_RETURNS_THE_SAME_EMPTY_SUCCESS_OR_DIRECT_INSPECTION_SHOWS_ZERO_MATCHES_CAN_MASK_AUTHORIZATION_FAILURES
+verifier: S04_STRUCTURAL_PREFLIGHT_THEN_DISTINCT_NONPRODUCER_FOR_PERMISSION_FILTERING_OR_INTERNAL_CALL_SEQUENCE_CLAIMS
+consumer: X13_PHASE4_AND_RATATOSKR
+consumer_ack: NOT_OBSERVED
+review_expiry_utc: 2026-08-08T11:49:40Z
+honest_flaw: THIS_PROBE_MEASURES_ONLY_CONNECTOR_OUTPUT_SEMANTICS_FOR_ONE_SYNTHETIC_ABSENT_NAME_IT_DOES_NOT EXERCISE_A_REAL_PERMISSION_FAILURE_RAW_HTTP_404_OR_CROSS_PROVIDER_PORTABILITY
+phase_result: ACCEPT_PHASE3_WITH_GATES
+next_phase: PHASE4_ADOPTION_DECISION
+sealed: true
+---
+
+# X13 Gmail connector phase 3 — absent-label variance probe
+
+One bounded `Gmail.list_labels` call used a synthetic exact label name that should not exist. The
+connector returned a successful empty `labels` array in 279 ms. It returned no error class, HTTP
+status, message ID, header, body, attachment, or mailbox write.
+
+This is a measured connector-output behavior: an absent exact-name filter is normalized to an empty
+success rather than a provider-style not-found error. Callers may handle it as `not found or unknown`,
+but must not infer permissions, raw Gmail HTTP behavior, or global absence from that result.
+
+## Contract and variance finding
+
+Google documents `users.labels.list` as listing all mailbox labels and documents no label-name
+filter parameter. The action's `label_names` input is therefore connector-specific. Because the
+connector hides its internal call sequence, raw HTTP response, OAuth scope, and quota headers, this
+run does not show whether it listed then filtered locally, used additional provider calls, or could
+mask a permission-related condition as an empty result.
+
+Official sources checked on 2026-08-01:
+
+- https://developers.google.com/workspace/gmail/api/reference/rest/v1/users.labels/list
+- https://developers.google.com/workspace/gmail/api/reference/rest/v1/users.labels
+
+Phase 3 is accepted only as a harmless variance measurement at the connector boundary. Phase 4 must
+choose the adoption status with gates and retain the unknowns around scope, hidden calls, exact cost,
+permission failure, portability, and workflow durability.
