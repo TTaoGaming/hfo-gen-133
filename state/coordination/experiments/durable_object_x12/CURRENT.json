@@ -1,57 +1,56 @@
 {
   "canonical_projection": {
     "campaign": {
-      "accepted_wakes": 3,
-      "campaign_id": "X12_IDEMPOTENCY_STRATEGY_C3",
-      "factor": "idempotency_strategy",
-      "selected_by_event_version": 8,
+      "accepted_wakes": 0,
+      "campaign_id": "X12_STALE_CONCURRENT_WRITER_SIMULATION_C4",
+      "factor": "stale_concurrent_writer_simulation",
+      "selected_by_event_version": 12,
       "target_wakes": 4
     },
     "consumer": "Reginleif/Olrun",
     "effect_ceiling": "FILE_AND_SANITIZED_SLACK_ONLY",
-    "expiry_utc": "2026-08-01T10:44:09Z",
+    "expiry_utc": "2026-08-01T11:45:05Z",
     "idempotency_measurement": {
-      "accepted_wake_ordinal": 3,
-      "alias_key_observed_match_count": 0,
-      "alias_probe_name": "MULTI_KEY_SAME_TRANSITION_ALIAS_HAZARD_W3_ALIAS",
-      "alias_proposal_idempotency_key": "76bf1feffbe486dcbb7f96ddf50c26a5220bce5a2a0f8e14b6ff1c90633d6c51",
-      "all_other_bound_fields_identical": true,
-      "duplicate_replay_key": "9bc6130025336404d14197ee46709eb8a6650294bb29369ea45998af179fc68e",
-      "duplicate_replay_status": "REPRODUCED_FROM_PARSED_FIELDS_NO_WRITE_NO_ADVANCE",
+      "accepted_wake_ordinal": 4,
+      "campaign_decision": "REVISE",
       "event_digest_recomputed_from_readback": true,
       "event_first": true,
       "event_readback_blob_verified": true,
-      "primary_key_observed_match_count": 0,
-      "primary_proposal_idempotency_key": "dbe89b30070af4b28c2a5b8bb66704261b8c91e0279bcb2658992456d4a2f49a",
-      "same_transition_alias_keys_equal": false,
+      "new_formula_alias_key": "626f1123d04ba718f69e06a31643fb83cf7b55e97d74140325142ac592a8e00f",
+      "new_formula_primary_key": "626f1123d04ba718f69e06a31643fb83cf7b55e97d74140325142ac592a8e00f",
+      "new_formula_same_transition_alias_keys_equal": true,
+      "old_formula_alias_key": "5666b36918638e17a719aaac50f65103769ad4fdcb606b4dd3e28b304572124e",
+      "old_formula_primary_key": "ea20e0057789c56514d891457c971cbab6bac6fb7a7c1fde40bb50937ff7840a",
+      "old_formula_same_transition_alias_keys_equal": false,
+      "proposed_key_observed_match_count": 0,
       "search_authority": "BEST_EFFORT_NONATOMIC_POSSIBLY_STALE",
-      "strategy": "NORMALIZED_FIELD_TUPLE_PLUS_VERSION_SCOPED_KEY_PLUS_BEST_EFFORT_REPO_SEARCH_V2"
+      "strategy": "SEMANTIC_TRANSITION_TUPLE_EXCLUDING_PROBE_METADATA_V3"
     },
     "last_campaign_decision": {
       "accepted_wakes": 4,
-      "campaign_id": "X12_POINTER_UPDATE_PATTERN_C2",
-      "decision": "KEEP",
-      "decision_event_digest_sha256": "7c72a193912fc3f03f706365f1ae575b60d08ec0f0e483a7dfc6dd0ddab1d641",
-      "factor": "pointer_update_pattern"
+      "campaign_id": "X12_IDEMPOTENCY_STRATEGY_C3",
+      "decision": "REVISE",
+      "decision_event_digest_sha256": "e5d55e3a433316a0519926bcb3c033335755feeb084c1b7f00e6d6554cea3383",
+      "factor": "idempotency_strategy"
     },
     "latest_event": {
-      "blob": "ea32308963efe6357827671bd03010184f2acb71",
-      "commit": "5b90500cf5bd91db15ef51cec065ad8d4673037e",
-      "digest_sha256": "cf9fa217c9227a5c54b0951b1dec3bdbf2255055db9b3a1955478fd073cec2e1",
-      "idempotency_key": "dbe89b30070af4b28c2a5b8bb66704261b8c91e0279bcb2658992456d4a2f49a",
-      "path": "state/coordination/experiments/durable_object_x12/events/20260801T074409Z_V0010_TO_V0011_IDEMPOTENCY_STRATEGY.json"
+      "blob": "3520dea3b306d8ceadc3cfacc05480112ce3f733",
+      "commit": "8d0d992c1de676513c1e08edf0e9d2e529537ae5",
+      "digest_sha256": "e5d55e3a433316a0519926bcb3c033335755feeb084c1b7f00e6d6554cea3383",
+      "idempotency_key": "626f1123d04ba718f69e06a31643fb83cf7b55e97d74140325142ac592a8e00f",
+      "path": "state/coordination/experiments/durable_object_x12/events/20260801T084505Z_V0011_TO_V0012_IDEMPOTENCY_STRATEGY_CAMPAIGN_DECISION.json"
     },
     "object_id": "HFO_X12_WORKFLOW_OBJECT_001",
     "state": "ACTIVE_CAMPAIGN",
     "task_id": "6a506f83df208191815dd17a8fd5baa3",
-    "version": 11
+    "version": 12
   },
   "expected_previous_pointer": {
-    "blob": "3a4b52fa7dcc903ded008362f33859b4576a16d9",
-    "projection_digest_sha256": "9ca3e86c723ea0afb917bde3a25e2f98f0cc23f36ada5935633ff50d4cf523e1",
-    "version": 10
+    "blob": "cb66c5d0a1269fbacb150f2a5a428602c4d27caf",
+    "projection_digest_sha256": "67d4756dcee8c28935050e6027f62322c3cc65297f6bce870f810416e3ca1453",
+    "version": 11
   },
-  "honest_atomicity_limit": "The v10→v11 event was committed and read back before CURRENT was fetched a second time and confirmed unchanged. GitHub Contents API guards only this single CURRENT replacement with the supplied prior blob SHA. Event and pointer are separate commits. This wake demonstrated that controlled probe metadata can mint distinct idempotency keys for the same state transition; the pointer blob/version gate can reject a second CURRENT advance but cannot prevent multiple orphan event files. Repository search is best-effort and not a uniqueness constraint. Exact post-write readback through the returned blob and branch path is required. This does not establish cross-file atomicity, locks, linearizable compare-and-swap, exactly-once execution, concurrent-writer safety, database durability, Slack atomicity, or automatic orphan-event cleanup; Git can advance without Slack.",
-  "projection_digest_sha256": "67d4756dcee8c28935050e6027f62322c3cc65297f6bce870f810416e3ca1453",
+  "honest_atomicity_limit": "The v11→v12 event was committed and read back before CURRENT was fetched a second time and confirmed unchanged at the exact prior blob. GitHub Contents API can reject replacement of this one CURRENT file when the supplied blob SHA is stale, but the immutable event and pointer remain separate commits. The revised idempotency tuple makes probe-name aliases converge in this deterministic serial test; it does not enforce uniqueness, hash the complete intended state payload, or prove real concurrent-writer behavior. Repository search is best-effort and nonatomic. Exact returned-blob and branch-path readback are required. This does not establish cross-file atomicity, locks, linearizable compare-and-swap, exactly-once execution, database transactions or durability, true concurrent-writer safety, Slack atomicity, or automatic orphan-event cleanup; Git can advance without Slack.",
+  "projection_digest_sha256": "ea6ffce3af3c4382e9c2f18125ddac4d486079ac1dade99615813867f7fa186b",
   "schema_id": "hfo.gen133.x12.durable_object_current.v1"
 }
