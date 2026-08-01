@@ -1,0 +1,81 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+event_id: X11_SLACK_READ_WRITE_READBACK_V1_WAKE_03
+seat: X11
+expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+self_probe:
+  task_binding: PROMPT_BOUND_NOT_INDEPENDENTLY_READ
+  exposed_tools:
+    - GitHub.fetch_file
+    - GitHub.create_file
+    - GitHub.update_file
+    - Slack.slack_read_channel
+    - Slack.slack_search_public
+  missing_surfaces:
+    - native_task_inventory_read
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+prior_current_version: 10
+next_current_version: 11
+accepted_wake: 3
+target_wakes_before_decision: 4
+campaign_status: ACTIVE
+controlled_factor: slack_read_write
+varied_probe: query_token_granularity_and_channel_history_timestamp_boundary
+baseline:
+  target_pointer_channel_id: C0BGNGPJFHU
+  target_pointer_ts: '1785563052.487809'
+  target_event_commit: cff53a97e5255e7c4aa3bcbb6eb9a81608f9cda7
+  target_event_short_commit: cff53a97
+  target_event_filename: 20260801T054200Z_SLACK_READ_SEARCH_VARIANCE_WAKE_01.yaml
+  prior_observation: exact_phrase_search_found_the_pointer_once_while_full_40_character_commit_search_returned_zero
+hypothesis: short_commit_and_exact_filename_tokens_will_recover_the_known_pointer_more_reliably_than_the_full_commit_while_broad_path_tokens_will_trade_precision_for_recall
+exact_probe:
+  - read_channel_with_oldest_and_latest_both_equal_to_1785563052_487809
+  - read_channel_with_one_second_envelope_1785563052_000000_to_1785563053_000000
+  - search_public_for_cff53a97_in_channel_with_bots_included
+  - search_public_for_exact_filename_in_channel_with_bots_included
+  - search_public_for_carrier_surface_x11_AND_events_in_channel_with_bots_included
+  - compare_each_result_to_the_known_pointer_timestamp_and_message_bytes
+measured_result:
+  direct_equal_boundary_read_result_count: 0
+  direct_one_second_envelope_result_count: 1
+  direct_envelope_returned_message_ts: '1785563052.487809'
+  direct_envelope_event_commit_bytes_match_expected: true
+  direct_envelope_event_filename_bytes_match_expected: true
+  short_commit_search_result_count: 1
+  short_commit_exact_pointer_match_count: 1
+  exact_filename_search_result_count: 1
+  exact_filename_exact_pointer_match_count: 1
+  broad_path_token_search_result_count: 6
+  broad_path_token_exact_pointer_match_count: 1
+  result: MEASURED_TOKEN_GRANULARITY_AND_TIMESTAMP_BOUNDARY_VARIANCE
+permission_error_class: AUTHENTICATED_ALLOWED_WITH_EQUAL_TIMESTAMP_BOUNDARY_EXCLUSION_AND_QUERY_TOKEN_GRANULARITY
+latency:
+  connector_call_latency_exposed: false
+  indexing_latency_measured: false
+operator_relay_minutes: 0
+capability_change: short_commit_prefix_and_exact_filename_each_recovered_the_known_pointer_while_the_full_commit_previously_did_not; equal_oldest_latest_history_bounds_excluded_the_message_but_a_one_second_envelope_recovered_it
+claim_ceiling: one_known_public_channel_pointer_is_exactly_recoverable_by_one_second_history_envelope_short_commit_prefix_and_exact_filename; broad_path_tokens_are_lower_precision; full_commit_search_remains_unproven_on_this_surface
+strongest_falsifier: repeat_matrix_finds_the_full_commit_or_equal_timestamp_bounds_reliably_return_the_message_or_an_independent_native_Slack_client_demonstrates_different_query_and_boundary_semantics
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer:
+  - Reginleif
+  - Ratatoskr
+next_probe: repeat_the_same_target_query_matrix_and_boundary_pair_then_issue_wake_4_campaign_decision_and_select_the_next_factor
+honest_flaw: one_message_and_one_connector_surface_cannot_separate_Slack_native_search_semantics_from_connector_parsing_indexing_or_result_filtering_and_no_independent_provider_witness_exists
+evidence_class: SAME_PROVIDER_DESCRIPTIVE_NONBINDING
+binding_weight: 0
+effect_ceiling: read_only_Slack_probe_plus_Git_experiment_receipt
+valid_time_utc: 2026-08-01T07:41:00Z
+transaction_time_utc: 2026-08-01T07:41:00Z
+sealed: true
+---
+
+Wake 3 accepted. A one-second direct-history envelope recovered the exact pointer,
+while equal oldest/latest bounds returned no message. Public search recovered the
+same pointer by the eight-character commit prefix and exact filename. Broad path
+tokens also included it but returned six X11 messages, reducing precision. These
+are bounded connector observations, not native Slack guarantees or independent
+verification.
