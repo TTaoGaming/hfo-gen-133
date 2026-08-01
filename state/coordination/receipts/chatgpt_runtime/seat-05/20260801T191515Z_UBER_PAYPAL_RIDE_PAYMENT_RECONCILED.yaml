@@ -1,0 +1,60 @@
+schema_version: hfo.gen133.s05.operator_relief_receipt.v1
+receipt_id: S05-20260801T191515Z-UBER-PAYPAL-RECONCILIATION
+task_binding:
+  expected_task_id: 6a55c182078c8191b89f2dd15f5f640c
+  seat: S05
+  role: operator_relief_cell
+  wip_limit: 1
+canonical_state:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+transition:
+  type: STATUS_RECONCILED
+  active_item: August 1 Uber ride and PayPal payment receipt pair
+  observed_at_utc: 2026-08-01T19:15:15Z
+  material_change: true
+source_evidence:
+  system: Gmail
+  private_body_retained_in_source: true
+  pointers:
+    - pointer_sha256: fe2b42feca0b142f70f6dec5a3046866759767cac658e0baded4206b68fbc098
+      evidence_class: merchant_payment_processor_receipt
+      received_at_utc: 2026-08-01T17:38:01Z
+    - pointer_sha256: eb20a91d39806b117e166e998578124884a2e358ff3541826e6e129f38d65dd7
+      evidence_class: rideshare_trip_receipt
+      received_at_utc: 2026-08-01T17:37:32Z
+sanitized_facts:
+  merchant_class: rideshare
+  amount_usd: 10.49
+  service_date: 2026-08-01
+  payment_rail: PayPal
+  payment_timestamp_alignment: same_minute_after_timezone_normalization
+  trip_receipt_payment_amount_match: true
+  processor_receipt_amount_match: true
+reconciliation:
+  status: MATCHED_PAIR
+  conclusion: The rideshare trip receipt and payment-processor receipt describe one matching USD 10.49 transaction. No duplicate charge is evidenced by this pair.
+  action_required_now: false
+  waiting_loop_closed: receipt_matching
+  operator_minutes_removed_estimate: 4
+  next_consumer: operator
+honest_flaw:
+  - Email receipts do not prove final bank settlement or absence of a later reversal, adjustment, tip, or chargeback.
+  - This bounded read does not prove that no duplicate exists outside the searched evidence window.
+  - Receipt matching does not establish that the ride was authorized by the account holder.
+priority_state:
+  p0: OCOOPA safety drafts
+  p1:
+    - Party Safari permission slip
+    - Reed HVAC USD 130 inspection-fee verification
+privacy:
+  externalized_fields: sanitized merchant class, amount, date, payment rail, hashed source pointers
+  withheld_fields: trip addresses, driver identity, transaction identifier, card suffix, account contact details, private message bodies
+effects:
+  gmail_send: false
+  calendar_mutation: false
+  contacts_mutation: false
+  payment_or_spend: false
+  account_change: false
+  destructive_action: false
+  git_receipt_only: true
