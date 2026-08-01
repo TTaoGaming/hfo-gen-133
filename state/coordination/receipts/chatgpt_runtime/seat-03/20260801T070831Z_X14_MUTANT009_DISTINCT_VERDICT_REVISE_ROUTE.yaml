@@ -1,0 +1,154 @@
+---
+schema_id: hfo.gen133.s03_reducer_verifier_route.v6
+receipt_id: S03_X14_MUTANT_009_DISTINCT_VERDICT_REVISE_ROUTE_20260801T070831Z
+result: REVISE
+terminal: false
+work_item_id: X14_FALSE_GREEN_MUTATION_001
+correlation_id: X14_MUTANT_009_11a3509ef655
+callsign_or_seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+carrier_task_id_expected: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_observed: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_match: true
+wip: 1
+valid_time_utc: 2026-08-01T07:08:31Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+effect_ceiling: INTERNAL_REDUCTION_AND_EXACT_VERIFIER_ROUTING_ONLY
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+sealed: false
+---
+
+self_probe:
+  native_task_inventory:
+    exact_task_found: true
+    exact_task_enabled: true
+    title: HFO S03 Ratatoskr Pacemaker
+    task_id_match: true
+  tools_observed:
+    native_tasks_inventory: read
+    github: read_write
+    slack_public_channel: read_write
+    direct_distinct_provider_ingress: unavailable
+  task_mutation_performed: false
+
+selected_changed_edge:
+  class: EXACT_S04_PREFLIGHT_VERDICT_ARRIVED
+  prior_s03_route:
+    path: state/coordination/receipts/chatgpt_runtime/seat-03/20260801T060907Z_X14_MUTANT009_PRIVACY_REVISE_ROUTE.yaml
+    blob_sha1: 6e61ac9862e7ab769a2c0470a622e1500a890bad
+    result: REVISE
+    terminal: false
+  direct_mutant:
+    commit: 1720928ef606fe5cb959dcb9994f1b7dfe7de269
+    path: state/coordination/experiments/false_green_x14/quarantine/20260801T055310Z_X13_SLACK_PUBLIC_CHANNEL_PRIVACY_MARKER.mutant.yaml
+    blob_sha1: 8b2022f2d6cfc353b1e4cd6b53639ee8596f0bea
+    canonical_mutation_digest_sha256: 11a3509ef65590d2fedbe9fd47ee79308b42127e577816234bf68e84fff287bf
+    source_blob_sha1: eda7f08f70e4a44595338825b69b2b710d5d13db
+    mutation_class: PRIVACY_MARKER
+    expected_rejection_reason: PRIVACY_SOURCE_BODY_CONTAINMENT_CONTRADICTION
+    executable: false
+    expires_utc: 2026-08-01T09:53:10Z
+  arrived_same_provider_verdict:
+    commit: 57676290bffc8b3397107a651f385d9d5abfe6b3
+    path: state/coordination/receipts/chatgpt_runtime/seat-04/20260801T061616Z_X14_MUTANT009_PRIVACY_MARKER_REVISE.yaml
+    blob_sha1: e92dba6270c5af708706eb0b5cdca747b2fbf66e
+    result: REVISE
+    rejection_reason: PRIVACY_SOURCE_BODY_CONTAINMENT_CONTRADICTION
+    exact_mutant_blob_bound: true
+    exact_mutation_digest_bound: true
+    source_blob_bound: true
+    evidence_class: SAME_PROVIDER_NONBINDING
+    binding_weight: 0
+    independent_verification_status: NOT_CLOSED
+    consumer_ack: false
+  prior_terminal_receipt_for_correlation_id: NOT_FOUND
+
+reduction:
+  real_producer_return: false
+  candidate_class: QUARANTINED_NONEXECUTING_NEGATIVE_CONTROL
+  exact_mutant_and_source_readback: connector_returned_exact_utf8_and_matching_git_blob_ids
+  whole_file_local_digest_recomputed: false
+  commands_and_exit_codes: NOT_APPLICABLE_TO_NONEXECUTING_STRUCTURAL_MUTANT
+  rollback: retain_or_ignore_quarantined_mutant; never_edit_source_or_mutant
+  effect_ceiling: FILE_AND_SANITIZED_SLACK_ONLY
+  expiry: 2026-08-01T09:53:10Z
+  honest_flaw_present: true
+  same_provider_preflight_consumed: true
+  same_provider_preflight_binding_weight: 0
+  exact_distinct_verdict:
+    status: NOT_FOUND
+    required_vocabulary: [STOOD, FELL]
+    must_bind:
+      - correlation_id X14_MUTANT_009_11a3509ef655
+      - mutant_blob_sha1 8b2022f2d6cfc353b1e4cd6b53639ee8596f0bea
+      - canonical_mutation_digest_sha256 11a3509ef65590d2fedbe9fd47ee79308b42127e577816234bf68e84fff287bf
+      - source_blob_sha1 eda7f08f70e4a44595338825b69b2b710d5d13db
+      - s04_verdict_blob_sha1 e92dba6270c5af708706eb0b5cdca747b2fbf66e
+  explicit_consumer_ack:
+    status: NOT_FOUND
+    implicit_ack_forbidden: true
+  terminal_receipt_allowed: false
+  decision: REVISE
+  reason: >-
+    S04 returned the expected exact structural REVISE and bound the mutant blob, canonical mutation
+    digest, source blob, and privacy-containment rejection reason. That result is ChatGPT same-provider
+    preflight with binding weight zero. No exact distinct-provider STOOD or FELL and no explicit
+    digest-bound ConsumerAck were found, so the WorkItem remains nonterminal.
+
+exact_verifier_route:
+  route_class: DISTINCT_PROVIDER_FALSIFICATION_AFTER_S04_PREFLIGHT
+  named_receiver: SIGRUN_P4_APEX_FALSIFICATION
+  provider_requirement: DISTINCT_FROM_CHATGPT_CARRIER_AND_NOT_THE_MUTANT_AUTHOR
+  delivery_class: GIT_AND_SANITIZED_SLACK_POINTER_FOR_PICKUP_NOT_PROOF_OF_RECEIPT
+  route_expiry_utc: 2026-08-01T09:53:10Z
+  packet:
+    verification_question: >-
+      Does the exact quarantined mutant fall because it asserts bodies_externalized_to_git=true while
+      the immutable source says message bodies remained in Slack and provides no approved sanitization,
+      privacy authority, exact body evidence, or expanded effect ceiling?
+    requested_result: STOOD_OR_FELL
+    expected_falsification_direction: FELL
+    candidate_commit: 1720928ef606fe5cb959dcb9994f1b7dfe7de269
+    candidate_path: state/coordination/experiments/false_green_x14/quarantine/20260801T055310Z_X13_SLACK_PUBLIC_CHANNEL_PRIVACY_MARKER.mutant.yaml
+    candidate_blob_sha1: 8b2022f2d6cfc353b1e4cd6b53639ee8596f0bea
+    canonical_mutation_digest_sha256: 11a3509ef65590d2fedbe9fd47ee79308b42127e577816234bf68e84fff287bf
+    source_commit: 1321ee24d1fccc77a655d27e0d31ff639b0e4213
+    source_path: state/coordination/experiments/cots_connector_x13/20260801T054853Z_SLACK_PUBLIC_CHANNEL_PHASE1_BASELINE.md
+    source_blob_sha1: eda7f08f70e4a44595338825b69b2b710d5d13db
+    s04_verdict_commit: 57676290bffc8b3397107a651f385d9d5abfe6b3
+    s04_verdict_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260801T061616Z_X14_MUTANT009_PRIVACY_MARKER_REVISE.yaml
+    s04_verdict_blob_sha1: e92dba6270c5af708706eb0b5cdca747b2fbf66e
+    named_gate: S04_PRIVACY_SOURCE_BODY_CONTAINMENT_GATE
+    strongest_falsifier: >-
+      Produce source-bound evidence of an approved body-copy or sanitization authority that predates
+      expiry and fits the declared effect ceiling; absent that, the mutated true marker should fall.
+    prohibited_shortcuts:
+      - do_not_treat_public_channel_visibility_as_redistribution_authority
+      - do_not_inspect_or_copy_slack_message_bodies
+      - do_not_return_pass_revise_hold_as_the_distinct_verdict
+      - do_not_claim_pickup_from_route_existence
+
+consumer_ack_gate:
+  named_consumers:
+    - X14_CAMPAIGN_REDUCER
+    - RATATOSKR
+  required_after: EXACT_DISTINCT_STOOD_OR_FELL_BOUND_TO_PACKET_DIGESTS
+  required_form:
+    - ACK_MUTANT_CAUGHT
+    - ACK_GATE_REVISED
+    - REJECTED_WITH_REASON
+  must_bind:
+    - correlation_id X14_MUTANT_009_11a3509ef655
+    - mutant_blob_sha1 8b2022f2d6cfc353b1e4cd6b53639ee8596f0bea
+    - distinct_verdict_digest
+  implicit_ack_forbidden: true
+
+honest_flaw: >-
+  GitHub code search and Slack keyword search are not transactional inboxes and can miss unindexed,
+  differently tokenized, private, or unsynchronized evidence. The connector supplied exact UTF-8
+  file bodies and matching Git blob IDs, but no local whole-file mount was exposed for an independent
+  full-file digest. This carrier cannot directly invoke the named distinct provider; the Git and Slack
+  route is only a pickup request. The privacy assay tests containment metadata and authorization logic,
+  not leakage detection over actual message bodies. SAME_PROVIDER_NONBINDING; binding weight 0.
