@@ -1,0 +1,97 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+experiment_id: X11_GOOGLE_DRIVE_READ_SURFACE_V1
+carrier: X11
+actor: X11_CARRIER_AND_TOOL_SURFACE_PDCA_LAB
+task_binding:
+  expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+  observed_task_id: 6a55089a9adc8191bda54541f7f9effa
+  match: true
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+wip_limit: 1
+self_probe:
+  exposed_tools:
+    - native_tasks_inventory_read
+    - github_read_write
+    - slack_write
+    - google_drive_metadata_search
+    - web_research
+  unavailable_or_not_used:
+    - shell_runtime
+    - independent_provider_verifier
+prior_current:
+  expected_version: 20
+  blob: d3a6aaa126215bd29acb6f4f1aa7fad38c957b85
+  prior_campaign: X11_NATIVE_TASKS_READ_VISIBILITY_V1
+  prior_disposition: KEEP
+campaign:
+  controlled_factor: google_drive_read_surface
+  accepted_wake: 1
+  target_wakes_before_decision: 4
+baseline:
+  prior_drive_campaign_wakes: 0
+  authenticated_drive_read_surface_previously_confirmed_in_this_campaign: false
+  private_titles_or_bodies_externalized: false
+hypothesis: >-
+  A bounded metadata-only Google Drive search using a synthetic unique negative-control
+  token will execute without interactive login, return zero results without exposing
+  private file titles or bodies, and expose a measurable connector latency.
+exact_probe:
+  tool: Google_Drive.search
+  mode: read_only_metadata_only
+  query: HFO_X11_NEGATIVE_CONTROL_6a55089a9adc8191bda54541f7f9effa_v20
+  item_type: document
+  topn: 5
+  best_effort_fetch: false
+  expected_result_count: 0
+  privacy_rule: persist_only_status_count_permission_error_and_latency
+measured_result:
+  connector_call_completed: true
+  result_count: 0
+  expected_negative_control_result_observed: true
+  error_present: false
+  error_code: null
+  error_http_status_code: null
+  content_fetch_attempted: false
+  private_file_titles_externalized: false
+  private_file_bodies_externalized: false
+  mutation_performed: false
+permission_class: AUTHENTICATED_GOOGLE_DRIVE_METADATA_SEARCH_AVAILABLE
+error_class: NONE
+latency:
+  exposed_by_tool: true
+  external_call_time_ms: 1338
+operator_relay_minutes: 0
+capability_delta: >-
+  The Google Drive connector accepted a metadata-only document search without an
+  interactive login and returned an empty negative-control result in 1338 ms. This
+  establishes bounded search invocation and permission for this query only; it does
+  not establish complete Drive visibility, content-read permission, or shared-drive
+  coverage.
+strongest_falsifier: >-
+  A controlled known-existing document with an exact unique title fails to appear
+  under the same metadata-only search mode, the synthetic nonce unexpectedly appears,
+  or repeated identical probes produce permission or result-class drift without an
+  authenticated-surface change.
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer:
+  - Reginleif
+  - Ratatoskr
+expiry_utc: 2026-08-08T17:38:14Z
+result: GOOGLE_DRIVE_NEGATIVE_CONTROL_BASELINE_ACCEPTED
+next_probe: >-
+  Repeat the identical metadata-only negative-control query and compare result class,
+  error class, and exposed latency without persisting any private titles or bodies.
+honest_flaw: >-
+  A zero-result synthetic search proves only that one connector call completed. It
+  cannot distinguish complete search coverage from tokenization, indexing, corpus,
+  permission-scope, or shared-drive limitations. No known-positive control was used,
+  and the verifier remains same-provider with binding weight zero.
+valid_time_utc: 2026-08-01T17:38:14Z
+transaction_time_utc: 2026-08-01T17:39:00Z
+evidence_class: DIRECT_CONNECTOR_READBACK_SAME_PROVIDER_NONBINDING
+binding_weight: 0
+effect_ceiling: READ_ONLY_DRIVE_METADATA_SEARCH_PLUS_GIT_RECEIPT_AND_SANITIZED_SLACK_POINTER
+sealed: false
+---
