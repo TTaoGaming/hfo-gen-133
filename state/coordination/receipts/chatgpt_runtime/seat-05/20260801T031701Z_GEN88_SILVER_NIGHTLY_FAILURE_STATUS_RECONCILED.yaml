@@ -1,0 +1,66 @@
+schema: hfo.gen133.operator_relief_receipt.v1
+receipt_id: S05-20260801T031701Z-GEN88-SILVER-NIGHTLY
+immutable: true
+task_id: 6a55c182078c8191b89f2dd15f5f640c
+seat: S05
+result: STATUS_RECONCILED_NO_SEND_APPROVAL_PACKET
+valid_time_utc: 2026-08-01T03:17:01Z
+transaction_time_utc: 2026-08-01T03:17:01Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+wip_limit: 1
+active_item:
+  id: GEN88_LEGACY_SILVER_NIGHTLY_FAILURE
+  state: ROOT_CAUSE_RECONCILED_DECISION_PACKET_READY
+  owner: RATATOSKR_P7
+priority_control:
+  p0:
+    id: OCOOPA_SAFETY_RECALL_DRAFTS
+    state: OPERATOR_REVIEW_AND_SEND_REQUIRED
+  p1:
+    - id: PARTY_SAFARI_PERMISSION
+      due: 2026-08-04
+    - id: PFA_DISCLOSURE
+      due: 2026-08-05
+changed_evidence:
+  alert:
+    source_system: Gmail
+    pointer: message:19fbb477c4ac8ec5
+    sanitized_fact: A new GitHub Actions alert at 2026-08-01T03:04:11Z reported run 30681199709 failed on TTaoGaming/hfo_gen88 main at commit cfddfdda25fc8ee71e1465225acc1219a4342b79.
+  recurrence:
+    source_system: Gmail
+    pointer: search:subject_Run_failed_Silver_Nightly_Regression_newer_than_30d
+    sanitized_fact: The first returned page contains at least 20 daily failure alerts from 2026-07-12 through 2026-08-01 for the same commit; this is recurring legacy noise, not evidence of a fresh code regression.
+  primary_job:
+    source_system: GitHub Actions
+    pointer: run:30681199709/job:91318414286
+    sanitized_fact: Checkout and npm install succeeded. Both configured checks failed because package scripts reference missing hot_obsidian_sandbox/silver/1_projects/health-check paths. The health config actually exists at hot_obsidian_sandbox/bronze/2_areas/infra/configs/vitest.silver.config.ts; the nightly runner path failed with ERR_MODULE_NOT_FOUND. No mutation-report artifact was produced; the blackboard artifact uploaded.
+  notification_job:
+    source_system: GitHub Actions
+    pointer: run:30681199709/job:91318515772
+    sanitized_fact: Automated issue creation failed HTTP 403 because the workflow token exposed read-only permissions while the API required issues:write.
+  workflow_contract:
+    source_system: GitHub
+    pointer: TTaoGaming/hfo_gen88:.github/workflows/silver-nightly.yml@cfddfdda25fc8ee71e1465225acc1219a4342b79
+    sanitized_fact: The legacy workflow is scheduled daily at 02:00 UTC and therefore will continue generating the same failure and email unless retired or repaired.
+transition:
+  prior_state: Unread recurring CI alert requiring manual run inspection and root-cause triage.
+  next_state: Exact no-send decision packet with deterministic failure causes, recurrence evidence, and two bounded choices.
+  recommended_choice:
+    decision: RETIRE_LEGACY_WORKFLOW
+    rationale: Gen-88 is not the canonical Gen-133 work surface, the run is pinned to an unchanged January commit, and the workflow has emitted at least 20 repeated alerts without exercising its intended tests.
+    effect_required: Operator-approved workflow disable or archive action in TTaoGaming/hfo_gen88; not performed by S05.
+  alternative_choice:
+    decision: ROUTE_REPAIR_TO_S06
+    scope: Correct stale script paths, supply or replace the missing nightly runner, explicitly grant only required issue permissions or remove issue creation, and prove the workflow on a dedicated branch before any merge.
+    effect_required: New claimed WorkItem with BRANCH_FILE_TEST authority; not created by S05.
+  rerun_recommendation: DO_NOT_RERUN_UNCHANGED
+  external_effects: none
+  task_mutation_performed: false
+  workflow_mutation_performed: false
+  email_send_performed: false
+  private_body_externalized: false
+operator_minutes_removed_estimate: 15
+next_consumer: RATATOSKR_P7
+consumer_action: Choose RETIRE_LEGACY_WORKFLOW or create one S06 repair WorkItem; do not ask the operator to reopen the failed run or rerun it unchanged.
+honest_flaw: S05 diagnosed the current run and recurrence from connector readback but did not inspect every historical run or prove that no downstream consumer still relies on Gen-88 artifacts. Retirement therefore requires an authority check, not automatic mutation.
