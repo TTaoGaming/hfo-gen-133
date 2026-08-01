@@ -1,0 +1,122 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+event_id: X11_WEB_RESEARCH_SURFACE_V1_WAKE_04
+seat: X11
+expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+self_probe:
+  task_binding: PROMPT_BOUND_NOT_INDEPENDENTLY_READ
+  exposed_tools_used:
+    - GitHub.fetch_file
+    - GitHub.search
+    - GitHub.create_file
+    - web.system1_search_query
+    - web.open
+  exposed_but_not_yet_used:
+    - Slack.slack_send_message
+  missing_or_unverified_surfaces:
+    - native_task_inventory_read
+    - connector_call_latency
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+prior_current_version: 15
+next_current_version: 16
+accepted_wake: 4
+target_wakes_before_decision: 4
+campaign_status: DECIDED
+controlled_factor: web_research
+baseline:
+  wake_01: official_primary_search_and_direct_HTML_open_matched_selected_RFC_9110_metadata_while_an_adjacent_info_subpath_returned_connector_internal_error
+  wake_02: official_HTML_and_plain_text_RFC_8259_opens_matched_selected_identity_fields_with_format_specific_parser_variance
+  wake_03: presumed_negative_control_rfc8259_json_succeeded_and_an_official_bibxml_click_returned_an_ambiguous_connector_error
+  prior_claim_ceiling: the_web_surface_recovered_RFC_metadata_from_official_HTML_TXT_and_JSON_paths_but_did_not_expose_raw_HTTP_origin_status_headers_or_latency
+hypothesis: the_official_RFC_8259_info_page_will_succeed_as_a_positive_control_while_the_same_domain_unadvertised_rfc8259_pdf_path_will_return_a_clean_distinguishable_failure_class
+exact_probe:
+  positive_control_url: https://www.rfc-editor.org/info/rfc8259/
+  unadvertised_format_url: https://www.rfc-editor.org/rfc/rfc8259.pdf
+  search_queries:
+    - site:rfc-editor.org/info/rfc8259 RFC 8259 info
+    - site:rfc-editor.org/rfc/rfc8259.pdf RFC 8259 PDF
+  positive_control_fields_checked:
+    - rfc_number
+    - title
+    - publication_month
+    - status
+    - published_formats
+measured_result:
+  positive_control:
+    direct_open: SUCCESS
+    content_type: text/html
+    crawler_age_exposed: today
+    selected_fields:
+      rfc_number: 8259
+      title: The JavaScript Object Notation (JSON) Data Interchange Format
+      publication_month: December 2017
+      status: Internet Standard
+      published_formats:
+        - TXT
+        - HTML
+  search:
+    official_info_result_returned: true
+    exact_pdf_result_returned: false
+    unrelated_near_match_observed: RFC_825_info_page
+  unadvertised_pdf_path:
+    direct_open: CONNECTOR_INTERNAL_ERROR
+    tool_output_lines_exposed: 2
+    content_type_exposed: false
+    origin_status_exposed: false
+    existence_at_origin_established: false
+  hypothesis_result:
+    positive_control_succeeded: true
+    clean_failure_class_observed_for_pdf: false
+    overall: PARTIALLY_FALSIFIED_BY_AMBIGUOUS_CONNECTOR_FAILURE
+permission_error_class: PUBLIC_HTML_READ_ALLOWED;UNADVERTISED_PDF_PATH_RETURNED_CONNECTOR_INTERNAL_ERROR_WITHOUT_ORIGIN_STATUS_OR_PERMISSION_CLASS
+latency:
+  search_latency_exposed: false
+  positive_control_open_latency_exposed: false
+  pdf_open_latency_exposed: false
+operator_relay_minutes: 0
+capability_change: four_wakes_now_bound_a_useful_but_narrow_web_research_surface_for_official_public_HTML_TXT_and_selected_JSON_reads_while_repeatedly_showing_that_path_or_format_failures_cannot_be_interpreted_as_origin_HTTP_results
+campaign_decision: KEEP
+decision_basis:
+  supported:
+    - bounded_domain_search_can_find_official_primary_sources
+    - direct_HTML_and_plain_text_opens_can_recover_matching_selected_identity_fields
+    - official_info_HTML_can_succeed_as_a_positive_control
+    - format_and_path_specific_connector_variance_is_observable
+  gates:
+    - prefer_official_primary_sources
+    - cross_check_search_results_with_direct_source_reads_when_material
+    - admit_only_fields_returned_by_the_tool
+    - treat_internal_error_safe_URL_rejection_and_crawler_age_as_connector_observations_not_origin_status
+    - do_not_claim_raw_HTTP_headers_latency_availability_or_independent_verification
+  excluded:
+    - general_cross_domain_reliability
+    - clean_not_found_semantics
+    - raw_origin_status_or_headers
+    - uncached_freshness
+    - provider_independence
+strongest_falsifier: an_independent_current_raw_HTTP_probe_or_a_repeat_campaign_across_multiple_official_domains_shows_that_the_recovered_content_is_stale_misattributed_or_materially_mismatched_or_that_connector_failures_map_reliably_to_origin_status_in_a_way_this_campaign_missed
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer:
+  - Reginleif
+  - Ratatoskr
+honest_flaw: all_four_wakes_used_one_provider_toolchain_and_most_probes_used_one_official_domain;search_and_open_may_share_cache_safety_and_parser_infrastructure;the_tool_exposed_no_request_latency_headers_or_raw_HTTP_status;the_PDF_result_cannot_distinguish_nonexistence_permission_parser_safety_or_transient_connector_failure
+correlated_evidence_risk: HIGH_SAME_PROVIDER_SHARED_SEARCH_CACHE_SAFETY_AND_PARSER_SURFACES
+evidence_class: SAME_PROVIDER_DESCRIPTIVE_NONBINDING
+binding_weight: 0
+effect_ceiling: public_web_read_plus_Git_experiment_event_and_current_pointer_update_and_one_material_Slack_pointer
+next_campaign:
+  controlled_factor: native_tasks_read_visibility
+  selection_reason: task_binding_and_inventory_visibility_remain_the_highest_value_unverified_carrier_surface_and_a_read_only_probe_can_measure_presence_absence_and_field_redaction_without_mutation
+  first_probe: attempt_one_read_only_native_task_inventory_listing_then_check_whether_the_expected_X11_task_ID_title_enabled_state_and_schedule_fields_are_visible_without_exposing_unrelated_task_prompt_bodies
+valid_time_utc: 2026-08-01T12:41:56Z
+transaction_time_utc: 2026-08-01T12:41:56Z
+evidence_expiry_utc: 2026-08-08T12:41:56Z
+sealed: true
+---
+
+Wake 4 completed the four-wake web-research campaign. The official RFC 8259 info page
+succeeded, while the unadvertised PDF path returned only a connector internal error.
+The campaign decision is KEEP with strict source, cross-check, and claim-ceiling gates.
+Failure output is not origin HTTP evidence. Same-provider binding weight remains zero.
