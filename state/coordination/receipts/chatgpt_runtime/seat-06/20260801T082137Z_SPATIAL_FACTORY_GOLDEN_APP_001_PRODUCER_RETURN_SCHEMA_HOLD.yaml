@@ -1,0 +1,157 @@
+---
+schema_id: hfo.gen133.s06_codex_bridge_hold.v2
+result: HOLD
+seat: S06_CODE_WORK_PACKET_COMPILER_AND_CODEX_BRIDGE
+carrier_task_id_expected: 6a57972b9df081918680ce67c4ecb197
+carrier_task_id_observed_from_native_inventory: 6a57972b9df081918680ce67c4ecb197
+carrier_task_id_match: true
+carrier_title_observed: HFO S06 Huginn-Muninn Codex Bridge
+carrier_enabled_observed: true
+carrier_identity_claim: DISPOSABLE_SCHEDULED_CARRIER_NOT_LINEAGE
+wip: 1
+valid_time_utc: 2026-08-01T08:21:37Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001
+correlation_id: SPATIAL_FACTORY_GOLDEN_APP_001_TARGET_CONTINUITY_FEE50A7
+---
+
+self_probe:
+  native_task_inventory: authenticated_read
+  github_connector: authenticated_read_write_exact_file_and_blob_readback
+  slack_public_channel: authenticated_read_write
+  direct_codex_claude_or_host_ingress: unavailable
+  shell_or_browser_runtime: unavailable_in_this_carrier
+  prohibited_effects_observed: none
+
+selected_claim:
+  commit: 4ecc5350fe918b1ff466708a148dc0012f810ab8
+  path: projects/spatial-app-factory/claims/20260801T070438Z_SPATIAL_FACTORY_GOLDEN_APP_001_S02_TARGET_CONTINUITY.claim.yaml
+  blob: ae178695e5faf33f15f4b9388bbbc274c4142651
+  acceptance_contract_sha256: 9a2a1e90301f74c556ec00bc3050c35e05cf4a3508135c3c6cc4951a113560a0
+  producer_return_due_utc: 2026-08-01T10:04:38Z
+  lease_expires_utc: 2026-08-01T11:04:38Z
+  status_at_read: UNEXPIRED
+
+changed_direct_producer_return:
+  commit: aace7cd805c4ddfecf97fd6ec22982ec6e7a949e
+  path: state/coordination/receipts/chatgpt_runtime/seat-07/20260801T073029Z_SPATIAL_FACTORY_GOLDEN_APP_001_TARGET_CONTINUITY_PATCH_RETURN.yaml
+  blob: e174f41d2a848913f20e2d2e3a4f118d5a1a10ea
+  stated_result: PATCH_RETURNED
+  producer: S07_BOUNDED_CODE_PATCH_BUILDER
+  producer_task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+  runtime_named: local_linux_container
+  runtime_versions_named:
+    node: v22.16.0
+    git: 2.47.3
+  model_named: false
+  model_explicitly_unobservable: false
+  final_target_repository: TTaoGaming/TAGS
+  final_target_branch: agent/spatial-golden-app-001-20260731
+  final_target_sha: 1f0c0a7831db6f4476a703856855ff7ccc4f454b
+  effect_ceiling: BRANCH_FILE_TEST
+  expiry_utc: 2026-08-01T11:04:38Z
+
+independent_git_readback:
+  branch_head_check:
+    method: github_compare_commits_final_sha_to_branch
+    status: identical
+    ahead_by: 0
+    behind_by: 0
+  changed_path_blobs:
+    - path: prototypes/spatial-input-adapter.js
+      expected_blob: ca327ea46049f499d0afe1be4f9632ee086f2637
+      observed_blob: ca327ea46049f499d0afe1be4f9632ee086f2637
+      match: true
+    - path: tests/spatial-input-adapter.test.mjs
+      expected_blob: 2e523f5c373203ae4f5e0f1a48a52d1570f0682a
+      observed_blob: 2e523f5c373203ae4f5e0f1a48a52d1570f0682a
+      match: true
+  execution_replay: NOT_RUN_NO_EXECUTION_SURFACE
+  evidence_ceiling: POINT_IN_TIME_GIT_READBACK_NOT_TEST_REEXECUTION_NOT_VERDICT
+
+producer_return_gate:
+  satisfied:
+    - direct_immutable_producer_return
+    - producer_identity_and_task_binding
+    - claim_commit_blob_and_acceptance_digest
+    - runtime_and_tool_versions
+    - starting_and_final_branch_shas
+    - exact_changed_paths_and_resulting_blob_shas
+    - exact_commands_exit_codes_and_concise_outputs
+    - blockers_rollback_effect_ceiling_expiry_remaining_risk_and_honest_flaw
+  unsatisfied:
+    - producer_model_name_or_explicit_model_unobservable_marker
+    - explicit_A1_through_A11_status_table_using_STOOD_FELL_or_NOT_RUN
+  decision: DO_NOT_MARK_RETURN_CONSUMED
+  reason_code: PRODUCER_RETURN_SCHEMA_INCOMPLETE
+  statement: >-
+    S06 is contractually allowed to consume only a direct producer return that names runtime and model and carries
+    the required acceptance-test status enumeration. The return names the runtime and contains substantial command
+    evidence, but it neither names the producer model nor explicitly marks it unobservable, and it does not enumerate
+    A1 through A11 as STOOD, FELL, or NOT_RUN. Git readback cannot repair or infer those producer-authored fields.
+
+current_red_and_unproven_evidence:
+  - tests/fab-prototype-smoke.test.mjs was not run
+  - prototypes/fab-prototype.html was unchanged and exact source inspection reported no adapter script reference
+  - native mainFab page wiring remains unproven
+  - browser trusted-input accessibility focus and cross-browser behavior remain unproven
+  - no distinct-provider STOOD_or_FELL verdict exists
+  - no explicit ConsumerAck exists
+
+executor_packet:
+  created: false
+  routed: false
+  reason: >-
+    The target branch already contains the bounded producer changes and another executor packet would create duplicate
+    or conflicting work. Direct Codex, Claude, or host ingress is not exposed in this carrier.
+
+required_next_transition:
+  owner: S07_BOUNDED_CODE_PATCH_BUILDER_or_actual_producer
+  action: >-
+    Write one immutable superseding producer-return amendment bound to producer blob
+    e174f41d2a848913f20e2d2e3a4f118d5a1a10ea. Add the actual model name when observable or the exact marker
+    MODEL_UNOBSERVABLE_FROM_RUNTIME, and enumerate A1 through A11 as STOOD, FELL, or NOT_RUN without changing code,
+    rerunning unreported commands, or upgrading adapter evidence into browser proof.
+  verifier_after_complete_return: Sigrun/P4_APEX_FALSIFICATION_or_other_distinct_provider_nonproducer
+  reducer: S03_task_6a539fc5130c81918c13624739fb2a60
+  consumer: Olrun/Claude-Dispatch_as_spatial_factory_coordinator
+
+existing_downstream_route:
+  commit: d302909a9c6459f70d1ac8c2163682d7d9cb689e
+  path: state/coordination/receipts/chatgpt_runtime/seat-03/20260801T080634Z_SPATIAL_FACTORY_GOLDEN_APP_001_DISTINCT_VERIFIER_REVISE.yaml
+  status: DISTINCT_VERIFIER_REQUEST_ALREADY_EXISTS
+  note: >-
+    S06 does not cancel or duplicate S03's verifier route. This HOLD only records that the stricter S06 producer-return
+    consumption contract is not yet satisfied.
+
+world_effect_ceiling:
+  performed:
+    - read_native_task_inventory
+    - read_claim_and_direct_producer_return
+    - compare_target_branch_to_reported_final_sha
+    - read_back_two_reported_changed_blobs
+    - write_one_immutable_hold_receipt
+  not_performed:
+    - production_code_or_test_edit
+    - command_or_test_execution
+    - executor_dispatch
+    - task_mutation
+    - merge_deploy_publish_send_spend_account_or_security_change
+
+rollback:
+  receipt: immutable_history_supersede_only_never_edit_or_delete
+  target_branch: no_change_by_S06
+  external_effect: none
+
+strongest_falsifier: >-
+  A producer-authored immutable amendment that binds the exact prior return blob, names the actual model or explicitly
+  marks it unobservable, and enumerates A1 through A11 with evidence-bounded statuses would falsify this HOLD and
+  permit RETURN_CONSUMED if the claim and branch remain unexpired and unchanged.
+
+honest_flaw: >-
+  This carrier did not execute the reported commands and cannot independently verify test output. Git connector reads
+  are point-in-time and same-provider. The model may be knowable from platform metadata unavailable in the producer
+  artifact, but S06 refuses to infer it. The missing A1-through-A11 table is partly reconstructable from prose, yet
+  reconstructing it here would impersonate or repair the producer return rather than consume exact producer evidence.
