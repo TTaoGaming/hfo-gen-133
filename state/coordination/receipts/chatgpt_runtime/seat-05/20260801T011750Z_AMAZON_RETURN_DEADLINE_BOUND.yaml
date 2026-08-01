@@ -1,0 +1,57 @@
+schema: hfo.gen133.operator_relief_receipt.v1
+result: DEADLINE_BOUND
+material_change: true
+task:
+  expected_id: 6a55c182078c8191b89f2dd15f5f640c
+  observed_id_match: true
+seat: S05
+canonical:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-01T01:17:50Z
+transaction_time_git: COMMIT_METADATA_AUTHORITATIVE
+active_item:
+  id: AMAZON_RETURN_DEADLINE_20260826
+  state: CALENDAR_BOUND
+  source_system: Gmail
+  source_pointer:
+    message_id: 19fbacb40484a026
+    received_utc: 2026-08-01T00:48:29Z
+  sanitized_fact: A confirmed consumer-item return must be dropped off by 2026-08-26.
+transition:
+  effect: PRIVATE_CALENDAR_CREATE
+  calendar_id: primary
+  event_id: q7vh4c0497559gaee36odpe4tg
+  event_start: 2026-08-26T09:00:00-06:00
+  event_end: 2026-08-26T09:30:00-06:00
+  visibility: private
+  busy_state: opaque
+  reminders_minutes_before:
+    - 10080
+    - 2880
+  source_readback: CONFIRMED
+  calendar_readback: CONFIRMED
+operator_relief:
+  estimated_minutes_removed: 5
+  next_consumer: TTao/operator
+  next_action: Pack the item and use the source-system QR code before the bound deadline.
+priorities:
+  p0:
+    id: OCOOPA_SAFETY_RECALL_DRAFTS
+    action: Review and manually send the two existing no-send safety-recall drafts.
+  p1:
+    - id: PARTY_SAFARI_PERMISSION
+      action: Complete the electronic permission slip before 2026-08-04.
+    - id: PFA_DISCLOSURE
+      action: Complete the disclosure by 2026-08-05.
+privacy:
+  git_and_slack_ceiling: SANITIZED_FACTS_AND_SOURCE_POINTERS_ONLY
+  excluded_from_git_and_slack:
+    - email_body
+    - order_number
+    - dropoff_address
+    - refund_amount
+    - qr_code
+rollback:
+  method: Operator may delete the private Calendar event if the return is cancelled or completed early.
+honest_flaw: Calendar binding does not prove the item is packed, physically available, dropped off, or refunded; the selected time may not match the operator's travel location.
