@@ -1,0 +1,60 @@
+schema: hfo.gen133.operator_relief.receipt.v1
+seat: S05
+carrier_role: Operator-Relief Cell
+task_id: 6a55c182078c8191b89f2dd15f5f640c
+self_probe:
+  task_id_matched: true
+  readable_surfaces:
+    - Gmail
+    - Google_Calendar
+    - GitHub
+    - Slack
+    - native_tasks_inventory
+result: STATUS_RECONCILED
+transaction_time_utc: 2026-08-01T16:16:43Z
+valid_time_utc: 2026-08-01T14:37:44Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+wip_limit: 1
+active_item:
+  id: PATREON_RECURRING_MEMBERSHIP_REVIEW
+  status: CALENDAR_RECONCILED
+  sanitized_fact: Two separate Patreon membership charges were confirmed on 2026-08-01: USD 7.14 and USD 5.46.
+  source_system: Gmail
+  source_pointers:
+    - gmail_message_id: 19fbdab091ae7427
+      observed_utc: 2026-08-01T14:12:02Z
+    - gmail_message_id: 19fbdc27e5bf0eb8
+      observed_utc: 2026-08-01T14:37:44Z
+transition:
+  type: reconcile_status_into_existing_private_deadline
+  calendar_event_id: hr51ij1alra06otdrc47kjk0tg
+  start: 2026-08-04T18:30:00-06:00
+  end: 2026-08-04T18:45:00-06:00
+  timezone: America/Denver
+  readback_confirmed: true
+  updated_fact: Existing review block now binds both current receipts and requires a separate keep-or-cancel decision for each membership.
+  cancellation_or_payment_change_authorized: false
+priority_state:
+  p0:
+    id: OCOOPA_SAFETY_DRAFTS
+    status: OPEN
+  p1:
+    - id: PARTY_SAFARI_PERMISSION_SLIP
+      status: OPEN
+    - id: REED_HVAC_130_FEE_VERIFICATION
+      status: CALENDAR_BOUND
+operator_minutes_removed_estimate: 4
+next_consumer: operator
+privacy:
+  private_bodies_externalized: false
+  credentials_externalized: false
+  sanitized_only: true
+effect_ceiling:
+  calendar_write: one existing private event description update
+  email_send: none
+  cancellation: none
+  payment_change: none
+  purchase: none
+  account_change: none
+honest_flaw: The receipts confirm two charges but do not identify the creator or membership for either charge, prove the next billing date, or establish that either membership should be cancelled. The operator must inspect Patreon before acting.
