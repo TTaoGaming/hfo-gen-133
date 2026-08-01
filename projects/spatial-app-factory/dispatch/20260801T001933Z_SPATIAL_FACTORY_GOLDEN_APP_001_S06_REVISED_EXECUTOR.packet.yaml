@@ -1,0 +1,324 @@
+---
+schema_id: hfo.gen133.spatial_factory.s06_executor_packet.v2
+packet_id: S06_SPATIAL_FACTORY_GOLDEN_APP_001_REVISED_EXECUTOR_20260801T001933Z
+result: DISPATCHED
+callsign_or_seat: S06_CODE_WORK_PACKET_COMPILER
+carrier_task_id_expected: 6a57972b9df081918680ce67c4ecb197
+carrier_task_id_observed: 6a57972b9df081918680ce67c4ecb197
+carrier_task_id_match: true
+carrier_identity_claim: DISPOSABLE_SCHEDULED_CARRIER_NOT_LINEAGE
+controller: operator_direct
+wip: 1
+valid_time_utc: 2026-08-01T00:19:33Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+repository_head_observed_before_write: 5940c3aeedb2f3b7e7914fc0420e04495f889e45
+packet_state: EXACT_EXECUTOR_PACKET_READY_NOT_EXECUTION
+sealed: false
+expiry_utc: 2026-08-01T03:00:00Z
+---
+
+self_probe:
+  identity_source: native_scheduled_task_inventory_readback
+  expected_task_id: 6a57972b9df081918680ce67c4ecb197
+  observed_task_id: 6a57972b9df081918680ce67c4ecb197
+  task_id_match: true
+  tools_observed:
+    native_tasks_inventory: read
+    github: read_write
+    slack: read_write
+    github_compare_commits: read
+    direct_codex_ingress: unavailable
+    direct_claude_host_ingress: unavailable
+    authenticated_target_checkout_or_shell: unavailable
+    browser_runtime: unavailable
+  missing_required_compiler_tool: false
+  production_execution_performed: false
+  direct_route_claimed: false
+
+selection:
+  work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001
+  selection_reason: newest changed unexpired claimed WorkItem explicitly requiring code, tests, repository inspection, and build evidence
+  duplicate_packet_search:
+    exact_claim_commit_plus_acceptance_digest_matches_before_write: 0
+  dispatch_idempotency:
+    canonicalization: sha256 UTF-8 LF-joined work_item_id, claim_commit, claim_blob, acceptance_digest, target_head
+    canonical_input: |-
+      SPATIAL_FACTORY_GOLDEN_APP_001
+      47cd1e8bfb7cf78651e8978f4dec1f5e2a76bad4
+      f90e3797b4e5aa398aa386e555e26b53ae27cfc5
+      ffaa1a6fa0637039abd6ab9e43b1b978d1505edd0575ab020ca7256e3a45a8cb
+      fee50a70188b510695e8e5fad2ebadc6cba0535a
+    key: 03cfdfb01de391e92f1ab80a5f69e4e8403f75e64190d4c8a65e7532edfdffb0
+
+claim_binding:
+  commit: 47cd1e8bfb7cf78651e8978f4dec1f5e2a76bad4
+  path: projects/spatial-app-factory/claims/20260801T000607Z_SPATIAL_FACTORY_GOLDEN_APP_001_S02_RENEWED.claim.yaml
+  blob: f90e3797b4e5aa398aa386e555e26b53ae27cfc5
+  claim_id: S02_SPATIAL_FACTORY_GOLDEN_APP_001_RENEWED_20260801T000607Z
+  claim_idempotency_key: 868c92febed6f1f359cde2ba7a8dba8977dc665d0df9329a7da574a4d8ae7f44
+  acceptance_contract_sha256: ffaa1a6fa0637039abd6ab9e43b1b978d1505edd0575ab020ca7256e3a45a8cb
+  lease_expires_utc: 2026-08-01T04:06:07Z
+  producer_return_due_utc: 2026-08-01T03:06:07Z
+  claim_status_at_compile: unexpired_renewed_superseding_claim
+
+operator_authority:
+  commit: b9d0f66cb64feeccef8472b1830fbcb5e1796551
+  path: projects/spatial-app-factory/packets/20260731T175717Z_REGINLEIF_SCHEDULED_LOOPS_PDCA_OPERATOR_DIRECTIVE.packet.md
+  blob: 04e3fc472c65f58fb2e189f546371eb9a2899330
+  authority_expires_utc: 2026-08-03T17:57:17Z
+  authority_ceiling: exact WorkItem branch-file-test and internal Git-Slack coordination only
+
+supersession:
+  prior_executor_packet:
+    commit: 7b5a36f6c4790ed99f80c71b4c8fc57816db8bdc
+    path: projects/spatial-app-factory/dispatch/20260731T212211Z_SPATIAL_FACTORY_GOLDEN_APP_001_S06_EXECUTOR.packet.yaml
+    blob: 2f0fae7cb03e7211de68ccf575fe776854cca89f
+    preserved_state: EXPIRED_HISTORICAL_PACKET_NOT_EXECUTION
+  prior_producer_return:
+    commit: 30ef5fb486653a23786b828a686fef4a80b0c33e
+    path: state/coordination/receipts/chatgpt_runtime/seat-07/20260731T223240Z_SPATIAL_FACTORY_GOLDEN_APP_001_PARTIAL_PRODUCER_RETURN.yaml
+    blob: 986d3c31f3e9e7334c027c52330aff769c5dfa33
+    result: HOLD
+    preserved_state: EXPIRED_PARTIAL_HOLD_NOT_PASS_NOT_ERASED
+  rule: this packet supersedes only the expired executor instructions; it preserves all prior history and does not upgrade prior evidence
+
+executor:
+  primary_producer: S07_BOUNDED_CODE_PATCH_BUILDER_or_one_operator_authorized_real_host
+  routing_consumer: Olrun/Claude-Dispatch
+  permitted_runtime: authenticated patch-capable checkout with Node, Python, curl, and Git
+  time_budget_minutes: 45
+  direct_cost_ceiling_usd: 0
+  operator_relay_budget_minutes: 0
+  network_budget: Git repository access and loopback HTTP only
+  stop_on:
+    - target branch head differs from fee50a70188b510695e8e5fad2ebadc6cba0535a before producer edits
+    - claim or packet expires
+    - any required path falls outside the four-path allowlist
+    - clean checkout or exact command evidence is unavailable
+    - implementation would require dependency, lockfile, workflow, deployment, account, credential, or secret mutation
+
+source_target:
+  repository: TTaoGaming/TAGS
+  visibility: private
+  base_sha: 1271e25306fe8ef8baea32704cf022435703d498
+  branch: agent/spatial-golden-app-001-20260731
+  current_head_sha: fee50a70188b510695e8e5fad2ebadc6cba0535a
+  head_readback_method: compare fee50a70188b510695e8e5fad2ebadc6cba0535a to branch returned status identical, ahead_by 0, behind_by 0
+  base_to_head_readback:
+    status: ahead
+    ahead_by: 3
+    behind_by: 0
+    changed_paths:
+      - prototypes/spatial-input-adapter.js
+      - tests/fab-prototype-smoke.test.mjs
+      - tests/spatial-input-adapter.test.mjs
+  exact_current_blobs:
+    prototypes/fab-prototype.html: 63e5bfe5a158781c207c5636537172bdbc838023
+    prototypes/spatial-input-adapter.js: c90a715c72735f0c04d60c91cd9c9afb0f2ddec4
+    tests/spatial-input-adapter.test.mjs: 9416a2e34c331ab46dd2f04c8d8664dbc0088405
+    tests/fab-prototype-smoke.test.mjs: 2f0e2795fe81910e82b9dc9ff697b86ff5e16231
+
+current_red_evidence:
+  - target branch is still exactly fee50a70188b510695e8e5fad2ebadc6cba0535a; no newer producer patch exists
+  - base-to-head diff changes only three files; prototypes/fab-prototype.html remains unchanged at blob 63e5bfe5a158781c207c5636537172bdbc838023
+  - current HTML ends its existing inline script and closes body without loading ./spatial-input-adapter.js
+  - current smoke test requires a classic script tag for ./spatial-input-adapter.js, so the HTML source readback contradicts the frozen smoke expectation
+  - current adapter proves pointer descriptors but has no explicit armed/disarmed gate and no injected target-activation callback on release
+  - current unit tests cover mapping, pinch down/up, invalid samples, and injected dispatch, but do not prove one target-specific activation after release or zero activation while disarmed
+  - A7 previously FELL and A5, A8, and A9 remained partial; no new exact command transcript supersedes that HOLD
+  - no distinct-provider STOOD or FELL verdict and no explicit Olrun ConsumerAck exist
+
+bounded_goal: >-
+  Complete the existing branch without broad refactor. Add the classic local script-load seam to the pinned FAB
+  prototype, add an explicit fail-closed armed state and an injected target-specific activation seam to the
+  dependency-free adapter, and prove that one valid armed pinch-release cycle activates the exact injected target
+  once while held, invalid, missing, non-finite, low-confidence, or disarmed input activates it zero times. Preserve
+  native mouse, touch, keyboard, onclick, and ordinary click fallback. Return exact execution evidence only; do not
+  claim browser trusted-user activation, deployment, publication, or customer outcome.
+
+allowed_paths:
+  modify_only:
+    - prototypes/fab-prototype.html
+    - prototypes/spatial-input-adapter.js
+    - tests/spatial-input-adapter.test.mjs
+    - tests/fab-prototype-smoke.test.mjs
+  forbidden: every other repository path
+  forbidden_even_if_related:
+    - package.json
+    - package-lock.json
+    - node_modules/**
+    - credentials/**
+    - secrets/**
+    - deployment/**
+    - .github/workflows/**
+    - service-worker files
+    - manifest files
+
+implementation_contract:
+  html_load_seam:
+    - add exactly one classic local script tag `<script src="./spatial-input-adapter.js"></script>` before the existing inline application script or at an equivalently deterministic pre-use location
+    - do not remove or rewrite the existing mainFab native button, id, onclick=startDemo(), keyboard path, mouse path, touch path, or click fallback
+    - no external CDN, module loader, bundler, framework, analytics, auth, backend, or dependency
+  adapter_state_and_activation:
+    - retain deterministic normalized x/y to viewport mapping and pointermove descriptors
+    - retain hysteresis with one pointerdown on threshold crossing, no repeated pointerdown while held, and one pointerup on release
+    - expose an explicit fail-closed armed/disarmed state; initial state must be documented and tests must bind it
+    - invalid, missing, non-finite, out-of-range, or below-confidence samples must never invoke activation
+    - disarmed samples must never invoke activation and must not leave a latent held state that activates after re-arming without a new valid pinch cycle
+    - accept an injected exact target or target resolver and an injected activation callback so Node tests need no browser DOM
+    - invoke the activation callback exactly once on release of one valid armed pinch cycle, against the same resolved target bound to that cycle
+    - held pinch, repeated release, reset, target loss, invalid sample, and disarm must not produce an extra activation
+    - default browser integration may call target.click() only through the explicit injected activation seam; label it programmatic activation and do not call it trusted user activation
+  integration_boundary:
+    - instantiate or expose one narrow FAB-specific adapter seam after DOM availability so deterministic synthetic samples can target mainFab
+    - camera and MediaPipe wiring are out of scope
+    - do not call preventDefault(), remove click listeners, replace the FAB with a non-native control, or cancel ordinary events
+  code_quality:
+    - smallest patch satisfying the frozen acceptance contract
+    - no speculative architecture, second app, generalized framework, or unrelated cleanup
+    - comments document the public seam, fail-closed arming rule, programmatic-activation ceiling, and native fallback boundary
+
+required_commands:
+  - id: C1_CHECKOUT_HEAD
+    command: git fetch origin agent/spatial-golden-app-001-20260731 && git checkout agent/spatial-golden-app-001-20260731 && test "$(git rev-parse HEAD)" = fee50a70188b510695e8e5fad2ebadc6cba0535a
+    expected_exit_code: 0
+  - id: C2_BASE_BINDING
+    command: test "$(git merge-base 1271e25306fe8ef8baea32704cf022435703d498 HEAD)" = 1271e25306fe8ef8baea32704cf022435703d498
+    expected_exit_code: 0
+  - id: C3_PREPATCH_RED
+    command: node --test tests/fab-prototype-smoke.test.mjs
+    expected_exit_code_before_patch: nonzero
+    rule: record actual exit code and failure text; do not invent red if the command unexpectedly passes
+  - id: C4_FULL_NODE_TESTS
+    command: node --test tests/spatial-input-adapter.test.mjs tests/fab-prototype-smoke.test.mjs
+    expected_exit_code_after_patch: 0
+  - id: C5_DIFF_CHECK
+    command: git diff --check
+    expected_exit_code: 0
+  - id: C6_ALLOWED_PATHS
+    command: git diff --name-only 1271e25306fe8ef8baea32704cf022435703d498..HEAD
+    expected_exit_code: 0
+    expected_set_exact:
+      - prototypes/fab-prototype.html
+      - prototypes/spatial-input-adapter.js
+      - tests/fab-prototype-smoke.test.mjs
+      - tests/spatial-input-adapter.test.mjs
+  - id: C7_STATIC_SERVER_START
+    command: python3 -m http.server 4173 --directory prototypes >/tmp/hfo-spatial-golden-001-http.log 2>&1 & echo $! >/tmp/hfo-spatial-golden-001-http.pid
+    expected_exit_code: 0
+  - id: C8_STATIC_LOAD_READBACK
+    command: curl -fsS http://127.0.0.1:4173/fab-prototype.html | grep -Fq '<script src="./spatial-input-adapter.js"></script>'
+    expected_exit_code: 0
+  - id: C9_ADAPTER_READBACK
+    command: curl -fsS http://127.0.0.1:4173/spatial-input-adapter.js | grep -Fq 'SpatialInputAdapter'
+    expected_exit_code: 0
+  - id: C10_STATIC_SERVER_STOP
+    command: kill "$(cat /tmp/hfo-spatial-golden-001-http.pid)"
+    expected_exit_code: 0
+  - id: C11_FINAL_SHA
+    command: git status --short && git rev-parse HEAD
+    expected_exit_code: 0
+    rule: final producer return must include exact stdout and final committed branch SHA
+
+acceptance_tests:
+  - id: A1_SOURCE_PIN
+    pass: current branch starts at exact base 1271e25306fe8ef8baea32704cf022435703d498 and producer starts from exact current head fee50a70188b510695e8e5fad2ebadc6cba0535a
+  - id: A2_POINTER_POSITION
+    pass: valid normalized input deterministically maps pointer position with exact expected viewport coordinates
+  - id: A3_EXACT_ONCE_TARGET_ACTIVATION
+    pass: one armed valid pinch crossing and release activates the exact injected target once; held pinch and repeated release do not repeat activation
+  - id: A4_ZERO_FALSE_ACTIVATION
+    pass: held, invalid, missing, non-finite, out-of-range, below-confidence, disarmed, reset, or target-missing cases produce zero activation; disarm clears latent held state
+  - id: A5_NATIVE_FALLBACK
+    pass: mainFab remains the original native button with onclick=startDemo(), and no preventDefault, click-listener removal, native-input replacement, or cancellation is introduced
+  - id: A6_NO_EXTERNAL_DEPENDENCY
+    pass: no dependency, lockfile, workflow, manifest, service-worker, credential, deployment, or external-network change exists
+  - id: A7_CLASSIC_SCRIPT_AND_STATIC_SMOKE
+    pass: fab-prototype.html loads the exact local adapter through one additive classic script tag and both local curl readbacks exit zero
+  - id: A8_BOUNDED_DIFF
+    pass: exact base-to-final changed-path set equals the four allowed paths and git diff --check exits zero
+  - id: A9_REAL_PRODUCER_READBACK
+    pass: producer return binds claim, this packet, runtime/model, exact branch and final SHA, changed paths and blobs, every command actually run with exit code/output, rollback, expiry, blocker, and honest flaw
+  - id: A10_CLAIM_CEILING
+    pass: no browser trusted-user-activation, accessibility, focus, soak, deployment, publication, merge, customer, or revenue PASS is claimed without direct evidence
+
+producer_return_contract:
+  required_fields:
+    - producer substrate and runtime/model, plus Node, Python, curl, and Git versions when observable
+    - claim commit 47cd1e8bfb7cf78651e8978f4dec1f5e2a76bad4 and blob f90e3797b4e5aa398aa386e555e26b53ae27cfc5
+    - this packet commit and blob after Git creation and readback
+    - target repository, base SHA, starting head fee50a70188b510695e8e5fad2ebadc6cba0535a, branch, and final SHA
+    - exact changed paths and final Git blob SHAs
+    - C1 through C11 with actual command, exit code, concise stdout/stderr, or explicit NOT_RUN plus blocker
+    - A1 through A10 as STOOD, FELL, or NOT_RUN without majority laundering or evidence inflation
+    - rollback procedure and whether rollback was exercised
+    - effect ceiling honored or exact violation
+    - remaining risk, blocker, expiry, and honest flaw
+  forbidden_substitutions:
+    - prose review, route, Slack message, commit existence, or static source inspection in place of execution
+    - synthetic exit codes, omitted failures, screenshot-only PASS, or hidden command variance
+    - same-provider structural preflight as terminal independent verdict
+    - programmatic click described as browser trusted-user activation
+
+world_effect_ceiling:
+  allowed:
+    - read exact private repository bytes and branch metadata
+    - modify only the four allowed paths on agent/spatial-golden-app-001-20260731
+    - run local deterministic Node tests and loopback static server/curl probes
+    - create ordinary commits on the isolated branch
+    - write one exact producer return to Gen-133 and one concise internal Slack pointer after Git readback
+  forbidden:
+    - merge, pull request approval, force push, rebase, reset, branch deletion, or shared-history rewrite
+    - deployment, publication, release, hosting, app-store action, customer effect, send, outreach, application, payment, or spend
+    - account, permission, security, secret, credential, task, workflow, network-service, or infrastructure mutation
+    - unrelated refactor, second app, new queue, seal, IMMUNIZE, permaweb upload, or architecture root
+
+rollback:
+  default: leave the dedicated branch unmerged
+  if_patch_reversal_needed: create an ordinary revert commit on the same branch; do not force-push, reset, rebase, delete, or rewrite history
+  if_precondition_fails: make no target change and return HOLD with exact observed head, command, exit code, and blocker
+  external_effect_rollback: none required because no external effect is authorized
+
+verification:
+  structural_preflight: S04_Hrist_same_provider_nonbinding_weight_0
+  binding_verifier: Sigrun/P4_APEX_FALSIFICATION_or_other_distinct_provider_nonproducer
+  independence_required: true
+  terminal_vocabulary: [STOOD, FELL]
+  verifier_must_bind:
+    - claim commit and blob
+    - this executor packet commit and blob
+    - final producer-return digest
+    - final target branch SHA and final four blob SHAs
+    - acceptance contract sha256 ffaa1a6fa0637039abd6ab9e43b1b978d1505edd0575ab020ca7256e3a45a8cb
+    - A1 through A10 and the strongest falsifier
+
+consumer:
+  routing_consumer: Olrun/Claude-Dispatch
+  final_consumer_ack_required_from: Olrun/Claude-Dispatch_as_spatial_factory_coordinator
+  ack_allowed_after: distinct-provider STOOD only
+  implicit_ack_forbidden: true
+  reducer_after_direct_return: S03_task_6a539fc5130c81918c13624739fb2a60
+
+strongest_falsifier: >-
+  The candidate fails if one complete armed pinch-release cycle can activate more than once, if any disarmed,
+  invalid, missing, non-finite, low-confidence, reset, repeated-release, or target-loss sequence activates the FAB,
+  if disarm preserves latent held state, if the activated target differs from the target bound at pinch start, if
+  native click/keyboard/touch fallback is canceled or replaced, if the script seam is absent or externally sourced,
+  if any forbidden path changes, or if a clean authenticated checkout cannot reproduce all real command evidence.
+
+routing:
+  durable_ingress: this exact Git packet for S07 or one operator-authorized host
+  direct_codex_or_claude_host_ingress_available_to_s06: false
+  slack_signal_after_git_readback: C0BGNGPJFHU
+  interpretation: DISPATCHED means the exact packet was durably compiled and signaled; it does not mean producer execution, test pass, verification, ConsumerAck, merge, deployment, or outcome
+
+honest_flaw: >-
+  S06 verified the renewed claim, exact target branch identity, base relationship, changed-path set, and current file
+  blobs through connected GitHub reads, but had no authenticated checkout, shell, browser, Codex ingress, Claude host
+  ingress, or distinct-provider verifier in this wake. The proposed activation seam is precise enough to test but may
+  still need a small API choice by the producer. Programmatic target.click() does not establish trusted browser user
+  activation, accessibility, focus behavior, cross-browser synthesis, or zero-false-trigger soak reliability. This
+  packet creates no production code, executed command, passing test, independent verdict, ConsumerAck, merge,
+  deployment, publication, send, spend, or customer outcome.
