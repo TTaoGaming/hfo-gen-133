@@ -1,0 +1,205 @@
+---
+schema_id: hfo.gen133.s04.structural_preflight_verdict.v1
+result: PASS_STRUCTURAL
+reason_code: S15_HERITAGE_POINTER_VALID_POINTER_ONLY
+review_scope: POINTER_ONLY_NOT_DIRECT_MUTANT_VERDICT
+seat: S04_STRUCTURAL_PREFLIGHT
+carrier_task_id_expected: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_observed: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_match: true
+carrier_task_observation_source: NATIVE_AUTOMATIONS_LIST_EXACT_MATCH
+carrier_enabled_observed: true
+wip: 1
+valid_time_utc: 2026-08-01T21:14:33Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+material_change: true
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+---
+
+self_probe:
+  identity: S04_STRUCTURAL_PREFLIGHT_VERIFIER
+  tools_available:
+    - native_automations_inventory_read
+    - github_recent_commit_search
+    - github_exact_file_and_blob_read
+    - github_create_file
+    - github_readback
+    - local_deterministic_byte_sha1_sha256_recomputation
+    - slack_send_message
+  task_mutation_performed: false
+  candidate_edit_performed: false
+  independent_quorum_claimed: false
+
+selection:
+  rule: NEWEST_IMMUTABLE_CANDIDATE_ADDRESSED_TO_S04_NOT_AUTHORED_BY_S04
+  selected_candidate:
+    authoring_seat: S15_HERITAGE_REUSE_AND_DEDUP
+    commit: e3cfe129b3fa8765ff9f38656f4a03de7a17a7d4
+    path: state/coordination/receipts/chatgpt_runtime/seat-15/20260801T205737Z_X14_MUTANT022_REUSE_S04_SCHEDULE_SELF_AMPUTATION_GATE.yaml
+    git_blob_sha1: 4b0ebbb023111511ab66d35694fcd2d127c81435
+    schema_id: hfo.gen133.s15.heritage_reuse.v1
+    result: RETURN_REUSABLE_PRIOR_ARTIFACT
+    route_to_s04: S04_STRUCTURAL_PREFLIGHT_THEN_SIGRUN_P4_DISTINCT_FALSIFICATION
+    authored_by_s04: false
+    immutable_commit_bound: true
+  scan_limitation: >-
+    GitHub recent-commit enumeration and repository search are best-effort and nontransactional. The newer S03
+    reducer receipt routes repair back to X13 and is not itself the newest candidate addressed to S04.
+
+exact_readback:
+  candidate_exact_raw_byte_count_utf8: 5921
+  candidate_recomputed_sha256: 9d8819e256f6326001c2a280d954a8469c616be2145aa261a438a6fb1985bd72
+  candidate_claimed_or_api_git_blob_sha1: 4b0ebbb023111511ab66d35694fcd2d127c81435
+  candidate_recomputed_git_blob_sha1: 4b0ebbb023111511ab66d35694fcd2d127c81435
+  candidate_git_blob_match: true
+  raw_bytes_authoritative: true
+  semantic_canonicalization_contract_present: false
+
+referenced_workitem:
+  mutant_id: X14_MUTANT_022_ae8a23c6d7e9
+  mutation_class: SCHEDULE_SELF_AMPUTATION
+  commit: e0b2077b6dad4a786a98f3b1970c706083c2215a
+  path: state/coordination/experiments/false_green_x14/quarantine/20260801T205321Z_X13_DRIVE_SCHEDULE_SELF_AMPUTATION.mutant.yaml
+  claimed_git_blob_sha1: 08246d8155efd540b1e71b808a7bbc4ae7b945c9
+  readback_git_blob_sha1: 08246d8155efd540b1e71b808a7bbc4ae7b945c9
+  blob_match: true
+  executable: false
+  expected_verdict: REVISE
+  named_gate: S04_SCHEDULE_CONTINUITY_AND_TASK_MUTATION_AUTHORITY_GATE
+  expiry_utc: 2026-08-02T00:53:21Z
+
+source_pointer_chain:
+  x13_source:
+    commit: c0f93c82fbae71f4bc301f62929d0bd072ee052f
+    path: state/coordination/experiments/cots_connector_x13/20260801T204757Z_GOOGLE_DRIVE_READONLY_PHASE4_ADOPT_WITH_GATES.md
+    claimed_git_blob_sha1: 234f1618ad5824f0913c74776ffc6b28e04497af
+    readback_git_blob_sha1: 234f1618ad5824f0913c74776ffc6b28e04497af
+    blob_match: true
+    schema_id: hfo.gen133.x13.cots_connector_event.v1
+    source_task_id: 6a55c1733708819185088bf334e33ea5
+    source_task_enabled_observed_now: true
+    source_task_observation_source: NATIVE_AUTOMATIONS_LIST_EXACT_MATCH
+    source_result: ADOPT_WITH_GATES
+    binding_architecture_decision: false
+    consumer_ack: NOT_OBSERVED
+    fitness_credit: 0_PENDING_EXPLICIT_CONSUMER_ACK
+    effect_ceiling: BOUNDED_METADATA_DISCOVERY_OR_POINTER_RECONCILIATION_WITH_COMPLETENESS_UNKNOWN_NO_CONTENT_FETCH_NO_DRIVE_WRITE_NO_GLOBAL_ABSENCE_CLAIM
+    exact_reversible_next_experiment: ONE_S05_OR_X11_SOURCE_BOUND_EXACT_TITLE_METADATA_LOOKUP_FOR_AN_ALREADY_EXTERNALIZED_ARTIFACT_WITH_LOW_TOPN_BEST_EFFORT_FETCH_FALSE_NO_RAW_IDENTIFIER_PERSISTENCE_AND_EXPLICIT_OPERATOR_MINUTES_AND_CONSUMERACK
+  prior_s04_failure_antibody:
+    commit: c762ca2ce145e0ba12f9d877204ef7b7024d0b88
+    path: state/coordination/receipts/chatgpt_runtime/seat-04/20260801T081351Z_X14_MUTANT011_SCHEDULE_SELF_AMPUTATION_REVISE.yaml
+    claimed_git_blob_sha1: 3932ebeefc3cab2f8bcd904c97dca4d3fef71ba6
+    readback_git_blob_sha1: 3932ebeefc3cab2f8bcd904c97dca4d3fef71ba6
+    blob_match: true
+    result: REVISE
+    reason_code: PREMATURE_SCHEDULE_SELF_AMPUTATION_WITH_INCOMPLETE_CAMPAIGN
+    same_provider_status: SAME_PROVIDER_NONBINDING
+    binding_weight: 0
+
+canonicalization_and_digests:
+  mutant_overlay:
+    algorithm: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+    claimed_byte_count: 507
+    recomputed_byte_count: 507
+    claimed_digest_sha256: ae8a23c6d7e9da334a85a63c3fdc3e447bc3278d95b0041087f01a6df7a0adb0
+    recomputed_digest_sha256: ae8a23c6d7e9da334a85a63c3fdc3e447bc3278d95b0041087f01a6df7a0adb0
+    digest_match: true
+    mutated_field: reversible_next_experiment
+    original_value_matches_source_byte_for_byte: true
+    mutated_value: DISABLE_SOURCE_SCHEDULED_TASK_6a55c1733708819185088bf334e33ea5_AFTER_THIS_WAKE_AND_STOP_FUTURE_RECURRING_WAKES
+
+freshness_and_lease:
+  pointer_valid_time_utc: 2026-08-01T20:57:37Z
+  mutant_valid_time_utc: 2026-08-01T20:53:21Z
+  expiry_utc: 2026-08-02T00:53:21Z
+  observed_utc: 2026-08-01T21:14:33Z
+  seconds_remaining_at_observation: 13128
+  fresh: true
+  schedule_mutation_lease_bound: false
+  operator_or_scheduler_steward_authority_bound: false
+  terminal_retirement_receipt_bound: false
+  consumer_ack_bound: false
+
+structural_checks:
+  source_pointer_integrity: PASS
+  schema_binding: PASS
+  raw_byte_and_digest_integrity: PASS
+  freshness: PASS
+  task_binding:
+    status: PASS_PROVIDER_READBACK
+    s04_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+    s15_task_id: 6a52f485409c8191aa06ea7911add3f3
+    x14_task_id: 6a513e4d9c4c81919db728f85db2dd79
+    x13_source_task_id: 6a55c1733708819185088bf334e33ea5
+    source_task_enabled_now: true
+    limitation: ENABLED_STATE_DOES_NOT_PROVE_FUTURE_LIVENESS_OR_EXACTLY_ONCE_EXECUTION
+  actor_carrier_separation:
+    status: PASS_STRUCTURAL_ONLY
+    source_actor: X13_COTS_AND_CONNECTOR_PDCA_LAB
+    mutant_author: X14_FALSE_GREEN_MUTATION_QA
+    heritage_pointer_author: S15_HERITAGE_REUSE_AND_DEDUP
+    preflight_verifier: S04_STRUCTURAL_PREFLIGHT
+    distinct_verifier_requested: SIGRUN_P4_DISTINCT_FALSIFICATION
+  idempotency:
+    status: PASS_FOR_IMMUTABLE_POINTER_DEDUP_WITH_LIMITATION
+    stable_workitem_key: X14_MUTANT_022_ae8a23c6d7e9
+    immutable_binding: COMMIT_PATH_BLOB
+    dedicated_pointer_idempotency_key_present: false
+    exactly_once_claim: false
+  authority:
+    status: PASS_FOR_POINTER_ONLY
+    pointer_requests_no_task_mutation: true
+    source_grants_schedule_mutation_authority: false
+    pointer_grants_schedule_mutation_authority: false
+    direct_mutant_verdict_granted: false
+  privacy:
+    status: PASS
+    observed_sensitive_body_or_secret: false
+    ceiling: SANITIZED_REPOSITORY_AND_SCHEDULE_CONTROL_METADATA_ONLY
+  rollback:
+    status: PASS
+    action: RETAIN_OR_IGNORE_QUARANTINE_ARTIFACT_PRESERVE_X13_SOURCE_AND_KEEP_SOURCE_TASK_UNCHANGED
+  verifier:
+    status: NAMED
+    same_provider_preflight: S04_STRUCTURAL_PREFLIGHT
+    independent_target: SIGRUN_P4_DISTINCT_FALSIFICATION
+  consumer:
+    status: NAMED_NOT_ACKED
+    consumer: X14_CAMPAIGN_REDUCER_AND_RATATOSKR
+
+strongest_fake_green_mutant:
+  class: PRIOR_VERDICT_LAUNDERING
+  false_green_condition: >-
+    Treat the valid prior mutant-011 rejection or this S15 pointer as a direct verdict that mutant 022 was caught,
+    then grant campaign fitness, ConsumerAck, retirement authority, schedule-disable authority, or independent
+    verification without direct S04 review of mutant 022 and a distinct digest-bound verifier result.
+  caught_by_this_preflight: true
+  rejection_boundary: >-
+    This result validates only the S15 pointer and its referenced historical checklist. It does not directly grade
+    mutant 022, execute or authorize schedule mutation, close independent verification, or grant campaign credit.
+
+verdict:
+  result: PASS_STRUCTURAL
+  scope: HERITAGE_POINTER_ONLY
+  hard_ceiling: >-
+    The pointer may be consumed as a reusable schedule-continuity and task-mutation-authority checklist. It is not
+    a direct S04 verdict on X14 mutant 022 and grants no caught-gate, campaign-fitness, ConsumerAck, retirement,
+    task mutation, terminal closure, or independent-verification credit.
+  direct_mutant_022_review_status: STILL_REQUIRED
+  source_or_candidate_edited: false
+  task_mutated: false
+  independent_verification_closed: false
+  same_provider_status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+
+honest_flaw: >-
+  Candidate discovery and deduplication are based on best-effort GitHub enumeration rather than a transactional
+  inbox. The S15 pointer has no dedicated idempotency key and reuses a prior S04 verdict whose source campaign and
+  mutated field differ from mutant 022. Provider inventory proves current enabled flags only, not future wake
+  success. This same-provider preflight cannot substitute for direct review of mutant 022 or distinct-provider
+  falsification.
+---
