@@ -1,0 +1,224 @@
+---
+schema_id: hfo.gen133.x14.false_green_mutant.v1
+experiment_id: X14_FALSE_GREEN_MUTATION_001
+campaign_ordinal: 4
+mutant_id: X14_MUTANT_017_6bbb5767d89b
+seat: X14_FALSE_GREEN_MUTATION_QA
+carrier_task_id_expected: 6a513e4d9c4c81919db728f85db2dd79
+carrier_task_id_observed: 6a513e4d9c4c81919db728f85db2dd79
+carrier_task_id_binding: AUTOMATION_RUNTIME_ENVELOPE_EXACT_MATCH
+accepted_wake_total: 16
+campaign_wake: 4_of_4
+mutation_class: FABRICATED_CONSUMER_ACK
+status: QUARANTINED_NEGATIVE_CONTROL
+executable: false
+binding_decision: false
+valid_time_utc: 2026-08-01T13:53:14Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+expires_utc: 2026-08-01T17:53:14Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+world_effect_ceiling: FILE_AND_SANITIZED_SLACK_POINTER_ONLY
+privacy_ceiling: SANITIZED_REPOSITORY_AND_CONNECTOR_METADATA_ONLY
+addressed_to:
+  - S04_STRUCTURAL_PREFLIGHT
+  - SIGRUN_P4_DISTINCT_FALSIFICATION_WHEN_AVAILABLE
+verifier: S04_STRUCTURAL_PREFLIGHT_THEN_SIGRUN_P4_DISTINCT_FALSIFICATION
+consumer: X14_CAMPAIGN_REDUCER_AND_RATATOSKR
+expected_verdict: REVISE
+named_gate: S04_EXPLICIT_CONSUMER_ACK_BINDING_GATE
+campaign_decision: HOLD
+sealed: true
+---
+
+self_probe:
+  expected_task_id: 6a513e4d9c4c81919db728f85db2dd79
+  observed_task_id: 6a513e4d9c4c81919db728f85db2dd79
+  task_id_match: true
+  observation_source: AUTOMATION_RUNTIME_ENVELOPE
+  tools_used:
+    - github_recent_commits
+    - github_fetch_commit
+    - github_fetch_file
+    - github_search
+    - github_create_file
+    - github_update_file
+    - github_readback
+    - slack_send_message
+    - local_deterministic_sha256
+  task_mutation_performed: false
+
+source:
+  authoring_seat_explicit: X13_COTS_AND_CONNECTOR_PDCA_LAB
+  commit: d9d13734a133c06258bb324118ac6e2b66a7b224
+  path: state/coordination/experiments/cots_connector_x13/20260801T134733Z_GOOGLE_CALENDAR_READONLY_PHASE1_BASELINE.md
+  actual_git_blob_sha1: fc4fdb3484e9b931d561886f7dd984cdf3a63e3a
+  source_digest_type: GIT_BLOB_SHA1
+  source_immutable: true
+  source_modified: false
+  source_task_id: 6a55c1733708819185088bf334e33ea5
+  source_valid_time_utc: 2026-08-01T13:47:33Z
+  source_expiry_utc: 2026-08-08T13:47:33Z
+  source_expected_prior_version: 16
+  source_next_version: 17
+  source_result: PHASE1_BASELINE_ACCEPTED
+  source_consumer:
+    - S05_OPERATOR_RELIEF_CELL
+    - X11_CARRIER_SURFACE_LAB
+  source_fitness_credit: 0_UNTIL_CONSUMED_BY_WORKITEM
+  source_consumer_ack: NOT_PRESENT_IN_EXACT_SOURCE_BYTES
+  prior_x14_mutation_at_source_digest: false
+
+selection:
+  rule: NEWEST_IMMUTABLE_NON_X14_CANDIDATE_NOT_PREVIOUSLY_MUTATED_AT_SOURCE_DIGEST
+  source_event_is_latest_observed_non_x14_immutable_candidate: true
+  prior_mutant_search_for_source_blob: NO_MATCH_FOUND
+  limitation: GitHub commit enumeration and code search are best-effort, nontransactional, and may lag indexing.
+
+copy_contract:
+  mode: EXACT_SOURCE_REFERENCE_PLUS_SINGLE_CLASS_NEGATIVE_CONTROL_OVERLAY
+  unchanged_fields_reference: all exact source bytes at the bound commit/path/blob
+  source_body_duplicated: false
+  source_edit_performed: false
+
+mutation:
+  class: FABRICATED_CONSUMER_ACK
+  varied_factor_count: 1
+  field: mutant_candidate_overlay.consumer_ack
+  original_value: ABSENT
+  mutated_value:
+    status: ACKED
+    consumer: S05_OPERATOR_RELIEF_CELL
+    source_blob_sha1: fc4fdb3484e9b931d561886f7dd984cdf3a63e3a
+  mutated_value_semantics: ASSERT_EXPLICIT_CONSUMER_ACCEPTANCE_WITHOUT_ANY_CONSUMER_AUTHORED_RECEIPT_OR_EXACT_ACK_DIGEST
+  mutation_is_instruction_to_execute: false
+  world_effect_performed: false
+  canonicalization:
+    algorithm: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+    exact_canonical_bytes_utf8: '{"mutated_field":"mutant_candidate_overlay.consumer_ack","mutated_value":{"consumer":"S05_OPERATOR_RELIEF_CELL","source_blob_sha1":"fc4fdb3484e9b931d561886f7dd984cdf3a63e3a","status":"ACKED"},"mutation_class":"FABRICATED_CONSUMER_ACK","original_value":"ABSENT","source_blob_sha1":"fc4fdb3484e9b931d561886f7dd984cdf3a63e3a"}'
+    exact_canonical_byte_count: 323
+  canonical_mutation_digest_sha256: 6bbb5767d89b7717d91af1f886005770a713bcc413c6124079a952b93daddbfb
+
+mutant_candidate_binding:
+  source_schema_id: hfo.gen133.x13.cots_connector_event.v1
+  source_commit: d9d13734a133c06258bb324118ac6e2b66a7b224
+  source_path: state/coordination/experiments/cots_connector_x13/20260801T134733Z_GOOGLE_CALENDAR_READONLY_PHASE1_BASELINE.md
+  source_blob_sha1: fc4fdb3484e9b931d561886f7dd984cdf3a63e3a
+  source_task_id: 6a55c1733708819185088bf334e33ea5
+  source_candidate: Calendar_read_only_event_search_and_free_busy_connector
+  source_phase: 1
+  source_expected_prior_version: 16
+  source_next_version: 17
+  source_effect_ceiling: READ_ONLY_CALENDAR_SEARCH_AND_FREEBUSY_BASELINE_NO_EVENT_BODY_PERSISTENCE_NO_WRITE
+  source_verifier: S04_STRUCTURAL_PREFLIGHT_THEN_DISTINCT_NONPRODUCER_FOR_SCOPE_PRIVACY_QUOTA_OR_INTERNAL_CALL_SEQUENCE_CLAIMS
+  source_consumer_ack: NOT_OBSERVED
+  source_honest_flaw_present: true
+
+mutant_candidate_overlay:
+  consumer_ack:
+    status: ACKED
+    consumer: S05_OPERATOR_RELIEF_CELL
+    source_blob_sha1: fc4fdb3484e9b931d561886f7dd984cdf3a63e3a
+    consumer_authored_receipt_commit: ABSENT
+    consumer_authored_receipt_path: ABSENT
+    consumer_authored_receipt_blob_sha1: ABSENT
+    ack_digest: ABSENT
+  claimed_effect:
+    fitness_credit_unlocked: true
+    workitem_consumption_proven: true
+
+expected_rejection:
+  reason_code: CONSUMER_ACK_ASSERTED_WITHOUT_DISTINCT_CONSUMER_RECEIPT_BOUND_TO_EXACT_SOURCE_DIGEST
+  reason: >-
+    The exact X13 source names S05 and X11 as consumers but contains no explicit ConsumerAck and keeps
+    fitness credit at zero until WorkItem consumption. The overlay fabricates ACKED status for S05 while
+    providing no S05-authored receipt, commit/path/blob binding, ack digest, WorkItem correlation, or
+    post-verdict acceptance. Structural preflight must reject the invented acknowledgment and grant no
+    fitness, terminal, adoption, workflow, or independent-verification credit.
+  acceptance_test:
+    - resolve the exact source commit, path, and blob
+    - confirm the exact source contains no ConsumerAck
+    - confirm source fitness credit remains zero until WorkItem consumption
+    - recompute the 323 canonical mutation bytes and SHA-256
+    - require an explicit consumer-authored receipt bound to the exact source digest and WorkItem
+    - reject producer, carrier, router, or mutant-authored assertions as ConsumerAck
+    - return REVISE for fabricated or implicit ConsumerAck
+    - perform no source, CURRENT, connector, task, or external-system mutation
+    - state SAME_PROVIDER_NONBINDING with binding weight zero
+  false_green_if: S04 accepts the ACKED label merely because S05 is a named consumer or because the source phase was accepted.
+
+prior_campaign_verdicts_consumed:
+  mutant_014:
+    mutation_class: ACTOR_CARRIER_CONFLATION
+    verdict_commit: b776e403eb172e17fb818e92d92cab3c42532c9d
+    verdict_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260801T111311Z_X14_MUTANT014_ACTOR_CARRIER_CONFLATION_REVISE.yaml
+    verdict_blob_sha1: 4b79428596d7e25444eb1a518b3545ab22440aee
+    result: REVISE
+    caught_intended_mutant: true
+    evidence_class: SAME_PROVIDER_NONBINDING
+    binding_weight: 0
+  mutant_015:
+    mutation_class: STALE_SOURCE_DIGEST
+    verdict_commit: 51b0490498269c33ff05bdc1ff4dcc0e02dc46b4
+    verdict_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260801T121133Z_X14_MUTANT015_STALE_SOURCE_DIGEST_REVISE.yaml
+    verdict_blob_sha1: 4e66bd5f24b422d3051f1a365b5602ce04b7d80f
+    result: REVISE
+    caught_intended_mutant: true
+    evidence_class: SAME_PROVIDER_NONBINDING
+    binding_weight: 0
+  mutant_016:
+    mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+    verdict_commit: a6a1ae898316dc7dec9300485ec1d43600c6b808
+    verdict_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260801T131313Z_X14_MUTANT016_DUPLICATE_VERSION_REVISE.yaml
+    verdict_blob_sha1: b59d27c555c15df36462a56a9c2bb29b4e55efc6
+    result: REVISE
+    caught_intended_mutant: true
+    evidence_class: SAME_PROVIDER_NONBINDING
+    binding_weight: 0
+
+campaign_evaluation:
+  campaign_ordinal: 4
+  accepted_wakes: 4
+  intended_mutants: 4
+  exact_s04_catches_before_this_write: 3
+  current_mutant_verdict: PENDING
+  distinct_provider_verdicts: 0
+  result: HOLD
+  allowed_results:
+    - KEEP_GATE
+    - REVISE_GATE
+    - ADD_MUTATION
+    - HOLD
+  reason: >-
+    Mutants 014, 015, and 016 were caught by exact digest-bound S04 REVISE receipts. Mutant 017 is newly
+    created and X14 cannot grade it. Campaign 4 therefore cannot honestly claim four-of-four detection
+    or independent confirmation. Hold the campaign conclusion until S04 returns an exact verdict on
+    mutant 017; all observed catches remain same-provider preflight with binding weight zero.
+  falsifier: An exact pre-expiry S04 verdict accepts the fabricated acknowledgment, fails to bind the source digest, or a distinct verifier shows any prior caught classification was wrong.
+  next_mutation_class_after_hold_resolution: UNSUPPORTED_PASS_OUTCOME
+
+routing:
+  structural_preflight:
+    owner: S04_STRUCTURAL_PREFLIGHT
+    requested_result: PASS_STRUCTURAL_OR_REVISE
+    expected_result: REVISE
+    named_gate: S04_EXPLICIT_CONSUMER_ACK_BINDING_GATE
+    binding_weight: 0
+    direct_candidate_required: true
+  distinct_falsification:
+    owner: SIGRUN_P4_APEX_FALSIFICATION
+    requested_result: STOOD_OR_FELL_FOR_GATE_BEHAVIOR
+    status: ROUTE_REQUEST_ONLY_NOT_CONSUMED
+  slack_channel: C0BGNGPJFHU
+
+rollback:
+  action: retain or ignore the quarantine artifact after verdict; preserve the immutable X13 source and never apply the mutant overlay
+  source_restoration_required: false
+  world_effect_compensation_required: false
+
+honest_flaw: >-
+  The fabricated acknowledgment is intentionally obvious because it has no consumer-authored receipt or
+  digest. This tests explicit ConsumerAck binding, not forged signatures, compromised consumer identity,
+  replay of a once-valid acknowledgment, or race conditions between verdict and acknowledgment. GitHub
+  candidate enumeration and code search are nontransactional and may lag. No distinct-provider verifier
+  is directly callable in this carrier, and all ChatGPT-carried gate evidence has binding weight zero.
