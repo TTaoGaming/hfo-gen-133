@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "hfo.gen133.schema.dollar_zero_response.v0_1",
+  "title": "$0 mesh response row",
+  "description": "One row per $0-mesh model invocation. Appended by a SINGLE writer to state/ssot/dollar_zero_mesh_responses.jsonl. An unvalidated model output is not evidence and must not become a row without status=schema_fail.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_id", "row_id", "ts_utc", "valid_time_utc", "transaction_time_utc",
+    "job_id", "on_behalf_of", "role", "provider", "model", "param_count_b",
+    "tier", "budget_usd", "status", "prompt_sha256", "response_text",
+    "schema_valid", "claim_status", "prev_sha256", "row_sha256", "hash_rule", "sealed"
+  ],
+  "properties": {
+    "schema_id":            { "const": "hfo.gen133.schema.dollar_zero_response.v0_1" },
+    "row_id":               { "type": "string", "minLength": 1 },
+    "ts_utc":               { "type": "string", "format": "date-time", "description": "Observed clock at write. NOT hand-authored." },
+    "valid_time_utc":       { "type": "string", "format": "date-time" },
+    "transaction_time_utc": { "type": "string", "format": "date-time" },
+
+    "job_id":        { "type": "string", "minLength": 1 },
+    "on_behalf_of":  { "type": "string", "minLength": 1, "description": "REQUIRED. A rostered carrier owns this job. Per free_mesh_harness.contract.md, the mesh never acts on its own behalf." },
+    "role":          { "type": "string", "enum": ["verifier", "classifier", "enricher", "summarizer", "drafter", "voter"], "description": "ROLE, never a callsign. Mesh workers do not hold callsigns." },
+
+    "provider":      { "type": "string", "enum": ["ollama", "groq", "cerebras", "openrouter", "sambanova", "cohere", "mistral", "gemini"] },
+    "model":         { "type": "string", "minLength": 1 },
+    "param_count_b": { "type": "number", "minimum": 0, "description": "Billions of parameters. Rows with param_count_b < 8 and role != 'summarizer' MUST carry status=tier_violation — see the 3B rule in cost_tier_routing.v0_1.md." },
+    "tier":          { "const": "cheap" },
+    "budget_usd":    { "const": 0, "description": "MUST be exactly 0. A nonzero value is a routing bug, not a cost." },
+
+    "status": {
+      "type": "string",
+      "enum": ["ok", "schema_fail", "tier_violation", "provider_error", "rate_limited", "timeout", "refused"],
+      "description": "schema_fail is a FIRST-CLASS outcome and must be written, not silently retried. A mesh whose failures are invisible reads green forever."
+    },
+
+    "prompt_sha256":  { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "response_text":  { "type": "string", "description": "Raw model output, verbatim, including on schema_fail. This is the only forensic record." },
+    "parsed_payload": { "description": "Validated structured output. MUST be absent unless schema_valid is true." },
+    "schema_valid":   { "type": "boolean" },
+    "validator":      { "type": "string", "description": "e.g. pydantic-ai 1.70.0 / instructor 1.14.5. Which program did the validating - never the model itself." },
+
+    "latency_ms":     { "type": "number", "minimum": 0 },
+    "tokens_in":      { "type": "integer", "minimum": 0 },
+    "tokens_out":     { "type": "integer", "minimum": 0 },
+
+    "claim_status":   { "type": "string", "enum": ["wired_with_receipts", "partial", "proposed", "failed", "blocked"] },
+    "verifier_result":{ "type": "string", "description": "How this row was checked, by what program. Absent or empty means claim_status may not be wired_with_receipts." },
+    "remaining_risk": { "type": "array", "items": { "type": "string" } },
+    "honest_flaw":    { "type": "string" },
+
+    "prev_sha256":      { "type": ["string", "null"], "description": "Prior row_sha256, or null ONLY on a genesis or explicitly-noted re-anchor row." },
+    "prev_sha256_note": { "type": "string", "description": "REQUIRED when prev_sha256 is null on a non-genesis row. Explains why no link is computable." },
+    "row_sha256":       { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "hash_rule":        { "type": "string", "minLength": 1, "description": "The EXACT canonicalization used, stated on the row. A hash nobody can recompute is self-declared, not tamper-evident. See L_UNREPRODUCIBLE_ROW_HASH and L_CHAIN_HASH_ABANDONED_SILENTLY." },
+
+    "sealed":     { "const": false, "description": "No HMAC/Ed25519 key exists in-forge at gen-133. SENTINEL-CLASS, not blood-class." },
+    "seal_note":  { "type": "string" }
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "schema_id": "hfo.gen133.income.upwork_job_filter.v0_1",
+  "valid_time_utc": "2026-07-31T00:00:00Z",
+  "author": "sonnet-5 code lane, dispatched by SIGRUN_P4 gen-133",
+  "confidence_legend": {
+    "MEASURED": "sourced from an operator-supplied number or the task brief itself",
+    "UNVERIFIED_HEURISTIC": "common Upwork-practitioner wisdom or an educated guess with no data behind it yet; treat as a starting point to be corrected by the first 20 real proposals"
+  },
+  "bid_if_all_of": [
+    {
+      "field": "title_or_description",
+      "op": "contains_any",
+      "value": [
+        "AI agent", "agent reliability", "agent evaluation", "LLM eval",
+        "eval harness", "hallucination", "guardrail", "prompt injection",
+        "agent QA", "agent testing", "agent monitoring", "agent observability",
+        "reliability engineer", "verification", "audit trail", "policy as code",
+        "OPA", "Rego", "test automation LLM", "AI QA"
+      ],
+      "confidence": "UNVERIFIED_HEURISTIC",
+      "rationale": "keyword set drawn from the operator's actual niche language, not a generic 'AI' keyword list; no click-through data exists yet on which of these actually correlate with a fit"
+    },
+    {
+      "field": "client.payment_verified",
+      "op": "==",
+      "value": true,
+      "confidence": "UNVERIFIED_HEURISTIC",
+      "rationale": "standard Upwork practitioner floor; excludes the highest-risk non-paying segment"
+    },
+    {
+      "field": "client.total_spend_usd",
+      "op": ">=",
+      "value": 1000,
+      "confidence": "UNVERIFIED_HEURISTIC",
+      "rationale": "a client with zero platform spend history has an unknown, possibly-zero probability of actually hiring; $1,000 is a common practitioner floor, not a measured cutoff for this operator"
+    },
+    {
+      "field": "client.hire_rate_pct",
+      "op": ">=",
+      "value": 40,
+      "confidence": "UNVERIFIED_HEURISTIC",
+      "rationale": "clients who post and never hire waste a Connect regardless of fit; 40% is a guess, not a measured threshold"
+    }
+  ],
+  "skip_if_any_of": [
+    {
+      "field": "title_or_description",
+      "op": "contains_any",
+      "value": [
+        "build a full app", "build an entire platform", "build from scratch",
+        "MVP build", "full stack developer", "no experience needed",
+        "unpaid trial", "equity only", "revenue share only", "test task unpaid",
+        "$3/hr", "$5/hr", "$8/hr", "long term unpaid"
+      ],
+      "confidence": "UNVERIFIED_HEURISTIC",
+      "rationale": "disqualifies full-build asks (different skill/scope than a reliability audit) and unpaid/equity-only asks; wording list is a guess to be tightened after real postings are seen"
+    },
+    {
+      "field": "proposals_count",
+      "op": ">=",
+      "value": 50,
+      "confidence": "MEASURED",
+      "rationale": "explicit threshold named in the task brief: '50+ proposals already' disqualifies"
+    },
+    {
+      "field": "hourly_rate_max_usd",
+      "op": "<",
+      "value": 35,
+      "confidence": "UNVERIFIED_HEURISTIC",
+      "rationale": "floor is a placeholder pending the operator's actual [RATE] in PROFILE.md; set 15-20% below the operator's real rate once known, not guessed independently of it"
+    },
+    {
+      "field": "post_age_days",
+      "op": ">",
+      "value": 7,
+      "confidence": "MEASURED",
+      "rationale": "matches render_proposal.py --max-age-days default (7); the two must be kept in sync by hand until one config feeds both"
+    }
+  ],
+  "preferred_but_not_required": [
+    {
+      "field": "proposals_count",
+      "op": "<=",
+      "value": 10,
+      "confidence": "UNVERIFIED_HEURISTIC",
+      "rationale": "the 50-proposal line is a hard disqualifier; a much lower count is where realistic odds of being read actually live, per general Upwork practitioner wisdom -- no data of this operator's own yet"
+    },
+    {
+      "field": "client.location",
+      "op": "in",
+      "value": ["US", "EU", "CA", "UK", "AU"],
+      "confidence": "UNVERIFIED_HEURISTIC",
+      "rationale": "soft preference for payment-friction-free geographies; not a disqualifier on its own"
+    }
+  ]
+}

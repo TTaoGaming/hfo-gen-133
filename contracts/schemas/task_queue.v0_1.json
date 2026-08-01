@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "hfo.gen133.schema.task_queue.v0_1",
+  "title": "task_queue row",
+  "description": "One row per queued work item in state/ssot/task_queue.jsonl. ANY substrate worker (Codex, Antigravity, $0 mesh, ChatGPT cloud, Claude) pulls from this file. Append-only. A worker NEVER edits a queue row; it writes a claim and later a result. This is one of exactly TWO schemas the factory adds - see contracts/mape_k_schedule_adapter.v0_1.md.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_id", "task_id", "queued_utc", "title", "objective",
+    "capabilities_required", "effect_ceiling", "acceptance_test",
+    "timebox_minutes", "priority", "status", "queued_by"
+  ],
+  "properties": {
+    "schema_id": { "const": "hfo.gen133.schema.task_queue.v0_1" },
+    "task_id":   { "type": "string", "pattern": "^[a-z0-9-]{3,64}$", "description": "kebab-case, globally unique. The join key to task_results.jsonl." },
+    "queued_utc":{ "type": "string", "format": "date-time", "description": "Observed clock. Never hand-authored." },
+    "queued_by": { "type": "string", "description": "Callsign of the queuer. A task with no owner is not a task." },
+
+    "title":     { "type": "string", "minLength": 1, "maxLength": 120 },
+    "objective": { "type": "string", "minLength": 1, "description": "ONE bounded task. If it needs a conjunction, it is two tasks." },
+
+    "capabilities_required": {
+      "type": "array", "minItems": 1,
+      "items": { "type": "string", "enum": ["read_files", "write_files", "run_tests", "bash", "browser", "network_read", "llm_text", "git_local"] },
+      "description": "A worker pulls only tasks whose capabilities are a SUBSET of its declared capabilities. This is the whole routing rule."
+    },
+
+    "effect_ceiling": {
+      "type": "string",
+      "enum": ["T0_READ_ONLY", "T1_LOCAL_WRITE", "T2_EXTERNAL_SEND_WITHIN_ENVELOPE"],
+      "description": "T2 requires a signed campaign authorization. A worker MUST refuse a task whose ceiling exceeds its own."
+    },
+
+    "acceptance_test": {
+      "type": "string", "minLength": 1,
+      "description": "REQUIRED and MUST be written BEFORE the task is worked (Ratatoskr R3). A checkable condition a non-producer can evaluate. 'Looks good' is not an acceptance test."
+    },
+
+    "timebox_minutes": { "type": "integer", "minimum": 1, "maximum": 240 },
+    "priority":        { "type": "integer", "minimum": 0, "maximum": 9, "description": "0 = highest." },
+
+    "status": {
+      "type": "string",
+      "enum": ["QUEUED", "CLAIMED", "DONE", "FAILED", "DEADLETTER"],
+      "description": "Advisory projection only. AUTHORITY is the append-only tail: the latest claim/result row for this task_id wins. Never rewrite a queue row to change status."
+    },
+
+    "lease": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "worker_id":   { "type": "string" },
+        "substrate":   { "type": "string", "enum": ["codex", "antigravity", "dollar_zero_mesh", "chatgpt_cloud", "claude_code", "operator"] },
+        "claimed_utc": { "type": "string", "format": "date-time" },
+        "expires_utc": { "type": "string", "format": "date-time", "description": "claimed_utc + timebox_minutes + grace. On expiry the task is pullable again. This is the ONLY retry mechanism in v0." }
+      },
+      "required": ["worker_id", "substrate", "claimed_utc", "expires_utc"]
+    },
+
+    "attempts":       { "type": "integer", "minimum": 0, "default": 0, "description": "3 attempts then DEADLETTER. A task that has failed 3 times is a spec problem, not a worker problem." },
+    "consumer":       { "type": "string", "description": "Who ACCEPTS the result. Without a named consumer the output is inventory (Ratatoskr R1). Defaults to the queuer." },
+    "depends_on":     { "type": "array", "items": { "type": "string" }, "description": "task_ids that must be DONE first." },
+    "notes":          { "type": "string" }
+  }
+}

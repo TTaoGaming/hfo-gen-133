@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hfo.local/schemas/targets.schema.json",
+  "title": "Prospect row (one line of a targets_*.jsonl file)",
+  "description": "One prospect row inside the audience covered by a campaign_authorization. Each row must independently satisfy the authorization's audience_definition.inclusion_rule and fail every audience_definition.exclusion_rule; that check is manual/upstream, not enforced by this schema. This schema enforces SHAPE only. render_message.py refuses to render for any row where suppression is true, email is null, or email_verification_status is not \"valid\".",
+  "type": "object",
+  "required": [
+    "prospect_id",
+    "first_name",
+    "last_name",
+    "title",
+    "company",
+    "company_domain",
+    "email",
+    "email_source",
+    "email_verification_status",
+    "linkedin_url",
+    "hook_quote",
+    "hook_source_url",
+    "hook_date",
+    "confidence",
+    "suppression",
+    "notes"
+  ],
+  "properties": {
+    "prospect_id": { "type": "string", "minLength": 1 },
+    "first_name": { "type": "string", "minLength": 1 },
+    "last_name": { "type": "string", "minLength": 1 },
+    "title": { "type": "string", "minLength": 1 },
+    "company": { "type": "string", "minLength": 1 },
+    "company_domain": { "type": "string", "minLength": 1 },
+    "email": {
+      "type": ["string", "null"],
+      "description": "MUST be null unless a real address has been obtained through verified enrichment and passed through a verification service. Never a pattern-guessed or constructed address."
+    },
+    "email_source": {
+      "type": ["string", "null"],
+      "enum": ["enriched", "guessed", "public", null],
+      "description": "Provenance of the email field. \"guessed\" exists in the enum for completeness but render_message.py's email_verification_status gate makes a guessed/unverified address unsendable regardless."
+    },
+    "email_verification_status": {
+      "type": "string",
+      "enum": ["unverified", "valid", "catch_all", "invalid", "disposable"],
+      "description": "Result of a third-party verification pass. Must be exactly \"valid\" for render_message.py to allow a render for this row."
+    },
+    "linkedin_url": { "type": ["string", "null"] },
+    "hook_quote": { "type": "string", "minLength": 1 },
+    "hook_source_url": { "type": "string", "minLength": 1, "format": "uri" },
+    "hook_date": { "type": "string", "minLength": 1, "description": "Date the hook was published, as a plain date string (source-dependent precision, e.g. 2026-06-25)." },
+    "confidence": { "type": "string", "enum": ["HIGH", "MEDIUM", "LOW"] },
+    "suppression": { "type": "boolean" },
+    "notes": { "type": "string" },
+    "proof_artifact_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "OPTIONAL. Not part of the required prospect-shape fields above. Present so the {{proof_artifact_url}} template variable (in variable_allowlist) has a value to resolve against. In targets_arg_c1.jsonl this is the same public proof-repo URL on every row (a campaign-wide constant carried per-row for render_message.py's simple row-lookup design), not a per-prospect fact."
+    }
+  },
+  "additionalProperties": true
+}

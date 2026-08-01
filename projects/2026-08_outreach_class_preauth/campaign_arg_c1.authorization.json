@@ -1,0 +1,56 @@
+{
+  "campaign_id": "ARG-C1",
+  "valid_time_utc": "2026-07-31T00:00:00Z",
+  "transaction_time_utc": "2026-07-31T17:38:48Z",
+  "operator_signature": null,
+  "audience_definition": {
+    "industry": "AI agent evaluation, observability, and agent-security tooling",
+    "company_size_range": "15-200 employees",
+    "role_titles": ["CEO", "Founder", "Co-Founder", "CTO", "Co-CEO"],
+    "geography": "US and EU",
+    "inclusion_rule": "Company or the named individual has published a dated, publicly verifiable statement (blog post, press quote, or company research writeup) about AI agent reliability, agent failure modes, or agent security within the last 120 days, with a source URL that resolves and is directly attributable.",
+    "exclusion_rule": [
+      "Company has been acquired by an organization with >1000 employees within the last 12 months",
+      "No verifiable, dated, publicly-sourced hook could be found for the named individual or their company",
+      "The named individual or their domain is present in the suppression ledger (suppression=true)",
+      "Role title falls outside the CEO/Founder/Co-Founder/CTO/Co-CEO decision-maker set",
+      "No real, verified email address exists for the named individual (email_verification_status != valid)"
+    ]
+  },
+  "max_prospects_total": 25,
+  "max_sends_per_day": 20,
+  "copy_template_sha256": "3d3360d1d20ae15ba21bf770d2550223fc3cbd9c2b9fe13c4d9543283207dee8",
+  "variable_allowlist": [
+    "first_name",
+    "company",
+    "hook_quote",
+    "hook_source_url",
+    "hook_date",
+    "proof_artifact_url"
+  ],
+  "sequence": [
+    { "step": 1, "wait_days": 0, "template_sha256": "3d3360d1d20ae15ba21bf770d2550223fc3cbd9c2b9fe13c4d9543283207dee8" },
+    { "step": 2, "wait_days": 4, "template_sha256": "24f569717eb184a9919b39012f29dbeeefcbcee961c50dfddfd54aaf155c916f" },
+    { "step": 3, "wait_days": 9, "template_sha256": "ff2ee29a140ee26685293d22a1872ce7a8b454914e5155b7f802e0ab6901b7c3" }
+  ],
+  "opt_out_language": "If you'd rather not hear from me again, reply STOP and I will not contact you further.",
+  "reply_policy": "hive_drafts_operator_sends",
+  "kill_switch_path": "C:\\Dev\\hfo_gen_133_forge\\projects\\outreach_class_preauth\\KILL_SWITCH.json",
+  "review_cadence_hours": 24,
+  "success_metric": {
+    "name": "substantive_reply_rate",
+    "target": ">=1 substantive reply (not opt-out, not bounce, not auto-reply) among the initial 8-prospect send",
+    "measured_by": "manual classification of inbound replies against reply_policy, logged to a lane_returns-style receipt row per reply"
+  },
+  "failure_escalation": {
+    "trigger": "bounce rate exceeds 5% in a calendar day, OR any spam complaint is received, OR SPF/DKIM/DMARC authentication check fails, OR an opt-out is not honored within 10 business days",
+    "action": "immediately run `python kill_switch.py halt ARG-C1 --reason \"<trigger observed>\" --by \"<who/what detected it>\"`, stop all further sends under this authorization, and route to the operator for review before re-arming"
+  },
+  "sender_identity": {
+    "from_name": "Tom Tai — AgentReleaseGate",
+    "from_email": "tommy@agentreleasegate.com",
+    "sending_domain": "agentreleasegate.com",
+    "physical_postal_address": "UNVERIFIED — no valid business postal address is on file for this campaign. CAN-SPAM requires one in every commercial email. This authorization must not be treated as send-ready until the operator supplies a real address and this field is updated."
+  },
+  "effect_ceiling": "T2_EXTERNAL_SEND_WITHIN_ENVELOPE"
+}

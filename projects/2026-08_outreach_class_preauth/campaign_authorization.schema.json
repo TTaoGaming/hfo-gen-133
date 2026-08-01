@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hfo.local/schemas/campaign_authorization.schema.json",
+  "title": "Campaign Authorization (signed pre-authorized send envelope)",
+  "description": "A single operator-signed authorization for a CLASS of outbound sends. The operator signs this ONCE per campaign. Every individual send must be provably inside the envelope this document defines: audience, copy, variable allowlist, cadence, opt-out, and kill switch. render_message.py is the code that enforces this contract at render time.",
+  "type": "object",
+  "required": [
+    "campaign_id",
+    "valid_time_utc",
+    "transaction_time_utc",
+    "operator_signature",
+    "audience_definition",
+    "max_prospects_total",
+    "max_sends_per_day",
+    "copy_template_sha256",
+    "variable_allowlist",
+    "sequence",
+    "opt_out_language",
+    "reply_policy",
+    "kill_switch_path",
+    "review_cadence_hours",
+    "success_metric",
+    "failure_escalation",
+    "sender_identity",
+    "effect_ceiling"
+  ],
+  "properties": {
+    "campaign_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Stable short identifier for this campaign, e.g. ARG-C1. Referenced by the kill switch file and by render_message.py."
+    },
+    "valid_time_utc": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When this authorization is valid FOR (the campaign's operative window start), in UTC, RFC3339, Z-suffixed."
+    },
+    "transaction_time_utc": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When this authorization record was WRITTEN, in UTC, RFC3339, Z-suffixed. Bitemporal pair with valid_time_utc."
+    },
+    "operator_signature": {
+      "type": ["string", "null"],
+      "description": "Null until the operator signs. A code lane must never set this to a non-null value. Absence of a non-null signature means this authorization has no world-effect standing."
+    },
+    "audience_definition": {
+      "type": "object",
+      "description": "Describes the CLASS of recipient this authorization covers, not an enumerated list. The actual prospect rows live in a separate targets file and must each satisfy inclusion_rule and fail every exclusion_rule.",
+      "required": ["industry", "company_size_range", "role_titles", "geography", "inclusion_rule", "exclusion_rule"],
+      "properties": {
+        "industry": { "type": "string", "minLength": 1 },
+        "company_size_range": { "type": "string", "minLength": 1 },
+        "role_titles": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "minItems": 1
+        },
+        "geography": { "type": "string", "minLength": 1 },
+        "inclusion_rule": { "type": "string", "minLength": 1 },
+        "exclusion_rule": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "minItems": 1
+        }
+      }
+    },
+    "max_prospects_total": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Ceiling on how many distinct prospects this authorization ever covers, across the whole sequence."
+    },
+    "max_sends_per_day": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Ceiling on outbound sends per calendar day under this authorization, across all sequence steps combined."
+    },
+    "copy_template_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$",
+      "description": "sha256 (lowercase hex) of the primary (step 1 / initial) template file. render_message.py refuses to render any template file whose sha256 does not equal this value."
+    },
+    "variable_allowlist": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-zA-Z0-9_]+$" },
+      "minItems": 1,
+      "uniqueItems": true,
+      "description": "The complete, exhaustive set of {{var}} placeholder names any template under this authorization may use. Any template variable outside this list is a refusal, not a warning."
+    },
+    "sequence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["step", "wait_days", "template_sha256"],
+        "properties": {
+          "step": { "type": "integer", "minimum": 1 },
+          "wait_days": { "type": "integer", "minimum": 0 },
+          "template_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+        }
+      },
+      "description": "Ordered cadence steps. wait_days is measured from step 1 (day 0). Each step names the sha256 of the exact template file authorized for that step."
+    },
+    "opt_out_language": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Exact opt-out sentence(s) that must appear VERBATIM in every rendered message body. render_message.py refuses (exit 4) any render whose body does not contain this string exactly."
+    },
+    "reply_policy": {
+      "type": "string",
+      "enum": [
+        "hive_classifies_operator_replies",
+        "hive_drafts_operator_sends",
+        "hive_sends_within_template"
+      ],
+      "description": "How inbound replies are handled. This authorization does not itself implement reply handling; it only declares which policy governs it."
+    },
+    "kill_switch_path": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Filesystem path to this campaign's KILL_SWITCH.json. render_message.py refuses (exit 7) whenever the file at this path does not read state == ARMED for this campaign_id."
+    },
+    "review_cadence_hours": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "description": "Maximum hours between operator/monitor reviews of this campaign's live state while it is ARMED."
+    },
+    "success_metric": {
+      "type": "object",
+      "required": ["name", "target", "measured_by"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "target": { "type": "string", "minLength": 1 },
+        "measured_by": { "type": "string", "minLength": 1 }
+      }
+    },
+    "failure_escalation": {
+      "type": "object",
+      "required": ["trigger", "action"],
+      "properties": {
+        "trigger": { "type": "string", "minLength": 1 },
+        "action": { "type": "string", "minLength": 1 }
+      }
+    },
+    "sender_identity": {
+      "type": "object",
+      "required": ["from_name", "from_email", "sending_domain", "physical_postal_address"],
+      "properties": {
+        "from_name": { "type": "string", "minLength": 1 },
+        "from_email": { "type": "string", "minLength": 1 },
+        "sending_domain": { "type": "string", "minLength": 1 },
+        "physical_postal_address": {
+          "type": "string",
+          "minLength": 1,
+          "description": "CAN-SPAM requires a valid physical postal address in every commercial email. If this value starts with the literal marker UNVERIFIED, no send under this authorization is CAN-SPAM-compliant and render_message.py's caller must treat that as a hard blocker independent of any envelope check."
+        }
+      }
+    },
+    "effect_ceiling": {
+      "type": "string",
+      "const": "T2_EXTERNAL_SEND_WITHIN_ENVELOPE",
+      "description": "Names the world-effect class this authorization can ever produce: an external send, and only within this envelope. Fixed value so the field itself cannot be used to smuggle a higher effect tier."
+    }
+  },
+  "additionalProperties": false
+}

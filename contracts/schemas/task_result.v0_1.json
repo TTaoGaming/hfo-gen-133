@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "hfo.gen133.schema.task_result.v0_1",
+  "title": "task_result row",
+  "description": "One row per worker outcome in state/ssot/task_results.jsonl. Covers BOTH positive results and no-work receipts - a worker that finds an empty queue MUST still write a row. Silence is the failure mode this schema exists to eliminate. This is the second and last of the two schemas the factory adds.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_id", "result_id", "task_id", "worker_id", "substrate",
+    "started_utc", "finished_utc", "outcome", "verifier_result",
+    "claim_status", "consumer_ack", "prev_sha256", "row_sha256", "hash_rule"
+  ],
+  "properties": {
+    "schema_id": { "const": "hfo.gen133.schema.task_result.v0_1" },
+    "result_id": { "type": "string", "minLength": 1 },
+    "task_id":   { "type": "string", "description": "Join key to task_queue.jsonl. Use the literal 'NO_WORK' when the queue was empty - the row is still REQUIRED." },
+    "worker_id": { "type": "string" },
+    "substrate": { "type": "string", "enum": ["codex", "antigravity", "dollar_zero_mesh", "chatgpt_cloud", "claude_code", "operator"] },
+    "model_id":  { "type": "string", "description": "Exact model. Provenance is per-cell, not per-vendor." },
+
+    "started_utc":  { "type": "string", "format": "date-time" },
+    "finished_utc": { "type": "string", "format": "date-time" },
+
+    "outcome": {
+      "type": "string",
+      "enum": ["DONE", "FAILED", "TIMEOUT", "REFUSED_CEILING", "REFUSED_CAPABILITY", "NO_WORK", "DEADLETTER"],
+      "description": "NO_WORK is a first-class outcome and MUST be written. A loop that ticks on an empty queue and reports nothing is the EMPTY-QUEUE REWARD HACK; this enum is the cure."
+    },
+    "no_work_reason": { "type": "string", "description": "REQUIRED when outcome is NO_WORK. 'queue empty' / 'no task matched my capabilities' / 'all matching tasks leased'. An unexplained NO_WORK is indistinguishable from a broken worker." },
+
+    "artifact_paths":   { "type": "array", "items": { "type": "string" }, "description": "Paths produced, each with a sha256 appended." },
+    "artifacts_sha256": { "type": "object", "additionalProperties": { "type": "string", "pattern": "^[0-9a-f]{64}$" } },
+
+    "acceptance_test_result": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "test":       { "type": "string", "description": "Copied VERBATIM from the queue row. It was defined before the work; it is not rewritten after." },
+        "command":    { "type": "string" },
+        "exit_code":  { "type": "integer" },
+        "verdict":    { "type": "string", "enum": ["STOOD", "FELL", "NOT_RUN"] },
+        "graded_by":  { "type": "string", "description": "MUST NOT equal worker_id. A producer grading itself is not a verdict." }
+      },
+      "required": ["test", "verdict", "graded_by"]
+    },
+
+    "verifier_result": { "type": "string", "minLength": 1, "description": "What program checked this, not what a model asserted." },
+    "claim_status":    { "type": "string", "enum": ["wired_with_receipts", "partial", "proposed", "failed", "blocked"] },
+
+    "consumer_ack": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Without ConsumerAck you have produced inventory (Ratatoskr R1). This object is what turns output into an outcome.",
+      "properties": {
+        "consumer":     { "type": "string" },
+        "accepted":     { "type": "boolean" },
+        "accepted_utc": { "type": "string", "format": "date-time" },
+        "note":         { "type": "string" }
+      },
+      "required": ["consumer", "accepted"]
+    },
+
+    "attempts_so_far": { "type": "integer", "minimum": 1 },
+    "next_safe_action":{ "type": "string" },
+    "remaining_risk":  { "type": "array", "items": { "type": "string" } },
+    "falsifier":       { "type": "string", "description": "REQUIRED in spirit: a result that cannot be wrong is not evidence." },
+    "honest_flaw":     { "type": "string" },
+
+    "prev_sha256": { "type": ["string", "null"] },
+    "row_sha256":  { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "hash_rule":   { "type": "string", "minLength": 1, "description": "The EXACT canonicalization, stated on the row. A hash nobody can recompute is self-declared - see L_UNREPRODUCIBLE_ROW_HASH." },
+    "sealed":      { "const": false }
+  }
+}

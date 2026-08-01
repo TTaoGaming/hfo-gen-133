@@ -1,0 +1,81 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "hfo.gen130.cold_outreach_launch.target.v0_1",
+  "title": "Cold outreach target row",
+  "description": "One row = one person at one company, validated before it is eligible for any Instantly upload. Filling this schema does not authorize a send -- see INSTANTLY_CAMPAIGN_SETUP_CHECKLIST.md.",
+  "type": "object",
+  "required": [
+    "first_name",
+    "last_name",
+    "title",
+    "company",
+    "email",
+    "email_confidence",
+    "personalization_hook",
+    "source",
+    "bounce_status"
+  ],
+  "properties": {
+    "first_name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Used in {{first_name}} merge field. Must match how the person signs their own public work, not a guessed casual form."
+    },
+    "last_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Current public title, e.g. from LinkedIn or company site. Not used as a merge field directly, but drives segment routing."
+    },
+    "company": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Used in {{company}} merge field. Should match the company name as the prospect writes it publicly."
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "email_confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "0-1. Below 0.7, row is not upload-eligible until re-validated (see bounce_status)."
+    },
+    "linkedin_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Optional. Used for manual QA of the personalization_hook, not sent to Instantly."
+    },
+    "personalization_hook": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 240,
+      "description": "One sentence, tied to a SPECIFIC piece of the prospect's public work (a launch, a talk, a repo, a blog post). Used in {{personalization_hook}} merge field. Must never be fabricated -- if no real hook exists, leave the row out of the send batch rather than inventing one."
+    },
+    "source": {
+      "type": "string",
+      "enum": ["Apollo", "manual", "prospect_dossiers_20260703", "referral", "other"],
+      "description": "Where this row came from. prospect_dossiers_20260703 refers to work/hfo_prey_workflow/scout_agent_release_gate_prospects_20260703/prospect_dossiers.json, the 24-company list this campaign's schema was built against."
+    },
+    "enriched_at_utc": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When first_name/last_name/title/email/personalization_hook were populated."
+    },
+    "validated_at_utc": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When email was last run through a verification pass (syntax + MX + deliverability check). Empty means unvalidated -- not upload-eligible."
+    },
+    "bounce_status": {
+      "type": "string",
+      "enum": ["unknown", "valid", "risky", "invalid"],
+      "description": "unknown = never checked. Only 'valid' rows should reach an active Instantly campaign; 'risky' needs operator judgment call; 'invalid' rows are dropped, not sent."
+    }
+  },
+  "additionalProperties": false
+}
