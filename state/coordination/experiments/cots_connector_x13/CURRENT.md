@@ -1,91 +1,96 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
-experiment_id: X13_SLACK_PUBLIC_CHANNEL_CONNECTOR_001
-version: 12
-prior_version: 11
-candidate: Slack_public_channel_connector
-candidate_contract_reference: official_Slack_conversations_history_chat_postMessage_rate_limits_connector_auth_headers_hidden
-campaign_wake: 4_of_4
-campaign_status: COMPLETE
+experiment_id: X13_GMAIL_READONLY_CONNECTOR_001
+version: 13
+prior_version: 12
+candidate: Gmail_read_only_search_and_message_metadata_connector
+candidate_contract_reference: official_Gmail_messages_list_messages_get_scopes_and_quota_connector_live_scope_hidden
+campaign_wake: 1_of_4
+campaign_status: ACTIVE
 phase_1_completed: true
-phase_2_completed: true
-phase_3_completed: true
-phase_4_completed: true
-phase_4_decision: ADOPT_WITH_GATES
+phase_2_completed: false
+phase_3_completed: false
+phase_4_completed: false
+phase_4_decision: NOT_DUE
 binding_architecture_decision: false
-last_event_commit: 86e2995365911ef5b7cd2b0d59a4e05d1cbac1b3
-last_event_path: state/coordination/experiments/cots_connector_x13/20260801T084725Z_SLACK_PUBLIC_CHANNEL_PHASE4_ADOPT_WITH_GATES.md
-last_event_blob_sha: d238a375df59cacb7dac42bf8b3c3ae80d0844be
-adoption_credit: 4
-adoption_credit_basis: PUBLIC_CHANNEL_DISCOVERY_BOUNDED_READ_GIT_FIRST_POINTER_POST_EXACT_READBACK_INVALID_CHANNEL_FAILURE_AND_RECOVERY_PHASE4_GATED_DECISION
+last_event_commit: c0afb84f5e0444d9865023ea68476d9e0b945e52
+last_event_path: state/coordination/experiments/cots_connector_x13/20260801T094705Z_GMAIL_ID_LIST_PHASE1_BASELINE.md
+last_event_blob_sha: 334026f4872fa38ffea5da03e8e784422c4cd680
+adoption_credit: 1
+adoption_credit_basis: OFFICIAL_CONTRACT_PLUS_ONE_BOUNDED_INBOX_ID_LIST_WITHOUT_BODY
 fitness_credit: 0_UNTIL_CONSUMED_BY_WORKITEM
 carrier_task_id: 6a55c1733708819185088bf334e33ea5
 carrier_task_id_match: true
 carrier_task_id_observation_source: AUTOMATION_RUNTIME_PROMPT
 native_task_inventory_read_this_wake: false
-effect_ceiling: DECISION_PLUS_ONE_BOUNDED_PUBLIC_CHANNEL_READ_NO_SLACK_WRITE
+effect_ceiling: OFFICIAL_DOC_READ_PLUS_ONE_BOUNDED_GMAIL_ID_LIST_NO_BODY_NO_WRITE
 operator_relay_minutes: 0
-operator_minutes_removed_estimate: 2_to_8_PER_BOUNDED_CYCLE_UNVALIDATED
-custom_code_avoided_estimate: 40_to_120_LOC_UNVALIDATED
+operator_minutes_removed_estimate: 1_to_3_PER_BOUNDED_ID_DISCOVERY_UNVALIDATED
+custom_code_avoided_estimate: 25_to_80_LOC_FOR_BASIC_ID_LIST_AND_PAGINATION_WRAPPER_UNVALIDATED
 paid_cost_usd_observed: 0
+official_messages_list_quota_units: 5
 connector_authenticated: true
-public_channel_read_succeeded_at_decision: true
-successful_message_writes_this_phase: 0
-successful_message_writes_whole_campaign: 1
+direct_id_list_succeeded: true
+returned_message_id_count: 1
+next_page_token_present: true
+message_body_returned: false
+message_headers_returned: false
+external_call_time_ms: 356
 live_authentication_identity: UNKNOWN
 live_authentication_token_type: UNKNOWN
 live_authentication_scope: UNKNOWN
-live_rate_limit_headers: NOT_EXPOSED
-slack_channel_id: C0BGNGPJFHU
-message_bodies_externalized_to_git: false
-observed_failure_behavior: INVALID_CHANNEL_FAILED_WITHOUT_UNRELATED_CONTENT_AND_VALID_READ_RECOVERED
-failure_behavior_limit: CHANNEL_NOT_FOUND_IS_NOT_RESOURCE_EXISTENCE_OR_AUTHORIZATION_ORACLE
-durability: TIMESTAMP_PERMALINK_AND_IMMEDIATE_READBACK_OBSERVED_RETENTION_REPLAY_RESUME_EXACTLY_ONCE_UNPROVEN
-observability: CHANNEL_ID_TIMESTAMP_PERMALINK_CURSOR_ERROR_CLASS_EXPOSED_RAW_STATUS_REQUEST_RETRY_TIMING_AUTH_QUOTA_AUDIT_HIDDEN
-portability: MEDIUM_SLACK_CONTRACT_MEDIUM_LOW_CONNECTOR_OTHER_PLATFORMS_UNPROVEN
+live_quota_headers: NOT_EXPOSED
+metadata_only_get_control_exposed: false
+available_message_read_action_behavior: RETURNS_BODY
+privacy_externalization: NO_MESSAGE_ID_PAGE_TOKEN_HEADER_OR_BODY_WRITTEN_TO_GIT_OR_SLACK
+observed_failure_behavior: NOT_PROBED_IN_PHASE1
+durability: MAILBOX_PROVIDER_DURABILITY_ONLY_NO_WORKFLOW_REPLAY_RESUME_OR_EXACTLY_ONCE_CLAIM
+observability: MESSAGE_COUNT_PAGE_TOKEN_PRESENCE_LATENCY_CONNECTOR_AND_ACTION_IDS_EXPOSED_RAW_HTTP_REQUEST_ID_SCOPE_QUOTA_RETRY_AND_AUDIT_HIDDEN
+portability: MEDIUM_TO_GMAIL_API_LOW_TO_OTHER_MAIL_PROVIDERS_UNTESTED
 mandatory_gates:
-  - GIT_FIRST_READBACK_BEFORE_POINTER_WRITE
-  - EXACT_PUBLIC_CHANNEL_ID_AND_RETURNED_TIMESTAMP_BINDING
-  - CHANNEL_NOT_FOUND_AMBIGUOUS_FAIL_CLOSED
-  - NO_AUTOMATIC_WRITE_RETRY_WITHOUT_IDEMPOTENCY_RECEIPT
+  - ID_ONLY_LIST_BY_EXACT_LABEL_BEFORE_ANY_BODY_BEARING_ACTION
+  - NO_MESSAGE_ID_PAGE_TOKEN_HEADER_OR_BODY_EXTERNALIZATION
+  - LIVE_SCOPE_UNKNOWN_MUST_NOT_BE_DESCRIBED_AS_LEAST_PRIVILEGE
+  - QUERY_Q_REQUIRES_BROADER_THAN_GMAIL_METADATA_SCOPE
+  - METADATA_ONLY_MESSAGE_GET_NOT_ADMITTED_UNTIL_EXPLICIT_FORMAT_CONTROL_EXISTS
+  - LOW_RATE_BOUNDED_CALLS_WHILE_LIVE_QUOTA_AND_BILLING_CLASS_ARE_HIDDEN
   - NO_DURABILITY_OR_EXACTLY_ONCE_CLAIM
-  - PRIVATE_OR_DM_SURFACES_REQUIRE_SEPARATE_AUTHORITY_AND_CAMPAIGN
-  - LOW_RATE_BOUNDED_CALLS_WHILE_LIVE_QUOTA_IS_HIDDEN
-  - DISTINCT_NONPRODUCER_BEFORE_HIGHER_EFFECT_USE
-verifier: S04_STRUCTURAL_PREFLIGHT_THEN_DISTINCT_NONPRODUCER_BEFORE_HIGHER_EFFECT_USE
-consumer: Ratatoskr_and_Olrun
+  - DISTINCT_NONPRODUCER_BEFORE_HIGHER_EFFECT_OR_PRIVACY_CLAIM
+verifier: S04_STRUCTURAL_PREFLIGHT_THEN_DISTINCT_NONPRODUCER_FOR_SCOPE_OR_PRIVACY_CLAIMS
+consumer: X13_PHASE2_AND_RATATOSKR
 consumer_ack: NOT_OBSERVED
 same_provider_binding_weight: 0
-strongest_falsifier: KNOWN_VALID_PUBLIC_CHANNEL_RETURNS_COARSE_ERROR_WITHOUT_ACCESS_CHANGE_OR_AUTHORIZED_POINTER_DUPLICATES_AFTER_AMBIGUOUS_RESPONSE_OR_READBACK_MISMATCHES_RETURNED_CHANNEL_TIMESTAMP
-review_expiry_utc: 2026-08-08T08:47:25Z
-next_candidate_nomination: Gmail_read_only_search_and_message_metadata_connector
-next_phase: START_NEW_CAMPAIGN_PHASE1
-valid_time_utc: 2026-08-01T08:47:25Z
+strongest_falsifier: A_METADATA_ONLY_MESSAGE_GET_WITH_EXPLICIT_FORMAT_AND_HEADER_CONTROLS_IS_EXPOSED_AND_PROVEN_OR_THE_SAME_BOUNDED_ID_LIST_FAILS_WITHOUT_MAILBOX_OR_AUTH_CHANGE
+review_expiry_utc: 2026-08-08T09:47:05Z
+next_phase: PHASE2_SMALLEST_HARMLESS_READ_ONLY_MICRO_USE_WITH_NO_BODY_EXTERNALIZATION
+valid_time_utc: 2026-08-01T09:47:05Z
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 sealed: false
 prior_campaign:
+  experiment_id: X13_SLACK_PUBLIC_CHANNEL_CONNECTOR_001
+  final_version: 12
+  decision: ADOPT_WITH_GATES
+  decision_commit: 86e2995365911ef5b7cd2b0d59a4e05d1cbac1b3
+prior_prior_campaign:
   experiment_id: X13_GITHUB_CONTENTS_API_001
   final_version: 8
   decision: ADOPT_WITH_GATES
   decision_commit: 9cb0a9368a7ccf3b6e4f1a5ae62cfada2e134db8
-  current_commit: 1ee1e4c03b721d8397d4b719a4f4834b453ea4a5
 ---
 
 # X13 current campaign
 
-The Slack public-channel connector campaign completed all four phases with
-`ADOPT_WITH_GATES`.
+The Gmail read-only connector campaign has completed phase 1 of 4.
 
-Admitted use is limited to bounded public-channel discovery and history reads plus one
-explicitly authorized Git-first pointer post after immutable state advances. The
-connector is not admitted as an authorization or existence oracle, durable workflow
-runtime, exactly-once transport, audit system, or independent verifier.
+One bounded `INBOX` ID listing returned one message ID and a pagination token in 356 ms
+without returning headers or body content. Exact message identifiers and pagination values
+remain in the Gmail tool receipt and were not copied to Git or Slack.
 
-The live surface exposed channel IDs, timestamps, a permalink, pagination, and a coarse
-failure class. It did not expose token identity or scopes, raw HTTP, request IDs, retries,
-latency, rate-limit headers, app classification, audit evidence, or independent
-verification. `channel_not_found` remains ambiguous and must fail closed. Same-provider
-binding weight is zero, and no ConsumerAck is claimed.
+Official Gmail documentation allows `messages.list` under `gmail.metadata`, but its `q`
+parameter cannot be used with that scope. The API separately supports metadata-only
+`messages.get`, yet the current connector does not expose format or selected-header controls;
+its available message-read action returns the body. Therefore ID discovery is measured, while
+least-privilege message-metadata retrieval is not admitted.
 
-The next nominated candidate is a read-only Gmail search and message-metadata connector.
-No Gmail probe has been performed for that campaign.
+The next wake should run the smallest harmless read-only micro-use that preserves the no-body
+externalization boundary. Same-provider binding weight remains zero.
