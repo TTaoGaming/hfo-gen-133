@@ -1,0 +1,174 @@
+---
+schema_id: hfo.gen133.s04.structural_preflight.v1
+seat: S04_STRUCTURAL_PREFLIGHT
+carrier_task_id_expected: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_observed: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_match: true
+carrier_task_observation_source: NATIVE_AUTOMATIONS_LIST_READBACK
+valid_time_utc: 2026-08-01T20:13:08Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+result: PASS_STRUCTURAL
+review_ceiling: REUSABLE_PRIOR_ARTIFACT_POINTER_ONLY
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+candidate_edited: false
+task_mutated: false
+world_effect_ceiling: ONE_IMMUTABLE_GIT_RECEIPT_AND_ONE_SANITIZED_SLACK_POINTER
+---
+
+candidate:
+  producer_seat: S15_HERITAGE_REUSE_AND_DEDUP
+  producer_task_id: 6a52f485409c8191aa06ea7911add3f3
+  producer_task_id_provider_match: true
+  commit: 755e4d008da4d399399f92360fb6a32aa368d3bc
+  path: state/coordination/receipts/chatgpt_runtime/seat-15/20260801T195538Z_X13_DRIVE_PHASE4_REUSE_GMAIL_ADOPTION_GATE.yaml
+  git_blob_sha1_declared_by_github: 9d79b633efa2160292ba966a6c99afc9f47c94aa
+  exact_utf8_bytes: 8012
+  exact_sha256: c6331818b00e53c86e36599266f00efd023af23f6060182182d5171a6379e17f
+  git_blob_sha1_recomputed: 9d79b633efa2160292ba966a6c99afc9f47c94aa
+  schema_id: hfo.gen133.s15.heritage_reuse.v1
+  addressed_to_s04: true
+  address_binding: verification_and_consumption.required_direct_verifier=S04_STRUCTURAL_PREFLIGHT
+  artifact_kind: REUSABLE_PRIOR_ARTIFACT
+  candidate_result: RETURN
+
+selection:
+  newest_eligible_at_selection: true
+  not_authored_by_s04: true
+  prior_s04_verdict_for_exact_candidate_blob_found: false
+  exact_dedup_search_result_count_observed: 1
+  exact_dedup_search_limitation: GITHUB_CODE_SEARCH_IS_NONTRANSACTIONAL_AND_MAY_LAG_CONCURRENT_WRITES
+
+recomputation:
+  byte_source: GITHUB_FETCH_BLOB_AT_DECLARED_BLOB_SHA
+  decoding: UTF_8_WITH_NO_NORMALIZATION
+  line_endings: LF_AS_STORED
+  trailing_newline_present: true
+  byte_count_match: true
+  sha256_recomputed: true
+  git_blob_sha1_recomputed: true
+  git_blob_match: true
+  canonicalization_rule: EXACT_STORED_UTF8_BYTES_AT_IMMUTABLE_COMMIT_PATH_NO_FIELD_REORDERING_OR_WHITESPACE_NORMALIZATION
+
+source_pointer_checks:
+  current_pointer:
+    commit: 612c38005f7b6f4a9859f150f8c11b1aff27209c
+    path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    expected_blob_sha1: 0f16ddcf965259ce8533c6b97dd0be0586b3b34b
+    observed_blob_sha1: 0f16ddcf965259ce8533c6b97dd0be0586b3b34b
+    match: true
+    bound_state: X13_GOOGLE_DRIVE_READONLY_CONNECTOR_001_VERSION_23_PHASE3_COMPLETE_PHASE4_PENDING
+  drive_phase3_event:
+    commit: c7d95a9785c86f9e973df128077615bf2f156ef5
+    path: state/coordination/experiments/cots_connector_x13/20260801T194640Z_GOOGLE_DRIVE_READONLY_PHASE3_INVALID_PAGE_TOKEN_AND_INCOMPLETE_SEARCH_ANDON.md
+    expected_blob_sha1: 4481bbb88646113b373c217af33f5c795d67b2a3
+    observed_blob_sha1: 4481bbb88646113b373c217af33f5c795d67b2a3
+    match: true
+    direct_claim_ceiling: SYNTHETIC_INVALID_CURSOR_FAILURE_TRACE_WITH_NO_CONTENT_AND_NO_PERMISSION_OR_COMPLETE_SEARCH_PROOF
+  reusable_gmail_prior:
+    commit: 7a72ec06c8c4c94f6b88c4303066a3fac71ebd8c
+    path: state/coordination/experiments/cots_connector_x13/20260801T125010Z_GMAIL_READONLY_PHASE4_ADOPT_WITH_GATES_CORRECTED.md
+    expected_blob_sha1: 3b8445aeaf4a94edfb88c205da086f2287211ef2
+    observed_blob_sha1: 3b8445aeaf4a94edfb88c205da086f2287211ef2
+    match: true
+    source_result: ADOPT_WITH_GATES
+    source_consumer_ack: NOT_OBSERVED
+    source_fitness_credit: 0_UNTIL_CONSUMED_BY_A_WORKITEM
+
+structural_checks:
+  schema:
+    status: PASS
+    finding: SCHEMA_ID_AND_TYPED_POINTER_SECTIONS_PRESENT
+  freshness:
+    status: PASS
+    candidate_valid_time_utc: 2026-08-01T19:55:38Z
+    candidate_expires_utc: 2026-08-08T19:46:40Z
+    review_time_before_expiry: true
+  authority:
+    status: PASS
+    candidate_binding_decision: false
+    candidate_heritage_credit: 0
+    candidate_world_effect_ceiling: ONE_GIT_RECEIPT_AND_ONE_SANITIZED_SLACK_POINTER
+    finding: POINTER_DOES_NOT_PROMOTE_DRIVE_PHASE4_DECISION_OR_EFFECT_AUTHORITY
+  task_binding:
+    status: PASS
+    producer_expected_observed_match: true
+    verifier_expected_observed_match: true
+  actor_carrier_separation:
+    status: PASS
+    producer_actor: S15_HERITAGE_REUSE_AND_DEDUP
+    producer_carrier: HFO_S15_GONDUL_CONTINUOUS_HERITAGE_TASK_6a52f485409c8191aa06ea7911add3f3
+    subject_workitem_owner: X13_COTS_AND_CONNECTOR_PDCA_LAB
+    verifier_actor: S04_STRUCTURAL_PREFLIGHT
+    finding: PRODUCER_SUBJECT_CONSUMER_AND_VERIFIER_ARE_EXPLICITLY_DISTINGUISHED
+  idempotency:
+    status: PASS_FOR_POINTER_ONLY
+    explicit_single_field_idempotency_key: false
+    effective_identity:
+      - candidate_commit
+      - candidate_path
+      - candidate_blob_sha1
+      - current_workitem_id
+      - current_pointer_commit_and_blob
+      - reusable_source_commit_and_blob
+    replay_effect: NO_STATE_TRANSITION_NO_HERITAGE_CREDIT_NO_CONSUMER_ACK
+    limitation: DUPLICATE_SEARCH_IS_NONTRANSACTIONAL
+  lease_and_expiry:
+    status: PASS
+    expiry_present: true
+    expired: false
+    lease_scope: REUSE_REVIEW_WINDOW_ONLY_NOT_WORKITEM_OWNERSHIP
+  privacy:
+    status: PASS
+    private_body_copied: false
+    raw_drive_identifier_copied: false
+    raw_provider_request_url_copied: false
+    permitted_externalization: SANITIZED_CONTROL_METADATA_AND_IMMUTABLE_POINTERS_ONLY
+  rollback:
+    status: PASS_NOOP
+    source_modified: false
+    current_workitem_modified: false
+    canon_promoted: false
+    rollback_rule: DISCARD_OR_IGNORE_POINTER_RECEIPT_NO_EXTERNAL_STATE_REPAIR_REQUIRED
+  verifier:
+    status: PASS
+    direct_verifier: S04_STRUCTURAL_PREFLIGHT
+    distinct_verifier: DISTINCT_NONPRODUCER_CONNECTOR_REVIEW_WHEN_AVAILABLE
+    independence_closed: false
+  consumer:
+    status: PASS
+    named_consumer: X13_COTS_AND_CONNECTOR_PDCA_LAB
+    downstream_consumers:
+      - X11_CARRIER_SURFACE_LAB
+      - S05_OPERATOR_RELIEF_CELL
+    consumer_ack_required: true
+    consumer_ack_observed: false
+
+verdict_scope:
+  permitted:
+    - REUSE_THE_GMAIL_DECISION_SHAPE_AS_A_CHECKLIST_FOR_X13_DRIVE_PHASE4
+    - PRESERVE_MEASURED_SURFACE_ONLY_ADOPTION_AND_EXPLICIT_DRIVE_SPECIFIC_GATES
+    - KEEP_FITNESS_AND_HERITAGE_CREDIT_AT_ZERO_PENDING_EXPLICIT_CONSUMER_ACK
+  forbidden:
+    - TREAT_THIS_POINTER_AS_THE_DRIVE_PHASE4_VERDICT
+    - CLAIM_GMAIL_RUNTIME_BEHAVIOR_PROVES_DRIVE_RUNTIME_BEHAVIOR
+    - CLAIM_COMPLETE_SEARCH_PERMISSION_SAFETY_LEAST_PRIVILEGE_EXACT_COST_DURABILITY_OR_INDEPENDENT_VERIFICATION
+    - GRANT_CONSUMER_ACK_CAMPAIGN_CLOSURE_OR_ADOPTION_CREDIT
+
+strongest_fake_green_mutant: >-
+  Launder the structurally valid Gmail ADOPT_WITH_GATES precedent or this S15 heritage pointer into a Drive
+  ADOPT_WITH_GATES verdict, ConsumerAck, heritage credit, fitness credit, complete-search proof, permission-safety
+  proof, or independent verification without an X13-authored phase-4 decision bound to the exact Drive phase-3
+  event and CURRENT version 23.
+
+verdict_reason: >-
+  The candidate is byte-stable, fresh, task-bound, privacy-bounded, source-bound, nonbinding, and explicit about
+  its cross-connector evidence ceiling. It is structurally valid only as a reusable decision precedent and
+  checklist pointer. It does not close the Drive phase-4 decision, ConsumerAck, fitness, or independent review.
+
+honest_flaw: >-
+  The candidate contains no standalone idempotency-key field and relies on a composite immutable identity plus
+  nontransactional GitHub search for deduplication. That is adequate for this no-state-transition pointer, but it
+  would be insufficient for a mutating transition. This S04 result is same-provider preflight only and cannot
+  validate Drive runtime behavior or close independent verification.
