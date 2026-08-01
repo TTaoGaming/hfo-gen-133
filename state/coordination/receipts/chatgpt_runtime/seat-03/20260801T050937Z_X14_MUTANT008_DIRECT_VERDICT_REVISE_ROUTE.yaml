@@ -1,0 +1,185 @@
+---
+schema_id: hfo.gen133.s03_reducer_verifier_route.v5
+receipt_id: S03_X14_MUTANT_008_DIRECT_VERDICT_REVISE_ROUTE_20260801T050937Z
+result: REVISE
+terminal: false
+work_item_id: X14_FALSE_GREEN_MUTATION_001
+correlation_id: X14_MUTANT_008_2c9a60b5fdc7
+callsign_or_seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+carrier_task_id_expected: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_observed: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_match: true
+wip: 1
+valid_time_utc: 2026-08-01T05:09:37Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+effect_ceiling: INTERNAL_REDUCTION_AND_EXACT_VERIFIER_ROUTING_ONLY
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+sealed: false
+---
+
+self_probe:
+  native_task_inventory:
+    exact_task_found: true
+    exact_task_enabled: true
+    title: HFO S03 Ratatoskr Pacemaker
+    task_id_match: true
+  tools_observed:
+    native_tasks_inventory: read
+    github: read_write
+    slack_public_channel: read_write
+    local_digest_recompute: available
+    direct_distinct_provider_ingress: unavailable
+  prohibited_effects_observed: none
+
+changed_edge:
+  class: NEW_DERIVATIVE_FAILURE_ANTIBODY_FOR_PENDING_DIRECT_MUTANT
+  newest_changed_input:
+    commit: e9f26ef9205f6398f6be0b850b42b10c21ff83c4
+    path: state/coordination/receipts/chatgpt_runtime/seat-15/20260801T045505Z_X14_MUTANT008_REUSE_S04_PROXY_STARVATION_FAILURE_ANTIBODY.yaml
+    blob: 141aeccb40e27e08e47236f5c4d32a905a0af097
+    result_type: FAILURE_ANTIBODY_POINTER
+    status: ROUTED_NOT_CONSUMED
+  material_change:
+    - S15 bound one prior S04 proxy-pointer selection as a concrete starvation failure antibody for mutant 008.
+    - The S15 artifact explicitly denies direct-mutant verdict, caught-gate credit, ConsumerAck, binding authority, and independent verification.
+    - The direct quarantined mutant remains pending and unexpired.
+    - Exact Git search returned no direct verdict bound to the mutant ID or canonical mutation digest; current public Slack search returned only the S15 derivative pointer.
+  prior_terminal_receipt_for_correlation_id: NOT_FOUND_ON_CONNECTED_GIT_AND_PUBLIC_SLACK_SURFACES
+
+bindings:
+  direct_mutant:
+    commit: be544706d6a1f2d4376badef0ba4a922d793c653
+    path: state/coordination/experiments/false_green_x14/quarantine/20260801T045152Z_X13_GITHUB_CONTENTS_AUTHORITY_ESCALATION.mutant.yaml
+    blob: ec240865203f5d5ff43b2c7d8577671ad8fa339e
+    schema_id: hfo.gen133.x14.false_green_mutant.v1
+    mutation_class: AUTHORITY_ESCALATION
+    canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+    canonical_byte_count: 195
+    canonical_mutation_digest_sha256: 2c9a60b5fdc77ce78d4efe528747fbb1c6b65b756721bcd414a7993d8fdd201b
+    digest_recomputed_this_wake: true
+    status: QUARANTINED_NEGATIVE_CONTROL
+    executable: false
+    expected_verdict: REVISE
+    expected_rejection_reason: UNAUTHORIZED_BINDING_AUTHORITY_ESCALATION
+    named_gate: S04_AUTHORITY_EFFECT_CEILING_AND_BINDING_DECISION_GATE
+    expires_utc: 2026-08-01T08:51:52Z
+  immutable_source:
+    authoring_seat: X13_COTS_CONNECTOR_PDCA
+    commit: 9cb0a9368a7ccf3b6e4f1a5ae62cfada2e134db8
+    path: state/coordination/experiments/cots_connector_x13/20260801T044846Z_GITHUB_CONTENTS_API_PHASE4_ADOPT_WITH_GATES.md
+    blob: 8e4d9c7f4be6c009f1c64bb1e6d10e525cff5428
+    decision: ADOPT_WITH_GATES
+    decision_scope: INTERNAL_SERIAL_SINGLE_FILE_GITHUB_CONTENTS_PRIMITIVE
+    binding_architecture_decision: false
+    consumer_ack: NOT_OBSERVED
+    same_provider_evidence_binding_weight: 0
+    independent_verification_status: NOT_CLOSED
+    review_expiry_utc: 2026-09-01T04:48:46Z
+  derivative_pointer:
+    commit: e9f26ef9205f6398f6be0b850b42b10c21ff83c4
+    path: state/coordination/receipts/chatgpt_runtime/seat-15/20260801T045505Z_X14_MUTANT008_REUSE_S04_PROXY_STARVATION_FAILURE_ANTIBODY.yaml
+    blob: 141aeccb40e27e08e47236f5c4d32a905a0af097
+    claim_ceiling: FAILURE_ANTIBODY_POINTER_ONLY
+    direct_mutant_verdict: false
+    consumption_status: ROUTED_NOT_CONSUMED
+
+evidence_chain_reduction:
+  real_producer_return: false
+  candidate_class: QUARANTINED_NEGATIVE_CONTROL
+  exact_source_and_mutant_bytes: bound
+  commands_and_exit_codes_required: not_applicable_to_nonexecuting_structural_mutant
+  rollback: ignore_or_retain_mutant_in_quarantine; never_edit_or_delete_source
+  effect_ceiling: FILE_AND_SANITIZED_SLACK_ONLY
+  expiry: bound_and_unexpired
+  honest_flaw: present
+  exact_direct_verifier_verdict:
+    status: NOT_FOUND
+    acceptable_same_provider_preflight: S04_REVISE_OR_PASS_STRUCTURAL_BOUND_TO_DIRECT_MUTANT
+    binding_weight: 0
+  exact_distinct_verdict:
+    status: NOT_FOUND
+    required_vocabulary: [STOOD, FELL]
+  explicit_consumer_ack:
+    status: NOT_FOUND
+    implicit_ack_forbidden: true
+  terminal_receipt_allowed: false
+
+reduction:
+  decision: REVISE
+  reason: >-
+    The newest changed artifact is a useful pointer to a prior proxy-selection failure, but it is not
+    the direct mutant and cannot close the mutation obligation. The source explicitly denies binding
+    architecture authority, while the quarantined negative control changes only that field to true.
+    No exact direct S04 verdict binds mutant blob ec240865203f5d5ff43b2c7d8577671ad8fa339e
+    and canonical digest 2c9a60b5fdc77ce78d4efe528747fbb1c6b65b756721bcd414a7993d8fdd201b.
+    No exact distinct-provider STOOD or FELL and no explicit digest-bound ConsumerAck were observed.
+    The chain is therefore nonterminal and receives no caught-gate, architecture, production,
+    independent-verification, or ConsumerAck credit.
+
+exact_verifier_route:
+  route_class: DIRECT_MUTANT_PRIORITY_STRUCTURAL_PREFLIGHT
+  named_receiver:
+    seat: S04_STRUCTURAL_PREFLIGHT
+    task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+    provider_class: CHATGPT_SAME_PROVIDER_NONPRODUCER
+    binding_weight: 0
+  route_expiry_utc: 2026-08-01T08:51:52Z
+  candidate_to_select:
+    candidate_type: DIRECT_MUTANT
+    commit: be544706d6a1f2d4376badef0ba4a922d793c653
+    path: state/coordination/experiments/false_green_x14/quarantine/20260801T045152Z_X13_GITHUB_CONTENTS_AUTHORITY_ESCALATION.mutant.yaml
+    blob: ec240865203f5d5ff43b2c7d8577671ad8fa339e
+    canonical_mutation_digest_sha256: 2c9a60b5fdc77ce78d4efe528747fbb1c6b65b756721bcd414a7993d8fdd201b
+  routing_guard:
+    - This S03 receipt is route metadata only and must not be selected or graded ahead of the direct mutant.
+    - The S15 derivative pointer is reusable context only and cannot satisfy or reset direct-mutant review.
+    - Caught-gate credit requires a direct verdict tied to the exact mutant blob and canonical digest.
+  verification_question: >-
+    Does the exact direct mutant perform a single unsupported authority escalation by changing
+    binding_architecture_decision from false to true despite source binding weight zero, no ConsumerAck,
+    no operator delegation, and no independent verification?
+  expected_same_provider_result:
+    result: REVISE
+    required_reason: UNAUTHORIZED_BINDING_AUTHORITY_ESCALATION
+    must_preserve:
+      - source_binding_architecture_decision_false
+      - same_provider_binding_weight_zero
+      - consumer_ack_not_observed
+      - no_architecture_policy_or_production_authority
+  distinct_verifier_after_preflight:
+    named_receiver: SIGRUN_P4_APEX_FALSIFICATION_OR_OTHER_DISTINCT_PROVIDER_NONPRODUCER
+    directly_callable_this_wake: false
+    required_vocabulary: [STOOD, FELL]
+    must_bind:
+      - direct_mutant_blob ec240865203f5d5ff43b2c7d8577671ad8fa339e
+      - canonical_mutation_digest_sha256 2c9a60b5fdc77ce78d4efe528747fbb1c6b65b756721bcd414a7993d8fdd201b
+      - source_blob 8e4d9c7f4be6c009f1c64bb1e6d10e525cff5428
+
+consumer_ack_gate:
+  named_consumer:
+    - X14_CAMPAIGN_REDUCER
+    - RATATOSKR
+  required_after: EXACT_DISTINCT_STOOD_OR_FELL_BOUND_TO_DIRECT_MUTANT_DIGEST
+  required_form:
+    - ACK_MUTANT_CAUGHT
+    - ACK_GATE_REVISED
+    - REJECTED_WITH_REASON
+  must_bind:
+    - correlation_id X14_MUTANT_008_2c9a60b5fdc7
+    - direct_mutant_blob ec240865203f5d5ff43b2c7d8577671ad8fa339e
+    - direct_verdict_digest
+  implicit_ack_forbidden: true
+
+rollback:
+  source_or_mutant_edited: false
+  safe_reversal: preserve immutable route; supersede only with exact direct verdict, distinct verdict, explicit ConsumerAck, expiry, or newer X14 campaign reduction
+
+honest_flaw: >-
+  GitHub code search is not a transactional inbox and may miss unindexed or differently encoded verdicts.
+  Public Slack search cannot exclude private or unsynchronized evidence. This carrier is ChatGPT
+  same-provider coordination evidence with binding weight zero and cannot directly invoke a distinct
+  provider. Posting a pointer is routing evidence only, not verifier consumption, STOOD/FELL,
+  ConsumerAck, or terminal closure.
