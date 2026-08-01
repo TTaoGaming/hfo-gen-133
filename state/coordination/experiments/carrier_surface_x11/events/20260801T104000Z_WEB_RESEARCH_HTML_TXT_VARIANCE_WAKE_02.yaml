@@ -1,0 +1,101 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+event_id: X11_WEB_RESEARCH_SURFACE_V1_WAKE_02
+seat: X11
+expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+self_probe:
+  task_binding: PROMPT_BOUND_NOT_INDEPENDENTLY_READ
+  exposed_tools_used:
+    - GitHub.fetch_file
+    - GitHub.create_file
+    - GitHub.update_file
+    - web.system1_search_query
+    - web.open
+  exposed_but_not_yet_used:
+    - Slack.slack_send_message
+  missing_or_unverified_surfaces:
+    - native_task_inventory_read
+    - connector_call_latency
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+prior_current_version: 13
+next_current_version: 14
+accepted_wake: 2
+target_wakes_before_decision: 4
+campaign_status: ACTIVE
+controlled_factor: web_research
+baseline:
+  prior_wake: X11_WEB_RESEARCH_SURFACE_V1_WAKE_01
+  prior_result: OFFICIAL_PRIMARY_SEARCH_AND_DIRECT_OPEN_MATCH_WITH_SUBPATH_CONNECTOR_VARIANCE
+  prior_claim_ceiling: one_domain_bounded_search_and_one_direct_HTML_open_recovered_matching_RFC_9110_metadata_but_an_adjacent_info_subpath_returned_CONNECTOR_INTERNAL_ERROR
+hypothesis: a_domain_bounded_search_followed_by_direct_HTML_and_plain_text_opens_can_recover_matching_identity_metadata_across_two_official_formats_while_exposing_format_specific_parser_behavior
+exact_probe:
+  search_query: site:rfc-editor.org/rfc/rfc8259 RFC 8259 JSON December 2017
+  domain_filter:
+    - rfc-editor.org
+  direct_html_url: https://www.rfc-editor.org/rfc/rfc8259.html
+  direct_text_url: https://www.rfc-editor.org/rfc/rfc8259.txt
+  comparison_fields:
+    - rfc_number
+    - title
+    - publication_month
+    - category
+measured_result:
+  search_returned_official_domain_result: true
+  search_top_result_url: https://www.rfc-editor.org/info/rfc8259/
+  search_also_returned_direct_html_url: true
+  direct_html_open: SUCCESS
+  direct_html_content_type: text/html
+  direct_html_total_lines_exposed: 845
+  direct_text_open: SUCCESS
+  direct_text_content_type: text/plain
+  direct_text_total_lines_exposed: 784
+  compared_identity:
+    rfc_number_search: 8259
+    rfc_number_html: 8259
+    rfc_number_text: 8259
+    title_search: The JavaScript Object Notation (JSON) Data Interchange Format
+    title_html: The JavaScript Object Notation (JSON) Data Interchange Format
+    title_text: The JavaScript Object Notation (JSON) Data Interchange Format
+    publication_month_search: December 2017
+    publication_month_html: December 2017
+    publication_month_text: December 2017
+    category_search: Standards Track
+    category_html: Standards Track
+    category_text: Standards Track
+    all_selected_fields_match: true
+  format_specific_parser_variance:
+    html_cross_references_linkified_in_tool_output: true
+    text_cross_references_linkified_in_tool_output: false
+    semantic_identity_fields_affected: false
+  secondary_sources_used_for_claim: false
+  result: OFFICIAL_HTML_AND_TEXT_DIRECT_OPENS_MATCH_WITH_FORMAT_SPECIFIC_PARSER_VARIANCE
+permission_error_class: PUBLIC_READ_ALLOWED_FOR_BOTH_OFFICIAL_FORMATS;NO_PERMISSION_OR_CONNECTOR_ERROR_OBSERVED
+latency:
+  search_latency_exposed: false
+  html_open_latency_exposed: false
+  text_open_latency_exposed: false
+operator_relay_minutes: 0
+capability_change: X11_now_has_direct_evidence_that_the_web_surface_can_open_both_official_HTML_and_plain_text_RFC_forms_and_cross_check_selected_metadata_even_when_the_search_engine_ranks_the_official_info_page_first
+strongest_falsifier: repeat_format_pair_probes_on_other_official_documents_show_metadata_mismatch_or_one_direct_format_open_returns_cached_or_transformed_content_that_cannot_be_bound_to_primary_document_lines
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer:
+  - Reginleif
+  - Ratatoskr
+honest_flaw: one_document_and_one_domain_do_not_establish_general_multi_format_web_reliability;the_search_and_both_direct_opens_may_share_cache_or_parser_infrastructure;matching_metadata_is_correlated_evidence_from_two_renderings_of_the_same_source_document
+evidence_class: SAME_PROVIDER_DESCRIPTIVE_NONBINDING
+binding_weight: 0
+effect_ceiling: public_web_read_plus_Git_experiment_event_and_current_pointer_update_and_one_material_Slack_pointer
+next_probe: directly_open_the_official_RFC_8259_XML_form_and_one_deliberately_nonexistent_rfc8259_json_path_then_record_success_and_failure_error_classes_without_retry_or_redirect_assumptions
+valid_time_utc: 2026-08-01T10:40:00Z
+transaction_time_utc: 2026-08-01T10:40:00Z
+evidence_expiry_utc: 2026-08-08T10:40:00Z
+sealed: true
+---
+
+Wake 2 accepted. Domain-bounded search found official RFC Editor results. Direct opens
+of the official HTML and plain-text forms both succeeded, and RFC number, title,
+publication month, and category matched across search, HTML, and text. The tool output
+showed format-specific parsing and linkification differences without changing the four
+selected identity fields. Same-provider binding weight remains zero.
