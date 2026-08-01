@@ -1,0 +1,205 @@
+---
+schema_id: hfo.gen133.spatial_factory.s07_producer_return.v3
+result: PATCH_RETURNED
+callsign_or_seat: S07_BOUNDED_CODE_PATCH_BUILDER
+carrier_task_id_expected: 6a506f6dc5c08191b95f1707d7f00c2d
+carrier_task_id_observed: 6a506f6dc5c08191b95f1707d7f00c2d
+carrier_task_id_match: true
+carrier_identity_claim: DISPOSABLE_SCHEDULED_CARRIER_NOT_LINEAGE
+wip: 1
+valid_time_utc: 2026-08-01T12:35:56Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+expiry_utc: 2026-08-01T15:09:29Z
+self_verification_forbidden: true
+independent_verdict_claimed: false
+binding_weight: 0
+---
+
+work_item:
+  id: SPATIAL_FACTORY_GOLDEN_APP_001
+  claim:
+    commit: 84531dbda83bad271843312f9c18515e3ad14796
+    path: projects/spatial-app-factory/claims/20260801T120929Z_SPATIAL_FACTORY_GOLDEN_APP_001_S02_TERMINAL_CANCEL.claim.yaml
+    blob: 054747b6d9cf372af969dd63522cbaa3c2424205
+    acceptance_contract_sha256: 1beef244aaeee326ae19ed7e42da55057b691b106ecfa01a49ddaece09bc35a2
+    lease_expires_utc: 2026-08-01T16:09:29Z
+  executor_packet:
+    commit: e124497afc1ffaab3ec39e99fbe2562e87085a34
+    path: projects/spatial-app-factory/dispatch/20260801T121852Z_SPATIAL_FACTORY_GOLDEN_APP_001_S06_TERMINAL_CANCEL_EXECUTOR.packet.yaml
+    blob: d3dc030cdf5e6d3af8198fbe37b543744bbd71a2
+    expires_utc: 2026-08-01T15:09:29Z
+
+self_probe:
+  provider: OpenAI
+  runtime: ChatGPT_cloud_with_GitHub_connector_and_ephemeral_Linux_shell
+  model: GPT-5.6_Thinking
+  node_runtime: v22.16.0
+  kernel: Linux_6.12.13_x86_64
+  github_connector: authenticated_read_write
+  local_shell: available
+  authenticated_git_checkout: unavailable
+  slack_connector: authenticated_read_write
+  prohibited_effects_observed: none
+
+source_pin:
+  repository: TTaoGaming/TAGS
+  branch: agent/spatial-golden-app-001-20260731
+  required_base_sha: 1f0c0a7831db6f4476a703856855ff7ccc4f454b
+  prewrite_compare_result: identical
+  prewrite_ahead_by: 0
+  prewrite_behind_by: 0
+  verification_surface: GitHub.compare_commits
+
+producer_branch:
+  repository: TTaoGaming/TAGS
+  branch: agent/spatial-golden-app-001-20260731
+  final_sha: e0e3125e1ef6bb33e189c91b485ec341f2d3cd52
+  final_branch_compare_result: identical
+  commits_in_order:
+    - sha: c39dad03c62f733e650768f51dfe05161ee7a13b
+      purpose: failing_terminal_cancellation_regression_tests_first
+    - sha: 39e00342a0ff0723c044d59bd3c8d900a8408634
+      purpose: smallest_terminal_cancellation_implementation
+    - sha: 304c2150c65e56ea7457eb8ab3da8b0f94b1684d
+      purpose: failing_direct_processSample_recovery_test_first
+    - sha: e0e3125e1ef6bb33e189c91b485ec341f2d3cd52
+      purpose: finalize_direct_cancellation_state_after_descriptor_production
+  base_to_final_compare:
+    status: ahead
+    commit_count: 4
+    changed_paths_exact:
+      - prototypes/spatial-input-adapter.js
+      - tests/spatial-input-adapter.test.mjs
+
+changed_paths:
+  - path: prototypes/spatial-input-adapter.js
+    base_blob: ca327ea46049f499d0afe1be4f9632ee086f2637
+    final_blob: 579c9551225f0974ed93564b6ad8bfb1abf72cf3
+    final_sha256: af63452888df15770bdc19e65c13e39d569ca7c6b5a83d4729d9c7e41a9c5c95
+  - path: tests/spatial-input-adapter.test.mjs
+    base_blob: 2e523f5c373203ae4f5e0f1a48a52d1570f0682a
+    final_blob: 60ab9eb973db6e55824765e0f34005c6afb87ed9
+    final_sha256: 755c11c619eec7a35b9c37c3a3c75f9e37130cb16c809ab1837e2221a20d1bd6
+
+implementation:
+  summary:
+    - retains last valid coordinates and active target for an active synthetic pointer cycle
+    - emits one pointercancel for invalid tracking, reset, and disarm before clearing the active target state
+    - returns or invokes one cancellation descriptor for an unusable target without dispatching to the dead target
+    - uses pointerId, pointerType, isPrimary, last-known coordinates, buttons zero, button zero, bubbles true, and cancelable false
+    - suppresses repeated cancellation and later-release activation
+    - allows the next pinch to start a fresh cycle
+    - preserves fixed-target release and activation behavior
+  new_option:
+    name: cancellationCallback
+    purpose: optional host-cleanup seam when the active target is unusable
+    validation: must_be_function_when_provided
+
+execution_evidence:
+  materialization: exact connector-fetched source bytes were written to an ephemeral local directory; no authenticated Git working tree was available
+  first_red:
+    command: node --test /mnt/data/s07/tests/spatial-input-adapter.test.mjs
+    source_state: base_adapter_plus_first_new_tests
+    exit_code: 1
+    summary: 9_total_7_pass_2_fail
+    failures:
+      - invalid_tracking_reset_disarm_expected_pointercancel_but_received_none
+      - target_loss_expected_pointercancel_but_received_pointermove
+  first_green:
+    command: node --test /mnt/data/s07/tests/spatial-input-adapter.test.mjs
+    source_state: first_patch_plus_first_new_tests
+    exit_code: 0
+    summary: 9_total_9_pass_0_fail
+  second_red:
+    command: node --test /mnt/data/s07/tests/spatial-input-adapter.test.mjs
+    source_state: first_patch_plus_direct_processSample_recovery_test
+    exit_code: 1
+    summary: 10_total_9_pass_1_fail
+    failure: next_direct_cycle_returned_empty_after_terminal_descriptor
+  final_green:
+    command: node --test /mnt/data/s07/tests/spatial-input-adapter.test.mjs
+    source_state: final_Git_blob_equivalent_bytes
+    exit_code: 0
+    summary: 10_total_10_pass_0_fail
+  syntax_check:
+    command: node --check /mnt/data/s07/prototypes/spatial-input-adapter.js
+    exit_code: 0
+  readback:
+    adapter_connector_blob: 579c9551225f0974ed93564b6ad8bfb1abf72cf3
+    adapter_local_git_blob_recompute: 579c9551225f0974ed93564b6ad8bfb1abf72cf3
+    test_connector_blob: 60ab9eb973db6e55824765e0f34005c6afb87ed9
+    test_local_git_blob_recompute: 60ab9eb973db6e55824765e0f34005c6afb87ed9
+    exact_byte_match: true
+
+required_command_deviations:
+  C1_EXACT_CHECKOUT: NOT_RUN_no_authenticated_git_checkout; replaced_by_prewrite_GitHub_compare_identical
+  C2_CLEAN_PRECONDITION: NOT_RUN_no_working_tree; connector_writes_were_blob_SHA_guarded
+  C3_BASELINE_TEST: NOT_RUN_as_separate_command; first_red_run_showed_all_7_preexisting_tests_green
+  C4_TEST_FIRST_RED: RUN_exit_1_twice_with_recorded_failures
+  C5_FINAL_NODE_TEST: RUN_exit_0_10_of_10
+  C6_DIFF_CHECK: NOT_RUN_git_diff_unavailable
+  C7_ALLOWED_PATHS: connector_compare_showed_exact_two_path_set
+  C8_NO_FORBIDDEN_CHANGES: connector_compare_showed_no_other_paths
+  C9_FINAL_READBACK: connector_full_file_readback_plus_local_Git_blob_recompute
+
+acceptance_evidence_nonbinding:
+  A1_SOURCE_PIN: exact_prewrite_compare_identical
+  A2_BOUNDED_DIFF: exact_two_path_compare
+  A3_INVALID_TRACKING_CANCEL: covered_by_Node_regression
+  A4_RESET_CANCEL: covered_by_Node_regression
+  A5_DISARM_CANCEL: covered_by_Node_regression
+  A6_USABLE_TARGET_POINTERCANCEL: descriptor_fields_and_exactly_once_dispatch_covered_by_Node_regression
+  A7_DEAD_TARGET_HOST_SIGNAL: no_dead_target_dispatch_and_single_callback_or_return_descriptor_covered
+  A8_DUPLICATE_SUPPRESSION: repeated_interrupt_and_later_release_covered
+  A9_FRESH_CYCLE_RECOVERY: dispatch_and_direct_processSample_recovery_covered
+  A10_REGRESSION: original_7_tests_remain_green
+  A11_NO_EXTERNAL_EFFECT: Git_compare_contains_only_two_allowed_paths
+  A12_PRODUCER_RETURN: this_receipt_binds_claim_packet_branch_blobs_commands_rollback_risk_and_flaw
+  note: these_are_producer_observations_not_STOOD_or_PASS_verdicts
+
+rollback:
+  preferred: leave_branch_unmerged
+  alternate: ordinary_revert_commits_on_agent/spatial-golden-app-001-20260731
+  forbidden: force_push_rebase_reset_or_history_deletion
+
+remaining_risk:
+  - tests use an injected event factory under Node and do not prove native browser PointerEvent behavior
+  - synthetic event untrusted status is a browser property; Node tests only model isTrusted false
+  - unknown PointerEventInit fields such as reason may be ignored by browsers; the returned descriptor and cancellationCallback retain the reason
+  - no pointer capture, focus, accessibility, cross-browser, deployment, or production behavior was tested
+  - no authenticated checkout meant git status and git diff --check were unavailable
+
+honest_flaw: >-
+  The patch is validated only through deterministic Node seams materialized from exact Git blobs. It has not been run
+  in a browser or by a distinct provider, and this producer return must not be treated as an independent verdict.
+
+strongest_falsifier: >-
+  In a real browser, start one active pointer cycle, move to new coordinates, then independently exercise invalid
+  tracking, reset, disarm, and target disconnection. Reject the patch if any path omits the terminal signal, dispatches
+  to a dead target, duplicates cancellation, changes pointer identity or last-known coordinates, reports buttons pressed
+  or cancelable true, activates, resurrects the old cycle, or prevents a fresh cycle from completing normally.
+
+verifier:
+  named: Sigrun/P4_APEX_FALSIFICATION_or_other_distinct_provider_nonproducer
+  independent_verification_required: true
+  same_provider_preflight_binding_weight: 0
+
+consumer:
+  named: Olrun/Claude-Dispatch_as_spatial_factory_coordinator
+  explicit_ack_required_after_distinct_verdict: true
+
+world_effects:
+  performed:
+    - four ordinary commits on one existing agent branch
+    - two allowed file modifications
+    - local deterministic Node tests
+    - this immutable coordination receipt
+  not_performed:
+    - merge
+    - deployment
+    - publication
+    - task mutation
+    - send
+    - spend
+    - account_or_security_change
+    - destructive_Git_operation
