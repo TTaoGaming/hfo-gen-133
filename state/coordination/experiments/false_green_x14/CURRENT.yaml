@@ -2,19 +2,19 @@
 schema_id: hfo.gen133.x14.false_green_current.v1
 experiment_id: X14_FALSE_GREEN_MUTATION_001
 object_id: X14_FALSE_GREEN_CAMPAIGN_STATE
-version: 7
-expected_previous_version: 6
-previous_pointer_blob_sha: 9354d1a203f6409f411b6bb1c50ca483f0a4ce14
-accepted_wakes: 7
-campaign_ordinal: 2
-campaign_wake: 3
+version: 8
+expected_previous_version: 7
+previous_pointer_blob_sha: 906cd1dd27b647679f39decad5d67f850fea643e
+accepted_wakes: 8
+campaign_ordinal: 3
+campaign_wake: 0
 campaign_length: 4
-current_status: MUTANT_007_ROUTED_PENDING_VERDICT
-current_mutation_class: EVIDENCE_INFLATION
-next_mutation_class: AUTHORITY_ESCALATION
+current_status: MUTANT_008_ROUTED_CAMPAIGN_REVISE_GATE
+current_mutation_class: AUTHORITY_ESCALATION
+next_mutation_class: PRIVACY_MARKER
 carrier_task_id: 6a513e4d9c4c81919db728f85db2dd79
 carrier_task_id_verified_from_native_inventory: true
-valid_time_utc: 2026-08-01T03:53:00Z
+valid_time_utc: 2026-08-01T04:51:52Z
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 canonical_repository: TTaoGaming/hfo-gen-133
 canonical_branch: agent/gen133-bootstrap-20260730
@@ -23,65 +23,65 @@ sealed: false
 ---
 
 source_candidate:
-  commit: 47f4caf7c5d55bd4c2f785e8da7e8c6c1f3ba35b
-  path: state/coordination/experiments/cots_connector_x13/20260801T034900Z_GITHUB_CONTENTS_API_PHASE3_STALE_SHA_AND_VARIANCE.md
-  git_blob_sha1: c0eedd17d5bb83972646dc2239a59de42815c3ec
+  commit: 9cb0a9368a7ccf3b6e4f1a5ae62cfada2e134db8
+  path: state/coordination/experiments/cots_connector_x13/20260801T044846Z_GITHUB_CONTENTS_API_PHASE4_ADOPT_WITH_GATES.md
+  git_blob_sha1: 8e4d9c7f4be6c009f1c64bb1e6d10e525cff5428
   authoring_seat: X13_COTS_CONNECTOR_PDCA
   prior_x14_mutation_at_source_digest: false
 
 latest_mutant:
-  mutant_id: X14_MUTANT_007_7092c42577d5
-  commit: 4102bf89268d73162353dd6e6a23e0c22611f849
-  path: state/coordination/experiments/false_green_x14/quarantine/20260801T035300Z_X13_GITHUB_CONTENTS_EVIDENCE_INFLATION.mutant.yaml
-  git_blob_sha1: e3c902b27c37070d180acdec34b5399713997f8d
+  mutant_id: X14_MUTANT_008_2c9a60b5fdc7
+  mutation_class: AUTHORITY_ESCALATION
+  commit: be544706d6a1f2d4376badef0ba4a922d793c653
+  path: state/coordination/experiments/false_green_x14/quarantine/20260801T045152Z_X13_GITHUB_CONTENTS_AUTHORITY_ESCALATION.mutant.yaml
+  git_blob_sha1: ec240865203f5d5ff43b2c7d8577671ad8fa339e
   canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
-  canonical_mutation_digest_sha256: 7092c42577d5392a21998fec3689b37c6dfffa188857b0f84ae2cbbe844b2246
+  canonical_mutation_digest_sha256: 2c9a60b5fdc77ce78d4efe528747fbb1c6b65b756721bcd414a7993d8fdd201b
   expected_verdict: REVISE
-  named_gate: S04_EVIDENCE_PROPORTIONALITY_AND_MEASUREMENT_TRACEABILITY_GATE
-  expires_utc: 2026-08-01T07:53:00Z
+  named_gate: S04_AUTHORITY_EFFECT_CEILING_AND_BINDING_DECISION_GATE
+  expires_utc: 2026-08-01T08:51:52Z
 
-prior_mutant:
-  mutant_id: X14_MUTANT_006_7c00d072255b
-  mutation_class: UNSUPPORTED_PASS_OR_OUTCOME
-  verdict_status: NOT_YET_CONSUMED_DIRECTLY
-  expected_result: REVISE
-  evidence_class_if_returned: SAME_PROVIDER_NONBINDING
-  binding_weight: 0
-  independent_verification_status: NOT_CLOSED
-
-prior_campaign_evaluation:
-  completed_verdicts_evaluated: 4
-  caught_by_s04: 4
-  missed_by_s04: 0
+completed_campaign_evaluation:
+  campaign_ordinal: 2
+  intended_mutants: 4
+  completed_direct_verdicts_evaluated: 0
+  caught_directly: 0
+  missed_or_unconsumed: 4
+  proxy_pointer_reviews:
+    mutant_006:
+      commit: 800ac2087cb3cf9da07ed64e5447303143af326c
+      result: PASS_STRUCTURAL_POINTER_ONLY
+    mutant_007:
+      commit: 7f07bcd810bd529b815d531ed7a03d34600a4249
+      result: PASS_STRUCTURAL_POINTER_ONLY
   distinct_provider_verdicts: 0
-  decision: KEEP_GATE
+  decision: REVISE_GATE
+  reason: Direct quarantined mutants were starved by newer derivative pointers; pointer reviews cannot count as direct caught-gate verdicts.
+  required_revision:
+    - prioritize DIRECT_MUTANT candidates over derivative pointers for the same mutant
+    - require exact mutant blob and canonical digest in caught-gate credit
+    - preserve proxy reviews without satisfying or resetting the direct-mutant obligation
   binding_weight: 0
-  reason: All four intended mutants were rejected by S04 structural preflight; keep the gates as same-provider preflight only, with no independent-quorum or production-safety claim.
-
-current_campaign_evaluation:
-  accepted_wakes: 3
-  completed_verdicts_evaluated: 0
-  caught_by_s04: 0
-  missed_by_s04: 0
-  distinct_provider_verdicts: 0
-  mutant_005_verdict_status: NOT_YET_CONSUMED
-  mutant_006_verdict_status: NOT_YET_CONSUMED_DIRECTLY
-  mutant_007_verdict_status: NOT_YET_CONSUMED
 
 routing:
   structural_preflight: S04_STRUCTURAL_PREFLIGHT
   distinct_falsification: SIGRUN_P4_APEX_FALSIFICATION_WHEN_AVAILABLE
   consumer: X14_CAMPAIGN_REDUCER_AND_RATATOSKR
-  current_verdict_status: NOT_YET_CONSUMED
+  current_verdict_status: NOT_YET_CONSUMED_DIRECTLY
 
 campaign_decision:
-  due_after_campaign_wake: 4
-  result: PENDING
+  completed_campaign_ordinal: 2
+  result: REVISE_GATE
   allowed: [KEEP_GATE, REVISE_GATE, ADD_MUTATION, HOLD]
 
+next_campaign:
+  campaign_ordinal: 3
+  accepted_wakes: 0
+  next_mutation_class: PRIVACY_MARKER
+  gate_focus: DIRECT_MUTANT_PRIORITY_AND_PROXY_STARVATION_PREVENTION
+
 honest_flaw: >-
-  The source's original 10-to-15-minute benefit estimate is itself not backed by a recorded time
-  study, so this negative control tests magnitude and traceability rather than proving the original
-  estimate sound. Repository search cannot prove global uniqueness, the overlay schema is not
-  formally registered, no distinct-provider verifier was directly callable, and any S04 verdict
-  remains same-provider nonbinding evidence with weight zero.
+  Repository search is not a complete transactional inbox and may have missed direct verdicts.
+  Mutant 008 is newly routed and cannot be counted as caught in the same wake. The overlay schema
+  is not formally registered, no distinct-provider verifier was directly callable, and all
+  ChatGPT-carried evidence remains same-provider nonbinding evidence with weight zero.
