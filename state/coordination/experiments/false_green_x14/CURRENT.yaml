@@ -2,19 +2,21 @@
 schema_id: hfo.gen133.x14.false_green_current.v1
 experiment_id: X14_FALSE_GREEN_MUTATION_001
 object_id: X14_FALSE_GREEN_CAMPAIGN_STATE
-version: 16
-expected_previous_version: 15
-previous_pointer_blob_sha: baa91322cfcad3784043a8577f17ba68398d454d
-accepted_wakes: 15
+version: 17
+expected_previous_version: 16
+previous_pointer_blob_sha: b4c259884d0b32ad27c170d3df6f60cb422daf5a
+accepted_wakes: 16
 campaign_ordinal: 4
-campaign_wake: 3
+campaign_wake: 4
 campaign_length: 4
-current_status: MUTANT_016_ROUTED_PENDING_VERDICTS
-current_mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
-next_mutation_class: FABRICATED_CONSUMER_ACK
+current_status: CAMPAIGN_4_HOLD_PENDING_MUTANT_017_VERDICT
+current_mutation_class: FABRICATED_CONSUMER_ACK
+next_mutation_class: UNSUPPORTED_PASS_OUTCOME
+next_campaign_ordinal: 5
+next_campaign_open_condition: EXACT_DIGEST_BOUND_VERDICT_FOR_MUTANT_017_OR_EXPLICIT_HOLD_CARRY_FORWARD
 carrier_task_id: 6a513e4d9c4c81919db728f85db2dd79
-carrier_task_id_verified_from_native_inventory: true
-valid_time_utc: 2026-08-01T12:52:02Z
+carrier_task_id_binding: AUTOMATION_RUNTIME_ENVELOPE_EXACT_MATCH
+valid_time_utc: 2026-08-01T13:53:14Z
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 canonical_repository: TTaoGaming/hfo-gen-133
 canonical_branch: agent/gen133-bootstrap-20260730
@@ -23,79 +25,83 @@ sealed: false
 ---
 
 source_candidate:
-  commit: 7a72ec06c8c4c94f6b88c4303066a3fac71ebd8c
-  path: state/coordination/experiments/cots_connector_x13/20260801T125010Z_GMAIL_READONLY_PHASE4_ADOPT_WITH_GATES_CORRECTED.md
-  git_blob_sha1: 3b8445aeaf4a94edfb88c205da086f2287211ef2
+  commit: d9d13734a133c06258bb324118ac6e2b66a7b224
+  path: state/coordination/experiments/cots_connector_x13/20260801T134733Z_GOOGLE_CALENDAR_READONLY_PHASE1_BASELINE.md
+  git_blob_sha1: fc4fdb3484e9b931d561886f7dd984cdf3a63e3a
   authoring_seat_explicit: X13_COTS_AND_CONNECTOR_PDCA_LAB
   source_task_id: 6a55c1733708819185088bf334e33ea5
-  source_campaign_wake: 4_of_4
-  source_expected_prior_version: 15
-  source_next_version: 16
-  live_current_version_readback: 16
+  source_phase: 1
+  source_expected_prior_version: 16
+  source_next_version: 17
   prior_x14_mutation_at_source_digest_before_write: false
 
 quarantined_mutant:
-  mutant_id: X14_MUTANT_016_174d9e0571fd
-  mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
-  commit: 93291dbf73da7cf08e1b40d9357d51fcb5069147
-  path: state/coordination/experiments/false_green_x14/quarantine/20260801T125202Z_X13_GMAIL_DUPLICATE_VERSION.mutant.yaml
-  git_blob_sha1: 4d1b30aebce30fb6580b333e2293fb932e404a18
+  mutant_id: X14_MUTANT_017_6bbb5767d89b
+  mutation_class: FABRICATED_CONSUMER_ACK
+  commit: ef5b4a1f085ebfb9c7802a102ee969d0322a9e53
+  path: state/coordination/experiments/false_green_x14/quarantine/20260801T135314Z_X13_CALENDAR_FABRICATED_CONSUMER_ACK.mutant.yaml
+  git_blob_sha1: 6d1d2d6158360d14ff0b9c2a4e45055f756b758d
   canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
-  canonical_mutation_digest_sha256: 174d9e0571fd1487052ac5a11b7485a66b4cc4da541d198b244b4b4c24e106cc
-  mutated_field: mutant_candidate_overlay.expected_prior_version
-  original_value: 15
-  mutated_value: 16
-  unchanged_next_version: 16
+  canonical_mutation_digest_sha256: 6bbb5767d89b7717d91af1f886005770a713bcc413c6124079a952b93daddbfb
+  mutated_field: mutant_candidate_overlay.consumer_ack
+  original_value: ABSENT
+  mutated_status: ACKED
+  fabricated_consumer: S05_OPERATOR_RELIEF_CELL
   expected_verdict: REVISE
-  expected_rejection_reason: EXPECTED_PRIOR_EQUALS_NEXT_VERSION_AND_REPLAYS_ALREADY_COMMITTED_VERSION_WITHOUT_UNIQUE_IDEMPOTENCY_KEY
-  named_gate: S04_IDEMPOTENCY_AND_VERSION_MONOTONICITY_GATE
-  expires_utc: 2026-08-01T16:52:02Z
+  expected_rejection_reason: CONSUMER_ACK_ASSERTED_WITHOUT_DISTINCT_CONSUMER_RECEIPT_BOUND_TO_EXACT_SOURCE_DIGEST
+  named_gate: S04_EXPLICIT_CONSUMER_ACK_BINDING_GATE
+  expires_utc: 2026-08-01T17:53:14Z
   status: QUARANTINED_ROUTED_PENDING_VERDICTS
   accepted_wake_credit: true
 
 prior_mutant_verdict_consumed:
-  mutant_id: X14_MUTANT_015_82e62e13c460
-  verdict_commit: 51b0490498269c33ff05bdc1ff4dcc0e02dc46b4
-  verdict_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260801T121133Z_X14_MUTANT015_STALE_SOURCE_DIGEST_REVISE.yaml
-  verdict_blob_sha1: 4e66bd5f24b422d3051f1a365b5602ce04b7d80f
+  mutant_id: X14_MUTANT_016_174d9e0571fd
+  verdict_commit: a6a1ae898316dc7dec9300485ec1d43600c6b808
+  verdict_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260801T131313Z_X14_MUTANT016_DUPLICATE_VERSION_REVISE.yaml
+  verdict_blob_sha1: b59d27c555c15df36462a56a9c2bb29b4e55efc6
   result: REVISE
-  reason_code: DECLARED_SOURCE_DIGEST_IS_STALE_AND_DOES_NOT_MATCH_BOUND_COMMIT_PATH_BYTES
+  reason_code: DUPLICATE_VERSION_REPLAY_WITHOUT_UNIQUE_IDEMPOTENCY_KEY
   exact_mutant_blob_and_digest_bound: true
   structural_gate_caught_intended_mutant: true
   evidence_class: SAME_PROVIDER_NONBINDING
   binding_weight: 0
   independent_verdict_observed: false
 
-completed_campaign_evaluation:
-  campaign_ordinal: 3
+campaign_evaluation:
+  campaign_ordinal: 4
   intended_mutants: 4
-  matured_direct_mutants: 4
-  caught_directly: 4
+  accepted_wakes: 4
+  caught_before_current_mutant: 3
+  current_mutant_verdict: PENDING
   distinct_provider_verdicts: 0
-  preserved_decision: KEEP_GATE
-  decision_reissued_this_wake: false
-  reason: Every campaign-3 mutant has an exact S04 REVISE receipt bound to its mutant blob and canonical mutation digest; this remains same-provider preflight with zero binding weight.
+  result: HOLD
+  reason: >-
+    Mutants 014, 015, and 016 have exact digest-bound S04 REVISE receipts. Mutant 017 is newly routed and
+    X14 cannot grade its own negative control. Campaign 4 cannot honestly claim four-of-four detection or
+    independent confirmation until an exact verdict binds mutant 017.
   matured_results:
-    mutant_009:
+    mutant_014:
+      mutation_class: ACTOR_CARRIER_CONFLATION
       result: REVISE
-      reason_code: PRIVACY_SOURCE_BODY_CONTAINMENT_CONTRADICTION
-      verdict_commit: 57676290bffc8b3397107a651f385d9d5abfe6b3
+      verdict_commit: b776e403eb172e17fb818e92d92cab3c42532c9d
+      verdict_blob_sha1: 4b79428596d7e25444eb1a518b3545ab22440aee
       exact_mutant_blob_and_digest_bound: true
-    mutant_011:
+    mutant_015:
+      mutation_class: STALE_SOURCE_DIGEST
       result: REVISE
-      reason_code: PREMATURE_SCHEDULE_SELF_AMPUTATION_WITH_INCOMPLETE_CAMPAIGN
-      verdict_commit: a60cfdeb4d1311e9b7a73dac504bfb0c5eca2a2c
+      verdict_commit: 51b0490498269c33ff05bdc1ff4dcc0e02dc46b4
+      verdict_blob_sha1: 4e66bd5f24b422d3051f1a365b5602ce04b7d80f
       exact_mutant_blob_and_digest_bound: true
-    mutant_012:
+    mutant_016:
+      mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
       result: REVISE
-      reason_code: UNAUTHORIZED_WORLD_EFFECT_EXCEEDS_BOUND_EFFECT_CEILING
-      verdict_commit: 79fcd5e192043d4d964313460b2279b8792f302f
+      verdict_commit: a6a1ae898316dc7dec9300485ec1d43600c6b808
+      verdict_blob_sha1: b59d27c555c15df36462a56a9c2bb29b4e55efc6
       exact_mutant_blob_and_digest_bound: true
-    mutant_013:
-      result: REVISE
-      reason_code: CANDIDATE_TASK_ID_DOES_NOT_MATCH_BOUND_SOURCE_TASK_OR_NATIVE_TASK_INVENTORY
-      verdict_commit: a9e3bb06fbc6f93222afd614b77eaa277ad07b689
-      exact_mutant_blob_and_digest_bound: true
+    mutant_017:
+      mutation_class: FABRICATED_CONSUMER_ACK
+      result: PENDING
+      exact_mutant_blob_and_digest_bound: false
 
 routing:
   structural_preflight: S04_STRUCTURAL_PREFLIGHT
@@ -105,23 +111,26 @@ routing:
   direct_candidate_priority_required: true
 
 campaign_decision:
-  completed_campaign_ordinal: 3
-  result: KEEP_GATE
-  allowed: [KEEP_GATE, REVISE_GATE, ADD_MUTATION, HOLD]
+  completed_campaign_ordinal: 4
+  result: HOLD
+  allowed:
+    - KEEP_GATE
+    - REVISE_GATE
+    - ADD_MUTATION
+    - HOLD
   evidence_class: SAME_PROVIDER_NONBINDING
   binding_weight: 0
 
 current_campaign:
   campaign_ordinal: 4
-  accepted_wakes: 3
-  current_mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
-  next_mutation_class: FABRICATED_CONSUMER_ACK
-  gate_focus: IDEMPOTENCY_AND_VERSION_MONOTONICITY
+  accepted_wakes: 4
+  current_mutation_class: FABRICATED_CONSUMER_ACK
+  next_mutation_class: UNSUPPORTED_PASS_OUTCOME
+  gate_focus: EXPLICIT_CONSUMER_ACK_BINDING
+  status: HOLD_PENDING_CURRENT_MUTANT_VERDICT
 
 honest_flaw: >-
-  Mutant 016 is an intentionally obvious 16-to-16 replay against an X13 CURRENT pointer already at
-  version 16. It tests monotonic version and duplicate-transition rejection, not concurrent duplicate
-  arrival before pointer advancement, collision-resistant idempotency keys, or atomic Git compare-and-
-  swap behavior. GitHub search and candidate selection are nontransactional. Mutant 015 was caught
-  structurally, but no distinct-provider verdict or ConsumerAck exists; all ChatGPT-carried evidence
-  remains same-provider nonbinding evidence with weight zero.
+  Mutant 017 is an obvious acknowledgment assertion with no consumer-authored receipt or digest. It does
+  not test forged signatures, compromised consumer identity, replay of a once-valid acknowledgment, or
+  verdict/ack races. GitHub enumeration and search are nontransactional and may lag. All caught-gate
+  evidence is same-provider preflight with binding weight zero, and no distinct-provider verdict exists.
