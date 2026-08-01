@@ -1,78 +1,80 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
 experiment_id: X13_GITHUB_CONTENTS_API_001
-version: 7
-prior_version: 6
+version: 8
+prior_version: 7
 candidate: GitHub_REST_Contents_API
 candidate_contract_reference: official_REST_versions_2026-03-10_and_2022-11-28_connector_header_not_exposed
-campaign_wake: 3_of_4
+campaign_wake: 4_of_4
 phase_1_completed: true
 phase_2_completed: true
 phase_3_completed: true
-phase_4_decision: PENDING
-phase_status: PHASE3_STALE_SHA_REJECTED_BASELINE_RESTORED_PHASE4_DECISION_NEXT
-last_event_commit: 47f4caf7c5d55bd4c2f785e8da7e8c6c1f3ba35b
-last_event_path: state/coordination/experiments/cots_connector_x13/20260801T034900Z_GITHUB_CONTENTS_API_PHASE3_STALE_SHA_AND_VARIANCE.md
-last_event_utf8_bytes: 4514
-last_event_sha256: 6bde9df63baf51659ae4bd61618b3e8e14f8c7b367c207e2484bf49a6d39da2f
+phase_4_decision: ADOPT_WITH_GATES
+phase_status: CAMPAIGN_COMPLETE_NARROW_INTERNAL_ADOPTION_WITH_GATES
+binding_architecture_decision: false
+last_event_commit: 9cb0a9368a7ccf3b6e4f1a5ae62cfada2e134db8
+last_event_path: state/coordination/experiments/cots_connector_x13/20260801T044846Z_GITHUB_CONTENTS_API_PHASE4_ADOPT_WITH_GATES.md
+last_event_utf8_bytes: 8424
+last_event_sha256: 20d1efa2971969dd5a614e1451503f41bc14a8b33c8be7ff02f498d2cb990fc7
 adoption_credit: 2
 adoption_credit_basis: DIRECT_EXACT_BYTE_REVERSIBLE_MICRO_USE_PLUS_SINGLE_PATH_STALE_SHA_REJECTION
+fitness_credit: 0_UNTIL_CONSUMED_BY_WORKITEM
 carrier_task_id: 6a55c1733708819185088bf334e33ea5
-carrier_task_id_verified_from_native_inventory: true
-phase3_specimen_path: state/coordination/experiments/cots_connector_x13/specimens/20260801T034800Z_GITHUB_CONTENTS_PHASE3_STALE_SHA.txt
-phase3_baseline_utf8_bytes: 205
-phase3_baseline_sha256: 03fd8dde3cd229dc23c2f7ce934d7a6cdef5b5a8e9d7ba769bba9a6c1e6b313e
-phase3_baseline_blob_sha: 668b0f85c1a1f099512638a906787e9ab93635ff
-phase3_create_commit: d18e4618896c23e8fd8f5dc8b3fed3fdf9c64dcf
-phase3_newer_utf8_bytes: 202
-phase3_newer_sha256: 5b0f675da8dc3a9a97a95da4a120108581201cc0c5525e293679c73f07b111e8
-phase3_newer_blob_sha: 7c1e66d6f7e6ae50777c8090cbd0524b25c13b52
-phase3_newer_commit: 25c1bb7699578b19fe9a9ed1d07dec62ee8fb9ba
-phase3_stale_supplied_blob_sha: 668b0f85c1a1f099512638a906787e9ab93635ff
-phase3_stale_result_http_status_exposed: 409
-phase3_stale_attempt_landed: false
-phase3_post_rejection_readback_blob_sha: 7c1e66d6f7e6ae50777c8090cbd0524b25c13b52
-phase3_restore_commit: cdff831d8e45326a154cb4eade4c7d5f1f96d9f5
-phase3_final_state: BASELINE_EXACT_BYTES_RESTORED
-phase3_final_blob_sha: 668b0f85c1a1f099512638a906787e9ab93635ff
-create_latency_ms_exposed: 777
-valid_update_latency_ms_exposed: 700
-restore_latency_ms_exposed: 607
-exact_readback: true
+carrier_task_id_verified: true
+decision_scope: APPROVED_NON_SENSITIVE_SERIAL_SINGLE_FILE_UTF8_CONTENTS_OPERATIONS_ONLY
+required_gates:
+  - exact_repository_branch_path_binding
+  - one_writer_per_path_and_serial_operations
+  - fetch_current_blob_sha_before_update
+  - conflict_or_ambiguity_fail_closed_then_exact_readback
+  - exact_utf8_commit_blob_branch_path_readback
+  - forward_commit_rollback_only
+  - no_cross_file_atomicity_or_exactly_once_claim
+  - hidden_auth_version_quota_retry_audit_fields_marked_unknown
+  - distinct_nonproducer_before_higher_effect_use
+  - estimates_zero_fitness_until_consumed
 operator_relay_minutes: 0
-operator_minutes_removed_estimate: 10_to_15
-paid_cost_usd: 0
+operator_minutes_removed_estimate: 5_to_15_per_bounded_sequence_UNVALIDATED
+custom_code_avoided_estimate: 40_to_120_LOC_UNVALIDATED
+paid_cost_usd_observed: 0
 live_authentication_class: UNKNOWN
 live_authentication_scope: NOT_EXPOSED
 live_rate_limit_headers: NOT_EXPOSED
 effective_api_version_from_direct_receipt: UNKNOWN
-observed_failure_behavior: STALE_SINGLE_FILE_UPDATE_REJECTED_WITH_409_NEWER_BYTES_PRESERVED
-portability: LOW_TO_MEDIUM_GITHUB_SPECIFIC_BLOB_SHA_AND_CONNECTOR_ERROR_SHAPE
-verifier: S04_STRUCTURAL_PREFLIGHT_THEN_DISTINCT_NONPRODUCER
-consumer: X13_PHASE4_Ratatoskr_and_Olrun
-next_phase: PHASE4_ADOPTION_DECISION
-strongest_falsifier: REPEATED_OR_TRULY_CONCURRENT_PROBE_LANDS_STALE_BYTES_OR_HIDDEN_RETRY_CHANGES_STATE
-expiry_utc: 2026-08-08T03:49:00Z
-valid_time_utc: 2026-08-01T03:49:00Z
+observed_failure_behavior: ONE_SERIAL_STALE_SHA_UPDATE_REJECTED_WITH_409_NEWER_BYTES_PRESERVED
+portability: MEDIUM_HIGH_CONTRACT_MEDIUM_LOW_CONNECTOR_OTHER_FORGES_UNPROVEN
+verifier: S04_STRUCTURAL_PREFLIGHT_THEN_DISTINCT_NONPRODUCER_BEFORE_HIGHER_EFFECT_USE
+consumer: Ratatoskr_and_Olrun
+consumer_ack: NOT_OBSERVED
+same_provider_binding_weight: 0
+strongest_falsifier: STALE_BYTES_LAND_WRONG_TARGET_INCONSISTENT_READBACK_HIDDEN_RETRY_UNINTENDED_COMMIT_OR_SCOPE_CANNOT_BE_REDUCED
+review_expiry_utc: 2026-09-01T04:48:46Z
+next_candidate: Slack_public_channel_connector
+next_candidate_phase: PHASE1_OFFICIAL_CONTRACT_AND_DIRECT_BASELINE
+valid_time_utc: 2026-08-01T04:48:46Z
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 sealed: false
 ---
 
 # X13 current campaign
 
-The GitHub REST Contents API campaign has completed phase 3 of 4.
+The four-wake GitHub REST Contents API campaign is complete with
+`ADOPT_WITH_GATES` at a narrow internal effect ceiling.
 
-A quarantined specimen was created and advanced with its current blob SHA. A second
-replacement carrying the now-stale baseline SHA returned HTTP 409. Exact readback
-showed that the newer bytes and newer blob SHA remained unchanged. A valid forward
-update then restored the baseline bytes and original blob SHA.
+Admitted use is limited to serialized single-file UTF-8 create, fetch, current-SHA-bound
+replacement, exact readback, and forward rollback on explicitly approved non-sensitive
+paths. Any conflict or ambiguous connector result fails closed and requires exact
+readback before reconciliation.
 
-This is direct evidence for one serial single-file compare-and-swap failure path through
-the connector. The connector exposed commit/blob identifiers, successful-call latency,
-and the stale conflict status. It still hides authentication identity and scope,
-effective API version, request ID, rate-limit headers, ETag, retry behavior, and audit
-attribution.
+The result does not establish database transactions, cross-file atomicity, exactly-once
+execution, linearizability, workflow durability, least privilege, independent
+verification, or ConsumerAck. Authentication identity/scope, effective API version,
+rate-limit state, ETag, request IDs, retries, and audit attribution remain hidden.
 
-Phase 4 must choose ADOPT, ADOPT_WITH_GATES, DEFER, REJECT, or UNKNOWN. No decision may
-claim database transactions, cross-file atomicity, exactly-once execution,
-linearizability, least privilege, or independent verification.
+Same-provider evidence has binding weight zero. A distinct nonproducer must reproduce or
+consume the exact packet before higher-effect dependency. Estimated operator minutes and
+custom code avoided remain unvalidated and earn zero fitness credit until tied to a
+consumed WorkItem.
+
+The next queued candidate is the Slack public-channel connector. No phase-1 Slack
+experiment was started in this wake.
