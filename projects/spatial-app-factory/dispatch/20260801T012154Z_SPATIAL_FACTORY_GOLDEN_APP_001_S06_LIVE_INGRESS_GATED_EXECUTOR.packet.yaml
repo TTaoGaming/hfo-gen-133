@@ -1,0 +1,314 @@
+---
+schema_id: hfo.gen133.spatial_factory.s06_executor_packet.v3
+packet_id: S06_SPATIAL_FACTORY_GOLDEN_APP_001_LIVE_INGRESS_GATED_20260801T012154Z
+result: HOLD
+work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001
+callsign_or_seat: S06_CODE_WORK_PACKET_COMPILER_AND_CODEX_BRIDGE
+carrier_task_id_expected: 6a57972b9df081918680ce67c4ecb197
+carrier_task_id_observed: 6a57972b9df081918680ce67c4ecb197
+carrier_task_id_match: true
+carrier_identity_claim: DISPOSABLE_SCHEDULED_CARRIER_NOT_LINEAGE
+wip: 1
+valid_time_utc: 2026-08-01T01:21:54Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+packet_state: EXACT_EXECUTOR_PACKET_READY_LIVE_INGRESS_UNCONFIRMED_NOT_ROUTED_NOT_EXECUTION
+sealed: false
+host_start_or_decline_deadline_utc: 2026-08-01T02:45:00Z
+executor_expiry_utc: 2026-08-01T03:00:00Z
+producer_return_due_utc: 2026-08-01T03:06:07Z
+claim_lease_expires_utc: 2026-08-01T04:06:07Z
+---
+
+self_probe:
+  identity_source: native_scheduled_task_inventory_readback
+  exact_task_found: true
+  enabled: true
+  task_id_match: true
+  tools_observed:
+    native_tasks_inventory: read
+    github: read_write
+    github_compare_commits: read
+    slack: read
+    direct_codex_ingress: unavailable
+    direct_claude_dispatch_ingress: unavailable
+    authenticated_target_checkout_or_shell: unavailable
+    browser_runtime: unavailable
+  production_execution_performed: false
+  direct_route_claimed: false
+
+selection:
+  work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001
+  changed_unexpired_edge: >-
+    S15 added a current failure antibody requiring fresh direct authenticated host acknowledgement before route credit,
+    and S03 bound the same requirement into a nonterminal REVISE route after S07 returned EXECUTION_BLOCKED.
+  claim_state_at_compile: UNEXPIRED
+  target_state_at_compile: UNCHANGED_AT_fee50a70188b510695e8e5fad2ebadc6cba0535a
+  duplicate_rule: supersede only the prior S06 packet's routing semantics; preserve its frozen code and test contract
+  idempotency:
+    canonicalization: sha256_of_UTF8_LF_joined_fields
+    canonical_input: |-
+      SPATIAL_FACTORY_GOLDEN_APP_001
+      47cd1e8bfb7cf78651e8978f4dec1f5e2a76bad4
+      f90e3797b4e5aa398aa386e555e26b53ae27cfc5
+      44bcfd69ecf90afd95b52c7917e65376ba49163f
+      94b2da15f48657dcfa41bb0020693f44b756ca4e
+      1d2c151ceca2fff21576928fe8263b6e9b2d5f57
+      ea2cade997d23624ebe12ba740b05be225ab2ec9
+      fee50a70188b510695e8e5fad2ebadc6cba0535a
+      2026-08-01T02:45:00Z
+      2026-08-01T03:00:00Z
+    key: c3c453a17341b435bcb3920c5f33e630c667f59e6fbdd978868e0be4bd93a666
+
+claim_binding:
+  commit: 47cd1e8bfb7cf78651e8978f4dec1f5e2a76bad4
+  path: projects/spatial-app-factory/claims/20260801T000607Z_SPATIAL_FACTORY_GOLDEN_APP_001_S02_RENEWED.claim.yaml
+  blob: f90e3797b4e5aa398aa386e555e26b53ae27cfc5
+  claim_id: S02_SPATIAL_FACTORY_GOLDEN_APP_001_RENEWED_20260801T000607Z
+  acceptance_contract_sha256: ffaa1a6fa0637039abd6ab9e43b1b978d1505edd0575ab020ca7256e3a45a8cb
+  effect_ceiling: BRANCH_FILE_TEST_AND_INTERNAL_COORDINATION_ONLY
+  producer_return_due_utc: 2026-08-01T03:06:07Z
+  lease_expires_utc: 2026-08-01T04:06:07Z
+
+changed_evidence_bindings:
+  prior_s06_packet:
+    commit: 44bcfd69ecf90afd95b52c7917e65376ba49163f
+    path: projects/spatial-app-factory/dispatch/20260801T001933Z_SPATIAL_FACTORY_GOLDEN_APP_001_S06_REVISED_EXECUTOR.packet.yaml
+    blob: 94b2da15f48657dcfa41bb0020693f44b756ca4e
+    disposition: FROZEN_CODE_AND_TEST_CONTRACT_PRESERVED_ROUTING_SEMANTICS_SUPERSEDED
+  blocked_producer_return:
+    commit: 665113a73d120ddb037199fa95b0894d51475980
+    path: state/coordination/receipts/chatgpt_runtime/seat-07/20260801T002944Z_SPATIAL_FACTORY_GOLDEN_APP_001_EXECUTION_BLOCKED_HOLD.yaml
+    blob: 74f4aa71962a9f40a9f1dfe2334c788cafd7d746
+    result: HOLD
+    execution_label: EXECUTION_BLOCKED
+    required_commands: C1_THROUGH_C11_NOT_RUN
+  live_ingress_failure_antibody:
+    commit: 1d2c151ceca2fff21576928fe8263b6e9b2d5f57
+    path: projects/spatial-app-factory/heritage/20260801T005659Z_S15_OLRUN_DISPATCH_LIVE_INGRESS_FAILURE_ANTIBODY.yaml
+    rule: LIVE_INGRESS_BEFORE_DISPATCH_CREDIT
+  reducer_route:
+    commit: ea2cade997d23624ebe12ba740b05be225ab2ec9
+    path: state/coordination/receipts/chatgpt_runtime/seat-03/20260801T010859Z_SPATIAL_FACTORY_GOLDEN_APP_001_EXECUTION_SURFACE_REVISE_ROUTE.yaml
+    result: REVISE
+    route_class: DISTINCT_PROVIDER_EXECUTION_INGRESS_REQUEST
+
+source_target:
+  repository: TTaoGaming/TAGS
+  visibility: private
+  base_sha: 1271e25306fe8ef8baea32704cf022435703d498
+  branch: agent/spatial-golden-app-001-20260731
+  required_start_head_sha: fee50a70188b510695e8e5fad2ebadc6cba0535a
+  current_head_readback:
+    compared_against: fee50a70188b510695e8e5fad2ebadc6cba0535a
+    status: identical
+    ahead_by: 0
+    behind_by: 0
+
+live_ingress_precondition:
+  status: UNSATISFIED
+  direct_receiver: Olrun/Claude-Dispatch_or_one_operator_authorized_authenticated_checkout_capable_host
+  required_before_dispatch_credit:
+    - direct START_ACCEPTED or DECLINED receipt; Slack prose or Git pointer alone is insufficient
+    - exact binding to claim commit and blob, prior S06 packet commit and blob, this packet commit and blob, repository, branch, base SHA, and required start head
+    - authenticated clean checkout confirmed
+    - Node, Python, curl, and Git available with versions when observable
+    - start-or-decline timestamp no later than 2026-08-01T02:45:00Z
+  if_unsatisfied_at_deadline: remain HOLD and allow executor packet to expire cleanly
+  no_interactive_login: true
+
+bounded_goal: >-
+  Complete the existing isolated branch without broad refactor. Add one classic local adapter script seam to the FAB
+  prototype, add an explicit fail-closed armed state and injected exact-target activation seam to the dependency-free
+  adapter, and prove that one valid armed pinch-release cycle activates the same injected target exactly once while
+  held, invalid, missing, non-finite, out-of-range, low-confidence, disarmed, reset, repeated-release, or target-loss
+  sequences activate zero times. Preserve native mouse, touch, keyboard, onclick, and ordinary click fallback.
+
+current_red_evidence:
+  - target branch remains exactly fee50a70188b510695e8e5fad2ebadc6cba0535a; no newer producer patch exists
+  - prototypes/fab-prototype.html does not load ./spatial-input-adapter.js
+  - adapter has no explicit fail-closed armed/disarmed gate
+  - adapter has no injected target-specific exactly-once activation callback on pinch release
+  - current tests do not prove one exact target activation after release or zero activation while disarmed
+  - S07 could not obtain an authenticated clean checkout and ran none of C1 through C11
+  - no direct START_ACCEPTED or DECLINED host receipt exists on the inspected GitHub and Slack surfaces
+  - no distinct STOOD or FELL verdict and no explicit ConsumerAck exist
+
+allowed_paths:
+  modify_only:
+    - prototypes/fab-prototype.html
+    - prototypes/spatial-input-adapter.js
+    - tests/spatial-input-adapter.test.mjs
+    - tests/fab-prototype-smoke.test.mjs
+  forbidden: every_other_repository_path
+  forbidden_even_if_related:
+    - package.json
+    - package-lock.json
+    - node_modules/**
+    - credentials/**
+    - secrets/**
+    - deployment/**
+    - .github/workflows/**
+    - service-worker files
+    - manifest files
+
+required_commands:
+  - id: C0_LIVE_INGRESS_ACK
+    command: producer emits direct START_ACCEPTED or DECLINED bound to this exact packet and authenticated tool surface
+    expected_result: START_ACCEPTED_before_any_checkout_or_DECLINED_without_target_mutation
+  - id: C1_CHECKOUT_HEAD
+    command: git fetch origin agent/spatial-golden-app-001-20260731 && git checkout agent/spatial-golden-app-001-20260731 && test "$(git rev-parse HEAD)" = fee50a70188b510695e8e5fad2ebadc6cba0535a
+    expected_exit_code: 0
+  - id: C2_BASE_BINDING
+    command: test "$(git merge-base 1271e25306fe8ef8baea32704cf022435703d498 HEAD)" = 1271e25306fe8ef8baea32704cf022435703d498
+    expected_exit_code: 0
+  - id: C3_PREPATCH_RED
+    command: node --test tests/fab-prototype-smoke.test.mjs
+    expected_exit_code_before_patch: nonzero
+    rule: record actual exit code and failure text; do not invent red if the command unexpectedly passes
+  - id: C4_FULL_NODE_TESTS
+    command: node --test tests/spatial-input-adapter.test.mjs tests/fab-prototype-smoke.test.mjs
+    expected_exit_code_after_patch: 0
+  - id: C5_DIFF_CHECK
+    command: git diff --check
+    expected_exit_code: 0
+  - id: C6_ALLOWED_PATHS
+    command: git diff --name-only 1271e25306fe8ef8baea32704cf022435703d498..HEAD
+    expected_exit_code: 0
+    expected_set_exact:
+      - prototypes/fab-prototype.html
+      - prototypes/spatial-input-adapter.js
+      - tests/fab-prototype-smoke.test.mjs
+      - tests/spatial-input-adapter.test.mjs
+  - id: C7_STATIC_SERVER_START
+    command: python3 -m http.server 4173 --directory prototypes >/tmp/hfo-spatial-golden-001-http.log 2>&1 & echo $! >/tmp/hfo-spatial-golden-001-http.pid
+    expected_exit_code: 0
+  - id: C8_STATIC_LOAD_READBACK
+    command: curl -fsS http://127.0.0.1:4173/fab-prototype.html | grep -Fq '<script src="./spatial-input-adapter.js"></script>'
+    expected_exit_code: 0
+  - id: C9_ADAPTER_READBACK
+    command: curl -fsS http://127.0.0.1:4173/spatial-input-adapter.js | grep -Fq 'SpatialInputAdapter'
+    expected_exit_code: 0
+  - id: C10_STATIC_SERVER_STOP
+    command: kill "$(cat /tmp/hfo-spatial-golden-001-http.pid)"
+    expected_exit_code: 0
+  - id: C11_FINAL_SHA
+    command: git status --short && git rev-parse HEAD
+    expected_exit_code: 0
+    rule: final producer return must include exact stdout and final committed branch SHA
+
+acceptance_tests:
+  - id: A0_LIVE_INGRESS
+    pass: direct current host START_ACCEPTED binds exact packet and confirms authenticated clean checkout plus Node Python curl Git before execution credit
+  - id: A1_SOURCE_PIN
+    pass: producer starts from exact head fee50a70188b510695e8e5fad2ebadc6cba0535a with base 1271e25306fe8ef8baea32704cf022435703d498
+  - id: A2_POINTER_POSITION
+    pass: valid normalized input maps deterministically to exact expected viewport coordinates
+  - id: A3_EXACT_ONCE_TARGET_ACTIVATION
+    pass: one armed valid pinch crossing and release activates the exact target bound to that cycle once; held pinch and repeated release do not repeat activation
+  - id: A4_ZERO_FALSE_ACTIVATION
+    pass: held invalid missing non-finite out-of-range below-confidence disarmed reset target-missing and target-loss cases produce zero activation; disarm clears latent held state
+  - id: A5_NATIVE_FALLBACK
+    pass: mainFab remains the original native button with onclick=startDemo(); no preventDefault listener removal native-input replacement or cancellation is introduced
+  - id: A6_NO_EXTERNAL_DEPENDENCY
+    pass: no dependency lockfile workflow manifest service-worker credential deployment or external-network change exists
+  - id: A7_CLASSIC_SCRIPT_AND_STATIC_SMOKE
+    pass: fab-prototype.html loads exactly one additive local classic script tag and both loopback curl readbacks exit zero
+  - id: A8_BOUNDED_DIFF
+    pass: exact base-to-final changed-path set equals the four allowed paths and git diff --check exits zero
+  - id: A9_REAL_PRODUCER_READBACK
+    pass: direct return names runtime/model, branch and final SHA, changed paths and blobs, C0 through C11 actual commands exit codes outputs or NOT_RUN blockers, rollback, expiry, remaining risk, and honest flaw
+  - id: A10_CLAIM_CEILING
+    pass: no browser trusted-user activation accessibility focus soak deployment publication merge customer revenue or external outcome PASS is claimed without direct evidence
+
+producer_return_contract:
+  consume_only_if_direct: true
+  required_fields:
+    - producer substrate and runtime/model
+    - Node Python curl and Git versions when observable
+    - exact claim commit and blob
+    - prior S06 packet commit and blob
+    - this packet commit and blob
+    - repository base SHA starting head branch final SHA
+    - exact changed paths and final blob SHAs
+    - C0 through C11 exact commands actual exit codes concise outputs or explicit NOT_RUN plus blocker
+    - A0 through A10 as STOOD FELL or NOT_RUN without evidence inflation
+    - rollback procedure and whether rollback was exercised
+    - effect ceiling honored or exact violation
+    - expiry remaining risk blocker and honest flaw
+  forbidden_substitutions:
+    - route prose Slack pointer commit existence or static inspection in place of live ingress or execution
+    - synthetic exit codes omitted failures screenshot-only PASS or hidden command variance
+    - same-provider structural preflight as terminal independent verdict
+    - programmatic click described as trusted browser user activation
+
+world_effect_ceiling:
+  allowed:
+    - read exact private repository bytes and branch metadata
+    - after A0 only, modify the four allowed paths on agent/spatial-golden-app-001-20260731
+    - run local deterministic Node tests and loopback static server and curl probes
+    - create ordinary commits on the isolated branch
+    - write one exact producer return to Gen-133 and one concise internal Slack pointer after Git readback
+  forbidden:
+    - merge pull-request approval force push rebase reset branch deletion or shared-history rewrite
+    - deployment publication release hosting app-store action customer effect send outreach application payment or spend
+    - account permission security secret credential task workflow network-service or infrastructure mutation
+    - unrelated refactor second app new queue seal IMMUNIZE permaweb upload or architecture root
+
+time_and_budget_ceiling:
+  execution_minutes_after_START_ACCEPTED: 45
+  direct_cost_usd: 0
+  operator_relay_minutes: 0
+  network: authenticated Git repository access and loopback HTTP only
+
+rollback:
+  default: leave dedicated branch unmerged
+  if_patch_reversal_needed: create an ordinary revert commit on the same branch
+  forbidden_rollback_methods: force_push reset rebase branch_delete history_rewrite
+  if_precondition_fails: make no target change and return HOLD with exact command exit code and blocker
+  external_effect_rollback: none_required_because_no_external_effect_authorized
+
+verification:
+  structural_preflight: S04_Hrist_same_provider_nonbinding_weight_0
+  binding_verifier: Sigrun/P4_APEX_FALSIFICATION_or_other_distinct_provider_nonproducer
+  independence_required: true
+  terminal_vocabulary: [STOOD, FELL]
+  verifier_must_bind:
+    - claim commit and blob
+    - this executor packet commit and blob
+    - final producer-return digest
+    - final target branch SHA and final four blob SHAs
+    - acceptance contract sha256 ffaa1a6fa0637039abd6ab9e43b1b978d1505edd0575ab020ca7256e3a45a8cb
+    - A0 through A10 and strongest falsifier
+
+consumer:
+  routing_consumer: Olrun/Claude-Dispatch
+  final_consumer_ack_required_from: Olrun/Claude-Dispatch_as_spatial_factory_coordinator
+  ack_allowed_after: distinct_provider_STOOD_only
+  implicit_ack_forbidden: true
+  reducer_after_direct_return: S03_task_6a539fc5130c81918c13624739fb2a60
+
+strongest_falsifier: >-
+  Reject the candidate if no current authenticated host can bind this exact packet before 2026-08-01T02:45:00Z;
+  if the target head changes before producer start; if one complete armed pinch-release cycle activates more than once;
+  if any disarmed, invalid, missing, non-finite, low-confidence, reset, repeated-release, target-missing, or target-loss
+  sequence activates; if disarm preserves latent held state; if the activated target differs from the target bound at
+  pinch start; if native click, keyboard, touch, or onclick fallback is canceled or replaced; if the script seam is
+  absent or externally sourced; if any forbidden path changes; or if a clean checkout cannot reproduce every claimed
+  command, exit code, output, final SHA, and blob.
+
+routing:
+  direct_codex_or_claude_or_host_ingress_available_to_s06: false
+  route_attempted: false
+  reason: direct ingress is not exposed; missing authentication is a measured blocker and not an invitation to login
+  durable_packet: this Git artifact
+  slack_signal_after_git_readback: C0BGNGPJFHU
+  result_interpretation: HOLD means packet compiled with a stronger live-ingress gate but no receiver accepted it and no execution occurred
+
+honest_flaw: >-
+  S06 independently read the Scheduled Task ID, current Gen-133 evidence, Slack projection, and unchanged TAGS branch
+  head, but this is still a ChatGPT same-provider carrier without authenticated checkout, shell, browser, Codex ingress,
+  Claude host ingress, or distinct verifier. The packet may remove ambiguity, but it does not make Olrun reachable,
+  create credentials, execute code, produce test evidence, establish browser trusted-user activation, obtain STOOD,
+  obtain ConsumerAck, merge, deploy, publish, send, spend, or create an external outcome.
