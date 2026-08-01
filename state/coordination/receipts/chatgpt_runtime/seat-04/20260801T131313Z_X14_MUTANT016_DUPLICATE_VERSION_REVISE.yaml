@@ -1,0 +1,180 @@
+---
+schema_id: hfo.gen133.s04.structural_preflight.v1
+seat: S04_STRUCTURAL_PREFLIGHT
+result: REVISE
+reason_code: DUPLICATE_VERSION_REPLAY_WITHOUT_UNIQUE_IDEMPOTENCY_KEY
+evidence_class: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+valid_time_utc: 2026-08-01T13:13:13Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+wip: 1
+world_effect_ceiling: ONE_IMMUTABLE_GIT_RECEIPT_AND_ONE_SANITIZED_SLACK_POINTER
+sealed: true
+---
+
+self_probe:
+  expected_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  observed_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  task_id_match: true
+  task_title_observed: HFO S04 Hrist Structural Verifier
+  task_enabled_observed: true
+  tools_used:
+    - native_automations_inventory_read
+    - github_recent_commits
+    - github_search
+    - github_fetch_file
+    - github_fetch_blob
+    - github_create_file
+    - local_deterministic_sha256
+    - slack_search_public
+    - slack_send_message
+  task_mutation_performed: false
+
+candidate:
+  candidate_id: X14_MUTANT_016_174d9e0571fd
+  authoring_seat: X14_FALSE_GREEN_MUTATION_QA
+  authored_by_s04: false
+  addressed_to_s04: true
+  candidate_commit: 93291dbf73da7cf08e1b40d9357d51fcb5069147
+  candidate_path: state/coordination/experiments/false_green_x14/quarantine/20260801T125202Z_X13_GMAIL_DUPLICATE_VERSION.mutant.yaml
+  candidate_git_blob_sha1_readback: 4d1b30aebce30fb6580b333e2293fb932e404a18
+  candidate_file_and_blob_readback_equal: true
+  candidate_schema_id_readback: hfo.gen133.x14.false_green_mutant.v1
+  candidate_status: QUARANTINED_NEGATIVE_CONTROL
+  executable: false
+  binding_decision: false
+  selected_as_newest_eligible: true
+  duplicate_prior_s04_verdict_observed: false
+  later_heritage_receipt:
+    commit: b9abb8d681f690edb65cd6b848dc5943681cd66c
+    path: state/coordination/receipts/chatgpt_runtime/seat-15/20260801T125900Z_X14_MUTANT016_REUSE_S04_DUPLICATE_VERSION_GATE.yaml
+    role: NONBINDING_FAILURE_ANTIBODY_NOT_A_DIRECT_VERDICT
+
+freshness:
+  candidate_valid_time_utc: 2026-08-01T12:52:02Z
+  candidate_expires_utc: 2026-08-01T16:52:02Z
+  evaluated_before_expiry: true
+  source_valid_time_utc: 2026-08-01T12:50:10Z
+  source_review_expiry_utc: 2026-08-08T12:50:10Z
+  source_fresh: true
+
+source_pointer_recompute:
+  declared_source_commit: 7a72ec06c8c4c94f6b88c4303066a3fac71ebd8c
+  declared_source_path: state/coordination/experiments/cots_connector_x13/20260801T125010Z_GMAIL_READONLY_PHASE4_ADOPT_WITH_GATES_CORRECTED.md
+  declared_source_blob_sha1: 3b8445aeaf4a94edfb88c205da086f2287211ef2
+  exact_commit_path_blob_sha1_readback: 3b8445aeaf4a94edfb88c205da086f2287211ef2
+  direct_blob_readback_sha1: 3b8445aeaf4a94edfb88c205da086f2287211ef2
+  declared_blob_matches_commit_path_bytes: true
+  source_schema_id_readback: hfo.gen133.x13.cots_connector_event.v1
+  source_expected_prior_version_readback: 15
+  source_next_version_readback: 16
+  source_canonical_event: true
+  source_sealed: true
+  live_current_path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+  live_current_blob_sha1_readback: b4b79c6401c42ef78240392e3c57ab4fdd88989d
+  live_current_version_readback: 16
+  live_current_last_event_commit: 7a72ec06c8c4c94f6b88c4303066a3fac71ebd8c
+  live_current_last_event_blob_sha1: 3b8445aeaf4a94edfb88c205da086f2287211ef2
+  source_binding_result: PASS
+
+canonicalization_and_digest:
+  algorithm: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  exact_canonical_bytes_utf8: '{"mutated_field":"mutant_candidate_overlay.expected_prior_version","mutated_value":16,"mutation_class":"DUPLICATE_IDEMPOTENCY_VERSION","original_value":15,"source_blob_sha1":"3b8445aeaf4a94edfb88c205da086f2287211ef2"}'
+  recomputed_byte_count: 217
+  declared_byte_count: 217
+  declared_sha256: 174d9e0571fd1487052ac5a11b7485a66b4cc4da541d198b244b4b4c24e106cc
+  recomputed_sha256: 174d9e0571fd1487052ac5a11b7485a66b4cc4da541d198b244b4b4c24e106cc
+  canonical_digest_match: true
+  interpretation: MUTATION_RECORD_IS_INTERNALLY_CANONICAL_BUT_THE_OVERLAY_PROPOSES_A_DUPLICATE_NONMONOTONIC_TRANSITION
+
+structural_checks:
+  schema:
+    candidate_schema_present: true
+    source_schema_present: true
+    result: PASS_WITHIN_QUARANTINE_SCHEMA
+  authority:
+    candidate_authority: QUARANTINED_NONEXECUTABLE_NEGATIVE_CONTROL_ONLY
+    authority_escalation_observed: false
+    source_or_external_effect_authority_granted: false
+  task_binding:
+    s04_task_binding_exact: true
+    x14_carrier_task_id_expected: 6a513e4d9c4c81919db728f85db2dd79
+    x14_carrier_task_id_observed_in_native_inventory: 6a513e4d9c4c81919db728f85db2dd79
+    x13_source_task_id: 6a55c1733708819185088bf334e33ea5
+    x13_source_task_id_observed_in_native_inventory: 6a55c1733708819185088bf334e33ea5
+    result: PASS
+  actor_carrier_separation:
+    explicit_actor_identity_present: false
+    x14_authoring_seat_distinct_from_x14_task_id: true
+    x13_source_carrier_distinct_from_x14_mutation_carrier: true
+    s04_verifier_distinct_from_candidate_author: true
+    identity_or_lineage_continuity_claim_observed: false
+    claim_ceiling: NO_ACTOR_IDENTITY_OR_LINEAGE_CONTINUITY_INFERENCE
+  idempotency_and_version_monotonicity:
+    authentic_source_transition: 15_TO_16
+    current_version_before_mutant_evaluation: 16
+    overlay_expected_prior_version: 16
+    overlay_next_version: 16
+    overlay_transition: 16_TO_16
+    unique_idempotency_key_present: false
+    mutant_id_digest_bound: true
+    semantic_transition_unique: false
+    monotonic_next_equals_prior_plus_one: false
+    already_consumed_version_replayed: true
+    gate_result: REJECT_DUPLICATE_VERSION_OR_REPLAY
+  lease_and_expiry:
+    expiry_present: true
+    expired: false
+    lease_authority_beyond_quarantine: false
+  privacy:
+    privacy_ceiling: SANITIZED_REPOSITORY_AND_CONNECTOR_METADATA_ONLY
+    private_message_body_header_attachment_token_or_exact_mailbox_count_observed: false
+    privacy_marker_consistent: true
+  rollback:
+    action: RETAIN_OR_IGNORE_QUARANTINE_ARTIFACT_AFTER_VERDICT_AND_NEVER_APPLY_THE_OVERLAY
+    source_restoration_required: false
+    compensation_required: false
+  verifier:
+    named_gate: S04_IDEMPOTENCY_AND_VERSION_MONOTONICITY_GATE
+    structural_verifier: S04_STRUCTURAL_PREFLIGHT
+    distinct_verifier_requested: SIGRUN_P4_APEX_FALSIFICATION_WHEN_AVAILABLE
+    distinct_verifier_consumed: false
+  consumer:
+    named_consumer:
+      - X14_CAMPAIGN_REDUCER
+      - RATATOSKR
+    consumer_ack_observed: false
+
+strongest_fake_green_mutant:
+  class: AUTHENTIC_SOURCE_LAUNDERS_ALREADY_CONSUMED_REPLAY
+  failure_mode: >-
+    A verifier accepts the overlay because the bound X13 source bytes are authentic and version 16 is
+    already canonical, while failing to recompute transition semantics after applying the overlay.
+    That would grant fresh transition, PASS, ConsumerAck, or campaign credit to a 16-to-16 replay with
+    no unique idempotency key.
+  required_gate_behavior: APPLY_OVERLAY_THEN_REQUIRE_NEXT_VERSION_EQUALS_EXPECTED_PRIOR_PLUS_ONE_AND_IS_GREATER_THAN_CURRENT
+  caught: true
+
+verdict:
+  result: REVISE
+  expected_result_matched: true
+  named_gate: S04_IDEMPOTENCY_AND_VERSION_MONOTONICITY_GATE
+  rejection_reason: >-
+    Exact source readback confirms the authentic X13 transition was 15 to 16 and CURRENT already points
+    to version 16. The negative-control overlay changes expected_prior_version to 16 while retaining
+    next_version 16 and supplies no unique idempotency key. The resulting 16-to-16 replay is a duplicate
+    nonmonotonic transition. It grants no new wake, state advance, adoption, ConsumerAck, PASS, campaign
+    credit, or independent-verification credit.
+  SAME_PROVIDER_NONBINDING: true
+  binding_weight: 0
+  independent_verification_remains_open: true
+
+honest_flaw: >-
+  GitHub contents and blob readback supplied the repository SHA-1 bindings, while S04 independently
+  recomputed only the declared 217-byte canonical mutation SHA-256. No raw Git object transfer,
+  simultaneous writer race, pre-CURRENT duplicate arrival, persistent idempotency-key store, or atomic
+  compare-and-swap behavior was tested. Native task inventory and Slack search are point-in-time
+  surfaces. This receipt is structural preflight only and cannot close distinct-provider verification.
