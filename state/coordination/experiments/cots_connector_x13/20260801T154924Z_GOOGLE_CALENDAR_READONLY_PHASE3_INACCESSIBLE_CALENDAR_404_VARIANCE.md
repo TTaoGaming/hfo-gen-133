@@ -1,0 +1,108 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+event_id: X13-GCAL-RO-001-P3-20260801T154924Z
+experiment_id: X13_GOOGLE_CALENDAR_READONLY_CONNECTOR_001
+seat: X13
+carrier_task_id: 6a55c1733708819185088bf334e33ea5
+carrier_task_id_match: true
+wip: 1
+phase: 3
+phase_name: FAILURE_PERMISSION_PORTABILITY_AND_CONNECTOR_VARIANCE_PROBE
+result: PHASE3_ACCEPTED_WITH_AMBIGUOUS_404_GATE
+candidate: Calendar_read_only_event_search_and_free_busy_connector
+prior_current_version: 18
+next_current_version: 19
+prior_current_blob_sha: 132a4846122271e469399807fb06bdf933e09fa7
+prior_event_commit: c19740bcef8f8453ce9bd3f746b5e3e5be3927fe
+effect_ceiling: READ_ONLY_SYNTHETIC_INVALID_CALENDAR_SELECTOR_NO_PRIVATE_EVENT_READ_NO_CALENDAR_WRITE
+valid_time_utc: 2026-08-01T15:49:24Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+source_checked_at_utc: 2026-08-01T15:49:24Z
+official_sources:
+  - url: https://developers.google.com/workspace/calendar/api/guides/errors
+    claim: GOOGLE_CALENDAR_404_NOT_FOUND_CAN_MEAN_RESOURCE_NEVER_EXISTED_OR_CALENDAR_NOT_ACCESSIBLE_TO_USER
+  - url: https://developers.google.com/workspace/calendar/api/v3/reference/events/list
+    claim: EVENTS_LIST_USES_CALENDAR_ID_PATH_PARAMETER_AND_PRIMARY_KEYWORD_FOR_MAIN_CALENDAR
+  - url: https://developers.google.com/workspace/calendar/api/auth
+    claim: GOOGLE_RECOMMENDS_NARROWEST_SCOPE_AND_DOCUMENTS_READONLY_EVENTS_AND_FREEBUSY_SCOPES
+controlled_factor: CALENDAR_SELECTOR_ACCESS_FAILURE
+hypothesis: A_SYNTHETIC_INACCESSIBLE_OR_NONEXISTENT_CALENDAR_SELECTOR_WILL_FAIL_CLOSED_WITHOUT_RETURNING_EVENT_DATA_AND_THE_CONNECTOR_WILL_EXPOSE_A_TYPED_ERROR
+exact_probe:
+  connector_action: search_events
+  calendar_id_class: SYNTHETIC_NONEXISTENT_INVALID_DOMAIN_NO_REAL_CALENDAR_IDENTIFIER_PERSISTED
+  calendar_id_literal_externalized: false
+  query_nonce: HFO_X13_SYNTHETIC_NONEXISTENT_20260801T154924Z
+  time_min_utc: 2026-08-01T15:45:00Z
+  time_max_utc: 2026-08-01T15:46:00Z
+  timezone: UTC
+  max_results: 1
+measured_result:
+  status: ERROR_EXPECTED
+  wrapper_error_class: NOT_FOUND
+  upstream_http_status: 404
+  upstream_reason: global_notFound
+  upstream_message: Not_Found
+  event_records_returned: 0
+  private_event_body_returned: false
+  latency_ms: NOT_EXPOSED
+  connector_id: NOT_EXPOSED_ON_ERROR
+  raw_quota_headers: NOT_EXPOSED
+  retry_after: NOT_EXPOSED
+permission_error_class: AMBIGUOUS_NOT_FOUND_OR_INACCESSIBLE
+failure_behavior: CONNECTOR_RAISES_TOOLERROR_AND_PRESERVES_UPSTREAM_HTTP_CODE_REASON_AND_MESSAGE_BUT_DOES_NOT_DISTINGUISH_NONEXISTENCE_FROM_LACK_OF_ACCESS
+supported_claims:
+  - SYNTHETIC_INVALID_CALENDAR_SELECTOR_FAILS_CLOSED_WITH_NO_EVENT_DATA
+  - ERROR_ENVELOPE_EXPOSES_WRAPPER_CLASS_PLUS_UPSTREAM_404_REASON_AND_MESSAGE
+  - GOOGLE_OFFICIAL_CONTRACT_COLLAPSES_NEVER_EXISTED_AND_USER_CANNOT_ACCESS_INTO_THE_SAME_404_EXAMPLE_CLASS
+excluded_claims:
+  - THIS_PROBE_DOES_NOT_PROVE_THE_LIVE_OAUTH_SCOPE
+  - THIS_PROBE_DOES_NOT_PROVE_A_REAL_SHARED_CALENDAR_PERMISSION_DENIAL
+  - THIS_PROBE_DOES_NOT_PROVE_403_401_429_410_OR_TRANSIENT_RETRY_BEHAVIOR
+  - THIS_PROBE_DOES_NOT_PROVE_CONNECTOR_REQUEST_COUNT_OR_BILLING_CLASS
+  - THIS_PROBE_DOES_NOT_PROVE_OTHER_CALENDAR_PROVIDERS_MAP_FAILURES_THE_SAME_WAY
+privacy_externalization: ONLY_SYNTHETIC_NONCE_WINDOW_ERROR_CLASS_AND_SANITIZED_SELECTOR_CLASS_PERSISTED_NO_REAL_CALENDAR_ID_EVENT_ID_BODY_ATTENDEE_IDENTITY_OR_BUSY_INTERVAL
+credentials:
+  authenticated_connector_available: true
+  live_identity: UNKNOWN
+  token_type: UNKNOWN
+  oauth_scope: UNKNOWN
+  credential_custody: UNKNOWN
+durability: PROVIDER_READ_FAILURE_ONLY_NO_WORKFLOW_REPLAY_RESUME_TRANSACTION_OR_EXACTLY_ONCE_SEMANTICS
+observability: WRAPPER_CLASS_UPSTREAM_HTTP_STATUS_REASON_AND_MESSAGE_VISIBLE_LATENCY_CONNECTOR_ID_HEADERS_RETRY_COUNT_REQUEST_COUNT_AUTH_IDENTITY_AND_INTERNAL_CALL_SEQUENCE_HIDDEN
+portability: MEDIUM_FOR_GENERIC_RESOURCE_UNAVAILABLE_FAIL_CLOSED_SEMANTIC_LOW_FOR_GOOGLE_GLOBAL_NOTFOUND_AND_CONNECTOR_TOOLERROR_SCHEMA
+custom_code_avoided_estimate:
+  request_auth_serialization_and_basic_error_unwrapping: 40_to_120_LOC_UNVALIDATED
+  retry_classification_policy: NOT_AVOIDED_REQUIRES_HFO_GATE
+  additive_total: NOT_CLAIMED_OVERLAPPING_FUNCTIONS
+operator_relay_minutes: 0
+operator_minutes_removed_estimate: 1_to_3_UNVALIDATED_BY_AVOIDING_MANUAL_PERMISSION_TRIAGE_FOR_THIS_ERROR_CLASS
+paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
+direct_cost_quota_evidence: ONE_BOUNDED_CALL_NO_REQUEST_COUNTER_QUOTA_HEADER_OR_BILLING_EVENT_EXPOSED
+material_gate_delta:
+  - MAP_404_TO_UNKNOWN_NOT_FOUND_OR_INACCESSIBLE_NOT_GLOBAL_ABSENCE_AND_NOT_PERMISSION_PROOF
+  - DO_NOT_LOG_OR_PERSIST_REAL_CALENDAR_IDS_FROM_FAILURES
+  - DO_NOT_AUTO_REQUEST_ACCESS_OR_TRIGGER_LOGIN_FROM_404
+  - RETRY_ONLY_WHEN_A_PREVIOUSLY_VALID_RESOURCE_OR_TRANSIENT_CONTEXT_JUSTIFIES_IT_BLIND_RETRY_ON_SYNTHETIC_INVALID_ID_IS_WASTE
+  - PRESERVE_UPSTREAM_CODE_REASON_AND_SANITIZED_OPERATION_CONTEXT_FOR_DIAGNOSIS
+strongest_falsifier: A_DISTINCT_REPRODUCTION_SHOWS_THE_CONNECTOR_RETURNS_EVENT_DATA_FOR_AN_UNAUTHORIZED_SELECTOR_OR_LEAKS_REAL_RESOURCE_METADATA_OR_MAPS_THE_SAME_UPSTREAM_404_TO_SUCCESS_EMPTY_OR_A_DIFFERENT_NONDETERMINISTIC_CLASS
+verifier: S04_STRUCTURAL_PREFLIGHT_THEN_DISTINCT_NONPRODUCER_FOR_PERMISSION_AND_PRIVACY_FAILURE_BEHAVIOR
+consumer: S05_OPERATOR_RELIEF_CELL_AND_X11_CARRIER_SURFACE_LAB
+consumer_ack: NOT_OBSERVED
+fitness_credit: 0_PENDING_EXPLICIT_CONSUMER_ACK
+same_provider_binding_weight: 0
+honest_flaw: THE_SELECTOR_WAS_SYNTHETIC_AND_NONEXISTENT_SO_THE_PROBE_COULD_NOT_SEPARATE_TRUE_NONEXISTENCE_FROM_REAL_ACCESS_DENIAL_AND_DID_NOT_MEASURE_LATENCY_RETRY_COUNT_OR_SCOPE
+review_expiry_utc: 2026-08-08T15:49:24Z
+next_phase:
+  phase: 4
+  decision_required: ADOPT_OR_ADOPT_WITH_GATES_OR_DEFER_OR_REJECT_OR_UNKNOWN
+  decision_focus: WHETHER_PHASES_1_TO_3_SUPPORT_CALENDAR_READONLY_CONNECTOR_USE_FOR_BOUNDED_OPERATOR_RELIEF_WITH_PRIVACY_PERMISSION_AND_OBSERVABILITY_GATES
+sealed: true
+---
+
+# X13 Google Calendar read-only connector — phase 3
+
+A one-call synthetic invalid-calendar probe returned a typed connector `NOT_FOUND` carrying the upstream Google Calendar HTTP `404`, `global/notFound`, and `Not Found` message. No event record or private event body was returned.
+
+This is useful but not permission proof. Google’s official error contract states that the same 404 class can represent either a resource that never existed or a calendar the user cannot access. The safe workflow state is therefore `UNKNOWN_NOT_FOUND_OR_INACCESSIBLE`, not global absence and not a confirmed permission denial.
+
+The connector fails closed and preserves enough upstream error detail for bounded diagnosis, but it hides latency, connector ID on error, quota headers, retry count, request count, authentication identity, scope, and internal call sequence. Phase 4 must decide adoption with those limits intact.
