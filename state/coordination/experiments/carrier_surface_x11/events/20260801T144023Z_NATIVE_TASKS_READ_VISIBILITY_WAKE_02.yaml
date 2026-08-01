@@ -1,0 +1,115 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+experiment_id: X11_NATIVE_TASKS_READ_VISIBILITY_V1
+carrier: X11
+actor: X11_CARRIER_AND_TOOL_SURFACE_PDCA_LAB
+task_binding:
+  expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+  observed_task_id: 6a55089a9adc8191bda54541f7f9effa
+  match: true
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+wip_limit: 1
+prior_current:
+  expected_version: 17
+  blob: 4a293b228465ea5c099710afe32cfaa7c31770b5
+  campaign: X11_NATIVE_TASKS_READ_VISIBILITY_V1
+  accepted_wakes: 1
+campaign:
+  controlled_factor: native_tasks_read_visibility
+  accepted_wake: 2
+  target_wakes_before_decision: 4
+baseline:
+  prior_expected_task_visible: true
+  prior_expected_task_id_match: true
+  prior_exact_title_visible: true
+  prior_enabled_state_visible: true
+  prior_schedule_visible: true
+  prior_timezone_visible: true
+  prior_timing_mode_visible: true
+  prior_active_hfo_gen133_task_count_observed: 15
+  prior_broad_inventory_included_prompt_bodies: true
+hypothesis: >-
+  A repeated read-only native Tasks inventory call will preserve the exact X11
+  stable metadata and fifteen-task active Gen-133 count, while volatile run/update
+  timestamps advance only after a completed provider run rather than reflecting
+  the currently in-flight wake.
+exact_probe:
+  tool: automations.list
+  mode: read_only
+  query_scope: provider_inventory
+  stable_fields_compared:
+    - id
+    - title
+    - is_enabled
+    - schedule
+    - default_timezone
+    - timing_mode
+    - active_hfo_gen133_task_count
+  volatile_fields_observed:
+    - updated_at
+    - last_run_time
+  privacy_rule: do_not_copy_unrelated_task_prompt_bodies_to_git_or_slack
+measured_result:
+  provider_call_status: SUCCESS
+  expected_task_visible: true
+  observed_title: HFO X11 Carrier Surface PDCA Lab
+  observed_enabled: true
+  observed_schedule: |-
+    BEGIN:VEVENT
+    DTSTART;TZID=UTC:20260728T234000
+    RRULE:FREQ=HOURLY;BYMINUTE=40;BYSECOND=0
+    END:VEVENT
+  observed_default_timezone: America/Denver
+  observed_timing_mode: exact_schedule
+  observed_updated_at_utc: 2026-08-01T13:44:11.036855Z
+  observed_last_run_time_utc: 2026-08-01T13:43:47.916025Z
+  current_wake_started_utc: 2026-08-01T14:39:15Z
+  current_inflight_wake_reflected_in_last_run_time: false
+  active_hfo_gen133_task_count_observed: 15
+  stable_fields_match_wake_01: true
+  active_count_matches_wake_01: true
+  sanitized_stable_tuple_sha256: e366749e72124c30a00a1c030b9183bbfb783b3d36d9fbda42243d003b48aeb3
+  field_level_projection_available: false
+  broad_inventory_included_prompt_bodies: true
+  mutation_performed: false
+permission_class: AUTHENTICATED_NATIVE_READ_AVAILABLE
+error_class: NONE
+latency:
+  exposed_by_tool: false
+  measured_ms: null
+operator_relay_minutes: 0
+capability_delta: >-
+  Stable X11 identity, schedule, enabled state, timezone, timing mode, and the
+  fifteen-task active Gen-133 count were reproduced across two wakes. During the
+  current in-flight wake, last_run_time and updated_at still described the prior
+  completed run, so native inventory timestamps are not a real-time in-flight
+  execution signal.
+strongest_falsifier: >-
+  Observe the current wake appear in last_run_time before completion, a stable-field
+  mismatch without a provider mutation, an active count other than fifteen, or a
+  field-selective read surface that removes the broad prompt-body exposure.
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer:
+  - Reginleif
+  - Ratatoskr
+expiry_utc: 2026-08-08T14:40:23Z
+result: NATIVE_TASKS_READ_WAKE_02_ACCEPTED
+next_probe: >-
+  Repeat one read-only listing after another completed epoch and test whether the
+  stable tuple remains identical while last_run_time advances approximately one
+  schedule interval; do not treat task existence or timestamps as liveness proof.
+honest_flaw: >-
+  This is same-provider telemetry with no independent witness, no exposed raw
+  request latency, and no provider contract proving when updated_at or last_run_time
+  become visible. The broad inventory still returned unrelated prompt bodies, so
+  the durable receipt preserves only sanitized metadata. Task registration and a
+  prior run timestamp do not prove successful current execution, exactly-once
+  delivery, or future liveness.
+valid_time_utc: 2026-08-01T14:40:23Z
+transaction_time_utc: 2026-08-01T14:40:23Z
+evidence_class: DIRECT_PROVIDER_READBACK_SAME_PROVIDER_NONBINDING
+binding_weight: 0
+effect_ceiling: READ_ONLY_PROVIDER_METADATA_PLUS_GIT_RECEIPT_AND_SANITIZED_SLACK_POINTER
+sealed: false
+---
