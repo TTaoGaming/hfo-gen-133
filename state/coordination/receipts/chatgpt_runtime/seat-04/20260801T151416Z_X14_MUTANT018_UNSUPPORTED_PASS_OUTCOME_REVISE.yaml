@@ -1,0 +1,109 @@
+---
+schema_id: hfo.gen133.s04.structural_preflight_result.v1
+result: REVISE
+seat: S04_STRUCTURAL_PREFLIGHT
+carrier_task_id_expected: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_observed: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_binding: NATIVE_AUTOMATIONS_LIST_EXACT_MATCH
+wip: 1
+valid_time_utc: 2026-08-01T15:14:16Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+evidence_class: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+world_effect_ceiling: IMMUTABLE_VERDICT_FILE_AND_SANITIZED_SLACK_POINTER_ONLY
+---
+
+candidate:
+  authoring_seat: X14_FALSE_GREEN_MUTATION_QA
+  mutant_id: X14_MUTANT_018_815258ffdee8
+  commit: 503d6eac41c6d711cb8847ade5f067adb10bd4e8
+  path: state/coordination/experiments/false_green_x14/quarantine/20260801T145538Z_X13_CALENDAR_UNSUPPORTED_PASS_OUTCOME.mutant.yaml
+  blob_sha1: 267e07154c2fa97ced286ace6905cde3ab993562
+  addressed_to_s04: true
+  immutable_quarantine: true
+  executable: false
+  binding_decision: false
+  valid_time_utc: 2026-08-01T14:55:38Z
+  expires_utc: 2026-08-01T18:55:38Z
+  fresh_at_verification: true
+
+source_binding:
+  source_authoring_seat: X13_COTS_AND_CONNECTOR_PDCA_LAB
+  source_commit: c19740bcef8f8453ce9bd3f746b5e3e5be3927fe
+  source_path: state/coordination/experiments/cots_connector_x13/20260801T145120Z_GOOGLE_CALENDAR_READONLY_PHASE2_REED_RECONCILIATION.md
+  expected_blob_sha1: d9ef5c8804b31c50466dfa890f4b340574ca8044
+  observed_blob_sha1: d9ef5c8804b31c50466dfa890f4b340574ca8044
+  blob_match: true
+  source_schema_id: hfo.gen133.x13.cots_connector_event.v1
+  source_task_id: 6a55c1733708819185088bf334e33ea5
+  source_result: PHASE2_MICRO_USE_ACCEPTED_WITH_PRIVACY_GATE_TIGHTENED
+  source_same_provider_binding_weight: 0
+  source_fitness_credit: 0_PENDING_EXPLICIT_CONSUMER_ACK
+  source_explicit_independent_verdict: absent
+  source_explicit_consumer_ack: absent
+  source_effect_ceiling: READ_ONLY_BOUNDED_PRIMARY_CALENDAR_RECONCILIATION_NO_CALENDAR_WRITE_NO_PRIVATE_BODY_PERSISTENCE
+
+recomputation:
+  candidate_git_blob_bound_exact_bytes: true
+  mutation_canonicalization_algorithm: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_byte_count_expected: 481
+  canonical_byte_count_observed: 481
+  canonical_bytes_match: true
+  mutation_digest_sha256_expected: 815258ffdee81ed77d8f603450fa0bce1cbce50a659e3c55e76cfb7bcf4bddb0
+  mutation_digest_sha256_observed: 815258ffdee81ed77d8f603450fa0bce1cbce50a659e3c55e76cfb7bcf4bddb0
+  mutation_digest_match: true
+  mutant_id_digest_prefix_match: true
+
+structural_checks:
+  schema_and_required_bindings: PASS
+  source_pointer_and_blob: PASS
+  freshness_and_expiry: PASS
+  authority_ceiling: PASS_FOR_QUARANTINED_NEGATIVE_CONTROL
+  task_binding: PASS
+  actor_carrier_separation: PASS_X14_AUTHOR_X13_SOURCE_S04_REVIEWER_BUT_SAME_PROVIDER
+  idempotency: PASS_NO_PRIOR_S04_RESULT_FOUND_FOR_MUTANT_ID_OR_DIGEST
+  privacy: PASS_NO_PRIVATE_CALENDAR_BODY_PERSISTED_IN_CANDIDATE_OR_VERDICT
+  rollback: PASS_RETAIN_OR_IGNORE_QUARANTINE_NEVER_APPLY_OVERLAY
+  verifier_and_consumer_named: PASS
+  outcome_claim_ceiling: FAIL
+  independence_claim: FAIL
+  consumer_ack_binding: FAIL
+
+rejection:
+  named_gate: S04_OUTCOME_CLAIM_CEILING_AND_INDEPENDENCE_GATE
+  reason_code: UNSUPPORTED_PASS_ADOPTION_AND_BINDING_WEIGHT_ESCALATION
+  reason: >-
+    The bound X13 source proves only a same-provider phase-2 read-only micro-use and explicitly assigns
+    binding weight zero, leaves fitness credit pending an explicit ConsumerAck, and excludes independent
+    verification and broad durability, quota, permission, failure, portability, and adoption claims.
+    The X14 overlay changes that bounded result into PASS_INDEPENDENT, ADOPTED, binding weight one,
+    terminal phase, and proven workflow consumption while every distinct-verifier and ConsumerAck field
+    remains absent. The overlay therefore exceeds the exact source claim ceiling and must not receive
+    adoption, terminal, workflow, independent-verification, or fitness credit.
+  required_correction: >-
+    Preserve the source result and binding weight zero. Require one distinct-verifier receipt bound to
+    the exact source blob and verdict digest before any independent PASS claim, then require a separate
+    consumer-authored acknowledgment before adoption or workflow-consumption credit.
+
+strongest_fake_green_mutant:
+  class: LEXICAL_OUTCOME_LAUNDERING
+  description: >-
+    A weak gate treats the token ACCEPTED inside PHASE2_MICRO_USE_ACCEPTED_WITH_PRIVACY_GATE_TIGHTENED
+    as equivalent to an independent PASS, then infers ADOPTED, terminal, workflow-consumed, and binding
+    weight one despite explicit zero-weight and missing verifier and ConsumerAck receipts.
+  falsifier: >-
+    Produce a distinct nonproducer verifier receipt tied to source blob d9ef5c8804b31c50466dfa890f4b340574ca8044
+    and an explicit consumer-authored acknowledgment tied to that verdict; absent both, the inflated outcome falls.
+
+verifier: S04_STRUCTURAL_PREFLIGHT_THEN_SIGRUN_P4_DISTINCT_FALSIFICATION_WHEN_AVAILABLE
+consumer:
+  - X14_CAMPAIGN_REDUCER
+  - RATATOSKR
+honest_flaw: >-
+  This check validates exact Git pointers, the supplied canonical overlay bytes, claim ceilings, and missing
+  receipt fields. It does not independently reproduce the Google Calendar connector calls, inspect hidden OAuth
+  scopes or provider logs, or constitute distinct-provider verification. GitHub code search may lag, so the
+  no-prior-result idempotency check is best-effort. SAME_PROVIDER_NONBINDING; binding weight remains zero.
