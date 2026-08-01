@@ -1,33 +1,33 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
 experiment_id: X13_GOOGLE_CALENDAR_READONLY_CONNECTOR_001
-version: 17
-prior_version: 16
+version: 18
+prior_version: 17
 candidate: Calendar_read_only_event_search_and_free_busy_connector
 candidate_contract_reference: official_Google_Calendar_events_list_freebusy_query_scopes_quota_plus_direct_connector_receipts
-campaign_wake: 1_of_4
+campaign_wake: 2_of_4
 campaign_status: IN_PROGRESS
 phase_1_completed: true
-phase_2_completed: false
+phase_2_completed: true
 phase_3_completed: false
 phase_4_completed: false
 phase_4_decision: PENDING
 binding_architecture_decision: false
-last_event_commit: d9d13734a133c06258bb324118ac6e2b66a7b224
-last_event_path: state/coordination/experiments/cots_connector_x13/20260801T134733Z_GOOGLE_CALENDAR_READONLY_PHASE1_BASELINE.md
-last_event_blob_sha: fc4fdb3484e9b931d561886f7dd984cdf3a63e3a
-adoption_credit: 1
-adoption_credit_basis: OFFICIAL_CONTRACT_PLUS_BOUNDED_SYNTHETIC_EVENT_SEARCH_PLUS_PRIVACY_NARROW_FREEBUSY_BASELINE
-fitness_credit: 0_UNTIL_CONSUMED_BY_WORKITEM
+last_event_commit: c19740bcef8f8453ce9bd3f746b5e3e5be3927fe
+last_event_path: state/coordination/experiments/cots_connector_x13/20260801T145120Z_GOOGLE_CALENDAR_READONLY_PHASE2_REED_RECONCILIATION.md
+last_event_blob_sha: d9ef5c8804b31c50466dfa890f4b340574ca8044
+adoption_credit: 2
+adoption_credit_basis: OFFICIAL_CONTRACT_PLUS_DIRECT_BASELINE_PLUS_BOUNDED_KNOWN_OBLIGATION_RECONCILIATION_WITH_PRIVACY_OVERREAD_MEASURED
+fitness_credit: 0_PENDING_EXPLICIT_CONSUMER_ACK
+workitem_consumption_evidence: EXISTING_S05_REED_HVAC_RECEIPT_USED_AS_BOUNDED_MICRO_USE_INPUT_NOT_CONSUMER_ACK
 carrier_task_id: 6a55c1733708819185088bf334e33ea5
 carrier_task_id_match: true
-carrier_task_id_observation_source: AUTOMATION_RUNTIME_PROMPT
-effect_ceiling: READ_ONLY_CALENDAR_SEARCH_AND_FREEBUSY_BASELINE_NO_EVENT_BODY_PERSISTENCE_NO_WRITE
+carrier_task_id_observation_source: NATIVE_AUTOMATIONS_LIST_READBACK
+effect_ceiling: READ_ONLY_BOUNDED_PRIMARY_CALENDAR_RECONCILIATION_NO_CALENDAR_WRITE_NO_PRIVATE_BODY_PERSISTENCE
 operator_relay_minutes: 0
-operator_minutes_removed_estimate: 2_to_5_PER_CONSUMED_CHECK_UNVALIDATED
+operator_minutes_removed_estimate: 2_to_4_UNVALIDATED
 custom_code_avoided_estimate:
-  bounded_event_search_pagination_normalization: 40_to_120_LOC_UNVALIDATED
-  freebusy_request_response_normalization: 30_to_80_LOC_UNVALIDATED
+  bounded_search_read_normalization_pagination: 60_to_160_LOC_UNVALIDATED
   authentication_token_management: MATERIAL_BUT_UNQUANTIFIED
   additive_total: NOT_CLAIMED_OVERLAPPING_FUNCTIONS
 paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
@@ -46,46 +46,51 @@ live_authentication_scope: UNKNOWN
 credential_custody: UNKNOWN
 live_quota_headers: NOT_EXPOSED
 connector_internal_call_sequence: UNKNOWN
-direct_probe_receipts:
+phase_2_direct_receipts:
   event_search:
     action: search_events
     connector_id: connector_947e0d954944416db111db556030eea6
-    bounded_query: X13_NONEXISTENT_SENTINEL_20260801
+    bounded_query: Reed_AC
+    explicit_window_utc: 2026-08-03T06:00:00Z_TO_2026-08-04T06:00:00Z
     max_results: 5
-    result: SUCCESS_EMPTY
+    result: SUCCESS_ONE_MATCH
     next_page_token: null
-    latency_ms: 191
-  freebusy:
-    action: get_availability
+    latency_ms: 364
+    privacy_behavior: FULL_DESCRIPTION_AND_IDENTITY_BEARING_FIELDS_RETURNED
+  exact_readback:
+    action: read_event
     connector_id: connector_947e0d954944416db111db556030eea6
-    calendar_selector: primary
-    result: SUCCESS_CALENDAR_ERROR_NULL_BUSY_VALUES_NOT_PERSISTED
-    latency_ms: 155
-privacy_externalization: NO_EVENT_TITLE_BODY_ATTENDEE_DESCRIPTION_LOCATION_EXACT_BUSY_INTERVAL_OR_CALENDAR_ID_WRITTEN_TO_GIT_OR_SLACK
-observed_failure_behavior: NOT_PROBED_PHASE1
+    result: SUCCESS_PRIOR_EVENT_ID_SHA256_MATCH
+    latency_ms: NOT_EXPOSED
+privacy_externalization: NO_EVENT_DESCRIPTION_ATTENDEE_EMAIL_CONTACT_DETAIL_RAW_EVENT_ID_URL_EXACT_PRIVATE_BUSY_INTERVAL_OR_CALENDAR_ID_WRITTEN_TO_GIT_OR_SLACK
+privacy_overread_observed: true
+privacy_overread_detail: SEARCH_EVENTS_RETURNED_FULL_DESCRIPTION_AND_IDENTITY_BEARING_FIELDS_WHEN_ONLY_METADATA_WAS_REQUIRED
+observed_failure_behavior: NOT_PROBED_PHASE2_AUTHENTICATED_SUCCESS_ONLY
 empty_result_semantics: NOT_FOUND_OR_UNKNOWN_DO_NOT_INFER_PERMISSION_OR_GLOBAL_ABSENCE
 durability: CALENDAR_PROVIDER_DURABILITY_ONLY_NO_WORKFLOW_REPLAY_RESUME_TRANSACTION_OR_EXACTLY_ONCE_CLAIM
-observability: ACTION_CONNECTOR_ID_NORMALIZED_RESULT_LATENCY_AND_ERROR_ENVELOPE_EXPOSED_RAW_HTTP_HEADERS_QUOTA_RETRY_AUDIT_IDENTITY_AND_INTERNAL_CALL_SEQUENCE_HIDDEN
-portability: MEDIUM_AT_CALENDAR_AND_FREEBUSY_SEMANTICS_LOW_FOR_WRAPPER_SPECIFIC_SCHEMA_OTHER_PROVIDERS_UNTESTED
+observability: ACTION_CONNECTOR_ID_NORMALIZED_RESULT_SEARCH_LATENCY_PAGINATION_AND_ERROR_ENVELOPE_EXPOSED_RAW_HTTP_HEADERS_QUOTA_RETRY_AUDIT_IDENTITY_INTERNAL_CALL_SEQUENCE_AND_READ_LATENCY_HIDDEN
+portability: MEDIUM_AT_CALENDAR_EVENT_AND_FREEBUSY_SEMANTICS_LOW_FOR_WRAPPER_SCHEMA_AND_PRIVACY_BEHAVIOR_OTHER_PROVIDERS_UNTESTED
 provisional_gates:
   - PREFER_FREEBUSY_FOR_AVAILABILITY_USE_EVENT_SEARCH_ONLY_FOR_KNOWN_OBLIGATION_POINTERS
-  - EXPLICIT_TIME_WINDOW_AND_LOW_RESULT_CAP_REQUIRED
-  - EVENT_BODIES_ATTENDEES_DESCRIPTIONS_LOCATIONS_EXACT_PRIVATE_BUSY_INTERVALS_AND_CALENDAR_IDS_STAY_IN_SOURCE_SYSTEMS_UNLESS_EXPLICITLY_REQUIRED
+  - TREAT_SEARCH_EVENTS_AS_PRIVATE_BODY_READ_NOT_METADATA_ONLY
+  - EXPLICIT_TIME_WINDOW_LOW_RESULT_CAP_AND_PRIVACY_CEILING_REQUIRED
+  - EVENT_DESCRIPTIONS_ATTENDEES_EMAIL_IDENTITIES_CONTACT_DETAILS_RAW_EVENT_IDS_URLS_LOCATIONS_EXACT_PRIVATE_BUSY_INTERVALS_AND_CALENDAR_IDS_STAY_IN_SOURCE_SYSTEMS_UNLESS_EXPLICITLY_REQUIRED
+  - AVOID_READ_EVENT_WHEN_SEARCH_ALREADY_RETURNS_ALL_REQUIRED_FIELDS_EXCEPT_WHEN_DIGEST_BINDING_OR_OMITTED_FIELDS_REQUIRE_IT
   - EMPTY_SEARCH_IS_NOT_FOUND_OR_UNKNOWN_NOT_PERMISSION_PROOF_OR_GLOBAL_ABSENCE
   - LIVE_SCOPE_UNKNOWN_MUST_NOT_BE_DESCRIBED_AS_LEAST_PRIVILEGE
   - LOW_RATE_BOUNDED_CALLS_ONLY_WHILE_RAW_QUOTA_RETRIES_BILLING_CLASS_AND_INTERNAL_CALL_SEQUENCE_ARE_HIDDEN
   - NO_PROVIDER_DURABILITY_AS_WORKFLOW_DURABILITY_OR_EXACTLY_ONCE_CLAIM
-verifier: S04_STRUCTURAL_PREFLIGHT_THEN_DISTINCT_NONPRODUCER_FOR_SCOPE_PRIVACY_QUOTA_OR_INTERNAL_CALL_SEQUENCE_CLAIMS
+verifier: S04_STRUCTURAL_PREFLIGHT_THEN_DISTINCT_NONPRODUCER_FOR_PRIVACY_AND_REQUEST_EFFICIENCY_CLAIMS
 consumer: S05_OPERATOR_RELIEF_CELL_AND_X11_CARRIER_SURFACE_LAB
 consumer_ack: NOT_OBSERVED
 same_provider_binding_weight: 0
-strongest_falsifier: DISTINCT_REVIEW_OR_DIRECT_INSPECTION_SHOWS_FREEBUSY_CAUSES_HIDDEN_BODY_READS_OR_EXCESS_CALLS_OR_A_KNOWN_EXISTING_BOUNDED_EVENT_CANNOT_BE_FOUND_OR_LIVE_SCOPE_IS_MATERIALLY_BROADER_THAN_REQUIRED_AND_CANNOT_BE_GATED
-review_expiry_utc: 2026-08-08T13:47:33Z
+strongest_falsifier: DISTINCT_REPRODUCTION_CANNOT_BIND_THE_KNOWN_EVENT_OR_OBSERVES_MATERIAL_DRIFT_OR_FINDS_AN_AVAILABLE_METADATA_ONLY_ACTION_THAT_SUPPRESSES_PRIVATE_FIELDS_OR_SHOWS_HIDDEN_REQUEST_AMPLIFICATION
+review_expiry_utc: 2026-08-08T14:51:20Z
 next_phase:
-  phase: 2
-  name: SMALLEST_HARMLESS_READ_ONLY_MICRO_USE
-  candidate_workitem: RECONCILE_ALREADY_EXTERNALIZED_REED_HVAC_VERIFICATION_EVENT_WITHOUT_PRIVATE_BODY_PERSISTENCE
-valid_time_utc: 2026-08-01T13:47:33Z
+  phase: 3
+  name: FAILURE_PERMISSION_PORTABILITY_AND_CONNECTOR_VARIANCE_PROBE
+  candidate_probe: SYNTHETIC_NONEXISTENT_EVENT_OR_INACCESSIBLE_CALENDAR_SELECTOR_WITHOUT_PRIVATE_EVENT_READ
+valid_time_utc: 2026-08-01T14:51:20Z
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 sealed: true
 prior_campaign:
@@ -109,17 +114,10 @@ prior_prior_prior_campaign:
 
 # X13 current campaign
 
-The Google Calendar read-only event-search and free/busy campaign has completed phase 1.
+The Google Calendar read-only campaign has completed phase 2.
 
-A bounded synthetic event search succeeded with an empty result, and a bounded primary-calendar
-free/busy request succeeded without exposing event content. Exact busy values were deliberately not
-persisted. These calls establish direct connector availability only; they do not establish least-
-privilege scope, secondary-calendar access, provider failure semantics, one-to-one upstream request
-count, billing safety, workflow durability, or independent verification.
+A bounded search found the already-externalized Reed HVAC verification obligation and the returned event ID matched the prior sanitized digest. Exact readback confirmed the previously externalized date, privacy, transparency, and reminder facts. No Calendar write or operator relay occurred.
 
-Prefer free/busy for availability questions. Event search remains a higher-privacy surface and must be
-bounded to an exact time window, low result cap, and known obligation pointer. Same-provider binding
-weight remains zero and fitness credit remains zero until a WorkItem consumes the capability.
+The material new fact is a privacy defect in the connector surface: `search_events` returned the full event description and identity-bearing fields even though only candidate metadata was needed. Those values stayed in the source/runtime response and were not persisted to Git or Slack. Event search must therefore be treated as a private-body read, not a metadata-only index. Free/busy remains the lower-privacy default for availability.
 
-Next phase: smallest harmless read-only micro-use against the already-externalized Reed HVAC calendar
-obligation, with no private event-body persistence.
+Phase 3 will probe a harmless synthetic failure or connector-variance case without reading a private event.
