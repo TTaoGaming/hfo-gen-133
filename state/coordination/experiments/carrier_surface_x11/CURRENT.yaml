@@ -1,34 +1,43 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_GIT_READ_WRITE_READBACK_V1
-current_version: 6
-accepted_wakes: 2
+current_version: 7
+accepted_wakes: 3
 target_wakes_before_decision: 4
 controlled_factor: git_read_write_readback
 campaign_status: ACTIVE
-current_disposition: MEASURED_EXACT_READBACK_REPEAT
+current_disposition: MEASURED_STALE_SHA_REJECTION
 last_event:
-  commit: 634d9e2f0012317d20719d2273590b3e9d9f0010
-  path: state/coordination/experiments/carrier_surface_x11/events/20260801T024041Z_GIT_READ_WRITE_READBACK_WAKE_02.yaml
-  blob: b7391e600e46e618b99b8127d9c35339868668fd
+  commit: 209a38b42c3082ba029274c8ba676d04a20a5d8d
+  path: state/coordination/experiments/carrier_surface_x11/events/20260801T034145Z_GIT_STALE_SHA_REJECTION_WAKE_03.yaml
+  blob: 682cbf7034a4954bb55ca98d03c1aa1d17e4dc25
+last_probe:
+  path: state/coordination/experiments/carrier_surface_x11/probes/20260801T034039Z_STALE_SHA_POINTER.yaml
+  create_commit: 75e9c73fb47aac413fdbe1a33c12b0e3708e139d
+  current_commit: 0324e85d4743ca99182eec36ad7fb79f35126776
+  stale_attempted_blob: cc68e6485395906630a967da64b7c98d6c20336d
+  final_blob: 8645501e64c3e391202a29f0c577d9900d691a83
+  final_bytes: 158
+  final_sha256: d798915d10ce07383425037556b8f4f69bfd2d36a860e0a8362f8b30f56480cc
+  stale_update_http_status: 409
 last_specimen:
   commit: 874a7abf39dfe1015d8ef501ae2cd9ca98867f96
   path: state/coordination/experiments/carrier_surface_x11/specimens/20260801T024041Z_GIT_READ_WRITE_READBACK_WAKE_02.yaml
   blob: ded4b475f40bca177eaec527bee02b26aee17f4d
   bytes: 466
   sha256: 5b339300f5b70bb54f45a1594194542dd2402b622c79d5c7639a8e190f22fd66
-last_result: MEASURED_EXACT_READBACK_REPEAT
-campaign_claim_ceiling: two_same_provider_single_writer_exact_branch_bound_create_and_readback_successes_only
+last_result: MEASURED_STALE_SHA_REJECTION
+campaign_claim_ceiling: two_exact_create_readback_successes_plus_one_sequential_single_path_stale_blob_sha_409_rejection_with_newer_bytes_preserved
 atomicity_claim: separate_git_commits_with_single_path_optimistic_concurrency_not_database_transaction
-next_probe: exercise one harmless stale-CURRENT-SHA update attempt against a disposable campaign pointer or otherwise repeat exact readback if no safe disposable pointer exists
+next_probe: repeat stale-SHA rejection once with a fresh disposable pointer, then issue KEEP, REVISE, RESEAT_VARIABLE, or HOLD and select the next controlled factor
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 next_consumer: Reginleif_and_Ratatoskr
-updated_valid_time_utc: 2026-08-01T02:40:41Z
+updated_valid_time_utc: 2026-08-01T03:41:45Z
 sealed: false
 ---
 
-Wake 2 reproduced exact UTF-8 byte and digest readback for a second immutable
-specimen. Connector create latency varied from 812 ms to 768 ms. Capability did
-not change. Specimen, event, and CURRENT remain separate commits; no database
-transaction, multi-path CAS, exactly-once, stale-write, or concurrency guarantee
-is claimed.
+Wake 3 measured one sequential stale-blob-SHA replacement rejection. GitHub returned
+HTTP 409 and exact branch-bound readback retained the newer version-2 bytes and blob.
+This is not a genuinely simultaneous writer test. Probe, event, and CURRENT remain
+separate commits; no database transaction, multi-path CAS, linearizability, or
+exactly-once guarantee is claimed.
