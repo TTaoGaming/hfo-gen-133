@@ -1,0 +1,142 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_match: true
+valid_time_utc: 2026-08-01T19:55:38Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+expires_utc: 2026-08-08T19:46:40Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+result: RETURN
+artifact_kind: REUSABLE_PRIOR_ARTIFACT
+heritage_credit: 0
+consumer_ack_status: NOT_OBSERVED
+binding_decision: false
+evidence_class: SAME_PROVIDER_CROSS_CONNECTOR_ADVISORY_NONBINDING
+binding_weight: 0
+privacy_ceiling: SANITIZED_REPOSITORY_AND_WORKFLOW_CONTROL_METADATA_ONLY
+world_effect_ceiling: ONE_GIT_RECEIPT_AND_ONE_SANITIZED_SLACK_POINTER
+verifier: S04_STRUCTURAL_PREFLIGHT_THEN_DISTINCT_NONPRODUCER_CONNECTOR_REVIEW
+consumer:
+  - X13_COTS_AND_CONNECTOR_PDCA_LAB
+  - X11_CARRIER_SURFACE_LAB
+  - S05_OPERATOR_RELIEF_CELL
+---
+
+self_probe:
+  task_title_observed: HFO S15 Gondul Continuous Heritage
+  task_enabled_observed: true
+  task_inventory_source: NATIVE_AUTOMATIONS_LIST_READ_ONLY
+  task_mutation_performed: false
+  github_read: AVAILABLE_AUTHENTICATED
+  github_write: AVAILABLE_AUTHENTICATED
+  slack_write: AVAILABLE_AUTHENTICATED
+  tools_used:
+    - native_automations_inventory_read
+    - github_recent_commits
+    - github_search
+    - github_fetch_file
+    - github_create_file
+    - github_readback
+    - slack_send_message
+
+current_workitem:
+  workitem_id: X13_GOOGLE_DRIVE_READONLY_CONNECTOR_001_PHASE4_DECISION_PENDING
+  experiment_id: X13_GOOGLE_DRIVE_READONLY_CONNECTOR_001
+  status_at_selection: ACTIVE_PHASE_3_OF_4_PHASE_4_PENDING
+  current_pointer_commit: 612c38005f7b6f4a9859f150f8c11b1aff27209c
+  current_pointer_path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+  current_pointer_blob_sha1: 0f16ddcf965259ce8533c6b97dd0be0586b3b34b
+  phase3_event_commit: c7d95a9785c86f9e973df128077615bf2f156ef5
+  phase3_event_path: state/coordination/experiments/cots_connector_x13/20260801T194640Z_GOOGLE_DRIVE_READONLY_PHASE3_INVALID_PAGE_TOKEN_AND_INCOMPLETE_SEARCH_ANDON.md
+  phase3_event_blob_sha1: 4481bbb88646113b373c217af33f5c795d67b2a3
+  decision_due_or_review_expiry_utc: 2026-08-08T19:46:40Z
+  required_decision: ADOPT_OR_ADOPT_WITH_GATES_OR_DEFER_OR_REJECT_OR_UNKNOWN
+  acceptance_relevance: >-
+    The pending Drive phase-4 decision needs a previously exercised adoption rule for a read-only connector
+    whose low-effect micro-use works while identity, OAuth scope, retry graph, provider cost, and complete-search
+    semantics remain partly hidden. The prior Gmail phase-4 decision supplies that decision invariant without
+    claiming that Gmail behavior proves Drive behavior.
+
+reusable_prior_artifact:
+  original_date_utc: 2026-08-01T12:50:10Z
+  source_repository: TTaoGaming/hfo-gen-133
+  source_commit: 7a72ec06c8c4c94f6b88c4303066a3fac71ebd8c
+  source_path: state/coordination/experiments/cots_connector_x13/20260801T125010Z_GMAIL_READONLY_PHASE4_ADOPT_WITH_GATES_CORRECTED.md
+  source_blob_sha1: 3b8445aeaf4a94edfb88c205da086f2287211ef2
+  source_experiment: X13_GMAIL_READONLY_CONNECTOR_001
+  source_result: ADOPT_WITH_GATES
+  source_verifier: S04_STRUCTURAL_PREFLIGHT_THEN_DISTINCT_NONPRODUCER_FOR_SCOPE_PRIVACY_PERMISSION_COST_OR_INTERNAL_CALL_SEQUENCE_CLAIMS
+  source_consumer:
+    - S05_OPERATOR_RELIEF_CELL
+    - RATATOSKR
+  source_consumer_ack_status: NOT_OBSERVED
+  source_fitness_credit: 0_UNTIL_CONSUMED_BY_A_WORKITEM
+
+reuse_contract:
+  reusable_invariant: >-
+    Adopt only the exact low-effect connector surfaces directly measured by bounded probes. Treat empty or
+    normalized results as connector-boundary observations, not global absence, permission state, raw provider
+    failure class, least privilege, exact cost, or workflow durability. Keep bulk mining, high-rate polling,
+    body-bearing reads, unbounded retry, and higher-effect claims excluded while live identity, OAuth scope,
+    token custody, retry telemetry, internal call sequence, and quota evidence remain hidden. Fitness stays zero
+    until a named consumer uses the capability and records a source-bound outcome.
+  supported_claims:
+    - A prior completed X13 connector campaign used ADOPT_WITH_GATES rather than broad adoption when three bounded read-only probes showed utility but left live scope, retries, quota telemetry, and internal call sequence hidden.
+    - The prior decision explicitly limited empty-success semantics to not-found-or-unknown and prohibited inference of global absence or permission state.
+    - The prior decision retained zero fitness until a named WorkItem consumed the capability and measured operator relief.
+    - The same decision shape is reusable for Drive phase 4: admit only measured bounded metadata discovery and failure handling, while preserving Drive-specific privacy, completeness, and pagination gates.
+  excluded_claims:
+    - This receipt is not the Drive phase-4 verdict and does not select ADOPT_WITH_GATES for X13.
+    - Gmail label behavior does not prove Drive files.list behavior, Drive corpus completeness, pagination safety, query translation, field minimization, or permission semantics.
+    - This receipt does not establish least-privilege OAuth, credential custody, exact provider request count, exact quota units, independent verification, ConsumerAck, operator minutes saved, or workflow durability.
+    - This receipt grants no content fetch, body copy, bulk Drive mining, high-rate polling, task mutation, account change, publication, deployment, merge, send, or spend authority.
+  current_acceptance_use: >-
+    X13 may reuse the prior adoption rule as a phase-4 checklist: admit only the directly measured bounded
+    explicit-item-type metadata surfaces; keep exact-title matches at pointer-reconciliation ceiling; treat
+    invalid tokens as typed cursor failures; sanitize raw error URLs; withhold complete-search claims while
+    incompleteSearch is omitted; keep content hydration, bulk pagination, blind retry, least-privilege, exact
+    quota, and durability claims deferred; require explicit ConsumerAck before fitness credit.
+
+privacy_and_authority:
+  permitted_externalization: SANITIZED_CONTROL_METADATA_AND_IMMUTABLE_POINTERS_ONLY
+  private_body_copied: false
+  raw_drive_identifier_copied: false
+  raw_provider_request_url_copied: false
+  source_modified: false
+  current_workitem_modified: false
+  task_modified: false
+  canon_promoted: false
+
+verification_and_consumption:
+  required_direct_verifier: S04_STRUCTURAL_PREFLIGHT
+  required_distinct_verifier: DISTINCT_NONPRODUCER_CONNECTOR_REVIEW_WHEN_AVAILABLE
+  named_consumer: X13_COTS_AND_CONNECTOR_PDCA_LAB
+  downstream_consumers:
+    - X11_CARRIER_SURFACE_LAB
+    - S05_OPERATOR_RELIEF_CELL
+  consumer_ack_required_for_heritage_credit: true
+  consumer_ack_observed: false
+  heritage_credit_awarded: 0
+
+deduplication:
+  searched_repository_first: true
+  exact_keys:
+    - X13_GOOGLE_DRIVE_READONLY_CONNECTOR_001_PHASE4_DECISION_PENDING
+    - 612c38005f7b6f4a9859f150f8c11b1aff27209c
+    - 0f16ddcf965259ce8533c6b97dd0be0586b3b34b
+    - 7a72ec06c8c4c94f6b88c4303066a3fac71ebd8c
+    - 3b8445aeaf4a94edfb88c205da086f2287211ef2
+  prior_s15_exact_binding_found: false
+  older_repository_search_required: false
+  drive_or_file_library_search_required: false
+  limitation: GitHub code search and commit enumeration are nontransactional and may lag an unindexed concurrent duplicate.
+
+honest_flaw: >-
+  The reusable artifact is a Gmail label and message-discovery adoption decision, while the current WorkItem is
+  a Drive files.list decision with allDrives, opaque page tokens, sensitive file pointers, incompleteSearch risk,
+  and raw request-URL echo. The invariant is a cross-connector decision precedent, not runtime evidence for
+  Drive. It remains same-provider, nonbinding, has no ConsumerAck, and cannot replace direct inspection of the
+  exact Drive phase-3 event and current pointer.
