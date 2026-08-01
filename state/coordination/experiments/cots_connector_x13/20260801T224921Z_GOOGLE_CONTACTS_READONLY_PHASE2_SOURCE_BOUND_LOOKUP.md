@@ -1,0 +1,123 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_GOOGLE_CONTACTS_READONLY_CONNECTOR_001
+candidate: Google_Contacts_read_only_lookup_and_recipient_resolution_connector
+phase: 2
+campaign_wake: 2_of_4
+result: PHASE2_ACCEPTED_WITH_AMBIGUITY_AND_PRIVATE_IDENTITY_GATES
+expected_current_version: 25
+next_current_version: 26
+carrier_task_id: 6a55c1733708819185088bf334e33ea5
+carrier_task_id_match: true
+carrier_task_id_observation_source: NATIVE_AUTOMATIONS_LIST_READBACK
+effect_ceiling: ONE_SOURCE_BOUND_READ_ONLY_CONTACT_SEARCH_LOW_RESULT_CAP_NO_CONTACT_BODY_READ_NO_RECIPIENT_SELECTION_NO_SEND_NO_CONTACT_WRITE_NO_PRIVATE_IDENTITY_EXTERNALIZATION
+source_obligation:
+  source_system: GOOGLE_CALENDAR_PRIMARY_PRIVATE
+  obligation_class: PROPERTY_SAFETY_CONTACT_FOLLOWUP
+  matching_event_count: 2
+  event_id_sha256:
+    - 59c73805a2618cd805903b135d6b9bb6cca4c8784863c7d44ff56242257c1d81
+    - 481f7ccf1ef2bdeadbf2c1d3f23a32de5a857d186002188ecc6d2f6779d8e1f5
+  bounded_window_utc: 2026-07-30T00:00:00Z_to_2026-08-06T23:59:59Z
+  attendee_or_recipient_identity_present_in_search_result: false
+  private_body_persisted: false
+direct_connector_receipt:
+  action: Google_Contacts.search_contacts
+  query_sha256: 4256e512fcfb03cad0ee741589ec9ea9d525dc2af0ebb1d5db1ffa9eb4cc3f49
+  max_results: 3
+  result: SUCCESS_MATCHED_AMBIGUOUS
+  result_count: 3
+  external_call_time_ms: 2410
+  contact_body_read: false
+  automatic_selection: false
+  send_or_invite: false
+  contact_write: false
+  source_prefix_observed: otherContacts
+  source_prefix_count: 3
+  returned_field_classes:
+    - resource_id
+    - display_name
+    - email_address
+    - mailto_pointer
+  raw_identity_fields_persisted: false
+  candidate_resource_id_sha256:
+    - 0b114f7410afbaab4c40b5fb26770bd9e7c33e8c4ee6b07631d1195481f82709
+    - 2766b742f0b0195f32a0b7aa5765e7dcb43bd42f0c58e8147dc24a5facbbc410
+    - 1d1a6d13c0ac6c3a08fbaa0596968933ffff89163875c058f10fe0af18884cac
+  candidate_email_sha256:
+    - f9caf5110176ef20fd0a6417ea1b0b25227c50dd66d2e5b66f82a32c902154e2
+    - c0f869976f96b85245b904ea425ce4a15cb0bacd0b21efa698aba7ecd6480621
+    - 70b34714210f43431d899a0e628d4418b4acf1cf2ea969f18593fd4113aa26d4
+measured_findings:
+  - THE_WRAPPER_RETURNS_IDENTITY_BEARING_FIELDS_ON_SEARCH_NOT_ONLY_MINIMAL_MATCH_METADATA
+  - ALL_THREE_RESULTS_WERE_OTHERCONTACTS_RESOURCES_NOT_PROVEN_SAVED_CONTACTS
+  - ONE_RESULT_WAS_CONTEXT_COHERENT_WITH_THE_PROPERTY_OBLIGATION_BUT_IDENTITY_BINDING_WAS_NOT_PROVEN
+  - MULTIPLE_PREFIX_AND_SPELLING_MATCHES_MAKE_AUTOMATIC_RECIPIENT_SELECTION_UNSAFE
+  - CALENDAR_SEARCH_SUPPLIED_NO_ATTENDEE_OR_RECIPIENT_FIELD_TO_DISAMBIGUATE
+connector_variance:
+  field_mask_exposed: false
+  source_selection_exposed: false
+  cache_warmup_exposed: false
+  cache_age_exposed: false
+  exact_match_mode_exposed: false
+  result_source_resource_prefix_exposed_in_payload: true
+  directory_vs_saved_contact_classification_attested: false
+  oauth_scope_identity_token_and_credential_custody: UNKNOWN
+failure_behavior:
+  ambiguous_multi_match: HOLD_SELECTION_AND_RETURN_CANDIDATE_COUNT_ONLY
+  context_coherent_candidate: NOT_IDENTITY_PROOF
+  empty_result: NO_MATCH_RETURNED_BY_ONE_WRAPPER_CALL_ONLY
+  read_contact_escalation: NOT_RUN_BECAUSE_NO_NAMED_MISSING_FIELD_JUSTIFIED_BROADER_PRIVATE_BODY_READ
+privacy_and_approval_gates:
+  - TREAT_SEARCH_RESULTS_AS_PRIVATE_IDENTITY_DATA
+  - PERSIST_ONLY_COUNTS_FIELD_CLASSES_SOURCE_PREFIX_AND_DIGESTS
+  - NEVER_AUTO_SELECT_FROM_PREFIX_SPELLING_CONTEXTUAL_DOMAIN_OR_UNKNOWN_DISPLAY_NAME
+  - REQUIRE_SOURCE_BOUND_IDENTITY_CONFIRMATION_OR_OPERATOR_APPROVAL_BEFORE_ANY_SEND_OR_INVITE
+  - DO_NOT_TREAT_OTHERCONTACTS_AS_A_CURATED_SAVED_CONTACT_BOOK
+  - DO_NOT_READ_FULL_CONTACT_BODY_UNLESS_A_NAMED_CONSUMER_REQUIRES_ONE_SPECIFIC_MISSING_FIELD
+  - DO_NOT_COPY_RAW_EMAIL_RESOURCE_ID_OR_MAILTO_POINTER_TO_GIT_OR_SLACK
+operator_relay_minutes: 0
+operator_minutes_removed_measured: 0_SELECTION_REMAINS_UNRESOLVED
+operator_minutes_removed_estimate_if_SOURCE_BOUND_MATCH_CONFIRMED: 1_to_3_UNVALIDATED
+custom_code_avoided_estimate:
+  authenticated_lookup_and_normalization: 30_to_80_LOC_UNVALIDATED
+  ambiguity_and_privacy_policy: NOT_AVOIDED_REQUIRES_HFO_GATES
+  source_binding_and_approval_packet: NOT_AVOIDED
+credentials:
+  connector_authenticated: true
+  operator_supplied_credentials_this_wake: 0
+  live_identity: UNKNOWN
+  live_oauth_scope: UNKNOWN
+  token_type: UNKNOWN
+  credential_custody: UNKNOWN
+paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
+direct_connector_request_count: NOT_PROVEN
+quota_units_headers_retries_and_wrapper_fanout: NOT_EXPOSED
+durability: GOOGLE_CONTACTS_AND_CALENDAR_PROVIDER_STORAGE_ONLY_NO_WORKFLOW_REPLAY_RESUME_TRANSACTION_IDEMPOTENCY_OR_EXACTLY_ONCE_CLAIM
+observability: MEDIUM_FOR_RESULT_COUNT_FIELD_CLASSES_SOURCE_PREFIX_NORMALIZED_PAYLOAD_CONNECTOR_ID_AND_LATENCY_BUT_LOW_FOR_UPSTREAM_REQUEST_FIELDMASK_CACHE_SCOPE_QUOTA_RETRIES_AND_MATCH_RANKING
+portability: MEDIUM_FOR_RECIPIENT_LOOKUP_INTENT_LOW_FOR_GOOGLE_OTHERCONTACTS_RESOURCE_CLASS_PREFIX_MATCHING_AND_WRAPPER_RANKING
+adoption_credit: 1
+adoption_credit_basis: SOURCE_BOUND_PRIVATE_READ_ONLY_MATCHED_TRACE_WITH_AMBIGUITY_CAUGHT_AND_NO_WORLD_EFFECT
+fitness_credit: 0_NO_CONSUMER_ACK_NO_OPERATOR_OUTCOME
+same_provider_binding_weight: 0
+independent_verification_closed: false
+verifier: S04_STRUCTURAL_PREFLIGHT_THEN_DISTINCT_NON_CHATGPT_CONTACT_CONNECTOR_OR_SOURCE_OWNER_REVIEW
+consumer:
+  - S05_OPERATOR_RELIEF_CELL
+  - X11_CARRIER_SURFACE_PDCA_LAB
+reversible_next_experiment: ONE_SYNTHETIC_INVALID_OR_PERMISSION_VARIANCE_PROBE_WITH_NO_REAL_IDENTITY_QUERY_NO_CONTACT_BODY_READ_AND_SANITIZED_ERROR_CAPTURE
+strongest_falsifier: A_SOURCE_BOUND_TRACE_PROVES_THE_CONNECTOR_CAN_REQUEST_MINIMAL_FIELDS_SELECT_ONLY_CURATED_SAVED_CONTACTS_AND_RETURN_ONE_UNAMBIGUOUS_CURRENT_RECIPIENT_WITHOUT_OPERATOR_CONFIRMATION_OR_PRIVATE_BODY_OVERREAD
+honest_flaw: THE_LOOKUP_USED_A_REAL_PRIVATE_NAME_FROM_A_CALENDAR_OBLIGATION_AND_RETURNED_THREE_PRIVATE_EMAIL_CANDIDATES; RAW_VALUES_WERE_NOT_PERSISTED_BUT_THE_CONNECTOR_STILL_EXPOSED_THEM_TO_THIS_RUNTIME_AND_NO_INDEPENDENT_SOURCE_CONFIRMED_WHICH_CANDIDATE_IS_CORRECT
+valid_time_utc: 2026-08-01T22:49:21Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+review_expiry_utc: 2026-08-08T22:49:21Z
+sealed: true
+---
+
+# X13 Google Contacts phase 2
+
+A bounded Calendar lookup established one existing property-safety follow-up involving a named person. A Contacts search for that name returned three identity-bearing candidates in 2.410 seconds. All three were represented as `otherContacts`; the wrapper returned resource IDs, display names, email addresses, and mail pointers despite exposing no field-mask or source-selection control.
+
+One candidate was context-coherent with the obligation, but that is not identity proof. The other results included a different contextual domain and a spelling variant. Calendar supplied no attendee or recipient field that could safely disambiguate them. No candidate was selected, no full contact body was read, and no message, invitation, or contact write occurred.
+
+The phase-2 micro-use is accepted only as evidence that the connector can produce candidates. It did not resolve the recipient. Search results must remain private, `otherContacts` must not be treated as a curated address book, and any consequential use requires source-bound identity confirmation or operator approval.
