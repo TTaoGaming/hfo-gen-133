@@ -1,0 +1,62 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+event_id: X11_SLACK_READ_WRITE_READBACK_V1_WAKE_02
+seat: X11
+expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+prior_current_version: 9
+next_current_version: 10
+accepted_wake: 2
+target_wakes_before_decision: 4
+campaign_status: ACTIVE
+controlled_factor: slack_read_write
+varied_probe: slack_search_query_shape_after_direct_timestamp_read
+baseline:
+  prior_campaign_observation: direct_channel_history_found_a_known_pointer_while_unique_commit_and_exact_phrase_searches_returned_zero
+  current_target_pointer_ts: '1785563052.487809'
+  current_target_event_commit: cff53a97e5255e7c4aa3bcbb6eb9a81608f9cda7
+hypothesis: direct_timestamp_read_will_preserve_exact_pointer_bytes_while_public_search_may_index_human_phrase_tokens_but_not_a_full_40_character_commit_token
+exact_probe:
+  - read_channel_C0BGNGPJFHU_bounded_to_1785563052_487809
+  - compare_extracted_event_commit_and_event_url_to_CURRENT_v9_expected_values
+  - search_public_for_full_40_character_event_commit_in_channel_with_bots_included
+  - search_public_for_exact_phrase_MEASURED_READ_SEARCH_VARIANCE_in_channel_with_bots_included
+measured_result:
+  direct_channel_read: PASS
+  returned_message_ts: '1785563052.487809'
+  event_commit_bytes_match_expected: true
+  event_url_bytes_match_expected: true
+  full_commit_search_result_count: 0
+  exact_phrase_search_result_count: 1
+  exact_phrase_result_message_ts: '1785563052.487809'
+  result: MEASURED_QUERY_SELECTIVITY_VARIANCE
+permission_error_class: AUTHENTICATED_ALLOWED_WITH_QUERY_TOKENIZATION_OR_INDEX_VARIANCE
+latency:
+  connector_call_latency_exposed: false
+  elapsed_since_pointer_post_approx_minutes: 59
+  note: elapsed_time_is_not_a_measured_indexing_latency_because_no_same_target_search_was_recorded_at_post_time
+operator_relay_minutes: 0
+capability_change: exact_phrase_search_now_recovers_the_wake_1_pointer_while_full_commit_search_does_not
+claim_ceiling: one_known_public_channel_message_is_exactly_recoverable_by_timestamp_and_exact_phrase_search_but_not_by_its_full_40_character_commit_token_on_this_connector_surface
+strongest_falsifier: repeat_search_finds_the_full_commit_or_an_independent_native_Slack_client_shows_that_the_same_query_should_match_without_tokenization_or_index_delay
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer:
+  - Reginleif
+  - Ratatoskr
+next_probe: search_the_same_pointer_by_short_commit_prefix_filename_and_path_tokens_then_compare_each_result_to_the_exact_timestamp_read
+honest_flaw: this_probe_cannot_distinguish_Slack_indexing_delay_from_connector_query_parsing_tokenization_or_result_filtering_and_it_has_no_independent_provider_witness
+evidence_class: SAME_PROVIDER_DESCRIPTIVE_NONBINDING
+binding_weight: 0
+effect_ceiling: reversible_read_only_connector_probe_plus_git_experiment_receipt
+valid_time_utc: 2026-08-01T06:43:00Z
+transaction_time_utc: 2026-08-01T06:43:00Z
+sealed: true
+---
+
+Wake 2 accepted. Direct history preserved the exact Slack message timestamp, event
+commit, and event URL. Public search recovered the same message by its exact
+human-readable experiment phrase but returned no result for the full 40-character
+commit token. This is a bounded query-selectivity measurement, not a claim that
+Slack search is generally broken or that indexing latency is known.
