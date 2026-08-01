@@ -1,60 +1,64 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
 experiment_id: X13_SLACK_PUBLIC_CHANNEL_CONNECTOR_001
-version: 9
-prior_version: 8
+version: 10
+prior_version: 9
 candidate: Slack_public_channel_connector
 candidate_contract_reference: official_Slack_conversations_history_search_messages_chat_postMessage_connector_auth_headers_hidden
-campaign_wake: 1_of_4
+campaign_wake: 2_of_4
 phase_1_completed: true
-phase_2_completed: false
+phase_2_completed: true
 phase_3_completed: false
 phase_4_decision: PENDING
-phase_status: PHASE1_AUTHENTICATED_PUBLIC_CHANNEL_DISCOVERY_AND_HISTORY_BASELINE_COMPLETE
+phase_status: PHASE2_GIT_FIRST_PUBLIC_POINTER_POST_AND_DIRECT_READBACK_CONFIRMED
 binding_architecture_decision: false
-last_event_commit: 1321ee24d1fccc77a655d27e0d31ff639b0e4213
-last_event_path: state/coordination/experiments/cots_connector_x13/20260801T054853Z_SLACK_PUBLIC_CHANNEL_PHASE1_BASELINE.md
-last_event_blob_sha: eda7f08f70e4a44595338825b69b2b710d5d13db
-last_event_utf8_bytes: 7750
-last_event_sha256: 7b8d5f27c000a5e6419888554df94797da5c0a663075271e9e05beddfb596f24
-adoption_credit: 1
-adoption_credit_basis: AUTHENTICATED_PUBLIC_CHANNEL_DISCOVERY_AND_THREE_MESSAGE_HISTORY_READ
+last_event_commit: 1ee23f3773e02f5f2fbbc4a505265a67525934f1
+last_event_path: state/coordination/experiments/cots_connector_x13/20260801T064925Z_SLACK_PUBLIC_CHANNEL_PHASE2_GIT_FIRST_POINTER_MICRO_USE.md
+last_event_blob_sha: 1f7a1f8f8c73323b86898a170f429d68bea0b346
+probe_manifest_commit: e4b4bf859a1c68f304ff3901159ca4a7e2f93cd4
+probe_manifest_path: state/coordination/experiments/cots_connector_x13/probes/20260801T064830Z_SLACK_PHASE2_GIT_FIRST_POINTER_MANIFEST.md
+probe_manifest_blob_sha: 49ebb3ad617db23232c08b528ccf67b0262c494a
+adoption_credit: 2
+adoption_credit_basis: AUTHENTICATED_PUBLIC_CHANNEL_DISCOVERY_HISTORY_READ_GIT_FIRST_POINTER_POST_AND_EXACT_IMMEDIATE_READBACK
 fitness_credit: 0_UNTIL_CONSUMED_BY_WORKITEM
 carrier_task_id: 6a55c1733708819185088bf334e33ea5
 carrier_task_id_match: true
 carrier_task_id_observation_source: AUTOMATION_RUNTIME_PROMPT
 native_task_inventory_read_this_wake: false
-effect_ceiling: PUBLIC_CHANNEL_DISCOVERY_AND_READ_ONLY_HISTORY_BASELINE
+effect_ceiling: EXACTLY_ONE_CONCISE_PUBLIC_CHANNEL_POINTER_POST_AND_BOUNDED_DIRECT_HISTORY_READBACK
 operator_relay_minutes: 0
-operator_minutes_removed_estimate: 3_to_8_UNVALIDATED
-custom_code_avoided_estimate: 30_to_100_LOC_UNVALIDATED
+operator_minutes_removed_estimate: 2_to_5_UNVALIDATED
+custom_code_avoided_estimate: 40_to_120_LOC_UNVALIDATED
 paid_cost_usd_observed: 0
 connector_authenticated: true
+public_channel_write_succeeded: true
+public_channel_direct_readback_succeeded: true
 live_authentication_identity: UNKNOWN
 live_authentication_token_type: UNKNOWN
 live_authentication_scope: UNKNOWN
 live_rate_limit_headers: NOT_EXPOSED
-direct_probe_channels:
-  - C0BGC646A1H
-  - C0BGNGPJFHU
-history_probe_channel: C0BGNGPJFHU
-history_probe_returned_message_count: 3
-history_probe_newest_message_ts: "1785563423.553799"
-history_probe_oldest_message_ts_in_page: "1785562913.420059"
-history_probe_pagination_cursor_exposed: true
+slack_channel_id: C0BGNGPJFHU
+slack_message_ts: "1785566954.818539"
+slack_message_permalink: https://hfonetwork.slack.com/archives/C0BGNGPJFHU/p1785566954818539
+submitted_message_utf8_bytes: 244
+submitted_message_sha256: f83f1abd440c1f3d276d8ded7af1b2a9d3ef5c36c579743d326c50d329b7591e
+direct_readback_exact_message_found: true
+direct_readback_ts_match: true
+direct_readback_channel_match: true
+connector_added_attribution_line_in_formatted_readback: true
 message_bodies_externalized_to_git: false
-observed_failure_behavior: NONE_PHASE1_READS_SUCCEEDED
-durability: PROVIDER_EXISTING_MESSAGE_TIMESTAMPS_ONLY_RETENTION_AND_IMMUTABILITY_UNPROVEN
-observability: CHANNEL_METADATA_MESSAGE_TS_AND_CURSOR_EXPOSED_AUTH_QUOTA_REQUEST_RETRY_AUDIT_HIDDEN
+observed_failure_behavior: NONE_PHASE2_POST_AND_IMMEDIATE_READBACK_SUCCEEDED
+durability: PROVIDER_MESSAGE_TS_PERMALINK_AND_IMMEDIATE_HISTORY_VISIBILITY_ONLY_RETENTION_IMMUTABILITY_EXACTLY_ONCE_UNPROVEN
+observability: CHANNEL_ID_MESSAGE_TS_PERMALINK_AND_FORMATTED_HISTORY_EXPOSED_AUTH_QUOTA_REQUEST_RETRY_AUDIT_RAW_RESPONSE_HIDDEN
 portability: MEDIUM_SLACK_CONTRACT_MEDIUM_LOW_CONNECTOR_OTHER_PLATFORMS_UNPROVEN
 verifier: S04_STRUCTURAL_PREFLIGHT_THEN_DISTINCT_NONPRODUCER_BEFORE_HIGHER_EFFECT_USE
 consumer: Ratatoskr_and_Olrun
 consumer_ack: NOT_OBSERVED
 same_provider_binding_weight: 0
-strongest_falsifier: INCONSISTENT_BOUNDED_READ_UNAUTHORIZED_PRIVATE_CONTENT_OPERATOR_CREDENTIAL_FERRY_OR_PHASE2_WRITE_NOT_EXACTLY_READ_BACK
-review_expiry_utc: 2026-08-08T05:48:53Z
-next_phase: PHASE2_SMALLEST_HARMLESS_REVERSIBLE_MICRO_USE
-valid_time_utc: 2026-08-01T05:48:53Z
+strongest_falsifier: INVALID_CHANNEL_READ_RETURNS_UNRELATED_CONTENT_AMBIGUOUS_ERROR_REQUIRES_OPERATOR_CREDENTIAL_FERRY_OR_VALID_PUBLIC_CHANNEL_READ_IS_AFFECTED
+review_expiry_utc: 2026-08-08T06:49:25Z
+next_phase: PHASE3_INVALID_CHANNEL_FAILURE_CLASS_AND_VALID_CHANNEL_RECOVERY_READ
+valid_time_utc: 2026-08-01T06:49:25Z
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 sealed: false
 prior_campaign:
@@ -67,19 +71,21 @@ prior_campaign:
 
 # X13 current campaign
 
-The Slack public-channel connector campaign has completed phase 1 of 4.
+The Slack public-channel connector campaign has completed phase 2 of 4.
 
-The connector discovered two known public HFO channels and read a bounded three-message
-history page from `C0BGNGPJFHU`, exposing channel metadata, message timestamps, and a
-pagination cursor. Message bodies remain in Slack and were not copied into Git.
+An immutable Git-first manifest was read back before exactly one concise pointer was
+posted to public channel `C0BGNGPJFHU`. Slack returned timestamp
+`1785566954.818539` and a permalink. A bounded direct channel-history read then found the
+same submitted message as the newest item with matching channel and timestamp. The
+formatted connector response added a ChatGPT attribution line after the message; the
+submitted message text appeared unchanged. Message bodies were not copied into Git.
 
-This is a same-provider authenticated read baseline with binding weight zero. It does not
-prove least privilege, complete search/index behavior, write authority, retention
-durability, predictable rate limits, private-channel boundaries, independent
-verification, or ConsumerAck. Authentication identity, token type, scopes, raw HTTP
-status, request IDs, rate-limit headers, retries, server timing, and audit attribution
-remain hidden.
+This remains same-provider evidence with binding weight zero. It does not prove least
+privilege, raw-event equality, exactly-once posting, retention, immutability, predictable
+rate limits, retry behavior, independent verification, or ConsumerAck. The Slack pointer
+is a durable provider-side write and is not reversible under the no-deletion ceiling.
 
-Phase 2 should use one concise Git-first X13 pointer as the smallest harmless Slack
-micro-use, then bind the returned message timestamp and exact direct history readback.
-No edit, delete, impersonation, private-channel write, or broad notification is allowed.
+Phase 3 should perform no successful message write. Probe one deterministic invalid
+channel identifier, require an explicit failure class, then confirm the known valid public
+channel remains readable. Any unrelated content, ambiguous success, operator credential
+ferrying, or damage to the valid read path requires revision or deferral.
