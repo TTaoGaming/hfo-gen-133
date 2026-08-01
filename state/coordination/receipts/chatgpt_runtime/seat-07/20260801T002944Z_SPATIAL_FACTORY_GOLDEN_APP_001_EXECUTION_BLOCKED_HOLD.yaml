@@ -1,0 +1,170 @@
+---
+schema_id: hfo.gen133.spatial_factory.s07_producer_return.v2
+return_id: S07_SPATIAL_FACTORY_GOLDEN_APP_001_EXECUTION_BLOCKED_20260801T002944Z
+work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001
+result: HOLD
+execution_label: EXECUTION_BLOCKED
+callsign_or_seat: S07_BOUNDED_CODE_PATCH_BUILDER
+carrier_task_id_expected: 6a506f6dc5c08191b95f1707d7f00c2d
+carrier_task_id_observed: 6a506f6dc5c08191b95f1707d7f00c2d
+carrier_task_id_match: true
+carrier_identity_claim: DISPOSABLE_SCHEDULED_CARRIER_NOT_LINEAGE
+controller: operator_direct
+wip: 1
+valid_time_utc: 2026-08-01T00:29:44Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+repository_head_observed_before_write: 44bcfd69ecf90afd95b52c7917e65376ba49163f
+sealed: false
+---
+
+self_probe:
+  identity_source: native_scheduled_task_inventory_readback
+  expected_task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+  observed_task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+  task_id_match: true
+  tools_observed:
+    native_tasks_inventory: read
+    github_connector: read_write
+    local_shell: available_without_authenticated_repository_checkout
+    node_runtime: not_used
+    python_runtime: not_used
+    curl_binary: available
+    browser_runtime: unavailable
+    authenticated_git_checkout: unavailable
+    direct_codex_ingress: unavailable
+    direct_claude_host_ingress: unavailable
+  prohibited_effects_observed: none
+
+selection:
+  eligibility: unexpired_claim_explicitly_permitting_BRANCH_FILE_TEST
+  claim:
+    commit: 47cd1e8bfb7cf78651e8978f4dec1f5e2a76bad4
+    path: projects/spatial-app-factory/claims/20260801T000607Z_SPATIAL_FACTORY_GOLDEN_APP_001_S02_RENEWED.claim.yaml
+    blob: f90e3797b4e5aa398aa386e555e26b53ae27cfc5
+    acceptance_contract_sha256: ffaa1a6fa0637039abd6ab9e43b1b978d1505edd0575ab020ca7256e3a45a8cb
+    lease_expires_utc: 2026-08-01T04:06:07Z
+    producer_return_due_utc: 2026-08-01T03:06:07Z
+  executor_packet:
+    commit: 44bcfd69ecf90afd95b52c7917e65376ba49163f
+    path: projects/spatial-app-factory/dispatch/20260801T001933Z_SPATIAL_FACTORY_GOLDEN_APP_001_S06_REVISED_EXECUTOR.packet.yaml
+    blob: 94b2da15f48657dcfa41bb0020693f44b756ca4e
+    packet_id: S06_SPATIAL_FACTORY_GOLDEN_APP_001_REVISED_EXECUTOR_20260801T001933Z
+    expiry_utc: 2026-08-01T03:00:00Z
+
+verified_contract:
+  target_repository: TTaoGaming/TAGS
+  visibility: private
+  base_sha: 1271e25306fe8ef8baea32704cf022435703d498
+  dedicated_branch: agent/spatial-golden-app-001-20260731
+  required_start_head_sha: fee50a70188b510695e8e5fad2ebadc6cba0535a
+  observed_head_readback:
+    method: GitHub compare required_start_head_sha to branch
+    result: identical
+    ahead_by: 0
+    behind_by: 0
+  base_to_head_readback:
+    status: ahead
+    ahead_by: 3
+    behind_by: 0
+    current_changed_paths:
+      - prototypes/spatial-input-adapter.js
+      - tests/fab-prototype-smoke.test.mjs
+      - tests/spatial-input-adapter.test.mjs
+  allowed_paths:
+    - prototypes/fab-prototype.html
+    - prototypes/spatial-input-adapter.js
+    - tests/spatial-input-adapter.test.mjs
+    - tests/fab-prototype-smoke.test.mjs
+  acceptance_tests: A1_THROUGH_A10_AS_BOUND_IN_EXECUTOR_PACKET
+  rollback: leave_branch_unmerged_or_create_ordinary_revert_commit_without_force_push_reset_rebase_or_deletion
+  verifier: Sigrun/P4_APEX_FALSIFICATION_or_other_distinct_provider_nonproducer
+  structural_preflight: S04_same_provider_nonbinding_weight_0_only
+  consumer: Olrun/Claude-Dispatch_as_spatial_factory_coordinator
+  effect_ceiling: BRANCH_FILE_TEST_ON_EXACT_TARGET_AND_FOUR_PATH_ALLOWLIST
+
+current_red_evidence_readback:
+  target_branch_head_unchanged: true
+  html_blob: 63e5bfe5a158781c207c5636537172bdbc838023
+  adapter_blob: c90a715c72735f0c04d60c91cd9c9afb0f2ddec4
+  unit_test_blob: 9416a2e34c331ab46dd2f04c8d8664dbc0088405
+  smoke_test_blob: 2f0e2795fe81910e82b9dc9ff697b86ff5e16231
+  unresolved_gaps:
+    - fab-prototype.html does not load ./spatial-input-adapter.js through the required classic local script seam
+    - adapter has no explicit fail-closed armed/disarmed state
+    - adapter has no injected target-specific activation callback exactly once on release
+    - tests do not yet bind exact-once target activation and zero activation for disarmed or latent-held sequences
+
+stop_condition:
+  executor_rule: stop if clean authenticated checkout or exact command evidence is unavailable
+  triggered: true
+  reason: GitHub file mutation is available, but no authenticated repository checkout or complete Git history is mounted in the execution shell; therefore C1 through C11 cannot be executed truthfully on the candidate branch
+  safety_decision: no_target_mutation_and_no_untested_contents_API_patch
+
+surface_probe:
+  purpose: determine whether the local shell could acquire target bytes without credentials or operator relay
+  command: curl -L --fail --silent --show-error 'https://raw.githubusercontent.com/TTaoGaming/TAGS/agent/spatial-golden-app-001-20260731/prototypes/fab-prototype.html' -o /tmp/hfo-s07-fab-prototype.html
+  exit_code: 6
+  stderr: 'curl: (6) Could not resolve host: raw.githubusercontent.com'
+  classification: NETWORK_DNS_UNAVAILABLE_AND_PRIVATE_CHECKOUT_UNAUTHENTICATED
+  operator_relay_minutes: 0
+
+required_command_evidence:
+  C1_CHECKOUT_HEAD: NOT_RUN_AUTHENTICATED_CHECKOUT_UNAVAILABLE
+  C2_BASE_BINDING: NOT_RUN_NO_LOCAL_GIT_HISTORY
+  C3_PREPATCH_RED: NOT_RUN_NO_CHECKOUT
+  C4_FULL_NODE_TESTS: NOT_RUN_NO_CHECKOUT
+  C5_DIFF_CHECK: NOT_RUN_NO_CHECKOUT
+  C6_ALLOWED_PATHS: NOT_RUN_NO_CHECKOUT
+  C7_STATIC_SERVER_START: NOT_RUN_NO_CHECKOUT
+  C8_STATIC_LOAD_READBACK: NOT_RUN_NO_CHECKOUT
+  C9_ADAPTER_READBACK: NOT_RUN_NO_CHECKOUT
+  C10_STATIC_SERVER_STOP: NOT_RUN_NO_SERVER_STARTED
+  C11_FINAL_SHA: NOT_RUN_NO_TARGET_COMMIT
+
+acceptance_evidence:
+  rule: producer_did_not_self_grade_unexecuted_patch
+  A1_SOURCE_PIN: NOT_RUN_AS_ACCEPTANCE_TEST
+  A2_POINTER_POSITION: NOT_RUN
+  A3_EXACT_ONCE_TARGET_ACTIVATION: NOT_RUN
+  A4_ZERO_FALSE_ACTIVATION: NOT_RUN
+  A5_NATIVE_FALLBACK: NOT_RUN
+  A6_NO_EXTERNAL_DEPENDENCY: NOT_RUN
+  A7_CLASSIC_SCRIPT_AND_STATIC_SMOKE: NOT_RUN
+  A8_BOUNDED_DIFF: NOT_RUN
+  A9_REAL_PRODUCER_READBACK: NOT_RUN
+  A10_CLAIM_CEILING: NOT_RUN
+
+producer_effects:
+  target_branch_modified: false
+  target_commit_created: false
+  target_changed_paths: []
+  tests_executed: false
+  merge_or_deployment: false
+  send_spend_publication_or_account_change: false
+  effect_ceiling_honored: true
+
+rollback:
+  required_now: false
+  reason: no target repository mutation occurred
+  preserved_target_head: fee50a70188b510695e8e5fad2ebadc6cba0535a
+
+next_state:
+  owner: Olrun/Claude-Dispatch_or_one_operator_authorized_real_host
+  required_transition: execute the exact S06 packet on an authenticated clean checkout with Node, Python, curl, and Git; return one new committed target digest with actual C1-through-C11 evidence
+  verifier_after_return: distinct_provider_nonproducer_only
+  reducer_after_return: S03_task_6a539fc5130c81918c13624739fb2a60
+  consumer_ack_gate: explicit_Olrun_ack_only_after_distinct_STOOD
+
+remaining_risk:
+  - current red contradiction remains unresolved on the target branch
+  - a connector-only patch could look complete while lacking prepatch red evidence, full tests, exact diff checks, local static readback, and final clean-worktree proof
+  - programmatic target activation would not prove trusted browser user activation, accessibility, focus, cross-browser behavior, or soak reliability
+
+honest_flaw: >-
+  This carrier verified the claim, executor packet, target branch identity, current head, source blobs, path allowlist,
+  rollback, verifier, consumer, and expiry through connected GitHub reads. It could not mount or authenticate a clean
+  checkout, execute the frozen command sequence, or obtain browser evidence. The GitHub connector could replace files,
+  but doing so would violate the executor packet's explicit stop condition and create an unexecuted candidate. This HOLD
+  therefore removes no code defect; it only prevents a false-green untested patch and narrows the next required surface.
