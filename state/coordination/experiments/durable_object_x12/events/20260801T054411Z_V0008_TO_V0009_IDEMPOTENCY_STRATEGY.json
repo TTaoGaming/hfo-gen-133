@@ -1,0 +1,81 @@
+{
+  "canonical_transition": {
+    "acceptance": {
+      "canonicalization": "JCS_LIKE_V1_NFC_UTF8_SORTED_KEYS_COMPACT_LF; integer versions only",
+      "digest_rule": "sha256(canonical_json_utf8(canonical_transition))",
+      "duplicate_gate": "Derive key before writes; exact prior-key replay or observed existing proposed key means no event and no CURRENT advance; immediately before replacement require CURRENT version=8 and blob=e4f58b2f45f02ad884422b94b069bcab77d3a878.",
+      "idempotency_formula": "sha256(object_id|expected_version|next_version|campaign_id|wake_ordinal|prior_digest_sha256|current_pointer_blob|controlled_probe_name)",
+      "pointer_gate": "Event-first exact readback; second exact CURRENT read; single-file blob-SHA-guarded replace; returned-blob and branch-path exact readback. Any mismatch/conflict/duplicate is not accepted.",
+      "strategy": "VERSION_SCOPED_KEY_PLUS_EXACT_PRIOR_EVENT_REPLAY_CHECK_PLUS_BEST_EFFORT_REPO_SEARCH_V1"
+    },
+    "campaign": {
+      "accepted_wake_ordinal": 1,
+      "campaign_id": "X12_IDEMPOTENCY_STRATEGY_C3",
+      "decision": "NONE_UNTIL_WAKE_4",
+      "factor": "idempotency_strategy",
+      "target_wakes": 4
+    },
+    "consumer": "Reginleif/Olrun",
+    "effect_ceiling": "FILE_AND_SANITIZED_SLACK_ONLY",
+    "evidence_class": "PROMPT_TASK_ID_BINDING+GITHUB_EXACT_CURRENT_PRIOR_EVENT_READBACK+BEST_EFFORT_SEARCH+LOCAL_DIGEST+EVENT_FIRST_DOUBLE_CURRENT_READ+SHA_GUARDED_SINGLE_FILE_POINTER_UPDATE+DUAL_POSTWRITE_READBACK",
+    "expected_version": 8,
+    "experiment": {
+      "baseline": "v8; C3 0/4; prior event digest 7c72a193912fc3f03f706365f1ae575b60d08ec0f0e483a7dfc6dd0ddab1d641; CURRENT blob e4f58b2f45f02ad884422b94b069bcab77d3a878.",
+      "controlled_factor": "Idempotency strategy only. Recheck prior accepted event key, reject its synthetic replay without writes, require zero observed matches for the new version-scoped key, retain all other gates.",
+      "controlled_probe_name": "DETERMINISTIC_KEY_PLUS_IMMUTABLE_EVENT_SCAN_REPLAY_REJECTION_W1",
+      "exact_probe": "Confirm prior event stores ba8c9fa2cf34d8167eabe7c02af962058dcde0df925c794b7add5e8f1782af8d; classify replay DUPLICATE with zero state advance. Derive a5a824132b6e4208f0a60365a6ab0e6820280b09ac811f69637d00b429dfe1a3 for v8→v9; require zero observed search matches; then run retained event-first and exact-version pointer gates.",
+      "hypothesis": "The explicit replay check rejects an obvious duplicate and allows one bounded new transition, while remaining weaker than exactly-once semantics.",
+      "measured_result": {
+        "duplicate_replay_key": "ba8c9fa2cf34d8167eabe7c02af962058dcde0df925c794b7add5e8f1782af8d",
+        "duplicate_replay_status": "REJECTED_NO_WRITE_NO_ADVANCE",
+        "operator_relay_minutes": 0,
+        "permission_error_class": "NONE_ON_READ_AND_SEARCH",
+        "prior_event_exact_key_match": true,
+        "prior_key_observed_paths": [
+          "state/coordination/experiments/durable_object_x12/CURRENT.json",
+          "state/coordination/experiments/durable_object_x12/events/20260801T044700Z_V0007_TO_V0008_POINTER_UPDATE_PATTERN_CAMPAIGN_DECISION.json"
+        ],
+        "proposed_key": "a5a824132b6e4208f0a60365a6ab0e6820280b09ac811f69637d00b429dfe1a3",
+        "proposed_key_observed_match_count": 0,
+        "search_authority": "BEST_EFFORT_NONATOMIC_POSSIBLY_STALE"
+      },
+      "strongest_falsifier": "Same key advances twice; proposed key existed but was missed; semantically duplicate metadata yields a different key and advances; digest/readback fails; CURRENT changes or wrong prior blob is accepted."
+    },
+    "expiry_utc": "2026-08-01T08:44:11Z",
+    "honest_flaw": "Synthetic serial replay only. Code search is stale/nonatomic and not uniqueness enforcement. Key metadata can differ for semantically duplicate work. Event and CURRENT are separate commits, so crashes can orphan an event or omit Slack. No exactly-once, lock, linearizability, cross-file atomicity, concurrent-writer safety, database durability, or automatic cleanup claim.",
+    "idempotency_key": "a5a824132b6e4208f0a60365a6ab0e6820280b09ac811f69637d00b429dfe1a3",
+    "next_version": 9,
+    "nonce": "x12-c3-w1-v8-v9-a5a82413",
+    "object_id": "HFO_X12_WORKFLOW_OBJECT_001",
+    "prior_digest_sha256": "7c72a193912fc3f03f706365f1ae575b60d08ec0f0e483a7dfc6dd0ddab1d641",
+    "prior_version": 8,
+    "rollback": "Never delete event; append compensating transition from then-current version and replace CURRENT only with exact then-current blob SHA.",
+    "self_probe": {
+      "expected_task_id": "6a506f83df208191815dd17a8fd5baa3",
+      "observed_task_id": null,
+      "task_id_binding": "EXPECTED_ID_FROM_AUTOMATION_INSTRUCTION; native ID unavailable in current connector surface",
+      "tools": [
+        "GITHUB_READ_WRITE",
+        "GITHUB_BLOB_READ",
+        "GITHUB_SEARCH",
+        "SLACK_SEND",
+        "LOCAL_DETERMINISTIC_DIGEST"
+      ]
+    },
+    "source_binding": {
+      "current_pointer_blob": "e4f58b2f45f02ad884422b94b069bcab77d3a878",
+      "current_projection_digest_sha256": "a70aec8cea80c4a4d5d269098e7ed0e7b0db25b54d6a23208c343e53a340f91c",
+      "prior_event_blob": "ea8debc3cb6079b795285d21faa08887b7444f3a",
+      "prior_event_commit": "13b6988f86d4157dfd052b1e7e496e31b957f232",
+      "prior_event_path": "state/coordination/experiments/durable_object_x12/events/20260801T044700Z_V0007_TO_V0008_POINTER_UPDATE_PATTERN_CAMPAIGN_DECISION.json"
+    },
+    "task_id": "6a506f83df208191815dd17a8fd5baa3",
+    "transaction_time_evidence": "AUTOMATION_WAKE_TIMESTAMP; Git commit metadata is separate, not a database transaction boundary",
+    "transaction_time_utc": "2026-08-01T05:44:11Z",
+    "valid_time_utc": "2026-08-01T05:44:11Z",
+    "verifier": "S04_STRUCTURAL_PREFLIGHT_WEIGHT_0_THEN_SIGRUN_P4_DISTINCT"
+  },
+  "canonicalization": "JCS_LIKE_V1",
+  "event_digest_sha256": "49d6b216f81f8663ba548ba1df2d4e2844a9d391994ba7a7bf5da500bda585a4",
+  "schema_id": "hfo.gen133.x12.durable_object_event.v1"
+}
