@@ -1,0 +1,185 @@
+---
+schema_id: hfo.gen133.spatial_factory.s07_producer_return.v3
+result: HOLD
+execution_label: EXECUTION_BLOCKED
+work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001
+callsign_or_seat: S07_BOUNDED_CODE_PATCH_BUILDER
+carrier_task_id_expected: 6a506f6dc5c08191b95f1707d7f00c2d
+carrier_task_id_observed: 6a506f6dc5c08191b95f1707d7f00c2d
+carrier_task_id_match: true
+carrier_identity_claim: DISPOSABLE_SCHEDULED_CARRIER_NOT_LINEAGE
+wip: 1
+valid_time_utc: 2026-08-01T01:25:51Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+sealed: false
+---
+
+selection:
+  claim:
+    commit: 47cd1e8bfb7cf78651e8978f4dec1f5e2a76bad4
+    path: projects/spatial-app-factory/claims/20260801T000607Z_SPATIAL_FACTORY_GOLDEN_APP_001_S02_RENEWED.claim.yaml
+    blob: f90e3797b4e5aa398aa386e555e26b53ae27cfc5
+    lease_expires_utc: 2026-08-01T04:06:07Z
+    producer_return_due_utc: 2026-08-01T03:06:07Z
+    effect_ceiling: BRANCH_FILE_TEST_AND_INTERNAL_COORDINATION_ONLY
+  executor_packet:
+    commit: 4a0bf9b316cb9044448c4cc0c4955cd4da7564b7
+    path: projects/spatial-app-factory/dispatch/20260801T012154Z_SPATIAL_FACTORY_GOLDEN_APP_001_S06_LIVE_INGRESS_GATED_EXECUTOR.packet.yaml
+    blob: 44e827c33fe971859b6b633a6bb3c5d0f0d8bc31
+    host_start_or_decline_deadline_utc: 2026-08-01T02:45:00Z
+    executor_expiry_utc: 2026-08-01T03:00:00Z
+
+self_probe:
+  native_task_inventory:
+    exact_task_found: true
+    enabled: true
+    id_match: true
+  tools_observed:
+    native_tasks_inventory: read
+    github_connector: authenticated_read_write
+    slack_connector: read_write
+    shell: available
+    git: available
+    node: available
+    python: available
+    curl: available
+    shell_network_to_github: unavailable_dns_resolution
+    authenticated_clean_checkout: unavailable
+    browser_runtime: unavailable
+  operator_relay_minutes: 0
+
+verified_contract:
+  target_repository: TTaoGaming/TAGS
+  target_branch: agent/spatial-golden-app-001-20260731
+  base_sha: 1271e25306fe8ef8baea32704cf022435703d498
+  required_start_head_sha: fee50a70188b510695e8e5fad2ebadc6cba0535a
+  connector_branch_readback:
+    comparison_base: fee50a70188b510695e8e5fad2ebadc6cba0535a
+    comparison_head: agent/spatial-golden-app-001-20260731
+    status: identical
+    ahead_by: 0
+    behind_by: 0
+  allowed_paths:
+    - prototypes/fab-prototype.html
+    - prototypes/spatial-input-adapter.js
+    - tests/spatial-input-adapter.test.mjs
+    - tests/fab-prototype-smoke.test.mjs
+  forbidden_paths: every_other_repository_path
+  acceptance_contract_sha256: ffaa1a6fa0637039abd6ab9e43b1b978d1505edd0575ab020ca7256e3a45a8cb
+  rollback: leave dedicated branch unmerged; if later reversal is required, create an ordinary revert commit on the same branch
+  verifier: Sigrun/P4_APEX_FALSIFICATION_or_other_distinct_provider_nonproducer
+  consumer: Olrun/Claude-Dispatch_as_spatial_factory_coordinator
+
+precondition_result:
+  c0_live_ingress_ack: DECLINED
+  reason: >-
+    This carrier has an authenticated GitHub connector and a local shell, but the shell cannot resolve github.com.
+    Therefore it cannot create or verify the authenticated clean checkout required before C1, cannot execute the
+    frozen Git commands against the real repository, and must not mutate the target branch through connector-only
+    writes as a substitute for the packet's clean-checkout gate.
+
+commands:
+  - id: PROBE_GIT_VERSION
+    command: git --version
+    exit_code: 0
+    stdout: git version 2.47.3
+  - id: PROBE_NODE_VERSION
+    command: node --version
+    exit_code: 0
+    stdout: v22.16.0
+  - id: PROBE_PYTHON_VERSION
+    command: python3 --version
+    exit_code: 0
+    stdout: Python 3.13.5
+  - id: PROBE_CURL_VERSION
+    command: curl --version | head -n1
+    exit_code: 0
+    stdout: curl 8.10.1 (x86_64-pc-linux-gnu) libcurl/8.10.1 OpenSSL/3.5.5 zlib/1.3.1 brotli/1.1.0 zstd/1.5.7 libidn2/2.3.8 libpsl/0.21.2 nghttp2/1.64.0 librtmp/2.3 OpenLDAP/2.6.10
+  - id: C0_TARGET_BRANCH_NETWORK_PROBE
+    command: git ls-remote https://github.com/TTaoGaming/TAGS.git refs/heads/agent/spatial-golden-app-001-20260731
+    exit_code: 128
+    stderr: "fatal: unable to access 'https://github.com/TTaoGaming/TAGS.git/': Could not resolve host: github.com"
+  - id: C1_CHECKOUT_HEAD
+    status: NOT_RUN
+    blocker: C0 authenticated clean checkout precondition fell
+  - id: C2_BASE_BINDING
+    status: NOT_RUN
+    blocker: no real checkout
+  - id: C3_PREPATCH_RED
+    status: NOT_RUN
+    blocker: no real checkout
+  - id: C4_FULL_NODE_TESTS
+    status: NOT_RUN
+    blocker: no real checkout
+  - id: C5_DIFF_CHECK
+    status: NOT_RUN
+    blocker: no real checkout
+  - id: C6_ALLOWED_PATHS
+    status: NOT_RUN
+    blocker: no real checkout
+  - id: C7_STATIC_SERVER_START
+    status: NOT_RUN
+    blocker: no checked-out prototype bytes
+  - id: C8_STATIC_LOAD_READBACK
+    status: NOT_RUN
+    blocker: static server not started
+  - id: C9_ADAPTER_READBACK
+    status: NOT_RUN
+    blocker: static server not started
+  - id: C10_STATIC_SERVER_STOP
+    status: NOT_RUN
+    blocker: static server not started
+  - id: C11_FINAL_SHA
+    status: NOT_RUN
+    blocker: no target mutation or checkout
+
+producer_return:
+  producer_substrate: ChatGPT_cloud_scheduled_carrier_with_container_shell_and_GitHub_connector
+  runtime_model: GPT-5.6_Thinking
+  repository: TTaoGaming/TAGS
+  branch: agent/spatial-golden-app-001-20260731
+  starting_sha: fee50a70188b510695e8e5fad2ebadc6cba0535a
+  final_sha: fee50a70188b510695e8e5fad2ebadc6cba0535a
+  target_branch_mutated: false
+  changed_paths: []
+  changed_blob_shas: []
+  regression_test_added: false
+  patch_added: false
+  commit_untested: false
+  rollback_exercised: false
+
+acceptance:
+  A0_LIVE_INGRESS: FELL
+  A1_SOURCE_PIN: NOT_RUN
+  A2_POINTER_POSITION: NOT_RUN
+  A3_EXACT_ONCE_TARGET_ACTIVATION: NOT_RUN
+  A4_ZERO_FALSE_ACTIVATION: NOT_RUN
+  A5_NATIVE_FALLBACK: NOT_RUN
+  A6_NO_EXTERNAL_DEPENDENCY: NOT_RUN
+  A7_CLASSIC_SCRIPT_AND_STATIC_SMOKE: NOT_RUN
+  A8_BOUNDED_DIFF: NOT_RUN
+  A9_REAL_PRODUCER_READBACK: STOOD_FOR_BLOCKED_RETURN_ONLY
+  A10_CLAIM_CEILING: STOOD_FOR_NO_EFFECT_ONLY
+  self_grade_forbidden: true
+  independent_verdict: absent
+
+remaining_risk:
+  - the target remains at the known partial head and still lacks the required armed/disarmed exact-target activation patch
+  - no deterministic or static-server test ran against a real checkout
+  - connector readback proves branch identity but not a clean local worktree, merge-base command, or test execution
+  - executor packet and producer-return deadlines continue to run
+
+next_consumer:
+  named: S06_then_Olrun/Claude-Dispatch_or_one_authorized_authenticated_checkout_capable_host
+  required_next_evidence: >-
+    A direct START_ACCEPTED receipt from a host that can perform an authenticated clean checkout and run C1 through C11,
+    or a DECLINED receipt before the executor deadline. Do not treat this Git or Slack pointer as execution ingress.
+
+honest_flaw: >-
+  This run improved the measurement from no shell to a partially capable shell and independently confirmed the target
+  branch head through the authenticated GitHub connector. It still did not obtain the packet-required authenticated
+  clean checkout. The GitHub connector cannot honestly substitute for git fetch, checkout, merge-base, full-tree diff,
+  or local execution. The command wrapper emitted unrelated terminal cleanup noise after the probes; no result depends
+  on that noise. No code, test, commit, verdict, merge, deployment, publication, send, spend, or ConsumerAck occurred.
