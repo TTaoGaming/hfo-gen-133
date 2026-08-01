@@ -1,0 +1,221 @@
+---
+schema_id: hfo.gen133.s03.verification_route.v2
+result: REVISE
+work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001
+correlation_id: SPATIAL_FACTORY_GOLDEN_APP_001_TARGET_CONTINUITY_FEE50A7
+seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+carrier_task_id_expected: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_observed_from_runtime_instruction: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_match: true
+wip: 1
+valid_time_utc: 2026-08-01T10:10:02Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+route_expires_utc: 2026-08-01T10:55:00Z
+binding_weight: 0
+same_provider_status: SAME_PROVIDER_NONBINDING
+---
+
+self_probe:
+  github_connector: authenticated_read_write_with_exact_file_readback_and_commit_compare
+  slack_connector: authenticated_public_channel_read_and_write
+  target_repository_read: available
+  direct_distinct_provider_execution_ingress: unavailable
+  native_task_inventory: not_exposed_in_this_carrier
+  identity_basis: runtime_instruction_only
+  prohibited_effects_observed: none
+
+selected_changed_input:
+  kind: PRODUCER_RETURN_AMENDMENT
+  repository: TTaoGaming/hfo-gen-133
+  commit: 76fb41eb4ce40f3cb017078da8405b41712628bf
+  path: state/coordination/receipts/chatgpt_runtime/seat-07/20260801T092635Z_SPATIAL_FACTORY_GOLDEN_APP_001_PRODUCER_RETURN_AMENDMENT.yaml
+  blob: 0242255aa2e19cac82e41cf0227d119e9a26dd95
+  result: PATCH_RETURNED
+  amendment_scope: PRODUCER_RETURN_SCHEMA_COMPLETION_NO_CODE_CHANGE
+  observed_before_producer_return_due: true
+  producer_return_due_utc: 2026-08-01T10:04:38Z
+
+claim_binding:
+  commit: 4ecc5350fe918b1ff466708a148dc0012f810ab8
+  path: projects/spatial-app-factory/claims/20260801T070438Z_SPATIAL_FACTORY_GOLDEN_APP_001_S02_TARGET_CONTINUITY.claim.yaml
+  blob: ae178695e5faf33f15f4b9388bbbc274c4142651
+  acceptance_contract_sha256: 9a2a1e90301f74c556ec00bc3050c35e05cf4a3508135c3c6cc4951a113560a0
+  lease_expires_utc: 2026-08-01T11:04:38Z
+  required_verifier: Sigrun/P4_APEX_FALSIFICATION_or_other_distinct_provider_nonproducer
+  consumer_after_distinct_STOOD: Olrun/Claude-Dispatch_as_spatial_factory_coordinator
+  explicit_consumer_ack_required: true
+
+producer_bundle:
+  producer: S07_BOUNDED_CODE_PATCH_BUILDER
+  producer_task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+  producer_runtime: ChatGPT_cloud_scheduled_carrier_plus_local_linux_container_at_original_execution
+  producer_model: GPT-5.6_Thinking
+  original_return:
+    commit: aace7cd805c4ddfecf97fd6ec22982ec6e7a949e
+    path: state/coordination/receipts/chatgpt_runtime/seat-07/20260801T073029Z_SPATIAL_FACTORY_GOLDEN_APP_001_TARGET_CONTINUITY_PATCH_RETURN.yaml
+    blob: e174f41d2a848913f20e2d2e3a4f118d5a1a10ea
+  amendment:
+    commit: 76fb41eb4ce40f3cb017078da8405b41712628bf
+    path: state/coordination/receipts/chatgpt_runtime/seat-07/20260801T092635Z_SPATIAL_FACTORY_GOLDEN_APP_001_PRODUCER_RETURN_AMENDMENT.yaml
+    blob: 0242255aa2e19cac82e41cf0227d119e9a26dd95
+  canonical_bundle_input: |-
+    SPATIAL_FACTORY_GOLDEN_APP_001_TARGET_CONTINUITY_FEE50A7
+    ae178695e5faf33f15f4b9388bbbc274c4142651
+    e174f41d2a848913f20e2d2e3a4f118d5a1a10ea
+    0242255aa2e19cac82e41cf0227d119e9a26dd95
+    1f0c0a7831db6f4476a703856855ff7ccc4f454b
+    9a2a1e90301f74c556ec00bc3050c35e05cf4a3508135c3c6cc4951a113560a0
+  canonical_bundle_sha256: 5be6e5ef02d970acf2e863c8f9a59db977652f88c5097e8e7f4e4550be4d8ea6
+  effect_ceiling: BRANCH_FILE_TEST
+  rollback: leave_branch_unmerged_or_apply_ordinary_revert_commits_without_force_push_rebase_or_reset
+  expiry_utc: 2026-08-01T11:04:38Z
+
+exact_target_readback:
+  repository: TTaoGaming/TAGS
+  branch: agent/spatial-golden-app-001-20260731
+  required_input_sha: fee50a70188b510695e8e5fad2ebadc6cba0535a
+  final_sha: 1f0c0a7831db6f4476a703856855ff7ccc4f454b
+  compare_final_sha_to_branch_at_2026-08-01T10:10Z:
+    status: identical
+    ahead_by: 0
+    behind_by: 0
+  changed_paths:
+    - path: prototypes/spatial-input-adapter.js
+      prior_blob: c90a715c72735f0c04d60c91cd9c9afb0f2ddec4
+      final_blob: ca327ea46049f499d0afe1be4f9632ee086f2637
+      final_sha256: dbea6097b308268bb757622126eef7133e81aaf5ce2917653bc88ef62c04aa47
+    - path: tests/spatial-input-adapter.test.mjs
+      prior_blob: 9416a2e34c331ab46dd2f04c8d8664dbc0088405
+      final_blob: 2e523f5c373203ae4f5e0f1a48a52d1570f0682a
+      final_sha256: 1d1036fa74eb28e7125a3e9c3b83fe5a8a93e61d317722c3d8d098041259ecd0
+  unchanged_relevant_paths:
+    - path: prototypes/fab-prototype.html
+      blob: 63e5bfe5a158781c207c5636537172bdbc838023
+    - path: tests/fab-prototype-smoke.test.mjs
+      blob: 2f0e2795fe81910e82b9dc9ff697b86ff5e16231
+
+producer_commands_and_exit_codes_preserved_from_original_return:
+  regression_before_patch:
+    command: cd /tmp/hfo-s07 && node --test tests/spatial-input-adapter.test.mjs
+    exit_code: 1
+    measured_summary: 7_tests_4_pass_3_fail
+  after_patch:
+    - command: node --check prototypes/spatial-input-adapter.js
+      exit_code: 0
+    - command: node --test tests/spatial-input-adapter.test.mjs
+      exit_code: 0
+      measured_summary: 7_tests_7_pass_0_fail
+      output_sha256: 769d8125b940995b6e7a8cdb9dcd0469a3e41eca06e2186f9c6956a1380129bc
+    - command: git diff --check
+      exit_code: 0
+      scope: exact_final_changed_bytes_materialized_as_intent_to_add_in_a_local_empty_baseline_repository
+  explicitly_not_run:
+    - node --test tests/fab-prototype-smoke.test.mjs
+    - browser_execution
+    - trusted_user_activation
+    - accessibility_focus_or_cross_browser_behavior
+
+producer_authored_acceptance_status:
+  A1: STOOD
+  A2: FELL
+  A3: STOOD
+  A4: STOOD
+  A5: STOOD
+  A6: NOT_RUN
+  A7: STOOD
+  A8: NOT_RUN
+  A9: STOOD
+  A10: FELL
+  A11: STOOD
+  evidence_ceiling: PRODUCER_OBSERVATION_ONLY_NOT_A_VERIFIER_VERDICT
+
+changed_state_reduction:
+  prior_s06_hold:
+    commit: 1698095c67ef769022162d2562703e5237501810
+    path: state/coordination/receipts/chatgpt_runtime/seat-06/20260801T082137Z_SPATIAL_FACTORY_GOLDEN_APP_001_PRODUCER_RETURN_SCHEMA_HOLD.yaml
+    blob: fbf862a912ef5a1a0f9ec9de445baf40b123dd13
+    reason: producer_model_and_explicit_A1_A11_table_missing
+  prior_hold_falsified_by_amendment: true
+  prior_verifier_route:
+    commit: d302909a9c6459f70d1ac8c2163682d7d9cb689e
+    path: state/coordination/receipts/chatgpt_runtime/seat-03/20260801T080634Z_SPATIAL_FACTORY_GOLDEN_APP_001_DISTINCT_VERIFIER_REVISE.yaml
+    blob: 35d4a20c4c87640a82c783e2aeb9a2fddcb0b2e4
+  reason_new_route_is_material: >-
+    The producer amendment supplies the previously missing producer model and explicit A1-through-A11 table,
+    and therefore changes the exact producer digest that a valid distinct verdict must bind. The amendment also
+    explicitly records A2 and A10 as FELL and A6 and A8 as NOT_RUN. It does not itself provide a verifier verdict.
+
+fresh_verdict_and_ack_search:
+  git_exact_final_sha_plus_STOOD_search: no_distinct_verdict_found
+  git_exact_correlation_plus_ConsumerAck_search: no_explicit_consumer_ack_found
+  slack_channel_read_through_message_ts: 1785578360.295279
+  slack_distinct_STOOD_or_FELL_bound_to_amendment_blob: not_found
+  slack_explicit_Olrun_ConsumerAck_after_STOOD: not_found
+  same_provider_preflight_weight: 0
+
+missing_binding_evidence:
+  - distinct nonproducer STOOD or FELL bound to claim blob ae178695e5faf33f15f4b9388bbbc274c4142651
+  - verdict bound to original producer-return blob e174f41d2a848913f20e2d2e3a4f118d5a1a10ea
+  - verdict bound to amendment blob 0242255aa2e19cac82e41cf0227d119e9a26dd95
+  - verdict bound to producer bundle sha256 5be6e5ef02d970acf2e863c8f9a59db977652f88c5097e8e7f4e4550be4d8ea6
+  - verdict bound to final target SHA 1f0c0a7831db6f4476a703856855ff7ccc4f454b
+  - verdict bound to acceptance contract 9a2a1e90301f74c556ec00bc3050c35e05cf4a3508135c3c6cc4951a113560a0
+  - explicit ConsumerAck from Olrun/Claude-Dispatch after and only after distinct STOOD
+
+exact_verifier_packet:
+  addressee: Sigrun/P4_APEX_FALSIFICATION_or_other_distinct_provider_nonproducer
+  required_result: STOOD_or_FELL_only
+  source_of_truth:
+    claim_blob: ae178695e5faf33f15f4b9388bbbc274c4142651
+    original_return_blob: e174f41d2a848913f20e2d2e3a4f118d5a1a10ea
+    amendment_blob: 0242255aa2e19cac82e41cf0227d119e9a26dd95
+    producer_bundle_sha256: 5be6e5ef02d970acf2e863c8f9a59db977652f88c5097e8e7f4e4550be4d8ea6
+    target_repository: TTaoGaming/TAGS
+    target_branch: agent/spatial-golden-app-001-20260731
+    target_sha: 1f0c0a7831db6f4476a703856855ff7ccc4f454b
+    acceptance_contract_sha256: 9a2a1e90301f74c556ec00bc3050c35e05cf4a3508135c3c6cc4951a113560a0
+  required_actions:
+    - re-read exact claim, original producer return, amendment, and target bytes
+    - verify the target branch still equals final SHA and the four relevant blob pointers match
+    - run node --check prototypes/spatial-input-adapter.js
+    - run node --test tests/spatial-input-adapter.test.mjs
+    - run node --test tests/fab-prototype-smoke.test.mjs
+    - run git diff --check on a complete checkout against fee50a70188b510695e8e5fad2ebadc6cba0535a
+    - independently inspect whether fab-prototype.html loads and instantiates the adapter and binds native mainFab once per valid pinch cycle
+    - map A1 through A11 without upgrading static or synthetic evidence into browser, trusted-input, accessibility, deployment, or production proof
+  strongest_falsifier: >-
+    A distinct-provider complete-checkout result showing the FAB smoke test exits 0 and native mainFab is loaded,
+    instantiated, cycle-bound, and exercised under the exact acceptance contract would falsify the producer-authored
+    A2 and A10 FELL statuses. Otherwise return FELL bound to the exact producer bundle rather than revising producer code.
+  required_return_fields:
+    - provider_runtime_model
+    - exact_commands_outputs_and_exit_codes
+    - exact_source_build_and_test_readback
+    - STOOD_or_FELL_bound_to_all_required_digests
+    - rollback
+    - remaining_risk
+    - honest_flaw
+  effect_ceiling: READ_TEST_VERDICT_ONLY
+  forbidden:
+    - source_edit
+    - producer_repair
+    - task_mutation
+    - merge_deployment_publication_send_spend
+    - account_or_security_change
+    - implicit_ConsumerAck
+
+reducer_disposition:
+  state: WAITING_FOR_DISTINCT_VERDICT_ON_AMENDED_PRODUCER_BUNDLE
+  terminal_receipt_written: false
+  consumer_ack_requested: false
+  reason: >-
+    The producer bundle is now schema-complete enough to route, but producer-authored STOOD/FELL labels are not
+    independent verdicts. No distinct verdict binds the amended digest and no explicit ConsumerAck exists. S03
+    therefore emits one REVISE route and does not grade, repair, consume, or close the WorkItem.
+
+honest_flaw: >-
+  Git code search and Slack history can miss unindexed or newly written evidence. This route is same-provider
+  reducer work with binding weight zero. S03 did not execute the code or tests and cannot directly invoke Sigrun,
+  P4, Claude, Codex, or another distinct verifier from this carrier. The branch-head comparison is point-in-time,
+  and the claim lease leaves less than one hour for a verifier return.
+---
