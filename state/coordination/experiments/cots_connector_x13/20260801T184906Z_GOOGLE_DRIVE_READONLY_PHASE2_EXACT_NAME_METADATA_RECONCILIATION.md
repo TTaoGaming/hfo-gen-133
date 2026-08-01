@@ -1,0 +1,130 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_GOOGLE_DRIVE_READONLY_CONNECTOR_001
+event_id: X13_DRIVE_PHASE2_20260801T184906Z
+phase: 2
+campaign_wake: 2_of_4
+result: PHASE2_ACCEPTED_WITH_METADATA_POINTER_PRIVACY_GATE_TIGHTENED
+expected_current_version: 21
+next_current_version: 22
+prior_current_path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+prior_current_blob_sha: 7dda43e51d1df2e5bc21d68ea7d753ac34557dcf
+carrier_task_id_expected: 6a55c1733708819185088bf334e33ea5
+carrier_task_id_observed: 6a55c1733708819185088bf334e33ea5
+carrier_task_id_match: true
+carrier_task_observation_source: NATIVE_AUTOMATIONS_LIST_READBACK
+candidate: Google_Drive_read_only_search_fetch_and_metadata_connector
+micro_use: EXACT_NAME_METADATA_ONLY_RECONCILIATION_OF_ONE_ALREADY_EXTERNALIZED_HERITAGE_ARTIFACT
+effect_ceiling: READ_ONLY_EXACT_NAME_METADATA_SEARCH_NO_CONTENT_FETCH_NO_DRIVE_WRITE_NO_PRIVATE_BODY_PERSISTENCE
+valid_time_utc: 2026-08-01T18:49:06Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+review_expiry_utc: 2026-08-08T18:49:06Z
+source_externalization:
+  system: Slack
+  channel_id: C0BGC646A1H
+  message_url: https://hfonetwork.slack.com/archives/C0BGC646A1H/p1785470529433379?thread_ts=1785073442.724479&cid=C0BGC646A1H
+  exact_artifact_name_already_externalized: HFO_GEN132_PORTABLE_FRONTIER_REGISTRATION_CAPSULE_V1.md
+  prior_claim_ceiling: HERITAGE_POINTER_ONLY_NOT_CURRENT_STATE
+  prior_git_receipt_commit: e64e8d937d408c7757923ef6c4780487febb491b
+  prior_git_receipt_blob: 6eb60926090799e59c95f364afee6d2b94957042
+direct_connector_probe:
+  action: Google_Drive.search
+  query: EMPTY_WITH_EXACT_SPECIAL_FILTER
+  special_filter_class: EXACT_NAME_AND_NOT_TRASHED
+  item_type: document
+  topn: 3
+  best_effort_fetch: false
+  require_viewed_by_user: false
+  result: SUCCESS_ONE_EXACT_TITLE_MATCH
+  result_count: 1
+  exact_title_match: true
+  file_content_returned: false
+  file_body_fetched: false
+  next_page_token_exposed: false
+  latency_ms: NOT_EXPOSED_IN_PHASE2_RESULT
+  connector_id: NOT_EXPOSED_IN_PHASE2_RESULT
+  raw_provider_request_count: NOT_EXPOSED
+  raw_provider_method_and_fields_mask: NOT_EXPOSED
+  retries: NOT_EXPOSED
+  quota_headers_or_units: NOT_EXPOSED
+identity_bearing_metadata_observed:
+  title: ALREADY_EXTERNALIZED_EXACT_TITLE_ONLY
+  stable_file_url_or_id_returned: true
+  parent_id_returned: true
+  raw_identifiers_persisted_to_git_or_slack: false
+  url_sha256: 869e6f0a77df386303383b7c32f3c1f919e7e2806050bf2250ee513a5d6a8872
+  file_id_sha256: b81e3e91754a416fc5b61774b6b24400511d5a6cc476d5d63affc44f57abf036
+  parent_id_sha256: 19e4d0b0e8da4aef5dbe15fc26ab259e773f11aac32cda10ba3ce6d9c4b55cce
+privacy_externalization: NO_RAW_DRIVE_URL_FILE_ID_PARENT_ID_OWNER_SHARING_IDENTITY_OR_FILE_BODY_WRITTEN_TO_GIT_OR_SLACK
+measured_fact: METADATA_ONLY_MODE_PREVENTED_CONTENT_FETCH_BUT_EXPOSED_STABLE_FILE_AND_HIERARCHY_POINTERS
+operator_relay_minutes: 0
+operator_minutes_removed_estimate: 2_to_5_UNVALIDATED
+custom_code_avoided_estimate:
+  exact_filter_construction_and_metadata_normalization: 20_to_60_LOC_UNVALIDATED
+  authenticated_drive_lookup_and_result_mapping: 30_to_100_LOC_UNVALIDATED
+  content_download_or_export_code: 0_NOT_USED
+  privacy_policy_and_field_minimization: NOT_AVOIDED_REQUIRES_HFO_GATE
+  additive_total: NOT_CLAIMED_BECAUSE_FUNCTIONS_OVERLAP
+credentials:
+  connector_authenticated: true
+  operator_supplied_credentials_this_wake: 0
+  live_identity: UNKNOWN
+  live_oauth_scope: UNKNOWN
+  token_type: UNKNOWN
+  credential_custody: UNKNOWN
+durability: GOOGLE_DRIVE_PROVIDER_STORAGE_AND_STABLE_FILE_ID_ONLY_NO_WORKFLOW_REPLAY_RESUME_TRANSACTION_OR_EXACTLY_ONCE_CLAIM
+observability: NORMALIZED_RESULT_EXPOSED_EXACT_TITLE_URL_AND_PARENT_ID_BUT_HID_RAW_METHOD_FIELDS_MASK_SCOPE_IDENTITY_HEADERS_REQUEST_COUNT_QUOTA_RETRIES_AND_INTERNAL_CALL_SEQUENCE
+portability: MEDIUM_FOR_EXACT_NAME_FILE_DISCOVERY_LOW_TO_MEDIUM_FOR_WRAPPER_ITEM_TYPE_SPECIAL_FILTER_SCHEMA_AND_GOOGLE_STABLE_ID_PARENT_SEMANTICS
+failure_behavior: NOT_YET_PROBED_PHASE3
+direct_cost_and_quota:
+  paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
+  actual_request_count: UNKNOWN
+  actual_quota_units: UNKNOWN
+  actual_project_quota_class: UNKNOWN
+  one_wrapper_call_equals_one_files_list_call: NOT_CLAIMED
+official_contract_facts_checked_2026_08_01:
+  exact_name_filter_supported: true
+  files_list_returns_identifiers_and_metadata_not_content: true
+  file_ids_are_stable_opaque_identifiers: true
+  fields_parameter_can_limit_response_fields: true
+  official_search_guide: https://developers.google.com/workspace/drive/api/guides/search-files
+  official_fields_guide: https://developers.google.com/workspace/drive/api/guides/fields-parameter
+  official_files_overview: https://developers.google.com/workspace/drive/api/guides/about-files
+accepted_scope_delta:
+  - EXACT_NAME_METADATA_ONLY_DISCOVERY_CAN_RECONCILE_ONE_ALREADY_EXTERNALIZED_NAMED_ARTIFACT_WITH_ZERO_CONTENT_FETCH
+  - TITLE_MATCH_MAY_SUPPORT_LOCATION_OR_POINTER_RECONCILIATION_ONLY
+new_or_tightened_gates:
+  - TREAT_METADATA_ONLY_RESULTS_AS_SENSITIVE_POINTER_SURFACES_BECAUSE_STABLE_FILE_IDS_URLS_AND_PARENT_IDS_CAN_BE_RETURNED
+  - PERSIST_ONLY_ALREADY_EXTERNALIZED_NAMES_AND_HASHES_OF_STABLE_IDENTIFIERS_UNLESS_A_NAMED_CONSUMER_REQUIRES_RAW_POINTERS
+  - DO_NOT_EQUATE_EXACT_TITLE_MATCH_WITH_CONTENT_IDENTITY_FRESHNESS_CANONICALITY_OR CURRENT_STATE
+  - REQUIRE_EXPLICIT_FIELD_MINIMIZATION_OR_WRAPPER_CONTRACT_BEFORE_CLAIMING_METADATA_LEAST_PRIVILEGE
+  - KEEP_BEST_EFFORT_FETCH_FALSE_BY_DEFAULT
+  - DO_NOT_FETCH_CONTENT_FOR_HERITAGE_POINTER_RECONCILIATION
+excluded_claims:
+  - CONTENT_BYTES_OR_DIGEST_MATCH
+  - FILE_FRESHNESS_OR_CURRENT_CANON_STATUS
+  - UNIQUE_FILE_WITHOUT_DUPLICATES_OUTSIDE_RETURNED_PAGE
+  - OWNER_SHARING_PERMISSION_OR_SCOPE ADEQUACY
+  - LEAST_PRIVILEGE_OAUTH
+  - ONE_TO_ONE_WRAPPER_TO_PROVIDER_REQUEST_MAPPING
+  - PROVIDER_DURABILITY_AS_WORKFLOW_DURABILITY
+adoption_credit: 1
+adoption_credit_basis: ONE_BOUNDED_EXACT_NAME_METADATA_ONLY_RECONCILIATION_WITH_DIRECT_CONNECTOR_RECEIPT
+fitness_credit: 0_PENDING_EXPLICIT_CONSUMER_ACK
+consumer_ack: NOT_OBSERVED
+same_provider_binding_weight: 0
+verifier: S04_STRUCTURAL_PREFLIGHT_THEN_DISTINCT_NONPRODUCER_FOR_FIELD_MINIMIZATION_PRIVACY_AND_CONTENT_ISOLATION
+consumer: S05_OPERATOR_RELIEF_CELL_AND_X11_CARRIER_SURFACE_LAB
+strongest_falsifier: A_DISTINCT_TRACE_SHOWS_BEST_EFFORT_FETCH_FALSE_STILL_FETCHED_CONTENT_OR_THE_EXACT_FILTER_WAS_IGNORED_OR_THE_WRAPPER_EXPOSED_OWNER_SHARING_PRIVATE_BODY_FIELDS_OR_FANNED_OUT_TO_UNBOUNDED_PROVIDER_CALLS
+honest_flaw: EXACT_TITLE_EQUALITY_AND_HASHED_POINTERS_DO_NOT_PROVE_THE_DRIVE_FILE_IS_BYTE_IDENTICAL_TO_THE_PRIOR_HERITAGE_RECEIPT_CURRENT_OR_UNIQUE_NO_CONTENT_DIGEST_MODIFIED_TIME_MIME_TYPE_SCOPE_FIELDS_MASK_REQUEST_COUNT_OR_COMPLETE_PAGINATION_EVIDENCE_WAS_EXPOSED
+next_phase: PHASE3_SYNTHETIC_PRIVACY_SAFE_FAILURE_PERMISSION_OR_CONNECTOR_VARIANCE_PROBE_WITH_NO_CONTENT_FETCH
+sealed: true
+---
+
+# X13 Google Drive read-only phase 2
+
+A bounded exact-name Drive search reconciled one artifact whose exact title had already been externalized in Slack as a heritage-only pointer. The call used explicit document metadata mode with `best_effort_fetch=false`; it returned one exact title match and no file body.
+
+The material finding is that "metadata-only" is not privacy-neutral. The normalized response exposed a stable file URL or ID and a parent-folder ID. Raw identifiers were not copied into Git or Slack; only SHA-256 digests were retained. This tightens the gate: metadata search is a sensitive pointer surface, and exact title equality cannot be promoted to byte identity, freshness, canonicality, or current-state evidence.
+
+The micro-use removed an estimated 2–5 operator minutes of manual Drive lookup, but that estimate is unvalidated. No Drive write, content fetch, send, spend, account change, task mutation, deployment, merge, publication, or secret use occurred.
