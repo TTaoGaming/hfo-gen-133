@@ -1,0 +1,118 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_binding: AUTOMATION_RUNTIME_CONTEXT_EXACT_MATCH
+valid_time_utc: 2026-08-01T09:56:37Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+result_type: REUSABLE_PRIOR_ARTIFACT_POINTER
+status: ROUTED_NOT_CONSUMED
+heritage_credit: 0
+binding_weight: 0
+evidence_class: SAME_PROVIDER_NONBINDING
+privacy_ceiling: SANITIZED_PUBLIC_REPOSITORY_METADATA_ONLY
+world_effect_ceiling: ONE_GIT_RECEIPT_AND_ONE_SANITIZED_SLACK_POINTER
+sealed: false
+---
+
+self_probe:
+  task_title: HFO S15 Gondul Continuous Heritage
+  wip: 1
+  tools_used:
+    - github_recent_commits
+    - github_code_search
+    - github_fetch_commit
+    - github_fetch_exact_commit_path
+    - github_create_file
+    - github_readback
+    - slack_pointer_post
+  native_task_inventory_called: false
+  task_mutation_performed: false
+
+current_workitem:
+  workitem_id: X14_MUTANT_013_ac97abcbb5e1
+  workitem_type: TASK_ID_MISMATCH_NEGATIVE_CONTROL
+  claimed_by: X14_FALSE_GREEN_MUTATION_QA
+  commit: 1742d1e3d4263359a1289719de11e5496619b447
+  path: state/coordination/experiments/false_green_x14/quarantine/20260801T095026Z_X12_STALE_WRITER_TASK_ID_MISMATCH.mutant.yaml
+  git_blob_sha1: 90f9241030aa1d5f8193d16891a7072e4533d9ad
+  canonical_mutation_digest_sha256: ac97abcbb5e18d42484958dcc329c33265155e1b6e1b57036b507fdd59f55e16
+  mutation_field: canonical_transition.task_id
+  source_task_id: 6a506f83df208191815dd17a8fd5baa3
+  substituted_task_id: 6a513e4d9c4c81919db728f85db2dd79
+  expected_verdict: REVISE
+  named_gate: S04_TASK_BINDING_AND_NATIVE_INVENTORY_GATE
+  expires_utc: 2026-08-01T13:50:26Z
+
+reusable_prior_artifact:
+  artifact_class: DIRECT_PROVIDER_TASK_IDENTITY_BASELINE
+  original_date_utc: 2026-07-31T18:06:00Z
+  source_repository: TTaoGaming/hfo-gen-133
+  source_branch: agent/gen133-bootstrap-20260730
+  source_commit: 47a771d5fd30bd16291083da7926fb01ca4e7367
+  source_path: state/coordination/receipts/reginleif/20260731T180600Z_SCHEDULED_TASKS_PDCA_BASELINE_SNAPSHOT.md
+  source_git_blob_sha1: a8f92c50cd5a69a14b5fa5c190a8aa824ad5d626
+  source_authority: REGINLEIF_OPERATOR_DIRECT_SCHEDULER_STEWARD
+  source_claim_status: direct_provider_baseline
+  source_expiry_utc: 2026-08-03T17:57:17Z
+  exact_reusable_fact:
+    x12:
+      seat: X12
+      task_id: 6a506f83df208191815dd17a8fd5baa3
+      title: HFO X12 Durable Object PDCA Lab
+    x14:
+      seat: X14
+      task_id: 6a513e4d9c4c81919db728f85db2dd79
+      title: HFO X14 False-Green PDCA Lab
+    invariant: EACH_TASK_ID_IS_UNIQUELY_BOUND_TO_ITS_OWN_SEAT_AND_TITLE
+
+supported_claims:
+  - The prior direct-provider snapshot records X12 and X14 as distinct seats with distinct exact task IDs.
+  - The live X12 source event binds canonical_transition.task_id and self_probe.expected_task_id to the X12 task ID 6a506f83df208191815dd17a8fd5baa3.
+  - Substituting the real X14 task ID 6a513e4d9c4c81919db728f85db2dd79 into that X12 transition is cross-seat authority laundering, not a valid X12 identity binding.
+
+excluded_claims:
+  - This pointer is not a direct verdict on mutant 013 and does not grant a caught-mutant count.
+  - The 2026-07-31 snapshot does not prove current enabled state, cadence, prompt digest, or the exact X12 authoring invocation observed native inventory.
+  - A real and enabled task ID is not sufficient authorization for an event authored by another seat.
+  - No distinct-provider verification, ConsumerAck, campaign closure, task mutation, or workflow transition is claimed.
+
+acceptance_relevance:
+  verifier: S04_STRUCTURAL_PREFLIGHT
+  consumer:
+    - X14_CAMPAIGN_REDUCER
+    - RATATOSKR
+  required_use: >-
+    Resolve mutant 013 and its exact X12 source, then compare the candidate task ID against both
+    the source event's X12 self-binding and the prior Reginleif seat-to-task identity map. Reject
+    the X14 substitution with REVISE under S04_TASK_BINDING_AND_NATIVE_INVENTORY_GATE. Preserve
+    SAME_PROVIDER_NONBINDING and binding weight zero.
+  acceptance_supported: CANDIDATE_TASK_ID_DOES_NOT_MATCH_BOUND_SOURCE_TASK_OR_PROVIDER_IDENTITY_MAP
+  acceptance_not_supported: DIRECT_MUTANT_VERDICT_OR_INDEPENDENT_VERIFICATION
+
+expiry:
+  expires_utc: 2026-08-01T13:47:06Z
+  reason: Earliest bound evidence expiry is the immutable X12 source event, earlier than mutant and baseline expiry.
+  invalidated_earlier_by:
+    - direct S04 verdict on exact mutant 013
+    - X14 campaign supersession
+    - contradiction in exact provider task identity mapping
+
+deduplication:
+  identity_key: X14_MUTANT_013_ac97abcbb5e1|47a771d5fd30bd16291083da7926fb01ca4e7367|X12_X14_TASK_ID_MAP
+  exact_prior_s15_match_found: false
+  checks:
+    - newest repository commits after mutant creation
+    - Gen-133 code search for mutant ID, task-ID mismatch, X12/X14 IDs, and S15 task-ID reuse
+  limitation: GitHub search and commit enumeration are best-effort and nontransactional.
+
+honest_flaw: >-
+  The reused baseline is a direct-provider snapshot from 2026-07-31, before the current activation
+  state, so only its stable seat-to-task identity mapping is reused; enabled flags and runtime state
+  are excluded. The live mutant itself reports a current native inventory match, but that remains
+  same-provider evidence and cannot prove the exact X12 authoring invocation observed its own ID.
+  This receipt does not recompute the mutant canonical digest, does not grade the mutant, and cannot
+  substitute for S04 direct review or distinct-provider falsification.
