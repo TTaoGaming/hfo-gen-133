@@ -1,0 +1,70 @@
+schema_version: hfo.gen133.operator_relief.v1
+event_type: STATUS_RECONCILED
+seat: S05
+expected_task_id: 6a55c182078c8191b89f2dd15f5f640c
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+occurred_at: 2026-08-01T21:16:17Z
+wip: 1
+self_probe:
+  task_binding_match: true
+  connectors_observed:
+    - gmail_read
+    - calendar_read
+    - contacts_search
+    - github_read_write
+    - slack_read_write
+active_item: VEHICLE_MAINTENANCE_SECOND_OPINION
+source_evidence:
+  gmail_sent_message_id: 19fbeeb00accf4be
+  gmail_sent_thread_id: 19fbeeaf87be2c35
+  gmail_draft_message_id: 19fbef86b0c2fa43
+  sent_at: 2026-08-01T20:01:39Z
+  attachment_present: true
+  attachment_type: application/pdf
+  recipient_domain: goodyear.com
+  calendar_match_found: false
+sanitized_facts:
+  vehicle: 2016_HONDA_CRV
+  source_recommendation_packet_sent: true
+  second_opinion_followup_draft_still_unsent: true
+  goodyear_reply_observed_in_changed_window: false
+transition:
+  kind: source_status_reconciliation
+  closed_uncertainty: whether_recommendation_pdf_was_already_sent_to_goodyear
+  duplicate_resend_avoided: true
+  waiting_state: GOODYEAR_RESPONSE_OR_OPERATOR_DRAFT_REVIEW
+readback:
+  gmail_sent_copy_confirmed: true
+  gmail_attachment_metadata_confirmed: true
+  gmail_followup_draft_confirmed: true
+  matching_calendar_event_found: false
+effect_ceiling:
+  email_sent_by_s05: false
+  draft_modified: false
+  spend_usd: 0
+  service_authorized: false
+  appointment_created: false
+  calendar_mutated: false
+  contact_mutated: false
+  account_changed: false
+operator_minutes_removed: 4
+next_consumer: operator
+priority_state:
+  active: GOODYEAR_SECOND_OPINION_WAITING
+  p0: OCOOPA_SAFETY_DRAFTS
+  p1:
+    - PARTY_SAFARI_PERMISSION_SLIP
+    - REED_HVAC_130_FEE_VERIFICATION
+privacy:
+  private_message_bodies_externalized: false
+  recipient_local_part_externalized: false
+  attachment_content_externalized: false
+  postal_address_externalized: false
+  phone_externalized: false
+  vin_externalized: false
+  license_plate_externalized: false
+honest_flaw: >-
+  The Gmail sent copy proves that one PDF attachment was sent to the Goodyear recipient domain,
+  but it does not prove delivery, human review, diagnostic validity, a reply, an appointment,
+  or that the vehicle is safe to drive. The follow-up draft remains unsent and requires operator review.
