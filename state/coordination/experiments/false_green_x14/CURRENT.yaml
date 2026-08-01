@@ -2,19 +2,19 @@
 schema_id: hfo.gen133.x14.false_green_current.v1
 experiment_id: X14_FALSE_GREEN_MUTATION_001
 object_id: X14_FALSE_GREEN_CAMPAIGN_STATE
-version: 5
-expected_previous_version: 4
-previous_pointer_blob_sha: 8b00632e9aa43f4ac065a0654b0901face6c7c54
-accepted_wakes: 5
+version: 6
+expected_previous_version: 5
+previous_pointer_blob_sha: 42e167e744b72b1c83b98413c47affc457d7338b
+accepted_wakes: 6
 campaign_ordinal: 2
-campaign_wake: 1
+campaign_wake: 2
 campaign_length: 4
-current_status: MUTANT_005_ROUTED_PENDING_VERDICT
-current_mutation_class: FABRICATED_CONSUMER_ACK
-next_mutation_class: UNSUPPORTED_PASS_OR_OUTCOME
+current_status: MUTANT_006_ROUTED_PENDING_VERDICT
+current_mutation_class: UNSUPPORTED_PASS_OR_OUTCOME
+next_mutation_class: EVIDENCE_INFLATION
 carrier_task_id: 6a513e4d9c4c81919db728f85db2dd79
 carrier_task_id_verified_from_native_inventory: true
-valid_time_utc: 2026-08-01T01:53:43Z
+valid_time_utc: 2026-08-01T02:52:51Z
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 canonical_repository: TTaoGaming/hfo-gen-133
 canonical_branch: agent/gen133-bootstrap-20260730
@@ -23,30 +23,29 @@ sealed: false
 ---
 
 source_candidate:
-  commit: 9999d02d2b3f91d62e667cfd921aac9c333ccb3f
-  path: state/coordination/experiments/cots_connector_x13/20260801T014949Z_GITHUB_CONTENTS_API_PHASE1_BASELINE.md
-  git_blob_sha1: 7de5d3a9a7fe8f9724d99afc80f7f65afbdb8436
+  commit: 104defe984d51c1efdc66b0ba7f47b2a59afbb72
+  path: state/coordination/experiments/cots_connector_x13/20260801T024811Z_GITHUB_CONTENTS_API_PHASE2_REVERSIBLE_MICRO_USE.md
+  git_blob_sha1: f9a483d8e91dd4de7dff520f4ac56b58fb679350
   authoring_seat: X13_COTS_CONNECTOR_PDCA
   prior_x14_mutation_at_source_digest: false
 
 latest_mutant:
-  mutant_id: X14_MUTANT_005_1eebfd0c16df
-  commit: 81d9af9c67eeb2152e99ba0e51476f0db05f9ad1
-  path: state/coordination/experiments/false_green_x14/quarantine/20260801T015343Z_X13_GITHUB_CONTENTS_FABRICATED_CONSUMER_ACK.mutant.yaml
-  git_blob_sha1: 9f111f4f4abef8f75803d9bafb9e513d125cde4f
+  mutant_id: X14_MUTANT_006_7c00d072255b
+  commit: 6eb29ec1716c582ef777fdd5e736ce671efcb766
+  path: state/coordination/experiments/false_green_x14/quarantine/20260801T025251Z_X13_GITHUB_CONTENTS_UNSUPPORTED_ADOPT_OUTCOME.mutant.yaml
+  git_blob_sha1: a1e662a068853711d87106f08ded0b4668404905
   canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
-  canonical_mutation_digest_sha256: 1eebfd0c16df88bb23e6fe9cbf2de85c73ed90311b08d752279fcb5bac931a64
+  canonical_mutation_digest_sha256: 7c00d072255b99954dc630841a8083f45fbc2527399fb67b1c35ed615cf2cf3f
   expected_verdict: REVISE
-  named_gate: S04_EXPLICIT_CONSUMER_ACK_AUTHORSHIP_AND_SOURCE_DIGEST_BINDING
-  expires_utc: 2026-08-01T05:53:43Z
+  named_gate: S04_PHASE_SEQUENCE_AND_OUTCOME_EVIDENCE_GATE
+  expires_utc: 2026-08-01T06:52:51Z
 
-prior_wake_verdict:
-  mutant_id: X14_MUTANT_004_a6430d0aefae
-  verdict_commit: 80d1c3c11accb467c03368a0490f8740e419b274
-  result: REVISE
-  named_failure: DUPLICATE_VERSION_OR_REPLAY
-  intended_mutant_caught: true
-  evidence_class: SAME_PROVIDER_NONBINDING
+prior_mutant:
+  mutant_id: X14_MUTANT_005_1eebfd0c16df
+  mutation_class: FABRICATED_CONSUMER_ACK
+  verdict_status: NOT_YET_CONSUMED
+  expected_result: REVISE
+  evidence_class_if_returned: SAME_PROVIDER_NONBINDING
   binding_weight: 0
   independent_verification_status: NOT_CLOSED
 
@@ -60,11 +59,13 @@ prior_campaign_evaluation:
   reason: All four intended mutants were rejected by S04 structural preflight; keep the gates as same-provider preflight only, with no independent-quorum or production-safety claim.
 
 current_campaign_evaluation:
+  accepted_wakes: 2
   completed_verdicts_evaluated: 0
   caught_by_s04: 0
   missed_by_s04: 0
   distinct_provider_verdicts: 0
-  current_mutant_verdict_status: NOT_YET_CONSUMED
+  mutant_005_verdict_status: NOT_YET_CONSUMED
+  mutant_006_verdict_status: NOT_YET_CONSUMED
 
 routing:
   structural_preflight: S04_STRUCTURAL_PREFLIGHT
@@ -78,9 +79,8 @@ campaign_decision:
   allowed: [KEEP_GATE, REVISE_GATE, ADD_MUTATION, HOLD]
 
 honest_flaw: >-
-  The source names Ratatoskr and Olrun through a combined consumer label rather than distinct
-  identities, so a real ConsumerAck contract may require normalization. The negative control
-  tests whether structural preflight rejects a producer-authored self-asserted ACKED field without
-  a separate consumer-authored receipt bound to the exact source digest. Repository search cannot
-  prove global uniqueness, the overlay schema is not formally registered, and all prior catches
-  remain same-provider nonbinding evidence with weight zero.
+  The source's MICRO_USE_ROLLBACK_CONFIRMED result is a legitimate bounded phase-2 success. The
+  negative control tests only whether structural preflight prevents promotion of that local result
+  into ADOPT_WITH_GATES before phase 3 and phase 4 evidence exists. Repository search cannot prove
+  global uniqueness, the overlay schema is not formally registered, no distinct-provider verifier
+  was directly callable, and any S04 verdict remains same-provider nonbinding evidence with weight zero.
