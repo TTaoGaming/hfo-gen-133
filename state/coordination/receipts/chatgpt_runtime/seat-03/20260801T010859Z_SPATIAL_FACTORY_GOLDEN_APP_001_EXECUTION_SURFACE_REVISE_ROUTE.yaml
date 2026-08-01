@@ -1,0 +1,145 @@
+---
+schema_id: hfo.gen133.s03_reducer_route.v2
+receipt_id: S03_SPATIAL_FACTORY_GOLDEN_APP_001_EXECUTION_SURFACE_REVISE_20260801T010859Z
+result: REVISE
+terminal: false
+work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001
+correlation_id: SPATIAL_FACTORY_GOLDEN_APP_001
+callsign_or_seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+carrier_task_id_expected: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_observed: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_match: true
+wip: 1
+valid_time_utc: 2026-08-01T01:08:59Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+effect_ceiling: INTERNAL_REDUCTION_AND_EXACT_ROUTE_ONLY
+binding_weight: 0
+same_provider_status: SAME_PROVIDER_NONBINDING
+sealed: false
+---
+
+self_probe:
+  task_identity_source: native_scheduled_task_inventory_readback
+  tools_observed:
+    native_tasks: read
+    github: read_write
+    slack: read_write
+    direct_distinct_provider_execution_ingress: unavailable
+  prohibited_effects_observed: none
+
+changed_edge:
+  class: RENEWED_CLAIM_RECEIVED_EXECUTION_BLOCKED_PRODUCER_RETURN
+  prior_s03_cursor:
+    commit: bee76930b35812aeb8761c40403c0e5efbff4f91
+    path: state/coordination/receipts/chatgpt_runtime/seat-03/20260731T230800Z_SPATIAL_FACTORY_GOLDEN_APP_001_REVISE_ROUTE.yaml
+    blob: a4a4205b06cac5547b390ebbfb0e071b4eab4bd7
+    disposition: superseded_nonterminal_route_preserved
+  material_reason:
+    - S02 created a renewed unexpired claim with a changed acceptance digest
+    - S06 compiled one revised executor packet bound to that claim
+    - S07 returned HOLD after confirming the target head but could not obtain an authenticated checkout or execute C1 through C11
+    - no new target commit, executed acceptance suite, distinct STOOD or FELL, or explicit ConsumerAck exists on the read surfaces
+
+bindings:
+  claim:
+    commit: 47cd1e8bfb7cf78651e8978f4dec1f5e2a76bad4
+    path: projects/spatial-app-factory/claims/20260801T000607Z_SPATIAL_FACTORY_GOLDEN_APP_001_S02_RENEWED.claim.yaml
+    blob: f90e3797b4e5aa398aa386e555e26b53ae27cfc5
+    claim_id: S02_SPATIAL_FACTORY_GOLDEN_APP_001_RENEWED_20260801T000607Z
+    acceptance_contract_sha256: ffaa1a6fa0637039abd6ab9e43b1b978d1505edd0575ab020ca7256e3a45a8cb
+    lease_expires_utc: 2026-08-01T04:06:07Z
+    producer_return_due_utc: 2026-08-01T03:06:07Z
+    state_at_reduction: UNEXPIRED
+  executor_packet:
+    commit: 44bcfd69ecf90afd95b52c7917e65376ba49163f
+    path: projects/spatial-app-factory/dispatch/20260801T001933Z_SPATIAL_FACTORY_GOLDEN_APP_001_S06_REVISED_EXECUTOR.packet.yaml
+    blob: 94b2da15f48657dcfa41bb0020693f44b756ca4e
+    packet_id: S06_SPATIAL_FACTORY_GOLDEN_APP_001_REVISED_EXECUTOR_20260801T001933Z
+    expiry_utc: 2026-08-01T03:00:00Z
+    state_at_reduction: UNEXPIRED
+  producer_return:
+    commit: 665113a73d120ddb037199fa95b0894d51475980
+    path: state/coordination/receipts/chatgpt_runtime/seat-07/20260801T002944Z_SPATIAL_FACTORY_GOLDEN_APP_001_EXECUTION_BLOCKED_HOLD.yaml
+    blob: 74f4aa71962a9f40a9f1dfe2334c788cafd7d746
+    return_id: S07_SPATIAL_FACTORY_GOLDEN_APP_001_EXECUTION_BLOCKED_20260801T002944Z
+    result: HOLD
+    execution_label: EXECUTION_BLOCKED
+    state_at_reduction: CURRENT_NONTERMINAL_RETURN
+  target:
+    repository: TTaoGaming/TAGS
+    branch: agent/spatial-golden-app-001-20260731
+    base_sha: 1271e25306fe8ef8baea32704cf022435703d498
+    observed_head_sha: fee50a70188b510695e8e5fad2ebadc6cba0535a
+    target_mutated_by_current_return: false
+
+producer_return_validation:
+  claim_binding: present
+  packet_binding: present
+  exact_source_and_branch_readback: present
+  commands_and_exit_codes:
+    harmless_surface_probe:
+      command: curl -L --fail --silent --show-error https://raw.githubusercontent.com/TTaoGaming/TAGS/agent/spatial-golden-app-001-20260731/prototypes/fab-prototype.html -o /tmp/hfo-s07-fab-prototype.html
+      exit_code: 6
+      classification: NETWORK_DNS_UNAVAILABLE_AND_PRIVATE_CHECKOUT_UNAUTHENTICATED
+    required_C1_through_C11: NOT_RUN
+  rollback: no_target_mutation_so_no_reversal_required
+  effect_ceiling: honored
+  expiry: bound
+  honest_flaw: present
+  acceptance_evidence:
+    A1_through_A10: NOT_RUN
+    new_committed_producer_digest: absent
+  reducer_classification: HONEST_HOLD_NOT_VERIFIABLE_CANDIDATE
+
+reduction:
+  decision: REVISE
+  reason: >-
+    The changed S07 return is honest and correctly stops false-green work, but it is not an executed producer
+    candidate. It binds the renewed claim and packet and reports one failed surface probe, while every frozen
+    command and acceptance gate remains NOT_RUN and the target branch remains unchanged. There is therefore no
+    new producer digest eligible for a STOOD verdict and no basis for ConsumerAck or terminal closure.
+  not_claimed:
+    - no producer work, patch, test pass, browser proof, STOOD, FELL, ConsumerAck, merge, deployment, publication, or external outcome
+    - the same-provider S09 vote is advisory only and is not consumed as a binding verifier verdict
+
+exact_route_packet:
+  route_class: DISTINCT_PROVIDER_EXECUTION_INGRESS_REQUEST
+  named_receiver: Olrun/Claude-Dispatch_or_one_operator_authorized_checkout_capable_host
+  route_expiry_utc: 2026-08-01T03:00:00Z
+  bind_exactly:
+    work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001
+    claim_commit: 47cd1e8bfb7cf78651e8978f4dec1f5e2a76bad4
+    claim_blob: f90e3797b4e5aa398aa386e555e26b53ae27cfc5
+    executor_packet_commit: 44bcfd69ecf90afd95b52c7917e65376ba49163f
+    executor_packet_blob: 94b2da15f48657dcfa41bb0020693f44b756ca4e
+    blocked_return_commit: 665113a73d120ddb037199fa95b0894d51475980
+    blocked_return_blob: 74f4aa71962a9f40a9f1dfe2334c788cafd7d746
+    required_start_head_sha: fee50a70188b510695e8e5fad2ebadc6cba0535a
+    acceptance_contract_sha256: ffaa1a6fa0637039abd6ab9e43b1b978d1505edd0575ab020ca7256e3a45a8cb
+  receiver_transition:
+    - return one direct START_ACCEPTED or DECLINED receipt bound to the exact claim and packet; Slack prose alone is not execution
+    - if accepted, use an authenticated clean checkout with Node, Python, curl, and Git and execute the frozen C1-through-C11 sequence without weakening gates
+    - return runtime and model when observable, final branch SHA, changed paths and blobs, exact commands, actual exit codes and outputs, rollback, effect ceiling, expiry, remaining risk, and honest flaw
+    - do not claim browser trusted-user activation unless a browser execution surface is actually used
+  verifier_after_new_digest:
+    named: Sigrun/P4_APEX_FALSIFICATION_or_other_distinct_provider_nonproducer
+    required_vocabulary: [STOOD, FELL]
+    must_bind: final_producer_return_blob_and_final_target_sha
+    same_provider_preflight_binding_weight: 0
+
+consumer_ack_gate:
+  consumer: Olrun/Claude-Dispatch_as_spatial_factory_coordinator
+  required_only_after: exact_distinct_STOOD
+  required_form: explicit_CONSUMED_or_REJECTED_WITH_REASON_bound_to_work_item_and_final_producer_digest
+  implicit_ack_forbidden: true
+
+rollback:
+  source_mutation_performed: false
+  candidate_edit_performed: false
+  safe_reversal: preserve this immutable nonterminal route; supersede only with a newer direct producer return, exact distinct STOOD_or_FELL, or a terminal reducer receipt
+
+honest_flaw: >-
+  This S03 carrier is a ChatGPT same-provider reducer with binding weight zero. It could search the connected GitHub
+  branch and the named Slack channel but could not invoke Olrun, Claude-Dispatch, Sigrun/P4, or an authenticated host
+  directly. The Slack pointer is only routing evidence, not START_ACCEPTED, execution, independent verification, or
+  ConsumerAck. Search visibility cannot exclude private or unsynchronized work outside the connected read surfaces.
