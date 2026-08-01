@@ -1,0 +1,179 @@
+---
+schema_id: hfo.gen133.s03_reducer_verifier_route.v3
+receipt_id: S03_SPATIAL_FACTORY_GOLDEN_APP_001_DNS_BLOCKED_RETURN_REVISE_20260801T021100Z
+result: REVISE
+terminal: false
+work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001
+correlation_id: SPATIAL_FACTORY_GOLDEN_APP_001
+callsign_or_seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+carrier_task_id_expected: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_observed: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_match: true
+wip: 1
+valid_time_utc: 2026-08-01T02:11:00Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+effect_ceiling: INTERNAL_REDUCTION_AND_EXACT_VERIFIER_ROUTING_ONLY
+binding_weight: 0
+same_provider_status: SAME_PROVIDER_NONBINDING
+sealed: false
+---
+
+self_probe:
+  identity_source: native_scheduled_task_inventory_readback
+  tools_observed:
+    native_tasks_inventory: read
+    github: read_write
+    slack: read_write
+    direct_distinct_provider_ingress: unavailable
+  prohibited_effects_observed: none
+
+changed_edge:
+  class: CHANGED_EXECUTOR_PACKET_AND_NEW_COMMAND_BOUND_EXECUTION_BLOCKED_RETURN
+  prior_s03_route:
+    commit: ea2cade997d23624ebe12ba740b05be225ab2ec9
+    path: state/coordination/receipts/chatgpt_runtime/seat-03/20260801T010859Z_SPATIAL_FACTORY_GOLDEN_APP_001_EXECUTION_SURFACE_REVISE_ROUTE.yaml
+    blob: 66397847c3e614390b5ac7f64a40b51f707b7e9b
+    disposition: superseded_nonterminal_route_preserved
+  material_change:
+    - S06 issued a new packet with an explicit C0 live-ingress gate and a 2026-08-01T02:45:00Z start-or-decline deadline
+    - S07 exposed Git, Node, Python, curl, and a local shell, then recorded an exact target Git probe with exit 128 and DNS failure
+    - the new S07 return binds the renewed claim and new packet, reports no target mutation, and includes rollback, effect ceiling, expiry, and honest flaw
+    - no distinct-provider or nonproducer STOOD or FELL bound to the new producer-return digest exists
+    - no explicit ConsumerAck bound to the same WorkItem and producer digest exists
+
+bindings:
+  claim:
+    commit: 47cd1e8bfb7cf78651e8978f4dec1f5e2a76bad4
+    path: projects/spatial-app-factory/claims/20260801T000607Z_SPATIAL_FACTORY_GOLDEN_APP_001_S02_RENEWED.claim.yaml
+    blob: f90e3797b4e5aa398aa386e555e26b53ae27cfc5
+    claim_id: S02_SPATIAL_FACTORY_GOLDEN_APP_001_RENEWED_20260801T000607Z
+    acceptance_contract_sha256: ffaa1a6fa0637039abd6ab9e43b1b978d1505edd0575ab020ca7256e3a45a8cb
+    producer_return_due_utc: 2026-08-01T03:06:07Z
+    lease_expires_utc: 2026-08-01T04:06:07Z
+    state_at_reduction: UNEXPIRED
+  executor_packet:
+    commit: 4a0bf9b316cb9044448c4cc0c4955cd4da7564b7
+    path: projects/spatial-app-factory/dispatch/20260801T012154Z_SPATIAL_FACTORY_GOLDEN_APP_001_S06_LIVE_INGRESS_GATED_EXECUTOR.packet.yaml
+    blob: 44e827c33fe971859b6b633a6bb3c5d0f0d8bc31
+    packet_id: S06_SPATIAL_FACTORY_GOLDEN_APP_001_LIVE_INGRESS_GATED_20260801T012154Z
+    host_start_or_decline_deadline_utc: 2026-08-01T02:45:00Z
+    executor_expiry_utc: 2026-08-01T03:00:00Z
+    state_at_reduction: UNEXPIRED
+  producer_return:
+    commit: ea412299bedcb25f97bfad0341a91887bc7c382c
+    path: state/coordination/receipts/chatgpt_runtime/seat-07/20260801T012902Z_SPATIAL_FACTORY_GOLDEN_APP_001_DNS_BLOCKED_HOLD.yaml
+    blob: e00ab0c3626f2f8e1342105cb07a32c925297ee2
+    result: HOLD
+    execution_label: EXECUTION_BLOCKED
+    producer_digest_kind: git_blob_sha1
+    producer_digest: e00ab0c3626f2f8e1342105cb07a32c925297ee2
+  advisory_vote:
+    commit: 3e3619b93fcbc8551d60121064a83c5a8206c959
+    path: state/coordination/votes/20260801T013217Z_S09_GOLDEN_APP_LIVE_INGRESS_DEADLINE.vote.md
+    blob: 5eee98485633a22456a0025043f685f0d12c4770
+    result: HOLD
+    evidence_class: SAME_PROVIDER_ADVISORY_NONBINDING
+    binding_weight: 0
+  target:
+    repository: TTaoGaming/TAGS
+    branch: agent/spatial-golden-app-001-20260731
+    base_sha: 1271e25306fe8ef8baea32704cf022435703d498
+    required_and_observed_head_sha: fee50a70188b510695e8e5fad2ebadc6cba0535a
+
+producer_return_reduction:
+  binding_to_claim: present
+  binding_to_executor_packet: present
+  exact_command_and_exit_code:
+    wrapper_exit_code: 0
+    target_git_probe_exit_code: 128
+    target_error: "Could not resolve host: github.com"
+    error_class: OUTBOUND_DNS_UNAVAILABLE_FOR_TARGET_GIT_CHECKOUT
+  exact_readback:
+    connector_target_head: fee50a70188b510695e8e5fad2ebadc6cba0535a
+    changed_target_paths: []
+    target_commit_created: false
+  command_state:
+    C0_LIVE_INGRESS_ACK: FELL_BY_PRODUCER_ASSERTION_NOT_INDEPENDENT_VERDICT
+    C1_THROUGH_C11: NOT_RUN
+  acceptance_state:
+    A0_LIVE_INGRESS: FELL_BY_PRODUCER_ASSERTION_NOT_INDEPENDENT_VERDICT
+    A1_THROUGH_A9: NOT_RUN_OR_PARTIAL_HOLD_ONLY
+    A10_CLAIM_CEILING: STOOD_BY_PRODUCER_ASSERTION_NOT_INDEPENDENT_VERDICT
+  rollback: no_target_mutation_so_none_required
+  effect_ceiling: honored_by_return_claim
+  expiry: bound_and_unexpired_at_reduction
+  honest_flaw: present
+  classification: REAL_COMMAND_BOUND_BLOCKER_RETURN_NOT_A_CODE_CANDIDATE_NOT_INDEPENDENTLY_VERIFIED
+
+reduction:
+  decision: REVISE
+  reason: >-
+    The changed S07 return is sufficiently bound to be routed as a real producer blocker return, but its own
+    C0/A0 FELL labels are producer assertions. S03 cannot promote them into a verifier verdict. No distinct
+    STOOD or FELL binds the exact producer blob, and no ConsumerAck exists. The WorkItem therefore remains
+    nonterminal; no code, test, browser, merge, deployment, publication, or external outcome is credited.
+  same_provider_inputs_not_consumed_as_verdict:
+    - S04 structural preflight when produced has binding weight zero
+    - S09 advisory HOLD has binding weight zero
+    - this S03 reduction has binding weight zero
+
+exact_verifier_route:
+  route_class: DISTINCT_PROVIDER_OR_NONPRODUCER_RETURN_TRUTH_VERIFICATION
+  named_receiver: Sigrun/P4_APEX_FALSIFICATION_or_other_distinct_provider_nonproducer
+  route_expiry_utc: 2026-08-01T04:06:07Z
+  bind_exactly:
+    work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001
+    claim_commit: 47cd1e8bfb7cf78651e8978f4dec1f5e2a76bad4
+    claim_blob: f90e3797b4e5aa398aa386e555e26b53ae27cfc5
+    executor_packet_commit: 4a0bf9b316cb9044448c4cc0c4955cd4da7564b7
+    executor_packet_blob: 44e827c33fe971859b6b633a6bb3c5d0f0d8bc31
+    producer_return_commit: ea412299bedcb25f97bfad0341a91887bc7c382c
+    producer_return_blob: e00ab0c3626f2f8e1342105cb07a32c925297ee2
+    acceptance_contract_sha256: ffaa1a6fa0637039abd6ab9e43b1b978d1505edd0575ab020ca7256e3a45a8cb
+    target_head_sha: fee50a70188b510695e8e5fad2ebadc6cba0535a
+  verification_question: >-
+    Does the exact producer return truthfully establish only an execution-blocked attempt: target probe exit 128
+    from DNS failure, no authenticated checkout, no target mutation, C1-C11 not run, rollback not required,
+    effect ceiling honored, and no code/test/browser/outcome success?
+  required_verdict:
+    vocabulary: [STOOD, FELL]
+    must_bind:
+      - producer_return_blob e00ab0c3626f2f8e1342105cb07a32c925297ee2
+      - claim_blob f90e3797b4e5aa398aa386e555e26b53ae27cfc5
+      - executor_packet_blob 44e827c33fe971859b6b633a6bb3c5d0f0d8bc31
+      - target_head_sha fee50a70188b510695e8e5fad2ebadc6cba0535a
+    interpretation:
+      STOOD: blocker-return truthfulness stood; this is not code or acceptance success
+      FELL: one or more blocker-return claims are unsupported, mismatched, stale, inflated, or contradicted
+    forbidden:
+      - majority laundering
+      - same-provider preflight as binding verdict
+      - treating wrapper exit 0 as target Git success
+      - treating connector access as authenticated clean checkout
+      - treating an honest blocker receipt as completed code work
+
+consumer_ack_gate:
+  named_consumer: Olrun/Claude-Dispatch_as_spatial_factory_coordinator
+  required_after: exact_distinct_STOOD_on_producer_return_digest
+  required_form:
+    - ACK_BLOCKER_AND_EXPIRE
+    - ACK_BLOCKER_AND_REQUEUE_AFTER_CAPABILITY_PROOF
+    - REJECTED_WITH_REASON
+  must_bind:
+    - work_item_id SPATIAL_FACTORY_GOLDEN_APP_001
+    - producer_return_blob e00ab0c3626f2f8e1342105cb07a32c925297ee2
+    - distinct_verdict_digest
+  implicit_ack_forbidden: true
+  code_completion_ack_forbidden: true
+
+rollback:
+  source_or_target_mutation_performed: false
+  safe_reversal: preserve immutable receipt; supersede only with a newer exact producer return, distinct verdict, ConsumerAck, expiry reduction, or terminal receipt
+
+honest_flaw: >-
+  This S03 carrier is ChatGPT same-provider coordination evidence with binding weight zero. It can read and write
+  GitHub and Slack but cannot invoke Sigrun/P4, Olrun/Claude-Dispatch, or another distinct provider directly.
+  Posting the Git pointer is routing evidence only, not verifier consumption, STOOD/FELL, ConsumerAck, or closure.
+  Search visibility cannot exclude private or unsynchronized evidence outside the connected surfaces.
