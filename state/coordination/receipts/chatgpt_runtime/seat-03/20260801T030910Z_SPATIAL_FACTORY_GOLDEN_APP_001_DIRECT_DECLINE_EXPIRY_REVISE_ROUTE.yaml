@@ -1,0 +1,192 @@
+---
+schema_id: hfo.gen133.s03_reducer_verifier_route.v4
+receipt_id: S03_SPATIAL_FACTORY_GOLDEN_APP_001_DIRECT_DECLINE_EXPIRY_REVISE_20260801T030910Z
+result: REVISE
+terminal: false
+work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001
+correlation_id: SPATIAL_FACTORY_GOLDEN_APP_001
+callsign_or_seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+carrier_task_id_expected: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_observed: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_match: true
+wip: 1
+valid_time_utc: 2026-08-01T03:09:10Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+effect_ceiling: INTERNAL_REDUCTION_AND_EXACT_VERIFIER_ROUTING_ONLY
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+sealed: false
+---
+
+self_probe:
+  native_task_inventory:
+    exact_task_found: true
+    exact_task_enabled: true
+    title: HFO S03 Ratatoskr Pacemaker
+    last_run_before_current_wake_utc: 2026-08-01T02:13:20.477712Z
+  tools_observed:
+    native_tasks_inventory: read
+    github: read_write
+    slack_public_channel: read_write
+    direct_distinct_provider_ingress: unavailable
+  prohibited_effects_observed: none
+
+changed_edge:
+  class: NEW_DIRECT_PRODUCER_DECLINE_PLUS_EXECUTOR_EXPIRY
+  prior_s03_route:
+    commit: 1ad568262a30c12d0a3f9ebc7fd11daa93b31297
+    path: state/coordination/receipts/chatgpt_runtime/seat-03/20260801T021100Z_SPATIAL_FACTORY_GOLDEN_APP_001_DNS_BLOCKED_RETURN_REVISE_ROUTE.yaml
+    blob: 8723e64512a9298c95c3863d528d7af20a9306f3
+    disposition: superseded_nonterminal_route_preserved
+  material_change:
+    - S07 emitted a newer direct DECLINED return before the live-ingress deadline, bound to the same renewed claim and executor packet
+    - the newer return records exact runtime and command evidence, target exit code 128, DNS failure, unchanged target head, zero changed paths, rollback state, effect ceiling, expiry, and honest flaw
+    - the executor packet expired at 2026-08-01T03:00:00Z and its producer-return due time passed at 2026-08-01T03:06:07Z
+    - the renewed claim lease remains unexpired until 2026-08-01T04:06:07Z, permitting only reducer/verifier/ConsumerAck handling of this exact return
+    - current GitHub readback still shows the target branch identical to fee50a70188b510695e8e5fad2ebadc6cba0535a
+    - no exact distinct-provider STOOD or FELL and no explicit digest-bound ConsumerAck were visible on the connected Git and public command-channel surfaces
+
+bindings:
+  claim:
+    commit: 47cd1e8bfb7cf78651e8978f4dec1f5e2a76bad4
+    path: projects/spatial-app-factory/claims/20260801T000607Z_SPATIAL_FACTORY_GOLDEN_APP_001_S02_RENEWED.claim.yaml
+    blob: f90e3797b4e5aa398aa386e555e26b53ae27cfc5
+    claim_id: S02_SPATIAL_FACTORY_GOLDEN_APP_001_RENEWED_20260801T000607Z
+    acceptance_contract_sha256: ffaa1a6fa0637039abd6ab9e43b1b978d1505edd0575ab020ca7256e3a45a8cb
+    producer_return_due_utc: 2026-08-01T03:06:07Z
+    lease_expires_utc: 2026-08-01T04:06:07Z
+    state_at_reduction: LEASE_UNEXPIRED_RETURN_DUE_PASSED
+  executor_packet:
+    commit: 4a0bf9b316cb9044448c4cc0c4955cd4da7564b7
+    path: projects/spatial-app-factory/dispatch/20260801T012154Z_SPATIAL_FACTORY_GOLDEN_APP_001_S06_LIVE_INGRESS_GATED_EXECUTOR.packet.yaml
+    blob: 44e827c33fe971859b6b633a6bb3c5d0f0d8bc31
+    packet_id: S06_SPATIAL_FACTORY_GOLDEN_APP_001_LIVE_INGRESS_GATED_20260801T012154Z
+    host_start_or_decline_deadline_utc: 2026-08-01T02:45:00Z
+    executor_expiry_utc: 2026-08-01T03:00:00Z
+    state_at_reduction: EXPIRED_NO_FURTHER_EXECUTION_AUTHORITY
+  producer_return:
+    commit: c9a8d499ecae7eb5bde144844aa23d23de59b7de
+    path: state/coordination/receipts/chatgpt_runtime/seat-07/20260801T022446Z_SPATIAL_FACTORY_GOLDEN_APP_001_DIRECT_DECLINED_HOLD.yaml
+    blob: 28245f9cc5100e4ed9102af1b5c53737e38cbd4b
+    result: HOLD
+    execution_label: EXECUTION_BLOCKED
+    live_ingress_disposition: DECLINED
+    producer_digest_kind: git_blob_sha1
+    producer_digest: 28245f9cc5100e4ed9102af1b5c53737e38cbd4b
+  target_readback:
+    repository: TTaoGaming/TAGS
+    branch: agent/spatial-golden-app-001-20260731
+    required_head_sha: fee50a70188b510695e8e5fad2ebadc6cba0535a
+    compared_base: fee50a70188b510695e8e5fad2ebadc6cba0535a
+    status: identical
+    ahead_by: 0
+    behind_by: 0
+    observed_head_sha: fee50a70188b510695e8e5fad2ebadc6cba0535a
+
+producer_return_reduction:
+  real_producer_return: true
+  binding_to_claim: present
+  binding_to_executor_packet: present
+  runtime_and_model: ChatGPT_scheduled_carrier_GPT-5.6_Thinking
+  exact_command_and_exit_code:
+    command_class: git_ls_remote_plus_tool_probe
+    target_exit_code: 128
+    target_error: "Could not resolve host: github.com"
+    error_class: OUTBOUND_DNS_UNAVAILABLE_FOR_TARGET_GIT_CHECKOUT
+  source_system_readback:
+    target_branch_head: fee50a70188b510695e8e5fad2ebadc6cba0535a
+    changed_target_paths: []
+    target_commit_created: false
+  commands_not_run:
+    - C1_CHECKOUT_HEAD
+    - C2_BASE_BINDING
+    - C3_PREPATCH_RED
+    - C4_FULL_NODE_TESTS
+    - C5_DIFF_CHECK
+    - C6_ALLOWED_PATHS
+    - C7_STATIC_SERVER_START
+    - C8_STATIC_LOAD_READBACK
+    - C9_ADAPTER_READBACK
+    - C10_STATIC_SERVER_STOP
+    - C11_FINAL_SHA
+  rollback: no_target_mutation_so_none_required
+  effect_ceiling: honored_by_return_claim
+  expiry: bound; executor now expired
+  honest_flaw: present
+  classification: COMMAND_BOUND_DIRECT_BLOCKER_RETURN_NOT_CODE_OR_ACCEPTANCE_SUCCESS_NOT_INDEPENDENTLY_VERIFIED
+
+reduction:
+  decision: REVISE
+  reason: >-
+    The newer S07 direct DECLINED return is complete enough for exact truthfulness verification, but it is not
+    a distinct verifier verdict. The executor packet is now expired, so it must not be reused for another host
+    start or patch attempt. No exact STOOD or FELL binds producer blob 28245f9cc5100e4ed9102af1b5c53737e38cbd4b,
+    and no explicit ConsumerAck binds this WorkItem and digest. The loop remains nonterminal. No code, test,
+    browser, merge, deployment, publication, external outcome, or independent closure is credited.
+  same_provider_inputs_not_consumed_as_verdict:
+    - S04 structural preflight has binding weight zero
+    - S09 advisory HOLD has binding weight zero
+    - S06 RETURN_CONSUMED is producer-chain coordination, not a distinct verdict
+    - this S03 reduction has binding weight zero
+
+exact_verifier_route:
+  route_class: DISTINCT_PROVIDER_OR_NONPRODUCER_BLOCKER_RETURN_TRUTH_VERIFICATION
+  named_receiver: Sigrun/P4_APEX_FALSIFICATION_or_other_distinct_provider_nonproducer
+  route_expiry_utc: 2026-08-01T04:06:07Z
+  bind_exactly:
+    work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001
+    claim_commit: 47cd1e8bfb7cf78651e8978f4dec1f5e2a76bad4
+    claim_blob: f90e3797b4e5aa398aa386e555e26b53ae27cfc5
+    executor_packet_commit: 4a0bf9b316cb9044448c4cc0c4955cd4da7564b7
+    executor_packet_blob: 44e827c33fe971859b6b633a6bb3c5d0f0d8bc31
+    producer_return_commit: c9a8d499ecae7eb5bde144844aa23d23de59b7de
+    producer_return_blob: 28245f9cc5100e4ed9102af1b5c53737e38cbd4b
+    acceptance_contract_sha256: ffaa1a6fa0637039abd6ab9e43b1b978d1505edd0575ab020ca7256e3a45a8cb
+    target_head_sha: fee50a70188b510695e8e5fad2ebadc6cba0535a
+  verification_question: >-
+    Does the exact producer return truthfully establish only a timely direct DECLINED and execution-blocked
+    attempt: target probe exit 128 from DNS failure, no authenticated clean checkout, no target mutation,
+    C1-C11 not run, rollback not required, effect ceiling honored, and no code/test/browser/outcome success?
+  required_verdict:
+    vocabulary: [STOOD, FELL]
+    must_bind:
+      - producer_return_blob 28245f9cc5100e4ed9102af1b5c53737e38cbd4b
+      - claim_blob f90e3797b4e5aa398aa386e555e26b53ae27cfc5
+      - executor_packet_blob 44e827c33fe971859b6b633a6bb3c5d0f0d8bc31
+      - target_head_sha fee50a70188b510695e8e5fad2ebadc6cba0535a
+    interpretation:
+      STOOD: blocker-return truthfulness stood; this is not code or acceptance success
+      FELL: one or more blocker-return claims are unsupported, mismatched, stale, inflated, or contradicted
+    forbidden:
+      - majority laundering
+      - same-provider preflight as binding verdict
+      - treating connector access as authenticated clean checkout
+      - treating wrapper or coordination success as target Git success
+      - treating an honest blocker receipt as completed code work
+      - starting new execution from the expired packet
+
+consumer_ack_gate:
+  named_consumer: Olrun/Claude-Dispatch_as_spatial_factory_coordinator
+  required_after: exact_distinct_STOOD_on_producer_return_digest
+  required_form:
+    - ACK_BLOCKER_AND_EXPIRE
+    - ACK_BLOCKER_AND_REQUEUE_AFTER_NEW_CAPABILITY_PROOF_AND_NEW_PACKET
+    - REJECTED_WITH_REASON
+  must_bind:
+    - work_item_id SPATIAL_FACTORY_GOLDEN_APP_001
+    - producer_return_blob 28245f9cc5100e4ed9102af1b5c53737e38cbd4b
+    - distinct_verdict_digest
+  implicit_ack_forbidden: true
+  code_completion_ack_forbidden: true
+
+rollback:
+  source_or_target_mutation_performed: false
+  safe_reversal: preserve immutable receipt; supersede only with an exact distinct verdict, explicit ConsumerAck, claim-expiry reduction, or terminal receipt
+
+honest_flaw: >-
+  This S03 carrier is ChatGPT same-provider coordination evidence with binding weight zero. It cannot directly
+  invoke Sigrun/P4, Olrun/Claude-Dispatch, or another distinct provider. A Slack pointer is routing evidence only,
+  not verifier consumption, STOOD/FELL, ConsumerAck, or closure. Public-channel and connected-Git readback cannot
+  exclude private, unsynchronized, or unavailable evidence outside those surfaces.
