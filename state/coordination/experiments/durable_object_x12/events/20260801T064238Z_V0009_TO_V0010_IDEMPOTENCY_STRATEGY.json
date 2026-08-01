@@ -1,0 +1,90 @@
+{
+  "canonical_transition": {
+    "acceptance": {
+      "canonicalization": "JCS_LIKE_V1_NFC_UTF8_SORTED_KEYS_COMPACT_LF; integer versions only",
+      "digest_rule": "sha256(canonical_json_utf8(canonical_transition))",
+      "duplicate_gate": "Derive the prior accepted key from parsed semantic fields, not raw JSON bytes; key-order/whitespace variants must reproduce the same key and be rejected without writes. Before replacement require CURRENT version=9 and blob=c498e35fe72794581fabf8aa52f6d99cf9309f0a.",
+      "idempotency_formula": "sha256(object_id|expected_version|next_version|campaign_id|wake_ordinal|prior_digest_sha256|current_pointer_blob|controlled_probe_name)",
+      "pointer_gate": "Event-first exact readback; second exact CURRENT read; single-file blob-SHA-guarded replace; returned-blob and branch-path exact readback. Any mismatch/conflict/duplicate is not accepted.",
+      "strategy": "NORMALIZED_FIELD_TUPLE_PLUS_VERSION_SCOPED_KEY_PLUS_BEST_EFFORT_REPO_SEARCH_V2"
+    },
+    "campaign": {
+      "accepted_wake_ordinal": 2,
+      "campaign_id": "X12_IDEMPOTENCY_STRATEGY_C3",
+      "decision": "NONE_UNTIL_WAKE_4",
+      "factor": "idempotency_strategy",
+      "target_wakes": 4
+    },
+    "consumer": "Reginleif/Olrun",
+    "effect_ceiling": "FILE_AND_SANITIZED_SLACK_ONLY",
+    "evidence_class": "PROMPT_TASK_ID_BINDING+GITHUB_EXACT_CURRENT_PRIOR_EVENT_READBACK+BEST_EFFORT_SEARCH+LOCAL_DETERMINISTIC_PARSE_AND_DIGEST+EVENT_FIRST_DOUBLE_CURRENT_READ+SHA_GUARDED_SINGLE_FILE_POINTER_UPDATE+DUAL_POSTWRITE_READBACK",
+    "expected_version": 9,
+    "experiment": {
+      "baseline": "v9; C3 1/4; prior event digest 49d6b216f81f8663ba548ba1df2d4e2844a9d391994ba7a7bf5da500bda585a4; CURRENT blob c498e35fe72794581fabf8aa52f6d99cf9309f0a.",
+      "controlled_factor": "Idempotency strategy only. Replace raw-serialization identity with parsed normalized-field tuple identity for replay classification; retain version, event-first, pointer, verifier, consumer, expiry, and rollback gates.",
+      "controlled_probe_name": "NORMALIZED_TUPLE_SERIALIZATION_VARIANCE_REPLAY_REJECTION_W2",
+      "exact_probe": "Serialize the prior accepted transition's eight idempotency fields twice: A as sorted compact JSON and B as reverse-key pretty JSON. Confirm raw SHA-256 differs, parse both, extract the fixed field tuple, and require both to derive a5a824132b6e4208f0a60365a6ab0e6820280b09ac811f69637d00b429dfe1a3. Classify the serialization-variant replay DUPLICATE with zero state advance. Derive 9bc6130025336404d14197ee46709eb8a6650294bb29369ea45998af179fc68e for v9→v10, require zero observed search matches, then run retained event-first and exact-version pointer gates.",
+      "hypothesis": "Parsing a fixed semantic field tuple makes replay detection invariant to harmless JSON key-order and whitespace changes while still permitting one new version-scoped transition.",
+      "measured_result": {
+        "duplicate_replay_key": "a5a824132b6e4208f0a60365a6ab0e6820280b09ac811f69637d00b429dfe1a3",
+        "duplicate_replay_status": "REJECTED_NO_WRITE_NO_ADVANCE",
+        "normalized_field_tuple_derived_key": "a5a824132b6e4208f0a60365a6ab0e6820280b09ac811f69637d00b429dfe1a3",
+        "normalized_field_tuple_keys_equal": true,
+        "operator_relay_minutes": 0,
+        "permission_error_class": "NONE_ON_READ_AND_SEARCH",
+        "prior_event_exact_key_match": true,
+        "proposed_key": "9bc6130025336404d14197ee46709eb8a6650294bb29369ea45998af179fc68e",
+        "proposed_key_observed_match_count": 0,
+        "raw_serialization_digests_differ": true,
+        "search_authority": "BEST_EFFORT_NONATOMIC_POSSIBLY_STALE",
+        "serialization_variant_a": {
+          "bytes": 387,
+          "raw_sha256": "cc3acf4a76fd29d4b4a6b68bb217ffdb2c2031e6d499ba32f1e8b35b4dbc41e4",
+          "shape": "SORTED_COMPACT_JSON"
+        },
+        "serialization_variant_b": {
+          "bytes": 420,
+          "raw_sha256": "692f1e69f52c9105db79c1924d56d442f5a5a1c9078eb9fb02e9ba70c30e3e44",
+          "shape": "REVERSE_KEY_PRETTY_JSON"
+        }
+      },
+      "strongest_falsifier": "A key-order/whitespace variant derives a different normalized key; a semantically equivalent replay can alter an unbound field and advance; the proposed key existed but search missed it; CURRENT changes or wrong prior blob is accepted; exact event or pointer readback fails."
+    },
+    "expiry_utc": "2026-08-01T09:42:38Z",
+    "honest_flaw": "The normalization covers only eight selected fields and the field list is prompt-defined, not a formally versioned schema validator. A semantically duplicate request can vary an unbound field, campaign ordinal, or probe name and produce a new key. Code search is stale/nonatomic and not uniqueness enforcement. Event and CURRENT are separate commits, so crashes can orphan an event or omit Slack. No exactly-once, lock, linearizability, cross-file atomicity, concurrent-writer safety, database durability, or automatic cleanup claim.",
+    "idempotency_key": "9bc6130025336404d14197ee46709eb8a6650294bb29369ea45998af179fc68e",
+    "next_version": 10,
+    "nonce": "x12-c3-w2-v9-v10-9bc61300",
+    "object_id": "HFO_X12_WORKFLOW_OBJECT_001",
+    "prior_digest_sha256": "49d6b216f81f8663ba548ba1df2d4e2844a9d391994ba7a7bf5da500bda585a4",
+    "prior_version": 9,
+    "rollback": "Never delete event; append compensating transition from then-current version and replace CURRENT only with exact then-current blob SHA.",
+    "self_probe": {
+      "expected_task_id": "6a506f83df208191815dd17a8fd5baa3",
+      "observed_task_id": null,
+      "task_id_binding": "EXPECTED_ID_FROM_AUTOMATION_INSTRUCTION; native ID unavailable in current connector surface",
+      "tools": [
+        "GITHUB_READ_WRITE",
+        "GITHUB_BLOB_READ",
+        "GITHUB_SEARCH",
+        "SLACK_SEND",
+        "LOCAL_DETERMINISTIC_PARSE_AND_DIGEST"
+      ]
+    },
+    "source_binding": {
+      "current_pointer_blob": "c498e35fe72794581fabf8aa52f6d99cf9309f0a",
+      "current_projection_digest_sha256": "38050025e3aec7218f66bf6f845092c735515c6f4bd68132764824887688ebf7",
+      "prior_event_blob": "1cd51d9e4a04e3b120621e3d72ef1f90711c033d",
+      "prior_event_commit": "cb8e4125c456290847c104157bced695ccf58318",
+      "prior_event_path": "state/coordination/experiments/durable_object_x12/events/20260801T054411Z_V0008_TO_V0009_IDEMPOTENCY_STRATEGY.json"
+    },
+    "task_id": "6a506f83df208191815dd17a8fd5baa3",
+    "transaction_time_evidence": "AUTOMATION_RUNTIME_CONTEXT_TIMESTAMP; Git commit metadata is separate, not a database transaction boundary",
+    "transaction_time_utc": "2026-08-01T06:42:38Z",
+    "valid_time_utc": "2026-08-01T06:42:38Z",
+    "verifier": "S04_STRUCTURAL_PREFLIGHT_WEIGHT_0_THEN_SIGRUN_P4_DISTINCT"
+  },
+  "canonicalization": "JCS_LIKE_V1",
+  "event_digest_sha256": "6aafca3124609f8da877095804b3d9479d84068422dfc1a3c5f8690b7d4b7d66",
+  "schema_id": "hfo.gen133.x12.durable_object_event.v1"
+}
