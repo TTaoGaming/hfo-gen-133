@@ -1,0 +1,178 @@
+---
+schema_id: hfo.gen133.s06_codex_bridge_return_consumed.v1
+result: RETURN_CONSUMED
+seat: S06_CODE_WORK_PACKET_COMPILER_AND_CODEX_BRIDGE
+carrier_task_id_expected: 6a57972b9df081918680ce67c4ecb197
+carrier_task_id_observed_from_runtime_instruction: 6a57972b9df081918680ce67c4ecb197
+carrier_task_id_match: true
+carrier_identity_claim: DISPOSABLE_SCHEDULED_CARRIER_NOT_LINEAGE
+wip: 1
+valid_time_utc: 2026-08-01T10:21:36Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001
+correlation_id: SPATIAL_FACTORY_GOLDEN_APP_001_TARGET_CONTINUITY_FEE50A7
+---
+
+self_probe:
+  github_connector: authenticated_read_write_exact_file_and_blob_readback
+  slack_public_channel: authenticated_write_available
+  direct_codex_claude_or_host_ingress: unavailable
+  shell_or_browser_runtime: unavailable_in_this_carrier
+  native_task_inventory: task_id_supplied_by_runtime_instruction_not_independently_enumerated
+  prohibited_effects_observed: none
+
+selected_claim:
+  commit: 4ecc5350fe918b1ff466708a148dc0012f810ab8
+  path: projects/spatial-app-factory/claims/20260801T070438Z_SPATIAL_FACTORY_GOLDEN_APP_001_S02_TARGET_CONTINUITY.claim.yaml
+  blob: ae178695e5faf33f15f4b9388bbbc274c4142651
+  acceptance_contract_sha256: 9a2a1e90301f74c556ec00bc3050c35e05cf4a3508135c3c6cc4951a113560a0
+  producer_return_due_utc: 2026-08-01T10:04:38Z
+  lease_expires_utc: 2026-08-01T11:04:38Z
+  status_at_consumption: UNEXPIRED_LEASE_RETURN_WAS_AUTHORED_BEFORE_DUE
+
+producer_bundle:
+  original_return:
+    commit: aace7cd805c4ddfecf97fd6ec22982ec6e7a949e
+    path: state/coordination/receipts/chatgpt_runtime/seat-07/20260801T073029Z_SPATIAL_FACTORY_GOLDEN_APP_001_TARGET_CONTINUITY_PATCH_RETURN.yaml
+    blob: e174f41d2a848913f20e2d2e3a4f118d5a1a10ea
+    result: PATCH_RETURNED
+  schema_amendment:
+    commit: 76fb41eb4ce40f3cb017078da8405b41712628bf
+    path: state/coordination/receipts/chatgpt_runtime/seat-07/20260801T092635Z_SPATIAL_FACTORY_GOLDEN_APP_001_PRODUCER_RETURN_AMENDMENT.yaml
+    blob: 0242255aa2e19cac82e41cf0227d119e9a26dd95
+    amendment_kind: PRODUCER_RETURN_SCHEMA_COMPLETION_NO_CODE_CHANGE
+  prior_s06_hold_falsified:
+    commit: 1698095c67ef769022162d2562703e5237501810
+    path: state/coordination/receipts/chatgpt_runtime/seat-06/20260801T082137Z_SPATIAL_FACTORY_GOLDEN_APP_001_PRODUCER_RETURN_SCHEMA_HOLD.yaml
+    blob: fbf862a912ef5a1a0f9ec9de445baf40b123dd13
+    former_reason: PRODUCER_RETURN_SCHEMA_INCOMPLETE
+
+producer_identity_and_runtime:
+  producer: S07_BOUNDED_CODE_PATCH_BUILDER
+  producer_task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+  producer_runtime: ChatGPT_cloud_scheduled_carrier_with_local_linux_container_at_original_execution
+  producer_model: GPT-5.6_Thinking
+  node_version: v22.16.0
+  git_version: 2.47.3
+  browser_runtime: unavailable
+  full_remote_checkout: unavailable_due_to_dns_resolution_failure
+
+target_and_git_readback:
+  repository: TTaoGaming/TAGS
+  branch: agent/spatial-golden-app-001-20260731
+  required_input_sha: fee50a70188b510695e8e5fad2ebadc6cba0535a
+  final_branch_sha: 1f0c0a7831db6f4476a703856855ff7ccc4f454b
+  compare_final_sha_to_branch:
+    status: identical
+    ahead_by: 0
+    behind_by: 0
+  changed_paths:
+    - path: prototypes/spatial-input-adapter.js
+      final_blob_reported: ca327ea46049f499d0afe1be4f9632ee086f2637
+      final_blob_readback: ca327ea46049f499d0afe1be4f9632ee086f2637
+      match: true
+    - path: tests/spatial-input-adapter.test.mjs
+      final_blob_reported: 2e523f5c373203ae4f5e0f1a48a52d1570f0682a
+      final_blob_readback: 2e523f5c373203ae4f5e0f1a48a52d1570f0682a
+      match: true
+  every_other_allowed_path_changed: false
+
+producer_command_evidence_consumed_not_reexecuted:
+  regression_before_patch:
+    command: cd /tmp/hfo-s07 && node --test tests/spatial-input-adapter.test.mjs
+    exit_code: 1
+    output_summary: 7_tests_4_pass_3_fail
+  after_patch:
+    - command: node --check prototypes/spatial-input-adapter.js
+      exit_code: 0
+    - command: node --test tests/spatial-input-adapter.test.mjs
+      exit_code: 0
+      output_summary: 7_tests_7_pass_0_fail
+      output_sha256: 769d8125b940995b6e7a8cdb9dcd0469a3e41eca06e2186f9c6956a1380129bc
+    - command: git diff --check
+      exit_code: 0
+      scope: exact_final_changed_bytes_materialized_as_intent_to_add_in_a_local_empty_baseline_repository
+  not_run:
+    - node --test tests/fab-prototype-smoke.test.mjs
+    - browser_execution
+    - trusted_user_activation
+    - accessibility_focus_or_cross_browser_behavior
+  s06_execution_replay: NOT_RUN_NO_EXECUTION_SURFACE
+
+acceptance_status_consumed_as_producer_observation_not_verdict:
+  A1: STOOD
+  A2: FELL
+  A3: STOOD
+  A4: STOOD
+  A5: STOOD
+  A6: NOT_RUN
+  A7: STOOD
+  A8: NOT_RUN
+  A9: STOOD
+  A10: FELL
+  A11: STOOD
+
+return_gate:
+  satisfied:
+    - exact_claim_commit_blob_and_acceptance_digest
+    - direct_immutable_original_return_and_bound_amendment
+    - producer_identity_task_runtime_and_model
+    - repository_branch_input_and_final_sha
+    - exact_changed_paths_and_blob_readback
+    - exact_commands_exit_codes_and_output_summaries
+    - explicit_A1_through_A11_statuses
+    - blockers_rollback_effect_ceiling_expiry_remaining_risk_and_honest_flaw
+  decision: CONSUME_DIRECT_PRODUCER_RETURN
+  evidence_ceiling: PRODUCER_RETURN_CONSUMED_NOT_VERIFIER_VERDICT_NOT_CONSUMER_ACK
+
+current_red_and_unproven_evidence:
+  - A2_FELL_native_mainFab_page_binding_was_not_added
+  - A10_FELL_existing_FAB_smoke_test_was_not_run_and_script_load_seam_remains_unresolved
+  - A6_NOT_RUN_complete_active_cycle_invalid_input_matrix
+  - A8_NOT_RUN_native_mouse_touch_keyboard_focus_and_click_fallback_browser_behavior
+  - no_distinct_provider_STOOD_or_FELL_verdict
+  - no_explicit_Olrun_ConsumerAck
+
+routing:
+  new_executor_packet_created: false
+  new_executor_packet_routed: false
+  reason: target_branch_already_contains_bounded_patch_and_duplicate_execution_is_forbidden
+  existing_distinct_verifier_packet:
+    commit: 86484d7d219212b064584aa611479676f9f4de0f
+    path: state/coordination/receipts/chatgpt_runtime/seat-03/20260801T101002Z_SPATIAL_FACTORY_GOLDEN_APP_001_AMENDED_RETURN_DISTINCT_VERIFIER_REVISE.yaml
+    consumer: Sigrun/P4_APEX_FALSIFICATION_or_other_distinct_provider_nonproducer
+    status: ROUTED_BY_S03
+  final_consumer_after_distinct_STOOD: Olrun/Claude-Dispatch_as_spatial_factory_coordinator
+
+rollback:
+  target_branch: leave_unmerged_or_apply_ordinary_revert_commits_without_force_push_rebase_or_reset
+  receipt: immutable_history_supersede_only_never_edit_or_delete
+  external_effect: none
+
+effect_ceiling:
+  authorized: BRANCH_FILE_TEST_and_internal_Git_Slack_coordination_only
+  performed_by_s06:
+    - read_claim_original_return_and_amendment
+    - compare_target_branch_to_reported_final_sha
+    - read_back_two_changed_path_blobs
+    - write_one_immutable_return_consumed_receipt
+  forbidden_and_not_performed:
+    - production_code_or_test_edit
+    - command_or_test_execution
+    - duplicate_executor_dispatch
+    - task_mutation
+    - merge_deploy_publish_send_spend_account_or_security_change
+
+strongest_falsifier: >-
+  Any exact readback showing the target branch no longer equals 1f0c0a7831db6f4476a703856855ff7ccc4f454b,
+  either changed blob differs, the amendment does not bind the original return blob, or the named model and A1-A11
+  table were not producer-authored would invalidate this consumption receipt.
+
+honest_flaw: >-
+  S06 did not execute or replay the producer commands and therefore does not verify their outputs. The producer is
+  same-provider, A2 and A10 explicitly fell, A6 and A8 were not run, and no distinct-provider verdict or ConsumerAck
+  exists. Git connector reads are point-in-time, not a lock. RETURN_CONSUMED means only that the amended producer
+  bundle now satisfies the S06 intake schema; it is not STOOD, PASS, merge approval, deployment approval, or outcome.
+---
