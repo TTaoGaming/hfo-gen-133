@@ -1,0 +1,78 @@
+{
+  "canonical_transition": {
+    "acceptance": {
+      "duplicate_search_matches": 0,
+      "idempotency_formula": "sha256(object_id|expected_version|next_version|campaign_id|wake_ordinal|prior_digest|current_blob|task_id|transition_kind|decision)",
+      "pointer_gate": "event-first readback; second CURRENT read; require version 12 and exact blob; single-file SHA-guarded update; postwrite readback",
+      "search_authority": "BEST_EFFORT_NONATOMIC"
+    },
+    "campaign": {
+      "accepted_wake_ordinal": 1,
+      "campaign_id": "X12_STALE_CONCURRENT_WRITER_SIMULATION_C4",
+      "factor": "stale_concurrent_writer_simulation",
+      "target_wakes": 4
+    },
+    "consumer": "Reginleif/Olrun",
+    "effect_ceiling": "GIT_EVENT_AND_CURRENT_POINTER; SANITIZED_SLACK_POINTER",
+    "evidence_class": "PROMPT_TASK_BINDING+EXACT_GITHUB_READBACK+LOCAL_SYNTHETIC_PREFLIGHT+SINGLE_FILE_SHA_GUARD",
+    "expected_version": 12,
+    "experiment": {
+      "baseline": "CURRENT v12 at blob 3024be4a7451a4fe27b77d120ce405122da89f75; C4 0/4",
+      "controlled_factor": "stale/concurrent-writer simulation only",
+      "exact_probe": {
+        "proposal_a": {
+          "expected_version": 12,
+          "pointer_blob": "3024be4a7451a4fe27b77d120ce405122da89f75",
+          "result": "ELIGIBLE"
+        },
+        "proposal_b": {
+          "expected_version": 11,
+          "pointer_blob": "cb66c5d0a1269fbacb150f2a5a428602c4d27caf",
+          "result": "REJECT_STALE_VERSION_AND_BLOB"
+        },
+        "stale_api_call_attempted": false
+      },
+      "hypothesis": "Exact expected-version and blob checks reject a stale proposal before mutation.",
+      "measured_result": {
+        "operator_relay_minutes": 0,
+        "permission_error_class": "NONE",
+        "simulation_scope": "LOCAL_SERIAL_PREFLIGHT"
+      },
+      "strongest_falsifier": "A stale proposal advances CURRENT, a changed second read is ignored, the key already exists, or exact readback fails."
+    },
+    "expiry_utc": "2026-08-01T13:47:06Z",
+    "honest_flaw": "Serial synthetic proposals only. No real race, stale API call, lock, linearizability, exactly-once, cross-file atomicity, database durability, or Slack atomicity was tested. Git event and CURRENT are separate commits.",
+    "idempotency_key": "86473df817c79c2742228262b2e142cf754df2031f8a64cd505f734bbf731ac6",
+    "next_version": 13,
+    "nonce": "x12-c4-w1-v12-v13-86473df8",
+    "object_id": "HFO_X12_WORKFLOW_OBJECT_001",
+    "prior_digest_sha256": "e5d55e3a433316a0519926bcb3c033335755feeb084c1b7f00e6d6554cea3383",
+    "prior_version": 12,
+    "rollback": "Append a compensating event from the then-current version; retain immutable history.",
+    "self_probe": {
+      "expected_task_id": "6a506f83df208191815dd17a8fd5baa3",
+      "observed_task_id": null,
+      "tools": [
+        "GITHUB_READ_WRITE",
+        "GITHUB_SEARCH",
+        "LOCAL_SHA256",
+        "SLACK_POINTER_POST"
+      ]
+    },
+    "source_binding": {
+      "current_pointer_blob": "3024be4a7451a4fe27b77d120ce405122da89f75",
+      "current_projection_digest_sha256": "ea6ffce3af3c4382e9c2f18125ddac4d486079ac1dade99615813867f7fa186b",
+      "prior_event_blob": "3520dea3b306d8ceadc3cfacc05480112ce3f733",
+      "prior_event_commit": "8d0d992c1de676513c1e08edf0e9d2e529537ae5",
+      "prior_event_path": "state/coordination/experiments/durable_object_x12/events/20260801T084505Z_V0011_TO_V0012_IDEMPOTENCY_STRATEGY_CAMPAIGN_DECISION.json"
+    },
+    "task_id": "6a506f83df208191815dd17a8fd5baa3",
+    "transaction_time_evidence": "AUTOMATION_RUNTIME_TIMESTAMP; not a database transaction boundary",
+    "transaction_time_utc": "2026-08-01T09:47:06Z",
+    "valid_time_utc": "2026-08-01T09:47:06Z",
+    "verifier": "S04_WEIGHT_0_THEN_DISTINCT_SIGRUN_P4"
+  },
+  "canonicalization": "JCS_LIKE_V1",
+  "event_digest_sha256": "d825e4d6868905c1cbd0ac4f492cd583a6c7bb31faa6e5e53e3d112a37e8a1dd",
+  "schema_id": "hfo.gen133.x12.durable_object_event.v1"
+}
