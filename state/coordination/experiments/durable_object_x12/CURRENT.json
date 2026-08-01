@@ -1,39 +1,42 @@
 {
   "canonical_projection": {
     "campaign": {
-      "accepted_wakes": 3,
-      "campaign_id": "X12_POINTER_UPDATE_PATTERN_C2",
-      "factor": "pointer_update_pattern",
-      "selected_by_event_version": 4,
+      "accepted_wakes": 0,
+      "campaign_id": "X12_IDEMPOTENCY_STRATEGY_C3",
+      "factor": "idempotency_strategy",
+      "selected_by_event_version": 8,
       "target_wakes": 4
     },
     "consumer": "Reginleif/Olrun",
     "effect_ceiling": "FILE_AND_SANITIZED_SLACK_ONLY",
-    "expiry_utc": "2026-08-01T06:44:00Z",
+    "expiry_utc": "2026-08-01T07:44:00Z",
     "last_campaign_decision": {
       "accepted_wakes": 4,
-      "campaign_id": "X12_EVENT_CANONICALIZATION_C1",
+      "campaign_id": "X12_POINTER_UPDATE_PATTERN_C2",
       "decision": "KEEP",
-      "decision_event_digest_sha256": "0c431dfadd112879975dabcd986a7eb959b5520944ffa4048ade1e4474459489",
-      "factor": "event_canonicalization"
+      "decision_event_digest_sha256": "7c72a193912fc3f03f706365f1ae575b60d08ec0f0e483a7dfc6dd0ddab1d641",
+      "factor": "pointer_update_pattern"
     },
     "latest_event": {
-      "blob": "e14b43403fb2926c785364f6345a870b32beb590",
-      "commit": "0ac9a7f48376a67a614239ed71c259979453bb32",
-      "digest_sha256": "ca6c6d2074901a8ac4fa52e039697090b3101ae2b6ad41c073818e8fc669f934",
-      "idempotency_key": "5935c2cfa9a8fda113eb8a860fae3b51ac5392954a956b1c32281b0c0af2471b",
-      "path": "state/coordination/experiments/durable_object_x12/events/20260801T034417Z_V0006_TO_V0007_POINTER_UPDATE_PATTERN.json"
+      "blob": "ea8debc3cb6079b795285d21faa08887b7444f3a",
+      "commit": "13b6988f86d4157dfd052b1e7e496e31b957f232",
+      "digest_sha256": "7c72a193912fc3f03f706365f1ae575b60d08ec0f0e483a7dfc6dd0ddab1d641",
+      "idempotency_key": "ba8c9fa2cf34d8167eabe7c02af962058dcde0df925c794b7add5e8f1782af8d",
+      "path": "state/coordination/experiments/durable_object_x12/events/20260801T044700Z_V0007_TO_V0008_POINTER_UPDATE_PATTERN_CAMPAIGN_DECISION.json"
     },
     "object_id": "HFO_X12_WORKFLOW_OBJECT_001",
     "pointer_update_measurement": {
-      "accepted_wake_ordinal": 3,
-      "current_first_read_blob": "aa81a159308d91565a859bd4a1f40551a4ffd421",
-      "current_second_read_blob": "aa81a159308d91565a859bd4a1f40551a4ffd421",
+      "accepted_wake_ordinal": 4,
+      "campaign_closed": true,
+      "campaign_decision": "KEEP",
+      "current_first_read_blob": "3a58405d383408331df2bae562e486901bd60426",
+      "current_second_read_blob": "3a58405d383408331df2bae562e486901bd60426",
       "current_second_read_unchanged": true,
       "event_digest_recomputed_from_readback": true,
       "event_first": true,
       "event_readback_blob_verified": true,
       "guard": "SECOND_EXACT_CURRENT_READ_BLOB_SHA",
+      "next_factor": "idempotency_strategy",
       "post_write_dual_readback_required": true,
       "race_window_after_second_read": "STILL_PRESENT_UNTIL_UPDATE_ACCEPTANCE",
       "returned_content_blob_sha_embedded": "NOT_POSSIBLE_WITHOUT_SELF_REFERENCE",
@@ -41,14 +44,14 @@
     },
     "state": "ACTIVE_CAMPAIGN",
     "task_id": "6a506f83df208191815dd17a8fd5baa3",
-    "version": 7
+    "version": 8
   },
   "expected_previous_pointer": {
-    "blob": "aa81a159308d91565a859bd4a1f40551a4ffd421",
-    "projection_digest_sha256": "d7cd0f6330307cbb172d148d6d3d9eda2d43844c352336fb7f0192a7f8108311",
-    "version": 6
+    "blob": "3a58405d383408331df2bae562e486901bd60426",
+    "projection_digest_sha256": "5fc7aec078e62b26852fcb251a1e0a822e1bbf7a2b2dd043d7e4d04b7dafa744",
+    "version": 7
   },
-  "honest_atomicity_limit": "The immutable v6→v7 event was committed and read back, then CURRENT was fetched a second time and confirmed unchanged before this replacement. GitHub Contents API checks the supplied prior CURRENT blob SHA only for this one file. After replacement, the carrier must verify the exact intended CURRENT bytes both by the content blob SHA returned from the update and by the branch path; the returned blob SHA cannot be embedded in the same bytes without self-reference. Dual readback detects some post-write connector/ref variance but does not eliminate the race before update acceptance. The event and CURRENT are separate commits with no cross-file atomic transaction, lock, linearizable compare-and-swap, exactly-once guarantee, concurrent-writer proof, duplicate-wake proof, or automatic cleanup of an orphan event when pointer replacement fails.",
-  "projection_digest_sha256": "5fc7aec078e62b26852fcb251a1e0a822e1bbf7a2b2dd043d7e4d04b7dafa744",
+  "honest_atomicity_limit": "The immutable v7→v8 event was committed and read back, then CURRENT was fetched a second time and confirmed unchanged before this replacement. GitHub Contents API checks the supplied prior CURRENT blob SHA only for this one file. After replacement, the carrier must verify exact intended CURRENT bytes through both the content blob SHA returned by the update and the branch path. The four-wake KEEP decision describes this serialized connector pattern only. It does not establish cross-file atomicity, locks, linearizable compare-and-swap, exactly-once execution, concurrent-writer safety, duplicate-wake rejection, database durability, or automatic orphan-event cleanup. A crash can still leave Git advanced without a Slack pointer.",
+  "projection_digest_sha256": "a70aec8cea80c4a4d5d269098e7ed0e7b0db25b54d6a23208c343e53a340f91c",
   "schema_id": "hfo.gen133.x12.durable_object_current.v1"
 }
