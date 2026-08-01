@@ -1,31 +1,32 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
 experiment_id: X13_GOOGLE_CONTACTS_READONLY_CONNECTOR_001
-version: 26
-prior_version: 25
+version: 27
+prior_version: 26
 candidate: Google_Contacts_read_only_lookup_and_recipient_resolution_connector
-candidate_contract_reference: official_Google_People_searchContacts_people_get_Person_scopes_cache_and_field_masks_plus_direct_connector_receipts
-campaign_wake: 2_of_4
+candidate_contract_reference: official_Google_People_searchContacts_otherContacts_search_people_get_scopes_cache_field_masks_plus_direct_connector_receipts
+campaign_wake: 3_of_4
 campaign_status: ACTIVE
 phase_1_completed: true
 phase_2_completed: true
-phase_3_completed: false
+phase_3_completed: true
 phase_4_completed: false
 phase_4_decision: PENDING
 binding_architecture_decision: false
-last_event_commit: f59fd296b5ef8a1f37fed1072877645de6273f78
-last_event_path: state/coordination/experiments/cots_connector_x13/20260801T224921Z_GOOGLE_CONTACTS_READONLY_PHASE2_SOURCE_BOUND_LOOKUP.md
-last_event_blob_sha: 3c5aee0c2f67b9fcdb39da17636035c538a3897a
-prior_current_commit: 3bdf9a24cd71e9139bb37c973b395ef75d169588
-prior_current_blob_sha: 2df63b31b9cb2dbd6df33fcd8dbfaf7485f65625
+last_event_commit: 2d6a8d50dc440a5b29198d54d5940f2030e0b305
+last_event_path: state/coordination/experiments/cots_connector_x13/20260801T234800Z_GOOGLE_CONTACTS_READONLY_PHASE3_SYNTHETIC_INVALID_PAGESIZE.md
+last_event_blob_sha: ff965515cf05dfc127a5105a8f8328701ea9d7c9
+prior_current_commit: 07cb744d3f0e42aa029b1aec6986adf02c59f85f
+prior_current_blob_sha: cb0f3aac6bb275d94a5b8d180caf60a68a4d779d
 carrier_task_id: 6a55c1733708819185088bf334e33ea5
 carrier_task_id_match: true
 carrier_task_id_observation_source: NATIVE_AUTOMATIONS_LIST_READBACK
-effect_ceiling: ONE_SOURCE_BOUND_READ_ONLY_CONTACT_SEARCH_LOW_RESULT_CAP_NO_CONTACT_BODY_READ_NO_RECIPIENT_SELECTION_NO_SEND_NO_CONTACT_WRITE_NO_PRIVATE_IDENTITY_EXTERNALIZATION
-adoption_credit: 2
+effect_ceiling: READ_ONLY_CONTACT_CANDIDATE_DISCOVERY_AND_SYNTHETIC_FAILURE_PROBES_ONLY_NO_CONTACT_BODY_READ_NO_AUTOMATIC_SELECTION_NO_SEND_NO_CONTACT_WRITE_NO_PERMISSION_OR_ACCOUNT_CHANGE
+adoption_credit: 3
 adoption_credit_basis:
   - OFFICIAL_PRIMARY_CONTRACT_PLUS_ONE_SYNTHETIC_EMPTY_DIRECT_CONNECTOR_TRACE
   - ONE_SOURCE_BOUND_MATCHED_DIRECT_TRACE_WITH_AMBIGUITY_CAUGHT_AND_NO_WORLD_EFFECT
+  - ONE_SYNTHETIC_INVALID_ARGUMENT_TRACE_WITH_ENDPOINT_READMASK_AND_ERROR_URL_LEAK_OBSERVED
 fitness_credit: 0_PENDING_EXPLICIT_SOURCE_BOUND_CONSUMER_ACK_AND_MEASURED_OPERATOR_OUTCOME
 consumer_ack: NOT_OBSERVED
 same_provider_binding_weight: 0
@@ -36,18 +37,19 @@ operator_minutes_removed_estimate_per_CONFIRMED_bounded_lookup: 1_to_3_UNVALIDAT
 custom_code_avoided_estimate:
   authenticated_contact_query_and_result_normalization: 30_to_80_LOC_UNVALIDATED
   recipient_candidate_display: 20_to_60_LOC_UNVALIDATED
-  ambiguity_privacy_source_binding_and_approval_policy: NOT_AVOIDED_REQUIRES_HFO_GATES
+  authenticated_error_normalization: 20_to_60_LOC_UNVALIDATED
+  ambiguity_privacy_source_binding_approval_and_error_sanitization_policy: NOT_AVOIDED_REQUIRES_HFO_GATES
   authenticated_people_api_client_and_token_refresh: MATERIAL_BUT_UNQUANTIFIED
   additive_total: NOT_CLAIMED_BECAUSE_FUNCTIONS_OVERLAP
 credentials:
-  connector_authenticated_in_phase1_and_phase2: true
+  connector_authenticated_or_provider_reachable_in_all_three_phases: true
   operator_supplied_credentials: 0
   live_identity: UNKNOWN
   live_oauth_scope: UNKNOWN
   token_type: UNKNOWN
   credential_custody: UNKNOWN
 paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
-direct_connector_request_count: NOT_PROVEN
+direct_connector_wrapper_invocations: 3
 live_quota_headers_or_units: NOT_EXPOSED
 actual_project_quota_class: UNKNOWN
 phase_1_receipt:
@@ -81,16 +83,42 @@ phase_2_receipt:
   contact_body_read: false
   automatic_selection: false
   send_invite_or_write: false
+phase_3_receipt:
+  action: Google_Contacts.search_contacts
+  query_class: SYNTHETIC_INVALID_NEGATIVE_PAGE_SIZE
+  synthetic_query_sha256: 8711c38123fc2df1c3fd1878187b24c6360b50fe9fb71e4e23b4054aa69a6d56
+  max_results: -1
+  result: INVALID_ARGUMENT
+  upstream_http_status: 400
+  upstream_status: INVALID_ARGUMENT
+  identity_bearing_result_returned: false
+  contact_body_returned: false
+  upstream_endpoint_observed_in_error: people.googleapis.com/v1/people:searchContacts
+  upstream_method_inferred_from_url: GET
+  upstream_read_mask_observed:
+    - names
+    - emailAddresses
+    - photos
+  upstream_read_mask_sha256: 4780fa0ae70e2e4f41a00f39501b0903515181cb4621ed8068da26d68f17cde6
+  raw_request_url_exposed_in_error: true
+  raw_request_url_persisted: false
+  request_url_sha256: b9b7a3d28493c366cd7d0a561fc58c45b70fb5baf12d0dee53e914c2005526cc
+  automatic_retry_observed: false
+  permission_or_consent_transition: false
+  external_call_time_ms: NOT_EXPOSED
 official_contract_checked_2026_08_01:
-  search_endpoint: people.searchContacts
-  source_contract: AUTHENTICATED_USERS_GROUPED_CONTACTS_FROM_CONTACT_SOURCE
+  people_searchContacts_endpoint: GET_https://people.googleapis.com/v1/people:searchContacts
+  people_searchContacts_source_contract: AUTHENTICATED_USERS_GROUPED_CONTACTS_FROM_CONTACT_SOURCE
   match_semantics: PREFIX_PHRASE_OVER_NAMES_NICKNAMES_EMAILS_PHONES_AND_ORGANIZATIONS
-  maximum_page_size: 30
+  page_size: DEFAULT_10_IF_OMITTED_OR_ZERO_VALUES_OVER_30_CAPPED_TO_30
   read_mask_required: true
   cache_warmup_required: EMPTY_QUERY_THEN_WAIT_SEVERAL_SECONDS
   accepted_search_scopes:
     - contacts
     - contacts.readonly
+  otherContacts_search_endpoint: GET_https://people.googleapis.com/v1/otherContacts:search
+  otherContacts_search_source_contract: OTHER_CONTACT_SOURCE
+  otherContacts_search_scope: contacts.other.readonly
   people_get_field_mask_required: true
   merged_person_sources_possible: true
 connector_variance:
@@ -103,30 +131,42 @@ connector_variance:
     - email_address
     - mailto_pointer
     - source_resource_prefix
+  error_path_telemetry_observed:
+    endpoint: people_searchContacts
+    readMask: names_emailAddresses_photos
+    full_provider_request_url_echoed: true
   hidden_or_unattested:
-    - readMask
-    - source_selection
+    - success_path_endpoint_and_source_selection
+    - public_field_mask_control
     - empty_query_cache_warmup
     - warmup_to_search_delay
-    - upstream_method_and_request_url
     - oauth_scope_and_authenticated_identity
     - saved_contact_vs_otherContacts_vs_directory_ranking_policy
     - request_count_quota_class_retries_headers_and_wrapper_fanout
+source_class_attribution:
+  phase2_success_payload_resource_prefix: otherContacts
+  phase3_invalid_error_endpoint: people_searchContacts
+  status: UNRESOLVED
+  claim_ceiling: DO_NOT_INFER_SUCCESS_PATH_ENDPOINT_SOURCE_OR_SCOPE_FROM_ERROR_PATH_OR_RESOURCE_PREFIX_ALONE
 failure_semantics:
   empty_success: NO_MATCH_RETURNED_BY_ONE_WRAPPER_CALL_NOT_ABSENCE_DIRECTORY_PROOF_CACHE_FRESHNESS_OR_COMPLETENESS
   matched_multi_candidate: HOLD_SELECTION_AND_RETURN_ONLY_SANITIZED_COUNTS_FIELD_CLASSES_SOURCE_PREFIX_AND_DIGESTS
   context_coherent_candidate: NOT_IDENTITY_PROOF
   otherContacts_result: NOT_A_CURATED_SAVED_CONTACT_ASSERTION
-  permission_401_403_404: NOT_TESTED
+  invalid_negative_page_size: HTTP_400_INVALID_ARGUMENT_NO_IDENTITY_RESULT
+  invalid_argument_retry: DO_NOT_BLIND_RETRY_WITHOUT_CORRECTING_REQUEST
+  error_privacy: FULL_PROVIDER_URL_MAY_ECHO_QUERY_AND_FIELDS_SANITIZE_BEFORE_PERSISTENCE
+  permission_401_403_404: NOT_TESTED_AND_MUST_NOT_BE_FORCED
   rate_limit_429_and_5xx: NOT_TESTED
 durability: GOOGLE_CONTACTS_PROVIDER_STORAGE_ONLY_NO_WORKFLOW_REPLAY_RESUME_TRANSACTION_IDEMPOTENCY_OR_EXACTLY_ONCE_CLAIM
-observability: MEDIUM_FOR_WRAPPER_ACTION_RESULT_COUNT_FIELD_CLASSES_SOURCE_PREFIX_NORMALIZED_ERROR_CONNECTOR_ID_AND_LATENCY_BUT_LOW_FOR_UPSTREAM_REQUEST_FIELD_MASK_WARMUP_SCOPE_QUOTA_RETRIES_CACHE_AGE_AND_RANKING
-portability: MEDIUM_FOR_PROVIDER_NEUTRAL_RECIPIENT_LOOKUP_INTENT_LOW_TO_MEDIUM_FOR_GOOGLE_PREFIX_MATCHING_OTHERCONTACTS_MERGED_PERSON_SEMANTICS_OPAQUE_RESOURCE_NAMES_AND_WRAPPER_RESULT_NORMALIZATION
+observability: MEDIUM_FOR_WRAPPER_ACTION_RESULT_COUNT_FIELD_CLASSES_SOURCE_PREFIX_NORMALIZED_ERROR_ENDPOINT_CLASS_READMASK_AND_RESPONSE_STATUS_BUT_LOW_FOR_SUCCESS_PATH_ENDPOINT_SOURCE_CACHE_SCOPE_IDENTITY_QUOTA_RETRIES_AND_RANKING
+portability: MEDIUM_FOR_PROVIDER_NEUTRAL_RECIPIENT_LOOKUP_AND_INVALID_ARGUMENT_INTENT_LOW_TO_MEDIUM_FOR_GOOGLE_PREFIX_MATCHING_OTHERCONTACTS_RESOURCE_NAMES_ENDPOINTS_FIELDMASKS_CACHE_AND_WRAPPER_NORMALIZATION
 provisional_scope:
   - ONE_NAMED_OPERATOR_OBLIGATION
   - ONE_BOUNDED_RECIPIENT_CANDIDATE_LOOKUP
   - LOW_RESULT_CAP
   - SEARCH_FIRST
+  - CANDIDATE_DISCOVERY_ONLY
   - NO_SEND_NO_INVITE_NO_CONTACT_WRITE
   - READ_CONTACT_ONLY_IF_NAMED_CONSUMER_REQUIRES_ONE_SPECIFIC_MISSING_FIELD
 mandatory_gates:
@@ -137,25 +177,32 @@ mandatory_gates:
   - DO_NOT_TREAT_OTHERCONTACTS_AS_A_CURATED_SAVED_ADDRESS_BOOK
   - TREAT_EMPTY_RESULT_AS_NO_MATCH_RETURNED_BY_ONE_WRAPPER_CALL_ONLY
   - DO_NOT_CLAIM_CURRENT_CACHE_COMPLETENESS_UNTIL_WARMUP_BEHAVIOR_IS_EXPOSED_OR_INDEPENDENTLY_MEASURED
-  - DO_NOT_CLAIM_LEAST_PRIVILEGE_WHILE_SCOPE_AND_FIELD_MASK_ARE_HIDDEN
+  - DO_NOT_CLAIM_LEAST_PRIVILEGE_WHILE_SCOPE_AND_FIELD_MASK_CONTROL_ARE_HIDDEN
   - DO_NOT_READ_FULL_CONTACT_BODY_UNLESS_A_NAMED_CONSUMER_REQUIRES_ONE_SPECIFIC_MISSING_FIELD
+  - TREAT_CONNECTOR_ERRORS_AS_POTENTIAL_PRIVATE_QUERY_LEAKS
+  - SANITIZE_PROVIDER_REQUEST_URL_QUERY_AND_FILTERS_BEFORE_GIT_OR_SLACK_PERSISTENCE
+  - DO_NOT_USE_REAL_IDENTITIES_IN_MALFORMED_INPUT_PROBES
+  - DO_NOT_BLIND_RETRY_HTTP_400_INVALID_ARGUMENT
+  - DO_NOT_LAUNDER_ERROR_PATH_ENDPOINT_OR_RESOURCE_PREFIX_INTO_SUCCESS_PATH_SOURCE_PROOF
   - FITNESS_REMAINS_ZERO_UNTIL_A_NAMED_DOWNSTREAM_WORKITEM_RECORDS_SOURCE_BOUND_CONSUMERACK_AND_MEASURED_OPERATOR_OUTCOME
 excluded_or_deferred_scope:
   - GENERAL_CONTACT_EXPORT_OR_INVENTORY
   - DIRECTORY_MINING_OR_GMAIL_HISTORY_INFERENCE
   - CONTACT_BODY_PERSISTENCE_TO_GIT_OR_SLACK
   - AUTOMATIC_RECIPIENT_SELECTION
+  - FORCED_PERMISSION_DENIAL_CONSENT_FLOW_OR_OAUTH_REFRESH
   - SEND_INVITE_CONTACT_WRITE_ACCOUNT_OR_SECURITY_CHANGE
   - PROVIDER_STORAGE_AS_WORKFLOW_DURABILITY
-verifier: S04_STRUCTURAL_PREFLIGHT_THEN_DISTINCT_NON_CHATGPT_CONTACT_CONNECTOR_OR_SOURCE_OWNER_REVIEW
+verifier: S04_STRUCTURAL_PREFLIGHT_THEN_DISTINCT_NON_CHATGPT_CONTACT_CONNECTOR_OWNER_OR_SUCCESS_PATH_TRACE_REVIEW
 consumer:
+  - X13_COTS_AND_CONNECTOR_PDCA_LAB_PHASE4
   - S05_OPERATOR_RELIEF_CELL
   - X11_CARRIER_SURFACE_PDCA_LAB
-reversible_next_experiment: ONE_SYNTHETIC_INVALID_OR_PERMISSION_VARIANCE_PROBE_WITH_NO_REAL_IDENTITY_QUERY_NO_CONTACT_BODY_READ_AND_SANITIZED_ERROR_CAPTURE
-strongest_falsifier: A_SOURCE_BOUND_TRACE_PROVES_THE_CONNECTOR_CAN_REQUEST_MINIMAL_FIELDS_SELECT_ONLY_CURATED_SAVED_CONTACTS_AND_RETURN_ONE_UNAMBIGUOUS_CURRENT_RECIPIENT_WITHOUT_OPERATOR_CONFIRMATION_OR_PRIVATE_BODY_OVERREAD
-honest_flaw: PHASE2_USED_A_REAL_PRIVATE_NAME_AND_THE_CONNECTOR_EXPOSED_THREE_PRIVATE_EMAIL_CANDIDATES_TO_THIS_RUNTIME; RAW_VALUES_WERE_NOT_PERSISTED_BUT_NO_INDEPENDENT_SOURCE_CONFIRMED_THE_CORRECT_RECIPIENT_AND_THE_LOOKUP_DID_NOT_REMOVE_OPERATOR_WORK
-review_expiry_utc: 2026-08-08T22:49:21Z
-valid_time_utc: 2026-08-01T22:49:21Z
+reversible_next_experiment: PHASE4_DECISION_ONLY_NO_NEW_CONTACT_CALL_ADOPT_WITH_GATES_DEFER_REJECT_OR_UNKNOWN
+strongest_falsifier: A_SUCCESS_PATH_TRACE_FOR_THIS_WRAPPER_VERSION_PROVES_THE_EXACT_ENDPOINT_SOURCE_SELECTION_READMASK_WARMUP_SCOPE_RETRY_COUNT_AND_RESULT_RESOURCE_MAPPING_OR_SHOWS_THAT_ERROR_URLS_ARE_SANITIZED_BEFORE_RUNTIME_EXPOSURE
+honest_flaw: PHASE2_USED_A_REAL_PRIVATE_NAME_AND EXPOSED THREE PRIVATE EMAIL CANDIDATES TO THE RUNTIME; PHASE3 USED ONLY AN INVALID_ERROR_PATH SO IT CANNOT PROVE THE PRIOR SUCCESS_ROUTE_SOURCE_CLASS_OR LEAST_PRIVILEGE AND THE CONNECTOR HAS STILL REMOVED ZERO_OPERATOR_MINUTES
+review_expiry_utc: 2026-08-08T23:48:00Z
+valid_time_utc: 2026-08-01T23:48:00Z
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 sealed: true
 prior_campaign:
@@ -177,10 +224,10 @@ prior_prior_prior_campaign:
 
 # X13 current campaign
 
-Google Contacts read-only recipient resolution is active at phase **2/4**.
+Google Contacts read-only recipient resolution is active at phase **3/4**.
 
-A source-bound lookup for one existing property-safety follow-up returned three private identity candidates in 2.410 seconds. All three were `otherContacts` resources. The connector exposed resource IDs, names, email addresses, and mail pointers while still exposing no field-mask, source-selection, cache-warmup, OAuth-scope, ranking, quota, retry, or request-count controls.
+A privacy-safe synthetic invalid-input probe failed closed with HTTP 400 `INVALID_ARGUMENT` and returned no contact identity data. The raw error exposed the complete provider request URL. After sanitization, the error path showed `people:searchContacts` with an injected `readMask` of `names,emailAddresses,photos`; none of these controls are exposed in the connector action schema.
 
-The micro-use proved candidate retrieval but did not resolve the recipient. One candidate was context-coherent with the obligation, but contextual coherence is not identity proof. No candidate was selected, no full contact body was read, and no send, invitation, or contact write occurred. Operator minutes removed remain zero.
+The trace does not resolve the prior successful result's source class. Phase 2 returned `otherContacts/*` resource names, while Google documents separate Contacts and Other Contacts search contracts and scopes. Error-path endpoint attribution and resource prefixes are insufficient to prove the successful call's endpoint, source selection, cache state, or OAuth scope.
 
-Next: one synthetic, privacy-safe invalid-input or permission-variance probe. Error output must be sanitized before Git or Slack persistence.
+Next: phase 4 decision only. No new contact call is needed. The decision must stay at `CANDIDATE_DISCOVERY_ONLY`, preserve private-identity and operator-approval gates, require sanitized error handling, and avoid least-privilege, automatic-recipient-resolution, or workflow-durability claims.
