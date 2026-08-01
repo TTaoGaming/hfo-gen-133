@@ -1,0 +1,118 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+result: RETURN
+result_type: FAILURE_ANTIBODY
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_match: true
+valid_time_utc: 2026-08-01T12:59:00Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+expires_utc: 2026-08-01T16:52:02Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+privacy_ceiling: SANITIZED_REPOSITORY_AND_CONNECTOR_METADATA_ONLY
+world_effect_ceiling: ONE_GIT_RECEIPT_AND_ONE_SANITIZED_SLACK_POINTER
+heritage_credit: 0
+heritage_credit_condition: EXACT_CONSUMER_ACK_BOUND_TO_CURRENT_WORKITEM_AND_THIS_RECEIPT
+sealed: false
+---
+
+self_probe:
+  task_title_observed: HFO S15 Gondul Continuous Heritage
+  task_enabled_observed: true
+  tools_observed:
+    - native_automations_inventory_read
+    - github_recent_commits
+    - github_compare_commits
+    - github_search
+    - github_search_commits
+    - github_fetch_file
+    - github_create_file
+    - slack_send_message
+  task_mutation_performed: false
+
+current_workitem:
+  id: X14_MUTANT_016_174d9e0571fd
+  evidence_gap: S04_IDEMPOTENCY_AND_VERSION_MONOTONICITY_GATE
+  class: DUPLICATE_IDEMPOTENCY_VERSION
+  status: QUARANTINED_NEGATIVE_CONTROL
+  valid_time_utc: 2026-08-01T12:52:02Z
+  source_repository: TTaoGaming/hfo-gen-133
+  source_commit: 93291dbf73da7cf08e1b40d9357d51fcb5069147
+  source_path: state/coordination/experiments/false_green_x14/quarantine/20260801T125202Z_X13_GMAIL_DUPLICATE_VERSION.mutant.yaml
+  source_blob_sha1: 4d1b30aebce30fb6580b333e2293fb932e404a18
+  original_transition: 15_TO_16
+  mutant_transition: 16_TO_16_DUPLICATE_NOOP
+  idempotency_key: ABSENT
+  live_current_version: 16
+  named_gate: S04_IDEMPOTENCY_AND_VERSION_MONOTONICITY_GATE
+  expected_verdict: REVISE
+  verifier: S04_STRUCTURAL_PREFLIGHT_THEN_SIGRUN_P4_DISTINCT_FALSIFICATION
+  consumer:
+    - X14_CAMPAIGN_REDUCER
+    - RATATOSKR
+
+reusable_prior_artifact:
+  original_date_utc: 2026-08-01T01:13:39Z
+  repository: TTaoGaming/hfo-gen-133
+  commit: 80d1c3c11accb467c03368a0490f8740e419b274
+  path: state/coordination/receipts/chatgpt_runtime/seat-04/20260801T011339Z_X14_MUTANT_004_DUPLICATE_VERSION_REVISE.yaml
+  blob_sha1: 52b43982e7dd64cf480f3b22bf68ff67a947e808
+  artifact_role: S04_DUPLICATE_VERSION_AND_REPLAY_REJECTION_FAILURE_ANTIBODY
+  exact_reusable_invariant: >-
+    After applying the candidate overlay, require next_version equal prior_version plus one and compare
+    both against CURRENT. Reject when mutated prior_version equals next_version or the already-consumed
+    CURRENT version; authentic source bytes and a valid mutation digest do not authorize replay.
+  supported_claims:
+    - Gen-133 already contains a direct S04 structural verdict rejecting an analogous already-consumed 4-to-4 transition.
+    - The prior gate recomputed semantic monotonicity after overlay application rather than trusting authentic source pointers alone.
+    - The prior verdict named DUPLICATE_VERSION_OR_REPLAY and required REVISE with same-provider binding weight zero.
+    - The invariant maps directly to mutant 016's 16-to-16 transition with CURRENT already at version 16 and no idempotency key.
+  excluded_claims:
+    - This heritage receipt is not a verdict on X14_MUTANT_016.
+    - It does not recompute mutant 016's 217 canonical bytes or SHA-256.
+    - It does not prove atomic compare-and-swap, exactly-once delivery, collision-resistant idempotency, or concurrent duplicate handling before pointer advancement.
+    - It grants no PASS, ConsumerAck, state advance, campaign decision, independent verification, or binding weight.
+
+acceptance_relevance:
+  direct_binding: >-
+    S04 can reuse the prior semantic gate by resolving mutant 016's exact commit/path/blob, confirming
+    source expected_prior_version 15 and next_version 16, confirming CURRENT is already 16, applying the
+    overlay expected_prior_version 16, and rejecting the resulting 16-to-16 replay because no unique
+    idempotency key binds a distinct transition.
+  required_direct_checks:
+    - exact mutant commit-path-blob readback
+    - exact source commit-path-blob readback
+    - canonical mutation byte-count and SHA-256 recomputation
+    - source 15-to-16 transition confirmation
+    - live CURRENT version 16 confirmation
+    - overlay 16-to-16 monotonicity failure
+    - absent unique idempotency-key confirmation
+    - REVISE with SAME_PROVIDER_NONBINDING and binding_weight_0
+  verifier: S04_STRUCTURAL_PREFLIGHT
+  next_consumer:
+    - X14_CAMPAIGN_REDUCER
+    - RATATOSKR
+  consumer_ack_status: NOT_OBSERVED
+
+heritage_dedup:
+  gen133_searched_first: true
+  query_basis:
+    - newest immutable X14 candidate after prior S15 receipt
+    - exact mutant ID X14_MUTANT_016_174d9e0571fd
+    - duplicate version idempotency and monotonicity terms
+    - prior S04 duplicate-version verdicts
+    - existing S15 bindings for mutant 016
+  existing_s15_receipt_for_mutant_016: NOT_FOUND
+  prior_same_gate_artifact_found: true
+  duplicate_status: DISTINCT_CURRENT_WORKITEM_BINDING_TO_ONE_EXISTING_FAILURE_ANTIBODY
+  search_authority: BEST_EFFORT_NONTRANSACTIONAL
+
+honest_flaw: >-
+  The reused verdict concerns DBOS campaign version 4 rather than Gmail campaign version 16 and was
+  produced on the same ChatGPT provider, so it is only a structural failure-antibody pattern with
+  binding weight zero. The current mutant is intentionally obvious and does not exercise a duplicate
+  arriving before CURRENT advancement, a real idempotency-key store, or atomic Git compare-and-swap.
+  S04 must still inspect mutant 016 directly, recompute its exact canonical bytes and digest, and issue
+  the direct verdict. Heritage credit remains zero until a named consumer explicitly binds this receipt.
