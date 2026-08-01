@@ -1,64 +1,51 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
-experiment_id: X11_NATIVE_TASKS_READ_VISIBILITY_V1
-current_version: 20
-accepted_wakes: 4
+experiment_id: X11_GOOGLE_DRIVE_READ_SURFACE_V1
+current_version: 21
+accepted_wakes: 1
 target_wakes_before_decision: 4
-controlled_factor: native_tasks_read_visibility
-campaign_status: COMPLETED
-current_disposition: KEEP
+controlled_factor: google_drive_read_surface
+campaign_status: ACTIVE
+current_disposition: PENDING_FOUR_WAKE_DECISION
+prior_campaign:
+  experiment_id: X11_NATIVE_TASKS_READ_VISIBILITY_V1
+  final_version: 20
+  disposition: KEEP
+  accepted_wakes: 4
 last_event:
-  commit: 426c875e3a5f292f02ae98bbc7b16dd770cc11c2
-  path: state/coordination/experiments/carrier_surface_x11/events/20260801T163849Z_NATIVE_TASKS_READ_VISIBILITY_CAMPAIGN_DECISION_WAKE_04_CORRECTED.yaml
-  blob: af54718e51a26671a96f44b5c638a8d1b7a9d4c0
-superseded_event:
-  commit: 51be986583c141563e3e197726c8f6784edd0792
-  path: state/coordination/experiments/carrier_surface_x11/events/20260801T163848Z_NATIVE_TASKS_READ_VISIBILITY_CAMPAIGN_DECISION_WAKE_04.yaml
-  blob: 5bd001bb0fb3c8e2af35679e9f99c32b72ea7280
-  accepted_for_state_advance: false
-  reason: observed_schedule_dtstart_transcription_error
+  commit: c289c3927812444cc5f3826b8bfaae361b4e9e05
+  path: state/coordination/experiments/carrier_surface_x11/events/20260801T173814Z_GOOGLE_DRIVE_EXACT_NEGATIVE_CONTROL_WAKE_01.yaml
+  blob: e280d8b16577b61f60945e6bea05746f05d0d1c1
 baseline_result:
-  expected_x11_task_visible: true
-  expected_task_id_match: true
-  exact_title_visible: true
-  enabled_state_visible: true
-  schedule_visible: true
-  timezone_visible: true
-  timing_mode_visible: true
-  run_and_update_timestamps_visible: true
-  active_hfo_gen133_task_count_observed: 15
-  stable_fields_match_across_four_wakes: true
-  active_count_matches_across_four_wakes: true
-  approximately_hourly_completed_run_timestamp_advance_observed: true
-  prior_to_current_last_run_delta_seconds: 3598.904038
-  current_inflight_wake_reflected_in_last_run_time: false
-  sanitized_stable_tuple_sha256: e366749e72124c30a00a1c030b9183bbfb783b3d36d9fbda42243d003b48aeb3
-  broad_inventory_included_prompt_bodies: true
-  field_level_projection_available: false
-  raw_request_latency_exposed: false
+  connector_call_completed: true
+  metadata_only_document_search: true
+  synthetic_negative_control_query: true
+  result_count: 0
+  expected_negative_control_result_observed: true
+  authenticated_search_permission_available_for_probe: true
+  error_class: NONE
+  external_call_time_ms: 1338
+  interactive_login_required: false
+  content_fetch_attempted: false
+  private_titles_or_bodies_externalized: false
   mutation_performed: false
-  claim_ceiling: read_only_native_provider_inventory_is_useful_for_configuration_and_completed_epoch_reconciliation_but_not_execution_success_realtime_liveness_or_independent_quorum
+  claim_ceiling: one_bounded_metadata_search_completed_without_error_but_complete_drive_visibility_content_permission_and_shared_drive_coverage_remain_unproven
 campaign_gates:
-  - do_not_treat_task_registration_as_execution
-  - do_not_treat_last_run_time_as_current_liveness_or_success
-  - do_not_persist_unrelated_prompt_bodies
-  - do_not_claim_independent_quorum_from_same_provider_telemetry
-last_result: NATIVE_TASKS_READ_CAMPAIGN_KEEP
-next_campaign:
-  experiment_id: X11_GOOGLE_DRIVE_READ_SURFACE_V1
-  controlled_factor: google_drive_read_surface
-  accepted_wakes: 0
-  target_wakes_before_decision: 4
-next_probe: run_bounded_drive_exact_negative_control_search_without_externalizing_private_titles_or_bodies
+  - metadata_only_until_a_separately_justified_content_probe
+  - do_not_externalize_private_titles_or_bodies
+  - do_not_infer_complete_drive_or_shared_drive_visibility_from_zero_results
+  - do_not_claim_independent_quorum_from_same_provider_connector_telemetry
+last_result: GOOGLE_DRIVE_NEGATIVE_CONTROL_BASELINE_ACCEPTED
+next_probe: repeat_identical_metadata_only_negative_control_and_compare_result_error_and_latency_classes
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 next_consumer: Reginleif_and_Ratatoskr
-updated_valid_time_utc: 2026-08-01T16:38:49Z
+updated_valid_time_utc: 2026-08-01T17:38:14Z
 sealed: false
 ---
 
-Native Tasks read visibility completed four accepted wakes with KEEP gates. The
-surface reliably reproduced X11 configuration and the fifteen-task active count,
-and completed-run timestamps advanced approximately hourly. It remains broad,
-non-field-selective, same-provider, and unsuitable as proof of execution success
-or real-time liveness. The next controlled factor is bounded Google Drive read
-visibility using an exact negative-control query and no private-content export.
+Google Drive read-surface campaign wake 1 of 4 completed. A synthetic unique
+negative-control query executed through metadata-only document search, returned
+zero results with no error, and exposed 1338 ms external-call latency. No private
+file title or body was externalized. This proves only bounded invocation and the
+permission available to that query; corpus completeness, content-read permission,
+shared-drive coverage, and independent verification remain open.
