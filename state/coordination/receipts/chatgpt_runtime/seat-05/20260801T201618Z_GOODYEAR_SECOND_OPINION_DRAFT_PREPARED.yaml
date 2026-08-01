@@ -1,0 +1,61 @@
+schema_version: hfo.gen133.operator_relief.v1
+event_type: NO_SEND_APPROVAL_PACKET_PREPARED
+seat: S05
+expected_task_id: 6a55c182078c8191b89f2dd15f5f640c
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+occurred_at: 2026-08-01T20:16:18Z
+wip: 1
+active_item: VEHICLE_MAINTENANCE_SECOND_OPINION
+source_evidence:
+  gmail_inbound_message_id: 19fbee49d5d1ce02
+  gmail_prior_forward_message_id: 19fbeeb00accf4be
+  source_kind: recommended_services_not_receipt
+sanitized_facts:
+  vehicle: 2016_HONDA_CRV
+  odometer_miles: 38789
+  recommendation_total_usd: 845.82
+  categories:
+    - front_brakes
+    - brake_fluid
+    - battery
+transition:
+  kind: gmail_draft_no_send
+  draft_id: r-6965887998403962295
+  draft_message_id: 19fbef86b0c2fa43
+  recipient_domain: goodyear.com
+  questions_bound:
+    - safety_critical_vs_deferrable
+    - front_pad_and_rotor_measurements
+    - rotor_replacement_vs_on_car_matching
+    - brake_fluid_test_basis
+    - battery_test_basis
+    - itemized_quote_and_earliest_inspection
+  explicit_service_authorization: false
+readback:
+  gmail_draft_list_confirmed: true
+  calendar_matching_event_found: false
+  saved_contact_found: false
+effect_ceiling:
+  email_sent: false
+  spend_usd: 0
+  service_authorized: false
+  calendar_mutated: false
+  account_changed: false
+operator_minutes_removed: 10
+next_consumer: operator
+priority_state:
+  active: GOODYEAR_SECOND_OPINION_DRAFT
+  p0: OCOOPA_SAFETY_DRAFTS
+  p1:
+    - PARTY_SAFARI_PERMISSION_SLIP
+    - REED_HVAC_130_FEE_VERIFICATION
+privacy:
+  private_message_bodies_externalized: false
+  postal_address_externalized: false
+  phone_externalized: false
+  vin_externalized: false
+  license_plate_externalized: false
+honest_flaw: >-
+  The draft packages the second-opinion request but does not prove receipt, inspection findings,
+  pricing, or an appointment. The operator must review and send it; no work is authorized.
