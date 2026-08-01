@@ -1,0 +1,110 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+experiment_id: X11_GIT_READ_WRITE_READBACK_V1
+campaign_version: 1
+wake_index: 1
+result: MEASURED_EXACT_READBACK
+callsign_or_seat: X11_CARRIER_SURFACE_PDCA
+carrier_task_id_expected: 6a55089a9adc8191bda54541f7f9effa
+carrier_task_id_observed: 6a55089a9adc8191bda54541f7f9effa
+carrier_task_id_match: true
+valid_time_utc: 2026-08-01T01:40:00Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+expected_current_version: 4
+next_current_version: 5
+controlled_factor: git_read_write_readback
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+next_consumer: Reginleif_and_Ratatoskr
+evidence_expiry_utc: 2026-08-08T01:40:00Z
+sealed: false
+---
+
+self_probe:
+  task_id_match: true
+  github_fetch_file: AVAILABLE_AND_USED
+  github_create_file: AVAILABLE_AND_USED
+  github_update_file: AVAILABLE_NOT_YET_CREDITED_UNTIL_POINTER_READBACK
+  slack_send_message: AVAILABLE_NOT_PROBED_AS_CONTROLLED_FACTOR
+  interactive_login_attempted: false
+
+baseline:
+  prior_current_version: 4
+  prior_current_blob: dc50e1f290c392aed0481ebe4cb38b2f9f267bbf
+  prior_experiment_id: X11_NATIVE_TASKS_VISIBILITY_V1
+  prior_campaign_status: CLOSED
+  prior_disposition: KEEP
+  next_campaign_accepted_wakes: 0
+
+hypothesis: >-
+  The GitHub Contents connector can create one harmless immutable UTF-8 specimen
+  on the exact canonical branch and return bytes whose SHA-256 and Git blob SHA
+  recompute exactly, without operator relay. Updating CURRENT remains a separate,
+  single-path optimistic write and must not be described as a transaction.
+
+exact_probe:
+  step_1: fetch CURRENT on exact canonical branch and bind its blob SHA
+  step_2: create one new deterministic UTF-8 specimen at a never-before-used path
+  step_3: fetch the specimen from the exact branch
+  step_4: compare exact bytes, byte length, SHA-256, and Git blob SHA
+  step_5: create this immutable event, then update CURRENT only with prior blob SHA
+  mutation_scope: experiment_metadata_only
+  harmlessness: no production code, deployment, merge, secret, account, or destructive effect
+
+measured_result:
+  create_file_status: SUCCESS
+  specimen_commit: 8363d0d4f9afabd9aebbbdbcb012f062b030d917
+  specimen_path: state/coordination/experiments/carrier_surface_x11/specimens/20260801T014000Z_GIT_READ_WRITE_READBACK_WAKE_01.yaml
+  specimen_expected_bytes: 466
+  specimen_readback_bytes: 466
+  specimen_expected_sha256: a313db1caa41ab1aeb0ab8a652dda0dad333bd10f5bb03c923971e31b76dd8ed
+  specimen_readback_sha256: a313db1caa41ab1aeb0ab8a652dda0dad333bd10f5bb03c923971e31b76dd8ed
+  specimen_expected_git_blob_sha1: 76729864d40b7652ebf217bc6d5abbdd25fd9c81
+  specimen_readback_git_blob_sha1: 76729864d40b7652ebf217bc6d5abbdd25fd9c81
+  exact_byte_match: true
+  hash_match: true
+  branch_bound_readback: true
+  operator_relay_minutes: 0
+
+permission_and_error:
+  permission_class: BRANCH_FILE_CREATE_AND_READ_SUCCESS
+  error_class: NONE
+  interactive_login_required: false
+  rate_limit_observed: false
+  create_file_connector_latency_ms: 812
+  readback_latency_ms: NOT_EXPOSED
+
+atomicity_and_concurrency_limits:
+  directly_observed:
+    - create_file produced one commit for one new path
+    - fetch_file returned exact bytes and a Git blob SHA on the named branch
+    - update_file exposes a current-blob-SHA precondition for one path
+  not_proven:
+    - atomicity across specimen, event, and CURRENT
+    - database transaction semantics
+    - compare-and-swap across multiple paths
+    - exactly-once execution
+    - conflict freedom under concurrent writers
+    - branch immutability or durability independent of GitHub service
+  required_wording: >-
+    This wake uses separate Git commits and one-path optimistic concurrency.
+    It does not provide database guarantees.
+
+strongest_falsifier: >-
+  A repeat cannot reproduce exact bytes and hashes on the named branch; Git accepts
+  a stale CURRENT blob SHA without conflict; a concurrent writer causes silent
+  pointer loss; or readback resolves a different branch/path than requested.
+
+honest_flaw: >-
+  This is one same-provider, single-writer success. It does not exercise a stale
+  update, concurrent writer, connector outage, rollback, or independent verifier.
+  The event, specimen, and CURRENT necessarily occupy separate commits, so a crash
+  between commits can leave an orphaned specimen or event.
+
+campaign_progress:
+  accepted_wakes: 1
+  target_wakes_before_decision: 4
+  decision_due_on_wake: 4
+  next_probe: repeat exact branch-bound create/readback with a new deterministic specimen and compare connector variance
+  binding_weight: 0
