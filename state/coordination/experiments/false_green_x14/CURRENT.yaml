@@ -2,19 +2,19 @@
 schema_id: hfo.gen133.x14.false_green_current.v1
 experiment_id: X14_FALSE_GREEN_MUTATION_001
 object_id: X14_FALSE_GREEN_CAMPAIGN_STATE
-version: 14
-expected_previous_version: 13
-previous_pointer_blob_sha: 01b4ef085e9fc79cab1ac70908e80f79121f32f6
-accepted_wakes: 13
+version: 15
+expected_previous_version: 14
+previous_pointer_blob_sha: 688e10cff40a7bb4d2c04d2e1d6cac0d7c67511d
+accepted_wakes: 14
 campaign_ordinal: 4
-campaign_wake: 1
+campaign_wake: 2
 campaign_length: 4
-current_status: MUTANT_014_ROUTED_PENDING_VERDICTS
-current_mutation_class: ACTOR_CARRIER_CONFLATION
-next_mutation_class: STALE_SOURCE_DIGEST
+current_status: MUTANT_015_ROUTED_PENDING_VERDICTS
+current_mutation_class: STALE_SOURCE_DIGEST
+next_mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
 carrier_task_id: 6a513e4d9c4c81919db728f85db2dd79
 carrier_task_id_verified_from_native_inventory: true
-valid_time_utc: 2026-08-01T10:53:22Z
+valid_time_utc: 2026-08-01T11:52:01Z
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 canonical_repository: TTaoGaming/hfo-gen-133
 canonical_branch: agent/gen133-bootstrap-20260730
@@ -23,41 +23,43 @@ sealed: false
 ---
 
 source_candidate:
-  commit: a909b47eb74f3c34866ea0750abdbb10e0efd62b
-  path: state/coordination/experiments/cots_connector_x13/20260801T104849Z_GMAIL_LABEL_COUNTS_PHASE2_READ_ONLY_MICRO_USE.md
-  git_blob_sha1: 2fe987da24624d91a631a6948a7340027086f58d
+  commit: 47a89124c7c2721c3dcdec6a191a50fdbc06cd4e
+  path: state/coordination/experiments/cots_connector_x13/20260801T114940Z_GMAIL_ABSENT_LABEL_PHASE3_VARIANCE_PROBE.md
+  git_blob_sha1: 05704ca447df7eca42d9aad9374502280459f744
   authoring_seat_derived: X13_COTS_AND_CONNECTOR_PDCA_LAB
   authoring_seat_explicit_in_source: false
   source_task_id: 6a55c1733708819185088bf334e33ea5
-  source_campaign_wake: 2_of_4
+  source_campaign_wake: 3_of_4
   prior_x14_mutation_at_source_digest_before_write: false
 
 quarantined_mutant:
-  mutant_id: X14_MUTANT_014_e7874dce9600
-  mutation_class: ACTOR_CARRIER_CONFLATION
-  commit: 1963b088847a804d4a0b6264e429d3db1879db1c
-  path: state/coordination/experiments/false_green_x14/quarantine/20260801T105322Z_X13_GMAIL_ACTOR_CARRIER_CONFLATION.mutant.yaml
-  git_blob_sha1: 868fcb3ba9c1621e017c6dbac63c482a0a540178
+  mutant_id: X14_MUTANT_015_82e62e13c460
+  mutation_class: STALE_SOURCE_DIGEST
+  commit: c7c539f70b5a62b6503160457d50b96315be9fed
+  path: state/coordination/experiments/false_green_x14/quarantine/20260801T115201Z_X13_GMAIL_STALE_SOURCE_DIGEST.mutant.yaml
+  git_blob_sha1: 4a2597403c86583cdbc86e338ca93a8eb0a2b411
   canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
-  canonical_mutation_digest_sha256: e7874dce9600d42407d4996c3c143e35eaede32353eef1f342128211cf22c681
-  mutated_field: derived_actor_binding.actor_id
-  original_value: X13_COTS_AND_CONNECTOR_PDCA_LAB
-  mutated_value: 6a55c1733708819185088bf334e33ea5
+  canonical_mutation_digest_sha256: 82e62e13c46015ebeffcf0a7a94ffffc07b2509148ae16cfbb6d992f398c1a23
+  mutated_field: mutant_candidate_binding.source_blob_sha1
+  original_value: 05704ca447df7eca42d9aad9374502280459f744
+  mutated_value: 2fe987da24624d91a631a6948a7340027086f58d
   expected_verdict: REVISE
-  expected_rejection_reason: ACTOR_ID_CONFLATED_WITH_CARRIER_TASK_ID_AND_SOURCE_ACTOR_BINDING_IS_NOT_EXPLICIT
-  named_gate: S04_ACTOR_CARRIER_SEPARATION_AND_TASK_BINDING_GATE
-  expires_utc: 2026-08-01T14:53:22Z
+  expected_rejection_reason: DECLARED_SOURCE_DIGEST_IS_STALE_AND_DOES_NOT_MATCH_BOUND_COMMIT_PATH_BYTES
+  named_gate: S04_SOURCE_POINTER_AND_DIGEST_RECOMPUTE_GATE
+  expires_utc: 2026-08-01T15:52:01Z
   status: QUARANTINED_ROUTED_PENDING_VERDICTS
   accepted_wake_credit: true
 
 prior_mutant_verdict_consumed:
-  mutant_id: X14_MUTANT_013_ac97abcbb5e1
-  verdict_commit: a9e3bb06fbc6f93222afd614b77eaa277ad07b689
-  verdict_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260801T101006Z_X14_MUTANT013_TASK_ID_MISMATCH_REVISE.yaml
-  verdict_blob_sha1: 67e82f8669001e77444e76e67e074704922c21bd
+  mutant_id: X14_MUTANT_014_e7874dce9600
+  verdict_commit: b776e403eb172e17fb818e92d92cab3c42532c9d
+  verdict_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260801T111311Z_X14_MUTANT014_ACTOR_CARRIER_CONFLATION_REVISE.yaml
+  verdict_blob_sha1: 4b79428596d7e25444eb1a518b3545ab22440aee
   result: REVISE
-  reason_code: CANDIDATE_TASK_ID_DOES_NOT_MATCH_BOUND_SOURCE_TASK_OR_NATIVE_TASK_INVENTORY
+  reason_code: ACTOR_ID_CONFLATED_WITH_CARRIER_TASK_ID_AND_SOURCE_ACTOR_BINDING_IS_NOT_EXPLICIT
   exact_mutant_blob_and_digest_bound: true
+  structural_gate_caught_intended_mutant: true
+  narrow_class_coverage: PARTIAL_AMBIGUOUS_DUE_TO_NO_EXPLICIT_SOURCE_ACTOR_FIELD
   evidence_class: SAME_PROVIDER_NONBINDING
   binding_weight: 0
   independent_verdict_observed: false
@@ -70,7 +72,7 @@ completed_campaign_evaluation:
   distinct_provider_verdicts: 0
   preserved_decision: KEEP_GATE
   decision_reissued_this_wake: false
-  reason: Every campaign-3 mutant now has an exact S04 REVISE receipt bound to the mutant blob and canonical mutation digest; this remains same-provider preflight with zero binding weight.
+  reason: Every campaign-3 mutant has an exact S04 REVISE receipt bound to its mutant blob and canonical mutation digest; this remains same-provider preflight with zero binding weight.
   matured_results:
     mutant_009:
       result: REVISE
@@ -109,14 +111,16 @@ campaign_decision:
 
 current_campaign:
   campaign_ordinal: 4
-  accepted_wakes: 1
-  current_mutation_class: ACTOR_CARRIER_CONFLATION
-  next_mutation_class: STALE_SOURCE_DIGEST
-  gate_focus: ACTOR_CARRIER_SEPARATION_AND_TASK_BINDING
+  accepted_wakes: 2
+  current_mutation_class: STALE_SOURCE_DIGEST
+  next_mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+  gate_focus: SOURCE_POINTER_AND_DIGEST_RECOMPUTE
 
 honest_flaw: >-
-  The X13 source does not contain an explicit actor-identity field, so the baseline actor label is
-  derived from native task inventory and experiment schema rather than exact source bytes. S04 may
-  correctly reject for missing source actor binding before the narrower equality check. GitHub search
-  and candidate selection are nontransactional. No distinct-provider verdict or ConsumerAck exists;
-  all ChatGPT-carried evidence remains same-provider nonbinding evidence with weight zero.
+  Mutant 015 uses the exact Git blob from the immediately prior X13 phase-2 event, so the stale binding
+  is intentionally easy to diagnose once the current phase-3 commit/path is resolved. It tests strict
+  commit-path-blob binding, not hash collision resistance, concurrent replacement, or index consistency.
+  GitHub search and candidate selection are nontransactional. Mutant 014 was caught structurally, but
+  its narrow actor/carrier-class coverage remains partial because the source had no explicit actor field.
+  No distinct-provider verdict or ConsumerAck exists; all ChatGPT-carried evidence remains same-provider
+  nonbinding evidence with weight zero.
