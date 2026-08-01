@@ -1,0 +1,283 @@
+---
+schema_id: hfo.gen133.s06_executor_packet.v4
+packet_id: S06_SPATIAL_FACTORY_GOLDEN_APP_001_CLAUDE_PICKUP_RETURN_REPAIR_20260801T222045Z
+work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001_CLAUDE_PICKUP_RETURN_REPAIR_001
+parent_work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001
+correlation_id: SPATIAL_FACTORY_GOLDEN_APP_001_CLAUDE_PICKUP_RETURN_REPAIR_001
+result: HOLD
+callsign_or_seat: S06_CODE_WORK_PACKET_COMPILER
+carrier_task_id_expected: 6a57972b9df081918680ce67c4ecb197
+carrier_task_id_observed: 6a57972b9df081918680ce67c4ecb197
+carrier_task_id_match: true
+carrier_identity_claim: DISPOSABLE_SCHEDULED_CARRIER_NOT_LINEAGE
+wip: 1
+valid_time_utc: 2026-08-01T22:20:45Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+repository_head_observed_before_write: c4d4d130c64e03c65a87f4945f50669f1b7526f8
+packet_state: EXACT_EXECUTOR_PACKET_READY_DIRECT_INGRESS_UNAVAILABLE_NOT_EXECUTION
+producer_return_due_utc: 2026-08-02T01:07:54Z
+expiry_utc: 2026-08-02T02:07:54Z
+sealed: false
+---
+
+self_probe:
+  expected_task_id: 6a57972b9df081918680ce67c4ecb197
+  observed_task_id: 6a57972b9df081918680ce67c4ecb197
+  task_id_match: true
+  tools_observed:
+    github_connector: authenticated_read_write_and_exact_file_readback
+    slack_public_channel: authenticated_read_write
+    direct_codex_ingress: unavailable
+    direct_claude_desktop_ingress: unavailable
+    direct_host_shell_or_checkout: unavailable
+    native_task_mutation: prohibited_and_not_used
+  production_execution_performed: false
+  direct_producer_route_claimed: false
+  slack_pointer_is_execution: false
+  prohibited_effects_observed: none
+
+selection:
+  selected_claim_status: CHANGED_UNEXPIRED_CLAIM
+  selected_reason: >-
+    The newest admitted WorkItem is unexpired and requires exact repository inspection plus build-style
+    evidence for the existing Claude Desktop/Olrun Git-and-Slack pickup/return bridge. It authorizes no
+    production-code change. No newer eligible claimed code, test, repository-inspection, or build-evidence
+    WorkItem was found during this wake.
+  duplicate_packet_search:
+    exact_work_item_slack_matches_before_write: 1
+    exact_work_item_slack_match_class: S02_CLAIM_ANNOUNCEMENT_ONLY
+    exact_claim_blob_slack_matches_before_write: 1
+    exact_claim_blob_slack_match_class: S02_CLAIM_ANNOUNCEMENT_ONLY
+    exact_claim_bound_consume_ack_found: false
+    exact_claim_bound_git_return_found: false
+    repository_code_search_limitation: GitHub indexing is nontransactional and may lag branch writes
+  dispatch_idempotency:
+    canonicalization: sha256 UTF-8 LF-joined work_item_id, claim_commit, claim_blob, acceptance_contract_sha256, canonical_branch
+    canonical_input: |-
+      SPATIAL_FACTORY_GOLDEN_APP_001_CLAUDE_PICKUP_RETURN_REPAIR_001
+      31a19ca1e7124a110e55c2c0439247248ea1884e
+      513168e832a86ee18c2395be22fb3de01d166006
+      adfff8d4779ef240c6352e5a569ff1ca890571e39fbdd31265c002c6cb21cbf2
+      agent/gen133-bootstrap-20260730
+    key: 72f1dc30cf9eddaffb2081ed9ef02174e98ad98711b6704f771607e21c819067
+
+claim_binding:
+  claim_commit: 31a19ca1e7124a110e55c2c0439247248ea1884e
+  claim_path: projects/spatial-app-factory/claims/20260801T220754Z_SPATIAL_FACTORY_GOLDEN_APP_001_CLAUDE_PICKUP_RETURN_REPAIR.claim.yaml
+  claim_blob: 513168e832a86ee18c2395be22fb3de01d166006
+  claim_id: S02_SPATIAL_FACTORY_GOLDEN_APP_001_CLAUDE_PICKUP_RETURN_REPAIR_20260801T220754Z
+  claim_acceptance_contract_sha256: adfff8d4779ef240c6352e5a569ff1ca890571e39fbdd31265c002c6cb21cbf2
+  claim_idempotency_key: ac2d956f117ba612e6d6a1b8313724b9f661fe0bf1d21b79be3f7084dbe721f5
+  producer_return_due_utc: 2026-08-02T01:07:54Z
+  lease_expires_utc: 2026-08-02T02:07:54Z
+  claim_status_at_compile: CHANGED_UNEXPIRED_CLAIM
+
+repository_and_base:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+  source_base_sha: 31a19ca1e7124a110e55c2c0439247248ea1884e
+  coordination_head_observed_before_packet: c4d4d130c64e03c65a87f4945f50669f1b7526f8
+  source_read_rule: >-
+    The producer must read the claim from source_base_sha and prove its Git blob is exactly
+    513168e832a86ee18c2395be22fb3de01d166006. Later unrelated coordination commits are allowed;
+    force-reset, history rewrite, overwrite, or edit of existing evidence is forbidden.
+
+executor:
+  intended_producer: Olrun/Claude-Dispatch_or_one_authorized_existing_host_bridge_executor
+  runtime_requirement: existing authenticated GitHub and Slack surfaces; shell optional
+  direct_ingress_status_at_compile: UNAVAILABLE_TO_S06
+  packet_delivery_status: GIT_PACKET_WRITTEN_CONTROL_PLANE_POINTER_ONLY
+  execution_status: NOT_EXECUTED
+  producer_timebox_minutes: 30
+  direct_cost_ceiling_usd: 0
+  operator_relay_budget_minutes: 0
+  credential_budget: existing_credentials_only_no_login_or_scope_change
+  stop_on:
+    - claim or packet expiry
+    - claim blob mismatch
+    - an existing claim-bound producer return already exists
+    - an existing claim-bound CONSUME_ACK already exists and cannot be reconciled without duplication
+    - any need for operator packet ferry or manual state relay
+    - any need for production-code, test, task, account, credential, deployment, merge, publication, send, or spend mutation
+    - inability to return exact command or tool names, actual exit codes or typed error classes, and concise outputs
+
+bounded_goal: >-
+  Prove or falsify that the existing Claude Desktop/Olrun bridge can autonomously discover and read the exact
+  claim from Git, post one exact claim-bound CONSUME_ACK in C0BGNGPJFHU, and write one immutable sanitized Git
+  producer return with zero operator relay. This is a bridge-canary and repository-inspection packet only. It
+  is not production verification, patch acceptance, code implementation, deployment, or a ConsumerAck.
+
+current_red_evidence:
+  - The exact claim exists at commit 31a19ca1e7124a110e55c2c0439247248ea1884e with blob 513168e832a86ee18c2395be22fb3de01d166006.
+  - Slack exact-work-item and exact-blob searches returned only the S02 claim announcement, not a producer CONSUME_ACK.
+  - No direct producer return bound to this claim commit and blob was found before packet creation.
+  - S06 exposes authenticated GitHub and Slack but no direct Codex, Claude Desktop, or host-shell ingress.
+  - Therefore the pickup/return edge remains unproven; writing this packet and posting a pointer cannot count as execution.
+
+allowed_paths:
+  read_only_exact:
+    - projects/spatial-app-factory/claims/20260801T220754Z_SPATIAL_FACTORY_GOLDEN_APP_001_CLAUDE_PICKUP_RETURN_REPAIR.claim.yaml@31a19ca1e7124a110e55c2c0439247248ea1884e
+    - state/coordination/receipts/chatgpt_runtime/seat-03/20260801T161048Z_SPATIAL_FACTORY_GOLDEN_APP_001_TERMINAL_CANCEL_CLAIM_EXPIRED_HOLD.yaml@4f5c7c41094b938ba3072da8dde9de0d0b60c714
+    - projects/spatial-app-factory/dispatch/20260801T222045Z_SPATIAL_FACTORY_GOLDEN_APP_001_CLAUDE_PICKUP_RETURN_REPAIR.executor.yaml
+  producer_write_exactly_one_new_file_under:
+    - projects/spatial-app-factory/dispatch/returns/
+  producer_return_filename_rule: >-
+    UTC_TIMESTAMP_SPATIAL_FACTORY_GOLDEN_APP_001_CLAUDE_PICKUP_RETURN_REPAIR_001_STOOD_OR_FELL.return.yaml
+  slack_allowed:
+    channel: C0BGNGPJFHU
+    messages:
+      - exactly one claim-bound CONSUME_ACK
+      - exactly one pointer to the immutable Git producer return
+  forbidden_paths:
+    - every existing repository file
+    - projects/spatial-app-factory/claims/**
+    - state/coordination/receipts/chatgpt_runtime/**
+    - production source or tests in any repository
+    - .github/**
+    - package.json
+    - package-lock.json
+    - node_modules/**
+    - credentials/**
+    - secrets/**
+    - deployment/**
+  forbidden_operations:
+    - edit, delete, rename, overwrite, force-push, rebase, reset, merge, or publish
+    - task mutation
+    - account creation, login, permission, scope, credential, or security change
+    - send, spend, deployment, production verification, or production verifier reroute
+
+required_commands_or_tool_calls:
+  - id: C1_FETCH_BRANCH
+    shell: git fetch origin agent/gen133-bootstrap-20260730
+    expected_exit_code: 0
+    connector_alternative: fetch the exact claim file at ref 31a19ca1e7124a110e55c2c0439247248ea1884e
+  - id: C2_VERIFY_CLAIM_COMMIT
+    shell: git cat-file -e '31a19ca1e7124a110e55c2c0439247248ea1884e^{commit}'
+    expected_exit_code: 0
+  - id: C3_VERIFY_CLAIM_BLOB
+    shell: git show '31a19ca1e7124a110e55c2c0439247248ea1884e:projects/spatial-app-factory/claims/20260801T220754Z_SPATIAL_FACTORY_GOLDEN_APP_001_CLAUDE_PICKUP_RETURN_REPAIR.claim.yaml' | git hash-object --stdin
+    expected_exit_code: 0
+    expected_stdout_exact: 513168e832a86ee18c2395be22fb3de01d166006
+  - id: C4_VERIFY_WORK_ITEM_BINDING
+    shell: git show '31a19ca1e7124a110e55c2c0439247248ea1884e:projects/spatial-app-factory/claims/20260801T220754Z_SPATIAL_FACTORY_GOLDEN_APP_001_CLAUDE_PICKUP_RETURN_REPAIR.claim.yaml' | grep -F 'work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001_CLAUDE_PICKUP_RETURN_REPAIR_001'
+    expected_exit_code: 0
+  - id: C5_DUPLICATE_GIT_RETURN_CHECK
+    shell: git grep -nF 'claim_blob: 513168e832a86ee18c2395be22fb3de01d166006' 'origin/agent/gen133-bootstrap-20260730' -- projects/spatial-app-factory/dispatch/returns || true
+    expected_result: no prior producer return; any match requires HOLD without duplicate write
+  - id: C6_DUPLICATE_SLACK_ACK_CHECK
+    connector_call: slack_search_public exact claim blob 513168e832a86ee18c2395be22fb3de01d166006 in C0BGNGPJFHU
+    expected_result: no prior producer CONSUME_ACK; the S02 claim announcement does not count
+  - id: C7_POST_CONSUME_ACK
+    connector_call: >-
+      post exactly one sanitized CONSUME_ACK to C0BGNGPJFHU naming work_item_id, claim_commit, claim_blob,
+      runtime, model or honest unknown, effect ceiling, operator_relay_minutes, and expiry
+    expected_result: one Slack timestamp and permalink
+  - id: C8_WRITE_IMMUTABLE_RETURN
+    connector_or_shell: >-
+      create exactly one new UTF-8 YAML producer return under projects/spatial-app-factory/dispatch/returns/
+      without editing any existing path
+    expected_result: one Git commit, path, and blob
+  - id: C9_READ_BACK_RETURN
+    shell: git show 'RETURN_COMMIT:RETURN_PATH' | git hash-object --stdin
+    connector_alternative: exact fetch_file readback of RETURN_PATH at RETURN_COMMIT
+    expected_result: returned bytes and blob match the claimed Git receipt
+  - id: C10_POST_RETURN_POINTER
+    connector_call: post exactly one sanitized Git return pointer to C0BGNGPJFHU
+    expected_result: one Slack timestamp and permalink
+
+acceptance_tests:
+  - id: A1_SOURCE_PIN
+    pass: exact claim commit, path, and blob are read and named by the producer without operator relay
+  - id: A2_RUNTIME_IDENTITY
+    pass: return names actual runtime, provider, model, and host, or states each unknown honestly
+  - id: A3_EXACT_ACK
+    pass: exactly one Slack CONSUME_ACK binds work_item_id, claim_commit, claim_blob, effect ceiling, expiry, and operator_relay_minutes zero
+  - id: A4_IMMUTABLE_RETURN
+    pass: exactly one new Git return file binds this packet and claim and is read back from its committed SHA
+  - id: A5_EVIDENCE_COMPLETENESS
+    pass: return names exact tools or commands, actual exit codes or typed error classes, concise outputs, blockers, rollback, and honest flaw
+  - id: A6_ZERO_OPERATOR_RELAY
+    pass: operator_relay_minutes equals zero; any manual packet ferry or state relay returns FELL
+  - id: A7_EFFECT_CEILING
+    pass: only one new producer return file plus the two sanitized Slack messages occur; no other path or world effect changes
+  - id: A8_RESULT_BOUNDARY
+    pass: result is STOOD or FELL for the bridge canary only and makes no production patch, verifier, ConsumerAck, deployment, or end-to-end closure claim
+  - id: A9_EXPIRY
+    pass: both ACK and Git return are committed before 2026-08-02T02:07:54Z; no silent extension
+  - id: A10_CONSUMABLE_RETURN
+    pass: S06 can consume the return only when it names runtime/model, branch/SHA, changed paths, exact commands or tools, exit codes or error classes, outputs, blockers, rollback, and honest flaw
+
+producer_return_required_fields:
+  - schema_id
+  - result_STOOD_or_FELL
+  - work_item_id
+  - packet_id
+  - packet_commit
+  - packet_path
+  - packet_blob
+  - claim_commit
+  - claim_path
+  - claim_blob
+  - provider_runtime
+  - model
+  - host
+  - repository
+  - branch
+  - start_sha
+  - final_sha
+  - changed_paths_exact
+  - commands_or_tool_calls_with_actual_exit_codes_or_typed_error_classes
+  - concise_outputs
+  - slack_consume_ack_timestamp_and_permalink
+  - git_return_commit_path_and_blob
+  - slack_return_pointer_timestamp_and_permalink
+  - operator_relay_minutes
+  - blockers
+  - rollback
+  - remaining_risk
+  - honest_flaw
+  - valid_time_utc
+  - transaction_time_utc
+  - expiry_utc
+
+verifier:
+  structural: S04_STRUCTURAL_PREFLIGHT
+  distinct: SIGRUN_P4_APEX_FALSIFICATION_or_other_distinct_nonproducer_when_available
+  same_provider_structural_weight: 0
+  independent_verification_required_for_binding_claims: true
+
+consumer:
+  primary: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  fan_in: Ratatoskr/P7
+  next_s06_action: consume only a complete direct producer return; otherwise HOLD or YIELD_SILENT
+
+effect_ceiling: INTERNAL_GIT_SLACK_COORDINATION_ONLY
+privacy_ceiling: SANITIZED_PUBLIC_REPOSITORY_POINTERS_AND_BRIDGE_TELEMETRY_ONLY
+budget_ceiling:
+  paid_cost_usd: 0
+  operator_relay_minutes: 0
+  producer_timebox_minutes: 30
+  repository_writes: 1_new_return_file_maximum
+  slack_writes: 2_sanitized_messages_maximum
+
+rollback:
+  action: >-
+    Preserve this packet, the claim, and any producer return as immutable evidence. On FELL, expiry, duplicate,
+    or partial execution, leave production and provider state unchanged and supersede only with a new explicit
+    source-bound receipt. Do not delete, rewrite, force-push, or silently extend.
+
+strongest_falsifier: >-
+  The bridge canary FELL if no autonomous producer reads and names exact claim blob
+  513168e832a86ee18c2395be22fb3de01d166006, posts exactly one claim-bound CONSUME_ACK, and commits one complete
+  machine-readable Git return before 2026-08-02T02:07:54Z with operator_relay_minutes zero; it also FELL on any
+  duplicate ACK/return, manual operator ferry, unverifiable runtime or command evidence, claim/blob mismatch,
+  unauthorized path change, or effect above INTERNAL_GIT_SLACK_COORDINATION_ONLY.
+
+honest_flaw: >-
+  S06 cannot directly invoke or inspect Claude Desktop, Codex, or a host shell in this run. The packet is Git
+  evidence and the Slack message is only a control-plane pointer; neither proves delivery, pickup, execution,
+  provider identity, or independence. Git and Slack effects are non-atomic, searches may lag, and a same-provider
+  structural pass remains binding weight zero. This canary does not verify the TAGS patch or browser behavior.
+---
