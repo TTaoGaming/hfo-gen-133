@@ -1,39 +1,41 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
-experiment_id: X11_WEB_RESEARCH_SURFACE_V1
-current_version: 16
-accepted_wakes: 4
+experiment_id: X11_NATIVE_TASKS_READ_VISIBILITY_V1
+current_version: 17
+accepted_wakes: 1
 target_wakes_before_decision: 4
-controlled_factor: web_research
-campaign_status: DECIDED
-current_disposition: KEEP
+controlled_factor: native_tasks_read_visibility
+campaign_status: RUNNING
+current_disposition: PENDING
 last_event:
-  commit: 9940ce54ae3270eae1c216669c53f8da5430ff96
-  path: state/coordination/experiments/carrier_surface_x11/events/20260801T124156Z_WEB_RESEARCH_PDF_FAILURE_CLASS_WAKE_04_DECISION.yaml
-  blob: 5620254460f9d3e30e3fdfc111a5101b4b7625b5
+  commit: 62a2431ac2965e5272010ec477523c4f587dc75e
+  path: state/coordination/experiments/carrier_surface_x11/events/20260801T134152Z_NATIVE_TASKS_READ_VISIBILITY_WAKE_01.yaml
+  blob: d135f6575c6660eef77ca6a1f354c4084bea68bf
 baseline_result:
-  official_primary_search_and_direct_open: SUCCESS
-  official_html_and_plain_text_direct_open: SUCCESS
-  selected_metadata_fields_match_across_search_html_and_text: true
-  official_info_positive_control: SUCCESS
-  selected_json_metadata_path: SUCCESS
-  clean_not_found_semantics_established: false
-  format_specific_parser_variance_observed: true
-  ambiguous_connector_failure_observed: true
-  raw_http_status_headers_and_latency_exposed: false
-  claim_ceiling: bounded_official_public_HTML_TXT_and_selected_JSON_research_is_useful_with_cross_check_and_claim_ceiling_gates_but_connector_failures_do_not_establish_origin_HTTP_status_availability_or_permission
-last_result: WEB_RESEARCH_WAKE_04_DECISION_KEEP_WITH_GATES
-next_campaign:
-  controlled_factor: native_tasks_read_visibility
-  first_probe: perform_one_read_only_native_task_inventory_listing_and_measure_whether_expected_X11_task_ID_title_enabled_state_and_schedule_are_visible_without_externalizing_unrelated_prompt_bodies
+  expected_x11_task_visible: true
+  expected_task_id_match: true
+  exact_title_visible: true
+  enabled_state_visible: true
+  schedule_visible: true
+  timezone_visible: true
+  timing_mode_visible: true
+  run_and_update_timestamps_visible: true
+  active_hfo_gen133_task_count_observed: 15
+  broad_inventory_included_prompt_bodies: true
+  field_level_projection_available: false
+  raw_request_latency_exposed: false
+  mutation_performed: false
+  claim_ceiling: read_only_native_provider_inventory_metadata_is_available_but_broad_non_field_selective_and_same_provider_nonbinding
+last_result: NATIVE_TASKS_READ_WAKE_01_ACCEPTED
+next_probe: repeat_read_only_listing_and_test_metadata_and_active_count_stability_without_persisting_unrelated_prompt_bodies
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 next_consumer: Reginleif_and_Ratatoskr
-updated_valid_time_utc: 2026-08-01T12:41:56Z
+updated_valid_time_utc: 2026-08-01T13:41:52Z
 sealed: false
 ---
 
-Web-research campaign wake 4 of 4 accepted. The official RFC 8259 info page succeeded,
-while the unadvertised PDF path produced only a connector internal error without origin
-status. Decision: KEEP the bounded web-research surface with official-source,
-cross-check, and strict claim-ceiling gates. Next factor is native Tasks read visibility.
-Same-provider binding weight remains zero.
+Native Tasks visibility campaign wake 1 of 4 accepted. The read-only provider
+inventory exposed the expected X11 task ID, title, enabled state, hourly schedule,
+timezone, timing mode, and timestamps with zero operator relay and no mutation.
+The surface is broad and returned unrelated prompt bodies, so durable outputs must
+remain sanitized. Same-provider binding weight remains zero.
