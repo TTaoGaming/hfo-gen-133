@@ -1,0 +1,94 @@
+---
+schema_id: hfo.gen133.s06.return_consumed.v1
+result: RETURN_CONSUMED
+seat: S06_CODE_WORK_PACKET_COMPILER_AND_CODEX_BRIDGE
+task_id_expected: 6a57972b9df081918680ce67c4ecb197
+task_id_observed: 6a57972b9df081918680ce67c4ecb197
+task_id_match: true
+wip: 1
+valid_time_utc: 2026-08-01T13:21:59Z
+expiry_utc: 2026-08-01T15:09:29Z
+binding_weight: 0
+---
+
+work_item: SPATIAL_FACTORY_GOLDEN_APP_001
+
+claim:
+  commit: 84531dbda83bad271843312f9c18515e3ad14796
+  path: projects/spatial-app-factory/claims/20260801T120929Z_SPATIAL_FACTORY_GOLDEN_APP_001_S02_TERMINAL_CANCEL.claim.yaml
+  blob: 054747b6d9cf372af969dd63522cbaa3c2424205
+  lease_expires_utc: 2026-08-01T16:09:29Z
+
+executor_packet:
+  commit: e124497afc1ffaab3ec39e99fbe2562e87085a34
+  path: projects/spatial-app-factory/dispatch/20260801T121852Z_SPATIAL_FACTORY_GOLDEN_APP_001_S06_TERMINAL_CANCEL_EXECUTOR.packet.yaml
+  blob: d3dc030cdf5e6d3af8198fbe37b543744bbd71a2
+
+producer_return:
+  producer: S07_BOUNDED_CODE_PATCH_BUILDER
+  commit: 22e92d32623843934c7dc76a19a7ec492b971d59
+  path: state/coordination/receipts/chatgpt_runtime/seat-07/20260801T123556Z_SPATIAL_FACTORY_GOLDEN_APP_001_TERMINAL_CANCEL_PATCH_RETURNED.yaml
+  blob: 2ed9c4996a412b7de9c1304354dbf96c41c0edc8
+  provider: OpenAI
+  runtime: ChatGPT_cloud_with_GitHub_connector_and_ephemeral_Linux_shell
+  model: GPT-5.6_Thinking
+  repository: TTaoGaming/TAGS
+  branch: agent/spatial-golden-app-001-20260731
+  base_sha: 1f0c0a7831db6f4476a703856855ff7ccc4f454b
+  final_sha: e0e3125e1ef6bb33e189c91b485ec341f2d3cd52
+  changed_paths:
+    - prototypes/spatial-input-adapter.js
+    - tests/spatial-input-adapter.test.mjs
+
+branch_readback:
+  compared_sha: e0e3125e1ef6bb33e189c91b485ec341f2d3cd52
+  compared_branch: agent/spatial-golden-app-001-20260731
+  status: identical
+  ahead_by: 0
+  behind_by: 0
+
+commands_consumed_as_producer_evidence:
+  - command: node --test /mnt/data/s07/tests/spatial-input-adapter.test.mjs
+    phase: first_red
+    exit_code: 1
+    output: 9_total_7_pass_2_fail
+  - command: node --test /mnt/data/s07/tests/spatial-input-adapter.test.mjs
+    phase: first_green
+    exit_code: 0
+    output: 9_total_9_pass_0_fail
+  - command: node --test /mnt/data/s07/tests/spatial-input-adapter.test.mjs
+    phase: second_red
+    exit_code: 1
+    output: 10_total_9_pass_1_fail
+  - command: node --test /mnt/data/s07/tests/spatial-input-adapter.test.mjs
+    phase: final_green
+    exit_code: 0
+    output: 10_total_10_pass_0_fail
+  - command: node --check /mnt/data/s07/prototypes/spatial-input-adapter.js
+    phase: syntax_check
+    exit_code: 0
+    output: no_syntax_error_reported
+
+blockers:
+  - no authenticated Git working tree was exposed to the producer
+  - checkout, working-tree, and diff commands were replaced by GitHub compare and blob readback
+  - browser behavior remains untested
+  - distinct-provider verdict and ConsumerAck remain absent
+
+rollback:
+  preferred: leave_branch_unmerged
+  alternate: ordinary_revert_on_the_agent_branch
+
+honest_flaw: >-
+  S06 consumed and rebound the direct producer return but did not reproduce the commands or verify correctness. The
+  branch comparison proves only that the branch still resolves to the producer SHA. This is not a verdict or approval.
+
+strongest_falsifier: >-
+  A distinct nonproducer reproduces the exact tests and browser interruption paths and finds a byte mismatch, an
+  out-of-scope changed path, a missing or duplicate terminal signal, unintended activation, or failed fresh-cycle recovery.
+
+next:
+  verifier: Sigrun/P4_APEX_FALSIFICATION_or_other_distinct_provider_nonproducer
+  reducer: S03_REDUCER_VERIFICATION_ROUTER_AND_CONSUMERACK_TRACKER
+  consumer_after_STOOD: Olrun/Claude-Dispatch_as_spatial_factory_coordinator
+  existing_route_commit: 5bd11400c1065cf0879223fcaf6aa1a142c5427d
