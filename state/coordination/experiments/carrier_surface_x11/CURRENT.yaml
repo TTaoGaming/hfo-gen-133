@@ -1,31 +1,32 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
-experiment_id: X11_NATIVE_TASKS_VISIBILITY_V1
-current_version: 4
-accepted_wakes: 4
+experiment_id: X11_GIT_READ_WRITE_READBACK_V1
+current_version: 5
+accepted_wakes: 1
 target_wakes_before_decision: 4
-controlled_factor: native_tasks_read_visibility
-campaign_status: CLOSED
-current_disposition: KEEP
+controlled_factor: git_read_write_readback
+campaign_status: ACTIVE
+current_disposition: MEASURED_EXACT_READBACK
 last_event:
-  commit: 2e8e6cc6d6c0f5c36c7a3f5b8ca9282afb3c4522
-  path: state/coordination/experiments/carrier_surface_x11/events/20260801T004028Z_NATIVE_TASKS_VISIBILITY_WAKE_04_DECISION.yaml
-  blob: 2071dbac17e59ba22a351bf67ed13523bf47a73f
-last_result: KEEP
-last_observed_completed_run_time_utc: 2026-07-31T23:40:53.484123Z
-campaign_claim_ceiling: provider_inventory_metadata_telemetry_only
-next_campaign:
-  experiment_id: X11_GIT_READ_WRITE_READBACK_V1
-  controlled_factor: git_read_write_readback
-  accepted_wakes: 0
-  target_wakes_before_decision: 4
-  first_probe: read exact CURRENT blob; create harmless immutable deterministic specimen; fetch exact bytes and blob; classify write/readback and pointer-CAS limits
+  commit: 123f802386770ae26633f006f393dbaad1111b66
+  path: state/coordination/experiments/carrier_surface_x11/events/20260801T014000Z_GIT_READ_WRITE_READBACK_WAKE_01.yaml
+  blob: 49de406991ab7beebe15c533313fe420d1a577dd
+last_specimen:
+  commit: 8363d0d4f9afabd9aebbbdbcb012f062b030d917
+  path: state/coordination/experiments/carrier_surface_x11/specimens/20260801T014000Z_GIT_READ_WRITE_READBACK_WAKE_01.yaml
+  blob: 76729864d40b7652ebf217bc6d5abbdd25fd9c81
+  bytes: 466
+  sha256: a313db1caa41ab1aeb0ab8a652dda0dad333bd10f5bb03c923971e31b76dd8ed
+last_result: MEASURED_EXACT_READBACK
+campaign_claim_ceiling: exact_single_path_branch_bound_create_and_readback_only
+atomicity_claim: separate_git_commits_with_single_path_optimistic_concurrency_not_database_transaction
+next_probe: repeat exact branch-bound create/readback with a new deterministic specimen and compare connector variance
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 next_consumer: Reginleif_and_Ratatoskr
-updated_valid_time_utc: 2026-08-01T00:40:28Z
+updated_valid_time_utc: 2026-08-01T01:40:00Z
 sealed: false
 ---
 
-The native Tasks visibility campaign is closed with KEEP at binding weight zero.
-The next accepted wake begins X11_GIT_READ_WRITE_READBACK_V1; Git contents writes and
-CURRENT pointer updates must remain described as separate commits, not database transactions.
+Wake 1 measured exact UTF-8 byte and hash readback for one immutable specimen.
+Specimen, event, and CURRENT are separate commits. No database transaction,
+multi-path CAS, exactly-once, or concurrent-writer guarantee is claimed.
