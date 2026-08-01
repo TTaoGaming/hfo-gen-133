@@ -1,0 +1,106 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+experiment_id: X11_GMAIL_READ_SURFACE_V1
+carrier: X11
+actor: X11_CARRIER_AND_TOOL_SURFACE_PDCA_LAB
+task_binding:
+  expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+  observed_task_id: 6a55089a9adc8191bda54541f7f9effa
+  match: true
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+wip_limit: 1
+self_probe:
+  native_active_gen133_task_count: 15
+  observed_surfaces:
+    - native_tasks_inventory_read
+    - github_read_write
+    - gmail_message_id_search
+  available_not_used:
+    - slack_write
+    - web_research
+    - google_drive_read
+    - google_calendar_read
+  unavailable_or_not_exposed:
+    - shell_runtime
+    - independent_provider_verifier
+prior_current:
+  expected_version: 24
+  blob: d77aaaed42d335c1bfed777adc11bb718e56d2cf
+  campaign: X11_GOOGLE_DRIVE_READ_SURFACE_V1
+  accepted_wakes: 4
+  disposition: KEEP
+campaign:
+  controlled_factor: gmail_read_surface
+  accepted_wake: 1
+  target_wakes_before_decision: 4
+baseline:
+  prior_gmail_campaign_wakes: 0
+  prior_probe_result_count: null
+  prior_error_class: NOT_MEASURED
+  prior_external_call_time_ms: null
+hypothesis: >-
+  One exact synthetic negative-control Gmail message-ID search will complete
+  without interactive login, message-body fetch, or exposure of sender, subject,
+  snippet, or body data and will return zero message IDs with no connector error.
+exact_probe:
+  tool: Gmail.search_email_ids
+  mode: read_only_message_id_search
+  query: HFO_X11_GMAIL_NEGATIVE_CONTROL_6a55089a9adc8191bda54541f7f9effa_v24
+  max_results: 5
+  expected_result_count: 0
+  message_fetch: false
+  privacy_rule: persist_only_status_count_permission_error_and_latency
+measured_result:
+  connector_call_completed: true
+  result_count: 0
+  expected_negative_control_result_observed: true
+  error_present: false
+  error_code: null
+  error_http_status_code: null
+  next_page_token_present: false
+  message_fetch_attempted: false
+  sender_data_externalized: false
+  subject_data_externalized: false
+  snippet_data_externalized: false
+  body_data_externalized: false
+  mutation_performed: false
+permission_class: AUTHENTICATED_GMAIL_MESSAGE_ID_SEARCH_AVAILABLE_FOR_THIS_PROBE
+error_class: NONE
+latency:
+  exposed_by_tool: true
+  external_call_time_ms: 333
+  coarse_class: SUB_SECOND
+  interpretation: single_observation_only_not_a_latency_slo
+operator_relay_minutes: 0
+measured_delta: >-
+  The first Gmail campaign probe completed with zero message IDs and no error in
+  333 ms. No message was fetched and no sender, subject, snippet, or body data was
+  persisted or externalized. This establishes only bounded invocation and search
+  permission for this exact negative-control query.
+strongest_falsifier: >-
+  The synthetic nonce unexpectedly returns a message ID, an identical repeat
+  produces authentication or permission failure without a known surface change,
+  or a separately controlled known-existing message cannot be found under the
+  same message-ID-only mode.
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer:
+  - Reginleif
+  - Ratatoskr
+expiry_utc: 2026-08-08T21:41:05Z
+next_probe: >-
+  Repeat the identical Gmail message-ID negative-control query and compare result,
+  permission, error, and exposed latency classes without fetching any message.
+result: GMAIL_NEGATIVE_CONTROL_WAKE_01_ACCEPTED
+honest_flaw: >-
+  A zero-result negative control does not prove positive recall, inbox completeness,
+  delegated-account coverage, label coverage, message-content permission, or useful
+  Gmail retrieval. Connector latency is not a controlled network benchmark. Task
+  identity and connector telemetry are same-provider evidence with binding weight zero.
+valid_time_utc: 2026-08-01T21:41:05Z
+transaction_time_utc: 2026-08-01T21:41:05Z
+evidence_class: DIRECT_CONNECTOR_READBACK_SAME_PROVIDER_NONBINDING
+binding_weight: 0
+effect_ceiling: READ_ONLY_GMAIL_MESSAGE_ID_SEARCH_PLUS_GIT_RECEIPT
+sealed: false
+---
