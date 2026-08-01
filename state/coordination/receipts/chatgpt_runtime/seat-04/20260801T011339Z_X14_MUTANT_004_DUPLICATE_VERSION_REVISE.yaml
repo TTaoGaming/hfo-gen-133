@@ -1,0 +1,195 @@
+---
+schema_id: hfo.gen133.s04.structural_preflight.v1
+seat: S04_STRUCTURAL_PREFLIGHT
+carrier_task_id_expected: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_observed: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_match: true
+valid_time_utc: 2026-08-01T01:13:39Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+result: REVISE
+evidence_class: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+binding_decision: false
+candidate_edited: false
+world_effect_ceiling: FILE_AND_SANITIZED_SLACK_ONLY
+verifier: S04_STRUCTURAL_PREFLIGHT
+consumer:
+  - X14_CAMPAIGN_REDUCER
+  - RATATOSKR
+independent_verification_status: NOT_CLOSED
+---
+
+self_probe:
+  task_title_observed: HFO S04 Hrist Structural Verifier
+  task_enabled_observed: true
+  native_task_inventory_surface: EXPOSED_READ_ONLY
+  task_id_match_recomputed: true
+  tools_used:
+    - native_tasks_list
+    - github_search_commits
+    - github_search_branches
+    - github_fetch_commit
+    - github_fetch_file
+    - local_sha256_recompute_for_declared_canonical_mutation_bytes
+    - github_create_file
+    - github_readback
+    - slack_pointer_after_readback
+  task_mutation_performed: false
+
+selection:
+  rule: NEWEST_IMMUTABLE_CANDIDATE_ADDRESSED_TO_S04_NOT_AUTHORED_BY_S04
+  selected_candidate_commit: cbf6fae5f44cfa54de16adf611ad786c84277f79
+  selected_candidate_created_utc: 2026-08-01T00:56:04Z
+  newer_commits_inspected_through: ea2cade997d23624ebe12ba740b05be225ab2ec9
+  newer_eligible_candidate_found: false
+  prior_s04_verdict_for_mutant_id: NOT_FOUND
+  limitation: GitHub search and recent-commit listing are not a transactional exactly-once inbox.
+
+candidate:
+  mutant_id: X14_MUTANT_004_a6430d0aefae
+  authoring_seat: X14_FALSE_GREEN_MUTATION_QA
+  addressed_to:
+    - S04_STRUCTURAL_PREFLIGHT
+    - SIGRUN_P4_DISTINCT_FALSIFICATION_WHEN_AVAILABLE
+  commit: cbf6fae5f44cfa54de16adf611ad786c84277f79
+  path: state/coordination/experiments/false_green_x14/quarantine/20260801T005400Z_X13_DBOS_DUPLICATE_VERSION.mutant.yaml
+  git_blob_sha1_observed_at_exact_commit: b69e7815ce329a7b351d98f458eeb2b5c59b2e7e
+  immutable_pointer_check: PASS
+  schema_id: hfo.gen133.x14.false_green_mutant.v1
+  mutation_class: DUPLICATE_IDEMPOTENCY_OR_VERSION
+  status: QUARANTINED_NEGATIVE_CONTROL
+  executable: false
+  binding_decision: false
+  valid_time_utc: 2026-08-01T00:54:00Z
+  expires_utc: 2026-08-01T04:54:00Z
+  freshness_at_valid_time: FRESH
+
+bound_source:
+  authoring_seat: X13_COTS_CONNECTOR_PDCA
+  commit: a22f14f872645913a25582ece70f146de5b77c3e
+  path: state/coordination/experiments/cots_connector_x13/20260801T005134Z_DBOS_PYTHON_PHASE3_CONNECTOR_VARIANCE_PHASE4_DEFER.md
+  schema_id: hfo.gen133.x13.cots_connector_event.v1
+  git_blob_sha1_declared_by_mutant: c7b3ef75c1dcd693e9ce39bc59a240bab8259509
+  git_blob_sha1_returned_by_exact_commit_path_readback: c7b3ef75c1dcd693e9ce39bc59a240bab8259509
+  source_pointer_check: PASS
+  original_prior_current_version: 3
+  original_next_current_version: 4
+  original_transition: 3_TO_4
+  source_task_id: 6a55c1733708819185088bf334e33ea5
+  source_result: DEFER
+  source_binding_decision: false
+  source_valid_time_utc: 2026-08-01T00:51:34Z
+  source_honest_ceiling: NO_DBOS_RUNTIME_OR_RECOVERY_EVIDENCE
+
+pointer_evidence:
+  prior_pointer_ref: 4e8f2cf6fdce240fb1f1110d4514e0cae33ca02c
+  prior_pointer_path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+  prior_pointer_blob_sha1_observed: 88e06d9e229d10ccc21daec4e505fab781097c7c
+  prior_pointer_version_observed: 3
+  current_pointer_commit: 316ad7349639d90a130b16ddaf9bfd9b4aaf88da
+  current_pointer_path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+  current_pointer_blob_sha1_declared_by_mutant: a8d22776fac07de20bfe7db7e97325d6d76c11e3
+  current_pointer_blob_sha1_readback: a8d22776fac07de20bfe7db7e97325d6d76c11e3
+  current_pointer_version_observed: 4
+  current_pointer_prior_version_observed: 3
+  current_pointer_last_event_commit: a22f14f872645913a25582ece70f146de5b77c3e
+  current_pointer_last_event_path: state/coordination/experiments/cots_connector_x13/20260801T005134Z_DBOS_PYTHON_PHASE3_CONNECTOR_VARIANCE_PHASE4_DEFER.md
+  projection_binding_check: PASS
+  atomicity_limit: Event and CURRENT are separate Git commits; this is not a database transaction, linearizable CAS, lock, or exactly-once ledger.
+
+mutation_recompute:
+  varied_factor_count_declared: 1
+  field: prior_current_version
+  original_value: 3
+  mutated_value: 4
+  unchanged_next_current_version: 4
+  resulting_transition_recomputed: 4_TO_4_DUPLICATE_NOOP
+  monotonicity_expression: next_current_version == prior_current_version + 1
+  monotonicity_recompute: 4 == 4 + 1
+  monotonicity_result: false
+  replay_condition: mutated_prior_current_version == next_current_version == current_pointer_version
+  replay_condition_recomputed: true
+  canonicalization_algorithm_declared: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  exact_canonical_bytes_utf8: '{"mutated_field":"prior_current_version","mutated_value":4,"mutation_class":"DUPLICATE_IDEMPOTENCY_OR_VERSION","original_value":3,"source_blob_sha1":"c7b3ef75c1dcd693e9ce39bc59a240bab8259509"}'
+  canonical_mutation_digest_sha256_declared: a6430d0aefaece06645691b875470774caba82e7f65e330eb7f73e04784ab775
+  canonical_mutation_digest_sha256_recomputed: a6430d0aefaece06645691b875470774caba82e7f65e330eb7f73e04784ab775
+  canonical_mutation_digest_check: PASS
+
+structural_checks:
+  exact_bytes:
+    result: PASS_FOR_GIT_READBACK
+    reason: The candidate and bound source resolve to stable exact-commit Git blobs b69e7815ce329a7b351d98f458eeb2b5c59b2e7e and c7b3ef75c1dcd693e9ce39bc59a240bab8259509. Full-file Git blob hashes were supplied by GitHub readback; only the declared small canonical mutation byte string was independently SHA-256 recomputed in this carrier.
+  source_pointers:
+    result: PASS
+    reason: Candidate source commit, path, source blob, prior pointer blob, current pointer commit, current pointer blob, version 4, and last-event pointer all resolve consistently.
+  schema:
+    result: HOLD_LIMITATION
+    reason: The mutant envelope and X13 event declare schemas, but no separately validated formal schema registry for source-plus-overlay reconstruction or required idempotency fields was consumed in this pass.
+  canonicalization_and_digests:
+    result: PASS_FOR_DECLARED_MUTATION_DIGEST
+    reason: The exact declared canonical mutation bytes recompute to a6430d0aefaece06645691b875470774caba82e7f65e330eb7f73e04784ab775. Authentic digesting does not make the 4-to-4 transition admissible.
+  freshness:
+    result: PASS
+    reason: Review occurred before candidate expiry 2026-08-01T04:54:00Z; source and pointer commits were readable and internally consistent.
+  authority:
+    result: PASS_WITH_CEILING
+    reason: Candidate is quarantined, non-executable, non-binding, and limited to Git plus sanitized Slack effects. It grants no adoption, execution, workflow, ConsumerAck, or independent-verification authority.
+  task_binding:
+    result: PASS
+    x14_task_id: 6a513e4d9c4c81919db728f85db2dd79
+    x13_task_id: 6a55c1733708819185088bf334e33ea5
+    s04_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+    reason: Native task inventory matched all three seat/task bindings used by this candidate and review.
+  actor_carrier_separation:
+    result: PASS_NONINDEPENDENT
+    source_actor: X13_COTS_CONNECTOR_PDCA
+    mutation_author: X14_FALSE_GREEN_MUTATION_QA
+    structural_reviewer: S04_STRUCTURAL_PREFLIGHT
+    reason: Roles are explicitly separated by seat, but all observed checks are ChatGPT-carried and therefore have binding weight zero.
+  idempotency_and_version:
+    result: FAIL_DUPLICATE_VERSION_OR_REPLAY
+    source_idempotency_key: ABSENT_IN_SOURCE_SCHEMA
+    current_version_already_consumed: 4
+    mutated_prior_version: 4
+    mutated_next_version: 4
+    reason: The overlay converts the valid source transition 3-to-4 into an already-consumed 4-to-4 no-op. next_version is not prior_version plus one, and CURRENT already names version 4 plus the exact source event. Authentic source bytes cannot authorize replay.
+  lease_and_expiry:
+    result: PASS_FOR_REVIEW_WINDOW_ONLY
+    lease: NONE_DECLARED
+    candidate_expiry_utc: 2026-08-01T04:54:00Z
+    reason: The candidate is fresh enough to review. Absence of a lease and explicit source idempotency key prevents stronger ownership, delivery, or exactly-once claims.
+  privacy:
+    result: PASS
+    reason: Candidate contains sanitized repository metadata, task IDs, hashes, runtime limitations, and no observed credentials or private source body.
+  rollback:
+    result: PASS
+    reason: Explicit rollback is to ignore or retain the mutant in quarantine and never modify or delete the bound X13 source.
+  verifier:
+    result: PASS_NONBINDING
+    reason: S04 did not author the candidate. The requested distinct Sigrun/P4 verdict is only routed, not observed; this structural preflight cannot close independent verification.
+  consumer:
+    result: PASS
+    reason: X14 campaign reducer and Ratatoskr are named. Ratatoskr and Olrun remain named on the bound X13 source event.
+
+strongest_fake_green_mutant:
+  class: AUTHENTIC_SOURCE_BYTES_LAUNDERED_INTO_ALREADY_CONSUMED_TRANSITION
+  failure_mode: Accept the overlay because source commit, path, blob, pointer commit, pointer blob, and canonical mutation digest are all authentic, while ignoring that the varied field changes the semantic transition to 4-to-4 and CURRENT already records version 4.
+  required_gate_behavior: Recompute semantic version monotonicity after applying the overlay; require next_version equal prior_version plus one; compare against CURRENT; reject prior_version equal next_version or current_version; return REVISE naming DUPLICATE_VERSION_OR_REPLAY.
+
+verdict:
+  result: REVISE
+  named_failure: DUPLICATE_VERSION_OR_REPLAY
+  named_gate: S04_IDEMPOTENCY_VERSION_MONOTONICITY_AND_REPLAY_REJECTION
+  reason: The intended false-green mutant is caught. Its source and digest bindings are authentic, but its single-field overlay creates a non-monotonic 4-to-4 transition against a CURRENT projection that already records version 4 and the exact source event. It cannot pass structural preflight.
+  credit_granted:
+    structural_gate_caught_intended_mutant: true
+    independent_verification: false
+    execution: false
+    adoption: false
+    workflow_transition: false
+    consumer_ack: false
+  next_consumer_action: X14 may record that S04 caught mutant 004 as SAME_PROVIDER_NONBINDING evidence with weight zero. A distinct provider or decision-maker must still evaluate gate behavior before any binding campaign conclusion.
+
+honest_flaw: This pass verified exact Git commit/path/blob readbacks, current and prior pointer versions, task mappings, and independently recomputed the declared canonical mutation SHA-256. It did not locally reconstruct full-file Git blob hashes from connector-returned UTF-8 bytes, no formal mutant-overlay schema registry or explicit X13 idempotency key was available, repository search cannot prove global uniqueness, and no distinct-provider verdict was observed.
