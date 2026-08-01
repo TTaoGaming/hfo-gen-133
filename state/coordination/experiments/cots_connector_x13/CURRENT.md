@@ -1,56 +1,66 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
 experiment_id: X13_SLACK_PUBLIC_CHANNEL_CONNECTOR_001
-version: 11
-prior_version: 10
+version: 12
+prior_version: 11
 candidate: Slack_public_channel_connector
-candidate_contract_reference: official_Slack_conversations_history_search_messages_chat_postMessage_connector_auth_headers_hidden
-campaign_wake: 3_of_4
+candidate_contract_reference: official_Slack_conversations_history_chat_postMessage_rate_limits_connector_auth_headers_hidden
+campaign_wake: 4_of_4
+campaign_status: COMPLETE
 phase_1_completed: true
 phase_2_completed: true
 phase_3_completed: true
-phase_4_decision: PENDING
-phase_status: PHASE3_INVALID_CHANNEL_EXPLICIT_ERROR_AND_VALID_CHANNEL_RECOVERY_CONFIRMED
+phase_4_completed: true
+phase_4_decision: ADOPT_WITH_GATES
 binding_architecture_decision: false
-last_event_commit: ef9d2d451ac4b0734bf1a22729e4875e82c219cd
-last_event_path: state/coordination/experiments/cots_connector_x13/20260801T074939Z_SLACK_PUBLIC_CHANNEL_PHASE3_INVALID_CHANNEL_AND_RECOVERY.md
-last_event_blob_sha: f1766ea0e70314872b7a67ef1cee9b38f0f83751
-adoption_credit: 3
-adoption_credit_basis: AUTHENTICATED_PUBLIC_CHANNEL_DISCOVERY_READ_GIT_FIRST_POINTER_POST_EXACT_IMMEDIATE_READBACK_AND_SAFE_INVALID_CHANNEL_FAILURE_RECOVERY
+last_event_commit: 86e2995365911ef5b7cd2b0d59a4e05d1cbac1b3
+last_event_path: state/coordination/experiments/cots_connector_x13/20260801T084725Z_SLACK_PUBLIC_CHANNEL_PHASE4_ADOPT_WITH_GATES.md
+last_event_blob_sha: d238a375df59cacb7dac42bf8b3c3ae80d0844be
+adoption_credit: 4
+adoption_credit_basis: PUBLIC_CHANNEL_DISCOVERY_BOUNDED_READ_GIT_FIRST_POINTER_POST_EXACT_READBACK_INVALID_CHANNEL_FAILURE_AND_RECOVERY_PHASE4_GATED_DECISION
 fitness_credit: 0_UNTIL_CONSUMED_BY_WORKITEM
 carrier_task_id: 6a55c1733708819185088bf334e33ea5
 carrier_task_id_match: true
 carrier_task_id_observation_source: AUTOMATION_RUNTIME_PROMPT
 native_task_inventory_read_this_wake: false
-effect_ceiling: TWO_BOUNDED_READS_NO_WRITE
+effect_ceiling: DECISION_PLUS_ONE_BOUNDED_PUBLIC_CHANNEL_READ_NO_SLACK_WRITE
 operator_relay_minutes: 0
-operator_minutes_removed_estimate: 2_to_4_UNVALIDATED
-custom_code_avoided_estimate: 30_to_90_LOC_UNVALIDATED
+operator_minutes_removed_estimate: 2_to_8_PER_BOUNDED_CYCLE_UNVALIDATED
+custom_code_avoided_estimate: 40_to_120_LOC_UNVALIDATED
 paid_cost_usd_observed: 0
 connector_authenticated: true
-public_channel_read_succeeded_after_failure: true
-invalid_channel_failure_class: execution_failed_channel_not_found
-invalid_failure_class_ambiguity: ABSENT_CHANNEL_DIFFERENT_WORKSPACE_OR_INSUFFICIENT_ACCESS_COLLAPSED
+public_channel_read_succeeded_at_decision: true
 successful_message_writes_this_phase: 0
+successful_message_writes_whole_campaign: 1
 live_authentication_identity: UNKNOWN
 live_authentication_token_type: UNKNOWN
 live_authentication_scope: UNKNOWN
 live_rate_limit_headers: NOT_EXPOSED
 slack_channel_id: C0BGNGPJFHU
 message_bodies_externalized_to_git: false
-observed_failure_behavior: INVALID_ID_FAILED_TERMINALLY_WITHOUT_UNRELATED_CONTENT_AND_VALID_READ_RECOVERED
+observed_failure_behavior: INVALID_CHANNEL_FAILED_WITHOUT_UNRELATED_CONTENT_AND_VALID_READ_RECOVERED
 failure_behavior_limit: CHANNEL_NOT_FOUND_IS_NOT_RESOURCE_EXISTENCE_OR_AUTHORIZATION_ORACLE
-durability: ONE_FAILED_CALL_DID_NOT_BREAK_SUBSEQUENT_VALID_READ_ONLY_RETENTION_REPLAY_RESUME_EXACTLY_ONCE_UNPROVEN
-observability: ERROR_CLASS_CHANNEL_ID_VALID_CHANNEL_IDENTITY_AND_BOUNDED_RESULT_EXPOSED_RAW_STATUS_REQUEST_RETRY_TIMING_AUTH_QUOTA_AUDIT_HIDDEN
-portability: MEDIUM_SLACK_READ_CONTRACT_MEDIUM_LOW_CONNECTOR_OTHER_PLATFORMS_UNPROVEN
+durability: TIMESTAMP_PERMALINK_AND_IMMEDIATE_READBACK_OBSERVED_RETENTION_REPLAY_RESUME_EXACTLY_ONCE_UNPROVEN
+observability: CHANNEL_ID_TIMESTAMP_PERMALINK_CURSOR_ERROR_CLASS_EXPOSED_RAW_STATUS_REQUEST_RETRY_TIMING_AUTH_QUOTA_AUDIT_HIDDEN
+portability: MEDIUM_SLACK_CONTRACT_MEDIUM_LOW_CONNECTOR_OTHER_PLATFORMS_UNPROVEN
+mandatory_gates:
+  - GIT_FIRST_READBACK_BEFORE_POINTER_WRITE
+  - EXACT_PUBLIC_CHANNEL_ID_AND_RETURNED_TIMESTAMP_BINDING
+  - CHANNEL_NOT_FOUND_AMBIGUOUS_FAIL_CLOSED
+  - NO_AUTOMATIC_WRITE_RETRY_WITHOUT_IDEMPOTENCY_RECEIPT
+  - NO_DURABILITY_OR_EXACTLY_ONCE_CLAIM
+  - PRIVATE_OR_DM_SURFACES_REQUIRE_SEPARATE_AUTHORITY_AND_CAMPAIGN
+  - LOW_RATE_BOUNDED_CALLS_WHILE_LIVE_QUOTA_IS_HIDDEN
+  - DISTINCT_NONPRODUCER_BEFORE_HIGHER_EFFECT_USE
 verifier: S04_STRUCTURAL_PREFLIGHT_THEN_DISTINCT_NONPRODUCER_BEFORE_HIGHER_EFFECT_USE
 consumer: Ratatoskr_and_Olrun
 consumer_ack: NOT_OBSERVED
 same_provider_binding_weight: 0
-strongest_falsifier: KNOWN_VALID_PUBLIC_CHANNEL_RETURNS_SAME_ERROR_WITHOUT_DOCUMENTED_ACCESS_CHANGE_OR_ERROR_IS_USED_AS_EXISTENCE_AUTHORIZATION_ORACLE
-review_expiry_utc: 2026-08-08T07:49:39Z
-next_phase: PHASE4_ADOPT_ADOPT_WITH_GATES_DEFER_REJECT_OR_UNKNOWN
-valid_time_utc: 2026-08-01T07:49:39Z
+strongest_falsifier: KNOWN_VALID_PUBLIC_CHANNEL_RETURNS_COARSE_ERROR_WITHOUT_ACCESS_CHANGE_OR_AUTHORIZED_POINTER_DUPLICATES_AFTER_AMBIGUOUS_RESPONSE_OR_READBACK_MISMATCHES_RETURNED_CHANNEL_TIMESTAMP
+review_expiry_utc: 2026-08-08T08:47:25Z
+next_candidate_nomination: Gmail_read_only_search_and_message_metadata_connector
+next_phase: START_NEW_CAMPAIGN_PHASE1
+valid_time_utc: 2026-08-01T08:47:25Z
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 sealed: false
 prior_campaign:
@@ -63,21 +73,19 @@ prior_campaign:
 
 # X13 current campaign
 
-The Slack public-channel connector campaign has completed phase 3 of 4.
+The Slack public-channel connector campaign completed all four phases with
+`ADOPT_WITH_GATES`.
 
-A deterministic invalid channel read returned an explicit terminal
-`execution_failed: channel_not_found` error and no unrelated content. The immediate
-one-message read from known public channel `C0BGNGPJFHU` then succeeded and identified
-`#hfo-command-and-control`. No successful Slack write occurred during this phase and no
-message body was copied into Git.
+Admitted use is limited to bounded public-channel discovery and history reads plus one
+explicitly authorized Git-first pointer post after immutable state advances. The
+connector is not admitted as an authorization or existence oracle, durable workflow
+runtime, exactly-once transport, audit system, or independent verifier.
 
-The failure class is safe but coarse: the connector says it can represent an absent
-channel, another workspace, or insufficient access. It must not be treated as an
-authoritative resource-existence or authorization result. Raw HTTP details, request ID,
-retry count, timing, authentication scope, quota, rate-limit headers, and audit evidence
-remain hidden.
+The live surface exposed channel IDs, timestamps, a permalink, pagination, and a coarse
+failure class. It did not expose token identity or scopes, raw HTTP, request IDs, retries,
+latency, rate-limit headers, app classification, audit evidence, or independent
+verification. `channel_not_found` remains ambiguous and must fail closed. Same-provider
+binding weight is zero, and no ConsumerAck is claimed.
 
-This is same-provider evidence with binding weight zero. Phase 4 should decide whether to
-adopt with explicit gates: Git-first idempotency, bounded public-channel operations,
-ambiguous-error handling, no automatic repair, and independent verification before any
-higher-effect use.
+The next nominated candidate is a read-only Gmail search and message-metadata connector.
+No Gmail probe has been performed for that campaign.
