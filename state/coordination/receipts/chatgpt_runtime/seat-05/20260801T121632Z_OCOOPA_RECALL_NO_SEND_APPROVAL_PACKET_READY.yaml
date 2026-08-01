@@ -1,0 +1,52 @@
+schema: hfo.gen133.s05.operator_relief_receipt.v1
+receipt_id: S05_OCOOPA_RECALL_NO_SEND_APPROVAL_20260801T121632Z
+created_at: 2026-08-01T12:16:32Z
+seat: S05
+role: operator_relief_cell
+expected_task_id: 6a55c182078c8191b89f2dd15f5f640c
+runtime_task_id_observation: NOT_EXPOSED_BY_CURRENT_CONNECTOR_SURFACE
+wip_limit: 1
+result: NO_SEND_APPROVAL_PACKET_READY
+active_item:
+  id: OCOOPA_RECALL_RECIPIENT_NOTIFICATION
+  priority: P0
+  state_before: TWO_UNSENT_DRAFTS_AWAITING_REVIEW
+  state_after: SOURCE_RECIPIENT_AND_DUPLICATE_CHECKS_COMPLETE__OPERATOR_SEND_APPROVAL_ONLY
+bounded_transition: PREPARE_EXACT_NO_SEND_APPROVAL_PACKET
+source_evidence:
+  gmail:
+    safety_notice_received_at: 2026-07-31T16:23:31Z
+    safety_notice_message_id_sha256: 951c4c2f44852a887543fe39a8205bd7ee938bb3170748dde7b9b47917d5baa0
+    draft_count: 2
+    draft_subject: "Urgent: stop using recalled OCOOPA hand warmers"
+    draft_1_id_sha256: ec388d0f013a8f7b66deb1d5a217b2b5935564d1e2e1d1043d109d0c32396e12
+    draft_2_id_sha256: a6b1ceaa1996d1f7528dd38ee992aa4c914934f6785d24ed17c87f50b983ea01
+    matching_sent_copy_found: false
+    checked_at: 2026-08-01T12:16:32Z
+  contacts:
+    exact_recipient_addresses_resolved_to_existing_contacts: 2
+    private_names_and_addresses_externalized: false
+  calendar:
+    relevant_event_found_in_window_2026-08-01_to_2026-08-08: false
+approval_packet:
+  requested_operator_action: REVIEW_AND_SEND_BOTH_EXISTING_GMAIL_DRAFTS
+  email_mode: DRAFT_NO_SEND
+  send_performed: false
+  body_changed: false
+  recipient_changed: false
+  attachment_count: 0
+  duplicate_guard: NO_MATCHING_SENT_MESSAGE_AT_CHECK_TIME
+  safety_basis: ORIGINAL_AMAZON_PRODUCT_SAFETY_NOTICE_READ_BACK_IN_GMAIL
+privacy:
+  private_email_bodies_in_git: false
+  recipient_names_or_addresses_in_git: false
+  order_or_transaction_identifiers_in_git: false
+priorities:
+  P0: OCOOPA_RECALL_RECIPIENT_NOTIFICATION
+  P1:
+    - PARTY_SAFARI_PERMISSION_WORKFLOW
+    - PFA_NATIONAL_LIFE_DISCLOSURE_WORKFLOW_DUE_2026-08-05
+operator_minutes_removed_estimate: 5
+next_consumer: TTao_operator
+recheck_condition: REVALIDATE_SENT_STATUS_BEFORE_ANY_LATER_AUTOMATED_ACTION
+honest_flaw: Recipient ownership and current possession of the recalled product are not proven; the drafts ask recipients to confirm. No email was sent and no reply exists yet.
