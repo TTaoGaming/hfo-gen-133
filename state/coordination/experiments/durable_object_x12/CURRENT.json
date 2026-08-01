@@ -1,33 +1,40 @@
 {
   "canonical_projection": {
     "campaign": {
-      "accepted_wakes": 3,
-      "campaign_id": "X12_EVENT_CANONICALIZATION_C1",
-      "factor": "event_canonicalization",
-      "next_factor_after_decision": "pointer_update_pattern",
+      "accepted_wakes": 0,
+      "campaign_id": "X12_POINTER_UPDATE_PATTERN_C2",
+      "factor": "pointer_update_pattern",
+      "selected_by_event_version": 4,
       "target_wakes": 4
     },
     "consumer": "Reginleif/Olrun",
     "effect_ceiling": "FILE_AND_SANITIZED_SLACK_ONLY",
-    "expiry_utc": "2026-08-01T02:44:00Z",
+    "expiry_utc": "2026-08-01T06:44:00Z",
+    "last_campaign_decision": {
+      "accepted_wakes": 4,
+      "campaign_id": "X12_EVENT_CANONICALIZATION_C1",
+      "decision": "KEEP",
+      "decision_event_digest_sha256": "0c431dfadd112879975dabcd986a7eb959b5520944ffa4048ade1e4474459489",
+      "factor": "event_canonicalization"
+    },
     "latest_event": {
-      "blob": "eb0e70e221073821663cabaaae534d2c2de56852",
-      "commit": "da51b6573202afb27485cddcf9ff0ed500b9ef74",
-      "digest_sha256": "05fb755de4838983e600061def9f51888fc744d402d70bf4e48a823e06fa2998",
-      "idempotency_key": "e4f3d19ae122bbcf394cb1014aa0295ead9542b6e04f21507cf33fc6c0f66cf6",
-      "path": "state/coordination/experiments/durable_object_x12/events/20260731T234431Z_V0002_TO_V0003_EVENT_CANONICALIZATION.json"
+      "blob": "324c98ff1c123250337372622234768bac174aca",
+      "commit": "c10e50a443ce6feaf33eee4bce1f301cd934ead7",
+      "digest_sha256": "0c431dfadd112879975dabcd986a7eb959b5520944ffa4048ade1e4474459489",
+      "idempotency_key": "db2737a18f68efd8e5d534423131c079d612ba60cbf69f7eb380eb969662fe8e",
+      "path": "state/coordination/experiments/durable_object_x12/events/20260801T004455Z_V0003_TO_V0004_EVENT_CANONICALIZATION_DECISION_KEEP.json"
     },
     "object_id": "HFO_X12_WORKFLOW_OBJECT_001",
     "state": "ACTIVE_CAMPAIGN",
     "task_id": "6a506f83df208191815dd17a8fd5baa3",
-    "version": 3
+    "version": 4
   },
   "expected_previous_pointer": {
-    "blob": "926192e4f9a3121a7caea76289a4189dbbacdce8",
-    "projection_digest_sha256": "fc23ec5a0aeb4aad10d4f716797ecbd867fe72dee9680da6612b95ff9566bf26",
-    "version": 2
+    "blob": "3c9121653cf1bf168d90cfb905c71fa476798eb4",
+    "projection_digest_sha256": "d1d9a936e53ae1e9f9148b4846075e18a4eaa96ea9b67277fe1e37e4fe92831b",
+    "version": 3
   },
-  "honest_atomicity_limit": "The immutable v2→v3 event was committed before this pointer update. GitHub Contents API checks the supplied prior CURRENT blob SHA for this one file, which can reject a stale pointer write, but the event and pointer are separate commits with no cross-file atomic transaction, lock, linearizable compare-and-swap, or exactly-once guarantee; competing immutable events can remain.",
-  "projection_digest_sha256": "d1d9a936e53ae1e9f9148b4846075e18a4eaa96ea9b67277fe1e37e4fe92831b",
+  "honest_atomicity_limit": "The immutable v3→v4 event was committed before this pointer replacement. GitHub Contents API checks the supplied prior CURRENT blob SHA for this one file and can reject a stale replacement, but the event and pointer are separate commits with no cross-file atomic transaction, lock, linearizable compare-and-swap, exactly-once guarantee, or automatic cleanup of a losing writer's immutable event.",
+  "projection_digest_sha256": "4f4c9f8e3df29e4aa4c7c5188558cda7637c0b1be1f7a4fd06c7ce022e84c8a1",
   "schema_id": "hfo.gen133.x12.durable_object_current.v1"
 }
