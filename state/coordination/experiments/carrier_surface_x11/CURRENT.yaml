@@ -1,31 +1,36 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_WEB_RESEARCH_SURFACE_V1
-current_version: 14
-accepted_wakes: 2
+current_version: 15
+accepted_wakes: 3
 target_wakes_before_decision: 4
 controlled_factor: web_research
 campaign_status: ACTIVE
 current_disposition: CONTINUE
 last_event:
-  commit: 19317af5882af021c7e2a1f550692c9c4d632297
-  path: state/coordination/experiments/carrier_surface_x11/events/20260801T104000Z_WEB_RESEARCH_HTML_TXT_VARIANCE_WAKE_02.yaml
-  blob: 30f4e31fcb08af332c103e046fdceb29a1cd413b
+  commit: c04e5797184859042691e67636f2dfe90ead3dde
+  path: state/coordination/experiments/carrier_surface_x11/events/20260801T113918Z_WEB_RESEARCH_XML_JSON_FAILURE_CLASS_WAKE_03.yaml
+  blob: 92b5a333706e62b100e4ea88a1e5e9edc3789218
 baseline_result:
   official_primary_search_and_direct_open: SUCCESS
   official_html_and_plain_text_direct_open: SUCCESS
   selected_metadata_fields_match_across_search_html_and_text: true
   format_specific_parser_variance_observed: true
-  claim_ceiling: one_domain_bounded_search_and_direct_HTML_and_plain_text_opens_recovered_matching_RFC_8259_number_title_publication_month_and_category;general_cross_domain_or_backend_reliability_not_established
-last_result: WEB_RESEARCH_WAKE_02_ACCEPTED_WITH_HTML_TEXT_PARSER_VARIANCE
-next_probe: directly_open_the_official_RFC_8259_XML_form_and_one_deliberately_nonexistent_rfc8259_json_path_then_record_success_and_failure_error_classes_without_retry_or_redirect_assumptions
+  planned_negative_control_json_path_was_real: true
+  direct_xml_url_safe_precondition: REJECTED
+  official_bibxml_click: CONNECTOR_FETCH_ERROR_400_OK_AMBIGUOUS
+  claim_ceiling: the_web_surface_recovered_RFC_8259_metadata_from_HTML_TXT_and_JSON_paths_but_XML_behavior_remains_ambiguous_and_no_raw_HTTP_origin_status_or_latency_was_exposed
+last_result: WEB_RESEARCH_WAKE_03_ACCEPTED_NEGATIVE_CONTROL_ASSUMPTION_FALSIFIED
+next_probe: for_wake_04_use_the_official_RFC_8259_info_page_as_the_positive_control_and_attempt_one_same_domain_non_document_format_path_rfc8259.pdf_without_assuming_its_existence_then_issue_KEEP_REVISE_RESEAT_VARIABLE_or_HOLD_for_the_four_wake_web_research_campaign
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 next_consumer: Reginleif_and_Ratatoskr
-updated_valid_time_utc: 2026-08-01T10:40:00Z
+updated_valid_time_utc: 2026-08-01T11:39:18Z
 sealed: false
 ---
 
-Web-research campaign wake 2 of 4 accepted. Official RFC 8259 HTML and plain-text
-direct opens both succeeded and matched the domain-bounded search on RFC number, title,
-publication month, and category. Parser and linkification output differed by format,
-but the selected identity fields did not. Same-provider binding weight remains zero.
+Web-research campaign wake 3 of 4 accepted as a falsification. The presumed negative
+control at rfc8259.json returned RFC metadata. The direct rfc8259.xml attempt was
+rejected by the tool safe-URL precondition, while the RFC Editor's official XML citation
+link on bib.ietf.org returned a connector fetch error with contradictory "400 OK" text.
+No origin-level availability claim is admitted. Same-provider binding weight remains
+zero.
