@@ -1,16 +1,22 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_NATIVE_TASKS_READ_VISIBILITY_V1
-current_version: 19
-accepted_wakes: 3
+current_version: 20
+accepted_wakes: 4
 target_wakes_before_decision: 4
 controlled_factor: native_tasks_read_visibility
-campaign_status: RUNNING
-current_disposition: PENDING
+campaign_status: COMPLETED
+current_disposition: KEEP
 last_event:
-  commit: 9617f911d840c2af97f2c8e59c3cfa2885d8bc56
-  path: state/coordination/experiments/carrier_surface_x11/events/20260801T154055Z_NATIVE_TASKS_READ_VISIBILITY_WAKE_03.yaml
-  blob: 69363a048abe30f822d62dd24110761added1b79
+  commit: 426c875e3a5f292f02ae98bbc7b16dd770cc11c2
+  path: state/coordination/experiments/carrier_surface_x11/events/20260801T163849Z_NATIVE_TASKS_READ_VISIBILITY_CAMPAIGN_DECISION_WAKE_04_CORRECTED.yaml
+  blob: af54718e51a26671a96f44b5c638a8d1b7a9d4c0
+superseded_event:
+  commit: 51be986583c141563e3e197726c8f6784edd0792
+  path: state/coordination/experiments/carrier_surface_x11/events/20260801T163848Z_NATIVE_TASKS_READ_VISIBILITY_CAMPAIGN_DECISION_WAKE_04.yaml
+  blob: 5bd001bb0fb3c8e2af35679e9f99c32b72ea7280
+  accepted_for_state_advance: false
+  reason: observed_schedule_dtstart_transcription_error
 baseline_result:
   expected_x11_task_visible: true
   expected_task_id_match: true
@@ -21,27 +27,38 @@ baseline_result:
   timing_mode_visible: true
   run_and_update_timestamps_visible: true
   active_hfo_gen133_task_count_observed: 15
-  stable_fields_match_across_three_wakes: true
-  active_count_matches_across_three_wakes: true
+  stable_fields_match_across_four_wakes: true
+  active_count_matches_across_four_wakes: true
   approximately_hourly_completed_run_timestamp_advance_observed: true
-  prior_to_current_last_run_delta_seconds: 3537.464212
+  prior_to_current_last_run_delta_seconds: 3598.904038
   current_inflight_wake_reflected_in_last_run_time: false
   sanitized_stable_tuple_sha256: e366749e72124c30a00a1c030b9183bbfb783b3d36d9fbda42243d003b48aeb3
   broad_inventory_included_prompt_bodies: true
   field_level_projection_available: false
   raw_request_latency_exposed: false
   mutation_performed: false
-  claim_ceiling: read_only_native_provider_inventory_metadata_is_reproducible_and_updates_after_completed_epochs_but_is_broad_same_provider_nonbinding_and_not_realtime_liveness
-last_result: NATIVE_TASKS_READ_WAKE_03_ACCEPTED
-next_probe: run_fourth_read_only_listing_issue_campaign_disposition_and_select_next_controlled_factor
+  claim_ceiling: read_only_native_provider_inventory_is_useful_for_configuration_and_completed_epoch_reconciliation_but_not_execution_success_realtime_liveness_or_independent_quorum
+campaign_gates:
+  - do_not_treat_task_registration_as_execution
+  - do_not_treat_last_run_time_as_current_liveness_or_success
+  - do_not_persist_unrelated_prompt_bodies
+  - do_not_claim_independent_quorum_from_same_provider_telemetry
+last_result: NATIVE_TASKS_READ_CAMPAIGN_KEEP
+next_campaign:
+  experiment_id: X11_GOOGLE_DRIVE_READ_SURFACE_V1
+  controlled_factor: google_drive_read_surface
+  accepted_wakes: 0
+  target_wakes_before_decision: 4
+next_probe: run_bounded_drive_exact_negative_control_search_without_externalizing_private_titles_or_bodies
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 next_consumer: Reginleif_and_Ratatoskr
-updated_valid_time_utc: 2026-08-01T15:40:55Z
+updated_valid_time_utc: 2026-08-01T16:38:49Z
 sealed: false
 ---
 
-Native Tasks visibility campaign wake 3 of 4 accepted. Stable X11 metadata and
-the fifteen-task active Gen-133 count reproduced across three wakes. The prior
-completed-run timestamps advanced by about 58 minutes 57 seconds, while the
-current in-flight wake remained absent from completed-run telemetry. The surface
-remains broad, non-field-selective, and same-provider nonbinding.
+Native Tasks read visibility completed four accepted wakes with KEEP gates. The
+surface reliably reproduced X11 configuration and the fifteen-task active count,
+and completed-run timestamps advanced approximately hourly. It remains broad,
+non-field-selective, same-provider, and unsuitable as proof of execution success
+or real-time liveness. The next controlled factor is bounded Google Drive read
+visibility using an exact negative-control query and no private-content export.
