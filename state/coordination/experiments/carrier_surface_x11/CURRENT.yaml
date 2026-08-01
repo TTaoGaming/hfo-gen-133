@@ -1,16 +1,16 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_NATIVE_TASKS_READ_VISIBILITY_V1
-current_version: 18
-accepted_wakes: 2
+current_version: 19
+accepted_wakes: 3
 target_wakes_before_decision: 4
 controlled_factor: native_tasks_read_visibility
 campaign_status: RUNNING
 current_disposition: PENDING
 last_event:
-  commit: 2a9a24cb9d774f0df1340d6707e0dcd00ee8ca74
-  path: state/coordination/experiments/carrier_surface_x11/events/20260801T144023Z_NATIVE_TASKS_READ_VISIBILITY_WAKE_02.yaml
-  blob: 5cb3d886b532cadfa85069385c7d469bf640bf8f
+  commit: 9617f911d840c2af97f2c8e59c3cfa2885d8bc56
+  path: state/coordination/experiments/carrier_surface_x11/events/20260801T154055Z_NATIVE_TASKS_READ_VISIBILITY_WAKE_03.yaml
+  blob: 69363a048abe30f822d62dd24110761added1b79
 baseline_result:
   expected_x11_task_visible: true
   expected_task_id_match: true
@@ -21,26 +21,27 @@ baseline_result:
   timing_mode_visible: true
   run_and_update_timestamps_visible: true
   active_hfo_gen133_task_count_observed: 15
-  stable_fields_match_across_two_wakes: true
-  active_count_matches_across_two_wakes: true
+  stable_fields_match_across_three_wakes: true
+  active_count_matches_across_three_wakes: true
+  approximately_hourly_completed_run_timestamp_advance_observed: true
+  prior_to_current_last_run_delta_seconds: 3537.464212
   current_inflight_wake_reflected_in_last_run_time: false
   sanitized_stable_tuple_sha256: e366749e72124c30a00a1c030b9183bbfb783b3d36d9fbda42243d003b48aeb3
   broad_inventory_included_prompt_bodies: true
   field_level_projection_available: false
   raw_request_latency_exposed: false
   mutation_performed: false
-  claim_ceiling: read_only_native_provider_inventory_metadata_is_reproducible_but_broad_same_provider_nonbinding_and_not_realtime_inflight_liveness
-last_result: NATIVE_TASKS_READ_WAKE_02_ACCEPTED
-next_probe: repeat_after_completed_epoch_and_test_stable_tuple_plus_approximately_hourly_last_run_advance_without_treating_timestamp_as_liveness
+  claim_ceiling: read_only_native_provider_inventory_metadata_is_reproducible_and_updates_after_completed_epochs_but_is_broad_same_provider_nonbinding_and_not_realtime_liveness
+last_result: NATIVE_TASKS_READ_WAKE_03_ACCEPTED
+next_probe: run_fourth_read_only_listing_issue_campaign_disposition_and_select_next_controlled_factor
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 next_consumer: Reginleif_and_Ratatoskr
-updated_valid_time_utc: 2026-08-01T14:40:23Z
+updated_valid_time_utc: 2026-08-01T15:40:55Z
 sealed: false
 ---
 
-Native Tasks visibility campaign wake 2 of 4 accepted. Stable X11 metadata and
-the fifteen-task active Gen-133 count reproduced across two wakes. During the
-current in-flight wake, the provider inventory still exposed the prior completed
-run timestamp, so last_run_time is not a real-time in-flight execution signal.
-The surface remains broad and non-field-selective. Same-provider binding weight
-remains zero.
+Native Tasks visibility campaign wake 3 of 4 accepted. Stable X11 metadata and
+the fifteen-task active Gen-133 count reproduced across three wakes. The prior
+completed-run timestamps advanced by about 58 minutes 57 seconds, while the
+current in-flight wake remained absent from completed-run telemetry. The surface
+remains broad, non-field-selective, and same-provider nonbinding.
