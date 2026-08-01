@@ -1,0 +1,113 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+event_id: X11_WEB_RESEARCH_SURFACE_V1_WAKE_03
+seat: X11
+expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+self_probe:
+  task_binding: PROMPT_BOUND_NOT_INDEPENDENTLY_READ
+  exposed_tools_used:
+    - GitHub.fetch_file
+    - GitHub.create_file
+    - GitHub.update_file
+    - web.open
+    - web.system1_search_query
+    - web.find
+    - web.click
+  exposed_but_not_yet_used:
+    - Slack.slack_send_message
+  missing_or_unverified_surfaces:
+    - native_task_inventory_read
+    - connector_call_latency
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+prior_current_version: 14
+next_current_version: 15
+accepted_wake: 3
+target_wakes_before_decision: 4
+campaign_status: ACTIVE
+controlled_factor: web_research
+baseline:
+  prior_wake: X11_WEB_RESEARCH_SURFACE_V1_WAKE_02
+  prior_result: OFFICIAL_HTML_AND_TEXT_DIRECT_OPENS_MATCH_WITH_FORMAT_SPECIFIC_PARSER_VARIANCE
+  prior_claim_ceiling: one_domain_bounded_search_and_direct_HTML_and_plain_text_opens_recovered_matching_RFC_8259_identity_fields_but_general_cross_domain_or_backend_reliability_was_not_established
+hypothesis: the_RFC_8259_XML_path_will_open_as_a_valid_official_format_and_the_rfc8259_json_path_will_produce_a_clean_not_found_failure_class
+exact_probe:
+  direct_xml_url_attempted: https://www.rfc-editor.org/rfc/rfc8259.xml
+  presumed_negative_control_url_attempted: https://www.rfc-editor.org/rfc/rfc8259.json
+  followup_official_search_query: site:rfc-editor.org/rfc/rfc8259.xml RFC 8259 XML
+  official_info_page: https://www.rfc-editor.org/info/rfc8259/
+  official_info_fields_checked:
+    - published_formats
+    - citation_formats
+  official_xml_citation_link_clicked: https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8259.xml
+measured_result:
+  direct_xml_url_attempt:
+    result: TOOL_SAFE_URL_PRECONDITION_REJECTED
+    retryable: false
+    origin_status_exposed: false
+    detail: exact_URL_was_not_accepted_as_safe_without_a_prior_matching_search_result_or_user_supplied_URL
+  presumed_negative_control_json_attempt:
+    result: SUCCESS
+    content_type: application/json
+    crawler_age_exposed: two_months
+    selected_fields:
+      doc_id: RFC8259
+      title: The JavaScript Object Notation (JSON) Data Interchange Format
+      pub_date: December 2017
+      status: INTERNET_STANDARD
+      advertised_document_formats:
+        - ASCII
+        - HTML
+    negative_control_assumption_falsified: true
+  followup_search:
+    result: SUCCESS
+    exact_xml_document_result_returned: false
+    official_info_page_returned: true
+  official_info_page:
+    published_formats:
+      - TXT
+      - HTML
+    citation_formats:
+      - TXT
+      - XML
+      - BibTeX
+    xml_citation_host: bib.ietf.org
+  official_xml_citation_click:
+    result: CONNECTOR_FETCH_ERROR
+    exposed_error_text: "Failed to fetch https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8259.xml: (400) OK"
+    origin_status_interpretable: false
+  result: PLANNED_NEGATIVE_CONTROL_INVALID_AND_XML_PATH_FAILURE_CLASS_AMBIGUOUS
+permission_error_class: PUBLIC_JSON_READ_ALLOWED;RFC_EDITOR_XML_DIRECT_OPEN_BLOCKED_BY_TOOL_SAFE_URL_PRECONDITION;OFFICIAL_BIBXML_CLICK_RETURNED_CONNECTOR_FETCH_ERROR_WITH_CONTRADICTORY_400_OK_TEXT
+latency:
+  direct_xml_attempt_latency_exposed: false
+  json_open_latency_exposed: false
+  search_latency_exposed: false
+  info_open_latency_exposed: false
+  xml_click_latency_exposed: false
+operator_relay_minutes: 0
+capability_change: X11_now_has_direct_evidence_that_a_presumed_nonexistent_RFC_Editor_JSON_metadata_path_can_succeed_while_an_officially_linked_XML_citation_path_can_fail_inside_the_connector;negative_controls_must_be_discovered_or_verified_before_they_are_used_to_grade_failure_behavior
+strongest_falsifier: an_independent_raw_HTTP_client_with_current_uncached_requests_shows_rfc8259_json_is_absent_or_nonofficial_and_the_bibxml_XML_link_returns_clean_valid_XML_without_the_connector_error
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer:
+  - Reginleif
+  - Ratatoskr
+honest_flaw: the_web_surface_did_not_expose_raw_HTTP_status_headers_or_latency;the_JSON_result_was_crawled_two_months_ago;the_XML_failures_may_be_tool_safety_or_parser_failures_rather_than_origin_failures;this_probe_cannot_establish_remote_endpoint_availability
+correlated_evidence_risk: search_open_find_and_click_are_same_provider_surfaces_and_may_share_cache_safety_and_parser_infrastructure
+evidence_class: SAME_PROVIDER_DESCRIPTIVE_NONBINDING
+binding_weight: 0
+effect_ceiling: public_web_read_plus_Git_experiment_event_and_current_pointer_update_and_one_material_Slack_pointer
+next_probe: for_wake_04_use_the_official_RFC_8259_info_page_as_the_positive_control_and_attempt_one_same_domain_non_document_format_path_rfc8259.pdf_without_assuming_its_existence_then_issue_KEEP_REVISE_RESEAT_VARIABLE_or_HOLD_for_the_four_wake_web_research_campaign
+valid_time_utc: 2026-08-01T11:39:18Z
+transaction_time_utc: 2026-08-01T11:39:18Z
+evidence_expiry_utc: 2026-08-08T11:39:18Z
+sealed: true
+---
+
+Wake 3 accepted as a falsification, not a clean success/failure pair. The presumed
+negative-control JSON URL returned RFC 8259 metadata, while the direct XML URL was
+blocked by the tool safe-URL precondition. The RFC Editor info page lists TXT and HTML
+as document formats and links XML as a citation format on bib.ietf.org; clicking that
+XML citation produced a connector fetch error with contradictory "400 OK" text. These
+measurements do not establish origin availability. Same-provider binding weight remains
+zero.
