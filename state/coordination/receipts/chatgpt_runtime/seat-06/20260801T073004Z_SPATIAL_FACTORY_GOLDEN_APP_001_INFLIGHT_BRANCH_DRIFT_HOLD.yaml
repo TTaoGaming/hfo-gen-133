@@ -1,0 +1,145 @@
+---
+schema_id: hfo.gen133.s06_codex_bridge_hold.v1
+result: HOLD
+seat: S06_CODE_WORK_PACKET_COMPILER_AND_CODEX_BRIDGE
+carrier_task_id_expected: 6a57972b9df081918680ce67c4ecb197
+carrier_task_id_observed: 6a57972b9df081918680ce67c4ecb197
+carrier_task_id_match: true
+carrier_identity_claim: DISPOSABLE_SCHEDULED_CARRIER_NOT_LINEAGE
+wip: 1
+valid_time_utc: 2026-08-01T07:30:04Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001
+correlation_id: SPATIAL_FACTORY_GOLDEN_APP_001_TARGET_CONTINUITY_FEE50A7
+---
+
+self_probe:
+  native_task_inventory: read
+  expected_task_title: HFO S06 Huginn-Muninn Codex Bridge
+  expected_task_enabled: true
+  tools_observed:
+    github_connector: authenticated_read_write_exact_file_and_commit_readback
+    slack_public_channel: authenticated_read_write
+    native_tasks_inventory: read_only
+    codex_or_claude_direct_ingress: unavailable
+    shell_or_browser_runtime: unavailable
+  prohibited_effects_observed: none
+
+selected_claim:
+  commit: 4ecc5350fe918b1ff466708a148dc0012f810ab8
+  path: projects/spatial-app-factory/claims/20260801T070438Z_SPATIAL_FACTORY_GOLDEN_APP_001_S02_TARGET_CONTINUITY.claim.yaml
+  blob: ae178695e5faf33f15f4b9388bbbc274c4142651
+  acceptance_contract_sha256: 9a2a1e90301f74c556ec00bc3050c35e05cf4a3508135c3c6cc4951a113560a0
+  lease_expires_utc: 2026-08-01T11:04:38Z
+  producer_return_due_utc: 2026-08-01T10:04:38Z
+  status: CHANGED_UNEXPIRED_CLAIM
+
+structural_preflight:
+  commit: b53ce7f2a7662027b85eee7ce9440d519d303ca9
+  path: state/coordination/receipts/chatgpt_runtime/seat-04/20260801T071817Z_SPATIAL_FACTORY_GOLDEN_APP_001_TARGET_CONTINUITY_PASS_STRUCTURAL.yaml
+  result: PASS_STRUCTURAL
+  evidence_ceiling: SAME_PROVIDER_NONBINDING_WEIGHT_0
+
+claim_target:
+  repository: TTaoGaming/TAGS
+  branch: agent/spatial-golden-app-001-20260731
+  exact_required_base_sha: fee50a70188b510695e8e5fad2ebadc6cba0535a
+  required_precondition: producer_must_observe_branch_head_equal_exact_required_base_before_first_write
+  allowed_paths:
+    - prototypes/fab-prototype.html
+    - prototypes/spatial-input-adapter.js
+    - tests/spatial-input-adapter.test.mjs
+    - tests/fab-prototype-smoke.test.mjs
+  forbidden_paths: every_other_path
+
+live_target_readback:
+  observed_at_utc: 2026-08-01T07:30:04Z
+  observed_branch_head: 1f0c0a7831db6f4476a703856855ff7ccc4f454b
+  head_commit_message: "fix(spatial): retain pinch target through release"
+  comparison_to_required_base:
+    status: ahead
+    ahead_by: 2
+    behind_by: 0
+    total_commits: 2
+    changed_paths:
+      - path: prototypes/spatial-input-adapter.js
+        status: modified
+        additions: 73
+        deletions: 8
+        observed_blob: ca327ea46049f499d0afe1be4f9632ee086f2637
+      - path: tests/spatial-input-adapter.test.mjs
+        status: modified
+        additions: 103
+        deletions: 0
+        observed_blob: 2e523f5c373203ae4f5e0f1a48a52d1570f0682a
+  scope_observation: observed_changes_are_within_claim_allowed_paths
+
+hold_reason:
+  code: INFLIGHT_BRANCH_ADVANCE_WITHOUT_DIRECT_PRODUCER_RETURN
+  statement: >-
+    The exact target branch advanced from the claim base during this wake. S06 cannot safely compile and route
+    another executor packet against fee50a7 because the live branch no longer equals that base. The observed
+    commits may be an authorized in-flight S07 producer, but a raw Git commit is not a consumable producer return.
+  strongest_falsifier_triggered: live_branch_head_no_longer_equals_packet_base_at_dispatch_time
+  duplicate_dispatch_prevented: true
+
+producer_return_search:
+  canonical_branch_direct_return_found: false
+  exact_head_sha_search_found: false
+  slack_material_return_found: false
+  required_before_RETURN_CONSUMED:
+    - runtime_and_model_or_explicitly_unobservable
+    - claim_commit_and_blob
+    - starting_branch_sha_and_final_branch_sha
+    - exact_changed_paths_and_resulting_blob_shas
+    - every_command_actually_run_with_actual_exit_code_and_concise_output
+    - A1_through_A11_status_as_STOOD_FELL_or_NOT_RUN
+    - blockers_rollback_effect_ceiling_expiry_remaining_risk_and_honest_flaw
+  excluded_claims:
+    - no_test_pass_claim
+    - no_browser_or_native_input_claim
+    - no_independent_verdict
+    - no_consumer_ack
+    - no_merge_deployment_publication_or_external_outcome
+
+executor_packet:
+  created: false
+  routed: false
+  reason: stale_base_duplicate_or_concurrent_dispatch_risk
+  direct_codex_claude_host_ingress_available: false
+
+required_next_transition:
+  owner: S07_BOUNDED_CODE_PATCH_BUILDER_or_actual_authorized_host
+  action: >-
+    Publish one direct producer return bound to claim 4ecc5350 / blob ae178695 and final TAGS head
+    1f0c0a7831db6f4476a703856855ff7ccc4f454b, including exact commands and exit codes. If the writer did not
+    observe fee50a7 before its first write, return HOLD rather than claiming compliance.
+  reducer_after_return: S03_task_6a539fc5130c81918c13624739fb2a60
+  verifier_after_complete_return: Sigrun/P4_APEX_FALSIFICATION_or_other_distinct_provider_nonproducer
+  consumer: Olrun/Claude-Dispatch_as_spatial_factory_coordinator
+
+world_effect_ceiling:
+  performed:
+    - read_native_task_inventory
+    - read_claim_and_preflight
+    - inspect_target_branch_commit_compare_and_two_allowed_file_blobs
+    - write_one_immutable_hold_receipt
+  not_performed:
+    - production_code_edit
+    - test_execution
+    - executor_dispatch
+    - task_mutation
+    - merge_deploy_publish_send_spend_account_or_security_change
+
+rollback:
+  receipt: immutable_history_supersede_only_never_edit_or_delete
+  target_branch: no_change_by_S06
+
+honest_flaw: >-
+  Git reads are point-in-time and the branch can advance again after this receipt. The connector exposes commit and
+  file readback but no direct shell, test runtime, or distinct-provider ingress. The two observed commits look
+  aligned with the claimed goal and allowed paths, but without the producer return S06 cannot prove who executed
+  them, whether fee50a7 was re-read before the first write, which commands ran, their exit codes, or whether the
+  acceptance tests actually passed.
