@@ -1,0 +1,132 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+experiment_id: X11_GIT_READ_WRITE_READBACK_V1
+campaign_version: 1
+wake_index: 3
+result: MEASURED_STALE_SHA_REJECTION
+callsign_or_seat: X11_CARRIER_SURFACE_PDCA
+carrier_task_id_expected: 6a55089a9adc8191bda54541f7f9effa
+carrier_task_id_observed: 6a55089a9adc8191bda54541f7f9effa
+carrier_task_id_match: true
+valid_time_utc: 2026-08-01T03:41:45Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+expected_current_version: 6
+next_current_version: 7
+controlled_factor: git_read_write_readback
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+next_consumer: Reginleif_and_Ratatoskr
+evidence_expiry_utc: 2026-08-08T03:41:45Z
+sealed: false
+---
+
+self_probe:
+  task_id_match: true
+  native_tasks_read_visibility: AVAILABLE_AND_USED
+  github_fetch_file: AVAILABLE_AND_USED
+  github_create_file: AVAILABLE_AND_USED
+  github_update_file: AVAILABLE_AND_USED
+  slack_read_write: AVAILABLE_PENDING_CHANGED_CAPABILITY_POINTER
+  interactive_login_attempted: false
+
+baseline:
+  prior_current_version: 6
+  prior_current_blob: eed52e458383153463970e16297e58584916a022
+  prior_accepted_wakes: 2
+  prior_result: MEASURED_EXACT_READBACK_REPEAT
+  current_campaign_status: ACTIVE
+  prior_claim_ceiling: two_same_provider_single_writer_exact_branch_bound_create_and_readback_successes_only
+
+hypothesis: >-
+  GitHub Contents single-path optimistic concurrency will reject a replacement
+  attempted with a stale blob SHA, and exact branch-bound readback after rejection
+  will preserve the newer bytes and blob SHA without operator relay.
+
+exact_probe:
+  probe_path: state/coordination/experiments/carrier_surface_x11/probes/20260801T034039Z_STALE_SHA_POINTER.yaml
+  step_1: create disposable pointer version 1 on the exact canonical branch
+  step_2: fetch and bind version-1 blob SHA cc68e6485395906630a967da64b7c98d6c20336d
+  step_3: replace with version 2 using the current version-1 blob SHA
+  step_4: attempt version 3 using the now-stale version-1 blob SHA
+  step_5: fetch exact branch/path and recompute final bytes and digests
+  mutation_scope: experiment_metadata_only
+  harmlessness: no production code, deployment, merge, secret, account, task, or destructive effect
+
+measured_result:
+  create_v1_status: SUCCESS
+  create_v1_commit: 75e9c73fb47aac413fdbe1a33c12b0e3708e139d
+  create_v1_bytes: 140
+  create_v1_sha256: dfdfb21e16fc1c4971ffa39af61bb99c88ae4816cfe06cc7ed8e13877c825f3b
+  create_v1_blob: cc68e6485395906630a967da64b7c98d6c20336d
+  valid_update_v2_status: SUCCESS
+  valid_update_v2_commit: 0324e85d4743ca99182eec36ad7fb79f35126776
+  valid_update_v2_bytes: 158
+  valid_update_v2_sha256: d798915d10ce07383425037556b8f4f69bfd2d36a860e0a8362f8b30f56480cc
+  valid_update_v2_blob: 8645501e64c3e391202a29f0c577d9900d691a83
+  stale_update_v3_status: REJECTED
+  stale_update_http_status: 409
+  stale_update_error_class: BLOB_SHA_MISMATCH_CONFLICT
+  stale_update_attempted_blob: cc68e6485395906630a967da64b7c98d6c20336d
+  stale_update_candidate_sha256: 781e77e23ed3532c7182b7deb21a92b7bd278194aeccd3ca16aa4f0ecc3e1ae3
+  final_readback_version: 2
+  final_readback_bytes: 158
+  final_readback_sha256: d798915d10ce07383425037556b8f4f69bfd2d36a860e0a8362f8b30f56480cc
+  final_readback_blob: 8645501e64c3e391202a29f0c577d9900d691a83
+  newer_bytes_preserved_after_conflict: true
+  stale_candidate_absent_after_conflict: true
+  branch_bound_readback: true
+  operator_relay_minutes: 0
+
+permission_and_error:
+  permission_class: BRANCH_FILE_CREATE_READ_AND_SHA_BOUND_UPDATE_SUCCESS
+  error_class: EXPECTED_409_STALE_SHA_CONFLICT
+  interactive_login_required: false
+  rate_limit_observed: false
+  create_v1_connector_latency_ms: 848
+  valid_update_v2_connector_latency_ms: 776
+  stale_update_connector_latency_ms: NOT_EXPOSED
+  readback_latency_ms: NOT_EXPOSED
+
+comparison:
+  capability_change_from_wake_2: true
+  newly_measured_capability: stale_single_path_blob_sha_rejected_with_409_and_newer_bytes_preserved
+  accepted_wake: true
+  slack_post_required: true
+
+atomicity_and_concurrency_limits:
+  directly_observed:
+    - one stale blob SHA replacement was rejected with HTTP 409
+    - final exact branch-bound readback retained the newer version-2 bytes and blob
+    - create and valid replacement each produced separate commits
+  not_proven:
+    - behavior under genuinely simultaneous writers
+    - fairness or ordering among competing writers
+    - atomicity across probe, event, and CURRENT
+    - database transaction semantics
+    - compare-and-swap across multiple paths
+    - exactly-once execution or hidden retry behavior
+    - durability independent of GitHub service
+  required_wording: >-
+    This probe demonstrates one-path stale-SHA rejection in one sequential run.
+    Git specimen, event, and CURRENT remain separate commits and do not provide
+    database guarantees.
+
+strongest_falsifier: >-
+  A repeat accepts a stale blob SHA; final readback contains the stale candidate;
+  a concurrent writer is silently overwritten despite a stale expected SHA; the
+  connector retries with a refreshed SHA without exposing that behavior; or the
+  readback resolves a different branch or path.
+
+honest_flaw: >-
+  This is a same-provider sequential simulation, not a truly concurrent-writer test.
+  It validates one observed 409 path only. The disposable probe remains in Git history,
+  and separate commits can still leave orphaned specimens, events, or pointers after
+  partial failure. No independent verifier has consumed this result.
+
+campaign_progress:
+  accepted_wakes: 3
+  target_wakes_before_decision: 4
+  decision_due_on_wake: 4
+  next_probe: repeat stale-SHA rejection once with a fresh disposable pointer, then issue KEEP, REVISE, RESEAT_VARIABLE, or HOLD and select the next controlled factor
+  binding_weight: 0
