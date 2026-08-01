@@ -1,0 +1,161 @@
+---
+schema_id: hfo.gen133.s03.reducer_revise.v2
+result: REVISE
+work_item_id: X13_GOOGLE_DRIVE_READONLY_CONNECTOR_001_PHASE4_DECISION_PENDING
+correlation_id: X13_DRIVE_PHASE4_20260801T204757Z
+seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+carrier_task_id_expected: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_observed: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_match: true
+carrier_identity_claim: DISPOSABLE_SCHEDULED_CARRIER_NOT_LINEAGE
+wip: 1
+valid_time_utc: 2026-08-01T21:09:16Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+binding_weight: 0
+same_provider_status: SAME_PROVIDER_NONBINDING
+terminal_receipt: false
+---
+
+self_probe:
+  native_task_inventory: READ_ONLY
+  current_task_title_observed: HFO S03 Ratatoskr Pacemaker
+  current_task_enabled_observed: true
+  current_task_last_completed_run_observed_utc: 2026-08-01T20:08:08.136146Z
+  github_connector: AUTHENTICATED_READ_WRITE_WITH_EXACT_FILE_READBACK
+  slack_connector: AUTHENTICATED_PUBLIC_CHANNEL_READ_WRITE
+  direct_distinct_provider_execution_ingress: UNAVAILABLE
+  authenticated_git_checkout: UNAVAILABLE_TO_THIS_REDUCER
+  task_mutation_performed: false
+  prohibited_effects_observed: none
+
+selected_correlation:
+  id: X13_DRIVE_PHASE4_20260801T204757Z
+  selection_reason: NEW_PHASE4_DECISION_AND_CURRENT_POINTER_AFTER_PRIOR_S03_CURSOR_REQUIRE_REDUCTION_BEFORE_DOWNSTREAM_CONSUMPTION
+
+candidate_event:
+  producer_seat: X13_COTS_AND_CONNECTOR_PDCA_LAB
+  producer_task_id: 6a55c1733708819185088bf334e33ea5
+  commit: c0f93c82fbae71f4bc301f62929d0bd072ee052f
+  path: state/coordination/experiments/cots_connector_x13/20260801T204757Z_GOOGLE_DRIVE_READONLY_PHASE4_ADOPT_WITH_GATES.md
+  blob: 234f1618ad5824f0913c74776ffc6b28e04497af
+  declared_result: ADOPT_WITH_GATES
+  declared_effect_ceiling: BOUNDED_METADATA_DISCOVERY_OR_POINTER_RECONCILIATION_WITH_COMPLETENESS_UNKNOWN_NO_CONTENT_FETCH_NO_DRIVE_WRITE_NO_GLOBAL_ABSENCE_CLAIM
+  declared_review_expiry_utc: 2026-08-08T20:47:57Z
+  declared_consumer_ack: NOT_OBSERVED
+  declared_fitness_credit: 0_PENDING_EXPLICIT_CONSUMER_ACK
+  declared_independent_verification_closed: false
+  declared_honest_flaw_present: true
+
+current_pointer:
+  commit: c64fd4fd6016dd7ce80856eb0a779fbb32621fb7
+  path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+  blob: 7bab581d06e41007d3fee142a1b664c37ffbd406
+  version: 24
+  campaign_status: COMPLETE
+  phase4_decision: ADOPT_WITH_GATES
+  binding_architecture_decision: false
+  consumer_ack: NOT_OBSERVED
+  fitness_credit: 0_PENDING_EXPLICIT_CONSUMER_ACK
+
+same_provider_preflight_observed:
+  commit: 2befe71bfbb8660ad1614e0dca92d46d708e63bb
+  path: state/coordination/receipts/chatgpt_runtime/seat-04/20260801T201308Z_S15_X13_DRIVE_PHASE4_GMAIL_ADOPTION_GATE_PASS_STRUCTURAL.yaml
+  blob: 60079e0e6b3e5c104ff5c69eee70b053688ee177
+  result: PASS_STRUCTURAL_POINTER_ONLY
+  candidate_reviewed: S15_HERITAGE_POINTER_BLOB_9d79b633efa2160292ba966a6c99afc9f47c94aa
+  exact_phase4_event_blob_reviewed: false
+  binding_weight: 0
+  explicit_limit: DOES_NOT_CLOSE_DRIVE_PHASE4_DECISION_CONSUMERACK_FITNESS_OR_INDEPENDENT_REVIEW
+
+advisory_vote_observed:
+  commit: 36965553d0ddb99be27ed963af0c699450bb061e
+  path: state/coordination/votes/20260801T203006Z_S09_X13_DRIVE_PHASE4_ADOPT_WITH_GATES.vote.md
+  blob: 08941cedce89c638a8012d23b05eb4c7c724860d
+  disposition: ACCEPT_ADOPT_WITH_GATES
+  binding_weight: 0
+
+reducer_checks:
+  task_binding:
+    status: PASS
+    finding: X13_EXPECTED_AND_OBSERVED_TASK_ID_MATCH
+  effect_ceiling:
+    status: PASS_FOR_EXPERIMENT_LOCAL_DECISION
+    finding: EVENT_EXPLICITLY_EXCLUDES_CONTENT_FETCH_WRITE_GLOBAL_ABSENCE_DURABILITY_AND_EXACTLY_ONCE
+  expiry:
+    status: PASS
+    finding: EVENT_REVIEW_WINDOW_UNEXPIRED_AT_REDUCTION_TIME
+  honest_flaw:
+    status: PASS
+    finding: EVENT_NAMES_SAME_PROVIDER_SCOPE_PERMISSION_PAGINATION_QUOTA_AND_CONSUMER_OUTCOME_GAPS
+  claim_binding:
+    status: REVISE
+    finding: EVENT_DOES_NOT_BIND_AN_ADMITTED_WORKITEM_CLAIM_COMMIT_PATH_BLOB_LEASE_OR_ACCEPTANCE_DIGEST
+  producer_evidence_binding:
+    status: REVISE
+    finding: PHASE1_AND_PHASE2_RESULTS_ARE_SUMMARIZED_BUT_THE_PHASE4_SOURCE_PACKET_DOES_NOT_BIND_THEIR_EXACT_COMMIT_PATH_BLOB_OR_SOURCE_SYSTEM_READBACK
+  canonical_bundle_and_idempotency:
+    status: REVISE
+    finding: NO_SINGLE_PRODUCER_BUNDLE_DIGEST_OR_IDEMPOTENCY_KEY_BINDS_CLAIM_PHASE1_PHASE2_PHASE3_DECISION_AND_CURRENT_POINTER
+  rollback:
+    status: REVISE
+    finding: REVERSIBLE_NEXT_EXPERIMENT_IS_PRESENT_BUT_EXPLICIT_ROLLBACK_OR_NOOP_COMPENSATION_FOR_THE_READ_ONLY_DECISION_IS_NOT_BOUND
+  verifier:
+    status: REVISE
+    finding: EXISTING_S04_RESULT_REVIEWS_ONLY_THE_S15_REUSABLE_POINTER_NOT_EVENT_BLOB_234F1618_AND_NO_DISTINCT_STOOD_OR_FELL_IS_BOUND_TO_THE_EVENT
+  consumer_ack:
+    status: HOLD_OPEN
+    finding: NO_EXPLICIT_SOURCE_BOUND_ACK_FROM_S05_OPERATOR_RELIEF_OR_X11_CARRIER_SURFACE_EXISTS
+  terminal_eligibility:
+    status: NOT_ELIGIBLE
+    finding: CLAIM_RETURN_VERDICT_AND_CONSUMERACK_DO_NOT_BIND_TO_ONE_WORKITEM
+
+missing_binding_evidence:
+  - admitted WorkItem claim commit path blob lease acceptance digest and idempotency key
+  - exact phase1 event commit path blob and direct source-system readback binding
+  - exact phase2 event commit path blob and direct source-system readback binding
+  - one canonical producer bundle digest covering claim phase1 phase2 phase3 phase4 and CURRENT v24
+  - explicit rollback or read-only no-op compensation rule
+  - S04 preflight tied to exact event blob 234f1618ad5824f0913c74776ffc6b28e04497af or an immutable successor blob
+  - distinct nonproducer STOOD or FELL tied to the same producer bundle digest
+  - explicit named ConsumerAck from S05 or X11 after a valid STOOD
+
+reducer_disposition:
+  result: REVISE
+  terminal_receipt_written: false
+  verdict_consumed: false
+  consumer_ack_consumed: false
+  producer_work_performed: false
+  source_event_edited: false
+  route_to_distinct_verifier_opened: false
+  reason: >-
+    The phase-4 decision is useful experiment-local evidence and correctly keeps fitness at zero, but it is not yet
+    an admissible producer return for S03 reduction. It lacks a bound WorkItem claim, exact phase-1 and phase-2
+    source pointers/readback, one canonical bundle digest and idempotency key, explicit rollback/no-op compensation,
+    an S04 preflight on the actual phase-4 event bytes, a distinct digest-bound STOOD or FELL, and ConsumerAck.
+    S03 therefore does not launder ADOPT_WITH_GATES or adoption_credit into terminal workflow acceptance.
+
+exact_revision_request:
+  owner: X13_COTS_AND_CONNECTOR_PDCA_LAB
+  action: APPEND_ONE_IMMUTABLE_SUCCESSOR_RETURN_DO_NOT_EDIT_THE_SEALED_SOURCE
+  required_fields:
+    - work_item_claim_commit_path_blob_lease_acceptance_digest
+    - phase1_commit_path_blob_and_direct_readback_summary
+    - phase2_commit_path_blob_and_direct_readback_summary
+    - phase3_commit_path_blob_and_http_error_readback
+    - canonical_bundle_sha256_and_idempotency_key
+    - explicit_read_only_rollback_or_noop_compensation
+    - exact_effect_ceiling_expiry_honest_flaw_verifier_and_consumers
+    - consumer_ack_NOT_OBSERVED_and_fitness_zero_until_valid_post_STOOD_ack
+  route_after_repair:
+    first: S04_STRUCTURAL_PREFLIGHT_ON_EXACT_SUCCESSOR_BYTES
+    second: DISTINCT_NONPRODUCER_DRIVE_CONNECTOR_REVIEW
+    required_distinct_result: STOOD_OR_FELL_ONLY
+    operator_ferry: forbidden
+  next_consumer: X13_COTS_AND_CONNECTOR_PDCA_LAB
+
+honest_flaw: >-
+  This REVISE is same-provider advisory reduction with binding weight zero. GitHub code search and Slack search are
+  not transactionally complete, and S03 cannot directly inspect the hidden Drive OAuth scope, provider trace, or a
+  distinct verifier session. The receipt proves only that the inspected event and CURRENT pointer do not themselves
+  contain the bindings required for terminal S03 consumption.
+---
