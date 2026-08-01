@@ -1,0 +1,105 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+experiment_id: X11_GOOGLE_DRIVE_READ_SURFACE_V1
+carrier: X11
+actor: X11_CARRIER_AND_TOOL_SURFACE_PDCA_LAB
+task_binding:
+  expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+  observed_task_id: 6a55089a9adc8191bda54541f7f9effa
+  match: true
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+wip_limit: 1
+self_probe:
+  exposed_tools:
+    - native_tasks_inventory_read
+    - github_read_write
+    - google_drive_metadata_search
+    - slack_read_write
+    - web_research
+  unavailable_or_not_used:
+    - shell_runtime
+    - independent_provider_verifier
+prior_current:
+  expected_version: 21
+  blob: 42debd8f26f6e46b3bea7da135c8f2fb38323dd0
+  campaign: X11_GOOGLE_DRIVE_READ_SURFACE_V1
+  accepted_wakes: 1
+campaign:
+  controlled_factor: google_drive_read_surface
+  accepted_wake: 2
+  target_wakes_before_decision: 4
+baseline:
+  prior_probe_result_count: 0
+  prior_error_class: NONE
+  prior_external_call_time_ms: 1338
+  prior_latency_class: ONE_TO_TWO_SECONDS
+hypothesis: >-
+  Repeating the identical metadata-only Google Drive negative-control query will
+  preserve the zero-result and no-error classes without interactive login or
+  private-data exposure. Exposed latency may vary while remaining in the same
+  coarse class.
+exact_probe:
+  tool: Google_Drive.search
+  mode: read_only_metadata_only
+  query: HFO_X11_NEGATIVE_CONTROL_6a55089a9adc8191bda54541f7f9effa_v20
+  item_type: document
+  topn: 5
+  best_effort_fetch: false
+  expected_result_count: 0
+  privacy_rule: persist_only_status_count_permission_error_and_latency
+measured_result:
+  connector_call_completed: true
+  result_count: 0
+  expected_negative_control_result_observed: true
+  result_class_changed: false
+  error_present: false
+  error_code: null
+  error_http_status_code: null
+  error_class_changed: false
+  content_fetch_attempted: false
+  private_file_titles_externalized: false
+  private_file_bodies_externalized: false
+  mutation_performed: false
+permission_class: AUTHENTICATED_GOOGLE_DRIVE_METADATA_SEARCH_AVAILABLE
+error_class: NONE
+latency:
+  exposed_by_tool: true
+  external_call_time_ms: 1161
+  prior_external_call_time_ms: 1338
+  delta_ms: -177
+  coarse_class: ONE_TO_TWO_SECONDS
+  coarse_class_changed: false
+operator_relay_minutes: 0
+measured_delta: >-
+  The second identical probe reproduced the same zero-result and no-error classes.
+  Exposed latency decreased by 177 ms, from 1338 ms to 1161 ms, while remaining
+  in the same one-to-two-second coarse class. No capability or permission-class
+  change was observed.
+strongest_falsifier: >-
+  A controlled known-existing document with an exact unique title fails to appear
+  under the same metadata-only search mode, the synthetic nonce unexpectedly
+  appears, or repeated probes drift in permission or result class without an
+  authenticated-surface change.
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer:
+  - Reginleif
+  - Ratatoskr
+expiry_utc: 2026-08-08T18:39:02Z
+result: GOOGLE_DRIVE_NEGATIVE_CONTROL_REPEAT_ACCEPTED
+next_probe: >-
+  Repeat the identical metadata-only negative-control query once more and compare
+  result, error, and latency classes without persisting any private titles or bodies.
+honest_flaw: >-
+  Two empty negative-control searches still do not test recall against a known
+  positive document, content-read permission, shared-drive coverage, indexing
+  completeness, or portability. Latency is connector-exposed wall time, not a
+  controlled network benchmark. Verification remains same-provider with binding
+  weight zero.
+valid_time_utc: 2026-08-01T18:39:02Z
+transaction_time_utc: 2026-08-01T18:39:02Z
+evidence_class: DIRECT_CONNECTOR_READBACK_SAME_PROVIDER_NONBINDING
+binding_weight: 0
+effect_ceiling: READ_ONLY_DRIVE_METADATA_SEARCH_PLUS_GIT_RECEIPT
+sealed: false
+---
