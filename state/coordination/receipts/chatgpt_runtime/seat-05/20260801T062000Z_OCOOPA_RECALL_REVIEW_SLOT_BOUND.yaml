@@ -1,0 +1,72 @@
+schema: hfo.gen133.operator_relief_receipt.v1
+receipt_id: S05-20260801T062000Z-OCOOPA-RECALL-REVIEW-SLOT
+immutable: true
+task_id: 6a55c182078c8191b89f2dd15f5f640c
+seat: S05
+result: DEADLINE_APPOINTMENT_BOUND
+material_change: true
+valid_time_utc: 2026-08-01T06:17:11Z
+transaction_time_utc: 2026-08-01T06:20:00Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+wip_limit: 1
+self_probe:
+  identity: HFO_GEN133_S05_OPERATOR_RELIEF
+  expected_task_id_match: true
+  readable_surfaces:
+    - Gmail
+    - Google_Calendar
+    - GitHub
+    - Slack
+  writable_surfaces_used:
+    - Google_Calendar
+    - GitHub
+    - Slack
+active_item:
+  id: OCOOPA_SAFETY_RECALL_DRAFTS
+  state: REVIEW_AND_SEND_SLOT_BOUND
+  owner: TTao_operator
+changed_evidence:
+  gmail:
+    source_system: Gmail
+    pointers:
+      - message:19fba431c2986dc1
+      - message:19fba42fe7f8076f
+    sanitized_fact: Two separate family safety-notice messages remain in Draft state and require operator review before sending.
+  calendar_gap:
+    source_system: Google_Calendar
+    sanitized_fact: No existing OCOOPA recall event was found in the bounded August 1 through August 5 window.
+transition:
+  prior_state: Safety drafts existed without a bound execution slot.
+  next_state: A private ten-minute calendar block is bound for 2026-08-01 09:40-09:50 America/Denver with direct draft pointers, two reminders, and an explicit Gmail SENT readback gate.
+  calendar_event_id: 0p8vql5n27cp2h749sq7644noo
+  source_readback: CONFIRMED
+  email_send_performed: false
+  draft_body_modified: false
+  spend_performed: false
+  private_body_externalized: false
+priority_control:
+  p0:
+    id: OCOOPA_SAFETY_RECALL_DRAFTS
+    state: OPERATOR_REVIEW_AND_SEND_REQUIRED
+    bound_time_local: 2026-08-01T09:40:00-06:00
+  p1:
+    - id: PARTY_SAFARI_PERMISSION
+      due: 2026-08-04
+    - id: PFA_DISCLOSURE
+      due: 2026-08-05
+operator_relief:
+  estimated_minutes_removed: 6
+  next_consumer: TTao_operator_safety_closeout
+  next_action: At the bound calendar block, review each recipient and message, send separately, then confirm both records show SENT rather than DRAFT in Gmail.
+privacy:
+  git_and_slack_ceiling: SANITIZED_FACTS_AND_SOURCE_POINTERS_ONLY
+  excluded_from_git_and_slack:
+    - recipient_names
+    - recipient_addresses
+    - email_bodies
+    - order_details
+    - product possession assumptions
+rollback:
+  method: Move or delete the private calendar event if the operator resolves the drafts earlier or chooses a different review time; the Gmail drafts remain unchanged until explicit operator action.
+honest_flaw: Calendar binding removes search and scheduling work but does not prove the recalled product is still possessed, that either message was sent, delivered, read, or acknowledged.
