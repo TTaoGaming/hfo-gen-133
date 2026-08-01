@@ -1,174 +1,157 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
-experiment_id: X13_GOOGLE_DRIVE_READONLY_CONNECTOR_001
-version: 24
-prior_version: 23
-candidate: Google_Drive_read_only_search_fetch_and_metadata_connector
-candidate_contract_reference: official_Google_Drive_files_list_fields_scopes_limits_errors_plus_direct_connector_receipts
-campaign_wake: 4_of_4
-campaign_status: COMPLETE
+experiment_id: X13_GOOGLE_CONTACTS_READONLY_CONNECTOR_001
+version: 25
+prior_version: 24
+candidate: Google_Contacts_read_only_lookup_and_recipient_resolution_connector
+candidate_contract_reference: official_Google_People_searchContacts_people_get_Person_scopes_cache_and_field_masks_plus_direct_connector_receipt
+campaign_wake: 1_of_4
+campaign_status: ACTIVE
 phase_1_completed: true
-phase_2_completed: true
-phase_3_completed: true
-phase_4_completed: true
-phase_4_decision: ADOPT_WITH_GATES
+phase_2_completed: false
+phase_3_completed: false
+phase_4_completed: false
+phase_4_decision: PENDING
 binding_architecture_decision: false
-last_event_commit: c0f93c82fbae71f4bc301f62929d0bd072ee052f
-last_event_path: state/coordination/experiments/cots_connector_x13/20260801T204757Z_GOOGLE_DRIVE_READONLY_PHASE4_ADOPT_WITH_GATES.md
-last_event_blob_sha: 234f1618ad5824f0913c74776ffc6b28e04497af
-prior_current_commit: 612c38005f7b6f4a9859f150f8c11b1aff27209c
-prior_current_blob_sha: 0f16ddcf965259ce8533c6b97dd0be0586b3b34b
+last_event_commit: f2e4df9e1aabd72ff89fe3c1686dc9ff30759ded
+last_event_path: state/coordination/experiments/cots_connector_x13/20260801T214825Z_GOOGLE_CONTACTS_READONLY_PHASE1_BASELINE.md
+last_event_blob_sha: db1b207ce2baac4c3e5f3e68cc51168b08a9e248
+prior_current_commit: c64fd4fd6016dd7ce80856eb0a779fbb32621fb7
+prior_current_blob_sha: 7bab581d06e41007d3fee142a1b664c37ffbd406
 carrier_task_id: 6a55c1733708819185088bf334e33ea5
 carrier_task_id_match: true
 carrier_task_id_observation_source: NATIVE_AUTOMATIONS_LIST_READBACK
-effect_ceiling: BOUNDED_METADATA_DISCOVERY_OR_POINTER_RECONCILIATION_WITH_COMPLETENESS_UNKNOWN_NO_CONTENT_FETCH_NO_DRIVE_WRITE_NO_GLOBAL_ABSENCE_CLAIM
-adoption_credit: 4
-adoption_credit_basis: OFFICIAL_PRIMARY_CONTRACT_PLUS_SYNTHETIC_EMPTY_BASELINE_PLUS_ONE_EXACT_NAME_METADATA_ONLY_RECONCILIATION_PLUS_ONE_SYNTHETIC_INVALID_CURSOR_FAILURE_TRACE_PLUS_PHASE4_BOUNDED_DECISION
-fitness_credit: 0_PENDING_EXPLICIT_CONSUMER_ACK
+effect_ceiling: ONE_SYNTHETIC_READ_ONLY_CONTACT_SEARCH_NO_MATCH_NO_CONTACT_BODY_READ_NO_RECIPIENT_SELECTION_NO_SEND_NO_CONTACT_WRITE_NO_IDENTITY_EXTERNALIZATION
+adoption_credit: 1
+adoption_credit_basis: OFFICIAL_PRIMARY_CONTRACT_PLUS_ONE_SYNTHETIC_EMPTY_DIRECT_CONNECTOR_TRACE
+fitness_credit: 0_PENDING_EXPLICIT_SOURCE_BOUND_CONSUMER_ACK
 consumer_ack: NOT_OBSERVED
 same_provider_binding_weight: 0
 independent_verification_closed: false
 operator_relay_minutes: 0
-operator_minutes_removed_measured: 0_NO_NAMED_CONSUMER_ACK
+operator_minutes_removed_measured: 0_NO_NAMED_OBLIGATION_RESOLVED
 operator_minutes_removed_estimate_per_bounded_lookup: 1_to_3_UNVALIDATED
 custom_code_avoided_estimate:
-  bounded_query_and_metadata_normalization: 40_to_120_LOC_UNVALIDATED
-  exact_filter_construction_and_result_mapping: 20_to_60_LOC_UNVALIDATED
-  provider_pagination_plumbing: 20_to_80_LOC_UNVALIDATED
-  provider_error_parsing_and_normalization: 20_to_60_LOC_UNVALIDATED
-  authentication_and_token_refresh: MATERIAL_BUT_UNQUANTIFIED
-  content_download_or_export_code: 0_NOT_USED
-  safe_restart_deduplication_privacy_redaction_completeness_policy_and_workflow_durability: NOT_AVOIDED_REQUIRES_HFO_GATES
+  contact_query_and_result_normalization: 30_to_80_LOC_UNVALIDATED
+  recipient_candidate_display_and_selection: 20_to_80_LOC_UNVALIDATED
+  authenticated_people_api_client_and_token_refresh: MATERIAL_BUT_UNQUANTIFIED
+  duplicate_disambiguation_privacy_redaction_cache_freshness_and_approval_policy: NOT_AVOIDED_REQUIRES_HFO_GATES
   additive_total: NOT_CLAIMED_BECAUSE_FUNCTIONS_OVERLAP
 credentials:
-  connector_authenticated_in_prior_probes: true
-  operator_supplied_credentials_phase4: 0
+  connector_authenticated_in_phase1: true
+  operator_supplied_credentials_phase1: 0
   live_identity: UNKNOWN
   live_oauth_scope: UNKNOWN
   token_type: UNKNOWN
   credential_custody: UNKNOWN
-official_quota_model_checked_2026_08_01:
-  reference_last_updated_utc: 2026-07-31
-  new_model_effective_date: 2026-05-01
-  per_minute_per_project_quota_units: 1000000
-  per_minute_per_user_per_project_quota_units: 325000
-  per_day_per_project_egress: 1_TB
-  daily_billing_threshold_quota_units: 400000000
-  files_list_quota_units: 100
-  files_get_quota_units: 5
-  files_download_quota_units: 200
-  standard_use_below_threshold: NO_ADDITIONAL_COST_DOCUMENTED
-  grandfathering_possible: true
 paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
 direct_connector_request_count: NOT_PROVEN
 live_quota_headers_or_units: NOT_EXPOSED
 actual_project_quota_class: UNKNOWN
-durability: GOOGLE_DRIVE_PROVIDER_STORAGE_AND_STABLE_FILE_ID_ONLY_NO_WORKFLOW_REPLAY_RESUME_TRANSACTION_IDEMPOTENCY_OR_EXACTLY_ONCE_CLAIM
-observability: MEDIUM_FOR_BOUND_SUCCESS_AND_SYNTHETIC_FAILURE_PROVIDER_METHOD_QUERY_TRANSLATION_FIELD_MASK_CORPUS_PAGE_SIZE_AND_ERROR_LOCATION_BUT_LOW_FOR_SCOPE_IDENTITY_HEADERS_QUOTA_RETRIES_LATENCY_SUCCESS_CALL_FANOUT_AND_WRAPPER_CONTROL_FLOW
-portability: MEDIUM_FOR_EXACT_NAME_DISCOVERY_STANDARD_HTTP_ERRORS_OPAQUE_PAGE_TOKENS_AND_PROVIDER_NEUTRAL_POINTER_RECONCILIATION_LOW_TO_MEDIUM_FOR_WRAPPER_ITEM_TYPE_TRANSLATION_ALLDRIVES_DEFAULT_FIELD_MASK_ERROR_SHAPE_AND_HIDDEN_SCOPE
-measured_surface:
-  phase_1:
-    result: SUCCESS_EMPTY
-    mode: SYNTHETIC_METADATA_ONLY_ONE_PAGE
-    topn: 3
-    best_effort_fetch: false
-    content_returned: false
-    latency_ms: 350
-  phase_2:
-    result: SUCCESS_ONE_EXACT_TITLE_MATCH
-    mode: ALREADY_EXTERNALIZED_ARTIFACT_METADATA_ONLY
-    content_returned: false
-    stable_pointer_returned: true
-    raw_identifier_persisted: false
-  phase_3:
-    result: HTTP_400_INVALID_ARGUMENT_AT_PAGETOKEN
-    mode: SYNTHETIC_INVALID_CURSOR
-    content_returned: false
-    retry_observed: false
-    raw_provider_request_url_echoed: true
-    corpora: allDrives
-    incompleteSearch_requested: false
+direct_receipt:
+  action: Google_Contacts.search_contacts
+  query_class: SYNTHETIC_HIGH_ENTROPY_NO_MATCH
+  query_sha256: e72c906ca73ab85339ac2259a07643060c1dae8ce9244873cb3781f89388be3e
+  max_results: 3
+  result: SUCCESS_EMPTY
+  result_count: 0
+  contact_body_returned: false
+  identity_bearing_result_returned: false
+  connector_error: none
+  external_call_time_ms: 972
+  connector_id_present: true
+  connector_id_sha256: 478d5d64c3c1cd5739c60eca0bcb3b6b9fbc7107545f88cf77f165f2dd77b26f
+official_contract_checked_2026_08_01:
+  search_endpoint: people.searchContacts
+  source_contract: AUTHENTICATED_USERS_GROUPED_CONTACTS_FROM_CONTACT_SOURCE
+  match_semantics: PREFIX_PHRASE_OVER_NAMES_NICKNAMES_EMAILS_PHONES_AND_ORGANIZATIONS
+  maximum_page_size: 30
+  read_mask_required: true
+  cache_warmup_required: EMPTY_QUERY_THEN_WAIT_SEVERAL_SECONDS
+  accepted_search_scopes:
+    - contacts
+    - contacts.readonly
+  people_get_field_mask_required: true
+  merged_person_sources_possible: true
+connector_variance:
+  exposed_inputs:
+    - query
+    - max_results
+  hidden_or_unattested:
+    - readMask
+    - source_selection
+    - empty_query_cache_warmup
+    - warmup_to_search_delay
+    - upstream_method_and_request_url
+    - oauth_scope_and_authenticated_identity
+    - grouped_contact_vs_directory_or_profile_source_behavior
+    - request_count_quota_class_retries_headers_and_wrapper_fanout
 failure_semantics:
-  empty_success: NO_MATCH_IN_ONE_BOUNDED_QUERY_NOT_GLOBAL_ABSENCE_PERMISSION_PROOF_OR_COMPLETE_SEARCH
-  exact_title_success: LOCATION_OR_POINTER_RECONCILIATION_ONLY_NOT_CONTENT_IDENTITY_FRESHNESS_UNIQUENESS_CANONICALITY_OR_CURRENT_STATE
-  invalid_page_token: CLIENT_CURSOR_FAILURE_NOT_PERMISSION_DENIAL_OR ABSENCE_DISCARD_AND_RESTART_IDENTICAL_BOUNDED_QUERY_FROM_PAGE_ONE_AT_MOST_ONCE
-  permission_401_403_404: NOT_DIRECTLY_TESTED
-  rate_limit_429_and_5xx: NOT_DIRECTLY_TESTED
-admitted_scope:
-  - ONE_NAMED_OBLIGATION_OR_ALREADY_EXTERNALIZED_ARTIFACT
-  - SHORT_SPECIFIC_QUERY_LOW_TOPN_EXPLICIT_ITEM_TYPE
-  - BEST_EFFORT_FETCH_FALSE_BY_DEFAULT
-  - METADATA_ONLY_DISCOVERY_OR POINTER_RECONCILIATION
-  - EXACT_TITLE_MATCH_AS_LOCATION_SIGNAL_ONLY
-  - EMPTY_RESULT_AS_NO_MATCH_IN_ONE_BOUNDED_QUERY_ONLY
-  - ONE_BOUNDED_RESTART_FROM_PAGE_ONE_AFTER_REJECTED_TOKEN_WITH_PRIVATE_STABLE_ID_DEDUPLICATION
-  - USER_OR_ONE_NAMED_DRIVE_CORPUS_WHEN_COMPLETENESS_MATTERS_AND_CONSUMER_ACCEPTS_THE_BOUNDARY
+  empty_success: NO_MATCH_RETURNED_BY_ONE_WRAPPER_CALL_NOT_ABSENCE_DIRECTORY_PROOF_CACHE_FRESHNESS_OR COMPLETENESS
+  matched_result: NOT_TESTED
+  permission_401_403_404: NOT_TESTED
+  rate_limit_429_and_5xx: NOT_TESTED
+durability: GOOGLE_CONTACTS_PROVIDER_STORAGE_ONLY_NO_WORKFLOW_REPLAY_RESUME_TRANSACTION_IDEMPOTENCY_OR_EXACTLY_ONCE_CLAIM
+observability: MEDIUM_FOR_WRAPPER_ACTION_RESULT_COUNT_NORMALIZED_ERROR_CONNECTOR_ID_AND_LATENCY_BUT_LOW_FOR_UPSTREAM_REQUEST_FIELD_MASK_WARMUP_SCOPE_QUOTA_RETRIES_AND_CACHE_AGE
+portability: MEDIUM_FOR_PROVIDER_NEUTRAL_RECIPIENT_LOOKUP_INTENT_LOW_TO_MEDIUM_FOR_GOOGLE_PREFIX_MATCHING_MERGED_PERSON_SEMANTICS_OPAQUE_RESOURCE_NAMES_AND_WRAPPER_RESULT_NORMALIZATION
+provisional_scope:
+  - ONE_NAMED_OPERATOR_OBLIGATION
+  - ONE_BOUNDED_RECIPIENT_RESOLUTION_QUESTION
+  - LOW_RESULT_CAP
+  - SEARCH_FIRST
+  - NO_SEND_NO_INVITE_NO_CONTACT_WRITE
+  - READ_CONTACT_ONLY_IF_NAMED_CONSUMER_REQUIRES_ONE_SPECIFIC_MISSING_FIELD
 mandatory_gates:
-  - TREAT_METADATA_RESULTS_AS_SENSITIVE_POINTER_SURFACES
-  - DO_NOT_PERSIST_RAW_DRIVE_URL_FILE_ID_PARENT_ID_OWNER_OR_SHARING_IDENTITY_UNLESS_A_NAMED_CONSUMER_REQUIRES_THE_POINTER
-  - DO_NOT_EQUATE_EXACT_TITLE_MATCH_WITH_CONTENT_IDENTITY_FRESHNESS_UNIQUENESS_CANONICALITY_OR_CURRENT_STATE
-  - KEEP_BEST_EFFORT_FETCH_FALSE_UNLESS_A_NAMED_CONSUMER_REQUIRES_A_SPECIFIC_CONTENT_FIELD
-  - REQUIRE_CONTENT_FETCH_EXPORT_DOWNLOAD_OR_REVISION_READ_TO_USE_A_SEPARATE_PRIVATE_BODY_EFFECT_CEILING
-  - SANITIZE_PROVIDER_ERROR_URLS_QUERY_TERMS_AND_FILTERS_BEFORE_GIT_OR_SLACK_PERSISTENCE
-  - DISCARD_REJECTED_PAGE_TOKENS_AND_RESTART_THE_IDENTICAL_BOUNDED_QUERY_FROM_PAGE_ONE_AT_MOST_ONCE
-  - DEDUPLICATE_RESTARTED_RESULTS_PRIVATELY_BY_STABLE_FILE_ID
-  - DO_NOT_BLINDLY_RETRY_HTTP_400_INVALID_ARGUMENT
-  - USE_TYPED_BOUNDED_BACKOFF_ONLY_FOR_RATE_LIMIT_OR SERVER_FAILURES_AFTER_DIRECT_EVIDENCE_OR_OFFICIAL_CONTRACT_MAPPING
-  - DO_NOT_CLAIM_COMPLETE_OR_GLOBAL_ALLDRIVES_SEARCH_WHILE_INCOMPLETESEARCH_IS_NOT_EXPOSED_AND_PRESERVED
-  - DO_NOT_CLAIM_GLOBAL_ABSENCE_PERMISSION_STATE_LEAST_PRIVILEGE_EXACT_COST_EXACT_REQUEST_COUNT_WORKFLOW_DURABILITY_OR_EXACTLY_ONCE
+  - TREAT_MATCHED_RESULTS_AS_PRIVATE_IDENTITY_DATA
+  - PERSIST_ONLY_SANITIZED_COUNTS_FIELD_CLASSES_AND_DIGESTS_UNLESS_THE_CONSUMER_EXPLICITLY_REQUIRES_THE_ADDRESS
+  - NEVER_AUTO_SELECT_OR_SEND_FROM_FUZZY_PREFIX_DUPLICATE_OR_MULTI_SOURCE_RESULTS
+  - REQUIRE_OPERATOR_APPROVAL_BEFORE_EMAIL_SEND_INVITE_OR_EXTERNAL_ACTION
+  - TREAT_EMPTY_RESULT_AS_NO_MATCH_RETURNED_BY_ONE_WRAPPER_CALL_ONLY
+  - DO_NOT_CLAIM_CURRENT_CACHE_COMPLETENESS_UNTIL_WARMUP_BEHAVIOR_IS_EXPOSED_OR INDEPENDENTLY_MEASURED
+  - DO_NOT_CLAIM_LEAST_PRIVILEGE_WHILE_SCOPE_AND_FIELD_MASK_ARE_HIDDEN
   - FITNESS_REMAINS_ZERO_UNTIL_A_NAMED_DOWNSTREAM_WORKITEM_RECORDS_SOURCE_BOUND_CONSUMERACK_AND_MEASURED_OPERATOR_OUTCOME
 excluded_or_deferred_scope:
-  - GENERAL_DRIVE_MINING_UNBOUNDED_SEARCH_OR_EXHAUSTIVE_INVENTORY
-  - CONTENT_HYDRATION_EXPORT_RAW_DOWNLOAD_OR_REVISION_READ
-  - HIGH_RATE_POLLING_BULK_PAGINATION_OR_UNBOUNDED_RETRY
-  - COMPLETE_ALLDRIVES_OR_GLOBAL_ABSENCE_CERTIFICATION
-  - AUTHORITY_SCOPE_OR_CREDENTIAL_CUSTODY_CLAIM
-  - DRIVE_WRITE_SHARE_PERMISSION_ACCOUNT_OR_SECURITY_CHANGE
+  - GENERAL_CONTACT_EXPORT_OR_INVENTORY
+  - DIRECTORY_MINING_OR_GMAIL_HISTORY_INFERENCE
+  - CONTACT_BODY_PERSISTENCE_TO_GIT_OR_SLACK
+  - AUTOMATIC_RECIPIENT_SELECTION
+  - SEND_INVITE_CONTACT_WRITE_ACCOUNT_OR_SECURITY_CHANGE
   - PROVIDER_STORAGE_AS_WORKFLOW_DURABILITY
-source_packet:
-  phase3_event_commit: c7d95a9785c86f9e973df128077615bf2f156ef5
-  phase3_event_blob: 4481bbb88646113b373c217af33f5c795d67b2a3
-  s08_completeness_card_blob: 87249eb0a9c67f40f88b4116d8deac327c8c6396
-  s09_advisory_vote_blob: 08941cedce89c638a8012d23b05eb4c7c724860d
-verifier: S04_STRUCTURAL_PREFLIGHT_THEN_DISTINCT_NONPRODUCER_DRIVE_CONNECTOR_REVIEW
+verifier: S04_STRUCTURAL_PREFLIGHT_THEN_DISTINCT_NON_CHATGPT_CONTACT_CONNECTOR_REVIEW
 consumer:
   - S05_OPERATOR_RELIEF_CELL
   - X11_CARRIER_SURFACE_PDCA_LAB
-reversible_next_experiment: ONE_SOURCE_BOUND_EXACT_TITLE_METADATA_LOOKUP_FOR_AN_ALREADY_EXTERNALIZED_ARTIFACT_WITH_LOW_TOPN_BEST_EFFORT_FETCH_FALSE_NO_RAW_IDENTIFIER_PERSISTENCE_AND_EXPLICIT_OPERATOR_MINUTES_AND_CONSUMERACK
-strongest_falsifier: A_DISTINCT_SOURCE_BOUND_TRACE_SHOWS_THE_BOUNDED_LOOKUP_REQUIRES_CONTENT_HYDRATION_OR_RAW_POINTER_PERSISTENCE_USES_HIDDEN_UNBOUNDED_PAGINATION_OR_RETRIES_LEAKS_PRIVATE_QUERY_TERMS_TO_DURABLE_RECEIPTS_REVEALS_UNACCEPTABLE_SCOPE_OR_PRODUCES_NO_MEASURABLE_CONSUMER_RELIEF
-honest_flaw: PHASE4_EXECUTED_NO_NEW_DRIVE_CALL_AND_THE_DECISION_REMAINS_DEPENDENT_ON_SAME_PROVIDER_INTERPRETATION_OF_ONE_EMPTY_SUCCESS_ONE_EXACT_TITLE_METADATA_SUCCESS_AND_ONE_SYNTHETIC_INVALID_TOKEN_FAILURE_WITH_LIVE_SCOPE_IDENTITY_PERMISSION_FAILURE_VALID_SECOND_PAGE_INCOMPLETESEARCH_TRUE_RETRY_GRAPH_QUOTA_CLASS_AND_CONSUMER_OUTCOME_UNPROVEN
-review_expiry_utc: 2026-08-08T20:47:57Z
-next_campaign:
-  candidate: Google_Contacts_read_only_lookup_and_recipient_resolution_connector
-  phase: 1
-  status: PENDING
-valid_time_utc: 2026-08-01T20:47:57Z
+reversible_next_experiment: ONE_SOURCE_BOUND_EXISTING_OBLIGATION_RECIPIENT_LOOKUP_WITH_LOW_RESULT_CAP_NO_SEND_NO_CONTACT_BODY_PERSISTENCE_NO_AUTOMATIC_SELECTION_AND_PRIVATE_DIGEST_BINDING
+strongest_falsifier: A_SOURCE_BOUND_TRACE_SHOWS_OVERBROAD_FIELDS_STALE_OR_AMBIGUOUS_CANDIDATES_DIRECTORY_OR_PROFILE_RESULTS_OUTSIDE_THE_INTENDED_SOURCE_OR_NO_WAY_TO_BIND_THE_SELECTED_ADDRESS_WITHOUT_PRIVATE_BODY_EXTERNALIZATION
+honest_flaw: PHASE1_USED_ONE_SYNTHETIC_EMPTY_QUERY_WITHOUT_THE_OFFICIAL_WARMUP_DELAY_MATCHED_RESULT_DUPLICATE_NAME_DIRECTORY_BEHAVIOR_READ_CONTACT_PERMISSION_FAILURE_RATE_LIMIT_FIELD_MASK_OR UPSTREAM_REQUEST_COUNT_TEST
+review_expiry_utc: 2026-08-08T21:48:25Z
+valid_time_utc: 2026-08-01T21:48:25Z
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 sealed: true
 prior_campaign:
+  experiment_id: X13_GOOGLE_DRIVE_READONLY_CONNECTOR_001
+  final_version: 24
+  decision: ADOPT_WITH_GATES
+  decision_commit: c0f93c82fbae71f4bc301f62929d0bd072ee052f
+  decision_blob_sha: 234f1618ad5824f0913c74776ffc6b28e04497af
+prior_prior_campaign:
   experiment_id: X13_GOOGLE_CALENDAR_READONLY_CONNECTOR_001
   final_version: 20
   decision: ADOPT_WITH_GATES
   decision_commit: 5e31a7b5f58cec5338e42f69d75a040626a6d062
-  decision_blob_sha: b2998713b82c5bc285418230caa69f99fc2069ea
-prior_prior_campaign:
+prior_prior_prior_campaign:
   experiment_id: X13_GMAIL_READONLY_CONNECTOR_001
   final_version: 16
   decision: ADOPT_WITH_GATES
   decision_commit: 7a72ec06c8c4c94f6b88c4303066a3fac71ebd8c
-prior_prior_prior_campaign:
-  experiment_id: X13_SLACK_PUBLIC_CHANNEL_CONNECTOR_001
-  final_version: 12
-  decision: ADOPT_WITH_GATES
-  decision_commit: 86e2995365911ef5b7cd2b0d59a4e05d1cbac1b3
 ---
 
 # X13 current campaign
 
-The Google Drive read-only campaign is complete with **ADOPT_WITH_GATES**.
+Google Contacts read-only recipient resolution is active at phase **1/4**.
 
-Admitted use is narrow: one bounded metadata lookup for a named obligation or already-externalized artifact, with low result limits, `best_effort_fetch=false`, private pointer handling, and no completeness or global-absence claim. Exact-title matches prove location only. Empty results mean no match in one bounded query only.
+One synthetic, bounded search succeeded with zero results in 972 ms and returned no identity-bearing data. The wrapper exposes only `query` and `max_results`; it does not expose Google's required response field mask, cache-warmup behavior, source selection, OAuth scope, authenticated identity, quota, retries, or upstream request count.
 
-The connector must sanitize raw provider error URLs, discard rejected page tokens, restart the identical bounded query from page one at most once, and privately deduplicate by stable file ID. `allDrives` cannot support exhaustive claims while `incompleteSearch` is not exposed and preserved. Content reads, generalized Drive mining, writes, workflow-durability claims, and fitness credit remain outside the admitted ceiling.
+The current ceiling is search-only and no-send. Empty results prove only that one wrapper call returned no match. Matched contacts remain private identity data, automatic recipient selection is forbidden, and fitness remains zero until a named downstream WorkItem records a source-bound ConsumerAck and measured operator relief.
 
-Next candidate: Google Contacts read-only lookup and recipient resolution, phase 1 pending.
+Next: one bounded lookup for an existing obligation, with low result cap, private digest binding, no automatic selection, no send, and no contact-body persistence.
