@@ -1,0 +1,74 @@
+schema: hfo.gen133.operator_relief_receipt.v1
+receipt_id: S05-20260801T051700Z-AUGUST-RENT-PAYMENT-ALERT
+immutable: true
+task_id: 6a55c182078c8191b89f2dd15f5f640c
+seat: S05
+result: STATUS_RECONCILED
+material_change: true
+valid_time_utc: 2026-08-01T05:01:12Z
+transaction_time_utc: 2026-08-01T05:17:00Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+wip_limit: 1
+self_probe:
+  identity: HFO_GEN133_S05_OPERATOR_RELIEF
+  expected_task_id_match: true
+  readable_surfaces:
+    - Gmail
+    - Google_Calendar
+    - GitHub
+    - Slack
+  contact_lookup_needed: false
+active_item:
+  id: AUGUST_RENT_PAYMENT_RECONCILIATION
+  state: RECEIPT_ALERT_CONFIRMED_PENDING_LEDGER_GLANCE
+  owner: TTao_operator
+changed_evidence:
+  current_alert:
+    source_system: Gmail
+    pointer: message:19fbbb2a03a508d3
+    received_utc: 2026-08-01T05:01:12Z
+    sanitized_fact: A bank-origin Zelle receipt alert confirms an inbound payment on 2026-08-01.
+  prior_pattern:
+    source_system: Gmail
+    pointer: message:19f1edd95e7f15f6
+    received_utc: 2026-07-01T18:07:44Z
+    sanitized_fact: The same payer and exact amount pattern was explicitly labeled as July rent one month earlier.
+  comparison:
+    same_payer: true
+    exact_amount_match: true
+    current_memo_present: false
+    inferred_classification: LIKELY_AUGUST_RENT
+    inference_confidence: HIGH_BUT_NONBINDING
+transition:
+  prior_state: August rental payment receipt was not reconciled.
+  next_state: Inbound-payment alert is reconciled as likely August rent; no tenant follow-up is indicated unless the bank ledger or property ledger disagrees.
+  source_readback: CONFIRMED
+  email_send_performed: false
+  calendar_mutation_performed: false
+  spend_performed: false
+  private_body_externalized: false
+priority_control:
+  p0:
+    id: OCOOPA_SAFETY_RECALL_DRAFTS
+    state: OPERATOR_REVIEW_AND_SEND_REQUIRED
+  p1:
+    - id: PARTY_SAFARI_PERMISSION
+      due: 2026-08-04
+    - id: PFA_DISCLOSURE
+      due: 2026-08-05
+operator_relief:
+  estimated_minutes_removed: 4
+  next_consumer: TTao_operator_finance_control
+  next_action: During the existing private finance-control block, perform one account-ledger glance and mark August rent settled if the transaction is posted; do not contact the payer unless a mismatch exists.
+privacy:
+  git_and_slack_ceiling: SANITIZED_FACTS_AND_SOURCE_POINTERS_ONLY
+  excluded_from_git_and_slack:
+    - payer_name
+    - exact_amount
+    - transaction_number
+    - bank_account_data
+    - email_body
+rollback:
+  method: Reclassify the receipt in the private finance or property ledger if the bank ledger or tenant record shows a different purpose.
+honest_flaw: The current alert has no memo and this run cannot read the bank ledger, so likely August rent is an evidence-based inference rather than proof of final settlement or payment purpose.
