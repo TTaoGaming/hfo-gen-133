@@ -1,60 +1,73 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_GOOGLE_DRIVE_READ_SURFACE_V1
-current_version: 23
-accepted_wakes: 3
+current_version: 24
+accepted_wakes: 4
 target_wakes_before_decision: 4
 controlled_factor: google_drive_read_surface
-campaign_status: ACTIVE
-current_disposition: PENDING_FOUR_WAKE_DECISION
+campaign_status: COMPLETED
+current_disposition: KEEP
 prior_campaign:
   experiment_id: X11_NATIVE_TASKS_READ_VISIBILITY_V1
   final_version: 20
   disposition: KEEP
   accepted_wakes: 4
 last_event:
-  commit: 22ad972d87c2435cc37c692e8f70c6a4e1946d7e
-  path: state/coordination/experiments/carrier_surface_x11/events/20260801T193904Z_GOOGLE_DRIVE_EXACT_NEGATIVE_CONTROL_WAKE_03.yaml
-  blob: 6cf655e89e8ca1c817841f8b55c750f2a7180ed2
+  commit: cf41d7c9f186bfa5cfb1151042a45ba4aedbcb4e
+  path: state/coordination/experiments/carrier_surface_x11/events/20260801T204027Z_GOOGLE_DRIVE_EXACT_NEGATIVE_CONTROL_CAMPAIGN_DECISION_WAKE_04.yaml
+  blob: 08d541bf17112076db85784b9fd21f76331d5e59
 baseline_result:
   connector_call_completed: true
   metadata_only_document_search: true
   synthetic_negative_control_query: true
-  result_count: 0
-  expected_negative_control_result_observed: true
+  four_identical_probes_completed: true
+  result_count_each_wake: 0
+  expected_negative_control_result_observed_each_wake: true
   authenticated_search_permission_available_for_probe: true
-  error_class: NONE
-  external_call_time_ms: 3085
-  prior_external_call_time_ms: 1161
-  latency_delta_ms: 1924
-  latency_coarse_class: THREE_TO_FOUR_SECONDS
-  prior_latency_coarse_class: ONE_TO_TWO_SECONDS
-  result_or_error_class_changed: false
-  latency_coarse_class_changed: true
+  error_class_each_wake: NONE
+  external_call_time_samples_ms:
+    - 1338
+    - 1161
+    - 3085
+    - 1013
+  external_call_time_mean_ms: 1649.25
+  external_call_time_median_ms: 1249.5
+  external_call_time_range_ms: 2072
+  wake_4_external_call_time_ms: 1013
+  wake_4_latency_coarse_class: ONE_TO_TWO_SECONDS
+  wake_3_latency_coarse_class: THREE_TO_FOUR_SECONDS
+  result_or_error_class_changed_across_campaign: false
+  sustained_latency_degradation_supported: false
   interactive_login_required: false
   content_fetch_attempted: false
   private_titles_or_bodies_externalized: false
   mutation_performed: false
-  claim_ceiling: three_identical_bounded_metadata_searches_completed_without_error_with_one_latency_class_change_but_complete_drive_visibility_positive_recall_content_permission_and_shared_drive_coverage_remain_unproven
+  claim_ceiling: four_identical_bounded_metadata_searches_completed_without_error_but_positive_recall_complete_drive_visibility_content_permission_shared_drive_coverage_and_independent_verification_remain_unproven
 campaign_gates:
   - metadata_only_until_a_separately_justified_content_probe
-  - do_not_externalize_private_titles_or_bodies
+  - do_not_externalize_private_titles_sender_data_or_bodies
   - do_not_infer_complete_drive_or_shared_drive_visibility_from_zero_results
-  - do_not_claim_sustained_latency_degradation_from_one_slow_observation
+  - do_not_claim_positive_recall_from_negative_controls
+  - do_not_treat_connector_latency_as_a_controlled_network_slo
   - do_not_claim_independent_quorum_from_same_provider_connector_telemetry
-last_result: GOOGLE_DRIVE_NEGATIVE_CONTROL_REPEAT_ACCEPTED_WITH_LATENCY_CLASS_CHANGE
-next_probe: run_fourth_identical_metadata_only_negative_control_compare_result_error_and_latency_then_issue_campaign_disposition_and_select_next_factor
+last_result: KEEP_GOOGLE_DRIVE_METADATA_SEARCH_WITH_STRICT_CLAIM_CEILING
+next_campaign:
+  experiment_id: X11_GMAIL_READ_SURFACE_V1
+  controlled_factor: gmail_read_surface
+  accepted_wakes: 0
+  target_wakes_before_decision: 4
+next_probe: run_exact_synthetic_negative_control_gmail_search_without_message_body_fetch_or_externalizing_sender_subject_snippet_or_body
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 next_consumer: Reginleif_and_Ratatoskr
-updated_valid_time_utc: 2026-08-01T19:39:04Z
+updated_valid_time_utc: 2026-08-01T20:40:27Z
 sealed: false
 ---
 
-Google Drive read-surface campaign wake 3 of 4 completed. The identical synthetic
-negative-control metadata query again returned zero results with no error. Exposed
-latency was 3085 ms versus 1161 ms on wake 2, a 1924 ms increase and a shift from
-the one-to-two-second class to the three-to-four-second class. No private file
-title or body was externalized. This does not establish sustained degradation and
-still proves only bounded invocation and permission for this query; positive
-recall, corpus completeness, content-read permission, shared-drive coverage, and
-independent verification remain open.
+Google Drive read visibility completed four accepted wakes with KEEP gates. Four
+identical synthetic negative-control metadata searches returned zero results and
+no errors without interactive login, content fetch, or private-data export. The
+single wake-3 latency increase did not repeat; wake 4 returned to 1013 ms. This
+keeps the surface for bounded targeted metadata queries only and does not prove
+positive recall, corpus completeness, content permission, shared-drive coverage,
+or independent verification. The next controlled factor is Gmail read visibility
+using the same privacy-safe negative-control pattern.
