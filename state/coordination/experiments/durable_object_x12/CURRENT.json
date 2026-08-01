@@ -1,7 +1,7 @@
 {
   "canonical_projection": {
     "campaign": {
-      "accepted_wakes": 1,
+      "accepted_wakes": 2,
       "campaign_id": "X12_IDEMPOTENCY_STRATEGY_C3",
       "factor": "idempotency_strategy",
       "selected_by_event_version": 8,
@@ -9,18 +9,20 @@
     },
     "consumer": "Reginleif/Olrun",
     "effect_ceiling": "FILE_AND_SANITIZED_SLACK_ONLY",
-    "expiry_utc": "2026-08-01T08:44:11Z",
+    "expiry_utc": "2026-08-01T09:42:38Z",
     "idempotency_measurement": {
-      "accepted_wake_ordinal": 1,
-      "duplicate_replay_key": "ba8c9fa2cf34d8167eabe7c02af962058dcde0df925c794b7add5e8f1782af8d",
+      "accepted_wake_ordinal": 2,
+      "duplicate_replay_key": "a5a824132b6e4208f0a60365a6ab0e6820280b09ac811f69637d00b429dfe1a3",
       "duplicate_replay_status": "REJECTED_NO_WRITE_NO_ADVANCE",
       "event_digest_recomputed_from_readback": true,
       "event_first": true,
       "event_readback_blob_verified": true,
       "new_key_preflight_observed_match_count": 0,
       "new_key_search_authority": "BEST_EFFORT_NONATOMIC_POSSIBLY_STALE",
+      "normalized_field_tuple_keys_equal": true,
       "post_write_dual_readback_required": true,
-      "strategy": "VERSION_SCOPED_KEY_PLUS_EXACT_PRIOR_EVENT_REPLAY_CHECK_PLUS_BEST_EFFORT_REPO_SEARCH_V1"
+      "raw_serialization_digests_differ": true,
+      "strategy": "NORMALIZED_FIELD_TUPLE_PLUS_VERSION_SCOPED_KEY_PLUS_BEST_EFFORT_REPO_SEARCH_V2"
     },
     "last_campaign_decision": {
       "accepted_wakes": 4,
@@ -30,23 +32,23 @@
       "factor": "pointer_update_pattern"
     },
     "latest_event": {
-      "blob": "1cd51d9e4a04e3b120621e3d72ef1f90711c033d",
-      "commit": "cb8e4125c456290847c104157bced695ccf58318",
-      "digest_sha256": "49d6b216f81f8663ba548ba1df2d4e2844a9d391994ba7a7bf5da500bda585a4",
-      "idempotency_key": "a5a824132b6e4208f0a60365a6ab0e6820280b09ac811f69637d00b429dfe1a3",
-      "path": "state/coordination/experiments/durable_object_x12/events/20260801T054411Z_V0008_TO_V0009_IDEMPOTENCY_STRATEGY.json"
+      "blob": "01c7364fb8ab483f6eda5078a248e4704c59cf24",
+      "commit": "3c3281c108bc66588052cc024814636d20bf8e65",
+      "digest_sha256": "6aafca3124609f8da877095804b3d9479d84068422dfc1a3c5f8690b7d4b7d66",
+      "idempotency_key": "9bc6130025336404d14197ee46709eb8a6650294bb29369ea45998af179fc68e",
+      "path": "state/coordination/experiments/durable_object_x12/events/20260801T064238Z_V0009_TO_V0010_IDEMPOTENCY_STRATEGY.json"
     },
     "object_id": "HFO_X12_WORKFLOW_OBJECT_001",
     "state": "ACTIVE_CAMPAIGN",
     "task_id": "6a506f83df208191815dd17a8fd5baa3",
-    "version": 9
+    "version": 10
   },
   "expected_previous_pointer": {
-    "blob": "e4f58b2f45f02ad884422b94b069bcab77d3a878",
-    "projection_digest_sha256": "a70aec8cea80c4a4d5d269098e7ed0e7b0db25b54d6a23208c343e53a340f91c",
-    "version": 8
+    "blob": "c498e35fe72794581fabf8aa52f6d99cf9309f0a",
+    "projection_digest_sha256": "38050025e3aec7218f66bf6f845092c735515c6f4bd68132764824887688ebf7",
+    "version": 9
   },
-  "honest_atomicity_limit": "The v8→v9 event was committed and read back before CURRENT was fetched a second time and confirmed unchanged. GitHub Contents API guards only this single CURRENT replacement with the supplied prior blob SHA. Event and pointer are separate commits. Code search is best-effort and not a uniqueness constraint. Exact post-write readback through the returned blob and branch path is required. This does not establish cross-file atomicity, locks, linearizable compare-and-swap, exactly-once execution, concurrent-writer safety, database durability, or automatic orphan-event cleanup; Git can advance without Slack.",
-  "projection_digest_sha256": "38050025e3aec7218f66bf6f845092c735515c6f4bd68132764824887688ebf7",
+  "honest_atomicity_limit": "The v9→v10 event was committed and read back before CURRENT was fetched a second time and confirmed unchanged. GitHub Contents API guards only this single CURRENT replacement with the supplied prior blob SHA. Event and pointer are separate commits. Parsed-field idempotency normalizes key order and whitespace only for eight selected fields; code search is best-effort and not a uniqueness constraint. Exact post-write readback through the returned blob and branch path is required. This does not establish cross-file atomicity, locks, linearizable compare-and-swap, exactly-once execution, concurrent-writer safety, database durability, or automatic orphan-event cleanup; Git can advance without Slack.",
+  "projection_digest_sha256": "9ca3e86c723ea0afb917bde3a25e2f98f0cc23f36ada5935633ff50d4cf523e1",
   "schema_id": "hfo.gen133.x12.durable_object_current.v1"
 }
