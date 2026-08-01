@@ -1,0 +1,214 @@
+---
+schema_id: hfo.gen133.s03.verification_route.v3
+result: REVISE
+work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001
+correlation_id: SPATIAL_FACTORY_GOLDEN_APP_001_TERMINAL_CANCEL_1F0C0A7
+seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+carrier_task_id_expected: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_observed: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_match: true
+carrier_identity_claim: DISPOSABLE_SCHEDULED_CARRIER_NOT_LINEAGE
+wip: 1
+valid_time_utc: 2026-08-01T13:09:17Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+route_expires_utc: 2026-08-01T15:09:29Z
+binding_weight: 0
+same_provider_status: SAME_PROVIDER_NONBINDING
+terminal_receipt: false
+---
+
+self_probe:
+  native_task_inventory: read_only
+  current_task_enabled_observed: true
+  github_connector: authenticated_read_write_with_exact_file_readback_and_commit_compare
+  slack_connector: authenticated_public_channel_read_write
+  target_repository_read: available
+  direct_distinct_provider_execution_ingress: unavailable
+  authenticated_git_checkout: unavailable_to_this_reducer
+  repository_head_observed_before_write: b9abb8d681f690edb65cd6b848dc5943681cd66c
+  prohibited_effects_observed: none
+
+selected_changed_input:
+  kind: PRODUCER_RETURN
+  repository: TTaoGaming/hfo-gen-133
+  commit: 22e92d32623843934c7dc76a19a7ec492b971d59
+  path: state/coordination/receipts/chatgpt_runtime/seat-07/20260801T123556Z_SPATIAL_FACTORY_GOLDEN_APP_001_TERMINAL_CANCEL_PATCH_RETURNED.yaml
+  blob: 2ed9c4996a412b7de9c1304354dbf96c41c0edc8
+  result: PATCH_RETURNED
+  observed_before_producer_return_due: true
+  producer_return_due_utc: 2026-08-01T15:09:29Z
+
+claim_binding:
+  commit: 84531dbda83bad271843312f9c18515e3ad14796
+  path: projects/spatial-app-factory/claims/20260801T120929Z_SPATIAL_FACTORY_GOLDEN_APP_001_S02_TERMINAL_CANCEL.claim.yaml
+  blob: 054747b6d9cf372af969dd63522cbaa3c2424205
+  acceptance_contract_sha256: 1beef244aaeee326ae19ed7e42da55057b691b106ecfa01a49ddaece09bc35a2
+  lease_expires_utc: 2026-08-01T16:09:29Z
+  required_verifier: Sigrun/P4_APEX_FALSIFICATION_or_other_distinct_provider_nonproducer
+  consumer_after_distinct_STOOD: Olrun/Claude-Dispatch_as_spatial_factory_coordinator
+  explicit_consumer_ack_required: true
+
+producer_bundle:
+  producer: S07_BOUNDED_CODE_PATCH_BUILDER
+  producer_task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+  producer_provider: OpenAI
+  producer_runtime: ChatGPT_cloud_with_GitHub_connector_and_ephemeral_Linux_shell
+  producer_model: GPT-5.6_Thinking
+  producer_return:
+    commit: 22e92d32623843934c7dc76a19a7ec492b971d59
+    path: state/coordination/receipts/chatgpt_runtime/seat-07/20260801T123556Z_SPATIAL_FACTORY_GOLDEN_APP_001_TERMINAL_CANCEL_PATCH_RETURNED.yaml
+    blob: 2ed9c4996a412b7de9c1304354dbf96c41c0edc8
+  canonicalization: SHA256_of_UTF8_LF_joined_lines_with_no_terminal_newline
+  canonical_bundle_input: |-
+    SPATIAL_FACTORY_GOLDEN_APP_001_TERMINAL_CANCEL_1F0C0A7
+    054747b6d9cf372af969dd63522cbaa3c2424205
+    2ed9c4996a412b7de9c1304354dbf96c41c0edc8
+    e0e3125e1ef6bb33e189c91b485ec341f2d3cd52
+    1beef244aaeee326ae19ed7e42da55057b691b106ecfa01a49ddaece09bc35a2
+  canonical_bundle_sha256: df82aec8fd8dfc1fbde77863a1cf8ba61e67a82a5dd6e91b1ac9170a54e93cad
+  effect_ceiling: BRANCH_FILE_TEST
+  rollback: leave_branch_unmerged_or_apply_ordinary_revert_commits_without_force_push_rebase_or_reset
+  expiry_utc: 2026-08-01T15:09:29Z
+  honest_flaw: deterministic_Node_seams_only_no_browser_or_distinct_provider_execution
+
+exact_target_readback:
+  repository: TTaoGaming/TAGS
+  branch: agent/spatial-golden-app-001-20260731
+  required_input_sha: 1f0c0a7831db6f4476a703856855ff7ccc4f454b
+  final_sha: e0e3125e1ef6bb33e189c91b485ec341f2d3cd52
+  compare_final_sha_to_branch:
+    status: identical
+    ahead_by: 0
+    behind_by: 0
+  changed_paths_exact:
+    - path: prototypes/spatial-input-adapter.js
+      base_blob: ca327ea46049f499d0afe1be4f9632ee086f2637
+      final_blob: 579c9551225f0974ed93564b6ad8bfb1abf72cf3
+      final_sha256: af63452888df15770bdc19e65c13e39d569ca7c6b5a83d4729d9c7e41a9c5c95
+    - path: tests/spatial-input-adapter.test.mjs
+      base_blob: 2e523f5c373203ae4f5e0f1a48a52d1570f0682a
+      final_blob: 60ab9eb973db6e55824765e0f34005c6afb87ed9
+      final_sha256: 755c11c619eec7a35b9c37c3a3c75f9e37130cb16c809ab1837e2221a20d1bd6
+  exact_final_file_readback: matched_producer_reported_blobs
+
+producer_commands_and_exit_codes_preserved:
+  first_red:
+    command: node --test /mnt/data/s07/tests/spatial-input-adapter.test.mjs
+    exit_code: 1
+    measured_summary: 9_total_7_pass_2_fail
+  first_green:
+    command: node --test /mnt/data/s07/tests/spatial-input-adapter.test.mjs
+    exit_code: 0
+    measured_summary: 9_total_9_pass_0_fail
+  second_red:
+    command: node --test /mnt/data/s07/tests/spatial-input-adapter.test.mjs
+    exit_code: 1
+    measured_summary: 10_total_9_pass_1_fail
+  final_green:
+    command: node --test /mnt/data/s07/tests/spatial-input-adapter.test.mjs
+    exit_code: 0
+    measured_summary: 10_total_10_pass_0_fail
+  syntax_check:
+    command: node --check /mnt/data/s07/prototypes/spatial-input-adapter.js
+    exit_code: 0
+  explicitly_not_run:
+    - authenticated_complete_checkout_git_status
+    - git_diff_check
+    - browser_execution
+    - pointer_capture_accessibility_focus_cross_browser_behavior
+
+producer_authored_acceptance_observations:
+  A1_SOURCE_PIN: observed_stood
+  A2_BOUNDED_DIFF: observed_stood
+  A3_INVALID_TRACKING_CANCEL: observed_stood
+  A4_RESET_CANCEL: observed_stood
+  A5_DISARM_CANCEL: observed_stood
+  A6_USABLE_TARGET_POINTERCANCEL: observed_stood
+  A7_DEAD_TARGET_HOST_SIGNAL: observed_stood
+  A8_DUPLICATE_SUPPRESSION: observed_stood
+  A9_FRESH_CYCLE_RECOVERY: observed_stood
+  A10_REGRESSION: observed_stood
+  A11_NO_EXTERNAL_EFFECT: observed_stood
+  A12_PRODUCER_RETURN: observed_stood
+  evidence_ceiling: PRODUCER_OBSERVATION_ONLY_NOT_A_VERIFIER_VERDICT
+
+fresh_verdict_and_ack_search:
+  git_final_sha_and_claim_blob_search: no_distinct_verdict_found
+  slack_direct_channel_history_through_message_ts: 1785588999.747589
+  slack_distinct_STOOD_or_FELL_bound_to_producer_bundle: not_found
+  explicit_Olrun_ConsumerAck_after_STOOD: not_found
+  search_limitation: Git_and_Slack_search_can_lag_or_miss_new_evidence_so_exact_digest_binding_is_required
+
+missing_binding_evidence:
+  - distinct nonproducer STOOD or FELL bound to claim blob 054747b6d9cf372af969dd63522cbaa3c2424205
+  - verdict bound to producer-return blob 2ed9c4996a412b7de9c1304354dbf96c41c0edc8
+  - verdict bound to producer bundle sha256 df82aec8fd8dfc1fbde77863a1cf8ba61e67a82a5dd6e91b1ac9170a54e93cad
+  - verdict bound to final target SHA e0e3125e1ef6bb33e189c91b485ec341f2d3cd52
+  - verdict bound to acceptance contract 1beef244aaeee326ae19ed7e42da55057b691b106ecfa01a49ddaece09bc35a2
+  - explicit ConsumerAck from Olrun/Claude-Dispatch after and only after distinct STOOD
+
+exact_verifier_packet:
+  addressee: Sigrun/P4_APEX_FALSIFICATION_or_other_distinct_provider_nonproducer
+  required_result: STOOD_or_FELL_only
+  source_of_truth:
+    claim_commit: 84531dbda83bad271843312f9c18515e3ad14796
+    claim_blob: 054747b6d9cf372af969dd63522cbaa3c2424205
+    producer_return_commit: 22e92d32623843934c7dc76a19a7ec492b971d59
+    producer_return_blob: 2ed9c4996a412b7de9c1304354dbf96c41c0edc8
+    producer_bundle_sha256: df82aec8fd8dfc1fbde77863a1cf8ba61e67a82a5dd6e91b1ac9170a54e93cad
+    target_repository: TTaoGaming/TAGS
+    target_branch: agent/spatial-golden-app-001-20260731
+    target_base_sha: 1f0c0a7831db6f4476a703856855ff7ccc4f454b
+    target_final_sha: e0e3125e1ef6bb33e189c91b485ec341f2d3cd52
+    adapter_blob: 579c9551225f0974ed93564b6ad8bfb1abf72cf3
+    test_blob: 60ab9eb973db6e55824765e0f34005c6afb87ed9
+    acceptance_contract_sha256: 1beef244aaeee326ae19ed7e42da55057b691b106ecfa01a49ddaece09bc35a2
+  required_actions:
+    - re-read the exact claim, producer return, final adapter bytes, and final test bytes
+    - verify the target branch still equals final SHA and both final blob pointers match
+    - on a complete checkout run node --check prototypes/spatial-input-adapter.js
+    - on a complete checkout run node --test tests/spatial-input-adapter.test.mjs
+    - on a complete checkout run git diff --check against 1f0c0a7831db6f4476a703856855ff7ccc4f454b
+    - verify only the two claim-allowed paths changed
+    - independently map A1 through A12 without upgrading Node evidence into browser trusted-input accessibility deployment or production proof
+    - preserve browser and cross-browser behavior as explicit unverified residual risk unless directly executed
+  strongest_falsifier: >-
+    Start one active cycle, update its last-known coordinates, and independently exercise invalid tracking, reset,
+    disarm, and target disconnection. Return FELL if any path omits the terminal signal, dispatches to a dead target,
+    duplicates cancellation, changes pointer identity or last-known coordinates, reports nonzero buttons or cancelable
+    true, activates, resurrects the old cycle, prevents a fresh cycle from completing, changes a forbidden path, or
+    fails the exact Node suite or syntax check. A real-browser run may add evidence but is not required to reproduce
+    the bounded Node acceptance contract; absence of browser execution must remain an explicit limitation.
+  required_return_fields:
+    - provider_runtime_model
+    - exact_commands_outputs_and_exit_codes
+    - exact_source_build_test_and_branch_readback
+    - STOOD_or_FELL_bound_to_all_required_digests
+    - rollback
+    - remaining_risk
+    - honest_flaw
+  effect_ceiling: READ_TEST_VERDICT_ONLY
+  forbidden:
+    - source_edit
+    - producer_repair
+    - task_mutation
+    - merge_deployment_publication_send_spend
+    - account_or_security_change
+    - destructive_Git_operation
+    - implicit_ConsumerAck
+
+reducer_disposition:
+  state: WAITING_FOR_DISTINCT_VERDICT_ON_TERMINAL_CANCELLATION_PRODUCER_BUNDLE
+  terminal_receipt_written: false
+  consumer_ack_requested: false
+  reason: >-
+    The changed producer return binds the live claim, exact branch and file bytes, real command exit codes,
+    rollback, effect ceiling, expiry, remaining risk, and honest flaw. Producer observations cannot grade the
+    producer. No distinct digest-bound STOOD or FELL and no explicit post-STOOD ConsumerAck exist, so S03 emits
+    one exact REVISE route and does not close, repair, merge, deploy, or implicitly consume the WorkItem.
+
+honest_flaw: >-
+  This reducer is another ChatGPT carrier with binding weight zero and cannot directly invoke the named distinct
+  verifier. Git code search and Slack search are not complete consistency mechanisms, and the branch comparison is
+  point-in-time. The route expires with the producer packet at 2026-08-01T15:09:29Z.
+---
