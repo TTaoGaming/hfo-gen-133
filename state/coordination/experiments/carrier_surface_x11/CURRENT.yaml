@@ -1,31 +1,31 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_WEB_RESEARCH_SURFACE_V1
-current_version: 13
-accepted_wakes: 1
+current_version: 14
+accepted_wakes: 2
 target_wakes_before_decision: 4
 controlled_factor: web_research
 campaign_status: ACTIVE
 current_disposition: CONTINUE
 last_event:
-  commit: f46087b712f83218993d80a1be888339693e6609
-  path: state/coordination/experiments/carrier_surface_x11/events/20260801T094005Z_WEB_RESEARCH_OFFICIAL_RFC_WAKE_01.yaml
-  blob: 45cd42f492ec5db06e5f9c2b42ce8a50c00b74a6
+  commit: 19317af5882af021c7e2a1f550692c9c4d632297
+  path: state/coordination/experiments/carrier_surface_x11/events/20260801T104000Z_WEB_RESEARCH_HTML_TXT_VARIANCE_WAKE_02.yaml
+  blob: 30f4e31fcb08af332c103e046fdceb29a1cd413b
 baseline_result:
   official_primary_search_and_direct_open: SUCCESS
-  selected_metadata_fields_match: true
-  auxiliary_official_info_subpath: CONNECTOR_INTERNAL_ERROR
-  claim_ceiling: one_domain_bounded_search_and_one_direct_open_recovered_matching_RFC_9110_number_title_publication_month_and_category;general_path_or_domain_reliability_not_established
-last_result: WEB_RESEARCH_WAKE_01_ACCEPTED_WITH_SUBPATH_VARIANCE
-next_probe: domain_bounded_search_for_RFC_8259_then_directly_open_both_official_HTML_and_plain_text_forms_and_compare_RFC_number_title_publication_month_and_category_while_recording_format_specific_parser_variance
+  official_html_and_plain_text_direct_open: SUCCESS
+  selected_metadata_fields_match_across_search_html_and_text: true
+  format_specific_parser_variance_observed: true
+  claim_ceiling: one_domain_bounded_search_and_direct_HTML_and_plain_text_opens_recovered_matching_RFC_8259_number_title_publication_month_and_category;general_cross_domain_or_backend_reliability_not_established
+last_result: WEB_RESEARCH_WAKE_02_ACCEPTED_WITH_HTML_TEXT_PARSER_VARIANCE
+next_probe: directly_open_the_official_RFC_8259_XML_form_and_one_deliberately_nonexistent_rfc8259_json_path_then_record_success_and_failure_error_classes_without_retry_or_redirect_assumptions
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 next_consumer: Reginleif_and_Ratatoskr
-updated_valid_time_utc: 2026-08-01T09:40:05Z
+updated_valid_time_utc: 2026-08-01T10:40:00Z
 sealed: false
 ---
 
-Web-research campaign wake 1 of 4 accepted. The official RFC 9110 HTML was found by
-a domain-bounded search and opened directly; RFC number, title, publication month,
-and category matched. The adjacent official info URL returned an internal connector
-error, so only the primary HTML path is admitted. Same-provider binding weight remains
-zero.
+Web-research campaign wake 2 of 4 accepted. Official RFC 8259 HTML and plain-text
+direct opens both succeeded and matched the domain-bounded search on RFC number, title,
+publication month, and category. Parser and linkification output differed by format,
+but the selected identity fields did not. Same-provider binding weight remains zero.
