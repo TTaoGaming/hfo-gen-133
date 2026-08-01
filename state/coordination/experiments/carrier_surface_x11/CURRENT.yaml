@@ -1,26 +1,30 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_SLACK_READ_WRITE_READBACK_V1
-current_version: 10
-accepted_wakes: 2
+current_version: 11
+accepted_wakes: 3
 target_wakes_before_decision: 4
 controlled_factor: slack_read_write
 campaign_status: ACTIVE
 current_disposition: CONTINUE
 last_event:
-  commit: 165e697a1e54148c2dedc4198f153ff9468742cd
-  path: state/coordination/experiments/carrier_surface_x11/events/20260801T064300Z_SLACK_EXACT_PHRASE_SEARCH_SELECTIVITY_WAKE_02.yaml
-  blob: ade27b4490783afcc86479b69f8a62b803769f42
+  commit: d80d7d09789d12d615465efac4029d8b45606ee6
+  path: state/coordination/experiments/carrier_surface_x11/events/20260801T074100Z_SLACK_QUERY_GRANULARITY_AND_BOUNDARY_WAKE_03.yaml
+  blob: 222f63ab28fca0ac0ccf1e4d3459fb75797654dd
 last_probe:
   pointer_channel_id: C0BGNGPJFHU
   pointer_message_ts: '1785563052.487809'
   pointer_event_commit: cff53a97e5255e7c4aa3bcbb6eb9a81608f9cda7
-  direct_channel_read: PASS
-  event_commit_bytes_match_expected: true
-  event_url_bytes_match_expected: true
-  public_search_full_commit_result_count: 0
-  public_search_exact_phrase_result_count: 1
-  permission_error_class: AUTHENTICATED_ALLOWED_WITH_QUERY_TOKENIZATION_OR_INDEX_VARIANCE
+  direct_equal_boundary_result_count: 0
+  direct_one_second_envelope_result_count: 1
+  direct_envelope_message_ts_match: true
+  short_commit_search_result_count: 1
+  short_commit_exact_pointer_match_count: 1
+  exact_filename_search_result_count: 1
+  exact_filename_exact_pointer_match_count: 1
+  broad_path_token_search_result_count: 6
+  broad_path_token_exact_pointer_match_count: 1
+  permission_error_class: AUTHENTICATED_ALLOWED_WITH_EQUAL_TIMESTAMP_BOUNDARY_EXCLUSION_AND_QUERY_TOKEN_GRANULARITY
   slack_call_latency_exposed: false
   operator_relay_minutes: 0
 previous_campaign:
@@ -30,18 +34,18 @@ previous_campaign:
   claim_ceiling: two_exact_create_readback_successes_plus_two_sequential_single_path_stale_blob_sha_409_rejections_with_one_low_level_creation_fallback_after_high_level_create_file_policy_blocks
   retained_capability: exact_readback_sha_bound_update_serial_stale_sha_rejection
   revision_required: high_level_create_file_availability_must_be_probed_and_low_level_fallback_must_fail_closed
-last_result: MEASURED_QUERY_SELECTIVITY_VARIANCE
-campaign_claim_ceiling: two_known_public_channel_pointers_recovered_by_direct_history_with_search_results_varying_by_target_and_query_shape; current_target_exact_phrase_found_once_while_full_commit_not_found
-next_probe: search_the_same_pointer_by_short_commit_prefix_filename_and_path_tokens_then_compare_each_result_to_the_exact_timestamp_read
+last_result: MEASURED_TOKEN_GRANULARITY_AND_TIMESTAMP_BOUNDARY_VARIANCE
+campaign_claim_ceiling: one_known_public_channel_pointer_is_exactly_recoverable_by_one_second_history_envelope_short_commit_prefix_exact_filename_and_exact_human_phrase; broad_path_tokens_are_lower_precision_and_full_40_character_commit_search_remains_unproven
+next_probe: repeat_the_same_target_query_matrix_and_boundary_pair_then_issue_wake_4_campaign_decision_and_select_the_next_factor
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 next_consumer: Reginleif_and_Ratatoskr
-updated_valid_time_utc: 2026-08-01T06:43:00Z
+updated_valid_time_utc: 2026-08-01T07:41:00Z
 sealed: false
 ---
 
-Slack read/write campaign wake 2 accepted. The wake-1 Slack pointer was read back
-at its exact timestamp with matching event commit and URL. Public search found the
-same message by its human-readable experiment phrase but not by the full
-40-character commit token. This narrows the observation to query selectivity or
-connector/index variance; it does not establish general search failure or a
-measured indexing latency. Same-provider binding weight remains zero.
+Slack read/write campaign wake 3 accepted. The known pointer was recovered by a
+one-second direct-history envelope, an eight-character commit prefix, and its exact
+filename. Equal oldest/latest timestamp bounds returned no message, and broad path
+tokens returned six X11 messages including the target. These measurements narrow
+safe connector usage but do not establish native Slack semantics or independent
+verification. Same-provider binding weight remains zero.
