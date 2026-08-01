@@ -1,59 +1,78 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
 experiment_id: X13_GITHUB_CONTENTS_API_001
-version: 6
-prior_version: 5
+version: 7
+prior_version: 6
 candidate: GitHub_REST_Contents_API
 candidate_contract_reference: official_REST_versions_2026-03-10_and_2022-11-28_connector_header_not_exposed
-campaign_wake: 2_of_4
+campaign_wake: 3_of_4
 phase_1_completed: true
 phase_2_completed: true
-phase_3_completed: false
+phase_3_completed: true
 phase_4_decision: PENDING
-phase_status: PHASE2_REVERSIBLE_MICRO_USE_COMPLETE_PHASE3_STALE_SHA_PROBE_NEXT
-last_event_commit: 104defe984d51c1efdc66b0ba7f47b2a59afbb72
-last_event_path: state/coordination/experiments/cots_connector_x13/20260801T024811Z_GITHUB_CONTENTS_API_PHASE2_REVERSIBLE_MICRO_USE.md
-adoption_credit: 1
-adoption_credit_basis: DIRECT_EXACT_BYTE_CREATE_UPDATE_FORWARD_ROLLBACK_ONLY
+phase_status: PHASE3_STALE_SHA_REJECTED_BASELINE_RESTORED_PHASE4_DECISION_NEXT
+last_event_commit: 47f4caf7c5d55bd4c2f785e8da7e8c6c1f3ba35b
+last_event_path: state/coordination/experiments/cots_connector_x13/20260801T034900Z_GITHUB_CONTENTS_API_PHASE3_STALE_SHA_AND_VARIANCE.md
+last_event_utf8_bytes: 4514
+last_event_sha256: 6bde9df63baf51659ae4bd61618b3e8e14f8c7b367c207e2484bf49a6d39da2f
+adoption_credit: 2
+adoption_credit_basis: DIRECT_EXACT_BYTE_REVERSIBLE_MICRO_USE_PLUS_SINGLE_PATH_STALE_SHA_REJECTION
 carrier_task_id: 6a55c1733708819185088bf334e33ea5
 carrier_task_id_verified_from_native_inventory: true
-specimen_path: state/coordination/experiments/cots_connector_x13/specimens/20260801T024651Z_GITHUB_CONTENTS_PHASE2_REVERSIBLE.txt
-specimen_baseline_utf8_bytes: 195
-specimen_baseline_sha256: 1c0cb81dff110dbc55b55bd4bddc8fecb761c3860f7851d64f981362488b15a3
-specimen_baseline_blob_sha: a9826e11db433c9ae3180b8590b7720a2d4388f7
-specimen_updated_utf8_bytes: 204
-specimen_updated_sha256: 983982b4311670005ff68bd7d6b6120c3d9b85417b9880fd772f9700fbb25def
-specimen_updated_blob_sha: a9ba2dad14ed9bc72179ee709e7712dd9ff50449
-specimen_create_commit: 69bb7578d17559a409b2a60975912181fffd685c
-specimen_update_commit: 611ebcc8af302719a7e8d56910f231f7104ec724
-specimen_rollback_commit: aeaffd84eaa0af957c319e3c99c3d720c109923c
-specimen_final_state: BASELINE_EXACT_BYTES_RESTORED
-specimen_final_blob_sha: a9826e11db433c9ae3180b8590b7720a2d4388f7
-create_latency_ms_exposed: 812
-update_latency_ms_exposed: 702
-rollback_latency_ms_exposed: 891
+phase3_specimen_path: state/coordination/experiments/cots_connector_x13/specimens/20260801T034800Z_GITHUB_CONTENTS_PHASE3_STALE_SHA.txt
+phase3_baseline_utf8_bytes: 205
+phase3_baseline_sha256: 03fd8dde3cd229dc23c2f7ce934d7a6cdef5b5a8e9d7ba769bba9a6c1e6b313e
+phase3_baseline_blob_sha: 668b0f85c1a1f099512638a906787e9ab93635ff
+phase3_create_commit: d18e4618896c23e8fd8f5dc8b3fed3fdf9c64dcf
+phase3_newer_utf8_bytes: 202
+phase3_newer_sha256: 5b0f675da8dc3a9a97a95da4a120108581201cc0c5525e293679c73f07b111e8
+phase3_newer_blob_sha: 7c1e66d6f7e6ae50777c8090cbd0524b25c13b52
+phase3_newer_commit: 25c1bb7699578b19fe9a9ed1d07dec62ee8fb9ba
+phase3_stale_supplied_blob_sha: 668b0f85c1a1f099512638a906787e9ab93635ff
+phase3_stale_result_http_status_exposed: 409
+phase3_stale_attempt_landed: false
+phase3_post_rejection_readback_blob_sha: 7c1e66d6f7e6ae50777c8090cbd0524b25c13b52
+phase3_restore_commit: cdff831d8e45326a154cb4eade4c7d5f1f96d9f5
+phase3_final_state: BASELINE_EXACT_BYTES_RESTORED
+phase3_final_blob_sha: 668b0f85c1a1f099512638a906787e9ab93635ff
+create_latency_ms_exposed: 777
+valid_update_latency_ms_exposed: 700
+restore_latency_ms_exposed: 607
 exact_readback: true
 operator_relay_minutes: 0
-operator_minutes_removed_estimate: 5_to_10
+operator_minutes_removed_estimate: 10_to_15
 paid_cost_usd: 0
 live_authentication_class: UNKNOWN
+live_authentication_scope: NOT_EXPOSED
 live_rate_limit_headers: NOT_EXPOSED
 effective_api_version_from_direct_receipt: UNKNOWN
+observed_failure_behavior: STALE_SINGLE_FILE_UPDATE_REJECTED_WITH_409_NEWER_BYTES_PRESERVED
+portability: LOW_TO_MEDIUM_GITHUB_SPECIFIC_BLOB_SHA_AND_CONNECTOR_ERROR_SHAPE
 verifier: S04_STRUCTURAL_PREFLIGHT_THEN_DISTINCT_NONPRODUCER
-consumer: Ratatoskr_and_Olrun
-next_phase: QUARANTINED_STALE_SHA_REJECTION_AND_CONNECTOR_VARIANCE_PROBE
-expiry_utc: 2026-08-08T02:48:11Z
-valid_time_utc: 2026-08-01T02:48:11Z
+consumer: X13_PHASE4_Ratatoskr_and_Olrun
+next_phase: PHASE4_ADOPTION_DECISION
+strongest_falsifier: REPEATED_OR_TRULY_CONCURRENT_PROBE_LANDS_STALE_BYTES_OR_HIDDEN_RETRY_CHANGES_STATE
+expiry_utc: 2026-08-08T03:49:00Z
+valid_time_utc: 2026-08-01T03:49:00Z
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 sealed: false
 ---
 
 # X13 current campaign
 
-The GitHub REST Contents API campaign has completed phase 2 of 4.
+The GitHub REST Contents API campaign has completed phase 3 of 4.
 
-A harmless UTF-8 specimen was created in the X13 experiment directory, read back exactly, replaced using the fetched current blob SHA, read back exactly, and restored to its baseline bytes with a second SHA-bound forward commit. The final readback recomputed to the original 195-byte SHA-256 and Git blob SHA.
+A quarantined specimen was created and advanced with its current blob SHA. A second
+replacement carrying the now-stale baseline SHA returned HTTP 409. Exact readback
+showed that the newer bytes and newer blob SHA remained unchanged. A valid forward
+update then restored the baseline bytes and original blob SHA.
 
-This supports serial, reversible, single-path repository-content mutation through the connector. It does not support multi-file atomicity, exactly-once execution, stale-writer safety, least privilege, durable workflow semantics, independent verification, or ConsumerAck.
+This is direct evidence for one serial single-file compare-and-swap failure path through
+the connector. The connector exposed commit/blob identifiers, successful-call latency,
+and the stale conflict status. It still hides authentication identity and scope,
+effective API version, request ID, rate-limit headers, ETag, retry behavior, and audit
+attribution.
 
-Phase 3 must use a new quarantined specimen to test whether a stale blob SHA is rejected without changing the newer bytes, then restore the baseline with a valid forward update. The wrapper still hides authentication identity and scope, effective API version, HTTP status and headers, rate-limit state, request ID, ETag, retry behavior, and audit attribution.
+Phase 4 must choose ADOPT, ADOPT_WITH_GATES, DEFER, REJECT, or UNKNOWN. No decision may
+claim database transactions, cross-file atomicity, exactly-once execution,
+linearizability, least privilege, or independent verification.
