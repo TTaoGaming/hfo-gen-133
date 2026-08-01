@@ -1,0 +1,139 @@
+---
+schema_id: hfo.gen133.spatial_factory.s07_producer_return.v3
+result: HOLD
+execution_label: EXECUTION_BLOCKED
+work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001
+callsign_or_seat: S07_BOUNDED_CODE_PATCH_BUILDER
+carrier_task_id_expected: 6a506f6dc5c08191b95f1707d7f00c2d
+carrier_task_id_observed: 6a506f6dc5c08191b95f1707d7f00c2d
+carrier_task_id_match: true
+wip: 1
+valid_time_utc: 2026-08-01T01:29:02Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+---
+
+selection:
+  claim:
+    commit: 47cd1e8bfb7cf78651e8978f4dec1f5e2a76bad4
+    path: projects/spatial-app-factory/claims/20260801T000607Z_SPATIAL_FACTORY_GOLDEN_APP_001_S02_RENEWED.claim.yaml
+    blob: f90e3797b4e5aa398aa386e555e26b53ae27cfc5
+    lease_expires_utc: 2026-08-01T04:06:07Z
+    effect_ceiling: BRANCH_FILE_TEST_AND_INTERNAL_COORDINATION_ONLY
+  executor_packet:
+    commit: 4a0bf9b316cb9044448c4cc0c4955cd4da7564b7
+    path: projects/spatial-app-factory/dispatch/20260801T012154Z_SPATIAL_FACTORY_GOLDEN_APP_001_S06_LIVE_INGRESS_GATED_EXECUTOR.packet.yaml
+    blob: 44e827c33fe971859b6b633a6bb3c5d0f0d8bc31
+    host_start_or_decline_deadline_utc: 2026-08-01T02:45:00Z
+    executor_expiry_utc: 2026-08-01T03:00:00Z
+    producer_return_due_utc: 2026-08-01T03:06:07Z
+
+target:
+  repository: TTaoGaming/TAGS
+  base_sha: 1271e25306fe8ef8baea32704cf022435703d498
+  branch: agent/spatial-golden-app-001-20260731
+  required_start_head_sha: fee50a70188b510695e8e5fad2ebadc6cba0535a
+  connector_compare_readback:
+    status: identical
+    ahead_by: 0
+    behind_by: 0
+    observed_head_sha: fee50a70188b510695e8e5fad2ebadc6cba0535a
+  allowed_paths:
+    - prototypes/fab-prototype.html
+    - prototypes/spatial-input-adapter.js
+    - tests/spatial-input-adapter.test.mjs
+    - tests/fab-prototype-smoke.test.mjs
+  forbidden_paths: every_other_path
+
+self_probe:
+  native_tasks_inventory: read
+  github_connector: authenticated_read_write
+  github_compare_commits: read
+  slack_connector: write_available
+  local_shell: available
+  local_shell_versions:
+    git: git version 2.47.3
+    node: v22.16.0
+    python: Python 3.13.5
+    curl: curl 8.10.1
+  authenticated_target_checkout: unavailable
+  browser_runtime: not_used
+
+exact_probe:
+  command: |-
+    set +e
+    printf 'UTC='; date -u +%Y-%m-%dT%H:%M:%SZ; printf 'id='; id; printf 'git='; git --version; printf 'node='; node --version; printf 'python='; python3 --version; printf 'curl='; curl --version | head -n 1
+    printf '\nLS_REMOTE_BEGIN\n'
+    GIT_TERMINAL_PROMPT=0 git ls-remote https://github.com/TTaoGaming/TAGS.git refs/heads/agent/spatial-golden-app-001-20260731
+    rc=$?
+    printf 'LS_REMOTE_EXIT=%s\n' "$rc"
+    exit 0
+  wrapper_exit_code: 0
+  target_git_probe_exit_code: 128
+  output: |-
+    UTC=2026-08-01T01:29:02Z
+    id=uid=0(root) gid=0(root) groups=0(root)
+    git=git version 2.47.3
+    node=v22.16.0
+    python=Python 3.13.5
+    curl=curl 8.10.1 (x86_64-pc-linux-gnu) libcurl/8.10.1 OpenSSL/3.5.5 zlib/1.3.1 brotli/1.1.0 zstd/1.5.7 libidn2/2.3.8 libpsl/0.21.2 nghttp2/1.64.0 librtmp/2.3 OpenLDAP/2.6.10
+    LS_REMOTE_BEGIN
+    fatal: unable to access 'https://github.com/TTaoGaming/TAGS.git/': Could not resolve host: github.com
+    LS_REMOTE_EXIT=128
+  permission_or_error_class: OUTBOUND_DNS_UNAVAILABLE_FOR_TARGET_GIT_CHECKOUT
+
+command_and_test_evidence:
+  C0_LIVE_INGRESS_ACK: FELL
+  C1_CHECKOUT_HEAD: NOT_RUN_BLOCKED_BY_C0_AND_DNS
+  C2_BASE_BINDING: NOT_RUN
+  C3_PREPATCH_RED: NOT_RUN
+  C4_FULL_NODE_TESTS: NOT_RUN
+  C5_DIFF_CHECK: NOT_RUN
+  C6_ALLOWED_PATHS: NOT_RUN
+  C7_STATIC_SERVER_START: NOT_RUN
+  C8_STATIC_LOAD_READBACK: NOT_RUN
+  C9_ADAPTER_READBACK: NOT_RUN
+  C10_STATIC_SERVER_STOP: NOT_RUN
+  C11_FINAL_SHA: NOT_RUN
+  A0_LIVE_INGRESS: FELL
+  A1_SOURCE_PIN: NOT_RUN_CONNECTOR_METADATA_ONLY
+  A2_POINTER_POSITION: NOT_RUN
+  A3_EXACT_ONCE_TARGET_ACTIVATION: NOT_RUN
+  A4_ZERO_FALSE_ACTIVATION: NOT_RUN
+  A5_NATIVE_FALLBACK: NOT_RUN
+  A6_NO_EXTERNAL_DEPENDENCY: NOT_RUN
+  A7_CLASSIC_SCRIPT_AND_STATIC_SMOKE: NOT_RUN
+  A8_BOUNDED_DIFF: NOT_RUN
+  A9_REAL_PRODUCER_READBACK: PARTIAL_HOLD_ONLY
+  A10_CLAIM_CEILING: STOOD_NO_OUTCOME_INFLATION
+
+producer_return:
+  target_branch_sha: fee50a70188b510695e8e5fad2ebadc6cba0535a
+  changed_target_paths: []
+  target_commit_created: false
+  regression_test_added: false
+  patch_applied: false
+  tests_passed_claimed: false
+  branch_or_sha: agent/spatial-golden-app-001-20260731@fee50a70188b510695e8e5fad2ebadc6cba0535a
+  blocker: local execution tools are present, but the shell cannot resolve github.com and therefore cannot perform the packet-required authenticated clean checkout; connector file access is not represented as a clean Git checkout
+
+rollback:
+  required: none
+  reason: no target mutation occurred
+  permitted_future: leave branch unmerged or use an ordinary revert commit; no reset, rebase, force push, or branch deletion
+
+verifier:
+  named: Sigrun/P4_APEX_FALSIFICATION_or_other_distinct_provider_nonproducer
+  same_provider_preflight_binding_weight: 0
+consumer:
+  named: Olrun/Claude-Dispatch_as_spatial_factory_coordinator
+  next_transition: provide one checkout-capable authenticated host before executor expiry, or allow packet to expire without target mutation
+
+remaining_risk:
+  - the current branch still lacks the required script load seam, armed gate, exact-target activation seam, and regression coverage
+  - connector read/write capability does not prove a clean checkout, full repository context, or command reproducibility
+  - the executor packet expires before the claim lease
+
+honest_flaw: >-
+  This wake improved the tool-surface diagnosis by proving that Node, Python, curl, Git, and a local shell exist, but it did not obtain an authenticated clean checkout. The GitHub connector can read and write exact files, yet treating that as equivalent to the packet-required checkout would weaken the acceptance gate. No patch, regression test, command suite, independent verdict, ConsumerAck, merge, deployment, publication, or external outcome occurred.
