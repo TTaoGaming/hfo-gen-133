@@ -1,0 +1,87 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+event_id: X11_WEB_RESEARCH_SURFACE_V1_WAKE_01
+seat: X11
+expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+self_probe:
+  task_binding: PROMPT_BOUND_NOT_INDEPENDENTLY_READ
+  exposed_tools_used:
+    - GitHub.fetch_file
+    - GitHub.create_file
+    - GitHub.update_file
+    - web.system1_search_query
+    - web.open
+  exposed_but_not_yet_used:
+    - Slack.slack_send_message
+  missing_or_unverified_surfaces:
+    - native_task_inventory_read
+    - connector_call_latency
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+prior_current_version: 12
+next_current_version: 13
+accepted_wake: 1
+target_wakes_before_decision: 4
+campaign_status: ACTIVE
+controlled_factor: web_research
+baseline:
+  prior_web_campaign_observations: none_in_current_campaign
+  inherited_claim_ceiling: web_research_surface_not_yet_measured_by_X11
+hypothesis: a_domain_bounded_search_and_direct_open_can_recover_one_official_primary_RFC_document_and_agree_on_document_identity_publication_month_and_category_without_secondary_sources
+exact_probe:
+  search_query: site:rfc-editor.org/rfc/rfc9110 RFC 9110 HTTP Semantics June 2022
+  domain_filter:
+    - rfc-editor.org
+  direct_primary_url: https://www.rfc-editor.org/rfc/rfc9110.html
+  auxiliary_official_info_url: https://www.rfc-editor.org/info/rfc9110/
+  comparison_fields:
+    - rfc_number
+    - title
+    - publication_month
+    - category
+measured_result:
+  search_returned_official_primary_document: true
+  search_primary_url: https://www.rfc-editor.org/rfc/rfc9110.html
+  direct_primary_open: SUCCESS
+  direct_primary_content_type: text/html
+  compared_identity:
+    rfc_number_search: 9110
+    rfc_number_direct: 9110
+    title_search: HTTP Semantics
+    title_direct: HTTP Semantics
+    publication_month_search: June 2022
+    publication_month_direct: June 2022
+    category_search: Standards Track
+    category_direct: Standards Track
+    all_selected_fields_match: true
+  secondary_sources_used_for_claim: false
+  auxiliary_official_info_open: INTERNAL_ERROR
+  result: OFFICIAL_PRIMARY_SEARCH_AND_DIRECT_OPEN_MATCH_WITH_SUBPATH_CONNECTOR_VARIANCE
+permission_error_class: PUBLIC_READ_ALLOWED_FOR_PRIMARY_HTML;CONNECTOR_INTERNAL_ERROR_FOR_AUXILIARY_INFO_SUBPATH
+latency:
+  search_latency_exposed: false
+  direct_open_latency_exposed: false
+operator_relay_minutes: 0
+capability_change: first_X11_measurement_that_domain_bounded_web_search_plus_direct_URL_open_can_recover_and_cross_check_official_RFC_primary_metadata_while_an_adjacent_official_info_subpath_can_fail_inside_the_connector
+strongest_falsifier: repeat_probes_on_multiple_official_domains_show_identity_or_metadata_mismatch_between_search_and_direct_open_or_direct_URL_reads_depend_on_cached_secondary_excerpts_without primary_document_lines
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer:
+  - Reginleif
+  - Ratatoskr
+honest_flaw: one_document_one_domain_and_one_backend_cannot_establish_general_web_research_reliability;search_and_open_may_share_cache_or_parser_infrastructure;the_auxiliary_internal_error_was_not_retried_with_URL_variants_because_only_one_bounded_probe_was_allowed
+evidence_class: SAME_PROVIDER_DESCRIPTIVE_NONBINDING
+binding_weight: 0
+effect_ceiling: public_web_read_plus_Git_experiment_event_and_current_pointer_update_and_one_material_Slack_pointer
+next_probe: domain_bounded_search_for_RFC_8259_then_directly_open_both_official_HTML_and_plain_text_forms_and_compare_RFC_number_title_publication_month_and_category_while_recording_format_specific_parser_variance
+valid_time_utc: 2026-08-01T09:40:05Z
+transaction_time_utc: 2026-08-01T09:40:05Z
+evidence_expiry_utc: 2026-08-08T09:40:05Z
+sealed: true
+---
+
+Wake 1 accepted. A domain-bounded search returned the official RFC 9110 primary HTML,
+and a direct URL open reproduced RFC number, title, publication month, and category.
+No secondary source was needed for those fields. An adjacent official info URL returned
+a connector internal error, so the admitted capability is narrower than general
+rfc-editor.org path reliability. Same-provider binding weight remains zero.
