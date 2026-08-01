@@ -1,0 +1,85 @@
+{
+  "canonical_transition": {
+    "acceptance": {
+      "canonicalization": "JCS_LIKE_V1_NFC_UTF8_SORTED_KEYS_COMPACT_LF; integer versions only",
+      "digest_rule": "sha256(canonical_json_utf8(canonical_transition))",
+      "duplicate_gate": "Derive the proposed key from the state-changing semantic tuple, excluding controlled_probe_name. Require zero observed best-effort repository-search matches for the proposed key. Immediately before CURRENT replacement require exact version=11 and blob=cb66c5d0a1269fbacb150f2a5a428602c4d27caf. A stale expected version, changed blob, duplicate key, or update conflict must not advance CURRENT.",
+      "idempotency_formula": "sha256(object_id|expected_version|next_version|campaign_id|wake_ordinal|prior_digest_sha256|current_pointer_blob|task_id|transition_kind|decision)",
+      "next_wake_requirement": "If this wake is accepted, begin X12_STALE_CONCURRENT_WRITER_SIMULATION_C4 from object version 12. Use harmless synthetic stale/concurrent-writer proposals; never claim real concurrency or database isolation.",
+      "pointer_gate": "Event-first exact readback; second exact CURRENT read; single-file blob-SHA-guarded replace; returned-blob and branch-path exact readback. Any mismatch/conflict/duplicate is not accepted.",
+      "strategy": "SEMANTIC_TRANSITION_TUPLE_EXCLUDING_PROBE_METADATA_V3"
+    },
+    "campaign": {
+      "accepted_wake_ordinal": 4,
+      "campaign_id": "X12_IDEMPOTENCY_STRATEGY_C3",
+      "decision": "REVISE",
+      "decision_basis": "Wake 2 showed serialization-invariant replay identity, but wake 3 proved the formula still included controlled_probe_name and therefore minted two keys for one otherwise identical transition. Wake 4 retains normalized semantic fields while removing probe metadata from the key and closes the campaign as REVISE.",
+      "factor": "idempotency_strategy",
+      "next_campaign_id": "X12_STALE_CONCURRENT_WRITER_SIMULATION_C4",
+      "next_factor": "stale_concurrent_writer_simulation",
+      "target_wakes": 4
+    },
+    "consumer": "Reginleif/Olrun",
+    "effect_ceiling": "FILE_AND_SANITIZED_SLACK_ONLY",
+    "evidence_class": "PROMPT_TASK_ID_BINDING+GITHUB_EXACT_CURRENT_AND_PRIOR_EVENT_READBACK+BEST_EFFORT_SEARCH+LOCAL_DETERMINISTIC_KEY_AND_DIGEST+EVENT_FIRST_DOUBLE_CURRENT_READ+SHA_GUARDED_SINGLE_FILE_POINTER_UPDATE+DUAL_POSTWRITE_READBACK",
+    "expected_version": 11,
+    "experiment": {
+      "baseline": "v11; C3 3/4; prior event digest cf9fa217c9227a5c54b0951b1dec3bdbf2255055db9b3a1955478fd073cec2e1; CURRENT blob cb66c5d0a1269fbacb150f2a5a428602c4d27caf. Wake 3 derived distinct primary and alias keys when only controlled_probe_name changed.",
+      "controlled_factor": "Idempotency strategy only. Replace the V2 key tuple that included controlled_probe_name with a V3 semantic-transition tuple that excludes probe metadata while retaining object, versions, campaign ordinal, prior digest, exact pointer blob, task binding, transition kind, decision, pointer pattern, verifier, consumer, expiry, and rollback.",
+      "controlled_probe_name": "SEMANTIC_SCOPE_REPAIR_DECISION_W4",
+      "exact_probe": "For the pending v11→v12 campaign-decision transition, derive the retired V2 primary key ea20e0057789c56514d891457c971cbab6bac6fb7a7c1fde40bb50937ff7840a from probe name SEMANTIC_SCOPE_REPAIR_DECISION_W4 and retired V2 alias key 5666b36918638e17a719aaac50f65103769ad4fdcb606b4dd3e28b304572124e from only the alias probe name; require them to differ. Then derive V3 key 626f1123d04ba718f69e06a31643fb83cf7b55e97d74140325142ac592a8e00f twice from identical semantic transition fields while varying only probe metadata outside the formula; require equality, require zero observed repository-search matches, create only one event, and enforce the retained event-first exact-version pointer gate.",
+      "hypothesis": "Removing controlled probe metadata from the idempotency tuple makes same-transition aliases converge on one key while preserving version-scoped uniqueness. This repairs the observed alias defect but remains weaker than an exactly-once or transactional runtime.",
+      "measured_result": {
+        "campaign_decision": "REVISE",
+        "new_formula_alias_key": "626f1123d04ba718f69e06a31643fb83cf7b55e97d74140325142ac592a8e00f",
+        "new_formula_primary_key": "626f1123d04ba718f69e06a31643fb83cf7b55e97d74140325142ac592a8e00f",
+        "new_formula_same_transition_alias_keys_equal": true,
+        "old_formula_alias_key": "5666b36918638e17a719aaac50f65103769ad4fdcb606b4dd3e28b304572124e",
+        "old_formula_primary_key": "ea20e0057789c56514d891457c971cbab6bac6fb7a7c1fde40bb50937ff7840a",
+        "old_formula_same_transition_alias_keys_equal": false,
+        "operator_relay_minutes": 0,
+        "permission_error_class": "NONE_ON_READ_AND_SEARCH",
+        "proposed_key_observed_match_count": 0,
+        "search_authority": "BEST_EFFORT_NONATOMIC_POSSIBLY_STALE",
+        "wake3_observed_alias_defect_reconfirmed": true
+      },
+      "strongest_falsifier": "Changing only controlled_probe_name changes the V3 key; the proposed key already existed but search missed it; two materially different intended next states collide because the tuple omits a load-bearing semantic field; stale CURRENT version/blob is accepted; exact event or pointer readback fails; or a second writer advances the same expected version."
+    },
+    "expiry_utc": "2026-08-01T11:45:05Z",
+    "honest_flaw": "The V3 tuple repairs the observed probe-name alias defect but is still prompt-defined rather than enforced by a formally versioned schema, and it does not hash the entire intended next-state payload. Omitting a load-bearing semantic field could cause a false duplicate; adding a semantically irrelevant bound field could recreate aliases. Repository search is stale/nonatomic and not uniqueness enforcement. Event and CURRENT are separate commits, so failures can leave an orphan event or Git advanced without Slack. GitHub Contents API provides a prior-blob guard for one file only; this does not establish cross-file atomicity, locking, linearizability, exactly-once execution, true concurrent-writer safety, database durability, Slack atomicity, or automatic cleanup.",
+    "idempotency_key": "626f1123d04ba718f69e06a31643fb83cf7b55e97d74140325142ac592a8e00f",
+    "next_version": 12,
+    "nonce": "x12-c3-w4-v11-v12-626f1123",
+    "object_id": "HFO_X12_WORKFLOW_OBJECT_001",
+    "prior_digest_sha256": "cf9fa217c9227a5c54b0951b1dec3bdbf2255055db9b3a1955478fd073cec2e1",
+    "prior_version": 11,
+    "rollback": "Never delete the immutable event. If this transition is later invalidated, append a compensating event from the then-current version and replace CURRENT only with that pointer file's exact then-current blob SHA.",
+    "self_probe": {
+      "expected_task_id": "6a506f83df208191815dd17a8fd5baa3",
+      "observed_task_id": null,
+      "task_id_binding": "EXPECTED_ID_FROM_AUTOMATION_INSTRUCTION; native task inventory ID unavailable in the current connector surface",
+      "tools": [
+        "GITHUB_READ_WRITE",
+        "GITHUB_BLOB_READ",
+        "GITHUB_SEARCH",
+        "SLACK_SEND",
+        "LOCAL_DETERMINISTIC_PARSE_KEY_AND_DIGEST"
+      ]
+    },
+    "source_binding": {
+      "current_pointer_blob": "cb66c5d0a1269fbacb150f2a5a428602c4d27caf",
+      "current_projection_digest_sha256": "67d4756dcee8c28935050e6027f62322c3cc65297f6bce870f810416e3ca1453",
+      "prior_event_blob": "ea32308963efe6357827671bd03010184f2acb71",
+      "prior_event_commit": "5b90500cf5bd91db15ef51cec065ad8d4673037e",
+      "prior_event_path": "state/coordination/experiments/durable_object_x12/events/20260801T074409Z_V0010_TO_V0011_IDEMPOTENCY_STRATEGY.json"
+    },
+    "task_id": "6a506f83df208191815dd17a8fd5baa3",
+    "transaction_time_evidence": "AUTOMATION_RUNTIME_CONTEXT_TIMESTAMP; Git commit metadata is separate and is not a database transaction boundary",
+    "transaction_time_utc": "2026-08-01T08:45:05Z",
+    "valid_time_utc": "2026-08-01T08:45:05Z",
+    "verifier": "S04_STRUCTURAL_PREFLIGHT_WEIGHT_0_THEN_SIGRUN_P4_DISTINCT"
+  },
+  "canonicalization": "JCS_LIKE_V1",
+  "event_digest_sha256": "e5d55e3a433316a0519926bcb3c033335755feeb084c1b7f00e6d6554cea3383",
+  "schema_id": "hfo.gen133.x12.durable_object_event.v1"
+}
