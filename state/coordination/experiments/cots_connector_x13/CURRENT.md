@@ -1,47 +1,52 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
-experiment_id: X13_GOOGLE_CALENDAR_READONLY_CONNECTOR_001
-version: 20
-prior_version: 19
-candidate: Calendar_read_only_event_search_and_free_busy_connector
-candidate_contract_reference: official_Google_Calendar_events_list_freebusy_query_scopes_quota_errors_plus_direct_connector_receipts
-campaign_wake: 4_of_4
-campaign_status: COMPLETE
+experiment_id: X13_GOOGLE_DRIVE_READONLY_CONNECTOR_001
+version: 21
+prior_version: 20
+candidate: Google_Drive_read_only_search_fetch_and_metadata_connector
+candidate_contract_reference: official_Google_Drive_files_list_get_search_scopes_quota_contract_plus_direct_connector_receipt
+campaign_wake: 1_of_4
+campaign_status: ACTIVE
 phase_1_completed: true
-phase_2_completed: true
-phase_3_completed: true
-phase_4_completed: true
-phase_4_decision: ADOPT_WITH_GATES
+phase_2_completed: false
+phase_3_completed: false
+phase_4_completed: false
+phase_4_decision: PENDING
 binding_architecture_decision: false
-last_event_commit: 5e31a7b5f58cec5338e42f69d75a040626a6d062
-last_event_path: state/coordination/experiments/cots_connector_x13/20260801T164756Z_GOOGLE_CALENDAR_READONLY_PHASE4_ADOPT_WITH_GATES.md
-last_event_blob_sha: b2998713b82c5bc285418230caa69f99fc2069ea
-adoption_credit: 4
-adoption_credit_basis: OFFICIAL_CONTRACT_PLUS_DIRECT_BASELINE_PLUS_BOUNDED_KNOWN_OBLIGATION_RECONCILIATION_PLUS_SYNTHETIC_FAIL_CLOSED_404_VARIANCE_PROBE_PLUS_GATED_DECISION
+last_event_commit: de0ac15e0fb42590fe647dcd934f85ce499c5667
+last_event_path: state/coordination/experiments/cots_connector_x13/20260801T174655Z_GOOGLE_DRIVE_READONLY_PHASE1_BASELINE.md
+last_event_blob_sha: 46ab10dcdd0c54280944504bd81d0cb013cd4cca
+adoption_credit: 1
+adoption_credit_basis: OFFICIAL_PRIMARY_CONTRACT_PLUS_ONE_SYNTHETIC_METADATA_ONLY_EMPTY_SEARCH_BASELINE
 fitness_credit: 0_PENDING_EXPLICIT_CONSUMER_ACK
-workitem_consumption_evidence: EXISTING_S05_REED_HVAC_RECEIPT_USED_AS_BOUNDED_MICRO_USE_INPUT_NOT_CONSUMER_ACK
+workitem_consumption_evidence: NONE_PHASE1_BASELINE_ONLY
 carrier_task_id: 6a55c1733708819185088bf334e33ea5
 carrier_task_id_match: true
 carrier_task_id_observation_source: NATIVE_AUTOMATIONS_LIST_READBACK
-effect_ceiling: READ_ONLY_BOUNDED_FREEBUSY_AND_KNOWN_OBLIGATION_EVENT_RECONCILIATION_NO_CALENDAR_WRITE_NO_PRIVATE_BODY_PERSISTENCE
+effect_ceiling: READ_ONLY_SYNTHETIC_METADATA_SEARCH_NO_FILE_CONTENT_FETCH_NO_DRIVE_WRITE_NO_PRIVATE_BODY_PERSISTENCE
 operator_relay_minutes: 0
-operator_minutes_removed_estimate: 3_to_7_UNVALIDATED_ACROSS_PHASES_2_AND_3
+operator_minutes_removed_estimate: 0_PHASE1_BASELINE_ONLY
 custom_code_avoided_estimate:
-  bounded_search_read_normalization_pagination: 60_to_160_LOC_UNVALIDATED
-  freebusy_request_response_normalization: 30_to_80_LOC_UNVALIDATED
-  request_auth_serialization_and_basic_error_unwrapping: 40_to_120_LOC_UNVALIDATED
-  authentication_token_management: MATERIAL_BUT_UNQUANTIFIED
-  retry_classification_policy: NOT_AVOIDED_REQUIRES_HFO_GATE
+  bounded_query_and_metadata_normalization: 40_to_120_LOC_UNVALIDATED
+  provider_pagination_plumbing: 20_to_80_LOC_UNVALIDATED
+  authentication_and_token_refresh: MATERIAL_BUT_UNQUANTIFIED
+  content_privacy_policy: NOT_AVOIDED_REQUIRES_HFO_GATE
+  retry_and_rate_limit_policy: NOT_AVOIDED_REQUIRES_HFO_GATE
   additive_total: NOT_CLAIMED_BECAUSE_FUNCTIONS_OVERLAP
 paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
 official_quota_model_checked_2026_08_01:
-  new_model_per_minute_per_project_requests: 10000
-  new_model_per_minute_per_user_per_project_requests: 600
-  daily_billing_threshold_requests: 1000000
-  standard_use_below_threshold: NO_ADDITIONAL_COST
-  pre_may_2026_project_grandfathering: POSSIBLE_PREVIOUS_QUOTAS
-  charges_above_limits: PLANNED_LATER_2026_WITH_AT_LEAST_90_DAYS_NOTICE
+  new_model_effective_date: 2026-05-01
+  per_minute_per_project_quota_units: 1000000
+  per_minute_per_user_per_project_quota_units: 325000
+  per_day_per_project_egress: 1_TB
+  daily_billing_threshold_quota_units: 400000000
+  files_list_quota_units: 100
+  files_get_read_quota_units: 5
+  files_download_quota_units: 200
+  grandfathering_possible_for_projects_used_2025_11_through_2026_04: true
+  standard_use_below_threshold: NO_ADDITIONAL_COST_DOCUMENTED
 direct_connector_request_count: NOT_EXPOSED
+direct_connector_quota_units: NOT_EXPOSED
 actual_project_quota_class: UNKNOWN
 connector_authenticated: true
 live_authentication_identity: UNKNOWN
@@ -50,128 +55,85 @@ live_authentication_scope: UNKNOWN
 credential_custody: UNKNOWN
 live_quota_headers: NOT_EXPOSED
 connector_internal_call_sequence: UNKNOWN
-phase_1_direct_receipts:
-  synthetic_event_search:
-    action: search_events
-    connector_id: connector_947e0d954944416db111db556030eea6
-    max_results: 5
-    result: SUCCESS_EMPTY
-    next_page_token: null
-    latency_ms: 191
-  primary_freebusy:
-    action: get_availability
-    connector_id: connector_947e0d954944416db111db556030eea6
-    result: SUCCESS
-    calendar_error: null
-    exact_busy_intervals_persisted: false
-    latency_ms: 155
-phase_2_direct_receipts:
-  event_search:
-    action: search_events
-    connector_id: connector_947e0d954944416db111db556030eea6
-    bounded_query: Reed_AC
-    explicit_window_utc: 2026-08-03T06:00:00Z_TO_2026-08-04T06:00:00Z
-    max_results: 5
-    result: SUCCESS_ONE_MATCH
-    next_page_token: null
-    latency_ms: 364
-    privacy_behavior: FULL_DESCRIPTION_AND_IDENTITY_BEARING_FIELDS_RETURNED
-  exact_readback:
-    action: read_event
-    connector_id: connector_947e0d954944416db111db556030eea6
-    result: SUCCESS_PRIOR_EVENT_ID_SHA256_MATCH
-    latency_ms: NOT_EXPOSED
-phase_3_direct_receipt:
-  action: search_events
-  controlled_factor: SYNTHETIC_INVALID_CALENDAR_SELECTOR
-  query_nonce: HFO_X13_SYNTHETIC_NONEXISTENT_20260801T154924Z
-  explicit_window_utc: 2026-08-01T15:45:00Z_TO_2026-08-01T15:46:00Z
-  max_results: 1
-  result: EXPECTED_ERROR_NO_EVENT_DATA
-  wrapper_error_class: NOT_FOUND
-  upstream_http_status: 404
-  upstream_reason: global_notFound
-  permission_semantics: AMBIGUOUS_NONEXISTENT_OR_INACCESSIBLE
-  latency_ms: NOT_EXPOSED
-  connector_id: NOT_EXPOSED_ON_ERROR
-  retry_after: NOT_EXPOSED
-privacy_externalization: NO_EVENT_DESCRIPTION_ATTENDEE_EMAIL_CONTACT_DETAIL_RAW_EVENT_ID_URL_EXACT_PRIVATE_BUSY_INTERVAL_CALENDAR_ID_OR_SYNTHETIC_SELECTOR_LITERAL_WRITTEN_TO_GIT_OR_SLACK
-privacy_overread_observed: true
-privacy_overread_detail: SEARCH_EVENTS_RETURNED_FULL_DESCRIPTION_AND_IDENTITY_BEARING_FIELDS_WHEN_ONLY_METADATA_WAS_REQUIRED_DURING_PHASE2_PHASE3_RETURNED_NO_EVENT_DATA
-observed_failure_behavior: SYNTHETIC_INVALID_CALENDAR_SELECTOR_RAISED_TOOLERROR_NOT_FOUND_WITH_UPSTREAM_404_GLOBAL_NOTFOUND_AND_NO_EVENT_DATA
-empty_result_semantics: NOT_FOUND_OR_UNKNOWN_DO_NOT_INFER_PERMISSION_OR_GLOBAL_ABSENCE
-error_404_semantics: UNKNOWN_NOT_FOUND_OR_INACCESSIBLE_DO_NOT_INFER_GLOBAL_ABSENCE_OR_CONFIRMED_PERMISSION_DENIAL
-durability: CALENDAR_PROVIDER_DURABILITY_ONLY_NO_WORKFLOW_REPLAY_RESUME_TRANSACTION_OR_EXACTLY_ONCE_CLAIM
-observability: SUCCESS_PATH_EXPOSES_ACTION_CONNECTOR_ID_NORMALIZED_RESULT_SEARCH_LATENCY_PAGINATION_AND_ERROR_ENVELOPE_ERROR_PATH_EXPOSES_WRAPPER_CLASS_HTTP_STATUS_REASON_MESSAGE_BUT_HIDES_LATENCY_CONNECTOR_ID_HEADERS_RETRY_COUNT_REQUEST_COUNT_AUTH_IDENTITY_AND_INTERNAL_CALL_SEQUENCE
-portability: MEDIUM_AT_CALENDAR_EVENT_FREEBUSY_AND_GENERIC_RESOURCE_UNAVAILABLE_SEMANTICS_LOW_FOR_WRAPPER_SCHEMA_GOOGLE_GLOBAL_NOTFOUND_AND_PRIVACY_BEHAVIOR_OTHER_PROVIDERS_UNTESTED
-adopted_scope:
-  - BOUNDED_FREEBUSY_FOR_AVAILABILITY_WITH_EXPLICIT_TIME_WINDOW_AND_NO_EVENT_DETAIL_READ
-  - BOUNDED_EVENT_SEARCH_ONLY_FOR_A_KNOWN_OPERATOR_OBLIGATION_WITH_EXPLICIT_TIME_WINDOW_LOW_RESULT_CAP_AND_PRIVATE_BODY_HANDLING
-  - EXACT_EVENT_READBACK_ONLY_WHEN_DIGEST_BINDING_OR_AN_OMITTED_REQUIRED_FIELD_JUSTIFIES_THE_EXTRA_READ
+phase_1_direct_receipt:
+  action: search
+  connector_id: connector_5f3c8c41a1e54ad7a76272c89e2554fa
+  controlled_mode: EXPLICIT_ITEM_TYPE_DOCUMENT_METADATA_ONLY_ONE_PROVIDER_PAGE
+  query_class: SYNTHETIC_NONEXISTENT_NON_SENSITIVE
+  topn: 3
+  best_effort_fetch: false
+  require_viewed_by_user: false
+  result: SUCCESS_EMPTY
+  result_count: 0
+  external_call_time_ms: 350
+  error: null
+  content_returned: false
+  identity_bearing_result_returned: false
+  next_page_token_exposed: false
+privacy_externalization: NO_DRIVE_ITEM_NAME_ID_URL_OWNER_SHARING_IDENTITY_OR_FILE_BODY_WRITTEN_TO_GIT_OR_SLACK
+privacy_overread_observed: false_ON_EMPTY_RESULT_ONLY
+observed_failure_behavior: NOT_YET_PROBED_PHASE3
+empty_result_semantics: NO_MATCH_FOUND_BY_THIS_BOUNDED_QUERY_NOT_GLOBAL_ABSENCE_OR_PERMISSION_PROOF
+durability: GOOGLE_DRIVE_PROVIDER_STORAGE_ONLY_NO_WORKFLOW_REPLAY_RESUME_TRANSACTION_OR_EXACTLY_ONCE_CLAIM
+observability: SUCCESS_PATH_EXPOSES_ACTION_CONNECTOR_ID_EMPTY_NORMALIZED_RESULT_AND_EXTERNAL_CALL_TIME_BUT_HIDES_RAW_METHOD_FIELDS_SCOPE_IDENTITY_HEADERS_REQUEST_COUNT_QUOTA_UNITS_RETRIES_AND_INTERNAL_CALL_SEQUENCE
+portability: MEDIUM_FOR_GENERIC_FILE_SEARCH_METADATA_AND_PAGINATION_LOW_FOR_CONNECTOR_ITEM_TYPE_SCHEMA_WRAPPER_ERRORS_AND_GOOGLE_NATIVE_EXPORT_BEHAVIOR
+provisional_scope:
+  - BOUNDED_EXPLICIT_ITEM_TYPE_METADATA_ONLY_SEARCH_FOR_DISCOVERY
+  - SHORT_SPECIFIC_QUERY_LOW_TOPN_AND_NAMED_OBLIGATION_OR_ARTIFACT
 excluded_or_deferred_scope:
-  - GENERAL_CALENDAR_MINING_OR_UNBOUNDED_EVENT_SEARCH
-  - METADATA_ONLY_EVENT_SEARCH_CLAIM
-  - AUTOMATIC_ACCESS_REQUEST_LOGIN_OR_PERMISSION_REPAIR_FROM_404
-  - SECONDARY_OR_SHARED_CALENDAR_PERMISSION_CLAIMS_NOT_DIRECTLY_PROBED
+  - GENERAL_DRIVE_MINING_OR_UNBOUNDED_SEARCH
+  - BEST_EFFORT_CONTENT_HYDRATION
+  - FETCH_EXPORT_REVISION_OR_RAW_DOWNLOAD_UNTIL_NAMED_CONSUMER_REQUIRES_CONTENT
+  - LEAST_PRIVILEGE_CLAIM_WITHOUT_LIVE_SCOPE_READBACK
+  - ONE_WRAPPER_CALL_EQUALS_ONE_FILES_LIST_CALL_OR_EXACT_QUOTA_UNIT_CLAIM
   - HIGH_RATE_POLLING_BULK_PAGINATION_OR_BLIND_RETRY
-  - CALENDAR_WRITE_SEND_INVITE_OR_ACCOUNT_CHANGE
+  - DRIVE_WRITE_SHARE_PERMISSION_ACCOUNT_OR_SECURITY_CHANGE
   - PROVIDER_DURABILITY_AS_WORKFLOW_DURABILITY_OR_EXACTLY_ONCE
-mandatory_gates:
-  - PREFER_FREEBUSY_FOR_AVAILABILITY_AND_USE_EVENT_SEARCH_ONLY_WHEN_EVENT_LEVEL_FACTS_ARE_REQUIRED
-  - TREAT_SEARCH_EVENTS_AND_READ_EVENT_AS_PRIVATE_BODY_READ_SURFACES_NOT_METADATA_ONLY
-  - REQUIRE_EXPLICIT_TIME_WINDOW_LOW_RESULT_CAP_NAMED_OBLIGATION_PRIVACY_CEILING_AND_CONSUMER
-  - EVENT_DESCRIPTIONS_ATTENDEES_EMAIL_IDENTITIES_CONTACT_DETAILS_RAW_EVENT_IDS_URLS_LOCATIONS_EXACT_PRIVATE_BUSY_INTERVALS_AND_CALENDAR_IDS_STAY_IN_SOURCE_SYSTEMS_UNLESS_EXPLICITLY_REQUIRED
-  - DO_NOT_PERSIST_PRIVATE_RESPONSE_BODIES_TO_GIT_OR_SLACK_PERSIST_ONLY_SANITIZED_FACTS_DIGESTS_AND_SOURCE_POINTERS
-  - AVOID_READ_EVENT_WHEN_SEARCH_ALREADY_RETURNS_THE_REQUIRED_FACTS_EXCEPT_FOR_DIGEST_BINDING_OR_MISSING_FIELDS
-  - EMPTY_SUCCESS_MEANS_NOT_FOUND_OR_UNKNOWN_NOT_GLOBAL_ABSENCE_OR_PERMISSION_PROOF
-  - MAP_404_TO_UNKNOWN_NOT_FOUND_OR_INACCESSIBLE_NOT_GLOBAL_ABSENCE_AND_NOT_CONFIRMED_PERMISSION_DENIAL
-  - DO_NOT_AUTO_REQUEST_ACCESS_OR_TRIGGER_LOGIN_FROM_404
-  - RETRY_ONLY_FOR_DOCUMENTED_RETRYABLE_RATE_OR_SERVER_FAILURES_WITH_BOUNDED_EXPONENTIAL_BACKOFF_JITTER_AND_STOP_CONDITIONS
-  - LIVE_OAUTH_IDENTITY_SCOPE_TOKEN_TYPE_STORAGE_AND_CREDENTIAL_CUSTODY_REMAIN_UNKNOWN
-  - DO_NOT_DESCRIBE_THE_LIVE_CONNECTOR_AS_LEAST_PRIVILEGE
-  - LOW_RATE_BOUNDED_CALLS_ONLY_WHILE_RAW_REQUEST_COUNT_QUOTA_HEADERS_RETRY_AUDIT_BILLING_CLASS_AND_INTERNAL_CALL_SEQUENCE_ARE_HIDDEN
-  - RECHECK_QUOTA_AND_BILLING_BEFORE_SCALE_BECAUSE_ACTUAL_PROJECT_GRANDFATHERING_OR_NEW_QUOTA_CLASS_IS_UNKNOWN
+provisional_gates:
+  - DEFAULT_TO_EXPLICIT_ITEM_TYPE_METADATA_ONLY_SEARCH_FOR_DISCOVERY
+  - SET_BEST_EFFORT_FETCH_FALSE_UNLESS_A_NAMED_CONSUMER_REQUIRES_CONTENT
+  - REQUIRE_SHORT_SPECIFIC_QUERY_LOW_TOPN_AND_NAMED_OBLIGATION_OR_ARTIFACT
+  - KEEP_FILE_NAMES_IDS_URLS_OWNERS_SHARING_IDENTITIES_AND_BODIES_IN_SOURCE_SYSTEMS_UNLESS_EXPLICITLY_REQUIRED
+  - TREAT_FETCH_EXPORT_REVISION_AND_RAW_DOWNLOAD_AS_PRIVATE_BODY_SURFACES
+  - DO_NOT_CLAIM_LEAST_PRIVILEGE_WHILE_LIVE_SCOPE_IDENTITY_AND_CREDENTIAL_CUSTODY_ARE_HIDDEN
+  - DO_NOT_CLAIM_ONE_WRAPPER_CALL_EQUALS_ONE_FILES_LIST_CALL_OR_100_QUOTA_UNITS
+  - HANDLE_PROVIDER_PAGE_TOKENS_OPAQUELY_AND_BOUND_PAGINATION
   - NO_PROVIDER_DURABILITY_WORKFLOW_DURABILITY_EXACTLY_ONCE_OR_INDEPENDENT_VERIFICATION_CLAIM
-verifier: S04_STRUCTURAL_PREFLIGHT_THEN_DISTINCT_NONPRODUCER_FOR_PRIVACY_PERMISSION_FAILURE_BEHAVIOR_REQUEST_EFFICIENCY_AND_SCOPE_CLAIMS
+verifier: S04_STRUCTURAL_PREFLIGHT_THEN_DISTINCT_NONPRODUCER_FOR_PRIVACY_SCOPE_REQUEST_COUNT_AND_CONTENT_ISOLATION
 consumer: S05_OPERATOR_RELIEF_CELL_AND_X11_CARRIER_SURFACE_LAB
 consumer_ack: NOT_OBSERVED
 same_provider_binding_weight: 0
-strongest_falsifier: A_DISTINCT_REPRODUCTION_SHOWS_FREEBUSY_CAUSES_HIDDEN_EVENT_BODY_READS_OR_SEARCH_EVENT_PRIVACY_FIELDS_CANNOT_BE_CONTAINED_OR_THE_CONNECTOR_RETURNS_EVENT_DATA_OR_REAL_RESOURCE_METADATA_FOR_AN_UNAUTHORIZED_SELECTOR_OR_MAPS_THE_SAME_UPSTREAM_404_TO_SUCCESS_EMPTY_OR_HIDDEN_REQUEST_AMPLIFICATION_MAKES_BOUNDED_USE_UNSAFE
-review_expiry_utc: 2026-08-08T16:47:56Z
-next_campaign:
-  experiment_id: X13_GOOGLE_DRIVE_READONLY_CONNECTOR_001
-  candidate: Google_Drive_read_only_search_fetch_and_metadata_connector
-  next_phase: PHASE1_OFFICIAL_CONTRACT_AND_DIRECT_CAPABILITY_BASELINE
-valid_time_utc: 2026-08-01T16:47:56Z
+strongest_falsifier: A_DISTINCT_TRACE_SHOWS_EXPLICIT_METADATA_ONLY_SEARCH_FETCHES_OR_HYDRATES_FILE_CONTENT_EXPOSES_PRIVATE_FIELDS_IGNORES_TOPN_OR_FANS_OUT_TO_MULTIPLE_UNBOUNDED_PROVIDER_CALLS_OR_THE_LIVE_CONNECTOR_USES_BROADER_SCOPE_THAN_NEEDED_WITHOUT_A_CONTAINMENT_GATE
+honest_flaw: SYNTHETIC_EMPTY_SEARCH_PROVES_ONLY_THAT_ONE_BOUNDED_METADATA_MODE_CALL_RETURNED_EMPTY_WITHOUT_CONTENT_IT_DOES_NOT_VALIDATE_MATCHED_RESULT_FIELDS_PAGINATION_FETCH_EXPORT_SHARED_DRIVE_BEHAVIOR_PERMISSION_FAILURE_ACTUAL_OAUTH_SCOPE_OR_ONE_TO_ONE_API_MAPPING
+review_expiry_utc: 2026-08-08T17:46:55Z
+next_phase: PHASE2_SMALLEST_HARMLESS_READ_ONLY_MICRO_USE_ON_ONE_ALREADY_EXTERNALIZED_NAMED_ARTIFACT_METADATA_ONLY_FIRST_AND_FETCH_ONLY_IF_REQUIRED
+valid_time_utc: 2026-08-01T17:46:55Z
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 sealed: true
 prior_campaign:
+  experiment_id: X13_GOOGLE_CALENDAR_READONLY_CONNECTOR_001
+  final_version: 20
+  decision: ADOPT_WITH_GATES
+  decision_commit: 5e31a7b5f58cec5338e42f69d75a040626a6d062
+  decision_blob_sha: b2998713b82c5bc285418230caa69f99fc2069ea
+prior_prior_campaign:
   experiment_id: X13_GMAIL_READONLY_CONNECTOR_001
   final_version: 16
   decision: ADOPT_WITH_GATES
   decision_commit: 7a72ec06c8c4c94f6b88c4303066a3fac71ebd8c
-  corrected_event_blob_sha: 3b8445aeaf4a94edfb88c205da086f2287211ef2
-  noncanonical_event_commit: dcba6818933485a4b786133616b5b89dc886cf06
-prior_prior_campaign:
+prior_prior_prior_campaign:
   experiment_id: X13_SLACK_PUBLIC_CHANNEL_CONNECTOR_001
   final_version: 12
   decision: ADOPT_WITH_GATES
   decision_commit: 86e2995365911ef5b7cd2b0d59a4e05d1cbac1b3
-prior_prior_prior_campaign:
-  experiment_id: X13_GITHUB_CONTENTS_API_001
-  final_version: 8
-  decision: ADOPT_WITH_GATES
-  decision_commit: 9cb0a9368a7ccf3b6e4f1a5ae62cfada2e134db8
 ---
 
 # X13 current campaign
 
-The Google Calendar read-only connector campaign is complete with `ADOPT_WITH_GATES`.
+The Google Drive read-only connector campaign is active at phase 1 of 4.
 
-Use free/busy first for availability because it returns busy intervals rather than event bodies. Use event search only for a named operator obligation with a narrow time window, low result cap, private-body handling, and a named consumer. Use exact event readback only when digest binding or a required omitted field justifies the extra read.
+A synthetic, explicit metadata-only document search returned an empty success in 350 ms without file content or identity-bearing results. This supports a bounded discovery baseline only. It does not prove matched-result privacy, actual OAuth scope, exact provider-call count, pagination behavior, fetch/export safety, shared-drive coverage, or workflow durability.
 
-The connector removed a small manual Calendar lookup during the Reed HVAC reconciliation and failed closed on a synthetic invalid-calendar selector. Event search also returned full description and identity-bearing fields when only metadata was needed, so it is not a metadata-only surface.
+The live OAuth identity, scope, token type, credential custody, raw request count, quota-unit consumption, project quota class, headers, retries, and connector internal call sequence remain hidden. Official Drive quotas and method unit costs are recorded for scale planning but cannot be attributed directly to the wrapper call.
 
-The live OAuth identity, scope, token type, credential custody, upstream request count, project quota class, quota headers, retry audit, and internal call sequence remain hidden. A 404 means only `unknown: not found or inaccessible`; it cannot trigger access requests, login, or a global-absence claim. Provider durability is not workflow durability.
-
-Same-provider binding weight remains zero. Fitness credit remains zero until S05 or X11 explicitly consumes the capability and records measured operator relief. Next campaign: Google Drive read-only search, fetch, and metadata connector phase 1.
+Phase 2 should reconcile one already-externalized named artifact using metadata-only search first. File content may be fetched only when a named consumer requires a specific field unavailable from metadata, and no private body may be persisted to Git or Slack.
