@@ -1,25 +1,27 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_SLACK_READ_WRITE_READBACK_V1
-current_version: 9
-accepted_wakes: 1
+current_version: 10
+accepted_wakes: 2
 target_wakes_before_decision: 4
 controlled_factor: slack_read_write
 campaign_status: ACTIVE
 current_disposition: CONTINUE
 last_event:
-  commit: cff53a97e5255e7c4aa3bcbb6eb9a81608f9cda7
-  path: state/coordination/experiments/carrier_surface_x11/events/20260801T054200Z_SLACK_READ_SEARCH_VARIANCE_WAKE_01.yaml
-  blob: 09edfb4062aea7dd74b3726bdbe25070956602c3
+  commit: 165e697a1e54148c2dedc4198f153ff9468742cd
+  path: state/coordination/experiments/carrier_surface_x11/events/20260801T064300Z_SLACK_EXACT_PHRASE_SEARCH_SELECTIVITY_WAKE_02.yaml
+  blob: ade27b4490783afcc86479b69f8a62b803769f42
 last_probe:
-  prior_pointer_channel_id: C0BGNGPJFHU
-  prior_pointer_message_ts: '1785559545.955429'
-  prior_pointer_event_commit: 1fd8d6aa9c51cad75d2c93d2eeb5e6edc7bf2b93
+  pointer_channel_id: C0BGNGPJFHU
+  pointer_message_ts: '1785563052.487809'
+  pointer_event_commit: cff53a97e5255e7c4aa3bcbb6eb9a81608f9cda7
   direct_channel_read: PASS
-  public_search_unique_commit_result_count: 0
-  public_search_exact_phrase_result_count: 0
-  permission_error_class: AUTHENTICATED_ALLOWED_WITH_SEARCH_ZERO_RESULT_VARIANCE
-  slack_latency_exposed: false
+  event_commit_bytes_match_expected: true
+  event_url_bytes_match_expected: true
+  public_search_full_commit_result_count: 0
+  public_search_exact_phrase_result_count: 1
+  permission_error_class: AUTHENTICATED_ALLOWED_WITH_QUERY_TOKENIZATION_OR_INDEX_VARIANCE
+  slack_call_latency_exposed: false
   operator_relay_minutes: 0
 previous_campaign:
   experiment_id: X11_GIT_READ_WRITE_READBACK_V1
@@ -28,18 +30,18 @@ previous_campaign:
   claim_ceiling: two_exact_create_readback_successes_plus_two_sequential_single_path_stale_blob_sha_409_rejections_with_one_low_level_creation_fallback_after_high_level_create_file_policy_blocks
   retained_capability: exact_readback_sha_bound_update_serial_stale_sha_rejection
   revision_required: high_level_create_file_availability_must_be_probed_and_low_level_fallback_must_fail_closed
-last_result: MEASURED_READ_SEARCH_VARIANCE
-campaign_claim_ceiling: one_known_public_channel_pointer_recovered_by_direct_history_while_two_public_search_queries_returned_zero_results
-next_probe: read back the exact Slack pointer posted for wake 1 by returned message timestamp, compare its event commit and URL bytes, then repeat one exact-token search after an indexing interval
+last_result: MEASURED_QUERY_SELECTIVITY_VARIANCE
+campaign_claim_ceiling: two_known_public_channel_pointers_recovered_by_direct_history_with_search_results_varying_by_target_and_query_shape; current_target_exact_phrase_found_once_while_full_commit_not_found
+next_probe: search_the_same_pointer_by_short_commit_prefix_filename_and_path_tokens_then_compare_each_result_to_the_exact_timestamp_read
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 next_consumer: Reginleif_and_Ratatoskr
-updated_valid_time_utc: 2026-08-01T05:43:00Z
+updated_valid_time_utc: 2026-08-01T06:43:00Z
 sealed: false
 ---
 
-Slack read/write campaign wake 1 accepted. Direct channel history recovered the
-exact prior X11 pointer and raw message timestamp. Public search returned zero
-results for both the unique commit token and exact phrase despite that same
-message being present in accessible channel history. This is a measured
-search/read variance, not proof of workspace-wide search failure. Same-provider
-binding weight remains zero.
+Slack read/write campaign wake 2 accepted. The wake-1 Slack pointer was read back
+at its exact timestamp with matching event commit and URL. Public search found the
+same message by its human-readable experiment phrase but not by the full
+40-character commit token. This narrows the observation to query selectivity or
+connector/index variance; it does not establish general search failure or a
+measured indexing latency. Same-provider binding weight remains zero.
