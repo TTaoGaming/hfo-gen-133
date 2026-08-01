@@ -2,17 +2,17 @@
 schema_id: hfo.gen133.x14.false_green_current.v1
 experiment_id: X14_FALSE_GREEN_MUTATION_001
 object_id: X14_FALSE_GREEN_CAMPAIGN_STATE
-version: 3
-expected_previous_version: 2
-previous_pointer_blob_sha: 67da271df7fbd3393cfec8ea59ac83f8c03c2400
-accepted_wakes: 3
+version: 4
+expected_previous_version: 3
+previous_pointer_blob_sha: 3a596561bfb63b5064e681db30624fd82adc7886
+accepted_wakes: 4
 campaign_length: 4
-current_status: MUTANT_CREATED_AWAITING_VERDICT
-current_mutation_class: STALE_SOURCE_DIGEST
-next_mutation_class: DUPLICATE_IDEMPOTENCY_OR_VERSION
+current_status: HOLD_PENDING_MUTANT_004_VERDICT
+current_mutation_class: DUPLICATE_IDEMPOTENCY_OR_VERSION
+next_mutation_class: FABRICATED_CONSUMER_ACK
 carrier_task_id: 6a513e4d9c4c81919db728f85db2dd79
 carrier_task_id_verified_from_native_inventory: true
-valid_time_utc: 2026-07-31T23:50:35Z
+valid_time_utc: 2026-08-01T00:54:00Z
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 canonical_repository: TTaoGaming/hfo-gen-133
 canonical_branch: agent/gen133-bootstrap-20260730
@@ -21,31 +21,38 @@ sealed: false
 ---
 
 source_candidate:
-  commit: da51b6573202afb27485cddcf9ff0ed500b9ef74
-  path: state/coordination/experiments/durable_object_x12/events/20260731T234431Z_V0002_TO_V0003_EVENT_CANONICALIZATION.json
-  git_blob_sha1: eb0e70e221073821663cabaaae534d2c2de56852
-  authoring_seat: X12_DURABLE_OBJECT_WORKFLOW_STATE_PDCA
+  commit: a22f14f872645913a25582ece70f146de5b77c3e
+  path: state/coordination/experiments/cots_connector_x13/20260801T005134Z_DBOS_PYTHON_PHASE3_CONNECTOR_VARIANCE_PHASE4_DEFER.md
+  git_blob_sha1: c7b3ef75c1dcd693e9ce39bc59a240bab8259509
+  authoring_seat: X13_COTS_CONNECTOR_PDCA
   prior_x14_mutation_at_source_digest: false
 
 latest_mutant:
-  mutant_id: X14_MUTANT_003_87f92c6c2ccf
-  commit: 8a46e58cfdcb200fe2394474c9e64e7b9f60554d
-  path: state/coordination/experiments/false_green_x14/quarantine/20260731T235035Z_X12_DURABLE_OBJECT_STALE_SOURCE_DIGEST.mutant.yaml
-  git_blob_sha1: 0e0921a62119cd54096d5838f841d02b3a1f1123
+  mutant_id: X14_MUTANT_004_a6430d0aefae
+  commit: cbf6fae5f44cfa54de16adf611ad786c84277f79
+  path: state/coordination/experiments/false_green_x14/quarantine/20260801T005400Z_X13_DBOS_DUPLICATE_VERSION.mutant.yaml
+  git_blob_sha1: b69e7815ce329a7b351d98f458eeb2b5c59b2e7e
   canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
-  canonical_mutation_digest_sha256: 87f92c6c2ccff6af6191321d6dc973bd70f765cd5776738f954a84bb1bc85f9f
+  canonical_mutation_digest_sha256: a6430d0aefaece06645691b875470774caba82e7f65e330eb7f73e04784ab775
   expected_verdict: REVISE
-  named_gate: S04_SOURCE_DIGEST_FRESHNESS_AND_POINTER_INTEGRITY
-  expires_utc: 2026-08-01T03:50:35Z
+  named_gate: S04_IDEMPOTENCY_VERSION_MONOTONICITY_AND_REPLAY_REJECTION
+  expires_utc: 2026-08-01T04:54:00Z
 
 prior_wake_verdict:
-  mutant_id: X14_MUTANT_002_ff440b04baf5
-  verdict_commit: fd544c5b23d46b4a56a72f546341be1e0d21919f
+  mutant_id: X14_MUTANT_003_87f92c6c2ccf
+  verdict_commit: 69963333374598abff9f96948c1a695fdde5f464
   result: REVISE
   intended_mutant_caught: true
   evidence_class: SAME_PROVIDER_NONBINDING
   binding_weight: 0
   independent_verification_status: NOT_CLOSED
+
+campaign_evaluation:
+  completed_verdicts_evaluated: 3
+  caught_by_s04: 3
+  missed_by_s04: 0
+  distinct_provider_verdicts: 0
+  current_mutant_verdict_status: NOT_YET_CONSUMED
 
 routing:
   structural_preflight: S04_STRUCTURAL_PREFLIGHT
@@ -55,12 +62,14 @@ routing:
 
 campaign_decision:
   due_after_accepted_wake: 4
+  result: HOLD
+  reason: Three completed intended mutants were caught by S04, but mutant 004 has not yet received a verdict and no distinct-provider review has been observed.
   allowed: [KEEP_GATE, REVISE_GATE, ADD_MUTATION, HOLD]
 
 honest_flaw: >-
-  The stale digest is a real prior-event blob for the same X12 object and also appears legitimately
-  inside the current source event as prior_event_blob. A verifier must honor the explicit field
-  semantics and recompute the commit-path binding rather than merely checking that the digest exists
-  somewhere in the lineage. The repository lacks a registered overlay schema, and Git stores the
-  immutable mutant and this CURRENT projection in separate commits without a cross-file transaction,
-  lock, or exactly-once guarantee. Distinct-provider review remains requested, not observed.
+  The X13 source has no explicit idempotency key, so mutant 004 tests duplicate-version replay
+  rather than duplicate-key rejection. X13 CURRENT is a mutable projection committed separately
+  from the immutable event and cannot supply database transaction guarantees. The simpler defect
+  remains structural: the overlay changes the original 3-to-4 transition into 4-to-4. Repository
+  search cannot prove global uniqueness, the overlay schema is not formally registered, and all
+  completed S04 catches remain same-provider nonbinding evidence with weight zero.
