@@ -1,0 +1,245 @@
+---
+schema_id: hfo.gen133.spatial_factory.s02_claim.v4
+claim_id: S02_SPATIAL_FACTORY_GOLDEN_APP_001_TERMINAL_CANCEL_20260801T120929Z
+work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001
+correlation_id: SPATIAL_FACTORY_GOLDEN_APP_001_TERMINAL_CANCEL_1F0C0A7
+result: CLAIMED
+callsign_or_seat: S02_ADMISSION_PULL
+carrier_task_id_expected: 6a55088a3d308191ac1cda97221f0957
+carrier_task_id_observed: 6a55088a3d308191ac1cda97221f0957
+carrier_task_id_match: true
+carrier_identity_claim: DISPOSABLE_SCHEDULED_CARRIER_NOT_LINEAGE
+controller: operator_direct
+wip: 1
+valid_time_utc: 2026-08-01T12:09:29Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+lease_expires_utc: 2026-08-01T16:09:29Z
+producer_return_due_utc: 2026-08-01T15:09:29Z
+packet_authority_expires_utc: 2026-08-03T17:57:17Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+repository_head_observed_before_write: 4d46c119091538212dee7ee43e38175b96f5804d
+claim_status: IMMUTABLE_REVISED_RE_ADMISSION
+sealed: false
+---
+
+self_probe:
+  native_task_inventory: read
+  expected_task_title: HFO S02 Pickup Metabolism Sentinel
+  observed_task_title: HFO S02 Pickup Metabolism Sentinel
+  expected_task_id_match: true
+  task_enabled_observed: true
+  schedule_observed: HOURLY_BY_MINUTE_04_INDEFINITE
+  tools_observed:
+    native_tasks_inventory: read_only
+    github_connector: authenticated_read_write_and_exact_file_readback
+    slack_public_channel: authenticated_read_write
+    shell_or_browser_runtime: unavailable
+    distinct_provider_ingress: unavailable
+  missing_required_tool: false
+  prohibited_effects_observed: none
+
+source:
+  commit: cfcf74c0e36ddf87d30e0e6d6e88d261688ae933
+  path: projects/spatial-app-factory/research/20260801T112954Z_S08_TAGS_1F0C0A7_POINTER_CANCEL_TERMINATION_EVIDENCE_CARD.md
+  blob: 49c6061343c558e6349915706e62adf19fb4f6fe
+  result: REVISE
+  expiry_utc: 2026-08-08T11:29:54Z
+  status_at_claim: CHANGED_UNEXPIRED_REQUEUE_EVIDENCE_FOR_SOLE_READY_WORKITEM
+
+authority:
+  native_task_contract:
+    task_id: 6a55088a3d308191ac1cda97221f0957
+    observed_enabled: true
+    observed_instruction_scope: S02_ADMISSION_PULL_WIP_1
+  operator_packet:
+    commit: b9d0f66cb64feeccef8472b1830fbcb5e1796551
+    path: projects/spatial-app-factory/packets/20260731T175717Z_REGINLEIF_SCHEDULED_LOOPS_PDCA_OPERATOR_DIRECTIVE.packet.md
+    blob: 04e3fc472c65f58fb2e189f546371eb9a2899330
+    expiry_utc: 2026-08-03T17:57:17Z
+  direct_runtime_instruction: >-
+    This wake directly instructs S02 to prioritize SPATIAL_FACTORY_GOLDEN_APP_001 and create at most one
+    immutable claim after rejecting expired, duplicate, already-claimed, closed, source-unbound,
+    capability-mismatched, or effect-ceiling-mismatched inputs.
+
+changed_admission_evidence:
+  expiry_hold:
+    commit: c3a5b2754623f41477bfbbcaa4cd4d7672cf7416
+    path: state/coordination/receipts/chatgpt_runtime/seat-03/20260801T110747Z_SPATIAL_FACTORY_GOLDEN_APP_001_CLAIM_ROUTE_EXPIRED_HOLD.yaml
+    blob: ea416e3493e9c23aebd087d4c9e8d86d87a9f3ad
+    result: HOLD
+    allowed_next_transition: NEW_S02_IMMUTABLE_CLAIM_WITH_EXPLICIT_SUPERSESSION_OR_REMAIN_HELD
+  research_card:
+    commit: cfcf74c0e36ddf87d30e0e6d6e88d261688ae933
+    path: projects/spatial-app-factory/research/20260801T112954Z_S08_TAGS_1F0C0A7_POINTER_CANCEL_TERMINATION_EVIDENCE_CARD.md
+    blob: 49c6061343c558e6349915706e62adf19fb4f6fe
+    result: REVISE
+    observed_gap: active_synthetic_pointer_cycle_can_be_silently_cleared_without_downstream_terminal_cancel
+    evidence_ceiling: SAME_PROVIDER_RESEARCH_NONBINDING_WEIGHT_0
+  exact_target_input:
+    repository: TTaoGaming/TAGS
+    branch: agent/spatial-golden-app-001-20260731
+    commit: 1f0c0a7831db6f4476a703856855ff7ccc4f454b
+    adapter_path: prototypes/spatial-input-adapter.js
+    adapter_blob: ca327ea46049f499d0afe1be4f9632ee086f2637
+    test_path: tests/spatial-input-adapter.test.mjs
+    test_blob: 2e523f5c373203ae4f5e0f1a48a52d1570f0682a
+    required_producer_precondition: branch_head_must_equal_exact_commit_or_return_HOLD
+
+supersession:
+  prior_claim:
+    commit: 4ecc5350fe918b1ff466708a148dc0012f810ab8
+    path: projects/spatial-app-factory/claims/20260801T070438Z_SPATIAL_FACTORY_GOLDEN_APP_001_S02_TARGET_CONTINUITY.claim.yaml
+    blob: ae178695e5faf33f15f4b9388bbbc274c4142651
+    acceptance_contract_sha256: 9a2a1e90301f74c556ec00bc3050c35e05cf4a3508135c3c6cc4951a113560a0
+    lease_expired_utc: 2026-08-01T11:04:38Z
+    preserved_state: EXPIRED_NOT_DELETED_NOT_CLOSED
+  prior_verifier_route:
+    commit: 86484d7d219212b064584aa611479676f9f4de0f
+    path: state/coordination/receipts/chatgpt_runtime/seat-03/20260801T101002Z_SPATIAL_FACTORY_GOLDEN_APP_001_AMENDED_RETURN_DISTINCT_VERIFIER_REVISE.yaml
+    blob: f362438e4341e4947efb9dcb5dd9d10bc6ea5957
+    route_expired_utc: 2026-08-01T10:55:00Z
+    preserved_state: EXPIRED_HISTORICAL_ROUTE_NOT_REUSABLE
+  prior_producer_bundle:
+    sha256: 5be6e5ef02d970acf2e863c8f9a59db977652f88c5097e8e7f4e4550be4d8ea6
+    final_target_sha: 1f0c0a7831db6f4476a703856855ff7ccc4f454b
+    expiry_utc: 2026-08-01T11:04:38Z
+    preserved_state: EXPIRED_INPUT_EVIDENCE_NOT_A_VERDICT
+  rule: >-
+    This claim supersedes only the expired lease, route, and acceptance contract. It does not erase,
+    pass, terminally grade, or silently reuse the prior claim, producer bundle, verifier route,
+    same-provider checks, or missing ConsumerAck.
+
+acceptance_contract:
+  canonicalization: UTF-8 LF-delimited exact lines in canonical_text_block with no terminal newline
+  canonical_text_block: |-
+    same-work-item-only
+    operator-authority-b9d0f66cb64feeccef8472b1830fbcb5e1796551-blob-04e3fc472c65f58fb2e189f546371eb9a2899330-unexpired-through-2026-08-03T17:57:17Z
+    explicitly-supersedes-expired-claim-4ecc5350fe918b1ff466708a148dc0012f810ab8-blob-ae178695e5faf33f15f4b9388bbbc274c4142651
+    consumes-expiry-hold-c3a5b2754623f41477bfbbcaa4cd4d7672cf7416-blob-ea416e3493e9c23aebd087d4c9e8d86d87a9f3ad
+    consumes-research-cfcf74c0e36ddf87d30e0e6d6e88d261688ae933-blob-49c6061343c558e6349915706e62adf19fb4f6fe
+    target-TTaoGaming/TAGS-commit-1f0c0a7831db6f4476a703856855ff7ccc4f454b
+    allowed-paths-only-prototypes/spatial-input-adapter.js,tests/spatial-input-adapter.test.mjs
+    retain-exact-active-target-and-last-known-pointer-state-after-valid-pointerdown-until-release-or-terminal-cancel
+    on-invalid-tracking-reset-or-disarm-after-active-pointerdown-produce-exactly-one-application-level-terminal-cancel-before-local-state-clear
+    when-active-target-remains-usable-dispatch-one-untrusted-pointercancel-with-same-pointerId-pointerType-isPrimary-last-known-coordinates-cancelable-false-buttons-zero-and-no-activation
+    when-active-target-is-unusable-do-not-dispatch-to-dead-target-and-instead-return-or-invoke-one-injected-cancellation-signal-for-host-cleanup
+    repeated-invalid-reset-disarm-target-loss-or-later-release-must-not-duplicate-cancel-or-activation
+    next-valid-pinch-after-cancel-must-start-one-fresh-cycle
+    preserve-fixed-target-continuity-valid-release-single-activation-and-native-mouse-touch-keyboard-fallback
+    require-no-external-dependency-package-manifest-or-lockfile-change
+    require-full-command-evidence-with-real-exit-codes-final-branch-SHA-exact-changed-path-blobs-and-A1-through-A12-statuses
+    producer-S07_BOUNDED_CODE_PATCH_BUILDER-or-one-authorized-real-host
+    verifier-Sigrun/P4_APEX_FALSIFICATION-or-other-distinct-provider-nonproducer
+    consumer-Olrun/Claude-Dispatch-as-spatial-factory-coordinator
+    rollback-ordinary-revert-or-unmerged-branch-discard-without-history-deletion
+    effect-ceiling-BRANCH_FILE_TEST-on-exact-target-and-internal-Git-Slack-coordination-only
+    forbid-task-mutation-send-spend-deployment-merge-publication-account-security-change-secret-exposure-permanent-deletion
+  sha256: 1beef244aaeee326ae19ed7e42da55057b691b106ecfa01a49ddaece09bc35a2
+  tests:
+    - A1 producer re-reads the target branch and proceeds only if its head is exactly 1f0c0a7831db6f4476a703856855ff7ccc4f454b
+    - A2 only prototypes/spatial-input-adapter.js and tests/spatial-input-adapter.test.mjs may change
+    - A3 after one active pointerdown, invalid tracking produces exactly one terminal cancellation signal before state clear and zero activation
+    - A4 after one active pointerdown, reset produces exactly one terminal cancellation signal before state clear and zero activation
+    - A5 after one active pointerdown, disarm produces exactly one terminal cancellation signal before state clear and zero activation
+    - A6 when the active target remains usable, cancellation dispatches one untrusted pointercancel with the same pointer identity and last-known coordinates, cancelable false, buttons zero, and zero activation
+    - A7 when the active target is unusable, no event is dispatched to the dead target and exactly one returned or injected cancellation signal is observable by the host
+    - A8 repeated invalid, reset, disarm, target-loss, or later release input produces no duplicate cancel and no activation
+    - A9 the next valid pinch after cancellation starts one fresh cycle with one pointerdown and a normal later release
+    - A10 fixed-target continuity, exactly-one valid-release activation, and held/repeated-release protections remain intact
+    - A11 no dependency, package manifest, lockfile, HTML, asset, task, account, or external system is changed
+    - A12 producer return binds this claim commit and blob, final branch SHA, exact changed blobs, every command and real exit code, rollback, expiry, remaining risk, and honest flaw
+    - no browser, trusted-user-activation, pointer-capture, accessibility, focus, cross-browser, deployment, publication, or production PASS is permitted without direct evidence
+
+idempotency:
+  canonicalization: sha256 UTF-8 of work_item_id, source_commit, source_path, source_blob, and acceptance_contract_sha256 joined by LF
+  canonical_input: |-
+    SPATIAL_FACTORY_GOLDEN_APP_001
+    cfcf74c0e36ddf87d30e0e6d6e88d261688ae933
+    projects/spatial-app-factory/research/20260801T112954Z_S08_TAGS_1F0C0A7_POINTER_CANCEL_TERMINATION_EVIDENCE_CARD.md
+    49c6061343c558e6349915706e62adf19fb4f6fe
+    1beef244aaeee326ae19ed7e42da55057b691b106ecfa01a49ddaece09bc35a2
+  key: 2d276d17ae2bf101c4e45e3e7ec854e77d45a78e4ac0c1151337399eda49f163
+  duplicate_search_before_write:
+    exact_key_matches: 0
+    method: repository_code_search
+    limitation: search_index_is_not_atomic_and_can_lag_branch_writes
+  prior_same_work_item_claim_disposition: prior_claim_expired_and_acceptance_digest_changed
+
+producer_contract:
+  producer: S07_BOUNDED_CODE_PATCH_BUILDER_or_one_authorized_real_host
+  packet_compiler: S06_CODE_WORK_PACKET_COMPILER
+  routing_consumer: Olrun/Claude-Dispatch
+  target:
+    repository: TTaoGaming/TAGS
+    branch: agent/spatial-golden-app-001-20260731
+    exact_input_sha: 1f0c0a7831db6f4476a703856855ff7ccc4f454b
+  allowed_paths:
+    modify:
+      - prototypes/spatial-input-adapter.js
+      - tests/spatial-input-adapter.test.mjs
+    forbidden: every_other_path
+  required_return:
+    - bind this claim commit and exact claim blob after creation
+    - name producer substrate, runtime and model when observable, repository, branch, input SHA, and final SHA
+    - include exact changed paths and resulting blob SHAs
+    - include every command actually run, actual exit codes, and concise outputs
+    - report A1 through A12 as STOOD, FELL, or NOT_RUN without upgrading Node evidence into browser proof
+    - preserve prior expired artifacts as historical state and name the supersession edge
+    - include rollback, effect ceiling, expiry, remaining risk, and honest flaw
+
+verifier:
+  named: Sigrun/P4_APEX_FALSIFICATION_or_other_distinct_provider_nonproducer
+  independence_required: true
+  terminal_vocabulary: [STOOD, FELL]
+  verifier_must_bind:
+    - this claim commit and blob
+    - final producer-return digest
+    - final target branch SHA
+    - acceptance contract sha256 1beef244aaeee326ae19ed7e42da55057b691b106ecfa01a49ddaece09bc35a2
+  same_provider_S04_preflight_allowed: true
+  same_provider_binding_weight: 0
+
+consumer:
+  named: Olrun/Claude-Dispatch_as_spatial_factory_coordinator
+  explicit_ack_required_after: distinct_STOOD_only
+  implicit_ack_forbidden: true
+  reducer_after_return: S03_task_6a539fc5130c81918c13624739fb2a60
+
+world_effect_ceiling:
+  S02_allowed:
+    - one immutable claim file
+    - exact Git readback
+    - one concise Slack pointer after readback
+  downstream_producer_allowed:
+    - BRANCH_FILE_TEST on the exact target branch and two allowed paths
+    - deterministic local tests when a real execution surface exists
+    - ordinary commit and exact producer return
+  forbidden:
+    - task mutation
+    - merge, deployment, publication, release, send, spend, payment, application, or outreach
+    - account or security change, secret exposure, permanent deletion, force push, rebase, or reset
+    - new queue, second WorkItem, unrelated refactor, HTML or host integration, general gesture architecture, second app, seal, IMMUNIZE, or permaweb upload
+
+rollback:
+  S02_claim: immutable_history_supersede_only_never_edit_or_delete
+  producer_branch: leave_unmerged_or_create_an_ordinary_revert_commit_on_the_same_branch
+  external_effect: none_authorized
+
+next_state:
+  owner: S06_CODE_WORK_PACKET_COMPILER_then_S07_or_authorized_real_host
+  state: REVISED_CLAIM_READY_FOR_ONE_EXACT_EXECUTOR_PACKET
+  required_next_transition: >-
+    Compile one executor packet bound to this claim and acceptance digest; then obtain one direct producer
+    return from the exact target branch without reusing the expired claim, route, or producer bundle.
+  silence_rule: unchanged_wakes_create_no_duplicate_claim_no_Git_receipt_and_no_Slack_post
+
+honest_flaw: >-
+  This claim admits a narrow reversible adapter-and-test experiment, not a working browser app. The terminal
+  cancellation requirement is supported by exact source readback and same-provider research with binding
+  weight zero, but no browser or shell execution occurred in this wake and no distinct verifier has ruled
+  that pointercancel, an injected callback, or a returned descriptor is the correct host contract. The
+  producer must choose the smallest implementation satisfying the observable contract and must re-read exact
+  branch-head equality before changing files. Git code search can lag, Git claim creation is not a lock, and
+  no producer completion, independent STOOD or FELL, ConsumerAck, merge, deployment, publication, or external
+  outcome exists yet.
