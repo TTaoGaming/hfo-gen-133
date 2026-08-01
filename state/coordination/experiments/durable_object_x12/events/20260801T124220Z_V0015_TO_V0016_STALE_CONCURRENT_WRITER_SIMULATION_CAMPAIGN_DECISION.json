@@ -1,0 +1,112 @@
+{
+  "canonical_transition": {
+    "acceptance": {
+      "duplicate_search_matches": 0,
+      "idempotency_formula": "sha256(object_id|expected_version|next_version|campaign_id|wake_ordinal|prior_digest|current_blob|task_id|transition_kind|decision)",
+      "next_wake_requirement": "If this wake is accepted, begin X12_RECOVERY_AFTER_MISSING_SLACK_C5 from object version 16. Vary only recovery_after_missing_slack; treat Git as canonical and Slack as a non-atomic projection.",
+      "pointer_gate": "event-first exact readback; second CURRENT read; require version 15 and exact blob acd6f806e6e42179ab3f22e5125ddc1260adc0ec; single-file SHA-guarded update; returned-blob and branch-path readback",
+      "search_authority": "BEST_EFFORT_NONATOMIC_POSSIBLY_STALE"
+    },
+    "campaign": {
+      "accepted_wake_ordinal": 4,
+      "campaign_id": "X12_STALE_CONCURRENT_WRITER_SIMULATION_C4",
+      "decision": "REVISE",
+      "decision_basis": "All three prior wakes and the final local matrix preserved the exact version+blob gate and rejected stale or orthogonally mismatched proposals. However, every probe was serial and client-side; no overlapping writer or stale GitHub Contents API update was attempted. Keep the guard, revise the evidence claim, and do not infer concurrent-writer or database guarantees.",
+      "factor": "stale_concurrent_writer_simulation",
+      "next_campaign_id": "X12_RECOVERY_AFTER_MISSING_SLACK_C5",
+      "next_factor": "recovery_after_missing_slack",
+      "target_wakes": 4
+    },
+    "consumer": "Reginleif/Olrun",
+    "decision": "REVISE",
+    "effect_ceiling": "GIT_EVENT_AND_CURRENT_POINTER; SANITIZED_SLACK_POINTER",
+    "evidence_class": "PROMPT_TASK_BINDING+EXACT_GITHUB_READBACK+BEST_EFFORT_DUPLICATE_SEARCH+LOCAL_SERIAL_STALE_MATRIX+SINGLE_FILE_SHA_GUARD",
+    "expected_version": 15,
+    "experiment": {
+      "baseline": "CURRENT v15 at blob acd6f806e6e42179ab3f22e5125ddc1260adc0ec; C4 3/4; prior event digest 21bb8af03ebb152279e8ddabbf4d083bef0ebf8d6ed2c63bbf4d227c3c5d7915.",
+      "campaign_observations": [
+        "Wake 1 rejected a stale version+blob proposal locally before mutation.",
+        "Wake 2 showed two proposals can appear eligible at one shared snapshot, while the second must become stale after the first advance.",
+        "Wake 3 independently rejected version-only and blob-only mismatches and marked the accepted proposal stale after advance.",
+        "Wake 4 re-evaluated the current/stale matrix and found no observed duplicate key, but still did not perform a stale API write or overlap writers."
+      ],
+      "controlled_factor": "stale/concurrent-writer simulation only",
+      "exact_probe": {
+        "current_exact_pair": {
+          "expected_version": 15,
+          "local_prewrite_result": "ELIGIBLE_AT_EXACT_VERSION_AND_BLOB",
+          "pointer_blob": "acd6f806e6e42179ab3f22e5125ddc1260adc0ec",
+          "selected_for_transition": true
+        },
+        "stale_blob_only": {
+          "expected_version": 15,
+          "local_prewrite_result": "REJECT_BLOB_MISMATCH",
+          "pointer_blob": "9502525add791a452f7ad2f0ef23216d3e5c8175",
+          "stale_api_call_attempted": false
+        },
+        "stale_version_and_blob": {
+          "expected_version": 14,
+          "local_prewrite_result": "REJECT_STALE_VERSION_AND_BLOB",
+          "pointer_blob": "9502525add791a452f7ad2f0ef23216d3e5c8175",
+          "stale_api_call_attempted": false
+        },
+        "stale_version_only": {
+          "expected_version": 14,
+          "local_prewrite_result": "REJECT_VERSION_MISMATCH",
+          "pointer_blob": "acd6f806e6e42179ab3f22e5125ddc1260adc0ec",
+          "stale_api_call_attempted": false
+        }
+      },
+      "hypothesis": "The exact version+blob gate is a useful one-file compare-and-swap precondition, but serial local simulations alone are insufficient evidence for concurrent-writer safety.",
+      "measured_result": {
+        "campaign_decision": "REVISE",
+        "local_exact_pair_eligible": true,
+        "local_orthogonal_mismatches_rejected": true,
+        "operator_relay_minutes": 0,
+        "permission_error_class": "NONE_ON_READ_AND_SEARCH",
+        "proposed_key_observed_match_count": 0,
+        "real_concurrent_writer_tested": false,
+        "stale_github_api_update_attempted": false
+      },
+      "revision": "Retain exact version+blob checks and event/pointer readbacks. Downgrade claims to one-file best-effort compare-and-swap. A future separately bounded probe may attempt one stale SHA-guarded CURRENT update and record GitHub's rejection without changing state; that probe must not be described as database isolation.",
+      "strongest_falsifier": "A stale SHA-guarded update advances CURRENT, two divergent writers both advance the same expected version, the exact current pair is rejected, a duplicate key already exists, or any event/pointer readback fails."
+    },
+    "expiry_utc": "2026-08-01T16:42:20Z",
+    "honest_flaw": "The campaign never issued an overlapping writer or stale GitHub API update. All conflict outcomes were deterministic client-side comparisons followed by a single valid pointer update. Git event and CURRENT are separate commits, so a crash can orphan an event or leave Git advanced without Slack. GitHub's file blob-SHA guard applies to one file only and does not provide cross-file atomicity, reservations, locks, linearizability, exactly-once execution, serializable transactions, database durability, Slack atomicity, or automatic repair.",
+    "idempotency_key": "1830ad69431760fd4a968fa14a341cec6f9a010055a220843da946890ffb94e7",
+    "next_version": 16,
+    "nonce": "x12-c4-w4-v15-v16-1830ad69",
+    "object_id": "HFO_X12_WORKFLOW_OBJECT_001",
+    "prior_digest_sha256": "21bb8af03ebb152279e8ddabbf4d083bef0ebf8d6ed2c63bbf4d227c3c5d7915",
+    "prior_version": 15,
+    "rollback": "Never delete the immutable event. If later invalidated, append a compensating event from the then-current version and replace CURRENT only with that pointer file's exact then-current blob SHA.",
+    "self_probe": {
+      "expected_task_id": "6a506f83df208191815dd17a8fd5baa3",
+      "observed_task_id": null,
+      "task_id_binding": "EXPECTED_ID_FROM_AUTOMATION_INSTRUCTION; native task inventory ID unavailable in the exposed connector surface",
+      "tools": [
+        "GITHUB_READ_WRITE",
+        "GITHUB_BLOB_READ",
+        "GITHUB_SEARCH",
+        "LOCAL_SHA256",
+        "SLACK_POINTER_POST"
+      ]
+    },
+    "source_binding": {
+      "current_pointer_blob": "acd6f806e6e42179ab3f22e5125ddc1260adc0ec",
+      "current_projection_digest_sha256": "5f727b4e615ee976a5596e8a88df8568791273de99f8220e7d5cafe5e5c4b39e",
+      "prior_event_blob": "0acb79c642f2fe2ea5e57a6eca98578ab0b017ba",
+      "prior_event_commit": "f67dceb56c94aa71e33fb2ba9b589e610892e832",
+      "prior_event_path": "state/coordination/experiments/durable_object_x12/events/20260801T114353Z_V0014_TO_V0015_STALE_CONCURRENT_WRITER_SIMULATION.json"
+    },
+    "task_id": "6a506f83df208191815dd17a8fd5baa3",
+    "transaction_time_evidence": "AUTOMATION_RUNTIME_CONTEXT_TIMESTAMP; Git commit metadata is separate and is not a database transaction boundary",
+    "transaction_time_utc": "2026-08-01T12:42:20Z",
+    "transition_kind": "CAMPAIGN_DECISION",
+    "valid_time_utc": "2026-08-01T12:42:20Z",
+    "verifier": "S04_WEIGHT_0_THEN_DISTINCT_SIGRUN_P4"
+  },
+  "canonicalization": "JCS_LIKE_V1",
+  "event_digest_sha256": "00bc34c74aa9a63861865d17e1f4f643924e5f4e1bd6e90186134d98189c1be0",
+  "schema_id": "hfo.gen133.x12.durable_object_event.v1"
+}
