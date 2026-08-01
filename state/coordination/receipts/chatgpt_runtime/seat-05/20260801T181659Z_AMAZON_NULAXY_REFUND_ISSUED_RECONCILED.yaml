@@ -1,0 +1,64 @@
+schema: hfo.gen133.operator_relief.receipt.v1
+seat: S05
+carrier_role: Operator-Relief Cell
+task_id: 6a55c182078c8191b89f2dd15f5f640c
+self_probe:
+  task_id_matched: true
+  readable_surfaces:
+    - Gmail
+    - Google_Calendar
+    - Google_Contacts
+    - GitHub
+    - Slack
+    - native_tasks_inventory
+result: STATUS_RECONCILED
+transaction_time_utc: 2026-08-01T18:16:59Z
+valid_time_utc: 2026-08-01T16:36:30Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+wip_limit: 1
+active_item:
+  id: AMAZON_NULAXY_RETURN_REFUND_STATUS
+  status: ADVANCE_REFUND_ISSUED
+  sanitized_fact: Amazon confirmed the returned Nulaxy rotating stand was dropped off and an advance refund of USD 10.88 was issued to the operator's Amazon account balance on 2026-08-01.
+  source_system: Gmail
+  source_pointers:
+    - gmail_message_id: 19fbacb40484a026
+      evidence: return_request_confirmed
+      observed_utc: 2026-08-01T00:48:29Z
+    - gmail_message_id: 19fbdc025d8aff7d
+      evidence: carrier_dropoff_confirmed
+      observed_utc: 2026-08-01T14:35:13Z
+    - gmail_message_id: 19fbe2f2e146fedd
+      evidence: advance_refund_issued
+      observed_utc: 2026-08-01T16:36:30Z
+transition:
+  type: close_waiting_loop_through_source_readback
+  waiting_loop_closed: Return dropoff and refund-issuance status for the Nulaxy rotating stand
+  readback_confirmed: true
+  action_required_from_receipt_alone: false
+priority_state:
+  p0:
+    id: OCOOPA_SAFETY_DRAFTS
+    status: OPEN
+  p1:
+    - id: PARTY_SAFARI_PERMISSION_SLIP
+      status: OPEN
+    - id: REED_HVAC_130_FEE_VERIFICATION
+      status: CALENDAR_BOUND
+operator_minutes_removed_estimate: 4
+next_consumer: operator
+privacy:
+  private_bodies_externalized: false
+  order_identifier_externalized: false
+  return_location_externalized: false
+  credentials_externalized: false
+  sanitized_only: true
+effect_ceiling:
+  gmail_read: bounded return-status reconciliation
+  calendar_write: none
+  contact_write: none
+  email_send: none
+  payment: none
+  account_change: none
+honest_flaw: The email confirms an advance refund was issued to Amazon account balance, but it does not independently prove the balance is presently spendable or that Amazon will not later reverse or recharge it if the returned item fails inspection.
