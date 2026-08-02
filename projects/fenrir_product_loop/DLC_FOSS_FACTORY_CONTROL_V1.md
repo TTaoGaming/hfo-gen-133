@@ -6,6 +6,7 @@ controller_pr: 9
 route_state: SCAFFOLD_ONLY_TARGET_UNADMITTED
 wip_limit: 1
 validated_elites: 0
+scheduler_snapshot_utc: 2026-08-02T21:46:39Z
 effect_ceiling: local_scaffold_plus_synthetic_tests_and_draft_git_receipts_only
 ---
 
@@ -173,8 +174,8 @@ message is not progress without the required receipt.
 
 - Admission scout: reuse task `019fc46b-35ce-7e83-b6a0-41da4926758f`.
 - Held-out verifier: reuse task `019fc468-bce5-7ae3-889f-63783416eef2`.
-- Maker: create one isolated projectless task to build the reusable factory
-  scaffold only. It may not select a product target.
+- Maker scaffold: task `019fc470-762c-7683-9573-e75d64c3435a`, isolated and
+  target-agnostic. It may not select a product target.
 
 Maker scaffold deliverables:
 
@@ -187,6 +188,23 @@ Maker scaffold deliverables:
 - tests for idempotency, collision/WIP lock, path traversal, secret rejection,
   incomplete specs, duplicate events, failed health checks, and rollback;
 - README and one synthetic reference unit that is unmistakably non-production.
+
+## Finite scheduled pilots
+
+The supported Codex automation API created three active, finite heartbeats:
+
+- `fenrir-dlc-factory-scaffold-pilot` -> maker task
+  `019fc470-762c-7683-9573-e75d64c3435a`;
+- `fenrir-foss-target-admission-pilot` -> admission task
+  `019fc46b-35ce-7e83-b6a0-41da4926758f`;
+- `fenrir-dlc-held-out-gate-pilot` -> verifier task
+  `019fc468-bce5-7ae3-889f-63783416eef2`.
+
+The first scheduler readback at `2026-08-02T21:46:39Z` reported all three
+`ACTIVE`. Schedule presence proves configuration only. Each wake must emit a
+new artifact or raw verification receipt; collision/no-delta wakes stop without
+work, and each schedule expires after its finite wake count. The prior product
+maker/verifier/consumer pilots remain paused.
 
 ## Planning timeboxes
 
