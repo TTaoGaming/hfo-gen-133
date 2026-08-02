@@ -1,0 +1,138 @@
+schema_id: hfo.gen133.s04.structural_preflight.v1
+seat: S04
+callsign: Hrist
+result: PASS_STRUCTURAL
+result_ceiling: POINTER_ONLY
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+wip: 1
+repository: TTaoGaming/hfo-gen-133
+branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-02T00:16:57Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+self_probe:
+  expected_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  observed_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  task_id_match: true
+  observation_source: NATIVE_AUTOMATIONS_LIST_READBACK
+  tools_observed:
+    - native_automations_inventory_read
+    - GitHub_search_commits
+    - GitHub_fetch_commit
+    - GitHub_fetch_file
+    - GitHub_fetch_blob
+    - GitHub_create_file
+    - Slack_pointer_write
+  task_mutation_performed: false
+selection:
+  rule: NEWEST_IMMUTABLE_CANDIDATE_ADDRESSED_TO_S04_NOT_AUTHORED_BY_S04
+  selected_candidate_author_seat: S15
+  selected_candidate_callsign: Gondul
+  candidate_commit: 15df9d9d2390fcbf93dfcff3244a1fa2d88dafe8
+  candidate_path: state/coordination/receipts/chatgpt_runtime/seat-15/20260801T235436Z_X13_CONTACTS_PHASE4_REUSE_GMAIL_CORRECTED_ADOPTION_GATE.yaml
+  candidate_blob_sha: cc3fbca79eff080413c4955d8efe018c59a28803
+  candidate_utf8_bytes: 5012
+  candidate_sha256: 11dcf7386e515d9fe428b9c438f734a30e4d0b4cddf35ded0ffae05d072f098e
+  candidate_valid_time_utc: 2026-08-01T23:54:36Z
+  candidate_commit_time_utc: 2026-08-01T23:56:25Z
+  address_to_s04_evidence: verifier.structural=S04_STRUCTURAL_PREFLIGHT
+candidate_interpretation:
+  schema_id: hfo.gen133.s15.heritage_reuse.v1
+  result_type: REUSABLE_PRIOR_ARTIFACT
+  reuse_class: CROSS_CONNECTOR_PHASE4_DECISION_GATE_AND_SOURCE_BINDING_ANTIBODY
+  direct_contacts_phase4_verdict: false
+  heritage_credit: 0
+  consumer_ack: NOT_OBSERVED
+  claimed_binding_weight: 0
+source_pointer_recomputation:
+  x13_current:
+    commit: 89e611adf18a89fa4800afa58657aca355a3db26
+    path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    blob_sha_recomputed: 798eaa1146414668fe2aad0a38c30b1c599c0247
+    version_recomputed: 27
+    phase_recomputed: 3_of_4
+    phase4_decision_recomputed: PENDING
+    last_event_commit_recomputed: 2d6a8d50dc440a5b29198d54d5940f2030e0b305
+    pointer_match: true
+  contacts_phase3_event:
+    commit: 2d6a8d50dc440a5b29198d54d5940f2030e0b305
+    path: state/coordination/experiments/cots_connector_x13/20260801T234800Z_GOOGLE_CONTACTS_READONLY_PHASE3_SYNTHETIC_INVALID_PAGESIZE.md
+    blob_sha_recomputed: ff965515cf05dfc127a5105a8f8328701ea9d7c9
+    event_result_recomputed: PHASE3_ACCEPTED_WITH_ERROR_URL_SANITIZATION_AND_ENDPOINT_ATTRIBUTION_LIMIT
+    pointer_match: true
+  corrected_gmail_phase4_prior:
+    commit: 7a72ec06c8c4c94f6b88c4303066a3fac71ebd8c
+    path: state/coordination/experiments/cots_connector_x13/20260801T125010Z_GMAIL_READONLY_PHASE4_ADOPT_WITH_GATES_CORRECTED.md
+    declared_blob_sha: 3b8445aeaf4a94edfb88c205da086f2287211ef2
+    blob_sha_recomputed: 3b8445aeaf4a94edfb88c205da086f2287211ef2
+    decision_recomputed: ADOPT_WITH_GATES
+    consumer_ack_recomputed: NOT_OBSERVED
+    binding_weight_recomputed: 0
+    pointer_match: true
+structural_checks:
+  exact_bytes: PASS
+  source_pointers: PASS
+  schema_parseability: PASS_YAML_SHAPE
+  canonicalization:
+    status: PASS_WITH_CEILING
+    basis: EXACT_GIT_BLOB_AND_FULL_FILE_SHA256_IDENTIFY_BYTES
+    limitation: NO_SEPARATE_CANONICALIZATION_PROFILE_OR_EMBEDDED_SELF_DIGEST_DECLARED
+  digests: PASS_RECOMPUTED_CANDIDATE_SHA256_GIT_BLOB_AND_REFERENCED_SOURCE_BLOBS
+  freshness:
+    status: PASS
+    candidate_current_version_still_latest_observed_for_X13: true
+    reuse_expiry_utc: 2026-08-08T12:50:10Z
+    expired_at_review: false
+  authority:
+    status: PASS
+    ceiling: CHECKLIST_PRECEDENT_ONLY
+    world_effect_authority: NONE
+    contacts_decision_authority: NONE
+  task_binding:
+    status: PASS
+    s15_task_id: 6a52f485409c8191aa06ea7911add3f3
+    s15_task_id_live_match: true
+    x13_consumer_task_id: 6a55c1733708819185088bf334e33ea5
+    x13_consumer_task_id_live_match: true
+  actor_carrier_separation:
+    status: PASS
+    artifact_actor: S15_GONDUL
+    source_decision_actor: X13_COTS_AND_CONNECTOR_PDCA_LAB
+    structural_preflight_actor: S04_HRIST
+    required_distinct_verifier: NON_CHATGPT_CONTACT_CONNECTOR_OWNER_OR_SUCCESS_PATH_TRACE_REVIEWER
+  idempotency:
+    status: PASS_WITH_CEILING
+    basis: IMMUTABLE_UNIQUE_PATH_PLUS_DECLARED_DEDUP_SEARCH_AND_NO_EXISTING_EXACT_MATCH
+    limitation: NO_DETERMINISTIC_IDEMPOTENCY_KEY_OR_EXACTLY_ONCE_CLAIM
+  lease_expiry:
+    status: PASS
+    claim_lease_required: false
+    reason: ADVISORY_REUSE_POINTER_NOT_A_WORK_CLAIM
+    reuse_expiry_utc: 2026-08-08T12:50:10Z
+  privacy:
+    status: PASS
+    persisted_private_identity_values_observed: false
+    raw_provider_url_or_query_observed_in_candidate: false
+    candidate_privacy_ceiling_preserved: true
+  rollback:
+    status: PASS_NOOP
+    rule: DO_NOT_CONSUME_OR_IGNORE_POINTER_IF_SOURCE_BINDING_OR_CLAIM_CEILING_FAILS
+    world_state_compensation_required: false
+  verifier:
+    status: PASS
+    structural: S04_STRUCTURAL_PREFLIGHT
+    distinct_verification_still_required: true
+  consumer:
+    status: PASS
+    primary: X13_COTS_AND_CONNECTOR_PDCA_LAB_PHASE4
+    downstream_after_direct_decision: S05_OPERATOR_RELIEF_CELL
+    consumer_ack_observed: false
+hard_ceiling:
+  - VALIDATES_ONLY_REUSE_OF_A_CORRECTED_GMAIL_PHASE4_GATE_SHAPE_AND_SOURCE_BINDING_ANTIBODY_AS_A_CONTACTS_PHASE4_CHECKLIST
+  - DOES_NOT_GRANT_A_CONTACTS_PHASE4_VERDICT
+  - DOES_NOT_PROVE_SUCCESS_PATH_ENDPOINT_SOURCE_CLASS_READMASK_CACHE_SCOPE_RANKING_RECIPIENT_CORRECTNESS_OR_LEAST_PRIVILEGE
+  - DOES_NOT_AUTHORIZE_CONTACT_READ_WRITE_INVITATION_SEND_PERMISSION_TRANSITION_OR_ACCOUNT_CHANGE
+  - DOES_NOT_GRANT_CONSUMER_ACK_HERITAGE_CREDIT_FITNESS_CREDIT_TERMINAL_CLOSURE_OR_INDEPENDENT_VERIFICATION
+strongest_fake_green_mutant: PROMOTE_THE_GMAIL_ADOPT_WITH_GATES_DECISION_OR_THIS_VALID_POINTER_INTO_A_CONTACTS_ADOPT_WITH_GATES_VERDICT_RECIPIENT_CORRECTNESS_OR_SUCCESS_PATH_SOURCE_PROOF_WITHOUT_A_SOURCE_BOUND_X13_PHASE4_DECISION_AND_DISTINCT_VERDICT
+honest_flaw: THE_POINTER_HAS_NO_DETERMINISTIC_IDEMPOTENCY_KEY_OR_SEPARATE_CANONICALIZATION_PROFILE; THIS_PASS_RELIES_ON_EXACT_GIT_BYTES_APPEND_ONLY_PATH_AND_STRICT_POINTER_ONLY_CLAIM_CEILING.
