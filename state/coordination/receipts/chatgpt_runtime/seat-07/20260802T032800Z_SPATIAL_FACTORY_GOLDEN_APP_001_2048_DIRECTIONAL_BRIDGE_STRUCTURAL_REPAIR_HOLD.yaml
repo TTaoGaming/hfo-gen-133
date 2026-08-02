@@ -1,0 +1,122 @@
+---
+schema_id: hfo.gen133.s07_producer_return.v2
+seat: S07_BOUNDED_CODE_PATCH_BUILDER
+result: HOLD
+reason_code: CLAIM_NOT_STRUCTURALLY_ROUTABLE
+work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_001
+parent_work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001
+correlation_id: SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_001
+valid_time_utc: 2026-08-02T03:28:00Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+wip: 1
+sealed: true
+---
+
+self_probe:
+  expected_task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+  observed_task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+  task_id_match: true
+  task_title_observed: HFO S07 Garmr VM Bridge
+  tools_observed:
+    native_tasks: read_only_inventory
+    github: authenticated_read_write_contents_branch_search_and_exact_readback
+    slack: authenticated_channel_write
+    shell_or_checkout: unavailable
+    browser_runtime: unavailable
+  task_mutation_performed: false
+
+selection:
+  claim:
+    id: S02_SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_20260802T030315Z
+    commit: b1c258f58e4c7cb71c2bf57533c041a654826cac
+    path: projects/spatial-app-factory/claims/20260802T030315Z_SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE.claim.yaml
+    blob: e4a9458029748fee86e806246456fec6c4e966e1
+    status: UNEXPIRED_CLAIMED_BRANCH_FILE_TEST
+    producer_return_due_utc: 2026-08-02T06:03:15Z
+    lease_expires_utc: 2026-08-02T07:03:15Z
+  structural_preflight:
+    commit: 94add0f14c44d90a8c6a7dbc853cfc00ca0cad42
+    path: state/coordination/receipts/chatgpt_runtime/seat-04/20260802T031017Z_S02_2048_DIRECTIONAL_BRIDGE_CLAIM_BINDING_REVISE.yaml
+    blob: b0d5871c6eb66e5f2829993551163693db1eb8a8
+    result: REVISE
+    reason_code: DOWNSTREAM_TASK_BINDINGS_AND_WIP_CLEARANCE_EVIDENCE_INCOMPLETE
+    binding_weight: 0
+  compiler_packet:
+    commit: 83733c9658ad3d7eaf38a56378c4104239bd90a9
+    path: projects/spatial-app-factory/dispatch/20260802T032416Z_SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_HOLD.executor.yaml
+    blob: ca00da48d75b9db66aace9582d8f0973ba2c8e55
+    result: HOLD
+    reason_code: CLAIM_STRUCTURAL_REPAIR_REQUIRED_BEFORE_PRODUCER_ROUTE
+    routing_status: NOT_ROUTED
+  eligibility_decision: HOLD_NOT_PATCHABLE_UNTIL_REPAIRED_SUCCESSOR_PASSES_PREFLIGHT
+
+verified_contract:
+  target_repository: TTaoGaming/TAGS
+  frozen_base_commit: e0e3125e1ef6bb33e189c91b485ec341f2d3cd52
+  frozen_adapter_path: prototypes/spatial-input-adapter.js
+  frozen_adapter_blob_declared: 579c9551225f0974ed93564b6ad8bfb1abf72cf3
+  frozen_adapter_blob_readback: 579c9551225f0974ed93564b6ad8bfb1abf72cf3
+  allowed_create_only_paths:
+    - prototypes/2048-spatial-canary/**
+  existing_files_modified_max: 0
+  branch_rule: agent/spatial-2048-directional-bridge-*
+  branch_search_result: NO_MATCH_OBSERVED
+  acceptance_contract_sha256: 99e7816ebbb6e60b74d3fb19329ac387cfe797ae2f1e614cb27d3958b04cdeff
+  acceptance_summary:
+    - accept only integer directions 0 through 3
+    - one accepted action emits exactly one existing 2048 move
+    - invalid ambiguous cancelled low-confidence or unapproved held input emits zero moves
+    - preserve native keyboard touch restart and keep-playing paths
+    - create deterministic specimen or regression test first
+    - modify no existing TAGS or upstream file
+    - preserve applicable upstream MIT notice
+    - require distinct browser-capable nonproducer verification before compatibility or STOOD
+  effect_ceiling: BRANCH_FILE_TEST_ON_DEDICATED_AGENT_BRANCH_ONLY
+  rollback: PRESERVE_BRANCH_AND_IMMUTABLE_RECEIPTS_DO_NOT_MERGE_SUPERSEDE_OR_ABANDON_WITHOUT_DELETION
+  verifier:
+    structural: S04_STRUCTURAL_PREFLIGHT
+    distinct: AUTHORIZED_BROWSER_CAPABLE_NONPRODUCER
+  consumer:
+    reducer: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+    backlog_owner: SPATIAL_APP_FACTORY_BACKLOG_OWNER
+
+execution:
+  dedicated_branch_created: false
+  target_repository_files_changed: []
+  commands_run: []
+  tests_run: []
+  test_evidence: NONE_STRUCTURAL_HOLD_PRECEDES_IMPLEMENTATION
+  execution_blocked: true
+  blocker_class: GOVERNANCE_STRUCTURAL_PREFLIGHT
+  exact_blockers:
+    - downstream S06 S07 S04 and S03 carrier task IDs are not bound in the immutable claim bytes
+    - prior claim exact path and immutable cursor-bound no-return evidence are missing
+    - immutable cursor-bound evidence for no conflicting active parent-root WIP is missing
+    - S06 explicitly marked the packet NOT_ROUTED pending repaired successor and fresh S04 preflight
+
+required_next_transition:
+  owner: S02_ADMISSION_PULL_OR_AUTHORIZED_CLAIM_REPAIR_OWNER
+  action: CREATE_ONE_IMMUTABLE_REPAIRED_SUCCESSOR_BINDING_EXACT_TASK_IDS_AND_WIP_CLEARANCE_EVIDENCE
+  next_gate: S04_DIRECT_PREFLIGHT_ON_REPAIRED_BYTES
+  dispatch_condition: PASS_STRUCTURAL_OR_EXPLICIT_AUTHORIZED_SUPERSEDING_ROUTE
+  producer_action_after_gate: CREATE_ONE_DEDICATED_AGENT_BRANCH_ADD_FAILING_SPECIMEN_FIRST_THEN_MINIMAL_PATCH
+
+rollback:
+  target_repository_rollback_required: false
+  reason: NO_BRANCH_OR_TARGET_FILE_MUTATION_OCCURRED
+  receipt_policy: PRESERVE_THIS_IMMUTABLE_HOLD_RETURN
+
+remaining_risk:
+  - GitHub branch and code search are not transactional uniqueness or WIP oracles
+  - same-provider structural evidence has binding weight zero
+  - no shell or browser execution was available
+  - this HOLD does not prove the implementation infeasible and does not consume or close the WorkItem
+
+honest_flaw: >-
+  S07 verified only connector-visible exact files, task inventory, and branch-search output. It did not
+  obtain a checkout, run Node, inspect a recursive tree, or execute a browser. Search can lag, and the
+  governance blocker is same-provider evidence; nevertheless bypassing the explicit S06 NOT_ROUTED
+  packet would create an unauthorized and potentially conflicting branch.
+---
