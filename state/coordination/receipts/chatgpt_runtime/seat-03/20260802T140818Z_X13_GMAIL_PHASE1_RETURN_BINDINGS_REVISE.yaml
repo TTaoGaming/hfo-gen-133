@@ -1,0 +1,126 @@
+schema_id: hfo.gen133.s03.reducer_route.v1
+seat: S03
+callsign: Ratatoskr
+result: REVISE
+receipt_class: NONTERMINAL_REVISE_ROUTE
+wip: 1
+repository: TTaoGaming/hfo-gen-133
+branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-02T14:08:18Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+terminal_receipt_created: false
+self_probe:
+  expected_task_id: 6a539fc5130c81918c13624739fb2a60
+  observed_task_id: 6a539fc5130c81918c13624739fb2a60
+  task_id_match: true
+  task_enabled: true
+  observation_source: NATIVE_AUTOMATIONS_LIST_READBACK
+  task_mutation_performed: false
+  tools_observed:
+    - native_automations_inventory_read
+    - GitHub_recent_commit_search
+    - GitHub_fetch_commit
+    - GitHub_fetch_file
+    - GitHub_create_file
+    - Slack_channel_read
+selection:
+  correlation_id: X13_GMAIL_BOUNDED_METADATA_SEARCH_READONLY_001_PHASE1_BASELINE
+  reason: NEW_PHASE1_EVENT_AND_CURRENT_POINTER_APPEARED_AFTER_PRIOR_S03_REDUCTION
+  source_event:
+    commit: de57a8600975bedacb4d09cf18677d2cb727706c
+    path: state/coordination/experiments/cots_connector_x13/20260802T134837Z_GMAIL_METADATA_PHASE1_BASELINE.md
+    blob_sha: 58b5c11aeba24b1b345a0c5e3482969fcdb0cee8
+    status: PHASE1_ACCEPTED_WITH_SCOPE_TIMEZONE_AND_COMPLETENESS_GATES
+    carrier_task_id: 6a55c1733708819185088bf334e33ea5
+  source_current:
+    commit: 981c7b2fa330703fd2f221eedb2e682a3f7e7a6e
+    path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    blob_sha: 1d70afff7748e5ba7c89a360f089ca0628db6572
+    version: 41
+    campaign_wake: 1_of_4
+    phase_4_decision: PENDING
+    consumer_ack: NOT_OBSERVED
+    independent_verification_closed: false
+    review_expiry_utc: 2026-08-09T13:48:37Z
+source_system_readback:
+  connector_action: Gmail.search_email_ids
+  query_after_epoch_exclusive: 1785672000
+  query_before_epoch_exclusive: 1785675600
+  query_window_utc: 2026-08-02T12:00:00Z_to_2026-08-02T13:00:00Z
+  exclude_spam_and_trash: true
+  max_results: 3
+  returned_message_id_count: 1
+  exact_message_ids_persisted: false
+  next_page_token_present: false
+  headers_snippets_bodies_attachments_returned: false
+  write_side_effect: false
+  connector_latency_ms: 610
+  connector_top_level_error: null
+  raw_http_status_headers_request_id_and_retries: NOT_EXPOSED
+  authenticated_mailbox_identity: UNKNOWN
+  exact_oauth_scope: UNKNOWN
+reduction:
+  claim_binding: MISSING
+  workitem_id: MISSING
+  acceptance_digest: MISSING
+  claim_lease: MISSING
+  canonical_producer_return_bundle: MISSING
+  canonical_bundle_digest: MISSING
+  idempotency_key: MISSING
+  exact_source_identity_binding: MISSING
+  replay_commitment_for_same_mailbox_and_query: INCOMPLETE
+  commands_and_exit_codes: NOT_APPLICABLE_CONNECTOR_CALL_BUT_RAW_HTTP_RESULT_NOT_EXPOSED
+  return_level_rollback: MISSING_READ_ONLY_NOOP_NOT_EXPLICITLY_BOUND
+  effect_ceiling: PRESENT_PHASE1_ONLY
+  expiry: PRESENT
+  honest_flaw: PRESENT
+  s04_actual_byte_preflight: NOT_OBSERVED
+  distinct_digest_bound_verdict: NOT_OBSERVED
+  accepted_verdict_vocabulary: STOOD_OR_FELL_ONLY
+  post_stood_named_consumer_ack: NOT_OBSERVED
+  terminal_state: FORBIDDEN
+reasoning:
+  - THE_PHASE1_EVENT_IS_AN_EXPERIMENT_BASELINE_NOT_A_CLAIM_BOUND_PRODUCER_RETURN
+  - THE_COUNT_ONLY_CONNECTOR_RECEIPT DOES_NOT_BIND THE AUTHENTICATED MAILBOX IDENTITY EXACT OAUTH SCOPE OR RAW RESPONSE
+  - THE EXACT MESSAGE ID WAS INTENTIONALLY NOT PERSISTED SO A DISTINCT VERIFIER NEEDS A PRIVACY_SAFE SOURCE_IDENTITY_AND_QUERY_BINDING RATHER THAN PROSE EQUIVALENCE
+  - ONE RESULT_WITH_NO_NEXT_PAGE_TOKEN DOES_NOT PROVE MAILBOX COMPLETENESS OR CROSS_CLIENT AGREEMENT
+  - CURRENT EXPLICITLY RECORDS FITNESS_ZERO_CONSUMER_ACK_NOT_OBSERVED_AND_INDEPENDENT_VERIFICATION_OPEN
+  - NO_STOOD_OR_FELL_CAN_BE_CONSUMED WITHOUT_ONE_CANONICAL_DIGEST_AND_DISTINCT_VERDICT
+exact_revise_request:
+  producer: X13_COTS_AND_CONNECTOR_PDCA_LAB
+  requested_artifact: ONE_IMMUTABLE_WORKITEM_CLAIM_AND_CANONICAL_PHASE1_RETURN_SUCCESSOR
+  required_bindings:
+    - WORKITEM_ID_CLAIM_SHA_ACCEPTANCE_DIGEST_AND_LEASE
+    - PHASE1_EVENT_COMMIT_PATH_BLOB_AND_CURRENT_COMMIT_PATH_BLOB
+    - ONE_CANONICAL_BUNDLE_DIGEST_AND_IDEMPOTENCY_KEY
+    - PRIVACY_SAFE_AUTHENTICATED_MAILBOX_IDENTITY_COMMITMENT
+    - EXACT_EPOCH_QUERY_MAX_RESULTS_AND_INCLUDE_SPAM_TRASH_SETTING
+    - NORMALIZED_COUNT_PAGINATION_AND_RAW_RESPONSE_DIGEST_WITHOUT_PERSISTING_MESSAGE_CONTENT
+    - ACTOR_AND_NATIVE_CARRIER_TASK_ID
+    - EFFECT_CEILING_EXPIRY_AND_EXPLICIT_READ_ONLY_NOOP_ROLLBACK
+    - HONEST_FLAW_STRONGEST_FALSIFIER_NAMED_VERIFIER_AND_NAMED_CONSUMER
+  verifier_route:
+    preflight: S04_ACTUAL_SUCCESSOR_BYTES
+    distinct_verifier: RAW_GMAIL_USERS_MESSAGES_LIST_CALL_OR_DISTINCT_AUTHORIZED_GMAIL_CLIENT
+    exact_replay_contract:
+      user_identity: SAME_PRIVACY_SAFE_BOUND_MAILBOX
+      query_after_epoch_exclusive: 1785672000
+      query_before_epoch_exclusive: 1785675600
+      max_results: 3
+      include_spam_trash: false
+      response_ceiling: ID_COUNT_PAGINATION_FLAG_AND_RAW_RESPONSE_DIGEST_NO_MESSAGE_CONTENT_PERSISTENCE
+    required_verdict: STOOD_OR_FELL_TIED_TO_CANONICAL_BUNDLE_DIGEST
+    latest_nonretroactive_review_time_utc: 2026-08-09T13:48:37Z
+  consumer_ack_gate:
+    allowed_only_after: STOOD
+    named_consumer:
+      - HFO_EXECUTIVE_ASSISTANT_MAIL_TRIAGE_LOGIC
+      - S05_OPERATOR_RELIEF
+    implicit_ack_forbidden: true
+effect_ceiling: ROUTE_AND_REDUCTION_METADATA_ONLY_NO_GMAIL_QUERY_CONTENT_READ_OR_MAILBOX_MUTATION
+rollback: IGNORE_THIS_NONBINDING_ROUTE_IF_A_NEWER_EXACT_SOURCE_BOUND_PACKET_SUPERSEDES_IT
+next_consumer: X13_COTS_AND_CONNECTOR_PDCA_LAB_THEN_S04_THEN_DISTINCT_GMAIL_VERIFIER_THEN_NAMED_CONSUMER
+honest_flaw: S03_OBSERVED_GIT_AND_SAME_PROVIDER_SLACK_PROJECTIONS_BUT_DID_NOT_ACCESS_RAW_GMAIL_HTTP_IDENTITY_SCOPE_HEADERS_OR_A_DISTINCT_PROVIDER_AND_CANNOT_BIND_A_VERDICT
+sealed: true
