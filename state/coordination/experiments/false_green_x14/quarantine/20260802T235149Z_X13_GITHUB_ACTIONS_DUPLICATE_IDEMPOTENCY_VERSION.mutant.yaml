@@ -1,0 +1,173 @@
+---
+schema_id: hfo.gen133.x14.false_green_mutant.v1
+mutant_id: X14_MUTANT_049_45c6985725c4
+experiment_id: X14_FALSE_GREEN_MUTATION_001
+campaign_ordinal: 12
+campaign_wake: 4
+seat: X14_FALSE_GREEN_MUTATION_QA
+carrier_task_id_expected: 6a513e4d9c4c81919db728f85db2dd79
+carrier_task_id_observed: 6a513e4d9c4c81919db728f85db2dd79
+carrier_task_id_match: true
+carrier_task_observation_source: NATIVE_AUTOMATIONS_LIST_EXACT_MATCH
+carrier_enabled_observed: true
+wip: 1
+mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+mutation_subcase: EXPECTED_CURRENT_VERSION_REUSED_AS_PRIOR_VERSION_ON_SEALED_PHASE3_EVENT
+status: QUARANTINED_NONEXECUTABLE_ROUTED_PENDING_VERDICTS
+valid_time_utc: 2026-08-02T23:51:49Z
+expires_utc: 2026-08-09T23:51:49Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+sealed: true
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+---
+
+self_probe:
+  identity: X14_FALSE_GREEN_MUTATION_QA
+  tools_observed:
+    - native_automations_inventory_read
+    - github_branch_head_read
+    - github_current_pointer_read
+    - github_recent_commit_search
+    - github_exact_commit_and_file_read
+    - github_source_digest_dedup_search
+    - github_create_file
+    - github_expected_version_pointer_update
+    - github_readback
+    - deterministic_json_canonicalization_and_sha256
+    - slack_direct_route
+  expected_task_id_match: true
+  task_mutation_performed: false
+  source_edit_performed: false
+  connector_world_effect_performed: false
+  self_grading_performed: false
+  independent_quorum_claimed: false
+
+selection:
+  rule: NEWEST_IMMUTABLE_ELIGIBLE_CANDIDATE_NOT_AUTHORED_BY_X14_AND_NOT_PREVIOUSLY_MUTATED_AT_SAME_SOURCE_DIGEST
+  selected_source:
+    authoring_seat: X13_COTS_AND_CONNECTOR_PDCA_LAB
+    commit: 446dc493f9e52a457b53b2ebd62331d412e72c67
+    path: state/coordination/experiments/cots_connector_x13/20260802T234836Z_GITHUB_ACTIONS_WORKFLOW_RUN_STATUS_PHASE3_MALFORMED_COMMIT_EMPTY_RESULT_ANDON.md
+    git_blob_sha1: 645765086e4ed05f04dc2aad7488d774638a3945
+    source_digest_kind: GIT_BLOB_SHA1
+    source_digest: 645765086e4ed05f04dc2aad7488d774638a3945
+    source_task_id: 6a55c1733708819185088bf334e33ea5
+    source_experiment_id: X13_GITHUB_ACTIONS_WORKFLOW_RUN_STATUS_READONLY_001
+    source_event_id: X13_GITHUB_ACTIONS_WORKFLOW_RUN_STATUS_READONLY_001_PHASE3_MALFORMED_COMMIT_EMPTY_RESULT
+    source_event_type: PHASE3_MALFORMED_COMMIT_EMPTY_RESULT_ANDON
+    source_prior_version: 50
+    source_expected_version: 51
+    source_disposition: PHASE3_ACCEPTED_WITH_SEMANTIC_EMPTY_RESULT_ANDON
+    source_valid_time_utc: 2026-08-02T23:48:36Z
+    source_effect_ceiling: PHASE3_ONE_SYNTHETIC_MALFORMED_COMMIT_READONLY_PROBE_GIT_EVENT_CURRENT_ADVANCE_READBACK_AND_ONE_SHORT_SLACK_ANDON
+    source_verifier: RAW_GITHUB_WORKFLOW_RUNS_API_PLUS_ACTIONS_UI_OR_SOURCE_BOUND_VALID_COMMIT_CONTROL
+    source_consumer:
+      - HFO_CI_RELEASE_GATES
+      - HFO_BRANCH_HEALTH_SUMMARIES
+      - HFO_AGENT_COMPLETION_VERIFICATION
+    source_review_expiry_utc: 2026-08-09T23:51:49Z
+  eligibility:
+    authored_by_x14: false
+    immutable_commit_bound: true
+    source_sealed: true
+    mutable_current_projection_excluded_from_candidate_selection: true
+    prior_x14_mutation_at_source_digest_before_write: false
+    newest_immutable_candidate: true
+  discovery_limit: >-
+    Exact source-digest code and commit searches returned no prior X14 mutation before this write. Repository indexing,
+    branch-head reads, and candidate discovery are nontransactional and may lag, so eligibility is best-effort rather
+    than a globally atomic uniqueness guarantee.
+
+negative_control:
+  copy_mode: QUARANTINED_OVERLAY_SOURCE_UNCHANGED
+  executable: false
+  exactly_one_overlay_field_changed: true
+  mutated_field: expected_current_version
+  original_value: 51
+  mutated_value: 50
+  mutation_semantics: >-
+    Replace only the selected sealed event's expected_current_version with its prior_current_version while preserving
+    the source commit, path, blob, event identity, task binding, phase, disposition, authority, evidence, verifier,
+    consumer, expiry, and every other field. The mutant therefore asserts a duplicate non-advancing version transition
+    without editing the source event, X13 CURRENT, any scheduled task, or provider state.
+  source_file_rewritten: false
+  source_current_pointer_changed_by_mutant: false
+  scheduled_task_changed: false
+  provider_world_effect_executed: false
+
+canonicalization:
+  algorithm: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_json: '{"mutated_field":"expected_current_version","mutated_value":50,"mutation_class":"DUPLICATE_IDEMPOTENCY_VERSION","original_value":51,"source_blob_sha1":"645765086e4ed05f04dc2aad7488d774638a3945"}'
+  canonical_byte_count: 194
+  canonical_mutation_digest_sha256: 45c6985725c4afda19b7fb9a83e897fcd3f240080791f49d2c8fa277d8b5b786
+
+expected_rejection:
+  expected_verdict: REVISE
+  reason_code: EXPECTED_VERSION_DUPLICATES_PRIOR_VERSION_AND_DOES_NOT_ADVANCE_TRANSITION
+  expected_rejection_reason: >-
+    A sealed phase-3 event declaring prior_current_version 50 cannot also declare expected_current_version 50 as a
+    successful state advance. The transition is non-monotonic, duplicates the already-held version, and cannot uniquely
+    bind a new event or idempotent pointer update. The exact source requires 50 to 51.
+  named_gate: S04_EXPECTED_PRIOR_NEXT_VERSION_MONOTONICITY_IDEMPOTENCY_AND_REPLAY_GATE
+  acceptance_condition: >-
+    S04 resolves the exact source and mutant, recomputes the 194-byte canonical overlay and SHA-256, verifies that the
+    source binds prior version 50 to expected version 51, observes the injected duplicate 50, and returns REVISE without
+    editing the source, CURRENT pointers, task inventory, Slack history, or provider state.
+  forbidden_false_green: >-
+    Accept the mutant because version 50 is syntactically valid, belongs to the same experiment, matches the prior
+    projection, or because the event is sealed while monotonic transition and replay checks are skipped.
+
+routing:
+  structural_verifier: S04_STRUCTURAL_PREFLIGHT
+  direct_candidate_priority_required: true
+  distinct_verifier_requested: X12_DURABLE_OBJECT_PDCA_DISTINCT_SEAT_VERSION_TRANSITION_RECOMPUTATION
+  distinct_verifier_route_status: AVAILABLE_AS_DISTINCT_SEAT_SAME_PROVIDER_NONBINDING_VIA_SLACK
+  consumer: X14_CAMPAIGN_REDUCER_AND_HFO_CI_RELEASE_GATES
+  route_scope: DIRECT_MUTANT_REVIEW_NOT_POINTER_ONLY
+  expiry_utc: 2026-08-09T23:51:49Z
+
+campaign_evaluation:
+  campaign_ordinal: 12
+  decision_due: true
+  intended_mutants: 4
+  accepted_wakes: 4
+  mutant_046:
+    mutation_class: TASK_ID_MISMATCH
+    direct_s04_result: NOT_OBSERVED
+    caught_gate_credit: false
+  mutant_047:
+    mutation_class: ACTOR_CARRIER_CONFLATION
+    direct_s04_result: NOT_OBSERVED
+    caught_gate_credit: false
+  mutant_048:
+    mutation_class: STALE_SOURCE_DIGEST
+    direct_s04_result: NOT_OBSERVED
+    caught_gate_credit: false
+  mutant_049:
+    mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+    direct_s04_result: PENDING
+    distinct_x12_result: PENDING
+    caught_gate_credit: false
+  direct_s04_catches_observed: 0
+  distinct_provider_verdicts: 0
+  evidence_class: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  decision: HOLD
+  decision_reason: NO_DIRECT_EXACT_MUTANT_S04_CATCHES_FOR_046_TO_048_AND_049_PENDING
+  next_mutation_class: FABRICATED_CONSUMER_ACK
+
+rollback:
+  action: RETAIN_OR_IGNORE_QUARANTINE_ARTIFACT_PRESERVE_SOURCE_CURRENT_TASK_SLACK_AND_PROVIDER_STATE_UNCHANGED
+  source_restore_required: false
+  provider_restore_required: false
+
+honest_flaw: >-
+  The duplicate is conspicuous because expected_current_version is made exactly equal to prior_current_version. It does
+  not test an older nonadjacent replay, a monotonic version paired with a reused idempotency key, serialization aliases,
+  concurrent writers, or duplicate state held only in a stale external store. Candidate discovery and source-digest
+  dedup are best-effort, and X12 is a distinct seat but the same provider, so its evidence remains nonbinding with weight
+  zero. No source, scheduled task, workflow, or provider state was modified.
