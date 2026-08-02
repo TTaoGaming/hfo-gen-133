@@ -28,9 +28,11 @@ titles, configured schedules, and open threads are projections only.
 
 The Codex automation registry exposed 59 TOML entries: 7 marked active and 52
 already paused. Five callable active automations were paused through the supported
-automation API.
+automation API. A later fresh snapshot found one separately created Garmr
+admission-watch heartbeat; it too was paused through the supported API.
 
-Two legacy heartbeat TOMLs remain marked `ACTIVE`:
+The final registry projection contains 63 entries: 61 `PAUSED` and two legacy
+heartbeat TOMLs still marked `ACTIVE`:
 
 - `hfo-codex-acceptance-runner-hourly`
 - `hfo-codex-pullwork-hourly`
@@ -94,6 +96,11 @@ automation API before a maker wake was authorized:
 - `fenrir-product-maker-and-subagent-dispatcher-pilot`: PAUSED
 - `fenrir-product-verifier-pilot`: PAUSED
 - `fenrir-product-consumer-and-launch-gate-pilot`: PAUSED
+
+A separately created read-only verifier schedule was also paused after the final
+scheduler readback:
+
+- `garmr-fenrir-product-admission-watch`: PAUSED
 
 No maker, verifier, consumer decision, deployment, outreach, spend, or product
 effect is claimed.
@@ -174,7 +181,9 @@ No agent may manufacture ConsumerAck.
 
 ## Configured Fenrir pilots
 
-The supported automation API created three finite pilots. All three are now PAUSED pending route reconciliation:
+The supported automation API created three finite Fenrir pilots. All three are
+now PAUSED pending route reconciliation. A separate finite Garmr admission watch
+was subsequently discovered and also paused:
 
 1. `fenrir-product-maker-and-subagent-dispatcher-pilot` — heartbeat on the
    current Fenrir task, every four hours, maximum 12 wakes. It may spawn at most
@@ -185,6 +194,8 @@ The supported automation API created three finite pilots. All three are now PAUS
 3. `fenrir-product-consumer-and-launch-gate-pilot` — daily operator decision
    gate, maximum seven wakes. It can prepare one `PILOT|REVISE|KILL` packet but
    cannot deploy, contact, spend, or manufacture ConsumerAck.
+4. `garmr-fenrir-product-admission-watch` — read-only admission watch, maximum
+   three wakes; discovered active in the final registry refresh and paused.
 
 The app permits only one heartbeat on a task. Because the operator explicitly
 requested multiple scheduled tasks, verifier and consumer use supported
@@ -194,7 +205,8 @@ fresh isolated worktree.
 
 ## Broken/degraded tool ledger for this cutover
 
-- Supported automation updates paused five callable active schedules.
+- Supported automation updates paused five callable legacy schedules, the three
+  Fenrir product pilots, and the later-discovered Garmr admission watch.
 - Two legacy active TOMLs could not be updated because the app reports the
   automations do not exist.
 - The first update attempt for those two failed destination validation because
