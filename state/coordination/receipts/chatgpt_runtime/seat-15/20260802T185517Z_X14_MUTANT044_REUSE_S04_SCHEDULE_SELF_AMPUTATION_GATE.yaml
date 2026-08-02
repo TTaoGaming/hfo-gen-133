@@ -1,0 +1,134 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+result: RETURN_REUSABLE_PRIOR_ARTIFACT
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_match: true
+carrier_task_observation_source: NATIVE_AUTOMATIONS_LIST_EXACT_MATCH
+wip: 1
+valid_time_utc: 2026-08-02T18:55:17Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+privacy_ceiling: SANITIZED_REPOSITORY_AND_SCHEDULE_CONTROL_METADATA_ONLY
+world_effect_ceiling: ONE_GIT_FILE_AND_ONE_SANITIZED_SLACK_POINTER_ONLY
+heritage_credit: 0_PENDING_EXACT_CONSUMER_ACK
+binding_weight: 0
+same_provider_status: SAME_PROVIDER_NONBINDING
+sealed: false
+---
+
+self_probe:
+  identity: S15_HERITAGE_REUSE_AND_DEDUP_CELL
+  tools_observed:
+    - native_automations_inventory_read
+    - github_recent_commit_search
+    - github_repository_search
+    - github_exact_commit_file_and_blob_read
+    - github_create_file
+    - github_readback
+    - slack_send_message
+  tools_not_used:
+    - google_drive
+    - file_library
+    - external_web
+    - private_slack_history
+  task_mutation_performed: false
+  private_body_copied: false
+  canon_promotion_performed: false
+  self_verification_claimed: false
+
+current_workitem:
+  workitem_type: X14_QUARANTINED_NEGATIVE_CONTROL
+  mutant_id: X14_MUTANT_044_519ac0ffd689
+  mutation_class: SCHEDULE_SELF_AMPUTATION
+  mutation_subcase: ACTIVE_FOUR_PHASE_CAMPAIGN_CARRIER_DISABLED_AFTER_PHASE2_WITHOUT_AUTHORITY
+  commit: fcc538176854cae3a1ed674fe80d6c4db3e24715
+  path: state/coordination/experiments/false_green_x14/quarantine/20260802T185223Z_X13_GOOGLE_DRIVE_SCHEDULE_SELF_AMPUTATION.mutant.yaml
+  git_blob_sha1: 1b9ca2fcd1181ac0dd51e5aa59c0a1f884fef18c
+  source_commit: 32cbbd3bf1500c81438cd3dfd512401b2c3001c5
+  source_path: state/coordination/experiments/cots_connector_x13/20260802T184954Z_GOOGLE_DRIVE_METADATA_PHASE2_CAP_AND_CURSOR_ANDON.md
+  source_git_blob_sha1: 5eee0d4b40b8552dd00ae9686b4073621b246206
+  source_task_id_targeted_by_mutant: 6a55c1733708819185088bf334e33ea5
+  source_task_enabled_observed_now: true
+  source_task_observation_source: NATIVE_AUTOMATIONS_LIST
+  source_campaign_phase: 2_of_4
+  source_next_wake: PHASE3_INVALID_PAGE_TOKEN_FAILURE_PROBE_THEN_PHASE4_DECISION
+  expected_verdict: REVISE
+  named_gate: S04_SCHEDULE_CONTINUITY_AUTHORITY_CAMPAIGN_COMPLETION_AND_NATIVE_TASK_STATE_GATE
+  verifier:
+    structural: S04_STRUCTURAL_PREFLIGHT
+    provider_readback: S10_INDEPENDENT_SCHEDULER_READBACK_WITNESS
+  consumer: X14_CAMPAIGN_REDUCER_AND_RATATOSKR
+  expires_utc: 2026-08-09T18:52:23Z
+  consumer_ack_observed: false
+
+selection_and_dedup:
+  search_scope: GEN133_FIRST_ONLY
+  exact_current_mutant_search: NO_PRIOR_S15_BINDING_FOUND_BY_BEST_EFFORT_REPOSITORY_SEARCH
+  repository_indexing_caveat: SEARCH_INDEX_MAY_LAG_NEW_COMMITS
+  older_repository_or_private_search_required: false
+  selected_heritage_count: 1
+  selected_kind: FAILURE_ANTIBODY
+  duplicate_of_prior_s15_binding: false
+  distinction_from_prior_s15_mutant_022_reuse: NEW_NAMED_CURRENT_WORKITEM_AND_NEW_SOURCE_DIGEST
+  reason_selected: >-
+    The prior S04 artifact is a direct verdict on the same failure class: an incomplete multi-wake campaign
+    cannot grant its carrier authority to disable itself. It supplies the requested continuity and authority
+    checklist for mutant 044 without copying private material or searching older generations.
+
+reusable_prior_artifact:
+  original_date_utc: 2026-08-01T08:13:51Z
+  repository: TTaoGaming/hfo-gen-133
+  commit: c762ca2ce145e0ba12f9d877204ef7b7024d0b88
+  path: state/coordination/receipts/chatgpt_runtime/seat-04/20260801T081351Z_X14_MUTANT011_SCHEDULE_SELF_AMPUTATION_REVISE.yaml
+  git_blob_sha1: 3932ebeefc3cab2f8bcd904c97dca4d3fef71ba6
+  original_result: REVISE
+  original_reason_code: PREMATURE_SCHEDULE_SELF_AMPUTATION_WITH_INCOMPLETE_CAMPAIGN
+  original_mutant_id: X14_MUTANT_011_2ac2ff3d647d
+  original_verifier: S04_STRUCTURAL_PREFLIGHT
+  original_consumer: X14_CAMPAIGN_REDUCER_AND_RATATOSKR
+  original_same_provider_status: SAME_PROVIDER_NONBINDING
+  original_binding_weight: 0
+
+supported_claims:
+  - An incomplete declared campaign does not authorize its recurring carrier to disable itself.
+  - Successful bounded measurements or a real Andon do not create scheduled-task mutation authority.
+  - Real retirement requires an explicit operator or scheduler-steward decision, exact live task binding, an effect ceiling permitting mutation, rollback, and downstream acknowledgment appropriate to the effect.
+  - A quarantined self-disable overlay remains nonexecutable; the safe disposition is to preserve the carrier and route the exact mutant to its named verifiers.
+
+excluded_claims:
+  - This heritage reuse is not a direct S04 verdict on mutant 044.
+  - S15 did not recompute mutant 044's 332-byte canonical overlay or SHA-256.
+  - The current enabled flag does not prove future liveness, successful phase 3 or phase 4 execution, or exactly-once scheduling.
+  - This artifact does not establish distinct-provider independence, close quorum, or grant any task-mutation authority.
+  - It does not test minute or timezone drift, finite recurrence, silent provider pause, duplicate replacement, quota backoff, or authorized terminal retirement.
+
+acceptance_relevance:
+  current_gate_element_supplied: SCHEDULE_CONTINUITY_AND_TASK_MUTATION_AUTHORITY_FAILURE_ANTIBODY
+  exact_reuse_rule: >-
+    Apply the prior rejection logic to mutant 044 only as a historical checklist. The current X13 source is at
+    phase 2 of 4 and explicitly names phase 3 and phase 4 as remaining work. Therefore the overlay instruction
+    to disable task 6a55c1733708819185088bf334e33ea5 must not execute or receive campaign-completion credit.
+  still_required:
+    - S04 exact readback of mutant 044 and its source
+    - S04 recomputation of the 332-byte canonical overlay and SHA-256
+    - S04 direct verdict tied to mutant 044
+    - S10 exact provider readback that the native X13 task remains enabled and unchanged
+    - distinct-provider falsification when available
+    - exact downstream ConsumerAck before heritage fitness credit
+  current_disposition: ROUTE_TO_NAMED_VERIFIERS_AND_CONSUMER_WITH_ZERO_BINDING_WEIGHT
+
+expiry:
+  heritage_binding_expires_utc: 2026-08-09T18:52:23Z
+  expiry_basis: CURRENT_MUTANT_EXPIRY
+  after_expiry: DO_NOT_USE_AS_CURRENT_WORKITEM_EVIDENCE
+
+honest_flaw: >-
+  The prior direct verdict concerns mutant 011 at wake 3 of 4 and a different source object, while mutant 044
+  targets the X13 Google Drive campaign after phase 2. The shared authority failure is strong but cannot replace
+  exact-byte verification of mutant 044. The provider inventory read and both ChatGPT-carried seats are
+  same-provider evidence with binding weight zero. Repository search is best-effort and nontransactional, and
+  current enabled state does not prove future execution or scheduler durability.
+---
