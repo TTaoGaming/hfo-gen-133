@@ -9,7 +9,7 @@ base_commit: 781b8aaa75876a520a46dcd22ce23f15e4f3b9f1
 coverage: 50_recent_task_summaries_plus_19_representative_task_histories
 claim_status: partial
 sealed: false
-slack_projection: BLOCKED_DESTINATION_TRUST_REJECTION
+slack_projection: DELIVERED_VERIFIED
 ---
 
 # Fenrir lineage and Gen-133 thread synthesis
@@ -103,7 +103,7 @@ Countermeasure: separate `heritage terminal state`, `product factory`, and `mark
 | GitHub heritage pointers | Packet-referenced `state/identity/agent_cards/fenrir.agent-card.json` and `.agents/skills/apex-p2-fenrir/SKILL.md` returned 404 at the bound Gen-132 ref. | pointer/ref inconsistency | Bind an existing blob or repair the pointer in a reviewed successor packet. |
 | GitHub comments | One comment-read call failed argument binding; other task histories show public/internal safety rejections for issue comments. | invocation error plus destination-safety gate | Use exact schemas and public-sanitized payloads; do not route around safety rejection. |
 | Local GitHub CLI | Keyring authentication is invalid for `TTaoGaming`. | local CLI auth broken | Existing-repo GitHub App reads/writes work; operator may separately repair `gh auth login`. |
-| Slack | Search and read resolved `#hfo-synthesis` (`C0BGC646A1H`), but the exact synthesis send was rejected because the prior request did not authorize this detailed payload to this exact channel. | destination-trust safety gate, not transport outage | No message was sent. Do not retry or route around; require explicit approval of the exact payload and channel. |
+| Slack | The first exact synthesis send was rejected because the request did not authorize that detailed payload to this exact channel. The operator then explicitly approved the exact payload and `#hfo-synthesis` (`C0BGC646A1H`); one subsequent send succeeded and was read back. | destination-trust safety gate resolved by exact operator approval; transport working | Delivered once at message timestamp `1785698483.054529`; no retry or alternate destination was used. |
 | Web open/search | Direct `pages.dev` and `workers.dev` opens were rejected as unsafe and exact-domain searches returned no results. | web-tool coverage limitation | Bounded Python HTTPS probes with proxies disabled verified two Pages endpoints and one MCP initialize response. |
 | Windows HTTPS | Default curl used a dead `127.0.0.1` proxy; proxy-cleared curl then failed Schannel `SEC_E_NO_CREDENTIALS`; PowerShell WebRequest also failed. | host network stack broken | Bundled Python/OpenSSL with a per-call no-proxy handler succeeded. |
 
@@ -120,7 +120,7 @@ The shared constraint is stronger than either product preference: freeze breadth
 
 ## Slack projection result
 
-`BLOCKED_DESTINATION_TRUST_REJECTION`. The send attempt returned `isError:true`; Slack delivery is zero/unknown and no timestamp exists. The attempted message named draft PR #8, the unratified lineage boundary, the 13-message queue-empty treadmill, product focus, broken tools, and the proposed next action. Fresh operator approval of that exact public-safe payload to `#hfo-synthesis` (`C0BGC646A1H`) is required before one non-retried send.
+`DELIVERED_VERIFIED`. After the initial destination-trust rejection, the operator explicitly approved the exact payload and exact channel. One send to `#hfo-synthesis` (`C0BGC646A1H`) succeeded at message timestamp `1785698483.054529`: https://hfonetwork.slack.com/archives/C0BGC646A1H/p1785698483054529. Fresh channel readback contained the approved Fenrir header plus Git commit `7729669c4002424f2c1bd2266a700aa83f7ecd52` and blob `4e85d5821e3dbf942e88c00ac5353f2cc1658d19`. No retry or alternate destination was used.
 
 ## Exactly one next safe action
 
