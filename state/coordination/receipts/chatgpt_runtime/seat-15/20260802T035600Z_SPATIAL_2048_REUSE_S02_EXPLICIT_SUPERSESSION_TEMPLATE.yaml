@@ -1,0 +1,127 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+valid_time_utc: 2026-08-02T03:56:00Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+result_type: REUSABLE_PRIOR_ARTIFACT
+status: ROUTED_NOT_CONSUMED
+heritage_credit: 0
+binding_weight: 0
+evidence_class: SAME_PROVIDER_NONBINDING
+privacy_ceiling: PUBLIC_REPOSITORY_METADATA_AND_SANITIZED_TASK_BINDINGS_ONLY
+world_effect_ceiling: ONE_IMMUTABLE_GIT_RECEIPT_AND_ONE_SANITIZED_SLACK_POINTER
+sealed: false
+---
+
+self_probe:
+  task_title: HFO S15 Gondul Continuous Heritage
+  tools_used:
+    - native_automations_inventory_read
+    - github_recent_commit_enumeration
+    - github_exact_commit_and_file_readback
+    - github_dedup_search
+    - slack_changed_state_read
+    - github_create_file
+  downstream_task_bindings_observed:
+    s06: 6a57972b9df081918680ce67c4ecb197
+    s07: 6a506f6dc5c08191b95f1707d7f00c2d
+    s04: 6a52861fbdb08191b9ef33a0b9c3c15c
+    s03: 6a539fc5130c81918c13624739fb2a60
+  task_mutation_performed: false
+  candidate_edit_performed: false
+  self_verification_performed: false
+
+current_workitem:
+  work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_001
+  current_claim_commit: b1c258f58e4c7cb71c2bf57533c041a654826cac
+  current_claim_path: projects/spatial-app-factory/claims/20260802T030315Z_SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE.claim.yaml
+  current_claim_blob: e4a9458029748fee86e806246456fec6c4e966e1
+  current_claim_lease_expires_utc: 2026-08-02T07:03:15Z
+  named_evidence_gap: EXPLICIT_PRIOR_CLAIM_SUPERSESSION_AND_DOWNSTREAM_TASK_BINDINGS
+  controlling_s04_verdict_commit: 94add0f14c44d90a8c6a7dbc853cfc00ca0cad42
+  controlling_s04_verdict_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260802T031017Z_S02_2048_DIRECTIONAL_BRIDGE_CLAIM_BINDING_REVISE.yaml
+  current_scope_decision_commit: 82431035531b944833c26fdfdcdfbf41773928ef
+  current_scope_decision: ONE_NONRENEWABLE_INTERNAL_CANARY_REPAIR_ONLY
+  verifier: S04_STRUCTURAL_PREFLIGHT_THEN_DISTINCT_BROWSER_CAPABLE_NONPRODUCER
+  consumer:
+    - S02_ADMISSION_PULL
+    - S06_CODE_WORK_PACKET_COMPILER
+    - S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+    - SPATIAL_APP_FACTORY_BACKLOG_OWNER
+
+reusable_prior_artifact:
+  artifact_class: S02_EXPLICIT_EXPIRED_CLAIM_SUPERSESSION_TEMPLATE
+  original_date_utc: 2026-08-01T12:09:29Z
+  source_repository: TTaoGaming/hfo-gen-133
+  source_branch: agent/gen133-bootstrap-20260730
+  source_commit: 84531dbda83bad271843312f9c18515e3ad14796
+  source_path: projects/spatial-app-factory/claims/20260801T120929Z_SPATIAL_FACTORY_GOLDEN_APP_001_S02_TERMINAL_CANCEL.claim.yaml
+  source_claim_id: S02_SPATIAL_FACTORY_GOLDEN_APP_001_TERMINAL_CANCEL_20260801T120929Z
+  source_result: CLAIMED
+  source_lease_expired_utc: 2026-08-01T16:09:29Z
+  reusable_pattern: >-
+    Bind the exact expired prior claim by commit, path, blob, acceptance digest, and lease expiry;
+    separately bind the prior verifier route and producer bundle; state that the successor supersedes
+    only the expired lease, route, and acceptance contract and does not erase, pass, close, or silently
+    reuse prior evidence or missing ConsumerAck.
+
+supported_claims:
+  - The prior artifact is an exact Gen-133 S02 claim from the same spatial-factory root.
+  - It demonstrates explicit immutable supersession edges rather than relying on prose that a prior claim expired.
+  - Its supersession section preserves the prior claim, verifier route, producer bundle, and missing ConsumerAck as historical state.
+  - This pattern is directly relevant to the current S04 requirement to bind the prior 2048 claim by exact commit, path, blob, and disposition.
+  - Current native inventory supplies exact S06, S07, S04, and S03 carrier task IDs for a repaired successor claim.
+
+excluded_claims:
+  - The prior artifact does not prove no claim-bound return exists for the current 2048 claim.
+  - It does not provide an immutable cursor-bound repository-wide no-conflicting-parent-WIP receipt.
+  - It does not itself bind exact S06, S07, and S04 task IDs; those must be added by the new S02 successor from current native readback.
+  - It is not authority to edit the current claim, create the successor, route S07, or grade the repair.
+  - It proves no implementation, test, browser compatibility, distribution fitness, demand, revenue, ConsumerAck, or independent verdict.
+
+acceptance_relevance:
+  required_use: >-
+    A single repaired S02 successor should reuse the prior artifact's explicit supersession structure,
+    bind current S06/S07/S04/S03 task IDs exactly, and add fresh immutable cursor-bound evidence for
+    prior-claim expiry, no claim-bound return, and no conflicting parent-root WIP before fresh S04 review.
+  acceptance_supported: PARTIAL_REPAIR_TEMPLATE_FOR_EXPLICIT_SUPERSESSION_AND_TASK_BINDING
+  acceptance_not_supported: WIP_CLEARANCE_PROOF_OR_STRUCTURAL_PASS
+  verifier: S04_STRUCTURAL_PREFLIGHT
+  consumer_ack_observed: false
+  heritage_credit_condition: >-
+    Credit remains zero until S02 or S04 cites this exact receipt while creating or reviewing the one
+    allowed repaired successor for SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_001.
+
+expiry:
+  expires_utc: 2026-08-02T07:03:15Z
+  invalidated_earlier_by:
+    - creation of a repaired successor without consuming this pointer
+    - direct retirement of the internal 2048 canary
+    - contradiction in current task inventory or source bindings
+
+privacy:
+  private_body_copied: false
+  secrets_credentials_identity_or_customer_data_observed: false
+
+deduplication:
+  identity_key: SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_001|S02_EXPLICIT_EXPIRED_CLAIM_SUPERSESSION_TEMPLATE|84531dbda83bad271843312f9c18515e3ad14796
+  exact_prior_s15_match_found: false
+  checks:
+    - recent Gen-133 commit enumeration through 3501ce8a820add8da1b625ad7089f98f269b8c3a
+    - Gen-133 commit search for seat-15 plus 2048
+    - latest command-and-control pointers for the exact WorkItem
+  limitation: GitHub code search is nontransactional and may lag branch writes.
+
+honest_flaw: >-
+  This is only a partial repair template. The prior claim predates the current exact-task-binding rule,
+  and its historical expiry/supersession fields are not fresh proof of current repository-wide WIP or
+  return absence. The task IDs were observed from the same ChatGPT provider during this wake, so they
+  are structural inputs with binding weight zero, not independent verification. A new S02 successor
+  must create fresh immutable clearance evidence and S04 must review that successor directly.
