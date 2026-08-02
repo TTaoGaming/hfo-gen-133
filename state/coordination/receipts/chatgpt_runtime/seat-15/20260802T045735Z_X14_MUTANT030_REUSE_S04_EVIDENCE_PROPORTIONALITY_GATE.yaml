@@ -1,0 +1,146 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+result_id: S15_X14_MUTANT030_S04_EVIDENCE_PROPORTIONALITY_GATE_20260802T045735Z
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+valid_time_utc: 2026-08-02T04:57:35Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+expiry_utc: 2026-08-02T08:48:00Z
+status: ROUTED_NOT_YET_CONSUMED
+result_type: FAILURE_ANTIBODY
+heritage_credit: 0_PENDING_EXACT_CONSUMER_ACK
+binding_decision: false
+evidence_class: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+privacy_ceiling: SANITIZED_PUBLIC_REPOSITORY_METADATA_CLAIM_CEILINGS_AND_DIGESTS_ONLY
+world_effect_ceiling: ONE_GIT_RECEIPT_AND_ONE_SANITIZED_SLACK_POINTER
+verifier: S04_STRUCTURAL_PREFLIGHT
+consumer:
+  - X14_CAMPAIGN_REDUCER
+  - RATATOSKR
+---
+
+self_probe:
+  identity: S15_HERITAGE_REUSE_AND_DEDUP
+  native_task_inventory_surface: EXPOSED_READ_ONLY
+  expected_task_found_enabled: true
+  github_read: AVAILABLE_AUTHENTICATED
+  github_write: AVAILABLE_AUTHENTICATED
+  slack_write: AVAILABLE_AUTHENTICATED
+  task_mutation_performed: false
+  tools_used:
+    - native_automations_inventory_read
+    - github_branch_lookup
+    - github_recent_commits
+    - github_search
+    - github_exact_commit_file_read
+    - github_create_file
+    - github_readback
+    - slack_send_message
+
+current_workitem:
+  workitem_type: X14_QUARANTINED_NEGATIVE_CONTROL
+  mutant_id: X14_MUTANT_030_d36909906143
+  mutation_class: EVIDENCE_INFLATION
+  mutation_subcase: DISTINCT_PROVIDER_VERDICT_COUNT_INFLATED_WITHOUT_ANY_BOUND_VERDICT
+  commit: 1a39878ce222712f7eedbe5cbe89de0125a39ca1
+  path: state/coordination/experiments/false_green_x14/quarantine/20260802T045101Z_X13_GITHUB_CONTENTS_EVIDENCE_INFLATION.mutant.yaml
+  git_blob_sha1: 6bcef9bad969a5b2c7ea4b8fd3fc04a9254d833c
+  canonical_mutation_digest_sha256: d3690990614326423de1b80c225316a923b05167492630086c980f7d79dece30
+  canonical_byte_count: 333
+  valid_time_utc: 2026-08-02T04:51:01Z
+  expiry_utc: 2026-08-02T08:48:00Z
+  named_gate: S04_EVIDENCE_CARDINALITY_PROVENANCE_AND_INDEPENDENCE_GATE
+  expected_verdict: REVISE
+  mutated_field: verifier_state_read.distinct_provider_verdicts
+  original_value: 0
+  mutated_value: 2
+  bound_source:
+    commit: 6e6f8f669353445f78d7b6e030c20bc6d89558d4
+    path: state/coordination/experiments/cots_connector_x13/20260802T044900Z_GITHUB_CONTENTS_PHASE4_VERIFIER_RECONCILIATION.md
+    git_blob_sha1: ef0ed01fd35f7ba5d034434a12116527cc5ac4db
+    exact_source_facts:
+      direct_s04_exact_mutant_verdicts_campaign_7: 0
+      distinct_provider_verdicts: 0
+      evidence_class: SAME_PROVIDER_NONBINDING
+      binding_weight: 0
+      independent_verification_closed: false
+      consumer_ack: NOT_OBSERVED
+
+reusable_prior_artifact:
+  artifact_role: PRIOR_STRUCTURAL_GATE_BEHAVIOR_FOR_EVIDENCE_INFLATION
+  original_date_utc: 2026-08-01T04:19:00Z
+  repository: TTaoGaming/hfo-gen-133
+  commit: 7f07bcd810bd529b815d531ed7a03d34600a4249
+  path: state/coordination/receipts/chatgpt_runtime/seat-04/20260801T041900Z_S15_X14_MUTANT007_MEASUREMENT_CEILING_PASS_STRUCTURAL.yaml
+  git_blob_sha1: 490227f3b4480d8ac2c0e41448a2836e5b4ed359
+  original_result: PASS_STRUCTURAL
+  original_evidence_class: SAME_PROVIDER_NONBINDING
+  original_binding_weight: 0
+  original_claim_ceiling: REUSABLE_EVIDENCE_CEILING_POINTER_ONLY
+  original_gate: S04_EVIDENCE_PROPORTIONALITY_AND_MEASUREMENT_TRACEABILITY_GATE
+  reusable_behavior: >-
+    Preserve the exact bounded evidence and every explicit exclusion. A valid source pointer or numeric field cannot
+    be promoted into a larger evidence quantity, direct verdict, caught-gate count, measured benefit, adoption,
+    portability, ConsumerAck, or independent-verification claim without source-bound supporting artifacts.
+
+supported_claims:
+  - The current immutable X13 source reports zero distinct-provider verdicts, same-provider nonbinding evidence, binding weight zero, and independent verification still open.
+  - The prior S04 artifact requires evidence-inflation claims to remain at the exact measured and source-bound ceiling rather than treating a structurally valid pointer or number as proof of a larger conclusion.
+  - For the current count of two to be admissible, each counted verdict needs a resolvable provider identity plus immutable verdict commit, path, blob or digest, timestamp, scope, and independence basis.
+  - Seat labels, repeated projections, correlated ChatGPT carriers, or Git readback alone do not establish two distinct providers.
+
+excluded_claims:
+  - This artifact is not a direct verdict on X14_MUTANT_030_d36909906143.
+  - It does not recompute or certify the current 333-byte overlay or mutation digest.
+  - It does not prove that no distinct-provider verdict exists outside the bound repository evidence window.
+  - It grants no caught-gate count, campaign decision, adoption, fitness, ConsumerAck, independent-verification, or binding-decision credit.
+  - It does not authorize source edits, CURRENT updates, task changes, provider calls, or any external effect.
+
+acceptance_relevance:
+  direct_use_for_current_workitem: >-
+    S04 can reuse the prior gate behavior as a checklist: resolve the exact current source and mutant bytes; recompute
+    the 333-byte canonical overlay and SHA-256; confirm only the verdict-count field changed; require one immutable,
+    source-bound verdict identity for every counted distinct provider; reject aliases, duplicate projections, replayed
+    verdicts, or correlated same-provider carriers as independence evidence; and preserve binding weight zero.
+  expected_current_result: REVISE
+  required_current_evidence_label: SAME_PROVIDER_NONBINDING
+  required_current_binding_weight: 0
+  direct_current_review_still_required: true
+  distinct_verification_still_required_for_binding_conclusion: true
+
+consumer_contract:
+  named_current_workitem_consumer: X14_CAMPAIGN_REDUCER
+  secondary_consumer: RATATOSKR
+  consumption_required_for_credit: >-
+    A later consumer-authored receipt must bind this result ID or exact Git commit/path/blob and
+    X14_MUTANT_030_d36909906143. Routing, mention, Slack delivery, producer assertion, or S04 review of this pointer
+    alone is not ConsumerAck and does not award heritage credit.
+
+idempotency_and_dedup:
+  idempotency_key: S15|X14_MUTANT_030_d36909906143|PRIOR_S04_BLOB_490227f3b4480d8ac2c0e41448a2836e5b4ed359
+  searches_performed:
+    - X14_MUTANT_030_d36909906143
+    - EVIDENCE_INFLATION_seat_15
+    - S04_EVIDENCE_PROPORTIONALITY
+    - S09_X14_CAMPAIGN5_DIRECT_VERDICT_GATE_seat_15
+  prior_exact_s15_binding_found: false
+  limitation: GitHub code search may lag indexing and is not an atomic global uniqueness proof.
+
+rollback:
+  action: IGNORE_OR_SUPERSEDE_THIS_POINTER
+  source_or_mutant_edit_required: false
+  external_compensation_required: false
+
+honest_flaw: >-
+  The reused S04 artifact addressed inflation of an operator-minute estimate, not distinct-provider verdict
+  cardinality. Its reusable element is only the evidence-proportionality rule and the requirement for direct,
+  source-bound support; provider identity, aliasing, model correlation, and independence semantics remain specific
+  to the current mutant. The mutant is deliberately conspicuous, repository search may lag, no distinct-provider
+  verifier was callable, and this receipt neither grades the mutant nor proves global absence of verdict artifacts.
