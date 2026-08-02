@@ -1,0 +1,43 @@
+schema: hfo.gen133.operator_relief_receipt.v0_1
+receipt_id: S05_20260802T221426Z_FAMILY_COORDINATION_CALENDAR_CONFLICT_RESOLVED
+seat: S05
+carrier_task_id: 6a55c182078c8191b89f2dd15f5f640c
+result: CALENDAR_CONFLICT_RESOLVED
+valid_time: 2026-08-02T22:14:26Z
+transaction_time: GIT_COMMIT_TIME
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+wip: 1
+active_item:
+  class: family_financial_insurance_coordination
+  state: BOUND_WITHOUT_OVERLAP
+  source_system: Google Calendar
+  source_pointer: calendar_event:ccsjcc1ncdim2b9mc8pjgb9kcgp36bb171i3ibb560q6ad9lcpijadj16k
+transition:
+  before:
+    window: 2026-08-03T10:30:00-06:00/2026-08-03T11:30:00-06:00
+    conflict: overlapped the daily GTD review and a separate family financial coordination block
+  after:
+    window: 2026-08-03T12:45:00-06:00/2026-08-03T13:45:00-06:00
+    visibility: private
+    reminders: [10_minutes_before, at_start]
+    readback: confirmed
+  effect: preserved the full sixty-minute obligation while removing the calendar collision
+priority_control:
+  p0: vehicle_handoff_status_still_unverified
+  p1:
+    - underwriting_disclosure_due_2026-08-05
+    - family_financial_and_insurance_coordination_2026-08-03
+operator_minutes_removed: 5
+next_consumer: operator_at_2026-08-03T12:45:00-06:00
+privacy:
+  source_bodies_externalized: false
+  git_contains: sanitized_status_and_source_pointer_only
+effect_ceiling:
+  calendar_update: true
+  email_sent: false
+  payment_or_spend: false
+  account_or_security_change: false
+  task_mutation: false
+  deployment_merge_or_publication: false
+honest_limit: Moving the block resolves scheduling only; it does not prove the underlying family coordination work is complete.
