@@ -8,7 +8,9 @@ repository: TTaoGaming/hfo-gen-133
 base_ref: agent/gen133-bootstrap-20260730
 base_commit: f4823079e402c6e739a4ccba895d453a9276bc04
 wip_limit: 1
-effect_ceiling: git_branch_draft_pr_local_tests_only
+effect_ceiling: read_only_reconciliation_and_git_hold_receipt_only
+route_state: HOLD_UNBOUND_CONFLICTING_SIGRUN_ROUTE
+all_fenrir_pilots_paused: true
 ---
 
 # Fenrir product-control pilot
@@ -65,6 +67,36 @@ assets in draft PR #6 and the eight-server MCP portfolio in issue #2.
 
 This is not permission to build a generic platform. The candidate may graduate
 to micro-SaaS only after a named buyer or paid-pilot signal validates the pain.
+
+## STOP reconciliation — newer conflicting Sigrun input
+
+Before the first maker wake, Garmr identified a newer local Sigrun capsule:
+
+- `areas/quorum_research/SIGRUN_CANON_V9_FOSS_MAP_ELITES_20260803.md`,
+  SHA-256 `126e401ad7f3269300cc05dab8f6f908209f1fbd2561bb5e3aecd865046ebbc1`,
+  untracked local input.
+- `state/ssot/foss_map_elites.json`,
+  SHA-256 `28b4986f3df7844c2c527e27255fe1fe813338ecefd841b41a908c652ff070da`,
+  untracked local input.
+
+V9 places HVAC on the anti-list, restates row 124 as
+`HVAC_PAID_PILOT_001 suspended`, assigns services as the cash lane and AI
+developer tools as portfolio units, caps product production, and forbids more
+production while `outreach_log.jsonl` is empty.
+
+The remote default branch binds neither older V3 nor newer V9. Therefore
+`FENRIR-HVAC-PILOT-001` is no longer eligible and is held as
+`HOLD_UNBOUND_CONFLICTING_SIGRUN_ROUTE`.
+
+All three newly created Fenrir pilots were paused through the supported
+automation API before a maker wake was authorized:
+
+- `fenrir-product-maker-and-subagent-dispatcher-pilot`: PAUSED
+- `fenrir-product-verifier-pilot`: PAUSED
+- `fenrir-product-consumer-and-launch-gate-pilot`: PAUSED
+
+No maker, verifier, consumer decision, deployment, outreach, spend, or product
+effect is claimed.
 
 ## Roles and closure
 
@@ -124,7 +156,7 @@ No agent may manufacture ConsumerAck.
 
 ## Configured Fenrir pilots
 
-The supported automation API created three finite pilots:
+The supported automation API created three finite pilots. All three are now PAUSED pending route reconciliation:
 
 1. `fenrir-product-maker-and-subagent-dispatcher-pilot` — heartbeat on the
    current Fenrir task, every four hours, maximum 12 wakes. It may spawn at most
@@ -161,4 +193,4 @@ fresh isolated worktree.
 
 ## Receipt shape
 
-`state=OPERATOR_DELEGATED_PRODUCT_CONTROL_PARTIAL | evidence=remote base + Sigrun local-input hashes + automation inventory/readback | tier=T1_OPERATIONAL_CANDIDATE | honest_flaw=two legacy TOMLs cannot be reconciled through the supported app API and verifier family is not independent | falsifier=live old automation receipt or product loop violating WIP/effect ceiling | next_safe_action=run one maker wake for FENRIR-HVAC-PILOT-001 | effect_ceiling=branch/draft PR/local tests only`
+`state=HOLD_UNBOUND_CONFLICTING_SIGRUN_ROUTE | evidence=remote base + V3/V9/MAP-Elites local-input hashes + paused automation readback | tier=T1_OPERATIONAL_CANDIDATE_NOT_ADMITTED | honest_flaw=remote Git binds neither conflicting Sigrun route and two legacy TOMLs remain runtime-unknown | falsifier=reviewed Git-bound Sigrun target packet or explicit operator override | next_safe_action=bind one reviewed Sigrun target/acceptance packet in Git | effect_ceiling=read-only reconciliation + Git hold receipt only`
