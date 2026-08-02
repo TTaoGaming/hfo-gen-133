@@ -1,0 +1,179 @@
+---
+schema_id: hfo.gen133.s06.return_consumption.v2
+seat: S06_CODE_WORK_PACKET_COMPILER_CODEX_BRIDGE
+result: RETURN_CONSUMED
+terminal: false
+work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_001
+parent_work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001
+correlation_id: SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_001
+wip: 1
+valid_time_utc: 2026-08-02T05:21:03Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+producer_return_due_utc: 2026-08-02T06:03:15Z
+claim_lease_expires_utc: 2026-08-02T07:03:15Z
+effect_ceiling: READ_EXACT_RETURN_AND_TARGET_BYTES_WRITE_SANITIZED_CONSUMPTION_RECEIPT_ONLY
+privacy_ceiling: PUBLIC_REPOSITORY_BYTES_AND_SANITIZED_TEST_POINTERS_ONLY
+sealed: false
+
+self_probe:
+  carrier_task_id_expected: 6a57972b9df081918680ce67c4ecb197
+  carrier_task_id_observed: 6a57972b9df081918680ce67c4ecb197
+  carrier_task_id_match: true
+  carrier_enabled_observed: true
+  tools_observed:
+    native_tasks: read_only_inventory
+    github_connector: authenticated_read_write_search_compare_exact_readback
+    slack_public_channel: authenticated_read_write
+    direct_codex_ingress: unavailable
+    direct_claude_ingress: unavailable
+    host_checkout_or_shell: unavailable
+    browser_runtime: unavailable
+  task_mutation_performed: false
+  production_code_implemented_by_s06: false
+  producer_commands_rerun_by_s06: false
+  push_merge_deploy_publish_send_spend_or_account_effect: false
+
+selected_changed_input:
+  kind: DIRECT_PRODUCER_RETURN
+  selection_reason: >-
+    The newest changed unexpired code WorkItem return after the prior S06 packet is S07's immutable
+    PATCH_RETURNED receipt. It names runtime/model, branch and exact SHAs, changed paths, exact commands,
+    exit codes and outputs, blockers, rollback, expiry, and an honest flaw. No earlier S06 receipt consumed
+    this return at the same producer-return commit and blob.
+
+claim_binding:
+  claim_id: S02_SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_REPAIRED_SUCCESSOR_20260802T040305Z
+  claim_commit: a884fcbfbe3ee7547e5416201c5c1dfd7e6f2f4e
+  claim_path: projects/spatial-app-factory/claims/20260802T040305Z_SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_REPAIRED_SUCCESSOR.claim.yaml
+  claim_blob: 94b627307f6a2772855fd782dc6dbaef9dbb1924
+  acceptance_contract_sha256: 2b2cc6df856129af5d92f5c55caaff771075801d041f24824c015c18b99d0a7d
+  idempotency_key: f1bd3140ff0ed92104b1dba269a8a9dc329561a230ff818f14a212cd4c982d20
+  structural_pass_commit: 64d9db3f1d4d4bd339c103f8839102bd9bbfd583
+  structural_pass_result: PASS_STRUCTURAL
+  structural_binding_weight: 0
+
+executor_packet_binding:
+  commit: 484379ac81f2943d2ab49bf0b17fb563571735fc
+  path: projects/spatial-app-factory/dispatch/20260802T042202Z_SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_REPAIRED_SUCCESSOR_HOLD.executor.yaml
+  blob: 072aeb7294e6f596c6d0b991e555cada5b722c30
+  prior_state: STRUCTURALLY_ROUTABLE_NOT_DIRECTLY_ROUTED
+
+producer_return:
+  producer: S07_BOUNDED_CODE_PATCH_BUILDER
+  producer_task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+  result: PATCH_RETURNED
+  commit: ffdf23e91d37a47c7a3b8605910fe1a9e49a680d
+  path: state/coordination/receipts/chatgpt_runtime/seat-07/20260802T042745Z_SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_PATCH_RETURNED.yaml
+  blob: bdc39259367a507e5894a907c30075b0191908f6
+  returned_before_due: true
+  consumed_before_lease_expiry: true
+  runtime:
+    platform: ChatGPT Cloud scheduled carrier
+    model: GPT-5.6 Thinking
+    host: ephemeral Linux container plus GitHub connector
+    repository_checkout: false
+    execution_method: exact GitHub-readback files reconstructed into isolated temporary directories
+  target:
+    repository: TTaoGaming/TAGS
+    base_commit: e0e3125e1ef6bb33e189c91b485ec341f2d3cd52
+    branch: agent/spatial-2048-directional-bridge-repair-20260802T0424Z
+    test_first_commit: 6f4cd60c66a15e909c052379aae1848d2cf9585d
+    implementation_commit: 2b6b06f0cb8d1721b2d8af2a429279e7294aec38
+    final_commit: a3b636a7ecaab5afa1932ec92559c7c454904039
+  changed_paths:
+    - path: prototypes/2048-spatial-canary/directional-bridge.test.js
+      status: added
+      git_blob_sha1: 92eaed8f2680f332e7bd62ca59724bb89b291bf0
+      producer_sha256: b10352b35ca4b902053741acc06acb05b49c80110ea99963945f3d53852c36cc
+    - path: prototypes/2048-spatial-canary/directional-bridge.js
+      status: added
+      git_blob_sha1: 1cedd74ea11a0199a3d7537b5b4136261307f309
+      producer_sha256: 28f3794567edc7f21461b0cd9d6440f1341eb7b2c6cba3036f440e825c3201a6
+    - path: prototypes/2048-spatial-canary/THIRD_PARTY_NOTICE.md
+      status: added
+      git_blob_sha1: cc79232d0621ccd201153ff94f0b9597668b6ec1
+  commands_and_outputs:
+    red:
+      command: node --test prototypes/2048-spatial-canary/*.test.js
+      exit_code: 1
+      concise_output: MODULE_NOT_FOUND_Cannot_find_directional_bridge_before_implementation_tests_1_pass_0_fail_1
+    green:
+      command: node --test prototypes/2048-spatial-canary/*.test.js
+      exit_code: 0
+      concise_output: tests_5_pass_5_fail_0_cancelled_0_skipped_0
+      measured_duration_ms: 53.834351
+    blob_check:
+      command: git hash-object prototypes/2048-spatial-canary/directional-bridge.js prototypes/2048-spatial-canary/directional-bridge.test.js
+      exit_code: 0
+      output:
+        - 1cedd74ea11a0199a3d7537b5b4136261307f309
+        - 92eaed8f2680f332e7bd62ca59724bb89b291bf0
+  rollback: >-
+    Do not merge, delete, force-push, rebase, or reset. Preserve the dedicated branch and immutable return.
+    On FELL or expiry, leave the branch unmerged and retire the internal canary through a separate receipt.
+  producer_honest_flaw: >-
+    Node tests ran against exact GitHub-readback bytes reconstructed in an isolated temporary directory,
+    not a full authenticated checkout or browser. Tests use an InputManager double and do not establish a
+    real gesture producer, end-to-end spatial compatibility, product fitness, distribution, demand, or revenue.
+
+s06_exact_readback:
+  target_branch_exists: true
+  target_branch_equals_final_commit: true
+  target_branch_compare_to_final:
+    status: identical
+    ahead_by: 0
+    behind_by: 0
+  base_to_final_compare:
+    status: ahead
+    ahead_by: 3
+    behind_by: 0
+    total_commits: 3
+    exactly_three_added_paths: true
+    existing_files_modified: 0
+  exact_file_readback:
+    bridge_blob_matches_return: true
+    bridge_blob: 1cedd74ea11a0199a3d7537b5b4136261307f309
+    test_blob_matches_return: true
+    test_blob: 92eaed8f2680f332e7bd62ca59724bb89b291bf0
+  evidence_limit: >-
+    S06 independently read GitHub commit, branch, compare, and file metadata. S06 did not execute Node,
+    recompute producer SHA-256 values locally, perform a clean clone, or run a browser. Producer command
+    results remain producer evidence awaiting distinct nonproducer reproduction.
+
+existing_downstream_route:
+  reducer: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  reducer_task_id: 6a539fc5130c81918c13624739fb2a60
+  route_commit: b47a5b171032676602a29ef4f4f9ad5d9a9b6d5f
+  route_result: REVISE
+  route_state: WAITING_FOR_DISTINCT_UNIT_CONTRACT_VERDICT
+  producer_bundle_sha256: 12d1b2b97f6a4f069329d826740d9340e665bd2ed67b4ce5cdee7fc3e5eb9cf8
+  verdict_scope: UNIT_CONTRACT_ONLY
+  verdict_due_utc: 2026-08-02T06:33:15Z
+  consumer_ack_due_utc: 2026-08-02T07:03:15Z
+  duplicate_route_created_by_s06: false
+
+consumption_disposition:
+  consumed_as: DIRECT_PRODUCER_RETURN_READY_FOR_DISTINCT_VERIFICATION
+  execution_claim: PRODUCER_EVIDENCE_ONLY
+  independent_verdict: MISSING
+  browser_smoke: NOT_RUN
+  consumer_ack: MISSING
+  terminal_credit: 0
+  next_consumer: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  next_transition: >-
+    Consume only a distinct-provider or authorized nonproducer STOOD or FELL bound to producer bundle
+    12d1b2b97f6a4f069329d826740d9340e665bd2ed67b4ce5cdee7fc3e5eb9cf8. On STOOD, require explicit
+    backlog-owner ConsumerAck before lease expiry. Do not merge, deploy, or widen the claim.
+  strongest_falsifier: >-
+    A clean-clone mismatch, branch movement, any changed path outside the three-path ceiling, blob mismatch,
+    nonzero existing Node-test exit, duplicate accepted moves, a rejected action emitting a move, native
+    method replacement, or inability to bind the exact upstream InputManager emit('move', direction) seam.
+
+honest_flaw: >-
+  This receipt consumes and cross-checks a producer return but does not reproduce its commands. S06 and S07
+  are both ChatGPT-carried seats, so this is not independent verification. S03 had already routed the exact
+  bundle before this S06 wake; this receipt records S06 consumption without manufacturing a second dispatch,
+  verdict, ConsumerAck, compatibility claim, or terminal closure.
+...
