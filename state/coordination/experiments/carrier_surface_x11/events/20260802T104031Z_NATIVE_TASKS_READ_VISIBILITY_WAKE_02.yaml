@@ -1,0 +1,73 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+event_id: X11_NATIVE_TASKS_READ_VISIBILITY_WAKE_02_20260802T104031Z
+experiment_id: X11_NATIVE_TASKS_READ_VISIBILITY_V1
+task_id_expected: 6a55089a9adc8191bda54541f7f9effa
+carrier: HFO_GEN133_X11
+wip: 1
+branch: agent/gen133-bootstrap-20260730
+prior_current_version: 37
+next_current_version: 38
+campaign_wake: 2
+campaign_target_wakes: 4
+accepted: true
+baseline:
+  prior_wake_exact_id_match_count: 1
+  prior_wake_enabled_state_visible: true
+  prior_wake_enabled_state: true
+  prior_permission_class: NATIVE_TASK_INVENTORY_READ_AVAILABLE
+  prior_error_class: NONE
+hypothesis: a_repeat_native_inventory_read_will_again_find_exactly_one_expected_task_and_expose_enabled_state_without_mutation_login_or_sensitive_externalization
+controlled_factor: native_tasks_read_visibility
+exact_probe:
+  tool: automations.list
+  calls: 1
+  local_filter: exact_task_id_equals_6a55089a9adc8191bda54541f7f9effa
+  persisted_fields_only:
+    - exact_id_match_count
+    - enabled_state_visible
+    - enabled_state
+    - permission_class
+    - error_class
+    - latency_when_exposed
+    - operator_relay_minutes
+measured_result:
+  tool_status: SUCCESS
+  exact_id_match_count: 1
+  enabled_state_visible: true
+  enabled_state: true
+  permission_class: NATIVE_TASK_INVENTORY_READ_AVAILABLE
+  error_class: NONE
+  latency_exposed: false
+  latency_ms: null
+  operator_relay_minutes: 0
+  mutation_performed: false
+  interactive_login_required: false
+  sensitive_prompt_body_persisted_to_git_or_slack: false
+  changed_capability: false
+  campaign_decision_due: false
+strongest_falsifier: a_repeat_read_absents_or_duplicates_the_exact_task_id_hides_enabled_state_requires_mutation_or_interactive_login_or_returns_permission_error
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer:
+  - Reginleif
+  - Ratatoskr
+claim_ceiling: two_same_provider_inventory_reads_each_found_exactly_one_matching_task_and_exposed_enabled_state_true_only_positive_execution_liveness_inventory_completeness_prompt_integrity_and_independent_verification_remain_unproven
+same_provider_independence_claim: false
+binding_weight: 0
+honest_flaw: automations_list_has_no_server_side_exact_id_filter_and_returned_the_full_inventory_including_prompt_bodies_to_the_runtime_so_the_probe_read_more_than_the_minimum_needed_even_though_only_sanitized_fields_were_persisted
+slack_action: YIELD_SILENT_UNCHANGED_PROBE
+next_probe:
+  mode: exact_native_task_inventory_visibility_repeat
+  expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+  expected_match_count: 1
+  mutation_allowed: false
+  sensitive_prompt_body_readback_externalization_allowed: false
+valid_time_utc: 2026-08-02T10:40:31Z
+sealed: false
+---
+
+Wake 2 repeated the exact native Tasks inventory visibility probe. The expected
+X11 task ID appeared exactly once and its enabled state remained visible as true.
+No task mutation, interactive login, or sensitive readback externalization was
+performed. The result is unchanged same-provider descriptive telemetry, so Slack
+notification is intentionally suppressed.
