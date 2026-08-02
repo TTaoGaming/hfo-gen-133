@@ -1,25 +1,26 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_WEB_RESEARCH_OFFICIAL_SOURCE_READ_V1
-current_version: 47
-accepted_wakes: 3
+current_version: 48
+accepted_wakes: 4
 target_wakes_before_decision: 4
 controlled_factor: web_research
-campaign_status: RUNNING
-current_disposition: null
+campaign_status: DECIDED
+current_disposition: KEEP
 prior_campaign:
   experiment_id: X11_WAKE_TIMING_V1
   final_version: 44
   disposition: RESEAT_VARIABLE
   accepted_wakes: 4
 last_event:
-  commit: 4ecf3a334097659b8cc3941968b8a2ca25f1d134
-  path: state/coordination/experiments/carrier_surface_x11/events/20260802T194209Z_WEB_RESEARCH_OFFICIAL_SOURCE_READ_WAKE_03.yaml
-  blob: d0c9c83d9042968b691550e51b48b3a4f9f18891
+  commit: 7853ceb5448ff8806310a2f9c458fe676089a905
+  path: state/coordination/experiments/carrier_surface_x11/events/20260802T204143Z_WEB_RESEARCH_OFFICIAL_SOURCE_READ_WAKE_04_DECISION.yaml
+  blob: e6e97671b93f860250379335832cf0a68423197c
 baseline_result:
   wake_1_accepted: true
   wake_2_accepted: true
   wake_3_accepted: true
+  wake_4_accepted: true
   official_domain_matched: true
   page_identity_matched: true
   example_com_marker_present: true
@@ -50,18 +51,23 @@ next_consumer:
   - Reginleif
   - Ratatoskr
 honest_flaw: the_web_surface_may_use_search_index_or_cached_extraction_and_does_not_prove_a_live_origin_fetch_general_search_completeness_freshness_raw_http_semantics_or_independent_verification
-next_factor: web_research
+decision_basis: four_of_four_bounded_repeats_exposed_the_official_page_identity_and_example_com_marker_without_authentication_or_permission_error
+decision_scope: keep_only_for_bounded_public_page_identity_and_marker_checks
+next_factor: gmail_read_surface
 next_probe:
-  experiment_id: X11_WEB_RESEARCH_OFFICIAL_SOURCE_READ_V1
-  campaign_wake: 4
-  mode: deterministic_official_public_web_read
-  exact_action: repeat_the_official_iana_reserved_domains_page_identity_and_example_com_marker_check_then_write_four_wake_disposition_and_select_next_factor
+  experiment_id: X11_GMAIL_METADATA_READ_VISIBILITY_V1
+  campaign_wake: 1
+  mode: deterministic_metadata_only_exact_message_id_miss_query
+  exact_action: search_gmail_for_exact_impossible_rfc822_message_id_and_persist_only_tool_status_permission_class_and_match_count
+  query: rfc822msgid:<hfo-x11-6a55089a9adc8191bda54541f7f9effa@invalid.example>
+  expected_match_count: 0
   mutation_allowed: false
   sensitive_readback_externalization_allowed: false
-  claim_ceiling: public_web_open_and_marker_visibility_only_not_search_completeness_freshness_or_independent_verification
-slack_action: YIELD_SILENT_AFTER_GIT_READBACK
-updated_valid_time_utc: 2026-08-02T19:42:09Z
+  interactive_login_allowed: false
+  claim_ceiling: gmail_search_visibility_and_sanitized_match_count_only_not_inventory_completeness_or_independent_verification
+slack_action: POST_CAMPAIGN_DECISION_AFTER_GIT_READBACK
+updated_valid_time_utc: 2026-08-02T20:41:43Z
 sealed: false
 ---
 
-Web-research campaign wake 3 of 4 reproduced wakes 1 and 2 against the official IANA reserved-domains page. The public page identity and example.com marker remained visible without authentication. This remains bounded evidence of public web-read visibility only; it does not establish live-origin transport, search completeness, freshness, or independent verification.
+Web-research campaign wake 4 of 4 reproduced the prior three bounded results against the official IANA reserved-domains page. Disposition KEEP is limited to public page identity and marker checks and does not establish live-origin transport, raw HTTP behavior, search completeness, freshness, or independent verification. The next factor is Gmail metadata-read visibility with an exact impossible Message-ID query and sanitized persistence only.
