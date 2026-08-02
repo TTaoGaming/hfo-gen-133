@@ -1,0 +1,172 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_match: true
+valid_time_utc: 2026-08-02T06:59:00Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+expires_utc: 2026-08-02T10:48:00Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+result: RETURN
+artifact_kind: FAILURE_ANTIBODY
+heritage_credit: 0
+consumer_ack_status: NOT_OBSERVED
+binding_decision: false
+evidence_class: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+privacy_ceiling: SANITIZED_REPOSITORY_WORKFLOW_AND_OPERATIONAL_IDENTIFIER_METADATA_ONLY
+world_effect_ceiling: ONE_GIT_RECEIPT_AND_ONE_SANITIZED_SLACK_POINTER
+verifier: S04_STRUCTURAL_PREFLIGHT_THEN_DISTINCT_NON_CHATGPT_PRIVACY_REVIEWER_OR_POLICY_ENGINE
+consumer:
+  - X14_CAMPAIGN_REDUCER
+  - RATATOSKR
+---
+
+self_probe:
+  task_title_observed: HFO S15 Gondul Continuous Heritage
+  task_enabled_observed: true
+  task_inventory_source: NATIVE_AUTOMATIONS_LIST_READ_ONLY
+  task_mutation_performed: false
+  github_read: AVAILABLE_AUTHENTICATED
+  github_write: AVAILABLE_AUTHENTICATED
+  slack_write: AVAILABLE_AUTHENTICATED
+  tools_used:
+    - native_automations_inventory_read
+    - github_recent_commit_search
+    - github_exact_commit_read
+    - github_exact_file_and_blob_read
+    - github_repository_dedup_search
+    - github_create_file
+    - github_readback
+    - slack_pointer_post
+
+named_evidence_gap:
+  gap_id: X14_MUTANT_032_DIRECT_PRIVACY_CLASSIFICATION_VERDICT_PENDING
+  current_workitem: X14_MUTANT_032_52fdcaa95da7
+  status_at_selection: QUARANTINED_NONEXECUTABLE_ROUTED_PENDING_VERDICTS
+  current_commit: 1ad83e4675871ec53b66e0ddaed22da65ad461f4
+  current_path: state/coordination/experiments/false_green_x14/quarantine/20260802T065303Z_X12_IDEMPOTENCY_PRIVACY_MARKER.mutant.yaml
+  current_blob_sha1: d16266cb7b57b7f08c69d917e2ebafecae7744ba
+  current_valid_time_utc: 2026-08-02T06:53:03Z
+  current_expiry_utc: 2026-08-02T10:48:00Z
+  mutation_class: PRIVACY_MARKER
+  mutation_subcase: FALSE_PUBLIC_SAFE_MARKER_CONTRADICTS_EXACT_RUNTIME_AND_PROVIDER_IDENTIFIERS
+  mutated_field: privacy_marker
+  original_value: ABSENT
+  mutant_value: PUBLIC_SAFE_NO_RUNTIME_OR_PROVIDER_IDENTIFIERS
+  canonical_overlay_byte_count_declared: 221
+  canonical_overlay_digest_sha256_declared: 52fdcaa95da7b4239887af5b1b7d6b8e246bbef96a4f0ea950a9231d8127376c
+  expected_verdict: REVISE
+  named_gate: S04_PRIVACY_MARKER_SOURCE_BYTES_CLASSIFICATION_AND_MINIMIZATION_GATE
+  current_source:
+    repository: TTaoGaming/hfo-gen-133
+    commit: edf66c0a3977d4e54db59fcd9fc90f99a21b056d
+    path: state/coordination/experiments/durable_object_x12/events/20260802T064223Z_V0033_TO_V0034_IDEMPOTENCY_STRATEGY_CANONICAL_JSON_DELIMITER_ALIAS.json
+    blob_sha1: 3aa93ecd0003ced7372745f16d56d1b62ee6b7bd
+    original_date_utc: 2026-08-02T06:42:23Z
+    expiry_utc: 2026-08-02T09:42:23Z
+    observed_identifier_classes:
+      - exact_native_task_id
+      - task_last_completed_run_timestamp
+      - task_record_update_timestamp
+      - repository_commit_and_blob_identifiers
+      - operational_repository_paths
+      - connector_and_tool_surface_names
+      - Slack_post_availability_metadata
+  acceptance_relevance: >-
+    The prior direct S04 privacy-marker rejection supplies a reusable source-bytes-over-label gate invariant.
+    It can guide direct review of this new absolute PUBLIC_SAFE marker, but it cannot decide mutant 032 or
+    substitute for recomputing the exact 221-byte overlay and inspecting the exact X12 source bytes.
+
+reusable_prior_artifact:
+  original_date_utc: 2026-08-01T06:16:16Z
+  source_repository: TTaoGaming/hfo-gen-133
+  source_commit: 57676290bffc8b3397107a651f385d9d5abfe6b3
+  source_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260801T061616Z_X14_MUTANT009_PRIVACY_MARKER_REVISE.yaml
+  source_blob_sha1: e92dba6270c5af708706eb0b5cdca747b2fbf66e
+  source_result: REVISE
+  source_rejection_reason: PRIVACY_SOURCE_BODY_CONTAINMENT_CONTRADICTION
+  source_mutant: X14_MUTANT_009_11a3509ef655
+  source_surface: SLACK_PUBLIC_CHANNEL_READ_ONLY_BASELINE
+  source_verifier: S04_STRUCTURAL_PREFLIGHT
+  source_consumer:
+    - X14_CAMPAIGN_REDUCER
+    - RATATOSKR
+  source_independent_verification_status: NOT_CLOSED
+  source_evidence_class: SAME_PROVIDER_NONBINDING
+  source_binding_weight: 0
+
+reuse_contract:
+  reusable_invariant: >-
+    A declarative privacy or public-safety marker cannot erase, downgrade, authorize, or contradict fields
+    present in immutable source bytes. Structural preflight must resolve the exact source and overlay, compare
+    the marker against the actual identifier/body inventory and effect ceiling, require classification or
+    minimization provenance, and return REVISE when the sole mutation asserts a privacy fact unsupported by
+    the unchanged source.
+  supported_claims:
+    - Prior S04 directly rejected an exact byte-bound PRIVACY_MARKER mutant because its sole semantic change contradicted the bound source privacy fact and exceeded the source privacy and effect ceiling.
+    - The current X12 source visibly contains exact operational runtime, task, repository, path, tool-surface, and Slack-availability identifiers, so an absolute no-runtime-or-provider-identifiers marker is contradicted by source bytes.
+    - S04 should treat source bytes, named classification policy, minimization evidence, and allowed audience as controlling evidence rather than accepting the marker text.
+    - Rejecting the unsupported absolute marker does not imply that the operational identifiers are secrets, personal data, or a real-world privacy incident.
+  excluded_claims:
+    - This receipt is not a direct verdict on X14_MUTANT_032_52fdcaa95da7.
+    - This receipt does not recompute or certify the mutant's 221-byte canonical overlay or SHA-256.
+    - This receipt does not classify every X12 identifier as sensitive, private, secret, personal, or prohibited from sanitized Git storage.
+    - This receipt does not establish a data leak, private-body copy, re-identification risk, policy violation, independent verification, ConsumerAck, campaign closure, or binding authority.
+    - This receipt grants no source edit, task mutation, connector write, publication, redistribution, privacy reclassification, deployment, merge, send, or spend authority.
+  current_acceptance_use: >-
+    S04 may reuse the prior rejection invariant as a checklist, but must issue a new direct result bound to
+    mutant 032 commit 1ad83e4675871ec53b66e0ddaed22da65ad461f4, blob
+    d16266cb7b57b7f08c69d917e2ebafecae7744ba, source commit
+    edf66c0a3977d4e54db59fcd9fc90f99a21b056d, source blob
+    3aa93ecd0003ced7372745f16d56d1b62ee6b7bd, and recomputed overlay digest before X14 can count caught-gate credit.
+
+privacy_and_authority:
+  permitted_externalization: SANITIZED_CONTROL_AND_OPERATIONAL_METADATA_WITH_IMMUTABLE_POINTERS_ONLY
+  private_body_copied: false
+  credential_or_token_value_copied: false
+  personally_identifying_body_copied: false
+  source_modified: false
+  mutant_modified: false
+  task_modified: false
+  canon_promoted: false
+
+verification_and_consumption:
+  required_direct_verifier: S04_STRUCTURAL_PREFLIGHT
+  required_distinct_verifier: DISTINCT_NON_CHATGPT_PRIVACY_REVIEWER_OR_POLICY_ENGINE_WITH_EXACT_BYTES
+  named_consumer: X14_CAMPAIGN_REDUCER
+  secondary_consumer: RATATOSKR
+  consumer_ack_required_for_heritage_credit: true
+  consumer_ack_observed: false
+  heritage_credit_awarded: 0
+
+expiry:
+  current_mutant_expiry_utc: 2026-08-02T10:48:00Z
+  current_source_expiry_utc: 2026-08-02T09:42:23Z
+  reuse_after_source_expiry: HISTORICAL_CHECKLIST_ONLY_NO_LIVE_SOURCE_CREDIT
+
+ deduplication:
+  searched_gen133_first: true
+  exact_current_keys:
+    - X14_MUTANT_032_52fdcaa95da7
+    - 52fdcaa95da7b4239887af5b1b7d6b8e246bbef96a4f0ea950a9231d8127376c
+    - 1ad83e4675871ec53b66e0ddaed22da65ad461f4
+    - d16266cb7b57b7f08c69d917e2ebafecae7744ba
+    - 3aa93ecd0003ced7372745f16d56d1b62ee6b7bd
+  prior_s15_exact_current_binding_found: false
+  same_mutation_class_prior_binding_for_different_mutant_found: true
+  older_repository_search_required: false
+  drive_or_file_library_search_required: false
+  limitation: GitHub commit and code search are best-effort and may lag an unindexed concurrent duplicate.
+
+honest_flaw: >-
+  The prior direct S04 artifact rejected a privacy-marker mutation that flipped a message-body containment fact,
+  while mutant 032 adds an absolute public-safe classification label to a durable-object event containing
+  operational identifiers. The shared source-bytes-over-label invariant is reusable, but the subcase, source
+  surface, and claimed privacy meaning differ. Operational task IDs and repository metadata may be intentionally
+  publishable and are not automatically personal or secret; the defect is the unsupported absolute claim, not
+  proven harm. Direct S04 review must independently inspect the exact X12 bytes and recompute the overlay. The
+  distinct privacy verifier is unavailable from this carrier, ConsumerAck is absent, all evidence is same-provider
+  nonbinding with weight zero, and repository deduplication is not transactional.
