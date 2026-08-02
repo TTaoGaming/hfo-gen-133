@@ -12,10 +12,12 @@ question_source:
   observed_blob_sha: 875567dc20a1e59a1697ed0ae19d52444b69f6d7
   next_campaign: X13_SLACK_NATIVE_MESSAGE_RECEIPT_001
 candidate: Slack.slack_send_message_plus_Slack.slack_read_thread_connector_surface
-candidate_version: connector_schema_observed_2026-08-02
-bounded_uncertainty: DOES_THE_SEND_SURFACE_RETURN_A_STABLE_MACHINE_ADDRESSABLE_CHANNEL_ID_AND_PARENT_MESSAGE_TS_SUFFICIENT_FOR_DETERMINISTIC_THREAD_READBACK_OR_ONLY_A_HUMAN_PERMALINK
-decision: REVISE
+candidate_version: connector_schema_and_live_result_observed_2026-08-02
+bounded_uncertainty: DOES_THE_SEND_SURFACE_RETURN_A_STABLE_MACHINE_ADDRESSABLE_CHANNEL_ID_AND_PARENT_MESSAGE_TS_SUFFICIENT_FOR_EXACT_PARENT_READBACK
+decision: ADMIT
+admitted_scope: STRUCTURED_MESSAGE_RECEIPT_PAIR_PLUS_EXACT_PARENT_BODY_READBACK
 valid_time_utc: 2026-08-02T05:29:00Z
+last_evidence_time_utc: 2026-08-02T05:31:10Z
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 review_expiry_utc: 2026-08-09T05:29:00Z
 consumer:
@@ -25,75 +27,79 @@ verifier:
   - X13_DISTINCT_NONPRODUCER_OR_COMMIT_PINNED_READER
 fitness_credit: 0_PENDING_EXACT_WORKITEM_CONSUMPTION
 privacy_class: SANITIZED_INTERNAL
-world_effect_ceiling: RESEARCH_CARD_PLUS_REQUIRED_SANITIZED_SLACK_POINTER_ONLY
+world_effect_ceiling: ONE_REQUIRED_SANITIZED_SLACK_POINTER_PLUS_READ_ONLY_EXACT_PARENT_READBACK
 sealed: true
 ---
 
-# S08 evidence card — Slack message/thread receipt identifier boundary
+# S08 evidence card — Slack structured message receipt and parent readback
 
 ## Decision
 
-`REVISE` the planned X13 Slack-native message receipt campaign before treating a successful send or returned permalink as a durable machine receipt.
+`ADMIT` the current connected Slack surface for the narrow capability: one sent message returns a structured `(channel_id, message_ts)` receipt pair, and `slack_read_thread(channel_id, message_ts)` reads back the exact parent body.
+
+Do not expand this admission to thread replies, exactly-once delivery, idempotency, independent verification, authorship identity, durable workflow state, or ConsumerAck.
 
 ## One bounded question
 
-Does the current connected Slack send surface return the exact `channel_id` and parent `message_ts` needed to reply to and read back the same thread deterministically, or does its public connector contract guarantee only a human-facing message link?
+Does the current connected Slack send surface return the exact `channel_id` and parent `message_ts` needed for deterministic readback of the same parent message?
 
 ## Dated evidence
 
 1. **Gen-133 queue, observed 2026-08-02:** X13 `CURRENT.md` version 32 marks the GitHub Contents campaign complete and plans `X13_SLACK_NATIVE_MESSAGE_RECEIPT_001`, phase 1/4. Exact source: `state/coordination/experiments/cots_connector_x13/CURRENT.md`, blob `875567dc20a1e59a1697ed0ae19d52444b69f6d7`.
-2. **Connected Slack tool contract, observed 2026-08-02:** `Slack.slack_send_message` accepts `channel_id`, optional `thread_ts`, and promises to return a message link. Its exposed contract does not promise structured `channel_id` or `message_ts` fields. `Slack.slack_read_thread` separately requires both `channel_id` and a parent `message_ts` in Slack timestamp format.
-3. **Slack official `chat.postMessage` contract, checked 2026-08-02:** the underlying API success response normally includes `channel` and timestamp ID `ts`; replies require the parent message `ts` through `thread_ts`. Source: https://api.slack.com/methods/chat.postMessage
-4. **Slack official `conversations.replies` contract, checked 2026-08-02:** deterministic thread retrieval requires both conversation `channel` and message `ts`. Source: https://api.slack.com/methods/conversations.replies
-5. **Slack official `chat.getPermalink` contract, checked 2026-08-02:** Slack documents conversion from `channel + message_ts` to a permalink. It does not document the permalink as a stable inverse API or contractual replacement for retaining the original identifiers. Source: https://api.slack.com/methods/chat.getPermalink
+2. **Connected Slack tool contract, observed 2026-08-02:** `Slack.slack_send_message` accepts `channel_id`, optional `thread_ts`, and promises a message link. `Slack.slack_read_thread` requires `channel_id` and parent `message_ts`.
+3. **Live send receipt, 2026-08-02T05:31:10Z:** the required sanitized Git pointer post returned:
+   - `message_link`: `https://hfonetwork.slack.com/archives/C0BGNGPJFHU/p1785648670384069`
+   - `message_context.channel_id`: `C0BGNGPJFHU`
+   - `message_context.message_ts`: `1785648670.384069`
+4. **Live exact parent readback, 2026-08-02 immediately after send:** `Slack.slack_read_thread(channel_id="C0BGNGPJFHU", message_ts="1785648670.384069")` returned the parent message with the same timestamp and exact material body; no replies were present.
+5. **Slack official `chat.postMessage` contract, checked 2026-08-02:** successful underlying API responses include conversation `channel` and timestamp ID `ts`; thread replies use the parent `ts` via `thread_ts`. Source: https://api.slack.com/methods/chat.postMessage
+6. **Slack official `conversations.replies` contract, checked 2026-08-02:** deterministic thread retrieval requires conversation `channel` plus message `ts`. Source: https://api.slack.com/methods/conversations.replies
+7. **Slack official `chat.getPermalink` contract, checked 2026-08-02:** Slack documents forward conversion from `channel + message_ts` to a permalink. Source: https://api.slack.com/methods/chat.getPermalink
 
 ## Supported claims
 
-- Slack's underlying Web API has a machine-addressable receipt pair: conversation/channel ID plus message timestamp `ts`.
-- Thread replies must use the parent message timestamp, not an arbitrary reply timestamp.
-- The connected send wrapper can be invoked with `thread_ts`, and the connected thread reader requires `channel_id + message_ts`.
-- The wrapper's exposed contract guarantees a returned message link, but does not explicitly guarantee structured raw identifiers.
-- Therefore a successful wrapper call or permalink alone is not yet proof of deterministic thread round-trip capability.
+- This live connector result exposes structured `message_context.channel_id` and `message_context.message_ts` in addition to a human permalink.
+- The returned pair can be passed directly to the connected thread reader.
+- The exact parent body and timestamp were read back once from the same channel.
+- X13 phase 1 can classify this result as `STRUCTURED_RECEIPT_WITH_EXACT_PARENT_READBACK`.
+- Retaining the structured pair avoids relying on permalink inversion for this bounded path.
 
 ## Excluded claims
 
-- The wrapper definitely suppresses raw `channel` and `ts` in its live result.
-- A Slack permalink can always be safely and losslessly inverted into the exact API identifiers.
-- One successful send proves readback, thread reply, idempotency, deduplication, authorship, durability, or ConsumerAck.
-- The live token identity, token type, granted scopes, app membership, workspace plan, retry behavior, request count, rate-limit headers, or Slack Connect status are known.
-- Message delivery is exactly once or transactionally coupled to the Git receipt.
+- A thread reply was posted or read back.
+- A reply's returned timestamp is correctly distinguished from its parent timestamp in every wrapper path.
+- Delivery is exactly once, idempotent, transactional with Git, independently verified, or durable across workspace deletion/retention changes.
+- The live token identity, token type, granted scopes, app membership, workspace plan, retries, underlying request count, rate-limit headers, or Slack Connect status are known.
+- The displayed sender identity proves a stable bot/user authorship contract.
+- One readback is a ConsumerAck or an external outcome.
 
-## Required X13 phase-1 revision
+## Required X13 phase-1 claim ceiling
 
-For the smallest harmless message probe, preserve the exact live wrapper result and classify it as one of:
+`CONNECTED_SLACK_SEND_RETURNED_STRUCTURED_CHANNEL_AND_PARENT_TS_AND_SAME_CONNECTOR_THREAD_READER_RETURNED_THE_EXACT_PARENT_BODY_ONCE.`
 
-1. `STRUCTURED_RECEIPT`: returned `channel_id/channel` and `message_ts/ts` are directly exposed;
-2. `LINK_ONLY_VERIFIED`: only a link is returned, but a separately recorded and reproducible derivation yields the exact pair and `slack_read_thread(channel_id, message_ts)` reads back the exact body;
-3. `LINK_ONLY_UNVERIFIED`: a link exists but the exact pair or readback cannot be established;
-4. `SEND_FAILED`: record the normalized permission/error class without retry inflation.
-
-A permalink may be retained as a human pointer, but the campaign should not call it a durable machine receipt unless the exact identifier pair and body readback are bound.
+Before phase 2 or a thread-reply claim, X13 should separately test one harmless reply using the returned parent `message_ts`, retain both parent and reply timestamps, and read back both without broadcasting.
 
 ## License / terms uncertainty
 
-- Slack API documentation is public; live use remains governed by the workspace, app installation, permissions, Slack platform terms, and plan limits.
+- Slack API documentation is public; live use remains governed by workspace policy, app installation, permissions, Slack platform terms, retention, and plan limits.
 - No new account, app, scope grant, installation, terms acceptance, or Slack Connect action was performed.
 - Exact live credential custody and least-privilege scope remain unknown.
 
 ## Cost and operator-minute estimate
 
-- Direct paid cost observed for this research card: `$0` surfaced.
-- X13 phase-1 operator burden estimate: `1–3 minutes` to inspect and retain returned fields, then perform one exact readback; unvalidated until measured.
-- Custom code avoided if structured IDs are exposed: approximately `10–35 LOC` of permalink parsing and reconciliation logic, unvalidated and not credited.
+- Direct paid cost surfaced: `$0`.
+- Measured operator relay minutes: `0`; the scheduled carrier performed the send and readback directly.
+- Estimated manual equivalent avoided for copying a link, extracting identifiers, and confirming the parent: `1–3 minutes`, unvalidated and not credited.
+- Potential custom parsing/reconciliation avoided by structured receipt fields: `10–35 LOC`, unvalidated and not credited.
 
 ## Strongest objection
 
-X13 can answer this directly with one harmless live message, making documentation analysis secondary. That objection is valid; this card earns value only if it prevents the campaign from laundering a human permalink into a machine-round-trip claim.
+The send and readback used the same connector and authenticated context, so this proves a functional round trip, not independent verification or cross-client portability. Workspace retention, hidden retries, or wrapper changes could still invalidate durability claims.
 
 ## Falsifier
 
-A live call on the same connector version returns structured `channel_id/channel` and parent `message_ts/ts`, followed by exact `slack_read_thread` body readback using those fields. That would falsify the concern that only a human link is exposed and permit `ADMIT` for the bounded receipt pair.
+A repeat on the same connector version omits `message_context`, returns a mismatched timestamp/channel, or `slack_read_thread` returns a different parent body for the recorded pair. Any such result revises this admission to `UNKNOWN` or `REVISE`.
 
 ## Honest flaw
 
-No new Slack probe was executed for this card. The connector schema is a contract observation, not a live response census. Official Slack API behavior does not guarantee wrapper field preservation.
+The exact readback confirms one parent message only. No thread reply, cross-client check, permission failure, retry, rate-limit, deletion, retention, or Slack Connect path was tested.
