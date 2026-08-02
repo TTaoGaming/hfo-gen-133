@@ -1,0 +1,339 @@
+---
+schema_id: hfo.gen133.s06_executor_packet.v4
+packet_id: S06_SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_HOLD_20260802T032416Z
+work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_001
+parent_work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001
+correlation_id: SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_001
+result: HOLD
+reason_code: CLAIM_STRUCTURAL_REPAIR_REQUIRED_BEFORE_PRODUCER_ROUTE
+callsign_or_seat: S06_CODE_WORK_PACKET_COMPILER
+carrier_task_id_expected: 6a57972b9df081918680ce67c4ecb197
+carrier_task_id_observed: 6a57972b9df081918680ce67c4ecb197
+carrier_task_id_match: true
+carrier_identity_claim: DISPOSABLE_SCHEDULED_CARRIER_NOT_LINEAGE
+wip: 1
+valid_time_utc: 2026-08-02T03:24:16Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+repository_head_observed_before_write: 94add0f14c44d90a8c6a7dbc853cfc00ca0cad42
+packet_state: HOLD_STRUCTURAL_REPAIR_REQUIRED_DIRECT_INGRESS_UNAVAILABLE_NOT_EXECUTION
+producer_return_due_utc: 2026-08-02T06:03:15Z
+expiry_utc: 2026-08-02T07:03:15Z
+sealed: false
+---
+
+self_probe:
+  expected_task_id: 6a57972b9df081918680ce67c4ecb197
+  observed_task_id: 6a57972b9df081918680ce67c4ecb197
+  task_id_match: true
+  tools_observed:
+    github_connector: authenticated_read_write_and_exact_file_readback
+    slack_public_channel: authenticated_read_write
+    native_tasks: read_only_complete_inventory
+    direct_codex_ingress: unavailable
+    direct_claude_desktop_ingress: unavailable
+    direct_host_shell_or_checkout: unavailable
+    browser_runtime: unavailable
+  task_mutation_performed: false
+  production_code_implementation_performed: false
+  branch_or_test_execution_performed: false
+  direct_producer_route_claimed: false
+  slack_pointer_is_execution: false
+
+selection:
+  selected_claim_status: CHANGED_UNEXPIRED_CLAIM_WITH_STRUCTURAL_REVISE
+  selected_reason: >-
+    The newest code-bearing claim is unexpired and names an exact repository, frozen base, bounded
+    create-only path, acceptance contract, verifier, consumer, and lease. S04 then issued a direct
+    REVISE because downstream scheduled carriers were only symbolic and root-WIP clearance relied on
+    nontransactional search assertions. S06 therefore compiles this exact HOLD packet but does not route
+    it to a producer or treat Git/Slack delivery as execution.
+  changed_edge:
+    claim_commit: b1c258f58e4c7cb71c2bf57533c041a654826cac
+    structural_preflight_commit: 94add0f14c44d90a8c6a7dbc853cfc00ca0cad42
+    structural_preflight_result: REVISE
+  repository_search_limit: >-
+    GitHub code search returned no indexed exact WorkItem match during this wake, but this conflicts with
+    exact claim readback and is treated as index lag, not absence or uniqueness proof.
+  dispatch_idempotency:
+    canonicalization: SHA256_UTF8_LF_JOIN
+    canonical_input: |-
+      SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_001
+      b1c258f58e4c7cb71c2bf57533c041a654826cac
+      e4a9458029748fee86e806246456fec6c4e966e1
+      94add0f14c44d90a8c6a7dbc853cfc00ca0cad42
+      99e7816ebbb6e60b74d3fb19329ac387cfe797ae2f1e614cb27d3958b04cdeff
+      agent/gen133-bootstrap-20260730
+    canonical_input_bytes: 278
+    key: 2953cf8b0718340d7e659382a4814218de2688b3da6ed3642f5a6c4c4507b333
+
+claim_binding:
+  claim_id: S02_SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_20260802T030315Z
+  claim_commit: b1c258f58e4c7cb71c2bf57533c041a654826cac
+  claim_path: projects/spatial-app-factory/claims/20260802T030315Z_SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE.claim.yaml
+  claim_blob: e4a9458029748fee86e806246456fec6c4e966e1
+  claim_acceptance_contract_sha256: 99e7816ebbb6e60b74d3fb19329ac387cfe797ae2f1e614cb27d3958b04cdeff
+  claim_idempotency_key: e57452d13e57a0fd6977707c10ad825946380e29dd363eb4a1b00f3cd3ab4be1
+  producer_return_due_utc: 2026-08-02T06:03:15Z
+  lease_expires_utc: 2026-08-02T07:03:15Z
+  claim_status_at_compile: UNEXPIRED_BUT_NOT_STRUCTURALLY_ROUTABLE
+
+structural_preflight_binding:
+  verifier_commit: 94add0f14c44d90a8c6a7dbc853cfc00ca0cad42
+  verifier_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260802T031017Z_S02_2048_DIRECTIONAL_BRIDGE_CLAIM_BINDING_REVISE.yaml
+  result: REVISE
+  reason_code: DOWNSTREAM_TASK_BINDINGS_AND_WIP_CLEARANCE_EVIDENCE_INCOMPLETE
+  evidence_class: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  passed:
+    - exact claim bytes and Git blob
+    - acceptance digest and idempotency key
+    - source and frozen-input pointers
+    - authority, lease, freshness, privacy, and rollback ceilings
+  required_repair_before_route:
+    - BIND_S06_S07_S04_AND_S03_BY_EXACT_PROVIDER_TASK_ID_ALONGSIDE_ROLE
+    - ADD_PRIOR_CLAIM_EXACT_PATH
+    - ADD_IMMUTABLE_CURSOR_BOUND_EVIDENCE_FOR_NO_CLAIM_BOUND_RETURN
+    - ADD_IMMUTABLE_CURSOR_BOUND_EVIDENCE_FOR_NO_ACTIVE_CONFLICTING_PARENT_WIP
+    - REQUIRE_DIRECT_S04_PREFLIGHT_OF_THE_REPAIRED_SUCCESSOR_BYTES
+
+exact_downstream_task_bindings_observed:
+  packet_compiler:
+    role: S06_CODE_WORK_PACKET_COMPILER
+    task_id: 6a57972b9df081918680ce67c4ecb197
+  producer:
+    role: S07_BOUNDED_CODE_PATCH_BUILDER
+    task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+  structural_verifier:
+    role: S04_STRUCTURAL_PREFLIGHT
+    task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  reducer_consumer:
+    role: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+    task_id: 6a539fc5130c81918c13624739fb2a60
+  note: >-
+    These are provider inventory observations by S06. They do not alter or repair the immutable S02 claim;
+    a source-authorized successor or repair artifact must bind them and receive fresh S04 preflight.
+
+repository_and_base:
+  repository: TTaoGaming/TAGS
+  base_commit: e0e3125e1ef6bb33e189c91b485ec341f2d3cd52
+  branch_rule_if_repaired: agent/spatial-2048-directional-bridge-*
+  package_manifest_path: package.json
+  package_manifest_blob: ad608a51a2cf60b89e5c1f69b305dfb391c46365
+  source_read_rule: >-
+    A future producer must create one dedicated agent branch from the exact base and verify each frozen
+    path/blob before any file write. Later unrelated commits do not change this frozen base.
+
+frozen_read_only_inputs:
+  - repository: TTaoGaming/TAGS
+    commit: e0e3125e1ef6bb33e189c91b485ec341f2d3cd52
+    path: prototypes/spatial-input-adapter.js
+    blob: 579c9551225f0974ed93564b6ad8bfb1abf72cf3
+  - repository: gabrielecirulli/2048
+    commit: 478b6ec346e3787f589e4af751378d06ded4cbbc
+    path: LICENSE.txt
+    blob: b0dbfa4d7526587bcc21a4883222b20805d5c065
+  - repository: gabrielecirulli/2048
+    commit: 478b6ec346e3787f589e4af751378d06ded4cbbc
+    path: js/keyboard_input_manager.js
+    blob: ca01b3ce8995a5a20ac50219712d1ef95297ed99
+  - repository: gabrielecirulli/2048
+    commit: 478b6ec346e3787f589e4af751378d06ded4cbbc
+    path: js/game_manager.js
+    blob: 1c13d15bd667afe06f95316942324885c45d8e6d
+  - repository: gabrielecirulli/2048
+    commit: 478b6ec346e3787f589e4af751378d06ded4cbbc
+    path: js/application.js
+    blob: 2c1108e757a0e49af7b9ee48dcc45bd8e61cb806
+
+allowed_and_forbidden_paths:
+  producer_write_create_only_if_repaired:
+    - prototypes/2048-spatial-canary/**
+  existing_files_modified_max: 0
+  forbidden_paths:
+    - prototypes/spatial-input-adapter.js
+    - every existing repository file
+    - package.json
+    - package-lock.json
+    - node_modules/**
+    - .github/**
+    - credentials/**
+    - secrets/**
+    - deployment/**
+  forbidden_operations:
+    - edit, delete, rename, overwrite, force-push, rebase, reset, merge, deploy, or publish
+    - task mutation
+    - account, credential, permission, scope, or security change
+    - send, spend, external release, or production effect
+
+goal: >-
+  After structural repair only, create one 2048-specific app-local directional bridge specimen under the
+  create-only canary directory. Accept only integer directions 0 through 3. Route each accepted action to
+  exactly one existing InputManager move emission while preserving native keyboard, touch, restart, and
+  keep-playing paths. Invalid, ambiguous, cancelled, low-confidence, or unapproved held input emits zero moves.
+
+current_red_evidence:
+  - >-
+    Exact TAGS spatial adapter bytes produce PointerEvent-shaped descriptors and optional activation/cancellation
+    callbacks; exact 2048 input bytes consume keyboard event.which or touch-swipe and emit move directions 0..3.
+    Direct plug compatibility is therefore unsupported.
+  - >-
+    S04 directly rejected routing completeness: downstream roles lack exact task-ID bindings in the claim and
+    parent-WIP/no-return clearance lacks immutable cursor-bound evidence.
+  - >-
+    The current TAGS package manifest exposes no claim-bound 2048 canary test command; any future test harness
+    must be self-contained under the allowed create-only directory and its actual runtime output recorded.
+  - >-
+    S06 has no checkout, shell, browser, Codex, Claude Desktop, or host ingress and executed no code or tests.
+  - >-
+    No browser-bound evidence exists, so no implementation, compatibility, PATCH_RETURNED, or STOOD claim is permitted.
+
+routing:
+  status: NOT_ROUTED
+  primary_blocker: CLAIM_STRUCTURAL_REPAIR_REQUIRED
+  secondary_blocker: DIRECT_EXECUTOR_INGRESS_UNAVAILABLE_TO_S06
+  slack_pointer_counts_as_execution: false
+  git_packet_counts_as_execution: false
+  producer_ack_observed: false
+  producer_return_consumed: false
+
+required_pre_dispatch_transition:
+  actor: S02_ADMISSION_PULL_OR_AUTHORIZED_CLAIM_REPAIR_OWNER
+  output: ONE_IMMUTABLE_SUCCESSOR_OR_REPAIR_ARTIFACT
+  must_bind:
+    - exact original claim commit, path, and blob
+    - exact S06, S07, S04, and S03 provider task IDs
+    - exact prior claim commit, path, and blob
+    - immutable decision-cursor evidence for no bound producer return
+    - immutable decision-cursor evidence for no active conflicting parent-root WIP
+    - unchanged repository, base, path, budget, rollback, verifier, consumer, and expiry ceilings
+  next_gate: S04_DIRECT_PREFLIGHT_ON_EXACT_REPAIRED_BYTES
+  dispatch_condition: PASS_STRUCTURAL_OR_EXPLICIT_AUTHORIZED_SUPERSEDING_ROUTE
+
+required_commands_or_tool_calls_after_repair_only:
+  - id: C1_FETCH_AND_VERIFY_BASE
+    shell: git fetch origin e0e3125e1ef6bb33e189c91b485ec341f2d3cd52 && git cat-file -e 'e0e3125e1ef6bb33e189c91b485ec341f2d3cd52^{commit}'
+    expected_exit_code: 0
+  - id: C2_VERIFY_TAGS_ADAPTER_BLOB
+    shell: git show 'e0e3125e1ef6bb33e189c91b485ec341f2d3cd52:prototypes/spatial-input-adapter.js' | git hash-object --stdin
+    expected_exit_code: 0
+    expected_stdout_exact: 579c9551225f0974ed93564b6ad8bfb1abf72cf3
+  - id: C3_VERIFY_UPSTREAM_INPUTS
+    action: >-
+      Fetch or inspect gabrielecirulli/2048 at 478b6ec346e3787f589e4af751378d06ded4cbbc and
+      recompute the declared LICENSE.txt, keyboard_input_manager.js, game_manager.js, and application.js blobs.
+    expected_result: all four exact blob matches or HOLD
+  - id: C4_CREATE_DEDICATED_BRANCH
+    shell: git switch -c 'agent/spatial-2048-directional-bridge-<UTC>' e0e3125e1ef6bb33e189c91b485ec341f2d3cd52
+    expected_exit_code: 0
+  - id: C5_ADD_FAILING_SPECIMEN_FIRST
+    action: >-
+      Create a deterministic self-contained Node test/specimen only under prototypes/2048-spatial-canary/
+      proving one accepted direction maps to one move and invalid/cancelled inputs map to zero moves.
+    expected_result: record the actual pre-patch failure; absence of an execution surface is COMMIT_UNTESTED or HOLD
+  - id: C6_ADD_MINIMAL_APP_LOCAL_BRIDGE
+    action: >-
+      Create only canary-directory files; do not edit the shared spatial adapter, package manifests, or upstream
+      2048 game-state/input files. Preserve the MIT notice for copied or substantial upstream code.
+  - id: C7_RUN_DETERMINISTIC_TESTS
+    shell: node --test prototypes/2048-spatial-canary/*.test.js
+    expected_exit_code: 0 only when actually observed and returned with concise output
+  - id: C8_VERIFY_CHANGED_PATH_CEILING
+    shell: git diff --name-only e0e3125e1ef6bb33e189c91b485ec341f2d3cd52...HEAD
+    expected_result: every changed path starts with prototypes/2048-spatial-canary/
+  - id: C9_VERIFY_EXISTING_FILES_UNCHANGED
+    action: >-
+      Recompute the frozen TAGS adapter and package-manifest blobs from the final branch and compare them to
+      579c9551225f0974ed93564b6ad8bfb1abf72cf3 and ad608a51a2cf60b89e5c1f69b305dfb391c46365.
+  - id: C10_REAL_BROWSER_SMOKE
+    action: >-
+      A distinct browser-capable nonproducer must execute the exact frozen branch bytes, prove accepted 0..3
+      direction behavior plus native keyboard/touch fallback, and return a digest-bound STOOD or FELL.
+    expected_result: no browser claim without actual tool, version, commands/steps, outputs, and exact branch SHA
+
+acceptance_tests:
+  - exact claim and repaired successor bytes are read and named
+  - exact repository, base commit, frozen input paths, and blobs match
+  - one dedicated agent branch is based on the frozen TAGS commit
+  - all created files are under prototypes/2048-spatial-canary/
+  - no existing file changes
+  - only integer directions 0 through 3 are accepted
+  - one accepted action emits exactly one existing 2048 move
+  - invalid, ambiguous, cancelled, low-confidence, or unapproved input emits zero moves
+  - no duplicate or unbounded repeat occurs
+  - native keyboard, touch, restart, and keep-playing paths remain available
+  - upstream MIT notice is preserved for copied or substantial code
+  - exact commands or tools, exit codes or typed errors, concise outputs, changed paths, blockers, rollback, and honest flaw are returned
+  - without execution, result is COMMIT_UNTESTED or HOLD, never green
+  - distinct real-browser evidence is required before STOOD or compatibility
+
+producer_return_required_fields:
+  - claim_commit_path_blob
+  - repaired_claim_or_successor_commit_path_blob
+  - structural_preflight_commit_path_result
+  - runtime_provider_model_host
+  - repository_branch_start_sha_final_sha
+  - changed_paths_exact
+  - commands_or_tool_calls_with_actual_exit_codes_or_typed_error_classes
+  - concise_outputs
+  - test_and_browser_evidence_or_explicit_not_run
+  - license_handling
+  - blockers
+  - rollback
+  - remaining_risk
+  - honest_flaw
+  - operator_relay_minutes
+  - valid_time_utc
+  - expiry_utc
+  - PATCH_RETURNED_or_COMMIT_UNTESTED_or_HOLD
+
+verifier:
+  structural:
+    role: S04_STRUCTURAL_PREFLIGHT
+    task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  distinct: AUTHORIZED_BROWSER_CAPABLE_NONPRODUCER
+  same_provider_structural_weight: 0
+  self_verification_allowed: false
+
+consumer:
+  reducer:
+    role: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+    task_id: 6a539fc5130c81918c13624739fb2a60
+  backlog_owner: SPATIAL_APP_FACTORY_BACKLOG_OWNER
+  fan_in: Ratatoskr/P7
+  terminal_requirement: DISTINCT_DIGEST_BOUND_BROWSER_VERDICT_PLUS_EXPLICIT_CONSUMER_ACK
+
+effect_ceiling: BRANCH_FILE_TEST_ON_DEDICATED_AGENT_BRANCH_ONLY_AFTER_STRUCTURAL_REPAIR
+privacy_ceiling: PUBLIC_REPOSITORY_BYTES_AND_SANITIZED_TEST_POINTERS_ONLY
+budget_ceiling:
+  paid_cost_usd: 0
+  operator_relay_minutes: 0
+  producer_timebox_minutes: 60
+  browser_verification_minutes: 30
+  branches_created_max: 1
+  existing_files_modified_max: 0
+
+rollback: >-
+  Do not merge or delete. Preserve the claim, this HOLD packet, any future branch, and immutable receipts.
+  On FELL, expiry, duplicate, partial execution, or structural rejection, leave production/provider state unchanged
+  and supersede or abandon only through a new explicit immutable receipt.
+
+expiry:
+  producer_return_due_utc: 2026-08-02T06:03:15Z
+  lease_expires_utc: 2026-08-02T07:03:15Z
+  on_expiry: HOLD_WITHOUT_SILENT_EXTENSION_DUPLICATE_DISPATCH_OR_GREEN_CLAIM
+
+strongest_falsifier: >-
+  A repaired source-bound claim cannot prove free parent WIP at its decision cursor; the app-local bridge requires
+  edits outside the create-only directory or shared adapter/game-state API changes; accepted input duplicates a move;
+  native input regresses; license notice cannot be preserved; or no exact browser-capable verdict can be produced
+  before lease expiry.
+
+honest_flaw: >-
+  This packet is a same-provider coordination artifact with binding weight zero. S06 could read exact public Git
+  bytes and native task inventory but had no transactional repository-wide WIP oracle, checkout, shell, browser,
+  Codex, Claude Desktop, or host ingress. The exact task IDs recorded here do not retroactively repair the immutable
+  S02 claim. No producer was routed, no branch or code was created, no command or test ran, and no implementation,
+  compatibility, demand, license completeness, or terminal outcome is proven.
+---
