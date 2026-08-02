@@ -8,9 +8,9 @@ repository: TTaoGaming/hfo-gen-133
 base_ref: agent/gen133-bootstrap-20260730
 base_commit: f4823079e402c6e739a4ccba895d453a9276bc04
 wip_limit: 1
-effect_ceiling: read_only_reconciliation_and_git_hold_receipt_only
-route_state: HOLD_UNBOUND_CONFLICTING_SIGRUN_ROUTE
-all_fenrir_pilots_paused: true
+effect_ceiling: scaffold_local_tests_and_draft_git_receipts_only
+route_state: SCAFFOLD_ONLY_TARGET_UNADMITTED
+all_fenrir_pilots_paused: false
 ---
 
 # Fenrir product-control pilot
@@ -31,8 +31,12 @@ already paused. Five callable active automations were paused through the support
 automation API. A later fresh snapshot found one separately created Garmr
 admission-watch heartbeat; it too was paused through the supported API.
 
-The final registry projection contains 63 entries: 61 `PAUSED` and two legacy
-heartbeat TOMLs still marked `ACTIVE`:
+Before the scaffold-only reauthorization, the registry contained 63 entries:
+61 `PAUSED` and two legacy heartbeat TOMLs marked `ACTIVE`. After three new
+finite scaffold/admission/verifier heartbeats were created, the readback at
+`2026-08-02T21:46:39Z` contained 66 entries: 61 `PAUSED`, three authorized
+scaffold-only heartbeats `ACTIVE`, and the same two legacy TOMLs still marked
+`ACTIVE`:
 
 - `hfo-codex-acceptance-runner-hourly`
 - `hfo-codex-pullwork-hourly`
@@ -123,6 +127,39 @@ Do not select a build target from the local MAP-Elites file before that packet
 exists in reviewed Git.
 
 
+## Scaffold-only reauthorization — target remains unadmitted
+
+The operator subsequently supplied Olrun's six-loop proposal and explicitly
+authorized Codex product tasks and scheduled goal loops. This is a new, narrow
+authorization for factory infrastructure, demand admission, and verifier work.
+It does not ratify local Sigrun V9, admit any MAP-Elites row, revive HVAC, or
+authorize a real product build or external effect.
+
+Durable contract:
+
+- `projects/fenrir_product_loop/DLC_FOSS_FACTORY_CONTROL_V1.md`
+- contract commit `ca4c613e20dc99b79071aae0c99cc271620da782`
+- contract blob `44ad12f2b01337ed3f872751252e836f3a0dbf7d`
+- state `SCAFFOLD_ONLY_TARGET_UNADMITTED`
+
+Codex task lanes:
+
+- maker scaffold `019fc470-762c-7683-9573-e75d64c3435a`;
+- target admission `019fc46b-35ce-7e83-b6a0-41da4926758f`;
+- held-out verifier `019fc468-bce5-7ae3-889f-63783416eef2`.
+
+Active finite schedules:
+
+- `fenrir-dlc-factory-scaffold-pilot`;
+- `fenrir-foss-target-admission-pilot`;
+- `fenrir-dlc-held-out-gate-pilot`.
+
+Each wake performs one bounded transition and stops. Deployment, Cloudflare,
+Stripe, publishing, submissions, outreach, credentials, spend, customer data,
+merge, and default-branch writes remain forbidden. Schedule existence is not a
+runtime or success receipt.
+
+
 ## Roles and closure
 
 ```text
@@ -181,6 +218,10 @@ No agent may manufacture ConsumerAck.
 
 ## Configured Fenrir pilots
 
+The original three product-effect pilots below remain paused. The newer
+scaffold/admission/verifier schedules are active only under the scaffold contract
+and cannot select or launch a product.
+
 The supported automation API created three finite Fenrir pilots. All three are
 now PAUSED pending route reconciliation. A separate finite Garmr admission watch
 was subsequently discovered and also paused:
@@ -220,7 +261,10 @@ fresh isolated worktree.
 - The app rejected second and third heartbeats because only one may attach to a
   task. The explicitly requested multiple schedules were created through the
   supported standalone-project automation path instead.
+- A task-list request with `limit=100` was rejected because the app maximum is
+  50; the corrected bounded request succeeded. This was caller error, not a
+  connector outage.
 
 ## Receipt shape
 
-`state=HOLD_UNBOUND_CONFLICTING_SIGRUN_ROUTE | evidence=remote base + V3/V9/MAP-Elites local-input hashes + paused automation readback | tier=T1_OPERATIONAL_CANDIDATE_NOT_ADMITTED | honest_flaw=remote Git binds neither conflicting Sigrun route and two legacy TOMLs remain runtime-unknown | falsifier=reviewed Git-bound Sigrun target packet or explicit operator override | next_safe_action=bind one reviewed Sigrun target/acceptance packet in Git | effect_ceiling=read-only reconciliation + Git hold receipt only`
+`state=SCAFFOLD_ONLY_TARGET_UNADMITTED | evidence=remote base + V3/V9/MAP-Elites local-input hashes + paused automation readback | tier=T1_OPERATIONAL_CANDIDATE_NOT_ADMITTED | honest_flaw=remote Git binds neither conflicting Sigrun route and two legacy TOMLs remain runtime-unknown | falsifier=reviewed Git-bound Sigrun target packet or explicit operator override | next_safe_action=complete scaffold plus verifier replay while admission scout binds one target packet | effect_ceiling=local scaffold tests + draft Git receipts only`
