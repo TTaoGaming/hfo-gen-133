@@ -1,0 +1,106 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_match: true
+carrier_task_observation_source: NATIVE_AUTOMATIONS_LIST_EXACT_MATCH
+wip: 1
+result: RETURN
+return_type: FAILURE_ANTIBODY
+valid_time_utc: 2026-08-02T16:57:48Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+privacy_ceiling: PUBLIC_REPOSITORY_METADATA_AND_SANITIZED_GATE_FIELDS_ONLY
+binding_weight: 0
+heritage_credit: 0
+independent_verification_closed: false
+expires_utc: 2026-08-09T16:49:33Z
+---
+
+self_probe:
+  identity: S15_HERITAGE_REUSE_AND_DEDUP
+  expected_task_present: true
+  expected_task_enabled: true
+  expected_task_title: HFO S15 Gondul Continuous Heritage
+  tools_observed:
+    - native_automations_inventory_read
+    - github_recent_commit_search
+    - github_exact_commit_and_file_read
+    - github_repository_dedup_search
+    - github_create_file
+    - github_readback
+    - slack_single_channel_pointer
+  task_mutation_performed: false
+
+current_evidence_gap:
+  id: X14_MUTANT_042_e6358cf484d8
+  kind: QUARANTINED_AUTHORITY_ESCALATION_PENDING_DIRECT_S04_VERDICT
+  source_commit: 31ee3c2c2780f08da9c74960befeca1af9c2d94d
+  source_path: state/coordination/experiments/false_green_x14/quarantine/20260802T165105Z_X13_GMAIL_AUTHORITY_ESCALATION.mutant.yaml
+  source_blob_sha1: NOT_RECOMPUTED_BY_S15
+  source_mutation_digest_sha256: e6358cf484d8c0a3d004a7f7f9b6289fad4ad73aa7a2ec8b351e9cc28fca9b1a
+  status_observed: QUARANTINED_NONEXECUTABLE_ROUTED_PENDING_VERDICTS
+  verifier: S04_STRUCTURAL_PREFLIGHT
+  consumer:
+    - X14_CAMPAIGN_REDUCER
+    - RATATOSKR
+  acceptance_relevance: >-
+    S04 must resolve the exact mutant and immutable Gmail decision, recompute the declared 372-byte canonical overlay and
+    SHA-256, and reject any authority grant exceeding bounded ID-only discovery unless exact operator approval, provider
+    scope, actor, target, effect, idempotency, privacy, rollback, and ConsumerAck bindings are present.
+  expiry_utc: 2026-08-09T16:49:33Z
+
+reused_prior_artifact:
+  original_date_utc: 2026-08-01T09:12:24Z
+  source_repository: TTaoGaming/hfo-gen-133
+  source_commit: 79fcd5e192043d4d964313460b2279b8792f302f
+  source_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260801T091224Z_X14_MUTANT012_UNAUTHORIZED_WORLD_EFFECT_REVISE.yaml
+  source_blob_sha1: 771812ce0b0afb6b2c5180d706cfad723180b2d5
+  source_result: REVISE
+  source_reason_code: UNAUTHORIZED_WORLD_EFFECT_EXCEEDS_BOUND_EFFECT_CEILING
+  source_named_gate: S04_WORLD_EFFECT_AUTHORITY_AND_EFFECT_CEILING_GATE
+  source_expiry_utc: 2026-08-01T11:53:20Z
+  verifier: S04_STRUCTURAL_PREFLIGHT_THEN_DISTINCT_NONPRODUCER
+  consumer:
+    - X14_CAMPAIGN_REDUCER
+    - RATATOSKR
+  supported_claims:
+    - A bounded source effect ceiling cannot be laundered into broader autonomous effects by an adoption label or successful connector access.
+    - Broad effects require exact task authority, exact target scope, bounded effect limits, lease, retry and idempotency rules, privacy boundaries, rollback, ConsumerAck, and distinct verification.
+    - Connector authentication or visible identifiers do not by themselves prove operator authorization for expanded effects.
+  excluded_claims:
+    - This prior Slack verdict is not a direct verdict on Gmail, OAuth scopes, message-content access, mailbox mutation, or mutant 042.
+    - It does not prove that operator approval is absent, that the current Gmail credential lacks broader scope, or that any mailbox effect occurred.
+    - It cannot substitute for recomputing mutant 042 exact bytes, digest, source pointer, and one-field mutation claim.
+  privacy_ceiling: PUBLIC_REPOSITORY_METADATA_AND_SANITIZED_GATE_FIELDS_ONLY_NO_EMAIL_BODIES_MESSAGE_IDS_CREDENTIALS_OR_PRIVATE_CHANNEL_CONTENT
+  acceptance_relevance: >-
+    Reuse the gate invariant only: evidence and authority ceilings are monotonic. A bounded ID-only Gmail list decision cannot
+    authorize content reads or mailbox mutations without exact source-bound authority and provider-scope evidence.
+  honest_flaw: >-
+    The precedent concerns Slack posting rather than Gmail content or mailbox state. Its original lease is expired, it is
+    same-provider structural evidence with binding weight zero, and the conspicuous broad-effect mutation may not detect
+    subtler escalation through delegated accounts, inherited approval, broad-but-unused scopes, read-only content access,
+    partial label authority, or ambiguous connector verbs.
+
+dedup:
+  exact_current_mutant_id_search: NO_MATCH_FOUND_BEFORE_WRITE
+  exact_current_mutation_digest_search: NO_MATCH_FOUND_BEFORE_WRITE
+  recent_commit_enumeration_after_mutant_creation: NO_PRIOR_S15_RETURN_OBSERVED
+  limitation: GitHub search indexing and recent-commit enumeration are nontransactional and may lag.
+
+consumption_contract:
+  current_workitem_consumer_required: X14_CAMPAIGN_REDUCER_OR_RATATOSKR
+  heritage_credit_condition: EXPLICIT_CONSUMER_ACK_BOUND_TO_THIS_RECEIPT_AND_CURRENT_MUTANT
+  heritage_credit_now: 0
+  direct_verdict_substitution_forbidden: true
+  s15_self_verification_forbidden: true
+
+rollback:
+  action: RETAIN_OR_IGNORE_THIS_POINTER_PRESERVE_MUTANT_SOURCE_CURRENT_TASK_GMAIL_AND_MAILBOX_STATE_UNCHANGED
+
+honest_flaw: >-
+  S15 did not independently rehash the current mutant file, recompute its 372-byte overlay, inspect Gmail credential scope,
+  or obtain a distinct-provider verdict. This return supplies one historical failure antibody only; it must not be counted
+  as a caught mutant, PASS/REVISE verdict, ConsumerAck, or campaign fitness credit.
