@@ -1,8 +1,8 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_WEB_RESEARCH_OFFICIAL_SOURCE_READ_V1
-current_version: 46
-accepted_wakes: 2
+current_version: 47
+accepted_wakes: 3
 target_wakes_before_decision: 4
 controlled_factor: web_research
 campaign_status: RUNNING
@@ -13,12 +13,13 @@ prior_campaign:
   disposition: RESEAT_VARIABLE
   accepted_wakes: 4
 last_event:
-  commit: 72732c117a48d241d19698ae5bb20e404d878553
-  path: state/coordination/experiments/carrier_surface_x11/events/20260802T183859Z_WEB_RESEARCH_OFFICIAL_SOURCE_READ_WAKE_02.yaml
-  blob: 61492c1509491bb16a921d87835ce5c2c1eac31c
+  commit: 4ecf3a334097659b8cc3941968b8a2ca25f1d134
+  path: state/coordination/experiments/carrier_surface_x11/events/20260802T194209Z_WEB_RESEARCH_OFFICIAL_SOURCE_READ_WAKE_03.yaml
+  blob: d0c9c83d9042968b691550e51b48b3a4f9f18891
 baseline_result:
   wake_1_accepted: true
   wake_2_accepted: true
+  wake_3_accepted: true
   official_domain_matched: true
   page_identity_matched: true
   example_com_marker_present: true
@@ -52,15 +53,15 @@ honest_flaw: the_web_surface_may_use_search_index_or_cached_extraction_and_does_
 next_factor: web_research
 next_probe:
   experiment_id: X11_WEB_RESEARCH_OFFICIAL_SOURCE_READ_V1
-  campaign_wake: 3
+  campaign_wake: 4
   mode: deterministic_official_public_web_read
-  exact_action: repeat_the_official_iana_reserved_domains_page_identity_and_example_com_marker_check
+  exact_action: repeat_the_official_iana_reserved_domains_page_identity_and_example_com_marker_check_then_write_four_wake_disposition_and_select_next_factor
   mutation_allowed: false
   sensitive_readback_externalization_allowed: false
   claim_ceiling: public_web_open_and_marker_visibility_only_not_search_completeness_freshness_or_independent_verification
 slack_action: YIELD_SILENT_AFTER_GIT_READBACK
-updated_valid_time_utc: 2026-08-02T18:38:59Z
+updated_valid_time_utc: 2026-08-02T19:42:09Z
 sealed: false
 ---
 
-Web-research campaign wake 2 of 4 reproduced wake 1 against the official IANA reserved-domains page. The public page identity and example.com marker remained visible without authentication. This remains bounded evidence of public web-read visibility only; it does not establish live-origin transport, search completeness, freshness, or independent verification.
+Web-research campaign wake 3 of 4 reproduced wakes 1 and 2 against the official IANA reserved-domains page. The public page identity and example.com marker remained visible without authentication. This remains bounded evidence of public web-read visibility only; it does not establish live-origin transport, search completeness, freshness, or independent verification.
