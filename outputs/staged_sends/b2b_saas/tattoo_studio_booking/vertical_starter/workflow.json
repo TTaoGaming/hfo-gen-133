@@ -1,0 +1,16 @@
+{
+  "schema_id": "hfo.b2b.vertical_workflow.v1",
+  "status": "starter_config_unwired",
+  "vertical": "Tattoo studio booking",
+  "buyer": "Owner or studio manager for a 2-12 artist tattoo studio",
+  "source": {"base_repo": "https://github.com/calcom/cal.com", "commit": "038381aeca6261635357957d66b8ba85cdb29737", "license": "MIT"},
+  "workflow_type": "consult_to_deposit_schedule_aftercare",
+  "steps": [
+    {"id": "consult", "name": "Qualify the consultation", "trigger": "Approved booking request", "action": "Collect placement, size, style, references, budget range, and artist preference", "output": "Consult brief routed to a studio owner", "gate": "Studio checks age, scope, and artist fit"},
+    {"id": "design", "name": "Approve the design brief", "trigger": "Qualified consult", "action": "Summarize creative direction and revision boundary", "output": "Artist-approved brief and appointment type", "gate": "Artist approves feasibility and timing"},
+    {"id": "deposit", "name": "Stage the deposit", "trigger": "Brief accepted", "action": "Prepare a disabled Stripe deposit preset and terms acknowledgment", "output": "Deposit request payload awaiting activation", "gate": "No charge; owner must approve amount, refund terms, and live mode"},
+    {"id": "schedule", "name": "Reserve the session", "trigger": "External deposit receipt", "action": "Create the matching event-type reservation and preparation note", "output": "Confirmed artist session with prep checklist", "gate": "Artist calendar remains authoritative"},
+    {"id": "aftercare", "name": "Queue aftercare", "trigger": "Session completion", "action": "Prepare aftercare, healing check-in, and rebooking tasks", "output": "Timed follow-up tasks", "gate": "No customer message sends from this starter"}
+  ],
+  "safety": {"stripe_live_mode": false, "customer_messages": "disabled", "medical_advice": "not_provided", "production_customer_deploy": false}
+}

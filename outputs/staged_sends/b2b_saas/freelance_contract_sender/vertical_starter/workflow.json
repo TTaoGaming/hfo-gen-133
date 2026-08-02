@@ -1,0 +1,16 @@
+{
+  "schema_id": "hfo.b2b.vertical_workflow.v1",
+  "status": "starter_config_unwired",
+  "vertical": "Freelance contract sender",
+  "buyer": "Independent consultant or 2-10 person creative/technical studio",
+  "source": {"base_repo": "https://github.com/activepieces/activepieces", "commit": "8d29bbe6fdd572b15398adc67dff74b2e30d3a3d", "license": "MIT_CORE_EE_EXCLUDED"},
+  "workflow_type": "scope_proposal_signature_milestone_billing",
+  "steps": [
+    {"id": "scope", "name": "Capture the scope brief", "trigger": "Owner-approved opportunity", "action": "Collect outcome, deliverables, exclusions, dependencies, dates, and budget", "output": "Reviewable scope brief", "gate": "Freelancer confirms capacity and commercial fit"},
+    {"id": "proposal", "name": "Render proposal and terms", "trigger": "Approved scope", "action": "Merge scope, assumptions, change control, milestones, and price", "output": "Draft proposal PDF and contract checklist", "gate": "Owner and legal adviser as needed approve terms"},
+    {"id": "signature", "name": "Stage e-signature", "trigger": "Terms approved", "action": "Create provider-neutral envelope payload and delivery task", "output": "Signature package awaiting authorized provider", "gate": "No document sends from this starter; Documenso AGPL excluded"},
+    {"id": "milestones", "name": "Open the milestone ledger", "trigger": "External signed-document receipt", "action": "Create deliverable, acceptance, and billing milestones", "output": "Milestone ledger with owners and due dates", "gate": "Owner validates signature receipt and deposit terms"},
+    {"id": "billing", "name": "Queue milestone billing", "trigger": "Milestone acceptance receipt", "action": "Prepare invoice payload and overdue reminder task", "output": "Invoice draft linked to accepted work", "gate": "No live Stripe charge or customer message"}
+  ],
+  "safety": {"stripe_live_mode": false, "document_send": "disabled", "legal_advice": "not_provided", "production_customer_deploy": false, "idempotency_key": "engagement_id:milestone_id:billing_version"}
+}

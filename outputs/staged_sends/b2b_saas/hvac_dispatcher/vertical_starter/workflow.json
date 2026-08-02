@@ -1,0 +1,20 @@
+{
+  "schema_id": "hfo.b2b.vertical_workflow.v1",
+  "status": "starter_config_unwired",
+  "vertical": "HVAC dispatcher",
+  "buyer": "Owner or dispatch manager at a 3-15 truck HVAC company",
+  "source": {
+    "base_repo": "https://github.com/activepieces/activepieces",
+    "commit": "8d29bbe6fdd572b15398adc67dff74b2e30d3a3d",
+    "license": "MIT_CORE_EE_EXCLUDED"
+  },
+  "workflow_type": "lead_intake_to_invoice_followup",
+  "steps": [
+    {"id": "intake", "name": "Capture the service request", "trigger": "Approved web form or dispatcher entry", "action": "Normalize contact, address, system type, urgency, and access window", "output": "One qualified service-request record", "gate": "Human confirms emergency priority and service area"},
+    {"id": "estimate", "name": "Prepare the estimate", "trigger": "Qualified request", "action": "Apply the selected estimate template and flag missing site details", "output": "Draft estimate ready for owner approval", "gate": "Owner approves scope, price, and exclusions before send"},
+    {"id": "schedule", "name": "Reserve the crew window", "trigger": "Customer acceptance recorded", "action": "Create a calendar hold and dispatch brief", "output": "Confirmed job window with assigned owner", "gate": "Dispatcher resolves conflicts and travel time"},
+    {"id": "invoice", "name": "Issue the invoice draft", "trigger": "Technician marks work complete", "action": "Build invoice payload from accepted estimate and change notes", "output": "Invoice draft and reconciliation checklist", "gate": "Office approves final total; live Stripe remains disabled"},
+    {"id": "followup", "name": "Close the loop", "trigger": "Invoice status changes", "action": "Queue receipt, unpaid reminder, warranty note, or review request", "output": "Typed follow-up task with due date", "gate": "No customer message sends from this starter"}
+  ],
+  "safety": {"stripe_live_mode": false, "customer_messages": "disabled", "production_customer_deploy": false, "idempotency_key": "service_request_id:workflow_version"}
+}

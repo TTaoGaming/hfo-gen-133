@@ -1,0 +1,16 @@
+{
+  "schema_id": "hfo.b2b.vertical_workflow.v1",
+  "status": "starter_config_unwired",
+  "vertical": "Real-estate proposal",
+  "buyer": "Independent listing agent or 2-10 agent broker team",
+  "source": {"base_repo": "https://github.com/activepieces/activepieces", "commit": "8d29bbe6fdd572b15398adc67dff74b2e30d3a3d", "license": "MIT_CORE_EE_EXCLUDED"},
+  "workflow_type": "listing_intake_to_engagement_invoice",
+  "steps": [
+    {"id": "intake", "name": "Capture the listing brief", "trigger": "Agent-approved seller intake", "action": "Normalize property facts, goals, timing, and presentation deadline", "output": "Complete listing-opportunity brief", "gate": "Agent confirms data source and seller consent"},
+    {"id": "analysis", "name": "Assemble the market packet", "trigger": "Complete brief", "action": "Request approved comps and build a market-analysis checklist", "output": "CMA evidence packet with missing-data flags", "gate": "Licensed agent selects comps and pricing narrative"},
+    {"id": "proposal", "name": "Render the proposal", "trigger": "Agent-approved analysis", "action": "Merge the brief, plan, timeline, and fees into the branded template", "output": "Draft listing proposal PDF", "gate": "Agent approves all claims, fees, and disclosures"},
+    {"id": "send", "name": "Stage delivery and acceptance", "trigger": "Proposal approved", "action": "Create a delivery task and provider-neutral signature handoff", "output": "Proposal package awaiting authorized send", "gate": "No email or e-sign request sends from this starter"},
+    {"id": "onboard", "name": "Open the engagement", "trigger": "Signed agreement receipt", "action": "Create onboarding, photography, and billing tasks", "output": "Accepted-listing checklist with invoice status", "gate": "Office confirms contract receipt and payment terms"}
+  ],
+  "safety": {"stripe_live_mode": false, "mls_access": "not_configured", "customer_messages": "disabled", "production_customer_deploy": false}
+}
