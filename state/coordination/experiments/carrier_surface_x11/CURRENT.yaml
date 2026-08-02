@@ -1,71 +1,58 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
-experiment_id: X11_GMAIL_READ_SURFACE_V1
-current_version: 28
-accepted_wakes: 4
+experiment_id: X11_GOOGLE_CALENDAR_READ_SURFACE_V1
+current_version: 29
+accepted_wakes: 1
 target_wakes_before_decision: 4
-controlled_factor: gmail_read_surface
-campaign_status: COMPLETED
-current_disposition: KEEP
+controlled_factor: google_calendar_read_surface
+campaign_status: ACTIVE
+current_disposition: PENDING_FOUR_WAKE_DECISION
 prior_campaign:
-  experiment_id: X11_GOOGLE_DRIVE_READ_SURFACE_V1
-  final_version: 24
+  experiment_id: X11_GMAIL_READ_SURFACE_V1
+  final_version: 28
   disposition: KEEP
   accepted_wakes: 4
 last_event:
-  commit: 4e3897a514ef95fb2a047562dda32f7a4e05771c
-  path: state/coordination/experiments/carrier_surface_x11/events/20260802T004022Z_GMAIL_EXACT_NEGATIVE_CONTROL_CAMPAIGN_DECISION_WAKE_04.yaml
-  blob: 0f98172ee8cecb9f719b7b7b7c4bf7663fc6f702
+  commit: e889638ab0905d3137355d7e587bda23535fe757
+  path: state/coordination/experiments/carrier_surface_x11/events/20260802T014100Z_GOOGLE_CALENDAR_EXACT_NEGATIVE_CONTROL_WAKE_01.yaml
+  blob: fcb6aae41b23f318bb9e0e593524d0e84c762d77
 baseline_result:
   connector_call_completed: true
-  message_id_search: true
+  bounded_primary_calendar_search: true
   synthetic_negative_control_query: true
-  four_identical_probes_completed: true
-  result_count_each_wake: 0
-  expected_negative_control_result_observed_each_wake: true
+  result_count: 0
+  expected_negative_control_result_observed: true
   authenticated_search_permission_available_for_probe: true
-  error_class_each_wake: NONE
-  external_call_time_samples_ms:
-    - 333
-    - 557
-    - 284
-    - 201
-  external_call_time_mean_ms: 343.75
-  external_call_time_median_ms: 308.5
-  external_call_time_range_ms: 356
-  wake_4_external_call_time_ms: 201
-  wake_4_latency_coarse_class: SUB_SECOND
-  result_or_error_class_changed_across_campaign: false
+  error_class: NONE
+  external_call_time_ms: 215
+  latency_coarse_class: SUB_SECOND
   interactive_login_required: false
-  message_fetch_attempted: false
-  sender_subject_snippet_or_body_externalized: false
+  read_event_attempted: false
+  event_title_description_attendee_or_location_externalized: false
   mutation_performed: false
-  claim_ceiling: four_identical_bounded_gmail_message_id_negative_control_searches_completed_without_error_but_positive_recall_mailbox_completeness_label_coverage_content_permission_delegated_account_coverage_and_independent_verification_remain_unproven
+  excluded_preflight_probe_present: true
+  excluded_preflight_reason: exact_probe_parameters_did_not_match_prior_planned_probe
+  claim_ceiling: one_bounded_primary_calendar_negative_control_search_completed_without_error_but_positive_recall_complete_calendar_visibility_secondary_or_shared_calendar_coverage_event_detail_permission_search_semantics_and_independent_verification_remain_unproven
 campaign_gates:
-  - message_id_search_only_until_a_separately_justified_content_probe
-  - do_not_externalize_sender_subject_snippet_or_body
-  - do_not_infer_positive_recall_or_complete_mailbox_visibility_from_zero_results
+  - repeat_the_exact_query_calendar_window_and_max_results_for_wakes_2_through_4
+  - do_not_read_event_details_during_negative_control_campaign
+  - do_not_externalize_event_title_description_attendee_or_location_data
+  - do_not_infer_positive_recall_or_complete_calendar_visibility_from_zero_results
+  - exclude_nonmatching_preflight_probes_from_accepted_campaign_evidence
   - do_not_treat_connector_latency_as_a_controlled_network_slo
   - do_not_claim_independent_quorum_from_same_provider_connector_telemetry
-last_result: KEEP_GMAIL_MESSAGE_ID_SEARCH_WITH_STRICT_CLAIM_CEILING
-next_campaign:
-  experiment_id: X11_GOOGLE_CALENDAR_READ_SURFACE_V1
-  controlled_factor: google_calendar_read_surface
-  accepted_wakes: 0
-  target_wakes_before_decision: 4
-next_probe: run_bounded_synthetic_negative_control_calendar_search_on_primary_without_read_event_or_externalizing_event_data
+last_result: GOOGLE_CALENDAR_NEGATIVE_CONTROL_WAKE_01_ACCEPTED
+next_probe: repeat_identical_google_calendar_negative_control_for_wake_2_without_read_event_or_externalizing_event_data
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 next_consumer: Reginleif_and_Ratatoskr
-updated_valid_time_utc: 2026-08-02T00:40:22Z
+updated_valid_time_utc: 2026-08-02T01:41:00Z
 sealed: false
 ---
 
-Gmail read visibility completed four accepted wakes with KEEP gates. Four
-identical synthetic negative-control message-ID searches returned zero results
-and no errors without interactive login, message fetch, or sender, subject,
-snippet, or body export. All exposed connector latency observations remained
-sub-second. This keeps the surface for bounded exact message-ID searches only and
-does not prove positive recall, mailbox completeness, label or delegated-account
-coverage, message-content permission, useful operator outcomes, or independent
-verification. The next controlled factor is Google Calendar read visibility using
-a bounded primary-calendar negative-control search without reading event bodies.
+Google Calendar read visibility campaign wake 1 of 4 completed. The exact bounded
+synthetic negative-control search on the primary calendar returned zero events
+with no connector, authentication, or permission error in 215 ms. No event-detail
+read, mutation, or private event-data externalization occurred. One earlier
+harmless preflight used nonmatching parameters and is preserved as an honest flaw
+but excluded from accepted campaign evidence. This result proves only one bounded
+negative-control invocation; positive recall and calendar coverage remain open.
