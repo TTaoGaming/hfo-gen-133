@@ -174,3 +174,13 @@ outputs to task `019fc468-bce5-7ae3-889f-63783416eef2`. Do not select, build,
 deploy, or market a real FOSS target until the admission task produces a reviewed
 packet with original demand, exact license bytes, separate price evidence, a
 material outcome, and a named consumer.
+
+## Slack projection result
+
+`BLOCKED_DESTINATION_TRUST_REJECTION`. The exact reply to the existing Garmr
+thread in `#hfo-synthesis` (`C0BGC646A1H`, parent
+`1785697545.280249`) was rejected because the payload-to-destination trust was
+not explicit enough. No message was delivered; timestamp and permalink are
+absent. This is a safety-policy rejection, not a Slack transport outage. Garmr
+did not retry or route around it. Fresh operator approval must name the exact
+payload and destination before one new attempt.
