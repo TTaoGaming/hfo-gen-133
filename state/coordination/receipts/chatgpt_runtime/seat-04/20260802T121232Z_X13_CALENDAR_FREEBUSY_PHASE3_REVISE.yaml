@@ -1,0 +1,136 @@
+schema_id: hfo.gen133.s04.structural_preflight.v1
+seat: S04
+callsign: Hrist
+result: REVISE
+wip: 1
+repository: TTaoGaming/hfo-gen-133
+branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-02T12:12:32Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+self_probe:
+  expected_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  observed_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  task_id_match: true
+  task_enabled: true
+  observation_source: NATIVE_AUTOMATIONS_LIST_READBACK
+  tools_observed:
+    - native_automations_inventory_read
+    - GitHub_recent_commit_search
+    - GitHub_fetch_commit
+    - GitHub_fetch_file
+    - deterministic_utf8_sha256
+    - deterministic_git_blob_sha1
+    - YAML_frontmatter_parse
+    - deterministic_json_canonicalization
+    - GitHub_create_file
+  task_mutation_performed: false
+selection:
+  rule: NEWEST_IMMUTABLE_CANDIDATE_ADDRESSED_TO_S04_NOT_AUTHORED_BY_S04
+  selected_route:
+    authoring_seat: S03
+    commit: a96c5cc327198a08091694cb969f5824b5dab315
+    path: state/coordination/receipts/chatgpt_runtime/seat-03/20260802T120952Z_X13_CALENDAR_FREEBUSY_PHASE3_RETURN_BINDINGS_REVISE.yaml
+    blob_sha: 9880a6953addc748d360ce0e18d33b4b41273356
+    route_packet_id: S03_X13_CALENDAR_FREEBUSY_PHASE3_EXACT_VERIFICATION_ROUTE_20260802T120952Z
+  required_target:
+    authoring_seat: X13_COTS_AND_CONNECTOR_PDCA_LAB
+    commit: abac05a466576125dc6ec44e49cf26539dd34c8f
+    path: state/coordination/experiments/cots_connector_x13/20260802T114724Z_GOOGLE_CALENDAR_FREEBUSY_PHASE3_FAILURE_PERMISSION_PROBE.md
+    git_blob_sha1: a0552270d3397ae029f154ef6133e77ea72eaf54
+    exact_utf8_bytes: 2263
+    full_file_sha256: 86faba85582ed6aff9c4586ab0c8881ee4c231f3ab518dd01c658bcb6eae24dc
+    recomputed_git_blob_sha1: a0552270d3397ae029f154ef6133e77ea72eaf54
+    git_blob_match: true
+  current_pointer:
+    commit: af9641cf2f8b769fa241112480c7ac235ff7d735
+    path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    blob_sha: 43a51348c1ca7f2af34ac959b837f9009dee5eec
+    version: 39
+    last_event_commit: abac05a466576125dc6ec44e49cf26539dd34c8f
+    last_event_blob_sha: a0552270d3397ae029f154ef6133e77ea72eaf54
+    pointer_binding_match: true
+schema_and_canonicalization:
+  frontmatter_schema_id: hfo.gen133.x13.cots_connector_event.v1
+  yaml_frontmatter_parse: PASS
+  frontmatter_canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_frontmatter_bytes: 377
+  canonical_frontmatter_sha256: 9fbc44df4bbec4bac8f195811a308110fc123d0ede542d6cf49f698528a77bae
+  sealed: true
+checks:
+  exact_bytes_and_digest: PASS
+  immutable_source_pointer: PASS
+  current_pointer_binding: PASS
+  freshness:
+    result: PASS
+    source_valid_time_utc: 2026-08-02T11:47:24Z
+    source_review_expiry_utc: 2026-08-09T11:47:24Z
+    route_does_not_extend_expiry: true
+  task_binding:
+    result: PASS
+    source_carrier_task_id: 6a55c1733708819185088bf334e33ea5
+    native_task_id_match: true
+    native_task_enabled: true
+  authority:
+    result: REVISE
+    reason: LIVE_CONNECTOR_IDENTITY_AUTHORIZATION_SCOPE_PROJECT_QUOTA_AND_RAW_HTTP_RECEIPT_ARE_NOT_BOUND
+  actor_carrier_separation:
+    result: REVISE
+    reason: TARGET_BYTES_BIND_ONLY_THE_CARRIER_TASK_ID; THE_ACTOR_ROLE_AND_CONNECTOR_IDENTITY_EXIST_ONLY_IN_CROSS_FILE_ROUTE_OR_CURRENT_PROJECTION
+  idempotency:
+    result: REVISE
+    reason: NO_SOURCE_BOUND_IDEMPOTENCY_KEY_NONCE_ACCEPTANCE_DIGEST_OR_REPLAY_KEY_EXISTS_IN_TARGET_BYTES
+  lease_and_expiry:
+    result: REVISE
+    reason: REVIEW_EXPIRY_IS_BOUND_BY_ROUTE_AND_CURRENT_POINTER_BUT_NOT_PRESENT_IN_THE_TARGET_EVENT_BYTES; NO_CLAIM_LEASE_EXISTS
+  privacy:
+    result: REVISE
+    safe_persistence: true
+    reason: EXACT_SYNTHETIC_CALENDAR_IDENTIFIER_AND_EXACT_REQUEST_INTERVAL_ARE_OMITTED; THIS_MINIMIZES_DISCLOSURE_BUT_PREVENTS_SOURCE_BOUND_REPLAY
+  rollback:
+    result: PASS_WITH_CEILING
+    world_effect: READ_ONLY_QUERY_NO_CALENDAR_MUTATION
+    compensation: DO_NOT_CONSUME_OR_EXPAND_THE_ADVISORY_RESULT
+  verifier:
+    result: REVISE
+    declared: RAW_GOOGLE_CALENDAR_FREEBUSY_API_OR_DISTINCT_AUTHORIZED_CLIENT
+    reason: DECLARED_VERIFIER_CANNOT_REPLAY_THE_SAME_SOURCE_BOUND_REQUEST_BECAUSE_EXACT_IDENTIFIER_INTERVAL_AND_RAW_RESPONSE_BINDING_ARE_ABSENT
+  consumer:
+    result: REVISE
+    declared_in_current:
+      - HFO_SCHEDULING_AND_EXECUTIVE_ASSISTANT_PLANNING_LOGIC
+      - PHASE_4_DECISION
+    consumer_ack: NOT_OBSERVED
+    reason: TARGET_EVENT_HAS_NO_EXPLICIT_CONSUMER_BINDING_AND_NO_POST_STOOD_SOURCE_DIGEST_BOUND_CONSUMERACK_EXISTS
+semantic_ceiling:
+  supported:
+    - THE_EXACT_GIT_EVENT_REPORTS_TOP_LEVEL_SUCCESS_WITH_ONE_PER_CALENDAR_GLOBAL_NOTFOUND_ERROR
+    - ZERO_BUSY_INTERVALS_WITH_A_PER_CALENDAR_ERROR_MUST_NOT_BE_INTERPRETED_AS_FREE_TIME
+    - NO_CALENDAR_WRITE_OR_EVENT_CONTENT_DISCLOSURE_IS CLAIMED
+  excluded:
+    - WHETHER_THE_RESOURCE_WAS_NONEXISTENT_OR_INACCESSIBLE
+    - LIVE_IDENTITY_SCOPE_PROJECT_QUOTA_OR_HTTP_STATUS
+    - REPLAYABLE_REQUEST_EQUIVALENCE
+    - CALENDAR_AVAILABILITY_COMPLETENESS
+    - INDEPENDENT_VERIFICATION
+    - CONSUMER ACCEPTANCE OR TERMINAL CLOSURE
+strongest_fake_green_mutant:
+  mutant_id: X14_MUTANT_037_804256923673
+  mutation_class: STALE_SOURCE_DIGEST
+  mutant_commit: a070243bd217b3491285ddc3f1d86b7ffecf1a6f
+  mutant_path: state/coordination/experiments/false_green_x14/quarantine/20260802T115153Z_X13_GOOGLE_CALENDAR_STALE_SOURCE_DIGEST.mutant.yaml
+  mutant_blob_sha: 53dc69447f14eeb59a134072efcf27b4c1ec763e
+  mutated_field: source_blob_sha1
+  correct_value: a0552270d3397ae029f154ef6133e77ea72eaf54
+  injected_stale_value: 483dda99b902039250f665ece3dbe89382d1fe97
+  canonical_overlay_bytes: 256
+  canonical_overlay_sha256: 804256923673c55c91cc5f8c60fcbbd42f27fd16fa32ae0f060dc9a74b53e778
+  disposition: REJECT
+  reason: THE_INJECTED_SHA_IS_A_REAL_PRIOR_PHASE2_BLOB_BUT_DOES_NOT_BIND_THE_SELECTED_PHASE3_COMMIT_AND_PATH
+verdict: REVISE
+verdict_detail: PRESERVE_THE_PHASE3_EVENT_AS_EXPERIMENT_LOCAL_SANITIZED_EVIDENCE_ONLY; REQUIRE_ONE_IMMUTABLE_SUCCESSOR_BINDING_EXACT_OR_PRIVACY_SAFE_REPLAY_COMMITMENT_REQUEST_INTERVAL_TIMEZONE_ACTOR_AND_CARRIER_IDENTITY_IDEMPOTENCY_EXPIRY_RAW_OR_DISTINCTLY_NORMALIZED_RESPONSE_VERIFIER_AND_CONSUMER_BEFORE_DISTINCT_STOOD_OR_FELL_OR_ANY_ADOPTION_OR_TERMINAL_CLAIM
+next_consumer: X13_COTS_AND_CONNECTOR_PDCA_LAB_THEN_S03_ROUTER_THEN_DISTINCT_CALENDAR_VERIFIER
+honest_flaw: S04_COULD_RECOMPUTE_GIT_BYTES_AND_STRUCTURAL_BINDINGS_BUT_DID_NOT_ACCESS_RAW_CALENDAR_PROTOCOL_IDENTITY_SCOPE_PROJECT_HEADERS_OR_A_DISTINCT_CLIENT; SAME_PROVIDER_NONBINDING_BINDING_WEIGHT_ZERO
+sealed: true
