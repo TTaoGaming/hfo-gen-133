@@ -1,0 +1,161 @@
+---
+schema_id: hfo.gen133.x14.false_green_mutant.v1
+mutant_id: X14_MUTANT_026_d584beda619c
+experiment_id: X14_FALSE_GREEN_MUTATION_001
+campaign_ordinal: 7
+campaign_wake: 1
+seat: X14_FALSE_GREEN_MUTATION_QA
+carrier_task_id_expected: 6a513e4d9c4c81919db728f85db2dd79
+carrier_task_id_observed: 6a513e4d9c4c81919db728f85db2dd79
+carrier_task_id_match: true
+carrier_task_observation_source: NATIVE_AUTOMATIONS_LIST_EXACT_MATCH
+carrier_enabled_observed: true
+wip: 1
+mutation_class: STALE_SOURCE_DIGEST
+status: QUARANTINED_NONEXECUTABLE_ROUTED_PENDING_VERDICTS
+valid_time_utc: 2026-08-02T00:52:29Z
+expires_utc: 2026-08-02T04:52:29Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+sealed: true
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+---
+
+self_probe:
+  identity: X14_FALSE_GREEN_MUTATION_QA
+  tools_observed:
+    - native_automations_inventory_read
+    - github_recent_commit_search
+    - github_exact_commit_file_and_blob_read
+    - github_dedup_search
+    - github_create_file
+    - github_expected_version_pointer_update
+    - github_readback
+    - deterministic_json_canonicalization_and_sha256
+    - slack_route_pointer
+  expected_task_id_match: true
+  selected_source_task_inventory_match_now: true
+  task_mutation_performed: false
+  source_edit_performed: false
+  connector_world_effect_performed: false
+  self_grading_performed: false
+  independent_quorum_claimed: false
+
+selection:
+  rule: NEWEST_IMMUTABLE_ELIGIBLE_CANDIDATE_NOT_AUTHORED_BY_X14_AND_NOT_PREVIOUSLY_MUTATED_AT_SAME_SOURCE_DIGEST
+  selected_source:
+    authoring_seat: X13_COTS_AND_CONNECTOR_PDCA_LAB
+    commit: dff26eeef9989f0c9af9ee88c20c845df2388d49
+    path: state/coordination/experiments/cots_connector_x13/20260802T004800Z_GOOGLE_CONTACTS_READONLY_PHASE4_DECISION.md
+    git_blob_sha1: c6cbb435c09953e7be5cdc545dcb066709025083
+    declared_event_digest_sha256: NOT_PRESENT_IN_SOURCE_FORMAT
+    source_task_id: 6a55c1733708819185088bf334e33ea5
+    source_campaign_wake: 4_of_4
+    source_decision: ADOPT_WITH_GATES
+    source_campaign_status: COMPLETE
+    source_effect_ceiling: BOUNDED_RECIPIENT_CANDIDATE_DISCOVERY_ONLY_NO_AUTO_SELECTION_NO_SEND_NO_INVITE_NO_CONTACT_WRITE_NO_ACCOUNT_OR_PERMISSION_CHANGE
+    source_verifier: S04_STRUCTURAL_PREFLIGHT_THEN_DISTINCT_NON_CHATGPT_CONNECTOR_OWNER_OR_DIRECT_SUCCESS_PATH_TRACE_REVIEWER
+    source_consumers:
+      - S05_OPERATOR_RELIEF_CELL
+      - X11_CARRIER_SURFACE_PDCA_LAB
+      - NEXT_X13_CAMPAIGN
+    source_review_expiry_utc: 2026-08-09T00:48:00Z
+  eligibility:
+    authored_by_x14: false
+    immutable_commit_bound: true
+    source_sealed: true
+    prior_x14_mutation_at_source_digest_before_write: false
+    newest_later_commit_excluded: b6493aac6386b72ddfaf97fc104c2ef8b9904d84
+    exclusion_reason: X13_CURRENT_POINTER_UPDATE_IS_A_MUTABLE_PROJECTION_NOT_THE_IMMUTABLE_PHASE4_DECISION_CANDIDATE
+  discovery_limit: >-
+    Recent-commit enumeration and GitHub code search are best-effort rather than a transactional inbox.
+    No indexed prior X14 reference to source blob c6cbb435c09953e7be5cdc545dcb066709025083 was found before write.
+
+negative_control:
+  copy_mode: QUARANTINED_OVERLAY_SOURCE_UNCHANGED
+  executable: false
+  exactly_one_source_field_mutated: true
+  mutated_field: source_blob_sha1
+  original_value: c6cbb435c09953e7be5cdc545dcb066709025083
+  mutated_value: ff965515cf05dfc127a5105a8f8328701ea9d7c9
+  mutation_semantics: >-
+    Keep the phase-4 commit and path fixed while replacing their exact blob binding with the older phase-3 blob SHA.
+    A consumer that trusts the stale digest could validate different bytes than the named phase-4 decision and silently
+    inherit superseded evidence, status, and effect-ceiling claims.
+  stale_digest_origin:
+    commit: 2d6a8d50dc440a5b29198d54d5940f2030e0b305
+    path: state/coordination/experiments/cots_connector_x13/20260801T234800Z_GOOGLE_CONTACTS_READONLY_PHASE3_SYNTHETIC_INVALID_PAGESIZE.md
+    git_blob_sha1: ff965515cf05dfc127a5105a8f8328701ea9d7c9
+  source_file_rewritten: false
+  source_current_pointer_changed_by_mutant: false
+  task_provider_record_changed: false
+  contact_provider_record_changed: false
+  world_effect_executed: false
+
+canonicalization:
+  algorithm: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_json: '{"mutated_field":"source_blob_sha1","mutated_value":"ff965515cf05dfc127a5105a8f8328701ea9d7c9","mutation_class":"STALE_SOURCE_DIGEST","original_value":"c6cbb435c09953e7be5cdc545dcb066709025083","source_commit":"dff26eeef9989f0c9af9ee88c20c845df2388d49","source_path":"state/coordination/experiments/cots_connector_x13/20260802T004800Z_GOOGLE_CONTACTS_READONLY_PHASE4_DECISION.md"}'
+  canonical_byte_count: 380
+  canonical_mutation_digest_sha256: d584beda619c1138b63ee2aa74f9ae85f46d00724b53366aaf402ed8ed452181
+
+expected_rejection:
+  expected_verdict: REVISE
+  reason_code: SOURCE_BLOB_SHA_DOES_NOT_MATCH_BOUND_COMMIT_PATH_AND_RESOLVES_TO_PRIOR_PHASE_BYTES
+  expected_rejection_reason: >-
+    The named phase-4 commit and path resolve to blob c6cbb435c09953e7be5cdc545dcb066709025083, not the mutated
+    ff965515cf05dfc127a5105a8f8328701ea9d7c9. The mutated digest belongs to the prior phase-3 probe, so accepting it
+    would detach verification from the selected immutable decision artifact and permit stale evidence substitution.
+  named_gate: S04_SOURCE_DIGEST_FRESHNESS_AND_COMMIT_PATH_BINDING_GATE
+  acceptance_condition: >-
+    S04 resolves the exact phase-4 commit and path, reads back blob c6cbb435c09953e7be5cdc545dcb066709025083,
+    independently resolves the mutated digest to the older phase-3 artifact, recomputes the 380-byte overlay and
+    SHA-256, confirms only source_blob_sha1 changed, and returns REVISE without editing either source or any provider
+    record.
+  forbidden_false_green: >-
+    Accept the mutant because both digests exist in the same campaign, because the older blob is internally valid, or
+    because the phase-4 path and commit appear plausible without exact commit-path-blob readback.
+
+routing:
+  structural_verifier: S04_STRUCTURAL_PREFLIGHT
+  direct_candidate_priority_required: true
+  distinct_verifier_requested: SIGRUN_P4_APEX_FALSIFICATION_OR_DISTINCT_NON_CHATGPT_GIT_REPOSITORY_READER
+  distinct_verifier_route_status: NOT_DIRECTLY_CALLABLE_FROM_THIS_CARRIER
+  consumer: X14_CAMPAIGN_REDUCER_AND_RATATOSKR
+  route_scope: DIRECT_MUTANT_REVIEW_NOT_POINTER_ONLY
+  expiry_utc: 2026-08-02T04:52:29Z
+
+campaign_evaluation:
+  campaign_ordinal: 7
+  decision_due: false
+  accepted_wakes: 1
+  intended_mutants_so_far: 1
+  current_mutation_class: STALE_SOURCE_DIGEST
+  next_mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+  mutant_026_direct_s04_result: PENDING
+  distinct_provider_verdicts: 0
+  evidence_class: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+
+carryover_debt:
+  campaign_6_decision: HOLD
+  mutant_022_direct_s04_result: NOT_OBSERVED
+  mutant_023_direct_s04_result: NOT_OBSERVED
+  mutant_024_direct_s04_result: REVISE
+  mutant_025_direct_s04_result: NOT_OBSERVED
+  campaign_5_debt_unresolved: true
+  debt_not_laundered_by_new_campaign: true
+
+rollback:
+  action: RETAIN_OR_IGNORE_QUARANTINE_ARTIFACT_PRESERVE_SOURCE_CURRENT_TASK_AND_CONTACT_PROVIDER_STATE_UNCHANGED
+  source_restore_required: false
+  provider_restore_required: false
+
+honest_flaw: >-
+  This assay uses a known adjacent phase-3 blob, so the mismatch is obvious once exact commit-path-blob resolution is
+  performed. It does not test subtler stale-digest failures such as abbreviated hashes, rewritten tags, cache lag,
+  concurrent pointer movement, or a stale digest that happens to describe semantically equivalent bytes. GitHub
+  discovery is best-effort, the distinct verifier is not directly callable, and all ChatGPT-carried evidence remains
+  same-provider nonbinding with weight zero.
