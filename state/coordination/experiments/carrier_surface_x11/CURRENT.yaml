@@ -1,74 +1,65 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
-experiment_id: X11_WAKE_TIMING_V1
-current_version: 44
-accepted_wakes: 4
+experiment_id: X11_WEB_RESEARCH_OFFICIAL_SOURCE_READ_V1
+current_version: 45
+accepted_wakes: 1
 target_wakes_before_decision: 4
-controlled_factor: wake_timing
-campaign_status: DECIDED
-current_disposition: RESEAT_VARIABLE
+controlled_factor: web_research
+campaign_status: RUNNING
+current_disposition: null
 prior_campaign:
-  experiment_id: X11_NATIVE_TASKS_READ_VISIBILITY_V1
-  final_version: 40
-  disposition: KEEP
+  experiment_id: X11_WAKE_TIMING_V1
+  final_version: 44
+  disposition: RESEAT_VARIABLE
   accepted_wakes: 4
 last_event:
-  commit: 886cb237f93e6495bcf616506ef113e06ecfa616
-  path: state/coordination/experiments/carrier_surface_x11/events/20260802T164107Z_WAKE_TIMING_CAMPAIGN_DECISION_WAKE_04.yaml
-  blob: c454bb12492c7ac20e18e3a54df25591faab8612
+  commit: 83b2835572419806746edf464ab84615cc0d8e97
+  path: state/coordination/experiments/carrier_surface_x11/events/20260802T173949Z_WEB_RESEARCH_OFFICIAL_SOURCE_READ_WAKE_01.yaml
+  blob: e95509ae9afee40da1db7d2ae84b81f392197e19
 baseline_result:
-  wake_1_carrier_observed_start_drift_seconds: 102
-  wake_1_drift_direction: AFTER_NOMINAL_BOUNDARY
-  wake_2_carrier_observed_start_drift_seconds: -92
-  wake_2_drift_direction: BEFORE_NOMINAL_BOUNDARY
-  wake_3_carrier_observed_start_drift_seconds: -104
-  wake_3_drift_direction: BEFORE_NOMINAL_BOUNDARY
-  wake_4_carrier_observed_start_drift_seconds: 67
-  wake_4_drift_direction: AFTER_NOMINAL_BOUNDARY
-  four_wake_sample_range_seconds: 206
-  four_wake_sample_mean_seconds: -6.75
-  four_wake_sample_median_seconds: -12.5
-  wake_4_accepted: true
-  tool_status: SUCCESS_WITH_MEASUREMENT_SCOPE_MISMATCH
-  permission_class: AUTOMATION_RUNTIME_OBSERVED_TIMESTAMP_AVAILABLE
-  error_class: WRAPPER_TIMESTAMP_SIGN_VARIANCE_CONFIRMS_MEASUREMENT_SCOPE_MISMATCH
+  wake_1_accepted: true
+  official_domain_matched: true
+  page_identity_matched: true
+  example_com_marker_present: true
+  content_type: text/html
+  authentication_requested: false
+  interactive_login_required: false
+  tool_status: SUCCESS
+  permission_class: PUBLIC_WEB_READ_AVAILABLE
+  error_class: NONE
   latency_exposed: false
   latency_ms: null
   operator_relay_minutes: 0
   task_mutation_performed: false
-  interactive_login_required: false
   sensitive_readback_externalized: false
-  changed_capability: false
+  changed_capability: true
   andon: false
-  claim_ceiling: carrier_observed_wrapper_timestamp_offset_only_not_provider_dispatch_time_queue_time_execution_duration_or_sla_compliance
+  claim_ceiling: public_official_page_open_and_marker_visibility_only_not_origin_liveness_search_completeness_freshness_or_independent_verification
 campaign_gates:
   - no_task_mutation
   - no_interactive_login
-  - persist_only_sanitized_drift_and_error_fields
-  - do_not_claim_provider_dispatch_or_queue_latency
+  - persist_only_public_page_identity_marker_and_sanitized_status
+  - no_sensitive_readback_externalization
+  - do_not_claim_live_origin_fetch_or_search_completeness
   - same_provider_binding_weight_zero
-strongest_falsifier: an_independently_timestamped_provider_dispatch_receipt_that_consistently_tracks_the_wrapper_offset_across_future_wakes
+strongest_falsifier: a_repeat_of_the_same_official_url_fails_or_loses_the_identity_or_marker_while_an_independently_timestamped_origin_fetch_succeeds
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 next_consumer:
   - Reginleif
   - Ratatoskr
-honest_flaw: only_four_wrapper_samples_were_available_and_no_independent_provider_dispatch_timestamp_was_exposed_so_the_campaign_cannot_estimate_true_scheduler_latency
+honest_flaw: the_web_surface_may_use_search_index_or_cached_extraction_and_does_not_prove_a_live_origin_fetch_general_search_completeness_freshness_raw_http_semantics_or_independent_verification
 next_factor: web_research
 next_probe:
   experiment_id: X11_WEB_RESEARCH_OFFICIAL_SOURCE_READ_V1
-  campaign_wake: 1
+  campaign_wake: 2
   mode: deterministic_official_public_web_read
-  exact_action: open_the_official_iana_reserved_domains_page_and_validate_only_the_page_identity_plus_presence_of_the_example_com_reserved_domain_marker
+  exact_action: repeat_the_official_iana_reserved_domains_page_identity_and_example_com_marker_check
   mutation_allowed: false
   sensitive_readback_externalization_allowed: false
   claim_ceiling: public_web_open_and_marker_visibility_only_not_search_completeness_freshness_or_independent_verification
-slack_action: POST_CAMPAIGN_DECISION
-updated_valid_time_utc: 2026-08-02T16:41:07Z
+slack_action: POST_CHANGED_CAPABILITY
+updated_valid_time_utc: 2026-08-02T17:39:49Z
 sealed: false
 ---
 
-Wake-timing campaign completed four accepted wrapper-offset samples: +102, -92,
--104, and +67 seconds. The sign changes and pre-boundary values make the wrapper
-timestamp unsuitable as a proxy for provider dispatch, queue, or execution-start
-latency. Disposition is RESEAT_VARIABLE. The next bounded factor is deterministic
-public web-read visibility against an official IANA reserved-domains page.
+Web-research campaign wake 1 of 4 succeeded against the official IANA reserved-domains page. The public page identity and example.com marker were visible without authentication. This is bounded evidence of public web-read visibility only; it does not establish live-origin transport, search completeness, freshness, or independent verification.
