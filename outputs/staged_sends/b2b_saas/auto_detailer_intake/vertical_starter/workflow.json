@@ -1,0 +1,16 @@
+{
+  "schema_id": "hfo.b2b.vertical_workflow.v1",
+  "status": "starter_config_unwired",
+  "vertical": "Auto detailer intake",
+  "buyer": "Owner-operator or scheduler for a mobile or single-shop detailing business",
+  "source": {"base_repo": "https://github.com/activepieces/activepieces", "commit": "8d29bbe6fdd572b15398adc67dff74b2e30d3a3d", "license": "MIT_CORE_EE_EXCLUDED"},
+  "workflow_type": "photo_intake_to_quote_schedule_followup",
+  "steps": [
+    {"id": "photo_intake", "name": "Capture the vehicle brief", "trigger": "Approved intake submission", "action": "Collect vehicle, condition, service goals, location, and required photo checklist", "output": "One reviewable estimate brief", "gate": "Owner checks image consent and service area"},
+    {"id": "pricing", "name": "Draft the package", "trigger": "Complete brief", "action": "Apply package rules and surface condition-based add-ons", "output": "Draft price and scope", "gate": "Detailer approves condition, scope, exclusions, and price"},
+    {"id": "deposit", "name": "Stage the deposit", "trigger": "Quote accepted", "action": "Prepare disabled deposit payload and cancellation terms", "output": "Deposit handoff awaiting live activation", "gate": "No charge occurs from this starter"},
+    {"id": "schedule", "name": "Reserve the job", "trigger": "External deposit receipt", "action": "Create service window with travel and weather buffer", "output": "Confirmed appointment and prep checklist", "gate": "Scheduler resolves travel and capacity conflicts"},
+    {"id": "followup", "name": "Queue the follow-up", "trigger": "Job completion", "action": "Prepare care note, review request, and seasonal rebook task", "output": "Timed customer-success tasks", "gate": "No customer message sends from this starter"}
+  ],
+  "safety": {"stripe_live_mode": false, "uploads": "not_configured", "customer_messages": "disabled", "production_customer_deploy": false}
+}

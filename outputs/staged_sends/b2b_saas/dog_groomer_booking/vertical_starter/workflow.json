@@ -1,0 +1,16 @@
+{
+  "schema_id": "hfo.b2b.vertical_workflow.v1",
+  "status": "starter_config_unwired",
+  "vertical": "Dog groomer booking",
+  "buyer": "Owner or front-desk lead at a 1-8 groomer shop",
+  "source": {"base_repo": "https://github.com/calcom/cal.com", "commit": "038381aeca6261635357957d66b8ba85cdb29737", "license": "MIT"},
+  "workflow_type": "pet_intake_to_quote_schedule_rebook",
+  "steps": [
+    {"id": "intake", "name": "Capture pet and service needs", "trigger": "Approved booking request", "action": "Collect breed, weight, coat, behavior, allergies, accommodations, and requested service", "output": "Pet-service brief with risk flags", "gate": "Groomer reviews allergies, behavior, and accommodation limits"},
+    {"id": "quote", "name": "Prepare quote and waiver", "trigger": "Reviewed brief", "action": "Apply service-duration rules and stage policy acknowledgment", "output": "Draft quote, duration, and waiver handoff", "gate": "Groomer approves price, duration, and suitability"},
+    {"id": "deposit", "name": "Stage the deposit", "trigger": "Quote accepted", "action": "Prepare disabled deposit payload and cancellation terms", "output": "Deposit request awaiting activation", "gate": "No live charge from this starter"},
+    {"id": "schedule", "name": "Reserve the right slot", "trigger": "External deposit receipt or approved exception", "action": "Match duration, groomer skill, cleanup buffer, and capacity", "output": "Confirmed appointment and prep checklist", "gate": "Calendar owner resolves conflicts"},
+    {"id": "rebook", "name": "Queue care and rebook", "trigger": "Appointment completion", "action": "Prepare coat-care note and interval-based rebooking task", "output": "Timed follow-up tasks", "gate": "No customer message sends from this starter"}
+  ],
+  "safety": {"stripe_live_mode": false, "customer_messages": "disabled", "veterinary_advice": "not_provided", "production_customer_deploy": false}
+}

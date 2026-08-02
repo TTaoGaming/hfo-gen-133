@@ -1,0 +1,16 @@
+{
+  "schema_id": "hfo.b2b.vertical_workflow.v1",
+  "status": "starter_config_unwired",
+  "vertical": "Dental appointment SMS",
+  "buyer": "Practice manager or front-desk lead at a 1-5 dentist practice",
+  "source": {"base_repo": "https://github.com/triggerdotdev/trigger.dev", "commit": "8f66af6e18b73ceaf4a8c2d198bb662a7bb85202", "license": "Apache-2.0"},
+  "workflow_type": "appointment_reminder_to_reschedule_and_balance_task",
+  "steps": [
+    {"id": "select", "name": "Select due reminders", "trigger": "Idempotent scheduled task", "action": "Read the minimum appointment token, consent state, and contact route", "output": "Privacy-minimized reminder queue", "gate": "Practice approves source system, BAA coverage, consent, and minimum fields"},
+    {"id": "remind", "name": "Prepare the reminder", "trigger": "Eligible appointment token", "action": "Render approved message without procedure or diagnosis details", "output": "SMS payload awaiting authorized provider send", "gate": "No SMS sends from this starter"},
+    {"id": "route", "name": "Route confirm or reschedule", "trigger": "Provider receipt and patient response", "action": "Apply CONFIRM, RESCHEDULE, STOP, or UNKNOWN response state", "output": "Typed front-desk task or confirmation", "gate": "Ambiguous and sensitive responses route to staff"},
+    {"id": "balance", "name": "Prepare the balance handoff", "trigger": "Confirmed visit with approved balance flag", "action": "Create a staff task for the practice's approved payment route", "output": "Pre-visit balance task", "gate": "No payment link or live charge from this starter"},
+    {"id": "followup", "name": "Close the appointment loop", "trigger": "Appointment status changes", "action": "Queue reschedule, post-visit instruction, or recall task", "output": "Typed follow-up with idempotency receipt", "gate": "Practice controls all patient-facing content"}
+  ],
+  "safety": {"stripe_live_mode": false, "sms_send": "disabled", "phi_in_message": false, "hipaa_baa": "unverified_customer_gate", "production_customer_deploy": false, "idempotency_key": "appointment_token:message_type:scheduled_date"}
+}

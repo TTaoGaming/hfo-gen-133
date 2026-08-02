@@ -1,0 +1,16 @@
+{
+  "schema_id": "hfo.b2b.vertical_workflow.v1",
+  "status": "starter_config_unwired",
+  "vertical": "Coach booking",
+  "buyer": "Independent executive, career, or business coach with 5-40 active clients",
+  "source": {"base_repo": "https://github.com/calcom/cal.com", "commit": "038381aeca6261635357957d66b8ba85cdb29737", "license": "MIT"},
+  "workflow_type": "goal_intake_to_package_billing_sessions_renewal",
+  "steps": [
+    {"id": "intake", "name": "Capture goals and fit", "trigger": "Approved discovery request", "action": "Collect outcome, constraints, timeframe, and referral source", "output": "Fit brief with decision deadline", "gate": "Coach decides fit, scope, and exclusions"},
+    {"id": "proposal", "name": "Prepare the package", "trigger": "Coach accepts fit", "action": "Merge goals, cadence, boundaries, fee, and review point", "output": "Package proposal PDF", "gate": "Coach approves claims and commercial terms"},
+    {"id": "billing", "name": "Stage billing", "trigger": "Client acceptance receipt", "action": "Prepare disabled setup or recurring payment payload", "output": "Billing handoff awaiting activation", "gate": "No live charge from this starter"},
+    {"id": "sessions", "name": "Create the cadence", "trigger": "External payment or approved exception", "action": "Reserve session series and preparation tasks", "output": "Confirmed cadence and session-note prompts", "gate": "Coach calendar remains authoritative"},
+    {"id": "renewal", "name": "Review outcomes", "trigger": "Package review point", "action": "Summarize goals, completed sessions, open actions, and next proposal task", "output": "Renew, revise, or close decision packet", "gate": "Coach approves notes, outcome claims, and renewal offer"}
+  ],
+  "safety": {"stripe_live_mode": false, "customer_messages": "disabled", "clinical_or_legal_advice": "not_provided", "production_customer_deploy": false}
+}
