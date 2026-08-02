@@ -1,0 +1,91 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_SLACK_NATIVE_MESSAGE_RECEIPT_001
+event_type: PHASE3_FAILURE_PERMISSION_PORTABILITY_CONNECTOR_VARIANCE
+phase: 3_of_4
+current_version_before: 34
+current_version_after_expected: 35
+carrier_task_id: 6a55c1733708819185088bf334e33ea5
+carrier_task_id_match: true
+candidate: Slack_native_message_send_and_thread_receipt_surface
+candidate_action: slack_read_thread
+probe_kind: PRIVACY_SAFE_SYNTHETIC_INVALID_CHANNEL_WITH_VALID_PARENT_TS_FORMAT
+probe_input_classification: SYNTHETIC_NON_SECRET
+probe_channel_id_persisted: REDACTED_SYNTHETIC_INVALID_CHANNEL
+probe_parent_ts_persisted: REDACTED_VALID_FORMAT_TS
+result: FAIL_CLOSED
+connector_error_code: channel_not_found
+connector_error_class: execution_failed
+connector_error_message_sanitized: CHANNEL_COULD_NOT_BE_FOUND_AND_MAY_NOT_EXIST_BE_IN_ANOTHER_WORKSPACE_OR_LACK_PERMISSION_DO_NOT_RETRY_UNTIL_UNDERLYING_ISSUE_IS_RESOLVED
+write_or_message_side_effect_observed: false
+new_slack_message_sent: false
+retry_attempted: false
+raw_slack_ok_field: NOT_EXPOSED
+raw_HTTP_status: NOT_EXPOSED
+raw_response_headers: NOT_EXPOSED
+request_id: NOT_EXPOSED
+retry_after: NOT_EXPOSED
+rate_limit_headers: NOT_EXPOSED
+live_identity: UNKNOWN
+live_token_type: UNKNOWN
+live_scopes: UNKNOWN
+workspace_identity: UNKNOWN
+actual_upstream_request_count: UNKNOWN
+retry_count: 0_AT_CARRIER_LEVEL_UPSTREAM_UNKNOWN
+latency_ms: NOT_EXPOSED
+paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
+quota_units: NOT_EXPOSED
+operator_relay_minutes: 0
+operator_minutes_removed_measured: 0
+fitness_credit: 0
+same_provider_binding_weight: 0
+independent_verification_closed: false
+official_contract_checked_2026_08_02:
+  conversations_replies: https://docs.slack.dev/reference/methods/conversations.replies/
+  rate_limits: https://docs.slack.dev/apis/web-api/rate-limits/
+  required_key: CHANNEL_PLUS_EXISTING_PARENT_TS
+  documented_channel_not_found_semantics: CHANNEL_VALUE_MISSING_OR_INVALID
+  documented_permission_errors_also_exist: ACCESS_DENIED_AND_NOT_IN_CHANNEL
+  documented_rate_limit_failure: HTTP_429_WITH_RETRY_AFTER
+measured_failure_behavior:
+  - INVALID_OR_UNREACHABLE_CHANNEL_READ_FAILED_CLOSED
+  - NO_PARENT_OR_THREAD_CONTENT_RETURNED
+  - NO_WRITE_OR_MESSAGE_SIDE_EFFECT
+  - WRAPPER_ADVISED_NO_RETRY_WITH_SAME_CHANNEL_UNTIL_CAUSE_RESOLVED
+connector_variance:
+  - WRAPPER_COLLAPSED_INVALID_CHANNEL_WRONG_WORKSPACE_AND_MISSING_PERMISSION_INTO_ONE HUMAN_EXPLANATION
+  - RAW_SLACK_OK_ERROR_HTTP_STATUS_HEADERS_REQUEST_ID_AND_SCOPE_CONTEXT_WERE_NOT_EXPOSED
+  - ERROR_DID_NOT_ECHO_THE_SYNTHETIC_CHANNEL_OR_PARENT_TS_IN_THE_VISIBLE_RECEIPT
+permission_inference_limit: CHANNEL_NOT_FOUND_DOES_NOT_PROVE_NONEXISTENCE_BECAUSE_WRAPPER_EXPLICITLY_INCLUDES_WRONG_WORKSPACE_OR_PERMISSION_AS_ALTERNATIVES
+portability_observation: ERROR_CODE_AND_CHANNEL_TS_ADDRESSING_ARE_SLACK_SPECIFIC_AND_WRAPPER_HUMAN_TEXT_IS_NOT_A_STABLE_MACHINE_CONTRACT
+mandatory_gates_added:
+  - TREAT_CHANNEL_NOT_FOUND_AS_AMBIGUOUS_EXISTENCE_WORKSPACE_OR_PERMISSION_FAILURE
+  - DO_NOT_BLIND_RETRY_WITH_THE_SAME_CHANNEL_ID
+  - REQUIRE_A_SEPARATE_AUTHORIZED_CHANNEL_DISCOVERY_OR_MEMBERSHIP_RECEIPT_BEFORE_CLASSIFYING_NONEXISTENCE
+  - BRANCH_ON_STABLE_CONNECTOR_ERROR_CODE_ONLY_WHEN_AVAILABLE_NOT_HUMAN_EXPLANATION_TEXT
+  - SANITIZE_CHANNEL_IDS_PARENT_TIMESTAMPS_NAMES_USER_IDS_AND_MESSAGE_CONTENT_BEFORE_PERSISTENCE
+  - ON_429_HONOR_RETRY_AFTER_BUT_DO_NOT_INFER_RATE_LIMIT_FROM_GENERIC_EXECUTION_FAILED
+strongest_falsifier: A_DISTINCT_AUTHORIZED_SLACK_CLIENT_CAN_READ_THE_SAME_SYNTHETIC_CHANNEL_OR_THE_CONNECTOR_LATER_RETURNS_THREAD_CONTENT_FOR_IT_WITHOUT_INPUT_CHANGE
+verifier: RAW_SLACK_WEB_API_OR_DISTINCT_AUTHORIZED_SLACK_CLIENT_WITH_EXPLICIT_WORKSPACE_AND_SCOPE_EVIDENCE
+consumer:
+  - X13_PHASE4_ADOPTION_DECISION
+  - HFO_SLACK_CONTROL_PLANE_READERS
+honest_flaw: THIS_TEST_USED_AN_INTENTIONALLY_INVALID_CHANNEL_AND_DID_NOT_SEPARATELY_EXERCISE_A_REAL_PRIVATE_CHANNEL_PERMISSION_DENIAL_NOT_IN_CHANNEL_ARCHIVED_CHANNEL_THREAD_NOT_FOUND_OR_HTTP_429_PATH
+next_phase:
+  phase: 4_of_4
+  action: DECISION_ONLY_NO_ADDITIONAL_SLACK_CALL_REQUIRED
+  likely_decision: ADOPT_WITH_GATES
+valid_time_utc: 2026-08-02T07:47:24Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+sealed: true
+---
+
+# X13 Slack native message and receipt — phase 3 failure and variance probe
+
+A read-only thread lookup used a synthetic invalid channel identifier and a valid Slack parent-timestamp format. The connector failed closed with `execution_failed: channel_not_found`; it returned no thread content and caused no message or write side effect.
+
+The wrapper explanation explicitly allowed three materially different causes: the channel may not exist, may belong to another workspace, or may be inaccessible to the app. Therefore this error cannot be used as proof of channel nonexistence or of a particular permission state.
+
+The visible error did not echo the submitted synthetic channel or timestamp, which is better than the earlier provider-URL leakage observed in the Contacts campaign. Raw Slack `ok`, HTTP status, response headers, request ID, token identity, scopes, workspace identity, retry metadata, and live quota class remained hidden.
+
+Decision gate: do not blindly retry `channel_not_found`; require separate channel-discovery, workspace, or membership evidence before classifying the cause. Phase 4 is decision-only.
