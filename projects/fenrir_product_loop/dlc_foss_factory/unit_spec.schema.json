@@ -1,0 +1,202 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hfo.invalid/schemas/hfo.gen133.dlc_foss_factory.unit_spec.v1.json",
+  "title": "Target-agnostic DLC-style extension unit specification",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_id",
+    "unit_id",
+    "classification",
+    "target",
+    "extension",
+    "provenance",
+    "adapters",
+    "outputs"
+  ],
+  "properties": {
+    "schema_id": {
+      "const": "hfo.gen133.dlc_foss_factory.unit_spec.v1"
+    },
+    "unit_id": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 64,
+      "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+    },
+    "classification": {
+      "enum": ["NON_PRODUCTION", "TARGET_BOUND_CANDIDATE"]
+    },
+    "target": {
+      "oneOf": [
+        {"$ref": "#/$defs/unadmitted_target"},
+        {"$ref": "#/$defs/bound_target"}
+      ]
+    },
+    "extension": {"$ref": "#/$defs/extension"},
+    "provenance": {
+      "oneOf": [
+        {"$ref": "#/$defs/unbound_provenance"},
+        {"$ref": "#/$defs/bound_provenance"}
+      ]
+    },
+    "adapters": {"$ref": "#/$defs/adapters"},
+    "outputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["landing_mode", "distribution_mode"],
+      "properties": {
+        "landing_mode": {"const": "INERT"},
+        "distribution_mode": {"const": "INERT"}
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"classification": {"const": "NON_PRODUCTION"}}},
+      "then": {
+        "properties": {
+          "target": {"$ref": "#/$defs/unadmitted_target"},
+          "provenance": {"$ref": "#/$defs/unbound_provenance"}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"classification": {"const": "TARGET_BOUND_CANDIDATE"}}},
+      "then": {
+        "properties": {
+          "target": {"$ref": "#/$defs/bound_target"},
+          "provenance": {"$ref": "#/$defs/bound_provenance"}
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "unadmitted_target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["binding_state"],
+      "properties": {"binding_state": {"const": "UNADMITTED"}}
+    },
+    "bound_target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["binding_state", "target_id", "user_job", "demand_evidence"],
+      "properties": {
+        "binding_state": {"const": "BOUND"},
+        "target_id": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 64,
+          "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+        },
+        "user_job": {"type": "string", "minLength": 1, "maxLength": 500},
+        "demand_evidence": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["permalink", "observed_on", "engagement_score", "buyer_class", "pain_statement"],
+          "properties": {
+            "permalink": {
+              "type": "string",
+              "pattern": "^https://(?:www\\.reddit\\.com/|news\\.ycombinator\\.com/|www\\.indiehackers\\.com/)"
+            },
+            "observed_on": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
+            "engagement_score": {"type": "integer", "minimum": 0},
+            "buyer_class": {"type": "string", "minLength": 1, "maxLength": 200},
+            "pain_statement": {"type": "string", "minLength": 1, "maxLength": 500}
+          }
+        }
+      }
+    },
+    "extension": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["display_name", "user_job", "material_outcome", "success_threshold"],
+      "properties": {
+        "display_name": {"type": "string", "minLength": 1, "maxLength": 120},
+        "user_job": {"type": "string", "minLength": 1, "maxLength": 500},
+        "material_outcome": {"type": "string", "minLength": 1, "maxLength": 500},
+        "success_threshold": {"type": "string", "minLength": 1, "maxLength": 500}
+      }
+    },
+    "unbound_provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["review_state", "upstream", "license", "trademark_boundary", "asset_caveats"],
+      "properties": {
+        "review_state": {"const": "UNBOUND"},
+        "upstream": {"type": "null"},
+        "license": {"type": "null"},
+        "trademark_boundary": {"const": "UNBOUND"},
+        "asset_caveats": {"type": "array", "maxItems": 0}
+      }
+    },
+    "bound_provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["review_state", "upstream", "license", "trademark_boundary", "asset_caveats"],
+      "properties": {
+        "review_state": {"const": "STRUCTURAL_ONLY"},
+        "upstream": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["repository", "ref", "commit"],
+          "properties": {
+            "repository": {"type": "string", "pattern": "^https://"},
+            "ref": {"type": "string", "minLength": 1, "maxLength": 240},
+            "commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"}
+          }
+        },
+        "license": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["path", "git_blob_sha1", "sha256", "spdx_expression", "obligations"],
+          "properties": {
+            "path": {"type": "string", "minLength": 1, "maxLength": 240},
+            "git_blob_sha1": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+            "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+            "spdx_expression": {"type": "string", "minLength": 1, "maxLength": 120},
+            "obligations": {
+              "type": "array",
+              "items": {"type": "string", "minLength": 1, "maxLength": 500}
+            }
+          }
+        },
+        "trademark_boundary": {"type": "string", "minLength": 1, "maxLength": 500},
+        "asset_caveats": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1, "maxLength": 500}
+        }
+      }
+    },
+    "adapters": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["provider", "stages", "options"],
+      "properties": {
+        "provider": {"const": "builtin.non_production"},
+        "stages": {
+          "type": "array",
+          "prefixItems": [
+            {"const": "install"},
+            {"const": "build"},
+            {"const": "test"},
+            {"const": "health"},
+            {"const": "rollback"}
+          ],
+          "minItems": 5,
+          "maxItems": 5
+        },
+        "options": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["force_health_failure", "force_rollback_failure"],
+          "properties": {
+            "force_health_failure": {"type": "boolean"},
+            "force_rollback_failure": {"type": "boolean"}
+          }
+        }
+      }
+    }
+  }
+}

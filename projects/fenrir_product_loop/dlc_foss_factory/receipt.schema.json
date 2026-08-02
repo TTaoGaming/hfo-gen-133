@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hfo.invalid/schemas/hfo.gen133.dlc_foss_factory.receipt.v1.json",
+  "title": "Content-addressed maker-local lifecycle receipt",
+  "description": "The SHA-256 of the exact canonical JSON bytes is the containing sha256/<digest>/receipt.json directory name.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_id", "authority", "unit", "status", "claim", "events", "stage_results", "rollback_result", "remaining_risk", "honest_flaw", "next_safe_action"],
+  "properties": {
+    "schema_id": {"const": "hfo.gen133.dlc_foss_factory.receipt.v1"},
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "controller_branch", "controller_commit", "contract_commit", "contract_path", "contract_blob", "route_state"],
+      "properties": {
+        "repository": {"const": "TTaoGaming/hfo-gen-133"},
+        "controller_branch": {"const": "agent/fenrir-product-control-20260802"},
+        "controller_commit": {"const": "61314978a4dd1b53eeef3086e6d145b3552bf75a"},
+        "contract_commit": {"const": "ca4c613e20dc99b79071aae0c99cc271620da782"},
+        "contract_path": {"const": "projects/fenrir_product_loop/DLC_FOSS_FACTORY_CONTROL_V1.md"},
+        "contract_blob": {"const": "44ad12f2b01337ed3f872751252e836f3a0dbf7d"},
+        "route_state": {"const": "SCAFFOLD_ONLY_TARGET_UNADMITTED"}
+      }
+    },
+    "unit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["unit_id", "unit_spec_sha256", "artifact_manifest_sha256"],
+      "properties": {
+        "unit_id": {"type": "string", "minLength": 1},
+        "unit_spec_sha256": {"$ref": "#/$defs/sha256"},
+        "artifact_manifest_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "status": {
+      "type": "string",
+      "pattern": "^(LOCAL_REGRESSION_PASS|(ROLLED_BACK|ROLLBACK_FAILED)_AFTER_(INSTALL|BUILD|TEST|HEALTH)_FAILURE)$"
+    },
+    "claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["verification_scope", "verifier_relationship", "independent_verification", "target_admitted", "pilot_ready", "production_ready", "result"],
+      "properties": {
+        "verification_scope": {"const": "LOCAL_REGRESSION"},
+        "verifier_relationship": {"const": "MAKER_LOCAL_SAME_IMPLEMENTATION"},
+        "independent_verification": {"const": false},
+        "target_admitted": {"const": false},
+        "pilot_ready": {"const": false},
+        "production_ready": {"const": false},
+        "result": {"enum": ["PASS", "FAIL"]}
+      }
+    },
+    "events": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/event"}},
+    "stage_results": {"type": "array", "minItems": 1, "maxItems": 4, "items": {"$ref": "#/$defs/stage"}},
+    "rollback_result": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/stage"}]},
+    "remaining_risk": {"type": "string", "minLength": 1},
+    "honest_flaw": {"type": "string", "minLength": 1},
+    "next_safe_action": {"type": "string", "minLength": 1}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "event": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["seq", "event_id", "type", "prev_event_sha256", "payload", "event_sha256"],
+      "properties": {
+        "seq": {"type": "integer", "minimum": 1},
+        "event_id": {"type": "string", "minLength": 1},
+        "type": {"type": "string", "minLength": 1},
+        "prev_event_sha256": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/sha256"}]},
+        "payload": {"type": "object"},
+        "event_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "stage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["adapter_id", "adapter_stub_sha256", "stage", "argv", "cwd", "timeout_seconds", "exit_code", "timed_out", "executor_error", "output_redacted", "ok", "stdout", "stdout_sha256", "stderr", "stderr_sha256"],
+      "properties": {
+        "adapter_id": {"const": "builtin.non_production"},
+        "adapter_stub_sha256": {"$ref": "#/$defs/sha256"},
+        "stage": {"enum": ["install", "build", "test", "health", "rollback"]},
+        "argv": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "cwd": {"const": "."},
+        "timeout_seconds": {"const": 30},
+        "exit_code": {"oneOf": [{"type": "integer"}, {"type": "null"}]},
+        "timed_out": {"type": "boolean"},
+        "executor_error": {"oneOf": [{"type": "string"}, {"type": "null"}]},
+        "output_redacted": {"type": "boolean"},
+        "ok": {"type": "boolean"},
+        "stdout": {"type": "string"},
+        "stdout_sha256": {"$ref": "#/$defs/sha256"},
+        "stderr": {"type": "string"},
+        "stderr_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    }
+  }
+}
