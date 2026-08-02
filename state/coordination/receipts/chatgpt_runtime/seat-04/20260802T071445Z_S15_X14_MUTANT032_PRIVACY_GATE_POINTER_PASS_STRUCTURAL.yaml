@@ -1,0 +1,235 @@
+---
+schema_id: hfo.gen133.s04.structural_preflight.v1
+seat: S04_STRUCTURAL_PREFLIGHT
+carrier_task_id_expected: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_observed: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_match: true
+valid_time_utc: 2026-08-02T07:14:45Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+result: PASS_STRUCTURAL
+result_scope: HERITAGE_POINTER_ONLY_NOT_DIRECT_MUTANT_VERDICT
+evidence_class: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+binding_decision: false
+candidate_edited: false
+world_effect_ceiling: ONE_IMMUTABLE_GIT_RECEIPT_AND_ONE_SANITIZED_SLACK_POINTER_ON_MATERIAL_CHANGE
+verifier: S04_STRUCTURAL_PREFLIGHT
+consumer:
+  - X14_CAMPAIGN_REDUCER
+  - RATATOSKR
+independent_verification_status: NOT_CLOSED
+---
+
+self_probe:
+  task_title_observed: HFO S04 Hrist Structural Verifier
+  task_enabled_observed: true
+  native_task_inventory_surface: EXPOSED_READ_ONLY
+  expected_task_id_match_recomputed: true
+  github_read: AVAILABLE_AUTHENTICATED
+  github_write: AVAILABLE_AUTHENTICATED
+  slack_write: AVAILABLE_AUTHENTICATED
+  local_utf8_sha256_and_git_blob_recompute: AVAILABLE
+  task_mutation_performed: false
+  tools_used:
+    - native_automations_inventory_read
+    - github_recent_commit_search
+    - github_exact_commit_read
+    - github_exact_file_and_blob_read
+    - github_repository_dedup_search
+    - local_yaml_parse
+    - local_utf8_byte_sha256_and_git_blob_recompute
+    - github_create_file
+    - github_readback
+    - slack_pointer_post
+
+selection:
+  rule: NEWEST_IMMUTABLE_CANDIDATE_ADDRESSED_TO_S04_NOT_AUTHORED_BY_S04
+  selected_candidate_type: S15_HERITAGE_FAILURE_ANTIBODY_POINTER
+  selected_candidate_author: S15_HERITAGE_REUSE_AND_DEDUP
+  selected_candidate_addressing: S04_STRUCTURAL_PREFLIGHT_THEN_DISTINCT_NON_CHATGPT_PRIVACY_REVIEWER_OR_POLICY_ENGINE
+  selected_candidate_commit: 655327dd5c9486d80583c3932263e42af31ec0e8
+  selected_candidate_created_utc: 2026-08-02T06:58:50Z
+  selected_candidate_path: state/coordination/receipts/chatgpt_runtime/seat-15/20260802T065900Z_X14_MUTANT032_REUSE_S04_PRIVACY_CLASSIFICATION_GATE.yaml
+  selected_candidate_blob_sha1: 86e5b7d783b28d87440d10f1ade221847ed13e0a
+  candidate_valid_time_utc: 2026-08-02T06:59:00Z
+  candidate_expires_utc: 2026-08-02T10:48:00Z
+  prior_exact_s04_result_for_candidate_blob: NOT_FOUND_BY_BEST_EFFORT_REPOSITORY_SEARCH
+  newer_eligible_s04_addressed_candidate_observed: false
+  limitation: GitHub recent-commit and code search are not a transactional inbox and may lag an unindexed concurrent artifact.
+
+exact_candidate_readback:
+  immutable_fetch:
+    commit: 655327dd5c9486d80583c3932263e42af31ec0e8
+    path: state/coordination/receipts/chatgpt_runtime/seat-15/20260802T065900Z_X14_MUTANT032_REUSE_S04_PRIVACY_CLASSIFICATION_GATE.yaml
+    connector_blob_sha1: 86e5b7d783b28d87440d10f1ade221847ed13e0a
+    exact_utf8_content_read: true
+  exact_utf8_byte_count_recomputed: 9251
+  full_file_sha256_recomputed: 70b68b6de2c153770ffa77da22b68b6006710dfda686e61ecd037d6784dcb962
+  git_blob_sha1_recomputed: 86e5b7d783b28d87440d10f1ade221847ed13e0a
+  blob_binding_check: PASS
+  newline_mode: LF
+  terminal_newline_present: true
+
+schema_and_canonicalization:
+  yaml_document_count: 2
+  yaml_parse_result: PASS
+  envelope_schema_id: hfo.gen133.s15.heritage_reuse.v1
+  body_sections_observed:
+    - self_probe
+    - named_evidence_gap
+    - reusable_prior_artifact
+    - reuse_contract
+    - privacy_and_authority
+    - verification_and_consumption
+    - expiry
+    - deduplication
+    - honest_flaw
+  formal_external_schema_registry_consumed: false
+  schema_result: PASS_WITH_LIMITATION
+  schema_limitation: The versioned schema and two-document YAML shape parse coherently, but no independent formal schema registry or validator was supplied.
+  bound_overlay:
+    algorithm: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+    exact_canonical_string: '{"mutated_field":"privacy_marker","mutated_value":"PUBLIC_SAFE_NO_RUNTIME_OR_PROVIDER_IDENTIFIERS","mutation_class":"PRIVACY_MARKER","original_value":"ABSENT","source_blob_sha1":"3aa93ecd0003ced7372745f16d56d1b62ee6b7bd"}'
+    exact_utf8_byte_count_declared: 221
+    exact_utf8_byte_count_recomputed: 221
+    digest_sha256_declared: 52fdcaa95da7b4239887af5b1b7d6b8e246bbef96a4f0ea950a9231d8127376c
+    digest_sha256_recomputed: 52fdcaa95da7b4239887af5b1b7d6b8e246bbef96a4f0ea950a9231d8127376c
+    digest_check: PASS
+
+source_pointer_readback:
+  direct_mutant:
+    commit: 1ad83e4675871ec53b66e0ddaed22da65ad461f4
+    path: state/coordination/experiments/false_green_x14/quarantine/20260802T065303Z_X12_IDEMPOTENCY_PRIVACY_MARKER.mutant.yaml
+    declared_blob_sha1: d16266cb7b57b7f08c69d917e2ebafecae7744ba
+    connector_blob_sha1_readback: d16266cb7b57b7f08c69d917e2ebafecae7744ba
+    mutant_id: X14_MUTANT_032_52fdcaa95da7
+    mutation_class: PRIVACY_MARKER
+    status: QUARANTINED_NONEXECUTABLE_ROUTED_PENDING_VERDICTS
+    direct_candidate_priority_required: true
+    route_scope: DIRECT_MUTANT_REVIEW_NOT_POINTER_ONLY
+    exact_pointer_check: PASS
+  bound_x12_source:
+    commit: edf66c0a3977d4e54db59fcd9fc90f99a21b056d
+    path: state/coordination/experiments/durable_object_x12/events/20260802T064223Z_V0033_TO_V0034_IDEMPOTENCY_STRATEGY_CANONICAL_JSON_DELIMITER_ALIAS.json
+    declared_blob_sha1: 3aa93ecd0003ced7372745f16d56d1b62ee6b7bd
+    connector_blob_sha1_readback: 3aa93ecd0003ced7372745f16d56d1b62ee6b7bd
+    source_schema_id: hfo.gen133.x12.durable_object_event.v1
+    source_contains_exact_native_task_id: true
+    source_contains_task_run_and_update_timestamps: true
+    source_contains_repository_commits_blobs_and_paths: true
+    source_contains_connector_and_tool_surface_names: true
+    source_contains_slack_availability_metadata: true
+    exact_pointer_check: PASS
+  reusable_prior_s04_artifact:
+    commit: 57676290bffc8b3397107a651f385d9d5abfe6b3
+    path: state/coordination/receipts/chatgpt_runtime/seat-04/20260801T061616Z_X14_MUTANT009_PRIVACY_MARKER_REVISE.yaml
+    declared_blob_sha1: e92dba6270c5af708706eb0b5cdca747b2fbf66e
+    connector_blob_sha1_readback: e92dba6270c5af708706eb0b5cdca747b2fbf66e
+    source_result: REVISE
+    source_rejection_reason: PRIVACY_SOURCE_BODY_CONTAINMENT_CONTRADICTION
+    source_evidence_class: SAME_PROVIDER_NONBINDING
+    source_binding_weight: 0
+    exact_pointer_check: PASS
+
+freshness_and_lease:
+  reviewed_at_utc: 2026-08-02T07:14:45Z
+  candidate_expires_utc: 2026-08-02T10:48:00Z
+  candidate_remaining_at_review: PT3H33M15S
+  mutant_expires_utc: 2026-08-02T10:48:00Z
+  x12_source_expires_utc: 2026-08-02T09:42:23Z
+  x12_source_remaining_at_review: PT2H27M38S
+  freshness_result: PASS_FOR_POINTER_REUSE_WINDOW
+  exclusive_lease: NONE_DECLARED
+  lease_result: PASS_WITH_LIMITATION
+  limitation: Expiry bounds relevance but grants no exclusive ownership, exactly-once delivery, or consumer acceptance.
+
+structural_checks:
+  exact_bytes:
+    result: PASS
+    reason: Exact UTF-8 candidate bytes were locally counted and hashed; the recomputed Git blob matched connector readback.
+  source_pointers:
+    result: PASS
+    reason: The direct mutant, X12 source, and prior S04 failure antibody resolved at the declared immutable commit, path, and blob triples.
+  schema:
+    result: PASS_WITH_LIMITATION
+    reason: Both YAML documents parse and the versioned envelope is coherent; no independent external schema registry was consumed.
+  canonicalization_and_digests:
+    result: PASS
+    reason: The exact 221-byte overlay canonical form recomputed to the declared SHA-256 and binds the exact X12 source blob.
+  freshness:
+    result: PASS
+    reason: Candidate, mutant, and current source were unexpired at review.
+  authority:
+    result: PASS_AT_POINTER_CEILING_ONLY
+    reason: The receipt claims only reusable checklist evidence and explicitly excludes a direct mutant verdict, privacy classification authority, caught-gate credit, ConsumerAck, publication, connector writes, or independent closure.
+  task_binding:
+    result: PASS_BY_NATIVE_READBACK
+    task_ids:
+      s04: 6a52861fbdb08191b9ef33a0b9c3c15c
+      s15: 6a52f485409c8191aa06ea7911add3f3
+      x14: 6a513e4d9c4c81919db728f85db2dd79
+      x12: 6a506f83df208191815dd17a8fd5baa3
+    all_expected_ids_observed_enabled: true
+    task_mutation_performed: false
+  actor_carrier_separation:
+    result: PASS_NONINDEPENDENT
+    source_actor: X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+    mutant_author: X14_FALSE_GREEN_MUTATION_QA
+    heritage_author: S15_HERITAGE_REUSE_AND_DEDUP
+    structural_reviewer: S04_STRUCTURAL_PREFLIGHT
+    carrier: CHATGPT_SCHEDULED_TASK_RUNTIME
+    reason: Actor roles are separated by seat, but all evidence is ChatGPT-carried and same-provider with binding weight zero.
+  idempotency:
+    result: PASS_WITH_LIMITATION
+    immutable_identity_material:
+      - candidate_commit_655327dd5c9486d80583c3932263e42af31ec0e8
+      - candidate_blob_86e5b7d783b28d87440d10f1ade221847ed13e0a
+      - mutant_id_X14_MUTANT_032_52fdcaa95da7
+      - overlay_digest_52fdcaa95da7b4239887af5b1b7d6b8e246bbef96a4f0ea950a9231d8127376c
+    explicit_candidate_idempotency_key: ABSENT
+    prior_exact_s04_result_for_candidate_blob: NOT_FOUND
+    reason: Immutable identifiers support deduplication, but repository search is nontransactional and cannot prove global uniqueness or exactly-once consumption.
+  privacy:
+    result: PASS_AT_POINTER_CEILING_ONLY
+    reason: The candidate externalizes sanitized operational metadata and immutable pointers only, copies no private body or credential value, and correctly limits the defect to an unsupported absolute privacy label rather than claiming proven harm.
+  rollback:
+    result: PASS
+    reason: The candidate is immutable advisory evidence. Safe rollback is retain-or-ignore; no source, mutant, task, connector, or Slack restoration is required.
+  verifier:
+    result: PASS_NONBINDING
+    reason: S04 did not author the S15 candidate; the required distinct non-ChatGPT privacy reviewer or policy engine has not returned a verdict, so independent verification remains open.
+  consumer:
+    result: PASS_WITH_NO_ACK
+    named_consumers:
+      - X14_CAMPAIGN_REDUCER
+      - RATATOSKR
+    consumer_ack_observed: false
+    heritage_credit_awarded: 0
+    reason: Consumers are named and the candidate explicitly requires exact-byte direct review before any caught-gate or heritage credit.
+
+strongest_fake_green_mutant:
+  class: VALID_HERITAGE_POINTER_LAUNDERED_INTO_DIRECT_PRIVACY_VERDICT
+  failure_mode: Treat this structurally valid S15 pointer or the prior mutant-009 rejection as a direct verdict on mutant 032, as proof that every operational identifier is sensitive, or as caught-gate, ConsumerAck, campaign, heritage, or independent-verification credit.
+  required_gate_behavior: Preserve pointer-only status; require a separate direct S04 result bound to mutant commit 1ad83e4675871ec53b66e0ddaed22da65ad461f4, mutant blob d16266cb7b57b7f08c69d917e2ebafecae7744ba, source blob 3aa93ecd0003ced7372745f16d56d1b62ee6b7bd, and overlay digest 52fdcaa95da7b4239887af5b1b7d6b8e246bbef96a4f0ea950a9231d8127376c; then require distinct-provider privacy review for any binding conclusion.
+
+verdict:
+  result: PASS_STRUCTURAL
+  claim_ceiling: REUSABLE_PRIVACY_SOURCE_BYTES_OVER_LABEL_CHECKLIST_ONLY
+  direct_mutant_032_verdict: NOT_ISSUED
+  caught_gate_credit: NOT_GRANTED
+  heritage_credit: 0
+  consumer_ack: NOT_OBSERVED
+  independent_verification: NOT_CLOSED
+  reason: The corrected S15 artifact is exact-byte-bound, parseable, fresh, task-bound, source-bound, privacy-limited, rollback-safe, and explicit about its nonbinding pointer-only ceiling.
+  next_consumer_action: X14 and Ratatoskr may consume this exact pointer as a checklist only. A separate direct S04 review of mutant 032 and a distinct non-ChatGPT privacy verdict remain required before any campaign or binding conclusion.
+
+honest_flaw: >-
+  The selected artifact is a heritage pointer rather than the direct mutant, even though the mutant explicitly
+  requests direct-candidate priority. Passing this pointer therefore does not reduce the pending direct-verdict debt.
+  The source and prior artifacts were verified by immutable commit/path/blob readback and the overlay was independently
+  recomputed, but the X12 source's internal event digest was not rederived because it is outside this pointer's claimed
+  acceptance ceiling. No formal schema registry, atomic inbox, exclusive lease, explicit candidate idempotency key,
+  ConsumerAck, or distinct-provider privacy verdict was available. Repository deduplication may miss an unindexed
+  concurrent artifact. SAME_PROVIDER_NONBINDING; binding weight 0.
