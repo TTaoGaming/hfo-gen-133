@@ -1,0 +1,164 @@
+---
+schema_id: hfo.gen133.s03.reducer_route.v1
+seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+result: REVISE
+reason_code: REPAIRED_SUCCESSOR_AND_FRESH_STRUCTURAL_PREFLIGHT_MISSING
+terminal: false
+work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_001
+correlation_id: SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_001
+carrier_task_id_expected: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_observed: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_match: true
+valid_time_utc: 2026-08-02T04:07:06Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+wip: 1
+evidence_class: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+effect_ceiling: ONE_IMMUTABLE_GIT_ROUTE_RECEIPT_AND_ONE_SANITIZED_SLACK_POINTER
+privacy_ceiling: PUBLIC_REPOSITORY_METADATA_AND_SANITIZED_BINDINGS_ONLY
+sealed: true
+---
+
+self_probe:
+  task_id_match: true
+  task_enabled_observed: true
+  tools_used:
+    - native_automations_inventory_read_only
+    - github_recent_commit_enumeration
+    - github_exact_file_and_blob_readback
+    - github_dedup_search
+    - slack_public_changed_evidence_search
+    - github_immutable_create_and_readback
+  shell_or_checkout: unavailable
+  browser_runtime: unavailable
+  direct_distinct_provider_ingress: unavailable
+  task_mutation_performed: false
+  producer_work_performed: false
+  self_verification_performed: false
+
+selection:
+  selected_correlation_id: SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_001
+  changed_since_prior_s03_wake:
+    - S02 claim admitted
+    - S04 returned REVISE
+    - S06 compiled HOLD and did not dispatch
+    - S07 returned HOLD without branch or tests
+    - S15 routed a partial supersession template
+  duplicate_prior_s03_receipt_for_exact_correlation: false
+  search_limit: GitHub and Slack search are nontransactional and may lag.
+
+claim_binding:
+  claim_id: S02_SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_20260802T030315Z
+  commit: b1c258f58e4c7cb71c2bf57533c041a654826cac
+  path: projects/spatial-app-factory/claims/20260802T030315Z_SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE.claim.yaml
+  blob: e4a9458029748fee86e806246456fec6c4e966e1
+  acceptance_sha256: 99e7816ebbb6e60b74d3fb19329ac387cfe797ae2f1e614cb27d3958b04cdeff
+  idempotency_key: e57452d13e57a0fd6977707c10ad825946380e29dd363eb4a1b00f3cd3ab4be1
+  producer_return_due_utc: 2026-08-02T06:03:15Z
+  lease_expires_utc: 2026-08-02T07:03:15Z
+  effect_ceiling: BRANCH_FILE_TEST_ON_DEDICATED_AGENT_BRANCH_ONLY
+  rollback: PRESERVE_BRANCH_AND_IMMUTABLE_RECEIPTS_DO_NOT_MERGE_OR_DELETE
+
+changed_evidence:
+  structural_preflight:
+    result: REVISE
+    commit: 94add0f14c44d90a8c6a7dbc853cfc00ca0cad42
+    path: state/coordination/receipts/chatgpt_runtime/seat-04/20260802T031017Z_S02_2048_DIRECTIONAL_BRIDGE_CLAIM_BINDING_REVISE.yaml
+    blob: b0d5871c6eb66e5f2829993551163693db1eb8a8
+    reason_code: DOWNSTREAM_TASK_BINDINGS_AND_WIP_CLEARANCE_EVIDENCE_INCOMPLETE
+    binding_weight: 0
+  compiler_hold:
+    result: HOLD
+    commit: 83733c9658ad3d7eaf38a56378c4104239bd90a9
+    path: projects/spatial-app-factory/dispatch/20260802T032416Z_SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_HOLD.executor.yaml
+    blob: ca00da48d75b9db66aace9582d8f0973ba2c8e55
+    routing_status: NOT_ROUTED
+  producer_hold:
+    result: HOLD
+    commit: b9ee3ae65a257e5e096bc376fb33ecba87c92850
+    path: state/coordination/receipts/chatgpt_runtime/seat-07/20260802T032800Z_SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_STRUCTURAL_REPAIR_HOLD.yaml
+    blob: 75f47b3faf64c9415814f850814b0328bdd363aa
+    branch_created: false
+    target_files_changed: []
+    commands_run: []
+    tests_run: []
+  heritage_repair_template:
+    status: ROUTED_NOT_CONSUMED
+    commit: 7a35ddb44f8353c81bedd335f5f418fe492a0633
+    path: state/coordination/receipts/chatgpt_runtime/seat-15/20260802T035600Z_SPATIAL_2048_REUSE_S02_EXPLICIT_SUPERSESSION_TEMPLATE.yaml
+    blob: 450113fd7b3b677c7cfab5176915a5af1772f784
+    supported_ceiling: PARTIAL_REPAIR_TEMPLATE_FOR_EXPLICIT_SUPERSESSION_AND_TASK_BINDING
+    excluded_ceiling: WIP_CLEARANCE_PROOF_OR_STRUCTURAL_PASS
+
+exact_task_bindings_observed:
+  s02_admission_pull: 6a55088a3d308191ac1cda97221f0957
+  s06_packet_compiler: 6a57972b9df081918680ce67c4ecb197
+  s07_producer: 6a506f6dc5c08191b95f1707d7f00c2d
+  s04_structural_preflight: 6a52861fbdb08191b9ef33a0b9c3c15c
+  s03_reducer: 6a539fc5130c81918c13624739fb2a60
+  limitation: Same-provider inventory observations are structural inputs with binding weight zero.
+
+reducer_findings:
+  real_producer_return_present: false
+  producer_digest_present: false
+  exact_branch_or_build_readback_present: false
+  commands_exit_codes_and_outputs_present: false
+  distinct_digest_bound_verdict_present: false
+  slack_stood_search_result: NO_MATCH_OBSERVED
+  slack_fell_search_result: NO_MATCH_OBSERVED
+  explicit_named_consumer_ack_present: false
+  terminal_receipt_permitted: false
+
+revision_request:
+  owner: S02_ADMISSION_PULL_OR_AUTHORIZED_CLAIM_REPAIR_OWNER
+  required_output: ONE_IMMUTABLE_REPAIRED_SUCCESSOR_BEFORE_CURRENT_LEASE_EXPIRY
+  must_bind:
+    - exact original claim commit path blob acceptance digest and lease
+    - exact expired prior claim commit path blob acceptance digest and lease
+    - explicit supersession limited to the expired lease route and contract
+    - exact S06 S07 S04 and S03 task IDs alongside actor roles
+    - immutable cursor-bound evidence for no claim-bound producer return
+    - immutable cursor-bound evidence for no active conflicting parent-root WIP
+    - unchanged repository base allowed paths budget rollback privacy and effect ceilings
+    - one fresh idempotency key and explicit stale-or-duplicate rejection behavior
+  must_not_claim:
+    - implementation or test execution
+    - browser compatibility
+    - structural pass from this S03 receipt
+    - independent verification
+    - implicit ConsumerAck
+
+verification_route:
+  next_verifier: S04_STRUCTURAL_PREFLIGHT
+  verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  verifier_class: NONPRODUCER_SAME_PROVIDER_PREFLIGHT
+  route_condition: REVIEW_ONLY_THE_EXACT_REPAIRED_SUCCESSOR_BYTES
+  required_result_before_producer_route: PASS_STRUCTURAL_OR_EXPLICIT_AUTHORIZED_SUPERSEDING_ROUTE
+  independent_verifier_after_producer_return: AUTHORIZED_BROWSER_CAPABLE_DISTINCT_PROVIDER_OR_NONPRODUCER
+  distinct_verifier_gate: EXACT_PRODUCER_DIGEST_BOUND_STOOD_OR_FELL
+  current_independent_route_status: BLOCKED_PENDING_REPAIRED_SUCCESSOR_AND_REAL_PRODUCER_RETURN
+
+consumer_gate:
+  after_stood_required_consumer: SPATIAL_APP_FACTORY_BACKLOG_OWNER
+  reducer: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  consumer_ack_rule: EXPLICIT_NAMED_POST_STOOD_ACK_BOUND_TO_WORKITEM_AND_PRODUCER_DIGEST
+  implicit_ack_allowed: false
+
+expiry:
+  repair_learn_by_utc: 2026-08-02T06:03:15Z
+  route_expires_utc: 2026-08-02T07:03:15Z
+  on_expiry_without_repaired_successor: HOLD_WITHOUT_SILENT_EXTENSION_OR_DUPLICATE_CLAIM
+
+strongest_falsifier: >-
+  A newer exact repaired successor, producer return, distinct digest-bound STOOD or FELL, or explicit
+  ConsumerAck already exists at a commit or source-system cursor missed by connector search. Exact
+  immutable readback of such evidence supersedes this REVISE; prose, task existence, or Slack routing does not.
+
+honest_flaw: >-
+  S03 cannot prove repository-wide absence transactionally and has no checkout, shell, browser, or direct
+  distinct-provider ingress. This receipt routes a bounded repair and nonproducer preflight only. It proves
+  no implementation infeasibility, compatibility, execution, independent verdict, consumption, or closure.
+---
