@@ -1,73 +1,70 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
-experiment_id: X11_WEB_RESEARCH_OFFICIAL_SOURCE_READ_V1
-current_version: 48
-accepted_wakes: 4
+experiment_id: X11_GMAIL_METADATA_READ_VISIBILITY_V1
+current_version: 49
+accepted_wakes: 1
 target_wakes_before_decision: 4
-controlled_factor: web_research
-campaign_status: DECIDED
-current_disposition: KEEP
+controlled_factor: gmail_read_surface
+campaign_status: ACTIVE
+current_disposition: null
 prior_campaign:
-  experiment_id: X11_WAKE_TIMING_V1
-  final_version: 44
-  disposition: RESEAT_VARIABLE
+  experiment_id: X11_WEB_RESEARCH_OFFICIAL_SOURCE_READ_V1
+  final_version: 48
+  disposition: KEEP
   accepted_wakes: 4
 last_event:
-  commit: 7853ceb5448ff8806310a2f9c458fe676089a905
-  path: state/coordination/experiments/carrier_surface_x11/events/20260802T204143Z_WEB_RESEARCH_OFFICIAL_SOURCE_READ_WAKE_04_DECISION.yaml
-  blob: e6e97671b93f860250379335832cf0a68423197c
+  commit: 52b6d4533c75586ee83848b2d90ba73278a62a34
+  path: state/coordination/experiments/carrier_surface_x11/events/20260802T214058Z_GMAIL_METADATA_READ_VISIBILITY_WAKE_01.yaml
+  blob: 1da5081456fa09e6a0db2cf0e12528a2c96f3198
 baseline_result:
   wake_1_accepted: true
-  wake_2_accepted: true
-  wake_3_accepted: true
-  wake_4_accepted: true
-  official_domain_matched: true
-  page_identity_matched: true
-  example_com_marker_present: true
-  content_type: text/html
+  tool_status: SUCCESS
+  match_count: 0
+  next_page_token_present: false
   authentication_requested: false
   interactive_login_required: false
-  tool_status: SUCCESS
-  permission_class: PUBLIC_WEB_READ_AVAILABLE
-  error_class: NONE
-  latency_exposed: false
-  latency_ms: null
-  operator_relay_minutes: 0
+  content_read: false
+  identifiers_externalized: false
   task_mutation_performed: false
   sensitive_readback_externalized: false
-  changed_capability: false
+  changed_capability: true
   andon: false
-  claim_ceiling: repeated_public_official_page_open_and_marker_visibility_only_not_origin_liveness_search_completeness_freshness_or_independent_verification
+  permission_class: CONNECTED_GMAIL_METADATA_SEARCH_AVAILABLE
+  error_class: NONE
+  latency_exposed: true
+  latency_ms: 337
+  operator_relay_minutes: 0
+  claim_ceiling: connected_gmail_exact_query_execution_and_sanitized_zero_match_visibility_only_not_mailbox_completeness_content_access_or_independent_verification
 campaign_gates:
   - no_task_mutation
   - no_interactive_login
-  - persist_only_public_page_identity_marker_and_sanitized_status
+  - exact_impossible_message_id_query_only
+  - persist_only_sanitized_status_count_and_latency
+  - no_content_readback
   - no_sensitive_readback_externalization
-  - do_not_claim_live_origin_fetch_or_search_completeness
   - same_provider_binding_weight_zero
-strongest_falsifier: a_repeat_of_the_same_official_url_fails_or_loses_the_identity_or_marker_while_an_independently_timestamped_origin_fetch_succeeds
+strongest_falsifier: the_same_exact_impossible_message_id_query_returns_a_nonzero_match_or_permission_failure_while_an_independently_authenticated_gmail_api_call_returns_zero
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 next_consumer:
   - Reginleif
   - Ratatoskr
-honest_flaw: the_web_surface_may_use_search_index_or_cached_extraction_and_does_not_prove_a_live_origin_fetch_general_search_completeness_freshness_raw_http_semantics_or_independent_verification
-decision_basis: four_of_four_bounded_repeats_exposed_the_official_page_identity_and_example_com_marker_without_authentication_or_permission_error
-decision_scope: keep_only_for_bounded_public_page_identity_and_marker_checks
+honest_flaw: an_exact_zero_result_proves_only_that_the_connector_accepted_and_executed_this_query_path_not_mailbox_inventory_completeness_content_visibility_general_search_semantics_or_independent_verification
 next_factor: gmail_read_surface
 next_probe:
   experiment_id: X11_GMAIL_METADATA_READ_VISIBILITY_V1
-  campaign_wake: 1
-  mode: deterministic_metadata_only_exact_message_id_miss_query
-  exact_action: search_gmail_for_exact_impossible_rfc822_message_id_and_persist_only_tool_status_permission_class_and_match_count
-  query: rfc822msgid:<hfo-x11-6a55089a9adc8191bda54541f7f9effa@invalid.example>
+  campaign_wake: 2
+  mode: repeat_identical_exact_message_id_miss_query
+  query_operator: rfc822msgid
+  message_id_local_part_template: hfo-x11-{expected_task_id}
+  message_id_domain: invalid.example
   expected_match_count: 0
   mutation_allowed: false
   sensitive_readback_externalization_allowed: false
   interactive_login_allowed: false
   claim_ceiling: gmail_search_visibility_and_sanitized_match_count_only_not_inventory_completeness_or_independent_verification
-slack_action: POST_CAMPAIGN_DECISION_AFTER_GIT_READBACK
-updated_valid_time_utc: 2026-08-02T20:41:43Z
+slack_action: POST_CHANGED_CAPABILITY_AFTER_GIT_READBACK
+updated_valid_time_utc: 2026-08-02T21:40:58Z
 sealed: false
 ---
 
-Web-research campaign wake 4 of 4 reproduced the prior three bounded results against the official IANA reserved-domains page. Disposition KEEP is limited to public page identity and marker checks and does not establish live-origin transport, raw HTTP behavior, search completeness, freshness, or independent verification. The next factor is Gmail metadata-read visibility with an exact impossible Message-ID query and sanitized persistence only.
+Gmail metadata-read campaign wake 1 of 4 accepted. The precommitted exact impossible RFC822 Message-ID query returned zero identifiers without interactive login, permission error, content readback, or mutation. The claim remains limited to bounded connector-query execution and sanitized match-count visibility.
