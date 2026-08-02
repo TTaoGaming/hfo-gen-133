@@ -1,0 +1,42 @@
+receipt_version: "gen133.s05.v1"
+receipt_id: "20260802T111452Z_AMAZON_SHIPMENT_STATUS_RECONCILED"
+immutable: true
+seat: "S05"
+carrier: "operator-relief"
+expected_task_id: "6a55c182078c8191b89f2dd15f5f640c"
+canonical_branch: "agent/gen133-bootstrap-20260730"
+observed_at_utc: "2026-08-02T11:14:52Z"
+material_change: true
+transition: "waiting_loop_reconciled"
+active_item: "household delivery moved from ordered to shipped and waiting for delivery"
+priority:
+  p0: "Goodyear vehicle pickup and safe handoff"
+  p1:
+    - "Chase statement review during private finance block"
+    - "Experian credit-file alert review"
+source_evidence:
+  gmail:
+    message_id: "19fc1ff3a868b4f9"
+    received_at_utc: "2026-08-02T10:22:36Z"
+    sanitized_signal: "Two household items shipped; merchant estimate says arrival on 2026-08-03."
+    proof_ceiling: "Merchant shipment notice only; it does not prove carrier possession, an arrival window, delivery, physical receipt, item condition, or final settled charge."
+  calendar:
+    disposition: "No deadline binding added because the notice provides no exact delivery window and requires no operator action now."
+  github_and_slack:
+    disposition: "Changed evidence since the prior S05 cursor contained no separate operator-obligation delta requiring promotion."
+action:
+  system: "Gmail source readback"
+  before: "ORDERED_OR_UNRECONCILED"
+  after: "SHIPPED_WAITING_DELIVERY"
+  operator_next_action: "None now. Act only on a delivery exception, missing package, damage, or item mismatch. Keep the delivery path clear and secure pets if applicable."
+operator_minutes_removed: 3
+next_consumer: "operator only on delivery exception or post-delivery discrepancy"
+forbidden_effects:
+  email_sent: false
+  payment_or_spend: false
+  application_submitted: false
+  deployment_or_merge: false
+  account_or_security_change: false
+  scheduled_task_mutation: false
+  destructive_deletion: false
+privacy: "No order number, amount, address, item names, private message body, or account identifiers externalized."
