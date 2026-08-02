@@ -1,29 +1,29 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
 experiment_id: X13_GOOGLE_CALENDAR_FREEBUSY_READONLY_001
-version: 39
-prior_version: 38
+version: 40
+prior_version: 39
 candidate: Google_Calendar_freebusy_readonly_connector_surface
 candidate_contract_reference: official_Google_Calendar_Freebusy_query_quota_and_error_contract_plus_direct_connector_receipts
-campaign_wake: 3_of_4
-campaign_status: IN_PROGRESS
+campaign_wake: 4_of_4
+campaign_status: COMPLETE
 phase_1_completed: true
 phase_2_completed: true
 phase_3_completed: true
-phase_4_completed: false
-phase_4_decision: PENDING
+phase_4_completed: true
+phase_4_decision: ADOPT_WITH_GATES
 last_event:
-  commit: abac05a466576125dc6ec44e49cf26539dd34c8f
-  path: state/coordination/experiments/cots_connector_x13/20260802T114724Z_GOOGLE_CALENDAR_FREEBUSY_PHASE3_FAILURE_PERMISSION_PROBE.md
-  blob_sha: a0552270d3397ae029f154ef6133e77ea72eaf54
+  commit: e6a8797de8a7f8e601812902457a40a2c30f31f6
+  path: state/coordination/experiments/cots_connector_x13/20260802T124644Z_GOOGLE_CALENDAR_FREEBUSY_PHASE4_DECISION.md
+  blob_sha: b4396e6e3ee29303a45db718b18f3e00a89d2eb0
   exact_readback_completed: true
-prior_current_commit: 8aa7d6d98bbdbd9b1fee3a1358f1c7837d708f73
-prior_current_blob_sha: be33646c4dab6c3c1e048a42a7e92f5ae4e200fb
+prior_current_commit: af9641cf2f8b769fa241112480c7ac235ff7d735
+prior_current_blob_sha: 43a51348c1ca7f2af34ac959b837f9009dee5eec
 carrier_task_id: 6a55c1733708819185088bf334e33ea5
 carrier_task_id_match: true
 carrier_task_id_observation_source: AUTOMATION_RUN_CONTEXT
-effect_ceiling: ONE_PRIVACY_SAFE_READ_ONLY_SYNTHETIC_INVALID_CALENDAR_FREEBUSY_PROBE_GIT_EVENT_CURRENT_ADVANCE_AND_ONE_SHORT_NON_SECRET_SLACK_FACT_ONLY
-adoption_credit: 3
+effect_ceiling: DECISION_ONLY_GIT_EVENT_CURRENT_ADVANCE_READBACK_AND_ONE_SHORT_NON_SECRET_SLACK_DECISION
+adoption_credit: 4
 adoption_credit_basis:
   - OFFICIAL_PRIMARY_FREEBUSY_CONTRACT_BASELINE
   - ONE_BOUNDED_EMPTY_RESULT_PRIMARY_QUERY
@@ -33,6 +33,7 @@ adoption_credit_basis:
   - NORMALIZED_BUSY_ARRAY_AND_PER_CALENDAR_ERROR_CAPTURE
   - NO_EVENT_CONTENT_RETURNED
   - NO_CALENDAR_WRITE_SIDE_EFFECT
+  - PHASE4_BOUNDED_ADOPTION_DECISION_WITH_EXPLICIT_GATES
 fitness_credit: 0_PENDING_EXPLICIT_SOURCE_BOUND_CONSUMER_ACK_AND_MEASURED_OPERATOR_OUTCOME
 consumer_ack: NOT_OBSERVED
 same_provider_binding_weight: 0
@@ -65,6 +66,7 @@ campaign_candidate_invocations:
   phase_1_primary_freebusy_query: 1
   phase_2_primary_freebusy_query: 1
   phase_3_synthetic_invalid_calendar_freebusy_query: 1
+  phase_4_decision_only: 0
 actual_upstream_request_count: UNKNOWN
 actual_quota_class: UNKNOWN
 retry_count: 0_AT_CARRIER_LEVEL_UPSTREAM_UNKNOWN
@@ -129,6 +131,9 @@ official_contract_checked_2026_08_02:
   additional_error_reasons_may_be_added: true
   rate_limit_failures: HTTP_403_OR_429_USAGE_LIMITS
   recommended_rate_limit_response: TRUNCATED_EXPONENTIAL_BACKOFF
+  published_default_per_minute_per_project: 10000_FOR_NEW_QUOTA_MODEL_PROJECTS
+  published_default_per_minute_per_user_per_project: 600_FOR_NEW_QUOTA_MODEL_PROJECTS
+  published_daily_project_threshold_before_planned_charges: 1000000_REQUESTS_WITH_LIVE_PROJECT_STATUS_UNKNOWN
 failure_semantics:
   bounded_primary_alias_empty_query: DIRECTLY_OBSERVED_SUCCESS
   bounded_primary_alias_non_empty_query: DIRECTLY_OBSERVED_SUCCESS
@@ -145,9 +150,10 @@ observability: MEDIUM_FOR_NORMALIZED_CALENDAR_ID_BUSY_INTERVALS_AND_PER_CALENDAR
 portability: MEDIUM_FOR_GENERIC_RFC3339_FREEBUSY_AND_RESOURCE_SCOPED_ERRORS_BUT_MEDIUM_LOW_FOR_PRIMARY_ALIAS_GOOGLE_CALENDAR_IDS_OAUTH_SCOPES_ERROR_ENUMS_EXPANSION_LIMITS_AND_QUOTAS
 admitted_scope:
   - BOUNDED_READ_ONLY_FREEBUSY_QUERY
-  - PRIMARY_ALIAS_IN_CURRENT_AUTHENTICATED_CONTEXT
+  - EXPLICITLY_SELECTED_CALENDARS_IN_CURRENT_AUTHENTICATED_CONTEXT
   - BUSY_INTERVAL_AND_PER_CALENDAR_ERROR_EXTRACTION
   - LOCAL_STRUCTURAL_VALIDATION_AND_PRIVACY_MINIMIZED_AGGREGATION
+  - SCHEDULING_ASSISTANCE_WITHOUT_AUTOMATIC_BOOKING_AUTHORITY
   - NO_EVENT_CONTENT_DISCLOSURE
 excluded_scope:
   - EVENT_CREATE_INVITE_RESPONSE_EDIT_OR_DELETE
@@ -169,23 +175,33 @@ mandatory_gates:
   - EMPTY_BUSY_ARRAY_PROVES_ONLY_THIS_CALL_RETURNED_NO_BUSY_BLOCK_FOR_THIS_INTERVAL_AND_ALIAS
   - DO_NOT_PERSIST_EXACT_BUSY_PATTERNS_UNLESS_NECESSARY_AND_APPROVED
   - SANITIZE_CALENDAR_IDS_EMAIL_LIKE_RESOURCE_IDS_AND_BUSY_PATTERNS_BEFORE_GIT_OR_SLACK_PERSISTENCE
+  - USE_BOUNDED_EXPONENTIAL_BACKOFF_ONLY_FOR_DOCUMENTED_TRANSIENT_OR_RATE_LIMIT_CLASSES
   - DO_NOT_CLAIM_LIVE_SCOPE_IDENTITY_QUOTA_COST_COMPLETENESS_OR_INDEPENDENT_VERIFICATION
   - NO_EVENT_CREATE_INVITE_RESPONSE_EDIT_DELETE_OR_BROAD_CALENDAR_MINING
 verifier: RAW_GOOGLE_CALENDAR_FREEBUSY_API_OR_DISTINCT_AUTHORIZED_CALENDAR_CLIENT_USING_SAME_EXPLICIT_INTERVAL_AND_SOURCE_BOUND_CALENDAR_ID_WITH_RAW_RESPONSE_AND_SCOPE_EVIDENCE
 consumer:
   - HFO_SCHEDULING_AND_EXECUTIVE_ASSISTANT_PLANNING_LOGIC
-  - PHASE_4_DECISION
 strongest_falsifier: A_DISTINCT_AUTHORIZED_CLIENT_RETURNS_MATERIALLY_DIFFERENT_BUSY_OR_ERROR_RESULTS_FOR_THE_SAME_SOURCE_BOUND_CALENDAR_AND_INTERVAL_OR_THE_CONNECTOR_COLLAPSES_A_MIXED_SUCCESS_ERROR_QUERY_INTO_MISLEADING_GLOBAL_SUCCESS
-honest_flaw: PHASE3_USED_A_SYNTHETIC_INVALID_ID_NOT_A_KNOWN_INACCESSIBLE_REAL_CALENDAR_AND_DID_NOT_TEST_MIXED_VALID_INVALID_CALENDARS_PRIVATE_OR_SHARED_CALENDARS_403_429_500_DST_OR_INDEPENDENT_READBACK
-next_phase:
-  phase: 4_of_4
-  status: PENDING
-  planned_action: DECISION_ONLY_NO_ADDITIONAL_CALENDAR_CALL_EXPECTED
-  likely_disposition: ADOPT_WITH_GATES
-review_expiry_utc: 2026-08-09T11:47:24Z
-valid_time_utc: 2026-08-02T11:47:24Z
+honest_flaw: CAMPAIGN_DID_NOT_ESTABLISH_IDENTITY_OR_SCOPE_TEST_SHARED_SECONDARY_OR_INACCESSIBLE_REAL_CALENDARS_MIXED_RESULTS_403_429_500_DST_INDEPENDENT_READBACK_OR_CONSUMER_ACK
+phase_4_result:
+  decision: ADOPT_WITH_GATES
+  candidate_invocation_this_wake: false
+  rationale: BOUNDED_READ_ONLY_OCCUPANCY_AND_PER_RESOURCE_ERROR_NORMALIZATION_WORKED_BUT_AUTHORITY_COMPLETENESS_IDENTITY_QUOTA_AND_INDEPENDENT_VERIFICATION_REMAIN_UNPROVEN
+review_expiry_utc: 2026-08-09T12:46:44Z
+valid_time_utc: 2026-08-02T12:46:44Z
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 sealed: true
+next_campaign:
+  experiment_id: X13_GMAIL_BOUNDED_METADATA_SEARCH_READONLY_001
+  candidate: Gmail_bounded_exact_query_metadata_readonly_connector_surface
+  phase: 1_of_4
+  status: QUEUED
+  effect_ceiling: OFFICIAL_CONTRACT_BASELINE_AND_ONE_BOUNDED_PRIVACY_MINIMIZED_READ_ONLY_QUERY_NO_BODY_NO_ATTACHMENT_NO_MUTATION
+  excluded_scope:
+    - SEND_DRAFT_REPLY_FORWARD
+    - LABEL_ARCHIVE_TRASH_DELETE_OR_MARK_READ_UNREAD
+    - BROAD_MAILBOX_MINING
+    - MESSAGE_BODY_OR_ATTACHMENT_DISCLOSURE_WITHOUT_SEPARATE_JUSTIFICATION
 prior_campaign:
   experiment_id: X13_SLACK_NATIVE_MESSAGE_RECEIPT_001
   final_version: 36
@@ -201,8 +217,8 @@ prior_prior_campaign:
 
 # X13 current campaign
 
-Google Calendar Freebusy read-only is at phase **3/4**.
+Google Calendar Freebusy read-only completed phase **4/4** with decision **ADOPT_WITH_GATES**.
 
-A privacy-safe synthetic invalid-calendar query completed with no top-level connector error and one resource-scoped `global/notFound` error. No busy intervals, event details, or write effects were returned. Google documents that `notFound` can mean either a nonexistent resource or one the caller cannot access, so the result cannot classify the cause.
+Use is admitted only for bounded occupancy assistance with explicit RFC3339 intervals, selected calendars, per-calendar error inspection, and privacy-minimized persistence. It is not event authority, completeness proof, durable state, automatic booking permission, or independent verification.
 
-Callers must inspect each calendar's error field and treat errored calendars as unknown availability rather than free time. Measured operator relief remains `0`; live identity, authorization scope, project, quota, billing state, and independent accuracy remain unknown. Phase 4 is decision-only.
+Measured operator relief remains `0`; surfaced cost was `$0`; identity, OAuth scope, project, live quota, billing state, and cross-client accuracy remain unknown. The next queued campaign is Gmail bounded metadata-only read/search, with no body, attachment, send, or mailbox mutation.
