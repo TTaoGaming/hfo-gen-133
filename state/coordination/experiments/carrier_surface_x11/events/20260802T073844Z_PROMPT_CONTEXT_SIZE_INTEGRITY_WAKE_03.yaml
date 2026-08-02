@@ -1,0 +1,135 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+experiment_id: X11_PROMPT_CONTEXT_SIZE_V1
+carrier: X11
+actor: X11_CARRIER_AND_TOOL_SURFACE_PDCA_LAB
+task_binding:
+  expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+  observed_task_id: 6a55089a9adc8191bda54541f7f9effa
+  match: true
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+wip_limit: 1
+self_probe:
+  native_active_gen133_task_count: 15
+  observed_surfaces:
+    - native_tasks_inventory_read
+    - github_read_write
+    - local_deterministic_byte_generation_and_hash
+  available_not_used:
+    - slack_read
+    - slack_write
+    - web_research
+    - gmail_read
+    - google_calendar_read
+    - google_drive_read
+  unavailable_or_not_exposed:
+    - independent_provider_verifier
+prior_current:
+  expected_version: 34
+  blob: 85daba3afbead4ba7ec157d1cc60e4e29c8d520c
+  campaign: X11_PROMPT_CONTEXT_SIZE_V1
+  accepted_wakes: 2
+  disposition: PENDING_FOUR_WAKE_DECISION
+campaign:
+  controlled_factor: prompt_context_size
+  accepted_wake: 3
+  target_wakes_before_decision: 4
+  acceptance_class: ACCEPTED_AS_PRECOMMITTED_SIZE_INTEGRITY_MATCH
+baseline:
+  prior_target_size_bytes: 1024
+  prior_repeated_wakes_at_size: 2
+  prior_canonical_measured_sha256: 33e69b408330b7e9961d00e5db593682f5de7b220e71809380743837d5364248
+  prior_error_class: EXPECTED_HASH_MISMATCH_REPRODUCED_PRECOMPUTE_OR_SPEC_DEFECT
+  current_precommitted_sha256: c5175a052f930f698b39b9747fbf1342feef50536d877e64c5a0765bb157dd14
+hypothesis: >-
+  Applying the same explicit ASCII/LF construction at 4096 bytes will preserve
+  exact size and boundary sentinels, and two local SHA-256 implementations will
+  agree with the precommitted digest. A match supports deterministic local
+  scaling from 1024 to 4096 bytes but does not establish scheduler prompt
+  transport or model-context retention.
+controlled_factor: prompt_context_size
+exact_probe:
+  mode: synthetic_context_integrity_scale_step
+  payload_class: non_sensitive_deterministic_ascii
+  encoding: ASCII_UTF8_SINGLE_BYTE
+  target_size_bytes: 4096
+  prefix_bytes_semantics: actual_ASCII_bytes_BEGIN_HFO_X11_CONTEXT_V1_followed_by_LF
+  repeated_pattern_utf8: "0123456789ABCDEF"
+  suffix_bytes_semantics: actual_ASCII_LF_followed_by_END_HFO_X11_CONTEXT_V1
+  construction: >-
+    Encode prefix, pattern, and suffix as ASCII bytes; compute middle length as
+    target size minus prefix length minus suffix length; repeat the pattern and
+    truncate it to the middle length; concatenate prefix, middle, and suffix.
+  prefix_length_bytes: 25
+  middle_length_bytes: 4048
+  suffix_length_bytes: 23
+  canonical_expected_sha256_precommitted: c5175a052f930f698b39b9747fbf1342feef50536d877e64c5a0765bb157dd14
+  checks:
+    - exact_size
+    - precommitted_sha256_match
+    - prefix_sentinel_match
+    - suffix_sentinel_match
+    - second_local_hash_implementation_agreement
+  external_effects: NONE
+  privacy_rule: persist_only_generation_contract_size_hash_and_boolean_check_results
+measured_result:
+  payload_generated: true
+  payload_ingested_for_integrity_checks: true
+  measured_size_bytes: 4096
+  exact_size_match: true
+  measured_sha256: c5175a052f930f698b39b9747fbf1342feef50536d877e64c5a0765bb157dd14
+  precommitted_sha256_match: true
+  prefix_sentinel_match: true
+  suffix_sentinel_match: true
+  second_local_hash_implementation_agreed: true
+  first_local_hash_tool: python_hashlib_sha256
+  second_local_hash_tool: sha256sum_stdin
+  payload_body_persisted_to_git_or_slack: false
+  external_effect_performed: false
+permission_class: LOCAL_DETERMINISTIC_COMPUTE_AVAILABLE
+error_class: NONE
+latency:
+  exposed_by_tool: false
+  measured: false
+  value_ms: null
+  interpretation: integrity_result_only_not_a_latency_benchmark
+operator_relay_minutes: 0
+measured_delta: >-
+  The campaign advanced from the reproduced 1024-byte baseline to 4096 bytes.
+  Exact size and both sentinels matched, and Python hashlib plus sha256sum both
+  matched the precommitted digest
+  c5175a052f930f698b39b9747fbf1342feef50536d877e64c5a0765bb157dd14.
+  This is a changed tested-size capability for local deterministic construction,
+  not evidence about scheduled prompt delivery or retained model context.
+next_probe:
+  target_size_bytes: 16384
+  canonical_expected_sha256_precommitted: 16d21a391874352fb3bb757763e2714ed9c0d207d88a2f2d6f1ded29867696d5
+  instruction: >-
+    Apply the same canonical byte construction at 16384 bytes, compare two local
+    hash implementations against the precommitted digest, then issue the fourth-
+    wake campaign disposition and select the next controlled factor.
+strongest_falsifier: >-
+  A byte-for-byte implementation at 4096 bytes fails exact size or either
+  sentinel, a third independent hash implementation disagrees with both local
+  implementations, the precommitted digest cannot be reproduced, or direct
+  prompt-transport evidence contradicts the local construction result.
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer:
+  - Reginleif
+  - Ratatoskr
+result: PROMPT_CONTEXT_SIZE_WAKE_03_4096_BYTE_PRECOMMIT_MATCH
+honest_flaw: >-
+  This probe validates only locally generated bytes and hashing. It does not test
+  actual scheduled-prompt transport, model context retention, tokenization,
+  Project versus non-Project behavior, or provider context limits. Both hash
+  checks and the precommitted digest were produced on the same provider
+  substrate, so binding weight remains zero and no independent quorum is claimed.
+valid_time_utc: 2026-08-02T07:38:44Z
+transaction_time_utc: 2026-08-02T07:38:44Z
+expiry_utc: 2026-08-09T07:38:44Z
+evidence_class: DIRECT_LOCAL_DETERMINISTIC_READBACK_SAME_PROVIDER_NONBINDING
+binding_weight: 0
+effect_ceiling: LOCAL_SYNTHETIC_CONTEXT_INTEGRITY_PLUS_GIT_RECEIPT
+sealed: false
+---
