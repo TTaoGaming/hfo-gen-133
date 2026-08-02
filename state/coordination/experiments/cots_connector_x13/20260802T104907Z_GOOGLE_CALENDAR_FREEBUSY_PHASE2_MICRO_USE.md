@@ -1,0 +1,117 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_GOOGLE_CALENDAR_FREEBUSY_READONLY_001
+event_type: PHASE2_MICRO_USE
+version: 38
+prior_version: 37
+candidate: Google_Calendar_freebusy_readonly_connector_surface
+carrier_task_id: 6a55c1733708819185088bf334e33ea5
+carrier_task_id_match: true
+campaign_wake: 2_of_4
+phase_1_completed: true
+phase_2_completed: true
+phase_3_completed: false
+phase_4_completed: false
+phase_4_decision: PENDING
+effect_ceiling: ONE_BOUNDED_READ_ONLY_NEAR_TERM_PRIMARY_FREEBUSY_QUERY_GIT_EVENT_CURRENT_ADVANCE_AND_ONE_SHORT_NON_SECRET_SLACK_MEASURED_FACT_RECEIPT_ONLY
+measured_fact: ONE_NEAR_TERM_PRIMARY_WINDOW_RETURNED_TWO_BUSY_INTERVALS_WITH_VALID_SORTED_NON_OVERLAPPING_BOUNDS
+query:
+  calendar_id_alias: primary
+  time_min_utc: 2026-08-02T11:00:00Z
+  time_max_utc: 2026-08-02T15:00:00Z
+  response_timezone: America/Denver
+  query_window_minutes: 240
+direct_connector_receipt:
+  busy_interval_count: 2
+  total_busy_minutes: 40
+  total_free_minutes_by_subtraction: 200
+  longest_contiguous_free_minutes: 120
+  per_calendar_errors: null
+  top_level_error: null
+  external_call_time_ms: 3301
+  exact_busy_interval_timestamps_persisted: false
+  exact_busy_interval_timestamps_omitted_reason: PRIVACY_MINIMIZATION
+  event_titles_descriptions_attendees_locations_conference_data_or_event_ids_returned: false
+  write_side_effect: false
+structural_validation:
+  every_interval_start_before_end: true
+  every_interval_inside_requested_window: true
+  intervals_sorted_ascending: true
+  intervals_non_overlapping: true
+  aggregate_busy_minutes_consistent_with_returned_intervals: true
+  free_minutes_computed_locally_not_returned_by_provider: true
+  longest_contiguous_free_minutes_computed_locally_not_returned_by_provider: true
+adoption_credit: 1
+adoption_credit_basis:
+  - ONE_BOUNDED_NEAR_TERM_AVAILABILITY_MICRO_USE
+  - NON_EMPTY_BUSY_RESULT_PATH_OBSERVED
+  - STRUCTURAL_INTERVAL_VALIDATION_COMPLETED
+  - NO_EVENT_CONTENT_RETURNED
+  - NO_CALENDAR_MUTATION
+fitness_credit: 0_PENDING_EXPLICIT_SOURCE_BOUND_CONSUMER_ACK_AND_MEASURED_OPERATOR_OUTCOME
+consumer_ack: NOT_OBSERVED
+same_provider_binding_weight: 0
+independent_verification_closed: false
+operator_relay_minutes: 0
+operator_minutes_removed_measured: 0
+operator_minutes_removed_estimate_per_bounded_check: 1_to_5_UNVALIDATED
+custom_code_avoided_estimate:
+  authenticated_freebusy_request_rfc3339_timezone_validation_response_normalization_and_basic_per_calendar_error_handling: 40_to_120_LOC_UNVALIDATED
+  interval_sort_overlap_bounds_duration_and_gap_validation: 20_to_60_LOC_UNVALIDATED
+custom_policy_not_avoided:
+  - CALENDAR_SELECTION_AND_AUTHORITY
+  - DATA_CLASSIFICATION_AND_BUSY_PATTERN_REDACTION
+  - SOURCE_BOUND_IDENTITY_AND_SCOPE_VERIFICATION
+  - PARTIAL_RESPONSE_AND_PER_CALENDAR_ERROR_POLICY
+  - TIMEZONE_DST_AND_INTERVAL_BOUNDARY_POLICY
+  - RATE_LIMIT_RETRY_AND IDEMPOTENCY_POLICY
+  - INDEPENDENT_VERIFICATION
+credentials:
+  connector_authenticated_or_primary_calendar_reachable: true
+  operator_supplied_credentials: 0
+  live_identity: UNKNOWN
+  live_token_type: UNKNOWN
+  live_scopes: UNKNOWN
+  oauth_client_or_project: UNKNOWN
+  calendar_ownership_or_delegated_authority: UNKNOWN
+  credential_custody: UNKNOWN
+paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
+actual_upstream_request_count: UNKNOWN
+actual_quota_class: UNKNOWN
+retry_count: 0_AT_CARRIER_LEVEL_UPSTREAM_UNKNOWN
+billing_counters: NOT_EXPOSED
+live_HTTP_status_headers_request_id_retry_after_or_rate_limit_headers: NOT_EXPOSED
+durability: EPHEMERAL_POINT_IN_TIME_QUERY_OVER_MUTABLE_CALENDAR_STATE_FREEBUSY_HAS_NO_PERSISTENT_RESOURCE
+observability: MEDIUM_FOR_NORMALIZED_BUSY_INTERVALS_ERRORS_AND_CONNECTOR_TIMING_BUT_LOW_FOR_RAW_HTTP_HEADERS_REQUEST_ID_SCOPE_IDENTITY_RETRIES_QUOTA_PROJECT_AND_UPSTREAM_REQUEST_COUNT
+portability: MEDIUM_BECAUSE_RFC3339_BUSY_INTERVALS_ARE_GENERIC_BUT_PRIMARY_ALIAS_CALENDAR_IDS_OAUTH_SCOPES_ERRORS_AND_QUOTAS_ARE_GOOGLE_SPECIFIC
+failure_behavior_observed: NONE_IN_PHASE2_SUCCESS_PATH
+strongest_falsifier: A_DISTINCT_AUTHORIZED_CLIENT_RETURNS_DIFFERENT_BUSY_INTERVALS_OR_A_PER_CALENDAR_ERROR_FOR_THE_SAME_SOURCE_BOUND_CALENDAR_AND_EXACT_UTC_WINDOW
+verifier: RAW_GOOGLE_CALENDAR_FREEBUSY_API_OR_DISTINCT_AUTHORIZED_CALENDAR_CLIENT_USING_THE_SAME_EXPLICIT_INTERVAL_AND_SOURCE_BOUND_CALENDAR_ID_WITH_RAW_RESPONSE_AND_SCOPE_EVIDENCE
+consumer:
+  - HFO_SCHEDULING_AND_EXECUTIVE_ASSISTANT_PLANNING_LOGIC
+  - PHASE_3_FAILURE_PERMISSION_PORTABILITY_PROBE
+honest_flaw: THIS_MICRO_USE_USED_PRIMARY_ALIAS_AND_ONE_NEAR_TERM_WINDOW_ONLY_DID_NOT_VERIFY_ACCOUNT_IDENTITY_SCOPE_SECONDARY_OR_SHARED_CALENDARS_EVENT_TRANSPARENCY_ALL_DAY_OR_DST_SEMANTICS_PARTIAL_ERRORS_RATE_LIMITS_OR_INDEPENDENT_ACCURACY
+mandatory_gates:
+  - USE_EXPLICIT_RFC3339_START_AND_END_WITH_Z_OR_OFFSET
+  - TREAT_PRIMARY_AS_CONTEXT_ALIAS_NOT_DURABLE_PORTABLE_ID
+  - RESPONSE_TIMEZONE_FORMATS_OUTPUT_ONLY
+  - FREEBUSY_IS_OCCUPANCY_ONLY_NOT_EVENT_CONTENT_OR BOOKING_AUTHORITY
+  - PRESERVE_PER_CALENDAR_ERRORS_SEPARATELY
+  - DO_NOT_PERSIST_EXACT_BUSY_PATTERNS_UNLESS NECESSARY_AND_APPROVED
+  - SANITIZE_CALENDAR_IDS_EMAIL_LIKE_RESOURCE_IDS_AND_BUSY_PATTERNS_BEFORE_GIT_OR_SLACK
+  - DO_NOT_CLAIM_IDENTITY_SCOPE_QUOTA_COST_COMPLETENESS_OR_INDEPENDENT_VERIFICATION
+  - NO_EVENT_CREATE_INVITE_RESPONSE_EDIT_DELETE_OR_BROAD_CALENDAR_MINING
+next_phase:
+  phase: 3_of_4
+  status: PENDING
+  planned_probe: ONE_PRIVACY_SAFE_READ_ONLY_INVALID_OR_INACCESSIBLE_CALENDAR_ID_PROBE_WITH_PER_CALENDAR_ERROR_CAPTURE_AND_NO_RETRY
+valid_time_utc: 2026-08-02T10:49:07Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+sealed: true
+---
+
+# X13 Google Calendar Freebusy phase 2
+
+One bounded near-term query against the authenticated `primary` alias returned two busy intervals. Aggregate validation found 40 busy minutes and 200 free minutes inside the 240-minute window; the intervals were ordered, non-overlapping, and within bounds.
+
+Exact busy timestamps were intentionally omitted from the Git event. No event content was returned, no calendar mutation occurred, measured operator relief remains zero, and identity, scope, quota class, billing state, and independent accuracy remain unknown.
