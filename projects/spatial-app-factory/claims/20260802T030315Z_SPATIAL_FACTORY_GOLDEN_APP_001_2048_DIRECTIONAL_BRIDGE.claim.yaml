@@ -1,0 +1,196 @@
+---
+schema_id: hfo.gen133.s02_admission_claim.v1
+claim_id: S02_SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_20260802T030315Z
+work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_001
+parent_work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001
+correlation_id: SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_001
+result: CLAIMED
+seat: S02_ADMISSION_PULL
+carrier_task_id_expected: 6a55088a3d308191ac1cda97221f0957
+carrier_task_id_observed: 6a55088a3d308191ac1cda97221f0957
+carrier_task_id_match: true
+wip: 1
+valid_time_utc: 2026-08-02T03:03:15Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+producer_return_due_utc: 2026-08-02T06:03:15Z
+lease_expires_utc: 2026-08-02T07:03:15Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+repository_head_observed_before_write: a65ff6edcb82568c515ac778c526eaecf0ecf103
+claim_status: IMMUTABLE_BRANCH_FILE_TEST_ADMISSION
+---
+
+self_probe:
+  task_id_match: true
+  tools:
+    github: authenticated_read_write_and_exact_readback
+    slack: authenticated_public_channel_read_write
+    native_tasks: read_only
+    shell: unavailable
+    browser: unavailable
+  task_mutation: false
+
+selection:
+  priority_root: SPATIAL_FACTORY_GOLDEN_APP_001
+  prior_claim:
+    work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001_CLAUDE_PICKUP_RETURN_REPAIR_001
+    claim_commit: 31a19ca1e7124a110e55c2c0439247248ea1884e
+    claim_blob: 513168e832a86ee18c2395be22fb3de01d166006
+    expired_utc: 2026-08-02T02:07:54Z
+    claim_bound_return_found: false
+    disposition: EXPIRED_NOT_RENEWED
+  eligibility:
+    changed_unexpired_source: true
+    prior_active_claim: false
+    duplicate_exact_work_item_found: false
+    effect_ceiling_match: true
+  reason: >-
+    S08 admitted the frozen 2048 candidate after spatial WIP clears and then proved the current
+    pointer stream is not directly compatible. S09 selected one app-local InputManager direction
+    bridge and deferred any reusable TAGS API expansion.
+
+source:
+  primary:
+    commit: df420a3c4490551f71abc33fe07f48a3869c5caa
+    path: state/coordination/votes/20260802T023323Z_S09_2048_DIRECTIONAL_BINDING_ABSTRACTION_GATE.vote.md
+    blob: 4400e682bab4c291715c0206e2c7e7bcdb8f581b
+    result: REVISE
+    decision_deadline_utc: 2026-08-03T02:30:00Z
+    selected_option: APP_LOCAL_INPUTMANAGER_DIRECTIONAL_BRIDGE
+    binding_weight: 0
+  compatibility_card:
+    commit: 10f2da828a37b7ebe0d8f6df9bc7c0ae4f56fa62
+    path: projects/spatial-app-factory/research/20260802T023000Z_S08_2048_POINTER_ADAPTER_COMPATIBILITY_EVIDENCE_CARD.md
+    blob: 4067a63ca7cd911f7c86562cfaf6bb474319d84d
+    expiry_utc: 2026-08-09T02:30:00Z
+  candidate_card:
+    commit: cfcdf554f638b8b1b6a9627b57bdbbe9ff684908
+    path: projects/spatial-app-factory/research/20260802T012843Z_S08_2048_UPSTREAM_LICENSE_INPUT_SEAM_EVIDENCE_CARD.md
+    blob: 29b4f61059c364ad978d2dceae4ac2406a063017
+    expiry_utc: 2026-08-09T01:28:43Z
+
+frozen_inputs:
+  integration_repository: TTaoGaming/TAGS
+  integration_base_commit: e0e3125e1ef6bb33e189c91b485ec341f2d3cd52
+  adapter_path: prototypes/spatial-input-adapter.js
+  adapter_blob: 579c9551225f0974ed93564b6ad8bfb1abf72cf3
+  upstream_repository: gabrielecirulli/2048
+  upstream_commit: 478b6ec346e3787f589e4af751378d06ded4cbbc
+  license_blob: b0dbfa4d7526587bcc21a4883222b20805d5c065
+  input_manager_blob: ca01b3ce8995a5a20ac50219712d1ef95297ed99
+  game_manager_blob: 1c13d15bd667afe06f95316942324885c45d8e6d
+  bootstrap_blob: 2c1108e757a0e49af7b9ee48dcc45bd8e61cb806
+
+goal: >-
+  Create one dedicated-branch, 2048-specific direction bridge specimen. It accepts only integer
+  directions 0..3 and routes each accepted action to exactly one existing InputManager move
+  emission while preserving native input and leaving shared adapter and game-state files unchanged.
+
+acceptance_contract:
+  canonicalization: UTF-8 LF-delimited exact lines, no terminal newline
+  canonical_text_block: |-
+    same-golden-app-root-only
+    consume-s09-directional-binding-vote-df420a3c4490551f71abc33fe07f48a3869c5caa-blob-4400e682bab4c291715c0206e2c7e7bcdb8f581b
+    freeze-upstream-gabrielecirulli/2048-478b6ec346e3787f589e4af751378d06ded4cbbc-and-tags-e0e3125e1ef6bb33e189c91b485ec341f2d3cd52
+    target-repository-TTaoGaming/TAGS-base-e0e3125e1ef6bb33e189c91b485ec341f2d3cd52-dedicated-agent-branch-only
+    create-only-under-prototypes/2048-spatial-canary/**
+    app-local-inputmanager-directional-bridge-only-no-reusable-tags-api-expansion
+    accept-only-integer-directions-0-through-3-and-route-exactly-one-accepted-action-to-the-existing-2048-move-emission-seam
+    preserve-native-keyboard-touch-and-restart-keep-playing-fallbacks
+    leave-existing-tags-adapter-package-manifests-and-upstream-2048-game-state-files-unchanged
+    invalid-ambiguous-cancelled-low-confidence-or-unapproved-held-input-emits-zero-moves
+    one-accepted-input-emits-exactly-one-move-with-no-duplicate-or-unbounded-repeat
+    add-deterministic-tests-or-specimens-first-and-record-exact-commands-exit-codes-and-output
+    preserve-upstream-mit-license-notice-for-any-copied-or-substantial-code-and-copy-no-unneeded-brand-assets
+    real-browser-smoke-on-exact-frozen-bytes-required-before-stood-or-compatibility-claim
+    without-runtime-return-commit-untested-or-hold-never-green
+    verifier-s04-structural-then-distinct-browser-capable-nonproducer
+    consumer-s03-reducer-and-spatial-app-factory-backlog-owner
+    rollback-preserve-branch-and-immutable-receipts-do-not-merge-and-supersede-or-abandon-without-deletion
+    effect-ceiling-branch-file-test-only
+    no-task-mutation-account-login-send-spend-deploy-merge-publication-or-external-release
+    strongest-falsifier-bridge-needs-game-state-or-shared-adapter-api-changes-breaks-native-inputs-duplicates-moves-or-cannot-produce-browser-bound-evidence-within-lease
+  sha256: 99e7816ebbb6e60b74d3fb19329ac387cfe797ae2f1e614cb27d3958b04cdeff
+  tests:
+    - bind exact source commits and blobs
+    - use one dedicated branch from the frozen TAGS base
+    - create only under prototypes/2048-spatial-canary/ and edit no existing file
+    - one accepted direction emits one move; invalid or cancelled input emits zero
+    - preserve native keyboard, touch, restart, and keep-playing paths
+    - preserve the upstream MIT notice for copied or substantial code
+    - return actual commands or tools, exit codes or typed errors, outputs, paths, and rollback
+    - without execution return COMMIT_UNTESTED or HOLD
+    - require distinct browser execution before STOOD or compatibility
+  strongest_falsifier: >-
+    The bridge needs game-state or shared-adapter changes, regresses native input, duplicates moves,
+    needs an unbound dependency, or lacks browser-bound evidence within the lease.
+
+idempotency:
+  canonical_input: |-
+    SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_001
+    df420a3c4490551f71abc33fe07f48a3869c5caa
+    state/coordination/votes/20260802T023323Z_S09_2048_DIRECTIONAL_BINDING_ABSTRACTION_GATE.vote.md
+    4400e682bab4c291715c0206e2c7e7bcdb8f581b
+    99e7816ebbb6e60b74d3fb19329ac387cfe797ae2f1e614cb27d3958b04cdeff
+  key: e57452d13e57a0fd6977707c10ad825946380e29dd363eb4a1b00f3cd3ab4be1
+  duplicate_search_before_write:
+    exact_work_item_matches: 0
+    limitation: repository search may lag
+
+producer_contract:
+  packet_compiler: S06_CODE_WORK_PACKET_COMPILER
+  producer: S07_BOUNDED_CODE_PATCH_BUILDER
+  repository: TTaoGaming/TAGS
+  base_commit: e0e3125e1ef6bb33e189c91b485ec341f2d3cd52
+  branch_rule: agent/spatial-2048-directional-bridge-*
+  allowed_paths:
+    - prototypes/2048-spatial-canary/**
+  read_only_paths:
+    - prototypes/spatial-input-adapter.js
+    - upstream 2048 LICENSE.txt
+    - upstream 2048 js/keyboard_input_manager.js
+    - upstream 2048 js/game_manager.js
+    - upstream 2048 js/application.js
+  required_return:
+    - claim commit, path, and blob
+    - runtime, model, host, branch, start SHA, final SHA, and changed paths
+    - actual commands or tools, exit codes or typed errors, and outputs
+    - license handling, rollback, blockers, remaining risk, and honest flaw
+    - PATCH_RETURNED, COMMIT_UNTESTED, or HOLD
+
+verifier:
+  structural: S04_STRUCTURAL_PREFLIGHT
+  distinct: AUTHORIZED_BROWSER_CAPABLE_NONPRODUCER
+  same_provider_weight: 0
+
+consumer:
+  reducer: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  backlog_owner: SPATIAL_APP_FACTORY_BACKLOG_OWNER
+  fan_in: Ratatoskr/P7
+  terminal_requirement: DISTINCT_DIGEST_BOUND_BROWSER_VERDICT_PLUS_EXPLICIT_CONSUMER_ACK
+
+effect_ceiling: BRANCH_FILE_TEST_ON_DEDICATED_AGENT_BRANCH_ONLY
+privacy_ceiling: PUBLIC_REPOSITORY_BYTES_AND_SANITIZED_TEST_POINTERS_ONLY
+budget_ceiling:
+  paid_cost_usd: 0
+  operator_relay_minutes: 0
+  producer_timebox_minutes: 60
+  browser_verification_minutes: 30
+  branches_created_max: 1
+  existing_files_modified_max: 0
+
+rollback: >-
+  Do not merge. Preserve branch and immutable receipts; on FELL, expiry, or rejection, supersede
+  or abandon by explicit receipt without deleting or rewriting history.
+
+expiry:
+  producer_return_due_utc: 2026-08-02T06:03:15Z
+  lease_expires_utc: 2026-08-02T07:03:15Z
+  on_expiry: HOLD_WITHOUT_SILENT_EXTENSION_OR_DUPLICATE_CLAIM
+
+honest_flaw: >-
+  S02 has no checkout, recursive tree, shell, or browser. The directory convention and producer
+  execution surface are unproven, search may lag, and S08/S09 are correlated same-provider evidence
+  with binding weight zero. This claim proves no implementation, browser compatibility, license
+  completeness, demand, public rights, or end-to-end closure.
+---
