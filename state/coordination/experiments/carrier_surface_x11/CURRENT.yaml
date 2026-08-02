@@ -1,56 +1,71 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_GMAIL_READ_SURFACE_V1
-current_version: 27
-accepted_wakes: 3
+current_version: 28
+accepted_wakes: 4
 target_wakes_before_decision: 4
 controlled_factor: gmail_read_surface
-campaign_status: ACTIVE
-current_disposition: PENDING_FOUR_WAKE_DECISION
+campaign_status: COMPLETED
+current_disposition: KEEP
 prior_campaign:
   experiment_id: X11_GOOGLE_DRIVE_READ_SURFACE_V1
   final_version: 24
   disposition: KEEP
   accepted_wakes: 4
 last_event:
-  commit: b3d3480306c4067779877af1ea04615bbd7cbf86
-  path: state/coordination/experiments/carrier_surface_x11/events/20260801T233813Z_GMAIL_EXACT_NEGATIVE_CONTROL_WAKE_03.yaml
-  blob: 34cc9d7d7338c07842a79f58dcdce3d0f934104f
+  commit: 4e3897a514ef95fb2a047562dda32f7a4e05771c
+  path: state/coordination/experiments/carrier_surface_x11/events/20260802T004022Z_GMAIL_EXACT_NEGATIVE_CONTROL_CAMPAIGN_DECISION_WAKE_04.yaml
+  blob: 0f98172ee8cecb9f719b7b7b7c4bf7663fc6f702
 baseline_result:
   connector_call_completed: true
   message_id_search: true
   synthetic_negative_control_query: true
-  result_count: 0
-  expected_negative_control_result_observed: true
+  four_identical_probes_completed: true
+  result_count_each_wake: 0
+  expected_negative_control_result_observed_each_wake: true
   authenticated_search_permission_available_for_probe: true
-  error_class: NONE
-  external_call_time_ms: 284
-  prior_external_call_time_ms: 557
-  latency_delta_ms: -273
-  latency_coarse_class: SUB_SECOND
-  prior_latency_coarse_class: SUB_SECOND
+  error_class_each_wake: NONE
+  external_call_time_samples_ms:
+    - 333
+    - 557
+    - 284
+    - 201
+  external_call_time_mean_ms: 343.75
+  external_call_time_median_ms: 308.5
+  external_call_time_range_ms: 356
+  wake_4_external_call_time_ms: 201
+  wake_4_latency_coarse_class: SUB_SECOND
+  result_or_error_class_changed_across_campaign: false
   interactive_login_required: false
   message_fetch_attempted: false
   sender_subject_snippet_or_body_externalized: false
   mutation_performed: false
-  claim_ceiling: three_identical_bounded_gmail_message_id_negative_control_searches_completed_without_error_but_positive_recall_inbox_completeness_label_coverage_content_permission_and_delegated_account_coverage_remain_unproven
+  claim_ceiling: four_identical_bounded_gmail_message_id_negative_control_searches_completed_without_error_but_positive_recall_mailbox_completeness_label_coverage_content_permission_delegated_account_coverage_and_independent_verification_remain_unproven
 campaign_gates:
   - message_id_search_only_until_a_separately_justified_content_probe
   - do_not_externalize_sender_subject_snippet_or_body
   - do_not_infer_positive_recall_or_complete_mailbox_visibility_from_zero_results
   - do_not_treat_connector_latency_as_a_controlled_network_slo
   - do_not_claim_independent_quorum_from_same_provider_connector_telemetry
-last_result: GMAIL_NEGATIVE_CONTROL_WAKE_03_ACCEPTED
-next_probe: repeat_identical_gmail_message_id_negative_control_for_wake_4_then_issue_campaign_disposition_and_select_next_factor_without_fetching_messages
+last_result: KEEP_GMAIL_MESSAGE_ID_SEARCH_WITH_STRICT_CLAIM_CEILING
+next_campaign:
+  experiment_id: X11_GOOGLE_CALENDAR_READ_SURFACE_V1
+  controlled_factor: google_calendar_read_surface
+  accepted_wakes: 0
+  target_wakes_before_decision: 4
+next_probe: run_bounded_synthetic_negative_control_calendar_search_on_primary_without_read_event_or_externalizing_event_data
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 next_consumer: Reginleif_and_Ratatoskr
-updated_valid_time_utc: 2026-08-01T23:38:13Z
+updated_valid_time_utc: 2026-08-02T00:40:22Z
 sealed: false
 ---
 
-Gmail read visibility campaign wake 3 of 4 completed. The identical synthetic
-negative-control message-ID search again returned zero results with no error. Exposed
-latency decreased from 557 ms to 284 ms and remained in the same sub-second coarse
-class. No message was fetched and no sender, subject, snippet, or body data was
-persisted or externalized. Positive recall, mailbox completeness, label or delegated-
-account coverage, message-content permission, and independent verification remain open.
+Gmail read visibility completed four accepted wakes with KEEP gates. Four
+identical synthetic negative-control message-ID searches returned zero results
+and no errors without interactive login, message fetch, or sender, subject,
+snippet, or body export. All exposed connector latency observations remained
+sub-second. This keeps the surface for bounded exact message-ID searches only and
+does not prove positive recall, mailbox completeness, label or delegated-account
+coverage, message-content permission, useful operator outcomes, or independent
+verification. The next controlled factor is Google Calendar read visibility using
+a bounded primary-calendar negative-control search without reading event bodies.
