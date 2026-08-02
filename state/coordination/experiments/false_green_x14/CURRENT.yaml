@@ -2,19 +2,19 @@
 schema_id: hfo.gen133.x14.false_green_current.v1
 experiment_id: X14_FALSE_GREEN_MUTATION_001
 object_id: X14_FALSE_GREEN_CAMPAIGN_STATE
-version: 46
-expected_previous_version: 45
-previous_pointer_blob_sha: e1d3f864fa6e8df72923717722a9f4553403c5ee
-accepted_wakes: 45
+version: 47
+expected_previous_version: 46
+previous_pointer_blob_sha: 8375aa6741447ac2a99af051bf2ee7d0b9b1f675
+accepted_wakes: 46
 campaign_ordinal: 12
-campaign_wake: 1
+campaign_wake: 2
 campaign_length: 4
-current_status: CAMPAIGN_12_WAKE_1_TASK_ID_MISMATCH_ROUTED
-current_mutation_class: TASK_ID_MISMATCH
-next_mutation_class: ACTOR_CARRIER_CONFLATION
+current_status: CAMPAIGN_12_WAKE_2_ACTOR_CARRIER_CONFLATION_ROUTED
+current_mutation_class: ACTOR_CARRIER_CONFLATION
+next_mutation_class: STALE_SOURCE_DIGEST
 carrier_task_id: 6a513e4d9c4c81919db728f85db2dd79
 carrier_task_id_binding: NATIVE_AUTOMATIONS_LIST_EXACT_MATCH
-valid_time_utc: 2026-08-02T20:50:54Z
+valid_time_utc: 2026-08-02T21:50:23Z
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 canonical_repository: TTaoGaming/hfo-gen-133
 canonical_branch: agent/gen133-bootstrap-20260730
@@ -23,45 +23,46 @@ sealed: false
 ---
 
 source_candidate:
-  commit: d05b443edf1a8ca6b508c69f1259d1b40456ed2d
-  path: state/coordination/experiments/cots_connector_x13/20260802T204848Z_GOOGLE_DRIVE_METADATA_PHASE4_ADOPT_WITH_GATES.md
-  git_blob_sha1: 2abb8db4fd5294115d9715f5d81344f62c89f442
+  commit: 89228eb6d38f28ee2af0692ea7e4b8eaa15c1382
+  path: state/coordination/experiments/cots_connector_x13/20260802T214851Z_GITHUB_ACTIONS_WORKFLOW_RUN_STATUS_PHASE1_BASELINE.md
+  git_blob_sha1: 4a53da46d5c6f5d24f3413208cad73810eb98592
   source_digest_kind: GIT_BLOB_SHA1
-  source_digest: 2abb8db4fd5294115d9715f5d81344f62c89f442
+  source_digest: 4a53da46d5c6f5d24f3413208cad73810eb98592
   authoring_seat: X13_COTS_AND_CONNECTOR_PDCA_LAB
   source_task_id: 6a55c1733708819185088bf334e33ea5
-  source_experiment_id: X13_GOOGLE_DRIVE_BOUNDED_METADATA_SEARCH_READONLY_001
-  source_event_type: PHASE4_DECISION
-  source_prior_version: 47
-  source_version: 48
-  source_effect_ceiling: PHASE4_DECISION_ONLY_GIT_EVENT_CURRENT_ADVANCE_READBACK_AND_ONE_SHORT_REDACTED_SLACK_DECISION
-  source_verifier: SOURCE_BOUND_RAW_GOOGLE_DRIVE_FILES_LIST_OR_DISTINCT_AUTHORIZED_CLIENT_WITH_IDENTICAL_ACCOUNT_QUERY_CORPUS_FIELDS_PAGE_SIZE_AND_COMPLETENESS_FIELDS
+  source_experiment_id: X13_GITHUB_ACTIONS_WORKFLOW_RUN_STATUS_READONLY_001
+  source_event_type: PHASE1_BASELINE
+  source_prior_version: 48
+  source_version: 49
+  source_effect_ceiling: PHASE1_OFFICIAL_CONTRACT_ONE_BOUNDED_READONLY_COMMIT_WORKFLOW_RUN_QUERY_GIT_EVENT_CURRENT_ADVANCE_READBACK_AND_ONE_SHORT_REDACTED_SLACK_ANDON
+  source_verifier: SOURCE_BOUND_RAW_GITHUB_WORKFLOW_RUNS_ENDPOINT_WITH_EXPLICIT_HEAD_SHA_EVENT_AND_PAGE_POLICY_OR_GITHUB_ACTIONS_CHECKS_UI_FOR_THE_SAME_COMMIT
   source_consumer:
-    - HFO_BOUNDED_FILE_DISCOVERY
-    - HFO_HERITAGE_AND_PARA_ROUTING_WITH_SEPARATE_CONTENT_AUTHORIZATION
-  source_review_expiry_utc: 2026-08-09T20:48:48Z
-  source_campaign_phase: 4_of_4
-  source_decision: ADOPT_WITH_GATES
-  source_next_wake: X13_GITHUB_ACTIONS_WORKFLOW_RUN_STATUS_READONLY_PHASE1
+    - HFO_CI_RELEASE_GATES
+    - HFO_BRANCH_HEALTH_SUMMARIES
+    - HFO_AGENT_COMPLETION_VERIFICATION
+  source_review_expiry_utc: 2026-08-09T21:48:51Z
+  source_campaign_phase: 1_of_4
+  source_decision: PHASE1_ACCEPTED_WITH_EVENT_SCOPE_AND_EMPTY_RESULT_GATES
+  source_next_wake: X13_GITHUB_ACTIONS_WORKFLOW_RUN_STATUS_READONLY_PHASE2_POSITIVE_MICRO_USE_OR_UNKNOWN
   prior_x14_mutation_at_source_digest_before_write: false
 
 quarantined_mutant:
-  mutant_id: X14_MUTANT_046_e5fe0885f768
-  mutation_class: TASK_ID_MISMATCH
-  mutation_subcase: X13_SOURCE_EVENT_REBOUND_TO_X14_NATIVE_CARRIER_ID
-  commit: ee65ec73390730be7a3d329b1a5279daa4d47bd1
-  path: state/coordination/experiments/false_green_x14/quarantine/20260802T205054Z_X13_GOOGLE_DRIVE_TASK_ID_MISMATCH.mutant.yaml
-  git_blob_sha1: a28f69ec393c563210c13b080f6588e255ae90af
+  mutant_id: X14_MUTANT_047_818cc7f12371
+  mutation_class: ACTOR_CARRIER_CONFLATION
+  mutation_subcase: ACTOR_ROLE_LABEL_SUBSTITUTED_INTO_NATIVE_CARRIER_TASK_ID_FIELD
+  commit: f92cfd83f7a725a000f8d89efad68718bca146e0
+  path: state/coordination/experiments/false_green_x14/quarantine/20260802T215023Z_X13_GITHUB_ACTIONS_ACTOR_CARRIER_CONFLATION.mutant.yaml
+  git_blob_sha1: ecdb301b29277199c7a176d9dab58c39d5f67808
   canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
-  canonical_mutation_digest_sha256: e5fe0885f7683d9f7b88b178c79195425e3b14e9e3ee57e9cb9c7c6e0772bd1c
-  canonical_byte_count: 236
+  canonical_mutation_digest_sha256: 818cc7f123715897b8d07f442c07fea8666c17809f87ad0206a35964cd980be2
+  canonical_byte_count: 243
   mutated_field: carrier_task_id
   original_value: 6a55c1733708819185088bf334e33ea5
-  mutated_value: 6a513e4d9c4c81919db728f85db2dd79
+  mutated_value: X13_COTS_AND_CONNECTOR_PDCA_LAB
   expected_verdict: REVISE
-  expected_rejection_reason: SOURCE_EVENT_TASK_ID_DOES_NOT_MATCH_AUTHORING_SEAT_NATIVE_CARRIER
-  named_gate: S04_TASK_ID_SOURCE_EVENT_AUTHORING_SEAT_AND_NATIVE_CARRIER_BINDING_GATE
-  expires_utc: 2026-08-09T20:50:54Z
+  expected_rejection_reason: ACTOR_ROLE_LABEL_IS_NOT_A_NATIVE_CARRIER_TASK_ID_AND_CANNOT_PROVE_PROVIDER_EXECUTION_OR_AUTHORITY
+  named_gate: S04_ACTOR_CARRIER_ROLE_TYPE_NATIVE_TASK_BINDING_AND_AUTHORITY_GATE
+  expires_utc: 2026-08-09T21:48:51Z
   status: QUARANTINED_ROUTED_PENDING_VERDICTS
   accepted_wake_credit: true
 
@@ -69,10 +70,15 @@ campaign_evaluation:
   campaign_ordinal: 12
   decision_due: false
   intended_mutants: 4
-  accepted_wakes: 1
+  accepted_wakes: 2
   direct_s04_catches_observed: 0
   mutant_046:
     mutation_class: TASK_ID_MISMATCH
+    direct_s04_result: NOT_OBSERVED_POINTER_ONLY
+    distinct_s10_result: PENDING
+    caught_gate_credit: false
+  mutant_047:
+    mutation_class: ACTOR_CARRIER_CONFLATION
     direct_s04_result: PENDING
     distinct_s10_result: PENDING
     caught_gate_credit: false
@@ -80,7 +86,7 @@ campaign_evaluation:
   evidence_class: SAME_PROVIDER_NONBINDING
   binding_weight: 0
   decision: NOT_DUE
-  next_factor: ACTOR_CARRIER_CONFLATION
+  next_factor: STALE_SOURCE_DIGEST
 
 carryover_campaign_11:
   decision: HOLD
@@ -131,21 +137,21 @@ routing:
   distinct_falsification: S10_INDEPENDENT_SCHEDULER_READBACK_WITNESS
   distinct_verifier_route_status: AVAILABLE_AS_DISTINCT_SEAT_SAME_PROVIDER_NONBINDING_VIA_SLACK
   consumer: X14_CAMPAIGN_REDUCER_AND_RATATOSKR
-  current_verdict_status: MUTANT_046_DIRECT_ROUTE_REQUEST_PENDING_SLACK_POST
+  current_verdict_status: MUTANT_047_DIRECT_ROUTE_REQUEST_PENDING_SLACK_POST
   direct_candidate_priority_required: true
 
 current_campaign:
   campaign_ordinal: 12
-  accepted_wakes: 1
-  current_mutation_class: TASK_ID_MISMATCH
-  next_mutation_class: ACTOR_CARRIER_CONFLATION
-  gate_focus: TASK_ID_SOURCE_EVENT_AUTHORING_SEAT_AND_NATIVE_CARRIER_BINDING
+  accepted_wakes: 2
+  current_mutation_class: ACTOR_CARRIER_CONFLATION
+  next_mutation_class: STALE_SOURCE_DIGEST
+  gate_focus: ACTOR_CARRIER_ROLE_TYPE_NATIVE_TASK_BINDING_AND_AUTHORITY
   status: ACTIVE_PENDING_DIRECT_VERDICTS
   decision: NOT_DUE
 
 honest_flaw: >-
-  The mismatch is conspicuous because both task IDs are valid, visible, and assigned to different named seats. It does
-  not test copied titles, stale provider snapshots, aliases, replaced tasks with similar prompts, truncated identifiers,
-  or valid task IDs detached from exact event digests. Candidate discovery and source-digest dedup are best-effort because
-  repository indexing and branch reads are nontransactional. S10 is a distinct seat but the same provider, so its evidence
-  remains nonbinding with weight zero. No source, task, schedule, or provider state was modified.
+  The actor/carrier conflation is conspicuous because a human-readable role label replaces a 32-character provider task ID.
+  It does not test identical display names, delegated bots, shared credential principals, copied task titles, aliases, or a
+  valid carrier operating outside a separately bound actor authority grant. Candidate discovery and digest dedup are
+  best-effort because repository indexing and branch reads are nontransactional. S10 is a distinct seat but the same
+  provider, so its evidence remains nonbinding with weight zero. No source, task, workflow, or provider state was modified.
