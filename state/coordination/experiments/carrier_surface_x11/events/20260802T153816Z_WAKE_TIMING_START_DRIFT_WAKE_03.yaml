@@ -1,0 +1,51 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+experiment_id: X11_WAKE_TIMING_V1
+campaign_wake: 3
+expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+wip: 1
+baseline:
+  wake_1_carrier_observed_start_drift_seconds: 102
+  wake_1_drift_direction: AFTER_NOMINAL_BOUNDARY
+  wake_2_carrier_observed_start_drift_seconds: -92
+  wake_2_drift_direction: BEFORE_NOMINAL_BOUNDARY
+hypothesis: wrapper_supplied_runtime_timestamp_remains_parseable_and_the_same_minute_boundary_calculation_is_reproducible_across_wakes
+controlled_factor: wake_timing
+exact_probe: subtract_the_same_hour_minute_40_nominal_boundary_from_the_wrapper_supplied_runtime_timestamp_without_task_mutation
+measured_result:
+  carrier_observed_start_drift_seconds: -104
+  drift_direction: BEFORE_NOMINAL_BOUNDARY
+  accepted: true
+  campaign_progress: 3_of_4
+permission_class: AUTOMATION_RUNTIME_OBSERVED_TIMESTAMP_AVAILABLE
+error_class: WRAPPER_TIMESTAMP_PRECEDES_NOMINAL_BOUNDARY_MEASUREMENT_SCOPE_WARNING
+latency_exposed: false
+latency_ms: null
+operator_relay_minutes: 0
+strongest_falsifier: a_future_wake_lacks_a_parseable_runtime_timestamp_or_the_same_calculation_cannot_be_reproduced_without_using_a_later_tool_time_or_mutating_the_task
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer:
+  - Reginleif
+  - Ratatoskr
+honest_flaw: the_wrapper_supplied_timestamp_preceded_the_nominal_boundary_by_104_seconds_so_it_cannot_be_assumed_to_equal_scheduler_dispatch_or_execution_start_time_and_may_be_sampled_upstream_of_the_scheduled_wake
+gates:
+  task_mutation_performed: false
+  interactive_login_required: false
+  sensitive_readback_externalized: false
+  send_spend_deploy_merge_publish_performed: false
+  same_provider_independence_claimed: false
+slack_action: YIELD_SILENT_UNCHANGED
+next_probe:
+  campaign_wake: 4
+  mode: scheduled_wake_start_drift_observation_and_campaign_decision
+  exact_action: repeat_the_same_sanitized_wrapper_timestamp_minus_same_hour_minute_40_boundary_calculation_then_issue_keep_revise_reseat_variable_or_hold_and_select_the_next_factor
+claim_ceiling: carrier_observed_wrapper_timestamp_offset_only_not_provider_dispatch_queue_execution_duration_or_sla_compliance
+valid_time_utc: 2026-08-02T15:38:16Z
+recorded_time_utc: 2026-08-02T15:38:16Z
+sealed: true
+---
+
+Wake 3 reproduced the same calculation and again produced a wrapper timestamp
+before the nominal minute boundary, this time by 104 seconds. The sample is
+accepted as wrapper-level telemetry only. The repeated warning is unchanged, so
+Slack is silent. This remains no evidence of early provider dispatch.
