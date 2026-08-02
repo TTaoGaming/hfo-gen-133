@@ -122,6 +122,26 @@ No agent may manufacture ConsumerAck.
 - Fenrir fleet synthesis PR #8:
   https://github.com/TTaoGaming/hfo-gen-133/pull/8
 
+## Configured Fenrir pilots
+
+The supported automation API created three finite pilots:
+
+1. `fenrir-product-maker-and-subagent-dispatcher-pilot` — heartbeat on the
+   current Fenrir task, every four hours, maximum 12 wakes. It may spawn at most
+   two bounded maker subagents after collision and WIP checks.
+2. `fenrir-product-verifier-pilot` — standalone local-project verifier,
+   staggered after the maker, maximum 12 wakes. It uses a different OpenAI model
+   but still carries independence weight zero.
+3. `fenrir-product-consumer-and-launch-gate-pilot` — daily operator decision
+   gate, maximum seven wakes. It can prepare one `PILOT|REVISE|KILL` packet but
+   cannot deploy, contact, spend, or manufacture ConsumerAck.
+
+The app permits only one heartbeat on a task. Because the operator explicitly
+requested multiple scheduled tasks, verifier and consumer use supported
+standalone project automations. The saved `C:\Dev` project is a non-Git depot,
+so both prompts prohibit shared-checkout writes and require GitHub reads or a
+fresh isolated worktree.
+
 ## Broken/degraded tool ledger for this cutover
 
 - Supported automation updates paused five callable active schedules.
@@ -133,6 +153,11 @@ No agent may manufacture ConsumerAck.
 - One local TOML-inventory PowerShell pipeline had an invocation syntax error;
   the corrected read-only command succeeded. This was caller error, not an
   automation outage.
+- Automation creation rejects a caller-supplied `id`; the maker succeeded after
+  allowing the app to generate the stable slug.
+- The app rejected second and third heartbeats because only one may attach to a
+  task. The explicitly requested multiple schedules were created through the
+  supported standalone-project automation path instead.
 
 ## Receipt shape
 
