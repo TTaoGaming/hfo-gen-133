@@ -1,32 +1,33 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
 experiment_id: X13_GOOGLE_DRIVE_BOUNDED_METADATA_SEARCH_READONLY_001
-version: 45
-prior_version: 44
+version: 46
+prior_version: 45
 candidate: Google_Drive_bounded_metadata_only_search_connector_surface
 candidate_contract_reference: official_Google_Drive_files_list_search_query_scope_pagination_completeness_and_usage_limits_plus_direct_connector_receipt
-campaign_wake: 1_of_4
+campaign_wake: 2_of_4
 campaign_status: ACTIVE
 phase_1_completed: true
-phase_2_completed: false
+phase_2_completed: true
 phase_3_completed: false
 phase_4_completed: false
 phase_4_decision: null
 last_event:
-  commit: d53aa40451da32eabd176d161c93e9194f0afab7
-  path: state/coordination/experiments/cots_connector_x13/20260802T174635Z_GOOGLE_DRIVE_METADATA_PHASE1_BASELINE.md
-  blob_sha: ef6d6120bd292455933558200cea072fbe264334
+  commit: 32cbbd3bf1500c81438cd3dfd512401b2c3001c5
+  path: state/coordination/experiments/cots_connector_x13/20260802T184954Z_GOOGLE_DRIVE_METADATA_PHASE2_CAP_AND_CURSOR_ANDON.md
+  blob_sha: 5eee0d4b40b8552dd00ae9686b4073621b246206
   exact_readback_completed: true
-prior_current_commit: 2eec8a439cd793dd1b25913263a595071c287dbb
-prior_current_blob_sha: 460ee6a7d7e6906caa519de24f52aed92b01c1aa
+prior_current_commit: 62e76314cf592a3d44e89dcab5818a9ce29a8b42
+prior_current_blob_sha: 116e3f09b505bdff10a635e095a1671ab8aa1072
 carrier_task_id: 6a55c1733708819185088bf334e33ea5
 carrier_task_id_match: true
 carrier_task_id_observation_source: AUTOMATION_RUN_CONTEXT
-effect_ceiling: OFFICIAL_CONTRACT_BASELINE_ONE_BOUNDED_METADATA_ONLY_PROVIDER_PAGE_GIT_EVENT_CURRENT_ADVANCE_READBACK_AND_ONE_SHORT_NON_SECRET_SLACK_MEASURED_FACT
-adoption_credit: 1
+effect_ceiling: ONE_BOUNDED_METADATA_ONLY_RESULT_CAP_PROBE_GIT_EVENT_CURRENT_ADVANCE_READBACK_AND_ONE_SHORT_NON_SECRET_SLACK_MEASURED_ANDON
+adoption_credit: 2
 adoption_credit_basis:
   - OFFICIAL_PRIMARY_FILES_LIST_SEARCH_QUERY_SCOPE_PAGINATION_COMPLETENESS_AND_QUOTA_CONTRACT
-  - ONE_BOUNDED_METADATA_ONLY_PROVIDER_PAGE
+  - ONE_BOUNDED_METADATA_ONLY_PROVIDER_PAGE_BASELINE
+  - ONE_BOUNDED_TOPN_1_RESULT_CAP_PROBE
   - BEST_EFFORT_FETCH_FALSE_AND_EXPLICIT_DOCUMENT_ITEM_TYPE
   - NO_FILE_CONTENT_HYDRATION_OR_DRIVE_WRITE_SIDE_EFFECT
 fitness_credit: 0_PENDING_EXPLICIT_SOURCE_BOUND_CONSUMER_ACK_AND_MEASURED_OPERATOR_OUTCOME
@@ -61,6 +62,7 @@ credentials:
 paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
 campaign_candidate_invocations:
   phase_1_bounded_metadata_search: 1
+  phase_2_topn_1_result_cap_probe: 1
 actual_upstream_request_count: UNKNOWN
 actual_quota_units_consumed: UNKNOWN
 actual_quota_class: UNKNOWN
@@ -77,6 +79,22 @@ direct_phase_1_receipt:
   require_viewed_by_user: false
   page_token_supplied: false
   returned_result_count: 3
+  next_page_token_visible: false
+  exact_result_metadata_persisted_in_event: false
+  file_content_or_text_hydration_returned: false
+  connector_latency_ms: NOT_EXPOSED
+  top_level_error: null
+  write_side_effect: false
+direct_phase_2_receipt:
+  query_class: same_short_specific_keyword_as_phase_1
+  query_value: HFO
+  item_type: document
+  topn: 1
+  provider_page_count: 1
+  best_effort_fetch: false
+  require_viewed_by_user: false
+  page_token_supplied: false
+  returned_result_count: 1
   next_page_token_visible: false
   exact_result_metadata_persisted_in_event: false
   file_content_or_text_hydration_returned: false
@@ -107,8 +125,11 @@ official_contract_checked_2026_08_02:
 fresh_web_contract_retrieval_this_wake: SUCCESS_OFFICIAL_GOOGLE_PRIMARY_DOCS
 failure_semantics:
   bounded_metadata_search: DIRECTLY_OBSERVED_SUCCESS
-  content_nonhydration: DIRECTLY_OBSERVED_FOR_THIS_CALL
+  topn_1_result_cap: DIRECTLY_OBSERVED_ONE_RESULT
+  content_nonhydration: DIRECTLY_OBSERVED_FOR_BOTH_CALLS
   result_completeness: NOT_PROVEN
+  connector_token_visibility: NO_TOKEN_VISIBLE_IN_PHASE_1_OR_PHASE_2
+  connector_topn_mapping_to_raw_pageSize: NOT_PROVEN
   incompleteSearch_visibility: NOT_EXPOSED
   valid_pagination: NOT_TESTED
   invalid_page_token: NOT_TESTED
@@ -118,7 +139,7 @@ failure_semantics:
   transient_server_failure: NOT_TESTED
   independent_cross_client_readback: NOT_TESTED
 durability: EPHEMERAL_POINT_IN_TIME_METADATA_OBSERVATION_OVER_MUTABLE_DRIVE_AND_INDEX_STATE_PAGE_TOKENS_NOT_DURABLE_RECORDS
-observability: MEDIUM_LOW_FOR_RESULT_METADATA_COUNT_AND_SUCCESS_BUT_LOW_FOR_RAW_HTTP_CORPUS_INCOMPLETE_SEARCH_IDENTITY_SCOPE_PROJECT_REQUEST_ID_QUOTA_LATENCY_AND_UPSTREAM_RETRIES
+observability: MEDIUM_LOW_FOR_RESULT_METADATA_COUNT_AND_SUCCESS_BUT_LOW_FOR_RAW_HTTP_TOKEN_SUPPRESSION_CORPUS_INCOMPLETE_SEARCH_IDENTITY_SCOPE_PROJECT_REQUEST_ID_QUOTA_LATENCY_AND_UPSTREAM_RETRIES
 portability: MEDIUM_LOW_OVERALL_DRIVE_QUERY_SYNTAX_FILE_IDS_PARENT_IDS_RESOURCE_KEYS_SHARED_DRIVE_SEMANTICS_AND_PAGE_TOKENS_ARE_PROVIDER_SPECIFIC
 admitted_scope:
   - BOUNDED_READ_ONLY_METADATA_SEARCH
@@ -138,32 +159,38 @@ excluded_scope:
   - COMPLETENESS_OWNERSHIP_OR_IDENTITY_CLAIMS
 mandatory_gates:
   - KEEP_BEST_EFFORT_FETCH_FALSE_AND_AN_EXPLICIT_METADATA_ONLY_ITEM_TYPE
-  - USE_A_SMALL_EXPLICIT_TOPN_AND_TREAT_ONE_PAGE_AS_INCOMPLETE_UNLESS_PROVEN_OTHERWISE
+  - USE_A_SMALL_EXPLICIT_TOPN_AND_TREAT_IT_AS_A_CONNECTOR_RESULT_CAP_UNTIL_RAW_PAGE_SIZE_MAPPING_IS_PROVEN
+  - TREAT_ONE_CONNECTOR_PAGE_AS_INCOMPLETE_UNLESS RAW_NEXT_PAGE_TOKEN_AND_INCOMPLETE_SEARCH_EVIDENCE_PROVE_OTHERWISE
   - TREAT_TITLES_IDS_URLS_PARENT_IDS_RESOURCE_KEYS_AND_FOLDER_RELATIONSHIPS_AS_SENSITIVE_METADATA
-  - DO_NOT_PERSIST_EXACT_RESULT_METADATA_WITHOUT_CONSUMER_NEED_AND_RETENTION_JUSTIFICATION
+  - DO_NOT_PERSIST_EXACT_RESULT_METADATA_OR_TOKEN_VALUES_WITHOUT_CONSUMER_NEED_AND_RETENTION_JUSTIFICATION
   - DO_NOT_INFER_ACCOUNT_IDENTITY_OAUTH_SCOPE_OWNERSHIP_WRITE_AUTHORITY_CORPUS_SHARED_DRIVE_COVERAGE_OR_BILLING_STATE_FROM_SUCCESS
-  - TREAT_ABSENT_NEXT_PAGE_TOKEN_ONLY_AS_A_PROPERTY_OF_THIS_CONNECTOR_RESPONSE_NOT_PROOF_OF_SEARCH_SPACE_COMPLETENESS
-  - REQUIRE_INCOMPLETE_SEARCH_VISIBILITY_OR_EQUIVALENT_EVIDENCE_BEFORE_COMPLETENESS_CLAIMS
+  - TREAT_ABSENT_CONNECTOR_VISIBLE_NEXT_PAGE_TOKEN_ONLY_AS_A_PROPERTY_OF_THIS_NORMALIZED_RESPONSE_NOT_RAW_API_COMPLETENESS_PROOF
+  - REQUIRE_INCOMPLETE_SEARCH_VISIBILITY_OR_EQUIVALENT EVIDENCE_BEFORE_COMPLETENESS_CLAIMS
+  - TREAT_RESULTS_ACROSS_WAKES_AS_MUTABLE_OBSERVATIONS_NOT_SNAPSHOTS
   - NO_CONTENT_HYDRATION_DOWNLOAD_EXPORT_ROW_READ_CREATE_UPDATE_MOVE_RENAME_UPLOAD_PERMISSION_SHARING_OWNERSHIP_TRASH_OR_DELETE
 verifier: RAW_GOOGLE_DRIVE_FILES_LIST_OR_DISTINCT_AUTHORIZED_CLIENT_WITH_SOURCE_BOUND_ACCOUNT_EXACT_QUERY_FIELDS_CORPUS_PAGE_SIZE_AND_COMPLETENESS_FIELDS
 consumer:
   - HFO_BOUNDED_FILE_DISCOVERY
   - HFO_HERITAGE_AND_PARA_ROUTING_WITH_SEPARATE_CONTENT_AUTHORIZATION
-strongest_falsifier: A_SOURCE_BOUND_RAW_CLIENT_RETURNS_MATERIALLY_DIFFERENT_MEMBERSHIP_OR_SHOWS_THE_CONNECTOR_HYDRATED_FILE_CONTENT_OR_MUTATED_DRIVE_STATE
-honest_flaw: ONE_KEYWORD_ONE_PAGE_THREE_RESULTS_ONLY_NO_EMPTY_QUERY_PAGINATION_SHARED_DRIVE_CORPUS_INCOMPLETE_SEARCH_PERMISSION_DENIAL_INVALID_TOKEN_RATE_LIMIT_IDENTITY_SCOPE_INDEPENDENT_READBACK_OR_CONSUMER_ACK
+strongest_falsifier: A_SOURCE_BOUND_RAW_CLIENT_RETURNS_A_CONTINUATION_TOKEN_OR_MATERIALLY_DIFFERENT_MEMBERSHIP_FOR_THE_SAME_QUERY_WHILE_THE_CONNECTOR_OMITS_OR_ALTERS_THAT_STATE
+honest_flaw: NO_SAME_INSTANT_RAW_API_COMPARISON_VALID_PAGINATION_INCOMPLETE_SEARCH_SHARED_DRIVE_CORPUS_IDENTITY_SCOPE_ERROR_PROBE_INDEPENDENT_READBACK_OR_CONSUMER_ACK
 phase_1_result:
   disposition: PHASE1_ACCEPTED_WITH_SCOPE_CORPUS_COMPLETENESS_AND_QUOTA_GATES
   rationale: BOUNDED_METADATA_DISCOVERY_SUCCEEDED_WITHOUT_CONTENT_OR_MUTATION_BUT_SCOPE_CORPUS_COMPLETENESS_IDENTITY_QUOTA_AND_RAW_TELEMETRY_REMAIN_UNPROVEN
+phase_2_result:
+  disposition: PHASE2_ACCEPTED_WITH_RESULT_CAP_AND_PAGINATION_VISIBILITY_GATES
+  rationale: TOPN_1_RETURNED_ONE_METADATA_RECORD_WITHOUT_CONTENT_OR_MUTATION_BUT_NO_CONNECTOR_VISIBLE_CURSOR_AND_NO_RAW_COMPLETENESS_FIELDS_LEAVE_PAGINATION_UNPROVEN
 next_wake:
-  phase: 2_of_4
-  proposed_micro_use: REPEAT_EXACT_METADATA_ONLY_QUERY_WITH_TOPN_1_TO_TEST_CONTINUATION_TOKEN_AND_RESULT_CAP_BEHAVIOR
+  phase: 3_of_4
+  proposed_probe: ONE_SYNTHETIC_NON_DRIVE_DERIVED_INVALID_PAGE_TOKEN_WITH_THE_SAME_BOUNDED_METADATA_ONLY_QUERY
   constraints:
-    - DO_NOT_FETCH_NEXT_PAGE
-    - DO_NOT_PERSIST_RESULT_METADATA_OR_TOKEN_VALUE
+    - DO_NOT_RETRY
+    - DO_NOT_PERSIST_TOKEN_OR_RESULT_METADATA
     - BEST_EFFORT_FETCH_FALSE
     - NO_CONTENT_OR_MUTATION
-review_expiry_utc: 2026-08-09T17:46:35Z
-valid_time_utc: 2026-08-02T17:46:35Z
+    - CAPTURE_NORMALIZED_ERROR_WITHOUT_ATTRIBUTING_UNEXPOSED_RAW_HTTP_DETAILS
+review_expiry_utc: 2026-08-09T18:49:54Z
+valid_time_utc: 2026-08-02T18:49:54Z
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 sealed: true
 prior_campaign:
@@ -180,10 +207,12 @@ prior_prior_campaign:
 
 # X13 current campaign
 
-Google Drive bounded metadata-only search completed phase **1/4**.
+Google Drive bounded metadata-only search completed phase **2/4**.
 
-One provider page returned three accessible metadata matches with `item_type=document`, `topn=3`, and `best_effort_fetch=false`. No file content, text hydration, download, export, or Drive mutation was requested or observed. Exact file metadata was not persisted in the event.
+The repeated keyword search with `item_type=document`, `topn=1`, and `best_effort_fetch=false` returned one metadata record and no visible continuation token. No file content, text hydration, download, export, or Drive mutation was requested or observed. Exact result metadata and token values were not persisted.
+
+The connector respected the result cap, but pagination completeness is not established. Phase 1 returned three records for the same keyword with `topn=3`; phase 2 returned one with no visible cursor. Drive membership can change between wakes, and connector `topn` is not proven to equal raw API `pageSize`, so the discrepancy is an Andon rather than proof of token suppression.
 
 Measured operator relief remains `0`; surfaced cost was `$0`. Identity, OAuth scope, project, corpus, shared-drive coverage, `incompleteSearch`, raw HTTP, quota counters, retries, and connector latency remain hidden.
 
-Next wake repeats the exact metadata-only query with `topn=1` to test continuation-token emission and result-cap behavior without fetching another page.
+Next wake performs one invalid-page-token failure probe without retry, content hydration, metadata persistence, or Drive mutation.
