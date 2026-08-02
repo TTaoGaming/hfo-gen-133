@@ -1,0 +1,50 @@
+schema: hfo.gen133.operator_relief_receipt.v1
+receipt_id: S05_CHASE_STATEMENT_REVIEW_BOUND_20260802T081500Z
+seat: S05
+carrier: chatgpt_scheduled_task
+task_id: 6a55c182078c8191b89f2dd15f5f640c
+branch: agent/gen133-bootstrap-20260730
+result: DEADLINE_BOUND
+valid_time: 2026-08-02T07:43:17Z
+transaction_time: 2026-08-02T08:15:00Z
+active_item: CHASE_STATEMENT_REVIEW
+material_change:
+  source_system: Gmail
+  sanitized_fact: A new Chase statement notification is available for one existing account.
+  private_source_pointer:
+    gmail_message_id: 19fc16d7245810d5
+    subject: Your latest statement is now available
+    account_identifier: RETAINED_IN_SOURCE_SYSTEMS
+  bounded_transition:
+    source_system: Google Calendar
+    calendar_event_id: v7aus82o0ognvo5ujr44olobjk_20260802T161500Z
+    event_title: Daily finance + bills control (15 min)
+    review_window_local: 2026-08-02T10:15:00-06:00/2026-08-02T10:30:00-06:00
+    action: Added the new statement to the existing private finance review block.
+    required_readback:
+      - statement_date
+      - payment_due_date
+      - statement_balance
+      - minimum_due
+      - autopay_status
+      - one_next_action
+    safety_boundary: No payment, transfer, autopay, or account change authorized.
+priorities:
+  p0: GOODYEAR_VEHICLE_PICKUP_AND_SAFE_HANDOFF
+  p1:
+    - EXPERIAN_CREDIT_FILE_ALERT_REVIEW
+    - PFA_DISCLOSURE_DUE_2026-08-05
+operator_minutes_removed: 5
+next_consumer: operator_at_private_finance_review
+privacy:
+  gmail_body_externalized: false
+  financial_amounts_externalized: false
+  account_identifier_externalized: false
+  git_and_slack_ceiling: sanitized_fact_and_opaque_source_pointer_only
+forbidden_effects_observed:
+  email_sent: false
+  payment_or_spend: false
+  account_or_security_change: false
+  scheduled_task_mutation: false
+  deployment_merge_or_publication: false
+honest_limit: The notification proves only that a statement is available; it does not establish the balance, due date, minimum due, autopay state, or settlement status until the operator reads Chase directly.
