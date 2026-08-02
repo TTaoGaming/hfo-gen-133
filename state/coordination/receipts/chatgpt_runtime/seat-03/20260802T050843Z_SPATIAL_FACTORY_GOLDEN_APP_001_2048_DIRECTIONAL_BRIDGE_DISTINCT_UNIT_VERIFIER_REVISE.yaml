@@ -1,0 +1,248 @@
+---
+schema_id: hfo.gen133.s03.verification_route.v2
+result: REVISE
+terminal: false
+work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_001
+parent_work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001
+correlation_id: SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_001
+seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+carrier_task_id_expected: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_observed: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+valid_time_utc: 2026-08-02T05:08:43Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+producer_return_due_utc: 2026-08-02T06:03:15Z
+verdict_due_utc: 2026-08-02T06:33:15Z
+consumer_ack_due_utc: 2026-08-02T07:03:15Z
+claim_lease_expires_utc: 2026-08-02T07:03:15Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+sealed: false
+---
+
+self_probe:
+  task_inventory: native_read_only
+  exact_task_id_match: true
+  github_connector: authenticated_read_write_search_compare_exact_readback
+  slack_connector: authenticated_public_channel_read_write
+  direct_distinct_provider_execution_ingress: unavailable
+  checkout_or_shell_used_by_s03: false
+  producer_or_verifier_execution_by_s03: false
+  task_mutation_performed: false
+  prohibited_world_effects_performed: false
+
+selected_changed_input:
+  kind: PRODUCER_RETURN_PLUS_CLAIM_CEILING_VOTE
+  selection_reason: >-
+    Since the prior S03 receipt, the repaired successor passed S04 structural preflight, S06 compiled a
+    bounded packet, S07 returned an exact three-file patch with command and exit-code evidence, and S09
+    narrowed the next claim to unit-contract reproduction. No later distinct digest-bound verdict or
+    ConsumerAck was found.
+
+claim_binding:
+  claim_id: S02_SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_REPAIRED_SUCCESSOR_20260802T040305Z
+  commit: a884fcbfbe3ee7547e5416201c5c1dfd7e6f2f4e
+  path: projects/spatial-app-factory/claims/20260802T040305Z_SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_REPAIRED_SUCCESSOR.claim.yaml
+  blob: 94b627307f6a2772855fd782dc6dbaef9dbb1924
+  acceptance_contract_sha256: 2b2cc6df856129af5d92f5c55caaff771075801d041f24824c015c18b99d0a7d
+  idempotency_key: f1bd3140ff0ed92104b1dba269a8a9dc329561a230ff818f14a212cd4c982d20
+  effect_ceiling: BRANCH_FILE_TEST_ON_DEDICATED_AGENT_BRANCH_ONLY
+  privacy_ceiling: PUBLIC_REPOSITORY_BYTES_AND_SANITIZED_TEST_POINTERS_ONLY
+  rollback: >-
+    Do not merge or delete. Preserve the claim, branch, producer return, and later verdict as immutable
+    history. On FELL or expiry, retire the internal canary through a separate receipt; no third claim or
+    silent renewal is authorized.
+
+structural_preflight:
+  commit: 64d9db3f1d4d4bd339c103f8839102bd9bbfd583
+  path: state/coordination/receipts/chatgpt_runtime/seat-04/20260802T041723Z_S02_2048_DIRECTIONAL_BRIDGE_REPAIRED_SUCCESSOR_PASS_STRUCTURAL.yaml
+  blob: 38167a08909e56300268aca0d70aae7e62f01fad
+  result: PASS_STRUCTURAL
+  binding_weight: 0
+
+executor_packet:
+  commit: 484379ac81f2943d2ab49bf0b17fb563571735fc
+  path: projects/spatial-app-factory/dispatch/20260802T042202Z_SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_REPAIRED_SUCCESSOR_HOLD.executor.yaml
+  blob: 072aeb7294e6f596c6d0b991e555cada5b722c30
+  state: STRUCTURALLY_ROUTABLE_NOT_DIRECTLY_ROUTED
+
+producer_return:
+  producer: S07_BOUNDED_CODE_PATCH_BUILDER
+  producer_task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+  result: PATCH_RETURNED
+  commit: ffdf23e91d37a47c7a3b8605910fe1a9e49a680d
+  path: state/coordination/receipts/chatgpt_runtime/seat-07/20260802T042745Z_SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_PATCH_RETURNED.yaml
+  blob: bdc39259367a507e5894a907c30075b0191908f6
+  returned_before_due: true
+  runtime: ChatGPT_Cloud_scheduled_carrier_plus_ephemeral_Node_22_16_0
+  branch: agent/spatial-2048-directional-bridge-repair-20260802T0424Z
+  base_commit: e0e3125e1ef6bb33e189c91b485ec341f2d3cd52
+  final_commit: a3b636a7ecaab5afa1932ec92559c7c454904039
+  producer_commands:
+    red:
+      command: node --test prototypes/2048-spatial-canary/*.test.js
+      exit_code: 1
+      concise_output: MODULE_NOT_FOUND_before_implementation
+    green:
+      command: node --test prototypes/2048-spatial-canary/*.test.js
+      exit_code: 0
+      concise_output: tests_5_pass_5_fail_0
+    blob_check:
+      command: git hash-object prototypes/2048-spatial-canary/directional-bridge.js prototypes/2048-spatial-canary/directional-bridge.test.js
+      exit_code: 0
+  rollback: >-
+    Leave the dedicated branch unmerged. Do not delete, force-push, rebase, or reset. If verification
+    falls or expires, preserve the branch as a failed or incomplete internal specimen.
+  honest_flaw: >-
+    Producer tests ran against exact GitHub-readback bytes reconstructed in an isolated temporary directory,
+    not a clean authenticated checkout or real browser. The tests use an InputManager double and do not bind
+    an actual TAGS gesture-to-direction producer.
+
+point_in_time_target_readback:
+  repository: TTaoGaming/TAGS
+  branch: agent/spatial-2048-directional-bridge-repair-20260802T0424Z
+  branch_equals_final_commit: true
+  branch_compare_to_final:
+    status: identical
+    ahead_by: 0
+    behind_by: 0
+  compare_base_to_final:
+    status: ahead
+    ahead_by: 3
+    behind_by: 0
+    only_added_paths: true
+    added_paths:
+      - prototypes/2048-spatial-canary/THIRD_PARTY_NOTICE.md
+      - prototypes/2048-spatial-canary/directional-bridge.js
+      - prototypes/2048-spatial-canary/directional-bridge.test.js
+  exact_file_readback:
+    bridge:
+      path: prototypes/2048-spatial-canary/directional-bridge.js
+      blob: 1cedd74ea11a0199a3d7537b5b4136261307f309
+      producer_sha256: 28f3794567edc7f21461b0cd9d6440f1341eb7b2c6cba3036f440e825c3201a6
+    tests:
+      path: prototypes/2048-spatial-canary/directional-bridge.test.js
+      blob: 92eaed8f2680f332e7bd62ca59724bb89b291bf0
+      producer_sha256: b10352b35ca4b902053741acc06acb05b49c80110ea99963945f3d53852c36cc
+
+claim_ceiling_vote:
+  commit: 2367a73a78472af32a28e940a2c29f04eb38789a
+  path: state/coordination/votes/20260802T043401Z_S09_2048_PATCH_RETURN_CLAIM_CEILING.vote.md
+  blob: 84be24382e463dfd34ede70b3edf88fd80a4a1a9
+  result: REVISE
+  selected_option: VERIFY_EXACT_UNIT_CONTRACT_WITHOUT_SPATIAL_COMPATIBILITY_CLAIM
+  binding_weight: 0
+
+producer_bundle:
+  canonicalization: SHA256_UTF8_LF_JOIN_NO_TERMINAL_NEWLINE
+  canonical_input: |-
+    SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_001
+    94b627307f6a2772855fd782dc6dbaef9dbb1924
+    bdc39259367a507e5894a907c30075b0191908f6
+    a3b636a7ecaab5afa1932ec92559c7c454904039
+    1cedd74ea11a0199a3d7537b5b4136261307f309
+    92eaed8f2680f332e7bd62ca59724bb89b291bf0
+    2b2cc6df856129af5d92f5c55caaff771075801d041f24824c015c18b99d0a7d
+    84be24382e463dfd34ede70b3edf88fd80a4a1a9
+  exact_byte_count: 369
+  sha256: 12d1b2b97f6a4f069329d826740d9340e665bd2ed67b4ce5cdee7fc3e5eb9cf8
+
+fresh_verdict_and_ack_search:
+  git_final_commit_plus_STOOD_or_FELL: no_distinct_verdict_found
+  slack_final_commit_search:
+    found_same_provider_S07_return: true
+    found_same_provider_S09_vote: true
+    found_distinct_digest_bound_STOOD_or_FELL: false
+    found_explicit_post_STOOD_consumer_ack: false
+  search_limit: >-
+    Git code search and Slack search can lag or omit unindexed writes. This is a point-in-time route, not proof
+    that no evidence exists outside the observed canonical repository and control channel.
+
+exact_verifier_packet:
+  primary_addressee: OLRUN_CLAUDE_DESKTOP_NONPRODUCER
+  alternate_addressee: OTHER_AUTHORIZED_DISTINCT_PROVIDER_NONPRODUCER_WITH_GIT_AND_NODE
+  delivery_surface: GIT_IMMUTABLE_ROUTE_PLUS_SHARED_SLACK_POINTER
+  route_status: POSTED_NOT_ACKNOWLEDGED
+  required_consumable_result: STOOD_OR_FELL
+  required_verdict_scope: UNIT_CONTRACT_ONLY
+  bind_every_result_to:
+    work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_001
+    claim_blob: 94b627307f6a2772855fd782dc6dbaef9dbb1924
+    producer_return_blob: bdc39259367a507e5894a907c30075b0191908f6
+    producer_bundle_sha256: 12d1b2b97f6a4f069329d826740d9340e665bd2ed67b4ce5cdee7fc3e5eb9cf8
+    target_repository: TTaoGaming/TAGS
+    target_branch: agent/spatial-2048-directional-bridge-repair-20260802T0424Z
+    target_final_commit: a3b636a7ecaab5afa1932ec92559c7c454904039
+    acceptance_contract_sha256: 2b2cc6df856129af5d92f5c55caaff771075801d041f24824c015c18b99d0a7d
+  required_actions:
+    - clean clone or exact checkout of target_final_commit
+    - confirm git rev-parse HEAD equals target_final_commit
+    - recompute compare against base_commit and confirm only the three listed added paths
+    - recompute bridge and test Git blob IDs and byte digests
+    - run node --test prototypes/2048-spatial-canary/*.test.js and capture exact output and exit code
+    - inspect the exact upstream 2048 InputManager emit move seam without changing repository bytes
+    - verify accepted integer directions 0 through 3 emit exactly once and rejected ambiguous cancelled low-confidence or unapproved held inputs emit zero
+    - verify no pre-existing TAGS file changed and native input-manager methods are not replaced
+  optional_action:
+    - ephemeral browser load limited to proving the exact bridge can invoke the exact upstream emit move seam
+  required_return_fields:
+    - provider_runtime_model
+    - verifier_identity_and_nonproducer_declaration
+    - exact_commands_outputs_and_exit_codes
+    - exact_source_and_blob_readback
+    - STOOD_or_FELL_bound_to_producer_bundle_sha256
+    - verdict_scope_UNIT_CONTRACT_ONLY
+    - rollback
+    - remaining_risk
+    - honest_flaw
+  strongest_falsifier: >-
+    A clean-clone mismatch, any changed path outside the three-path ceiling, blob mismatch, nonzero Node-test exit,
+    duplicate accepted moves, any rejected action emitting a move, mutation of native methods, or inability to bind
+    the exact upstream emit seam requires FELL for the unit contract.
+  effect_ceiling: READ_EXACT_BYTES_CLEAN_CLONE_RERUN_EXISTING_TESTS_OPTIONAL_EPHEMERAL_BROWSER_VERDICT_ONLY
+  forbidden:
+    - repository_byte_change
+    - producer_repair_or_new_harness_commit
+    - task_mutation
+    - merge_deployment_publication_send_spend
+    - account_or_security_change
+    - spatial_end_to_end_compatibility_claim
+    - distribution_demand_revenue_or_buyer_claim
+    - implicit_ConsumerAck
+
+consumer_ack_gate:
+  requested_now: false
+  request_only_after: DISTINCT_STOOD_BOUND_TO_PRODUCER_BUNDLE
+  required_from: SPATIAL_APP_FACTORY_BACKLOG_OWNER
+  ack_must_bind:
+    - work_item_id
+    - claim_blob
+    - producer_return_blob
+    - producer_bundle_sha256
+    - distinct_verdict_digest
+    - accepted_effect_ceiling_UNIT_CONTRACT_INTERNAL_SPECIMEN_FITNESS_ZERO
+  deadline_utc: 2026-08-02T07:03:15Z
+  no_ack_effect: HOLD_CONSUMER_EDGE_NO_TERMINAL_CLOSURE
+
+reducer_disposition:
+  state: WAITING_FOR_DISTINCT_UNIT_CONTRACT_VERDICT
+  terminal_receipt_written: false
+  terminal_credit: 0
+  reason: >-
+    The producer return satisfies the claim, exact-byte, command/exit-code, rollback, effect-ceiling, expiry,
+    and honest-flaw fields required for routing. It does not supply independent STOOD or FELL. S03 therefore
+    routes one exact narrowed packet and does not grade, repair, consume, merge, deploy, or close the WorkItem.
+  on_STOOD: request_explicit_named_ConsumerAck_before_claim_expiry
+  on_FELL: write_FELL_reduction_and_route_separate_retirement_without_repair_successor
+  on_no_verdict_by_verdict_due: HOLD_until_claim_expiry_then_retire_without_renewal
+
+honest_flaw: >-
+  S03 cannot directly execute Claude Desktop or prove that the Slack route is picked up. The designated primary
+  addressee is a routing target, not a verified active consumer. All ChatGPT-carried claim, structural, producer,
+  reducer, and vote evidence is correlated and has binding weight zero. Git provides immutable versioned bytes,
+  not database transactions or exactly-once delivery. The point-in-time branch and search readbacks can become stale.
+---
