@@ -1,0 +1,85 @@
+schema: hfo.gen133.operator_relief_receipt.v1
+receipt_id: S05-20260802T131801Z-TECTANGLE-VISUAL-SNAPSHOT-CI
+seat: S05
+carrier: chatgpt_scheduled_task
+task_binding:
+  expected_task_id: 6a55c182078c8191b89f2dd15f5f640c
+  observed_task_id: 6a55c182078c8191b89f2dd15f5f640c
+  observed_enabled: true
+wip_limit: 1
+canonical:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+valid_time: 2026-08-02T12:40:14Z
+transaction_time: 2026-08-02T13:18:01Z
+result: STATUS_RECONCILED
+active_item:
+  id: TECTANGLE_VISUAL_SNAPSHOT_DAILY_20260802
+  state: ROUTED_TECHNICAL_NOT_OPERATOR_FIRE
+  bounded_transition: source_readback_root_cause_classification
+priority_projection:
+  p0: GOODYEAR_VEHICLE_PICKUP_SAFE_HANDOFF
+  p1:
+    - CHASE_STATEMENT_REVIEW
+    - EXPERIAN_CREDIT_FILE_ALERT_REVIEW
+source_evidence:
+  gmail:
+    pointer: gmail_message_19fc27da1751f7c6
+    claim: GitHub notification reported Visual Snapshot Daily run 30748268031 failed on main commit 49da03bd595d364789c219382ec6bec6f56b552d.
+    private_body_externalized: false
+  github_actions:
+    repository: TTaoGaming/Tectangle
+    run_id: 30748268031
+    job_id: 91497567222
+    run_url: https://github.com/TTaoGaming/Tectangle/actions/runs/30748268031
+    observed:
+      - checkout_succeeded
+      - node_setup_succeeded
+      - dependency_install_succeeded
+      - static_server_start_succeeded
+      - server_wait_succeeded
+      - visual_snapshot_step_failed
+      - artifact_upload_succeeded
+    failure_signature: "Puppeteer browser launch failed: No usable sandbox on Ubuntu 24.04 runner; process exited 1."
+classification:
+  proven:
+    - Failure occurred during Jest/Puppeteer global setup before the visual snapshot test could execute.
+    - The immediate failure is runner/browser sandbox compatibility, not a detected visual-diff assertion.
+  not_proven:
+    - application_regression
+    - visual_baseline_mismatch
+    - production_failure
+    - successful_repair
+  operator_action_required_now: false
+  escalation_class: HFO_TECHNICAL_LANE
+next_consumer:
+  seat: S06
+  role: code_work_packet_compiler
+  exact_packet:
+    repository: TTaoGaming/Tectangle
+    base_sha: 49da03bd595d364789c219382ec6bec6f56b552d
+    failing_run: 30748268031
+    failing_job: 91497567222
+    target: restore CI browser launch without weakening non-CI browser sandboxing
+    inspect_first:
+      - jest-puppeteer configuration
+      - Visual Snapshot Daily workflow runner and browser flags
+    acceptance:
+      - browser launches on the hosted Ubuntu runner
+      - visual snapshot step reaches test execution
+      - local/non-CI sandbox defaults remain unchanged
+    effect_ceiling: PACKET_ONLY_UNTIL_EXPLICIT_BRANCH_FILE_TEST_WORKITEM
+    verifier: S04_or_distinct_code_verifier
+operator_minutes_removed: 8
+privacy:
+  git_and_slack_content: sanitized_status_and_public_technical_pointers_only
+  excluded: email_body_tokens_account_data_credentials
+constraints_observed:
+  - no_task_mutation
+  - no_email_send
+  - no_deployment
+  - no_merge
+  - no_publication
+  - no_account_or_security_change
+  - no_destructive_action
+honest_flaw: Root-cause classification is based on one failed hosted-run log; no repair or independent rerun has occurred.
