@@ -1,31 +1,33 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
 experiment_id: X13_GITHUB_CONTENTS_CONNECTOR_001
-version: 29
-prior_version: 28
+version: 30
+prior_version: 29
 candidate: GitHub_contents_API_branch_scoped_file_create_update_fetch_and_readback_connector
 candidate_contract_reference: official_GitHub_repository_contents_and_REST_rate_limit_contract_plus_direct_connector_receipts
-campaign_wake: 1_of_4
+campaign_wake: 2_of_4
 campaign_status: ACTIVE
 phase_1_completed: true
-phase_2_completed: false
+phase_2_completed: true
 phase_3_completed: false
 phase_4_completed: false
 phase_4_decision: PENDING
-last_event_commit: 08af876e6175f2c5ca0d71258c9294a6dd95c10a
-last_event_path: state/coordination/experiments/cots_connector_x13/20260802T014800Z_GITHUB_CONTENTS_PHASE1_BASELINE.md
-last_event_blob_sha: 64a4a3289546cb451b58ff47b46ff45be6d31ef6
-prior_current_commit: b6493aac6386b72ddfaf97fc104c2ef8b9904d84
-prior_current_blob_sha: 24fa0c71d82268d4908a2d52c2c4b6f861d2eb0b
+last_event_commit: 4858b38f0fa7fad9a73ca8be5d3a7c36abc99bc1
+last_event_path: state/coordination/experiments/cots_connector_x13/20260802T024800Z_GITHUB_CONTENTS_PHASE2_MICRO_ARTIFACT.md
+last_event_blob_sha: 538800f2b63a130014f5c6f88ab41c8f1385fc75
+prior_current_commit: 59f77ec266ab07553ce8eb2b848a95aa19d774f1
+prior_current_blob_sha: 52493ef239caea53abcf40aa057d0ec8400d1fc2
 carrier_task_id: 6a55c1733708819185088bf334e33ea5
 carrier_task_id_match: true
 carrier_task_id_observation_source: AUTOMATION_RUN_CONTEXT
 effect_ceiling: HARMLESS_BRANCH_SCOPED_TEXT_EVENT_AND_READBACK_ONLY_NO_MERGE_DELETE_FORCE_PUSH_BRANCH_CREATION_WORKFLOW_EDIT_OR_PRODUCTION_CHANGE
-adoption_credit: 1
+adoption_credit: 2
 adoption_credit_basis:
   - OFFICIAL_PRIMARY_CONTRACT
   - ONE_BRANCH_SCOPED_EXISTING_FILE_FETCH
-  - ONE_IMMUTABLE_EVENT_CREATE_AND_READBACK_AS_BOOKKEEPING_NOT_INDEPENDENT_VERIFICATION
+  - ONE_UNIQUELY_NAMED_SMALL_UTF8_FILE_CREATE
+  - EXACT_BRANCH_PATH_BODY_AND_BLOB_READBACK
+  - SAME_CONNECTOR_READBACK_COUNTED_AS_STRUCTURAL_RECONCILIATION_NOT_INDEPENDENT_VERIFICATION
 fitness_credit: 0_PENDING_EXPLICIT_SOURCE_BOUND_CONSUMER_ACK_AND_MEASURED_OPERATOR_OUTCOME
 consumer_ack: NOT_OBSERVED
 same_provider_binding_weight: 0
@@ -57,6 +59,8 @@ paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
 phase_1_candidate_read_invocations: 1
 phase_1_bookkeeping_create_invocations: 1
 phase_1_bookkeeping_readback_invocations: 1
+phase_2_candidate_create_invocations: 1
+phase_2_candidate_readback_invocations: 1
 live_HTTP_status_headers_request_id_ETag_LastModified_or_rate_limit_headers: NOT_EXPOSED
 actual_upstream_request_count_and_secondary_points: UNKNOWN
 actual_quota_class: UNKNOWN
@@ -79,6 +83,20 @@ phase_1_event_write_receipt:
   event_blob_sha_after_readback: 64a4a3289546cb451b58ff47b46ff45be6d31ef6
   external_call_time_ms_create_exposed_by_connector: 754
   readback_body_and_blob_match_expected: true
+phase_2_receipt:
+  create_action: GitHub.create_file
+  fetch_action: GitHub.fetch_file
+  repository: TTaoGaming/hfo-gen-133
+  requested_ref: agent/gen133-bootstrap-20260730
+  path: state/coordination/experiments/cots_connector_x13/20260802T024800Z_GITHUB_CONTENTS_PHASE2_MICRO_ARTIFACT.md
+  create_result: SUCCESS
+  create_commit_sha: 4858b38f0fa7fad9a73ca8be5d3a7c36abc99bc1
+  create_external_call_time_ms_exposed_by_connector: 718
+  fetch_result: SUCCESS_FILE_CONTENT
+  returned_blob_sha: 538800f2b63a130014f5c6f88ab41c8f1385fc75
+  exact_UTF8_body_match: true
+  branch_qualified_display_url_returned: true
+  response_headers_request_id_rate_limit_and_fetch_latency_exposed: false
 official_contract_checked_2026_08_02:
   get_content_ref: COMMIT_BRANCH_OR_TAG_DEFAULTS_TO_DEFAULT_BRANCH_IF_OMITTED
   get_content_permission: CONTENTS_READ_FOR_NONPUBLIC_ACCESS
@@ -127,17 +145,17 @@ mandatory_gates:
   - NO_SECRET_BEARING_CONTENT
 verifier: S04_STRUCTURAL_PREFLIGHT_THEN_DISTINCT_NON_CARRIER_OR_COMMIT_PINNED_CLIENT_REVIEW
 consumer:
-  - X13_PHASE2
+  - X13_PHASE3
   - GIT_FIRST_STATE_READERS
 strongest_falsifier: A_COMMIT_PINNED_INDEPENDENT_READ_DISAGREES_WITH_WRAPPER_BODY_OR_BLOB_SHA_OR_A_BRANCH_VARIANCE_PROBE_SHOWS_REQUESTED_REF_WAS_IGNORED
-honest_flaw: BASELINE_USED_A_KNOWN_STATE_FILE_AND_THE_SAME_WRAPPER_PERFORMED_BOOKKEEPING_WRITES_SO_PROVIDER_BEHAVIOR_IS_NOT_ISOLATED_FROM_CONNECTOR_NORMALIZATION
+honest_flaw: PHASE2_CONFIRMED_EXACT_BODY_AND_BLOB_ONLY_THROUGH_THE_SAME_CONNECTOR_AND_DID_NOT_TEST_STALE_SHA_PERMISSION_RATE_LIMIT_DEFAULT_BRANCH_OR_CROSS_CLIENT_VARIANCE
 next_phase:
-  phase: 2_of_4
+  phase: 3_of_4
   status: PLANNED
-  probe: CREATE_ONE_UNIQUELY_NAMED_SMALL_TEXT_ARTIFACT_ON_EXISTING_BRANCH_FETCH_BACK_COMPARE_EXACT_BODY_AND_BLOB_SHA_THEN_UPDATE_CURRENT_SERIALLY
-  effect_ceiling: EXPERIMENT_BRANCH_TEXT_ONLY_NO_MERGE_DELETE_BRANCH_CREATE_WORKFLOW_EDIT_OR_PRODUCTION_EFFECT
-review_expiry_utc: 2026-08-09T01:48:00Z
-valid_time_utc: 2026-08-02T01:48:00Z
+  probe: USE_A_SYNTHETIC_STALE_BLOB_SHA_UPDATE_AGAINST_THE_PHASE2_EVENT_PATH_EXPECT_FAIL_CLOSED_WITHOUT_CONTENT_CHANGE_THEN_FETCH_AND_VERIFY_ORIGINAL_BLOB_REMAINS
+  effect_ceiling: REVERSIBLE_OR_FAIL_CLOSED_EXPERIMENT_BRANCH_TEXT_ONLY_NO_MERGE_DELETE_BRANCH_CREATE_WORKFLOW_EDIT_OR_PRODUCTION_EFFECT
+review_expiry_utc: 2026-08-09T02:48:00Z
+valid_time_utc: 2026-08-02T02:48:00Z
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 sealed: true
 prior_campaign:
@@ -154,10 +172,10 @@ prior_prior_campaign:
 
 # X13 current campaign
 
-GitHub Contents branch-scoped file handling is active at phase **1/4**.
+GitHub Contents branch-scoped file handling is active at phase **2/4**.
 
-The direct baseline fetched one known UTF-8 state file from the named experiment branch and returned the body plus blob SHA. The event was then created and read back through the same connector. This is useful structural reconciliation, not independent verification.
+The phase-2 micro-use created one uniquely named small UTF-8 event on the named existing branch, fetched the exact path with the explicit branch ref, and returned an exact body match plus blob SHA. This confirms bounded create/fetch/readback behavior for this connector path; it does not provide independent verification, workflow durability, atomic multi-file state, or least-privilege evidence.
 
-Canonical-state use must pass an explicit branch or commit ref, use the current blob SHA for updates, serialize writes, and treat event creation plus pointer update as two commits rather than one transaction. No merge, delete, branch creation, workflow edit, force push, or production effect is admitted.
+Measured operator relief remains zero without a source-bound ConsumerAck. The connector surfaced no paid charge, but request count, quota class, permission set, identity, retries, and rate-limit headers remain unknown.
 
-Next: one uniquely named small text artifact create/fetch/body-and-blob comparison on the existing branch.
+Next: one synthetic stale-blob-SHA update failure probe. It must fail closed and preserve the original event body and blob.
