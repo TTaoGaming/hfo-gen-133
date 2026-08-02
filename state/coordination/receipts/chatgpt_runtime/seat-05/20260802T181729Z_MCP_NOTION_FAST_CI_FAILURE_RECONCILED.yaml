@@ -1,0 +1,76 @@
+schema_version: "1.0"
+kind: HFO_GEN133_OPERATOR_RELIEF_RECEIPT
+receipt_id: S05-20260802T181729Z-MCP-NOTION-FAST-CI-FAILURE-RECONCILED
+immutable: true
+seat: S05
+task_id_expected: 6a55c182078c8191b89f2dd15f5f640c
+repository: TTaoGaming/hfo-gen-133
+branch: agent/gen133-bootstrap-20260730
+observed_at_utc: 2026-08-02T18:17:29Z
+wip_limit: 1
+
+transition:
+  type: STATUS_RECONCILED
+  active_item: mcp_notion_fast_ci_failure
+  material_change: true
+  source_evidence:
+    gmail:
+      message_id: "19fc3954c72a5569"
+      received_at_utc: 2026-08-02T17:46:08Z
+      sanitized_fact: "GitHub reported the mcp-notion-fast main-branch CI run failed."
+    github_actions:
+      repository: TTaoGaming/mcp-notion-fast
+      run_id: 30759590011
+      job_id: 91527608162
+      triggering_commit: 4266587f410fcd0fa53217ee078d3a5698bcbf92
+      failed_step: "npm ci"
+      sanitized_fact: "npm exited EUSAGE stating it could not use an existing package-lock.json or compatible shrinkwrap; npm run check never executed."
+    github_source_readback:
+      workflow_path: .github/workflows/ci.yml
+      workflow_fact: "The job uses Node 24 with npm cache, then runs npm ci followed by npm run check."
+      lockfile_path: package-lock.json
+      lockfile_at_trigger_commit_present: true
+      lockfile_version: 3
+      subsequent_commit: e84a0c90bc1894c808e7c371a70b9149d9cefad4
+      subsequent_commit_fact: "A later commit normalized committed CRLF bytes to LF across tracked text files; reviewed evidence does not prove this caused or fixed the npm failure."
+    slack_deduplication:
+      query: "mcp-notion-fast after:2026-08-02"
+      matching_prior_pointer_found: false
+  result: "The failure is classified as dependency-install/lockfile recognition, not a test, build, Cloudflare, or application regression. Because package-lock.json exists at the triggering commit, the literal 'missing lockfile' diagnosis is not established. No successful rerun was proven in reviewed evidence."
+  exact_next_packet:
+    consumer: S06_code_work_packet_compiler
+    requested_boundary:
+      - "Reproduce npm ci from a clean checkout of current main using Node 24/npm 11."
+      - "Verify package-lock.json filename, Git index mode, raw bytes, JSON parseability, and package.json/lockfile synchronization."
+      - "Do not weaken CI to npm install merely to make the check green."
+      - "Rerun CI and require npm run check to actually execute before closure."
+
+priorities:
+  p0: "Goodyear vehicle pickup and safe handoff; completion remains unproven in reviewed source evidence."
+  p1:
+    - "School portrait KEEP/DECLINE decision before the stated 2026-08-03 archive date."
+    - "Experian credit-file alert review."
+
+operator_relief:
+  estimated_minutes_removed: 8
+  acknowledgment_status: unacknowledged
+  fitness_credit: 0
+  next_consumer: S06_code_work_packet_compiler
+
+effect_audit:
+  calendar_event_created_or_changed: false
+  email_sent: false
+  email_draft_created_or_changed: false
+  application_submitted: false
+  spend_or_payment: false
+  deployment_or_merge: false
+  account_or_security_change: false
+  scheduled_task_mutation: false
+  destructive_deletion: false
+  sensitive_body_externalized_to_git_or_slack: false
+
+claim_ceiling:
+  - "The failed run proves only that npm ci exited before checks ran."
+  - "GitHub source readback proves a lockfile exists at the triggering commit, but not what bytes npm observed inside the runner workspace."
+  - "The later line-ending normalization commit is temporally adjacent, not proven causal repair."
+  - "No passing replacement workflow run was observed."
