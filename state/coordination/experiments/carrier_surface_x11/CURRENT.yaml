@@ -1,21 +1,21 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_WAKE_TIMING_V1
-current_version: 43
-accepted_wakes: 3
+current_version: 44
+accepted_wakes: 4
 target_wakes_before_decision: 4
 controlled_factor: wake_timing
-campaign_status: ACTIVE
-current_disposition: null
+campaign_status: DECIDED
+current_disposition: RESEAT_VARIABLE
 prior_campaign:
   experiment_id: X11_NATIVE_TASKS_READ_VISIBILITY_V1
   final_version: 40
   disposition: KEEP
   accepted_wakes: 4
 last_event:
-  commit: 2c04486e9378ddfcf311acc8faa4ffb4d0a8a7a7
-  path: state/coordination/experiments/carrier_surface_x11/events/20260802T153816Z_WAKE_TIMING_START_DRIFT_WAKE_03.yaml
-  blob: f37606d5711f4817f85c14fb80a96898c690652b
+  commit: 886cb237f93e6495bcf616506ef113e06ecfa616
+  path: state/coordination/experiments/carrier_surface_x11/events/20260802T164107Z_WAKE_TIMING_CAMPAIGN_DECISION_WAKE_04.yaml
+  blob: c454bb12492c7ac20e18e3a54df25591faab8612
 baseline_result:
   wake_1_carrier_observed_start_drift_seconds: 102
   wake_1_drift_direction: AFTER_NOMINAL_BOUNDARY
@@ -23,10 +23,15 @@ baseline_result:
   wake_2_drift_direction: BEFORE_NOMINAL_BOUNDARY
   wake_3_carrier_observed_start_drift_seconds: -104
   wake_3_drift_direction: BEFORE_NOMINAL_BOUNDARY
-  wake_3_accepted: true
-  tool_status: SUCCESS_WITH_MEASUREMENT_SCOPE_WARNING
+  wake_4_carrier_observed_start_drift_seconds: 67
+  wake_4_drift_direction: AFTER_NOMINAL_BOUNDARY
+  four_wake_sample_range_seconds: 206
+  four_wake_sample_mean_seconds: -6.75
+  four_wake_sample_median_seconds: -12.5
+  wake_4_accepted: true
+  tool_status: SUCCESS_WITH_MEASUREMENT_SCOPE_MISMATCH
   permission_class: AUTOMATION_RUNTIME_OBSERVED_TIMESTAMP_AVAILABLE
-  error_class: WRAPPER_TIMESTAMP_PRECEDES_NOMINAL_BOUNDARY_MEASUREMENT_SCOPE_WARNING
+  error_class: WRAPPER_TIMESTAMP_SIGN_VARIANCE_CONFIRMS_MEASUREMENT_SCOPE_MISMATCH
   latency_exposed: false
   latency_ms: null
   operator_relay_minutes: 0
@@ -42,27 +47,28 @@ campaign_gates:
   - persist_only_sanitized_drift_and_error_fields
   - do_not_claim_provider_dispatch_or_queue_latency
   - same_provider_binding_weight_zero
-strongest_falsifier: a_future_wake_lacks_a_parseable_runtime_timestamp_or_the_same_calculation_cannot_be_reproduced_without_using_a_later_tool_time_or_mutating_the_task
+strongest_falsifier: an_independently_timestamped_provider_dispatch_receipt_that_consistently_tracks_the_wrapper_offset_across_future_wakes
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 next_consumer:
   - Reginleif
   - Ratatoskr
-honest_flaw: wake_3_wrapper_time_preceded_the_nominal_boundary_by_104_seconds_so_wrapper_time_is_not_a_trustworthy_proxy_for_scheduler_dispatch_or_execution_start_and_may_be_sampled_upstream
-next_factor: wake_timing
+honest_flaw: only_four_wrapper_samples_were_available_and_no_independent_provider_dispatch_timestamp_was_exposed_so_the_campaign_cannot_estimate_true_scheduler_latency
+next_factor: web_research
 next_probe:
-  campaign_wake: 4
-  mode: scheduled_wake_start_drift_observation_and_campaign_decision
-  exact_action: repeat_the_same_sanitized_wrapper_timestamp_minus_same_hour_minute_40_boundary_calculation_then_issue_keep_revise_reseat_variable_or_hold_and_select_the_next_factor
+  experiment_id: X11_WEB_RESEARCH_OFFICIAL_SOURCE_READ_V1
+  campaign_wake: 1
+  mode: deterministic_official_public_web_read
+  exact_action: open_the_official_iana_reserved_domains_page_and_validate_only_the_page_identity_plus_presence_of_the_example_com_reserved_domain_marker
   mutation_allowed: false
   sensitive_readback_externalization_allowed: false
-  claim_ceiling: carrier_observed_wrapper_timestamp_offset_only_not_provider_dispatch_time_queue_time_or_execution_duration
-slack_action: YIELD_SILENT_UNCHANGED
-updated_valid_time_utc: 2026-08-02T15:38:16Z
+  claim_ceiling: public_web_open_and_marker_visibility_only_not_search_completeness_freshness_or_independent_verification
+slack_action: POST_CAMPAIGN_DECISION
+updated_valid_time_utc: 2026-08-02T16:41:07Z
 sealed: false
 ---
 
-Wake-timing campaign is active at wake 3 of 4. Wake 3 reproduced the same
-calculation and the wrapper-supplied timestamp was 104 seconds before the nominal
-boundary. This is accepted wrapper-level telemetry only. The measurement-scope
-warning is unchanged, so Slack remains silent. No task mutation, interactive
-login, sensitive readback externalization, or operator relay occurred.
+Wake-timing campaign completed four accepted wrapper-offset samples: +102, -92,
+-104, and +67 seconds. The sign changes and pre-boundary values make the wrapper
+timestamp unsuitable as a proxy for provider dispatch, queue, or execution-start
+latency. Disposition is RESEAT_VARIABLE. The next bounded factor is deterministic
+public web-read visibility against an official IANA reserved-domains page.
