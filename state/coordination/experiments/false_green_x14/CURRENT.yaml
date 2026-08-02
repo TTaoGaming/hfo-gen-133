@@ -2,19 +2,19 @@
 schema_id: hfo.gen133.x14.false_green_current.v1
 experiment_id: X14_FALSE_GREEN_MUTATION_001
 object_id: X14_FALSE_GREEN_CAMPAIGN_STATE
-version: 37
-expected_previous_version: 36
-previous_pointer_blob_sha: 6f833174768afe8893043bd8d37c99a6aeadd49a
-accepted_wakes: 36
-campaign_ordinal: 9
-campaign_wake: 4
+version: 38
+expected_previous_version: 37
+previous_pointer_blob_sha: d63d943833b00b5b4066bb15fc953b91363eaa4b
+accepted_wakes: 37
+campaign_ordinal: 10
+campaign_wake: 1
 campaign_length: 4
-current_status: CAMPAIGN_9_WAKE_4_STALE_SOURCE_DIGEST_ROUTED_HOLD
-current_mutation_class: STALE_SOURCE_DIGEST
-next_mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+current_status: CAMPAIGN_10_WAKE_1_DUPLICATE_IDEMPOTENCY_VERSION_ROUTED
+current_mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+next_mutation_class: FABRICATED_CONSUMER_ACK
 carrier_task_id: 6a513e4d9c4c81919db728f85db2dd79
 carrier_task_id_binding: NATIVE_AUTOMATIONS_LIST_EXACT_MATCH
-valid_time_utc: 2026-08-02T11:51:53Z
+valid_time_utc: 2026-08-02T12:50:30Z
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 canonical_repository: TTaoGaming/hfo-gen-133
 canonical_branch: agent/gen133-bootstrap-20260730
@@ -23,100 +23,85 @@ sealed: false
 ---
 
 source_candidate:
-  commit: abac05a466576125dc6ec44e49cf26539dd34c8f
-  path: state/coordination/experiments/cots_connector_x13/20260802T114724Z_GOOGLE_CALENDAR_FREEBUSY_PHASE3_FAILURE_PERMISSION_PROBE.md
-  git_blob_sha1: a0552270d3397ae029f154ef6133e77ea72eaf54
+  commit: 09bcba7c824ee74c555df4ba2316c2c8a5d00ea3
+  path: state/coordination/experiments/durable_object_x12/events/20260802T124515Z_V0039_TO_V0040_STALE_CONCURRENT_WRITER_SEMANTIC_GATE_CAMPAIGN_DECISION_KEEP.json
+  git_blob_sha1: 5f2d766ef9c9158f60f9d96efa41972ece5fb07b
   source_digest_kind: GIT_BLOB_SHA1
-  source_digest: a0552270d3397ae029f154ef6133e77ea72eaf54
-  authoring_seat: X13_COTS_AND_CONNECTOR_PDCA_LAB
-  source_task_id: 6a55c1733708819185088bf334e33ea5
-  source_experiment_id: X13_GOOGLE_CALENDAR_FREEBUSY_READONLY_001
-  source_event_type: PHASE_3_FAILURE_PERMISSION_PORTABILITY_PROBE
-  source_prior_version: 38
-  source_version: 39
-  source_effect_ceiling: ONE_READ_ONLY_SYNTHETIC_INVALID_CALENDAR_FREEBUSY_QUERY_GIT_EVENT_CURRENT_ADVANCE_AND_ONE_SHORT_SANITIZED_SLACK_MEASURED_FACT_RECEIPT_ONLY
-  source_verifier: RAW_CALENDAR_FREEBUSY_API_OR_DISTINCT_AUTHORIZED_CLIENT_USING_THE_SAME_INTERVAL_AND_SOURCE_BOUND_CALENDAR_ID_WITH_RAW_RESPONSE_AND_SCOPE_EVIDENCE
-  source_consumer:
-    - X13_PHASE4_DECISION
-    - HFO_SCHEDULING_AND_EXECUTIVE_ASSISTANT_PLANNING_LOGIC
-  source_review_expiry_utc: 2026-08-09T11:47:24Z
+  source_digest: 5f2d766ef9c9158f60f9d96efa41972ece5fb07b
+  authoring_seat: X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+  source_task_id: 6a506f83df208191815dd17a8fd5baa3
+  source_experiment_id: X12_STALE_CONCURRENT_WRITER_SIMULATION_C10
+  source_event_type: STALE_CONCURRENT_WRITER_SEMANTIC_GATE_CAMPAIGN_DECISION_KEEP
+  source_prior_version: 39
+  source_version: 40
+  source_event_digest_sha256: ce137e4b571a65c064da8b3adfb4e21e133042762064c4ae919ac6d8bef31336
+  source_idempotency_key: 50fc2552e13d9b348be9b79cfc04e4837695a0d1aa6e6ea3f1024e990db4773c
+  source_effect_ceiling: ONE_PREWRITE_SEMANTIC_STALE_REJECTION+GIT_EVENT_AND_CURRENT_POINTER+ONE_SANITIZED_SLACK_POINTER
+  source_verifier: S04_WEIGHT_0_THEN_DISTINCT_SIGRUN_P4
+  source_consumer: Reginleif/Olrun
+  source_review_expiry_utc: 2026-08-02T16:45:15Z
   prior_x14_mutation_at_source_digest_before_write: false
 
 quarantined_mutant:
-  mutant_id: X14_MUTANT_037_804256923673
-  mutation_class: STALE_SOURCE_DIGEST
-  mutation_subcase: PRIOR_PHASE_BLOB_SHA_SUBSTITUTED_FOR_SELECTED_PHASE3_SOURCE_BLOB_SHA
-  commit: a070243bd217b3491285ddc3f1d86b7ffecf1a6f
-  path: state/coordination/experiments/false_green_x14/quarantine/20260802T115153Z_X13_GOOGLE_CALENDAR_STALE_SOURCE_DIGEST.mutant.yaml
-  git_blob_sha1: 53dc69447f14eeb59a134072efcf27b4c1ec763e
+  mutant_id: X14_MUTANT_038_2995c36ee675
+  mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+  mutation_subcase: PREDECESSOR_IDEMPOTENCY_KEY_REPLAYED_ON_DISTINCT_V39_TO_V40_TRANSITION
+  commit: 16ee44f5c17c9817e7838bd8be7bff32f68e3628
+  path: state/coordination/experiments/false_green_x14/quarantine/20260802T125030Z_X12_DUPLICATE_IDEMPOTENCY_VERSION.mutant.yaml
+  git_blob_sha1: fe8de713d611dac97edbb5a56de156c9893ad675
   canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
-  canonical_mutation_digest_sha256: 804256923673c55c91cc5f8c60fcbbd42f27fd16fa32ae0f060dc9a74b53e778
-  canonical_byte_count: 256
-  mutated_field: source_blob_sha1
-  original_value: a0552270d3397ae029f154ef6133e77ea72eaf54
-  mutated_value: 483dda99b902039250f665ece3dbe89382d1fe97
+  canonical_mutation_digest_sha256: 2995c36ee67503fedf9c0286a8e05f742373af306cdb7286e6bee9bc7b8e90b9
+  canonical_byte_count: 313
+  mutated_field: idempotency_key
+  original_value: 50fc2552e13d9b348be9b79cfc04e4837695a0d1aa6e6ea3f1024e990db4773c
+  mutated_value: 770bacb6c82147f74ad12fadc0fa25b6928d3a820079bc56b86f13b1ded2dcd9
   expected_verdict: REVISE
-  expected_rejection_reason: STALE_BLOB_SHA_DOES_NOT_BIND_SELECTED_COMMIT_PATH_OR_PHASE3_BYTES
-  named_gate: S04_SOURCE_COMMIT_PATH_BLOB_DIGEST_FRESHNESS_AND_REPLAY_GATE
-  expires_utc: 2026-08-09T11:47:24Z
+  expected_rejection_reason: REPLAYED_IDEMPOTENCY_KEY_ALREADY_BINDS_DISTINCT_PREDECESSOR_VERSION_TRANSITION
+  named_gate: S04_IDEMPOTENCY_KEY_SEMANTIC_CORE_UNIQUENESS_AND_VERSION_BINDING_GATE
+  expires_utc: 2026-08-02T16:45:15Z
   status: QUARANTINED_ROUTED_PENDING_VERDICTS
   accepted_wake_credit: true
 
 campaign_evaluation:
-  campaign_ordinal: 9
-  decision_due: true
+  campaign_ordinal: 10
+  decision_due: false
   intended_mutants: 4
-  accepted_wakes: 4
-  direct_s04_catches_observed: 2
-  mutant_034:
-    mutation_class: UNAUTHORIZED_WORLD_EFFECT
-    direct_s04_result: NOT_OBSERVED_POINTER_ONLY_S15_RECEIPT_PASS_STRUCTURAL_EXPLICITLY_NOT_DIRECT_MUTANT_VERDICT
-    caught_gate_credit: false
-  mutant_035:
-    mutation_class: TASK_ID_MISMATCH
-    direct_s04_result: REVISE
-    direct_s04_receipt_commit: 6bd6e71de8f54ab8c97773ccb27efc46c2dde656
-    direct_s04_receipt_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260802T101553Z_X14_MUTANT035_TASK_ID_MISMATCH_REVISE.yaml
-    caught_gate_credit: true
-  mutant_036:
-    mutation_class: ACTOR_CARRIER_CONFLATION
-    direct_s04_result: REVISE
-    direct_s04_receipt_commit: afecf2c2984219301981e0db001e7965f827b8c8
-    direct_s04_receipt_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260802T111354Z_X14_MUTANT036_ACTOR_CARRIER_CONFLATION_REVISE.yaml
-    caught_gate_credit: true
-  mutant_037:
-    mutation_class: STALE_SOURCE_DIGEST
+  accepted_wakes: 1
+  direct_s04_catches_observed: 0
+  mutant_038:
+    mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
     direct_s04_result: PENDING
     caught_gate_credit: false
   distinct_provider_verdicts: 0
   evidence_class: SAME_PROVIDER_NONBINDING
   binding_weight: 0
+  decision: NOT_DUE
+  next_factor: FABRICATED_CONSUMER_ACK
+
+carryover_campaign_9:
   decision: HOLD
-  decision_reason: >-
-    S04 directly caught exact mutants 035 and 036, which is useful same-provider sensitivity evidence. Exact mutant 034
-    still has only a pointer review and mutant 037 is newly routed and pending. With two of four exact mutants unresolved
-    and no distinct-provider verdict, the campaign cannot honestly claim complete gate coverage or failure. HOLD preserves
-    the two caught observations without laundering them into independent or campaign-wide confidence.
-  next_campaign_ordinal: 10
-  next_factor: DUPLICATE_IDEMPOTENCY_VERSION
+  intended_mutants: 4
+  direct_s04_catches_observed: 2
+  mutant_034_direct_s04_result: NOT_OBSERVED_POINTER_ONLY
+  mutant_035_direct_s04_result: REVISE
+  mutant_036_direct_s04_result: REVISE
+  mutant_037_direct_s04_result: NOT_OBSERVED
+  distinct_provider_verdicts: 0
+  closed_without_campaign_wide_sensitivity_claim: true
 
 carryover_campaign_8:
   decision: HOLD
-  intended_mutants: 4
   direct_s04_catches_observed: 0
   distinct_provider_verdicts: 0
-  closed_without_sensitivity_claim: true
 
 carryover_campaign_7:
   decision: HOLD
   direct_s04_catches_observed: 0
   distinct_provider_verdicts: 0
-  closed_without_sensitivity_claim: true
 
 carryover_campaign_6:
   decision: HOLD
   mutant_024_direct_s04_result: REVISE
-  mutant_024_direct_s04_receipt_commit: 333b23646ae01f2d2554c2ad738cda08aa53bffc
   mutant_024_caught_gate_credit: true
   closed_without_sensitivity_claim: true
 
@@ -127,27 +112,27 @@ carryover_debt:
   mutant_020_clean_one_factor_assay: false
   mutant_021_direct_s04_result: NOT_OBSERVED
   debt_resolution_condition: DIRECT_S04_VERDICTS_FOR_019_AND_021_PLUS_EXPLICIT_MALFORMED_ASSAY_ACCOUNTING_FOR_020
-  debt_not_resolved_by_campaign_6_7_8_OR_9: true
+  debt_not_resolved_by_campaign_6_7_8_9_OR_10: true
 
 routing:
   structural_preflight: S04_STRUCTURAL_PREFLIGHT
-  distinct_falsification: DISTINCT_NON_CHATGPT_GIT_CLIENT_FETCHING_THE_EXACT_COMMIT_AND_PATH_AND_RECOMPUTING_GIT_BLOB_SHA1
+  distinct_falsification: DISTINCT_NON_CHATGPT_GIT_CLIENT_RECOMPUTING_BOTH_VERSIONED_IDEMPOTENCY_KEYS_FROM_EXACT_SOURCE_AND_PREDECESSOR_BYTES
   consumer: X14_CAMPAIGN_REDUCER_AND_RATATOSKR
-  current_verdict_status: MUTANT_037_DIRECT_ROUTE_REQUEST_PENDING_SLACK_POST
+  current_verdict_status: MUTANT_038_DIRECT_ROUTE_REQUEST_PENDING_SLACK_POST
   direct_candidate_priority_required: true
 
 current_campaign:
-  campaign_ordinal: 9
-  accepted_wakes: 4
-  current_mutation_class: STALE_SOURCE_DIGEST
-  next_mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
-  gate_focus: SOURCE_COMMIT_PATH_BLOB_DIGEST_FRESHNESS_AND_REPLAY
-  status: CLOSED_HOLD_PENDING_DIRECT_VERDICTS
-  decision: HOLD
+  campaign_ordinal: 10
+  accepted_wakes: 1
+  current_mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+  next_mutation_class: FABRICATED_CONSUMER_ACK
+  gate_focus: IDEMPOTENCY_KEY_SEMANTIC_CORE_UNIQUENESS_AND_VERSION_BINDING
+  status: OPEN_PENDING_DIRECT_VERDICT
+  decision: NOT_DUE
 
 honest_flaw: >-
-  The stale digest comes from the immediately preceding X13 phase-2 event and is easy to reject when the exact selected
-  commit and path are fetched. It does not test same-path history, digest truncation or aliasing, eventual-consistency
-  caches, SHA-1 collision handling, or a mutable external store. Candidate discovery and source-digest dedup are
-  best-effort, the distinct verifier is not directly callable, and all ChatGPT-carried evidence remains same-provider
+  The replay is conspicuous because the predecessor key and adjacent version chain are directly named. It does not test
+  truncated keys, namespace collisions, equivalent semantic cores under different serialization, nontransactional race
+  windows, malicious aliases, or a duplicate visible only in a stale external store. Candidate discovery and digest dedup
+  are best-effort, the distinct verifier is not directly callable, and all ChatGPT-carried evidence remains same-provider
   nonbinding with weight zero.
