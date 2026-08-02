@@ -177,10 +177,106 @@ material outcome, and a named consumer.
 
 ## Slack projection result
 
-`BLOCKED_DESTINATION_TRUST_REJECTION`. The exact reply to the existing Garmr
-thread in `#hfo-synthesis` (`C0BGC646A1H`, parent
-`1785697545.280249`) was rejected because the payload-to-destination trust was
-not explicit enough. No message was delivered; timestamp and permalink are
-absent. This is a safety-policy rejection, not a Slack transport outage. Garmr
-did not retry or route around it. Fresh operator approval must name the exact
-payload and destination before one new attempt.
+`DELIVERED_AND_READ_BACK`. After the operator explicitly approved the exact
+Garmr FOSS-DLC admission summary and destination, one new reply was sent to
+`#hfo-synthesis` (`C0BGC646A1H`), parent `1785697545.280249`.
+
+- message timestamp: `1785711282.694269`;
+- permalink:
+  https://hfonetwork.slack.com/archives/C0BGC646A1H/p1785711282694269?thread_ts=1785697545.280249&cid=C0BGC646A1H;
+- full unfiltered thread readback returned the exact delivered body;
+- no second Slack payload was sent.
+
+## Garmr goal-loop readback
+
+### Target admission
+
+Independent packet-integrity replay supports
+`PASS_PACKET_INTEGRITY / HOLD_NO_VALIDATED_TARGET`, not target admission.
+
+- packet status: `HOLD_NO_VALIDATED_TARGET`, confidence `0.94`;
+- candidate count: 3; admitted count: 0; selected candidate: null;
+- every candidate verdict: `HOLD`;
+- every exact pilot price: `UNKNOWN`;
+- every pilot: `PROPOSED_NOT_AUTHORIZED`;
+- maker and actual consumer: null;
+- distinct verifier replay performed in the source packet: false;
+- `TARGET_ADMISSION_PACKET.md` SHA-256:
+  `715d552e5dca8f2a9a782628107688d416b56c1ac39f4f10f43397b872d1ac08`;
+- `target_admission_packet.json` SHA-256:
+  `56a03effc9c48447efdbf0190c742c750f9f150fcadef9ebcef85093cbcc083c`;
+- `SOURCE_LEDGER.md` SHA-256:
+  `28707e889c11bfa132922c35aa16a19d0adb2302128cb2673a70c5637322fd11`.
+
+The frozen controller contract read back at commit
+`ca4c613e20dc99b79071aae0c99cc271620da782`, blob
+`44ad12f2b01337ed3f872751252e836f3a0dbf7d`. The evidence establishes
+reported pain and compatible license bytes; it does not establish purchasing
+behavior, a clean product runtime, a named consumer, or willingness to pay.
+
+### Held-out gate implementation
+
+Task `019fc468-bce5-7ae3-889f-63783416eef2` returned
+`PASS_LOCAL_UNSEALED_IMPLEMENTATION`: 28/28 local tests, Draft 2020-12 schema
+validation, and 29/29 manifest hashes. This proves a local gate implementation,
+not product admission or independent candidate assurance.
+
+### Scaffold maker candidate
+
+Garmr verdict on maker commit
+`cf9c67fb1852871f9210ef08da5bb98e66a386c0` is `REVISE`.
+
+Positive receipts:
+
+- first parent is exactly controller head
+  `61314978a4dd1b53eeef3086e6d145b3552bf75a`;
+- 26 committed paths, all under
+  `projects/fenrir_product_loop/dlc_foss_factory/`;
+- maker-local compile exit 0 and 17/17 tests passed;
+- one lifecycle receipt:
+  `c5a9fc6cfaff100f9f432f35105a3d49bbcbca8d29c9b35e3ed6add67f724d9c`;
+- one evidence envelope:
+  `593b0fcc0c3d3bc775211395f6ecb364e2118924ed3c7f870e998f34ce5e16a5`;
+- receipt claims remain local, target-unadmitted, non-pilot, and non-production.
+
+Release-blocking falsifier:
+
+- committed `README.md` is exactly one byte, a newline;
+- `git show --stat` reports `README.md | 1 +`;
+- an EOF-normalization command first truncated the README, later converted
+  literal backslash-n endings, and the 17 code tests did not cover README
+  integrity;
+- the exact pre-normalization README is recoverable from dangling Git blob
+  `aed9b3de718403587f578301be9619b11fa78ef6`, size 5,713 bytes, first line
+  `# DLC-style FOSS extension factory scaffold`.
+
+Do not publish or hand off this commit as a passing scaffold. Restore the exact
+README blob, rerun diff-check/compile/tests, commit the bounded repair, and then
+route the repaired exact SHA to a distinct verifier.
+
+## Additional broken/degraded tool ledger
+
+- Codex App `wait_threads`, `read_thread`, and
+  `send_message_to_thread` all returned
+  `No handler registered for tool`. Per-thread local session JSONL readback was
+  used as a read-only fallback; no duplicate worker was created.
+- Slack `read_thread` with an `oldest` filter returned the parent and no
+  replies immediately after a successful send. The unfiltered read returned the
+  exact message. Classify as degraded filter/readback behavior, not send failure.
+- PowerShell `Start-Process` failed before launch because the environment
+  contains duplicate `Path`/`PATH` keys; `-UseNewEnvironment` did not
+  resolve it.
+- A hidden CMD wrapper under `C:\tmp` was blocked with `Access is denied`.
+  This is sandbox/execution-policy enforcement, not Codex transport evidence.
+- Local Codex CLI `0.132.0` rejected configured reasoning effort `ultra`;
+  a per-invocation `xhigh` override passed config parsing without mutating
+  config.
+- Sandboxed CLI resume could not write `state_5.sqlite`; an explicitly
+  approved elevated retry reached the thread store but failed because the
+  verifier rollout does not start with required session metadata. The existing
+  verifier thread was therefore not resumable through CLI.
+- The maker's EOF-normalization helper introduced literal backslash-n syntax
+  errors; compile/tests caught those and the code was repaired. It did not catch
+  the separately truncated one-byte README, which Garmr found by committed-byte
+  readback.
+
