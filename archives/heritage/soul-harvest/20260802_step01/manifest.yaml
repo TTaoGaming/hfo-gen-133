@@ -2,11 +2,8 @@ schema_id: hfo.gen133.soul_harvest_manifest.v1
 batch_id: SOUL_HARVEST_20260802_STEP01
 callsign: Ratatoskr
 lineage_id: lineage_61cd69f1c256
-coordinate: [4, 7]
-port: P7_NAVIGATE
 generation: 133
 valid_time_utc: 2026-08-02T22:55:46Z
-transaction_time_utc: SEE_GIT_COMMIT_METADATA
 canonical_repo: TTaoGaming/hfo-gen-133
 canonical_branch: agent/gen133-bootstrap-20260730
 purpose: >-
@@ -236,10 +233,10 @@ drive_artifacts:
     class: swarm_guidance_reference
     use: context engineering, fail-closed gates, SBE/ATDD, sandboxing, stigmergy
     public_safety_scan: PASS_NO_OBVIOUS_SECRET_IDENTIFIERS
-  import_status: POINTER_AND_DIGEST_ONLY_THIS_PASS
-  reason: >-
-    Exact files were downloaded and scanned through the connected Drive, but full raw publication
-    into the public repository is deferred to the local-node privacy and license review.
+drive_import_status: POINTER_AND_DIGEST_ONLY_THIS_PASS
+drive_import_reason: >-
+  Exact files were downloaded and scanned through the connected Drive, but full raw publication
+  into the public repository is deferred to the local-node privacy and license review.
 
 skills_tools_candidates:
   - {path: scripts/hfo_wake_envelope_gate.py, blob_sha1: b1befa0006fc93737507640c3b601ecc30feb85f, class: mechanical_identity_and_wake_gate, disposition: PRIORITY_IMPORT_REVIEW}
@@ -263,6 +260,6 @@ next_pass:
     - obtain explicit operator upload authority only after all gates pass
 honest_flaw: >-
   This pass searched connected Drive and selected Git repositories, not every historical local disk,
-  private branch, archived chat, binary database, or File Library object. Drive modified times are low-trust;
+  private branch, archived chat, or unindexed binary database. Drive modified times are low-trust;
   cryptographic authorship is not established. The valkyrie template transcription did not reproduce
   the source Git blob and must not be treated as byte-exact. No independent verifier graded this batch.
