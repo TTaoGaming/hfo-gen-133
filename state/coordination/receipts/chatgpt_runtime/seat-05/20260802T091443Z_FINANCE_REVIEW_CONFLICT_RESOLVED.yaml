@@ -1,0 +1,44 @@
+receipt_version: "gen133.s05.v1"
+receipt_id: "20260802T091443Z_FINANCE_REVIEW_CONFLICT_RESOLVED"
+immutable: true
+seat: "S05"
+carrier: "operator-relief"
+expected_task_id: "6a55c182078c8191b89f2dd15f5f640c"
+canonical_branch: "agent/gen133-bootstrap-20260730"
+observed_at_utc: "2026-08-02T09:14:43Z"
+material_change: true
+transition: "deadline_conflict_resolved"
+active_item: "protect Sunday vehicle pickup and preserve finance review"
+priority:
+  p0: "Goodyear vehicle pickup and safe handoff"
+  p1:
+    - "Chase statement review during private finance block"
+    - "Experian credit-file alert review"
+source_evidence:
+  calendar:
+    pickup_event_id: "4r376hd19s1jl4jca4sd3h4lig"
+    finance_event_id: "v7aus82o0ognvo5ujr44olobjk_20260802T161500Z"
+  gmail:
+    changed_signal: "new Tectangle nightly CI failure"
+    disposition: "not promoted to operator foreground; existing control board routes repeated CI mail to HFO lane"
+action:
+  system: "Google Calendar"
+  scope: "this occurrence only"
+  before: "2026-08-02 10:15-10:30 America/Denver"
+  after: "2026-08-02 10:45-11:00 America/Denver"
+  reason: "remove overlap with 10:00-10:30 vehicle pickup while preserving 10:30-10:45 GTD control"
+readback:
+  status: "confirmed"
+  event_visibility: "private"
+  reminder: "5-minute popup preserved"
+operator_minutes_removed: 5
+next_consumer: "operator"
+forbidden_effects:
+  email_sent: false
+  payment_or_spend: false
+  application_submitted: false
+  deployment_or_merge: false
+  account_or_security_change: false
+  scheduled_task_mutation: false
+  destructive_deletion: false
+privacy: "No private message bodies or financial amounts externalized."
