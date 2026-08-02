@@ -1,0 +1,140 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_GMAIL_BOUNDED_METADATA_SEARCH_READONLY_001
+event_id: X13_GMAIL_BOUNDED_METADATA_SEARCH_READONLY_001_PHASE1_BASELINE
+candidate: Gmail_bounded_exact_query_metadata_readonly_connector_surface
+phase: 1_of_4
+status: PHASE1_ACCEPTED_WITH_SCOPE_TIMEZONE_AND_COMPLETENESS_GATES
+decision: PENDING
+carrier_task_id: 6a55c1733708819185088bf334e33ea5
+carrier_task_id_match: true
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+prior_current_version: 40
+expected_current_version: 41
+effect_ceiling: OFFICIAL_CONTRACT_BASELINE_AND_ONE_BOUNDED_PRIVACY_MINIMIZED_READ_ONLY_QUERY_NO_BODY_NO_ATTACHMENT_NO_MUTATION
+candidate_invocations_this_wake: 1
+connector_action: Gmail.search_email_ids
+direct_receipt:
+  query_class: ONE_HOUR_EPOCH_BOUNDED_EXCLUDING_SPAM_AND_TRASH
+  query_after_epoch_exclusive: 1785672000
+  query_before_epoch_exclusive: 1785675600
+  query_window_utc: 2026-08-02T12:00:00Z_to_2026-08-02T13:00:00Z
+  max_results: 3
+  returned_message_id_count: 1
+  exact_message_ids_persisted: false
+  thread_ids_returned_by_connector: false
+  next_page_token_present: false
+  result_size_estimate_exposed: false
+  message_headers_returned: false
+  message_snippets_returned: false
+  message_bodies_returned: false
+  attachments_returned_or_read: false
+  write_side_effect: false
+  external_call_time_ms: 610
+  connector_top_level_error: null
+operator_relay_minutes: 0
+operator_minutes_removed_measured: 0
+operator_minutes_removed_estimate: UNKNOWN
+paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
+fitness_credit: 0_PENDING_SOURCE_BOUND_CONSUMER_ACK_AND_MEASURED_OPERATOR_OUTCOME
+consumer_ack: NOT_OBSERVED
+custom_code_avoided_estimate:
+  authenticated_message_list_query_pagination_and_id_normalization: 25_to_80_LOC_UNVALIDATED
+custom_policy_not_avoided:
+  - MAILBOX_IDENTITY_AND_AUTHORITY
+  - QUERY_SCOPE_AND_DATA_MINIMIZATION
+  - SEARCH_TIMEZONE_AND_BOUNDARY_POLICY
+  - MESSAGE_ID_REDACTION_AND_RETENTION
+  - PAGINATION_COMPLETENESS
+  - QUOTA_RETRY_AND_BACKOFF
+  - INDEPENDENT_VERIFICATION
+credentials:
+  connector_authenticated_search_succeeded: true
+  operator_supplied_credentials: 0
+  authenticated_user_identity: UNKNOWN
+  live_oauth_scope: UNKNOWN
+  oauth_client_or_project: UNKNOWN
+  delegated_or_direct_mailbox_authority: UNKNOWN
+  credential_custody: UNKNOWN
+quota_and_cost:
+  surfaced_charge_usd: 0
+  connector_calls_observed: 1
+  actual_upstream_request_count: UNKNOWN
+  documented_messages_list_quota_units_per_request: 5
+  live_quota_units_consumed: UNKNOWN
+  live_project_quota_class: UNKNOWN
+  live_remaining_allowance: UNKNOWN
+  request_id_status_headers_and_retries: NOT_EXPOSED
+official_contract_checked_2026_08_02:
+  messages_list: https://developers.google.com/workspace/gmail/api/reference/rest/v1/users.messages/list
+  search_filtering: https://developers.google.com/workspace/gmail/api/guides/filtering
+  usage_limits: https://developers.google.com/workspace/gmail/api/reference/quota
+  endpoint: GET_/gmail/v1/users/{userId}/messages
+  q_supports_gmail_search_syntax: true
+  q_not_available_with_gmail_metadata_scope: true
+  max_results_default: 100
+  max_results_maximum: 500
+  list_response_message_fields: ID_AND_THREAD_ID_ONLY
+  additional_details_require_messages_get: true
+  result_size_estimate_is_estimate: true
+  api_search_date_literals_interpreted_at_midnight_PST: true
+  epoch_seconds_recommended_for_precise_timezone_boundaries: true
+  gmail_ui_alias_expansion_not_available_in_api: true
+  gmail_ui_thread_wide_search_not_available_in_api: true
+  messages_list_quota_units: 5
+  published_new_model_per_minute_per_project_quota_units: 1200000
+  published_new_model_per_minute_per_user_per_project_quota_units: 6000
+  published_daily_project_threshold_before_planned_charges_quota_units: 80000000
+  standard_use_no_additional_cost_under_threshold: true
+direct_contract_interpretation:
+  - SUCCESSFUL_Q_SEARCH_PROVES_EFFECTIVE_SEARCH_CAPABILITY_IN_THIS_CONNECTOR_CONTEXT_BUT_NOT_THE_EXACT_OAUTH_SCOPE
+  - EPOCH_SECONDS_AVOID_DOCUMENTED_PST_MIDNIGHT_DATE_LITERAL_AMBIGUITY
+  - ONE_RETURNED_ID_WITH_NO_NEXT_PAGE_TOKEN_IS_ONLY_A_BOUNDED_CONNECTOR_RESULT_NOT_PROOF_OF_MAILBOX_COMPLETENESS
+  - MESSAGE_IDS_ARE_OPAQUE_IDENTIFIERS_AND_WERE_NOT_PERSISTED
+  - NO_MESSAGE_CONTENT_WAS_REQUESTED_OR_RETURNED
+durability: EPHEMERAL_POINT_IN_TIME_SEARCH_OVER_MUTABLE_MAILBOX_STATE
+observability: MEDIUM_LOW_FOR_QUERY_BOUND_RESULT_COUNT_PAGINATION_FLAG_AND_CONNECTOR_LATENCY_BUT_LOW_FOR_RAW_HTTP_IDENTITY_SCOPE_PROJECT_REQUEST_ID_QUOTA_AND_UPSTREAM_RETRIES
+portability: MEDIUM_LOW_GMAIL_QUERY_SYNTAX_LABELS_IDS_THREAD_SEMANTICS_ALIAS_DIFFERENCES_AND_SCOPE_RULES_ARE_PROVIDER_SPECIFIC
+failure_behavior: NOT_PROBED_IN_PHASE1
+admitted_scope:
+  - BOUNDED_READ_ONLY_MESSAGE_ID_SEARCH
+  - EXPLICIT_EPOCH_TIME_WINDOW
+  - SMALL_MAX_RESULTS
+  - EXCLUDE_SPAM_AND_TRASH
+  - COUNT_ONLY_PERSISTENCE
+  - NO_MESSAGE_GET_OR_CONTENT_DISCLOSURE
+excluded_scope:
+  - MESSAGE_BODY_HEADER_SNIPPET_OR_ATTACHMENT_READ
+  - SEND_DRAFT_REPLY_OR_FORWARD
+  - LABEL_ARCHIVE_TRASH_DELETE_MARK_READ_OR_UNREAD
+  - BROAD_MAILBOX_MINING
+  - MAILBOX_COMPLETENESS_OR_IDENTITY_CLAIMS
+mandatory_gates:
+  - USE_EPOCH_SECONDS_FOR_PRECISE_TIME_BOUNDS_WHEN_TIMEZONE_ACCURACY_MATTERS
+  - SET_SMALL_EXPLICIT_MAX_RESULTS_AND_HANDLE_PAGINATION_SEPARATELY
+  - TREAT_RESULT_SIZE_ESTIMATE_AS_NONAUTHORITATIVE_WHEN_EXPOSED
+  - DO_NOT_PERSIST_MESSAGE_IDS_HEADERS_SUBJECTS_SENDERS_SNIPPETS_BODIES_OR_ATTACHMENT_NAMES_WITHOUT_SEPARATE_JUSTIFICATION
+  - DO_NOT_INFER_EXACT_OAUTH_SCOPE_FROM_SUCCESSFUL_SEARCH
+  - DO_NOT_ASSUME_GMAIL_UI_ALIAS_EXPANSION_OR_THREAD_WIDE_SEARCH_SEMANTICS
+  - EMPTY_OR_BOUNDED_RESULTS_PROVE_ONLY_THIS_QUERY_RESPONSE
+  - NO_SEND_DRAFT_REPLY_FORWARD_LABEL_ARCHIVE_TRASH_DELETE_OR_MARK_STATE
+verifier: RAW_GMAIL_USERS_MESSAGES_LIST_CALL_OR_DISTINCT_AUTHORIZED_GMAIL_CLIENT_USING_THE_SAME_EPOCH_QUERY_WITH_RAW_RESPONSE_SCOPE_AND_MAILBOX_IDENTITY_EVIDENCE
+consumer:
+  - HFO_EXECUTIVE_ASSISTANT_MAIL_TRIAGE_LOGIC
+strongest_falsifier: A_DISTINCT_AUTHORIZED_CLIENT_RETURNS_MATERIALLY_DIFFERENT_ID_COUNT_OR_PAGINATION_FOR_THE_SAME_SOURCE_BOUND_MAILBOX_AND_QUERY_OR_THE_CONNECTOR_FETCHES_CONTENT_DESPITE_ID_ONLY_ACTION
+honest_flaw: BASELINE_TESTED_ONLY_ONE_ONE_HOUR_WINDOW_WITH_ONE_OPAQUE_RESULT_NO_HEADERS_BODY_ATTACHMENTS_LABEL_FILTER_SECOND_PAGE_EMPTY_RESULT_INVALID_QUERY_PERMISSION_DENIAL_RATE_LIMIT_OR_INDEPENDENT_READBACK
+next_phase:
+  phase: 2_of_4
+  proposed_micro_use: ONE_BOUNDED_EXACT_QUERY_RETURNING_AT_MOST_ONE_MESSAGE_THEN_METADATA_ONLY_READ_IF_A_SEPARATE_HEADER_ONLY_ACTION_IS_AVAILABLE_OTHERWISE_ID_ONLY_RECONCILIATION
+  no_mutation: true
+valid_time_utc: 2026-08-02T13:48:37Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+sealed: true
+---
+
+# X13 Gmail bounded metadata search — phase 1
+
+A single one-hour Gmail ID-only search succeeded with one opaque result and no continuation token. Exact message IDs were deliberately omitted. No headers, snippets, bodies, attachments, or mailbox mutations were requested or returned.
+
+This accepts only the smallest bounded search baseline. It does not establish mailbox identity, exact OAuth scope, pagination completeness, live quota, or independent accuracy.
