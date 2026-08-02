@@ -1,0 +1,156 @@
+---
+schema_id: hfo.gen133.s04.structural_preflight.v1
+receipt_kind: IMMUTABLE_NONTERMINAL_STRUCTURAL_PREFLIGHT
+result: REVISE
+seat: S04
+role: STRUCTURAL_PREFLIGHT_VERIFIER
+carrier_task_id_expected: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_observed: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_match: true
+wip: 1
+valid_time_utc: 2026-08-02T23:10:20Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+provider_relation: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+selected_candidate:
+  selection_rule: NEWEST_IMMUTABLE_CANDIDATE_ADDRESSED_TO_S04_NOT_AUTHORED_BY_S04
+  authoring_seat: S03
+  commit: 05e53c6141c7b538b48da2fed37b1da5b039a957
+  path: state/coordination/receipts/chatgpt_runtime/seat-03/20260802T230747Z_X13_GITHUB_ACTIONS_PHASE2_RETURN_BINDINGS_REVISE.yaml
+  git_blob_sha1: b370fa4b42ec5dbd7b9ecefdd271fd3acc6c2658
+  exact_utf8_byte_count: 5424
+  exact_sha256: d8dff802a217a4ec1b116659d726f4fe7cf0d688dc2523590e99516bce38041a
+  exact_git_blob_recomputed: b370fa4b42ec5dbd7b9ecefdd271fd3acc6c2658
+  line_endings: LF
+  final_newline: true
+  yaml_parse: ONE_NON_NULL_MAPPING_PLUS_EMPTY_TRAILING_DOCUMENT
+  sealed: true
+  addressed_to: S04_NONPRODUCER_STRUCTURAL_PREFLIGHT
+source_bindings:
+  event:
+    commit: 7df61934a9b2795fa48e1fdd304511e0a63b4344
+    path: state/coordination/experiments/cots_connector_x13/20260802T225015Z_GITHUB_ACTIONS_WORKFLOW_RUN_STATUS_PHASE2_POSITIVE_FAILURE.md
+    claimed_blob_sha1: 6ca9bd5b5d19629a857868838add7236e4a6c6a0
+    fetched_blob_sha1: 6ca9bd5b5d19629a857868838add7236e4a6c6a0
+    blob_match: true
+    disposition: PHASE2_ACCEPTED_WITH_POSITIVE_FAILURE_STATUS_AND_SCOPE_GATES
+  current:
+    commit: a84602eafc9782f3b485a150439991d8f9e8882d
+    path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    claimed_blob_sha1: ad47404f872d4e3ffc221a3195d2d3e63fd8a721
+    fetched_blob_sha1: ad47404f872d4e3ffc221a3195d2d3e63fd8a721
+    blob_match: true
+    version: 50
+    phase: 2_of_4
+    campaign_status: IN_PROGRESS
+  live_source_readback:
+    repository: TTaoGaming/hive-fleet-obsidian-gen-132
+    pull_request: 20
+    pull_request_state: open
+    pull_request_draft: false
+    pull_request_merged: false
+    head_branch: agent/olrun-git-exemplar-selftest
+    head_commit: abcf741c0d6cd654f3fdcc02d331245861406931
+    workflow_run_id: 30493905584
+    workflow_name: HFO_Conformance_Gate
+    workflow_id: 321534087
+    run_number: 1551
+    status: completed
+    conclusion: failure
+    connector_scope: PULL_REQUEST_EVENT_FIRST_PAGE_ONLY
+    same_wrapper_readback_only: true
+structural_checks:
+  schema:
+    status: PASS_AT_ROUTE_SCHEMA_CEILING
+    note: S03 route is a parseable sealed YAML mapping, but no external schema validator or schema digest is bound.
+  canonicalization_and_digests:
+    status: REVISE
+    note: Candidate exact bytes and Git blob recompute, but the claimed experiment has no producer-declared canonical return bundle, canonicalization algorithm, acceptance digest, or raw request-response digest.
+  freshness:
+    status: PASS_NONTERMINAL_ONLY
+    valid_time_utc: 2026-08-02T23:07:47Z
+    review_expiry_utc: 2026-08-09T22:50:15Z
+    expired_at_review: false
+    note: Expiry is observation-level, not claim-bound lease or return expiry.
+  authority:
+    status: REVISE
+    note: S03 is a reducer/router and X13 is an experiment carrier; neither artifact grants terminal producer, verifier, consumer, CI-release, merge, deployment, or independent-quorum authority.
+  task_binding:
+    status: PASS_FOR_NATIVE_CARRIERS_ONLY
+    s04_task_id_match: true
+    s03_task_id_match: true
+    x13_task_id_match: true
+    note: Native task identity does not bind a WorkItem claim, producer return, or acceptance contract.
+  actor_carrier_separation:
+    status: REVISE
+    note: Seat and native task are named, but the logical producer actor and credential principal for the source observation are not separately bound.
+  idempotency:
+    status: REVISE
+    note: No WorkItem-derived idempotency key, nonce, replay key, or duplicate suppression rule is present.
+  lease_and_expiry:
+    status: REVISE
+    note: No claim lease exists; review expiry alone cannot authorize or serialize work.
+  privacy:
+    status: PASS_AT_OBSERVATION_CEILING
+    note: Persisted evidence is repository, pull-request, commit, workflow, and run metadata; no secret, log body, artifact body, mailbox, identity document, or credential was externalized.
+  rollback:
+    status: REVISE
+    note: Observed connector action was read-only and requires no world-state rollback, but no purpose-bound return abort rule or rollback contract is present.
+  verifier:
+    status: REVISE
+    named_verifier: RAW_GITHUB_WORKFLOW_RUNS_ENDPOINT_OR_ACTIONS_UI_WITH_EXPLICIT_EVENT_AND_PAGINATION_POLICY
+    direct_same_wrapper_readback_completed: true
+    distinct_provider_or_raw_client_verdict: NOT_OBSERVED
+  consumer:
+    status: REVISE
+    named_consumers:
+      - HFO_CI_RELEASE_GATES
+      - HFO_BRANCH_HEALTH_SUMMARIES
+      - HFO_AGENT_COMPLETION_VERIFICATION
+    explicit_named_consumer_ack: NOT_OBSERVED
+classification:
+  claim_bound_work_item: NOT_PRESENT
+  acceptance_digest: NOT_PRESENT
+  producer_return: NOT_PRESENT_EXPERIMENT_OBSERVATION_ONLY
+  exact_commands_and_exit_codes: NOT_APPLICABLE_TO_NORMALIZED_READ_BUT_RAW_CALL_RECEIPT_NOT_BOUND
+  terminal_stood_or_fell: NOT_PRESENT
+  consumer_ack: NOT_PRESENT
+  terminal_reduction_allowed: false
+strongest_fake_green_mutant:
+  class: STATUS_AND_EVIDENCE_LAUNDERING
+  mutation: TREAT_CONNECTOR_CALL_SUCCESS_OR_STATUS_COMPLETED_AS_PASSING_CI_AND_TREAT_ONE_FIRST_PAGE_PULL_REQUEST_EVENT_RECORD_AS_LATEST_ATTEMPT_COMPLETE_HISTORY_INDEPENDENT_VERIFICATION_OR_CONSUMER_ACCEPTANCE
+  expected_rejection: REVISE
+  reason: The exact record is status completed with conclusion failure; wrapper scope, ordering, pagination, attempt identity, failure cause, raw fidelity, independent verdict, and ConsumerAck remain unbound.
+  newest_direct_x14_mutant_not_selected_due_wip1: X14_MUTANT_048_32c64204218c
+  direct_x14_catch_credit_granted: false
+required_revision:
+  - BIND_ONE_PURPOSE_BOUND_WORK_ITEM_CLAIM_AND_ACCEPTANCE_DIGEST
+  - BIND_LOGICAL_PRODUCER_ACTOR_CARRIER_AND_CREDENTIAL_PRINCIPAL_SEPARATELY
+  - ADD_NONCE_IDEMPOTENCY_KEY_LEASE_AND_REPLAY_RULE
+  - DEFINE_CANONICAL_PRODUCER_RETURN_BUNDLE_AND_DIGEST
+  - BIND_EXACT_REQUEST_EVENT_FILTER_PAGE_ORDERING_ATTEMPT_AND_COMPLETENESS_POLICY
+  - ADD_RAW_OR_DISTINCT_CLIENT_SOURCE_READBACK_DIGEST
+  - ADD_RETURN_LEVEL_ABORT_ROLLBACK_AND_PURPOSE_BOUND_EXPIRY
+  - OBTAIN_DISTINCT_DIGEST_BOUND_STOOD_OR_FELL
+  - OBTAIN_EXPLICIT_NAMED_POST_STOOD_CONSUMER_ACK
+material_change:
+  changed_from_prior_s04_candidate: true
+  prior_s04_commit: 0b1e3c3bf3974e1a7286b49d7a03bfc297b66026
+  change: X13_GITHUB_ACTIONS_PHASE2_POSITIVE_FAILURE_OBSERVATION_SUPERSEDES_PHASE1_EMPTY_RESULT_BASELINE
+prohibited_effects:
+  candidate_edited: false
+  task_mutated: false
+  self_graded: false
+  send: false
+  spend: false
+  deployment: false
+  merge: false
+  publication: false
+  account_or_security_change: false
+  permanent_deletion: false
+  independent_quorum_claimed: false
+sealed: true
+---
