@@ -1,0 +1,67 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+event_type: EXPERIMENT_WAKE
+carrier: X11
+expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+repository: TTaoGaming/hfo-gen-133
+branch: agent/gen133-bootstrap-20260730
+wip: 1
+experiment_id: X11_GMAIL_METADATA_READ_VISIBILITY_V1
+campaign_wake: 1
+target_wakes_before_decision: 4
+expected_current_version: 48
+resulting_current_version: 49
+controlled_factor: gmail_read_surface
+baseline:
+  prior_surface_status: UNMEASURED_IN_THIS_CAMPAIGN
+  prior_campaign: X11_WEB_RESEARCH_OFFICIAL_SOURCE_READ_V1
+  prior_disposition: KEEP
+hypothesis: the_connected_gmail_surface_can_execute_an_exact_rfc822_message_id_search_and_return_only_a_sanitized_identifier_count_without_interactive_login
+exact_probe:
+  action: search_email_ids
+  query_operator: rfc822msgid
+  message_id_local_part_template: hfo-x11-{expected_task_id}
+  message_id_domain: invalid.example
+  exact_query_construction: concatenate_query_operator_colon_left_angle_local_part_at_domain_right_angle
+  max_results: 1
+  expected_match_count: 0
+  mutation_allowed: false
+  interactive_login_allowed: false
+  sensitive_readback_externalization_allowed: false
+measured_result:
+  accepted: true
+  tool_status: SUCCESS
+  match_count: 0
+  next_page_token_present: false
+  authentication_requested: false
+  interactive_login_required: false
+  content_read: false
+  identifiers_externalized: false
+  task_mutation_performed: false
+  sensitive_readback_externalized: false
+  changed_capability: true
+  andon: false
+permission_class: CONNECTED_GMAIL_METADATA_SEARCH_AVAILABLE
+error_class: NONE
+latency_exposed: true
+latency_ms: 337
+operator_relay_minutes: 0
+strongest_falsifier: the_same_exact_impossible_message_id_query_returns_a_nonzero_match_or_permission_failure_while_an_independently_authenticated_gmail_api_call_returns_zero
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer:
+  - Reginleif
+  - Ratatoskr
+honest_flaw: an_exact_zero_result_proves_only_that_the_connector_accepted_and_executed_this_query_path_not_mailbox_inventory_completeness_content_visibility_general_search_semantics_or_independent_verification
+claim_ceiling: connected_gmail_exact_query_execution_and_sanitized_zero_match_visibility_only_not_mailbox_completeness_content_access_or_independent_verification
+next_probe:
+  experiment_id: X11_GMAIL_METADATA_READ_VISIBILITY_V1
+  campaign_wake: 2
+  mode: repeat_identical_exact_message_id_miss_query
+  expected_match_count: 0
+slack_action: POST_CHANGED_CAPABILITY_AFTER_GIT_READBACK
+valid_time_utc: 2026-08-02T21:40:58Z
+recorded_time_utc: 2026-08-02T21:40:58Z
+sealed: true
+---
+
+The first Gmail metadata-read wake executed the precommitted exact impossible RFC822 Message-ID query and returned zero identifiers without interactive login, permission error, content readback, or mutation. This establishes only bounded connector-query execution and sanitized zero-match visibility.
