@@ -1,0 +1,144 @@
+---
+schema_id: hfo.gen133.s03.reducer_receipt.v3
+seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+result: HOLD
+terminal: false
+work_item_id: SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_001
+correlation_id: SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_001
+wip: 1
+valid_time_utc: 2026-08-02T07:07:45Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+effect_ceiling: READ_CHANGED_COORDINATION_EVIDENCE_WRITE_ONE_SANITIZED_HOLD_RECEIPT_AND_SLACK_POINTER_ONLY
+privacy_ceiling: PUBLIC_REPOSITORY_AND_PUBLIC_CONTROL_CHANNEL_POINTERS_ONLY
+
+self_probe:
+  carrier_task_id_expected: 6a539fc5130c81918c13624739fb2a60
+  carrier_task_id_observed_from_run_binding: 6a539fc5130c81918c13624739fb2a60
+  carrier_task_id_match: true
+  tools_observed:
+    github_connector: authenticated_search_exact_commit_read_write
+    slack_connector: authenticated_public_search_and_pointer_write
+    direct_distinct_provider_ingress: unavailable
+    host_checkout_or_shell: unavailable
+  task_mutation_performed: false
+  producer_work_performed: false
+  self_verification_claimed: false
+
+selected_correlation:
+  selection_reason: >-
+    The prior S03 route for this exact producer bundle changed state because both its distinct-verdict
+    deadline and the parent claim lease have now elapsed. No later S03 receipt was observed for this
+    correlation before this bounded read.
+
+claim_binding:
+  claim_id: S02_SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_REPAIRED_SUCCESSOR_20260802T040305Z
+  claim_commit: a884fcbfbe3ee7547e5416201c5c1dfd7e6f2f4e
+  claim_path: projects/spatial-app-factory/claims/20260802T040305Z_SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_REPAIRED_SUCCESSOR.claim.yaml
+  claim_blob: 94b627307f6a2772855fd782dc6dbaef9dbb1924
+  acceptance_contract_sha256: 2b2cc6df856129af5d92f5c55caaff771075801d041f24824c015c18b99d0a7d
+  idempotency_key: f1bd3140ff0ed92104b1dba269a8a9dc329561a230ff818f14a212cd4c982d20
+  producer_return_due_utc: 2026-08-02T06:03:15Z
+  claim_lease_expires_utc: 2026-08-02T07:03:15Z
+  claim_lease_state_at_valid_time: EXPIRED
+
+producer_return_binding:
+  producer: S07_BOUNDED_CODE_PATCH_BUILDER
+  return_commit: ffdf23e91d37a47c7a3b8605910fe1a9e49a680d
+  return_path: state/coordination/receipts/chatgpt_runtime/seat-07/20260802T042745Z_SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_PATCH_RETURNED.yaml
+  return_blob: bdc39259367a507e5894a907c30075b0191908f6
+  target_repository: TTaoGaming/TAGS
+  target_branch: agent/spatial-2048-directional-bridge-repair-20260802T0424Z
+  target_final_commit: a3b636a7ecaab5afa1932ec92559c7c454904039
+  producer_bundle_sha256: 12d1b2b97f6a4f069329d826740d9340e665bd2ed67b4ce5cdee7fc3e5eb9cf8
+  effect_ceiling: UNIT_CONTRACT_ONLY
+  rollback: >-
+    Leave the dedicated branch unmerged and immutable. Do not delete, force-push, reset, deploy,
+    publish, or widen the claim. A future attempt requires a new bounded claim and route.
+  honest_flaw: >-
+    Producer tests ran against exact GitHub-readback bytes reconstructed in an isolated temporary
+    directory, not a clean authenticated checkout or browser. They do not establish end-to-end
+    gesture compatibility, product fitness, distribution, demand, or revenue.
+
+prior_route_binding:
+  route_commit: b47a5b171032676602a29ef4f4f9ad5d9a9b6d5f
+  route_path: state/coordination/receipts/chatgpt_runtime/seat-03/20260802T050843Z_SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_DISTINCT_UNIT_VERIFIER_REVISE.yaml
+  route_blob: 37d21b8b4bd80b70426e51f36e56d669c1752f72
+  requested_verifier: OLRUN_CLAUDE_DESKTOP_OR_OTHER_DISTINCT_NONPRODUCER
+  verdict_scope: UNIT_CONTRACT_ONLY
+  verdict_due_utc: 2026-08-02T06:33:15Z
+  consumer_ack_due_utc: 2026-08-02T07:03:15Z
+  verdict_deadline_state_at_valid_time: EXPIRED
+  consumer_ack_deadline_state_at_valid_time: EXPIRED
+
+changed_evidence_readback:
+  s06_consumption:
+    commit: 7600dc4cb5c8dbef303615d45212516213803799
+    path: state/coordination/receipts/chatgpt_runtime/seat-06/20260802T052103Z_SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_RETURN_CONSUMED.yaml
+    result: RETURN_CONSUMED
+    independent_verdict: MISSING
+    consumer_ack: MISSING
+    terminal_credit: 0
+  github_bounded_search:
+    searched_exact_bundle_digest: true
+    searched_work_item_and_2048_commit_history: true
+    digest_bound_distinct_verdict_observed: false
+    later_s03_receipt_for_same_correlation_observed: false
+  slack_bounded_search:
+    channel_id: C0BGNGPJFHU
+    searched_after_route_time: true
+    searched_exact_bundle_digest: true
+    searched_2048_STOOD_and_2048_FELL: true
+    distinct_digest_bound_verdict_observed: false
+    explicit_post_STOOD_consumer_ack_observed: false
+  advisory_vote:
+    commit: 98361659d91e9a0fe878160127410f1efb26c68b
+    result: ACCEPT_ROUTE_WITH_ZERO_CREDIT_UNTIL_VERDICT
+    binding_weight: 0
+
+reducer_disposition:
+  verdict: HOLD
+  reason: >-
+    The distinct-verifier deadline elapsed without an observed exact STOOD or FELL tied to producer
+    bundle 12d1b2b97f6a4f069329d826740d9340e665bd2ed67b4ce5cdee7fc3e5eb9cf8. The claim lease and
+    ConsumerAck deadline then elapsed without a valid post-STOOD acknowledgment. Therefore claim,
+    return, verdict, and ConsumerAck do not bind to one WorkItem and terminal reduction is forbidden.
+  producer_evidence_preserved: true
+  independent_verdict: MISSING
+  consumer_ack: MISSING
+  terminal_receipt_created: false
+  terminal_credit: 0
+  silent_extension_performed: false
+  route_renewal_performed: false
+  next_valid_transition: >-
+    The backlog owner may create one new bounded, nonretroactive claim and route the same immutable
+    producer digest to a reachable distinct nonproducer verifier. A valid STOOD must precede an
+    explicit named ConsumerAck. Do not reuse the expired lease or imply acceptance from S06 consumption.
+
+binding:
+  same_provider_nonbinding: true
+  binding_weight: 0
+  independent_quorum_claimed: false
+
+strongest_falsifier: >-
+  A pre-expiry, distinct-provider or otherwise authorized nonproducer verdict artifact that says exact
+  STOOD or FELL and binds the same producer bundle digest, followed on STOOD by an explicit named
+  ConsumerAck before 2026-08-02T07:03:15Z, would invalidate this HOLD.
+
+honest_flaw: >-
+  GitHub code search can lag indexing and the Slack read was limited to the accessible public control
+  channel and exact search terms. A valid verifier or ConsumerAck artifact could exist in an inaccessible
+  private system or under an unindexed path. This receipt therefore records bounded non-observation and
+  expiry, not proof that no such artifact exists anywhere.
+
+prohibited_effects_observed:
+  task_mutation: false
+  producer_impersonation: false
+  send_or_spend: false
+  deployment_or_merge: false
+  publication: false
+  account_or_security_change: false
+  permanent_deletion: false
+  implicit_consumer_ack: false
+---
