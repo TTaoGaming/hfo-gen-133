@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{TOOL_NAME}} — create a share link</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <style>
+    .tool { max-width: 900px; margin: 0 auto; padding: 24px; }
+    .card-tool { background: var(--panel); border: 1px solid var(--border);
+      border-radius: 10px; padding: 18px; margin-bottom: 16px; }
+    .field { display: block; margin: 12px 0; }
+    .field label { display: block; color: var(--muted); font-size: 12px; margin-bottom: 4px; }
+    .field input, .field select {
+      width: 100%; padding: 8px 10px; border-radius: 8px;
+      border: 1px solid var(--border); background: #0d1116; color: var(--ink);
+      font: 14px/1.5 inherit; }
+    .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 700px) { .row2 { grid-template-columns: 1fr; } }
+    .link-out { padding: 10px 12px; border-radius: 8px; background: #0d1116;
+      border: 1px solid var(--accent); word-break: break-all;
+      font: 13px/1.5 ui-monospace, monospace; margin-top: 8px; }
+    .msg { color: var(--muted); font-size: 12px; margin-top: 8px; }
+    .msg.err { color: #f87171; }
+    .msg.ok { color: var(--accent); }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 13px; }
+    th, td { padding: 6px 8px; text-align: left; border-bottom: 1px solid var(--border); }
+    th { color: var(--muted); font-weight: 600; font-size: 11px; text-transform: uppercase; }
+    .toolbar { display: flex; gap: 8px; flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <a href="/" class="brand">{{TOOL_NAME}}</a>
+    <nav><a href="/">← Home</a></nav>
+  </header>
+
+  <main class="tool">
+    <h1 style="font-size:24px;margin:0 0 4px">Create a share link</h1>
+    <p class="micro" id="stats"></p>
+
+    <div class="card-tool">
+      <h2 style="margin:0 0 6px;font-size:16px">1 · Point at your PDF</h2>
+      <p class="micro">
+        Free tier: paste any public PDF URL (Google Drive share, S3 signed URL, GitHub raw, Dropbox direct link).
+        Pro tier hosts the PDF on our Cloudflare R2 bucket — same viewer, no CORS worries.
+      </p>
+      <div class="field">
+        <label>PDF URL</label>
+        <input id="src" type="url" placeholder="https://drive.google.com/…/view.pdf" />
+      </div>
+      <div class="field">
+        <label>Doc title (for your dashboard only)</label>
+        <input id="title" placeholder="Series A deck v3" />
+      </div>
+    </div>
+
+    <div class="card-tool">
+      <h2 style="margin:0 0 6px;font-size:16px">2 · Protect it</h2>
+      <div class="row2">
+        <div class="field">
+          <label>Password (optional)</label>
+          <input id="pw" type="text" placeholder="leave blank for no gate" />
+        </div>
+        <div class="field">
+          <label>Expiry (days from now)</label>
+          <select id="exp">
+            <option value="1">1 day</option>
+            <option value="3">3 days</option>
+            <option value="7" selected>7 days (Free max)</option>
+            <option value="30" disabled>30 days (Pro)</option>
+            <option value="90" disabled>90 days (Pro)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-tool">
+      <h2 style="margin:0 0 6px;font-size:16px">3 · Generate</h2>
+      <div class="toolbar">
+        <button class="btn primary" id="gen">Create share link</button>
+        <button class="btn ghost" id="copy" hidden>Copy link</button>
+        <button class="btn ghost" id="preview" hidden>Preview →</button>
+      </div>
+      <div id="link-out" class="link-out" hidden></div>
+      <p class="msg" id="msg"></p>
+    </div>
+
+    <div class="card-tool">
+      <h2 style="margin:0 0 8px;font-size:16px">Your links <span class="micro" id="link-count"></span></h2>
+      <table id="tbl"><thead>
+        <tr><th>title</th><th>expires</th><th>views</th><th></th></tr>
+      </thead><tbody></tbody></table>
+    </div>
+
+    <p class="micro" style="margin-top:14px">
+      PDF rendering by <a href="https://github.com/mozilla/pdf.js" target="_blank" rel="noopener">Mozilla pdf.js</a> (Apache 2.0). Our code MIT.
+    </p>
+  </main>
+
+  <script src="/app.js" defer></script>
+  <script src="/docsend-tool.js" defer></script>
+</body>
+</html>

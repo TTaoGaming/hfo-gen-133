@@ -1,0 +1,191 @@
+# article_scanner sources
+#
+# kind:
+#   rss         — RSS/Atom feed URL
+#   html        — HTML index page; runner grabs <a href> anchors
+#   hn_top      — Hacker News top-N via Firebase API (url is a token)
+#   reddit_json — https://www.reddit.com/r/<sub>/new.json?limit=100
+#
+# Each source has an id, a display name, a URL, a fetch kind, and tags.
+# `enabled: false` skips without deleting. Order matters only for logs.
+#
+# Fetch discipline:
+#   * respects robots.txt (runner checks per host, caches for 24h)
+#   * 1.5s inter-request delay to reddit
+#   * 50ms inter-item delay for HN
+#   * WSJ/NYT: preview snippet only from feed; NEVER fetch the full page
+
+sources:
+
+  # -- AI newsletters (RSS/Atom preferred) ---------------------------------
+  - id: tldr_ai
+    name: "TLDR AI"
+    url: https://tldr.tech/api/rss/ai
+    kind: rss
+    tags: [ai, newsletter, curated]
+    enabled: true
+
+  - id: bens_bites
+    name: "Ben's Bites"
+    url: https://bensbites.beehiiv.com/feed
+    kind: rss
+    tags: [ai, newsletter, tools]
+    enabled: true
+
+  - id: import_ai
+    name: "Import AI (Jack Clark)"
+    url: https://importai.substack.com/feed
+    kind: rss
+    tags: [ai, research, policy]
+    enabled: true
+
+  - id: the_rundown
+    name: "The Rundown AI"
+    url: https://www.therundown.ai/feed
+    kind: rss
+    tags: [ai, newsletter]
+    enabled: true
+
+  - id: the_neuron
+    name: "The Neuron"
+    url: https://www.theneurondaily.com/feed
+    kind: rss
+    tags: [ai, newsletter]
+    enabled: true
+
+  - id: alphasignal
+    name: "AlphaSignal"
+    url: https://alphasignal.ai/rss
+    kind: rss
+    tags: [ai, ml, research]
+    enabled: true
+
+  - id: latent_space
+    name: "Latent Space (Swyx)"
+    url: https://www.latent.space/feed
+    kind: rss
+    tags: [ai, engineering, longform]
+    enabled: true
+
+  # -- Engineering thinkers ------------------------------------------------
+  - id: bytebytego
+    name: "ByteByteGo"
+    url: https://blog.bytebytego.com/feed
+    kind: rss
+    tags: [engineering, systems]
+    enabled: true
+
+  - id: martin_fowler
+    name: "Martin Fowler"
+    url: https://martinfowler.com/feed.atom
+    kind: rss
+    tags: [engineering, architecture]
+    enabled: true
+
+  - id: simon_willison
+    name: "Simon Willison"
+    url: https://simonwillison.net/atom/everything/
+    kind: rss
+    tags: [ai, engineering, tools]
+    enabled: true
+
+  - id: cal_paterson
+    name: "Cal Paterson"
+    url: https://calpaterson.com/atom.xml
+    kind: rss
+    tags: [engineering, essays]
+    enabled: true
+
+  - id: zach_holman
+    name: "Zach Holman"
+    url: https://zachholman.com/atom.xml
+    kind: rss
+    tags: [engineering, essays, distribution]
+    enabled: true
+
+  - id: humanlayer
+    name: "humanlayer (docs + advanced-context repo)"
+    url: https://humanlayer.dev/blog/rss.xml
+    kind: rss
+    tags: [ai, agents, context-engineering]
+    enabled: true
+
+  - id: ghuntley
+    name: "ghuntley"
+    url: https://ghuntley.com/rss.xml
+    kind: rss
+    tags: [ai, agents, tooling]
+    enabled: true
+
+  - id: moekhalil
+    name: "moekhalil substack"
+    url: https://moekhalil.substack.com/feed
+    kind: rss
+    tags: [ai, ramble-coding, agents]
+    enabled: true
+
+  - id: calv
+    name: "calv.info"
+    url: https://calv.info/rss.xml
+    kind: rss
+    tags: [ai, durable-objects, agents]
+    enabled: true
+
+  - id: spronta
+    name: "spronta.com"
+    url: https://www.spronta.com/rss.xml
+    kind: rss
+    tags: [webmcp, mcp, protocol]
+    enabled: true
+
+  # -- Vendor blogs --------------------------------------------------------
+  - id: anthropic_news
+    name: "Anthropic — News"
+    url: https://www.anthropic.com/news/rss.xml
+    kind: rss
+    tags: [ai, vendor, anthropic]
+    enabled: true
+
+  - id: openai_blog
+    name: "OpenAI Blog"
+    url: https://openai.com/blog/rss.xml
+    kind: rss
+    tags: [ai, vendor, openai]
+    enabled: true
+
+  # -- Community aggregators ----------------------------------------------
+  - id: hn_top
+    name: "Hacker News — Top 50"
+    url: topstories
+    kind: hn_top
+    limit: 50
+    tags: [aggregator, hn]
+    enabled: true
+
+  - id: reddit_mcp
+    name: "r/mcp"
+    url: mcp
+    kind: reddit_json
+    tags: [aggregator, mcp, protocol]
+    enabled: true
+
+  - id: reddit_localllama
+    name: "r/LocalLLaMA"
+    url: LocalLLaMA
+    kind: reddit_json
+    tags: [aggregator, llm, local]
+    enabled: true
+
+  - id: reddit_aiagents
+    name: "r/AIAgents"
+    url: AIAgents
+    kind: reddit_json
+    tags: [aggregator, agents]
+    enabled: true
+
+  - id: reddit_vibecoding
+    name: "r/vibecoding"
+    url: vibecoding
+    kind: reddit_json
+    tags: [aggregator, coding, ai]
+    enabled: true

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{TOOL_NAME}} — transcribe</title>
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#0b0d10" />
+  <link rel="stylesheet" href="/styles.css" />
+  <style>
+    .tool { max-width: 900px; margin: 0 auto; padding: 24px; }
+    .drop { border: 2px dashed var(--border); border-radius: 12px;
+      padding: 40px; text-align: center; background: var(--panel);
+      cursor: pointer; transition: border-color 120ms, background 120ms; }
+    .drop.hot { border-color: var(--accent); background: #0d1116; }
+    .drop input { display: none; }
+    .drop h3 { margin: 0 0 6px; font-size: 18px; }
+    .row { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; align-items: center; }
+    .row select, .row input {
+      padding: 8px 10px; border-radius: 8px; border: 1px solid var(--border);
+      background: #0d1116; color: var(--ink); font-size: 14px; }
+    .progress { height: 8px; background: var(--panel); border-radius: 999px;
+      overflow: hidden; margin-top: 12px; border: 1px solid var(--border); }
+    .progress > div { height: 100%; background: var(--accent);
+      width: 0; transition: width 150ms ease-out; }
+    .log { color: var(--muted); font: 12px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
+      min-height: 16px; margin-top: 8px; }
+    .out { margin-top: 16px; padding: 12px; background: #0d1116;
+      border: 1px solid var(--border); border-radius: 8px; white-space: pre-wrap;
+      font: 13px/1.5 ui-monospace, monospace; max-height: 400px; overflow: auto; }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 999px;
+      background: var(--panel); color: var(--muted); font-size: 11px;
+      border: 1px solid var(--border); margin-left: 6px; }
+    .pro-only { color: var(--muted); font-size: 12px; }
+    .pro-only button { padding: 4px 10px; font-size: 12px; margin-right: 6px;
+      background: transparent; color: var(--muted); border: 1px dashed var(--border);
+      border-radius: 6px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <a href="/" class="brand">{{TOOL_NAME}}</a>
+    <nav><a href="/">← Home</a><span class="badge" id="engine-badge">detecting engine…</span></nav>
+  </header>
+
+  <main class="tool">
+    <h1 style="font-size:24px;margin:0 0 4px">Transcribe an audio file</h1>
+    <p class="micro">Nothing uploads. Model runs in your browser. Free tier: TXT export with a small watermark.</p>
+
+    <div class="row">
+      <label>Model
+        <select id="model">
+          <option value="Xenova/whisper-tiny.en">whisper-tiny.en (~40 MB, fastest)</option>
+          <option value="Xenova/whisper-tiny">whisper-tiny (multilingual)</option>
+          <option value="Xenova/whisper-base.en">whisper-base.en (~140 MB, more accurate)</option>
+          <option value="Xenova/whisper-base">whisper-base (multilingual)</option>
+        </select>
+      </label>
+      <label>Language
+        <select id="lang">
+          <option value="auto">auto</option>
+          <option value="en">English</option>
+          <option value="es">Spanish</option>
+          <option value="fr">French</option>
+          <option value="de">German</option>
+          <option value="ja">Japanese</option>
+          <option value="zh">Chinese</option>
+        </select>
+      </label>
+      <label>Task
+        <select id="task">
+          <option value="transcribe">transcribe</option>
+          <option value="translate">translate → English</option>
+        </select>
+      </label>
+    </div>
+
+    <label class="drop" id="drop">
+      <input type="file" id="file" accept="audio/*,video/*" />
+      <h3 id="drop-title">Drop an audio or video file (or click to browse)</h3>
+      <p class="micro">Supported: mp3, wav, m4a, ogg, opus, mp4, webm, mov (audio track extracted)</p>
+    </label>
+
+    <div class="progress"><div id="prog"></div></div>
+    <p class="log" id="log">Ready.</p>
+
+    <div class="row" id="actions" hidden>
+      <button class="btn primary" id="dl-txt">Download TXT</button>
+      <span class="pro-only">
+        <button data-pro="srt">SRT (Pro)</button>
+        <button data-pro="vtt">VTT (Pro)</button>
+        <button data-pro="json">JSON (Pro)</button>
+      </span>
+    </div>
+
+    <div class="out" id="out" hidden></div>
+
+    <p class="micro" style="margin-top:14px">
+      Powered by <a href="https://github.com/xenova/transformers.js" target="_blank" rel="noopener">Transformers.js</a> (Apache 2.0),
+      <a href="https://github.com/openai/whisper" target="_blank" rel="noopener">Whisper</a> (MIT),
+      <a href="https://github.com/ggerganov/whisper.cpp" target="_blank" rel="noopener">whisper.cpp</a> (MIT). Model weights load from Hugging Face on first use, then cache in IndexedDB.
+    </p>
+  </main>
+
+  <script src="/app.js" defer></script>
+  <script type="module" src="/whisper-tool.js"></script>
+</body>
+</html>

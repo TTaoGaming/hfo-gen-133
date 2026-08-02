@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{TOOL_NAME}} — version a prompt</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <style>
+    .tool { max-width: 960px; margin: 0 auto; padding: 24px; }
+    .tool textarea { width: 100%; min-height: 240px; padding: 12px;
+      border-radius: 10px; border: 1px solid var(--border);
+      background: #0d1116; color: var(--ink);
+      font: 14px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .row { display: flex; gap: 8px; align-items: center; margin-top: 12px; flex-wrap: wrap; }
+    .row select, .row input { padding: 8px 10px; border-radius: 8px;
+      border: 1px solid var(--border); background: #0d1116; color: var(--ink); }
+    .rev-list { margin-top: 20px; }
+    .rev { display: flex; justify-content: space-between; align-items: center;
+      padding: 8px 12px; background: var(--panel);
+      border: 1px solid var(--border); border-radius: 8px; margin-bottom: 6px; }
+    .rev code { color: var(--accent); font-family: ui-monospace, monospace; font-size: 12px; }
+    .rev .actions button { margin-left: 6px; padding: 4px 10px; font-size: 12px;
+      background: transparent; color: var(--ink); border: 1px solid var(--border);
+      border-radius: 6px; cursor: pointer; }
+    .diff { background: #0d1116; border: 1px solid var(--border); border-radius: 8px;
+      padding: 12px; margin-top: 12px;
+      font: 13px/1.5 ui-monospace, monospace; white-space: pre-wrap; word-break: break-word; }
+    .diff .add { background: rgba(110,231,183,0.15); }
+    .diff .del { background: rgba(239,68,68,0.20); text-decoration: line-through; }
+    .out { margin-top: 12px; padding: 12px; background: #0d1116;
+      border: 1px solid var(--border); border-radius: 8px;
+      white-space: pre-wrap; font: 13px/1.5 ui-monospace, monospace; min-height: 60px; }
+    .permalink { color: var(--muted); font-size: 12px; margin-top: 6px; word-break: break-all; }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 999px;
+      background: var(--panel); color: var(--muted); font-size: 11px; border: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <a href="/" class="brand">{{TOOL_NAME}}</a>
+    <nav><a href="/">← Home</a></nav>
+  </header>
+
+  <main class="tool">
+    <h1 style="font-size:24px;margin:0 0 4px">Version a prompt</h1>
+    <p class="micro" id="stats"></p>
+
+    <textarea id="prompt" placeholder="Paste or type your prompt here…"></textarea>
+
+    <div class="row">
+      <button class="btn primary" id="save">Save revision</button>
+      <button class="btn ghost" id="copy">Copy share URL</button>
+      <span class="badge" id="rev-badge">no revisions yet</span>
+    </div>
+
+    <div class="row">
+      <label class="micro">Model</label>
+      <select id="model">
+        <option value="gpt-4o-mini">gpt-4o-mini</option>
+        <option value="claude-haiku-4-5">claude-haiku-4-5</option>
+        <option value="gemini-2.0-flash">gemini-2.0-flash</option>
+        <option value="llama-3.3-70b-groq">llama-3.3-70b (Groq)</option>
+      </select>
+      <input id="api-key" type="password" placeholder="Your API key (BYOK on free tier)" style="min-width:280px" />
+      <button class="btn ghost" id="run">Run</button>
+    </div>
+    <p class="micro">Keys stay in your browser — we proxy the call and never store them.
+      Free tier: 10 prompts, 7-day history. <a href="/#pricing">Upgrade for unlimited</a>.</p>
+
+    <div class="out" id="output">Model output appears here.</div>
+
+    <h2 style="font-size:18px;margin:24px 0 8px">Revisions</h2>
+    <div class="rev-list" id="revs"></div>
+    <div class="diff" id="diff" hidden></div>
+
+    <p class="permalink" id="permalink"></p>
+  </main>
+
+  <script src="/app.js" defer></script>
+  <script src="/prompt-tool.js" defer></script>
+</body>
+</html>

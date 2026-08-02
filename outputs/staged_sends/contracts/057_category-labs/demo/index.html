@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Five-minute integration demo — Category Labs</title>
+<style>body{font:16px system-ui;max-width:880px;margin:2rem auto;padding:0 1rem;background:#10131a;color:#eef2ff}button,textarea{font:inherit}textarea{width:100%;min-height:90px}button{margin:.4rem .4rem .4rem 0;padding:.7rem 1rem}pre{background:#080a0f;padding:1rem;white-space:pre-wrap;border:1px solid #394158}.ok{color:#6ee7b7}.bad{color:#fca5a5}</style>
+</head><body><h1>Category Labs</h1><p><strong>Target:</strong> Senior Software Engineer (C++ / Rust): https://jobs.ashbyhq.com/category-labs/a0af69a1-8a77-4bda-b5...</p><p>This local demo shows an accepted path, a refused path, and an exportable receipt. It performs no network requests.</p>
+<label for="input">Synthetic input</label><textarea id="input">{"request":"validate one bounded workflow","target":"Category Labs"}</textarea>
+<div><button id="run">Run accepted path</button><button id="fail">Inject invalid input</button><button id="copy">Copy receipt</button></div><pre id="out">Ready.</pre>
+<script>const terms=["Rust"], target="Category Labs", out=document.querySelector('#out'), input=document.querySelector('#input');
+function receipt(status,reason){return{schema:'hfo.demo.receipt.v1',sequence:57,target,terms,status,reason,ts_utc:new Date().toISOString(),network_requests:0}}
+document.querySelector('#run').onclick=()=>{let ok;try{ok=JSON.parse(input.value)}catch(e){out.textContent=JSON.stringify(receipt('REFUSED','invalid JSON'),null,2);out.className='bad';return}out.textContent=JSON.stringify(receipt('ACCEPTED','synthetic input passed the demo boundary'),null,2);out.className='ok'};
+document.querySelector('#fail').onclick=()=>{out.textContent=JSON.stringify(receipt('REFUSED','required evidence missing'),null,2);out.className='bad'};
+document.querySelector('#copy').onclick=async()=>{await navigator.clipboard.writeText(out.textContent)};</script></body></html>

@@ -1,0 +1,59 @@
+# HFO Distribution Approval Gate
+# Read by Codex LOOP D1 SAFE-PUBLISH-BATCH
+#
+# ============================================================
+# FORMAT — TWO LINE TYPES ACCEPTED
+# ============================================================
+#
+# (1) INSTANCE line — approve ONE staged item at a time:
+#       <MARKET>:<SEQ>
+#     Examples:
+#       contracts:001
+#       employment:002
+#       games:052
+#       suika_dlc:5
+#
+# (2) CLASS line — pre-authorize a batch of items in one row
+#     (added 2026-08-03 by executor per Sigrún class-preauth mandate):
+#       class:<name>:quota=<N>:seq_range=<a-b>:expires=<UTC ISO-8601>
+#     Fields:
+#       name       — free-form class label; matches nothing on its own,
+#                    it is the human-readable audit tag on the receipt.
+#       quota=N    — max items the loop may publish from this class in
+#                    this approval window. D1 halts when quota hit.
+#       seq_range  — inclusive numeric range of sequence numbers that
+#                    are eligible. Format a-b, zero-padded permitted.
+#                    Items outside the range are IGNORED even if listed.
+#       expires    — hard cutoff UTC. D1 refuses to publish if now>expires.
+#     Examples:
+#       class:contracts_hn:quota=40:seq_range=001-149:expires=2026-08-08T23:00:00Z
+#       class:employment_hn:quota=40:seq_range=002-150:expires=2026-08-08T23:00:00Z
+#       class:cold_email_ai_rescue:quota=25:seq_range=001-999:expires=2026-08-16T19:00:00Z
+#
+# Order of precedence:
+#   INSTANCE lines OVERRIDE CLASS lines. If both a class:contracts_hn
+#   (quota=40) and an instance contracts:001 are present, the instance
+#   line always publishes AND counts against the class quota.
+#   Instance-REJECT: prefix with ! to force skip inside a class:
+#     !contracts:007   # skip 007 even though class approves it
+#
+# Behavior:
+#   Empty file       => zero publishes (D1 halts safely).
+#   Only comments    => zero publishes (D1 halts safely).
+#   Instance line    => that item publishes if not expired.
+#   Class line       => any staged item whose market matches the class
+#                       family (contracts_hn/employment_hn/contracts_github
+#                       resolve to market=contracts/employment) AND whose
+#                       seq is in seq_range AND draft is not expired.
+#   D1 halts on 4xx/5xx, records receipt to state/experiments/publications.jsonl.
+#
+# Parser reference:
+#   tools/olrun/approvals_parser.py resolves both line formats to a
+#   concrete list of (market, seq, package_path). Codex D1 SAFE-PUBLISH
+#   should call it or reproduce the same logic — see docstring.
+#
+# ============================================================
+# APPROVED ITEMS (uncommented lines below get published):
+# ============================================================
+
+# (empty — add approvals here)

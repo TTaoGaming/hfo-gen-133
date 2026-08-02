@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{TOOL_NAME}} — live demo</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <style>
+    .status-page { max-width: 720px; margin: 0 auto; padding: 24px; }
+    .status-hero { background: var(--panel); border: 1px solid var(--border);
+      border-radius: 12px; padding: 24px; text-align: center; }
+    .status-dot { display: inline-block; width: 14px; height: 14px; border-radius: 50%;
+      background: #22c55e; box-shadow: 0 0 0 4px rgba(34,197,94,0.15); margin-right: 8px;
+      vertical-align: middle; animation: pulse 2s ease-in-out infinite; }
+    .status-dot.red { background: #ef4444; box-shadow: 0 0 0 4px rgba(239,68,68,0.15); }
+    .status-dot.yellow { background: #eab308; box-shadow: 0 0 0 4px rgba(234,179,8,0.15); }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .55; } }
+    .status-headline { font-size: 22px; font-weight: 700; margin: 4px 0 12px; }
+    .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 16px; }
+    .metric { background: #0d1116; border: 1px solid var(--border);
+      border-radius: 8px; padding: 10px; text-align: center; }
+    .metric .num { font-size: 20px; font-weight: 700; }
+    .metric .label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+    .heartbeat-bar { display: flex; gap: 2px; margin: 20px 0 6px; }
+    .heartbeat-bar span { flex: 1; height: 34px; border-radius: 3px; background: #22c55e; }
+    .heartbeat-bar span.miss { background: #ef4444; }
+    .heartbeat-bar span.slow { background: #eab308; }
+    .heartbeat-bar span.none { background: #2a3140; }
+    .legend { font-size: 12px; color: var(--muted); }
+    .incidents { margin-top: 24px; }
+    .incident { padding: 10px 14px; background: var(--panel);
+      border: 1px solid var(--border); border-left: 3px solid #ef4444;
+      border-radius: 6px; margin-bottom: 6px; }
+    .incident.resolved { border-left-color: #22c55e; }
+    .incident .when { font-size: 11px; color: var(--muted); }
+    .subscribe { margin-top: 24px; padding: 14px; background: var(--panel);
+      border: 1px solid var(--border); border-radius: 8px; text-align: center; }
+    @media (max-width: 600px) { .metrics { grid-template-columns: repeat(2, 1fr); } }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <a href="/" class="brand">{{TOOL_NAME}}</a>
+    <nav><a href="/">← Home</a></nav>
+  </header>
+
+  <main class="status-page">
+    <p class="micro" style="margin:0 0 6px">agentreleasegate.com/status/demo-agent</p>
+    <div class="status-hero">
+      <div><span class="status-dot" id="dot"></span>
+        <span class="status-headline" id="headline">Demo Agent is operational</span></div>
+      <p class="micro" id="last-run">Last run: —</p>
+      <div class="metrics">
+        <div class="metric"><div class="num" id="m-uptime">—</div><div class="label">Uptime 24h</div></div>
+        <div class="metric"><div class="num" id="m-runs">—</div><div class="label">Runs 24h</div></div>
+        <div class="metric"><div class="num" id="m-err">—</div><div class="label">Error rate</div></div>
+        <div class="metric"><div class="num" id="m-p95">—</div><div class="label">p95 latency</div></div>
+      </div>
+      <div class="heartbeat-bar" id="hb"></div>
+      <p class="legend">Last 60 heartbeats · <span style="color:#22c55e">■</span> ok
+        · <span style="color:#eab308">■</span> slow
+        · <span style="color:#ef4444">■</span> missed</p>
+    </div>
+
+    <h2 style="font-size:18px;margin:24px 0 8px">Recent incidents</h2>
+    <div class="incidents" id="incidents"></div>
+
+    <div class="subscribe">
+      <p style="margin:0 0 8px"><strong>Get notified when this agent's status changes.</strong></p>
+      <p class="micro">
+        RSS: <code>/status/demo-agent/rss.xml</code> ·
+        Email: <a href="/#pricing">upgrade to Pro</a> ·
+        Webhook: <a href="/#pricing">upgrade to Pro</a>
+      </p>
+    </div>
+  </main>
+
+  <script src="/app.js" defer></script>
+  <script src="/status-tool.js" defer></script>
+</body>
+</html>

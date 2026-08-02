@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{SEO_TITLE}}</title>
+  <meta name="description" content="{{SEO_DESCRIPTION}}" />
+  <meta name="keywords" content="{{SEO_KEYWORDS}}" />
+  <link rel="canonical" href="https://{{TOOL_SLUG}}.{{ROOT_DOMAIN}}/" />
+  <meta property="og:title" content="{{SEO_TITLE}}" />
+  <meta property="og:description" content="{{SEO_DESCRIPTION}}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://{{TOOL_SLUG}}.{{ROOT_DOMAIN}}/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <a href="/" class="brand">{{TOOL_NAME}}</a>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="/app.html" class="cta">Try it</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>{{HERO_HEADLINE}}</h1>
+      <p class="sub">{{HERO_SUBHEAD}}</p>
+      <div class="hero-cta">
+        <a class="btn primary" href="/app.html">{{HERO_CTA_PRIMARY}}</a>
+        <a class="btn ghost" href="#pricing">See pricing</a>
+      </div>
+      <p class="micro">{{HERO_MICRO_PROOF}}</p>
+    </section>
+
+    <section class="problem">
+      <h2>The problem</h2>
+      <p>{{PROBLEM_STATEMENT}}</p>
+    </section>
+
+    <section class="demo">
+      <h2>Live demo</h2>
+      <div class="demo-frame">
+        <!-- Units may replace this with an <iframe src="/app.html"></iframe> or an inline widget. -->
+        {{DEMO_SLOT}}
+      </div>
+    </section>
+
+    <section id="features" class="features">
+      <h2>Features</h2>
+      <div class="cards">
+        <div class="card"><h3>{{FEATURE_1_TITLE}}</h3><p>{{FEATURE_1_BODY}}</p></div>
+        <div class="card"><h3>{{FEATURE_2_TITLE}}</h3><p>{{FEATURE_2_BODY}}</p></div>
+        <div class="card"><h3>{{FEATURE_3_TITLE}}</h3><p>{{FEATURE_3_BODY}}</p></div>
+      </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+      <h2>Pricing</h2>
+      <div class="tiers">
+        <div class="tier">
+          <h3>Free</h3>
+          <p class="price">$0</p>
+          <ul>{{PRICING_FREE_BULLETS}}</ul>
+          <a class="btn ghost" href="/app.html">Start free</a>
+        </div>
+        <div class="tier featured">
+          <h3>Pro</h3>
+          <p class="price">{{PRICING_PRO_PRICE}}</p>
+          <ul>{{PRICING_PRO_BULLETS}}</ul>
+          <!-- Stripe Checkout placeholder — operator swaps STRIPE_LINK on Tuesday.
+               Until then this behaves as a waitlist capture. -->
+          <form id="waitlist" class="waitlist" onsubmit="return submitWaitlist(event)">
+            <input type="email" name="email" placeholder="you@work.com" required />
+            <button class="btn primary" type="submit">Join waitlist</button>
+          </form>
+          <p class="micro">Payments open Tuesday · <a href="{{STRIPE_LINK}}" data-role="stripe">buy now →</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="faq">
+      <h2>FAQ</h2>
+      <details><summary>{{FAQ_1_Q}}</summary><p>{{FAQ_1_A}}</p></details>
+      <details><summary>{{FAQ_2_Q}}</summary><p>{{FAQ_2_A}}</p></details>
+      <details><summary>{{FAQ_3_Q}}</summary><p>{{FAQ_3_A}}</p></details>
+      <details><summary>{{FAQ_4_Q}}</summary><p>{{FAQ_4_A}}</p></details>
+    </section>
+  </main>
+
+  <footer>
+    <div class="foot-cols">
+      <div>
+        <p class="brand">{{TOOL_NAME}}</p>
+        <p class="micro">Shipped by HFO gen-133 · <a href="{{GITHUB_URL}}">source</a></p>
+      </div>
+      <div>
+        <p><strong>Talk to a human</strong></p>
+        <!-- Cal.com booking slot — operator swaps CAL_LINK on Tuesday. -->
+        <p><a href="{{CAL_LINK}}" rel="noopener">Book a 15-min call →</a></p>
+      </div>
+      <div>
+        <p><strong>Legal</strong></p>
+        <p><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>

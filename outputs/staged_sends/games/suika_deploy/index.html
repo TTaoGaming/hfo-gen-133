@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HFO Suika Smash — Hive Fleet Obsidian</title>
+  <meta name="description" content="HFO Suika Smash — an obsidian-and-gold reskin of the classic Suika/watermelon merge game, from the Hive Fleet Obsidian games portfolio." />
+  <meta property="og:title" content="HFO Suika Smash — Hive Fleet Obsidian" />
+  <meta property="og:description" content="Obsidian-and-gold reskin of the Suika merge game. Play free, no install." />
+  <meta property="og:image" content="./screenshot.png" />
+  <style>
+    @import url(https://fonts.bunny.net/css?family=azeret-mono:400,700,900);
+
+    :root {
+      --col-bg: #1B1023;
+      --col-bg-light: #2A1738;
+      --col-bg-lighter: #3D2350;
+      --col-primary: #E8B34C;
+      --col-primary-dark: #C4912F;
+      --col-primary-light: #F5CE7A;
+      --col-shadow: rgba(0, 0, 0, 0.45);
+      --col-white: #fff;
+    }
+
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+      line-height: 1;
+    }
+
+    body {
+      background-color: var(--col-bg);
+      font-family: 'Azeret Mono', sans-serif;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 640px;
+      margin: 0 auto;
+      height: 100vh;
+    }
+
+    #game-canvas {
+      position: relative;
+    }
+
+    #game-ui {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      user-select: none;
+      font-weight: 700;
+      display: none;
+      transform-origin: top left;
+    }
+
+    #game-score {
+      position: absolute;
+      width: 100%;
+      border-bottom: 2px dotted #333;
+      font-size: 84px;
+      font-weight: 900;
+      padding-left: 16px;
+      color: var(--col-white);
+      text-shadow: 3px 3px 0 var(--col-primary-dark), -3px -3px 0 var(--col-primary-dark), -3px 3px 0 var(--col-primary-dark), 3px -3px 0 var(--col-primary-dark);
+    }
+
+    #game-end-container {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-items: center;
+      background-color: var(--col-shadow);
+    }
+
+    #game-end {
+      text-align: center;
+      padding: 32px 48px;
+      background-color: var(--col-bg-lighter);
+      border: 5px solid var(--col-primary);
+      box-shadow: 0 4px 32px var(--col-shadow);
+      border-radius: 32px;
+      margin: 0 auto;
+      pointer-events: initial;
+      user-select: initial;
+    }
+
+    #game-end-title {
+      font-weight: 700;
+      font-size: 48px;
+      color: var(--col-primary-dark);
+    }
+
+    #game-end-link {
+      display: inline-block;
+      color: var(--col-white);
+      font-size: 24px;
+      text-decoration: none;
+      background-color: var(--col-primary-light);
+      margin-top: 16px;
+      padding: 16px;
+      border-radius: 16px;
+      box-shadow: 4px 4px 0 var(--col-shadow);
+    }
+
+    #game-end-link:hover {
+      background-color: var(--col-primary);
+      box-shadow: 6px 6px 0 var(--col-shadow);
+    }
+
+    #game-status {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 48px;
+      background-color: var(--col-bg-lighter);
+      display: flex;
+    }
+
+    .game-status-item {
+      display: flex;
+      line-height: 1;
+      align-items: center;
+      margin-right: 32px;
+    }
+
+    .game-status-label {
+      color: #C9B8DC;
+      font-size: 16px;
+      margin-left: 24px;
+      margin-right: 8px;
+    }
+
+    #game-highscore-value {
+      color: var(--col-primary);
+      font-weight: 700;
+      font-size: 24px;
+    }
+
+    #game-next-fruit {
+      width: 24px;
+      height: 24px;
+    }
+
+    #hfo-header {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 14px 16px 8px;
+      color: var(--col-primary-light);
+      font-weight: 900;
+      font-size: 20px;
+      letter-spacing: 0.5px;
+      text-align: center;
+    }
+
+    #hfo-header span {
+      color: var(--col-white);
+      font-weight: 400;
+      font-size: 13px;
+      display: block;
+      margin-top: 2px;
+      letter-spacing: 0.3px;
+    }
+
+    #hfo-footer {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 10px 16px 24px;
+      color: #C9B8DC;
+      font-size: 12px;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    #hfo-footer a {
+      color: var(--col-primary-light);
+    }
+  </style>
+</head>
+<body>
+  <div id="hfo-header">
+    HFO SUIKA SMASH
+    <span>Hive Fleet Obsidian games portfolio</span>
+  </div>
+  <div class="container">
+    <div id="game-canvas">
+      <div id="game-ui">
+        <p id="game-score"></p>
+
+        <div id="game-end-container">
+          <div id="game-end">
+            <div id="game-end-title">Game Over!</div>
+            <a id="game-end-link" href="">Try Again</a>
+          </div>
+        </div>
+
+        <div id="game-status">
+          <div class="game-status-item">
+            <div class="game-status-label">Highscore</div>
+            <div id="game-highscore-value">0</div>
+          </div>
+          <div class="game-status-item">
+            <div class="game-status-label">Next</div>
+            <img id="game-next-fruit" src="./assets/img/circle0.png" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="hfo-footer">
+    HFO Suika Smash is an obsidian-and-gold reskin of the open-source
+    <strong>suika-game</strong> (Suika/Watermelon merge clone) by
+    <a href="https://github.com/moonfloof/suika-game" target="_blank" rel="noopener">moonfloof</a>,
+    itself based on the original by
+    <a href="https://tombofry.github.io/suika-game/" target="_blank" rel="noopener">tombofry</a>.
+    Source released under the Unlicense (public domain); Matter.js physics
+    engine under MIT. More free games:
+    <a href="https://hfo-games.pages.dev/">hfo-games.pages.dev</a>
+  </div>
+  <script type="text/javascript" src="./matter.js"></script>
+  <script type="text/javascript" src="./index.js?v=4"></script>
+</body>
+</html>

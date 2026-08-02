@@ -1,0 +1,17 @@
+{
+  "status": "planned_not_pushed",
+  "butler_present": false,
+  "butler_present_verified": "which butler / butler -V -> 'command not found' on this host, 2026-08-02T16:20Z",
+  "note": "Plan only. No butler push executed, no itch.io account/project created, nothing sent. Class envelope: SEND to any marketplace = STOP for this worker.",
+  "target": "ttaogaming/hfo-suika-smash",
+  "channel": "html5",
+  "build_dir": "outputs/staged_sends/games/suika_deploy",
+  "butler_command": "butler push outputs/staged_sends/games/suika_deploy ttaogaming/hfo-suika-smash:html5 --if-changed",
+  "prereqs_before_real_push": [
+    "install butler (https://itchio.itch.io/butler) on this host",
+    "butler login (interactive, operator-only — not something an agent should do headlessly with stored credentials)",
+    "create the itch.io project 'hfo-suika-smash' under the operator's account, set kind=HTML, embed=index.html",
+    "operator review of editor_pitch.md and manifest.json before first push"
+  ],
+  "deploy_url_reference": "https://hfo-suika-v1.pages.dev/ (already live on Cloudflare Pages; itch.io push would be a mirror/alternate distribution channel, not a replacement)"
+}

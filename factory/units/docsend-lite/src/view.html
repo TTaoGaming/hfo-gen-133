@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>View shared document · {{TOOL_NAME}}</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="stylesheet" href="/styles.css" />
+  <style>
+    body { background: var(--bg); }
+    .frame { max-width: 900px; margin: 0 auto; padding: 20px; }
+    .gate { max-width: 380px; margin: 80px auto; padding: 24px;
+      background: var(--panel); border: 1px solid var(--border); border-radius: 12px; }
+    .gate input { width: 100%; padding: 10px 12px; border-radius: 8px;
+      border: 1px solid var(--border); background: #0d1116; color: var(--ink);
+      font: 14px inherit; margin: 8px 0; }
+    .viewer { background: var(--panel); border: 1px solid var(--border);
+      border-radius: 10px; padding: 16px; }
+    canvas.page { display: block; margin: 8px auto 24px; max-width: 100%;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.4); background: white; }
+    .msg { color: var(--muted); font-size: 12px; margin-top: 8px; }
+    .msg.err { color: #f87171; }
+    .status { color: var(--muted); font-size: 12px; text-align: center; margin: 8px 0; }
+    .toolbar { display: flex; justify-content: space-between; align-items: center;
+      padding: 8px 0; border-bottom: 1px solid var(--border); margin-bottom: 12px; }
+    .toolbar .brand { color: var(--muted); font-size: 12px; }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <div id="gate" class="gate" hidden>
+      <h2 style="margin:0 0 8px;font-size:18px">Protected document</h2>
+      <p class="micro">Enter the password to view. Never leaves your browser.</p>
+      <input id="pw" type="password" placeholder="password" autocomplete="off" />
+      <button class="btn primary" id="unlock" style="width:100%">Unlock</button>
+      <p class="msg" id="gate-msg"></p>
+    </div>
+
+    <div id="expired" hidden style="text-align:center;margin-top:60px">
+      <h2>Link expired</h2>
+      <p class="micro">Ask the sender for a fresh link.</p>
+    </div>
+
+    <div id="viewer" class="viewer" hidden>
+      <div class="toolbar">
+        <span class="brand">shared via <a href="/">{{TOOL_NAME}}</a></span>
+        <span class="status" id="page-status"></span>
+      </div>
+      <div class="status" id="load-status">Loading PDF…</div>
+      <div id="pages"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@4.7.76/legacy/build/pdf.min.mjs" type="module"></script>
+  <script src="/view-tool.js" type="module" defer></script>
+</body>
+</html>

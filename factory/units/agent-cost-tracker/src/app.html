@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{TOOL_NAME}} — track a call</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <style>
+    .tool { max-width: 1080px; margin: 0 auto; padding: 24px; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+    .card-tool { background: var(--panel); border: 1px solid var(--border);
+      border-radius: 10px; padding: 18px; }
+    .card-tool h2 { margin: 0 0 12px; font-size: 18px; }
+    .field { display: block; margin: 10px 0; }
+    .field label { display: block; color: var(--muted); font-size: 12px; margin-bottom: 4px; }
+    .field input, .field select, .field textarea {
+      width: 100%; padding: 8px 10px; border-radius: 8px;
+      border: 1px solid var(--border); background: #0d1116; color: var(--ink);
+      font: 14px/1.5 inherit; }
+    .field textarea { font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 13px; min-height: 140px; }
+    .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .row3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+    .stat { background: #0d1116; border: 1px solid var(--border);
+      border-radius: 8px; padding: 12px; text-align: center; }
+    .stat .num { font-size: 22px; font-weight: 700; color: var(--accent); }
+    .stat .lbl { color: var(--muted); font-size: 11px; margin-top: 2px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 13px; }
+    th, td { padding: 6px 8px; text-align: left; border-bottom: 1px solid var(--border); }
+    th { color: var(--muted); font-weight: 600; font-size: 11px; text-transform: uppercase; }
+    td.num { text-align: right; font-family: ui-monospace, monospace; }
+    tr:last-child td { border-bottom: 0; }
+    .msg { color: var(--muted); font-size: 12px; margin-top: 8px; }
+    .msg.err { color: #f87171; }
+    .msg.ok { color: var(--accent); }
+    .toolbar { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+    .toolbar button { padding: 6px 12px; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <a href="/" class="brand">{{TOOL_NAME}}</a>
+    <nav><a href="/">← Home</a></nav>
+  </header>
+
+  <main class="tool">
+    <h1 style="font-size:24px;margin:0 0 4px">Track a call</h1>
+    <p class="micro" id="stats"></p>
+
+    <div class="grid">
+      <div class="card-tool">
+        <h2>Add event</h2>
+
+        <div class="field">
+          <label>Paste API response (OpenAI / Anthropic / Google / Groq / Mistral / Cohere)</label>
+          <textarea id="paste" placeholder='{"usage": {"prompt_tokens": 812, "completion_tokens": 240}, "model": "gpt-4o-mini"}'></textarea>
+        </div>
+
+        <div class="row2">
+          <div class="field">
+            <label>Agent label (required)</label>
+            <input id="agent" placeholder="e.g. resume-parser" />
+          </div>
+          <div class="field">
+            <label>Model override (optional)</label>
+            <input id="model-override" placeholder="claude-sonnet-4-5" />
+          </div>
+        </div>
+
+        <div class="toolbar">
+          <button class="btn primary" id="parse-add">Parse + add</button>
+          <button class="btn ghost" id="manual-open">Enter manually →</button>
+        </div>
+        <p class="msg" id="parse-msg"></p>
+
+        <div id="manual" hidden style="margin-top:14px;padding-top:14px;border-top:1px solid var(--border)">
+          <div class="row3">
+            <div class="field"><label>Provider</label>
+              <select id="m-provider">
+                <option value="openai">openai</option>
+                <option value="anthropic">anthropic</option>
+                <option value="google">google</option>
+                <option value="groq">groq</option>
+                <option value="mistral">mistral</option>
+                <option value="cohere">cohere</option>
+              </select>
+            </div>
+            <div class="field"><label>Model</label><input id="m-model" placeholder="gpt-4o-mini" /></div>
+            <div class="field"><label>Agent</label><input id="m-agent" placeholder="agent name" /></div>
+          </div>
+          <div class="row2">
+            <div class="field"><label>Input tokens</label><input id="m-in" type="number" min="0" /></div>
+            <div class="field"><label>Output tokens</label><input id="m-out" type="number" min="0" /></div>
+          </div>
+          <button class="btn primary" id="manual-add">Add event</button>
+        </div>
+      </div>
+
+      <div class="card-tool">
+        <h2>Totals</h2>
+        <div class="row3">
+          <div class="stat"><div class="num" id="tot-events">0</div><div class="lbl">events</div></div>
+          <div class="stat"><div class="num" id="tot-cost">$0.0000</div><div class="lbl">total cost</div></div>
+          <div class="stat"><div class="num" id="tot-tokens">0</div><div class="lbl">total tokens</div></div>
+        </div>
+
+        <h2 style="margin-top:20px">By agent</h2>
+        <table id="by-agent"><thead>
+          <tr><th>agent</th><th>events</th><th class="num">tokens</th><th class="num">cost</th></tr>
+        </thead><tbody></tbody></table>
+
+        <h2 style="margin-top:20px">By model</h2>
+        <table id="by-model"><thead>
+          <tr><th>model</th><th>events</th><th class="num">tokens</th><th class="num">cost</th></tr>
+        </thead><tbody></tbody></table>
+
+        <div class="toolbar">
+          <button class="btn ghost" id="export-csv">Export CSV</button>
+          <button class="btn ghost" id="clear-all">Clear all</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-tool" style="margin-top:20px">
+      <h2>Event log <span class="micro" id="log-count"></span></h2>
+      <table id="log"><thead>
+        <tr><th>time</th><th>agent</th><th>model</th><th class="num">in</th><th class="num">out</th><th class="num">$</th><th></th></tr>
+      </thead><tbody></tbody></table>
+    </div>
+
+    <p class="micro" style="margin-top:16px">
+      Pricing table baked in below — <code>window.ACT_PRICES</code>. Add-your-own via <code>localStorage.setItem('act.prices.override', JSON.stringify({...}))</code>.
+      Full data source + methodology in the <a href="/">README</a>.
+    </p>
+  </main>
+
+  <script src="/app.js" defer></script>
+  <script src="/tracker.js" defer></script>
+</body>
+</html>
