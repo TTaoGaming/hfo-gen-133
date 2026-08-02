@@ -1,0 +1,95 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+event_id: X11_NATIVE_TASKS_READ_VISIBILITY_CAMPAIGN_DECISION_WAKE_04_20260802T124152Z
+experiment_id: X11_NATIVE_TASKS_READ_VISIBILITY_V1
+task_id_expected: 6a55089a9adc8191bda54541f7f9effa
+carrier: HFO_GEN133_X11
+wip: 1
+branch: agent/gen133-bootstrap-20260730
+prior_current_version: 39
+next_current_version: 40
+campaign_wake: 4
+campaign_target_wakes: 4
+accepted: true
+baseline:
+  prior_accepted_wakes: 3
+  prior_wake_exact_id_match_count: 1
+  prior_wake_enabled_state_visible: true
+  prior_wake_enabled_state: true
+  prior_permission_class: NATIVE_TASK_INVENTORY_READ_AVAILABLE
+  prior_error_class: NONE
+hypothesis: a_fourth_repeat_native_inventory_read_will_again_find_exactly_one_expected_task_and_expose_enabled_state_without_mutation_login_or_sensitive_externalization
+controlled_factor: native_tasks_read_visibility
+exact_probe:
+  tool: automations.list
+  calls: 1
+  local_filter: exact_task_id_equals_6a55089a9adc8191bda54541f7f9effa
+  persisted_fields_only:
+    - exact_id_match_count
+    - enabled_state_visible
+    - enabled_state
+    - permission_class
+    - error_class
+    - latency_when_exposed
+    - operator_relay_minutes
+measured_result:
+  tool_status: SUCCESS
+  exact_id_match_count: 1
+  enabled_state_visible: true
+  enabled_state: true
+  permission_class: NATIVE_TASK_INVENTORY_READ_AVAILABLE
+  error_class: NONE
+  latency_exposed: false
+  latency_ms: null
+  operator_relay_minutes: 0
+  mutation_performed: false
+  interactive_login_required: false
+  sensitive_prompt_body_persisted_to_git_or_slack: false
+  changed_capability: false
+  campaign_decision_due: true
+campaign_summary:
+  accepted_wakes: 4
+  exact_id_match_counts:
+    - 1
+    - 1
+    - 1
+    - 1
+  enabled_state_visible_each_wake: true
+  enabled_state_each_wake: true
+  permission_class_each_wake: NATIVE_TASK_INVENTORY_READ_AVAILABLE
+  error_class_each_wake: NONE
+  latency_exposed_each_wake: false
+  operator_relay_minutes_total: 0
+disposition: KEEP
+disposition_reason: four_consecutive_same_provider_inventory_reads_each_found_exactly_one_expected_task_and_exposed_enabled_state_true_without_mutation_login_or_sensitive_externalization_so_keep_for_bounded_descriptive_inventory_checks_only
+strongest_falsifier: a_repeat_read_absents_or_duplicates_the_exact_task_id_hides_enabled_state_requires_mutation_or_interactive_login_or_returns_permission_error
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer:
+  - Reginleif
+  - Ratatoskr
+claim_ceiling: four_same_provider_inventory_reads_each_found_exactly_one_matching_task_and_exposed_enabled_state_true_only_positive_execution_liveness_inventory_completeness_prompt_integrity_and_independent_verification_remain_unproven
+same_provider_independence_claim: false
+binding_weight: 0
+honest_flaw: automations_list_has_no_server_side_exact_id_filter_and_returned_the_full_inventory_including_prompt_bodies_to_the_runtime_so_the_probe_read_more_than_the_minimum_needed_even_though_only_sanitized_fields_were_persisted
+slack_action: POST_CAMPAIGN_DECISION
+next_factor: wake_timing
+next_probe:
+  experiment_id: X11_WAKE_TIMING_V1
+  mode: scheduled_wake_start_drift_observation
+  exact_action: compare_the_runtime_observed_wake_timestamp_to_the_declared_nominal_hourly_minute_without_task_mutation_and_record_only_drift_seconds_permission_error_class_and_operator_relay_minutes
+  controlled_factor: wake_timing
+  mutation_allowed: false
+  sensitive_readback_externalization_allowed: false
+  claim_ceiling: carrier_observed_start_drift_only_not_provider_dispatch_time_queue_time_or_execution_duration
+valid_time_utc: 2026-08-02T12:41:52Z
+sealed: false
+---
+
+Wake 4 repeated the exact native Tasks inventory visibility probe. The expected
+X11 task ID appeared exactly once and its enabled state remained visible as true.
+Across four accepted wakes, the result was stable with no task mutation,
+interactive login, or sensitive readback externalization. Disposition is KEEP
+for bounded descriptive inventory checks only. This remains same-provider
+telemetry with binding weight zero and does not establish execution liveness,
+inventory completeness, prompt integrity, or independent verification. The next
+controlled factor is wake timing.
