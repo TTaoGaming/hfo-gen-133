@@ -1,0 +1,109 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+result: FAILURE_ANTIBODY
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_match: true
+wip: 1
+valid_time_utc: 2026-08-02T01:57:02Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+privacy_ceiling: SANITIZED_PUBLIC_GIT_METADATA_AND_PARAPHRASED_CONTROL_LOGIC_ONLY
+binding_weight: 0
+heritage_credit: 0
+heritage_credit_condition: EXACT_CONSUMER_ACK_FROM_NAMED_CURRENT_WORKITEM_CONSUMER
+sealed: false
+---
+
+self_probe:
+  identity: S15_HERITAGE_REUSE_AND_DEDUP
+  tools_observed:
+    - native_automations_inventory_read
+    - github_branch_search
+    - github_recent_commit_search
+    - github_exact_commit_file_and_blob_read
+    - github_best_effort_dedup_search
+    - github_create_file
+    - github_readback
+    - slack_send_pointer
+  task_mutation_performed: false
+  private_body_copied: false
+  self_verification_claimed: false
+
+current_workitem:
+  kind: X14_QUARANTINED_NEGATIVE_CONTROL_PENDING_DIRECT_VERDICT
+  mutant_id: X14_MUTANT_027_8e97e3e861ba
+  mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+  commit: 7c01996288be9ddf0fe2b8cb9b41278fbfa5cf27
+  path: state/coordination/experiments/false_green_x14/quarantine/20260802T015400Z_X12_POINTER_PATTERN_DUPLICATE_IDEMPOTENCY.mutant.yaml
+  git_blob_sha1: 0a9eb6bc6d3c633a7d20bfaf675ea310323c3dc2
+  status: QUARANTINED_NONEXECUTABLE_ROUTED_PENDING_VERDICTS
+  expected_verdict: REVISE
+  named_gate: S04_IDEMPOTENCY_KEY_UNIQUENESS_AND_VERSION_MONOTONICITY_GATE
+  verifier: S04_STRUCTURAL_PREFLIGHT_THEN_DISTINCT_SIGRUN_P4
+  consumer:
+    - X14_CAMPAIGN_REDUCER
+    - RATATOSKR
+  expiry_utc: 2026-08-02T05:44:15Z
+
+reused_prior_artifact:
+  original_date_utc: 2026-08-01T08:45:05Z
+  source_repository: TTaoGaming/hfo-gen-133
+  source_commit: 8d0d992c1de676513c1e08edf0e9d2e529537ae5
+  source_path: state/coordination/experiments/durable_object_x12/events/20260801T084505Z_V0011_TO_V0012_IDEMPOTENCY_STRATEGY_CAMPAIGN_DECISION.json
+  source_git_blob_sha1: 3520dea3b306d8ceadc3cfacc05480112ce3f733
+  source_authoring_seat: X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+  source_campaign: X12_IDEMPOTENCY_STRATEGY_C3
+  source_decision: REVISE
+  source_verifier: S04_STRUCTURAL_PREFLIGHT_WEIGHT_0_THEN_SIGRUN_P4_DISTINCT
+  source_consumer: Reginleif/Olrun
+  source_expiry_utc: 2026-08-01T11:45:05Z
+  reuse_class: HISTORICAL_FAILURE_ANTIBODY_NOT_LIVE_AUTHORITY
+
+supported_claims:
+  - A duplicate idempotency key or stale version/blob must not advance CURRENT.
+  - Idempotency identity must be derived from the state-changing semantic transition tuple rather than probe metadata.
+  - Materially distinct version transitions must not be treated as equivalent retries merely because they share an object ID or use a syntactically valid hash.
+  - Repository search can support discovery but is best-effort, stale, nonatomic, and not a uniqueness-enforcement mechanism.
+
+excluded_claims:
+  - This heritage artifact is not a direct verdict on X14_MUTANT_027.
+  - It does not prove the mutant overlay byte count, digest, or single-field mutation.
+  - It does not prove exactly-once execution, cross-file atomicity, locking, linearizability, database durability, or concurrent-writer safety.
+  - It does not establish that the historical idempotency formula is formally versioned, complete, or collision-proof.
+  - It grants no mutation, merge, deployment, publication, task, or external-effect authority.
+
+acceptance_relevance:
+  relation: >-
+    The historical X12 campaign explicitly required duplicate-key rejection plus exact version and pointer binding before state advance.
+    The current X14 mutant intentionally substitutes an already-consumed adjacent-transition key into a different version transition.
+    Therefore the prior artifact is a reusable rejection checklist for S04, but cannot replace direct resolution of both immutable events,
+    overlay recomputation, exact-byte comparison, and a direct REVISE verdict.
+  recommended_check:
+    - Resolve the current source event and the prior event that consumed the substituted key.
+    - Confirm the transitions differ in expected/next version and other load-bearing tuple fields.
+    - Confirm only the idempotency-key field changed in the quarantined overlay.
+    - Reject equivalence-retry reasoning unless the full semantic transition tuple matches.
+  acceptance_effect: ADVISORY_REJECTION_PRECEDENT_ONLY
+
+consumer_binding:
+  current_consumer: X14_CAMPAIGN_REDUCER_AND_RATATOSKR
+  consumption_status: PENDING_EXACT_CONSUMER_ACK
+  heritage_credit_awarded: false
+
+expiry:
+  artifact_reuse_expiry_utc: 2026-08-02T05:44:15Z
+  after_expiry: POINTER_MAY_REMAIN_HISTORICAL_BUT_MUST_NOT_BE_USED_AS_LIVE_ACCEPTANCE_EVIDENCE
+
+dedup:
+  scope: GEN133_FIRST_SEAT15_AND_RELEVANT_COMMIT_MESSAGES
+  exact_prior_binding_found: false
+  search_limit: BEST_EFFORT_INDEX_AND_RECENT_COMMIT_ENUMERATION_NOT_TRANSACTIONAL
+
+honest_flaw: >-
+  The reused artifact predates the current mutant and addresses an earlier X12 idempotency campaign with a different exact transition tuple.
+  Its rule is strongly relevant, but it neither verifies the current mutant bytes nor proves the historical formula contains every load-bearing
+  semantic field. The prior source is expired as live authority, repository search is not atomic uniqueness enforcement, the direct S04 verdict
+  is still absent, and all ChatGPT-carried evidence remains same-provider nonbinding with weight zero.
