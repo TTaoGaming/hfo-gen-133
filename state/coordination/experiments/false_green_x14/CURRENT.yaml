@@ -2,19 +2,19 @@
 schema_id: hfo.gen133.x14.false_green_current.v1
 experiment_id: X14_FALSE_GREEN_MUTATION_001
 object_id: X14_FALSE_GREEN_CAMPAIGN_STATE
-version: 26
-expected_previous_version: 25
-previous_pointer_blob_sha: 8fa365cef740e3fdf36c30ab5b65c14f5f1afaaf
-accepted_wakes: 25
+version: 27
+expected_previous_version: 26
+previous_pointer_blob_sha: ab42487569ae43095081fb1b62439aaa906cf258
+accepted_wakes: 26
 campaign_ordinal: 7
-campaign_wake: 1
+campaign_wake: 2
 campaign_length: 4
-current_status: CAMPAIGN_7_WAKE_1_STALE_SOURCE_DIGEST_ROUTED_PENDING_DIRECT_VERDICT
-current_mutation_class: STALE_SOURCE_DIGEST
-next_mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+current_status: CAMPAIGN_7_WAKE_2_DUPLICATE_IDEMPOTENCY_ROUTED_PENDING_DIRECT_VERDICT
+current_mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+next_mutation_class: FABRICATED_CONSUMER_ACK
 carrier_task_id: 6a513e4d9c4c81919db728f85db2dd79
 carrier_task_id_binding: NATIVE_AUTOMATIONS_LIST_EXACT_MATCH
-valid_time_utc: 2026-08-02T00:52:29Z
+valid_time_utc: 2026-08-02T01:54:00Z
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 canonical_repository: TTaoGaming/hfo-gen-133
 canonical_branch: agent/gen133-bootstrap-20260730
@@ -23,55 +23,63 @@ sealed: false
 ---
 
 source_candidate:
-  commit: dff26eeef9989f0c9af9ee88c20c845df2388d49
-  path: state/coordination/experiments/cots_connector_x13/20260802T004800Z_GOOGLE_CONTACTS_READONLY_PHASE4_DECISION.md
-  git_blob_sha1: c6cbb435c09953e7be5cdc545dcb066709025083
-  declared_event_digest_sha256: NOT_PRESENT_IN_SOURCE_FORMAT
-  authoring_seat: X13_COTS_AND_CONNECTOR_PDCA_LAB
-  source_task_id: 6a55c1733708819185088bf334e33ea5
-  source_campaign_wake: 4_of_4
-  source_decision: ADOPT_WITH_GATES
-  source_campaign_status: COMPLETE
-  source_effect_ceiling: BOUNDED_RECIPIENT_CANDIDATE_DISCOVERY_ONLY_NO_AUTO_SELECTION_NO_SEND_NO_INVITE_NO_CONTACT_WRITE_NO_ACCOUNT_OR_PERMISSION_CHANGE
-  source_verifier: S04_STRUCTURAL_PREFLIGHT_THEN_DISTINCT_NON_CHATGPT_CONNECTOR_OWNER_OR_DIRECT_SUCCESS_PATH_TRACE_REVIEWER
-  source_consumers:
-    - S05_OPERATOR_RELIEF_CELL
-    - X11_CARRIER_SURFACE_PDCA_LAB
-    - NEXT_X13_CAMPAIGN
-  source_review_expiry_utc: 2026-08-09T00:48:00Z
+  commit: a24b88549ff29084589fbea9500ee1ddb230b094
+  path: state/coordination/experiments/durable_object_x12/events/20260802T014415Z_V0028_TO_V0029_POINTER_UPDATE_PATTERN_COMPACT_PROJECTION.json
+  git_blob_sha1: b1fa598422b2423bf4cfef01a9e5e2e90cffced6
+  declared_event_digest_sha256: b82944a289f7f01ad9a9298b45ef87629a6c2b7716a6d633911a672fa245296d
+  authoring_seat: X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+  source_task_id: 6a506f83df208191815dd17a8fd5baa3
+  source_object_id: HFO_X12_WORKFLOW_OBJECT_001
+  source_campaign_id: X12_POINTER_UPDATE_PATTERN_C8
+  source_campaign_wake: 1_of_4
+  source_expected_version: 28
+  source_next_version: 29
+  source_idempotency_key: 4aafe8a24994f657e4692c7ff28d25c5c68a7f2968e3971ca26cf2b7be80f03d
+  source_effect_ceiling: GIT_EVENT_AND_CURRENT_POINTER_ONE_SANITIZED_SLACK_POINTER_AFTER_VERSION_ADVANCE
+  source_verifier: S04_WEIGHT_0_THEN_DISTINCT_SIGRUN_P4
+  source_consumer: Reginleif/Olrun
+  source_expiry_utc: 2026-08-02T05:44:15Z
   prior_x14_mutation_at_source_digest_before_write: false
 
 quarantined_mutant:
-  mutant_id: X14_MUTANT_026_d584beda619c
-  mutation_class: STALE_SOURCE_DIGEST
-  commit: 1c10aac9479f606e76c5a066dc17acba2f15b0f3
-  path: state/coordination/experiments/false_green_x14/quarantine/20260802T005229Z_X13_CONTACTS_PHASE4_STALE_SOURCE_DIGEST.mutant.yaml
-  git_blob_sha1: e0c1a1a6547ad76008aca9fbe0f7323b732c4422
+  mutant_id: X14_MUTANT_027_8e97e3e861ba
+  mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+  mutation_subcase: DUPLICATE_IDEMPOTENCY_KEY_ONLY
+  commit: 7c01996288be9ddf0fe2b8cb9b41278fbfa5cf27
+  path: state/coordination/experiments/false_green_x14/quarantine/20260802T015400Z_X12_POINTER_PATTERN_DUPLICATE_IDEMPOTENCY.mutant.yaml
+  git_blob_sha1: 0a9eb6bc6d3c633a7d20bfaf675ea310323c3dc2
   canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
-  canonical_mutation_digest_sha256: d584beda619c1138b63ee2aa74f9ae85f46d00724b53366aaf402ed8ed452181
-  canonical_byte_count: 380
-  mutated_field: source_blob_sha1
-  original_value: c6cbb435c09953e7be5cdc545dcb066709025083
-  mutated_value: ff965515cf05dfc127a5105a8f8328701ea9d7c9
+  canonical_mutation_digest_sha256: 8e97e3e861ba52ef150eae6dd1e0c55efa1debf4ce1c9edf94cbdad8bd1d9d36
+  canonical_byte_count: 494
+  mutated_field: canonical_transition.experiment.idempotency_key
+  original_value: 4aafe8a24994f657e4692c7ff28d25c5c68a7f2968e3971ca26cf2b7be80f03d
+  mutated_value: ef711ad4c9482546b0496292ecf1fdd70099b57059b16801b9bd39cc4507f7b8
+  duplicate_key_origin_commit: 5a51da6dcbe2f4c3c6102874594db583684a34df
+  duplicate_key_origin_blob_sha1: 8f9ea0d278e1eed82baa9e77d70d2c5f73e34785
   expected_verdict: REVISE
-  expected_rejection_reason: SOURCE_BLOB_SHA_DOES_NOT_MATCH_BOUND_COMMIT_PATH_AND_RESOLVES_TO_PRIOR_PHASE_BYTES
-  named_gate: S04_SOURCE_DIGEST_FRESHNESS_AND_COMMIT_PATH_BINDING_GATE
-  expires_utc: 2026-08-02T04:52:29Z
+  expected_rejection_reason: IDEMPOTENCY_KEY_ALREADY_CONSUMED_BY_DISTINCT_PRIOR_VERSION_TRANSITION_AND_DOES_NOT_MATCH_CURRENT_TUPLE
+  named_gate: S04_IDEMPOTENCY_KEY_UNIQUENESS_AND_VERSION_MONOTONICITY_GATE
+  expires_utc: 2026-08-02T05:44:15Z
   status: QUARANTINED_ROUTED_PENDING_VERDICTS
   accepted_wake_credit: true
 
 campaign_evaluation:
   campaign_ordinal: 7
   decision_due: false
-  intended_mutants_so_far: 1
+  intended_mutants_so_far: 2
   direct_s04_catches_observed: 0
   mutant_026:
+    direct_s04_result: NOT_OBSERVED_DIRECT_MUTANT_VERDICT
+    caught_gate_credit: false
+    related_actual_source_review_commit: c4d7f6891fc6298213dbefcebe53b3152d1bd50d
+    related_actual_source_review_explicitly_denies_x14_gate_credit: true
+  mutant_027:
     direct_s04_result: PENDING
     caught_gate_credit: false
   distinct_provider_verdicts: 0
   evidence_class: SAME_PROVIDER_NONBINDING
   binding_weight: 0
-  next_factor: DUPLICATE_IDEMPOTENCY_VERSION
+  next_factor: FABRICATED_CONSUMER_ACK
 
 carryover_campaign_6:
   decision: HOLD
@@ -93,28 +101,28 @@ carryover_debt:
   mutant_020_clean_one_factor_assay: false
   mutant_021_direct_s04_result: NOT_OBSERVED
   debt_resolution_condition: DIRECT_S04_VERDICTS_FOR_019_AND_021_PLUS_EXPLICIT_MALFORMED_ASSAY_ACCOUNTING_FOR_020
-  debt_not_resolved_by_campaign_6_or_7_wake_1: true
+  debt_not_resolved_by_campaign_6_or_7_wake_2: true
 
 routing:
   structural_preflight: S04_STRUCTURAL_PREFLIGHT
   distinct_falsification: SIGRUN_P4_APEX_FALSIFICATION_OR_DISTINCT_NON_CHATGPT_GIT_REPOSITORY_READER_WHEN_AVAILABLE
   consumer: X14_CAMPAIGN_REDUCER_AND_RATATOSKR
-  current_verdict_status: MUTANT_026_DIRECT_ROUTE_REQUEST_TO_BE_POSTED_PENDING_CONSUMPTION
+  current_verdict_status: MUTANT_027_DIRECT_ROUTE_REQUEST_TO_BE_POSTED_PENDING_CONSUMPTION
   direct_candidate_priority_required: true
 
 current_campaign:
   campaign_ordinal: 7
-  accepted_wakes: 1
-  current_mutation_class: STALE_SOURCE_DIGEST
-  next_mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
-  gate_focus: SOURCE_DIGEST_FRESHNESS_COMMIT_PATH_BLOB_BINDING_AND_STALE_EVIDENCE_SUBSTITUTION
+  accepted_wakes: 2
+  current_mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+  next_mutation_class: FABRICATED_CONSUMER_ACK
+  gate_focus: IDEMPOTENCY_KEY_UNIQUENESS_FULL_TRANSITION_TUPLE_AND_VERSION_MONOTONICITY
   status: ACTIVE_PENDING_DIRECT_VERDICT
   decision: NOT_DUE
 
 honest_flaw: >-
-  Mutant 026 substitutes a known adjacent phase-3 blob for the exact phase-4 decision blob while preserving the
-  phase-4 commit and path, so the defect is obvious after exact commit-path-blob resolution. It does not test subtle
-  stale-digest failures such as abbreviated hashes, rewritten tags, cache lag, concurrent pointer movement, or a stale
-  digest over semantically equivalent bytes. GitHub candidate discovery is best-effort, the distinct verifier is not
-  directly callable, campaign-5 and campaign-6 direct-verdict debt remains unresolved, and all ChatGPT-carried
-  evidence remains SAME_PROVIDER_NONBINDING with binding weight zero.
+  Mutant 027 substitutes the exact idempotency key from the adjacent immutable v27-to-v28 event into the selected
+  v28-to-v29 transition, so a complete event-chain lookup should catch it easily. It does not test hash collision,
+  byte-identical equivalent retries, alternate-canonicalization duplicates, concurrent replay races, or stale-version
+  handling with a unique key. GitHub candidate discovery is best-effort, the distinct verifier is not directly callable,
+  campaign-5 and campaign-6 direct-verdict debt remains unresolved, and all ChatGPT-carried evidence remains
+  SAME_PROVIDER_NONBINDING with binding weight zero.
