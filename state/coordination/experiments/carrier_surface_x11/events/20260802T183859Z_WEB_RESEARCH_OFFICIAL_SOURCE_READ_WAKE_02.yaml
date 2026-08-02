@@ -1,0 +1,66 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+event_type: CAMPAIGN_WAKE_ACCEPTED
+carrier: X11
+expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+repository: TTaoGaming/hfo-gen-133
+branch: agent/gen133-bootstrap-20260730
+wip: 1
+experiment_id: X11_WEB_RESEARCH_OFFICIAL_SOURCE_READ_V1
+campaign_wake: 2
+target_wakes_before_decision: 4
+expected_current_version: 45
+resulting_current_version: 46
+controlled_factor: web_research
+baseline:
+  wake_1_accepted: true
+  official_domain_matched: true
+  page_identity_matched: true
+  example_com_marker_present: true
+  permission_class: PUBLIC_WEB_READ_AVAILABLE
+  error_class: NONE
+hypothesis: the_public_web_surface_can_repeatedly_open_the_official_iana_reserved_domains_page_and_expose_both_the_expected_page_identity_and_example_com_marker_without_authentication
+exact_probe:
+  target_url: https://www.iana.org/domains/reserved
+  action: repeat_open_of_official_page_and_validate_only_page_identity_plus_presence_of_example_com_marker
+  expected_page_identity: IANA-managed Reserved Domains
+  expected_marker: example.com
+  discovery_search_excluded_from_measurement: true
+measured_result:
+  accepted: true
+  official_domain_matched: true
+  page_identity_matched: true
+  marker_present: true
+  content_type: text/html
+  authentication_requested: false
+  interactive_login_required: false
+  public_source_observed: IANA
+  source_crawl_freshness_label: today
+  task_mutation_performed: false
+  sensitive_readback_externalized: false
+  changed_capability: false
+  andon: false
+permission_class: PUBLIC_WEB_READ_AVAILABLE
+error_class: NONE
+latency_exposed: false
+latency_ms: null
+operator_relay_minutes: 0
+strongest_falsifier: a_repeat_of_the_same_official_url_fails_or_loses_the_identity_or_marker_while_an_independently_timestamped_origin_fetch_succeeds
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer:
+  - Reginleif
+  - Ratatoskr
+honest_flaw: the_web_surface_may_use_search_index_or_cached_extraction_and_does_not_prove_a_live_origin_fetch_general_search_completeness_freshness_raw_http_semantics_or_independent_verification
+claim_ceiling: repeated_public_official_page_open_and_marker_visibility_only_not_origin_liveness_search_completeness_freshness_or_independent_verification
+next_probe:
+  campaign_wake: 3
+  action: repeat_the_same_official_url_identity_and_example_com_marker_check
+  mutation_allowed: false
+  sensitive_readback_externalization_allowed: false
+slack_action: YIELD_SILENT_AFTER_GIT_READBACK
+valid_time_utc: 2026-08-02T18:38:59Z
+recorded_time_utc: 2026-08-02T18:38:59Z
+sealed: true
+---
+
+The second bounded web-research wake reproduced the first result against the official IANA reserved-domains page. Only public page identity, content type, and presence of the example.com marker were retained. This is repeated bounded web-read visibility, not evidence of live-origin transport, search quality, freshness, or independent verification.
