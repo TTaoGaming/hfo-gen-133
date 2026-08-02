@@ -1,0 +1,68 @@
+schema: hfo.gen133.operator_relief_receipt.v1
+receipt_id: S05-20260802T141800Z-GOODYEAR-PICKUP-NOSEND
+seat: S05
+carrier: chatgpt_scheduled_task
+task_binding:
+  expected_task_id: 6a55c182078c8191b89f2dd15f5f640c
+  observed_task_id: 6a55c182078c8191b89f2dd15f5f640c
+  observed_enabled: true
+wip_limit: 1
+canonical:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+valid_time: 2026-08-02T14:18:00Z
+transaction_time: 2026-08-02T14:18:00Z
+result: NO_SEND_APPROVAL_PACKET_PREPARED
+active_item:
+  id: GOODYEAR_VEHICLE_PICKUP_SAFE_HANDOFF
+  state: OPERATOR_READY_WITH_CURRENT_DRAFT
+  bounded_transition: refresh_exact_no_send_pickup_confirmation
+priority_projection:
+  p0: GOODYEAR_VEHICLE_PICKUP_SAFE_HANDOFF
+  p1:
+    - CHASE_STATEMENT_REVIEW
+    - EXPERIAN_CREDIT_FILE_ALERT_REVIEW
+source_evidence:
+  calendar:
+    pointer: google_calendar_event_4r376hd19s1jl4jca4sd3h4lig
+    claim: Private backup pickup block is scheduled for 2026-08-02 10:00-10:30 America/Denver and requires readiness confirmation before departure.
+    private_body_externalized: false
+  gmail:
+    prior_pointer: gmail_message_19fbf661bdcfe8e0
+    current_pointer: gmail_message_19fc2d6bd3bafdde
+    status: DRAFT_NOT_SENT
+    readback_label: DRAFT
+    subject_class: vehicle_pickup_confirmation
+    private_body_externalized: false
+transition:
+  changed:
+    - Replaced stale relative pickup wording with the exact Sunday date and approximately 10:00 AM pickup time.
+    - Preserved questions for readiness, final total, approved-scope changes, completed work, warranty, and a firm fallback pickup time.
+    - Preserved the instruction that no work may be added or changed without operator approval.
+  world_effect_ceiling: GMAIL_DRAFT_UPDATE_ONLY
+  send_performed: false
+operator_packet:
+  primary_action: Call the service location before leaving because draft preparation is not readiness confirmation.
+  optional_action: Review and manually send the current Gmail draft if written confirmation is useful.
+  completion_evidence_needed:
+    - service_location_readiness_confirmation
+    - final_invoice_and_scope_readback
+    - vehicle_physical_handoff_and_receipt
+next_consumer:
+  actor: operator
+  due: 2026-08-02T10:00:00-06:00
+  decision: CALL_BEFORE_DEPARTURE_THEN_PICK_UP_IF_READY
+operator_minutes_removed: 5
+privacy:
+  git_and_slack_content: sanitized_status_and_opaque_source_pointers_only
+  excluded: email_body_recipient_address_vehicle_identifiers_invoice_amounts_account_data
+constraints_observed:
+  - no_task_mutation
+  - no_email_send
+  - no_spend_or_payment
+  - no_account_or_security_change
+  - no_deployment
+  - no_merge
+  - no_publication
+  - no_destructive_action
+honest_flaw: The draft remains unsent and no source-system evidence confirms that the vehicle is ready; a direct call before departure is still required.
