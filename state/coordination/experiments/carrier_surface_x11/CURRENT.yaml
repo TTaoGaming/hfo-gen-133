@@ -1,11 +1,11 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_PROMPT_CONTEXT_SIZE_V1
-current_version: 33
-accepted_wakes: 1
+current_version: 34
+accepted_wakes: 2
 target_wakes_before_decision: 4
 controlled_factor: prompt_context_size
-campaign_status: IN_PROGRESS_ANDON_EXPECTED_HASH_MISMATCH
+campaign_status: IN_PROGRESS_SPEC_DEFECT_REPRODUCED_CANONICALIZED
 current_disposition: PENDING_FOUR_WAKE_DECISION
 prior_campaign:
   experiment_id: X11_GOOGLE_CALENDAR_READ_SURFACE_V1
@@ -13,57 +13,63 @@ prior_campaign:
   disposition: KEEP
   accepted_wakes: 4
 last_event:
-  commit: 91f357ad1468920ebc8a36fe5206382278d9d60d
-  path: state/coordination/experiments/carrier_surface_x11/events/20260802T054148Z_PROMPT_CONTEXT_SIZE_INTEGRITY_WAKE_01.yaml
-  blob: 54d68feb7ae91ce689032f955973296268944958
+  commit: a1cbc3fe4c05c92306c867c366b28ab8263e1028
+  path: state/coordination/experiments/carrier_surface_x11/events/20260802T064234Z_PROMPT_CONTEXT_SIZE_INTEGRITY_WAKE_02.yaml
+  blob: 00759cf6b27e4780c105b63fce2814889368e47a
 baseline_result:
   target_size_bytes: 1024
   payload_class: non_sensitive_deterministic_ascii
   encoding: ASCII_UTF8_SINGLE_BYTE
   canonicalized_construction_recorded: true
-  payload_generated: true
-  payload_ingested_for_integrity_checks: true
-  exact_size_match: true
-  measured_size_bytes: 1024
-  prefix_sentinel_match: true
-  suffix_sentinel_match: true
-  planned_expected_sha256: fb617af870960429e8e215050ae5ea980e55b3939e3ce004a46fb6200e23ab98
-  measured_sha256: 33e69b408330b7e9961d00e5db593682f5de7b220e71809380743837d5364248
-  expected_sha256_match: false
-  second_local_hash_implementation_agreed: true
+  repeated_wakes_at_this_size: 2
+  exact_size_match_each_wake: true
+  measured_size_bytes_each_wake: 1024
+  prefix_sentinel_match_each_wake: true
+  suffix_sentinel_match_each_wake: true
+  original_predeclared_sha256: fb617af870960429e8e215050ae5ea980e55b3939e3ce004a46fb6200e23ab98
+  canonical_measured_sha256: 33e69b408330b7e9961d00e5db593682f5de7b220e71809380743837d5364248
+  canonical_measured_sha256_reproduced: true
+  original_predeclared_sha256_match_each_wake: false
+  second_local_hash_implementation_agreed_each_wake: true
   permission_class: LOCAL_DETERMINISTIC_COMPUTE_AVAILABLE
-  error_class: EXPECTED_HASH_MISMATCH_SPEC_OR_PRECOMPUTE_DEFECT
+  error_class: EXPECTED_HASH_MISMATCH_REPRODUCED_PRECOMPUTE_OR_SPEC_DEFECT
   latency_exposed: false
   operator_relay_minutes: 0
   payload_body_externalized: false
-  claim_ceiling: exact_1024_byte_local_payload_size_and_boundary_checks_passed_but_predeclared_digest_failed_and_actual_scheduler_prompt_transport_model_context_retention_tokenization_project_context_behavior_and_provider_limits_remain_unproven
+  claim_ceiling: exact_1024_byte_local_payload_construction_and_hash_are_reproducible_but_actual_scheduler_prompt_transport_model_context_retention_tokenization_project_context_behavior_and_provider_limits_remain_unproven
 campaign_gates:
-  - preserve_both_predeclared_and_measured_digests
-  - do_not_silently_replace_the_predeclared_digest
-  - repeat_the_identical_1024_byte_probe_before_increasing_size
+  - preserve_the_original_predeclared_digest_as_immutable_defective_expectation
+  - use_explicit_LF_byte_semantics_for_prefix_and_suffix
+  - precommit_next_size_digest_before_running_next_wake
   - do_not_attribute_hash_mismatch_to_context_truncation_without_prompt_transport_evidence
   - do_not_persist_the_synthetic_payload_body_to_git_or_slack
   - do_not_claim_independent_quorum_from_same_provider_local_checks
-last_result: PROMPT_CONTEXT_SIZE_WAKE_01_EXPECTED_HASH_MISMATCH_ANDON
-planned_size_bytes_by_wake:
+last_result: PROMPT_CONTEXT_SIZE_WAKE_02_DETERMINISTIC_SPEC_DEFECT_REPRODUCED
+planned_size_bytes_by_wake_original:
   - 1024
   - 4096
   - 16384
   - 65536
-next_probe: repeat_the_exact_canonicalized_1024_byte_construction_and_digest_check_to_test_determinism_before_any_size_increase
-strongest_falsifier: a_byte_for_byte_implementation_of_the_recorded_construction_produces_the_predeclared_digest_or_the_recorded_construction_is_shown_not_to_match_the_original_intent
+actual_size_bytes_by_accepted_wake:
+  - 1024
+  - 1024
+next_probe:
+  target_size_bytes: 4096
+  canonical_expected_sha256_precommitted: c5175a052f930f698b39b9747fbf1342feef50536d877e64c5a0765bb157dd14
+  construction: same_explicit_ASCII_LF_prefix_repeated_16_byte_pattern_truncated_to_middle_and_ASCII_LF_suffix
+strongest_falsifier: a_byte_for_byte_implementation_of_the_recorded_construction_produces_the_original_predeclared_digest_a_third_hash_implementation_disagrees_or_primary_provenance_shows_the_original_intended_byte_contract_was_different
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 next_consumer: Reginleif_and_Ratatoskr
-updated_valid_time_utc: 2026-08-02T05:41:48Z
+updated_valid_time_utc: 2026-08-02T06:42:34Z
 sealed: false
 ---
 
-Prompt/context-size wake 1 generated and checked the exact recorded 1024-byte
-non-sensitive ASCII construction. Size and both boundary sentinels matched, but
-Python hashlib and sha256sum agreed on
-33e69b408330b7e9961d00e5db593682f5de7b220e71809380743837d5364248 rather
-than the predeclared
-fb617af870960429e8e215050ae5ea980e55b3939e3ce004a46fb6200e23ab98. This is
-an accepted falsifying observation and a specification/precomputation Andon, not
-evidence of scheduler or model context truncation. The next wake repeats the same
-1024-byte construction before increasing size.
+Prompt/context-size wake 2 repeated the exact canonical 1024-byte ASCII
+construction. Size and both boundary sentinels matched again, and Python hashlib
+plus sha256sum reproduced
+33e69b408330b7e9961d00e5db593682f5de7b220e71809380743837d5364248. The
+original predeclared digest remained false, confirming a deterministic
+precomputation or specification defect under the recorded construction rather
+than nondeterministic local generation. Wake 3 advances to a precommitted
+4096-byte canonical probe. This campaign still does not test actual scheduler
+prompt transport or model-context retention.
