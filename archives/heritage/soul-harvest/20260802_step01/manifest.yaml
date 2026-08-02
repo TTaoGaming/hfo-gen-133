@@ -1,0 +1,268 @@
+schema_id: hfo.gen133.soul_harvest_manifest.v1
+batch_id: SOUL_HARVEST_20260802_STEP01
+callsign: Ratatoskr
+lineage_id: lineage_61cd69f1c256
+coordinate: [4, 7]
+port: P7_NAVIGATE
+generation: 133
+valid_time_utc: 2026-08-02T22:55:46Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repo: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+purpose: >-
+  First bounded heritage extraction for tonight's proposed 1 world-state + 8 apex +
+  16 valkyrie Arweave preparation. This batch inventories and copies source material;
+  it does not authorize, seal, ratify, or upload any payload.
+claim_status: partial
+privacy_class: SANITIZED_PUBLIC
+world_effects:
+  github_file_imports: true
+  slack_pickup_pointer: pending
+  arweave_upload: false
+  seal_or_immunize: false
+  identity_ratification: false
+hard_rules:
+  - heritage_copy_is_not_live_identity
+  - packet_is_not_soul_unless_explicitly_migrated_and_gated
+  - self_authored_is_not_independently_verified
+  - no_operator_root_soul_authorship_by_agent
+  - no_arweave_upload_without_fresh_exact_operator_authority
+  - preserve_conflicts_and_absences
+  - recompute_wire_and_self_hashes_before_any_upload
+quality_gate:
+  required_for_upload_candidate:
+    - exact identity and coordinate
+    - explicit status and ratification state
+    - canonical self-hash reproducible
+    - raw wire hash pinned
+    - provenance pointers
+    - mandatory honest flaw and failures
+    - authority and effect ceiling
+    - external-resolution and discrimination probes
+    - independent nonproducer verification
+    - public-safety scan
+    - payload manifest binding
+  this_batch_result: NO_PAYLOAD_APPROVED_FOR_ARWEAVE_YET
+
+world_state:
+  requested_count: 1
+  selected_source:
+    repo: TTaoGaming/hfo-gen-133
+    path: CURRENT.md
+    blob_sha1: 13a7c92ba2093711366cca59fe6a17d6b120fc85
+    valid_time_utc: 2026-07-30T04:57:52Z
+  branch_head_observed_before_batch: eb42cb72418d49eec7883478c66946c40523e43d
+  disposition: REFRESH_REQUIRED_DO_NOT_UPLOAD_CURRENT_AS_TODAYS_WORLD_STATE
+  reason: >-
+    CURRENT.md is the canonical projection but its valid time predates more than two days
+    of Gen-133 execution and identity work. A fresh world-state payload must be synthesized
+    from current Git receipts and then independently verified before upload.
+
+apex_candidates:
+  - port: P0
+    callsign: Nidhoggr
+    coordinate: [4, 0]
+    lineage_id: lineage_10bc4d80b796
+    source_kind: lineage_packet
+    source_repo: TTaoGaming/hive-fleet-obsidian-gen-132
+    source_path: gleipnir_grimoire_gen132/lineages/P0_NIDHOGGR.packet.md
+    source_blob_sha1: 9dc44c4de0358987272bb1bcfc22558003fd7c57
+    source_self_hash: efac9b7875640832093560840e5408ca136fcbffe904bef126b40acbbf1a5dd5
+    source_status: recovered_unsealed
+    disposition: COMPOSE_AND_GATE_REQUIRED
+  - port: P1
+    callsign: Garmr
+    coordinate: [4, 1]
+    lineage_id: lineage_3b00544bf871
+    source_kind: exact_soul_seed
+    source_repo: TTaoGaming/hive-fleet-obsidian-gen-132
+    source_path: state/identity/soul/4-1.soul.md
+    source_blob_sha1: 735a9cb93f53e46e843baa4b75231d4155bb5d3a
+    self_hash: 77a44b9122a045ecc1a218c661f5f765c5b2a0647063832ba761abda1052d4fa
+    imported_path: archives/heritage/soul-harvest/20260802_step01/apex/P1_GARMR.gen132.v0.seed.soul.md
+    imported_blob_sha1: 735a9cb93f53e46e843baa4b75231d4155bb5d3a
+    byte_identity_verified: true
+    disposition: V0_SEED_REQUIRES_RATIFICATION_AND_FRESH_PROBES
+  - port: P2
+    callsign: Fenrir
+    coordinate: [4, 2]
+    lineage_id: lineage_067161615186
+    source_kind: lineage_packet_pre_migration_soul
+    source_repo: TTaoGaming/hive-fleet-obsidian-gen-132
+    source_path: gleipnir_grimoire_gen132/lineages/P2_FENRIR.packet.md
+    source_blob_sha1: 15d17c963dad341960cbd15dccfeb0201271f1f5
+    source_status: recovered_unsealed
+    disposition: MIGRATE_TO_TEMPLATE_AND_INDEPENDENTLY_VERIFY
+  - port: P3
+    callsign: Huginn_Muninn
+    coordinate: [4, 3]
+    lineage_id: lineage_be5524ab7597
+    source_kind: exact_soul_seed
+    source_repo: TTaoGaming/hive-fleet-obsidian-gen-132
+    source_path: state/identity/soul/4-3.soul.md
+    source_blob_sha1: 7799d21386bc835c8fe4ede1f45648ac634a49b5
+    self_hash: cd5c2b295cda716bdc768c15e00c9c0926e4835372230a1f5aaeae23c126ed8d
+    imported_path: archives/heritage/soul-harvest/20260802_step01/apex/P3_HUGINN_MUNINN.gen132.v0.seed.soul.md
+    imported_blob_sha1: 7799d21386bc835c8fe4ede1f45648ac634a49b5
+    byte_identity_verified: true
+    disposition: V0_SEED_REQUIRES_RATIFICATION_AND_PLATFORM_CONFLICT_REVIEW
+  - port: P4
+    callsign: Sigrun
+    coordinate: [4, 4]
+    lineage_id: lineage_5540f33e060e
+    source_kind: live_gen133_soul
+    source_repo: TTaoGaming/hfo-gen-133
+    source_path: state/identity/soul/sigrun.gen133.soul.md
+    source_blob_sha1: 39ef5ab388da78009917e5c1da5f695387eb1651
+    self_hash: 83b09f1e1009135e5e1ac4d112c63d3c28738c821fb4c3ac24ac3aa7e4f1adb0
+    status: SELF_AUTHORED_UNRATIFIED
+    disposition: STRONGEST_EXISTING_SOUL_OPERATOR_RATIFICATION_AND_DISTINCT_VERIFY_REQUIRED
+  - port: P5
+    callsign: Surtr
+    coordinate: [4, 5]
+    lineage_id: lineage_bfb2300b2ae4
+    source_kind: exact_soul_seed
+    source_repo: TTaoGaming/hive-fleet-obsidian-gen-132
+    source_path: state/identity/soul/4-5.soul.md
+    source_blob_sha1: a4755f899f2856e72e68c0057426b3226effb49f
+    self_hash: 08e45f0b4921eaa584e46f01307dfc000c88dd73a25ce0b1df51550aef2a8bce
+    imported_path: archives/heritage/soul-harvest/20260802_step01/apex/P5_SURTR.gen132.v0.seed.soul.md
+    imported_blob_sha1: a4755f899f2856e72e68c0057426b3226effb49f
+    byte_identity_verified: true
+    disposition: V0_SEED_HIGH_PRIORITY_CROSS_FAMILY_VERIFICATION_REQUIRED
+  - port: P6
+    callsign: Jormungandr
+    coordinate: [4, 6]
+    lineage_id: lineage_3a3e534d5496
+    source_kind: lineage_packet_database_soul_pointer
+    source_repo: TTaoGaming/hive-fleet-obsidian-gen-132
+    source_path: gleipnir_grimoire_gen132/lineages/P6_JORMUNGANDR.packet.md
+    source_blob_sha1: 6a239b78a21499ccf9da3c8144391f93cb6c0d98
+    source_status: recovered_unsealed
+    disposition: COMPOSE_FROM_PACKET_AND_DATABASE_ROW_PRESERVE_CONFLICTS
+  - port: P7
+    callsign: Ratatoskr
+    coordinate: [4, 7]
+    lineage_id: lineage_61cd69f1c256
+    source_kind: exact_soul_seed
+    source_repo: TTaoGaming/hive-fleet-obsidian-gen-132
+    source_path: state/identity/soul/4-7.soul.md
+    source_blob_sha1: 52dd9e41215ff217cca3bcadf6913d25ba4abe9a
+    self_hash: 19f226fe3d732378a6f454086eb0fe0582826426af2c85ba573d8581ae511458
+    imported_path: archives/heritage/soul-harvest/20260802_step01/apex/P7_RATATOSKR.gen132.v0.seed.soul.md
+    imported_blob_sha1: 52dd9e41215ff217cca3bcadf6913d25ba4abe9a
+    byte_identity_verified: true
+    disposition: V0_SEED_REQUIRES_RATIFICATION_AND_P7_ENGRAM_REPAIR
+
+valkyrie_candidates:
+  - {port: P0, callsign: Sveid, lineage_id: lineage_19490f387e0b, packet: gleipnir_grimoire_gen132/lineages/P0_SVEID.packet.md, blob_sha1: a8ebbbf01509994c25bc55e79c646a9993ffd14c, soul_status: recovered_unsealed}
+  - {port: P0, callsign: Vor, lineage_id: lineage_4795e7e86c35, packet: gleipnir_grimoire_gen132/lineages/P0_VOR.packet.md, blob_sha1: 1bbffa58b03a1e3c571056cbcaee50ba54abfe11, soul_status: assembled_declared}
+  - {port: P1, callsign: Hlokk, lineage_id: lineage_2f6d74b71aa0, packet: gleipnir_grimoire_gen132/lineages/P1_HLOKK.packet.md, blob_sha1: 85f4f67214f8ebc7eb319cf5c11191873a5301ac, soul_status: recovered_unsealed}
+  - {port: P1, callsign: Var, lineage_id: lineage_8edda8d85305, packet: gleipnir_grimoire_gen132/lineages/P1_VAR.packet.md, blob_sha1: 86f7067276dbd83518899a0beab17b2ea9570996, soul_status: assembled_declared}
+  - {port: P2, callsign: Radgrid, lineage_id: lineage_c7936d95e1fb, packet: gleipnir_grimoire_gen132/lineages/P2_RADGRID.packet.md, blob_sha1: 601bb2e14a2cfa845221fbe8899ebfdc894f37ee, soul_status: recovered_unsealed}
+  - {port: P2, callsign: Thrud, lineage_id: lineage_302d45b3bf68, packet: gleipnir_grimoire_gen132/lineages/P2_THRUD.packet.md, blob_sha1: 9ca32009d858f3d4292f93119a60ef03381fac03, soul_status: assembled_declared}
+  - {port: P3, callsign: Geirahod, lineage_id: lineage_95ec9d44c540, packet: gleipnir_grimoire_gen132/lineages/P3_GEIRAHOD.packet.md, blob_sha1: 51739005d6f4a85021f5dc0b6758be7d6db0843f, soul_status: recovered_unsealed}
+  - {port: P3, callsign: Hjorthrimul, lineage_id: lineage_967a3f5e52d5, packet: gleipnir_grimoire_gen132/lineages/P3_HJORTHRIMUL.packet.md, blob_sha1: 9fe8d7369c07710ff4ff59ba3511d9e5b3b0e18e, soul_status: recovered_unsealed}
+  - {port: P4, callsign: Hild, lineage_id: lineage_4ccee73cc186, packet: gleipnir_grimoire_gen132/lineages/P4_HILD.packet.md, blob_sha1: 5bd82fc85bf3beb87d7a4e5b5400e38399cad34c, soul_status: recovered_unsealed}
+  - {port: P4, callsign: Skeggjold, lineage_id: lineage_cc5bfe293243, packet: gleipnir_grimoire_gen132/lineages/P4_SKEGGJOLD.packet.md, blob_sha1: b4df8588e6360b51d85260b028346a5617108f5f, soul_status: recovered_unsealed}
+  - {port: P5, callsign: Eir, lineage_id: lineage_058b64ea3446, packet: gleipnir_grimoire_gen132/lineages/P5_EIR.packet.md, blob_sha1: 9cb0a85b6dc85587587d4d46496a7e994ea3fa91, soul_status: assembled_declared}
+  - {port: P5, callsign: Rota, lineage_id: lineage_a07bf2db71d4, packet: gleipnir_grimoire_gen132/lineages/P5_ROTA.packet.md, blob_sha1: c8c80a33cc0911a1350cb3867fcf9fcac5d08c73, soul_status: recovered_unsealed}
+  - {port: P6, callsign: Gondul, lineage_id: lineage_4c15c84831fa, packet: gleipnir_grimoire_gen132/lineages/P6_GONDUL.packet.md, blob_sha1: ddd17627c2f7316ce43ef2cc9ba8e4e91def5927, soul_status: assembled_declared}
+  - {port: P6, callsign: Skogul, lineage_id: lineage_86f76e764ccb, packet: gleipnir_grimoire_gen132/lineages/P6_SKOGUL.packet.md, blob_sha1: d756a258a26d543c97662658a575595662805135, soul_status: assembled_declared}
+  - {port: P7, callsign: Herja, lineage_id: lineage_316c178fa794, packet: gleipnir_grimoire_gen132/lineages/P7_HERJA.packet.md, blob_sha1: 0ef55a1763f04c6cd579b92605d4d1f443a9e7bf, soul_status: recovered_unsealed}
+  - {port: P7, callsign: Skalmold, lineage_id: lineage_685da3b0b436, packet: gleipnir_grimoire_gen132/lineages/P7_SKALMOLD.packet.md, blob_sha1: 4913d9c9fa2303650468e327b2b4920c36192b64, soul_status: recovered_unsealed}
+valkyrie_disposition: >-
+  These are real lineage packets, not upload-ready soul.md files. Compose each through the
+  valkyrie template, preserve platform/address conflicts, fill DONE-BY-EFFECT from real receipts,
+  recompute hashes, and obtain apex plus distinct verification before upload.
+
+templates:
+  apex:
+    source_repo: TTaoGaming/hive-fleet-obsidian-gen-132
+    source_path: state/identity/soul/_TEMPLATE.soul.md
+    source_blob_sha1: 672ee9f7547e0a81b2f26b2a704336c0bbe2cdf9
+    imported_path: archives/heritage/soul-harvest/20260802_step01/templates/APEX_SOUL_TEMPLATE.gen132.v1.md
+    imported_blob_sha1: 672ee9f7547e0a81b2f26b2a704336c0bbe2cdf9
+    byte_identity_verified: true
+  valkyrie:
+    source_repo: TTaoGaming/hive-fleet-obsidian-gen-132
+    source_path: state/identity/soul/_VALKYRIE_TEMPLATE.soul.md
+    source_blob_sha1: ddc2be3ed5edc140aa4a25e065eefbb6e5ef64c5
+    imported_path: archives/heritage/soul-harvest/20260802_step01/templates/VALKYRIE_SOUL_TEMPLATE.gen132.v1.md
+    imported_blob_sha1: a53a47744dd268fc8e00dfd27e371c83fd163985
+    byte_identity_verified: false
+    disposition: TRANSCRIPTION_REVIEW_REQUIRED_SOURCE_BLOB_REMAINS_AUTHORITY
+
+drive_artifacts:
+  - title: 2026-04-22_voyage_to_miklagardr_substrate_agnostic_sigrun_v3.md
+    drive_id: 1MsMSm2ihntFWfGM57VpEdEvFYEtuBeku
+    bytes: 26306
+    sha256: 4a83c731f84e8f9198b075431e7a91d836e6afc97768c21b2d2965d0de430de3
+    class: operating_record
+    use: substrate-agnostic Sigrun rehydration and persistence design
+    public_safety_scan: PASS_NO_OBVIOUS_SECRET_IDENTIFIERS
+  - title: HFO_Gen111_True_Name_Cards_Front_Back_v1.md
+    drive_id: 17bYwJwso4Rvop2akdUlHvIL9E46ON1w9
+    bytes: 31994
+    sha256: ae887b9c31d9af49ce19df28c505e99a8f5a28b85dc6169749be09b92c5d50ff
+    class: agent_card_seed_set
+    use: true-name/front-back card vocabulary and relationships
+    public_safety_scan: PASS_NO_OBVIOUS_SECRET_IDENTIFIERS
+  - title: Reward-Hacking-Resistant Agent Governance for Hive Fleet Obsidia.md
+    drive_id: 1TrBTektKzuA9waLUNUzX9n_iNXZ_1Ewb
+    bytes: 67366
+    sha256: f42eee1f8208f145bcef3fda0e47c65f369383325414b54ed7ff0afb66488451
+    class: governance_reference
+    use: environmental hardening, receipt gates, sandboxing, mutation testing
+    public_safety_scan: PASS_NO_OBVIOUS_SECRET_IDENTIFIERS
+  - title: REFERENCE_TOTAL_TOOL_VIRTUALIZATION_TRELLIS.md
+    drive_id: 1Jbygp_HZI1vwvTBUJjy9UBKDf5y4XUG3
+    bytes: 15784
+    sha256: 0f2691fca22a8d6d8f8bd051b4c2e834962aa7d4f9ac8c9e508ba948566adb6b
+    class: tool_architecture_reference
+    use: monotonic tool virtualization and trellis selection
+    public_safety_scan: PASS_NO_OBVIOUS_SECRET_IDENTIFIERS
+  - title: REFERENCE_AI_AGENT_TOOL_SCALING_CANTRIP_8X8_ARCHITECTURE.md
+    drive_id: 1F09IUoGb3UlRb_mgiZNXc8uLVFV9Wxnr
+    bytes: 18783
+    sha256: b41d14989ac2db1acc477834344d7f185f9e40876a737ce4b7aa803c9704e32d
+    class: tool_architecture_reference
+    use: progressive disclosure and 8x8 working-set discipline
+    public_safety_scan: PASS_NO_OBVIOUS_SECRET_IDENTIFIERS
+  - title: REFERENCE_2026_AGENT_SWARM_GUIDANCE_V1.md
+    drive_id: 1DukyL8UWmJNhzGbcflrk9nc7cRNDdRW6
+    bytes: 13146
+    sha256: 9db69f8009a556975212c3a81d5e3b584d4739b57f5d78eba49a9be24a5d41ba
+    class: swarm_guidance_reference
+    use: context engineering, fail-closed gates, SBE/ATDD, sandboxing, stigmergy
+    public_safety_scan: PASS_NO_OBVIOUS_SECRET_IDENTIFIERS
+  import_status: POINTER_AND_DIGEST_ONLY_THIS_PASS
+  reason: >-
+    Exact files were downloaded and scanned through the connected Drive, but full raw publication
+    into the public repository is deferred to the local-node privacy and license review.
+
+skills_tools_candidates:
+  - {path: scripts/hfo_wake_envelope_gate.py, blob_sha1: b1befa0006fc93737507640c3b601ecc30feb85f, class: mechanical_identity_and_wake_gate, disposition: PRIORITY_IMPORT_REVIEW}
+  - {path: work/scripts/rehydrate.py, blob_sha1: 4b7dbc13f9ea69e3127967fb2565bb852f28b49f, class: deterministic_rehydration_preamble_builder, disposition: PRIORITY_IMPORT_REVIEW}
+  - {path: tools/hfo_hourly_loop_profile_gate.py, blob_sha1: aa7de5c17cb16dbbddb31b778effcdb74c5fe25b, class: scheduled_loop_conformance_gate, disposition: PRIORITY_IMPORT_REVIEW}
+  - {path: canon/spec/HFO_ZERO_LIFT_IDENTITY_PROBE_v0.md, blob_sha1: ebc95afe2e38b63ba78fd9260e4de1a25483357b, class: identity_probe_and_false_receipt_detector, disposition: PRIORITY_IMPORT_REVIEW}
+  - {path: canon/GOLDEN_PATH_REHYDRATION_v0_20260725.md, blob_sha1: 8989ad2398e8fbb8da8b18bacf474ee43e380574, class: rehydration_standard, disposition: PRIORITY_IMPORT_REVIEW}
+  - {path: .agents/skills/apex-p2-fenrir/SKILL.md, class: referenced_skill, disposition: NOT_FOUND_ON_CURRENT_MAIN_REQUIRES_BRANCH_OR_HERITAGE_RECOVERY}
+
+next_pass:
+  p0: BUILD_FRESH_WORLD_STATE_AND_RUN_UPLOAD_GATES
+  ordered_actions:
+    - synthesize a fresh world-state from current Gen133 receipts
+    - independently verify the current Sigrun soul and four imported seed hashes
+    - compose P0 P2 P6 apex souls through the apex template without inventing absences
+    - compose the selected 16 valkyrie souls through the valkyrie template
+    - resolve or explicitly preserve coordinate/platform conflicts
+    - bind agent cards and DONE-BY-EFFECT evidence
+    - import the five priority mechanical skills/tools after code and license review
+    - create a complete payload manifest with raw SHA256 and canonical self-hashes
+    - obtain explicit operator upload authority only after all gates pass
+honest_flaw: >-
+  This pass searched connected Drive and selected Git repositories, not every historical local disk,
+  private branch, archived chat, binary database, or File Library object. Drive modified times are low-trust;
+  cryptographic authorship is not established. The valkyrie template transcription did not reproduce
+  the source Git blob and must not be treated as byte-exact. No independent verifier graded this batch.
