@@ -1,0 +1,78 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+event_type: CAMPAIGN_DECISION
+carrier: X11
+expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+repository: TTaoGaming/hfo-gen-133
+branch: agent/gen133-bootstrap-20260730
+wip: 1
+experiment_id: X11_WEB_RESEARCH_OFFICIAL_SOURCE_READ_V1
+campaign_wake: 4
+target_wakes_before_decision: 4
+expected_current_version: 47
+resulting_current_version: 48
+controlled_factor: web_research
+baseline:
+  wake_1_accepted: true
+  wake_2_accepted: true
+  wake_3_accepted: true
+  official_domain_matched: true
+  page_identity_matched: true
+  example_com_marker_present: true
+  permission_class: PUBLIC_WEB_READ_AVAILABLE
+  error_class: NONE
+hypothesis: the_public_web_surface_can_repeatedly_open_the_official_iana_reserved_domains_page_and_expose_both_the_expected_page_identity_and_example_com_marker_without_authentication
+exact_probe:
+  target_url: https://www.iana.org/domains/reserved
+  action: repeat_open_of_official_page_and_validate_only_page_identity_plus_presence_of_example_com_marker
+  expected_page_identity: IANA-managed Reserved Domains
+  expected_marker: example.com
+  discovery_search_excluded_from_measurement: true
+measured_result:
+  accepted: true
+  official_domain_matched: true
+  page_identity_matched: true
+  marker_present: true
+  content_type: text/html
+  authentication_requested: false
+  interactive_login_required: false
+  public_source_observed: IANA
+  source_crawl_freshness_label: today
+  task_mutation_performed: false
+  sensitive_readback_externalized: false
+  changed_capability: false
+  andon: false
+permission_class: PUBLIC_WEB_READ_AVAILABLE
+error_class: NONE
+latency_exposed: false
+latency_ms: null
+operator_relay_minutes: 0
+strongest_falsifier: a_repeat_of_the_same_official_url_fails_or_loses_the_identity_or_marker_while_an_independently_timestamped_origin_fetch_succeeds
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer:
+  - Reginleif
+  - Ratatoskr
+honest_flaw: the_web_surface_may_use_search_index_or_cached_extraction_and_does_not_prove_a_live_origin_fetch_general_search_completeness_freshness_raw_http_semantics_or_independent_verification
+claim_ceiling: repeated_public_official_page_open_and_marker_visibility_only_not_origin_liveness_search_completeness_freshness_or_independent_verification
+campaign_decision: KEEP
+decision_basis: four_of_four_bounded_repeats_exposed_the_official_page_identity_and_example_com_marker_without_authentication_or_permission_error
+decision_scope: keep_only_for_bounded_public_page_identity_and_marker_checks
+next_factor: gmail_read_surface
+next_probe:
+  experiment_id: X11_GMAIL_METADATA_READ_VISIBILITY_V1
+  campaign_wake: 1
+  mode: deterministic_metadata_only_exact_message_id_miss_query
+  exact_action: search_gmail_for_exact_impossible_rfc822_message_id_and_persist_only_tool_status_permission_class_and_match_count
+  query: rfc822msgid:<hfo-x11-6a55089a9adc8191bda54541f7f9effa@invalid.example>
+  expected_match_count: 0
+  mutation_allowed: false
+  sensitive_readback_externalization_allowed: false
+  interactive_login_allowed: false
+  claim_ceiling: gmail_search_visibility_and_sanitized_match_count_only_not_inventory_completeness_or_independent_verification
+slack_action: POST_CAMPAIGN_DECISION_AFTER_GIT_READBACK
+valid_time_utc: 2026-08-02T20:41:43Z
+recorded_time_utc: 2026-08-02T20:41:43Z
+sealed: true
+---
+
+The fourth bounded web-research wake reproduced the prior three results against the official IANA reserved-domains page. Decision KEEP applies only to public page identity and marker checks. It does not establish live-origin transport, raw HTTP behavior, search completeness, freshness, or independent verification. The next controlled factor is Gmail metadata-read visibility using an exact impossible Message-ID query; only sanitized status and match count may be retained.
