@@ -9,7 +9,7 @@ base_commit: 781b8aaa75876a520a46dcd22ce23f15e4f3b9f1
 coverage: 50_recent_task_summaries_plus_19_representative_task_histories
 claim_status: partial
 sealed: false
-slack_projection: pending
+slack_projection: BLOCKED_DESTINATION_TRUST_REJECTION
 ---
 
 # Fenrir lineage and Gen-133 thread synthesis
@@ -103,9 +103,13 @@ Countermeasure: separate `heritage terminal state`, `product factory`, and `mark
 | GitHub heritage pointers | Packet-referenced `state/identity/agent_cards/fenrir.agent-card.json` and `.agents/skills/apex-p2-fenrir/SKILL.md` returned 404 at the bound Gen-132 ref. | pointer/ref inconsistency | Bind an existing blob or repair the pointer in a reviewed successor packet. |
 | GitHub comments | One comment-read call failed argument binding; other task histories show public/internal safety rejections for issue comments. | invocation error plus destination-safety gate | Use exact schemas and public-sanitized payloads; do not route around safety rejection. |
 | Local GitHub CLI | Keyring authentication is invalid for `TTaoGaming`. | local CLI auth broken | Existing-repo GitHub App reads/writes work; operator may separately repair `gh auth login`. |
-| Slack search | Representative tasks show intermittent `slack_search_channels` failures and destination-trust rejections. | intermittent search/safety limitation | Fresh exact channel ID read/send/readback works; do not retry ambiguous sends. |
+| Slack | Search and read resolved `#hfo-synthesis` (`C0BGC646A1H`), but the exact synthesis send was rejected because the prior request did not authorize this detailed payload to this exact channel. | destination-trust safety gate, not transport outage | No message was sent. Do not retry or route around; require explicit approval of the exact payload and channel. |
 | Web open/search | Direct `pages.dev` and `workers.dev` opens were rejected as unsafe and exact-domain searches returned no results. | web-tool coverage limitation | Bounded Python HTTPS probes with proxies disabled verified two Pages endpoints and one MCP initialize response. |
 | Windows HTTPS | Default curl used a dead `127.0.0.1` proxy; proxy-cleared curl then failed Schannel `SEC_E_NO_CREDENTIALS`; PowerShell WebRequest also failed. | host network stack broken | Bundled Python/OpenSSL with a per-call no-proxy handler succeeded. |
+
+## Slack projection result
+
+`BLOCKED_DESTINATION_TRUST_REJECTION`. The send attempt returned `isError:true`; Slack delivery is zero/unknown and no timestamp exists. The attempted message named draft PR #8, the unratified lineage boundary, the 13-message queue-empty treadmill, product focus, broken tools, and the proposed next action. Fresh operator approval of that exact public-safe payload to `#hfo-synthesis` (`C0BGC646A1H`) is required before one non-retried send.
 
 ## Exactly one next safe action
 
