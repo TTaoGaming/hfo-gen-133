@@ -309,3 +309,34 @@ No duplicate maker or verifier was created. No schedule was mutated. The only
 eligible transition is restoration and committed readback of the exact README
 blob by the existing maker, followed by exact-SHA replay by the existing
 verifier.
+
+## Goal blocked audit
+
+Verdict: `BLOCKED_WAITING_EXISTING_MAKER_OR_TOOL_RECOVERY`.
+
+The same blocking condition has now repeated across three consecutive Garmr goal
+turns:
+
+1. PR #10 remains at rejected head
+   `cf9c67fb1852871f9210ef08da5bb98e66a386c0`.
+2. Fresh GitHub readback still returns README blob
+   `8b137891791fe96927ad78e64b0aad7bded08bdc` with complete content equal to
+   one newline.
+3. The maker task is terminal on a contradicted self-pass and has produced no
+   repair commit.
+4. Existing-thread `send_message_to_thread` still has no registered handler;
+   CLI `0.132.0` cannot parse/resume the newer desktop rollout; the matching
+   app binary is inaccessible.
+5. The finite maker heartbeat remains configured but has not returned a fresh
+   repair receipt. Schedule configuration is not runtime progress.
+
+Garmr cannot safely restore or commit the README itself without collapsing the
+single-maker/distinct-verifier boundary, and creating a replacement task would
+violate WIP=1. No further unchanged-state notification is warranted.
+
+Falsifier / resume condition: PR #10 advances to a new immutable head that
+restores the exact 5,713-byte README blob
+`aed9b3de718403587f578301be9619b11fa78ef6`, adds a deterministic integrity
+check, and binds passing raw test exits. At that point Garmr should verify the
+new bytes and route only that SHA to existing verifier task
+`019fc468-bce5-7ae3-889f-63783416eef2`.
