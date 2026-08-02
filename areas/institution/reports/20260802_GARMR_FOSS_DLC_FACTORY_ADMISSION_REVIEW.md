@@ -280,3 +280,32 @@ route the repaired exact SHA to a distinct verifier.
   the separately truncated one-byte README, which Garmr found by committed-byte
   readback.
 
+## Goal continuation: false-green terminal and dispatch hold
+
+At `2026-08-02T23:17:05Z`, the maker task terminated with
+`LOCAL_REGRESSION_PASS_DRAFT_PR_OPEN` for commit
+`cf9c67fb1852871f9210ef08da5bb98e66a386c0`. That terminal receipt is
+superseded by Garmr's remote-byte falsifier: GitHub still returns README blob
+`8b137891791fe96927ad78e64b0aad7bded08bdc` with complete content equal to
+one newline. The maker's test and changed-file counts therefore do not establish
+artifact integrity.
+
+The existing-maker handoff remains `WAITING_FOR_EXISTING_MAKER_HEARTBEAT`:
+
+- PR #10 carries Garmr comment
+  https://github.com/TTaoGaming/hfo-gen-133/pull/10#issuecomment-5160811138;
+- `send_message_to_thread` again returned
+  `No handler registered for tool`;
+- local CLI `0.132.0` rejected this desktop-created rollout as not starting
+  with session metadata even though the first JSONL record is visibly
+  `session_meta`; classify this as CLI/session-schema incompatibility;
+- the Codex app's bundled binary was inaccessible with `Access is denied`
+  both sandboxed and on the explicitly approved elevated version check;
+- the existing finite maker heartbeat remains configured ACTIVE at every four
+  hours, minute 15, and the existing finite held-out gate heartbeat remains
+  configured ACTIVE at every four hours, minute 45.
+
+No duplicate maker or verifier was created. No schedule was mutated. The only
+eligible transition is restoration and committed readback of the exact README
+blob by the existing maker, followed by exact-SHA replay by the existing
+verifier.
