@@ -1,0 +1,76 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+experiment_id: X11_NATIVE_TASKS_READ_VISIBILITY_V1
+event_id: X11_NATIVE_TASKS_READ_VISIBILITY_WAKE_01_20260802T094121Z
+task_id_expected: 6a55089a9adc8191bda54541f7f9effa
+wip: 1
+expected_current_version: 36
+next_current_version: 37
+wake_number: 1
+accepted_wake: true
+target_wakes_before_decision: 4
+valid_time_utc: 2026-08-02T09:41:21Z
+controlled_factor: native_tasks_read_visibility
+baseline:
+  state: UNMEASURED_ON_CURRENT_BRANCH_CAMPAIGN
+  source_pointer_version: 36
+  prior_campaign_disposition: RESEAT_VARIABLE
+hypothesis: native_task_inventory_read_can_locate_the_exact_expected_task_id_and_expose_enabled_state_without_mutation_interactive_login_or_sensitive_readback_externalization
+exact_probe:
+  tool: automations.list
+  action: read_inventory_then_filter_in_runtime_for_exact_expected_task_id
+  expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+  persisted_fields_only:
+    - exact_id_match_count
+    - enabled_state_visible
+    - enabled_state
+    - permission_class
+    - error_class
+    - latency_exposed
+    - operator_relay_minutes
+  mutation_allowed: false
+  sensitive_prompt_body_externalization_allowed: false
+measured_result:
+  tool_status: SUCCESS
+  exact_id_match_count: 1
+  enabled_state_visible: true
+  enabled_state: true
+  title_visibility_observed: true
+  mutation_performed: false
+  interactive_login_required: false
+  sensitive_prompt_body_persisted_to_git_or_slack: false
+  permission_class: NATIVE_TASK_INVENTORY_READ_AVAILABLE
+  error_class: NONE
+  latency_exposed: false
+  latency_ms: null
+  operator_relay_minutes: 0
+claim_ceiling: one_same_provider_inventory_read_found_exactly_one_matching_task_and_exposed_enabled_state_only_positive_liveness_execution_integrity_inventory_completeness_and_independent_verification_remain_unproven
+strongest_falsifier: a_repeat_read_absents_or_duplicates_the_exact_task_id_hides_enabled_state_requires_mutation_or_interactive_login_or_returns_permission_error
+verifier:
+  actor: S04_HRIST_STRUCTURAL_PREFLIGHT
+  independence_class: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+consumer:
+  - Reginleif
+  - Ratatoskr
+honest_flaw: automations_list_has_no_server_side_exact_id_filter_and_returned_the_full_inventory_including_prompt_bodies_to_the_runtime_so_the_probe_read_more_than_the_minimum_needed_even_though_only_sanitized_fields_were_persisted
+safety:
+  task_mutation: false
+  send: false
+  spend: false
+  deployment: false
+  merge: false
+  publication: false
+  account_or_security_change: false
+  destructive_deletion: false
+  same_provider_independence_claim: false
+next_probe: repeat_the_same_inventory_read_and_exact_id_filter_recording_only_sanitized_fields
+campaign_decision_due_after_accepted_wake: 4
+sealed: true
+---
+
+Wake 1 established bounded native Tasks inventory visibility for the expected X11
+task ID. Exactly one match was visible and its enabled state was readable. No task
+mutation or interactive login occurred. The result is same-provider descriptive
+telemetry only. The inventory call exposed more fields to the runtime than the
+probe needed; none of the prompt bodies were persisted or externalized.
