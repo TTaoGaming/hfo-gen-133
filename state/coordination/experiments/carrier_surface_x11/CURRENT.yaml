@@ -1,32 +1,32 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_PROMPT_CONTEXT_SIZE_V1
-current_version: 35
-accepted_wakes: 3
+current_version: 36
+accepted_wakes: 4
 target_wakes_before_decision: 4
 controlled_factor: prompt_context_size
-campaign_status: IN_PROGRESS_4096_BYTE_PRECOMMIT_MATCH
-current_disposition: PENDING_FOUR_WAKE_DECISION
+campaign_status: COMPLETE_16384_BYTE_PRECOMMIT_MATCH_FACTOR_RESEATED
+current_disposition: RESEAT_VARIABLE
 prior_campaign:
   experiment_id: X11_GOOGLE_CALENDAR_READ_SURFACE_V1
   final_version: 32
   disposition: KEEP
   accepted_wakes: 4
 last_event:
-  commit: 8d7f56755533f4e5bc3ba9f586ec510009feebf9
-  path: state/coordination/experiments/carrier_surface_x11/events/20260802T073844Z_PROMPT_CONTEXT_SIZE_INTEGRITY_WAKE_03.yaml
-  blob: 9bbad7decc8424c56ae73162f1e712a6c3e21b0b
+  commit: 8674c500bf612bc5eda88f78de4bf017b4307f0e
+  path: state/coordination/experiments/carrier_surface_x11/events/20260802T083845Z_PROMPT_CONTEXT_SIZE_INTEGRITY_WAKE_04_DECISION.yaml
+  blob: 6c7bba4b84555b01f141ca38e2d3efd0c8978901
 baseline_result:
-  latest_target_size_bytes: 4096
+  latest_target_size_bytes: 16384
   payload_class: non_sensitive_deterministic_ascii
   encoding: ASCII_UTF8_SINGLE_BYTE
   canonicalized_construction_recorded: true
-  measured_size_bytes: 4096
+  measured_size_bytes: 16384
   exact_size_match: true
   prefix_sentinel_match: true
   suffix_sentinel_match: true
-  precommitted_sha256: c5175a052f930f698b39b9747fbf1342feef50536d877e64c5a0765bb157dd14
-  measured_sha256: c5175a052f930f698b39b9747fbf1342feef50536d877e64c5a0765bb157dd14
+  precommitted_sha256: 16d21a391874352fb3bb757763e2714ed9c0d207d88a2f2d6f1ded29867696d5
+  measured_sha256: 16d21a391874352fb3bb757763e2714ed9c0d207d88a2f2d6f1ded29867696d5
   precommitted_sha256_match: true
   second_local_hash_implementation_agreed: true
   permission_class: LOCAL_DETERMINISTIC_COMPUTE_AVAILABLE
@@ -34,15 +34,19 @@ baseline_result:
   latency_exposed: false
   operator_relay_minutes: 0
   payload_body_externalized: false
-  claim_ceiling: exact_4096_byte_local_payload_construction_and_hash_match_precommit_but_actual_scheduler_prompt_transport_model_context_retention_tokenization_project_context_behavior_and_provider_limits_remain_unproven
+  claim_ceiling: exact_16384_byte_local_payload_construction_and_hash_match_precommit_but_actual_scheduler_prompt_transport_model_context_retention_tokenization_project_context_behavior_and_provider_limits_remain_unproven
 campaign_gates:
   - preserve_the_original_1024_byte_predeclared_digest_as_immutable_defective_expectation
   - use_explicit_LF_byte_semantics_for_prefix_and_suffix
-  - precommit_next_size_digest_before_running_next_wake
   - do_not_attribute_local_hash_results_to_context_retention_without_prompt_transport_evidence
   - do_not_persist_the_synthetic_payload_body_to_git_or_slack
   - do_not_claim_independent_quorum_from_same_provider_local_checks
-last_result: PROMPT_CONTEXT_SIZE_WAKE_03_4096_BYTE_PRECOMMIT_MATCH
+campaign_decision:
+  disposition: RESEAT_VARIABLE
+  rationale: local_byte_integrity_was_measured_but_actual_prompt_context_size_was_not
+  evidence_kept_as: local_payload_construction_size
+  rejected_claim: prompt_or_model_context_retention_verified
+last_result: PROMPT_CONTEXT_SIZE_WAKE_04_16384_BYTE_MATCH_RESEAT_VARIABLE
 planned_size_bytes_by_wake_original:
   - 1024
   - 4096
@@ -52,22 +56,30 @@ actual_size_bytes_by_accepted_wake:
   - 1024
   - 1024
   - 4096
+  - 16384
+next_campaign:
+  experiment_id: X11_NATIVE_TASKS_READ_VISIBILITY_V1
+  controlled_factor: native_tasks_read_visibility
+  status: PLANNED
 next_probe:
-  target_size_bytes: 16384
-  canonical_expected_sha256_precommitted: 16d21a391874352fb3bb757763e2714ed9c0d207d88a2f2d6f1ded29867696d5
-  construction: same_explicit_ASCII_LF_prefix_repeated_16_byte_pattern_truncated_to_middle_and_ASCII_LF_suffix
-  decision_required_after_probe: true
-strongest_falsifier: a_byte_for_byte_implementation_at_4096_bytes_fails_size_or_sentinels_a_third_hash_implementation_disagrees_the_precommitted_digest_cannot_be_reproduced_or_direct_prompt_transport_evidence_contradicts_the_local_result
+  mode: exact_native_task_inventory_visibility_negative_mutation_control
+  exact_action: read_inventory_filter_exact_expected_task_id_and_record_only_match_count_enabled_state_visibility_permission_error_latency_and_operator_relay
+  expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+  expected_match_count: 1
+  mutation_allowed: false
+  sensitive_prompt_body_readback_allowed: false
+strongest_falsifier: the_exact_task_id_is_absent_duplicated_or_enabled_state_is_not_visible_despite_successful_inventory_read_or_the_read_requires_mutation_or_interactive_login
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 next_consumer: Reginleif_and_Ratatoskr
-updated_valid_time_utc: 2026-08-02T07:38:44Z
+updated_valid_time_utc: 2026-08-02T08:38:45Z
 sealed: false
 ---
 
-Prompt/context-size wake 3 advanced the canonical local integrity probe from the
-repeated 1024-byte baseline to 4096 bytes. Exact size and both boundary
-sentinels matched, and Python hashlib plus sha256sum reproduced the precommitted
-SHA-256 c5175a052f930f698b39b9747fbf1342feef50536d877e64c5a0765bb157dd14.
-Wake 4 advances to 16384 bytes, then must issue the campaign disposition and
-select the next controlled factor. This campaign still does not test actual
-scheduler prompt transport or model-context retention.
+Prompt/context-size wake 4 completed the local integrity campaign at 16384
+bytes. Exact size, both boundary sentinels, and Python hashlib plus sha256sum
+matched the precommitted SHA-256
+16d21a391874352fb3bb757763e2714ed9c0d207d88a2f2d6f1ded29867696d5.
+The disposition is RESEAT_VARIABLE because the campaign measured local payload
+construction size, not actual scheduler prompt transport or model-context
+retention. The next controlled factor is native Tasks read visibility using an
+exact-ID inventory read with no task mutation and no prompt-body externalization.
