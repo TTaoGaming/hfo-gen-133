@@ -1,11 +1,11 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_NATIVE_TASKS_READ_VISIBILITY_V1
-current_version: 37
-accepted_wakes: 1
+current_version: 38
+accepted_wakes: 2
 target_wakes_before_decision: 4
 controlled_factor: native_tasks_read_visibility
-campaign_status: ACTIVE_WAKE_01_EXACT_ID_VISIBLE
+campaign_status: ACTIVE_WAKE_02_EXACT_ID_STILL_VISIBLE
 current_disposition: PENDING
 prior_campaign:
   experiment_id: X11_PROMPT_CONTEXT_SIZE_V1
@@ -13,15 +13,18 @@ prior_campaign:
   disposition: RESEAT_VARIABLE
   accepted_wakes: 4
 last_event:
-  commit: 27be94975b44ffc60d746f55a6ef80003e4b66e6
-  path: state/coordination/experiments/carrier_surface_x11/events/20260802T094121Z_NATIVE_TASKS_READ_VISIBILITY_WAKE_01.yaml
-  blob: 2423cf23610c71efb249a32b4f25467eec67a0a3
+  commit: 627f6b6380e0a57d3f33eedb7d3de410b253aac8
+  path: state/coordination/experiments/carrier_surface_x11/events/20260802T104031Z_NATIVE_TASKS_READ_VISIBILITY_WAKE_02.yaml
+  blob: 5188d058a624b7cd91b1cfc58140b94067f215ac
 baseline_result:
   expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+  wake_1_exact_id_match_count: 1
+  wake_2_exact_id_match_count: 1
+  wake_1_enabled_state_visible: true
+  wake_2_enabled_state_visible: true
+  wake_1_enabled_state: true
+  wake_2_enabled_state: true
   tool_status: SUCCESS
-  exact_id_match_count: 1
-  enabled_state_visible: true
-  enabled_state: true
   permission_class: NATIVE_TASK_INVENTORY_READ_AVAILABLE
   error_class: NONE
   latency_exposed: false
@@ -30,7 +33,8 @@ baseline_result:
   mutation_performed: false
   interactive_login_required: false
   sensitive_prompt_body_persisted_to_git_or_slack: false
-  claim_ceiling: one_same_provider_inventory_read_found_exactly_one_matching_task_and_exposed_enabled_state_only_positive_liveness_execution_integrity_inventory_completeness_and_independent_verification_remain_unproven
+  changed_capability: false
+  claim_ceiling: two_same_provider_inventory_reads_each_found_exactly_one_matching_task_and_exposed_enabled_state_true_only_positive_execution_liveness_inventory_completeness_prompt_integrity_and_independent_verification_remain_unproven
 campaign_gates:
   - no_task_mutation
   - no_interactive_login
@@ -51,13 +55,16 @@ next_probe:
   expected_match_count: 1
   mutation_allowed: false
   sensitive_prompt_body_readback_externalization_allowed: false
-updated_valid_time_utc: 2026-08-02T09:41:21Z
+slack_action: YIELD_SILENT_UNCHANGED_PROBE
+updated_valid_time_utc: 2026-08-02T10:40:31Z
 sealed: false
 ---
 
-Native Tasks read-visibility wake 1 found exactly one task matching the expected
-X11 task ID and exposed its enabled state as true. The read succeeded without
-mutation or interactive login. This is same-provider descriptive telemetry only;
-it does not prove execution liveness, inventory completeness, or independent
-verification. The full-list surface exposed more task metadata to the runtime
-than the exact-ID probe required, so only sanitized result fields were persisted.
+Native Tasks read-visibility wake 2 repeated the same bounded inventory probe.
+Both accepted wakes found exactly one task matching the expected X11 task ID and
+exposed its enabled state as true. No task mutation, interactive login, or
+sensitive readback externalization occurred. This remains same-provider
+descriptive telemetry only and does not establish execution liveness, inventory
+completeness, prompt integrity, or independent verification. Because capability
+was unchanged and no campaign decision or Andon occurred, Slack output is
+suppressed.
