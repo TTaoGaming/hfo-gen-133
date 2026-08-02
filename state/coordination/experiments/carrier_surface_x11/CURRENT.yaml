@@ -1,79 +1,62 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
-experiment_id: X11_NATIVE_TASKS_READ_VISIBILITY_V1
-current_version: 40
-accepted_wakes: 4
+experiment_id: X11_WAKE_TIMING_V1
+current_version: 41
+accepted_wakes: 1
 target_wakes_before_decision: 4
-controlled_factor: native_tasks_read_visibility
-campaign_status: COMPLETED_KEEP_NEXT_WAKE_TIMING
-current_disposition: KEEP
+controlled_factor: wake_timing
+campaign_status: ACTIVE
+current_disposition: null
 prior_campaign:
-  experiment_id: X11_PROMPT_CONTEXT_SIZE_V1
-  final_version: 36
-  disposition: RESEAT_VARIABLE
+  experiment_id: X11_NATIVE_TASKS_READ_VISIBILITY_V1
+  final_version: 40
+  disposition: KEEP
   accepted_wakes: 4
 last_event:
-  commit: 1b1b13911147a6e39a0dbf9f3acf22fe6632efab
-  path: state/coordination/experiments/carrier_surface_x11/events/20260802T124152Z_NATIVE_TASKS_READ_VISIBILITY_CAMPAIGN_DECISION_WAKE_04.yaml
-  blob: 373ccb23d380ff32418cb3a1adbbf275f6d3e50a
+  commit: ab79865d64d3a511c5b848e753105e478c04751a
+  path: state/coordination/experiments/carrier_surface_x11/events/20260802T134142Z_WAKE_TIMING_START_DRIFT_WAKE_01.yaml
+  blob: d5ab27cdf2ce0adbfb16c91d6fe577dadee324d6
 baseline_result:
-  expected_task_id: 6a55089a9adc8191bda54541f7f9effa
-  wake_1_exact_id_match_count: 1
-  wake_2_exact_id_match_count: 1
-  wake_3_exact_id_match_count: 1
-  wake_4_exact_id_match_count: 1
-  wake_1_enabled_state_visible: true
-  wake_2_enabled_state_visible: true
-  wake_3_enabled_state_visible: true
-  wake_4_enabled_state_visible: true
-  wake_1_enabled_state: true
-  wake_2_enabled_state: true
-  wake_3_enabled_state: true
-  wake_4_enabled_state: true
+  wake_1_carrier_observed_start_drift_seconds: 102
+  wake_1_drift_direction: AFTER_NOMINAL_BOUNDARY
   tool_status: SUCCESS
-  permission_class: NATIVE_TASK_INVENTORY_READ_AVAILABLE
+  permission_class: AUTOMATION_RUNTIME_OBSERVED_TIMESTAMP_AVAILABLE
   error_class: NONE
   latency_exposed: false
   latency_ms: null
   operator_relay_minutes: 0
-  mutation_performed: false
+  task_mutation_performed: false
   interactive_login_required: false
-  sensitive_prompt_body_persisted_to_git_or_slack: false
-  changed_capability: false
-  claim_ceiling: four_same_provider_inventory_reads_each_found_exactly_one_matching_task_and_exposed_enabled_state_true_only_positive_execution_liveness_inventory_completeness_prompt_integrity_and_independent_verification_remain_unproven
+  sensitive_readback_externalized: false
+  changed_capability: true
+  claim_ceiling: one_carrier_observed_start_drift_sample_only_not_provider_dispatch_time_queue_time_execution_duration_or_sla_compliance
 campaign_gates:
   - no_task_mutation
   - no_interactive_login
-  - persist_only_sanitized_exact_id_match_and_enabled_state_measurements
-  - do_not_externalize_task_prompt_bodies
-  - do_not_claim_liveness_from_inventory_existence
+  - persist_only_sanitized_drift_and_error_fields
+  - do_not_claim_provider_dispatch_or_queue_latency
   - same_provider_binding_weight_zero
-strongest_falsifier: a_repeat_read_absents_or_duplicates_the_exact_task_id_hides_enabled_state_requires_mutation_or_interactive_login_or_returns_permission_error
+strongest_falsifier: a_future_wake_lacks_a_parseable_runtime_timestamp_or_the_same_calculation_cannot_be_reproduced_without_using_a_later_tool_time_or_mutating_the_task
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 next_consumer:
   - Reginleif
   - Ratatoskr
-honest_flaw: automations_list_has_no_server_side_exact_id_filter_and_returned_the_full_inventory_including_prompt_bodies_to_the_runtime_so_the_probe_read_more_than_the_minimum_needed_even_though_only_sanitized_fields_were_persisted
+honest_flaw: the_runtime_timestamp_is_wrapper_supplied_and_may_include_pre_assistant_initialization_delay_so_the_102_second_value_cannot_be_attributed_to_scheduler_dispatch_or_queue_latency
 next_factor: wake_timing
 next_probe:
-  experiment_id: X11_WAKE_TIMING_V1
+  campaign_wake: 2
   mode: scheduled_wake_start_drift_observation
-  exact_action: compare_the_runtime_observed_wake_timestamp_to_the_declared_nominal_hourly_minute_without_task_mutation_and_record_only_drift_seconds_permission_error_class_and_operator_relay_minutes
-  controlled_factor: wake_timing
-  expected_nominal_minute_utc: 40
+  exact_action: repeat_the_runtime_observed_timestamp_minus_same_hour_minute_40_boundary_calculation_without_task_mutation_and_record_only_drift_seconds_permission_error_class_and_operator_relay_minutes
   mutation_allowed: false
   sensitive_readback_externalization_allowed: false
   claim_ceiling: carrier_observed_start_drift_only_not_provider_dispatch_time_queue_time_or_execution_duration
-slack_action: POST_CAMPAIGN_DECISION
-updated_valid_time_utc: 2026-08-02T12:41:52Z
+slack_action: POST_CHANGED_CAPABILITY
+updated_valid_time_utc: 2026-08-02T13:41:42Z
 sealed: false
 ---
 
-Native Tasks read-visibility campaign completed at wake 4 with disposition KEEP.
-All four accepted wakes found exactly one task matching the expected X11 task ID
-and exposed its enabled state as true. No task mutation, interactive login, or
-sensitive readback externalization occurred. This remains same-provider
-descriptive telemetry only and does not establish execution liveness, inventory
-completeness, prompt integrity, or independent verification. The next controlled
-factor is wake timing, measured only as carrier-observed start drift from the
-nominal minute.
+Wake-timing campaign is active at wake 1 of 4. The first carrier-observed runtime
+timestamp was 102 seconds after the nominal minute boundary. This is descriptive
+wrapper-level timing only and cannot be attributed to provider dispatch, queue,
+or execution duration. No task mutation, interactive login, sensitive readback
+externalization, or operator relay occurred.
