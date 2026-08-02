@@ -98,6 +98,24 @@ automation API before a maker wake was authorized:
 No maker, verifier, consumer decision, deployment, outreach, spend, or product
 effect is claimed.
 
+The MAP-Elites file does not supply a replacement target. Its own fitness
+function requires a real original Reddit/HN/Indie Hackers demand permalink and
+rejects LLM plausibility. Mechanical readback found 10 hypothesis candidate
+rows and zero bound demand permalinks: `validated_elites=0`,
+`hypothesis_candidates=10`.
+
+A replacement Sigrun target packet must bind:
+
+- the original demand permalink;
+- captured observation date and score/upvotes;
+- exact source-license blob/hash;
+- one falsifiable user outcome;
+- one named consumer.
+
+Do not select a build target from the local MAP-Elites file before that packet
+exists in reviewed Git.
+
+
 ## Roles and closure
 
 ```text
