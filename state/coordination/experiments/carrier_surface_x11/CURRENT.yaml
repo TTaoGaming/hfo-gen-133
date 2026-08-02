@@ -1,8 +1,8 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_GOOGLE_CALENDAR_READ_SURFACE_V1
-current_version: 29
-accepted_wakes: 1
+current_version: 30
+accepted_wakes: 2
 target_wakes_before_decision: 4
 controlled_factor: google_calendar_read_surface
 campaign_status: ACTIVE
@@ -13,46 +13,50 @@ prior_campaign:
   disposition: KEEP
   accepted_wakes: 4
 last_event:
-  commit: e889638ab0905d3137355d7e587bda23535fe757
-  path: state/coordination/experiments/carrier_surface_x11/events/20260802T014100Z_GOOGLE_CALENDAR_EXACT_NEGATIVE_CONTROL_WAKE_01.yaml
-  blob: fcb6aae41b23f318bb9e0e593524d0e84c762d77
+  commit: 99b2dbfe088aad42888ab253c149eab0287123f7
+  path: state/coordination/experiments/carrier_surface_x11/events/20260802T024000Z_GOOGLE_CALENDAR_EXACT_NEGATIVE_CONTROL_WAKE_02.yaml
+  blob: 44168eea5fdc83a62c2d3325d0f9c15e4de277fe
 baseline_result:
   connector_call_completed: true
   bounded_primary_calendar_search: true
   synthetic_negative_control_query: true
-  result_count: 0
-  expected_negative_control_result_observed: true
+  identical_accepted_probes_completed: 2
+  result_count_each_wake: 0
+  expected_negative_control_result_observed_each_wake: true
   authenticated_search_permission_available_for_probe: true
-  error_class: NONE
-  external_call_time_ms: 215
-  latency_coarse_class: SUB_SECOND
+  error_class_each_wake: NONE
+  external_call_time_samples_ms:
+    - 215
+    - 195
+  latency_coarse_class_each_wake: SUB_SECOND
+  result_permission_or_error_class_changed: false
   interactive_login_required: false
   read_event_attempted: false
   event_title_description_attendee_or_location_externalized: false
   mutation_performed: false
   excluded_preflight_probe_present: true
   excluded_preflight_reason: exact_probe_parameters_did_not_match_prior_planned_probe
-  claim_ceiling: one_bounded_primary_calendar_negative_control_search_completed_without_error_but_positive_recall_complete_calendar_visibility_secondary_or_shared_calendar_coverage_event_detail_permission_search_semantics_and_independent_verification_remain_unproven
+  claim_ceiling: two_identical_bounded_primary_calendar_negative_control_searches_completed_without_error_but_positive_recall_complete_calendar_visibility_secondary_or_shared_calendar_coverage_event_detail_permission_search_semantics_and_independent_verification_remain_unproven
 campaign_gates:
-  - repeat_the_exact_query_calendar_window_and_max_results_for_wakes_2_through_4
+  - repeat_the_exact_query_calendar_window_and_max_results_for_wakes_3_and_4
   - do_not_read_event_details_during_negative_control_campaign
   - do_not_externalize_event_title_description_attendee_or_location_data
   - do_not_infer_positive_recall_or_complete_calendar_visibility_from_zero_results
   - exclude_nonmatching_preflight_probes_from_accepted_campaign_evidence
   - do_not_treat_connector_latency_as_a_controlled_network_slo
   - do_not_claim_independent_quorum_from_same_provider_connector_telemetry
-last_result: GOOGLE_CALENDAR_NEGATIVE_CONTROL_WAKE_01_ACCEPTED
-next_probe: repeat_identical_google_calendar_negative_control_for_wake_2_without_read_event_or_externalizing_event_data
+last_result: GOOGLE_CALENDAR_NEGATIVE_CONTROL_WAKE_02_ACCEPTED
+next_probe: repeat_identical_google_calendar_negative_control_for_wake_3_without_read_event_or_externalizing_event_data
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 next_consumer: Reginleif_and_Ratatoskr
-updated_valid_time_utc: 2026-08-02T01:41:00Z
+updated_valid_time_utc: 2026-08-02T02:40:00Z
 sealed: false
 ---
 
-Google Calendar read visibility campaign wake 1 of 4 completed. The exact bounded
-synthetic negative-control search on the primary calendar returned zero events
-with no connector, authentication, or permission error in 215 ms. No event-detail
-read, mutation, or private event-data externalization occurred. One earlier
-harmless preflight used nonmatching parameters and is preserved as an honest flaw
-but excluded from accepted campaign evidence. This result proves only one bounded
-negative-control invocation; positive recall and calendar coverage remain open.
+Google Calendar read visibility campaign wake 2 of 4 completed. The exact bounded
+synthetic negative-control search on the primary calendar again returned zero
+events with no connector, authentication, or permission error. Exposed connector
+latency was 195 ms versus 215 ms on wake 1; both observations remain sub-second.
+No event-detail read, mutation, or private event-data externalization occurred.
+The result and capability classes are unchanged, and positive recall or calendar
+coverage remain unproven.
