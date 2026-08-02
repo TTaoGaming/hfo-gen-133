@@ -1,8 +1,8 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_WAKE_TIMING_V1
-current_version: 41
-accepted_wakes: 1
+current_version: 42
+accepted_wakes: 2
 target_wakes_before_decision: 4
 controlled_factor: wake_timing
 campaign_status: ACTIVE
@@ -13,23 +13,27 @@ prior_campaign:
   disposition: KEEP
   accepted_wakes: 4
 last_event:
-  commit: ab79865d64d3a511c5b848e753105e478c04751a
-  path: state/coordination/experiments/carrier_surface_x11/events/20260802T134142Z_WAKE_TIMING_START_DRIFT_WAKE_01.yaml
-  blob: d5ab27cdf2ce0adbfb16c91d6fe577dadee324d6
+  commit: 07c6806949786d805e311900a5c7cc22dbf3ab23
+  path: state/coordination/experiments/carrier_surface_x11/events/20260802T143828Z_WAKE_TIMING_START_DRIFT_WAKE_02.yaml
+  blob: a89742a99cb08b55ebc869345c3fe62ee52358da
 baseline_result:
   wake_1_carrier_observed_start_drift_seconds: 102
   wake_1_drift_direction: AFTER_NOMINAL_BOUNDARY
-  tool_status: SUCCESS
+  wake_2_carrier_observed_start_drift_seconds: -92
+  wake_2_drift_direction: BEFORE_NOMINAL_BOUNDARY
+  wake_2_accepted: true
+  tool_status: SUCCESS_WITH_MEASUREMENT_SCOPE_WARNING
   permission_class: AUTOMATION_RUNTIME_OBSERVED_TIMESTAMP_AVAILABLE
-  error_class: NONE
+  error_class: WRAPPER_TIMESTAMP_PRECEDES_NOMINAL_BOUNDARY_MEASUREMENT_SCOPE_WARNING
   latency_exposed: false
   latency_ms: null
   operator_relay_minutes: 0
   task_mutation_performed: false
   interactive_login_required: false
   sensitive_readback_externalized: false
-  changed_capability: true
-  claim_ceiling: one_carrier_observed_start_drift_sample_only_not_provider_dispatch_time_queue_time_execution_duration_or_sla_compliance
+  changed_capability: false
+  andon: true
+  claim_ceiling: carrier_observed_wrapper_timestamp_offset_only_not_provider_dispatch_time_queue_time_execution_duration_or_sla_compliance
 campaign_gates:
   - no_task_mutation
   - no_interactive_login
@@ -41,22 +45,22 @@ verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 next_consumer:
   - Reginleif
   - Ratatoskr
-honest_flaw: the_runtime_timestamp_is_wrapper_supplied_and_may_include_pre_assistant_initialization_delay_so_the_102_second_value_cannot_be_attributed_to_scheduler_dispatch_or_queue_latency
+honest_flaw: wake_2_wrapper_time_preceded_the_nominal_boundary_by_92_seconds_so_wrapper_time_is_not_a_trustworthy_proxy_for_scheduler_dispatch_or_execution_start_and_may_be_sampled_upstream
 next_factor: wake_timing
 next_probe:
-  campaign_wake: 2
+  campaign_wake: 3
   mode: scheduled_wake_start_drift_observation
-  exact_action: repeat_the_runtime_observed_timestamp_minus_same_hour_minute_40_boundary_calculation_without_task_mutation_and_record_only_drift_seconds_permission_error_class_and_operator_relay_minutes
+  exact_action: repeat_the_same_sanitized_wrapper_timestamp_minus_same_hour_minute_40_boundary_calculation_and_record_direction_and_magnitude_only
   mutation_allowed: false
   sensitive_readback_externalization_allowed: false
-  claim_ceiling: carrier_observed_start_drift_only_not_provider_dispatch_time_queue_time_or_execution_duration
-slack_action: POST_CHANGED_CAPABILITY
-updated_valid_time_utc: 2026-08-02T13:41:42Z
+  claim_ceiling: carrier_observed_wrapper_timestamp_offset_only_not_provider_dispatch_time_queue_time_or_execution_duration
+slack_action: POST_ANDON
+updated_valid_time_utc: 2026-08-02T14:38:28Z
 sealed: false
 ---
 
-Wake-timing campaign is active at wake 1 of 4. The first carrier-observed runtime
-timestamp was 102 seconds after the nominal minute boundary. This is descriptive
-wrapper-level timing only and cannot be attributed to provider dispatch, queue,
-or execution duration. No task mutation, interactive login, sensitive readback
-externalization, or operator relay occurred.
+Wake-timing campaign is active at wake 2 of 4. Wake 2 reproduced the calculation
+but the wrapper-supplied timestamp was 92 seconds before the nominal boundary.
+This is an accepted wrapper-telemetry sample and a measurement-scope Andon, not
+evidence of early scheduler dispatch. No task mutation, interactive login,
+sensitive readback externalization, or operator relay occurred.
