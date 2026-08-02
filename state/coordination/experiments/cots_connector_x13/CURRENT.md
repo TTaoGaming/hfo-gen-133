@@ -1,71 +1,67 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
-experiment_id: X13_GOOGLE_CALENDAR_FREEBUSY_READONLY_001
-version: 40
-prior_version: 39
-candidate: Google_Calendar_freebusy_readonly_connector_surface
-candidate_contract_reference: official_Google_Calendar_Freebusy_query_quota_and_error_contract_plus_direct_connector_receipts
-campaign_wake: 4_of_4
-campaign_status: COMPLETE
+experiment_id: X13_GMAIL_BOUNDED_METADATA_SEARCH_READONLY_001
+version: 41
+prior_version: 40
+candidate: Gmail_bounded_exact_query_metadata_readonly_connector_surface
+candidate_contract_reference: official_Gmail_users_messages_list_search_filtering_and_usage_limits_plus_direct_connector_receipt
+campaign_wake: 1_of_4
+campaign_status: ACTIVE
 phase_1_completed: true
-phase_2_completed: true
-phase_3_completed: true
-phase_4_completed: true
-phase_4_decision: ADOPT_WITH_GATES
+phase_2_completed: false
+phase_3_completed: false
+phase_4_completed: false
+phase_4_decision: PENDING
 last_event:
-  commit: e6a8797de8a7f8e601812902457a40a2c30f31f6
-  path: state/coordination/experiments/cots_connector_x13/20260802T124644Z_GOOGLE_CALENDAR_FREEBUSY_PHASE4_DECISION.md
-  blob_sha: b4396e6e3ee29303a45db718b18f3e00a89d2eb0
+  commit: de57a8600975bedacb4d09cf18677d2cb727706c
+  path: state/coordination/experiments/cots_connector_x13/20260802T134837Z_GMAIL_METADATA_PHASE1_BASELINE.md
+  blob_sha: 58b5c11aeba24b1b345a0c5e3482969fcdb0cee8
   exact_readback_completed: true
-prior_current_commit: af9641cf2f8b769fa241112480c7ac235ff7d735
-prior_current_blob_sha: 43a51348c1ca7f2af34ac959b837f9009dee5eec
+prior_current_commit: a60950052db6eaf703b5558a3171fd937c3a2788
+prior_current_blob_sha: 6559d72fa45930bfc237daaf99d82035e7e5e1a8
 carrier_task_id: 6a55c1733708819185088bf334e33ea5
 carrier_task_id_match: true
 carrier_task_id_observation_source: AUTOMATION_RUN_CONTEXT
-effect_ceiling: DECISION_ONLY_GIT_EVENT_CURRENT_ADVANCE_READBACK_AND_ONE_SHORT_NON_SECRET_SLACK_DECISION
-adoption_credit: 4
+effect_ceiling: PHASE1_OFFICIAL_CONTRACT_BASELINE_ONE_BOUNDED_ID_ONLY_QUERY_GIT_EVENT_CURRENT_ADVANCE_READBACK_AND_ONE_SHORT_NON_SECRET_SLACK_FACT
+adoption_credit: 1
 adoption_credit_basis:
-  - OFFICIAL_PRIMARY_FREEBUSY_CONTRACT_BASELINE
-  - ONE_BOUNDED_EMPTY_RESULT_PRIMARY_QUERY
-  - ONE_BOUNDED_NON_EMPTY_PRIMARY_QUERY_WITH_PRIVACY_MINIMIZED_AGGREGATION
-  - STRUCTURAL_INTERVAL_VALIDATION
-  - ONE_SYNTHETIC_INVALID_CALENDAR_PER_RESOURCE_ERROR_PROBE
-  - NORMALIZED_BUSY_ARRAY_AND_PER_CALENDAR_ERROR_CAPTURE
-  - NO_EVENT_CONTENT_RETURNED
-  - NO_CALENDAR_WRITE_SIDE_EFFECT
-  - PHASE4_BOUNDED_ADOPTION_DECISION_WITH_EXPLICIT_GATES
+  - OFFICIAL_PRIMARY_MESSAGES_LIST_SEARCH_AND_QUOTA_CONTRACT
+  - ONE_BOUNDED_ONE_HOUR_EPOCH_QUERY
+  - MAX_RESULTS_3
+  - ONE_OPAQUE_MESSAGE_ID_RETURNED_NOT_PERSISTED
+  - NO_NEXT_PAGE_TOKEN
+  - NO_HEADER_SNIPPET_BODY_OR_ATTACHMENT_RETURNED
+  - NO_MAILBOX_WRITE_SIDE_EFFECT
 fitness_credit: 0_PENDING_EXPLICIT_SOURCE_BOUND_CONSUMER_ACK_AND_MEASURED_OPERATOR_OUTCOME
 consumer_ack: NOT_OBSERVED
 same_provider_binding_weight: 0
 independent_verification_closed: false
 operator_relay_minutes: 0
 operator_minutes_removed_measured: 0
-operator_minutes_removed_estimate_per_bounded_check: 1_to_5_UNVALIDATED
+operator_minutes_removed_estimate: UNKNOWN
 custom_code_avoided_estimate:
-  authenticated_freebusy_request_rfc3339_timezone_validation_response_normalization_and_basic_per_calendar_error_handling: 40_to_120_LOC_UNVALIDATED
-  interval_sort_overlap_bounds_duration_and_gap_validation: 20_to_60_LOC_UNVALIDATED
+  authenticated_message_list_query_pagination_and_id_normalization: 25_to_80_LOC_UNVALIDATED
 custom_policy_not_avoided:
-  - CALENDAR_SELECTION_AND_AUTHORITY
-  - DATA_CLASSIFICATION_AND_BUSY_PATTERN_REDACTION
-  - SOURCE_BOUND_IDENTITY_AND_SCOPE_VERIFICATION
-  - PARTIAL_RESPONSE_AND_PER_CALENDAR_ERROR_POLICY
-  - TIMEZONE_DST_AND_INTERVAL_BOUNDARY_POLICY
-  - RATE_LIMIT_RETRY_AND_IDEMPOTENCY_POLICY
+  - MAILBOX_IDENTITY_AND_AUTHORITY
+  - QUERY_SCOPE_AND_DATA_MINIMIZATION
+  - SEARCH_TIMEZONE_AND_BOUNDARY_POLICY
+  - MESSAGE_ID_REDACTION_AND_RETENTION
+  - PAGINATION_COMPLETENESS
+  - QUOTA_RETRY_AND_BACKOFF
   - INDEPENDENT_VERIFICATION
 credentials:
-  connector_authenticated_or_primary_calendar_reachable: true
+  connector_authenticated_search_succeeded: true
   operator_supplied_credentials: 0
-  live_identity: UNKNOWN
-  live_token_type: UNKNOWN
-  live_scopes: UNKNOWN
+  authenticated_user_identity: UNKNOWN
+  live_oauth_scope: UNKNOWN
   oauth_client_or_project: UNKNOWN
-  calendar_ownership_or_delegated_authority: UNKNOWN
+  delegated_or_direct_mailbox_authority: UNKNOWN
   credential_custody: UNKNOWN
 paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
 campaign_candidate_invocations:
-  phase_1_primary_freebusy_query: 1
-  phase_2_primary_freebusy_query: 1
-  phase_3_synthetic_invalid_calendar_freebusy_query: 1
+  phase_1_bounded_id_only_search: 1
+  phase_2_micro_use: 0
+  phase_3_failure_probe: 0
   phase_4_decision_only: 0
 actual_upstream_request_count: UNKNOWN
 actual_quota_class: UNKNOWN
@@ -73,152 +69,113 @@ retry_count: 0_AT_CARRIER_LEVEL_UPSTREAM_UNKNOWN
 billing_counters: NOT_EXPOSED
 live_HTTP_status_headers_request_id_retry_after_or_rate_limit_headers: NOT_EXPOSED
 direct_phase_1_receipt:
-  calendar_id_alias: primary
-  query_time_min_utc: 2026-08-02T10:00:00Z
-  query_time_max_utc: 2026-08-02T11:00:00Z
-  response_timezone: America/Denver
-  busy_interval_count: 0
-  per_calendar_errors: null
+  query_class: ONE_HOUR_EPOCH_BOUNDED_EXCLUDING_SPAM_AND_TRASH
+  query_after_epoch_exclusive: 1785672000
+  query_before_epoch_exclusive: 1785675600
+  query_window_utc: 2026-08-02T12:00:00Z_to_2026-08-02T13:00:00Z
+  max_results: 3
+  returned_message_id_count: 1
+  exact_message_ids_persisted: false
+  next_page_token_present: false
+  result_size_estimate_exposed: false
+  message_headers_returned: false
+  message_snippets_returned: false
+  message_bodies_returned: false
+  attachments_returned_or_read: false
+  external_call_time_ms: 610
   top_level_error: null
-  external_call_time_ms: 214
-  event_content_returned: false
   write_side_effect: false
-direct_phase_2_receipt:
-  calendar_id_alias: primary
-  query_window_minutes: 240
-  busy_interval_count: 2
-  total_busy_minutes: 40
-  total_free_minutes_by_subtraction: 200
-  longest_contiguous_free_minutes: 120
-  exact_busy_interval_timestamps_persisted: false
-  exact_busy_interval_timestamps_omitted_reason: PRIVACY_MINIMIZATION
-  intervals_start_before_end: true
-  intervals_inside_query_window: true
-  intervals_sorted_ascending: true
-  intervals_non_overlapping: true
-  per_calendar_errors: null
-  top_level_error: null
-  external_call_time_ms: 3301
-  event_content_returned: false
-  write_side_effect: false
-direct_phase_3_receipt:
-  calendar_identifier_class: SYNTHETIC_RESERVED_INVALID_DOMAIN_EXACT_ID_NOT_PERSISTED
-  query_window_minutes: 60
-  response_timezone: America/Denver
-  calendar_result_count: 1
-  busy_interval_count: 0
-  per_calendar_error_domain: global
-  per_calendar_error_reason: notFound
-  top_level_error: null
-  external_call_time_ms: 2208
-  retry_attempted: false
-  event_content_returned: false
-  write_side_effect: false
-  interpretation: NOTFOUND_DOES_NOT_DISTINGUISH_NONEXISTENCE_FROM_NO_ACCESS
 official_contract_checked_2026_08_02:
-  freebusy_query: https://developers.google.com/workspace/calendar/api/v3/reference/freebusy/query
-  quota: https://developers.google.com/workspace/calendar/api/guides/quota
-  errors: https://developers.google.com/workspace/calendar/api/guides/errors
-  request_method: POST_/calendar/v3/freeBusy
-  required_request_fields: RFC3339_timeMin_RFC3339_timeMax_items_ids
-  response_timezone_default: UTC
-  busy_start_semantics: INCLUSIVE
-  busy_end_semantics: EXCLUSIVE
-  calendar_expansion_max: 50
-  group_expansion_max: 100
-  freebusy_per_calendar_errors_documented: true
-  documented_notFound_meaning: RESOURCE_NOT_FOUND_OR_CALLER_CANNOT_ACCESS
-  additional_error_reasons_may_be_added: true
-  rate_limit_failures: HTTP_403_OR_429_USAGE_LIMITS
-  recommended_rate_limit_response: TRUNCATED_EXPONENTIAL_BACKOFF
-  published_default_per_minute_per_project: 10000_FOR_NEW_QUOTA_MODEL_PROJECTS
-  published_default_per_minute_per_user_per_project: 600_FOR_NEW_QUOTA_MODEL_PROJECTS
-  published_daily_project_threshold_before_planned_charges: 1000000_REQUESTS_WITH_LIVE_PROJECT_STATUS_UNKNOWN
+  messages_list: https://developers.google.com/workspace/gmail/api/reference/rest/v1/users.messages/list
+  search_filtering: https://developers.google.com/workspace/gmail/api/guides/filtering
+  usage_limits: https://developers.google.com/workspace/gmail/api/reference/quota
+  endpoint: GET_/gmail/v1/users/{userId}/messages
+  q_supports_gmail_search_syntax: true
+  q_not_available_with_gmail_metadata_scope: true
+  max_results_default: 100
+  max_results_maximum: 500
+  list_response_message_fields: ID_AND_THREAD_ID_ONLY
+  additional_details_require_messages_get: true
+  api_search_date_literals_interpreted_at_midnight_PST: true
+  epoch_seconds_recommended_for_precise_timezone_boundaries: true
+  gmail_ui_alias_expansion_not_available_in_api: true
+  gmail_ui_thread_wide_search_not_available_in_api: true
+  messages_list_quota_units: 5
+  published_new_model_per_minute_per_project_quota_units: 1200000
+  published_new_model_per_minute_per_user_per_project_quota_units: 6000
+  published_daily_project_threshold_before_planned_charges_quota_units: 80000000
+  standard_use_no_additional_cost_under_threshold: true
 failure_semantics:
-  bounded_primary_alias_empty_query: DIRECTLY_OBSERVED_SUCCESS
-  bounded_primary_alias_non_empty_query: DIRECTLY_OBSERVED_SUCCESS
-  synthetic_invalid_calendar: DIRECTLY_OBSERVED_PER_CALENDAR_GLOBAL_NOTFOUND_WITH_TOP_LEVEL_SUCCESS
-  inaccessible_real_calendar: NOT_TESTED_AND_NOT_DISTINGUISHABLE_FROM_NOTFOUND_BY_THIS_PROBE
-  mixed_valid_and_invalid_calendars: NOT_TESTED
-  malformed_or_inverted_window: NOT_TESTED
-  group_expansion: NOT_TESTED
-  quota_403_or_429: NOT_TESTED
-  transient_500: NOT_TESTED
+  bounded_one_hour_search: DIRECTLY_OBSERVED_SUCCESS
+  empty_result: NOT_TESTED
+  pagination_second_page: NOT_TESTED
+  invalid_query: NOT_TESTED
+  permission_denial: NOT_TESTED
+  quota_or_rate_limit: NOT_TESTED
   independent_cross_client_readback: NOT_TESTED
-durability: EPHEMERAL_POINT_IN_TIME_QUERY_OVER_MUTABLE_CALENDAR_STATE_FREEBUSY_HAS_NO_PERSISTENT_RESOURCE
-observability: MEDIUM_FOR_NORMALIZED_CALENDAR_ID_BUSY_INTERVALS_AND_PER_CALENDAR_ERRORS_BUT_LOW_FOR_RAW_HTTP_HEADERS_REQUEST_ID_SCOPE_IDENTITY_RETRIES_QUOTA_PROJECT_AND_UPSTREAM_REQUEST_COUNT
-portability: MEDIUM_FOR_GENERIC_RFC3339_FREEBUSY_AND_RESOURCE_SCOPED_ERRORS_BUT_MEDIUM_LOW_FOR_PRIMARY_ALIAS_GOOGLE_CALENDAR_IDS_OAUTH_SCOPES_ERROR_ENUMS_EXPANSION_LIMITS_AND_QUOTAS
+durability: EPHEMERAL_POINT_IN_TIME_SEARCH_OVER_MUTABLE_MAILBOX_STATE
+observability: MEDIUM_LOW_FOR_QUERY_BOUND_RESULT_COUNT_PAGINATION_FLAG_AND_CONNECTOR_LATENCY_BUT_LOW_FOR_RAW_HTTP_IDENTITY_SCOPE_PROJECT_REQUEST_ID_QUOTA_AND_UPSTREAM_RETRIES
+portability: MEDIUM_LOW_GMAIL_QUERY_SYNTAX_LABEL_IDS_THREAD_SEMANTICS_ALIAS_DIFFERENCES_AND_SCOPE_RULES_ARE_PROVIDER_SPECIFIC
 admitted_scope:
-  - BOUNDED_READ_ONLY_FREEBUSY_QUERY
-  - EXPLICITLY_SELECTED_CALENDARS_IN_CURRENT_AUTHENTICATED_CONTEXT
-  - BUSY_INTERVAL_AND_PER_CALENDAR_ERROR_EXTRACTION
-  - LOCAL_STRUCTURAL_VALIDATION_AND_PRIVACY_MINIMIZED_AGGREGATION
-  - SCHEDULING_ASSISTANCE_WITHOUT_AUTOMATIC_BOOKING_AUTHORITY
-  - NO_EVENT_CONTENT_DISCLOSURE
+  - BOUNDED_READ_ONLY_MESSAGE_ID_SEARCH
+  - EXPLICIT_EPOCH_TIME_WINDOW
+  - SMALL_MAX_RESULTS
+  - EXCLUDE_SPAM_AND_TRASH
+  - COUNT_ONLY_PERSISTENCE
+  - NO_MESSAGE_GET_OR_CONTENT_DISCLOSURE
 excluded_scope:
-  - EVENT_CREATE_INVITE_RESPONSE_EDIT_OR_DELETE
-  - EVENT_DETAIL_MINING
-  - AUTOMATIC_SCHEDULING_OR_AUTHORITY_TO_BOOK_OVER_A_PERSON
-  - IMMUTABLE_STATE_OR_HISTORICAL_AVAILABILITY_CLAIMS
-  - LIVE_SCOPE_IDENTITY_QUOTA_OR_COST_CLAIMS
-  - INDEPENDENT_COMPLETENESS_VERIFICATION
+  - MESSAGE_BODY_HEADER_SNIPPET_OR_ATTACHMENT_READ
+  - SEND_DRAFT_REPLY_OR_FORWARD
+  - LABEL_ARCHIVE_TRASH_DELETE_MARK_READ_OR_UNREAD
+  - BROAD_MAILBOX_MINING
+  - MAILBOX_COMPLETENESS_OR_IDENTITY_CLAIMS
 mandatory_gates:
-  - USE_EXPLICIT_RFC3339_START_AND_END_WITH_Z_OR_OFFSET
-  - RESPONSE_TIMEZONE_FORMATS_OUTPUT_ONLY_AND_DOES_NOT_REDEFINE_QUERY_INTERVAL
-  - TREAT_PRIMARY_AS_AUTHENTICATED_CONTEXT_ALIAS_NOT_DURABLE_PORTABLE_ID
-  - FREEBUSY_IS_OCCUPANCY_ONLY_NOT_EVENT_CONTENT_OR_SCHEDULING_AUTHORITY
-  - INSPECT_AND_PRESERVE_PER_CALENDAR_ERRORS_SEPARATELY_FROM_TOP_LEVEL_SUCCESS
-  - TREAT_ANY_PER_CALENDAR_ERROR_AS_UNKNOWN_AVAILABILITY_NEVER_FREE_TIME
-  - NOTFOUND_ALONE_DOES_NOT_PROVE_NONEXISTENCE_OR_PERMISSION_DENIAL
-  - DO_NOT_BLINDLY_RETRY_DETERMINISTIC_NOTFOUND_WITHOUT_CORRECTED_IDENTITY_OR_ACCESS_EVIDENCE
-  - GRACEFULLY_HANDLE_UNKNOWN_FUTURE_ERROR_REASONS
-  - EMPTY_BUSY_ARRAY_PROVES_ONLY_THIS_CALL_RETURNED_NO_BUSY_BLOCK_FOR_THIS_INTERVAL_AND_ALIAS
-  - DO_NOT_PERSIST_EXACT_BUSY_PATTERNS_UNLESS_NECESSARY_AND_APPROVED
-  - SANITIZE_CALENDAR_IDS_EMAIL_LIKE_RESOURCE_IDS_AND_BUSY_PATTERNS_BEFORE_GIT_OR_SLACK_PERSISTENCE
-  - USE_BOUNDED_EXPONENTIAL_BACKOFF_ONLY_FOR_DOCUMENTED_TRANSIENT_OR_RATE_LIMIT_CLASSES
-  - DO_NOT_CLAIM_LIVE_SCOPE_IDENTITY_QUOTA_COST_COMPLETENESS_OR_INDEPENDENT_VERIFICATION
-  - NO_EVENT_CREATE_INVITE_RESPONSE_EDIT_DELETE_OR_BROAD_CALENDAR_MINING
-verifier: RAW_GOOGLE_CALENDAR_FREEBUSY_API_OR_DISTINCT_AUTHORIZED_CALENDAR_CLIENT_USING_SAME_EXPLICIT_INTERVAL_AND_SOURCE_BOUND_CALENDAR_ID_WITH_RAW_RESPONSE_AND_SCOPE_EVIDENCE
+  - USE_EPOCH_SECONDS_FOR_PRECISE_TIME_BOUNDS_WHEN_TIMEZONE_ACCURACY_MATTERS
+  - SET_SMALL_EXPLICIT_MAX_RESULTS_AND HANDLE_PAGINATION_SEPARATELY
+  - TREAT_RESULT_SIZE_ESTIMATE_AS_NONAUTHORITATIVE_WHEN_EXPOSED
+  - DO_NOT_PERSIST_MESSAGE_IDS_HEADERS_SUBJECTS_SENDERS_SNIPPETS_BODIES_OR_ATTACHMENT_NAMES_WITHOUT_SEPARATE_JUSTIFICATION
+  - DO_NOT_INFER_EXACT_OAUTH_SCOPE_FROM_SUCCESSFUL_SEARCH
+  - DO_NOT_ASSUME_GMAIL_UI_ALIAS_EXPANSION_OR_THREAD_WIDE_SEARCH_SEMANTICS
+  - EMPTY_OR_BOUNDED_RESULTS_PROVE_ONLY_THIS_QUERY_RESPONSE
+  - NO_SEND_DRAFT_REPLY_FORWARD_LABEL_ARCHIVE_TRASH_DELETE_OR_MARK_STATE
+verifier: RAW_GMAIL_USERS_MESSAGES_LIST_CALL_OR_DISTINCT_AUTHORIZED_GMAIL_CLIENT_USING_THE_SAME_EPOCH_QUERY_WITH_RAW_RESPONSE_SCOPE_AND_MAILBOX_IDENTITY_EVIDENCE
 consumer:
-  - HFO_SCHEDULING_AND_EXECUTIVE_ASSISTANT_PLANNING_LOGIC
-strongest_falsifier: A_DISTINCT_AUTHORIZED_CLIENT_RETURNS_MATERIALLY_DIFFERENT_BUSY_OR_ERROR_RESULTS_FOR_THE_SAME_SOURCE_BOUND_CALENDAR_AND_INTERVAL_OR_THE_CONNECTOR_COLLAPSES_A_MIXED_SUCCESS_ERROR_QUERY_INTO_MISLEADING_GLOBAL_SUCCESS
-honest_flaw: CAMPAIGN_DID_NOT_ESTABLISH_IDENTITY_OR_SCOPE_TEST_SHARED_SECONDARY_OR_INACCESSIBLE_REAL_CALENDARS_MIXED_RESULTS_403_429_500_DST_INDEPENDENT_READBACK_OR_CONSUMER_ACK
-phase_4_result:
-  decision: ADOPT_WITH_GATES
-  candidate_invocation_this_wake: false
-  rationale: BOUNDED_READ_ONLY_OCCUPANCY_AND_PER_RESOURCE_ERROR_NORMALIZATION_WORKED_BUT_AUTHORITY_COMPLETENESS_IDENTITY_QUOTA_AND_INDEPENDENT_VERIFICATION_REMAIN_UNPROVEN
-review_expiry_utc: 2026-08-09T12:46:44Z
-valid_time_utc: 2026-08-02T12:46:44Z
+  - HFO_EXECUTIVE_ASSISTANT_MAIL_TRIAGE_LOGIC
+strongest_falsifier: A_DISTINCT_AUTHORIZED_CLIENT_RETURNS_MATERIALLY_DIFFERENT_ID_COUNT_OR_PAGINATION_FOR_THE_SAME_SOURCE_BOUND_MAILBOX_AND_QUERY_OR_THE_CONNECTOR_FETCHES_CONTENT_DESPITE_ID_ONLY_ACTION
+honest_flaw: BASELINE_TESTED_ONLY_ONE_ONE_HOUR_WINDOW_WITH_ONE_OPAQUE_RESULT_NO_HEADERS_BODY_ATTACHMENTS_LABEL_FILTER_SECOND_PAGE_EMPTY_RESULT_INVALID_QUERY_PERMISSION_DENIAL_RATE_LIMIT_OR_INDEPENDENT_READBACK
+phase_1_result:
+  status: PHASE1_ACCEPTED_WITH_SCOPE_TIMEZONE_AND_COMPLETENESS_GATES
+  candidate_invocation_this_wake: true
+  rationale: ONE_BOUNDED_ID_ONLY_SEARCH_SUCCEEDED_WITH_NO_CONTENT_OR_MUTATION_BUT_IDENTITY_SCOPE_COMPLETENESS_AND_QUOTA_REMAIN_UNPROVEN
+review_expiry_utc: 2026-08-09T13:48:37Z
+valid_time_utc: 2026-08-02T13:48:37Z
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 sealed: true
-next_campaign:
-  experiment_id: X13_GMAIL_BOUNDED_METADATA_SEARCH_READONLY_001
-  candidate: Gmail_bounded_exact_query_metadata_readonly_connector_surface
-  phase: 1_of_4
-  status: QUEUED
-  effect_ceiling: OFFICIAL_CONTRACT_BASELINE_AND_ONE_BOUNDED_PRIVACY_MINIMIZED_READ_ONLY_QUERY_NO_BODY_NO_ATTACHMENT_NO_MUTATION
-  excluded_scope:
+next_phase:
+  phase: 2_of_4
+  status: PENDING
+  effect_ceiling: ONE_BOUNDED_EXACT_QUERY_RETURNING_AT_MOST_ONE_MESSAGE_THEN_METADATA_ONLY_READ_IF_A_SEPARATE_HEADER_ONLY_ACTION_IS_AVAILABLE_OTHERWISE_ID_ONLY_RECONCILIATION
+  exclusions:
     - SEND_DRAFT_REPLY_FORWARD
     - LABEL_ARCHIVE_TRASH_DELETE_OR_MARK_READ_UNREAD
+    - MESSAGE_BODY_OR_ATTACHMENT_DISCLOSURE
     - BROAD_MAILBOX_MINING
-    - MESSAGE_BODY_OR_ATTACHMENT_DISCLOSURE_WITHOUT_SEPARATE_JUSTIFICATION
 prior_campaign:
+  experiment_id: X13_GOOGLE_CALENDAR_FREEBUSY_READONLY_001
+  final_version: 40
+  decision: ADOPT_WITH_GATES
+  decision_event_commit: e6a8797de8a7f8e601812902457a40a2c30f31f6
+  current_commit: a60950052db6eaf703b5558a3171fd937c3a2788
+prior_prior_campaign:
   experiment_id: X13_SLACK_NATIVE_MESSAGE_RECEIPT_001
   final_version: 36
   decision: ADOPT_WITH_GATES
-  decision_event_commit: 449f9b38893b825a2d8c356cb3911876f187ac03
-  current_commit: 58b9b552263129a640dbc6bfcde60ab3fca2496c
-prior_prior_campaign:
-  experiment_id: X13_GITHUB_CONTENTS_CONNECTOR_001
-  final_version: 32
-  decision: ADOPT_WITH_GATES
-  decision_commit: 1c921066a994009f3ae76654cdec7a3fd8c1004c
 ---
 
 # X13 current campaign
 
-Google Calendar Freebusy read-only completed phase **4/4** with decision **ADOPT_WITH_GATES**.
+Gmail bounded metadata search completed phase **1/4**.
 
-Use is admitted only for bounded occupancy assistance with explicit RFC3339 intervals, selected calendars, per-calendar error inspection, and privacy-minimized persistence. It is not event authority, completeness proof, durable state, automatic booking permission, or independent verification.
+One exact one-hour epoch-bounded query returned one opaque message ID and no next-page token. The ID was not persisted. No headers, snippets, bodies, attachments, or mailbox mutations were requested or returned.
 
-Measured operator relief remains `0`; surfaced cost was `$0`; identity, OAuth scope, project, live quota, billing state, and cross-client accuracy remain unknown. The next queued campaign is Gmail bounded metadata-only read/search, with no body, attachment, send, or mailbox mutation.
+Measured operator relief remains `0`; surfaced cost was `$0`. Mailbox identity, exact OAuth scope, live quota, pagination completeness, and independent verification remain unknown.
