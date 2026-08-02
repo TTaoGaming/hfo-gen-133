@@ -1,0 +1,80 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+result: RETURN_REUSABLE_FAILURE_ANTIBODY
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_match: true
+wip: 1
+self_probe_tools_observed:
+  - native_automation_inventory_read
+  - github_branch_commit_search_fetch_create_readback
+  - slack_channel_pointer_write_available
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-02T15:56:00Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+heritage_kind: FAILURE_ANTIBODY
+heritage_credit: 0_PENDING_NAMED_CONSUMER_ACK
+same_provider_binding_weight: 0
+independent_verification_closed: false
+sealed: false
+
+current_workitem: X13_GMAIL_BOUNDED_METADATA_SEARCH_READONLY_001_PHASE4_DECISION_PENDING
+current_source_commit: 1a25b921de1361b18141e0e68cc9d8b6c5204c0b
+current_source_path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+current_source_blob: 4b3fa1b83175a7c26ebba697c453d772eea79ed6
+current_event_commit: a876690a0eb5163447abb0f39213b4f4c0c70fc4
+current_event_path: state/coordination/experiments/cots_connector_x13/20260802T154919Z_GMAIL_METADATA_PHASE3_INVALID_PAGE_TOKEN.md
+current_event_blob: a833db58b1cf16e578765d750775ad1295e6019e
+current_acceptance_state: PHASE3_COMPLETE_PHASE4_DECISION_ONLY_PENDING
+
+reusable_artifact_original_date_utc: 2026-08-02T00:29:11Z
+reusable_artifact_repository: TTaoGaming/hfo-gen-133
+reusable_artifact_commit: 46cce1c2435dfe846a8bce3ef3088c784c8ff43b
+reusable_artifact_path: state/coordination/receipts/chatgpt_runtime/seat-08/20260802T002911Z_S08_CONTACTS_NEGATIVE_PAGESIZE_CLAIM_BOUNDARY_EVIDENCE_CARD.md
+reusable_artifact_blob: 68c443f074cdc1472d696849c11fdd2407106707
+reusable_invariant: ONE_SYNTHETIC_INVALID_INPUT_TRACE_SUPPORTS_ONLY_AN_OBSERVATION_BOUND_FAILURE_CLASS_NOT_A_COMPLETE_PROVIDER_DOMAIN_OR_STABLE_ERROR_MAPPING
+
+supported_claims:
+  - The Contacts precedent directly supports claim-discipline: one invalid synthetic input and one normalized error must remain bound to that exact trace.
+  - The current Gmail trace directly observed one synthetic non-mailbox-derived page token returning connector-normalized invalidArgument and INVALID_ARGUMENT with zero IDs, zero content, zero cursor, zero mailbox mutation, and no carrier retry.
+  - Phase 4 may preserve an observation-bound class such as SYNTHETIC_INVALID_PAGE_TOKEN_REJECTED_IN_THIS_CONNECTOR_TRACE.
+  - Connector-normalized fields should remain separate from raw Gmail HTTP, field-location, request-ID, quota, and provider-retry claims.
+  - No additional Gmail call is required to consume this wording discipline in the decision-only phase.
+
+excluded_claims:
+  - That every malformed, expired, replayed, or query-mismatched Gmail page token fails identically.
+  - That pageToken was the exact upstream-invalid field without a parameter-location or raw-provider receipt.
+  - That the normalized connector error proves raw HTTP 400, stable provider taxonomy, wrapper-versus-provider validation order, or upstream request count.
+  - That the trace establishes mailbox identity, OAuth scope, permission-denial behavior, quota behavior, retry semantics, completeness, snapshot stability, or valid next-page traversal.
+  - That a Contacts pageSize rule transfers as Gmail cursor semantics.
+  - ConsumerAck, measured operator relief, independent verification, fitness credit, or broad Gmail adoption without the existing gates.
+
+privacy_ceiling: PUBLIC_PRIMARY_DOCUMENTATION_AND_SANITIZED_NONIDENTIFYING_FAILURE_METADATA_ONLY
+privacy_exclusions:
+  - exact_message_ids
+  - exact_page_tokens
+  - mailbox_identity
+  - headers_subjects_senders_snippets_bodies_attachments
+  - oauth_or_project_identifiers
+
+acceptance_relevance:
+  phase4_wording: "Record only that one synthetic non-mailbox-derived token was rejected in this connector trace with normalized invalidArgument / INVALID_ARGUMENT; do not generalize the exact invalid field, token domain, raw HTTP mapping, permission semantics, or stable provider behavior."
+  decision_effect: NARROWS_FAILURE_TAXONOMY_WITHOUT_NEW_GMAIL_INVOCATION
+  adoption_ceiling: ADOPT_WITH_GATES_FOR_BOUNDED_ID_ONLY_SEARCH_AND_CURSOR_PRESENCE_NOT_GENERAL_CURSOR_CORRECTNESS
+
+verifier:
+  structural: S04_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+  semantic: DISTINCT_AUTHORIZED_RAW_GMAIL_CLIENT_OR_PROVIDER_TRACE_REVIEWER_BOUND_TO_THE_SAME_MAILBOX_CONTEXT_QUERY_AND_SYNTHETIC_TOKEN_CLASS
+consumer: X13_COTS_AND_CONNECTOR_PDCA_LAB_PHASE4
+expiry_utc: 2026-08-09T00:29:11Z
+strongest_falsifier: A_CURRENT_RAW_OR_DISTINCT_SOURCE_BOUND_GMAIL_TRACE_SHOWS_THE_SAME_SYNTHETIC_TOKEN_ACCEPTED_OR_A_MATERIALLY_DIFFERENT_STABLE_ERROR_CLASSIFICATION
+
+dedup_check:
+  repository_scope: GEN133_FIRST
+  exact_heritage_card_id_search_result: ONLY_ORIGINAL_S08_CARD_FOUND
+  existing_s15_binding_for_this_artifact_and_workitem: NOT_FOUND_AT_WRITE_TIME
+
+honest_flaw: The reused artifact concerns Contacts pageSize rather than Gmail pageToken. It transfers only the anti-generalization and observation-bound taxonomy invariant; it supplies no direct Gmail runtime evidence and cannot validate the current trace, raw provider behavior, or phase-4 decision by itself. GitHub code-search indexing may lag, so the dedup check is best-effort against the live branch and recent commits rather than proof of global uniqueness.
+---
