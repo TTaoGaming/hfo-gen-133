@@ -9,6 +9,7 @@ canonical_base_sha: 58cbf9e7e3836aa877e29f3b05fcd7b3caf7caa8
 producer: Codex_Gunnr
 claim_status: partial
 effect_ceiling: GITHUB_BRANCH_PR_AND_SANITIZED_SLACK_STATUS_ONLY
+slack_projection_status: REJECTED_PENDING_EXACT_DESTINATION_APPROVAL
 consumer: Researcher_AI_then_Ratatoskr_or_operator
 sealed: false
 ---
@@ -79,7 +80,7 @@ Variant local commits:
 3. No live payment acceptance, buyer demand, marketplace approval, conversion, revenue, or independent product review is proved.
 4. Medical, legal, deposition, and therapy outputs are drafts; no professional accuracy, regulatory compliance, or fitness-for-purpose claim is made.
 5. The local control branch started from an older Gen-133 SHA and is not presented as current canonical state. This packet, cut from current remote SHA, is the durable coordination projection.
-6. Slack channel search returned a transient HTTP 429 during refresh. Workspace listing and exact canonical-thread readback succeeded.
+6. Slack workspace listing and exact canonical-thread readback succeeded. Channel search returned a transient HTTP 429. The subsequent outbound status post was rejected by the destination-trust safety gate because this exact Gen-133 payload and exact thread were not separately approved; no Slack message was delivered, and no retry or workaround was attempted.
 7. Gen-133's DBOS/Postgres candidate is currently `DEFER`, not operational:
    - Phase 1 found a plausible Postgres-backed hot-workflow fit.
    - Phase 2 could not resolve/install `dbos==2.22.0` on that carrier.
@@ -122,7 +123,7 @@ Required controls:
 
 ## Exactly one next safe action
 
-Researcher AI should synthesize this packet with the four current Gen-133 DBOS/Postgres artifacts and return one evidence-bound Postgres migration/ingestion proposal. It must not provision infrastructure, create accounts, deploy services, publish the nine landing pages, or claim DBOS adoption.
+Operator explicitly approves or declines sending the sanitized PR #4 status summary to Slack destination `C0BGC646A1H/1785073442.724479`. After any delivered Slack readback, Researcher AI can synthesize this packet with the four current Gen-133 DBOS/Postgres artifacts; no infrastructure provisioning, account creation, service deployment, nine-page publication, or DBOS-adoption claim is authorized.
 
 ## Copy/paste prompt for Researcher AI
 
@@ -171,4 +172,4 @@ Reject this consolidation proposal if it cannot ingest the existing receipts ide
 
 ## Honest flaw
 
-The GitHub packet is a sanitized projection of local receipts. The ten nested repositories and their byte trees are not remotely inspectable from this PR, so their build/test claims cannot receive independent GitHub-only verification yet. The Postgres schema is proposed, not migrated or executed.
+The GitHub packet is a sanitized projection of local receipts. The ten nested repositories and their byte trees are not remotely inspectable from this PR, so their build/test claims cannot receive independent GitHub-only verification yet. The Postgres schema is proposed, not migrated or executed. Slack delivery is also unproved: the attempted outbound projection was rejected before delivery.
