@@ -1,0 +1,115 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+experiment_id: X11_GOOGLE_CALENDAR_READ_SURFACE_V1
+carrier: X11
+actor: X11_CARRIER_AND_TOOL_SURFACE_PDCA_LAB
+task_binding:
+  expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+  observed_task_id: 6a55089a9adc8191bda54541f7f9effa
+  match: true
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+wip_limit: 1
+self_probe:
+  native_active_gen133_task_count: 15
+  observed_surfaces:
+    - native_tasks_inventory_read
+    - github_read_write
+    - google_calendar_bounded_search
+  available_not_used:
+    - slack_write
+    - web_research
+    - gmail_read
+    - google_drive_read
+  unavailable_or_not_exposed:
+    - independent_provider_verifier
+prior_current:
+  expected_version: 28
+  blob: 6e477a7c0197a5d38299648fb351c8c91fc2470e
+  campaign: X11_GMAIL_READ_SURFACE_V1
+  accepted_wakes: 4
+  disposition: KEEP
+campaign:
+  controlled_factor: google_calendar_read_surface
+  accepted_wake: 1
+  target_wakes_before_decision: 4
+baseline:
+  prior_calendar_campaign_wakes: 0
+  prior_calendar_probe_result_count: null
+  prior_calendar_error_class: null
+  prior_calendar_external_call_time_ms: null
+hypothesis: >-
+  The exact bounded synthetic negative-control search on the primary Google
+  Calendar will return zero events without interactive login, event-detail read,
+  mutation, or externalization of event titles, descriptions, attendees, or
+  locations.
+exact_probe:
+  tool: Google_Calendar.search
+  mode: bounded_metadata_search_negative_control
+  query: HFO_X11_CALENDAR_NEGATIVE_CONTROL_6a55089a9adc8191bda54541f7f9effa_v28
+  calendar_id: primary
+  time_min: 2026-08-02T00:00:00Z
+  time_max: 2026-08-09T00:00:00Z
+  max_results: 5
+  expected_result_count: 0
+  read_event: false
+  privacy_rule: persist_only_status_count_permission_error_and_latency
+measured_result:
+  connector_call_completed: true
+  result_count: 0
+  expected_negative_control_result_observed: true
+  error_present: false
+  error_code: null
+  error_http_status_code: null
+  next_page_token_present: false
+  read_event_attempted: false
+  event_title_externalized: false
+  event_description_externalized: false
+  attendee_data_externalized: false
+  location_data_externalized: false
+  mutation_performed: false
+permission_class: AUTHENTICATED_PRIMARY_CALENDAR_BOUNDED_SEARCH_AVAILABLE_FOR_THIS_PROBE
+error_class: NONE
+latency:
+  exposed_by_tool: true
+  external_call_time_ms: 215
+  coarse_class: SUB_SECOND
+  interpretation: one_observation_only_not_a_latency_slo
+operator_relay_minutes: 0
+measured_delta: >-
+  The first accepted Calendar campaign probe completed with zero events and no
+  connector, authentication, or permission error. No event-detail read or
+  mutation occurred. This establishes only one bounded negative-control search
+  invocation on the primary calendar.
+probe_control_note: >-
+  One harmless preflight call used a different nonce, one-day-shifted window, and
+  max_results value before the canonical probe was re-read from the prior event.
+  That call also returned zero results without error but is excluded from accepted
+  campaign evidence because it did not match the planned probe exactly.
+strongest_falsifier: >-
+  The synthetic nonce unexpectedly returns an event, an identical repeat produces
+  authentication or permission failure without a known surface change, or a
+  separately controlled known-existing event cannot be found under an explicitly
+  authorized metadata-only positive-control probe.
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer:
+  - Reginleif
+  - Ratatoskr
+expiry_utc: 2026-08-09T01:41:00Z
+next_probe: repeat_identical_google_calendar_negative_control_for_wake_2_without_read_event_or_externalizing_event_data
+result: GOOGLE_CALENDAR_NEGATIVE_CONTROL_WAKE_01_ACCEPTED
+honest_flaw: >-
+  A zero-result negative control cannot prove positive recall, complete primary-
+  calendar visibility, secondary or shared-calendar coverage, event-detail read
+  permission, search-index semantics, or useful operator outcomes. The accepted
+  latency is one connector observation, not a controlled benchmark. The excluded
+  preflight mismatch demonstrates that exact-probe readback must precede tool use.
+  Task identity and connector telemetry are same-provider evidence with binding
+  weight zero.
+valid_time_utc: 2026-08-02T01:41:00Z
+transaction_time_utc: 2026-08-02T01:41:00Z
+evidence_class: DIRECT_CONNECTOR_READBACK_SAME_PROVIDER_NONBINDING
+binding_weight: 0
+effect_ceiling: READ_ONLY_GOOGLE_CALENDAR_BOUNDED_SEARCH_PLUS_GIT_RECEIPT
+sealed: false
+---
