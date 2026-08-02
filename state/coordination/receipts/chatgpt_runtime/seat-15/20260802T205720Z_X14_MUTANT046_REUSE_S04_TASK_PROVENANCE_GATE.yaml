@@ -1,0 +1,164 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_binding: NATIVE_AUTOMATIONS_LIST_EXACT_MATCH
+carrier_enabled_observed: true
+wip: 1
+valid_time_utc: 2026-08-02T20:57:20Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+result_type: REUSABLE_FAILURE_ANTIBODY
+status: ROUTED_NOT_CONSUMED
+heritage_credit: 0
+binding_weight: 0
+evidence_class: SAME_PROVIDER_NONBINDING
+privacy_ceiling: SANITIZED_PUBLIC_REPOSITORY_METADATA_AND_TASK_BINDING_FIELDS_ONLY
+world_effect_ceiling: ONE_GIT_RECEIPT_AND_ONE_SANITIZED_SLACK_POINTER
+sealed: false
+---
+
+self_probe:
+  task_title: HFO S15 Gondul Continuous Heritage
+  expected_task_id_match: true
+  tools_used:
+    - native_automations_inventory_read
+    - github_recent_commit_enumeration
+    - github_exact_commit_path_and_blob_read
+    - github_best_effort_code_search
+    - github_create_file
+    - github_readback
+    - slack_pointer_post
+  task_mutation_performed: false
+  source_edit_performed: false
+  self_verification_performed: false
+
+current_workitem:
+  workitem_id: X14_MUTANT_046_e5fe0885f768
+  workitem_type: TASK_ID_MISMATCH_NEGATIVE_CONTROL
+  claimed_by: X14_FALSE_GREEN_MUTATION_QA
+  valid_time_utc: 2026-08-02T20:50:54Z
+  expires_utc: 2026-08-09T20:50:54Z
+  repository: TTaoGaming/hfo-gen-133
+  commit: ee65ec73390730be7a3d329b1a5279daa4d47bd1
+  path: state/coordination/experiments/false_green_x14/quarantine/20260802T205054Z_X13_GOOGLE_DRIVE_TASK_ID_MISMATCH.mutant.yaml
+  git_blob_sha1: a28f69ec393c563210c13b080f6588e255ae90af
+  canonical_mutation_digest_sha256: e5fe0885f7683d9f7b88b178c79195425e3b14e9e3ee57e9cb9c7c6e0772bd1c
+  canonical_byte_count: 236
+  mutation_field: carrier_task_id
+  original_task_id: 6a55c1733708819185088bf334e33ea5
+  substituted_task_id: 6a513e4d9c4c81919db728f85db2dd79
+  expected_verdict: REVISE
+  named_gate: S04_TASK_ID_SOURCE_EVENT_AUTHORING_SEAT_AND_NATIVE_CARRIER_BINDING_GATE
+  verifier:
+    - S04_STRUCTURAL_PREFLIGHT
+    - S10_INDEPENDENT_SCHEDULER_READBACK_WITNESS_SAME_PROVIDER_NONBINDING
+  consumer:
+    - X14_CAMPAIGN_REDUCER
+    - RATATOSKR
+
+current_source_binding:
+  original_date_utc: 2026-08-02T20:48:48Z
+  repository: TTaoGaming/hfo-gen-133
+  commit: d05b443edf1a8ca6b508c69f1259d1b40456ed2d
+  path: state/coordination/experiments/cots_connector_x13/20260802T204848Z_GOOGLE_DRIVE_METADATA_PHASE4_ADOPT_WITH_GATES.md
+  git_blob_sha1: 2abb8db4fd5294115d9715f5d81344f62c89f442
+  source_expiry_utc: 2026-08-09T20:48:48Z
+  actor_role: X13_COTS_AND_CONNECTOR_PDCA_LAB
+  task_id: 6a55c1733708819185088bf334e33ea5
+  event_type: PHASE4_DECISION
+  decision: ADOPT_WITH_GATES
+  source_verifier: SOURCE_BOUND_RAW_GOOGLE_DRIVE_FILES_LIST_OR_DISTINCT_AUTHORIZED_CLIENT_WITH_IDENTICAL_ACCOUNT_QUERY_CORPUS_FIELDS_PAGE_SIZE_AND_COMPLETENESS_FIELDS
+  source_consumer:
+    - HFO_BOUNDED_FILE_DISCOVERY
+    - HFO_HERITAGE_AND_PARA_ROUTING_WITH_SEPARATE_CONTENT_AUTHORIZATION
+
+reusable_prior_artifact:
+  artifact_class: DIRECT_S04_TASK_BINDING_REJECTION
+  original_date_utc: 2026-08-02T10:15:53Z
+  source_repository: TTaoGaming/hfo-gen-133
+  source_branch: agent/gen133-bootstrap-20260730
+  source_commit: 5ddb21762d27a4349c0707cc163b58352d36481d
+  source_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260802T101553Z_X14_MUTANT035_TASK_ID_MISMATCH_REVISE.yaml
+  source_git_blob_sha1: 988df8dda397a2d9aa8cc62c935a84ff82999869
+  source_result: REVISE
+  source_reason_code: MUTATED_TRANSITION_TASK_ID_CONTRADICTS_SOURCE_ACTOR_SELF_PROBE_CURRENT_POINTER_AND_FORMULA_BOUND_IDEMPOTENCY
+  source_named_gate: S04_TASK_ID_NATIVE_BINDING_REDUNDANCY_AND_INTERNAL_CONSISTENCY_GATE
+  source_evidence_class: SAME_PROVIDER_NONBINDING
+  source_binding_weight: 0
+  source_expiry_utc: 2026-08-02T13:45:31Z
+  freshness_at_reuse: EXPIRED_HISTORICAL_ONLY
+  exact_reusable_antibody: >-
+    A real enabled task ID from another seat is not interchangeable provenance and cannot inherit an immutable event,
+    decision, evidence, or authority authored under the source seat's native carrier binding. Shared repository, branch,
+    provider, schedule, or runtime access does not transfer actor-event-carrier authority.
+
+supported_claims:
+  - The current immutable X13 source binds its phase-4 decision to X13 task 6a55c1733708819185088bf334e33ea5.
+  - The live native inventory maps the original task ID to X13 and the substituted task ID to X14, with both tasks enabled.
+  - Mutant 046 changes carrier_task_id to X14 while retaining the X13 authoring seat, source commit, path, blob, experiment, phase, decision, evidence, verifier, consumer, and expiry.
+  - The prior direct S04 verdict rejected the same cross-seat task-ID substitution class and states that a valid enabled task ID does not transfer source actor authority.
+  - The prior artifact is therefore a reusable historical failure antibody for direct review of mutant 046.
+
+excluded_claims:
+  - This receipt is not a direct verdict on mutant 046 and does not count the mutant as caught.
+  - The expired prior S04 artifact is not fresh verification of the current source commit, blob, 236-byte overlay, or SHA-256.
+  - This carrier did not recompute the current source bytes, full mutant bytes, canonical overlay, or mutation digest.
+  - The prior X12 durable-object context does not prove Google Drive connector behavior, the X13 phase-4 decision, or its adoption gates.
+  - Current native inventory does not prove provider state at the X13 source authoring instant beyond the retained source fields.
+  - No distinct-provider verdict, ConsumerAck, campaign closure, heritage credit, independent quorum, task mutation, source mutation, or provider effect is claimed.
+
+acceptance_relevance:
+  verifier: S04_STRUCTURAL_PREFLIGHT
+  secondary_witness: S10_INDEPENDENT_SCHEDULER_READBACK_WITNESS_SAME_PROVIDER_NONBINDING
+  consumer:
+    - X14_CAMPAIGN_REDUCER
+    - RATATOSKR
+  required_use: >-
+    Resolve the exact mutant 046 and X13 source bytes; recompute the declared 236-byte canonical overlay and SHA-256;
+    confirm exactly one field changed; compare carrier_task_id with the immutable source task ID, authoring seat, event
+    digest and live native X13/X14 mapping; then return REVISE without editing the source, X13 CURRENT, X14 CURRENT,
+    task inventory, or provider state.
+  acceptance_supported: PRIOR_DIRECT_GATE_PREDICTS_REVISE
+  acceptance_not_supported: DIRECT_MUTANT046_VERDICT_OR_INDEPENDENT_VERIFICATION
+  consumer_ack_observed: false
+  heritage_credit_condition: >-
+    Credit remains zero until a named consumer acknowledges this exact receipt against X14_MUTANT_046_e5fe0885f768
+    and records whether the gate was used.
+
+expiry:
+  expires_utc: 2026-08-09T20:48:48Z
+  prior_artifact_expired: true
+  current_routing_window_only: true
+  invalidated_earlier_by:
+    - direct S04 verdict on exact mutant 046
+    - contradiction in exact source or native task binding
+    - X14 campaign supersession
+
+privacy:
+  ceiling: SANITIZED_PUBLIC_REPOSITORY_METADATA_AND_TASK_BINDING_FIELDS_ONLY
+  private_body_copied: false
+  secrets_or_credentials_observed: false
+
+deduplication:
+  identity_key: X14_MUTANT_046_e5fe0885f768|2abb8db4fd5294115d9715f5d81344f62c89f442|S04_TASK_ID_SOURCE_EVENT_AUTHORING_SEAT_AND_NATIVE_CARRIER_BINDING_GATE
+  exact_prior_s15_match_found: false
+  prior_same_mutation_class_reuse_found: true
+  distinction: NEW_NAMED_WORKITEM_NEW_X13_SOURCE_BLOB_AND_NEW_CONSUMER_BINDING
+  checks:
+    - newest Gen-133 commits and exact mutant path
+    - exact mutant ID and source blob best-effort search
+    - prior direct S04 task-ID mismatch verdicts
+    - prior S15 task-ID mismatch reuse receipts
+  limitation: GitHub search and recent-commit enumeration are best-effort, indexed asynchronously, and nontransactional.
+
+honest_flaw: >-
+  The reused S04 verdict is expired and was computed against an X12 durable-object transition rather than an X13
+  connector decision. It transfers only the provenance rule, not the earlier idempotency or object-state findings.
+  The current mismatch is conspicuous because the retained X13 authoring seat and exact source task ID conflict with the
+  substituted X14 task ID; it does not test aliases, recreated tasks, copied titles, truncated IDs, stale provider
+  snapshots, or explicit delegated authority. This carrier did not recompute the current 236-byte overlay or source
+  bytes, and all observations remain same-provider evidence with binding weight zero. Direct S04 review, distinct
+  falsification, and explicit ConsumerAck remain required.
