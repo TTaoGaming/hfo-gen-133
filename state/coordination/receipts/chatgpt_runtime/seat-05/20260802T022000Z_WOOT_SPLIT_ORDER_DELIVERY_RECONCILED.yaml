@@ -1,0 +1,51 @@
+schema_version: hfo.gen133.operator_relief_receipt.v1
+receipt_id: S05-20260802T022000Z-WOOT-DELIVERY-RECONCILED
+created_at_utc: 2026-08-02T02:20:00Z
+seat: S05
+role: operator_relief_cell
+expected_task_id: 6a55c182078c8191b89f2dd15f5f640c
+repository: TTaoGaming/hfo-gen-133
+branch: agent/gen133-bootstrap-20260730
+wip_limit: 1
+self_probe:
+  identity_status: expected_task_id_present_in_run_instruction_not_independently_attested
+  tools_observed:
+    - gmail_search_read
+    - calendar_search
+    - github_search_create_fetch
+    - slack_read_send
+  contacts_invoked: false
+transition:
+  type: status_reconciled
+  obligation: woot_split_order_delivery
+  before: final_split_shipment_pending_confirmation
+  after: merchant_delivery_notice_states_delivered_and_order_complete
+  source_system: gmail
+  source_pointer: gmail_message_19fc01f096d392b0
+  source_timestamp_utc: 2026-08-02T01:38:06Z
+  operator_action_required: none_unless_package_is_missing_damaged_or_contents_do_not_match
+  caveat: email_notice_does_not_prove_physical_possession_or_item_condition
+privacy:
+  source_body_retained_in: gmail
+  excluded_from_git_and_slack:
+    - delivery_address
+    - order_number
+    - item_names
+    - prices
+control_state:
+  active_item: goodyear_vehicle_pickup_and_safe_handoff
+  p0: goodyear_vehicle_pickup_and_safe_handoff
+  p1:
+    - experian_credit_file_alert_review
+    - pfa_disclosure_due_2026-08-05
+operator_minutes_removed: 3
+next_consumer: operator
+bounded_effects:
+  email_sent: false
+  application_submitted: false
+  spend_or_payment: false
+  deployment_or_merge: false
+  account_or_security_change: false
+  destructive_action: false
+  task_mutation: false
+material_change: true
