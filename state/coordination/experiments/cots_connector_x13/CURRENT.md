@@ -1,29 +1,29 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
 experiment_id: X13_GITHUB_ACTIONS_WORKFLOW_RUN_STATUS_READONLY_001
-version: 51
-prior_version: 50
+version: 52
+prior_version: 51
 candidate: GitHub_Actions_bounded_workflow_run_status_readonly_surface
 candidate_contract_reference: official_GitHub_Actions_workflow_runs_REST_contract_and_direct_connector_receipts
-campaign_wake: 3_of_4
-campaign_status: IN_PROGRESS
+campaign_wake: 4_of_4
+campaign_status: COMPLETE
 phase_1_completed: true
 phase_2_completed: true
 phase_3_completed: true
-phase_4_completed: false
-phase_4_decision: PENDING
+phase_4_completed: true
+phase_4_decision: ADOPT_WITH_GATES
 carrier_task_id: 6a55c1733708819185088bf334e33ea5
 carrier_task_id_match: true
 wip: 1
 last_event:
-  commit: 446dc493f9e52a457b53b2ebd62331d412e72c67
-  path: state/coordination/experiments/cots_connector_x13/20260802T234836Z_GITHUB_ACTIONS_WORKFLOW_RUN_STATUS_PHASE3_MALFORMED_COMMIT_EMPTY_RESULT_ANDON.md
-  blob_sha: 645765086e4ed05f04dc2aad7488d774638a3945
+  commit: 9488dedee12778be22cbaf99297de93722c5074d
+  path: state/coordination/experiments/cots_connector_x13/20260803T004811Z_GITHUB_ACTIONS_WORKFLOW_RUN_STATUS_PHASE4_ADOPT_WITH_GATES.md
+  blob_sha: e4b120e842bb6451ea6663602050df062ba06000
   exact_readback_completed: true
-prior_current_commit: a84602eafc9782f3b485a150439991d8f9e8882d
-prior_current_blob_sha: ad47404f872d4e3ffc221a3195d2d3e63fd8a721
-effect_ceiling: PHASE3_ONE_SYNTHETIC_MALFORMED_COMMIT_READONLY_PROBE_GIT_EVENT_CURRENT_ADVANCE_READBACK_AND_ONE_SHORT_SLACK_ANDON
-adoption_credit: 3
+prior_current_commit: d862c83d901e710d3ff49362fe20e74c27e5d38d
+prior_current_blob_sha: 35cd5a4bf05b2be48976c8760688905111134b3e
+effect_ceiling: PHASE4_DECISION_ONLY_GIT_EVENT_CURRENT_ADVANCE_READBACK_AND_ONE_SHORT_SLACK_DECISION
+adoption_credit: 4
 fitness_credit: 0_PENDING_SOURCE_BOUND_CONSUMER_ACK_AND_MEASURED_OPERATOR_OUTCOME
 consumer_ack: NOT_OBSERVED
 operator_minutes_removed_measured: 0
@@ -31,7 +31,7 @@ operator_minutes_removed_estimate_per_known_commit_status_check: 1_to_3_UNVALIDA
 custom_code_avoided_estimate:
   authenticated_commit_lookup_and_normalized_run_status_extraction: 35_to_110_LOC_UNVALIDATED
 custom_policy_not_avoided:
-  - SOURCE_BOUND_COMMIT_INPUT_VALIDATION
+  - SOURCE_BOUND_REPOSITORY_AND_FULL_COMMIT_OID_VALIDATION
   - ACCOUNT_IDENTITY_CREDENTIAL_TYPE_AND_AUTHORITY
   - ACTIONS_READ_PERMISSION_AND_LEAST_PRIVILEGE_VERIFICATION
   - EVENT_BRANCH_ATTEMPT_LATEST_RUN_AND_COMPLETENESS_POLICY
@@ -56,7 +56,8 @@ campaign_candidate_invocations:
   phase_2_commit_workflow_runs_queries: 4
   phase_2_positive_run_payloads: 1
   phase_3_malformed_commit_queries: 1
-  phase_4_decision_only: 0
+  phase_4_decision_only: 1
+  phase_4_candidate_capability_calls: 0
 actual_upstream_request_count: UNKNOWN_AT_LEAST_15_READONLY_CONNECTOR_CALLS_ACROSS_PHASES_1_TO_3
 actual_quota_units_consumed: UNKNOWN
 actual_quota_class: UNKNOWN
@@ -93,16 +94,23 @@ direct_phase_3_receipt:
   carrier_retries: 0
   write_side_effect: false
   interpretation: MALFORMED_INPUT_CONFLATED_WITH_ORDINARY_NO_MATCH_AT_CONNECTOR_SURFACE
-official_contract_checked_2026_08_02:
-  workflow_runs: https://docs.github.com/en/rest/actions/workflow-runs?apiVersion=2026-03-10
-  troubleshooting: https://docs.github.com/en/rest/using-the-rest-api/troubleshooting-the-rest-api?apiVersion=2026-03-10
-  endpoint: GET_/repos/{owner}/{repo}/actions/runs
-  head_sha_contract: STRING_FILTER_ONLY_RETURNS_ASSOCIATED_RUNS
+official_contract_checked_2026_08_03:
+  workflow_runs: https://docs.github.com/en/rest/actions/workflow-runs
+  rate_limits: https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api
+  best_practices: https://docs.github.com/en/rest/using-the-rest-api/best-practices-for-using-the-rest-api?apiVersion=2026-03-10
+  endpoint: GET_/repos/{owner}/{repo}/actions/runs_OR_WORKFLOW_SCOPED_VARIANT
+  head_sha_contract: STRING_FILTER_FOR_ASSOCIATED_RUNS
   documented_list_success_status: 200_OK
   fine_grained_permission: ACTIONS_READ
   public_resource_unauthenticated_use_possible: true
   per_page_max: 100
   filtered_search_result_cap: 1000
+  response_schema_has_run_attempt_event_head_sha_and_timestamps: true
+  primary_rate_context_authenticated_user: TYPICALLY_5000_REQUESTS_PER_HOUR
+  primary_rate_context_unauthenticated_public: 60_REQUESTS_PER_HOUR
+  primary_rate_context_github_token: TYPICALLY_1000_REQUESTS_PER_HOUR_PER_REPOSITORY
+  rate_limit_failure_status: 403_OR_429
+  retry_control: RETRY_AFTER_OR_X_RATELIMIT_RESET_WHEN_EXPOSED
 failure_semantics:
   valid_source_bound_empty_result: OBSERVED
   positive_workflow_failure_as_data: OBSERVED
@@ -116,14 +124,14 @@ failure_semantics:
   transient_server_failure: NOT_TESTED
   independent_raw_or_UI_readback: NOT_TESTED
 durability: EPHEMERAL_POINT_IN_TIME_QUERY_OVER_MUTABLE_WORKFLOW_RUN_AND_RERUN_STATE_NOT_A_DURABLE_EVENT_STREAM_OR_LATEST_STATUS_GUARANTEE
-observability: LOW_FOR_NEGATIVE_RESULTS_NORMALIZED_EMPTY_ARRAY_AND_LATENCY_VISIBLE_RAW_REQUEST_PARAMETER_REWRITE_TOTAL_COUNT_EVENT_HEAD_SHA_ATTEMPT_PAGINATION_REQUEST_ID_RATE_LIMITS_AND_UPSTREAM_RETRIES_HIDDEN
+observability: POSITIVE_NORMALIZED_STATUS_FIELDS_AND_LATENCY_VISIBLE_NEGATIVE_CAUSE_RAW_REQUEST_TOTAL_COUNT_EVENT_HEAD_SHA_ATTEMPT_PAGINATION_REQUEST_ID_RATE_LIMITS_AND_UPSTREAM_RETRIES_HIDDEN
 portability: MEDIUM_LOW_SOURCE_BOUND_COMMIT_AND_PASS_FAIL_CONCEPTS_PORTABLE_GITHUB_RUN_EVENT_CONCLUSION_AND_WRAPPER_SEMANTICS_PROVIDER_SPECIFIC
 admitted_scope:
-  - BOUNDED_READ_ONLY_STATUS_LOOKUP_FOR_EXACT_SOURCE_BOUND_REPOSITORY_COMMIT
-  - TIMESTAMPED_STATUS_OBSERVATION_ONLY
+  - BOUNDED_READ_ONLY_STATUS_LOOKUP_FOR_EXACT_SOURCE_BOUND_REPOSITORY_AND_FULL_COMMIT_OID
+  - TIMESTAMPED_POSITIVE_STATUS_OBSERVATION_ONLY
   - POSITIVE_NORMALIZED_RUN_ID_WORKFLOW_NAME_RUN_NUMBER_STATUS_AND_CONCLUSION
   - EXPLICIT_SEPARATION_OF_CONNECTOR_SUCCESS_FROM_WORKFLOW_CONCLUSION
-  - EMPTY_RESULTS_RECORDED_ONLY_AS_NO_MATCH_IN_WRAPPER_SCOPE
+  - EMPTY_RESULTS_RECORDED_ONLY_AS_NO_MATCH_IN_PULL_REQUEST_FIRST_PAGE_WRAPPER_SCOPE
 excluded_scope:
   - AUTHORITATIVE_NEGATIVE_CI_EVIDENCE_FROM_EMPTY_RESULTS
   - WORKFLOW_DISPATCH_RERUN_OR_CANCELLATION
@@ -132,34 +140,38 @@ excluded_scope:
   - WORKFLOW_FILE_BRANCH_MERGE_OR_REPOSITORY_SETTING_MUTATION
   - LATEST_ATTEMPT_COMPLETE_HISTORY_BRANCH_WIDE_OR_REPOSITORY_WIDE_HEALTH_CLAIMS
 mandatory_gates:
-  - ACCEPT_COMMIT_IDENTIFIERS_ONLY_WHEN_SOURCE_BOUND_TO_A_TRUSTED_GITHUB_RESPONSE_FOR_THE_SAME_REPOSITORY
-  - REJECT_SYNTHETIC_NON_HEX_TRUNCATED_WHITESPACE_CORRUPTED_OR_OTHERWISE_UNBOUND_COMMIT_INPUTS_BEFORE_CONNECTOR_INVOCATION
+  - ACCEPT_ONLY_FULL_COMMIT_OIDS_SOURCE_BOUND_TO_A_TRUSTED_GITHUB_RESPONSE_FOR_THE_SAME_REPOSITORY
+  - REJECT_SYNTHETIC_NON_HEX_TRUNCATED_WHITESPACE_CORRUPTED_WRONG_REPOSITORY_OR OTHERWISE_UNBOUND_COMMIT_INPUTS_BEFORE_CONNECTOR_INVOCATION
   - INTERPRET_EVERY_EMPTY_ARRAY_AS_NO_MATCH_IN_PULL_REQUEST_FIRST_PAGE_WRAPPER_SCOPE_NOT_NO_CI
   - KEEP_MALFORMED_INPUT_VALID_NO_MATCH_AUTHENTICATION_AUTHORIZATION_NOT_FOUND_RATE_LIMIT_TRANSIENT_CONNECTOR_AND_WORKFLOW_FAILURE_STATES_SEPARATE
-  - REQUIRE_POSITIVE_RUN_PAYLOAD_OR_INDEPENDENT_RAW_API_OR_ACTIONS_UI_EVIDENCE_FOR_RELEASE_OR_COMPLETION_GATES
+  - REQUIRE_POSITIVE_RUN_PAYLOAD_OR_INDEPENDENT_RAW_API_OR_ACTIONS_UI_EVIDENCE_FOR_RELEASE_COMPLETION_OR_NEGATIVE_CI_GATES
   - BIND_POSITIVE_STATUS_TO_REPOSITORY_SOURCE_BOUND_COMMIT_RUN_ID_OBSERVATION_TIME_EVENT_SCOPE_AND_PAGE_SCOPE
-  - DO_NOT_INFER_IDENTITY_SCOPE_PERMISSION_RATE_LIMIT_BILLING_OR_WRITE_AUTHORITY_FROM_SUCCESS
-  - KEEP_ALL_MUTATING_AND_CONTENT_HYDRATION_ACTIONS_EXCLUDED
-verifier: RAW_GITHUB_WORKFLOW_RUNS_ENDPOINT_WITH_IDENTICAL_EVENT_AND_HEAD_SHA_FILTER_PLUS_ACTIONS_UI_OR_SOURCE_BOUND_VALID_COMMIT_CONTROL
+  - DO_NOT_INFER_IDENTITY_SCOPE_PERMISSION_RATE_LIMIT_BILLING_WRITE_AUTHORITY_LATEST_ATTEMPT_OR_COMPLETENESS_FROM_SUCCESS
+  - HONOR_RETRY_AFTER_OR_X_RATELIMIT_RESET_WHEN_EXPOSED_AND_NEVER_BLINDLY_RETRY_RATE_LIMIT_FAILURES
+  - KEEP_ALL_MUTATING_AND CONTENT_HYDRATION_ACTIONS_EXCLUDED
+verifier: RAW_GITHUB_WORKFLOW_RUNS_ENDPOINT_WITH_IDENTICAL_EVENT_HEAD_SHA_AND_PAGE_FILTER_PLUS_ACTIONS_UI_OR_SOURCE_BOUND_VALID_COMMIT_CONTROL
 consumer:
-  - HFO_CI_RELEASE_GATES
-  - HFO_BRANCH_HEALTH_SUMMARIES
-  - HFO_AGENT_COMPLETION_VERIFICATION
-strongest_falsifier: SAME_CONTEXT_RAW_REQUEST_OR_WRAPPER_TRACE_PROVES_MALFORMED_INPUT_WAS_REJECTED_REWRITTEN_OR_MAPPED_FROM_A_PROVIDER_ERROR_RATHER_THAN_RETURNED_AS_ORDINARY_ZERO_MATCH
-honest_flaw: ONE_MALFORMED_IDENTIFIER_ONLY_NO_VALID_NONEXISTENT_HEX_OID_SHORT_OID_WRONG_REPOSITORY_OID_WHITESPACE_VARIANT_PERMISSION_FAILURE_401_403_404_422_429_5XX_RAW_COMPARISON_OR_CONSUMER_ACK
+  - HFO_AGENT_COMPLETION_VERIFICATION_POSITIVE_EVIDENCE_ONLY
+  - HFO_CI_RELEASE_GATES_WITH_INDEPENDENT_NEGATIVE_EVIDENCE
+  - HFO_BRANCH_HEALTH_SUMMARIES_AS_TIMESTAMPED_OBSERVATIONS
+strongest_falsifier: SAME_CONTEXT_RAW_GITHUB_API_OR_ACTIONS_UI_SHOWS_CONNECTOR_POSITIVE_STATUS_MAPPED_TO_WRONG_REPOSITORY_COMMIT_RUN_ATTEMPT_OR_CONCLUSION_OR_SHOWS_EMPTY_WRAPPER_RESULT_WHILE_A_MATCHING_PULL_REQUEST_RUN_EXISTS_ON_THE_WRAPPER_FIRST_PAGE
+honest_flaw: NO_RAW_API_OR_ACTIONS_UI_COMPARISON_NO_LATEST_ATTEMPT_OR_PAGINATION_PROOF_NO_IDENTITY_OR_PERMISSION_SCOPE_NO_401_403_404_422_429_5XX_NO_RATE_LIMIT_HEADERS_NO_CONSUMER_ACK_AND_ZERO_MEASURED_OPERATOR_MINUTES
 phase_1_result:
   disposition: PHASE1_ACCEPTED_WITH_EVENT_SCOPE_AND_EMPTY_RESULT_GATES
 phase_2_result:
   disposition: PHASE2_ACCEPTED_WITH_POSITIVE_FAILURE_STATUS_AND_SCOPE_GATES
 phase_3_result:
   disposition: PHASE3_ACCEPTED_WITH_SEMANTIC_EMPTY_RESULT_ANDON
+phase_4_result:
+  disposition: ADOPT_WITH_GATES
+  decision_reason: POSITIVE_SOURCE_BOUND_STATUS_IS_USEFUL_BUT_EMPTY_RESULTS_ARE_SEMANTICALLY_AMBIGUOUS_AND_NON_AUTHORITATIVE
 next_wake:
-  phase: 4_of_4
-  proposed_action: DECISION_ONLY_NO_ADDITIONAL_GITHUB_CAPABILITY_CALL
-  provisional_decision: ADOPT_WITH_GATES
-  acceptance_question: IS_THE_SURFACE_WORTH_ADOPTING_FOR_POSITIVE_SOURCE_BOUND_STATUS_OBSERVATIONS_WHILE_REJECTING_EMPTY_RESULTS_AS_AUTHORITATIVE_NEGATIVE_EVIDENCE
-review_expiry_utc: 2026-08-09T23:48:36Z
-valid_time_utc: 2026-08-02T23:48:36Z
+  experiment_id: X13_GOOGLE_CALENDAR_BOUNDED_EVENT_WINDOW_READONLY_001
+  phase: 1_of_4
+  proposed_action: OFFICIAL_CONTRACT_AND_ONE_BOUNDED_READ_ONLY_TIME_WINDOW_BASELINE
+  excluded_effects: EVENT_CREATE_UPDATE_DELETE_INVITATION_RESPONSE_ATTENDEE_CHANGE_EMAIL_OR_NOTIFICATION
+review_expiry_utc: 2026-08-10T00:48:11Z
+valid_time_utc: 2026-08-03T00:48:11Z
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 sealed: true
 prior_campaign:
@@ -174,10 +186,12 @@ prior_prior_campaign:
 
 # X13 current campaign
 
-GitHub Actions bounded commit workflow-run status completed phase **3/4** with disposition **`PHASE3_ACCEPTED_WITH_SEMANTIC_EMPTY_RESULT_ANDON`**.
+GitHub Actions bounded commit workflow-run status completed phase **4/4** with decision **`ADOPT_WITH_GATES`**.
 
-A synthetic, clearly malformed commit identifier returned an empty workflow-run array with no connector error in `331 ms`. At this connector surface, malformed input is therefore indistinguishable from a valid commit with no matching pull-request-triggered run on the first page.
+Admit the surface only for positive, source-bound, timestamped status observations when the repository and full commit OID came from a trusted GitHub response. Connector-call success and workflow conclusion remain separate facts.
 
-The surface remains useful for positive, source-bound status observations. Empty results are not authoritative negative evidence. Measured operator relief remains `0`; surfaced cost was `$0`; fitness credit remains `0`.
+Every empty result remains `NO_MATCH_IN_WRAPPER_SCOPE`, not proof that CI did not run. The connector conflated a clearly malformed identifier with an ordinary zero-match response and limits observations to pull-request-triggered runs on its first page.
 
-Next wake is phase 4 decision-only. Provisional decision: `ADOPT_WITH_GATES`. No additional GitHub capability call is required.
+Measured operator relief remains `0`; surfaced cost was `$0`; ConsumerAck and independent raw/UI verification remain absent; fitness credit remains `0`.
+
+Next wake begins Google Calendar bounded read-only event-window phase 1. No Calendar mutation is authorized.
