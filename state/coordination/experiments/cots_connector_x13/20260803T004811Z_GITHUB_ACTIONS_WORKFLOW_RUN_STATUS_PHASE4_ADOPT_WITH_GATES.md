@@ -1,0 +1,107 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_GITHUB_ACTIONS_WORKFLOW_RUN_STATUS_READONLY_001
+event_type: PHASE4_DECISION
+candidate: GitHub_Actions_bounded_workflow_run_status_readonly_surface
+carrier_task_id: 6a55c1733708819185088bf334e33ea5
+carrier_task_id_match: true
+wip: 1
+expected_current_version: 51
+next_current_version: 52
+campaign_wake: 4_of_4
+decision: ADOPT_WITH_GATES
+candidate_capability_call_this_phase: false
+operator_minutes_removed_measured: 0
+operator_minutes_removed_estimate_per_known_commit_status_check: 1_to_3_UNVALIDATED
+fitness_credit: 0_PENDING_SOURCE_BOUND_CONSUMER_ACK_AND_MEASURED_OPERATOR_OUTCOME
+custom_code_avoided_estimate:
+  authenticated_commit_lookup_and_normalized_run_status_extraction: 35_to_110_LOC_UNVALIDATED
+credentials:
+  connector_reached_private_or_authorized_repository_data_without_error: true
+  operator_supplied_credentials: 0
+  authenticated_identity: UNKNOWN
+  credential_type: UNKNOWN
+  actions_read_permission: UNKNOWN
+  least_privilege_verified: false
+durability: EPHEMERAL_POINT_IN_TIME_OBSERVATION_NOT_EVENT_STREAM_NOT_LATEST_ATTEMPT_GUARANTEE
+observability: POSITIVE_RUN_ID_WORKFLOW_NAME_RUN_NUMBER_STATUS_CONCLUSION_AND_CONNECTOR_LATENCY_VISIBLE_NEGATIVE_CAUSE_RAW_REQUEST_TOTAL_COUNT_EVENT_HEAD_SHA_ATTEMPT_PAGINATION_REQUEST_ID_RATE_LIMITS_AND_UPSTREAM_RETRIES_HIDDEN
+portability: MEDIUM_LOW_SOURCE_BOUND_COMMIT_AND_PASS_FAIL_CONCEPTS_PORTABLE_GITHUB_EVENT_CONCLUSION_AND_WRAPPER_SCOPE_PROVIDER_SPECIFIC
+failure_behavior:
+  positive_workflow_failure_returned_as_data: OBSERVED
+  valid_source_bound_empty_result: OBSERVED
+  malformed_commit_empty_without_error: OBSERVED
+  malformed_vs_valid_no_match_distinguishable: false
+  permission_authentication_rate_limit_transport_and_server_failures: NOT_OBSERVED
+cost_and_quota:
+  paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
+  candidate_connector_calls_phases_1_to_3: AT_LEAST_15_READONLY_CALLS
+  actual_upstream_request_count: UNKNOWN
+  actual_quota_units_consumed: UNKNOWN
+  rate_limit_headers: NOT_EXPOSED
+  official_primary_limit_context: AUTHENTICATED_USER_TYPICALLY_5000_REQUESTS_PER_HOUR_UNAUTHENTICATED_PUBLIC_60_PER_HOUR_GITHUB_TOKEN_TYPICALLY_1000_PER_HOUR_PER_REPOSITORY
+  official_secondary_limit_context: MOST_REST_GETS_ONE_POINT_WITH_900_POINTS_PER_MINUTE_ENDPOINT_LIMIT_SUBJECT_TO_CHANGE_AND_OTHER_LIMITS
+admitted_scope:
+  - BOUNDED_READ_ONLY_STATUS_LOOKUP_FOR_EXACT_SOURCE_BOUND_REPOSITORY_AND_FULL_COMMIT_OID
+  - TIMESTAMPED_POSITIVE_STATUS_OBSERVATION
+  - NORMALIZED_RUN_ID_WORKFLOW_NAME_RUN_NUMBER_STATUS_AND_CONCLUSION
+  - EXPLICIT_SEPARATION_OF_CONNECTOR_CALL_SUCCESS_FROM_WORKFLOW_CONCLUSION
+  - EMPTY_RESULT_RECORDED_ONLY_AS_NO_MATCH_IN_PULL_REQUEST_FIRST_PAGE_WRAPPER_SCOPE
+excluded_scope:
+  - AUTHORITATIVE_NEGATIVE_CI_EVIDENCE_FROM_EMPTY_RESULTS
+  - LATEST_ATTEMPT_COMPLETE_HISTORY_BRANCH_WIDE_OR_REPOSITORY_WIDE_HEALTH
+  - WORKFLOW_DISPATCH_RERUN_CANCELLATION_JOB_LOG_OR_ARTIFACT_ACCESS
+  - SECRET_ENVIRONMENT_CREDENTIAL_WORKFLOW_FILE_BRANCH_MERGE_OR_REPOSITORY_SETTING_MUTATION
+mandatory_gates:
+  - ACCEPT_ONLY_FULL_COMMIT_OIDS_SOURCE_BOUND_TO_A_TRUSTED_GITHUB_RESPONSE_FOR_THE_SAME_REPOSITORY
+  - REJECT_SYNTHETIC_NON_HEX_TRUNCATED_WHITESPACE_CORRUPTED_WRONG_REPOSITORY_OR_OTHERWISE_UNBOUND_IDENTIFIERS_BEFORE_CONNECTOR_INVOCATION
+  - INTERPRET_EMPTY_ARRAY_ONLY_AS_NO_MATCH_IN_PULL_REQUEST_FIRST_PAGE_WRAPPER_SCOPE
+  - KEEP_INVALID_INPUT_VALID_NO_MATCH_AUTHENTICATION_AUTHORIZATION_NOT_FOUND_RATE_LIMIT_TRANSIENT_CONNECTOR_AND_WORKFLOW_FAILURE_AS_SEPARATE_STATES
+  - REQUIRE_POSITIVE_RUN_PAYLOAD_OR_INDEPENDENT_RAW_API_OR_ACTIONS_UI_EVIDENCE_FOR_RELEASE_COMPLETION_OR_NEGATIVE_CI_GATES
+  - BIND_EACH_POSITIVE_OBSERVATION_TO_REPOSITORY_COMMIT_RUN_ID_OBSERVATION_TIME_EVENT_SCOPE_AND_PAGE_SCOPE
+  - DO_NOT_INFER_IDENTITY_SCOPE_PERMISSION_RATE_LIMIT_BILLING_WRITE_AUTHORITY_LATEST_ATTEMPT_OR_COMPLETENESS_FROM SUCCESS
+  - RESPECT_RETRY_AFTER_AND_X_RATELIMIT_RESET_WHEN EXPOSED_AND_NEVER_BLINDLY_RETRY_RATE_LIMIT_FAILURES
+  - KEEP_ALL_MUTATING_AND_CONTENT_HYDRATION_ACTIONS_EXCLUDED
+strongest_falsifier: SAME_CONTEXT_RAW_GITHUB_API_OR_ACTIONS_UI_SHOWS_CONNECTOR_POSITIVE_STATUS_MAPPED_TO_WRONG_REPOSITORY_COMMIT_RUN_ATTEMPT_OR_CONCLUSION_OR_SHOWS_EMPTY_WRAPPER_RESULT_WHILE A_MATCHING_PULL_REQUEST_RUN_EXISTS_ON_THE_WRAPPER_FIRST_PAGE
+verifier: RAW_GET_REPOS_OWNER_REPO_ACTIONS_RUNS_WITH_IDENTICAL_EVENT_HEAD_SHA_AND_PAGE_FILTER_PLUS_ACTIONS_UI_AND_SOURCE_BOUND_COMMIT_CONTROL
+consumer:
+  - HFO_AGENT_COMPLETION_VERIFICATION_POSITIVE_EVIDENCE_ONLY
+  - HFO_CI_RELEASE_GATES_WITH_INDEPENDENT_NEGATIVE_EVIDENCE
+  - HFO_BRANCH_HEALTH_SUMMARIES_AS_TIMESTAMPED_OBSERVATIONS
+honest_flaw: NO_RAW_API_OR_ACTIONS_UI_COMPARISON_NO_LATEST_ATTEMPT_OR_PAGINATION_PROOF_NO_IDENTITY_OR_PERMISSION_SCOPE_NO_401_403_404_422_429_5XX_NO_RATE_LIMIT_HEADERS_NO_CONSUMER_ACK_AND_ZERO_MEASURED_OPERATOR_MINUTES
+official_contract_checked_utc: 2026-08-03T00:48:11Z
+official_sources:
+  workflow_runs: https://docs.github.com/en/rest/actions/workflow-runs
+  rate_limits: https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api
+  best_practices: https://docs.github.com/en/rest/using-the-rest-api/best-practices-for-using-the-rest-api?apiVersion=2026-03-10
+official_contract_facts:
+  head_sha_is_a_string_filter_for_associated_runs: true
+  status_filter_accepts_status_or_conclusion_values: true
+  fine_grained_permission_for_private_repository: ACTIONS_READ
+  public_resource_unauthenticated_use_possible: true
+  filtered_search_cap: 1000
+  per_page_max: 100
+  list_success_status: 200_OK
+  response_schema_includes_run_attempt_event_head_sha_created_at_updated_at: true
+  rate_limit_failures_can_be_403_or_429: true
+  retry_after_or_x_ratelimit_reset_should_control_retry: true
+review_expiry_utc: 2026-08-10T00:48:11Z
+valid_time_utc: 2026-08-03T00:48:11Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+sealed: true
+---
+
+# Phase 4 decision — `ADOPT_WITH_GATES`
+
+Adopt this connector surface only for **positive, source-bound, timestamped GitHub Actions run-status observations**. The phase-2 receipt proved that the connector can return a completed failing run and therefore preserves the distinction between connector-call success and workflow conclusion.
+
+Do not adopt the surface for authoritative negative evidence. Phase 1 returned an empty array for a real source-bound commit, and phase 3 returned the same empty/no-error shape for a clearly malformed commit identifier. The wrapper also limits observations to `pull_request` event runs on its first page. Empty results are therefore semantically ambiguous and must remain `NO_MATCH_IN_WRAPPER_SCOPE`.
+
+The adoption earns no outcome credit yet. Measured operator relief is `0` minutes, ConsumerAck is absent, identity and least-privilege authority are hidden, and no independent raw API or Actions UI verification was completed.
+
+## Decision boundary
+
+Use when the repository and full commit OID already came from a trusted GitHub response and a positive run payload is useful as one bounded observation. Do not use a missing result to declare that CI did not run, passed, failed, or is healthy.
+
+## Next campaign
+
+Queue `X13_GOOGLE_CALENDAR_BOUNDED_EVENT_WINDOW_READONLY_001` for phase 1 on the next wake: official contract plus one bounded read-only time-window baseline. Exclude event creation, update, deletion, invitation responses, attendee changes, email, and notification effects.
