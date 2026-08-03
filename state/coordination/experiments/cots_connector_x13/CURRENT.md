@@ -1,29 +1,29 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
 experiment_id: X13_GOOGLE_DRIVE_BOUNDED_FILE_METADATA_SEARCH_READONLY_001
-version: 63
-prior_version: 62
+version: 64
+prior_version: 63
 candidate: Google_Drive_bounded_file_metadata_search_readonly_surface
 candidate_contract_reference: official_Google_Drive_files_list_search_filter_scope_and_quota_contracts_plus_direct_connector_receipts
-campaign_wake: 3_of_4
-campaign_status: OPEN
+campaign_wake: 4_of_4
+campaign_status: CLOSED
 phase_1_completed: true
 phase_2_completed: true
 phase_3_completed: true
-phase_4_completed: false
-phase_4_decision: PENDING
+phase_4_completed: true
+phase_4_decision: ADOPT_WITH_GATES
 carrier_task_id: 6a55c1733708819185088bf334e33ea5
 carrier_task_id_match: true
 wip: 1
 last_event:
-  commit: 4563df32e5e1ee90125ca2c68f06592b1be187f2
-  path: state/coordination/experiments/cots_connector_x13/20260803T114919Z_GOOGLE_DRIVE_BOUNDED_FILE_METADATA_PHASE3_IMPOSSIBLE_MIME_EMPTY_PROBE.md
-  blob_sha: c67003f57a9ef449c940c758d456c7223751c0d3
+  commit: 161d35db52f90e68a644bf13223c0b8f18e9f00c
+  path: state/coordination/experiments/cots_connector_x13/20260803T124743Z_GOOGLE_DRIVE_BOUNDED_FILE_METADATA_PHASE4_ADOPT_WITH_GATES.md
+  blob_sha: 5865a164843af6744c8cc286ddce135f93452af8
   exact_readback_completed: true
-prior_current_commit: 395d996a7919dddf15305e673ca304f55b64f865
-prior_current_blob_sha: 1df48e086520af9642183de633335775c7ce8010
-effect_ceiling: PHASE3_ONE_BOUNDED_METADATA_ONLY_IMPOSSIBLE_MIME_EMPTY_PROBE_EVENT_CURRENT_ADVANCE_READBACK_AND_ONE_SHORT_SLACK_FACT_ANDON
-adoption_credit: 0
+prior_current_commit: adce74d35c744411d6658c617686a75151c0c92e
+prior_current_blob_sha: a6620265c81067f04bc3e922ac0ad1a659e16b00
+effect_ceiling: PHASE4_DECISION_EVENT_CURRENT_ADVANCE_READBACK_AND_ONE_SHORT_SLACK_DECISION_FACT
+adoption_credit: 1_BOUNDED_METADATA_DISCOVERY_PRIMITIVE_ONLY
 fitness_credit: 0_PENDING_SOURCE_BOUND_CONSUMER_ACK_AND_MEASURED_OPERATOR_OUTCOME
 consumer_ack: NOT_OBSERVED
 operator_minutes_removed_measured: 0
@@ -44,6 +44,7 @@ campaign_candidate_invocations:
   phase_1_metadata_searches: 1
   phase_2_metadata_searches: 1
   phase_3_metadata_searches: 1
+  phase_4_metadata_searches: 0
   total_metadata_searches: 3
   total_returned_metadata_record_count: 2
   positive_result_pages: 2
@@ -62,78 +63,53 @@ direct_phase_1_receipt:
   requested_item_type: document
   requested_topn: 1
   best_effort_fetch: false
-  require_viewed_by_user: false
-  page_token_input: null
   returned_metadata_record_count: 1
   file_body_or_hydrated_text_returned: false
-  exact_private_values_persisted: false
-  next_page_token_presence: UNKNOWN_NOT_EXPOSED_IN_RETURNED_RESPONSE_RESOURCE
+  next_page_token_presence: UNKNOWN_NOT_EXPOSED
   incomplete_search_presence: NOT_EXPOSED
   connector_error: null
   mutation_effect: false
 direct_phase_2_receipt:
   action: Google_Drive.search
-  query_class: PROJECT_SPECIFIC_NON_SECRET_TOKEN
   special_filter_query_str_class: EXPLICIT_TRASHED_FALSE
   requested_item_type: document
   requested_topn: 1
   best_effort_fetch: false
-  require_viewed_by_user: false
-  page_token_input: null
   returned_metadata_record_count: 1
-  returned_field_classes:
-    - title_or_name
-    - direct_url
-    - display_title
-    - display_url
-    - parent_identifiers
   returned_provider_resource_class_from_url_pattern: GOOGLE_SHEETS_SPREADSHEET
   file_body_or_hydrated_text_returned: false
-  exact_private_values_persisted: false
   returned_trashed_field: NOT_EXPOSED
   returned_mime_type: NOT_EXPOSED
-  next_page_token_presence: UNKNOWN_NOT_EXPOSED_IN_RETURNED_RESPONSE_RESOURCE
-  incomplete_search_presence: NOT_EXPOSED
   raw_upstream_request_and_filter_forwarding: NOT_EXPOSED
   connector_error: null
-  raw_http_status_and_provider_body: NOT_EXPOSED
   carrier_retries: 0
   mutation_effect: false
 direct_phase_3_receipt:
   action: Google_Drive.search
-  query_class: EMPTY_WITH_EXPLICIT_RAW_Q_FILTER
   special_filter_query_str_class: SYNTACTICALLY_VALID_IMPROBABLE_EXACT_MIME_AND_TRASHED_FALSE
   special_filter_query_str_nonsecret: "mimeType = 'application/vnd.hfo.impossible+x13' and trashed = false"
   requested_item_type: document
   requested_topn: 1
   best_effort_fetch: false
-  require_viewed_by_user: false
-  page_token_input: null
   returned_metadata_record_count: 0
   connector_result_class: NORMALIZED_SUCCESS_VALID_EMPTY
   connector_error: null
   connector_external_call_time_ms: 3555
-  raw_http_status_provider_body_request_id: NOT_EXPOSED
-  next_page_token_presence: UNKNOWN_NOT_EXPOSED_IN_RETURNED_RESPONSE_RESOURCE
+  next_page_token_presence: UNKNOWN_NOT_EXPOSED
   incomplete_search_presence: NOT_EXPOSED
-  exact_private_values_returned_or_persisted: false
   carrier_retries: 0
   mutation_effect: false
-direct_capability_inventory:
-  explicit_metadata_only_item_type_path_present: true
-  explicit_content_hydration_disable_present: true
-  explicit_raw_q_filter_present: true
-  explicit_page_token_input_present: true
-  explicit_one_page_cap_present: true_AS_TOPN_WRAPPER_PARAMETER
-  explicit_fields_allowlist_control_present: false
-  explicit_corpus_drive_id_and_all_drives_controls_present: false
-  explicit_incomplete_search_output_present: false_IN_OBSERVED_RESPONSES
-  body_bearing_fetch_actions_present_but_excluded: true
+direct_phase_4_receipt:
+  decision_only: true
+  additional_google_drive_capability_call_made: false
+  disposition: ADOPT_WITH_GATES
+  source_receipts: PHASES_1_TO_3_GIT_FIRST_EVENTS
+  mutation_effect: false
 measured_facts:
   positive_wrapper_visible_metadata_results_observed: 2
   valid_empty_wrapper_result_observed: true
-  impossible_exact_mime_plus_trashed_false_filter_input_accepted: true
   explicit_trashed_false_filter_input_accepted: true
+  impossible_exact_mime_plus_trashed_false_filter_input_accepted: true
   raw_filter_forwarding_or_enforcement_independently_verified: false
   no_file_body_or_hydrated_text_returned: true
   private_identifying_metadata_fields_returned_by_default_on_positive_results: true
@@ -141,31 +117,30 @@ measured_facts:
   item_type_document_returned_google_sheets_resource: true
   exact_provider_mime_type_exposed_on_positive_result: false
   page_token_or_incomplete_search_status_visible: false
-  raw_query_translation_field_mask_corpus_and_effective_scope: UNKNOWN
   phase_3_external_call_latency_ms: 3555
 privacy_andon:
   triggered: true
-  measured_fact: POSITIVE_METADATA_ONLY_RESULTS_RETURNED_PRIVATE_NAME_URL_AND_PARENT_IDENTIFIER_FIELD_CLASSES_BY_DEFAULT
-  implication: COUNT_ONLY_OR_EXISTENCE_ONLY_CONSUMERS_MUST_MINIMIZE_IN_MEMORY_BEFORE_GIT_SLACK_OR_DOWNSTREAM_FANOUT
+  measured_fact: POSITIVE_METADATA_RESULTS_RETURNED_PRIVATE_NAME_URL_AND_PARENT_IDENTIFIER_FIELD_CLASSES_BY_DEFAULT
+  implication: MINIMIZE_IN_MEMORY_BEFORE_GIT_SLACK_OR_DOWNSTREAM_FANOUT
 completeness_andon:
   triggered: true
-  measured_fact: OBSERVED_RESPONSE_RESOURCES_DID_NOT_EXPOSE_NEXT_PAGE_TOKEN_OR_INCOMPLETE_SEARCH_INCLUDING_THE_VALID_EMPTY_PATH
+  measured_fact: OBSERVED_RESPONSES_DID_NOT_EXPOSE_NEXT_PAGE_TOKEN_OR_INCOMPLETE_SEARCH
   admitted_interpretation: POSITIVE_OR_EMPTY_WRAPPER_VISIBLE_QUERY_OBSERVATION_AT_OBSERVATION_TIME
-  forbidden_interpretation: COMPLETE_DRIVE_CORPUS_SINGLE_PAGE_FINALITY_AUTHORITATIVE_NONEXISTENCE_OR_RAW_API_UI_PARITY
+  forbidden_interpretation: COMPLETE_DRIVE_CORPUS_SINGLE_PAGE_FINALITY_OR_AUTHORITATIVE_NONEXISTENCE
 filter_forwarding_andon:
   triggered: true
-  measured_fact: WRAPPER_ACCEPTED_TRASHED_FALSE_AND_EXACT_MIME_FILTER_INPUTS_BUT_DID_NOT_EXPOSE_RAW_UPSTREAM_REQUEST_RETURNED_MIME_OR_TRASHED_FIELDS
+  measured_fact: WRAPPER_ACCEPTED_TRASHED_FALSE_AND_EXACT_MIME_INPUTS_WITHOUT_RAW_REQUEST_MIME_OR_TRASH_FIELDS
   admitted_interpretation: RESULT_OBSERVED_UNDER_SUPPLIED_FILTER_INPUT
-  forbidden_interpretation: INDEPENDENT_PROOF_OF_PROVIDER_FILTER_FORWARDING_MIME_ENFORCEMENT_OR_TRASH_EXCLUSION
+  forbidden_interpretation: INDEPENDENT_PROOF_OF_FILTER_FORWARDING_MIME_ENFORCEMENT_OR_TRASH_EXCLUSION
 wrapper_taxonomy_andon:
   triggered: true
-  measured_fact: ITEM_TYPE_DOCUMENT_RETURNED_A_GOOGLE_SHEETS_RESOURCE_IN_PHASE2
+  measured_fact: ITEM_TYPE_DOCUMENT_RETURNED_A_GOOGLE_SHEETS_RESOURCE
   implication: DOCUMENT_IS_A_BROAD_WRAPPER_CLASS_NOT_AN_EXACT_GOOGLE_DOCS_MIME_GUARANTEE
 empty_result_andon:
   triggered: true
   measured_fact: SYNTACTICALLY_VALID_IMPROBABLE_MIME_QUERY_RETURNED_EMPTY_WITH_NO_NORMALIZED_ERROR
   admitted_interpretation: NO_MATCH_RETURNED_IN_CONNECTOR_QUERY_SCOPE_AT_OBSERVATION_TIME
-  forbidden_interpretation: AUTHORITATIVE_CORPUS_ABSENCE_COMPLETE_SEARCH_OR_PROOF_OF_RAW_FILTER_FORWARDING
+  forbidden_interpretation: AUTHORITATIVE_CORPUS_ABSENCE_COMPLETE_SEARCH_OR_RAW_FILTER_FORWARDING_PROOF
 official_contract_checked_2026_08_03:
   files_list: https://developers.google.com/workspace/drive/api/reference/rest/v3/files/list
   search_guide: https://developers.google.com/workspace/drive/api/guides/search-files
@@ -180,10 +155,6 @@ official_contract_checked_2026_08_03:
   files_list_page_token_contract: USE_NEXT_PAGE_TOKEN_FROM_PREVIOUS_RESPONSE
   files_list_incomplete_search_semantics: TRUE_MEANS_SOME_RESULTS_MAY_BE_MISSING
   metadata_readonly_scope_exists: true_RESTRICTED_SCOPE
-  post_2026_05_01_per_minute_per_project_if_applicable: 1000000_QUOTA_UNITS
-  post_2026_05_01_per_minute_per_user_per_project_if_applicable: 325000_QUOTA_UNITS
-  post_2026_05_01_daily_billing_threshold_if_applicable: 400000000_QUOTA_UNITS
-  files_list_quota_units_per_request_if_applicable: 100
 failure_semantics:
   positive_metadata_search: OBSERVED_PHASE1_AND_PHASE2
   explicit_filter_input_accepted: OBSERVED_PHASE2_AND_PHASE3
@@ -196,50 +167,53 @@ failure_semantics:
   transient_server_failure: NOT_TESTED
   independent_raw_or_UI_readback: NOT_TESTED
 durability: EPHEMERAL_POINT_IN_TIME_METADATA_LOOKUP_NOT_A_SNAPSHOT_EVENT_STREAM_CHECKPOINT_DURABLE_CURSOR_OR_INDEX
-observability: RESULT_COUNT_RETURNED_FIELD_CLASSES_PROVIDER_URL_CLASS_NORMALIZED_SUCCESS_OR_EMPTY_AND_PHASE3_EXTERNAL_CALL_LATENCY_VISIBLE_RAW_REQUEST_FILTER_FORWARDING_QUERY_TRANSLATION_FIELD_MASK_MIME_TRASHED_CURSOR_INCOMPLETE_SEARCH_HTTP_STATUS_PROVIDER_BODY_REQUEST_ID_EFFECTIVE_SCOPE_CORPUS_QUOTA_HEADERS_AND_UPSTREAM_RETRIES_HIDDEN
-portability: MEDIUM_FOR_GENERIC_FILE_DISCOVERY_AND_EXISTENCE_PROBES_LOW_TO_MEDIUM_FOR_DRIVE_QUERY_MIME_TOKEN_CORPUS_SHARED_DRIVE_AND_PERMISSION_SEMANTICS
+observability: RESULT_COUNT_RETURNED_FIELD_CLASSES_PROVIDER_URL_CLASS_NORMALIZED_SUCCESS_OR_EMPTY_AND_ONE_VISIBLE_EXTERNAL_CALL_LATENCY; RAW_REQUEST_QUERY_TRANSLATION_FIELD_MASK_MIME_TRASH_CURSOR_INCOMPLETE_SEARCH_HTTP_STATUS_PROVIDER_BODY_REQUEST_ID_EFFECTIVE_SCOPE_CORPUS_QUOTA_HEADERS_BILLING_AND_UPSTREAM_RETRIES_HIDDEN
+portability: MEDIUM_FOR_GENERIC_FILE_DISCOVERY_LOW_TO_MEDIUM_FOR_DRIVE_QUERY_MIME_CORPUS_PAGINATION_AND_PERMISSION_SEMANTICS
 admitted_scope:
   - ONE_PAGE_BOUNDED_METADATA_ONLY_DISCOVERY_WITH_EXPLICIT_ITEM_TYPE
-  - CALLER_SUPPLIED_TRASHED_FALSE_AND_EXACT_MIME_FILTER_INPUTS
+  - CALLER_SUPPLIED_TRASHED_FALSE_AND_EXACT_MIME_FILTER_INPUTS_WITH_FORWARDING_UNVERIFIED
   - CONTENT_HYDRATION_DISABLED
-  - SCOPED_POSITIVE_OR_EMPTY_RESULT_COUNT_FIELD_CLASSES_QUERY_CLASS_OBSERVATION_TIME_AND_VISIBLE_LATENCY_ONLY_FOR_DURABLE_LOGGING
+  - SCOPED_POSITIVE_OR_EMPTY_OBSERVATIONS_WITH_QUERY_CLASS_RESULT_COUNT_ERROR_CLASS_VISIBLE_LATENCY_AND_OBSERVATION_TIME
 excluded_scope:
   - FILE_CONTENT_FETCH_DOWNLOAD_EXPORT_OR_HYDRATION
   - CREATE_UPLOAD_EDIT_MOVE_RENAME_SHARE_PERMISSION_CHANGE_DELETE_OR_PUBLICATION
-  - FILTER_FORWARDING_COMPLETENESS_CORPUS_SHARED_DRIVE_TRASH_EXCLUSION_EXACT_MIME_OWNERSHIP_PERMISSION_ROLE_LEAST_PRIVILEGE_OR_AUTHORITATIVE_NONEXISTENCE_CLAIMS
+  - FILTER_FORWARDING_COMPLETENESS_CORPUS_SHARED_DRIVE_TRASH_EXCLUSION_EXACT_MIME_OWNERSHIP_PERMISSION_ROLE_LEAST_PRIVILEGE_QUOTA_CONSUMPTION_OR_AUTHORITATIVE_NONEXISTENCE_CLAIMS
+  - DURABLE_SNAPSHOT_INDEX_EVENT_STREAM_OR_CHECKPOINT_CLAIMS
 mandatory_gates:
   - USE_EXPLICIT_METADATA_ONLY_ITEM_TYPE_AND_KEEP_BEST_EFFORT_FETCH_FALSE
-  - KEEP_TRASHED_FALSE_FOR_NON_TRASH_DISCOVERY_BUT_TREAT_ENFORCEMENT_AS_UNVERIFIED_UNTIL_RAW_API_OR_UI_PARITY
-  - TREAT_ITEM_TYPE_DOCUMENT_AS_A_BROAD_DOCUMENT_FAMILY_SELECTOR_NOT_AN_EXACT_GOOGLE_DOCS_MIME_GUARANTEE
-  - ADD_EXPLICIT_MIME_TYPE_Q_FILTER_WHEN_THE_CONSUMER_REQUIRES_AN_EXACT_PROVIDER_CLASS_AND_TREAT_FORWARDING_AS_UNVERIFIED
-  - KEEP_PAGE_CAP_SMALL_AND_RECORD_NON_SECRET_QUERY_CLASS_AND_OBSERVATION_TIME
-  - MINIMIZE_NAMES_URLS_FILE_IDS_AND_PARENT_IDS_BEFORE_GIT_SLACK_OR_DOWNSTREAM_FANOUT_UNLESS_EXPLICITLY_REQUIRED
-  - TREAT_ABSENCE_OF_VISIBLE_CURSOR_INCOMPLETE_SEARCH_MIME_OR_TRASHED_FIELD_AS_UNKNOWN_NOT_FALSE
-  - TREAT_EMPTY_AS_NO_MATCH_RETURNED_IN_CONNECTOR_QUERY_SCOPE_AT_OBSERVATION_TIME_NOT_AUTHORITATIVE_ABSENCE
-  - SEPARATE_VALID_EMPTY_INVALID_QUERY_OR_TOKEN_PERMISSION_DENIAL_RATE_LIMIT_TRANSPORT_FAILURE_AND_PROVIDER_FAILURE
-  - REQUIRE_SOURCE_BOUND_CONSUMER_ACK_AND_MEASURED_OPERATOR_OUTCOME_BEFORE_FITNESS_CREDIT
+  - KEEP_RESULT_CAP_SMALL_AND_RECORD_NON_SECRET_QUERY_CLASS_AND_OBSERVATION_TIME
+  - TREAT_ITEM_TYPE_DOCUMENT_AS_A_BROAD DOCUMENT_FAMILY_SELECTOR_NOT_AN_EXACT_GOOGLE_DOCS_MIME_GUARANTEE
+  - ADD_EXPLICIT_MIME_TYPE_Q_FILTER_WHEN_EXACT_PROVIDER_CLASS_IS_REQUIRED_AND_MARK FORWARDING_UNVERIFIED
+  - KEEP_TRASHED_FALSE_FOR_NON_TRASH_DISCOVERY_AND_MARK ENFORCEMENT_UNVERIFIED
+  - MINIMIZE_NAMES_URLS_FILE_IDS_SPREADSHEET_IDS_AND_PARENT_IDS_BEFORE DURABLE FANOUT
+  - TREAT ABSENT MIME TRASH CURSOR OR INCOMPLETE_SEARCH FIELDS AS UNKNOWN_NOT_FALSE
+  - TREAT EMPTY AS NO_MATCH_RETURNED_IN_CONNECTOR_QUERY_SCOPE_AT_OBSERVATION_TIME
+  - SEPARATE VALID_EMPTY INVALID_QUERY_OR_TOKEN PERMISSION_DENIAL RATE_LIMIT TRANSPORT_FAILURE_AND_PROVIDER_FAILURE
+  - REQUIRE SOURCE_BOUND_CONSUMER_ACK_AND_MEASURED_OPERATOR_OUTCOME BEFORE FITNESS_CREDIT
 verifier: RAW_DRIVE_FILES_LIST_WITH_EQUIVALENT_Q_AND_EXPLICIT_MINIMAL_FIELDS_INCLUDING_FILES_ID_NAME_MIMETYPE_TRASHED_NEXT_PAGE_TOKEN_AND_INCOMPLETE_SEARCH_PLUS_DRIVE_UI_COMPARISON
 consumer:
   - HFO_DRIVE_HERITAGE_LOCATOR
   - HFO_EXECUTIVE_ASSISTANT_BOUNDED_FILE_DISCOVERY
   - HFO_SSOT_EVIDENCE_FINDER
-strongest_falsifier: RAW_API_RETURNS_AN_ERROR_OR_NONEMPTY_RESULT_FOR_THE_EXACT_PHASE3_QUERY_SHOWS_THE_CONNECTOR_DROPPED_OR_REWROTE_THE_MIME_FILTER_OR_EXPOSES_INCOMPLETE_SEARCH_TRUE_WHILE_THE_WRAPPER_REPORTS_AN_UNQUALIFIED_EMPTY_RESULT
-honest_flaw: DELIBERATELY_IMPROBABLE_MIME_VALUE_MAKES_EMPTY_LIKELY_BUT_DOES_NOT_PROVE_RAW_FILTER_FORWARDING_CORPUS_COVERAGE_PERMISSION_REACH_COMPLETENESS_QUOTA_BEHAVIOR_CONSUMER_ACK_OPERATOR_TIME_REDUCTION_OR_CONNECTOR_PROVIDER_PARITY
+strongest_falsifier: RAW_API_ERRORS_OR_RETURNS_A_NONEMPTY_RESULT_FOR_THE_EXACT_PHASE3_QUERY_SHOWS_FILTER_DROP_OR_REWRITE_OR_EXPOSES_INCOMPLETE_SEARCH_TRUE_WHILE_WRAPPER_REPORTS_UNQUALIFIED_EMPTY
+honest_flaw: RAW_FILTER_FORWARDING_COMPLETENESS_CORPUS_AND_PERMISSION_REACH_VALID_PAGINATION_LEAST_PRIVILEGE_SCOPE_QUOTA_BEHAVIOR_CONSUMER_ACK_AND_MEASURED_OPERATOR_TIME_REDUCTION_REMAIN_UNVERIFIED
 phase_1_result:
   disposition: PHASE1_ACCEPTED_WITH_PRIVACY_SCOPE_AND_OBSERVABILITY_GATES
 phase_2_result:
   disposition: PHASE2_ACCEPTED_WITH_FILTER_FORWARDING_AND_WRAPPER_TAXONOMY_GATES
 phase_3_result:
   disposition: PHASE3_ACCEPTED_WITH_VALID_EMPTY_AND_FILTER_FORWARDING_GATES
-next_phase:
-  phase: 4_of_4
-  proposed_action: DECISION_ONLY_WITH_NO_ADDITIONAL_GOOGLE_DRIVE_CAPABILITY_CALL
-  provisional_decision: ADOPT_WITH_GATES
-  provisional_admitted_scope: BOUNDED_METADATA_ONLY_DISCOVERY_AND_SCOPED_POSITIVE_OR_EMPTY_OBSERVATIONS
-  durable_log_minimization: RESULT_COUNT_ERROR_CLASS_VISIBLE_LATENCY_AND_CURSOR_OR_INCOMPLETE_SEARCH_EVIDENCE_ONLY
-  excluded_effects: CONTENT_FETCH_UPLOAD_EDIT_MOVE_RENAME_SHARE_PERMISSION_CHANGE_DELETE_EXPORT_PUBLICATION_OR_SECRET_EXPOSURE
-review_expiry_utc: 2026-08-10T11:49:19Z
-valid_time_utc: 2026-08-03T11:49:19Z
+phase_4_result:
+  disposition: ADOPT_WITH_GATES
+  adopted_primitive: BOUNDED_READONLY_METADATA_ONLY_FILE_DISCOVERY_AND_SCOPED_POSITIVE_OR_EMPTY_OBSERVATIONS
+  new_architecture_required: false
+next_campaign:
+  status: PROPOSED_NOT_STARTED
+  candidate: Slack_bounded_readonly_channel_history_or_search_surface
+  phase: 1_of_4
+  excluded_effects: SEND_EDIT_DELETE_REACTION_CHANNEL_CREATION_DRAFT_SCHEDULE_PUBLICATION_OR_SECRET_EXPOSURE
+review_expiry_utc: 2026-08-10T12:47:43Z
+valid_time_utc: 2026-08-03T12:47:43Z
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 sealed: true
 prior_campaign:
@@ -254,12 +228,12 @@ prior_prior_campaign:
 
 # X13 current campaign
 
-Google Drive bounded file-metadata search campaign **3/4** is open.
+Google Drive bounded file-metadata search campaign **4/4** is closed with `ADOPT_WITH_GATES`.
 
-Phase 3 accepted one syntactically valid improbable exact-MIME-plus-`trashed=false` query that returned an explicit empty result with no normalized connector error. The only admitted interpretation is `NO_MATCH_RETURNED_IN_CONNECTOR_QUERY_SCOPE_AT_OBSERVATION_TIME`.
+Adopt only bounded, read-only, metadata-only discovery and scoped positive or empty observations. Keep content hydration disabled. Empty means only `NO_MATCH_RETURNED_IN_CONNECTOR_QUERY_SCOPE_AT_OBSERVATION_TIME`.
 
-The wrapper surfaced 3555 ms external-call latency but no raw request, HTTP status, provider request ID, MIME/trash fields, page token, or `incompleteSearch`. Exact filter forwarding, completeness, corpus and permission reach remain unverified.
+Do not claim completeness, raw filter forwarding, exact MIME enforcement, trash exclusion, shared-drive reach, permission reach, least-privilege OAuth, quota consumption, durable snapshot behavior, or authoritative nonexistence. Positive results require privacy minimization before durable fan-out.
 
-No completeness, shared-drive, trash-exclusion, exact-MIME, permission, ownership, OAuth-scope, cost, authoritative-nonexistence, or operator-time claim is admitted. Fitness credit remains zero.
+Three connector searches produced two positive pages, one valid empty page, two metadata records, zero bodies, zero retries, zero mutations, zero surfaced paid cost, zero measured operator minutes removed, and no ConsumerAck. Fitness credit remains zero.
 
-Next: phase-4 decision only with no additional Drive call. Provisional disposition: `ADOPT_WITH_GATES`.
+Next campaign is proposed, not started: native Slack bounded read-only channel history or search.
