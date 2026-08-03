@@ -1,0 +1,78 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+event_id: X11_WAKE_TIMING_PROVIDER_LAST_RUN_DRIFT_V2_WAKE_01_20260803T174201Z
+experiment_id: X11_WAKE_TIMING_PROVIDER_LAST_RUN_DRIFT_V2
+task_id_expected: 6a55089a9adc8191bda54541f7f9effa
+carrier: HFO_GEN133_X11
+wip: 1
+branch: agent/gen133-bootstrap-20260730
+prior_current_version: 68
+next_current_version: 69
+campaign_wake: 1
+campaign_target_wakes: 4
+accepted: true
+baseline:
+  prior_campaign: X11_NATIVE_TASKS_READ_VISIBILITY_V2
+  prior_campaign_disposition: KEEP
+  prior_campaign_accepted_wakes: 4
+  prior_provider_last_run_drift_samples: 0
+  declared_scheduled_minute_utc: 40
+hypothesis: the_provider_exposed_prior_last_run_timestamp_can_be_compared_deterministically_to_the_immutable_minute_40_epoch_without_task_mutation_operator_relay_or_sensitive_externalization
+controlled_factor: wake_timing
+exact_probe:
+  source: authenticated_native_task_inventory_read
+  expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+  provider_prior_last_run_time_utc: 2026-08-03T16:41:27.260424Z
+  scheduled_epoch_utc: 2026-08-03T16:40:00Z
+  calculation: absolute_value_of_provider_prior_last_run_time_minus_same_hour_minute_40_scheduled_epoch
+  mutation_permitted: false
+  persisted_fields_only:
+    - prior_last_run_time_utc
+    - scheduled_epoch_utc
+    - absolute_start_drift_seconds
+    - permission_class
+    - error_class
+    - latency_when_exposed
+    - operator_relay_minutes
+measured_result:
+  tool_status: SUCCESS
+  expected_task_visible: true
+  provider_prior_last_run_time_utc: 2026-08-03T16:41:27.260424Z
+  scheduled_epoch_utc: 2026-08-03T16:40:00Z
+  absolute_start_drift_seconds: 87.260424
+  drift_direction: AFTER_SCHEDULED_EPOCH
+  drift_semantics: PROVIDER_LAST_RUN_TIMESTAMP_MINUS_SCHEDULED_EPOCH_NOT_DIRECT_START_LATENCY
+  permission_class: AUTHENTICATED_NATIVE_TASK_INVENTORY_READ_AVAILABLE
+  error_class: NONE
+  latency_exposed: false
+  latency_ms: null
+  operator_relay_minutes: 0
+  task_mutation_performed: false
+  interactive_login_required: false
+  sensitive_readback_externalized: false
+  changed_capability: true
+  andon: false
+  campaign_decision_due: false
+strongest_falsifier: the_expected_task_is_absent_the_provider_prior_last_run_timestamp_is_missing_or_unparseable_or_the_timestamp_cannot_be_bound_to_the_same_hour_minute_40_epoch
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer:
+  - Reginleif
+  - Ratatoskr
+claim_ceiling: one_bounded_same_provider_prior_last_run_timestamp_drift_sample_only_not_current_wake_start_time_provider_dispatch_queue_latency_execution_duration_scheduler_sla_delivery_guarantee_or_independent_verification
+same_provider_independence_claim: false
+binding_weight: 0
+honest_flaw: provider_last_run_time_is_a_same_provider_completion_or_registration_timestamp_and_may_include_execution_or_persistence_delay_so_the_87_260424_second_value_cannot_be_attributed_to_scheduler_start_latency
+slack_action: POST_CHANGED_CAPABILITY_AFTER_GIT_READBACK
+next_probe:
+  campaign_wake: 2
+  exact_action: repeat_the_same_expected_task_prior_last_run_timestamp_minus_same_hour_minute_40_epoch_calculation_and_record_only_sanitized_drift_permission_error_and_exposed_latency_fields
+valid_time_utc: 2026-08-03T17:42:01Z
+sealed: false
+---
+
+Wake 1 opened the provider-last-run drift campaign. The provider-exposed prior
+last-run timestamp was 87.260424 seconds after its same-hour minute-40 epoch.
+This is descriptive same-provider telemetry only. It does not expose the current
+wake start, provider dispatch, queue latency, execution duration, delivery, or an
+SLA. No task mutation, interactive login, sensitive readback externalization, or
+operator relay occurred.
