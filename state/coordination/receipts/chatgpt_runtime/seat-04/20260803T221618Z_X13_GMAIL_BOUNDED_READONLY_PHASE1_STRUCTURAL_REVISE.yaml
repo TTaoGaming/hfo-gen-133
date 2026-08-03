@@ -1,0 +1,195 @@
+---
+schema_id: hfo.gen133.s04.structural_preflight.v1
+receipt_kind: SAME_PROVIDER_NONBINDING_STRUCTURAL_PREFLIGHT
+result: REVISE
+seat: S04
+role: STRUCTURAL_PREFLIGHT_VERIFIER
+carrier_task_id_expected: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_observed: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_match: true
+carrier_task_enabled_observed: true
+wip: 1
+valid_time_utc: 2026-08-03T22:16:18Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+sealed: true
+
+selection:
+  rule: NEWEST_IMMUTABLE_CANDIDATE_ADDRESSED_TO_S04_NOT_AUTHORED_BY_S04
+  candidate_author_seat: S03
+  candidate_commit: cc29decea4fc0041f83d0a79b83cac3261b1463f
+  candidate_path: state/coordination/receipts/chatgpt_runtime/seat-03/20260803T220901Z_X13_GMAIL_BOUNDED_READONLY_PHASE1_RETURN_BINDINGS_REVISE.yaml
+  candidate_git_blob_sha1: 4039c16e96f9cd54110f753bf18dd0a865b9d441
+  candidate_exact_utf8_bytes: 8263
+  candidate_sha256: d391eb09c43d91f5f8a54ddce25ce4fd86c9f07d1476ff527db790e4af4a56d5
+  candidate_trailing_newline: false
+  candidate_yaml_documents: 2
+  candidate_yaml_primary_document: MAPPING
+  candidate_yaml_second_document: NULL_FROM_TRAILING_DOCUMENT_END_MARKER
+  candidate_immutable_commit_bound: true
+  candidate_addressed_to_s04: true
+  candidate_authored_by_s04: false
+  correlation_id: X13_GMAIL_BOUNDED_READONLY_METADATA_001_PHASE1_20260803T214803Z
+
+source_pointer_recomputation:
+  event:
+    commit: 3faa7bbc212820c79d11f1c45618e0cafffe70dc
+    path: state/coordination/experiments/cots_connector_x13/20260803T214803Z_GMAIL_BOUNDED_READONLY_PHASE1_BASELINE.md
+    declared_git_blob_sha1: a4361ec7f56f434cb361d3c0b59cb5b8aab32963
+    recomputed_git_blob_sha1: a4361ec7f56f434cb361d3c0b59cb5b8aab32963
+    exact_utf8_bytes: 6779
+    sha256: f6d334da0338b58332a75c91dc30d19474485814e254faaa0e706c44bc89818d
+    schema_id: hfo.gen133.x13.cots_connector_event.v1
+    format: MARKDOWN_WITH_YAML_FRONT_MATTER
+    phase: 1_of_4
+    phase_status: PHASE1_ACCEPTED_WITH_GATES
+    trailing_newline: false
+  current:
+    commit: c57e5e8a0d0967e90f91804b099eedf5e6ee48a6
+    path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    declared_git_blob_sha1: c24cd3f256711aa43ba25744b7a9a141d8999428
+    recomputed_git_blob_sha1: c24cd3f256711aa43ba25744b7a9a141d8999428
+    exact_utf8_bytes: 6588
+    sha256: a2821e816708e22f3622a28db93afaf15b4c4d1e463fce434253540be04d7474
+    schema_id: hfo.gen133.x13.cots_connector_current.v1
+    version: 73
+    prior_version: 72
+    last_event_blob_match: true
+    trailing_newline: true
+  pointer_chain_exact: true
+  source_event_and_current_self_digest_present: false
+  canonical_producer_return_digest_present: false
+
+structural_checks:
+  freshness:
+    candidate_valid_time_utc: 2026-08-03T22:09:01Z
+    source_valid_time_utc: 2026-08-03T21:48:03Z
+    source_review_expiry_utc: 2026-08-10T21:48:03Z
+    state: FRESH_AND_UNEXPIRED
+  authority:
+    candidate_receipt_kind: NONTERMINAL_REVISE_ROUTE
+    source_effect_class: READ_ONLY
+    source_effect_ceiling: BOUNDED_READONLY_GMAIL_MESSAGE_ID_SEARCH_NO_CONTENT_SEND_DRAFT_LABEL_ARCHIVE_TRASH_DELETE_OR_AUTORETRY
+    terminal_or_operational_authority: ABSENT
+    authority_escalation_detected: false
+  task_binding:
+    s03_carrier_task_match: true
+    x13_source_task_id: 6a55c1733708819185088bf334e33ea5
+    s04_target_task_match: true
+    purpose_bound_workitem: ABSENT
+    acceptance_digest: ABSENT
+  actor_carrier_separation:
+    s03_carrier_identified: true
+    x13_source_seat_identified: true
+    logical_producer_identity: ABSENT
+    authenticated_gmail_principal: UNKNOWN
+    oauth_scope: UNKNOWN_AND_NOT_PROVEN_METADATA_ONLY_OR_READONLY
+    distinct_provider_verifier: NOT_AVAILABLE
+  idempotency:
+    source_campaign_version_transition: 72_TO_73
+    claim_nonce: ABSENT
+    claim_idempotency_key: ABSENT
+    unique_idempotency_domain: ABSENT
+    exact_query_and_limit_digest: ABSENT
+    exact_source_response_digest: ABSENT
+  lease_and_expiry:
+    producer_lease: ABSENT
+    review_expiry_bound: true
+    source_unexpired: true
+  privacy:
+    durable_message_ids: OMITTED
+    durable_page_token: OMITTED
+    durable_headers_or_message_content: OMITTED
+    privacy_minimization_supported: true
+    least_privilege_scope_proven: false
+    query_forwarding_exactness_proven: false
+  rollback:
+    observed_source_mutation: false
+    read_only_abort_or_rollback_statement: PRESENT_AS_NO_MUTATION
+    claim_bound_return_level_rollback_contract: ABSENT
+  verifier:
+    s04_relation: SAME_PROVIDER_NONPRODUCER_PREFLIGHT_ONLY
+    s04_binding_weight: 0
+    exact_digest_bound_stood_or_fell: ABSENT
+    distinct_authorized_raw_gmail_parity: ABSENT
+  consumer:
+    immediate_catalog_consumer: HFO_COTS_CAPABILITY_INVENTORY
+    named_operational_consumer: ABSENT
+    explicit_post_stood_consumer_ack: ABSENT
+    measured_operator_minutes_removed: 0
+    adoption_credit: 0
+    fitness_credit: 0
+
+candidate_specific_strongest_fake_green:
+  claim: PHASE1_ACCEPTED_WITH_GATES_OR_ONE_IDS_ONLY_PAGE_PROVES_A_CLAIM_BOUND_PRODUCER_RETURN_METADATA_ONLY_OR_READONLY_SCOPE_EXACT_QUERY_FORWARDING_OPERATIONAL_ADOPTION_CONSUMER_ACK_INDEPENDENT_STOOD_FITNESS_OR_OPERATOR_RELIEF
+  rejection_reason: >-
+    One privacy-minimized connector-visible IDs-only page is an ephemeral capability observation. It does not bind a
+    WorkItem, acceptance digest, lease, idempotency domain, logical producer, authenticated Gmail principal or OAuth scope,
+    exact nonsecret query, exact source-system response bytes, canonical producer-return digest, distinct digest-bound
+    STOOD or FELL, named operational consumer, or explicit post-STOOD ConsumerAck.
+
+explicit_false_green_mutant:
+  mutant_id: X14_MUTANT_071_c8dbcc527346
+  mutant_commit: 44a678254b13289bc2ca5c1e1c4f64644ff60e2b
+  mutant_path: state/coordination/experiments/false_green_x14/quarantine/20260803T215253Z_X12_SLACK_RECEIPT_DUPLICATE_IDEMPOTENCY_VERSION.mutant.yaml
+  mutant_git_blob_sha1: 136b32bfbdcf0473a3fc1f0803a3a8246464bf2d
+  mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+  source_commit: a9e29f08dc92511f550b3b75a1bc79c7e3061d6f
+  source_path: state/coordination/experiments/durable_object_x12/slack_receipts/ca0b7818c8953a284e9e1958fab65c8e12b47ea83a115f7027b000c7a6a16d31.json
+  source_exact_utf8_bytes: 2770
+  source_file_sha256: 4b5b8406714a0c74ddaf0b979e80d007f63760a3ff5712dd3597ab595a5e1b31
+  source_git_blob_sha1: 5d4bf97915478b7e6535610b4c894e303f360d75
+  source_delivery_receipt_canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_OVER_DELIVERY_RECEIPT_OBJECT
+  source_delivery_receipt_digest_declared: d2889e36490979d6833580f755fab61e66ccc3437bd307a588eb199a0f631d24
+  source_delivery_receipt_digest_recomputed: d2889e36490979d6833580f755fab61e66ccc3437bd307a588eb199a0f631d24
+  source_expected_version: 72
+  source_prior_version: 72
+  source_next_version: 73
+  source_current_binding_version: 73
+  canonical_overlay_algorithm: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_exact_bytes: 199
+  canonical_overlay_sha256_declared: c8dbcc5273468124ce523edc4fc2722f4d470f723578c57099cd982c6d6d1b76
+  canonical_overlay_sha256_recomputed: c8dbcc5273468124ce523edc4fc2722f4d470f723578c57099cd982c6d6d1b76
+  mutated_next_version: 72
+  mutant_expiry_utc: 2026-08-04T01:44:24Z
+  mutant_expiry_state: UNEXPIRED
+  gate_result: CAUGHT_REVISE
+  rejection_reason: >-
+    Mutated next_version 72 equals prior_version 72 while the preserved event, outbox, current binding, delivery marker,
+    and DELIVERED_AFTER_EXACT_CURRENT_READBACK status identify version 73. A matching idempotency key or Slack response
+    cannot make contradictory transition identities equivalent. Grant no durability, delivery, ConsumerAck, completion,
+    or outcome credit.
+
+verdict:
+  result: REVISE
+  reason_codes:
+    - NO_PURPOSE_BOUND_WORKITEM_OR_ACCEPTANCE_DIGEST
+    - NO_LEASE_NONCE_OR_UNIQUE_IDEMPOTENCY_DOMAIN
+    - NO_LOGICAL_PRODUCER_OR_AUTHENTICATED_GMAIL_PRINCIPAL_SCOPE_BINDING
+    - NO_EXACT_QUERY_SOURCE_RESPONSE_OR_CANONICAL_PRODUCER_RETURN_DIGEST
+    - NO_CLAIM_BOUND_RETURN_LEVEL_ROLLBACK
+    - NO_DISTINCT_EXACT_DIGEST_BOUND_STOOD_OR_FELL
+    - NO_NAMED_OPERATIONAL_CONSUMER_OR_POST_STOOD_CONSUMER_ACK
+    - EXPLICIT_DUPLICATE_VERSION_MUTANT_CAUGHT
+  allowed_claim: ONE_PRIVACY_MINIMIZED_CONNECTOR_VISIBLE_BOUNDED_IDS_ONLY_GMAIL_SEARCH_RETURNED_ONE_OPAQUE_ID_AND_A_CONTINUATION_TOKEN_WITHOUT_DURABLY_LOGGING_EITHER_IDENTIFIER_OR_MESSAGE_CONTENT
+  forbidden_promotion: PRODUCER_RETURN_SCOPE_ATTESTATION_OPERATIONAL_ADOPTION_TERMINAL_RECEIPT_INDEPENDENT_VERIFICATION_CONSUMER_ACK_FITNESS_OR_MEASURED_OPERATOR_RELIEF
+  same_provider_status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  independent_verification_closed: false
+
+rollback:
+  action: RETAIN_IMMUTABLE_RECEIPTS_AND_QUARANTINE_ARTIFACT_WITHOUT_EDITING_CANDIDATE_SOURCE_CURRENT_TASK_SLACK_OR_PROVIDER_STATE
+  candidate_edit_performed: false
+  task_mutation_performed: false
+  send_spend_deploy_merge_publish_account_security_change_or_delete_performed: false
+
+honest_flaw: >-
+  Exact candidate, event, CURRENT, mutant source, and canonical overlay bytes were independently recomputed from Git
+  readback. The full mutant file SHA-256 was not independently recomputed; its Git blob was read back and the mutation's
+  canonical overlay plus source canonical receipt digest were recomputed. This remains same-provider preflight evidence
+  with binding weight zero and cannot close independent verification.
+---
