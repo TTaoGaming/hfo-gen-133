@@ -1,74 +1,69 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
-experiment_id: X11_GMAIL_METADATA_READ_VISIBILITY_V1
-current_version: 51
-accepted_wakes: 3
+experiment_id: X11_PROJECT_CONTEXT_VISIBILITY_V1
+current_version: 52
+accepted_wakes: 0
 target_wakes_before_decision: 4
-controlled_factor: gmail_read_surface
+controlled_factor: project_vs_non_project_context
 campaign_status: ACTIVE
 current_disposition: null
 prior_campaign:
-  experiment_id: X11_WEB_RESEARCH_OFFICIAL_SOURCE_READ_V1
-  final_version: 48
+  experiment_id: X11_GMAIL_METADATA_READ_VISIBILITY_V1
+  final_version: 52
   disposition: KEEP
   accepted_wakes: 4
+  decision_scope: bounded_exact_query_execution_and_sanitized_match_count_checks_only
 last_event:
-  commit: 87bb2b8126c9a37578a581506622f8a8f0106f75
-  path: state/coordination/experiments/carrier_surface_x11/events/20260802T234057Z_GMAIL_METADATA_READ_VISIBILITY_WAKE_03.yaml
-  blob: 14d7bf9096a8a4a9558a12b65f7067cb711898da
+  commit: 8d1d5fbc3460663100596346e7c45340c9974459
+  path: state/coordination/experiments/carrier_surface_x11/events/20260803T004032Z_GMAIL_METADATA_READ_VISIBILITY_WAKE_04_DECISION.yaml
+  blob: b4c789eedeacf723d628de170d46563ec4a9254a
 baseline_result:
-  wake_1_accepted: true
-  wake_2_accepted: true
-  wake_3_accepted: true
-  tool_status: SUCCESS
-  match_count: 0
-  next_page_token_present: false
+  project_metadata_surface_checked: false
+  project_metadata_explicitly_exposed: null
+  project_identity_persisted: false
+  project_identity_inferred: false
   authentication_requested: false
   interactive_login_required: false
-  content_read: false
-  identifiers_externalized: false
   task_mutation_performed: false
   sensitive_readback_externalized: false
   changed_capability: false
   andon: false
-  permission_class: CONNECTED_GMAIL_METADATA_SEARCH_AVAILABLE
-  error_class: NONE
-  latency_exposed: true
-  wake_1_latency_ms: 337
-  wake_2_latency_ms: 247
-  wake_3_latency_ms: 273
+  permission_class: NOT_YET_PROBED
+  error_class: NOT_YET_PROBED
+  latency_exposed: false
+  latency_ms: null
   operator_relay_minutes: 0
-  claim_ceiling: connected_gmail_exact_query_execution_and_sanitized_zero_match_visibility_only_not_mailbox_completeness_content_access_or_independent_verification
+  claim_ceiling: explicit_runtime_project_metadata_visibility_only_not_project_membership_context_inheritance_or_cross_context_comparison
 campaign_gates:
   - no_task_mutation
   - no_interactive_login
-  - exact_impossible_message_id_query_only
-  - persist_only_sanitized_status_count_and_latency
-  - no_content_readback
+  - inspect_only_explicit_native_runtime_metadata
+  - no_inference_from_prompt_repository_or_conversation_text
+  - persist_only_boolean_status_permission_and_error_class
+  - no_project_identity_externalization
   - no_sensitive_readback_externalization
   - same_provider_binding_weight_zero
-strongest_falsifier: the_same_exact_impossible_message_id_query_returns_a_nonzero_match_or_permission_failure_while_an_independently_authenticated_gmail_api_call_returns_zero
+strongest_falsifier: explicit_native_runtime_project_association_metadata_is_present_while_the_probe_records_not_exposed_or_absent_while_the_probe_records_exposed
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 next_consumer:
   - Reginleif
   - Ratatoskr
-honest_flaw: repeated_exact_zero_results_prove_only_that_the_connector_accepts_and_executes_this_query_path_not_mailbox_inventory_completeness_content_visibility_general_search_semantics_or_independent_verification
-next_factor: gmail_read_surface
+honest_flaw: without_a_trusted_explicit_runtime_project_association_marker_the_carrier_cannot_classify_this_run_as_project_or_non_project_or_make_a_valid_cross_context_comparison
+next_factor: project_vs_non_project_context
 next_probe:
-  experiment_id: X11_GMAIL_METADATA_READ_VISIBILITY_V1
-  campaign_wake: 4
-  mode: repeat_identical_exact_message_id_miss_query_then_issue_campaign_disposition
-  query_operator: rfc822msgid
-  message_id_local_part_template: hfo-x11-{expected_task_id}
-  message_id_domain: invalid.example
-  expected_match_count: 0
-  mutation_allowed: false
-  sensitive_readback_externalization_allowed: false
+  experiment_id: X11_PROJECT_CONTEXT_VISIBILITY_V1
+  campaign_wake: 1
+  mode: explicit_runtime_project_metadata_boolean_probe
+  exact_action: inspect_only_explicit_native_runtime_metadata_for_project_association_and_persist_boolean_status_permission_error_class_and_no_inferred_project_identity
+  expected_result_class: PROJECT_METADATA_EXPLICITLY_EXPOSED_OR_NOT_EXPOSED
+  inference_from_prompt_repository_or_conversation_text_allowed: false
   interactive_login_allowed: false
-  claim_ceiling: gmail_search_visibility_and_sanitized_match_count_only_not_inventory_completeness_or_independent_verification
-slack_action: YIELD_SILENT_UNCHANGED
-updated_valid_time_utc: 2026-08-02T23:40:57Z
+  sensitive_readback_externalization_allowed: false
+  mutation_allowed: false
+  claim_ceiling: explicit_runtime_project_metadata_visibility_only_not_project_membership_context_inheritance_or_cross_context_comparison
+slack_action: POST_CAMPAIGN_DECISION_AFTER_GIT_READBACK
+updated_valid_time_utc: 2026-08-03T00:40:32Z
 sealed: false
 ---
 
-Gmail metadata-read campaign wake 3 of 4 accepted. The repeated exact impossible RFC822 Message-ID query returned zero identifiers without interactive login, permission error, content readback, or mutation. The result is unchanged, so no Slack post is warranted; the claim remains limited to bounded connector-query execution and sanitized match-count visibility.
+Gmail metadata-read campaign closed KEEP after four identical bounded zero-result probes. The active campaign now tests only whether native runtime metadata explicitly exposes Project association. Prompt text, repository paths, and conversation content are forbidden as evidence of Project membership.
