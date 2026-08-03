@@ -1,0 +1,141 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+result: RETURN_REUSABLE_FAILURE_ANTIBODY
+valid_time_utc: 2026-08-03T08:57:05Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+privacy_ceiling: PUBLIC_CONTROL_FACTS_ONLY_NO_PRIVATE_GMAIL_CONTENT_OR_METADATA
+heritage_credit: 0
+binding_weight: 0
+consumer_ack: NOT_OBSERVED
+---
+
+self_probe:
+  identity: S15_HERITAGE_REUSE_AND_DEDUP
+  tools_observed:
+    - native_automations_inventory_read
+    - github_recent_commit_search
+    - github_exact_commit_and_diff_read
+    - github_create_file
+    - github_readback
+    - slack_direct_route_available
+  expected_task_id_match: true
+  task_enabled_observed: true
+  task_mutation_performed: false
+  source_edit_performed: false
+  private_source_read_performed: false
+  self_verification_claimed: false
+
+current_work_item:
+  work_item_kind: NAMED_EVIDENCE_GAP
+  work_item_id: X14_MUTANT_058_eae978b501b0
+  mutation_class: ACTOR_CARRIER_CONFLATION
+  mutation_subcase: SCHEDULED_CARRIER_AND_SOURCE_ACTOR_COLLAPSED_INTO_ONE_IDENTITY_WITHOUT_SEPARATE_PROVENANCE
+  mutant_commit: 21027848aa67217c4e2f6aa4a7d34da4fcfa712c
+  mutant_path: state/coordination/experiments/false_green_x14/quarantine/20260803T085046Z_X13_GMAIL_PHASE4_ACTOR_CARRIER_CONFLATION.mutant.yaml
+  source_commit: aa88026af94c5d35cc9acf8f684fa2f1e75aacfa
+  source_path: state/coordination/experiments/cots_connector_x13/20260803T084850Z_GMAIL_BOUNDED_MESSAGE_METADATA_PHASE4_DECISION.md
+  source_blob_sha1: b930f5d41c42614b98859667c0bb0674e429c52b
+  acceptance_gate: S04_ACTOR_CARRIER_SEPARATION_IDENTITY_PROVENANCE_AND_EFFECT_AUTHORITY_GATE
+  direct_verifier: S04_STRUCTURAL_PREFLIGHT
+  consumers:
+    - X14_CAMPAIGN_REDUCER
+    - X13_COTS_CONNECTOR_CAMPAIGN_REDUCER
+  expiry_utc: 2026-08-10T08:48:50Z
+
+reusable_prior_artifact:
+  artifact_kind: FAILURE_ANTIBODY
+  original_date_utc: 2026-08-01T11:13:11Z
+  source_repository: TTaoGaming/hfo-gen-133
+  source_branch: agent/gen133-bootstrap-20260730
+  source_commit: b776e403eb172e17fb818e92d92cab3c42532c9d
+  source_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260801T111311Z_X14_MUTANT014_ACTOR_CARRIER_CONFLATION_REVISE.yaml
+  original_mutant_id: X14_MUTANT_014_e7874dce9600
+  original_surface: X13_GMAIL_LABEL_COUNTS_PHASE2_READ_ONLY_MICRO_USE
+  original_result: REVISE
+  original_reason_code: ACTOR_ID_CONFLATED_WITH_CARRIER_TASK_ID_AND_SOURCE_ACTOR_BINDING_IS_NOT_EXPLICIT
+  original_verifier: S04_STRUCTURAL_PREFLIGHT
+  original_evidence_class: SAME_PROVIDER_NONBINDING
+  original_binding_weight: 0
+
+supported_claims:
+  - A matching enabled provider task ID proves a scheduled carrier record only; it does not prove actor identity, authorship, lineage, credential principal, delegated authority, or external-effect provenance.
+  - Actor identity cannot be manufactured from a task ID, task title, carrier label, shared account, connector access, repository access, successful wake, or routing receipt.
+  - A source that lacks an explicit separately bound actor-provenance field must remain actor-unproven rather than collapsing actor and carrier namespaces.
+  - S04 should return REVISE when an overlay asserts actor/carrier identity without separate provenance, while preserving the source, task inventory, Gmail state, and provider schedule.
+
+excluded_claims:
+  - This heritage pointer is not the direct structural verdict for X14_MUTANT_058_eae978b501b0.
+  - It does not recompute or validate mutant 058's declared 271-byte canonical overlay or SHA-256 digest.
+  - It does not establish that the selected phase-4 source lacks every possible external actor receipt outside the inspected repository evidence.
+  - It does not inspect Gmail calls, OAuth scopes, credential principals, mailbox state, message bodies, headers, recipients, counts, or UI state.
+  - It does not grant campaign closure, ConsumerAck, independent verification, workflow transition, authority, execution, adoption, or outcome credit.
+
+acceptance_relevance:
+  use: PRECEDENT_FOR_THE_NAMED_S04_GATE_ONLY
+  expected_application: >-
+    Resolve mutant 058 and its exact source bytes; recompute the declared canonical overlay and digest; distinguish the
+    scheduled carrier record from actor identity, authorship, credential, delegated authority, and effect provenance; then
+    return a direct blob-bound verdict without changing source, CURRENT, task inventory, Gmail state, or provider schedule.
+  verifier: S04_STRUCTURAL_PREFLIGHT
+  consumer:
+    - X14_CAMPAIGN_REDUCER
+    - X13_COTS_CONNECTOR_CAMPAIGN_REDUCER
+  credit_condition: NAMED_CONSUMER_BINDS_THIS_POINTER_TO_MUTANT_058_AND_A_DIRECT_VERIFIER_RESULT
+  credit_before_consumption: 0
+
+privacy:
+  classification: SANITIZED_PUBLIC_CONTROL_METADATA
+  permitted:
+    - repository
+    - branch
+    - commit
+    - path
+    - task IDs
+    - seat labels
+    - mutation class
+    - control-gate statements
+    - expiry
+  forbidden:
+    - Gmail message bodies
+    - subjects
+    - sender_or_recipient_addresses
+    - headers
+    - exact private counts
+    - mailbox identifiers
+    - credentials
+    - OAuth tokens_or_scopes
+    - private UI captures
+
+deduplication:
+  gen133_searched_first: true
+  search_terms:
+    - actor-carrier
+    - mutant 058
+  prior_s15_result_for_current_work_item_found: false
+  newest_head_observed_before_write: 74d4c4573debfa54ca110787b062e23a5f4c7705
+  limit: GitHub search and recent-commit enumeration are nontransactional and repository indexing can lag.
+
+expiry:
+  expires_utc: 2026-08-10T08:48:50Z
+  after_expiry: HISTORICAL_PATTERN_ONLY_NOT_LIVE_ACCEPTANCE_EVIDENCE
+
+honest_flaw: >-
+  The prior direct S04 artifact tested a Gmail actor_id explicitly set equal to the carrier task ID, while mutant 058 adds
+  a broader assertion that actor and scheduled carrier are the same entity and need no separate provenance. They share the
+  same failure class and acceptance boundary but are not byte-identical or semantically identical overlays. The prior
+  receipt is same-provider, nonbinding, and cannot substitute for S04 resolving mutant 058's exact source, 271-byte overlay,
+  digest, and any separate actor evidence. Deduplication is best-effort because GitHub indexing and branch-head discovery are
+  not transactional.
+
+rollback:
+  action: RETAIN_OR_IGNORE_THIS_POINTER
+  source_restore_required: false
+  provider_restore_required: false
