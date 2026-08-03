@@ -1,0 +1,153 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_SLACK_BOUNDED_CHANNEL_HISTORY_READONLY_001
+event_id: X13_SLACK_HISTORY_PHASE4_20260803T164611Z
+phase: 4
+campaign_wake: 4_of_4
+result: ADOPT_WITH_GATES
+expected_current_version: 67
+next_current_version: 68
+prior_current_path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+prior_current_commit: 90e8061fc576b5cdb882fdc76e791e40a3c3d7c5
+prior_current_blob_sha: 018cc06d741e7986010a105671bc057a76ae5b77
+carrier_task_id_expected: 6a55c1733708819185088bf334e33ea5
+carrier_task_id_observed: 6a55c1733708819185088bf334e33ea5
+carrier_task_id_match: true
+candidate: Slack_bounded_readonly_channel_history_surface
+decision: ADOPT_WITH_GATES
+adoption_mode: CATALOG_ONLY_NONOPERATIONAL
+campaign_terminal_status: CLOSED_RETIRED
+binding_architecture_decision: false
+same_provider_binding_weight: 0
+independent_verification_closed: false
+consumer_ack: NOT_OBSERVED
+fitness_credit: 0
+adoption_credit: 0
+adoption_credit_basis: ZERO_UNTIL_NEW_PURPOSE_BOUND_WORKITEM_NAMED_CONSUMER_DISTINCT_READBACK_AND_MEASURED_OPERATOR_OUTCOME
+effect_ceiling: CATALOG_ONLY_RECORD_OF_ONE_BOUNDED_POSITIVE_PAGE_ONE_VALID_EMPTY_WINDOW_AND_ONE_AMBIGUOUS_TIMEOUT_NO_OPERATIONAL_PROMOTION_NO_ADDITIONAL_SLACK_CALL
+valid_time_utc: 2026-08-03T16:46:11Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+review_expiry_utc: 2026-08-10T16:46:11Z
+phase4_probe: NO_NEW_SLACK_CAPABILITY_CALL_DECISION_FROM_BOUND_PHASE1_TO_PHASE3_RECEIPTS_AND_NONBINDING_REVIEW_INPUTS
+source_packet:
+  current_v67:
+    path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    commit: 90e8061fc576b5cdb882fdc76e791e40a3c3d7c5
+    blob_sha: 018cc06d741e7986010a105671bc057a76ae5b77
+  phase3_event:
+    path: state/coordination/experiments/cots_connector_x13/20260803T155315Z_SLACK_BOUNDED_CHANNEL_HISTORY_PHASE3_INVALID_TIMESTAMP_TIMEOUT_ANDON.md
+    commit: 7b8e36c0e4b69549b4cec0d59725a7e474fe30c2
+    blob_sha: 8de6ad63ec4baa2cd78640ef04175882eb09e4ca
+  s03_reducer_route:
+    path: state/coordination/receipts/chatgpt_runtime/seat-03/20260803T160931Z_X13_SLACK_CHANNEL_HISTORY_PHASE3_RETURN_BINDINGS_REVISE.yaml
+    commit: bfef3c9b4e076767dfc3dfa4e3b234c93dc2a901
+    blob_sha: d8e904e667640da1a8981b2661c4ccf7096697ce
+    result: REVISE
+    binding_weight: 0
+  s04_structural_preflight:
+    path: state/coordination/receipts/chatgpt_runtime/seat-04/20260803T161857Z_X13_SLACK_CHANNEL_HISTORY_PHASE3_STRUCTURAL_REVISE.yaml
+    commit: 9f7a3be3eeb44cf8ebe32ec157ac1ccae2ae2daf
+    blob_sha: b8cd69cfc6a96f4ae93f98bfb50fdc6b44104a3b
+    result: REVISE
+    binding_weight: 0
+  s09_phase4_vote:
+    path: state/coordination/votes/20260803T163300Z_S09_X13_SLACK_PHASE4_CATALOG_CLOSE_REVISE.vote.md
+    blob_sha: 5c50727719e356bde2fafae4f6c8569e00468c4f
+    result: REVISE_TO_CATALOG_ONLY_CLOSE
+    binding_weight: 0
+correlated_evidence_risk:
+  level: HIGH
+  rationale: S03_S04_S09_AND_X13_ARE_SAME_PROVIDER_CARRIERS_READING_OVERLAPPING_GIT_BYTES_AND_DO_NOT_FORM_INDEPENDENT_QUORUM
+campaign_measurement:
+  connector_history_attempts: 3
+  completed_connector_responses: 2
+  connector_visible_timeouts: 1
+  positive_result_pages: 1
+  valid_empty_pages: 1
+  total_returned_message_count: 1
+  continuation_cursor_pages: 1
+  carrier_retries: 0
+  mutations: 0
+  private_content_persisted_to_git_or_slack: false
+  surfaced_paid_cost_usd: 0
+  operator_minutes_removed_measured: 0
+  consumer_ack: NOT_OBSERVED
+custom_code_avoided_estimate:
+  authenticated_bounded_channel_history_cursor_and_normalized_response_handling: 30_to_95_LOC_UNVALIDATED
+  privacy_minimization_boundary_validation_retry_policy_durable_checkpointing_and_consumer_workflow: NOT_AVOIDED_REQUIRES_HFO_GATES
+credentials:
+  connector_success_path_observed: true
+  operator_supplied_credentials_campaign: 0
+  authenticated_principal: UNKNOWN
+  token_class: UNKNOWN_USER_BOT_OR_APP
+  effective_history_scopes: UNKNOWN
+  workspace_identity: UNKNOWN
+  membership_basis: UNKNOWN
+  token_storage_and_custody: CONNECTOR_MANAGED_UNINSPECTED
+  least_privilege_closed: false
+durability: EPHEMERAL_POINT_IN_TIME_READ_SURFACE_NOT_A_DURABLE_EVENT_STREAM_SNAPSHOT_CHECKPOINT_DELIVERY_RECEIPT_OR_EXACTLY_ONCE_FEED
+observability: MEDIUM_FOR_LIMIT_TIME_BOUNDS_RETURNED_COUNT_CURSOR_PRESENCE_AND_CONNECTOR_EXCEPTION_CLASS_LOW_FOR_RAW_REQUEST_HTTP_STATUS_SLACK_OK_SLACK_ERROR_HEADERS_REQUEST_ID_APP_CLASS_SCOPES_UPSTREAM_ATTEMPTS_RETRIES_AND_RATE_LIMIT_STATE
+portability: MEDIUM_FOR_COARSE_GENERIC_ONE_PAGE_HISTORY_WINDOWS_LOW_FOR_EXACT_BOUNDARIES_MESSAGE_SUBTYPES_CURSOR_IDENTITY_SCOPE_RULES_AND_DETERMINISTIC_FAILURE_CLASSIFICATION
+failure_behavior:
+  positive_bounded_page: OBSERVED
+  valid_empty_coarse_time_window: OBSERVED
+  malformed_timestamp: CONNECTOR_VISIBLE_TIMEOUT_ONLY
+  timeout_semantics: AMBIGUOUS_INCOMPLETE_ATTEMPT_NOT_EMPTY_SUCCESS_NOT_PROVIDER_REJECTION_NOT_AUTOMATICALLY_RETRYABLE
+  valid_source_bound_cursor_traversal: NOT_TESTED
+  invalid_channel_or_cursor: NOT_TESTED
+  authentication_or_permission_denial: NOT_TESTED
+  quota_or_rate_limit: NOT_TESTED
+  transient_provider_failure_with_raw_receipt: NOT_TESTED
+  independent_raw_api_or_ui_parity: NOT_TESTED
+admitted_catalog_facts:
+  - CONNECTOR_CAN_RETURN_ONE_MESSAGE_FROM_ONE_KNOWN_EXPLICIT_CONVERSATION_WITH_LIMIT_ONE
+  - CONNECTOR_CAN_RETURN_A_VALID_EMPTY_RESULT_FOR_ONE_COARSE_EXPLICIT_TIME_WINDOW
+  - CONNECTOR_EXPOSES_CONTINUATION_CURSOR_PRESENCE_ON_A_POSITIVE_PAGE
+  - CONCISE_MODE_CAN_RETURN_FULL_MESSAGE_BODY_AND_AUTHOR_IDENTIFYING_FIELDS
+  - CONNECTOR_EXPOSES_OLDEST_AND_LATEST_BUT_NOT_SLACK_INCLUSIVE_CONTROL
+  - ONE_MALFORMED_TIMESTAMP_ATTEMPT_ENDED_IN_TIMEOUTERROR_WITHOUT_RAW_SLACK_CLASSIFICATION
+  - NO_CAMPAIGN_CALL_MUTATED_SLACK
+mandatory_gates:
+  - CATALOG_ONLY_NO_OPERATIONAL_USE_FROM_THIS_CAMPAIGN
+  - REQUIRE_A_NEW_PURPOSE_BOUND_WORKITEM_WITH_ONE_NAMED_CONSUMER_AND_ACCEPTANCE_DIGEST_BEFORE_ANY_FUTURE_READ
+  - USE_ONLY_A_KNOWN_EXPLICIT_CONVERSATION_ID_AND_SMALL_LIMIT
+  - VALIDATE_SLACK_TIMESTAMP_SYNTAX_LOCALLY_AND_REQUIRE_OLDEST_LESS_THAN_LATEST
+  - DO_NOT_DEPEND_ON_EXACT_BOUNDARY_RETRIEVAL_BECAUSE_INCLUSIVE_IS_NOT_EXPOSED
+  - TREAT_CONCISE_AS_PRESENTATION_MODE_NOT_METADATA_ONLY_OR_PRIVACY_MINIMAL
+  - MINIMIZE_MESSAGE_TEXT_EMAILS_USER_IDS_TIMESTAMPS_CURSOR_VALUES_LINKS_FILES_REACTIONS_AND_ATTACHMENTS_BEFORE_DURABLE_FANOUT
+  - ACCEPT_CURSOR_ONLY_FROM_THE_IMMEDIATELY_PRECEDING_COMPATIBLE_QUERY_AND_NEVER_PERSIST_EXACT_CURSOR
+  - SEPARATE_POSITIVE_VALID_EMPTY_CALLER_INVALID_PERMISSION_RATE_LIMIT_TIMEOUT_TRANSPORT_AND_PROVIDER_FAILURE_STATES
+  - NEVER_TRANSLATE_TIMEOUT_TO_EMPTY_SUCCESS_AUTHORITATIVE_ABSENCE_OR_PROVIDER_REJECTION
+  - DO_NOT_AUTOMATICALLY_RETRY_MALFORMED_CALLER_INPUT
+  - REQUIRE_EXPLICIT_BOUNDED_RETRY_POLICY_AND_TELEMETRY_BEFORE_RETRYING_VALID_READONLY_TIMEOUTS
+  - REQUIRE_DISTINCT_AUTHORIZED_RAW_SLACK_OR_UI_READBACK_UNDER_THE_SAME_IDENTITY_BEFORE_OPERATIONAL_PROMOTION
+  - REQUIRE_EXPLICIT_POST_VERDICT_CONSUMER_ACK_AND_MEASURED_OPERATOR_OUTCOME_BEFORE_ADOPTION_OR_FITNESS_CREDIT
+excluded_scope:
+  - SEND_EDIT_DELETE_REACTION_JOIN_CREATE_DRAFT_SCHEDULE_FILE_READ_OR_ANY_OTHER_SLACK_MUTATION
+  - GENERAL_CHANNEL_MINING_UNBOUNDED_HISTORY_POLLING_OR_BULK_PAGINATION
+  - EXACT_BOUNDARY_OR_INCLUSIVE_RETRIEVAL_CLAIMS
+  - METADATA_ONLY_PRIVACY_MINIMAL_LEAST_PRIVILEGE_IDENTITY_SCOPE_QUOTA_OR_COMPLETE_HISTORY_CLAIMS
+  - AUTHORITATIVE_EMPTY_OR_NONEXISTENCE_CLAIMS
+  - AUTOMATIC_TIMEOUT_RETRY_OR_DETERMINISTIC_FAILURE_LAYER_CLAIMS
+  - DURABLE_EVENT_STREAM_SNAPSHOT_CHECKPOINT_DELIVERY_EXACTLY_ONCE_OR_OPERATIONAL_READINESS_CLAIMS
+verifier: DISTINCT_AUTHORIZED_RAW_SLACK_CONVERSATIONS_HISTORY_OR_SLACK_UI_READBACK_UNDER_THE_SAME_IDENTITY_FOR_ONE_PURPOSE_BOUND_VALID_QUERY_INSPECTING_RAW_OK_ERROR_HEADERS_BOUNDARIES_CURSOR_CONTENT_PARITY_AND_ELAPSED_TIME
+consumer:
+  immediate_catalog_consumer: HFO_COTS_CAPABILITY_INVENTORY
+  future_operational_consumer: MUST_BE_NAMED_IN_NEW_WORKITEM
+strongest_falsifier: A_DISTINCT_SAME_IDENTITY_RAW_API_OR_AUTHORIZED_UI_TRACE_SHOWS_THE_LIMIT_ONE_SUCCESS_PATH_IS_NOT_REPRODUCIBLE_OR_THE_CONNECTOR_REWRITES_BOUNDS_PERFORMS_HIDDEN_UNBOUNDED_CALLS_OR_RETRIES_LEAKS_PRIVATE_CONTENT_BEYOND_THE_ADMITTED_SURFACE_OR_CANNOT_SUPPORT_A_REAL_NAMED_CONSUMER_WITH_MEASURABLE_RELIEF
+reversible_next_experiment:
+  campaign_action: RETIRE_THIS_SYNTHETIC_CAMPAIGN_WITH_NO_MORE_SLACK_CALLS
+  future_trigger: NEW_UNEXPIRED_PURPOSE_BOUND_WORKITEM_NAMES_ONE_CONSUMER_QUESTION_ONE_KNOWN_CONVERSATION_LIMIT_ONE_VALID_LOCALLY_CHECKED_BOUNDS_PRIVACY_MINIMIZATION_ACCEPTANCE_DIGEST_AND_OPERATOR_MINUTE_BASELINE
+  future_probe: ONE_VALID_READONLY_LIMIT_ONE_QUERY_WITH_NO_CURSOR_TRAVERSAL_OR_RETRY_COMPARED_BY_A_DISTINCT_AUTHORIZED_RAW_SLACK_OR_UI_VERIFIER_UNDER_THE_SAME_IDENTITY
+next_campaign_candidate: Google_Tasks_bounded_readonly_tasklist_and_task_metadata_surface
+honest_flaw: THE_DECISION_CLOSES_ONLY_A_CAPABILITY_CATALOG ENTRY; NO_NEW_SLACK_CALL_WAS_EXECUTED_IN_PHASE4 AND LIVE_IDENTITY_SCOPE_VALID_CURSOR_TRAVERSAL_PERMISSION_FAILURE_RATE_LIMIT_RAW_API_OR_UI_PARITY_CONSUMER_ACK_AND_MEASURED_OPERATOR_TIME_REDUCTION_REMAIN_UNVERIFIED
+sealed: true
+---
+
+# X13 Slack bounded channel history phase 4
+
+Decision: **ADOPT_WITH_GATES**, catalog-only and nonoperational.
+
+The campaign established three narrow wrapper facts: one limit-one positive page, one valid empty coarse time window, and one malformed-timestamp attempt that ended only in `TimeoutError`. It did not establish raw Slack parity, exact-boundary behavior, deterministic error preservation, safe retry, complete history, least privilege, quota capacity, workflow durability, consumer value, or operator relief.
+
+The surface is therefore retained only in the COTS capability catalog. This campaign is closed and retired with zero adoption and fitness credit. Any future operational use requires a new purpose-bound work item, named consumer, local privacy and timestamp validation, one bounded read, distinct raw Slack or authorized UI readback under the same identity, explicit consumer acknowledgment, and measured operator outcome.
