@@ -2,19 +2,19 @@
 schema_id: hfo.gen133.x14.false_green_current.v1
 experiment_id: X14_FALSE_GREEN_MUTATION_001
 object_id: X14_FALSE_GREEN_CAMPAIGN_STATE
-version: 59
-expected_previous_version: 58
-previous_pointer_blob_sha: a7749d770eb9a5aa360392091966ade94d8127c0
-accepted_wakes: 58
+version: 60
+expected_previous_version: 59
+previous_pointer_blob_sha: 422010b9f0169da8004410a7f0c1905bc55878c6
+accepted_wakes: 59
 campaign_ordinal: 15
-campaign_wake: 2
+campaign_wake: 3
 campaign_length: 4
-current_status: CAMPAIGN_15_WAKE_2_STALE_SOURCE_DIGEST_ROUTED
-current_mutation_class: STALE_SOURCE_DIGEST
-next_mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+current_status: CAMPAIGN_15_WAKE_3_DUPLICATE_IDEMPOTENCY_VERSION_ROUTED
+current_mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+next_mutation_class: FABRICATED_CONSUMER_ACK
 carrier_task_id: 6a513e4d9c4c81919db728f85db2dd79
 carrier_task_id_binding: NATIVE_AUTOMATIONS_LIST_EXACT_MATCH
-valid_time_utc: 2026-08-03T09:50:28Z
+valid_time_utc: 2026-08-03T10:52:01Z
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 canonical_repository: TTaoGaming/hfo-gen-133
 canonical_branch: agent/gen133-bootstrap-20260730
@@ -24,42 +24,43 @@ sealed: false
 ---
 
 source_candidate:
-  commit: 1e552484480225d3fde8a4366fb0aced8147b12c
-  path: state/coordination/experiments/durable_object_x12/events/20260803T094600Z_V0060_TO_V0061_STALE_CONCURRENT_TWO_CONTENDERS.json
-  git_blob_sha1: 340dede19ed06a2d5ba384e402e89436e9f5ba45
+  commit: 2443b5ba873f15f62d0b68cc9d606dec5b003394
+  path: state/coordination/experiments/durable_object_x12/conflicts/20260803T104700Z_EXPECTED_BLOB_77D2456E_OBSERVED_487126E4_STALE_UPDATE_REJECTED.json
+  git_blob_sha1: 6a401cc0024376fe51c9aaa1bd5d593809ca9baa
   source_digest_kind: GIT_BLOB_SHA1
-  source_digest: 340dede19ed06a2d5ba384e402e89436e9f5ba45
+  source_digest: 6a401cc0024376fe51c9aaa1bd5d593809ca9baa
   authoring_seat: X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
   source_task_id: 6a506f83df208191815dd17a8fd5baa3
   source_experiment_id: X12_STALE_CONCURRENT_WRITER_SIMULATION_C16
-  source_event_type: STALE_CONCURRENT_WRITER_TWO_CONTENDER_ACCEPT_A
-  source_prior_version: 60
-  source_expected_version: 60
-  source_next_version: 61
-  source_valid_time_utc: 2026-08-03T09:46:00Z
-  source_effect_ceiling: GIT_IDEMPOTENCY_CLAIM_EVENT_CURRENT_CONFLICT_RECEIPT_AND_ONE_SANITIZED_SLACK_POINTER
+  source_event_type: STALE_BLOB_SHA_REJECTION_CONFLICT_RECEIPT
+  source_expected_version: 61
+  source_next_version: 62
+  source_observed_current_version: 62
+  source_disposition: REJECTED_HTTP_409_NO_CONTENT_CHANGE
+  source_valid_time_utc: 2026-08-03T10:47:00Z
+  source_effect_ceiling: IMMUTABLE_GIT_CONFLICT_RECEIPT_AND_ONE_SANITIZED_SLACK_POINTER
   source_verifier: S04_WEIGHT_0_THEN_DISTINCT_SIGRUN_P4
   source_consumer: Reginleif/Olrun
-  source_review_expiry_utc: 2026-08-03T13:46:00Z
+  source_review_expiry_utc: 2026-08-03T14:46:00Z
   prior_x14_mutation_at_source_digest_before_write: false
 
 quarantined_mutant:
-  mutant_id: X14_MUTANT_059_7ac1ec6408ad
-  mutation_class: STALE_SOURCE_DIGEST
-  mutation_subcase: PRIOR_X12_V60_EVENT_BLOB_FALSELY_BOUND_TO_CURRENT_V61_EVENT_COMMIT_AND_PATH
-  commit: 6bb20ee5759f474c862277d88c6ce679bce76813
-  path: state/coordination/experiments/false_green_x14/quarantine/20260803T095028Z_X12_V61_STALE_SOURCE_DIGEST.mutant.yaml
-  git_blob_sha1: ddb8bae2a4d4853a17d8f9c1deec87901f87447a
+  mutant_id: X14_MUTANT_060_ef27eb58dbb3
+  mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+  mutation_subcase: NEXT_VERSION_FALSELY_EQUALS_EXPECTED_VERSION_AND_DESCRIBES_NO_MONOTONIC_TRANSITION
+  commit: 7f26db79d8bd23a2cc84e9febd045744a2f20c98
+  path: state/coordination/experiments/false_green_x14/quarantine/20260803T105201Z_X12_CONFLICT_DUPLICATE_IDEMPOTENCY_VERSION.mutant.yaml
+  git_blob_sha1: 5ad08eb2b3d11d3c008694ca8406948292b4b9e6
   canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
-  canonical_mutation_digest_sha256: 7ac1ec6408adadf83e168e76d951116ae2465cfbe3b0e17084022a46e7f1ead3
-  canonical_byte_count: 281
-  mutated_field: mutant_candidate_binding.source_blob_sha1
-  original_value: 340dede19ed06a2d5ba384e402e89436e9f5ba45
-  mutated_value: 5660ed6aaf03b9467c1bcf02553d305a928557c1
+  canonical_mutation_digest_sha256: ef27eb58dbb3584a503c2135fab9dee27505895e3069b317d7078339f47975c3
+  canonical_byte_count: 211
+  mutated_field: canonical_conflict.contender.next_version
+  original_value: 62
+  mutated_value: 61
   expected_verdict: REVISE
-  expected_rejection_reason: DECLARED_SOURCE_DIGEST_IS_STALE_AND_DOES_NOT_MATCH_BOUND_COMMIT_PATH_BYTES
-  named_gate: S04_EXACT_COMMIT_PATH_BLOB_AND_SOURCE_DIGEST_RECOMPUTE_GATE
-  expires_utc: 2026-08-03T13:46:00Z
+  expected_rejection_reason: NEXT_VERSION_EQUALS_EXPECTED_VERSION_AND_CANNOT_IDENTIFY_A_SINGLE_MONOTONIC_IDEMPOTENT_TRANSITION
+  named_gate: S04_EXPECTED_PRIOR_NEXT_VERSION_STRICT_INCREMENT_AND_IDEMPOTENCY_UNIQUENESS_GATE
+  expires_utc: 2026-08-03T14:46:00Z
   status: QUARANTINED_ROUTED_PENDING_VERDICTS
   accepted_wake_credit: true
 
@@ -67,7 +68,7 @@ campaign_evaluation:
   campaign_ordinal: 15
   decision_due: false
   intended_mutants: 4
-  accepted_wakes: 2
+  accepted_wakes: 3
   direct_s04_catches_observed: 0
   mutant_058:
     mutation_class: ACTOR_CARRIER_CONFLATION
@@ -76,6 +77,12 @@ campaign_evaluation:
     caught_gate_credit: false
   mutant_059:
     mutation_class: STALE_SOURCE_DIGEST
+    direct_s04_result: NOT_OBSERVED_HERITAGE_PRECEDENT_ONLY
+    s15_heritage_pointer_commit: fc2e4556674ce046ec7e56e24fe931da7079bc7a
+    distinct_s09_result: NOT_OBSERVED
+    caught_gate_credit: false
+  mutant_060:
+    mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
     direct_s04_result: PENDING
     distinct_s09_result: PENDING
     caught_gate_credit: false
@@ -83,7 +90,7 @@ campaign_evaluation:
   evidence_class: SAME_PROVIDER_NONBINDING
   binding_weight: 0
   decision: NOT_DUE
-  next_factor: DUPLICATE_IDEMPOTENCY_VERSION
+  next_factor: FABRICATED_CONSUMER_ACK
 
 recent_campaign_decisions:
   campaign_14:
@@ -117,21 +124,22 @@ routing:
   distinct_verifier_task_id: 6a539fb148bc8191a30b6009dbf22438
   distinct_verifier_route_status: AVAILABLE_AS_DISTINCT_SEAT_SAME_PROVIDER_NONBINDING_VIA_SLACK
   consumer: X14_CAMPAIGN_REDUCER_AND_X12_DURABLE_OBJECT_CAMPAIGN_REDUCER
-  current_verdict_status: MUTANT_059_DIRECT_ROUTE_REQUEST_PENDING_SLACK_POST
+  current_verdict_status: MUTANT_060_DIRECT_ROUTE_REQUEST_PENDING_SLACK_POST
   direct_candidate_priority_required: true
 
 current_campaign:
   campaign_ordinal: 15
-  accepted_wakes: 2
-  current_mutation_class: STALE_SOURCE_DIGEST
-  next_mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
-  gate_focus: EXACT_COMMIT_PATH_BLOB_AND_SOURCE_DIGEST_RECOMPUTATION
-  status: OPEN_WAKE_2_PENDING_DIRECT_VERDICTS
+  accepted_wakes: 3
+  current_mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+  next_mutation_class: FABRICATED_CONSUMER_ACK
+  gate_focus: EXPECTED_PRIOR_NEXT_VERSION_STRICT_INCREMENT_AND_IDEMPOTENCY_UNIQUENESS
+  status: OPEN_WAKE_3_PENDING_DIRECT_VERDICTS
   decision: NOT_DUE
 
 honest_flaw: >-
-  The stale digest is copied from the immediately prior X12 event, making the mismatch conspicuous once both paths are
-  inspected. It does not test hash collision, alternate-ref ambiguity, branch rewrite, index race, compromised verifier,
-  or a valid digest replayed with a subtly different canonicalization. Candidate discovery and digest dedup are
-  best-effort. S09 is a distinct seat but the same provider, so its evidence remains nonbinding with weight zero.
-  No source, scheduled task, durable-object state, connector, account, or external system was modified.
+  The duplicate version is conspicuous because expected_version and next_version become exactly equal while the receipt
+  still names observed version 62. It does not test duplicate idempotency keys with distinct payloads, nonce reuse,
+  replay across objects, wraparound, skipped versions, or a correctly incremented version paired with a stale digest.
+  Candidate discovery and digest dedup are best-effort. S09 is a distinct seat but the same provider, so its evidence
+  remains nonbinding with weight zero. No source, scheduled task, durable-object state, connector, account, or external
+  system was modified.
