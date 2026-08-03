@@ -1,0 +1,91 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+event_id: X11_TOOL_RETURN_CONTEXT_WINDOW_V1_WAKE_02_20260803T224147Z
+experiment_id: X11_TOOL_RETURN_CONTEXT_WINDOW_V1
+task_id_expected: 6a55089a9adc8191bda54541f7f9effa
+carrier: HFO_GEN133_X11
+wip: 1
+branch: agent/gen133-bootstrap-20260730
+prior_current_version: 73
+next_current_version: 74
+campaign_wake: 2
+campaign_target_wakes: 4
+accepted: true
+campaign_status: ACTIVE
+baseline:
+  prior_campaign: X11_WAKE_TIMING_PROVIDER_LAST_RUN_DRIFT_V2
+  prior_campaign_disposition: REVISE
+  prior_campaign_accepted_wakes: 4
+  prior_tool_return_window_samples: 1
+  prior_requested_line_count: 16
+  prior_returned_line_count: 16
+  source_commit: 07ff146196885fc1c1654ac1ddaacdd35233be8f
+  source_blob_expected: 3faa6c5e45ff9aeb10f27585b863c2c1a7f56900
+hypothesis: increasing_only_the_requested_line_window_against_one_immutable_Git_blob_will_produce_bounded_deterministic_tool_returns_or_an_explicit_truncation_or_error_class_without_mutation_operator_relay_or_sensitive_externalization
+controlled_factor: prompt_context_size
+exact_probe:
+  mode: fixed_commit_read_only_line_window_probe
+  source_commit: 07ff146196885fc1c1654ac1ddaacdd35233be8f
+  source_path: state/coordination/experiments/carrier_surface_x11/events/20260803T204001Z_WAKE_TIMING_PROVIDER_LAST_RUN_DRIFT_V2_WAKE_04_DECISION.yaml
+  requested_start_line: 1
+  requested_end_line: 32
+  requested_line_count: 32
+  all_other_probe_inputs_held_constant: true
+  mutation_permitted: false
+  persisted_fields_only:
+    - requested_line_count
+    - returned_line_count
+    - first_and_last_source_line_numbers_when_exposed
+    - source_blob_sha
+    - truncation_or_error_class
+    - latency_when_exposed
+    - operator_relay_minutes
+measured_result:
+  tool_status: SUCCESS
+  source_commit_resolved: true
+  source_blob_sha: 3faa6c5e45ff9aeb10f27585b863c2c1a7f56900
+  requested_line_count: 32
+  returned_line_count: 32
+  first_returned_source_line: 1
+  last_returned_source_line: 32
+  exact_requested_window_returned: true
+  truncation_observed: false
+  permission_class: AUTHENTICATED_GITHUB_FIXED_COMMIT_BOUNDED_LINE_READ_AVAILABLE
+  error_class: NONE
+  latency_exposed: false
+  latency_ms: null
+  operator_relay_minutes: 0
+  interactive_login_required: false
+  sensitive_readback_externalized: false
+  task_mutation_performed: false
+  repository_mutation_performed_by_probe: false
+  changed_capability: false
+  andon: false
+strongest_falsifier: the_same_commit_and_path_return_a_different_blob_or_line_count_for_the_same_1_through_32_request_the_connector_ignores_bounds_or_direct_native_prompt_context_telemetry_becomes_available_and_disagrees_with_this_proxy
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer:
+  - Reginleif
+  - Ratatoskr
+claim_ceiling: fixed_commit_Git_connector_line_window_behavior_only_not_native_model_prompt_tokens_context_capacity_attention_usage_or_truncation
+same_provider_independence_claim: false
+binding_weight: 0
+honest_flaw: this_probe_measures_the_Git_connectors_bounded_response_behavior_and_not_the_models_native_prompt_size_context_window_token_usage_attention_or_memory_and_latency_is_not_exposed
+next_probe:
+  campaign_wake: 3
+  mode: fixed_commit_read_only_line_window_probe
+  source_commit: 07ff146196885fc1c1654ac1ddaacdd35233be8f
+  source_path: state/coordination/experiments/carrier_surface_x11/events/20260803T204001Z_WAKE_TIMING_PROVIDER_LAST_RUN_DRIFT_V2_WAKE_04_DECISION.yaml
+  requested_start_line: 1
+  requested_end_line: 48
+  requested_line_count: 48
+  mutation_allowed: false
+  sensitive_readback_externalization_allowed: false
+slack_action: SILENT_UNCHANGED_PROBE
+valid_time_utc: 2026-08-03T22:41:47Z
+sealed: false
+---
+
+Wake 2 increased only the fixed Git line window from 16 to 32 lines. The same
+immutable commit and path returned exactly 32 source lines from the expected
+blob with no truncation or error. Capability classification is unchanged, so no
+Slack post is warranted. Wake 3 increases only the requested window to 48 lines.
