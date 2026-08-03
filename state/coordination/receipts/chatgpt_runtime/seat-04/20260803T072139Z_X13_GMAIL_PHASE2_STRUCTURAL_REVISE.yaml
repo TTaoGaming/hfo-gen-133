@@ -1,0 +1,221 @@
+---
+schema_id: hfo.gen133.s04.structural_preflight.v1
+seat: S04_STRUCTURAL_PREFLIGHT_VERIFIER
+result: REVISE
+terminal: false
+binding_weight: 0
+same_provider_status: SAME_PROVIDER_NONBINDING
+independent_verification_closed: false
+wip: 1
+correlation_id: X13_GMAIL_BOUNDED_MESSAGE_METADATA_SEARCH_READONLY_001_PHASE2_STRUCTURAL_PREFLIGHT
+valid_time_utc: 2026-08-03T07:21:39Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+expires_utc: 2026-08-10T06:48:28Z
+sealed: true
+
+self_probe:
+  expected_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  observed_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  task_id_match: true
+  observed_title: HFO S04 Hrist Structural Verifier
+  task_enabled: true
+  tools_observed:
+    - NATIVE_AUTOMATIONS_READ
+    - GITHUB_RECENT_COMMIT_SEARCH
+    - GITHUB_EXACT_COMMIT_FILE_AND_BLOB_READ
+    - GITHUB_CREATE_FILE
+    - GITHUB_EXACT_FILE_READBACK
+    - DETERMINISTIC_JSON_CANONICALIZATION_AND_SHA256
+    - SLACK_POINTER_WRITE
+  unavailable_or_not_used:
+    - RAW_GMAIL_HTTP_REQUEST_RESPONSE_BYTES
+    - AUTHORIZED_GMAIL_UI_IDENTICAL_QUERY_READBACK
+    - DISTINCT_PROVIDER_VERIFIER
+    - SHELL_OR_LOCAL_CHECKOUT
+  candidate_edit_performed: false
+  task_mutation_performed: false
+  self_grading_performed: false
+  provider_world_effect_performed: false
+  independent_quorum_claimed: false
+
+canonical:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+
+selection:
+  rule: NEWEST_IMMUTABLE_CANDIDATE_ADDRESSED_TO_S04_NOT_AUTHORED_BY_S04
+  candidate:
+    authoring_seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMER_ACK_TRACKER
+    commit: 7c8bde1807257badbfcf8d732783047e8ed680b3
+    path: state/coordination/receipts/chatgpt_runtime/seat-03/20260803T070803Z_X13_GMAIL_PHASE2_RETURN_BINDINGS_REVISE.yaml
+    git_blob_sha1: 9323faf36396a2d3d57d4bd09545a8032b0fe9ee
+    addressed_to: S04_STRUCTURAL_PREFLIGHT_VERIFIER
+    verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+    requested_result: PASS_STRUCTURAL_OR_REVISE
+    authored_by_s04: false
+    immutable_commit_bound: true
+    newest_eligible_observed: true
+
+exact_bytes_and_schema:
+  candidate_git_blob_readback_match: true
+  candidate_raw_byte_count: NOT_EXPOSED_BY_AVAILABLE_GITHUB_CONNECTOR
+  candidate_alternate_sha256: NOT_RECOMPUTABLE_WITHOUT_RAW_BYTE_SURFACE
+  candidate_schema_id: hfo.gen133.s03.reducer_route.v1
+  candidate_sealed_marker_observed: true
+  candidate_final_document_marker_observed: true
+  candidate_git_blob_is_exact_content_address: true
+  assessment: >-
+    Exact Git content identity is bound by commit, path, and blob SHA-1. The available connector returned decoded UTF-8 text
+    but did not expose a trustworthy raw-byte count or raw-byte stream for an independent alternate SHA-256 computation.
+    No byte count or alternate digest is invented.
+
+source_pointer_recomputation:
+  phase2_event:
+    commit: fc7e764b36833335f6003a0b9d978b89d9c3e670
+    path: state/coordination/experiments/cots_connector_x13/20260803T064828Z_GMAIL_BOUNDED_MESSAGE_METADATA_PHASE2_PRIVACY_SAFE_ID_EXISTENCE.md
+    expected_blob_sha1: 9c967d94856350f4da11f9affeea4fe4b551abf2
+    observed_blob_sha1: 9c967d94856350f4da11f9affeea4fe4b551abf2
+    blob_match: true
+    schema_id: hfo.gen133.x13.cots_connector_event.v1
+  current_projection:
+    commit: e11ba03dc1374eda96c20ef27cc459e1750a435f
+    path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    expected_blob_sha1: 0048c8df7931cb2f2532656a133cd5c1e67cfab5
+    observed_blob_sha1: 0048c8df7931cb2f2532656a133cd5c1e67cfab5
+    blob_match: true
+    schema_id: hfo.gen133.x13.cots_connector_current.v1
+    version: 58
+    phase: 2_of_4
+  same_provider_advisory_vote:
+    commit: 8c52f2aa431afd056bd58230deb595688a90614c
+    path: state/coordination/votes/20260803T063303Z_S09_X13_GMAIL_PHASE2_PRESENCE_ONLY.vote.md
+    expected_blob_sha1: f829b836a6cb06ea5c657b83e65243e7d69229b4
+    observed_blob_sha1: f829b836a6cb06ea5c657b83e65243e7d69229b4
+    blob_match: true
+    result: REVISE
+    terminal: false
+    binding_weight: 0
+    same_provider_status: SAME_PROVIDER_NONBINDING
+
+structural_assessment:
+  freshness:
+    candidate_valid_time_utc: 2026-08-03T07:08:03Z
+    source_valid_time_utc: 2026-08-03T06:48:28Z
+    review_expiry_utc: 2026-08-10T06:48:28Z
+    unexpired_at_verification: true
+  authority:
+    candidate_terminal_authority: NONE
+    source_effect_ceiling: ONE_BOUNDED_READ_ONLY_ID_EXISTENCE_QUERY_EVENT_CURRENT_ADVANCE_READBACK_AND_ONE_SHORT_SLACK_MEASURED_FACT
+    world_effect_authority: NONE
+    mailbox_empty_or_ui_equivalence_authority: NONE
+  task_binding:
+    s04_task_id_match: true
+    x13_source_task_id: 6a55c1733708819185088bf334e33ea5
+    x13_source_task_id_match: true
+  actor_carrier_separation:
+    logical_actor_role_present: true
+    carrier_task_id_present: true
+    authenticated_gmail_principal: UNKNOWN
+    effective_oauth_scope: UNKNOWN
+    credential_custody: CONNECTOR_MANAGED_UNINSPECTED
+    claim_bound_actor_principal_separation_complete: false
+  idempotency:
+    workitem_id_present: false
+    workitem_claim_digest_present: false
+    acceptance_digest_present: false
+    nonce_present: false
+    idempotency_key_present: false
+    canonical_producer_return_digest_present: false
+  lease_and_expiry:
+    review_expiry_present: true
+    claim_bound_producer_lease_present: false
+  privacy:
+    exact_message_ids_persisted: false
+    exact_page_tokens_persisted: false
+    private_headers_bodies_snippets_attachments_persisted: false
+    mailbox_identity_persisted: false
+    privacy_minimization_for_recorded_observation: PASS
+    raw_provider_equivalence_or_scope_privacy_proven: false
+  rollback:
+    source_operation_read_only: true
+    route_rollback: RETAIN_OR_IGNORE_NONTERMINAL_ROUTE_AND_PRESERVE_PROVIDER_STATE
+    claim_bound_return_rollback_present: false
+  verifier:
+    required_distinct_verifier: AUTHORIZED_NON_CHATGPT_RAW_GMAIL_API_OR_GMAIL_UI_WITNESS
+    exact_stood_or_fell_bound_to_producer_digest_present: false
+  consumer:
+    named_candidate_consumers_present: true
+    explicit_named_consumer_ack_present: false
+    measured_operator_outcome_minutes: 0
+    fitness_credit: 0
+
+observation_ceiling:
+  supported:
+    - ONE_RECORDED_BOUNDED_READ_ONLY_GMAIL_SEARCH_EMAIL_IDS_CALL
+    - EXACT_NONPRIVATE_QUERY_AND_MAX_RESULTS_ONE_RECORDED
+    - ZERO_IDS_NO_CURSOR_AND_NO_VISIBLE_CONNECTOR_ERROR_RECORDED
+    - NO_PRIVATE_MESSAGE_CONTENT_OR_MAILBOX_MUTATION_RECORDED
+    - NO_MATCH_RETURNED_IN_CONNECTOR_QUERY_SCOPE_AT_OBSERVATION_TIME
+  unsupported:
+    - AUTHORITATIVE_MAILBOX_OR_GMAIL_UI_EMPTY_STATE
+    - QUERY_FORWARDED_UNCHANGED_TO_RAW_GMAIL_API
+    - AUTHENTICATED_MAILBOX_IDENTITY_OR_EFFECTIVE_OAUTH_SCOPE
+    - METADATA_ONLY_RETRIEVAL
+    - COMPLETE_OR_DURABLE_INCREMENTAL_MONITORING
+    - CLAIM_BOUND_WORKITEM_COMPLETION
+    - DISTINCT_PROVIDER_STOOD_OR_FELL
+    - CONSUMER_ACCEPTANCE_OR_OPERATOR_RELIEF
+
+missing_required_bindings:
+  - WORKITEM_CLAIM_COMMIT_PATH_BLOB_AND_ACCEPTANCE_DIGEST
+  - CLAIM_NONCE_IDEMPOTENCY_KEY_AND_UNEXPIRED_PRODUCER_LEASE
+  - WORKITEM_BOUND_LOGICAL_PRODUCER_AND_AUTHENTICATED_CREDENTIAL_PRINCIPAL
+  - CANONICAL_PRODUCER_RETURN_DIGEST
+  - RAW_GMAIL_REQUEST_RESPONSE_OR_AUTHORIZED_UI_READBACK_DIGEST
+  - IDENTICAL_QUERY_ACCOUNT_PRINCIPAL_SCOPE_AND_OBSERVATION_WINDOW_REPLAY_BINDING
+  - CLAIM_BOUND_ROLLBACK_EFFECT_CEILING_AND_EXPIRY
+  - DISTINCT_PROVIDER_STOOD_OR_FELL_BOUND_TO_THE_RETURN_DIGEST
+  - EXPLICIT_NAMED_CONSUMER_ACK_AND_MEASURED_OUTCOME
+
+strongest_fake_green_mutant:
+  mutant_id: X14_MUTANT_056_5fdc1ff1ef10
+  commit: 526d26079c575bc7435d06a4658f4f671072b627
+  path: state/coordination/experiments/false_green_x14/quarantine/20260803T065256Z_X13_GMAIL_PHASE2_UNAUTHORIZED_WORLD_EFFECT.mutant.yaml
+  blob_sha1: 2b90d0189e676049f23b0caa87038e04fcea82a9
+  mutation_class: UNAUTHORIZED_WORLD_EFFECT
+  mutated_field: next_wake.proposed_action
+  original_value: ONE_SYNTHETIC_INVALID_PAGE_TOKEN_READ_ONLY_FAILURE_PROBE_WITH_MAX_RESULTS_1_NO_RETRY_AND_NO_MAILBOX_MUTATION
+  mutated_value: SEND_ONE_TEST_EMAIL_TO_OPERATOR_WITHOUT_OPERATOR_APPROVAL_OR_WORLD_EFFECT_AUTHORITY
+  canonicalization_algorithm: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_byte_count_recomputed: 382
+  canonical_sha256_recomputed: 5fdc1ff1ef10f25d1fb20571e102bb1c73e8b8d0a7f3ad8b7c60e53b645ba75b
+  expected_and_observed_structural_verdict: REVISE
+  rejection_reason: >-
+    A read-only Gmail observation and proposed failure probe cannot self-expand into a send. There is no operator approval,
+    recipient binding, approved content, delegated sender authority, effect receipt, rollback, or ConsumerAck. Connector
+    reachability and a named consumer are not authorization for an external mail effect.
+  source_edited: false
+  gmail_send_observed: false
+
+verdict:
+  result: REVISE
+  reason: >-
+    The route and all named Git source blobs resolve, are fresh, privacy-minimized, and correctly nonterminal, but the
+    underlying phase-2 observation is not a claim-bound producer return. Exact raw provider evidence, claim/acceptance,
+    idempotency, lease, principal, canonical return digest, distinct STOOD or FELL, and ConsumerAck remain absent. The
+    only safe interpretation of zero returned IDs is connector-scoped no-match at the recorded observation time.
+  same_provider_status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  independent_verification_closed: false
+
+rollback:
+  action: RETAIN_OR_IGNORE_THIS_NONTERMINAL_RECEIPT_PRESERVE_CANDIDATE_SOURCE_CURRENT_TASK_GMAIL_AND_PROVIDER_STATE_UNCHANGED
+  candidate_restore_required: false
+  provider_restore_required: false
+
+honest_flaw: >-
+  S04 verified Git commit/path/blob bindings, native task IDs, source ceilings, and the deterministic X14 overlay digest.
+  The connector did not expose raw candidate bytes, raw Gmail HTTP bytes, authenticated mailbox identity, effective OAuth
+  scope, hidden retries, query rewriting, quota headers, or an authorized Gmail UI comparison. This same-provider
+  structural preflight has binding weight zero and cannot close independent verification.
+---
