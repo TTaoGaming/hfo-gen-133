@@ -1,0 +1,132 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_GOOGLE_CALENDAR_BOUNDED_EVENT_WINDOW_READONLY_001
+event_type: PHASE4_ADOPTION_DECISION
+candidate: Google_Calendar_bounded_event_window_readonly_surface
+carrier_task_id: 6a55c1733708819185088bf334e33ea5
+carrier_task_id_match: true
+wip: 1
+expected_current_version: 55
+next_current_version: 56
+campaign_wake: 4_of_4
+phase_4_decision: ADOPT_WITH_GATES
+phase_4_disposition: ADOPT_WITH_GATES_FOR_BOUNDED_PRIVACY_MINIMIZED_SOURCE_BOUND_READS_ONLY
+additional_calendar_capability_call_this_phase: false
+operator_minutes_removed_measured: 0
+operator_minutes_removed_estimate_per_schedule_window_check: 1_to_4_UNVALIDATED
+fitness_credit: 0_PENDING_SOURCE_BOUND_CONSUMER_ACK_AND_MEASURED_OPERATOR_OUTCOME
+adoption_credit: 1
+custom_code_avoided_estimate:
+  authenticated_event_list_time_bounds_pagination_and_normalization: 45_to_140_LOC_UNVALIDATED
+custom_policy_not_avoided:
+  - STRICT_CLIENT_SIDE_RFC3339_PARSE_AND_BOUND_ORDER_VALIDATION
+  - EMPTY_RESULT_STATE_CLASSIFICATION_AND_NEGATIVE_EVIDENCE_HANDLING
+  - DATA_MINIMIZATION_AND_PRIVATE_EVENT_FIELD_HANDLING
+  - ACCOUNT_IDENTITY_CREDENTIAL_TYPE_AUTHORITY_AND_LEAST_PRIVILEGE
+  - TIMEZONE_ALL_DAY_LONG_RUNNING_AND_RECURRENCE_SEMANTICS
+  - PAGINATION_COMPLETENESS_ORDERING_AND_DUPLICATE_CONTROL
+  - SNAPSHOT_INCREMENTAL_SYNC_AND_TOKEN_DURABILITY
+  - RATE_LIMIT_RETRY_BACKOFF_AND_COST_ACCOUNTING
+  - INDEPENDENT_VERIFICATION
+credentials:
+  connector_reached_primary_calendar_without_error: true
+  operator_supplied_credentials: 0
+  authenticated_identity: UNKNOWN
+  credential_type: UNKNOWN
+  effective_oauth_scope: UNKNOWN
+  access_role: NOT_EXPOSED
+  credential_custody: UNKNOWN
+  least_privilege_verified: false
+campaign_measurements:
+  phase_1_success_path_queries: 1
+  phase_2_narrow_success_path_queries: 1
+  phase_3_inverted_bound_queries: 1
+  total_connector_queries: 3
+  total_returned_events: 4
+  success_path_queries_with_next_page_token: 2
+  carrier_retries: 0
+  paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
+  actual_upstream_request_count: UNKNOWN
+  actual_quota_units_consumed: UNKNOWN
+  live_project_quota_class: UNKNOWN
+  billing_counters: NOT_EXPOSED
+measured_facts:
+  bounded_primary_calendar_event_window_reads_succeeded: true
+  small_page_caps_and_cursor_presence_observed: true
+  overlapping_event_start_before_lower_bound_observed_twice: true
+  full_private_event_content_surfaced_by_default: true
+  inverted_valid_RFC3339_bounds_returned_empty_success_shape: true
+  malformed_bounds_and_valid_empty_window_indistinguishable_without_local_validation: true
+  connector_surface_raw_parameter_forwarding_or_rewrite: UNKNOWN
+durability: EPHEMERAL_POINT_IN_TIME_QUERY_OVER_MUTABLE_CALENDAR_STATE_NOT_A_SNAPSHOT_SYNC_OR_EVENT_STREAM
+observability: NORMALIZED_EVENT_FIELDS_COUNT_CURSOR_PRESENCE_ERROR_FIELDS_CLAMP_FIELDS_AND_LATENCY_VISIBLE_RAW_HTTP_REQUEST_RESPONSE_REQUEST_ID_COLLECTION_ETAG_ACCESS_ROLE_SYNC_TOKEN_QUOTA_HEADERS_PARAMETER_FORWARDING_ORDERING_AND_UPSTREAM_RETRIES_HIDDEN
+portability: MEDIUM_RFC3339_WINDOW_AND_BOUND_ORDER_VALIDATION_PORTABLE_GOOGLE_PRIMARY_ALIAS_EVENT_IDS_RECURRENCE_FIELDS_PAGE_TOKENS_AND_OVERLAP_SEMANTICS_PROVIDER_SPECIFIC
+admitted_scope:
+  - BOUNDED_READ_ONLY_EVENT_WINDOW_DISCOVERY_ON_AN_EXPLICIT_CALENDAR_ALIAS
+  - EXPLICIT_LOCALLY_VALIDATED_RFC3339_TIME_MIN_TIME_MAX_RESPONSE_TIMEZONE_AND_SMALL_PAGE_CAP
+  - PRIVACY_MINIMIZED_COUNTS_TIME_BUCKETS_AND_SOURCE_BOUND_REFERENCES
+  - POSITIVE_EVENT_OBSERVATIONS_WITH_OBSERVATION_TIME_AND_EXACT_QUERY_CONTEXT
+  - CONTINUATION_TOKEN_PRESENCE_AS_A_PAGINATION_SIGNAL_WITHOUT_TOKEN_VALUE_PERSISTENCE
+excluded_scope:
+  - EVENT_CREATE_UPDATE_DELETE_MOVE_IMPORT_OR_QUICK_ADD
+  - INVITATION_RESPONSE_ATTENDEE_CHANGE_EMAIL_OR_NOTIFICATION_EFFECT
+  - DURABLE_FULL_CALENDAR_SNAPSHOT_OR_INCREMENTAL_SYNC
+  - COMPLETENESS_NO_CONFLICT_IDENTITY_ACCESS_ROLE_SCOPE_WRITE_AUTHORITY_OR_BILLING_CLAIMS
+  - UNNECESSARY_PERSISTENCE_OF_EVENT_TEXT_IDS_URLS_ATTENDEES_LOCATIONS_OR_TOKEN_VALUES
+mandatory_gates:
+  - VALIDATE_RFC3339_PARSEABILITY_AND_REQUIRE_TIME_MIN_STRICTLY_LESS_THAN_TIME_MAX_BEFORE_CONNECTOR_INVOCATION
+  - CLASSIFY_INVALID_LOCAL_BOUNDS_SEPARATELY_FROM_VALID_EMPTY_WINDOW_NO_MATCH_PERMISSION_RATE_LIMIT_TRANSPORT_AND_PROVIDER_FAILURE
+  - NEVER_TRANSLATE_AN_EMPTY_CONNECTOR_ARRAY_INTO_NO_CALENDAR_CONFLICT_WITHOUT_VALIDATED_BOUNDS_AND_AN_ADMITTED_COMPLETENESS_STRATEGY
+  - PRESERVE_EXACT_VALIDATED_BOUNDS_CALENDAR_ALIAS_RESPONSE_TIMEZONE_PAGE_CAP_AND_OBSERVATION_TIME
+  - INTERPRET_TIME_MIN_AS_EXCLUSIVE_LOWER_BOUND_ON_EVENT_END_AND_TIME_MAX_AS_EXCLUSIVE_UPPER_BOUND_ON_EVENT_START
+  - TREAT_OVERLAPPING_LONG_RUNNING_AND_ALL_DAY_EVENTS_AS_VALID_MATCHES
+  - TREAT_MAX_RESULTS_AS_A_PAGE_CAP_NOT_TOTAL_MATCH_COUNT
+  - TREAT_NEXT_PAGE_TOKEN_PRESENCE_AS_DIRECT_EVIDENCE_OF_MORE_WRAPPER_VISIBLE_RESULTS
+  - MINIMIZE_EVENT_CONTENT_IN_MEMORY_BEFORE_GIT_SLACK_OR_DOWNSTREAM_FANOUT
+  - DO_NOT_PERSIST_EVENT_IDS_TITLES_DESCRIPTIONS_URLS_ATTENDEES_LOCATIONS_OR_TOKEN_VALUES_UNLESS_REQUIRED_BY_AN_ADMITTED_CONSUMER
+  - DO_NOT_INFER_IDENTITY_ACCESS_ROLE_OAUTH_SCOPE_WRITE_OR_NOTIFICATION_AUTHORITY_FROM_READ_SUCCESS
+  - DO_NOT_CLAIM_SNAPSHOT_STABILITY_COMPLETENESS_OR_DURABILITY_FROM_ONE_QUERY_OR_ONE_PAGE
+  - KEEP_ALL_MUTATING_INVITATION_EMAIL_AND_NOTIFICATION_CAPABILITIES_EXCLUDED
+strongest_falsifier: SAME_CONTEXT_RAW_EVENTS_LIST_OR_CALENDAR_UI_SHOWS_A_MATERIAL_FALSE_NEGATIVE_FOR_A_LOCALLY_VALIDATED_WINDOW_OR_THE_CONNECTOR_CONTINUES_TO_RETURN_SEMANTIC_EMPTY_SUCCESS_FOR_INVALID_INPUT_WITHOUT_A_CALLER_SIDE_GATE
+verifier: RAW_GOOGLE_CALENDAR_EVENTS_LIST_WITH_IDENTICAL_CALENDAR_TIME_MIN_TIME_MAX_TIMEZONE_MAX_RESULTS_AND_PAGE_CONTEXT_PLUS_CALENDAR_UI_FOR_VALID_WINDOWS
+consumer:
+  - HFO_EXECUTIVE_ASSISTANT_BOUNDED_DAY_PLAN_READS
+  - HFO_DEADLINE_AND_CONFLICT_DETECTION_WITH_PRIVACY_MINIMIZATION
+  - HFO_WAITING_CLOCK_AND_MORNING_PACKET_SOURCE_BOUND_OBSERVATIONS
+honest_flaw: NO_RAW_API_OR_CALENDAR_UI_COMPARISON_NO_VALID_EMPTY_WINDOW_TEST_NO_VALID_PAGE_TRAVERSAL_NO_IDENTITY_SCOPE_OR_ACCESS_ROLE_PROOF_NO_PERMISSION_RATE_LIMIT_OR_TRANSIENT_FAILURE_NO_CONSUMER_ACK_ZERO_MEASURED_OPERATOR_MINUTES_AND_CONNECTOR_DEFAULT_SUCCESS_PAYLOADS_EXPOSE_MORE_PRIVATE_EVENT_DATA_THAN_COUNT_ONLY_CONSUMERS_REQUIRE
+official_contract_basis_checked_2026_08_03:
+  events_list: https://developers.google.com/workspace/calendar/api/v3/reference/events/list
+  errors: https://developers.google.com/workspace/calendar/api/guides/errors
+  usage_limits: https://developers.google.com/workspace/calendar/api/guides/quota
+  incremental_sync: https://developers.google.com/workspace/calendar/api/guides/sync
+  time_min_semantics: EXCLUSIVE_LOWER_BOUND_ON_EVENT_END
+  time_max_semantics: EXCLUSIVE_UPPER_BOUND_ON_EVENT_START
+  bound_order_requirement: TIME_MIN_MUST_BE_SMALLER_THAN_TIME_MAX_WHEN_BOTH_SET
+  max_results_semantics: PAGE_MAXIMUM_NOT_TOTAL_COUNT
+  next_page_token_semantics: MORE_RESULTS_AVAILABLE
+  next_sync_token_semantics: FINAL_PAGE_ONLY
+  expired_sync_token_behavior: HTTP_410_FULL_RESYNC_REQUIRED
+prior_event:
+  commit: 365760ad009d33cf8a641c344e902169123cad0a
+  path: state/coordination/experiments/cots_connector_x13/20260803T034626Z_GOOGLE_CALENDAR_EVENT_WINDOW_PHASE3_INVERTED_BOUNDS_SEMANTIC_EMPTY_ANDON.md
+  blob_sha: b3f8a37862c3f4ba4bfd8846694c2aa9a3f90b91
+next_campaign:
+  experiment_id: X13_GMAIL_BOUNDED_MESSAGE_METADATA_SEARCH_READONLY_001
+  phase: 1_of_4
+  proposed_action: OFFICIAL_CONTRACT_BASELINE_AND_ONE_BOUNDED_READ_ONLY_METADATA_SEARCH
+  excluded_effects: SEND_DRAFT_MODIFY_LABEL_ARCHIVE_TRASH_DELETE_ATTACHMENT_DOWNLOAD_OR_SECRET_EXPOSURE
+review_expiry_utc: 2026-08-10T04:49:31Z
+valid_time_utc: 2026-08-03T04:49:31Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+sealed: true
+---
+
+# Phase 4 decision — ADOPT_WITH_GATES
+
+Adopt the Google Calendar connector for bounded, read-only event-window discovery only when the caller supplies explicit locally validated RFC3339 bounds, an explicit calendar alias and response timezone, a small page cap, and privacy-minimized downstream handling.
+
+The campaign observed two successful bounded reads, cursor presence on both success-path pages, and valid overlap behavior for an event whose start preceded the lower bound. It also observed that full private event content is surfaced by default and that inverted bounds returned an empty success shape rather than a visible error at the connector surface.
+
+The decision is therefore not a broad Calendar endorsement. Empty results are non-authoritative unless local validation passed and the consumer has an admitted completeness strategy. Event mutation, invitations, notifications, durable snapshot claims, identity and scope claims, and unnecessary persistence of private event fields remain excluded.
+
+Measured operator relief remains zero. Surfaced cost was zero, while actual quota consumption, credential scope, upstream retries, and billing state remain unknown. No outcome credit is earned until a source-bound consumer records a measured result and independent verification closes the strongest falsifier.
