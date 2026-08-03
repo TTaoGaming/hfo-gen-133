@@ -1,0 +1,126 @@
+---
+schema_id: hfo.gen133.heritage_reuse_result.v1
+result_id: S15_HTML5_SNAKE_SHARED_COMMAND_SEAM_20260803T225427Z
+result: RETURN_REUSABLE_PRIOR_FAILURE_ANTIBODY
+valid_time_utc: 2026-08-03T22:54:27Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+seat: 15
+wip: 1
+carrier_identity: DISPOSABLE_SCHEDULED_CARRIER_NOT_LINEAGE
+expected_task_id: 6a52f485409c8191aa06ea7911add3f3
+observed_task_id: 6a52f485409c8191aa06ea7911add3f3
+task_id_match: true
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+sealed: false
+---
+
+self_probe:
+  model_claim: GPT-5.6 Thinking
+  model_attestation_ceiling: runtime claim only; no cryptographic model attestation available
+  tools_observed:
+    github: authenticated search, exact file read, immutable create, and readback
+    slack: authenticated public-channel pointer after Git readback only
+    file_library: available_but_not_used
+    google_drive: available_but_not_used
+  task_mutation_performed: false
+  prohibited_world_effect_performed: false
+
+current_work_item:
+  work_item_id: SPATIAL_FACTORY_HTML5_SNAKE_PENDING_DIRECTION_COMMAND_GATE_001
+  claim:
+    commit: bb99518b7815afcc1fa5d48cc8c8a9e614b3d815
+    path: projects/spatial-app-factory/claims/20260803T220442Z_SPATIAL_FACTORY_HTML5_SNAKE_PENDING_DIRECTION_COMMAND_GATE.claim.yaml
+    blob: 515a1a8af19b8ae4e1c523c1b85241522a1ed9e6
+    lease_expires_utc: 2026-08-04T02:04:42Z
+  current_packet:
+    path: projects/spatial-app-factory/dispatch/20260803T222014Z_SPATIAL_FACTORY_HTML5_SNAKE_PENDING_DIRECTION_COMMAND_GATE_HOLD.executor.yaml
+    blob: ec9fa831ce2fe2b1f1f86db750bb298d2f69dcf3
+    result: HOLD_UNTIL_EXACT_S04_PASS_AND_DIRECT_EXECUTOR_INGRESS
+  named_evidence_gap: >-
+    The current contract requires one shared requestDirection(nextDirection) command used by native keyboard
+    and spatial input, while explicitly forbidding synthetic keyboard dispatch. A reusable prior invariant is
+    needed to prevent the producer from replacing the native path or creating a second synthetic-only path.
+
+search_and_dedup:
+  gen133_searched_first: true
+  exact_queries:
+    - synthetic keyboard dispatch integration seam
+    - SPATIAL_FACTORY_HTML5_SNAKE_PENDING_DIRECTION_COMMAND_GATE_001 heritage S15
+  relevant_gen133_matches:
+    - projects/spatial-app-factory/heritage/20260731T225548Z_S15_FAB_NATIVE_BUTTON_AND_SCRIPT_SEAM_SOURCE_POINTER.yaml
+    - projects/spatial-app-factory/research/20260803T133218Z_S08_HEXTRIS_SYNTHETIC_KEYBOARD_KEYCODE_BOUNDARY_EVIDENCE_CARD.md
+  existing_s15_result_for_current_work_item: false
+  duplicate_result_found: false
+  older_repository_or_private_body_search_needed: false
+
+heritage_source:
+  artifact_kind: preserve_native_input_path_and_add_one_shared_command_seam_failure_antibody
+  original_date_utc: 2026-07-31T22:55:48Z
+  repository: TTaoGaming/hfo-gen-133
+  path: projects/spatial-app-factory/heritage/20260731T225548Z_S15_FAB_NATIVE_BUTTON_AND_SCRIPT_SEAM_SOURCE_POINTER.yaml
+  commit: 8382aeb66adea6ec312411a7f3550683f495258a
+  blob: d1c580b7a8ed79032cf48338ee8e447e624a2942
+  underlying_private_source_pointer:
+    repository: TTaoGaming/TAGS
+    path: prototypes/fab-prototype.html
+    commit: 1271e25306fe8ef8baea32704cf022435703d498
+    blob: 63e5bfe5a158781c207c5636537172bdbc838023
+  private_body_copied: false
+
+supported_claims:
+  - Preserve the existing native input path and route it through the same underlying command function exposed to the spatial producer.
+  - Add the smallest additive command seam; do not delete, replace, or bypass native handlers merely to make spatial input easier.
+  - Do not use document.dispatchEvent, KeyboardEvent synthesis, or another synthetic-keyboard shim as the integration seam.
+  - A shared direct command seam reduces divergence between native and spatial traces and gives the verifier one behavioral boundary to test.
+
+excluded_claims:
+  - This heritage does not define or prove Snake committed-direction or pending-direction state semantics.
+  - It does not prove first-valid-perpendicular-wins, inverse rejection, one-apply-per-tick, restart clearing, or 8-fps/60-fps parity.
+  - It does not prove the pinned upstream files, license notice, zero-network condition, branch creation, implementation, tests, browser behavior, or ConsumerAck.
+  - It grants no authority to route, execute, merge, deploy, publish, send, spend, mutate tasks, or change accounts or security state.
+
+reuse_contract:
+  consume_only:
+    - retain native keyboard listeners as producers of requestDirection(nextDirection), not as a separate state-mutating path
+    - expose the same direct requestDirection(nextDirection) function to the spatial producer
+    - reject any implementation whose spatial path synthesizes keyboard or document events
+    - keep all direction-state mutation behind the one shared command seam
+  acceptance_relevance:
+    contract_6_shared_requestDirection: strong_architectural_invariant
+    contract_11_no_synthetic_keyboard_dispatch: direct_failure_antibody
+    native_spatial_trace_parity: supporting_invariant_only
+    pending_direction_tick_rules: not_supported
+  consumption_status: OFFERED_TO_LIVE_WORK_ITEM_NOT_YET_ACKNOWLEDGED
+  credit_rule: >-
+    Heritage credit remains zero unless S04, S06, or S07 binds this exact receipt path to the current WorkItem
+    and records CONSUMED, or rejects it with evidence. A Slack pointer alone is not consumption.
+
+privacy_ceiling:
+  source_visibility: PRIVATE_REPOSITORY_POINTER_PLUS_PUBLIC_SANITIZED_COORDINATION_METADATA
+  permitted_gen133_content: commit/path/blob pointers, structural invariant, exclusions, and reuse contract only
+  forbidden: private source body, credentials, account data, private Slack bodies, or proprietary implementation text
+
+consumer:
+  primary: S06_CODE_WORK_PACKET_COMPILER
+  execution_consumer: S07_BOUNDED_CODE_PATCH_BUILDER_after_exact_S04_PASS
+  exact_use: bind the shared-command-seam invariant into the executor or producer return for SPATIAL_FACTORY_HTML5_SNAKE_PENDING_DIRECTION_COMMAND_GATE_001
+  required_ack: CONSUMED or REJECTED_WITH_EVIDENCE bound to this receipt path and exact current WorkItem
+
+verifier:
+  structural: S04_STRUCTURAL_PREFLIGHT_VERIFIER
+  technical: DISTINCT_BROWSER_CAPABLE_NONPRODUCER
+  verification_target:
+    - native keyboard and spatial producers invoke one direct requestDirection function
+    - no synthetic KeyboardEvent or document.dispatchEvent integration seam exists
+    - no static seam claim is upgraded into tick-buffer correctness without exact traces
+
+expiry:
+  heritage_offer_expires_utc: 2026-08-04T02:04:42Z
+  after_expiry: historical failure antibody only unless a renewed live WorkItem binds it
+
+honest_flaw: >-
+  The reused artifact was derived from a native FAB button plus additive script-load seam, not from a Snake game
+  or a directional tick buffer. Only the preserve-native-input/add-one-shared-command invariant transfers. This
+  carrier did not inspect or copy the private target body, execute either repository, recompute acceptance digests,
+  run tests, capture network traffic, or verify current producer uptake.
