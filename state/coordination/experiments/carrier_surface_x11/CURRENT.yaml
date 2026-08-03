@@ -1,69 +1,77 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
-experiment_id: X11_PROJECT_CONTEXT_VISIBILITY_V1
-current_version: 55
-accepted_wakes: 3
+experiment_id: X11_CALENDAR_METADATA_READ_VISIBILITY_V1
+current_version: 56
+accepted_wakes: 0
 target_wakes_before_decision: 4
-controlled_factor: project_vs_non_project_context
+controlled_factor: google_calendar_metadata_read_visibility
 campaign_status: ACTIVE
 current_disposition: null
 prior_campaign:
-  experiment_id: X11_GMAIL_METADATA_READ_VISIBILITY_V1
-  final_version: 52
-  disposition: KEEP
+  experiment_id: X11_PROJECT_CONTEXT_VISIBILITY_V1
+  final_version: 56
+  disposition: RESEAT_VARIABLE
   accepted_wakes: 4
-  decision_scope: bounded_exact_query_execution_and_sanitized_match_count_checks_only
+  decision_scope: explicit_runtime_project_metadata_visibility_only_not_project_membership_context_inheritance_or_cross_context_comparison
 last_event:
-  commit: eccf967aed001b407579ee39b159ae7bb857bbc3
-  path: state/coordination/experiments/carrier_surface_x11/events/20260803T034030Z_PROJECT_CONTEXT_VISIBILITY_WAKE_03.yaml
-  blob: c81865c99bf346472c83809db92977b6b5379473
+  commit: f5a47444e53bc7c0628791f86e145477823a19a3
+  path: state/coordination/experiments/carrier_surface_x11/events/20260803T043854Z_PROJECT_CONTEXT_VISIBILITY_WAKE_04_DECISION.yaml
+  blob: d859881fb100d17fc61f2086637ab0038092d397
 baseline_result:
-  project_metadata_surface_checked: true
-  project_metadata_explicitly_exposed: false
-  project_identity_persisted: false
-  project_identity_inferred: false
+  calendar_metadata_surface_checked: false
+  query_executed: false
+  sanitized_match_count: null
   authentication_requested: false
   interactive_login_required: false
+  event_content_persisted: false
+  event_identifier_externalized: false
   task_mutation_performed: false
   sensitive_readback_externalized: false
   changed_capability: false
   andon: false
-  permission_class: NATIVE_RUNTIME_METADATA_VISIBLE_PROJECT_ASSOCIATION_FIELD_NOT_EXPOSED
-  error_class: NONE
+  permission_class: NOT_YET_PROBED
+  error_class: NOT_YET_PROBED
   latency_exposed: false
   latency_ms: null
   operator_relay_minutes: 0
-  claim_ceiling: explicit_runtime_project_metadata_visibility_only_not_project_membership_context_inheritance_or_cross_context_comparison
+  claim_ceiling: bounded_calendar_connector_query_execution_and_sanitized_match_count_visibility_only_not_calendar_completeness_content_access_or_independent_verification
 campaign_gates:
   - no_task_mutation
   - no_interactive_login
-  - inspect_only_explicit_native_runtime_metadata
-  - no_inference_from_prompt_repository_or_conversation_text
-  - persist_only_boolean_status_permission_and_error_class
-  - no_project_identity_externalization
+  - fixed_bounded_time_window
+  - impossible_public_query_marker
+  - max_results_one
+  - persist_only_tool_status_permission_error_class_match_count_and_exposed_latency
+  - no_event_content_persistence
+  - no_event_identifier_externalization
   - no_sensitive_readback_externalization
   - same_provider_binding_weight_zero
-strongest_falsifier: explicit_native_runtime_project_association_metadata_is_present_while_the_probe_records_not_exposed_or_absent_while_the_probe_records_exposed
+strongest_falsifier: connector_returns_an_authentication_or_permission_error_or_the_fixed_impossible_marker_query_cannot_execute_within_the_bounded_window
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 next_consumer:
   - Reginleif
   - Ratatoskr
-honest_flaw: repeated_absence_of_an_exposed_project_association_field_still_does_not_prove_the_run_is_non_project_or_that_project_context_is_unavailable_internally
-next_factor: project_vs_non_project_context
+honest_flaw: a_zero_result_for_an_impossible_marker_only_measures_bounded_query_execution_and_does_not_establish_calendar_completeness_indexing_quality_or_content_access
+next_factor: google_calendar_metadata_read_visibility
 next_probe:
-  experiment_id: X11_PROJECT_CONTEXT_VISIBILITY_V1
-  campaign_wake: 4
-  mode: explicit_runtime_project_metadata_boolean_probe_and_campaign_decision
-  exact_action: repeat_inspection_of_only_explicit_native_runtime_metadata_for_project_association_then_record_KEEP_REVISE_RESEAT_VARIABLE_or_HOLD_and_select_next_factor
-  expected_result_class: PROJECT_METADATA_EXPLICITLY_EXPOSED_OR_NOT_EXPOSED_PLUS_CAMPAIGN_DECISION
-  inference_from_prompt_repository_or_conversation_text_allowed: false
+  experiment_id: X11_CALENDAR_METADATA_READ_VISIBILITY_V1
+  campaign_wake: 1
+  mode: bounded_impossible_marker_search_count_probe
+  exact_action: search_primary_calendar_in_a_fixed_bounded_window_for_the_impossible_public_marker_HFO_X11_IMPOSSIBLE_CALENDAR_PROBE_6A55089A9ADC8191BDA54541F7F9EFFA_and_persist_only_tool_status_permission_error_class_match_count_and_exposed_latency
+  time_min_utc: 2099-01-01T00:00:00Z
+  time_max_utc: 2099-01-02T00:00:00Z
+  query_marker: HFO_X11_IMPOSSIBLE_CALENDAR_PROBE_6A55089A9ADC8191BDA54541F7F9EFFA
+  calendar_id: primary
+  max_results: 1
   interactive_login_allowed: false
+  event_content_persistence_allowed: false
+  event_identifier_externalization_allowed: false
   sensitive_readback_externalization_allowed: false
   mutation_allowed: false
-  claim_ceiling: explicit_runtime_project_metadata_visibility_only_not_project_membership_context_inheritance_or_cross_context_comparison
-slack_action: YIELD_SILENT_UNCHANGED
-updated_valid_time_utc: 2026-08-03T03:40:30Z
+  claim_ceiling: bounded_calendar_connector_query_execution_and_sanitized_match_count_visibility_only_not_calendar_completeness_content_access_or_independent_verification
+slack_action: POST_CAMPAIGN_DECISION_AFTER_GIT_READBACK
+updated_valid_time_utc: 2026-08-03T04:38:54Z
 sealed: false
 ---
 
-Project-context visibility wake 3 repeated the bounded boolean-only probe and again found no explicit native runtime Project-association field. No Project identity was inferred from prompt text, repository paths, or conversation content. The unchanged negative result remains insufficient to classify this run as Project or non-Project.
+Project-context visibility closed RESEAT_VARIABLE after four negative metadata-visibility samples failed to establish a known Project-versus-non-Project comparison. The active campaign now tests only bounded Google Calendar connector query execution with an impossible public marker and persists no event content or identifiers.
