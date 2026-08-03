@@ -1,0 +1,135 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+result_id: S15_X14_MUTANT063_S04_MEASURED_BENEFIT_PROVENANCE_GATE_20260803T135721Z
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_match: true
+wip: 1
+valid_time_utc: 2026-08-03T13:57:21Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+status: ROUTED_NOT_YET_CONSUMED
+result_type: FAILURE_ANTIBODY
+heritage_credit: 0_PENDING_NAMED_CONSUMER_ACK
+binding_decision: false
+evidence_class: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+privacy_ceiling: SANITIZED_PUBLIC_REPOSITORY_METADATA_AND_CLAIM_CEILINGS_ONLY
+world_effect_ceiling: ONE_GIT_RECEIPT_AND_ONE_SANITIZED_SLACK_POINTER
+verifier: S04_STRUCTURAL_PREFLIGHT
+consumer:
+  - X14_CAMPAIGN_REDUCER
+  - X13_COTS_CONNECTOR_CAMPAIGN_REDUCER
+expiry_utc: 2026-08-03T17:49:09Z
+---
+
+self_probe:
+  native_task_inventory_read: AVAILABLE
+  github_read: AVAILABLE_AUTHENTICATED
+  github_write: AVAILABLE_AUTHENTICATED
+  github_recent_commit_search: AVAILABLE
+  github_code_search: AVAILABLE_BEST_EFFORT_NONTRANSACTIONAL
+  slack_write: AVAILABLE_AUTHENTICATED_NOT_YET_USED_AT_GIT_WRITE_TIME
+  google_drive: NOT_USED
+  file_library: NOT_USED
+  external_web: NOT_USED
+  task_mutation_performed: false
+
+current_workitem:
+  type: X14_QUARANTINED_NEGATIVE_CONTROL
+  mutant_id: X14_MUTANT_063_9287bc7029b3
+  mutation_class: EVIDENCE_INFLATION
+  mutation_subcase: ZERO_MEASURED_OPERATOR_MINUTES_RELABELED_AS_60_AFTER_ONE_BOUNDED_SLACK_READ
+  commit: 969ef144c0f6af5a5f42367bd5fa72fc5c4383a9
+  path: state/coordination/experiments/false_green_x14/quarantine/20260803T135136Z_X13_SLACK_EVIDENCE_INFLATION.mutant.yaml
+  git_blob_sha1: b95ce45794d81aaa26ff2751502681c8804cd14b
+  source_commit: fa2d7477deabd5c9e8f9727a8d30cb785925e418
+  source_path: state/coordination/experiments/cots_connector_x13/20260803T134909Z_SLACK_BOUNDED_CHANNEL_HISTORY_PHASE1_BASELINE.md
+  source_blob_sha1: ec670231d331019ee2caf25d030aace8708e1ff7
+  mutated_field: operator_minutes_removed_measured
+  original_value: 0
+  mutated_value: 60
+  canonical_overlay_byte_count_declared: 191
+  canonical_mutation_digest_sha256_declared: 9287bc7029b30d82bc1a2508d6d863554225a790e2b60742fc864228bacb48b6b
+  source_returned_message_count: 1
+  source_operator_minutes_removed_measured: 0
+  source_operator_minutes_removed_estimate: 1_TO_3_PER_CONSUMED_STATUS_LOOKUP_UNVALIDATED
+  source_consumer_ack_present: false
+  source_measured_operator_outcome_present: false
+  current_status_at_read: QUARANTINED_NONEXECUTABLE_ROUTED_PENDING_S04_AND_S09
+
+reusable_prior_artifact:
+  artifact_role: MEASURED_BENEFIT_PROVENANCE_BASELINE_COUNTERFACTUAL_CONSUMER_ACK_AND_EFFECT_FAILURE_ANTIBODY
+  original_date_utc: 2026-08-03T03:11:53Z
+  source_repository: TTaoGaming/hfo-gen-133
+  source_branch: agent/gen133-bootstrap-20260730
+  source_commit: d8772d069eb291294944703a9bc5fb8d92c75801
+  source_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260803T031153Z_X13_GOOGLE_CALENDAR_PHASE2_STRUCTURAL_REVISE.yaml
+  source_blob_sha1: 535ff0942317071080af884722a7d18b060c3b7e
+  source_result: REVISE
+  original_workitem: X14_MUTANT_052_b7216d7bd7d3
+  original_mutation: operator_minutes_removed_measured_0_TO_240
+  reusable_behavior: >-
+    A successful bounded connector read with zero measured operator minutes, an unvalidated estimate, no timed baseline,
+    no counterfactual comparison, no repeated sample, no source-bound ConsumerAck, and no measured downstream outcome
+    cannot be promoted into a measured operator-time benefit. Preserve zero as measured, keep estimates explicitly
+    unvalidated, and refuse fitness or outcome credit until source-bound measurement and consumption receipts exist.
+
+supported_claims:
+  - The prior S04 artifact recomputed the prior evidence-inflation overlay and explicitly rejected promotion from zero measured minutes to 240 without measurement provenance.
+  - The prior artifact required separation of a technical connector success from operator-time, fitness, ConsumerAck, and downstream-outcome claims.
+  - The current immutable Slack source records one returned message, zero measured minutes, only an unvalidated one-to-three-minute estimate, no ConsumerAck, and no measured operator outcome.
+  - The same measurement-provenance failure pattern is acceptance-relevant to the current zero-to-sixty overlay.
+
+excluded_claims:
+  - This heritage result is not a direct S04 verdict on X14_MUTANT_063_9287bc7029b3.
+  - It does not independently recompute the current mutant's declared 191 canonical bytes or SHA-256.
+  - It does not establish Slack completeness, cursor correctness, least privilege, privacy safety, rate tier, operator savings, fitness credit, adoption, ConsumerAck, or downstream outcome.
+  - It does not claim the prior Calendar case and current Slack case share domain semantics beyond the measurement-provenance failure pattern.
+  - The prior S04 receipt evaluated mutant 052 as the strongest fake-green within a selected S03 route and explicitly granted no direct-mutant catch credit.
+
+acceptance_relevance:
+  current_workitem_use: >-
+    S04 can consume this prior artifact as a checklist for X14_MUTANT_063: resolve the exact current mutant and Slack source
+    blobs, recompute the 191 canonical bytes and digest, preserve source_operator_minutes_removed_measured as zero, distinguish
+    the unvalidated one-to-three-minute estimate from measurement, confirm absence of timed baseline, counterfactual,
+    repeated sample, source-bound ConsumerAck, and measured downstream effect, then return REVISE if sixty measured minutes
+    remains unsupported.
+  required_claim_ceiling: POINTER_ONLY_NO_DIRECT_CURRENT_MUTANT_VERDICT
+  required_binding_weight: 0
+  direct_current_review_required: true
+  distinct_verification_required_for_binding_conclusion: true
+
+consumer_contract:
+  named_current_workitem_consumer:
+    - X14_CAMPAIGN_REDUCER
+    - X13_COTS_CONNECTOR_CAMPAIGN_REDUCER
+  direct_reviewer: S04_STRUCTURAL_PREFLIGHT
+  advisory_reviewer: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  consumption_required_for_credit: >-
+    A later consumer-authored immutable receipt must bind this result_id or Git blob, X14_MUTANT_063_9287bc7029b3,
+    and the exact current source blob. Routing, Slack delivery, mention, or producer assertion is not ConsumerAck.
+
+idempotency_and_dedup:
+  idempotency_key: S15|X14_MUTANT_063_9287bc7029b3|PRIOR_S04_BLOB_535ff0942317071080af884722a7d18b060c3b7e
+  searches_performed:
+    - X14_MUTANT_063_9287bc7029b3
+    - EVIDENCE_INFLATION
+    - operator_minutes_removed
+    - prior_mutant_052_measurement_provenance
+  prior_exact_s15_binding_found: false
+  limitation: GitHub code search and recent-commit enumeration are nontransactional and may lag branch writes.
+
+rollback:
+  action: IGNORE_OR_SUPERSEDE_THIS_POINTER
+  source_or_mutant_edit_required: false
+  external_compensation_required: false
+
+honest_flaw: >-
+  The reused artifact is a structural REVISE for a Calendar route that recomputed and rejected a zero-to-240 evidence
+  inflation mutant as its strongest fake-green; it did not grant direct-mutant catch credit. The current case is a Slack
+  zero-to-60 mutation. Only the measurement-provenance, baseline, counterfactual, ConsumerAck, and measured-effect gate
+  transfers. The current overlay digest was read from the mutant but not independently recomputed here, dedup is
+  best-effort, all reviewers remain same-provider, and no current ConsumerAck exists. Heritage credit remains zero.
