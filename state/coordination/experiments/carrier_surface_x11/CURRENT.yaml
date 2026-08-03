@@ -1,8 +1,8 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_PROJECT_CONTEXT_VISIBILITY_V1
-current_version: 53
-accepted_wakes: 1
+current_version: 54
+accepted_wakes: 2
 target_wakes_before_decision: 4
 controlled_factor: project_vs_non_project_context
 campaign_status: ACTIVE
@@ -14,9 +14,9 @@ prior_campaign:
   accepted_wakes: 4
   decision_scope: bounded_exact_query_execution_and_sanitized_match_count_checks_only
 last_event:
-  commit: b3b7451df19fab808eae7b7421e69bb933946ae3
-  path: state/coordination/experiments/carrier_surface_x11/events/20260803T013921Z_PROJECT_CONTEXT_VISIBILITY_WAKE_01.yaml
-  blob: 2b15a9faf313183135de750054af6b77a39f7e4b
+  commit: f5f4d63f56412f501b7b2db12884c298c4afbb3b
+  path: state/coordination/experiments/carrier_surface_x11/events/20260803T023908Z_PROJECT_CONTEXT_VISIBILITY_WAKE_02.yaml
+  blob: deb909b7ed7336b6a9571025e771e59eb17a753a
 baseline_result:
   project_metadata_surface_checked: true
   project_metadata_explicitly_exposed: false
@@ -26,7 +26,7 @@ baseline_result:
   interactive_login_required: false
   task_mutation_performed: false
   sensitive_readback_externalized: false
-  changed_capability: true
+  changed_capability: false
   andon: false
   permission_class: NATIVE_RUNTIME_METADATA_VISIBLE_PROJECT_ASSOCIATION_FIELD_NOT_EXPOSED
   error_class: NONE
@@ -48,11 +48,11 @@ verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 next_consumer:
   - Reginleif
   - Ratatoskr
-honest_flaw: absence_of_an_exposed_project_association_field_does_not_prove_the_run_is_non_project_or_that_project_context_is_unavailable_internally
+honest_flaw: repeated_absence_of_an_exposed_project_association_field_still_does_not_prove_the_run_is_non_project_or_that_project_context_is_unavailable_internally
 next_factor: project_vs_non_project_context
 next_probe:
   experiment_id: X11_PROJECT_CONTEXT_VISIBILITY_V1
-  campaign_wake: 2
+  campaign_wake: 3
   mode: explicit_runtime_project_metadata_boolean_probe
   exact_action: repeat_inspection_of_only_explicit_native_runtime_metadata_for_project_association_and_persist_boolean_status_permission_error_class_and_no_inferred_project_identity
   expected_result_class: PROJECT_METADATA_EXPLICITLY_EXPOSED_OR_NOT_EXPOSED
@@ -61,9 +61,9 @@ next_probe:
   sensitive_readback_externalization_allowed: false
   mutation_allowed: false
   claim_ceiling: explicit_runtime_project_metadata_visibility_only_not_project_membership_context_inheritance_or_cross_context_comparison
-slack_action: POST_CHANGED_CAPABILITY_AFTER_GIT_READBACK
-updated_valid_time_utc: 2026-08-03T01:39:21Z
+slack_action: YIELD_SILENT_UNCHANGED
+updated_valid_time_utc: 2026-08-03T02:39:08Z
 sealed: false
 ---
 
-Project-context visibility wake 1 found no explicit native runtime Project-association field. No Project identity was inferred from prompt text, repository paths, or conversation content. This negative visibility result does not classify the run as Project or non-Project and does not establish whether Project context exists internally.
+Project-context visibility wake 2 repeated the bounded boolean-only probe and again found no explicit native runtime Project-association field. No Project identity was inferred from prompt text, repository paths, or conversation content. The unchanged negative result remains insufficient to classify this run as Project or non-Project.
