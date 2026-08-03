@@ -1,59 +1,52 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
-experiment_id: X13_GMAIL_BOUNDED_MESSAGE_METADATA_SEARCH_READONLY_001
-version: 60
-prior_version: 59
-candidate: Gmail_bounded_message_metadata_search_readonly_surface
-candidate_contract_reference: official_Gmail_messages_list_messages_get_format_scope_error_and_quota_contracts_plus_direct_connector_receipts
-campaign_wake: 4_of_4
-campaign_status: CLOSED
+experiment_id: X13_GOOGLE_DRIVE_BOUNDED_FILE_METADATA_SEARCH_READONLY_001
+version: 61
+prior_version: 60
+candidate: Google_Drive_bounded_file_metadata_search_readonly_surface
+candidate_contract_reference: official_Google_Drive_files_list_search_scope_and_quota_contracts_plus_direct_connector_receipt
+campaign_wake: 1_of_4
+campaign_status: OPEN
 phase_1_completed: true
-phase_2_completed: true
-phase_3_completed: true
-phase_4_completed: true
-phase_4_decision: ADOPT_WITH_GATES
-subdecision_metadata_only_retrieval: DEFER
-subdecision_least_privilege_claim: UNKNOWN
+phase_2_completed: false
+phase_3_completed: false
+phase_4_completed: false
+phase_4_decision: PENDING
 carrier_task_id: 6a55c1733708819185088bf334e33ea5
 carrier_task_id_match: true
 wip: 1
 last_event:
-  commit: aa88026af94c5d35cc9acf8f684fa2f1e75aacfa
-  path: state/coordination/experiments/cots_connector_x13/20260803T084850Z_GMAIL_BOUNDED_MESSAGE_METADATA_PHASE4_DECISION.md
-  blob_sha: b930f5d41c42614b98859667c0bb0674e429c52b
+  commit: 9e8a968f2b5bf4810088dcd49fa044105c1d0827
+  path: state/coordination/experiments/cots_connector_x13/20260803T094914Z_GOOGLE_DRIVE_BOUNDED_FILE_METADATA_PHASE1_BASELINE.md
+  blob_sha: 40b6a83b962962cd975b90416809c0e85c52cf41
   exact_readback_completed: true
-prior_current_commit: 351ed553c7ae93b796db05bec0b0f983fef00b74
-prior_current_blob_sha: f82c71422615b5cbb482ea8d311d9d84b9c4c538
-effect_ceiling: PHASE4_DECISION_ONLY_EVENT_CURRENT_ADVANCE_READBACK_AND_ONE_SHORT_SLACK_DECISION
+prior_current_commit: 7670239d0d55623a0b191745de8dadb79e72c42b
+prior_current_blob_sha: 5a4d68407dd51e8f001356f27fd6f1bb04fde35e
+effect_ceiling: PHASE1_OFFICIAL_CONTRACT_ONE_BOUNDED_METADATA_ONLY_SEARCH_EVENT_CURRENT_ADVANCE_READBACK_AND_ONE_SHORT_SLACK_FACT_ANDON
 adoption_credit: 0
 fitness_credit: 0_PENDING_SOURCE_BOUND_CONSUMER_ACK_AND_MEASURED_OPERATOR_OUTCOME
 consumer_ack: NOT_OBSERVED
 operator_minutes_removed_measured: 0
-operator_minutes_removed_estimate_per_consumed_presence_check: 1_to_2_UNVALIDATED
+operator_minutes_removed_estimate_per_consumed_file_presence_check: 1_to_3_UNVALIDATED
 custom_code_avoided_estimate:
-  bounded_id_presence_discovery: 25_to_80_LOC_UNVALIDATED
-  connector_error_normalization: 10_to_30_LOC_UNVALIDATED
-  metadata_only_fetch_and_header_allowlisting: 0_NOT_AVOIDED_BY_CURRENT_EXPOSED_SURFACE
+  authenticated_bounded_metadata_discovery: 30_to_100_LOC_UNVALIDATED
 credentials:
-  connector_reached_mailbox_success_path: true
-  connector_reached_normalized_error_path: true
+  connector_reached_drive_success_path: true
   operator_supplied_credentials_campaign: 0
   authenticated_identity: UNKNOWN
   credential_type: UNKNOWN
   effective_oauth_scope: UNKNOWN
   token_storage_and_custody: CONNECTOR_MANAGED_UNINSPECTED
+  corpus_and_shared_drive_reach: UNKNOWN
   least_privilege_closed: false
 paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
 campaign_candidate_invocations:
-  phase_1_id_only_queries: 1
-  phase_1_returned_message_id_count: 1
-  phase_1_next_page_token_present: true
-  phase_2_id_only_queries: 1
-  phase_2_returned_message_id_count: 0
-  phase_2_next_page_token_present: false
-  phase_3_invalid_page_token_queries: 1
-  phase_3_explicit_normalized_errors: 1
-  phase_4_queries: 0
+  phase_1_metadata_searches: 1
+  phase_1_returned_metadata_record_count: 1
+  phase_1_content_hydration_enabled: false
+  phase_1_file_body_returned: false
+  phase_1_next_page_token_exposed: UNKNOWN_NOT_EXPOSED_IN_RETURNED_RESPONSE_RESOURCE
+  phase_1_incomplete_search_exposed: false
 actual_upstream_request_count: UNKNOWN
 actual_quota_units_consumed: UNKNOWN
 actual_quota_class: UNKNOWN_LEGACY_PROJECT_EXCEPTION_POSSIBLE
@@ -61,189 +54,138 @@ retry_count: 0_AT_CARRIER_LEVEL_UPSTREAM_UNKNOWN
 billing_counters: NOT_EXPOSED
 live_request_id_retry_after_rate_limit_or_quota_headers: NOT_EXPOSED
 direct_phase_1_receipt:
-  action: Gmail.search_email_ids
-  query_class: BOUNDED_RECENT_NON_SPAM_NON_TRASH
-  requested_max_results: 1
-  returned_message_id_count: 1
-  next_page_token_present: true
-  exact_message_ids_persisted: false
-  exact_page_token_persisted: false
+  action: Google_Drive.search
+  query_class: PROJECT_SPECIFIC_NON_SECRET_TOKEN
+  requested_item_type: document
+  requested_topn: 1
+  best_effort_fetch: false
+  require_viewed_by_user: false
+  page_token_input: null
+  returned_metadata_record_count: 1
+  returned_field_classes:
+    - title_or_name
+    - direct_url
+    - display_title
+    - display_url
+    - parent_identifiers
+  file_body_or_hydrated_text_returned: false
+  exact_private_names_urls_file_ids_parent_ids_persisted: false
+  next_page_token_presence: UNKNOWN_NOT_EXPOSED_IN_RETURNED_RESPONSE_RESOURCE
+  incomplete_search_presence: NOT_EXPOSED
   connector_error: null
-  external_call_time_ms: 349
+  raw_http_status_and_provider_body: NOT_EXPOSED
+  external_call_time_ms: NOT_EXPOSED
   carrier_retries: 0
-  private_headers_bodies_snippets_or_attachments_returned: false
-  mutation_effect: false
-direct_phase_2_receipt:
-  action: Gmail.search_email_ids
-  query_class: BOUNDED_RECENT_INBOX_PRESENCE
-  query: "in:inbox newer_than:1d -in:spam -in:trash"
-  requested_max_results: 1
-  returned_message_id_count: 0
-  next_page_token_present: false
-  exact_message_ids_persisted: false
-  exact_page_token_persisted: false
-  connector_error: null
-  external_call_time_ms: 306
-  carrier_retries: 0
-  private_headers_bodies_snippets_or_attachments_returned: false
-  mutation_effect: false
-direct_phase_3_receipt:
-  action: Gmail.search_email_ids
-  query_class: BOUNDED_RECENT_INBOX_PRESENCE_WITH_SYNTHETIC_INVALID_PAGE_TOKEN
-  query: "in:inbox newer_than:1d -in:spam -in:trash"
-  requested_max_results: 1
-  page_token_origin: SYNTHETIC_NOT_FROM_A_PRIOR_GMAIL_RESPONSE
-  exact_page_token_persisted: false
-  returned_message_id_count: 0_NOT_RETURNED_BECAUSE_CALL_FAILED
-  next_page_token_present: false_NOT_RETURNED_BECAUSE_CALL_FAILED
-  connector_error_type: google_api_error
-  connector_error_code: invalidArgument
-  connector_error_status: INVALID_ARGUMENT
-  connector_error_reason: invalidArgument
-  connector_error_message: Failed_to_search_email_ids
-  connector_is_error: true
-  raw_http_status: NOT_EXPOSED
-  external_call_time_ms: NOT_EXPOSED_ON_ERROR_PATH
-  carrier_retries: 0
-  private_headers_bodies_snippets_or_attachments_returned: false
   mutation_effect: false
 direct_capability_inventory:
-  explicit_id_only_search_action_present: true
-  explicit_metadata_only_get_or_search_action_present: false
-  explicit_format_metadata_control_present: false
-  explicit_metadata_headers_allowlist_control_present: false
+  explicit_metadata_only_item_type_path_present: true
+  explicit_content_hydration_disable_present: true
+  explicit_raw_q_filter_present: true
   explicit_page_token_input_present: true
-  explicit_normalized_invalid_argument_error_present: true
-  body_bearing_read_actions_present_but_excluded: true
+  explicit_one_page_cap_present: true_AS_TOPN_WRAPPER_PARAMETER
+  explicit_fields_allowlist_control_present: false
+  explicit_corpus_drive_id_and_all_drives_controls_present: false
+  explicit_incomplete_search_output_present: false_IN_OBSERVED_RESPONSE
+  body_bearing_fetch_actions_present_but_excluded: true
 measured_facts:
-  bounded_id_only_positive_search_observed: true
-  bounded_id_only_valid_empty_search_observed: true
-  synthetic_invalid_page_token_explicit_error_observed: true
-  invalid_page_token_vs_valid_empty_distinguishable: true
-  exact_private_identifiers_and_tokens_minimized_from_durable_logs: true
-  no_message_headers_snippets_bodies_or_attachments_returned_by_id_search_or_failure_probe: true
-  metadata_only_positive_path_proven: false
-  raw_query_capable_messages_list_is_incompatible_with_gmail_metadata_scope: true
-  live_connector_effective_scope_request_path_query_forwarding_and_wrapper_validation: UNKNOWN
-scope_andon:
+  one_positive_wrapper_visible_metadata_result_observed: true
+  no_file_body_or_hydrated_text_returned: true
+  private_identifying_metadata_fields_returned_by_default: true
+  exact_private_metadata_minimized_from_durable_logs: true
+  page_token_or_incomplete_search_status_visible: false
+  raw_query_translation_field_mask_corpus_and_effective_scope: UNKNOWN
+privacy_andon:
   triggered: true
-  measured_fact: CURRENT_TOOL_CONTRACT_EXPOSES_ID_ONLY_QUERY_SEARCH_BUT_NO_FORMAT_METADATA_OR_METADATA_HEADERS_ALLOWLIST_CONTROL
-  implication: DO_NOT_DESCRIBE_THE_LIVE_CONNECTOR_AS_GMAIL_METADATA_SCOPED_METADATA_ONLY_OR_LEAST_PRIVILEGE
-empty_result_andon:
+  measured_fact: METADATA_ONLY_RESULT_RETURNED_PRIVATE_NAME_URL_AND_PARENT_IDENTIFIER_FIELD_CLASSES_BY_DEFAULT
+  implication: COUNT_ONLY_OR_EXISTENCE_ONLY_CONSUMERS_MUST_MINIMIZE_IN_MEMORY_BEFORE_GIT_SLACK_OR_DOWNSTREAM_FANOUT
+completeness_andon:
   triggered: true
-  measured_fact: VALID_DOCUMENTED_RECENT_INBOX_QUERY_RETURNED_ZERO_IDS_NO_CURSOR_AND_NO_VISIBLE_ERROR
-  admitted_interpretation: NO_MATCH_RETURNED_IN_CONNECTOR_QUERY_SCOPE_AT_OBSERVATION_TIME
-  forbidden_interpretation: AUTHORITATIVE_MAILBOX_EMPTY_OR_GMAIL_UI_EMPTY_PROOF
-failure_andon:
-  triggered: true
-  measured_fact: SYNTHETIC_INVALID_PAGE_TOKEN_RETURNED_EXPLICIT_NORMALIZED_INVALID_ARGUMENT_INSTEAD_OF_AN_EMPTY_SUCCESS_ARRAY
-  positive_implication: THIS_CONNECTOR_SURFACE_DISTINGUISHES_THIS_MALFORMED_CURSOR_FROM_A_VALID_EMPTY_RESULT
-  remaining_risk: RAW_HTTP_STATUS_PROVIDER_BODY_REQUEST_ID_QUOTA_HEADERS_EFFECTIVE_SCOPE_AND_WHETHER_THE_REQUEST_REACHED_GMAIL_REMAIN_HIDDEN
+  measured_fact: OBSERVED_RESPONSE_RESOURCE_DID_NOT_EXPOSE_NEXT_PAGE_TOKEN_OR_INCOMPLETE_SEARCH
+  admitted_interpretation: ONE_POSITIVE_WRAPPER_VISIBLE_METADATA_MATCH_AT_OBSERVATION_TIME
+  forbidden_interpretation: COMPLETE_DRIVE_CORPUS_SINGLE_PAGE_FINALITY_OR_RAW_API_UI_PARITY
 official_contract_checked_2026_08_03:
-  messages_list: https://developers.google.com/workspace/gmail/api/reference/rest/v1/users.messages/list
-  messages_get: https://developers.google.com/workspace/gmail/api/reference/rest/v1/users.messages/get
-  format_enum: https://developers.google.com/workspace/gmail/api/reference/rest/v1/Format
-  scopes: https://developers.google.com/workspace/gmail/api/auth/scopes
-  quota: https://developers.google.com/workspace/gmail/api/reference/quota
-  error_guide: https://developers.google.com/workspace/gmail/api/guides/handle-errors
-  messages_list_returns: MESSAGE_ID_AND_THREAD_ID_ONLY
-  messages_list_max_results_default: 100
-  messages_list_max_results_maximum: 500
-  messages_list_query_semantics: GMAIL_SEARCH_BOX_QUERY
-  query_with_gmail_metadata_scope: NOT_ALLOWED
-  page_token_contract: TOKEN_TO_RETRIEVE_A_SPECIFIC_PAGE_OF_RESULTS
-  invalid_parameter_value_error_class: 400_BAD_REQUEST_PER_OFFICIAL_ERROR_GUIDE
-  observed_raw_http_400: false_CONNECTOR_DID_NOT_EXPOSE_HTTP_STATUS
-  messages_get_metadata_mode: RETURNS_ID_LABELS_AND_HEADERS
-  metadata_headers_allowlist_requires: FORMAT_METADATA
-  messages_list_quota_units_per_request: 5
-  messages_get_quota_units_per_request: 20
-  post_2026_05_01_per_minute_per_project_if_applicable: 1200000
-  post_2026_05_01_per_minute_per_user_per_project_if_applicable: 6000
-  post_2026_05_01_daily_billing_threshold_units_if_applicable: 80000000
+  files_list: https://developers.google.com/workspace/drive/api/reference/rest/v3/files/list
+  search_guide: https://developers.google.com/workspace/drive/api/guides/search-files
+  scopes: https://developers.google.com/workspace/drive/api/guides/api-specific-auth
+  quota: https://developers.google.com/workspace/drive/api/guides/limits
+  files_list_page_size_maximum: 1000
+  files_list_page_token_contract: USE_NEXT_PAGE_TOKEN_FROM_PREVIOUS_RESPONSE
+  files_list_next_page_token_rejection_contract: DISCARD_TOKEN_AND_RESTART_FROM_FIRST_PAGE
+  files_list_next_page_token_typical_validity: SEVERAL_HOURS
+  files_list_incomplete_search_semantics: TRUE_MEANS_SOME_RESULTS_MAY_BE_MISSING
+  files_list_default_includes_trashed_items: true
+  files_list_default_fields_per_search_guide:
+    - kind
+    - id
+    - name
+    - mimeType
+    - resourceKey
+  metadata_readonly_scope_exists: true_RESTRICTED_SCOPE
+  post_2026_05_01_per_minute_per_project_if_applicable: 1000000_QUOTA_UNITS
+  post_2026_05_01_per_minute_per_user_per_project_if_applicable: 325000_QUOTA_UNITS
+  post_2026_05_01_daily_billing_threshold_if_applicable: 400000000_QUOTA_UNITS
+  files_list_quota_units_per_request_if_applicable: 100
 failure_semantics:
-  positive_id_only_search: OBSERVED_PHASE1
-  valid_documented_empty_result: OBSERVED_PHASE2
-  synthetic_invalid_page_token: EXPLICIT_NORMALIZED_INVALID_ARGUMENT_OBSERVED_PHASE3
+  positive_metadata_search: OBSERVED_PHASE1
+  valid_empty_result: NOT_TESTED
   valid_source_bound_page_traversal: NOT_TESTED
-  token_query_mismatch_or_expiry: NOT_TESTED
+  malformed_or_mismatched_page_token: NOT_TESTED
   authentication_or_permission_denial: NOT_TESTED
   quota_or_rate_limit: NOT_TESTED
   transient_server_failure: NOT_TESTED
   independent_raw_or_UI_readback: NOT_TESTED
-durability: EPHEMERAL_POINT_IN_TIME_MAILBOX_QUERY_AND_ERROR_NOT_A_SNAPSHOT_EVENT_STREAM_OR_WORKFLOW_CHECKPOINT
-observability: ID_COUNT_CURSOR_PRESENCE_NORMALIZED_SUCCESS_OR_ERROR_FIELDS_AND_SUCCESS_LATENCY_VISIBLE_ERROR_PATH_LATENCY_RAW_HTTP_STATUS_REQUEST_RESPONSE_PROVIDER_BODY_REQUEST_ID_EFFECTIVE_SCOPE_QUOTA_HEADERS_RETRY_AUDIT_AND_QUERY_REWRITE_HIDDEN
-portability: MEDIUM_FOR_GMAIL_QUERY_SYNTAX_ID_DISCOVERY_AND_GENERIC_INVALID_CURSOR_CLASSIFICATION_LOW_FOR_CROSS_PROVIDER_METADATA_TOKEN_AND_MAILBOX_SEMANTICS
+durability: EPHEMERAL_POINT_IN_TIME_METADATA_LOOKUP_NOT_A_SNAPSHOT_EVENT_STREAM_CHECKPOINT_OR_DURABLE_INDEX
+observability: RESULT_COUNT_AND_RETURNED_FIELD_CLASSES_VISIBLE_RAW_REQUEST_QUERY_TRANSLATION_FIELD_MASK_CURSOR_INCOMPLETE_SEARCH_LATENCY_HTTP_STATUS_PROVIDER_BODY_REQUEST_ID_EFFECTIVE_SCOPE_CORPUS_QUOTA_HEADERS_AND_UPSTREAM_RETRIES_HIDDEN
+portability: MEDIUM_FOR_GENERIC_FILE_DISCOVERY_LOW_TO_MEDIUM_FOR_DRIVE_QUERY_TOKEN_CORPUS_SHARED_DRIVE_AND_PERMISSION_SEMANTICS
 admitted_scope:
-  - ONE_PAGE_BOUNDED_ID_ONLY_DISCOVERY_WITH_SMALL_MAX_RESULTS
-  - BOOLEAN_MATCH_PRESENCE_CURSOR_PRESENCE_AND_OBSERVATION_TIME_ONLY_FOR_DURABLE_LOGGING
-  - NORMALIZED_INVALID_ARGUMENT_AS_DISTINCT_NON_RETRYABLE_CALLER_ERROR
+  - ONE_PAGE_BOUNDED_METADATA_ONLY_DISCOVERY_WITH_EXPLICIT_ITEM_TYPE
+  - CONTENT_HYDRATION_DISABLED
+  - RESULT_COUNT_FIELD_CLASSES_QUERY_CLASS_AND_OBSERVATION_TIME_ONLY_FOR_DURABLE_LOGGING
 excluded_scope:
-  - MESSAGE_METADATA_BODY_SNIPPET_HEADER_OR_ATTACHMENT_FETCH
-  - SEND_DRAFT_LABEL_MODIFY_ARCHIVE_TRASH_DELETE_OR_ANY_MAILBOX_MUTATION
-  - CLAIM_OF_GMAIL_METADATA_SCOPE_OR_LEAST_PRIVILEGE
-  - EMPTY_RESULT_AS_AUTHORITATIVE_MAILBOX_STATE_PROOF
-  - VALID_PAGE_TRAVERSAL_COMPLETENESS_OR_DURABLE_MAILBOX_STATE_CLAIMS
+  - FILE_CONTENT_FETCH_DOWNLOAD_EXPORT_OR_HYDRATION
+  - CREATE_UPLOAD_EDIT_MOVE_RENAME_SHARE_PERMISSION_CHANGE_DELETE_OR_PUBLICATION
+  - COMPLETENESS_CORPUS_SHARED_DRIVE_TRASH_EXCLUSION_OWNERSHIP_PERMISSION_ROLE_OR_LEAST_PRIVILEGE_CLAIMS
 mandatory_gates:
-  - KEEP_EXACT_MESSAGE_IDS_AND_PAGE_TOKENS_OUT_OF_GIT_SLACK_AND_ROUTINE_TRACES
-  - VALIDATE_QUERY_CLASS_LOCALLY_AND_RECORD_EXACT_NONPRIVATE_QUERY_CONTEXT
-  - DO_NOT_CALL_BODY_BEARING_READ_ACTIONS_FOR_BOOLEAN_PRESENCE_OR_COUNT_QUESTIONS
-  - DO_NOT_CLAIM_METADATA_ONLY_OPERATION_UNTIL_FORMAT_METADATA_AND_METADATA_HEADERS_ALLOWLIST_CONTROLS_ARE_EXPOSED_AND_PROVEN
-  - DO_NOT_INFER_EFFECTIVE_OAUTH_SCOPE_FROM_SUCCESS_OR_NORMALIZED_ERROR
-  - TREAT_MAX_RESULTS_AS_PAGE_CAP_NOT_TOTAL_MATCH_COUNT
-  - TREAT_NEXT_PAGE_TOKEN_PRESENCE_AS_MORE_WRAPPER_VISIBLE_RESULTS_NOT_COMPLETENESS
-  - TREAT_ZERO_IDS_AS_NO_MATCH_RETURNED_IN_CONNECTOR_QUERY_SCOPE_NOT_AS_MAILBOX_EMPTY
-  - ACCEPT_PAGE_TOKENS_ONLY_FROM_THE_IMMEDIATELY_PRECEDING_COMPATIBLE_CONNECTOR_RESPONSE
-  - BIND_PAGE_TOKEN_TO_QUERY_LABEL_IDS_MAX_RESULTS_AUTHENTICATED_IDENTITY_AND_OBSERVATION_CHAIN
-  - NEVER_SYNTHESIZE_TRUNCATE_REDACT_REFORMAT_OR_REUSE_PAGE_TOKENS_ACROSS_QUERY_VARIANTS
-  - CLASSIFY_INVALID_ARGUMENT_AS_NON_RETRYABLE_CALLER_ERROR_UNLESS_INDEPENDENT_EVIDENCE_SHOWS_TRANSIENT_PROVIDER_MISCLASSIFICATION
-  - DO_NOT_FALL_BACK_TO_FIRST_PAGE_OR_EMPTY_SUCCESS_AFTER_PAGE_TOKEN_FAILURE
-  - PRESERVE_VALID_EMPTY_INVALID_ARGUMENT_AUTH_PERMISSION_RATE_LIMIT_TRANSPORT_AND_PROVIDER_FAILURE_AS_DISTINCT_STATES
+  - USE_EXPLICIT_METADATA_ONLY_ITEM_TYPE_AND_KEEP_BEST_EFFORT_FETCH_FALSE
+  - KEEP_PAGE_CAP_SMALL_AND_RECORD_EXACT_NON_SECRET_QUERY_CLASS_AND_OBSERVATION_TIME
+  - MINIMIZE_NAMES_URLS_FILE_IDS_AND_PARENT_IDS_BEFORE_GIT_SLACK_OR_DOWNSTREAM_FANOUT_UNLESS_EXPLICITLY_REQUIRED
+  - DO_NOT_INFER_COMPLETENESS_CORPUS_SHARED_DRIVE_COVERAGE_TRASH_EXCLUSION_OWNERSHIP_PERMISSION_ROLE_OR_SCOPE_FROM_ONE_POSITIVE_RESULT
+  - TREAT_ABSENCE_OF_VISIBLE_CURSOR_OR_INCOMPLETE_SEARCH_FIELD_AS_UNKNOWN_NOT_FALSE
   - REQUIRE_SOURCE_BOUND_CONSUMER_ACK_AND_MEASURED_OPERATOR_OUTCOME_BEFORE_FITNESS_CREDIT
-verifier: RAW_GMAIL_MESSAGES_LIST_WITH_IDENTICAL_QUERY_AND_SYNTHETIC_TOKEN_PLUS_ONE_VALID_SOURCE_BOUND_CONNECTOR_PAGE_TRAVERSAL_AND_GMAIL_UI_OR_RAW_QUERY_COMPARISON
+verifier: RAW_DRIVE_FILES_LIST_WITH_EQUIVALENT_QUERY_EXPLICIT_MINIMAL_FIELDS_AND_ONE_SOURCE_BOUND_PAGE_TRAVERSAL_PLUS_DRIVE_UI_COMPARISON
 consumer:
-  - HFO_EXECUTIVE_ASSISTANT_BOUNDED_MAIL_PRESENCE_CHECK
-  - HFO_WAITING_AND_INBOX_STATUS_CELLS
-strongest_falsifier: A_SOURCE_BOUND_TOKEN_FROM_AN_IMMEDIATELY_PRECEDING_IDENTICAL_QUERY_FAILS_WITH_THE_SAME_INVALID_ARGUMENT_OR_AN_IDENTICAL_RAW_GMAIL_OR_GMAIL_UI_QUERY_CONTRADICTS_THE_CONNECTOR_RESULT_OR_CONNECTOR_INSPECTION_SHOWS_PRIVATE_CONTENT_PERSISTENCE_QUERY_REWRITE_OR_A_VERIFIED_FORMAT_METADATA_PATH
-honest_flaw: NO_VALID_SOURCE_BOUND_PAGE_TRAVERSAL_RAW_API_OR_GMAIL_UI_COMPARISON_CREDENTIAL_SCOPE_PROOF_PERMISSION_RATE_LIMIT_TRANSIENT_FAILURE_CONSUMER_ACK_OR_MEASURED_OPERATOR_TIME_REDUCTION_WAS_OBSERVED
+  - HFO_DRIVE_HERITAGE_LOCATOR
+  - HFO_EXECUTIVE_ASSISTANT_BOUNDED_FILE_DISCOVERY
+  - HFO_SSOT_EVIDENCE_FINDER
+strongest_falsifier: AN_EQUIVALENT_RAW_API_OR_DRIVE_UI_QUERY_CONTRADICTS_THE_CONNECTOR_RESULT_OR_CONNECTOR_INSPECTION_SHOWS_CONTENT_HYDRATION_PRIVATE_METADATA_PERSISTENCE_HIDDEN_QUERY_REWRITE_OMITTED_ACCESSIBLE_DRIVES_OR_UNREPORTED_INCOMPLETE_SEARCH
+honest_flaw: ONE_KEYWORD_QUERY_RETURNED_ONE_METADATA_RECORD_EXACT_QUERY_TRANSLATION_FIELD_MASK_PAGINATION_INCOMPLETE_SEARCH_CORPUS_SHARED_DRIVE_TRASH_HANDLING_EFFECTIVE_SCOPE_PERMISSION_RATE_LIMIT_RAW_API_UI_PARITY_CONSUMER_ACK_AND_OPERATOR_TIME_REDUCTION_REMAIN_UNPROVEN
 phase_1_result:
-  disposition: PHASE1_ACCEPTED_WITH_CAPABILITY_GAP_SCOPE_AND_PRIVACY_ANDON
-phase_2_result:
-  disposition: PHASE2_ACCEPTED_AS_PRIVACY_SAFE_ID_ONLY_EXISTENCE_PROBE_WITH_EMPTY_RESULT_SCOPE_GATE
-  metadata_fetch_status: DEFERRED_NO_SAFE_EXPLICIT_FORMAT_METADATA_OR_HEADER_ALLOWLIST_SURFACE
-phase_3_result:
-  disposition: PHASE3_ACCEPTED_WITH_EXPLICIT_INVALID_ARGUMENT_FAILURE_AND_SOURCE_BOUND_CURSOR_GATES
-phase_4_result:
-  disposition: ADOPT_WITH_GATES
-  admitted_capability: BOUNDED_ID_ONLY_DISCOVERY_AND_EXPLICIT_INVALID_ARGUMENT_CLASSIFICATION
-  metadata_candidate_status: DEFER
-  least_privilege_status: UNKNOWN
-next_campaign:
-  experiment_id: X13_GOOGLE_DRIVE_BOUNDED_FILE_METADATA_SEARCH_READONLY_001
-  candidate: Google_Drive_bounded_file_metadata_search_readonly_surface
-  next_phase: 1_of_4
-  proposed_action: OFFICIAL_CONTRACT_AND_DIRECT_READ_ONLY_CAPABILITY_BASELINE
-  excluded_effects: CREATE_UPLOAD_EDIT_MOVE_RENAME_SHARE_PERMISSION_CHANGE_DELETE_EXPORT_PUBLICATION_OR_SECRET_EXPOSURE
-review_expiry_utc: 2026-08-10T08:48:50Z
-valid_time_utc: 2026-08-03T08:48:50Z
+  disposition: PHASE1_ACCEPTED_WITH_PRIVACY_SCOPE_AND_OBSERVABILITY_GATES
+next_phase:
+  phase: 2_of_4
+  proposed_action: ONE_METADATA_ONLY_SEARCH_WITH_EXPLICIT_Q_FILTER_EXCLUDING_TRASHED_ITEMS_AND_ONE_RESULT_CAP
+  durable_log_minimization: RESULT_COUNT_RETURNED_FIELD_CLASSES_AND_CURSOR_OR_INCOMPLETE_SEARCH_EVIDENCE_ONLY
+  excluded_effects: CONTENT_FETCH_UPLOAD_EDIT_MOVE_RENAME_SHARE_PERMISSION_CHANGE_DELETE_EXPORT_PUBLICATION_OR_SECRET_EXPOSURE
+review_expiry_utc: 2026-08-10T09:49:14Z
+valid_time_utc: 2026-08-03T09:49:14Z
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 sealed: true
 prior_campaign:
-  experiment_id: X13_GOOGLE_CALENDAR_BOUNDED_EVENT_WINDOW_READONLY_001
-  final_version: 56
+  experiment_id: X13_GMAIL_BOUNDED_MESSAGE_METADATA_SEARCH_READONLY_001
+  final_version: 60
   decision: ADOPT_WITH_GATES
 prior_prior_campaign:
-  experiment_id: X13_GITHUB_ACTIONS_WORKFLOW_RUN_STATUS_READONLY_001
-  final_version: 52
+  experiment_id: X13_GOOGLE_CALENDAR_BOUNDED_EVENT_WINDOW_READONLY_001
+  final_version: 56
   decision: ADOPT_WITH_GATES
 ---
 
 # X13 current campaign
 
-Gmail bounded message-metadata search campaign **4/4** is closed.
+Google Drive bounded file-metadata search campaign **1/4** is open.
 
-Decision: **ADOPT_WITH_GATES** for bounded ID-only discovery and explicit normalized invalid-argument classification. Metadata-only retrieval is **DEFERRED**, and least-privilege claims remain **UNKNOWN** because the connector exposes neither explicit `format=METADATA` and selected-header controls nor authenticated identity and effective OAuth scope.
+Phase 1 accepted one positive metadata-only connector result with content hydration disabled. The connector returned private-identifying metadata field classes by default but exposed neither a page cursor nor Drive's `incompleteSearch` signal in the returned response resource. Exact private values were not persisted.
 
-The campaign observed one positive ID-only page, one valid empty page, and one explicit invalid-page-token error. It did not prove valid source-bound pagination, raw API or Gmail UI parity, permission or quota behavior, ConsumerAck, or measured operator-time reduction. Fitness credit remains zero.
+No completeness, corpus, shared-drive, trash-exclusion, permission, ownership, OAuth-scope, cost, or operator-time claim is admitted. Fitness credit remains zero.
 
-Next campaign: bounded read-only Google Drive file-metadata search baseline.
+Next: one metadata-only micro-use with an explicit Drive `q` filter excluding trashed items and a one-result cap.
