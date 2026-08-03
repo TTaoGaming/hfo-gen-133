@@ -1,14 +1,14 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
 experiment_id: X13_SLACK_BOUNDED_CHANNEL_HISTORY_READONLY_001
-version: 65
-prior_version: 64
+version: 66
+prior_version: 65
 candidate: Slack_bounded_readonly_channel_history_surface
-candidate_contract_reference: official_Slack_conversations_history_scope_pagination_rate_limit_and_error_contract_plus_direct_connector_receipt
-campaign_wake: 1_of_4
+candidate_contract_reference: official_Slack_conversations_history_scope_time_boundary_pagination_rate_limit_and_error_contract_plus_direct_connector_receipts
+campaign_wake: 2_of_4
 campaign_status: ACTIVE
 phase_1_completed: true
-phase_2_completed: false
+phase_2_completed: true
 phase_3_completed: false
 phase_4_completed: false
 phase_4_decision: PENDING
@@ -16,13 +16,13 @@ carrier_task_id: 6a55c1733708819185088bf334e33ea5
 carrier_task_id_match: true
 wip: 1
 last_event:
-  commit: fe5af3bebfb1860391dd2813f31987e3586aac5f
-  path: state/coordination/experiments/cots_connector_x13/20260803T135333Z_SLACK_BOUNDED_CHANNEL_HISTORY_PHASE1_BASELINE.md
-  blob_sha: 93d64d8ccd0fe9575becefc2a72f431bdfc59c9b
+  commit: a9bef5a709a1abce7aca6e657258282cfffbd3a4
+  path: state/coordination/experiments/cots_connector_x13/20260803T144920Z_SLACK_BOUNDED_CHANNEL_HISTORY_PHASE2_TIME_WINDOW_MICROUSE.md
+  blob_sha: b8873346c504d73ec5fa8e6d1f4cca14af0f1a89
   exact_readback_completed: true
-prior_current_commit: 9d4d9faffd1f60596d5f9088aaab764ca162fe10
-prior_current_blob_sha: 691d1dd5cfd826a027e32bd8d58bff681ddcaf4c
-effect_ceiling: PHASE1_OFFICIAL_CONTRACT_ONE_BOUNDED_READONLY_SLACK_HISTORY_CALL_EVENT_CURRENT_ADVANCE_READBACK_AND_ONE_SHORT_SLACK_FACT
+prior_current_commit: c0289f8698c4ca3e544a6409a16f6249f173fd7f
+prior_current_blob_sha: 62d9771e5b2cc44b8879b49601a7c6ad7235b8e0
+effect_ceiling: PHASE2_ONE_BOUNDED_READONLY_SLACK_TIME_WINDOW_CALL_EVENT_CURRENT_ADVANCE_READBACK_AND_ONE_SHORT_SLACK_MEASURED_FACT
 adoption_credit: 0_PENDING_PHASE4
 fitness_credit: 0_PENDING_SOURCE_BOUND_CONSUMER_ACK_AND_MEASURED_OPERATOR_OUTCOME
 consumer_ack: NOT_OBSERVED
@@ -43,13 +43,13 @@ credentials:
 paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
 campaign_candidate_invocations:
   phase_1_channel_history_reads: 1
-  phase_2_channel_history_reads: 0
+  phase_2_channel_history_reads: 1
   phase_3_channel_history_reads: 0
   phase_4_channel_history_reads: 0
-  total_channel_history_reads: 1
+  total_channel_history_reads: 2
   total_returned_message_count: 1
   positive_result_pages: 1
-  valid_empty_pages: 0
+  valid_empty_pages: 1
   continuation_cursor_pages: 1
   carrier_retry_count: 0
 actual_upstream_request_count: UNKNOWN
@@ -72,23 +72,55 @@ direct_phase_1_receipt:
   visible_connector_latency_ms: NOT_EXPOSED
   carrier_retries: 0
   mutation_effect: false
+direct_phase_2_receipt:
+  action: Slack.slack_read_channel
+  conversation_class: SAME_KNOWN_HFO_COMMAND_AND_CONTROL_CHANNEL
+  requested_limit: 1
+  requested_response_format: concise
+  explicit_time_window_utc:
+    oldest_exclusive_by_official_default: 2026-08-03T14:40:00Z
+    latest_exclusive_by_official_default: 2026-08-03T14:50:00Z
+  connector_exposes_inclusive_control: false
+  cursor_supplied: false
+  returned_message_count: 0
+  continuation_cursor_present: false
+  no_more_messages_completion_exposed: true
+  private_message_or_author_content_returned: false
+  exact_private_content_persisted: false
+  normalized_connector_error: null
+  visible_connector_latency_ms: NOT_EXPOSED
+  carrier_retries: 0
+  mutation_effect: false
 measured_facts:
-  one_bounded_positive_page_observed: true
-  one_message_returned_for_limit_one: true
-  newest_first_order_observed: true
-  continuation_cursor_exposed: true
-  concise_mode_returned_full_message_body: true
-  concise_mode_returned_author_identifying_data: true
+  one_bounded_positive_page_observed_phase_1: true
+  one_valid_empty_time_window_observed_phase_2: true
+  one_message_returned_for_limit_one_phase_1: true
+  newest_first_order_observed_phase_1: true
+  continuation_cursor_exposed_phase_1: true
+  concise_mode_returned_full_message_body_phase_1: true
+  concise_mode_returned_author_identifying_data_phase_1: true
+  time_bounded_empty_result_returned_without_error_phase_2: true
+  empty_result_returned_no_private_content_phase_2: true
+  connector_schema_exposes_oldest_and_latest_but_not_inclusive: true
   exact_message_text_email_user_id_timestamp_cursor_and_links_minimized_from_durable_logs: true
-  no_send_edit_delete_join_reaction_draft_schedule_file_read_or_other_mutation: true
+  no_send_edit_delete_join_reaction_draft_schedule_file_read_cursor_traversal_or_other_mutation: true
 privacy_andon:
   triggered: true
-  measured_fact: CONCISE_RESPONSE_RETURNED_FULL_MESSAGE_BODY_AND_AUTHOR_IDENTIFYING_FIELDS
+  measured_fact: CONCISE_RESPONSE_RETURNED_FULL_MESSAGE_BODY_AND_AUTHOR_IDENTIFYING_FIELDS_ON_POSITIVE_PAGE
   implication: CONCISE_IS_NOT_METADATA_ONLY_OR_PRIVACY_MINIMAL_AND_REQUIRES_LOCAL_MINIMIZATION_BEFORE_DURABLE_FANOUT
 pagination_andon:
   triggered: false
-  measured_fact: ONE_ITEM_PAGE_EXPOSED_A_CONTINUATION_CURSOR
+  measured_fact: PHASE1_ONE_ITEM_PAGE_EXPOSED_A_CONTINUATION_CURSOR_WHILE_PHASE2_EMPTY_WINDOW_EXPOSED_NONE
   implication: SOURCE_BOUND_CURSOR_TRAVERSAL_IS_AVAILABLE_IN_WRAPPER_BUT_NOT_YET_VALIDATED
+boundary_control_andon:
+  triggered: true
+  measured_fact: CONNECTOR_EXPOSES_OLDEST_AND_LATEST_BUT_NOT_SLACK_INCLUSIVE_ARGUMENT
+  implication: EXACT_BOUNDARY_RETRIEVAL_IS_NOT_EXPLICITLY_CONTROLLABLE_AND_CONSUMERS_MUST_NOT_DEPEND_ON_BOUNDARY_INCLUSION
+empty_result_andon:
+  triggered: true
+  measured_fact: EXPLICIT_TEN_MINUTE_WINDOW_RETURNED_ZERO_MESSAGES_WITH_NO_VISIBLE_ERROR
+  admitted_interpretation: NO_MESSAGE_RETURNED_IN_CONNECTOR_VISIBLE_CONVERSATION_AND_TIME_WINDOW_AT_OBSERVATION_TIME
+  forbidden_interpretation: AUTHORITATIVE_ABSENCE_COMPLETE_HISTORY_RAW_API_OR_UI_PARITY_OR_QUERY_FORWARDING_PROOF
 scope_identity_andon:
   triggered: true
   measured_fact: SUCCESS_PATH_DID_NOT_EXPOSE_PRINCIPAL_TOKEN_CLASS_EXACT_SCOPES_WORKSPACE_IDENTITY_OR_MEMBERSHIP_BASIS
@@ -108,18 +140,26 @@ official_contract_checked_2026_08_03:
   cursor_contract: USE_RESPONSE_METADATA_NEXT_CURSOR_FROM_PREVIOUS_RESPONSE
   fewer_than_limit_may_be_returned_with_more_history_remaining: true
   newest_messages_in_time_range_returned_first: true
+  oldest_default_semantics: ONLY_MESSAGES_AFTER_BOUND
+  latest_default_semantics: ONLY_MESSAGES_BEFORE_BOUND
+  exact_boundary_messages_excluded_without_inclusive_true: true
+  connector_inclusive_argument_available: false
   affected_non_marketplace_commercial_distribution_limit: 1_REQUEST_PER_MINUTE_AND_LIMIT_MAX_15
   other_app_classes: TIER_3_DOCUMENTED_BUT_CONNECTOR_CLASS_UNKNOWN
   documented_errors_include:
+    - invalid_ts_oldest
+    - invalid_ts_latest
     - channel_not_found
     - access_denied
-    - account_inactive
-    - service_or_unexpected_errors
+    - missing_scope
+    - ratelimited
+    - service_unavailable
 failure_semantics:
   positive_bounded_page: OBSERVED_PHASE1
+  valid_empty_time_window: OBSERVED_PHASE2
   valid_source_bound_cursor_traversal: NOT_TESTED
-  valid_empty_time_window: NOT_TESTED
   malformed_cursor: NOT_TESTED
+  invalid_timestamp: NOT_TESTED
   invalid_channel: NOT_TESTED
   authentication_or_permission_denial: NOT_TESTED
   quota_or_rate_limit: NOT_TESTED
@@ -127,49 +167,57 @@ failure_semantics:
   message_subtype_or_free_history_truncation: NOT_TESTED
   independent_raw_API_or_UI_readback: NOT_TESTED
 durability: EPHEMERAL_POINT_IN_TIME_CONVERSATION_READ_NOT_A_DURABLE_EVENT_STREAM_SNAPSHOT_CHECKPOINT_DELIVERY_RECEIPT_OR_EXACTLY_ONCE_FEED
-observability: REQUESTED_LIMIT_RESPONSE_MODE_RETURNED_COUNT_NEWEST_FIRST_ORDER_FULL_CONTENT_FIELD_CLASSES_AUTHOR_IDENTIFYING_FIELD_CLASSES_CURSOR_PRESENCE_AND_NORMALIZED_SUCCESS_VISIBLE; RAW_REQUEST_HTTP_STATUS_SLACK_OK_RESPONSE_HEADERS_REQUEST_ID_RATE_LIMIT_COUNTERS_RETRY_AFTER_APP_CLASS_SCOPES_UPSTREAM_RETRIES_AND_LATENCY_HIDDEN
-portability: MEDIUM_FOR_GENERIC_CHANNEL_HISTORY_LOW_TO_MEDIUM_FOR_SLACK_CONVERSATION_CLASSES_TIMESTAMP_BOUNDARIES_MESSAGE_SUBTYPES_CURSOR_IDENTITY_AND_SCOPE_RULES
+observability: REQUESTED_LIMIT_RESPONSE_MODE_TIME_BOUNDS_RETURNED_COUNT_NEWEST_FIRST_ORDER_FULL_CONTENT_FIELD_CLASSES_AUTHOR_IDENTIFYING_FIELD_CLASSES_CURSOR_PRESENCE_OR_ABSENCE_EMPTY_COMPLETION_AND_NORMALIZED_SUCCESS_VISIBLE; RAW_REQUEST_BOUNDARY_INCLUSION_HTTP_STATUS_SLACK_OK_HAS_MORE_IS_LIMITED_RESPONSE_HEADERS_REQUEST_ID_RATE_LIMIT_COUNTERS_RETRY_AFTER_APP_CLASS_SCOPES_UPSTREAM_RETRIES_AND_LATENCY_HIDDEN
+portability: MEDIUM_FOR_COARSE_GENERIC_CHANNEL_HISTORY_WINDOWS_LOW_TO_MEDIUM_FOR_SLACK_CONVERSATION_CLASSES_EXACT_TIMESTAMP_BOUNDARIES_MESSAGE_SUBTYPES_CURSOR_IDENTITY_AND_SCOPE_RULES
 admitted_scope:
   - ONE_PAGE_BOUNDED_READONLY_HISTORY_FROM_A_KNOWN_EXPLICIT_CONVERSATION_ID
   - SMALL_LIMIT_AND_SCOPED_POSITIVE_OBSERVATION_AT_OBSERVATION_TIME
+  - EXPLICIT_COARSE_OLDEST_AND_LATEST_TIME_WINDOW_WITH_LOCALLY_VALIDATED_OLDEST_LESS_THAN_LATEST
+  - VALID_EMPTY_RESULT_CLASSIFIED_ONLY_AS_NO_MESSAGE_RETURNED_IN_CONNECTOR_VISIBLE_SCOPE_AT_OBSERVATION_TIME
   - LOCAL_PRIVACY_MINIMIZATION_BEFORE_GIT_SLACK_OR_DOWNSTREAM_FANOUT
   - CURSOR_PRESENCE_RECORDING_WITHOUT_CURSOR_VALUE_PERSISTENCE
 excluded_scope:
-  - SEND_EDIT_DELETE_REACTION_JOIN_CHANNEL_CREATE_DRAFT_SCHEDULE_FILE_READ_OR_OTHER_MUTATION
+  - SEND_EDIT_DELETE_REACTION_JOIN_CHANNEL_CREATE_DRAFT_SCHEDULE_FILE_READ_CURSOR_TRAVERSAL_OR_OTHER_MUTATION
+  - EXACT_BOUNDARY_RETRIEVAL_OR_INCLUSIVE_CONTROL
   - METADATA_ONLY_PRIVACY_MINIMAL_LEAST_PRIVILEGE_SCOPE_IDENTITY_COMPLETE_HISTORY_THREAD_COMPLETENESS_FREE_ARCHIVE_REACH_OR_QUOTA_CLAIMS
+  - AUTHORITATIVE_EMPTY_OR_NONEXISTENCE_CLAIMS
   - DURABLE_EVENT_STREAM_SNAPSHOT_CHECKPOINT_DELIVERY_OR_EXACTLY_ONCE_CLAIMS
 mandatory_gates:
   - USE_ONLY_A_KNOWN_EXPLICIT_CONVERSATION_ID_AND_SMALL_LIMIT
+  - VALIDATE_OLDEST_AND_LATEST_LOCALLY_AND_REQUIRE_OLDEST_LESS_THAN_LATEST
+  - DO_NOT_DEPEND_ON_EXACT_BOUNDARY_RETRIEVAL_BECAUSE_INCLUSIVE_IS_NOT_EXPOSED
   - TREAT_CONCISE_AS_PRESENTATION_MODE_NOT_A_METADATA_ONLY_OR_PRIVACY_GUARANTEE
   - MINIMIZE_MESSAGE_TEXT_EMAILS_USER_IDS_TIMESTAMPS_CURSOR_VALUES_LINKS_FILES_REACTIONS_AND_ATTACHMENTS_BEFORE_DURABLE_FANOUT
   - PERSIST_COUNTS_FIELD_CLASSES_NORMALIZED_ERROR_CURSOR_PRESENCE_OBSERVATION_TIME_AND_SOURCE_BOUND_HASHES_INSTEAD_OF_RAW_PRIVATE_CONTENT
   - ACCEPT_CURSOR_ONLY_FROM_IMMEDIATELY_PRECEDING_COMPATIBLE_QUERY_AND_DO_NOT_LOG_EXACT_CURSOR
-  - SEPARATE_POSITIVE_VALID_EMPTY_INVALID_CHANNEL_OR_CURSOR_PERMISSION_DENIAL_RATE_LIMIT_TRANSPORT_FAILURE_AND_PROVIDER_FAILURE
+  - SEPARATE_POSITIVE_VALID_EMPTY_INVALID_TIMESTAMP_INVALID_CHANNEL_OR_CURSOR_PERMISSION_DENIAL_RATE_LIMIT_TRANSPORT_FAILURE_AND_PROVIDER_FAILURE
+  - INTERPRET_EMPTY_ONLY_AS_NO_MESSAGE_RETURNED_IN_CONNECTOR_VISIBLE_SCOPE_AND_NEVER_AS_AUTHORITATIVE_ABSENCE
   - DO_NOT_CLAIM_COMPLETENESS_FULL_HISTORY_THREAD_REACH_IDENTITY_SCOPE_OR_QUOTA_FROM_ONE_PAGE
   - REQUIRE_SOURCE_BOUND_CONSUMER_ACK_AND_MEASURED_OPERATOR_OUTCOME_BEFORE_FITNESS_CREDIT
-verifier: RAW_SLACK_CONVERSATIONS_HISTORY_WITH_SAME_CONVERSATION_AND_LIMIT_ONE_INSPECTING_OK_MESSAGES_HAS_MORE_RESPONSE_METADATA_NEXT_CURSOR_HEADERS_SCOPES_AND_APP_CLASS_PLUS_SLACK_UI_COMPARISON
+verifier: RAW_SLACK_CONVERSATIONS_HISTORY_WITH_SAME_IDENTITY_CONVERSATION_TIME_BOUNDS_LIMIT_ONE_AND_DEFAULT_INCLUSIVE_FALSE_INSPECTING_OK_MESSAGES_HAS_MORE_IS_LIMITED_RESPONSE_METADATA_NEXT_CURSOR_HEADERS_SCOPES_AND_APP_CLASS_PLUS_SLACK_UI_COMPARISON
 consumer:
   - HFO_COORDINATION_STATE_READER
   - HFO_MORNING_GATHERING_FAN_IN
   - HFO_ANDON_AND_PHEROMONE_VERIFIER
   - HFO_SOURCE_BOUND_SLACK_RECEIPT_LOCATOR
-strongest_falsifier: EQUIVALENT_RAW_API_UNDER_SAME_IDENTITY_RETURNS_DIFFERENT_ORDER_COUNT_CURSOR_PERMISSION_OR_CONTENT_OR_SHOWS_CONNECTOR_CHANNEL_LIMIT_OR_RESPONSE_MODE_REWRITE
-honest_flaw: ONLY_ONE_POSITIVE_FULL_CONTENT_READ_FROM_ONE_ACCESSIBLE_CONVERSATION_WAS_OBSERVED; METADATA_MINIMIZATION_IDENTITY_SCOPE_CURSOR_TRAVERSAL_EMPTY_BEHAVIOR_PERMISSION_FAILURE_RATE_LIMIT_RAW_API_PARITY_CONSUMER_ACK_AND_MEASURED_OPERATOR_TIME_REDUCTION_REMAIN_UNVERIFIED
+strongest_falsifier: EQUIVALENT_RAW_API_OR_SLACK_UI_UNDER_SAME_IDENTITY_AND_EXACT_WINDOW_RETURNS_MESSAGES_DIFFERENT_BOUNDARY_BEHAVIOR_PERMISSION_OR_LIMITATION_OR_SHOWS_CONNECTOR_CHANNEL_OR_TIMESTAMP_REWRITE
+honest_flaw: PHASE2 OBSERVED ONLY_ONE_EMPTY_TEN_MINUTE_WRAPPER_RESULT; QUERY_FORWARDING_IDENTITY_SCOPE_BOUNDARY_BEHAVIOR_THREAD_REACH_COMPLETENESS_CURSOR_TRAVERSAL_PERMISSION_FAILURE_RATE_LIMIT_RAW_API_PARITY_CONSUMER_ACK_AND_MEASURED_OPERATOR_TIME_REDUCTION_REMAIN_UNVERIFIED
 phase_1_result:
   disposition: PHASE1_ACCEPTED_WITH_PRIVACY_SCOPE_RATE_LIMIT_AND_PAGINATION_GATES
 phase_2_result:
-  disposition: PENDING
+  disposition: PHASE2_ACCEPTED_WITH_VALID_EMPTY_TIME_WINDOW_AND_BOUNDARY_GATES
 phase_3_result:
   disposition: PENDING
 phase_4_result:
   disposition: PENDING
 next_wake:
   candidate: Slack_bounded_readonly_channel_history_surface
-  phase: 2_of_4
-  planned_micro_use: ONE_MESSAGE_READ_BOUNDED_BY_A_NON_SECRET_TIME_WINDOW_OR_SOURCE_BOUND_LATEST_TIMESTAMP_WITH_EXACT_CONTENT_MINIMIZED
+  phase: 3_of_4
+  planned_probe: ONE_SYNTACTICALLY_INVALID_NON_SECRET_TIMESTAMP_BOUND_TO_TEST_ERROR_PRESERVATION_WITH_NO_RETRY_OR_FALLBACK
+  preferred_invalid_argument: oldest_equal_to_non_timestamp_literal
   excluded_effects: CURSOR_TRAVERSAL_SEND_EDIT_DELETE_JOIN_REACTION_DRAFT_SCHEDULE_FILE_READ_OR_OTHER_MUTATION
-review_expiry_utc: 2026-08-10T13:53:33Z
-valid_time_utc: 2026-08-03T13:53:33Z
+review_expiry_utc: 2026-08-10T14:49:20Z
+valid_time_utc: 2026-08-03T14:49:20Z
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 sealed: true
 prior_campaign:
@@ -188,10 +236,10 @@ prior_prior_prior_campaign:
 
 # X13 current campaign
 
-Slack bounded read-only channel-history campaign **1/4** is active.
+Slack bounded read-only channel-history campaign **2/4** is active.
 
-One `limit=1`, `response_format=concise` read from the known HFO command-and-control conversation returned one newest message and a continuation cursor with no normalized error or mutation. `concise` still returned the full message body and author-identifying fields, so it is not a metadata-only or privacy-minimal mode.
+One `limit=1`, `response_format=concise` read over the explicit UTC window 2026-08-03T14:40:00Z–14:50:00Z returned zero messages, no cursor, no visible error, no private content, and no mutation. The only admitted meaning is that no message was returned in the connector-visible conversation and supplied time window at observation time.
 
-Exact private message text, email, user ID, timestamp, cursor, and link values were minimized from durable logs. Identity, token class, scopes, app distribution class, rate-limit state, raw API parity, ConsumerAck, and measured operator relief remain unknown.
+The connector exposes `oldest` and `latest` but not Slack's `inclusive` control. Exact-boundary retrieval is therefore not admitted. Identity, scopes, raw request forwarding, completeness, ConsumerAck, and measured operator relief remain unknown.
 
-Next wake: phase 2, one harmless time-bounded one-message read with no cursor traversal or write effect.
+Next wake: phase 3, one syntactically invalid non-secret timestamp-bound probe with no retry, fallback, cursor traversal, or write effect.
