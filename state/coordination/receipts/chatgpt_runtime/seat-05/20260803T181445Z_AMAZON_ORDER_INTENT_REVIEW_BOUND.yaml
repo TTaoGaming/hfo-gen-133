@@ -1,0 +1,55 @@
+receipt_version: 1
+receipt_type: operator_relief_transition
+seat: S05
+callsign: Var
+expected_task_id: 6a55c182078c8191b89f2dd15f5f640c
+recorded_at_utc: 2026-08-03T18:14:45Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+wip_limit: 1
+
+active_item:
+  title: Amazon order intent review
+  status: BOUND
+  source_pointer:
+    system: gmail
+    message_id: 19fc8a759d1eb518
+  transition:
+    type: deadline_appointment_binding
+    calendar_event_id: 85nrmu21gk7vf3b13nuru1979o
+    starts_at: 2026-08-03T13:45:00-06:00
+    ends_at: 2026-08-03T13:55:00-06:00
+    readback: CONFIRMED
+  done_gate: intentional order confirmed in source, or one precise discrepancy recorded with a named next consumer
+
+priority_state:
+  p0: Goodyear vehicle custody, readiness, and final service record remain unverified
+  p1:
+    - PFA disclosure due 2026-08-05
+    - Reed inspection-fee verification remains unverified
+
+operator_minutes_removed: 4
+next_consumer: operator at 2026-08-03T13:45:00-06:00
+
+privacy:
+  private_bodies_retained_in_source_systems: true
+  sanitized_external_facts_only: true
+  excluded_from_git_and_slack:
+    - item details
+    - order numbers
+    - delivery address
+    - payment information
+    - order totals
+
+world_effects:
+  calendar_event_created: true
+  email_sent: false
+  slack_message_sent_at_receipt_time: false
+  payment_or_spend: false
+  order_change_or_cancellation: false
+  account_or_security_change: false
+  deployment_or_merge: false
+  scheduled_task_mutation: false
+  destructive_action: false
+
+claim_ceiling: source confirmation received and private same-day review block created/read back; order intent itself remains unverified until operator review
