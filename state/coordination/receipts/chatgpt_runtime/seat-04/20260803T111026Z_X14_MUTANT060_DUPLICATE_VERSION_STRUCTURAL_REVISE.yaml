@@ -1,0 +1,220 @@
+---
+schema_id: hfo.gen133.s04.structural_preflight.v1
+receipt_kind: IMMUTABLE_STRUCTURAL_PREFLIGHT
+result: REVISE
+seat: S04
+role: STRUCTURAL_PREFLIGHT_VERIFIER
+carrier_task_id_expected: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_observed: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_match: true
+wip: 1
+valid_time_utc: 2026-08-03T11:10:26Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+---
+
+self_probe:
+  identity: S04_STRUCTURAL_PREFLIGHT
+  task_title_observed: HFO S04 Hrist Structural Verifier
+  task_enabled_observed: true
+  exact_task_identity_match: true
+  tools_observed:
+    - native_automations_inventory_read
+    - github_branch_search
+    - github_commit_search
+    - github_commit_and_exact_file_read
+    - github_blob_read
+    - github_create_only_file_write
+    - github_readback
+    - slack_pointer_post
+    - local_deterministic_sha256_and_git_blob_sha1
+  task_mutation_performed: false
+
+selection:
+  rule: NEWEST_IMMUTABLE_CANDIDATE_ADDRESSED_TO_S04_NOT_AUTHORED_BY_S04
+  selected_candidate_kind: QUARANTINED_NEGATIVE_CONTROL
+  selected_candidate_id: X14_MUTANT_060_ef27eb58dbb3
+  candidate_authoring_seat: X14_FALSE_GREEN_MUTATION_QA
+  authored_by_s04: false
+  addressed_to_s04: true
+  newer_s15_heritage_pointer_is_direct_candidate: false
+  newer_s15_heritage_pointer_reason: NONBINDING_PRECEDENT_ONLY_AND_EXPLICITLY_NOT_A_DIRECT_VERDICT
+  selection_limit: ONE_CANDIDATE
+
+candidate_binding:
+  commit: 7f26db79d8bd23a2cc84e9febd045744a2f20c98
+  path: state/coordination/experiments/false_green_x14/quarantine/20260803T105201Z_X12_CONFLICT_DUPLICATE_IDEMPOTENCY_VERSION.mutant.yaml
+  git_blob_sha1_declared: 5ad08eb2b3d11d3c008694ca8406948292b4b9e6
+  git_blob_sha1_recomputed: 5ad08eb2b3d11d3c008694ca8406948292b4b9e6
+  git_blob_match: true
+  exact_utf8_byte_count: 8934
+  exact_sha256: 1fe204fa1ea7ad188c6278e5ecd11f938bff353407b2e49cb4ab21da2dcf99aa
+  line_endings: LF
+  final_newline: true
+  immutable_at_commit: true
+  valid_time_utc: 2026-08-03T10:52:01Z
+  expires_utc: 2026-08-03T14:46:00Z
+  freshness_at_review: UNEXPIRED
+  executable: false
+  binding_decision: false
+  status: QUARANTINED_NEGATIVE_CONTROL
+  privacy_ceiling: SANITIZED_REPOSITORY_METADATA_ONLY
+  world_effect_ceiling: FILE_AND_SANITIZED_SLACK_POINTER_ONLY
+
+schema_and_canonicalization:
+  candidate_schema_id: hfo.gen133.x14.false_green_mutant.v1
+  yaml_document_count: 2
+  yaml_document_shapes:
+    - FRONT_MATTER_MAPPING
+    - BODY_MAPPING
+  front_matter_sealed: false
+  source_copy_mode: EXACT_SOURCE_REFERENCE_PLUS_SINGLE_FIELD_NEGATIVE_CONTROL_OVERLAY
+  overlay_algorithm: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  overlay_exact_canonical_utf8: '{"mutated_field":"canonical_conflict.contender.next_version","mutated_value":61,"mutation_class":"DUPLICATE_IDEMPOTENCY_VERSION","original_value":62,"source_blob_sha1":"6a401cc0024376fe51c9aaa1bd5d593809ca9baa"}'
+  overlay_exact_byte_count_declared: 211
+  overlay_exact_byte_count_recomputed: 211
+  overlay_sha256_declared: ef27eb58dbb3584a503c2135fab9dee27505895e3069b317d7078339f47975c3
+  overlay_sha256_recomputed: ef27eb58dbb3584a503c2135fab9dee27505895e3069b317d7078339f47975c3
+  overlay_digest_match: true
+  varied_factor_count: 1
+  mutated_field: canonical_conflict.contender.next_version
+  original_value: 62
+  mutated_value: 61
+
+source_binding:
+  source_authoring_seat: X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+  source_task_id: 6a506f83df208191815dd17a8fd5baa3
+  source_commit: 2443b5ba873f15f62d0b68cc9d606dec5b003394
+  source_path: state/coordination/experiments/durable_object_x12/conflicts/20260803T104700Z_EXPECTED_BLOB_77D2456E_OBSERVED_487126E4_STALE_UPDATE_REJECTED.json
+  source_git_blob_sha1_declared: 6a401cc0024376fe51c9aaa1bd5d593809ca9baa
+  source_git_blob_sha1_recomputed: 6a401cc0024376fe51c9aaa1bd5d593809ca9baa
+  source_git_blob_match: true
+  source_exact_utf8_byte_count: 2908
+  source_exact_sha256: e42faaccf9db9e526c00a68a2d77e883c34947446b38130a23980c607b0ef43b
+  source_schema_id: hfo.gen133.x12.durable_object_conflict.v1
+  source_canonicalization: JCS_LIKE_V1_RESTRICTED_INTEGER_ONLY
+  source_canonical_conflict_byte_count_recomputed: 2679
+  source_conflict_digest_sha256_declared: fb5c4e403fdcc396932f5ec527bf6c41cfd1d5056041d25df6eabce46b189a67
+  source_conflict_digest_sha256_recomputed: fb5c4e403fdcc396932f5ec527bf6c41cfd1d5056041d25df6eabce46b189a67
+  source_conflict_digest_match: true
+  source_expected_version: 61
+  source_next_version: 62
+  source_observed_current_version: 62
+  source_decision: REJECTED_HTTP_409_NO_CONTENT_CHANGE
+  source_valid_time_utc: 2026-08-03T10:47:00Z
+  source_expiry_utc: 2026-08-03T14:46:00Z
+
+source_pointer_readback:
+  accepted_event:
+    commit: 75c797f5763a913b9ef950619dc59aff2596f92e
+    path: state/coordination/experiments/durable_object_x12/events/20260803T104600Z_V0061_TO_V0062_STALE_BLOB_SHA_REJECTION.json
+    git_blob_sha1_declared: d3b2a049e8de7fada087e9e66fe7e5523c791103
+    git_blob_sha1_readback: d3b2a049e8de7fada087e9e66fe7e5523c791103
+    blob_match: true
+    event_digest_sha256: 84b04c928c22accc2e41cc9dc49196f0c268c108337d3a48c22fddde13632f92
+    expected_version: 61
+    next_version: 62
+    idempotency_key: 5afea11ba8261494feeb637d9e86ad960a98580a0d8eb78098a608d92f3ce9f8
+    nonce: x12-c16-w2-v61-v62-5afea11ba826
+  current_projection:
+    commit: 6965e9d6b0e2534779e8a988d150bdf010a80ad3
+    path: state/coordination/experiments/durable_object_x12/CURRENT.json
+    git_blob_sha1_declared: 487126e4c3a081aa98a375cb7886769b60f39f9b
+    git_blob_sha1_readback: 487126e4c3a081aa98a375cb7886769b60f39f9b
+    blob_match: true
+    version: 62
+    projection_digest_sha256: df7e45806b8776ceffbf9dc0847242d8f9d6c664e580638fbc399157cbd8a1ba
+    latest_event_pointer_match: true
+
+structural_checks:
+  authority:
+    status: BOUNDED_NONEXECUTABLE_QUARANTINE_ONLY
+    finding: NO_TRANSITION_OR_EXTERNAL_EFFECT_AUTHORITY
+  task_binding:
+    status: PASS_FOR_CARRIER_IDENTITIES
+    finding: X14_SOURCE_X12_AND_VERIFIER_S04_TASK_IDS_ARE_DISTINCT_AND_EXPLICIT
+  actor_carrier_separation:
+    status: PASS_FOR_NONBINDING_NEGATIVE_CONTROL
+    finding: X14_MUTANT_AUTHOR_X12_SOURCE_ACTOR_AND_S04_VERIFIER_ARE_NOT_CONFLATED
+  idempotency_and_version:
+    status: FAIL
+    finding: MUTATED_NEXT_VERSION_61_EQUALS_EXPECTED_VERSION_61_WHILE_BOUND_CURRENT_IS_ALREADY_VERSION_62
+  lease_and_expiry:
+    status: PARTIAL
+    finding: CANDIDATE_AND_SOURCE_EXPIRY_ARE_EXPLICIT_AND_UNEXPIRED_BUT_NO_EXECUTABLE_PRODUCER_LEASE_EXISTS
+  privacy:
+    status: PASS_WITHIN_DECLARED_CEILING
+    finding: ONLY_SANITIZED_REPOSITORY_TASK_AND_EXPERIMENT_METADATA_WAS PERSISTED
+  rollback:
+    status: PASS_FOR_QUARANTINE
+    finding: RETAIN_OR_IGNORE_MUTANT_PRESERVE_IMMUTABLE_SOURCE_NO_COMPENSATING_WORLD_EFFECT_REQUIRED
+  verifier:
+    status: NONBINDING_ONLY
+    finding: S04_PREFLIGHT_AND_S09_ROUTE_ARE SAME_PROVIDER; NO_DISTINCT_PROVIDER_STOOD_OR_FELL
+  consumer:
+    status: UNACKNOWLEDGED
+    named_consumers:
+      - X14_CAMPAIGN_REDUER
+      - X12_DURABLE_OBJECT_CAMPAIGN_REDUCER
+    consumer_ack: NOT_OBSERVED
+  source_claim_ceiling:
+    status: PRESERVED
+    finding: SOURCE_PROVES_ONE_SEQUENTIAL_STALE_BLOB_SHA_409_AND_UNCHANGED_V62_READBACK_NOT_DATABASE_LINEARIZABILITY_OR_EXACTLY_ONCE
+
+strongest_fake_green_mutant:
+  mutant_id: X14_MUTANT_060_ef27eb58dbb3
+  mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+  exact_overlay_byte_count: 211
+  exact_overlay_sha256: ef27eb58dbb3584a503c2135fab9dee27505895e3069b317d7078339f47975c3
+  false_green_claim: ACCEPT_A_TRANSITION_IDENTITY_WHERE_EXPECTED_VERSION_AND_NEXT_VERSION_ARE_EQUAL
+  rejection_reason_code: NEXT_VERSION_EQUALS_EXPECTED_VERSION_AND_CANNOT_IDENTIFY_A_SINGLE_MONOTONIC_IDEMPOTENT_TRANSITION
+  gate: S04_EXPECTED_PRIOR_NEXT_VERSION_STRICT_INCREMENT_AND_IDEMPOTENCY_UNIQUENESS_GATE
+  gate_result: CAUGHT
+  outcome_credit: 0
+
+verdict:
+  result: REVISE
+  reason: >-
+    Applying the single-field overlay changes next_version from 62 to 61 while preserving expected_version 61,
+    observed current version 62, and the authentic accepted 61-to-62 source transition. The resulting declaration
+    is a duplicate/no-op and nonmonotonic transition identity. Authentic source provenance cannot launder that
+    contradiction. It grants no transition, idempotency, durability, ConsumerAck, verification, or outcome credit.
+  next_valid_successor: >-
+    A fresh executable transition must bind one purpose-bound WorkItem, unique semantic idempotency key and nonce,
+    exact expected current version and digest, next_version equal to expected_version plus one, unexpired producer
+    lease, actor and credential principal, rollback, exact producer return, distinct digest-bound STOOD or FELL,
+    and explicit named ConsumerAck.
+
+heritage_precedent:
+  commit: 8f04e33399420e9b695c9907d415a36204fa42b9
+  path: state/coordination/receipts/chatgpt_runtime/seat-15/20260803T105654Z_X14_MUTANT060_REUSE_S04_DUPLICATE_VERSION_GATE.yaml
+  use: NONBINDING_FAILURE_ANTIBODY_ONLY
+  direct_verdict_substitute: false
+  heritage_credit: 0
+
+prohibited_effects_observed:
+  candidate_editing: false
+  task_mutation: false
+  self_grading: false
+  send: false
+  spend: false
+  deployment: false
+  merge: false
+  publication: false
+  account_or_security_change: false
+  permanent_deletion: false
+  independent_quorum_claim: false
+
+honest_flaw: >-
+  The mutant is conspicuous because expected_version and next_version are exactly equal while the bound current
+  version is already 62. This catches the strict-successor gate but does not test duplicate idempotency keys with
+  distinct payloads, nonce reuse, replay across objects, skipped or wrapped versions, or a monotonic version paired
+  with a stale digest. Candidate discovery and repository indexing are best-effort. All available verifier evidence
+  is same-provider and therefore nonbinding with binding weight zero.
+
+sealed: true
+---
