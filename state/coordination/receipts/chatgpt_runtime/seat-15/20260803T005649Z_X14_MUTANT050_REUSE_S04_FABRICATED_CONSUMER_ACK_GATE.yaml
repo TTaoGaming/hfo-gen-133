@@ -1,0 +1,158 @@
+---
+schema_id: hfo.gen133.heritage_reuse_result.v1
+result_id: S15_X14_MUTANT050_REUSE_S04_FABRICATED_CONSUMER_ACK_GATE_20260803T005649Z
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+task_id_match: true
+wip_limit: 1
+result: RETURN_REUSABLE_PRIOR_ARTIFACT
+artifact_class: DIRECT_PRIOR_S04_FAILURE_ANTIBODY
+valid_time_utc: 2026-08-03T00:56:49Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+expires_utc: 2026-08-10T00:48:11Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+privacy_ceiling: SANITIZED_REPOSITORY_METADATA_AND_CLAIM_CEILINGS_ONLY
+world_effect_ceiling: ONE_IMMUTABLE_GIT_RECEIPT_AND_ONE_SANITIZED_SLACK_POINTER_ONLY
+binding_decision: false
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+heritage_credit: 0_PENDING_EXACT_NAMED_CONSUMER_ACK
+sealed: false
+---
+
+self_probe:
+  identity_claim: HFO_GEN133_S15_HERITAGE_REUSE_AND_DEDUP_CELL
+  expected_task_id: 6a52f485409c8191aa06ea7911add3f3
+  observed_task_id: 6a52f485409c8191aa06ea7911add3f3
+  observation_source: SCHEDULED_RUNTIME_CONTEXT
+  tools_used:
+    - github_recent_commit_search
+    - github_exact_commit_read
+    - github_exact_file_read
+    - github_commit_message_dedup_search
+    - github_create_file
+    - github_readback
+    - slack_send_sanitized_pointer
+  task_mutation_performed: false
+
+current_workitem:
+  workitem_id: X14_MUTANT_050_716e9731f78a
+  mutation_class: FABRICATED_CONSUMER_ACK
+  mutation_subcase: ABSENT_CONSUMER_ACK_REPLACED_BY_PRODUCER_ASSERTED_RELEASE_GATE_ACK
+  status: QUARANTINED_NONEXECUTABLE_ROUTED_PENDING_VERDICTS
+  current_pointer_commit: 6d073c9a78c1e40257f6ca3d2ecddf0efbccb524
+  current_pointer_path: state/coordination/experiments/false_green_x14/CURRENT.yaml
+  current_pointer_version: 50
+  candidate_commit: 56f9ed47a74016770f152ec8f4b8f8ebd22b8a66
+  candidate_path: state/coordination/experiments/false_green_x14/quarantine/20260803T005211Z_X13_GITHUB_ACTIONS_FABRICATED_CONSUMER_ACK.mutant.yaml
+  candidate_blob_sha1: 8901d099f0af0bbc78a414fcc9def66383ba8b5d
+  declared_canonical_mutation_digest_sha256: 716e9731f78a2c444897114243b265721d762c717b88f6678bdccbee96db0007
+  declared_canonical_byte_count: 522
+  mutated_field: consumer_ack
+  original_value: ABSENT
+  asserted_consumer: HFO_CI_RELEASE_GATES
+  asserted_status: ACKED
+  source_commit: 9488dedee12778be22cbaf99297de93722c5074d
+  source_path: state/coordination/experiments/cots_connector_x13/20260803T004811Z_GITHUB_ACTIONS_WORKFLOW_RUN_STATUS_PHASE4_ADOPT_WITH_GATES.md
+  source_blob_sha1: e4b120e842bb6451ea6663602050df062ba06000
+  source_disposition: ADOPT_WITH_GATES_ZERO_FITNESS_PENDING_CONSUMER_ACK
+  expected_verdict: REVISE
+  named_gate: S04_EXPLICIT_CONSUMER_ACK_BINDING_GATE
+  verifier: S04_STRUCTURAL_PREFLIGHT
+  distinct_verifier: S03_REDUCER_VERIFICATION_ROUTER_AND_CONSUMER_ACK_TRACKER
+  consumer:
+    - X14_CAMPAIGN_REDUCER
+    - HFO_CI_RELEASE_GATES
+  expiry_utc: 2026-08-10T00:52:11Z
+
+reused_prior_artifact:
+  original_date_utc: 2026-08-01T14:15:04Z
+  source_repository: TTaoGaming/hfo-gen-133
+  source_commit: 0e16b76b379177763095292ac99d579093b6ac53
+  source_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260801T141504Z_X14_MUTANT017_FABRICATED_CONSUMER_ACK_REVISE.yaml
+  source_blob_sha1: 04dc18e1e2e414e9e86ee9aec55ff7c12805c61e
+  prior_candidate_id: X14_MUTANT_017_6bbb5767d89b
+  prior_result: REVISE
+  prior_reason_code: FABRICATED_CONSUMER_ACK_WITHOUT_DISTINCT_DIGEST_BOUND_CONSUMER_RECEIPT
+  prior_named_gate: S04_EXPLICIT_CONSUMER_ACK_BINDING_GATE
+  prior_evidence_class: SAME_PROVIDER_NONBINDING
+  prior_binding_weight: 0
+  reuse_mode: HISTORICAL_FAILURE_ANTIBODY_ONLY_NOT_A_DIRECT_MUTANT_050_VERDICT
+  reusable_rule: >-
+    A named consumer, producer assertion, routing pointer, accepted producer phase, source blob field, or
+    ACK-shaped overlay is not ConsumerAck evidence. Require a distinct consumer-authored immutable receipt
+    binding the exact source commit, path, blob, WorkItem or experiment, accepted result, effect ceiling,
+    acknowledgement time, acknowledgement digest, and prerequisite verifier verdict when applicable.
+    Otherwise return REVISE and grant no consumption, fitness, release, terminal, campaign, or independent-verification credit.
+
+supported_claims:
+  - The prior direct S04 receipt rejected the same FABRICATED_CONSUMER_ACK mutation class.
+  - The prior gate held that a consumer role name and source-blob binding alone do not prove consumer authorship or acceptance.
+  - The current sealed X13 source disposition explicitly leaves fitness at zero pending ConsumerAck.
+  - The current mutant supplies an ACK-shaped producer overlay but no cited consumer-authored immutable receipt commit, path, blob, acknowledgement digest, prerequisite-verdict binding, or independently observed consumer action.
+  - The prior rule is acceptance-relevant as a checklist for direct S04 review and X14 reduction of mutant 050.
+
+excluded_claims:
+  - This S15 receipt is not a direct verdict on mutant 050 and earns no caught-gate credit.
+  - It does not independently recompute the current 522-byte canonical overlay or SHA-256.
+  - It does not prove that HFO_CI_RELEASE_GATES never consumed the source outside the exact repository evidence inspected.
+  - It does not test replay of a once-valid acknowledgement, a valid receipt bound to a stale source digest, compromised consumer identity, signature forgery, verdict-and-ack races, or cross-system atomicity.
+  - It grants no ConsumerAck, adoption, release completion, campaign closure, independent verification, or binding authority.
+
+acceptance_relevance:
+  exact_overlap: SAME_MUTATION_CLASS_AND_SAME_ABSENCE_OF_DISTINCT_CONSUMER_AUTHORED_EXACT_SOURCE_RECEIPT
+  expected_use: >-
+    S04 may reuse the prior failure antibody while independently resolving mutant 050, the sealed X13 source,
+    and any post-source consumer receipt. X14_CAMPAIGN_REDUCER may use it only after a direct exact-mutant verdict.
+  required_current_checks:
+    - resolve mutant 050 at its exact commit, path, and blob
+    - resolve the X13 phase-4 source at its exact commit, path, and blob
+    - recompute the declared 522-byte canonical overlay and SHA-256
+    - confirm consumer_ack is the only overlay field changed
+    - confirm the sealed source records ConsumerAck absent or fitness zero pending ConsumerAck
+    - require a distinct HFO_CI_RELEASE_GATES-authored immutable receipt bound to exact source, WorkItem, acceptance scope, effect ceiling, time, digest, and prerequisite verdict
+    - reject producer, router, carrier, role-name, or Slack assertions when those bindings are absent
+  heritage_credit_condition: >-
+    Credit remains zero unless S04, X14_CAMPAIGN_REDUCER, or HFO_CI_RELEASE_GATES explicitly records that this
+    exact result ID, commit, path, and blob were consumed and identifies the gate checks reused.
+
+verifier:
+  primary: S04_STRUCTURAL_PREFLIGHT
+  distinct_requested: S03_REDUCER_VERIFICATION_ROUTER_AND_CONSUMER_ACK_TRACKER_OR_DISTINCT_NON_CHATGPT_REPOSITORY_READER
+  distinct_consumed: false
+
+consumer:
+  named:
+    - X14_CAMPAIGN_REDUCER
+    - HFO_CI_RELEASE_GATES
+  consumer_ack_observed: false
+
+expiry:
+  result_expiry_utc: 2026-08-10T00:48:11Z
+  earlier_invalidation:
+    - an exact direct S04 verdict for mutant 050 is committed
+    - mutant 050 is superseded, withdrawn, or expires
+    - the candidate or source blob no longer matches the bound bytes
+    - a distinct consumer-authored exact-source acknowledgement is committed
+
+dedup:
+  exact_result_search: NO_PRIOR_MUTANT_050_HERITAGE_COMMIT_MESSAGE_MATCH_FOUND_BEFORE_WRITE
+  known_near_duplicates:
+    - S15 mutant 017 fabricated ConsumerAck gate binding
+    - S15 mutant 028 fabricated ConsumerAck gate binding
+  write_justification: >-
+    This result adds only the named current mutant 050 binding, exact current source and candidate pointers,
+    and current consumer/verifier routing. It does not restate or promote the prior verdict as a new direct decision.
+
+rollback:
+  action: IGNORE_OR_SUPERSEDE_THIS_IMMUTABLE_HERITAGE_OFFER
+  source_restoration_required: false
+  external_effect_compensation_required: false
+
+honest_flaw: >-
+  The reused artifact is a same-provider structural verdict against a conspicuous fabricated-ack control,
+  not independent evidence about mutant 050. Commit-message and code search are nontransactional and may miss
+  a newly committed or differently named consumer receipt. This wake verified exact Git blob bindings for the
+  prior verdict and current mutant but deliberately did not perform S04's overlay-byte recomputation or issue a verdict.
