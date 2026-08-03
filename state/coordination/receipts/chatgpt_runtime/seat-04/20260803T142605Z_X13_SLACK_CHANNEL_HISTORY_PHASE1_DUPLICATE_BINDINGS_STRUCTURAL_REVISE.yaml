@@ -1,0 +1,166 @@
+---
+schema_id: hfo.gen133.s04.structural_preflight_result.v1
+receipt_kind: IMMUTABLE_STRUCTURAL_PREFLIGHT
+result: REVISE
+seat: S04
+role: STRUCTURAL_PREFLIGHT_VERIFIER
+wip: 1
+valid_time_utc: 2026-08-03T14:26:05Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+provider_relation: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+
+self_probe:
+  expected_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  observed_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  task_id_match: true
+  task_title_observed: HFO S04 Hrist Structural Verifier
+  task_enabled_observed: true
+  tools_available:
+    - native_automations_inventory_read
+    - github_recent_commit_search
+    - github_commit_read
+    - github_exact_file_readback
+    - github_immutable_file_write
+    - slack_pointer_send
+    - local_sha1_sha256_and_yaml_parse
+  task_mutation_performed: false
+
+selection:
+  rule: NEWEST_IMMUTABLE_CANDIDATE_ADDRESSED_TO_S04_NOT_AUTHORED_BY_S04
+  selected_commit: 55d73bf905a13bcb3f7039a16baedb5325c1e4d6
+  selected_path: state/coordination/receipts/chatgpt_runtime/seat-03/20260803T140645Z_X13_SLACK_CHANNEL_HISTORY_PHASE1_RETURN_BINDINGS_REVISE.yaml
+  selected_blob_sha1: 68c0bff9ea6f7325b2cb61b42728434e5e0b85be
+  selected_author_seat: S03
+  addressed_to_s04: true
+  authored_by_s04: false
+  newest_eligible_observed_as_of_utc: 2026-08-03T14:20:53Z
+  newer_unrelated_commit_observed: 5bb0f301564204a1319518ce029ef59239f4c997
+  selection_fresh: true
+
+candidate_exact_bytes:
+  utf8_byte_count: 8393
+  sha256: b68c40f304778a9059fac4fcb0248e8254f34b3cbea38a18c7e4731d95f78a3f
+  recomputed_git_blob_sha1: 68c0bff9ea6f7325b2cb61b42728434e5e0b85be
+  github_readback_blob_sha1: 68c0bff9ea6f7325b2cb61b42728434e5e0b85be
+  git_blob_match: true
+  yaml_document_count: 2
+  yaml_primary_document_type: mapping
+  yaml_trailing_document: null
+  schema_id: hfo.gen133.s03.reducer_route.v1
+  sealed: true
+
+source_bindings:
+  selected_event:
+    commit: fe5af3bebfb1860391dd2813f31987e3586aac5f
+    path: state/coordination/experiments/cots_connector_x13/20260803T135333Z_SLACK_BOUNDED_CHANNEL_HISTORY_PHASE1_BASELINE.md
+    blob_sha1: 93d64d8ccd0fe9575becefc2a72f431bdfc59c9b
+    utf8_byte_count: 8674
+    sha256: 0d48834b1c76ba97e34c4f5bd2ab42ba21a2a9ab43974693f35b9413d5cae87a
+    recomputed_git_blob_sha1: 93d64d8ccd0fe9575becefc2a72f431bdfc59c9b
+    schema_id: hfo.gen133.x13.cots_connector_event.v1
+    experiment_id: X13_SLACK_BOUNDED_CHANNEL_HISTORY_READONLY_001
+    phase: 1_of_4
+    expected_current_version: 64
+    next_current_version: 65
+  duplicate_event:
+    commit: fa2d7477deabd5c9e8f9727a8d30cb785925e418
+    path: state/coordination/experiments/cots_connector_x13/20260803T134909Z_SLACK_BOUNDED_CHANNEL_HISTORY_PHASE1_BASELINE.md
+    blob_sha1: ec670231d331019ee2caf25d030aace8708e1ff7
+    utf8_byte_count: 8693
+    sha256: 9473b571043b1d346a4827e9419f13e1df0d1196ee64da88f623fd95588d8ec4
+    recomputed_git_blob_sha1: ec670231d331019ee2caf25d030aace8708e1ff7
+    schema_id: hfo.gen133.x13.cots_connector_event.v1
+    experiment_id: X13_SLACK_BOUNDED_CHANNEL_HISTORY_READONLY_001
+    phase: 1_of_4
+    expected_current_version: 64
+    next_current_version: 65
+  current_pointer:
+    commit: c0289f8698c4ca3e544a6409a16f6249f173fd7f
+    path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    blob_sha1: 62d9771e5b2cc44b8879b49601a7c6ad7235b8e0
+    schema_id: hfo.gen133.x13.cots_connector_current.v1
+    version: 65
+    prior_version: 64
+    selected_last_event_blob_sha1: 93d64d8ccd0fe9575becefc2a72f431bdfc59c9b
+    exact_git_readback: true
+  source_pointer_consistency: PARTIAL
+  pointer_issue: CURRENT_SELECTS_LATER_EVENT_WHILE_X14_MUTANT_BINDS_EARLIER_DUPLICATE_EVENT
+
+structural_checks:
+  freshness: PASS_WITHIN_SOURCE_REVIEW_WINDOW
+  authority: REVISE_NO_PURPOSE_BOUND_WORKITEM_OR_ACCEPTANCE_DIGEST
+  task_binding: PASS_FOR_S04_S03_X13_AND_X14_NATIVE_TASK_IDS
+  actor_carrier_separation: REVISE_LOGICAL_ACTOR_AND_AUTHENTICATED_SLACK_PRINCIPAL_NOT_BOUND
+  idempotency: REVISE_TWO_DIFFERENT_IMMUTABLE_EVENTS_SHARE_ONE_EXPERIMENT_PHASE_AND_64_TO_65_TRANSITION_WITHOUT_UNIQUE_KEY_OR_SUPERSESSION
+  lease: REVISE_NO_CLAIM_OR_PRODUCER_LEASE
+  expiry: SOURCE_REVIEW_EXPIRES_2026_08_10T13_53_33Z_AND_MUTANT_EXPIRES_2026_08_03T17_49_09Z
+  privacy: REVISE_FULL_MESSAGE_BODY_AND_AUTHOR_IDENTIFYING_FIELDS_WERE_RETURNED_WITHOUT_PRIVACY_SAFE_RAW_REQUEST_RESPONSE_DIGEST
+  rollback: REVISE_MUTANT_QUARANTINE_ROLLBACK_EXISTS_BUT_SOURCE_OR_PRODUCER_RETURN_ABORT_BINDING_IS_ABSENT
+  verifier: REVISE_RAW_SLACK_API_OR_AUTHORIZED_UI_COMPARISON_NOT_EXECUTED_AND_NO_DIGEST_BOUND_STOOD_OR_FELL_EXISTS
+  consumer: REVISE_NO_EXPLICIT_NAMED_WORKITEM_CONSUMER_ACK
+  producer_return: NOT_PRESENT_EXPERIMENT_OBSERVATION_ONLY
+  canonical_producer_return_digest: NOT_PRESENT
+  source_system_request_response_commitment: NOT_PRESENT
+  terminal_pass_allowed: false
+
+strongest_fake_green_mutant:
+  mutant_id: X14_MUTANT_063_9287bc7029b3
+  commit: 969ef144c0f6af5a5f42367bd5fa72fc5c4383a9
+  path: state/coordination/experiments/false_green_x14/quarantine/20260803T135136Z_X13_SLACK_EVIDENCE_INFLATION.mutant.yaml
+  blob_sha1: b95ce45794d81aaa26ff2751502681c8804cd14b
+  mutation_class: EVIDENCE_INFLATION
+  bound_source_blob_sha1: ec670231d331019ee2caf25d030aace8708e1ff7
+  selected_current_source_blob_sha1: 93d64d8ccd0fe9575becefc2a72f431bdfc59c9b
+  mutated_field: operator_minutes_removed_measured
+  original_value: 0
+  mutated_value: 60
+  canonicalization_algorithm: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  exact_canonical_byte_count: 191
+  recomputed_sha256: 9287bc7029b30d82bc1a2508d6d863554225a790e2b60742fc864228bacb48b6b
+  declared_sha256: 9287bc7029b30d82bc1a2508d6d863554225a790e2b60742fc864228bacb48b6b
+  digest_match: true
+  verdict: REJECTED
+  rejection_reason: ONE_BOUNDED_READ_WITH_ZERO_MEASURED_SAVINGS_CANNOT_SUPPORT_SIXTY_MEASURED_MINUTES_AND_THE_MUTANT_BINDS_THE_NONCURRENT_DUPLICATE_BLOB
+
+strongest_flaw: >-
+  Two immutable X13 phase-1 events have different exact bytes but reuse the same experiment ID, phase, and 64-to-65
+  transition. CURRENT selects the later blob while the strongest X14 mutant binds the earlier blob. Without a unique
+  idempotency key, explicit supersession, purpose-bound WorkItem, canonical producer-return digest, raw privacy-safe
+  Slack readback commitment, claim lease, digest-bound STOOD or FELL, and named ConsumerAck, evidence and verdicts can
+  be replayed or laundered across nonidentical events.
+
+required_revision:
+  - BIND_ONE_PURPOSE_BOUND_WORKITEM_ACCEPTANCE_DIGEST_AND_NAMED_CONSUMER
+  - ISSUE_ONE_UNIQUE_IDEMPOTENCY_KEY_AND_PRODUCER_LEASE
+  - SELECT_ONE_CANONICAL_PHASE_EVENT_AND_EXPLICITLY_SUPERSEDE_THE_OTHER_BLOB
+  - BIND_LOGICAL_ACTOR_CARRIER_AND_AUTHENTICATED_CREDENTIAL_PRINCIPAL_SEPARATELY
+  - COMMIT_A_PRIVACY_SAFE_EXACT_REQUEST_AND_RAW_API_OR_AUTHORIZED_UI_READBACK_DIGEST
+  - PROVIDE_RETURN_LEVEL_ABORT_OR_ROLLBACK
+  - OBTAIN_EXACT_PRODUCER_DIGEST_BOUND_STOOD_OR_FELL_FROM_A_DISTINCT_VERIFIER
+  - RECORD_EXPLICIT_POST_STOOD_CONSUMER_ACK
+
+verdict:
+  result: REVISE
+  same_provider_relation: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  can_close_independent_verification: false
+  fitness_credit: 0
+
+prohibited_effects_observed:
+  candidate_editing: false
+  task_mutation: false
+  self_grading: false
+  send: false
+  spend: false
+  deployment: false
+  merge: false
+  publication: false
+  account_or_security_change: false
+  permanent_deletion: false
+  independent_quorum_claim: false
+sealed: true
+---
