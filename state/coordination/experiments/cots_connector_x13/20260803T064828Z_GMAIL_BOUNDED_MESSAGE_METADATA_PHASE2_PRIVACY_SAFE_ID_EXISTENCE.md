@@ -1,0 +1,144 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_GMAIL_BOUNDED_MESSAGE_METADATA_SEARCH_READONLY_001
+phase: 2
+phase_name: SMALLEST_HARMLESS_READ_ONLY_MICRO_USE
+campaign_wake: 2_of_4
+expected_prior_version: 57
+next_version: 58
+candidate: Gmail_bounded_message_metadata_search_readonly_surface
+carrier: X13_COTS_AND_CONNECTOR_PDCA_LAB
+carrier_task_id: 6a55c1733708819185088bf334e33ea5
+carrier_task_id_match: true
+repository: TTaoGaming/hfo-gen-133
+branch: agent/gen133-bootstrap-20260730
+prior_current_blob_sha: d928d8bf10feedeed18b1450f0e8e12e85b198c5
+wip: 1
+valid_time_utc: 2026-08-03T06:48:28Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+effect_ceiling: ONE_BOUNDED_READ_ONLY_ID_EXISTENCE_QUERY_EVENT_CURRENT_ADVANCE_READBACK_AND_ONE_SHORT_SLACK_MEASURED_FACT
+candidate_invocations_this_wake: 1
+candidate_invocations_campaign_total: 2
+writes_sends_drafts_labels_archive_trash_delete_attachment_or_mailbox_mutations: 0
+operator_minutes_removed_measured: 0
+operator_minutes_removed_estimate_per_consumed_presence_check: 1_to_2_UNVALIDATED
+paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
+fitness_credit: 0_PENDING_SOURCE_BOUND_CONSUMER_ACK_AND_MEASURED_OPERATOR_OUTCOME
+consumer_ack: NOT_OBSERVED
+direct_receipt:
+  action: Gmail.search_email_ids
+  query_class: BOUNDED_RECENT_INBOX_PRESENCE
+  query: "in:inbox newer_than:1d -in:spam -in:trash"
+  requested_max_results: 1
+  returned_message_id_count: 0
+  next_page_token_present: false
+  exact_message_ids_persisted: false
+  exact_page_token_persisted: false
+  connector_error: null
+  external_call_time_ms: 306
+  carrier_retries: 0
+  private_headers_bodies_snippets_or_attachments_returned: false
+  mutation_effect: false
+official_contract_rechecked_2026_08_03:
+  messages_list: https://developers.google.com/workspace/gmail/api/reference/rest/v1/users.messages/list
+  search_operators: https://support.google.com/mail/answer/7190
+  messages_list_query_semantics: SAME_QUERY_FORMAT_AS_GMAIL_SEARCH_BOX
+  messages_list_response_item_shape: ID_AND_THREAD_ID_ONLY
+  max_results_is_page_cap: true
+  next_page_token_is_pagination_cursor: true
+  newer_than_operator_documented: true
+  exclusion_operator_documented: true
+  q_with_gmail_metadata_scope: NOT_ALLOWED
+micro_use:
+  intended_consumer_question: IS_THERE_AT_LEAST_ONE_WRAPPER_VISIBLE_RECENT_INBOX_MESSAGE_WITHIN_THE_EXACT_QUERY_SCOPE
+  safe_output_shape: BOOLEAN_PRESENCE_PLUS_CURSOR_PRESENCE_AND_OBSERVATION_TIME
+  measured_answer: NO_MATCH_RETURNED_IN_CONNECTOR_QUERY_SCOPE
+  authoritative_mailbox_empty_claim: false
+  metadata_fetch_performed: false
+  usefulness_status: PRIVACY_SAFE_BUT_NO_OPERATOR_OUTCOME_MEASURED
+privacy_minimization:
+  exact_message_ids_logged: false
+  exact_page_tokens_logged: false
+  headers_subjects_senders_recipients_snippets_bodies_attachments_logged: false
+  mailbox_identity_logged: false
+  query_terms_containing_private_people_or_subjects: false
+empty_result_gate:
+  triggered: true
+  measured_fact: VALID_DOCUMENTED_QUERY_RETURNED_ZERO_IDS_AND_NO_CURSOR_WITH_NO_VISIBLE_ERROR
+  admitted_interpretation: NO_MATCH_RETURNED_IN_CONNECTOR_QUERY_SCOPE_AT_OBSERVATION_TIME
+  forbidden_interpretations:
+    - MAILBOX_HAS_NO_RECENT_INBOX_MESSAGES
+    - GMAIL_UI_WOULD_RETURN_ZERO_RESULTS
+    - QUERY_WAS_FORWARDED_UNCHANGED_TO_RAW_GMAIL_API
+    - CONNECTOR_HAS_COMPLETE_OR_DURABLE_MAILBOX_STATE
+  independent_verification: NOT_COMPLETED
+credentials:
+  connector_reached_mailbox_without_error: true
+  operator_supplied_credentials_this_wake: 0
+  authenticated_identity: UNKNOWN
+  credential_type: UNKNOWN
+  effective_oauth_scope: UNKNOWN
+  token_storage_and_custody: CONNECTOR_MANAGED_UNINSPECTED
+  least_privilege_closed: false
+custom_code_avoided_estimate:
+  bounded_id_presence_discovery: 25_to_80_LOC_UNVALIDATED
+  metadata_only_fetch_and_header_allowlisting: 0_NOT_AVOIDED_BY_CURRENT_EXPOSED_SURFACE
+custom_policy_not_avoided:
+  - EFFECTIVE_SCOPE_IDENTITY_CREDENTIAL_CUSTODY_AND_LEAST_PRIVILEGE
+  - FORMAT_METADATA_AND_HEADER_ALLOWLIST_ENFORCEMENT
+  - PRIVATE_IDENTIFIER_AND_PAGE_TOKEN_MINIMIZATION
+  - EMPTY_RESULT_PERMISSION_FAILURE_AND_QUERY_REWRITE_CLASSIFICATION
+  - RATE_LIMIT_RETRY_BACKOFF_COST_AND_QUOTA_ACCOUNTING
+  - INDEPENDENT_RAW_API_OR_GMAIL_UI_VERIFICATION
+durability: EPHEMERAL_POINT_IN_TIME_MAILBOX_QUERY_NOT_A_SNAPSHOT_EVENT_STREAM_OR_WORKFLOW_CHECKPOINT
+observability: ID_COUNT_CURSOR_PRESENCE_NORMALIZED_ERROR_FIELDS_LATENCY_AND_ACTION_VISIBLE_RAW_HTTP_REQUEST_RESPONSE_REQUEST_ID_EFFECTIVE_SCOPE_QUOTA_HEADERS_RETRY_AUDIT_AND_QUERY_REWRITE_HIDDEN
+portability: MEDIUM_FOR_GMAIL_QUERY_SYNTAX_AND_ID_PRESENCE_LOW_FOR_CROSS_PROVIDER_MAILBOX_SEMANTICS
+failure_behavior:
+  positive_id_only_search: OBSERVED_IN_PHASE1
+  valid_documented_empty_result: OBSERVED_THIS_PHASE
+  malformed_query_or_cursor: NOT_TESTED
+  authentication_or_permission_denial: NOT_TESTED
+  quota_or_rate_limit: NOT_TESTED
+  transient_server_failure: NOT_TESTED
+  independent_raw_or_UI_readback: NOT_TESTED
+admitted_scope_this_phase:
+  - ONE_PAGE_BOUNDED_ID_ONLY_PRESENCE_DISCOVERY_WITH_MAX_RESULTS_1
+  - BOOLEAN_MATCH_PRESENCE_CURSOR_PRESENCE_AND_OBSERVATION_TIME_ONLY_FOR_DURABLE_LOGGING
+excluded_scope_this_phase:
+  - MESSAGE_METADATA_BODY_SNIPPET_HEADER_OR_ATTACHMENT_FETCH
+  - SEND_DRAFT_LABEL_MODIFY_ARCHIVE_TRASH_DELETE_OR_ANY_MAILBOX_MUTATION
+  - EMPTY_RESULT_AS_AUTHORITATIVE_MAILBOX_OR_CONFLICT_PROOF
+  - CLAIM_OF_GMAIL_METADATA_SCOPE_OR_LEAST_PRIVILEGE
+  - COMPLETENESS_OR_DURABLE_MAILBOX_STATE_CLAIMS
+mandatory_gates:
+  - KEEP_EXACT_MESSAGE_IDS_AND_PAGE_TOKENS_OUT_OF_GIT_SLACK_AND_ROUTINE_TRACES
+  - VALIDATE_QUERY_CLASS_LOCALLY_AND_RECORD_EXACT_NONPRIVATE_QUERY_CONTEXT
+  - DO_NOT_CALL_BODY_BEARING_READ_ACTIONS_FOR_BOOLEAN_PRESENCE_OR_COUNT_QUESTIONS
+  - DO_NOT_CLAIM_METADATA_ONLY_OPERATION_UNTIL_FORMAT_METADATA_AND_METADATA_HEADERS_ALLOWLIST_CONTROLS_ARE_EXPOSED_AND_PROVEN
+  - DO_NOT_INFER_EFFECTIVE_OAUTH_SCOPE_FROM_SUCCESS
+  - TREAT_ZERO_IDS_AS_NO_MATCH_RETURNED_IN_CONNECTOR_QUERY_SCOPE_NOT_AS_MAILBOX_EMPTY
+  - REQUIRE_SOURCE_BOUND_CONSUMER_ACK_BEFORE_FITNESS_CREDIT
+strongest_falsifier: AN_IDENTICAL_RAW_GMAIL_OR_GMAIL_UI_QUERY_RETURNS_ONE_OR_MORE_MESSAGES_WHILE_THE_CONNECTOR_RETURNS_ZERO_OR_CONNECTOR_INSPECTION_SHOWS_PRIVATE_CONTENT_PERSISTENCE_OR_QUERY_REWRITE
+verifier: RAW_GMAIL_MESSAGES_LIST_OR_GMAIL_UI_WITH_IDENTICAL_QUERY_IDENTITY_AND_OBSERVATION_WINDOW_PLUS_CONNECTOR_SCOPE_INSPECTION
+consumer:
+  - HFO_EXECUTIVE_ASSISTANT_BOUNDED_MAIL_PRESENCE_CHECK
+  - HFO_WAITING_AND_INBOX_STATUS_CELLS
+honest_flaw: THE_MICRO_USE_RETURNED_ZERO_IDS_AND_NO_CURSOR_SO_IT_PROVED_ONLY_A_PRIVACY_SAFE_CONNECTOR_SCOPED_EMPTY_OBSERVATION; IT_DID_NOT_PROVE_METADATA_RETRIEVAL_QUERY_FORWARDING_MAILBOX_IDENTITY_EFFECTIVE_SCOPE_COMPLETENESS_OR_OPERATOR_TIME_REDUCTION
+phase_2_result:
+  disposition: PHASE2_ACCEPTED_AS_PRIVACY_SAFE_ID_ONLY_EXISTENCE_PROBE_WITH_EMPTY_RESULT_SCOPE_GATE
+  metadata_candidate_status: NOT_YET_PROVEN
+  metadata_fetch_status: DEFERRED_NO_SAFE_EXPLICIT_FORMAT_METADATA_OR_HEADER_ALLOWLIST_SURFACE
+next_wake:
+  phase: 3_of_4
+  proposed_action: ONE_SYNTHETIC_INVALID_PAGE_TOKEN_READ_ONLY_FAILURE_PROBE_WITH_MAX_RESULTS_1_NO_RETRY_AND_NO_MAILBOX_MUTATION
+  excluded_effects: SEND_DRAFT_MODIFY_LABEL_ARCHIVE_TRASH_DELETE_ATTACHMENT_DOWNLOAD_BODY_FETCH_OR_SECRET_EXPOSURE
+sealed: true
+---
+
+# X13 Gmail bounded message-metadata search — phase 2
+
+A bounded ID-only presence query asked whether at least one wrapper-visible inbox message matched a documented recent-message query. The connector returned zero IDs, no continuation cursor, no visible error, and no private headers, snippets, bodies, attachments, or mailbox mutation.
+
+This is a privacy-safe micro-use, but the result is only `NO_MATCH_RETURNED_IN_CONNECTOR_QUERY_SCOPE` at the observation time. It is not authoritative proof that the mailbox or Gmail UI had no matching message, because the connector hides the raw provider request, authenticated identity, effective OAuth scope, query forwarding or rewriting, and independent readback.
+
+The phase therefore admits only boolean ID-presence discovery with exact nonprivate query context and privacy-minimized logging. Metadata retrieval remains deferred because the exposed connector surface still lacks explicit `format=METADATA` and selected-header allowlist controls. Measured operator relief remains zero, surfaced cost remains zero, and ConsumerAck is absent.
