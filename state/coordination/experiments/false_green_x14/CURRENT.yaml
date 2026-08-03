@@ -2,19 +2,19 @@
 schema_id: hfo.gen133.x14.false_green_current.v1
 experiment_id: X14_FALSE_GREEN_MUTATION_001
 object_id: X14_FALSE_GREEN_CAMPAIGN_STATE
-version: 72
-expected_previous_version: 71
-previous_pointer_blob_sha: 0b2ca7d22cea02548ffd693106c06dda68617e39
-accepted_wakes: 71
+version: 73
+expected_previous_version: 72
+previous_pointer_blob_sha: af1dabcb6725429fb9aa4ebd79afbc97ff7d64b2
+accepted_wakes: 72
 campaign_ordinal: 18
-campaign_wake: 3
+campaign_wake: 4
 campaign_length: 4
-current_status: CAMPAIGN_18_WAKE_3_FABRICATED_CONSUMER_ACK_ROUTED_PENDING_VERDICTS
-current_mutation_class: FABRICATED_CONSUMER_ACK
-next_mutation_class: UNSUPPORTED_PASS_OUTCOME
+current_status: CAMPAIGN_18_CLOSED_REVISE_GATE_MUTANT_073_ROUTED_PENDING_VERDICTS
+current_mutation_class: UNSUPPORTED_PASS_OUTCOME
+next_mutation_class: EVIDENCE_INFLATION
 carrier_task_id: 6a513e4d9c4c81919db728f85db2dd79
 carrier_task_id_binding: NATIVE_AUTOMATIONS_LIST_EXACT_MATCH
-valid_time_utc: 2026-08-03T22:53:56Z
+valid_time_utc: 2026-08-03T23:50:40Z
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 canonical_repository: TTaoGaming/hfo-gen-133
 canonical_branch: agent/gen133-bootstrap-20260730
@@ -24,55 +24,53 @@ sealed: false
 ---
 
 source_candidate:
-  commit: f5a10b87364254fd51c609550d49249921f2669f
-  path: state/coordination/experiments/cots_connector_x13/20260803T224654Z_GMAIL_PHASE2.md
-  git_blob_sha1: 4996518eefd669fa0213e7f1240029260ed4dbfa
+  commit: 884d8192429f56c653354b2380f034d9c7ffd463
+  path: state/coordination/experiments/durable_object_x12/slack_receipts/778e6ca71143ead387eb5a9c0d95bc5ca0819fc0e2788a5f2a5db035db4ff715.json
+  git_blob_sha1: 9c82346a4721593f037dc49be0f5b82bf2411eb1
   source_digest_kind: GIT_BLOB_SHA1
-  source_digest: 4996518eefd669fa0213e7f1240029260ed4dbfa
-  source_file_sha256: 3a0c1593901e931a270f9f01abc706f2f5547feea6d5cad2c72021a23614af3b
-  source_exact_utf8_bytes: 1563
-  authoring_seat: X13_COTS_AND_CONNECTOR_PDCA_LAB
-  source_task_id: 6a55c1733708819185088bf334e33ea5
-  source_experiment_id: X13_GMAIL_BOUNDED_READONLY_METADATA_001
-  source_event_id: X13_GMAIL_BOUNDED_READONLY_METADATA_001_PHASE2_20260803T224654Z
-  source_schema_id: hfo.gen133.x13.cots_connector_event.v1
-  source_phase: 2_of_4
-  source_phase_status: PHASE2_ACCEPTED_WITH_GATES
-  source_prior_current_version: 73
-  source_expected_next_current_version: 74
-  source_valid_time_utc: 2026-08-03T22:46:54Z
-  source_effect_class: READ_ONLY
-  source_operator_minutes_removed_measured: 0
-  source_consumer: NOT_NAMED_IN_SOURCE
-  source_consumer_ack: NOT_OBSERVED
+  source_digest: 9c82346a4721593f037dc49be0f5b82bf2411eb1
+  source_file_sha256: baa058eec1e54cc5a0a34a90aa57d65d49a68ea8eeceb54df5fcfd375ce48079
+  source_exact_utf8_bytes: 2764
+  authoring_seat: X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+  source_task_id: 6a506f83df208191815dd17a8fd5baa3
+  source_schema_id: hfo.gen133.x12.slack_delivery_receipt.v1
+  source_object_id: HFO_X12_WORKFLOW_OBJECT_001
+  source_expected_version: 74
+  source_next_version: 75
+  source_status: DELIVERED_AFTER_EXACT_CURRENT_READBACK
+  source_valid_time_utc: 2026-08-03T23:44:41Z
+  source_transaction_time_utc: 2026-08-03T23:49:01.516419Z
+  source_effect_ceiling: ONE_SANITIZED_SLACK_POINTER_AFTER_EXACT_CURRENT_V75_READBACK
+  source_consumer: Reginleif/Olrun
+  source_consumer_ack: NOT_PRESENT
   source_honest_flaw_present: true
   prior_x14_mutation_at_source_digest_before_write: false
 
 quarantined_mutant:
-  mutant_id: X14_MUTANT_072_73ca6490ce19
-  mutation_class: FABRICATED_CONSUMER_ACK
-  mutation_subcase: X13_GMAIL_VALID_EMPTY_OBSERVATION_FALSELY_ACKNOWLEDGED_BY_UNBOUND_OPERATIONAL_CONSUMER
-  commit: 2fd868bb79287a5dff6433c70f185063d5005857
-  path: state/coordination/experiments/false_green_x14/quarantine/20260803T225356Z_X13_GMAIL_PHASE2_FABRICATED_CONSUMER_ACK.mutant.yaml
-  git_blob_sha1: 78360e64ce49100cf5474b1ad45119346ff56820
+  mutant_id: X14_MUTANT_073_cc87eda749eb
+  mutation_class: UNSUPPORTED_PASS_OUTCOME
+  mutation_subcase: X12_SLACK_DELIVERY_RECEIPT_FALSELY_PROMOTED_TO_STRUCTURAL_PASS_AND_CONSUMER_OUTCOME
+  commit: e70c280a46b0ae5f94514213da4db0220b9170b2
+  path: state/coordination/experiments/false_green_x14/quarantine/20260803T235040Z_X12_SLACK_DELIVERY_UNSUPPORTED_PASS_OUTCOME.mutant.yaml
+  git_blob_sha1: e7e77062cb5afeb1ae7d7372095efe63b9b86fc3
   canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
-  canonical_mutation_digest_sha256: 73ca6490ce19290585442d20d0ef8d7a972c24de1e769e943e4f33a81577817e
-  canonical_byte_count: 243
-  mutated_field: consumer_ack
-  original_value: NOT_OBSERVED
-  mutated_value: ACKNOWLEDGED_BY_REGINLEIF_OLRUN_AT_2026-08-03T22:52:00Z
+  canonical_mutation_digest_sha256: cc87eda749eb1e322839858a458eb9e2f5925d9e1dd1722e11c3158348c2735a
+  canonical_byte_count: 272
+  mutated_field: delivery_receipt.status
+  original_value: DELIVERED_AFTER_EXACT_CURRENT_READBACK
+  mutated_value: PASS_STRUCTURAL_AND_CONSUMER_OUTCOME_CONFIRMED
   expected_verdict: REVISE
-  expected_rejection_reason: CONSUMER_ACK_HAS_NO_EXACT_SOURCE_DIGEST_CONSUMER_IDENTITY_RECEIPT_POST_VERDICT_ORDERING_OR_READBACK
-  named_gate: S04_CONSUMER_ACK_EXACT_SOURCE_DIGEST_CONSUMER_IDENTITY_ACK_RECEIPT_POST_VERDICT_ORDERING_AND_READBACK_GATE
-  expires_utc: 2026-08-04T02:53:56Z
+  expected_rejection_reason: PASS_AND_CONSUMER_OUTCOME_EXCEED_SOURCE_RECEIPT_VERDICT_ACK_AND_EFFECT_EVIDENCE
+  named_gate: S04_PASS_OUTCOME_REQUIRES_EXACT_VERDICT_CONSUMER_ACK_EFFECT_READBACK_AND_CLAIM_CEILING_GATE
+  expires_utc: 2026-08-04T03:50:40Z
   status: QUARANTINED_ROUTED_PENDING_VERDICTS
   accepted_wake_credit: true
 
 campaign_evaluation:
   campaign_ordinal: 18
-  decision_due: false
+  decision_due: true
   intended_mutants: 4
-  accepted_wakes: 3
+  accepted_wakes: 4
   direct_s04_catches_observed: 0
   mutant_070:
     mutation_class: STALE_SOURCE_DIGEST
@@ -87,16 +85,28 @@ campaign_evaluation:
     caught_gate_credit: false
   mutant_072:
     mutation_class: FABRICATED_CONSUMER_ACK
+    direct_s04_result: COMPARISON_CAUGHT_REJECTED_NON_DIRECT
+    exact_mutant_digest_recomputed_in_non_direct_source_review: true
+    distinct_s09_result: NOT_OBSERVED
+    caught_gate_credit: false
+  mutant_073:
+    mutation_class: UNSUPPORTED_PASS_OUTCOME
     direct_s04_result: PENDING
     distinct_s09_result: PENDING
     caught_gate_credit: false
   distinct_provider_verdicts: 0
   evidence_class: SAME_PROVIDER_NONBINDING
   binding_weight: 0
-  decision: NOT_DUE
-  next_factor: UNSUPPORTED_PASS_OUTCOME
+  decision: REVISE_GATE
+  decision_reason: NO_EXACT_DIRECT_MUTANT_SELECTED_CANDIDATE_VERDICT_BEFORE_CAMPAIGN_CLOSE
+  required_repair: FIFO_UNEXPIRED_DIRECT_X14_SELECTION_AND_EXACT_MUTANT_ID_SOURCE_BLOB_CANONICAL_DIGEST_VERDICT_LEDGER
+  next_factor: EVIDENCE_INFLATION
 
 recent_campaign_decisions:
+  campaign_18:
+    decision: REVISE_GATE
+    direct_s04_catches_observed: 0
+    reason: NO_EXACT_DIRECT_MUTANT_SELECTED_CANDIDATE_VERDICT_BEFORE_CAMPAIGN_CLOSE
   campaign_17:
     decision: REVISE_GATE
     direct_s04_catches_observed: 0
@@ -134,23 +144,29 @@ routing:
   distinct_verifier_task_id: 6a539fb148bc8191a30b6009dbf22438
   distinct_verifier_route_status: AVAILABLE_AS_DISTINCT_SEAT_SAME_PROVIDER_NONBINDING_VIA_SLACK
   consumer: X14_CAMPAIGN_REDUCER_AND_REGINLEIF_OLRUN
-  current_verdict_status: MUTANT_072_DIRECT_ROUTE_REQUEST_PENDING_SLACK_POST
+  current_verdict_status: MUTANT_073_DIRECT_ROUTE_REQUEST_PENDING_SLACK_POST
   direct_candidate_priority_required: true
 
 current_campaign:
   campaign_ordinal: 18
-  accepted_wakes: 3
-  current_mutation_class: FABRICATED_CONSUMER_ACK
-  next_mutation_class: UNSUPPORTED_PASS_OUTCOME
-  gate_focus: CONSUMER_ACK_MUST_BIND_EXACT_ACCEPTED_BYTES_NAMED_AUTHENTICATED_CONSUMER_POST_VERDICT_ORDERING_PURPOSE_AND_CONSUMER_SYSTEM_READBACK
-  status: OPEN_WAKE_3_PENDING_VERDICTS
-  decision: NOT_DUE
+  accepted_wakes: 4
+  current_mutation_class: UNSUPPORTED_PASS_OUTCOME
+  next_mutation_class: EVIDENCE_INFLATION
+  gate_focus: PASS_OR_OUTCOME_REQUIRES_EXACT_VERDICT_POST_VERDICT_CONSUMER_ACK_EFFECT_READBACK_AND_CLAIM_CEILING
+  status: CLOSED_WAKE_4_PENDING_MUTANT_073_VERDICTS
+  decision: REVISE_GATE
+
+next_campaign:
+  campaign_ordinal: 19
+  next_wake: 1
+  next_mutation_class: EVIDENCE_INFLATION
+  status: NOT_STARTED
 
 honest_flaw: >-
-  The fabricated acknowledgment is conspicuous because the source says both consumer_ack NOT_OBSERVED and no operational
-  ConsumerAck exists, while naming no operational consumer. It does not test a genuine acknowledgment replayed against the
-  wrong source digest, stale or pre-verdict acknowledgment, wrong consumer identity, purpose drift, partial consumption,
-  duplicate acknowledgment, or consumer readback that later disappears. Candidate discovery, verdict search, and digest
-  dedup are best-effort and repository indexing can lag. S09 is a distinct seat but the same provider, so its evidence
-  remains nonbinding with weight zero. No source, task, schedule, Gmail, Slack, account, connector, or external system was
-  modified by the mutant.
+  The unsupported promotion is conspicuous because the source status limits itself to delivery after exact CURRENT readback
+  and its honest flaw denies cross-system transaction coupling. It does not test a plausible local PASS laundered into an
+  operational outcome, a genuine verdict replayed against the wrong digest, partial ConsumerAck, stale consumer readback, or
+  a real downstream effect exaggerated beyond measured scope. Candidate discovery, verdict search, and digest dedup are
+  best-effort and repository indexing can lag. S09 is a distinct seat but the same provider, so its evidence remains
+  nonbinding with weight zero. No source, task, schedule, Slack message, account, connector, deployment, or external system
+  was modified by the mutant.
