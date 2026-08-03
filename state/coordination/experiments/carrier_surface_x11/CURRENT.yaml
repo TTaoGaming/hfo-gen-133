@@ -1,8 +1,8 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_TOOL_RETURN_CONTEXT_WINDOW_V1
-current_version: 74
-accepted_wakes: 2
+current_version: 75
+accepted_wakes: 3
 target_wakes_before_decision: 4
 controlled_factor: prompt_context_size
 campaign_status: ACTIVE
@@ -13,20 +13,20 @@ prior_campaign:
   disposition: REVISE
   accepted_wakes: 4
 last_event:
-  commit: 7bca9d8f0b261ca94875c03ed908629972610036
-  path: state/coordination/experiments/carrier_surface_x11/events/20260803T224147Z_TOOL_RETURN_CONTEXT_WINDOW_V1_WAKE_02.yaml
-  blob: eedc1fb0a04ef3afa2b4a9bc5f68b67d35575952
+  commit: a56110b3a921d747c303faea727bab47c6353aec
+  path: state/coordination/experiments/carrier_surface_x11/events/20260803T234044Z_TOOL_RETURN_CONTEXT_WINDOW_V1_WAKE_03.yaml
+  blob: ef3695ec793c1e87dee151129fab0b5c0a9695b0
 baseline_result:
   mode: fixed_commit_read_only_line_window_probe
   source_commit: 07ff146196885fc1c1654ac1ddaacdd35233be8f
   source_path: state/coordination/experiments/carrier_surface_x11/events/20260803T204001Z_WAKE_TIMING_PROVIDER_LAST_RUN_DRIFT_V2_WAKE_04_DECISION.yaml
   source_blob_sha: 3faa6c5e45ff9aeb10f27585b863c2c1a7f56900
   requested_start_line: 1
-  requested_end_line: 32
-  requested_line_count: 32
-  returned_line_count: 32
+  requested_end_line: 48
+  requested_line_count: 48
+  returned_line_count: 48
   first_returned_source_line: 1
-  last_returned_source_line: 32
+  last_returned_source_line: 48
   exact_requested_window_returned: true
   truncation_observed: false
   authentication_requested: false
@@ -48,13 +48,13 @@ honest_flaw: this_campaign_measures_Git_connector_response_window_behavior_not_t
 next_factor: prompt_context_size
 next_probe:
   experiment_id: X11_TOOL_RETURN_CONTEXT_WINDOW_V1
-  campaign_wake: 3
+  campaign_wake: 4
   mode: fixed_commit_read_only_line_window_probe
   source_commit: 07ff146196885fc1c1654ac1ddaacdd35233be8f
   source_path: state/coordination/experiments/carrier_surface_x11/events/20260803T204001Z_WAKE_TIMING_PROVIDER_LAST_RUN_DRIFT_V2_WAKE_04_DECISION.yaml
   requested_start_line: 1
-  requested_end_line: 48
-  requested_line_count: 48
+  requested_end_line: 64
+  requested_line_count: 64
   persist_only:
     - requested_line_count
     - returned_line_count
@@ -63,15 +63,16 @@ next_probe:
     - truncation_or_error_class
     - latency_when_exposed
     - operator_relay_minutes
+    - campaign_disposition
   mutation_allowed: false
   sensitive_readback_externalization_allowed: false
 slack_action: SILENT_UNCHANGED_PROBE
-updated_valid_time_utc: 2026-08-03T22:41:47Z
+updated_valid_time_utc: 2026-08-03T23:40:44Z
 sealed: false
 ---
 
-Tool-return context-window campaign wake 2/4 accepted. A fixed 32-line request
-against the same immutable commit and path returned exactly 32 source lines from
+Tool-return context-window campaign wake 3/4 accepted. A fixed 48-line request
+against the same immutable commit and path returned exactly 48 source lines from
 the expected blob with no truncation or error. Capability classification is
-unchanged, so Slack remains silent. Wake 3 varies only the requested window to
-48 lines.
+unchanged, so Slack remains silent. Wake 4 varies only the requested window to
+64 lines and must issue the campaign disposition.
