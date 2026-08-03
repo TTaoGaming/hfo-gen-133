@@ -1,21 +1,21 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
-experiment_id: X11_GOOGLE_DRIVE_METADATA_READ_VISIBILITY_V1
-current_version: 63
-accepted_wakes: 3
+experiment_id: X11_NATIVE_TASKS_READ_VISIBILITY_V2
+current_version: 64
+accepted_wakes: 0
 target_wakes_before_decision: 4
-controlled_factor: google_drive_metadata_read_visibility
+controlled_factor: native_tasks_read_visibility
 campaign_status: ACTIVE
 current_disposition: null
 prior_campaign:
-  experiment_id: X11_CALENDAR_METADATA_READ_VISIBILITY_V1
-  final_version: 60
+  experiment_id: X11_GOOGLE_DRIVE_METADATA_READ_VISIBILITY_V1
+  final_version: 64
   disposition: KEEP
   accepted_wakes: 4
 last_event:
-  commit: db0085060e834f87fdb725f878e08f2cd5b4bc98
-  path: state/coordination/experiments/carrier_surface_x11/events/20260803T113852Z_GOOGLE_DRIVE_METADATA_READ_VISIBILITY_WAKE_03.yaml
-  blob: f0bd4cd31830bd593363de4eb2cf091c6f989513
+  commit: 919e0329610afc8976ea26fa70df46775acedd3b
+  path: state/coordination/experiments/carrier_surface_x11/events/20260803T123937Z_GOOGLE_DRIVE_METADATA_READ_VISIBILITY_WAKE_04_DECISION.yaml
+  blob: dc678eb2eeb43d5697c598d2c0a10183ff16abe1
 baseline_result:
   drive_metadata_surface_checked: true
   query_executed: true
@@ -31,26 +31,35 @@ baseline_result:
   permission_class: CONNECTED_GOOGLE_DRIVE_METADATA_SEARCH_AVAILABLE
   error_class: NONE
   latency_exposed: true
-  latency_ms: 1323
-  campaign_latency_ms: [3653, 2518, 1323]
+  latency_ms: 1756
+  campaign_latency_ms: [3653, 2518, 1323, 1756]
   operator_relay_minutes: 0
-claim_ceiling: bounded_google_drive_metadata_query_execution_and_sanitized_match_count_visibility_only_not_drive_completeness_content_access_or_independent_verification
-strongest_falsifier: connector_authentication_or_permission_error_or_fixed_query_failure_while_an_independently_authenticated_drive_api_call_returns_zero
+claim_ceiling: bounded_same_provider_native_task_inventory_visibility_only_not_current_run_liveness_success_exactly_once_delivery_or_independent_verification
+strongest_falsifier: exact_expected_task_id_is_absent_or_stable_configuration_fields_drift_without_authorized_change_or_the_native_inventory_read_returns_an_authentication_or_permission_error
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 next_consumer: [Reginleif, Ratatoskr]
-honest_flaw: zero_for_an_impossible_marker_only_measures_this_bounded_query_path
-next_factor: google_drive_metadata_read_visibility
+honest_flaw: the_native_inventory_surface_is_same_provider_broad_and_may_expose_unrelated_prompt_bodies_so_only_sanitized_expected_task_fields_may_be_persisted
+next_factor: native_tasks_read_visibility
 next_probe:
-  experiment_id: X11_GOOGLE_DRIVE_METADATA_READ_VISIBILITY_V1
-  campaign_wake: 4
-  mode: repeat_identical_bounded_impossible_marker_metadata_search_count_probe_and_campaign_decision
-  query_marker: HFO_X11_IMPOSSIBLE_DRIVE_PROBE_6A55089A9ADC8191BDA54541F7F9EFFA
-  topn: 1
-  best_effort_fetch: false
-  require_viewed_by_user: false
-slack_action: SILENT_UNCHANGED_PROBE_AFTER_GIT_READBACK
-updated_valid_time_utc: 2026-08-03T11:38:52Z
+  experiment_id: X11_NATIVE_TASKS_READ_VISIBILITY_V2
+  campaign_wake: 1
+  mode: exact_expected_task_inventory_visibility_probe
+  expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+  mutation_allowed: false
+  unrelated_prompt_body_persistence_allowed: false
+  sensitive_readback_externalization_allowed: false
+  persist_only:
+    - expected_task_visible
+    - enabled_boolean
+    - timing_mode
+    - sanitized_schedule_fingerprint
+    - active_hfo_task_count
+    - permission_class
+    - error_class
+    - latency_when_exposed
+slack_action: POST_CAMPAIGN_DECISION_AFTER_GIT_READBACK
+updated_valid_time_utc: 2026-08-03T12:39:37Z
 sealed: false
 ---
 
-Google Drive metadata-read visibility is active at wake 3/4. The fixed impossible-marker metadata query again returned zero results. Capability was unchanged, so Slack remains silent; the claim stays limited to bounded query execution and sanitized count visibility.
+Google Drive metadata-read visibility closed KEEP after four accepted identical metadata-only impossible-marker searches returned zero results without login, permission error, content hydration, identifier externalization, or mutation. Native Tasks read visibility V2 is active at wake 0/4 and is limited to sanitized exact-task inventory reconciliation with no task mutation and no unrelated prompt-body persistence.
