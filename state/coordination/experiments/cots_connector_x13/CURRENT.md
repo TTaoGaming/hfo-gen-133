@@ -1,14 +1,14 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
 experiment_id: X13_GITHUB_BOUNDED_FILE_READONLY_001
-version: 69
-prior_version: 68
-candidate: GitHub_bounded_readonly_repository_file_fetch_surface
-candidate_contract_reference: official_GitHub_repository_contents_path_ref_permission_size_status_and_rate_limit_contract_plus_direct_connector_receipt
-campaign_wake: 1_of_4
+version: 70
+prior_version: 69
+candidate: GitHub_bounded_readonly_repository_file_and_content_addressed_blob_fetch_surface
+candidate_contract_reference: official_GitHub_repository_contents_git_blob_permission_size_status_and_rate_limit_contract_plus_direct_connector_receipts
+campaign_wake: 2_of_4
 campaign_status: ACTIVE
 phase_1_completed: true
-phase_2_completed: false
+phase_2_completed: true
 phase_3_completed: false
 phase_4_completed: false
 phase_4_decision: PENDING
@@ -17,25 +17,26 @@ carrier_task_id: 6a55c1733708819185088bf334e33ea5
 carrier_task_id_match: true
 wip: 1
 last_event:
-  commit: 58e3cd4fd1f2c444b1f01415243087c925f5d538
-  path: state/coordination/experiments/cots_connector_x13/20260803T174631Z_GITHUB_BOUNDED_FILE_READ_PHASE1_ACCEPTED_WITH_GATES.md
-  blob_sha: d3c29432ee28aed7100eec71c085f9e781752cfd
+  commit: 4ae318f9e536df254b68f7289c1651febf8d56e2
+  path: state/coordination/experiments/cots_connector_x13/20260803T184715Z_GITHUB_CONTENT_ADDRESSED_BLOB_READ_PHASE2_ACCEPTED_WITH_GATES.md
+  blob_sha: 044ae5c69ea65330474e208684b43442d45717bf
   exact_readback_completed: true
-prior_current_commit: 8c11825b734d76807708130b32c2e2463aa3030d
-prior_current_blob_sha: 02ced81114d70f1861654594ab725fcd441cd187
-effect_ceiling: CATALOG_BASELINE_OF_ONE_EXPLICIT_REPOSITORY_PATH_BRANCH_UTF8_FILE_READ_NO_WRITE_OR_OPERATIONAL_PROMOTION
+prior_current_commit: ce91a56469326b0f2db45da95e0f34b0ce6ca9f8
+prior_current_blob_sha: ebc11cb4537af847eec79c204ededd3b54ad1d73
+effect_ceiling: CATALOG_BASELINE_OF_ONE_EXPLICIT_PATH_BRANCH_UTF8_READ_AND_ONE_CONTENT_ADDRESSED_BLOB_READ_NO_RETRY_WRITE_OR_OPERATIONAL_PROMOTION
 adoption_credit: 0
 fitness_credit: 0
 consumer_ack: NOT_OBSERVED
 independent_verification_closed: false
 same_provider_binding_weight: 0
 operator_minutes_removed_measured: 0
-operator_minutes_removed_estimate_per_consumed_file_lookup: 1_to_3_UNVALIDATED
+operator_minutes_removed_estimate_per_consumed_file_or_blob_lookup: 1_to_3_UNVALIDATED
 custom_code_avoided_estimate:
-  authenticated_repository_path_ref_fetch_base64_decode_and_normalized_file_response: 25_to_70_LOC_UNVALIDATED
-  secret_classification_commit_pinning_rate_limit_telemetry_retry_policy_and_consumer_workflow: NOT_AVOIDED_REQUIRES_HFO_GATES
+  authenticated_repository_path_ref_fetch_and_normalized_response: 25_to_70_LOC_UNVALIDATED
+  authenticated_git_blob_get_base64_decode_and_normalized_text_response: 20_to_55_LOC_UNVALIDATED
+  secret_classification_digest_recomputation_commit_pinning_rate_limit_telemetry_retry_policy_and_consumer_workflow: NOT_AVOIDED_REQUIRES_HFO_GATES
 credentials:
-  connector_reached_repository_success_path: true
+  connector_reached_repository_path_and_blob_success_paths: true
   operator_supplied_credentials_campaign: 0
   authenticated_principal: UNKNOWN
   token_class: UNKNOWN_GITHUB_APP_OAUTH_OR_PAT
@@ -45,11 +46,11 @@ credentials:
 paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
 campaign_candidate_invocations:
   phase_1_fetch_file_reads: 1
-  phase_2_fetch_blob_reads: 0
+  phase_2_fetch_blob_reads: 1
   phase_3_failure_probe_attempts: 0
   phase_4_capability_calls: 0
-  total_candidate_read_attempts: 1
-  completed_connector_responses: 1
+  total_candidate_read_attempts: 2
+  completed_connector_responses: 2
   connector_visible_errors: 0
   carrier_retry_count: 0
   mutation_count: 0
@@ -81,45 +82,84 @@ direct_phase_1_receipt:
   connector_retry_count_visible: false
   carrier_retries: 0
   mutation_effect: false
+direct_phase_2_receipt:
+  action: GitHub.fetch_blob
+  repository: TTaoGaming/hfo-gen-133
+  requested_blob_sha: 02ced81114d70f1861654594ab725fcd441cd187
+  requested_blob_origin: PHASE1_FETCH_FILE_RETURNED_BLOB_SHA
+  branch_or_tag_ref_supplied: false
+  returned_content: true
+  returned_content_class: COMPLETE_UTF8_TEXT_AS_CONNECTOR_DECODED
+  embedded_schema_id_observed: hfo.gen133.x13.cots_connector_current.v1
+  embedded_experiment_id_observed: X13_SLACK_BOUNDED_CHANNEL_HISTORY_READONLY_001
+  embedded_version_observed: 68
+  wrapper_echoed_blob_sha: false
+  wrapper_returned_encoding: false
+  wrapper_returned_size: false
+  raw_http_status_returned: false
+  request_id_etag_last_modified_and_rate_limit_headers_returned: false
+  connector_visible_external_call_time_ms: 374
+  connector_visible_error: null
+  carrier_retries: 0
+  mutation_effect: false
 measured_facts:
   explicit_repository_path_and_branch_read_succeeded_once: true
-  utf8_content_and_content_addressed_blob_sha_returned: true
-  wrapper_returned_full_file_content_not_metadata_only: true
-  branch_ref_is_mutable_even_though_blob_sha_is_content_addressed: true
-  exact_resolved_branch_commit_not_exposed: true
-  private_or_internal_file_content_can_be_exposed_by_successful_read: true
-  no_github_mutation_in_phase1_probe: true
+  utf8_content_and_content_addressed_blob_sha_returned_phase1: true
+  content_addressed_blob_fetch_succeeded_once_phase2: true
+  phase2_required_no_branch_tag_or_default_ref_resolution: true
+  returned_blob_content_embedded_expected_v68_markers: true
+  wrapper_returned_full_file_or_blob_content_not_metadata_only: true
+  exact_resolved_branch_commit_not_exposed_phase1: true
+  phase2_wrapper_did_not_echo_sha_encoding_size_http_status_or_rate_limit_headers: true
+  private_or_internal_file_content_can_be_exposed_by_successful_reads: true
+  no_candidate_surface_mutation_retry_or_fallback: true
   google_tasks_surface_absent_from_current_authorized_connector_inventory: true
 privacy_andon:
   triggered: true
-  measured_fact: SUCCESSFUL_FETCH_RETURNS_COMPLETE_FILE_CONTENT
+  measured_fact: SUCCESSFUL_FETCH_FILE_AND_FETCH_BLOB_RETURN_COMPLETE_CONTENT
   implication: FILE_CLASSIFICATION_AND_LOCAL_MINIMIZATION_ARE_REQUIRED_BEFORE_DURABLE_CROSS_SURFACE_FANOUT
 immutability_andon:
   triggered: true
-  measured_fact: WRAPPER_EXPOSES_BLOB_SHA_BUT_NOT_THE_RESOLVED_BRANCH_COMMIT_SHA
-  implication: BRANCH_REF_READ_IS_POINT_IN_TIME_BUT_NOT_COMMIT_PINNED_AND_MUST_NOT_BE_TREATED_AS_A_DURABLE_SNAPSHOT_WITHOUT_FOLLOWUP_VERIFICATION
+  phase1_fact: WRAPPER_EXPOSES_BLOB_SHA_BUT_NOT_THE_RESOLVED_BRANCH_COMMIT_SHA
+  phase2_fact: CONTENT_ADDRESSED_BLOB_READ_AVOIDS_BRANCH_TRAVERSAL_BUT_WRAPPER_DOES_NOT_ECHO_RESPONSE_SHA_OR_SIZE
+  implication: BLOB_READ_IMPROVES_OBJECT_IDENTITY_BUT_INDEPENDENT_BYTE_HASH_OR_RAW_API_PARITY_IS_STILL_REQUIRED_FOR_BINDING_DECISIONS
+wrapper_variance_andon:
+  triggered: true
+  measured_fact: OFFICIAL_GET_BLOB_JSON_FIELDS_SHA_ENCODING_SIZE_URL_AND_NODE_ID_ARE_NOT_EXPOSED_BY_THE_CONNECTOR_WRAPPER
+  implication: RESPONSE_SHA_ENCODING_AND_SIZE_CANNOT_BE_DIRECTLY_CONFIRMED_FROM_WRAPPER_OUTPUT
+observability_andon:
+  triggered: true
+  measured_fact: VISIBLE_CONTENT_AND_CALL_LATENCY_BUT_NO_RAW_HTTP_STATUS_REQUEST_ID_ETAG_RATE_LIMIT_HEADERS_OR_UPSTREAM_ATTEMPTS
+  implication: QUOTA_FAILURE_AND_RETRY_CLASSIFICATION_REMAIN_UNCLOSED
 tool_availability_andon:
   triggered: true
   measured_fact: NO_NATIVE_GOOGLE_TASKS_TOOL_RESOURCE_EXISTS_IN_CURRENT_AUTHORIZED_CONNECTOR_INVENTORY
   implication: GOOGLE_TASKS_CAMPAIGN_DEFERRED_WITHOUT_INSTALL_ACCOUNT_PERMISSION_OR_TERMS_CHANGE
 official_contract_checked_2026_08_03:
   repository_contents: https://docs.github.com/en/rest/repos/contents
+  git_blobs: https://docs.github.com/en/rest/git/blobs
   rate_limits: https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api
-  get_content_path_parameter_required: true
-  ref_accepts_commit_branch_or_tag_and_defaults_to_default_branch: true
+  repository_path_ref_read_requires_contents_read_for_private_resources: true
+  git_blob_is_file_content_object_with_stored_sha1_hash: true
+  get_blob_path_requires_file_sha: true
+  get_blob_supports_up_to_100_mb: true
+  default_json_content_is_base64_encoded: true
+  raw_media_type_available: true
   fine_grained_private_repository_permission: CONTENTS_READ
   public_resource_can_be_read_without_authentication: true
-  documented_success_and_failure_statuses:
+  documented_get_blob_statuses:
     - 200_OK
-    - 302_FOUND
-    - 304_NOT_MODIFIED
     - 403_FORBIDDEN
     - 404_NOT_FOUND
-  file_size_contract:
-    up_to_1_mb: ALL_ENDPOINT_FEATURES_SUPPORTED
-    over_1_mb_to_100_mb: RAW_OR_OBJECT_MEDIA_TYPES_REQUIRED_WITH_OBJECT_CONTENT_EMPTY
-    over_100_mb: ENDPOINT_NOT_SUPPORTED
-  directory_entry_limit: 1000
+    - 409_CONFLICT
+    - 422_VALIDATION_FAILED_OR_SPAMMED
+  documented_get_blob_json_fields:
+    - content
+    - encoding
+    - url
+    - sha
+    - size
+    - node_id
   rate_limit_headers_documented:
     - x-ratelimit-limit
     - x-ratelimit-remaining
@@ -128,55 +168,60 @@ official_contract_checked_2026_08_03:
     - x-ratelimit-resource
 failure_semantics:
   bounded_positive_utf8_file_read: OBSERVED_PHASE1
-  immutable_blob_readback: NOT_TESTED
-  missing_path_404: NOT_TESTED
-  permission_403_or_private_repo_denial: NOT_TESTED
+  immutable_content_addressed_blob_read: OBSERVED_PHASE2
+  missing_blob_404_or_normalized_error: NOT_TESTED
+  permission_403_or_private_repo_masked_404: NOT_TESTED
   invalid_ref: NOT_TESTED
-  large_file_media_type_behavior: NOT_TESTED
+  large_or_binary_blob_behavior: NOT_TESTED
   symlink_or_submodule_behavior: NOT_TESTED
   rate_limit_or_secondary_limit: NOT_TESTED
   transport_timeout: NOT_TESTED
-  raw_api_or_git_parity: NOT_TESTED
-durability: SOURCE_FILE_AND_RETURNED_BLOB_SHA_ARE_GIT_DURABLE_BUT_THE_REQUEST_USED_A_MUTABLE_BRANCH_REF_AND_THE_WRAPPER_DID_NOT_RETURN_THE_RESOLVED_COMMIT_SHA_ETAG_OR_CONDITIONAL_READ_RECEIPT
-observability: MEDIUM_FOR_REPOSITORY_PATH_REF_ENCODING_CONTENT_BLOB_SHA_AND_DISPLAY_URL_LOW_FOR_RAW_HTTP_STATUS_REQUEST_ID_ETAG_RESOLVED_COMMIT_RATE_LIMIT_HEADERS_UPSTREAM_ATTEMPTS_AND_RETRIES
-portability: MEDIUM_FOR_GENERIC_REPOSITORY_FILE_READ_LOW_TO_MEDIUM_ACROSS_NON_GITHUB_HOSTS_BECAUSE_ENDPOINT_AUTH_MEDIA_TYPES_ERRORS_AND_RATE_LIMITS_ARE_PROVIDER_SPECIFIC
+  raw_api_or_local_git_parity: NOT_TESTED
+durability: HIGHER_FOR_PHASE2_THAN_PHASE1_BECAUSE_THE_REQUEST_USED_A_CONTENT_ADDRESSED_BLOB_SHA_WITHOUT_BRANCH_RESOLUTION_BUT_RESPONSE_SHA_ECHO_BYTE_HASH_RECOMPUTATION_AND_DISTINCT_PARITY_REMAIN_UNOBSERVED
+observability: MEDIUM_FOR_REPOSITORY_PATH_REF_INPUT_SHA_CONTENT_EXPECTED_EMBEDDED_MARKERS_AND_VISIBLE_LATENCY_LOW_FOR_RESPONSE_SHA_ENCODING_SIZE_HTTP_STATUS_REQUEST_ID_ETAG_RESOLVED_COMMIT_RATE_LIMIT_HEADERS_UPSTREAM_ATTEMPTS_AND_RETRIES
+portability: MEDIUM_FOR_GENERIC_GIT_CONTENT_ADDRESSING_AND_REPOSITORY_READ_LOW_TO_MEDIUM_ACROSS_NON_GITHUB_HOSTS_BECAUSE_ENDPOINT_AUTH_MEDIA_TYPES_RESPONSE_SHAPE_ERRORS_AND_RATE_LIMITS_ARE_PROVIDER_SPECIFIC
 admitted_scope:
   - CATALOG_FACT_THAT_ONE_EXPLICIT_REPOSITORY_PATH_AND_BRANCH_UTF8_READ_SUCCEEDED
-  - CATALOG_FACT_THAT_THE_WRAPPER_RETURNED_COMPLETE_FILE_CONTENT_AND_BLOB_SHA
-  - LOCAL_FILE_CLASSIFICATION_MINIMIZATION_AND_COMMIT_PINNING_REQUIREMENTS
+  - CATALOG_FACT_THAT_ONE_CONTENT_ADDRESSED_BLOB_READ_SUCCEEDED_WITHOUT_BRANCH_TRAVERSAL
+  - CATALOG_FACT_THAT_RETURNED_BLOB_CONTENT_CONTAINED_EXPECTED_SEALED_V68_MARKERS
+  - LOCAL_FILE_CLASSIFICATION_MINIMIZATION_DIGEST_AND_COMMIT_PINNING_REQUIREMENTS
   - GOOGLE_TASKS_SURFACE_UNAVAILABLE_WITHOUT_CONNECTOR_CHANGE
 excluded_scope:
   - WRITE_UPDATE_DELETE_BRANCH_CREATE_MERGE_RELEASE_WORKFLOW_OR_PRODUCTION_OPERATION
-  - DEFAULT_BRANCH_ASSUMPTION_OR_COMMIT_PINNED_SNAPSHOT_CLAIM
+  - DEFAULT_BRANCH_ASSUMPTION_OR_RESOLVED_COMMIT_SNAPSHOT_CLAIM
+  - INDEPENDENT_BYTE_FOR_BYTE_HASH_VERIFICATION_OR_RAW_API_PARITY
   - LEAST_PRIVILEGE_IDENTITY_SCOPE_QUOTA_OR_RATE_LIMIT_CAPACITY_CLAIM
   - LARGE_FILE_DIRECTORY_SYMLINK_SUBMODULE_OR_BINARY_GENERALIZATION
   - AUTOMATIC_RETRY_OR_DETERMINISTIC_FAILURE_CLASSIFICATION
-  - RAW_API_OR_GIT_PARITY_COMPLETE_HISTORY_OR_OPERATIONAL_READINESS
+  - OPERATIONAL_READINESS_CONSUMER_VALUE_OR_OPERATOR_RELIEF_CLAIM
 mandatory_gates:
   - REQUIRE_EXPLICIT_REPOSITORY_PATH_AND_REF_NEVER_RELY_ON_DEFAULT_BRANCH_FOR_CONTROL_STATE
   - TREAT_BRANCH_TAG_READS_AS_MUTABLE_POINT_IN_TIME_OBSERVATIONS_NOT_COMMIT_PINNED_SNAPSHOTS
-  - VERIFY_THE_RETURNED_BLOB_SHA_OR_FETCH_BY_IMMUTABLE_COMMIT_BEFORE_A_BINDING_DECISION
+  - PREFER_CONTENT_ADDRESSED_BLOB_OR_COMMIT_PINNED_READ_FOR_BINDING_DECISIONS
+  - REQUIRE_RESPONSE_SHA_ECHO_OR_INDEPENDENT_GIT_BLOB_HASH_RECOMPUTATION_AND_DISTINCT_RAW_API_OR_LOCAL_GIT_PARITY_FOR_HIGH_ASSURANCE
   - CLASSIFY_AND_MINIMIZE_FILE_CONTENT_BEFORE_CROSS_SURFACE_LOGGING
   - DO_NOT_PERSIST_SECRETS_TOKENS_PRIVATE_KEYS_OR_UNNEEDED_PERSONAL_CONTENT
-  - DISTINGUISH_403_404_INVALID_REF_RATE_LIMIT_TRANSPORT_TIMEOUT_AND_PROVIDER_FAILURE
+  - DISTINGUISH_403_404_409_422_INVALID_REF_RATE_LIMIT_TRANSPORT_TIMEOUT_AND_PROVIDER_FAILURE
   - DO_NOT_ASSUME_RETRY_SAFETY_OR_QUOTA_CAPACITY_WITHOUT_RAW_HEADERS_AND_BOUNDED_POLICY
-  - CHECK_SIZE_SYMLINK_SUBMODULE_AND_ENCODING_BEHAVIOR_BEFORE_GENERALIZING
+  - CHECK_SIZE_BINARY_SYMLINK_SUBMODULE_AND_ENCODING_BEHAVIOR_BEFORE_GENERALIZING
   - NO_WRITE_DELETE_BRANCH_MERGE_RELEASE_WORKFLOW_OR_PRODUCTION_OPERATION_FROM_THIS_READ_CAMPAIGN
   - REQUIRE_NAMED_CONSUMER_ACK_AND_MEASURED_OPERATOR_OUTCOME_BEFORE_ADOPTION_OR_FITNESS_CREDIT
-verifier: DISTINCT_RAW_GITHUB_CONTENTS_API_OR_GIT_BLOB_READ_PINNED_TO_THE_RETURNED_BLOB_SHA_AND_RESOLVED_COMMIT_WITH_HTTP_STATUS_ETAG_RATE_LIMIT_AND_CONTENT_DIGEST
+verifier: DISTINCT_AUTHORIZED_RAW_GITHUB_GET_BLOB_OR_LOCAL_GIT_CAT_FILE_FOR_THE_SAME_SHA_WITH_SHA_ECHO_SIZE_ENCODING_HTTP_STATUS_RATE_LIMIT_HEADERS_AND_INDEPENDENT_GIT_BLOB_HASH_RECOMPUTATION
 consumer:
   immediate_catalog_consumer: HFO_COTS_CAPABILITY_INVENTORY
   future_operational_consumer: MUST_BE_NAMED_IN_NEW_WORKITEM
-strongest_falsifier: A_DISTINCT_RAW_GITHUB_OR_GIT_READ_SHOWS_THE_WRAPPER_USED_A_DIFFERENT_REF_RETURNED_CONTENT_NOT_MATCHING_BLOB_SHA_TRUNCATED_OR_REWROTE_BYTES_OR_HID_A_FAILURE_RETRY_OR_UNBOUNDED_CALL
-honest_flaw: ONE_KNOWN_SMALL_UTF8_FILE_READ_SUCCEEDED_BUT_RESOLVED_COMMIT_IDENTITY_RAW_HTTP_STATUS_ETAG_RATE_LIMIT_SCOPE_PERMISSION_FAILURE_LARGE_FILE_SYMLINK_SUBMODULE_TIMEOUT_RETRY_RAW_API_PARITY_CONSUMER_ACK_AND_OPERATOR_TIME_REDUCTION_REMAIN_UNVERIFIED
+strongest_falsifier: A_DISTINCT_RAW_GITHUB_GET_BLOB_OR_LOCAL_GIT_CAT_FILE_FOR_02CED81114D70F1861654594AB725FCD441CD187_RETURNS_DIFFERENT_BYTES_OR_SHOWS_THE_WRAPPER_TRUNCATED_REWROTE_DECODED_LOSSILY_USED_A_DIFFERENT_OBJECT_OR_HID_A_FAILURE_RETRY_OR_UNBOUNDED_CALL
+honest_flaw: ONE_KNOWN_SMALL_UTF8_PATH_READ_AND_ONE_SMALL_UTF8_BLOB_READ_SUCCEEDED_BUT_RESPONSE_SHA_ENCODING_SIZE_INDEPENDENT_BYTE_HASH_RESOLVED_COMMIT_HTTP_STATUS_RATE_LIMIT_SCOPE_PERMISSION_FAILURE_BINARY_LARGE_BLOB_TIMEOUT_RETRY_RAW_API_PARITY_CONSUMER_ACK_AND_OPERATOR_TIME_REDUCTION_REMAIN_UNVERIFIED
 phase_1_result:
   disposition: PHASE1_ACCEPTED_WITH_PRIVACY_IMMUTABILITY_SCOPE_RATE_LIMIT_AND_FAILURE_GATES
+phase_2_result:
+  disposition: PHASE2_ACCEPTED_WITH_CONTENT_CLASSIFICATION_RESPONSE_FIELD_OBSERVABILITY_AND_INDEPENDENT_DIGEST_GATES
 next_wake:
   candidate: GitHub_bounded_readonly_repository_file_fetch_surface
-  phase: 2_of_4
-  planned_probe: ONE_GITHUB_FETCH_BLOB_READ_USING_PHASE1_RETURNED_BLOB_SHA_COMPARE_CONTENT_WITHOUT_BRANCH_TRAVERSAL_WRITE_OR_RETRY
-review_expiry_utc: 2026-08-10T17:46:31Z
-valid_time_utc: 2026-08-03T17:46:31Z
+  phase: 3_of_4
+  planned_probe: ONE_SYNTACTICALLY_VALID_NONEXISTENT_BLOB_SHA_FETCH_WITH_NO_RETRY_FALLBACK_BRANCH_TRAVERSAL_OR_WRITE_TO_CLASSIFY_CONNECTOR_FAILURE_PRESERVATION
+review_expiry_utc: 2026-08-10T18:47:15Z
+valid_time_utc: 2026-08-03T18:47:15Z
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 sealed: true
 prior_campaign:
@@ -195,10 +240,10 @@ prior_prior_prior_campaign:
 
 # X13 current campaign
 
-GitHub bounded read-only repository file campaign **1/4** is active.
+GitHub bounded read-only repository file campaign **2/4** is active.
 
-The preferred Google Tasks candidate was unavailable because no native tool resource exists in the current authorized connector inventory. It was deferred without installation, account, permission, or terms changes.
+Phase 2 used the phase-1 blob SHA in one `GitHub.fetch_blob` call. It returned complete decoded text with the expected sealed v68 CURRENT markers without branch, tag, or default-branch resolution. The wrapper did not echo response SHA, encoding, size, HTTP status, request ID, ETag, rate-limit headers, upstream attempts, or retries.
 
-Phase 1 established one narrow baseline: an explicit repository path and branch returned complete UTF-8 content plus a blob SHA. The branch remains mutable and the connector did not expose the resolved commit SHA, raw HTTP status, ETag, request ID, rate-limit headers, upstream attempts, or retries.
+This is stronger object identity than a mutable branch read, but independent byte integrity and raw API or local Git parity remain open. Adoption and fitness credit remain zero.
 
-Adoption and fitness credit remain zero. Next wake performs one content-addressed `fetch_blob` readback using the phase-1 blob SHA.
+Next wake performs one syntactically valid nonexistent blob SHA fetch to classify connector failure preservation, with no retry, fallback, traversal, or write.
