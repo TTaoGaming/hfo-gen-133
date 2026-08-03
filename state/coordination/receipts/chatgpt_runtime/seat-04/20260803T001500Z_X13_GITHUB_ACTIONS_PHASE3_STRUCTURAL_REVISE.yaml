@@ -1,0 +1,187 @@
+---
+schema_id: hfo.gen133.s04.structural_preflight.v1
+receipt_kind: IMMUTABLE_NONTERMINAL_STRUCTURAL_PREFLIGHT
+result: REVISE
+seat: S04
+role: STRUCTURAL_PREFLIGHT_VERIFIER
+carrier_task_id_expected: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_observed: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_match: true
+wip: 1
+valid_time_utc: 2026-08-03T00:15:00Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+provider_relation: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+self_probe:
+  native_task_inventory_read: AVAILABLE
+  exact_task_identity_match: true
+  github_read: AVAILABLE
+  github_write_immutable_receipt: AVAILABLE
+  github_exact_blob_readback: AVAILABLE
+  slack_material_pointer_post: AVAILABLE
+  raw_github_actions_endpoint_verifier: NOT_EXECUTED
+  distinct_provider_verifier: NOT_AVAILABLE_IN_THIS_CARRIER
+selected_candidate:
+  selection_rule: NEWEST_IMMUTABLE_CANDIDATE_ADDRESSED_TO_S04_NOT_AUTHORED_BY_S04
+  authoring_seat: S03
+  commit: ac8b270ab97d31f652fcf70c36da2a1dba493914
+  path: state/coordination/receipts/chatgpt_runtime/seat-03/20260803T000757Z_X13_GITHUB_ACTIONS_PHASE3_RETURN_BINDINGS_REVISE.yaml
+  git_blob_sha1: 862ea20d7dd2479c54e705ad1f0a609eb4baa4f5
+  exact_utf8_byte_count: 5612
+  exact_sha256: bb8b92c466122b8274112d7149a909cb73a743ac389c888d8e070717141db12a
+  exact_git_blob_recomputed: 862ea20d7dd2479c54e705ad1f0a609eb4baa4f5
+  line_endings: LF
+  final_newline: true
+  yaml_parse: ONE_NON_NULL_MAPPING_PLUS_EMPTY_TRAILING_DOCUMENT
+  schema_id: hfo.gen133.s03.reducer_route.v1
+  sealed: true
+  addressed_to: S04_NONPRODUCER_STRUCTURAL_PREFLIGHT
+source_bindings:
+  event:
+    commit: 446dc493f9e52a457b53b2ebd62331d412e72c67
+    path: state/coordination/experiments/cots_connector_x13/20260802T234836Z_GITHUB_ACTIONS_WORKFLOW_RUN_STATUS_PHASE3_MALFORMED_COMMIT_EMPTY_RESULT_ANDON.md
+    claimed_blob_sha1: 645765086e4ed05f04dc2aad7488d774638a3945
+    fetched_blob_sha1: 645765086e4ed05f04dc2aad7488d774638a3945
+    exact_git_blob_recomputed: 645765086e4ed05f04dc2aad7488d774638a3945
+    blob_match: true
+    exact_utf8_byte_count: 5816
+    exact_sha256: b69de3e14aacd4257181f3544651aeb26130d4aa5aaf4ff936b9e89c377c14f6
+    schema_id: hfo.gen133.x13.cots_connector_event.v1
+    frontmatter_parse: PASS_ONE_MAPPING
+    phase: 3_of_4
+    prior_current_version: 50
+    expected_current_version: 51
+    disposition: PHASE3_ACCEPTED_WITH_SEMANTIC_EMPTY_RESULT_ANDON
+  current:
+    commit: d862c83d901e710d3ff49362fe20e74c27e5d38d
+    path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    claimed_blob_sha1: 35cd5a4bf05b2be48976c8760688905111134b3e
+    fetched_blob_sha1: 35cd5a4bf05b2be48976c8760688905111134b3e
+    exact_git_blob_recomputed: 35cd5a4bf05b2be48976c8760688905111134b3e
+    blob_match: true
+    exact_utf8_byte_count: 9499
+    exact_sha256: 4b7a5ab607a1797717ab1e0457b349368ffe416517bd53b3155b8031beb0f037
+    schema_id: hfo.gen133.x13.cots_connector_current.v1
+    frontmatter_parse: PASS_ONE_MAPPING
+    version: 51
+    prior_version: 50
+    campaign_wake: 3_of_4
+    campaign_status: IN_PROGRESS
+    phase_4_decision: PENDING
+    last_event_pointer_match: true
+    consumer_ack: NOT_OBSERVED
+    fitness_credit: 0
+structural_checks:
+  schema:
+    status: PASS_AT_DECLARED_SCHEMA_CEILING
+    note: Candidate, event frontmatter, and CURRENT frontmatter parse as mappings, but no external schema document, validator version, or schema digest is bound.
+  canonicalization_and_digests:
+    status: REVISE
+    note: Exact UTF-8 bytes, SHA-256 values, and Git blob identities recompute for the route, event, and CURRENT, but no producer-declared canonical return bundle, canonicalization algorithm, acceptance digest, exact request digest, or response digest exists.
+  source_pointers:
+    status: PASS
+    note: Candidate event and CURRENT commit, path, and blob pointers resolve exactly; CURRENT version 51 points to the same phase-3 event.
+  freshness:
+    status: PASS_NONTERMINAL_ONLY
+    candidate_valid_time_utc: 2026-08-03T00:07:57Z
+    source_valid_time_utc: 2026-08-02T23:48:36Z
+    review_expiry_utc: 2026-08-09T23:48:36Z
+    expired_at_review: false
+    note: Review expiry is current but is not a claim lease or purpose-bound return expiry.
+  authority:
+    status: REVISE
+    note: S03 is a reducer/router and X13 is an experiment carrier. Neither artifact grants terminal producer, CI-release, merge, deployment, consumer-acceptance, or independent-quorum authority.
+  task_binding:
+    status: PASS_FOR_NATIVE_CARRIERS_ONLY
+    s04_task_id_match: true
+    s03_task_id_match: true
+    x13_task_id_match: true
+    note: Native task IDs bind the scheduled carriers but do not bind a WorkItem claim, acceptance contract, logical actor, credential principal, or producer return.
+  actor_carrier_separation:
+    status: REVISE
+    note: Seat and carrier task are named, but the logical producer actor and GitHub credential principal are not separately identified or digest-bound.
+  idempotency:
+    status: REVISE
+    note: The event advances CURRENT from version 50 to 51, but no WorkItem-derived idempotency key, nonce, replay key, or duplicate-suppression rule is bound.
+  lease_and_expiry:
+    status: REVISE
+    note: No claim lease exists; observation review expiry cannot serialize or authorize producer work.
+  privacy:
+    status: PASS_AT_OBSERVATION_CEILING
+    note: The exact synthetic malformed identifier was not promoted and no secret, log body, artifact body, credential, or private user content was persisted. That minimization also prevents exact replay because no privacy-safe input commitment is bound.
+  rollback:
+    status: REVISE
+    note: The source capability probe was read-only and requires no provider world-state rollback, but the packet has no purpose-bound return abort, rollback, or replay contract.
+  verifier:
+    status: REVISE
+    named_verifier: RAW_GITHUB_WORKFLOW_RUNS_ENDPOINT_WITH_IDENTICAL_EVENT_AND_HEAD_SHA_FILTER_PLUS_ACTIONS_UI_OR_SOURCE_BOUND_VALID_COMMIT_CONTROL
+    raw_or_distinct_client_readback: NOT_OBSERVED
+    digest_bound_stood_or_fell: NOT_OBSERVED
+  consumer:
+    status: REVISE
+    named_consumers:
+      - HFO_CI_RELEASE_GATES
+      - HFO_BRANCH_HEALTH_SUMMARIES
+      - HFO_AGENT_COMPLETION_VERIFICATION
+    explicit_named_post_stood_consumer_ack: NOT_OBSERVED
+classification:
+  claim_bound_work_item: NOT_PRESENT
+  acceptance_digest: NOT_PRESENT
+  producer_return: NOT_PRESENT_EXPERIMENT_OBSERVATION_ONLY
+  exact_malformed_input_or_privacy_safe_commitment: NOT_PRESENT
+  exact_raw_request_and_response_digest: NOT_PRESENT
+  canonical_producer_return_bundle_digest: NOT_PRESENT
+  lease_nonce_and_idempotency_key: NOT_PRESENT
+  terminal_stood_or_fell: NOT_PRESENT
+  consumer_ack: NOT_PRESENT
+  terminal_reduction_allowed: false
+strongest_fake_green_mutant:
+  mutant_id: X14_MUTANT_049_45c6985725c4
+  source_commit: a5b0d8eaed13baa0747d280e6c398e7082c59967
+  source_path: state/coordination/experiments/false_green_x14/quarantine/20260802T235149Z_X13_GITHUB_ACTIONS_DUPLICATE_IDEMPOTENCY_VERSION.mutant.yaml
+  source_blob_sha1: e605fe81cc1b406711662e5720958dc4b55319c5
+  mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+  mutation: REPLACE_EXPECTED_CURRENT_VERSION_51_WITH_PRIOR_CURRENT_VERSION_50
+  canonicalization_algorithm: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_json: '{"mutated_field":"expected_current_version","mutated_value":50,"mutation_class":"DUPLICATE_IDEMPOTENCY_VERSION","original_value":51,"source_blob_sha1":"645765086e4ed05f04dc2aad7488d774638a3945"}'
+  canonical_byte_count: 194
+  canonical_mutation_digest_sha256: 45c6985725c4afda19b7fb9a83e897fcd3f240080791f49d2c8fa277d8b5b786
+  expected_rejection: REVISE
+  reason: A sealed phase-3 transition declaring prior version 50 cannot reuse 50 as the expected next version; that is a non-advancing replay and cannot uniquely bind the event.
+  direct_x14_catch_credit_granted: false
+  note: WIP=1 selected the newer S03 route; the mutant is evaluated only as the strongest fake-green control for this preflight.
+strongest_observation_fake_green:
+  mutation: TREAT_NORMALIZED_EMPTY_ARRAY_WITH_NULL_ERROR_AS_PROOF_OF_VALID_INPUT_NO_WORKFLOW_NO_CI_OR_COMPLETE_NEGATIVE_CI_EVIDENCE
+  expected_rejection: REVISE
+  reason: The exact malformed input is not replay-bound, wrapper scope is pull-request event first page only, and malformed input is conflated with ordinary no-match at the connector surface.
+required_revision:
+  - BIND_ONE_PURPOSE_BOUND_WORK_ITEM_CLAIM_AND_ACCEPTANCE_DIGEST
+  - BIND_LOGICAL_PRODUCER_ACTOR_CARRIER_AND_CREDENTIAL_PRINCIPAL_SEPARATELY
+  - ADD_NONCE_IDEMPOTENCY_KEY_LEASE_AND_REPLAY_RULE
+  - DEFINE_CANONICAL_PRODUCER_RETURN_BUNDLE_CANONICALIZATION_AND_DIGEST
+  - BIND_EXACT_MALFORMED_INPUT_OR_PRIVACY_SAFE_REPLAY_COMMITMENT
+  - BIND_EXACT_RAW_REQUEST_AND_RESPONSE_BYTES_OR_SOURCE_SYSTEM_READBACK_DIGEST
+  - ADD_RETURN_LEVEL_ABORT_ROLLBACK_AND_PURPOSE_BOUND_EXPIRY
+  - OBTAIN_DISTINCT_DIGEST_BOUND_STOOD_OR_FELL
+  - OBTAIN_EXPLICIT_NAMED_POST_STOOD_CONSUMER_ACK
+material_change:
+  changed_from_prior_s04_candidate: true
+  prior_s04_commit: 83f0cacb1f4c21b16ff036d4f7bd5d9dd9e26c26
+  change: X13_GITHUB_ACTIONS_PHASE3_MALFORMED_INPUT_EMPTY_RESULT_ANDON_SUPERSEDES_PHASE2_POSITIVE_FAILURE_OBSERVATION
+prohibited_effects:
+  candidate_edited: false
+  task_mutated: false
+  self_graded: false
+  send: false
+  spend: false
+  deployment: false
+  merge: false
+  publication: false
+  account_or_security_change: false
+  permanent_deletion: false
+  independent_quorum_claimed: false
+sealed: true
+---
