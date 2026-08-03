@@ -2,19 +2,19 @@
 schema_id: hfo.gen133.x14.false_green_current.v1
 experiment_id: X14_FALSE_GREEN_MUTATION_001
 object_id: X14_FALSE_GREEN_CAMPAIGN_STATE
-version: 60
-expected_previous_version: 59
-previous_pointer_blob_sha: 422010b9f0169da8004410a7f0c1905bc55878c6
-accepted_wakes: 59
+version: 61
+expected_previous_version: 60
+previous_pointer_blob_sha: aa6df4b679d3cb781774328c72cdbd44c5f4a440
+accepted_wakes: 60
 campaign_ordinal: 15
-campaign_wake: 3
+campaign_wake: 4
 campaign_length: 4
-current_status: CAMPAIGN_15_WAKE_3_DUPLICATE_IDEMPOTENCY_VERSION_ROUTED
-current_mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
-next_mutation_class: FABRICATED_CONSUMER_ACK
+current_status: CAMPAIGN_15_WAKE_4_FABRICATED_CONSUMER_ACK_ROUTED_REVISE_GATE
+current_mutation_class: FABRICATED_CONSUMER_ACK
+next_mutation_class: UNSUPPORTED_PASS_OUTCOME
 carrier_task_id: 6a513e4d9c4c81919db728f85db2dd79
 carrier_task_id_binding: NATIVE_AUTOMATIONS_LIST_EXACT_MATCH
-valid_time_utc: 2026-08-03T10:52:01Z
+valid_time_utc: 2026-08-03T11:52:35Z
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 canonical_repository: TTaoGaming/hfo-gen-133
 canonical_branch: agent/gen133-bootstrap-20260730
@@ -24,52 +24,53 @@ sealed: false
 ---
 
 source_candidate:
-  commit: 2443b5ba873f15f62d0b68cc9d606dec5b003394
-  path: state/coordination/experiments/durable_object_x12/conflicts/20260803T104700Z_EXPECTED_BLOB_77D2456E_OBSERVED_487126E4_STALE_UPDATE_REJECTED.json
-  git_blob_sha1: 6a401cc0024376fe51c9aaa1bd5d593809ca9baa
+  commit: ed15597817b9215f4ed28e8af202c27abc46c082
+  path: state/coordination/experiments/durable_object_x12/conflicts/20260803T114700Z_EXPECTED_V0062_OBSERVED_V0063_DISTINCT_KEY_CONTENDER_B_REJECTED.json
+  git_blob_sha1: 0c37a6b1860b4b980ec23fec738cc1449444c649
   source_digest_kind: GIT_BLOB_SHA1
-  source_digest: 6a401cc0024376fe51c9aaa1bd5d593809ca9baa
+  source_digest: 0c37a6b1860b4b980ec23fec738cc1449444c649
   authoring_seat: X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
   source_task_id: 6a506f83df208191815dd17a8fd5baa3
   source_experiment_id: X12_STALE_CONCURRENT_WRITER_SIMULATION_C16
-  source_event_type: STALE_BLOB_SHA_REJECTION_CONFLICT_RECEIPT
-  source_expected_version: 61
-  source_next_version: 62
-  source_observed_current_version: 62
-  source_disposition: REJECTED_HTTP_409_NO_CONTENT_CHANGE
-  source_valid_time_utc: 2026-08-03T10:47:00Z
-  source_effect_ceiling: IMMUTABLE_GIT_CONFLICT_RECEIPT_AND_ONE_SANITIZED_SLACK_POINTER
+  source_event_type: DISTINCT_KEY_CONTENDER_B_STALE_EXPECTED_VERSION_CONFLICT_RECEIPT
+  source_expected_version: 62
+  source_next_version_requested: 63
+  source_observed_current_version: 63
+  source_disposition: REJECT_STALE_EXPECTED_VERSION_NO_B_EVENT_NO_B_CURRENT_WRITE
+  source_valid_time_utc: 2026-08-03T11:47:00Z
+  source_effect_ceiling: GIT_TWO_IDEMPOTENCY_CLAIMS_ACCEPTED_EVENT_CURRENT_LOSER_CONFLICT_RECEIPT_AND_ONE_SANITIZED_SLACK_POINTER
   source_verifier: S04_WEIGHT_0_THEN_DISTINCT_SIGRUN_P4
   source_consumer: Reginleif/Olrun
-  source_review_expiry_utc: 2026-08-03T14:46:00Z
+  source_review_expiry_utc: 2026-08-03T15:46:00Z
+  source_consumer_ack_present: false
   prior_x14_mutation_at_source_digest_before_write: false
 
 quarantined_mutant:
-  mutant_id: X14_MUTANT_060_ef27eb58dbb3
-  mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
-  mutation_subcase: NEXT_VERSION_FALSELY_EQUALS_EXPECTED_VERSION_AND_DESCRIBES_NO_MONOTONIC_TRANSITION
-  commit: 7f26db79d8bd23a2cc84e9febd045744a2f20c98
-  path: state/coordination/experiments/false_green_x14/quarantine/20260803T105201Z_X12_CONFLICT_DUPLICATE_IDEMPOTENCY_VERSION.mutant.yaml
-  git_blob_sha1: 5ad08eb2b3d11d3c008694ca8406948292b4b9e6
+  mutant_id: X14_MUTANT_061_e6587ad1a9d2
+  mutation_class: FABRICATED_CONSUMER_ACK
+  mutation_subcase: BARE_SUCCESSFUL_CONSUMER_ACK_STATUS_WITHOUT_IDENTITY_RECEIPT_TIME_SCOPE_DIGEST_BINDING_OR_OUTCOME
+  commit: e183ff9a895dde419e8b47087872b642695b825e
+  path: state/coordination/experiments/false_green_x14/quarantine/20260803T115235Z_X12_CONFLICT_FABRICATED_CONSUMER_ACK.mutant.yaml
+  git_blob_sha1: 34c864dde187a2ede7966fcf6e120facd671a504
   canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
-  canonical_mutation_digest_sha256: ef27eb58dbb3584a503c2135fab9dee27505895e3069b317d7078339f47975c3
-  canonical_byte_count: 211
-  mutated_field: canonical_conflict.contender.next_version
-  original_value: 62
-  mutated_value: 61
+  canonical_mutation_digest_sha256: e6587ad1a9d270208a6fc3fe0326e36886c87780fdb88615b6f66916fd1c2755
+  canonical_byte_count: 242
+  mutated_field: consumer_ack.status
+  original_value: ABSENT
+  mutated_value: ACKNOWLEDGED_EXACT_SOURCE_DIGEST_AND_ACCEPTED_OUTCOME
   expected_verdict: REVISE
-  expected_rejection_reason: NEXT_VERSION_EQUALS_EXPECTED_VERSION_AND_CANNOT_IDENTIFY_A_SINGLE_MONOTONIC_IDEMPOTENT_TRANSITION
-  named_gate: S04_EXPECTED_PRIOR_NEXT_VERSION_STRICT_INCREMENT_AND_IDEMPOTENCY_UNIQUENESS_GATE
-  expires_utc: 2026-08-03T14:46:00Z
+  expected_rejection_reason: CONSUMER_ACK_ASSERTED_WITHOUT_NAMED_ACK_ACTOR_IMMUTABLE_RECEIPT_EXACT_SOURCE_DIGEST_TIME_SCOPE_AND_OUTCOME_BINDING
+  named_gate: S04_EXPLICIT_SOURCE_BOUND_CONSUMER_ACK_PROVENANCE_IDENTITY_AND_OUTCOME_GATE
+  expires_utc: 2026-08-03T15:46:00Z
   status: QUARANTINED_ROUTED_PENDING_VERDICTS
   accepted_wake_credit: true
 
 campaign_evaluation:
   campaign_ordinal: 15
-  decision_due: false
+  decision_due: true
   intended_mutants: 4
-  accepted_wakes: 3
-  direct_s04_catches_observed: 0
+  accepted_wakes: 4
+  direct_s04_catches_observed: 1
   mutant_058:
     mutation_class: ACTOR_CARRIER_CONFLATION
     direct_s04_result: NOT_OBSERVED_HERITAGE_POINTER_ONLY
@@ -83,16 +84,38 @@ campaign_evaluation:
     caught_gate_credit: false
   mutant_060:
     mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+    direct_s04_result: REVISE_CAUGHT
+    direct_s04_receipt_commit: 7164669e21fdb91bd48153c54b4b75a13fcf76c0
+    distinct_s09_result: NOT_OBSERVED
+    caught_gate_credit: true
+  mutant_061:
+    mutation_class: FABRICATED_CONSUMER_ACK
     direct_s04_result: PENDING
-    distinct_s09_result: PENDING
+    distinct_s03_result: PENDING
     caught_gate_credit: false
   distinct_provider_verdicts: 0
   evidence_class: SAME_PROVIDER_NONBINDING
   binding_weight: 0
-  decision: NOT_DUE
-  next_factor: FABRICATED_CONSUMER_ACK
+  decision: REVISE_GATE
+  decision_reason: >-
+    S04 directly selected and rejected mutant 060, proving one exact routed mutant was caught. Mutants 058 and 059
+    still lack exact direct verdicts, and mutant 061 is newly routed. One direct catch across this four-wake campaign
+    is insufficient to claim reliable sensitivity across actor/carrier, stale-digest, idempotency/version, and
+    ConsumerAck mutation classes.
+  proposed_gate_revision:
+    - MAINTAIN_AN_EXPLICIT_FIFO_OF_UNEXPIRED_X14_DIRECT_CANDIDATES_ADDRESSED_TO_S04
+    - DO_NOT_SUBSTITUTE_HERITAGE_OR_SOURCE_REVIEWS_FOR_EXACT_MUTANT_VERDICTS
+    - BIND_EACH_VERDICT_TO_MUTANT_ID_SOURCE_BLOB_OVERLAY_BYTES_OVERLAY_SHA256_AND_DIRECT_CATCH_CREDIT
+    - WHEN_WIP_PREVENTS_REVIEW_WRITE_HOLD_WITH_QUEUED_MUTANT_ID_EXPIRY_AND_NEXT_ELIGIBLE_WAKE
+  next_factor: UNSUPPORTED_PASS_OUTCOME
+  decision_not_rewritten_retroactively: true
+  closed_without_campaign_wide_sensitivity_claim: true
 
 recent_campaign_decisions:
+  campaign_15:
+    decision: REVISE_GATE
+    direct_s04_catches_observed: 1
+    reason: ONLY_MUTANT_060_RECEIVED_AN_EXACT_DIRECT_S04_CATCH_BEFORE_CAMPAIGN_CLOSE
   campaign_14:
     decision: REVISE_GATE
     direct_s04_catches_observed: 0
@@ -104,9 +127,6 @@ recent_campaign_decisions:
   campaign_12:
     decision: HOLD
     direct_s04_catches_observed: 0
-  campaign_11:
-    decision: HOLD
-    postdecision_direct_s04_catches_observed: 1
 
 carryover_debt:
   prior_campaign_ordinal: 5
@@ -120,26 +140,26 @@ carryover_debt:
 routing:
   structural_preflight: S04_STRUCTURAL_PREFLIGHT
   structural_verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
-  distinct_falsification: S09_STRATEGIC_REASONING_AND_VOTING_CELL
-  distinct_verifier_task_id: 6a539fb148bc8191a30b6009dbf22438
+  distinct_falsification: S03_REDUCER_VERIFICATION_ROUTER_AND_CONSUMER_ACK_TRACKER
+  distinct_verifier_task_id: 6a539fc5130c81918c13624739fb2a60
   distinct_verifier_route_status: AVAILABLE_AS_DISTINCT_SEAT_SAME_PROVIDER_NONBINDING_VIA_SLACK
   consumer: X14_CAMPAIGN_REDUCER_AND_X12_DURABLE_OBJECT_CAMPAIGN_REDUCER
-  current_verdict_status: MUTANT_060_DIRECT_ROUTE_REQUEST_PENDING_SLACK_POST
+  current_verdict_status: MUTANT_061_DIRECT_ROUTE_REQUEST_PENDING_SLACK_POST
   direct_candidate_priority_required: true
 
 current_campaign:
   campaign_ordinal: 15
-  accepted_wakes: 3
-  current_mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
-  next_mutation_class: FABRICATED_CONSUMER_ACK
-  gate_focus: EXPECTED_PRIOR_NEXT_VERSION_STRICT_INCREMENT_AND_IDEMPOTENCY_UNIQUENESS
-  status: OPEN_WAKE_3_PENDING_DIRECT_VERDICTS
-  decision: NOT_DUE
+  accepted_wakes: 4
+  current_mutation_class: FABRICATED_CONSUMER_ACK
+  next_mutation_class: UNSUPPORTED_PASS_OUTCOME
+  gate_focus: EXPLICIT_SOURCE_BOUND_CONSUMER_ACK_PROVENANCE_IDENTITY_AND_OUTCOME
+  status: CLOSED_WAKE_4_PENDING_CURRENT_MUTANT_VERDICTS
+  decision: REVISE_GATE
 
 honest_flaw: >-
-  The duplicate version is conspicuous because expected_version and next_version become exactly equal while the receipt
-  still names observed version 62. It does not test duplicate idempotency keys with distinct payloads, nonce reuse,
-  replay across objects, wraparound, skipped versions, or a correctly incremented version paired with a stale digest.
-  Candidate discovery and digest dedup are best-effort. S09 is a distinct seat but the same provider, so its evidence
-  remains nonbinding with weight zero. No source, scheduled task, durable-object state, connector, account, or external
-  system was modified.
+  The fabricated acknowledgement is conspicuous because it supplies only a success status while every identity,
+  receipt, timestamp, scope, digest-binding, and measured-outcome field remains absent. It does not test a plausible
+  but stale ConsumerAck, a valid acknowledgement replayed onto the wrong source digest, partial consumer acceptance,
+  or an acknowledgement by an unauthorized delegate. Candidate discovery and digest dedup are best-effort. S03 is a
+  distinct seat but the same provider, so its evidence remains nonbinding with weight zero. No source, scheduled task,
+  durable object, account, connector, or external system was modified.
