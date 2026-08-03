@@ -1,0 +1,82 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+event_type: CAMPAIGN_DECISION
+carrier: X11
+expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+repository: TTaoGaming/hfo-gen-133
+branch: agent/gen133-bootstrap-20260730
+wip: 1
+experiment_id: X11_GMAIL_METADATA_READ_VISIBILITY_V1
+campaign_wake: 4
+target_wakes_before_decision: 4
+expected_current_version: 51
+resulting_current_version: 52
+controlled_factor: gmail_read_surface
+baseline:
+  wake_1_accepted: true
+  wake_2_accepted: true
+  wake_3_accepted: true
+  prior_tool_status: SUCCESS
+  prior_match_count: 0
+  wake_1_latency_ms: 337
+  wake_2_latency_ms: 247
+  wake_3_latency_ms: 273
+hypothesis: the_connected_gmail_surface_can_repeat_the_exact_rfc822_message_id_search_and_return_only_a_sanitized_identifier_count_without_interactive_login
+exact_probe:
+  action: search_email_ids
+  query_operator: rfc822msgid
+  message_id_local_part_template: hfo-x11-{expected_task_id}
+  message_id_domain: invalid.example
+  exact_query_construction: concatenate_query_operator_colon_left_angle_local_part_at_domain_right_angle
+  max_results: 1
+  expected_match_count: 0
+  mutation_allowed: false
+  interactive_login_allowed: false
+  sensitive_readback_externalization_allowed: false
+measured_result:
+  accepted: true
+  tool_status: SUCCESS
+  match_count: 0
+  next_page_token_present: false
+  authentication_requested: false
+  interactive_login_required: false
+  content_read: false
+  identifiers_externalized: false
+  task_mutation_performed: false
+  sensitive_readback_externalized: false
+  changed_capability: false
+  andon: false
+permission_class: CONNECTED_GMAIL_METADATA_SEARCH_AVAILABLE
+error_class: NONE
+latency_exposed: true
+latency_ms: 511
+operator_relay_minutes: 0
+strongest_falsifier: the_same_exact_impossible_message_id_query_returns_a_nonzero_match_or_permission_failure_while_an_independently_authenticated_gmail_api_call_returns_zero
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer:
+  - Reginleif
+  - Ratatoskr
+honest_flaw: four_exact_zero_results_prove_only_that_the_connector_accepts_and_executes_this_query_path_not_mailbox_inventory_completeness_content_visibility_general_search_semantics_or_independent_verification
+claim_ceiling: repeated_connected_gmail_exact_query_execution_and_sanitized_zero_match_visibility_only_not_mailbox_completeness_content_access_or_independent_verification
+campaign_decision: KEEP
+decision_basis: four_of_four_identical_bounded_queries_returned_zero_identifiers_without_authentication_prompt_permission_error_content_readback_or_mutation
+decision_scope: keep_only_for_bounded_exact_query_execution_and_sanitized_match_count_checks
+next_factor: project_vs_non_project_context
+next_probe:
+  experiment_id: X11_PROJECT_CONTEXT_VISIBILITY_V1
+  campaign_wake: 1
+  mode: explicit_runtime_project_metadata_boolean_probe
+  exact_action: inspect_only_explicit_native_runtime_metadata_for_project_association_and_persist_boolean_status_permission_error_class_and_no_inferred_project_identity
+  expected_result_class: PROJECT_METADATA_EXPLICITLY_EXPOSED_OR_NOT_EXPOSED
+  inference_from_prompt_repository_or_conversation_text_allowed: false
+  interactive_login_allowed: false
+  sensitive_readback_externalization_allowed: false
+  mutation_allowed: false
+  claim_ceiling: explicit_runtime_project_metadata_visibility_only_not_project_membership_context_inheritance_or_cross_context_comparison
+slack_action: POST_CAMPAIGN_DECISION_AFTER_GIT_READBACK
+valid_time_utc: 2026-08-03T00:40:32Z
+recorded_time_utc: 2026-08-03T00:40:32Z
+sealed: true
+---
+
+The fourth bounded Gmail metadata-read wake reproduced the prior three results. Decision KEEP applies only to exact connector-query execution and sanitized match-count visibility. It does not establish mailbox completeness, message-content access, general Gmail-search semantics, or independent verification. The next controlled factor is explicit Project-versus-non-Project context metadata visibility; no project identity may be inferred from prompt text, repository paths, or conversation content.
