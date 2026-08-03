@@ -1,0 +1,90 @@
+{
+  "schema_id": "hfo.gen133.class_preauth_envelopes.v0_1",
+  "authored_utc": "2026-08-02T19:39:41Z",
+  "expires_utc": "2026-08-16T19:00:00Z",
+  "gate_extension_required": {
+    "file": "state/experiments/approvals/latest.txt",
+    "current_format": "<MARKET>:<SEQ>  # ONE LINE PER ITEM = instance-preauth",
+    "required_format": "class:<name>:quota=<n>/day:expires=<utc>  # ONE LINE PER CLASS",
+    "why": "operator asked to approve classes not babysit instances; approving 250 cold emails today would require 250 lines",
+    "status": "NOT_IMPLEMENTED - blocks both envelopes"
+  },
+  "signed_by_operator": false,
+  "envelopes": [
+    {
+      "envelope_id": "ENV_COLD_EMAIL_001",
+      "rank": 1,
+      "lane": "L1_ai_integration_rescue",
+      "gate_line": "class:cold_email_ai_rescue:quota=25/day:expires=2026-08-16T19:00:00Z",
+      "cold_p_first_500_30d": [
+        0.12,
+        0.2
+      ],
+      "automation": "H",
+      "operator_touch": "L",
+      "quota": {
+        "daily": 25,
+        "weekly": 125,
+        "total": 250
+      },
+      "stop_gates": [
+        "bounce>5%/50 sends",
+        "spam_complaint>0.1%",
+        "reply_rate<2% after 50 sends",
+        "any 4xx/5xx"
+      ],
+      "operator_touch_detail": {
+        "upfront": "sign once",
+        "ongoing": "daily digest",
+        "never": "per-message approval"
+      },
+      "compliance": [
+        "CAN-SPAM: truthful subject, postal address, working unsubscribe, honor opt-out <10d",
+        "Instantly ToS",
+        "B2B only",
+        "no scraped or purchased lists",
+        "no EU without lawful basis"
+      ],
+      "blocked_by": [
+        "booking_link does not exist (landers use href=#book, an anchor to nowhere)",
+        "gate file does not accept class: lines"
+      ]
+    },
+    {
+      "envelope_id": "ENV_UPWORK_CATALOG_002",
+      "rank": 2,
+      "lane": "L1_ai_integration_rescue",
+      "gate_line": "class:upwork_catalog:quota=2_listings:expires=2026-08-16T19:00:00Z",
+      "cold_p_first_500_30d": [
+        0.1,
+        0.18
+      ],
+      "automation": "M",
+      "operator_touch": "L",
+      "shape": "PASSIVE INBOUND - buyer initiates; explicitly NOT per-proposal writing",
+      "listings": [
+        {
+          "title": "AI Prototype Rescue - 5-day diagnostic + fix plan",
+          "usd": 350
+        },
+        {
+          "title": "Broken AI Workflow -> Tested, Deployed System (2-week sprint)",
+          "usd": 1500
+        }
+      ],
+      "stop_gates": [
+        "0 impressions after 14d",
+        "impressions but 0 clicks after 14d",
+        "clicks but 0 orders after 21d"
+      ],
+      "compliance": [
+        "Upwork ToS: Catalog listings permitted; bulk automated PROPOSAL submission is NOT - do not blur"
+      ],
+      "blocked_by": [
+        "Upwork account state unknown"
+      ]
+    }
+  ],
+  "ranking_note": "Upwork TARGETED PROPOSALS carry the highest raw cash P (25-45%, GPT Sol Pro) and were DEMOTED to rank 5 because the mandate weights automation and touch-minimality hard, and per-proposal writing is irreducibly hand-written. If the operator's real constraint is money rather than attention, that demotion is wrong and he should overrule it.",
+  "falsifier_that_flips_the_pick": "cold email <2% reply across 50 sends AND Upwork Catalog 0 impressions in 14 days => both automatable channels are dead for this positioning; accept high operator touch and switch to rank-5 targeted proposals"
+}

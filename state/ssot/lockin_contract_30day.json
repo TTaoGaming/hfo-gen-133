@@ -1,0 +1,90 @@
+{
+  "schema_id": "hfo.gen133.lockin_contract.v0_1",
+  "frozen_at_utc": "2026-08-02T18:23:08Z",
+  "freeze_until_utc": "2026-09-02T00:00:00Z",
+  "override_requires": "operator explicit typed override",
+  "decisions": {
+    "studio_identity": {
+      "value": "agentreleasegate.com",
+      "why": "owned+live+$0 today; mail sibling tryagentreleasegate.com already warmed, and a new domain needs 6-8wk warmup which exceeds the 30-day target; name describes the actual moat (release gate = held-out tests + capability census)"
+    },
+    "lanes_operator_hours_per_week": {
+      "L1_contracts": 2.5,
+      "L2_microsaas": 1.0,
+      "L3_desktop_utility": 0.5,
+      "L4_content": 1.0,
+      "total": 5.0
+    },
+    "lanes_codex_hours_per_week": {
+      "L1_contracts": 10,
+      "L2_microsaas": 25,
+      "L3_desktop_utility": 10,
+      "L4_content": 5
+    },
+    "l2_shape": {
+      "value": "shotgun_demand_test_focus_build",
+      "detail": "the 8 live B2B landers are ONE distribution experiment with 8 arms, not 8 products; build only the arm that converts; no new verticals until one converts; no Papermark/Documenso forks (AGPL-3.0 network-source obligation)"
+    }
+  },
+  "distribution_experiments": [
+    {
+      "id": "D1",
+      "rank": 1,
+      "channel": "cold_email_instantly_warmed_domain",
+      "hypothesis": "cold email from a warmed domain to HN-sourced contract leads produces buying signal",
+      "success": ">=1 reply naming a price, date, or scope question",
+      "falsifier": "0 replies of any kind from n=40 => cold email to HN-sourced contract leads is DEAD for this stack",
+      "n": 40,
+      "power_note": "at 5-10% reply rate, n=40 gives 87-98% chance of >=1 reply if the offer works",
+      "operator_minutes": 45,
+      "codex_hours": 2,
+      "usd": 0,
+      "kill_at_utc": "2026-08-16T18:00:00Z"
+    },
+    {
+      "id": "D2",
+      "rank": 2,
+      "channel": "reddit_self_post_8_arm",
+      "hypothesis": "at least one of the 8 B2B verticals has cold-reachable demand",
+      "success": ">=1 lander gets >=3 unique conversions",
+      "falsifier": "0 conversions across all 8 landers after 8 posts => cold Reddit self-post is DEAD as a B2B micro-SaaS channel and the 8-vertical shotgun is falsified as a demand-discovery method",
+      "n": 8,
+      "power_note": "weak for ranking verticals, strong for binary any-demand; do NOT conclude a vertical is dead from n=1 post",
+      "operator_minutes": 60,
+      "codex_hours": 3,
+      "usd": 0,
+      "kill_at_utc": "2026-08-16T18:00:00Z",
+      "risk": "ban risk - several subreddits prohibit self-promotion; rules-check each before posting"
+    },
+    {
+      "id": "D3",
+      "rank": 3,
+      "channel": "hn_show",
+      "hypothesis": "the medical-dictation utility can earn HN attention cold",
+      "success": ">=30 upvotes or >=100 unique lander visits",
+      "falsifier": "<5 upvotes and <20 visits => HN Show is DEAD as a cold-launch channel for this studio's artifacts at current polish",
+      "n": 1,
+      "power_note": "n=1 high variance; a null here is WEAK evidence, hence rank 3",
+      "operator_minutes": 20,
+      "codex_hours": 1,
+      "usd": 0,
+      "kill_at_utc": "2026-08-16T18:00:00Z"
+    }
+  ],
+  "never_recommend_until_freeze_ends": [
+    "warm network in any form",
+    "games as an income lane",
+    "therapy/corrective-exercise as product vertical",
+    "new lane / new vertical / new studio identity",
+    "anything requiring an audience the operator lacks",
+    "a fifth round of clarification questions"
+  ],
+  "live_evidence_at_freeze": {
+    "b2b_landers_live": 9,
+    "b2b_landers_checked": 9,
+    "suika_dlc_live": 8,
+    "suika_dlc_checked": 8,
+    "total_pages_projects": 53,
+    "external_visitors": 0
+  }
+}

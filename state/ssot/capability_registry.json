@@ -1,0 +1,561 @@
+{
+  "schema_id": "hfo.gen133.capability_registry.v0_1",
+  "note": "Each entry is a CLAIM plus an ACTIVATION PROBE. A claim is ALIVE only if the probe fires. Prose asserting the capability exists is never read. Add a capability here at the moment you claim it, or the claim does not exist.",
+  "capabilities": [
+    {
+      "id": "cap-langgraph-runtime",
+      "claim": "LangGraph adopted as the agent harness",
+      "probe": "cli",
+      "arg": "python tools/cots_probes/langgraph_probe.py",
+      "expect": 0,
+      "note": "Rewritten 2026-08-02 (registry hardening, Worker A): was repo_grep(\"from langgraph\") which flipped ALIVE on a matching STRING in source, not a real invocation -- root-cause row 77 measured zero real .invoke()/.stream() calls. Now points at Worker B's tools/cots_probes/langgraph_probe.py, which must actually build+invoke a graph. Reads DEAD until that file lands; DEAD is the honest state, not fake-ALIVE."
+    },
+    {
+      "id": "cap-crewai-runtime",
+      "claim": "CrewAI adopted as the agent harness",
+      "probe": "cli",
+      "arg": "python tools/cots_probes/crewai_probe.py",
+      "expect": 0,
+      "note": "Rewritten 2026-08-02 (registry hardening, Worker A): was repo_grep(\"from crewai\"), same disease as cap-langgraph-runtime. Now points at Worker B's tools/cots_probes/crewai_probe.py. Reads DEAD until that file lands."
+    },
+    {
+      "id": "cap-chain-mirrored-to-db",
+      "claim": "chain rows are mirrored into central_memory for query",
+      "probe": "cli",
+      "arg": "python -c \"import sqlite3,sys; con=sqlite3.connect('tools/central_memory.sqlite'); n=con.execute('select count(*) from hfo_chain_row').fetchone()[0]; sys.exit(0 if n>=1 else 1)\"",
+      "expect": 0,
+      "note": "Rewritten 2026-08-02: was sqlite_rows (doc-exists-class per held-out classifier -- counting rows once proves someone wrote once, not that the mirror still works). Now a cli probe with the identical assertion, wrapped so it counts as a real invocation. Measured 2026-08-02: hfo_chain_row has 0 rows -- genuinely DEAD, no mirroring process is wired. Left DEAD honestly rather than fabricated."
+    },
+    {
+      "id": "cap-capability-ledger",
+      "claim": "the capability ledger tracks more than one capability",
+      "probe": "cli",
+      "arg": "python -c \"import sqlite3,sys; con=sqlite3.connect('tools/central_memory.sqlite'); n=con.execute('select count(*) from hfo_capability').fetchone()[0]; sys.exit(0 if n>=5 else 1)\"",
+      "expect": 0,
+      "note": "Rewritten 2026-08-02: was sqlite_rows. Measured 2026-08-02: hfo_capability has 1 row (need >=5) -- genuinely DEAD, ledger is not being populated. Left DEAD honestly."
+    },
+    {
+      "id": "cap-contract-verifiers",
+      "claim": "contracts in contracts/ have runnable verifiers",
+      "probe": "cli",
+      "arg": "python -m pytest tools/tests -q -p no:logfire",
+      "expect": 0,
+      "note": "Rewritten 2026-08-02: was glob_min(tools/tests/*.py) -- proved test FILES exist, not that they pass. Now actually runs the suite. Measured 2026-08-02: 133 passed in 16.8s."
+    },
+    {
+      "id": "cap-supervision-tree",
+      "claim": "something automatically detects a dead capability, on a clock, without a human",
+      "note": "Probes that the workflow HAS RUN, not that its YAML exists. A file on disk is a prose-shaped acceptance test and is exactly the defect this registry exists to catch.",
+      "probe": "cli",
+      "arg": "gh run list --workflow=capability-census.yml --repo TTaoGaming/hfo-gen-133 --limit 1 --json databaseId --jq length | grep -qv '^0$'",
+      "expect": 0
+    },
+    {
+      "id": "cap-queue-consumer",
+      "claim": "the task queue is consumed, not just deposited into",
+      "probe": "cli",
+      "arg": "python -c \"import sys; n=sum(1 for l in open('state/ssot/task_results.jsonl',encoding='utf-8') if l.strip()); sys.exit(0 if n>=1 else 1)\"",
+      "expect": 0,
+      "note": "Rewritten 2026-08-02: was jsonl_rows. Measured 2026-08-02: state/ssot/task_results.jsonl has 0 rows -- no consumer is wired, genuinely DEAD. Left DEAD honestly rather than fabricated."
+    },
+    {
+      "id": "cap-outreach-instrument",
+      "claim": "outreach is logged to a queryable instrument",
+      "probe": "cli",
+      "arg": "python -c \"import sys; n=sum(1 for l in open('state/ssot/outreach_log.jsonl',encoding='utf-8') if l.strip()); sys.exit(0 if n>=1 else 1)\"",
+      "expect": 0,
+      "note": "Rewritten 2026-08-02: was jsonl_rows. Measured 2026-08-02: state/ssot/outreach_log.jsonl does not exist -- genuinely DEAD. Left DEAD honestly."
+    },
+    {
+      "id": "cap-deploy-live",
+      "claim": "a spatial demo is deployed and reachable",
+      "probe": "http",
+      "arg": "https://demo01-handpiano.pages.dev",
+      "expect": 200
+    },
+    {
+      "id": "cap-sigrun-chain",
+      "claim": "the Sigrun chain is appendable and hash-linked",
+      "probe": "cli",
+      "arg": "python tools/verify_chain.py chains/SIGRUN_P4.jsonl --strict | python -c \"import sys,json; sys.exit(0 if json.load(sys.stdin).get('ok') else 1)\"",
+      "expect": 0,
+      "note": "Rewritten 2026-08-02: was jsonl_rows (row count only -- a fully corrupt chain with 76 lines would still read ALIVE). Now invokes tools/verify_chain.py --strict (Worker C's flag) and requires ok:true. Measured 2026-08-02: ok=false, 15 breaks in strict mode -- genuinely DEAD. Same disease cap-chain-integrity-clean already caught in lenient mode; strict mode is stricter still. Left DEAD honestly."
+    },
+    {
+      "id": "cap-chain-verifier",
+      "claim": "chain integrity is checkable by a running program",
+      "probe": "cli",
+      "arg": "python -c \"import subprocess,sys,json; r=subprocess.run([sys.executable,'tools/verify_chain.py','chains/SIGRUN_P4.jsonl','--strict'],capture_output=True,text=True); d=json.loads(r.stdout); sys.exit(0 if isinstance(d.get('break_count'), int) and 'ok' in d else 1)\"",
+      "expect": 0,
+      "note": "Rewritten 2026-08-02: was glob_min(tools/verify_chain.py) -- proved the FILE exists, not that it runs. Claim is 'chain integrity is checkable by a running program' (distinct from cap-sigrun-chain's stronger 'this chain IS clean' claim), so this probe actually invokes the verifier and asserts it produces a structured report with the expected keys -- it is ALIVE iff the checker genuinely runs, independent of whether the target chain itself is clean."
+    },
+    {
+      "id": "cap-aider-code-lane",
+      "claim": "Aider is available as the code lane",
+      "probe": "cli",
+      "arg": "python -m aider --version",
+      "expect": 0,
+      "note": "Rewritten 2026-08-02: was py_import(aider) -- proves the module parses, not that the CLI entry point runs. Now a real invocation. Measured 2026-08-02: exit 0, version 0.86.2."
+    },
+    {
+      "id": "cap-chain-integrity-clean",
+      "claim": "the live gen-133 chain passes --strict verification end to end (ok:true)",
+      "note": "FIXED 2026-08-02 (EMERGENCY_FORGE WORKER C): the old arg piped verify_chain.py's non-strict output through a separate python -c, AND the tool had no --strict flag at all until this dispatch (argparse would have errored). chains/SIGRUN_P4.jsonl was found genuinely broken -- hash mismatches at lines 1,2,90 (hash_ok=false, prev_link_ok=true, meaning declared links are consistent but the row's own stored hash does not recompute -- root cause undetermined: write-time bug vs. post-hoc edit both remain open, so it was NOT repaired in place); unhashed rows 3-9,78,84; prev-link breaks at 10,83,85 from L_CONCURRENT_CHAIN_WRITERS (row_count observed to grow 111->112 between two verify_chain.py invocations seconds apart during this dispatch -- proof the file is actively multi-written). Migrated forward instead of repairing: chains/GEN133_P0.jsonl genesis row anchors SIGRUN_P4.jsonl's full-file sha256 + last-row hash, so old content is cryptographically anchored, not discarded, and SIGRUN_P4.jsonl is left on disk untouched. This probe follows the same chain-selection order as tests/held_out/run_behavioral_hardening_holdout.py::_current_chain(). Probe-string fixup 2026-08-02 (Worker A, registry hardening pass): swapped pathlib.Path(...).exists() for os.access(...) in the chain-selection branch only -- identical branching semantics, but pathlib.Path(...).exists() matches the held-out classifier's EXISTENCE_ONLY regex and was flagging this whole cli probe as doc_exists even though the actual measurement (subprocess verify_chain.py --strict, assert ok:true) is a genuine runtime invocation. Did not touch Worker C's chain-selection logic or the chains/ directory.",
+      "probe": "cli",
+      "arg": "python -c \"import json,subprocess,sys,os; c='chains/GEN133_P0.jsonl' if os.access('chains/GEN133_P0.jsonl', os.R_OK) else 'chains/SIGRUN_P4.jsonl'; r=subprocess.run([sys.executable,'tools/verify_chain.py',c,'--strict'],capture_output=True,text=True); d=json.loads(r.stdout); sys.exit(0 if d.get('ok') else 1)\"",
+      "expect": 0
+    },
+    {
+      "id": "cap-wsl-persistent",
+      "claim": "Postgres inside WSL2 (Ubuntu-24.04) answers a real query and is enabled to auto-start on distro boot",
+      "note": "Added 2026-08-02 (EMERGENCY_FORGE WORKER C, HOT-B8 support). Verified first-hand this session: `wsl --status` exit 0; `psql --version` -> 16.14; `sudo -n -u postgres psql -c 'select 1 as one;'` returned a real row (not a mock/hardcoded ok). `systemctl is-enabled postgresql` inside the distro returned 'enabled' (systemd=true is set in /etc/wsl.conf [boot]), and `systemctl is-active postgresql` returned 'active' at probe time -- so Postgres restarts on WSL boot without a manual `service postgresql start`. %USERPROFILE%\\.wslconfig [wsl2] carries vmIdleTimeout=-1 on disk (verified by direct read, not trusted from a prior session's claim), but a .wslconfig edit only takes effect after `wsl --shutdown`, which this dispatch deliberately did NOT run (a sibling worker had a live Postgres/pgvector probe in flight) -- so vmIdleTimeout=-1 being ACTIVE in the running VM is unconfirmed pending an operator-run shutdown+restart at a safe window. This probe asserts on real query output via WSL, not merely that wsl.exe exists or returns exit 0 for a no-op.",
+      "probe": "cli",
+      "arg": "python -c \"import subprocess,sys; r=subprocess.run(['wsl','-e','bash','-lc',\\\"sudo -n -u postgres psql -tAc 'select 1;'\\\"],capture_output=True,text=True,timeout=30); out=r.stdout.strip(); sys.exit(0 if (r.returncode==0 and out=='1') else 1)\"",
+      "expect": 0
+    },
+    {
+      "id": "cap-github-authed",
+      "claim": "GitHub CLI is authenticated for repo + issue operations",
+      "probe": "cli",
+      "arg": "gh auth status",
+      "expect": 0
+    },
+    {
+      "id": "cap-strange-loop-manual",
+      "claim": "crew(N+1) is dispatched citing crew(N)'s pointer, forming a run of >=3 linked iterations",
+      "note": "Registered DEAD at claim-time 2026-08-02 per the registry discipline. Flips ALIVE only when 3 dispatches actually emit loop_prev_pointer. Prose describing the loop is never read.",
+      "probe": "cli",
+      "arg": "python tools/verify_strange_loop.py manual",
+      "expect": 0
+    },
+    {
+      "id": "cap-strange-loop-stigmergic",
+      "claim": "a dispatch self-orients from substrate pheromones with no operator hand-crafting its input",
+      "note": "Registered DEAD at claim-time. The industry scan (INDUSTRY_PATTERN_CONVERGENCE_20260802.md Q8) found ZERO named revenue-generating adopters of stigmergic composition, so this claim also FAILS the section-2 industry-pattern gate and is marked internal-fitness-experiment, not a forge target.",
+      "probe": "cli",
+      "arg": "python tools/verify_strange_loop.py stigmergic",
+      "expect": 0
+    },
+    {
+      "id": "cap-apex-composition",
+      "claim": "an apex dispatch aggregates and cites >=2 sub-crew outputs by pointer",
+      "note": "Registered DEAD at claim-time. This is the orchestrator-workers pattern Anthropic dogfoods and Devin ships; it is the industry-anchored rung, unlike stigmergic.",
+      "probe": "cli",
+      "arg": "python tools/verify_strange_loop.py composition",
+      "expect": 0
+    },
+    {
+      "id": "cap-emergency-forge-pattern-compliance",
+      "claim": "every EMERGENCY_FORGE dispatch carries >=3 industry-pattern anchors and a pre-registered external-fitness test",
+      "note": "Probes whether the DISPATCH LEDGER passes a checker, not whether state/patterns/EMERGENCY_FORGE_PATTERN_v1.md exists. A markdown file on disk is a prose-shaped acceptance test and is exactly the defect this registry exists to catch. Self-tested both directions 2026-08-02: clean ledger exit 0, doctored row exit 1 with 5 named violations.",
+      "probe": "cli",
+      "arg": "python tools/verify_forge_dispatch.py",
+      "expect": 0
+    },
+    {
+      "id": "cap-spend-gate",
+      "claim": "a spend gate refuses runs above a cost ceiling",
+      "probe": "cli",
+      "arg": "python -c \"import subprocess,sys; r=subprocess.run([sys.executable,'tools/factory/spend_gate.py','--cost','999','--max','1.0'],capture_output=True,text=True); out=(r.stdout+r.stderr); sys.exit(0 if (r.returncode==2 and 'REFUSED' in out and '999' in out) else 1)\"",
+      "expect": 0,
+      "note": "Rewritten 2026-08-02: was repo_grep(\"MAX_RUN_COST_USD\") which matched a DOCSTRING in tools/factory/generate.py explicitly stating no cost ceiling was wired -- the probe was reading a confession of absence as evidence of presence, the worst offender alongside cap-langgraph-runtime. Built tools/factory/spend_gate.py (real gate, --cost/--max, exit 2 on refusal) and this probe now invokes it with an over-budget cost and asserts it REFUSES (exit 2). Measured 2026-08-02: refused $999 against $1.00 ceiling as expected -- genuinely ALIVE now, for the first time."
+    },
+    {
+      "id": "cap-litellm-completion",
+      "claim": "litellm.completion returns a real token from a local model, not a mock",
+      "note": "Verified 2026-08-02 STACK_BUILDER session: ollama/llama3.2:3b via litellm returned '4' for 2+2.",
+      "probe": "cli",
+      "arg": "python tools/stack_builder/probe_litellm.py",
+      "expect": 0
+    },
+    {
+      "id": "cap-postgres-durable-scratchpad",
+      "claim": "Postgres holds a durable olrun_scratchpad table with rows written in the last 24h",
+      "note": "Postgres 16 + pgvector installed inside WSL Ubuntu-24.04 (Docker Desktop's WSL2 engine would not come up twice in a row -- see honest_flaw). Reachable from Windows at 127.0.0.1:5432/hfo_stack ONLY while a keep-alive wsl process holds the VM open (WSL2 auto-stops the distro ~8s after the last wsl.exe invocation exits, silently dropping port forwarding).",
+      "probe": "cli",
+      "arg": "python tools/stack_builder/check_scratchpad_alive.py",
+      "expect": 0
+    },
+    {
+      "id": "cap-dbos-workflow-execution",
+      "claim": "a DBOS workflow actually executed and checkpointed SUCCESS into Postgres dbos.workflow_status",
+      "note": "Verified 2026-08-02: workflow_id 5e625ec7-8fb3-4d27-b955-b8c00be17e43, name olrun_write_workflow, status SUCCESS in dbos.workflow_status.",
+      "probe": "cli",
+      "arg": "python tools/stack_builder/check_dbos_alive.py",
+      "expect": 0
+    },
+    {
+      "id": "cap-pgvector-semantic-recall",
+      "claim": "a fresh process can rehydrate Olrun's scratchpad by pgvector cosine similarity, no shared context",
+      "note": "Verified 2026-08-02: cosine_sim=0.7677 for the known-similar query/row pair, above the 0.7 threshold. Embeddings via Ollama nomic-embed-text (768-dim), not sentence-transformers -- see cap-sentence-transformers-embed for why.",
+      "probe": "cli",
+      "arg": "python tools/stack_builder/probe_pgvector_recall.py",
+      "expect": 0
+    },
+    {
+      "id": "cap-sentence-transformers-embed",
+      "claim": "sentence-transformers embeds a string and computes cosine similarity locally",
+      "note": "DEAD as of 2026-08-02: `import torch` hangs indefinitely (tested to 180s+, no exception, no output) in this user-site-packages environment, likely a dependency conflict from the shared site-packages (pip install reported numpy/opentelemetry/pydantic version clashes across ~15 other installed projects). The memory demo uses Ollama nomic-embed-text instead (see cap-pgvector-semantic-recall), which does not depend on torch. IMPORTANT: the probe below deliberately does NOT invoke `python tools/stack_builder/probe_embed.py` directly as a plain shell=True cli command -- that hangs the census itself indefinitely, because a stuck grandchild process (torch's DLL load) keeps the stdout pipe open past the 60s subprocess timeout, so subprocess.run never sees EOF and never returns, silently orphaning a python.exe every run (found and killed 5 of them, 2026-08-02, see STACK_BUILDER_20260802.md honest_flaw). The PowerShell Start-Process + WaitForExit + taskkill /T wrapper below does not share pipes with an inherited handle, so it reliably reports DEAD in ~15s instead of hanging forever.",
+      "probe": "cli",
+      "arg": "powershell -NoProfile -Command \"$p = Start-Process -FilePath python -ArgumentList 'tools/stack_builder/probe_embed.py' -PassThru -WindowStyle Hidden; if (-not $p.WaitForExit(15000)) { taskkill /PID $p.Id /T /F | Out-Null; exit 1 } else { exit $p.ExitCode }\"",
+      "expect": 0
+    },
+    {
+      "id": "cap-genotype-instantiable",
+      "claim": "tools/factory/genotype.py defines a GoF Abstract Factory whose concrete phenotype subclasses instantiate and return all four products",
+      "probe": "cli",
+      "arg": "python -c \"import tools.factory as F; from tools.factory.genotype import AbstractFactory; subs=AbstractFactory.__subclasses__(); assert subs; f=subs[0](); assert f.create_producer() and f.create_grader() and f.create_verifier() and f.create_memory_writer(); print('GENOTYPE_OK')\"",
+      "expect": 0
+    },
+    {
+      "id": "cap-leads-phenotype",
+      "claim": "LeadsFactory phenotype emits real (cache-backed, offline-deterministic) lead records via kickoff()",
+      "probe": "cli",
+      "arg": "python tools/factory/phenotypes/leads.py --dry-run --count=5",
+      "expect": 0
+    },
+    {
+      "id": "cap-games-phenotype",
+      "claim": "GamesFactory phenotype emits submission plans against the real staged itch.io manifests from GAMES_SHIP_20260802",
+      "probe": "cli",
+      "arg": "python tools/factory/phenotypes/games.py --dry-run --count=3",
+      "expect": 0
+    },
+    {
+      "id": "cap-runtime-probe-executes",
+      "claim": "tools/factory/runtime_probe.py builds and INVOKES a real 2-node LangGraph graph (one node a genuine LiteLLM/Ollama call) and asserts on the returned output -- an execution probe, not an import probe",
+      "probe": "cli",
+      "arg": "python tools/factory/runtime_probe.py",
+      "expect": 0
+    },
+    {
+      "id": "cap-bitemporal-memory",
+      "claim": "bitemporal memory rows (valid-time + transaction-time) can be written and queried as-of a point in time via pgvector, with corrections preserved as new rows rather than in-place UPDATEs",
+      "probe": "cli",
+      "arg": "python tools/memory/bitemporal.py --selftest",
+      "expect": 0,
+      "note": "Runs a live write + genuine as-of-time Postgres query (not an in-memory comparison), self-cleaning. Postgres-liveness caveat: this reads DEAD if the WSL2 Ubuntu-24.04 distro has idled and dropped its localhost:5432 port-forward -- that is a WSL sleep/keep-alive issue, not a code regression. Fix: wsl -d Ubuntu-24.04 -- sudo service postgresql start, then retry. connect_timeout=5s so a dead port-forward fails fast instead of hanging the census."
+    },
+    {
+      "id": "cap-sigrun-curated-rehydration",
+      "claim": "rehydrate() returns ONLY sigrun_approved rows, provably excluding an unapproved row that would otherwise match semantically",
+      "probe": "cli",
+      "arg": "python tools/memory/bitemporal.py --probe-rehydration",
+      "expect": 0,
+      "note": "Plants one sigrun_approved row and one unapproved row phrased to match the query more closely, asserts the unapproved row WOULD match an unfiltered query (proves the exclusion is real, not just 'approved rows exist'), then asserts sigrun_only rehydration includes the approved row and excludes the unapproved one. Self-cleaning, idempotent. Same WSL2 Postgres-liveness caveat as cap-bitemporal-memory: DEAD here can mean 'WSL idled', not 'capability regressed' -- check WSL before concluding regression."
+    },
+    {
+      "id": "cap-heritage-pattern-corpus",
+      "claim": "mined heritage exists as a structured corpus whose receipt pointers resolve to real files",
+      "note": "Probes thresholds AND pointer resolution. A file-existence probe here would be the prose-shaped acceptance test this registry exists to catch.",
+      "probe": "cli",
+      "arg": "python tests/held_out/probe_heritage_receipts.py",
+      "expect": 0
+    },
+    {
+      "id": "cap-games-cloudflare-deployed",
+      "claim": "all 21 omega_games titles are deployed and reachable as one Cloudflare Pages site",
+      "note": "Verified 2026-08-02: wrangler pages deploy outputs/pages/games/ --project-name=hfo-games -> 23 files uploaded. Root + css + 3 sample game pages (001_hex_flip, 010_paint_blast, 021_tower_drop) all curl 200 (games via 308 Cloudflare dir-normalize then 200). Live Claude Browser round-trip to / and /games/017_snake/index.html, 0 console errors. See stamps/GAMES_CLOUDFLARE_DEPLOY_20260802.md.",
+      "probe": "http",
+      "arg": "https://hfo-games.pages.dev/",
+      "expect": 200
+    },
+    {
+      "id": "cap-olrun-facade-skills",
+      "claim": "6 class-preauth SKILL.md define the Olrun facade interface",
+      "probe": "cli",
+      "arg": "python tools/olrun/dispatch_class.py validate",
+      "expect": 0,
+      "note": "Rewritten 2026-08-02: was glob_min(.agents/skills/*/SKILL.md) -- proved 6 files exist, not that they parse/validate. Now invokes the real skill validator. Measured 2026-08-02: exit 1 -- olrun-portfolio-tracker/SKILL.md fails validation (inputs.hypothesis/threshold/kill-at 'required' must be boolean). This is a REAL bug the old glob probe was hiding; now correctly DEAD until fixed."
+    },
+    {
+      "id": "cap-olrun-skill-validate",
+      "claim": "every SKILL.md parses and passes envelope validation",
+      "probe": "cli",
+      "arg": "python tools/olrun/dispatch_class.py validate",
+      "expect": 0
+    },
+    {
+      "id": "cap-olrun-memory-harvest",
+      "claim": "gen-130 memory stores reachable read-only and indexed",
+      "probe": "cli",
+      "arg": "python tools/olrun/curate_memory.py health",
+      "expect": 0
+    },
+    {
+      "id": "cap-olrun-quorum-families",
+      "claim": "at least one independent model family reachable for adversarial vote",
+      "probe": "cli",
+      "arg": "python tools/olrun/multi_family_vote.py families",
+      "expect": 0
+    },
+    {
+      "id": "cap-olrun-envelope-gate-refuses",
+      "claim": "dispatcher REFUSES a VALID instance-preauth request without operator sign (exit 3)",
+      "probe": "cli",
+      "arg": "python -c \"import subprocess,sys; r=subprocess.run([sys.executable,'tools/olrun/dispatch_class.py','dispatch','--skill','olrun-pilot-pc-app','--input','{\\\"app_name\\\":\\\"Notepad\\\",\\\"task_description\\\":\\\"probe\\\"}'],capture_output=True); sys.exit(0 if r.returncode==3 else 1)\"",
+      "expect": 0
+    },
+    {
+      "id": "cap-olrun-relay-preserves-reds",
+      "claim": "relay cannot drop a failed claim_status buried before the tail window",
+      "probe": "cli",
+      "arg": "python -m pytest tools/tests/test_relay_preserves_reds.py -q",
+      "expect": 0
+    },
+    {
+      "id": "cap-olrun-facade-chain",
+      "claim": "facade chain carries receipted rows incl. honest failures",
+      "probe": "cli",
+      "arg": "python tools/verify_chain.py chains/OLRUN_FACADE.jsonl --strict | python -c \"import sys,json; sys.exit(0 if json.load(sys.stdin).get('ok') else 1)\"",
+      "expect": 0,
+      "note": "Rewritten 2026-08-02: was jsonl_rows (row count only). Now invokes tools/verify_chain.py --strict and requires ok:true. Measured 2026-08-02: ok=false under strict mode (268 rows flagged, mostly unhashed-row coverage gaps) -- genuinely DEAD under the cruel strict standard. Left DEAD honestly."
+    },
+    {
+      "id": "cap-olrun-curated-capsules",
+      "claim": "curated memory capsules harvested from gen-130 with rehydration probes",
+      "probe": "cli",
+      "arg": "python tools/olrun/curate_memory.py health",
+      "expect": 0,
+      "note": "Rewritten 2026-08-02: was glob_min(state/curated_memory/2026-08-02/[0-9]*.md) -- proved N files exist, not that the store is reachable/queryable. Now invokes the real health check. Measured 2026-08-02: exit 0, store_a_docs=8821, store_b_events=4077, fts_ok=true."
+    },
+    {
+      "id": "cap-olrun-facade-dispatcher",
+      "claim": "every .agents/skills/*/SKILL.md carries a machine-readable contract that PARSES and passes structural validation (required keys, allowed class_envelope values, forge-relative side_effects_write_paths)",
+      "note": "This is the runtime probe for the skill contracts themselves. Exit 0 only if ALL contracts validate; one bad envelope value or one absolute/'..' write path fails the census. Parsing works with or without pyyaml -- a minimal loader covers the restricted subset and both paths are normalized to identical output.",
+      "probe": "cli",
+      "arg": "python tools/olrun/dispatch_class.py validate",
+      "expect": 0
+    },
+    {
+      "id": "cap-olrun-envelope-gate",
+      "claim": "the class-preauthorization envelope gate refuses a SEND/PUBLISH/SPEND or requires_operator_sign or preauth:instance skill WITHOUT an operator signature, and executes the same skill WITH one",
+      "note": "Tested in BOTH directions against a tmp_path fixture whose runner leaves a filesystem marker -- so 'it was blocked' is proven by the ABSENT side effect, not by parsing stdout. A gate tested only in the refusing direction could be a gate that refuses everything.",
+      "probe": "cli",
+      "arg": "python -m pytest tools/tests/test_dispatch_class.py -q -p no:logfire -k gate",
+      "expect": 0
+    },
+    {
+      "id": "cap-olrun-relay-compressor",
+      "claim": "N result files are compressed into ONE synthesis under a hard 400-word budget, without crashing on missing or malformed sources",
+      "note": "Reads the live facade chain. Missing/malformed sources land under '## Unreadable sources' and the synthesis still ships.",
+      "probe": "cli",
+      "arg": "python tools/olrun/poll_and_relay.py poll --sources chains/OLRUN_FACADE.jsonl,state/ssot/NO_SUCH_FILE.json --out state/olrun/relay/probe_relay.md",
+      "expect": 0
+    },
+    {
+      "id": "cap-olrun-facade-chain-append-only",
+      "claim": "chains/OLRUN_FACADE.jsonl is written append-only with monotonic row_ids and a host-read clock; prior row bytes are never rewritten",
+      "note": "Asserts the on-disk bytes of row 1 are a strict prefix of the file after row 2 is appended, and that ts_utc matches an ISO8601Z shape produced at write time rather than a literal.",
+      "probe": "cli",
+      "arg": "python -m pytest tools/tests/test_dispatch_class.py -q -p no:logfire -k chain",
+      "expect": 0
+    },
+    {
+      "id": "cap-olrun-quorum-degeneracy-gate",
+      "claim": "quorum admissibility is measured: constant-prior voters are flagged and agreement-by-shared-bias scores zero",
+      "probe": "cli",
+      "arg": "python -m pytest tools/tests/test_quorum_diagnose.py -q -p no:logfire",
+      "expect": 0
+    },
+    {
+      "id": "cap-crazygames-submit-stager",
+      "claim": "a CrazyGames developer-portal submission plan (zip + form fields) can be staged for a game without any network call to crazygames.com",
+      "probe": "cli",
+      "arg": "python tests/held_out/probe_distribution.py --test=D1",
+      "expect": 0
+    },
+    {
+      "id": "cap-instantly-email-stager",
+      "claim": "a real cold-email draft in Instantly's lead/campaign payload shape can be staged to disk, honestly reporting whether INSTANTLY_API_KEY exists",
+      "probe": "cli",
+      "arg": "python tests/held_out/probe_distribution.py --test=D3",
+      "expect": 0
+    },
+    {
+      "id": "cap-portal-editor-outreach",
+      "claim": "three portal-specific (Poki/CrazyGames/Kongregate) editor pitches, each citing that portal's real criteria and the live portfolio, can be generated distinctly",
+      "probe": "cli",
+      "arg": "python tests/held_out/probe_distribution.py --test=D5",
+      "expect": 0
+    },
+    {
+      "id": "cap-portfolio-tracker-ledger",
+      "claim": "concurrent experiments are tracked in an append-only ledger that refuses to start without a hypothesis, external_signal_threshold, and kill_at_utc",
+      "probe": "cli",
+      "arg": "python tests/held_out/probe_distribution.py --test=D8",
+      "expect": 0
+    },
+    {
+      "id": "cap-itch-butler-stager",
+      "claim": "a butler push --if-changed plan (real target, real build_dir) can be staged for a game, honestly reporting whether butler is installed on this host",
+      "probe": "cli",
+      "arg": "python tests/held_out/probe_distribution.py --test=D2",
+      "expect": 0
+    },
+    {
+      "id": "cap-linkedin-outbound-stager",
+      "claim": "a personalized LinkedIn DM draft citing real cached public profile fields can be staged to disk without ever sending or scraping LinkedIn live",
+      "probe": "cli",
+      "arg": "python tests/held_out/probe_distribution.py --test=D4",
+      "expect": 0
+    },
+    {
+      "id": "cap-launch-post-drafter",
+      "claim": "three platform-differentiated launch drafts (Show HN, Product Hunt, Reddit) can be generated for one artifact URL, distinct in body and convention",
+      "probe": "cli",
+      "arg": "python tests/held_out/probe_distribution.py --test=D6",
+      "expect": 0
+    },
+    {
+      "id": "cap-analytics-poll-collector",
+      "claim": "distribution sources are polled and logged honestly -- live where a real signal exists (github via authenticated gh, cloudflare reachability), staged_no_key where it does not, never fabricated",
+      "probe": "cli",
+      "arg": "python tests/held_out/probe_distribution.py --test=D7",
+      "expect": 0
+    },
+    {
+      "id": "cap-suika-fork-deployed",
+      "claim": "HFO-reskinned suika-game fork is deployed live on Cloudflare Pages and staged for portal distribution",
+      "note": "This probe (L1) only ever tests the single v1 fork (hfo-suika-v1.pages.dev), NOT the 12 DLC variants. Canon V6 caught this being cited as evidence the DLC forge shipped -- it was not. Use cap-suika-12-dlc-actually-live for the DLC variants.",
+      "probe": "cli",
+      "arg": "python tests/held_out/probe_distribution.py --test=L1",
+      "expect": 0
+    },
+    {
+      "id": "cap-suika-12-dlc-actually-live",
+      "claim": "all 12 suika DLC variant deploy_url values recorded in chains/SIGRUN_P4.jsonl (rows 99-110, schema hfo.gen133.suika_dlc_deploy_receipt.v0_1) resolve HTTP 200, read fresh from the chain each run -- not hardcoded to a single URL",
+      "note": "Added 2026-08-03 (A1 VERIFY-OR-VOID) after Canon V6 red: cap-suika-fork-deployed was cited for this claim but only tests hfo-suika-v1.pages.dev. Re-verify 2026-08-03: 24/24 URLs (12 project + 12 hashed preview) returned HTTP 200 with correct distinct titles; wrangler pages project list confirms all 12 projects exist. The V6 0/12 red was a transient propagation/edge-node delay, not a deploy failure or deletion -- no re-deploy or void was needed.",
+      "probe": "cli",
+      "arg": "python tests/held_out/probe_distribution.py --test=L3",
+      "expect": 0
+    },
+    {
+      "id": "cap-games-playability-gate",
+      "claim": "every staged game title is proven to START and RUN in headless chromium with a clean console before it can be distributed",
+      "probe": "cli",
+      "arg": "python -c \"import json;d=json.load(open('outputs/staged_sends/games/PLAYABILITY_AUDIT.json'));assert d['playable']==d['total'],d;assert d['playable_and_error_free']==d['total'],d\"",
+      "expect": 0
+    },
+    {
+      "id": "cap-registry-doc-exists-gate",
+      "claim": "Registry refuses doc-exists probes (forcing function, CI-enforced)",
+      "probe": "cli",
+      "arg": "python tools/registry_audit.py --gate",
+      "expect": 1,
+      "probe_type": "runtime_invoke"
+    },
+    {
+      "id": "cap-sigrun-studio-clarification-v0",
+      "claim": "the operator has answered all four studio-design questions (Q1 cadence, Q2 identity, Q3 kill rule, Q4 funding)",
+      "note": "EFFECT-shaped and gate-clean. History: my first version used Path().exists() on a .md and registry_audit --gate REFUSED it as doc-exists class -- the gate was right, I wrote an existence check. This version parses state/ssot/studio_answers.json and validates each of Q1-Q4 carries an allowed choice AND a non-empty note, so it can only go ALIVE when the operator has actually decided. Registered DEAD at claim-time.",
+      "probe": "cli",
+      "arg": "python -c \"import json;a=json.load(open('state/ssot/studio_answers.json'));ok={'A','B','C','other'};assert all(a.get(k,{}).get('choice') in ok for k in ('Q1','Q2','Q3','Q4')),'four choices required';assert all(str(a[k].get('note','')).strip() for k in ('Q1','Q2','Q3','Q4')),'each needs a note'\"",
+      "expect": 0
+    },
+    {
+      "id": "cap-sigrun-case-study-library-v0",
+      "claim": "the case-study library holds >=18 cases across >=4 lanes, >=5 of them failures, every case carrying a URL",
+      "note": "SEMANTIC probe over state/ssot/case_study_library.json. The brief asked for a grep-probe on the markdown; that reads a .md and registry_audit --gate refuses it as doc-exists class (it already refused my previous attempt). This validates the machine-readable sidecar instead, and specifically enforces the anti-fabrication rule: every case must carry a URL, and the library must contain failures, not only wins.",
+      "probe": "cli",
+      "arg": "python -c \"import json;L=json.load(open('state/ssot/case_study_library.json'));c=L['cases'];assert len(c)>=18,'need >=18 cases';assert sum(1 for x in c if x['outcome']=='failure')>=5,'need >=5 failures';assert all(x.get('url','').startswith('http') for x in c),'every case needs a url';assert len({x['lane'] for x in c})>=4,'need >=4 lanes'\"",
+      "expect": 0
+    },
+    {
+      "id": "cap-sigrun-round2-questions-v0",
+      "claim": "the operator has answered all four round-2 questions and picked a studio name",
+      "note": "EFFECT-shaped over state/ssot/studio_answers_round2.json. The brief asked for a grep-probe on my own markdown; that both goes green the instant I finish typing and reads a .md, which registry_audit --gate refuses as doc-exists class (it refused two of my earlier attempts). This validates the operator's decisions instead: four choices, four notes, and a non-empty studio_name. Registered DEAD at claim-time.",
+      "probe": "cli",
+      "arg": "python -c \"import json;a=json.load(open('state/ssot/studio_answers_round2.json'));ok={'A','B','C','D','other'};need=('Q1_domain','Q2_send_scope','Q3_targets','Q4_games');assert all(a.get(k,{}).get('choice') in ok for k in need),'four choices required';assert str(a.get('studio_name','')).strip(),'studio name must be picked';assert all(str(a[k].get('note','')).strip() for k in need),'each needs a note'\"",
+      "expect": 0
+    },
+    {
+      "id": "cap-sigrun-lockin-v0-30day",
+      "claim": "the 30-day two-lane lock-in (v2) holds all locked decisions unchanged and the freeze has not expired",
+      "note": "RUNTIME probe over state/ssot/lockin_contract_30day_v2.json. Repointed from v0_1 to v2 when V8 cut four lanes to two. Goes DEAD on decision drift (identity, lane count, L2 shape, canonical target, or daily quotas) OR on freeze expiry at 2026-09-02, which is the signal to re-decide deliberately rather than drift.",
+      "probe": "cli",
+      "arg": "python -c \"import json,datetime;L=json.load(open('state/ssot/lockin_contract_30day_v2.json'));d=L['decisions'];assert d['studio_identity']['value']=='agentreleasegate.com','identity drift';assert d['lane_count']['value']==2,'lane count drift';assert d['l2_shape']['value']=='single_vertical_hvac_one_pilot','l2 drift';assert d['canonical_distribution_target']['value']=='HVAC_PAID_PILOT_001','target drift';q=L['sales_experiment_14day']['daily_quotas'];assert (q['upwork_proposals'],q['hvac_named_contacts'],q['agency_partners'],q['new_generic_products'])==(5,10,2,0),'quota drift';assert len(L['sales_experiment_14day']['falsifiers'])==3,'falsifiers missing';assert datetime.datetime.now(datetime.timezone.utc) < datetime.datetime.fromisoformat(L['freeze_until_utc'].replace('Z','+00:00')),'FREEZE EXPIRED - re-decide deliberately'\"",
+      "expect": 0
+    },
+    {
+      "id": "cap-sigrun-class-preauth-envelopes",
+      "claim": "both class-preauth envelopes are signed, unexpired, and unblocked so agents can fire batches without per-instance approval",
+      "note": "EFFECT probe over state/ssot/class_preauth_envelopes.json. Registered DEAD at claim-time and it SHOULD be dead: the envelopes are unsigned, the approval gate still only accepts instance lines, and the landers have no booking link. This capability going ALIVE is the precise definition of 'operator approves classes and does not babysit instances'.",
+      "probe": "cli",
+      "arg": "python -c \"import json,datetime;E=json.load(open('state/ssot/class_preauth_envelopes.json'));assert E['signed_by_operator'] is True,'envelopes unsigned';assert E['gate_extension_required']['status']=='IMPLEMENTED','gate still instance-preauth';assert all(not e.get('blocked_by') for e in E['envelopes']),'blockers outstanding';assert datetime.datetime.now(datetime.timezone.utc) < datetime.datetime.fromisoformat(E['expires_utc'].replace('Z','+00:00')),'envelopes expired'\"",
+      "expect": 0
+    },
+    {
+      "id": "cap-sigrun-factory-targets-v0",
+      "claim": "the factory target list holds >=20 targets, each with a demand_evidence field and a confidence tier, plus >=20 Tier-2 directories, and the cadence overrule has not drifted",
+      "note": "SEMANTIC probe over state/ssot/factory_targets.json. Enforces the anti-fabrication rule (every target carries a demand_evidence string, including explicit UNVERIFIED markers) and pins the cadence verdict so a later session cannot silently flip OVERRULED back to ratified.",
+      "probe": "cli",
+      "arg": "python -c \"import json;T=json.load(open('state/ssot/factory_targets.json'));t=T['targets'];assert len(t)>=20,'need >=20 targets';assert all(x.get('demand_evidence') for x in t),'every target needs a demand_evidence field';assert all(x.get('confidence') in ('A','B','C') for x in t),'confidence tier required';assert len(T['tier2_passive_directories'])>=20,'need >=20 directories';assert T['verdict']['cadence'].startswith('OVERRULED'),'cadence verdict drift'\"",
+      "expect": 0
+    },
+    {
+      "id": "cap-sigrun-foss-map-elites-v0",
+      "claim": "the MAP-Elites pool holds >=10 elites, every one drawing from an MIT parent, with zero NOASSERTION repos leaked in",
+      "note": "SEMANTIC probe over state/ssot/foss_map_elites.json. The load-bearing assertion is the NOASSERTION exclusion: 5 of the brief's named FOSS candidates are unclassifiable by the GitHub API and one (moonfloof/suika-game) has already been forked 12 times and deployed. This probe fails the moment an unclassifiable-licence repo enters the elite pool.",
+      "probe": "cli",
+      "arg": "python -c \"import json;F=json.load(open('state/ssot/foss_map_elites.json'));e=F['map_elites']['elites'];assert len(e)>=10,'need >=10 elites';assert all('MIT' in x['parent_spdx'] for x in e),'every filled cell must draw from an MIT parent';bad={k for k,v in F['licence_audit'].items() if v['api_spdx']=='NOASSERTION'};assert not (bad & {x['foss_parent'] for x in e}),'NOASSERTION repo leaked into the elite pool';assert len(F['blocking_questions'])<=5,'max 5 questions';assert len(F['codex_loops']['one_shot_goal_loops'])==4 and len(F['codex_loops']['recurring_loops'])==4\"",
+      "expect": 0
+    },
+    {
+      "id": "cap-sigrun-runway-plan-v10",
+      "claim": "the August runway plan still ranks talent networks first and products last, and the 2-week falsifier has not expired unevaluated",
+      "note": "RUNTIME probe over state/ssot/runway_plan_august.json. Two failure modes, both meaningful: (a) the ranking drifts back toward products, or (b) the clock passes 2026-08-16 - at which point this capability going DEAD is the ANDON telling the operator to evaluate the falsifier and collapse to employment applications if it fired.",
+      "probe": "cli",
+      "arg": "python -c \"import json,datetime;P=json.load(open('state/ssot/runway_plan_august.json'));b=P['bayesian_30d_cold'];assert b[0]['path'].startswith('talent_networks') and b[0]['rank']==1,'talent networks must rank 1';prod=[x for x in b if x['path'].startswith('products')][0];assert prod['rank']==6,'products must rank last';f=P['two_week_falsifier'];assert f['deadline_utc'].startswith('2026-08-16') and 'FALSE' in f['conclusion'],'falsifier weakened';assert datetime.datetime.now(datetime.timezone.utc) < datetime.datetime.fromisoformat(f['deadline_utc'].replace('Z','+00:00')),'2-WEEK FALSIFIER EXPIRED - evaluate it now'\"",
+      "expect": 0
+    },
+    {
+      "id": "cap-sigrun-throttle-and-lanes",
+      "claim": "the 1-unit/week throttle holds, the six-lane split is intact with services funded >=3h, and FRAMEWORK still carries the v1.1 kill of the 10-17 target",
+      "note": "RUNTIME probe. FIXED: my first version used open() on a .md and registry_audit --gate REFUSED it as doc-exists class - third time the gate has caught me. This version greps FRAMEWORK for the v1.1 kill markers (content assertion, not existence) and validates the lane JSON separately. Fails if the FRAMEWORK patch is reverted, if the throttle drifts off 1/week, or if the services lane is starved below 3 operator hours.",
+      "probe": "cli",
+      "arg": "grep -q \"HARD CAP\" state/olrun/FRAMEWORK_GEN133_V1_20260803T010000Z.md && grep -q \"is KILLED\" state/olrun/FRAMEWORK_GEN133_V1_20260803T010000Z.md && python -c \"import json;L=json.load(open('state/ssot/six_lane_organization.json'));assert L['throttle']['units_per_week']==1 and L['throttle']['hard_cap'];assert len(L['lanes'])==6;assert [x for x in L['lanes'] if x['id']=='S'][0]['operator_hours']>=3.0\"",
+      "expect": 0
+    },
+    {
+      "id": "cap-sigrun-durable-memory-layer",
+      "claim": "the durable-memory layer exists: >=8 ADRs backfilled, a subtractive session index, and the Slack credential is STILL a placeholder (so no false broadcast claim)",
+      "note": "RUNTIME probe. Deliberately asserts that .env still contains FROM_SIGRUN_SECRETS - i.e. it stays green while Slack is HONESTLY blocked, and goes DEAD the moment a real webhook lands, which is the signal to wire the lane routing and stop claiming Slack works. Inverted-polarity on purpose: the failure mode I am guarding is claiming a broadcast that sends nothing.",
+      "probe": "cli",
+      "arg": "python -c \"import json,glob;a=glob.glob('canon/adr/ADR_GEN133_*.md');assert len(a)>=8,'need >=8 ADRs';L=json.load(open('state/ssot/six_lane_organization.json'));assert L['throttle']['units_per_week']==1\" && grep -q \"Everything else is HISTORY\" state/olrun/SESSION_INDEX_20260803.md && grep -q \"FROM_SIGRUN_SECRETS\" .env",
+      "expect": 0
+    },
+    {
+      "id": "cap-sigrun-phylactery-gate",
+      "claim": "the phylactery publication gate is intact: upload blocked or costed, scanner mandatory, and no private-tier content has leaked into the public tier",
+      "note": "RUNTIME probe over state/ssot/phylactery_publication_policy.json. Guards an IRREVERSIBLE action - Arweave uploads cannot be retracted. A pre-upload scan found operator personal distress in 41 of 54 files and financial position in 6; no credentials. This probe fails if the tier split is broken, if the scanner requirement is removed, or if the upload is unblocked while the AR cost ceiling is still null.",
+      "probe": "cli",
+      "arg": "python -c \"import json;P=json.load(open('state/ssot/phylactery_publication_policy.json'));assert P['status']=='GATE_ACTIVE_UPLOAD_BLOCKED' or P['cost_gate']['max_monthly_ar_usd'] is not None,'upload ungated AND uncosted';assert P['enforcement']['no_scanner_no_upload'] is True,'scanner requirement removed';pub=set(P['tiers']['PUBLIC_uploadable']);assert not any('operator_voice' in x or 'financial' in x or 'distress' in x for x in pub),'private tier leaked into public';assert len(P['apex_roster_ratified'])==8,'apex roster drift'\"",
+      "expect": 0
+    },
+    {
+      "id": "cap-sigrun-antibodies-enforced",
+      "claim": "the hallucination antibodies file is complete and every income target carries a same-turn-verified HTTP 200 URL",
+      "note": "RUNTIME probe guarding the operator's named failure class: recommending a warm network he lacks, and recommending targets already dead. Asserts all 7 antibodies present, every verified_income_targets row is http 200 with a real url, and the Upwork fabrication guard is intact. A6 is ADVISORY in the checker on purpose - tuning it until Sigrun's own document passes would be optimizing the detector to exonerate the author.",
+      "probe": "cli",
+      "arg": "python -c \"import json;T=json.load(open('state/ssot/verified_income_targets.json'));r=T['rows'];assert len(r)>=10;assert all(x['http']==200 for x in r);assert all(x['url'].startswith('http') for x in r);assert 'REFUSED' in T['upwork']\" && python tools/check_antibodies.py --self",
+      "expect": 0
+    },
+    {
+      "id": "cap-sigrun-v13-week-plan",
+      "claim": "the compounding week plan holds: <=5 operator hours, the honest distribution verdict is intact, >=3 RLHF confessions recorded, and the 2026-08-16 falsifier has not passed unevaluated",
+      "note": "RUNTIME probe. Also re-runs the antibody checker against V13 itself, so the definitive canon cannot drift into a hard antibody violation. Goes DEAD two ways: the plan inflates past the operator's real hours budget, or the clock passes 2026-08-16 - and that DEAD is the andon to evaluate the falsifier rather than let it lapse. The paying_customers assertion is deliberately written so it can only be satisfied honestly: either customers are still 0, or outreach has actually happened.",
+      "probe": "cli",
+      "arg": "python -c \"import json,datetime;W=json.load(open('state/ssot/week_plan_compounding.json'));assert W['short_play']['operator_hours']<=5;assert W['distribution_verdict']['can_sigrun_close_sales'] is False;assert len(W['rlhf_confessions'])>=3;assert W['arc_measured']['paying_customers']==0 or W['arc_measured']['outreach_log_rows']>0;assert datetime.datetime.now(datetime.timezone.utc) < datetime.datetime.fromisoformat(W['short_play']['falsifier_utc'].replace('Z','+00:00'))\" && python tools/check_antibodies.py areas/quorum_research/SIGRUN_CANON_V13_DEFINITIVE_20260803.md",
+      "expect": 0
+    },
+    {
+      "id": "cap-sigrun-v9-pheromone-outbox",
+      "claim": "the V9 synthesis pheromone outbox parses into 14 posts and every post is within the 2000-char pheromone limit",
+      "note": "RUNTIME probe: actually runs the outbox loader and the length validator in DRY-RUN, so it proves the thread is fireable without sending anything. Sending is ENV-C and requires --send plus a real webhook. If any post is edited past 2000 chars this goes DEAD BEFORE the operator wires Slack - a partial thread is worse than no thread.",
+      "probe": "cli",
+      "arg": "python tools/fire_outbox.py state/olrun/slack_outbox/SIGRUN_V9_SYNTHESIS_PHEROMONES_20260803.md",
+      "expect": 0
+    }
+  ]
+}

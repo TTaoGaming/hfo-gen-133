@@ -1,0 +1,23 @@
+model_list:
+  - model_name: huginn
+    litellm_params:
+      model: ollama/llama3.2:3b
+      api_base: http://127.0.0.1:11434
+  - model_name: surtr
+    litellm_params:
+      model: ollama/qwen3.5:9b
+      api_base: http://127.0.0.1:11434
+  - model_name: mesh-fallback-openrouter
+    litellm_params:
+      model: openrouter/mistralai/mistral-7b-instruct:free
+      api_key: os.environ/OPENROUTER_API_KEY
+  - model_name: nidhoggr-gemini-flash
+    litellm_params:
+      model: gemini/gemini-2.5-flash
+      api_key: os.environ/GOOGLE_API_KEY
+  - model_name: nidhoggr-gemini-pro
+    litellm_params:
+      model: gemini/gemini-2.5-pro
+      api_key: os.environ/GOOGLE_API_KEY
+general_settings:
+  master_key: local-only-no-external-access

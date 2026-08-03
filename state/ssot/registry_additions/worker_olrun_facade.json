@@ -1,0 +1,34 @@
+[
+  {
+    "id": "cap-olrun-facade-dispatcher",
+    "claim": "every .agents/skills/*/SKILL.md carries a machine-readable contract that PARSES and passes structural validation (required keys, allowed class_envelope values, forge-relative side_effects_write_paths)",
+    "note": "This is the runtime probe for the skill contracts themselves. Exit 0 only if ALL contracts validate; one bad envelope value or one absolute/'..' write path fails the census. Parsing works with or without pyyaml -- a minimal loader covers the restricted subset and both paths are normalized to identical output.",
+    "probe": "cli",
+    "arg": "python tools/olrun/dispatch_class.py validate",
+    "expect": 0
+  },
+  {
+    "id": "cap-olrun-envelope-gate",
+    "claim": "the class-preauthorization envelope gate refuses a SEND/PUBLISH/SPEND or requires_operator_sign or preauth:instance skill WITHOUT an operator signature, and executes the same skill WITH one",
+    "note": "Tested in BOTH directions against a tmp_path fixture whose runner leaves a filesystem marker -- so 'it was blocked' is proven by the ABSENT side effect, not by parsing stdout. A gate tested only in the refusing direction could be a gate that refuses everything.",
+    "probe": "cli",
+    "arg": "python -m pytest tools/tests/test_dispatch_class.py -q -p no:logfire -k gate",
+    "expect": 0
+  },
+  {
+    "id": "cap-olrun-relay-compressor",
+    "claim": "N result files are compressed into ONE synthesis under a hard 400-word budget, without crashing on missing or malformed sources",
+    "note": "Reads the live facade chain. Missing/malformed sources land under '## Unreadable sources' and the synthesis still ships.",
+    "probe": "cli",
+    "arg": "python tools/olrun/poll_and_relay.py poll --sources chains/OLRUN_FACADE.jsonl,state/ssot/NO_SUCH_FILE.json --out state/olrun/relay/probe_relay.md",
+    "expect": 0
+  },
+  {
+    "id": "cap-olrun-facade-chain-append-only",
+    "claim": "chains/OLRUN_FACADE.jsonl is written append-only with monotonic row_ids and a host-read clock; prior row bytes are never rewritten",
+    "note": "Asserts the on-disk bytes of row 1 are a strict prefix of the file after row 2 is appended, and that ts_utc matches an ISO8601Z shape produced at write time rather than a literal.",
+    "probe": "cli",
+    "arg": "python -m pytest tools/tests/test_dispatch_class.py -q -p no:logfire -k chain",
+    "expect": 0
+  }
+]

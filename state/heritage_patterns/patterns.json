@@ -1,0 +1,286 @@
+{
+  "schema_id": "hfo.gen133.heritage_patterns.v0_1",
+  "generated_utc": "2026-08-02T14:27:58Z",
+  "clock_source": "host_read",
+  "mined_from": [
+    "C:/Dev/hfo_gen_133_forge/state/stack_builder/STACK_BUILDER_20260802.md",
+    "C:/Dev/hfo_gen_133_forge/areas/quorum_research/SIGRUN_ROOT_CAUSE_LEAK_20260802.md",
+    "C:/Dev/hfo_gen_133_forge/HALLUCINATION_SPIRAL_ROOT_CAUSE_20260801.md",
+    "C:/Dev/hfo_gen_133_forge/HERITAGE_MIGRATION_PLAN_20260801.md",
+    "C:/Dev/hfo_gen_133_forge/state/operator_voice/OPERATOR_FRUSTRATION_20260801T2005Z.md",
+    "C:/Dev/hfo_gen_133_forge/capsules/tsukimogami/",
+    "C:/Dev/hfo_gen_133_forge/capsules/research/",
+    "C:/Dev/hfo_gen_133_forge/tools/central_memory.sqlite",
+    "C:/Dev/hfo_gen_133_forge/state/ssot/capability_registry.json",
+    "C:/Dev/hfo_gen_133_forge/chains/SIGRUN_P4.jsonl",
+    "C:/Dev/hfo_dev_2026_5_30/hfo_gen_130_forge/state/memory/sigrun_recall_gen130.sqlite",
+    "C:/Dev/hfo_dev_2026_5_30/hfo_gen_130_forge/state/memory/hfo_bitemporal_memory.sqlite",
+    "C:/Dev/hfo_dev_2026_5_30/hfo_gen_130_forge/state/ssot/andon_pulls.jsonl",
+    "C:/Dev/hfo_gen_131_forge/state/memory/",
+    "C:/Dev/hfo_dev_2026_3/omega_games/",
+    "https://demo01-handpiano.pages.dev (live HTTP probe)"
+  ],
+  "success": [
+    {
+      "name": "ONE_COMMAND_DEPLOY_TO_LIVE_URL_SHIPS",
+      "class": "success",
+      "gen_source": "gen-133",
+      "statement": "A spatial gesture-piano app built to a static dist/ was deployed with a single `wrangler pages deploy` and is live: demo01-handpiano.pages.dev returns HTTP 200, ~316KB, in under 200ms.",
+      "why": "The mechanism that made it ship where 5 other lanes (email, Upwork, LinkedIn, Bluesky, warm-network) did not: the deploy step required no operator authorization signature and no irreversible per-recipient action -- it is a pure engineering gap (missing wrangler.toml/command), not a safety gate. Lanes that stop at a genuine decision point (email KILL_SWITCH armed, signature null) stay stopped by design; the one lane whose wall was 'nobody wrote the command' is the one that shipped once someone wrote the command.",
+      "receipt_pointer": "capsules/tsukimogami/FACTORY_PIPELINE_STATUS_20260801.md#0.0-late-correction-the-first-unit-has-shipped",
+      "confidence": "high",
+      "applies_to_phenotypes": [
+        "games",
+        "indie_saas",
+        "all"
+      ],
+      "sigrun_approved": true,
+      "worker_note": "Re-verified live this session: curl https://demo01-handpiano.pages.dev -> http=200 bytes=315930 time=0.168s (worker B probe, 2026-08-02)."
+    },
+    {
+      "name": "GEN130_HYBRID_MEMORY_MCP_FTS5_VEC_REAL_AND_LOADED",
+      "class": "success",
+      "gen_source": "gen-130",
+      "statement": "gen-130 built a working hybrid-search memory system: SQLite FTS5 full-text index (8821 rows in docs/docs_fts) plus a companion sqlite-vec vector table, wired into .mcp.json and used in live tool calls.",
+      "why": "It combined two boring, well-understood SQLite extensions (FTS5 for lexical recall, sqlite-vec for semantic recall) instead of adopting a heavier vector-DB service; both are file-based, need no server, and survive a laptop reboot. The combination gave hybrid recall (exact term + semantic) without the Docker/Postgres dependency that killed several later attempts (see failure: DOCKER_DESKTOP_WSL2_ENGINE_REPEATED_DEAD_REDISCOVERY).",
+      "receipt_pointer": "C:/Dev/hfo_dev_2026_5_30/hfo_gen_130_forge/state/memory/sigrun_recall_gen130.sqlite",
+      "confidence": "high",
+      "applies_to_phenotypes": [
+        "all"
+      ],
+      "sigrun_approved": true,
+      "worker_note": "Verified live: `sqlite3 state/memory/sigrun_recall_gen130.sqlite 'select count(*) from docs'` -> 8821. Companion sigrun_recall_gen130.vec.sqlite exists with vec_docs/vec_docs_chunks tables (row count not re-counted this pass).",
+      "receipt_detail": "docs table = 8821 rows, docs_fts = 8821 rows, verified by direct sqlite3 query this session"
+    },
+    {
+      "name": "GEN130_BITEMPORAL_MEMORY_EVENTS_ALREADY_SHAPED_RIGHT",
+      "class": "success",
+      "gen_source": "gen-130",
+      "statement": "gen-130's hfo_bitemporal_memory.sqlite holds 4077 memory_events rows already carrying valid-time/transaction-time columns and an FTS index over them, plus a small stigmergy_edges table -- a genuinely bitemporal design, not a bolt-on.",
+      "why": "Building the valid_time/transaction_time split in from the start (rather than retrofitting it) meant later queries could distinguish 'what was true when' from 'what we believed when' without a schema migration. This is the same discipline the STACK_BUILDER_20260802 DBOS demo re-derived independently a generation later, suggesting the pattern is worth carrying forward as a schema template rather than re-inventing.",
+      "receipt_pointer": "C:/Dev/hfo_dev_2026_5_30/hfo_gen_130_forge/state/memory/hfo_bitemporal_memory.sqlite",
+      "confidence": "high",
+      "applies_to_phenotypes": [
+        "all"
+      ],
+      "sigrun_approved": true,
+      "worker_note": "Verified live this session; table also carries memory_events_fts (4077), memory_segments, and stigmergy_edges (3 rows).",
+      "receipt_detail": "memory_events table = 4077 rows, verified by direct sqlite3 query this session"
+    },
+    {
+      "name": "PRE_REGISTERED_FALSIFIER_CATCHES_ITS_OWN_AUTHOR",
+      "class": "success",
+      "gen_source": "gen-133",
+      "statement": "A capability census probe (tools/capability_census.py) was written to distinguish 'imported and run' from 'mentioned in prose'; four minutes after the author staged a supervision-tree workflow YAML, the census correctly flagged the resulting cap-supervision-tree flip DEAD->ALIVE as a false green (LEAK!, exit 1), because the probe tested whether the workflow had actually run (gh run list), not whether the file existed.",
+      "why": "The mechanism is propose/dispose split enforced by a machine, not a person: the author who wrote the claim was not the one who got to decide whether it was true. Because the acceptance test lived in an external, previously-committed script rather than in the same pass that made the claim, it caught the exact failure mode (prose-shaped acceptance test) the document that produced it was diagnosing -- a rare in-session self-correction with a receipt.",
+      "receipt_pointer": "areas/quorum_research/SIGRUN_ROOT_CAUSE_LEAK_20260802.md#02-toyota-5-why (section titled 'The census caught me, four minutes after I wrote it')",
+      "confidence": "high",
+      "applies_to_phenotypes": [
+        "all"
+      ],
+      "sigrun_approved": true
+    },
+    {
+      "name": "PREREGISTERED_DEAD_CAPABILITY_FLIPS_ALIVE_ON_REAL_WIRING",
+      "class": "success",
+      "gen_source": "gen-133",
+      "statement": "cap-crewai-runtime was pre-registered DEAD (probe: repo_grep for 'from crewai', 0 matches) as a deliberate falsifier before any adoption work began; a later session wrote tools/stack_builder/crewai_demo.py with a real `from crewai import` and an executed .kickoff() call, and the registry probe now matches, flipping the capability to ALIVE on the same criterion set in advance.",
+      "why": "Defining the falsifier before doing the work removes the chance for the adopting session to grade its own homework -- the bar (an actual import + a fired kickoff(), not a document saying 'adopted') was fixed while nobody had an incentive to weaken it yet. This is the adopt-before-reinvent discipline actually closing the loop, contrasted with LangGraph (see failure: FRAMEWORK_AS_COSTUME_ZERO_RUNTIME_IMPORTS) which was 'adopted' in prose repeatedly with the identical probe available and never wired.",
+      "receipt_pointer": "state/ssot/capability_registry.json",
+      "confidence": "high",
+      "applies_to_phenotypes": [
+        "all"
+      ],
+      "sigrun_approved": true,
+      "receipt_detail": "cap-crewai-runtime entry, probe: repo_grep, arg: 'from crewai') cross-checked against tools/stack_builder/crewai_demo.py (contains a real `from crewai import` line, confirmed present this session via grep"
+    },
+    {
+      "name": "RUNTIME_PROBE_OVER_PROSE_FOR_NEW_INFRA_ADOPTION",
+      "class": "success",
+      "gen_source": "gen-133",
+      "statement": "The stack_builder session stood up LiteLLM, Postgres+pgvector (via WSL Ubuntu, after Docker failed), and DBOS, and verified each with an executed probe script producing concrete output (e.g. probe_litellm.py returning RAW_RESPONSE='4' for 2+2, a real DBOS workflow_uuid row in Postgres) rather than a document asserting the stack was 'wired'.",
+      "why": "Requiring an executable probe per capability, checked into the registry, made the adoption falsifiable the same session it happened -- and it also surfaced a genuine environment defect (a hung probe_embed.py orphaning 5 stuck processes and silently hanging the census for a third of the session) that a prose-only adoption report would never have caught, because prose does not hang.",
+      "receipt_pointer": "state/stack_builder/STACK_BUILDER_20260802.md#2-runtime-probe-log",
+      "confidence": "high",
+      "applies_to_phenotypes": [
+        "all"
+      ],
+      "sigrun_approved": true,
+      "worker_note": "Re-ran tools/stack_builder/probe_litellm.py live this session: RAW_RESPONSE='4', PROBE_PASS=True, exit 0 -- still alive as of this pass."
+    },
+    {
+      "name": "OMEGA_GAMES_HERITAGE_LIBRARY_IS_A_REAL_REUSABLE_ASSET",
+      "class": "success",
+      "gen_source": "gen-98",
+      "statement": "The gen-98 omega_games library at C:/Dev/hfo_dev_2026_3/omega_games/ contains 56 separate game directories (asteroids, balloon_pop, breakout, brick_builder, etc.), a real body of shipped small-game code, not a claim about one.",
+      "why": "Because it is plain files on disk under one directory (not a database row, not a prose inventory), its existence and count are trivially verifiable by any future session with one `ls` -- the exact opposite failure mode from the 503-markdown-file corpus this generation's own root-cause research measured. It is heritage that survives re-derivation because it does not need to be re-derived, only pointed to.",
+      "receipt_pointer": "C:/Dev/hfo_dev_2026_3/omega_games/",
+      "confidence": "high",
+      "applies_to_phenotypes": [
+        "games"
+      ],
+      "sigrun_approved": true,
+      "receipt_detail": "56 subdirectories, counted this session via find -maxdepth 1 -type d"
+    }
+  ],
+  "failure": [
+    {
+      "name": "MIGRATION_DROPS_99_PERCENT_OF_MEMORY_CORPUS_SILENTLY",
+      "class": "failure",
+      "gen_source": "gen-131",
+      "failure_class": "L_SILENT_LOSSY_MIGRATION_NO_ROW_COUNT_GATE",
+      "statement": "When gen-130's 8821-row hybrid memory corpus was carried into gen-131, only 36 rows survived (99.6% loss); the migration left its own failure receipt behind (.sqlite.malformed.bak / .sqlite-journal.malformed.bak files) but no process compared the before/after row count, so the loss was not caught at migration time.",
+      "why": "The migration step had no acceptance test of the shape 'row count in >= row count out'; a malformed-DB fallback silently produced a near-empty table that still passed every schema check (the table existed, had the right columns, and could be queried without error) so nothing downstream distinguished '8821 rows migrated' from '36 rows migrated' until someone thought to run COUNT(*) against both databases side by side.",
+      "receipt_pointer": "C:/Dev/hfo_gen_131_forge/state/memory/sigrun_recall_gen130.sqlite",
+      "confidence": "high",
+      "applies_to_phenotypes": [
+        "all"
+      ],
+      "sigrun_approved": true,
+      "receipt_detail": "docs table = 36 rows, verified by direct sqlite3 query this session) vs C:/Dev/hfo_dev_2026_5_30/hfo_gen_130_forge/state/memory/sigrun_recall_gen130.sqlite (docs table = 8821 rows, same query, same session) -- plus C:/Dev/hfo_gen_131_forge/state/memory/sigrun_recall_gen130.sqlite.malformed.bak.20260710T175716Z on disk"
+    },
+    {
+      "name": "MEMORY_SYSTEM_DROPPED_ENTIRELY_ACROSS_A_GENERATION_BOUNDARY",
+      "class": "failure",
+      "gen_source": "gen-132",
+      "failure_class": "L_NEGATIVE_EVIDENCE_BLINDNESS",
+      "statement": "gen-132 has no state/memory/ directory at all -- not a degraded copy, an absent one -- and the operator's own account (OPERATOR_FRUSTRATION_20260801T2005Z.md) confirms he has asked the same context-setting question 'dozens of times' because every new session treats it as new.",
+      "why": "This is L_NEGATIVE_EVIDENCE_BLINDNESS (named in HALLUCINATION_SPIRAL_ROOT_CAUSE_20260801.md as hypothesis H_new): every monitoring surface in the forge is a positive-evidence surface that reads rows that exist; nothing asked 'did the memory directory that gen-131 had come forward into gen-132?' until a mining pass looked for it directly and found nothing. Between generations, capability regresses to zero and nothing alerts on the absence.",
+      "receipt_pointer": "state/stack_builder/STACK_BUILDER_20260802.md#6-heritage-memory-mining-report (row: 'gen-132 | ABANDONED | no state/memory/ directory exists at all')",
+      "confidence": "medium",
+      "applies_to_phenotypes": [
+        "all"
+      ],
+      "sigrun_approved": false,
+      "worker_note": "This worker did not independently re-open a gen-132 forge checkout to re-verify the empty directory claim first-hand -- it is carried from the prior stack_builder session's mining report, one hop removed. sigrun_approved left false for that reason."
+    },
+    {
+      "name": "DATABASE_BUILT_WITH_CORRECT_SCHEMA_THEN_ITS_ONLY_WRITER_NEVER_CALLED",
+      "class": "failure",
+      "gen_source": "gen-133",
+      "failure_class": "ROSTER_REGISTRATION_WITHOUT_ACTIVATION",
+      "statement": "tools/central_memory.sqlite has a correct 8-table schema (hfo_chain_row, hfo_apex, hfo_valkyrie, hfo_capability, hfo_failure_class, hfo_generation, hfo_artifact) and is populated with 8 apexes, 11 valkyries, 19 failure classes -- but hfo_chain_row sits at 0 rows while the actual chain file (chains/SIGRUN_P4.jsonl) holds 88 rows, because the only script that writes to that table (tools/central_memory/append_receipt_row.py) is never called by anything.",
+      "why": "This reuses the pre-existing gen-130 failure class ROSTER_REGISTRATION_WITHOUT_ACTIVATION (registered 2026-07-31 per HALLUCINATION_SPIRAL_ROOT_CAUSE_20260801.md E5: 'an institution grows its registry of named capabilities far faster than its set of activated ones'), because it is the same mechanism: building the machinery satisfies the felt sense of progress, and nothing forces the machinery to be wired into the path that would actually use it. Registering a failure class did not prevent this instance either -- the class was named 24 hours before this exact defect was re-observed in a different subsystem.",
+      "receipt_pointer": "tools/central_memory.sqlite",
+      "confidence": "high",
+      "applies_to_phenotypes": [
+        "all"
+      ],
+      "sigrun_approved": true,
+      "receipt_detail": "hfo_chain_row = 0 rows, verified by direct sqlite3 query this session) vs chains/SIGRUN_P4.jsonl (88 lines, verified by wc -l this session); zero callers of append_receipt_row found by repo-wide grep this session"
+    },
+    {
+      "name": "FRAMEWORK_AS_COSTUME_ZERO_RUNTIME_IMPORTS",
+      "class": "failure",
+      "gen_source": "gen-133",
+      "failure_class": "FRAMEWORK_AS_COSTUME",
+      "statement": "LangGraph was named as adopted in multiple prose documents across this generation, but a repo-wide grep for `from langgraph` and `import langgraph` returns 0 files, and there are 0 `.invoke(`/`.stream(` calls anywhere -- it was never imported, let alone run as a graph, despite being discussed as though it were live infrastructure.",
+      "why": "The acceptance test for 'we adopted LangGraph' was a document asserting adoption, and the same agent that wrote the adoption claim was the one satisfying it, in the same pass -- no external probe existed to contradict a confident sentence. This is worse than the commonly-imagined failure mode ('imported but not exercised'): the adoption never touched code at all, which is only visible because a probe was finally run against the actual filesystem instead of against the corpus of claims about the filesystem.",
+      "receipt_pointer": "areas/quorum_research/SIGRUN_ROOT_CAUSE_LEAK_20260802.md#01-measurement-before-reasoning (row: '.py files importing langgraph | 0. Not imported but never run as a graph -- never imported')",
+      "confidence": "high",
+      "applies_to_phenotypes": [
+        "all"
+      ],
+      "sigrun_approved": true
+    },
+    {
+      "name": "DOCKER_DESKTOP_WSL2_ENGINE_REPEATED_DEAD_REDISCOVERY",
+      "class": "failure",
+      "gen_source": "gen-133",
+      "failure_class": "L_ENVIRONMENT_BLOCKER_NOT_PERSISTED_ACROSS_SESSIONS",
+      "statement": "Docker Desktop's WSL2 engine failed to come up on this host in two separate, independent sessions (the XTDB install attempt, and the later Postgres/DBOS stack-builder session) -- both times the dockerDesktopLinuxEngine named pipe existed but nothing answered behind it, and both times roughly 15 minutes were spent rediscovering the same dead end before pivoting away from Docker.",
+      "why": "Neither session left a durable, machine-readable record ('Docker is DEAD on this host as of <timestamp>, do not re-attempt without diagnosing X') that the next session could check before repeating the same probe sequence -- the finding lived only in prose (INSTALL_ATTEMPT.md), which the next session either did not read or read and re-verified anyway rather than trusting. A registered capability with a persisted DEAD status (as the capability_census pattern now does for other capabilities) would have made the second session's 15 minutes a single cheap lookup instead of a re-run experiment.",
+      "receipt_pointer": "tools/xtdb/INSTALL_ATTEMPT.md",
+      "confidence": "high",
+      "applies_to_phenotypes": [
+        "all"
+      ],
+      "sigrun_approved": true,
+      "receipt_detail": "first occurrence) and state/stack_builder/STACK_BUILDER_20260802.md#1-install-log row 'Docker Desktop engine (attempt 2, diagnostic) ... Matches tools/xtdb/INSTALL_ATTEMPT.md's prior-session finding exactly (15 min, never came up)'"
+    },
+    {
+      "name": "ANDON_ESCALATION_PATH_SEVERED_BY_ITS_OWN_HARDENING_PASS",
+      "class": "failure",
+      "gen_source": "gen-130",
+      "failure_class": "L_ENFORCEMENT_WITHOUT_ABSENCE_MONITOR",
+      "statement": "state/ssot/andon_pulls.jsonl -- the one file an hourly loop is supposed to append to when it detects a CRITICAL health state -- is set read-only (mode -r--r--r--) by a kernel_guard hardening pass, so even a perfectly-compliant agent that correctly detects CRITICAL cannot pull the andon cord; the escalation channel was never exercised end-to-end after the hardening landed.",
+      "why": "The kernel_guard pass correctly enforced a security property (no unexpected writes) but nothing monitored the resulting inability to write to the one file whose entire purpose is emergency writes -- an enforcement action with no accompanying check that the thing it protects can still do its job. This is the same class as several other findings here: a control was added, and its side effect on a downstream dependency went unobserved because absence-of-writes looks identical to absence-of-emergencies from every monitoring surface that exists.",
+      "receipt_pointer": "C:/Dev/hfo_dev_2026_5_30/hfo_gen_130_forge/state/ssot/andon_pulls.jsonl",
+      "confidence": "high",
+      "applies_to_phenotypes": [
+        "all"
+      ],
+      "sigrun_approved": true,
+      "receipt_detail": "mode -r--r--r--, size 21808 bytes, mtime Jul 31 17:34, verified by ls -la this session"
+    },
+    {
+      "name": "WRITER_READER_ASYMMETRY_PRODUCTION_UNPRICED_CONSUMPTION",
+      "class": "failure",
+      "gen_source": "gen-133",
+      "failure_class": "L_WRITER_READER_ASYMMETRY",
+      "statement": "The forge holds roughly 503 markdown files to 36 Python files (a ~14:1 ratio, excluding vendored code) and 56 contracts against 0 automated verifiers -- every session is rewarded for producing a new document, and nothing consumes or retires old ones, so the prose corpus grows while its aggregate truth-value falls.",
+      "why": "Producing a plausible, well-formatted markdown report is cheap for an LLM session and reads as completed work; consuming and cross-checking 500+ prior documents against current reality is expensive and nothing incentivizes or automates it. The asymmetry means the corpus's claim-density grows roughly linearly with session count while its verification stays flat, so the ratio of unverified-claims-read-as-fact keeps climbing even if the per-claim error rate never changes.",
+      "receipt_pointer": "areas/quorum_research/SIGRUN_ROOT_CAUSE_LEAK_20260802.md#01-measurement-before-reasoning (rows: '.md files vs .py (excluding vendored tools/adopt) | 503 : 36 -- a 14:1 ratio' and '56 contracts, 0 tests')",
+      "confidence": "high",
+      "applies_to_phenotypes": [
+        "all"
+      ],
+      "sigrun_approved": true
+    }
+  ],
+  "hallucination": [
+    {
+      "name": "ZERO_SHIPPED_UNITS_CLAIMED_WHILE_ONE_WAS_ALREADY_LIVE",
+      "class": "hallucination",
+      "gen_source": "gen-133",
+      "statement": "A capsule's own \u00a75 stated 'ZERO shipped units across all six phenotypes' as a verdict -- and then, twelve sections later in the same document, the author ran one more probe (curl against the URL sitting in the chain tail) and found demo01-handpiano.pages.dev already live at HTTP 200, overturning the absence claim it had just asserted.",
+      "why": "The 'zero' claim was built by checking known lanes for producer/consumer/deploy-path presence and generalizing from what was found in the two branches actually read to a claim about all six phenotypes -- an absence-of-evidence-as-evidence-of-absence error. The author's own honest-flaw note calls this 'the third time in one session I reported an absence that was a retrieval failure' -- the demonstrable-false part is not hypothetical, it is the document's own self-correction, visible side by side with the original claim.",
+      "receipt_pointer": "capsules/tsukimogami/FACTORY_PIPELINE_STATUS_20260801.md#0.0-late-correction-the-first-unit-has-shipped (compare \u00a75 'ZERO shipped units across all six phenotypes' against the \u00a70.0 correction table row for that same claim, and the live curl output above it)",
+      "confidence": "high",
+      "applies_to_phenotypes": [
+        "all"
+      ],
+      "sigrun_approved": true
+    },
+    {
+      "name": "LAPTOP_SLEEP_CAUSAL_CLAIM_FROM_TRAINING_PRIOR_NOT_PROBE",
+      "class": "hallucination",
+      "gen_source": "gen-133",
+      "statement": "An agent observed 17-20 hour gaps in scheduled-task lastRunAt timestamps (a real, correctly-observed fact) and then asserted the cause in the same breath: 'Windows Task Scheduler doesn't fire while the machine sleeps' -- a claim sourced from training-era general knowledge, not from any probe of this machine's actual power state or scheduler config. The operator, who runs the laptop 24/7, falsified it in one sentence.",
+      "why": "The observation (gap exists) and the cause (why it exists) were emitted in the same register with the same confidence, and nothing in the pipeline typed them differently -- there was no schema field distinguishing 'probe-verified fact' from 'plausible causal inference,' so the second rode on the first's credibility. This is the exact mechanism HALLUCINATION_SPIRAL_ROOT_CAUSE_20260801.md's \u00a75 proposes gating: a row asserting a cause must carry a probe_ref or be typed evidence_grade:A and rendered as hypothesis, never as root_cause.",
+      "receipt_pointer": "HALLUCINATION_SPIRAL_ROOT_CAUSE_20260801.md#e8--operator-ground-truth-contradicted-an-unprobed-causal-claim-o",
+      "confidence": "high",
+      "applies_to_phenotypes": [
+        "all"
+      ],
+      "sigrun_approved": true
+    },
+    {
+      "name": "REWRITE_DEPLOYED_SUCCESSFULLY_CLAIM_WITH_ZERO_BYTES_EVER_WRITTEN",
+      "class": "hallucination",
+      "gen_source": "gen-133",
+      "statement": "A session reported that the 2026-07-31 rewrite of three hourly SKILL.md loops (olrun-cop-hourly, sigrun-apex-opus5-hourly, valkyrie-pack-sonnet5-hourly) was deployed successfully. A direct disk probe (`find` for each loop's mandated output file across both forges) found that all three output files do not exist anywhere -- zero bytes have ever been written by any of the three loops, despite each being registered, described, documented, audited, and rewritten.",
+      "why": "The claim 'deployed successfully' had no probe_ref attached -- it asserted an effect (rows being written on a schedule) without checking for the artifact that effect would produce. This is the same untyped-causal-claim mechanism as the laptop-sleep hallucination, applied to a completion claim instead of a causal one: 'status: deployed' should require the same evidentiary bar as 'root_cause: X', and in this instance it did not get one until an agent ran `find` against the actual filesystem.",
+      "receipt_pointer": "HALLUCINATION_SPIRAL_ROOT_CAUSE_20260801.md#e1--the-three-fixed-hourly-loops-have-never-produced-a-single-row-d",
+      "confidence": "high",
+      "applies_to_phenotypes": [
+        "all"
+      ],
+      "sigrun_approved": true
+    },
+    {
+      "name": "SUPERVISION_TREE_FLIPPED_ALIVE_BY_STAGING_A_FILE_NOT_RUNNING_IT",
+      "class": "hallucination",
+      "gen_source": "gen-133",
+      "statement": "Staging (git add, not even committing/pushing) a .github/workflows/capability-census.yml file was enough to flip the cap-supervision-tree registry probe from DEAD to ALIVE, because the probe's original implementation only checked whether the YAML file existed on disk -- not whether the workflow it described had ever actually run.",
+      "why": "This is the precise defect the surrounding document was written to diagnose (prose-shaped / existence-shaped acceptance tests), reproduced by its own author inside the same session that named the defect -- a controlled demonstration that 'a file exists that describes capability X' and 'capability X is live' are trivially conflatable even by someone actively watching for the conflation. It is included as a hallucination-class pattern (not filed under failure) because the false-positive was a claim about system state (supervision tree = ALIVE) that briefly entered the registry as fact before being caught.",
+      "receipt_pointer": "areas/quorum_research/SIGRUN_ROOT_CAUSE_LEAK_20260802.md#02-toyota-5-why (paragraph beginning 'I staged .github/workflows/capability-census.yml, and cap-supervision-tree flipped DEAD to ALIVE')",
+      "confidence": "high",
+      "applies_to_phenotypes": [
+        "all"
+      ],
+      "sigrun_approved": true
+    }
+  ],
+  "lead_normalization_note": "LEAD (opus-5) normalization 2026-08-02: worker B wrote prose annotations INTO receipt_pointer, which made 8/18 pointers fail machine resolution even though every underlying path existed. Split into receipt_pointer (checkable path) + receipt_detail (the annotation). No evidence was discarded and no pattern was removed. Recorded because this is the corpus's own documented failure mode -- prose contaminating a field that a program has to read -- recurring inside the artifact that documents it."
+}

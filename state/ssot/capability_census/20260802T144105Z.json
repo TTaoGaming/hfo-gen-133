@@ -1,0 +1,280 @@
+{
+  "ts_utc": "20260802T144105Z",
+  "clock_source": "host_read",
+  "compared_against": "20260802T143601Z.json",
+  "alive": 21,
+  "dead": 9,
+  "leaked": 0,
+  "capabilities": [
+    {
+      "id": "cap-langgraph-runtime",
+      "claim": "LangGraph adopted as the agent harness",
+      "probe": "repo_grep(from langgraph)",
+      "status": "ALIVE",
+      "observed": "2 file(s) match",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-crewai-runtime",
+      "claim": "CrewAI adopted as the agent harness",
+      "probe": "repo_grep(from crewai)",
+      "status": "ALIVE",
+      "observed": "2 file(s) match",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-chain-mirrored-to-db",
+      "claim": "chain rows are mirrored into central_memory for query",
+      "probe": "sqlite_rows(tools/central_memory.sqlite:hfo_chain_row)",
+      "status": "DEAD",
+      "observed": "0 rows",
+      "previous": "DEAD",
+      "leaked": false
+    },
+    {
+      "id": "cap-capability-ledger",
+      "claim": "the capability ledger tracks more than one capability",
+      "probe": "sqlite_rows(tools/central_memory.sqlite:hfo_capability)",
+      "status": "DEAD",
+      "observed": "1 rows",
+      "previous": "DEAD",
+      "leaked": false
+    },
+    {
+      "id": "cap-contract-verifiers",
+      "claim": "contracts in contracts/ have runnable verifiers",
+      "probe": "glob_min(tools/tests/*.py)",
+      "status": "DEAD",
+      "observed": "0 match(es)",
+      "previous": "DEAD",
+      "leaked": false
+    },
+    {
+      "id": "cap-supervision-tree",
+      "claim": "something automatically detects a dead capability, on a clock, without a human",
+      "probe": "cli(gh run list --workflow=capability-census.yml --repo TTaoGaming/hfo-gen-133 --limit 1 --json databaseId --jq length | grep -qv '^0$')",
+      "status": "DEAD",
+      "observed": "exit=1",
+      "previous": "DEAD",
+      "leaked": false
+    },
+    {
+      "id": "cap-queue-consumer",
+      "claim": "the task queue is consumed, not just deposited into",
+      "probe": "jsonl_rows(state/ssot/task_results.jsonl)",
+      "status": "DEAD",
+      "observed": "0 rows",
+      "previous": "DEAD",
+      "leaked": false
+    },
+    {
+      "id": "cap-outreach-instrument",
+      "claim": "outreach is logged to a queryable instrument",
+      "probe": "jsonl_rows(state/ssot/outreach_log.jsonl)",
+      "status": "DEAD",
+      "observed": "FileNotFoundError: [Errno 2] No such file or directory: 'C:\\\\Dev\\\\hfo_gen_133_forge\\\\state\\\\ssot\\\\outreach_log.jsonl'",
+      "previous": "DEAD",
+      "leaked": false
+    },
+    {
+      "id": "cap-deploy-live",
+      "claim": "a spatial demo is deployed and reachable",
+      "probe": "http(https://demo01-handpiano.pages.dev)",
+      "status": "ALIVE",
+      "observed": "http=200",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-sigrun-chain",
+      "claim": "the Sigrun chain is appendable and hash-linked",
+      "probe": "jsonl_rows(chains/SIGRUN_P4.jsonl)",
+      "status": "ALIVE",
+      "observed": "89 rows",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-chain-verifier",
+      "claim": "chain integrity is checkable by a running program",
+      "probe": "glob_min(tools/verify_chain.py)",
+      "status": "ALIVE",
+      "observed": "1 match(es)",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-aider-code-lane",
+      "claim": "Aider is available as the code lane",
+      "probe": "py_import(aider)",
+      "status": "ALIVE",
+      "observed": "importable",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-github-authed",
+      "claim": "GitHub CLI is authenticated for repo + issue operations",
+      "probe": "cli(gh auth status)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-strange-loop-manual",
+      "claim": "crew(N+1) is dispatched citing crew(N)'s pointer, forming a run of >=3 linked iterations",
+      "probe": "cli(python tools/verify_strange_loop.py manual)",
+      "status": "DEAD",
+      "observed": "exit=1",
+      "previous": "DEAD",
+      "leaked": false
+    },
+    {
+      "id": "cap-strange-loop-stigmergic",
+      "claim": "a dispatch self-orients from substrate pheromones with no operator hand-crafting its input",
+      "probe": "cli(python tools/verify_strange_loop.py stigmergic)",
+      "status": "DEAD",
+      "observed": "exit=1",
+      "previous": "DEAD",
+      "leaked": false
+    },
+    {
+      "id": "cap-apex-composition",
+      "claim": "an apex dispatch aggregates and cites >=2 sub-crew outputs by pointer",
+      "probe": "cli(python tools/verify_strange_loop.py composition)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "DEAD",
+      "leaked": false
+    },
+    {
+      "id": "cap-emergency-forge-pattern-compliance",
+      "claim": "every EMERGENCY_FORGE dispatch carries >=3 industry-pattern anchors and a pre-registered external-fitness test",
+      "probe": "cli(python tools/verify_forge_dispatch.py)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-spend-gate",
+      "claim": "a spend gate refuses runs above a cost ceiling",
+      "probe": "repo_grep(MAX_RUN_COST_USD)",
+      "status": "ALIVE",
+      "observed": "1 file(s) match",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-litellm-completion",
+      "claim": "litellm.completion returns a real token from a local model, not a mock",
+      "probe": "cli(python tools/stack_builder/probe_litellm.py)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-postgres-durable-scratchpad",
+      "claim": "Postgres holds a durable olrun_scratchpad table with rows written in the last 24h",
+      "probe": "cli(python tools/stack_builder/check_scratchpad_alive.py)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-dbos-workflow-execution",
+      "claim": "a DBOS workflow actually executed and checkpointed SUCCESS into Postgres dbos.workflow_status",
+      "probe": "cli(python tools/stack_builder/check_dbos_alive.py)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-pgvector-semantic-recall",
+      "claim": "a fresh process can rehydrate Olrun's scratchpad by pgvector cosine similarity, no shared context",
+      "probe": "cli(python tools/stack_builder/probe_pgvector_recall.py)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-sentence-transformers-embed",
+      "claim": "sentence-transformers embeds a string and computes cosine similarity locally",
+      "probe": "cli(powershell -NoProfile -Command \"$p = Start-Process -FilePath python -ArgumentList 'tools/stack_builder/probe_embed.py' -PassThru -WindowStyle Hidden; if (-not $p.WaitForExit(15000)) { taskkill /PID $p.Id /T /F | Out-Null; exit 1 } else { exit $p.ExitCode }\")",
+      "status": "DEAD",
+      "observed": "exit=1",
+      "previous": "DEAD",
+      "leaked": false
+    },
+    {
+      "id": "cap-genotype-instantiable",
+      "claim": "tools/factory/genotype.py defines a GoF Abstract Factory whose concrete phenotype subclasses instantiate and return all four products",
+      "probe": "cli(python -c \"import tools.factory as F; from tools.factory.genotype import AbstractFactory; subs=AbstractFactory.__subclasses__(); assert subs; f=subs[0](); assert f.create_producer() and f.create_grader() and f.create_verifier() and f.create_memory_writer(); print('GENOTYPE_OK')\")",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-leads-phenotype",
+      "claim": "LeadsFactory phenotype emits real (cache-backed, offline-deterministic) lead records via kickoff()",
+      "probe": "cli(python tools/factory/phenotypes/leads.py --dry-run --count=5)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-games-phenotype",
+      "claim": "GamesFactory phenotype emits submission plans against the real staged itch.io manifests from GAMES_SHIP_20260802",
+      "probe": "cli(python tools/factory/phenotypes/games.py --dry-run --count=3)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-runtime-probe-executes",
+      "claim": "tools/factory/runtime_probe.py builds and INVOKES a real 2-node LangGraph graph (one node a genuine LiteLLM/Ollama call) and asserts on the returned output -- an execution probe, not an import probe",
+      "probe": "cli(python tools/factory/runtime_probe.py)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-bitemporal-memory",
+      "claim": "bitemporal memory rows (valid-time + transaction-time) can be written and queried as-of a point in time via pgvector, with corrections preserved as new rows rather than in-place UPDATEs",
+      "probe": "cli(python tools/memory/bitemporal.py --selftest)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-sigrun-curated-rehydration",
+      "claim": "rehydrate() returns ONLY sigrun_approved rows, provably excluding an unapproved row that would otherwise match semantically",
+      "probe": "cli(python tools/memory/bitemporal.py --probe-rehydration)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-heritage-pattern-corpus",
+      "claim": "mined heritage exists as a structured corpus whose receipt pointers resolve to real files",
+      "probe": "cli(python tests/held_out/probe_heritage_receipts.py)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    }
+  ]
+}

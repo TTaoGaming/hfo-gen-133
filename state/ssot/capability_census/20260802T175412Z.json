@@ -1,0 +1,524 @@
+{
+  "ts_utc": "20260802T175412Z",
+  "clock_source": "host_read",
+  "compared_against": "20260802T175137Z.json",
+  "strict_behavioral": false,
+  "alive": 43,
+  "dead": 14,
+  "leaked": 0,
+  "capabilities": [
+    {
+      "id": "cap-langgraph-runtime",
+      "claim": "LangGraph adopted as the agent harness",
+      "probe": "cli(python tools/cots_probes/langgraph_probe.py)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-crewai-runtime",
+      "claim": "CrewAI adopted as the agent harness",
+      "probe": "cli(python tools/cots_probes/crewai_probe.py)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-chain-mirrored-to-db",
+      "claim": "chain rows are mirrored into central_memory for query",
+      "probe": "cli(python -c \"import sqlite3,sys; con=sqlite3.connect('tools/central_memory.sqlite'); n=con.execute('select count(*) from hfo_chain_row').fetchone()[0]; sys.exit(0 if n>=1 else 1)\")",
+      "status": "DEAD",
+      "observed": "exit=1",
+      "previous": "DEAD",
+      "leaked": false
+    },
+    {
+      "id": "cap-capability-ledger",
+      "claim": "the capability ledger tracks more than one capability",
+      "probe": "cli(python -c \"import sqlite3,sys; con=sqlite3.connect('tools/central_memory.sqlite'); n=con.execute('select count(*) from hfo_capability').fetchone()[0]; sys.exit(0 if n>=5 else 1)\")",
+      "status": "DEAD",
+      "observed": "exit=1",
+      "previous": "DEAD",
+      "leaked": false
+    },
+    {
+      "id": "cap-contract-verifiers",
+      "claim": "contracts in contracts/ have runnable verifiers",
+      "probe": "cli(python -m pytest tools/tests -q -p no:logfire)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-supervision-tree",
+      "claim": "something automatically detects a dead capability, on a clock, without a human",
+      "probe": "cli(gh run list --workflow=capability-census.yml --repo TTaoGaming/hfo-gen-133 --limit 1 --json databaseId --jq length | grep -qv '^0$')",
+      "status": "DEAD",
+      "observed": "exit=1",
+      "previous": "DEAD",
+      "leaked": false
+    },
+    {
+      "id": "cap-queue-consumer",
+      "claim": "the task queue is consumed, not just deposited into",
+      "probe": "cli(python -c \"import sys; n=sum(1 for l in open('state/ssot/task_results.jsonl',encoding='utf-8') if l.strip()); sys.exit(0 if n>=1 else 1)\")",
+      "status": "DEAD",
+      "observed": "exit=1",
+      "previous": "DEAD",
+      "leaked": false
+    },
+    {
+      "id": "cap-outreach-instrument",
+      "claim": "outreach is logged to a queryable instrument",
+      "probe": "cli(python -c \"import sys; n=sum(1 for l in open('state/ssot/outreach_log.jsonl',encoding='utf-8') if l.strip()); sys.exit(0 if n>=1 else 1)\")",
+      "status": "DEAD",
+      "observed": "exit=1",
+      "previous": "DEAD",
+      "leaked": false
+    },
+    {
+      "id": "cap-deploy-live",
+      "claim": "a spatial demo is deployed and reachable",
+      "probe": "http(https://demo01-handpiano.pages.dev)",
+      "status": "ALIVE",
+      "observed": "http=200",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-sigrun-chain",
+      "claim": "the Sigrun chain is appendable and hash-linked",
+      "probe": "cli(python tools/verify_chain.py chains/SIGRUN_P4.jsonl --strict | python -c \"import sys,json; sys.exit(0 if json.load(sys.stdin).get('ok') else 1)\")",
+      "status": "DEAD",
+      "observed": "exit=1",
+      "previous": "DEAD",
+      "leaked": false
+    },
+    {
+      "id": "cap-chain-verifier",
+      "claim": "chain integrity is checkable by a running program",
+      "probe": "cli(python -c \"import subprocess,sys,json; r=subprocess.run([sys.executable,'tools/verify_chain.py','chains/SIGRUN_P4.jsonl','--strict'],capture_output=True,text=True); d=json.loads(r.stdout); sys.exit(0 if isinstance(d.get('break_count'), int) and 'ok' in d else 1)\")",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-aider-code-lane",
+      "claim": "Aider is available as the code lane",
+      "probe": "cli(python -m aider --version)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-chain-integrity-clean",
+      "claim": "the live gen-133 chain passes --strict verification end to end (ok:true)",
+      "probe": "cli(python -c \"import json,subprocess,sys,os; c='chains/GEN133_P0.jsonl' if os.access('chains/GEN133_P0.jsonl', os.R_OK) else 'chains/SIGRUN_P4.jsonl'; r=subprocess.run([sys.executable,'tools/verify_chain.py',c,'--strict'],capture_output=True,text=True); d=json.loads(r.stdout); sys.exit(0 if d.get('ok') else 1)\")",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-wsl-persistent",
+      "claim": "Postgres inside WSL2 (Ubuntu-24.04) answers a real query and is enabled to auto-start on distro boot",
+      "probe": "cli(python -c \"import subprocess,sys; r=subprocess.run(['wsl','-e','bash','-lc',\\\"sudo -n -u postgres psql -tAc 'select 1;'\\\"],capture_output=True,text=True,timeout=30); out=r.stdout.strip(); sys.exit(0 if (r.returncode==0 and out=='1') else 1)\")",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-github-authed",
+      "claim": "GitHub CLI is authenticated for repo + issue operations",
+      "probe": "cli(gh auth status)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-strange-loop-manual",
+      "claim": "crew(N+1) is dispatched citing crew(N)'s pointer, forming a run of >=3 linked iterations",
+      "probe": "cli(python tools/verify_strange_loop.py manual)",
+      "status": "DEAD",
+      "observed": "exit=1",
+      "previous": "DEAD",
+      "leaked": false
+    },
+    {
+      "id": "cap-strange-loop-stigmergic",
+      "claim": "a dispatch self-orients from substrate pheromones with no operator hand-crafting its input",
+      "probe": "cli(python tools/verify_strange_loop.py stigmergic)",
+      "status": "DEAD",
+      "observed": "exit=1",
+      "previous": "DEAD",
+      "leaked": false
+    },
+    {
+      "id": "cap-apex-composition",
+      "claim": "an apex dispatch aggregates and cites >=2 sub-crew outputs by pointer",
+      "probe": "cli(python tools/verify_strange_loop.py composition)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-emergency-forge-pattern-compliance",
+      "claim": "every EMERGENCY_FORGE dispatch carries >=3 industry-pattern anchors and a pre-registered external-fitness test",
+      "probe": "cli(python tools/verify_forge_dispatch.py)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-spend-gate",
+      "claim": "a spend gate refuses runs above a cost ceiling",
+      "probe": "cli(python -c \"import subprocess,sys; r=subprocess.run([sys.executable,'tools/factory/spend_gate.py','--cost','999','--max','1.0'],capture_output=True,text=True); out=(r.stdout+r.stderr); sys.exit(0 if (r.returncode==2 and 'REFUSED' in out and '999' in out) else 1)\")",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-litellm-completion",
+      "claim": "litellm.completion returns a real token from a local model, not a mock",
+      "probe": "cli(python tools/stack_builder/probe_litellm.py)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-postgres-durable-scratchpad",
+      "claim": "Postgres holds a durable olrun_scratchpad table with rows written in the last 24h",
+      "probe": "cli(python tools/stack_builder/check_scratchpad_alive.py)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-dbos-workflow-execution",
+      "claim": "a DBOS workflow actually executed and checkpointed SUCCESS into Postgres dbos.workflow_status",
+      "probe": "cli(python tools/stack_builder/check_dbos_alive.py)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-pgvector-semantic-recall",
+      "claim": "a fresh process can rehydrate Olrun's scratchpad by pgvector cosine similarity, no shared context",
+      "probe": "cli(python tools/stack_builder/probe_pgvector_recall.py)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-sentence-transformers-embed",
+      "claim": "sentence-transformers embeds a string and computes cosine similarity locally",
+      "probe": "cli(powershell -NoProfile -Command \"$p = Start-Process -FilePath python -ArgumentList 'tools/stack_builder/probe_embed.py' -PassThru -WindowStyle Hidden; if (-not $p.WaitForExit(15000)) { taskkill /PID $p.Id /T /F | Out-Null; exit 1 } else { exit $p.ExitCode }\")",
+      "status": "DEAD",
+      "observed": "exit=1",
+      "previous": "DEAD",
+      "leaked": false
+    },
+    {
+      "id": "cap-genotype-instantiable",
+      "claim": "tools/factory/genotype.py defines a GoF Abstract Factory whose concrete phenotype subclasses instantiate and return all four products",
+      "probe": "cli(python -c \"import tools.factory as F; from tools.factory.genotype import AbstractFactory; subs=AbstractFactory.__subclasses__(); assert subs; f=subs[0](); assert f.create_producer() and f.create_grader() and f.create_verifier() and f.create_memory_writer(); print('GENOTYPE_OK')\")",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-leads-phenotype",
+      "claim": "LeadsFactory phenotype emits real (cache-backed, offline-deterministic) lead records via kickoff()",
+      "probe": "cli(python tools/factory/phenotypes/leads.py --dry-run --count=5)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-games-phenotype",
+      "claim": "GamesFactory phenotype emits submission plans against the real staged itch.io manifests from GAMES_SHIP_20260802",
+      "probe": "cli(python tools/factory/phenotypes/games.py --dry-run --count=3)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-runtime-probe-executes",
+      "claim": "tools/factory/runtime_probe.py builds and INVOKES a real 2-node LangGraph graph (one node a genuine LiteLLM/Ollama call) and asserts on the returned output -- an execution probe, not an import probe",
+      "probe": "cli(python tools/factory/runtime_probe.py)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-bitemporal-memory",
+      "claim": "bitemporal memory rows (valid-time + transaction-time) can be written and queried as-of a point in time via pgvector, with corrections preserved as new rows rather than in-place UPDATEs",
+      "probe": "cli(python tools/memory/bitemporal.py --selftest)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-sigrun-curated-rehydration",
+      "claim": "rehydrate() returns ONLY sigrun_approved rows, provably excluding an unapproved row that would otherwise match semantically",
+      "probe": "cli(python tools/memory/bitemporal.py --probe-rehydration)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-heritage-pattern-corpus",
+      "claim": "mined heritage exists as a structured corpus whose receipt pointers resolve to real files",
+      "probe": "cli(python tests/held_out/probe_heritage_receipts.py)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-games-cloudflare-deployed",
+      "claim": "all 21 omega_games titles are deployed and reachable as one Cloudflare Pages site",
+      "probe": "http(https://hfo-games.pages.dev/)",
+      "status": "ALIVE",
+      "observed": "http=200",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-olrun-facade-skills",
+      "claim": "6 class-preauth SKILL.md define the Olrun facade interface",
+      "probe": "cli(python tools/olrun/dispatch_class.py validate)",
+      "status": "DEAD",
+      "observed": "exit=1",
+      "previous": "DEAD",
+      "leaked": false
+    },
+    {
+      "id": "cap-olrun-skill-validate",
+      "claim": "every SKILL.md parses and passes envelope validation",
+      "probe": "cli(python tools/olrun/dispatch_class.py validate)",
+      "status": "DEAD",
+      "observed": "exit=1",
+      "previous": "DEAD",
+      "leaked": false
+    },
+    {
+      "id": "cap-olrun-memory-harvest",
+      "claim": "gen-130 memory stores reachable read-only and indexed",
+      "probe": "cli(python tools/olrun/curate_memory.py health)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-olrun-quorum-families",
+      "claim": "at least one independent model family reachable for adversarial vote",
+      "probe": "cli(python tools/olrun/multi_family_vote.py families)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-olrun-envelope-gate-refuses",
+      "claim": "dispatcher REFUSES a VALID instance-preauth request without operator sign (exit 3)",
+      "probe": "cli(python -c \"import subprocess,sys; r=subprocess.run([sys.executable,'tools/olrun/dispatch_class.py','dispatch','--skill','olrun-pilot-pc-app','--input','{\\\"app_name\\\":\\\"Notepad\\\",\\\"task_description\\\":\\\"probe\\\"}'],capture_output=True); sys.exit(0 if r.returncode==3 else 1)\")",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-olrun-relay-preserves-reds",
+      "claim": "relay cannot drop a failed claim_status buried before the tail window",
+      "probe": "cli(python -m pytest tools/tests/test_relay_preserves_reds.py -q)",
+      "status": "DEAD",
+      "observed": "exit=1",
+      "previous": "DEAD",
+      "leaked": false
+    },
+    {
+      "id": "cap-olrun-facade-chain",
+      "claim": "facade chain carries receipted rows incl. honest failures",
+      "probe": "cli(python tools/verify_chain.py chains/OLRUN_FACADE.jsonl --strict | python -c \"import sys,json; sys.exit(0 if json.load(sys.stdin).get('ok') else 1)\")",
+      "status": "DEAD",
+      "observed": "exit=1",
+      "previous": "DEAD",
+      "leaked": false
+    },
+    {
+      "id": "cap-olrun-curated-capsules",
+      "claim": "curated memory capsules harvested from gen-130 with rehydration probes",
+      "probe": "cli(python tools/olrun/curate_memory.py health)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-olrun-facade-dispatcher",
+      "claim": "every .agents/skills/*/SKILL.md carries a machine-readable contract that PARSES and passes structural validation (required keys, allowed class_envelope values, forge-relative side_effects_write_paths)",
+      "probe": "cli(python tools/olrun/dispatch_class.py validate)",
+      "status": "DEAD",
+      "observed": "exit=1",
+      "previous": "DEAD",
+      "leaked": false
+    },
+    {
+      "id": "cap-olrun-envelope-gate",
+      "claim": "the class-preauthorization envelope gate refuses a SEND/PUBLISH/SPEND or requires_operator_sign or preauth:instance skill WITHOUT an operator signature, and executes the same skill WITH one",
+      "probe": "cli(python -m pytest tools/tests/test_dispatch_class.py -q -p no:logfire -k gate)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-olrun-relay-compressor",
+      "claim": "N result files are compressed into ONE synthesis under a hard 400-word budget, without crashing on missing or malformed sources",
+      "probe": "cli(python tools/olrun/poll_and_relay.py poll --sources chains/OLRUN_FACADE.jsonl,state/ssot/NO_SUCH_FILE.json --out state/olrun/relay/probe_relay.md)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-olrun-facade-chain-append-only",
+      "claim": "chains/OLRUN_FACADE.jsonl is written append-only with monotonic row_ids and a host-read clock; prior row bytes are never rewritten",
+      "probe": "cli(python -m pytest tools/tests/test_dispatch_class.py -q -p no:logfire -k chain)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-olrun-quorum-degeneracy-gate",
+      "claim": "quorum admissibility is measured: constant-prior voters are flagged and agreement-by-shared-bias scores zero",
+      "probe": "cli(python -m pytest tools/tests/test_quorum_diagnose.py -q -p no:logfire)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-crazygames-submit-stager",
+      "claim": "a CrazyGames developer-portal submission plan (zip + form fields) can be staged for a game without any network call to crazygames.com",
+      "probe": "cli(python tests/held_out/probe_distribution.py --test=D1)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-instantly-email-stager",
+      "claim": "a real cold-email draft in Instantly's lead/campaign payload shape can be staged to disk, honestly reporting whether INSTANTLY_API_KEY exists",
+      "probe": "cli(python tests/held_out/probe_distribution.py --test=D3)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-portal-editor-outreach",
+      "claim": "three portal-specific (Poki/CrazyGames/Kongregate) editor pitches, each citing that portal's real criteria and the live portfolio, can be generated distinctly",
+      "probe": "cli(python tests/held_out/probe_distribution.py --test=D5)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-portfolio-tracker-ledger",
+      "claim": "concurrent experiments are tracked in an append-only ledger that refuses to start without a hypothesis, external_signal_threshold, and kill_at_utc",
+      "probe": "cli(python tests/held_out/probe_distribution.py --test=D8)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-itch-butler-stager",
+      "claim": "a butler push --if-changed plan (real target, real build_dir) can be staged for a game, honestly reporting whether butler is installed on this host",
+      "probe": "cli(python tests/held_out/probe_distribution.py --test=D2)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-linkedin-outbound-stager",
+      "claim": "a personalized LinkedIn DM draft citing real cached public profile fields can be staged to disk without ever sending or scraping LinkedIn live",
+      "probe": "cli(python tests/held_out/probe_distribution.py --test=D4)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-launch-post-drafter",
+      "claim": "three platform-differentiated launch drafts (Show HN, Product Hunt, Reddit) can be generated for one artifact URL, distinct in body and convention",
+      "probe": "cli(python tests/held_out/probe_distribution.py --test=D6)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-analytics-poll-collector",
+      "claim": "distribution sources are polled and logged honestly -- live where a real signal exists (github via authenticated gh, cloudflare reachability), staged_no_key where it does not, never fabricated",
+      "probe": "cli(python tests/held_out/probe_distribution.py --test=D7)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-suika-fork-deployed",
+      "claim": "HFO-reskinned suika-game fork is deployed live on Cloudflare Pages and staged for portal distribution",
+      "probe": "cli(python tests/held_out/probe_distribution.py --test=L1)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-games-playability-gate",
+      "claim": "every staged game title is proven to START and RUN in headless chromium with a clean console before it can be distributed",
+      "probe": "cli(python -c \"import json;d=json.load(open('outputs/staged_sends/games/PLAYABILITY_AUDIT.json'));assert d['playable']==d['total'],d;assert d['playable_and_error_free']==d['total'],d\")",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-sigrun-canon-v6",
+      "claim": "Canon V6 world state carries all 7 sections, the ASCII world-state map, and the 0/12 suika deployment red",
+      "probe": "cli(python -c \"import re;d=open('areas/quorum_research/SIGRUN_CANON_V6_WORLD_STATE_20260803.md',encoding='utf-8').read();assert len(re.findall(r'## .[1-7] ',d))==7;assert all(h in d for h in ['CAPABILITY','FACTORY','ARTIFACT']);assert '0 / 12 live' in d\")",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+[
+  {
+    "id": "cap-genotype-instantiable",
+    "claim": "tools/factory/genotype.py defines a GoF Abstract Factory whose concrete phenotype subclasses instantiate and return all four products",
+    "probe": "cli",
+    "arg": "python -c \"import tools.factory as F; from tools.factory.genotype import AbstractFactory; subs=AbstractFactory.__subclasses__(); assert subs; f=subs[0](); assert f.create_producer() and f.create_grader() and f.create_verifier() and f.create_memory_writer(); print('GENOTYPE_OK')\"",
+    "expect": 0
+  },
+  {
+    "id": "cap-leads-phenotype",
+    "claim": "LeadsFactory phenotype emits real (cache-backed, offline-deterministic) lead records via kickoff()",
+    "probe": "cli",
+    "arg": "python tools/factory/phenotypes/leads.py --dry-run --count=5",
+    "expect": 0
+  },
+  {
+    "id": "cap-games-phenotype",
+    "claim": "GamesFactory phenotype emits submission plans against the real staged itch.io manifests from GAMES_SHIP_20260802",
+    "probe": "cli",
+    "arg": "python tools/factory/phenotypes/games.py --dry-run --count=3",
+    "expect": 0
+  },
+  {
+    "id": "cap-runtime-probe-executes",
+    "claim": "tools/factory/runtime_probe.py builds and INVOKES a real 2-node LangGraph graph (one node a genuine LiteLLM/Ollama call) and asserts on the returned output -- an execution probe, not an import probe",
+    "probe": "cli",
+    "arg": "python tools/factory/runtime_probe.py",
+    "expect": 0
+  }
+]

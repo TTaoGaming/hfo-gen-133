@@ -1,0 +1,63 @@
+# STAGED, NOT PUSHED. Writing this file is ENV-A (internal, reversible).
+# It becomes a live external effect only when the operator pushes the branch —
+# that is ENV-B and is deliberately left to him.
+#
+# This is the supervision tree the forge does not have. It is the smallest
+# process that outlives a session: a clock that asks "are the capabilities we
+# claim still alive?" and opens an Issue when one dies.
+name: capability-census
+
+on:
+  schedule:
+    - cron: "0 13 * * *"   # 13:00 UTC daily
+  workflow_dispatch:
+  push:
+    paths:
+      - "state/ssot/capability_registry.json"
+      - "tools/capability_census.py"
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  census:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # FORCING FUNCTION — runs BEFORE the census and is deliberately NOT
+      # continue-on-error. A doc-exists probe (file-exists / string-grep /
+      # bare-import) is how a capability claim goes green on prose instead of
+      # runtime. On 2026-08-02 two such probes (cap-sigrun-canon-v6, then v7)
+      # were appended by a concurrent agent within one hour of the registry
+      # being cleaned — reporting alone did not hold. This step REFUSES.
+      - name: Gate — no doc-exists probes in the registry
+        run: python tools/registry_audit.py --gate
+
+      - name: Run capability census
+        id: census
+        continue-on-error: true          # a leak must file an Issue, not abort the job
+        run: python tools/capability_census.py | tee census.txt
+
+      - name: Commit census receipt
+        run: |
+          git config user.name  "capability-census"
+          git config user.email "noreply@github.com"
+          git add state/ssot/capability_census/
+          git diff --staged --quiet || git commit -m "chore(census): daily capability census receipt"
+          git push
+
+      - name: Open andon Issue on leak
+        if: steps.census.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create \
+            --title "ANDON: capability leak detected $(date -u +%Y-%m-%dT%H:%MZ)" \
+            --label "kind:andon" \
+            --body "$(printf 'A capability that was ALIVE is now DEAD.\n\n```\n%s\n```\n' "$(cat census.txt)")"

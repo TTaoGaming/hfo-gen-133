@@ -1,0 +1,48 @@
+{
+  "capsule_id": "010_transcendant_fenrir_gleipnir_identity_soul",
+  "votes": [
+    {
+      "family": "ollama_llama",
+      "model": "llama3.2:3b",
+      "arch": "llama",
+      "verdict": "drop",
+      "confidence": 0.8,
+      "honest_flaw": "Lack of contextualization and unclear relationships between Fenrir, Gleipnir, and the concept of identity",
+      "raw": "{\"verdict\":\"drop\",\"confidence\":0.8,\"honest_flaw\":\"Lack of contextualization and unclear relationships between Fenrir, Gleipnir, and the concept of identity\"}",
+      "parse_ok": true,
+      "latency_ms": 7234.0,
+      "error": null
+    },
+    {
+      "family": "ollama_phi",
+      "model": "phi4-mini:3.8b",
+      "arch": "phi3",
+      "verdict": "repair",
+      "confidence": 0.7,
+      "honest_flaw": "The concept of 'TRANSCENDANT_FENRIR_GLEIPNIR_IDENTITY_SOUL' lacks empirical evidence and is not grounded in established scientific or philosophical discourse.",
+      "raw": "{\n  \"verdict\": \"repair\",\n  \"confidence\": 0.7,\n  \"honest_flaw\": \"The concept of 'TRANSCENDANT_FENRIR_GLEIPNIR_IDENTITY_SOUL' lacks empirical evidence and is not grounded in established scientific or philosophical discourse.\"\n}",
+      "parse_ok": true,
+      "latency_ms": 10781.0,
+      "error": null
+    },
+    {
+      "family": "ollama_qwen",
+      "model": "qwen3.5:9b",
+      "arch": "qwen35",
+      "verdict": null,
+      "confidence": null,
+      "honest_flaw": null,
+      "raw": "Thinking Process:\n\n1.  **Analyze the Request:**\n    *   **Role:** Independent reviewer casting ONE vote, ALONE.\n    *   **Constraint:** Cannot see other votes. Must be independent. Do not guess/agree with others.\n    *   **Task:** Evaluate a \"MEMORY CAPSULE\" (title, abstract, content snippet).\n    *   **Decision:** Choose between `keep`, `drop`, or `repair`.\n    *   **Requirement:** Name the single most important HONEST FLAW.\n    *   **Format:** JSON ONLY. No markdown fences, no prose, no preamble, no trailing commentary.\n    *   **Specific Object:** `{\"verdict\":\"keep|drop|repair\",\"confidence\":0.0-1.0,\"honest_flaw\":\"<what is wrong or unproven about this memory>\"}`\n\n2.  **Analyze the Input Data:**\n    *   **Title:** `TRANSCENDANT_FENRIR_GLEIPNIR_IDENTITY_SOUL`\n    *   **Abstract:** Contains a title repeated, a source suffix `.md`, and a section \"Why this survived\".\n    *   **Content Snippet:**\n        *   Claims to be a \"bm25-ranked hit for topic `soul.md` in `hfo_bitemporal_memory`\".\n        *   Score: -15.7409 (lower is stronger match).\n        *   Status: `sigrun_approved: false` until approval pass and cross-family quorum vote.\n        *   Question: Should this memory be carried forward into generation 133?\n    *   **Context:** This looks like a meta-memory or a system log entry about a memory capsule itself, rather than a factual memory about the world. It references internal system processes (`hfo_bitemporal_memory`, `s",
+      "parse_ok": false,
+      "latency_ms": 87203.0,
+      "error": "unparseable response (no usable verdict JSON)"
+    }
+  ],
+  "concurrence_score": 0.5,
+  "modal_verdict": "drop",
+  "n_parsed_votes": 2,
+  "families_unreachable": [
+    "ollama_qwen"
+  ],
+  "merged_from": "per_family sweeps (one model load per family)"
+}

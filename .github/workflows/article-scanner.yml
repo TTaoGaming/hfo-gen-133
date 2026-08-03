@@ -1,0 +1,96 @@
+# article-scanner — GitHub Actions fallback for when operator's rig is off.
+#
+# STAGED, NOT ENABLED until this file lands on the branch operator merges.
+# ENV-A (writing this file, editing digests inside the repo) is reversible.
+# ENV-B (any external effect) is limited to committing the digest back to
+# the same repo — no Slack post from CI unless SLACK_WEBHOOK_URL is set as
+# a repo secret. LiteLLM classification is skipped in CI unless
+# LITELLM_PROXY_URL is also set as a secret (defaults to --dry-run).
+#
+# Cadence: 06:00 UTC daily. On the operator's home rig the Windows Task
+# Scheduler entry also runs at local 06:00; whichever writes the digest
+# first wins. Dedup is idempotent (same date -> same filename, overwritten).
+
+name: article-scanner
+
+on:
+  schedule:
+    - cron: "0 6 * * *"       # 06:00 UTC daily
+    - cron: "15 6 * * 0"      # 06:15 UTC Sunday — weekly review
+  workflow_dispatch:
+  push:
+    paths:
+      - "factory/loops/article_scanner/**"
+      - ".github/workflows/article-scanner.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.schedule != '15 6 * * 0' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install optional deps
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pyyaml || true
+
+      - name: Run article scanner
+        env:
+          LITELLM_PROXY_URL: ${{ secrets.LITELLM_PROXY_URL }}
+          LITELLM_API_KEY:   ${{ secrets.LITELLM_API_KEY }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: |
+          # if no LiteLLM proxy secret, run in dry-run so the scan still
+          # produces a regex-only digest instead of failing.
+          if [ -z "${LITELLM_PROXY_URL}" ]; then
+            python factory/loops/article_scanner/run.py \
+              --sources factory/loops/article_scanner/sources.yaml \
+              --seed    factory/loops/article_scanner/seed_urls.json \
+              --dry-run
+          else
+            python factory/loops/article_scanner/run.py \
+              --sources factory/loops/article_scanner/sources.yaml \
+              --seed    factory/loops/article_scanner/seed_urls.json
+          fi
+
+      - name: Commit digest + receipts
+        run: |
+          git config user.name  "article-scanner-bot"
+          git config user.email "noreply@github.com"
+          git add state/factory_targets/article_signals.jsonl \
+                  state/factory_targets/ARTICLE_DIGEST_*.md \
+                  state/factory_targets/article_scanner_source_health.json \
+                  state/factory_targets/article_scanner_empty_streak.json \
+                  state/loop_receipts/article_scanner_*.jsonl || true
+          git diff --staged --quiet || git commit -m "chore(article-scanner): daily scan $(date -u +%Y-%m-%d)"
+          git push || true
+
+  weekly:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.schedule == '15 6 * * 0' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run weekly review
+        run: python factory/loops/article_scanner/weekly_review.py
+
+      - name: Commit weekly digest
+        run: |
+          git config user.name  "article-scanner-bot"
+          git config user.email "noreply@github.com"
+          git add state/factory_targets/ARTICLE_WEEK_*.md \
+                  state/loop_receipts/article_scanner_*.jsonl || true
+          git diff --staged --quiet || git commit -m "chore(article-scanner): weekly review $(date -u +%Y-%m-%d)"
+          git push || true

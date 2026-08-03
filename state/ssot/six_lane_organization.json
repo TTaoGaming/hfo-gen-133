@@ -1,0 +1,181 @@
+{
+  "schema_id": "hfo.gen133.six_lane_organization.v0_1",
+  "authored_utc": "2026-08-02T21:58:10Z",
+  "operator_hands_hours_per_week": 5.0,
+  "throttle": {
+    "units_per_week": 1,
+    "hard_cap": true,
+    "lift_condition": ">=1 paying customer OR >=100 organic impressions on a shipped unit",
+    "killed_value": "10-17 units/week (FRAMEWORK section 2, patched to v1.1 this turn)",
+    "authority": [
+      "chain row 125",
+      "chain row 126",
+      "chain row 127",
+      "JORMUNGANDR_REDTEAM_30DAY section H.3"
+    ],
+    "anti_drift_note": "if a future session finds 10-17 anywhere, that document is stale and this record governs"
+  },
+  "lanes": [
+    {
+      "id": "S",
+      "name": "services/cash",
+      "goal": "first $500",
+      "cadence": "daily, operator-hands",
+      "operator_hours": 3.0,
+      "agents": [
+        "olrun_dispatch",
+        "ops_draft_operator_sends"
+      ],
+      "weekly_targets_usd": [
+        "0",
+        "0-500",
+        "500-2000",
+        "1200-4000"
+      ],
+      "kill": "2026-08-16: zero talent-network screens AND zero Upwork replies -> collapse to full-time employment applications"
+    },
+    {
+      "id": "D",
+      "name": "distribution",
+      "goal": "one working channel",
+      "cadence": "daily",
+      "operator_hours": 1.0,
+      "agents": [
+        "cold_email_loop",
+        "tier2_director_bot"
+      ],
+      "weekly_targets_usd": [
+        "0"
+      ],
+      "kill": "50 sends at <2% reply -> fix list/deliverability/message"
+    },
+    {
+      "id": "P",
+      "name": "product",
+      "goal": "portfolio evidence",
+      "cadence": "weekly, 1 unit HARD CAP",
+      "operator_hours": 0.5,
+      "agents": [
+        "LOOP_BUILD_MICROSAAS_UNIT_v0"
+      ],
+      "weekly_targets_usd": [
+        "0"
+      ],
+      "kill": "cap lifts ONLY on >=1 paying customer or >=100 organic impressions"
+    },
+    {
+      "id": "R",
+      "name": "research",
+      "goal": "keep priors honest",
+      "cadence": "daily scan, weekly synth",
+      "operator_hours": 0.0,
+      "agents": [
+        "RECURRING_DEMAND_SIGNAL_MINE",
+        "opportunity_scan"
+      ],
+      "weekly_targets_usd": [
+        "0"
+      ],
+      "kill": "target_queue_empty twice -> pause the loop",
+      "constraint": "R produces PRIOR UPDATES ONLY - it does not authorize a build"
+    },
+    {
+      "id": "C",
+      "name": "content",
+      "goal": "1 build-log/week",
+      "cadence": "weekly",
+      "operator_hours": 0.5,
+      "agents": [
+        "draft_only_operator_posts"
+      ],
+      "weekly_targets_usd": [
+        "0"
+      ],
+      "kill": "4 posts with 0 inbound -> pause"
+    },
+    {
+      "id": "H",
+      "name": "hive/infra",
+      "goal": "keep probes honest",
+      "cadence": "continuous",
+      "operator_hours": 0.0,
+      "agents": [
+        "capability_census",
+        "registry_gate",
+        "chain_verifier"
+      ],
+      "weekly_targets_usd": [
+        "0"
+      ],
+      "kill": "any probe faking green -> halt"
+    }
+  ],
+  "lane_budget_note": "S 3.0 / D 1.0 / C 0.5 / P 0.5 / R 0 / H 0. R and H are swarm-only and must never consume operator time in August. S is the ONLY lane with a dollar target; the other five feed it or keep it honest.",
+  "collapse_rule": "if lane discipline costs any of the 3 hours budgeted to S, collapse to two lanes (S and D) and let the rest idle",
+  "bright_lines": [
+    {
+      "n": 1,
+      "rule": "no unit ships until curl -sSf $BOOKING_URL returns 200 on a real Cal.com/Calendly page",
+      "source": "JORMUNGANDR section H.1, adopted verbatim"
+    },
+    {
+      "n": 2,
+      "rule": "class: preauth counts as working only after a roundtrip probe (write class:test:quota=1:expires=<UTC>, run one dry loop, echo one message-id)",
+      "source": "JORMUNGANDR section H.2"
+    },
+    {
+      "n": 3,
+      "rule": "1 unit/week hard cap",
+      "source": "JORMUNGANDR section H.3 + chain rows 125-127; enforced in FRAMEWORK v1.1"
+    }
+  ],
+  "redteam_dispositions": {
+    "jormungandr_ratified_all_five": [
+      "W1 single-node dependency",
+      "booking door unbuilt",
+      "class: documented-vs-executed",
+      "FRAMEWORK section 2 at war with the throttle",
+      "support burden collapses W3-W4"
+    ],
+    "p_downgrades_accepted": {
+      "cold_email": "below 12-20%",
+      "contracts": "below 10-25%",
+      "john_rush_per_unit_ceiling": "NOT applicable to cold start - his $600/unit is POST-distribution via an SEO network"
+    },
+    "elite_kills_ratified": [
+      "dev/$29-49/marketplace (cal.com booking)",
+      "prosumer/$9-19/directory (podcast)",
+      "prosumer/free/directory (clipboard)"
+    ],
+    "elite_pool_size": {
+      "before": 10,
+      "after": 7
+    },
+    "hostile_investor_verified_accepted": [
+      "Passionfroot Series A (TechCrunch)",
+      "Show HN base rates (Daniel King 2026)",
+      "Ben's Bites trajectory",
+      "r/vibecoding stats"
+    ],
+    "partners_rows_killed_for_august": [
+      "A6",
+      "A7",
+      "A8 - PM/creator-economy newsletters, audience is not dev"
+    ]
+  },
+  "loops_pre_registered_for_auto_pause": [
+    {
+      "loop": "RECURRING_FOSS_CANDIDATE_SCAN_v0",
+      "reason": "no consumer for its output"
+    },
+    {
+      "loop": "RECURRING_DEMAND_SIGNAL_MINE_v0",
+      "reason": "no consumer for its output"
+    },
+    {
+      "loop": "RECURRING_SEO_DIRECTORIES_v0",
+      "reason": "needs shipped units and there will be <=2"
+    }
+  ],
+  "auto_pause_rule": "all three pause on the SECOND consecutive target_queue_empty - the Fenrir pattern pre-empted rather than re-run"
+}

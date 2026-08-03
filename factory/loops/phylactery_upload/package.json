@@ -1,0 +1,21 @@
+{
+  "name": "hfo-gen133-phylactery-upload",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Daily Arweave publication of areas/phylactery/ via ArDrive Turbo. Ed25519 signing per-lineage. See SPEC.md.",
+  "scripts": {
+    "keygen-wallet": "node keygen_wallet.mjs",
+    "balance": "node balance_check.mjs --wallet ../../../areas/phylactery/arweave/keys/hfo_gen133_master.json",
+    "help": "echo 'python -m factory.loops.phylactery_upload.upload --dry-run  # start here'"
+  },
+  "dependencies": {
+    "@ardrive/turbo-sdk": "^1.30.0",
+    "@noble/ed25519": "^2.1.0",
+    "@noble/hashes": "^1.5.0",
+    "arweave": "^1.15.5"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

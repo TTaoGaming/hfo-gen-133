@@ -1,0 +1,18 @@
+[
+  {
+    "id": "cap-bitemporal-memory",
+    "claim": "bitemporal memory rows (valid-time + transaction-time) can be written and queried as-of a point in time via pgvector, with corrections preserved as new rows rather than in-place UPDATEs",
+    "probe": "cli",
+    "arg": "python tools/memory/bitemporal.py --selftest",
+    "expect": 0,
+    "note": "Runs a live write + genuine as-of-time Postgres query (not an in-memory comparison), self-cleaning. Postgres-liveness caveat: this reads DEAD if the WSL2 Ubuntu-24.04 distro has idled and dropped its localhost:5432 port-forward -- that is a WSL sleep/keep-alive issue, not a code regression. Fix: wsl -d Ubuntu-24.04 -- sudo service postgresql start, then retry. connect_timeout=5s so a dead port-forward fails fast instead of hanging the census."
+  },
+  {
+    "id": "cap-sigrun-curated-rehydration",
+    "claim": "rehydrate() returns ONLY sigrun_approved rows, provably excluding an unapproved row that would otherwise match semantically",
+    "probe": "cli",
+    "arg": "python tools/memory/bitemporal.py --probe-rehydration",
+    "expect": 0,
+    "note": "Plants one sigrun_approved row and one unapproved row phrased to match the query more closely, asserts the unapproved row WOULD match an unfiltered query (proves the exclusion is real, not just 'approved rows exist'), then asserts sigrun_only rehydration includes the approved row and excludes the unapproved one. Self-cleaning, idempotent. Same WSL2 Postgres-liveness caveat as cap-bitemporal-memory: DEAD here can mean 'WSL idled', not 'capability regressed' -- check WSL before concluding regression."
+  }
+]

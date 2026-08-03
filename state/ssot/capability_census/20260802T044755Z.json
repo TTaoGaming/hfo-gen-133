@@ -1,0 +1,145 @@
+{
+  "ts_utc": "20260802T044755Z",
+  "clock_source": "host_read",
+  "compared_against": "20260802T044638Z.json",
+  "alive": 8,
+  "dead": 7,
+  "leaked": 0,
+  "capabilities": [
+    {
+      "id": "cap-langgraph-runtime",
+      "claim": "LangGraph adopted as the agent harness",
+      "probe": "repo_grep(from langgraph)",
+      "status": "DEAD",
+      "observed": "0 file(s) match",
+      "previous": "DEAD",
+      "leaked": false
+    },
+    {
+      "id": "cap-crewai-runtime",
+      "claim": "CrewAI adopted as the agent harness",
+      "probe": "repo_grep(from crewai)",
+      "status": "ALIVE",
+      "observed": "1 file(s) match",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-chain-mirrored-to-db",
+      "claim": "chain rows are mirrored into central_memory for query",
+      "probe": "sqlite_rows(tools/central_memory.sqlite:hfo_chain_row)",
+      "status": "DEAD",
+      "observed": "0 rows",
+      "previous": "DEAD",
+      "leaked": false
+    },
+    {
+      "id": "cap-capability-ledger",
+      "claim": "the capability ledger tracks more than one capability",
+      "probe": "sqlite_rows(tools/central_memory.sqlite:hfo_capability)",
+      "status": "DEAD",
+      "observed": "1 rows",
+      "previous": "DEAD",
+      "leaked": false
+    },
+    {
+      "id": "cap-contract-verifiers",
+      "claim": "contracts in contracts/ have runnable verifiers",
+      "probe": "glob_min(tools/tests/*.py)",
+      "status": "DEAD",
+      "observed": "0 match(es)",
+      "previous": "DEAD",
+      "leaked": false
+    },
+    {
+      "id": "cap-supervision-tree",
+      "claim": "something automatically detects a dead capability, on a clock, without a human",
+      "probe": "cli(gh run list --workflow=capability-census.yml --repo TTaoGaming/hfo-gen-133 --limit 1 --json databaseId --jq length | grep -qv '^0$')",
+      "status": "DEAD",
+      "observed": "exit=1",
+      "previous": "DEAD",
+      "leaked": false
+    },
+    {
+      "id": "cap-queue-consumer",
+      "claim": "the task queue is consumed, not just deposited into",
+      "probe": "jsonl_rows(state/ssot/task_results.jsonl)",
+      "status": "DEAD",
+      "observed": "0 rows",
+      "previous": "DEAD",
+      "leaked": false
+    },
+    {
+      "id": "cap-outreach-instrument",
+      "claim": "outreach is logged to a queryable instrument",
+      "probe": "jsonl_rows(state/ssot/outreach_log.jsonl)",
+      "status": "DEAD",
+      "observed": "FileNotFoundError: [Errno 2] No such file or directory: 'C:\\\\Dev\\\\hfo_gen_133_forge\\\\state\\\\ssot\\\\outreach_log.jsonl'",
+      "previous": "DEAD",
+      "leaked": false
+    },
+    {
+      "id": "cap-deploy-live",
+      "claim": "a spatial demo is deployed and reachable",
+      "probe": "http(https://demo01-handpiano.pages.dev)",
+      "status": "ALIVE",
+      "observed": "http=200",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-sigrun-chain",
+      "claim": "the Sigrun chain is appendable and hash-linked",
+      "probe": "jsonl_rows(chains/SIGRUN_P4.jsonl)",
+      "status": "ALIVE",
+      "observed": "83 rows",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-chain-verifier",
+      "claim": "chain integrity is checkable by a running program",
+      "probe": "glob_min(tools/verify_chain.py)",
+      "status": "ALIVE",
+      "observed": "1 match(es)",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-aider-code-lane",
+      "claim": "Aider is available as the code lane",
+      "probe": "py_import(aider)",
+      "status": "ALIVE",
+      "observed": "importable",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-github-authed",
+      "claim": "GitHub CLI is authenticated for repo + issue operations",
+      "probe": "cli(gh auth status)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-emergency-forge-pattern-compliance",
+      "claim": "every EMERGENCY_FORGE dispatch carries >=3 industry-pattern anchors and a pre-registered external-fitness test",
+      "probe": "cli(python tools/verify_forge_dispatch.py)",
+      "status": "ALIVE",
+      "observed": "exit=0",
+      "previous": "ALIVE",
+      "leaked": false
+    },
+    {
+      "id": "cap-spend-gate",
+      "claim": "a spend gate refuses runs above a cost ceiling",
+      "probe": "repo_grep(MAX_RUN_COST_USD)",
+      "status": "ALIVE",
+      "observed": "1 file(s) match",
+      "previous": "ALIVE",
+      "leaked": false
+    }
+  ]
+}
