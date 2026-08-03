@@ -1,8 +1,8 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_TOOL_RETURN_CONTEXT_WINDOW_V1
-current_version: 72
-accepted_wakes: 0
+current_version: 73
+accepted_wakes: 1
 target_wakes_before_decision: 4
 controlled_factor: prompt_context_size
 campaign_status: ACTIVE
@@ -13,65 +13,65 @@ prior_campaign:
   disposition: REVISE
   accepted_wakes: 4
 last_event:
-  commit: 07ff146196885fc1c1654ac1ddaacdd35233be8f
-  path: state/coordination/experiments/carrier_surface_x11/events/20260803T204001Z_WAKE_TIMING_PROVIDER_LAST_RUN_DRIFT_V2_WAKE_04_DECISION.yaml
-  blob: 3faa6c5e45ff9aeb10f27585b863c2c1a7f56900
+  commit: 37428753432f57e181cf3cf7c15426b11a9d9532
+  path: state/coordination/experiments/carrier_surface_x11/events/20260803T214128Z_TOOL_RETURN_CONTEXT_WINDOW_V1_WAKE_01.yaml
+  blob: 80860f4e9f129330596a825512e42e04852a9dfb
 baseline_result:
-  provider_call_status: SUCCESS
-  expected_task_visible: true
-  fourth_prior_last_run_time_utc: 2026-08-03T19:43:39.943635Z
-  fourth_scheduled_epoch_utc: 2026-08-03T19:40:00Z
-  fourth_signed_epoch_offset_seconds: 219.943635
-  campaign_signed_epoch_offsets_seconds:
-    - 87.260424
-    - 285.072650
-    - -9.036457
-    - 219.943635
-  campaign_absolute_mean_seconds: 150.3282915
-  campaign_absolute_median_seconds: 153.6020295
-  campaign_absolute_range_seconds: 276.036193
+  mode: fixed_commit_read_only_line_window_probe
+  source_commit: 07ff146196885fc1c1654ac1ddaacdd35233be8f
+  source_path: state/coordination/experiments/carrier_surface_x11/events/20260803T204001Z_WAKE_TIMING_PROVIDER_LAST_RUN_DRIFT_V2_WAKE_04_DECISION.yaml
+  source_blob_sha: 3faa6c5e45ff9aeb10f27585b863c2c1a7f56900
+  requested_start_line: 1
+  requested_end_line: 16
+  requested_line_count: 16
+  returned_line_count: 16
+  first_returned_source_line: 1
+  last_returned_source_line: 16
+  exact_requested_window_returned: true
+  truncation_observed: false
   authentication_requested: false
   interactive_login_required: false
   sensitive_readback_externalized: false
-  mutation_performed: false
+  mutation_performed_by_probe: false
   changed_capability: true
   andon: false
-  permission_class: AUTHENTICATED_NATIVE_TASK_INVENTORY_READ_AVAILABLE
+  permission_class: AUTHENTICATED_GITHUB_FIXED_COMMIT_BOUNDED_LINE_READ_AVAILABLE
   error_class: NONE
   latency_exposed: false
   latency_ms: null
   operator_relay_minutes: 0
-claim_ceiling: fixed_commit_Git_tool_return_line_window_and_connector_response_behavior_only_not_native_model_prompt_tokens_context_window_attention_usage_or_truncation
-strongest_falsifier: the_fixed_commit_file_is_missing_or_mutated_the_connector_ignores_requested_line_bounds_or_native_prompt_and_context_telemetry_becomes_directly_exposed_and_disagrees_with_the_proxy
+claim_ceiling: fixed_commit_Git_connector_line_window_behavior_only_not_native_model_prompt_tokens_context_capacity_attention_usage_or_truncation
+strongest_falsifier: the_same_commit_and_path_return_a_different_blob_or_line_count_for_the_same_requested_window_the_connector_ignores_line_bounds_or_direct_native_prompt_context_telemetry_becomes_available_and_disagrees_with_this_proxy
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 next_consumer: [Reginleif, Ratatoskr]
-honest_flaw: requested_Git_file_line_windows_measure_connector_tool_return_behavior_not_the_models_native_prompt_size_context_capacity_token_usage_or_attention_and_connector_latency_may_not_be_exposed
+honest_flaw: this_campaign_measures_Git_connector_response_window_behavior_not_the_models_native_prompt_size_context_window_token_usage_attention_or_memory_and_latency_is_not_exposed
 next_factor: prompt_context_size
 next_probe:
   experiment_id: X11_TOOL_RETURN_CONTEXT_WINDOW_V1
-  campaign_wake: 1
+  campaign_wake: 2
   mode: fixed_commit_read_only_line_window_probe
   source_commit: 07ff146196885fc1c1654ac1ddaacdd35233be8f
   source_path: state/coordination/experiments/carrier_surface_x11/events/20260803T204001Z_WAKE_TIMING_PROVIDER_LAST_RUN_DRIFT_V2_WAKE_04_DECISION.yaml
   requested_start_line: 1
-  requested_end_line: 16
+  requested_end_line: 32
+  requested_line_count: 32
   persist_only:
     - requested_line_count
     - returned_line_count
     - first_and_last_line_numbers_when_exposed
+    - source_blob_sha
     - truncation_or_error_class
     - latency_when_exposed
     - operator_relay_minutes
   mutation_allowed: false
   sensitive_readback_externalization_allowed: false
-slack_action: CAMPAIGN_DECISION_POSTED
-updated_valid_time_utc: 2026-08-03T20:40:01Z
+slack_action: CHANGED_CAPABILITY_POST_PENDING_GIT_READBACK
+updated_valid_time_utc: 2026-08-03T21:41:28Z
 sealed: false
 ---
 
-Wake timing provider-last-run epoch-offset V2 completed at wake 4/4 with
-REVISE. Four provider timestamps were deterministically comparable to the
-minute-40 epoch, but one preceded the epoch and three followed it; the field is
-not a direct wake-start or scheduler-latency clock. The next campaign varies a
-fixed-commit Git tool-return line window and explicitly does not claim native
-model prompt-token or context-window visibility.
+Tool-return context-window campaign wake 1/4 accepted. A fixed 16-line request
+against one immutable commit and path returned exactly 16 source lines from the
+expected blob with no truncation or error. This is connector response behavior,
+not native model prompt or context telemetry. Wake 2 varies only the requested
+line window to 32 lines.
