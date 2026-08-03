@@ -1,0 +1,132 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+result: RETURN
+result_type: FAILURE_ANTIBODY
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_match: true
+valid_time_utc: 2026-08-03T20:56:08Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+expires_utc: 2026-08-04T00:44:24Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+privacy_ceiling: SANITIZED_REPOSITORY_AND_PROVIDER_TASK_METADATA_ONLY
+world_effect_ceiling: ONE_GIT_RECEIPT_AND_ONE_SANITIZED_SLACK_POINTER
+heritage_credit: 0
+heritage_credit_condition: EXACT_CONSUMER_ACK_BOUND_TO_X14_MUTANT_070_9c93321bdb56_AND_THIS_RECEIPT
+binding_weight: 0
+sealed: false
+---
+
+self_probe:
+  task_title_observed: HFO S15 Gondul Continuous Heritage
+  task_enabled_observed: true
+  tools_observed:
+    - native_automations_inventory_read
+    - github_recent_commit_search
+    - github_compare_commits
+    - github_repository_search
+    - github_exact_commit_file_and_blob_read
+    - github_create_file
+    - github_readback
+    - slack_send_message
+  expected_task_id_match: true
+  task_mutation_performed: false
+  self_verification_performed: false
+
+current_workitem:
+  id: X14_MUTANT_070_9c93321bdb56
+  class: STALE_SOURCE_DIGEST
+  subcase: X12_VALID_ONE_STEP_OLDER_PREDECESSOR_BLOB_REPLAYED_WHILE_CURRENT_SOURCE_COMMIT_PATH_AND_VERSION_BINDINGS_REMAIN_UNCHANGED
+  status: QUARANTINED_NONEXECUTABLE_ROUTED_PENDING_VERDICTS
+  valid_time_utc: 2026-08-03T20:53:11Z
+  expires_utc: 2026-08-04T00:44:24Z
+  source_repository: TTaoGaming/hfo-gen-133
+  source_commit: 61a4b11bedcd2d8a8c9df26797b9cac12469b246
+  source_path: state/coordination/experiments/false_green_x14/quarantine/20260803T205311Z_X12_CARRIER_VARIANCE_STALE_SOURCE_DIGEST.mutant.yaml
+  source_blob_sha1: b83360a149c5f53cdf2a3ec0eabc14f2d7766c0d
+  selected_event_commit: 3c200a542dd7fa923b64c9321143f6845533f4b6
+  selected_event_path: state/coordination/experiments/durable_object_x12/events/20260803T204424Z_V0071_TO_V0072_CARRIER_VARIANCE_DECISION_RESEAT_VARIABLE.json
+  selected_event_blob_sha1: 7bc245ff814598c659059c8acae8e153d80e4bc7
+  mutated_field: canonical_transition.source_binding.prior_event_blob
+  immediate_predecessor_blob_required: d48e5e875188b18ad683f4e69f28f8a58845d346
+  stale_predecessor_blob_substituted: 2a5dfee1cb626e83fa5206b7bd82c2e800d03b0e
+  stale_origin_commit: 6d026804be987966c379f8341dc534b46c82bbf0
+  stale_origin_path: state/coordination/experiments/durable_object_x12/events/20260803T184626Z_V0069_TO_V0070_CARRIER_VARIANCE_TIMESTAMP_DRIFT.json
+  canonical_mutation_digest_sha256: 9c93321bdb566679c13d1c0bd346c532098760eb2c53b1b7a2693399d786fbf9
+  canonical_byte_count: 292
+  named_gate: S04_SOURCE_DIGEST_FRESHNESS_EXACT_COMMIT_PATH_BLOB_VERSION_AND_PREDECESSOR_CHAIN_GATE
+  expected_verdict: REVISE
+  verifier: S04_STRUCTURAL_PREFLIGHT
+  distinct_verifier: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  consumer:
+    - X14_CAMPAIGN_REDUCER
+    - Reginleif/Olrun
+
+reusable_prior_artifact:
+  original_date_utc: 2026-08-01T00:13:35Z
+  repository: TTaoGaming/hfo-gen-133
+  commit: 7a487894347e1249613695825e25faed10307ca2
+  path: state/coordination/receipts/chatgpt_runtime/seat-04/20260801T001335Z_X14_MUTANT_003_STALE_SOURCE_DIGEST_REVISE.yaml
+  blob_sha1: e0c80e0fd459f211f13d9fccdf7c8650b0a1f07a
+  artifact_role: DIRECT_S04_X12_STALE_SOURCE_DIGEST_REJECTION_PRECEDENT
+  exact_reusable_invariant: >-
+    A repository-resident historical blob remains invalid when it does not equal the blob required by the exact
+    commit, path, version, semantic-digest, and transition relation being asserted. Authenticity of the stale Git
+    object does not satisfy freshness or chain-position binding and cannot earn transition, ConsumerAck, PASS,
+    adoption, execution, or independent-verification credit.
+  supported_claims:
+    - Gen-133 already contains a direct S04 REVISE for an X12 stale-source-digest mutant using a real prior event blob.
+    - The prior verdict required exact commit-path-blob recomputation and rejected a syntactically valid historical blob.
+    - Custom canonical mutation SHA-256 agreement does not cure a false source or predecessor binding.
+    - The current verifier must check the semantic role of the digest, not merely whether the SHA resolves to any Git object.
+  excluded_claims:
+    - This prior artifact is not a direct verdict on X14_MUTANT_070_9c93321bdb56.
+    - It does not recompute mutant 070's declared 292-byte overlay or SHA-256.
+    - It does not fetch and compare mutant 070's required v70-to-v71 predecessor against the substituted v69-to-v70 blob.
+    - It does not prove campaign closure, distinct-provider verification, ConsumerAck, outcome, durability, or accepted history.
+    - It grants no caught-gate credit, binding weight, heritage credit, execution authority, or workflow transition.
+
+acceptance_relevance:
+  direct_binding: >-
+    Mutant 070 preserves the selected v71-to-v72 source event and its bound immediate-predecessor commit, path,
+    versions, and semantic digest, but replaces prior_event_blob d48e5e875188b18ad683f4e69f28f8a58845d346
+    with authentic older v69-to-v70 blob 2a5dfee1cb626e83fa5206b7bd82c2e800d03b0e. The prior S04 artifact supplies
+    the reusable rejection rule that a valid historical Git blob cannot satisfy a different exact binding or chain position.
+    S04 still must resolve the current mutant and selected event, recompute the 292-byte overlay and SHA-256, fetch both
+    predecessor artifacts, verify the immediate predecessor relation, and return the direct verdict.
+  acceptance_use_only:
+    - failure antibody for exact commit-path-blob-version-semantic-digest and immediate-predecessor binding
+    - direct current-mutant review still required
+    - SAME_PROVIDER_NONBINDING
+    - binding_weight_0
+  verifier: S04_STRUCTURAL_PREFLIGHT
+  distinct_verifier: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  next_consumer:
+    - X14_CAMPAIGN_REDUCER
+    - Reginleif/Olrun
+  consumer_ack_status: NOT_OBSERVED
+
+heritage_dedup:
+  gen133_searched_first: true
+  exact_current_workitem_receipt_before_write: NOT_FOUND
+  exact_current_mutation_digest_receipt_before_write: NOT_FOUND
+  prior_same_class_s15_binding:
+    path: state/coordination/receipts/chatgpt_runtime/seat-15/20260802T115607Z_X14_MUTANT037_REUSE_S04_STALE_SOURCE_DIGEST_GATE.yaml
+    current_workitem_then: X14_MUTANT_037_804256923673
+    status: DIFFERENT_WORKITEM_DIFFERENT_SOURCE_FAMILY_NO_CONSUMER_ACK
+  duplicate_status: DISTINCT_CURRENT_WORKITEM_BINDING_TO_ONE_PRIOR_DIRECT_S04_VERDICT
+  search_authority: BEST_EFFORT_NONTRANSACTIONAL_GITHUB_INDEX_MAY_LAG
+
+expiry:
+  current_workitem_expires_utc: 2026-08-04T00:44:24Z
+  reused_artifact_historical_verdict_expired_for_LIVE_CREDIT: true
+  reuse_scope: HISTORICAL_FAILURE_ANTIBODY_ONLY
+
+honest_flaw: >-
+  The reused S04 verdict mutated the declared current source blob to the immediately prior X12 event blob, while mutant 070
+  mutates the immediate-predecessor field itself to a blob one additional accepted transition older. The exact chain-position
+  and cross-field checks therefore differ even though the stale-digest invariant transfers. This receipt did not independently
+  recompute mutant 070's canonical overlay, inspect raw Git objects, or issue a direct verdict. GitHub search is best-effort and
+  may miss a concurrent unindexed receipt. No ConsumerAck was observed, so heritage credit and binding weight remain zero.
