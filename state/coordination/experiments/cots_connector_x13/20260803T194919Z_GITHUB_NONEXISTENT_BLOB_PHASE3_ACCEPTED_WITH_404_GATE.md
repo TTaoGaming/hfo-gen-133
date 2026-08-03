@@ -1,0 +1,123 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_GITHUB_BOUNDED_FILE_READONLY_001
+event_type: PHASE3_ACCEPTED_WITH_404_FAILURE_PRESERVATION_GATE
+candidate: GitHub_content_addressed_blob_read_surface
+carrier_task_id: 6a55c1733708819185088bf334e33ea5
+carrier_task_id_match: true
+wip: 1
+expected_current_version: 70
+next_current_version: 71
+phase: 3_of_4
+valid_time_utc: 2026-08-03T19:49:19Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+sealed: true
+effect_ceiling: ONE_READONLY_SYNTACTICALLY_VALID_IMPROBABLE_NONEXISTENT_BLOB_SHA_FETCH_NO_RETRY_FALLBACK_BRANCH_TRAVERSAL_WRITE_OR_OPERATIONAL_PROMOTION
+adoption_credit: 0
+fitness_credit: 0
+consumer_ack: NOT_OBSERVED
+operator_minutes_removed_measured: 0
+operator_minutes_removed_estimate_per_consumed_failure_CLASSIFICATION: 0_to_1_UNVALIDATED
+paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
+custom_code_avoided_estimate:
+  authenticated_git_blob_get_and_normalized_404_error_response: 10_to_30_LOC_UNVALIDATED
+  error_taxonomy_permission_disambiguation_rate_limit_telemetry_retry_policy_and_consumer_workflow: NOT_AVOIDED_REQUIRES_HFO_GATES
+credentials:
+  connector_reached_same_repository_success_path_in_prior_phases: true
+  operator_supplied_credentials_this_phase: 0
+  authenticated_principal: UNKNOWN
+  token_class: UNKNOWN_GITHUB_APP_OAUTH_OR_PAT
+  effective_repository_scope: UNKNOWN
+  token_storage_and_custody: CONNECTOR_MANAGED_UNINSPECTED
+  least_privilege_closed: false
+direct_receipt:
+  action: GitHub.fetch_blob
+  repository: TTaoGaming/hfo-gen-133
+  requested_blob_sha_class: SYNTACTICALLY_VALID_40_HEX_IMPROBABLE_NONEXISTENT_SHA
+  requested_blob_sha_redacted_from_CROSS_SURFACE_LOG: true
+  branch_or_tag_ref_supplied: false
+  returned_content: false
+  wrapper_returned_message: Not_Found
+  wrapper_returned_documentation_url: true
+  wrapper_returned_status: 404
+  wrapper_returned_is_error: true
+  raw_http_headers_returned: false
+  request_id_etag_last_modified_and_rate_limit_headers_returned: false
+  connector_visible_external_call_time_ms: NOT_EXPOSED
+  carrier_retries: 0
+  fallback_attempts: 0
+  mutation_effect: false
+measured_facts:
+  syntactically_valid_improbable_blob_sha_received_normalized_404_once: true
+  wrapper_preserved_status_message_documentation_url_and_error_boolean: true
+  no_file_or_blob_content_returned: true
+  no_branch_tag_or_default_ref_resolution_was_requested: true
+  no_candidate_surface_write_retry_or_fallback: true
+  same_repository_known_blob_success_had_been_observed_in_phase2: true
+failure_preservation_andon:
+  triggered: true
+  measured_fact: CONNECTOR_RETURNED_STRUCTURED_404_NOT_FOUND_WITH_IS_ERROR_TRUE_FOR_THE_IMPROBABLE_SHA
+  implication: MISSING_OBJECT_FAILURE_IS_CALLER_VISIBLE_BUT_RAW_HEADERS_REQUEST_ID_RATE_LIMIT_STATE_AND_UPSTREAM_ATTEMPTS_REMAIN_HIDDEN
+permission_ambiguity_gate:
+  triggered: true
+  measured_fact: GITHUB_CAN_RETURN_404_FOR_PRIVATE_RESOURCES_WHEN_AUTHENTICATION_OR_PERMISSION_IS_INSUFFICIENT
+  mitigating_context: THE_SAME_CONNECTOR_IDENTITY_SUCCEEDED_ON_A_KNOWN_BLOB_IN_THE_SAME_REPOSITORY_IN_PHASE2
+  implication: THIS_RECEIPT_STRONGLY_SUPPORTS_MISSING_OBJECT_IN_THIS_REPOSITORY_BUT_DOES_NOT_GENERALIZE_404_AS_PROOF_OF_ABSENCE_ACROSS_REPOSITORIES_IDENTITIES_OR_SCOPES
+observability_andon:
+  triggered: true
+  measured_fact: STRUCTURED_STATUS_MESSAGE_DOC_URL_AND_ERROR_BOOLEAN_VISIBLE_BUT_NO_HTTP_HEADERS_REQUEST_ID_RATE_LIMIT_FIELDS_LATENCY_OR_UPSTREAM_ATTEMPTS
+  implication: FAILURE_CLASSIFICATION_IS_BETTER_THAN_PHASE2_SUCCESS_TELEMETRY_BUT_QUOTA_RETRY_AND_PROVIDER_LAYER_ATTRIBUTION_REMAIN_UNCLOSED
+official_contract_checked_2026_08_03:
+  git_blobs: https://docs.github.com/en/rest/git/blobs
+  troubleshooting_404: https://docs.github.com/en/rest/using-the-rest-api/troubleshooting-the-rest-api
+  rate_limits: https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api
+  documented_get_blob_statuses:
+    - 200_OK
+    - 403_FORBIDDEN
+    - 404_RESOURCE_NOT_FOUND
+    - 409_CONFLICT
+    - 422_VALIDATION_FAILED_OR_SPAMMED
+  github_private_resource_auth_failure_can_present_as_404: true
+  rate_limit_failures_can_present_as_403_OR_429: true
+  documented_rate_limit_headers:
+    - x-ratelimit-limit
+    - x-ratelimit-remaining
+    - x-ratelimit-used
+    - x-ratelimit-reset
+    - x-ratelimit-resource
+  actual_connector_rate_limit_resource_and_consumption: UNKNOWN
+durability: HIGH_FOR_THE_GIT_FIRST_FAILURE_EVENT_AND_CONTENT_ADDRESSED_INPUT_CLASS_LOW_FOR_PROVIDER_RECEIPT_REPLAY_BECAUSE_REQUEST_ID_HEADERS_AND_ATTEMPT_TELEMETRY_ARE_HIDDEN
+observability: MEDIUM_HIGH_FOR_NORMALIZED_404_STATUS_MESSAGE_DOC_URL_AND_IS_ERROR_LOW_FOR_RAW_HTTP_HEADERS_REQUEST_ID_RATE_LIMIT_STATE_LATENCY_UPSTREAM_ATTEMPTS_AND_RETRIES
+portability: MEDIUM_FOR_GENERIC_MISSING_CONTENT_ADDRESSED_OBJECT_SEMANTICS_LOW_TO_MEDIUM_FOR_EXACT_404_PERMISSION_MASKING_ERROR_SHAPE_AND_RATE_LIMIT_BEHAVIOR_ACROSS_GITHUB_GITLAB_BITBUCKET_AND_LOCAL_GIT
+failure_behavior:
+  known_valid_blob_sha: OBSERVED_SUCCESS_PHASE2
+  syntactically_valid_improbable_nonexistent_blob_sha: OBSERVED_STRUCTURED_404_PHASE3
+  malformed_blob_sha: NOT_TESTED
+  permission_403_or_private_resource_masked_404: NOT_DIRECTLY_TESTED
+  conflict_or_validation_error: NOT_TESTED
+  binary_blob_behavior: NOT_TESTED
+  blob_over_100_mb: NOT_TESTED
+  rate_limit_or_secondary_limit: NOT_TESTED
+  timeout_or_transport_failure: NOT_TESTED
+  raw_api_or_local_git_parity: NOT_TESTED
+strongest_falsifier: A_DISTINCT_AUTHORIZED_RAW_GITHUB_GET_BLOB_FOR_THE_IDENTICAL_REPOSITORY_AND_SHA_RETURNS_200_OR_A_NON_404_PROVIDER_RESULT_OR_SHOWS_THAT_THE_CONNECTOR_RETRIED_USED_ANOTHER_SHA_OR_NORMALIZED_A_PERMISSION_RATE_LIMIT_OR_TRANSPORT_FAILURE_AS_404
+verifier: DISTINCT_AUTHORIZED_RAW_GITHUB_GET_BLOB_FOR_THE_SAME_REPOSITORY_AND_SHA_WITH_HTTP_STATUS_BODY_REQUEST_ID_RATE_LIMIT_HEADERS_AND_ZERO_RETRY_CAPTURE_PLUS_OPTIONAL_LOCAL_GIT_CAT_FILE_EXISTENCE_CHECK
+consumer:
+  immediate_catalog_consumer: HFO_COTS_CAPABILITY_INVENTORY
+  future_operational_consumer: MUST_BE_NAMED_IN_NEW_WORKITEM
+honest_flaw: ONE_IMPROBABLE_SHA_RETURNED_A_STRUCTURED_404_AFTER_A_KNOWN_SAME_REPOSITORY_SUCCESS_BUT_RAW_HTTP_HEADERS_REQUEST_ID_IDENTITY_SCOPE_PERMISSION_MASKING_RATE_LIMIT_STATE_UPSTREAM_ATTEMPTS_RETRY_BEHAVIOR_AND_DISTINCT_RAW_API_OR_LOCAL_GIT_PARITY_REMAIN_UNVERIFIED
+phase_3_result:
+  disposition: PHASE3_ACCEPTED_WITH_STRUCTURED_404_PERMISSION_AMBIGUITY_NO_AUTORETRY_AND_RAW_TELEMETRY_GATES
+next_wake:
+  candidate: GitHub_bounded_readonly_repository_file_fetch_surface
+  phase: 4_of_4
+  planned_probe: DECISION_ONLY_NO_ADDITIONAL_GITHUB_CAPABILITY_CALL_PROVISIONAL_ADOPT_WITH_GATES
+---
+
+# X13 GitHub nonexistent blob failure probe — phase 3
+
+One `GitHub.fetch_blob` call used a syntactically valid 40-hex SHA selected to be overwhelmingly unlikely to exist. The connector returned a structured error with `status=404`, `message=Not Found`, a documentation URL, and `is_error=true`. It returned no content and no raw headers, request ID, rate-limit state, latency, or upstream-attempt telemetry.
+
+Because phase 2 had already succeeded on a known blob in the same repository under the same connector surface, this strongly supports a missing-object result for this bounded probe. It does not justify treating every GitHub 404 as authoritative absence: GitHub documents that private-resource authentication or permission failures can also be masked as 404.
+
+No retry, fallback, branch traversal, or mutation occurred. Adoption and fitness credit remain zero. Phase 4 is decision-only, with no additional GitHub capability call.
