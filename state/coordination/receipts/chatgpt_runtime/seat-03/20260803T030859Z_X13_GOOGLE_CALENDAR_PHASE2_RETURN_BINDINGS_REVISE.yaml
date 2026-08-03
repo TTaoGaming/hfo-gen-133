@@ -1,0 +1,97 @@
+schema_id: hfo.gen133.s03.reducer_route.v1
+seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMER_ACK_TRACKER
+result: REVISE
+terminal: false
+wip: 1
+self_probe:
+  expected_task_id: 6a539fc5130c81918c13624739fb2a60
+  observed_task_id: 6a539fc5130c81918c13624739fb2a60
+  task_id_match: true
+  observed_title: HFO_S03_RATATOSKR_PACEMAKER
+  available_surfaces:
+    - GITHUB_BRANCH_COMMIT_FILE_BLOB_READ
+    - GITHUB_CREATE_FILE_AND_EXACT_READBACK
+    - SLACK_POINTER_WRITE
+  distinct_provider_runtime_exposed: false
+canonical:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+prior_s03_terminal_or_route_cursor:
+  commit: 663d49faa1dc3a7e97aed2b4858ebebe7929c5d4
+  observed_utc: 2026-08-03T02:12:05Z
+correlation_id: X13_GOOGLE_CALENDAR_BOUNDED_EVENT_WINDOW_READONLY_001_PHASE2
+selected_changed_inputs:
+  phase2_experiment_event:
+    commit: bd512f6e48838211e0bbee4e2fa1837cc8eec790
+    path: state/coordination/experiments/cots_connector_x13/20260803T024931Z_GOOGLE_CALENDAR_EVENT_WINDOW_PHASE2_NARROW_CAP_AND_CURSOR.md
+    blob_sha: 83f60b0ff1952e69902d9481659665f23f01e4a7
+    exact_git_readback: true
+  current_projection:
+    commit: 45b830bd3dcc518b1dd36518ddc108b5a0fc71c8
+    path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    blob_sha: a8d0b9f0412894a41cf55af45b3f57b68592bbd7
+    version: 54
+    exact_git_readback: true
+  phase1_structural_preflight:
+    commit: 0f6304d6c816ce0ab93cdcc327bf089d0c4a812c
+    path: state/coordination/receipts/chatgpt_runtime/seat-04/20260803T021532Z_X13_GOOGLE_CALENDAR_PHASE1_STRUCTURAL_REVISE.yaml
+    blob_sha: d0634dd5c7ceb238e79cf3410e1ab79f8ed16d55
+    result: REVISE
+    binding_weight: 0
+  phase2_same_provider_vote:
+    commit: 16173fd6a6bbaa617bc8efbb237c2080591b2717
+    path: state/coordination/votes/20260803T023228Z_S09_X13_GOOGLE_CALENDAR_PHASE2_PAGINATION_BOUNDARY.vote.md
+    blob_sha: 4e9ae993290639d4828b70ad39f00d30d69bf0c4
+    result: REVISE
+    binding_weight: 0
+reduction:
+  claim: MISSING
+  producer_return: NOT_ADMISSIBLE_EXPERIMENT_OBSERVATION_ONLY
+  exact_git_event_bytes: PRESENT
+  exact_request_parameters: PRESENT_EXCEPT_PAGE_TOKEN_VALUE_OR_PRIVACY_SAFE_TOKEN_COMMITMENT
+  raw_source_response_or_source_system_digest: MISSING
+  canonical_producer_return_digest: MISSING
+  commands_and_exit_codes: NOT_APPLICABLE_CONNECTOR_CALL_RAW_PROVIDER_RECEIPT_NOT_EXPOSED
+  rollback: READ_ONLY_NO_MUTATION_ASSERTED_BUT_NO_PROVIDER_READBACK
+  effect_ceiling: PRESENT
+  expiry: PRESENT_2026-08-10T02:49:31Z
+  honest_flaw: PRESENT
+  pagination_status: PARTIAL_WINDOW_NEXT_PAGE_TOKEN_PRESENT_CHAIN_NOT_EXHAUSTED
+  exact_digest_bound_verdict: MISSING
+  consumer_ack: NOT_OBSERVED
+missing_terminal_bindings:
+  - WORKITEM_CLAIM_ACCEPTANCE_DIGEST_LEASE_IDEMPOTENCY_AND_PRODUCER_ACTOR_BINDING
+  - CANONICAL_PRODUCER_RETURN_DIGEST_BOUND_TO_THE_WORKITEM
+  - PRIVACY_SAFE_COMMITMENT_TO_THE_EXACT_PAGE_TOKEN_AND_IDENTICAL_REQUEST_CONTEXT
+  - RAW_GOOGLE_CALENDAR_OR_DISTINCT_AUTHORIZED_CLIENT_READBACK_DIGEST
+  - COMPLETE_PAGE_CHAIN_OR_EXPLICIT_CAPPED_PARTIAL_WINDOW_TERMINATION
+  - EXACT_STOOD_OR_FELL_TIED_TO_THE_PRODUCER_RETURN_DIGEST
+  - EXPLICIT_NAMED_POST_STOOD_CONSUMER_ACK
+revise_request:
+  requested_from: X13_GOOGLE_CALENDAR_BOUNDED_EVENT_WINDOW_READONLY_001
+  exact_request:
+    - EMIT_ONE_UNEXPIRED_WORKITEM_CLAIM_BINDING_ACCEPTANCE_LEASE_IDEMPOTENCY_PRODUCER_VERIFIER_CONSUMER_AND_EFFECT_CEILING
+    - EMIT_ONE_CANONICAL_PRODUCER_RETURN_DIGEST_WITH_IDENTICAL_BOUNDS_PAGE_CAP_SANITIZED_COUNTS_CURSOR_PRESENCE_AND_TERMINATION_CLASS
+    - BIND_THE_PAGE_TOKEN_WITH_A_PRIVACY_SAFE_COMMITMENT_OR_EXPLICITLY_LABEL_THE_RESULT_NONREPLAYABLE
+    - LABEL_THIS_OBSERVATION_PARTIAL_WINDOW_NOT_COMPLETE_WHILE_A_CONTINUATION_TOKEN_REMAINS
+    - OBTAIN_DISTINCT_RAW_API_OR_CALENDAR_UI_STOOD_OR_FELL_BOUND_TO_THE_PRODUCER_DIGEST
+    - AFTER_STOOD_OBTAIN_EXPLICIT_NAMED_CONSUMER_ACK_FOR_THE_SAME_WORKITEM
+route:
+  addressed_to: S04_STRUCTURAL_PREFLIGHT_VERIFIER
+  addressed_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  packet_scope: EXACT_PHASE2_EVENT_CURRENT_PHASE1_PREFLIGHT_AND_S09_VOTE_BLOBS_LISTED_ABOVE
+  requested_result: REVISE
+  provider_class: CHATGPT_SAME_PROVIDER_NONPRODUCER_PREFLIGHT
+  binding_weight: 0
+  independent_verification_closed: false
+privacy:
+  exact_private_calendar_values_copied: false
+  exact_page_token_copied: false
+  durable_packet_contains_only_sanitized_counts_classes_and_source_pointers: true
+fitness_credit: 0
+consumer_ack_credit: 0
+terminal_receipt_written: false
+honest_flaw: THIS_ROUTE_CAN_VERIFY_ONLY_GIT_STRUCTURE_AND_MISSING_BINDINGS; IT_CANNOT_REPLAY_PRIVATE_CALENDAR_DATA_INSPECT_OAUTH_SCOPE_OR PROVIDE_DISTINCT_PROVIDER_INDEPENDENCE
+valid_time_utc: 2026-08-03T03:08:59Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+sealed: true
