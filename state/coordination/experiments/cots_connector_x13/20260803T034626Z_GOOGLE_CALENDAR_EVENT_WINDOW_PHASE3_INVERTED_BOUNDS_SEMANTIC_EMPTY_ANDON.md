@@ -1,0 +1,143 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_GOOGLE_CALENDAR_BOUNDED_EVENT_WINDOW_READONLY_001
+event_type: PHASE3_INVERTED_TIME_BOUND_FAILURE_AND_CONNECTOR_VARIANCE_PROBE
+candidate: Google_Calendar_bounded_event_window_readonly_surface
+carrier_task_id: 6a55c1733708819185088bf334e33ea5
+carrier_task_id_match: true
+wip: 1
+expected_current_version: 54
+next_current_version: 55
+campaign_wake: 3_of_4
+phase_3_disposition: PHASE3_ACCEPTED_WITH_SEMANTIC_EMPTY_RESULT_ANDON_AND_CLIENT_SIDE_BOUND_VALIDATION_GATE
+operator_minutes_removed_measured: 0
+operator_minutes_removed_estimate_per_schedule_window_check: 1_to_4_UNVALIDATED
+fitness_credit: 0_PENDING_SOURCE_BOUND_CONSUMER_ACK_AND_MEASURED_OPERATOR_OUTCOME
+custom_code_avoided_estimate:
+  authenticated_event_list_time_bounds_pagination_and_normalization: 45_to_140_LOC_UNVALIDATED
+custom_policy_not_avoided:
+  - STRICT_CLIENT_SIDE_TIME_BOUND_ORDER_VALIDATION
+  - EMPTY_RESULT_STATE_CLASSIFICATION_AND_NEGATIVE_EVIDENCE_HANDLING
+  - DATA_MINIMIZATION_AND_PRIVATE_EVENT_FIELD_HANDLING
+  - ACCOUNT_IDENTITY_CREDENTIAL_TYPE_AUTHORITY_AND_LEAST_PRIVILEGE
+  - PAGINATION_COMPLETENESS_ORDERING_AND_DUPLICATE_CONTROL
+  - RATE_LIMIT_RETRY_BACKOFF_AND_COST_ACCOUNTING
+  - INDEPENDENT_VERIFICATION
+credentials:
+  connector_reached_primary_calendar_without_error: true
+  operator_supplied_credentials: 0
+  authenticated_identity: UNKNOWN
+  credential_type: UNKNOWN
+  calendar_id_alias_used: primary
+  effective_oauth_scope: UNKNOWN
+  access_role: NOT_EXPOSED
+  credential_custody: UNKNOWN
+  least_privilege_verified: false
+direct_phase_3_receipt:
+  action: Google_Calendar.search_events
+  calendar_id: primary
+  synthetic_probe: true
+  time_min_utc: 2026-08-03T07:48:00Z
+  time_max_utc: 2026-08-03T01:48:00Z
+  time_min_is_after_time_max: true
+  requested_timezone: America/Denver
+  requested_max_results: 1
+  query_supplied: false
+  page_token_supplied: false
+  returned_event_count: 0
+  next_page_token_present: false
+  connector_error: null
+  connector_error_code: null
+  connector_http_status: null
+  clamp_errors: null
+  clamp_rewrites: null
+  external_call_time_ms: 195
+  carrier_retries: 0
+  mutation_or_notification_effect: false
+  private_event_values_returned_or_promoted: false
+measured_connector_variance:
+  official_contract_requires_time_max_greater_than_time_min: true
+  connector_surface_returned_empty_success_shape_instead_of_visible_invalid_argument: true
+  malformed_range_and_valid_empty_window_are_indistinguishable_at_this_surface: true
+  raw_request_forwarding_or_parameter_rewrite: UNKNOWN
+  conclusion_scope: CONNECTOR_SURFACE_ONLY_NOT_RAW_GOOGLE_API
+semantic_andon:
+  active: true
+  measured_fact: INVERTED_RFC3339_BOUNDS_RETURNED_ZERO_EVENTS_AND_NO_ERROR
+  implication: EMPTY_ARRAY_CANNOT_PROVE_A_VALID_EMPTY_CALENDAR_WINDOW_UNLESS_BOUNDS_ARE_VALIDATED_BEFORE_CALL
+  severity: DATA_QUALITY_AND_NEGATIVE_EVIDENCE_RISK
+failure_behavior:
+  success_path: OBSERVED_TWICE
+  event_window_overlap_behavior: OBSERVED_TWICE
+  small_result_cap_and_cursor_behavior: OBSERVED
+  invalid_time_bounds: OBSERVED_AS_SEMANTIC_EMPTY_SUCCESS_AT_CONNECTOR_SURFACE
+  valid_empty_window: NOT_TESTED
+  invalid_page_token: NOT_TESTED
+  authentication_or_permission_denial: NOT_TESTED
+  quota_or_rate_limit: NOT_TESTED
+  transient_server_failure: NOT_TESTED
+  independent_raw_or_UI_readback: NOT_TESTED
+durability: EPHEMERAL_POINT_IN_TIME_QUERY_OVER_MUTABLE_CALENDAR_STATE_NOT_A_SNAPSHOT_SYNC_OR_EVENT_STREAM
+observability: NORMALIZED_EVENT_COUNT_CURSOR_PRESENCE_CONNECTOR_ERROR_FIELDS_CLAMP_FIELDS_AND_LATENCY_VISIBLE_RAW_HTTP_REQUEST_RESPONSE_REQUEST_ID_ACCESS_ROLE_QUOTA_HEADERS_PARAMETER_FORWARDING_AND_UPSTREAM_RETRIES_HIDDEN
+portability: MEDIUM_RFC3339_BOUND_ORDER_VALIDATION_PORTABLE_GOOGLE_PRIMARY_ALIAS_EVENT_FIELDS_PAGE_TOKENS_AND_OVERLAP_SEMANTICS_PROVIDER_SPECIFIC
+cost_and_quota:
+  paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
+  candidate_connector_calls_this_phase: 1
+  campaign_connector_calls_total: 3
+  actual_upstream_request_count: UNKNOWN_AT_LEAST_2_SUCCESS_PATH_CALLS_AND_UP_TO_1_FAILURE_PROBE_CALL
+  actual_quota_units_consumed: UNKNOWN
+  live_project_quota_class: UNKNOWN
+  billing_counters: NOT_EXPOSED
+  carrier_retries_total: 0
+official_contract_checked_2026_08_03:
+  events_list: https://developers.google.com/workspace/calendar/api/v3/reference/events/list
+  errors: https://developers.google.com/workspace/calendar/api/guides/errors
+  time_max_requirement: IF_TIME_MIN_IS_SET_TIME_MAX_MUST_BE_GREATER_THAN_TIME_MIN
+  time_min_requirement: IF_TIME_MAX_IS_SET_TIME_MIN_MUST_BE_SMALLER_THAN_TIME_MAX
+  max_results_is_page_maximum_not_total_count: true
+  next_page_token_signals_more_results: true
+mandatory_gates:
+  - VALIDATE_RFC3339_PARSEABILITY_AND_REQUIRE_TIME_MIN_STRICTLY_LESS_THAN_TIME_MAX_BEFORE_CONNECTOR_INVOCATION
+  - CLASSIFY_INVALID_LOCAL_BOUNDS_SEPARATELY_FROM_VALID_EMPTY_WINDOW_NO_MATCH_PERMISSION_RATE_LIMIT_TRANSPORT_AND_PROVIDER_FAILURE
+  - NEVER_TRANSLATE_AN_EMPTY_CONNECTOR_ARRAY_INTO_NO_CALENDAR_CONFLICT_UNLESS_BOUND_VALIDATION_PASSED
+  - PRESERVE_EXACT_VALIDATED_BOUNDS_CALENDAR_ALIAS_AND_OBSERVATION_TIME_WITH_EACH_NEGATIVE_RESULT
+  - USE_EXPLICIT_RFC3339_TIME_MIN_TIME_MAX_TIMEZONE_CALENDAR_ID_AND_SMALL_MAX_RESULTS
+  - INTERPRET_TIME_MIN_AS_EXCLUSIVE_LOWER_BOUND_ON_EVENT_END_AND_TIME_MAX_AS_EXCLUSIVE_UPPER_BOUND_ON_EVENT_START
+  - TREAT_MAX_RESULTS_AS_PAGE_CAP_NOT_TOTAL_MATCH_COUNT
+  - MINIMIZE_EVENT_CONTENT_IN_MEMORY_BEFORE_GIT_SLACK_OR_DOWNSTREAM_FANOUT
+  - DO_NOT_INFER_ACCOUNT_IDENTITY_ACCESS_ROLE_OAUTH_SCOPE_WRITE_AUTHORITY_OR_NOTIFICATION_AUTHORITY_FROM_READ_SUCCESS
+  - DO_NOT_CLAIM_SNAPSHOT_STABILITY_COMPLETENESS_OR_DURABILITY_FROM_ONE_QUERY_OR_ONE_PAGE
+  - KEEP_EVENT_CREATE_UPDATE_DELETE_MOVE_IMPORT_QUICK_ADD_INVITATION_RESPONSE_ATTENDEE_EMAIL_AND_NOTIFICATION_EFFECTS_EXCLUDED
+strongest_falsifier: SAME_CONTEXT_RAW_EVENTS_LIST_WITH_IDENTICAL_INVERTED_BOUNDS_RETURNS_A_VISIBLE_4XX_INVALID_ARGUMENT_WHILE_THE_CONNECTOR_SURFACE_CONTINUES_TO_RETURN_EMPTY_SUCCESS_OR_A_VALIDATED_BOUND_CONSUMER_STILL_OBSERVES_FALSE_NEGATIVE_CONFLICT_RESULTS
+verifier: RAW_GOOGLE_CALENDAR_EVENTS_LIST_WITH_IDENTICAL_CALENDAR_TIME_MIN_TIME_MAX_TIMEZONE_AND_MAX_RESULTS_PLUS_CALENDAR_UI_FOR_VALID_WINDOWS
+consumer:
+  - HFO_EXECUTIVE_ASSISTANT_BOUNDED_DAY_PLAN_READS
+  - HFO_DEADLINE_AND_CONFLICT_DETECTION_WITH_PRIVACY_MINIMIZATION
+  - HFO_WAITING_CLOCK_AND_MORNING_PACKET_SOURCE_BOUND_OBSERVATIONS
+honest_flaw: THIS_PROBE_ESTABLISHES_CONNECTOR_SURFACE_SEMANTIC_AMBIGUITY_BUT_NOT_WHETHER_THE_WRAPPER_DROPPED_REWROTE_OR_FORWARDED_THE_INVALID_BOUNDS_NO_RAW_HTTP_OR_UI_COMPARISON_NO_VALID_EMPTY_WINDOW_NO_PERMISSION_OR_RATE_LIMIT_FAILURE_NO_SCOPE_PROOF_NO_CONSUMER_ACK_AND_ZERO_MEASURED_OPERATOR_MINUTES
+prior_event:
+  commit: bd512f6e48838211e0bbee4e2fa1837cc8eec790
+  path: state/coordination/experiments/cots_connector_x13/20260803T024931Z_GOOGLE_CALENDAR_EVENT_WINDOW_PHASE2_NARROW_CAP_AND_CURSOR.md
+  blob_sha: 83f60b0ff1952e69902d9481659665f23f01e4a7
+next_wake:
+  phase: 4_of_4
+  proposed_action: DECISION_ONLY_WITH_NO_ADDITIONAL_CALENDAR_CAPABILITY_CALL
+  provisional_decision: ADOPT_WITH_GATES
+  excluded_effects: EVENT_CREATE_UPDATE_DELETE_INVITATION_RESPONSE_ATTENDEE_CHANGE_EMAIL_NOTIFICATION_TOKEN_PERSISTENCE_OR_ADDITIONAL_PROVIDER_CALL
+review_expiry_utc: 2026-08-10T03:46:26Z
+valid_time_utc: 2026-08-03T03:46:26Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+sealed: true
+---
+
+# Phase 3 failure and variance probe — semantic empty-result Andon
+
+One synthetic read-only probe supplied valid RFC3339 timestamps in an invalid order: `timeMin` was later than `timeMax`. Google’s published Events.list contract requires the upper bound to be greater than the lower bound.
+
+The connector returned zero events, no continuation token, and no visible error in 195 ms. No retry, mutation, invitation, email, or notification effect occurred. This makes malformed bounds and a legitimate empty window indistinguishable at the connector surface.
+
+This finding does not prove the raw Google API accepted the request. The wrapper may have dropped, rewritten, or intercepted parameters; raw request and response data are hidden. The admitted response is therefore a connector-variance fact, not a claim about provider behavior.
+
+Mandatory gate: parse and validate both bounds locally, require `timeMin < timeMax`, and preserve a distinct invalid-input state before invoking the connector. An empty array is not authoritative evidence of no calendar conflict unless that validation passed.
+
+No outcome credit is earned. Operator minutes removed remain zero, credentials and scope remain unknown, and no raw API/UI comparison, valid empty-window probe, permission failure, rate-limit failure, ConsumerAck, or measured downstream outcome exists.
