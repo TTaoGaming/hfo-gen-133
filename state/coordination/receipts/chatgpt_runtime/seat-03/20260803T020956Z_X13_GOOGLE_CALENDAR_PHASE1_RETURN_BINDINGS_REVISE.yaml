@@ -1,0 +1,88 @@
+schema_id: hfo.gen133.s03.reducer_route.v1
+seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMER_ACK_TRACKER
+result: REVISE
+terminal: false
+wip: 1
+self_probe:
+  expected_task_id: 6a539fc5130c81918c13624739fb2a60
+  observed_task_id: 6a539fc5130c81918c13624739fb2a60
+  task_id_match: true
+  observed_title: HFO_S03_RATATOSKR_PACEMAKER
+  available_surfaces:
+    - NATIVE_AUTOMATIONS_READ
+    - GITHUB_READ_WRITE_READBACK
+    - SLACK_READ_WRITE
+  distinct_provider_runtime_exposed: false
+canonical:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+prior_s03_terminal_or_route_cursor:
+  commit: 8784ce76ea81fa60c8fd106508caf7d1ef3474d0
+  observed_utc: 2026-08-03T01:09:33Z
+correlation_id: X13_GOOGLE_CALENDAR_BOUNDED_EVENT_WINDOW_READONLY_001_PHASE1
+selected_changed_inputs:
+  experiment_event:
+    commit: 38c0d8cd1d7b0aa3df9ff58ae8a9e835aef2373d
+    path: state/coordination/experiments/cots_connector_x13/20260803T014800Z_GOOGLE_CALENDAR_EVENT_WINDOW_PHASE1_BASELINE_AND_PRIVACY_ANDON.md
+    blob_sha: 41b9cc3d3abffbccc2cfbca0c57a6e3cff129740
+    exact_git_readback: true
+  current_projection:
+    commit: f3762004ab2d3728ef79b9e8d69d78f558842405
+    path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    blob_sha: 62b4c83fe3e9795e16ae7df2c0d89cae5b17af2b
+    version: 53
+    exact_git_readback: true
+  supporting_nonproducer_research:
+    commit: cc122eed081f6a2b73be17bffd461b3888627653
+    path: state/coordination/receipts/chatgpt_runtime/seat-08/20260803T012849Z_S08_GOOGLE_CALENDAR_EVENT_WINDOW_PAGINATION_COMPLETENESS_EVIDENCE_CARD.md
+    blob_sha: 70ade3e47da469d3def7684ff00defb722b66d5f
+    decision: REVISE
+    binding_weight: 0
+reduction:
+  claim: MISSING
+  producer_return: NOT_ADMISSIBLE_EXPERIMENT_OBSERVATION_ONLY
+  exact_request_parameters_present: true
+  exact_raw_source_response_or_source_system_digest: MISSING
+  canonical_producer_return_digest: MISSING
+  commands_and_exit_codes: NOT_APPLICABLE_CONNECTOR_CALL_BUT_RAW_CALL_RECEIPT_NOT_EXPOSED
+  effect_ceiling: PRESENT
+  rollback: READ_ONLY_NO_MUTATION_ASSERTED_BUT_NO_SOURCE_SYSTEM_ROLLBACK_RECEIPT_REQUIRED
+  expiry: PRESENT_2026-08-10T01:48:00Z
+  honest_flaw: PRESENT
+  pagination_completeness: FELL_PRECHECK_NEXT_PAGE_TOKEN_PRESENT_AND_CHAIN_NOT_EXHAUSTED
+  distinct_digest_bound_verdict: MISSING
+  consumer_ack: NOT_OBSERVED
+missing_terminal_bindings:
+  - WORKITEM_CLAIM_SOURCE_ACCEPTANCE_DIGEST_LEASE_IDEMPOTENCY_AND_PRODUCER_ACTOR_BINDING
+  - CANONICAL_PRODUCER_RETURN_DIGEST_BOUND_TO_THE_CLAIM
+  - PRIVACY_SAFE_REPLAY_COMMITMENT_FOR_IDENTICAL_CALENDAR_WINDOW_QUERY_AND_PAGE_CHAIN
+  - RAW_GOOGLE_CALENDAR_OR_DISTINCT_AUTHORIZED_CLIENT_READBACK_DIGEST
+  - COMPLETE_PAGE_CHAIN_OR_EXPLICIT_PARTIAL_WINDOW_TERMINATION
+  - EXACT_STOOD_OR_FELL_TIED_TO_THE_PRODUCER_RETURN_DIGEST
+  - EXPLICIT_NAMED_POST_STOOD_CONSUMER_ACK
+revise_request:
+  requested_from: X13_GOOGLE_CALENDAR_BOUNDED_EVENT_WINDOW_READONLY_001
+  exact_request:
+    - CREATE_ONE_UNEXPIRED_WORKITEM_CLAIM_BINDING_SOURCE_ACCEPTANCE_LEASE_IDEMPOTENCY_PRODUCER_VERIFIER_CONSUMER_AND_EFFECT_CEILING
+    - EMIT_ONE_CANONICAL_PRODUCER_RETURN_DIGEST_WITH_IDENTICAL_REQUEST_PARAMETERS_AND_SANITIZED_PER_PAGE_COUNTS_CURSOR_PRESENCE_AND_TERMINATION_CLASS
+    - LABEL_INTERRUPTED_OR_CAPPED_PAGINATION_PARTIAL_WINDOW_NOT_COMPLETE
+    - OBTAIN_DISTINCT_RAW_API_OR_CALENDAR_UI_STOOD_OR_FELL_BOUND_TO_THE_PRODUCER_DIGEST
+    - AFTER_STOOD_OBTAIN_EXPLICIT_NAMED_CONSUMER_ACK_FOR_THE_SAME_WORKITEM
+route:
+  addressed_to: S04_STRUCTURAL_PREFLIGHT_VERIFIER
+  addressed_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  packet_scope: EXACT_EVENT_CURRENT_AND_S08_BLOBS_LISTED_ABOVE
+  requested_result: REVISE
+  provider_class: CHATGPT_SAME_PROVIDER_NONPRODUCER_PREFLIGHT
+  binding_weight: 0
+  independent_verification_closed: false
+privacy:
+  exact_private_calendar_event_values_copied: false
+  durable_packet_contains_only_sanitized_counts_classes_and_source_pointers: true
+fitness_credit: 0
+consumer_ack_credit: 0
+terminal_receipt_written: false
+honest_flaw: THIS_ROUTE_CAN_VERIFY_ONLY_GIT_STRUCTURE_AND_MISSING_BINDINGS; IT_CANNOT_REPLAY_THE_PRIVATE_CALENDAR_RESPONSE OR PROVIDE_DISTINCT_PROVIDER_INDEPENDENCE
+valid_time_utc: 2026-08-03T02:09:56Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+sealed: true
