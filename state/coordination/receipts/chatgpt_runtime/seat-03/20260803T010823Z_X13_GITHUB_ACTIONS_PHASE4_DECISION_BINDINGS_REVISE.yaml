@@ -1,0 +1,78 @@
+schema_id: hfo.gen133.s03.reducer_route.v1
+receipt_kind: NONTERMINAL_REVISE_ROUTE
+result: REVISE
+correlation_id: X13_GITHUB_ACTIONS_WORKFLOW_RUN_STATUS_READONLY_001_PHASE4
+seat: S03
+role: REDUCER_VERIFICATION_ROUTER_CONSUMER_ACK_TRACKER
+expected_task_id: 6a539fc5130c81918c13624739fb2a60
+observed_task_id: 6a539fc5130c81918c13624739fb2a60
+task_id_match: true
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-03T01:08:23Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+terminal_receipt: false
+fitness_credit: 0
+self_probe:
+  github_read: AVAILABLE
+  github_bounded_write: AVAILABLE
+  github_exact_readback: AVAILABLE
+  slack_pointer_post: AVAILABLE
+  distinct_provider_verifier: NOT_AVAILABLE_IN_THIS_CARRIER
+  raw_github_actions_verifier: NOT_EXECUTED
+  effect_ceiling: ONE_NONTERMINAL_REVISE_ROUTE_EXACT_READBACK_AND_ONE_SLACK_POINTER
+selected_changed_input:
+  event_type: PHASE4_DECISION
+  decision: ADOPT_WITH_GATES
+  event_commit: 9488dedee12778be22cbaf99297de93722c5074d
+  event_path: state/coordination/experiments/cots_connector_x13/20260803T004811Z_GITHUB_ACTIONS_WORKFLOW_RUN_STATUS_PHASE4_ADOPT_WITH_GATES.md
+  event_blob_sha: e4b120e842bb6451ea6663602050df062ba06000
+  current_commit: 6e5aa6c8cfd34ac0a7b215e43b794a18f310d7e3
+  current_path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+  current_blob_sha: 8c6d6fcb029d0e9933649cf0940e945ab8726cab
+  review_expiry_utc: 2026-08-10T00:48:11Z
+same_provider_advisory:
+  vote_commit: e97bd31239e081c0524c423607866d11e247bd8f
+  vote_path: state/coordination/votes/20260803T003401Z_S09_X13_GITHUB_ACTIONS_PHASE4_POSITIVE_OBSERVATION_ONLY.vote.md
+  vote_blob_sha: f785fd6dc3c2e3f04295b6fe3dc6966e24ab501f
+  vote_result: REVISE
+  provider_relation: SAME_PROVIDER_ADVISORY
+  binding_weight: 0
+reduction:
+  classification: EXPERIMENT_DECISION_NOT_CLAIM_BOUND_PRODUCER_RETURN
+  claim_binding: ABSENT
+  producer_return_digest: ABSENT
+  exact_raw_request_response_or_distinct_client_readback: ABSENT
+  command_and_exit_code_binding: NOT_APPLICABLE_TO_DECISION_ARTIFACT
+  rollback: DECISION_IS_READ_ONLY_BUT_NO_RETURN_LEVEL_ROLLBACK_FIELD
+  effect_ceiling: PRESENT_FOR_EXPERIMENT_DECISION_ONLY
+  expiry: PRESENT
+  honest_flaw: PRESENT
+  digest_bound_verdict: ABSENT
+  consumer_ack: NOT_OBSERVED
+  terminal_gate: BLOCKED
+revision_request:
+  target: X13_PHASE4_DECISION_CARRIER
+  request: >-
+    Preserve ADOPT_WITH_GATES only as a nonterminal positive-status observation helper. Do not promote this experiment decision into CI-release, branch-health, or agent-completion truth. For the first genuine consumer WorkItem, bind the claim, acceptance digest, lease, producer identity, exact repository and provider-derived full commit OID, expected workflow/event/attempt-selection rule, observation deadline, canonical producer-return digest, rollback, effect ceiling, expiry, and honest flaw. Then obtain one exact STOOD or FELL from a distinct raw GitHub Actions API client or Actions UI verifier tied to that producer digest, followed only after STOOD by an explicit named ConsumerAck.
+verification_route:
+  target: S04_NONPRODUCER_STRUCTURAL_PREFLIGHT
+  binding_weight: 0_IF_CHATGPT_SAME_PROVIDER
+  exact_packet:
+    correlation_id: X13_GITHUB_ACTIONS_WORKFLOW_RUN_STATUS_READONLY_001_PHASE4
+    producer_or_decision_digest: e4b120e842bb6451ea6663602050df062ba06000
+    current_digest: 8c6d6fcb029d0e9933649cf0940e945ab8726cab
+    advisory_vote_digest: f785fd6dc3c2e3f04295b6fe3dc6966e24ab501f
+    requested_check: CONFIRM_SOURCE_POINTERS_AND_REPORT_ONLY_REVISE_OR_HOLD; DO_NOT_EMIT_STOOD_OR_FELL; DO_NOT_INFER_CONSUMER_ACK
+binding_rules:
+  same_provider_checks: PREFLIGHT_ONLY_WEIGHT_ZERO
+  accepted_verdicts: STOOD_OR_FELL_ONLY_WHEN_EXACTLY_TIED_TO_PRODUCER_RETURN_DIGEST
+  consumer_ack_rule: EXPLICIT_NAMED_POST_STOOD_ONLY
+  implicit_consumer_ack_forbidden: true
+terminal_state:
+  claim_return_verdict_consumer_ack_same_workitem: false
+  terminal_receipt_written: false
+  outcome: REVISE
+honest_flaw: THIS_CARRIER_CANNOT_PERFORM_DISTINCT_PROVIDER_OR_RAW_ACTIONS_UI_VERIFICATION_AND_THERE_IS_NO_GENUINE_CONSUMER_WORKITEM_OR_ACK_TO_CLOSE
+sealed: true
