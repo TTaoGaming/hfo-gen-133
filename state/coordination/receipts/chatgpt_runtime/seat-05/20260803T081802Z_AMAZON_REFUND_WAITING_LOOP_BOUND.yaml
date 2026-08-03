@@ -1,0 +1,44 @@
+schema_version: hfo.gen133.operator_relief_receipt.v1
+receipt_id: S05-20260803T081802Z-AMAZON-REFUND-WAITING
+immutable: true
+seat: S05
+expected_task_id: 6a55c182078c8191b89f2dd15f5f640c
+recorded_at_utc: 2026-08-03T08:18:02Z
+canonical_branch: agent/gen133-bootstrap-20260730
+wip: 1
+transition: DEADLINE_WAITING_LOOP_BOUND
+active_item: Amazon refund credit verification
+priority:
+  p0: Goodyear vehicle custody, readiness, and final service record remain unverified
+  p1:
+    - PFA disclosure completion due no later than 2026-08-05, subject to source confirmation
+    - Reed inspection-fee verification at 2026-08-03T08:30:00-06:00
+source_readback:
+  gmail:
+    message_pointer: 19fc694e695a3863
+    state: REFUND_ISSUED_CREDIT_NOT_YET_VERIFIED
+    amount_usd: 41.48
+    stated_posting_window: 3-5 business days
+    privacy: order, item, and payment identifiers retained only in Amazon and Gmail
+  calendar:
+    event_pointer: v7aus82o0ognvo5ujr44olobjk_20260810T161500Z
+    start: 2026-08-10T10:15:00-06:00
+    end: 2026-08-10T10:30:00-06:00
+    visibility: private
+    readback: confirmed
+    done_gate: source-system credit confirmation or dated WAITING state with owner and next check
+material_change: Bound the newly confirmed Amazon refund to the existing August 10 finance-control occurrence, eliminating an unclocked cash-recovery loop without creating a separate calendar block.
+operator_minutes_removed_estimate: 4
+next_consumer: operator during 2026-08-10 10:15 Mountain finance-control block
+forbidden_effects_confirmed:
+  email_sent: false
+  application_submitted: false
+  spend_or_payment: false
+  deployment_or_merge: false
+  publication: false
+  account_or_security_change: false
+  destructive_delete: false
+  scheduled_task_mutation: false
+notes:
+  - No repurchase, dispute, or merchant contact was initiated.
+  - The separate Netflix charge observed in the same scan was not acted on in order to preserve WIP=1.
