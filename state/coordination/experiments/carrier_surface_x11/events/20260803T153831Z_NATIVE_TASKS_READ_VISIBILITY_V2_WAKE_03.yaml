@@ -1,0 +1,99 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+experiment_id: X11_NATIVE_TASKS_READ_VISIBILITY_V2
+carrier: X11
+actor: X11_CARRIER_AND_TOOL_SURFACE_PDCA_LAB
+task_binding:
+  expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+  expected_task_visible: true
+  match: true
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+wip_limit: 1
+prior_current:
+  expected_version: 66
+  blob: 236bf7c6a5514e09c89d15a12372fe6941576bd3
+  campaign: X11_NATIVE_TASKS_READ_VISIBILITY_V2
+  accepted_wakes: 2
+campaign:
+  controlled_factor: native_tasks_read_visibility
+  accepted_wake: 3
+  target_wakes_before_decision: 4
+baseline:
+  prior_accepted_wake: 2
+  expected_active_hfo_task_count: 15
+  expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+  expected_enabled: true
+  expected_timing_mode: exact_schedule
+  expected_sanitized_schedule_fingerprint_sha256: 84ba8dd14067c90d112e5e7d6deac6dc0197bc6b28584d15e4a350ece061b871
+hypothesis: >-
+  Repeating the same read-only native Tasks inventory probe will expose the exact
+  expected X11 task with unchanged enabled state, timing mode, sanitized schedule
+  fingerprint, and fifteen-task active HFO Gen-133 count without login, mutation,
+  sensitive externalization, or operator relay.
+exact_probe:
+  tool: automations.list
+  mode: read_only
+  query_scope: provider_task_inventory
+  expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+  persisted_fields_only:
+    - expected_task_visible
+    - enabled_boolean
+    - timing_mode
+    - sanitized_schedule_fingerprint
+    - active_hfo_task_count
+    - permission_class
+    - error_class
+    - latency_when_exposed
+  privacy_rule: do_not_persist_unrelated_task_prompt_bodies_or_identifiers
+measured_result:
+  provider_call_status: SUCCESS
+  expected_task_visible: true
+  enabled_boolean: true
+  timing_mode: exact_schedule
+  sanitized_schedule_fingerprint_sha256: 84ba8dd14067c90d112e5e7d6deac6dc0197bc6b28584d15e4a350ece061b871
+  active_hfo_task_count: 15
+  authentication_requested: false
+  interactive_login_required: false
+  unrelated_prompt_body_persisted: false
+  sensitive_readback_externalized: false
+  mutation_performed: false
+  changed_capability: false
+  andon: false
+permission_class: AUTHENTICATED_NATIVE_TASK_INVENTORY_READ_AVAILABLE
+error_class: NONE
+latency:
+  exposed_by_tool: false
+  measured_ms: null
+operator_relay_minutes: 0
+capability_delta: NONE_UNCHANGED_REPEAT
+strongest_falsifier: >-
+  The exact expected task ID is absent, enabled or timing fields drift without an
+  authorized change, the sanitized schedule fingerprint changes unexpectedly,
+  the active HFO count differs from fifteen without an authorized inventory
+  transition, or the native inventory read returns an authentication or permission error.
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer:
+  - Reginleif
+  - Ratatoskr
+claim_ceiling: >-
+  Bounded same-provider native task inventory visibility only; not current-run
+  liveness, successful completion, exactly-once delivery, future durability, or
+  independent verification.
+honest_flaw: >-
+  The provider inventory response is broad and includes unrelated prompt bodies;
+  the connector exposes no field-selective query or request latency. The fifteen-task
+  count is a sanitized local classification and same-provider evidence has binding weight zero.
+result: NATIVE_TASKS_READ_VISIBILITY_V2_WAKE_03_ACCEPTED_UNCHANGED
+next_probe:
+  campaign_wake: 4
+  mode: repeat_exact_expected_task_inventory_visibility_probe_and_decide
+  mutation_allowed: false
+slack_action: YIELD_SILENT_AFTER_GIT_READBACK
+valid_time_utc: 2026-08-03T15:38:31Z
+transaction_time_utc: 2026-08-03T15:38:31Z
+evidence_class: DIRECT_PROVIDER_READBACK_SAME_PROVIDER_NONBINDING
+binding_weight: 0
+effect_ceiling: READ_ONLY_PROVIDER_METADATA_PLUS_GIT_RECEIPT
+sealed: false
+---
