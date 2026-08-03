@@ -1,8 +1,8 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_WAKE_TIMING_PROVIDER_LAST_RUN_DRIFT_V2
-current_version: 68
-accepted_wakes: 0
+current_version: 69
+accepted_wakes: 1
 target_wakes_before_decision: 4
 controlled_factor: wake_timing
 campaign_status: ACTIVE
@@ -13,22 +13,22 @@ prior_campaign:
   disposition: KEEP
   accepted_wakes: 4
 last_event:
-  commit: 841b33f87331db95a1db51cbbdf9b1d35126014b
-  path: state/coordination/experiments/carrier_surface_x11/events/20260803T163924Z_NATIVE_TASKS_READ_VISIBILITY_V2_CAMPAIGN_DECISION_WAKE_04.yaml
-  blob: f389576fe346d46ee9faada4d629d52366a93f4f
+  commit: 84676cf1279894ce26e2401137c9055e441efcfa
+  path: state/coordination/experiments/carrier_surface_x11/events/20260803T174201Z_WAKE_TIMING_PROVIDER_LAST_RUN_DRIFT_V2_WAKE_01.yaml
+  blob: 236c5e148b847d41ca15d38037d84b4875e83359
 baseline_result:
   provider_call_status: SUCCESS
   expected_task_visible: true
-  enabled_boolean: true
-  timing_mode: exact_schedule
-  sanitized_schedule_fingerprint_sha256: 84ba8dd14067c90d112e5e7d6deac6dc0197bc6b28584d15e4a350ece061b871
-  active_hfo_task_count: 15
+  prior_last_run_time_utc: 2026-08-03T16:41:27.260424Z
+  scheduled_epoch_utc: 2026-08-03T16:40:00Z
+  absolute_start_drift_seconds: 87.260424
+  drift_direction: AFTER_SCHEDULED_EPOCH
+  drift_semantics: PROVIDER_LAST_RUN_TIMESTAMP_MINUS_SCHEDULED_EPOCH_NOT_DIRECT_START_LATENCY
   authentication_requested: false
   interactive_login_required: false
-  unrelated_prompt_body_persisted: false
   sensitive_readback_externalized: false
   mutation_performed: false
-  changed_capability: false
+  changed_capability: true
   andon: false
   permission_class: AUTHENTICATED_NATIVE_TASK_INVENTORY_READ_AVAILABLE
   error_class: NONE
@@ -43,8 +43,8 @@ honest_flaw: provider_last_run_time_is_a_same_provider_completion_or_registratio
 next_factor: wake_timing
 next_probe:
   experiment_id: X11_WAKE_TIMING_PROVIDER_LAST_RUN_DRIFT_V2
-  campaign_wake: 1
-  mode: read_only_compare_prior_provider_last_run_timestamp_to_scheduled_epoch
+  campaign_wake: 2
+  mode: repeat_read_only_compare_prior_provider_last_run_timestamp_to_scheduled_epoch
   expected_task_id: 6a55089a9adc8191bda54541f7f9effa
   scheduled_minute_utc: 40
   persist_only:
@@ -56,9 +56,9 @@ next_probe:
     - latency_when_exposed
   mutation_allowed: false
   sensitive_readback_externalization_allowed: false
-slack_action: POST_CAMPAIGN_DECISION_AFTER_GIT_READBACK
-updated_valid_time_utc: 2026-08-03T16:39:24Z
+slack_action: POST_CHANGED_CAPABILITY_AFTER_GIT_READBACK
+updated_valid_time_utc: 2026-08-03T17:42:01Z
 sealed: false
 ---
 
-Native Tasks read visibility V2 completed four accepted wakes with a bounded KEEP disposition. The exact expected X11 task remained visible and enabled, timing mode and sanitized schedule fingerprint were unchanged, and fifteen active HFO Gen-133 tasks were observed. The next campaign measures provider-exposed prior-run timing drift against the immutable minute-40 schedule. This remains same-provider telemetry and does not prove current-wake start time, scheduler SLA, delivery, or independent verification.
+Wake timing provider-last-run drift V2 advanced to wake 1/4. The provider-exposed prior last-run timestamp was 87.260424 seconds after its same-hour minute-40 epoch. This remains bounded same-provider telemetry and does not prove current-wake start time, provider dispatch, queue latency, execution duration, scheduler SLA, delivery, or independent verification.
