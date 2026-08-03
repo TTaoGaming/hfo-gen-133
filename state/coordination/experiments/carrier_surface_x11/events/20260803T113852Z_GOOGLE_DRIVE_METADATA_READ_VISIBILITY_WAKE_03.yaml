@@ -1,0 +1,86 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+event_type: CAPABILITY_MEASUREMENT
+carrier: X11
+expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+repository: TTaoGaming/hfo-gen-133
+branch: agent/gen133-bootstrap-20260730
+wip: 1
+experiment_id: X11_GOOGLE_DRIVE_METADATA_READ_VISIBILITY_V1
+campaign_wake: 3
+target_wakes_before_decision: 4
+expected_current_version: 62
+resulting_current_version: 63
+controlled_factor: google_drive_metadata_read_visibility
+baseline:
+  drive_metadata_surface_checked: true
+  query_executed: true
+  sanitized_match_count: 0
+  next_page_token_present: false
+  permission_class: CONNECTED_GOOGLE_DRIVE_METADATA_SEARCH_AVAILABLE
+  error_class: NONE
+  latency_ms: 2518
+hypothesis: the_connected_google_drive_surface_will_repeat_the_fixed_bounded_impossible_marker_metadata_search_and_return_a_sanitized_zero_match_result_without_interactive_login_or_file_content_hydration
+exact_probe:
+  action: search_google_drive
+  query_marker: HFO_X11_IMPOSSIBLE_DRIVE_PROBE_6A55089A9ADC8191BDA54541F7F9EFFA
+  topn: 1
+  best_effort_fetch: false
+  require_viewed_by_user: false
+  expected_match_count: 0
+  mutation_allowed: false
+  interactive_login_allowed: false
+  file_content_persistence_allowed: false
+  file_identifier_externalization_allowed: false
+  sensitive_readback_externalization_allowed: false
+measured_result:
+  accepted: true
+  tool_status: SUCCESS
+  query_executed: true
+  sanitized_match_count: 0
+  next_page_token_present: false
+  authentication_requested: false
+  interactive_login_required: false
+  file_content_hydrated: false
+  file_content_persisted: false
+  file_identifiers_externalized: false
+  task_mutation_performed: false
+  sensitive_readback_externalized: false
+  changed_capability: false
+  andon: false
+permission_class: CONNECTED_GOOGLE_DRIVE_METADATA_SEARCH_AVAILABLE
+error_class: NONE
+latency_exposed: true
+latency_ms: 1323
+operator_relay_minutes: 0
+strongest_falsifier: connector_returns_an_authentication_or_permission_error_or_the_fixed_impossible_marker_query_cannot_execute_while_an_independently_authenticated_drive_api_call_executes_and_returns_zero
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer:
+  - Reginleif
+  - Ratatoskr
+honest_flaw: a_zero_result_for_an_impossible_marker_only_measures_bounded_drive_query_execution_and_does_not_establish_drive_completeness_indexing_quality_file_content_access_or_independent_verification
+claim_ceiling: bounded_google_drive_metadata_query_execution_and_sanitized_match_count_visibility_only_not_drive_completeness_content_access_or_independent_verification
+campaign_decision: null
+next_factor: google_drive_metadata_read_visibility
+next_probe:
+  experiment_id: X11_GOOGLE_DRIVE_METADATA_READ_VISIBILITY_V1
+  campaign_wake: 4
+  mode: bounded_impossible_marker_metadata_search_count_probe_and_campaign_decision
+  exact_action: repeat_the_identical_google_drive_impossible_marker_search_with_topn_one_best_effort_fetch_false_then_write_KEEP_REVISE_RESEAT_VARIABLE_or_HOLD_and_select_the_next_factor
+  query_marker: HFO_X11_IMPOSSIBLE_DRIVE_PROBE_6A55089A9ADC8191BDA54541F7F9EFFA
+  topn: 1
+  best_effort_fetch: false
+  require_viewed_by_user: false
+  interactive_login_allowed: false
+  file_content_persistence_allowed: false
+  file_identifier_externalization_allowed: false
+  sensitive_readback_externalization_allowed: false
+  mutation_allowed: false
+  claim_ceiling: bounded_google_drive_metadata_query_execution_and_sanitized_match_count_visibility_only_not_drive_completeness_content_access_or_independent_verification
+slack_action: SILENT_UNCHANGED_PROBE_AFTER_GIT_READBACK
+valid_time_utc: 2026-08-03T11:38:52Z
+recorded_time_utc: 2026-08-03T11:38:52Z
+sealed: true
+---
+
+The third Google Drive metadata-read wake repeated the fixed impossible-marker query with metadata-only settings and returned zero results without interactive login, permission error, file-content hydration, identifier externalization, or mutation. Capability was unchanged, so Slack remains silent.
