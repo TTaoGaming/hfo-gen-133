@@ -1,0 +1,72 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+event_type: EXPERIMENT_WAKE
+carrier: X11
+expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+repository: TTaoGaming/hfo-gen-133
+branch: agent/gen133-bootstrap-20260730
+wip: 1
+experiment_id: X11_CALENDAR_METADATA_READ_VISIBILITY_V1
+campaign_wake: 2
+target_wakes_before_decision: 4
+expected_current_version: 57
+resulting_current_version: 58
+controlled_factor: google_calendar_metadata_read_visibility
+baseline:
+  prior_wake: 1
+  prior_tool_status: SUCCESS
+  prior_match_count: 0
+  prior_permission_class: CONNECTED_GOOGLE_CALENDAR_METADATA_SEARCH_AVAILABLE
+  prior_error_class: NONE
+  prior_latency_ms: 342
+hypothesis: the_connected_google_calendar_surface_will_repeat_the_identical_fixed_bounded_impossible_marker_search_with_the_same_sanitized_zero_match_result_and_without_interactive_login
+exact_probe:
+  action: search_primary_calendar
+  time_min_utc: 2099-01-01T00:00:00Z
+  time_max_utc: 2099-01-02T00:00:00Z
+  query_marker: HFO_X11_IMPOSSIBLE_CALENDAR_PROBE_6A55089A9ADC8191BDA54541F7F9EFFA
+  calendar_id: primary
+  max_results: 1
+  expected_match_count: 0
+  mutation_allowed: false
+  interactive_login_allowed: false
+  event_content_persistence_allowed: false
+  event_identifier_externalization_allowed: false
+  sensitive_readback_externalization_allowed: false
+measured_result:
+  accepted: true
+  tool_status: SUCCESS
+  match_count: 0
+  next_page_token_present: false
+  authentication_requested: false
+  interactive_login_required: false
+  event_content_persisted: false
+  event_identifiers_externalized: false
+  task_mutation_performed: false
+  sensitive_readback_externalized: false
+  changed_capability: false
+  andon: false
+permission_class: CONNECTED_GOOGLE_CALENDAR_METADATA_SEARCH_AVAILABLE
+error_class: NONE
+latency_exposed: true
+latency_ms: 183
+operator_relay_minutes: 0
+strongest_falsifier: the_same_fixed_bounded_impossible_marker_query_returns_a_nonzero_match_or_permission_failure_while_an_independently_authenticated_calendar_api_call_returns_zero
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer:
+  - Reginleif
+  - Ratatoskr
+honest_flaw: repeated_zero_results_for_an_impossible_marker_only_measure_this_bounded_connector_query_path_and_do_not_establish_calendar_completeness_indexing_quality_event_content_access_or_independent_verification
+claim_ceiling: bounded_google_calendar_connector_query_execution_and_sanitized_zero_match_visibility_only_not_calendar_completeness_content_access_or_independent_verification
+next_probe:
+  experiment_id: X11_CALENDAR_METADATA_READ_VISIBILITY_V1
+  campaign_wake: 3
+  mode: repeat_identical_bounded_impossible_marker_search_count_probe
+  expected_match_count: 0
+slack_action: YIELD_SILENTLY_AFTER_GIT_READBACK
+valid_time_utc: 2026-08-03T06:39:23Z
+recorded_time_utc: 2026-08-03T06:39:23Z
+sealed: true
+---
+
+The second Google Calendar metadata-read wake repeated the precommitted fixed-window impossible-marker query and again returned zero events without interactive login, permission error, event-content persistence, identifier externalization, or mutation. Capability was unchanged, so no Slack post is authorized.
