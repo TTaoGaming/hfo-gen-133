@@ -1,0 +1,93 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_match: true
+wip: 1
+result: RETURN_REUSABLE_FAILURE_ANTIBODY
+valid_time_utc: 2026-08-03T10:56:54Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+privacy_ceiling: SANITIZED_REPOSITORY_TASK_AND_EXPERIMENT_METADATA_ONLY
+heritage_credit: 0
+binding_weight: 0
+same_provider_status: SAME_PROVIDER_NONBINDING
+---
+
+self_probe:
+  identity: S15_HERITAGE_REUSE_AND_DEDUP
+  title_observed: HFO S15 Gondul Continuous Heritage
+  task_enabled_observed: true
+  tools_observed:
+    - github_recent_commit_search
+    - github_compare_commits
+    - github_exact_commit_file_read
+    - github_repository_dedup_search
+    - github_create_file
+    - github_readback
+    - slack_pointer_post
+  task_mutation_performed: false
+
+current_work_item:
+  type: NAMED_EVIDENCE_GAP
+  id: X14_MUTANT_060_ef27eb58dbb3
+  mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+  gap: S04_DIRECT_VERDICT_PENDING
+  mutant_commit: 7f26db79d8bd23a2cc84e9febd045744a2f20c98
+  mutant_path: state/coordination/experiments/false_green_x14/quarantine/20260803T105201Z_X12_CONFLICT_DUPLICATE_IDEMPOTENCY_VERSION.mutant.yaml
+  mutant_blob_sha1: 5ad08eb2b3d11d3c008694ca8406948292b4b9e6
+  current_pointer_commit: 5693b1460d94de0a719c5f3ae997c712062c3bac
+  expires_utc: 2026-08-03T14:46:00Z
+  verifier: S04_STRUCTURAL_PREFLIGHT
+  consumer:
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_CAMPAIGN_REDUCER
+
+reused_prior_artifact:
+  original_valid_time_utc: 2026-08-01T13:13:13Z
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+  snapshot_commit: f95ff1f8e3c42f77af35dd43df9295a5f110adc9
+  path: state/coordination/receipts/chatgpt_runtime/seat-04/20260801T131313Z_X14_MUTANT016_DUPLICATE_VERSION_REVISE.yaml
+  git_blob_sha1: b59d27c555c15df36462a56a9c2bb29b4e55efc6
+  authoring_seat: S04_STRUCTURAL_PREFLIGHT
+  original_result: REVISE
+  original_reason_code: DUPLICATE_VERSION_REPLAY_WITHOUT_UNIQUE_IDEMPOTENCY_KEY
+  original_named_gate: S04_IDEMPOTENCY_AND_VERSION_MONOTONICITY_GATE
+
+reuse_class: FAILURE_ANTIBODY
+supported_claims:
+  - A commit-bound authentic source does not make a duplicate or nonmonotonic transition fresh after an overlay is applied.
+  - Structural preflight must apply the overlay and require next_version to be the unique strict successor of expected_version rather than accept a valid-looking historical version.
+  - A no-op or already-consumed version declaration grants no transition, durability, idempotency, ConsumerAck, campaign, or independent-verification credit.
+acceptance_relevance: >-
+  Mutant 060 changes only canonical_conflict.contender.next_version from 62 to 61 while preserving expected_version 61 and observed_current_version 62. The prior direct S04 verdict rejected the same core false-green pattern: authentic source provenance cannot launder an overlay whose resulting transition has next_version equal to expected_version instead of expected_version plus one. S04 still must resolve the exact X12 source, recompute the current 211-byte overlay and SHA-256, and issue the direct blob-bound verdict.
+excluded_claims:
+  - This receipt is not a direct verdict on X14_MUTANT_060_ef27eb58dbb3.
+  - It does not recompute the current mutant overlay byte count, SHA-256, exact source conflict digest, or source blob.
+  - It does not prove GitHub Contents API conflict behavior, atomic compare-and-swap, concurrency safety, repository-wide idempotency uniqueness, or distinct-provider verification.
+  - It does not establish ConsumerAck, heritage consumption, caught-gate credit, campaign closure, or outcome credit.
+
+dedup:
+  exact_current_mutant_reuse_found_before_write: false
+  searches_performed:
+    - repository_code_search_for_X14_MUTANT_060
+    - recent_commit_search_for_060
+    - prior_duplicate_idempotency_and_version_precedent_search
+  closest_existing_pointer: state/coordination/receipts/chatgpt_runtime/seat-15/20260802T125610Z_X14_MUTANT038_REUSE_S04_REPLAYED_IDEMPOTENCY_GATE.yaml
+  not_duplicate_reason: >-
+    The existing mutant-038 pointer concerns predecessor idempotency-key reuse with a still-monotonic version pair. The current WorkItem instead mutates next_version itself to equal expected_version and therefore consumes the older direct duplicate-version verdict as the closer precedent.
+  limitation: GitHub commit enumeration and code indexing are best-effort, nontransactional, and may lag branch-head writes.
+
+verifier: S04_STRUCTURAL_PREFLIGHT
+consumer:
+  - X14_CAMPAIGN_REDUCER
+  - X12_DURABLE_OBJECT_CAMPAIGN_REDUCER
+expiry_utc: 2026-08-03T14:46:00Z
+consumption_condition: >-
+  Heritage earns credit only if a named current consumer cites this exact receipt while processing mutant 060; until then heritage_credit and binding_weight remain zero.
+rollback: RETAIN_OR_IGNORE_THIS_NONBINDING_RECEIPT; DO_NOT_EDIT_SOURCE_MUTANT_CURRENT_OR_TASK_STATE
+honest_flaw: >-
+  The prior direct verdict reviewed an X13 Gmail event with a 16-to-16 replay, not an X12 stale-writer conflict receipt whose observed current version is already 62. It supplies the strict-version-monotonicity antibody but not the current conflict-digest or concurrency proof. Discovery and dedup are best-effort, all evidence is same-provider and nonbinding, ConsumerAck is absent, and no source, task, connector, account, or external system was modified.
