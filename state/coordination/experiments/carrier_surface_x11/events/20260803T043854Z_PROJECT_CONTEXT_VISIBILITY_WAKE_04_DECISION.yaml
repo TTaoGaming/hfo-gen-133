@@ -1,0 +1,84 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+event_type: CAMPAIGN_DECISION
+carrier: X11
+expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+repository: TTaoGaming/hfo-gen-133
+branch: agent/gen133-bootstrap-20260730
+wip: 1
+experiment_id: X11_PROJECT_CONTEXT_VISIBILITY_V1
+campaign_wake: 4
+target_wakes_before_decision: 4
+expected_current_version: 55
+resulting_current_version: 56
+controlled_factor: project_vs_non_project_context
+baseline:
+  project_metadata_surface_checked: true
+  project_metadata_explicitly_exposed: false
+  project_identity_persisted: false
+  project_identity_inferred: false
+  prior_permission_class: NATIVE_RUNTIME_METADATA_VISIBLE_PROJECT_ASSOCIATION_FIELD_NOT_EXPOSED
+  prior_error_class: NONE
+hypothesis: a_fourth_identical_inspection_will_confirm_whether_the_surface_exposes_an_explicit_project_association_field_without_inference
+exact_probe:
+  action: inspect_explicit_native_runtime_metadata
+  field_class: project_association
+  persist_only:
+    - boolean_status
+    - permission_class
+    - error_class
+  inference_from_prompt_repository_or_conversation_text_allowed: false
+  project_identity_persistence_allowed: false
+  interactive_login_allowed: false
+  sensitive_readback_externalization_allowed: false
+  mutation_allowed: false
+measured_result:
+  accepted: true
+  project_metadata_surface_checked: true
+  project_metadata_explicitly_exposed: false
+  project_identity_persisted: false
+  project_identity_inferred: false
+  authentication_requested: false
+  interactive_login_required: false
+  task_mutation_performed: false
+  sensitive_readback_externalized: false
+  changed_capability: false
+  andon: false
+permission_class: NATIVE_RUNTIME_METADATA_VISIBLE_PROJECT_ASSOCIATION_FIELD_NOT_EXPOSED
+error_class: NONE
+latency_exposed: false
+latency_ms: null
+operator_relay_minutes: 0
+strongest_falsifier: explicit_native_runtime_project_association_metadata_is_present_while_the_probe_records_not_exposed_or_absent_while_the_probe_records_exposed
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer:
+  - Reginleif
+  - Ratatoskr
+honest_flaw: four_negative_visibility_samples_do_not_classify_the_run_as_project_or_non_project_and_do_not_test_context_inheritance_across_two_known_context_classes
+claim_ceiling: explicit_runtime_project_metadata_visibility_only_not_project_membership_context_inheritance_or_cross_context_comparison
+campaign_decision: RESEAT_VARIABLE
+decision_reason: the_factor_cannot_be_varied_or_compared_because_no_explicit_project_association_metadata_or_known_cross_context_pair_is_exposed
+next_factor: google_calendar_metadata_read_visibility
+next_probe:
+  experiment_id: X11_CALENDAR_METADATA_READ_VISIBILITY_V1
+  campaign_wake: 1
+  mode: bounded_impossible_marker_search_count_probe
+  exact_action: search_primary_calendar_in_a_fixed_bounded_window_for_the_impossible_public_marker_HFO_X11_IMPOSSIBLE_CALENDAR_PROBE_6A55089A9ADC8191BDA54541F7F9EFFA_and_persist_only_tool_status_permission_error_class_match_count_and_exposed_latency
+  time_min_utc: 2099-01-01T00:00:00Z
+  time_max_utc: 2099-01-02T00:00:00Z
+  query_marker: HFO_X11_IMPOSSIBLE_CALENDAR_PROBE_6A55089A9ADC8191BDA54541F7F9EFFA
+  calendar_id: primary
+  max_results: 1
+  interactive_login_allowed: false
+  event_content_persistence_allowed: false
+  event_identifier_externalization_allowed: false
+  sensitive_readback_externalization_allowed: false
+  mutation_allowed: false
+  claim_ceiling: bounded_calendar_connector_query_execution_and_sanitized_match_count_visibility_only_not_calendar_completeness_content_access_or_independent_verification
+slack_action: POST_CAMPAIGN_DECISION
+valid_time_utc: 2026-08-03T04:38:54Z
+recorded_time_utc: 2026-08-03T04:38:54Z
+sealed: true
+---
+
+The fourth bounded probe again found no explicit native runtime Project-association field. The campaign is reseated because four negative visibility samples cannot produce the requested Project-versus-non-Project comparison. No Project identity was inferred or persisted. The next factor is a bounded Google Calendar metadata-read visibility probe that persists only sanitized status and count fields.
