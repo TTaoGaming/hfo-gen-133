@@ -1,8 +1,8 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_CALENDAR_METADATA_READ_VISIBILITY_V1
-current_version: 56
-accepted_wakes: 0
+current_version: 57
+accepted_wakes: 1
 target_wakes_before_decision: 4
 controlled_factor: google_calendar_metadata_read_visibility
 campaign_status: ACTIVE
@@ -14,27 +14,30 @@ prior_campaign:
   accepted_wakes: 4
   decision_scope: explicit_runtime_project_metadata_visibility_only_not_project_membership_context_inheritance_or_cross_context_comparison
 last_event:
-  commit: f5a47444e53bc7c0628791f86e145477823a19a3
-  path: state/coordination/experiments/carrier_surface_x11/events/20260803T043854Z_PROJECT_CONTEXT_VISIBILITY_WAKE_04_DECISION.yaml
-  blob: d859881fb100d17fc61f2086637ab0038092d397
+  commit: 151a3f401fa740fa9a4ce58ced05fe4a546e2d47
+  path: state/coordination/experiments/carrier_surface_x11/events/20260803T054001Z_CALENDAR_METADATA_READ_VISIBILITY_WAKE_01.yaml
+  blob: 1e7c0e5b8533652141999d015fac98745821cff8
 baseline_result:
-  calendar_metadata_surface_checked: false
-  query_executed: false
-  sanitized_match_count: null
+  wake_1_accepted: true
+  calendar_metadata_surface_checked: true
+  tool_status: SUCCESS
+  query_executed: true
+  match_count: 0
+  next_page_token_present: false
   authentication_requested: false
   interactive_login_required: false
   event_content_persisted: false
   event_identifier_externalized: false
   task_mutation_performed: false
   sensitive_readback_externalized: false
-  changed_capability: false
+  changed_capability: true
   andon: false
-  permission_class: NOT_YET_PROBED
-  error_class: NOT_YET_PROBED
-  latency_exposed: false
-  latency_ms: null
+  permission_class: CONNECTED_GOOGLE_CALENDAR_METADATA_SEARCH_AVAILABLE
+  error_class: NONE
+  latency_exposed: true
+  latency_ms: 342
   operator_relay_minutes: 0
-  claim_ceiling: bounded_calendar_connector_query_execution_and_sanitized_match_count_visibility_only_not_calendar_completeness_content_access_or_independent_verification
+  claim_ceiling: bounded_google_calendar_connector_query_execution_and_sanitized_zero_match_visibility_only_not_calendar_completeness_content_access_or_independent_verification
 campaign_gates:
   - no_task_mutation
   - no_interactive_login
@@ -46,32 +49,33 @@ campaign_gates:
   - no_event_identifier_externalization
   - no_sensitive_readback_externalization
   - same_provider_binding_weight_zero
-strongest_falsifier: connector_returns_an_authentication_or_permission_error_or_the_fixed_impossible_marker_query_cannot_execute_within_the_bounded_window
+strongest_falsifier: the_same_fixed_bounded_impossible_marker_query_returns_a_nonzero_match_or_permission_failure_while_an_independently_authenticated_calendar_api_call_returns_zero
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 next_consumer:
   - Reginleif
   - Ratatoskr
-honest_flaw: a_zero_result_for_an_impossible_marker_only_measures_bounded_query_execution_and_does_not_establish_calendar_completeness_indexing_quality_or_content_access
+honest_flaw: a_zero_result_for_an_impossible_marker_proves_only_that_this_bounded_connector_query_path_executed_not_calendar_completeness_indexing_quality_event_content_access_or_independent_verification
 next_factor: google_calendar_metadata_read_visibility
 next_probe:
   experiment_id: X11_CALENDAR_METADATA_READ_VISIBILITY_V1
-  campaign_wake: 1
-  mode: bounded_impossible_marker_search_count_probe
-  exact_action: search_primary_calendar_in_a_fixed_bounded_window_for_the_impossible_public_marker_HFO_X11_IMPOSSIBLE_CALENDAR_PROBE_6A55089A9ADC8191BDA54541F7F9EFFA_and_persist_only_tool_status_permission_error_class_match_count_and_exposed_latency
+  campaign_wake: 2
+  mode: repeat_identical_bounded_impossible_marker_search_count_probe
+  exact_action: search_primary_calendar_in_the_same_fixed_bounded_window_for_the_same_impossible_public_marker_and_persist_only_tool_status_permission_error_class_match_count_and_exposed_latency
   time_min_utc: 2099-01-01T00:00:00Z
   time_max_utc: 2099-01-02T00:00:00Z
   query_marker: HFO_X11_IMPOSSIBLE_CALENDAR_PROBE_6A55089A9ADC8191BDA54541F7F9EFFA
   calendar_id: primary
   max_results: 1
+  expected_match_count: 0
   interactive_login_allowed: false
   event_content_persistence_allowed: false
   event_identifier_externalization_allowed: false
   sensitive_readback_externalization_allowed: false
   mutation_allowed: false
-  claim_ceiling: bounded_calendar_connector_query_execution_and_sanitized_match_count_visibility_only_not_calendar_completeness_content_access_or_independent_verification
-slack_action: POST_CAMPAIGN_DECISION_AFTER_GIT_READBACK
-updated_valid_time_utc: 2026-08-03T04:38:54Z
+  claim_ceiling: bounded_google_calendar_connector_query_execution_and_sanitized_zero_match_visibility_only_not_calendar_completeness_content_access_or_independent_verification
+slack_action: POST_CHANGED_CAPABILITY_AFTER_GIT_READBACK
+updated_valid_time_utc: 2026-08-03T05:40:01Z
 sealed: false
 ---
 
-Project-context visibility closed RESEAT_VARIABLE after four negative metadata-visibility samples failed to establish a known Project-versus-non-Project comparison. The active campaign now tests only bounded Google Calendar connector query execution with an impossible public marker and persists no event content or identifiers.
+Google Calendar metadata-read campaign wake 1 of 4 accepted. The precommitted fixed-window impossible-marker query returned zero events without interactive login, permission error, event-content persistence, identifier externalization, or mutation. The claim remains limited to bounded connector-query execution and sanitized match-count visibility.
