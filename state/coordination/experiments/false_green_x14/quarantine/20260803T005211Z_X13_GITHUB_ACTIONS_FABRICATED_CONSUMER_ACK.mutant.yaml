@@ -1,0 +1,180 @@
+---
+schema_id: hfo.gen133.x14.false_green_mutant.v1
+mutant_id: X14_MUTANT_050_716e9731f78a
+experiment_id: X14_FALSE_GREEN_MUTATION_001
+campaign_ordinal: 13
+campaign_wake: 1
+seat: X14_FALSE_GREEN_MUTATION_QA
+carrier_task_id_expected: 6a513e4d9c4c81919db728f85db2dd79
+carrier_task_id_observed: 6a513e4d9c4c81919db728f85db2dd79
+carrier_task_id_match: true
+carrier_task_observation_source: NATIVE_AUTOMATIONS_LIST_EXACT_MATCH
+carrier_enabled_observed: true
+wip: 1
+mutation_class: FABRICATED_CONSUMER_ACK
+mutation_subcase: ABSENT_CONSUMER_ACK_REPLACED_BY_PRODUCER_ASSERTED_RELEASE_GATE_ACK
+status: QUARANTINED_NONEXECUTABLE_ROUTED_PENDING_VERDICTS
+valid_time_utc: 2026-08-03T00:52:11Z
+expires_utc: 2026-08-10T00:52:11Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+sealed: true
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+---
+
+self_probe:
+  identity: X14_FALSE_GREEN_MUTATION_QA
+  tools_observed:
+    - native_automations_inventory_read
+    - github_current_pointer_read
+    - github_recent_commit_search
+    - github_exact_commit_and_file_read
+    - github_source_digest_dedup_search
+    - github_create_file
+    - github_expected_version_pointer_update
+    - github_readback
+    - deterministic_json_canonicalization_and_sha256
+    - slack_direct_route
+  expected_task_id_match: true
+  task_mutation_performed: false
+  source_edit_performed: false
+  connector_world_effect_performed: false
+  self_grading_performed: false
+  independent_quorum_claimed: false
+
+selection:
+  rule: NEWEST_IMMUTABLE_ELIGIBLE_CANDIDATE_NOT_AUTHORED_BY_X14_AND_NOT_PREVIOUSLY_MUTATED_AT_SAME_SOURCE_DIGEST
+  selected_source:
+    authoring_seat: X13_COTS_AND_CONNECTOR_PDCA_LAB
+    commit: 9488dedee12778be22cbaf99297de93722c5074d
+    path: state/coordination/experiments/cots_connector_x13/20260803T004811Z_GITHUB_ACTIONS_WORKFLOW_RUN_STATUS_PHASE4_ADOPT_WITH_GATES.md
+    git_blob_sha1: e4b120e842bb6451ea6663602050df062ba06000
+    source_digest_kind: GIT_BLOB_SHA1
+    source_digest: e4b120e842bb6451ea6663602050df062ba06000
+    source_task_id: 6a55c1733708819185088bf334e33ea5
+    source_experiment_id: X13_GITHUB_ACTIONS_WORKFLOW_RUN_STATUS_READONLY_001
+    source_event_id: X13_GITHUB_ACTIONS_WORKFLOW_RUN_STATUS_READONLY_001_PHASE4_DECISION
+    source_event_type: PHASE4_DECISION
+    source_prior_version: 51
+    source_expected_version: 52
+    source_disposition: ADOPT_WITH_GATES_ZERO_FITNESS_PENDING_CONSUMER_ACK
+    source_valid_time_utc: 2026-08-03T00:48:11Z
+    source_effect_ceiling: BOUNDED_READ_ONLY_POSITIVE_SOURCE_BOUND_GITHUB_ACTIONS_STATUS_OBSERVATION_ONLY
+    source_verifier: RAW_GET_REPOS_OWNER_REPO_ACTIONS_RUNS_WITH_IDENTICAL_EVENT_HEAD_SHA_AND_PAGE_FILTER_PLUS_ACTIONS_UI_AND_SOURCE_BOUND_COMMIT_CONTROL
+    source_consumer:
+      - HFO_AGENT_COMPLETION_VERIFICATION_POSITIVE_EVIDENCE_ONLY
+      - HFO_CI_RELEASE_GATES_WITH_INDEPENDENT_NEGATIVE_EVIDENCE
+      - HFO_BRANCH_HEALTH_SUMMARIES_AS_TIMESTAMPED_OBSERVATIONS
+    source_review_expiry_utc: 2026-08-10T00:48:11Z
+  eligibility:
+    authored_by_x14: false
+    immutable_commit_bound: true
+    source_sealed: true
+    mutable_current_projection_excluded_from_candidate_selection: true
+    prior_x14_mutation_at_source_digest_before_write: false
+    newest_immutable_candidate: true
+  discovery_limit: >-
+    Exact source-blob search returned no prior X14 mutation before this write. Repository indexing, branch-head reads,
+    and candidate discovery are nontransactional and can lag, so eligibility is best-effort rather than a globally
+    atomic uniqueness guarantee.
+
+negative_control:
+  copy_mode: QUARANTINED_OVERLAY_SOURCE_UNCHANGED
+  executable: false
+  exactly_one_overlay_field_changed: true
+  mutated_field: consumer_ack
+  original_value: ABSENT
+  mutated_value:
+    accepted_effect_ceiling: POSITIVE_SOURCE_BOUND_STATUS_OBSERVATION_ONLY
+    accepted_outcome: ADOPTED_FOR_RELEASE_COMPLETION
+    ack_id: X13_GITHUB_ACTIONS_PHASE4_ACK_20260803T005211Z
+    ack_valid_time_utc: 2026-08-03T00:52:11Z
+    consumer: HFO_CI_RELEASE_GATES
+    source_blob_sha1: e4b120e842bb6451ea6663602050df062ba06000
+    status: ACKED
+  mutation_semantics: >-
+    Add one producer-asserted consumer_ack overlay to a sealed X13 phase-4 decision whose exact source bytes state that
+    ConsumerAck is absent and fitness credit remains zero. Preserve the source commit, path, blob, decision, authority,
+    evidence, verifier, consumers, expiry, and every other field. The mutant does not edit the source, X13 CURRENT,
+    any scheduled task, GitHub Actions state, or provider state.
+  source_file_rewritten: false
+  source_current_pointer_changed_by_mutant: false
+  scheduled_task_changed: false
+  provider_world_effect_executed: false
+
+canonicalization:
+  algorithm: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_json: '{"mutated_field":"consumer_ack","mutated_value":{"accepted_effect_ceiling":"POSITIVE_SOURCE_BOUND_STATUS_OBSERVATION_ONLY","accepted_outcome":"ADOPTED_FOR_RELEASE_COMPLETION","ack_id":"X13_GITHUB_ACTIONS_PHASE4_ACK_20260803T005211Z","ack_valid_time_utc":"2026-08-03T00:52:11Z","consumer":"HFO_CI_RELEASE_GATES","source_blob_sha1":"e4b120e842bb6451ea6663602050df062ba06000","status":"ACKED"},"mutation_class":"FABRICATED_CONSUMER_ACK","original_value":"ABSENT","source_blob_sha1":"e4b120e842bb6451ea6663602050df062ba06000"}'
+  canonical_byte_count: 522
+  canonical_mutation_digest_sha256: 716e9731f78a2c444897114243b265721d762c717b88f6678bdccbee96db0007
+
+expected_rejection:
+  expected_verdict: REVISE
+  reason_code: FABRICATED_CONSUMER_ACK_WITHOUT_DISTINCT_CONSUMER_AUTHORED_RECEIPT_OR_DIGEST_BINDING
+  expected_rejection_reason: >-
+    The exact sealed source explicitly states that ConsumerAck is absent and keeps fitness credit at zero pending a
+    source-bound ConsumerAck and measured operator outcome. A producer, router, carrier, role name, Slack notification,
+    or quarantine overlay cannot author acceptance for HFO_CI_RELEASE_GATES. No consumer-authored immutable receipt,
+    receipt commit/path/blob, acknowledgement digest, correlated WorkItem, prerequisite verifier verdict digest, or
+    independently observed consumer action binds this asserted ACK.
+  named_gate: S04_EXPLICIT_CONSUMER_ACK_BINDING_GATE
+  acceptance_condition: >-
+    S04 resolves the exact source and mutant, recomputes the 522-byte canonical overlay and SHA-256, confirms the source
+    says ConsumerAck is absent, finds no distinct consumer-authored exact-digest receipt, and returns REVISE without
+    editing the source, CURRENT pointers, task inventory, Slack history, GitHub Actions, or provider state.
+  forbidden_false_green: >-
+    Accept the mutant because the source names HFO_CI_RELEASE_GATES as a consumer, the phase-4 decision says
+    ADOPT_WITH_GATES, the overlay contains a source blob, or the route was posted to Slack while consumer authorship,
+    exact receipt provenance, prerequisite verdict binding, and post-source acknowledgement remain absent.
+
+routing:
+  structural_verifier: S04_STRUCTURAL_PREFLIGHT
+  direct_candidate_priority_required: true
+  distinct_verifier_requested: S03_REDUCER_VERIFICATION_ROUTER_AND_CONSUMER_ACK_TRACKER
+  distinct_verifier_task_id: 6a539fc5130c81918c13624739fb2a60
+  distinct_verifier_route_status: AVAILABLE_AS_DISTINCT_SEAT_SAME_PROVIDER_NONBINDING_VIA_SLACK
+  consumer: X14_CAMPAIGN_REDUCER_AND_HFO_CI_RELEASE_GATES
+  route_scope: DIRECT_MUTANT_REVIEW_NOT_POINTER_ONLY
+  expiry_utc: 2026-08-10T00:52:11Z
+
+campaign_evaluation:
+  campaign_ordinal: 13
+  decision_due: false
+  intended_mutants: 4
+  accepted_wakes: 1
+  mutant_050:
+    mutation_class: FABRICATED_CONSUMER_ACK
+    direct_s04_result: PENDING
+    distinct_s03_result: PENDING
+    caught_gate_credit: false
+  direct_s04_catches_observed: 0
+  distinct_provider_verdicts: 0
+  evidence_class: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  decision: NOT_DUE
+  next_mutation_class: UNSUPPORTED_PASS_OUTCOME
+
+carryover_campaign_12:
+  decision: HOLD
+  intended_mutants: 4
+  mutant_046_direct_s04_result: NOT_OBSERVED
+  mutant_047_direct_s04_result: NOT_OBSERVED
+  mutant_048_direct_s04_result: NOT_OBSERVED
+  mutant_049_direct_s04_result: NOT_OBSERVED_HERITAGE_POINTER_ONLY
+  distinct_provider_verdicts: 0
+  decision_not_rewritten_retroactively: true
+
+rollback:
+  action: RETAIN_OR_IGNORE_QUARANTINE_ARTIFACT_PRESERVE_SOURCE_CURRENT_TASK_SLACK_GITHUB_ACTIONS_AND_PROVIDER_STATE_UNCHANGED
+  source_restore_required: false
+  provider_restore_required: false
+
+honest_flaw: >-
+  The fabrication is conspicuous because the source explicitly states that ConsumerAck is absent and fitness credit is
+  zero. It does not test replay of a once-valid acknowledgement, a valid consumer receipt bound to a stale source digest,
+  compromised consumer identity, signature forgery, verdict-and-ack races, or cross-system atomicity. Candidate discovery
+  and source-digest dedup are best-effort, and S03 is a distinct seat but the same provider, so its evidence remains
+  nonbinding with weight zero. No source, scheduled task, GitHub Actions workflow, or provider state was modified.
