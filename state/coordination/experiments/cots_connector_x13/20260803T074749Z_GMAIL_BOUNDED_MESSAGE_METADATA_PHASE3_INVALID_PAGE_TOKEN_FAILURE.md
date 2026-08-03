@@ -1,0 +1,145 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_GMAIL_BOUNDED_MESSAGE_METADATA_SEARCH_READONLY_001
+phase: 3
+phase_name: FAILURE_PERMISSION_PORTABILITY_AND_CONNECTOR_VARIANCE_PROBE
+campaign_wake: 3_of_4
+expected_prior_version: 58
+next_version: 59
+candidate: Gmail_bounded_message_metadata_search_readonly_surface
+carrier: X13_COTS_AND_CONNECTOR_PDCA_LAB
+carrier_task_id: 6a55c1733708819185088bf334e33ea5
+carrier_task_id_match: true
+repository: TTaoGaming/hfo-gen-133
+branch: agent/gen133-bootstrap-20260730
+prior_current_blob_sha: 0048c8df7931cb2f2532656a133cd5c1e67cfab5
+wip: 1
+valid_time_utc: 2026-08-03T07:47:49Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+effect_ceiling: ONE_SYNTHETIC_INVALID_PAGE_TOKEN_READ_ONLY_FAILURE_PROBE_EVENT_CURRENT_ADVANCE_READBACK_AND_ONE_SHORT_SLACK_ANDON
+candidate_invocations_this_wake: 1
+candidate_invocations_campaign_total: 3
+writes_sends_drafts_labels_archive_trash_delete_attachment_or_mailbox_mutations: 0
+operator_minutes_removed_measured: 0
+operator_minutes_removed_estimate_per_consumed_presence_check: 1_to_2_UNVALIDATED
+paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
+fitness_credit: 0_PENDING_SOURCE_BOUND_CONSUMER_ACK_AND_MEASURED_OPERATOR_OUTCOME
+consumer_ack: NOT_OBSERVED
+direct_receipt:
+  action: Gmail.search_email_ids
+  query_class: BOUNDED_RECENT_INBOX_PRESENCE_WITH_SYNTHETIC_INVALID_PAGE_TOKEN
+  query: "in:inbox newer_than:1d -in:spam -in:trash"
+  requested_max_results: 1
+  page_token_origin: SYNTHETIC_NOT_FROM_A_PRIOR_GMAIL_RESPONSE
+  exact_page_token_persisted: false
+  returned_message_id_count: 0_NOT_RETURNED_BECAUSE_CALL_FAILED
+  next_page_token_present: false_NOT_RETURNED_BECAUSE_CALL_FAILED
+  connector_error_type: google_api_error
+  connector_error_code: invalidArgument
+  connector_error_status: INVALID_ARGUMENT
+  connector_error_reason: invalidArgument
+  connector_error_message: Failed_to_search_email_ids
+  connector_is_error: true
+  raw_http_status: NOT_EXPOSED
+  external_call_time_ms: NOT_EXPOSED_ON_ERROR_PATH
+  carrier_retries: 0
+  private_headers_bodies_snippets_or_attachments_returned: false
+  mutation_effect: false
+official_contract_rechecked_2026_08_03:
+  messages_list: https://developers.google.com/workspace/gmail/api/reference/rest/v1/users.messages/list
+  error_guide: https://developers.google.com/workspace/gmail/api/guides/handle-errors
+  page_token_contract: TOKEN_TO_RETRIEVE_A_SPECIFIC_PAGE_OF_RESULTS
+  page_token_must_be_source_bound_inference: MUST_ORIGINATE_FROM_A_PRIOR_COMPATIBLE_LIST_RESPONSE
+  invalid_parameter_value_error_class: 400_BAD_REQUEST_PER_OFFICIAL_ERROR_GUIDE
+  observed_raw_http_400: false_CONNECTOR_DID_NOT_EXPOSE_HTTP_STATUS
+  messages_list_response_item_shape: ID_AND_THREAD_ID_ONLY
+  max_results_is_page_cap: true
+failure_probe:
+  intended_question: DOES_THE_CONNECTOR_SURFACE_AN_EXPLICIT_ERROR_FOR_A_SYNTHETIC_INVALID_PAGE_TOKEN
+  measured_answer: YES_NORMALIZED_INVALID_ARGUMENT_ERROR
+  silent_empty_result_observed: false
+  retry_performed: false
+  token_reuse_or_page_traversal_performed: false
+  mailbox_mutation_performed: false
+failure_classification:
+  invalid_page_token: EXPLICIT_NORMALIZED_ERROR_OBSERVED
+  valid_documented_empty_result: EXPLICIT_SUCCESS_EMPTY_OBSERVED_PHASE2
+  invalid_token_vs_valid_empty_distinguishable: true
+  raw_provider_error_code_and_body: HIDDEN
+  raw_http_status: HIDDEN
+  request_id_retry_after_rate_limit_and_quota_headers: HIDDEN
+  upstream_retry_behavior: HIDDEN
+  authentication_or_permission_denial: NOT_TESTED
+  quota_or_rate_limit: NOT_TESTED
+  transient_server_failure: NOT_TESTED
+  independent_raw_or_UI_readback: NOT_TESTED
+failure_andon:
+  triggered: true
+  measured_fact: SYNTHETIC_INVALID_PAGE_TOKEN_RETURNED_EXPLICIT_NORMALIZED_INVALID_ARGUMENT_INSTEAD_OF_AN_EMPTY_SUCCESS_ARRAY
+  positive_implication: THIS_CONNECTOR_SURFACE_DISTINGUISHES_THIS_MALFORMED_CURSOR_FROM_A_VALID_EMPTY_RESULT
+  remaining_risk: NORMALIZATION_HIDES_RAW_HTTP_STATUS_PROVIDER_BODY_REQUEST_ID_QUOTA_HEADERS_AND_WHETHER_THE_REQUEST_REACHED_GMAIL
+mandatory_gates_added:
+  - ACCEPT_PAGE_TOKENS_ONLY_FROM_THE_IMMEDIATELY_PRECEDING_COMPATIBLE_CONNECTOR_RESPONSE
+  - BIND_PAGE_TOKEN_TO_QUERY_LABEL_IDS_MAX_RESULTS_AUTHENTICATED_IDENTITY_AND_OBSERVATION_CHAIN
+  - NEVER_SYNTHESIZE_TRUNCATE_REDACT_REFORMAT_OR_REUSE_PAGE_TOKENS_ACROSS_QUERY_VARIANTS
+  - CLASSIFY_INVALID_ARGUMENT_AS_NON_RETRYABLE_CALLER_ERROR_UNLESS_INDEPENDENT_EVIDENCE_SHOWS_TRANSIENT_PROVIDER_MISCLASSIFICATION
+  - DO_NOT_FALL_BACK_TO_FIRST_PAGE_OR_EMPTY_SUCCESS_AFTER_PAGE_TOKEN_FAILURE
+  - KEEP_EXACT_PAGE_TOKENS_OUT_OF_GIT_SLACK_AND_ROUTINE_TRACES
+  - PRESERVE_VALID_EMPTY_INVALID_ARGUMENT_AUTH_PERMISSION_RATE_LIMIT_TRANSPORT_AND_PROVIDER_FAILURE_AS_DISTINCT_STATES
+  - REQUIRE_SOURCE_BOUND_CONSUMER_ACK_BEFORE_FITNESS_CREDIT
+credentials:
+  connector_call_reached_a_normalized_error_path: true
+  operator_supplied_credentials_this_wake: 0
+  authenticated_identity: UNKNOWN
+  credential_type: UNKNOWN
+  effective_oauth_scope: UNKNOWN
+  token_storage_and_custody: CONNECTOR_MANAGED_UNINSPECTED
+  least_privilege_closed: false
+custom_code_avoided_estimate:
+  bounded_id_presence_discovery: 25_to_80_LOC_UNVALIDATED
+  connector_error_normalization: 10_to_30_LOC_UNVALIDATED
+  metadata_only_fetch_and_header_allowlisting: 0_NOT_AVOIDED_BY_CURRENT_EXPOSED_SURFACE
+custom_policy_not_avoided:
+  - PAGE_TOKEN_SOURCE_BINDING_QUERY_BINDING_AND_CHAIN_VALIDATION
+  - EFFECTIVE_SCOPE_IDENTITY_CREDENTIAL_CUSTODY_AND_LEAST_PRIVILEGE
+  - FORMAT_METADATA_AND_HEADER_ALLOWLIST_ENFORCEMENT
+  - PRIVATE_IDENTIFIER_AND_PAGE_TOKEN_MINIMIZATION
+  - AUTH_PERMISSION_RATE_LIMIT_TRANSPORT_AND_PROVIDER_FAILURE_CLASSIFICATION
+  - RATE_LIMIT_RETRY_BACKOFF_COST_AND_QUOTA_ACCOUNTING
+  - INDEPENDENT_RAW_API_OR_GMAIL_UI_VERIFICATION
+durability: EPHEMERAL_POINT_IN_TIME_MAILBOX_QUERY_AND_ERROR_NOT_A_SNAPSHOT_EVENT_STREAM_OR_WORKFLOW_CHECKPOINT
+observability: NORMALIZED_ERROR_TYPE_CODE_STATUS_REASON_MESSAGE_AND_ACTION_VISIBLE_RAW_HTTP_STATUS_REQUEST_RESPONSE_PROVIDER_BODY_REQUEST_ID_EFFECTIVE_SCOPE_QUOTA_HEADERS_RETRY_AUDIT_AND_QUERY_REWRITE_HIDDEN
+portability: MEDIUM_FOR_GENERIC_INVALID_CURSOR_CLASSIFICATION_LOW_FOR_PROVIDER_SPECIFIC_TOKEN_FORMAT_QUERY_SEMANTICS_AND_ERROR_NORMALIZATION
+admitted_scope_this_phase:
+  - ONE_SYNTHETIC_INVALID_PAGE_TOKEN_READ_ONLY_FAILURE_PROBE
+  - NORMALIZED_INVALID_ARGUMENT_AS_DISTINCT_NON_RETRYABLE_CALLER_ERROR
+excluded_scope_this_phase:
+  - MESSAGE_METADATA_BODY_SNIPPET_HEADER_OR_ATTACHMENT_FETCH
+  - SEND_DRAFT_LABEL_MODIFY_ARCHIVE_TRASH_DELETE_OR_ANY_MAILBOX_MUTATION
+  - VALID_PAGE_TRAVERSAL_OR_COMPLETENESS_CLAIMS
+  - CLAIM_OF_RAW_GMAIL_HTTP_STATUS_PROVIDER_BODY_EFFECTIVE_SCOPE_OR_LEAST_PRIVILEGE
+strongest_falsifier: A_SOURCE_BOUND_TOKEN_FROM_AN_IMMEDIATELY_PRECEDING_IDENTICAL_QUERY_FAILS_WITH_THE_SAME_INVALID_ARGUMENT_OR_THE_RAW_GMAIL_API_ACCEPTS_THE_IDENTICAL_SYNTHETIC_TOKEN_WHILE_THE_CONNECTOR_REJECTS_IT
+verifier: RAW_GMAIL_MESSAGES_LIST_WITH_IDENTICAL_QUERY_AND_SYNTHETIC_TOKEN_PLUS_ONE_VALID_SOURCE_BOUND_CONNECTOR_PAGE_TRAVERSAL
+consumer:
+  - HFO_EXECUTIVE_ASSISTANT_BOUNDED_MAIL_PRESENCE_CHECK
+  - HFO_WAITING_AND_INBOX_STATUS_CELLS
+honest_flaw: THIS_PROBE_USED_ONE_SYNTHETIC_TOKEN_ONLY; IT_DID_NOT TEST_A_VALID_SOURCE_BOUND_TOKEN_QUERY_MISMATCH_TOKEN_EXPIRY_WRONG_IDENTITY_PERMISSION_RATE_LIMIT_TRANSIENT_FAILURE_RAW_HTTP_STATUS_OR_OPERATOR_TIME_REDUCTION
+phase_3_result:
+  disposition: PHASE3_ACCEPTED_WITH_EXPLICIT_INVALID_ARGUMENT_FAILURE_AND_SOURCE_BOUND_CURSOR_GATES
+  metadata_candidate_status: NOT_YET_PROVEN
+  provisional_phase_4_decision: ADOPT_WITH_GATES_FOR_ID_ONLY_DISCOVERY_AND_EXPLICIT_ERROR_CLASSIFICATION_DEFER_METADATA_ONLY_CLAIMS
+next_wake:
+  phase: 4_of_4
+  proposed_action: DECISION_ONLY_NO_ADDITIONAL_GMAIL_CAPABILITY_CALL
+  candidate_decisions: ADOPT_OR_ADOPT_WITH_GATES_OR_DEFER_OR_REJECT_OR_UNKNOWN
+  excluded_effects: SEND_DRAFT_MODIFY_LABEL_ARCHIVE_TRASH_DELETE_ATTACHMENT_DOWNLOAD_BODY_FETCH_OR_SECRET_EXPOSURE
+sealed: true
+---
+
+# X13 Gmail bounded message-metadata search — phase 3
+
+A single read-only failure probe supplied a synthetic page token that did not originate from a prior Gmail connector response. The connector returned an explicit normalized `INVALID_ARGUMENT` error and no message data, private content, retry, or mailbox mutation.
+
+This is materially better than a semantic-empty failure: the connector distinguished the malformed cursor from the valid empty result observed in phase 2. The error path still hides the raw HTTP status, provider response body, request ID, quota headers, authenticated identity, effective OAuth scope, and whether the request reached Gmail or was rejected by the wrapper.
+
+The phase therefore admits normalized invalid-argument classification only with strict source-bound cursor gates. Metadata-only operation remains unproven because the connector still lacks explicit `format=METADATA` and selected-header allowlist controls. Measured operator relief remains zero, surfaced cost remains zero, and ConsumerAck is absent.
