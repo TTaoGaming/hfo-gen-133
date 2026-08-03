@@ -1,0 +1,156 @@
+---
+schema_id: hfo.gen133.s02_admission_claim.v1
+result: CLAIMED
+claim_id: S02_SPATIAL_FACTORY_HTML5_SNAKE_PENDING_DIRECTION_COMMAND_GATE_20260803T220442Z
+work_item_id: SPATIAL_FACTORY_HTML5_SNAKE_PENDING_DIRECTION_COMMAND_GATE_001
+parent_program: SPATIAL_APP_FACTORY
+lane: CODE_SPECIMEN
+wip: 1
+seat: S02_ADMISSION_PULL
+carrier_task_id_expected: 6a55088a3d308191ac1cda97221f0957
+carrier_task_id_observed: 6a55088a3d308191ac1cda97221f0957
+carrier_task_id_match: true
+valid_time_utc: 2026-08-03T22:04:42Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+repository_head_observed_before_write: c32b485400643f6462379a0aaa141545c40bc4cc
+claim_status: CLAIMED_INTERNAL_ONLY
+producer_return_due_utc: 2026-08-04T00:34:42Z
+lease_expires_utc: 2026-08-04T02:04:42Z
+expiry_utc: 2026-08-04T02:04:42Z
+renewal_allowed: false
+sealed: false
+---
+
+self_probe:
+  expected_task_id: 6a55088a3d308191ac1cda97221f0957
+  observed_task_id: 6a55088a3d308191ac1cda97221f0957
+  task_id_match: true
+  identity_source: automation_runtime_envelope
+  tools_used:
+    github: authenticated branch head, exact file/blob, issue, search, compare, create, and readback
+    slack: authenticated public-channel pointer after Git readback only
+  unavailable_or_unused:
+    - host checkout or shell
+    - browser execution or network capture
+    - direct S06 or S07 runtime ingress
+    - native task inventory mutation
+  task_mutation_performed: false
+  implementation_performed: false
+
+selection:
+  golden_app_priority_check:
+    item: SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_001
+    disposition: REJECT_EXPIRED_AND_HELD
+    evidence_path: projects/spatial-app-factory/dispatch/20260802T042202Z_SPATIAL_FACTORY_GOLDEN_APP_001_2048_DIRECTIONAL_BRIDGE_REPAIRED_SUCCESSOR_HOLD.executor.yaml
+    reason: prior claim and producer-return clocks expired on 2026-08-02; further repair successor was forbidden; no changed unexpired READY successor was found
+  selected_changed_item:
+    candidate: JDStraughan/html5-snake
+    exact_upstream_commit: 4e3049553b316c05c53befab6a51ada88d14d41e
+    reason: newest unclaimed, unexpired spatial candidate with an ADMIT evidence card plus a changed exact REVISE gate defining the minimum pending-direction contract
+  duplicate_probe:
+    exact_candidate_search_result: only the two bound S08 evidence cards were found
+    limitation: GitHub code search is indexed and nontransactional; exact branch/file readback remains authoritative
+
+source_bindings:
+  admission_card:
+    commit: a753fdc2b19028fedd1dc300f4fef6a1c7a873c7
+    path: projects/spatial-app-factory/research/20260803T172617Z_S08_JDSTRAUGHAN_HTML5_SNAKE_CLEAN_CONTINUOUS_CONTROL_CANDIDATE_EVIDENCE_CARD.md
+    blob: 3111e858a982055eb4ecba166fc713950739d699
+    disposition: ADMIT_DORMANT_CONTINUOUS_CONTROL_CLEAN_SPECIMEN_CANDIDATE_ONLY
+    evidence_expiry_utc: 2026-08-10T17:26:17Z
+  command_gate_card:
+    commit: 97228589cbee180a6a68296b699b7d10a77680fc
+    path: projects/spatial-app-factory/research/20260803T182833Z_S08_HTML5_SNAKE_PENDING_DIRECTION_TICK_BUFFER_EVIDENCE_CARD.md
+    blob: f89b0134414c611af49563dc777a36807b890aa3
+    disposition: REVISE_ONE_PENDING_DIRECTION_PER_MOVEMENT_TICK_SHARED_COMMAND_SEAM
+    evidence_expiry_utc: 2026-08-10T18:28:33Z
+  upstream:
+    repository: JDStraughan/html5-snake
+    commit: 4e3049553b316c05c53befab6a51ada88d14d41e
+    visible_files:
+      - README.md
+      - game.js
+      - index.html
+      - page.css
+    license_signal: MIT text in README.md; exact notice must be preserved
+  target:
+    repository: TTaoGaming/TAGS
+    base_branch: main
+    base_commit: 1271e25306fe8ef8baea32704cf022435703d498
+    branch_rule: agent/html5-snake-pending-direction-canary-*
+    branch_create_max: 1
+    allowed_create_or_modify_paths:
+      - prototypes/html5-snake-spatial-canary/**
+    forbidden_existing_path_changes: every path outside prototypes/html5-snake-spatial-canary/**
+
+acceptance_contract:
+  canonicalization: SHA256_UTF8_LF
+  byte_count: 1762
+  sha256: 028210fa8d4b3a870f18687e9fd74f32ae6b3f1dc88c3ed3f1abfd9a75b49b36
+  canonical_text: |-
+    1. claim bytes pass exact S04 structural preflight before routing
+    2. S06 compiles one claim-bound executor packet; S07 may create at most one internal branch from TTaoGaming/TAGS@1271e25306fe8ef8baea32704cf022435703d498
+    3. all producer changes stay under prototypes/html5-snake-spatial-canary/**; no pre-existing TAGS path changes
+    4. copy only the four pinned upstream text files needed for the specimen and preserve the README MIT notice verbatim
+    5. remove the obsolete conditional remote HTML5 shiv and prove zero unexpected network requests
+    6. implement one shared requestDirection(nextDirection) command used by native keyboard and the spatial producer
+    7. track last committed movement direction separately from at most one pending valid direction per movement tick
+    8. apply and clear the pending direction exactly once at movement start; reset committed and pending state on start/init
+    9. reject direct inverse directions; accept only the first valid perpendicular command before a tick; repeated identical commands do not advance twice
+    10. prove deterministic traces for all four starting directions, left->up->right before one tick moves up not right, restart clears pending state, and native/spatial parity at 8 fps and 60 fps
+    11. do not use synthetic keyboard dispatch as the integration seam and add no dependency
+    12. return exact runtime, commands or tool calls, exit codes or typed errors, branch, start/final SHA, changed paths, concise outputs, rollback, and honest flaw
+    13. distinct browser-capable nonproducer verifies exact checkout, license inventory, zero-network capture, and digest-bound acceptance traces before ConsumerAck
+    14. no task mutation, merge, deployment, publication, account/security change, send, spend, or destructive deletion
+
+idempotency:
+  canonicalization: SHA256_UTF8_LF_JOIN
+  canonical_input_byte_count: 667
+  canonical_input: |-
+    SPATIAL_FACTORY_HTML5_SNAKE_PENDING_DIRECTION_COMMAND_GATE_001
+    a753fdc2b19028fedd1dc300f4fef6a1c7a873c7|projects/spatial-app-factory/research/20260803T172617Z_S08_JDSTRAUGHAN_HTML5_SNAKE_CLEAN_CONTINUOUS_CONTROL_CANDIDATE_EVIDENCE_CARD.md|3111e858a982055eb4ecba166fc713950739d699
+    97228589cbee180a6a68296b699b7d10a77680fc|projects/spatial-app-factory/research/20260803T182833Z_S08_HTML5_SNAKE_PENDING_DIRECTION_TICK_BUFFER_EVIDENCE_CARD.md|f89b0134414c611af49563dc777a36807b890aa3
+    JDStraughan/html5-snake@4e3049553b316c05c53befab6a51ada88d14d41e
+    TTaoGaming/TAGS@1271e25306fe8ef8baea32704cf022435703d498
+    028210fa8d4b3a870f18687e9fd74f32ae6b3f1dc88c3ed3f1abfd9a75b49b36
+  key: 52cdb18a8761795ccc1fb08b595b06d467cfe8f885b5335d1a296ebcb9138f79
+
+routing:
+  structural_preflight:
+    seat: S04_STRUCTURAL_PREFLIGHT_VERIFIER
+    task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+    required_result: PASS_STRUCTURAL
+    binding_weight: 0
+  packet_compiler:
+    seat: S06_CODE_WORK_PACKET_COMPILER
+    task_id: 6a57972b9df081918680ce67c4ecb197
+    role: producer_for_one_claim_bound_executor_packet
+  bounded_builder:
+    seat: S07_BOUNDED_CODE_PATCH_BUILDER
+    task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+    role: downstream_executor_only_after_S04_PASS_and_S06_packet
+  technical_verifier:
+    identity: DISTINCT_BROWSER_CAPABLE_NONPRODUCER
+    required_result: STOOD_OR_FELL_BOUND_TO_EXACT_BRANCH_SHA_AND_TRACE_DIGESTS
+  consumer:
+    gate: SPATIAL_FACTORY_HTML5_SNAKE_PENDING_DIRECTION_COMMAND_GATE_001
+    decision_seat: S09_STRATEGIC_REASONING_AND_VOTING
+    decision_task_id: 6a539fb148bc8191a30b6009dbf22438
+    consumer_ack_required: true
+
+rollback:
+  before_branch: immutable HOLD receipt; no producer routing and no world effect
+  after_internal_branch: leave unmerged branch quarantined or producer-supplied revert commit; do not delete or force-push from this seat
+  after_failed_verification: FELL receipt bound to exact branch SHA; no ConsumerAck or fitness credit
+
+privacy: PUBLIC_REPOSITORY_SOURCE_AND_SANITIZED_COORDINATION_METADATA_ONLY
+effect_ceiling: GIT_CLAIM_AND_INTERNAL_CREATE_ONLY_SPECIMEN_BRANCH; NO_MERGE_DEPLOY_PUBLICATION_SEND_SPEND_ACCOUNT_OR_SECURITY_EFFECT
+fitness_credit: 0_PENDING_DISTINCT_VERDICT_AND_CONSUMER_ACK
+
+honest_flaw: >-
+  S02 did not check out either repository, run the 2013 game, inspect the full Git object graph, execute tests,
+  capture network traffic, or prove direct S06/S07 pickup. The target-directory absence probe used indexed GitHub
+  search and is not transactional. The MIT text is a strong license signal, not a chain-of-title or trademark opinion.
+  A claim and Slack pointer are discoverable coordination artifacts, not producer acceptance or execution.
