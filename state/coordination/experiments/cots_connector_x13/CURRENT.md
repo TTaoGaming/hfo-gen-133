@@ -1,28 +1,30 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
 experiment_id: X13_GMAIL_BOUNDED_MESSAGE_METADATA_SEARCH_READONLY_001
-version: 59
-prior_version: 58
+version: 60
+prior_version: 59
 candidate: Gmail_bounded_message_metadata_search_readonly_surface
 candidate_contract_reference: official_Gmail_messages_list_messages_get_format_scope_error_and_quota_contracts_plus_direct_connector_receipts
-campaign_wake: 3_of_4
-campaign_status: ACTIVE
+campaign_wake: 4_of_4
+campaign_status: CLOSED
 phase_1_completed: true
 phase_2_completed: true
 phase_3_completed: true
-phase_4_completed: false
-phase_4_decision: PENDING
+phase_4_completed: true
+phase_4_decision: ADOPT_WITH_GATES
+subdecision_metadata_only_retrieval: DEFER
+subdecision_least_privilege_claim: UNKNOWN
 carrier_task_id: 6a55c1733708819185088bf334e33ea5
 carrier_task_id_match: true
 wip: 1
 last_event:
-  commit: d6d5451b3873a5f2218acdd669f550a7e1131d34
-  path: state/coordination/experiments/cots_connector_x13/20260803T074749Z_GMAIL_BOUNDED_MESSAGE_METADATA_PHASE3_INVALID_PAGE_TOKEN_FAILURE.md
-  blob_sha: c0e1671e5711ebc8871b51211e153f918e7e0022
+  commit: aa88026af94c5d35cc9acf8f684fa2f1e75aacfa
+  path: state/coordination/experiments/cots_connector_x13/20260803T084850Z_GMAIL_BOUNDED_MESSAGE_METADATA_PHASE4_DECISION.md
+  blob_sha: b930f5d41c42614b98859667c0bb0674e429c52b
   exact_readback_completed: true
-prior_current_commit: e11ba03dc1374eda96c20ef27cc459e1750a435f
-prior_current_blob_sha: 0048c8df7931cb2f2532656a133cd5c1e67cfab5
-effect_ceiling: PHASE3_ONE_SYNTHETIC_INVALID_PAGE_TOKEN_READ_ONLY_FAILURE_PROBE_EVENT_CURRENT_ADVANCE_READBACK_AND_ONE_SHORT_SLACK_ANDON
+prior_current_commit: 351ed553c7ae93b796db05bec0b0f983fef00b74
+prior_current_blob_sha: f82c71422615b5cbb482ea8d311d9d84b9c4c538
+effect_ceiling: PHASE4_DECISION_ONLY_EVENT_CURRENT_ADVANCE_READBACK_AND_ONE_SHORT_SLACK_DECISION
 adoption_credit: 0
 fitness_credit: 0_PENDING_SOURCE_BOUND_CONSUMER_ACK_AND_MEASURED_OPERATOR_OUTCOME
 consumer_ack: NOT_OBSERVED
@@ -118,7 +120,6 @@ measured_facts:
   bounded_id_only_valid_empty_search_observed: true
   synthetic_invalid_page_token_explicit_error_observed: true
   invalid_page_token_vs_valid_empty_distinguishable: true
-  phase_1_one_result_page_and_cursor_presence_observed: true
   exact_private_identifiers_and_tokens_minimized_from_durable_logs: true
   no_message_headers_snippets_bodies_or_attachments_returned_by_id_search_or_failure_probe: true
   metadata_only_positive_path_proven: false
@@ -145,7 +146,6 @@ official_contract_checked_2026_08_03:
   scopes: https://developers.google.com/workspace/gmail/api/auth/scopes
   quota: https://developers.google.com/workspace/gmail/api/reference/quota
   error_guide: https://developers.google.com/workspace/gmail/api/guides/handle-errors
-  search_operators: https://support.google.com/mail/answer/7190
   messages_list_returns: MESSAGE_ID_AND_THREAD_ID_ONLY
   messages_list_max_results_default: 100
   messages_list_max_results_maximum: 500
@@ -199,31 +199,33 @@ mandatory_gates:
   - CLASSIFY_INVALID_ARGUMENT_AS_NON_RETRYABLE_CALLER_ERROR_UNLESS_INDEPENDENT_EVIDENCE_SHOWS_TRANSIENT_PROVIDER_MISCLASSIFICATION
   - DO_NOT_FALL_BACK_TO_FIRST_PAGE_OR_EMPTY_SUCCESS_AFTER_PAGE_TOKEN_FAILURE
   - PRESERVE_VALID_EMPTY_INVALID_ARGUMENT_AUTH_PERMISSION_RATE_LIMIT_TRANSPORT_AND_PROVIDER_FAILURE_AS_DISTINCT_STATES
-  - REQUIRE_SOURCE_BOUND_CONSUMER_ACK_BEFORE_FITNESS_CREDIT
+  - REQUIRE_SOURCE_BOUND_CONSUMER_ACK_AND_MEASURED_OPERATOR_OUTCOME_BEFORE_FITNESS_CREDIT
 verifier: RAW_GMAIL_MESSAGES_LIST_WITH_IDENTICAL_QUERY_AND_SYNTHETIC_TOKEN_PLUS_ONE_VALID_SOURCE_BOUND_CONNECTOR_PAGE_TRAVERSAL_AND_GMAIL_UI_OR_RAW_QUERY_COMPARISON
 consumer:
   - HFO_EXECUTIVE_ASSISTANT_BOUNDED_MAIL_PRESENCE_CHECK
   - HFO_WAITING_AND_INBOX_STATUS_CELLS
 strongest_falsifier: A_SOURCE_BOUND_TOKEN_FROM_AN_IMMEDIATELY_PRECEDING_IDENTICAL_QUERY_FAILS_WITH_THE_SAME_INVALID_ARGUMENT_OR_AN_IDENTICAL_RAW_GMAIL_OR_GMAIL_UI_QUERY_CONTRADICTS_THE_CONNECTOR_RESULT_OR_CONNECTOR_INSPECTION_SHOWS_PRIVATE_CONTENT_PERSISTENCE_QUERY_REWRITE_OR_A_VERIFIED_FORMAT_METADATA_PATH
-honest_flaw: PHASE3_USED_ONE_SYNTHETIC_TOKEN_ONLY; IT_DID_NOT_TEST_A_VALID_SOURCE_BOUND_TOKEN_QUERY_MISMATCH_TOKEN_EXPIRY_WRONG_IDENTITY_PERMISSION_RATE_LIMIT_TRANSIENT_FAILURE_RAW_HTTP_STATUS_METADATA_RETRIEVAL_OR_OPERATOR_TIME_REDUCTION
+honest_flaw: NO_VALID_SOURCE_BOUND_PAGE_TRAVERSAL_RAW_API_OR_GMAIL_UI_COMPARISON_CREDENTIAL_SCOPE_PROOF_PERMISSION_RATE_LIMIT_TRANSIENT_FAILURE_CONSUMER_ACK_OR_MEASURED_OPERATOR_TIME_REDUCTION_WAS_OBSERVED
 phase_1_result:
   disposition: PHASE1_ACCEPTED_WITH_CAPABILITY_GAP_SCOPE_AND_PRIVACY_ANDON
-  metadata_candidate_status: NOT_YET_PROVEN
 phase_2_result:
   disposition: PHASE2_ACCEPTED_AS_PRIVACY_SAFE_ID_ONLY_EXISTENCE_PROBE_WITH_EMPTY_RESULT_SCOPE_GATE
-  metadata_candidate_status: NOT_YET_PROVEN
   metadata_fetch_status: DEFERRED_NO_SAFE_EXPLICIT_FORMAT_METADATA_OR_HEADER_ALLOWLIST_SURFACE
 phase_3_result:
   disposition: PHASE3_ACCEPTED_WITH_EXPLICIT_INVALID_ARGUMENT_FAILURE_AND_SOURCE_BOUND_CURSOR_GATES
-  metadata_candidate_status: NOT_YET_PROVEN
-  provisional_phase_4_decision: ADOPT_WITH_GATES_FOR_ID_ONLY_DISCOVERY_AND_EXPLICIT_ERROR_CLASSIFICATION_DEFER_METADATA_ONLY_CLAIMS
-next_wake:
-  experiment_id: X13_GMAIL_BOUNDED_MESSAGE_METADATA_SEARCH_READONLY_001
-  phase: 4_of_4
-  proposed_action: DECISION_ONLY_NO_ADDITIONAL_GMAIL_CAPABILITY_CALL
-  excluded_effects: SEND_DRAFT_MODIFY_LABEL_ARCHIVE_TRASH_DELETE_ATTACHMENT_DOWNLOAD_BODY_FETCH_OR_SECRET_EXPOSURE
-review_expiry_utc: 2026-08-10T07:47:49Z
-valid_time_utc: 2026-08-03T07:47:49Z
+phase_4_result:
+  disposition: ADOPT_WITH_GATES
+  admitted_capability: BOUNDED_ID_ONLY_DISCOVERY_AND_EXPLICIT_INVALID_ARGUMENT_CLASSIFICATION
+  metadata_candidate_status: DEFER
+  least_privilege_status: UNKNOWN
+next_campaign:
+  experiment_id: X13_GOOGLE_DRIVE_BOUNDED_FILE_METADATA_SEARCH_READONLY_001
+  candidate: Google_Drive_bounded_file_metadata_search_readonly_surface
+  next_phase: 1_of_4
+  proposed_action: OFFICIAL_CONTRACT_AND_DIRECT_READ_ONLY_CAPABILITY_BASELINE
+  excluded_effects: CREATE_UPLOAD_EDIT_MOVE_RENAME_SHARE_PERMISSION_CHANGE_DELETE_EXPORT_PUBLICATION_OR_SECRET_EXPOSURE
+review_expiry_utc: 2026-08-10T08:48:50Z
+valid_time_utc: 2026-08-03T08:48:50Z
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 sealed: true
 prior_campaign:
@@ -238,10 +240,10 @@ prior_prior_campaign:
 
 # X13 current campaign
 
-Gmail bounded message-metadata search campaign **3/4** is active.
+Gmail bounded message-metadata search campaign **4/4** is closed.
 
-Phase 3 supplied one synthetic page token that did not originate from a prior connector response. The connector returned an explicit normalized `INVALID_ARGUMENT` error rather than a silent empty result. No message IDs, private headers, snippets, bodies, attachments, retry, or mailbox mutation were returned or performed.
+Decision: **ADOPT_WITH_GATES** for bounded ID-only discovery and explicit normalized invalid-argument classification. Metadata-only retrieval is **DEFERRED**, and least-privilege claims remain **UNKNOWN** because the connector exposes neither explicit `format=METADATA` and selected-header controls nor authenticated identity and effective OAuth scope.
 
-This distinguishes the malformed-cursor path from the valid empty success observed in phase 2. It does not expose the raw HTTP status, provider response body, request ID, quota headers, authenticated identity, effective OAuth scope, or whether the request reached Gmail. Page tokens must remain source-bound to the immediately preceding compatible query chain and must never be synthesized, reformatted, or reused across query variants.
+The campaign observed one positive ID-only page, one valid empty page, and one explicit invalid-page-token error. It did not prove valid source-bound pagination, raw API or Gmail UI parity, permission or quota behavior, ConsumerAck, or measured operator-time reduction. Fitness credit remains zero.
 
-Metadata-only retrieval remains deferred because the connector exposes no explicit `format=METADATA` or selected-header allowlist. Measured operator relief is `0`; surfaced cost is `$0`; ConsumerAck is absent.
+Next campaign: bounded read-only Google Drive file-metadata search baseline.
