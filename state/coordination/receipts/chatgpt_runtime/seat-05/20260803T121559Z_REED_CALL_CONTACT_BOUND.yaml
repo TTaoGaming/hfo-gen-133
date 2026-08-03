@@ -1,0 +1,49 @@
+schema_version: "gen133.s05.operator_relief_receipt.v1"
+receipt_id: "S05-20260803T121559Z-REED-CALL-CONTACT-BOUND"
+created_at_utc: "2026-08-03T12:15:59Z"
+seat: "S05"
+expected_task_id: "6a55c182078c8191b89f2dd15f5f640c"
+canonical_repository: "TTaoGaming/hfo-gen-133"
+canonical_branch: "agent/gen133-bootstrap-20260730"
+wip: 1
+transition: "APPOINTMENT_CONTACT_BOUND"
+active_item:
+  title: "Reed inspection-fee source verification call"
+  calendar_event_id: "qunmnnpptelppkgjmuped6d4s0"
+  scheduled_for: "2026-08-03T08:30:00-06:00"
+material_change:
+  summary: "The existing private Reed verification block now contains the authoritative office phone and an exact call-first instruction, removing contact lookup from the operator's morning execution."
+  business_contact:
+    phone: "(573) 445-4112"
+    source: "Reed estimate email dated 2026-07-20"
+  calendar_readback:
+    title: "Call Reed: verify $130 inspection fee before payment"
+    location: "Reed Heating and Air Conditioning — (573) 445-4112"
+    visibility: "private"
+    reminders: "10 minutes before and at start"
+assessment:
+  proven:
+    - "The Reed estimate names (573) 445-4112 as the office contact number."
+    - "Calendar readback shows the number in both the event location and bounded call instructions."
+    - "The call remains scheduled for 2026-08-03 08:30 America/Denver."
+  not_proven:
+    - "That a $130 inspection fee is due."
+    - "That an invoice or authoritative fee record exists."
+operator_action_now: "NONE_BEFORE_BOUND_CALL"
+operator_minutes_removed: 3
+next_consumer: "Operator at 2026-08-03 08:30 America/Denver"
+done_gate: "Reed confirms the fee and supplies an invoice or authoritative source record, or the operator records a dated WAITING state with callback owner."
+priority_state:
+  p0: "Goodyear vehicle custody, readiness, and final service record remain unverified."
+  p1:
+    - "PFA disclosure completion due 2026-08-05."
+    - "Reed inspection-fee verification at 2026-08-03 08:30 America/Denver."
+source_pointers:
+  - "Gmail message 19f7fed010a8cb83"
+  - "Google Calendar event qunmnnpptelppkgjmuped6d4s0"
+boundaries_observed:
+  - "No email sent or draft changed"
+  - "No payment, spend authorization, or additional HVAC work approval"
+  - "No account or security change"
+  - "No deployment, merge, publication, destructive deletion, or scheduled-task mutation"
+  - "No private email body or property identifiers externalized"
