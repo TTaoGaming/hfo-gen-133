@@ -1,0 +1,63 @@
+receipt_version: 1
+receipt_id: S05-20260803T001832Z-GOODYEAR-STATUS-INVOICE-NOSEND
+immutable: true
+generation: 133
+seat: S05
+cell: operator-relief
+task_id: 6a55c182078c8191b89f2dd15f5f640c
+branch: agent/gen133-bootstrap-20260730
+observed_at_utc: 2026-08-03T00:18:32Z
+wip: 1
+
+source_readback:
+  gmail_recent_delta:
+    window: newer_than_2h
+    relevant_inbound_found: false
+  gmail_vehicle_thread:
+    thread_id: "19fbf661bdcfe8e0"
+    prior_draft_message_id: "19fc2d6bd3bafdde"
+    inbound_store_confirmation_found: false
+  calendar:
+    status: vehicle_handoff_completion_not_source_verified
+  github:
+    canonical_repository: TTaoGaming/hfo-gen-133
+  slack:
+    channels_checked:
+      - C0BGNGPJFHU
+      - C0BGC646A1H
+    new_operator_completion_evidence_found: false
+
+transition:
+  type: no_send_approval_packet_refresh
+  system: Gmail
+  draft_id: "r-5569644439428815997"
+  readback_message_id: "19fc4fc899922d36"
+  subject: "Status and final invoice request — 2016 Honda CR-V"
+  state: DRAFT_UNSENT
+  packet_requests:
+    - current custody or release status
+    - firm pickup time if the vehicle remains at the store
+    - itemized final invoice or paid receipt
+    - completed-work and approved-scope reconciliation
+    - applicable warranty
+    - pending or recommended work disclosure
+  authorization_boundary: no additional work without operator written approval
+  done_gate: authoritative store response plus final invoice or paid receipt
+
+control_state:
+  active: Goodyear vehicle status and final receipt closure
+  p0: vehicle handoff and final service record remain unverified
+  p1:
+    - PFA household-sale disclosure due 2026-08-05
+    - Reed AC inspection-fee verification at 2026-08-03T08:30:00-06:00
+  operator_minutes_removed_estimate: 4
+  next_consumer: operator at next morning control review
+
+forbidden_effects_observed:
+  email_sent: false
+  payment_or_spend: false
+  application_submission: false
+  deployment_or_merge: false
+  account_or_security_change: false
+  scheduled_task_mutation: false
+  sensitive_body_externalized: false
