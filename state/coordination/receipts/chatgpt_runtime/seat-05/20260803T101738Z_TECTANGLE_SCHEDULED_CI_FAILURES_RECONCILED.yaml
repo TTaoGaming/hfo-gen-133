@@ -1,0 +1,68 @@
+schema_version: "gen133.s05.operator_relief_receipt.v1"
+receipt_id: "S05-20260803T101738Z-TECTANGLE-CI-RECONCILED"
+created_at_utc: "2026-08-03T10:17:38Z"
+seat: "S05"
+expected_task_id: "6a55c182078c8191b89f2dd15f5f640c"
+canonical_repository: "TTaoGaming/hfo-gen-133"
+canonical_branch: "agent/gen133-bootstrap-20260730"
+wip: 1
+transition: "STATUS_RECONCILED"
+active_item:
+  title: "Tectangle scheduled CI failure triage"
+  repository: "TTaoGaming/Tectangle"
+  source_commit: "49da03bd595d364789c219382ec6bec6f56b552d"
+material_change:
+  summary: "Three scheduled workflows failed on the same source commit; two share one exact cross-OS unit-test environment defect, while the weekly suite has a separate mixed failure set."
+  runs:
+    - workflow: "Hex Freeze All (weekly)"
+      run_id: 30804826826
+      job_id: 91657622257
+      failed_step: "Run guard (optional)"
+      proven_failure: "ReferenceError: navigator is not defined"
+      source_location: "September2025/TectangleHexagonal/tests/unit/camera.constraints.test.mjs:26:1"
+      runner_class: "ubuntu-24.04"
+    - workflow: "Hex Tiers — Nightly (daily bundle)"
+      run_id: 30800646670
+      job_id: 91644177229
+      failed_step: "Run daily tier"
+      proven_failure: "ReferenceError: navigator is not defined"
+      source_location: "September2025/TectangleHexagonal/tests/unit/camera.constraints.test.mjs:26:1"
+      runner_class: "windows-2025"
+    - workflow: "Hex Tiers — Weekly (full e2e + visuals)"
+      run_id: 30795982301
+      job_id: 91629552038
+      failed_step: "Run weekly tier"
+      proven_failure_classes:
+        - "Many browser tests received ERR_CONNECTION_REFUSED on localhost or 127.0.0.1 port 8080 after the PowerShell server command returned a background-job handle."
+        - "Independent assertion, timeout, state-persistence, engagement, latency-threshold, and visual-snapshot failures also occurred."
+      result_counts: "19 test suites failed; 25 tests failed; 12 suites passed"
+assessment:
+  proven:
+    - "Freeze and nightly are blocked by the same browser-global assumption in a Node test process on both Linux and Windows."
+    - "Dependency installation completed before all three test-stage failures."
+    - "The weekly run cannot honestly be reduced to one root cause."
+  not_proven:
+    - "The GitHub Actions Node-20 deprecation warning is causal; workflow test code was explicitly run with Node 18.20.8."
+    - "A blind rerun would clear any failure."
+  recommended_work_packet:
+    - "Make camera.constraints.test.mjs establish or inject the required navigator test double before module evaluation, then prove the fast and nightly tiers on clean runners."
+    - "For the weekly Windows workflow, replace the detached PowerShell background-job pattern with a server process whose readiness and lifetime are explicitly verified across steps."
+    - "After server stability is proven, triage remaining product/test failures separately; do not mask them by merely raising timeouts or replacing snapshots."
+operator_action_now: "NONE"
+operator_minutes_removed: 10
+next_consumer: "S06 Code Work-Packet Compiler"
+done_gate: "A bounded patch is independently reviewed and clean reruns prove the fast/nightly navigator defect fixed plus weekly server readiness; remaining weekly failures stay separately enumerated."
+priority_state:
+  p0: "Goodyear vehicle custody, readiness, and final service record remain unverified."
+  p1:
+    - "PFA disclosure completion due 2026-08-05."
+    - "Reed inspection-fee verification bound for 2026-08-03 08:30 America/Denver."
+source_pointers:
+  - "https://github.com/TTaoGaming/Tectangle/actions/runs/30804826826"
+  - "https://github.com/TTaoGaming/Tectangle/actions/runs/30800646670"
+  - "https://github.com/TTaoGaming/Tectangle/actions/runs/30795982301"
+boundaries_observed:
+  - "No workflow rerun"
+  - "No patch or repository mutation outside this immutable receipt"
+  - "No merge, deployment, publication, email send, payment, account change, or scheduled-task mutation"
+  - "No private email body or token externalized"
