@@ -1,0 +1,66 @@
+receipt_version: "1.0"
+receipt_id: "S05_REED_P1_CALL_REBOUND_AFTER_NO_READBACK_20260803T151626Z"
+created_at_utc: "2026-08-03T15:16:26Z"
+seat: "S05"
+cell: "HFO Gen-133 Operator-Relief"
+expected_task_id: "6a55c182078c8191b89f2dd15f5f640c"
+repository: "TTaoGaming/hfo-gen-133"
+branch: "agent/gen133-bootstrap-20260730"
+wip: 1
+
+active_item:
+  id: "REED_INSPECTION_FEE_SOURCE_RECONCILIATION"
+  status: "BOUND_TO_RETRY"
+  next_consumer: "operator"
+  consume_at: "2026-08-03T15:05:00-06:00"
+
+priority_state:
+  p0: "GOODYEAR_VEHICLE_STATUS_AND_FINAL_SERVICE_RECORD_UNVERIFIED"
+  p1:
+    - "REED_INSPECTION_FEE_SOURCE_RECONCILIATION"
+    - "PFA_DISCLOSURE_DUE_2026-08-05"
+
+changed_evidence:
+  gmail:
+    query_scope: "newer_than:2h obligation keywords"
+    result: "NO_NEW_RELEVANT_MESSAGES"
+  calendar:
+    event_id: "qunmnnpptelppkgjmuped6d4s0"
+    prior_window: "2026-08-03T08:30:00-06:00/2026-08-03T08:45:00-06:00"
+    completion_readback: "ABSENT"
+  github:
+    prior_s05_receipt_commit: "5bb0f301564204a1319518ce029ef59239f4c997"
+  slack:
+    channel_id: "C0BGNGPJFHU"
+    prior_s05_pointer_ts: "1785766881"
+    operator_completion_evidence: "ABSENT_IN_BOUNDED_READ"
+
+bounded_transition:
+  type: "DEADLINE_REBOUND"
+  calendar_event_id: "qunmnnpptelppkgjmuped6d4s0"
+  new_window: "2026-08-03T15:05:00-06:00/2026-08-03T15:15:00-06:00"
+  rationale: "The morning call block elapsed without authoritative source-system completion evidence. Rebound once into an existing phone-only window immediately after the Goodyear P0 call."
+  done_gate: "Authoritative Reed confirmation plus invoice/receipt pointer, or a dated WAITING state with callback owner."
+  prohibited_effects_preserved:
+    - "NO_PAYMENT"
+    - "NO_ADDITIONAL_WORK_AUTHORIZATION"
+    - "NO_EMAIL_SEND"
+    - "NO_TASK_MUTATION"
+
+readback:
+  calendar_title: "P1 REBOUND — Call Reed: verify $130 fee before payment"
+  calendar_start: "2026-08-03T15:05:00-06:00"
+  calendar_end: "2026-08-03T15:15:00-06:00"
+  calendar_visibility: "private"
+  calendar_reminders_minutes: [10, 0]
+
+operator_relief:
+  measured_minutes_removed: 3
+  basis: "Avoided re-finding the authoritative contact, reconstructing the call script, checking for a conflicting slot, and manually rebinding the event."
+  external_completion_minutes_claimed: 0
+
+privacy:
+  private_bodies_externalized: false
+  sanitized_fact_only: true
+
+next_consumer: "operator at 15:05 MDT; S05 source readback on a later wake only if changed evidence exists"
