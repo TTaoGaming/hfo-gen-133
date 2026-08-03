@@ -1,14 +1,14 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
 experiment_id: X13_GOOGLE_CALENDAR_BOUNDED_EVENT_WINDOW_READONLY_001
-version: 53
-prior_version: 52
+version: 54
+prior_version: 53
 candidate: Google_Calendar_bounded_event_window_readonly_surface
-candidate_contract_reference: official_Google_Calendar_events_list_quota_and_sync_contracts_plus_direct_connector_receipt
-campaign_wake: 1_of_4
+candidate_contract_reference: official_Google_Calendar_events_list_quota_and_sync_contracts_plus_direct_connector_receipts
+campaign_wake: 2_of_4
 campaign_status: ACTIVE
 phase_1_completed: true
-phase_2_completed: false
+phase_2_completed: true
 phase_3_completed: false
 phase_4_completed: false
 phase_4_decision: null
@@ -16,13 +16,13 @@ carrier_task_id: 6a55c1733708819185088bf334e33ea5
 carrier_task_id_match: true
 wip: 1
 last_event:
-  commit: 38c0d8cd1d7b0aa3df9ff58ae8a9e835aef2373d
-  path: state/coordination/experiments/cots_connector_x13/20260803T014800Z_GOOGLE_CALENDAR_EVENT_WINDOW_PHASE1_BASELINE_AND_PRIVACY_ANDON.md
-  blob_sha: 41b9cc3d3abffbccc2cfbca0c57a6e3cff129740
+  commit: bd512f6e48838211e0bbee4e2fa1837cc8eec790
+  path: state/coordination/experiments/cots_connector_x13/20260803T024931Z_GOOGLE_CALENDAR_EVENT_WINDOW_PHASE2_NARROW_CAP_AND_CURSOR.md
+  blob_sha: 83f60b0ff1952e69902d9481659665f23f01e4a7
   exact_readback_completed: true
-prior_current_commit: 6e5aa6c8cfd34ac0a7b215e43b794a18f310d7e3
-prior_current_blob_sha: 8c6d6fcb029d0e9933649cf0940e945ab8726cab
-effect_ceiling: PHASE1_OFFICIAL_CONTRACT_ONE_BOUNDED_READ_ONLY_CALENDAR_QUERY_GIT_EVENT_CURRENT_ADVANCE_READBACK_AND_ONE_SHORT_SLACK_ANDON
+prior_current_commit: f3762004ab2d3728ef79b9e8d69d78f558842405
+prior_current_blob_sha: 62b4c83fe3e9795e16ae7df2c0d89cae5b17af2
+effect_ceiling: PHASE2_ONE_NARROW_BOUNDED_READ_ONLY_CALENDAR_QUERY_GIT_EVENT_CURRENT_ADVANCE_READBACK_AND_ONE_SHORT_SLACK_MEASURED_FACT
 adoption_credit: 1
 fitness_credit: 0_PENDING_SOURCE_BOUND_CONSUMER_ACK_AND_MEASURED_OPERATOR_OUTCOME
 consumer_ack: NOT_OBSERVED
@@ -52,7 +52,12 @@ campaign_candidate_invocations:
   phase_1_event_window_queries: 1
   phase_1_returned_events: 3
   phase_1_next_page_token_present: true
-actual_upstream_request_count: UNKNOWN_AT_LEAST_1_READONLY_CONNECTOR_CALL
+  phase_2_event_window_queries: 1
+  phase_2_returned_events: 1
+  phase_2_next_page_token_present: true
+  total_queries: 2
+  total_returned_events: 4
+actual_upstream_request_count: UNKNOWN_AT_LEAST_2_READONLY_CONNECTOR_CALLS
 actual_quota_units_consumed: UNKNOWN
 actual_quota_class: UNKNOWN_LEGACY_PROJECT_EXCEPTION_POSSIBLE
 retry_count: 0_AT_CARRIER_LEVEL_UPSTREAM_UNKNOWN
@@ -73,9 +78,32 @@ direct_phase_1_receipt:
   carrier_retries: 0
   write_notification_or_invitation_effect: false
   exact_private_event_values_promoted: false
+direct_phase_2_receipt:
+  action: Google_Calendar.search_events
+  calendar_id: primary
+  time_min_utc: 2026-08-03T01:48:00Z
+  time_max_utc: 2026-08-03T07:48:00Z
+  requested_timezone: America/Denver
+  requested_max_results: 1
+  query_supplied: false
+  returned_event_count: 1
+  next_page_token_present: true
+  connector_error: null
+  external_call_time_ms: 466
+  carrier_retries: 0
+  write_notification_or_invitation_effect: false
+  exact_private_event_values_promoted: false
+phase_2_measured_facts:
+  narrower_window_duration_hours: 6
+  one_record_returned_at_requested_cap_1: true
+  continuation_token_present: true
+  additional_wrapper_visible_results_proven: true
+  returned_event_overlapped_window_while_starting_before_lower_bound: true
+  full_private_content_again_surfaced_by_default: true
+  durable_log_minimization_applied: true
 privacy_andon:
   triggered: true
-  measured_fact: FULL_EVENT_SUMMARIES_DESCRIPTIONS_IDS_URLS_TIMING_AND_RECURRENCE_METADATA_SURFACED_BY_DEFAULT
+  measured_fact: FULL_EVENT_SUMMARIES_DESCRIPTIONS_IDS_URLS_AND_TIMING_SURFACED_BY_DEFAULT_IN_BOTH_BOUNDED_CALLS
   durable_log_minimization_applied: true
 official_contract_checked_2026_08_03:
   events_list: https://developers.google.com/workspace/calendar/api/v3/reference/events/list
@@ -93,8 +121,9 @@ official_contract_checked_2026_08_03:
   post_2026_05_01_requests_per_minute_per_user_per_project_if_applicable: 600
   post_2026_05_01_requests_per_day_before_charges_if_applicable: 1000000
 failure_semantics:
-  success_path: OBSERVED
-  event_window_overlap_behavior: OBSERVED_FOR_LONG_RUNNING_AND_ALL_DAY_EVENTS
+  success_path: OBSERVED_TWICE
+  event_window_overlap_behavior: OBSERVED_TWICE
+  small_result_cap_and_cursor_behavior: OBSERVED
   empty_window: NOT_TESTED
   invalid_bounds: NOT_TESTED
   invalid_page_token: NOT_TESTED
@@ -103,7 +132,7 @@ failure_semantics:
   transient_server_failure: NOT_TESTED
   independent_raw_or_UI_readback: NOT_TESTED
 durability: EPHEMERAL_POINT_IN_TIME_QUERY_OVER_MUTABLE_CALENDAR_STATE_NOT_A_SNAPSHOT_SYNC_OR_EVENT_STREAM
-observability: NORMALIZED_EVENT_FIELDS_COUNT_CURSOR_PRESENCE_AND_LATENCY_VISIBLE_RAW_HTTP_REQUEST_ID_COLLECTION_ETAG_ACCESS_ROLE_SYNC_TOKEN_QUOTA_HEADERS_APPLIED_SINGLE_EVENTS_ORDERING_AND_UPSTREAM_RETRIES_HIDDEN
+observability: NORMALIZED_EVENT_FIELD_CLASSES_COUNT_CURSOR_PRESENCE_AND_LATENCY_VISIBLE_RAW_HTTP_REQUEST_ID_COLLECTION_ETAG_ACCESS_ROLE_SYNC_TOKEN_QUOTA_HEADERS_ORDERING_AND_UPSTREAM_RETRIES_HIDDEN
 portability: MEDIUM_RFC3339_WINDOW_AND_START_END_CONCEPTS_PORTABLE_GOOGLE_EVENT_IDS_RECURRENCE_FIELDS_PAGE_TOKENS_AND_PRIMARY_ALIAS_PROVIDER_SPECIFIC
 admitted_scope:
   - BOUNDED_READ_ONLY_PRIMARY_CALENDAR_EVENT_WINDOW_DISCOVERY
@@ -122,27 +151,29 @@ mandatory_gates:
   - TREAT_OVERLAPPING_LONG_RUNNING_AND_ALL_DAY_EVENTS_AS_VALID_MATCHES
   - TREAT_MAX_RESULTS_AS_PAGE_CAP_NOT_TOTAL_MATCH_COUNT
   - TREAT_NEXT_PAGE_TOKEN_PRESENCE_AS_DIRECT_EVIDENCE_OF_MORE_WRAPPER_VISIBLE_RESULTS
-  - MINIMIZE_EVENT_CONTENT_BEFORE_GIT_SLACK_OR_DOWNSTREAM_FANOUT
+  - MINIMIZE_EVENT_CONTENT_IN_MEMORY_BEFORE_GIT_SLACK_OR_DOWNSTREAM_FANOUT
   - DO_NOT_PERSIST_EVENT_IDS_TITLES_DESCRIPTIONS_URLS_ATTENDEES_LOCATIONS_OR_TOKEN_VALUES_UNLESS_REQUIRED_BY_AN_ADMITTED_CONSUMER
   - DO_NOT_INFER_IDENTITY_ACCESS_ROLE_SCOPE_WRITE_OR_NOTIFICATION_AUTHORITY_FROM_READ_SUCCESS
-  - DO_NOT_CLAIM_SNAPSHOT_STABILITY_COMPLETENESS_OR_DURABILITY_FROM_ONE_QUERY
+  - DO_NOT_CLAIM_SNAPSHOT_STABILITY_COMPLETENESS_OR_DURABILITY_FROM_ONE_QUERY_OR_ONE_PAGE
   - KEEP_ALL_MUTATING_AND_NOTIFICATION_CAPABILITIES_EXCLUDED
 verifier: RAW_GOOGLE_CALENDAR_EVENTS_LIST_WITH_IDENTICAL_CALENDAR_TIME_MIN_TIME_MAX_TIMEZONE_MAX_RESULTS_AND_PAGE_CONTEXT_PLUS_CALENDAR_UI
 consumer:
   - HFO_EXECUTIVE_ASSISTANT_BOUNDED_DAY_PLAN_READS
   - HFO_DEADLINE_AND_CONFLICT_DETECTION_WITH_PRIVACY_MINIMIZATION
   - HFO_WAITING_CLOCK_AND_MORNING_PACKET_SOURCE_BOUND_OBSERVATIONS
-strongest_falsifier: SAME_CONTEXT_RAW_EVENTS_LIST_OR_CALENDAR_UI_SHOWS_CONNECTOR_OMITTED_OR_MISBOUND_EVENTS_WITHIN_THE_IDENTICAL_WINDOW_OR NORMALIZED_TIMES_RECURRENCE_OR_PAGINATION_INCORRECTLY
-honest_flaw: FULL_PRIVATE_EVENT_CONTENT_WAS_EXPOSED_IN_CONNECTOR_RESPONSE_NO_RAW_API_OR_UI_COMPARISON_NO_SCOPE_OR_ACCESS_ROLE_PROOF_NO_EMPTY_OR_FAILURE_PROBE_NO_VALID_PAGINATION_READ_NO_SYNC_TOKEN_NO_CONSUMER_ACK_AND_ZERO_MEASURED_OPERATOR_MINUTES
+strongest_falsifier: SAME_CONTEXT_RAW_EVENTS_LIST_OR_CALENDAR_UI_SHOWS_CONNECTOR_OMITTED_OR_MISBOUND_EVENTS_WITHIN_THE_IDENTICAL_WINDOW_OR_NORMALIZED_TIMES_RECURRENCE_OR_PAGINATION_INCORRECTLY
+honest_flaw: FULL_PRIVATE_EVENT_CONTENT_WAS_EXPOSED_IN_BOTH_CONNECTOR_RESPONSES_NO_RAW_API_OR_UI_COMPARISON_NO_SCOPE_OR_ACCESS_ROLE_PROOF_NO_VALID_PAGE_TRAVERSAL_NO_EMPTY_OR_FAILURE_PROBE_NO_SYNC_TOKEN_NO_CONSUMER_ACK_AND_ZERO_MEASURED_OPERATOR_MINUTES
 phase_1_result:
   disposition: PHASE1_ACCEPTED_WITH_CONTENT_MINIMIZATION_PAGINATION_AND_TEMPORAL_SEMANTICS_GATES
+phase_2_result:
+  disposition: PHASE2_ACCEPTED_WITH_CAP_CURSOR_OVERLAP_AND_DATA_MINIMIZATION_GATES
 next_wake:
   experiment_id: X13_GOOGLE_CALENDAR_BOUNDED_EVENT_WINDOW_READONLY_001
-  phase: 2_of_4
-  proposed_action: REPEAT_A_NARROWER_BOUNDED_READ_ONLY_WINDOW_WITH_MAX_RESULTS_1_AND_PERSIST_ONLY_COUNT_CURSOR_PRESENCE_AND_FIELD_CLASSIFICATION
-  excluded_effects: EVENT_CREATE_UPDATE_DELETE_INVITATION_RESPONSE_ATTENDEE_CHANGE_EMAIL_NOTIFICATION_OR_TOKEN_VALUE_PERSISTENCE
-review_expiry_utc: 2026-08-10T01:48:00Z
-valid_time_utc: 2026-08-03T01:48:00Z
+  phase: 3_of_4
+  proposed_action: ONE_SYNTHETIC_INVERTED_TIME_BOUND_READ_ONLY_FAILURE_PROBE_WITH_MAX_RESULTS_1_NO_RETRY_AND_NO_TOKEN
+  excluded_effects: EVENT_CREATE_UPDATE_DELETE_INVITATION_RESPONSE_ATTENDEE_CHANGE_EMAIL_NOTIFICATION_TOKEN_PERSISTENCE_OR_RETRY_LOOP
+review_expiry_utc: 2026-08-10T02:49:31Z
+valid_time_utc: 2026-08-03T02:49:31Z
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 sealed: true
 prior_campaign:
@@ -157,12 +188,12 @@ prior_prior_campaign:
 
 # X13 current campaign
 
-Google Calendar bounded event-window read-only phase **1/4** is accepted with content-minimization, pagination, and temporal-semantics gates.
+Google Calendar bounded event-window read-only phase **2/4** is accepted with cap, cursor, overlap, and data-minimization gates.
 
-One explicit 24-hour query against the `primary` calendar returned three events and a continuation token with no connector error or mutation. The response included full private event summaries, descriptions, identifiers, URLs, timing, and recurrence metadata by default. Exact values were not copied into Git.
+One narrower six-hour query against the `primary` calendar requested at most one result. It returned one event and a continuation token with no connector error or mutation. The token is direct evidence that more wrapper-visible matches existed; it is not a completeness or snapshot guarantee.
 
-The official contract makes this an overlap query, not a start-within-window query: `timeMin` filters on event end and `timeMax` filters on event start. `maxResults` is only a page cap, and the observed token proves more wrapper-visible results existed.
+The returned event overlapped the requested window while beginning before its lower bound, independently repeating the official `timeMin`/`timeMax` overlap semantics. Full private event text, identifiers, URLs, and timing were again surfaced by default and were minimized before durable logging.
 
-Measured operator relief remains `0`; surfaced cost was `$0`; ConsumerAck, least-privilege proof, valid pagination, and independent raw/UI verification remain absent.
+Measured operator relief remains `0`; surfaced cost was `$0`; ConsumerAck, least-privilege proof, valid pagination, failure behavior, and independent raw/UI verification remain absent.
 
-Next wake performs one narrower read-only query with `max_results=1`, persisting only count, cursor presence, and field classes. No Calendar mutation or notification effect is authorized.
+Next wake performs one synthetic inverted-bound read-only failure probe with `max_results=1`, no token and no retry. No Calendar mutation or notification effect is authorized.
