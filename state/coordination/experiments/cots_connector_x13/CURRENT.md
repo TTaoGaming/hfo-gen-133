@@ -1,197 +1,168 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
-experiment_id: X13_GITHUB_ACTIONS_WORKFLOW_RUN_STATUS_READONLY_001
-version: 52
-prior_version: 51
-candidate: GitHub_Actions_bounded_workflow_run_status_readonly_surface
-candidate_contract_reference: official_GitHub_Actions_workflow_runs_REST_contract_and_direct_connector_receipts
-campaign_wake: 4_of_4
-campaign_status: COMPLETE
+experiment_id: X13_GOOGLE_CALENDAR_BOUNDED_EVENT_WINDOW_READONLY_001
+version: 53
+prior_version: 52
+candidate: Google_Calendar_bounded_event_window_readonly_surface
+candidate_contract_reference: official_Google_Calendar_events_list_quota_and_sync_contracts_plus_direct_connector_receipt
+campaign_wake: 1_of_4
+campaign_status: ACTIVE
 phase_1_completed: true
-phase_2_completed: true
-phase_3_completed: true
-phase_4_completed: true
-phase_4_decision: ADOPT_WITH_GATES
+phase_2_completed: false
+phase_3_completed: false
+phase_4_completed: false
+phase_4_decision: null
 carrier_task_id: 6a55c1733708819185088bf334e33ea5
 carrier_task_id_match: true
 wip: 1
 last_event:
-  commit: 9488dedee12778be22cbaf99297de93722c5074d
-  path: state/coordination/experiments/cots_connector_x13/20260803T004811Z_GITHUB_ACTIONS_WORKFLOW_RUN_STATUS_PHASE4_ADOPT_WITH_GATES.md
-  blob_sha: e4b120e842bb6451ea6663602050df062ba06000
+  commit: 38c0d8cd1d7b0aa3df9ff58ae8a9e835aef2373d
+  path: state/coordination/experiments/cots_connector_x13/20260803T014800Z_GOOGLE_CALENDAR_EVENT_WINDOW_PHASE1_BASELINE_AND_PRIVACY_ANDON.md
+  blob_sha: 41b9cc3d3abffbccc2cfbca0c57a6e3cff129740
   exact_readback_completed: true
-prior_current_commit: d862c83d901e710d3ff49362fe20e74c27e5d38d
-prior_current_blob_sha: 35cd5a4bf05b2be48976c8760688905111134b3e
-effect_ceiling: PHASE4_DECISION_ONLY_GIT_EVENT_CURRENT_ADVANCE_READBACK_AND_ONE_SHORT_SLACK_DECISION
-adoption_credit: 4
+prior_current_commit: 6e5aa6c8cfd34ac0a7b215e43b794a18f310d7e3
+prior_current_blob_sha: 8c6d6fcb029d0e9933649cf0940e945ab8726cab
+effect_ceiling: PHASE1_OFFICIAL_CONTRACT_ONE_BOUNDED_READ_ONLY_CALENDAR_QUERY_GIT_EVENT_CURRENT_ADVANCE_READBACK_AND_ONE_SHORT_SLACK_ANDON
+adoption_credit: 1
 fitness_credit: 0_PENDING_SOURCE_BOUND_CONSUMER_ACK_AND_MEASURED_OPERATOR_OUTCOME
 consumer_ack: NOT_OBSERVED
 operator_minutes_removed_measured: 0
-operator_minutes_removed_estimate_per_known_commit_status_check: 1_to_3_UNVALIDATED
+operator_minutes_removed_estimate_per_schedule_window_check: 1_to_4_UNVALIDATED
 custom_code_avoided_estimate:
-  authenticated_commit_lookup_and_normalized_run_status_extraction: 35_to_110_LOC_UNVALIDATED
+  authenticated_event_list_time_bounds_pagination_and_normalization: 45_to_140_LOC_UNVALIDATED
 custom_policy_not_avoided:
-  - SOURCE_BOUND_REPOSITORY_AND_FULL_COMMIT_OID_VALIDATION
-  - ACCOUNT_IDENTITY_CREDENTIAL_TYPE_AND_AUTHORITY
-  - ACTIONS_READ_PERMISSION_AND_LEAST_PRIVILEGE_VERIFICATION
-  - EVENT_BRANCH_ATTEMPT_LATEST_RUN_AND_COMPLETENESS_POLICY
-  - EMPTY_RESULT_AND_NEGATIVE_EVIDENCE_SEMANTICS
-  - PAGINATION_ORDERING_AND_MULTIPLE_RUN_SELECTION
-  - RATE_LIMIT_RETRY_AND_BACKOFF
-  - WEBHOOK_OR_POLLING_DURABILITY_POLICY
+  - DATA_MINIMIZATION_AND_PRIVATE_EVENT_FIELD_HANDLING
+  - ACCOUNT_IDENTITY_CREDENTIAL_TYPE_AUTHORITY_AND_LEAST_PRIVILEGE
+  - TIMEZONE_ALL_DAY_LONG_RUNNING_AND_RECURRENCE_SEMANTICS
+  - PAGINATION_COMPLETENESS_ORDERING_AND_DUPLICATE_CONTROL
+  - SNAPSHOT_INCREMENTAL_SYNC_AND_TOKEN_DURABILITY
+  - RATE_LIMIT_RETRY_BACKOFF_AND_COST_ACCOUNTING
   - INDEPENDENT_VERIFICATION
 credentials:
-  connector_reached_github_without_error: true
+  connector_reached_primary_calendar_without_error: true
   operator_supplied_credentials: 0
-  authenticated_user_or_app_identity: UNKNOWN
+  authenticated_identity: UNKNOWN
   credential_type: UNKNOWN
-  live_actions_permission: UNKNOWN
-  oauth_pat_app_scope: UNKNOWN
+  effective_oauth_scope: UNKNOWN
+  access_role: NOT_EXPOSED
   credential_custody: UNKNOWN
   least_privilege_closed: false
 paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
 campaign_candidate_invocations:
-  phase_1_commit_workflow_runs_queries: 1
-  phase_2_source_discovery_reads_total: 13
-  phase_2_commit_workflow_runs_queries: 4
-  phase_2_positive_run_payloads: 1
-  phase_3_malformed_commit_queries: 1
-  phase_4_decision_only: 1
-  phase_4_candidate_capability_calls: 0
-actual_upstream_request_count: UNKNOWN_AT_LEAST_15_READONLY_CONNECTOR_CALLS_ACROSS_PHASES_1_TO_3
+  phase_1_event_window_queries: 1
+  phase_1_returned_events: 3
+  phase_1_next_page_token_present: true
+actual_upstream_request_count: UNKNOWN_AT_LEAST_1_READONLY_CONNECTOR_CALL
 actual_quota_units_consumed: UNKNOWN
-actual_quota_class: UNKNOWN
+actual_quota_class: UNKNOWN_LEGACY_PROJECT_EXCEPTION_POSSIBLE
 retry_count: 0_AT_CARRIER_LEVEL_UPSTREAM_UNKNOWN
 billing_counters: NOT_EXPOSED
 live_request_id_retry_after_rate_limit_or_quota_headers: NOT_EXPOSED
 direct_phase_1_receipt:
-  repository: TTaoGaming/hfo-gen-133
-  commit_sha: 5ddb21762d27a4349c0707cc163b58352d36481d
-  wrapper_event_filter: pull_request
-  wrapper_page_scope: first_page_only
-  returned_workflow_run_count: 0
-  external_call_time_ms: 386
-  interpretation: NO_MATCH_IN_WRAPPER_SCOPE_NOT_PROOF_OF_NO_WORKFLOW_RUNS
-direct_phase_2_receipt:
-  repository: TTaoGaming/hive-fleet-obsidian-gen-132
-  pull_request_number: 20
-  head_commit_sha: abcf741c0d6cd654f3fdcc02d331245861406931
-  returned_workflow_run_count: 1
-  run_id: 30493905584
-  workflow_name: HFO_Conformance_Gate
-  run_number: 1551
-  status: completed
-  conclusion: failure
-  external_call_time_ms: 516
-  interpretation: CONNECTOR_CALL_SUCCESS_SEPARATE_FROM_WORKFLOW_FAILURE
-direct_phase_3_receipt:
-  repository: TTaoGaming/hive-fleet-obsidian-gen-132
-  input_class: SYNTHETIC_CLEARLY_MALFORMED_NON_HEX_COMMIT_IDENTIFIER
-  exact_input_promoted: false
-  returned_workflow_run_count: 0
+  action: Google_Calendar.search_events
+  calendar_id: primary
+  time_min_utc: 2026-08-03T01:48:00Z
+  time_max_utc: 2026-08-04T01:48:00Z
+  requested_timezone: America/Denver
+  requested_max_results: 3
+  query_supplied: false
+  returned_event_count: 3
+  next_page_token_present: true
   connector_error: null
-  external_call_time_ms: 331
+  external_call_time_ms: 468
   carrier_retries: 0
-  write_side_effect: false
-  interpretation: MALFORMED_INPUT_CONFLATED_WITH_ORDINARY_NO_MATCH_AT_CONNECTOR_SURFACE
+  write_notification_or_invitation_effect: false
+  exact_private_event_values_promoted: false
+privacy_andon:
+  triggered: true
+  measured_fact: FULL_EVENT_SUMMARIES_DESCRIPTIONS_IDS_URLS_TIMING_AND_RECURRENCE_METADATA_SURFACED_BY_DEFAULT
+  durable_log_minimization_applied: true
 official_contract_checked_2026_08_03:
-  workflow_runs: https://docs.github.com/en/rest/actions/workflow-runs
-  rate_limits: https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api
-  best_practices: https://docs.github.com/en/rest/using-the-rest-api/best-practices-for-using-the-rest-api?apiVersion=2026-03-10
-  endpoint: GET_/repos/{owner}/{repo}/actions/runs_OR_WORKFLOW_SCOPED_VARIANT
-  head_sha_contract: STRING_FILTER_FOR_ASSOCIATED_RUNS
-  documented_list_success_status: 200_OK
-  fine_grained_permission: ACTIONS_READ
-  public_resource_unauthenticated_use_possible: true
-  per_page_max: 100
-  filtered_search_result_cap: 1000
-  response_schema_has_run_attempt_event_head_sha_and_timestamps: true
-  primary_rate_context_authenticated_user: TYPICALLY_5000_REQUESTS_PER_HOUR
-  primary_rate_context_unauthenticated_public: 60_REQUESTS_PER_HOUR
-  primary_rate_context_github_token: TYPICALLY_1000_REQUESTS_PER_HOUR_PER_REPOSITORY
-  rate_limit_failure_status: 403_OR_429
-  retry_control: RETRY_AFTER_OR_X_RATELIMIT_RESET_WHEN_EXPOSED
+  events_list: https://developers.google.com/workspace/calendar/api/v3/reference/events/list
+  usage_limits: https://developers.google.com/workspace/calendar/api/guides/quota
+  incremental_sync: https://developers.google.com/workspace/calendar/api/guides/sync
+  endpoint: GET_/calendar/v3/calendars/{calendarId}/events
+  primary_alias: LOGGED_IN_USERS_PRIMARY_CALENDAR
+  time_min_semantics: EXCLUSIVE_LOWER_BOUND_ON_EVENT_END
+  time_max_semantics: EXCLUSIVE_UPPER_BOUND_ON_EVENT_START
+  max_results_semantics: PAGE_MAXIMUM_NOT_TOTAL_COUNT
+  next_page_token_semantics: MORE_RESULTS_AVAILABLE
+  next_sync_token_semantics: FINAL_PAGE_ONLY
+  expired_sync_token_behavior: HTTP_410_FULL_RESYNC_REQUIRED
+  post_2026_05_01_requests_per_minute_per_project_if_applicable: 10000
+  post_2026_05_01_requests_per_minute_per_user_per_project_if_applicable: 600
+  post_2026_05_01_requests_per_day_before_charges_if_applicable: 1000000
 failure_semantics:
-  valid_source_bound_empty_result: OBSERVED
-  positive_workflow_failure_as_data: OBSERVED
-  malformed_commit_input: OBSERVED_AS_EMPTY_NO_ERROR
-  malformed_vs_valid_no_match_distinguishable: false
-  connector_transport_error: NOT_OBSERVED
-  permission_denial: NOT_TESTED
-  authentication_failure: NOT_TESTED
-  not_found_masking: NOT_TESTED
+  success_path: OBSERVED
+  event_window_overlap_behavior: OBSERVED_FOR_LONG_RUNNING_AND_ALL_DAY_EVENTS
+  empty_window: NOT_TESTED
+  invalid_bounds: NOT_TESTED
+  invalid_page_token: NOT_TESTED
+  authentication_or_permission_denial: NOT_TESTED
   quota_or_rate_limit: NOT_TESTED
   transient_server_failure: NOT_TESTED
   independent_raw_or_UI_readback: NOT_TESTED
-durability: EPHEMERAL_POINT_IN_TIME_QUERY_OVER_MUTABLE_WORKFLOW_RUN_AND_RERUN_STATE_NOT_A_DURABLE_EVENT_STREAM_OR_LATEST_STATUS_GUARANTEE
-observability: POSITIVE_NORMALIZED_STATUS_FIELDS_AND_LATENCY_VISIBLE_NEGATIVE_CAUSE_RAW_REQUEST_TOTAL_COUNT_EVENT_HEAD_SHA_ATTEMPT_PAGINATION_REQUEST_ID_RATE_LIMITS_AND_UPSTREAM_RETRIES_HIDDEN
-portability: MEDIUM_LOW_SOURCE_BOUND_COMMIT_AND_PASS_FAIL_CONCEPTS_PORTABLE_GITHUB_RUN_EVENT_CONCLUSION_AND_WRAPPER_SEMANTICS_PROVIDER_SPECIFIC
+durability: EPHEMERAL_POINT_IN_TIME_QUERY_OVER_MUTABLE_CALENDAR_STATE_NOT_A_SNAPSHOT_SYNC_OR_EVENT_STREAM
+observability: NORMALIZED_EVENT_FIELDS_COUNT_CURSOR_PRESENCE_AND_LATENCY_VISIBLE_RAW_HTTP_REQUEST_ID_COLLECTION_ETAG_ACCESS_ROLE_SYNC_TOKEN_QUOTA_HEADERS_APPLIED_SINGLE_EVENTS_ORDERING_AND_UPSTREAM_RETRIES_HIDDEN
+portability: MEDIUM_RFC3339_WINDOW_AND_START_END_CONCEPTS_PORTABLE_GOOGLE_EVENT_IDS_RECURRENCE_FIELDS_PAGE_TOKENS_AND_PRIMARY_ALIAS_PROVIDER_SPECIFIC
 admitted_scope:
-  - BOUNDED_READ_ONLY_STATUS_LOOKUP_FOR_EXACT_SOURCE_BOUND_REPOSITORY_AND_FULL_COMMIT_OID
-  - TIMESTAMPED_POSITIVE_STATUS_OBSERVATION_ONLY
-  - POSITIVE_NORMALIZED_RUN_ID_WORKFLOW_NAME_RUN_NUMBER_STATUS_AND_CONCLUSION
-  - EXPLICIT_SEPARATION_OF_CONNECTOR_SUCCESS_FROM_WORKFLOW_CONCLUSION
-  - EMPTY_RESULTS_RECORDED_ONLY_AS_NO_MATCH_IN_PULL_REQUEST_FIRST_PAGE_WRAPPER_SCOPE
+  - BOUNDED_READ_ONLY_PRIMARY_CALENDAR_EVENT_WINDOW_DISCOVERY
+  - EXPLICIT_RFC3339_BOUNDS_RESPONSE_TIMEZONE_AND_SMALL_PAGE_CAP
+  - PRIVACY_MINIMIZED_COUNTS_TIME_BUCKETS_AND_SOURCE_BOUND_REFERENCES
+  - CONTINUATION_TOKEN_PRESENCE_AS_PAGINATION_SIGNAL_WITHOUT_TOKEN_VALUE_PERSISTENCE
 excluded_scope:
-  - AUTHORITATIVE_NEGATIVE_CI_EVIDENCE_FROM_EMPTY_RESULTS
-  - WORKFLOW_DISPATCH_RERUN_OR_CANCELLATION
-  - JOB_STEP_LOG_OR_ARTIFACT_HYDRATION
-  - SECRET_ENVIRONMENT_OR_CREDENTIAL_ACCESS
-  - WORKFLOW_FILE_BRANCH_MERGE_OR_REPOSITORY_SETTING_MUTATION
-  - LATEST_ATTEMPT_COMPLETE_HISTORY_BRANCH_WIDE_OR_REPOSITORY_WIDE_HEALTH_CLAIMS
+  - EVENT_CREATE_UPDATE_DELETE_MOVE_IMPORT_OR_QUICK_ADD
+  - INVITATION_RESPONSE_ATTENDEE_CHANGE_EMAIL_OR_NOTIFICATION_EFFECT
+  - DURABLE_FULL_CALENDAR_SNAPSHOT_OR_INCREMENTAL_SYNC
+  - COMPLETENESS_IDENTITY_ACCESS_ROLE_SCOPE_WRITE_AUTHORITY_OR_BILLING_CLAIMS
+  - UNNECESSARY_PERSISTENCE_OF_EVENT_TEXT_IDS_URLS_ATTENDEES_LOCATIONS_OR_TOKEN_VALUES
 mandatory_gates:
-  - ACCEPT_ONLY_FULL_COMMIT_OIDS_SOURCE_BOUND_TO_A_TRUSTED_GITHUB_RESPONSE_FOR_THE_SAME_REPOSITORY
-  - REJECT_SYNTHETIC_NON_HEX_TRUNCATED_WHITESPACE_CORRUPTED_WRONG_REPOSITORY_OR OTHERWISE_UNBOUND_COMMIT_INPUTS_BEFORE_CONNECTOR_INVOCATION
-  - INTERPRET_EVERY_EMPTY_ARRAY_AS_NO_MATCH_IN_PULL_REQUEST_FIRST_PAGE_WRAPPER_SCOPE_NOT_NO_CI
-  - KEEP_MALFORMED_INPUT_VALID_NO_MATCH_AUTHENTICATION_AUTHORIZATION_NOT_FOUND_RATE_LIMIT_TRANSIENT_CONNECTOR_AND_WORKFLOW_FAILURE_STATES_SEPARATE
-  - REQUIRE_POSITIVE_RUN_PAYLOAD_OR_INDEPENDENT_RAW_API_OR_ACTIONS_UI_EVIDENCE_FOR_RELEASE_COMPLETION_OR_NEGATIVE_CI_GATES
-  - BIND_POSITIVE_STATUS_TO_REPOSITORY_SOURCE_BOUND_COMMIT_RUN_ID_OBSERVATION_TIME_EVENT_SCOPE_AND_PAGE_SCOPE
-  - DO_NOT_INFER_IDENTITY_SCOPE_PERMISSION_RATE_LIMIT_BILLING_WRITE_AUTHORITY_LATEST_ATTEMPT_OR_COMPLETENESS_FROM_SUCCESS
-  - HONOR_RETRY_AFTER_OR_X_RATELIMIT_RESET_WHEN_EXPOSED_AND_NEVER_BLINDLY_RETRY_RATE_LIMIT_FAILURES
-  - KEEP_ALL_MUTATING_AND CONTENT_HYDRATION_ACTIONS_EXCLUDED
-verifier: RAW_GITHUB_WORKFLOW_RUNS_ENDPOINT_WITH_IDENTICAL_EVENT_HEAD_SHA_AND_PAGE_FILTER_PLUS_ACTIONS_UI_OR_SOURCE_BOUND_VALID_COMMIT_CONTROL
+  - USE_EXPLICIT_RFC3339_TIME_MIN_TIME_MAX_TIMEZONE_CALENDAR_ID_AND_SMALL_MAX_RESULTS
+  - INTERPRET_TIME_MIN_AS_EXCLUSIVE_LOWER_BOUND_ON_EVENT_END_AND_TIME_MAX_AS_EXCLUSIVE_UPPER_BOUND_ON_EVENT_START
+  - TREAT_OVERLAPPING_LONG_RUNNING_AND_ALL_DAY_EVENTS_AS_VALID_MATCHES
+  - TREAT_MAX_RESULTS_AS_PAGE_CAP_NOT_TOTAL_MATCH_COUNT
+  - TREAT_NEXT_PAGE_TOKEN_PRESENCE_AS_DIRECT_EVIDENCE_OF_MORE_WRAPPER_VISIBLE_RESULTS
+  - MINIMIZE_EVENT_CONTENT_BEFORE_GIT_SLACK_OR_DOWNSTREAM_FANOUT
+  - DO_NOT_PERSIST_EVENT_IDS_TITLES_DESCRIPTIONS_URLS_ATTENDEES_LOCATIONS_OR_TOKEN_VALUES_UNLESS_REQUIRED_BY_AN_ADMITTED_CONSUMER
+  - DO_NOT_INFER_IDENTITY_ACCESS_ROLE_SCOPE_WRITE_OR_NOTIFICATION_AUTHORITY_FROM_READ_SUCCESS
+  - DO_NOT_CLAIM_SNAPSHOT_STABILITY_COMPLETENESS_OR_DURABILITY_FROM_ONE_QUERY
+  - KEEP_ALL_MUTATING_AND_NOTIFICATION_CAPABILITIES_EXCLUDED
+verifier: RAW_GOOGLE_CALENDAR_EVENTS_LIST_WITH_IDENTICAL_CALENDAR_TIME_MIN_TIME_MAX_TIMEZONE_MAX_RESULTS_AND_PAGE_CONTEXT_PLUS_CALENDAR_UI
 consumer:
-  - HFO_AGENT_COMPLETION_VERIFICATION_POSITIVE_EVIDENCE_ONLY
-  - HFO_CI_RELEASE_GATES_WITH_INDEPENDENT_NEGATIVE_EVIDENCE
-  - HFO_BRANCH_HEALTH_SUMMARIES_AS_TIMESTAMPED_OBSERVATIONS
-strongest_falsifier: SAME_CONTEXT_RAW_GITHUB_API_OR_ACTIONS_UI_SHOWS_CONNECTOR_POSITIVE_STATUS_MAPPED_TO_WRONG_REPOSITORY_COMMIT_RUN_ATTEMPT_OR_CONCLUSION_OR_SHOWS_EMPTY_WRAPPER_RESULT_WHILE_A_MATCHING_PULL_REQUEST_RUN_EXISTS_ON_THE_WRAPPER_FIRST_PAGE
-honest_flaw: NO_RAW_API_OR_ACTIONS_UI_COMPARISON_NO_LATEST_ATTEMPT_OR_PAGINATION_PROOF_NO_IDENTITY_OR_PERMISSION_SCOPE_NO_401_403_404_422_429_5XX_NO_RATE_LIMIT_HEADERS_NO_CONSUMER_ACK_AND_ZERO_MEASURED_OPERATOR_MINUTES
+  - HFO_EXECUTIVE_ASSISTANT_BOUNDED_DAY_PLAN_READS
+  - HFO_DEADLINE_AND_CONFLICT_DETECTION_WITH_PRIVACY_MINIMIZATION
+  - HFO_WAITING_CLOCK_AND_MORNING_PACKET_SOURCE_BOUND_OBSERVATIONS
+strongest_falsifier: SAME_CONTEXT_RAW_EVENTS_LIST_OR_CALENDAR_UI_SHOWS_CONNECTOR_OMITTED_OR_MISBOUND_EVENTS_WITHIN_THE_IDENTICAL_WINDOW_OR NORMALIZED_TIMES_RECURRENCE_OR_PAGINATION_INCORRECTLY
+honest_flaw: FULL_PRIVATE_EVENT_CONTENT_WAS_EXPOSED_IN_CONNECTOR_RESPONSE_NO_RAW_API_OR_UI_COMPARISON_NO_SCOPE_OR_ACCESS_ROLE_PROOF_NO_EMPTY_OR_FAILURE_PROBE_NO_VALID_PAGINATION_READ_NO_SYNC_TOKEN_NO_CONSUMER_ACK_AND_ZERO_MEASURED_OPERATOR_MINUTES
 phase_1_result:
-  disposition: PHASE1_ACCEPTED_WITH_EVENT_SCOPE_AND_EMPTY_RESULT_GATES
-phase_2_result:
-  disposition: PHASE2_ACCEPTED_WITH_POSITIVE_FAILURE_STATUS_AND_SCOPE_GATES
-phase_3_result:
-  disposition: PHASE3_ACCEPTED_WITH_SEMANTIC_EMPTY_RESULT_ANDON
-phase_4_result:
-  disposition: ADOPT_WITH_GATES
-  decision_reason: POSITIVE_SOURCE_BOUND_STATUS_IS_USEFUL_BUT_EMPTY_RESULTS_ARE_SEMANTICALLY_AMBIGUOUS_AND_NON_AUTHORITATIVE
+  disposition: PHASE1_ACCEPTED_WITH_CONTENT_MINIMIZATION_PAGINATION_AND_TEMPORAL_SEMANTICS_GATES
 next_wake:
   experiment_id: X13_GOOGLE_CALENDAR_BOUNDED_EVENT_WINDOW_READONLY_001
-  phase: 1_of_4
-  proposed_action: OFFICIAL_CONTRACT_AND_ONE_BOUNDED_READ_ONLY_TIME_WINDOW_BASELINE
-  excluded_effects: EVENT_CREATE_UPDATE_DELETE_INVITATION_RESPONSE_ATTENDEE_CHANGE_EMAIL_OR_NOTIFICATION
-review_expiry_utc: 2026-08-10T00:48:11Z
-valid_time_utc: 2026-08-03T00:48:11Z
+  phase: 2_of_4
+  proposed_action: REPEAT_A_NARROWER_BOUNDED_READ_ONLY_WINDOW_WITH_MAX_RESULTS_1_AND_PERSIST_ONLY_COUNT_CURSOR_PRESENCE_AND_FIELD_CLASSIFICATION
+  excluded_effects: EVENT_CREATE_UPDATE_DELETE_INVITATION_RESPONSE_ATTENDEE_CHANGE_EMAIL_NOTIFICATION_OR_TOKEN_VALUE_PERSISTENCE
+review_expiry_utc: 2026-08-10T01:48:00Z
+valid_time_utc: 2026-08-03T01:48:00Z
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 sealed: true
 prior_campaign:
-  experiment_id: X13_GOOGLE_DRIVE_BOUNDED_METADATA_SEARCH_READONLY_001
-  final_version: 48
+  experiment_id: X13_GITHUB_ACTIONS_WORKFLOW_RUN_STATUS_READONLY_001
+  final_version: 52
   decision: ADOPT_WITH_GATES
 prior_prior_campaign:
-  experiment_id: X13_GMAIL_BOUNDED_METADATA_SEARCH_READONLY_001
-  final_version: 44
+  experiment_id: X13_GOOGLE_DRIVE_BOUNDED_METADATA_SEARCH_READONLY_001
+  final_version: 48
   decision: ADOPT_WITH_GATES
 ---
 
 # X13 current campaign
 
-GitHub Actions bounded commit workflow-run status completed phase **4/4** with decision **`ADOPT_WITH_GATES`**.
+Google Calendar bounded event-window read-only phase **1/4** is accepted with content-minimization, pagination, and temporal-semantics gates.
 
-Admit the surface only for positive, source-bound, timestamped status observations when the repository and full commit OID came from a trusted GitHub response. Connector-call success and workflow conclusion remain separate facts.
+One explicit 24-hour query against the `primary` calendar returned three events and a continuation token with no connector error or mutation. The response included full private event summaries, descriptions, identifiers, URLs, timing, and recurrence metadata by default. Exact values were not copied into Git.
 
-Every empty result remains `NO_MATCH_IN_WRAPPER_SCOPE`, not proof that CI did not run. The connector conflated a clearly malformed identifier with an ordinary zero-match response and limits observations to pull-request-triggered runs on its first page.
+The official contract makes this an overlap query, not a start-within-window query: `timeMin` filters on event end and `timeMax` filters on event start. `maxResults` is only a page cap, and the observed token proves more wrapper-visible results existed.
 
-Measured operator relief remains `0`; surfaced cost was `$0`; ConsumerAck and independent raw/UI verification remain absent; fitness credit remains `0`.
+Measured operator relief remains `0`; surfaced cost was `$0`; ConsumerAck, least-privilege proof, valid pagination, and independent raw/UI verification remain absent.
 
-Next wake begins Google Calendar bounded read-only event-window phase 1. No Calendar mutation is authorized.
+Next wake performs one narrower read-only query with `max_results=1`, persisting only count, cursor presence, and field classes. No Calendar mutation or notification effect is authorized.
