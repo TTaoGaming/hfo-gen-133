@@ -1,0 +1,69 @@
+{
+  "schema_id": "hfo.gen133.dlc_foss_factory.local_regression_evidence.v1",
+  "authority": {
+    "repository": "TTaoGaming/hfo-gen-133",
+    "controller_branch": "agent/fenrir-product-control-20260802",
+    "controller_commit": "61314978a4dd1b53eeef3086e6d145b3552bf75a",
+    "contract_commit": "ca4c613e20dc99b79071aae0c99cc271620da782",
+    "contract_path": "projects/fenrir_product_loop/DLC_FOSS_FACTORY_CONTROL_V1.md",
+    "contract_blob": "44ad12f2b01337ed3f872751252e836f3a0dbf7d",
+    "route_state": "SCAFFOLD_ONLY_TARGET_UNADMITTED"
+  },
+  "claim": {
+    "verification_scope": "LOCAL_REGRESSION",
+    "independent_verification": false,
+    "target_admitted": false,
+    "pilot_ready": false,
+    "production_ready": false
+  },
+  "commands": [
+    {
+      "command": "python -m compileall -q dlc_factory tests",
+      "exit_code": 0
+    },
+    {
+      "command": "python -m unittest discover -s tests -p 'test_*.py' -v",
+      "exit_code": 0,
+      "tests_run": 17
+    },
+    {
+      "command": "python -m dlc_factory validate --spec examples/NON_PRODUCTION_unit_spec.valid.json",
+      "exit_code": 0
+    },
+    {
+      "command": "python -m dlc_factory preflight --spec examples/NON_PRODUCTION_unit_spec.valid.json",
+      "exit_code": 5,
+      "classification": "UNKNOWN_UNBOUND_TARGET",
+      "license_compatibility_opinion": "NONE"
+    },
+    {
+      "command": "python -m dlc_factory run --spec examples/NON_PRODUCTION_unit_spec.valid.json",
+      "exit_code": 0,
+      "replay": 1,
+      "materialization_created": true,
+      "receipt_idempotent": false
+    },
+    {
+      "command": "python -m dlc_factory run --spec examples/NON_PRODUCTION_unit_spec.valid.json",
+      "exit_code": 0,
+      "replay": 2,
+      "materialization_created": false,
+      "receipt_idempotent": true
+    },
+    {
+      "command": "python -m dlc_factory verify-receipt --sha256 c5a9fc6cfaff100f9f432f35105a3d49bbcbca8d29c9b35e3ed6add67f724d9c",
+      "exit_code": 0
+    }
+  ],
+  "artifacts": {
+    "unit_spec_sha256": "37c4a14e71cd793159f0b3fc3d5ee03e4fd2e8b519a2cedda4ccd4752e6850fc",
+    "artifact_tree_sha256": "86b794a98e293b8837d26f331e7d4297de7474ff30914695e59ecf9c656d6e35",
+    "run_id": "a47c93f64f3835a0fc80a23e241e212515cc99584376a6d7be59dbdd1e62e6d6",
+    "lifecycle_receipt_sha256": "c5a9fc6cfaff100f9f432f35105a3d49bbcbca8d29c9b35e3ed6add67f724d9c"
+  },
+  "honest_flaw": "The maker-owned fixture, executor, command log, and tests are not distinct held-out or independent verification. The checkout-local atomic WIP lease does not coordinate other worktrees or machines.",
+  "next_consumer": {
+    "role": "distinct held-out verifier",
+    "task_id": "019fc468-bce5-7ae3-889f-63783416eef2"
+  }
+}

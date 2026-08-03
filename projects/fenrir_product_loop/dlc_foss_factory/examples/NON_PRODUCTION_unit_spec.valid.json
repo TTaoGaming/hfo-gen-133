@@ -1,0 +1,33 @@
+{
+  "schema_id": "hfo.gen133.dlc_foss_factory.unit_spec.v1",
+  "unit_id": "non-production-reference",
+  "classification": "NON_PRODUCTION",
+  "target": {
+    "binding_state": "UNADMITTED"
+  },
+  "extension": {
+    "display_name": "NON_PRODUCTION Synthetic Reference Extension",
+    "user_job": "Exercise deterministic factory behavior using synthetic local files only.",
+    "material_outcome": "Produce inert landing and distribution artifacts plus local lifecycle receipts.",
+    "success_threshold": "All code-owned synthetic adapters exit zero and receipt hashes verify."
+  },
+  "provenance": {
+    "review_state": "UNBOUND",
+    "upstream": null,
+    "license": null,
+    "trademark_boundary": "UNBOUND",
+    "asset_caveats": []
+  },
+  "adapters": {
+    "provider": "builtin.non_production",
+    "stages": ["install", "build", "test", "health", "rollback"],
+    "options": {
+      "force_health_failure": false,
+      "force_rollback_failure": false
+    }
+  },
+  "outputs": {
+    "landing_mode": "INERT",
+    "distribution_mode": "INERT"
+  }
+}
