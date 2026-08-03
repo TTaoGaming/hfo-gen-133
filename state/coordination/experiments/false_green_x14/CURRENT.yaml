@@ -2,19 +2,19 @@
 schema_id: hfo.gen133.x14.false_green_current.v1
 experiment_id: X14_FALSE_GREEN_MUTATION_001
 object_id: X14_FALSE_GREEN_CAMPAIGN_STATE
-version: 57
-expected_previous_version: 56
-previous_pointer_blob_sha: f721a717fe729a8e7ec6ff6e2464a35f2342a97a
-accepted_wakes: 56
-campaign_ordinal: 14
-campaign_wake: 4
+version: 58
+expected_previous_version: 57
+previous_pointer_blob_sha: 794bb5a03929bd807b68d8fef5aacb97f1721d77
+accepted_wakes: 57
+campaign_ordinal: 15
+campaign_wake: 1
 campaign_length: 4
-current_status: CAMPAIGN_14_WAKE_4_TASK_ID_MISMATCH_ROUTED_REVISE_GATE
-current_mutation_class: TASK_ID_MISMATCH
-next_mutation_class: ACTOR_CARRIER_CONFLATION
+current_status: CAMPAIGN_15_WAKE_1_ACTOR_CARRIER_CONFLATION_ROUTED
+current_mutation_class: ACTOR_CARRIER_CONFLATION
+next_mutation_class: STALE_SOURCE_DIGEST
 carrier_task_id: 6a513e4d9c4c81919db728f85db2dd79
 carrier_task_id_binding: NATIVE_AUTOMATIONS_LIST_EXACT_MATCH
-valid_time_utc: 2026-08-03T07:51:46Z
+valid_time_utc: 2026-08-03T08:50:46Z
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 canonical_repository: TTaoGaming/hfo-gen-133
 canonical_branch: agent/gen133-bootstrap-20260730
@@ -23,50 +23,66 @@ sealed: false
 ---
 
 source_candidate:
-  commit: d6d5451b3873a5f2218acdd669f550a7e1131d34
-  path: state/coordination/experiments/cots_connector_x13/20260803T074749Z_GMAIL_BOUNDED_MESSAGE_METADATA_PHASE3_INVALID_PAGE_TOKEN_FAILURE.md
-  git_blob_sha1: c0e1671e5711ebc8871b51211e153f918e7e0022
+  commit: aa88026af94c5d35cc9acf8f684fa2f1e75aacfa
+  path: state/coordination/experiments/cots_connector_x13/20260803T084850Z_GMAIL_BOUNDED_MESSAGE_METADATA_PHASE4_DECISION.md
+  git_blob_sha1: b930f5d41c42614b98859667c0bb0674e429c52b
   source_digest_kind: GIT_BLOB_SHA1
-  source_digest: c0e1671e5711ebc8871b51211e153f918e7e0022
+  source_digest: b930f5d41c42614b98859667c0bb0674e429c52b
   authoring_seat: X13_COTS_AND_CONNECTOR_PDCA_LAB
   source_task_id: 6a55c1733708819185088bf334e33ea5
   source_experiment_id: X13_GMAIL_BOUNDED_MESSAGE_METADATA_SEARCH_READONLY_001
-  source_event_type: PHASE3_FAILURE_PERMISSION_PORTABILITY_AND_CONNECTOR_VARIANCE_PROBE
-  source_prior_version: 58
-  source_expected_version: 59
-  source_disposition: PHASE3_ACCEPTED_WITH_EXPLICIT_INVALID_ARGUMENT_FAILURE_AND_SOURCE_BOUND_CURSOR_GATES
-  source_valid_time_utc: 2026-08-03T07:47:49Z
-  source_effect_ceiling: ONE_SYNTHETIC_INVALID_PAGE_TOKEN_READ_ONLY_FAILURE_PROBE_EVENT_CURRENT_ADVANCE_READBACK_AND_ONE_SHORT_SLACK_ANDON
-  source_verifier: RAW_GMAIL_MESSAGES_LIST_WITH_IDENTICAL_QUERY_AND_SYNTHETIC_TOKEN_PLUS_ONE_VALID_SOURCE_BOUND_CONNECTOR_PAGE_TRAVERSAL
+  source_event_type: PHASE4_DECISION
+  source_prior_version: 59
+  source_expected_version: 60
+  source_disposition: ADOPT_WITH_GATES
+  source_valid_time_utc: 2026-08-03T08:48:50Z
+  source_effect_ceiling: PHASE4_DECISION_ONLY_EVENT_CURRENT_ADVANCE_READBACK_AND_ONE_SHORT_SLACK_DECISION
+  source_verifier: RAW_GMAIL_MESSAGES_LIST_WITH_IDENTICAL_QUERY_PLUS_ONE_VALID_SOURCE_BOUND_CONNECTOR_PAGE_TRAVERSAL_AND_GMAIL_UI_OR_RAW_QUERY_COMPARISON
   source_consumer:
     - HFO_EXECUTIVE_ASSISTANT_BOUNDED_MAIL_PRESENCE_CHECK
     - HFO_WAITING_AND_INBOX_STATUS_CELLS
-  source_review_expiry_utc: 2026-08-10T07:51:46Z
+  source_review_expiry_utc: 2026-08-10T08:48:50Z
   prior_x14_mutation_at_source_digest_before_write: false
 
 quarantined_mutant:
-  mutant_id: X14_MUTANT_057_2721f3b7ef86
-  mutation_class: TASK_ID_MISMATCH
-  mutation_subcase: X13_EVENT_REBOUND_TO_X14_NATIVE_TASK_ID_WHILE_X13_ACTOR_AND_SOURCE_ARE_PRESERVED
-  commit: 54c398a13f5f7e64b81e42f31b5af0be0510f43c
-  path: state/coordination/experiments/false_green_x14/quarantine/20260803T075146Z_X13_GMAIL_PHASE3_TASK_ID_MISMATCH.mutant.yaml
-  git_blob_sha1: 429a66be5fec1031dab300c499e89228a075a755
+  mutant_id: X14_MUTANT_058_eae978b501b0
+  mutation_class: ACTOR_CARRIER_CONFLATION
+  mutation_subcase: SCHEDULED_CARRIER_AND_SOURCE_ACTOR_COLLAPSED_INTO_ONE_IDENTITY_WITHOUT_SEPARATE_PROVENANCE
+  commit: 21027848aa67217c4e2f6aa4a7d34da4fcfa712c
+  path: state/coordination/experiments/false_green_x14/quarantine/20260803T085046Z_X13_GMAIL_PHASE4_ACTOR_CARRIER_CONFLATION.mutant.yaml
+  git_blob_sha1: 63e38bb389488a753e4c16ad1da5aa7468b7ac78
   canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
-  canonical_mutation_digest_sha256: 2721f3b7ef86b527bed2688dd2f5be614017e2acac97048afa5c34aca3765d15
-  canonical_byte_count: 236
-  mutated_field: carrier_task_id
-  original_value: 6a55c1733708819185088bf334e33ea5
-  mutated_value: 6a513e4d9c4c81919db728f85db2dd79
+  canonical_mutation_digest_sha256: eae978b501b0166f5c7b53b5e922edff971c4f6a85f377fdbd312e79834c80fe
+  canonical_byte_count: 271
+  mutated_field: actor_carrier_binding
+  original_value: ABSENT
+  mutated_value: ACTOR_AND_SCHEDULED_CARRIER_ARE_THE_SAME_ENTITY_NO_SEPARATE_PROVENANCE_REQUIRED
   expected_verdict: REVISE
-  expected_rejection_reason: NATIVE_TASK_ID_DOES_NOT_MATCH_THE_DECLARED_X13_CARRIER_OR_SOURCE_PROVENANCE
-  named_gate: S04_NATIVE_TASK_ID_CARRIER_ROLE_SOURCE_PROVENANCE_AND_PROVIDER_READBACK_GATE
-  expires_utc: 2026-08-10T07:51:46Z
+  expected_rejection_reason: SCHEDULED_CARRIER_EXECUTION_DOES_NOT_PROVE_ACTOR_IDENTITY_AUTHORSHIP_OR_EFFECT_AUTHORITY
+  named_gate: S04_ACTOR_CARRIER_SEPARATION_IDENTITY_PROVENANCE_AND_EFFECT_AUTHORITY_GATE
+  expires_utc: 2026-08-10T08:48:50Z
   status: QUARANTINED_ROUTED_PENDING_VERDICTS
   accepted_wake_credit: true
 
 campaign_evaluation:
-  campaign_ordinal: 14
-  decision_due: true
+  campaign_ordinal: 15
+  decision_due: false
+  intended_mutants: 4
+  accepted_wakes: 1
+  direct_s04_catches_observed: 0
+  mutant_058:
+    mutation_class: ACTOR_CARRIER_CONFLATION
+    direct_s04_result: PENDING
+    distinct_s10_result: PENDING
+    caught_gate_credit: false
+  distinct_provider_verdicts: 0
+  evidence_class: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  decision: NOT_DUE
+  next_factor: STALE_SOURCE_DIGEST
+
+carryover_campaign_14:
+  decision: REVISE_GATE
   intended_mutants: 4
   accepted_wakes: 4
   direct_s04_catches_observed: 0
@@ -89,22 +105,19 @@ campaign_evaluation:
     mutation_class: TASK_ID_MISMATCH
     direct_s04_result: PENDING
     distinct_s10_result: PENDING
+    s15_heritage_pointer_commit: ab888be76e4f096e36e27b5e38ef131e8f9331f0
     caught_gate_credit: false
   distinct_provider_verdicts: 0
   evidence_class: SAME_PROVIDER_NONBINDING
   binding_weight: 0
-  decision: REVISE_GATE
   decision_reason: >-
     Campaign 14 produced three unexpired mutants that received only S15 heritage pointers and no exact S04 direct verdict;
-    the fourth mutant is newly routed. The campaign therefore does not demonstrate that the structural gate catches the
-    intended privacy, schedule-continuity, world-effect, or native-task-binding mutations. The campaign-13 selector
-    revision has not yet produced reliable direct-mutant service.
+    the fourth mutant remains pending. The campaign therefore did not demonstrate reliable exact-mutant sensitivity.
   proposed_gate_revision:
     - MAINTAIN_AN_EXPLICIT_FIFO_OF_UNEXPIRED_X14_DIRECT_CANDIDATES_ADDRESSED_TO_S04
     - SELECT_THE_OLDEST_UNREVIEWED_DIRECT_CANDIDATE_BEFORE_NEWER_INDIRECT_OR_SOURCE_ONLY_ROUTES
     - REQUIRE_EACH_S04_RESULT_TO_BIND_MUTANT_ID_SOURCE_BLOB_OVERLAY_BYTE_COUNT_SHA256_AND_DIRECT_CATCH_CREDIT_BOOLEAN
     - WHEN_WIP_PREVENTS_REVIEW_WRITE_HOLD_WITH_QUEUED_MUTANT_ID_EXPIRY_AND_NEXT_ELIGIBLE_WAKE
-  next_factor: ACTOR_CARRIER_CONFLATION
   decision_not_rewritten_retroactively: true
   closed_without_campaign_wide_sensitivity_claim: true
 
@@ -138,14 +151,6 @@ carryover_campaign_13:
   distinct_provider_verdicts: 0
   evidence_class: SAME_PROVIDER_NONBINDING
   binding_weight: 0
-  decision_reason: >-
-    Only mutant 051 received direct catch credit. Mutants 050 and 052 were recomputed and rejected only as sidecar
-    strongest-fake-green checks while S04 selected newer S03 routes, and mutant 053 remains pending. The campaign did not
-    establish reliable exact-mutant sensitivity.
-  proposed_gate_revision:
-    - PRIORITIZE_EXACT_UNEXPIRED_X14_DIRECT_MUTANT_OVER_NEWER_INDIRECT_ROUTE_WHEN_DIRECT_CANDIDATE_PRIORITY_REQUIRED_TRUE
-    - REQUIRE_RECOMPUTED_SOURCE_BLOB_CANONICAL_OVERLAY_BYTE_COUNT_SHA256_AND_EXPLICIT_DIRECT_CATCH_CREDIT_FIELD
-    - ON_WIP_CONFLICT_EMIT_HOLD_WITH_MUTANT_ID_EXPIRY_AND_NEXT_ELIGIBLE_WAKE_INSTEAD_OF_SIDECAR_ONLY_REVIEW
   decision_not_rewritten_retroactively: true
   closed_without_campaign_wide_sensitivity_claim: true
 
@@ -202,7 +207,7 @@ carryover_debt:
   mutant_020_clean_one_factor_assay: false
   mutant_021_direct_s04_result: NOT_OBSERVED
   debt_resolution_condition: DIRECT_S04_VERDICTS_FOR_019_AND_021_PLUS_EXPLICIT_MALFORMED_ASSAY_ACCOUNTING_FOR_020
-  debt_not_resolved_by_campaign_6_7_8_9_10_11_12_13_OR_14: true
+  debt_not_resolved_by_campaign_6_7_8_9_10_11_12_13_14_OR_15: true
 
 routing:
   structural_preflight: S04_STRUCTURAL_PREFLIGHT
@@ -211,21 +216,22 @@ routing:
   distinct_verifier_task_id: 6a5508a9ebb8819199ce658d4590c528
   distinct_verifier_route_status: AVAILABLE_AS_DISTINCT_SEAT_SAME_PROVIDER_NONBINDING_VIA_SLACK
   consumer: X14_CAMPAIGN_REDUCER_AND_X13_COTS_CONNECTOR_CAMPAIGN_REDUCER
-  current_verdict_status: MUTANT_057_DIRECT_ROUTE_REQUEST_PENDING_SLACK_POST
+  current_verdict_status: MUTANT_058_DIRECT_ROUTE_REQUEST_PENDING_SLACK_POST
   direct_candidate_priority_required: true
 
 current_campaign:
-  campaign_ordinal: 14
-  accepted_wakes: 4
-  current_mutation_class: TASK_ID_MISMATCH
-  next_mutation_class: ACTOR_CARRIER_CONFLATION
-  gate_focus: NATIVE_TASK_ID_CARRIER_ROLE_SOURCE_PROVENANCE_AND_PROVIDER_READBACK
-  status: CLOSED_REVISE_GATE_PENDING_DIRECT_VERDICTS
-  decision: REVISE_GATE
+  campaign_ordinal: 15
+  accepted_wakes: 1
+  current_mutation_class: ACTOR_CARRIER_CONFLATION
+  next_mutation_class: STALE_SOURCE_DIGEST
+  gate_focus: ACTOR_CARRIER_SEPARATION_IDENTITY_PROVENANCE_AND_EFFECT_AUTHORITY
+  status: OPEN_WAKE_1_PENDING_DIRECT_VERDICTS
+  decision: NOT_DUE
 
 honest_flaw: >-
-  The task-ID mismatch is conspicuous because it substitutes X14's known native task ID into an X13-authored event while
-  leaving the X13 carrier label intact. It does not test aliases, copied prompts, identical display titles, delegated
-  credentials, carrier replacement after a valid handoff, or stale provider inventory. Candidate discovery and digest
-  dedup are best-effort. S10 is a distinct seat but the same provider, so its readback remains nonbinding with weight zero.
-  No source, scheduled task, Gmail object, Slack state, account, or provider state was modified.
+  The actor/carrier conflation is conspicuous because it adds an explicit no-separation assertion while the source exposes
+  no independently bound actor provenance. It does not test shared service accounts, inherited credentials, delegated
+  runners, copied role labels, author-versus-committer ambiguity, or a valid actor receipt replayed onto the wrong carrier.
+  Candidate discovery and digest dedup are best-effort. S10 is a distinct seat but the same provider, so its readback
+  remains nonbinding with weight zero. No source, scheduled task, Gmail object, Slack state, account, or provider state
+  was modified.
