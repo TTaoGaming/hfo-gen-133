@@ -1,8 +1,8 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_WAKE_TIMING_PROVIDER_LAST_RUN_DRIFT_V2
-current_version: 69
-accepted_wakes: 1
+current_version: 70
+accepted_wakes: 2
 target_wakes_before_decision: 4
 controlled_factor: wake_timing
 campaign_status: ACTIVE
@@ -13,22 +13,25 @@ prior_campaign:
   disposition: KEEP
   accepted_wakes: 4
 last_event:
-  commit: 84676cf1279894ce26e2401137c9055e441efcfa
-  path: state/coordination/experiments/carrier_surface_x11/events/20260803T174201Z_WAKE_TIMING_PROVIDER_LAST_RUN_DRIFT_V2_WAKE_01.yaml
-  blob: 236c5e148b847d41ca15d38037d84b4875e83359
+  commit: cf087acdcafd392c2180a1f117baea9b08288969
+  path: state/coordination/experiments/carrier_surface_x11/events/20260803T183817Z_WAKE_TIMING_PROVIDER_LAST_RUN_DRIFT_V2_WAKE_02.yaml
+  blob: 51e019a6e2f29f443fedd1d0e73594894ea6024c
 baseline_result:
   provider_call_status: SUCCESS
   expected_task_visible: true
-  prior_last_run_time_utc: 2026-08-03T16:41:27.260424Z
-  scheduled_epoch_utc: 2026-08-03T16:40:00Z
-  absolute_start_drift_seconds: 87.260424
+  prior_last_run_time_utc: 2026-08-03T17:44:45.072650Z
+  scheduled_epoch_utc: 2026-08-03T17:40:00Z
+  absolute_start_drift_seconds: 285.072650
   drift_direction: AFTER_SCHEDULED_EPOCH
   drift_semantics: PROVIDER_LAST_RUN_TIMESTAMP_MINUS_SCHEDULED_EPOCH_NOT_DIRECT_START_LATENCY
+  campaign_drift_samples_seconds:
+    - 87.260424
+    - 285.072650
   authentication_requested: false
   interactive_login_required: false
   sensitive_readback_externalized: false
   mutation_performed: false
-  changed_capability: true
+  changed_capability: false
   andon: false
   permission_class: AUTHENTICATED_NATIVE_TASK_INVENTORY_READ_AVAILABLE
   error_class: NONE
@@ -43,7 +46,7 @@ honest_flaw: provider_last_run_time_is_a_same_provider_completion_or_registratio
 next_factor: wake_timing
 next_probe:
   experiment_id: X11_WAKE_TIMING_PROVIDER_LAST_RUN_DRIFT_V2
-  campaign_wake: 2
+  campaign_wake: 3
   mode: repeat_read_only_compare_prior_provider_last_run_timestamp_to_scheduled_epoch
   expected_task_id: 6a55089a9adc8191bda54541f7f9effa
   scheduled_minute_utc: 40
@@ -56,9 +59,9 @@ next_probe:
     - latency_when_exposed
   mutation_allowed: false
   sensitive_readback_externalization_allowed: false
-slack_action: POST_CHANGED_CAPABILITY_AFTER_GIT_READBACK
-updated_valid_time_utc: 2026-08-03T17:42:01Z
+slack_action: YIELD_SILENT_UNCHANGED_CAPABILITY
+updated_valid_time_utc: 2026-08-03T18:38:17Z
 sealed: false
 ---
 
-Wake timing provider-last-run drift V2 advanced to wake 1/4. The provider-exposed prior last-run timestamp was 87.260424 seconds after its same-hour minute-40 epoch. This remains bounded same-provider telemetry and does not prove current-wake start time, provider dispatch, queue latency, execution duration, scheduler SLA, delivery, or independent verification.
+Wake timing provider-last-run drift V2 advanced to wake 2/4. The provider-exposed prior last-run timestamp was 285.072650 seconds after its same-hour minute-40 epoch. This remains bounded same-provider telemetry and does not prove current-wake start time, provider dispatch, queue latency, execution duration, scheduler SLA, delivery, or independent verification.
