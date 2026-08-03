@@ -1,8 +1,8 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_NATIVE_TASKS_READ_VISIBILITY_V2
-current_version: 64
-accepted_wakes: 0
+current_version: 65
+accepted_wakes: 1
 target_wakes_before_decision: 4
 controlled_factor: native_tasks_read_visibility
 campaign_status: ACTIVE
@@ -13,37 +13,38 @@ prior_campaign:
   disposition: KEEP
   accepted_wakes: 4
 last_event:
-  commit: 919e0329610afc8976ea26fa70df46775acedd3b
-  path: state/coordination/experiments/carrier_surface_x11/events/20260803T123937Z_GOOGLE_DRIVE_METADATA_READ_VISIBILITY_WAKE_04_DECISION.yaml
-  blob: dc678eb2eeb43d5697c598d2c0a10183ff16abe1
+  commit: f6cb41145e5409a4220a15675669042560f6d9af
+  path: state/coordination/experiments/carrier_surface_x11/events/20260803T134020Z_NATIVE_TASKS_READ_VISIBILITY_V2_WAKE_01.yaml
+  blob: 842df1027f834a4b62cc1102625ad6b9dc8d4937
 baseline_result:
-  drive_metadata_surface_checked: true
-  query_executed: true
-  sanitized_match_count: 0
-  next_page_token_present: false
+  provider_call_status: SUCCESS
+  expected_task_visible: true
+  enabled_boolean: true
+  timing_mode: exact_schedule
+  sanitized_schedule_fingerprint_sha256: 84ba8dd14067c90d112e5e7d6deac6dc0197bc6b28584d15e4a350ece061b871
+  active_hfo_task_count: 15
   authentication_requested: false
   interactive_login_required: false
-  content_hydrated: false
-  content_persisted: false
-  identifiers_externalized: false
-  changed_capability: false
+  unrelated_prompt_body_persisted: false
+  sensitive_readback_externalized: false
+  mutation_performed: false
+  changed_capability: true
   andon: false
-  permission_class: CONNECTED_GOOGLE_DRIVE_METADATA_SEARCH_AVAILABLE
+  permission_class: AUTHENTICATED_NATIVE_TASK_INVENTORY_READ_AVAILABLE
   error_class: NONE
-  latency_exposed: true
-  latency_ms: 1756
-  campaign_latency_ms: [3653, 2518, 1323, 1756]
+  latency_exposed: false
+  latency_ms: null
   operator_relay_minutes: 0
-claim_ceiling: bounded_same_provider_native_task_inventory_visibility_only_not_current_run_liveness_success_exactly_once_delivery_or_independent_verification
-strongest_falsifier: exact_expected_task_id_is_absent_or_stable_configuration_fields_drift_without_authorized_change_or_the_native_inventory_read_returns_an_authentication_or_permission_error
+claim_ceiling: bounded_same_provider_native_task_inventory_visibility_only_not_current_run_liveness_success_exactly_once_delivery_future_durability_or_independent_verification
+strongest_falsifier: exact_expected_task_id_is_absent_or_enabled_timing_schedule_fingerprint_or_active_count_drift_without_authorized_change_or_native_inventory_read_returns_authentication_or_permission_error
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 next_consumer: [Reginleif, Ratatoskr]
-honest_flaw: the_native_inventory_surface_is_same_provider_broad_and_may_expose_unrelated_prompt_bodies_so_only_sanitized_expected_task_fields_may_be_persisted
+honest_flaw: the_native_inventory_surface_is_same_provider_broad_and_exposes_unrelated_prompt_bodies_without_field_selection_or_request_latency_so_only_sanitized_expected_task_fields_are_persisted
 next_factor: native_tasks_read_visibility
 next_probe:
   experiment_id: X11_NATIVE_TASKS_READ_VISIBILITY_V2
-  campaign_wake: 1
-  mode: exact_expected_task_inventory_visibility_probe
+  campaign_wake: 2
+  mode: repeat_exact_expected_task_inventory_visibility_probe
   expected_task_id: 6a55089a9adc8191bda54541f7f9effa
   mutation_allowed: false
   unrelated_prompt_body_persistence_allowed: false
@@ -57,9 +58,9 @@ next_probe:
     - permission_class
     - error_class
     - latency_when_exposed
-slack_action: POST_CAMPAIGN_DECISION_AFTER_GIT_READBACK
-updated_valid_time_utc: 2026-08-03T12:39:37Z
+slack_action: POST_CAPABILITY_DELTA_AFTER_GIT_READBACK
+updated_valid_time_utc: 2026-08-03T13:40:20Z
 sealed: false
 ---
 
-Google Drive metadata-read visibility closed KEEP after four accepted identical metadata-only impossible-marker searches returned zero results without login, permission error, content hydration, identifier externalization, or mutation. Native Tasks read visibility V2 is active at wake 0/4 and is limited to sanitized exact-task inventory reconciliation with no task mutation and no unrelated prompt-body persistence.
+Native Tasks read visibility V2 advanced to wake 1/4. The exact expected X11 task was visible and enabled, timing mode was exact_schedule, the sanitized schedule fingerprint was recorded, and fifteen active HFO Gen-133 tasks were observed. This is bounded same-provider inventory telemetry only and does not prove current-run liveness, successful execution, exactly-once delivery, future durability, or independent verification.
