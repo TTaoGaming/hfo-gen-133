@@ -1,0 +1,158 @@
+schema_id: hfo.gen133.s03.reducer_route.v1
+seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMER_ACK_TRACKER
+result: REVISE
+terminal: false
+wip: 1
+correlation_id: X13_GOOGLE_CALENDAR_BOUNDED_EVENT_WINDOW_READONLY_001__PHASE3
+valid_time_utc: 2026-08-03T04:08:30Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+route_expiry_utc: 2026-08-04T04:08:30Z
+sealed: true
+
+self_probe:
+  expected_task_id: 6a539fc5130c81918c13624739fb2a60
+  observed_task_id: 6a539fc5130c81918c13624739fb2a60
+  task_id_match: true
+  observed_title: HFO S03 Ratatoskr Pacemaker
+  task_enabled: true
+  available_surfaces:
+    - NATIVE_AUTOMATIONS_READ
+    - GITHUB_COMMIT_FILE_AND_BLOB_READ
+    - GITHUB_CREATE_FILE_AND_READBACK
+    - SLACK_PUBLIC_SEARCH
+    - SLACK_POINTER_WRITE
+  task_mutation_performed: false
+  producer_work_performed: false
+  self_verification_performed: false
+  calendar_world_effect_performed: false
+
+canonical:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+
+selection:
+  selected_changed_input: X13_GOOGLE_CALENDAR_PHASE3_INVERTED_TIME_BOUND_FAILURE_AND_CONNECTOR_VARIANCE_PROBE
+  producer_seat: X13_COTS_AND_CONNECTOR_PDCA_LAB
+  producer_carrier_task_id: 6a55c1733708819185088bf334e33ea5
+  producer_task_id_readback_match: true
+  selected_reason: NEW_PHASE3_EVENT_AND_CURRENT_ADVANCE_AFTER_PRIOR_S03_PHASE2_ROUTE
+
+exact_git_bindings:
+  phase3_event:
+    commit: 365760ad009d33cf8a641c344e902169123cad0a
+    path: state/coordination/experiments/cots_connector_x13/20260803T034626Z_GOOGLE_CALENDAR_EVENT_WINDOW_PHASE3_INVERTED_BOUNDS_SEMANTIC_EMPTY_ANDON.md
+    git_blob_sha1: b3f8a37862c3f4ba4bfd8846694c2aa9a3f90b91
+    exact_utf8_readback: true
+    schema_id: hfo.gen133.x13.cots_connector_event.v1
+    event_type: PHASE3_INVERTED_TIME_BOUND_FAILURE_AND_CONNECTOR_VARIANCE_PROBE
+    source_valid_time_utc: 2026-08-03T03:46:26Z
+    source_review_expiry_utc: 2026-08-10T03:46:26Z
+    source_unexpired_at_route: true
+  current_projection:
+    commit: 1f0abe120f100b52a52e23210ef77529a4de08ba
+    path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    git_blob_sha1: 44e27a0b6cbbbbb9dfeb471a01100fd2a1cdde20
+    exact_utf8_readback: true
+    version: 55
+    prior_version: 54
+    campaign_wake: 3_of_4
+    phase_3_completed: true
+    phase_4_completed: false
+    consumer_ack: NOT_OBSERVED
+  slack_source_pointer:
+    channel_id: C0BGNGPJFHU
+    message_ts: 1785728934.242089
+    source_commit_and_blob_bound: true
+
+observed_return_ceiling:
+  classification: SANITIZED_EXPERIMENT_OBSERVATION_NOT_CLAIM_BOUND_PRODUCER_RETURN
+  measured_connector_surface_fact: INVERTED_RFC3339_BOUNDS_RETURNED_ZERO_EVENTS_NO_CURSOR_AND_NO_VISIBLE_ERROR
+  requested_action: Google_Calendar.search_events
+  calendar_alias: primary
+  synthetic_probe: true
+  time_min_utc: 2026-08-03T07:48:00Z
+  time_max_utc: 2026-08-03T01:48:00Z
+  bounds_inverted: true
+  requested_timezone: America/Denver
+  requested_max_results: 1
+  returned_event_count: 0
+  next_page_token_present: false
+  connector_error: null
+  connector_http_status: null
+  carrier_retries: 0
+  external_call_time_ms: 195
+  commands_and_exit_codes: NOT_APPLICABLE_NO_SHELL_OR_BUILD_COMMAND_REPORTED
+  raw_request_response_or_provider_request_id: MISSING
+  raw_parameter_forwarding_dropping_or_rewrite: UNKNOWN
+  independent_raw_api_or_ui_readback: MISSING
+  mutation_or_notification_effect_observed: false
+  rollback: NOT_REQUIRED_FOR_ASSERTED_READ_ONLY_OBSERVATION_BUT_PROVIDER_EFFECT_NOT_INDEPENDENTLY_READ_BACK
+  effect_ceiling: PHASE3_ONE_SYNTHETIC_INVERTED_BOUND_READ_ONLY_CALENDAR_PROBE_GIT_EVENT_CURRENT_ADVANCE_READBACK_AND_ONE_SHORT_SLACK_MEASURED_FACT
+  honest_flaw: CONNECTOR_SURFACE_AMBIGUITY_IS_OBSERVED_BUT_WRAPPER_PARAMETER_FORWARDING_RAW_PROVIDER_RESPONSE_IDENTITY_SCOPE_PERMISSION_RATE_LIMIT_VALID_EMPTY_WINDOW_AND_DOWNSTREAM_OUTCOME_ARE_UNVERIFIED
+
+claim_return_binding_audit:
+  workitem_claim: MISSING
+  acceptance_digest: MISSING
+  idempotency_key: MISSING
+  nonce: MISSING
+  producer_lease: MISSING
+  producer_actor_bound_to_claim: false
+  credential_principal_bound_to_claim: false
+  canonical_producer_return_digest: MISSING
+  exact_raw_source_system_digest: MISSING
+  commands_outputs_and_exit_codes: NOT_APPLICABLE_TO_REPORTED_CONNECTOR_CALL_BUT_NO_RAW_TOOL_REQUEST_RESPONSE_DIGEST_EXISTS
+  return_level_rollback: PARTIAL_READ_ONLY_ASSERTION_ONLY
+  return_effect_ceiling: PRESENT
+  return_expiry: SOURCE_REVIEW_EXPIRY_PRESENT
+  return_honest_flaw: PRESENT
+  claim_return_same_workitem_binding: false
+
+verdict_and_ack_audit:
+  distinct_digest_bound_verdict: MISSING
+  accepted_verdict_vocabulary_required:
+    - STOOD
+    - FELL
+  same_provider_preflight_binding_weight: 0
+  consumer_ack: NOT_OBSERVED
+  named_consumer_ack_required_after_stood: true
+  terminal_receipt_eligible: false
+  fitness_credit_eligible: false
+
+revise_request:
+  requested_from_producer:
+    - BIND_AN_UNEXPIRED_WORKITEM_CLAIM_ACCEPTANCE_DIGEST_IDEMPOTENCY_NONCE_LEASE_PRODUCER_ACTOR_AND_CREDENTIAL_PRINCIPAL
+    - EMIT_A_CANONICAL_PRODUCER_RETURN_DIGEST_TIED_TO_THE_CLAIM_AND_EXACT_GIT_BYTES
+    - BIND_THE_EXACT_CONNECTOR_REQUEST_AND_NORMALIZED_RESPONSE_WITH_A_PRIVACY_SAFE_DIGEST_OR_SOURCE_SYSTEM_REQUEST_ID
+    - STATE_EXACT_ROLLBACK_EFFECT_CEILING_EXPIRY_AND_HONEST_FLAW_AT_RETURN_LEVEL
+    - OBTAIN_DISTINCT_RAW_GOOGLE_CALENDAR_EVENTS_LIST_OR_AUTHORIZED_UI_READBACK_FOR_THE_IDENTICAL_PROBE_CONTEXT
+    - OBTAIN_EXACT_STOOD_OR_FELL_TIED_TO_THE_PRODUCER_RETURN_DIGEST
+    - AFTER_STOOD_OBTAIN_EXPLICIT_NAMED_CONSUMER_ACK_FOR_THE_SAME_WORKITEM
+  prohibited_shortcut: DO_NOT_TREAT_EMPTY_SUCCESS_ADOPT_WITH_GATES_SAME_PROVIDER_REVISE_OR_SLACK_PROSE_AS_TERMINAL_VERDICT_OR_CONSUMER_ACK
+
+verifier_route:
+  addressed_to: S04_STRUCTURAL_PREFLIGHT_VERIFIER
+  addressed_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  verifier_class: DISTINCT_NONPRODUCER_SAME_PROVIDER_PREFLIGHT
+  requested_action: RECOMPUTE_ROUTE_BYTES_SOURCE_POINTERS_FRESHNESS_TASK_BINDING_EFFECT_CEILING_EXPIRY_PRIVACY_ROLLBACK_AND_MISSING_TERMINAL_BINDINGS
+  requested_result_vocabulary:
+    - PASS_STRUCTURAL
+    - REVISE
+    - HOLD
+    - BLOCKED
+  binding_weight: 0
+  cannot_close_independent_verification: true
+  distinct_external_verifier_still_required: RAW_GOOGLE_CALENDAR_EVENTS_LIST_OR_AUTHORIZED_CALENDAR_UI_READBACK_BOUND_TO_THE_CANONICAL_PRODUCER_DIGEST
+
+prior_reduction:
+  s03_phase2_route_commit: 8fc8290eab886795d8dafd6a521a3229004261c9
+  s03_phase2_route_blob: 4317144dd2f11ac9d6d3adfdd059de084f221357
+  s04_phase2_preflight_commit: d8772d069eb291294944703a9bc5fb8d92c75801
+  s04_phase2_result: REVISE
+  s04_phase2_binding_weight: 0
+
+terminal_state:
+  claim_bound: false
+  producer_return_bound: false
+  stood_or_fell_bound: false
+  consumer_ack_bound: false
+  result: REVISE
