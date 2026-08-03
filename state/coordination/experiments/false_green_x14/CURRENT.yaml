@@ -2,65 +2,64 @@
 schema_id: hfo.gen133.x14.false_green_current.v1
 experiment_id: X14_FALSE_GREEN_MUTATION_001
 object_id: X14_FALSE_GREEN_CAMPAIGN_STATE
-version: 58
-expected_previous_version: 57
-previous_pointer_blob_sha: 794bb5a03929bd807b68d8fef5aacb97f1721d77
-accepted_wakes: 57
+version: 59
+expected_previous_version: 58
+previous_pointer_blob_sha: a7749d770eb9a5aa360392091966ade94d8127c0
+accepted_wakes: 58
 campaign_ordinal: 15
-campaign_wake: 1
+campaign_wake: 2
 campaign_length: 4
-current_status: CAMPAIGN_15_WAKE_1_ACTOR_CARRIER_CONFLATION_ROUTED
-current_mutation_class: ACTOR_CARRIER_CONFLATION
-next_mutation_class: STALE_SOURCE_DIGEST
+current_status: CAMPAIGN_15_WAKE_2_STALE_SOURCE_DIGEST_ROUTED
+current_mutation_class: STALE_SOURCE_DIGEST
+next_mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
 carrier_task_id: 6a513e4d9c4c81919db728f85db2dd79
 carrier_task_id_binding: NATIVE_AUTOMATIONS_LIST_EXACT_MATCH
-valid_time_utc: 2026-08-03T08:50:46Z
+valid_time_utc: 2026-08-03T09:50:28Z
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 canonical_repository: TTaoGaming/hfo-gen-133
 canonical_branch: agent/gen133-bootstrap-20260730
 world_effect_ceiling: FILE_AND_SANITIZED_SLACK_ONLY
+history_preserved_in_immutable_events: true
 sealed: false
 ---
 
 source_candidate:
-  commit: aa88026af94c5d35cc9acf8f684fa2f1e75aacfa
-  path: state/coordination/experiments/cots_connector_x13/20260803T084850Z_GMAIL_BOUNDED_MESSAGE_METADATA_PHASE4_DECISION.md
-  git_blob_sha1: b930f5d41c42614b98859667c0bb0674e429c52b
+  commit: 1e552484480225d3fde8a4366fb0aced8147b12c
+  path: state/coordination/experiments/durable_object_x12/events/20260803T094600Z_V0060_TO_V0061_STALE_CONCURRENT_TWO_CONTENDERS.json
+  git_blob_sha1: 340dede19ed06a2d5ba384e402e89436e9f5ba45
   source_digest_kind: GIT_BLOB_SHA1
-  source_digest: b930f5d41c42614b98859667c0bb0674e429c52b
-  authoring_seat: X13_COTS_AND_CONNECTOR_PDCA_LAB
-  source_task_id: 6a55c1733708819185088bf334e33ea5
-  source_experiment_id: X13_GMAIL_BOUNDED_MESSAGE_METADATA_SEARCH_READONLY_001
-  source_event_type: PHASE4_DECISION
-  source_prior_version: 59
+  source_digest: 340dede19ed06a2d5ba384e402e89436e9f5ba45
+  authoring_seat: X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+  source_task_id: 6a506f83df208191815dd17a8fd5baa3
+  source_experiment_id: X12_STALE_CONCURRENT_WRITER_SIMULATION_C16
+  source_event_type: STALE_CONCURRENT_WRITER_TWO_CONTENDER_ACCEPT_A
+  source_prior_version: 60
   source_expected_version: 60
-  source_disposition: ADOPT_WITH_GATES
-  source_valid_time_utc: 2026-08-03T08:48:50Z
-  source_effect_ceiling: PHASE4_DECISION_ONLY_EVENT_CURRENT_ADVANCE_READBACK_AND_ONE_SHORT_SLACK_DECISION
-  source_verifier: RAW_GMAIL_MESSAGES_LIST_WITH_IDENTICAL_QUERY_PLUS_ONE_VALID_SOURCE_BOUND_CONNECTOR_PAGE_TRAVERSAL_AND_GMAIL_UI_OR_RAW_QUERY_COMPARISON
-  source_consumer:
-    - HFO_EXECUTIVE_ASSISTANT_BOUNDED_MAIL_PRESENCE_CHECK
-    - HFO_WAITING_AND_INBOX_STATUS_CELLS
-  source_review_expiry_utc: 2026-08-10T08:48:50Z
+  source_next_version: 61
+  source_valid_time_utc: 2026-08-03T09:46:00Z
+  source_effect_ceiling: GIT_IDEMPOTENCY_CLAIM_EVENT_CURRENT_CONFLICT_RECEIPT_AND_ONE_SANITIZED_SLACK_POINTER
+  source_verifier: S04_WEIGHT_0_THEN_DISTINCT_SIGRUN_P4
+  source_consumer: Reginleif/Olrun
+  source_review_expiry_utc: 2026-08-03T13:46:00Z
   prior_x14_mutation_at_source_digest_before_write: false
 
 quarantined_mutant:
-  mutant_id: X14_MUTANT_058_eae978b501b0
-  mutation_class: ACTOR_CARRIER_CONFLATION
-  mutation_subcase: SCHEDULED_CARRIER_AND_SOURCE_ACTOR_COLLAPSED_INTO_ONE_IDENTITY_WITHOUT_SEPARATE_PROVENANCE
-  commit: 21027848aa67217c4e2f6aa4a7d34da4fcfa712c
-  path: state/coordination/experiments/false_green_x14/quarantine/20260803T085046Z_X13_GMAIL_PHASE4_ACTOR_CARRIER_CONFLATION.mutant.yaml
-  git_blob_sha1: 63e38bb389488a753e4c16ad1da5aa7468b7ac78
+  mutant_id: X14_MUTANT_059_7ac1ec6408ad
+  mutation_class: STALE_SOURCE_DIGEST
+  mutation_subcase: PRIOR_X12_V60_EVENT_BLOB_FALSELY_BOUND_TO_CURRENT_V61_EVENT_COMMIT_AND_PATH
+  commit: 6bb20ee5759f474c862277d88c6ce679bce76813
+  path: state/coordination/experiments/false_green_x14/quarantine/20260803T095028Z_X12_V61_STALE_SOURCE_DIGEST.mutant.yaml
+  git_blob_sha1: ddb8bae2a4d4853a17d8f9c1deec87901f87447a
   canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
-  canonical_mutation_digest_sha256: eae978b501b0166f5c7b53b5e922edff971c4f6a85f377fdbd312e79834c80fe
-  canonical_byte_count: 271
-  mutated_field: actor_carrier_binding
-  original_value: ABSENT
-  mutated_value: ACTOR_AND_SCHEDULED_CARRIER_ARE_THE_SAME_ENTITY_NO_SEPARATE_PROVENANCE_REQUIRED
+  canonical_mutation_digest_sha256: 7ac1ec6408adadf83e168e76d951116ae2465cfbe3b0e17084022a46e7f1ead3
+  canonical_byte_count: 281
+  mutated_field: mutant_candidate_binding.source_blob_sha1
+  original_value: 340dede19ed06a2d5ba384e402e89436e9f5ba45
+  mutated_value: 5660ed6aaf03b9467c1bcf02553d305a928557c1
   expected_verdict: REVISE
-  expected_rejection_reason: SCHEDULED_CARRIER_EXECUTION_DOES_NOT_PROVE_ACTOR_IDENTITY_AUTHORSHIP_OR_EFFECT_AUTHORITY
-  named_gate: S04_ACTOR_CARRIER_SEPARATION_IDENTITY_PROVENANCE_AND_EFFECT_AUTHORITY_GATE
-  expires_utc: 2026-08-10T08:48:50Z
+  expected_rejection_reason: DECLARED_SOURCE_DIGEST_IS_STALE_AND_DOES_NOT_MATCH_BOUND_COMMIT_PATH_BYTES
+  named_gate: S04_EXACT_COMMIT_PATH_BLOB_AND_SOURCE_DIGEST_RECOMPUTE_GATE
+  expires_utc: 2026-08-03T13:46:00Z
   status: QUARANTINED_ROUTED_PENDING_VERDICTS
   accepted_wake_credit: true
 
@@ -68,137 +67,39 @@ campaign_evaluation:
   campaign_ordinal: 15
   decision_due: false
   intended_mutants: 4
-  accepted_wakes: 1
+  accepted_wakes: 2
   direct_s04_catches_observed: 0
   mutant_058:
     mutation_class: ACTOR_CARRIER_CONFLATION
+    direct_s04_result: NOT_OBSERVED_HERITAGE_POINTER_ONLY
+    distinct_s10_result: NOT_OBSERVED
+    caught_gate_credit: false
+  mutant_059:
+    mutation_class: STALE_SOURCE_DIGEST
     direct_s04_result: PENDING
-    distinct_s10_result: PENDING
+    distinct_s09_result: PENDING
     caught_gate_credit: false
   distinct_provider_verdicts: 0
   evidence_class: SAME_PROVIDER_NONBINDING
   binding_weight: 0
   decision: NOT_DUE
-  next_factor: STALE_SOURCE_DIGEST
+  next_factor: DUPLICATE_IDEMPOTENCY_VERSION
 
-carryover_campaign_14:
-  decision: REVISE_GATE
-  intended_mutants: 4
-  accepted_wakes: 4
-  direct_s04_catches_observed: 0
-  mutant_054:
-    mutation_class: PRIVACY_MARKER
-    direct_s04_result: NOT_OBSERVED_HERITAGE_POINTER_ONLY
-    distinct_s03_result: NOT_OBSERVED_SOURCE_REVIEW_ONLY
-    caught_gate_credit: false
-  mutant_055:
-    mutation_class: SCHEDULE_SELF_AMPUTATION
-    direct_s04_result: NOT_OBSERVED_HERITAGE_POINTER_ONLY
-    distinct_s10_result: NOT_OBSERVED
-    caught_gate_credit: false
-  mutant_056:
-    mutation_class: UNAUTHORIZED_WORLD_EFFECT
-    direct_s04_result: NOT_OBSERVED_HERITAGE_POINTER_ONLY
-    distinct_s03_result: NOT_OBSERVED
-    caught_gate_credit: false
-  mutant_057:
-    mutation_class: TASK_ID_MISMATCH
-    direct_s04_result: PENDING
-    distinct_s10_result: PENDING
-    s15_heritage_pointer_commit: ab888be76e4f096e36e27b5e38ef131e8f9331f0
-    caught_gate_credit: false
-  distinct_provider_verdicts: 0
-  evidence_class: SAME_PROVIDER_NONBINDING
-  binding_weight: 0
-  decision_reason: >-
-    Campaign 14 produced three unexpired mutants that received only S15 heritage pointers and no exact S04 direct verdict;
-    the fourth mutant remains pending. The campaign therefore did not demonstrate reliable exact-mutant sensitivity.
-  proposed_gate_revision:
-    - MAINTAIN_AN_EXPLICIT_FIFO_OF_UNEXPIRED_X14_DIRECT_CANDIDATES_ADDRESSED_TO_S04
-    - SELECT_THE_OLDEST_UNREVIEWED_DIRECT_CANDIDATE_BEFORE_NEWER_INDIRECT_OR_SOURCE_ONLY_ROUTES
-    - REQUIRE_EACH_S04_RESULT_TO_BIND_MUTANT_ID_SOURCE_BLOB_OVERLAY_BYTE_COUNT_SHA256_AND_DIRECT_CATCH_CREDIT_BOOLEAN
-    - WHEN_WIP_PREVENTS_REVIEW_WRITE_HOLD_WITH_QUEUED_MUTANT_ID_EXPIRY_AND_NEXT_ELIGIBLE_WAKE
-  decision_not_rewritten_retroactively: true
-  closed_without_campaign_wide_sensitivity_claim: true
-
-carryover_campaign_13:
-  decision: REVISE_GATE
-  intended_mutants: 4
-  direct_s04_catches_observed: 1
-  mutant_050:
-    mutation_class: FABRICATED_CONSUMER_ACK
-    direct_s04_result: REVISE_AS_STRONGEST_FAKE_GREEN_CHECK_NO_DIRECT_CATCH_CREDIT_CLAIMED
-    direct_s04_receipt_commit: ad80da2bbfd0172f00e83cc8665196fc5c18a516
-    distinct_s03_result: REVISE_SOURCE_BINDINGS_NONTERMINAL
-    caught_gate_credit: false
-  mutant_051:
-    mutation_class: UNSUPPORTED_PASS_OUTCOME
-    direct_s04_result: REVISE
-    direct_s04_receipt_commit: 0f6304d6c816ce0ab93cdcc327bf089d0c4a812c
-    direct_s04_receipt_blob: d0634dd5c7ceb238e79cf3410e1ab79f8ed16d55
-    caught_gate_credit: true
-  mutant_052:
-    mutation_class: EVIDENCE_INFLATION
-    direct_s04_result: REVISE_AS_STRONGEST_FAKE_GREEN_CHECK_NO_DIRECT_CATCH_CREDIT_CLAIMED
-    direct_s04_receipt_commit: d8772d069eb291294944703a9bc5fb8d92c75801
-    distinct_s03_result: REVISE_SOURCE_BINDINGS_NONTERMINAL
-    caught_gate_credit: false
-  mutant_053:
-    mutation_class: AUTHORITY_ESCALATION
-    direct_s04_result: PENDING
-    distinct_s03_result: PENDING
-    caught_gate_credit: false
-  distinct_provider_verdicts: 0
-  evidence_class: SAME_PROVIDER_NONBINDING
-  binding_weight: 0
-  decision_not_rewritten_retroactively: true
-  closed_without_campaign_wide_sensitivity_claim: true
-
-carryover_campaign_12:
-  decision: HOLD
-  intended_mutants: 4
-  mutant_046_direct_s04_result: NOT_OBSERVED
-  mutant_047_direct_s04_result: NOT_OBSERVED
-  mutant_048_direct_s04_result: NOT_OBSERVED
-  mutant_049_direct_s04_result: NOT_OBSERVED_HERITAGE_POINTER_ONLY
-  distinct_provider_verdicts: 0
-  decision_not_rewritten_retroactively: true
-  closed_without_campaign_wide_sensitivity_claim: true
-
-carryover_campaign_11:
-  decision: HOLD
-  intended_mutants: 4
-  mutant_042_direct_s04_result: NOT_OBSERVED_POINTER_ONLY
-  mutant_043_direct_s04_result: NOT_OBSERVED_RECOMPUTED_AS_STRONGEST_FAKE_GREEN_POINTER_ONLY
-  mutant_044_direct_s04_result: NOT_OBSERVED_RECOMPUTED_AS_STRONGEST_FAKE_GREEN_POINTER_ONLY
-  mutant_045_direct_s04_result: REVISE
-  mutant_045_direct_s04_receipt_commit: c3707ae121ae09846d99fae1b9af9efa45cbf273
-  postdecision_direct_s04_catches_observed: 1
-  distinct_provider_verdicts: 0
-  decision_not_rewritten_retroactively: true
-  closed_without_campaign_wide_sensitivity_claim: true
-
-carryover_campaign_10:
-  decision: HOLD
-  intended_mutants: 4
-  direct_s04_catches_observed: 0
-  mutant_038_direct_s04_result: NOT_OBSERVED_HERITAGE_POINTER_ONLY
-  mutant_039_direct_s04_result: NOT_OBSERVED
-  mutant_040_direct_s04_result: NOT_OBSERVED_HERITAGE_POINTER_ONLY
-  mutant_041_direct_s04_result: NOT_OBSERVED_POINTER_ONLY
-  distinct_provider_verdicts: 0
-  closed_without_campaign_wide_sensitivity_claim: true
-
-carryover_campaign_9:
-  decision: HOLD
-  intended_mutants: 4
-  direct_s04_catches_observed: 2
-  mutant_034_direct_s04_result: NOT_OBSERVED_POINTER_ONLY
-  mutant_035_direct_s04_result: REVISE
-  mutant_036_direct_s04_result: REVISE
-  mutant_037_direct_s04_result: NOT_OBSERVED
-  distinct_provider_verdicts: 0
-  closed_without_campaign_wide_sensitivity_claim: true
+recent_campaign_decisions:
+  campaign_14:
+    decision: REVISE_GATE
+    direct_s04_catches_observed: 0
+    reason: EXACT_DIRECT_X14_MUTANTS_WERE_NOT_RELIABLY_SELECTED_OR_BOUND_BY_VERDICTS
+  campaign_13:
+    decision: REVISE_GATE
+    direct_s04_catches_observed: 1
+    reason: ONLY_MUTANT_051_RECEIVED_EXPLICIT_DIRECT_CATCH_CREDIT
+  campaign_12:
+    decision: HOLD
+    direct_s04_catches_observed: 0
+  campaign_11:
+    decision: HOLD
+    postdecision_direct_s04_catches_observed: 1
 
 carryover_debt:
   prior_campaign_ordinal: 5
@@ -212,26 +113,25 @@ carryover_debt:
 routing:
   structural_preflight: S04_STRUCTURAL_PREFLIGHT
   structural_verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
-  distinct_falsification: S10_INDEPENDENT_SCHEDULER_READBACK_WITNESS
-  distinct_verifier_task_id: 6a5508a9ebb8819199ce658d4590c528
+  distinct_falsification: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  distinct_verifier_task_id: 6a539fb148bc8191a30b6009dbf22438
   distinct_verifier_route_status: AVAILABLE_AS_DISTINCT_SEAT_SAME_PROVIDER_NONBINDING_VIA_SLACK
-  consumer: X14_CAMPAIGN_REDUCER_AND_X13_COTS_CONNECTOR_CAMPAIGN_REDUCER
-  current_verdict_status: MUTANT_058_DIRECT_ROUTE_REQUEST_PENDING_SLACK_POST
+  consumer: X14_CAMPAIGN_REDUCER_AND_X12_DURABLE_OBJECT_CAMPAIGN_REDUCER
+  current_verdict_status: MUTANT_059_DIRECT_ROUTE_REQUEST_PENDING_SLACK_POST
   direct_candidate_priority_required: true
 
 current_campaign:
   campaign_ordinal: 15
-  accepted_wakes: 1
-  current_mutation_class: ACTOR_CARRIER_CONFLATION
-  next_mutation_class: STALE_SOURCE_DIGEST
-  gate_focus: ACTOR_CARRIER_SEPARATION_IDENTITY_PROVENANCE_AND_EFFECT_AUTHORITY
-  status: OPEN_WAKE_1_PENDING_DIRECT_VERDICTS
+  accepted_wakes: 2
+  current_mutation_class: STALE_SOURCE_DIGEST
+  next_mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+  gate_focus: EXACT_COMMIT_PATH_BLOB_AND_SOURCE_DIGEST_RECOMPUTATION
+  status: OPEN_WAKE_2_PENDING_DIRECT_VERDICTS
   decision: NOT_DUE
 
 honest_flaw: >-
-  The actor/carrier conflation is conspicuous because it adds an explicit no-separation assertion while the source exposes
-  no independently bound actor provenance. It does not test shared service accounts, inherited credentials, delegated
-  runners, copied role labels, author-versus-committer ambiguity, or a valid actor receipt replayed onto the wrong carrier.
-  Candidate discovery and digest dedup are best-effort. S10 is a distinct seat but the same provider, so its readback
-  remains nonbinding with weight zero. No source, scheduled task, Gmail object, Slack state, account, or provider state
-  was modified.
+  The stale digest is copied from the immediately prior X12 event, making the mismatch conspicuous once both paths are
+  inspected. It does not test hash collision, alternate-ref ambiguity, branch rewrite, index race, compromised verifier,
+  or a valid digest replayed with a subtly different canonicalization. Candidate discovery and digest dedup are
+  best-effort. S09 is a distinct seat but the same provider, so its evidence remains nonbinding with weight zero.
+  No source, scheduled task, durable-object state, connector, account, or external system was modified.
