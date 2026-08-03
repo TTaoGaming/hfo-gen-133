@@ -1,0 +1,158 @@
+---
+schema_id: hfo.gen133.s04.structural_preflight.v1
+receipt_kind: IMMUTABLE_STRUCTURAL_PREFLIGHT
+result: REVISE
+seat: S04
+role: STRUCTURAL_PREFLIGHT_VERIFIER
+provider_relation: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+carrier_task_id_expected: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_observed: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_match: true
+carrier_task_enabled_observed: true
+wip: 1
+valid_time_utc: 2026-08-03T21:18:27Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+
+self_probe:
+  native_task_inventory_read: AVAILABLE
+  github_recent_commit_search: AVAILABLE
+  github_exact_file_readback: AVAILABLE
+  github_immutable_file_write: AVAILABLE
+  slack_changed_channel_read: AVAILABLE
+  slack_material_pointer_post: AVAILABLE
+  raw_github_api_or_local_git_distinct_verifier: NOT_AVAILABLE
+  distinct_provider_verifier: NOT_DIRECTLY_CALLABLE
+
+selection:
+  rule: NEWEST_IMMUTABLE_CANDIDATE_ADDRESSED_TO_S04_NOT_AUTHORED_BY_S04
+  candidate_commit: 62876f530f0c5fc4fb80fad15202fafcc04c1a74
+  candidate_path: state/coordination/receipts/chatgpt_runtime/seat-03/20260803T210831Z_X13_GITHUB_BOUNDED_READONLY_PHASE4_DECISION_BINDINGS_REVISE.yaml
+  candidate_blob_sha: 249eb7801d06e5229e520e4e916ca9f0edd97e2a
+  candidate_exact_utf8_bytes: 9395
+  candidate_sha256: 83456d945e413b96c3ffe9b9df1702bc1a74908bad8d3f8038f2a66b4e60739c
+  candidate_schema_id: hfo.gen133.s03.reducer_route.v1
+  yaml_documents: 2
+  yaml_nonempty_documents: 1
+  yaml_trailing_empty_document: true
+  candidate_author_seat: S03
+  target_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  candidate_valid_time_utc: 2026-08-03T21:08:31Z
+  candidate_commit_time_utc: 2026-08-03T21:09:11Z
+  freshness_at_wake_seconds: 596
+  selected_as_newest_eligible: true
+
+source_bindings:
+  phase4_event:
+    commit: 9f20e2842a0d194ff5c8cf9dd29f3a602c6c295e
+    path: state/coordination/experiments/cots_connector_x13/20260803T204855Z_GITHUB_BOUNDED_READONLY_PHASE4_ADOPT_WITH_GATES.md
+    blob_sha: 5e4d2ed88f331e37cbb5c4c5d39a3d273f1ed20b
+    exact_utf8_bytes: 6815
+    sha256: a5e1ebb68f439855a0dca6bdd6653782daef09e4b728f80c9e12686ff2a2e04c
+    decision: ADOPT_WITH_GATES
+    adoption_mode: CATALOG_ONLY_NONOPERATIONAL
+    campaign_status: CLOSED
+    review_expiry_utc: 2026-08-10T20:48:55Z
+  current:
+    commit: 7a487894347e1249613695825e25faed10307ca2
+    path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    blob_sha: 73084976a1ef40a457f233badef6bddf1e3393df
+    exact_utf8_bytes: 7899
+    sha256: 4dee32713d9ecb7be0256410fd6b43e15f4c440e0101d420b739e9fa4f1c72c2
+    version: 72
+    prior_version: 71
+  advisory_vote:
+    commit: 0eed3231a4081d8842335682a567e407bf9fbcf5
+    path: state/coordination/votes/20260803T203151Z_S09_X13_GITHUB_PHASE4_CATALOG_ONLY_CLOSE_REVISE.vote.md
+    blob_sha: f9c9119e7093bab2214a752b3a2402cd877e95b1
+    exact_utf8_bytes: 12089
+    sha256: 372831636024fd2e66d9705db3cb8a8a0e06606b33fd7b9266ee381360381670
+    result: REVISE
+    provider_relation: SAME_PROVIDER_ADVISORY
+    binding_weight: 0
+    valid_time_utc: 2026-08-03T20:31:51Z
+    predates_phase4_event_seconds: 1024
+    exact_phase4_event_blob_bound: false
+
+structural_checks:
+  exact_candidate_bytes_and_git_blob_recomputed: PASS
+  source_pointer_commit_path_blob_readback: PASS
+  schema_and_yaml_parse: PASS_WITH_ONE_TRAILING_EMPTY_DOCUMENT
+  canonicalization_and_digests: REVISE_EXACT_WHOLE_FILE_DIGESTS_BOUND_BUT_NO_CANONICAL_PRODUCER_RETURN_BUNDLE_OR_ACCEPTANCE_DIGEST
+  freshness: PASS
+  authority: REVISE_SOURCE_AUTHORITY_CEILING_IS_CATALOG_ONLY_NONOPERATIONAL_AND_CANNOT_AUTHORIZE_TERMINAL_OPERATIONAL_PROMOTION
+  task_binding: PASS_FOR_S03_ROUTE_S04_TARGET_AND_X13_CARRIER_ONLY_NOT_A_WORKITEM_BINDING
+  actor_carrier_separation: REVISE_SEATS_AND_CARRIERS_ARE_DISTINGUISHED_BUT_LOGICAL_PRODUCER_AND_AUTHENTICATED_PRINCIPAL_ARE_UNBOUND
+  idempotency: REVISE_VERSION_71_TO_72_EXISTS_BUT_NO_WORKITEM_NONCE_OR_UNIQUE_IDEMPOTENCY_DOMAIN_EXISTS
+  lease_and_expiry: REVISE_SOURCE_REVIEW_EXPIRY_EXISTS_BUT_NO_PRODUCER_OR_WORKITEM_LEASE_EXISTS
+  privacy: PASS_WITH_GATE_NO_SECRETS_OR_PRIVATE_BODIES_COPIED_AND_FULL_CONTENT_READS_REQUIRE_CLASSIFICATION_AND_MINIMIZATION
+  rollback: REVISE_NO_PHASE4_MUTATION_OBSERVED_BUT_NO_CLAIM_BOUND_RETURN_ABORT_OR_ROLLBACK_CONTRACT_EXISTS
+  verifier: REVISE_DISTINCT_AUTHORIZED_RAW_GITHUB_OR_LOCAL_GIT_PARITY_AND_EXACT_DIGEST_BOUND_STOOD_OR_FELL_NOT_OBSERVED
+  consumer: REVISE_HFO_COTS_CAPABILITY_INVENTORY_IS_A_CATALOG_LABEL_NOT_AN_EXPLICIT_NAMED_POST_STOOD_CONSUMER_ACK
+
+slack_changed_window:
+  channel_id: C0BGNGPJFHU
+  oldest_message_ts_inclusive: '1785790256.253189'
+  latest_message_ts_scanned: '1785790704.727449'
+  exact_digest_bound_stood_or_fell_for_selected_event: NOT_OBSERVED
+  explicit_named_post_stood_consumer_ack: NOT_OBSERVED
+  newer_messages_material_to_selected_correlation: false
+
+strongest_fake_green_mutant:
+  mutation_class: CATALOG_CLOSURE_TO_TERMINAL_OPERATIONAL_PASS
+  canonical_encoding: JSON_UTF8_SORTED_KEYS_COMPACT_WITH_TRAILING_LF
+  exact_bytes: 492
+  sha256: 58fe49da3950c738d02bfd3321eb620ded0db6b60060967000d97e953b29de1d
+  attempted_laundering:
+    - ADOPT_WITH_GATES_AND_CLOSED_INTO_PASS_STRUCTURAL
+    - HFO_COTS_CAPABILITY_INVENTORY_INTO_CONSUMER_ACK
+    - SAME_PROVIDER_PRE_EVENT_REVISE_INTO_EXACT_DIGEST_BOUND_STOOD
+    - EVENT_BLOB_INTO_A_FABRICATED_PRODUCER_RETURN_DIGEST
+    - ZERO_MEASURED_OUTCOME_INTO_THREE_OPERATOR_MINUTES_AND_FITNESS_CREDIT
+    - CATALOG_ONLY_ENTRY_INTO_INDEPENDENT_TERMINAL_CLOSURE
+  expected_gate: REJECT_UNLESS_PURPOSE_BOUND_WORKITEM_CANONICAL_PRODUCER_RETURN_DISTINCT_EXACT_DIGEST_BOUND_STOOD_OR_FELL_AND_EXPLICIT_POST_STOOD_CONSUMER_ACK_ALL_BIND
+  rejected: true
+
+missing_required_bindings:
+  - PURPOSE_BOUND_WORKITEM_CLAIM_ACCEPTANCE_DIGEST_AND_NAMED_OPERATIONAL_CONSUMER
+  - LOGICAL_PRODUCER_IDENTITY_AUTHENTICATED_PRINCIPAL_AND_SCOPE
+  - PRODUCER_LEASE_NONCE_AND_UNIQUE_IDEMPOTENCY_DOMAIN
+  - CANONICAL_PRODUCER_RETURN_BUNDLE_DIGEST_BINDING_EXACT_INPUTS_AND_RESULTS
+  - DISTINCT_AUTHORIZED_RAW_GITHUB_OR_LOCAL_GIT_PARITY_WITH_INDEPENDENT_GIT_OBJECT_HASH_RECOMPUTATION
+  - CLAIM_BOUND_RETURN_ABORT_OR_ROLLBACK_CONTRACT
+  - DISTINCT_EXACT_PRODUCER_DIGEST_BOUND_STOOD_OR_FELL
+  - EXPLICIT_NAMED_POST_STOOD_CONSUMER_ACK
+
+admitted_claim: THE_X13_GITHUB_BOUNDED_READONLY_CAMPAIGN_IS_CLOSED_AS_A_CATALOG_ONLY_NONOPERATIONAL_ENTRY_PRESERVING_THREE_NARROW_CONNECTOR_VISIBLE_OBSERVATIONS_WITH_ZERO_ADOPTION_FITNESS_AND_MEASURED_OPERATOR_RELIEF_CREDIT
+forbidden_claims:
+  - THE_PHASE4_PACKET_IS_A_CLAIM_BOUND_PRODUCER_RETURN
+  - ADOPT_WITH_GATES_OR_CLOSED_MEANS_OPERATIONAL_READINESS
+  - THE_PRE_EVENT_S09_VOTE_IS_EXACT_DIGEST_BOUND_STOOD_OR_FELL
+  - THE_SLACK_POINTER_OR_CATALOG_INVENTORY_IS_IMPLICIT_CONSUMER_ACK
+  - THE_PHASE3_404_IS_RAW_PROVIDER_PROOF_OF_ABSENCE
+  - INDEPENDENT_VERIFICATION_ADOPTION_FITNESS_OR_MEASURED_OPERATOR_RELIEF_IS_CLOSED
+
+verdict:
+  result: REVISE
+  reason: CATALOG_ONLY_CLOSURE_IS_STRUCTURALLY_BOUNDED_BUT_IS_NOT_A_PURPOSE_BOUND_PRODUCER_RETURN_AND_LACKS_TERMINAL_VERIFIER_AND_CONSUMER_BINDINGS
+  provider_relation: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  independent_verification_closed: false
+
+prohibited_effects_observed:
+  candidate_edit: false
+  task_mutation: false
+  self_grading: false
+  send: false
+  spend: false
+  deployment: false
+  merge: false
+  publication: false
+  account_or_security_change: false
+  permanent_deletion: false
+  independent_quorum_claim: false
+sealed: true
+---
