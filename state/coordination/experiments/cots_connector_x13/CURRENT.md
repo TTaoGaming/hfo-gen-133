@@ -1,226 +1,186 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
-experiment_id: X13_GOOGLE_DRIVE_BOUNDED_FILE_METADATA_SEARCH_READONLY_001
-version: 64
-prior_version: 63
-candidate: Google_Drive_bounded_file_metadata_search_readonly_surface
-candidate_contract_reference: official_Google_Drive_files_list_search_filter_scope_and_quota_contracts_plus_direct_connector_receipts
-campaign_wake: 4_of_4
-campaign_status: CLOSED
+experiment_id: X13_SLACK_BOUNDED_CHANNEL_HISTORY_READONLY_001
+version: 65
+prior_version: 64
+candidate: Slack_bounded_readonly_channel_history_surface
+candidate_contract_reference: official_Slack_conversations_history_scope_pagination_rate_limit_and_error_contract_plus_direct_connector_receipt
+campaign_wake: 1_of_4
+campaign_status: ACTIVE
 phase_1_completed: true
-phase_2_completed: true
-phase_3_completed: true
-phase_4_completed: true
-phase_4_decision: ADOPT_WITH_GATES
+phase_2_completed: false
+phase_3_completed: false
+phase_4_completed: false
+phase_4_decision: PENDING
 carrier_task_id: 6a55c1733708819185088bf334e33ea5
 carrier_task_id_match: true
 wip: 1
 last_event:
-  commit: 161d35db52f90e68a644bf13223c0b8f18e9f00c
-  path: state/coordination/experiments/cots_connector_x13/20260803T124743Z_GOOGLE_DRIVE_BOUNDED_FILE_METADATA_PHASE4_ADOPT_WITH_GATES.md
-  blob_sha: 5865a164843af6744c8cc286ddce135f93452af8
+  commit: fe5af3bebfb1860391dd2813f31987e3586aac5f
+  path: state/coordination/experiments/cots_connector_x13/20260803T135333Z_SLACK_BOUNDED_CHANNEL_HISTORY_PHASE1_BASELINE.md
+  blob_sha: 93d64d8ccd0fe9575becefc2a72f431bdfc59c9b
   exact_readback_completed: true
-prior_current_commit: adce74d35c744411d6658c617686a75151c0c92e
-prior_current_blob_sha: a6620265c81067f04bc3e922ac0ad1a659e16b00
-effect_ceiling: PHASE4_DECISION_EVENT_CURRENT_ADVANCE_READBACK_AND_ONE_SHORT_SLACK_DECISION_FACT
-adoption_credit: 1_BOUNDED_METADATA_DISCOVERY_PRIMITIVE_ONLY
+prior_current_commit: 9d4d9faffd1f60596d5f9088aaab764ca162fe10
+prior_current_blob_sha: 691d1dd5cfd826a027e32bd8d58bff681ddcaf4c
+effect_ceiling: PHASE1_OFFICIAL_CONTRACT_ONE_BOUNDED_READONLY_SLACK_HISTORY_CALL_EVENT_CURRENT_ADVANCE_READBACK_AND_ONE_SHORT_SLACK_FACT
+adoption_credit: 0_PENDING_PHASE4
 fitness_credit: 0_PENDING_SOURCE_BOUND_CONSUMER_ACK_AND_MEASURED_OPERATOR_OUTCOME
 consumer_ack: NOT_OBSERVED
 operator_minutes_removed_measured: 0
-operator_minutes_removed_estimate_per_consumed_file_presence_check: 1_to_3_UNVALIDATED
+operator_minutes_removed_estimate_per_consumed_channel_status_check: 1_to_3_UNVALIDATED
 custom_code_avoided_estimate:
-  authenticated_bounded_metadata_discovery_with_caller_filter: 35_to_110_LOC_UNVALIDATED
+  authenticated_bounded_channel_history_cursor_and_normalized_response_handling: 30_to_95_LOC_UNVALIDATED
 credentials:
-  connector_reached_drive_success_path: true
+  connector_reached_slack_success_path: true
   operator_supplied_credentials_campaign: 0
-  authenticated_identity: UNKNOWN
-  credential_type: UNKNOWN
-  effective_oauth_scope: UNKNOWN
+  authenticated_principal: UNKNOWN
+  token_class: UNKNOWN_USER_BOT_OR_APP
+  effective_history_scopes: UNKNOWN
+  workspace_identity: UNKNOWN
+  membership_basis: UNKNOWN
   token_storage_and_custody: CONNECTOR_MANAGED_UNINSPECTED
-  corpus_and_shared_drive_reach: UNKNOWN
   least_privilege_closed: false
 paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
 campaign_candidate_invocations:
-  phase_1_metadata_searches: 1
-  phase_2_metadata_searches: 1
-  phase_3_metadata_searches: 1
-  phase_4_metadata_searches: 0
-  total_metadata_searches: 3
-  total_returned_metadata_record_count: 2
-  positive_result_pages: 2
-  valid_empty_pages: 1
-  content_hydration_enabled_count: 0
-  file_body_returned_count: 0
+  phase_1_channel_history_reads: 1
+  phase_2_channel_history_reads: 0
+  phase_3_channel_history_reads: 0
+  phase_4_channel_history_reads: 0
+  total_channel_history_reads: 1
+  total_returned_message_count: 1
+  positive_result_pages: 1
+  valid_empty_pages: 0
+  continuation_cursor_pages: 1
   carrier_retry_count: 0
 actual_upstream_request_count: UNKNOWN
-actual_quota_units_consumed: UNKNOWN
-actual_quota_class: UNKNOWN_LEGACY_PROJECT_EXCEPTION_POSSIBLE
+actual_rate_limit_tier_or_app_class: UNKNOWN
+actual_quota_consumed: UNKNOWN
 billing_counters: NOT_EXPOSED
-live_request_id_retry_after_rate_limit_or_quota_headers: NOT_EXPOSED
+request_id_retry_after_and_rate_limit_headers: NOT_EXPOSED
 direct_phase_1_receipt:
-  action: Google_Drive.search
-  query_class: PROJECT_SPECIFIC_NON_SECRET_TOKEN
-  requested_item_type: document
-  requested_topn: 1
-  best_effort_fetch: false
-  returned_metadata_record_count: 1
-  file_body_or_hydrated_text_returned: false
-  next_page_token_presence: UNKNOWN_NOT_EXPOSED
-  incomplete_search_presence: NOT_EXPOSED
-  connector_error: null
-  mutation_effect: false
-direct_phase_2_receipt:
-  action: Google_Drive.search
-  special_filter_query_str_class: EXPLICIT_TRASHED_FALSE
-  requested_item_type: document
-  requested_topn: 1
-  best_effort_fetch: false
-  returned_metadata_record_count: 1
-  returned_provider_resource_class_from_url_pattern: GOOGLE_SHEETS_SPREADSHEET
-  file_body_or_hydrated_text_returned: false
-  returned_trashed_field: NOT_EXPOSED
-  returned_mime_type: NOT_EXPOSED
-  raw_upstream_request_and_filter_forwarding: NOT_EXPOSED
-  connector_error: null
+  action: Slack.slack_read_channel
+  conversation_class: KNOWN_HFO_COMMAND_AND_CONTROL_CHANNEL
+  requested_limit: 1
+  requested_response_format: concise
+  returned_message_count: 1
+  newest_first_order_observed: true
+  continuation_cursor_present: true
+  full_message_body_returned: true
+  author_identifying_fields_returned: true
+  exact_private_content_persisted: false
+  normalized_connector_error: null
+  visible_connector_latency_ms: NOT_EXPOSED
   carrier_retries: 0
-  mutation_effect: false
-direct_phase_3_receipt:
-  action: Google_Drive.search
-  special_filter_query_str_class: SYNTACTICALLY_VALID_IMPROBABLE_EXACT_MIME_AND_TRASHED_FALSE
-  special_filter_query_str_nonsecret: "mimeType = 'application/vnd.hfo.impossible+x13' and trashed = false"
-  requested_item_type: document
-  requested_topn: 1
-  best_effort_fetch: false
-  returned_metadata_record_count: 0
-  connector_result_class: NORMALIZED_SUCCESS_VALID_EMPTY
-  connector_error: null
-  connector_external_call_time_ms: 3555
-  next_page_token_presence: UNKNOWN_NOT_EXPOSED
-  incomplete_search_presence: NOT_EXPOSED
-  carrier_retries: 0
-  mutation_effect: false
-direct_phase_4_receipt:
-  decision_only: true
-  additional_google_drive_capability_call_made: false
-  disposition: ADOPT_WITH_GATES
-  source_receipts: PHASES_1_TO_3_GIT_FIRST_EVENTS
   mutation_effect: false
 measured_facts:
-  positive_wrapper_visible_metadata_results_observed: 2
-  valid_empty_wrapper_result_observed: true
-  explicit_trashed_false_filter_input_accepted: true
-  impossible_exact_mime_plus_trashed_false_filter_input_accepted: true
-  raw_filter_forwarding_or_enforcement_independently_verified: false
-  no_file_body_or_hydrated_text_returned: true
-  private_identifying_metadata_fields_returned_by_default_on_positive_results: true
-  exact_private_metadata_minimized_from_durable_logs: true
-  item_type_document_returned_google_sheets_resource: true
-  exact_provider_mime_type_exposed_on_positive_result: false
-  page_token_or_incomplete_search_status_visible: false
-  phase_3_external_call_latency_ms: 3555
+  one_bounded_positive_page_observed: true
+  one_message_returned_for_limit_one: true
+  newest_first_order_observed: true
+  continuation_cursor_exposed: true
+  concise_mode_returned_full_message_body: true
+  concise_mode_returned_author_identifying_data: true
+  exact_message_text_email_user_id_timestamp_cursor_and_links_minimized_from_durable_logs: true
+  no_send_edit_delete_join_reaction_draft_schedule_file_read_or_other_mutation: true
 privacy_andon:
   triggered: true
-  measured_fact: POSITIVE_METADATA_RESULTS_RETURNED_PRIVATE_NAME_URL_AND_PARENT_IDENTIFIER_FIELD_CLASSES_BY_DEFAULT
-  implication: MINIMIZE_IN_MEMORY_BEFORE_GIT_SLACK_OR_DOWNSTREAM_FANOUT
-completeness_andon:
+  measured_fact: CONCISE_RESPONSE_RETURNED_FULL_MESSAGE_BODY_AND_AUTHOR_IDENTIFYING_FIELDS
+  implication: CONCISE_IS_NOT_METADATA_ONLY_OR_PRIVACY_MINIMAL_AND_REQUIRES_LOCAL_MINIMIZATION_BEFORE_DURABLE_FANOUT
+pagination_andon:
+  triggered: false
+  measured_fact: ONE_ITEM_PAGE_EXPOSED_A_CONTINUATION_CURSOR
+  implication: SOURCE_BOUND_CURSOR_TRAVERSAL_IS_AVAILABLE_IN_WRAPPER_BUT_NOT_YET_VALIDATED
+scope_identity_andon:
   triggered: true
-  measured_fact: OBSERVED_RESPONSES_DID_NOT_EXPOSE_NEXT_PAGE_TOKEN_OR_INCOMPLETE_SEARCH
-  admitted_interpretation: POSITIVE_OR_EMPTY_WRAPPER_VISIBLE_QUERY_OBSERVATION_AT_OBSERVATION_TIME
-  forbidden_interpretation: COMPLETE_DRIVE_CORPUS_SINGLE_PAGE_FINALITY_OR_AUTHORITATIVE_NONEXISTENCE
-filter_forwarding_andon:
+  measured_fact: SUCCESS_PATH_DID_NOT_EXPOSE_PRINCIPAL_TOKEN_CLASS_EXACT_SCOPES_WORKSPACE_IDENTITY_OR_MEMBERSHIP_BASIS
+  admitted_interpretation: CONNECTOR_VISIBLE_REACH_TO_ONE_KNOWN_CONVERSATION_AT_OBSERVATION_TIME
+  forbidden_interpretation: LEAST_PRIVILEGE_EXACT_SCOPE_IDENTITY_OR_GENERAL_WORKSPACE_REACH
+rate_limit_andon:
   triggered: true
-  measured_fact: WRAPPER_ACCEPTED_TRASHED_FALSE_AND_EXACT_MIME_INPUTS_WITHOUT_RAW_REQUEST_MIME_OR_TRASH_FIELDS
-  admitted_interpretation: RESULT_OBSERVED_UNDER_SUPPLIED_FILTER_INPUT
-  forbidden_interpretation: INDEPENDENT_PROOF_OF_FILTER_FORWARDING_MIME_ENFORCEMENT_OR_TRASH_EXCLUSION
-wrapper_taxonomy_andon:
-  triggered: true
-  measured_fact: ITEM_TYPE_DOCUMENT_RETURNED_A_GOOGLE_SHEETS_RESOURCE
-  implication: DOCUMENT_IS_A_BROAD_WRAPPER_CLASS_NOT_AN_EXACT_GOOGLE_DOCS_MIME_GUARANTEE
-empty_result_andon:
-  triggered: true
-  measured_fact: SYNTACTICALLY_VALID_IMPROBABLE_MIME_QUERY_RETURNED_EMPTY_WITH_NO_NORMALIZED_ERROR
-  admitted_interpretation: NO_MATCH_RETURNED_IN_CONNECTOR_QUERY_SCOPE_AT_OBSERVATION_TIME
-  forbidden_interpretation: AUTHORITATIVE_CORPUS_ABSENCE_COMPLETE_SEARCH_OR_RAW_FILTER_FORWARDING_PROOF
+  measured_fact: OFFICIAL_RATE_LIMIT_VARIES_BY_APP_DISTRIBUTION_CLASS_WHILE_CONNECTOR_CLASS_HEADERS_AND_REMAINING_ALLOWANCE_ARE_HIDDEN
+  implication: NO_RATE_LIMIT_CAPACITY_OR_BILLING_CLAIM_IS_ADMITTED
 official_contract_checked_2026_08_03:
-  files_list: https://developers.google.com/workspace/drive/api/reference/rest/v3/files/list
-  search_guide: https://developers.google.com/workspace/drive/api/guides/search-files
-  query_terms: https://developers.google.com/workspace/drive/api/guides/ref-search-terms
-  scopes: https://developers.google.com/workspace/drive/api/guides/api-specific-auth
-  quota: https://developers.google.com/workspace/drive/api/guides/limits
-  files_list_accepts_q_filter: true
-  mime_type_exact_match_query_form_documented: true
-  boolean_and_query_composition_documented: true
-  files_list_default_includes_trashed_items: true
-  trashed_false_contract: REMOVES_TRASHED_FILES_FROM_RESULTS
-  files_list_page_token_contract: USE_NEXT_PAGE_TOKEN_FROM_PREVIOUS_RESPONSE
-  files_list_incomplete_search_semantics: TRUE_MEANS_SOME_RESULTS_MAY_BE_MISSING
-  metadata_readonly_scope_exists: true_RESTRICTED_SCOPE
+  conversations_history: https://docs.slack.dev/reference/methods/conversations.history/
+  required_history_scopes_by_conversation_class:
+    - channels:history
+    - groups:history
+    - im:history
+    - mpim:history
+  cursor_contract: USE_RESPONSE_METADATA_NEXT_CURSOR_FROM_PREVIOUS_RESPONSE
+  fewer_than_limit_may_be_returned_with_more_history_remaining: true
+  newest_messages_in_time_range_returned_first: true
+  affected_non_marketplace_commercial_distribution_limit: 1_REQUEST_PER_MINUTE_AND_LIMIT_MAX_15
+  other_app_classes: TIER_3_DOCUMENTED_BUT_CONNECTOR_CLASS_UNKNOWN
+  documented_errors_include:
+    - channel_not_found
+    - access_denied
+    - account_inactive
+    - service_or_unexpected_errors
 failure_semantics:
-  positive_metadata_search: OBSERVED_PHASE1_AND_PHASE2
-  explicit_filter_input_accepted: OBSERVED_PHASE2_AND_PHASE3
-  valid_empty_result: OBSERVED_PHASE3
-  valid_source_bound_page_traversal: NOT_TESTED
-  malformed_or_mismatched_page_token: NOT_TESTED
-  malformed_query: NOT_TESTED
+  positive_bounded_page: OBSERVED_PHASE1
+  valid_source_bound_cursor_traversal: NOT_TESTED
+  valid_empty_time_window: NOT_TESTED
+  malformed_cursor: NOT_TESTED
+  invalid_channel: NOT_TESTED
   authentication_or_permission_denial: NOT_TESTED
   quota_or_rate_limit: NOT_TESTED
   transient_server_failure: NOT_TESTED
-  independent_raw_or_UI_readback: NOT_TESTED
-durability: EPHEMERAL_POINT_IN_TIME_METADATA_LOOKUP_NOT_A_SNAPSHOT_EVENT_STREAM_CHECKPOINT_DURABLE_CURSOR_OR_INDEX
-observability: RESULT_COUNT_RETURNED_FIELD_CLASSES_PROVIDER_URL_CLASS_NORMALIZED_SUCCESS_OR_EMPTY_AND_ONE_VISIBLE_EXTERNAL_CALL_LATENCY; RAW_REQUEST_QUERY_TRANSLATION_FIELD_MASK_MIME_TRASH_CURSOR_INCOMPLETE_SEARCH_HTTP_STATUS_PROVIDER_BODY_REQUEST_ID_EFFECTIVE_SCOPE_CORPUS_QUOTA_HEADERS_BILLING_AND_UPSTREAM_RETRIES_HIDDEN
-portability: MEDIUM_FOR_GENERIC_FILE_DISCOVERY_LOW_TO_MEDIUM_FOR_DRIVE_QUERY_MIME_CORPUS_PAGINATION_AND_PERMISSION_SEMANTICS
+  message_subtype_or_free_history_truncation: NOT_TESTED
+  independent_raw_API_or_UI_readback: NOT_TESTED
+durability: EPHEMERAL_POINT_IN_TIME_CONVERSATION_READ_NOT_A_DURABLE_EVENT_STREAM_SNAPSHOT_CHECKPOINT_DELIVERY_RECEIPT_OR_EXACTLY_ONCE_FEED
+observability: REQUESTED_LIMIT_RESPONSE_MODE_RETURNED_COUNT_NEWEST_FIRST_ORDER_FULL_CONTENT_FIELD_CLASSES_AUTHOR_IDENTIFYING_FIELD_CLASSES_CURSOR_PRESENCE_AND_NORMALIZED_SUCCESS_VISIBLE; RAW_REQUEST_HTTP_STATUS_SLACK_OK_RESPONSE_HEADERS_REQUEST_ID_RATE_LIMIT_COUNTERS_RETRY_AFTER_APP_CLASS_SCOPES_UPSTREAM_RETRIES_AND_LATENCY_HIDDEN
+portability: MEDIUM_FOR_GENERIC_CHANNEL_HISTORY_LOW_TO_MEDIUM_FOR_SLACK_CONVERSATION_CLASSES_TIMESTAMP_BOUNDARIES_MESSAGE_SUBTYPES_CURSOR_IDENTITY_AND_SCOPE_RULES
 admitted_scope:
-  - ONE_PAGE_BOUNDED_METADATA_ONLY_DISCOVERY_WITH_EXPLICIT_ITEM_TYPE
-  - CALLER_SUPPLIED_TRASHED_FALSE_AND_EXACT_MIME_FILTER_INPUTS_WITH_FORWARDING_UNVERIFIED
-  - CONTENT_HYDRATION_DISABLED
-  - SCOPED_POSITIVE_OR_EMPTY_OBSERVATIONS_WITH_QUERY_CLASS_RESULT_COUNT_ERROR_CLASS_VISIBLE_LATENCY_AND_OBSERVATION_TIME
+  - ONE_PAGE_BOUNDED_READONLY_HISTORY_FROM_A_KNOWN_EXPLICIT_CONVERSATION_ID
+  - SMALL_LIMIT_AND_SCOPED_POSITIVE_OBSERVATION_AT_OBSERVATION_TIME
+  - LOCAL_PRIVACY_MINIMIZATION_BEFORE_GIT_SLACK_OR_DOWNSTREAM_FANOUT
+  - CURSOR_PRESENCE_RECORDING_WITHOUT_CURSOR_VALUE_PERSISTENCE
 excluded_scope:
-  - FILE_CONTENT_FETCH_DOWNLOAD_EXPORT_OR_HYDRATION
-  - CREATE_UPLOAD_EDIT_MOVE_RENAME_SHARE_PERMISSION_CHANGE_DELETE_OR_PUBLICATION
-  - FILTER_FORWARDING_COMPLETENESS_CORPUS_SHARED_DRIVE_TRASH_EXCLUSION_EXACT_MIME_OWNERSHIP_PERMISSION_ROLE_LEAST_PRIVILEGE_QUOTA_CONSUMPTION_OR_AUTHORITATIVE_NONEXISTENCE_CLAIMS
-  - DURABLE_SNAPSHOT_INDEX_EVENT_STREAM_OR_CHECKPOINT_CLAIMS
+  - SEND_EDIT_DELETE_REACTION_JOIN_CHANNEL_CREATE_DRAFT_SCHEDULE_FILE_READ_OR_OTHER_MUTATION
+  - METADATA_ONLY_PRIVACY_MINIMAL_LEAST_PRIVILEGE_SCOPE_IDENTITY_COMPLETE_HISTORY_THREAD_COMPLETENESS_FREE_ARCHIVE_REACH_OR_QUOTA_CLAIMS
+  - DURABLE_EVENT_STREAM_SNAPSHOT_CHECKPOINT_DELIVERY_OR_EXACTLY_ONCE_CLAIMS
 mandatory_gates:
-  - USE_EXPLICIT_METADATA_ONLY_ITEM_TYPE_AND_KEEP_BEST_EFFORT_FETCH_FALSE
-  - KEEP_RESULT_CAP_SMALL_AND_RECORD_NON_SECRET_QUERY_CLASS_AND_OBSERVATION_TIME
-  - TREAT_ITEM_TYPE_DOCUMENT_AS_A_BROAD DOCUMENT_FAMILY_SELECTOR_NOT_AN_EXACT_GOOGLE_DOCS_MIME_GUARANTEE
-  - ADD_EXPLICIT_MIME_TYPE_Q_FILTER_WHEN_EXACT_PROVIDER_CLASS_IS_REQUIRED_AND_MARK FORWARDING_UNVERIFIED
-  - KEEP_TRASHED_FALSE_FOR_NON_TRASH_DISCOVERY_AND_MARK ENFORCEMENT_UNVERIFIED
-  - MINIMIZE_NAMES_URLS_FILE_IDS_SPREADSHEET_IDS_AND_PARENT_IDS_BEFORE DURABLE FANOUT
-  - TREAT ABSENT MIME TRASH CURSOR OR INCOMPLETE_SEARCH FIELDS AS UNKNOWN_NOT_FALSE
-  - TREAT EMPTY AS NO_MATCH_RETURNED_IN_CONNECTOR_QUERY_SCOPE_AT_OBSERVATION_TIME
-  - SEPARATE VALID_EMPTY INVALID_QUERY_OR_TOKEN PERMISSION_DENIAL RATE_LIMIT TRANSPORT_FAILURE_AND_PROVIDER_FAILURE
-  - REQUIRE SOURCE_BOUND_CONSUMER_ACK_AND_MEASURED_OPERATOR_OUTCOME BEFORE FITNESS_CREDIT
-verifier: RAW_DRIVE_FILES_LIST_WITH_EQUIVALENT_Q_AND_EXPLICIT_MINIMAL_FIELDS_INCLUDING_FILES_ID_NAME_MIMETYPE_TRASHED_NEXT_PAGE_TOKEN_AND_INCOMPLETE_SEARCH_PLUS_DRIVE_UI_COMPARISON
+  - USE_ONLY_A_KNOWN_EXPLICIT_CONVERSATION_ID_AND_SMALL_LIMIT
+  - TREAT_CONCISE_AS_PRESENTATION_MODE_NOT_A_METADATA_ONLY_OR_PRIVACY_GUARANTEE
+  - MINIMIZE_MESSAGE_TEXT_EMAILS_USER_IDS_TIMESTAMPS_CURSOR_VALUES_LINKS_FILES_REACTIONS_AND_ATTACHMENTS_BEFORE_DURABLE_FANOUT
+  - PERSIST_COUNTS_FIELD_CLASSES_NORMALIZED_ERROR_CURSOR_PRESENCE_OBSERVATION_TIME_AND_SOURCE_BOUND_HASHES_INSTEAD_OF_RAW_PRIVATE_CONTENT
+  - ACCEPT_CURSOR_ONLY_FROM_IMMEDIATELY_PRECEDING_COMPATIBLE_QUERY_AND_DO_NOT_LOG_EXACT_CURSOR
+  - SEPARATE_POSITIVE_VALID_EMPTY_INVALID_CHANNEL_OR_CURSOR_PERMISSION_DENIAL_RATE_LIMIT_TRANSPORT_FAILURE_AND_PROVIDER_FAILURE
+  - DO_NOT_CLAIM_COMPLETENESS_FULL_HISTORY_THREAD_REACH_IDENTITY_SCOPE_OR_QUOTA_FROM_ONE_PAGE
+  - REQUIRE_SOURCE_BOUND_CONSUMER_ACK_AND_MEASURED_OPERATOR_OUTCOME_BEFORE_FITNESS_CREDIT
+verifier: RAW_SLACK_CONVERSATIONS_HISTORY_WITH_SAME_CONVERSATION_AND_LIMIT_ONE_INSPECTING_OK_MESSAGES_HAS_MORE_RESPONSE_METADATA_NEXT_CURSOR_HEADERS_SCOPES_AND_APP_CLASS_PLUS_SLACK_UI_COMPARISON
 consumer:
-  - HFO_DRIVE_HERITAGE_LOCATOR
-  - HFO_EXECUTIVE_ASSISTANT_BOUNDED_FILE_DISCOVERY
-  - HFO_SSOT_EVIDENCE_FINDER
-strongest_falsifier: RAW_API_ERRORS_OR_RETURNS_A_NONEMPTY_RESULT_FOR_THE_EXACT_PHASE3_QUERY_SHOWS_FILTER_DROP_OR_REWRITE_OR_EXPOSES_INCOMPLETE_SEARCH_TRUE_WHILE_WRAPPER_REPORTS_UNQUALIFIED_EMPTY
-honest_flaw: RAW_FILTER_FORWARDING_COMPLETENESS_CORPUS_AND_PERMISSION_REACH_VALID_PAGINATION_LEAST_PRIVILEGE_SCOPE_QUOTA_BEHAVIOR_CONSUMER_ACK_AND_MEASURED_OPERATOR_TIME_REDUCTION_REMAIN_UNVERIFIED
+  - HFO_COORDINATION_STATE_READER
+  - HFO_MORNING_GATHERING_FAN_IN
+  - HFO_ANDON_AND_PHEROMONE_VERIFIER
+  - HFO_SOURCE_BOUND_SLACK_RECEIPT_LOCATOR
+strongest_falsifier: EQUIVALENT_RAW_API_UNDER_SAME_IDENTITY_RETURNS_DIFFERENT_ORDER_COUNT_CURSOR_PERMISSION_OR_CONTENT_OR_SHOWS_CONNECTOR_CHANNEL_LIMIT_OR_RESPONSE_MODE_REWRITE
+honest_flaw: ONLY_ONE_POSITIVE_FULL_CONTENT_READ_FROM_ONE_ACCESSIBLE_CONVERSATION_WAS_OBSERVED; METADATA_MINIMIZATION_IDENTITY_SCOPE_CURSOR_TRAVERSAL_EMPTY_BEHAVIOR_PERMISSION_FAILURE_RATE_LIMIT_RAW_API_PARITY_CONSUMER_ACK_AND_MEASURED_OPERATOR_TIME_REDUCTION_REMAIN_UNVERIFIED
 phase_1_result:
-  disposition: PHASE1_ACCEPTED_WITH_PRIVACY_SCOPE_AND_OBSERVABILITY_GATES
+  disposition: PHASE1_ACCEPTED_WITH_PRIVACY_SCOPE_RATE_LIMIT_AND_PAGINATION_GATES
 phase_2_result:
-  disposition: PHASE2_ACCEPTED_WITH_FILTER_FORWARDING_AND_WRAPPER_TAXONOMY_GATES
+  disposition: PENDING
 phase_3_result:
-  disposition: PHASE3_ACCEPTED_WITH_VALID_EMPTY_AND_FILTER_FORWARDING_GATES
+  disposition: PENDING
 phase_4_result:
-  disposition: ADOPT_WITH_GATES
-  adopted_primitive: BOUNDED_READONLY_METADATA_ONLY_FILE_DISCOVERY_AND_SCOPED_POSITIVE_OR_EMPTY_OBSERVATIONS
-  new_architecture_required: false
-next_campaign:
-  status: PROPOSED_NOT_STARTED
-  candidate: Slack_bounded_readonly_channel_history_or_search_surface
-  phase: 1_of_4
-  excluded_effects: SEND_EDIT_DELETE_REACTION_CHANNEL_CREATION_DRAFT_SCHEDULE_PUBLICATION_OR_SECRET_EXPOSURE
-review_expiry_utc: 2026-08-10T12:47:43Z
-valid_time_utc: 2026-08-03T12:47:43Z
+  disposition: PENDING
+next_wake:
+  candidate: Slack_bounded_readonly_channel_history_surface
+  phase: 2_of_4
+  planned_micro_use: ONE_MESSAGE_READ_BOUNDED_BY_A_NON_SECRET_TIME_WINDOW_OR_SOURCE_BOUND_LATEST_TIMESTAMP_WITH_EXACT_CONTENT_MINIMIZED
+  excluded_effects: CURSOR_TRAVERSAL_SEND_EDIT_DELETE_JOIN_REACTION_DRAFT_SCHEDULE_FILE_READ_OR_OTHER_MUTATION
+review_expiry_utc: 2026-08-10T13:53:33Z
+valid_time_utc: 2026-08-03T13:53:33Z
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 sealed: true
 prior_campaign:
+  experiment_id: X13_GOOGLE_DRIVE_BOUNDED_FILE_METADATA_SEARCH_READONLY_001
+  final_version: 64
+  decision: ADOPT_WITH_GATES
+prior_prior_campaign:
   experiment_id: X13_GMAIL_BOUNDED_MESSAGE_METADATA_SEARCH_READONLY_001
   final_version: 60
   decision: ADOPT_WITH_GATES
-prior_prior_campaign:
+prior_prior_prior_campaign:
   experiment_id: X13_GOOGLE_CALENDAR_BOUNDED_EVENT_WINDOW_READONLY_001
   final_version: 56
   decision: ADOPT_WITH_GATES
@@ -228,12 +188,10 @@ prior_prior_campaign:
 
 # X13 current campaign
 
-Google Drive bounded file-metadata search campaign **4/4** is closed with `ADOPT_WITH_GATES`.
+Slack bounded read-only channel-history campaign **1/4** is active.
 
-Adopt only bounded, read-only, metadata-only discovery and scoped positive or empty observations. Keep content hydration disabled. Empty means only `NO_MATCH_RETURNED_IN_CONNECTOR_QUERY_SCOPE_AT_OBSERVATION_TIME`.
+One `limit=1`, `response_format=concise` read from the known HFO command-and-control conversation returned one newest message and a continuation cursor with no normalized error or mutation. `concise` still returned the full message body and author-identifying fields, so it is not a metadata-only or privacy-minimal mode.
 
-Do not claim completeness, raw filter forwarding, exact MIME enforcement, trash exclusion, shared-drive reach, permission reach, least-privilege OAuth, quota consumption, durable snapshot behavior, or authoritative nonexistence. Positive results require privacy minimization before durable fan-out.
+Exact private message text, email, user ID, timestamp, cursor, and link values were minimized from durable logs. Identity, token class, scopes, app distribution class, rate-limit state, raw API parity, ConsumerAck, and measured operator relief remain unknown.
 
-Three connector searches produced two positive pages, one valid empty page, two metadata records, zero bodies, zero retries, zero mutations, zero surfaced paid cost, zero measured operator minutes removed, and no ConsumerAck. Fitness credit remains zero.
-
-Next campaign is proposed, not started: native Slack bounded read-only channel history or search.
+Next wake: phase 2, one harmless time-bounded one-message read with no cursor traversal or write effect.
