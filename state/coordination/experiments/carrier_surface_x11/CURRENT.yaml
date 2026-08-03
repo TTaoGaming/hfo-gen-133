@@ -1,21 +1,21 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
-experiment_id: X11_NATIVE_TASKS_READ_VISIBILITY_V2
-current_version: 67
-accepted_wakes: 3
+experiment_id: X11_WAKE_TIMING_PROVIDER_LAST_RUN_DRIFT_V2
+current_version: 68
+accepted_wakes: 0
 target_wakes_before_decision: 4
-controlled_factor: native_tasks_read_visibility
+controlled_factor: wake_timing
 campaign_status: ACTIVE
 current_disposition: null
 prior_campaign:
-  experiment_id: X11_GOOGLE_DRIVE_METADATA_READ_VISIBILITY_V1
-  final_version: 64
+  experiment_id: X11_NATIVE_TASKS_READ_VISIBILITY_V2
+  final_version: 68
   disposition: KEEP
   accepted_wakes: 4
 last_event:
-  commit: 34c672339effdca504f156aeff331c41b45de078
-  path: state/coordination/experiments/carrier_surface_x11/events/20260803T153831Z_NATIVE_TASKS_READ_VISIBILITY_V2_WAKE_03.yaml
-  blob: 91aac2bbb4408a6620964f5dea00897338ca14b7
+  commit: 841b33f87331db95a1db51cbbdf9b1d35126014b
+  path: state/coordination/experiments/carrier_surface_x11/events/20260803T163924Z_NATIVE_TASKS_READ_VISIBILITY_V2_CAMPAIGN_DECISION_WAKE_04.yaml
+  blob: f389576fe346d46ee9faada4d629d52366a93f4f
 baseline_result:
   provider_call_status: SUCCESS
   expected_task_visible: true
@@ -35,32 +35,30 @@ baseline_result:
   latency_exposed: false
   latency_ms: null
   operator_relay_minutes: 0
-claim_ceiling: bounded_same_provider_native_task_inventory_visibility_only_not_current_run_liveness_success_exactly_once_delivery_future_durability_or_independent_verification
-strongest_falsifier: exact_expected_task_id_is_absent_or_enabled_timing_schedule_fingerprint_or_active_count_drift_without_authorized_change_or_native_inventory_read_returns_authentication_or_permission_error
+claim_ceiling: bounded_provider_exposed_prior_last_run_timestamp_drift_measurement_only_not_current_wake_start_time_scheduler_sla_delivery_guarantee_or_independent_verification
+strongest_falsifier: expected_task_is_absent_prior_last_run_timestamp_is_missing_or_unparseable_or_observed_drift_cannot_be_bound_to_the_immutable_minute_40_schedule
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 next_consumer: [Reginleif, Ratatoskr]
-honest_flaw: the_native_inventory_surface_is_same_provider_broad_and_exposes_unrelated_prompt_bodies_without_field_selection_or_request_latency_so_only_sanitized_expected_task_fields_are_persisted
-next_factor: native_tasks_read_visibility
+honest_flaw: provider_last_run_time_is_a_same_provider_completion_or_registration_timestamp_not_a_direct_current_wake_start_clock_and_connector_request_latency_is_not_exposed
+next_factor: wake_timing
 next_probe:
-  experiment_id: X11_NATIVE_TASKS_READ_VISIBILITY_V2
-  campaign_wake: 4
-  mode: repeat_exact_expected_task_inventory_visibility_probe_and_decide
+  experiment_id: X11_WAKE_TIMING_PROVIDER_LAST_RUN_DRIFT_V2
+  campaign_wake: 1
+  mode: read_only_compare_prior_provider_last_run_timestamp_to_scheduled_epoch
   expected_task_id: 6a55089a9adc8191bda54541f7f9effa
-  mutation_allowed: false
-  unrelated_prompt_body_persistence_allowed: false
-  sensitive_readback_externalization_allowed: false
+  scheduled_minute_utc: 40
   persist_only:
-    - expected_task_visible
-    - enabled_boolean
-    - timing_mode
-    - sanitized_schedule_fingerprint
-    - active_hfo_task_count
+    - prior_last_run_time_utc
+    - scheduled_epoch_utc
+    - absolute_start_drift_seconds
     - permission_class
     - error_class
     - latency_when_exposed
-slack_action: YIELD_SILENT_AFTER_GIT_READBACK
-updated_valid_time_utc: 2026-08-03T15:38:31Z
+  mutation_allowed: false
+  sensitive_readback_externalization_allowed: false
+slack_action: POST_CAMPAIGN_DECISION_AFTER_GIT_READBACK
+updated_valid_time_utc: 2026-08-03T16:39:24Z
 sealed: false
 ---
 
-Native Tasks read visibility V2 advanced to wake 3/4. The exact expected X11 task remained visible and enabled, timing mode remained exact_schedule, the sanitized schedule fingerprint was unchanged, and fifteen active HFO Gen-133 tasks were observed. No capability delta or Andon was detected, so Slack remains silent. This is bounded same-provider inventory telemetry only and does not prove current-run liveness, successful execution, exactly-once delivery, future durability, or independent verification.
+Native Tasks read visibility V2 completed four accepted wakes with a bounded KEEP disposition. The exact expected X11 task remained visible and enabled, timing mode and sanitized schedule fingerprint were unchanged, and fifteen active HFO Gen-133 tasks were observed. The next campaign measures provider-exposed prior-run timing drift against the immutable minute-40 schedule. This remains same-provider telemetry and does not prove current-wake start time, scheduler SLA, delivery, or independent verification.
