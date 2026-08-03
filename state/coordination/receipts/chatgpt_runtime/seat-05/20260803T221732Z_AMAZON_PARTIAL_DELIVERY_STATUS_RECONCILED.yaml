@@ -1,0 +1,59 @@
+schema_version: 1
+receipt_id: S05_AMAZON_PARTIAL_DELIVERY_STATUS_RECONCILED_20260803T221732Z
+created_at_utc: 2026-08-03T22:17:32Z
+seat: S05
+role: operator_relief_cell
+expected_task_id: 6a55c182078c8191b89f2dd15f5f640c
+wip_limit: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+material_change: true
+self_probe:
+  identity_match: true
+  available_surfaces:
+    - gmail_read
+    - calendar_read_write
+    - contacts_read
+    - github_read_write
+    - slack_read_write
+  contact_lookup_performed: false
+  contact_lookup_reason: no changed contact evidence was relevant to the selected obligation
+changed_evidence:
+  gmail:
+    source_pointer: gmail_message:19fc98f767f9414a
+    observed_at_utc: 2026-08-03T21:37:29Z
+    sanitized_fact: Amazon confirmed delivery of two items.
+  calendar:
+    source_pointer: calendar_event:85nrmu21gk7vf3b13nuru1979o
+    prior_obligation: confirm that the Amazon order was intentional or record one precise discrepancy
+  github:
+    changed_operator_obligation_evidence_found: false
+  slack:
+    changed_operator_obligation_evidence_found: false
+active_item: AMAZON_ORDER_INTENT_PARTIAL_DELIVERY_RECONCILIATION
+priority_state:
+  p0: Goodyear vehicle status and final service record remain unverified.
+  p1:
+    - PFA disclosure due 2026-08-05 remains open.
+    - Reed inspection-fee verification remains open.
+bounded_transition:
+  type: reconcile_important_status
+  action: Updated the existing private Calendar obligation with source-confirmed partial-delivery status.
+  readback_confirmed: true
+  claim_ceiling: Delivery of two items is proven; full-order intent and remaining-item delivery are not proven.
+  new_deadline_created: false
+  email_sent: false
+operator_minutes_removed: 3
+next_consumer: Operator or Var at the next Amazon source review.
+privacy:
+  private_bodies_remained_in_source_systems: true
+  git_and_slack_content_sanitized: true
+prohibited_effects:
+  task_mutation: false
+  email_send: false
+  application_submission: false
+  spend_or_payment: false
+  deployment_or_merge: false
+  publication: false
+  account_or_security_change: false
+  destructive_deletion: false
