@@ -1,68 +1,77 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
-experiment_id: X11_WAKE_TIMING_PROVIDER_LAST_RUN_DRIFT_V2
-current_version: 71
-accepted_wakes: 3
+experiment_id: X11_TOOL_RETURN_CONTEXT_WINDOW_V1
+current_version: 72
+accepted_wakes: 0
 target_wakes_before_decision: 4
-controlled_factor: wake_timing
+controlled_factor: prompt_context_size
 campaign_status: ACTIVE
 current_disposition: null
 prior_campaign:
-  experiment_id: X11_NATIVE_TASKS_READ_VISIBILITY_V2
-  final_version: 68
-  disposition: KEEP
+  experiment_id: X11_WAKE_TIMING_PROVIDER_LAST_RUN_DRIFT_V2
+  final_version: 72
+  disposition: REVISE
   accepted_wakes: 4
 last_event:
-  commit: 51a5866d27f2f6ad228aa4873a930d4c21d6d4e2
-  path: state/coordination/experiments/carrier_surface_x11/events/20260803T194149Z_WAKE_TIMING_PROVIDER_LAST_RUN_DRIFT_V2_WAKE_03.yaml
-  blob: 3b89a580f071945d4afb5b5940e55f10bb0cfd19
+  commit: 07ff146196885fc1c1654ac1ddaacdd35233be8f
+  path: state/coordination/experiments/carrier_surface_x11/events/20260803T204001Z_WAKE_TIMING_PROVIDER_LAST_RUN_DRIFT_V2_WAKE_04_DECISION.yaml
+  blob: 3faa6c5e45ff9aeb10f27585b863c2c1a7f56900
 baseline_result:
   provider_call_status: SUCCESS
   expected_task_visible: true
-  prior_last_run_time_utc: 2026-08-03T18:39:50.963543Z
-  scheduled_epoch_utc: 2026-08-03T18:40:00Z
-  absolute_start_drift_seconds: 9.036457
-  drift_direction: BEFORE_SCHEDULED_EPOCH
-  drift_semantics: PROVIDER_LAST_RUN_TIMESTAMP_MINUS_SCHEDULED_EPOCH_NOT_DIRECT_START_LATENCY
-  campaign_drift_samples_seconds:
+  fourth_prior_last_run_time_utc: 2026-08-03T19:43:39.943635Z
+  fourth_scheduled_epoch_utc: 2026-08-03T19:40:00Z
+  fourth_signed_epoch_offset_seconds: 219.943635
+  campaign_signed_epoch_offsets_seconds:
     - 87.260424
     - 285.072650
-    - 9.036457
+    - -9.036457
+    - 219.943635
+  campaign_absolute_mean_seconds: 150.3282915
+  campaign_absolute_median_seconds: 153.6020295
+  campaign_absolute_range_seconds: 276.036193
   authentication_requested: false
   interactive_login_required: false
   sensitive_readback_externalized: false
   mutation_performed: false
-  changed_capability: false
+  changed_capability: true
   andon: false
   permission_class: AUTHENTICATED_NATIVE_TASK_INVENTORY_READ_AVAILABLE
   error_class: NONE
   latency_exposed: false
   latency_ms: null
   operator_relay_minutes: 0
-claim_ceiling: bounded_provider_exposed_prior_last_run_timestamp_drift_measurement_only_not_current_wake_start_time_scheduler_sla_delivery_guarantee_or_independent_verification
-strongest_falsifier: expected_task_is_absent_prior_last_run_timestamp_is_missing_or_unparseable_or_observed_drift_cannot_be_bound_to_the_immutable_minute_40_schedule
+claim_ceiling: fixed_commit_Git_tool_return_line_window_and_connector_response_behavior_only_not_native_model_prompt_tokens_context_window_attention_usage_or_truncation
+strongest_falsifier: the_fixed_commit_file_is_missing_or_mutated_the_connector_ignores_requested_line_bounds_or_native_prompt_and_context_telemetry_becomes_directly_exposed_and_disagrees_with_the_proxy
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 next_consumer: [Reginleif, Ratatoskr]
-honest_flaw: provider_last_run_time_is_a_same_provider_completion_or_registration_timestamp_not_a_direct_current_wake_start_clock_and_connector_request_latency_is_not_exposed
-next_factor: wake_timing
+honest_flaw: requested_Git_file_line_windows_measure_connector_tool_return_behavior_not_the_models_native_prompt_size_context_capacity_token_usage_or_attention_and_connector_latency_may_not_be_exposed
+next_factor: prompt_context_size
 next_probe:
-  experiment_id: X11_WAKE_TIMING_PROVIDER_LAST_RUN_DRIFT_V2
-  campaign_wake: 4
-  mode: repeat_read_only_compare_prior_provider_last_run_timestamp_to_scheduled_epoch_then_issue_campaign_disposition_and_select_next_factor
-  expected_task_id: 6a55089a9adc8191bda54541f7f9effa
-  scheduled_minute_utc: 40
+  experiment_id: X11_TOOL_RETURN_CONTEXT_WINDOW_V1
+  campaign_wake: 1
+  mode: fixed_commit_read_only_line_window_probe
+  source_commit: 07ff146196885fc1c1654ac1ddaacdd35233be8f
+  source_path: state/coordination/experiments/carrier_surface_x11/events/20260803T204001Z_WAKE_TIMING_PROVIDER_LAST_RUN_DRIFT_V2_WAKE_04_DECISION.yaml
+  requested_start_line: 1
+  requested_end_line: 16
   persist_only:
-    - prior_last_run_time_utc
-    - scheduled_epoch_utc
-    - absolute_start_drift_seconds
-    - permission_class
-    - error_class
+    - requested_line_count
+    - returned_line_count
+    - first_and_last_line_numbers_when_exposed
+    - truncation_or_error_class
     - latency_when_exposed
+    - operator_relay_minutes
   mutation_allowed: false
   sensitive_readback_externalization_allowed: false
-slack_action: YIELD_SILENT_UNCHANGED_CAPABILITY
-updated_valid_time_utc: 2026-08-03T19:41:49Z
+slack_action: CAMPAIGN_DECISION_POSTED
+updated_valid_time_utc: 2026-08-03T20:40:01Z
 sealed: false
 ---
 
-Wake timing provider-last-run drift V2 advanced to wake 3/4. The provider-exposed prior last-run timestamp was 9.036457 seconds before its same-hour minute-40 epoch. This remains bounded same-provider telemetry and does not prove current-wake start time, provider dispatch, queue latency, execution duration, scheduler SLA, delivery, or independent verification.
+Wake timing provider-last-run epoch-offset V2 completed at wake 4/4 with
+REVISE. Four provider timestamps were deterministically comparable to the
+minute-40 epoch, but one preceded the epoch and three followed it; the field is
+not a direct wake-start or scheduler-latency clock. The next campaign varies a
+fixed-commit Git tool-return line window and explicitly does not claim native
+model prompt-token or context-window visibility.
