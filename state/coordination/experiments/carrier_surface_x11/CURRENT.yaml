@@ -1,8 +1,8 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_GOOGLE_DRIVE_METADATA_READ_VISIBILITY_V1
-current_version: 62
-accepted_wakes: 2
+current_version: 63
+accepted_wakes: 3
 target_wakes_before_decision: 4
 controlled_factor: google_drive_metadata_read_visibility
 campaign_status: ACTIVE
@@ -13,9 +13,9 @@ prior_campaign:
   disposition: KEEP
   accepted_wakes: 4
 last_event:
-  commit: e0110ba1b5e923a83bf8b44ec6268780af43d273
-  path: state/coordination/experiments/carrier_surface_x11/events/20260803T104007Z_GOOGLE_DRIVE_METADATA_READ_VISIBILITY_WAKE_02.yaml
-  blob: 9d716544652b37fa6333e63a04e58e3376b3f3b1
+  commit: db0085060e834f87fdb725f878e08f2cd5b4bc98
+  path: state/coordination/experiments/carrier_surface_x11/events/20260803T113852Z_GOOGLE_DRIVE_METADATA_READ_VISIBILITY_WAKE_03.yaml
+  blob: f0bd4cd31830bd593363de4eb2cf091c6f989513
 baseline_result:
   drive_metadata_surface_checked: true
   query_executed: true
@@ -31,8 +31,8 @@ baseline_result:
   permission_class: CONNECTED_GOOGLE_DRIVE_METADATA_SEARCH_AVAILABLE
   error_class: NONE
   latency_exposed: true
-  latency_ms: 2518
-  campaign_latency_ms: [3653, 2518]
+  latency_ms: 1323
+  campaign_latency_ms: [3653, 2518, 1323]
   operator_relay_minutes: 0
 claim_ceiling: bounded_google_drive_metadata_query_execution_and_sanitized_match_count_visibility_only_not_drive_completeness_content_access_or_independent_verification
 strongest_falsifier: connector_authentication_or_permission_error_or_fixed_query_failure_while_an_independently_authenticated_drive_api_call_returns_zero
@@ -42,15 +42,15 @@ honest_flaw: zero_for_an_impossible_marker_only_measures_this_bounded_query_path
 next_factor: google_drive_metadata_read_visibility
 next_probe:
   experiment_id: X11_GOOGLE_DRIVE_METADATA_READ_VISIBILITY_V1
-  campaign_wake: 3
-  mode: repeat_identical_bounded_impossible_marker_metadata_search_count_probe
+  campaign_wake: 4
+  mode: repeat_identical_bounded_impossible_marker_metadata_search_count_probe_and_campaign_decision
   query_marker: HFO_X11_IMPOSSIBLE_DRIVE_PROBE_6A55089A9ADC8191BDA54541F7F9EFFA
   topn: 1
   best_effort_fetch: false
   require_viewed_by_user: false
 slack_action: SILENT_UNCHANGED_PROBE_AFTER_GIT_READBACK
-updated_valid_time_utc: 2026-08-03T10:40:07Z
+updated_valid_time_utc: 2026-08-03T11:38:52Z
 sealed: false
 ---
 
-Google Drive metadata-read visibility is active at wake 2/4. The fixed impossible-marker metadata query again returned zero results. Capability was unchanged, so Slack remains silent; the claim stays limited to bounded query execution and sanitized count visibility.
+Google Drive metadata-read visibility is active at wake 3/4. The fixed impossible-marker metadata query again returned zero results. Capability was unchanged, so Slack remains silent; the claim stays limited to bounded query execution and sanitized count visibility.
