@@ -1,0 +1,109 @@
+receipt_version: 1
+receipt_id: S05-20260803T011938Z-CAPABILITY-CENSUS-CI-RECONCILED
+immutable: true
+generation: 133
+seat: S05
+cell: operator-relief
+task_id: 6a55c182078c8191b89f2dd15f5f640c
+branch: agent/gen133-bootstrap-20260730
+observed_at_utc: 2026-08-03T01:19:38Z
+wip: 1
+
+self_probe:
+  task_id_match: true
+  task_enabled: true
+  connectors:
+    gmail: available
+    calendar: available
+    contacts: available
+    github: available
+    slack: available
+
+source_readback:
+  gmail:
+    message_id: "19fc520de95989ad"
+    evidence_class: github_actions_failure_notification
+  github_actions:
+    repository: TTaoGaming/hfo-gen-133
+    run_id: 30775686657
+    job_id: 91570673421
+    source_branch: agent/sigrun-gen133-spec-20260730
+    source_commit: 6bfa3de0510036a18c1b85163d180ca21c25761d
+    run_conclusion: failure
+    registry_gate: pass
+    census_execution:
+      status: executed
+      reported_alive: 24
+      reported_dead: 48
+      reported_leaked: 31
+      independent_validation_of_each_leak: false
+      generated_receipt_path: state/ssot/capability_census/20260803T005747Z.json
+      generated_receipt_present_on_source_branch: false
+    commit_step:
+      local_commit_created: true
+      local_commit_short_sha: 4ffda04
+      push_result: rejected_non_fast_forward
+    workflow_file:
+      path: .github/workflows/capability-census.yml
+      blob_sha: 10a9e629f8d03ab8e607e059a499bf6599e53683
+    census_script:
+      path: tools/capability_census.py
+      blob_sha: de4e9f424be7c118c92198c76af7502abaeebc63
+      contract: exits_nonzero_when_reported_leaks_are_nonzero
+  slack:
+    channels_checked:
+      - C0BGNGPJFHU
+      - C0BGC646A1H
+    existing_reconciliation_found: false
+  calendar:
+    operator_priority_completion_change_found: false
+  contacts:
+    lookup_required: false
+
+transition:
+  type: important_status_reconciliation
+  status: RECONCILED
+  findings:
+    - The census reported 31 leaks, but the Python exit status was masked by the pipe through tee; the workflow recorded the census step as success and skipped the leak Andon step.
+    - The receipt was committed locally, but the plain git push lost a concurrent-writer race and was rejected as non-fast-forward; the generated census receipt is absent from the source branch.
+  excluded_causes:
+    - registry audit gate failure
+    - census process did not execute
+  operator_action_now: none
+  route:
+    next_consumer: S06 Code Work-Packet Compiler
+    repair_boundary:
+      - Preserve the Python process exit status across tee using pipefail, PIPESTATUS, or an equivalent explicit capture.
+      - Make receipt publication concurrency-safe with bounded fetch/rebase/push retry or a dedicated receipt write path; never force-push.
+      - Keep push failure visible; do not suppress it with an unconditional success fallback.
+      - Rerun and verify that reported leaks make the census step fail, the Andon path execute, and the generated receipt become durably readable.
+  done_gate:
+    - A census with reported_leaked greater than zero produces a failed census-step outcome.
+    - The leak Andon path executes for that outcome.
+    - The generated receipt exists on the intended branch and reads back exactly.
+    - The rerun result matches the workflow's intended success and failure semantics.
+
+control_state:
+  active: capability-census CI-control reconciliation
+  p0: Goodyear vehicle handoff and final service record remain unverified
+  p1:
+    - PFA household-sale disclosure due 2026-08-05
+    - Reed AC inspection-fee verification at 2026-08-03T08:30:00-06:00
+  operator_minutes_removed_estimate: 9
+  next_consumer: S06 Code Work-Packet Compiler
+
+honest_flaw:
+  - This cell did not independently reproduce the workflow or validate each of the 31 reported capability leaks.
+  - Classification is limited to the GitHub job logs, current workflow bytes, script bytes, branch readback, Gmail metadata, Calendar status, and Slack delta.
+  - No patch or rerun was performed.
+
+forbidden_effects_observed:
+  email_sent: false
+  task_mutation: false
+  application_submission: false
+  payment_or_spend: false
+  deployment_or_merge: false
+  publication: false
+  account_or_security_change: false
+  destructive_deletion: false
+  sensitive_body_externalized: false
