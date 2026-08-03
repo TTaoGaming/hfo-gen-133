@@ -1,14 +1,14 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
 experiment_id: X13_GOOGLE_DRIVE_BOUNDED_FILE_METADATA_SEARCH_READONLY_001
-version: 61
-prior_version: 60
+version: 62
+prior_version: 61
 candidate: Google_Drive_bounded_file_metadata_search_readonly_surface
-candidate_contract_reference: official_Google_Drive_files_list_search_scope_and_quota_contracts_plus_direct_connector_receipt
-campaign_wake: 1_of_4
+candidate_contract_reference: official_Google_Drive_files_list_search_filter_scope_and_quota_contracts_plus_direct_connector_receipts
+campaign_wake: 2_of_4
 campaign_status: OPEN
 phase_1_completed: true
-phase_2_completed: false
+phase_2_completed: true
 phase_3_completed: false
 phase_4_completed: false
 phase_4_decision: PENDING
@@ -16,20 +16,20 @@ carrier_task_id: 6a55c1733708819185088bf334e33ea5
 carrier_task_id_match: true
 wip: 1
 last_event:
-  commit: 9e8a968f2b5bf4810088dcd49fa044105c1d0827
-  path: state/coordination/experiments/cots_connector_x13/20260803T094914Z_GOOGLE_DRIVE_BOUNDED_FILE_METADATA_PHASE1_BASELINE.md
-  blob_sha: 40b6a83b962962cd975b90416809c0e85c52cf41
+  commit: 33f8ce7ef34f8d799a2a0a43e1e177510185ddf5
+  path: state/coordination/experiments/cots_connector_x13/20260803T104856Z_GOOGLE_DRIVE_BOUNDED_FILE_METADATA_PHASE2_TRASH_FILTER_MICROUSE.md
+  blob_sha: 0c776fade8b5548c0c30a8def682ba8febe812ff
   exact_readback_completed: true
-prior_current_commit: 7670239d0d55623a0b191745de8dadb79e72c42b
-prior_current_blob_sha: 5a4d68407dd51e8f001356f27fd6f1bb04fde35e
-effect_ceiling: PHASE1_OFFICIAL_CONTRACT_ONE_BOUNDED_METADATA_ONLY_SEARCH_EVENT_CURRENT_ADVANCE_READBACK_AND_ONE_SHORT_SLACK_FACT_ANDON
+prior_current_commit: 26e79a1dc1edea571b1d68224f7b5ce6c6242c7a
+prior_current_blob_sha: e97eb23354a259412eb90dc4cf30bdf3988c54b4
+effect_ceiling: PHASE2_ONE_BOUNDED_METADATA_ONLY_TRASH_FILTER_SEARCH_EVENT_CURRENT_ADVANCE_READBACK_AND_ONE_SHORT_SLACK_FACT_ANDON
 adoption_credit: 0
 fitness_credit: 0_PENDING_SOURCE_BOUND_CONSUMER_ACK_AND_MEASURED_OPERATOR_OUTCOME
 consumer_ack: NOT_OBSERVED
 operator_minutes_removed_measured: 0
 operator_minutes_removed_estimate_per_consumed_file_presence_check: 1_to_3_UNVALIDATED
 custom_code_avoided_estimate:
-  authenticated_bounded_metadata_discovery: 30_to_100_LOC_UNVALIDATED
+  authenticated_bounded_metadata_discovery_with_caller_filter: 35_to_110_LOC_UNVALIDATED
 credentials:
   connector_reached_drive_success_path: true
   operator_supplied_credentials_campaign: 0
@@ -42,20 +42,36 @@ credentials:
 paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
 campaign_candidate_invocations:
   phase_1_metadata_searches: 1
-  phase_1_returned_metadata_record_count: 1
-  phase_1_content_hydration_enabled: false
-  phase_1_file_body_returned: false
-  phase_1_next_page_token_exposed: UNKNOWN_NOT_EXPOSED_IN_RETURNED_RESPONSE_RESOURCE
-  phase_1_incomplete_search_exposed: false
+  phase_2_metadata_searches: 1
+  total_metadata_searches: 2
+  total_returned_metadata_record_count: 2
+  content_hydration_enabled_count: 0
+  file_body_returned_count: 0
+  carrier_retry_count: 0
 actual_upstream_request_count: UNKNOWN
 actual_quota_units_consumed: UNKNOWN
 actual_quota_class: UNKNOWN_LEGACY_PROJECT_EXCEPTION_POSSIBLE
-retry_count: 0_AT_CARRIER_LEVEL_UPSTREAM_UNKNOWN
 billing_counters: NOT_EXPOSED
 live_request_id_retry_after_rate_limit_or_quota_headers: NOT_EXPOSED
 direct_phase_1_receipt:
   action: Google_Drive.search
   query_class: PROJECT_SPECIFIC_NON_SECRET_TOKEN
+  requested_item_type: document
+  requested_topn: 1
+  best_effort_fetch: false
+  require_viewed_by_user: false
+  page_token_input: null
+  returned_metadata_record_count: 1
+  file_body_or_hydrated_text_returned: false
+  exact_private_values_persisted: false
+  next_page_token_presence: UNKNOWN_NOT_EXPOSED_IN_RETURNED_RESPONSE_RESOURCE
+  incomplete_search_presence: NOT_EXPOSED
+  connector_error: null
+  mutation_effect: false
+direct_phase_2_receipt:
+  action: Google_Drive.search
+  query_class: PROJECT_SPECIFIC_NON_SECRET_TOKEN
+  special_filter_query_str_class: EXPLICIT_TRASHED_FALSE
   requested_item_type: document
   requested_topn: 1
   best_effort_fetch: false
@@ -68,13 +84,16 @@ direct_phase_1_receipt:
     - display_title
     - display_url
     - parent_identifiers
+  returned_provider_resource_class_from_url_pattern: GOOGLE_SHEETS_SPREADSHEET
   file_body_or_hydrated_text_returned: false
-  exact_private_names_urls_file_ids_parent_ids_persisted: false
+  exact_private_values_persisted: false
+  returned_trashed_field: NOT_EXPOSED
+  returned_mime_type: NOT_EXPOSED
   next_page_token_presence: UNKNOWN_NOT_EXPOSED_IN_RETURNED_RESPONSE_RESOURCE
   incomplete_search_presence: NOT_EXPOSED
+  raw_upstream_request_and_filter_forwarding: NOT_EXPOSED
   connector_error: null
   raw_http_status_and_provider_body: NOT_EXPOSED
-  external_call_time_ms: NOT_EXPOSED
   carrier_retries: 0
   mutation_effect: false
 direct_capability_inventory:
@@ -85,89 +104,103 @@ direct_capability_inventory:
   explicit_one_page_cap_present: true_AS_TOPN_WRAPPER_PARAMETER
   explicit_fields_allowlist_control_present: false
   explicit_corpus_drive_id_and_all_drives_controls_present: false
-  explicit_incomplete_search_output_present: false_IN_OBSERVED_RESPONSE
+  explicit_incomplete_search_output_present: false_IN_OBSERVED_RESPONSES
   body_bearing_fetch_actions_present_but_excluded: true
 measured_facts:
-  one_positive_wrapper_visible_metadata_result_observed: true
+  positive_wrapper_visible_metadata_results_observed: 2
+  explicit_trashed_false_filter_input_accepted: true
+  trash_filter_forwarding_or_enforcement_independently_verified: false
   no_file_body_or_hydrated_text_returned: true
   private_identifying_metadata_fields_returned_by_default: true
   exact_private_metadata_minimized_from_durable_logs: true
+  item_type_document_returned_google_sheets_resource: true
+  exact_provider_mime_type_exposed: false
   page_token_or_incomplete_search_status_visible: false
   raw_query_translation_field_mask_corpus_and_effective_scope: UNKNOWN
 privacy_andon:
   triggered: true
-  measured_fact: METADATA_ONLY_RESULT_RETURNED_PRIVATE_NAME_URL_AND_PARENT_IDENTIFIER_FIELD_CLASSES_BY_DEFAULT
+  measured_fact: METADATA_ONLY_RESULTS_RETURNED_PRIVATE_NAME_URL_AND_PARENT_IDENTIFIER_FIELD_CLASSES_BY_DEFAULT
   implication: COUNT_ONLY_OR_EXISTENCE_ONLY_CONSUMERS_MUST_MINIMIZE_IN_MEMORY_BEFORE_GIT_SLACK_OR_DOWNSTREAM_FANOUT
 completeness_andon:
   triggered: true
-  measured_fact: OBSERVED_RESPONSE_RESOURCE_DID_NOT_EXPOSE_NEXT_PAGE_TOKEN_OR_INCOMPLETE_SEARCH
-  admitted_interpretation: ONE_POSITIVE_WRAPPER_VISIBLE_METADATA_MATCH_AT_OBSERVATION_TIME
+  measured_fact: OBSERVED_RESPONSE_RESOURCES_DID_NOT_EXPOSE_NEXT_PAGE_TOKEN_OR_INCOMPLETE_SEARCH
+  admitted_interpretation: POSITIVE_WRAPPER_VISIBLE_METADATA_MATCHES_AT_OBSERVATION_TIME
   forbidden_interpretation: COMPLETE_DRIVE_CORPUS_SINGLE_PAGE_FINALITY_OR_RAW_API_UI_PARITY
+filter_forwarding_andon:
+  triggered: true
+  measured_fact: WRAPPER_ACCEPTED_TRASHED_FALSE_AND_RETURNED_ONE_RESULT_BUT_DID_NOT_EXPOSE_TRASHED_FIELD_OR_RAW_UPSTREAM_REQUEST
+  admitted_interpretation: POSITIVE_RESULT_UNDER_SUPPLIED_FILTER_INPUT
+  forbidden_interpretation: INDEPENDENT_PROOF_OF_PROVIDER_FILTER_FORWARDING_OR_TRASH_EXCLUSION
+wrapper_taxonomy_andon:
+  triggered: true
+  measured_fact: ITEM_TYPE_DOCUMENT_RETURNED_A_GOOGLE_SHEETS_RESOURCE
+  implication: DOCUMENT_IS_A_BROAD_WRAPPER_CLASS_NOT_AN_EXACT_GOOGLE_DOCS_MIME_GUARANTEE
 official_contract_checked_2026_08_03:
   files_list: https://developers.google.com/workspace/drive/api/reference/rest/v3/files/list
   search_guide: https://developers.google.com/workspace/drive/api/guides/search-files
+  query_terms: https://developers.google.com/workspace/drive/api/guides/ref-search-terms
   scopes: https://developers.google.com/workspace/drive/api/guides/api-specific-auth
   quota: https://developers.google.com/workspace/drive/api/guides/limits
-  files_list_page_size_maximum: 1000
-  files_list_page_token_contract: USE_NEXT_PAGE_TOKEN_FROM_PREVIOUS_RESPONSE
-  files_list_next_page_token_rejection_contract: DISCARD_TOKEN_AND_RESTART_FROM_FIRST_PAGE
-  files_list_next_page_token_typical_validity: SEVERAL_HOURS
-  files_list_incomplete_search_semantics: TRUE_MEANS_SOME_RESULTS_MAY_BE_MISSING
+  files_list_accepts_q_filter: true
   files_list_default_includes_trashed_items: true
-  files_list_default_fields_per_search_guide:
-    - kind
-    - id
-    - name
-    - mimeType
-    - resourceKey
+  trashed_false_contract: REMOVES_TRASHED_FILES_FROM_RESULTS
+  files_list_page_token_contract: USE_NEXT_PAGE_TOKEN_FROM_PREVIOUS_RESPONSE
+  files_list_incomplete_search_semantics: TRUE_MEANS_SOME_RESULTS_MAY_BE_MISSING
   metadata_readonly_scope_exists: true_RESTRICTED_SCOPE
   post_2026_05_01_per_minute_per_project_if_applicable: 1000000_QUOTA_UNITS
   post_2026_05_01_per_minute_per_user_per_project_if_applicable: 325000_QUOTA_UNITS
   post_2026_05_01_daily_billing_threshold_if_applicable: 400000000_QUOTA_UNITS
   files_list_quota_units_per_request_if_applicable: 100
 failure_semantics:
-  positive_metadata_search: OBSERVED_PHASE1
+  positive_metadata_search: OBSERVED_PHASE1_AND_PHASE2
+  explicit_filter_input_accepted: OBSERVED_PHASE2
   valid_empty_result: NOT_TESTED
   valid_source_bound_page_traversal: NOT_TESTED
   malformed_or_mismatched_page_token: NOT_TESTED
+  malformed_query: NOT_TESTED
   authentication_or_permission_denial: NOT_TESTED
   quota_or_rate_limit: NOT_TESTED
   transient_server_failure: NOT_TESTED
   independent_raw_or_UI_readback: NOT_TESTED
 durability: EPHEMERAL_POINT_IN_TIME_METADATA_LOOKUP_NOT_A_SNAPSHOT_EVENT_STREAM_CHECKPOINT_OR_DURABLE_INDEX
-observability: RESULT_COUNT_AND_RETURNED_FIELD_CLASSES_VISIBLE_RAW_REQUEST_QUERY_TRANSLATION_FIELD_MASK_CURSOR_INCOMPLETE_SEARCH_LATENCY_HTTP_STATUS_PROVIDER_BODY_REQUEST_ID_EFFECTIVE_SCOPE_CORPUS_QUOTA_HEADERS_AND_UPSTREAM_RETRIES_HIDDEN
-portability: MEDIUM_FOR_GENERIC_FILE_DISCOVERY_LOW_TO_MEDIUM_FOR_DRIVE_QUERY_TOKEN_CORPUS_SHARED_DRIVE_AND_PERMISSION_SEMANTICS
+observability: RESULT_COUNT_RETURNED_FIELD_CLASSES_PROVIDER_URL_CLASS_AND_NORMALIZED_SUCCESS_VISIBLE_RAW_REQUEST_FILTER_FORWARDING_QUERY_TRANSLATION_FIELD_MASK_MIME_TRASHED_CURSOR_INCOMPLETE_SEARCH_LATENCY_HTTP_STATUS_PROVIDER_BODY_REQUEST_ID_EFFECTIVE_SCOPE_CORPUS_QUOTA_HEADERS_AND_UPSTREAM_RETRIES_HIDDEN
+portability: MEDIUM_FOR_GENERIC_FILE_DISCOVERY_LOW_TO_MEDIUM_FOR_DRIVE_QUERY_MIME_TOKEN_CORPUS_SHARED_DRIVE_AND_PERMISSION_SEMANTICS
 admitted_scope:
   - ONE_PAGE_BOUNDED_METADATA_ONLY_DISCOVERY_WITH_EXPLICIT_ITEM_TYPE
+  - CALLER_SUPPLIED_TRASHED_FALSE_FILTER_INPUT
   - CONTENT_HYDRATION_DISABLED
-  - RESULT_COUNT_FIELD_CLASSES_QUERY_CLASS_AND_OBSERVATION_TIME_ONLY_FOR_DURABLE_LOGGING
+  - RESULT_COUNT_FIELD_CLASSES_PROVIDER_URL_CLASS_QUERY_CLASS_AND_OBSERVATION_TIME_ONLY_FOR_DURABLE_LOGGING
 excluded_scope:
   - FILE_CONTENT_FETCH_DOWNLOAD_EXPORT_OR_HYDRATION
   - CREATE_UPLOAD_EDIT_MOVE_RENAME_SHARE_PERMISSION_CHANGE_DELETE_OR_PUBLICATION
-  - COMPLETENESS_CORPUS_SHARED_DRIVE_TRASH_EXCLUSION_OWNERSHIP_PERMISSION_ROLE_OR_LEAST_PRIVILEGE_CLAIMS
+  - FILTER_FORWARDING_COMPLETENESS_CORPUS_SHARED_DRIVE_TRASH_EXCLUSION_EXACT_MIME_OWNERSHIP_PERMISSION_ROLE_OR_LEAST_PRIVILEGE_CLAIMS
 mandatory_gates:
   - USE_EXPLICIT_METADATA_ONLY_ITEM_TYPE_AND_KEEP_BEST_EFFORT_FETCH_FALSE
-  - KEEP_PAGE_CAP_SMALL_AND_RECORD_EXACT_NON_SECRET_QUERY_CLASS_AND_OBSERVATION_TIME
+  - KEEP_TRASHED_FALSE_FOR_NON_TRASH_DISCOVERY_BUT TREAT_ENFORCEMENT_AS_UNVERIFIED_UNTIL_RAW_API_OR_UI_PARITY
+  - TREAT_ITEM_TYPE_DOCUMENT_AS_A_BROAD_DOCUMENT_FAMILY_SELECTOR_NOT_AN_EXACT_GOOGLE_DOCS_MIME_GUARANTEE
+  - ADD_EXPLICIT_MIME_TYPE_Q_FILTER_WHEN_THE_CONSUMER_REQUIRES_AN_EXACT_PROVIDER_CLASS
+  - KEEP_PAGE_CAP_SMALL_AND_RECORD_NON_SECRET_QUERY_CLASS_AND_OBSERVATION_TIME
   - MINIMIZE_NAMES_URLS_FILE_IDS_AND_PARENT_IDS_BEFORE_GIT_SLACK_OR_DOWNSTREAM_FANOUT_UNLESS_EXPLICITLY_REQUIRED
-  - DO_NOT_INFER_COMPLETENESS_CORPUS_SHARED_DRIVE_COVERAGE_TRASH_EXCLUSION_OWNERSHIP_PERMISSION_ROLE_OR_SCOPE_FROM_ONE_POSITIVE_RESULT
-  - TREAT_ABSENCE_OF_VISIBLE_CURSOR_OR_INCOMPLETE_SEARCH_FIELD_AS_UNKNOWN_NOT_FALSE
+  - TREAT_ABSENCE_OF_VISIBLE_CURSOR_INCOMPLETE_SEARCH_MIME_OR_TRASHED_FIELD_AS_UNKNOWN_NOT_FALSE
   - REQUIRE_SOURCE_BOUND_CONSUMER_ACK_AND_MEASURED_OPERATOR_OUTCOME_BEFORE_FITNESS_CREDIT
-verifier: RAW_DRIVE_FILES_LIST_WITH_EQUIVALENT_QUERY_EXPLICIT_MINIMAL_FIELDS_AND_ONE_SOURCE_BOUND_PAGE_TRAVERSAL_PLUS_DRIVE_UI_COMPARISON
+verifier: RAW_DRIVE_FILES_LIST_WITH_EQUIVALENT_KEYWORD_TRASHED_FALSE_EXPLICIT_MINIMAL_FIELDS_INCLUDING_ID_NAME_MIMETYPE_AND_TRASHED_PLUS_DRIVE_UI_COMPARISON
 consumer:
   - HFO_DRIVE_HERITAGE_LOCATOR
   - HFO_EXECUTIVE_ASSISTANT_BOUNDED_FILE_DISCOVERY
   - HFO_SSOT_EVIDENCE_FINDER
-strongest_falsifier: AN_EQUIVALENT_RAW_API_OR_DRIVE_UI_QUERY_CONTRADICTS_THE_CONNECTOR_RESULT_OR_CONNECTOR_INSPECTION_SHOWS_CONTENT_HYDRATION_PRIVATE_METADATA_PERSISTENCE_HIDDEN_QUERY_REWRITE_OMITTED_ACCESSIBLE_DRIVES_OR_UNREPORTED_INCOMPLETE_SEARCH
-honest_flaw: ONE_KEYWORD_QUERY_RETURNED_ONE_METADATA_RECORD_EXACT_QUERY_TRANSLATION_FIELD_MASK_PAGINATION_INCOMPLETE_SEARCH_CORPUS_SHARED_DRIVE_TRASH_HANDLING_EFFECTIVE_SCOPE_PERMISSION_RATE_LIMIT_RAW_API_UI_PARITY_CONSUMER_ACK_AND_OPERATOR_TIME_REDUCTION_REMAIN_UNPROVEN
+strongest_falsifier: RAW_API_OR_DRIVE_UI_SHOWS_THE_RETURNED_ITEM_IS_TRASHED_THE_CONNECTOR_DROPPED_OR_REWROTE_TRASHED_FALSE_OR_AN_EXACT_MIME_QUERY_CONTRADICTS_THE_WRAPPER_DOCUMENT_CLASSIFICATION
+honest_flaw: ONE_POSITIVE_FILTERED_RESULT_CANNOT_VALIDATE_FILTER_FORWARDING_TRASH_EXCLUSION_EXACT_MIME_SEMANTICS_COMPLETENESS_CORPUS_SHARED_DRIVE_REACH_PERMISSIONS_QUOTA_BEHAVIOR_CONSUMER_ACK_OR_OPERATOR_TIME_REDUCTION
 phase_1_result:
   disposition: PHASE1_ACCEPTED_WITH_PRIVACY_SCOPE_AND_OBSERVABILITY_GATES
+phase_2_result:
+  disposition: PHASE2_ACCEPTED_WITH_FILTER_FORWARDING_AND_WRAPPER_TAXONOMY_GATES
 next_phase:
-  phase: 2_of_4
-  proposed_action: ONE_METADATA_ONLY_SEARCH_WITH_EXPLICIT_Q_FILTER_EXCLUDING_TRASHED_ITEMS_AND_ONE_RESULT_CAP
-  durable_log_minimization: RESULT_COUNT_RETURNED_FIELD_CLASSES_AND_CURSOR_OR_INCOMPLETE_SEARCH_EVIDENCE_ONLY
+  phase: 3_of_4
+  proposed_action: ONE_READONLY_CONNECTOR_VARIANCE_PROBE_WITH_SYNTACTICALLY_VALID_IMPOSSIBLE_MIME_TYPE_PLUS_TRASHED_FALSE_ONE_RESULT_CAP_NO_PAGE_TOKEN_AND_NO_RETRY
+  durable_log_minimization: RESULT_COUNT_ERROR_CLASS_AND_CURSOR_OR_INCOMPLETE_SEARCH_EVIDENCE_ONLY
   excluded_effects: CONTENT_FETCH_UPLOAD_EDIT_MOVE_RENAME_SHARE_PERMISSION_CHANGE_DELETE_EXPORT_PUBLICATION_OR_SECRET_EXPOSURE
-review_expiry_utc: 2026-08-10T09:49:14Z
-valid_time_utc: 2026-08-03T09:49:14Z
+review_expiry_utc: 2026-08-10T10:48:56Z
+valid_time_utc: 2026-08-03T10:48:56Z
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 sealed: true
 prior_campaign:
@@ -182,10 +215,12 @@ prior_prior_campaign:
 
 # X13 current campaign
 
-Google Drive bounded file-metadata search campaign **1/4** is open.
+Google Drive bounded file-metadata search campaign **2/4** is open.
 
-Phase 1 accepted one positive metadata-only connector result with content hydration disabled. The connector returned private-identifying metadata field classes by default but exposed neither a page cursor nor Drive's `incompleteSearch` signal in the returned response resource. Exact private values were not persisted.
+Phase 2 accepted one positive metadata-only result under an explicit `trashed=false` filter with content hydration disabled. The response did not expose the returned file's trash state or the raw upstream request, so filter forwarding and trash exclusion remain unverified.
 
-No completeness, corpus, shared-drive, trash-exclusion, permission, ownership, OAuth-scope, cost, or operator-time claim is admitted. Fitness credit remains zero.
+A measured connector-variance fact was also observed: wrapper `item_type=document` returned a Google Sheets resource. Consumers needing an exact provider type must add an explicit MIME-type filter and verify the returned type.
 
-Next: one metadata-only micro-use with an explicit Drive `q` filter excluding trashed items and a one-result cap.
+No completeness, corpus, shared-drive, trash-exclusion, exact-MIME, permission, ownership, OAuth-scope, cost, or operator-time claim is admitted. Fitness credit remains zero.
+
+Next: one read-only phase-3 variance/failure probe using a syntactically valid impossible MIME type plus `trashed=false`, one-result cap, no page token and no retry.
