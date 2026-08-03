@@ -1,0 +1,128 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+experiment_id: X11_NATIVE_TASKS_READ_VISIBILITY_V2
+carrier: X11
+actor: X11_CARRIER_AND_TOOL_SURFACE_PDCA_LAB
+task_binding:
+  expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+  expected_task_visible: true
+  match: true
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+wip_limit: 1
+prior_current:
+  expected_version: 67
+  blob: ab852d57307760480041b85cb42da520b159a85f
+  campaign: X11_NATIVE_TASKS_READ_VISIBILITY_V2
+  accepted_wakes: 3
+campaign:
+  controlled_factor: native_tasks_read_visibility
+  accepted_wake: 4
+  target_wakes_before_decision: 4
+baseline:
+  prior_accepted_wake: 3
+  expected_active_hfo_task_count: 15
+  expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+  expected_enabled: true
+  expected_timing_mode: exact_schedule
+  expected_sanitized_schedule_fingerprint_sha256: 84ba8dd14067c90d112e5e7d6deac6dc0197bc6b28584d15e4a350ece061b871
+hypothesis: >-
+  A fourth identical read-only native Tasks inventory probe will expose the exact
+  expected X11 task with unchanged enabled state, timing mode, sanitized schedule
+  fingerprint, and fifteen-task active HFO Gen-133 count without login, mutation,
+  sensitive externalization, or operator relay, supporting a bounded KEEP decision.
+exact_probe:
+  tool: automations.list
+  mode: read_only
+  query_scope: provider_task_inventory
+  expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+  persisted_fields_only:
+    - expected_task_visible
+    - enabled_boolean
+    - timing_mode
+    - sanitized_schedule_fingerprint
+    - active_hfo_task_count
+    - permission_class
+    - error_class
+    - latency_when_exposed
+  privacy_rule: do_not_persist_unrelated_task_prompt_bodies_or_identifiers
+measured_result:
+  provider_call_status: SUCCESS
+  expected_task_visible: true
+  enabled_boolean: true
+  timing_mode: exact_schedule
+  sanitized_schedule_fingerprint_sha256: 84ba8dd14067c90d112e5e7d6deac6dc0197bc6b28584d15e4a350ece061b871
+  active_hfo_task_count: 15
+  authentication_requested: false
+  interactive_login_required: false
+  unrelated_prompt_body_persisted: false
+  sensitive_readback_externalized: false
+  mutation_performed: false
+  changed_capability: false
+  andon: false
+permission_class: AUTHENTICATED_NATIVE_TASK_INVENTORY_READ_AVAILABLE
+error_class: NONE
+latency:
+  exposed_by_tool: false
+  measured_ms: null
+operator_relay_minutes: 0
+capability_delta: NONE_UNCHANGED_REPEAT
+strongest_falsifier: >-
+  The exact expected task ID is absent, enabled or timing fields drift without an
+  authorized change, the sanitized schedule fingerprint changes unexpectedly,
+  the active HFO count differs from fifteen without an authorized inventory
+  transition, or the native inventory read returns an authentication or permission error.
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer:
+  - Reginleif
+  - Ratatoskr
+claim_ceiling: >-
+  Bounded same-provider native task inventory visibility only; not current-run
+  liveness, successful completion, exactly-once delivery, future durability, or
+  independent verification.
+honest_flaw: >-
+  The provider inventory response is broad and includes unrelated prompt bodies;
+  the connector exposes no field-selective query or request latency. The fifteen-task
+  count is a sanitized local classification and same-provider evidence has binding weight zero.
+campaign_decision:
+  disposition: KEEP
+  rationale: >-
+    Four accepted identical probes returned the expected task, enabled state,
+    exact_schedule timing mode, unchanged sanitized schedule fingerprint, and
+    fifteen active HFO Gen-133 tasks with no permission, authentication, mutation,
+    or operator-relay failure.
+  retained_use: bounded_expected_task_inventory_reconciliation
+  excluded_use:
+    - current_run_liveness_claim
+    - successful_execution_claim
+    - exactly_once_delivery_claim
+    - future_durability_claim
+    - independent_verification_claim
+result: KEEP_NATIVE_TASKS_READ_VISIBILITY_V2_AFTER_FOUR_ACCEPTED_WAKES
+next_factor:
+  controlled_factor: wake_timing
+  experiment_id: X11_WAKE_TIMING_PROVIDER_LAST_RUN_DRIFT_V2
+  selected_reason: >-
+    Wake timing remains under-sampled and can be measured harmlessly from the
+    provider-exposed prior last-run timestamp against the immutable hourly minute-40 schedule.
+  next_probe:
+    campaign_wake: 1
+    mode: read_only_compare_prior_provider_last_run_timestamp_to_scheduled_epoch
+    expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+    scheduled_minute_utc: 40
+    persist_only:
+      - prior_last_run_time_utc
+      - scheduled_epoch_utc
+      - absolute_start_drift_seconds
+      - permission_class
+      - error_class
+      - latency_when_exposed
+    mutation_allowed: false
+slack_action: POST_CAMPAIGN_DECISION_AFTER_GIT_READBACK
+valid_time_utc: 2026-08-03T16:39:24Z
+transaction_time_utc: 2026-08-03T16:39:24Z
+evidence_class: DIRECT_PROVIDER_READBACK_SAME_PROVIDER_NONBINDING
+binding_weight: 0
+effect_ceiling: READ_ONLY_PROVIDER_METADATA_PLUS_GIT_RECEIPT
+sealed: false
+---
