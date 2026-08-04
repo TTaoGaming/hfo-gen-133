@@ -1,29 +1,29 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
 experiment_id: X13_GOOGLE_DRIVE_SEARCH_METADATA_READONLY_001
-version: 91
-prior_version: 90
+version: 92
+prior_version: 91
 candidate: Google_Drive_search_metadata_only_surface
-campaign_wake: 3_of_4
-campaign_status: ACTIVE
+campaign_wake: 4_of_4
+campaign_status: CLOSED
 phase_1_completed: true
 phase_1_status: PHASE1_ACCEPTED_WITH_GATES
 phase_2_completed: true
 phase_2_status: PHASE2_ACCEPTED_WITH_GATES
 phase_3_completed: true
 phase_3_status: PHASE3_ACCEPTED_WITH_GATES
-phase_4_completed: false
-phase_4_decision: PENDING
-adoption_mode: NOT_DECIDED
+phase_4_completed: true
+phase_4_decision: ADOPT_WITH_GATES
+adoption_mode: CATALOG_MANUAL_ONLY_NONOPERATIONAL
 carrier_task_id: 6a55c1733708819185088bf334e33ea5
 carrier_task_id_match: true
 wip: 1
-last_event_commit: 81cf285fdd99c5b4a9c4c8e943af72da28f7b198
-last_event_path: state/coordination/experiments/cots_connector_x13/20260804T154907Z_GOOGLE_DRIVE_SEARCH_METADATA_PHASE3_INVALID_PAGE_TOKEN.md
-last_event_blob_sha: 5e2be443b203f6947d3df2e513277253b62d6d26
+last_event_commit: 131c70c9cac81b7965512abf4a4a12af72fb42b5
+last_event_path: state/coordination/experiments/cots_connector_x13/20260804T165010Z_GOOGLE_DRIVE_SEARCH_METADATA_PHASE4_DECISION.md
+last_event_blob_sha: a59adc23112eeda9e4acd585bd440347d90365f1
 last_event_readback: true
-prior_current_commit: b7dec3109cd2f1fb6f672d3da8ea4f3327e3c537
-prior_current_blob_sha: 9cf57ef3350053fa9921ea35ab78ab07f8c74b42
+prior_current_commit: f66e96d677a8718007257369ce4ea797948cda1d
+prior_current_blob_sha: 3686d2e65a2af1c4f35f9a8ddce1da97eace7558
 adoption_credit: 0
 fitness_credit: 0
 consumer_ack: NOT_OBSERVED
@@ -34,21 +34,27 @@ actual_quota_consumed: UNKNOWN
 official_quota_contract: FILES_LIST_100_UNITS_PER_REQUEST_AS_OF_2026_08_04
 campaign_calls: 3_READONLY_2_SUCCESS_1_INVALID_ARGUMENT_0_RETRY_0_FALLBACK_0_MUTATION
 result_shape: PHASE1_ONE_METADATA_RESULT_PHASE2_EMPTY_ARRAY_PHASE3_PROVIDER_400_INVALID_PAGETOKEN
-connector_variance: DOCUMENT_CATEGORY_NOT_MIME_EMPTY_RESULT_NONAUTHORITATIVE_AND_ERROR_ECHOES_REQUEST_URL_QUERY_TOKEN
-observability: PARTIAL_PROVIDER_METHOD_400_REASON_LOCATION_AND_URL_NO_HEADERS_REQUEST_ID_QUOTA_OR_HIDDEN_ATTEMPTS
-portability: LOW_TO_MEDIUM
+connector_variance: DOCUMENT_CATEGORY_NOT_MIME_EMPTY_RESULT_NONAUTHORITATIVE_ERROR_ECHOES_REQUEST_URL_QUERY_TOKEN
 credentials: CONNECTOR_MANAGED_IDENTITY_AND_EFFECTIVE_SCOPE_UNKNOWN
-failure_behavior: INVALID_PAGE_TOKEN_FAILS_CLOSED_WITH_TYPED_INVALID_ARGUMENT_AND_PROVIDER_DETAILS
-mandatory_gate: USE_ONLY_PROVIDER_RETURNED_COMPATIBLE_CURSOR_DISCARD_REJECTED_TOKEN_AND_NEVER_TREAT_ERROR_ZERO_AS_ABSENCE
-strongest_falsifier: CONNECTOR_ACCEPTS_OR_SILENTLY_RESTARTS_FROM_A_SYNTHETIC_INVALID_TOKEN
-verifier: SAME_PRINCIPAL_RAW_DRIVE_FILES_LIST_OR_FUTURE_PROVIDER_ISSUED_CURSOR_PROBE
-honest_flaw: ONE_SYNTHETIC_INVALID_TOKEN_DOES_NOT_TEST_EXPIRED_MISMATCHED_PERMISSION_RATE_LIMIT_OR_SHARED_DRIVE_FAILURES
-next_phase: PHASE4_DECISION_NO_ADDITIONAL_CANDIDATE_CALL
-provisional_decision: ADOPT_WITH_GATES_CATALOG_MANUAL_ONLY_NONOPERATIONAL
-valid_time_utc: 2026-08-04T15:49:07Z
-recorded_time_utc: 2026-08-04T15:49:07Z
+durability: CANONICAL_GIT_EVENTS_AND_VERSIONED_CURRENT_PERSIST_DOWNSTREAM_VERIFIER_ROUTE_POINTER_DEFECT_ACKNOWLEDGED
+observability: PARTIAL_PROVIDER_METHOD_AND_ONE_TYPED_ERROR_NO_SUCCESS_HEADERS_REQUEST_ID_INCOMPLETESEARCH_QUOTA_OR_HIDDEN_ATTEMPTS
+portability: LOW_TO_MEDIUM
+failure_behavior: INVALID_PAGE_TOKEN_FAILED_CLOSED_OTHER_FAILURE_CLASSES_UNTESTED
+mandatory_gate: BOUNDED_HUMAN_REVIEWED_METADATA_DISCOVERY_ONLY_ZERO_RESULTS_NONAUTHORITATIVE_EXACT_COMMIT_PATH_BLOB_RECEIPTS_REQUIRED
+strongest_falsifier: SAME_PRINCIPAL_RAW_DRIVE_FILES_LIST_RETURNS_DIFFERENT_RESULTS_NEXT_PAGE_OR_INCOMPLETESEARCH_FOR_SAME_BOUNDARY
+verifier: S04_REVISE_NONBINDING_WEIGHT_0_SOURCE_POINTER_DEFECT
+independent_verification_closed: false
+honest_flaw: IDENTITY_SCOPE_COMPLETENESS_ORDERING_SHARED_DRIVES_REAL_CURSOR_SUCCESS_RATE_LIMITS_HIDDEN_CALLS_QUOTA_AND_CONSUMER_VALUE_UNVERIFIED
+next_campaign_candidate: Gmail_search_metadata_readonly_surface
+next_phase: PHASE1_OFFICIAL_CONTRACT_AND_DIRECT_CAPABILITY_BASELINE
+valid_time_utc: 2026-08-04T16:50:10Z
+recorded_time_utc: 2026-08-04T16:50:10Z
 ---
 
-# X13 CURRENT v91
+# X13 CURRENT v92
 
-Google Drive metadata-only search phases 1–3 are accepted with gates. The phase-3 synthetic invalid page token failed closed as connector `INVALID_ARGUMENT` with a provider `files.list` HTTP 400 payload identifying `pageToken` as invalid. The error also echoed the generated request URL, including exact query and token values, so search inputs must be treated as potentially exposed telemetry. No retry, fallback, content hydration, or mutation occurred. Identity, effective scope, actual quota debit, hidden attempts, raw-provider parity, consumer value, and measured time savings remain unverified. Credit remains zero.
+The Google Drive metadata-only search campaign is closed as `ADOPT_WITH_GATES`, restricted to bounded, human-reviewed catalog discovery. Three read-only calls produced one metadata result, one normal empty array, and one fail-closed invalid-page-token error. Empty results are nonauthoritative; connector categories are not MIME guarantees; query and token values may be echoed in errors; and no operational credit is allowed without verified identity and scope, raw-provider parity, quota evidence, a named consumer, acknowledgment, and measured value.
+
+The latest structural verifier remained `REVISE`, nonbinding weight zero, because a downstream route attached the real CURRENT v91 blob to the wrong commit. Canonical event persistence was not contradicted, but independent verification is not closed. Exact commit/path/blob triplets are mandatory for future verifier and consumer handoffs.
+
+Adoption and fitness credit remain zero. Next queued campaign: Gmail metadata-only search, phase 1.
