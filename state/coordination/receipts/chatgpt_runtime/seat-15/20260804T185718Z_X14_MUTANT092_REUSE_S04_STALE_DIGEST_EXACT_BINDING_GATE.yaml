@@ -1,0 +1,111 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+result: RETURN
+result_type: FAILURE_ANTIBODY
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_match: true
+valid_time_utc: 2026-08-04T18:57:18Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+expires_utc: 2026-08-04T22:44:48Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+privacy_ceiling: SANITIZED_REPOSITORY_TASK_HASH_AND_CONTROL_METADATA_ONLY
+world_effect_ceiling: ONE_GIT_RECEIPT_AND_ONE_SANITIZED_SLACK_POINTER
+heritage_credit: 0
+binding_weight: 0
+independent_verification_closed: false
+---
+
+self_probe:
+  task_title_observed: HFO S15 Gondul Continuous Heritage
+  task_enabled_observed: true
+  expected_task_id_match: true
+  tools_observed:
+    - native_automations_inventory_read
+    - github_identity_read
+    - github_recent_commit_search
+    - github_exact_commit_file_and_blob_read
+    - github_create_file
+    - github_readback
+    - slack_send_message
+  task_mutation_performed: false
+  self_verification_performed: false
+
+current_workitem:
+  id: X14_MUTANT_092_8768116ee37a
+  class: STALE_SOURCE_DIGEST
+  status: QUARANTINED_NONEXECUTABLE_ROUTED_PENDING_VERDICTS
+  valid_time_utc: 2026-08-04T18:53:11Z
+  expires_utc: 2026-08-04T22:44:48Z
+  repository: TTaoGaming/hfo-gen-133
+  commit: 781936edf2d0853506081d6fcd9e36838f8b320e
+  path: state/coordination/experiments/false_green_x14/quarantine/20260804T185311Z_X12_STALE_SOURCE_DIGEST.mutant.yaml
+  blob_sha1: 857b3c879aa1d8f7ad4a62b917ea04fdb1674c04
+  source_receipt_commit: 1db7e8d80466063a18073e836f312beacd62d461
+  source_receipt_path: state/coordination/experiments/durable_object_x12/slack_receipts/eba4744b58b497b8925015dbaac9c3ad03c30a45c42f590d2878adc9df2d0176_CONFLICT.json
+  source_receipt_blob_sha1: 8fbca8fe77cb67b32ffdb1032f35c3372a064937
+  mutated_field: canonical_receipt.conflict_digest_sha256
+  required_current_conflict_digest_sha256: 37e59d260a57aa696bba9b9f0319d3a0d4cde8f4f5781f7e77d729b61f5e373b
+  substituted_stale_conflict_digest_sha256: 4a20cec4ebc157237cc5e9d32900ae452a5ddf0548326c02571369f5aeb4c317
+  stale_origin_commit: 53a91aebaf85ed1bc472a2afd5782d79dd6e3343
+  stale_origin_path: state/coordination/experiments/durable_object_x12/conflicts/20260804T175300Z_V0093_EVENT_AND_CONFLICT_DIGEST_CORRECTION_HOLD.json
+  canonical_overlay_byte_count: 328
+  canonical_overlay_sha256: 8768116ee37ad20628ca4f4e5d8c77a428bcf1112b36a7805cdaa90ab36a7b2b
+  named_gate: S04_SOURCE_DIGEST_EXACT_PATH_BLOB_CANONICAL_BYTES_VALID_TIME_PREDECESSOR_AND_RECEIPT_BINDING_GATE
+
+reusable_prior_artifact:
+  original_date_utc: 2026-08-01T00:13:35Z
+  repository: TTaoGaming/hfo-gen-133
+  commit: 7a487894347e1249613695825e25faed10307ca2
+  path: state/coordination/receipts/chatgpt_runtime/seat-04/20260801T001335Z_X14_MUTANT_003_STALE_SOURCE_DIGEST_REVISE.yaml
+  blob_sha1: e0c80e0fd459f211f13d9fccdf7c8650b0a1f07a
+  result: REVISE
+  evidence_class: SAME_PROVIDER_NONBINDING
+  exact_reusable_invariant: >-
+    A digest or Git object that is authentic for earlier repository bytes cannot authenticate a different named current
+    commit, path, blob, version edge, conflict artifact, or receipt field. Exact source-role binding outranks syntactic
+    validity and historical membership; a correctly hashed overlay can still bind a deliberately stale value.
+  supported_claims:
+    - Gen-133 contains a direct S04 REVISE that caught an authentic prior X12 blob substituted for the exact current source binding.
+    - Exact commit-path-byte or commit-path-blob recomputation is required; resolving the stale value somewhere in repository history is insufficient.
+    - Agreement with the mutant overlay byte count and SHA-256 does not cure the stale semantic source binding.
+    - Mutant 092 should receive no current-conflict integrity, receipt integrity, ConsumerAck, adoption, outcome, or independent-verification credit from the substituted digest.
+  excluded_claims:
+    - This heritage receipt is not a direct verdict on X14_MUTANT_092_8768116ee37a.
+    - It does not independently recompute the mutant's declared 328-byte overlay or SHA-256.
+    - It does not independently hash the exact current or stale conflict JSON bytes.
+    - It does not verify Slack persistence, exactly-once delivery, ConsumerAck, campaign closure, durability, or provider diversity.
+    - It grants no mutation novelty, caught-gate, adoption, outcome, workflow, or heritage credit.
+
+acceptance_relevance:
+  use: >-
+    S04 must resolve the exact mutant and source receipt, fetch the named current conflict artifact and the stale-origin
+    conflict artifact, recompute the receipt field's required SHA-256 semantics and the declared 328-byte overlay, and
+    reject any digest that does not bind the named current conflict path and bytes. The prior artifact supplies only the
+    reusable exact-binding failure antibody.
+  verifier:
+    primary: S04_STRUCTURAL_PREFLIGHT
+    distinct_advisory: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+    binding_status: SAME_PROVIDER_NONBINDING_WEIGHT_0
+  consumer:
+    - X14_CAMPAIGN_REDUCER
+    - Reginleif/Olrun
+  consumer_ack_status: NOT_OBSERVED
+  heritage_credit_condition: EXACT_CONSUMER_ACK_BOUND_TO_X14_MUTANT_092_8768116ee37a_AND_THIS_RECEIPT
+
+heritage_dedup:
+  gen133_searched_first: true
+  exact_current_workitem_receipt_before_write: NOT_FOUND
+  prior_same_class_bindings_found: true
+  classification: NEW_WORKITEM_BINDING_REUSING_EXISTING_FAILURE_CLASS
+  novelty_credit: 0
+  duplicate_risk: HIGH
+  search_limit: GITHUB_SEARCH_AND_COMMIT_INDEX_ARE_BEST_EFFORT_AND_MAY_LAG
+
+honest_flaw: >-
+  The prior S04 artifact rejected a stale Git blob SHA-1 in an X12 event source pointer, while mutant 092 substitutes an
+  application-level SHA-256 conflict digest inside an X12 Slack receipt. The exact commit/path/bytes and semantic-role
+  binding invariant transfers, but the object type, digest algorithm, and receipt-level cross-field checks differ. This
+  receipt did not perform the direct mutant verification and cannot be counted as an independent catch.
