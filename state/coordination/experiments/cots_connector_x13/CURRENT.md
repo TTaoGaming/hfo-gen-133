@@ -1,40 +1,40 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
 experiment_id: X13_GOOGLE_CALENDAR_SEARCH_EVENTS_READONLY_001
-version: 98
-prior_version: 97
+version: 99
+prior_version: 98
 candidate: Google_Calendar_search_events_readonly_surface
-campaign_wake: 2_of_4
+campaign_wake: 3_of_4
 campaign_status: OPEN
 phase_1_completed: true
 phase_1_status: PHASE1_ACCEPTED_WITH_GATES
 phase_2_completed: true
 phase_2_status: PHASE2_ACCEPTED_WITH_GATES
-phase_3_completed: false
-phase_3_status: PENDING
+phase_3_completed: true
+phase_3_status: PHASE3_ACCEPTED_WITH_GATES
 phase_4_completed: false
 phase_4_decision: PENDING
 adoption_mode: NOT_DECIDED
 carrier_task_id: 6a55c1733708819185088bf334e33ea5
 carrier_task_id_match: true
 wip: 1
-last_event_commit: 5bb4924f228ee420f956366cdb83c69dda53f244
-last_event_path: state/coordination/experiments/cots_connector_x13/20260804T224733Z_GOOGLE_CALENDAR_SEARCH_EVENTS_PHASE2_EMPTY_RESULT.md
-last_event_blob_sha: 85c1cf651d4601b730c4507691d874c1d375d34d
+last_event_commit: dbfc5577b9c5e1ece1c96ada7edaeee4cb7a1bdb
+last_event_path: state/coordination/experiments/cots_connector_x13/20260804T234939Z_GOOGLE_CALENDAR_SEARCH_EVENTS_PHASE3_INVALID_PAGE_TOKEN.md
+last_event_blob_sha: edb1870b1ba0f960780339e2e77650013676961c
 last_event_readback: true
-prior_current_commit: 340f85e94ca24a2c6dedcaece7ed6704f72998e7
-prior_current_blob_sha: ac60beb67c85d515dcaee3a3fa3eaafab0b1c508
-campaign_calls: 2_READONLY_2_SUCCESS_0_FAILURE_0_RETRY_0_FALLBACK_0_PAGINATION_0_HYDRATION_0_MUTATION
-events_returned_phase_2: 0
-next_page_token_phase_2: false
-connector_latency_ms_phase_2: 242
+prior_current_commit: 0c5214d53100f2a04d022a7cf243b7bed396d4b7
+prior_current_blob_sha: 27ce3f47b900a39a63d532c29222ea053e8b1f2b
+campaign_calls: 3_READONLY_2_SUCCESS_1_FAILURE_0_RETRY_0_FALLBACK_0_PAGINATION_FOLLOWUP_0_HYDRATION_0_MUTATION
+events_returned_phase_3: 0
+content_returned_phase_3: 0
+connector_error_phase_3: INVALID_ARGUMENT_PROVIDER_HTTP_400_GLOBAL_INVALID_INVALID_PAGE_TOKEN_VALUE
 operator_minutes_removed_measured: 0
 custom_code_avoided_estimate: 20_to_60_LOC_UNVALIDATED
 credentials: CONNECTOR_MANAGED_IDENTITY_AND_EFFECTIVE_SCOPE_UNKNOWN
 durability: PROVIDER_EXPECTED_CONNECTOR_UNVERIFIED
-observability: PARTIAL_NO_HTTP_STATUS_HEADERS_REQUEST_ID_SCOPE_QUOTA_OR_HIDDEN_ATTEMPTS
-portability: MEDIUM
-failure_behavior: NORMAL_EMPTY_RESULT_WITHOUT_ERROR_FAILURE_PATH_UNPROBED
+observability: PARTIAL_HTTP_STATUS_AND_PROVIDER_JSON_EXPOSED_NO_HEADERS_REQUEST_ID_SCOPE_QUOTA_LATENCY_OR_HIDDEN_ATTEMPTS
+portability: MEDIUM_PROVIDER_PAGE_TOKEN_SEMANTICS_WITH_CONNECTOR_SPECIFIC_ERROR_WRAPPING
+failure_behavior: FAIL_CLOSED_PERMANENT_BAD_REQUEST_NO_RETRY_OBSERVED
 paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
 actual_quota_consumed: UNKNOWN
 consumer: NOT_ASSIGNED
@@ -44,22 +44,25 @@ independent_verification_closed: false
 adoption_credit: 0
 fitness_credit: 0
 allowed_use: BOUNDED_READONLY_HUMAN_REVIEWED_DISCOVERY
-mandatory_gate: EMPTY_RESULTS_ARE_NONAUTHORITATIVE_AND_CONTENT_QUERY_IDENTIFIERS_URLS_OR_TOKENS_REQUIRE_NAMED_RETENTION_NEED
-strongest_falsifier: SAME_PRINCIPAL_RAW_EVENTS_LIST_DISAGREES_FOR_SAME_QUERY_AND_BOUNDS
-honest_flaw: SYNTHETIC_QUERY_WAS_DESIGNED_TO_MATCH_NOTHING_AND_NOT_RETAINED_SO_EXACT_REPRODUCTION_AND_REAL_WORLD_ABSENCE_REMAIN_UNVERIFIED
+mandatory_gate: USE_ONLY_IMMEDIATELY_PRECEDING_COMPATIBLE_PROVIDER_TOKEN_NEVER_RETRY_REJECTED_TOKEN_UNCHANGED_AND_NEVER_TREAT_ZERO_EVENTS_DURING_ERROR_AS_ABSENCE
+strongest_falsifier: SAME_PRINCIPAL_RAW_EVENTS_LIST_ACCEPTS_IDENTICAL_INVALID_TOKEN_OR_CONNECTOR_RETRIES_OR_MUTATES_BEHIND_THE_SURFACE
+honest_flaw: ONE_SYNTHETIC_INVALID_TOKEN_DOES_NOT_TEST_EXPIRED_QUERY_MISMATCHED_OR_VALID_TOKENS_PERMISSION_DENIAL_RATE_LIMITS_TRANSIENT_FAILURES_HIDDEN_RETRIES_OR_RAW_PROVIDER_PARITY
 next_campaign_candidate: Google_Calendar_search_events_readonly_surface
-next_phase: PHASE3_FAILURE_PERMISSION_PORTABILITY_AND_CONNECTOR_VARIANCE_PROBE
-next_probe: ONE_BOUNDED_SYNTHETIC_BAD_PAGE_TOKEN_PROBE_NO_RETRY_FALLBACK_HYDRATION_RETENTION_OR_MUTATION
-valid_time_utc: 2026-08-04T22:47:33Z
-recorded_time_utc: 2026-08-04T22:47:33Z
+next_phase: PHASE4_DECISION
+next_probe: NO_ADDITIONAL_CALENDAR_CALL_DECIDE_ADOPT_ADOPT_WITH_GATES_DEFER_REJECT_OR_UNKNOWN
+provisional_disposition: ADOPT_WITH_GATES
+valid_time_utc: 2026-08-04T23:49:39Z
+recorded_time_utc: 2026-08-04T23:49:39Z
 ---
 
-# X13 CURRENT v98
+# X13 CURRENT v99
 
-The Google Calendar search campaign is open at phase 2 of 4 with `PHASE2_ACCEPTED_WITH_GATES`.
+The Google Calendar search campaign is open at phase 3 of 4 with `PHASE3_ACCEPTED_WITH_GATES`.
 
-One bounded synthetic read-only search returned an empty event array, no continuation token, no error, and a reported 242 ms external-call time. No event data, page follow-up, hydration, retry, fallback, or mutation occurred. The exact synthetic query was not retained.
+One bounded synthetic invalid-page-token call failed closed with connector `INVALID_ARGUMENT` and surfaced a provider HTTP 400 response containing domain `global`, reason `invalid`, and message `Invalid page token value.` No event data, retry, fallback, follow-up pagination, hydration, or mutation occurred.
 
-Empty connector results are nonauthoritative absence. Campaign totals are two successful read-only calls and zero failures or mutations. Adoption and fitness credit remain zero; no verifier or consumer is assigned.
+The Calendar connector exposed more provider error detail than the prior Gmail connector probe, but still exposed no response headers, request ID, identity, effective OAuth scope, quota debit, latency, or hidden-attempt count. Zero events during this failure are not absence evidence.
 
-Next is one bounded failure probe using a synthetic unusable continuation value, with no retry, fallback, hydration, retention, or mutation.
+Campaign totals are three read-only calls: two successes and one expected permanent client failure. Adoption and fitness credit remain zero; no verifier or consumer is assigned.
+
+Next is phase 4 decision only with no additional Calendar candidate call. Provisional disposition is `ADOPT_WITH_GATES` for bounded, read-only, human-reviewed event discovery.
