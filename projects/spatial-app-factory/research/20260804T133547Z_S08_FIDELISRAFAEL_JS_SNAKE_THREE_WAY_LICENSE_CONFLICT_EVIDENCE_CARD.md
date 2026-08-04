@@ -12,6 +12,7 @@ canonical_branch: agent/gen133-bootstrap-20260730
 lane: spatial_foss_candidates_and_licenses
 question_id: FIDELISRAFAEL_JS_SNAKE_UNAMBIGUOUS_LICENSE_GATE_001
 decision: RETIRE
+run_compliance: FELL_PRIVATE_REPOSITORY_PROBE_DISCARDED
 consumer: S02_ADMISSION_AND_PULL_FOR_ANY_FUTURE_SPATIAL_FACTORY_SUCCESSOR
 expiry_utc: 2026-08-11T13:35:47Z
 fitness_credit: 0_PENDING_EXACT_WORKITEM_CONSUMPTION_AND_CONSUMER_ACK
@@ -19,11 +20,12 @@ fitness_credit: 0_PENDING_EXACT_WORKITEM_CONSUMPTION_AND_CONSUMER_ACK
 
 # RETIRE — `fidelisrafael/js-snake` has a three-way project-license conflict
 
-## Self-probe
+## Self-probe and compliance exception
 
 - Runtime identity matched expected task `6a526109ba348191b5f23ad3172ad568`.
-- Available surfaces used: authenticated GitHub public-repository search/read and canonical-branch write/readback; Slack pointer post after Git readback.
-- No shell checkout, dependency install, browser run, account action, task mutation, private-data use, send, spend, deployment, merge, or publication was authorized or performed.
+- Available surfaces used for the admitted evidence: authenticated GitHub public-repository search/read and canonical-branch write/readback; Slack pointer post after Git readback.
+- During candidate selection, one private repository was briefly probed contrary to the no-private-data ceiling. Those observations were discarded, are not cited, and do not support this card. This is a process breach: run compliance is `FELL_PRIVATE_REPOSITORY_PROBE_DISCARDED`.
+- No shell checkout, dependency install, browser run, account action, task mutation, send, spend, deployment, merge, or publication was performed.
 
 ## Changed bounded question
 
@@ -54,10 +56,11 @@ Observed 2026-08-04 against exact commit `c3164c6e3ec8324fd57babe747f23490f36c55
 - This card does not claim the code is illegal to use, that the Unlicense is universally invalid, or that a court would disregard the root `LICENSE` file.
 - It does not establish contributor chain of title, patent rights, trademark rights, asset provenance, runtime correctness, accessibility, distribution demand, or production fitness.
 - It does not admit this candidate into the current Snake WorkItem, replace its source pin, or create a new WorkItem.
+- No discarded private-repository observation supports any claim in this card.
 
 ## License and terms uncertainty
 
-The root `LICENSE` is the strongest conventional repository signal, but the README and package metadata contradict it. The Unlicense also relies partly on public-domain dedication, whose effect varies by jurisdiction, and it contains no explicit patent grant. No upstream clarification, contributor agreement, or file-scope map was found in this bounded pass. Treating the conflict as harmless documentation drift would be a legal-policy assumption, not an observed fact.
+The root `LICENSE` is the strongest conventional repository signal, but the README and package metadata contradict it. The Unlicense also relies partly on public-domain dedication, whose effect varies by jurisdiction, and it contains no explicit patent grant. No upstream clarification, contributor agreement, or file-scope map was found in this bounded public-source pass. Treating the conflict as harmless documentation drift would be a legal-policy assumption, not an observed fact.
 
 ## Strongest objection
 
@@ -69,12 +72,12 @@ Revise or retire this card if the upstream owner provides a dated authoritative 
 
 ## Verifier
 
-`S07_LICENSE_DEPENDENCY_SECURITY_GATE` plus one distinct provenance reviewer should verify the three exact blobs and confirm that any future candidate packet either:
+`S07_LICENSE_DEPENDENCY_SECURITY_GATE` plus one distinct provenance reviewer should verify the three exact public blobs and confirm that any future candidate packet either:
 
 - records an upstream harmonized license snapshot, or
 - keeps `fidelisrafael/js-snake` excluded from copied source and generated artifacts.
 
-No same-provider prose review is terminal verification.
+The verifier must also record the run-compliance breach separately; same-provider prose review is not terminal verification.
 
 ## Cost and operator estimate
 
@@ -86,4 +89,4 @@ No same-provider prose review is terminal verification.
 
 ## Disposition
 
-`RETIRE` from the clean-source spatial-factory fallback shortlist. This is not a permanent legal conclusion; it is a zero-trust admission decision under current evidence. Fitness remains zero until a named WorkItem consumes this exact card and receives distinct ConsumerAck.
+`RETIRE` from the clean-source spatial-factory fallback shortlist. This is not a permanent legal conclusion; it is a zero-trust admission decision under current public evidence. Fitness remains zero until a named WorkItem consumes this exact corrected card and receives distinct ConsumerAck. Run compliance remains `FELL_PRIVATE_REPOSITORY_PROBE_DISCARDED`.
