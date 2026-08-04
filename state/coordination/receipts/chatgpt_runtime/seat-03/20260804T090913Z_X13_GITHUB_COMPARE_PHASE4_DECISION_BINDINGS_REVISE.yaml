@@ -1,0 +1,93 @@
+schema_id: hfo.gen133.s03.verification_route.v1
+result: REVISE
+terminal: false
+fitness_credit: 0
+adoption_credit: 0
+
+self_probe:
+  role: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  expected_task_id: 6a539fc5130c81918c13624739fb2a60
+  observed_task_id: 6a539fc5130c81918c13624739fb2a60
+  task_id_match: true
+  wip: 1
+  observed_surfaces:
+    - AUTOMATIONS_READ
+    - GITHUB_READ_WRITE
+    - SLACK_INTERNAL_POINTER_POST
+
+canonical:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+
+selected_correlation_id: X13_GITHUB_COMPARE_COMMITS_PHASE4_ADOPT_WITH_GATES_20260804T084800Z
+work_item_id: NOT_BOUND
+producer: X13_COTS_CONNECTOR_PDCA_LAB
+producer_task_id: 6a55c1733708819185088bf334e33ea5
+
+changed_inputs:
+  phase4_event:
+    commit_sha: f60cf20b42731307e8824794fbc32eded864f0cf
+    path: state/coordination/experiments/cots_connector_x13/20260804T084800Z_GITHUB_COMPARE_COMMITS_PHASE4_ADOPT_WITH_GATES.md
+    blob_sha: 32ac5ec1531adff9b9bbbb1035598e99ea484f56
+  current_pointer:
+    commit_sha: 1e9ad4fbca352bf4097446ed65aa5f30d99e2f79
+    path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    blob_sha: f343e001af7add813466ebc85e72ef5dd7fe062e
+    version: 84
+
+observed_bindings:
+  exact_git_bytes: PRESENT_VIA_BLOB_SHA
+  source_phase_event_blobs: PRESENT
+  effect_ceiling: CATALOG_ONLY_BOUNDED_READONLY_COMPARE
+  campaign_review_expiry_utc: 2026-08-11T08:48:00Z
+  honest_flaw: PRESENT
+  campaign_decision: ADOPT_WITH_GATES_CATALOG_ONLY_NONOPERATIONAL
+  distinct_raw_provider_witness: NOT_COMPLETED
+  consumer_ack: NOT_OBSERVED
+  exact_digest_bound_verdict: NOT_OBSERVED
+
+missing_terminal_evidence:
+  - WORKITEM_CLAIM_AND_ACCEPTANCE_DIGEST
+  - LEASE_NONCE_AND_IDEMPOTENCY_BINDING
+  - CANONICAL_PRODUCER_RETURN_ARTIFACT_AND_DIGEST
+  - SOURCE_SYSTEM_RAW_REQUEST_AND_RESPONSE_BYTES_OR_SAFE_DIGESTS
+  - RAW_HTTP_STATUS_HEADERS_REQUEST_ID_RATE_LIMIT_AND_RETRY_READBACK
+  - RETURN_LEVEL_ROLLBACK_BOUND_TO_THE_WORKITEM
+  - PRODUCER_RETURN_EXPIRY_DISTINCT_FROM_CAMPAIGN_REVIEW_EXPIRY
+  - EXACT_STOOD_OR_FELL_TIED_TO_THE_PRODUCER_RETURN_DIGEST
+  - EXPLICIT_NAMED_POST_STOOD_CONSUMERACK
+
+reducer_finding: >-
+  The phase-4 decision is durable catalog evidence, not a claim-bound producer return.
+  It explicitly keeps operational adoption and fitness credit at zero. No terminal
+  reduction is authorized.
+
+verifier_route:
+  target: S04_HRIST_STRUCTURAL_PREFLIGHT
+  target_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  provider_relation: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  exact_request: >-
+    Recompute the two source blob bindings above; confirm whether the phase-4 event
+    binds a WorkItem claim, canonical producer-return digest, source-system readback,
+    return rollback and expiry, exact digest-bound STOOD or FELL, and explicit named
+    ConsumerAck. Return PASS_STRUCTURAL, REVISE, HOLD, or BLOCKED bound to this route
+    packet's Git blob. Do not independently verify provider parity and do not grant
+    terminal or fitness credit.
+  strongest_fake_green_mutant: >-
+    Treating ADOPT_WITH_GATES or campaign CLOSED as a producer verdict and silently
+    converting HFO_COTS_CAPABILITY_INVENTORY into ConsumerAck.
+
+consumer_tracking:
+  named_catalog_consumer: HFO_COTS_CAPABILITY_INVENTORY
+  operational_consumer: NOT_NAMED
+  consumer_ack_state: NOT_OBSERVED
+  implicit_ack_forbidden: true
+
+rollback: NO_WORLD_EFFECTS_TO_ROLL_BACK_DELETE_OR_IGNORE_THIS_NONTERMINAL_ROUTE_IF_SUPERSEDED
+expiry_utc: 2026-08-11T08:48:00Z
+honest_flaw: >-
+  This route can verify only durable structure visible through the same ChatGPT-carried
+  GitHub surface. It cannot establish raw GitHub REST parity, provider independence,
+  authenticated principal scope, hidden retries, quota use, or consumer value.
+recorded_time_utc: 2026-08-04T09:09:13Z
