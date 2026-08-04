@@ -1,0 +1,54 @@
+schema_version: "hfo.gen133.operator_relief_receipt.v1"
+receipt_id: "S05-20260804T152000Z-1047A-SALE-SCOPE-CONFIRMATION"
+created_at_utc: "2026-08-04T15:20:00Z"
+seat: "S05"
+task_id: "6a55c182078c8191b89f2dd15f5f640c"
+repository: "TTaoGaming/hfo-gen-133"
+branch: "agent/gen133-bootstrap-20260730"
+wip: 1
+material_change: true
+
+active_item:
+  id: "1047A_SALE_BLOCKER_SCOPE_CONFIRMATION"
+  state: "NO_SEND_DRAFT_READY"
+  sanitized_status:
+    - "A sale-closing document remains outstanding after repeated follow-up."
+    - "A separate repair/access concern is now also blocking board clearance."
+    - "The forwarded source did not state exactly what work the operator should own or the current hard closing deadline."
+
+bounded_transition:
+  kind: "PREPARE_EXACT_NO_SEND_APPROVAL_PACKET"
+  source_system: "Gmail"
+  source_message_id: "19fcd327639baa48"
+  draft_id: "r5694011528879890208"
+  draft_message_id: "19fcd5bd510d1365"
+  draft_subject: "1047A Faile Street — confirm what you want me to own"
+  draft_body_sha256: "aba9d134040bd82a7acd55207260cd4a56f29c9c41bf103dc85e17cd141de535"
+  readback: "Gmail draft list confirmed recipient, subject, DRAFT state, and expected opening summary."
+  approval_options:
+    - "APPROVE_SEND_AS_DRAFTED"
+    - "EDIT"
+    - "DISCARD"
+  requested_reply_structure:
+    - "Select the operator-owned lane: board/management document follow-up, unit-access/repair-estimate coordination, attorney/closing-package follow-up, or status-only."
+    - "Provide the current hard closing or contract-expiration date."
+    - "Name the present owner of each blocker."
+
+priority_control:
+  p0: "Goodyear vehicle custody/readiness and final service record remain unverified."
+  p1:
+    - "PFA onboarding disclosure due 2026-08-05."
+    - "1047A sale blocker scope and deadline confirmation."
+
+operator_relief_minutes_estimate: 7
+next_consumer: "Operator for draft approval; Var for source readback and dated waiting state after any reply."
+
+privacy_and_effect_boundaries:
+  - "Private email body and contact details remain in Gmail."
+  - "Git contains sanitized facts and source pointers only."
+  - "No email was sent."
+  - "No repair, payment, application, account, calendar, task, deployment, merge, or publication action occurred."
+
+limitations:
+  - "The draft was created as a new unthreaded Gmail draft because two threaded-draft creation attempts failed with a connector payload-build error."
+  - "No closing deadline, board decision, tenant-access success, repair estimate, or legal-document completion is claimed."
