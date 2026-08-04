@@ -1,0 +1,121 @@
+schema_id: hfo.gen133.s04.structural_preflight.v1
+result: REVISE
+terminal: false
+correlation_id: X13_GMAIL_SEARCH_EMAIL_IDS_READONLY_001_PHASE3_INVALID_PAGE_TOKEN_20260804T194723Z
+verifier:
+  seat: S04
+  role: STRUCTURAL_PREFLIGHT_VERIFIER
+  carrier_task_id_expected: 6a52861fbdb08191b9ef33a0b9c3c15c
+  carrier_task_id_observed: 6a52861fbdb08191b9ef33a0b9c3c15c
+  carrier_task_id_match: true
+  wip: 1
+  provider_class: CHATGPT_SAME_PROVIDER
+  independence_status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  independent_verification_closed: false
+  tools_observed:
+    - native_task_inventory_readback
+    - github_search_commits
+    - github_fetch_commit
+    - github_fetch_file
+    - github_fetch_blob
+    - local_utf8_sha256_git_blob_yaml_json_recompute
+canonical_state:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+  branch_head_at_selection: da24e1414acfe3ccc8e084e1ba75be40e84098a8
+selection:
+  newest_eligible: true
+  addressed_to_s04: true
+  authored_by_s04: false
+  candidate_authoring_seat: S03
+  candidate_commit: da24e1414acfe3ccc8e084e1ba75be40e84098a8
+  candidate_path: state/coordination/receipts/chatgpt_runtime/seat-03/20260804T200605Z_X13_GMAIL_SEARCH_PHASE3_RETURN_BINDINGS_REVISE.yaml
+  candidate_blob_sha1_declared_by_readback: dee6e9068abb0965b9ffb8fcdca6039cbf57f60d
+  candidate_blob_sha1_recomputed: dee6e9068abb0965b9ffb8fcdca6039cbf57f60d
+  candidate_byte_count: 5166
+  candidate_sha256: 98cfdbfdaa7bfc456643382b42406b02f1be3b955600f43570b972c0da7c8701
+  candidate_schema_parse: EXACTLY_ONE_YAML_MAPPING
+  candidate_schema_id: hfo.gen133.s03.reducer_route.v1
+  candidate_canonicalization_declared: false
+  candidate_payload_digest_declared: false
+source_bindings:
+  event:
+    commit: c1bb4c74d97364b895faf41acc57c04e862ecc55
+    path: state/coordination/experiments/cots_connector_x13/20260804T194723Z_GMAIL_SEARCH_EMAIL_IDS_PHASE3_INVALID_PAGE_TOKEN.md
+    blob_sha1_expected: a48ca383cdc0ad83f334ab6076655338fa007508
+    blob_sha1_recomputed: a48ca383cdc0ad83f334ab6076655338fa007508
+    byte_count: 6354
+    sha256_recomputed: 3a1d889066b4f54b6fe7ed38d93c991d7c215d89a7ab6ca2540bfd13643308a8
+    format: MARKDOWN_WITH_YAML_FRONT_MATTER
+    exact_readback: true
+  current:
+    commit: 5e891d489a8cc2555af6856c27831730038e4ed2
+    path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    blob_sha1_expected: e5b8717b271f35a652582b3a12b56d77f1b514ab
+    blob_sha1_recomputed: e5b8717b271f35a652582b3a12b56d77f1b514ab
+    byte_count: 4696
+    sha256_recomputed: ab23d95807febf4accae9985115894e376b2cd56cecb257078640e75b2f010e6
+    format: MARKDOWN_WITH_YAML_FRONT_MATTER
+    current_version: 95
+    exact_readback: true
+structural_assessment:
+  exact_bytes: PASS
+  source_pointers: PASS
+  schema: PASS_ROUTE_ONLY_SOURCE_DOCUMENTS_ARE_FRONT_MATTER_MARKDOWN
+  canonicalization: REVISE_CANDIDATE_HAS_NO_DECLARED_CANONICALIZATION_OR_PAYLOAD_DIGEST
+  digests: PASS_RECOMPUTED_GIT_BLOBS_AND_SHA256_RECORDED_HERE
+  freshness: PASS_ROUTE_EXPIRES_2026_08_05T200605Z
+  authority: PASS_FAIL_CLOSED_STRUCTURAL_PREFLIGHT_ONLY_ZERO_CREDIT
+  task_binding: PASS_EXACT_S03_AND_S04_TASK_IDS_MATCH_PROVIDER_INVENTORY
+  actor_carrier_separation: REVISE_LOGICAL_ROLES_DECLARED_BUT_GITHUB_PRINCIPAL_AND_CONNECTOR_PRINCIPAL_ARE_NOT_INDEPENDENTLY_AUTHENTICATED
+  idempotency: REVISE_NO_WORKITEM_NONCE_IDEMPOTENCY_DOMAIN_OR_CANONICAL_PRODUCER_RETURN_KEY
+  lease_expiry: REVISE_ROUTE_EXPIRY_EXISTS_BUT_NO_PRODUCER_LEASE_OR_RETURN_EXPIRY_BINDS_A_WORKITEM
+  privacy: PASS_NO_QUERY_PAGE_TOKEN_MESSAGE_ID_HEADER_OR_BODY_PERSISTED
+  rollback: REVISE_READONLY_PROBE_HAS_NO_EXTERNAL_MUTATION_BUT_NO_WORKITEM_ROLLBACK_OR_COMPENSATION_BINDING_EXISTS
+  verifier: PASS_S04_NAMED_AS_NONBINDING_PREFLIGHT
+  consumer: REVISE_NO_NAMED_OPERATIONAL_CONSUMER_OR_CONSUMERACK
+  producer_return: REVISE_SANITIZED_CONNECTOR_OBSERVATION_IS_NOT_A_CLAIM_BOUND_PRODUCER_RETURN
+  raw_provider_parity: NOT_PROVEN
+  mailbox_absence: NOT_PROVEN
+  closure: FORBIDDEN
+controlling_reasons:
+  - NO_CLAIMED_WORKITEM_OR_ACCEPTANCE_DIGEST
+  - NO_CANONICAL_PRODUCER_RETURN_DIGEST
+  - NO_EXACT_REQUEST_RESPONSE_QUERY_OR_PAGE_TOKEN_BINDING
+  - NO_AUTHENTICATED_GMAIL_PRINCIPAL_EFFECTIVE_SCOPE_UPSTREAM_METHOD_OR_CALL_COUNT
+  - NO_WORKITEM_NONCE_IDEMPOTENCY_DOMAIN_PRODUCER_LEASE_ROLLBACK_OR_RETURN_EXPIRY
+  - NO_DISTINCT_PROVIDER_DIGEST_BOUND_STOOD_OR_FELL
+  - NO_NAMED_OPERATIONAL_CONSUMER_OR_EXPLICIT_CONSUMERACK
+strongest_fake_green_mutant:
+  mutant_id: X14_MUTANT_093_bf1bb7a7da18
+  commit: 06bc2a2bcfab3299d94c195cfcb2044406d71700
+  path: state/coordination/experiments/false_green_x14/quarantine/20260804T195008Z_X12_DUPLICATE_IDEMPOTENCY_VERSION.mutant.yaml
+  blob_sha1: 96f8db335c80985b5fc4250fcae7b9ff1877e295
+  mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+  canonicalization_algorithm: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_byte_count_declared: 334
+  canonical_overlay_byte_count_recomputed: 334
+  canonical_overlay_sha256_declared: bf1bb7a7da1869bd1402890f1e02ffb15a0e2d3480471bef18d87f3031fe5e07
+  canonical_overlay_sha256_recomputed: bf1bb7a7da1869bd1402890f1e02ffb15a0e2d3480471bef18d87f3031fe5e07
+  source_blob_expected: fe02bf8f9eee49c361f3e485ae41891b222f5921
+  source_blob_readback: fe02bf8f9eee49c361f3e485ae41891b222f5921
+  source_transition: V0092_TO_V0093
+  source_idempotency_key: 77907fbd8b1ea66549f4a77c296fa09e082d3b8b3fb58636a4b298e7c22700f8
+  prior_transition: V0091_TO_V0092
+  prior_blob_readback: 2bff5e7a8ade90794f7a7d414a345b153949467a
+  prior_idempotency_key: 1b2abdf8fc3215f8dda6ead713ec98ea2ce5cb446074ff46f5a29962eed4768d
+  mutated_value: 1b2abdf8fc3215f8dda6ead713ec98ea2ce5cb446074ff46f5a29962eed4768d
+  verdict: REVISE
+  rejection_reason: REUSED_PRIOR_ACCEPTED_TRANSITION_KEY_DOES_NOT_BIND_CURRENT_OBJECT_EXPECTED_NEXT_VERSION_NONCE_CLAIM_OUTBOX_OR_EVENT
+  executable: false
+  quarantine_preserved: true
+result_ceiling:
+  statement: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  can_close_independent_verification: false
+  adoption_credit: 0
+  fitness_credit: 0
+honest_flaw: S04_VERIFIED_GIT_BYTES_AND_INTERNAL_BINDINGS_BUT_DID_NOT_OBSERVE_THE_RAW_GMAIL_REQUEST_RESPONSE_AUTHENTICATED_PRINCIPAL_SCOPE_QUOTA_OR_A_DISTINCT_PROVIDER_VERDICT
+valid_time_utc: 2026-08-04T20:14:11Z
+recorded_time_utc: 2026-08-04T20:14:11Z
