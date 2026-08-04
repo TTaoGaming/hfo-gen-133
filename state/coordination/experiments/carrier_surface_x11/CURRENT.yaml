@@ -1,29 +1,32 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
-experiment_id: X11_WEB_OFFICIAL_STATIC_READ_VISIBILITY_V1
-current_version: 79
-accepted_wakes: 3
+experiment_id: X11_GMAIL_METADATA_READ_VISIBILITY_V1
+current_version: 80
+accepted_wakes: 0
 target_wakes_before_decision: 4
-controlled_factor: web_research
+controlled_factor: gmail_read_surface
 campaign_status: ACTIVE
 current_disposition: null
 prior_campaign:
-  experiment_id: X11_TOOL_RETURN_CONTEXT_WINDOW_V1
-  final_version: 76
-  disposition: REVISE
+  experiment_id: X11_WEB_OFFICIAL_STATIC_READ_VISIBILITY_V1
+  final_version: 80
+  disposition: KEEP
   accepted_wakes: 4
 last_event:
-  commit: f54a9b3110cccabcbb46d4dd74ff6d70f2c04d2f
-  path: state/coordination/experiments/carrier_surface_x11/events/20260804T033954Z_WEB_OFFICIAL_STATIC_READ_VISIBILITY_V1_WAKE_03.yaml
-  blob: b36e12eecc619b332f73101e3e673e68f163189c
+  commit: 67b61dd3697cb0b5aee8c460393fc8c2a6d2a4e0
+  path: state/coordination/experiments/carrier_surface_x11/events/20260804T044028Z_WEB_OFFICIAL_STATIC_READ_VISIBILITY_V1_WAKE_04_DECISION.yaml
+  blob: e1bc8ff0255e32879b1292f8a900fcce3d2fde08
 baseline_result:
   mode: unauthenticated_fixed_public_url_marker_probe
   requested_url: https://example.com/
   canonical_host: example.com
   retrieval_status: SUCCESS
   expected_marker: Example Domain
-  expected_marker_present: true
-  content_type: text/html
+  fourth_expected_marker_present: true
+  campaign_successful_retrievals: 4
+  campaign_expected_marker_present_count: 4
+  campaign_unexpected_host_count: 0
+  campaign_permission_or_transport_error_count: 0
   authentication_requested: false
   interactive_login_required: false
   page_body_persisted: false
@@ -36,43 +39,38 @@ baseline_result:
   latency_exposed: false
   latency_ms: null
   operator_relay_minutes: 0
-campaign_aggregate:
-  successful_retrievals: 3
-  expected_marker_present_count: 3
-  unexpected_host_count: 0
-  permission_or_transport_error_count: 0
-claim_ceiling: fixed_public_web_URL_retrieval_and_expected_marker_visibility_only_not_search_quality_freshness_completeness_semantic_accuracy_or_independent_verification
-strongest_falsifier: the_identical_fixed_URL_fails_to_resolve_redirects_to_an_unexpected_host_requires_authentication_or_returns_the_expected_marker_inconsistently_across_repeated_wakes
+claim_ceiling: authenticated_Gmail_message_ID_search_execution_and_sanitized_result_count_visibility_only_not_mailbox_completeness_indexing_freshness_message_content_access_delivery_state_or_independent_verification
+strongest_falsifier: the_fixed_impossible_marker_query_requires_interactive_login_returns_an_unclassified_permission_error_exposes_message_content_or_identifiers_outside_the_tool_boundary_or_produces_inconsistent_sanitized_result_counts_across_identical_wakes
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 next_consumer: [Reginleif, Ratatoskr]
-honest_flaw: three_identical_static_public_URL_marker_probes_measure_repeatability_of_one_basic_web_read_path_not_general_research_quality_freshness_ranking_completeness_truth_or_transport_latency_when_latency_is_not_exposed
-next_factor: web_research
+honest_flaw: an_impossible_subject_marker_search_tests_only_one_authenticated_Gmail_ID_search_path_and_a_zero_result_does_not_establish_mailbox_completeness_index_freshness_content_access_or_delivery_state
+next_factor: gmail_read_surface
 next_probe:
-  experiment_id: X11_WEB_OFFICIAL_STATIC_READ_VISIBILITY_V1
-  campaign_wake: 4
-  mode: unauthenticated_fixed_public_url_marker_probe
-  url: https://example.com/
-  expected_canonical_host: example.com
-  expected_marker: Example Domain
+  experiment_id: X11_GMAIL_METADATA_READ_VISIBILITY_V1
+  campaign_wake: 1
+  mode: authenticated_gmail_impossible_marker_id_search
+  query: 'subject:"HFO_X11_GMAIL_METADATA_PROBE_9C7B1E5A4D2F8A6C"'
+  max_results: 1
   persist_only:
-    - canonical_host
-    - retrieval_status
-    - expected_marker_present
+    - result_count
+    - next_page_token_present
     - permission_class
     - error_class
     - latency_when_exposed
     - operator_relay_minutes
+  message_ids_persistence_allowed: false
+  message_content_read_allowed: false
   mutation_allowed: false
+  send_allowed: false
   interactive_login_allowed: false
-  page_body_persistence_allowed: false
   sensitive_readback_externalization_allowed: false
-slack_action: SILENT_UNCHANGED
-updated_valid_time_utc: 2026-08-04T03:39:54Z
+slack_action: CAMPAIGN_DECISION_POST_REQUIRED_AFTER_GIT_READBACK
+updated_valid_time_utc: 2026-08-04T04:40:28Z
 sealed: false
 ---
 
-The web-research campaign accepted wake 3/4. The identical fixed unauthenticated
-example.com probe again resolved to the expected host and exposed the expected
-marker without login, mutation, operator relay, or page-body persistence. The
-capability state was unchanged, so Slack remains silent. Wake 4 repeats the
-identical probe and writes the campaign decision.
+The fixed-public-web campaign completed at wake 4/4 with KEEP. Four identical
+unauthenticated example.com probes resolved to the expected host and exposed
+the expected marker without login, mutation, operator relay, or page-body
+persistence. The next campaign probes Gmail message-ID search visibility with
+a fixed impossible subject marker and persists no identifiers or content.
