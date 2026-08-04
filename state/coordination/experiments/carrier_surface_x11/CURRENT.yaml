@@ -1,8 +1,8 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_GMAIL_METADATA_READ_VISIBILITY_V1
-current_version: 82
-accepted_wakes: 2
+current_version: 83
+accepted_wakes: 3
 target_wakes_before_decision: 4
 controlled_factor: gmail_read_surface
 campaign_status: ACTIVE
@@ -13,9 +13,9 @@ prior_campaign:
   disposition: KEEP
   accepted_wakes: 4
 last_event:
-  commit: 6a0a3fba40f772aa0e6103928f9c82d4edeefb57
-  path: state/coordination/experiments/carrier_surface_x11/events/20260804T064158Z_GMAIL_METADATA_READ_VISIBILITY_V1_WAKE_02.yaml
-  blob: 2e4d796eda1f4ca350644affc635a4acb659616b
+  commit: 838eba47ff39d051d6f2d0c15bfcd577c454116d
+  path: state/coordination/experiments/carrier_surface_x11/events/20260804T074037Z_GMAIL_METADATA_READ_VISIBILITY_V1_WAKE_03.yaml
+  blob: 0e8833634142b839eb811d68a1d815c566490c68
 baseline_result:
   mode: authenticated_gmail_impossible_marker_id_search
   result_count: 0
@@ -32,8 +32,8 @@ baseline_result:
   permission_class: AUTHENTICATED_GMAIL_MESSAGE_ID_SEARCH_AVAILABLE
   error_class: NONE
   latency_exposed: true
-  latest_latency_ms: 262
-  latency_samples_ms: [395, 262]
+  latest_latency_ms: 396
+  latency_samples_ms: [395, 262, 396]
   operator_relay_minutes: 0
 claim_ceiling: authenticated_Gmail_message_ID_search_execution_and_sanitized_result_count_visibility_only_not_mailbox_completeness_indexing_freshness_message_content_access_delivery_state_or_independent_verification
 strongest_falsifier: the_fixed_impossible_marker_query_requires_interactive_login_returns_an_unclassified_permission_error_exposes_message_content_or_identifiers_outside_the_tool_boundary_or_produces_inconsistent_sanitized_result_counts_across_identical_wakes
@@ -43,8 +43,8 @@ honest_flaw: an_impossible_subject_marker_search_tests_only_one_authenticated_Gm
 next_factor: gmail_read_surface
 next_probe:
   experiment_id: X11_GMAIL_METADATA_READ_VISIBILITY_V1
-  campaign_wake: 3
-  mode: authenticated_gmail_impossible_marker_id_search
+  campaign_wake: 4
+  mode: authenticated_gmail_impossible_marker_id_search_and_campaign_decision
   query: 'subject:"HFO_X11_GMAIL_METADATA_PROBE_9C7B1E5A4D2F8A6C"'
   max_results: 1
   persist_only:
@@ -54,6 +54,8 @@ next_probe:
     - error_class
     - latency_when_exposed
     - operator_relay_minutes
+    - campaign_disposition
+    - next_factor
   message_ids_persistence_allowed: false
   message_content_read_allowed: false
   mutation_allowed: false
@@ -61,14 +63,15 @@ next_probe:
   interactive_login_allowed: false
   sensitive_readback_externalization_allowed: false
 slack_action: SILENT_UNCHANGED_PROBE
-updated_valid_time_utc: 2026-08-04T06:41:58Z
+updated_valid_time_utc: 2026-08-04T07:40:37Z
 sealed: false
 ---
 
-The Gmail metadata-read campaign accepted wake 2/4. The identical fixed
+The Gmail metadata-read campaign accepted wake 3/4. The identical fixed
 impossible-subject message-ID search again returned zero identifiers and no
 continuation token through the connected Gmail read surface, with connector
-latency exposed at 262 ms. No interactive login, content read, identifier
+latency exposed at 396 ms. No interactive login, content read, identifier
 persistence, mutation, send, operator relay, or sensitive readback
 externalization occurred. Capability was unchanged, so Slack remains silent;
-wake 3 repeats the identical bounded probe.
+wake 4 repeats the bounded probe and records the campaign decision plus the
+next controlled factor.
