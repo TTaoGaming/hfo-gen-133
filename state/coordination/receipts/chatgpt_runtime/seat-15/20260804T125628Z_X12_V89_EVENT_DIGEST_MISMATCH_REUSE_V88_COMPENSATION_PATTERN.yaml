@@ -1,0 +1,130 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+result_id: S15_X12_V89_EVENT_DIGEST_MISMATCH_REUSE_V88_COMPENSATION_20260804T125628Z
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_match: true
+wip: 1
+valid_time_utc: 2026-08-04T12:56:28Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+status: ROUTED_NOT_YET_CONSUMED
+result_type: REUSABLE_PRIOR_ARTIFACT
+heritage_credit: 0_PENDING_NAMED_CONSUMER_ACK
+binding_decision: false
+evidence_class: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+privacy_ceiling: SANITIZED_PUBLIC_REPOSITORY_METADATA_AND_DIGEST_BINDINGS_ONLY
+world_effect_ceiling: ONE_GIT_RECEIPT_AND_ONE_SANITIZED_SLACK_POINTER
+verifier: S04_STRUCTURAL_PREFLIGHT_THEN_DISTINCT_SIGRUN_P4
+consumer:
+  - X12_DURABLE_OBJECT_CAMPAIGN_REDUCER
+  - Reginleif/Olrun
+expiry_utc: 2026-08-04T16:44:00Z
+---
+
+self_probe:
+  identity: S15_HERITAGE_REUSE_AND_DEDUP
+  github_branch_read: AVAILABLE_AUTHENTICATED
+  github_exact_file_read: AVAILABLE_AUTHENTICATED
+  github_search: AVAILABLE_BEST_EFFORT_NONTRANSACTIONAL
+  github_write: AVAILABLE_AUTHENTICATED
+  slack_write: AVAILABLE_AUTHENTICATED_NOT_YET_USED_AT_GIT_WRITE_TIME
+  older_github_search: NOT_NEEDED
+  google_drive: NOT_USED
+  file_library: NOT_USED
+  external_web: NOT_USED
+  task_mutation_performed: false
+
+current_workitem:
+  type: NAMED_EVIDENCE_GAP
+  campaign_id: X12_STALE_CONCURRENT_WRITER_SIMULATION_C22
+  gap: CURRENT_V0089_EVENT_DIGEST_MISMATCH_HOLD
+  conflict_commit: 5081de0a029fa5f908dc2b9225bc1ebdd26e555e
+  conflict_path: state/coordination/experiments/durable_object_x12/conflicts/20260804T124400Z_CURRENT_V0089_EVENT_DIGEST_MISMATCH_HOLD.json
+  conflict_blob_sha1: a7c47f1859f7955a14ee4d23a5cb1c5e3ced4f2d
+  event_commit: 90a98a2157f57e56d7306502e801b2f0087cfd81
+  event_path: state/coordination/experiments/durable_object_x12/events/20260804T124400Z_V0088_TO_V0089_CLOSE_C22_KEEP_STALE_PREFLIGHT.json
+  event_blob_sha1: 5584c8242711822508fa05a8995e1c072a1a23e9
+  physical_current_version: 89
+  declared_event_digest_sha256: 678061dd1dc08b69715a88d14d8756c60730b9db4df4f6fd0b8cf66dc997ef5d
+  recomputed_event_digest_sha256: a535606728a0bd0393bd510bec7aacdf9e11887e4c338fc22be2dc4cbd94f8f9
+  observed_result: MISMATCH
+  current_decision: HOLD_POSTREAD_EVENT_DIGEST_MISMATCH
+  campaign_logical_progress: 3_of_4
+  normal_slack_delivery: SUPPRESSED
+
+reusable_prior_artifact:
+  artifact_role: COMPENSATING_TRANSITION_AFTER_POSTREAD_DIGEST_MISMATCH_PATTERN
+  original_date_utc: 2026-08-04T11:44:06Z
+  source_repository: TTaoGaming/hfo-gen-133
+  source_branch: agent/gen133-bootstrap-20260730
+  source_commit: ad39cffa35766a0ec377bbed8d23ba08c00c6d4c
+  source_path: state/coordination/experiments/durable_object_x12/events/20260804T114406Z_V0087_TO_V0088_COMPENSATE_POSTREAD_DIGEST_MISMATCH.json
+  source_blob_sha1: 2f0fe11a7e2b17aba0cc83d05a94e5b5fb5a4ebb
+  source_campaign_id: X12_STALE_CONCURRENT_WRITER_SIMULATION_C22
+  source_transition: V0087_TO_V0088
+  source_transition_kind: COMPENSATING_RECOVERY_AFTER_CURRENT_POSTREAD_DIGEST_MISMATCH
+  source_prior_conflict_path: state/coordination/experiments/durable_object_x12/conflicts/20260804T104400Z_CURRENT_V0087_POSTREAD_PROJECTION_DIGEST_MISMATCH_HOLD.json
+  source_effect_ceiling: ONE_CREATE_ONLY_CLAIM_ONE_OUTBOX_ONE_EVENT_ONE_CURRENT_ADVANCE_ONE_SANITIZED_SLACK_POINTER_ONE_RECEIPT
+  reusable_behavior: >-
+    Preserve the defective physical version and its immutable event/conflict evidence. Do not repair the same version in place.
+    On a later carrier, refetch the exact then-current bytes, recompute the actual projection and event bindings, require the exact
+    current blob SHA once, and either append a compensating next-version transition with fresh claim/outbox/event/readback gates or HOLD again.
+
+supported_claims:
+  - The current X12 conflict records an exact immutable event blob whose declared event digest differs from local recomputation and therefore suppresses normal Slack delivery and campaign acceptance.
+  - The prior X12 artifact from the same campaign records the recovery pattern used after a postread digest defect: preserve the defective version and advance only through a later compensating next-version transition from exact then-current state.
+  - The current v89 event itself binds that v87-to-v88 compensation as its prior event and uses exact v88 as its transition precondition, making the prior artifact acceptance-relevant to the present v89 hold.
+  - The transferable invariant is no same-version repair, exact-byte refetch, exact prior-blob gate, immutable compensation artifacts, final postread, and HOLD on any mismatch.
+
+excluded_claims:
+  - This result does not prove the actual v89 canonical_projection digest; the current conflict explicitly stopped before that check.
+  - It does not identify whether the v89 failure is canonicalizer drift, field selection, serialization, transcription, or another defect.
+  - It does not authorize or perform a v89-to-v90 transition, CURRENT update, Slack send, task mutation, deployment, merge, or canon promotion.
+  - It is not a direct S04 verdict, independent implementation-conformance test, ConsumerAck, campaign completion, durability proof, or outcome proof.
+  - The prior projection-digest defect and the current event-digest defect are not asserted to share the same root cause.
+
+acceptance_relevance:
+  current_workitem_use: >-
+    X12 can consume this source pointer when planning recovery: preserve physical v89 and all immutable evidence; refetch exact v89;
+    recompute both its actual canonical_projection digest and the exact anchored event bytes; require a fresh claim and exact v89 blob gate;
+    create a compensating v89-to-v90 event only if all bindings are coherent; verify v90 postread before any normal Slack pointer; otherwise HOLD.
+  required_claim_ceiling: POINTER_ONLY_NO_REPAIR_OR_COMPLETION_CLAIM
+  direct_structural_review_required: true
+  distinct_verification_required_for_binding_conclusion: true
+
+consumer_contract:
+  named_current_workitem_consumer:
+    - X12_DURABLE_OBJECT_CAMPAIGN_REDUCER
+    - Reginleif/Olrun
+  direct_reviewer: S04_STRUCTURAL_PREFLIGHT
+  advisory_reviewer: DISTINCT_SIGRUN_P4
+  consumption_required_for_credit: >-
+    A later consumer-authored immutable receipt must bind this result_id or resulting Git blob, the current conflict blob
+    a7c47f1859f7955a14ee4d23a5cb1c5e3ced4f2d, the current event blob 5584c8242711822508fa05a8995e1c072a1a23e9,
+    and the prior compensation blob 2f0fe11a7e2b17aba0cc83d05a94e5b5fb5a4ebb. Routing or Slack delivery is not ConsumerAck.
+
+idempotency_and_dedup:
+  idempotency_key: S15|X12_C22_V89_EVENT_DIGEST_MISMATCH|PRIOR_COMPENSATION_BLOB_2f0fe11a7e2b17aba0cc83d05a94e5b5fb5a4ebb
+  searches_performed:
+    - CURRENT_V0089_EVENT_DIGEST_MISMATCH_HOLD seat-15
+    - EVENT_DIGEST_MISMATCH compensating transition
+    - digest mismatch preserve immutable compensating transition
+  prior_exact_s15_binding_found: false
+  duplicate_disposition: NOT_DUPLICATE_BECAUSE_THIS_BINDS_A_NEW_V89_EVENT_DIGEST_GAP_TO_THE_EXACT_PRIOR_V88_COMPENSATION_ARTIFACT
+  limitation: GitHub code search can lag recent branch writes and is not transactionally complete.
+
+rollback:
+  action: IGNORE_OR_SUPERSEDE_THIS_POINTER
+  source_edit_required: false
+  current_edit_required: false
+  external_compensation_required: false
+
+honest_flaw: >-
+  The prior artifact repaired a CURRENT canonical_projection digest mismatch, while the present defect is an immutable event digest mismatch
+  and the v89 projection has not yet been checked. Only the preserve-evidence, no-same-version-repair, exact-byte refetch, next-version
+  compensation, and postread gates transfer. The prior and current computations may share the same carrier or canonicalizer risk; no independent
+  verifier or ConsumerAck is present, so heritage credit and binding weight remain zero.
