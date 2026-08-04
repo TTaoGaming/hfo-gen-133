@@ -1,0 +1,60 @@
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+event_id: X11_CALENDAR_METADATA_READ_VISIBILITY_V1_WAKE_03_ACCEPTED_20260804T113900Z
+experiment_id: X11_CALENDAR_METADATA_READ_VISIBILITY_V1
+task_id_expected: 6a55089a9adc8191bda54541f7f9effa
+carrier: HFO_GEN133_X11
+wip: 1
+branch: agent/gen133-bootstrap-20260730
+prior_current_version: 86
+next_current_version: 87
+campaign_wake: 3
+campaign_target_wakes: 4
+accepted: true
+campaign_status: ACTIVE
+campaign_disposition: null
+baseline:
+  accepted_wakes: 2
+  result_count: 0
+  next_page_token_present: false
+  permission_class: AUTHENTICATED_GOOGLE_CALENDAR_BOUNDED_SEARCH_AVAILABLE
+  error_class: NONE
+  latency_samples_ms: [1711, 653]
+hypothesis: identical bounded impossible-marker search repeats with the same sanitized result and no state change
+controlled_factor: calendar_read_surface
+exact_probe:
+  calendar_id: primary
+  query: HFO_X11_CALENDAR_METADATA_PROBE_4A9C7E2B6D1F8C30
+  time_min: 2026-01-01T00:00:00Z
+  time_max: 2026-12-31T23:59:59Z
+  max_results: 1
+measured_result:
+  execution_status: SUCCESS
+  result_count: 0
+  next_page_token_present: false
+  permission_class: AUTHENTICATED_GOOGLE_CALENDAR_BOUNDED_SEARCH_AVAILABLE
+  error_class: NONE
+  latency_ms: 242
+  latency_samples_ms: [1711, 653, 242]
+  operator_relay_minutes: 0
+  interactive_login_required: false
+  event_content_read: false
+  event_identifiers_persisted: false
+  calendar_mutation_performed: false
+  send_performed: false
+  task_mutation_performed: false
+  changed_capability: false
+  campaign_decision: false
+  andon: false
+strongest_falsifier: query requires login, errors, exposes event data, or changes sanitized result across identical wakes
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer: [Reginleif, Ratatoskr]
+claim_ceiling: bounded authenticated Calendar search execution and sanitized count visibility only
+same_provider_independence_claim: false
+honest_flaw: one impossible-marker query cannot establish calendar completeness, index freshness, content access, or notifications
+next_factor: calendar_read_surface
+next_probe:
+  campaign_wake: 4
+  same_as_wake_3: true
+slack_action: SILENT_UNCHANGED
+valid_time_utc: 2026-08-04T11:39:00Z
+sealed: true
