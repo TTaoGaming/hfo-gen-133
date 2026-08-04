@@ -1,0 +1,90 @@
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+event_id: X11_CALENDAR_METADATA_READ_VISIBILITY_V1_WAKE_04_DECISION_KEEP_20260804T123825Z
+experiment_id: X11_CALENDAR_METADATA_READ_VISIBILITY_V1
+task_id_expected: 6a55089a9adc8191bda54541f7f9effa
+carrier: HFO_GEN133_X11
+wip: 1
+branch: agent/gen133-bootstrap-20260730
+prior_current_version: 87
+next_current_version: 88
+campaign_wake: 4
+campaign_target_wakes: 4
+accepted: true
+campaign_status: COMPLETE
+campaign_disposition: KEEP
+baseline:
+  accepted_wakes: 3
+  result_count: 0
+  next_page_token_present: false
+  permission_class: AUTHENTICATED_GOOGLE_CALENDAR_BOUNDED_SEARCH_AVAILABLE
+  error_class: NONE
+  latency_samples_ms: [1711, 653, 242]
+hypothesis: identical bounded impossible-marker search repeats with the same sanitized result and no state change
+controlled_factor: calendar_read_surface
+exact_probe:
+  calendar_id: primary
+  query: HFO_X11_CALENDAR_METADATA_PROBE_4A9C7E2B6D1F8C30
+  time_min: 2026-01-01T00:00:00Z
+  time_max: 2026-12-31T23:59:59Z
+  max_results: 1
+measured_result:
+  execution_status: SUCCESS
+  result_count: 0
+  next_page_token_present: false
+  permission_class: AUTHENTICATED_GOOGLE_CALENDAR_BOUNDED_SEARCH_AVAILABLE
+  error_class: NONE
+  latency_ms: 199
+  latency_samples_ms: [1711, 653, 242, 199]
+  median_latency_ms: 447.5
+  latency_range_ms: 1512
+  operator_relay_minutes: 0
+  interactive_login_required: false
+  event_content_read: false
+  event_identifiers_persisted: false
+  calendar_mutation_performed: false
+  send_performed: false
+  task_mutation_performed: false
+  changed_capability: false
+  campaign_decision: true
+  andon: false
+decision:
+  disposition: KEEP
+  rationale: four_identical_bounded_searches_completed_without_login_error_content_read_identifier_persistence_or_state_change_and_returned_the_same_sanitized_zero_result
+  supported_claim: repeatable_authenticated_Google_Calendar_bounded_search_execution_and_sanitized_result_count_visibility
+  unsupported_claims:
+    - calendar_completeness
+    - indexing_freshness
+    - event_content_access
+    - notification_delivery
+    - scheduler_reliability
+    - independent_verification
+strongest_falsifier: the_fixed_impossible_marker_bounded_query_requires_interactive_login_returns_an_unclassified_permission_error_exposes_event_content_or_identifiers_outside_the_tool_boundary_or_produces_inconsistent_sanitized_result_counts_across_identical_wakes
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer: [Reginleif, Ratatoskr]
+claim_ceiling: bounded_authenticated_Calendar_search_execution_and_sanitized_count_visibility_only
+same_provider_independence_claim: false
+honest_flaw: one_impossible_marker_query_in_one_bounded_primary_calendar_window_cannot_establish_calendar_completeness_index_freshness_content_access_or_notifications
+next_factor: google_drive_read_surface
+next_probe:
+  experiment_id: X11_GOOGLE_DRIVE_METADATA_READ_VISIBILITY_V2
+  campaign_wake: 1
+  mode: authenticated_drive_impossible_marker_metadata_search
+  query: HFO_X11_DRIVE_METADATA_PROBE_7B2E9D4C6A1F8035
+  topn: 1
+  best_effort_fetch: false
+  persist_only:
+    - result_count
+    - next_page_token_present
+    - permission_class
+    - error_class
+    - latency_when_exposed
+    - operator_relay_minutes
+  file_ids_persistence_allowed: false
+  file_content_persistence_allowed: false
+  mutation_allowed: false
+  send_allowed: false
+  interactive_login_allowed: false
+  sensitive_readback_externalization_allowed: false
+slack_action: POST_CAMPAIGN_DECISION
+valid_time_utc: 2026-08-04T12:38:25Z
+sealed: true
