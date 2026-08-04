@@ -1,55 +1,50 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
-experiment_id: X11_CALENDAR_METADATA_READ_VISIBILITY_V1
-current_version: 87
-accepted_wakes: 3
+experiment_id: X11_GOOGLE_DRIVE_METADATA_READ_VISIBILITY_V2
+current_version: 88
+accepted_wakes: 0
 target_wakes_before_decision: 4
-controlled_factor: calendar_read_surface
+controlled_factor: google_drive_read_surface
 campaign_status: ACTIVE
 current_disposition: null
 prior_campaign:
-  experiment_id: X11_GMAIL_METADATA_READ_VISIBILITY_V1
-  final_version: 84
+  experiment_id: X11_CALENDAR_METADATA_READ_VISIBILITY_V1
+  final_version: 88
   disposition: KEEP
   accepted_wakes: 4
 last_event:
-  commit: 0d52cb77aca1f9bc45b49762ca8021377cd7d538
-  path: state/coordination/experiments/carrier_surface_x11/events/20260804T113900Z_CALENDAR_METADATA_READ_VISIBILITY_V1_WAKE_03_ACCEPTED.yaml
-  blob: 67c2a47275537995ebf544b90055b91c77adbb64
+  commit: 43e746ee853d4460e07d7152e65180b5ddf68837
+  path: state/coordination/experiments/carrier_surface_x11/events/20260804T123825Z_CALENDAR_METADATA_READ_VISIBILITY_V1_WAKE_04_DECISION_KEEP.yaml
+  blob: e83dd1418df0c0f5574f52987f2ce637712f59fd
 baseline_result:
-  mode: authenticated_calendar_impossible_marker_bounded_search
-  result_count: 0
-  next_page_token_present: false
-  execution_status: SUCCESS
+  mode: authenticated_drive_impossible_marker_metadata_search
+  execution_status: NOT_RUN
   interactive_login_required: false
-  event_content_read: false
-  event_identifiers_persisted: false
+  file_content_read: false
+  file_identifiers_persisted: false
   sensitive_readback_externalized: false
   mutation_performed_by_probe: false
   send_performed: false
   changed_capability: false
   andon: false
-  permission_class: AUTHENTICATED_GOOGLE_CALENDAR_BOUNDED_SEARCH_AVAILABLE
-  error_class: NONE
-  latency_exposed: true
-  latest_latency_ms: 242
-  latency_samples_ms: [1711, 653, 242]
+  permission_class: NOT_MEASURED
+  error_class: NOT_MEASURED
+  latency_exposed: null
+  latency_samples_ms: []
   operator_relay_minutes: 0
-claim_ceiling: authenticated_Google_Calendar_bounded_search_execution_and_sanitized_result_count_visibility_only_not_calendar_completeness_indexing_freshness_event_content_access_notification_delivery_or_independent_verification
-strongest_falsifier: the_fixed_impossible_marker_bounded_query_requires_interactive_login_returns_an_unclassified_permission_error_exposes_event_content_or_identifiers_outside_the_tool_boundary_or_produces_inconsistent_sanitized_result_counts_across_identical_wakes
+claim_ceiling: authenticated_Google_Drive_metadata_search_execution_and_sanitized_result_count_visibility_only_not_drive_completeness_indexing_freshness_file_content_access_sharing_scope_or_independent_verification
+strongest_falsifier: the_fixed_impossible_marker_metadata_query_requires_interactive_login_returns_an_unclassified_permission_error_exposes_file_content_or_identifiers_outside_the_tool_boundary_or_produces_inconsistent_sanitized_result_counts_across_identical_wakes
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 next_consumer: [Reginleif, Ratatoskr]
-honest_flaw: an_impossible_marker_search_in_one_bounded_primary_calendar_window_tests_only_one_authenticated_search_path_and_a_zero_result_does_not_establish_calendar_completeness_index_freshness_event_content_access_or_notification_delivery
-next_factor: calendar_read_surface
+honest_flaw: an_impossible_marker_metadata_search_tests_only_one_authenticated_Drive_query_path_and_a_zero_result_would_not_establish_drive_completeness_index_freshness_file_content_access_or_sharing_scope
+next_factor: google_drive_read_surface
 next_probe:
-  experiment_id: X11_CALENDAR_METADATA_READ_VISIBILITY_V1
-  campaign_wake: 4
-  mode: authenticated_calendar_impossible_marker_bounded_search
-  calendar_id: primary
-  query: HFO_X11_CALENDAR_METADATA_PROBE_4A9C7E2B6D1F8C30
-  time_min: 2026-01-01T00:00:00Z
-  time_max: 2026-12-31T23:59:59Z
-  max_results: 1
+  experiment_id: X11_GOOGLE_DRIVE_METADATA_READ_VISIBILITY_V2
+  campaign_wake: 1
+  mode: authenticated_drive_impossible_marker_metadata_search
+  query: HFO_X11_DRIVE_METADATA_PROBE_7B2E9D4C6A1F8035
+  topn: 1
+  best_effort_fetch: false
   persist_only:
     - result_count
     - next_page_token_present
@@ -57,21 +52,21 @@ next_probe:
     - error_class
     - latency_when_exposed
     - operator_relay_minutes
-  event_ids_persistence_allowed: false
-  event_content_persistence_allowed: false
+  file_ids_persistence_allowed: false
+  file_content_persistence_allowed: false
   mutation_allowed: false
   send_allowed: false
   interactive_login_allowed: false
   sensitive_readback_externalization_allowed: false
-slack_action: SILENT_UNCHANGED
-updated_valid_time_utc: 2026-08-04T11:39:00Z
+slack_action: POST_CAMPAIGN_DECISION
+updated_valid_time_utc: 2026-08-04T12:38:25Z
 sealed: false
 ---
 
-The Calendar metadata-read campaign accepted wake 3/4. The identical fixed
-impossible-marker search on the primary calendar inside the bounded 2026 UTC
-window again returned zero events and no continuation token, with 242 ms
-connector latency. No interactive login, event-content read, identifier
-persistence, mutation, send, operator relay, or sensitive readback
-externalization occurred. Capability was unchanged, so Slack remains silent.
-Wake 4 repeats the identical probe and writes the campaign decision.
+The Calendar metadata-read campaign completed four accepted wakes with the
+same sanitized zero-result outcome and no interactive login, content read,
+identifier persistence, mutation, send, operator relay, or sensitive readback
+externalization. Disposition is KEEP within the narrow claim ceiling of
+bounded authenticated Calendar-search execution and sanitized result-count
+visibility. The next campaign is Google Drive metadata-read visibility V2;
+its first probe has not run.
