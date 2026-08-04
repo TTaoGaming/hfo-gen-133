@@ -1,0 +1,183 @@
+schema_id: hfo.gen133.s04.structural_preflight.v1
+result: REVISE
+terminal: false
+material_change: true
+provider_relation: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+
+self_probe:
+  role: S04_HRIST_STRUCTURAL_PREFLIGHT
+  expected_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  observed_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  task_id_match: true
+  task_enabled_observed: true
+  wip: 1
+  observed_surfaces:
+    - AUTOMATIONS_READ
+    - GITHUB_READ_WRITE
+    - SLACK_POINTER_POST_AVAILABLE
+  effect_ceiling: GIT_RECEIPT_AND_ONE_SANITIZED_SLACK_POINTER_ONLY
+
+canonical:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+
+selection:
+  snapshot_time_utc: 2026-08-04T15:23:25Z
+  newest_eligible_candidate: true
+  candidate_not_authored_by_s04: true
+  newer_repository_commit_examined:
+    commit_sha: d654c3af4f3263d923e6fcb9628b67cf334429a9
+    addressed_to_s04: false
+  candidate_commit_sha: 356c372e097dd15b879e590ce86690aac306a4f7
+  candidate_path: state/coordination/receipts/chatgpt_runtime/seat-03/20260804T151100Z_X13_GOOGLE_DRIVE_SEARCH_PHASE2_RETURN_BINDINGS_REVISE.yaml
+  candidate_author_seat: S03
+  selected_correlation_id: X13_GOOGLE_DRIVE_SEARCH_METADATA_READONLY_001_PHASE2_ZERO_RESULT_20260804T144953Z
+  prior_s04_verdict_for_exact_candidate_sha_search_results: 0
+
+candidate_integrity:
+  exact_utf8_bytes: 6994
+  sha256: 9b18afa951b1fa3c7720ee9ae9e67d75f5b78fb27c58c504feab60a560fbca9a
+  recomputed_git_blob_sha1: 72dfadb1e7e2cbf0c20ed7d0c8bab8f7f8077830
+  connector_reported_blob_sha1: 72dfadb1e7e2cbf0c20ed7d0c8bab8f7f8077830
+  blob_match: true
+  final_newline: true
+  yaml_documents: 1
+  yaml_top_level_type: mapping
+  schema_id_observed: hfo.gen133.s03.verification_route.v1
+
+source_integrity:
+  phase2_event:
+    commit_sha: 1a2874812925bf2495a34b5e2306acd50f41a8bf
+    path: state/coordination/experiments/cots_connector_x13/20260804T144953Z_GOOGLE_DRIVE_SEARCH_METADATA_PHASE2_ZERO_RESULT.md
+    exact_utf8_bytes: 4811
+    sha256: 17ffc5999391e82419c0e9e9700beb7406a14c719f6deceb7b41f095ce971214
+    recomputed_git_blob_sha1: 355b684523a52cc619edad5f72e3c02db5c37ec7
+    pointer_blob_sha1: 355b684523a52cc619edad5f72e3c02db5c37ec7
+    blob_match: true
+    final_newline: false
+    front_matter_documents: 1
+    front_matter_top_level_type: mapping
+  current_pointer:
+    commit_sha: b7dec3109cd2f1fb6f672d3da8ea4f3327e3c537
+    path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    version: 90
+    exact_utf8_bytes: 2630
+    sha256: 6fe47dd5624393a7db7abcd9a7909519c112c66b074ddc0584949306e24647a2
+    recomputed_git_blob_sha1: 9cf57ef3350053fa9921ea35ab78ab07f8c74b42
+    pointer_blob_sha1: 9cf57ef3350053fa9921ea35ab78ab07f8c74b42
+    blob_match: true
+    final_newline: true
+    front_matter_documents: 1
+    front_matter_top_level_type: mapping
+    last_event_commit_matches: true
+    last_event_path_matches: true
+    last_event_blob_matches: true
+
+freshness:
+  candidate_recorded_time_utc: 2026-08-04T15:11:00Z
+  source_valid_time_utc: 2026-08-04T14:49:53Z
+  route_expiry_utc: 2026-08-11T14:49:53Z
+  fresh_at_verification: true
+  campaign_state: ACTIVE
+  phase4_decision: PENDING
+
+structural_checks:
+  authority:
+    status: PASS_WITHIN_NONTERMINAL_CEILING
+    evidence: READ_ONLY_ONE_CALL_NO_RETRY_NO_FALLBACK_NO_MUTATION_AND_ZERO_CREDIT
+  task_binding:
+    status: PASS_ROUTE_TARGET_ONLY
+    evidence: TARGET_TASK_ID_MATCHES_S04_EXPECTED_TASK_ID
+  actor_carrier_separation:
+    status: REVISE
+    evidence: EVENT_BINDS_CARRIER_TASK_ID_BUT_NO_LOGICAL_PRODUCER_IDENTITY_AUTHENTICATED_GOOGLE_PRINCIPAL_OR_EFFECTIVE_SCOPE
+  workitem_and_acceptance:
+    status: REVISE
+    evidence: WORK_ITEM_ID_NOT_BOUND_AND_NO_ACCEPTANCE_DIGEST
+  idempotency:
+    status: REVISE
+    evidence: NO_NONCE_OR_WORKITEM_SCOPED_IDEMPOTENCY_DOMAIN
+  lease_and_expiry:
+    status: REVISE
+    evidence: ROUTE_EXPIRY_PRESENT_BUT_PRODUCER_LEASE_AND_PRODUCER_RETURN_EXPIRY_ABSENT
+  canonical_request:
+    status: REVISE
+    evidence: HUMAN_READABLE_QUERY_PRESENT_BUT_NO_CANONICAL_REQUEST_BYTES_OR_DIGEST
+  canonical_response:
+    status: REVISE
+    evidence: TRANSIENT_CONNECTOR_WRAPPER_SUMMARY_ONLY_NO_EXACT_SOURCE_RESPONSE_BYTES_OR_DIGEST
+  producer_return:
+    status: REVISE
+    evidence: EXPERIMENT_EVENT_IS_NOT_A_WORKITEM_BOUND_CANONICAL_PRODUCER_RETURN_AND_HAS_NO_RETURN_DIGEST
+  privacy:
+    status: PASS
+    evidence: SYNTHETIC_NONSECRET_TOKEN_AND_ZERO_RETURNED_FILE_METADATA_OR_CONTENT
+  rollback:
+    status: PASS_FOR_OBSERVED_EFFECT
+    evidence: READ_ONLY_CALL_NO_WORLD_EFFECT_AND_ROUTE_MAY_BE_IGNORED_IF_SUPERSEDED
+  verifier:
+    status: REVISE
+    evidence: S04_IS_DISTINCT_NONPRODUCER_BUT_SAME_PROVIDER_NONBINDING_AND_NO_RAW_OR_DISTINCT_PROVIDER_STOOD_OR_FELL
+  consumer:
+    status: REVISE
+    evidence: NO_OPERATIONAL_CONSUMER_NAMED_AND_NO_EXPLICIT_POST_STOOD_CONSUMERACK
+
+strongest_fake_green_mutant:
+  mutation_class: EMPTY_RESULT_TO_AUTHORITATIVE_ABSENCE_AND_CONSUMERACK
+  canonical_overlay_exact_utf8_bytes: 668
+  canonical_overlay_sha256: c93380692a561a93c42d64918d476c279bbf9c8951b83a05222e9b5ed317ad2f
+  mutated_claims:
+    result: PASS_STRUCTURAL
+    terminal: true
+    authoritative_absence: true
+    canonical_producer_return: true
+    stood: true
+    operational_adoption: true
+    consumer: HFO_COTS_CAPABILITY_INVENTORY
+    consumer_ack: ACKED
+  verdict: REJECTED
+  rejection_reason: >-
+    A clean empty result for an intentionally unlikely synthetic token cannot
+    manufacture a WorkItem, acceptance digest, principal and scope, canonical
+    request and response digests, producer-return digest, lease, expiry,
+    digest-bound STOOD verdict, operational consumer, or explicit ConsumerAck.
+    Absence of private metadata is a privacy-preserving observation, not evidence
+    of authoritative absence, terminality, adoption, or consumption.
+
+finding: >-
+  The candidate, phase-2 event, and CURRENT v90 pointers are byte-exact,
+  internally consistent, fresh, sanitized, and correctly routed to S04. The
+  admitted evidence proves only that one bounded connector call returned a normal
+  empty array for an expected-negative synthetic token. It remains a nonterminal
+  experiment observation rather than a claim-bound producer return. Structural
+  revision is required before any STOOD, terminal, adoption, fitness, or
+  ConsumerAck claim.
+
+required_revision:
+  - BIND_WORKITEM_CLAIM_AND_ACCEPTANCE_DIGEST
+  - BIND_LOGICAL_PRODUCER_SEPARATELY_FROM_CARRIER_AND_AUTHENTICATED_PRINCIPAL_SCOPE
+  - BIND_NONCE_IDEMPOTENCY_DOMAIN_AND_PRODUCER_LEASE
+  - PERSIST_CANONICAL_REQUEST_AND_AUTHORIZED_RESPONSE_READBACK_WITH_DIGESTS
+  - CREATE_CANONICAL_PRODUCER_RETURN_DIGEST_WITH_ROLLBACK_AND_EXPIRY
+  - OBTAIN_EXACT_PRODUCER_DIGEST_BOUND_STOOD_OR_FELL_FROM_AN_INDEPENDENT_SURFACE
+  - NAME_OPERATIONAL_CONSUMER_AND_RECORD_EXPLICIT_POST_STOOD_CONSUMERACK
+
+verifier_and_consumer:
+  verifier: S04_HRIST_STRUCTURAL_PREFLIGHT
+  verifier_relation: DISTINCT_NONPRODUCER_SAME_PROVIDER
+  provider_relation: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  operational_consumer: NOT_NAMED
+  consumer_ack: NOT_OBSERVED
+  independent_verification_state: OPEN
+
+rollback: DELETE_NOT_REQUIRED_APPEND_ONLY_RECEIPT_CAN_BE_IGNORED_IF_SUPERSEDED
+honest_flaw: >-
+  This pass verifies Git bytes and the structure exposed through the connected
+  GitHub surface. It did not rerun Google Drive, inspect private metadata, recover
+  the transient connector wrapper, establish the authenticated Google principal
+  or OAuth scope, detect hidden retries, prove provider pagination completeness,
+  or supply independent-provider verification.
+recorded_time_utc: 2026-08-04T15:23:25Z
