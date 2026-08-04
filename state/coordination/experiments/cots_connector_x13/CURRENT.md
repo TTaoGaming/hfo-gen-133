@@ -1,28 +1,28 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
 experiment_id: X13_GOOGLE_CALENDAR_FREEBUSY_READONLY_001
-version: 79
-prior_version: 78
+version: 80
+prior_version: 79
 candidate: Google_Calendar_get_availability_bounded_readonly_freebusy_surface
 candidate_contract_reference: official_Google_Calendar_freebusy_query_error_and_2026_quota_contract_plus_direct_connector_receipts
-campaign_wake: 3_of_4
-campaign_status: ACTIVE
+campaign_wake: 4_of_4
+campaign_status: CLOSED
 phase_1_completed: true
 phase_2_completed: true
 phase_3_completed: true
-phase_4_completed: false
-phase_4_decision: PENDING
-adoption_mode: NOT_YET_DECIDED
+phase_4_completed: true
+phase_4_decision: ADOPT_WITH_GATES
+adoption_mode: CATALOG_ONLY_NONOPERATIONAL
 carrier_task_id: 6a55c1733708819185088bf334e33ea5
 carrier_task_id_match: true
 wip: 1
 last_event:
-  commit: 7b0ad5daf1e8d091918c647e6db8763260bfdcc0
-  path: state/coordination/experiments/cots_connector_x13/20260804T034706Z_GOOGLE_CALENDAR_PHASE3_SYNTHETIC_NOTFOUND_PROBE.md
-  blob_sha: 96765604f283643394ac26213489b5f507b794f4
+  commit: c7db220c2b578148be7c63e10ce085c84f802326
+  path: state/coordination/experiments/cots_connector_x13/20260804T044800Z_GOOGLE_CALENDAR_PHASE4_ADOPT_WITH_GATES.md
+  blob_sha: 0c8a603fe24e9f881ccec51ab93379b161cd7177
   exact_readback_completed: true
-prior_current_commit: 3405f47d04248d0523d40d8956736df0366020ac
-prior_current_blob_sha: 9a4b93a303f6a8e49aed8b74f269c0f0ab5e2437
+prior_current_commit: f5af5041185639f0ded12134805e4cee06468cbc
+prior_current_blob_sha: 894a082b4008f404f7ec8a7dffbafcaae0b156c1
 effect_ceiling: CATALOG_ONLY_BOUNDED_READONLY_FREEBUSY_NO_EVENT_CONTENT_CREATE_UPDATE_DELETE_INVITATION_RESPONSE_NOTIFICATION_ACL_OR_CALENDAR_MUTATION
 adoption_credit: 0
 fitness_credit: 0
@@ -47,6 +47,7 @@ campaign_candidate_invocations:
   phase_1_get_availability_reads: 1
   phase_2_get_availability_reads: 1
   phase_3_get_availability_failure_probes: 1
+  phase_4_candidate_calls: 0
   total_candidate_read_attempts: 3
   completed_connector_responses: 3
   outer_connector_errors: 0
@@ -79,6 +80,7 @@ measured_facts:
   phase_3_error_reason: notFound
   phase_3_outer_connector_error: NONE
   phase_3_connector_reported_external_call_time_ms: 182
+  phase_4_decision_only_no_candidate_call: true
   total_event_titles_descriptions_attendees_locations_or_ids_returned_count: 0
   exact_query_busy_timestamps_and_synthetic_identifier_durably_logged: false
   no_candidate_surface_mutation_retry_or_fallback: true
@@ -88,8 +90,8 @@ measured_facts:
   successful_freebusy_response_does_not_prove_least_privilege: true
 admitted_scope:
   - CATALOG_ONLY_BOUNDED_EXPLICIT_FREEBUSY_DISCOVERY_WHEN_EVENT_CONTENT_IS_NOT_NEEDED
-  - ONE_KNOWN_CALENDAR_AND_ONE_MINUTE_INTERVAL_FOR_BASELINE_AND_MICRO_USE_PROBES
-  - ONE_SYNTHETIC_NONSECRET_CALENDAR_IDENTIFIER_FOR_PER_CALENDAR_FAILURE_SHAPE_PROBE
+  - MINIMUM_KNOWN_CALENDAR_SET_AND_SMALL_RFC3339_INTERVAL
+  - NONOPERATIONAL_UNTIL_NAMED_CONSUMER_ACK_AND_MEASURED_OUTCOME
 excluded_scope:
   - EVENT_CONTENT_SEARCH_OR_HYDRATION
   - EVENT_CREATE_UPDATE_DELETE_INVITATION_RESPONSE_NOTIFICATION_ACL_OR_CALENDAR_SETTINGS_CHANGE
@@ -99,7 +101,7 @@ excluded_scope:
 mandatory_gates:
   - PREFER_FREEBUSY_OVER_EVENT_SEARCH_WHEN_ONLY_AVAILABILITY_IS_REQUIRED
   - REQUIRE_EXPLICIT_SMALL_RFC3339_TIME_MIN_TIME_MAX_AND_RESPONSE_TIMEZONE
-  - QUERY_MINIMUM_CALENDAR_SET_ONE_KNOWN_CALENDAR_FOR_PROBES
+  - QUERY_THE_MINIMUM_CALENDAR_SET
   - INSPECT_PER_CALENDAR_ERRORS_EVEN_WHEN_OUTER_CALL_COMPLETES_WITHOUT_ERROR
   - TREAT_EMPTY_BUSY_LIST_ONLY_AS_EXACT_SCOPE_TIME_OBSERVATION_WHEN_NO_PER_CALENDAR_ERROR_EXISTS
   - TREAT_NOTFOUND_AS_AMBIGUOUS_BETWEEN_NONEXISTENT_AND_INACCESSIBLE
@@ -111,12 +113,12 @@ mandatory_gates:
   - DO_NOT_INFER_EVENT_CONTENT_IDENTITY_OR_CAUSE_FROM_BUSY_INTERVAL
   - DO_NOT_INFER_LEAST_PRIVILEGE_EXACT_UPSTREAM_METHOD_COUNT_QUOTA_USE_RAW_PARITY_OR_ZERO_HIDDEN_RETRIES
   - REQUIRE_NAMED_OPERATIONAL_CONSUMER_ACK_AND_MEASURED_OUTCOME_BEFORE_OPERATIONAL_ADOPTION_OR_FITNESS_CREDIT
-verifier: DISTINCT_AUTHORIZED_RAW_GOOGLE_CALENDAR_FREEBUSY_QUERY_WITH_SAME_PRINCIPAL_AND_NEW_SYNTHETIC_IDENTIFIER_CAPTURING_PRINCIPAL_EFFECTIVE_PERMISSION_REQUEST_DIGEST_RAW_STATUS_HEADERS_REQUEST_ID_RESPONSE_BODY_PER_CALENDAR_ERRORS_QUOTA_AND_RETRY_EVIDENCE
+verifier: DISTINCT_AUTHORIZED_RAW_GOOGLE_CALENDAR_FREEBUSY_QUERY_WITH_SAME_PRINCIPAL_CAPTURING_REQUEST_DIGEST_RAW_STATUS_HEADERS_REQUEST_ID_RESPONSE_BODY_PER_CALENDAR_ERRORS_EFFECTIVE_PERMISSION_QUOTA_AND_RETRY_EVIDENCE
 consumer:
   immediate_catalog_consumer: HFO_COTS_CAPABILITY_INVENTORY
   future_operational_consumer: MUST_BE_NAMED_IN_NEW_WORKITEM
-strongest_falsifier: SAME_PRINCIPAL_RAW_FREEBUSY_QUERY_RETURNS_NO_GLOBAL_NOTFOUND_OR_MATERIALLY_DIFFERENT_ERROR_OR_SHOWS_CONNECTOR_IDENTIFIER_INTERVAL_PRINCIPAL_METHOD_OR_RETRY_VARIANCE
-honest_flaw: ONE_SYNTHETIC_IDENTIFIER_PRODUCED_NESTED_GLOBAL_NOTFOUND_BUT_NONEXISTENT_VERSUS_INACCESSIBLE_WRAPPER_VERSUS_PROVIDER_ORIGIN_REAL_ACL_DENIAL_HTTP_AND_QUOTA_TELEMETRY_HIDDEN_RETRIES_RAW_API_PARITY_CONSUMER_ACK_AND_OPERATOR_TIME_REDUCTION_REMAIN_UNVERIFIED
+strongest_falsifier: SAME_PRINCIPAL_RAW_FREEBUSY_QUERY_RETURNS_MATERIALLY_DIFFERENT_BUSY_OR_ERROR_SHAPE_OR_PROVES_CONNECTOR_IDENTIFIER_INTERVAL_PRINCIPAL_METHOD_OR_RETRY_VARIANCE
+honest_flaw: THREE_SMALL_CALLS_ESTABLISH_ONLY_CONNECTOR_VISIBLE_CARDINALITY_AND_ONE_NESTED_GLOBAL_NOTFOUND_SHAPE_IDENTITY_SCOPE_EXACT_FORWARDING_MISSING_VERSUS_INACCESSIBLE_WRAPPER_VERSUS_PROVIDER_ORIGIN_RAW_HTTP_QUOTA_HIDDEN_RETRIES_RAW_API_PARITY_CONSUMER_VALUE_AND_OPERATOR_TIME_REDUCTION_REMAIN_UNVERIFIED
 phase_1_result:
   disposition: PHASE1_ACCEPTED_WITH_GATES
   admitted_interpretation: CONNECTOR_RETURNED_BOUNDED_FREEBUSY_CARDINALITY_WITHOUT_EVENT_CONTENT
@@ -126,16 +128,19 @@ phase_2_result:
 phase_3_result:
   disposition: PHASE3_ACCEPTED_WITH_GATES
   admitted_interpretation: CONNECTOR_PRESERVED_ONE_PER_CALENDAR_GLOBAL_NOTFOUND_ERROR_INSIDE_AN_OUTER_SUCCESS_RESPONSE_WITHOUT_EVENT_CONTENT
+phase_4_result:
+  disposition: ADOPT_WITH_GATES
+  admitted_interpretation: CATALOG_ONLY_BOUNDED_READONLY_FREEBUSY_CAPABILITY_NONOPERATIONAL_PENDING_CONSUMER_ACK_MEASURED_OUTCOME_AND_INDEPENDENT_RAW_PROVIDER_VERIFICATION
 next_wake:
-  experiment_id: X13_GOOGLE_CALENDAR_FREEBUSY_READONLY_001
-  candidate: Google_Calendar_get_availability_bounded_readonly_freebusy_surface
-  phase: 4_of_4
-  planned_probe: DECISION_ONLY_NO_ADDITIONAL_CALENDAR_CAPABILITY_CALL_PROVISIONAL_ADOPT_WITH_GATES_CATALOG_ONLY_NONOPERATIONAL
-review_expiry_utc: 2026-08-11T03:47:06Z
-valid_time_utc: 2026-08-04T03:47:06Z
-recorded_time_utc: 2026-08-04T03:47:06Z
+  experiment_id: X13_GITHUB_COMPARE_COMMITS_READONLY_001
+  candidate: GitHub_compare_commits_bounded_readonly_diff_metadata_surface
+  phase: 1_of_4
+  planned_probe: OFFICIAL_COMPARE_CONTRACT_AND_ONE_BOUNDED_SAME_REF_OR_SMALL_KNOWN_REF_BASELINE_WITHOUT_FILE_FETCH_WRITE_BRANCH_PR_COMMENT_MERGE_OR_PUBLICATION
+review_expiry_utc: 2026-08-11T04:48:00Z
+valid_time_utc: 2026-08-04T04:48:00Z
+recorded_time_utc: 2026-08-04T04:48:00Z
 ---
 
-# X13 CURRENT v79
+# X13 CURRENT v80
 
-The Google Calendar bounded read-only free/busy campaign is active at phase 3 of 4. Three explicit one-calendar, one-minute calls completed without event content, retry, fallback, mutation, surfaced charge, measured operator relief, adoption credit, or fitness credit. Phase 3 used one synthetic non-secret calendar identifier and returned one calendar result containing zero busy intervals plus one nested `global/notFound` error in 182 ms while the outer connector error remained empty. This establishes a connector-visible per-calendar failure shape, not authoritative resource absence or permission state. Raw transport, request identity, effective permission, quota, upstream attempts, independent parity, consumer value, and actual time savings remain unverified.
+The Google Calendar bounded read-only free/busy campaign is closed as `ADOPT_WITH_GATES`, catalog-only and nonoperational. Three explicit one-calendar, one-minute calls completed without event content, retry, fallback, mutation, surfaced charge, measured operator relief, adoption credit, or fitness credit. The connector preserved one nested `global/notFound` per-calendar error inside an outer-success response, proving that outer success and `busy: []` cannot be treated as availability when a nested error exists. Identity, effective permission, exact forwarding, missing-versus-inaccessible classification, raw transport, quota, hidden retries, independent parity, consumer value, and actual time savings remain unverified. The next campaign is a bounded read-only GitHub compare-commits surface baseline.
