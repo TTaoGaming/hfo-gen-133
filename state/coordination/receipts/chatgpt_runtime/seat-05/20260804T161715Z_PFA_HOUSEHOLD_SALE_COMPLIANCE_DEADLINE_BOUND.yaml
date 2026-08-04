@@ -1,0 +1,83 @@
+schema: hfo.gen133.operator_relief_receipt.v0_1
+receipt_id: S05_PFA_HOUSEHOLD_SALE_COMPLIANCE_DEADLINE_BOUND_20260804T161715Z
+task_id: 6a55c182078c8191b89f2dd15f5f640c
+seat: S05
+callsign: Var
+lineage_role: OPERATOR_RELIEF_CELL
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-04T16:17:15Z
+transaction_time_utc: 2026-08-04T16:17:15Z
+result: DEADLINE_BOUND
+material_change: true
+
+active_item:
+  id: PFA_HOUSEHOLD_SALE_DISCLOSURE
+  state: CALENDAR_GATE_BOUND_NO_SEND
+  consequence: "Authoritative July 31 Gmail source says the required disclosure must be completed within 3 business days or the affected policies may be prevented from moving forward."
+  deadline_basis: "Three business days after Friday 2026-07-31, excluding the weekend, yields Wednesday 2026-08-05 as the outside date."
+  uncertainty: "The existing reply draft remains unsent, and no source-system reply confirming PandaDoc envelope or signature scope was found."
+
+priority_state:
+  p0:
+    id: GOODYEAR_VEHICLE_STATUS_AND_FINAL_RECORD
+    state: UNVERIFIED
+  p1:
+    - id: PFA_HOUSEHOLD_SALE_DISCLOSURE
+      due: 2026-08-05
+      state: DEADLINE_GATE_BOUND
+    - id: PROPERTY_1047A_SALE_SCOPE_AND_DEADLINE
+      state: NO_SEND_DRAFT_WAITING_OPERATOR_DECISION
+
+source_pointers_private:
+  gmail_thread_id: 19fb96ccc41d1a70
+  gmail_authoritative_message_id: 19fb96ccc41d1a70
+  gmail_existing_draft_message_id: 19fc6443934dabd1
+  source_body_externalized: false
+  sensitive_identifiers_externalized: false
+
+transition:
+  kind: BIND_DEADLINE_APPOINTMENT
+  calendar_id: primary
+  calendar_event_id: f98mog5a0mlm1g38qkn78bi5a8
+  calendar_start: 2026-08-04T13:00:00-06:00
+  calendar_end: 2026-08-04T13:25:00-06:00
+  timezone: America/Denver
+  visibility: private
+  transparency: opaque
+  reminders_minutes_before:
+    - 15
+    - 0
+  completion_states:
+    - COMPLETED
+    - WAITING_ON_SECURE_LINK
+    - DISCREPANCY
+  operator_only_effects:
+    - SEND_OR_EDIT_EXISTING_GMAIL_DRAFT
+    - SIGN_OR_SUBMIT_DISCLOSURE
+    - OPEN_SECURE_PROVIDER_LINK
+
+readback:
+  calendar_event_read_back: true
+  calendar_title_matches: true
+  calendar_time_matches: true
+  calendar_visibility_private: true
+  calendar_reminders_match: true
+
+operator_relief:
+  minutes_removed_estimate: 5
+  removed_work: "Re-derived the outside compliance date from the authoritative source, checked for an existing disclosure event, found a free window, and bound a private exact decision/completion gate."
+  next_consumer: "Operator at 2026-08-04T13:00:00-06:00, then Var for source-system closure readback."
+
+policy_checks:
+  email_sent: false
+  application_submitted: false
+  payment_or_spend: false
+  account_or_security_change: false
+  task_mutation: false
+  deployment_merge_or_publication: false
+  destructive_action: false
+  private_body_copied_to_git_or_slack: false
+
+honest_flaw: "The August 5 date is a business-day calculation from the July 31 source, not a direct provider reply confirming the exact cutoff time. The event binds review before that inferred outside date but does not prove provider receipt or completion."
