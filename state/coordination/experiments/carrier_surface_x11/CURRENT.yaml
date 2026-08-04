@@ -1,8 +1,8 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_GOOGLE_DRIVE_METADATA_READ_VISIBILITY_V2
-current_version: 89
-accepted_wakes: 1
+current_version: 90
+accepted_wakes: 2
 target_wakes_before_decision: 4
 controlled_factor: google_drive_read_surface
 campaign_status: ACTIVE
@@ -13,9 +13,9 @@ prior_campaign:
   disposition: KEEP
   accepted_wakes: 4
 last_event:
-  commit: d4d68dfa16b89aeb94c9398eefc5b91671d8d969
-  path: state/coordination/experiments/carrier_surface_x11/events/20260804T134041Z_GOOGLE_DRIVE_METADATA_READ_VISIBILITY_V2_WAKE_01_ACCEPTED.yaml
-  blob: 05c49b0cb688383bda9e11f60b4c45e1b7726571
+  commit: c26fe941febb8e1bebb83a8a23d04f586f9f2a1d
+  path: state/coordination/experiments/carrier_surface_x11/events/20260804T143931Z_GOOGLE_DRIVE_METADATA_READ_VISIBILITY_V2_WAKE_02_ACCEPTED.yaml
+  blob: d3b0d8ddb9cb6d56ac31a6b539084f55374d5c66
 baseline_result:
   mode: authenticated_drive_impossible_marker_metadata_search
   result_count: 0
@@ -27,23 +27,23 @@ baseline_result:
   sensitive_readback_externalized: false
   mutation_performed_by_probe: false
   send_performed: false
-  changed_capability: true
+  changed_capability: false
   andon: false
   permission_class: AUTHENTICATED_GOOGLE_DRIVE_METADATA_SEARCH_AVAILABLE
   error_class: NONE
   latency_exposed: true
-  latest_latency_ms: 969
-  latency_samples_ms: [969]
+  latest_latency_ms: 3271
+  latency_samples_ms: [969, 3271]
   operator_relay_minutes: 0
 claim_ceiling: authenticated_Google_Drive_metadata_search_execution_and_sanitized_result_count_visibility_only_not_drive_completeness_indexing_freshness_file_content_access_sharing_scope_or_independent_verification
 strongest_falsifier: the_fixed_impossible_marker_metadata_query_requires_interactive_login_returns_an_unclassified_permission_error_exposes_file_content_or_identifiers_outside_the_tool_boundary_or_produces_inconsistent_sanitized_result_counts_across_identical_wakes
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 next_consumer: [Reginleif, Ratatoskr]
-honest_flaw: one_impossible_marker_metadata_search_tests_only_one_authenticated_Drive_query_path_and_a_zero_result_does_not_establish_drive_completeness_index_freshness_file_content_access_or_sharing_scope
+honest_flaw: repeated_zero_result_metadata_searches_test_only_one_authenticated_Drive_query_path_and_do_not_establish_drive_completeness_index_freshness_file_content_access_or_sharing_scope
 next_factor: google_drive_read_surface
 next_probe:
   experiment_id: X11_GOOGLE_DRIVE_METADATA_READ_VISIBILITY_V2
-  campaign_wake: 2
+  campaign_wake: 3
   mode: authenticated_drive_impossible_marker_metadata_search
   query: HFO_X11_DRIVE_METADATA_PROBE_7B2E9D4C6A1F8035
   topn: 1
@@ -61,15 +61,14 @@ next_probe:
   send_allowed: false
   interactive_login_allowed: false
   sensitive_readback_externalization_allowed: false
-slack_action: POST_CHANGED_CAPABILITY
-updated_valid_time_utc: 2026-08-04T13:40:41Z
+slack_action: SILENT_UNCHANGED
+updated_valid_time_utc: 2026-08-04T14:39:31Z
 sealed: false
 ---
 
-The Google Drive metadata-read campaign accepted wake 1/4. The fixed
-impossible-marker metadata-only search returned zero files and no continuation
-token with 969 ms connector latency. No interactive login, content fetch,
-file-identifier persistence, mutation, send, operator relay, task mutation, or
-sensitive readback externalization occurred. This is a newly measured
-capability, so Slack receives a bounded capability-delta notice. Wake 2 repeats
-the identical probe.
+The Google Drive metadata-read campaign accepted wake 2/4. The identical
+impossible-marker metadata-only search again returned zero files and no
+continuation token, with 3271 ms connector latency. No interactive login,
+content fetch, file-identifier persistence, mutation, send, operator relay,
+task mutation, or sensitive readback externalization occurred. Capability was
+unchanged, so Slack remains silent. Wake 3 repeats the identical probe.
