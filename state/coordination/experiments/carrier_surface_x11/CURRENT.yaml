@@ -1,8 +1,8 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_GMAIL_METADATA_READ_VISIBILITY_V1
-current_version: 80
-accepted_wakes: 0
+current_version: 81
+accepted_wakes: 1
 target_wakes_before_decision: 4
 controlled_factor: gmail_read_surface
 campaign_status: ACTIVE
@@ -13,31 +13,26 @@ prior_campaign:
   disposition: KEEP
   accepted_wakes: 4
 last_event:
-  commit: 67b61dd3697cb0b5aee8c460393fc8c2a6d2a4e0
-  path: state/coordination/experiments/carrier_surface_x11/events/20260804T044028Z_WEB_OFFICIAL_STATIC_READ_VISIBILITY_V1_WAKE_04_DECISION.yaml
-  blob: e1bc8ff0255e32879b1292f8a900fcce3d2fde08
+  commit: 7b805b5bf2dd399800783bdacabc117b6b4a0528
+  path: state/coordination/experiments/carrier_surface_x11/events/20260804T053928Z_GMAIL_METADATA_READ_VISIBILITY_V1_WAKE_01.yaml
+  blob: d10ae996f2c767d44cc093b17227e17922761794
 baseline_result:
-  mode: unauthenticated_fixed_public_url_marker_probe
-  requested_url: https://example.com/
-  canonical_host: example.com
-  retrieval_status: SUCCESS
-  expected_marker: Example Domain
-  fourth_expected_marker_present: true
-  campaign_successful_retrievals: 4
-  campaign_expected_marker_present_count: 4
-  campaign_unexpected_host_count: 0
-  campaign_permission_or_transport_error_count: 0
-  authentication_requested: false
+  mode: authenticated_gmail_impossible_marker_id_search
+  result_count: 0
+  next_page_token_present: false
+  execution_status: SUCCESS
   interactive_login_required: false
-  page_body_persisted: false
+  message_content_read: false
+  message_identifiers_persisted: false
   sensitive_readback_externalized: false
   mutation_performed_by_probe: false
-  changed_capability: false
+  send_performed: false
+  changed_capability: true
   andon: false
-  permission_class: PUBLIC_WEB_FIXED_URL_READ_AVAILABLE
+  permission_class: AUTHENTICATED_GMAIL_MESSAGE_ID_SEARCH_AVAILABLE
   error_class: NONE
-  latency_exposed: false
-  latency_ms: null
+  latency_exposed: true
+  latency_ms: 395
   operator_relay_minutes: 0
 claim_ceiling: authenticated_Gmail_message_ID_search_execution_and_sanitized_result_count_visibility_only_not_mailbox_completeness_indexing_freshness_message_content_access_delivery_state_or_independent_verification
 strongest_falsifier: the_fixed_impossible_marker_query_requires_interactive_login_returns_an_unclassified_permission_error_exposes_message_content_or_identifiers_outside_the_tool_boundary_or_produces_inconsistent_sanitized_result_counts_across_identical_wakes
@@ -47,7 +42,7 @@ honest_flaw: an_impossible_subject_marker_search_tests_only_one_authenticated_Gm
 next_factor: gmail_read_surface
 next_probe:
   experiment_id: X11_GMAIL_METADATA_READ_VISIBILITY_V1
-  campaign_wake: 1
+  campaign_wake: 2
   mode: authenticated_gmail_impossible_marker_id_search
   query: 'subject:"HFO_X11_GMAIL_METADATA_PROBE_9C7B1E5A4D2F8A6C"'
   max_results: 1
@@ -64,13 +59,14 @@ next_probe:
   send_allowed: false
   interactive_login_allowed: false
   sensitive_readback_externalization_allowed: false
-slack_action: CAMPAIGN_DECISION_POST_REQUIRED_AFTER_GIT_READBACK
-updated_valid_time_utc: 2026-08-04T04:40:28Z
+slack_action: CHANGED_CAPABILITY_POST_REQUIRED_AFTER_GIT_READBACK
+updated_valid_time_utc: 2026-08-04T05:39:28Z
 sealed: false
 ---
 
-The fixed-public-web campaign completed at wake 4/4 with KEEP. Four identical
-unauthenticated example.com probes resolved to the expected host and exposed
-the expected marker without login, mutation, operator relay, or page-body
-persistence. The next campaign probes Gmail message-ID search visibility with
-a fixed impossible subject marker and persists no identifiers or content.
+The Gmail metadata-read campaign accepted wake 1/4. The fixed impossible-subject
+message-ID search returned zero identifiers and no continuation token through
+the connected Gmail read surface, with connector latency exposed at 395 ms.
+No interactive login, content read, identifier persistence, mutation, send,
+operator relay, or sensitive readback externalization occurred. Wake 2 repeats
+the identical bounded probe.
