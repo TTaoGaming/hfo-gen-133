@@ -1,0 +1,97 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+event_id: X11_GMAIL_METADATA_READ_VISIBILITY_V1_WAKE_01_20260804T053928Z
+experiment_id: X11_GMAIL_METADATA_READ_VISIBILITY_V1
+task_id_expected: 6a55089a9adc8191bda54541f7f9effa
+carrier: HFO_GEN133_X11
+wip: 1
+branch: agent/gen133-bootstrap-20260730
+prior_current_version: 80
+next_current_version: 81
+campaign_wake: 1
+campaign_target_wakes: 4
+accepted: true
+campaign_status: ACTIVE
+baseline:
+  prior_accepted_wakes: 0
+  prior_result: NOT_YET_MEASURED
+  prior_permission_class: UNKNOWN
+  prior_error_class: UNKNOWN
+hypothesis: a_fixed_impossible_subject_query_through_the_connected_Gmail_message_ID_search_surface_will_execute_without_interactive_login_and_return_a_sanitized_zero_result_or_an_explicit_permission_error_without_reading_message_content_persisting_identifiers_mutating_mail_or_sending_anything
+controlled_factor: gmail_read_surface
+exact_probe:
+  mode: authenticated_gmail_impossible_marker_id_search
+  query: 'subject:"HFO_X11_GMAIL_METADATA_PROBE_9C7B1E5A4D2F8A6C"'
+  max_results: 1
+  all_other_probe_inputs_held_constant: true
+  interactive_login_permitted: false
+  message_content_read_permitted: false
+  message_identifier_persistence_permitted: false
+  mutation_permitted: false
+  send_permitted: false
+  persisted_fields_only:
+    - result_count
+    - next_page_token_present
+    - permission_class
+    - error_class
+    - latency_when_exposed
+    - operator_relay_minutes
+measured_result:
+  execution_status: SUCCESS
+  result_count: 0
+  next_page_token_present: false
+  permission_class: AUTHENTICATED_GMAIL_MESSAGE_ID_SEARCH_AVAILABLE
+  error_class: NONE
+  latency_exposed: true
+  latency_ms: 395
+  operator_relay_minutes: 0
+  interactive_login_required: false
+  message_content_read: false
+  message_identifiers_persisted: false
+  sensitive_readback_externalized: false
+  mail_mutation_performed: false
+  send_performed: false
+  task_mutation_performed: false
+  changed_capability: true
+  campaign_decision: false
+  andon: false
+strongest_falsifier: the_identical_fixed_query_requires_interactive_login_returns_an_unclassified_permission_error_exposes_message_content_or_identifiers_outside_the_connector_boundary_or_produces_inconsistent_sanitized_result_counts_across_identical_wakes
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer:
+  - Reginleif
+  - Ratatoskr
+claim_ceiling: authenticated_Gmail_message_ID_search_execution_and_sanitized_result_count_visibility_only_not_mailbox_completeness_indexing_freshness_message_content_access_delivery_state_or_independent_verification
+same_provider_independence_claim: false
+binding_weight: 0
+honest_flaw: an_impossible_subject_marker_search_tests_only_one_authenticated_Gmail_ID_search_path_and_a_zero_result_does_not_establish_mailbox_completeness_index_freshness_content_access_or_delivery_state
+next_factor: gmail_read_surface
+next_probe:
+  experiment_id: X11_GMAIL_METADATA_READ_VISIBILITY_V1
+  campaign_wake: 2
+  mode: authenticated_gmail_impossible_marker_id_search
+  query: 'subject:"HFO_X11_GMAIL_METADATA_PROBE_9C7B1E5A4D2F8A6C"'
+  max_results: 1
+  persist_only:
+    - result_count
+    - next_page_token_present
+    - permission_class
+    - error_class
+    - latency_when_exposed
+    - operator_relay_minutes
+  message_ids_persistence_allowed: false
+  message_content_read_allowed: false
+  mutation_allowed: false
+  send_allowed: false
+  interactive_login_allowed: false
+  sensitive_readback_externalization_allowed: false
+slack_action: CHANGED_CAPABILITY_POST_REQUIRED_AFTER_GIT_READBACK
+valid_time_utc: 2026-08-04T05:39:28Z
+sealed: false
+---
+
+Wake 1 executed the fixed impossible-subject Gmail message-ID search through
+the connected read surface. It returned zero identifiers and no continuation
+token without interactive login, content read, mutation, send, operator relay,
+or sensitive readback externalization. The result supports only bounded Gmail
+ID-search execution and sanitized count visibility; wake 2 repeats the same
+probe.
