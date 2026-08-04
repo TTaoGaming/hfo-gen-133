@@ -1,0 +1,90 @@
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+event_id: X11_GIT_READ_WRITE_READBACK_V2_WAKE_04_DECISION_KEEP_20260804T204124Z
+experiment_id: X11_GIT_READ_WRITE_READBACK_V2
+campaign_version: 2
+task_id_expected: 6a55089a9adc8191bda54541f7f9effa
+task_id_observed: 6a55089a9adc8191bda54541f7f9effa
+task_id_match: true
+carrier: HFO_GEN133_X11
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+prior_current_version: 95
+next_current_version: 96
+campaign_wake: 4
+campaign_target_wakes: 4
+accepted: true
+campaign_status: COMPLETE
+campaign_disposition: KEEP
+baseline:
+  accepted_wakes: 3
+  preflight_current_version: 95
+  preflight_current_blob: 29cee7bf9c731ea97685088089b9d4a126e0f412
+  prior_event_create_latencies_ms: [885, 1187, 718]
+  prior_event_readback_content_matches: [true, true, true]
+  prior_current_updates_succeeded: [true, true, true]
+hypothesis: the_authenticated_GitHub_contents_surface_will_again_create_one_unique_immutable_event_update_CURRENT_using_the_exact_preflight_blob_SHA_and_return_exact_readback_for_both_paths
+controlled_factor: git_read_write
+exact_probe:
+  - read_CURRENT_and_require_version_95_and_blob_29cee7bf9c731ea97685088089b9d4a126e0f412
+  - create_this_unique_immutable_decision_event
+  - read_this_event_back_from_the_named_branch_and_compare_exact_content
+  - update_CURRENT_to_version_96_using_the_preflight_blob_SHA
+  - read_CURRENT_back_and_verify_version_96_and_exact_content
+measured_result:
+  preflight_version_match: true
+  event_create_status: SUCCESS_PENDING_TOOL_RECEIPT_AND_READBACK
+  event_commit_sha: RECORDED_IN_CURRENT_AFTER_CREATE
+  event_blob_sha: RECORDED_IN_CURRENT_AFTER_READBACK
+  current_update_status: RECORDED_IN_CURRENT_AFTER_UPDATE
+  event_readback_content_match: REQUIRED_FOR_ACCEPTANCE
+  current_readback_version_match: REQUIRED_FOR_ACCEPTANCE
+  current_readback_content_match: REQUIRED_FOR_ACCEPTANCE
+  operator_relay_minutes: 0
+  changed_capability: false
+  campaign_decision: true
+  andon: false
+permission_error:
+  permission_class: AUTHENTICATED_GITHUB_BRANCH_FILE_CREATE_UPDATE_READ_AVAILABLE_PENDING_FINAL_READBACK
+  error_class: NONE_AT_PREFLIGHT
+  latency_when_exposed: RECORDED_IN_CURRENT
+campaign_decision:
+  disposition: KEEP
+  rationale: four_consecutive_carrier_wakes_use_the_same_bounded_contents_API_pattern_and_accept_only_after_unique_event_and_CURRENT_exact_readback_with_expected_version_and_preflight_blob
+  supported_claim: repeatable_authenticated_GitHub_carrier_state_file_create_CURRENT_compare_and_swap_update_and_exact_same_provider_readback_visibility
+  unsupported_claims:
+    - atomic_multi_file_transaction
+    - exclusive_branch_writer
+    - stale_SHA_rejection_without_an_actual_conflict
+    - durability_under_provider_failure
+    - independent_verification
+    - repository_wide_write_authority
+strongest_falsifier: the_unique_event_cannot_be_created_or_read_back_exactly_CURRENT_does_not_advance_from_95_to_96_with_the_preflight_blob_SHA_a_stale_or_changed_blob_is_accepted_without_conflict_or_either_readback_differs_from_the_written_content
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer: [Reginleif, Ratatoskr]
+claim_ceiling: authenticated_GitHub_carrier_state_create_update_and_exact_same_provider_readback_visibility_only_not_atomic_multi_file_transactions_branch_exclusivity_conflict_behavior_durability_under_provider_failure_or_independent_verification
+same_provider_independence_claim: false
+honest_flaw: the_required_event_and_CURRENT_writes_are_two_separate_commits_on_one_authenticated_provider_path_so_the_campaign_does_not_test_atomicity_concurrent_writers_actual_stale_SHA_conflict_behavior_or_provider_failure
+next_factor: slack_read_write
+next_probe:
+  experiment_id: X11_SLACK_FIXED_POINTER_BOUNDED_READ_V2
+  campaign_wake: 1
+  mode: fixed_public_channel_pointer_one_second_envelope_read
+  exact_action: read_channel_C0BGNGPJFHU_with_oldest_1785563052_000000_and_latest_1785563053_000000_then_persist_only_result_count_target_timestamp_present_and_expected_non_sensitive_marker_present_without_message_body
+  fixed_target_timestamp: '1785563052.487809'
+  expected_non_sensitive_marker: 20260801T054200Z_SLACK_READ_SEARCH_VARIANCE_WAKE_01.yaml
+  persist_only:
+    - result_count
+    - target_timestamp_present
+    - expected_marker_present
+    - permission_class
+    - error_class
+    - latency_when_exposed
+    - operator_relay_minutes
+  slack_write_each_probe_allowed: false
+  post_only_changed_capability_campaign_decision_or_andon: true
+  sensitive_readback_externalization_allowed: false
+  same_provider_independence_claim_allowed: false
+slack_action: POST_CAMPAIGN_DECISION_AFTER_GIT_READBACK
+valid_time_utc: 2026-08-04T20:41:24Z
+sealed: true
