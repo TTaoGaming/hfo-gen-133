@@ -1,0 +1,112 @@
+schema_id: hfo.gen133.s04.structural_preflight.v1
+receipt_id: S04_X14_MUTANT_092_REVISE_20260804T191429Z
+seat: S04_STRUCTURAL_PREFLIGHT
+result: REVISE
+reason: STALE_SOURCE_DIGEST_MUTANT_MUST_NOT_BIND_CURRENT_RECEIPT_OR_CONFLICT
+transaction_time_utc: 2026-08-04T19:14:29Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+wip: 1
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+
+self_probe:
+  carrier_task_id_expected: 6a52861fbdb08191b9ef33a0b9c3c15c
+  carrier_task_id_observed: 6a52861fbdb08191b9ef33a0b9c3c15c
+  carrier_task_id_match: true
+  carrier_enabled: true
+  tools_observed:
+    - automations_readback
+    - github_read_write
+    - slack_read_write
+    - local_hash_and_parse
+
+selection:
+  eligibility: NEWEST_IMMUTABLE_CANDIDATE_ADDRESSED_TO_S04_NOT_AUTHORED_BY_S04
+  candidate_authoring_seat: X14_FALSE_GREEN_MUTATION_QA
+  candidate_commit: 781936edf2d0853506081d6fcd9e36838f8b320e
+  candidate_path: state/coordination/experiments/false_green_x14/quarantine/20260804T185311Z_X12_STALE_SOURCE_DIGEST.mutant.yaml
+  candidate_blob_sha1: 857b3c879aa1d8f7ad4a62b917ea04fdb1674c04
+  candidate_exact_bytes: 3981
+  candidate_sha256: 066a2c2ee6642a3cbaf1a706ff07b698dbcb22b68528cd5eba64fc6bf6c28b6e
+  mutant_id: X14_MUTANT_092_8768116ee37a
+  valid_time_utc: 2026-08-04T18:53:11Z
+  expires_utc: 2026-08-04T22:44:48Z
+  freshness_at_check: FRESH_UNEXPIRED
+  authored_by_this_seat: false
+
+schema_and_canonicalization:
+  candidate_parse: PASS_TWO_YAML_MAPPING_DOCUMENTS
+  schema_id: hfo.gen133.x14.false_green_mutant.v1
+  canonicalization_algorithm: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_exact_bytes: 328
+  canonical_overlay_sha256_recomputed: 8768116ee37ad20628ca4f4e5d8c77a428bcf1112b36a7805cdaa90ab36a7b2b
+  canonical_overlay_sha256_declared: 8768116ee37ad20628ca4f4e5d8c77a428bcf1112b36a7805cdaa90ab36a7b2b
+  mutant_id_digest_prefix_match: true
+
+source_bindings:
+  source_receipt:
+    commit: 1db7e8d80466063a18073e836f312beacd62d461
+    path: state/coordination/experiments/durable_object_x12/slack_receipts/eba4744b58b497b8925015dbaac9c3ad03c30a45c42f590d2878adc9df2d0176_CONFLICT.json
+    blob_sha1_declared: 8fbca8fe77cb67b32ffdb1032f35c3372a064937
+    blob_sha1_recomputed: 8fbca8fe77cb67b32ffdb1032f35c3372a064937
+    exact_bytes: 823
+    file_sha256: b89eee95efce0694fe0a1ae074c69dedc25c51cd038197ed9de9a121b1e18354
+    schema_id: hfo.gen133.x12.slack_receipt.v1
+    canonical_receipt_exact_bytes: 664
+    receipt_digest_declared: b5bbaee47383021499e521a03dd75e7870bd9dac3ff84a48f77c38c45878a1e9
+    receipt_digest_recomputed: b5bbaee47383021499e521a03dd75e7870bd9dac3ff84a48f77c38c45878a1e9
+    binding: PASS
+  current_conflict:
+    commit: 0955b298f863c72102c73b1e846a69cc5ce4ccbb
+    path: state/coordination/experiments/durable_object_x12/conflicts/20260804T184930Z_EVENT_DIGEST_MISMATCH_V92_TO_V93_HOLD.json
+    blob_sha1_declared: 3e8d8986dd54272512652cb4cc3350aac5c0e446
+    blob_sha1_recomputed: 3e8d8986dd54272512652cb4cc3350aac5c0e446
+    exact_bytes: 2507
+    file_sha256: 4ee22ef12d48c763440d770e5b5b17482a62abdc0297d8c282ada11f5e40618c
+    canonical_conflict_exact_bytes: 2351
+    conflict_digest_declared: 37e59d260a57aa696bba9b9f0319d3a0d4cde8f4f5781f7e77d729b61f5e373b
+    conflict_digest_recomputed: 37e59d260a57aa696bba9b9f0319d3a0d4cde8f4f5781f7e77d729b61f5e373b
+    binding: PASS_CURRENT
+  stale_origin_conflict:
+    commit: 53a91aebaf85ed1bc472a2afd5782d79dd6e3343
+    path: state/coordination/experiments/durable_object_x12/conflicts/20260804T175300Z_V0093_EVENT_AND_CONFLICT_DIGEST_CORRECTION_HOLD.json
+    blob_sha1_recomputed: 502f0224a915cb5a042f9377a010d5f012e3212a
+    exact_bytes: 2206
+    file_sha256: aaa96778962d84a3f5bcd2638ebe7b4bb79cd11e849bbf7cd3d7a8069dd92daa
+    canonical_conflict_exact_bytes: 2050
+    conflict_digest_declared: 4a20cec4ebc157237cc5e9d32900ae452a5ddf0548326c02571369f5aeb4c317
+    conflict_digest_recomputed: 4a20cec4ebc157237cc5e9d32900ae452a5ddf0548326c02571369f5aeb4c317
+    binding: PASS_AS_OLDER_DISTINCT_ARTIFACT_ONLY
+
+structural_checks:
+  freshness: PASS
+  authority: PASS_QUARANTINED_NONEXECUTABLE_WEIGHT_ZERO
+  task_binding: PASS_EXACT_S04_TASK_ID
+  actor_carrier_separation: PARTIAL_LOGICAL_SEATS_DISTINGUISHED_BUT_GITHUB_PRINCIPAL_NOT_INDEPENDENTLY_AUTHENTICATED
+  idempotency: PASS_MUTANT_ID_BOUND_TO_OVERLAY_DIGEST_WITH_INDEX_SEARCH_LIMITATION
+  lease_and_expiry: PASS_ROUTE_EXPIRY_PRESENT_SOURCE_CANDIDATE_EXPIRY_PRESENT
+  privacy: PASS_SANITIZED_POINTERS_AND_HASHES_ONLY
+  rollback: PASS_SOURCE_UNCHANGED_QUARANTINE_NONEXECUTABLE
+  verifier: PASS_S04_PREFLIGHT_AND_S09_DISTINCT_SEAT_NAMED_BUT_SAME_PROVIDER_NONBINDING
+  consumer: PASS_X14_REDUCER_AND_REGINLEIF_OLRUN_NAMED
+
+controlling_defect:
+  mutated_field: canonical_receipt.conflict_digest_sha256
+  current_bound_value: 37e59d260a57aa696bba9b9f0319d3a0d4cde8f4f5781f7e77d729b61f5e373b
+  mutant_stale_value: 4a20cec4ebc157237cc5e9d32900ae452a5ddf0548326c02571369f5aeb4c317
+  rejection: MUTANT_VALUE_IS_VALID_FOR_AN_OLDER_DISTINCT_CONFLICT_BUT_DOES_NOT_BIND_THE_CURRENT_RECEIPT_NAMED_PATH_COMMIT_BLOB_OR_CANONICAL_BYTES
+
+strongest_fake_green_mutant:
+  class: STALE_SOURCE_DIGEST
+  attack: ACCEPT_A_CRYPTOGRAPHICALLY_VALID_DIGEST_FROM_NEARBY_HISTORY_AS_IF_IT_AUTHENTICATED_THE_CURRENT_SOURCE_POINTER
+  expected_gate: EXACT_COMMIT_PATH_BLOB_BYTES_CANONICAL_DIGEST_AND_VALID_TIME_BINDING
+  caught: true
+
+limitations:
+  - GitHub indexed search returned no prior match for the source blob, but index lag prevents a global uniqueness proof.
+  - The candidate is a deliberately quarantined assay, not a producer return and not an operational outcome.
+  - S04 and S09 are distinct seats on the same provider; neither carries binding quorum weight.
+
+next_consumer: X14_CAMPAIGN_REDUCER_AND_REGINLEIF_OLRUN_DURABLE_OBJECT_CONSUMERS
