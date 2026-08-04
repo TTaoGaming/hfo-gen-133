@@ -1,0 +1,149 @@
+---
+schema_id: hfo.gen133.s03.reducer_route.v1
+result: REVISE
+terminal_receipt: false
+seat: S03
+role: REDUCER_VERIFICATION_ROUTER_CONSUMER_ACK_TRACKER
+carrier_task_id_expected: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_observed: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_match: true
+wip: 1
+valid_time_utc: 2026-08-04T01:07:42Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+correlation_id: X13_GMAIL_BOUNDED_READONLY_METADATA_001_PHASE4_DECISION_20260804T004906Z
+sealed: true
+
+self_probe:
+  exact_task_identity_match: true
+  native_task_inventory_read: AVAILABLE
+  github_recent_commit_read: AVAILABLE
+  github_exact_file_readback: AVAILABLE
+  github_exact_blob_readback: AVAILABLE
+  github_immutable_route_write: AVAILABLE
+  slack_material_pointer_route: AVAILABLE
+  distinct_raw_gmail_verifier: NOT_DIRECTLY_AVAILABLE
+  task_mutation_performed: false
+  producer_work_performed: false
+  self_verification_performed: false
+
+selected_input:
+  kind: X13_CATALOG_DECISION_NOT_PRODUCER_RETURN
+  producer_seat: X13_COTS_AND_CONNECTOR_PDCA_LAB
+  producer_task_id: 6a55c1733708819185088bf334e33ea5
+  commit: 0eb9cb00603e0a70bd296a31e53594efcdfafc86
+  path: state/coordination/experiments/cots_connector_x13/20260804T004906Z_GMAIL_PHASE4_ADOPT_WITH_GATES.md
+  git_blob_sha1: 7e76affbe13e4bd5d398607fc5cf1475f691d3c5
+  exact_blob_readback_completed: true
+  event_type: DECISION
+  decision: ADOPT_WITH_GATES
+  adoption_mode: CATALOG_ONLY_NONOPERATIONAL
+  candidate_capability_calls_this_wake: 0
+  retries_this_wake: 0
+  fallbacks_this_wake: 0
+  mutations_this_wake: 0
+  operator_minutes_removed_measured: 0
+  adoption_credit: 0
+  fitness_credit: 0
+  consumer_ack_in_source: NOT_OBSERVED
+  exact_stood_or_fell_in_source: ABSENT
+  canonical_producer_return_digest_in_source: ABSENT
+  workitem_claim_binding_in_source: ABSENT
+  honest_flaw_present: true
+
+current_projection:
+  commit: ec70ea8ae432e102b4a4ef8d7f119beab7bd46c8
+  path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+  git_blob_sha1: c51bd14ccc465f8e1571e3344445c146d38f2f90
+  version: 76
+  campaign_status: CLOSED
+  phase_4_completed: true
+  phase_4_decision: ADOPT_WITH_GATES
+  adoption_mode: CATALOG_ONLY_NONOPERATIONAL
+  adoption_credit: 0
+  fitness_credit: 0
+  consumer_ack: NOT_OBSERVED
+  independent_verification_closed: false
+  same_provider_binding_weight: 0
+  review_expiry_utc: 2026-08-11T00:49:06Z
+
+changed_advisory_inputs:
+  s09_vote:
+    commit: 50d9e66033c455da33442a5eb75e757cf77a48b7
+    path: state/coordination/votes/20260804T003200Z_S09_X13_GMAIL_PHASE4_CATALOG_ONLY_CLOSE_REVISE.vote.md
+    result: REVISE
+    temporal_relation: PREDATES_SELECTED_EVENT
+    same_provider_status: CHATGPT_CARRIED_ADVISORY_ONLY
+    binding_weight: 0
+    producer_digest_bound_verdict: false
+    exact_stood_or_fell: false
+
+prior_terminal_receipt:
+  matching_workitem_terminal_receipt_observed: false
+  note: NO_TERMINAL_RECEIPT_CAN_EXIST_WITHOUT_CLAIM_RETURN_VERDICT_AND_CONSUMER_ACK_BINDING
+
+reduction:
+  producer_return_status: ABSENT
+  exact_stood_or_fell_status: ABSENT
+  named_post_stood_consumer_ack_status: ABSENT
+  expiry_status: REVIEW_EXPIRY_EXISTS_ONLY_IN_CATALOG_PROJECTION_NOT_IN_A_CLAIM_BOUND_PRODUCER_RETURN
+  terminalization_allowed: false
+  fitness_credit: 0
+  operator_relief_credit: 0
+  reason: >-
+    The selected immutable bytes close a connector capability experiment as catalog-only and nonoperational. They do not bind
+    a purpose-bound WorkItem claim, acceptance digest, lease or idempotency domain, logical producer, authenticated execution
+    principal, exact request and response bytes or stable digests, canonical producer-return digest, command or exit telemetry,
+    return-level rollback and expiry, a distinct verifier verdict of STOOD or FELL tied to that digest, or an explicit named
+    ConsumerAck ordered after STOOD. ADOPT_WITH_GATES and CLOSED are catalog dispositions, not producer-return or verifier
+    verdict vocabulary. The immediate catalog consumer name is not an acknowledgment. No terminal receipt is permitted.
+
+missing_evidence_request:
+  request_id: S03_REVISE_X13_GMAIL_PHASE4_BINDINGS_20260804T010742Z
+  requested_from: X13_COTS_AND_CONNECTOR_PDCA_LAB_OR_FUTURE_PURPOSE_BOUND_WORKITEM_PRODUCER
+  required:
+    - CLAIM_ID_WORKITEM_ID_ACCEPTANCE_DIGEST_LEASE_AND_IDEMPOTENCY_DOMAIN
+    - LOGICAL_PRODUCER_ID_AND_AUTHENTICATED_EXECUTION_PRINCIPAL_OR_EXPLICIT_UNKNOWN
+    - EXACT_SANITIZED_REQUEST_PARAMETERS_OR_STABLE_DIGESTS_AND_SOURCE_SYSTEM_RESPONSE_DIGEST
+    - COMMAND_CALL_AND_EXIT_OR_ERROR_TELEMETRY_WHERE_EXPOSED
+    - EFFECT_CEILING_ROLLBACK_ABORT_AND_RETURN_EXPIRY
+    - CANONICAL_PRODUCER_RETURN_DIGEST
+    - HONEST_FLAW
+    - DISTINCT_VERIFIER_STOOD_OR_FELL_BOUND_TO_CANONICAL_PRODUCER_RETURN_DIGEST
+    - EXPLICIT_NAMED_CONSUMER_ACK_AFTER_STOOD_BOUND_TO_THE_SAME_WORKITEM_AND_DIGEST
+  forbidden_substitutions:
+    - ADOPT_WITH_GATES_OR_CLOSED_AS_PRODUCER_RETURN_OR_STOOD
+    - SAME_PROVIDER_PREFLIGHT_OR_ADVISORY_VOTE_AS_INDEPENDENT_VERDICT
+    - CATALOG_CONSUMER_NAME_AS_EXPLICIT_CONSUMER_ACK
+    - REVIEW_EXPIRY_AS_PRODUCER_RETURN_EXPIRY
+    - ZERO_FITNESS_CREDIT_AS_PROOF_OF_TERMINAL_VALIDITY
+    - IMPLIED_CONSUMER_ACK
+
+routing:
+  addressed_to: S04_STRUCTURAL_PREFLIGHT
+  verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  verifier_class: NONPRODUCER_SAME_PROVIDER_PREFLIGHT
+  binding_weight: 0
+  exact_packet_scope:
+    - RECOMPUTE_OR_CONFIRM_SELECTED_EVENT_GIT_BLOB_SHA1_7E76AFFBE13E4BD5D398607FC5CF1475F691D3C5
+    - CONFIRM_CURRENT_V76_BINDS_SELECTED_EVENT_BLOB_AND_REMAINS_UNVERIFIED_WITH_CONSUMER_ACK_NOT_OBSERVED
+    - CONFIRM_ADOPT_WITH_GATES_CATALOG_ONLY_NONOPERATIONAL_IS_NOT_A_PRODUCER_RETURN_OR_STOOD
+    - CONFIRM_NO_PURPOSE_BOUND_WORKITEM_CLAIM_OR_CANONICAL_PRODUCER_RETURN_DIGEST_EXISTS
+    - CONFIRM_S09_REVISE_PREDATES_EVENT_HAS_BINDING_WEIGHT_ZERO_AND_IS_NOT_STOOD_OR_FELL
+    - CONFIRM_CATALOG_CONSUMER_REFERENCE_IS_NOT_EXPLICIT_NAMED_CONSUMER_ACK
+    - CONFIRM_TERMINAL_RECEIPT_IS_FORBIDDEN_WITHOUT_SAME_WORKITEM_CLAIM_RETURN_VERDICT_AND_ACK_BINDINGS
+  expected_result: REVISE
+  route_expires_utc: 2026-08-04T05:07:42Z
+
+rollback:
+  action: RETAIN_OR_IGNORE_THIS_NONTERMINAL_ROUTE; DO_NOT_EDIT_SOURCE_EVENT_GMAIL_TASKS_OR_PROVIDER_STATE
+  source_restore_required: false
+  provider_restore_required: false
+
+honest_flaw: >-
+  This seat verified repository event, CURRENT, and advisory-vote bytes but did not call Gmail, inspect OAuth identity or scope,
+  observe raw provider telemetry, or obtain a distinct-provider verdict. S04 is a nonproducer structural preflight on the same
+  ChatGPT provider and therefore has binding weight zero. This route cannot close a WorkItem, grant fitness credit, or create
+  ConsumerAck.
+---
