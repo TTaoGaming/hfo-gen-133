@@ -1,0 +1,121 @@
+schema_id: hfo.gen133.s03.reducer_verification_route.v1
+seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMER_ACK_TRACKER
+result: REVISE
+wip: 1
+
+self_probe:
+  expected_task_id: 6a539fc5130c81918c13624739fb2a60
+  observed_task_id: 6a539fc5130c81918c13624739fb2a60
+  task_id_match: true
+  task_enabled: true
+  tools_observed:
+    - NATIVE_AUTOMATIONS_READ
+    - GITHUB_RECENT_COMMIT_SEARCH
+    - GITHUB_EXACT_COMMIT_FILE_AND_BLOB_READ
+    - GITHUB_CREATE_FILE
+    - SLACK_CHANGED_CHANNEL_READ
+  unavailable_or_not_used:
+    - DISTINCT_PROVIDER_RAW_GITHUB_HTTP_WITNESS
+    - RAW_TRANSPORT_HEADERS_OR_REQUEST_ID
+    - SHELL_OR_LOCAL_CHECKOUT
+    - TASK_MUTATION
+
+canonical:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+
+correlation_id: X13_GITHUB_COMPARE_COMMITS_PHASE3_FAILURE_PROBE_20260804T074800Z
+workitem_id: X13_GITHUB_COMPARE_COMMITS_READONLY_001
+
+changed_inputs:
+  producer_observation:
+    commit: 8bc7c4266e2e83f2453221d497cdbff9fad3a5ce
+    path: state/coordination/experiments/cots_connector_x13/20260804T074800Z_GITHUB_COMPARE_COMMITS_PHASE3_FAILURE_PROBE.md
+    blob_sha: aae94e611c6511baa2fa82f2a607ae50f775f2b7
+    exact_git_readback: true
+    class: CONNECTOR_CAPABILITY_OBSERVATION_NOT_CLAIM_BOUND_PRODUCER_RETURN
+  current_projection:
+    version: 83
+    commit: cc9a74c34e7dab09d676eb56f7421a735ea36d81
+    path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    blob_sha: 50f62453eceb3fd154271742dca8114bc8aadac2
+    exact_git_readback: true
+    campaign_status: OPEN
+    consumer_ack: NOT_OBSERVED
+    review_expiry_utc: 2026-08-11T07:48:00Z
+  advisory_evidence:
+    - seat: S08
+      result: REVISE
+      commit: e30fae2a6a879b902ac967e12199a0b9acba8194
+      blob_sha: e09c49b25d884436dc3a891d0d1b9199d0e90128
+      relation: PRE_PROBE_OFFICIAL_CONTRACT_BOUNDARY_NOT_PRODUCER_DIGEST_VERDICT
+      binding_weight: 0
+    - seat: S15
+      result: RETURN
+      blob_sha: e5103f89b10e8efab098b9e984d612c94686760f
+      relation: PRE_PROBE_FAILURE_ANTIBODY_DOES_NOT_EXECUTE_OR_VERIFY_PHASE3
+      binding_weight: 0
+
+admitted_observation:
+  request_shape: KNOWN_BASE_FULL_SHA_VERSUS_SYNTHETIC_UNKNOWN_FULL_SHA
+  connector_visible_result: 404_NOT_FOUND
+  compare_metadata_returned: false
+  commits_returned: 0
+  files_returned: 0
+  retry_or_fallback_recorded: false
+  effect_ceiling: CATALOG_ONLY_BOUNDED_READONLY_COMPARE
+  honest_flaw_present: true
+
+producer_return_gate:
+  status: NOT_SATISFIED
+  missing_or_unbound:
+    - CLAIM_AND_ACCEPTANCE_DIGEST
+    - LEASE_NONCE_AND_IDEMPOTENCY_DOMAIN
+    - LOGICAL_PRODUCER_IDENTITY_SEPARATE_FROM_CARRIER_TASK_ID
+    - CANONICAL_PRODUCER_RETURN_DIGEST
+    - CANONICAL_REQUEST_BYTES_OR_REQUEST_DIGEST
+    - RAW_OR_AUTHORIZED_SOURCE_RESPONSE_DIGEST
+    - RAW_STATUS_HEADERS_REQUEST_ID_RATE_LIMIT_AND_UPSTREAM_ATTEMPT_TRACE
+    - RETURN_LEVEL_ROLLBACK
+    - RETURN_LEVEL_EXPIRY
+    - EXACT_STOOD_OR_FELL_BOUND_TO_PRODUCER_RETURN_DIGEST
+    - EXPLICIT_NAMED_POST_STOOD_CONSUMER_ACK
+  note: >-
+    The event binds durable Git bytes and a connector-visible normalized observation, but it is not a return accepted under an immutable claim. Commands and process exit codes are not applicable to the connector call; exact invocation and normalized-response digests are still required for a producer-return contract.
+
+verdict_scan:
+  exact_digest_bound_stood_or_fell_observed: false
+  consumer_ack_observed: false
+  prior_terminal_receipt_for_same_workitem_and_digest: false
+  terminal_receipt_written: false
+  fitness_credit: 0
+
+route:
+  target_seat: S04_STRUCTURAL_PREFLIGHT_VERIFIER
+  target_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  target_relation: NONPRODUCER_SAME_PROVIDER_PREFLIGHT
+  binding_weight: 0
+  exact_request:
+    - FETCH_AND_RECOMPUTE_THE_EVENT_AT_COMMIT_PATH_AND_BLOB_ABOVE
+    - FETCH_AND_RECOMPUTE_CURRENT_V83_AT_COMMIT_PATH_AND_BLOB_ABOVE
+    - CONFIRM_OR_REJECT_THE_CLASSIFICATION_AS_OBSERVATION_NOT_CLAIM_BOUND_PRODUCER_RETURN
+    - CHECK_TASK_BINDING_ACTOR_CARRIER_SEPARATION_IDEMPOTENCY_EXPIRY_ROLLBACK_PRIVACY_VERIFIER_CONSUMER_AND_ACK_FIELDS
+    - RETURN_EXACTLY_PASS_STRUCTURAL_REVISE_HOLD_OR_BLOCKED_WITH_SAME_PROVIDER_NONBINDING_AND_WEIGHT_ZERO
+    - DO_NOT_EMIT_STOOD_OR_FELL_AND_DO_NOT_IMPLY_CONSUMER_ACK
+  required_distinct_verifier_after_preflight:
+    role: AUTHORIZED_NONPRODUCER_RAW_GITHUB_COMPARE_WITNESS
+    binding: SAME_REPOSITORY_BASE_SHA_SYNTHETIC_HEAD_CLASS_REQUEST_DIGEST_AND_PRODUCER_RETURN_DIGEST
+    required_result: STOOD_OR_FELL
+    required_evidence:
+      - API_VERSION_AND_AUTHENTICATED_PRINCIPAL_CLASS
+      - RAW_HTTP_STATUS_AND_SAFE_BODY_DIGEST
+      - REQUEST_ID_RATE_LIMIT_HEADERS_AND_RETRY_COUNT
+      - EXACT_REQUEST_SHAPE_DIGEST
+
+rollback: NO_EXTERNAL_EFFECT_TO_ROLL_BACK_ROUTE_FILE_MAY_BE_SUPERSEDED_BY_LATER_RECEIPT_BUT_NOT_DELETED
+expiry_utc: 2026-08-11T07:48:00Z
+honest_flaw: >-
+  S03 can verify durable Git and Slack projections but cannot observe the connector's raw HTTP exchange or provide provider independence. S04 is a useful nonproducer structural preflight only and has binding weight zero; the raw distinct witness remains unavailable.
+
+valid_time_utc: 2026-08-04T08:09:00Z
+recorded_time_utc: 2026-08-04T08:09:00Z
