@@ -1,0 +1,163 @@
+---
+schema_id: hfo.gen133.s04.structural_preflight.v1
+receipt_id: S04_X14_MUTANT_080_ACTOR_CARRIER_CONFLATION_20260804T071148Z
+seat: S04_STRUCTURAL_PREFLIGHT
+result: REVISE
+valid_time_utc: 2026-08-04T07:11:48Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+wip: 1
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+---
+
+self_probe:
+  expected_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  observed_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  task_id_match: true
+  carrier_enabled_observed: true
+  tools_observed:
+    - native_automations_inventory_read
+    - github_branch_search
+    - github_recent_commit_search
+    - github_compare_commits
+    - github_exact_file_read
+    - github_exact_blob_read
+    - deterministic_utf8_sha256_and_git_blob_recompute
+    - deterministic_json_overlay_recompute
+    - github_create_file
+    - github_readback
+    - slack_pointer_post
+  task_mutation_performed: false
+  candidate_edit_performed: false
+  self_grading_performed: false
+  independent_quorum_claimed: false
+
+selection:
+  rule: NEWEST_IMMUTABLE_CANDIDATE_ADDRESSED_TO_S04_NOT_AUTHORED_BY_S04
+  candidate_id: X14_MUTANT_080_5436544dc7f2
+  authoring_seat: X14_FALSE_GREEN_MUTATION_QA
+  commit: 22d3cf6d73b9aef209cfd5c73d6b0be8360b2904
+  path: state/coordination/experiments/false_green_x14/quarantine/20260804T065342Z_X12_SLACK_RECEIPT_ACTOR_CARRIER_CONFLATION.mutant.yaml
+  git_blob_sha1_declared: 675f52eae90f6619d4ebdb408893d33592e3706e
+  git_blob_sha1_recomputed: 675f52eae90f6619d4ebdb408893d33592e3706e
+  exact_utf8_bytes: 9169
+  sha256_recomputed: 3fba674c1ca0b93923d8bba882de6826b1a838849872aa61cdd4799e0b678386
+  yaml_stream_shape: TWO_NONEMPTY_MAPPING_DOCUMENTS
+  addressed_structural_verifier: S04_STRUCTURAL_PREFLIGHT
+  addressed_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  authored_by_s04: false
+  immutable_commit_bound: true
+  newest_visible_eligible_candidate: true
+  discovery_limit: Recent-commit and code-index visibility are nontransactional; newest-visible is best-effort at selection time.
+
+source_recomputation:
+  source_receipt:
+    commit: 04ac249b58d8d88063f90157a549ba8d9988c08b
+    path: state/coordination/experiments/durable_object_x12/slack_receipts/825ec8fe73a6863bb46b30569021e8ba1ca978b196f0a8dde4b4a6e30f97214d.json
+    git_blob_sha1_declared: c3fa2238e0fd023e46403a4c50874dea8ee9828e
+    git_blob_sha1_recomputed: c3fa2238e0fd023e46403a4c50874dea8ee9828e
+    exact_utf8_bytes: 1971
+    sha256_recomputed: 967c8c213f13c92f831162e0098d3786bce3f67f7bc7a3a5b29ecbc2d0fb58f0
+    schema_id: hfo.gen133.x12.slack_receipt.v1
+    actor_identity_field_present: false
+  source_event:
+    commit: 65a68c5956c555a6c77e6f02b9af72ca03c295d3
+    path: state/coordination/experiments/durable_object_x12/events/20260804T064403Z_V0082_TO_V0083_IDEMPOTENCY_STRATEGY_CREATE_ONLY_DUPLICATE_REJECTION_V1.json
+    git_blob_sha1_declared: b56a5e36adc7f1b2d33375c452d41922286ce655
+    git_blob_sha1_readback: b56a5e36adc7f1b2d33375c452d41922286ce655
+    event_digest_sha256_bound_by_source: d1f5f9cff4e18aac4ba673f52a1c3bffc4587cb3899b0f32d010d71246caf6a4
+    digest_recompute_scope: SOURCE_RECEIPT_AND_CANDIDATE_EXACT_BYTES_RECOMPUTED; EVENT_BLOB_ID_READ_BACK; EVENT_SHA256_NOT_REHASHED_IN_THIS_CONNECTOR_PASS
+  source_current:
+    commit: f4a6e36d4f3eba76d249e1af419cf8ecb83ee54b
+    git_blob_sha1_declared: a393f84d59f84f22ccedd2247e1e8284b3800b0c
+    git_blob_sha1_readback: a393f84d59f84f22ccedd2247e1e8284b3800b0c
+    version: 83
+    latest_event_commit: 65a68c5956c555a6c77e6f02b9af72ca03c295d3
+    latest_event_digest_sha256: d1f5f9cff4e18aac4ba673f52a1c3bffc4587cb3899b0f32d010d71246caf6a4
+    projection_digest_sha256: a9a2bc5f97bc47fcd1a45ffaac04b2de1d4dc085ab05a558de6418a2b6851a15
+
+canonicalization:
+  algorithm: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_json: '{"mutated_field":"receipt.actor_identity","mutated_value":"6a506f83df208191815dd17a8fd5baa3","mutation_class":"ACTOR_CARRIER_CONFLATION","original_value":"ABSENT","source_blob_sha1":"c3fa2238e0fd023e46403a4c50874dea8ee9828e"}'
+  exact_utf8_bytes: 225
+  sha256_recomputed: 5436544dc7f2dc50c67ed0d13e682fc3c082b0a6632801947d0538a01f82aef8
+  declared_digest_match: true
+
+structural_checks:
+  freshness:
+    candidate_valid_time_utc: 2026-08-04T06:53:42Z
+    candidate_expires_utc: 2026-08-04T10:53:42Z
+    source_valid_time_utc: 2026-08-04T06:44:03Z
+    source_expires_utc: 2026-08-04T10:44:03Z
+    status_at_verification: FRESH
+  authority:
+    candidate_status: QUARANTINED_NONEXECUTABLE
+    source_effect_ceiling: ONE_SANITIZED_SLACK_POINTER_RECEIPT
+    authority_to_assert_logical_actor: ABSENT
+    authority_to_assert_authenticated_execution_principal: ABSENT
+  task_binding:
+    s04_task_binding: MATCH
+    x14_carrier_task_binding: MATCH
+    x12_source_task_binding: MATCH
+    task_registration_proves_actor_identity: false
+  actor_carrier_separation:
+    source_logical_actor: UNBOUND
+    source_authenticated_execution_principal: UNBOUND
+    source_carrier_task_id: 6a506f83df208191815dd17a8fd5baa3
+    mutant_actor_identity: 6a506f83df208191815dd17a8fd5baa3
+    verdict: FAIL_CONFLATION
+  idempotency:
+    source_idempotency_key: 825ec8fe73a6863bb46b30569021e8ba1ca978b196f0a8dde4b4a6e30f97214d
+    source_nonce: x12-c21-w3-v82-v83-825ec8fe73a6863bb46b3056
+    expected_version: 82
+    next_version: 83
+    duplicate_create_observation: HTTP_422_SHA_REQUIRED
+    limitation: Sequential connector evidence is not database uniqueness, simultaneous-writer exclusion, or exactly-once execution.
+  lease_and_expiry:
+    candidate_expiry_present: true
+    source_expiry_present: true
+    producer_lease_distinct_from_expiry: false
+  privacy:
+    source_surface: SANITIZED_SLACK_POINTER_RECEIPT
+    private_body_externalized: false
+    public_safe_or_unrestricted_retention_claimed: false
+  rollback:
+    candidate: RETAIN_OR_IGNORE_QUARANTINE_ARTIFACT
+    source: NEVER_DELETE_APPEND_CONFLICT_OR_COMPENSATE
+    destructive_rollback_required: false
+  verifier:
+    source_verifier: SLACK_POST_RESPONSE_PLUS_FINAL_GITHUB_CURRENT_READBACK
+    structural_verifier: S04_STRUCTURAL_PREFLIGHT
+    distinct_verifier_requested: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+    independence_status: SAME_PROVIDER_CORRELATED_NONBINDING
+  consumer:
+    source_consumer: Reginleif/Olrun
+    routed_consumer: X14_CAMPAIGN_REDUCER_AND_REGINLEIF_OLRUN_DURABLE_OBJECT_CONSUMERS
+    consumer_ack_observed: false
+
+strongest_fake_green_mutant:
+  mutation_class: ACTOR_CARRIER_CONFLATION
+  attempted_claim: A recurring scheduled carrier task ID is the logical producer actor and authenticated execution principal.
+  rejection: Task registration, enabled state, source ownership, Slack delivery, and Git readback identify transport and effects, not the logical actor, provider principal, authorship, or delegated authority.
+  named_gate: S04_ACTOR_CARRIER_PRINCIPAL_SEPARATION_EXACT_LOGICAL_ACTOR_EXECUTION_PRINCIPAL_CARRIER_TASK_AND_AUTHORITY_BINDING_GATE
+
+verdict:
+  result: REVISE
+  reason_code: CARRIER_TASK_RECORD_CANNOT_SELF_ASSERT_LOGICAL_ACTOR_OR_AUTHENTICATED_EXECUTION_PRINCIPAL
+  required_revision:
+    - Bind a logical producer actor distinct from the scheduled carrier record.
+    - Bind the authenticated GitHub and Slack execution principals or explicitly mark them unavailable.
+    - Bind delegated authority separately from actor, carrier, and provider principal.
+    - Preserve zero credit for actor-authorship, authority, ConsumerAck, adoption, outcome, and independent closure until those bindings exist.
+  same_provider_status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  independent_verification_closed: false
+
+honest_flaw: >-
+  Candidate and source-receipt exact UTF-8 bytes, SHA-256, and Git blob IDs were independently recomputed. The source event and CURRENT
+  blobs were fetched by exact Git blob ID and their internal pointers were cross-checked, but this pass did not independently rehash the
+  full source-event bytes. Repository search and branch-head discovery are nontransactional. S04 and S09 remain same-provider correlated
+  evidence with binding weight zero.
