@@ -1,75 +1,77 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
-experiment_id: X11_GOOGLE_DRIVE_METADATA_READ_VISIBILITY_V2
-current_version: 91
-accepted_wakes: 3
+experiment_id: X11_GIT_READ_WRITE_READBACK_V2
+current_version: 92
+accepted_wakes: 0
 target_wakes_before_decision: 4
-controlled_factor: google_drive_read_surface
+controlled_factor: git_read_write
 campaign_status: ACTIVE
 current_disposition: null
 prior_campaign:
-  experiment_id: X11_CALENDAR_METADATA_READ_VISIBILITY_V1
-  final_version: 88
+  experiment_id: X11_GOOGLE_DRIVE_METADATA_READ_VISIBILITY_V2
+  final_version: 92
   disposition: KEEP
   accepted_wakes: 4
 last_event:
-  commit: eb7b7135c3de0d32bc1882b099c218d96fd1ffe1
-  path: state/coordination/experiments/carrier_surface_x11/events/20260804T153906Z_GOOGLE_DRIVE_METADATA_READ_VISIBILITY_V2_WAKE_03_ACCEPTED.yaml
-  blob: 194b206ce040e04d93cd8761522727d278a5aaf4
+  commit: 4deb9e894f056c8ccebf0b9079030ba2d14954d3
+  path: state/coordination/experiments/carrier_surface_x11/events/20260804T163931Z_GOOGLE_DRIVE_METADATA_READ_VISIBILITY_V2_WAKE_04_DECISION_KEEP.yaml
+  blob: 76537432d25b2d58d24f5f547140faf3ffdb11f9
 baseline_result:
-  mode: authenticated_drive_impossible_marker_metadata_search
-  result_count: 0
-  next_page_token_present: false
-  execution_status: SUCCESS
-  interactive_login_required: false
-  file_content_read: false
-  file_identifiers_persisted: false
-  sensitive_readback_externalized: false
-  mutation_performed_by_probe: false
-  send_performed: false
+  mode: carrier_event_and_current_compare_and_swap_readback
+  preflight_current_version: 91
+  drive_campaign_execution_status: SUCCESS
+  drive_campaign_result_count: 0
+  drive_campaign_next_page_token_present: false
+  drive_campaign_permission_class: AUTHENTICATED_GOOGLE_DRIVE_METADATA_SEARCH_AVAILABLE
+  drive_campaign_error_class: NONE
+  drive_campaign_latency_samples_ms: [969, 3271, 2353, 1396]
+  drive_campaign_median_latency_ms: 1874.5
+  drive_campaign_latency_range_ms: 2302
+  operator_relay_minutes: 0
   changed_capability: false
   andon: false
-  permission_class: AUTHENTICATED_GOOGLE_DRIVE_METADATA_SEARCH_AVAILABLE
-  error_class: NONE
-  latency_exposed: true
-  latest_latency_ms: 2353
-  latency_samples_ms: [969, 3271, 2353]
-  operator_relay_minutes: 0
-claim_ceiling: authenticated_Google_Drive_metadata_search_execution_and_sanitized_result_count_visibility_only_not_drive_completeness_indexing_freshness_file_content_access_sharing_scope_or_independent_verification
-strongest_falsifier: the_fixed_impossible_marker_metadata_query_requires_interactive_login_returns_an_unclassified_permission_error_exposes_file_content_or_identifiers_outside_the_tool_boundary_or_produces_inconsistent_sanitized_result_counts_across_identical_wakes
+claim_ceiling: authenticated_GitHub_carrier_state_create_update_and_exact_readback_visibility_only_not_atomic_multi_file_transactions_branch_exclusivity_durability_under_provider_failure_or_independent_verification
+strongest_falsifier: the_expected_CURRENT_version_or_blob_changes_between_preflight_and_update_the_immutable_event_cannot_be_created_the_CURRENT_compare_and_swap_update_is_accepted_with_a_stale_blob_or_readback_does_not_match_the_written_version_and_content
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 next_consumer: [Reginleif, Ratatoskr]
-honest_flaw: repeated_zero_result_metadata_searches_test_only_one_authenticated_Drive_query_path_and_do_not_establish_drive_completeness_index_freshness_file_content_access_or_sharing_scope
-next_factor: google_drive_read_surface
+honest_flaw: using_the_carriers_required_state_writes_as_the_probe_tests_one_authenticated_contents_API_path_and_cannot_establish_atomicity_across_two_commits_branch_exclusivity_or_durability_under_provider_failure
+next_factor: git_read_write
 next_probe:
-  experiment_id: X11_GOOGLE_DRIVE_METADATA_READ_VISIBILITY_V2
-  campaign_wake: 4
-  mode: authenticated_drive_impossible_marker_metadata_search
-  query: HFO_X11_DRIVE_METADATA_PROBE_7B2E9D4C6A1F8035
-  topn: 1
-  best_effort_fetch: false
+  experiment_id: X11_GIT_READ_WRITE_READBACK_V2
+  campaign_wake: 1
+  mode: carrier_event_and_current_compare_and_swap_readback
+  exact_action: read_CURRENT_at_expected_version_create_one_immutable_event_update_CURRENT_with_the_preflight_blob_SHA_and_read_back_both_paths_to_verify_exact_version_and_content_identity
+  expected_current_version: 92
   persist_only:
-    - result_count
-    - next_page_token_present
+    - preflight_current_version
+    - event_create_status
+    - event_commit_sha
+    - event_blob_sha_when_exposed
+    - current_update_status
+    - current_commit_sha
+    - current_blob_sha
+    - readback_version_match
+    - readback_content_match
     - permission_class
     - error_class
     - latency_when_exposed
     - operator_relay_minutes
-  file_ids_persistence_allowed: false
-  file_content_persistence_allowed: false
-  mutation_allowed: false
-  send_allowed: false
-  interactive_login_allowed: false
-  sensitive_readback_externalization_allowed: false
-slack_action: SILENT_UNCHANGED
-updated_valid_time_utc: 2026-08-04T15:39:06Z
+  extra_probe_file_allowed: false
+  destructive_write_allowed: false
+  merge_allowed: false
+  publication_allowed: false
+  mutation_outside_carrier_state_allowed: false
+  same_provider_independence_claim_allowed: false
+slack_action: POST_CAMPAIGN_DECISION
+updated_valid_time_utc: 2026-08-04T16:39:31Z
 sealed: false
 ---
 
-The Google Drive metadata-read campaign accepted wake 3/4. The identical
-impossible-marker metadata-only search again returned zero files and no
-continuation token, with 2353 ms connector latency. No interactive login,
-content fetch, file-identifier persistence, mutation, send, operator relay,
-task mutation, or sensitive readback externalization occurred. Capability was
-unchanged, so Slack remains silent. Wake 4 repeats the identical probe and
-records the campaign decision.
+The Google Drive metadata-read campaign completed wake 4/4 with KEEP. Four
+identical impossible-marker metadata-only searches returned zero files and no
+continuation token without interactive login, content fetch, identifier
+persistence, mutation, send, task mutation, operator relay, or sensitive
+readback externalization. The next campaign tests only the authenticated GitHub
+carrier-state create, compare-and-swap update, and exact readback path; it does
+not claim atomic multi-file transactions, branch exclusivity, provider-failure
+durability, or independent verification.
