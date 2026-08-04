@@ -1,0 +1,48 @@
+schema_version: "1.0"
+receipt_type: OPERATOR_RELIEF_STATUS_RECONCILIATION
+seat: S05
+expected_task_id: "6a55c182078c8191b89f2dd15f5f640c"
+observed_at_utc: "2026-08-04T23:14:49Z"
+canonical_branch: "agent/gen133-bootstrap-20260730"
+wip: 1
+
+active_item:
+  id: PFA_HOUSEHOLD_SALE_SECURE_METHOD
+  priority: P0
+  prior_state: NO_SEND_DRAFT_READY
+  reconciled_state: REQUEST_SENT_WAITING_PROVIDER
+  exact_classification: WAITING_ON_SECURE_METHOD
+  material_change: "The operator-sent secure PandaDoc request is present in Gmail with SENT state at 2026-08-04T17:06:40-06:00. No provider reply was present in the same thread at readback."
+  duplicate_action_gate: "Do not send a second request while the provider reply is pending."
+  source_pointers:
+    gmail_thread_id: "19fb96ccc41d1a70"
+    sent_message_id: "19fcf0779210e1c9"
+    calendar_event_id: "cdgmae9i74s62b9ncdgm8b9kckqmab9ocgs38bb570r3ic1h6hh6cdj1co"
+
+priorities:
+  p0: "PFA household-sale secure-method response and completion path"
+  p1:
+    - "LinkedIn email-change authorization remains unresolved"
+    - "Missouri fire-alarm and AC evidence remains open"
+
+bounded_transition:
+  type: RECONCILE_IMPORTANT_STATUS
+  result: "Closed the operator decision loop on whether the secure-link request still needed sending; it is already sent and now waiting on provider response."
+  operator_minutes_removed_estimate: 5
+  next_consumer: "Var / PFA compliance follow-up cell"
+
+safety:
+  email_sent_by_this_cell: false
+  draft_created_or_changed: false
+  submission_performed: false
+  spend_or_payment_performed: false
+  account_or_security_change_performed: false
+  task_mutation_performed: false
+  sensitive_body_externalized: false
+
+next_gate:
+  condition: "Provider reply supplies an approved secure method, or the existing private calendar block is reached without a reply."
+  allowed_outcomes:
+    - SECURE_METHOD_RECEIVED
+    - WAITING_ON_SECURE_METHOD
+    - SUBMITTED_WITH_CONFIRMATION
