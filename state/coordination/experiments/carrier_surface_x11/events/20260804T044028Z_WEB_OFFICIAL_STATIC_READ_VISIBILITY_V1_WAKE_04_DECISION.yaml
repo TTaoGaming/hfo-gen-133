@@ -1,0 +1,108 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+event_id: X11_WEB_OFFICIAL_STATIC_READ_VISIBILITY_V1_WAKE_04_DECISION_20260804T044028Z
+experiment_id: X11_WEB_OFFICIAL_STATIC_READ_VISIBILITY_V1
+task_id_expected: 6a55089a9adc8191bda54541f7f9effa
+carrier: HFO_GEN133_X11
+wip: 1
+branch: agent/gen133-bootstrap-20260730
+prior_current_version: 79
+next_current_version: 80
+campaign_wake: 4
+campaign_target_wakes: 4
+accepted: true
+campaign_status: DECIDED
+baseline:
+  prior_accepted_wakes: 3
+  prior_successes: 3
+  prior_expected_marker_present_count: 3
+  prior_permission_class: PUBLIC_WEB_FIXED_URL_READ_AVAILABLE
+  prior_error_class: NONE
+hypothesis: an_identical_unauthenticated_fixed_public_URL_request_to_example_com_will_again_resolve_to_the_expected_canonical_host_and_expose_the_Example_Domain_marker_or_return_an_explicit_permission_transport_or_content_error_without_login_mutation_operator_relay_or_body_persistence
+controlled_factor: web_research
+exact_probe:
+  mode: unauthenticated_fixed_public_url_marker_probe
+  requested_url: https://example.com/
+  expected_canonical_host: example.com
+  expected_marker: Example Domain
+  all_other_probe_inputs_held_constant: true
+  authentication_requested: false
+  interactive_login_permitted: false
+  mutation_permitted: false
+  page_body_persistence_permitted: false
+  persisted_fields_only:
+    - canonical_host
+    - retrieval_status
+    - expected_marker_present
+    - permission_class
+    - error_class
+    - latency_when_exposed
+    - operator_relay_minutes
+    - campaign_disposition
+measured_result:
+  retrieval_status: SUCCESS
+  canonical_host: example.com
+  expected_marker_present: true
+  content_type: text/html
+  permission_class: PUBLIC_WEB_FIXED_URL_READ_AVAILABLE
+  error_class: NONE
+  latency_exposed: false
+  latency_ms: null
+  operator_relay_minutes: 0
+  authentication_requested: false
+  interactive_login_required: false
+  page_body_persisted: false
+  sensitive_readback_externalized: false
+  task_mutation_performed: false
+  repository_mutation_performed_by_probe: false
+  changed_capability: false
+  campaign_decision: true
+  andon: false
+campaign_summary:
+  accepted_wakes: 4
+  successful_retrievals: 4
+  expected_marker_present_count: 4
+  unexpected_host_count: 0
+  permission_or_transport_error_count: 0
+campaign_disposition: KEEP
+disposition_rationale: four_identical_fixed_unauthenticated_public_URL_probes_resolved_to_the_expected_host_and_exposed_the_expected_marker_without_login_mutation_operator_relay_or_page_body_persistence_so_the_bounded_static_web_read_capability_is_repeatable_at_its_existing_claim_ceiling
+strongest_falsifier: the_identical_fixed_URL_fails_to_resolve_redirects_to_an_unexpected_host_requires_authentication_or_returns_the_expected_marker_inconsistently_across_repeated_wakes
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer:
+  - Reginleif
+  - Ratatoskr
+claim_ceiling: fixed_public_web_URL_retrieval_and_expected_marker_visibility_only_not_search_quality_freshness_completeness_semantic_accuracy_truth_or_independent_verification
+same_provider_independence_claim: false
+binding_weight: 0
+honest_flaw: four_successful_reads_of_one_static_public_documentation_domain_measure_only_repeatability_of_a_basic_fixed_URL_path_and_do_not_test_search_ranking_dynamic_pages_freshness_completeness_truth_semantic_accuracy_or_transport_latency_when_latency_is_not_exposed
+next_factor: gmail_read_surface
+next_probe:
+  experiment_id: X11_GMAIL_METADATA_READ_VISIBILITY_V1
+  campaign_wake: 1
+  mode: authenticated_gmail_impossible_marker_id_search
+  query: 'subject:"HFO_X11_GMAIL_METADATA_PROBE_9C7B1E5A4D2F8A6C"'
+  max_results: 1
+  persist_only:
+    - result_count
+    - next_page_token_present
+    - permission_class
+    - error_class
+    - latency_when_exposed
+    - operator_relay_minutes
+  message_ids_persistence_allowed: false
+  message_content_read_allowed: false
+  mutation_allowed: false
+  send_allowed: false
+  interactive_login_allowed: false
+  sensitive_readback_externalization_allowed: false
+slack_action: CAMPAIGN_DECISION_REQUIRED
+valid_time_utc: 2026-08-04T04:40:28Z
+sealed: false
+---
+
+Wake 4 repeated the fixed unauthenticated example.com marker probe. The request
+again resolved to the expected host and exposed the expected marker without
+login, mutation, operator relay, or page-body persistence. The campaign is
+KEEP at the bounded fixed-public-URL claim ceiling. The next campaign probes
+Gmail metadata-search visibility with a fixed impossible subject marker and
+persists no message identifiers or content.
