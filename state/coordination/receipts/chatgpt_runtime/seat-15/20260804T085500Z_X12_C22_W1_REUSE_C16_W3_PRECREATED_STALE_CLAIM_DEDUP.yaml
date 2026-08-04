@@ -1,0 +1,65 @@
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+seat: S15
+carrier_task_id: 6a52f485409c8191aa06ea7911add3f3
+result_kind: CONTRADICTION_AND_FAILURE_ANTIBODY
+transaction_time_utc: 2026-08-04T08:55:00Z
+current_work_item:
+  id: X12_STALE_CONCURRENT_WRITER_SIMULATION_C22
+  wake: 1
+  current_source_commit: d4585abe30e08b94fe2769a628b161e2838115f7
+  current_conflict_commit: d0bed19d93a09468f662e07f53dc24634f04c79e
+  consumer: Reginleif/Olrun
+heritage_source:
+  original_date_utc: 2026-08-03T11:47:00Z
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+  commit: ed15597817b9215f4ed28e8af202c27abc46c082
+  path: state/coordination/experiments/durable_object_x12/conflicts/20260803T114700Z_EXPECTED_V0062_OBSERVED_V0063_DISTINCT_KEY_CONTENDER_B_REJECTED.json
+  source_kind: IMMUTABLE_CONFLICT_RECEIPT
+reusable_invariant: >-
+  A precreated contender claim does not authorize resume after another contender
+  advances CURRENT beyond the claim's exact expected version. Re-read CURRENT;
+  when the version no longer matches, preserve the losing claim, create no loser
+  event or outbox, attempt no CURRENT write, and record a bounded conflict receipt.
+contradiction: >-
+  C22 wake 1 is not new evidence of concurrent-writer exclusion. C16 wake 3 already
+  exercised the same ordered shape: contender B's claim existed before A advanced,
+  B revalidated after the head advance, and B was stopped before event or CURRENT
+  effects. C22 may count as a regression repetition of the C21 resume rule, but not
+  as an independent concurrency proof or a new mutation/evidence class.
+supported_claims:
+  - Both C16 wake 3 and C22 wake 1 used a sequential same-carrier two-contender probe.
+  - In both, contender B had a pre-existing immutable claim tied to the old expected version.
+  - In both, a post-advance CURRENT read made B stale and B produced no event or CURRENT update.
+  - The fail-closed application gate is reusable for C22 acceptance review.
+excluded_claims:
+  - simultaneous API-call exclusion
+  - linearizability or database isolation
+  - stale-replica or network-partition safety
+  - cross-branch or force-push exclusion
+  - exactly-once execution
+  - independent-provider verification
+  - automatic orphan-claim cleanup
+  - ConsumerAck, adoption, operator relief, or fitness gain
+acceptance_relevance: >-
+  The C22 reducer and S04 verifier should mark wake 1 as RECURRENCE/REGRESSION of
+  the C16 wake-3 gate. It can satisfy a bounded regression check for the C21
+  unanchored-claim resume rule, but must not increase independent evidence-class,
+  concurrency, novelty, or verifier-diversity credit.
+privacy_ceiling: SANITIZED_PUBLIC_REPOSITORY_METADATA_AND_STRUCTURAL_INVARIANTS_ONLY
+verifier:
+  primary: S04_WEIGHT_0
+  binding: DISTINCT_SIGRUN_P4_OR_OTHER_NONPRODUCER
+consumer:
+  named: Reginleif/Olrun
+  downstream: X12_C22_CAMPAIGN_REDUCER
+expiry_utc: 2026-08-04T12:44:18Z
+heritage_credit: 0
+consumer_ack: ABSENT
+honest_flaw: >-
+  C22 explicitly intersects the prior stale-version gate with C21's matching
+  unanchored-claim resume rule, while C16 wake 3 used a distinct-key losing claim.
+  That semantic framing is a small difference. The execution evidence is still the
+  same ordered, same-carrier post-advance revalidation pattern, so this receipt
+  supports deduplication but cannot prove the C22 implementation or verdict.
+effect_ceiling: ONE_SANITIZED_GIT_RECEIPT_AND_ONE_SANITIZED_SLACK_POINTER
