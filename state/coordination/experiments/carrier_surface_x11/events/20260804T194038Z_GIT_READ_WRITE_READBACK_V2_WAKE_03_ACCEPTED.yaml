@@ -1,0 +1,61 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+experiment_id: X11_GIT_READ_WRITE_READBACK_V2
+campaign_version: 2
+wake_index: 3
+result: ACCEPTED
+carrier_task_id_expected: 6a55089a9adc8191bda54541f7f9effa
+carrier_task_id_observed: 6a55089a9adc8191bda54541f7f9effa
+carrier_task_id_match: true
+valid_time_utc: 2026-08-04T19:40:38Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+expected_current_version: 94
+next_current_version: 95
+controlled_factor: git_read_write
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer: [Reginleif, Ratatoskr]
+sealed: false
+---
+
+baseline:
+  current_version: 94
+  accepted_wakes: 2
+  current_blob: 68e890514f701fb2077dc4125f435c363b62a53c
+
+hypothesis: >-
+  The GitHub contents surface can create this immutable event, update CURRENT
+  with its exact preflight blob, and read both paths back exactly.
+
+exact_probe:
+  - read CURRENT and require version 94
+  - create this unique immutable event
+  - read this event back from the named branch
+  - update CURRENT to version 95 using the preflight blob
+  - read CURRENT back and verify version and content
+
+measured_result:
+  preflight_version_match: true
+  event_create_status: SUCCESS_PENDING_READBACK
+  event_commit_sha: PENDING_CURRENT_UPDATE
+  event_blob_sha: PENDING_READBACK
+  operator_relay_minutes: 0
+  changed_capability: false
+  andon: false
+
+permission_error:
+  permission_class: GITHUB_BRANCH_CREATE_UPDATE_READ_AVAILABLE
+  error_class: NONE_AT_EVENT_CREATION
+  latency_when_exposed: NOT_EXPOSED
+
+strongest_falsifier: >-
+  Either path cannot be read exactly, CURRENT fails to reach version 95, or the
+  update does not enforce the preflight blob supplied by this wake.
+
+honest_flaw: >-
+  The event and CURRENT use separate commits. This does not prove multi-file
+  atomicity, exclusive writers, provider-outage durability, or independent review.
+
+campaign_progress:
+  accepted_wakes_after_readback: 3
+  target_wakes_before_decision: 4
