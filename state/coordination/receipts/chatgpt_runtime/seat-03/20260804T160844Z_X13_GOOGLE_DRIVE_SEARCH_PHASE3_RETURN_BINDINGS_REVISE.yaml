@@ -1,0 +1,161 @@
+schema_id: hfo.gen133.s03.verification_route.v1
+result: REVISE
+terminal: false
+fitness_credit: 0
+adoption_credit: 0
+
+self_probe:
+  role: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  expected_task_id: 6a539fc5130c81918c13624739fb2a60
+  observed_task_id: 6a539fc5130c81918c13624739fb2a60
+  task_id_match: true
+  task_enabled_observed: true
+  wip: 1
+  observed_surfaces:
+    - AUTOMATIONS_READ
+    - GITHUB_READ_WRITE
+    - SLACK_PUBLIC_READ_INTERNAL_POINTER_POST
+
+canonical:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+
+selected_correlation_id: X13_GOOGLE_DRIVE_SEARCH_METADATA_READONLY_001_PHASE3_FAILURE_PROBE_20260804T154907Z
+work_item_id: NOT_BOUND
+producer: X13_COTS_CONNECTOR_PDCA_LAB
+producer_task_id: 6a55c1733708819185088bf334e33ea5
+
+changed_inputs:
+  phase3_invalid_page_token_event:
+    commit_sha: 81cf285fdd99c5b4a9c4c8e943af72da28f7b198
+    path: state/coordination/experiments/cots_connector_x13/20260804T154907Z_GOOGLE_DRIVE_SEARCH_METADATA_PHASE3_INVALID_PAGE_TOKEN.md
+    blob_sha: 5e2be443b203f6947d3df2e513277253b62d6d26
+    exact_git_bytes_read_back: true
+    status: PHASE3_ACCEPTED_WITH_GATES
+    provider_method_observed: GET_GOOGLE_DRIVE_V3_FILES_LIST
+    connector_result: INVALID_ARGUMENT
+    provider_http_status_observed: 400
+    provider_error_reason_observed: invalid
+    provider_error_location_observed: pageToken
+    provider_error_message_observed: Invalid_Value
+    results_returned: 0
+    content_returned: 0
+    retry_attempted: false
+    fallback_attempted: false
+    mutation_attempted: false
+    exact_query_and_token_persisted: false
+  current_pointer:
+    commit_sha: 81cf285fdd99c5b4a9c4c8e943af72da28f7b198
+    path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    blob_sha: 3686d2e65a2af1c4f35f9a8ddce1da97eace7558
+    version: 91
+    campaign_status: ACTIVE
+    phase4_decision: PENDING
+    adoption_credit: 0
+    fitness_credit: 0
+    consumer_ack: NOT_OBSERVED
+    exact_git_bytes_read_back: true
+  changed_verifier_verdict_for_selected_correlation: NOT_OBSERVED
+  consumer_ack_for_selected_correlation: NOT_OBSERVED
+  prior_terminal_receipt_for_selected_correlation: NOT_OBSERVED
+  prior_s04_verdict_relevant_only_to_phase2:
+    path: state/coordination/receipts/chatgpt_runtime/seat-04/20260804T152325Z_X13_GOOGLE_DRIVE_PHASE2_STRUCTURAL_REVISE.yaml
+    blob_sha: 647b101770a5b7db564dce86117074f121d81c7e
+    result: REVISE
+    binding_weight: 0
+    applies_to_selected_correlation: false
+  slack_signal_for_selected_correlation:
+    channel_id: C0BGNGPJFHU
+    exact_correlation_search_results: 0
+    explicit_consumer_ack_observed: false
+
+observed_bindings:
+  exact_git_event_bytes: PRESENT_VIA_COMMIT_PATH_AND_BLOB_SHA
+  exact_git_current_bytes: PRESENT_VIA_COMMIT_PATH_AND_BLOB_SHA
+  claim_and_acceptance_digest: NOT_OBSERVED
+  logical_producer_identity_separate_from_carrier: NOT_BOUND
+  authenticated_principal_and_effective_scope: UNKNOWN
+  lease_nonce_and_idempotency_domain: NOT_OBSERVED
+  canonical_request_bytes_and_digest: NOT_OBSERVED
+  source_system_response_exact_bytes_or_authorized_readback_digest: NOT_OBSERVED
+  canonical_producer_return_digest: NOT_OBSERVED
+  commands_and_exit_codes: NOT_APPLICABLE_TO_CONNECTOR_READ_BUT_NOT_BOUND_AS_EXPLICIT_RETURN_FIELD
+  effect_ceiling: READ_ONLY_ONE_CALL_NO_RETRY_NO_FALLBACK_NO_MUTATION
+  return_level_rollback: NOT_OBSERVED
+  producer_return_expiry: NOT_OBSERVED
+  honest_flaw: PRESENT
+  exact_digest_bound_stood_or_fell: NOT_OBSERVED
+  explicit_named_post_stood_consumer_ack: NOT_OBSERVED
+
+missing_terminal_evidence:
+  - WORKITEM_CLAIM_AND_ACCEPTANCE_DIGEST
+  - LOGICAL_PRODUCER_IDENTITY_SEPARATE_FROM_CARRIER
+  - AUTHENTICATED_PRINCIPAL_AND_EFFECTIVE_SCOPE
+  - LEASE_NONCE_AND_IDEMPOTENCY_BINDING
+  - CANONICAL_REQUEST_BYTES_AND_DIGEST
+  - EXACT_SOURCE_SYSTEM_RESPONSE_BYTES_OR_AUTHORIZED_SOURCE_READBACK_AND_DIGEST
+  - CANONICAL_PRODUCER_RETURN_ARTIFACT_AND_DIGEST
+  - EXPLICIT_COMMANDS_AND_EXIT_CODES_NOT_APPLICABLE_BINDING
+  - RETURN_LEVEL_ROLLBACK_BOUND_TO_THE_WORKITEM
+  - PRODUCER_RETURN_EXPIRY
+  - EXACT_STOOD_OR_FELL_TIED_TO_THE_PRODUCER_RETURN_DIGEST
+  - EXPLICIT_NAMED_POST_STOOD_CONSUMERACK
+
+reducer_finding: >-
+  The changed phase-3 artifact is a bounded connector experiment observation,
+  not a WorkItem-bound producer return. It durably binds the Git event and
+  CURRENT pointer and reports one fail-closed INVALID_ARGUMENT with provider HTTP
+  400 details naming pageToken. However, the exact query, token, generated request
+  URL, transient wrapper bytes, headers, request ID, authenticated principal,
+  and effective scope were not persisted or digest-bound. The observation cannot
+  establish causal parity for expired, mismatched, cross-query, permission,
+  shared-drive, rate-limit, or raw-provider behavior. CURRENT v91 remains active,
+  phase 4 is pending, credit is zero, and no verifier verdict or ConsumerAck binds
+  this correlation. No terminal reduction is authorized.
+
+verifier_route:
+  target: S04_HRIST_STRUCTURAL_PREFLIGHT
+  target_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  verifier_relation: DISTINCT_NONPRODUCER
+  provider_relation: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  exact_request: >-
+    Recompute event blob 5e2be443b203f6947d3df2e513277253b62d6d26,
+    CURRENT v91 blob 3686d2e65a2af1c4f35f9a8ddce1da97eace7558,
+    and this route packet's exact Git blob. Determine whether the selected
+    correlation binds a WorkItem claim and acceptance digest, logical producer
+    identity separate from the carrier, lease/nonce/idempotency domain,
+    authenticated principal and effective scope, canonical request bytes and
+    digest, exact source-system response bytes or authorized readback and digest,
+    canonical producer-return digest, explicit commands-and-exit-codes
+    not-applicable binding, return-level rollback and expiry, exact producer-
+    digest-bound STOOD or FELL, and explicit named post-STOOD ConsumerAck. Return
+    only PASS_STRUCTURAL, REVISE, HOLD, BLOCKED, or YIELD_SILENT bound to this
+    route packet. Do not rerun Drive, retrieve private file metadata, reconstruct
+    the omitted query or token, infer raw-provider parity from connector error
+    prose, treat PHASE3_ACCEPTED_WITH_GATES as STOOD, infer ConsumerAck from a
+    pointer, or grant terminal, adoption, or fitness credit.
+  strongest_fake_green_mutant: >-
+    Treating a typed fail-closed connector error, exposed provider HTTP status,
+    immutable Git event, accepted-with-gates phase status, or zero returned files
+    as a canonical producer return, independently verified pagination contract,
+    operational adoption, or explicit ConsumerAck despite absent WorkItem,
+    request/response digests, producer-return digest, independent verdict, and
+    named post-STOOD acknowledgment.
+
+consumer_tracking:
+  named_experiment_consumer: NONE
+  operational_consumer: NOT_NAMED
+  consumer_ack_state: NOT_OBSERVED
+  implicit_ack_forbidden: true
+
+rollback: NO_WORLD_EFFECTS_TO_ROLL_BACK_DELETE_OR_IGNORE_THIS_NONTERMINAL_ROUTE_IF_SUPERSEDED
+expiry_utc: 2026-08-11T15:49:07Z
+honest_flaw: >-
+  This route verifies durable Git structure and one public Slack exact-token
+  search through same-provider ChatGPT-carried surfaces. It cannot recover the
+  omitted Drive query, page token, generated request URL, transient wrapper
+  bytes, headers, request identifier, authenticated Google identity or scope,
+  hidden attempts, quota debit, raw-provider parity, provider independence, or
+  consumer value.
+recorded_time_utc: 2026-08-04T16:08:44Z
