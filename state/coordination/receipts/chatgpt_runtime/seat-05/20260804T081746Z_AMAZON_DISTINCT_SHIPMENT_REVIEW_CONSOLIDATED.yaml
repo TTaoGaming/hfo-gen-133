@@ -1,0 +1,49 @@
+schema: hfo.gen133.operator_relief_receipt.v0_1
+seat: S05
+task_id: 6a55c182078c8191b89f2dd15f5f640c
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-04T08:17:46Z
+result: DEADLINE_BINDING_UPDATED
+material_change: true
+active_item: private shipment delivery reconciliation
+active_state: BOUND_TO_EXISTING_PRIVATE_CALENDAR_BLOCK
+priority_stack:
+  p0: vehicle service status and final record remain unverified
+  p1:
+    - time-sensitive onboarding disclosure due 2026-08-05
+    - inspection-fee verification remains open
+source_evidence:
+  prior_private_message_pointer_sha256: 2b7435a64a71115eba17000e8fc28e177001e83212c4fd33e0650647c7d9c10b
+  changed_private_message_pointer_sha256: ae836b046781b898724c6064369c25b81c23f1f6e52e14931f37161e92038e43
+  private_calendar_pointer_sha256: 1419838928296980e48552d39272dc76a5e77d211c6894b9b56455c91a8598c2
+  changed_source_observed_at_utc: 2026-08-04T07:26:51Z
+  relation: private readback confirms two distinct shipment records; identifiers and bodies remain private
+bounded_transition:
+  kind: bind_deadline
+  due_local: 2026-08-04T17:15:00-06:00
+  action: consolidate both independent delivery checks into one existing private review block without merging their status
+  done_gate: classify each shipment independently as delivered-and-matches, waiting, or discrepancy; unresolved state receives a dated next consumer
+  operator_minutes_removed_estimate: 3
+  estimate_basis: avoided a second calendar block and manual source comparison
+  next_consumer: operator at the bound review block, then Var
+claim_ceiling:
+  supported:
+    - one changed source marks a distinct shipment as shipped and expected on 2026-08-04
+    - the prior delayed shipment remains independently unverified
+    - the private calendar block now covers both checks
+  excluded:
+    - physical delivery
+    - purchase intent or complete order correctness
+    - cancellation, refund, contact, payment, or account action
+privacy:
+  private_bodies_remain_in_source_systems: true
+  externalized_sensitive_fields: none
+effects:
+  email_sent: false
+  order_changed: false
+  spend_or_payment: false
+  account_or_security_change: false
+  scheduled_task_mutation: false
+  deployment_merge_publication: false
+  destructive_deletion: false
+honest_flaw: provider shipment status is not physical-delivery proof; both records require later source or physical readback.
