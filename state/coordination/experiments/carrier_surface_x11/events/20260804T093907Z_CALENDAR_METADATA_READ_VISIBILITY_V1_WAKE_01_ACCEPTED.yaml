@@ -1,0 +1,109 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+event_id: X11_CALENDAR_METADATA_READ_VISIBILITY_V1_WAKE_01_ACCEPTED_20260804T093907Z
+experiment_id: X11_CALENDAR_METADATA_READ_VISIBILITY_V1
+task_id_expected: 6a55089a9adc8191bda54541f7f9effa
+carrier: HFO_GEN133_X11
+wip: 1
+branch: agent/gen133-bootstrap-20260730
+prior_current_version: 84
+next_current_version: 85
+campaign_wake: 1
+campaign_target_wakes: 4
+accepted: true
+campaign_status: ACTIVE
+campaign_disposition: null
+baseline:
+  prior_accepted_wakes: 0
+  prior_execution_status: NOT_YET_PROBED
+  prior_result_count: null
+  prior_next_page_token_present: null
+  prior_permission_class: NOT_YET_MEASURED
+  prior_error_class: NOT_YET_MEASURED
+  prior_latency_ms: null
+hypothesis: the_fixed_impossible_marker_query_through_the_connected_Google_Calendar_primary_calendar_bounded_search_surface_will_execute_without_interactive_login_and_return_a_sanitized_zero_result_or_an_explicit_permission_error_without_reading_or_persisting_event_content_or_identifiers_mutating_calendar_state_or_sending_anything
+controlled_factor: calendar_read_surface
+exact_probe:
+  mode: authenticated_calendar_impossible_marker_bounded_search
+  calendar_id: primary
+  query: HFO_X11_CALENDAR_METADATA_PROBE_4A9C7E2B6D1F8C30
+  time_min: 2026-01-01T00:00:00Z
+  time_max: 2026-12-31T23:59:59Z
+  max_results: 1
+  all_other_probe_inputs_held_constant: true
+  interactive_login_permitted: false
+  event_content_read_permitted: false
+  event_identifier_persistence_permitted: false
+  mutation_permitted: false
+  send_permitted: false
+  persisted_fields_only:
+    - result_count
+    - next_page_token_present
+    - permission_class
+    - error_class
+    - latency_when_exposed
+    - operator_relay_minutes
+measured_result:
+  execution_status: SUCCESS
+  result_count: 0
+  next_page_token_present: false
+  permission_class: AUTHENTICATED_GOOGLE_CALENDAR_BOUNDED_SEARCH_AVAILABLE
+  error_class: NONE
+  latency_exposed: true
+  latency_ms: 1711
+  latency_samples_ms: [1711]
+  operator_relay_minutes: 0
+  interactive_login_required: false
+  event_content_read: false
+  event_identifiers_persisted: false
+  sensitive_readback_externalized: false
+  calendar_mutation_performed: false
+  send_performed: false
+  task_mutation_performed: false
+  changed_capability: true
+  campaign_decision: false
+  andon: false
+strongest_falsifier: the_fixed_impossible_marker_bounded_query_requires_interactive_login_returns_an_unclassified_permission_error_exposes_event_content_or_identifiers_outside_the_tool_boundary_or_produces_inconsistent_sanitized_result_counts_across_identical_wakes
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer:
+  - Reginleif
+  - Ratatoskr
+claim_ceiling: authenticated_Google_Calendar_bounded_search_execution_and_sanitized_result_count_visibility_only_not_calendar_completeness_indexing_freshness_event_content_access_notification_delivery_or_independent_verification
+same_provider_independence_claim: false
+binding_weight: 0
+honest_flaw: an_impossible_marker_search_in_one_bounded_primary_calendar_window_tests_only_one_authenticated_search_path_and_a_zero_result_does_not_establish_calendar_completeness_index_freshness_event_content_access_or_notification_delivery
+next_factor: calendar_read_surface
+next_probe:
+  experiment_id: X11_CALENDAR_METADATA_READ_VISIBILITY_V1
+  campaign_wake: 2
+  mode: authenticated_calendar_impossible_marker_bounded_search
+  calendar_id: primary
+  query: HFO_X11_CALENDAR_METADATA_PROBE_4A9C7E2B6D1F8C30
+  time_min: 2026-01-01T00:00:00Z
+  time_max: 2026-12-31T23:59:59Z
+  max_results: 1
+  persist_only:
+    - result_count
+    - next_page_token_present
+    - permission_class
+    - error_class
+    - latency_when_exposed
+    - operator_relay_minutes
+  event_ids_persistence_allowed: false
+  event_content_persistence_allowed: false
+  mutation_allowed: false
+  send_allowed: false
+  interactive_login_allowed: false
+  sensitive_readback_externalization_allowed: false
+slack_action: POST_CHANGED_CAPABILITY
+valid_time_utc: 2026-08-04T09:39:07Z
+sealed: true
+---
+
+Wake 1 executed the fixed impossible-marker search through the connected Google
+Calendar primary-calendar read surface inside the bounded 2026 UTC window. It
+returned zero events and no continuation token without interactive login,
+event-content read, identifier persistence, mutation, send, operator relay, or
+sensitive readback externalization. This establishes only bounded authenticated
+Calendar search execution and sanitized result-count visibility; wake 2 repeats
+the identical probe.
