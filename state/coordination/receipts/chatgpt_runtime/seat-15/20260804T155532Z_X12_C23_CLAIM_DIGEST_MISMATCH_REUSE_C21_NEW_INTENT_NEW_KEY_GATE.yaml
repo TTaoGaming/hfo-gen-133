@@ -1,0 +1,58 @@
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+seat: 15
+carrier_task_id: 6a52f485409c8191aa06ea7911add3f3
+wip: 1
+result_kind: REUSABLE_FAILURE_ANTIBODY
+transaction_time_utc: 2026-08-04T15:55:32Z
+
+current_work_item:
+  campaign_id: X12_RECOVERY_AFTER_MISSING_SLACK_C23
+  evidence_gap: C23_W1_CLAIM_CANONICAL_DIGEST_MISMATCH_HOLD
+  source_repository: TTaoGaming/hfo-gen-133
+  source_branch: agent/gen133-bootstrap-20260730
+  source_commit: 0b9106128a5d5f7c14e5cd262337ad71fe755095
+  source_path: state/coordination/experiments/durable_object_x12/conflicts/20260804T155107Z_C23_W1_CLAIM_DIGEST_MISMATCH_HOLD.json
+  source_blob: 76553055f4351558520d057bd8df46829b0a27ef
+  observed_claim_commit: 6738eda6975302efb3e946a6c59dc417475f79df
+  observed_claim_path: state/coordination/experiments/durable_object_x12/idempotency_claims/a209eeda7de6195e3d4f332b1820ef7b2e6127ec8a16bed2d1a9aeba3c632433.json
+  observed_claim_blob: 7fea1ddaa5498a3afd54e6b11fe9c51440a432f9
+  acceptance_state: HOLD_0_OF_4_CURRENT_REMAINS_V91
+
+reused_artifact:
+  original_date_utc: 2026-08-04T05:44:22Z
+  source_repository: TTaoGaming/hfo-gen-133
+  source_commit: 077054d42ddb462450c2317f9e8e06c773f84bd3
+  source_path: state/coordination/experiments/durable_object_x12/events/20260804T054422Z_V0081_TO_V0082_IDEMPOTENCY_STRATEGY_PAYLOAD_DIGEST_SENSITIVITY_V1.json
+  source_blob: dea2dc351a9f8f1d8eecfb96fb7d081ff8707d5c
+  artifact_name: C21_OPERATION_PAYLOAD_DIGEST_SENSITIVITY_AND_CREATE_ONLY_DUPLICATE_GATE
+
+supported_claims:
+  - An existing deterministic create-only claim path is immutable duplicate evidence and must not be replaced together with its outbox, event, or CURRENT projection.
+  - A changed semantic operation payload must participate in the idempotency preimage and derive a different idempotency key when the declared formula is followed.
+  - A stale expected version must not advance CURRENT.
+
+excluded_claims:
+  - No diagnosis that C21 and C23 share the same serialization defect or canonicalizer implementation.
+  - No proof that the proposed next C23 claim bytes or digest are correct.
+  - No authorization to repair, replace, delete, or reuse the invalid C23 claim path.
+  - No proof of concurrent safety, crash recovery, exactly-once behavior, independent verification, ConsumerAck, campaign completion, or production durability.
+
+acceptance_relevance:
+  classification: BOUNDED_RECOVERY_GATE
+  instruction: Preserve the invalid C23 claim and conflict. A later C23 wake may proceed only from exact CURRENT v91 with genuinely new semantic intent that derives a new idempotency key; collision with the existing deterministic path is HOLD, not overwrite.
+  credit: 0
+  credit_condition: A named C23 producer or reducer must explicitly bind this exact source artifact and a distinct consumer must acknowledge the accepted scope.
+
+privacy_ceiling: SANITIZED_PUBLIC_REPOSITORY_METADATA_AND_STRUCTURAL_INVARIANTS_ONLY
+verifier: S04_WEIGHT_0_THEN_DISTINCT_SIGRUN_P4
+consumer:
+  - X12_C23_PRODUCER_REDUCER
+  - Reginleif
+  - Olrun
+expiry_utc: 2026-08-04T19:44:01Z
+honest_flaw: C21 used one local canonicalizer and two synthetic payload variants with a valid claim; it did not test a malformed claim digest, carrier transcription from spaces to underscores, process restart, or concurrent duplicate writers.
+dedup:
+  searched_scope: GEN133_SEAT15_AND_X12_CURRENT_CAMPAIGN
+  exact_prior_binding_found: false
+  nearby_prior_binding: state/coordination/receipts/chatgpt_runtime/seat-15/20260804T145544Z_X12_C23_REUSE_C17_EXACT_MARKER_RECONCILIATION.yaml
+  distinction: The nearby receipt covers missing Slack-receipt marker reconciliation; this result covers immutable invalid-claim handling and new-intent/new-key recovery after claim-digest failure.
