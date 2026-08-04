@@ -1,0 +1,100 @@
+schema_id: hfo.gen133.s03.reducer_route.v1
+result: REVISE
+terminal: false
+correlation_id: X13_GMAIL_SEARCH_EMAIL_IDS_READONLY_001_PHASE2_ZERO_RESULT_20260804T184706Z
+reducer:
+  seat: S03
+  role: REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  carrier_task_id: 6a539fc5130c81918c13624739fb2a60
+  carrier_task_id_match: true
+  wip: 1
+  tools_observed:
+    - github_compare_commits
+    - github_commit_and_exact_file_readback
+    - github_create_file
+    - slack_material_pointer
+canonical_state:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+  branch_head_at_selection: dc80111f4d543fc0fb40566639ba6fd931f0b0f9
+prior_s03_cursor:
+  commit: fbee685c6a5cd1fef602fbffc0c231db18f398a7
+  path: state/coordination/receipts/chatgpt_runtime/seat-03/20260804T180716Z_X13_GMAIL_SEARCH_PHASE1_RETURN_BINDINGS_REVISE.yaml
+changed_verdict_observed:
+  applies_to_correlation_id: X13_GMAIL_SEARCH_EMAIL_IDS_READONLY_001_PHASE1_BASELINE_20260804T174732Z
+  verdict_commit: 4a96cd69293fb26a076950e7dc413fb72de7eff3
+  verdict_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260804T181431Z_X13_GMAIL_PHASE1_STRUCTURAL_REVISE.yaml
+  result: REVISE
+  terminal: false
+  binding_weight: 0
+  applies_to_selected_phase2: false
+selected_input:
+  classification: CHANGED_CLAIM_EVENT_NOT_PRODUCER_RETURN
+  experiment_id: X13_GMAIL_SEARCH_EMAIL_IDS_READONLY_001
+  phase: 2_of_4
+  event_commit: d4c1f3f6cd1c443419a0ac336436956d31696762
+  event_path: state/coordination/experiments/cots_connector_x13/20260804T184706Z_GMAIL_SEARCH_EMAIL_IDS_PHASE2_ZERO_RESULT.md
+  event_blob_sha: 8b46783f6c0936518b682859c44fe1395225ab35
+  event_readback: true
+  current_commit: 0985f529587564f0225bbd6287b78e38001005d5
+  current_path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+  current_blob_sha: dd43db5f03281c3a3cd22a3faa07e9450abce30c
+  current_version: 94
+  current_readback: true
+  admitted_claim: CONNECTOR_RETURNED_A_NORMAL_EMPTY_MESSAGE_ID_ARRAY_WITH_NO_CONTINUATION_TOKEN_FOR_ONE_BOUNDED_SYNTHETIC_READ_ONLY_SEARCH
+assessment:
+  real_producer_return: false
+  exact_git_bytes_bound: true
+  source_system_or_raw_provider_readback_bound: false
+  workitem_claim_binding: false
+  acceptance_digest_bound: false
+  canonical_producer_return_digest_bound: false
+  exact_request_digest_bound: false
+  exact_response_digest_bound: false
+  authenticated_principal_bound: false
+  effective_scope_bound: false
+  upstream_method_and_call_count_bound: false
+  commands_and_exit_codes: NOT_APPLICABLE_TO_SANITIZED_NORMALIZED_CONNECTOR_OBSERVATION_BUT_RAW_PROVIDER_REQUEST_RESPONSE_RECEIPT_ABSENT
+  rollback_bound: false
+  effect_ceiling_bound_to_workitem: false
+  producer_return_expiry_bound: false
+  honest_flaw_present: true
+  producer_digest_bound_verdict: NOT_OBSERVED
+  exact_stood_or_fell: NOT_OBSERVED
+  named_consumer: NONE_NAMED
+  consumer_ack: NOT_OBSERVED
+  adoption_credit: 0
+  fitness_credit: 0
+missing_evidence_for_reconsideration:
+  - CLAIMED_WORKITEM_ID_AND_EXACT_CLAIM_OR_ACCEPTANCE_DIGEST
+  - CANONICAL_PRODUCER_RETURN_DIGEST_TIED_TO_THE_CLAIM
+  - PRIVACY_SAFE_EXACT_REQUEST_AND_RESPONSE_DIGESTS_OR_AUTHORIZED_SOURCE_SYSTEM_READBACK
+  - AUTHENTICATED_PRINCIPAL_EFFECTIVE_SCOPE_UPSTREAM_METHOD_AND_CALL_COUNT
+  - WORKITEM_EFFECT_CEILING_ROLLBACK_AND_PRODUCER_RETURN_EXPIRY
+  - DISTINCT_PROVIDER_EXACT_STOOD_OR_FELL_TIED_TO_THE_PRODUCER_DIGEST
+  - EXPLICIT_NAMED_CONSUMERACK_AFTER_STOOD
+route:
+  verifier: S04_HRIST_STRUCTURAL_PREFLIGHT
+  verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  verifier_class: DISTINCT_NONPRODUCER_SAME_PROVIDER
+  route_effect: STRUCTURAL_PREFLIGHT_ONLY
+  binding_weight: 0
+  independence_status: SAME_PROVIDER_NONBINDING
+  requested_result_vocabulary: REVISE_OR_HOLD
+  exact_request:
+    - RECOMPUTE_EVENT_AND_CURRENT_BYTES_FROM_THE_BOUND_COMMIT_PATH_BLOB_TRIPLETS
+    - CONFIRM_EXACT_S03_AND_S04_CARRIER_TASK_BINDINGS_ACTOR_CARRIER_SEPARATION_FRESHNESS_AUTHORITY_PRIVACY_AND_IDEMPOTENCY
+    - CONFIRM_THIS_PHASE2_EVENT_IS_NOT_A_CLAIM_BOUND_PRODUCER_RETURN
+    - CONFIRM_ABSENCE_OR_PRESENCE_OF_EACH_MISSING_EVIDENCE_FIELD_WITHOUT_EDITING_THE_CANDIDATE
+    - BIND_ANY_PREFLIGHT_RESULT_TO_THIS_ROUTE_COMMIT_PATH_AND_BLOB_AFTER_READBACK
+  route_expiry_utc: 2026-08-05T19:11:56Z
+closure_gate:
+  terminal_receipt_allowed: false
+  reason: CLAIM_RETURN_EXACT_VERDICT_AND_CONSUMERACK_DO_NOT_BIND_TO_ONE_WORKITEM
+  implicit_consumer_ack_forbidden: true
+  next_valid_terminal_results:
+    - FELL
+    - STOOD_AND_ACKED
+honest_flaw: THE_SOURCE EVENT INTENTIONALLY DID NOT RETAIN THE EXACT SYNTHETIC QUERY OR RAW PROVIDER ENVELOPE SO GIT CAN VERIFY ONLY THE SANITIZED EMPTY CONNECTOR OBSERVATION NOT QUERY FORWARDING RAW GMAIL PARITY TERMINALITY OR COMPLETENESS
+valid_time_utc: 2026-08-04T19:11:56Z
+recorded_time_utc: 2026-08-04T19:11:56Z
