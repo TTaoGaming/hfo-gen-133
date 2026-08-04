@@ -1,0 +1,107 @@
+---
+schema_id: hfo.gen133.s07_bounded_builder_return.v1
+result: HOLD
+work_item_id: SPATIAL_FACTORY_HTML5_SNAKE_PENDING_DIRECTION_COMMAND_GATE_001
+seat: S07_BOUNDED_CODE_PATCH_BUILDER
+wip: 1
+carrier_task_id_expected: 6a506f6dc5c08191b95f1707d7f00c2d
+carrier_task_id_observed: 6a506f6dc5c08191b95f1707d7f00c2d
+carrier_task_id_match: true
+valid_time_utc: 2026-08-04T10:23:40Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+---
+
+self_probe:
+  identity_source: scheduled_runtime_envelope
+  tools_exposed:
+    - authenticated GitHub search/read/write connector
+    - authenticated Slack write connector
+  execution_surfaces_absent:
+    - target repository checkout
+    - host shell
+    - browser runtime
+    - direct Codex executor ingress
+    - direct Claude executor ingress
+  task_mutation_performed: false
+  self_grading_performed: false
+
+selection:
+  selected_claim:
+    claim_id: S02_SPATIAL_FACTORY_HTML5_SNAKE_PROVENANCE_CLASSIFICATION_FEASIBLE_CLOCK_SUCCESSOR_20260804T091631Z
+    claim_commit: 0aea1b7dd922c747a67fdc0a38ba9fb0a727b77b
+    claim_blob: d1d545e6594aa53be7251e71eab39c727d1ee1c3
+    claim_path: projects/spatial-app-factory/claims/20260804T091631Z_SPATIAL_FACTORY_HTML5_SNAKE_PROVENANCE_CLASSIFICATION_FEASIBLE_CLOCK_SUCCESSOR.claim.yaml
+    acceptance_sha256: f93d177ce6fde7cbdefa0083ffa4c8ab252a49fc55a4a02c99fc7167352fba2c
+    producer_return_due_utc: 2026-08-04T13:16:31Z
+    expiry_utc: 2026-08-04T14:16:31Z
+    unexpired_at_probe: true
+    permits_effect: INTERNAL_UNMERGED_UNPUBLISHED_SPECIMEN_BRANCH_FILE_AND_TEST_WORK_ONLY
+
+verified_contract:
+  target_repository: TTaoGaming/TAGS
+  base_branch: main
+  base_sha: 1271e25306fe8ef8baea32704cf022435703d498
+  allowed_paths:
+    - prototypes/html5-snake-spatial-canary/**
+  rollback: delete only the unmerged dedicated specimen branch and working tree after preserving receipts
+  structural_verifier:
+    seat: S04_STRUCTURAL_PREFLIGHT_VERIFIER
+    task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  packet_compiler:
+    seat: S06_CODE_WORK_PACKET_COMPILER
+    task_id: 6a57972b9df081918680ce67c4ecb197
+  technical_verifier: DISTINCT_BROWSER_CAPABLE_NONPRODUCER
+  provenance_verifier: DISTINCT_NONPRODUCER_PROVENANCE_REVIEWER
+  consumer:
+    seat: S09_STRATEGIC_REASONING_AND_VOTING
+    task_id: 6a539fb148bc8191a30b6009dbf22438
+    consumer_ack_required: true
+
+changed_evidence:
+  s08_commit: 479114fec2153d58393178f9c7096159772a5dd4
+  s08_blob: cb60251665068513183a85b0f98cbbba50182ec9
+  material_delta: >-
+    Native keyboard commands must be owned by an explicitly focused game surface. Already-canceled, composing,
+    modified, repeated, and editable-target events must be rejected before mapping; browser default action may be
+    canceled only for recognized accepted game commands; Tab must never be canceled; pending native input must clear
+    on blur; spatial input remains on the direct requestDirection seam and may not synthesize keyboard events or acquire focus.
+  binding_status: NOT_BOUND_IN_SELECTED_CLAIM_ACCEPTANCE_DIGEST
+
+route_probe:
+  latest_s06_packet_commit: 3fe456271dfda9d26807bd96aa630748b532e259
+  latest_s06_packet_result: HOLD
+  latest_s06_packet_valid_time_utc: 2026-08-04T10:18:17Z
+  latest_s06_packet_expiry_utc: 2026-08-04T14:16:31Z
+  exact_s04_pass_bound_to_repaired_claim_and_s08_evidence: NOT_FOUND
+  s06_non_hold_route_to_s07: NOT_FOUND
+  direct_executor_ingress: NOT_EXPOSED
+  consequence: BRANCH_FILE_TEST execution is neither authorized nor reachable
+
+producer_effect:
+  target_branch_created: false
+  target_repository_changed: false
+  changed_paths: []
+  commands_run: []
+  tests_run: []
+  branch_sha: null
+  test_evidence: NONE_ROUTE_CLOSED
+
+remaining_risk:
+  - the current claim acceptance digest omits material S08 focus/default-action evidence
+  - the claim may expire before S02 repair, exact S04 pass, and non-HOLD S06 routing complete
+  - no shell or browser surface exists in this carrier for test-first implementation or browser verification
+  - GitHub and Slack searches are nontransactional and do not prove a global WIP lock
+  - public distribution chain of title remains NOT_STOOD
+
+honest_flaw: >-
+  This carrier can create Git coordination receipts but cannot execute or test the target patch. The selected immutable
+  claim is now stale relative to the S08 focus-ownership evidence, the exact repaired-claim S04 pass is absent, S06
+  explicitly returned HOLD, and no direct checkout, shell, browser, Codex, or Claude ingress is exposed. Creating a TAGS
+  branch through the contents API would bypass the route contract and could not satisfy the required failing-test-first evidence.
+
+next_gate:
+  - S02 issues one fresh nonrenewable successor binding S08 commit 479114fec2153d58393178f9c7096159772a5dd4 and blob cb60251665068513183a85b0f98cbbba50182ec9
+  - S04 emits exact PASS_STRUCTURAL bound to the repaired claim commit, blob, acceptance digest, and named S08 evidence
+  - S06 emits a non-HOLD packet naming proven direct executor ingress while the producer window remains feasible
+  - S07 then creates at most one dedicated TAGS branch and performs the bounded test-first patch
