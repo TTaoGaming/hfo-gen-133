@@ -1,0 +1,80 @@
+---
+schema_id: hfo.gen133.x14.false_green_mutant.v1
+mutant_id: X14_MUTANT_092_8768116ee37a
+experiment_id: X14_FALSE_GREEN_MUTATION_001
+campaign_ordinal: 23
+campaign_wake: 3
+seat: X14_FALSE_GREEN_MUTATION_QA
+carrier_task_id_expected: 6a513e4d9c4c81919db728f85db2dd79
+carrier_task_id_observed: 6a513e4d9c4c81919db728f85db2dd79
+carrier_task_id_match: true
+wip: 1
+mutation_class: STALE_SOURCE_DIGEST
+status: QUARANTINED_NONEXECUTABLE_ROUTED_PENDING_VERDICTS
+valid_time_utc: 2026-08-04T18:53:11Z
+expires_utc: 2026-08-04T22:44:48Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+binding_weight: 0
+independent_verification_closed: false
+---
+
+source:
+  authoring_seat: X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+  commit: 1db7e8d80466063a18073e836f312beacd62d461
+  path: state/coordination/experiments/durable_object_x12/slack_receipts/eba4744b58b497b8925015dbaac9c3ad03c30a45c42f590d2878adc9df2d0176_CONFLICT.json
+  blob_sha1: 8fbca8fe77cb67b32ffdb1032f35c3372a064937
+  task_id: 6a506f83df208191815dd17a8fd5baa3
+  schema_id: hfo.gen133.x12.slack_receipt.v1
+  object_id: HFO_X12_WORKFLOW_OBJECT_001
+  conflict_path: state/coordination/experiments/durable_object_x12/conflicts/20260804T184930Z_EVENT_DIGEST_MISMATCH_V92_TO_V93_HOLD.json
+  conflict_commit: 0955b298f863c72102c73b1e846a69cc5ce4ccbb
+  conflict_blob: 3e8d8986dd54272512652cb4cc3350aac5c0e446
+  exact_conflict_digest_sha256: 37e59d260a57aa696bba9b9f0319d3a0d4cde8f4f5781f7e77d729b61f5e373b
+  receipt_digest_sha256: b5bbaee47383021499e521a03dd75e7870bd9dac3ff84a48f77c38c45878a1e9
+  outcome: HOLD_NO_CURRENT_UPDATE
+  consumer: Reginleif/Olrun
+  verifier: S04_WEIGHT_0_THEN_DISTINCT_SIGRUN_P4
+  prior_x14_mutation_at_source_digest: false
+
+negative_control:
+  copy_mode: QUARANTINED_OVERLAY_SOURCE_UNCHANGED
+  executable: false
+  exactly_one_field_changed: true
+  mutated_field: canonical_receipt.conflict_digest_sha256
+  original_value: 37e59d260a57aa696bba9b9f0319d3a0d4cde8f4f5781f7e77d729b61f5e373b
+  mutated_value: 4a20cec4ebc157237cc5e9d32900ae452a5ddf0548326c02571369f5aeb4c317
+  stale_value_origin_commit: 53a91aebaf85ed1bc472a2afd5782d79dd6e3343
+  stale_value_origin_path: state/coordination/experiments/durable_object_x12/conflicts/20260804T175300Z_V0093_EVENT_AND_CONFLICT_DIGEST_CORRECTION_HOLD.json
+  source_edited: false
+  task_or_schedule_changed: false
+  external_effect_performed: false
+
+canonicalization:
+  algorithm: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_json: '{"mutated_field":"canonical_receipt.conflict_digest_sha256","mutated_value":"4a20cec4ebc157237cc5e9d32900ae452a5ddf0548326c02571369f5aeb4c317","mutation_class":"STALE_SOURCE_DIGEST","original_value":"37e59d260a57aa696bba9b9f0319d3a0d4cde8f4f5781f7e77d729b61f5e373b","source_blob_sha1":"8fbca8fe77cb67b32ffdb1032f35c3372a064937"}'
+  byte_count: 328
+  sha256: 8768116ee37ad20628ca4f4e5d8c77a428bcf1112b36a7805cdaa90ab36a7b2b
+
+expected_rejection:
+  verdict: REVISE
+  reason: STALE_DIGEST_DOES_NOT_BIND_THE_NAMED_CURRENT_PATH_BLOB_BYTES_OR_RECEIPT
+  named_gate: S04_SOURCE_DIGEST_EXACT_PATH_BLOB_CANONICAL_BYTES_VALID_TIME_PREDECESSOR_AND_RECEIPT_BINDING_GATE
+
+routing:
+  structural_verifier: S04_STRUCTURAL_PREFLIGHT
+  structural_verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  distinct_verifier: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  distinct_verifier_task_id: 6a539fb148bc8191a30b6009dbf22438
+  consumer: X14_CAMPAIGN_REDUCER_AND_REGINLEIF_OLRUN_DURABLE_OBJECT_CONSUMERS
+  expiry_utc: 2026-08-04T22:44:48Z
+
+campaign:
+  accepted_wakes_after_write: 3
+  decision_due: false
+  next_mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+
+honest_flaw: >-
+  This is easy to catch because the prior digest is visible in nearby X12 history. It does not test alias paths, truncated digests,
+  whitespace-only canonicalization drift, rounded timestamps, or stale index readback. S04 and S09 are distinct seats on the same
+  provider, so their evidence remains nonbinding with weight zero.
