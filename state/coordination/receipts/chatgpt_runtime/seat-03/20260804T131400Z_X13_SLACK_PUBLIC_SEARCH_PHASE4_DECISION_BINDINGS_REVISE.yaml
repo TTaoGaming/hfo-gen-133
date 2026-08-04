@@ -1,0 +1,156 @@
+schema_id: hfo.gen133.s03.verification_route.v1
+result: REVISE
+terminal: false
+fitness_credit: 0
+adoption_credit: 0
+
+self_probe:
+  role: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  expected_task_id: 6a539fc5130c81918c13624739fb2a60
+  observed_task_id: 6a539fc5130c81918c13624739fb2a60
+  task_id_match: true
+  task_enabled_observed: true
+  wip: 1
+  observed_surfaces:
+    - AUTOMATIONS_READ
+    - GITHUB_READ_WRITE
+    - SLACK_PUBLIC_READ_INTERNAL_POINTER_POST
+
+canonical:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+
+selected_correlation_id: X13_SLACK_PUBLIC_MESSAGE_SEARCH_READONLY_001_PHASE4_DECISION_20260804T124723Z
+work_item_id: NOT_BOUND
+producer: X13_COTS_CONNECTOR_PDCA_LAB
+producer_task_id: 6a55c1733708819185088bf334e33ea5
+
+changed_inputs:
+  phase4_decision_event:
+    commit_sha: ce85b5dc9abdfa68f9a8416958471efe19a242fd
+    path: state/coordination/experiments/cots_connector_x13/20260804T124723Z_SLACK_PUBLIC_MESSAGE_SEARCH_PHASE4_DECISION.md
+    blob_sha: 5ef5594a3b9a05d2e5f2c78920f7a21f27f45553
+    exact_git_bytes_read_back: true
+    decision: ADOPT_WITH_GATES
+    adoption_mode: CATALOG_MANUAL_ONLY_NONOPERATIONAL
+  current_pointer:
+    commit_sha: 5dad93776f76134e52ce63416dcad346794c5d87
+    path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    blob_sha: abb104e5f86f5ecccd2e4444d97a08cc398d91e5
+    version: 88
+    campaign_status: CLOSED
+    adoption_credit: 0
+    fitness_credit: 0
+    consumer_ack: NOT_OBSERVED
+    exact_git_bytes_read_back: true
+  changed_prior_verifier_verdict:
+    correlation_id: X13_SLACK_PUBLIC_MESSAGE_SEARCH_READONLY_001_PHASE3_INVALID_CURSOR_FAILURE_PROBE_20260804T114657Z
+    commit_sha: 12fa5f055a9fb0ee1091df7df3b335637638fb2f
+    path: state/coordination/receipts/chatgpt_runtime/seat-04/20260804T121711Z_X13_SLACK_PUBLIC_SEARCH_PHASE3_STRUCTURAL_REVISE.yaml
+    blob_sha: 0620e0f1ce75ea297bc14a3a7fa68e299837c149
+    result: REVISE
+    selected_correlation_match: false
+    provider_relation: SAME_PROVIDER_NONBINDING
+    binding_weight: 0
+  changed_advisory_evidence_card:
+    commit_sha: edd025d533728cb3d570f56ecb549b5e9ef81740
+    path: state/coordination/receipts/chatgpt_runtime/seat-08/20260804T122745Z_S08_X13_SLACK_PUBLIC_SEARCH_PHASE4_CATALOG_ONLY_ADMISSION_EVIDENCE_CARD.md
+    blob_sha: 6b54f014c076fd96bd49309969d961b0b52bda8a
+    verdict: REVISE
+    verdict_detail: ADMIT_TO_CATALOG_ONLY_DO_NOT_ADOPT_FOR_OPERATIONAL_AUTOMATION
+    consumer_named: X13_SLACK_PUBLIC_MESSAGE_SEARCH_READONLY_001_PHASE4_DECISION
+    explicit_consumer_ack: false
+    binding_weight: 0
+  verifier_verdict_for_selected_correlation: NOT_OBSERVED
+  consumer_ack_for_selected_correlation: NOT_OBSERVED
+  prior_terminal_receipt_for_selected_correlation: NOT_OBSERVED
+  slack_decision_pointer:
+    channel_id: C0BGNGPJFHU
+    message_url: https://hfonetwork.slack.com/archives/C0BGNGPJFHU/p1785847860887719
+    decision_pointer_observed: true
+    explicit_consumer_ack_token_observed: false
+    classification: MATERIAL_POINTER_NOT_CONSUMERACK
+
+observed_bindings:
+  exact_git_decision_bytes: PRESENT_VIA_BLOB_SHA
+  exact_git_current_bytes: PRESENT_VIA_BLOB_SHA
+  effect_ceiling: DECISION_ONLY_NO_ADDITIONAL_SLACK_CANDIDATE_CALL
+  honest_flaw: PRESENT
+  campaign_decision: ADOPT_WITH_GATES
+  adoption_mode: CATALOG_MANUAL_ONLY_NONOPERATIONAL
+  operational_consumer: NOT_NAMED
+  source_system_result_bytes_for_phase4: NOT_APPLICABLE_NO_PHASE4_CANDIDATE_CALL
+  prior_phase_request_and_response_digests: NOT_OBSERVED
+  authenticated_principal_and_effective_scope: UNKNOWN
+  commands_and_exit_codes: NOT_APPLICABLE_TO_DECISION_ONLY_EVENT_BUT_NOT_BOUND_IN_CANONICAL_RETURN
+  canonical_producer_return_digest: NOT_OBSERVED
+  producer_return_expiry: NOT_OBSERVED
+  distinct_provider_or_raw_provider_verdict: NOT_OBSERVED
+  exact_digest_bound_stood_or_fell: NOT_OBSERVED
+  explicit_named_post_stood_consumer_ack: NOT_OBSERVED
+
+missing_terminal_evidence:
+  - WORKITEM_CLAIM_AND_ACCEPTANCE_DIGEST
+  - LEASE_NONCE_AND_IDEMPOTENCY_BINDING
+  - CANONICAL_PRODUCER_RETURN_ARTIFACT_AND_DIGEST
+  - EXACT_PRIOR_PHASE_REQUEST_AND_RESPONSE_DIGESTS_OR_AUTHORIZED_SOURCE_READBACK
+  - AUTHENTICATED_PRINCIPAL_AND_EFFECTIVE_SCOPE
+  - COMMANDS_AND_EXIT_CODES_WHERE_APPLICABLE_OR_EXPLICIT_NOT_APPLICABLE_BINDING_IN_RETURN
+  - RETURN_LEVEL_ROLLBACK_BOUND_TO_THE_WORKITEM
+  - PRODUCER_RETURN_EXPIRY
+  - EXACT_STOOD_OR_FELL_TIED_TO_THE_PRODUCER_RETURN_DIGEST
+  - EXPLICIT_NAMED_POST_STOOD_CONSUMERACK
+
+reducer_finding: >-
+  The phase-4 artifact closes an X13 catalog experiment with ADOPT_WITH_GATES,
+  but it is a decision-only event and not a WorkItem-bound producer return.
+  It explicitly keeps the capability manual-only and nonoperational, assigns
+  zero adoption and fitness credit, names no operational consumer, and records
+  ConsumerAck as not observed. The changed S04 verdict binds phase 3 only and
+  has same-provider binding weight zero. The S08 evidence card is advisory input
+  to the phase-4 decision, not a digest-bound STOOD or FELL verdict and not an
+  explicit ConsumerAck. No terminal reduction is authorized.
+
+verifier_route:
+  target: S04_HRIST_STRUCTURAL_PREFLIGHT
+  target_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  provider_relation: SAME_PROVIDER_NONBINDING
+  verifier_relation: DISTINCT_NONPRODUCER
+  binding_weight: 0
+  exact_request: >-
+    Recompute phase-4 decision blob 5ef5594a3b9a05d2e5f2c78920f7a21f27f45553,
+    CURRENT v88 blob abb104e5f86f5ecccd2e4444d97a08cc398d91e5,
+    S08 advisory blob 6b54f014c076fd96bd49309969d961b0b52bda8a,
+    and this route packet's exact Git blob. Determine whether the selected
+    correlation binds a WorkItem claim and acceptance digest, lease/nonce/
+    idempotency domain, authenticated principal and effective scope, canonical
+    producer-return digest, exact prior-phase request and response digests or
+    authorized source-system readback, commands and exit codes where applicable,
+    return rollback and expiry, exact producer-digest-bound STOOD or FELL, and
+    explicit named post-STOOD ConsumerAck. Return only PASS_STRUCTURAL, REVISE,
+    HOLD, BLOCKED, or YIELD_SILENT bound to this route packet. Do not rerun Slack
+    search, infer raw-provider parity, treat ADOPT_WITH_GATES as STOOD, treat a
+    catalog consumer or Slack pointer as ConsumerAck, or grant terminal,
+    adoption, or fitness credit.
+  strongest_fake_green_mutant: >-
+    Treating a closed catalog campaign, ADOPT_WITH_GATES, the S08 catalog-only
+    evidence card, or the Slack decision pointer as a canonical producer return,
+    binding STOOD verdict, operational adoption, or explicit ConsumerAck despite
+    the missing WorkItem, producer-return digest, distinct verdict, and named
+    post-STOOD acknowledgment.
+
+consumer_tracking:
+  named_catalog_consumer: HFO_COTS_CAPABILITY_INVENTORY
+  operational_consumer: NOT_NAMED
+  consumer_ack_state: NOT_OBSERVED
+  implicit_ack_forbidden: true
+
+rollback: NO_WORLD_EFFECTS_TO_ROLL_BACK_DELETE_OR_IGNORE_THIS_NONTERMINAL_ROUTE_IF_SUPERSEDED
+expiry_utc: 2026-08-11T12:47:23Z
+honest_flaw: >-
+  This route can verify only durable Git structure and public Slack pointers
+  visible through same-provider ChatGPT-carried surfaces. It cannot establish
+  the omitted prior-phase exact queries or response bytes, authenticated Slack
+  principal or scope, raw Slack parity, hidden retries, quota use, provider
+  independence, search completeness, or actual consumer value.
+recorded_time_utc: 2026-08-04T13:14:00Z
