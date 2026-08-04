@@ -1,0 +1,82 @@
+---
+schema_id: hfo.gen133.s07_producer_return.v1
+result: HOLD
+seat: S07_BOUNDED_CODE_PATCH_BUILDER
+work_item_id: SPATIAL_FACTORY_HTML5_SNAKE_PENDING_DIRECTION_COMMAND_GATE_001
+wip: 1
+valid_time_utc: 2026-08-04T03:23:47Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+---
+
+self_probe:
+  expected_task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+  observed_task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+  task_id_match: true
+  identity_source: automation_runtime_envelope_and_task_contract
+  tools_exposed:
+    github: authenticated recent-commit search, compare, exact file read, immutable file create, readback
+    slack: authenticated pointer post after Git readback
+    execution_surface: none
+  task_mutation_performed: false
+
+selection:
+  claim_id: S02_SPATIAL_FACTORY_HTML5_SNAKE_REPEAT_FILTER_SUCCESSOR_20260804T020604Z
+  claim_commit_sha: c72a290566711418e566f9c81af3bf32836e05db
+  claim_blob_sha: 49544930f3b5c43bc6ad07501fbb3efaf90019a0
+  claim_path: projects/spatial-app-factory/claims/20260804T020604Z_SPATIAL_FACTORY_HTML5_SNAKE_REPEAT_FILTER_SUCCESSOR.claim.yaml
+  claim_status: CLAIMED_INTERNAL_ONLY
+  producer_return_due_utc: 2026-08-04T04:36:04Z
+  lease_expires_utc: 2026-08-04T06:06:04Z
+  unexpired_at_selection: true
+  effect_permission: BRANCH_FILE_TEST_INTERNAL_UNMERGED_ONLY
+
+verified_contract:
+  target_repository: TTaoGaming/TAGS
+  base_sha: 1271e25306fe8ef8baea32704cf022435703d498
+  allowed_paths:
+    - prototypes/html5-snake-spatial-canary/**
+  forbidden_paths: every path outside the allowed subtree and every pre-existing TAGS path
+  acceptance_contract_sha256: a0c99b8d91e242eb8591728ae50bc025985f56dfd4c959fe43490e96ebff83ca
+  rollback: quarantine an unmerged producer branch or use a producer-authored revert; no force-push, reset, rebase, or deletion
+  structural_verifier: S04_STRUCTURAL_PREFLIGHT_VERIFIER
+  technical_verifier: DISTINCT_BROWSER_CAPABLE_NONPRODUCER
+  consumer: S09_STRATEGIC_REASONING_AND_VOTING
+
+latest_route_evidence:
+  s06_packet_commit: cd3b552eda06aad27be1850e73022a21eda1991b
+  s06_packet_path: projects/spatial-app-factory/dispatch/20260804T032000Z_SPATIAL_FACTORY_HTML5_SNAKE_EDGE_OWNER_HOLD.executor.yaml
+  s06_packet_result: HOLD
+  s06_packet_expiry_utc: 2026-08-04T06:06:04Z
+  material_change: >-
+    S06 incorporated the S15 activation-edge ownership invariant: one named spatial producer must own
+    BEGIN/HELD/COMMIT-or-CANCEL state; per-frame samples are observations and emit no command.
+  exact_s04_pass_bound_to_claim_commit_blob_and_acceptance_digest: NOT_FOUND
+  non_hold_s06_packet_routed_to_s07: NOT_FOUND
+
+producer_action:
+  branch_created: false
+  files_changed_in_target_repository: []
+  regression_test_added: false
+  commands_run: []
+  tests_run: []
+  execution_credit: 0
+  reason: >-
+    The claim explicitly requires an exact S04 PASS_STRUCTURAL and one S06 non-HOLD claim-bound executor
+    packet before S07 may create the branch. The newest S06 packet remains HOLD, so execution is not authorized.
+
+next_gate:
+  - S04 emits PASS_STRUCTURAL bound to claim commit c72a290566711418e566f9c81af3bf32836e05db, blob 49544930f3b5c43bc6ad07501fbb3efaf90019a0, and acceptance digest a0c99b8d91e242eb8591728ae50bc025985f56dfd4c959fe43490e96ebff83ca
+  - S06 emits one non-HOLD executor packet explicitly routed to S07 before claim expiry
+  - only then may S07 create one agent/html5-snake-pending-direction-canary-* branch from the exact TAGS base SHA
+
+remaining_risk:
+  - producer-return deadline is approaching while the structural route remains closed
+  - visible MIT notice is not a complete public-distribution chain-of-title determination
+  - no checkout, browser runtime, zero-network capture, keyboard-repeat trace, or technical verification exists
+
+honest_flaw: >-
+  GitHub indexed search is nontransactional. This result relies on exact readback of the current claim and newest
+  S06 packet plus the recent-commit chain observed through cd3b552eda06aad27be1850e73022a21eda1991b. It does not
+  prove that a later concurrent S04 receipt was impossible after observation. No target execution surface was exposed.
