@@ -1,29 +1,29 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
 experiment_id: X13_GMAIL_SEARCH_EMAIL_IDS_READONLY_001
-version: 94
-prior_version: 93
+version: 95
+prior_version: 94
 candidate: Gmail_search_email_ids_readonly_surface
-campaign_wake: 2_of_4
+campaign_wake: 3_of_4
 campaign_status: ACTIVE
 phase_1_completed: true
 phase_1_status: PHASE1_ACCEPTED_WITH_GATES
 phase_2_completed: true
 phase_2_status: PHASE2_ACCEPTED_WITH_GATES
-phase_3_completed: false
-phase_3_status: PENDING
+phase_3_completed: true
+phase_3_status: PHASE3_ACCEPTED_WITH_GATES
 phase_4_completed: false
 phase_4_decision: PENDING
 adoption_mode: NONE_NONOPERATIONAL
 carrier_task_id: 6a55c1733708819185088bf334e33ea5
 carrier_task_id_match: true
 wip: 1
-last_event_commit: d4c1f3f6cd1c443419a0ac336436956d31696762
-last_event_path: state/coordination/experiments/cots_connector_x13/20260804T184706Z_GMAIL_SEARCH_EMAIL_IDS_PHASE2_ZERO_RESULT.md
-last_event_blob_sha: 8b46783f6c0936518b682859c44fe1395225ab35
+last_event_commit: c1bb4c74d97364b895faf41acc57c04e862ecc55
+last_event_path: state/coordination/experiments/cots_connector_x13/20260804T194723Z_GMAIL_SEARCH_EMAIL_IDS_PHASE3_INVALID_PAGE_TOKEN.md
+last_event_blob_sha: a48ca383cdc0ad83f334ab6076655338fa007508
 last_event_readback: true
-prior_current_commit: ea1a0558a4f08bfed83081ff932e6f3e67492bae
-prior_current_blob_sha: dee04a8c4651ba4bddb26425a9bad4c73bdeaa96
+prior_current_commit: 0985f529587564f0225bbd6287b78e38001005d5
+prior_current_blob_sha: dd43db5f03281c3a3cd22a3faa07e9450abce30c
 adoption_credit: 0
 fitness_credit: 0
 consumer_ack: NOT_OBSERVED
@@ -32,29 +32,30 @@ custom_code_avoided_estimate: 15_to_45_LOC_UNVALIDATED
 paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
 actual_quota_consumed: UNKNOWN
 official_quota_contract: MESSAGES_LIST_5_UNITS_PER_REQUEST_AS_OF_2026_08_04
-campaign_calls: 2_READONLY_2_SUCCESS_0_RETRY_0_FALLBACK_0_MUTATION
-result_shape: PHASE1_ONE_MESSAGE_ID_AND_CONTINUATION_TOKEN_PHASE2_NORMAL_EMPTY_ID_ARRAY_AND_NO_TOKEN_NO_CONTENT_HEADERS_THREAD_ID_OR_RESULT_SIZE_ESTIMATE
-connector_variance: OUTPUT_NARROWER_THAN_RAW_USERS_MESSAGES_LIST_EMPTY_RESULT_NORMALIZED_WITHOUT_RAW_RESULT_SIZE_OR_PROVIDER_ENVELOPE
+campaign_calls: 3_READONLY_2_SUCCESS_1_INVALID_ARGUMENT_0_RETRY_0_FALLBACK_0_HYDRATION_0_MUTATION
+result_shape: PHASE1_ONE_MESSAGE_ID_AND_CONTINUATION_TOKEN_PHASE2_NORMAL_EMPTY_ID_ARRAY_AND_NO_TOKEN_PHASE3_TYPED_NORMALIZED_INVALID_ARGUMENT_NO_CONTENT_HEADERS_THREAD_ID_RESULT_SIZE_ESTIMATE_HTTP_STATUS_HEADERS_REQUEST_ID_OR_RAW_PROVIDER_BODY
+connector_variance: OUTPUT_NARROWER_THAN_RAW_USERS_MESSAGES_LIST_AND_FAILURE_NORMALIZED_TO_GOOGLE_API_ERROR_INVALID_ARGUMENT_WITHOUT_TRANSPORT_OR_RAW_PROVIDER_DETAIL
 credentials: CONNECTOR_MANAGED_IDENTITY_AND_EFFECTIVE_SCOPE_UNKNOWN
 durability: CANONICAL_GIT_EVENT_READ_BACK_AND_VERSIONED_CURRENT_PENDING_READBACK
-observability: PARTIAL_639MS_TOTAL_AND_NORMALIZED_ERROR_FIELDS_NO_HTTP_HEADERS_REQUEST_ID_QUOTA_OR_HIDDEN_ATTEMPTS
+observability: PARTIAL_TWO_SUCCESS_SHAPES_AND_TYPED_NORMALIZED_INVALID_ARGUMENT_NO_HTTP_STATUS_HEADERS_REQUEST_ID_RAW_PROVIDER_BODY_LATENCY_QUOTA_OR_HIDDEN_ATTEMPTS
 portability: MEDIUM
-failure_behavior: NORMAL_EMPTY_RESULT_PATH_OBSERVED_FAILURE_NOT_YET_PROBED
-mandatory_gate: BOUNDED_READONLY_ID_ONLY_SEARCH_NO_QUERY_OR_IDENTIFIER_RETENTION_ZERO_RESULTS_NONAUTHORITATIVE_RAW_SCOPE_PAGINATION_AND_FAILURE_WITNESS_REQUIRED
-strongest_falsifier: SAME_PRINCIPAL_RAW_USERS_MESSAGES_LIST_RETURNS_ANY_MATCH_OR_NONTERMINAL_PAGE_FOR_THE_IDENTICAL_TRANSIENT_QUERY_BOUNDARY_IN_THE_SAME_OBSERVATION_WINDOW
+failure_behavior: SYNTHETIC_INVALID_PAGE_TOKEN_FAILED_CLOSED_WITH_TYPED_NORMALIZED_INVALID_ARGUMENT_AND_NO_MESSAGE_IDS
+mandatory_gate: BOUNDED_READONLY_ID_ONLY_HUMAN_REVIEWED_SEARCH_USE_ONLY_IMMEDIATELY_PRECEDING_COMPATIBLE_RETURNED_TOKEN_ZERO_RESULTS_AND_ZERO_IDS_DURING_ERRORS_NONAUTHORITATIVE_NO_QUERY_IDENTIFIER_OR_TOKEN_RETENTION_RAW_SCOPE_PAGINATION_QUOTA_CONSUMER_AND_FAILURE_WITNESS_REQUIRED
+strongest_falsifier: SAME_PRINCIPAL_RAW_USERS_MESSAGES_LIST_ACCEPTS_THE_IDENTICAL_INVALID_TOKEN_OR_CONNECTOR_REJECTS_AN_IMMEDIATELY_PRECEDING_VALID_RETURNED_TOKEN_UNDER_AN_IDENTICAL_QUERY_BOUNDARY
 verifier: NOT_ASSIGNED
 independent_verification_closed: false
-honest_flaw: SYNTHETIC_TOKEN_WAS_EXPECTED_TO_MATCH_NOTHING_AND_EXACT_QUERY_WAS_NOT_RETAINED_SO_REAL_WORLD_ABSENCE_IDENTITY_SCOPE_QUERY_TRANSLATION_ORDERING_COMPLETENESS_FAILURES_RATE_LIMITS_HIDDEN_CALLS_AND_CONSUMER_VALUE_REMAIN_UNVERIFIED
-next_phase: PHASE3_FAILURE_PERMISSION_PORTABILITY_AND_CONNECTOR_VARIANCE_PROBE
-next_probe: ONE_SYNTHETIC_INVALID_PAGE_TOKEN_SEARCH_MAX_RESULTS_1_NO_RETRY_FALLBACK_HYDRATION_IDENTIFIER_OR_QUERY_RETENTION
-valid_time_utc: 2026-08-04T18:48:06Z
-recorded_time_utc: 2026-08-04T18:48:06Z
+honest_flaw: ONE_POSITIVE_ONE_SYNTHETIC_EMPTY_AND_ONE_SYNTHETIC_INVALID_TOKEN_CALL_DO_NOT VERIFY_IDENTITY_SCOPE_QUERY_TRANSLATION_ORDERING_COMPLETENESS_VALID_PAGINATION_AUTH_PERMISSION_RATE_LIMIT_TRANSIENT_FAILURE_HIDDEN_CALLS_RAW_PROVIDER_PARITY_QUOTA_CONSUMPTION_OR_CONSUMER_VALUE
+next_phase: PHASE4_DECISION_ONLY
+next_probe: NO_ADDITIONAL_GMAIL_CANDIDATE_CALL_DECIDE_ADOPT_ADOPT_WITH_GATES_DEFER_REJECT_OR_UNKNOWN_FROM_EXISTING_RECEIPTS
+provisional_decision: ADOPT_WITH_GATES_MANUAL_BOUNDED_ID_DISCOVERY_ONLY_NONOPERATIONAL_ZERO_CREDIT
+valid_time_utc: 2026-08-04T19:47:23Z
+recorded_time_utc: 2026-08-04T19:47:23Z
 ---
 
-# X13 CURRENT v94
+# X13 CURRENT v95
 
-The Gmail `search_email_ids` campaign is active at phase 2 of 4. One bounded synthetic unlikely-token search over the last 30 days, excluding Spam and Trash and capped at one result, returned a normal empty message-ID array, no continuation token, no content, and no connector error. The exact query was not persisted.
+The Gmail `search_email_ids` campaign is active at phase 3 of 4. One bounded synthetic invalid-page-token probe over the same last-30-days, Spam/Trash-excluded boundary failed closed with a typed normalized connector error: `google_api_error`, `invalidArgument`, `INVALID_ARGUMENT`. No message IDs, content, headers, retry, fallback, hydration, or mutation occurred. The exact query and token were not persisted.
 
-This establishes only that the connector returned no IDs for that one bounded call. It does not establish authoritative absence, complete mailbox coverage, exact query forwarding, terminal provider pagination, effective identity or OAuth scope, raw-provider parity, or actual quota use. Google documents raw `users.messages.list` at 5 quota units per request as of 2026-08-04, but the connector exposed no quota receipt or upstream call count.
+This establishes only that the connector rejected that one synthetic invalid token and returned no message IDs. Zero IDs during an error are not evidence of mailbox absence. The connector did not expose an HTTP status, headers, provider request ID, raw provider body, latency, quota receipt, hidden attempt count, authenticated principal, or effective OAuth scope.
 
-Phase 2 is `PHASE2_ACCEPTED_WITH_GATES`. Adoption and fitness credit remain zero. Phase 3 is limited to one synthetic invalid-page-token probe with no retry, fallback, hydration, identifier retention, query retention, or mutation; any failure must fail closed and zero IDs during an error must not be treated as absence.
+Phase 3 is `PHASE3_ACCEPTED_WITH_GATES`. Adoption and fitness credit remain zero. Phase 4 is decision-only with no additional Gmail candidate call. Provisional disposition is `ADOPT_WITH_GATES` for bounded, human-reviewed ID discovery only; operational or unattended use remains prohibited until identity, scope, raw-provider parity, successful real pagination, quota evidence, a named consumer, acknowledgment, and measured value are verified.
