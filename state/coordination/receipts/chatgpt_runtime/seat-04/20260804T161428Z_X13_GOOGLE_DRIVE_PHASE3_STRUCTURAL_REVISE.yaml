@@ -1,0 +1,173 @@
+schema_id: hfo.gen133.s04.structural_preflight.v1
+result: REVISE
+terminal: false
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+fitness_credit: 0
+adoption_credit: 0
+
+self_probe:
+  role: S04_STRUCTURAL_PREFLIGHT_VERIFIER
+  expected_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  observed_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  task_id_match: true
+  task_enabled_observed: true
+  wip: 1
+  observed_surfaces:
+    - AUTOMATIONS_READ
+    - GITHUB_COMMIT_SEARCH
+    - GITHUB_EXACT_FILE_READ
+    - GITHUB_BRANCH_COMPARE
+    - GITHUB_CREATE_FILE
+    - SLACK_PUBLIC_SEARCH
+    - SLACK_POINTER_POST
+
+canonical:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+
+selection:
+  rule: NEWEST_IMMUTABLE_CANDIDATE_ADDRESSED_TO_S04_NOT_AUTHORED_BY_S04
+  candidate_commit: d686b01688f5d5d136db6c8375056a632b162049
+  candidate_path: state/coordination/receipts/chatgpt_runtime/seat-03/20260804T160844Z_X13_GOOGLE_DRIVE_SEARCH_PHASE3_RETURN_BINDINGS_REVISE.yaml
+  candidate_blob_sha1: c7539cc517f5dd24c51715731f4bbe7b8b426b68
+  authoring_seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  addressed_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  authored_by_s04: false
+  branch_head_relation_at_selection: IDENTICAL
+  selected_correlation_id: X13_GOOGLE_DRIVE_SEARCH_METADATA_READONLY_001_PHASE3_FAILURE_PROBE_20260804T154907Z
+
+exact_bytes_and_digests:
+  candidate:
+    bytes_utf8: 7546
+    sha256: 2d9b6a6e0ebdc242f55a18668de038b2455ce41c08ec30ac12f83be6afa24e2c
+    git_blob_sha1_recomputed: c7539cc517f5dd24c51715731f4bbe7b8b426b68
+    connector_blob_sha1: c7539cc517f5dd24c51715731f4bbe7b8b426b68
+    match: true
+  phase3_event:
+    commit: 81cf285fdd99c5b4a9c4c8e943af72da28f7b198
+    path: state/coordination/experiments/cots_connector_x13/20260804T154907Z_GOOGLE_DRIVE_SEARCH_METADATA_PHASE3_INVALID_PAGE_TOKEN.md
+    bytes_utf8: 6127
+    sha256: 6f243103d6488ec666aa4a546fe96405fb0388454cba97fbcbb8ae0921d95c6f
+    git_blob_sha1_recomputed: 5e2be443b203f6947d3df2e513277253b62d6d26
+    connector_blob_sha1: 5e2be443b203f6947d3df2e513277253b62d6d26
+    match: true
+  current_v91_actual:
+    commit: f66e96d677a8718007257369ce4ea797948cda1d
+    path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    bytes_utf8: 3221
+    sha256: 9066314dcc444d33982185c17fd51f37de7c477d0d7a850e6b968b03e4d8d432
+    git_blob_sha1_recomputed: 3686d2e65a2af1c4f35f9a8ddce1da97eace7558
+    connector_blob_sha1: 3686d2e65a2af1c4f35f9a8ddce1da97eace7558
+    version: 91
+    match: true
+  current_at_route_claimed_commit:
+    claimed_commit: 81cf285fdd99c5b4a9c4c8e943af72da28f7b198
+    path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    actual_version: 90
+    bytes_utf8: 2630
+    sha256: 6fe47dd5624393a7db7abcd9a7909519c112c66b074ddc0584949306e24647a2
+    git_blob_sha1_recomputed: 9cf57ef3350053fa9921ea35ab78ab07f8c74b42
+    connector_blob_sha1: 9cf57ef3350053fa9921ea35ab78ab07f8c74b42
+
+schema_and_canonicalization:
+  candidate_yaml_parse: ONE_MAPPING
+  candidate_schema_id: hfo.gen133.s03.verification_route.v1
+  candidate_canonicalization_contract: NOT_PRESENT
+  raw_utf8_digest_recomputed: true
+  source_frontmatter_parseable: true
+  defect: EXACT_COMMIT_PATH_BLOB_TRIPLET_FOR_CURRENT_V91_DOES_NOT_RESOLVE
+
+source_pointer_finding:
+  status: FAIL
+  route_claim:
+    current_commit: 81cf285fdd99c5b4a9c4c8e943af72da28f7b198
+    current_blob: 3686d2e65a2af1c4f35f9a8ddce1da97eace7558
+    current_version: 91
+    exact_git_bytes_read_back: true
+  recomputed_at_claimed_commit:
+    current_blob: 9cf57ef3350053fa9921ea35ab78ab07f8c74b42
+    current_version: 90
+  actual_v91_location:
+    commit: f66e96d677a8718007257369ce4ea797948cda1d
+    current_blob: 3686d2e65a2af1c4f35f9a8ddce1da97eace7558
+  consequence: >-
+    The route binds a real v91 blob to the wrong commit. Blob existence later on
+    the branch does not repair an exact commit/path/blob source pointer. The
+    current-pointer readback assertion is therefore false as written.
+
+audit:
+  freshness:
+    route_expiry_utc: 2026-08-11T15:49:07Z
+    state: FRESH
+  authority:
+    producer_effect_ceiling: READ_ONLY_ONE_CALL_NO_RETRY_NO_FALLBACK_NO_MUTATION
+    terminal_or_adoption_authority: ABSENT
+  task_binding:
+    target_task_id_match: true
+    producer_task_id_present: true
+    work_item_and_acceptance_digest: NOT_BOUND
+  actor_carrier_separation:
+    logical_producer_identity_separate_from_carrier: NOT_BOUND
+    authenticated_principal_and_effective_scope: UNKNOWN
+  idempotency:
+    nonce: NOT_OBSERVED
+    idempotency_domain: NOT_OBSERVED
+  lease_and_expiry:
+    route_expiry_present: true
+    producer_lease: NOT_OBSERVED
+    producer_return_expiry: NOT_OBSERVED
+  privacy:
+    exact_query_and_page_token_persisted: false
+    privacy_gate: ERRORS_MAY_ECHO_QUERY_URL_AND_TOKEN
+    secret_or_private_body_externalized_by_candidate: NOT_OBSERVED
+  rollback:
+    route_discard_or_ignore_rollback: PRESENT
+    workitem_bound_return_rollback: NOT_OBSERVED
+  verifier:
+    structural_target: S04
+    distinct_nonproducer_seat: true
+    provider_relation: SAME_PROVIDER_NONBINDING
+    exact_digest_bound_stood_or_fell: NOT_OBSERVED
+  consumer:
+    operational_consumer: NOT_NAMED
+    explicit_post_stood_consumer_ack: NOT_OBSERVED
+
+strongest_fake_green_mutant:
+  mutation_class: SOURCE_POINTER_INFLATION
+  canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_json: '{"acceptance_abuse":"TREAT_BLOB_PRESENT_ELSEWHERE_ON_BRANCH_AS_EXACT_COMMIT_PATH_BINDING","actual_at_claimed_commit":"CURRENT_V90_BLOB_9cf57ef3350053fa9921ea35ab78ab07f8c74b42","candidate_blob_sha1":"c7539cc517f5dd24c51715731f4bbe7b8b426b68","claimed_current_commit":"81cf285fdd99c5b4a9c4c8e943af72da28f7b198","claimed_current_v91_blob_sha1":"3686d2e65a2af1c4f35f9a8ddce1da97eace7558","mutation_class":"SOURCE_POINTER_INFLATION"}'
+  canonical_byte_count: 429
+  canonical_sha256: 53443551048b811df19c7a4a36a0d2986b04ea9363a4f8153805c8bb0cc09faa
+  rejected_claim: >-
+    Treat the v91 blob being present at a later branch commit as proof that the
+    route's exact v91 commit/path/blob triplet at 81cf285f is valid.
+  rejection_reason: >-
+    Exact source binding is conjunctive. At commit 81cf285f the path resolves to
+    v90 blob 9cf57ef3, not v91 blob 3686d2e6. A branch-later blob cannot be borrowed
+    backward to authenticate the claimed immutable pointer.
+
+required_revision:
+  - REPLACE_CURRENT_POINTER_COMMIT_WITH_F66E96D677A8718007257369CE4EA797948CDA1D_OR_BIND_ANOTHER_EXACT_COMMIT_THAT_RESOLVES_TO_BLOB_3686D2E6
+  - RECOMPUTE_AND_PERSIST_THE_EXACT_COMMIT_PATH_BLOB_AND_RAW_SHA256_TRIPLET
+  - BIND_A_WORKITEM_ACCEPTANCE_DIGEST_OR_KEEP_THE_PACKET_EXPLICITLY_NONTERMINAL
+  - BIND_LOGICAL_PRODUCER_AND_AUTHENTICATED_PRINCIPAL_SEPARATELY_FROM_THE_CARRIER
+  - ADD_NONCE_IDEMPOTENCY_DOMAIN_PRODUCER_LEASE_RETURN_EXPIRY_AND_WORKITEM_ROLLBACK
+  - REQUIRE_EXACT_PRODUCER_DIGEST_BOUND_STOOD_OR_FELL_AND_EXPLICIT_NAMED_CONSUMERACK
+
+verdict_reason: >-
+  REVISE is required on a hard immutable-source defect before considering the
+  already acknowledged missing WorkItem, actor/principal, idempotency, lease,
+  producer-return, independent-verdict, and ConsumerAck bindings. The phase-3
+  connector observation remains bounded, fail-closed, privacy-aware, and
+  nonterminal, but the S03 route's CURRENT v91 source pointer is not exact.
+
+honest_flaw: >-
+  This pass verifies Git bytes, YAML shape, branch reachability, exact source
+  pointers, and public Slack correlation through ChatGPT-carried connector
+  surfaces. It does not reproduce the Google Drive call, recover omitted query or
+  token values, establish authenticated Google identity or scopes, measure quota,
+  or provide independent-provider verification.
+
+recorded_time_utc: 2026-08-04T16:14:28Z
