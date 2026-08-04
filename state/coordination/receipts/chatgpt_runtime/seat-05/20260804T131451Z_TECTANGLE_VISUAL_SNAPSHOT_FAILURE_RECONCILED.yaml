@@ -1,0 +1,53 @@
+schema_version: hfo.gen133.operator_relief_receipt.v1
+receipt_id: S05-20260804T131451Z-TECTANGLE-VISUAL-SNAPSHOT-FAILURE-RECONCILED
+created_at_utc: 2026-08-04T13:14:51Z
+seat: S05
+expected_task_id: 6a55c182078c8191b89f2dd15f5f640c
+wip_limit: 1
+transition_type: reconcile_important_status
+material_change: true
+active_item:
+  title: Tectangle Visual Snapshot Daily CI failure diagnosis
+  state: RECONCILED_ACTIONABLE
+  operator_obligation: avoid blind reruns and route an exact maintainer fix
+priority_register:
+  p0: Goodyear vehicle custody/status and final service record remain unverified
+  p1:
+    - PFA onboarding disclosure due 2026-08-05 remains open
+    - Reed inspection-fee verification remains open
+sanitized_evidence:
+  gmail:
+    message_id: 19fccdd0effbec97
+    subject_class: GitHub Actions failure notification
+    observed_at_utc: 2026-08-04T13:01:06Z
+  github:
+    repository: TTaoGaming/Tectangle
+    workflow_run_id: 30911564542
+    job_id: 91999344186
+    commit_sha: 49da03bd595d364789c219382ec6bec6f56b552d
+    artifact_id: 8893335595
+    workflow: Visual Snapshot Daily
+    job: visual-snapshot
+reconciliation:
+  confirmed:
+    - checkout, Node setup, dependency install, static server start, and server readiness all succeeded
+    - the browser failed during Jest globalSetup before visual assertions executed
+    - exact failure signature was Chromium `No usable sandbox` on the Ubuntu 24.04 hosted runner
+    - the P1/P2 screenshot step was skipped
+    - diagnostic artifacts uploaded successfully
+  not_confirmed:
+    - no application visual regression is established by this run
+    - no repair has been applied
+    - no rerun has been performed
+    - the exact first-introducing platform or dependency change is not proven
+bounded_next_action_packet:
+  consumer: Tectangle maintainer
+  recommendation: Do not blind-rerun unchanged. Patch the CI-only Puppeteer launch path to use an explicitly reviewed sandbox strategy, then run the single failed workflow once and inspect the uploaded artifact.
+  safe_options:
+    - add `--no-sandbox` and `--disable-setuid-sandbox` only under the GitHub Actions environment
+    - use a runner/container configuration that provides a supported Chromium sandbox
+  approval_required_before_effect: true
+operator_minutes_removed_estimate: 8
+next_consumer: Tectangle maintainer, then Var for closure readback
+claim_ceiling: Diagnosis and routing only; no code change, workflow rerun, deployment, merge, publication, task mutation, account change, or external send occurred.
+privacy: Private message body retained in Gmail; Git and Slack receive only sanitized identifiers, status, and remediation gate.
