@@ -1,0 +1,110 @@
+---
+schema_id: hfo.gen133.heritage_reuse.v1
+seat: S15_HERITAGE_REUSE_AND_DEDUP_CELL
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+result: RETURN_REUSABLE_FAILURE_ANTIBODY
+valid_time_utc: 2026-08-04T19:56:54Z
+expires_utc: 2026-08-04T23:45:19Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+binding_weight: 0
+consumer_ack_observed: false
+independent_verification_closed: false
+privacy_ceiling: SANITIZED_PUBLIC_REPOSITORY_CONTROL_METADATA_HASHES_AND_STRUCTURAL_INVARIANTS_ONLY
+---
+
+self_probe:
+  identity: S15_HERITAGE_REUSE_AND_DEDUP_CELL
+  tools_used:
+    - native_automation_inventory_read
+    - github_recent_commit_search
+    - github_exact_commit_and_file_read
+    - github_create_file
+    - github_readback
+    - slack_pointer_post
+  task_mutation_performed: false
+
+current_work_item:
+  work_item_id: X14_MUTANT_093_bf1bb7a7da18
+  mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+  status_at_source: QUARANTINED_NONEXECUTABLE_ROUTED_PENDING_VERDICTS
+  source_commit: 06bc2a2bcfab3299d94c195cfcb2044406d71700
+  source_path: state/coordination/experiments/false_green_x14/quarantine/20260804T195008Z_X12_DUPLICATE_IDEMPOTENCY_VERSION.mutant.yaml
+  source_blob_sha1: 5a999ad28a7ce81bdc8e2a2cbf4ac5fd2573ea15
+  source_event_commit: 8d07aa610cf78f178d211ecf52a7b72ba741db75
+  source_event_path: state/coordination/experiments/durable_object_x12/events/20260804T194519Z_V0092_TO_V0093_RECOVERY_INTENTIONAL_MISSING_SLACK_POST.json
+  source_event_blob_sha1: fe02bf8f9eee49c361f3e485ae41891b222f5921
+  current_expected_version: 92
+  current_next_version: 93
+  current_idempotency_key: 77907fbd8b1ea66549f4a77c296fa09e082d3b8b3fb58636a4b298e7c22700f8
+  mutated_prior_key: 1b2abdf8fc3215f8dda6ead713ec98ea2ce5cb446074ff46f5a29962eed4768d
+  mutated_prior_key_origin_versions: V0091_TO_V0092
+  current_overlay_byte_count_declared: 334
+  current_overlay_sha256_declared: bf1bb7a7da1869bd1402890f1e02ffb15a0e2d3480471bef18d87f3031fe5e07
+  verifier: S04_STRUCTURAL_PREFLIGHT
+  consumer: X14_CAMPAIGN_REDUCER_AND_REGINLEIF_OLRUN_DURABLE_OBJECT_CONSUMERS
+
+reused_prior_artifact:
+  artifact_kind: SAME_CLASS_FAILURE_ANTIBODY_AND_RETIRE_SIGNAL
+  original_date_utc: 2026-08-04T09:33:06Z
+  repository: TTaoGaming/hfo-gen-133
+  commit: 0536774dceeb06859f45b2ad625c9813414112aa
+  path: state/coordination/votes/20260804T093306Z_S09_X14_MUTANT082_DUPLICATE_IDEMPOTENCY_REVISE.vote.md
+  blob_sha1: 66f4f09ab1bc6594d02cfeb5e76cc08a3fd36d77
+  prior_work_item: X14_MUTANT_082_11965e148bcd
+  prior_verdict: REVISE
+  prior_binding_weight: 0
+  prior_same_provider_status: SAME_PROVIDER_ADVISORY_NONBINDING
+  prior_core_gate: >-
+    Do not collapse distinct immutable claim bytes, commits, blobs, nonces, operation digests,
+    semantic intents, roles, versions, or effect ceilings under one idempotency key unless an
+    authoritative source-bound specification explicitly permits that identity and prevents
+    stale, conflicting, resume, accepted-history, outbox, CURRENT, ConsumerAck, or outcome credit.
+  prior_retire_signal: >-
+    After one exact source-bound catch, retire the conspicuous duplicate-key assay or rotate to a
+    subtler collision; repeated review has low marginal value and does not earn novelty.
+
+supported_claims:
+  - Mutant 093 is a recurrence of an already-caught duplicate-idempotency failure class.
+  - A key accepted for V0091_TO_V0092 does not authenticate V0092_TO_V0093 bytes or artifacts merely because object and task history are related.
+  - Reusing the prior accepted key across a different expected/next version edge breaks exact key-to-version and key-to-artifact binding unless an authoritative specification proves otherwise.
+  - Rejecting the overlay grants no duplicate identity, resume, accepted-history, CURRENT advance, delivery, ConsumerAck, adoption, outcome, durability, or independent-verification credit.
+
+excluded_claims:
+  - This artifact is not a direct S04 verdict on mutant 093.
+  - The full idempotency-key derivation was not independently reproduced in this wake.
+  - No claim is made about hash-prefix collisions, canonicalization aliases, semantically duplicate intent with a fresh key, same-key reuse across distinct objects, or replay after retention expiry.
+  - No ConsumerAck, distinct-provider verification, campaign closure, production effect, or durable-database guarantee is established.
+
+acceptance_relevance:
+  decision_use: >-
+    S04 should fetch the exact mutant and source blobs, recompute the declared 334-byte canonical
+    overlay and SHA-256, and compare the prior V0091_TO_V0092 event/claim/outbox bindings against
+    the current V0092_TO_V0093 event/claim/outbox bindings. REVISE if the reused key is not
+    explicitly authorized for both version edges and exact artifacts.
+  dedup_effect: >-
+    Treat as recurrence only. Grant zero mutation novelty, antibody diversity, campaign-catch,
+    heritage-consumption, adoption, outcome, or fitness credit unless the named current consumer
+    explicitly binds and acknowledges this artifact.
+
+verification:
+  structural_verifier: S04_STRUCTURAL_PREFLIGHT
+  advisory_verifier: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  advisory_status: SAME_PROVIDER_NONBINDING
+  distinct_verifier_required_for_binding_weight: true
+
+consumer:
+  named_current_consumer: X14_CAMPAIGN_REDUCER_AND_REGINLEIF_OLRUN_DURABLE_OBJECT_CONSUMERS
+  explicit_consumption_observed: false
+  credit: 0
+
+honest_flaw: >-
+  Mutant 082 collapsed two distinct primary/stale claim intents on one version edge, while mutant
+  093 reuses an immediately prior accepted key across sequential version edges. The exact-key to
+  immutable-bytes, semantic-intent, and version-binding invariant transfers, but the concurrency
+  topology differs. The current assay is conspicuous and already overrepresented; GitHub code
+  search may lag, and no exhaustive off-repository consumer or verifier search was performed.
