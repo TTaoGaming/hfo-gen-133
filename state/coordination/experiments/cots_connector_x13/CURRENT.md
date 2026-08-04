@@ -1,45 +1,49 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
-experiment_id: X13_SLACK_PUBLIC_MESSAGE_SEARCH_READONLY_001
-version: 88
-prior_version: 87
-candidate: Slack_public_message_search_bounded_readonly_surface
-campaign_wake: 4_of_4
-campaign_status: CLOSED
+experiment_id: X13_GOOGLE_DRIVE_SEARCH_METADATA_READONLY_001
+version: 89
+prior_version: 88
+candidate: Google_Drive_search_metadata_only_surface
+campaign_wake: 1_of_4
+campaign_status: ACTIVE
 phase_1_completed: true
-phase_2_completed: true
-phase_3_completed: true
-phase_4_completed: true
-phase_4_decision: ADOPT_WITH_GATES
-adoption_mode: CATALOG_MANUAL_ONLY_NONOPERATIONAL
+phase_1_status: PHASE1_ACCEPTED_WITH_GATES
+phase_2_completed: false
+phase_3_completed: false
+phase_4_completed: false
+phase_4_decision: PENDING
+adoption_mode: NOT_DECIDED
 carrier_task_id: 6a55c1733708819185088bf334e33ea5
 carrier_task_id_match: true
 wip: 1
-last_event_commit: ce85b5dc9abdfa68f9a8416958471efe19a242fd
-last_event_path: state/coordination/experiments/cots_connector_x13/20260804T124723Z_SLACK_PUBLIC_MESSAGE_SEARCH_PHASE4_DECISION.md
-last_event_blob_sha: 5ef5594a3b9a05d2e5f2c78920f7a21f27f45553
+last_event_commit: b8b399e683af9033dcc9c1cfd597f9e17202eac8
+last_event_path: state/coordination/experiments/cots_connector_x13/20260804T134835Z_GOOGLE_DRIVE_SEARCH_METADATA_PHASE1_BASELINE.md
+last_event_blob_sha: 3541cedab6e0463b7183822fa98aed6102812566
 last_event_readback: true
-prior_current_commit: b0395af3119196f4ed4587bbc830363b2ce6e4f0
-prior_current_blob_sha: 8fdeb5611cbd6a99a5c71909c595d4d9059e5b92
+prior_current_commit: 5dad93776f76134e52ce63416dcad346794c5d87
+prior_current_blob_sha: abb104e5f86f5ecccd2e4444d97a08cc398d91e5
 adoption_credit: 0
 fitness_credit: 0
 consumer_ack: NOT_OBSERVED
 operator_minutes_removed_measured: 0
-custom_code_avoided_estimate: 20_to_60_LOC_UNVALIDATED
+custom_code_avoided_estimate: 25_to_70_LOC_UNVALIDATED
 paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
 actual_quota_consumed: UNKNOWN
-campaign_calls: 3_READONLY_2_SUCCESS_1_FAILURE_0_RETRY_0_FALLBACK_0_MUTATION
-observability: PARTIAL_NO_TYPED_SCHEMA_OR_PROVIDER_TELEMETRY
-portability: LOW
+official_quota_contract: FILES_LIST_OR_DRIVE_MCP_SEARCH_FILES_100_UNITS_ACTUAL_UPSTREAM_UNKNOWN
+campaign_calls: 1_READONLY_1_SUCCESS_0_RETRY_0_FALLBACK_0_MUTATION
+result_shape: ONE_METADATA_RESULT_TITLE_URL_PARENT_IDS_NO_CONTENT
+connector_variance: ITEM_TYPE_DOCUMENT_INCLUDED_SPREADSHEET_BACKED_ITEM
+observability: PARTIAL_NO_MIME_PAGINATION_COMPLETENESS_OR_PROVIDER_TELEMETRY
+portability: LOW_TO_MEDIUM
 credentials: CONNECTOR_MANAGED_IDENTITY_AND_SCOPE_UNKNOWN
-mandatory_gate: HUMAN_REVIEWED_BOUNDED_PUBLIC_SEARCH_ONLY_NONAUTHORITATIVE
-strongest_falsifier: RAW_SAME_PRINCIPAL_RESULT_MATERIALLY_DIFFERS
-honest_flaw: IDENTITY_PERMISSIONS_COMPLETENESS_REAL_PAGINATION_RATE_LIMITS_RAW_PARITY_AND_VALUE_UNVERIFIED
-next_campaign: Google_Drive_bounded_readonly_search_metadata_PHASE1
-valid_time_utc: 2026-08-04T12:47:23Z
-recorded_time_utc: 2026-08-04T12:47:23Z
+mandatory_gate: DOCUMENT_CATEGORY_IS_NOT_MIME_AND_ABSENCE_OR_COMPLETENESS_IS_NONAUTHORITATIVE
+strongest_falsifier: RAW_SAME_PRINCIPAL_DRIVE_RESULT_MATERIALLY_DIFFERS_OR_INCOMPLETE_SEARCH_TRUE
+honest_flaw: ONE_CAPPED_POSITIVE_LOOKUP_DOES_NOT_ESTABLISH_COMPLETENESS_PAGING_OR_RAW_PARITY
+next_phase: GOOGLE_DRIVE_SYNTHETIC_ZERO_RESULT_METADATA_SEARCH_PHASE2
+valid_time_utc: 2026-08-04T13:48:35Z
+recorded_time_utc: 2026-08-04T13:48:35Z
 ---
 
-# X13 CURRENT v88
+# X13 CURRENT v89
 
-Slack public message search is `ADOPT_WITH_GATES` for bounded, human-reviewed public-channel catalog discovery only. It is nonauthoritative and nonoperational. No phase-4 candidate call occurred; credit remains zero.
+Google Drive metadata-only search phase 1 is accepted with gates. One bounded document-category lookup returned one metadata result and no file content. The connector category included a spreadsheet-backed item, so `document` is not a MIME guarantee. Pagination, completeness, identity, scope, provider telemetry, actual quota debit, and consumer value remain unverified; credit remains zero.
