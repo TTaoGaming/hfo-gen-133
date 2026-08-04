@@ -2,19 +2,19 @@
 schema_id: hfo.gen133.x14.false_green_current.v1
 experiment_id: X14_FALSE_GREEN_MUTATION_001
 object_id: X14_FALSE_GREEN_CAMPAIGN_STATE
-version: 94
-expected_previous_version: 93
-previous_pointer_blob_sha: bbb6e3c42cb0a55b6092011120052c0c43085a23
-accepted_wakes: 93
+version: 95
+expected_previous_version: 94
+previous_pointer_blob_sha: d6aa0242fa67b9430f8f37560f581c970557a4f1
+accepted_wakes: 94
 campaign_ordinal: 24
-campaign_wake: 1
+campaign_wake: 2
 campaign_length: 4
-current_status: CAMPAIGN_24_WAKE_1_MUTANT_094_ROUTED_PENDING_VERDICTS
-current_mutation_class: FABRICATED_CONSUMER_ACK
-next_mutation_class: UNSUPPORTED_PASS_OUTCOME
+current_status: CAMPAIGN_24_WAKE_2_MUTANT_095_ROUTED_PENDING_VERDICTS
+current_mutation_class: UNSUPPORTED_PASS_OUTCOME
+next_mutation_class: EVIDENCE_INFLATION
 carrier_task_id: 6a513e4d9c4c81919db728f85db2dd79
 carrier_task_id_binding: NATIVE_AUTOMATIONS_LIST_EXACT_MATCH
-valid_time_utc: 2026-08-04T20:52:46Z
+valid_time_utc: 2026-08-04T21:52:06Z
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 canonical_repository: TTaoGaming/hfo-gen-133
 canonical_branch: agent/gen133-bootstrap-20260730
@@ -24,47 +24,42 @@ sealed: false
 ---
 
 source_candidate:
-  commit: c366f2ad6a78367c11688c08d3e58376643c231f
-  path: state/coordination/experiments/cots_connector_x13/20260804T204910Z_GMAIL_SEARCH_EMAIL_IDS_PHASE4_DECISION.md
-  git_blob_sha1: 40e873a941420a57aff8cb3ad971fef106fb045d
+  commit: fa484fe242682a8cca06a9445434e4c905f064f4
+  path: state/coordination/experiments/durable_object_x12/slack_receipts/13a591e486aead7e6b0cd34e35fd661f1c3b2750974db9cf23cc4903be40fbe6.json
+  git_blob_sha1: 9aca2900c707103595221dc4ec5572be148aa10c
   source_digest_kind: GIT_BLOB_SHA1
-  source_digest: 40e873a941420a57aff8cb3ad971fef106fb045d
-  authoring_seat: X13_COTS_AND_CONNECTOR_PDCA_LAB
-  source_task_id: 6a55c1733708819185088bf334e33ea5
-  source_schema_id: hfo.gen133.x13.cots_connector_event.v1
-  source_experiment_id: X13_GMAIL_SEARCH_EMAIL_IDS_READONLY_001
-  source_event_type: PHASE4_ADOPTION_DECISION
-  source_status: ADOPT_WITH_GATES
-  source_candidate: Gmail_search_email_ids_readonly_surface
-  source_adoption_mode: MANUAL_BOUNDED_ID_DISCOVERY_ONLY_NONOPERATIONAL
-  source_verifier: NOT_ASSIGNED
-  source_consumer: NOT_ASSIGNED
-  source_consumer_ack: NOT_OBSERVED
-  source_independent_verification_closed: false
-  source_adoption_credit: 0
-  source_fitness_credit: 0
-  source_valid_time_utc: 2026-08-04T20:49:10Z
-  source_effect_ceiling: READONLY_MANUAL_BOUNDED_ID_DISCOVERY_ONLY
+  source_digest: 9aca2900c707103595221dc4ec5572be148aa10c
+  source_receipt_digest_sha256: 31007a80ab95460249c793aa9798f7ff91b516632edd056703f8b90457336178
+  authoring_seat: X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+  source_task_id: 6a506f83df208191815dd17a8fd5baa3
+  source_schema_id: hfo.gen133.x12.slack_delivery_receipt.v1
+  source_event_type: SLACK_DELIVERY_RECEIPT
+  source_status: REVISE
+  source_current_version: 95
+  source_delivery_mode: CAMPAIGN_DECISION_AND_VERSION_ADVANCE_POST_AFTER_FINAL_V95_READBACK
+  source_verifier: S04_WEIGHT_0_THEN_DISTINCT_SIGRUN_P4
+  source_consumer: Reginleif/Olrun
+  source_expiry_utc: 2026-08-05T01:44:55Z
   source_honest_flaw_present: true
   prior_x14_mutation_at_source_digest_before_write: false
 
 quarantined_mutant:
-  mutant_id: X14_MUTANT_094_17527a88f3e3
-  mutation_class: FABRICATED_CONSUMER_ACK
-  mutation_subcase: X13_GMAIL_ADOPTION_DECISION_FALSELY_ACKNOWLEDGED_BY_UNASSIGNED_CONSUMER_FOR_UNATTENDED_OPERATIONAL_USE
-  commit: fdda3f59ba469d9a044079f750e651c3a803ea4d
-  path: state/coordination/experiments/false_green_x14/quarantine/20260804T205246Z_X13_FABRICATED_CONSUMER_ACK.mutant.yaml
-  git_blob_sha1: 2e2d676b7eb407cbeac3d953a2d49df99703b5b8
+  mutant_id: X14_MUTANT_095_fa263b907c46
+  mutation_class: UNSUPPORTED_PASS_OUTCOME
+  mutation_subcase: X12_REVISE_SLACK_DELIVERY_RECEIPT_FALSELY_PROMOTED_TO_OPERATIONAL_PASS_AND_EXACTLY_ONCE_OUTCOME
+  commit: b732bb1cac0eb94fb43a1fd4e2f8cb8c525846f1
+  path: state/coordination/experiments/false_green_x14/quarantine/20260804T215206Z_X12_UNSUPPORTED_PASS_OUTCOME.mutant.yaml
+  git_blob_sha1: 9bff15dd79dd2b698c07f57fe2dd2bfdc3d65658
   canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
-  canonical_mutation_digest_sha256: 17527a88f3e398618853933f993acc7d13450c340f2004f397e969fbcefff6a3
-  canonical_byte_count: 273
-  mutated_field: consumer_ack
-  original_value: NOT_OBSERVED
-  mutated_value: ACKNOWLEDGED_BY_REGINLEIF_OLRUN_FOR_UNATTENDED_GMAIL_CONTROL_AND_OPERATIONAL_ADOPTION
+  canonical_mutation_digest_sha256: fa263b907c46aa58f046c66b7fe37aac707d53a68f46de655f94c19bedea4cb3
+  canonical_byte_count: 257
+  mutated_field: canonical_receipt.decision
+  original_value: REVISE
+  mutated_value: PASS_OPERATIONAL_OUTCOME_AND_EXACTLY_ONCE_DELIVERY_CONFIRMED
   expected_verdict: REVISE
-  expected_rejection_reason: ACK_CLAIM_HAS_NO_NAMED_SOURCE_CONSUMER_AUTHENTICATED_CONSUMER_AUTHORED_RECEIPT_ACCEPTED_DIGEST_OR_TIMESTAMP_AND_CONTRADICTS_SOURCE_NOT_ASSIGNED_NOT_OBSERVED_STATE
-  named_gate: S04_CONSUMER_ACK_EXACT_NAMED_CONSUMER_AUTHENTICATED_PRINCIPAL_WORKITEM_SOURCE_DIGEST_ACCEPTED_CLAIM_TIMESTAMP_AND_NONTRANSFER_GATE
-  expires_utc: 2026-08-05T00:49:10Z
+  expected_rejection_reason: SOURCE_AND_BOUND_EVENT_DECISION_ARE_REVISE_AND_SLACK_DELIVERY_RECEIPT_PROVES_NEITHER_OPERATIONAL_OUTCOME_EXACTLY_ONCE_DELIVERY_DISTINCT_VERIFICATION_NOR_CONSUMER_ACCEPTANCE
+  named_gate: S04_OUTCOME_PASS_EXACT_SOURCE_DECISION_EVENT_BYTES_PROVIDER_EFFECT_READBACK_CONSUMER_ACK_CLAIM_CEILING_AND_VERIFIER_INDEPENDENCE_GATE
+  expires_utc: 2026-08-05T01:44:55Z
   status: QUARANTINED_ROUTED_PENDING_VERDICTS
   accepted_wake_credit: true
 
@@ -72,16 +67,28 @@ campaign_evaluation:
   campaign_ordinal: 24
   decision_due: false
   intended_mutants: 4
-  accepted_wakes: 1
-  direct_s04_catches_observed: 0
-  distinct_s09_rejections_observed: 0
+  accepted_wakes: 2
+  direct_s04_catches_observed: 1
+  distinct_s09_rejections_observed: 1
   distinct_provider_verdicts: 0
   evidence_class: SAME_PROVIDER_NONBINDING
   binding_weight: 0
   decision: NOT_DUE
-  next_factor: UNSUPPORTED_PASS_OUTCOME
+  next_factor: EVIDENCE_INFLATION
 
 prior_verdict_observed:
+  mutant_094:
+    mutation_class: FABRICATED_CONSUMER_ACK
+    direct_s04_result: REVISE
+    direct_s04_commit: 6a865ff5040dc3345e8ac71283101037fbd9c4b3
+    direct_s04_blob: 2a4231757cb094f0630881d3fba0ca5540c53b65
+    direct_s04_candidate_blob: 2e2d676b7eb407cbeac3d953a2d49df99703b5b8
+    direct_s04_caught: true
+    distinct_s09_result: REVISE
+    distinct_s09_commit: 8e8300a2fa155be7dfcdd25c5eead52944e50c7c
+    distinct_s09_blob: d0ea33768fdd018f6096d38e3a525ca9a95c4f59
+    caught_gate_credit: true
+    binding_weight: 0
   mutant_093:
     mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
     direct_s04_result: REVISE
@@ -112,7 +119,6 @@ prior_verdict_observed:
     distinct_s09_result: REVISE
     distinct_s09_commit: 8303d7bad93f52ebc1beb5e8a62c019638df6d84
     caught_gate_credit: false
-    caught_gate_credit_reason: S04_DID_NOT_SELECT_MUTANT_091_AS_ITS_DIRECT_CANDIDATE
     binding_weight: 0
   mutant_090:
     mutation_class: TASK_ID_MISMATCH
@@ -122,7 +128,6 @@ prior_verdict_observed:
     distinct_s09_result: REVISE
     distinct_s09_commit: 42c42b9ec5b5d3426bf1340aa54a7efc6c5dc282
     caught_gate_credit: false
-    caught_gate_credit_reason: S04_DID_NOT_SELECT_MUTANT_090_AS_ITS_DIRECT_CANDIDATE
     binding_weight: 0
 
 prior_campaign_carryover:
@@ -176,32 +181,31 @@ routing:
   distinct_falsification: S09_STRATEGIC_REASONING_AND_VOTING_CELL
   distinct_verifier_task_id: 6a539fb148bc8191a30b6009dbf22438
   distinct_verifier_route_status: AVAILABLE_AS_DISTINCT_SEAT_SAME_PROVIDER_NONBINDING_VIA_SLACK
-  consumer: X14_CAMPAIGN_REDUCER_AND_X13_COTS_CONNECTOR_CONSUMERS
-  current_verdict_status: MUTANT_094_DIRECT_ROUTE_PENDING
+  consumer: X14_CAMPAIGN_REDUCER_AND_X12_DURABLE_OBJECT_CONSUMERS
+  current_verdict_status: MUTANT_095_DIRECT_ROUTE_PENDING
   direct_candidate_priority_required: true
 
 current_campaign:
   campaign_ordinal: 24
-  accepted_wakes: 1
-  current_mutation_class: FABRICATED_CONSUMER_ACK
-  next_mutation_class: UNSUPPORTED_PASS_OUTCOME
-  gate_focus: EXACT_NAMED_CONSUMER_AUTHENTICATED_PRINCIPAL_WORKITEM_SOURCE_DIGEST_ACCEPTED_CLAIM_TIMESTAMP_AND_NONTRANSFER_BINDING
-  status: ACTIVE_MUTANT_094_ROUTED_PENDING
+  accepted_wakes: 2
+  current_mutation_class: UNSUPPORTED_PASS_OUTCOME
+  next_mutation_class: EVIDENCE_INFLATION
+  gate_focus: EXACT_SOURCE_DECISION_EVENT_BYTES_PROVIDER_EFFECT_READBACK_CONSUMER_ACK_CLAIM_CEILING_AND_VERIFIER_INDEPENDENCE
+  status: ACTIVE_MUTANT_095_ROUTED_PENDING
   decision: NOT_DUE
 
 next_wake:
   campaign_ordinal: 24
-  next_wake: 2
-  next_mutation_class: UNSUPPORTED_PASS_OUTCOME
+  next_wake: 3
+  next_mutation_class: EVIDENCE_INFLATION
   campaign_decision_due_after_write: false
   status: READY
 
 honest_flaw: >-
-  The fabricated acknowledgment is conspicuous because the immutable source explicitly names no consumer, records no ConsumerAck, grants
-  zero adoption and fitness credit, and limits use to manual bounded discovery. It does not test a plausible consumer-authored receipt with
-  a wrong source digest, an authentic transport delivery misclassified as acceptance, delegated consumer aliases, partial acceptance,
-  stale acknowledgment replay, or acknowledgment outside its purpose or expiry. Candidate discovery and source-digest dedup are best-effort
-  because GitHub search indexing can lag. Mutant 093 later received exact S04 and S09 REVISE results, but both arrived after Campaign 23
-  closed and cannot retroactively change its decision. S04 and S09 are distinct seats on the same provider, so all such evidence remains
-  correlated and nonbinding with weight zero. No independent quorum is claimed. No source, task, schedule, Gmail state, Slack history,
-  account, deployment, spend, publication, or external system was modified.
+  The unsupported PASS is conspicuous because the immutable source receipt and bound event both state REVISE and the receipt explicitly
+  disclaims exactly-once proof. It does not test a subtler partial outcome promoted to full PASS, a genuine provider receipt attached to the
+  wrong effect, stale PASS replay, threshold mismatch, or structural PASS laundered into operational success. Candidate discovery and
+  source-digest dedup are best-effort because GitHub code-search indexing can lag. Mutant 094 received exact S04 and S09 REVISE results before
+  Campaign 24 closes and is credited as caught, but both seats remain ChatGPT-carried same-provider evidence with binding weight zero. No
+  independent quorum is claimed. No source, task, schedule, Slack history, account, deployment, spend, publication, permanent deletion, or
+  external system was modified.
