@@ -1,8 +1,8 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_CALENDAR_METADATA_READ_VISIBILITY_V1
-current_version: 84
-accepted_wakes: 0
+current_version: 85
+accepted_wakes: 1
 target_wakes_before_decision: 4
 controlled_factor: calendar_read_surface
 campaign_status: ACTIVE
@@ -13,37 +13,37 @@ prior_campaign:
   disposition: KEEP
   accepted_wakes: 4
 last_event:
-  commit: 8daacb0e3b45f919c980c35bfa65bd53db4b43ae
-  path: state/coordination/experiments/carrier_surface_x11/events/20260804T084143Z_GMAIL_METADATA_READ_VISIBILITY_V1_WAKE_04_DECISION.yaml
-  blob: 82099f8d02ba5b0cd5f68e48a0d0a6ada3b3c2b4
+  commit: 29b69ecb72a17b507eb8d0983bd54a942c2328ca
+  path: state/coordination/experiments/carrier_surface_x11/events/20260804T093907Z_CALENDAR_METADATA_READ_VISIBILITY_V1_WAKE_01_ACCEPTED.yaml
+  blob: 9526aabc3cf0261d4e8c8f055239cb2becd20fa7
 baseline_result:
   mode: authenticated_calendar_impossible_marker_bounded_search
-  result_count: null
-  next_page_token_present: null
-  execution_status: NOT_YET_PROBED
-  interactive_login_required: null
+  result_count: 0
+  next_page_token_present: false
+  execution_status: SUCCESS
+  interactive_login_required: false
   event_content_read: false
   event_identifiers_persisted: false
   sensitive_readback_externalized: false
   mutation_performed_by_probe: false
   send_performed: false
-  changed_capability: false
+  changed_capability: true
   andon: false
-  permission_class: NOT_YET_MEASURED
-  error_class: NOT_YET_MEASURED
-  latency_exposed: null
-  latest_latency_ms: null
-  latency_samples_ms: []
+  permission_class: AUTHENTICATED_GOOGLE_CALENDAR_BOUNDED_SEARCH_AVAILABLE
+  error_class: NONE
+  latency_exposed: true
+  latest_latency_ms: 1711
+  latency_samples_ms: [1711]
   operator_relay_minutes: 0
 claim_ceiling: authenticated_Google_Calendar_bounded_search_execution_and_sanitized_result_count_visibility_only_not_calendar_completeness_indexing_freshness_event_content_access_notification_delivery_or_independent_verification
 strongest_falsifier: the_fixed_impossible_marker_bounded_query_requires_interactive_login_returns_an_unclassified_permission_error_exposes_event_content_or_identifiers_outside_the_tool_boundary_or_produces_inconsistent_sanitized_result_counts_across_identical_wakes
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 next_consumer: [Reginleif, Ratatoskr]
-honest_flaw: an_impossible_marker_search_in_one_bounded_primary_calendar_window_tests_only_one_authenticated_search_path_and_a_zero_result_would_not_establish_calendar_completeness_index_freshness_event_content_access_or_notification_delivery
+honest_flaw: an_impossible_marker_search_in_one_bounded_primary_calendar_window_tests_only_one_authenticated_search_path_and_a_zero_result_does_not_establish_calendar_completeness_index_freshness_event_content_access_or_notification_delivery
 next_factor: calendar_read_surface
 next_probe:
   experiment_id: X11_CALENDAR_METADATA_READ_VISIBILITY_V1
-  campaign_wake: 1
+  campaign_wake: 2
   mode: authenticated_calendar_impossible_marker_bounded_search
   calendar_id: primary
   query: HFO_X11_CALENDAR_METADATA_PROBE_4A9C7E2B6D1F8C30
@@ -63,16 +63,15 @@ next_probe:
   send_allowed: false
   interactive_login_allowed: false
   sensitive_readback_externalization_allowed: false
-slack_action: POST_CAMPAIGN_DECISION
-updated_valid_time_utc: 2026-08-04T08:41:43Z
+slack_action: POST_CHANGED_CAPABILITY
+updated_valid_time_utc: 2026-08-04T09:39:07Z
 sealed: false
 ---
 
-The Gmail metadata-read campaign completed 4/4 with disposition KEEP for the
-narrowly bounded connected message-ID search capability. Four identical fixed
-impossible-subject probes returned zero identifiers and no continuation token
-with connector latencies of 395, 262, 396, and 300 ms. No interactive login,
-content read, identifier persistence, mutation, send, operator relay, or
-sensitive readback externalization occurred. The next campaign is Calendar
-metadata-read visibility using a fixed impossible marker on the primary
-calendar inside a bounded 2026 UTC window; wake 1 has not yet run.
+The Calendar metadata-read campaign accepted wake 1/4. The fixed impossible
+marker search on the primary calendar inside the bounded 2026 UTC window
+returned zero events and no continuation token with 1711 ms connector latency.
+No interactive login, event-content read, identifier persistence, mutation,
+send, operator relay, or sensitive readback externalization occurred. Wake 2
+repeats the identical probe; the supported claim remains limited to bounded
+authenticated Calendar search execution and sanitized result-count visibility.
