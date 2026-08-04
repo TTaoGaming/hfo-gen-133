@@ -1,146 +1,88 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
-experiment_id: X13_GOOGLE_CALENDAR_FREEBUSY_READONLY_001
-version: 80
-prior_version: 79
-candidate: Google_Calendar_get_availability_bounded_readonly_freebusy_surface
-candidate_contract_reference: official_Google_Calendar_freebusy_query_error_and_2026_quota_contract_plus_direct_connector_receipts
-campaign_wake: 4_of_4
-campaign_status: CLOSED
+experiment_id: X13_GITHUB_COMPARE_COMMITS_READONLY_001
+version: 81
+prior_version: 80
+candidate: GitHub_compare_commits_bounded_readonly_diff_metadata_surface
+campaign_wake: 1_of_4
+campaign_status: OPEN
 phase_1_completed: true
-phase_2_completed: true
-phase_3_completed: true
-phase_4_completed: true
-phase_4_decision: ADOPT_WITH_GATES
-adoption_mode: CATALOG_ONLY_NONOPERATIONAL
+phase_2_completed: false
+phase_3_completed: false
+phase_4_completed: false
+phase_4_decision: PENDING
+adoption_mode: NOT_ADOPTED
 carrier_task_id: 6a55c1733708819185088bf334e33ea5
 carrier_task_id_match: true
 wip: 1
 last_event:
-  commit: c7db220c2b578148be7c63e10ce085c84f802326
-  path: state/coordination/experiments/cots_connector_x13/20260804T044800Z_GOOGLE_CALENDAR_PHASE4_ADOPT_WITH_GATES.md
-  blob_sha: 0c8a603fe24e9f881ccec51ab93379b161cd7177
+  commit: 06f785961bf3adb91287ae55acd9a498f3c4237f
+  path: state/coordination/experiments/cots_connector_x13/20260804T054800Z_GITHUB_COMPARE_COMMITS_PHASE1_BASELINE.md
+  blob_sha: 8df5caaac7e6adf684efb3439d4a1bf5a8fcaf78
   exact_readback_completed: true
-prior_current_commit: f5af5041185639f0ded12134805e4cee06468cbc
-prior_current_blob_sha: 894a082b4008f404f7ec8a7dffbafcaae0b156c1
-effect_ceiling: CATALOG_ONLY_BOUNDED_READONLY_FREEBUSY_NO_EVENT_CONTENT_CREATE_UPDATE_DELETE_INVITATION_RESPONSE_NOTIFICATION_ACL_OR_CALENDAR_MUTATION
+prior_current_commit: 8b8d3f3e2510159d81b866165b85ef706a559ee3
+prior_current_blob_sha: bd6bd8f70d5144c98297150b76bc57333a9086fb
+effect_ceiling: CATALOG_ONLY_BOUNDED_READONLY_COMPARE
 adoption_credit: 0
 fitness_credit: 0
 consumer_ack: NOT_OBSERVED
-independent_verification_closed: false
-same_provider_binding_weight: 0
 operator_minutes_removed_measured: 0
-operator_minutes_removed_estimate_per_consumed_lookup: 1_to_3_UNVALIDATED
-custom_code_avoided_estimate:
-  authenticated_freebusy_request_rfc3339_validation_response_normalization_and_per_calendar_error_parsing: 20_to_70_LOC_UNVALIDATED
-  required_hfo_gates_not_avoided: PRIVACY_MINIMIZATION_PERMISSION_VERIFICATION_RAW_PARITY_QUOTA_TELEMETRY_RETRY_POLICY_FAILURE_CLASSIFICATION_AND_CONSUMER_WORKFLOW
+operator_minutes_removed_estimate: 1_to_3_UNVALIDATED
+custom_code_avoided_estimate: 15_to_50_LOC_UNVALIDATED
 credentials:
-  connector_reached_positive_freebusy_path: true
-  connector_reached_per_calendar_notfound_path: true
-  operator_supplied_credentials_campaign: 0
-  authenticated_principal: UNKNOWN
-  effective_permission: UNKNOWN_NOT_PROVEN_FREEBUSY_ONLY
-  credential_storage_and_custody: CONNECTOR_MANAGED_UNINSPECTED
-  least_privilege_closed: false
+  operator_supplied_this_campaign: 0
+  principal: UNKNOWN
+  effective_permission: UNKNOWN
+  connector_managed: true
 paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
-campaign_candidate_invocations:
-  phase_1_get_availability_reads: 1
-  phase_2_get_availability_reads: 1
-  phase_3_get_availability_failure_probes: 1
-  phase_4_candidate_calls: 0
-  total_candidate_read_attempts: 3
-  completed_connector_responses: 3
-  outer_connector_errors: 0
-  per_calendar_errors_observed: 1
-  carrier_retry_count: 0
-  fallback_count: 0
-  mutation_count: 0
+campaign_calls:
+  compare_reads: 1
+  completed_responses: 1
+  errors: 0
+  retries: 0
+  fallbacks: 0
+  mutations: 0
 actual_upstream_request_count: UNKNOWN
-actual_upstream_method: PRESUMED_FREEBUSY_QUERY_NOT_VERIFIED
-actual_rate_limit_resource_or_project_class: UNKNOWN
 actual_quota_consumed: UNKNOWN
-billing_counters: NOT_EXPOSED
-raw_http_status_headers_request_id_effective_permission_quota_and_upstream_attempts: NOT_EXPOSED
+observability:
+  exposed: STATUS_COUNTS_BASE_SHA_MERGE_BASE_SHA_FILES_EXTERNAL_CALL_TIME
+  missing: RAW_HTTP_HEADERS_REQUEST_ID_RATE_LIMIT_IDENTITY_UPSTREAM_ATTEMPTS
 measured_facts:
-  phase_1_primary_calendar_one_minute_rfc3339_query_completed: true
-  phase_1_calendar_results_returned_count: 1
-  phase_1_busy_window_cardinality: 1
-  phase_1_per_calendar_error_count: 0
-  phase_1_connector_reported_external_call_time_ms: 149
-  phase_2_primary_calendar_separate_one_minute_rfc3339_query_completed: true
-  phase_2_calendar_results_returned_count: 1
-  phase_2_busy_window_cardinality: 0
-  phase_2_per_calendar_error_count: 0
-  phase_2_connector_reported_external_call_time_ms: 244
-  phase_3_synthetic_nonsecret_calendar_one_minute_failure_probe_completed: true
-  phase_3_calendar_results_returned_count: 1
-  phase_3_busy_window_cardinality: 0
-  phase_3_per_calendar_error_count: 1
-  phase_3_error_domain: global
-  phase_3_error_reason: notFound
-  phase_3_outer_connector_error: NONE
-  phase_3_connector_reported_external_call_time_ms: 182
-  phase_4_decision_only_no_candidate_call: true
-  total_event_titles_descriptions_attendees_locations_or_ids_returned_count: 0
-  exact_query_busy_timestamps_and_synthetic_identifier_durably_logged: false
-  no_candidate_surface_mutation_retry_or_fallback: true
-  outer_success_does_not_prove_each_calendar_success: true
-  empty_busy_result_with_error_is_not_availability: true
-  notfound_is_ambiguous_between_nonexistent_and_inaccessible: true
-  successful_freebusy_response_does_not_prove_least_privilege: true
-admitted_scope:
-  - CATALOG_ONLY_BOUNDED_EXPLICIT_FREEBUSY_DISCOVERY_WHEN_EVENT_CONTENT_IS_NOT_NEEDED
-  - MINIMUM_KNOWN_CALENDAR_SET_AND_SMALL_RFC3339_INTERVAL
-  - NONOPERATIONAL_UNTIL_NAMED_CONSUMER_ACK_AND_MEASURED_OUTCOME
-excluded_scope:
-  - EVENT_CONTENT_SEARCH_OR_HYDRATION
-  - EVENT_CREATE_UPDATE_DELETE_INVITATION_RESPONSE_NOTIFICATION_ACL_OR_CALENDAR_SETTINGS_CHANGE
-  - AUTHORITATIVE_CALENDAR_COMPLETENESS_AVAILABILITY_CAUSE_OF_BUSY_INTERVAL_RESOURCE_ABSENCE_PERMISSION_STATE_OR_EVENT_IDENTITY_CLAIM
-  - LEAST_PRIVILEGE_IDENTITY_PERMISSION_QUOTA_CAPACITY_OR_RETRY_SAFETY_CLAIM
-  - OPERATIONAL_READINESS_CONSUMER_VALUE_OR_OPERATOR_RELIEF_CLAIM
+  same_full_sha_compare_completed: true
+  requested_sha: 8b8d3f3e2510159d81b866165b85ef706a559ee3
+  status: identical
+  ahead_by: 0
+  behind_by: 0
+  total_commits: 0
+  files_returned: 0
+  base_sha_match: true
+  merge_base_sha_match: true
+  external_call_time_ms: 677
+  mutation_retry_fallback_or_file_fetch: false
 mandatory_gates:
-  - PREFER_FREEBUSY_OVER_EVENT_SEARCH_WHEN_ONLY_AVAILABILITY_IS_REQUIRED
-  - REQUIRE_EXPLICIT_SMALL_RFC3339_TIME_MIN_TIME_MAX_AND_RESPONSE_TIMEZONE
-  - QUERY_THE_MINIMUM_CALENDAR_SET
-  - INSPECT_PER_CALENDAR_ERRORS_EVEN_WHEN_OUTER_CALL_COMPLETES_WITHOUT_ERROR
-  - TREAT_EMPTY_BUSY_LIST_ONLY_AS_EXACT_SCOPE_TIME_OBSERVATION_WHEN_NO_PER_CALENDAR_ERROR_EXISTS
-  - TREAT_NOTFOUND_AS_AMBIGUOUS_BETWEEN_NONEXISTENT_AND_INACCESSIBLE
-  - NEVER_CLASSIFY_A_CALENDAR_WITH_ANY_ERROR_AS_AVAILABLE
-  - FAIL_CLOSED_ON_UNKNOWN_PER_CALENDAR_ERROR_REASONS
-  - DO_NOT_AUTOMATICALLY_RETRY_DETERMINISTIC_NOTFOUND_WITHOUT_CHANGED_IDENTIFIER_PERMISSION_PRINCIPAL_OR_INDEPENDENT_EVIDENCE
-  - DO_NOT_USE_ERRORING_CALENDAR_RESULTS_FOR_SCHEDULING_CONFLICT_CHECKS_OR_AVAILABILITY_CLAIMS
-  - DO_NOT_DURABLY_LOG_EXACT_BUSY_TIMESTAMPS_OR_CALENDAR_IDENTIFIERS_WITHOUT_NAMED_CONSUMER_AND_RETENTION_NEED
-  - DO_NOT_INFER_EVENT_CONTENT_IDENTITY_OR_CAUSE_FROM_BUSY_INTERVAL
-  - DO_NOT_INFER_LEAST_PRIVILEGE_EXACT_UPSTREAM_METHOD_COUNT_QUOTA_USE_RAW_PARITY_OR_ZERO_HIDDEN_RETRIES
-  - REQUIRE_NAMED_OPERATIONAL_CONSUMER_ACK_AND_MEASURED_OUTCOME_BEFORE_OPERATIONAL_ADOPTION_OR_FITNESS_CREDIT
-verifier: DISTINCT_AUTHORIZED_RAW_GOOGLE_CALENDAR_FREEBUSY_QUERY_WITH_SAME_PRINCIPAL_CAPTURING_REQUEST_DIGEST_RAW_STATUS_HEADERS_REQUEST_ID_RESPONSE_BODY_PER_CALENDAR_ERRORS_EFFECTIVE_PERMISSION_QUOTA_AND_RETRY_EVIDENCE
-consumer:
-  immediate_catalog_consumer: HFO_COTS_CAPABILITY_INVENTORY
-  future_operational_consumer: MUST_BE_NAMED_IN_NEW_WORKITEM
-strongest_falsifier: SAME_PRINCIPAL_RAW_FREEBUSY_QUERY_RETURNS_MATERIALLY_DIFFERENT_BUSY_OR_ERROR_SHAPE_OR_PROVES_CONNECTOR_IDENTIFIER_INTERVAL_PRINCIPAL_METHOD_OR_RETRY_VARIANCE
-honest_flaw: THREE_SMALL_CALLS_ESTABLISH_ONLY_CONNECTOR_VISIBLE_CARDINALITY_AND_ONE_NESTED_GLOBAL_NOTFOUND_SHAPE_IDENTITY_SCOPE_EXACT_FORWARDING_MISSING_VERSUS_INACCESSIBLE_WRAPPER_VERSUS_PROVIDER_ORIGIN_RAW_HTTP_QUOTA_HIDDEN_RETRIES_RAW_API_PARITY_CONSUMER_VALUE_AND_OPERATOR_TIME_REDUCTION_REMAIN_UNVERIFIED
+  - PREFER_FULL_COMMIT_SHAS_FOR_BINDING_DECISIONS
+  - TREAT_BRANCHES_AND_TAGS_AS_MUTABLE
+  - BOUND_COMMIT_AND_FILE_CARDINALITY
+  - VERIFY_LARGE_COMPARISONS_INDEPENDENTLY
+  - DO_NOT_CLAIM_LEAST_PRIVILEGE_RAW_PARITY_QUOTA_OR_ZERO_HIDDEN_RETRIES
+  - REQUIRE_CONSUMER_ACK_AND_MEASURED_OUTCOME_BEFORE_OPERATIONAL_CREDIT
+verifier: RAW_GITHUB_COMPARE_WITH_SAME_SHA_PAIR_AND_TRANSPORT_TELEMETRY
+consumer: HFO_COTS_CAPABILITY_INVENTORY
+strongest_falsifier: RAW_SAME_SHA_COMPARE_RETURNS_NONIDENTICAL_OR_DIFFERENT_COMMIT_BINDING
+honest_flaw: SAME_SHA_ZERO_DIFF_ONLY_CHANGED_DIFF_PAGINATION_PERMISSION_FAILURE_QUOTA_RETRY_CONSUMER_VALUE_AND_TIME_SAVINGS_UNVERIFIED
 phase_1_result:
   disposition: PHASE1_ACCEPTED_WITH_GATES
-  admitted_interpretation: CONNECTOR_RETURNED_BOUNDED_FREEBUSY_CARDINALITY_WITHOUT_EVENT_CONTENT
-phase_2_result:
-  disposition: PHASE2_ACCEPTED_WITH_GATES
-  admitted_interpretation: CONNECTOR_RETURNED_ONE_BOUNDED_EMPTY_FREEBUSY_RESULT_WITHOUT_EVENT_CONTENT
-phase_3_result:
-  disposition: PHASE3_ACCEPTED_WITH_GATES
-  admitted_interpretation: CONNECTOR_PRESERVED_ONE_PER_CALENDAR_GLOBAL_NOTFOUND_ERROR_INSIDE_AN_OUTER_SUCCESS_RESPONSE_WITHOUT_EVENT_CONTENT
-phase_4_result:
-  disposition: ADOPT_WITH_GATES
-  admitted_interpretation: CATALOG_ONLY_BOUNDED_READONLY_FREEBUSY_CAPABILITY_NONOPERATIONAL_PENDING_CONSUMER_ACK_MEASURED_OUTCOME_AND_INDEPENDENT_RAW_PROVIDER_VERIFICATION
+  admitted_interpretation: CONNECTOR_RETURNED_IDENTICAL_ZERO_DIFF_FOR_ONE_FULL_SHA_PAIR
 next_wake:
-  experiment_id: X13_GITHUB_COMPARE_COMMITS_READONLY_001
-  candidate: GitHub_compare_commits_bounded_readonly_diff_metadata_surface
-  phase: 1_of_4
-  planned_probe: OFFICIAL_COMPARE_CONTRACT_AND_ONE_BOUNDED_SAME_REF_OR_SMALL_KNOWN_REF_BASELINE_WITHOUT_FILE_FETCH_WRITE_BRANCH_PR_COMMENT_MERGE_OR_PUBLICATION
-review_expiry_utc: 2026-08-11T04:48:00Z
-valid_time_utc: 2026-08-04T04:48:00Z
-recorded_time_utc: 2026-08-04T04:48:00Z
+  phase: 2_of_4
+  planned_probe: BOUNDED_ADJACENT_FULL_SHA_COMPARISON_WITH_SMALL_NONZERO_FILE_SET
+  planned_base_sha: c7db220c2b578148be7c63e10ce085c84f802326
+  planned_head_sha: 8b8d3f3e2510159d81b866165b85ef706a559ee3
+review_expiry_utc: 2026-08-11T05:48:00Z
+valid_time_utc: 2026-08-04T05:48:00Z
+recorded_time_utc: 2026-08-04T05:48:00Z
 ---
 
-# X13 CURRENT v80
+# X13 CURRENT v81
 
-The Google Calendar bounded read-only free/busy campaign is closed as `ADOPT_WITH_GATES`, catalog-only and nonoperational. Three explicit one-calendar, one-minute calls completed without event content, retry, fallback, mutation, surfaced charge, measured operator relief, adoption credit, or fitness credit. The connector preserved one nested `global/notFound` per-calendar error inside an outer-success response, proving that outer success and `busy: []` cannot be treated as availability when a nested error exists. Identity, effective permission, exact forwarding, missing-versus-inaccessible classification, raw transport, quota, hidden retries, independent parity, consumer value, and actual time savings remain unverified. The next campaign is a bounded read-only GitHub compare-commits surface baseline.
+GitHub compare-commits phase 1 is accepted with gates. One same-full-SHA comparison returned `identical`, zero ahead/behind counts, zero commits, zero files, matching base and merge-base SHAs, and 677 ms connector time. Adoption and fitness credit remain zero.
