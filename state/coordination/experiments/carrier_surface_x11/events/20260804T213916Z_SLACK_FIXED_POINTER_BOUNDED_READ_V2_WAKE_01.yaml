@@ -1,0 +1,74 @@
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+event_id: X11_SLACK_FIXED_POINTER_BOUNDED_READ_V2_WAKE_01_20260804T213916Z
+experiment_id: X11_SLACK_FIXED_POINTER_BOUNDED_READ_V2
+campaign_version: 2
+task_id_expected: 6a55089a9adc8191bda54541f7f9effa
+task_id_observed: 6a55089a9adc8191bda54541f7f9effa
+task_id_match: true
+carrier: HFO_GEN133_X11
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+prior_current_version: 96
+next_current_version: 97
+campaign_wake: 1
+campaign_target_wakes: 4
+accepted: true
+campaign_status: ACTIVE
+campaign_disposition: null
+baseline:
+  accepted_wakes: 0
+  mode: campaign_initialized_without_a_Slack_probe
+  fixed_channel_id: C0BGNGPJFHU
+  fixed_target_timestamp: '1785563052.487809'
+  one_second_envelope_oldest: '1785563052.000000'
+  one_second_envelope_latest: '1785563053.000000'
+  expected_non_sensitive_marker: 20260801T054200Z_SLACK_READ_SEARCH_VARIANCE_WAKE_01.yaml
+  permission_class: NOT_PROBED_THIS_CAMPAIGN
+  error_class: NONE
+hypothesis: authenticated_Slack_channel_history_will_return_only_the_known_message_inside_the_fixed_one_second_envelope_with_the_target_timestamp_and_non_sensitive_marker_visible
+controlled_factor: slack_read_write
+exact_probe:
+  action: slack_read_channel
+  channel_id: C0BGNGPJFHU
+  oldest: '1785563052.000000'
+  latest: '1785563053.000000'
+  limit: 100
+  response_format: detailed
+  persist_only:
+    - result_count
+    - target_timestamp_present
+    - expected_marker_present
+    - permission_class
+    - error_class
+    - latency_when_exposed
+    - operator_relay_minutes
+measured_result:
+  result_count: 1
+  target_timestamp_present: true
+  expected_marker_present: true
+  content_outside_bounded_window_observed: false
+  operator_relay_minutes: 0
+  changed_capability: true
+  campaign_decision: false
+  andon: false
+permission_error:
+  permission_class: AUTHENTICATED_SLACK_CHANNEL_HISTORY_BOUNDED_READ_AVAILABLE
+  error_class: NONE
+  latency_when_exposed: NOT_EXPOSED
+strongest_falsifier: the_fixed_one_second_envelope_cannot_be_read_the_known_target_timestamp_or_expected_marker_is_absent_or_the_connector_returns_content_outside_the_bounded_channel_window
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer: [Reginleif, Ratatoskr]
+claim_ceiling: bounded_authenticated_Slack_channel_history_result_count_target_timestamp_and_non_sensitive_marker_visibility_only_not_workspace_completeness_native_Slack_semantics_index_freshness_message_authenticity_write_visibility_or_independent_verification
+same_provider_independence_claim: false
+honest_flaw: one_old_public_channel_pointer_tests_only_one_connector_history_path_and_cannot_separate_connector_filtering_from_native_Slack_semantics_or_prove_workspace_completeness_or_write_behavior
+next_factor: slack_read_write
+next_probe:
+  experiment_id: X11_SLACK_FIXED_POINTER_BOUNDED_READ_V2
+  campaign_wake: 2
+  mode: repeat_identical_fixed_public_channel_pointer_one_second_envelope_read
+  exact_action: repeat_the_identical_bounded_history_read_and_persist_only_sanitized_count_and_presence_values
+slack_action: POST_CAPABILITY_DELTA_AFTER_GIT_READBACK
+sensitive_readback_externalized: false
+valid_time_utc: 2026-08-04T21:39:16Z
+sealed: true
