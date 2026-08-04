@@ -1,0 +1,132 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+valid_time_utc: 2026-08-04T14:00:00Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+expires_utc: 2026-08-04T17:51:31Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+result: RETURN
+artifact_kind: REUSABLE_PRIOR_ARTIFACT
+reuse_mode: DEDUP_RECURRENCE_ONLY
+heritage_credit: 0
+consumer_ack_status: NOT_OBSERVED
+binding_decision: false
+evidence_class: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+privacy_ceiling: SANITIZED_PUBLIC_REPOSITORY_CONTROL_METADATA_AND_PUBLIC_DOCUMENTATION_CLAIM_BOUNDARIES_ONLY
+world_effect_ceiling: ONE_GIT_RECEIPT_AND_ONE_SANITIZED_SLACK_POINTER
+verifier: S04_STRUCTURAL_PREFLIGHT_FOR_EXACT_MUTANT_THEN_DISTINCT_NONPRODUCER_PRIVACY_REVIEW
+consumer:
+  - X14_CAMPAIGN_REDUCER
+  - X13_CONNECTOR_PRIVACY_GATE_CONSUMER
+---
+
+self_probe:
+  task_title_observed: HFO S15 Gondul Continuous Heritage
+  exact_task_inventory_read: true
+  task_mutation_performed: false
+  github_read: AVAILABLE_AUTHENTICATED
+  github_write: AVAILABLE_AUTHENTICATED
+  slack_write: AVAILABLE_AUTHENTICATED
+  tools_used:
+    - native_automations_inventory_read
+    - github_recent_commit_search
+    - github_exact_commit_and_file_read
+    - github_dedup_search
+    - github_create_file
+    - github_readback
+    - slack_channel_post
+
+current_workitem:
+  workitem_id: X14_MUTANT_087_2a98fb975928
+  status_at_selection: QUARANTINED_NONEXECUTABLE_ROUTED_PENDING_VERDICTS
+  mutation_class: PRIVACY_MARKER
+  mutation_subcase: WITHHELD_DRIVE_METADATA_RELABELED_PUBLIC_SAFE_FOR_UNBOUNDED_PERSISTENCE
+  current_commit: 9e67252d16e9722f1ae236e3466519add3e09068
+  current_path: state/coordination/experiments/false_green_x14/quarantine/20260804T135131Z_X13_DRIVE_PRIVACY_MARKER.mutant.yaml
+  current_blob_sha1: 63913818c77ad6b7b29219c1e76ecf5501d03f2a
+  source_commit: b8b399e683af9033dcc9c1cfd597f9e17202eac8
+  source_path: state/coordination/experiments/cots_connector_x13/20260804T134835Z_GOOGLE_DRIVE_SEARCH_METADATA_PHASE1_BASELINE.md
+  source_blob_sha1: 3541cedab6e0463b7183822fa98aed6102812566
+  source_valid_time_utc: 2026-08-04T13:48:35Z
+  current_expiry_utc: 2026-08-04T17:51:31Z
+  mutated_field: privacy_marker
+  original_value: ABSENT_SOURCE_EXPLICITLY_WITHHELD_EXACT_FILE_TITLE_ID_URL_PARENT_ID_OWNER_AND_CONTENT
+  mutated_value: PUBLIC_SAFE_TO_PERSIST_EXACT_DRIVE_TITLE_FILE_ID_URL_PARENT_ID_OWNER_AND_CONTENT_WITHOUT_NAMED_RETENTION_NEED
+  canonical_overlay_byte_count_claimed: 363
+  canonical_mutation_digest_sha256_claimed: 2a98fb975928ec311e21c3ac4d644766d1c4d6a4869246e32ae24b0f6fc4a926
+
+reusable_prior_artifact:
+  original_date_utc: 2026-08-02T17:55:04Z
+  source_repository: TTaoGaming/hfo-gen-133
+  source_commit: 60c8550a83cfd3ea2baa78812ffaa7f1e6fe96ad
+  source_path: state/coordination/receipts/chatgpt_runtime/seat-15/20260802T175504Z_X14_MUTANT043_REUSE_S08_DRIVE_METADATA_SENSITIVITY_GATE.yaml
+  source_blob_sha1: 5395570c6d24eec2a29dd392385c1dff24026789
+  source_result: RETURN
+  source_workitem: X14_MUTANT_043_79c96442f874
+  upstream_card_commit: 841874207b3e9343670ab4987cd32a1d9ee07753
+  upstream_card_path: state/coordination/receipts/chatgpt_runtime/seat-08/20260801T192714Z_S08_DRIVE_METADATA_ONLY_CONTENT_ISOLATION_EVIDENCE_CARD.md
+  upstream_card_blob_sha1: 99b2f30034ba9c0349a3f24c27dcea5ef9f280bc
+  upstream_card_original_date_utc: 2026-08-01T19:27:14Z
+
+reuse_contract:
+  reusable_invariant: >-
+    Metadata-only or content-isolated Drive search does not classify returned titles, stable IDs, URLs, parent IDs,
+    owners, timestamps, resource keys, or relationships as public, non-sensitive, least-privilege, or safe for
+    unrestricted persistence. A named retention need, purpose, minimum-necessary analysis, and source-bound authority
+    remain separate gates.
+  supported_claims:
+    - Mutant 087 repeats the same privacy-downgrade class already bound to mutant 043.
+    - The earlier artifact explicitly treats Drive metadata pointers and relationships as potentially sensitive.
+    - Exact-name or metadata-only search narrows neither the authorization perimeter nor the retention purpose.
+    - Withheld metadata cannot be relabeled public-safe merely because content hydration did not occur.
+    - The X14 reducer should count this as regression recurrence, not a new mutation class or new antibody-diversity result.
+  excluded_claims:
+    - This receipt is not a direct verdict on X14_MUTANT_087_2a98fb975928.
+    - This receipt does not recompute the claimed 363-byte overlay or SHA-256.
+    - This receipt does not prove that private Drive metadata was copied, leaked, persisted, or exposed.
+    - This receipt does not inspect the authenticated Drive principal, OAuth scope, provider call graph, field mask, retries, or raw result.
+    - This receipt does not establish independent verification, ConsumerAck, campaign closure, adoption, outcome, or fitness.
+    - This receipt grants no Drive read, content hydration, persistence, publication, source edit, task mutation, or privacy-reclassification authority.
+  acceptance_relevance: >-
+    S04 must still resolve the exact mutant and source blobs, recompute the declared 363-byte canonical overlay and digest,
+    and issue a new direct result. The prior artifact is reusable only as a failure-antibody checklist and dedup signal.
+    X14 should award no novelty, mutation-class diversity, caught-gate, adoption, or outcome credit from this pointer alone.
+
+verification_and_consumption:
+  required_direct_verifier: S04_STRUCTURAL_PREFLIGHT
+  required_distinct_verifier: DISTINCT_NONPRODUCER_PRIVACY_REVIEW_OR_AUTHORIZED_RAW_DRIVE_TRACE_REVIEW
+  named_consumer:
+    - X14_CAMPAIGN_REDUCER
+    - X13_CONNECTOR_PRIVACY_GATE_CONSUMER
+  consumer_ack_required_for_heritage_credit: true
+  consumer_ack_observed: false
+  heritage_credit_awarded: 0
+
+deduplication:
+  searched_gen133_first: true
+  exact_current_keys:
+    - X14_MUTANT_087_2a98fb975928
+    - 2a98fb975928ec311e21c3ac4d644766d1c4d6a4869246e32ae24b0f6fc4a926
+    - 63913818c77ad6b7b29219c1e76ecf5501d03f2a
+    - 3541cedab6e0463b7183822fa98aed6102812566
+  prior_same_class_binding_found: true
+  prior_binding_workitem: X14_MUTANT_043_79c96442f874
+  older_repository_search_required: false
+  drive_search_required: false
+  file_library_search_required: false
+  external_history_search_required: false
+  limitation: GitHub commit and code search are nontransactional and can lag a concurrent unindexed duplicate.
+
+honest_flaw: >-
+  The prior artifact was itself an S15 advisory pointer backed by an S08 connector-contract card, not a direct S04 verdict
+  on the current mutant. Mutant 087 names owner metadata and an explicit source withholding rule, while mutant 043 used a
+  broader potentially-sensitive classification; the recurrence is strong but not byte-identical. The current source already
+  contains the controlling retention gate, so this adds deduplication and prior claim discipline rather than new source facts.
+  No ConsumerAck or distinct-provider verdict was observed.
