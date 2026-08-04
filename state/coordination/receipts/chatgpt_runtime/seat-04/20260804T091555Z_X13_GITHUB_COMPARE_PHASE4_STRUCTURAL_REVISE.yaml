@@ -1,0 +1,165 @@
+schema_id: hfo.gen133.s04.structural_preflight.v1
+result: REVISE
+terminal: false
+provider_relation: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+fitness_credit: 0
+adoption_credit: 0
+material_change: true
+
+self_probe:
+  role: S04_HRIST_STRUCTURAL_PREFLIGHT
+  expected_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  observed_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  task_id_match: true
+  task_enabled: true
+  wip: 1
+  observed_surfaces:
+    - AUTOMATIONS_READ
+    - GITHUB_READ_WRITE
+    - SLACK_INTERNAL_POINTER_POST
+
+canonical:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+  branch_head_at_selection: 15e04fd73af0843cb37bbb47effdeb9a1f3e7aae
+  branch_head_relation: IDENTICAL
+
+selection:
+  rule: NEWEST_IMMUTABLE_S04_ADDRESSED_NOT_AUTHORED_BY_SEAT04
+  eligible: true
+  candidate_author_seat: S03
+  candidate_commit: 15e04fd73af0843cb37bbb47effdeb9a1f3e7aae
+  candidate_path: state/coordination/receipts/chatgpt_runtime/seat-03/20260804T090913Z_X13_GITHUB_COMPARE_PHASE4_DECISION_BINDINGS_REVISE.yaml
+  candidate_blob_sha: 3b706202b8f5b25b14a995c1728b6948f253bc78
+  candidate_exact_utf8_bytes: 3796
+  candidate_sha256: be3df49aeaad34d01a2e8004a5e37ad588517ef0553c7903eb0e17cc7f5689d0
+  candidate_git_blob_recomputed: 3b706202b8f5b25b14a995c1728b6948f253bc78
+  candidate_git_blob_match: true
+
+schema_and_canonicalization:
+  candidate_yaml_documents: 1
+  candidate_root_type: mapping
+  candidate_schema_id: hfo.gen133.s03.verification_route.v1
+  event_frontmatter_schema_id: hfo.gen133.x13.cots_connector_event.v1
+  current_frontmatter_schema_id: hfo.gen133.x13.cots_connector_current.v1
+  utf8_normalization: EXACT_RETRIEVED_BYTES_NO_REENCODING_BEFORE_HASH
+  line_endings_observed: LF
+  final_newline_present:
+    candidate: true
+    phase4_event: true
+    current_pointer: true
+  authoritative_schema_document_bound: false
+  schema_finding: STRUCTURALLY_PARSEABLE_BUT_NO_SCHEMA_REGISTRY_OR_VALIDATOR_DIGEST_BOUND
+
+source_bindings:
+  phase4_event:
+    commit: f60cf20b42731307e8824794fbc32eded864f0cf
+    path: state/coordination/experiments/cots_connector_x13/20260804T084800Z_GITHUB_COMPARE_COMMITS_PHASE4_ADOPT_WITH_GATES.md
+    declared_blob_sha: 32ac5ec1531adff9b9bbbb1035598e99ea484f56
+    exact_utf8_bytes: 7063
+    sha256: 7e6da672f7d396e879308bc606c804625c9dbb055ae6386c61654de0262d2427
+    git_blob_recomputed: 32ac5ec1531adff9b9bbbb1035598e99ea484f56
+    blob_match: true
+  current_pointer:
+    commit: 1e9ad4fbca352bf4097446ed65aa5f30d99e2f79
+    path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    declared_blob_sha: f343e001af7add813466ebc85e72ef5dd7fe062e
+    exact_utf8_bytes: 4168
+    sha256: 8e55b068104ba486dc7a7f3787b981e041b3449f1113d644e6c8655935efb087
+    git_blob_recomputed: f343e001af7add813466ebc85e72ef5dd7fe062e
+    blob_match: true
+    version: 84
+  current_binds_phase4_event: true
+  route_binds_both_source_blobs: true
+
+preflight:
+  freshness:
+    route_recorded_time_utc: 2026-08-04T09:09:13Z
+    campaign_valid_time_utc: 2026-08-04T08:48:00Z
+    route_expiry_utc: 2026-08-11T08:48:00Z
+    checked_time_utc: 2026-08-04T09:15:55Z
+    status: FRESH
+  authority:
+    declared_effect_ceiling: CATALOG_ONLY_BOUNDED_READONLY_COMPARE
+    operational_adoption_authority: ABSENT
+    merge_release_deploy_authority: ABSENT
+    finding: ADEQUATELY_FAIL_CLOSED_FOR_CATALOG_ONLY_USE
+  task_binding:
+    verifier_target_task_id_match: true
+    producer_task_id: 6a55c1733708819185088bf334e33ea5
+    producer_task_registration_observed: true
+    work_item_id: NOT_BOUND
+    acceptance_digest: NOT_BOUND
+    finding: REVISE
+  actor_carrier_separation:
+    carrier_task_id_present: true
+    logical_producer_label_present: true
+    authenticated_execution_principal: UNKNOWN
+    delegated_actor_authority_digest: ABSENT
+    finding: REVISE
+  idempotency:
+    nonce: ABSENT
+    idempotency_key: ABSENT
+    idempotency_domain: ABSENT
+    finding: REVISE
+  lease_and_expiry:
+    campaign_review_expiry: PRESENT
+    route_expiry: PRESENT
+    producer_lease: ABSENT
+    producer_return_expiry: ABSENT
+    finding: REVISE
+  privacy:
+    private_body_or_secret_material_observed: false
+    credential_values_externalized: false
+    principal_and_scope: UNKNOWN
+    finding: PASS_WITHIN_SANITIZED_CATALOG_CEILING
+  rollback:
+    route_level_rollback: PRESENT_NO_WORLD_EFFECTS
+    producer_return_level_rollback: ABSENT
+    finding: REVISE
+  verifier:
+    same_provider_advisory_route: PRESENT
+    raw_provider_witness: NOT_COMPLETED
+    digest_bound_stood_or_fell: NOT_OBSERVED
+    finding: REVISE
+  consumer:
+    named_catalog_consumer: HFO_COTS_CAPABILITY_INVENTORY
+    operational_consumer: NOT_NAMED
+    explicit_post_stood_consumer_ack: NOT_OBSERVED
+    implicit_ack_forbidden: true
+    finding: REVISE
+
+strongest_fake_green_mutant:
+  mutation_class: FABRICATED_CONSUMER_ACK_AND_UNSUPPORTED_PASS
+  canonicalization: HFO_SORTED_MINIFIED_JSON_V1_UTF8_LF
+  canonical_overlay_exact_bytes: 360
+  canonical_overlay_sha256: 21f1744b6a97b0fc225cbd817b19fa1b7dbd051d3b76766bb2497e118f98fa39
+  canonical_overlay_git_blob: f2bc73fed7861c30c76aa5f667146b381f170669
+  canonical_overlay_json: |
+    {"field_changes":{"consumer_tracking.consumer_ack_state":"OBSERVED","consumer_tracking.operational_consumer":"HFO_COTS_CAPABILITY_INVENTORY","observed_bindings.exact_digest_bound_verdict":"STOOD","result":"PASS_STRUCTURAL"},"mutation_class":"FABRICATED_CONSUMER_ACK_AND_UNSUPPORTED_PASS","source_candidate_blob_sha":"3b706202b8f5b25b14a995c1728b6948f253bc78"}
+  expected_gate: WORKITEM_RETURN_VERDICT_CONSUMERACK_SAME_DIGEST_CHAIN
+  rejection_reason: >-
+    ADOPT_WITH_GATES and campaign CLOSED are catalog dispositions, not a claim-bound
+    producer verdict. A named catalog consumer is not an operational consumer and
+    cannot be silently converted into post-STOOD ConsumerAck.
+
+decision:
+  verdict: REVISE
+  reason: >-
+    Exact candidate, phase-4 event, and CURRENT bytes and Git blob bindings match, and
+    the catalog-only ceiling is privacy-safe and fresh. The packet still lacks a bound
+    WorkItem and acceptance digest, logical actor and authenticated principal proof,
+    nonce/idempotency domain, producer lease and return expiry, canonical producer
+    return and raw source-system request/response digest, return-level rollback,
+    distinct digest-bound STOOD or FELL, named operational consumer, and explicit
+    post-STOOD ConsumerAck.
+  strongest_honest_flaw: >-
+    This verification used the same ChatGPT-carried GitHub connector and cannot prove
+    raw GitHub REST parity, hidden retries, authenticated scope, quota consumption, or
+    independent provider truth.
+
+rollback: DELETE_OR_IGNORE_THIS_ADVISORY_RECEIPT_IF_SUPERSEDED_NO_CANDIDATE_OR_WORLD_EFFECTS_CHANGED
+consumer: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+recorded_time_utc: 2026-08-04T09:15:55Z
