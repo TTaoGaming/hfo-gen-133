@@ -1,8 +1,8 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_WEB_OFFICIAL_STATIC_READ_VISIBILITY_V1
-current_version: 77
-accepted_wakes: 1
+current_version: 78
+accepted_wakes: 2
 target_wakes_before_decision: 4
 controlled_factor: web_research
 campaign_status: ACTIVE
@@ -13,9 +13,9 @@ prior_campaign:
   disposition: REVISE
   accepted_wakes: 4
 last_event:
-  commit: 8b9b8d60d7df4b91e8833c8070f587f26f633ebb
-  path: state/coordination/experiments/carrier_surface_x11/events/20260804T014034Z_WEB_OFFICIAL_STATIC_READ_VISIBILITY_V1_WAKE_01.yaml
-  blob: 6b06f0b2a1644777d398f755d5319bfbf405eb2a
+  commit: d0ea8274c02802c359b360184ce4daf701b25f02
+  path: state/coordination/experiments/carrier_surface_x11/events/20260804T023906Z_WEB_OFFICIAL_STATIC_READ_VISIBILITY_V1_WAKE_02.yaml
+  blob: 3f6d933dffb7c7cc7a95c92105308998fd0b0442
 baseline_result:
   mode: unauthenticated_fixed_public_url_marker_probe
   requested_url: https://example.com/
@@ -29,22 +29,27 @@ baseline_result:
   page_body_persisted: false
   sensitive_readback_externalized: false
   mutation_performed_by_probe: false
-  changed_capability: true
+  changed_capability: false
   andon: false
   permission_class: PUBLIC_WEB_FIXED_URL_READ_AVAILABLE
   error_class: NONE
   latency_exposed: false
   latency_ms: null
   operator_relay_minutes: 0
+campaign_aggregate:
+  successful_retrievals: 2
+  expected_marker_present_count: 2
+  unexpected_host_count: 0
+  permission_or_transport_error_count: 0
 claim_ceiling: fixed_public_web_URL_retrieval_and_expected_marker_visibility_only_not_search_quality_freshness_completeness_semantic_accuracy_or_independent_verification
 strongest_falsifier: the_identical_fixed_URL_fails_to_resolve_redirects_to_an_unexpected_host_requires_authentication_or_returns_the_expected_marker_inconsistently_across_repeated_wakes
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 next_consumer: [Reginleif, Ratatoskr]
-honest_flaw: a_single_static_public_URL_marker_probe_measures_basic_web_read_surface_availability_not_general_research_quality_freshness_ranking_completeness_truth_or_transport_latency_when_latency_is_not_exposed
+honest_flaw: two_identical_static_public_URL_marker_probes_measure_repeatability_of_one_basic_web_read_path_not_general_research_quality_freshness_ranking_completeness_truth_or_transport_latency_when_latency_is_not_exposed
 next_factor: web_research
 next_probe:
   experiment_id: X11_WEB_OFFICIAL_STATIC_READ_VISIBILITY_V1
-  campaign_wake: 2
+  campaign_wake: 3
   mode: unauthenticated_fixed_public_url_marker_probe
   url: https://example.com/
   expected_canonical_host: example.com
@@ -61,13 +66,13 @@ next_probe:
   interactive_login_allowed: false
   page_body_persistence_allowed: false
   sensitive_readback_externalization_allowed: false
-slack_action: POST_CHANGED_CAPABILITY_AFTER_GIT_READBACK
-updated_valid_time_utc: 2026-08-04T01:40:34Z
+slack_action: SILENT_UNCHANGED
+updated_valid_time_utc: 2026-08-04T02:39:06Z
 sealed: false
 ---
 
-The web-research campaign accepted wake 1/4. The fixed unauthenticated
-example.com probe resolved to the expected host and exposed the expected marker
-without login, mutation, operator relay, or page-body persistence. This supports
-only bounded fixed-public-URL retrieval and marker visibility. Wake 2 repeats
-the identical probe.
+The web-research campaign accepted wake 2/4. The identical fixed unauthenticated
+example.com probe again resolved to the expected host and exposed the expected
+marker without login, mutation, operator relay, or page-body persistence. The
+capability state was unchanged, so Slack remains silent. Wake 3 repeats the
+identical probe.
