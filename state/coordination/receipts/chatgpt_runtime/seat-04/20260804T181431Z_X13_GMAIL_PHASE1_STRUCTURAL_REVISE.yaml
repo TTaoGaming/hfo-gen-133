@@ -1,0 +1,181 @@
+schema_id: hfo.gen133.s04.structural_preflight.v1
+result: REVISE
+terminal: false
+correlation_id: X13_GMAIL_SEARCH_EMAIL_IDS_READONLY_001_PHASE1_BASELINE_20260804T174732Z
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+self_probe:
+  seat: S04_HRIST_STRUCTURAL_PREFLIGHT
+  expected_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  observed_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  task_id_match: true
+  carrier_enabled_observed: true
+  wip: 1
+  tools_observed:
+    - native_automations_inventory_read
+    - github_recent_commit_search
+    - github_exact_commit_and_file_read
+    - github_branch_reachability_compare
+    - deterministic_utf8_byte_sha256_and_git_blob_recomputation
+    - yaml_syntax_parse
+    - github_create_file
+    - github_exact_readback
+    - slack_direct_pointer
+selection:
+  rule: NEWEST_IMMUTABLE_CANDIDATE_ADDRESSED_TO_S04_NOT_AUTHORED_BY_S04
+  canonical_repository: TTaoGaming/hfo-gen-133
+  canonical_branch: agent/gen133-bootstrap-20260730
+  branch_head_at_selection: fbee685c6a5cd1fef602fbffc0c231db18f398a7
+  branch_reachability: IDENTICAL_TO_CANONICAL_BRANCH_HEAD
+  candidate_authoring_seat: S03
+  candidate_authored_by_s04: false
+  candidate_commit: fbee685c6a5cd1fef602fbffc0c231db18f398a7
+  candidate_path: state/coordination/receipts/chatgpt_runtime/seat-03/20260804T180716Z_X13_GMAIL_SEARCH_PHASE1_RETURN_BINDINGS_REVISE.yaml
+  candidate_blob_sha1_claimed: 203d700c435a2d982cec760765d4ce6a02989add
+  candidate_blob_sha1_recomputed: 203d700c435a2d982cec760765d4ce6a02989add
+  candidate_exact_utf8_bytes: 3922
+  candidate_sha256: 904b542b96437bbfdecba2e0037c68365e612572a62011ccba86423b4fa96844
+  candidate_yaml_document_count: 1
+  candidate_yaml_root_type: mapping
+  candidate_schema_id: hfo.gen133.s03.reducer_route.v1
+  schema_registry_validation: NOT_OBSERVED
+  candidate_canonicalization_declared: false
+  exact_raw_bytes_and_git_blob_bound: true
+  newest_eligible_confirmed_utc: 2026-08-04T18:14:00Z
+source_bindings:
+  event:
+    commit: a5a31521657b340e8efb341f0773411da6b5697d
+    path: state/coordination/experiments/cots_connector_x13/20260804T174732Z_GMAIL_SEARCH_EMAIL_IDS_PHASE1_BASELINE.md
+    blob_sha1_claimed: 67ef6c3f50e654601fa9cb7ff839a7a9d5048320
+    blob_sha1_recomputed: 67ef6c3f50e654601fa9cb7ff839a7a9d5048320
+    exact_utf8_bytes: 5327
+    sha256: 4cdb836a348a8e63c02b22cc3bd53c33c68bb9eedb14da7cb9c73c4f17d9550b
+    frontmatter_schema_id: hfo.gen133.x13.cots_connector_event.v1
+    expected_current_version: 92
+  current:
+    commit: ea1a0558a4f08bfed83081ff932e6f3e67492bae
+    path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    blob_sha1_claimed: dee04a8c4651ba4bddb26425a9bad4c73bdeaa96
+    blob_sha1_recomputed: dee04a8c4651ba4bddb26425a9bad4c73bdeaa96
+    exact_utf8_bytes: 3824
+    sha256: f720546774ee603997ba98d0e0c10832a72d4dcadfdee8d8fa084385c6ddc883
+    frontmatter_schema_id: hfo.gen133.x13.cots_connector_current.v1
+    version: 93
+    prior_version: 92
+    last_event_triplet_matches: true
+  pointer_integrity: PASS
+structural_checks:
+  freshness:
+    result: PASS
+    route_valid_time_utc: 2026-08-04T18:07:16Z
+    route_expiry_utc: 2026-08-05T18:07:16Z
+    expired_at_verification: false
+  authority:
+    result: PASS_WITH_CEILING
+    observed_ceiling: READ_ONLY_SANITIZED_STRUCTURAL_PREFLIGHT_ONLY
+    external_effect_authority: NONE
+    terminal_or_adoption_authority: NONE
+  task_binding:
+    result: REVISE
+    s03_carrier_task_id_bound_and_live: true
+    x13_carrier_task_id_bound_and_live: true
+    s04_expected_task_id_live: true
+    s04_task_id_present_in_candidate_route: false
+    defect: ROUTE_NAMES_S04_BUT_DOES_NOT_BIND_THE_EXACT_S04_CARRIER_TASK_ID
+  actor_carrier_separation:
+    result: REVISE
+    reducer_seat_and_carrier_separated: true
+    source_carrier_seat_separated: true
+    logical_producer_actor_bound: false
+    authenticated_gmail_principal_bound: false
+    effective_oauth_scope_bound: false
+    rule: SCHEDULED_TASK_ID_IS_A_CARRIER_RECORD_NOT_LOGICAL_ACTOR_OR_AUTHENTICATED_PRINCIPAL
+  claim_and_acceptance:
+    result: REVISE
+    workitem_id_bound: false
+    acceptance_digest_bound: false
+    producer_return_class: SANITIZED_CONNECTOR_OBSERVATION_NOT_PRODUCER_RETURN
+    canonical_producer_return_digest_bound: false
+    exact_request_digest_bound: false
+    exact_response_digest_bound: false
+  idempotency:
+    result: REVISE
+    nonce_bound: false
+    idempotency_key_bound: false
+    idempotency_domain_bound: false
+    upstream_attempt_count_bound: false
+  lease_and_expiry:
+    result: REVISE
+    route_expiry_bound: true
+    producer_lease_bound: false
+    producer_return_expiry_bound: false
+  privacy:
+    result: PASS_WITH_LIMIT
+    raw_message_identifier_persisted: false
+    raw_page_token_persisted: false
+    sensitive_mail_content_persisted: false
+    privacy_safe_request_or_response_digest_bound: false
+    source_system_parity_or_completeness_proven: false
+  rollback:
+    result: PASS_WITH_LIMIT
+    world_effect_observed: false
+    source_edit_observed: false
+    candidate_edit_observed: false
+    explicit_return_level_rollback_bound: false
+  verifier:
+    result: REVISE
+    same_provider_preflight_only: true
+    exact_stood_or_fell_bound_to_producer_digest: false
+    distinct_provider_verdict_observed: false
+  consumer:
+    result: REVISE
+    named_operational_consumer: NONE
+    explicit_consumer_ack: NOT_OBSERVED
+    adoption_credit: 0
+    fitness_credit: 0
+strongest_fake_green_mutant:
+  mutant_id: X14_MUTANT_091_dfc301cb2565
+  commit: 3b49c0abbf8f3c2b0d870982cd1d123e615f8f50
+  path: state/coordination/experiments/false_green_x14/quarantine/20260804T175400Z_X12_CONFLICT_RECEIPT_ACTOR_CARRIER_CONFLATION.mutant.yaml
+  mutation_class: ACTOR_CARRIER_CONFLATION
+  mutated_field: canonical_conflict_receipt.actor_identity
+  mutated_value: 6a506f83df208191815dd17a8fd5baa3
+  original_value: ABSENT
+  canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_bytes_claimed: 244
+  canonical_overlay_bytes_recomputed: 244
+  canonical_overlay_sha256_claimed: dfc301cb2565f0395e455ae3a21ef845249d61d9d06e8b56efe64ca00fc69708
+  canonical_overlay_sha256_recomputed: dfc301cb2565f0395e455ae3a21ef845249d61d9d06e8b56efe64ca00fc69708
+  verdict: REVISE
+  rejection_reason: A_VALID_CARRIER_TASK_ID_AND_ENABLED_STATE_CANNOT_PROVE_LOGICAL_ACTOR_AUTHENTICATED_EXECUTION_PRINCIPAL_AUTHORSHIP_AUTHORITY_VERIFIER_OR_CONSUMER
+decision:
+  result: REVISE
+  controlling_defect: EXACT_S04_TASK_BINDING_IS_ABSENT_FROM_THE_ROUTE
+  additional_nonterminal_defects:
+    - NO_WORKITEM_OR_ACCEPTANCE_DIGEST
+    - NO_LOGICAL_ACTOR_OR_AUTHENTICATED_GMAIL_PRINCIPAL
+    - NO_NONCE_IDEMPOTENCY_DOMAIN_OR_PRODUCER_LEASE
+    - NO_CANONICAL_REQUEST_RESPONSE_OR_PRODUCER_RETURN_DIGEST
+    - NO_RETURN_EXPIRY_OR_EXACT_STOOD_OR_FELL
+    - NO_NAMED_OPERATIONAL_CONSUMER_OR_CONSUMER_ACK
+  admitted_evidence_ceiling: ONE_SANITIZED_BOUNDED_READ_ONLY_GMAIL_SEARCH_OBSERVATION_WITH_EXACT_GIT_POINTER_INTEGRITY
+  forbidden_upgrade: PASS_STRUCTURAL_STOOD_RAW_GMAIL_PARITY_COMPLETENESS_LEAST_PRIVILEGE_SCOPE_OPERATIONAL_ADOPTION_OR_CONSUMER_ACK
+  material_change: true
+  material_change_reason: NEW_GMAIL_PHASE1_ROUTE_AND_NEW_ACTOR_CARRIER_FALSE_GREEN_CLASS
+  next_valid_reconsideration:
+    - ROUTE_BIND_EXACT_S04_TASK_ID
+    - BIND_ONE_WORKITEM_AND_ACCEPTANCE_DIGEST
+    - BIND_PRIVACY_SAFE_REQUEST_RESPONSE_AND_PRODUCER_RETURN_DIGESTS
+    - BIND_LOGICAL_ACTOR_AUTHENTICATED_PRINCIPAL_EFFECTIVE_SCOPE_NONCE_IDEMPOTENCY_LEASE_AND_EXPIRY
+    - OBTAIN_DISTINCT_PROVIDER_STOOD_OR_FELL_AND_EXPLICIT_NAMED_CONSUMER_ACK
+write_constraints:
+  candidate_edited: false
+  task_mutated: false
+  self_graded: false
+  send_or_spend_performed: false
+  deployment_merge_publication_or_account_change_performed: false
+  permanent_deletion_performed: false
+  independent_quorum_claimed: false
+valid_time_utc: 2026-08-04T18:14:31Z
+recorded_time_utc: 2026-08-04T18:14:31Z
