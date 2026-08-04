@@ -1,29 +1,29 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
 experiment_id: X13_GMAIL_BOUNDED_READONLY_METADATA_001
-version: 75
-prior_version: 74
+version: 76
+prior_version: 75
 candidate: Gmail_search_email_ids_bounded_readonly_surface
-candidate_contract_reference: official_Gmail_users_messages_list_error_and_quota_contract_plus_direct_connector_receipts
-campaign_wake: 3_of_4
-campaign_status: ACTIVE
+candidate_contract_reference: official_Gmail_users_messages_list_search_pagination_error_and_quota_contract_plus_direct_connector_receipts
+campaign_wake: 4_of_4
+campaign_status: CLOSED
 phase_1_completed: true
 phase_2_completed: true
 phase_3_completed: true
-phase_4_completed: false
-phase_4_decision: PENDING
-adoption_mode: NOT_YET_DECIDED
+phase_4_completed: true
+phase_4_decision: ADOPT_WITH_GATES
+adoption_mode: CATALOG_ONLY_NONOPERATIONAL
 carrier_task_id: 6a55c1733708819185088bf334e33ea5
 carrier_task_id_match: true
 wip: 1
 last_event:
-  commit: 3a7999fb041f34494003d9081ccd90dca0595a22
-  path: state/coordination/experiments/cots_connector_x13/20260803T234714Z_GMAIL_PHASE3.md
-  blob_sha: 1194144c986812d4b6c53510ea90eca94cf5ae3c
+  commit: 0eb9cb00603e0a70bd296a31e53594efcdfafc86
+  path: state/coordination/experiments/cots_connector_x13/20260804T004906Z_GMAIL_PHASE4_ADOPT_WITH_GATES.md
+  blob_sha: 7e76affbe13e4bd5d398607fc5cf1475f691d3c5
   exact_readback_completed: true
-prior_current_commit: cf147722cc8db0b65f898770f9234e4a9f233079
-prior_current_blob_sha: 1e9020e3c0eba6509048fd13144262b85b4436e2
-effect_ceiling: BOUNDED_READONLY_GMAIL_MESSAGE_ID_SEARCH_NO_MESSAGE_CONTENT_SEND_DRAFT_LABEL_ARCHIVE_TRASH_DELETE_OR_AUTORETRY
+prior_current_commit: 58e55ae505e9a088dbd3d88ad62352b604f1f1a9
+prior_current_blob_sha: 7a28d76fb2144e2a511408048b2abe6f39fd184c
+effect_ceiling: CATALOG_ONLY_BOUNDED_READONLY_GMAIL_MESSAGE_ID_SEARCH_NO_CONTENT_HYDRATION_SEND_DRAFT_LABEL_ARCHIVE_TRASH_DELETE_OR_AUTORETRY
 adoption_credit: 0
 fitness_credit: 0
 consumer_ack: NOT_OBSERVED
@@ -78,6 +78,7 @@ measured_facts:
   phase_3_mailbox_content_or_identifiers_returned: false
   phase_3_raw_http_status_headers_request_id_field_location_duration_quota_and_upstream_attempts_exposed: false
   phase_3_wrapper_local_validation_vs_provider_rejection_distinguishable: false
+  phase_4_additional_candidate_capability_call_made: false
   message_content_or_personal_metadata_returned_across_campaign: false
   mailbox_identifiers_or_tokens_written_to_durable_logs: false
   connector_reported_external_call_time_ms_phase_1: 345
@@ -86,11 +87,14 @@ measured_facts:
   query_bearing_call_succeeded_but_metadata_only_or_least_privilege_scope_not_proven: true
   valid_empty_is_scoped_observation_not_authoritative_absence: true
   invalid_argument_is_client_failure_class_not_page_token_specific_proof: true
-adopted_scope: PENDING_PHASE4
+adopted_scope:
+  - CATALOG_ONLY_BOUNDED_EXPLICIT_IDS_ONLY_MAILBOX_DISCOVERY_WHEN_OPAQUE_IDENTIFIERS_SUFFICE
+  - MAX_RESULTS_EXPLICIT_AND_SMALL_DEFAULT_ONE_FOR_PROBES
+  - SYNTHETIC_EXACT_VALIDATION_PROBES_PREFERRED_OVER_REAL_MAILBOX_IDENTIFIERS
 excluded_scope:
   - MESSAGE_OR_THREAD_CONTENT_HYDRATION
   - SEND_DRAFT_FORWARD_LABEL_MODIFY_ARCHIVE_TRASH_DELETE_OR_SETTINGS_CHANGE
-  - COMPLETE_MAILBOX_AUTHORITATIVE_ABSENCE_EXACT_QUERY_FORWARDING_OR_RESULT_ORDERING_CLAIM
+  - COMPLETE_MAILBOX_AUTHORITATIVE_ABSENCE_EXACT_QUERY_FORWARDING_ORDERING_COMPLETENESS_OR_VALID_PAGINATION_CLAIM
   - PAGE_TOKEN_PROVIDER_REJECTION_FIELD_LOCATION_OR_RAW_HTTP_PARITY_CLAIM
   - LEAST_PRIVILEGE_IDENTITY_SCOPE_QUOTA_CAPACITY_OR_RETRY_SAFETY_CLAIM
   - OPERATIONAL_READINESS_CONSUMER_VALUE_OR_OPERATOR_RELIEF_CLAIM
@@ -103,15 +107,15 @@ mandatory_gates:
   - DO_NOT_INFER_GMAIL_METADATA_OR_LEAST_PRIVILEGE_SCOPE_FROM_IDS_ONLY_RESPONSE
   - TREAT_EMPTY_AS_CONNECTOR_VISIBLE_SCOPED_OBSERVATION_NOT_AUTHORITATIVE_ABSENCE
   - TREAT_INVALID_ARGUMENT_AS_CLIENT_ARGUMENT_FAILURE_NOT_PROOF_OF_PAGE_TOKEN_SPECIFIC_PROVIDER_REJECTION
-  - DISTINGUISH_VALID_EMPTY_INVALID_QUERY_INVALID_PAGE_TOKEN_PERMISSION_AUTH_QUOTA_RATE_LIMIT_TIMEOUT_AND_PROVIDER_FAILURE
+  - DISTINGUISH_VALID_EMPTY_INVALID_QUERY_INVALID_PAGE_TOKEN_PERMISSION_AUTH_QUOTA_RATE_LIMIT_TIMEOUT_TRANSPORT_AND_PROVIDER_FAILURE
   - NEVER_AUTORETRY_INVALID_ARGUMENT_AND_DO_NOT_AUTORETRY_OTHER_FAILURES_WITHOUT_EXPLICIT_BOUNDED_POLICY_AND_PROVIDER_TELEMETRY
-  - REQUIRE_RAW_PROVIDER_TELEMETRY_BEFORE_CLAIMING_EXACT_FAILURE_PARITY_QUOTA_USE_OR_RETRY_SAFETY
+  - REQUIRE_RAW_PROVIDER_TELEMETRY_BEFORE_CLAIMING_EXACT_FAILURE_PARITY_SCOPE_QUOTA_USE_OR_RETRY_SAFETY
   - REQUIRE_NAMED_CONSUMER_ACK_AND_MEASURED_OPERATOR_OUTCOME_BEFORE_OPERATIONAL_ADOPTION_OR_FITNESS_CREDIT
-verifier: DISTINCT_AUTHORIZED_RAW_GMAIL_USERS_MESSAGES_LIST_WITH_IDENTICAL_Q_MAXRESULTS_1_AND_INVALID_TOKEN_CAPTURING_SCOPE_HTTP_STATUS_HEADERS_REQUEST_ID_FIELD_LEVEL_ERROR_QUOTA_ZERO_RETRY_AND_CONTENT_ACCESS_BEHAVIOR
+verifier: DISTINCT_AUTHORIZED_RAW_GMAIL_USERS_MESSAGES_LIST_WITH_IDENTICAL_Q_MAXRESULTS_1_AND_INVALID_TOKEN_CAPTURING_PRINCIPAL_SCOPE_HTTP_STATUS_HEADERS_REQUEST_ID_FIELD_LEVEL_ERROR_QUOTA_ZERO_RETRY_RESULT_CARDINALITY_TOKEN_AND_CONTENT_ACCESS_BEHAVIOR
 consumer:
   immediate_catalog_consumer: HFO_COTS_CAPABILITY_INVENTORY
   future_operational_consumer: MUST_BE_NAMED_IN_NEW_WORKITEM
-strongest_falsifier: SAME_IDENTITY_RAW_GMAIL_ACCEPTS_THE_INVALID_TOKEN_REJECTS_A_DIFFERENT_FIELD_RETURNS_A_MATERIALLY_DIFFERENT_CLASS_OR_INSPECTION_SHOWS_WRAPPER_LOCAL_FAILURE_HIDDEN_CONTENT_ACCESS_HIDDEN_RETRIES_OR_DIFFERENT_METHOD_OR_QUOTA_CLASS
+strongest_falsifier: SAME_IDENTITY_RAW_GMAIL_RETURNS_MATERIALLY_DIFFERENT_RESULTS_ACCEPTS_THE_INVALID_TOKEN_REJECTS_A_DIFFERENT_FIELD_OR_SHOWS_WRAPPER_SUBSTITUTION_HIDDEN_CONTENT_ACCESS_HIDDEN_RETRIES_OR_DIFFERENT_METHOD_OR_QUOTA_CLASS
 honest_flaw: ONLY_ONE_POSITIVE_IDS_ONLY_PAGE_ONE_SYNTHETIC_VALID_EMPTY_RESULT_AND_ONE_STRUCTURED_INVALID_ARGUMENT_PROBE_WERE_OBSERVED_IDENTITY_SCOPE_EXACT_QUERY_AND_TOKEN_FORWARDING_ORDERING_COMPLETENESS_VALID_PAGINATION_RAW_API_PARITY_FIELD_LOCATION_QUOTA_HIDDEN_RETRY_PERMISSION_FAILURE_BEHAVIOR_CONSUMER_ACK_AND_ACTUAL_OPERATOR_TIME_REDUCTION_REMAIN_UNVERIFIED
 phase_1_result:
   disposition: PHASE1_ACCEPTED_WITH_GATES
@@ -121,16 +125,19 @@ phase_2_result:
 phase_3_result:
   disposition: PHASE3_ACCEPTED_WITH_GATES
   admitted_interpretation: CONNECTOR_REJECTED_THE_FAILURE_PROBE_AS_INVALID_ARGUMENT_WITHOUT_RETURNING_MAILBOX_CONTENT
+phase_4_result:
+  disposition: ADOPT_WITH_GATES
+  adoption_mode: CATALOG_ONLY_NONOPERATIONAL
 next_wake:
-  experiment_id: X13_GMAIL_BOUNDED_READONLY_METADATA_001
-  candidate: Gmail_search_email_ids_bounded_readonly_surface
-  phase: 4_of_4
-  planned_probe: DECISION_ONLY_WITH_NO_ADDITIONAL_GMAIL_CAPABILITY_CALL_PROVISIONAL_ADOPT_WITH_GATES_CATALOG_ONLY_NONOPERATIONAL_PENDING_NAMED_CONSUMER_RAW_PARITY_SCOPE_VERIFICATION_AND_MEASURED_OPERATOR_RELIEF
-review_expiry_utc: 2026-08-10T23:47:14Z
-valid_time_utc: 2026-08-03T23:47:14Z
-recorded_time_utc: 2026-08-03T23:47:14Z
+  experiment_id: X13_GOOGLE_CALENDAR_FREEBUSY_READONLY_001
+  candidate: Google_Calendar_bounded_readonly_freebusy_surface
+  phase: 1_of_4
+  planned_probe: OFFICIAL_CONTRACT_AND_DIRECT_CAPABILITY_BASELINE_USING_SMALLEST_HARMLESS_EXISTING_AUTHORIZATION_NO_EVENT_CONTENT_WRITE_INVITATION_RESPONSE_NOTIFICATION_OR_CALENDAR_MUTATION
+review_expiry_utc: 2026-08-11T00:49:06Z
+valid_time_utc: 2026-08-04T00:49:06Z
+recorded_time_utc: 2026-08-04T00:49:06Z
 ---
 
-# X13 CURRENT v75
+# X13 CURRENT v76
 
-The Gmail bounded read-only metadata/search campaign is active at phase 3 of 4. One positive IDs-only page, one synthetic exact-query valid-empty result, and one synthetic invalid page-token failure probe have completed with `max_results=1`, no message content, no durable mailbox identifiers, no retry, and no Gmail mutation. The failure probe returned structured `invalidArgument` but did not expose raw HTTP or field-level telemetry, so it is admitted only as a generic client-argument failure class. Adoption and fitness credit remain zero pending the phase-4 decision, independent scope and parity verification, consumer acknowledgment, and measured operator relief.
+The Gmail bounded read-only IDs-only search campaign is closed with `ADOPT_WITH_GATES` in catalog-only, nonoperational mode. Across three candidate calls, one positive IDs-only page, one synthetic valid-empty result, and one structured `invalidArgument` failure were observed with no message content, no durable mailbox identifiers or tokens, no retry, no fallback, and no Gmail mutation. Identity, OAuth scope, exact query and token forwarding, valid pagination, raw-provider parity, field-level failure origin, actual quota use, consumer acknowledgment, and measured operator relief remain open; adoption and fitness credit remain zero. The next planned campaign is a phase-1 contract and smallest harmless baseline for an already-authorized Google Calendar free/busy read-only surface.
