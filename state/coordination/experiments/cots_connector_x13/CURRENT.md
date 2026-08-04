@@ -1,15 +1,15 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
 experiment_id: X13_GOOGLE_CALENDAR_SEARCH_EVENTS_READONLY_001
-version: 97
-prior_version: 96
+version: 98
+prior_version: 97
 candidate: Google_Calendar_search_events_readonly_surface
-campaign_wake: 1_of_4
+campaign_wake: 2_of_4
 campaign_status: OPEN
 phase_1_completed: true
 phase_1_status: PHASE1_ACCEPTED_WITH_GATES
-phase_2_completed: false
-phase_2_status: PENDING
+phase_2_completed: true
+phase_2_status: PHASE2_ACCEPTED_WITH_GATES
 phase_3_completed: false
 phase_3_status: PENDING
 phase_4_completed: false
@@ -18,49 +18,48 @@ adoption_mode: NOT_DECIDED
 carrier_task_id: 6a55c1733708819185088bf334e33ea5
 carrier_task_id_match: true
 wip: 1
-last_event_commit: 9108d7bf0d967d358ad73734fc132111a8ed1489
-last_event_path: state/coordination/experiments/cots_connector_x13/20260804T214704Z_GOOGLE_CALENDAR_SEARCH_EVENTS_PHASE1_BASELINE.md
-last_event_blob_sha: ec47e0062067fae8df8ff49a121047ff404500ca
+last_event_commit: 5bb4924f228ee420f956366cdb83c69dda53f244
+last_event_path: state/coordination/experiments/cots_connector_x13/20260804T224733Z_GOOGLE_CALENDAR_SEARCH_EVENTS_PHASE2_EMPTY_RESULT.md
+last_event_blob_sha: 85c1cf651d4601b730c4507691d874c1d375d34d
 last_event_readback: true
-prior_current_commit: d88754ffca9415e3fc4e0e4e3ace1b19da347b32
-prior_current_blob_sha: 376a9e076d07d65105b81ba3eae9eac5705a31eb
-adoption_credit: 0
-fitness_credit: 0
-consumer: NOT_ASSIGNED
-consumer_ack: NOT_OBSERVED
+prior_current_commit: 340f85e94ca24a2c6dedcaece7ed6704f72998e7
+prior_current_blob_sha: ac60beb67c85d515dcaee3a3fa3eaafab0b1c508
+campaign_calls: 2_READONLY_2_SUCCESS_0_FAILURE_0_RETRY_0_FALLBACK_0_PAGINATION_0_HYDRATION_0_MUTATION
+events_returned_phase_2: 0
+next_page_token_phase_2: false
+connector_latency_ms_phase_2: 242
 operator_minutes_removed_measured: 0
 custom_code_avoided_estimate: 20_to_60_LOC_UNVALIDATED
+credentials: CONNECTOR_MANAGED_IDENTITY_AND_EFFECTIVE_SCOPE_UNKNOWN
+durability: PROVIDER_EXPECTED_CONNECTOR_UNVERIFIED
+observability: PARTIAL_NO_HTTP_STATUS_HEADERS_REQUEST_ID_SCOPE_QUOTA_OR_HIDDEN_ATTEMPTS
+portability: MEDIUM
+failure_behavior: NORMAL_EMPTY_RESULT_WITHOUT_ERROR_FAILURE_PATH_UNPROBED
 paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
 actual_quota_consumed: UNKNOWN
-official_quota_contract: AS_OF_2026_05_01_10000_REQUESTS_PER_MINUTE_PER_PROJECT_600_PER_MINUTE_PER_USER_PER_PROJECT_1000000_DAILY_PROJECT_THRESHOLD_BEFORE_PLANNED_LATER_2026_CHARGES
-campaign_calls: 1_READONLY_1_SUCCESS_0_RETRY_0_FALLBACK_0_PAGINATION_FOLLOWUP_0_HYDRATION_0_MUTATION
-result_shape: ONE_EVENT_OBJECT_AND_CONTINUATION_TOKEN_WITH_SUMMARY_DESCRIPTION_ID_START_END_URL_TRANSPARENCY_AND_RECURRENCE_FIELDS_NO_RAW_COLLECTION_METADATA_TRANSPORT_REQUEST_ID_SCOPE_OR_QUOTA_RECEIPT
-connector_variance: SEARCH_EVENTS_IS_CONTENT_BEARING_NOT_METADATA_ONLY_BECAUSE_SUMMARY_AND_DESCRIPTION_CAN_BE_EMITTED_WITHOUT_READ_EVENT
-credentials: CONNECTOR_MANAGED_IDENTITY_AND_EFFECTIVE_SCOPE_UNKNOWN
-durability: PROVIDER_DURABILITY_EXPECTED_CONNECTOR_DURABILITY_UNVERIFIED
-observability: PARTIAL_RESULT_SHAPE_NEXT_TOKEN_AND_909MS_EXTERNAL_CALL_NO_HTTP_STATUS_HEADERS_REQUEST_ID_RAW_PROVIDER_BODY_SCOPE_QUOTA_OR_HIDDEN_ATTEMPTS
-portability: MEDIUM
-failure_behavior: NOT_PROBED_IN_PHASE1
-allowed_use: BOUNDED_READONLY_HUMAN_REVIEWED_DISCOVERY_WITH_EXPLICIT_TIME_BOUNDS_MINIMAL_RESULT_CAP_AND_NO_RETENTION
-prohibited_use: UNATTENDED_CONTROL_AUTHORITATIVE_COMPLETENESS_CLAIMS_OR_EVENT_VALUE_RETENTION_WITHOUT_NAMED_NEED
-mandatory_gate: TREAT_RESULTS_AS_CONTENT_BEARING_NO_EVENT_OR_TOKEN_RETENTION_WITHOUT_NAMED_NEED_EXPLICIT_RFC3339_BOUNDS_MINIMAL_CAP_RAW_IDENTITY_SCOPE_QUOTA_CONSUMER_AND_FAILURE_WITNESS_REQUIRED_BEFORE_UNATTENDED_USE
-strongest_falsifier: SAME_PRINCIPAL_RAW_EVENTS_LIST_DISAGREES_OR_CONNECTOR_RETURNS_OUTSIDE_BOUND_SEMANTICS_OR_REJECTS_ITS_IMMEDIATELY_RETURNED_TOKEN_UNDER_IDENTICAL_BOUNDS
+consumer: NOT_ASSIGNED
+consumer_ack: NOT_OBSERVED
 verifier: NOT_ASSIGNED
 independent_verification_closed: false
-honest_flaw: ONE_POSITIVE_PRIMARY_CALENDAR_CALL_WITH_NO_QUERY_OR_PAGINATION_DOES_NOT_VERIFY_IDENTITY_SCOPE_ORDERING_COMPLETENESS_RECURRING_EVENTS_PRIVATE_REDACTION_SECONDARY_CALENDARS_PERMISSIONS_RATE_LIMITS_HIDDEN_CALLS_RAW_PARITY_QUOTA_OR_VALUE
+adoption_credit: 0
+fitness_credit: 0
+allowed_use: BOUNDED_READONLY_HUMAN_REVIEWED_DISCOVERY
+mandatory_gate: EMPTY_RESULTS_ARE_NONAUTHORITATIVE_AND_CONTENT_QUERY_IDENTIFIERS_URLS_OR_TOKENS_REQUIRE_NAMED_RETENTION_NEED
+strongest_falsifier: SAME_PRINCIPAL_RAW_EVENTS_LIST_DISAGREES_FOR_SAME_QUERY_AND_BOUNDS
+honest_flaw: SYNTHETIC_QUERY_WAS_DESIGNED_TO_MATCH_NOTHING_AND_NOT_RETAINED_SO_EXACT_REPRODUCTION_AND_REAL_WORLD_ABSENCE_REMAIN_UNVERIFIED
 next_campaign_candidate: Google_Calendar_search_events_readonly_surface
-next_phase: PHASE2_SMALLEST_HARMLESS_READONLY_MICRO_USE
-next_probe: ONE_BOUNDED_SYNTHETIC_UNLIKELY_TOKEN_SEARCH_WITH_MAX_RESULTS_1_NO_PAGINATION_HYDRATION_RETRY_FALLBACK_RETENTION_OR_MUTATION
-valid_time_utc: 2026-08-04T21:47:04Z
-recorded_time_utc: 2026-08-04T21:47:04Z
+next_phase: PHASE3_FAILURE_PERMISSION_PORTABILITY_AND_CONNECTOR_VARIANCE_PROBE
+next_probe: ONE_BOUNDED_SYNTHETIC_BAD_PAGE_TOKEN_PROBE_NO_RETRY_FALLBACK_HYDRATION_RETENTION_OR_MUTATION
+valid_time_utc: 2026-08-04T22:47:33Z
+recorded_time_utc: 2026-08-04T22:47:33Z
 ---
 
-# X13 CURRENT v97
+# X13 CURRENT v98
 
-The Google Calendar `search_events` campaign is open at phase 1 of 4 with `PHASE1_ACCEPTED_WITH_GATES`.
+The Google Calendar search campaign is open at phase 2 of 4 with `PHASE2_ACCEPTED_WITH_GATES`.
 
-One bounded, read-only primary-calendar search returned one event result and a continuation token in 909 ms. No pagination follow-up, event hydration, retry, fallback, or mutation occurred. Event-specific identifiers, text, URLs, and token were not retained in Git.
+One bounded synthetic read-only search returned an empty event array, no continuation token, no error, and a reported 242 ms external-call time. No event data, page follow-up, hydration, retry, fallback, or mutation occurred. The exact synthetic query was not retained.
 
-Measured connector variance: the search surface is content-bearing rather than metadata-only because it can emit event summary and description without a separate read call. Raw collection metadata, transport status, request ID, effective scope, and quota evidence were not exposed.
+Empty connector results are nonauthoritative absence. Campaign totals are two successful read-only calls and zero failures or mutations. Adoption and fitness credit remain zero; no verifier or consumer is assigned.
 
-Adoption and fitness credit remain zero. No verifier or consumer is assigned. Phase 2 is one synthetic unlikely-token search inside explicit bounds with a one-result cap and no retention, pagination, hydration, retry, fallback, or mutation.
+Next is one bounded failure probe using a synthetic unusable continuation value, with no retry, fallback, hydration, retention, or mutation.
