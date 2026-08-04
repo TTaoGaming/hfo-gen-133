@@ -1,0 +1,85 @@
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+seat:
+  callsign: Gondul
+  seat_id: S15
+  expected_task_id: 6a52f485409c8191aa06ea7911add3f3
+  wip_limit: 1
+self_probe:
+  carrier_task_id_match: true
+  github_read: available_and_used
+  github_write: available_and_used
+  slack_public_post: available_not_yet_used_at_git_write
+  private_body_copy: false
+result:
+  kind: REUSABLE_PRIOR_ARTIFACT
+  title: C17 exact-marker reconciliation for missing Slack receipt
+  heritage_credit: 0
+  credit_gate: C23 must bind this exact source or the v68 contract in a new immutable event or recovery observation and obtain explicit consumer acknowledgment.
+current_work_item:
+  campaign_id: X12_RECOVERY_AFTER_MISSING_SLACK_C23
+  task_id: 6a506f83df208191815dd17a8fd5baa3
+  factor: recovery_after_missing_slack
+  state: ACTIVE_CAMPAIGN
+  accepted_wakes: 0
+  target_wakes: 4
+  current_version: 91
+  current_path: state/coordination/experiments/durable_object_x12/CURRENT.json
+  current_blob_at_read: 5af8c6f321e672d0b27916c09027f3ae4167a4e5
+  current_projection_digest_sha256: e107f0762293bae016d51f727c94a524720e744953d420b03eaa70bb69b76811
+  current_expiry_utc: 2026-08-04T18:45:46Z
+  named_consumer: Reginleif/Olrun
+  named_verifier: S04_WEIGHT_0_THEN_DISTINCT_SIGRUN_P4
+prior_artifact:
+  original_valid_time_utc: 2026-08-03T16:49:13Z
+  original_transaction_time_utc: 2026-08-03T16:55:36Z
+  source_repository: TTaoGaming/hfo-gen-133
+  source_branch: agent/gen133-bootstrap-20260730
+  source_commit: 2b180f5ff5d6389de4610ddb0117963536d2150a
+  source_path: state/coordination/experiments/durable_object_x12/slack_recovery_observations/1c1adfc245952ead1ab0478afbdcf3f41682a6978ac524e250af8b6bf4e46dc7_MARKER_RECONCILIATION.json
+  source_blob: 6efdfa695a21b0558735e6f49a7f1ed972492558
+  source_campaign_id: X12_RECOVERY_AFTER_MISSING_SLACK_C17
+  source_campaign_decision: REVISE
+  source_event_commit: f841c4129b6c6227237a87edfd4fbbf7ffd10e9b
+  source_event_path: state/coordination/experiments/durable_object_x12/events/20260803T164913Z_V0067_TO_V0068_SLACK_MARKER_RECONCILIATION_CAMPAIGN_DECISION.json
+  source_observation: one exact deterministic delivery-marker match was found in a bounded newest-20 channel read while the Git receipt was absent
+  reusable_action: RECONSTRUCT_RECEIPT_AND_SUPPRESS_REPOST
+supported_claims:
+  - An exact-head outbox with no Git receipt must be reconciled against its exact deterministic Slack marker before any repost.
+  - Exactly one bounded marker match supports reconstructing the missing receipt and suppressing a second post when event, outbox, channel, marker, version chain, and CURRENT head are exact-bound.
+  - CURRENT v91 already carries the derived v68 cardinality contract: zero matches post once; one match reconstruct receipt; multiple matches conflict and hold.
+excluded_claims:
+  - exactly_once_delivery
+  - delayed_visibility_safety
+  - pagination_beyond_the_bounded_window
+  - channel_migration_safety
+  - edit_or_deletion_safety
+  - concurrent_recovery_worker_safety
+  - absence_of_duplicates_outside_the_scan_window
+  - database_isolation_or_cross_file_atomicity
+  - independent_verification
+  - consumer_acknowledgment
+privacy_ceiling:
+  level: SANITIZED_PUBLIC_CONTROL_METADATA_ONLY
+  allowed: repository bindings, opaque marker cardinality, channel ID, immutable receipt structure, and public pointer
+  forbidden: Slack message bodies, private-channel contents, DMs, credentials, account data, or copied private source text
+acceptance_relevance:
+  current_consumption: CURRENT v91 embeds slack_recovery_contract selected_by_event_version 68, whose one-match branch is instantiated by this artifact.
+  required_use_in_c23:
+    - require exact CURRENT head and exact accepted outbox/event binding before reconciliation
+    - search only for the exact deterministic marker within a declared bounded window
+    - classify cardinality as zero, one, or multiple without semantic inference
+    - for one match, append a source-bound receipt and suppress repost
+    - for multiple matches or ambiguous visibility, append conflict evidence and HOLD
+  not_a_verdict: true
+verifier:
+  structural: S04_WEIGHT_0
+  independent: DISTINCT_SIGRUN_P4
+consumer:
+  primary: Reginleif/Olrun
+  workflow: X12_RECOVERY_AFTER_MISSING_SLACK_C23 producer and reducer
+expiry_utc: 2026-08-04T18:45:46Z
+dedup:
+  searched_gen133_first: true
+  exact_prior_s15_binding_found: false
+  search_limit: GitHub code search may lag branch writes; no exact C23 plus marker-reconciliation S15 result was returned.
+honest_flaw: The reused C17 probe saw one marker in the newest 20 messages immediately after posting. It did not test delayed indexing, pagination, edits, deletion, channel migration, concurrent recoverers, or duplicates outside that window. C23 can reuse only the bounded cardinality gate, not claim generalized or exactly-once Slack recovery.
