@@ -1,0 +1,100 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_GOOGLE_CALENDAR_FREEBUSY_READONLY_001
+carrier_task_id: 6a55c1733708819185088bf334e33ea5
+carrier_task_id_match: true
+wip: 1
+phase: 4_of_4
+event_type: DECISION
+candidate: Google_Calendar_get_availability_bounded_readonly_freebusy_surface
+prior_current_version: 79
+expected_current_version_after_event: 80
+decision: ADOPT_WITH_GATES
+adoption_mode: CATALOG_ONLY_NONOPERATIONAL
+candidate_calls_this_wake: 0
+campaign_candidate_read_attempts: 3
+campaign_completed_connector_responses: 3
+campaign_outer_connector_errors: 0
+campaign_per_calendar_errors_observed: 1
+campaign_mutation_count: 0
+campaign_retry_count: 0
+campaign_fallback_count: 0
+event_content_or_identifiers_returned_count: 0
+paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
+actual_quota_consumed: UNKNOWN
+operator_minutes_removed_measured: 0
+operator_minutes_removed_estimate_per_consumed_lookup: 1_to_3_UNVALIDATED
+custom_code_avoided_estimate:
+  authenticated_freebusy_request_rfc3339_validation_response_normalization_and_per_calendar_error_parsing: 20_to_70_LOC_UNVALIDATED
+  required_hfo_gates_not_avoided: PRIVACY_MINIMIZATION_PERMISSION_VERIFICATION_RAW_PARITY_QUOTA_TELEMETRY_RETRY_POLICY_FAILURE_CLASSIFICATION_AND_CONSUMER_WORKFLOW
+credentials:
+  operator_supplied_credentials_campaign: 0
+  authenticated_principal: UNKNOWN
+  effective_permission: UNKNOWN_NOT_PROVEN_FREEBUSY_ONLY
+  credential_storage_and_custody: CONNECTOR_MANAGED_UNINSPECTED
+  least_privilege_closed: false
+durability:
+  provider_calendar_state: EXTERNAL_DURABLE_UNINSPECTED
+  connector_response_receipts: GIT_IMMUTABLE_EVENT_AND_VERSIONED_CURRENT
+observability:
+  connector_latency_ms_observed: [149, 244, 182]
+  per_calendar_error_shape_preserved: true
+  raw_http_status_headers_request_id_quota_and_upstream_attempts: NOT_EXPOSED
+portability:
+  official_contract_shape: GOOGLE_CALENDAR_FREEBUSY_QUERY
+  connector_specific_normalization: PRESENT_UNQUANTIFIED
+  raw_api_parity: NOT_VERIFIED
+failure_behavior:
+  synthetic_nonsecret_identifier_outer_call_completed: true
+  nested_error_domain: global
+  nested_error_reason: notFound
+  empty_busy_with_error_is_availability: false
+  notfound_distinguishes_missing_from_inaccessible: false
+adopted_boundary:
+  - BOUNDED_EXPLICIT_READONLY_FREEBUSY_DISCOVERY_WHEN_EVENT_CONTENT_IS_NOT_NEEDED
+  - MINIMUM_KNOWN_CALENDAR_SET_AND_SMALL_RFC3339_INTERVAL
+  - CATALOG_CAPABILITY_ONLY_UNTIL_NAMED_CONSUMER_ACK_AND_MEASURED_OUTCOME
+mandatory_gates:
+  - PREFER_FREEBUSY_OVER_EVENT_SEARCH_WHEN_ONLY_AVAILABILITY_IS_REQUIRED
+  - REQUIRE_EXPLICIT_SMALL_RFC3339_TIME_MIN_TIME_MAX_AND_RESPONSE_TIMEZONE
+  - QUERY_THE_MINIMUM_CALENDAR_SET
+  - INSPECT_EVERY_PER_CALENDAR_ERRORS_COLLECTION_EVEN_WHEN_THE_OUTER_CALL_SUCCEEDS
+  - NEVER_CLASSIFY_AN_ERRORING_CALENDAR_AS_AVAILABLE
+  - TREAT_EMPTY_BUSY_ONLY_AS_AN_EXACT_SCOPE_TIME_OBSERVATION_WHEN_NO_PER_CALENDAR_ERROR_EXISTS
+  - TREAT_NOTFOUND_AS_AMBIGUOUS_BETWEEN_NONEXISTENT_AND_INACCESSIBLE
+  - FAIL_CLOSED_ON_UNKNOWN_ERROR_REASONS
+  - DO_NOT_AUTOMATICALLY_RETRY_DETERMINISTIC_NOTFOUND_WITHOUT_CHANGED_IDENTITY_PERMISSION_IDENTIFIER_OR_INDEPENDENT_EVIDENCE
+  - DO_NOT_USE_ERRORING_RESULTS_FOR_SCHEDULING_CONFLICT_CHECKS_OR_AVAILABILITY_CLAIMS
+  - DO_NOT_DURABLY_LOG_EXACT_BUSY_TIMESTAMPS_OR_CALENDAR_IDENTIFIERS_WITHOUT_NAMED_CONSUMER_AND_RETENTION_NEED
+  - DO_NOT_INFER_EVENT_CONTENT_IDENTITY_ATTENDEES_LOCATION_OR_CAUSE_FROM_BUSY_INTERVALS
+  - DO_NOT_CLAIM_LEAST_PRIVILEGE_EXACT_UPSTREAM_METHOD_COUNT_QUOTA_USE_RAW_PARITY_OR_ZERO_HIDDEN_RETRIES
+  - REQUIRE_NAMED_OPERATIONAL_CONSUMER_ACK_AND_MEASURED_OPERATOR_OUTCOME_BEFORE_OPERATIONAL_ADOPTION_OR_FITNESS_CREDIT
+adoption_credit: 0
+fitness_credit: 0
+consumer_ack: NOT_OBSERVED
+verifier: DISTINCT_AUTHORIZED_RAW_GOOGLE_CALENDAR_FREEBUSY_QUERY_WITH_SAME_PRINCIPAL_CAPTURING_REQUEST_DIGEST_RAW_STATUS_HEADERS_REQUEST_ID_RESPONSE_BODY_PER_CALENDAR_ERRORS_EFFECTIVE_PERMISSION_QUOTA_AND_RETRY_EVIDENCE
+consumer:
+  immediate_catalog_consumer: HFO_COTS_CAPABILITY_INVENTORY
+  future_operational_consumer: MUST_BE_NAMED_IN_NEW_WORKITEM
+strongest_falsifier: SAME_PRINCIPAL_RAW_FREEBUSY_QUERY_RETURNS_MATERIALLY_DIFFERENT_BUSY_OR_ERROR_SHAPE_OR_PROVES_CONNECTOR_IDENTIFIER_INTERVAL_PRINCIPAL_METHOD_OR_RETRY_VARIANCE
+honest_flaw: THREE_SMALL_CALLS_ESTABLISH_ONLY_CONNECTOR_VISIBLE_CARDINALITY_AND_ONE_NESTED_GLOBAL_NOTFOUND_SHAPE_IDENTITY_SCOPE_EXACT_FORWARDING_MISSING_VERSUS_INACCESSIBLE_WRAPPER_VERSUS_PROVIDER_ORIGIN_RAW_HTTP_QUOTA_HIDDEN_RETRIES_RAW_API_PARITY_CONSUMER_VALUE_AND_OPERATOR_TIME_REDUCTION_REMAIN_UNVERIFIED
+next_campaign:
+  experiment_id: X13_GITHUB_COMPARE_COMMITS_READONLY_001
+  candidate: GitHub_compare_commits_bounded_readonly_diff_metadata_surface
+  next_phase: 1_of_4
+  planned_probe: OFFICIAL_COMPARE_CONTRACT_AND_ONE_BOUNDED_SAME_REF_OR_SMALL_KNOWN_REF_BASELINE_WITHOUT_FILE_FETCH_WRITE_BRANCH_PR_COMMENT_MERGE_OR_PUBLICATION
+valid_time_utc: 2026-08-04T04:48:00Z
+recorded_time_utc: 2026-08-04T04:48:00Z
+---
+
+# X13 Google Calendar free/busy decision
+
+Decision: **ADOPT_WITH_GATES**, catalog-only and nonoperational.
+
+Across three bounded one-calendar, one-minute calls, the connector returned two successful primary-calendar result shapes and one synthetic identifier result containing a nested `global/notFound` error while the outer call itself completed. No event title, description, attendee, location, or event identifier was returned; no Calendar mutation, retry, fallback, surfaced charge, measured operator relief, adoption credit, or fitness credit occurred.
+
+The capability avoids some authenticated request, RFC3339-bound handling, response normalization, and per-calendar error parsing, but it does not avoid the material gates around privacy, identity and permission verification, nested-error inspection, quota evidence, retry policy, raw-provider parity, consumer workflow, or outcome measurement.
+
+The failure probe is the decisive gate: an outer-success response can still contain a per-calendar failure, and `busy: []` alongside an error is not availability. `notFound` remains ambiguous between a nonexistent resource and one the principal cannot access.
+
+Operational use is prohibited until a named consumer accepts the output and measured operator time or another concrete outcome is recorded. Independent raw-provider verification remains open.
