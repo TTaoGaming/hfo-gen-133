@@ -1,0 +1,68 @@
+schema: hfo.gen133.operator_relief_receipt.v0_1
+receipt_id: S05_CATHAY_EDEPOSIT_RECEIVED_PENDING_APPROVAL_RECONCILED_20260804T211720Z
+immutable: true
+task:
+  expected_id: 6a55c182078c8191b89f2dd15f5f640c
+  observed_id: 6a55c182078c8191b89f2dd15f5f640c
+  title: HFO S05 Var Operator Relief
+  wip: 1
+canonical:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-04T21:17:20Z
+transaction_time_utc: COMMIT_METADATA_AUTHORITATIVE
+result: STATUS_RECONCILED_PENDING
+active_item: Cathay eDeposit approval and processing state
+priority_state:
+  p0: PFA household-sale disclosure remains unresolved; provider-requested three-business-day window from 2026-07-31 implies an outside date of 2026-08-05, but exact cutoff time is not provider-confirmed
+  p1:
+    - LinkedIn email-address change authorization remains unresolved after the private operator review window
+    - Missouri fire-alarm photos and AC proof remain due for operator follow-through before the 2026-08-14 city evidence deadline
+changed_evidence:
+  source_systems:
+    - Gmail
+    - Google Calendar
+    - GitHub
+    - Slack
+  private_pointers:
+    gmail_bank_notice: gmail_message:19fce9d9a06d0dea
+    calendar_p0_gate: gcal_event:f98mog5a0mlm1g38qkn78bi5a8
+    calendar_security_gate: gcal_event:8h82t806tneniebomr0i51k62o
+    prior_priority_receipt: state/coordination/receipts/chatgpt_runtime/seat-05/20260804T201715Z_LINKEDIN_EMAIL_CHANGE_AUTHORIZATION_GATE_BOUND.yaml
+  sanitized_facts:
+    - Cathay Bank confirmed that a mobile deposit was received.
+    - The bank explicitly states that approval and processing are separate future states and will be notified separately.
+    - No later approval or processed notice from the same bank sender was present in the bounded source readback.
+    - No matching closure or duplicate receipt was found in the two authorized Slack target channels during the changed-evidence window.
+  excluded_claims:
+    - No claim that the deposit is approved, processed, posted, cleared, settled, or available to spend.
+    - No claim that the deposited item will be accepted.
+    - No account number, deposit amount, image, or email body was externalized.
+transition:
+  type: RECONCILE_FINANCE_STATUS_WITH_ANTI_DOUBLE_COUNT_GATE
+  prior_state: UNKNOWN
+  reconciled_state: RECEIVED_NOT_APPROVED_OR_PROCESSED
+  finance_classification: PENDING
+  authoritative_next_trigger:
+    - Separate Cathay Bank approval-and-processing notice
+    - Direct authenticated account readback showing authoritative posted or failed state
+  operator_rule: Do not count the deposit as available cash or use it to justify payment until an authoritative posted or available state is observed.
+operator_minutes_removed_estimate: 4
+next_consumer: Var finance reconciliation cell, then operator only if the bank reports failure, hold, discrepancy, or posted availability requiring a decision
+privacy:
+  gmail_body_externalized: false
+  account_suffix_externalized: false
+  deposit_amount_externalized: false
+  financial_instrument_externalized: false
+  sensitive_data_externalized: false
+  git_slack_ceiling: sanitized bank lifecycle state, opaque source pointer, anti-double-count gate, and next trigger only
+effects:
+  email_sent: false
+  application_submitted: false
+  spend_or_payment: false
+  calendar_mutation: false
+  deployment_merge_publication: false
+  account_or_security_change: false
+  scheduled_task_mutation: false
+  destructive_deletion: false
+honest_flaw: A received-notice is not authoritative balance or funds-availability evidence; closure requires the separate bank processing notice or direct authenticated account readback.
