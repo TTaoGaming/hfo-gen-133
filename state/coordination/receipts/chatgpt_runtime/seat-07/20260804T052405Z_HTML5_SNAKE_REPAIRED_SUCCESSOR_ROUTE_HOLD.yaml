@@ -1,0 +1,129 @@
+---
+schema_id: hfo.gen133.s07_producer_return.v1
+result: HOLD
+return_id: S07_HTML5_SNAKE_REPAIRED_SUCCESSOR_ROUTE_HOLD_20260804T052405Z
+work_item_id: SPATIAL_FACTORY_HTML5_SNAKE_PENDING_DIRECTION_COMMAND_GATE_001
+wip: 1
+seat: S07_BOUNDED_CODE_PATCH_BUILDER
+carrier_task_id_expected: 6a506f6dc5c08191b95f1707d7f00c2d
+carrier_task_id_observed: 6a506f6dc5c08191b95f1707d7f00c2d
+carrier_task_id_match: true
+valid_time_utc: 2026-08-04T05:24:05Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+observed_canonical_head: 252b38f0e62ec9bce324fdd550a22e1439cb5352
+---
+
+selection:
+  claim_id: S02_SPATIAL_FACTORY_HTML5_SNAKE_CLEAN_SOURCE_RELEASE_REARM_SUCCESSOR_20260804T050407Z
+  claim_commit: ee8cd85c76c0790d43f73868b37b974465a61e67
+  claim_path: projects/spatial-app-factory/claims/20260804T050407Z_SPATIAL_FACTORY_HTML5_SNAKE_CLEAN_SOURCE_RELEASE_REARM_SUCCESSOR.claim.yaml
+  claim_blob: 119328e56837df6fb084369b382bddc591955dc2
+  acceptance_contract_sha256: 362fa06fca2d84706e8ab51ebcaa5fc695d90e72a86894ea51917be16ec7e49b
+  claim_status: CLAIMED_INTERNAL_ONLY
+  producer_return_due_utc: 2026-08-04T07:34:07Z
+  claim_expiry_utc: 2026-08-04T09:04:07Z
+  unexpired_at_observation: true
+  material_change_since_prior_s07_return: >-
+    S02 issued a repaired successor that pins the clean upstream source and adds release-to-rearm behavior;
+    S06 then emitted a new exact-claim-bound HOLD packet. No earlier S07 return binds these successor bytes.
+
+verified_scope:
+  target_repository: TTaoGaming/TAGS
+  target_base_branch: main
+  target_base_sha: 1271e25306fe8ef8baea32704cf022435703d498
+  permitted_branch_pattern: agent/html5-snake-pending-direction-canary-*
+  branch_limit: 1
+  allowed_paths:
+    - prototypes/html5-snake-spatial-canary/**
+  forbidden_paths: every path outside the allowed subtree and every pre-existing TAGS path
+  upstream_repository: JDStraughan/html5-snake
+  approved_upstream_sha: e3fe18a85a0555f0540cc0978fbab62822262a91
+  permitted_copied_files:
+    - README.md
+    - game.js
+    - index.html
+    - page.css
+  excluded_upstream_boundaries:
+    - ab188d1328f1c38ac22ace820f614cac2122e3cf
+    - 7d11cf1729e03be40916547d5c5f6a06ed5095e0
+    - 4e3049553b316c05c53befab6a51ada88d14d41e
+  effect_ceiling: INTERNAL_UNMERGED_SPECIMEN_BRANCH_ONLY
+
+acceptance_summary:
+  structural_gate: exact S04 PASS_STRUCTURAL must bind claim commit, claim blob, and acceptance digest before producer routing
+  dispatch_gate: S06 must emit one non-HOLD packet explicitly routed to S07
+  behavior:
+    - native keyboard and one named spatial producer share requestDirection(nextDirection)
+    - KeyboardEvent.repeat true is rejected before mapping and produces zero requestDirection calls
+    - spatial lifecycle is BEGIN to HELD to exactly one COMMIT-or-CANCEL terminal edge
+    - cancellation, target loss, reset, or disarm requires neutral release before re-arm
+    - committed direction and one pending valid direction are separate; first valid perpendicular request wins per tick
+    - deterministic native and spatial traces are required at 8 fps and 60 fps
+  provenance:
+    - preserve complete MIT notice
+    - bind exact copied-file inventory and excluded SHAs in a provenance manifest
+    - independently author excluded compatibility behavior
+    - remove remote HTML5 shiv and later prove zero unexpected runtime network requests
+  final_verification:
+    - distinct browser-capable nonproducer
+    - distinct nonproducer provenance reviewer
+
+route_observation:
+  s06_packet_commit: 252b38f0e62ec9bce324fdd550a22e1439cb5352
+  s06_packet_path: projects/spatial-app-factory/dispatch/20260804T052100Z_SPATIAL_FACTORY_HTML5_SNAKE_CLEAN_SOURCE_RELEASE_REARM_HOLD.executor.yaml
+  s06_packet_blob: 31760166640c5621b37b3ed9503c30f0f60eb44e
+  s06_result: HOLD
+  exact_s04_pass_bound_to_successor: NOT_FOUND_THROUGH_OBSERVED_HEAD
+  s06_non_hold_route_to_s07: NOT_FOUND
+  route_open: false
+  blocking_reason: >-
+    The immutable claim explicitly requires an exact S04 structural pass and a subsequent S06 non-HOLD route.
+    The newest exact-claim-bound S06 packet remains HOLD because that S04 pass is absent. Creating a TAGS branch
+    now would exceed the claim contract.
+
+producer_effects:
+  target_branch_created: false
+  target_files_changed: []
+  code_commands_executed: []
+  tests_executed: []
+  test_result: NOT_RUN_ROUTE_BLOCKED
+  commit_status: NO_TARGET_COMMIT
+  self_verification_performed: false
+
+read_evidence:
+  - tool: GitHub.search_commits
+    result: observed repaired S02 claim and latest S06 HOLD through canonical head 252b38f0e62ec9bce324fdd550a22e1439cb5352
+  - tool: GitHub.fetch_file
+    path: projects/spatial-app-factory/claims/20260804T050407Z_SPATIAL_FACTORY_HTML5_SNAKE_CLEAN_SOURCE_RELEASE_REARM_SUCCESSOR.claim.yaml
+    result: exact read succeeded; blob 119328e56837df6fb084369b382bddc591955dc2
+  - tool: GitHub.fetch_file
+    path: projects/spatial-app-factory/dispatch/20260804T052100Z_SPATIAL_FACTORY_HTML5_SNAKE_CLEAN_SOURCE_RELEASE_REARM_HOLD.executor.yaml
+    result: exact read succeeded; blob 31760166640c5621b37b3ed9503c30f0f60eb44e
+
+rollback:
+  current_effect: coordination receipt only; no TAGS rollback required
+  future_patch_rollback: delete only the unmerged dedicated producer branch after preserving producer and verifier receipts
+
+next_gate:
+  first_consumer:
+    seat: S04_STRUCTURAL_PREFLIGHT_VERIFIER
+    task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+    required_return: PASS_STRUCTURAL bound to ee8cd85c76c0790d43f73868b37b974465a61e67, blob 119328e56837df6fb084369b382bddc591955dc2, and digest 362fa06fca2d84706e8ab51ebcaa5fc695d90e72a86894ea51917be16ec7e49b
+  second_consumer:
+    seat: S06_CODE_WORK_PACKET_COMPILER
+    task_id: 6a57972b9df081918680ce67c4ecb197
+    required_return: non-HOLD exact-claim-bound packet explicitly routed to S07
+  after_expiry: reject this route and require a fresh claim; do not renew or reinterpret immutable bytes
+
+remaining_risk:
+  - GitHub search is nontransactional and cannot prove a global WIP lock
+  - no browser, shell, provenance comparison, or runtime test evidence exists yet
+  - chain of title for public distribution remains unverified
+  - the expanded release-to-rearm contract may add latency and complexity until measured
+
+honest_flaw: >-
+  This HOLD proves only that the required exact S04 pass and S06 non-HOLD route were absent through the observed
+  canonical head. It is coordination evidence, not a patch, test result, independent verification, demand evidence,
+  distribution clearance, or revenue evidence.
