@@ -1,0 +1,93 @@
+---
+schema_id: hfo.gen133.x14.false_green_mutant.v1
+mutant_id: X14_MUTANT_093_bf1bb7a7da18
+experiment_id: X14_FALSE_GREEN_MUTATION_001
+campaign_ordinal: 23
+campaign_wake: 4
+seat: X14_FALSE_GREEN_MUTATION_QA
+carrier_task_id_expected: 6a513e4d9c4c81919db728f85db2dd79
+carrier_task_id_observed: 6a513e4d9c4c81919db728f85db2dd79
+carrier_task_id_match: true
+wip: 1
+mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+status: QUARANTINED_NONEXECUTABLE_ROUTED_PENDING_VERDICTS
+valid_time_utc: 2026-08-04T19:50:08Z
+expires_utc: 2026-08-04T23:45:19Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+binding_weight: 0
+independent_verification_closed: false
+---
+
+source:
+  authoring_seat: X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+  commit: 8d07aa610cf78f178d211ecf52a7b72ba741db75
+  path: state/coordination/experiments/durable_object_x12/events/20260804T194519Z_V0092_TO_V0093_RECOVERY_INTENTIONAL_MISSING_SLACK_POST.json
+  blob_sha1: fe02bf8f9eee49c361f3e485ae41891b222f5921
+  task_id: 6a506f83df208191815dd17a8fd5baa3
+  schema_id: hfo.gen133.x12.durable_object_event.v1
+  object_id: HFO_X12_WORKFLOW_OBJECT_001
+  expected_version: 92
+  next_version: 93
+  idempotency_key: 77907fbd8b1ea66549f4a77c296fa09e082d3b8b3fb58636a4b298e7c22700f8
+  event_digest_sha256: d13ad8eedeebfb116ecf180df51d26f60c83af550bbfa6753ee770ba7b121497
+  outcome: PENDING_CURRENT_UPDATE_AND_POSTREAD
+  consumer: Reginleif/Olrun
+  verifier: S04_WEIGHT_0_THEN_DISTINCT_SIGRUN_P4
+  prior_x14_mutation_at_source_digest: false
+
+prior_accepted_binding:
+  commit: 1caffbc255f48d32f7ac959fdb4924f90e9e879a
+  path: state/coordination/experiments/durable_object_x12/events/20260804T164400Z_V0091_TO_V0092_RECOVERY_RECEIPT_GAP_CHANNEL_READ_FALLBACK_V2.json
+  blob_sha1: 2bff5e7a8ade90794f7a7d414a345b153949467a
+  expected_version: 91
+  next_version: 92
+  idempotency_key: 1b2abdf8fc3215f8dda6ead713ec98ea2ce5cb446074ff46f5a29962eed4768d
+  event_digest_sha256: 345a39c0a9f3fb1052a977c71e96eeb2d4d102505fc28328449cfc51947b81e5
+  status: PRIOR_ACCEPTED_DISTINCT_VERSION_TRANSITION
+
+negative_control:
+  copy_mode: QUARANTINED_OVERLAY_SOURCE_UNCHANGED
+  executable: false
+  exactly_one_field_changed: true
+  mutated_field: canonical_transition.idempotency_key
+  original_value: 77907fbd8b1ea66549f4a77c296fa09e082d3b8b3fb58636a4b298e7c22700f8
+  mutated_value: 1b2abdf8fc3215f8dda6ead713ec98ea2ce5cb446074ff46f5a29962eed4768d
+  duplicate_value_origin_commit: 1caffbc255f48d32f7ac959fdb4924f90e9e879a
+  duplicate_value_origin_versions: V0091_TO_V0092
+  source_edited: false
+  task_or_schedule_changed: false
+  external_effect_performed: false
+
+canonicalization:
+  algorithm: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_json: '{"mutated_field":"canonical_transition.idempotency_key","mutated_value":"1b2abdf8fc3215f8dda6ead713ec98ea2ce5cb446074ff46f5a29962eed4768d","mutation_class":"DUPLICATE_IDEMPOTENCY_VERSION","original_value":"77907fbd8b1ea66549f4a77c296fa09e082d3b8b3fb58636a4b298e7c22700f8","source_blob_sha1":"fe02bf8f9eee49c361f3e485ae41891b222f5921"}'
+  byte_count: 334
+  sha256: bf1bb7a7da1869bd1402890f1e02ffb15a0e2d3480471bef18d87f3031fe5e07
+
+expected_rejection:
+  verdict: REVISE
+  reason: DUPLICATE_PRIOR_ACCEPTED_IDEMPOTENCY_KEY_CONFLICTS_WITH_CURRENT_VERSION_AND_BOUND_ARTIFACTS
+  named_gate: S04_IDEMPOTENCY_VERSION_EXACT_OBJECT_EXPECTED_NEXT_NONCE_KEY_CLAIM_OUTBOX_EVENT_AND_PRIOR_ACCEPTANCE_GATE
+
+routing:
+  structural_verifier: S04_STRUCTURAL_PREFLIGHT
+  structural_verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  distinct_verifier: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  distinct_verifier_task_id: 6a539fb148bc8191a30b6009dbf22438
+  consumer: X14_CAMPAIGN_REDUCER_AND_REGINLEIF_OLRUN_DURABLE_OBJECT_CONSUMERS
+  expiry_utc: 2026-08-04T23:45:19Z
+
+campaign:
+  accepted_wakes_after_write: 4
+  decision_due: true
+  decision: REVISE_GATE
+  next_mutation_class: FABRICATED_CONSUMER_ACK
+
+honest_flaw: >-
+  The duplicate is conspicuous because it reuses the immediately prior accepted transition key while the current claim and outbox paths
+  still expose the current key. It does not test hash-prefix collision, semantically duplicate intent with a fresh key, same-key reuse
+  across distinct objects, canonicalization aliases, or replay after retention expiry. Candidate discovery and source-digest dedup are
+  best-effort because GitHub search indexing can lag. S04 and S09 are distinct seats on the same provider, so their evidence remains
+  correlated and nonbinding with weight zero. No source, task, schedule, Slack history, account, deployment, spend, publication, or
+  external system was modified.
