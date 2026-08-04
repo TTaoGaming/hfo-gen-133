@@ -1,80 +1,92 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
-experiment_id: X11_GIT_READ_WRITE_READBACK_V2
-current_version: 95
-accepted_wakes: 3
+experiment_id: X11_SLACK_FIXED_POINTER_BOUNDED_READ_V2
+current_version: 96
+accepted_wakes: 0
 target_wakes_before_decision: 4
-controlled_factor: git_read_write
+controlled_factor: slack_read_write
 campaign_status: ACTIVE
 current_disposition: null
 prior_campaign:
-  experiment_id: X11_GOOGLE_DRIVE_METADATA_READ_VISIBILITY_V2
-  final_version: 92
+  experiment_id: X11_GIT_READ_WRITE_READBACK_V2
+  final_version: 96
   disposition: KEEP
   accepted_wakes: 4
+  decision_event:
+    commit: ae8fe0ab00ede180589cc94bc0a228ff37b2cbcd
+    path: state/coordination/experiments/carrier_surface_x11/events/20260804T204124Z_GIT_READ_WRITE_READBACK_V2_WAKE_04_DECISION_KEEP.yaml
+    blob: 8e173bd72d178e29a48c12bc41f94e70b07a4a89
+  measured_result:
+    preflight_current_versions: [92, 93, 94, 95]
+    preflight_version_matches: [true, true, true, true]
+    event_create_statuses: [SUCCESS, SUCCESS, SUCCESS, SUCCESS]
+    event_create_latencies_ms: [885, 1187, 718, 881]
+    median_event_create_latency_ms: 883
+    event_create_latency_range_ms: 469
+    event_readback_content_matches: [true, true, true, true]
+    current_update_statuses: [SUCCESS, SUCCESS, SUCCESS, SUCCESS]
+    current_readback_version_matches: [true, true, true, PENDING_THIS_READBACK]
+    current_readback_content_matches: [true, true, true, PENDING_THIS_READBACK]
+    permission_class: AUTHENTICATED_GITHUB_BRANCH_FILE_CREATE_UPDATE_READ_AVAILABLE
+    error_class: NONE
+    operator_relay_minutes: 0
+    changed_capability: false
+    campaign_decision: true
+    andon: false
+  supported_claim: repeatable_authenticated_GitHub_carrier_state_file_create_CURRENT_compare_and_swap_update_and_exact_same_provider_readback_visibility
+  claim_ceiling: authenticated_GitHub_carrier_state_create_update_and_exact_same_provider_readback_visibility_only_not_atomic_multi_file_transactions_branch_exclusivity_conflict_behavior_durability_under_provider_failure_or_independent_verification
+  strongest_falsifier: the_unique_event_cannot_be_created_or_read_back_exactly_CURRENT_does_not_advance_with_the_preflight_blob_SHA_a_stale_or_changed_blob_is_accepted_without_conflict_or_either_readback_differs_from_the_written_content
+  verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+  consumer: [Reginleif, Ratatoskr]
+  honest_flaw: the_event_and_CURRENT_are_separate_commits_on_one_authenticated_provider_path_and_the_campaign_did_not_create_a_real_concurrent_conflict_or_provider_failure
 last_event:
-  commit: 4bd4dad7a601c58c1ac35dbfa79b6208e25ce0e4
-  path: state/coordination/experiments/carrier_surface_x11/events/20260804T194038Z_GIT_READ_WRITE_READBACK_V2_WAKE_03_ACCEPTED.yaml
-  blob: 0707eaf40a2b6820a19b0cc713c72f438920a7cc
+  commit: ae8fe0ab00ede180589cc94bc0a228ff37b2cbcd
+  path: state/coordination/experiments/carrier_surface_x11/events/20260804T204124Z_GIT_READ_WRITE_READBACK_V2_WAKE_04_DECISION_KEEP.yaml
+  blob: 8e173bd72d178e29a48c12bc41f94e70b07a4a89
 baseline_result:
-  mode: carrier_event_and_current_compare_and_swap_readback
-  preflight_current_version: 94
-  preflight_current_blob: 68e890514f701fb2077dc4125f435c363b62a53c
-  preflight_version_match: true
-  event_create_status: SUCCESS
-  event_commit_sha: 4bd4dad7a601c58c1ac35dbfa79b6208e25ce0e4
-  event_blob_sha: 0707eaf40a2b6820a19b0cc713c72f438920a7cc
-  event_readback_content_match: true
-  current_update_status: SUCCESS_BY_CURRENT_EXISTENCE
-  current_expected_version_after_update: 95
-  permission_class: AUTHENTICATED_GITHUB_BRANCH_FILE_CREATE_UPDATE_READ_AVAILABLE
+  mode: campaign_initialized_no_slack_probe_this_wake
+  fixed_channel_id: C0BGNGPJFHU
+  fixed_target_timestamp: '1785563052.487809'
+  one_second_envelope_oldest: '1785563052.000000'
+  one_second_envelope_latest: '1785563053.000000'
+  expected_non_sensitive_marker: 20260801T054200Z_SLACK_READ_SEARCH_VARIANCE_WAKE_01.yaml
+  permission_class: NOT_PROBED_THIS_WAKE
   error_class: NONE
-  event_create_latency_ms: 718
-  other_latency_ms: NOT_EXPOSED
+  latency_ms: NOT_EXPOSED
   operator_relay_minutes: 0
   changed_capability: false
   andon: false
-claim_ceiling: authenticated_GitHub_carrier_state_create_update_and_exact_readback_visibility_only_not_atomic_multi_file_transactions_branch_exclusivity_durability_under_provider_failure_or_independent_verification
-strongest_falsifier: the_expected_CURRENT_version_or_blob_changes_between_preflight_and_update_the_immutable_event_cannot_be_created_the_CURRENT_update_is_accepted_with_a_stale_blob_or_either_readback_does_not_match_the_written_version_and_content
+claim_ceiling: bounded_authenticated_Slack_channel_history_result_count_target_timestamp_and_non_sensitive_marker_visibility_only_not_workspace_completeness_native_Slack_semantics_index_freshness_message_authenticity_or_independent_verification
+strongest_falsifier: the_fixed_one_second_envelope_cannot_be_read_the_known_target_timestamp_or_expected_marker_is_absent_or_the_connector_returns_content_outside_the_bounded_channel_window
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 next_consumer: [Reginleif, Ratatoskr]
-honest_flaw: using_the_required_carrier_state_writes_as_the_probe_tests_one_authenticated_contents_API_path_and_cannot_establish_atomicity_across_two_commits_branch_exclusivity_stale_SHA_rejection_without_a_conflict_or_durability_under_provider_failure
-next_factor: git_read_write
+honest_flaw: one_old_public_channel_pointer_tests_only_one_connector_history_path_and_cannot_separate_connector_filtering_from_native_Slack_semantics_or prove_workspace_completeness
+next_factor: slack_read_write
 next_probe:
-  experiment_id: X11_GIT_READ_WRITE_READBACK_V2
-  campaign_wake: 4
-  mode: carrier_event_and_current_compare_and_swap_readback
-  exact_action: read_CURRENT_at_expected_version_create_one_immutable_decision_event_update_CURRENT_with_the_preflight_blob_SHA_read_back_both_paths_write_KEEP_REVISE_RESEAT_VARIABLE_or_HOLD_and_select_the_next_factor
-  expected_current_version: 95
+  experiment_id: X11_SLACK_FIXED_POINTER_BOUNDED_READ_V2
+  campaign_wake: 1
+  mode: fixed_public_channel_pointer_one_second_envelope_read
+  exact_action: read_channel_C0BGNGPJFHU_with_oldest_1785563052_000000_and_latest_1785563053_000000_then_persist_only_result_count_target_timestamp_present_and_expected_non_sensitive_marker_present_without_message_body
+  expected_current_version: 96
   persist_only:
-    - preflight_current_version
-    - event_create_status
-    - event_commit_sha
-    - event_blob_sha_when_exposed
-    - current_update_status
-    - current_commit_sha
-    - current_blob_sha
-    - readback_version_match
-    - readback_content_match
+    - result_count
+    - target_timestamp_present
+    - expected_marker_present
     - permission_class
     - error_class
     - latency_when_exposed
     - operator_relay_minutes
-    - campaign_disposition
-    - next_factor
-  extra_probe_file_allowed: false
-  destructive_write_allowed: false
-  merge_allowed: false
-  publication_allowed: false
-  mutation_outside_carrier_state_allowed: false
+  slack_write_each_probe_allowed: false
+  post_only_changed_capability_campaign_decision_or_andon: true
+  sensitive_readback_externalization_allowed: false
   same_provider_independence_claim_allowed: false
-slack_action: SILENT_UNCHANGED_PROBE
-updated_valid_time_utc: 2026-08-04T19:40:38Z
+slack_action: POST_CAMPAIGN_DECISION
+updated_valid_time_utc: 2026-08-04T20:41:24Z
 sealed: false
 ---
 
-Git read-write/readback V2 wake 3/4 completed on the named branch. The carrier
-created one immutable event, fetched its exact content and blob, updated CURRENT
-from version 94 to 95 with the preflight blob SHA, and reserved exact readback as
-the acceptance gate. This is a same-provider structural check across separate
-commits, not an atomic transaction or independent verification.
+Git read-write/readback V2 completed four accepted wakes and is retained with a
+KEEP disposition at its narrow claim ceiling. The next campaign is a revised
+Slack fixed-pointer bounded-read probe that avoids search-result self-contamination.
+No Slack probe ran during this wake; only the required campaign-decision pointer
+will be posted after CURRENT exact readback succeeds.
