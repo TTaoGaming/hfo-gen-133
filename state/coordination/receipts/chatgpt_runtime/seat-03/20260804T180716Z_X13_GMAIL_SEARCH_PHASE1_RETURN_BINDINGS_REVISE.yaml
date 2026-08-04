@@ -1,0 +1,82 @@
+schema_id: hfo.gen133.s03.reducer_route.v1
+result: REVISE
+terminal: false
+correlation_id: X13_GMAIL_SEARCH_EMAIL_IDS_READONLY_001_PHASE1_BASELINE_20260804T174732Z
+reducer:
+  seat: S03
+  role: REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  carrier_task_id: 6a539fc5130c81918c13624739fb2a60
+  carrier_task_id_match: true
+  wip: 1
+canonical_state:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+prior_s03_cursor:
+  commit: 73ad0459887f10b2a917050252bbeb279474b478
+  path: state/coordination/receipts/chatgpt_runtime/seat-03/20260804T170800Z_X13_GOOGLE_DRIVE_SEARCH_PHASE4_RETURN_BINDINGS_REVISE.yaml
+selected_input:
+  classification: CHANGED_CLAIM_EVENT_NOT_PRODUCER_RETURN
+  experiment_id: X13_GMAIL_SEARCH_EMAIL_IDS_READONLY_001
+  phase: 1_of_4
+  event_commit: a5a31521657b340e8efb341f0773411da6b5697d
+  event_path: state/coordination/experiments/cots_connector_x13/20260804T174732Z_GMAIL_SEARCH_EMAIL_IDS_PHASE1_BASELINE.md
+  event_blob_sha: 67ef6c3f50e654601fa9cb7ff839a7a9d5048320
+  current_commit: ea1a0558a4f08bfed83081ff932e6f3e67492bae
+  current_path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+  current_blob_sha: dee04a8c4651ba4bddb26425a9bad4c73bdeaa96
+  admitted_claim: CONNECTOR_RETURNED_ONE_MESSAGE_IDENTIFIER_AND_ONE_CONTINUATION_TOKEN_WITHOUT_MESSAGE_CONTENT_FOR_ONE_BOUNDED_READ_ONLY_SEARCH
+assessment:
+  real_producer_return: false
+  exact_git_bytes_bound: true
+  source_system_readback_bound: false
+  workitem_claim_binding: false
+  acceptance_digest_bound: false
+  canonical_producer_return_digest_bound: false
+  exact_request_digest_bound: false
+  exact_response_digest_bound: false
+  authenticated_principal_bound: false
+  effective_scope_bound: false
+  upstream_method_and_call_count_bound: false
+  commands_and_exit_codes: NOT_APPLICABLE_TO_NORMALIZED_CONNECTOR_OBSERVATION_BUT_UPSTREAM_REQUEST_RESPONSE_RECEIPT_ABSENT
+  rollback_bound: false
+  effect_ceiling_bound_to_workitem: false
+  expiry_bound: false
+  honest_flaw_present: true
+  producer_digest_bound_verdict: NOT_OBSERVED
+  exact_stood_or_fell: NOT_OBSERVED
+  named_consumer: NONE_NAMED
+  consumer_ack: NOT_OBSERVED
+  adoption_credit: 0
+  fitness_credit: 0
+missing_evidence_for_reconsideration:
+  - CLAIMED_WORKITEM_ID_AND_EXACT_CLAIM_OR_ACCEPTANCE_DIGEST
+  - CANONICAL_PRODUCER_RETURN_DIGEST_TIED_TO_THE_CLAIM
+  - PRIVACY_SAFE_EXACT_REQUEST_AND_RESPONSE_DIGESTS_OR_AUTHORIZED_SOURCE_SYSTEM_READBACK
+  - AUTHENTICATED_PRINCIPAL_EFFECTIVE_SCOPE_UPSTREAM_METHOD_AND_CALL_COUNT
+  - WORKITEM_EFFECT_CEILING_ROLLBACK_AND_EXPIRY
+  - DISTINCT_PROVIDER_EXACT_STOOD_OR_FELL_TIED_TO_THE_PRODUCER_DIGEST
+  - EXPLICIT_NAMED_CONSUMERACK_AFTER_STOOD
+route:
+  verifier: S04_HRIST_STRUCTURAL_PREFLIGHT
+  verifier_class: DISTINCT_NONPRODUCER_SAME_PROVIDER
+  route_effect: STRUCTURAL_PREFLIGHT_ONLY
+  binding_weight: 0
+  independence_status: SAME_PROVIDER_NONBINDING
+  requested_result_vocabulary: PASS_STRUCTURAL_OR_REVISE_OR_HOLD_OR_BLOCKED
+  exact_request:
+    - RECOMPUTE_EVENT_AND_CURRENT_BYTES_FROM_THE_BOUND_COMMIT_PATH_BLOB_TRIPLETS
+    - CONFIRM_TASK_BINDING_ACTOR_CARRIER_SEPARATION_FRESHNESS_AUTHORITY_PRIVACY_AND_IDEMPOTENCY
+    - CONFIRM_THIS_EVENT_IS_NOT_A_CLAIM_BOUND_PRODUCER_RETURN
+    - CONFIRM_ABSENCE_OR_PRESENCE_OF_EACH_MISSING_EVIDENCE_FIELD_WITHOUT_EDITING_THE_CANDIDATE
+    - BIND_ANY_PREFLIGHT_RESULT_TO_THIS_ROUTE_COMMIT_PATH_AND_BLOB_AFTER_READBACK
+  route_expiry_utc: 2026-08-05T18:07:16Z
+closure_gate:
+  terminal_receipt_allowed: false
+  reason: CLAIM_RETURN_EXACT_VERDICT_AND_CONSUMERACK_DO_NOT_BIND_TO_ONE_WORKITEM
+  implicit_consumer_ack_forbidden: true
+  next_valid_terminal_results:
+    - FELL
+    - STOOD_AND_ACKED
+honest_flaw: THE_SOURCE_EVENT_INTENTIONALLY_WITHHELD_SENSITIVE_MESSAGE_AND_PAGE_TOKEN_VALUES_SO_GIT_CAN_VERIFY_ONLY_THE_SANITIZED_OBSERVATION_NOT_RAW_GMAIL_PARITY_OR_COMPLETENESS
+valid_time_utc: 2026-08-04T18:07:16Z
+recorded_time_utc: 2026-08-04T18:07:16Z
