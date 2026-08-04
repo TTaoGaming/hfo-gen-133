@@ -1,0 +1,112 @@
+---
+schema_id: hfo.gen133.s07_producer_return.v1
+result: HOLD
+receipt_id: S07_HTML5_SNAKE_DEADLINE_AND_ROUTE_HOLD_20260804T072500Z
+work_item_id: SPATIAL_FACTORY_HTML5_SNAKE_PENDING_DIRECTION_COMMAND_GATE_001
+wip: 1
+seat: S07_BOUNDED_CODE_PATCH_BUILDER
+carrier_task_id_expected: 6a506f6dc5c08191b95f1707d7f00c2d
+carrier_task_id_observed: 6a506f6dc5c08191b95f1707d7f00c2d
+carrier_task_id_match: true
+valid_time_utc: 2026-08-04T07:25:00Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+repository_head_observed_before_write: 82b1b989326969a2c9046426a4c4e44fad7b015e
+---
+
+self_probe:
+  identity_source: automation_runtime_envelope
+  expected_task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+  observed_task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+  task_id_match: true
+  tools_exposed:
+    - authenticated GitHub branch, commit, search, exact-file, immutable-write, and readback surfaces
+    - authenticated Slack send surface
+  execution_surfaces_unavailable:
+    - target repository checkout
+    - host shell
+    - browser runtime
+    - direct Codex or Claude executor ingress
+  task_mutation_performed: false
+  production_code_change_performed: false
+  self_verification_performed: false
+
+selection:
+  claim_id: S02_SPATIAL_FACTORY_HTML5_SNAKE_CLEAN_SOURCE_RELEASE_REARM_SUCCESSOR_20260804T050407Z
+  claim_commit_sha: ee8cd85c76c0790d43f73868b37b974465a61e67
+  claim_blob_sha: 119328e56837df6fb084369b382bddc591955dc2
+  claim_path: projects/spatial-app-factory/claims/20260804T050407Z_SPATIAL_FACTORY_HTML5_SNAKE_CLEAN_SOURCE_RELEASE_REARM_SUCCESSOR.claim.yaml
+  claim_status: CLAIMED_INTERNAL_ONLY
+  acceptance_contract_sha256: 362fa06fca2d84706e8ab51ebcaa5fc695d90e72a86894ea51917be16ec7e49b
+  effect_permission: BRANCH_FILE_TEST_ONLY_AFTER_EXACT_S04_PASS_AND_S06_NON_HOLD_ROUTE
+  producer_return_due_utc: 2026-08-04T07:34:07Z
+  lease_expires_utc: 2026-08-04T09:04:07Z
+  unexpired_at_selection: true
+
+verified_contract:
+  target_repository: TTaoGaming/TAGS
+  base_sha: 1271e25306fe8ef8baea32704cf022435703d498
+  allowed_paths:
+    - prototypes/html5-snake-spatial-canary/**
+  rollback: delete the unmerged dedicated producer branch; no branch was created in this run
+  verifier:
+    - DISTINCT_BROWSER_CAPABLE_NONPRODUCER
+    - DISTINCT_NONPRODUCER_PROVENANCE_REVIEWER
+  consumer: S09_STRATEGIC_REASONING_AND_VOTING
+  acceptance_tests_summary:
+    - exact clean-source and provenance manifest bindings
+    - one direct requestDirection seam for native and spatial input
+    - repeat filtering before mapping
+    - one pending direction per movement tick
+    - explicit BEGIN/HELD/COMMIT-or-CANCEL producer lifecycle
+    - REQUIRE_RELEASE neutral re-arm after cancellation or tracking loss
+    - deterministic native/spatial parity at 8 and 60 fps
+
+route_evidence:
+  latest_s06_commit: 82b1b989326969a2c9046426a4c4e44fad7b015e
+  latest_s06_result: HOLD
+  exact_s04_pass_bound_to_claim_commit_blob_and_acceptance_digest: NOT_FOUND
+  s06_non_hold_packet_explicitly_routed_to_s07: NOT_FOUND
+  s06_clock_finding:
+    observed_at_utc: 2026-08-04T07:20:25Z
+    remaining_seconds_to_producer_due: 822
+    declared_execution_ceiling_seconds: 4500
+    feasible_complete_return_before_due: false
+  direct_executor_ingress: ABSENT
+
+producer_effect:
+  branch_created: false
+  branch_name: null
+  start_sha: null
+  final_sha: null
+  changed_paths: []
+  regression_specimen_added: false
+  commands_run: []
+  command_exit_codes: []
+  tests_run: []
+  test_results: []
+  execution_status: EXECUTION_BLOCKED
+
+hold_reason: >-
+  The immutable claim is still unexpired, but its own routing contract forbids S07 execution until an exact S04
+  PASS_STRUCTURAL and an S06 non-HOLD packet are both bound to the claim bytes. The latest S06 packet remains HOLD,
+  finds the producer-return clock infeasible, and records no direct executor ingress. Creating a branch or claiming
+  tests would violate the route and manufacture progress. A fresh successor with a feasible return deadline is required.
+
+remaining_risk:
+  - claim lease remains open after its producer-return deadline, which can tempt stale-route execution
+  - GitHub search is nontransactional; a later artifact may appear after this receipt
+  - no checkout or browser surface was available to independently inspect TAGS runtime behavior
+
+honest_flaw: >-
+  This receipt verifies coordination artifacts, not source behavior. It cannot prove that a compliant patch is impossible;
+  it proves only that this carrier lacked the mandatory route, feasible deadline, and execution surface at observation time.
+
+next_gate:
+  owner: S02_ADMISSION_PULL
+  action: issue one fresh immutable successor preserving the exact source, path, provenance, and behavioral contract with a feasible producer-return clock
+  then:
+    - S04 exact structural preflight
+    - S06 non-HOLD route explicitly addressed to S07
+    - S07 bounded branch-file-test execution
