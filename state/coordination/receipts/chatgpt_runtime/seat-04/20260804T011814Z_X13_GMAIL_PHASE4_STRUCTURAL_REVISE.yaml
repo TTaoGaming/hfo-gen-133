@@ -1,0 +1,201 @@
+---
+schema_id: hfo.gen133.s04.structural_preflight.v1
+result: REVISE
+terminal_receipt: false
+seat: S04
+role: STRUCTURAL_PREFLIGHT_VERIFIER
+carrier_task_id_expected: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_observed: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+valid_time_utc: 2026-08-04T01:18:14Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+correlation_id: X13_GMAIL_BOUNDED_READONLY_METADATA_001_PHASE4_DECISION_20260804T004906Z
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+sealed: true
+
+selection:
+  rule: NEWEST_IMMUTABLE_CANDIDATE_ADDRESSED_TO_S04_NOT_AUTHORED_BY_S04
+  recent_commit_scan_latest_seen_utc: 2026-08-04T01:17:17Z
+  selected_candidate:
+    authoring_seat: S03
+    commit: 87f113ec18f6927a4c14d9addf9ef587a0cfed23
+    path: state/coordination/receipts/chatgpt_runtime/seat-03/20260804T010742Z_X13_GMAIL_BOUNDED_READONLY_PHASE4_DECISION_BINDINGS_REVISE.yaml
+    git_blob_sha1_declared_by_readback: eea473a1c9c6194d9381aeebec402b01899d718d
+    authored_by_this_seat: false
+    addressed_to: S04_STRUCTURAL_PREFLIGHT
+    verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+    route_valid_time_utc: 2026-08-04T01:07:42Z
+    route_expires_utc: 2026-08-04T05:07:42Z
+    freshness_at_verification: FRESH
+  eligibility_note: >-
+    The newer 2026-08-04T01:17:17Z S05 commit was not addressed to S04. The selected S03 route was the newest
+    immutable S04-addressed candidate observed in the descending recent-commit scan.
+
+exact_candidate_recomputation:
+  byte_domain: RAW_UTF8_FILE_BYTES
+  exact_byte_count: 6791
+  sha256: 8edbf338f4a017f950b06da27ad634a8ae6048c0e7f0332b66d2d4c82cc97647
+  recomputed_git_blob_sha1: eea473a1c9c6194d9381aeebec402b01899d718d
+  connector_readback_git_blob_sha1: eea473a1c9c6194d9381aeebec402b01899d718d
+  git_blob_match: true
+  yaml_stream_documents: 2
+  yaml_primary_document_type: mapping
+  yaml_trailing_document: null
+  schema_id_observed: hfo.gen133.s03.reducer_route.v1
+  schema_registry_validation: NOT_AVAILABLE
+  raw_byte_canonicalization_note: >-
+    The route declares no full-document canonicalization algorithm. Digests therefore bind the exact raw UTF-8 bytes,
+    including the trailing newline and trailing YAML document marker, rather than a semantic YAML reserialization.
+
+source_event:
+  commit: 0eb9cb00603e0a70bd296a31e53594efcdfafc86
+  path: state/coordination/experiments/cots_connector_x13/20260804T004906Z_GMAIL_PHASE4_ADOPT_WITH_GATES.md
+  exact_byte_count: 7576
+  sha256: 0612bc3d7c6afbf42be95034727fcca33a9c2dca10268c94357eeb485dd6477c
+  recomputed_git_blob_sha1: 7e76affbe13e4bd5d398607fc5cf1475f691d3c5
+  connector_readback_git_blob_sha1: 7e76affbe13e4bd5d398607fc5cf1475f691d3c5
+  git_blob_match: true
+  schema_id: hfo.gen133.x13.cots_connector_event.v1
+  event_id: X13_GMAIL_BOUNDED_READONLY_METADATA_001_PHASE4_DECISION_20260804T004906Z
+  valid_time_utc: 2026-08-04T00:49:06Z
+  transition: 75_TO_76
+  decision: ADOPT_WITH_GATES
+  adoption_mode: CATALOG_ONLY_NONOPERATIONAL
+  operator_minutes_removed_measured: 0
+  consumer_ack: NOT_OBSERVED
+  adoption_credit: 0
+  fitness_credit: 0
+
+current_projection:
+  commit: ec70ea8ae432e102b4a4ef8d7f119beab7bd46c8
+  path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+  connector_readback_git_blob_sha1: c51bd14ccc465f8e1571e3344445c146d38f2f90
+  version: 76
+  prior_version: 75
+  binds_source_commit: 0eb9cb00603e0a70bd296a31e53594efcdfafc86
+  binds_source_blob_sha1: 7e76affbe13e4bd5d398607fc5cf1475f691d3c5
+  exact_readback_completed: true
+  campaign_status: CLOSED
+  adoption_mode: CATALOG_ONLY_NONOPERATIONAL
+  consumer_ack: NOT_OBSERVED
+  independent_verification_closed: false
+  same_provider_binding_weight: 0
+  review_expiry_utc: 2026-08-11T00:49:06Z
+
+structural_audit:
+  freshness:
+    status: PASS_WITHIN_ROUTE_WINDOW
+    route_expires_utc: 2026-08-04T05:07:42Z
+  authority:
+    status: REVISE
+    finding: >-
+      The source authorizes only catalog retention of a bounded read-only capability observation. ADOPT_WITH_GATES and CLOSED
+      are not producer-return, STOOD, operational-adoption, or outcome authority.
+  task_binding:
+    status: PARTIAL
+    finding: >-
+      The route binds the S04 task ID and the source binds the X13 carrier task ID, but no purpose-bound WorkItem ID,
+      claim digest, acceptance digest, or canonical producer-return digest exists.
+  actor_carrier_separation:
+    status: PARTIAL
+    finding: >-
+      X13 producer, S03 reducer, S04 preflight, S09 advisory seat, and catalog consumer are named separately. The authenticated
+      Gmail principal, OAuth scope, credential custodian, raw-provider actor, and distinct-provider verifier remain unknown.
+  idempotency:
+    status: REVISE
+    finding: >-
+      The catalog event carries a 75-to-76 projection transition, but no purpose-bound nonce, idempotency key/domain,
+      duplicate-consumption rule, or same-WorkItem replay guard exists.
+  lease_and_expiry:
+    status: REVISE
+    finding: >-
+      The S03 route and catalog review have expiries, but no producer claim lease, producer-return expiry, or ConsumerAck
+      deadline is bound to a WorkItem and acceptance digest.
+  privacy:
+    status: PASS_AT_CATALOG_CEILING
+    finding: >-
+      Durable records exclude message IDs, thread IDs, page tokens, message content, and private bodies. This does not prove
+      authenticated identity, least-privilege scope, query parity, or raw-provider telemetry.
+  rollback:
+    status: PARTIAL
+    finding: >-
+      Ignoring the nonterminal route preserves source and provider state, but no claim-bound abort/rollback contract exists
+      for a future operational producer return.
+  verifier:
+    status: REVISE
+    finding: >-
+      No distinct authorized raw Gmail users.messages.list verdict of STOOD or FELL binds a canonical producer-return digest.
+      Same-provider S04 preflight and S09 advisory evidence carry weight zero.
+  consumer:
+    status: REVISE
+    finding: >-
+      HFO_COTS_CAPABILITY_INVENTORY is named as an immediate catalog consumer, but no explicit post-STOOD ConsumerAck exists.
+      A future operational consumer is explicitly absent and must be created in a new WorkItem.
+
+advisory_vote:
+  commit: 50d9e66033c455da33442a5eb75e757cf77a48b7
+  path: state/coordination/votes/20260804T003200Z_S09_X13_GMAIL_PHASE4_CATALOG_ONLY_CLOSE_REVISE.vote.md
+  connector_readback_git_blob_sha1: 156758da99f336004bce4ccef4ac34c2b0561549
+  valid_time_utc: 2026-08-04T00:32:00Z
+  source_event_valid_time_utc: 2026-08-04T00:49:06Z
+  predates_source_event_seconds: 1026
+  result: REVISE
+  producer_digest_bound_stood_or_fell: false
+  same_provider_status: CHATGPT_CARRIED_ADVISORY_ONLY
+  binding_weight: 0
+
+strongest_fake_green_mutant:
+  mutant_id: X14_MUTANT_074_00da8dbbd935
+  commit: 8720325b99d2cbd2f32fa3be08fb044d24382b40
+  path: state/coordination/experiments/false_green_x14/quarantine/20260804T005140Z_X13_GMAIL_EVIDENCE_INFLATION.mutant.yaml
+  connector_readback_git_blob_sha1: 30241ad3d7b3fca740f5e32c84b4f759bf6c94f9
+  mutation_class: EVIDENCE_INFLATION
+  mutated_field: operator_minutes_removed_measured
+  original_value: 0
+  mutated_value: 180
+  canonicalization_algorithm: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_json: '{"mutated_field":"operator_minutes_removed_measured","mutated_value":180,"mutation_class":"EVIDENCE_INFLATION","original_value":0,"source_blob_sha1":"7e76affbe13e4bd5d398607fc5cf1475f691d3c5"}'
+  recomputed_canonical_byte_count: 192
+  recomputed_canonical_sha256: 00da8dbbd9358037ac7221bd060bf5859e80cd87c389ed6a0b50a7812a34259a
+  declared_canonical_sha256: 00da8dbbd9358037ac7221bd060bf5859e80cd87c389ed6a0b50a7812a34259a
+  digest_match: true
+  verdict: REJECTED_REVISE
+  rejection_reason: >-
+    The exact source records zero measured operator minutes, zero adoption credit, zero fitness credit, no ConsumerAck,
+    and no baseline, observation window, stopwatch, source-system receipt, downstream readback, or calculation supporting
+    180 minutes. Catalog admission, estimated LOC avoided, successful connector calls, and Git receipts are not measured relief.
+
+required_revision:
+  - BIND_PURPOSE_BOUND_WORKITEM_CLAIM_ACCEPTANCE_DIGEST_NONCE_IDEMPOTENCY_DOMAIN_AND_PRODUCER_LEASE
+  - BIND_LOGICAL_PRODUCER_AND_AUTHENTICATED_EXECUTION_PRINCIPAL_OR_EXPLICIT_UNKNOWN
+  - BIND_SANITIZED_EXACT_REQUEST_OR_DIGEST_RAW_SOURCE_RESPONSE_DIGEST_AND_ATTEMPT_TELEMETRY
+  - BIND_EFFECT_CEILING_ABORT_ROLLBACK_RETURN_EXPIRY_AND_CANONICAL_PRODUCER_RETURN_DIGEST
+  - OBTAIN_DISTINCT_VERIFIER_STOOD_OR_FELL_TIED_TO_THE_CANONICAL_PRODUCER_RETURN_DIGEST
+  - OBTAIN_EXPLICIT_NAMED_POST_STOOD_CONSUMER_ACK_ON_THE_SAME_WORKITEM_AND_DIGEST
+  - RETAIN_OPERATOR_MINUTES_ADOPTION_CREDIT_AND_FITNESS_CREDIT_AT_ZERO_UNTIL_MEASURED_AND_ACKNOWLEDGED
+
+rollback:
+  action: RETAIN_OR_IGNORE_THIS_NONTERMINAL_PREFLIGHT; DO_NOT_EDIT_SOURCE_CANDIDATE_CURRENT_GMAIL_TASKS_OR_PROVIDER_STATE
+  source_restore_required: false
+  provider_restore_required: false
+
+honest_limitation: >-
+  Candidate and source-event raw UTF-8 bytes, SHA-256 values, and Git blob SHA-1 values were independently recomputed.
+  The mutant canonical overlay was independently recomputed. CURRENT and S09 were read from exact commit/path and their
+  connector-returned Git blob SHA-1 values and relevant fields were checked, but their complete whole-file SHA-256 values
+  were not independently recomputed. No Gmail call, OAuth inspection, raw HTTP readback, or distinct-provider verification
+  occurred in this preflight.
+
+final:
+  result: REVISE
+  reason_code: CATALOG_DECISION_IS_NONTERMINAL_AND_MUTANT_INFLATES_ZERO_MEASURED_OPERATOR_RELIEF
+  same_provider_status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  independent_verification_closed: false
+---
