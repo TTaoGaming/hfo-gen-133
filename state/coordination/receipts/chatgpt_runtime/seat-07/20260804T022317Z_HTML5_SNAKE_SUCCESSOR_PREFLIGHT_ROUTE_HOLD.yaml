@@ -1,0 +1,125 @@
+---
+schema_id: hfo.gen133.s07_bounded_patch_return.v1
+result: HOLD
+seat: S07_BOUNDED_CODE_PATCH_BUILDER
+work_item_id: SPATIAL_FACTORY_HTML5_SNAKE_PENDING_DIRECTION_COMMAND_GATE_001
+valid_time_utc: 2026-08-04T02:23:17Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+wip: 1
+---
+
+self_probe:
+  expected_task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+  observed_task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+  task_id_match: true
+  identity_source: automation_runtime_envelope
+  tools_exposed:
+    github: authenticated search, exact file/blob read, commit scan, immutable file create, and readback
+    slack: authenticated material-pointer post after Git readback
+    container: available but not used because the claim forbids producer execution before S04 PASS and S06 non-HOLD routing
+  task_mutation_performed: false
+
+selection:
+  claim_commit: c72a290566711418e566f9c81af3bf32836e05db
+  claim_path: projects/spatial-app-factory/claims/20260804T020604Z_SPATIAL_FACTORY_HTML5_SNAKE_REPEAT_FILTER_SUCCESSOR.claim.yaml
+  claim_blob: 49544930f3b5c43bc6ad07501fbb3efaf90019a0
+  claim_id: S02_SPATIAL_FACTORY_HTML5_SNAKE_REPEAT_FILTER_SUCCESSOR_20260804T020604Z
+  claim_status: CLAIMED_INTERNAL_ONLY
+  producer_return_due_utc: 2026-08-04T04:36:04Z
+  lease_expires_utc: 2026-08-04T06:06:04Z
+  expiry_utc: 2026-08-04T06:06:04Z
+  unexpired_at_selection: true
+  permits_branch_file_test_conditionally: true
+
+verified_contract:
+  target_repository: TTaoGaming/TAGS
+  base_branch: main
+  base_sha: 1271e25306fe8ef8baea32704cf022435703d498
+  branch_rule: agent/html5-snake-pending-direction-canary-*
+  branch_create_max: 1
+  allowed_paths:
+    - prototypes/html5-snake-spatial-canary/**
+  forbidden_paths: every path outside prototypes/html5-snake-spatial-canary/**
+  upstream_repository: JDStraughan/html5-snake
+  upstream_sha: 4e3049553b316c05c53befab6a51ada88d14d41e
+  upstream_files_allowed:
+    - README.md
+    - game.js
+    - index.html
+    - page.css
+  acceptance_contract_sha256: a0c99b8d91e242eb8591728ae50bc025985f56dfd4c959fe43490e96ebff83ca
+  acceptance_contract_byte_count: 2496
+  required_preconditions:
+    - exact S04 PASS_STRUCTURAL bound to claim commit c72a290566711418e566f9c81af3bf32836e05db and blob 49544930f3b5c43bc6ad07501fbb3efaf90019a0
+    - one S06 non-HOLD claim-bound executor packet routed to S07 task 6a506f6dc5c08191b95f1707d7f00c2d
+  acceptance_tests_required:
+    - regression specimen first
+    - native KeyboardEvent.repeat true is rejected before direction mapping and requestDirection
+    - spatial input emits at most one direction command per activation edge
+    - committed direction and one pending direction are separate and reset on start
+    - inverse, same-as-committed, same-as-pending, and second-valid-before-tick commands are rejected
+    - deterministic traces for all four starts and left-up-right-before-tick resolves to up
+    - restart clears pending state
+    - native and spatial parity at 8 fps and 60 fps
+    - sanitized repeat-filter traces at 8 fps and 60 fps
+    - zero unexpected network requests and obsolete remote HTML5 shiv removed
+    - no dependency and no synthetic keyboard dispatch seam
+  rollback:
+    before_branch: leave claim immutable and create no branch until S04 PASS and S06 non-HOLD packet exist
+    after_branch: quarantine unmerged branch or use producer-authored revert commit; no delete, reset, force-push, or merge
+    after_failed_verification: record FELL bound to exact branch SHA and grant no ConsumerAck or fitness credit
+  verifier:
+    structural: S04_STRUCTURAL_PREFLIGHT_VERIFIER task 6a52861fbdb08191b9ef33a0b9c3c15c
+    technical: DISTINCT_BROWSER_CAPABLE_NONPRODUCER
+    required_technical_result: STOOD_OR_FELL_BOUND_TO_EXACT_BRANCH_SHA_AND_TRACE_DIGESTS
+  consumer:
+    gate: SPATIAL_FACTORY_HTML5_SNAKE_PENDING_DIRECTION_COMMAND_GATE_001
+    decision_seat: S09_STRATEGIC_REASONING_AND_VOTING
+    decision_task_id: 6a539fb148bc8191a30b6009dbf22438
+    consumer_ack_required: true
+
+route_probe:
+  repository_head_scanned_through_commit: 63a8bb3171b1eb05d3f109f0b66db8ef85904fb3
+  repository_head_commit_time_utc: 2026-08-04T02:15:51Z
+  exact_claim_blob_search_result: no S04 PASS or S06 non-HOLD binding found
+  exact_claim_id_search_result: claim file only
+  newest_related_s06_packet:
+    commit: 3d8d764fc44475664cbba346c714076a4a6edd5e
+    path: projects/spatial-app-factory/dispatch/20260804T002136Z_SPATIAL_FACTORY_HTML5_SNAKE_REPEAT_FILTER_HOLD.executor.yaml
+    result: HOLD
+    predates_successor_claim: true
+  disposition: ROUTE_CLOSED_PENDING_EXACT_S04_PASS_AND_S06_NON_HOLD_PACKET
+  search_limitation: GitHub code search is indexed and nontransactional; exact claim readback and recent commit scan are stronger but cannot prove absence beyond the observed branch head
+
+producer_effects:
+  branch_created: false
+  branch: null
+  start_sha: null
+  final_sha: null
+  changed_target_paths: []
+  regression_specimen_added: false
+  patch_applied: false
+  commands_run: []
+  tests_run: []
+  execution_status: NOT_STARTED_BY_CONTRACT
+  merge_performed: false
+  deployment_performed: false
+  publication_performed: false
+
+next_gate:
+  first: S04 must emit exact PASS_STRUCTURAL bound to the successor claim commit and blob
+  second: S06 must emit one non-HOLD claim-bound executor packet explicitly routed to S07
+  then: S07 may create at most one internal branch from TTaoGaming/TAGS@1271e25306fe8ef8baea32704cf022435703d498 before 2026-08-04T04:36:04Z
+
+remaining_risk:
+  - the producer-return clock is short and may expire before both upstream gates land
+  - visible MIT text is not complete chain-of-title or trademark clearance
+  - no checkout, browser trace, keyboard-repeat capture, network capture, or test execution has occurred
+  - same-provider structural evidence cannot close independent technical verification
+
+honest_flaw: >-
+  This HOLD is based on the exact successor claim plus a recent branch-head scan, not a transactional queue lock.
+  S07 did not inspect the full upstream history, execute the game, or prove that no gate was written after the observed
+  head. No code outcome, compatibility claim, verification credit, ConsumerAck, or revenue value is earned.
