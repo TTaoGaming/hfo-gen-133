@@ -1,0 +1,65 @@
+schema_version: hfo.gen133.operator_relief_receipt.v1
+receipt_id: S05-20260804T111547Z-AMAZON-FUTURE-DELIVERY-INTENT-REVIEW
+seat: S05
+expected_task_id: 6a55c182078c8191b89f2dd15f5f640c
+provider_task_id: 6a55c182078c8191b89f2dd15f5f640c
+task_id_match: true
+branch: agent/gen133-bootstrap-20260730
+wip: 1
+observed_at_utc: 2026-08-04T11:15:47Z
+material_change: true
+transition: deadline_binding_created
+active_item:
+  title: future_amazon_delivery_and_order_intent_verification
+  status: BOUND_TO_PRIVATE_CALENDAR_REVIEW
+  claim: one_changed_private_source_confirms_a_distinct_shipment_is_marked_shipped
+  claim_ceiling: actual_delivery_order_intent_and_item_match_remain_unverified
+priorities:
+  p0: vehicle_service_status_and_final_record_unverified
+  p1:
+    - onboarding_disclosure_due_2026-08-05
+    - inspection_fee_verification_open
+bounded_effect:
+  source_system: google_calendar
+  private_event_id: d5ccpjmsh6l8qs78pvvgs7l53c
+  bound_window_local: 2026-09-02T17:05:00-06:00/2026-09-02T17:15:00-06:00
+  verification_gate:
+    - verify_authoritative_delivery_status
+    - confirm_operator_order_intent
+    - record_delivered_matches_waiting_or_discrepancy
+    - bind_one_dated_followup_if_not_complete
+    - do_not_contact_support_or_change_order
+private_source_pointers:
+  gmail_message_id: 19fcc620acb1466b
+  calendar_event_id: d5ccpjmsh6l8qs78pvvgs7l53c
+source_readback:
+  gmail_received_at_utc: 2026-08-04T10:46:44Z
+  sanitized_arrival_window: 2026-08-20/2026-09-02
+  calendar_readback_confirmed: true
+  calendar_visibility: private
+  calendar_transparency: opaque
+  reminders_minutes_before:
+    - 10
+    - 0
+changed_evidence_checks:
+  gmail_material_delta: true
+  calendar_binding_readback: true
+  github_latest_s05_state_read: true
+  slack_material_obligation_delta: false
+  contacts_resolution_needed: false
+sanitization:
+  externalized_item_details: false
+  externalized_order_identifier: false
+  externalized_address: false
+  externalized_amount_or_payment_details: false
+operator_minutes_removed: 3
+next_consumer: operator_at_2026-09-02T17:05:00-06:00_then_Var
+prohibitions_observed:
+  email_sent: false
+  application_submitted: false
+  spend_or_payment: false
+  task_mutated: false
+  account_or_security_change: false
+  deployment_merge_publication: false
+  destructive_deletion: false
+  sensitive_body_externalized: false
