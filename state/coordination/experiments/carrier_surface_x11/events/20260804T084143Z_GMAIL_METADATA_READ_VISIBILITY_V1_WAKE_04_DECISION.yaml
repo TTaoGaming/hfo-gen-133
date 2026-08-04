@@ -1,0 +1,111 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+event_id: X11_GMAIL_METADATA_READ_VISIBILITY_V1_WAKE_04_DECISION_20260804T084143Z
+experiment_id: X11_GMAIL_METADATA_READ_VISIBILITY_V1
+task_id_expected: 6a55089a9adc8191bda54541f7f9effa
+carrier: HFO_GEN133_X11
+wip: 1
+branch: agent/gen133-bootstrap-20260730
+prior_current_version: 83
+next_current_version: 84
+campaign_wake: 4
+campaign_target_wakes: 4
+accepted: true
+campaign_status: COMPLETE
+campaign_disposition: KEEP
+baseline:
+  prior_accepted_wakes: 3
+  prior_result_count: 0
+  prior_next_page_token_present: false
+  prior_permission_class: AUTHENTICATED_GMAIL_MESSAGE_ID_SEARCH_AVAILABLE
+  prior_error_class: NONE
+  prior_latency_ms: 396
+  prior_latency_samples_ms: [395, 262, 396]
+hypothesis: the_identical_fixed_impossible_subject_query_through_the_connected_Gmail_message_ID_search_surface_will_repeat_without_interactive_login_and_return_the_same_sanitized_zero_result_or_an_explicit_permission_error_without_reading_message_content_persisting_identifiers_mutating_mail_or_sending_anything
+controlled_factor: gmail_read_surface
+exact_probe:
+  mode: authenticated_gmail_impossible_marker_id_search
+  query: 'subject:"HFO_X11_GMAIL_METADATA_PROBE_9C7B1E5A4D2F8A6C"'
+  max_results: 1
+  all_other_probe_inputs_held_constant: true
+  interactive_login_permitted: false
+  message_content_read_permitted: false
+  message_identifier_persistence_permitted: false
+  mutation_permitted: false
+  send_permitted: false
+  persisted_fields_only:
+    - result_count
+    - next_page_token_present
+    - permission_class
+    - error_class
+    - latency_when_exposed
+    - operator_relay_minutes
+    - campaign_disposition
+    - next_factor
+measured_result:
+  execution_status: SUCCESS
+  result_count: 0
+  next_page_token_present: false
+  permission_class: AUTHENTICATED_GMAIL_MESSAGE_ID_SEARCH_AVAILABLE
+  error_class: NONE
+  latency_exposed: true
+  latency_ms: 300
+  latency_samples_ms: [395, 262, 396, 300]
+  latency_median_ms: 347.5
+  latency_range_ms: 134
+  operator_relay_minutes: 0
+  interactive_login_required: false
+  message_content_read: false
+  message_identifiers_persisted: false
+  sensitive_readback_externalized: false
+  mail_mutation_performed: false
+  send_performed: false
+  task_mutation_performed: false
+  changed_capability: false
+  campaign_decision: true
+  andon: false
+decision_basis: four_identical_bounded_probes_executed_successfully_with_zero_results_no_continuation_token_no_interactive_login_and_no_content_or_identifier_persistence_mutation_send_operator_relay_or_sensitive_externalization
+strongest_falsifier: the_identical_fixed_query_requires_interactive_login_returns_an_unclassified_permission_error_exposes_message_content_or_identifiers_outside_the_connector_boundary_or_produces_inconsistent_sanitized_result_counts_across_identical_wakes
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer:
+  - Reginleif
+  - Ratatoskr
+claim_ceiling: authenticated_Gmail_message_ID_search_execution_and_sanitized_result_count_visibility_only_not_mailbox_completeness_indexing_freshness_message_content_access_delivery_state_or_independent_verification
+same_provider_independence_claim: false
+binding_weight: 0
+honest_flaw: an_impossible_subject_marker_search_tests_only_one_authenticated_Gmail_ID_search_path_and_four_zero_results_do_not_establish_mailbox_completeness_index_freshness_content_access_delivery_state_or_cross_provider_independence
+next_factor: calendar_read_surface
+next_probe:
+  experiment_id: X11_CALENDAR_METADATA_READ_VISIBILITY_V1
+  campaign_wake: 1
+  mode: authenticated_calendar_impossible_marker_bounded_search
+  calendar_id: primary
+  query: HFO_X11_CALENDAR_METADATA_PROBE_4A9C7E2B6D1F8C30
+  time_min: 2026-01-01T00:00:00Z
+  time_max: 2026-12-31T23:59:59Z
+  max_results: 1
+  persist_only:
+    - result_count
+    - next_page_token_present
+    - permission_class
+    - error_class
+    - latency_when_exposed
+    - operator_relay_minutes
+  event_ids_persistence_allowed: false
+  event_content_persistence_allowed: false
+  mutation_allowed: false
+  send_allowed: false
+  interactive_login_allowed: false
+  sensitive_readback_externalization_allowed: false
+slack_action: POST_CAMPAIGN_DECISION
+valid_time_utc: 2026-08-04T08:41:43Z
+sealed: true
+---
+
+Wake 4 repeated the fixed impossible-subject Gmail message-ID search through
+the connected read surface. It again returned zero identifiers and no
+continuation token without interactive login, content read, identifier
+persistence, mutation, send, operator relay, or sensitive readback
+externalization. The four-wake campaign disposition is KEEP for this narrowly
+bounded capability only. The next controlled factor is Calendar metadata-read
+visibility using a fixed impossible marker inside a bounded time window.
