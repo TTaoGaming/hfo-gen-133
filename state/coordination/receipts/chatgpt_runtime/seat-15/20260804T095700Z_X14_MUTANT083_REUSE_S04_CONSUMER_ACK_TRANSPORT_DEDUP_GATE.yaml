@@ -1,0 +1,135 @@
+---
+schema_id: hfo.gen133.heritage_reuse_result.v1
+result_id: S15_X14_MUTANT083_REUSE_S04_CONSUMER_ACK_TRANSPORT_DEDUP_GATE_20260804T095700Z
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+task_id_match: true
+wip_limit: 1
+result: RETURN_REUSABLE_FAILURE_ANTIBODY
+valid_time_utc: 2026-08-04T09:57:00Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+expires_utc: 2026-08-04T13:44:25Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+privacy_ceiling: SANITIZED_PUBLIC_REPOSITORY_METADATA_AND_STRUCTURAL_CLAIM_CEILINGS_ONLY
+world_effect_ceiling: ONE_IMMUTABLE_GIT_RECEIPT_AND_ONE_SANITIZED_SLACK_POINTER_ONLY
+binding_decision: false
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+heritage_credit: 0_PENDING_EXPLICIT_NAMED_CONSUMER_USE
+sealed: false
+---
+
+self_probe:
+  identity_claim: HFO_GEN133_S15_HERITAGE_REUSE_AND_DEDUP_CELL
+  expected_task_id: 6a52f485409c8191aa06ea7911add3f3
+  observed_task_id: 6a52f485409c8191aa06ea7911add3f3
+  tools_used:
+    - github_recent_commit_search
+    - github_exact_commit_and_file_read
+    - github_repository_code_search
+    - github_create_file
+    - github_readback
+    - slack_send_sanitized_pointer
+  task_mutation_performed: false
+
+current_workitem:
+  workitem_id: X14_MUTANT_083_f0e078c661b4
+  mutation_class: FABRICATED_CONSUMER_ACK
+  mutation_subcase: OUTBOX_CONSUMER_LABEL_LAUNDERED_INTO_ACKNOWLEDGMENT_AND_ADOPTION
+  status: QUARANTINED_NONEXECUTABLE_ROUTED_PENDING_VERDICTS
+  candidate_commit: 7d9826611d6c2aba73889a153f4d1df4a628d464
+  candidate_path: state/coordination/experiments/false_green_x14/quarantine/20260804T095207Z_X12_SLACK_OUTBOX_FABRICATED_CONSUMER_ACK.mutant.yaml
+  candidate_blob_sha1: 208372d06aeff332be1b6bf32ce0380697117897
+  declared_canonical_byte_count: 252
+  declared_canonical_mutation_digest_sha256: f0e078c661b455d8dae51f6558e3d315de7d16ff9f5cf115a0088bfa689c7d0c
+  source_commit: f04ff97463db9fe2ab4ebf1b455ee1718d6c2108
+  source_path: state/coordination/experiments/durable_object_x12/slack_outbox/9b205fbc52cf9333e6afd999fe1bbe56dfec8769ca8e0944c82594d4cb453e31.json
+  source_blob_sha1: 4e1368e8242fd3acf90468c225605fc20c824210
+  source_valid_time_utc: 2026-08-04T09:44:25Z
+  source_consumer_label: Reginleif/Olrun
+  source_consumer_ack_present: false
+  source_effect_ceiling: ONE_SANITIZED_SLACK_POINTER_AFTER_EXACT_V86_READBACK_ONLY
+  later_delivery_receipt_commit: eb31085f6eca184f72dd103ef0660cbf1321ab42
+  later_delivery_receipt_path: state/coordination/experiments/durable_object_x12/slack_receipts/9b205fbc52cf9333e6afd999fe1bbe56dfec8769ca8e0944c82594d4cb453e31.json
+  later_delivery_receipt_effect_ceiling: SLACK_DELIVERY_RECEIPT_ONLY
+  later_delivery_receipt_result: DELIVERED_AFTER_FINAL_CURRENT_EXACT_READBACK
+  expected_verdict: REVISE
+  current_named_gate: S04_CONSUMER_ACK_EXACT_CONSUMER_PRINCIPAL_WORKITEM_SOURCE_DIGEST_ACK_BYTES_VALID_TIME_AND_POST_EFFECT_READBACK_GATE
+
+reused_prior_artifact:
+  artifact_class: DIRECT_PRIOR_S04_FAILURE_ANTIBODY
+  original_date_utc: 2026-08-01T14:15:04Z
+  source_repository: TTaoGaming/hfo-gen-133
+  source_commit: 6202e4cf766665008023b4c26b92083e2f814c17
+  source_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260801T141504Z_X14_MUTANT017_FABRICATED_CONSUMER_ACK_REVISE.yaml
+  source_blob_sha1: 04dc18e1e2e414e9e86ee9aec55ff7c12805c61e
+  prior_result: REVISE
+  prior_reason_code: FABRICATED_CONSUMER_ACK_WITHOUT_DISTINCT_DIGEST_BOUND_CONSUMER_RECEIPT
+  prior_named_gate: S04_EXPLICIT_CONSUMER_ACK_BINDING_GATE
+  reuse_mode: FAILURE_ANTIBODY_ONLY_NOT_A_DIRECT_MUTANT_083_VERDICT
+  reusable_rule: >-
+    A named consumer, route, outbox, channel, delivery marker, producer-authored status, Slack transport acknowledgment,
+    message link, or delivery receipt is not ConsumerAck or adoption. Require a distinct consumer-authored immutable
+    acknowledgment binding the exact source commit, path, blob or digest, WorkItem, accepted scope, effect ceiling,
+    valid time, prerequisite verifier result where applicable, and downstream consequence or post-effect readback.
+    Otherwise grant no acknowledgment, adoption, completion, fitness, outcome, or independent-verification credit.
+
+supported_claims:
+  - The exact immutable outbox names Reginleif/Olrun only as the intended consumer and contains no consumer_ack field.
+  - The later Git receipt proves Slack transport delivery after exact CURRENT readback and explicitly limits itself to SLACK_DELIVERY_RECEIPT_ONLY.
+  - Neither the outbox consumer label nor the later Slack transport receipt proves that Reginleif or Olrun authored an acknowledgment, adopted the WorkItem, accepted its scope, or produced a downstream readback.
+  - The direct prior S04 artifact rejected the same FABRICATED_CONSUMER_ACK class when consumer-authored exact-source receipt bindings were absent.
+  - Mutant 083 is a recurrence of an already-covered failure class and should receive zero novelty, diversity, adoption, or caught-gate credit from this S15 result.
+
+excluded_claims:
+  - This result is not a direct structural verdict on mutant 083 and does not replace S04 exact-byte review.
+  - It does not independently recompute the declared 252-byte canonical overlay or SHA-256.
+  - It does not prove that no later Slack reply, reaction, private message, or external consumer action exists.
+  - It does not prove compromised identity, replay resistance, partial-scope acceptance, proxy acknowledgment, or cross-system atomicity.
+  - It grants no ConsumerAck, adoption, terminalization, workflow completion, operator-relief, fitness, outcome, or independent-verification credit.
+
+acceptance_relevance:
+  exact_overlap: SAME_MUTATION_CLASS_AND_SAME_LAUNDERING_OF_NONCONSUMER_TRANSPORT_METADATA_INTO_CONSUMER_ACK
+  direct_verifier_required_checks:
+    - resolve mutant 083 and source at exact commit, path, and blob
+    - recompute the declared 252-byte canonical overlay and SHA-256
+    - confirm the source outbox lacks consumer_ack
+    - distinguish intended consumer, Slack delivery, message link, and producer-side receipt from consumer-authored acknowledgment
+    - require exact consumer principal, WorkItem and source digest binding, ack bytes, valid time, accepted scope, effect ceiling, and downstream readback
+    - return REVISE when those bindings remain absent
+  reducer_use: COUNT_AS_RECURRENCE_NOT_NEW_MUTATION_CLASS_OR_INDEPENDENT_ANTIBODY
+  heritage_credit_condition: >-
+    Credit remains zero unless S04, X14_CAMPAIGN_REDUCER, Reginleif, or Olrun explicitly records consumption
+    of this exact result ID, commit, path, and blob and identifies the reused gate checks.
+
+verifier:
+  primary: S04_STRUCTURAL_PREFLIGHT
+  distinct_requested: S09_STRATEGIC_REASONING_AND_VOTING_CELL_OR_DISTINCT_NON_CHATGPT_REPOSITORY_READER
+  self_verification_performed: false
+
+consumer:
+  named:
+    - X14_CAMPAIGN_REDUCER
+    - Reginleif
+    - Olrun
+  consumer_ack_observed: false
+
+expiry:
+  result_expiry_utc: 2026-08-04T13:44:25Z
+  earlier_invalidation:
+    - exact direct S04 verdict for mutant 083 is committed
+    - mutant 083 is superseded, withdrawn, or expires
+    - a distinct consumer-authored exact-source acknowledgment is committed and read back
+
+rollback:
+  action: IGNORE_OR_SUPERSEDE_THIS_IMMUTABLE_HERITAGE_OFFER
+  source_restoration_required: false
+  external_effect_compensation_required: false
+
+honest_flaw: >-
+  This is a same-provider historical gate applied to a conspicuous negative control, not independent evidence.
+  The later delivery receipt strengthens the transport-versus-consumption distinction but was authored by the producer-side workflow,
+  not by Reginleif or Olrun. Repository search can lag, and this wake did not inspect every Slack reply, reaction, DM, or private system;
+  therefore it excludes only the exact repository-bound ConsumerAck claim, not every possible off-repository consumer action.
