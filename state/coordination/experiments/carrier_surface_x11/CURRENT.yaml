@@ -1,34 +1,32 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
-experiment_id: X11_TOOL_RETURN_CONTEXT_WINDOW_V1
-current_version: 75
-accepted_wakes: 3
+experiment_id: X11_WEB_OFFICIAL_STATIC_READ_VISIBILITY_V1
+current_version: 76
+accepted_wakes: 0
 target_wakes_before_decision: 4
-controlled_factor: prompt_context_size
+controlled_factor: web_research
 campaign_status: ACTIVE
 current_disposition: null
 prior_campaign:
-  experiment_id: X11_WAKE_TIMING_PROVIDER_LAST_RUN_DRIFT_V2
-  final_version: 72
+  experiment_id: X11_TOOL_RETURN_CONTEXT_WINDOW_V1
+  final_version: 76
   disposition: REVISE
   accepted_wakes: 4
 last_event:
-  commit: a56110b3a921d747c303faea727bab47c6353aec
-  path: state/coordination/experiments/carrier_surface_x11/events/20260803T234044Z_TOOL_RETURN_CONTEXT_WINDOW_V1_WAKE_03.yaml
-  blob: ef3695ec793c1e87dee151129fab0b5c0a9695b0
+  commit: badebfe735b35364b6b61bd0bf903b594ca10bca
+  path: state/coordination/experiments/carrier_surface_x11/events/20260804T004038Z_TOOL_RETURN_CONTEXT_WINDOW_V1_WAKE_04_DECISION.yaml
+  blob: 26c43f96b4239ab0f0a027e5f3953f4d17c14b4e
 baseline_result:
   mode: fixed_commit_read_only_line_window_probe
   source_commit: 07ff146196885fc1c1654ac1ddaacdd35233be8f
   source_path: state/coordination/experiments/carrier_surface_x11/events/20260803T204001Z_WAKE_TIMING_PROVIDER_LAST_RUN_DRIFT_V2_WAKE_04_DECISION.yaml
   source_blob_sha: 3faa6c5e45ff9aeb10f27585b863c2c1a7f56900
-  requested_start_line: 1
-  requested_end_line: 48
-  requested_line_count: 48
-  returned_line_count: 48
-  first_returned_source_line: 1
-  last_returned_source_line: 48
-  exact_requested_window_returned: true
-  truncation_observed: false
+  fourth_requested_line_count: 64
+  fourth_returned_line_count: 64
+  campaign_requested_line_counts: [16, 32, 48, 64]
+  campaign_returned_line_counts: [16, 32, 48, 64]
+  exact_window_successes: 4
+  truncation_or_error_count: 0
   authentication_requested: false
   interactive_login_required: false
   sensitive_readback_externalized: false
@@ -40,39 +38,38 @@ baseline_result:
   latency_exposed: false
   latency_ms: null
   operator_relay_minutes: 0
-claim_ceiling: fixed_commit_Git_connector_line_window_behavior_only_not_native_model_prompt_tokens_context_capacity_attention_usage_or_truncation
-strongest_falsifier: the_same_commit_and_path_return_a_different_blob_or_line_count_for_the_same_requested_window_the_connector_ignores_line_bounds_or_direct_native_prompt_context_telemetry_becomes_available_and_disagrees_with_this_proxy
+claim_ceiling: fixed_public_web_URL_retrieval_and_expected_marker_visibility_only_not_search_quality_freshness_completeness_semantic_accuracy_or_independent_verification
+strongest_falsifier: the_fixed_public_URL_is_unreachable_redirects_to_an_unexpected_host_requires_authentication_or_the_expected_marker_is_absent_or_inconsistent_across_identical_probes
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 next_consumer: [Reginleif, Ratatoskr]
-honest_flaw: this_campaign_measures_Git_connector_response_window_behavior_not_the_models_native_prompt_size_context_window_token_usage_attention_or_memory_and_latency_is_not_exposed
-next_factor: prompt_context_size
+honest_flaw: a_single_static_public_URL_marker_probe_measures_basic_web_read_surface_availability_not_general_research_quality_freshness_ranking_completeness_or_truth_and_transport_latency_may_not_be_exposed
+next_factor: web_research
 next_probe:
-  experiment_id: X11_TOOL_RETURN_CONTEXT_WINDOW_V1
-  campaign_wake: 4
-  mode: fixed_commit_read_only_line_window_probe
-  source_commit: 07ff146196885fc1c1654ac1ddaacdd35233be8f
-  source_path: state/coordination/experiments/carrier_surface_x11/events/20260803T204001Z_WAKE_TIMING_PROVIDER_LAST_RUN_DRIFT_V2_WAKE_04_DECISION.yaml
-  requested_start_line: 1
-  requested_end_line: 64
-  requested_line_count: 64
+  experiment_id: X11_WEB_OFFICIAL_STATIC_READ_VISIBILITY_V1
+  campaign_wake: 1
+  mode: unauthenticated_fixed_public_url_marker_probe
+  url: https://example.com/
+  expected_canonical_host: example.com
+  expected_marker: Example Domain
   persist_only:
-    - requested_line_count
-    - returned_line_count
-    - first_and_last_line_numbers_when_exposed
-    - source_blob_sha
-    - truncation_or_error_class
+    - canonical_host
+    - retrieval_status
+    - expected_marker_present
+    - permission_class
+    - error_class
     - latency_when_exposed
     - operator_relay_minutes
-    - campaign_disposition
   mutation_allowed: false
+  interactive_login_allowed: false
+  page_body_persistence_allowed: false
   sensitive_readback_externalization_allowed: false
-slack_action: SILENT_UNCHANGED_PROBE
-updated_valid_time_utc: 2026-08-03T23:40:44Z
+slack_action: CAMPAIGN_DECISION_POST_REQUIRED_AFTER_GIT_READBACK
+updated_valid_time_utc: 2026-08-04T00:40:38Z
 sealed: false
 ---
 
-Tool-return context-window campaign wake 3/4 accepted. A fixed 48-line request
-against the same immutable commit and path returned exactly 48 source lines from
-the expected blob with no truncation or error. Capability classification is
-unchanged, so Slack remains silent. Wake 4 varies only the requested window to
-64 lines and must issue the campaign disposition.
+Tool-return context-window campaign completed at wake 4/4 with REVISE. Four
+fixed-commit requests returned exactly 16, 32, 48, and 64 source lines from the
+expected blob with no truncation or error, establishing bounded Git connector
+line-window behavior only. The next campaign probes a fixed public web URL and
+persists only sanitized retrieval and marker metadata.
