@@ -1,14 +1,14 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
 experiment_id: X13_SLACK_PUBLIC_MESSAGE_SEARCH_READONLY_001
-version: 86
-prior_version: 85
+version: 87
+prior_version: 86
 candidate: Slack_public_message_search_bounded_readonly_surface
-campaign_wake: 2_of_4
+campaign_wake: 3_of_4
 campaign_status: ACTIVE
 phase_1_completed: true
 phase_2_completed: true
-phase_3_completed: false
+phase_3_completed: true
 phase_4_completed: false
 phase_4_decision: PENDING
 adoption_mode: NOT_ADOPTED_CATALOG_EXPERIMENT_ONLY
@@ -16,13 +16,13 @@ carrier_task_id: 6a55c1733708819185088bf334e33ea5
 carrier_task_id_match: true
 wip: 1
 last_event:
-  commit: 529ed1024b050b1ea6b1e3d65150fe54689b64a3
-  path: state/coordination/experiments/cots_connector_x13/20260804T104944Z_SLACK_PUBLIC_MESSAGE_SEARCH_PHASE2_ZERO_RESULT_MICROUSE.md
-  blob_sha: e77d66d3f28b3d61d0d573b1686094364fd1b2b7
+  commit: 7c6b9e67e6396a5ce804381c86cda2e1af1a155d
+  path: state/coordination/experiments/cots_connector_x13/20260804T114657Z_SLACK_PUBLIC_MESSAGE_SEARCH_PHASE3_INVALID_CURSOR_FAILURE_PROBE.md
+  blob_sha: 3bc419120a3ad24358d2ad10f143c4b1a2e4b950
   exact_readback_completed: true
-prior_current_commit: 0dcf28c236e9b5b0f77a460a204da1025d3b9c96
-prior_current_blob_sha: 34edf8a8d73fcd19f53fe1e9ffa263468932b4b3
-effect_ceiling: BOUNDED_PUBLIC_READONLY_ZERO_RESULT_MICRO_USE
+prior_current_commit: f3d07b083c67c54d8356c789e94be3dd592b41f2
+prior_current_blob_sha: 649a801407da757fcb10b301ae4d5cdef7b42db6
+effect_ceiling: BOUNDED_PUBLIC_READONLY_INVALID_CURSOR_FAILURE_PROBE
 adoption_credit: 0
 fitness_credit: 0
 consumer_ack: NOT_OBSERVED
@@ -37,8 +37,9 @@ credentials:
   least_privilege_proven: false
 paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
 campaign_calls:
-  public_search_reads: 2
+  public_search_reads: 3
   completed_success_responses: 2
+  failed_responses: 1
   positive_result_responses: 1
   empty_result_responses: 1
   retries: 0
@@ -65,24 +66,39 @@ phase_2_measured_facts:
   typed_message_objects_returned: false
   response_shape: JSON_WRAPPER_CONTAINING_RENDERED_TEXT
   connector_latency_ms: NOT_SURFACED
+phase_3_measured_facts:
+  search_boundary: ONE_KNOWN_PUBLIC_CHANNEL_MESSAGES_ONLY_LIMIT_1_NO_CONTEXT_SYNTHETIC_INVALID_CURSOR
+  connector_completion: ERROR
+  connector_error_text: execution_failed_internal_error
+  connector_error_flag: true
+  results_returned: 0
+  continuation_cursor_returned: false
+  matched_content_or_identifiers_returned: false
+  typed_provider_error_envelope_returned: false
+  raw_http_status_headers_request_id_returned: false
+  connector_latency_ms: NOT_SURFACED
 official_contract:
-  search_messages: LEGACY_TIER_2_REQUIRES_SEARCH_READ_FOR_USER_TOKEN
-  result_variance: USER_UI_FILTERS_AND_CLOSE_PROXIMITY_COLLAPSING_DOCUMENTED
-  rate_limit_failure: HTTP_429_WITH_RETRY_AFTER_DOCUMENTED
+  search_messages: LEGACY_METHOD_ACCEPTS_CURSOR_AND_DOCUMENTS_INTERNAL_ERROR
+  general_cursor_contract: REUSE_NEXT_CURSOR_AND_INVALID_OR_STALE_CURSOR_CAN_YIELD_INVALID_CURSOR
+  pagination_model_variance: SEARCH_MESSAGES_IS_CLASSIFIED_AS_TRADITIONAL_PAGING_IN_GENERAL_PAGINATION_DOC
   connector_to_official_method_binding: NOT_PROVEN
 durability:
   connector_result: TRANSIENT
-  git_receipts: TWO_IMMUTABLE_EVENTS_READ_BACK
+  git_receipts: THREE_IMMUTABLE_EVENTS_READ_BACK
 observability:
   rating: PARTIAL
-  present: RESULT_STATE_TERMINAL_PAGINATION_MARKER_QUERY_ECHO_IN_RENDERED_TEXT
-  missing: TYPED_SCHEMA_RAW_HTTP_HEADERS_REQUEST_ID_RATE_LIMIT_TELEMETRY_UPSTREAM_ATTEMPT_COUNT
+  present: POSITIVE_RESULT_EMPTY_RESULT_TERMINAL_PAGINATION_GENERIC_ERROR_STATE_QUERY_ECHO_IN_RENDERED_TEXT
+  missing: TYPED_SCHEMA_RAW_PROVIDER_ERROR_RAW_HTTP_HEADERS_REQUEST_ID_RATE_LIMIT_TELEMETRY_UPSTREAM_ATTEMPT_COUNT
 portability:
-  rating: LOW_TO_MEDIUM
-  reason: PROVIDER_SPECIFIC_QUERY_SYNTAX_AND_RENDERED_TEXT_RESPONSE
+  rating: LOW
+  reason: PROVIDER_SPECIFIC_QUERY_CURSOR_SEMANTICS_AND_CONNECTOR_SPECIFIC_RENDERED_OR_ERROR_ENVELOPE
 failure_behavior:
   empty_result: NORMAL_COMPLETED_RESPONSE
-  explicit_failure_path: NOT_PROBED
+  invalid_cursor_probe: FAIL_CLOSED_WITH_GENERIC_INTERNAL_ERROR_AND_ZERO_CONTENT
+  diagnostic_precision: LOW
+permission_behavior:
+  explicit_acl_denial_probe: NOT_PERFORMED
+  reason: PRIVATE_CHANNELS_AND_DMS_REMAIN_OUTSIDE_APPROVED_BOUNDARY
 verifier:
   official_primary_docs_reviewed: true
   direct_connector_receipts_observed: true
@@ -90,27 +106,32 @@ verifier:
 consumer:
   catalog: HFO_COTS_CAPABILITY_INVENTORY
   operational: NOT_NAMED
-strongest_falsifier: SAME_PRINCIPAL_RAW_SLACK_SEARCH_AT_THE_SAME_OBSERVATION_WINDOW_DISAGREES_ON_MATCH_EXISTENCE_OR_TERMINAL_PAGINATION_STATE_FOR_THE_IDENTICAL_BOUNDARY
+strongest_falsifier: SAME_PRINCIPAL_RAW_SLACK_REQUEST_WITH_IDENTICAL_BOUNDED_QUERY_AND_INVALID_CURSOR_RETURNS_SPECIFIC_INVALID_CURSOR_OR_OTHER_PROVIDER_ERROR_WHILE_CONNECTOR_CONTINUES_TO_RETURN_GENERIC_INTERNAL_ERROR
 mandatory_gates:
   - PUBLIC_SEARCH_ONLY_UNLESS_PRIVATE_SCOPE_IS_EXPLICITLY_APPROVED
   - BOUND_CHANNEL_CONTENT_TYPE_RESULT_COUNT_AND_CONTEXT
-  - TREAT_POSITIVE_AND_ZERO_RESULTS_AS_NONAUTHORITATIVE_AND_POTENTIALLY_FILTERED_OR_DEDUPLICATED
+  - TREAT_POSITIVE_ZERO_AND_ERROR_RESULTS_AS_NONAUTHORITATIVE
+  - NEVER_INTERPRET_ZERO_RETURNED_CONTENT_ON_ERROR_AS_SLACK_ABSENCE
   - DO_NOT_PERSIST_MATCHED_CONTENT_IDENTIFIERS_CURSORS_OR_EXACT_QUERY_TEXT_WITHOUT_NAMED_RETENTION_NEED
   - CONCISE_NO_CONTEXT_IS_NOT_A_METADATA_ONLY_BOUNDARY
   - ASSUME_QUERY_TEXT_MAY_BE_ECHOED_IN_CONNECTOR_OUTPUT
-  - REQUIRE_TYPED_SCHEMA_FOR_OPERATIONAL_AUTOMATION
+  - USE_ONLY_IMMEDIATELY_RETURNED_COMPATIBLE_CONTINUATION_CURSORS
+  - DO_NOT_AUTOMATICALLY_RETRY_INTERNAL_ERROR_WITHOUT_CHANGED_EVIDENCE_OR_RAW_PROVIDER_WITNESS
+  - DO_NOT_BRANCH_OPERATIONAL_LOGIC_ON_CONNECTOR_ERROR_TEXT_ALONE
+  - REQUIRE_TYPED_SCHEMA_AND_INDEPENDENT_PROVIDER_WITNESS_FOR_OPERATIONAL_AUTOMATION
   - DO_NOT_CLAIM_UPSTREAM_METHOD_SCOPE_QUOTA_RAW_PARITY_OR_ZERO_HIDDEN_RETRIES
   - REQUIRE_NAMED_CONSUMER_ACK_AND_MEASURED_OUTCOME_BEFORE_OPERATIONAL_OR_FITNESS_CREDIT
-honest_flaw: ONLY_ONE_POSITIVE_AND_ONE_SYNTHETIC_ZERO_RESULT_PUBLIC_SEARCH_HAVE_BEEN_EXERCISED; THE CONNECTOR RETURNS_RENDERED_TEXT_AND_ECHOES_QUERY_TEXT, WHILE IDENTITY_SCOPE_COMPLETENESS_FILTERING_DEDUPLICATION_PAGINATION_FAILURES_RATE_LIMITS_HIDDEN_RETRIES_CONSUMER_VALUE_AND_TIME_SAVINGS_REMAIN_UNVERIFIED
+honest_flaw: ONE_SYNTHETIC_INVALID_CURSOR_CALL_CANNOT_PROVE_CURSOR_CAUSATION; TRANSIENT_SLACK_FAILURE_CONNECTOR_FAILURE_METHOD_MISMATCH_ARGUMENT_TRANSLATION_OR_WRAPPER_NORMALIZATION_REMAIN_POSSIBLE, WHILE PERMISSION_DENIAL_REAL_CURSOR_CONTINUATION_STALE_VALID_CURSOR_RATE_LIMITS_HIDDEN_RETRIES_RAW_PARITY_CONSUMER_VALUE_AND_TIME_SAVINGS_REMAIN_UNVERIFIED
 next_phase:
-  phase: 3_of_4
-  action: ONE_BOUNDED_PUBLIC_SEARCH_FAILURE_PROBE_USING_A_SYNTHETIC_INVALID_PAGINATION_CURSOR
-  constraints: NO_PRIVATE_SEARCH_NO_CONTEXT_NO_RETRY_NO_FALLBACK_NO_CONTENT_PERSISTENCE_NO_MUTATION
-review_expiry_utc: 2026-08-11T10:49:44Z
-valid_time_utc: 2026-08-04T10:49:44Z
-recorded_time_utc: 2026-08-04T10:49:44Z
+  phase: 4_of_4
+  action: DECISION_ONLY_WITH_NO_ADDITIONAL_SLACK_CANDIDATE_CALL
+  provisional_disposition: DEFER_OR_ADOPT_WITH_GATES_CATALOG_ONLY
+  constraints: NO_CANDIDATE_CALL_NO_PRIVATE_SEARCH_NO_RETRY_NO_FALLBACK_NO_CONTENT_PERSISTENCE_NO_MUTATION
+review_expiry_utc: 2026-08-11T11:46:57Z
+valid_time_utc: 2026-08-04T11:46:57Z
+recorded_time_utc: 2026-08-04T11:46:57Z
 ---
 
-# X13 CURRENT v86
+# X13 CURRENT v87
 
-Slack public message search phase 2 completed with one bounded read-only zero-result micro-use. The connector returned a terminal no-more-pages state and no matched content, but echoed the exact query text inside rendered output. Zero results remain nonauthoritative, operational and fitness credit remain zero, and phase 3 is limited to one synthetic invalid-cursor failure probe.
+Slack public message search phase 3 completed with one bounded invalid-cursor failure probe. The connector failed closed and returned no content, but normalized the failure to generic `execution_failed: internal_error` without a typed provider error, raw status, request identity, or quota telemetry. Adoption and fitness credit remain zero; phase 4 is decision-only and must make no additional Slack candidate call.
