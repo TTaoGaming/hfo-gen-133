@@ -1,0 +1,110 @@
+---
+schema_id: hfo.gen133.s07_bounded_builder_return.v1
+result: HOLD
+work_item_id: SPATIAL_FACTORY_HTML5_SNAKE_PENDING_DIRECTION_COMMAND_GATE_001
+seat: S07_BOUNDED_CODE_PATCH_BUILDER
+wip: 1
+carrier_task_id_expected: 6a506f6dc5c08191b95f1707d7f00c2d
+carrier_task_id_observed: 6a506f6dc5c08191b95f1707d7f00c2d
+carrier_task_id_match: true
+valid_time_utc: 2026-08-04T12:28:26Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+repository_head_observed_before_write: 7f579b67e93ed909175f22c19e019d054c91620f
+---
+
+self_probe:
+  identity_source: scheduled_runtime_envelope
+  task_id_match: true
+  tools_exposed:
+    - authenticated GitHub branch, commit, compare, file read, and file write
+    - authenticated Slack channel write
+  execution_surfaces_absent:
+    - target repository checkout
+    - host shell
+    - browser runtime
+    - direct Codex executor ingress
+    - direct Claude executor ingress
+  task_mutation_performed: false
+  self_grading_performed: false
+
+selection:
+  selected_claim:
+    claim_id: S02_SPATIAL_FACTORY_HTML5_SNAKE_FOCUS_OWNERSHIP_SUCCESSOR_20260804T110626Z
+    claim_commit: 6540b207f6ad3f295f3351b72edfae23952adb34
+    claim_blob: 14add9834c95d5e5a84ceacef133995eff6d83e3
+    claim_path: projects/spatial-app-factory/claims/20260804T110626Z_SPATIAL_FACTORY_HTML5_SNAKE_FOCUS_OWNERSHIP_SUCCESSOR.claim.yaml
+    acceptance_sha256: 03e99ed29dbfa3d0ed6fdad4b794477e930a6431d35c39d07ebb194fba350447
+    producer_return_due_utc: 2026-08-04T13:16:31Z
+    expiry_utc: 2026-08-04T14:16:31Z
+    unexpired_at_probe: true
+    permits_effect: ONE_INTERNAL_UNMERGED_SPECIMEN_BRANCH_FILE_AND_TEST_RETURN_ONLY
+  disposition: HOLD_ROUTE_CLOCK_INFEASIBLE
+
+verified_contract:
+  target_repository: TTaoGaming/TAGS
+  base_branch: main
+  base_sha: 1271e25306fe8ef8baea32704cf022435703d498
+  dedicated_branch_rule: agent/html5-snake-pending-direction-canary-*
+  allowed_paths:
+    - prototypes/html5-snake-spatial-canary/**
+  forbidden_paths: every path outside prototypes/html5-snake-spatial-canary/**
+  rollback: delete only the unmerged dedicated specimen branch and its working tree after preserving producer and verifier receipts
+  structural_verifier: S04_STRUCTURAL_PREFLIGHT_VERIFIER
+  packet_compiler: S06_CODE_WORK_PACKET_COMPILER
+  technical_verifier: DISTINCT_BROWSER_CAPABLE_NONPRODUCER
+  provenance_verifier: DISTINCT_NONPRODUCER_PROVENANCE_REVIEWER
+  consumer: S09_STRATEGIC_REASONING_AND_VOTING
+  acceptance_test_summary:
+    - add deterministic failing behavior specimen first when applicable
+    - shared requestDirection seam with repeat, focus-owner, modifier, composition, editable-target, and cancellation gates
+    - one pending perpendicular direction per tick and activation-edge BEGIN/HELD/COMMIT-or-CANCEL ownership
+    - 8 fps and 60 fps traces, Chromium and Firefox focus/default-action/blur parity, and zero-network evidence
+    - exact copied-byte provenance manifest and distinct nonproducer verification before ConsumerAck
+
+route_probe:
+  previous_s07_receipt_commit: 1c40207fec84ded755f44fed6b31983a8ad90c5f
+  observed_canonical_head: 7f579b67e93ed909175f22c19e019d054c91620f
+  commits_after_previous_s07_receipt: 18
+  exact_claim_bound_s04_pass_in_changed_range: NOT_FOUND
+  s06_non_hold_route_to_s07_in_changed_range: NOT_FOUND
+  direct_executor_ingress: NOT_EXPOSED
+  required_minimum_seconds_before_producer_due_for_s06_non_hold: 6300
+  latest_permitted_non_hold_route_time_utc: 2026-08-04T11:31:31Z
+  probe_time_utc: 2026-08-04T12:28:26Z
+  route_window_closed_by_seconds: 3415
+  seconds_remaining_to_producer_due: 2885
+  consequence: >-
+    The claim is still unexpired, but acceptance condition 2 can no longer be satisfied because fewer than 105 minutes
+    remain before producer_return_due_utc. A late S04 pass or S06 route cannot authorize a conforming producer action
+    under these immutable claim bytes.
+
+producer_effect:
+  target_branch_created: false
+  target_repository_changed: false
+  branch_sha: null
+  changed_paths: []
+  commands_run: []
+  command_outputs: []
+  exit_codes: []
+  tests_run: []
+  test_evidence: NONE_ROUTE_AND_CLOCK_BLOCKED
+  execution_label: EXECUTION_BLOCKED
+
+remaining_risk:
+  - the unexpired claim may be mistaken for executable even though its mandatory route buffer is already impossible
+  - no exact claim-bound S04 PASS_STRUCTURAL or S06 non-HOLD route was present at the observed canonical head
+  - direct checkout, shell, browser, and executor ingress remain unavailable to this carrier
+  - browser compatibility, zero-network behavior, copied-byte provenance, and public chain of title remain unverified
+
+honest_flaw: >-
+  This is a point-in-time Git comparison and clock calculation, not execution evidence. The carrier cannot run the target
+  repository or browser tests. It can prove that the current immutable claim's routing clock is no longer satisfiable,
+  but it cannot determine whether a future successor will expose a real executor surface.
+
+next_gate:
+  - S02 issues a fresh nonrenewable successor with a feasible producer-return window and unchanged explicit effect ceiling
+  - S04 binds an exact PASS_STRUCTURAL to that successor commit, blob, acceptance digest, and source evidence
+  - S06 emits a non-HOLD route to S07 only with proven direct executor ingress and the full required time buffer
+  - S07 then creates at most one dedicated TAGS branch and performs the bounded test-first patch
