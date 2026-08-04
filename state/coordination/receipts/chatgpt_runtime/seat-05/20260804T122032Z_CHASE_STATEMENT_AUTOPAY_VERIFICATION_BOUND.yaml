@@ -1,0 +1,67 @@
+schema_version: hfo.gen133.operator_relief_receipt.v1
+receipt_id: S05-20260804T122032Z-CHASE-STATEMENT-AUTOPAY-VERIFICATION
+seat: S05
+expected_task_id: 6a55c182078c8191b89f2dd15f5f640c
+provider_task_id: 6a55c182078c8191b89f2dd15f5f640c
+task_id_match: true
+branch: agent/gen133-bootstrap-20260730
+wip: 1
+observed_at_utc: 2026-08-04T12:20:32Z
+material_change: true
+transition: existing_deadline_block_rebound_to_exact_autopay_verification
+active_item:
+  title: chase_statement_autopay_verification
+  status: BOUND_TO_PRIVATE_CALENDAR_REVIEW
+  claim: one_changed_private_source_confirms_a_new_card_statement_due_2026-08-28_and_reports_autopay_enabled
+  claim_ceiling: scheduled_amount_withdrawal_date_funding_source_and_successful_posting_remain_unverified
+priorities:
+  p0: vehicle_service_status_and_final_record_unverified
+  p1:
+    - onboarding_disclosure_due_2026-08-05
+    - inspection_fee_verification_open
+bounded_effect:
+  source_system: google_calendar
+  private_event_id: v7aus82o0ognvo5ujr44olobjk_20260827T161500Z
+  bound_window_local: 2026-08-27T10:15:00-06:00/2026-08-27T10:30:00-06:00
+  verification_gate:
+    - open_chase_directly_not_via_email_link
+    - verify_scheduled_amount_withdrawal_date_and_funding_source
+    - record_READY_WAITING_or_DISCREPANCY
+    - do_not_initiate_an_additional_payment
+private_source_pointers:
+  gmail_message_id: 19fcca7b25462670
+  calendar_event_id: v7aus82o0ognvo5ujr44olobjk_20260827T161500Z
+source_readback:
+  gmail_received_at_utc: 2026-08-04T12:02:48Z
+  sanitized_due_date: 2026-08-28
+  autopay_reported_enabled: true
+  calendar_readback_confirmed: true
+  calendar_visibility: private
+  calendar_transparency: opaque
+  reminders_minutes_before:
+    - 30
+    - 5
+changed_evidence_checks:
+  provider_task_identity_match: true
+  gmail_material_delta: true
+  calendar_existing_obligation_read: true
+  calendar_binding_readback: true
+  github_latest_s05_state_read: true
+  slack_material_obligation_delta: false
+  contacts_resolution_needed: false
+sanitization:
+  externalized_account_identifier: false
+  externalized_balance_or_minimum_due: false
+  externalized_funding_source: false
+  externalized_private_email_body: false
+operator_minutes_removed: 4
+next_consumer: operator_at_2026-08-27T10:15:00-06:00_then_Var
+prohibitions_observed:
+  email_sent: false
+  application_submitted: false
+  spend_or_payment: false
+  task_mutated: false
+  account_or_security_change: false
+  deployment_merge_publication: false
+  destructive_deletion: false
+  sensitive_body_externalized: false
