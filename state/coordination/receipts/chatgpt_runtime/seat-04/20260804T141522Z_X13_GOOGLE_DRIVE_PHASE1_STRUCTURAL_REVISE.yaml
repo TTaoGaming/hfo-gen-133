@@ -1,0 +1,176 @@
+schema_id: hfo.gen133.s04.structural_preflight_result.v1
+result: REVISE
+terminal: false
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+fitness_credit: 0
+adoption_credit: 0
+
+self_probe:
+  role: S04_STRUCTURAL_PREFLIGHT_VERIFIER
+  expected_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  observed_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  task_id_match: true
+  task_enabled_observed: true
+  wip: 1
+  observed_surfaces:
+    - NATIVE_AUTOMATIONS_INVENTORY_READ
+    - GITHUB_BRANCH_COMMIT_FILE_BLOB_READ
+    - GITHUB_CREATE_FILE
+    - GITHUB_READBACK
+    - DETERMINISTIC_UTF8_SHA256_AND_GIT_BLOB_RECOMPUTE
+    - SLACK_POINTER_POST_AVAILABLE
+  task_mutation_performed: false
+  candidate_edit_performed: false
+  source_system_query_rerun: false
+  private_metadata_materialized: false
+  self_grading_performed: false
+  independent_quorum_claimed: false
+
+canonical:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+
+selection:
+  rule: NEWEST_IMMUTABLE_CANDIDATE_ADDRESSED_TO_S04_NOT_AUTHORED_BY_S04
+  selected_candidate:
+    authoring_seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+    commit_sha: 870fa1b9c09de79cd5cd584610fa86f6ec36c724
+    path: state/coordination/receipts/chatgpt_runtime/seat-03/20260804T141020Z_X13_GOOGLE_DRIVE_SEARCH_PHASE1_RETURN_BINDINGS_REVISE.yaml
+    git_blob_sha1: b4f2b16ebeb7b7d6258c67395c7061703dbfe2c4
+    exact_utf8_bytes: 6584
+    sha256: 5cdfcbdf7408c6a0289c19db73abf3a02d38d65cc8379eb81ed13bc8035663d2
+    raw_git_blob_recomputed: true
+    authored_by_s04: false
+    target_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+    target_task_id_match: true
+    recorded_time_utc: 2026-08-04T14:10:20Z
+    expiry_utc: 2026-08-11T13:48:35Z
+    fresh_at_verification: true
+  branch_reachability:
+    candidate_commit_is_reachable_from_canonical_branch: true
+    newer_s04_addressed_immutable_candidate_observed: false
+    selection_limit: RECENT_COMMIT_AND_EXACT_PATH_READ_NONTRANSACTIONAL_REPOSITORY_INDEXING_CAN_LAG
+
+exact_recomputation:
+  candidate_packet:
+    schema_parse: EXACTLY_ONE_YAML_MAPPING
+    schema_id: hfo.gen133.s03.verification_route.v1
+    declared_canonicalization: NONE
+    binding_rule: EXACT_RAW_UTF8_BYTES_PLUS_GIT_BLOB_SHA1
+    exact_utf8_bytes: 6584
+    sha256: 5cdfcbdf7408c6a0289c19db73abf3a02d38d65cc8379eb81ed13bc8035663d2
+    git_blob_sha1: b4f2b16ebeb7b7d6258c67395c7061703dbfe2c4
+    pointer_match: true
+  phase1_source_event:
+    commit_sha: b8b399e683af9033dcc9c1cfd597f9e17202eac8
+    path: state/coordination/experiments/cots_connector_x13/20260804T134835Z_GOOGLE_DRIVE_SEARCH_METADATA_PHASE1_BASELINE.md
+    schema_id: hfo.gen133.x13.cots_connector_event.v1
+    exact_utf8_bytes: 5738
+    trailing_newline: false
+    sha256: 9a043c0a84736ab1f32cabd3251b5fb63d4ed542249847b2c6dd190c1b2b93dc
+    git_blob_sha1: 3541cedab6e0463b7183822fa98aed6102812566
+    route_pointer_match: true
+    source_status: PHASE1_ACCEPTED_WITH_GATES
+  current_pointer:
+    commit_sha: cd30b049a096e1f5db3cba763db7e4bc108337b6
+    path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    schema_id: hfo.gen133.x13.cots_connector_current.v1
+    version: 89
+    exact_utf8_bytes: 2478
+    trailing_newline: true
+    sha256: e290d8894a5ac64095072250e4050c3e3f066622fc3ec1bd23d8f8263a6f442b
+    git_blob_sha1: 2e9f5569122fdddb842672d846e740216c0a52ea
+    route_pointer_match: true
+    event_pointer_match: true
+    campaign_status: ACTIVE
+    consumer_ack: NOT_OBSERVED
+    adoption_credit: 0
+    fitness_credit: 0
+
+structural_checks:
+  freshness:
+    result: PASS
+    finding: ROUTE_AND_SOURCE_POINTERS_ARE_UNEXPIRED_AND_CANONICAL_BRANCH_REACHABLE
+  authority:
+    result: PASS_WITH_CEILING
+    finding: ROUTE_PRESERVES_READ_ONLY_NONTERMINAL_ZERO_CREDIT_CEILING_AND_GRANTS_NO_EXTERNAL_EFFECT_AUTHORITY
+  task_binding:
+    result: PASS
+    finding: S04_S03_AND_X13_NATIVE_TASK_IDS_MATCH_ENABLED_PROVIDER_RECORDS
+  actor_carrier_separation:
+    result: REVISE
+    finding: SEAT_IDENTITIES_AND_CARRIER_TASK_IDS_ARE_SEPARATELY_NAMED_BUT_AUTHENTICATED_GOOGLE_PRINCIPAL_AND_EFFECTIVE_SCOPE_REMAIN_UNKNOWN
+  workitem_acceptance_binding:
+    result: REVISE
+    finding: WORKITEM_ID_IS_EXPLICITLY_NOT_BOUND_AND_NO_ACCEPTANCE_DIGEST_EXISTS
+  idempotency:
+    result: REVISE
+    finding: NO_NONCE_IDEMPOTENCY_KEY_OR_IDEMPOTENCY_DOMAIN_BINDS_THIS_CORRELATION
+  lease_and_expiry:
+    result: REVISE
+    finding: ROUTE_EXPIRY_EXISTS_BUT_NO_PRODUCER_LEASE_OR_PRODUCER_RETURN_EXPIRY_IS_BOUND
+  canonical_request_response:
+    result: REVISE
+    finding: NO_CANONICAL_REQUEST_DIGEST_RESPONSE_DIGEST_OR_AUTHORIZED_SOURCE_SYSTEM_READBACK_DIGEST
+  producer_return:
+    result: REVISE
+    finding: EVENT_IS_AN_EXPERIMENT_OBSERVATION_NOT_A_WORKITEM_BOUND_CANONICAL_PRODUCER_RETURN
+  privacy:
+    result: PASS
+    finding: EXACT_DRIVE_TITLE_ID_URL_PARENT_ID_OWNER_AND_CONTENT_REMAIN_INTENTIONALLY_UNPERSISTED_AND_WERE_NOT_RETRIEVED_DURING_VERIFICATION
+  rollback:
+    result: PASS_FOR_ROUTE_REVISE_FOR_TERMINAL_RETURN
+    finding: NO_WORLD_EFFECT_REQUIRES_ROLLBACK_BUT_NO_WORKITEM_BOUND_RETURN_LEVEL_ROLLBACK_EXISTS
+  verifier:
+    result: REVISE
+    finding: S04_IS_DISTINCT_NONPRODUCER_BUT_SAME_PROVIDER_NONBINDING_AND_NO_DIGEST_BOUND_STOOD_OR_FELL_EXISTS
+  consumer:
+    result: REVISE
+    finding: NO_OPERATIONAL_CONSUMER_IS_NAMED_AND_NO_EXPLICIT_POST_STOOD_CONSUMERACK_EXISTS
+
+strongest_fake_green_mutant:
+  mutant_id: X14_MUTANT_087_2a98fb975928
+  commit_sha: 9e67252d16e9722f1ae236e3466519add3e09068
+  path: state/coordination/experiments/false_green_x14/quarantine/20260804T135131Z_X13_DRIVE_PRIVACY_MARKER.mutant.yaml
+  git_blob_sha1: 63913818c77ad6b7b29219c1e76ecf5501d03f2a
+  mutation_class: PRIVACY_MARKER
+  canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_bytes: 363
+  canonical_overlay_sha256: 2a98fb975928ec311e21c3ac4d644766d1c4d6a4869246e32ae24b0f6fc4a926
+  recomputed_digest_match: true
+  rejected_claim: PUBLIC_SAFE_TO_PERSIST_EXACT_DRIVE_TITLE_FILE_ID_URL_PARENT_ID_OWNER_AND_CONTENT_WITHOUT_NAMED_RETENTION_NEED
+  rejection_reason: SOURCE_EXPLICITLY_WITHHOLDS_EXACT_METADATA_AND_REQUIRES_NAMED_RETENTION_NEED_MINIMUM_NECESSARY_OWNER_AUTHORIZATION_AND_EXTERNALIZATION_REVIEW
+
+verdict:
+  result: REVISE
+  reason: >-
+    The Git route, source event, and CURRENT v89 pointers are internally consistent,
+    fresh, read-only, privacy-preserving, and exactly reproducible at the Git byte
+    layer. They do not bind a WorkItem claim or acceptance digest, producer lease,
+    nonce or idempotency domain, authenticated Google principal and effective scope,
+    canonical request and source-response digests, canonical producer-return digest,
+    return expiry, digest-bound STOOD or FELL, operational consumer, or explicit
+    post-STOOD ConsumerAck. PHASE1_ACCEPTED_WITH_GATES therefore remains a bounded
+    catalog observation and cannot become terminal, adopted, consumed, or credited.
+
+consumer:
+  next_consumer: S03_REDUCER_AND_X13_CONNECTOR_PRIVACY_GATE_CONSUMER
+  permitted_use: CORRECT_NONTERMINAL_STRUCTURAL_PREFLIGHT_ONLY
+  forbidden_use:
+    - INDEPENDENT_VERIFICATION_CLOSURE
+    - STOOD_OR_FELL_SUBSTITUTION
+    - CONSUMERACK_INFERENCE
+    - ADOPTION_OR_FITNESS_CREDIT
+    - PRIVATE_METADATA_PERSISTENCE
+    - EXTERNAL_EFFECT_AUTHORITY
+
+rollback: RETAIN_OR_IGNORE_THIS_IMMUTABLE_PREFLIGHT_RECEIPT_NO_SOURCE_TASK_DRIVE_SLACK_OR_PROVIDER_STATE_CHANGED
+honest_flaw: >-
+  Verification proves exact durable Git bytes and native task-ID observations only.
+  It does not prove the intentionally omitted Drive response bytes, upstream query
+  translation, Google principal, OAuth scope, hidden retries, pagination,
+  completeness, quota debit, provider independence, or consumer value. Repository
+  candidate discovery is nontransactional and indexing may lag.
+recorded_time_utc: 2026-08-04T14:15:22Z
