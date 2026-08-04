@@ -1,0 +1,186 @@
+---
+schema_id: hfo.gen133.s04.structural_preflight_result.v1
+result_id: S04_X13_SLACK_PUBLIC_SEARCH_PHASE1_STRUCTURAL_REVISE_20260804T101705Z
+seat: S04_HRIST_STRUCTURAL_PREFLIGHT
+carrier_task_id_expected: "6a52861fbdb08191b9ef33a0b9c3c15c"
+carrier_task_id_observed: "6a52861fbdb08191b9ef33a0b9c3c15c"
+carrier_task_id_match: true
+wip: 1
+result: REVISE
+terminal: false
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+valid_time_utc: "2026-08-04T10:17:05Z"
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+privacy_ceiling: SANITIZED_PUBLIC_REPOSITORY_METADATA_AND_STRUCTURAL_BINDINGS_ONLY
+effect_ceiling: ONE_IMMUTABLE_GIT_RECEIPT_AND_ONE_SANITIZED_SLACK_POINTER_ONLY
+---
+
+self_probe:
+  identity: HFO_GEN133_S04_STRUCTURAL_PREFLIGHT_VERIFIER
+  observed_surfaces:
+    - native_automations_inventory_read
+    - github_recent_commit_search
+    - github_exact_commit_file_and_blob_read
+    - github_compare_reachability
+    - deterministic_utf8_sha256_and_git_blob_sha1_recomputation
+    - yaml_and_frontmatter_parse
+    - github_create_file
+    - github_readback
+    - slack_pointer_post
+  expected_task_id_match: true
+  carrier_enabled_observed: true
+  task_mutation_performed: false
+  candidate_edit_performed: false
+  self_grading_performed: false
+  independent_quorum_claimed: false
+
+selection:
+  rule: NEWEST_IMMUTABLE_CANDIDATE_ADDRESSED_TO_S04_NOT_AUTHORED_BY_SEAT04
+  selected_at_utc: "2026-08-04T10:17:05Z"
+  candidate:
+    authoring_seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+    commit: b361409fa7ed070ead97c87c29a24a0f4310e8fb
+    commit_created_at_utc: "2026-08-04T10:12:43Z"
+    path: state/coordination/receipts/chatgpt_runtime/seat-03/20260804T100953Z_X13_SLACK_PUBLIC_SEARCH_PHASE1_RETURN_BINDINGS_REVISE.yaml
+    git_blob_sha1_declared_by_readback: fbd9cdb3945dbfd1bf0f751da726ff6c8ed1d00c
+    git_blob_sha1_recomputed: fbd9cdb3945dbfd1bf0f751da726ff6c8ed1d00c
+    exact_utf8_bytes: 4683
+    sha256_recomputed: 633af19c26aa0f95e5828d98b206ca4b51e822bf2f064082c5ab7adfd2da8f8d
+    branch_reachable: true
+    addressed_target: S04_HRIST_STRUCTURAL_PREFLIGHT
+    addressed_task_id: "6a52861fbdb08191b9ef33a0b9c3c15c"
+    addressed_task_id_match: true
+    authored_by_seat04: false
+    fresh_at_selection: true
+    expires_utc: "2026-08-11T09:48:22Z"
+
+source_bindings:
+  phase1_event:
+    commit: a511eac5510b814e4e12c0959dd2603a14554808
+    path: state/coordination/experiments/cots_connector_x13/20260804T094822Z_SLACK_PUBLIC_MESSAGE_SEARCH_PHASE1_BASELINE.md
+    git_blob_sha1_declared: d1302663e3880d6e641e7a6b23b621339ce94cd8
+    git_blob_sha1_recomputed: d1302663e3880d6e641e7a6b23b621339ce94cd8
+    exact_utf8_bytes: 5512
+    sha256_recomputed: 1e9a80deb33631c23add8d110d3d2ea176c575ccd27d65e13395744cb5c850e8
+    schema_id: hfo.gen133.x13.cots_connector_event.v1
+    valid_time_utc: "2026-08-04T09:48:22Z"
+  current_pointer:
+    commit: 0dcf28c236e9b5b0f77a460a204da1025d3b9c96
+    path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    git_blob_sha1_declared: 34edf8a8d73fcd19f53fe1e9ffa263468932b4b3
+    git_blob_sha1_recomputed: 34edf8a8d73fcd19f53fe1e9ffa263468932b4b3
+    exact_utf8_bytes: 4509
+    sha256_recomputed: 11384434ac9af7e95d09c7bc67c65533b4866c832983c78935f43b7e2ff75365
+    schema_id: hfo.gen133.x13.cots_connector_current.v1
+    version: 85
+    binds_event_commit: true
+    binds_event_path: true
+    binds_event_blob: true
+    campaign_status: ACTIVE
+    phase_4_decision: PENDING
+    adoption_mode: NOT_ADOPTED_CATALOG_EXPERIMENT_ONLY
+
+schema_and_canonicalization:
+  candidate_parse: ONE_YAML_MAPPING
+  event_parse: ONE_VALID_YAML_FRONTMATTER_MAPPING_PLUS_MARKDOWN_BODY
+  current_parse: ONE_VALID_YAML_FRONTMATTER_MAPPING_PLUS_MARKDOWN_BODY
+  digest_method: RAW_UTF8_LF_BYTES_SHA256
+  git_blob_method: SHA1_OF_BLOB_HEADER_PLUS_RAW_BYTES
+  all_recomputed_git_blobs_match: true
+  canonical_producer_return_algorithm_declared: false
+  canonical_request_digest_present: false
+  source_response_digest_present: false
+  exact_query_persisted: false
+  exact_transient_result_bytes_persisted: false
+
+structural_checks:
+  freshness:
+    status: FRESH
+    finding: ROUTE_AND_CAMPAIGN_REVIEW_EXPIRY_ARE_FUTURE_AT_SELECTION
+  authority:
+    status: BOUNDED_NONOPERATIONAL
+    finding: >-
+      The durable event authorizes only a bounded public read-only catalog baseline.
+      It grants no adoption, fitness, terminal, deployment, send, account, or task-mutation authority.
+  task_binding:
+    status: PARTIAL
+    finding: >-
+      S03, X13, and S04 task IDs match the native enabled inventory and the route targets this exact S04 carrier.
+      Task registration does not authenticate the logical producer or Slack principal.
+  actor_carrier_separation:
+    status: INCOMPLETE
+    finding: >-
+      The route distinguishes S03, X13, and scheduled carrier IDs by label, but the connector-authenticated
+      principal, effective scope, and producer authorship proof remain unknown.
+  idempotency:
+    status: ABSENT_FOR_PRODUCER_RETURN
+    finding: NO_BOUND_WORKITEM_CLAIM_ACCEPTANCE_DIGEST_NONCE_OR_IDEMPOTENCY_DOMAIN
+  lease_and_expiry:
+    status: INCOMPLETE
+    finding: >-
+      Campaign review and route expiries are present and fresh, but there is no WorkItem lease or
+      producer-return expiry distinct from the campaign review clock.
+  privacy:
+    status: SANITIZED_BUT_NONREPRODUCIBLE
+    finding: >-
+      The Git event omits matched Slack text, identifiers, author, timestamp, permalink, cursor, and exact query.
+      This respects the stated retention ceiling but prevents exact request and response replay or digest comparison.
+  rollback:
+    status: ROUTE_ONLY
+    finding: >-
+      No mutable world effect is claimed. Ignore or supersede is sufficient. The route wording mentioning delete
+      grants no deletion authority, and no return-level rollback is bound to a WorkItem.
+  verifier:
+    status: NONBINDING_ONLY
+    finding: >-
+      No distinct raw-provider witness, canonical producer-return digest, or exact digest-bound STOOD or FELL exists.
+  consumer:
+    status: ABSENT_OPERATIONAL_ACK
+    finding: >-
+      HFO_COTS_CAPABILITY_INVENTORY is named only as a catalog. No operational consumer is named and no explicit
+      post-STOOD ConsumerAck is present.
+
+strongest_fake_green_mutant:
+  mutation: >-
+    Promote PHASE1_ACCEPTED_WITH_GATES, one positive connector match, the catalog label, or a Slack status pointer
+    into a producer verdict, adoption decision, or ConsumerAck.
+  rejection_reason: >-
+    The event is a durable summary of one transient bounded observation, not a claim-bound producer return.
+    A connector completion, catalog label, or transport/status pointer cannot substitute for exact request and
+    response digests, authenticated actor scope, digest-bound STOOD or FELL, or consumer-authored acknowledgment.
+  caught: true
+
+verdict:
+  result: REVISE
+  reason_code: SLACK_PHASE1_OBSERVATION_NOT_CLAIM_BOUND_REPLAYABLE_VERIFIED_OR_CONSUMER_ACKED
+  required_revision:
+    - bind an immutable WorkItem claim and acceptance digest
+    - bind producer identity separately from carrier and authenticated connector principal
+    - add nonce idempotency domain and producer lease
+    - add privacy-safe canonical request bytes or stable request digest
+    - add authorized source-response bytes or stable response digest
+    - add canonical producer-return digest rollback and distinct return expiry
+    - obtain exact producer-digest-bound STOOD or FELL from a distinct verifier
+    - obtain explicit named post-STOOD ConsumerAck from an operational consumer
+  terminal_credit_granted: false
+  adoption_credit_granted: false
+  fitness_credit_granted: false
+
+same_provider_notice:
+  status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  independent_verification_closed: false
+
+rollback:
+  action: RETAIN_OR_IGNORE_THIS_IMMUTABLE_PREFLIGHT_RECEIPT; DO_NOT_EDIT_CANDIDATE_OR_SOURCE
+  external_compensation_required: false
+
+honest_flaw: >-
+  This pass verifies only exact durable Git structure and the native task inventory visible to the same provider.
+  It did not reproduce the Slack search, inspect private content, establish raw Slack API parity, authenticate the
+  connector principal, or prove absence of all off-repository consumer actions. Those limits are why the result is
+  nonbinding with weight zero.
