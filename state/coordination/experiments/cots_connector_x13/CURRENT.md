@@ -1,60 +1,60 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
-experiment_id: X13_GOOGLE_DRIVE_SEARCH_METADATA_READONLY_001
-version: 92
-prior_version: 91
-candidate: Google_Drive_search_metadata_only_surface
-campaign_wake: 4_of_4
-campaign_status: CLOSED
+experiment_id: X13_GMAIL_SEARCH_EMAIL_IDS_READONLY_001
+version: 93
+prior_version: 92
+candidate: Gmail_search_email_ids_readonly_surface
+campaign_wake: 1_of_4
+campaign_status: ACTIVE
 phase_1_completed: true
 phase_1_status: PHASE1_ACCEPTED_WITH_GATES
-phase_2_completed: true
-phase_2_status: PHASE2_ACCEPTED_WITH_GATES
-phase_3_completed: true
-phase_3_status: PHASE3_ACCEPTED_WITH_GATES
-phase_4_completed: true
-phase_4_decision: ADOPT_WITH_GATES
-adoption_mode: CATALOG_MANUAL_ONLY_NONOPERATIONAL
+phase_2_completed: false
+phase_2_status: PENDING
+phase_3_completed: false
+phase_3_status: PENDING
+phase_4_completed: false
+phase_4_decision: PENDING
+adoption_mode: NONE_NONOPERATIONAL
 carrier_task_id: 6a55c1733708819185088bf334e33ea5
 carrier_task_id_match: true
 wip: 1
-last_event_commit: 131c70c9cac81b7965512abf4a4a12af72fb42b5
-last_event_path: state/coordination/experiments/cots_connector_x13/20260804T165010Z_GOOGLE_DRIVE_SEARCH_METADATA_PHASE4_DECISION.md
-last_event_blob_sha: a59adc23112eeda9e4acd585bd440347d90365f1
+last_event_commit: a5a31521657b340e8efb341f0773411da6b5697d
+last_event_path: state/coordination/experiments/cots_connector_x13/20260804T174732Z_GMAIL_SEARCH_EMAIL_IDS_PHASE1_BASELINE.md
+last_event_blob_sha: 67ef6c3f50e654601fa9cb7ff839a7a9d5048320
 last_event_readback: true
-prior_current_commit: f66e96d677a8718007257369ce4ea797948cda1d
-prior_current_blob_sha: 3686d2e65a2af1c4f35f9a8ddce1da97eace7558
+prior_current_commit: c9da65bce3b99f61a9ecf4f80aa750022e61a8ce
+prior_current_blob_sha: 76c8034a3751f0e9f7d5c0f733545243d319fcd7
 adoption_credit: 0
 fitness_credit: 0
 consumer_ack: NOT_OBSERVED
 operator_minutes_removed_measured: 0
-custom_code_avoided_estimate: 25_to_70_LOC_UNVALIDATED
+custom_code_avoided_estimate: 15_to_45_LOC_UNVALIDATED
 paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
 actual_quota_consumed: UNKNOWN
-official_quota_contract: FILES_LIST_100_UNITS_PER_REQUEST_AS_OF_2026_08_04
-campaign_calls: 3_READONLY_2_SUCCESS_1_INVALID_ARGUMENT_0_RETRY_0_FALLBACK_0_MUTATION
-result_shape: PHASE1_ONE_METADATA_RESULT_PHASE2_EMPTY_ARRAY_PHASE3_PROVIDER_400_INVALID_PAGETOKEN
-connector_variance: DOCUMENT_CATEGORY_NOT_MIME_EMPTY_RESULT_NONAUTHORITATIVE_ERROR_ECHOES_REQUEST_URL_QUERY_TOKEN
+official_quota_contract: MESSAGES_LIST_5_UNITS_PER_REQUEST_AS_OF_2026_08_04
+campaign_calls: 1_READONLY_1_SUCCESS_0_RETRY_0_FALLBACK_0_MUTATION
+result_shape: ONE_MESSAGE_ID_AND_CONTINUATION_TOKEN_NO_CONTENT_HEADERS_THREAD_ID_OR_RESULT_SIZE_ESTIMATE
+connector_variance: OUTPUT_NARROWER_THAN_RAW_USERS_MESSAGES_LIST_QUERY_SUCCESS_DOES_NOT_PROVE_METADATA_SCOPE
 credentials: CONNECTOR_MANAGED_IDENTITY_AND_EFFECTIVE_SCOPE_UNKNOWN
-durability: CANONICAL_GIT_EVENTS_AND_VERSIONED_CURRENT_PERSIST_DOWNSTREAM_VERIFIER_ROUTE_POINTER_DEFECT_ACKNOWLEDGED
-observability: PARTIAL_PROVIDER_METHOD_AND_ONE_TYPED_ERROR_NO_SUCCESS_HEADERS_REQUEST_ID_INCOMPLETESEARCH_QUOTA_OR_HIDDEN_ATTEMPTS
-portability: LOW_TO_MEDIUM
-failure_behavior: INVALID_PAGE_TOKEN_FAILED_CLOSED_OTHER_FAILURE_CLASSES_UNTESTED
-mandatory_gate: BOUNDED_HUMAN_REVIEWED_METADATA_DISCOVERY_ONLY_ZERO_RESULTS_NONAUTHORITATIVE_EXACT_COMMIT_PATH_BLOB_RECEIPTS_REQUIRED
-strongest_falsifier: SAME_PRINCIPAL_RAW_DRIVE_FILES_LIST_RETURNS_DIFFERENT_RESULTS_NEXT_PAGE_OR_INCOMPLETESEARCH_FOR_SAME_BOUNDARY
-verifier: S04_REVISE_NONBINDING_WEIGHT_0_SOURCE_POINTER_DEFECT
+durability: CANONICAL_GIT_EVENT_READ_BACK_AND_VERSIONED_CURRENT_PENDING_READBACK
+observability: PARTIAL_342MS_AND_NORMALIZED_ERROR_FIELDS_NO_HTTP_HEADERS_REQUEST_ID_QUOTA_OR_HIDDEN_ATTEMPTS
+portability: MEDIUM
+failure_behavior: NOT_PROBED_IN_PHASE1
+mandatory_gate: BOUNDED_READONLY_ID_ONLY_SEARCH_NO_IDENTIFIER_RETENTION_ZERO_RESULTS_NONAUTHORITATIVE_RAW_SCOPE_AND_PAGINATION_WITNESS_REQUIRED
+strongest_falsifier: SAME_PRINCIPAL_RAW_USERS_MESSAGES_LIST_RETURNS_DIFFERENT_RESULT_OR_PAGINATION_FOR_IDENTICAL_BOUNDARY
+verifier: NOT_ASSIGNED
 independent_verification_closed: false
-honest_flaw: IDENTITY_SCOPE_COMPLETENESS_ORDERING_SHARED_DRIVES_REAL_CURSOR_SUCCESS_RATE_LIMITS_HIDDEN_CALLS_QUOTA_AND_CONSUMER_VALUE_UNVERIFIED
-next_campaign_candidate: Gmail_search_metadata_readonly_surface
-next_phase: PHASE1_OFFICIAL_CONTRACT_AND_DIRECT_CAPABILITY_BASELINE
-valid_time_utc: 2026-08-04T16:50:10Z
-recorded_time_utc: 2026-08-04T16:50:10Z
+honest_flaw: ONE_POSITIVE_QUERY_ONLY_IDENTITY_SCOPE_QUERY_TRANSLATION_ORDERING_COMPLETENESS_REAL_PAGINATION_FAILURES_RATE_LIMITS_HIDDEN_CALLS_AND_CONSUMER_VALUE_UNVERIFIED
+next_phase: PHASE2_SMALLEST_HARMLESS_READONLY_MICRO_USE
+next_probe: ONE_SYNTHETIC_UNLIKELY_TOKEN_SEARCH_MAX_RESULTS_1_NO_PAGINATION_NO_IDENTIFIER_OR_QUERY_RETENTION
+valid_time_utc: 2026-08-04T17:47:32Z
+recorded_time_utc: 2026-08-04T17:47:32Z
 ---
 
-# X13 CURRENT v92
+# X13 CURRENT v93
 
-The Google Drive metadata-only search campaign is closed as `ADOPT_WITH_GATES`, restricted to bounded, human-reviewed catalog discovery. Three read-only calls produced one metadata result, one normal empty array, and one fail-closed invalid-page-token error. Empty results are nonauthoritative; connector categories are not MIME guarantees; query and token values may be echoed in errors; and no operational credit is allowed without verified identity and scope, raw-provider parity, quota evidence, a named consumer, acknowledgment, and measured value.
+The Gmail `search_email_ids` campaign is active at phase 1 of 4. One bounded read-only search over the last 30 days, excluding Spam and Trash and capped at one result, returned one message identifier and one continuation token without message content, headers, subject, sender, timestamps, thread ID, or result-size estimate. The exact identifier and token were not persisted.
 
-The latest structural verifier remained `REVISE`, nonbinding weight zero, because a downstream route attached the real CURRENT v91 blob to the wrong commit. Canonical event persistence was not contradicted, but independent verification is not closed. Exact commit/path/blob triplets are mandatory for future verifier and consumer handoffs.
+Google's raw `users.messages.list` contract can return message `id` and `threadId`, optional `nextPageToken`, and `resultSizeEstimate`; Google documents `messages.list` at 5 quota units per request as of 2026-08-04. This connector's upstream method, call count, authenticated principal, effective OAuth scope, and actual quota debit remain unknown. Because Google forbids `q` under metadata-only scope, successful connector query execution must not be represented as proof of least-privilege `gmail.metadata` authorization.
 
-Adoption and fitness credit remain zero. Next queued campaign: Gmail metadata-only search, phase 1.
+Phase 1 is `PHASE1_ACCEPTED_WITH_GATES`. Adoption and fitness credit remain zero. Phase 2 is limited to one synthetic unlikely-token search with `max_results=1`, no pagination, no identifier or exact-query persistence, and no inference that an empty result proves absence.
