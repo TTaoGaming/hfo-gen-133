@@ -1,51 +1,54 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
-experiment_id: X11_GMAIL_METADATA_READ_VISIBILITY_V1
-current_version: 83
-accepted_wakes: 3
+experiment_id: X11_CALENDAR_METADATA_READ_VISIBILITY_V1
+current_version: 84
+accepted_wakes: 0
 target_wakes_before_decision: 4
-controlled_factor: gmail_read_surface
+controlled_factor: calendar_read_surface
 campaign_status: ACTIVE
 current_disposition: null
 prior_campaign:
-  experiment_id: X11_WEB_OFFICIAL_STATIC_READ_VISIBILITY_V1
-  final_version: 80
+  experiment_id: X11_GMAIL_METADATA_READ_VISIBILITY_V1
+  final_version: 84
   disposition: KEEP
   accepted_wakes: 4
 last_event:
-  commit: 838eba47ff39d051d6f2d0c15bfcd577c454116d
-  path: state/coordination/experiments/carrier_surface_x11/events/20260804T074037Z_GMAIL_METADATA_READ_VISIBILITY_V1_WAKE_03.yaml
-  blob: 0e8833634142b839eb811d68a1d815c566490c68
+  commit: 8daacb0e3b45f919c980c35bfa65bd53db4b43ae
+  path: state/coordination/experiments/carrier_surface_x11/events/20260804T084143Z_GMAIL_METADATA_READ_VISIBILITY_V1_WAKE_04_DECISION.yaml
+  blob: 82099f8d02ba5b0cd5f68e48a0d0a6ada3b3c2b4
 baseline_result:
-  mode: authenticated_gmail_impossible_marker_id_search
-  result_count: 0
-  next_page_token_present: false
-  execution_status: SUCCESS
-  interactive_login_required: false
-  message_content_read: false
-  message_identifiers_persisted: false
+  mode: authenticated_calendar_impossible_marker_bounded_search
+  result_count: null
+  next_page_token_present: null
+  execution_status: NOT_YET_PROBED
+  interactive_login_required: null
+  event_content_read: false
+  event_identifiers_persisted: false
   sensitive_readback_externalized: false
   mutation_performed_by_probe: false
   send_performed: false
   changed_capability: false
   andon: false
-  permission_class: AUTHENTICATED_GMAIL_MESSAGE_ID_SEARCH_AVAILABLE
-  error_class: NONE
-  latency_exposed: true
-  latest_latency_ms: 396
-  latency_samples_ms: [395, 262, 396]
+  permission_class: NOT_YET_MEASURED
+  error_class: NOT_YET_MEASURED
+  latency_exposed: null
+  latest_latency_ms: null
+  latency_samples_ms: []
   operator_relay_minutes: 0
-claim_ceiling: authenticated_Gmail_message_ID_search_execution_and_sanitized_result_count_visibility_only_not_mailbox_completeness_indexing_freshness_message_content_access_delivery_state_or_independent_verification
-strongest_falsifier: the_fixed_impossible_marker_query_requires_interactive_login_returns_an_unclassified_permission_error_exposes_message_content_or_identifiers_outside_the_tool_boundary_or_produces_inconsistent_sanitized_result_counts_across_identical_wakes
+claim_ceiling: authenticated_Google_Calendar_bounded_search_execution_and_sanitized_result_count_visibility_only_not_calendar_completeness_indexing_freshness_event_content_access_notification_delivery_or_independent_verification
+strongest_falsifier: the_fixed_impossible_marker_bounded_query_requires_interactive_login_returns_an_unclassified_permission_error_exposes_event_content_or_identifiers_outside_the_tool_boundary_or_produces_inconsistent_sanitized_result_counts_across_identical_wakes
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 next_consumer: [Reginleif, Ratatoskr]
-honest_flaw: an_impossible_subject_marker_search_tests_only_one_authenticated_Gmail_ID_search_path_and_a_zero_result_does_not_establish_mailbox_completeness_index_freshness_content_access_or_delivery_state
-next_factor: gmail_read_surface
+honest_flaw: an_impossible_marker_search_in_one_bounded_primary_calendar_window_tests_only_one_authenticated_search_path_and_a_zero_result_would_not_establish_calendar_completeness_index_freshness_event_content_access_or_notification_delivery
+next_factor: calendar_read_surface
 next_probe:
-  experiment_id: X11_GMAIL_METADATA_READ_VISIBILITY_V1
-  campaign_wake: 4
-  mode: authenticated_gmail_impossible_marker_id_search_and_campaign_decision
-  query: 'subject:"HFO_X11_GMAIL_METADATA_PROBE_9C7B1E5A4D2F8A6C"'
+  experiment_id: X11_CALENDAR_METADATA_READ_VISIBILITY_V1
+  campaign_wake: 1
+  mode: authenticated_calendar_impossible_marker_bounded_search
+  calendar_id: primary
+  query: HFO_X11_CALENDAR_METADATA_PROBE_4A9C7E2B6D1F8C30
+  time_min: 2026-01-01T00:00:00Z
+  time_max: 2026-12-31T23:59:59Z
   max_results: 1
   persist_only:
     - result_count
@@ -54,24 +57,22 @@ next_probe:
     - error_class
     - latency_when_exposed
     - operator_relay_minutes
-    - campaign_disposition
-    - next_factor
-  message_ids_persistence_allowed: false
-  message_content_read_allowed: false
+  event_ids_persistence_allowed: false
+  event_content_persistence_allowed: false
   mutation_allowed: false
   send_allowed: false
   interactive_login_allowed: false
   sensitive_readback_externalization_allowed: false
-slack_action: SILENT_UNCHANGED_PROBE
-updated_valid_time_utc: 2026-08-04T07:40:37Z
+slack_action: POST_CAMPAIGN_DECISION
+updated_valid_time_utc: 2026-08-04T08:41:43Z
 sealed: false
 ---
 
-The Gmail metadata-read campaign accepted wake 3/4. The identical fixed
-impossible-subject message-ID search again returned zero identifiers and no
-continuation token through the connected Gmail read surface, with connector
-latency exposed at 396 ms. No interactive login, content read, identifier
-persistence, mutation, send, operator relay, or sensitive readback
-externalization occurred. Capability was unchanged, so Slack remains silent;
-wake 4 repeats the bounded probe and records the campaign decision plus the
-next controlled factor.
+The Gmail metadata-read campaign completed 4/4 with disposition KEEP for the
+narrowly bounded connected message-ID search capability. Four identical fixed
+impossible-subject probes returned zero identifiers and no continuation token
+with connector latencies of 395, 262, 396, and 300 ms. No interactive login,
+content read, identifier persistence, mutation, send, operator relay, or
+sensitive readback externalization occurred. The next campaign is Calendar
+metadata-read visibility using a fixed impossible marker on the primary
+calendar inside a bounded 2026 UTC window; wake 1 has not yet run.
