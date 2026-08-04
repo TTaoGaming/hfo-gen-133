@@ -1,0 +1,107 @@
+---
+schema_id: hfo.gen133.s03.reducer_route.v1
+seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+carrier_task_id_expected: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_observed: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_match: true
+wip: 1
+result: REVISE
+terminal: false
+correlation_id: X13_GOOGLE_DRIVE_SEARCH_METADATA_READONLY_001_PHASE4_DECISION_20260804T165010Z
+repository: TTaoGaming/hfo-gen-133
+branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-04T17:08:00Z
+recorded_time_utc: 2026-08-04T17:08:00Z
+---
+self_probe:
+  identity: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  task_inventory_read: true
+  task_enabled_observed: true
+  tools_observed:
+    - native_automations_inventory_read
+    - github_recent_commit_search
+    - github_exact_commit_read
+    - github_exact_file_read
+    - github_code_search
+    - github_create_file
+    - github_commit_readback
+  task_mutation_performed: false
+  producer_work_performed: false
+  self_verification_performed: false
+  external_send_performed: false
+selection:
+  changed_input_class: PHASE4_ADOPTION_DECISION_AND_CURRENT_POINTER_ADVANCE
+  source_event:
+    commit: 131c70c9cac81b7965512abf4a4a12af72fb42b5
+    path: state/coordination/experiments/cots_connector_x13/20260804T165010Z_GOOGLE_DRIVE_SEARCH_METADATA_PHASE4_DECISION.md
+    blob_sha1: a59adc23112eeda9e4acd585bd440347d90365f1
+    experiment_id: X13_GOOGLE_DRIVE_SEARCH_METADATA_READONLY_001
+    event_type: PHASE4_ADOPTION_DECISION
+    decision: ADOPT_WITH_GATES
+    source_carrier_task_id: 6a55c1733708819185088bf334e33ea5
+    source_carrier_task_inventory_match: true
+    effect_ceiling: CATALOG_MANUAL_ONLY_NONOPERATIONAL
+    source_expiry: NOT_DECLARED
+    honest_flaw_present: true
+  current_projection:
+    commit: c9da65bce3b99f61a9ecf4f80aa750022e61a8ce
+    path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    blob_sha1: 76c8034a3751f0e9f7d5c0f733545243d319fcd7
+    version: 92
+    campaign_status: CLOSED
+    independent_verification_closed: false
+    consumer_ack: NOT_OBSERVED
+    adoption_credit: 0
+    fitness_credit: 0
+reduction:
+  claim_binding: NOT_FOUND
+  acceptance_digest: NOT_FOUND
+  producer_return: NOT_FOUND
+  producer_return_digest: NOT_FOUND
+  exact_request_response_or_source_system_readback_digest: NOT_FOUND
+  commands_and_exit_codes: NOT_APPLICABLE_TO_DECISION_EVENT_AND_NOT_SUPPLIED_AS_PRODUCER_RETURN
+  rollback_binding: NOT_FOUND_AT_RETURN_LEVEL
+  expiry_binding: NOT_FOUND_AT_RETURN_LEVEL
+  exact_digest_bound_verdict: NOT_FOUND
+  accepted_verdict_vocabulary: STOOD_OR_FELL_ONLY
+  named_consumer_ack_after_stood: NOT_FOUND
+  prior_verifier_evidence:
+    phase: PHASE3_ONLY
+    result: REVISE
+    provider_class: SAME_PROVIDER_NONBINDING
+    binding_weight: 0
+  terminal_receipt_allowed: false
+  reason: >-
+    The changed artifact is a bounded campaign decision, not a WorkItem-bound producer return. It closes catalog evaluation while explicitly
+    retaining zero operational credit, no independent verification closure, and no ConsumerAck. It does not bind a claim and acceptance
+    digest, canonical producer-return bytes, exact source-system request/response or equivalent readback digest, return-level rollback and
+    expiry, an exact STOOD or FELL tied to the producer digest, or a named post-STOOD ConsumerAck.
+revise_request:
+  addressed_to: X13_COTS_AND_CONNECTOR_PDCA_LAB
+  requested_evidence:
+    - Bind one exact WorkItem claim and acceptance digest to this correlation ID.
+    - Emit one canonical producer return with exact returned bytes or authorized source-system readback digests, rollback, effect ceiling, expiry, and honest flaw.
+    - Obtain an exact STOOD or FELL verdict tied to the canonical producer-return digest from a nonproducer verifier; same-provider evidence remains weight zero.
+    - After STOOD only, obtain an explicit named ConsumerAck tied to the same WorkItem and producer digest.
+  no_self_repair: true
+routing:
+  routed_to: S04_STRUCTURAL_PREFLIGHT_VERIFIER
+  verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  verifier_role: DISTINCT_NONPRODUCER_SAME_PROVIDER_PREFLIGHT
+  requested_result: PASS_STRUCTURAL_OR_REVISE_OR_HOLD
+  binding_weight: 0
+  route_scope: EXACT_SOURCE_EVENT_CURRENT_POINTER_AND_THIS_REVISE_PACKET
+  distinct_provider_verifier_available_on_this_carrier: false
+  expiry_utc: 2026-08-04T21:08:00Z
+consumer_ack:
+  status: NOT_OBSERVED
+  implicit_ack_forbidden: true
+slack:
+  post_permitted: false
+  reason: NO_TERMINAL_STOOD_AND_ACKED_OR_FELL_RECEIPT
+rollback:
+  action: RETAIN_OR_IGNORE_THIS_NONTERMINAL_ROUTE_PACKET; SOURCE_EVENT_CURRENT_TASKS_AND_PROVIDER_STATE_UNCHANGED
+honest_flaw: >-
+  GitHub code search can lag and the available verifier surfaces are ChatGPT-carried, so absence searches and any future S04 preflight are
+  not independent proof. This packet establishes only that the exact visible phase-4 event and CURRENT v92 do not satisfy the terminal S03
+  contract; it does not falsify the three bounded Drive observations or the catalog-only policy decision.
