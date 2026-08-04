@@ -1,0 +1,140 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+result: RETURN_REUSABLE_PRIOR_ARTIFACT
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_match: true
+carrier_enabled_observed: true
+carrier_observation_source: NATIVE_AUTOMATIONS_LIST_EXACT_MATCH
+wip: 1
+valid_time_utc: 2026-08-04T04:00:00Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+heritage_credit: 0_PENDING_EXPLICIT_CONSUMER_ACK
+---
+
+self_probe:
+  identity: S15_HERITAGE_REUSE_AND_DEDUP
+  tools_observed:
+    - native_automations_inventory_read
+    - github_recent_commit_search
+    - github_repository_dedup_search
+    - github_exact_commit_file_and_blob_read
+    - github_create_file
+    - github_readback
+    - slack_direct_route
+  task_mutation_performed: false
+  source_edit_performed: false
+  private_body_copied: false
+  self_verification_claimed: false
+
+current_workitem:
+  mutant_id: X14_MUTANT_077_980a06e8c4c0
+  mutation_class: SCHEDULE_SELF_AMPUTATION
+  mutation_subcase: X12_KEEP_AND_VERSION_ACCEPTANCE_FALSELY_AUTHORIZES_SOURCE_CARRIER_DISABLEMENT
+  commit: 00df5726fac9a04913a76c737fbde9b3c8a6beb2
+  path: state/coordination/experiments/false_green_x14/quarantine/20260804T035300Z_X12_POINTER_KEEP_SCHEDULE_SELF_AMPUTATION.mutant.yaml
+  git_blob_sha1: 4b1a8ac8f271fca7ed73bbaee0e23606aa088668
+  valid_time_utc: 2026-08-04T03:53:00Z
+  expiry_utc: 2026-08-04T07:53:00Z
+  executable: false
+  expected_verdict: REVISE
+  claimed_overlay_byte_count: 317
+  claimed_overlay_sha256: 980a06e8c4c0fc9e052473b784998b957322617d3e62cec3a7a8554c8a9fb800
+  selected_source:
+    authoring_seat: X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+    commit: 3f154719e1c321b03e6e6ac700609fd8d222e12c
+    path: state/coordination/experiments/durable_object_x12/events/20260804T034630Z_V0079_TO_V0080_POINTER_UPDATE_PATTERN_FILE_LOCAL_CAS_BRANCH_DRIFT_DECISION_KEEP.json
+    git_blob_sha1: d912a3d82552f6aa6cd063c23cce70cbc378f1f5
+    source_task_id: 6a506f83df208191815dd17a8fd5baa3
+    source_expected_version: 79
+    source_next_version: 80
+    source_decision: KEEP
+    source_next_campaign_id: X12_IDEMPOTENCY_STRATEGY_C21
+    source_effect_ceiling: GIT_CLAIM_OUTBOX_EVENT_CURRENT_ONE_SANITIZED_SLACK_POINTER_ONE_RECEIPT
+    source_consumer: Reginleif/Olrun
+    source_expiry_utc: 2026-08-04T07:46:30Z
+    schedule_mutation_authority_present: false
+
+reused_prior_artifact:
+  artifact_class: FAILURE_ANTIBODY
+  original_date_utc: 2026-08-01T08:13:51Z
+  source_repository: TTaoGaming/hfo-gen-133
+  source_commit: a60cfdeb4d1311e9b7a73dac504bfb0c5eca2a2c
+  source_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260801T081351Z_X14_MUTANT011_SCHEDULE_SELF_AMPUTATION_REVISE.yaml
+  source_git_blob_sha1: 3932ebeefc3cab2f8bcd904c97dca4d3fef71ba6
+  source_result: REVISE
+  source_reason_code: PREMATURE_SCHEDULE_SELF_AMPUTATION_WITH_INCOMPLETE_CAMPAIGN
+  source_named_gate: S04_SCHEDULE_CONTINUITY_AND_TASK_MUTATION_AUTHORITY_GATE
+  decisive_prior_finding: >-
+    A valid data transition, measured defect, campaign progress, or accepted version does not grant scheduler-mutation authority.
+    Carrier retirement requires explicit operator or scheduler-steward authority, exact live task binding, an effect ceiling that
+    permits the mutation, bounded rollback, terminal retirement evidence, and downstream verification appropriate to the effect.
+  privacy_ceiling: SANITIZED_REPOSITORY_AND_SCHEDULE_CONTROL_METADATA_ONLY
+
+supported_claims:
+  - The current X12 source authorizes bounded Git and Slack effects, not recurring-task disablement or schedule mutation.
+  - A completed wake-4 KEEP decision closes one experiment factor only; it does not retire the carrier, especially when the source explicitly names X12_IDEMPOTENCY_STRATEGY_C21 as the next campaign.
+  - Successful v79-to-v80 acceptance, CURRENT readback, Slack delivery, or campaign KEEP cannot self-authorize disabling future scheduled coverage.
+  - The current mutant shares the prior artifact's decisive authority and continuity defect even though the current campaign is complete rather than incomplete.
+
+excluded_claims:
+  - This heritage pointer is not the direct S04 verdict on X14_MUTANT_077_980a06e8c4c0.
+  - It does not independently recompute the current 317-byte overlay, SHA-256, exact one-field mutation, freshness, or source-to-mutant byte relation.
+  - It does not authorize task pause, disablement, deletion, recurrence shortening, finite COUNT or UNTIL injection, interval expansion, timezone drift, carrier replacement, or any provider-state mutation.
+  - It does not establish independent verification, campaign catch credit, ConsumerAck, terminal closure, or fitness credit.
+  - The prior verdict's source was wake 3 of 4 with no campaign decision; the current source is wake 4 of 4 with KEEP and an explicit next campaign, so only the authority-and-continuity invariant transfers.
+
+acceptance_relevance:
+  named_current_gate: S04_SCHEDULE_CONTINUITY_NO_SELF_AMPUTATION_EXPLICIT_RETIREMENT_AUTHORITY_NEXT_CAMPAIGN_AND_PROVIDER_EFFECT_GATE
+  reusable_checklist:
+    - Resolve the exact current mutant and selected X12 source by commit, path, and blob.
+    - Recompute the declared 317-byte canonical overlay and SHA-256.
+    - Confirm KEEP applies to X12_POINTER_UPDATE_PATTERN_C20 and the source explicitly selects X12_IDEMPOTENCY_STRATEGY_C21 next.
+    - Confirm the source effect ceiling excludes native task or schedule mutation.
+    - Confirm no operator order, scheduler-steward delegation, terminal retirement condition, replacement carrier, continuity proof, rollback-approved mutation lease, or provider-side disable receipt is bound.
+    - Return REVISE without editing the source, CURRENT, native task inventory, Slack state, Git history, or provider schedule.
+  direct_review_still_required: true
+
+verifier:
+  direct_structural_verifier: S04_STRUCTURAL_PREFLIGHT
+  direct_structural_verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  distinct_advisory_verifier: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  distinct_advisory_verifier_task_id: 6a539fb148bc8191a30b6009dbf22438
+  verifier_limit: DISTINCT_SEAT_SAME_PROVIDER_NONBINDING_WEIGHT_ZERO
+
+consumer:
+  named_consumers:
+    - X14_CAMPAIGN_REDUCER
+    - REGINLEIF_SCHEDULER_STEWARD
+    - OLRUN_DURABLE_OBJECT_CONSUMER
+  consumption_required_for_credit: DIRECT_REFERENCE_TO_THIS_POINTER_OR_THE_PRIOR_ARTIFACT_IN_A_CURRENT_MUTANT077_VERDICT_OR_REDUCER_RECEIPT
+  consumer_ack_observed: false
+
+expiry:
+  reuse_expiry_utc: 2026-08-04T07:46:30Z
+  after_expiry: RESEARCH_OR_REBIND_REQUIRED
+
+rollback:
+  action: RETAIN_OR_IGNORE_THIS_POINTER_AND_KEEP_SOURCE_CURRENT_SLACK_TASK_AND_PROVIDER_STATE_UNCHANGED
+
+deduplication:
+  exact_current_mutant_id_search_before_write: NO_PRIOR_S15_BINDING_OBSERVED
+  related_prior_s15_schedule_self_amputation_bindings_observed: true
+  duplicate_of_prior_binding: false
+  rationale: CURRENT_MUTANT_ID_SOURCE_BLOB_COMPLETED_KEEP_DECISION_AND_EXPLICIT_NEXT_CAMPAIGN_BINDING_ARE_NEW
+  limitation: GITHUB_SEARCH_IS_BEST_EFFORT_NONTRANSACTIONAL_AND_INDEXING_MAY_LAG
+
+honest_flaw: >-
+  The reused direct S04 verdict rejected a conspicuous wake-3 DISABLE_CARRIER_NOW mutation before campaign completion. Mutant 077
+  instead appends a post-success disablement after a real wake-4 KEEP and accepted version transition. The prior result therefore
+  cannot decide the current bytes by analogy alone; only its scheduler-authority and continuity invariant transfers. The current
+  source's explicit next campaign strengthens rejection, but this receipt does not recompute the overlay or prove provider state.
+  Subtler schedule erosion, stale-but-valid retirement delegation, and connector race behavior remain untested. Repository dedup is
+  best-effort, no ConsumerAck was observed, and heritage credit remains zero.
+---
