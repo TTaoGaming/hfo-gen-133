@@ -1,0 +1,101 @@
+---
+schema_id: hfo.gen133.s07_bounded_builder_return.v1
+result: HOLD
+work_item_id: SPATIAL_FACTORY_HTML5_SNAKE_PENDING_DIRECTION_COMMAND_GATE_001
+seat: S07_BOUNDED_CODE_PATCH_BUILDER
+wip: 1
+carrier_task_id_expected: 6a506f6dc5c08191b95f1707d7f00c2d
+carrier_task_id_observed: 6a506f6dc5c08191b95f1707d7f00c2d
+carrier_task_id_match: true
+valid_time_utc: 2026-08-04T09:25:14Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+---
+
+self_probe:
+  identity_source: scheduled_runtime_envelope
+  tools_exposed:
+    - authenticated GitHub search/read/write connector
+    - authenticated Slack read/write connector
+  execution_surfaces_absent:
+    - target repository checkout
+    - host shell
+    - browser runtime
+    - direct Codex executor ingress
+    - direct Claude executor ingress
+  task_mutation_performed: false
+  self_grading_performed: false
+
+selection:
+  selected_claim:
+    claim_id: S02_SPATIAL_FACTORY_HTML5_SNAKE_PROVENANCE_CLASSIFICATION_FEASIBLE_CLOCK_SUCCESSOR_20260804T091631Z
+    claim_commit: 0aea1b7dd922c747a67fdc0a38ba9fb0a727b77b
+    claim_blob: d1d545e6594aa53be7251e71eab39c727d1ee1c3
+    claim_path: projects/spatial-app-factory/claims/20260804T091631Z_SPATIAL_FACTORY_HTML5_SNAKE_PROVENANCE_CLASSIFICATION_FEASIBLE_CLOCK_SUCCESSOR.claim.yaml
+    acceptance_sha256: f93d177ce6fde7cbdefa0083ffa4c8ab252a49fc55a4a02c99fc7167352fba2c
+    producer_return_due_utc: 2026-08-04T13:16:31Z
+    expiry_utc: 2026-08-04T14:16:31Z
+    unexpired_at_probe: true
+    permits_effect: INTERNAL_UNMERGED_UNPUBLISHED_SPECIMEN_BRANCH_FILE_AND_TEST_WORK_ONLY
+
+verified_contract:
+  target_repository: TTaoGaming/TAGS
+  base_branch: main
+  base_sha: 1271e25306fe8ef8baea32704cf022435703d498
+  dedicated_branch_rule: agent/html5-snake-pending-direction-canary-*
+  branch_create_max: 1
+  allowed_paths:
+    - prototypes/html5-snake-spatial-canary/**
+  forbidden_existing_path_changes: every path outside prototypes/html5-snake-spatial-canary/**
+  rollback: delete only the unmerged dedicated specimen branch and working tree after preserving receipts
+  structural_verifier:
+    seat: S04_STRUCTURAL_PREFLIGHT_VERIFIER
+    task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+    required_result: PASS_STRUCTURAL_BOUND_TO_EXACT_CLAIM_COMMIT_BLOB_AND_ACCEPTANCE_DIGEST
+  packet_compiler:
+    seat: S06_CODE_WORK_PACKET_COMPILER
+    task_id: 6a57972b9df081918680ce67c4ecb197
+    required_result: NON_HOLD_PACKET_BOUND_TO_EXACT_CLAIM_AND_PROVEN_DIRECT_EXECUTOR_INGRESS
+  technical_verifier:
+    identity: DISTINCT_BROWSER_CAPABLE_NONPRODUCER
+  provenance_verifier:
+    identity: DISTINCT_NONPRODUCER_PROVENANCE_REVIEWER
+  consumer:
+    seat: S09_STRATEGIC_REASONING_AND_VOTING
+    task_id: 6a539fb148bc8191a30b6009dbf22438
+    consumer_ack_required: true
+
+route_probe:
+  latest_s06_packet_commit: 742631d6fbdb6367ca078eae0cb41f7586daeaa1
+  latest_s06_packet_result: HOLD
+  latest_s06_packet_valid_time_utc: 2026-08-04T09:23:10Z
+  exact_s04_pass_bound_to_selected_claim: NOT_FOUND
+  s06_non_hold_route_to_s07: NOT_FOUND
+  direct_executor_ingress: NOT_EXPOSED
+  consequence: BRANCH_FILE_TEST execution is not authorized or reachable
+
+producer_effect:
+  target_branch_created: false
+  target_repository_changed: false
+  changed_paths: []
+  commands_run: []
+  tests_run: []
+  branch_sha: null
+  test_evidence: NONE_ROUTE_CLOSED
+
+remaining_risk:
+  - the claim can expire without an S04 pass and non-HOLD S06 route
+  - GitHub and Slack searches are nontransactional and do not prove a global WIP lock
+  - public distribution chain of title remains NOT_STOOD
+  - no shell or browser surface exists in this carrier for implementation or verification
+
+honest_flaw: >-
+  The successor fixes the prior clock and provenance wording, but this S07 carrier still cannot patch or test the target.
+  The exact S04 structural pass is absent, S06 explicitly returned HOLD, and no direct checkout, shell, browser, Codex,
+  or Claude executor ingress is exposed. Creating a TAGS branch through GitHub alone would violate the route contract and
+  would not provide the required test-first execution evidence.
+
+next_gate:
+  - S04 emits the exact claim-bound PASS_STRUCTURAL
+  - S06 emits a non-HOLD packet naming directly reachable executor ingress
+  - S07 then creates at most one dedicated TAGS branch and performs the bounded test-first patch
