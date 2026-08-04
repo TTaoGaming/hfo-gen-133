@@ -1,8 +1,8 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_SLACK_FIXED_POINTER_BOUNDED_READ_V2
-current_version: 98
-accepted_wakes: 2
+current_version: 99
+accepted_wakes: 3
 target_wakes_before_decision: 4
 controlled_factor: slack_read_write
 campaign_status: ACTIVE
@@ -27,11 +27,11 @@ baseline_result:
   error_class: NONE
 hypothesis: authenticated_Slack_channel_history_will_repeatedly_return_only_the_known_message_inside_the_fixed_one_second_envelope_with_the_target_timestamp_and_non_sensitive_marker_visible
 measured_result:
-  result_counts: [1, 1]
-  target_timestamp_present: [true, true]
-  expected_marker_present: [true, true]
-  content_outside_bounded_window_observed: [false, false]
-  latencies_ms: [NOT_EXPOSED, NOT_EXPOSED]
+  result_counts: [1, 1, 1]
+  target_timestamp_present: [true, true, true]
+  expected_marker_present: [true, true, true]
+  content_outside_bounded_window_observed: [false, false, false]
+  latencies_ms: [NOT_EXPOSED, NOT_EXPOSED, NOT_EXPOSED]
   permission_class: AUTHENTICATED_SLACK_CHANNEL_HISTORY_BOUNDED_READ_AVAILABLE
   error_class: NONE
   operator_relay_minutes: 0
@@ -45,16 +45,16 @@ verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 consumer: [Reginleif, Ratatoskr]
 honest_flaw: one_old_public_channel_pointer_tests_only_one_connector_history_path_and_cannot_separate_connector_filtering_from_native_Slack_semantics_or_prove_workspace_completeness_or_write_behavior
 last_event:
-  commit: 880c49e07b00e66c96603ebbfdf9ca499930f17e
-  path: state/coordination/experiments/carrier_surface_x11/events/20260804T223916Z_SLACK_FIXED_POINTER_BOUNDED_READ_V2_WAKE_02.yaml
-  blob: 1928a88e313f30cfed067c4579f158644e1035fb
+  commit: 85377e15aea3db51b4b4d05884d81e771e24b946
+  path: state/coordination/experiments/carrier_surface_x11/events/20260804T233930Z_SLACK_FIXED_POINTER_BOUNDED_READ_V2_WAKE_03.yaml
+  blob: 05b788543efef873607cfdc560c186eed16aaee3
 next_factor: slack_read_write
 next_probe:
   experiment_id: X11_SLACK_FIXED_POINTER_BOUNDED_READ_V2
-  campaign_wake: 3
-  mode: repeat_identical_fixed_public_channel_pointer_one_second_envelope_read
-  exact_action: read_channel_C0BGNGPJFHU_with_oldest_1785563052_000000_and_latest_1785563053_000000_then_persist_only_result_count_target_timestamp_present_and_expected_non_sensitive_marker_present_without_message_body
-  expected_current_version: 98
+  campaign_wake: 4
+  mode: repeat_identical_fixed_public_channel_pointer_one_second_envelope_read_then_decide
+  exact_action: read_channel_C0BGNGPJFHU_with_oldest_1785563052_000000_and_latest_1785563053_000000_then_persist_only_result_count_target_timestamp_present_and_expected_non_sensitive_marker_present_without_message_body_then_write_KEEP_REVISE_RESEAT_VARIABLE_or_HOLD_and_select_next_factor
+  expected_current_version: 99
   persist_only:
     - result_count
     - target_timestamp_present
@@ -68,12 +68,13 @@ next_probe:
   sensitive_readback_externalization_allowed: false
   same_provider_independence_claim_allowed: false
 slack_action: SILENT_UNCHANGED
-updated_valid_time_utc: 2026-08-04T22:39:16Z
+updated_valid_time_utc: 2026-08-04T23:39:30Z
 sealed: false
 ---
 
-Slack fixed-pointer bounded-read V2 wake 2 repeated the prior result. The
+Slack fixed-pointer bounded-read V2 wake 3 repeated the prior result. The
 connector returned one message inside the fixed one-second channel-history
 envelope; the known target timestamp and non-sensitive marker remained present.
-Only sanitized count and presence measurements are retained. Wake 3 repeats the
-identical probe; no Slack post is warranted because capability is unchanged.
+Only sanitized count and presence measurements are retained. Wake 4 repeats the
+identical probe and writes the campaign decision; no Slack post is warranted for
+this unchanged wake.
