@@ -1,8 +1,8 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_GIT_READ_WRITE_READBACK_V2
-current_version: 93
-accepted_wakes: 1
+current_version: 94
+accepted_wakes: 2
 target_wakes_before_decision: 4
 controlled_factor: git_read_write
 campaign_status: ACTIVE
@@ -13,23 +13,23 @@ prior_campaign:
   disposition: KEEP
   accepted_wakes: 4
 last_event:
-  commit: 5487c1c4223b2eb2a6ee4313f53bb0e70e45f3dc
-  path: state/coordination/experiments/carrier_surface_x11/events/20260804T174024Z_GIT_READ_WRITE_READBACK_V2_WAKE_01_ACCEPTED.yaml
-  blob: dced9ca68d0b8b6f8229b0f0708ee486532dc054
+  commit: fbe7996b19ba9fac082300d2d4d05e17b1e71bd1
+  path: state/coordination/experiments/carrier_surface_x11/events/20260804T184305Z_GIT_READ_WRITE_READBACK_V2_WAKE_02_ACCEPTED.yaml
+  blob: 76dcc5c2fda82b6fde1a16468d26b77329d522aa
 baseline_result:
   mode: carrier_event_and_current_compare_and_swap_readback
-  preflight_current_version: 92
-  preflight_current_blob: 79c0a1bf993ed36d168f6071566a2a3a3cb5f0e5
+  preflight_current_version: 93
+  preflight_current_blob: 96c6e2ed631dfa305cd679e41c19cb4e481b30a0
   preflight_version_match: true
   event_create_status: SUCCESS
-  event_commit_sha: 5487c1c4223b2eb2a6ee4313f53bb0e70e45f3dc
-  event_blob_sha: dced9ca68d0b8b6f8229b0f0708ee486532dc054
+  event_commit_sha: fbe7996b19ba9fac082300d2d4d05e17b1e71bd1
+  event_blob_sha: 76dcc5c2fda82b6fde1a16468d26b77329d522aa
   event_readback_content_match: true
   current_update_status: SUCCESS_BY_CURRENT_EXISTENCE
-  current_expected_version_after_update: 93
+  current_expected_version_after_update: 94
   permission_class: AUTHENTICATED_GITHUB_BRANCH_FILE_CREATE_UPDATE_READ_AVAILABLE
   error_class: NONE
-  event_create_latency_ms: 885
+  event_create_latency_ms: 1187
   other_latency_ms: NOT_EXPOSED
   operator_relay_minutes: 0
   changed_capability: false
@@ -42,10 +42,10 @@ honest_flaw: using_the_required_carrier_state_writes_as_the_probe_tests_one_auth
 next_factor: git_read_write
 next_probe:
   experiment_id: X11_GIT_READ_WRITE_READBACK_V2
-  campaign_wake: 2
+  campaign_wake: 3
   mode: carrier_event_and_current_compare_and_swap_readback
   exact_action: read_CURRENT_at_expected_version_create_one_immutable_event_update_CURRENT_with_the_preflight_blob_SHA_and_read_back_both_paths_to_verify_exact_version_and_content_identity
-  expected_current_version: 93
+  expected_current_version: 94
   persist_only:
     - preflight_current_version
     - event_create_status
@@ -67,12 +67,12 @@ next_probe:
   mutation_outside_carrier_state_allowed: false
   same_provider_independence_claim_allowed: false
 slack_action: SILENT_UNCHANGED_PROBE
-updated_valid_time_utc: 2026-08-04T17:40:24Z
+updated_valid_time_utc: 2026-08-04T18:43:05Z
 sealed: false
 ---
 
-Git read-write/readback V2 wake 1/4 completed on the named branch. The carrier
+Git read-write/readback V2 wake 2/4 completed on the named branch. The carrier
 created one immutable event, fetched its exact content and blob, updated CURRENT
-from version 92 to 93 with the preflight blob SHA, and reserved exact readback as
+from version 93 to 94 with the preflight blob SHA, and reserved exact readback as
 the acceptance gate. This is a same-provider structural check across separate
 commits, not an atomic transaction or independent verification.
