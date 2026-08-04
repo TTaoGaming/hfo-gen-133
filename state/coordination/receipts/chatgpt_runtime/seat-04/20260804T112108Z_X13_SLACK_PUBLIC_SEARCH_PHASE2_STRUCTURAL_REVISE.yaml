@@ -1,0 +1,143 @@
+schema_id: hfo.gen133.s04.structural_preflight.v1
+result: REVISE
+terminal: false
+fitness_credit: 0
+adoption_credit: 0
+
+self_probe:
+  role: S04_HRIST_STRUCTURAL_PREFLIGHT
+  expected_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  observed_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  task_id_match: true
+  task_enabled_observed: true
+  wip: 1
+  tools_observed:
+    - AUTOMATIONS_READ
+    - GITHUB_READ_WRITE
+    - SLACK_INTERNAL_POINTER_POST
+    - LOCAL_DETERMINISTIC_HASH_AND_YAML_PARSE
+
+canonical:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+
+selection:
+  rule: NEWEST_IMMUTABLE_S04_ADDRESSED_NOT_AUTHORED_BY_SEAT04
+  candidate_commit: d0d9eb3651cf7f9a2a1bdd996a50a62aa763ba27
+  candidate_path: state/coordination/receipts/chatgpt_runtime/seat-03/20260804T111015Z_X13_SLACK_PUBLIC_SEARCH_PHASE2_RETURN_BINDINGS_REVISE.yaml
+  candidate_authoring_seat: S03
+  candidate_reachable_from_canonical_branch: true
+  candidate_git_blob_sha1: 5a42701584d3c0f3853e8e3cfbf5c397b591c3a0
+  candidate_exact_utf8_bytes: 5753
+  candidate_sha256: 10f463f7929869fd24636a3033ecaf84a1b6d58a87c364ef58e60ac8401c97f2
+  candidate_schema_parse: ONE_YAML_MAPPING
+  selected_correlation_id: X13_SLACK_PUBLIC_MESSAGE_SEARCH_READONLY_001_PHASE2_ZERO_RESULT_MICROUSE_20260804T104944Z
+
+source_recomputation:
+  phase2_event:
+    commit: 529ed1024b050b1ea6b1e3d65150fe54689b64a3
+    path: state/coordination/experiments/cots_connector_x13/20260804T104944Z_SLACK_PUBLIC_MESSAGE_SEARCH_PHASE2_ZERO_RESULT_MICROUSE.md
+    git_blob_sha1: e77d66d3f28b3d61d0d573b1686094364fd1b2b7
+    exact_utf8_bytes: 5385
+    sha256: 974b40ef6ec4a7ad68cadaf297e1f62c7ae1d31378b2be3dafb1b7e896684cb1
+    schema_parse: YAML_FRONT_MATTER_PLUS_MARKDOWN
+  current_pointer:
+    commit: f3d07b083c67c54d8356c789e94be3dd592b41f2
+    path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    version: 86
+    git_blob_sha1: 649a801407da757fcb10b301ae4d5cdef7b42db6
+    exact_utf8_bytes: 5316
+    sha256: ee3704cb3c56f5b6877d39426ccbef74da59e3963d40c12cc6fcfb5287324ee8
+    schema_parse: YAML_FRONT_MATTER_PLUS_MARKDOWN
+    last_event_binding_matches: true
+
+structural_checks:
+  freshness:
+    route_expiry_utc: 2026-08-11T10:49:44Z
+    source_review_expiry_utc: 2026-08-11T10:49:44Z
+    fresh_at_verification: true
+  authority:
+    source_effect_ceiling: BOUNDED_PUBLIC_READONLY_ZERO_RESULT_MICRO_USE
+    route_does_not_expand_effect_ceiling: true
+    terminal_or_adoption_authority_present: false
+  task_binding:
+    s04_target_task_id_match: true
+    producer_task_id: 6a55c1733708819185088bf334e33ea5
+    producer_task_id_matches_x13_runtime: true
+  actor_carrier_separation:
+    carrier_identified: true
+    logical_producer_named: true
+    authenticated_slack_principal: UNKNOWN
+    effective_scope: UNKNOWN
+    separation_proven: false
+  workitem_and_acceptance:
+    work_item_id: NOT_BOUND
+    acceptance_digest: NOT_OBSERVED
+  idempotency:
+    nonce: NOT_OBSERVED
+    idempotency_key_or_domain: NOT_OBSERVED
+  lease_and_expiry:
+    producer_lease: NOT_OBSERVED
+    producer_return_expiry: NOT_OBSERVED
+    campaign_review_expiry_only: true
+  canonicalization_and_digests:
+    canonical_producer_return: NOT_OBSERVED
+    producer_return_sha256: NOT_OBSERVED
+    privacy_safe_request_digest: NOT_OBSERVED
+    source_response_digest: NOT_OBSERVED
+    raw_http_status_headers_request_id_rate_limit: NOT_OBSERVED
+  privacy:
+    exact_query_persisted: false
+    matched_content_persisted: false
+    query_echo_risk_recorded: true
+    privacy_ceiling_respected_by_durable_event: true
+  rollback:
+    route_ignore_or_delete_instruction_present: true
+    source_world_effects_reversible_or_none: READ_ONLY_OBSERVATION
+    workitem_bound_return_rollback: NOT_OBSERVED
+  verifier:
+    direct_connector_receipt_observed: true
+    distinct_raw_provider_witness: NOT_COMPLETED
+    exact_digest_bound_stood_or_fell: NOT_OBSERVED
+  consumer:
+    catalog_named: HFO_COTS_CAPABILITY_INVENTORY
+    operational_consumer: NOT_NAMED
+    consumer_ack: NOT_OBSERVED
+
+finding: >-
+  The exact candidate, phase-2 event, and CURRENT v86 pointer are internally
+  consistent and fresh. The durable event honestly records one bounded zero-result
+  connector observation, preserves no exact query or matched content, and does not
+  overstate Slack absence. It is not a claim-bound producer return: no WorkItem or
+  acceptance digest, lease, nonce/idempotency domain, authenticated actor/principal
+  proof, canonical request/response or producer-return digest, return expiry,
+  digest-bound STOOD/FELL, operational consumer, or ConsumerAck exists. Therefore
+  structural preflight cannot pass or authorize terminal reduction.
+
+strongest_fake_green_mutant:
+  mutant_id: X14_MUTANT_084_cc4dc6b2a02c
+  commit: 8f0c5b9c138387b581943bb34ca0c2618a96b094
+  path: state/coordination/experiments/false_green_x14/quarantine/20260804T105053Z_X12_EVENT_UNSUPPORTED_PASS_OUTCOME.mutant.yaml
+  mutation_class: UNSUPPORTED_PASS_OUTCOME
+  canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_bytes: 260
+  canonical_overlay_sha256: cc4dc6b2a02cd8f62c3e5a27986f25a7a03e57dcd06fdec8c43208e2473652cf
+  recomputation_match: true
+  rejection: >-
+    The overlay fabricates PASS_STOOD_AND_CONSUMED_PRODUCTION_DURABILITY_VERIFIED
+    on an immutable pre-anchor event. The source bytes contain no terminal verdict,
+    CURRENT anchor at that commit, provider/conflict readback, ConsumerAck, or
+    digest-bound verifier decision. Planned gates and later artifacts cannot
+    retroactively authenticate that source event.
+
+provider_relation: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+
+rollback: RETAIN_THIS_IMMUTABLE_RECEIPT_OR_IGNORE_IF_SUPERSEDED; DO_NOT_EDIT_CANDIDATE_SOURCE_CURRENT_TASKS_SLACK_HISTORY_OR_PROVIDER_STATE
+honest_flaw: >-
+  This pass proves only structure and exact Git bytes visible through the connected
+  GitHub surface plus the native task inventory. It does not establish raw Slack API
+  parity, exact upstream request bytes, hidden retries, authenticated connector scope,
+  provider independence, search completeness, or downstream consumer value.
+recorded_time_utc: 2026-08-04T11:21:08Z
