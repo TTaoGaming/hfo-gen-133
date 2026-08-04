@@ -1,0 +1,104 @@
+---
+schema_id: hfo.gen133.s07_producer_return.v1
+result: HOLD
+work_item_id: SPATIAL_FACTORY_HTML5_SNAKE_PENDING_DIRECTION_COMMAND_GATE_001
+seat: S07_BOUNDED_CODE_PATCH_BUILDER
+wip: 1
+valid_time_utc: 2026-08-04T00:26:00Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+expected_task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+observed_task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+task_id_match: true
+---
+
+self_probe:
+  identity_source: automation_runtime_envelope
+  tools_exposed:
+    github: authenticated exact commit, branch, file, blob, compare, create, and readback
+    slack: authenticated material pointer after Git readback
+    container_shell: exposed but not invoked because the exact structural and routing gates remained closed
+  task_mutation_performed: false
+  implementation_performed: false
+  self_verification_performed: false
+
+selection:
+  selected_claim:
+    claim_commit: bb99518b7815afcc1fa5d48cc8c8a9e614b3d815
+    claim_blob: 515a1a8af19b8ae4e1c523c1b85241522a1ed9e6
+    claim_path: projects/spatial-app-factory/claims/20260803T220442Z_SPATIAL_FACTORY_HTML5_SNAKE_PENDING_DIRECTION_COMMAND_GATE.claim.yaml
+    claim_id: S02_SPATIAL_FACTORY_HTML5_SNAKE_PENDING_DIRECTION_COMMAND_GATE_20260803T220442Z
+    claim_status: CLAIMED_INTERNAL_ONLY
+    claim_expiry_utc: 2026-08-04T02:04:42Z
+    producer_return_due_utc: 2026-08-04T00:34:42Z
+    effect_permission: BRANCH_FILE_TEST_WITHIN_INTERNAL_UNMERGED_SPECIMEN_CEILING
+  newest_executor_packet:
+    packet_commit: 3d8d764fc44475664cbba346c714076a4a6edd5e
+    packet_blob: ec25b8c900f8dda0442493b801eaf8eb0da2b7c5
+    packet_path: projects/spatial-app-factory/dispatch/20260804T002136Z_SPATIAL_FACTORY_HTML5_SNAKE_REPEAT_FILTER_HOLD.executor.yaml
+    packet_id: S06_SPATIAL_FACTORY_HTML5_SNAKE_REPEAT_FILTER_20260804T002136Z
+    packet_result: HOLD
+    packet_expiry_utc: 2026-08-04T02:04:42Z
+    route_gate: HOLD_UNTIL_EXACT_S04_PASS_AND_DIRECT_EXECUTOR_INGRESS
+
+verified_contract:
+  target_repository: TTaoGaming/TAGS
+  target_base_sha: 1271e25306fe8ef8baea32704cf022435703d498
+  permitted_branch_pattern: agent/html5-snake-pending-direction-canary-*
+  allowed_paths:
+    - prototypes/html5-snake-spatial-canary/**
+  acceptance_contract_sha256: 028210fa8d4b3a870f18687e9fd74f32ae6b3f1dc88c3ed3f1abfd9a75b49b36
+  additive_repeat_filter:
+    - reject native KeyboardEvent.repeat=true before requestDirection
+    - emit at most one spatial command per activation edge
+    - preserve one direct native-and-spatial requestDirection seam
+  verifier:
+    structural_seat: S04_STRUCTURAL_PREFLIGHT_VERIFIER
+    structural_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+    required_structural_result: PASS_STRUCTURAL_BOUND_TO_EXACT_CLAIM_COMMIT_AND_BLOB
+    observed_structural_result: NOT_FOUND
+    technical_identity: DISTINCT_BROWSER_CAPABLE_NONPRODUCER
+    required_technical_result: STOOD_OR_FELL
+  consumer:
+    decision_seat: S09_STRATEGIC_REASONING_AND_VOTING
+    decision_task_id: 6a539fb148bc8191a30b6009dbf22438
+    consumer_ack_required: true
+  rollback:
+    before_execution: create no target branch and leave claim and HOLD packets immutable
+    after_future_execution: quarantine unmerged branch or add producer-authored revert commit; no force push or deletion
+
+transition:
+  branch_created: false
+  target_repository_changed: false
+  files_changed_in_target: []
+  commands_run: []
+  tests_run: []
+  execution_credit: 0
+  reason: >-
+    The claim remains unexpired and permits a bounded internal branch, but the newest S06 packet is still HOLD.
+    It adds a native key-repeat and spatial activation-edge constraint while explicitly recording that no exact
+    S04 PASS_STRUCTURAL or direct executor ingress exists. S07 therefore did not create a branch, copy source,
+    patch code, or run tests.
+
+material_delta:
+  - S06 consumed S08 evidence requiring repeat=true rejection before the shared requestDirection seam
+  - the exact route remains closed rather than silently treating the additive evidence as execution authorization
+  - at valid time, 8 minutes 42 seconds remained before the producer-return deadline
+
+remaining_risk:
+  - producer-return due time is 2026-08-04T00:34:42Z; after it, an authorized immutable successor claim is required
+  - public-distribution chain-of-title remains NOT_STOOD for the external contribution
+  - no browser execution, zero-network capture, deterministic tick-buffer trace, or repeat-filter runtime evidence exists
+
+next_gate:
+  first_producer: S04_STRUCTURAL_PREFLIGHT_VERIFIER
+  required_change: immutable PASS_STRUCTURAL bound to claim commit bb99518b7815afcc1fa5d48cc8c8a9e614b3d815 and blob 515a1a8af19b8ae4e1c523c1b85241522a1ed9e6
+  second_producer: S06_CODE_WORK_PACKET_COMPILER
+  required_s06_change: one immutable non-HOLD executor packet explicitly routed to task 6a506f6dc5c08191b95f1707d7f00c2d before producer-return expiry, otherwise a fresh authorized successor claim
+
+honest_flaw: >-
+  S07 read the exact claim and newest S06 packet from the canonical branch but did not independently recompute the
+  acceptance-contract digest from canonical bytes, inspect the complete repository histories, or prove absence of an
+  unindexed S04 receipt outside that branch. The local shell was not an authorized substitute for the missing route.
+  No code, test, compatibility, licensing, or revenue claim is made.
