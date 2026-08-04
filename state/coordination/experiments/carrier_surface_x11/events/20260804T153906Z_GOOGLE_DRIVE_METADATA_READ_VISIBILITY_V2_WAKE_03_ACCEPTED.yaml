@@ -1,0 +1,78 @@
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+event_id: X11_GOOGLE_DRIVE_METADATA_READ_VISIBILITY_V2_WAKE_03_ACCEPTED_20260804T153906Z
+experiment_id: X11_GOOGLE_DRIVE_METADATA_READ_VISIBILITY_V2
+task_id_expected: 6a55089a9adc8191bda54541f7f9effa
+carrier: HFO_GEN133_X11
+wip: 1
+branch: agent/gen133-bootstrap-20260730
+prior_current_version: 90
+next_current_version: 91
+campaign_wake: 3
+campaign_target_wakes: 4
+accepted: true
+campaign_status: ACTIVE
+campaign_disposition: null
+baseline:
+  accepted_wakes: 2
+  execution_status: SUCCESS
+  result_count: 0
+  next_page_token_present: false
+  permission_class: AUTHENTICATED_GOOGLE_DRIVE_METADATA_SEARCH_AVAILABLE
+  error_class: NONE
+  latency_samples_ms: [969, 3271]
+hypothesis: an_authenticated_metadata_only_Drive_search_for_a_fixed_impossible_marker_executes_without_interactive_login_content_fetch_identifier_persistence_or_state_change
+controlled_factor: google_drive_read_surface
+exact_probe:
+  mode: authenticated_drive_impossible_marker_metadata_search
+  query: HFO_X11_DRIVE_METADATA_PROBE_7B2E9D4C6A1F8035
+  topn: 1
+  best_effort_fetch: false
+measured_result:
+  execution_status: SUCCESS
+  result_count: 0
+  next_page_token_present: false
+  permission_class: AUTHENTICATED_GOOGLE_DRIVE_METADATA_SEARCH_AVAILABLE
+  error_class: NONE
+  latency_ms: 2353
+  latency_samples_ms: [969, 3271, 2353]
+  operator_relay_minutes: 0
+  interactive_login_required: false
+  file_content_read: false
+  file_identifiers_persisted: false
+  drive_mutation_performed: false
+  send_performed: false
+  task_mutation_performed: false
+  sensitive_readback_externalized: false
+  changed_capability: false
+  campaign_decision: false
+  andon: false
+strongest_falsifier: the_fixed_impossible_marker_metadata_query_requires_interactive_login_returns_an_unclassified_permission_error_exposes_file_content_or_identifiers_outside_the_tool_boundary_or_produces_inconsistent_sanitized_result_counts_across_identical_wakes
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer: [Reginleif, Ratatoskr]
+claim_ceiling: authenticated_Google_Drive_metadata_search_execution_and_sanitized_result_count_visibility_only_not_drive_completeness_indexing_freshness_file_content_access_sharing_scope_or_independent_verification
+same_provider_independence_claim: false
+honest_flaw: repeated_zero_result_metadata_searches_test_only_one_authenticated_Drive_query_path_and_do_not_establish_drive_completeness_index_freshness_file_content_access_or_sharing_scope
+next_factor: google_drive_read_surface
+next_probe:
+  experiment_id: X11_GOOGLE_DRIVE_METADATA_READ_VISIBILITY_V2
+  campaign_wake: 4
+  mode: authenticated_drive_impossible_marker_metadata_search
+  query: HFO_X11_DRIVE_METADATA_PROBE_7B2E9D4C6A1F8035
+  topn: 1
+  best_effort_fetch: false
+  persist_only:
+    - result_count
+    - next_page_token_present
+    - permission_class
+    - error_class
+    - latency_when_exposed
+    - operator_relay_minutes
+  file_ids_persistence_allowed: false
+  file_content_persistence_allowed: false
+  mutation_allowed: false
+  send_allowed: false
+  interactive_login_allowed: false
+  sensitive_readback_externalization_allowed: false
+slack_action: SILENT_UNCHANGED
+valid_time_utc: 2026-08-04T15:39:06Z
+sealed: true
