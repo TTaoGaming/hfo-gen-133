@@ -1,0 +1,62 @@
+schema: hfo.gen133.operator_relief_receipt.v0_1
+receipt_id: S05_MICROSOFT_PUBLISHER_RETIREMENT_GATE_BOUND_20260804T181655Z
+immutable: true
+task:
+  expected_id: 6a55c182078c8191b89f2dd15f5f640c
+  observed_id: 6a55c182078c8191b89f2dd15f5f640c
+  title: HFO S05 Var Operator Relief
+  wip: 1
+canonical:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-04T18:16:55Z
+transaction_time_utc: COMMIT_METADATA_AUTHORITATIVE
+result: DEADLINE_BOUND
+active_item: Microsoft Publisher file-retirement review
+priority_state:
+  p0: PFA household-sale disclosure due outside date 2026-08-05; completion still requires authoritative source receipt
+  p1:
+    - BetterHelp authorization and urgent health-action check
+    - Chad fire-alarm photos and AC proof request
+changed_evidence:
+  source_system: Gmail
+  private_pointer: gmail_message:19fcdd3fbd7e7e96
+  received_utc: 2026-08-04T17:30:30Z
+  sanitized_fact: Microsoft notified the subscription holder that Publisher support in Microsoft 365 ends 2026-10-01 and recommended converting needed Publisher files to PDF or Word before that date.
+  excluded_claims:
+    - No claim that the operator owns any Publisher files.
+    - No claim that the subscription price, billing, or renewal changed.
+    - No claim that any file was converted or verified.
+transition:
+  type: BIND_PRIVATE_CALENDAR_GATE
+  calendar_event_id: bgmn0pup10ufjtrmvi5tget7ok
+  start: 2026-09-01T13:00:00-06:00
+  end: 2026-09-01T13:25:00-06:00
+  timezone: America/Denver
+  visibility: private
+  reminders_minutes_before:
+    - 10080
+    - 30
+  exact_outcomes:
+    - NO_PUBLISHER_FILES
+    - CONVERTED_NEEDED_FILES
+    - WAITING_WITH_NAMED_BLOCKER
+  close_gate: At least one converted file must be opened successfully before CONVERTED_NEEDED_FILES may close.
+  forbidden_from_event:
+    - subscription cancellation
+    - recurring-billing change
+    - account or security change
+operator_minutes_removed_estimate: 4
+next_consumer: Operator on 2026-09-01, then Var for source-system closure readback
+privacy:
+  gmail_body_externalized: false
+  sensitive_data_externalized: false
+  git_slack_ceiling: sanitized fact plus opaque source pointers only
+effects:
+  email_sent: false
+  application_submitted: false
+  spend_or_payment: false
+  deployment_merge_publication: false
+  account_or_security_change: false
+  scheduled_task_mutation: false
+honest_flaw: The notice creates a deadline only if relevant Publisher files exist; no file inventory was read, so the event may legitimately close as NO_PUBLISHER_FILES.
