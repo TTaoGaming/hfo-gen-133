@@ -1,14 +1,15 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
 experiment_id: X13_GOOGLE_DRIVE_SEARCH_METADATA_READONLY_001
-version: 89
-prior_version: 88
+version: 90
+prior_version: 89
 candidate: Google_Drive_search_metadata_only_surface
-campaign_wake: 1_of_4
+campaign_wake: 2_of_4
 campaign_status: ACTIVE
 phase_1_completed: true
 phase_1_status: PHASE1_ACCEPTED_WITH_GATES
-phase_2_completed: false
+phase_2_completed: true
+phase_2_status: PHASE2_ACCEPTED_WITH_GATES
 phase_3_completed: false
 phase_4_completed: false
 phase_4_decision: PENDING
@@ -16,12 +17,12 @@ adoption_mode: NOT_DECIDED
 carrier_task_id: 6a55c1733708819185088bf334e33ea5
 carrier_task_id_match: true
 wip: 1
-last_event_commit: b8b399e683af9033dcc9c1cfd597f9e17202eac8
-last_event_path: state/coordination/experiments/cots_connector_x13/20260804T134835Z_GOOGLE_DRIVE_SEARCH_METADATA_PHASE1_BASELINE.md
-last_event_blob_sha: 3541cedab6e0463b7183822fa98aed6102812566
+last_event_commit: 1a2874812925bf2495a34b5e2306acd50f41a8bf
+last_event_path: state/coordination/experiments/cots_connector_x13/20260804T144953Z_GOOGLE_DRIVE_SEARCH_METADATA_PHASE2_ZERO_RESULT.md
+last_event_blob_sha: 355b684523a52cc619edad5f72e3c02db5c37ec7
 last_event_readback: true
-prior_current_commit: 5dad93776f76134e52ce63416dcad346794c5d87
-prior_current_blob_sha: abb104e5f86f5ecccd2e4444d97a08cc398d91e5
+prior_current_commit: cd30b049a096e1f5db3cba763db7e4bc108337b6
+prior_current_blob_sha: 2e9f5569122fdddb842672d846e740216c0a52ea
 adoption_credit: 0
 fitness_credit: 0
 consumer_ack: NOT_OBSERVED
@@ -30,20 +31,21 @@ custom_code_avoided_estimate: 25_to_70_LOC_UNVALIDATED
 paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
 actual_quota_consumed: UNKNOWN
 official_quota_contract: FILES_LIST_OR_DRIVE_MCP_SEARCH_FILES_100_UNITS_ACTUAL_UPSTREAM_UNKNOWN
-campaign_calls: 1_READONLY_1_SUCCESS_0_RETRY_0_FALLBACK_0_MUTATION
-result_shape: ONE_METADATA_RESULT_TITLE_URL_PARENT_IDS_NO_CONTENT
-connector_variance: ITEM_TYPE_DOCUMENT_INCLUDED_SPREADSHEET_BACKED_ITEM
-observability: PARTIAL_NO_MIME_PAGINATION_COMPLETENESS_OR_PROVIDER_TELEMETRY
+campaign_calls: 2_READONLY_2_SUCCESS_0_RETRY_0_FALLBACK_0_MUTATION
+result_shape: PHASE1_ONE_METADATA_RESULT_PHASE2_EMPTY_RESULTS_ARRAY_NO_CONTENT
+connector_variance: DOCUMENT_CATEGORY_NOT_MIME_AND_EMPTY_RESULT_HAS_NO_PROVIDER_COMPLETENESS_FIELDS
+observability: PARTIAL_CONNECTOR_LATENCY_AND_ERROR_WRAPPER_NO_RAW_PROVIDER_TELEMETRY
 portability: LOW_TO_MEDIUM
 credentials: CONNECTOR_MANAGED_IDENTITY_AND_SCOPE_UNKNOWN
-mandatory_gate: DOCUMENT_CATEGORY_IS_NOT_MIME_AND_ABSENCE_OR_COMPLETENESS_IS_NONAUTHORITATIVE
-strongest_falsifier: RAW_SAME_PRINCIPAL_DRIVE_RESULT_MATERIALLY_DIFFERS_OR_INCOMPLETE_SEARCH_TRUE
-honest_flaw: ONE_CAPPED_POSITIVE_LOOKUP_DOES_NOT_ESTABLISH_COMPLETENESS_PAGING_OR_RAW_PARITY
-next_phase: GOOGLE_DRIVE_SYNTHETIC_ZERO_RESULT_METADATA_SEARCH_PHASE2
-valid_time_utc: 2026-08-04T13:48:35Z
-recorded_time_utc: 2026-08-04T13:48:35Z
+failure_behavior: EMPTY_RESULT_NORMAL_SUCCESS_TRUE_FAILURE_PENDING_PHASE3
+mandatory_gate: EMPTY_RESULT_IS_NONAUTHORITATIVE_AND_DOCUMENT_CATEGORY_IS_NOT_MIME
+strongest_falsifier: RAW_SAME_PRINCIPAL_QUERY_FINDS_MATCH_OR_REPORTS_CONTINUATION_OR_INCOMPLETE_SEARCH
+honest_flaw: SYNTHETIC_NEGATIVE_ONLY_PROVES_ONE_EASY_EMPTY_RESPONSE_PATH
+next_phase: GOOGLE_DRIVE_INVALID_PAGE_TOKEN_FAILURE_VARIANCE_PROBE_PHASE3
+valid_time_utc: 2026-08-04T14:49:53Z
+recorded_time_utc: 2026-08-04T14:49:53Z
 ---
 
-# X13 CURRENT v89
+# X13 CURRENT v90
 
-Google Drive metadata-only search phase 1 is accepted with gates. One bounded document-category lookup returned one metadata result and no file content. The connector category included a spreadsheet-backed item, so `document` is not a MIME guarantee. Pagination, completeness, identity, scope, provider telemetry, actual quota debit, and consumer value remain unverified; credit remains zero.
+Google Drive metadata-only search phases 1 and 2 are accepted with gates. The bounded phase-2 synthetic query returned a normal empty `results` array in 512 ms with no file content and no connector error. This is not authoritative absence: provider pagination, `incompleteSearch`, identity, scope, raw parity, quota debit, hidden attempts, and consumer value remain unverified. Credit remains zero.
