@@ -1,8 +1,8 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_PROJECT_CONTEXT_VISIBILITY_V1
-current_version: 113
-accepted_wakes: 1
+current_version: 114
+accepted_wakes: 2
 target_wakes_before_decision: 4
 controlled_factor: project_vs_nonproject_context
 campaign_status: ACTIVE
@@ -27,34 +27,34 @@ baseline_result:
   error_class: NONE
 hypothesis: the_provider_expected_task_inventory_record_will_either_explicitly_expose_project_or_container_context_metadata_or_repeatably_expose_no_such_field_across_four_identical_read_only_probes
 measured_result:
-  provider_call_success: [true]
-  expected_task_visible: [true]
-  project_context_field_exposed: [false]
-  project_context_classification: [NO_EXPLICIT_PROJECT_OR_CONTAINER_METADATA_EXPOSED]
-  latencies_ms: [NOT_EXPOSED]
+  provider_call_success: [true, true]
+  expected_task_visible: [true, true]
+  project_context_field_exposed: [false, false]
+  project_context_classification: [NO_EXPLICIT_PROJECT_OR_CONTAINER_METADATA_EXPOSED, NO_EXPLICIT_PROJECT_OR_CONTAINER_METADATA_EXPOSED]
+  latencies_ms: [NOT_EXPOSED, NOT_EXPOSED]
   permission_class: AUTHENTICATED_NATIVE_TASKS_EXPECTED_RECORD_READ_AVAILABLE
   error_class: NONE
   operator_relay_minutes: 0
-  changed_capability: true
+  changed_capability: false
   campaign_decision: false
   andon: false
-supported_claim: the_native_expected_task_inventory_record_exposed_no_explicit_project_or_container_context_metadata_in_the_first_bounded_probe
+supported_claim: the_native_expected_task_inventory_record_exposed_no_explicit_project_or_container_context_metadata_in_two_identical_bounded_probes
 claim_ceiling: inventory_schema_field_absence_only_not_proof_of_nonproject_execution_project_membership_hidden_context_inheritance_container_isolation_runtime_context_or_independent_verification
 strongest_falsifier: a_direct_provider_surface_or_later_identical_probe_exposes_explicit_project_or_container_context_metadata_for_the_expected_task_or_the_expected_task_record_shape_changes
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 consumer: [Reginleif, Ratatoskr]
 honest_flaw: absence_of_an_explicit_inventory_field_cannot_distinguish_nonproject_execution_from_hidden_or_unexposed_project_context
 last_event:
-  commit: 6a4b2bd21aeb2d48f6d9822f1f87641a1f4981e7
-  path: state/coordination/experiments/carrier_surface_x11/events/20260805T134124Z_PROJECT_CONTEXT_VISIBILITY_V1_WAKE_01.yaml
-  blob: fb698447e4384dc788f63d42bb13f1ddf2f555ab
+  commit: 86b2468dc87895fc8eb404e821f5960a3a3f8057
+  path: state/coordination/experiments/carrier_surface_x11/events/20260805T144037Z_PROJECT_CONTEXT_VISIBILITY_V1_WAKE_02.yaml
+  blob: ce0f7856243cf4d4f6b6319ae524c8b9b800c2bc
 next_factor: project_vs_nonproject_context
 next_probe:
   experiment_id: X11_PROJECT_CONTEXT_VISIBILITY_V1
-  campaign_wake: 2
+  campaign_wake: 3
   mode: sanitized_expected_task_project_context_metadata_read_only
   exact_action: repeat_the_identical_expected_task_inventory_record_inspection_for_explicit_project_or_container_context_metadata
-  expected_current_version: 113
+  expected_current_version: 114
   persist_only:
     - provider_call_success
     - expected_task_visible
@@ -70,13 +70,13 @@ next_probe:
   post_only_changed_capability_campaign_decision_or_andon: true
   sensitive_readback_externalization_allowed: false
   same_provider_independence_claim_allowed: false
-slack_action: POST_CHANGED_CAPABILITY
-updated_valid_time_utc: 2026-08-05T13:41:24Z
+slack_action: NO_POST_UNCHANGED_PROBE
+updated_valid_time_utc: 2026-08-05T14:40:37Z
 sealed: false
 ---
 
-Project-context visibility V1 accepted wake one of four. The authenticated native Tasks
-inventory exposed the expected X11 record but no explicit project or container context
-metadata field. This is a negative schema-visibility measurement only: field absence does
-not prove non-Project execution, hidden-context absence, container isolation, or runtime
-context behavior. Wake two repeats the identical bounded read-only probe.
+Project-context visibility V1 accepted wake two of four. The authenticated native Tasks
+inventory again exposed the expected X11 record but no explicit project or container context
+metadata field. This remains a negative schema-visibility measurement only: field absence
+does not prove non-Project execution, hidden-context absence, container isolation, or runtime
+context behavior. Wake three repeats the identical bounded read-only probe.
