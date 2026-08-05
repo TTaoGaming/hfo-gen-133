@@ -1,0 +1,161 @@
+---
+schema_id: hfo.gen133.s04.structural_preflight.v1
+result: REVISE
+terminal: false
+seat: S04_STRUCTURAL_PREFLIGHT_VERIFIER
+carrier_task_id_expected: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_observed: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_match: true
+wip: 1
+valid_time_utc: 2026-08-05T18:16:12Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+
+self_probe:
+  identity: HFO_GEN133_S04_STRUCTURAL_PREFLIGHT_VERIFIER
+  authenticated_github_actor: TTaoGaming
+  expected_task_enabled_observed: true
+  expected_task_id_match: true
+  available_tools:
+    - native automation inventory read
+    - authenticated GitHub commit search compare exact file and blob read create and readback
+    - authenticated Slack pointer post
+    - deterministic UTF-8 byte Git-blob and SHA-256 recomputation
+  unavailable_binding_surfaces:
+    - raw Google Calendar request and response witness
+    - effective Google principal OAuth client project scopes token custody ACL and delegation readback
+    - distinct-provider verifier
+  candidate_edit_performed: false
+  task_mutation_performed: false
+  self_grading_performed: false
+  provider_call_replay_performed: false
+
+selection:
+  rule: NEWEST_IMMUTABLE_CANDIDATE_EXPLICITLY_ADDRESSED_TO_S04_NOT_AUTHORED_BY_S04
+  selection_cutoff_utc: 2026-08-05T18:16:12Z
+  branch_head_at_selection: dbc519a82f300630de3da4817be4de3e8be350d2
+  branch_head_exact_match_observed: true
+  candidate_authoring_seat: S03
+  candidate_addressed_to_s04: true
+  candidate_authored_by_s04: false
+  prior_s02_claim_rejected_as_newest_candidate: SUPERSEDED_BY_LATER_EXPLICIT_S03_ROUTE
+
+candidate_binding:
+  commit: dbc519a82f300630de3da4817be4de3e8be350d2
+  path: state/coordination/receipts/chatgpt_runtime/seat-03/20260805T180932Z_X13_GOOGLE_CALENDAR_FREEBUSY_PHASE1_RETURN_BINDINGS_REVISE.yaml
+  git_blob_sha1: dd71c1cc80cf90e0dec67af4a20d27c7a8169206
+  exact_utf8_bytes: 10018
+  exact_sha256: 37d5533b209e40b16d27e0d60bc58843dee4a0c305e035068c5a22464b5c6610
+  git_blob_recomputed_match: true
+  schema_id: hfo.gen133.s03.verification_route.v1
+  schema_parse: ONE_VALID_YAML_MAPPING
+  route_result: REVISE
+  correlation_id: X13_GOOGLE_CALENDAR_FREEBUSY_READONLY_005_PHASE1_20260805T174814Z
+  route_valid_time_utc: 2026-08-05T18:09:32Z
+  route_expiry_utc: 2026-08-12T17:48:14Z
+
+source_binding:
+  commit: 8b0044b4fa80ffd16b643a8db2ab00e8e2f75763
+  path: state/coordination/experiments/cots_connector_x13/20260805T174814Z_GOOGLE_CALENDAR_FREEBUSY_PHASE1_ACCEPTED_WITH_GATES.md
+  git_blob_sha1: cbfd5407023697373f4306a921af53070ed21053
+  exact_utf8_bytes: 6850
+  exact_sha256: ce69a91b787ac2832509ed850ef3fcbb347e3e800b4d254ce16fe61e6bfa0072
+  git_blob_recomputed_match: true
+  schema_id: hfo.gen133.x13.cots_connector_event.v1
+  front_matter_parse: ONE_VALID_YAML_MAPPING
+  source_result: PHASE1_ACCEPTED_WITH_GATES
+  source_review_expiry_utc: 2026-08-12T17:48:14Z
+  adoption_credit: 0
+  fitness_credit: 0
+
+current_binding:
+  read_at_commit: dbc519a82f300630de3da4817be4de3e8be350d2
+  path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+  version: 117
+  git_blob_sha1: df341c91ce9a312618f8c95a982bf3f5876ad655
+  exact_utf8_bytes: 7420
+  exact_sha256: 7d3188a3fb9636400316e85645bc36b38029b7bcaab8ea991e38dee6f7aff6a5
+  git_blob_recomputed_match: true
+  last_event_commit_match: true
+  last_event_path_match: true
+  last_event_blob_match: true
+  campaign_status: OPEN
+
+structural_checks:
+  exact_bytes_and_source_pointers: PASS
+  schema_and_canonicalization: PASS_GIT_BYTES_RECOMPUTED_SOURCE_AND_CURRENT_FRONT_MATTER_PARSED
+  freshness: PASS_ROUTE_AND_SOURCE_REVIEW_EXPIRIES_OPEN_AT_PREFLIGHT
+  authority: PASS_ROUTE_CEILING_IS_INTERNAL_GIT_ROUTE_AND_SANITIZED_SLACK_POINTER_ONLY
+  task_binding: PASS_S03_CARRIER_MATCH_AND_S04_RECIPIENT_TASK_MATCH
+  actor_carrier_separation: PASS_S03_REDUCER_X13_SOURCE_S04_PREFLIGHT_AND_DISTINCT_RAW_WITNESS_ARE_NOT_CONFLATED
+  idempotency: REVISE_NO_WORKITEM_NONCE_IDEMPOTENCY_KEY_OR_CANONICAL_PRODUCER_RETURN_DIGEST
+  lease: REVISE_NO_PRODUCER_IDENTITY_OR_PRODUCER_LEASE
+  expiry: PASS_ROUTE_AND_SOURCE_EXPIRY_ARE_EXPLICIT
+  privacy: PASS_WITH_GATES_BUSY_OCCUPANCY_IS_CLASSIFIED_SENSITIVE_AND_EVENT_DETAILS_ARE_NOT_PERSISTED
+  rollback: REVISE_ROUTE_ROLLBACK_EXISTS_BUT_IS_NOT_BOUND_TO_A_CANONICAL_PRODUCER_DIGEST
+  verifier: REVISE_DISTINCT_AUTHORIZED_RAW_CALENDAR_WITNESS_REQUIRED_BUT_NOT_ASSIGNED_OR_RUN
+  consumer: REVISE_CATALOG_CONSUMER_ONLY_OPERATIONAL_CONSUMER_NOT_ASSIGNED_AND_CONSUMERACK_ABSENT
+  independent_verdict: REVISE_NO_DIGEST_BOUND_STOOD_OR_FELL
+  terminal_gate: OPEN
+
+admitted_claim:
+  classification: CATALOG_CONNECTOR_OBSERVATION_ONLY
+  statement: >-
+    The immutable source records one bounded connector-managed read-only freebusy observation with explicit
+    calendar alias bounds and response timezone, one returned busy interval, no event titles or details,
+    no reported structured error, no reported mutation, and zero adoption or fitness credit.
+
+excluded_claims:
+  - WorkItem-bound producer return
+  - raw Google request or response parity
+  - effective principal scopes project ACL token or delegation proof
+  - HTTP status headers request ID quota or true provider call count
+  - immutable calendar truth or complete visibility
+  - operational adoption operator relief or economic outcome
+  - distinct digest-bound STOOD or FELL
+  - explicit named operational ConsumerAck
+
+strongest_fake_green_mutant:
+  mutant_id: X14_MUTANT_115_65878b56972c
+  commit: 22b32cf45868da3c35284050b03825fe9c054aa2
+  path: state/coordination/experiments/false_green_x14/quarantine/20260805T175333Z_X12_DUPLICATE_IDEMPOTENCY_VERSION.mutant.yaml
+  git_blob_sha1: a1bb65c6a9ea7094c88b7e8c7cba18766c65981d
+  mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+  canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_bytes: 213
+  canonical_overlay_sha256: 65878b56972c7cb0104fcadcb280fb0f71d07b9580752e6010047afe93867657
+  recomputed_overlay_match: true
+  disposition: REJECT
+  reason: >-
+    The overlay replays already-consumed version 111 while the immutable event outbox delivery marker
+    idempotency key CURRENT commit and rollback remain bound to the accepted 111-to-112 transition.
+    Unique delivery evidence cannot authorize a stale or duplicate state version.
+
+verdict:
+  result: REVISE
+  material_reason: >-
+    Exact Git bytes schemas task bindings route expiry privacy ceiling and rollback instructions reproduce,
+    but the source is only a catalog observation. It lacks an immutable WorkItem claim and acceptance,
+    producer identity lease nonce idempotency domain canonical producer-return digest, matched raw-provider
+    security-context witness, digest-bound distinct STOOD or FELL, named operational consumer, and ConsumerAck.
+  permitted_use: BOUNDED_HUMAN_REVIEWED_CATALOG_REFERENCE_ONLY
+  forbidden_promotion: OPERATIONAL_ADOPTION_TERMINAL_RECEIPT_OR_INDEPENDENT_QUORUM
+  next_consumer: S03_REDUCER_AND_X13_COTS_CAPABILITY_CATALOG
+  binding_verifier_required: DISTINCT_AUTHORIZED_RAW_GOOGLE_CALENDAR_FREEBUSY_WITNESS
+
+effect_ceiling:
+  performed: ONE_IMMUTABLE_GIT_STRUCTURAL_PREFLIGHT_RECEIPT_AND_ONE_SANITIZED_SLACK_POINTER
+  candidate_or_source_mutation: NONE
+  external_provider_effect: NONE
+  public_effect: NONE
+
+honest_flaw: >-
+  This preflight independently recomputed the exact Git bytes and internal hashes but did not and could not
+  reproduce the underlying Google Calendar call or authenticate the effective Google principal scopes project
+  ACL token custody delegation quota or raw HTTP exchange. GitHub commit discovery is not transactionally
+  atomic with concurrent writes; selection is bound to the exact branch head observed at the stated cutoff.
+  SAME_PROVIDER_NONBINDING evidence has binding weight 0 and cannot close independent verification.
