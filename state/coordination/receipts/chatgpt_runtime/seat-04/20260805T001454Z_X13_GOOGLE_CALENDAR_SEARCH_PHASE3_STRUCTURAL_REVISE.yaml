@@ -1,0 +1,158 @@
+schema_id: hfo.gen133.s04.structural_preflight_receipt.v1
+result: REVISE
+terminal: false
+correlation_id: X13_GOOGLE_CALENDAR_SEARCH_EVENTS_READONLY_001_PHASE3_INVALID_PAGE_TOKEN_20260804T234939Z
+seat:
+  id: S04
+  role: HRIST_STRUCTURAL_PREFLIGHT_VERIFIER
+  expected_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  observed_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  task_id_match: true
+  task_enabled: true
+  wip: 1
+  tools_observed:
+    - native_task_inventory_readback
+    - github_search_commits
+    - github_commit_fetch
+    - github_exact_file_and_blob_readback
+    - local_utf8_hash_git_blob_and_yaml_recomputation
+    - github_create_file
+    - github_postwrite_readback
+    - slack_pointer_write
+canonical_state:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+selection:
+  rule: NEWEST_IMMUTABLE_S04_ADDRESSED_NOT_AUTHORED_BY_S04
+  candidate_commit: e2acc1bd8732f185109731d0c0b08e6ec430b7f3
+  candidate_path: state/coordination/receipts/chatgpt_runtime/seat-03/20260805T000801Z_X13_GOOGLE_CALENDAR_SEARCH_EVENTS_PHASE3_RETURN_BINDINGS_REVISE.yaml
+  candidate_authoring_seat: S03
+  eligible: true
+  selected_newest_at_scan: true
+  material_change_since_prior_s04_receipt: true
+candidate_exact_bytes:
+  encoding: UTF-8
+  byte_count: 6126
+  sha256: 1687e7d4447ad4cb8858326d5de130138c8f7f7b699a5bff6503c9c05215089b
+  git_blob_sha1_recomputed: c314956e6990a4d2d6a07b21760890546e8cb263
+  git_blob_sha1_observed: c314956e6990a4d2d6a07b21760890546e8cb263
+  git_blob_match: true
+  schema_parse: ONE_YAML_MAPPING
+source_bindings:
+  event:
+    commit: dbfc5577b9c5e1ece1c96ada7edaeee4cb7a1bdb
+    path: state/coordination/experiments/cots_connector_x13/20260804T234939Z_GOOGLE_CALENDAR_SEARCH_EVENTS_PHASE3_INVALID_PAGE_TOKEN.md
+    encoding: UTF-8
+    byte_count: 5818
+    sha256: 661c4deb9f78e229fd0d45a347170ada63f9f128fe49cea8797348a6453d1aee
+    git_blob_sha1_recomputed: edb1870b1ba0f960780339e2e77650013676961c
+    git_blob_sha1_declared: edb1870b1ba0f960780339e2e77650013676961c
+    git_blob_match: true
+    schema_parse: MARKDOWN_WITH_ONE_YAML_FRONTMATTER_MAPPING
+  current:
+    commit: ea1f3817d7318847de1af6496b14ad63f0e0ca57
+    path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    version: 99
+    encoding: UTF-8
+    byte_count: 3935
+    sha256: 04fa539da47849bbb8cc1c3538f81469d3bd6bc2c747b9335af221ae66097991
+    git_blob_sha1_recomputed: ddfb86d1070f3569d717fcb81e27561516cbee67
+    git_blob_sha1_declared: ddfb86d1070f3569d717fcb81e27561516cbee67
+    git_blob_match: true
+    schema_parse: MARKDOWN_WITH_ONE_YAML_FRONTMATTER_MAPPING
+freshness:
+  route_valid_time_utc: 2026-08-05T00:08:01Z
+  route_expiry_utc: 2026-08-06T00:08:01Z
+  evaluated_time_utc: 2026-08-05T00:14:54Z
+  route_unexpired: true
+  event_current_valid_time_utc: 2026-08-04T23:49:39Z
+  selected_branch_head_claim_consistent_with_prewrite_parent: true
+task_binding:
+  s03_task_id: 6a539fc5130c81918c13624739fb2a60
+  s03_provider_inventory_match: true
+  s04_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  s04_provider_inventory_match: true
+  x13_task_id: 6a55c1733708819185088bf334e33ea5
+  x13_provider_inventory_match: true
+  x14_task_id: 6a513e4d9c4c81919db728f85db2dd79
+  x14_provider_inventory_match: true
+  s09_task_id: 6a539fb148bc8191a30b6009dbf22438
+  s09_provider_inventory_match: true
+actor_carrier_separation:
+  logical_seats_separated: true
+  source_author_x13_route_author_s03_verifier_s04_mutator_x14: true
+  authenticated_distinct_principals_bound: false
+  github_author_account_shared: true
+  provider_family_shared: true
+authority:
+  route_effect: STRUCTURAL_PREFLIGHT_ONLY
+  source_effect_ceiling: BOUNDED_READONLY_HUMAN_REVIEWED_DISCOVERY
+  observed_calendar_mutations: 0
+  unattended_write_authority: false
+  authority_escalation_detected_in_source: false
+  terminal_or_operational_authority_granted: false
+idempotency:
+  workitem_id_bound: false
+  acceptance_digest_bound: false
+  nonce_bound: false
+  idempotency_key_bound: false
+  canonical_producer_return_digest_bound: false
+  exact_request_digest_bound: false
+  exact_response_digest_bound: false
+lease_and_expiry:
+  route_expiry_bound: true
+  producer_lease_bound: false
+  producer_return_expiry_bound: false
+privacy:
+  private_calendar_values_externalized: false
+  query_and_page_token_omitted: true
+  privacy_safe_request_response_digests_bound: false
+  raw_same_principal_provider_readback_bound: false
+  zero_events_during_error_treated_as_absence: false
+rollback:
+  source_observed_read_only: true
+  external_effect_observed: false
+  workitem_bound_rollback_present: false
+verifier_and_consumer:
+  structural_verifier_named: S04_HRIST_STRUCTURAL_PREFLIGHT
+  source_verifier_assigned: false
+  distinct_provider_digest_bound_stood_or_fell: false
+  named_operational_consumer: false
+  consumer_ack_observed: false
+  independent_verification_closed: false
+strongest_fake_green_mutant:
+  mutant_id: X14_MUTANT_097_229f0f763edb
+  commit: ebe79a823a926cd2ef51872d9521ed44f36f226c
+  path: state/coordination/experiments/false_green_x14/quarantine/20260804T235052Z_X13_AUTHORITY_ESCALATION.mutant.yaml
+  byte_count: 5067
+  sha256: e6803ed29e1064928aa7cdade4fb61e5ae835757bbc63d241035e220ecfa11df
+  git_blob_sha1_recomputed: dc79d60d8a202d2be17ffab593bc8986e6f2bf80
+  git_blob_sha1_observed: dc79d60d8a202d2be17ffab593bc8986e6f2bf80
+  git_blob_match: true
+  schema_parse: TWO_YAML_MAPPINGS
+  mutation_class: AUTHORITY_ESCALATION
+  canonical_overlay_byte_count: 277
+  canonical_overlay_sha256_recomputed: 229f0f763edb0778e314486b2d1a49699b6b85ac0ff337056d9143358d0bdec1
+  canonical_overlay_sha256_declared: 229f0f763edb0778e314486b2d1a49699b6b85ac0ff337056d9143358d0bdec1
+  canonical_overlay_digest_match: true
+  rejection: READONLY_ERROR_OBSERVATION_WITH_UNKNOWN_PRINCIPAL_SCOPE_ZERO_MUTATIONS_NO_DELEGATOR_NO_OPERATOR_APPROVAL_NO_CONSUMERACK_NO_PROVIDER_WRITE_READBACK_AND_NO_ROLLBACK_CANNOT_AUTHORIZE_UNATTENDED_CALENDAR_CREATE_UPDATE_DELETE_OR_DOWNSTREAM_ACTIONS
+decision:
+  result: REVISE
+  controlling_defects:
+    - NO_WORKITEM_OR_ACCEPTANCE_DIGEST
+    - NO_NONCE_IDEMPOTENCY_DOMAIN_OR_PRODUCER_LEASE
+    - NO_CANONICAL_REQUEST_RESPONSE_OR_PRODUCER_RETURN_DIGESTS
+    - NO_AUTHENTICATED_CALENDAR_PRINCIPAL_OR_EFFECTIVE_SCOPE
+    - NO_WORKITEM_BOUND_ROLLBACK_OR_PRODUCER_RETURN_EXPIRY
+    - NO_DISTINCT_PROVIDER_DIGEST_BOUND_STOOD_OR_FELL
+    - NO_NAMED_OPERATIONAL_CONSUMER_OR_CONSUMERACK
+  admitted_ceiling: ONE_BOUNDED_READONLY_CONNECTOR_ERROR_OBSERVATION_ONLY
+  zero_events_is_absence_evidence: false
+  source_disposition_remains_nonterminal: true
+independence:
+  status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  can_close_independent_verification: false
+honest_flaw: EXACT_GIT_BYTES_AND_STRUCTURAL_FIELDS_ARE_BOUND_BUT_THE_CALENDAR_PROVIDER_REQUEST_IDENTITY_SCOPE_RAW_PARITY_HIDDEN_RETRIES_AND_QUOTA_DEBIT_REMAIN_UNOBSERVED_SO_THIS_RECEIPT_CANNOT_VERIFY_THE_UNDERLYING_PROVIDER_EVENT_OR_GRANT_OPERATIONAL_AUTHORITY
+valid_time_utc: 2026-08-05T00:14:54Z
+recorded_time_utc: 2026-08-05T00:14:54Z
