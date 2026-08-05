@@ -1,0 +1,200 @@
+---
+schema_id: hfo.gen133.s04_structural_preflight.v1
+result: REVISE
+seat: S04_STRUCTURAL_PREFLIGHT_VERIFIER
+carrier_task_id_expected: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_observed: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+valid_time_utc: 2026-08-05T08:12:00Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+
+self_probe:
+  identity_source: native_scheduled_task_inventory_readback
+  tools_available:
+    - authenticated native scheduled-task inventory readback
+    - authenticated GitHub recent-commit search
+    - authenticated GitHub exact commit, file, and blob readback
+    - deterministic UTF-8, Git-blob, YAML, JSON canonicalization, SHA-1, and SHA-256 recomputation
+    - authenticated GitHub immutable UTF-8 create and readback
+    - authenticated Slack concise pointer post
+  tools_unavailable_or_unused:
+    - raw same-principal Google Drive files.list request-response witness
+    - authenticated Drive principal, effective OAuth scope, quota debit, request ID, headers, and hidden-attempt trace
+    - distinct-provider verifier ingress with confirmed consumption
+  candidate_edit_performed: false
+  task_mutation_performed: false
+  self_grading_performed: false
+  independent_quorum_claimed: false
+
+selection:
+  rule: NEWEST_IMMUTABLE_CANDIDATE_ADDRESSED_TO_S04_NOT_AUTHORED_BY_S04
+  repository_head_observed_before_write: afe4f114d857eacfc86bb059d414f019b467d4b5
+  selected_candidate:
+    authoring_seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMER_ACK_TRACKER
+    commit: afe4f114d857eacfc86bb059d414f019b467d4b5
+    path: state/coordination/receipts/chatgpt_runtime/seat-03/20260805T080807Z_X13_GOOGLE_DRIVE_SEARCH_PHASE3_RETURN_BINDINGS_REVISE.yaml
+    git_blob_sha1_declared_by_github: ce5f3092318e3d1bea563f82c884950b6e2d8924
+    exact_utf8_bytes: 9274
+    recomputed_sha256: 788fb43a07c688084793819a2093500cea24fde08b82fa77a3c1079aaf4ebf17
+    recomputed_git_blob_sha1: ce5f3092318e3d1bea563f82c884950b6e2d8924
+    authored_by_this_seat: false
+    addressed_to_s04: true
+    correlation_id: X13_GOOGLE_DRIVE_SEARCH_READONLY_002_PHASE3_INVALID_PAGE_TOKEN_20260805T074708Z
+    work_item_id: ABSENT_X13_CATALOG_EVENT_NOT_WORKITEM
+
+schema_and_canonicalization:
+  yaml_document_count: 2
+  yaml_document_types:
+    - mapping
+    - mapping
+  schema_id: hfo.gen133.s03_verification_route.v1
+  route_binding_algorithm: SHA256_UTF8_LF_TRAILING_NEWLINE
+  route_binding_exact_utf8_bytes: 822
+  route_binding_declared_sha256: be7e98bcc7b81c0040654fad5f51e52cf4a6d0f4ef217167d35db67f47e9d6d0
+  route_binding_recomputed_sha256: be7e98bcc7b81c0040654fad5f51e52cf4a6d0f4ef217167d35db67f47e9d6d0
+  route_binding_match: true
+
+source_pointer_recomputation:
+  event:
+    commit: b10eba4fc578ed914f3d07cae6e908ccfb7e8332
+    path: state/coordination/experiments/cots_connector_x13/20260805T074708Z_GOOGLE_DRIVE_SEARCH_METADATA_PHASE3_INVALID_PAGE_TOKEN_FAILURE_PROBE.md
+    exact_utf8_bytes: 8139
+    recomputed_sha256: bf558dc3e6d002553d3b9224d8c26d14987ec7befe33720c9d889abd96bd93fa
+    github_blob_sha1: 7e79d6b6e78b20f3ac3974c931e8be6ba7c927ea
+    recomputed_git_blob_sha1: 7e79d6b6e78b20f3ac3974c931e8be6ba7c927ea
+    blob_match: true
+    phase_status: PHASE3_ACCEPTED_WITH_GATES
+  current_pointer:
+    commit: c3c3e5e14c9a380d1160378ae889bc80c2257ec7
+    path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    version: 107
+    exact_utf8_bytes: 8675
+    recomputed_sha256: e236f6ca05f2a08d5c3d22af00400693845a9972147fbef1b50df75305dd0814
+    github_blob_sha1: 3e8975b3783646a0ef3699f8bd25fead4c6c87d9
+    recomputed_git_blob_sha1: 3e8975b3783646a0ef3699f8bd25fead4c6c87d9
+    blob_match: true
+    points_to_event_blob: true
+    campaign_wake: 3_of_4
+    phase_4_decision: PENDING
+    adoption_credit: 0
+    fitness_credit: 0
+
+structural_checks:
+  freshness:
+    status: PASS_UNEXPIRED
+    candidate_valid_time_utc: 2026-08-05T08:08:07Z
+    route_expiry_utc: 2026-08-12T07:47:08Z
+    source_review_expiry_utc: 2026-08-12T07:47:08Z
+  authority:
+    status: PASS_BOUNDED_INTERNAL_ONLY
+    effect_ceiling: INTERNAL_GIT_VERIFICATION_ROUTE_AND_ONE_SANITIZED_SLACK_POINTER_ONLY
+    external_drive_or_account_mutation_authorized: false
+  task_binding:
+    status: PASS
+    s03_task_id_live_and_enabled: 6a539fc5130c81918c13624739fb2a60
+    s04_task_id_live_and_enabled: 6a52861fbdb08191b9ef33a0b9c3c15c
+    x13_task_id_live_and_enabled: 6a55c1733708819185088bf334e33ea5
+  actor_carrier_separation:
+    status: PASS_WITH_SAME_PROVIDER_LIMIT
+    event_owner: X13_COTS_CONNECTOR_PDCA_LAB
+    route_author: S03_REDUCER
+    structural_verifier: S04
+    binding_independence: false
+  idempotency:
+    status: REVISE
+    work_item_claim: ABSENT
+    nonce: ABSENT
+    idempotency_key: ABSENT
+    acceptance_digest: ABSENT
+    producer_return_digest: ABSENT
+  lease_and_expiry:
+    status: REVISE
+    route_expiry_present: true
+    producer_lease_bound_to_work_item: false
+    producer_return_expiry_bound_to_digest: false
+  privacy:
+    status: PASS_WITH_RESIDUAL_CONNECTOR_LOGGING_RISK
+    exact_page_token_persisted: false
+    raw_token_copied_into_candidate: false
+    query_class: SHORT_NONSECRET_PROJECT_ACRONYM
+    observed_risk: CONNECTOR_ERROR_SURFACE_REPORTEDLY_ECHOED_QUERY_AND_PAGE_TOKEN_IN_REQUEST_URL
+  rollback:
+    status: REVISE_PARTIAL
+    internal_ignore_after_expiry_present: true
+    provider_restore_required: false
+    rollback_bound_to_work_item_and_producer_digest: false
+  verifier:
+    status: REVISE
+    s04_preflight_routed: true
+    distinct_authorized_same_principal_raw_drive_witness_assigned: false
+    digest_bound_stood_or_fell: ABSENT
+  consumer:
+    status: REVISE
+    named_operational_consumer: NOT_ASSIGNED
+    explicit_consumer_ack: ABSENT
+    implicit_ack_forbidden: true
+
+strongest_fake_green_mutant:
+  mutant_id: X14_MUTANT_105_0307dfbbab4c
+  commit: a6464b7f903dbb939d8c890c2704cb3fe743f69a
+  path: state/coordination/experiments/false_green_x14/quarantine/20260805T075048Z_X12_FABRICATED_CONSUMER_ACK.mutant.yaml
+  git_blob_sha1: 9f9a299d3bf6b53b63ad36f3d99a33fb448726a7
+  mutation_class: FABRICATED_CONSUMER_ACK
+  source_commit: 0c4f4a141a36fd3ad0691a3f2c0711f1b329cdf0
+  source_path: state/coordination/experiments/durable_object_x12/conflicts/20260805T075000Z_V0103_PROPOSED_V0104_OBSERVATION_DIGEST_MISMATCH_HOLD.json
+  source_exact_utf8_bytes: 3297
+  source_recomputed_git_blob_sha1: 97263348a4db4df0a71961cc701d2353498c66c2
+  source_github_blob_sha1: 97263348a4db4df0a71961cc701d2353498c66c2
+  source_canonical_conflict_bytes: 3141
+  source_declared_conflict_sha256: 487e3a354b46697e8b09d5d764472e27da6537d3bdd02ca1c4b39e44f8d7d12c
+  source_recomputed_conflict_sha256: 487e3a354b46697e8b09d5d764472e27da6537d3bdd02ca1c4b39e44f8d7d12c
+  source_consumer_field: Reginleif/Olrun
+  source_consumer_ack_field_present: false
+  overlay_canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  overlay_exact_utf8_bytes: 263
+  overlay_declared_sha256: 0307dfbbab4c964cc7bb4aa6d3164b480ca7d000c8725d0f1d18a17dcab4f7f8
+  overlay_recomputed_sha256: 0307dfbbab4c964cc7bb4aa6d3164b480ca7d000c8725d0f1d18a17dcab4f7f8
+  overlay_match: true
+  verdict: REJECTED_FAKE_GREEN
+  rejection_reason: NAMED_CONSUMER_AND_INTERNAL_HOLD_ARTIFACT_DO_NOT_PROVE_AUTHENTICATED_EXPLICIT_SOURCE_DIGEST_BOUND_CONSUMER_ACK
+
+decision:
+  result: REVISE
+  reason_codes:
+    - CATALOG_EVENT_NOT_BOUND_TO_IMMUTABLE_WORK_ITEM_AND_ACCEPTANCE_DIGEST
+    - EXACT_SYNTHETIC_PAGE_TOKEN_BINDING_ABSENT
+    - RAW_SAME_PRINCIPAL_DRIVE_REQUEST_RESPONSE_AND_PROVIDER_TRACE_ABSENT
+    - AUTHENTICATED_PRINCIPAL_SCOPE_REQUEST_ID_HEADERS_QUOTA_AND_HIDDEN_ATTEMPT_GRAPH_ABSENT
+    - CANONICAL_PRODUCER_RETURN_DIGEST_ABSENT
+    - PRODUCER_LEASE_AND_DIGEST_BOUND_ROLLBACK_EXPIRY_ABSENT
+    - DISTINCT_VERIFIER_STOOD_OR_FELL_ABSENT
+    - OPERATIONAL_CONSUMER_AND_EXPLICIT_CONSUMER_ACK_ABSENT
+  permitted_claim: ONE_BOUNDED_TRANSFORMED_CONNECTOR_ERROR_OBSERVATION_FAILED_CLOSED_WITH_HTTP_400_INVALID_ARGUMENT_AND_ZERO_RESULTS_IS_NOT_ABSENCE_EVIDENCE
+  prohibited_claims:
+    - RAW_PROVIDER_PARITY
+    - REPRODUCIBLE_SAME_INPUT_WITNESS
+    - OPERATIONAL_ADOPTION
+    - EXACTLY_ONCE_OR_IDEMPOTENT_DELIVERY
+    - CONSUMER_ACCEPTANCE
+    - INDEPENDENT_VERIFICATION_CLOSURE
+
+rollback:
+  - preserve candidate, source event, CURRENT pointer, and mutant unchanged
+  - ignore this preflight after source expiry unless a successor binds new immutable bytes
+  - reject any STOOD, FELL, PASS, or ConsumerAck not tied to one future exact producer-return digest
+
+effect_ceiling: ONE_IMMUTABLE_S04_GIT_RECEIPT_AND_ONE_SANITIZED_SLACK_POINTER_ON_MATERIAL_CHANGE
+honest_flaw: >-
+  GitHub commit search is not a transactionally serialized global queue. Exact candidate, event, CURRENT, route-binding,
+  source-conflict, and mutant-overlay bytes were recomputed from authenticated GitHub readback, but this carrier has no
+  raw same-principal Drive witness or distinct-provider verifier ingress. This result is structural preflight only.
+
+same_provider_status_restatement: SAME_PROVIDER_NONBINDING
+binding_weight_restatement: 0
