@@ -1,0 +1,71 @@
+schema: hfo.gen133.operator_relief_receipt.v0_1
+receipt_id: S05_TECTANGLE_NIGHTLY_20260805T091447Z
+task_id: 6a55c182078c8191b89f2dd15f5f640c
+seat: S05
+callsign: Var
+wip: 1
+valid_time_utc: 2026-08-05T09:14:47Z
+result: STATUS_RECONCILED
+material_change: true
+
+active_item:
+  id: TECTANGLE_NIGHTLY_DAILY_TIER_FAILURE_20260805
+  state: DIAGNOSED_WAITING_BOUNDED_CODE_PACKET
+  source_repository: TTaoGaming/Tectangle
+  source_ref: main
+  source_commit: 49da03bd595d364789c219382ec6bec6f56b552d
+  workflow_name: "Hex Tiers — Nightly (daily bundle)"
+  workflow_run_id: 30991479862
+  job_id: 92258402707
+  job_name: nightly
+  failed_step: "Run daily tier"
+  command: "npm run -s hex:tier:daily"
+  conclusion: failure
+  exit_code: 1
+  observed_error_class: ReferenceError
+  observed_error: "navigator is not defined"
+  failing_path: September2025/TectangleHexagonal/tests/unit/camera.constraints.test.mjs
+  failing_line: 26
+  source_blob_sha: 52772baf968db34e8091f28220d0feec3af04af4
+  diagnosis: "The unit test writes navigator.mediaDevices without first defining a Node-safe global navigator. Dependency installation and the preceding dependency-cruiser check completed successfully."
+
+priority:
+  p0:
+    item: "Review two scheduled job-application emails"
+    gate_local: "2026-08-05T07:30:00-06:00/2026-08-05T07:45:00-06:00"
+    first_scheduled_release_local: "2026-08-05T08:00:00-06:00"
+  p1:
+    - "Tectangle nightly test-harness repair packet"
+    - "PFA secure-method and disclosure completion"
+
+supported_claims:
+  - "The referenced nightly workflow run completed with failure in its only listed job."
+  - "The failure occurred in the daily-tier step after checkout, Node setup, dependency install, and HTTP-server startup succeeded."
+  - "The immediate observed blocker is an undefined Node global navigator at camera.constraints.test.mjs line 26."
+
+excluded_claims:
+  - "No production camera defect was established."
+  - "No patch, test rerun, deployment, merge, or workflow retry was performed."
+  - "No claim is made that defining navigator alone will make the complete daily tier pass."
+
+bounded_transition:
+  type: IMPORTANT_STATUS_RECONCILIATION
+  operator_work_removed: "Converted a generic all-jobs-failed alert into an exact commit/run/job/step/file/line/error packet."
+  operator_minutes_removed_estimate: 6
+  next_consumer: "HFO S06 Code Work-Packet Compiler and Codex Bridge"
+  next_safe_action: "Create one bounded code packet to add a Node-safe navigator/mediaDevices test fixture or equivalent harness setup, then rerun the exact daily-tier command on commit 49da03bd595d364789c219382ec6bec6f56b552d or a dedicated repair branch."
+
+privacy:
+  private_bodies_externalized: false
+  git_payload: "Sanitized GitHub workflow facts and repository pointers only"
+
+effect_receipt:
+  email_sent: false
+  application_submitted: false
+  spend_or_payment: false
+  deployment_or_merge: false
+  account_or_security_change: false
+  task_mutation: false
+  destructive_action: false
+
+honest_flaw: "The connector exposed the completed job logs and source file, but this cell did not execute the repository locally or inspect downstream failures hidden behind the first exception."
