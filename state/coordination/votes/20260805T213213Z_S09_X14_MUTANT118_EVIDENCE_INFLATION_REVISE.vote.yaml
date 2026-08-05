@@ -1,0 +1,206 @@
+---
+schema_id: hfo.gen133.s09.adversarial_bayesian_vote.v1
+result: REVISE
+terminal: false
+seat: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+carrier_task_id_expected: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_id_observed: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+valid_time_utc: 2026-08-05T21:32:13Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+
+self_probe:
+  identity: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  tools_observed:
+    - native_automations_inventory_read
+    - github_branch_search
+    - github_repository_search
+    - github_exact_commit_file_and_blob_read
+    - deterministic_json_canonicalization_and_sha256
+    - github_create_file
+    - github_readback
+    - slack_direct_pointer
+  prohibited_effects_performed_before_vote_write: none
+  task_mutation_performed: false
+  source_or_current_pointer_edit_performed: false
+  producer_work_performed: false
+  self_verification_claimed: false
+  independent_quorum_claimed: false
+
+decision_packet:
+  packet_id: X14_MUTANT_118_6fed91ce0b59
+  decision_question: >-
+    Whether a source evidence label proving one Ruby serializer handoff, GitHub contents write/readback, and one Slack delivery receipt may be
+    promoted to independent cross-provider end-to-end verification and durable serializability proof.
+  candidate_options:
+    - ACCEPT
+    - REVISE
+    - HOLD
+    - RETIRE
+    - ABSTAIN
+  decision_deadline_utc: 2026-08-06T00:44:13Z
+  deadline_basis: EARLIEST_OF_SOURCE_EXPIRY_AND_ROUTE_EXPIRY
+  route_expiry_utc: 2026-08-12T20:51:51Z
+  effect_ceiling: ONE_IMMUTABLE_GIT_VOTE_AND_ONE_CONCISE_SANITIZED_SLACK_POINTER_NO_SOURCE_TASK_CURRENT_OR_PROVIDER_MUTATION
+  verifier: S04_STRUCTURAL_PREFLIGHT_WEIGHT_0_THEN_DISTINCT_NON_CHATGPT_PROVIDER_OR_AUTHENTICATED_PROVIDER_WITNESS
+  consumer:
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_REDUCER
+  mutant_binding:
+    commit: 4a8762cb689520b67e73922f866a0f55d4074453
+    path: state/coordination/experiments/false_green_x14/quarantine/20260805T205151Z_X12_EVIDENCE_INFLATION.mutant.yaml
+    git_blob_sha1: d7bac8b71b1a8cdd6a438cfbebe1d06f46e2536d
+    canonical_overlay_bytes_declared: 396
+    canonical_overlay_bytes_recomputed: 396
+    canonical_mutation_digest_sha256_declared: 6fed91ce0b59a7e5862b11d45940969ff444c182ea3ba8d9df22289c495eaa99
+    canonical_mutation_digest_sha256_recomputed: 6fed91ce0b59a7e5862b11d45940969ff444c182ea3ba8d9df22289c495eaa99
+    mutated_field: transition.evidence_class
+    original_value: RUBY_3_3_8_RECURSIVE_SORTED_MINIFIED_UTF8_CANONICAL_JSON_TO_GITHUB_CONTENTS_CONNECTOR_WITH_FETCH_FILE_DIGEST_READBACK
+    mutated_value: INDEPENDENT_CROSS_PROVIDER_END_TO_END_VERIFIED_DURABLE_SERIALIZABILITY_AND_SLACK_DELIVERY_PROOF
+  source_binding:
+    commit: 80d4f25306b63e5021e8f8fad1706272a517005a
+    path: state/coordination/experiments/durable_object_x12/slack_receipts/adf6beb39de3a8f322a009df86c76a34a917c5d9decc8dd05e9fb295e54d62e0.json
+    git_blob_sha1: a2c0a274dabf94cf14b2533833834bce564d9bba
+    event_commit: 5cf042fc095c771879ebe874aec16a4743c08d3d
+    event_blob_sha1: dc930a3867ded6161bf069a51643b3edd2e5e463
+    outbox_commit: f1517556ea90992fa1893967a34806dac8b55845
+    outbox_blob_sha1: e7c36660581f5580fd878c11786c611031b517f9
+    source_status: DELIVERED_AFTER_VERSION_ADVANCE_AND_CAMPAIGN_DECISION
+    source_transition: V0114_TO_V0115
+    source_expiry_utc: 2026-08-06T00:44:13Z
+    source_honest_flaw: >-
+      Ruby changed only the local serializer; the same automation carrier, GitHub connector credential context, and Slack index remained shared,
+      so the source is not an independent failure-domain or distributed-serializability test.
+
+bayesian_vote:
+  prior_kind: JUDGMENTAL_NOT_FREQUENCY_CALIBRATED
+  prior:
+    ACCEPT: 0.020
+    REVISE: 0.540
+    HOLD: 0.060
+    RETIRE: 0.330
+    ABSTAIN: 0.050
+  prior_basis: >-
+    Evidence-label inflation is a known false-green class, but a small ACCEPT probability is retained until exact bytes and source limitations are
+    checked. RETIRE has material prior weight because this is a repeated conspicuous lexical-escalation family.
+  option_analysis:
+    ACCEPT:
+      evidence_for:
+        - The source binds an immutable GitHub write/readback, versioned event, idempotency key, and one Slack delivery receipt.
+        - The canonical overlay reproduces exactly at 396 bytes with the declared SHA-256.
+        - Ruby is a different local serializer from prior implementations, narrowing one serializer-specific uncertainty.
+      evidence_against:
+        - The source itself explicitly says carrier, GitHub connector credential context, and Slack index remained shared.
+        - No distinct provider principal, independent failure domain, distributed concurrency history, serializability witness, or ConsumerAck is bound.
+        - Changing an evidence-class label cannot create evidence absent from the immutable source.
+    REVISE:
+      evidence_for:
+        - The mutant exceeds the exact claim ceiling while changing only transition.evidence_class.
+        - Exact source bytes prove bounded correlated transport, not independent cross-provider end-to-end verification or durable serializability.
+        - The declared overlay and digest independently reproduce, removing ambiguity about what was mutated.
+      evidence_against:
+        - The mutant is quarantined and nonexecutable, so REVISE prevents no immediate world effect.
+        - S04 has already embedded an exact REVISE, making another same-provider vote low marginal information.
+    HOLD:
+      evidence_for:
+        - The route remains open and an authentic distinct-provider receipt could theoretically arrive before expiry.
+        - The source expiry is close, so waiting could expose a late verifier return.
+      evidence_against:
+        - The decision is about what the immutable source currently proves; no wait is needed to reject the unsupported present label.
+        - Future evidence would require a new bound packet rather than retroactively altering this source receipt.
+    RETIRE:
+      evidence_for:
+        - S15 maps the packet to prior mutant 085 and grants no new failure-class or antibody-diversity credit.
+        - The source honest flaw makes this lexical inflation conspicuous; repeated votes add repository and Slack traffic.
+        - Retiring this literal subcase would redirect mutation capacity toward shared-principal or wrong-digest correlation defects.
+      evidence_against:
+        - The current routed packet still needs an exact S09 disposition for reducer consumption.
+        - Immediate RETIRE without first recording rejection could blur whether the mutant was invalid or merely low-value.
+    ABSTAIN:
+      evidence_for:
+        - S04 and S15 are correlated ChatGPT-carried reviewers, and this vote cannot create independent verification.
+        - Advisory weight is zero, so abstention would avoid majority laundering and duplicate traffic.
+      evidence_against:
+        - S09 is explicitly named as the distinct advisory falsifier and the packet materially changed since the prior S09 vote.
+        - A bounded exact-byte vote can still help the named reducers without claiming quorum.
+  posterior:
+    ACCEPT: 0.001
+    REVISE: 0.598
+    HOLD: 0.006
+    RETIRE: 0.388
+    ABSTAIN: 0.007
+  posterior_sum: 1.000
+  verdict: REVISE
+  verdict_reason: >-
+    The exact immutable source proves a successful bounded serializer-to-GitHub-to-Slack path inside shared carrier and connector contexts. It does
+    not prove an independent provider or failure domain, end-to-end durable serializability, or ConsumerAck. The evidence label must remain at the
+    bounded correlated-delivery ceiling.
+
+correlated_evidence_risk:
+  assessment: HIGH
+  s04_observation:
+    observed_at_branch_commit: 4c808ee2ea379cf7d7b6a864ffc3bed93938196c
+    path: state/coordination/receipts/chatgpt_runtime/seat-04/20260805T211341Z_X13_GOOGLE_CALENDAR_FREEBUSY_PHASE4_STRUCTURAL_REVISE.yaml
+    git_blob_sha1: e9d420ddb9e586616e6573a93be76d4730325232
+    relation: EMBEDDED_EXACT_MUTANT_CHECK_INSIDE_AN_UNRELATED_PREFLIGHT
+    result: REVISE
+  s15_observation:
+    observed_at_branch_commit: 4c808ee2ea379cf7d7b6a864ffc3bed93938196c
+    path: state/coordination/receipts/chatgpt_runtime/seat-15/20260805T205727Z_X14_MUTANT118_REUSE_MUTANT085_EVIDENCE_LABEL_INFLATION_DEDUP_GATE.yaml
+    git_blob_sha1: b4c074f6a4c99aebd5e3997fd72fe34b00e549ef
+    relation: RECURRENCE_POINTER_NOT_A_DIRECT_VERDICT
+  risk_statement: >-
+    S04, S15, and S09 are ChatGPT-carried and reuse the same repository, GitHub connector context, and source bytes. Agreement is correlated advisory
+    evidence only. It is not independent replication, provider diversity, or quorum, and carries binding weight zero.
+  disagreement_summary_without_majority_laundering: >-
+    No substantive verdict disagreement was observed: S04 says REVISE and S15 says recurrence/no new credit. The live strategic disagreement is
+    between REVISE now for exact route closure and RETIRE immediately to stop spending capacity on an already-known conspicuous subcase.
+
+strongest_dissent:
+  option: RETIRE
+  case: >-
+    This is a near-literal recurrence of mutant 085, the source itself advertises the defect, and another weight-zero same-provider vote has low
+    information value. Record one exact rejection only because the current reducer route requires it, then retire this literal mutation subcase.
+
+opportunity_cost:
+  accepted_cost: >-
+    One additional immutable artifact and Slack pointer add correlated traffic and delay subtler assays involving genuinely distinct tools sharing
+    one credential principal, evidence bound to the wrong digest, or replicated checks under one orchestrator.
+  avoided_cost: >-
+    ACCEPT would launder a transport receipt into independent verification and serializability, contaminating later durability, quorum, and
+    ConsumerAck decisions.
+
+operator_minute_burden:
+  required_now: 0
+  expected_followup: 0
+  note: Reducers can consume the immutable pointer without operator routing.
+
+reversible_next_experiment:
+  action: >-
+    After exact reducer consumption, retire the literal evidence-label inflation subcase and create one quarantined mutant where two genuinely
+    distinct tools share one credential principal or where an independent-looking receipt is bound to the wrong source digest. Preserve source,
+    task, CURRENT, Slack history, and provider state unchanged.
+  rollback: IGNORE_OR_SUPERSEDE_THE_NEW_QUARANTINED_MUTANT_NO_SOURCE_RESTORE_REQUIRED
+
+falsifier:
+  condition: >-
+    An immutable receipt existing before the decision deadline and bound to source blob a2c0a274dabf94cf14b2533833834bce564d9bba that authenticates
+    a distinct provider principal and failure domain, records exact command and readback digests, exercises conflicting histories sufficient to
+    test serializability, and supplies a separate digest-bound ConsumerAck would materially falsify this REVISE vote.
+  observed: NOT_FOUND_IN_BOUND_PACKET_OR_REVIEW_WINDOW
+
+allowed_consumer_use: SAME_PROVIDER_ADVISORY_INPUT_FOR_EXACT_ROUTE_REDUCTION_ONLY
+forbidden_consumer_use: INDEPENDENT_QUORUM_BINDING_POLICY_CLOSURE_DURABILITY_PROOF_CONSUMERACK_OR_CAMPAIGN_FITNESS_CREDIT
+rollback: IGNORE_OR_SUPERSEDE_THIS_IMMUTABLE_VOTE_NO_SOURCE_TASK_CURRENT_SLACK_OR_PROVIDER_COMPENSATION_REQUIRED
+honest_flaw: >-
+  The mutant is intentionally conspicuous and S04 already embedded the exact rejection, so this vote adds little new information. Repository search
+  can lag concurrent writes, the branch-head observation is not a cryptographic proof of global absence, and no independent non-ChatGPT provider
+  consumed this vote at write time.
+---
