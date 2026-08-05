@@ -1,8 +1,8 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_PROVIDER_LAST_RUN_OFFSET_V2
-current_version: 106
-accepted_wakes: 2
+current_version: 107
+accepted_wakes: 3
 target_wakes_before_decision: 4
 controlled_factor: wake_timing
 campaign_status: ACTIVE
@@ -23,12 +23,12 @@ baseline_result:
   error_class: NONE
 hypothesis: the_provider_exposed_previous_last_run_time_will_support_a_repeatable_signed_offset_measurement_against_the_declared_nominal_minute_boundary_without_using_wrapper_time_as_a_proxy_for_dispatch
 measured_result:
-  provider_call_success: [true, true]
-  expected_task_visible: [true, true]
-  previous_last_run_time_present: [true, true]
-  signed_offset_seconds: [273.824, 145.854]
-  offset_direction: [LATE_RELATIVE_TO_NOMINAL_MINUTE_BOUNDARY, LATE_RELATIVE_TO_NOMINAL_MINUTE_BOUNDARY]
-  latencies_ms: [NOT_EXPOSED, NOT_EXPOSED]
+  provider_call_success: [true, true, true]
+  expected_task_visible: [true, true, true]
+  previous_last_run_time_present: [true, true, true]
+  signed_offset_seconds: [273.824, 145.854, 78.214]
+  offset_direction: [LATE_RELATIVE_TO_NOMINAL_MINUTE_BOUNDARY, LATE_RELATIVE_TO_NOMINAL_MINUTE_BOUNDARY, LATE_RELATIVE_TO_NOMINAL_MINUTE_BOUNDARY]
+  latencies_ms: [NOT_EXPOSED, NOT_EXPOSED, NOT_EXPOSED]
   permission_class: AUTHENTICATED_NATIVE_TASKS_INVENTORY_READ_WITH_LAST_RUN_TIME_AVAILABLE
   error_class: NONE
   operator_relay_minutes: 0
@@ -42,16 +42,16 @@ verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 consumer: [Reginleif, Ratatoskr]
 honest_flaw: provider_last_run_time_is_same_provider_telemetry_and_may_represent_completion_or_bookkeeping_time_rather_than_dispatch_or_execution_start
 last_event:
-  commit: d7bdbf1b54f03be9dfa3221082e098b353ec023c
-  path: state/coordination/experiments/carrier_surface_x11/events/20260805T063925Z_PROVIDER_LAST_RUN_OFFSET_V2_WAKE_02.yaml
-  blob: 872ebe34a567b85f50df26da24fe6058d5d799ee
+  commit: 0f8b9e9c8ab71a821f7bfaaa24951116277feff2
+  path: state/coordination/experiments/carrier_surface_x11/events/20260805T074012Z_PROVIDER_LAST_RUN_OFFSET_V2_WAKE_03.yaml
+  blob: 28e7915becd429d34d9bf4b2eed6973a0ac6075c
 next_factor: wake_timing
 next_probe:
   experiment_id: X11_PROVIDER_LAST_RUN_OFFSET_V2
-  campaign_wake: 3
+  campaign_wake: 4
   mode: provider_last_run_offset_read_only
   exact_action: call_automations_list_locate_only_the_expected_X11_task_and_compare_its_provider_exposed_previous_last_run_time_to_the_declared_nominal_minute_boundary_then_persist_only_signed_offset_seconds_direction_permission_error_latency_when_exposed_and_operator_relay_minutes
-  expected_current_version: 106
+  expected_current_version: 107
   persist_only:
     - provider_call_success
     - expected_task_visible
@@ -69,12 +69,13 @@ next_probe:
   sensitive_readback_externalization_allowed: false
   same_provider_independence_claim_allowed: false
 slack_action: NO_POST_UNCHANGED_PROBE
-updated_valid_time_utc: 2026-08-05T06:39:25Z
+updated_valid_time_utc: 2026-08-05T07:40:12Z
 sealed: false
 ---
 
-Wake-timing campaign accepted wake 2 of 4. The native Tasks inventory exposed the
+Wake-timing campaign accepted wake 3 of 4. The native Tasks inventory exposed the
 expected X11 task and a previous last-run timestamp from which a sanitized signed offset
-of +145.854 seconds relative to the declared minute-40 boundary was computed. This is
+of +78.214 seconds relative to the declared minute-40 boundary was computed. This is
 same-provider bookkeeping telemetry and does not identify dispatch start, execution start,
-or current-wake latency. Wake 3 repeats the identical read-only calculation.
+or current-wake latency. Wake 4 repeats the identical read-only calculation and records
+the campaign decision.
