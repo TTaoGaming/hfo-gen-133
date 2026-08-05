@@ -1,0 +1,98 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_GOOGLE_DRIVE_SEARCH_READONLY_002
+event_id: X13_DRIVE_SEARCH_METADATA_PHASE2_20260805T064903Z
+phase: 2
+campaign_wake: 2_of_4
+result: PHASE2_ACCEPTED_WITH_GATES
+expected_current_version: 105
+next_current_version: 106
+prior_current_path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+prior_current_blob_sha: e178e41bdf1db208410838d8c678136b9630c04d
+carrier_task_id_expected: 6a55c1733708819185088bf334e33ea5
+carrier_task_id_observed: 6a55c1733708819185088bf334e33ea5
+carrier_task_id_match: true
+wip: 1
+candidate: Google_Drive_search_metadata_only_document_surface
+valid_time_utc: 2026-08-05T06:49:03Z
+recorded_time_utc: 2026-08-05T06:49:03Z
+review_expiry_utc: 2026-08-12T06:49:03Z
+official_contract:
+  files_list_url: https://developers.google.com/workspace/drive/api/reference/rest/v3/files/list
+  search_guide_url: https://developers.google.com/workspace/drive/api/guides/search-files
+  limits_url: https://developers.google.com/workspace/drive/api/guides/limits
+  inherited_phase1_facts:
+    - FILES_LIST_SUPPORTS_BOUNDED_QUERY_AND_PAGINATION
+    - FILES_LIST_MAY_RETURN_FEWER_THAN_PAGE_SIZE
+    - INCOMPLETE_SEARCH_TRUE_MEANS_RESULTS_MAY_BE_MISSING
+    - OMITTED_ORDER_BY_MEANS_RESULT_ORDER_IS_ARBITRARY
+    - FILES_LIST_COSTS_100_QUOTA_UNITS_UNDER_THE_DOCUMENTED_POST_2026_05_01_STANDARD_MODEL_WITH_GRANDFATHERING_POSSIBLE
+connector_contract:
+  item_type_document: ONE_METADATA_ONLY_PROVIDER_PAGE_NO_CONTENT_FETCH
+  best_effort_fetch: false
+  topn: 1
+  require_viewed_by_user: false
+phase2_probe:
+  operation: ONE_BOUNDED_READONLY_METADATA_SEARCH
+  query_class: SYNTHETIC_UNLIKELY_NONSECRET_TOKEN
+  exact_query_persisted: false
+  item_type: document
+  topn: 1
+  best_effort_fetch: false
+  require_viewed_by_user: false
+  results_returned: 0
+  result_array_shape: NORMAL_EMPTY_ARRAY
+  content_hydrated: false
+  connector_error: null
+  continuation_token_surfaced: false
+  raw_result_values_persisted: false
+  caller_level_retries: 0
+  caller_level_fallbacks: 0
+  secondary_reads: 0
+  mutations: 0
+  connector_external_call_time_ms: 1219
+  hidden_attempt_count: UNKNOWN
+measured_fact: CONNECTOR_RETURNED_A_NORMAL_EMPTY_METADATA_RESULT_ARRAY_WITH_NO_ERROR_OR_CONTINUATION_TOKEN_FOR_ONE_BOUNDED_SYNTHETIC_QUERY
+admitted_claim: ONE_SYNTHETIC_METADATA_SEARCH_RETURNED_ZERO_RESULTS_ON_THE_CONNECTOR_SURFACE
+nonclaim:
+  - NOT_AUTHORITATIVE_ABSENCE
+  - NOT_COMPLETE_ACROSS_ALL_ACCESSIBLE_DRIVES
+  - NOT_RAW_PROVIDER_PARITY
+  - NOT_EFFECTIVE_IDENTITY_OR_SCOPE_VERIFICATION
+  - NOT_PROOF_OF_ZERO_HIDDEN_PAGINATION_OR_RETRIES
+connector_variance:
+  - WRAPPER_RETURNED_A_TRANSFORMED_EMPTY_RESULTS_ARRAY_WITHOUT_RAW_FILES_LIST_INCOMPLETE_SEARCH_CORPUS_FIELD_MASK_HTTP_STATUS_HEADERS_OR_REQUEST_ID
+  - CONNECTOR_EXPOSED_EXTERNAL_CALL_TIME_MS_BUT_NOT_FULL_ATTEMPT_OR_RETRY_GRAPH
+custom_code_avoided_estimate: 40_to_120_LOC_UNVALIDATED_FOR_AUTHENTICATED_QUERY_CONSTRUCTION_METADATA_MAPPING_AND_BASIC_PAGINATION_PLUMBING
+operator_minutes_removed_measured: 0
+operator_minutes_removed_estimate: NOT_CLAIMED
+credentials: CONNECTOR_MANAGED_AUTHENTICATION_OBSERVED_LIVE_IDENTITY_SCOPE_TOKEN_TYPE_AND_CREDENTIAL_CUSTODY_UNKNOWN
+durability: PROVIDER_STORED_METADATA_ONLY_NO_WORKFLOW_REPLAY_RESUME_TRANSACTION_OR_EXACTLY_ONCE_SEMANTICS
+observability: PARTIAL_EMPTY_RESULT_ERROR_NULL_AND_1219MS_EXTERNAL_CALL_TIME_EXPOSED_NO_RAW_REQUEST_RESPONSE_CORPUS_FIELD_MASK_INCOMPLETE_SEARCH_HTTP_HEADERS_REQUEST_ID_SCOPE_QUOTA_OR_HIDDEN_RETRY_GRAPH
+portability: MEDIUM_EMPTY_METADATA_SEARCH_RESULT_IS_COMMON_QUERY_SEMANTICS_CORPUS_ITEM_TYPE_AND_ERROR_TRANSLATION_ARE_PROVIDER_AND_CONNECTOR_SPECIFIC
+failure_behavior: NORMAL_EMPTY_ARRAY_WITH_ERROR_NULL_OBSERVED_EMPTY_RESULT_IS_NONAUTHORITATIVE_BECAUSE_INCOMPLETE_SEARCH_CORPUS_IDENTITY_SCOPE_AND_HIDDEN_PAGINATION_REMAIN_UNEXPOSED
+paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
+actual_quota_consumed: UNKNOWN_OFFICIAL_FILES_LIST_COST_IS_100_UNITS_BUT_CONNECTOR_FANOUT_HIDDEN_CALLS_AND_PROJECT_QUOTA_CLASS_ARE_UNEXPOSED
+consumer: HFO_COTS_CAPABILITY_INVENTORY_CATALOG_ONLY
+operational_consumer: NOT_ASSIGNED
+consumer_ack: NOT_OBSERVED
+verifier: DISTINCT_AUTHORIZED_SAME_PRINCIPAL_RAW_DRIVE_FILES_LIST_WITNESS_REQUIRED_NOT_ASSIGNED
+verifier_result: NOT_RUN
+adoption_credit: 0
+fitness_credit: 0
+allowed_use: BOUNDED_READONLY_HUMAN_REVIEWED_METADATA_DISCOVERY_WITH_EMPTY_RESULTS_TREATED_AS_NONAUTHORITATIVE
+mandatory_gate: SHORT_SPECIFIC_QUERY_LOW_TOPN_EXPLICIT_ITEM_TYPE_BEST_EFFORT_FETCH_FALSE_TREAT_METADATA_AND_QUERY_AS_SENSITIVE_NO_RAW_POINTER_RETENTION_WITHOUT_NAMED_CONSUMER_NEVER_TREAT_EMPTY_RESULTS_AS_GLOBAL_ABSENCE_WITHOUT_CORPUS_INCOMPLETE_SEARCH_PAGINATION_IDENTITY_AND_SCOPE_EVIDENCE
+strongest_falsifier: SAME_PRINCIPAL_RAW_FILES_LIST_FOR_EQUIVALENT_QUERY_RETURNS_ONE_OR_MORE_RESULTS_OR_INCOMPLETE_SEARCH_TRUE_OR_CONNECTOR_HIDES_ADDITIONAL_PAGES_RETRIES_OR_CONTENT_FETCHES
+honest_flaw: THE_QUERY_WAS_DELIBERATELY_UNLIKELY_AND_NOT_PERSISTED_SO_THE_EXACT_PROBE_IS_NOT_REPRODUCIBLE_AND_DOES_NOT_GENERALIZE_TO_REAL_WORLD_ABSENCE
+next_phase: PHASE3_FAILURE_PERMISSION_PORTABILITY_AND_CONNECTOR_VARIANCE_PROBE
+next_probe: ONE_BOUNDED_READONLY_SEARCH_WITH_A_SYNTHETIC_INVALID_PAGE_TOKEN_AND_NO_RETRY_FALLBACK_HYDRATION_RETENTION_OR_MUTATION
+sealed: true
+---
+
+# X13 Google Drive metadata search phase 2
+
+One bounded, read-only Drive metadata search used a synthetic unlikely nonsecret query with `item_type=document`, `topn=1`, and `best_effort_fetch=false`. The connector returned a normal empty result array, no connector error, no continuation token, and an exposed external call time of 1,219 ms. No query text, file pointer, title, identifier, parent identifier, or content was copied into this event.
+
+The only admitted fact is that this connector surface returned zero results for this single synthetic query. That is not authoritative absence: the wrapper still did not expose the raw Drive corpus, field mask, `incompleteSearch`, authenticated principal, effective scope, HTTP request metadata, quota debit, or hidden pagination and retry graph.
+
+Operational credit remains zero. Empty results may support human-reviewed discovery only and must fail closed for any workflow that depends on proving a file does not exist.
