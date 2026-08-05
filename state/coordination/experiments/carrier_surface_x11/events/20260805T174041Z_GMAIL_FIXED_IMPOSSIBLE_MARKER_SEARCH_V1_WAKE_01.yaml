@@ -1,0 +1,65 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+experiment_id: X11_GMAIL_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1
+event_type: ACCEPTED_WAKE
+campaign_wake: 1
+expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+current_version_before: 116
+current_version_after: 117
+baseline:
+  mode: none_yet
+  provider_call_success: null
+  sanitized_result_count: null
+  continuation_present: null
+  permission_class: UNMEASURED
+  error_class: UNMEASURED
+hypothesis: an_authenticated_bounded_gmail_metadata_search_for_one_fixed_impossible_marker_will_repeatably_return_a_sanitized_zero_result_without_exposing_message_content
+controlled_factor: gmail_read_surface
+exact_probe:
+  action: Gmail.search_email_ids
+  query: '"HFO_X11_GMAIL_FIXED_IMPOSSIBLE_MARKER_7F61D846C0A64A99B166"'
+  max_results: 1
+  fetched_message_content: false
+  mutation_performed: false
+measured_result:
+  provider_call_success: true
+  sanitized_result_count: 0
+  continuation_present: false
+  permission_class: AUTHENTICATED_GMAIL_BOUNDED_SEARCH_READ_AVAILABLE
+  error_class: NONE
+  latency_ms: 295
+  operator_relay_minutes: 0
+  changed_capability: true
+strongest_falsifier: the_gmail_surface_is_unavailable_requires_interactive_authentication_returns_nonzero_for_the_fixed_impossible_marker_or_exposes_results_outside_the_bounded_query
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer:
+  - Reginleif
+  - Ratatoskr
+honest_flaw: a_zero_result_for_an_impossible_marker_measures_connector_execution_and_sanitized_count_visibility_but_cannot_validate_mailbox_completeness_search_recall_indexing_freshness_content_access_or_message_authenticity
+supported_claim: authenticated_bounded_gmail_message_id_search_executed_and_returned_zero_identifiers_with_no_continuation
+claim_ceiling: does_not_prove_mailbox_completeness_search_recall_indexing_freshness_message_content_access_message_authenticity_or_independent_verification
+privacy_gate:
+  message_subject_persisted: false
+  sender_or_recipient_persisted: false
+  body_or_snippet_persisted: false
+  message_identifier_persisted: false
+  labels_dates_or_unrelated_mailbox_metadata_persisted: false
+prohibited_effects_observed:
+  task_mutation: false
+  gmail_mutation: false
+  send_or_draft: false
+  interactive_login: false
+  sensitive_readback_externalization: false
+  same_provider_independence_claim: false
+accepted: true
+recorded_valid_time_utc: 2026-08-05T17:40:41Z
+sealed: true
+---
+
+Wake 1 established that the authenticated Gmail connector can execute the fixed bounded
+message-ID search and return only a sanitized empty identifier set plus continuation state.
+No email content or mailbox identifiers were fetched or persisted. This is a connector-surface
+measurement, not evidence of mailbox completeness, search recall, or independent verification.
