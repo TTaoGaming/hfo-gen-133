@@ -1,0 +1,64 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_GOOGLE_DRIVE_METADATA_READONLY_006
+event_type: PHASE1_BASELINE
+candidate: Google_Drive_search_metadata_only_surface
+campaign_wake: 1_of_4
+campaign_status: OPEN
+expected_current_version: 120
+new_current_version: 121
+carrier_task_id: 6a55c1733708819185088bf334e33ea5
+carrier_task_id_match: true
+wip: 1
+decision: PHASE1_ACCEPTED_WITH_GATES
+connector_calls: 1_READONLY_METADATA_ONLY
+request: SHORT_PROJECT_KEYWORD_TOPN_1_ITEM_TYPE_DOCUMENT_REQUIRE_VIEWED_TRUE_BEST_EFFORT_FETCH_FALSE
+visible_result_count: 1
+returned_surface_class: GOOGLE_SHEETS
+content_returned: false
+raw_identifiers_persisted: false
+mutations: 0
+retries: 0_OBSERVED
+fallbacks: 0_OBSERVED
+http_status: NOT_EXPOSED
+request_id: NOT_EXPOSED
+latency_ms: NOT_EXPOSED
+measured_fact: ITEM_TYPE_DOCUMENT_RETURNED_ONE_GOOGLE_SHEETS_SURFACE_WITH_METADATA_AND_NO_CONTENT
+andon: ITEM_TYPE_DOCUMENT_IS_NOT_PROVEN_MIME_EXACT
+custom_code_avoided_estimate: 30_to_90_LOC_UNVALIDATED
+operator_minutes_removed_measured: 0
+credentials: CONNECTOR_MANAGED_AUTH_EFFECTIVE_IDENTITY_SCOPES_PROJECT_CORPUS_AND_ACL_UNKNOWN
+durability: METADATA_POINTER_ONLY_NO_ETAG_VERSION_OR_CONTENT_HASH
+observability: PARTIAL_METADATA_VISIBLE_HTTP_SECURITY_QUOTA_AND_CALL_GRAPH_NOT_EXPOSED
+portability: MEDIUM_DRIVE_QUERY_AND_MIME_RULES_PROVIDER_SPECIFIC
+failure_behavior: NOT_TESTED_PHASE1_SUCCESS_ONLY
+paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
+actual_quota_consumed: UNKNOWN
+official_contract: FILES_LIST_SUPPORTS_Q_PAGINATION_CORPORA_SPACES_AND_ORDERING; DEFAULT_ORDER_IS_UNSPECIFIED; INCOMPLETESEARCH_CAN_SIGNAL_OMISSIONS
+official_contract_url: https://developers.google.com/workspace/drive/api/reference/rest/v3/files/list
+official_search_url: https://developers.google.com/workspace/drive/api/guides/search-files
+official_quota_url: https://developers.google.com/workspace/drive/api/guides/limits
+connector_variance: DOCUMENT_SELECTOR_RETURNED_A_SHEET_AND_OMITTED_MIME_HTTP_COMPLETENESS_SECURITY_AND_QUOTA_CONTEXT
+privacy_andon: TITLES_IDS_URLS_PARENT_IDS_SEARCH_TERMS_AND_ACCESS_PATTERNS_ARE_SENSITIVE
+catalog_consumer: HFO_COTS_CAPABILITY_INVENTORY_CATALOG_ONLY
+operational_consumer: NOT_ASSIGNED
+consumer_ack: NOT_OBSERVED
+verifier: DISTINCT_AUTHORIZED_RAW_DRIVE_FILES_LIST_CALL
+verifier_result: NOT_RUN
+strongest_falsifier: MATCHED_RAW_DRIVE_QUERY_RETURNS_NO_EQUIVALENT_ITEM_OR_REVEALS_A_MATERIAL_MIME_CORPUS_OR_SECURITY_CONTEXT_DIFFERENCE
+adoption_credit: 0
+fitness_credit: 0
+allowed_use: BOUNDED_METADATA_DISCOVERY_TOPN_ONE_NO_CONTENT_HYDRATION_MINIMAL_RETENTION_HUMAN_REVIEW
+mandatory_gate: TREAT_ITEM_TYPE_AS_NONAUTHORITATIVE_UNTIL_MIME_OR_SURFACE_IS_INSPECTED; TREAT_TOPN_AS_A_CAP_NOT_COMPLETENESS; DO_NOT_PERSIST_RAW_METADATA; DO_NOT_INFER_IDENTITY_SCOPE_OWNERSHIP_SHARING_CORPUS_COMPLETENESS_DURABILITY_PARITY_OR_QUOTA
+honest_flaw: ONE_SUCCESSFUL_QUERY_FOR_ONE_ALREADY_VIEWED_ITEM; EMPTY_RESULTS_PAGINATION_SHARED_DRIVES_PERMISSION_FAILURE_CONTENT_FETCH_MIME_ACCURACY_RATE_LIMITS_PARITY_OPERATOR_SAVINGS_AND_CONSUMER_VALUE_UNTESTED
+next_probe: REPEAT_THE_SAME_METADATA_ONLY_SEARCH_ONCE_AND_COMPARE_PRIVACY_SAFE_RESULT_CLASS_WITHOUT_CONTENT_FETCH
+review_expiry_utc: 2026-08-12T21:46:38Z
+valid_time_utc: 2026-08-05T21:46:38Z
+recorded_time_utc: 2026-08-05T21:46:38Z
+---
+
+# X13 Google Drive metadata phase 1
+
+One bounded metadata-only search returned one Google Sheets surface even though the wrapper selector was `document`. No file content was fetched or retained.
+
+The selector is therefore not proven MIME-exact. Treat it as wrapper taxonomy, inspect the returned surface or MIME before classification, and treat `topn=1` only as a cap. Operational adoption is not earned; identity, scopes, corpus, ACLs, completeness, quota, raw-provider parity, operator savings, and consumer value remain unverified.
