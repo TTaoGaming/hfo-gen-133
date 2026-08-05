@@ -1,0 +1,99 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_GOOGLE_CALENDAR_FREEBUSY_READONLY_005
+event_id: X13_GOOGLE_CALENDAR_FREEBUSY_PHASE3_20260805T194918Z
+carrier_task_id: 6a55c1733708819185088bf334e33ea5
+carrier_task_id_match: true
+wip: 1
+candidate: Google_Calendar_get_availability_freebusy_readonly_surface
+campaign_wake: 3_of_4
+phase: 3
+status: PHASE3_ACCEPTED_WITH_GATES
+provisional_decision: ADOPT_WITH_GATES
+repository: TTaoGaming/hfo-gen-133
+branch: agent/gen133-bootstrap-20260730
+prior_current_version: 118
+expected_current_version: 119
+probe_type: FAILURE_PERMISSION_PORTABILITY_CONNECTOR_VARIANCE
+probe_calendar_id_class: SYNTHETIC_NONEXISTENT_GOOGLE_CALENDAR_ID
+probe_calendar_id_persisted: false
+time_min: 2026-08-05T11:45:00-06:00
+time_max: 2026-08-05T12:00:00-06:00
+interval_minutes: 15
+response_timezone: America/Denver
+returned_calendars: 1
+returned_busy_windows: 0
+per_calendar_errors: 1
+per_calendar_error_domain: global
+per_calendar_error_reason: notFound
+top_level_error: null
+connector_error_code: null
+http_status: NOT_EXPOSED
+http_headers: NOT_EXPOSED
+request_id: NOT_EXPOSED
+external_call_time_ms: 120
+retries: 0_OBSERVED
+fallbacks: 0_OBSERVED
+secondary_reads: 0
+mutations: 0
+raw_provider_response_persisted: false
+synthetic_identifier_persisted: false
+measured_fact: BOUNDED_READONLY_FREEBUSY_QUERY_FOR_A_SYNTHETIC_NONEXISTENT_CALENDAR_RETURNED_AN_OVERALL_CONNECTOR_SUCCESS_ENVELOPE_WITH_ZERO_BUSY_WINDOWS_AND_A_PER_CALENDAR_GLOBAL_NOTFOUND_ERROR_IN_120_MS_WITH_NO_OBSERVED_RETRY_FALLBACK_SECONDARY_READ_OR_MUTATION
+admitted_claim: CONNECTOR_SURFACES_GOOGLE_FREEBUSY_PER_CALENDAR_NOTFOUND_ERRORS_INSIDE_AN_OTHERWISE_SUCCESSFUL_WRAPPER_RESPONSE_AND_THEREFORE_CONSUMERS_CAN_FAIL_CLOSED_IF_THEY_INSPECT_EACH_CALENDAR_ERROR_ARRAY
+forbidden_inference: EMPTY_BUSY_ARRAY_MEANS_FREE_OR_NOTFOUND_PROVES_NONEXISTENCE_OR_ESTABLISHES_EFFECTIVE_IDENTITY_SCOPE_ACL_RAW_PROVIDER_PARITY_QUOTA_OR_GENERAL_FAILURE_BEHAVIOR
+custom_code_avoided_estimate: 40_to_120_LOC_UNVALIDATED
+operator_minutes_removed_measured: 0
+operator_minutes_removed_estimate: NOT_CLAIMED
+credentials: CONNECTOR_MANAGED_AUTH_OBSERVED_EFFECTIVE_GOOGLE_PRINCIPAL_OAUTH_CLIENT_PROJECT_SCOPES_TOKEN_CUSTODY_CALENDAR_ACL_AND_DOMAIN_DELEGATION_STATE_UNKNOWN
+durability: MEDIUM_FOR_EXPLICIT_QUERY_RECEIPTS_ONLY_PROVIDER_STATE_AND_ACCESS_CAN_CHANGE_AND_NO_IMMUTABLE_SNAPSHOT_ETAG_OR_CONTENT_HASH_IS_EXPOSED
+observability: STRUCTURED_PER_CALENDAR_BUSY_AND_ERROR_FIELDS_PLUS_EXTERNAL_CALL_LATENCY_EXPOSED_BUT_RAW_GOOGLE_RESPONSE_HTTP_STATUS_HEADERS_REQUEST_ID_QUOTA_EFFECTIVE_IDENTITY_SCOPES_PROJECT_TRUE_CALL_COUNT_AND_RETRY_GRAPH_OMITTED
+portability: MEDIUM_RFC3339_INTERVALS_AND_PER_ITEM_ERROR_HANDLING_PORT_WELL_BUT_GOOGLE_CALENDAR_IDS_OAUTH_SCOPES_ERROR_REASONS_EXPANSION_LIMITS_AND_QUOTAS_ARE_PROVIDER_SPECIFIC
+failure_behavior: FAIL_CLOSED_ONLY_IF_CONSUMER_CHECKS_PER_CALENDAR_ERRORS_BECAUSE_WRAPPER_TOP_LEVEL_ERROR_WAS_NULL_WHILE_THE_CALENDAR_ITEM_CARRIED_NOTFOUND_AND_BUSY_WAS_EMPTY
+paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
+actual_quota_consumed: UNKNOWN
+official_contract: GOOGLE_FREEBUSY_RETURNS_PER_CALENDAR_ERRORS_AND_BUSY_INTERVALS; DOCUMENTED_REASONS_INCLUDE_NOTFOUND_INTERNALERROR_GROUPTOOBIG_AND_TOOMANYCALENDARSREQUESTED; CLIENTS_MUST_HANDLE_ADDITIONAL_ERROR_REASONS_GRACEFULLY
+official_contract_url: https://developers.google.com/workspace/calendar/api/v3/reference/freebusy/query
+official_error_contract: GOOGLE_DOCUMENTS_NOTFOUND_FOR_BOTH_A_RESOURCE_THAT_NEVER_EXISTED_AND_A_CALENDAR_THE_USER_CANNOT_ACCESS
+official_error_url: https://developers.google.com/workspace/calendar/api/guides/errors
+connector_variance: WRAPPER_PRESERVED_THE_PER_CALENDAR_NOTFOUND_REASON_BUT_COLLAPSED_THE_PROVIDER_CALL_INTO_A_TOP_LEVEL_SUCCESS_ENVELOPE_WITHOUT_HTTP_STATUS_HEADERS_REQUEST_ID_OR_RAW_RESPONSE
+privacy_andon: EVEN_FAILURE_PROBES_CAN_DISCLOSE_CALENDAR_IDENTIFIERS_AND_ACCESS_PATTERNS; SYNTHETIC_IDENTIFIER_AND_RAW_RESPONSE_WERE_NOT_PERSISTED
+safety_andon: EMPTY_BUSY_MUST_NEVER_BE_INTERPRETED_AS_AVAILABLE_UNLESS_THE_CORRESPONDING_CALENDAR_ERROR_ARRAY_IS_EMPTY_OR_ABSENT_AND_TOP_LEVEL_ERRORS_ARE_CLEAR
+catalog_consumer: HFO_COTS_CAPABILITY_INVENTORY_CATALOG_ONLY
+operational_consumer: NOT_ASSIGNED
+consumer_ack: NOT_OBSERVED
+verifier: DISTINCT_AUTHORIZED_RAW_GOOGLE_CALENDAR_FREEBUSY_QUERY_USING_THE_SAME_SYNTHETIC_IDENTIFIER_CLASS_AND_EXACT_BOUNDS
+verifier_result: NOT_RUN
+adoption_credit: 0
+fitness_credit: 0
+allowed_use: BOUNDED_READONLY_HUMAN_REVIEWED_FREEBUSY_LOOKUP_WITH_EXPLICIT_SMALL_CALENDAR_LIST_RFC3339_BOUNDS_RESPONSE_TIMEZONE_MANDATORY_PER_CALENDAR_ERROR_INSPECTION_MINIMAL_RETENTION_AND_NO_EVENT_DETAIL_FETCH
+mandatory_gate: INSPECT_EVERY_CALENDAR_ERROR_ARRAY_BEFORE_READING_BUSY; TREAT_NOTFOUND_AS_AMBIGUOUS_BETWEEN_ABSENT_AND_INACCESSIBLE; NEVER_INTERPRET_BUSY_EMPTY_AS_FREE_WHEN_ANY_ITEM_ERROR_EXISTS; FAIL_CLOSED; DO_NOT_RETRY_AN_UNCHANGED_SYNTHETIC_OR_USER_SUPPLIED_ID_IN_A_TIGHT_LOOP; DO_NOT_INFER_IDENTITY_SCOPE_ACL_RAW_PROVIDER_PARITY_OR_QUOTA_FROM_WRAPPER_SUCCESS
+strongest_falsifier: MATCHED_RAW_FREEBUSY_CALL_UNDER_THE_SAME_AUTHORIZED_PRINCIPAL_RETURNS_A_FREE_CALENDAR_WITH_NO_ERROR_A_DIFFERENT_ERROR_OR_A_TOP_LEVEL_HTTP_FAILURE_THAT_THE_WRAPPER_MATERIALLY_MASKED
+honest_flaw: ONE_SYNTHETIC_NOTFOUND_PROBE_DID_NOT_DISTINGUISH_TRUE_ABSENCE_FROM_INACCESSIBILITY_AND_DID_NOT_TEST_PERMISSION_DENIED_PARTIAL_MULTI_CALENDAR_RESULTS_INVALID_BOUNDS_TIMEZONE_VARIANCE_RATE_LIMIT_TRANSIENT_FAILURE_RAW_PROVIDER_PARITY_ACTUAL_QUOTA_OPERATOR_TIME_SAVED_OR_CONSUMER_VALUE
+next_phase: PHASE4_DECISION_FROM_EXISTING_RECEIPTS_ONLY
+next_probe: NO_ADDITIONAL_GOOGLE_CALENDAR_CANDIDATE_CALL; COMPUTE_ADOPT_ADOPT_WITH_GATES_DEFER_REJECT_OR_UNKNOWN_FROM_PHASES_1_TO_3
+review_expiry_utc: 2026-08-12T19:49:18Z
+valid_time_utc: 2026-08-05T19:49:18Z
+recorded_time_utc: 2026-08-05T19:49:18Z
+---
+
+# X13 Google Calendar Freebusy Phase 3
+
+One bounded read-only failure probe used a synthetic nonexistent calendar identifier over the same fifteen-minute interval as phases 1 and 2. The connector returned zero busy windows and one per-calendar `global/notFound` error inside an otherwise successful wrapper response. No event details, retry, fallback, secondary read, mutation, raw provider response, or synthetic identifier were persisted.
+
+## Measured decision boundary
+
+The useful capability is not merely that the connector returns an error. It is that the failure is item-scoped: the wrapper top-level error was null while the calendar entry carried `notFound` and an empty `busy` list. A consumer that checks only the top-level result or only `busy=[]` can produce a false-green availability decision.
+
+Google's official freebusy contract explicitly provides per-calendar error arrays. Google's error guide states that `notFound` may mean either that a resource never existed or that the authenticated user cannot access the calendar. Therefore, `notFound` is not authoritative proof of absence.
+
+## Required gates
+
+1. Inspect every requested calendar's error array before interpreting any busy list.
+2. Treat `busy=[]` as availability only when both item-level and top-level errors are clear.
+3. Treat `notFound` as ambiguous between absent and inaccessible; fail closed.
+4. Keep calendar identifiers, bounds, occupancy, and raw errors out of broad logs and prompts.
+5. Require a distinct raw-provider parity check and a named consumer acknowledgement before operational adoption.
+
+## Honest flaw
+
+This is one synthetic failure probe through the wrapper. It does not reveal the effective Google identity or scopes, does not distinguish absence from authorization failure, and does not test partial multi-calendar results, invalid bounds, rate limits, transient failures, raw-provider parity, actual quota debit, operator savings, or consumer value.
