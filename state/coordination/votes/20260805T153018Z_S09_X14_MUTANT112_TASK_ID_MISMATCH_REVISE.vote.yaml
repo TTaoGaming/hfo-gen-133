@@ -1,0 +1,217 @@
+---
+schema_id: hfo.gen133.s09.adversarial_bayesian_vote.v1
+vote_id: S09_X14_MUTANT_112_6b08e2454ecd_REVISE_20260805T153018Z
+seat: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+carrier_task_id_expected: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_id_observed: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+verdict: REVISE
+binding_weight: 0
+same_provider_status: SAME_PROVIDER_ADVISORY_NONBINDING
+independent_verification_closed: false
+valid_time_utc: 2026-08-05T15:30:18Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+sealed: true
+---
+
+self_probe:
+  identity: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  task_inventory_read: true
+  expected_task_id_match: true
+  tools_observed:
+    - native_automations_inventory_read
+    - github_authenticated_identity_read
+    - github_recent_commit_search
+    - github_exact_commit_and_file_read
+    - github_branch_read
+    - github_create_file
+    - github_readback
+    - deterministic_json_canonicalization_and_sha256
+    - slack_channel_pointer_post
+  authenticated_github_login: TTaoGaming
+  task_mutation_performed: false
+  producer_work_performed: false
+  binding_policy_decision_performed: false
+  self_verification_claimed: false
+  independent_quorum_claimed: false
+
+selection:
+  rule: NEWEST_CHANGED_EXACT_DECISION_PACKET_ADDRESSED_TO_S09_NOT_ALREADY_VOTED_BY_S09
+  selected_packet:
+    mutant_id: X14_MUTANT_112_6b08e2454ecd
+    mutation_class: TASK_ID_MISMATCH
+    mutation_subcase: X12_RECEIPT_TASK_ID_REPLACED_WITH_UNRELATED_ENABLED_X13_TASK_ID
+    mutant_commit: c94c492a34bee5b4969c7a6ce1a3f50e1dde7018
+    mutant_path: state/coordination/experiments/false_green_x14/quarantine/20260805T145256Z_X12_TASK_ID_MISMATCH.mutant.yaml
+    mutant_git_blob_sha1: db1387813ebd2395a963dc6c9f2895dfb49d64cd
+    current_pointer_commit: 7902c96aeb3715f14be567606f93227bf6070f8d
+    current_pointer_path: state/coordination/experiments/false_green_x14/CURRENT.yaml
+    current_pointer_version: 112
+    source_receipt_commit: 396584be6a8080ff339126f40c945feffa4b57d1
+    source_receipt_path: state/coordination/experiments/durable_object_x12/slack_receipts/conflict_63b5b8fba8e16798b0c4842856af4b1d6609cb6b16a3fe6f759a2d880987d534.json
+    source_receipt_git_blob_sha1: 4f9b90b670cfd77260c58bd92e4e94d571574eab
+    source_receipt_task_id: 6a506f83df208191815dd17a8fd5baa3
+    injected_task_id: 6a55c1733708819185088bf334e33ea5
+    bound_conflict_commit: 77768000b8e79db3f4910cc5e4838888b036a356
+    bound_conflict_path: state/coordination/experiments/durable_object_x12/conflicts/20260805T144954Z_V0109_SLACK_SEARCH_ZERO_AFTER_OBSERVED_SEND_HOLD.json
+    bound_conflict_git_blob_sha1: 2d92ee46e3bcc853d02f69c2b12fe1cec1283173
+    decision_deadline_utc: 2026-08-05T18:49:54Z
+    source_effect_ceiling: ONE_APPEND_ONLY_CONFLICT_RECEIPT
+    vote_effect_ceiling: ONE_IMMUTABLE_GIT_ADVISORY_VOTE_AND_ONE_SANITIZED_SLACK_POINTER_ONLY
+    verifier: S04_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_WEIGHT_0_THEN_DISTINCT_SIGRUN_P4_REQUIRED_FOR_BINDING
+    consumer: X14_CAMPAIGN_REDUCER_AND_X12_DURABLE_OBJECT_REDUCER
+
+candidate_options:
+  - ACCEPT
+  - REVISE
+  - HOLD
+  - RETIRE
+  - ABSTAIN
+
+prior:
+  ACCEPT: 0.080
+  REVISE: 0.460
+  HOLD: 0.120
+  RETIRE: 0.260
+  ABSTAIN: 0.080
+  rationale: >-
+    Before exact-byte inspection, task-ID mutants are usually structural defects, but a legitimate delegated carrier,
+    schema alias, stale inventory projection, or intentionally carrier-agnostic receipt could make acceptance or hold rational.
+    Repeated conspicuous X14 controls also give RETIRE material prior mass.
+
+exact_recomputation:
+  canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  overlay_byte_count_recomputed: 246
+  overlay_sha256_recomputed: 6b08e2454ecd6406a897ccfed604e95af16b62164869583376fb9b87a9a2716d
+  overlay_sha256_declared: 6b08e2454ecd6406a897ccfed604e95af16b62164869583376fb9b87a9a2716d
+  source_receipt_canonical_byte_count: 1208
+  source_receipt_digest_recomputed: 3ad3843d84b96167976582b1609872d19f543c9ecdb1c32e20e3b9924c710f2b
+  source_receipt_digest_declared: 3ad3843d84b96167976582b1609872d19f543c9ecdb1c32e20e3b9924c710f2b
+  mutated_receipt_canonical_byte_count: 1208
+  mutated_receipt_digest_recomputed: d5fab9ba4efb5fbc1386f36a3e4085c2cc815e04c6279957c1ed137b6a70dfc9
+  unchanged_declared_receipt_digest_after_overlay: 3ad3843d84b96167976582b1609872d19f543c9ecdb1c32e20e3b9924c710f2b
+  digest_binding_result: FAIL_MUTATED_BYTES_NO_LONGER_MATCH_DECLARED_RECEIPT_DIGEST
+
+option_evidence:
+  ACCEPT:
+    for:
+      - Both the original X12 task ID and injected X13 task ID are observed enabled in the native task inventory.
+      - The mutant is quarantined and non-executable, so accepting it would not directly mutate provider state.
+      - A delegated-carrier architecture can sometimes permit an actor or carrier different from the source-producing seat.
+    against:
+      - The immutable source receipt identifies X12 task 6a506f83df208191815dd17a8fd5baa3.
+      - The bound immutable conflict independently identifies the same X12 task in both top-level and candidate binding fields.
+      - Object, campaign, conflict, idempotency, verifier, consumer, and effect-ceiling bindings all remain X12-specific.
+      - Replacing only task_id changes the canonical receipt digest from 3ad3843d... to d5fab9ba... while the declared digest remains unchanged.
+      - No immutable delegation, alias contract, source-time authorization, or cross-seat attribution receipt was found.
+  REVISE:
+    for:
+      - Exact source, conflict, and digest evidence support rejection without editing source artifacts or scheduled tasks.
+      - The named task-binding gate is directly exercised and the expected rejection reason matches the observed contradiction.
+      - REVISE preserves the quarantine artifact as a negative control while granting zero operational or outcome credit.
+      - S04 separately recomputed the same overlay and rejected the mismatch, although that evidence is correlated and nonbinding.
+    against:
+      - The defect is conspicuous and repetitive enough that RETIRE may better allocate future mutation budget.
+      - The observed S04 rejection was embedded in another candidate preflight rather than served as the direct X14 route.
+  HOLD:
+    for:
+      - No distinct-provider verdict exists and the direct S04 route remains unobserved.
+      - A hidden schema contract or delegated carrier record could theoretically change the interpretation.
+    against:
+      - An advisory rejection does not require binding quorum; immutable source and digest contradictions are already sufficient.
+      - Waiting would consume the remaining decision window without identifying a concrete missing fact likely to reverse the vote.
+  RETIRE:
+    for:
+      - The literal complete-ID substitution is low subtlety and duplicates an already well-covered false-attribution class.
+      - Further same-shape mutants displace higher-value tests of aliases, stale inventory, partial delegation, and wrong-branch bindings.
+    against:
+      - This exact routed packet still requires a direct S09 advisory disposition before the reducer can retire the subcase cleanly.
+      - RETIRE alone could obscure the required rejection of the current mutant.
+  ABSTAIN:
+    for:
+      - This carrier is same-provider and has binding weight zero.
+      - No distinct-provider verifier or operational ConsumerAck exists.
+    against:
+      - The task explicitly requests a nonbinding advisory vote, and the exact immutable evidence is accessible and internally consistent.
+
+correlated_evidence_risk:
+  level: HIGH
+  detail: >-
+    S04 and S09 are distinct seats but ChatGPT-carried same-provider evidence. S04's exact rejection, this vote, the native task
+    inventory, and connector reads may share provider and connector failure modes. Agreement is not a quorum, is not an
+    independent replication, and carries binding weight zero. The S04 rejection was embedded in a separate phase-two preflight,
+    which further limits its service-path value.
+
+disagreement_summary:
+  observed_valid_votes:
+    - seat: S04
+      verdict_on_mutant_112: REJECTED_AS_TASK_ID_MISMATCH
+      commit: 4702da07e55febdba3d6e106f73f986951225fa1
+      context: EMBEDDED_STRONGEST_FAKE_GREEN_CHECK_NOT_DIRECT_X14_ROUTE
+      provider_independence: false
+      binding_weight: 0
+  distinct_provider_votes: 0
+  summary: >-
+    No contrary exact vote was found. This absence is not majority evidence. The strongest substantive dissent is RETIRE rather
+    than REVISE because the current literal subcase is obvious and low-novelty.
+
+strongest_dissent:
+  option: RETIRE
+  argument: >-
+    Record the current rejection, then retire complete enabled-task-ID substitution as a mutation subcase. Spend future wakes on
+    valid delegation with one stale secondary binding, correct task ID on the wrong object or branch, truncated or aliased IDs,
+    or stale provider inventory. Those cases have higher expected gate-discrimination value.
+
+opportunity_cost:
+  direct_operator_minutes: 0
+  scheduled_capacity_cost: ONE_S09_WAKE_PLUS_CORRELATED_S04_ATTENTION_ALREADY_SPENT
+  displaced_work: >-
+    A subtler identity or delegation mutant, or an income-linked decision packet, could have used this reasoning slot. Continuing
+    literal cross-task substitutions risks reward-hacking through easy catches rather than increasing gate sensitivity.
+
+operator_minute_burden:
+  measured_minutes: 0
+  manual_relay_required: false
+  downstream_estimate: 0
+  note: A distinct-provider binding verdict would add non-operator compute or verifier capacity, not a required operator action.
+
+reversible_next_experiment:
+  action: >-
+    Retain all current artifacts unchanged. Create one new quarantined non-executable control with a real immutable delegated-carrier
+    record, keep the correct source task ID, and mutate only one secondary object, branch, or consumer binding. Route it through the
+    same gate to test whether legitimate delegation is distinguished from retroactive cross-seat attribution.
+  reversibility: DROP_OR_IGNORE_NEW_QUARANTINE_ARTIFACT_WITH_NO_SOURCE_OR_PROVIDER_MUTATION
+  success_signal: Gate accepts the legitimate delegation baseline and rejects only the stale or mismatched secondary binding.
+
+falsifier:
+  condition: >-
+    Produce an immutable source-time schema contract or delegation artifact proving that canonical_receipt.task_id is explicitly
+    carrier-agnostic or that X13 task 6a55c1733708819185088bf334e33ea5 was authorized to represent this exact X12 object, campaign,
+    conflict, and receipt before commit 396584be6a8080ff339126f40c945feffa4b57d1; also provide canonical receipt bytes whose digest
+    matches the mutated task ID and a bound conflict carrying the same authorized identity. That evidence would materially raise
+    ACCEPT or HOLD. No such evidence is present in the selected packet.
+
+posterior:
+  ACCEPT: 0.001
+  REVISE: 0.690
+  HOLD: 0.007
+  RETIRE: 0.296
+  ABSTAIN: 0.006
+
+verdict_rationale: >-
+  REVISE the quarantined mutant: reject the substituted X13 task ID, preserve the immutable X12 receipt and conflict unchanged,
+  and grant zero task attribution, replay, outcome, ConsumerAck, or independent-verification credit. After consumer pickup, RETIRE
+  this literal complete-ID substitution subcase unless it is upgraded to a subtler delegation or stale-binding assay.
+
+rollback:
+  action: RETAIN_OR_IGNORE_THIS_ADVISORY_VOTE_AND_QUARANTINE_ARTIFACT; DO_NOT_EDIT_SOURCE_CURRENT_TASKS_OR_SLACK_HISTORY
+
+honest_flaw: >-
+  This vote independently recomputed the overlay and receipt digests from connector-returned bytes but did not obtain a distinct
+  provider, raw Git transport transcript, or a formal schema registry proving task_id semantics. GitHub code search can lag, so
+  absence of a delegation artifact is not absolute proof that none exists. The immutable source and bound conflict nevertheless
+  provide strong packet-local evidence. This result remains same-provider advisory evidence with binding weight zero.
