@@ -1,80 +1,81 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
-experiment_id: X11_SLACK_FIXED_POINTER_BOUNDED_READ_V2
-current_version: 99
-accepted_wakes: 3
+experiment_id: X11_NATIVE_TASKS_SANITIZED_INVENTORY_READ_V2
+current_version: 100
+accepted_wakes: 0
 target_wakes_before_decision: 4
-controlled_factor: slack_read_write
+controlled_factor: native_tasks_read_visibility
 campaign_status: ACTIVE
 current_disposition: null
 prior_campaign:
-  experiment_id: X11_GIT_READ_WRITE_READBACK_V2
-  final_version: 96
+  experiment_id: X11_SLACK_FIXED_POINTER_BOUNDED_READ_V2
+  final_version: 100
   disposition: KEEP
   accepted_wakes: 4
   decision_event:
-    commit: ae8fe0ab00ede180589cc94bc0a228ff37b2cbcd
-    path: state/coordination/experiments/carrier_surface_x11/events/20260804T204124Z_GIT_READ_WRITE_READBACK_V2_WAKE_04_DECISION_KEEP.yaml
-    blob: 8e173bd72d178e29a48c12bc41f94e70b07a4a89
+    commit: 1c5f469da97eda6b6f6c1ae9b27830ffe4e966b7
+    path: state/coordination/experiments/carrier_surface_x11/events/20260805T004054Z_SLACK_FIXED_POINTER_BOUNDED_READ_V2_WAKE_04_DECISION_KEEP.yaml
+    blob: 69e3f20bbfaeb9fd1ac1a17d4dd6c525d6dc28fc
 baseline_result:
-  mode: campaign_initialized_no_slack_probe_on_prior_wake
-  fixed_channel_id: C0BGNGPJFHU
-  fixed_target_timestamp: '1785563052.487809'
-  one_second_envelope_oldest: '1785563052.000000'
-  one_second_envelope_latest: '1785563053.000000'
-  expected_non_sensitive_marker: 20260801T054200Z_SLACK_READ_SEARCH_VARIANCE_WAKE_01.yaml
+  mode: campaign_initialized_no_native_tasks_probe_on_prior_wake
+  expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+  expected_title: HFO X11 Carrier Surface PDCA Lab
   permission_class: NOT_PROBED_THIS_CAMPAIGN
   error_class: NONE
-hypothesis: authenticated_Slack_channel_history_will_repeatedly_return_only_the_known_message_inside_the_fixed_one_second_envelope_with_the_target_timestamp_and_non_sensitive_marker_visible
+hypothesis: the_read_only_native_tasks_inventory_surface_will_repeatedly_show_the_expected_X11_task_identity_and_enabled_state_without_requiring_login_or_mutation
 measured_result:
-  result_counts: [1, 1, 1]
-  target_timestamp_present: [true, true, true]
-  expected_marker_present: [true, true, true]
-  content_outside_bounded_window_observed: [false, false, false]
-  latencies_ms: [NOT_EXPOSED, NOT_EXPOSED, NOT_EXPOSED]
-  permission_class: AUTHENTICATED_SLACK_CHANNEL_HISTORY_BOUNDED_READ_AVAILABLE
+  provider_call_success: []
+  expected_task_visible: []
+  expected_title_match: []
+  enabled_state: []
+  sanitized_active_HFO_task_counts: []
+  latencies_ms: []
+  permission_class: NOT_PROBED_THIS_CAMPAIGN
   error_class: NONE
   operator_relay_minutes: 0
   changed_capability: false
   campaign_decision: false
   andon: false
-supported_claim: bounded_authenticated_Slack_channel_history_result_count_target_timestamp_and_non_sensitive_marker_visibility
-claim_ceiling: bounded_authenticated_Slack_channel_history_result_count_target_timestamp_and_non_sensitive_marker_visibility_only_not_workspace_completeness_native_Slack_semantics_index_freshness_message_authenticity_write_visibility_or_independent_verification
-strongest_falsifier: the_fixed_one_second_envelope_cannot_be_read_the_known_target_timestamp_or_expected_marker_is_absent_or_the_connector_returns_content_outside_the_bounded_channel_window
+supported_claim: not_yet_established_this_campaign
+claim_ceiling: read_only_native_tasks_inventory_visibility_of_the_expected_task_identity_title_match_enabled_state_and_sanitized_active_HFO_task_count_only_not_execution_success_liveness_exactly_once_delivery_future_schedule_durability_or_independent_verification
+strongest_falsifier: the_inventory_read_fails_the_expected_task_is_absent_the_title_or_enabled_state_drifts_without_authorized_change_or_a_field_selective_surface_proves_the_broad_inventory_call_unnecessary
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 consumer: [Reginleif, Ratatoskr]
-honest_flaw: one_old_public_channel_pointer_tests_only_one_connector_history_path_and_cannot_separate_connector_filtering_from_native_Slack_semantics_or_prove_workspace_completeness_or_write_behavior
+honest_flaw: the_provider_inventory_read_is_broad_and_same_provider_and_may_return_unrelated_prompt_bodies_even_though_the_carrier_will_persist_only_sanitized_fields
 last_event:
-  commit: 85377e15aea3db51b4b4d05884d81e771e24b946
-  path: state/coordination/experiments/carrier_surface_x11/events/20260804T233930Z_SLACK_FIXED_POINTER_BOUNDED_READ_V2_WAKE_03.yaml
-  blob: 05b788543efef873607cfdc560c186eed16aaee3
-next_factor: slack_read_write
+  commit: 1c5f469da97eda6b6f6c1ae9b27830ffe4e966b7
+  path: state/coordination/experiments/carrier_surface_x11/events/20260805T004054Z_SLACK_FIXED_POINTER_BOUNDED_READ_V2_WAKE_04_DECISION_KEEP.yaml
+  blob: 69e3f20bbfaeb9fd1ac1a17d4dd6c525d6dc28fc
+next_factor: native_tasks_read_visibility
 next_probe:
-  experiment_id: X11_SLACK_FIXED_POINTER_BOUNDED_READ_V2
-  campaign_wake: 4
-  mode: repeat_identical_fixed_public_channel_pointer_one_second_envelope_read_then_decide
-  exact_action: read_channel_C0BGNGPJFHU_with_oldest_1785563052_000000_and_latest_1785563053_000000_then_persist_only_result_count_target_timestamp_present_and_expected_non_sensitive_marker_present_without_message_body_then_write_KEEP_REVISE_RESEAT_VARIABLE_or_HOLD_and_select_next_factor
-  expected_current_version: 99
+  experiment_id: X11_NATIVE_TASKS_SANITIZED_INVENTORY_READ_V2
+  campaign_wake: 1
+  mode: read_only_native_tasks_inventory_then_persist_only_sanitized_expected_task_presence_and_state
+  exact_action: call_automations_list_and_persist_only_provider_call_success_expected_task_visible_expected_title_match_enabled_state_sanitized_active_HFO_task_count_permission_class_error_class_latency_when_exposed_and_operator_relay_minutes
+  expected_current_version: 100
   persist_only:
-    - result_count
-    - target_timestamp_present
-    - expected_marker_present
+    - provider_call_success
+    - expected_task_visible
+    - expected_title_match
+    - enabled_state
+    - sanitized_active_HFO_task_count
     - permission_class
     - error_class
     - latency_when_exposed
     - operator_relay_minutes
+  privacy_gate: do_not_persist_unrelated_task_titles_prompt_bodies_schedules_timezones_or_run_metadata
+  task_mutation_allowed: false
   slack_write_each_probe_allowed: false
   post_only_changed_capability_campaign_decision_or_andon: true
   sensitive_readback_externalization_allowed: false
   same_provider_independence_claim_allowed: false
-slack_action: SILENT_UNCHANGED
-updated_valid_time_utc: 2026-08-04T23:39:30Z
+slack_action: POST_CAMPAIGN_DECISION
+updated_valid_time_utc: 2026-08-05T00:40:54Z
 sealed: false
 ---
 
-Slack fixed-pointer bounded-read V2 wake 3 repeated the prior result. The
-connector returned one message inside the fixed one-second channel-history
-envelope; the known target timestamp and non-sensitive marker remained present.
-Only sanitized count and presence measurements are retained. Wake 4 repeats the
-identical probe and writes the campaign decision; no Slack post is warranted for
-this unchanged wake.
+Slack fixed-pointer bounded-read V2 completed four identical accepted wakes. Each
+read returned one message inside the fixed one-second envelope, with the known
+target timestamp and non-sensitive marker present and no out-of-window content
+observed. Decision: KEEP for the bounded read path only. Native Tasks sanitized
+inventory-read V2 is initialized at 0/4; no native Tasks probe ran on this wake.
