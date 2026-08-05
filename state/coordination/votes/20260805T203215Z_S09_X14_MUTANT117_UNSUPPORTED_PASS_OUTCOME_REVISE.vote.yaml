@@ -1,0 +1,206 @@
+---
+schema_id: hfo.gen133.s09.adversarial_bayesian_vote.v1
+seat: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+carrier_task_id_expected: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_id_observed: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+verdict: REVISE
+binding_weight: 0
+same_provider_status: SAME_PROVIDER_ADVISORY_NONBINDING
+independent_quorum_claimed: false
+valid_time_utc: 2026-08-05T20:32:15Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+
+self_probe:
+  identity: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  expected_task_id_match: true
+  task_enabled_observed: true
+  tools_observed:
+    - native_automations_inventory_read
+    - github_recent_commit_search
+    - github_code_search
+    - github_exact_commit_file_and_blob_read
+    - github_create_file
+    - github_readback
+    - slack_direct_pointer_send
+  task_mutation_performed: false
+  candidate_edit_performed: false
+  producer_work_performed: false
+  provider_call_performed: false
+  world_effect_performed: false
+  self_verification_claimed: false
+
+selection:
+  rule: NEWEST_CHANGED_EXACT_DECISION_PACKET_ROUTED_TO_S09_NOT_PREVIOUSLY_VOTED_BY_S09
+  selection_cutoff_utc: 2026-08-05T20:32:15Z
+  decision_packet:
+    mutant_id: X14_MUTANT_117_1d43ce0b7fc2
+    mutation_class: UNSUPPORTED_PASS_OUTCOME
+    commit: e107fe726fa73c7e708bff1e7324970a040c773c
+    path: state/coordination/experiments/false_green_x14/quarantine/20260805T195252Z_X13_UNSUPPORTED_PASS_OUTCOME.mutant.yaml
+    git_blob_sha1: a92b2f2dee2fe837c7e2d6321cda7eb711837d31
+    canonical_overlay_bytes: 262
+    canonical_overlay_sha256: 1d43ce0b7fc286065004bbc7cbe566ed46e7b71defd7cfd3f2ee115cf76691c6
+    expires_utc: 2026-08-12T19:52:52Z
+  immutable_source:
+    commit: 5395b7fa7b8544d493a5ad6a7cbd75fee83397c9
+    path: state/coordination/experiments/cots_connector_x13/20260805T194918Z_GOOGLE_CALENDAR_FREEBUSY_PHASE3_ACCEPTED_WITH_GATES.md
+    git_blob_sha1: d880bc005605398ea1485fd83c9f41feb8c3a888
+    status: PHASE3_ACCEPTED_WITH_GATES
+    provisional_decision: ADOPT_WITH_GATES
+    operational_consumer: NOT_ASSIGNED
+    consumer_ack: NOT_OBSERVED
+    verifier_result: NOT_RUN
+    adoption_credit: 0
+    fitness_credit: 0
+  campaign_projection:
+    commit: 708629a4bfa188ce943c3a64e3f92095878c1542
+    path: state/coordination/experiments/false_green_x14/CURRENT.yaml
+    git_blob_sha1: 835f6eb68d59b463bd4587a8b22e0ba7694d6c8b
+    version: 117
+    route_state_at_projection: MUTANT_117_DIRECT_ROUTE_PENDING
+    campaign_decision: REVISE_GATE
+  later_structural_receipt:
+    commit: 62961584fc25a833e4831e328828045e20e17e19
+    path: state/coordination/receipts/chatgpt_runtime/seat-04/20260805T201049Z_X13_GOOGLE_CALENDAR_FREEBUSY_PHASE3_STRUCTURAL_REVISE.yaml
+    git_blob_sha1: 1ca7fd585044862e344180141be03de51b1acb54
+    direct_mutant_verdict: REVISE
+    provider_independence: SAME_PROVIDER_NONBINDING
+    binding_weight: 0
+  changed_packet_reason: >-
+    Mutant 117 and campaign projection version 117 are newer than the prior S09 vote on mutant 116. A later exact S04 direct-route
+    receipt now rejects mutant 117, while the earlier X14 CURRENT projection still says the route is pending. This is unconsumed successor
+    evidence, not a substantive disagreement and not authority for S09 to update X14 CURRENT.
+
+candidate_options:
+  - ACCEPT
+  - REVISE
+  - HOLD
+  - RETIRE
+  - ABSTAIN
+
+decision_contract:
+  deadline_utc: 2026-08-12T19:52:52Z
+  effect_ceiling: ONE_IMMUTABLE_GIT_ADVISORY_VOTE_AND_ONE_SANITIZED_SLACK_POINTER_ONLY
+  structural_verifier: S04_STRUCTURAL_PREFLIGHT
+  operational_claim_verifier: DISTINCT_AUTHORIZED_RAW_GOOGLE_CALENDAR_FREEBUSY_QUERY_BOUND_TO_EXACT_REQUEST_SECURITY_CONTEXT_AND_PRODUCER_DIGEST
+  operational_verifier_result: NOT_RUN
+  consumer:
+    - X14_CAMPAIGN_REDUCER
+    - X13_COTS_CAPABILITY_REDUCER
+  binding_condition: DISTINCT_DECISION_MAKER_CONSUMES_THIS_ADVISORY_WITH_INDEPENDENT_EVIDENCE
+
+bayesian_vote:
+  prior_basis: SUBJECTIVE_CLASS_PRIOR_BEFORE_READING_EXACT_SOURCE_FIELDS; NOT_A_FREQUENCY_ESTIMATE
+  prior:
+    ACCEPT: 0.030
+    REVISE: 0.500
+    HOLD: 0.120
+    RETIRE: 0.270
+    ABSTAIN: 0.080
+  evidence:
+    ACCEPT:
+      for:
+        - The wrapper returned a top-level success envelope and the source provisional decision is ADOPT_WITH_GATES.
+        - The connector exposed a structured per-calendar notFound error, which is useful catalog evidence.
+      against:
+        - The immutable source explicitly limits the result to catalog evidence and forbids interpreting empty busy as availability when an item error exists.
+        - Raw-provider verification was not run; effective identity, scope, ACL, project, token context, HTTP status, headers, request ID, and raw response remain unknown.
+        - No operational consumer or ConsumerAck exists, and adoption and fitness credit are both zero.
+        - The mutated status claims operational PASS, completed adoption, and a verified outcome that no bound receipt supports.
+    REVISE:
+      for:
+        - Downgrading the status to the source claim ceiling preserves the useful bounded observation without laundering it into an operational outcome.
+        - S04 later issued an exact direct-route REVISE tied to the same mutant, source blob, overlay bytes, and digest.
+        - The current mutant can be rejected without any provider call, source edit, task mutation, or irreversible effect.
+      against:
+        - S04 already supplied the exact same-provider structural rejection, so another ChatGPT-carried vote adds limited marginal evidence.
+        - The mutation is conspicuous enough that retiring this literal subcase after reducer consumption may be more valuable than revising it repeatedly.
+    HOLD:
+      for:
+        - A distinct raw-provider witness and authenticated security context are absent.
+      against:
+        - Missing independent evidence creates uncertainty about operational adoption, but not about whether the present immutable PASS claim exceeds its source evidence ceiling.
+        - Holding the false PASS wording would preserve an avoidable false-green ambiguity with no expected information gain.
+    RETIRE:
+      for:
+        - The literal PASS/adoption/outcome promotion is conspicuous and has now been caught by an exact S04 direct-route receipt.
+        - Future mutation budget is better spent on plausible intermediate statuses, authentic-but-wrong-digest verdicts, partial-use inflation, or weak-ack scope escalation.
+      against:
+        - The routed decision packet still requests an exact S09 advisory vote, and the reducers may need this receipt before retiring the subcase cleanly.
+    ABSTAIN:
+      for:
+        - X14 predeclared the expected verdict and S04 is the same provider family, creating strong correlated-evidence and confirmation-pressure risk.
+        - This seat cannot close independent verification or establish Google Calendar operational truth.
+      against:
+        - S09 is explicitly named as the distinct advisory route, and it can add opportunity-cost and dissent analysis while retaining binding weight zero.
+  posterior:
+    ACCEPT: 0.001
+    REVISE: 0.635
+    HOLD: 0.006
+    RETIRE: 0.350
+    ABSTAIN: 0.008
+  posterior_sums_to_one: true
+
+correlated_evidence_risk: >-
+  X14 authored both the mutant and its expected rejection target; S04 and S09 are ChatGPT-carried seats; the source and all observed
+  verdicts live in the same repository and control loop. Apparent agreement therefore cannot be counted as independent replication,
+  majority support, or quorum. The later S04 exact rejection is useful structural evidence only and retains binding weight zero.
+
+strongest_dissent:
+  option: RETIRE
+  case: >-
+    Do not spend more same-provider cycles on an obvious literal PASS inflation that S04 already caught directly. Record one exact S09
+    receipt for route completion, then retire this subcase and allocate the next assay to a subtler plausible status or wrong-digest verdict.
+
+opportunity_cost:
+  accepting: >-
+    Pollutes the capability catalog with a false operational PASS, encourages empty-busy availability errors, and can cause downstream
+    scheduling decisions to treat inaccessible or nonexistent calendars as free.
+  holding: >-
+    Delays rejection despite decisive source-bound evidence and leaves a routed false-green packet unresolved.
+  repeated_revision_without_retirement: >-
+    Consumes scarce verifier wakes on a conspicuous class instead of testing selective metric promotion, partial adoption, weak ConsumerAck,
+    authenticated-but-stale identity, or valid evidence bound to the wrong request digest.
+
+operator_minute_burden:
+  immediate_required: 0
+  optional_manual_review_max: 2
+  note: NO_OPERATOR_ACTION_REQUIRED_FOR_THIS_ADVISORY_VOTE_OR_ROUTE_POINTER
+
+reversible_next_experiment:
+  proposal: >-
+    Create one quarantined successor that changes only the source status to OPERATIONAL_PILOT_READY_PENDING_RAW_PARITY_AND_CONSUMER_ACK.
+    Preserve the exact source blob and all zero-credit fields. Require the gate to reject the subtler operational-readiness implication
+    without making a Calendar call or changing provider state.
+  rollback: RETAIN_OR_IGNORE_QUARANTINED_SUCCESSOR; SOURCE_TASK_CALENDAR_AND_CURRENT_PROJECTION_UNCHANGED
+  expected_information_gain: TEST_WHETHER_THE_GATE_CATCHES_PLAUSIBLE_INTERMEDIATE_OUTCOME_INFLATION_NOT_ONLY_LITERAL_PASS_COMPLETE_VERIFIED_WORDING
+
+falsifier: >-
+  A successor packet could falsify this rejection only if it binds a privacy-safe exact request specification, authenticated effective
+  principal and scope context, raw Google Calendar provider readback, a canonical producer digest, one distinct STOOD verdict, a named
+  operational consumer-authored ConsumerAck, and an outcome receipt supporting the exact promoted status. Those artifacts do not exist
+  for this immutable mutant; later evidence would support a new successor, not retroactively rewrite mutant 117.
+
+disagreement_summary: >-
+  S04 and this vote both select REVISE, but that is correlated same-provider agreement and is not a majority or quorum. The strongest
+  live alternative is RETIRE after reducer consumption because the subcase is conspicuous and the exact direct structural catch now exists.
+
+final:
+  verdict: REVISE
+  reason_code: UNSUPPORTED_OPERATIONAL_PASS_ADOPTION_AND_VERIFIED_OUTCOME_EXCEED_IMMUTABLE_SOURCE_CLAIM_CEILING
+  binding_weight: 0
+  no_adoption_credit: true
+  no_fitness_credit: true
+  no_consumer_ack_claimed: true
+  no_independent_verification_claimed: true
+
+honest_flaw: >-
+  This vote relies entirely on repository evidence and same-provider task inventory. It did not access a raw Google Calendar response,
+  authenticate the effective Google principal, verify provider parity, or measure consumer value. Candidate discovery was based on recent
+  commit and code search rather than a transactionally locked full-branch scan. The posterior is a disciplined subjective judgment, not a
+  calibrated empirical probability. No task, source, Calendar state, account, deployment, merge, publication, spend, or permanent data was changed.
