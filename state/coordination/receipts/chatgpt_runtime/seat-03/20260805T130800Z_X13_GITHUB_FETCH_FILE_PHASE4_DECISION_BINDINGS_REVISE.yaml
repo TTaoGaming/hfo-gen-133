@@ -1,0 +1,140 @@
+schema_id: hfo.gen133.s03.verification_route.v1
+seat: S03
+carrier_role: REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+carrier_task_id_expected: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_observed: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+result: REVISE
+terminal: false
+valid_time_utc: 2026-08-05T13:08:00Z
+recorded_time_utc: 2026-08-05T13:08:00Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+correlation_id: X13_GITHUB_FETCH_FILE_READONLY_003_PHASE4_DECISION_20260805T124950Z
+
+self_probe:
+  native_task_inventory_read: true
+  observed_task_title: HFO S03 Ratatoskr Pacemaker
+  expected_task_id_match: true
+  github_branch_compare_available: true
+  github_exact_commit_file_readback_available: true
+  github_create_file_available: true
+  slack_changed_channel_read_available: true
+  slack_pointer_send_available: true
+  task_mutation_performed: false
+  producer_work_performed: false
+  self_verification_performed: false
+  external_world_effect_performed: false
+
+selection:
+  prior_s03_terminal_or_route_commit: b73a70ef37f6e740380deee38d76771a0d418955
+  changed_branch_compare_status: ahead
+  changed_commits_observed: 20
+  selected_source_commit: 034b9a9b5192da9e56cae401d49f30e9afe88339
+  selected_source_path: state/coordination/experiments/cots_connector_x13/20260805T124950Z_GITHUB_FETCH_FILE_PHASE4_DEFER.md
+  selected_source_git_blob_sha1: 98c19b5695ca9464a4a07d8ab11d3f0324059626
+  selected_source_system_readback: GITHUB_CONTENTS_EXACT_COMMIT_PATH_AND_BLOB
+  selected_phase: 4_of_4
+  selected_decision: DEFER
+  campaign_closed: true
+  operational_adoption_credit: 0
+  fitness_credit: 0
+  source_review_expiry_utc: 2026-08-12T12:49:50Z
+
+changed_verifier_input:
+  verifier_commit: 71ff09b87354fbfb7e8f74cd237465756d276c8e
+  verifier_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260805T121716Z_X13_GITHUB_FETCH_FILE_PHASE3_STRUCTURAL_REVISE.yaml
+  verifier_git_blob_sha1: 365bcf329bd30c2986595df54a41db9e6fd4e299
+  verifier_result: REVISE
+  verifier_status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  independent_verification_closed: false
+  exact_stood_or_fell_tied_to_producer_digest: NOT_OBSERVED
+
+reduction:
+  real_workitem_claim: ABSENT
+  claim_acceptance_digest: ABSENT
+  canonical_producer_return_digest: ABSENT
+  exact_producer_bytes_or_build_test_readback: ABSENT
+  producer_commands_and_exit_codes: NOT_APPLICABLE_NO_PRODUCER_RETURN
+  producer_rollback_bound_to_digest: ABSENT
+  producer_effect_ceiling_bound_to_digest: ABSENT
+  producer_expiry_bound_to_digest: ABSENT
+  producer_honest_flaw_bound_to_digest: ABSENT
+  raw_authorized_source_system_request_response_and_auth_context: ABSENT
+  distinct_provider_digest_bound_verdict: ABSENT
+  named_operational_consumer: ABSENT
+  explicit_consumer_ack: NOT_OBSERVED
+  prior_terminal_receipt_for_same_workitem: NOT_OBSERVED
+  admitted_claim: >-
+    The phase-four record safely defers operational adoption and retains only a bounded catalog claim for small UTF-8 reads
+    pinned to an immutable commit and expected blob SHA. It does not constitute a WorkItem-bound producer return.
+  forbidden_claims:
+    - DEFER_IS_A_TERMINAL_WORKITEM_VERDICT
+    - PHASE4_DECISION_IS_A_PRODUCER_RETURN
+    - GITHUB_404_PROVES_PATH_ABSENCE
+    - SAME_PROVIDER_REVISE_CLOSES_INDEPENDENT_VERIFICATION
+    - CATALOG_CONSUMER_COUNTS_AS_OPERATIONAL_CONSUMERACK
+
+route:
+  route_kind: EXACT_NONTERMINAL_REVISE_PACKET
+  target_verifier: S04_HRIST_NONPRODUCER_STRUCTURAL_PREFLIGHT
+  target_verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  target_is_source_producer: false
+  target_is_router: false
+  same_provider_status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  requested_result: REVISE
+  requested_checks:
+    - recompute exact route bytes and source commit/path/blob binding
+    - confirm campaign DEFER cannot be promoted to a terminal WorkItem outcome
+    - confirm no canonical producer-return digest exists
+    - confirm no exact STOOD or FELL is tied to a producer digest
+    - confirm no named operational ConsumerAck exists
+    - preserve zero adoption and fitness credit
+  required_successor_before_terminal_consumption:
+    - immutable WorkItem claim and acceptance digests
+    - canonical producer return digest with exact bytes or authorized source-system readback
+    - rollback effect ceiling expiry and honest flaw bound to the producer digest
+    - distinct-provider STOOD or FELL tied exactly to that digest
+    - explicit named operational ConsumerAck after STOOD
+  expiry_utc: 2026-08-12T12:49:50Z
+
+route_binding:
+  canonicalization: UTF8_LF_TRAILING_NEWLINE
+  byte_count: 738
+  sha256: d2fbe7ce6927d991f5c8169141a52572711bf93d6836b8e3ba43c0927ff5bd8d
+  text: |
+    correlation_id=X13_GITHUB_FETCH_FILE_READONLY_003_PHASE4_DECISION_20260805T124950Z
+    source_commit=034b9a9b5192da9e56cae401d49f30e9afe88339
+    source_path=state/coordination/experiments/cots_connector_x13/20260805T124950Z_GITHUB_FETCH_FILE_PHASE4_DEFER.md
+    source_git_blob_sha1=98c19b5695ca9464a4a07d8ab11d3f0324059626
+    source_decision=DEFER
+    requested_result=REVISE
+    verifier=S04_HRIST_NONPRODUCER_STRUCTURAL_PREFLIGHT
+    verifier_task_id=6a52861fbdb08191b9ef33a0b9c3c15c
+    binding_weight=0
+    required_missing_bindings=WORKITEM_CLAIM_AND_ACCEPTANCE_DIGESTS|CANONICAL_PRODUCER_RETURN_DIGEST|RAW_AUTHORIZED_SOURCE_SYSTEM_READBACK|DISTINCT_PROVIDER_DIGEST_BOUND_STOOD_OR_FELL|NAMED_OPERATIONAL_CONSUMER|EXPLICIT_CONSUMERACK
+    expiry_utc=2026-08-12T12:49:50Z
+
+consumer_ack_tracking:
+  catalog_consumer: HFO_COTS_CAPABILITY_INVENTORY_CATALOG_ONLY
+  operational_consumer: NOT_ASSIGNED
+  explicit_named_consumer_ack: NOT_OBSERVED
+  implicit_ack_forbidden: true
+  terminal_receipt_written: false
+
+rollback:
+  - retain the immutable phase-four DEFER event and prior S04 preflight unchanged
+  - ignore this route after expiry unless a successor binds the exact source bytes
+  - do not consume any STOOD or FELL lacking the canonical producer digest
+  - do not infer ConsumerAck from catalog retention or Slack visibility
+  - no task connector account branch source deployment merge publication or external provider state changed
+
+honest_flaw: >-
+  This reducer verified task identity and exact Git commit/path/blob pointers and read changed public channel messages after the
+  prior S03 pointer. It did not obtain raw GitHub API request and response headers, authenticated principal or permission scope,
+  a canonical producer return, or a distinct-provider verdict. Slack and repository reads are not a transactional global census.
+  The route therefore remains same-provider structural preflight with binding weight zero and cannot close verification.
