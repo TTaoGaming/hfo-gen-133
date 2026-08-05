@@ -1,0 +1,89 @@
+schema: hfo.gen133.operator_relief_receipt.v0_1
+receipt_id: S05-20260805T161800Z-PFA-SCOPE-CONTRADICTION
+immutable: true
+seat: S05
+callsign: Var
+role: operator_relief
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc:
+  contradiction_message_1: 2026-08-05T14:49:00Z
+  contradiction_message_2: 2026-08-05T14:56:28Z
+transaction_time_utc: 2026-08-05T16:18:00Z
+
+self_probe:
+  expected_task_id: 6a55c182078c8191b89f2dd15f5f640c
+  provider_inventory_match: true
+  provider_task_enabled: true
+  connected_surfaces_read:
+    - Gmail
+    - Google_Calendar
+    - Google_Contacts
+    - GitHub
+    - Slack
+  mutation_surface_used:
+    - Gmail.update_draft
+    - GitHub.create_file
+  prohibited_effects_observed: false
+
+active_item:
+  id: PFA_HOUSEHOLD_DISCLOSURE_001
+  status: OWNERSHIP_SCOPE_CONTRADICTION_NO_SEND_READY
+  private_body_location: Gmail
+  summary: The provider sent two contradictory policy-scope messages seven minutes apart. One said to disregard a named policy because it belongs to a different agent and supplied a PandaDoc link; the later message again requested disclosure completion for that same policy.
+  risk: Signing or completing the wrong provider document could create a false compliance attestation or act on another agent's policy.
+  source_system_state:
+    first_provider_reply: CONTRADICTS_LATER_REQUEST
+    later_provider_request: OWNERSHIP_UNRESOLVED
+    pandadoc_link_present: true
+    pandadoc_link_externalized: false
+    prior_draft_state: UNSAFE_SCOPE_ASSUMPTION
+    current_draft_state: DRAFT_UNSENT_HARDENED
+
+bounded_transition:
+  type: PREPARE_EXACT_NO_SEND_APPROVAL_PACKET
+  action: Replaced the existing threaded draft with a four-point clarification request covering policy ownership, PandaDoc scope, whether the later request was erroneous, and the corrected three-business-day deadline.
+  safety_gate: Do not open or sign the document until the provider reconciles ownership and document scope in writing.
+  operator_gate: SEND | EDIT | DISCARD
+  draft_readback_confirmed: true
+  email_sent: false
+  form_opened_or_signed: false
+  application_submitted: false
+  payment_or_spend: false
+  calendar_or_task_mutation: false
+
+cross_surface_readback:
+  calendar: A separate existing PFA secure-document preparation block remains scheduled for 2026-08-05T13:15:00-06:00; it was not changed.
+  contacts: The existing provider recipient resolved to the same source-system address used by the thread; no contact was changed.
+  github: Prior S05 PandaDoc-request receipt was read before this superseding material-change receipt.
+  slack: No newer PFA ownership-resolution pointer was found after the prior S05 post.
+
+sanitized_source_pointers:
+  first_provider_message_id_sha256: b622d554eece1f762346c1bb90011d49724eee98b5884037ec6fa4f909c0df88
+  later_provider_message_id_sha256: 5233612e033922233dc1791ae842c806f8ea89769a384e7bfd64c408eaeebfe7
+  gmail_thread_id_sha256: ae2ddac3284658a9213e02193e48da9095ceddebe98b24aa5ef27696740edc2c
+  gmail_draft_id_sha256: a9bcc3653bcc7681f9aa308eb5c84c30dafc5c87038ea951d2968d7fe309f6b7
+  gmail_draft_message_id_sha256: af02c6d774f38e4961172dd2a031b817e3c0e2ad089f2eaa4b0984173bcf0926
+  provider_contact_sha256: 07ec7bea60dfd6d84b40d05d367d53cb054c68e1b6e521eb5d6260a2ba285298
+  calendar_event_id_sha256: f1103f3cc0c89021c838a05c4e4171359995a311c645d9bc615e6baddec3bb63
+  exact_private_identifiers_retained_in_source_systems: true
+
+priority_projection:
+  active: PFA household-policy ownership and PandaDoc-scope reconciliation
+  P0: Review and send the hardened clarification draft; do not sign or complete any provider document until written ownership and scope confirmation arrives.
+  P1:
+    - Complete the separate secure-document preparation block already on Calendar at 13:15 Mountain without sending private documents through an unapproved channel.
+    - Review the existing TECTANGLE corporate-return clarification draft before authorizing any signature, debit, or payment.
+
+operator_relief:
+  estimated_minutes_removed: 9
+  basis:
+    - full thread chronology reconciliation
+    - contradiction detection across two provider messages
+    - unsafe prior-draft replacement
+    - exact four-question no-send packet preparation
+    - Gmail draft readback and cross-surface deduplication
+  next_consumer: Operator, then Var insurance-compliance reconciliation after provider reply
+
+honest_flaw: The provider has not yet resolved which policy belongs to this operator, which policy the PandaDoc link covers, or the corrected deadline. This carrier did not open the PandaDoc link, validate policy ownership independently, send email, sign a form, or make any compliance attestation.
