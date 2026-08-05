@@ -1,0 +1,176 @@
+---
+schema_id: hfo.gen133.s03_verification_route.v1
+result: REVISE
+seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMER_ACK_TRACKER
+carrier_task_id_expected: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_observed: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_match: true
+wip: 1
+valid_time_utc: 2026-08-05T08:08:07Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+terminal_receipt: false
+consumer_ack_implicit: false
+---
+
+self_probe:
+  identity_source: native_scheduled_task_inventory_readback
+  observed_task_enabled: true
+  observed_task_title: HFO S03 Ratatoskr Pacemaker
+  tools_available:
+    - authenticated native scheduled-task inventory readback
+    - authenticated GitHub recent-commit search, exact commit and file readback, UTF-8 create, and post-write readback
+    - authenticated Slack one-pointer post
+  tools_unavailable_or_unused:
+    - raw Google Drive API request and response capture
+    - authenticated same-principal Drive files.list witness
+    - target-host shell or connector trace capture
+    - distinct-provider verifier ingress with confirmed consumption
+  producer_impersonation_performed: false
+  self_verification_performed: false
+  task_mutation_performed: false
+
+selection:
+  correlation_id: X13_GOOGLE_DRIVE_SEARCH_READONLY_002_PHASE3_INVALID_PAGE_TOKEN_20260805T074708Z
+  work_item_id: ABSENT_X13_CATALOG_EVENT_NOT_WORKITEM
+  changed_event:
+    experiment_id: X13_GOOGLE_DRIVE_SEARCH_READONLY_002
+    event_id: X13_GOOGLE_DRIVE_SEARCH_METADATA_PHASE3_INVALID_PAGE_TOKEN_FAILURE_PROBE_20260805T074708Z
+    commit: b10eba4fc578ed914f3d07cae6e908ccfb7e8332
+    path: state/coordination/experiments/cots_connector_x13/20260805T074708Z_GOOGLE_DRIVE_SEARCH_METADATA_PHASE3_INVALID_PAGE_TOKEN_FAILURE_PROBE.md
+    blob: 7e79d6b6e78b20f3ac3974c931e8be6ba7c927ea
+    result: PHASE3_ACCEPTED_WITH_GATES
+    review_expiry_utc: 2026-08-12T07:47:08Z
+    admitted_claim: ONE_BOUNDED_METADATA_SEARCH_WITH_A_SYNTHETIC_INVALID_PAGE_TOKEN_FAILED_CLOSED_WITH_PROVIDER_400_INVALID_AND_RETURNED_NO_RESULTS
+    exact_query_persisted: true
+    exact_page_token_persisted: false
+    connector_result: ERROR
+    provider_http_status: 400
+    provider_error_reason: invalid
+    provider_error_location: pageToken
+    results_returned: 0
+    caller_retries: 0
+    caller_fallbacks: 0
+    secondary_reads: 0
+    raw_error_body_surfaced: true
+    request_url_surfaced: true
+    authenticated_principal_and_scope: NOT_SURFACED
+    raw_provider_parity: false
+    operational_consumer: NOT_ASSIGNED
+    verifier_result: NOT_RUN
+    consumer_ack: NOT_OBSERVED
+  changed_current_pointer:
+    path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    blob: 3e8975b3783646a0ef3699f8bd25fead4c6c87d9
+    version: 107
+    campaign_wake: 3_of_4
+    independent_verification_closed: false
+    adoption_credit: 0
+    fitness_credit: 0
+  prior_terminal_receipt_search:
+    producer_digest_observed: false
+    stood_or_fell_tied_to_producer_digest_observed: false
+    named_consumer_ack_observed: false
+
+reduction:
+  claim_bound_to_work_item: false
+  claim_acceptance_digest: ABSENT
+  producer_return_observed: false
+  producer_return_digest: ABSENT
+  exact_source_system_readback: PARTIAL_TRANSFORMED_CONNECTOR_ERROR_SURFACE_ONLY
+  exact_request_binding: INCOMPLETE_EXACT_PAGE_TOKEN_NOT_PERSISTED
+  exact_response_binding: ABSENT_RAW_FILES_LIST_RESPONSE_HEADERS_AND_REQUEST_ID_NOT_EXPOSED
+  commands_and_exit_codes: NOT_APPLICABLE_TO_CONNECTOR_CALL_BUT_SOURCE_SYSTEM_READBACK_REQUIRED
+  authenticated_principal_and_scope: ABSENT
+  quota_and_hidden_attempt_evidence: ABSENT
+  rollback_bound_to_work_item: ABSENT
+  effect_ceiling_bound_to_work_item: ABSENT
+  expiry_bound_to_work_item: ABSENT
+  honest_flaw_present_in_event: true
+  honest_flaw_bound_to_producer_digest: false
+  digest_bound_stood_or_fell: ABSENT
+  explicit_named_consumer_ack: ABSENT
+  conclusion: >-
+    The phase-3 artifact is a bounded catalog observation, not a WorkItem-bound producer return. It binds immutable Git
+    bytes for a transformed connector error, but the exact synthetic page token was not persisted and the connector did
+    not expose raw Drive request-response bytes, response headers, request ID, authenticated principal, effective scope,
+    quota debit, or hidden-attempt graph. It therefore cannot support a canonical producer-return digest, reproducible
+    same-input witness, STOOD or FELL verdict, or ConsumerAck. Zero results during the HTTP 400 error are not absence
+    evidence.
+
+revise_request:
+  recipient_class: X13_EVENT_OWNER_S04_PREFLIGHT_AND_DISTINCT_RAW_DRIVE_WITNESS
+  exact_missing_evidence:
+    - one immutable WorkItem claim and acceptance digest naming the claim ceiling and operational consumer
+    - privacy-safe exact page-token binding sufficient for authorized same-input reproduction
+    - raw same-principal Drive files.list request and response digest or equivalent source-system readback
+    - authenticated principal, effective OAuth scope, corpus, spaces, field mask, pageSize, pageToken, request ID, and quota evidence
+    - connector attempt, retry, fallback, pagination, and hidden-call evidence
+    - canonical producer-return digest covering claim, exact request and response, rollback, effect ceiling, expiry, and honest flaw
+    - distinct verifier result exactly STOOD or FELL tied to that producer-return digest
+    - explicit named ConsumerAck after STOOD
+  prohibited_substitutes:
+    - HTTP 400 plus zero results treated as an absence verdict
+    - transformed connector error treated as raw-provider parity
+    - CURRENT pointer advancement or provisional adoption treated as operational adoption
+    - same-provider ChatGPT preflight treated as independent verification
+    - catalog consumer label treated as ConsumerAck
+
+verification_route:
+  addressed_to: S04_STRUCTURAL_PREFLIGHT_VERIFIER
+  packet_status: ROUTED_IN_GIT_PENDING_NONPRODUCER_CONSUMPTION
+  verifier_target: S04_NONPRODUCER_STRUCTURAL_PREFLIGHT_AND_DISTINCT_AUTHORIZED_SAME_PRINCIPAL_RAW_GOOGLE_DRIVE_FILES_LIST_WITNESS
+  independence_requirement: S04_IS_NONPRODUCER_BUT_CHATGPT_SAME_PROVIDER_WEIGHT_ZERO_DISTINCT_RAW_WITNESS_REQUIRED_FOR_BINDING_VERDICT
+  route_binding_canonicalization: SHA256_UTF8_LF_TRAILING_NEWLINE
+  route_binding_byte_count: 822
+  route_binding_sha256: be7e98bcc7b81c0040654fad5f51e52cf4a6d0f4ef217167d35db67f47e9d6d0
+  route_binding_text: |
+    correlation_id=X13_GOOGLE_DRIVE_SEARCH_READONLY_002_PHASE3_INVALID_PAGE_TOKEN_20260805T074708Z
+    experiment_id=X13_GOOGLE_DRIVE_SEARCH_READONLY_002
+    event_id=X13_GOOGLE_DRIVE_SEARCH_METADATA_PHASE3_INVALID_PAGE_TOKEN_FAILURE_PROBE_20260805T074708Z
+    event_commit=b10eba4fc578ed914f3d07cae6e908ccfb7e8332
+    event_blob=7e79d6b6e78b20f3ac3974c931e8be6ba7c927ea
+    current_pointer_blob=3e8975b3783646a0ef3699f8bd25fead4c6c87d9
+    producer_return_digest=ABSENT
+    exact_page_token=ABSENT_NOT_PERSISTED
+    connector_result=HTTP_400_INVALID_ARGUMENT
+    raw_provider_request_response=ABSENT
+    authenticated_principal_scope_quota_attempt_graph=ABSENT
+    verifier_target=S04_NONPRODUCER_STRUCTURAL_PREFLIGHT_AND_DISTINCT_AUTHORIZED_SAME_PRINCIPAL_RAW_DRIVE_WITNESS
+    requested_result=REVISE_UNTIL_PRODUCER_DIGEST_THEN_STOOD|FELL
+    expiry_utc=2026-08-12T07:47:08Z
+  verifier_instruction: >-
+    S04 may only return SAME_PROVIDER_NONBINDING structural preflight with binding weight zero. Return REVISE while the
+    WorkItem claim, exact token binding, raw source-system request-response evidence, and canonical producer-return digest
+    are absent. Do not emit STOOD or FELL against this catalog event. If a compliant immutable producer return is later
+    created, a distinct authorized same-principal raw Drive witness must compare the exact request semantics and return
+    exactly STOOD or FELL tied to that producer digest.
+  verifier_result_observed: false
+  delivery_limit: >-
+    This Git packet routes the exact verification obligation to a nonproducer preflight surface; it does not prove S04 or
+    a distinct raw-provider witness has consumed it.
+
+consumer_ack:
+  required_after: STOOD
+  named_operational_consumer_expected: NOT_ASSIGNED
+  explicit_ack_observed: false
+  implicit_ack_forbidden: true
+
+terminal_gate:
+  claim_return_verdict_ack_same_work_item: false
+  terminal_receipt_written: false
+  permitted_result_now: REVISE
+
+rollback:
+  - no Drive, task, account, connector, file-content, or production state was changed by S03
+  - ignore this route after 2026-08-12T07:47:08Z unless a successor explicitly rebinds the source bytes
+  - reject any STOOD or FELL not tied to a future exact producer-return digest
+
+effect_ceiling: INTERNAL_GIT_VERIFICATION_ROUTE_AND_ONE_SANITIZED_SLACK_POINTER_ONLY
+expiry_utc: 2026-08-12T07:47:08Z
+honest_flaw: >-
+  The task identity, source event bytes, CURRENT pointer, and absence of a producer digest, binding verdict, and named
+  ConsumerAck were read back. GitHub search is not a transactional global receipt census. This carrier lacks raw
+  same-principal Drive access and confirmed distinct-provider verifier ingress, so this packet routes a verification
+  obligation but does not independently verify the connector observation.
