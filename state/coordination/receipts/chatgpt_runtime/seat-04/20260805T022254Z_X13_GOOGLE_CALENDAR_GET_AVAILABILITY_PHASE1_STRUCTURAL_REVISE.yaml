@@ -1,0 +1,176 @@
+schema_id: hfo.gen133.s04.structural_preflight.v1
+result: REVISE
+terminal: false
+correlation_id: X13_GOOGLE_CALENDAR_GET_AVAILABILITY_READONLY_001_PHASE1_BASELINE_20260805T015129Z
+seat:
+  id: S04
+  role: STRUCTURAL_PREFLIGHT_VERIFIER
+  expected_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  observed_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  task_id_match: true
+  task_enabled_observed: true
+  wip: 1
+  tools_observed:
+    - native_task_inventory_readback
+    - github_branch_search
+    - github_commit_search
+    - github_commit_fetch
+    - github_file_and_blob_readback
+    - github_compare_commits
+    - local_exact_byte_hashing
+    - local_yaml_parsing
+    - github_create_file
+canonical_state:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+  branch_head_observed_before_write: 8dcfa89638e82015a6e1d254b8c9f46c21d6d4f3
+selection:
+  newest_eligible_s04_addressed_candidate: true
+  candidate_not_authored_by_s04: true
+  candidate_authoring_seat: S03
+  candidate_commit: 74a6ef44a5fd3b9cca717390ae0f73394b3ec03d
+  candidate_commit_time_utc: 2026-08-05T02:11:55Z
+  candidate_path: state/coordination/receipts/chatgpt_runtime/seat-03/20260805T020921Z_X13_GOOGLE_CALENDAR_GET_AVAILABILITY_PHASE1_RETURN_BINDINGS_REVISE.yaml
+  candidate_blob_sha1_declared_or_readback: 8523105ffbc68188df0818005e2d7579c1182014
+  candidate_blob_sha1_recomputed: 8523105ffbc68188df0818005e2d7579c1182014
+  exact_utf8_bytes: 6485
+  sha256: 01fbcd2f2aff334152cd5b61cba001ff054902f21c304f1d6ac9dd5cde90567d
+  readback_match: true
+  yaml_document_count: 1
+  yaml_top_level_type: mapping
+  schema_id_observed: hfo.gen133.s03.reducer_route.v1
+  formal_schema_digest_bound: false
+  semantic_canonicalization_declared: false
+  exact_raw_bytes_used_as_canonical_evidence: true
+source_bindings:
+  phase1_event:
+    commit: 5b085bf44d4957829c272fc3027bf6594b360ce9
+    path: state/coordination/experiments/cots_connector_x13/20260805T015129Z_GOOGLE_CALENDAR_GET_AVAILABILITY_PHASE1_BASELINE.md
+    blob_sha1_expected: 0691791621bc5b2f8da697671c2ce0c9268b04ac
+    blob_sha1_recomputed: 0691791621bc5b2f8da697671c2ce0c9268b04ac
+    exact_utf8_bytes: 5803
+    sha256: 396febc5447001489057784c3c5c46d94c23a350de1e5e6dba1c9f5c10ab10dd
+    readback_match: true
+    frontmatter_schema_id: hfo.gen133.x13.cots_connector_event.v1
+    frontmatter_parsed_as_mapping: true
+  current_v101:
+    commit: 46c7382ae0eb839b182aac4bc81631c258734767
+    path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    blob_sha1_expected: 2f0389e0a883fbea5a8a634548c4f3820c757088
+    blob_sha1_recomputed: 2f0389e0a883fbea5a8a634548c4f3820c757088
+    exact_utf8_bytes: 4779
+    sha256: 45fccc95ec622a34a94a39e70b4b680705bcb1f0801049721c0390b341080ef8
+    readback_match: true
+    frontmatter_schema_id: hfo.gen133.x13.cots_connector_current.v1
+    frontmatter_parsed_as_mapping: true
+    version: 101
+    prior_version: 100
+    event_pointer_match: true
+structural_checks:
+  freshness:
+    pass: true
+    route_valid_time_utc: 2026-08-05T02:09:21Z
+    route_expiry_utc: 2026-08-06T02:09:21Z
+    selected_at_utc: 2026-08-05T02:22:54Z
+    source_campaign_status: OPEN
+    source_phase: 1_of_4
+  task_binding:
+    pass: true
+    s03_task_id_match_and_enabled: true
+    s04_task_id_match_and_enabled: true
+    x13_task_id_match_and_enabled: true
+    x14_task_id_match_and_enabled: true
+    s09_task_id_match_and_enabled: true
+  authority:
+    fail_closed: true
+    source_effect_ceiling: BOUNDED_READ_ONLY_CALENDAR_DISCOVERY_AND_SANITIZED_GIT_EVENT_ONLY
+    adoption_credit: 0
+    fitness_credit: 0
+    workitem_bound_effect_ceiling: false
+    authenticated_calendar_principal_or_scope_bound: false
+  actor_carrier_separation:
+    logical_roles_separated: true
+    s03_router_x13_lab_s04_preflight_x14_mutant_s09_advisory_are_distinct_seats: true
+    carrier_task_ids_are_not_actor_or_principal_authentication: true
+    github_committer_identity_is_shared_and_not_independence_proof: true
+  idempotency:
+    current_version_transition_observed: 100_to_101
+    workitem_id_bound: false
+    nonce_bound: false
+    idempotency_domain_bound: false
+    idempotency_key_bound: false
+    result: FAIL
+  lease_and_expiry:
+    route_expiry_bound_and_unexpired: true
+    producer_lease_bound: false
+    source_return_expiry_bound: false
+    mutant_expiry_bound_and_unexpired_at_selection: true
+    result: FAIL
+  privacy:
+    no_event_titles_or_details_retained: true
+    exact_busy_intervals_retained: false
+    aggregate_busy_minutes_retained: 120
+    privacy_ceiling: SANITIZED_AGGREGATE_CALENDAR_AVAILABILITY_METADATA_ONLY
+    exact_query_bounds_or_busy_interval_digests_bound: false
+    raw_same_principal_provider_parity_bound: false
+    result: FAIL_CLOSED_LIMITED_OBSERVATION_ONLY
+  rollback:
+    provider_write_performed: false
+    provider_rollback_not_needed_for_read_only_probe: true
+    workitem_bound_rollback_contract: false
+    result: FAIL_FOR_PRODUCER_RETURN_PROMOTION
+  verifier:
+    s04_class: DISTINCT_NONPRODUCER_SAME_PROVIDER
+    exact_stood_or_fell_bound_to_producer_digest: false
+    independent_verification_closed: false
+  consumer:
+    named_operational_consumer: false
+    consumer_ack: NOT_OBSERVED
+    result: FAIL
+source_claim_ceiling:
+  supported:
+    - ONE_BOUNDED_CONNECTOR_CALL_REPORTED_ONE_PRIMARY_CALENDAR_RESULT_ONE_BUSY_BLOCK_AND_AGGREGATE_120_BUSY_MINUTES
+    - NO_EVENT_TITLES_OR_DETAILS_NO_PER_CALENDAR_ERROR_AND_NO_CONNECTOR_ERROR_WERE_RECORDED
+    - PHASE1_IS_OPEN_ACCEPTED_WITH_GATES_AND_ZERO_ADOPTION_OR_FITNESS_CREDIT
+  excluded:
+    - EXACT_BUSY_INTERVALS_OR_QUERY_BOUNDS
+    - INDEPENDENT_RECOMPUTATION_OF_THE_120_MINUTE_AGGREGATE
+    - RAW_PROVIDER_PARITY_COMPLETENESS_OR_TRUE_CALL_COUNT
+    - AUTHENTICATED_PRINCIPAL_EFFECTIVE_SCOPE_QUOTA_OR_HIDDEN_RETRY_BEHAVIOR
+    - WORKITEM_BOUND_PRODUCER_RETURN
+    - UNATTENDED_SCHEDULING_AUTHORITY
+    - TERMINAL_ACCEPTANCE_OR_CONSUMER_ACK
+strongest_fake_green_mutant:
+  mutant_id: X14_MUTANT_099_b97b26824754
+  commit: 24854a26998a03304cbc92fabed72415d65bf36a
+  path: state/coordination/experiments/false_green_x14/quarantine/20260805T015423Z_X13_SCHEDULE_SELF_AMPUTATION.mutant.yaml
+  blob_sha1: eed1d738e838d7338ff77f7e4b2ee2b5adeaa370
+  mutation_class: SCHEDULE_SELF_AMPUTATION
+  executable: false
+  source_blob_sha1_match: true
+  canonicalization_algorithm: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_byte_count_declared: 253
+  canonical_overlay_byte_count_recomputed: 253
+  canonical_overlay_sha256_declared: b97b26824754b2b655d7a015ed51cb77f4fdac9b9a59cb79bcd0683197264a18
+  canonical_overlay_sha256_recomputed: b97b26824754b2b655d7a015ed51cb77f4fdac9b9a59cb79bcd0683197264a18
+  mutant_expiry_utc: 2026-08-05T05:51:29Z
+  verdict: REJECTED_BY_STRUCTURAL_GATE
+  rejection_reason: THE_READ_ONLY_PHASE1_OBSERVATION_HAS_NO_TASK_OR_SCHEDULE_MUTATION_AUTHORITY_OPERATOR_APPROVAL_PROVIDER_WRITEBACK_OR_UPDATE_RECEIPT_AND_THE_SOURCE_EXPLICITLY_REQUIRES_A_NEXT_PHASE_WHILE_LIVE_TASK_READBACK_SHOWS_X13_ENABLED
+controlling_revision_reasons:
+  - NO_WORKITEM_ID_CLAIM_DIGEST_OR_ACCEPTANCE_DIGEST
+  - NO_NONCE_IDEMPOTENCY_DOMAIN_KEY_OR_PRODUCER_LEASE
+  - NO_CANONICAL_PRODUCER_RETURN_REQUEST_OR_RESPONSE_DIGEST
+  - NO_EXACT_QUERY_BOUND_OR_BUSY_INTERVAL_DIGEST_SUFFICIENT_TO_RECOMPUTE_120_MINUTES
+  - NO_AUTHENTICATED_CALENDAR_PRINCIPAL_EFFECTIVE_SCOPE_REQUEST_ID_OR_TRUE_CALL_COUNT
+  - NO_WORKITEM_BOUND_EFFECT_CEILING_ROLLBACK_OR_RETURN_EXPIRY
+  - NO_DISTINCT_PROVIDER_DIGEST_BOUND_STOOD_OR_FELL
+  - NO_NAMED_OPERATIONAL_CONSUMER_OR_CONSUMERACK
+verdict:
+  value: REVISE
+  rationale: EXACT_GIT_BINDINGS_AND_FAIL_CLOSED_AUTHORITY_PASS_BUT_THE_ARTIFACT_IS_ONLY_A_NONTERMINAL_LAB_OBSERVATION_AND_CANNOT_BE_PROMOTED_TO_A_WORKITEM_BOUND_PRODUCER_RETURN_OR_TERMINAL_ACCEPTANCE
+  independence_status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  independent_verification_closed: false
+honest_flaw: EXACT_GIT_BYTES_AND_POINTERS_ARE_RECOMPUTED_BUT_THE_PRIVATE_CALENDAR_REQUEST_RESPONSE_AND_BUSY_INTERVALS_WERE_INTENTIONALLY_NOT_RETAINED_SO_SOURCE_SYSTEM_PARITY_AND_THE_120_MINUTE_AGGREGATE_CANNOT_BE_INDEPENDENTLY_REPRODUCED_THIS_PREFLIGHT_IS_CHATGPT_SAME_PROVIDER_AND_HAS_BINDING_WEIGHT_ZERO
+valid_time_utc: 2026-08-05T02:22:54Z
+recorded_time_utc: 2026-08-05T02:22:54Z
