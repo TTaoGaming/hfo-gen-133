@@ -1,0 +1,163 @@
+---
+schema_id: hfo.gen133.s03_verification_route.v1
+result: REVISE
+seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMER_ACK_TRACKER
+carrier_task_id_expected: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_observed: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_match: true
+wip: 1
+valid_time_utc: 2026-08-05T07:10:15Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+branch_head_at_selection: 65322a66f0082bc6f3f0fa3d34772e71c6b89242
+terminal_receipt: false
+consumer_ack_implicit: false
+---
+
+self_probe:
+  identity_source: native_scheduled_task_inventory_readback
+  observed_task_enabled: true
+  observed_task_title: HFO S03 Ratatoskr Pacemaker
+  tools_available:
+    - authenticated native scheduled-task inventory readback
+    - authenticated GitHub commit search, exact commit and file readback, UTF-8 create, and post-write readback
+    - authenticated Slack channel read and one-pointer post
+  tools_unavailable_or_unused:
+    - raw Google Drive API request and response surface
+    - authenticated same-principal Drive files.list witness
+    - target-host shell or local connector trace capture
+    - distinct-provider verifier ingress with confirmed consumption
+  producer_impersonation_performed: false
+  self_verification_performed: false
+  task_mutation_performed: false
+
+selection:
+  correlation_id: X13_GOOGLE_DRIVE_SEARCH_READONLY_002_PHASE2_EMPTY_RESULT_20260805T064903Z
+  work_item_id: ABSENT_X13_CATALOG_EVENT_NOT_WORKITEM
+  changed_event:
+    experiment_id: X13_GOOGLE_DRIVE_SEARCH_READONLY_002
+    event_id: X13_DRIVE_SEARCH_METADATA_PHASE2_20260805T064903Z
+    commit: 382b908ec37b296a1f3a83f6b5212420a47aad5a
+    path: state/coordination/experiments/cots_connector_x13/20260805T064903Z_GOOGLE_DRIVE_SEARCH_METADATA_PHASE2_EMPTY_RESULT_MICROUSE.md
+    blob: 9a0cd3f04a64345b55aee9c7e45be5cc277f91d5
+    result: PHASE2_ACCEPTED_WITH_GATES
+    review_expiry_utc: 2026-08-12T06:49:03Z
+    admitted_claim: ONE_SYNTHETIC_METADATA_SEARCH_RETURNED_ZERO_RESULTS_ON_THE_CONNECTOR_SURFACE
+    exact_query_persisted: false
+    results_returned: 0
+    raw_provider_parity: false
+    operational_consumer: NOT_ASSIGNED
+    verifier_result: NOT_RUN
+    consumer_ack: NOT_OBSERVED
+  changed_current_pointer:
+    commit: ed7417ec73df8962987a6aea996d937f6a890c0e
+    path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    blob: a10e592cfdeede9a4221182b171ae71a7f01b0d0
+    version: 106
+    independent_verification_closed: false
+    adoption_credit: 0
+    fitness_credit: 0
+  prior_terminal_receipt_search:
+    exact_event_id_matches_outside_source_event: 0
+    stood_or_fell_tied_to_producer_digest_observed: false
+    named_consumer_ack_observed: false
+
+reduction:
+  claim_bound_to_work_item: false
+  claim_acceptance_digest: ABSENT
+  producer_return_observed: false
+  producer_return_digest: ABSENT
+  exact_source_system_readback: PARTIAL_TRANSFORMED_CONNECTOR_EMPTY_ARRAY_ONLY
+  exact_request_binding: ABSENT_QUERY_NOT_PERSISTED
+  exact_response_binding: ABSENT_RAW_FILES_LIST_RESPONSE_NOT_EXPOSED
+  commands_and_exit_codes: NOT_APPLICABLE_TO_CONNECTOR_CALL_BUT_SOURCE_SYSTEM_READBACK_REQUIRED
+  authenticated_principal_and_scope: ABSENT
+  corpus_field_mask_incomplete_search_pagination: ABSENT
+  rollback_bound_to_work_item: ABSENT
+  effect_ceiling_bound_to_work_item: ABSENT
+  expiry_bound_to_work_item: ABSENT
+  honest_flaw_present_in_event: true
+  honest_flaw_bound_to_producer_digest: false
+  digest_bound_stood_or_fell: ABSENT
+  explicit_named_consumer_ack: ABSENT
+  conclusion: >-
+    The phase-2 event is a bounded catalog observation, not a WorkItem-bound producer return. Its exact synthetic query was
+    deliberately not retained and the connector did not expose raw Drive files.list request or response bytes, principal,
+    scope, corpus, field mask, incompleteSearch, pagination, request ID, quota debit, or hidden attempt graph. The event
+    therefore cannot support a producer digest, reproducible absence claim, STOOD or FELL verdict, or ConsumerAck.
+
+revise_request:
+  recipient_class: X13_EVENT_OWNER_AND_DISTINCT_RAW_DRIVE_WITNESS
+  exact_missing_evidence:
+    - one immutable WorkItem claim and acceptance digest naming the claim ceiling and operational consumer
+    - privacy-safe exact query binding, preferably a salted query digest plus separately authorized witness access
+    - raw same-principal Drive files.list request and response digest or source-system readback
+    - authenticated principal, effective OAuth scope, corpus, spaces, field mask, orderBy, pageSize, pageToken, nextPageToken, and incompleteSearch
+    - connector attempt, pagination, retry, fallback, secondary-read, hydration, and quota evidence
+    - canonical producer-return digest covering claim, request, response, rollback, effect ceiling, expiry, and honest flaw
+    - distinct verifier result exactly STOOD or FELL tied to that producer-return digest
+    - explicit named ConsumerAck after STOOD
+  prohibited_substitutes:
+    - empty connector array treated as global or authoritative absence
+    - CURRENT pointer advancement treated as operational adoption
+    - same-provider ChatGPT preflight treated as independent verification
+    - catalog consumer label treated as ConsumerAck
+    - event honest flaw treated as a producer-digest binding
+
+verification_route:
+  packet_status: ROUTED_IN_GIT_PENDING_DISTINCT_WITNESS_CONSUMPTION
+  verifier_target: DISTINCT_AUTHORIZED_SAME_PRINCIPAL_RAW_GOOGLE_DRIVE_FILES_LIST_WITNESS
+  independence_requirement: NOT_X13_EVENT_PRODUCER_AND_NOT_CHATGPT_SAME_PROVIDER
+  route_binding_canonicalization: SHA256_UTF8_LF_TRAILING_NEWLINE
+  route_binding_byte_count: 717
+  route_binding_sha256: ee1d5f5fa029378207e4c803441ab89507fb66b9667824bc8b8e8cad0b7fda4b
+  route_binding_text: |-
+    correlation_id=X13_GOOGLE_DRIVE_SEARCH_READONLY_002_PHASE2_EMPTY_RESULT_20260805T064903Z
+    experiment_id=X13_GOOGLE_DRIVE_SEARCH_READONLY_002
+    event_id=X13_DRIVE_SEARCH_METADATA_PHASE2_20260805T064903Z
+    event_commit=382b908ec37b296a1f3a83f6b5212420a47aad5a
+    event_blob=9a0cd3f04a64345b55aee9c7e45be5cc277f91d5
+    current_pointer_blob=a10e592cfdeede9a4221182b171ae71a7f01b0d0
+    producer_return_digest=ABSENT
+    exact_query=ABSENT_NOT_PERSISTED
+    connector_result_count=0
+    raw_provider_request_response=ABSENT
+    authenticated_principal_scope_corpus=ABSENT
+    verifier_target=DISTINCT_AUTHORIZED_SAME_PRINCIPAL_RAW_GOOGLE_DRIVE_FILES_LIST_WITNESS
+    requested_result=REVISE_UNTIL_PRODUCER_DIGEST_THEN_STOOD|FELL
+    expiry_utc=2026-08-12T06:49:03Z
+  verifier_instruction: >-
+    Return REVISE while the exact query, raw provider request-response binding, WorkItem claim, and producer-return digest
+    are absent. Do not emit STOOD or FELL against this catalog event alone. If an immutable producer return is later
+    created, recompute its canonical digest, compare an authorized same-principal raw Drive files.list witness against the
+    exact request semantics, and return exactly STOOD or FELL tied to that digest. A ChatGPT-carried check remains
+    SAME_PROVIDER_NONBINDING with binding weight zero.
+  verifier_result_observed: false
+  delivery_limit: >-
+    This Git packet exposes the exact verification obligation but does not prove that a distinct provider or verifier has
+    consumed it.
+
+consumer_ack:
+  required_after: STOOD
+  named_operational_consumer_expected: NOT_ASSIGNED
+  explicit_ack_observed: false
+  implicit_ack_forbidden: true
+
+terminal_gate:
+  claim_return_verdict_ack_same_work_item: false
+  terminal_receipt_written: false
+  permitted_result_now: REVISE
+
+rollback:
+  - no Drive, task, account, file, connector, or production state was changed by S03
+  - ignore this route after 2026-08-12T06:49:03Z unless a successor explicitly rebinds the event bytes
+  - reject any STOOD or FELL not tied to a future exact producer-return digest
+
+effect_ceiling: INTERNAL_GIT_VERIFICATION_ROUTE_AND_ONE_SANITIZED_SLACK_POINTER_ONLY
+expiry_utc: 2026-08-12T06:49:03Z
+honest_flaw: >-
+  The exact event bytes, CURRENT pointer, native task identity, and absence of indexed terminal receipts were read back.
+  GitHub search is not a transactional global receipt census, the exact synthetic query was intentionally omitted, and
+  this carrier has no raw same-principal Drive API witness or confirmed distinct-provider verifier consumption. The packet
+  routes a verification obligation; it does not independently verify the connector observation.
