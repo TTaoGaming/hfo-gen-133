@@ -1,8 +1,8 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_NATIVE_TASKS_SANITIZED_INVENTORY_READ_V2
-current_version: 101
-accepted_wakes: 1
+current_version: 102
+accepted_wakes: 2
 target_wakes_before_decision: 4
 controlled_factor: native_tasks_read_visibility
 campaign_status: ACTIVE
@@ -24,16 +24,16 @@ baseline_result:
   error_class: NONE
 hypothesis: the_read_only_native_tasks_inventory_surface_will_repeatedly_show_the_expected_X11_task_identity_and_enabled_state_without_requiring_login_or_mutation
 measured_result:
-  provider_call_success: [true]
-  expected_task_visible: [true]
-  expected_title_match: [true]
-  enabled_state: [true]
-  sanitized_active_HFO_task_counts: [14]
-  latencies_ms: [NOT_EXPOSED]
+  provider_call_success: [true, true]
+  expected_task_visible: [true, true]
+  expected_title_match: [true, true]
+  enabled_state: [true, true]
+  sanitized_active_HFO_task_counts: [14, 14]
+  latencies_ms: [NOT_EXPOSED, NOT_EXPOSED]
   permission_class: AUTHENTICATED_NATIVE_TASKS_INVENTORY_READ_AVAILABLE
   error_class: NONE
   operator_relay_minutes: 0
-  changed_capability: true
+  changed_capability: false
   campaign_decision: false
   andon: false
 supported_claim: authenticated_read_only_native_tasks_inventory_visibility_of_expected_X11_task_identity_title_match_enabled_state_and_sanitized_active_HFO_task_count
@@ -43,16 +43,16 @@ verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 consumer: [Reginleif, Ratatoskr]
 honest_flaw: the_provider_inventory_read_is_broad_and_same_provider_and_returned_unrelated_task_metadata_and_prompt_bodies_even_though_only_sanitized_fields_are_persisted
 last_event:
-  commit: da0b743ff48291f4b6f13f6a3d983d7d9fea2a40
-  path: state/coordination/experiments/carrier_surface_x11/events/20260805T014136Z_NATIVE_TASKS_SANITIZED_INVENTORY_READ_V2_WAKE_01.yaml
-  blob: 368d1819f63f9f11eb30eee6083b02a6f8e646d6
+  commit: 9f777e6d122618c1b4d55ac9bda573ac7c841cb2
+  path: state/coordination/experiments/carrier_surface_x11/events/20260805T024216Z_NATIVE_TASKS_SANITIZED_INVENTORY_READ_V2_WAKE_02.yaml
+  blob: 94b7416e95e46f892bdb98424c0e535b914b4f19
 next_factor: native_tasks_read_visibility
 next_probe:
   experiment_id: X11_NATIVE_TASKS_SANITIZED_INVENTORY_READ_V2
-  campaign_wake: 2
+  campaign_wake: 3
   mode: repeat_read_only_native_tasks_inventory_then_persist_only_sanitized_expected_task_presence_and_state
   exact_action: call_automations_list_and_persist_only_provider_call_success_expected_task_visible_expected_title_match_enabled_state_sanitized_active_HFO_task_count_permission_class_error_class_latency_when_exposed_and_operator_relay_minutes
-  expected_current_version: 101
+  expected_current_version: 102
   persist_only:
     - provider_call_success
     - expected_task_visible
@@ -69,14 +69,14 @@ next_probe:
   post_only_changed_capability_campaign_decision_or_andon: true
   sensitive_readback_externalization_allowed: false
   same_provider_independence_claim_allowed: false
-slack_action: POST_CHANGED_CAPABILITY
-updated_valid_time_utc: 2026-08-05T01:41:36Z
+slack_action: ABSTAIN_UNCHANGED
+updated_valid_time_utc: 2026-08-05T02:42:16Z
 sealed: false
 ---
 
-Native Tasks sanitized inventory-read V2 accepted wake 1/4. The read-only provider
-inventory call succeeded; the expected X11 task ID was visible, the title matched,
-the task was enabled, and the sanitized active HFO task count was 14. Only these
-sanitized fields were persisted. This establishes inventory visibility, not task
-execution, liveness, exactly-once delivery, future durability, or independent
-verification.
+Native Tasks sanitized inventory-read V2 accepted wake 2/4. The identical read-only
+provider inventory call again succeeded; the expected X11 task ID remained visible,
+the title still matched, the task remained enabled, and the sanitized active HFO task
+count remained 14. No capability changed, so no Slack post was made. This establishes
+inventory visibility only, not task execution, liveness, exactly-once delivery, future
+durability, or independent verification.
