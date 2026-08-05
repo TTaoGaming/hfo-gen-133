@@ -1,0 +1,104 @@
+---
+schema_id: hfo.gen133.x14.false_green_mutant.v1
+mutant_id: X14_MUTANT_101_a2e183f01b83
+experiment_id: X14_FALSE_GREEN_MUTATION_001
+campaign_ordinal: 25
+campaign_wake: 4
+seat: X14_FALSE_GREEN_MUTATION_QA
+carrier_task_id_expected: 6a513e4d9c4c81919db728f85db2dd79
+carrier_task_id_observed: 6a513e4d9c4c81919db728f85db2dd79
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+mutation_class: TASK_ID_MISMATCH
+status: QUARANTINED_NONEXECUTABLE_ROUTED_PENDING_VERDICTS
+valid_time_utc: 2026-08-05T03:51:56Z
+expires_utc: 2026-08-05T07:46:00Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+binding_weight: 0
+independent_verification_closed: false
+---
+
+source:
+  selection_cutoff_utc: 2026-08-05T03:50:30Z
+  newest_eligible_immutable_candidate_at_cutoff: true
+  authoring_seat: X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+  commit: 5501a48dae32e2ca6388e29014093b2b4360382f
+  path: state/coordination/experiments/durable_object_x12/events/20260805T034600Z_V0099_TO_V0100_C25_STALE_BLOB_SHA_REJECTION.json
+  blob_sha1: 2983cf42f44bd5fdb47199ec3b0f0075d1b8ed70
+  source_digest_kind: GIT_BLOB_SHA1
+  source_digest: 2983cf42f44bd5fdb47199ec3b0f0075d1b8ed70
+  task_id: 6a506f83df208191815dd17a8fd5baa3
+  schema_id: hfo.gen133.x12.durable_object_event.v1
+  event_type: STALE_BLOB_SHA_REJECTION_AND_V99_TO_V100_TRANSITION
+  admitted_claim: GITHUB_CONTENTS_API_REJECTED_ONE_STALE_CURRENT_BLOB_SHA_WITH_HTTP_409_AND_THE_POSTPROBE_V99_CURRENT_READBACK_WAS_UNCHANGED_BEFORE_SEPARATE_TRANSITION_ARTIFACTS
+  phase_status: C25_WAKE_1_EVENT_WRITTEN_PENDING_SEPARATE_CURRENT_UPDATE_SLACK_POST_AND_RECEIPT_AT_SELECTION
+  source_campaign: X12_STALE_CONCURRENT_WRITER_SIMULATION_C25
+  source_prior_version: 99
+  source_next_version: 100
+  source_idempotency_key: 26d95adb4c1f896091c25d7b579ea55531a7282353854aff5c31a89a5de1d276
+  source_nonce: x12-c25-w1-v99-v100-26d95adb4c1f896091c25d7b
+  consumer: Reginleif/Olrun
+  consumer_ack: NOT_OBSERVED
+  verifier: S04_WEIGHT_0_THEN_DISTINCT_SIGRUN_P4
+  verifier_result: NOT_BOUND_IN_SOURCE_EVENT
+  source_effect_ceiling: ONE_FAILED_STALE_CURRENT_UPDATE_ATTEMPT_ONE_IMMUTABLE_OBSERVATION_ONE_CLAIM_ONE_OUTBOX_ONE_EVENT_ONE_FILE_LOCAL_CURRENT_UPDATE_ONE_SLACK_VERSION_ADVANCE_POST_ONE_APPEND_ONLY_RECEIPT
+  source_expiry_utc: 2026-08-05T07:46:00Z
+  route_expiry_basis: SOURCE_DECLARED_EXPIRY
+  source_honest_flaw: THE_STALE_ATTEMPT_WAS_SEQUENTIAL_SAME_CARRIER_SAME_CONNECTOR_AND_SAME_BRANCH_HTTP_409_PROVES_ONLY_ONE_FILE_LOCAL_SHA_REJECTION_NOT_TRUE_SIMULTANEOUS_CONCURRENCY_LINEARIZABILITY_CROSS_BRANCH_EXCLUSION_OR_DATABASE_SERIALIZABILITY
+  prior_x14_mutation_at_source_digest: false
+
+negative_control:
+  copy_mode: QUARANTINED_OVERLAY_SOURCE_UNCHANGED
+  executable: false
+  exactly_one_field_changed: true
+  mutated_field: canonical_transition.task_id
+  original_value: 6a506f83df208191815dd17a8fd5baa3
+  mutated_value: 6a513e4d9c4c81919db728f85db2dd79
+  source_edited: false
+  task_or_schedule_changed: false
+  external_effect_performed: false
+
+canonicalization:
+  algorithm: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_json: '{"mutated_field":"canonical_transition.task_id","mutated_value":"6a513e4d9c4c81919db728f85db2dd79","mutation_class":"TASK_ID_MISMATCH","original_value":"6a506f83df208191815dd17a8fd5baa3","source_blob_sha1":"2983cf42f44bd5fdb47199ec3b0f0075d1b8ed70"}'
+  byte_count: 249
+  sha256: a2e183f01b83034ba7ed1be3c791e740efaeca6430a2c9d4aef84af7739b151f
+
+expected_rejection:
+  verdict: REVISE
+  reason: THE_EVENT_NONCE_IDEMPOTENCY_KEY_OBSERVATION_CLAIM_OUTBOX_SOURCE_TRANSITION_AND_NATIVE_AUTOMATION_INVENTORY_BIND_THE_X12_CARRIER_TASK_ID_6A506F83DF208191815DD17A8FD5BAA3_WHILE_THE_MUTANT_SUBSTITUTES_THE_X14_TASK_ID_6A513E4D9C4C81919DB728F85DB2DD79_WITHOUT_A_DELEGATION_RESEAT_OR_AUTHORITY_RECEIPT
+  named_gate: S04_TASK_ID_EXACT_SOURCE_EVENT_AUTOMATION_INVENTORY_CARRIER_ACTOR_AUTHORITY_NONCE_IDEMPOTENCY_AND_CONSUMER_BINDING_GATE
+
+routing:
+  structural_verifier: S04_STRUCTURAL_PREFLIGHT
+  structural_verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  distinct_verifier: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  distinct_verifier_task_id: 6a539fb148bc8191a30b6009dbf22438
+  consumer: X14_CAMPAIGN_REDUCER_AND_X12_DURABLE_OBJECT_CAMPAIGN_REDUCER
+  expiry_utc: 2026-08-05T07:46:00Z
+
+campaign:
+  campaign_ordinal: 25
+  accepted_wakes_after_write: 4
+  decision_due: true
+  direct_s04_catches_observed_before_close: 3
+  direct_s04_caught_mutants:
+    - X14_MUTANT_098_a4a1432d74e2
+    - X14_MUTANT_099_b97b26824754
+    - X14_MUTANT_100_264f36f39d93
+  current_mutant_pending_at_close: X14_MUTANT_101_a2e183f01b83
+  decision: REVISE_GATE
+  decision_reason: THREE_OF_FOUR_EXACT_DIRECT_S04_CATCHES_OBSERVED_BEFORE_CAMPAIGN_CLOSE_AND_CURRENT_MUTANT_101_REMAINS_PENDING
+  required_gate_revision: FIFO_SELECT_UNEXPIRED_DIRECT_X14_ROUTES_AND_BIND_EACH_VERDICT_TO_EXACT_MUTANT_ID_SOURCE_BLOB_CANONICAL_BYTES_AND_MUTATION_DIGEST_BEFORE_CAMPAIGN_CLOSE
+  next_mutation_class: ACTOR_CARRIER_CONFLATION
+
+honest_flaw: >-
+  The task-ID mismatch is conspicuous because it replaces the X12 carrier task ID with the X14 carrier task ID while the nonce, idempotency key,
+  nested semantic intent, observation, claim, outbox, source path, and campaign identity remain X12-bound. It does not test task-title collisions,
+  stale native inventory, aliases, a valid carrier reseat with incomplete propagation, shared service principals, or a mismatch hidden only in a
+  secondary receipt. Candidate discovery and source-digest dedup are best-effort because GitHub indexing can lag. Mutant 100 received exact S04
+  and S09 REVISE results before this campaign close; both are ChatGPT-carried same-provider evidence with binding weight zero. Mutant 101 is
+  pending, so Campaign 25 returns REVISE_GATE rather than claiming complete catch coverage. No independent quorum is claimed. No source, task,
+  schedule, branch, merge, deployment, Slack history, account, spend, publication, permanent deletion, or external system was modified.
