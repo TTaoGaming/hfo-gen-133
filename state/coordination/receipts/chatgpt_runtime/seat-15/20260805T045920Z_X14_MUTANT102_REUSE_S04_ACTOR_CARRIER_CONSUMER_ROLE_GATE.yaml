@@ -1,0 +1,159 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+result: RETURN_REUSABLE_FAILURE_ANTIBODY
+valid_time_utc: 2026-08-05T04:59:20Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+privacy_ceiling: SANITIZED_PUBLIC_CONTROL_METADATA_ONLY
+heritage_credit: 0
+binding_weight: 0
+consumer_ack: NOT_OBSERVED
+---
+
+self_probe:
+  identity: S15_HERITAGE_REUSE_AND_DEDUP
+  expected_task_id_match: true
+  task_enabled_observed: true
+  tools_observed:
+    - native_automations_inventory_read
+    - github_recent_commit_search
+    - github_exact_commit_read
+    - github_exact_file_and_blob_read
+    - github_create_file
+    - github_readback
+    - slack_direct_route_available
+  task_mutation_performed: false
+  source_edit_performed: false
+  private_source_read_performed: false
+  self_verification_claimed: false
+
+current_work_item:
+  work_item_kind: NAMED_EVIDENCE_GAP
+  work_item_id: X14_MUTANT_102_36c83fb5dab9
+  evidence_gap: WHETHER_MUTANT_102_ADDS_NEW_GATE_COVERAGE_OR_REPEATS_THE_EXISTING_ACTOR_CARRIER_FAILURE_CLASS
+  mutation_class: ACTOR_CARRIER_CONFLATION
+  mutation_subcase: X12_SLACK_DELIVERY_RECEIPT_CONSUMER_REPLACED_BY_CARRIER_TASK_DECLARED_AS_ACTOR_AND_CONSUMER
+  mutant_commit: 75195c7545ec972d9df3e0f6a650b95f2c605ee4
+  mutant_path: state/coordination/experiments/false_green_x14/quarantine/20260805T045355Z_X12_ACTOR_CARRIER_CONFLATION.mutant.yaml
+  mutant_source_blob_sha1: 3a1e49ba3bcbcc49bc3c35b981ae4f5d1f55c883
+  source_commit: 98b498bd5e00d75671fea44e08de5aba14ae5336
+  source_path: state/coordination/experiments/durable_object_x12/slack_receipts/8ccaf2bf4808b9ac0fc10ac936e4ab0732a7d88f62221981304ea59f0b35f3a8.json
+  source_blob_sha1: 3a1e49ba3bcbcc49bc3c35b981ae4f5d1f55c883
+  source_valid_time_utc: 2026-08-05T04:45:31Z
+  source_expiry_utc: 2026-08-05T08:45:31Z
+  source_consumer: Reginleif/Olrun
+  source_actor_principal: NOT_AUTHENTICATED_OR_BOUND
+  source_consumer_ack: NOT_OBSERVED
+  source_effect_ceiling: ONE_CLAIM_ONE_OUTBOX_ONE_EVENT_ONE_FILE_LOCAL_CURRENT_UPDATE_ONE_SANITIZED_SLACK_VERSION_ADVANCE_POST_ONE_APPEND_ONLY_RECEIPT
+  canonical_overlay_bytes_declared: 277
+  canonical_mutation_digest_sha256_declared: 36c83fb5dab93e13be1974822fc516f3b73f11b9e83e99fcfdb6354cdea92edb
+  acceptance_gate: S04_ACTOR_CARRIER_EXACT_PRINCIPAL_TASK_SLOT_CONSUMER_ROLE_DELEGATION_AUTHORITY_SOURCE_DIGEST_AND_NONSELFVERIFICATION_GATE
+  verifier:
+    - S04_STRUCTURAL_PREFLIGHT_FOR_EXACT_MUTANT
+    - DISTINCT_PROVIDER_OR_DECISION_MAKER_FOR_BINDING_CAMPAIGN_CONCLUSION
+  consumer:
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_CAMPAIGN_REDUCER
+    - Reginleif/Olrun
+  expiry_utc: 2026-08-05T08:45:31Z
+
+reusable_prior_artifact:
+  artifact_kind: FAILURE_ANTIBODY
+  original_date_utc: 2026-08-01T11:13:11Z
+  source_repository: TTaoGaming/hfo-gen-133
+  source_branch: agent/gen133-bootstrap-20260730
+  source_commit: b776e403eb172e17fb818e92d92cab3c42532c9d
+  source_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260801T111311Z_X14_MUTANT014_ACTOR_CARRIER_CONFLATION_REVISE.yaml
+  source_blob_sha1: 4b79428596d7e25444eb1a518b3545ab22440aee
+  original_mutant_id: X14_MUTANT_014_e7874dce9600
+  original_surface: X13_GMAIL_LABEL_COUNTS_PHASE2_READ_ONLY_MICRO_USE
+  original_result: REVISE
+  original_reason_code: ACTOR_ID_CONFLATED_WITH_CARRIER_TASK_ID_AND_SOURCE_ACTOR_BINDING_IS_NOT_EXPLICIT
+  original_verifier: S04_STRUCTURAL_PREFLIGHT
+  original_evidence_class: SAME_PROVIDER_NONBINDING
+  original_binding_weight: 0
+
+supported_claims:
+  - A matching enabled scheduled-task ID establishes a carrier record only; it does not establish logical actor identity, authenticated execution principal, authorship, lineage, delegated authority, verifier independence, or consumer identity.
+  - A quarantined overlay cannot manufacture actor identity from a carrier task ID when the exact source binds no actor principal.
+  - The exact X12 source names Reginleif/Olrun as consumer and records no ConsumerAck; replacing that field with a carrier ID declared as both actor and consumer collapses three separate roles without source-bound delegation.
+  - A Slack delivery receipt and exact Git readback establish bounded transport and repository effects only; they do not authenticate the carrier as producer, actor, or downstream consumer.
+  - Mutant 102 repeats the actor-carrier namespace failure class already rejected on 2026-08-01 and should not earn new mutation-class or antibody-diversity credit.
+
+excluded_claims:
+  - This heritage receipt is not the direct structural verdict for mutant 102.
+  - It does not independently recompute mutant 102's declared 277-byte canonical overlay or SHA-256.
+  - It does not identify the authenticated GitHub or Slack principal, logical producer, delegated authority holder, or actual downstream consumer.
+  - It does not prove ConsumerAck, exactly-once delivery, durability, adoption, outcome, campaign closure, or independent verification.
+  - It does not prove zero incremental subcase value; the current mutation also corrupts the consumer field, which the 2026-08-01 precedent did not directly mutate.
+
+acceptance_relevance:
+  use: PRIOR_FAILURE_ANTIBODY_AND_MUTATION_COVERAGE_DEDUP
+  expected_application: >-
+    Bind the 2026-08-01 S04 actor-carrier rejection to X14_MUTANT_102 as prior coverage. Count the current item as a recurrence with a consumer-role extension,
+    not as a new mutation class, independent antibody, ConsumerAck, or binding result. S04 must still resolve the exact current mutant and source blobs,
+    verify the original consumer field and absence of an actor principal, recompute the declared 277-byte overlay and SHA-256, and apply separate actor,
+    carrier, consumer, delegation, and authority gates.
+  verifier:
+    - S04_STRUCTURAL_PREFLIGHT_FOR_EXACT_MUTANT
+    - DISTINCT_PROVIDER_OR_DECISION_MAKER_FOR_BINDING_CAMPAIGN_CONCLUSION
+  consumer:
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_CAMPAIGN_REDUCER
+    - Reginleif/Olrun
+  credit_condition: NAMED_CONSUMER_BINDS_THIS_POINTER_IN_THE_CAMPAIGN_DECISION_OR_DEDUP_LEDGER
+  credit_before_consumption: 0
+
+privacy:
+  classification: SANITIZED_PUBLIC_CONTROL_METADATA
+  permitted:
+    - repository
+    - branch
+    - commit
+    - path
+    - blob IDs
+    - task IDs
+    - seat labels
+    - mutation classes
+    - verifier results
+    - expiry
+    - sanitized Slack channel and delivery markers already present in canonical receipts
+  forbidden:
+    - private Slack message bodies
+    - credentials
+    - tokens
+    - hidden connector principal data
+    - private UI captures
+    - unsanitized account or user identifiers
+
+deduplication:
+  gen133_searched_first: true
+  same_failure_class_previously_observed: true
+  nearest_current_precedent: X14_MUTANT_091_dfc301cb2565
+  nearest_current_precedent_s15_commit: 465825fa481b835e0bd6387b064f0d03d64df1fb
+  prior_s15_result_for_current_mutant_found: false
+  material_delta: BINDS_ONE_EXISTING_S04_FAILURE_ANTIBODY_TO_X14_MUTANT_102_AND_FLAGS_THE_CONSUMER_FIELD_AS_A_REQUIRED_ADDITIONAL_DIRECT_CHECK
+  discovery_limit: GitHub recent-commit and code-index discovery are nontransactional and may lag.
+
+expiry:
+  expires_utc: 2026-08-05T08:45:31Z
+  after_expiry: HISTORICAL_MUTATION_COVERAGE_PATTERN_ONLY_NOT_LIVE_ACCEPTANCE_EVIDENCE
+
+honest_flaw: >-
+  Actor-carrier conflation is heavily represented in Gen-133 and this mutant is conspicuous because the replacement value literally embeds the X12 task ID
+  and declares it to be both actor and consumer. The prior S04 artifact mutated a derived actor field on a Gmail source, whereas mutant 102 mutates an
+  explicit consumer field on an X12 Slack delivery receipt. The actor/carrier namespace rule transfers directly, but consumer identity, delegation,
+  ConsumerAck, the current overlay bytes, and the exact source schema still require direct review. This is same-provider advisory evidence with binding
+  weight zero, repository discovery can lag, and no named consumer has acknowledged consumption.
+
+rollback:
+  action: RETAIN_OR_IGNORE_THIS_POINTER
+  source_restore_required: false
+  provider_restore_required: false
