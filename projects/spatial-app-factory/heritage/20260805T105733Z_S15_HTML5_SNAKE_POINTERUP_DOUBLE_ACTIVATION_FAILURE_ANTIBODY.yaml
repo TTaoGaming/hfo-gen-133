@@ -1,0 +1,130 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+result: RETURN
+seat: S15_HERITAGE_REUSE_DEDUP
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_match: true
+wip: 1
+valid_time_utc: 2026-08-05T10:57:33Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+privacy_ceiling: SANITIZED_REPOSITORY_CONTROL_AND_TEST_ORACLE_METADATA_ONLY
+fitness_credit: 0
+fitness_condition: EXACT_CURRENT_WORKITEM_CONSUMPTION_PLUS_CONSUMER_ACK
+sealed: false
+---
+
+current_work_item:
+  id: SPATIAL_FACTORY_HTML5_SNAKE_PENDING_DIRECTION_COMMAND_GATE_001
+  claim_id: S02_SPATIAL_FACTORY_HTML5_SNAKE_POINTER_IDENTITY_ARCHIVE_MAINTENANCE_SUCCESSOR_20260805T100853Z
+  claim_status: CLAIMED_INTERNAL_ONLY_CONDITIONAL_NO_EXECUTOR_INGRESS
+  repository: TTaoGaming/hfo-gen-133
+  commit: 8d8ede0222511e3543223cceab1440e6bf2f21ab
+  path: projects/spatial-app-factory/claims/20260805T100853Z_SPATIAL_FACTORY_HTML5_SNAKE_POINTER_IDENTITY_ARCHIVE_MAINTENANCE_SUCCESSOR.claim.yaml
+  blob: 981b7bd21c4e1409e6c9b2fb0ed391d9ac9849dc
+  acceptance_sha256: 64a3be61b13d8780dac9de4b7c526fd961209c60386247b0a858b0eb05304975
+  latest_permitted_non_hold_route_utc: 2026-08-05T11:23:53Z
+  producer_return_due_utc: 2026-08-05T13:08:53Z
+  expiry_utc: 2026-08-05T14:08:53Z
+
+heritage_kind: FAILURE_ANTIBODY
+original_date_utc: 2026-08-04T14:31:39Z
+source:
+  repository: TTaoGaming/hfo-gen-133
+  commit: 1fb8b13fb0071ed335edb5ad4b504036f71b35f6
+  path: projects/spatial-app-factory/research/20260804T143139Z_S08_TAGS_POINTERUP_DISPATCH_ACTIVATION_OWNER_EVIDENCE_CARD.md
+  blob: 9feb1c0b7f3c68e3ad91968ef89d311fffa42ee1
+  source_decision: REVISE
+  exact_candidate_repository: TTaoGaming/TAGS
+  exact_candidate_commit: a3b636a7ecaab5afa1932ec92559c7c454904039
+  exact_candidate_path: prototypes/spatial-input-adapter.js
+  exact_candidate_blob: 579c9551225f0974ed93564b6ad8bfb1abf72cf3
+
+reusable_antibody:
+  invariant: ONE_SPATIAL_CYCLE_ONE_EXPLICIT_ACTIVATION_OWNER
+  bounded_failure: >-
+    A target or ancestor pointerup listener may perform the application action without calling preventDefault.
+    dispatchEvent(pointerup) then returns true because the event was not canceled, after which a parallel
+    activationCallback can perform the same action again. The dispatch boolean is a cancellation result, not
+    proof that no listener produced a side effect or that activation ownership remains available.
+  safe_reuse: >-
+    DIRECT_COMMAND must call requestDirection(nextDirection) once at its selected terminal edge and must not
+    dispatch a generic pointer activation sequence or invoke a parallel application callback for that cycle.
+  deterministic_oracle:
+    - uncanceled_pointerup_listener_side_effect_plus_callback_must_end_with_one_owner_and_one_action_not_two
+    - canceled_pointerup_must_produce_zero_callback_action
+    - click_only_target_must_use_one_explicit_high_level_path_or_return_TYPED_UNSUPPORTED
+    - cancel_tracking_loss_still_pinched_reacquisition_and_neutral_rearm_must_produce_zero_latent_action
+
+supported_claims:
+  - The exact prior TAGS adapter dispatched synthetic pointerup before conditionally calling activationCallback.
+  - A truthy dispatchEvent result established non-cancellation only, not absence of listener side effects.
+  - The double-action trace is a valid negative-control oracle for the current one-owner acceptance boundary.
+  - The current claim clauses 13, 19, and 20 can consume this exact failure specimen without importing implementation bytes.
+
+excluded_claims:
+  - No claim that the current Snake target registers the duplicate listener.
+  - No claim that every browser synthesizes or suppresses click after an untrusted pointer sequence.
+  - No implementation, branch, test execution, browser capture, structural pass, independent verdict, ConsumerAck, completion, deployment, publication, distribution, buyer, revenue, or production-readiness claim.
+  - No claim that this antibody extends the current claim route, return, lease, or expiry clocks.
+
+acceptance_relevance:
+  clause_13: DIRECT_COMMAND_IS_SOLE_SPATIAL_ACTIVATION_OWNER_AND_FORBIDS_PARALLEL_GENERIC_ACTIVATION_CALLBACK
+  clause_19: FORBIDDEN_SYNTHETIC_DISPATCH_AND_POINTER_CAPTURE_TOKEN_COUNT_ZERO_IN_RUNNABLE_COMMAND_PATH
+  clause_20: DISTINCT_CHROMIUM_AND_FIREFOX_EVENT_ORDER_AND_ACTION_COUNTER_EVIDENCE
+  use: >-
+    Bind the prior failure trace and action-count oracle to the exact current claim during S04 preflight and any
+    authorized producer or browser-verifier packet. This is provenance and a negative control, not another claim.
+
+verifier:
+  structural: S04_STRUCTURAL_PREFLIGHT_VERIFIER
+  structural_weight: SAME_PROVIDER_NONBINDING_ZERO
+  runtime: DISTINCT_CHROMIUM_FIREFOX_NONPRODUCER_EVENT_AND_ACTION_COUNTER_VERIFIER
+  required_runtime_result: DIGEST_BOUND_STOOD_OR_FELL
+
+consumer:
+  immediate: S06_CODE_WORK_PACKET_COMPILER
+  work_item: SPATIAL_FACTORY_HTML5_SNAKE_PENDING_DIRECTION_COMMAND_GATE_001
+  downstream: S09_STRATEGIC_REASONING_AND_VOTING_AFTER_DISTINCT_VERIFICATION
+  consumer_ack_observed: false
+
+expiry:
+  utc: 2026-08-05T14:08:53Z
+  reason: CURRENT_CLAIM_EXPIRY_IS_EARLIER_THAN_SOURCE_CARD_EXPIRY
+  immediate_expiry_on:
+    - current_claim_retirement_or_supersession
+    - target_adapter_blob_change
+    - ownership_mode_change
+    - exact_successor_bytes_remove_or_replace_the_relevant_activation_boundary
+
+privacy:
+  allowed:
+    - repository_paths
+    - commit_and_blob_hashes
+    - acceptance_clause_numbers
+    - sanitized_failure_trace
+    - test_counter_names
+  forbidden:
+    - private_bodies
+    - credentials_or_secrets
+    - operator_identity_data
+    - customer_or_family_data
+
+reuse_and_dedup:
+  gen133_searched_first: true
+  exact_source_blob_in_prior_s15_heritage_found: false
+  exact_current_claim_binding_in_prior_s15_heritage_found: false
+  prior_non_s15_consumption_found: true
+  prior_consumption_note: >-
+    An earlier expired Snake successor cited the source card. This result does not revive that claim; it binds the
+    same immutable antibody to the current exact claim and preserves the current clocks and effect ceiling.
+  novelty_credit: 0
+  antibody_diversity_credit: 0
+
+honest_flaw: >-
+  The current acceptance contract already states the sole-owner and zero-synthetic-dispatch rules, so this result
+  does not add a new rule. Its bounded value is exact provenance plus a concrete double-action failure specimen and
+  action-count oracle. The prior specimen was reasoned from exact adapter bytes and standards semantics but was not
+  reproduced in Chromium or Firefox, and no current producer or consumer acknowledgment is present.
