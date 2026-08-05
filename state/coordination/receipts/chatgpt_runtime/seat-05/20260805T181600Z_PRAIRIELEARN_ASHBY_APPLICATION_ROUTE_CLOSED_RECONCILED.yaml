@@ -1,0 +1,47 @@
+schema: hfo.gen133.operator_relief_receipt.v0_1
+receipt_id: S05_PRAIRIELEARN_ASHBY_APPLICATION_ROUTE_CLOSED_RECONCILED_20260805T181600Z
+task_id: 6a55c182078c8191b89f2dd15f5f640c
+seat: S05
+role: operator_relief_cell
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time: 2026-08-05T17:42:31Z
+transaction_time: 2026-08-05T18:16:00Z
+material_change: true
+transition: RECONCILE_IMPORTANT_STATUS
+active_item_before: PRAIRIELEARN_EMAIL_SENT_ASHBY_ROUTE_GAP
+result: ATS_SUBMISSION_CONFIRMED_PROVIDER_REVIEW_PENDING
+status_change:
+  prior: EMAIL_SENT_ASHBY_ROUTE_UNVERIFIED
+  current: ASHBY_APPLICATION_RECEIPT_PRESENT_SUPPLEMENTAL_EMAIL_SENT_PROVIDER_REVIEW_PENDING
+sanitized_facts:
+  - The employer's Ashby hiring system issued a receipt confirming submission for the Full-Stack Software Engineer role.
+  - A later supplemental reply to the employer is present in Gmail Sent and states that the Ashby application was submitted.
+  - No delivery failure was found for the supplemental reply in the bounded changed-evidence window.
+  - The receipt proves provider-side application intake only; it does not prove human review, interview selection, or hiring acceptance.
+private_source_pointers:
+  gmail_ashby_confirmation_message_id: 19fd30522090e6f3
+  gmail_supplemental_sent_message_id: 19fd30722fc538e7
+  confirmation_timestamp_utc: 2026-08-05T17:42:31Z
+  supplemental_sent_timestamp_utc: 2026-08-05T17:44:46Z
+cross_source_readback:
+  contacts: NO_SAVED_PRAIRIELEARN_CONTACT_FOUND
+  calendar: PFA_SECURE_DOCUMENT_BLOCK_STILL_BOUND_2026-08-05T13:15:00-06:00
+  github: NO_NEWER_DUPLICATE_PRAIRIELEARN_CLOSURE_FOUND_IN_RECENT_COMMITS
+  slack: NO_DUPLICATE_PRAIRIELEARN_CLOSURE_FOUND_AFTER_PRIOR_S05_POINTER
+operator_projection:
+  active: PFA_POLICY_OWNERSHIP_AND_DOCUMENT_SCOPE_CLARIFICATION
+  p0: REVIEW_AND_SEND_EXISTING_PFA_CLARIFICATION_BEFORE_OPENING_OR_SIGNING_PROVIDER_DOCUMENT
+  p1:
+    - PRAIRIELEARN_WAIT_FOR_PROVIDER_RESPONSE_NO_OPERATOR_ACTION_NOW
+    - TECTANGLE_CORPORATE_RETURN_CLARIFICATION_DRAFT
+operator_minutes_removed_estimate: 6
+next_consumer: Var career/outreach reconciliation
+privacy_ceiling: SANITIZED_FACTS_AND_PRIVATE_SOURCE_POINTERS_ONLY
+claim_ceiling: APPLICATION_INTAKE_CONFIRMED_NOT_REVIEWED_OR_ACCEPTED
+no_action_assertions:
+  - No email was sent, edited, cancelled, or rescheduled by this transition.
+  - No application was submitted by this transition.
+  - No payment, deployment, merge, publication, account, security, calendar, contact, or scheduled-task mutation occurred.
+honest_flaw: Gmail and Ashby receipt evidence establish intake but cannot establish inbox delivery of the supplemental email, human review, or future response.
