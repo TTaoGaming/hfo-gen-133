@@ -1,0 +1,68 @@
+schema: hfo.gen133.operator_relief_receipt.v0_1
+receipt_id: S05_20260805T021639Z_JOB_APPLICATION_PRE_SEND_REVIEW_GATE_BOUND
+immutable: true
+task:
+  expected_task_id: 6a55c182078c8191b89f2dd15f5f640c
+  self_probe: MATCH
+  title: HFO S05 Var Operator Relief
+  wip_limit: 1
+canonical:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+valid_time: 2026-08-05T02:16:39Z
+transaction_time: GIT_COMMIT_METADATA
+result: DEADLINE_BOUND
+active_item: JOB_APPLICATION_PRE_SEND_REVIEW
+priority:
+  p0: JOB_APPLICATION_PRE_SEND_REVIEW
+  p1:
+    - PFA_SECURE_METHOD_RESPONSE_AND_COMPLIANCE_COMPLETION
+    - MISSOURI_FIRE_ALARM_AND_AC_EVIDENCE
+source_evidence:
+  gmail:
+    classification: TWO_APPLICATION_EMAILS_SCHEDULED_NOT_SENT
+    private_message_pointers:
+      - gmail:19fd23952abbb724
+      - gmail:19fd2904ceac8454
+    scheduled_local_times:
+      - 2026-08-05T08:00:00-06:00
+      - 2026-08-05T09:35:00-06:00
+    private_bodies_externalized: false
+  calendar_preflight:
+    window_local: 2026-08-05T07:00:00-06:00/2026-08-05T10:00:00-06:00
+    selected_free_window_local: 2026-08-05T07:30:00-06:00/2026-08-05T07:45:00-06:00
+transition:
+  type: BIND_DEADLINE_REVIEW_GATE
+  calendar_event_id: ts52qan70oi4arkpr6n4g1jccg
+  start_local: 2026-08-05T07:30:00-06:00
+  end_local: 2026-08-05T07:45:00-06:00
+  visibility: private
+  reminders_minutes_before:
+    - 10
+    - 0
+  required_outcome_per_email: KEEP_SCHEDULED | EDIT_OR_CANCEL_IN_GMAIL
+  review_checks:
+    - recipient
+    - role
+    - attachment
+    - factual_claims
+  authorization_ceiling: REVIEW_ONLY
+  email_sent_by_cell: false
+  application_submitted_by_cell: false
+operator_minutes_removed_estimate: 5
+next_consumer:
+  primary: OPERATOR
+  secondary: VAR_CAREER_OUTREACH_RECONCILIATION
+stop_condition: OPERATOR_CLASSIFIES_BOTH_EMAILS_BEFORE_FIRST_SCHEDULED_SEND
+privacy:
+  git_contains_private_email_bodies: false
+  slack_may_receive_sanitized_pointer_only: true
+prohibited_effects_observed:
+  task_mutation: false
+  email_send: false
+  application_submission: false
+  spend_or_payment: false
+  deployment_or_merge_or_publication: false
+  account_or_security_change: false
+  destructive_deletion: false
+honest_flaw: The review gate reduces the chance of an unreviewed scheduled send but does not prove the operator will attend, that Gmail will preserve the schedule, or that either application is factually complete or appropriate.
