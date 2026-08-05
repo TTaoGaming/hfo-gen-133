@@ -1,0 +1,279 @@
+---
+schema_id: hfo.gen133.s06_executor_packet.v1
+result: HOLD
+terminal: false
+seat: S06_CODE_WORK_PACKET_COMPILER_AND_CODEX_BRIDGE
+wip: 1
+valid_time_utc: 2026-08-05T16:20:57Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+
+self_probe:
+  expected_task_id: 6a57972b9df081918680ce67c4ecb197
+  observed_task_id: 6a57972b9df081918680ce67c4ecb197
+  task_id_match: true
+  task_enabled_observed: true
+  runtime: ChatGPT scheduled automation
+  available_surfaces:
+    - native scheduled-task inventory read
+    - authenticated GitHub repository, commit, branch, file, search, and immutable create/readback
+    - authenticated Slack channel post after Git readback
+  unavailable_execution_surfaces:
+    - direct Codex executor ingress
+    - direct Claude executor ingress
+    - target-host shell or TTaoGaming/TAGS checkout
+    - Chromium runtime
+    - Firefox runtime
+  s07_provider_readback:
+    task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+    enabled: false
+  task_mutation_performed: false
+  implementation_performed: false
+  test_execution_performed: false
+  route_performed: false
+
+selection:
+  work_item_id: SPATIAL_FACTORY_HTML5_SNAKE_PENDING_DIRECTION_COMMAND_GATE_001
+  changed_since_prior_s06_wake: true
+  eligible_claim_unexpired_at_observation: true
+  claim:
+    id: S02_SPATIAL_FACTORY_HTML5_SNAKE_REPRODUCIBLE_SOURCE_BUNDLE_HTML5SHIV_REMOVAL_SUCCESSOR_20260805T160714Z
+    commit: d363ebba67d6141d376e11dd239901a7fe6ec878
+    path: projects/spatial-app-factory/claims/20260805T160714Z_SPATIAL_FACTORY_HTML5_SNAKE_REPRODUCIBLE_SOURCE_BUNDLE_HTML5SHIV_REMOVAL_SUCCESSOR.claim.yaml
+    blob: d322336cfeb35d891497ac749037a3db95cd7ec7
+    acceptance_sha256: 0b6581b6b40b426e1ae6d598ac113d6daadff54d9c7d205780c8bc8e628d4f2b
+    source_bundle_sha256: f50698922a4eeea50807561406435d9ad39d1275029bf97c93f5b2452018a004
+    idempotency_key: baf57a67b6f574ba2cb59facba49e7683b06648dcc685355f99f5e327da61357
+  structural_preflight:
+    result: PASS_STRUCTURAL
+    commit: fd122991bb554058e49ae616f42faecbde4ecc7f
+    path: state/coordination/receipts/chatgpt_runtime/seat-04/20260805T161810Z_SPATIAL_FACTORY_HTML5_SNAKE_REPRODUCIBLE_SOURCE_BUNDLE_SUCCESSOR_STRUCTURAL_PASS.yaml
+    blob: c353c7ffaa0f0384762cf097cb0d5620ddb0ac6d
+    same_provider_status: SAME_PROVIDER_NONBINDING
+    binding_weight: 0
+    scope: STRUCTURAL_PREFLIGHT_ONLY
+
+repository_contract:
+  target_repository: TTaoGaming/TAGS
+  base_branch: main
+  base_sha: 1271e25306fe8ef8baea32704cf022435703d498
+  branch_rule: agent/html5-snake-pending-direction-canary-*
+  branch_create_max: 1
+  allowed_paths:
+    - prototypes/html5-snake-spatial-canary/**
+  forbidden_paths:
+    - every path outside prototypes/html5-snake-spatial-canary/**
+    - .github/**
+    - repository settings, secrets, releases, packages, and deployment configuration
+  upstream_repository: JDStraughan/html5-snake
+  upstream_sha: e3fe18a85a0555f0540cc0978fbab62822262a91
+  permitted_upstream_files:
+    README.md: bf29f270d27882138d6e50868a212b4780502ca8
+    game.js: c286389487bd68f15170fbb3add6a060f252d169
+    index.html: 61243962bab6846c3e06dba4358a547755dc1379
+    page.css: f380cefc081c1bac889330465f311195dbb83ab4
+  excluded_upstream_commits:
+    - ab188d1328f1c38ac22ace820f614cac2122e3cf
+    - 7d11cf1729e03be40916547d5c5f6a06ed5095e0
+    - 4e3049553b316c05c53befab6a51ada88d14d41e
+
+goal: >-
+  Produce one internal, unmerged HTML5 Snake canary rooted at the exact TAGS base SHA. Copy only the four
+  approved upstream files, preserve the complete MIT notice, remove the entire remote html5shiv Internet
+  Explorer conditional block, and converge native Arrow-key and DIRECT_COMMAND spatial input on one
+  requestDirection(nextDirection) seam with deterministic pending-direction, cancellation, release-to-rearm,
+  focus, activation-owner, provenance, package, and zero-network evidence.
+
+current_red_evidence:
+  observed_at_utc: 2026-08-05T16:20:57Z
+  direct_executor_ingress: NOT_EXPOSED
+  s07_enabled: false
+  target_branch_search:
+    query: html5-snake-pending-direction-canary
+    result_count: 0
+  conforming_producer_return_search:
+    claim_id_match_count: 0
+    result: NOT_FOUND
+  implementation_sha: NONE
+  commands_executed: []
+  exit_codes_observed: []
+  browser_evidence: NONE
+  public_distribution_chain_of_title: NOT_STOOD
+  red_reason: >-
+    The exact S04 structural preflight now passes, but no directly invokable Codex, Claude, S07, or target-host
+    producer surface is available. GitHub or Slack coordination is not executor ingress. Routing would therefore
+    manufacture execution authority and is prohibited.
+
+routing_decision:
+  state: HOLD_NOT_DISPATCHED
+  routed_to: NONE
+  rationale:
+    - direct executor ingress is a mandatory claim acceptance gate and is absent
+    - S07 is disabled in authoritative provider readback
+    - a route or Slack pointer is not execution
+    - S04 PASS_STRUCTURAL has binding weight zero and does not prove implementation or runtime behavior
+  unchanged_missing_ingress_andon_for_this_successor_campaign: FIRST_AND_ONLY
+
+required_commands_if_a_direct_executor_becomes_available_before_route_deadline:
+  status: NOT_EXECUTED
+  shell: bash
+  commands:
+    - id: verify_target_base
+      command: |-
+        set -euo pipefail
+        test "$(git rev-parse HEAD)" = "1271e25306fe8ef8baea32704cf022435703d498"
+        test -z "$(git status --porcelain)"
+    - id: create_single_branch
+      command: |-
+        set -euo pipefail
+        git switch -c agent/html5-snake-pending-direction-canary-20260805T162057Z 1271e25306fe8ef8baea32704cf022435703d498
+    - id: acquire_and_verify_upstream
+      command: |-
+        set -euo pipefail
+        tmp_dir="$(mktemp -d)"
+        git clone --filter=blob:none --no-checkout https://github.com/JDStraughan/html5-snake.git "$tmp_dir/upstream"
+        git -C "$tmp_dir/upstream" checkout --detach e3fe18a85a0555f0540cc0978fbab62822262a91
+        test "$(git -C "$tmp_dir/upstream" hash-object README.md)" = "bf29f270d27882138d6e50868a212b4780502ca8"
+        test "$(git -C "$tmp_dir/upstream" hash-object game.js)" = "c286389487bd68f15170fbb3add6a060f252d169"
+        test "$(git -C "$tmp_dir/upstream" hash-object index.html)" = "61243962bab6846c3e06dba4358a547755dc1379"
+        test "$(git -C "$tmp_dir/upstream" hash-object page.css)" = "f380cefc081c1bac889330465f311195dbb83ab4"
+        mkdir -p prototypes/html5-snake-spatial-canary
+        cp "$tmp_dir/upstream/README.md" prototypes/html5-snake-spatial-canary/README.md
+        cp "$tmp_dir/upstream/game.js" prototypes/html5-snake-spatial-canary/game.js
+        cp "$tmp_dir/upstream/index.html" prototypes/html5-snake-spatial-canary/index.html
+        cp "$tmp_dir/upstream/page.css" prototypes/html5-snake-spatial-canary/page.css
+    - id: static_forbidden_surface_checks
+      command: |-
+        set -euo pipefail
+        root=prototypes/html5-snake-spatial-canary
+        ! grep -RInE 'html5shiv|googlecode|elementFromPoint|new[[:space:]]+(PointerEvent|MouseEvent)|dispatchEvent|setPointerCapture|releasePointerCapture|keyCode|http://|https://' "$root" --include='*.html' --include='*.js' --include='*.css'
+        ! grep -RInE '<(script|link)[^>]+(src|href)=' "$root" --include='*.html' | grep -E 'https?://|//'
+    - id: deterministic_unit_tests
+      command: |-
+        set -euo pipefail
+        node --test prototypes/html5-snake-spatial-canary/tests/*.test.mjs
+    - id: chromium_verification
+      command: |-
+        set -euo pipefail
+        npx playwright test prototypes/html5-snake-spatial-canary/tests/browser.spec.mjs --project=chromium --reporter=line
+    - id: firefox_verification
+      command: |-
+        set -euo pipefail
+        npx playwright test prototypes/html5-snake-spatial-canary/tests/browser.spec.mjs --project=firefox --reporter=line
+    - id: path_and_diff_ceiling
+      command: |-
+        set -euo pipefail
+        git diff --name-only 1271e25306fe8ef8baea32704cf022435703d498...HEAD | awk 'NF && $0 !~ /^prototypes\/html5-snake-spatial-canary\// { bad=1 } END { exit bad }'
+        git diff --check
+        git status --short
+    - id: producer_return_evidence
+      command: |-
+        set -euo pipefail
+        git rev-parse HEAD
+        git diff --name-only 1271e25306fe8ef8baea32704cf022435703d498...HEAD
+        git log -1 --format='%H%n%P%n%an%n%ae%n%aI%n%s'
+
+acceptance_tests:
+  claim_contract_sha256: 0b6581b6b40b426e1ae6d598ac113d6daadff54d9c7d205780c8bc8e628d4f2b
+  required:
+    - exact S04 PASS_STRUCTURAL remains bound to claim commit, blob, source bundle, idempotency key, acceptance digest, and clocks
+    - exactly one unmerged branch is rooted at TAGS base SHA 1271e25306fe8ef8baea32704cf022435703d498
+    - every changed path is under prototypes/html5-snake-spatial-canary/**
+    - only the four approved upstream blobs are copied and the complete MIT notice is preserved
+    - zero bytes are copied from excluded later upstream commits
+    - the entire Google Code html5shiv conditional block is absent and no html5shiv bytes are vendored, downloaded, or executed
+    - native Arrow input and DIRECT_COMMAND input share exactly one requestDirection(nextDirection) seam
+    - DIRECT_COMMAND is the sole spatial activation owner and one spatial cycle produces exactly one application action
+    - runnable code contains zero DOM hit-test, synthetic pointer/mouse construction, dispatchEvent, capture, fabricated pointer identity, or capture-lease semantics
+    - spatial state has BEGIN, HELD, one COMMIT-or-CANCEL edge, and REQUIRE_RELEASE after cancel, loss, reset, or disarm until neutral rearm
+    - only one pending valid perpendicular direction is accepted per movement tick
+    - same, inverse, duplicate, second-before-tick, repeat, composing, modifier, editable-target, unfocused, and non-owner requests mutate nothing
+    - keyboard code uses event.key ArrowUp, ArrowDown, ArrowLeft, and ArrowRight only; keyCode and numeric aliases are absent
+    - accepted focused cancelable Arrow commands call preventDefault exactly once and end defaultPrevented true
+    - rejected or noncancelable commands do not call preventDefault and do not change defaultPrevented
+    - blur clears pending direction and refocus alone replays nothing
+    - runnable and packaged HTML contain zero automatic remote executable or stylesheet references and zero activatable external navigation
+    - Chromium and Firefox capture zero unexpected network requests
+    - pointerup double-activation negative control proves one activation owner and one application action
+    - distinct Chromium and Firefox evidence binds exact branch SHA, counters, defaultPrevented traces, event order, network capture, provenance manifest, MIT bytes, removed locator, and deterministic state traces
+    - producer return names runtime/model, branch/SHA, base SHA, changed paths, exact commands, exit codes, outputs, blockers, rollback, and honest flaw
+
+producer_return_contract:
+  required_fields:
+    - runtime_and_model
+    - exact_target_branch_and_sha
+    - exact_base_sha
+    - changed_paths
+    - exact_commands
+    - exit_codes
+    - outputs
+    - deterministic_test_traces
+    - Chromium_and_Firefox_evidence_or_typed_blocker
+    - blockers
+    - rollback
+    - honest_flaw
+  consume_rule: DIRECT_RETURN_ONLY_NO_STATUS_PROSE
+
+effect_ceiling:
+  permitted_if_routed: ONE_INTERNAL_UNMERGED_BRANCH_FILE_TEST_EFFECT_UNDER_ALLOWED_PREFIX_ONLY
+  public_effect: NONE
+  forbidden:
+    - task mutation
+    - production-code self-implementation by S06
+    - test-pass invention
+    - push by S06, merge, deployment, release, or publication
+    - send, outreach, spend, or paid calls
+    - account, credential, permission, or security change
+    - permanent deletion or destructive Git operation
+
+ceilings:
+  wip: 1
+  branch_create_max: 1
+  required_execution_plus_return_seconds: 6300
+  latest_permitted_non_hold_route_utc: 2026-08-05T16:25:00Z
+  producer_return_due_utc: 2026-08-05T18:15:00Z
+  expiry_utc: 2026-08-05T19:15:00Z
+  renewal_allowed: false
+  monetary_budget_usd: 0
+  paid_provider_calls: 0
+  operator_minutes_requested: 0
+
+rollback:
+  before_producer_effect: allow claim to expire and reject any route bound only to this digest
+  after_internal_unmerged_branch_effect: abandon the dedicated unmerged branch and preserve immutable receipts
+  force_push_reset_rebase_delete: NOT_AUTHORIZED
+  shared_state_and_production: UNCHANGED
+
+verifier:
+  structural:
+    seat: S04_STRUCTURAL_PREFLIGHT_VERIFIER
+    result: PASS_STRUCTURAL
+    same_provider_status: SAME_PROVIDER_NONBINDING
+    binding_weight: 0
+  runtime:
+    required: DISTINCT_CHROMIUM_FIREFOX_NONPRODUCER_VERIFIER
+    verdict: DIGEST_BOUND_STOOD_OR_FELL
+
+consumer:
+  immediate: S06_CODE_WORK_PACKET_COMPILER_AND_CODEX_BRIDGE
+  reducer: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  final_ack: EXPLICIT_NAMED_SPATIAL_FACTORY_CONSUMER_ACK
+  implicit_ack_forbidden: true
+
+expiry:
+  claim_expires_utc: 2026-08-05T19:15:00Z
+  non_hold_route_closes_utc: 2026-08-05T16:25:00Z
+  behavior: REJECT_ALL_NEW_ROUTE_EXECUTION_AND_VERDICT_BINDINGS_AFTER_EXPIRY
+
+strongest_falsifier: >-
+  This HOLD falls if, before 2026-08-05T16:25:00Z, a directly invokable Codex, Claude, enabled S07, or target-host
+  executor surface is exposed to S06 and can accept this exact claim digest, target base, path ceiling, commands,
+  acceptance tests, rollback, 6300-second return budget, verifier, consumer, and expiry without Slack or Git acting
+  as a surrogate executor. No such surface was exposed at observation.
+
+honest_flaw: >-
+  GitHub branch and search probes, provider task readback, and tool discovery are nontransactional snapshots and may
+  lag a concurrent external executor or producer return. This packet did not inspect connector credentials, run code,
+  create a target branch, execute tests, establish public-distribution chain of title, obtain independent runtime
+  verification, or observe ConsumerAck. The route window can close after this packet is committed.
