@@ -1,0 +1,72 @@
+schema: hfo.gen133.operator_relief_receipt.v0_1
+receipt_id: S05_CROGL_APPLICATION_INTAKE_AND_SUPPLEMENTAL_OUTREACH_RECONCILED_20260805T211412Z
+task_id: 6a55c182078c8191b89f2dd15f5f640c
+seat: S05
+callsign: Var
+wip_limit: 1
+valid_time_utc: 2026-08-05T21:14:12Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+result: STATUS_RECONCILED
+active_item:
+  id: CAREER_CROGL_AI_ENGINEER_APPLICATION
+  prior_state: APPLICATION_AND_OUTREACH_EVIDENCE_UNREDUCED
+  next_state: ATS_SUBMISSION_CONFIRMED_SUPPLEMENTAL_OUTREACH_SENT_PROVIDER_REVIEW_PENDING
+bounded_transition:
+  type: reconcile_important_status
+  summary: >-
+    Reconciled one provider-side ATS acknowledgment with two source-mailbox Sent
+    records for supplemental outreach. The application intake route is closed;
+    no duplicate application or resend is indicated.
+source_evidence:
+  gmail:
+    - pointer: gmail_message:19fd3780522f0d92
+      class: PROVIDER_ATS_ACKNOWLEDGMENT
+      observed_at: 2026-08-05T19:48:02Z
+      sanitized_fact: Crogl acknowledged receipt of the AI Engineer application and stated review is pending.
+    - pointer: gmail_message:19fd3964269cdc29
+      class: SOURCE_MAILBOX_SENT
+      observed_at: 2026-08-05T20:21:06Z
+      sanitized_fact: Supplemental hiring-team outreach is present in Sent.
+    - pointer: gmail_message:19fd3a5244e1b821
+      class: SOURCE_MAILBOX_SENT
+      observed_at: 2026-08-05T20:37:22Z
+      sanitized_fact: A separate proof-artifact note is present in Sent.
+    - pointer: gmail_search:newer_than_2h_nonspam_nontrash_nonpromotions@2026-08-05T21:14:12Z
+      class: BOUNDED_NEGATIVE_SEARCH
+      sanitized_fact: No delivery-failure notice or provider reply was observed in the bounded search window.
+      excluded_claim: This does not prove inbox delivery, human review, interview selection, or acceptance.
+  calendar:
+    pointer: google_calendar_primary:2026-08-05T21:00:00Z/2026-08-05T23:00:00Z
+    sanitized_fact: Current capacity is family/phone-only time; no new calendar binding is needed for a provider-review waiting state.
+  contacts:
+    pointer: google_contacts_search:Lipyeow_Crogl@2026-08-05T21:14:12Z
+    sanitized_fact: No matching saved contact was returned; no identity or relationship claim is made.
+  github:
+    pointer: commit:577f3b490f2248d9fd3e4f3804787fb595ee1d11
+    sanitized_fact: Prior S05 receipt kept the PFA signed-document scope conflict as the controlling P0.
+  slack:
+    pointer: channel:C0BGNGPJFHU:after_1785961260
+    sanitized_fact: No newer S05 receipt pointer was present in the bounded channel read, preventing duplicate fan-in.
+operator_control:
+  p0:
+    id: PFA_SIGNED_DOCUMENT_SCOPE_CONFLICT
+    next_action: Review and send or edit the existing no-send provider clarification before further document processing.
+  p1:
+    - id: TECTANGLE_PAYMENT_METHOD_WAITING
+      next_action: Await the accountant's written payment-method response; do not initiate payment without explicit review.
+    - id: REED_AC_PAYMENT_STATUS_UNCONFIRMED
+      next_action: Reconcile the elapsed call/payment calendar block from authoritative vendor or payment evidence before any duplicate action.
+operator_minutes_removed: 6
+next_consumer: Var career/outreach reconciliation
+privacy_ceiling: SANITIZED_FACTS_AND_SOURCE_POINTERS_ONLY
+world_effects:
+  email_sent_by_cell: false
+  application_submitted_by_cell: false
+  payment_or_spend: false
+  calendar_mutated: false
+  task_mutated: false
+  deployment_merge_publication: false
+honest_flaw: >-
+  The bounded Gmail search can miss delayed bounces or replies outside its window;
+  source-mailbox Sent proves submission from the account, not recipient delivery.
