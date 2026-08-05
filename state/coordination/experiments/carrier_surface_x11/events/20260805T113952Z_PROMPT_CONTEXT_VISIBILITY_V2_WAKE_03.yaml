@@ -1,0 +1,83 @@
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+event_id: X11_PROMPT_CONTEXT_VISIBILITY_V2_WAKE_03_20260805T113952Z
+experiment_id: X11_PROMPT_CONTEXT_VISIBILITY_V2
+campaign_version: 3
+task_id_expected: 6a55089a9adc8191bda54541f7f9effa
+task_id_observed: 6a55089a9adc8191bda54541f7f9effa
+task_id_match: true
+carrier: HFO_GEN133_X11
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+prior_current_version: 110
+next_current_version: 111
+campaign_wake: 3
+campaign_target_wakes: 4
+accepted: true
+campaign_status: ACTIVE
+campaign_disposition: null
+baseline:
+  mode: prior_accepted_sanitized_provider_prompt_visibility_probe
+  accepted_wakes: 2
+  prior_permission_class: AUTHENTICATED_NATIVE_TASKS_EXPECTED_PROMPT_READ_AVAILABLE
+  prior_error_class: NONE
+  prior_prompt_character_count: 1396
+  prior_prompt_line_count: 7
+  prior_prompt_sha256: 85890093b342fb5773c4505cbface9a16d5377cca4bd6f1bf817b127f15a11a6
+hypothesis: the_provider_exposed_expected_X11_prompt_will_remain_present_with_stable_sanitized_size_digest_and_fixed_start_middle_end_marker_visibility_across_four_identical_read_only_inventory_probes
+controlled_factor: prompt_context_size
+exact_probe:
+  action: automations.list
+  mode: sanitized_provider_prompt_visibility_read_only
+  expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+  calculation: locate_only_the_expected_X11_task_then_compute_prompt_character_count_line_count_sha256_and_fixed_start_middle_end_marker_presence_without_persisting_prompt_text
+  persist_only:
+    - provider_call_success
+    - expected_task_visible
+    - prompt_present
+    - prompt_character_count
+    - prompt_line_count
+    - prompt_sha256
+    - fixed_start_marker_present
+    - fixed_middle_marker_present
+    - fixed_end_marker_present
+    - permission_class
+    - error_class
+    - latency_when_exposed
+    - operator_relay_minutes
+  privacy_gate: do_not_persist_raw_task_prompt_unrelated_task_metadata_schedules_timezones_or_run_timestamps
+measured_result:
+  provider_call_success: true
+  expected_task_visible: true
+  prompt_present: true
+  prompt_character_count: 1396
+  prompt_line_count: 7
+  prompt_sha256: 85890093b342fb5773c4505cbface9a16d5377cca4bd6f1bf817b127f15a11a6
+  fixed_start_marker_present: true
+  fixed_middle_marker_present: true
+  fixed_end_marker_present: true
+  latency_ms: NOT_EXPOSED
+  operator_relay_minutes: 0
+  changed_capability: false
+  campaign_decision: false
+  andon: false
+permission_error:
+  permission_class: AUTHENTICATED_NATIVE_TASKS_EXPECTED_PROMPT_READ_AVAILABLE
+  error_class: NONE
+  latency_when_exposed: NOT_EXPOSED
+supported_claim: provider_inventory_repeatably_exposes_the_expected_X11_task_prompt_with_stable_sanitized_shape_digest_and_fixed_marker_visibility_for_three_identical_probes
+claim_ceiling: provider_inventory_prompt_visibility_and_sanitized_shape_digest_only_not_runtime_context_injection_model_attention_instruction_adherence_truncation_inside_execution_or_independent_verification
+strongest_falsifier: the_expected_task_or_prompt_is_absent_sanitized_size_or_digest_changes_without_authorized_task_mutation_any_fixed_marker_is_missing_or_execution_evidence_shows_runtime_context_differs_from_inventory_prompt
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer: [Reginleif, Ratatoskr]
+same_provider_independence_claim: false
+honest_flaw: provider_inventory_prompt_readback_is_same_provider_configuration_telemetry_and_does_not_prove_the_complete_prompt_reached_or_influenced_the_runtime_model_context
+next_probe:
+  campaign_wake: 4
+  mode: sanitized_provider_prompt_visibility_read_only
+  exact_action: repeat_the_identical_expected_task_prompt_shape_digest_and_fixed_marker_probe_then_write_campaign_decision
+  expected_current_version: 111
+slack_action: NO_POST_UNCHANGED
+sensitive_readback_externalized: false
+valid_time_utc: 2026-08-05T11:39:52Z
+sealed: true
