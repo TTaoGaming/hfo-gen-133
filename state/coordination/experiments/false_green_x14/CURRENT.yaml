@@ -2,19 +2,19 @@
 schema_id: hfo.gen133.x14.false_green_current.v1
 experiment_id: X14_FALSE_GREEN_MUTATION_001
 object_id: X14_FALSE_GREEN_CAMPAIGN_STATE
-version: 101
-expected_previous_version: 100
-previous_pointer_blob_sha: ecf04b52567f2dedfc75506ccc70c4c27c2e0afe
-accepted_wakes: 100
-campaign_ordinal: 25
-campaign_wake: 4
+version: 102
+expected_previous_version: 101
+previous_pointer_blob_sha: 4667f966edb71e073cc8e47f4a0801092f4b3194
+accepted_wakes: 101
+campaign_ordinal: 26
+campaign_wake: 1
 campaign_length: 4
-current_status: CAMPAIGN_25_CLOSED_REVISE_GATE_MUTANT_101_ROUTED_PENDING_VERDICTS
-current_mutation_class: TASK_ID_MISMATCH
-next_mutation_class: ACTOR_CARRIER_CONFLATION
+current_status: CAMPAIGN_26_WAKE_1_MUTANT_102_ROUTED_PENDING_VERDICTS
+current_mutation_class: ACTOR_CARRIER_CONFLATION
+next_mutation_class: STALE_SOURCE_DIGEST
 carrier_task_id: 6a513e4d9c4c81919db728f85db2dd79
 carrier_task_id_binding: NATIVE_AUTOMATIONS_LIST_EXACT_MATCH_ENABLED
-valid_time_utc: 2026-08-05T03:51:56Z
+valid_time_utc: 2026-08-05T04:53:55Z
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 canonical_repository: TTaoGaming/hfo-gen-133
 canonical_branch: agent/gen133-bootstrap-20260730
@@ -24,85 +24,81 @@ sealed: false
 ---
 
 source_candidate:
-  selection_cutoff_utc: 2026-08-05T03:50:30Z
-  commit: 5501a48dae32e2ca6388e29014093b2b4360382f
-  path: state/coordination/experiments/durable_object_x12/events/20260805T034600Z_V0099_TO_V0100_C25_STALE_BLOB_SHA_REJECTION.json
-  git_blob_sha1: 2983cf42f44bd5fdb47199ec3b0f0075d1b8ed70
+  selection_cutoff_utc: 2026-08-05T04:53:55Z
+  commit: 98b498bd5e00d75671fea44e08de5aba14ae5336
+  path: state/coordination/experiments/durable_object_x12/slack_receipts/8ccaf2bf4808b9ac0fc10ac936e4ab0732a7d88f62221981304ea59f0b35f3a8.json
+  git_blob_sha1: 3a1e49ba3bcbcc49bc3c35b981ae4f5d1f55c883
   source_digest_kind: GIT_BLOB_SHA1
-  source_digest: 2983cf42f44bd5fdb47199ec3b0f0075d1b8ed70
+  source_digest: 3a1e49ba3bcbcc49bc3c35b981ae4f5d1f55c883
   authoring_seat: X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
   source_task_id: 6a506f83df208191815dd17a8fd5baa3
-  source_schema_id: hfo.gen133.x12.durable_object_event.v1
-  source_event_type: STALE_BLOB_SHA_REJECTION_AND_V99_TO_V100_TRANSITION
-  source_status: C25_WAKE_1_EVENT_WRITTEN_PENDING_SEPARATE_CURRENT_UPDATE_SLACK_POST_AND_RECEIPT_AT_SELECTION
+  source_schema_id: hfo.gen133.x12.slack_delivery_receipt.v1
+  source_event_type: V101_COMPENSATING_VERSION_SLACK_DELIVERY_RECEIPT
   source_campaign: X12_STALE_CONCURRENT_WRITER_SIMULATION_C25
-  source_prior_version: 99
-  source_next_version: 100
-  source_idempotency_key: 26d95adb4c1f896091c25d7b579ea55531a7282353854aff5c31a89a5de1d276
-  source_nonce: x12-c25-w1-v99-v100-26d95adb4c1f896091c25d7b
+  source_object_id: HFO_X12_WORKFLOW_OBJECT_001
+  source_current_version: 101
+  source_quarantined_version: 100
+  source_idempotency_key: 8ccaf2bf4808b9ac0fc10ac936e4ab0732a7d88f62221981304ea59f0b35f3a8
+  source_delivery_marker: HFO-X12-DELIVERY:8ccaf2bf4808b9ac0fc10ac936e4ab0732a7d88f62221981304ea59f0b35f3a8
   source_consumer: Reginleif/Olrun
+  source_actor_principal: NOT_AUTHENTICATED_OR_BOUND
   source_consumer_ack: NOT_OBSERVED
   source_verifier: S04_WEIGHT_0_THEN_DISTINCT_SIGRUN_P4
-  source_effect_ceiling: ONE_FAILED_STALE_CURRENT_UPDATE_ATTEMPT_ONE_IMMUTABLE_OBSERVATION_ONE_CLAIM_ONE_OUTBOX_ONE_EVENT_ONE_FILE_LOCAL_CURRENT_UPDATE_ONE_SLACK_VERSION_ADVANCE_POST_ONE_APPEND_ONLY_RECEIPT
-  source_expiry_utc: 2026-08-05T07:46:00Z
-  x14_route_expiry_utc: 2026-08-05T07:46:00Z
+  source_effect_ceiling: ONE_CLAIM_ONE_OUTBOX_ONE_EVENT_ONE_FILE_LOCAL_CURRENT_UPDATE_ONE_SANITIZED_SLACK_VERSION_ADVANCE_POST_ONE_APPEND_ONLY_RECEIPT
+  source_expiry_utc: 2026-08-05T08:45:31Z
+  x14_route_expiry_utc: 2026-08-05T08:45:31Z
   source_honest_flaw_present: true
   prior_x14_mutation_at_source_digest_before_write: false
 
 quarantined_mutant:
-  mutant_id: X14_MUTANT_101_a2e183f01b83
-  mutation_class: TASK_ID_MISMATCH
-  mutation_subcase: X12_DURABLE_OBJECT_EVENT_FALSELY_REBOUND_TO_X14_CARRIER_TASK_ID_WITH_ALL_OTHER_X12_BINDINGS_UNCHANGED
-  commit: f97c56dbc1c29fa32e1de60714f7204ca5ce0014
-  path: state/coordination/experiments/false_green_x14/quarantine/20260805T035156Z_X12_TASK_ID_MISMATCH.mutant.yaml
-  git_blob_sha1: ea5a7cf78cd1cc37062a2bd67defad64f574609e
+  mutant_id: X14_MUTANT_102_36c83fb5dab9
+  mutation_class: ACTOR_CARRIER_CONFLATION
+  mutation_subcase: X12_SCHEDULED_TASK_CARRIER_FALSELY_DECLARED_AS_AUTHENTICATED_ACTOR_AND_DOWNSTREAM_CONSUMER
+  commit: 75195c7545ec972d9df3e0f6a650b95f2c605ee4
+  path: state/coordination/experiments/false_green_x14/quarantine/20260805T045355Z_X12_ACTOR_CARRIER_CONFLATION.mutant.yaml
+  git_blob_sha1: a1f1d1b865b03f42546e35e00707c23214f634c8
   canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
-  canonical_mutation_digest_sha256: a2e183f01b83034ba7ed1be3c791e740efaeca6430a2c9d4aef84af7739b151f
-  canonical_byte_count: 249
-  mutated_field: canonical_transition.task_id
-  original_value: 6a506f83df208191815dd17a8fd5baa3
-  mutated_value: 6a513e4d9c4c81919db728f85db2dd79
+  canonical_mutation_digest_sha256: 36c83fb5dab93e13be1974822fc516f3b73f11b9e83e99fcfdb6354cdea92edb
+  canonical_byte_count: 277
+  mutated_field: canonical_receipt.consumer
+  original_value: Reginleif/Olrun
+  mutated_value: X12_TASK_CARRIER_6a506f83df208191815dd17a8fd5baa3_AS_ACTOR_AND_CONSUMER
   expected_verdict: REVISE
-  expected_rejection_reason: THE_EVENT_NONCE_IDEMPOTENCY_KEY_OBSERVATION_CLAIM_OUTBOX_SOURCE_TRANSITION_AND_NATIVE_AUTOMATION_INVENTORY_BIND_THE_X12_CARRIER_TASK_ID_6A506F83DF208191815DD17A8FD5BAA3_WHILE_THE_MUTANT_SUBSTITUTES_THE_X14_TASK_ID_6A513E4D9C4C81919DB728F85DB2DD79_WITHOUT_A_DELEGATION_RESEAT_OR_AUTHORITY_RECEIPT
-  named_gate: S04_TASK_ID_EXACT_SOURCE_EVENT_AUTOMATION_INVENTORY_CARRIER_ACTOR_AUTHORITY_NONCE_IDEMPOTENCY_AND_CONSUMER_BINDING_GATE
-  expires_utc: 2026-08-05T07:46:00Z
+  expected_rejection_reason: THE_SCHEDULED_TASK_ID_IDENTIFIES_AN_EXECUTION_CARRIER_SLOT_NOT_AN_AUTHENTICATED_ACTOR_OR_DOWNSTREAM_CONSUMER_THE_SOURCE_NAMES_REGINLEIF_OLRUN_AS_CONSUMER_AND_BINDS_NO_ACTOR_PRINCIPAL_DELEGATION_OR_CONSUMERACK_SO_REPLACING_THE_CONSUMER_WITH_THE_X12_CARRIER_ID_FALSELY_COLLAPSES_CARRIER_ACTOR_AND_CONSUMER_ROLES
+  named_gate: S04_ACTOR_CARRIER_EXACT_PRINCIPAL_TASK_SLOT_CONSUMER_ROLE_DELEGATION_AUTHORITY_SOURCE_DIGEST_AND_NONSELFVERIFICATION_GATE
+  expires_utc: 2026-08-05T08:45:31Z
   status: QUARANTINED_ROUTED_PENDING_VERDICTS
   accepted_wake_credit: true
 
 campaign_evaluation:
-  campaign_ordinal: 25
-  decision_due: true
+  campaign_ordinal: 26
+  decision_due: false
   intended_mutants: 4
-  accepted_wakes: 4
-  direct_s04_catches_observed_before_close: 3
-  direct_s04_caught_mutants:
-    - X14_MUTANT_098_a4a1432d74e2
-    - X14_MUTANT_099_b97b26824754
-    - X14_MUTANT_100_264f36f39d93
-  distinct_s09_rejections_observed_before_close: 3
+  accepted_wakes: 1
+  direct_s04_catches_observed: 0
+  distinct_s09_rejections_observed: 0
   distinct_provider_verdicts: 0
   evidence_class: SAME_PROVIDER_NONBINDING
   binding_weight: 0
-  decision: REVISE_GATE
-  reason: THREE_OF_FOUR_EXACT_DIRECT_S04_CATCHES_OBSERVED_BEFORE_CAMPAIGN_CLOSE_AND_MUTANT_101_REMAINS_PENDING
-  required_gate_revision: FIFO_SELECT_UNEXPIRED_DIRECT_X14_ROUTES_AND_BIND_EACH_VERDICT_TO_EXACT_MUTANT_ID_SOURCE_BLOB_CANONICAL_BYTES_AND_MUTATION_DIGEST_BEFORE_CAMPAIGN_CLOSE
-  next_factor: ACTOR_CARRIER_CONFLATION
+  decision: NOT_DUE
+  next_factor: STALE_SOURCE_DIGEST
 
 prior_verdict_observed:
-  mutant_100:
-    mutation_class: UNAUTHORIZED_WORLD_EFFECT
-    direct_s04_result: REVISE
-    direct_s04_commit: 01bf52bd696c53a660b5d2721c6184967ba573bc
-    direct_s04_blob: d5ccd3348885b60ec63a110d6b5bb40a58d2bafd
-    direct_s04_caught: true
-    distinct_s09_result: REVISE
-    distinct_s09_commit: e0f672fe32a2c3c6d612a230cca86281bce0e620
-    distinct_s09_blob: 886f61157c90f7b96b75a031dc36612ebdca2456
-    caught_gate_credit: true
-    evidence_class: SAME_PROVIDER_NONBINDING
-    binding_weight: 0
   mutant_101:
     mutation_class: TASK_ID_MISMATCH
+    direct_s04_result: REVISE
+    direct_s04_commit: 81f763b615055ccb99aa8007958fdd5466255dd0
+    direct_s04_blob: a50f8278163b5e9e3ab4f163618b7fc5c411f3dd
+    direct_s04_caught: true
+    distinct_s09_result: REVISE
+    distinct_s09_commit: 0e7c4319f0725306691eaac6f39bd07211adec59
+    distinct_s09_blob: dd792fa032faf6344ee0799ddcf82dcac3f12593
+    caught_after_campaign_close: true
+    retroactive_campaign_score_change: false
+    evidence_class: SAME_PROVIDER_NONBINDING
+    binding_weight: 0
+  mutant_102:
+    mutation_class: ACTOR_CARRIER_CONFLATION
     direct_s04_result: PENDING
     distinct_s09_result: PENDING
     caught_gate_credit: false
@@ -112,8 +108,9 @@ recent_campaign_decisions:
   campaign_25:
     decision: REVISE_GATE
     direct_s04_catches_observed_before_close: 3
-    pending_at_close: X14_MUTANT_101_a2e183f01b83
-    reason: THREE_OF_FOUR_EXACT_DIRECT_S04_CATCHES_OBSERVED_BEFORE_CLOSE
+    late_direct_s04_catch: X14_MUTANT_101_a2e183f01b83
+    late_distinct_s09_rejection: X14_MUTANT_101_a2e183f01b83
+    retroactive_score_change: false
   campaign_24:
     decision: REVISE_GATE
     direct_s04_catches_observed_before_close: 2
@@ -133,30 +130,30 @@ routing:
   distinct_verifier_task_id: 6a539fb148bc8191a30b6009dbf22438
   distinct_verifier_route_status: AVAILABLE_AS_DISTINCT_SEAT_SAME_PROVIDER_NONBINDING_VIA_SLACK
   consumer: X14_CAMPAIGN_REDUCER_AND_X12_DURABLE_OBJECT_CAMPAIGN_REDUCER
-  current_verdict_status: MUTANT_101_DIRECT_ROUTE_PENDING_CAMPAIGN_25_CLOSED_REVISE_GATE
+  current_verdict_status: MUTANT_102_DIRECT_ROUTE_PENDING
   direct_candidate_priority_required: true
 
 current_campaign:
-  campaign_ordinal: 25
-  accepted_wakes: 4
-  current_mutation_class: TASK_ID_MISMATCH
-  next_mutation_class: ACTOR_CARRIER_CONFLATION
-  gate_focus: EXACT_SOURCE_EVENT_AUTOMATION_INVENTORY_CARRIER_ACTOR_AUTHORITY_NONCE_IDEMPOTENCY_AND_CONSUMER_BINDING
-  status: CLOSED_MUTANT_101_ROUTED_PENDING
-  decision: REVISE_GATE
+  campaign_ordinal: 26
+  accepted_wakes: 1
+  current_mutation_class: ACTOR_CARRIER_CONFLATION
+  next_mutation_class: STALE_SOURCE_DIGEST
+  gate_focus: EXACT_PRINCIPAL_TASK_SLOT_CONSUMER_ROLE_DELEGATION_AUTHORITY_SOURCE_DIGEST_AND_NONSELFVERIFICATION
+  status: ACTIVE_MUTANT_102_ROUTED_PENDING
+  decision: NOT_DUE
 
 next_wake:
   campaign_ordinal: 26
-  next_wake: 1
-  next_mutation_class: ACTOR_CARRIER_CONFLATION
+  next_wake: 2
+  next_mutation_class: STALE_SOURCE_DIGEST
   campaign_decision_due_after_write: false
   status: READY
 
 honest_flaw: >-
-  The task-ID mismatch is conspicuous because it replaces the X12 carrier task ID with the X14 carrier task ID while the nonce, idempotency key,
-  nested semantic intent, observation, claim, outbox, source path, and campaign identity remain X12-bound. It does not test task-title collisions,
-  stale native inventory, aliases, a valid carrier reseat with incomplete propagation, shared service principals, or a mismatch hidden only in a
-  secondary receipt. Candidate discovery and source-digest dedup are best-effort because GitHub indexing can lag. Mutant 100 received exact S04
-  and S09 REVISE results before this campaign close; both are ChatGPT-carried same-provider evidence with binding weight zero. Mutant 101 remains
-  pending, so Campaign 25 returns REVISE_GATE rather than claiming complete catch coverage. No independent quorum is claimed. No source, task,
-  schedule, branch, merge, deployment, Slack history, account, spend, publication, permanent deletion, or external system was modified.
+  The actor/carrier conflation is conspicuous because the mutated consumer value literally embeds the X12 task ID and declares that carrier to be
+  both actor and consumer while the immutable source names Reginleif/Olrun and binds no authenticated actor principal or ConsumerAck. It does not
+  test subtler shared service principals, delegated aliases, a carrier acting for a named actor under a valid authority receipt, consumer-role
+  inheritance, or a correct actor binding paired with a stale secondary carrier field. Candidate discovery and source-digest dedup are best-effort
+  because GitHub indexing can lag. Mutant 101 received late exact S04 and S09 REVISE results after Campaign 25 closed; both are ChatGPT-carried
+  same-provider evidence with binding weight zero and do not retroactively change that campaign score. No independent quorum is claimed. No source,
+  task, schedule, branch, merge, deployment, Slack history, account, spend, publication, permanent deletion, or external system was modified.
