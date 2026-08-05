@@ -1,88 +1,79 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
-experiment_id: X11_PROMPT_CONTEXT_VISIBILITY_V2
-current_version: 111
-accepted_wakes: 3
+experiment_id: X11_PROJECT_CONTEXT_VISIBILITY_V1
+current_version: 112
+accepted_wakes: 0
 target_wakes_before_decision: 4
-controlled_factor: prompt_context_size
+controlled_factor: project_vs_nonproject_context
 campaign_status: ACTIVE
 current_disposition: null
 prior_campaign:
-  experiment_id: X11_PROVIDER_LAST_RUN_OFFSET_V2
-  final_version: 108
+  experiment_id: X11_PROMPT_CONTEXT_VISIBILITY_V2
+  final_version: 112
   disposition: KEEP
   accepted_wakes: 4
   decision_event:
-    commit: 90b63e4fff12ae8db4d65cf889ca9cc076c9a99d
-    path: state/coordination/experiments/carrier_surface_x11/events/20260805T083922Z_PROVIDER_LAST_RUN_OFFSET_V2_WAKE_04_DECISION_KEEP.yaml
-    blob: 634ab5cdf84b430ec3f4b6e6312af8a38e2eb66f
+    commit: 534d4552b5cd1ea029bf8ef1b9d89168b127f2eb
+    path: state/coordination/experiments/carrier_surface_x11/events/20260805T124151Z_PROMPT_CONTEXT_VISIBILITY_V2_WAKE_04_DECISION_KEEP.yaml
+    blob: 0b4b9c09a2b8fdfe0499f897c046a502ac14a3e8
 baseline_result:
-  mode: first_accepted_sanitized_provider_prompt_visibility_probe
+  mode: campaign_initialized_no_project_context_probe_yet
   expected_task_id: 6a55089a9adc8191bda54541f7f9effa
-  permission_class: AUTHENTICATED_NATIVE_TASKS_EXPECTED_PROMPT_READ_AVAILABLE
+  permission_class: NOT_YET_MEASURED
   error_class: NONE
-hypothesis: the_provider_exposed_expected_X11_prompt_will_remain_present_with_stable_sanitized_size_digest_and_fixed_start_middle_end_marker_visibility_across_four_identical_read_only_inventory_probes
+hypothesis: the_provider_expected_task_inventory_record_will_either_explicitly_expose_project_or_container_context_metadata_or_repeatably_expose_no_such_field_across_four_identical_read_only_probes
 measured_result:
-  provider_call_success: [true, true, true]
-  expected_task_visible: [true, true, true]
-  prompt_present: [true, true, true]
-  prompt_character_count: [1396, 1396, 1396]
-  prompt_line_count: [7, 7, 7]
-  prompt_sha256: [85890093b342fb5773c4505cbface9a16d5377cca4bd6f1bf817b127f15a11a6, 85890093b342fb5773c4505cbface9a16d5377cca4bd6f1bf817b127f15a11a6, 85890093b342fb5773c4505cbface9a16d5377cca4bd6f1bf817b127f15a11a6]
-  fixed_start_marker_present: [true, true, true]
-  fixed_middle_marker_present: [true, true, true]
-  fixed_end_marker_present: [true, true, true]
-  latencies_ms: [NOT_EXPOSED, NOT_EXPOSED, NOT_EXPOSED]
-  permission_class: AUTHENTICATED_NATIVE_TASKS_EXPECTED_PROMPT_READ_AVAILABLE
+  provider_call_success: []
+  expected_task_visible: []
+  project_context_field_exposed: []
+  project_context_classification: []
+  latencies_ms: []
+  permission_class: NOT_YET_MEASURED
   error_class: NONE
   operator_relay_minutes: 0
   changed_capability: false
   campaign_decision: false
   andon: false
-supported_claim: provider_inventory_repeatably_exposes_the_expected_X11_task_prompt_with_stable_sanitized_shape_digest_and_fixed_marker_visibility_for_three_identical_probes
-claim_ceiling: provider_inventory_prompt_visibility_and_sanitized_shape_digest_only_not_runtime_context_injection_model_attention_instruction_adherence_truncation_inside_execution_or_independent_verification
-strongest_falsifier: the_expected_task_or_prompt_is_absent_sanitized_size_or_digest_changes_without_authorized_task_mutation_any_fixed_marker_is_missing_or_execution_evidence_shows_runtime_context_differs_from_inventory_prompt
+supported_claim: project_context_visibility_campaign_initialized_only_no_probe_result_yet
+claim_ceiling: no_claim_about_project_membership_nonproject_membership_runtime_context_inheritance_or_container_isolation_until_the_bounded_probe_runs
+strongest_falsifier: the_expected_task_inventory_record_changes_shape_between_identical_probes_or_a_direct_provider_surface_exposes_project_context_that_this_probe_fails_to_detect
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 consumer: [Reginleif, Ratatoskr]
-honest_flaw: provider_inventory_prompt_readback_is_same_provider_configuration_telemetry_and_does_not_prove_the_complete_prompt_reached_or_influenced_the_runtime_model_context
+honest_flaw: inventory_field_absence_cannot_prove_nonproject_execution_or_absence_of_hidden_project_context
 last_event:
-  commit: c22dffb6f9166b7d5f285e05ed6a7e2b69f30f1d
-  path: state/coordination/experiments/carrier_surface_x11/events/20260805T113952Z_PROMPT_CONTEXT_VISIBILITY_V2_WAKE_03.yaml
-  blob: fc98254f4948c9b8d15a4e1c0173c2440f96dea7
-next_factor: prompt_context_size
+  commit: 534d4552b5cd1ea029bf8ef1b9d89168b127f2eb
+  path: state/coordination/experiments/carrier_surface_x11/events/20260805T124151Z_PROMPT_CONTEXT_VISIBILITY_V2_WAKE_04_DECISION_KEEP.yaml
+  blob: 0b4b9c09a2b8fdfe0499f897c046a502ac14a3e8
+next_factor: project_vs_nonproject_context
 next_probe:
-  experiment_id: X11_PROMPT_CONTEXT_VISIBILITY_V2
-  campaign_wake: 4
-  mode: sanitized_provider_prompt_visibility_read_only
-  exact_action: repeat_the_identical_expected_task_prompt_shape_digest_and_fixed_marker_probe_then_write_campaign_decision
-  expected_current_version: 111
+  experiment_id: X11_PROJECT_CONTEXT_VISIBILITY_V1
+  campaign_wake: 1
+  mode: sanitized_expected_task_project_context_metadata_read_only
+  exact_action: inspect_only_the_expected_task_inventory_record_for_explicit_project_or_container_context_metadata_and_persist_presence_classification_only
+  expected_current_version: 112
   persist_only:
     - provider_call_success
     - expected_task_visible
-    - prompt_present
-    - prompt_character_count
-    - prompt_line_count
-    - prompt_sha256
-    - fixed_start_marker_present
-    - fixed_middle_marker_present
-    - fixed_end_marker_present
+    - project_context_field_exposed
+    - project_context_classification
     - permission_class
     - error_class
     - latency_when_exposed
     - operator_relay_minutes
-  privacy_gate: do_not_persist_raw_task_prompt_unrelated_task_metadata_schedules_timezones_or_run_timestamps
+  privacy_gate: do_not_persist_raw_prompt_project_names_container_identifiers_unrelated_task_metadata_schedules_timezones_or_run_timestamps
   task_mutation_allowed: false
   slack_write_each_probe_allowed: false
   post_only_changed_capability_campaign_decision_or_andon: true
   sensitive_readback_externalization_allowed: false
   same_provider_independence_claim_allowed: false
-slack_action: NO_POST_UNCHANGED
-updated_valid_time_utc: 2026-08-05T11:39:52Z
+slack_action: POST_CAMPAIGN_DECISION
+updated_valid_time_utc: 2026-08-05T12:41:51Z
 sealed: false
 ---
 
-Prompt-context visibility V2 accepted wake 3 of 4. The identical native Tasks inventory
-probe returned the same sanitized prompt size, digest, and fixed-marker booleans. This is
-unchanged same-provider configuration readback, not evidence of runtime prompt injection,
-model attention, instruction adherence, or independent verification. Wake 4 repeats the
-identical read-only probe and writes the campaign decision.
+Prompt-context visibility V2 completed at four accepted wakes with KEEP. The provider
+inventory exposed the expected X11 prompt with the same sanitized character count, line
+count, digest, and fixed-marker booleans on all four probes. This remains same-provider
+configuration readback and does not prove runtime prompt injection, attention, adherence,
+or truncation behavior. Project-context visibility V1 is initialized at zero of four; no
+project-context probe ran during this decision wake.
