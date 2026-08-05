@@ -1,0 +1,164 @@
+schema_id: hfo.gen133.s03.verification_route.v1
+seat: S03
+carrier_role: REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+carrier_task_id_expected: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_observed: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+result: REVISE
+terminal: false
+valid_time_utc: 2026-08-05T11:10:00Z
+recorded_time_utc: 2026-08-05T11:10:00Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+correlation_id: X13_GITHUB_FETCH_FILE_READONLY_003_PHASE2_IMMUTABLE_REF_20260805T104646Z
+source_event_id: X13_GITHUB_FETCH_FILE_PHASE2_20260805T104646Z
+
+self_probe:
+  native_task_inventory_read: true
+  observed_task_title: HFO S03 Ratatoskr Pacemaker
+  github_compare_and_exact_file_read: true
+  github_create_and_readback_available: true
+  slack_public_search_and_pointer_available: true
+  raw_github_contents_api_witness_available: false
+  distinct_provider_consumption_confirmed: false
+  task_mutation_performed: false
+  producer_impersonation_performed: false
+  self_verification_performed: false
+
+selection:
+  changed_input_class: CATALOG_CONNECTOR_OBSERVATION
+  experiment_id: X13_GITHUB_FETCH_FILE_READONLY_003
+  source_commit: 135a5e6f08f7d6c4c14e5426d6c606d78016bf37
+  source_path: state/coordination/experiments/cots_connector_x13/20260805T104646Z_GITHUB_FETCH_FILE_PHASE2_ACCEPTED_WITH_GATES.md
+  source_git_blob_sha1: f920d1d8f28fea1895096aac1cdf9099cccc2a9b
+  source_status: PHASE2_ACCEPTED_WITH_GATES
+  source_review_expiry_utc: ABSENT
+  work_item_id: ABSENT_X13_CATALOG_EVENT_NOT_WORKITEM
+  operational_consumer: NOT_ASSIGNED
+  consumer_ack: NOT_OBSERVED
+
+observed_claim:
+  repository: TTaoGaming/hfo-gen-133
+  path: README.md
+  immutable_ref: 940c3782b71f63e8bb7267241c3d84fd42360522
+  encoding: utf-8
+  requested_lines: 1_to_20
+  returned_lines: 20
+  returned_blob_sha: a77cfc55c6bf9b72b272d373092e4c0be92cb5a9
+  prior_phase_blob_sha: a77cfc55c6bf9b72b272d373092e4c0be92cb5a9
+  self_consistency_result: MATCHED_BLOB_SHA_AND_LINE_COUNT
+  exact_returned_bytes_persisted: false
+  raw_provider_request_response_bound: false
+
+reduction:
+  claim_bound_to_work_item: false
+  claim_acceptance_digest: ABSENT
+  producer_return_observed: false
+  producer_return_digest: ABSENT
+  exact_bytes_or_authorized_source_system_readback: ABSENT
+  commands_and_exit_codes: NOT_APPLICABLE_TO_CONNECTOR_CALL_BUT_SOURCE_SYSTEM_READBACK_REQUIRED
+  authenticated_principal_permission_scope_and_call_count: ABSENT
+  rollback_bound_to_work_item: ABSENT
+  effect_ceiling_bound_to_work_item: ABSENT
+  producer_return_expiry_bound_to_work_item: ABSENT
+  honest_flaw_present_in_catalog_event: true
+  honest_flaw_bound_to_producer_digest: false
+  digest_bound_stood_or_fell: ABSENT
+  explicit_named_consumer_ack: ABSENT
+  prior_same_provider_preflight:
+    commit: b1916598e41bf58b749da65c3721784ac42c5fc5
+    path: state/coordination/receipts/chatgpt_runtime/seat-04/20260805T101521Z_X13_GITHUB_FETCH_FILE_PHASE1_STRUCTURAL_REVISE.yaml
+    result: REVISE
+    same_provider_status: SAME_PROVIDER_NONBINDING
+    binding_weight: 0
+  conclusion: >-
+    Pinning the read to an immutable commit and matching the returned blob SHA improves catalog reproducibility, but this
+    remains a connector observation rather than a WorkItem-bound producer return. The exact returned slice bytes were not
+    persisted, effective identity and scope are unknown, and no producer digest, distinct STOOD or FELL verdict, named
+    operational consumer, or ConsumerAck exists. The observation cannot be terminally consumed.
+
+missing_bindings:
+  - WORKITEM_ID_AND_IMMUTABLE_CLAIM_DIGEST
+  - CLAIM_ACCEPTANCE_DIGEST
+  - CANONICAL_PRODUCER_RETURN_DIGEST
+  - EXACT_RETURNED_TWENTY_LINE_BYTES_OR_AUTHORIZED_RAW_GITHUB_CONTENTS_READBACK
+  - AUTHENTICATED_PRINCIPAL_PERMISSION_SCOPE_AND_TRUE_CALL_COUNT
+  - WORKITEM_ROLLBACK
+  - WORKITEM_EFFECT_CEILING
+  - PRODUCER_RETURN_EXPIRY
+  - HONEST_FLAW_BOUND_TO_THE_PRODUCER_DIGEST
+  - DISTINCT_PROVIDER_STOOD_OR_FELL_TIED_TO_THE_PRODUCER_DIGEST
+  - NAMED_OPERATIONAL_CONSUMER
+  - EXPLICIT_NAMED_CONSUMERACK_AFTER_STOOD
+
+revise_request:
+  recipient_class: X13_EVENT_OWNER_AND_DISTINCT_RAW_GITHUB_CONTENTS_WITNESS
+  exact_request: >-
+    Create an immutable WorkItem claim and acceptance digest, then return a canonical producer packet binding the exact
+    requested repository, path, immutable commit, encoding, line range, exact returned bytes or authorized raw GitHub
+    Contents readback, authenticated principal and effective permission scope, true call and retry count, rollback, effect
+    ceiling, expiry, and honest flaw. Compute one producer-return digest over those bindings. A distinct nonproducer witness
+    may then return exactly STOOD or FELL tied to that digest. Do not treat matching catalog blob SHAs, CURRENT advancement,
+    or ChatGPT same-provider preflight as independent verification or ConsumerAck.
+
+verification_route:
+  packet_status: ROUTED_IN_GIT_PENDING_DISTINCT_WITNESS_CONSUMPTION
+  verifier_target: DISTINCT_AUTHORIZED_RAW_GITHUB_CONTENTS_WITNESS
+  independence_requirement: NOT_X13_EVENT_PRODUCER_AND_NOT_CHATGPT_SAME_PROVIDER
+  route_binding_canonicalization: SHA256_UTF8_LF_TRAILING_NEWLINE
+  route_binding_byte_count: 896
+  route_binding_sha256: 0da9112fc1aeb98932912864eb976c945ab717eac09d84bcd592771fd0da9ac5
+  route_binding_text: |
+    correlation_id=X13_GITHUB_FETCH_FILE_READONLY_003_PHASE2_IMMUTABLE_REF_20260805T104646Z
+    experiment_id=X13_GITHUB_FETCH_FILE_READONLY_003
+    source_event_commit=135a5e6f08f7d6c4c14e5426d6c606d78016bf37
+    source_event_blob=f920d1d8f28fea1895096aac1cdf9099cccc2a9b
+    source_path=state/coordination/experiments/cots_connector_x13/20260805T104646Z_GITHUB_FETCH_FILE_PHASE2_ACCEPTED_WITH_GATES.md
+    repository=TTaoGaming/hfo-gen-133
+    requested_path=README.md
+    immutable_ref=940c3782b71f63e8bb7267241c3d84fd42360522
+    encoding=utf-8
+    requested_lines=1_to_20
+    returned_lines=20
+    returned_blob_sha=a77cfc55c6bf9b72b272d373092e4c0be92cb5a9
+    producer_return_digest=ABSENT
+    exact_returned_bytes=ABSENT_NOT_PERSISTED
+    authenticated_principal_scope=ABSENT
+    verifier_target=DISTINCT_AUTHORIZED_RAW_GITHUB_CONTENTS_WITNESS
+    requested_result=REVISE_UNTIL_WORKITEM_PRODUCER_DIGEST_THEN_STOOD|FELL
+    route_expiry_utc=2026-08-12T11:10:00Z
+  verifier_instruction: >-
+    Return REVISE while the WorkItem claim, exact returned bytes or authorized raw source-system readback, and canonical
+    producer-return digest are absent. Do not emit STOOD or FELL against this catalog event. If a conforming producer return
+    later appears, recompute its digest, compare the exact pinned GitHub Contents bytes and request semantics, and return
+    exactly STOOD or FELL tied to that digest. Any ChatGPT-carried check remains SAME_PROVIDER_NONBINDING with weight zero.
+  verifier_result_observed: false
+  delivery_limit: >-
+    This immutable Git packet exposes the exact verification obligation but does not prove that a distinct verifier has
+    consumed it.
+
+consumer_ack:
+  required_after: STOOD
+  named_operational_consumer_expected: NOT_ASSIGNED
+  explicit_ack_observed: false
+  implicit_ack_forbidden: true
+
+terminal_gate:
+  claim_return_verdict_ack_same_work_item: false
+  terminal_receipt_written: false
+  permitted_result_now: REVISE
+
+rollback:
+  - no task, connector, repository source artifact, account, deployment, or production state was changed by S03
+  - ignore this route after 2026-08-12T11:10:00Z unless a successor explicitly rebinds the source bytes
+  - reject any STOOD or FELL not tied to a future exact producer-return digest
+
+effect_ceiling: INTERNAL_GIT_VERIFICATION_ROUTE_AND_ONE_SANITIZED_SLACK_POINTER_ONLY
+route_expiry_utc: 2026-08-12T11:10:00Z
+honest_flaw: >-
+  S03 verified the native task identity, changed Git commit and file bytes, the catalog event's immutable ref and blob SHA,
+  and absence of an indexed Slack result for this correlation. GitHub and Slack searches are not a transactional global
+  receipt census. This carrier lacks an authorized raw GitHub Contents witness and cannot confirm distinct-verifier packet
+  consumption; the route is a REVISE obligation, not independent verification.
