@@ -1,8 +1,8 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_PROJECT_CONTEXT_VISIBILITY_V1
-current_version: 112
-accepted_wakes: 0
+current_version: 113
+accepted_wakes: 1
 target_wakes_before_decision: 4
 controlled_factor: project_vs_nonproject_context
 campaign_status: ACTIVE
@@ -17,40 +17,44 @@ prior_campaign:
     path: state/coordination/experiments/carrier_surface_x11/events/20260805T124151Z_PROMPT_CONTEXT_VISIBILITY_V2_WAKE_04_DECISION_KEEP.yaml
     blob: 0b4b9c09a2b8fdfe0499f897c046a502ac14a3e8
 baseline_result:
-  mode: campaign_initialized_no_project_context_probe_yet
+  mode: first_accepted_sanitized_expected_task_project_context_metadata_probe
   expected_task_id: 6a55089a9adc8191bda54541f7f9effa
-  permission_class: NOT_YET_MEASURED
+  provider_call_success: true
+  expected_task_visible: true
+  project_context_field_exposed: false
+  project_context_classification: NO_EXPLICIT_PROJECT_OR_CONTAINER_METADATA_EXPOSED
+  permission_class: AUTHENTICATED_NATIVE_TASKS_EXPECTED_RECORD_READ_AVAILABLE
   error_class: NONE
 hypothesis: the_provider_expected_task_inventory_record_will_either_explicitly_expose_project_or_container_context_metadata_or_repeatably_expose_no_such_field_across_four_identical_read_only_probes
 measured_result:
-  provider_call_success: []
-  expected_task_visible: []
-  project_context_field_exposed: []
-  project_context_classification: []
-  latencies_ms: []
-  permission_class: NOT_YET_MEASURED
+  provider_call_success: [true]
+  expected_task_visible: [true]
+  project_context_field_exposed: [false]
+  project_context_classification: [NO_EXPLICIT_PROJECT_OR_CONTAINER_METADATA_EXPOSED]
+  latencies_ms: [NOT_EXPOSED]
+  permission_class: AUTHENTICATED_NATIVE_TASKS_EXPECTED_RECORD_READ_AVAILABLE
   error_class: NONE
   operator_relay_minutes: 0
-  changed_capability: false
+  changed_capability: true
   campaign_decision: false
   andon: false
-supported_claim: project_context_visibility_campaign_initialized_only_no_probe_result_yet
-claim_ceiling: no_claim_about_project_membership_nonproject_membership_runtime_context_inheritance_or_container_isolation_until_the_bounded_probe_runs
-strongest_falsifier: the_expected_task_inventory_record_changes_shape_between_identical_probes_or_a_direct_provider_surface_exposes_project_context_that_this_probe_fails_to_detect
+supported_claim: the_native_expected_task_inventory_record_exposed_no_explicit_project_or_container_context_metadata_in_the_first_bounded_probe
+claim_ceiling: inventory_schema_field_absence_only_not_proof_of_nonproject_execution_project_membership_hidden_context_inheritance_container_isolation_runtime_context_or_independent_verification
+strongest_falsifier: a_direct_provider_surface_or_later_identical_probe_exposes_explicit_project_or_container_context_metadata_for_the_expected_task_or_the_expected_task_record_shape_changes
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 consumer: [Reginleif, Ratatoskr]
-honest_flaw: inventory_field_absence_cannot_prove_nonproject_execution_or_absence_of_hidden_project_context
+honest_flaw: absence_of_an_explicit_inventory_field_cannot_distinguish_nonproject_execution_from_hidden_or_unexposed_project_context
 last_event:
-  commit: 534d4552b5cd1ea029bf8ef1b9d89168b127f2eb
-  path: state/coordination/experiments/carrier_surface_x11/events/20260805T124151Z_PROMPT_CONTEXT_VISIBILITY_V2_WAKE_04_DECISION_KEEP.yaml
-  blob: 0b4b9c09a2b8fdfe0499f897c046a502ac14a3e8
+  commit: 6a4b2bd21aeb2d48f6d9822f1f87641a1f4981e7
+  path: state/coordination/experiments/carrier_surface_x11/events/20260805T134124Z_PROJECT_CONTEXT_VISIBILITY_V1_WAKE_01.yaml
+  blob: fb698447e4384dc788f63d42bb13f1ddf2f555ab
 next_factor: project_vs_nonproject_context
 next_probe:
   experiment_id: X11_PROJECT_CONTEXT_VISIBILITY_V1
-  campaign_wake: 1
+  campaign_wake: 2
   mode: sanitized_expected_task_project_context_metadata_read_only
-  exact_action: inspect_only_the_expected_task_inventory_record_for_explicit_project_or_container_context_metadata_and_persist_presence_classification_only
-  expected_current_version: 112
+  exact_action: repeat_the_identical_expected_task_inventory_record_inspection_for_explicit_project_or_container_context_metadata
+  expected_current_version: 113
   persist_only:
     - provider_call_success
     - expected_task_visible
@@ -66,14 +70,13 @@ next_probe:
   post_only_changed_capability_campaign_decision_or_andon: true
   sensitive_readback_externalization_allowed: false
   same_provider_independence_claim_allowed: false
-slack_action: POST_CAMPAIGN_DECISION
-updated_valid_time_utc: 2026-08-05T12:41:51Z
+slack_action: POST_CHANGED_CAPABILITY
+updated_valid_time_utc: 2026-08-05T13:41:24Z
 sealed: false
 ---
 
-Prompt-context visibility V2 completed at four accepted wakes with KEEP. The provider
-inventory exposed the expected X11 prompt with the same sanitized character count, line
-count, digest, and fixed-marker booleans on all four probes. This remains same-provider
-configuration readback and does not prove runtime prompt injection, attention, adherence,
-or truncation behavior. Project-context visibility V1 is initialized at zero of four; no
-project-context probe ran during this decision wake.
+Project-context visibility V1 accepted wake one of four. The authenticated native Tasks
+inventory exposed the expected X11 record but no explicit project or container context
+metadata field. This is a negative schema-visibility measurement only: field absence does
+not prove non-Project execution, hidden-context absence, container isolation, or runtime
+context behavior. Wake two repeats the identical bounded read-only probe.
