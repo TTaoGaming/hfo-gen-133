@@ -1,0 +1,38 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+experiment_id: X11_GMAIL_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1
+event_type: ACCEPTED_WAKE
+campaign_wake: 3
+expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+current_version_before: 118
+current_version_after: 119
+baseline: {provider_call_success: true, sanitized_result_count: 0, continuation_present: false}
+hypothesis: bounded Gmail metadata search remains available and returns zero for the fixed impossible marker
+controlled_factor: gmail_read_surface
+exact_probe:
+  action: Gmail.search_email_ids
+  fixed_query: HFO_X11_GMAIL_FIXED_IMPOSSIBLE_MARKER_7F61D846C0A64A99B166
+  max_results: 1
+measured_result:
+  provider_call_success: true
+  sanitized_result_count: 0
+  continuation_present: false
+  permission_class: AUTHENTICATED_GMAIL_BOUNDED_SEARCH_READ_AVAILABLE
+  error_class: NONE
+  latency_ms: 291
+  operator_relay_minutes: 0
+  changed_capability: false
+strongest_falsifier: unavailable_or_auth_required_or_nonzero_or_out_of_bound_results
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer: [Reginleif, Ratatoskr]
+honest_flaw: zero results validate connector execution but not mailbox completeness recall freshness content access or authenticity
+claim_ceiling: no_independent_verification_and_no_mailbox_completeness_claim
+privacy_gate: metadata_only_no_message_content_or_identifiers_persisted
+prohibited_effects_observed: {task_mutation: false, gmail_mutation: false, send: false, interactive_login: false, sensitive_externalization: false}
+accepted: true
+recorded_valid_time_utc: 2026-08-05T19:38:06Z
+sealed: true
+---
