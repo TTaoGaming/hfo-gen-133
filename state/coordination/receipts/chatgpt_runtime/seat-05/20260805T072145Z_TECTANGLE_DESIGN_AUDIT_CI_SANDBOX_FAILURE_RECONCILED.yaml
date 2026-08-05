@@ -1,0 +1,74 @@
+schema: hfo.gen133.operator_relief_receipt.v0_1
+receipt_id: S05_TECTANGLE_DESIGN_AUDIT_CI_SANDBOX_FAILURE_RECONCILED_20260805T072145Z
+immutable: true
+task:
+  expected_id: 6a55c182078c8191b89f2dd15f5f640c
+  observed_id: 6a55c182078c8191b89f2dd15f5f640c
+  title: HFO S05 Var Operator Relief
+  wip: 1
+canonical:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-05T07:21:45Z
+transaction_time_utc: COMMIT_METADATA_AUTHORITATIVE
+result: STATUS_RECONCILED
+active_item: Tectangle Design Audit workflow failure on main commit 49da03bd595d364789c219382ec6bec6f56b552d
+priority_state:
+  p0: Review the two scheduled job-application emails at the existing 2026-08-05 07:30 America/Denver gate before the first 08:00 release; operator outcome KEEP_SCHEDULED or EDIT_OR_CANCEL_IN_GMAIL
+  p1:
+    - PFA secure-method response and household-sale disclosure completion remain unresolved on the 2026-08-05 outside-date path
+    - National Life policy action-item clarification remains in an unsent Gmail draft pending operator SEND, EDIT, or DISCARD
+changed_evidence:
+  source_systems_read:
+    - Gmail
+    - Google Calendar
+    - GitHub
+    - Slack
+  contacts_read: false
+  contacts_reason: No recipient resolution or changed contact fact was required for this CI status reconciliation.
+  private_pointers:
+    gmail_ci_notice: gmail_message:19fd0be43797a0ea
+    github_workflow_run: TTaoGaming/Tectangle/actions/runs/30983605284
+    github_job: TTaoGaming/Tectangle/actions/jobs/92233263596
+    calendar_p0_gate: google_calendar_event:ts52qan70oi4arkpr6n4g1jccg
+  sanitized_facts:
+    - Design token validation passed.
+    - The UI Canon M3 canary passed for 59 development pages.
+    - The design audit test process failed before executing the screenshot assertions because Chromium could not launch on the Ubuntu 24.04 runner with the configured sandbox flags.
+    - The job log reports No usable sandbox from Chromium zygote_host_impl_linux.cc and points to disabled unprivileged user namespaces or the immediate no-sandbox workaround.
+    - The existing jest-puppeteer.config.cjs includes --disable-gpu-sandbox but does not include --no-sandbox or --disable-setuid-sandbox.
+    - The package script already binds JEST_PUPPETEER_CONFIG=jest-puppeteer.config.cjs, so the missing browser launch arguments are the narrow repair surface.
+    - No duplicate S05 receipt or target-channel pointer for this workflow failure was found during bounded Slack readback.
+  excluded_claims:
+    - No claim that the product UI, design tokens, visual parity, or screenshot assertions failed.
+    - No claim that adding no-sandbox is generally safe outside a disposable CI runner.
+    - No claim that the separate codespaces-tectangle-hexagonal aggregate-workflow failure has the same cause.
+transition:
+  type: RECONCILE_IMPORTANT_STATUS
+  prior_state: DESIGN_AUDIT_FAILED_CAUSE_UNKNOWN
+  reconciled_state: CI_BROWSER_SANDBOX_LAUNCH_FAILURE_BEFORE_DESIGN_ASSERTIONS
+  classification: INFRASTRUCTURE_GATING_FAILURE_NOT_PRODUCT_REGRESSION
+  no_duplicate_rule: Do not spend operator time debugging UI output or rerun the unchanged workflow; it will predictably fail until the Chromium launch configuration or runner policy changes.
+  exact_next_consumer_packet:
+    consumer: Tectangle CI maintainer or spatial-app-factory build cell
+    bounded_change: In jest-puppeteer.config.cjs, append --no-sandbox and --disable-setuid-sandbox only when process.env.CI is truthy; preserve current local launch flags.
+    verification: Run the Design Audit workflow once on a non-main branch or pull request and require Chromium launch plus actual screenshot-assertion execution before treating the repair as green.
+    security_gate: Keep the relaxed sandbox flags restricted to the isolated GitHub-hosted CI runner; do not normalize them for local or production browser sessions.
+operator_minutes_removed_estimate: 8
+next_consumer: Tectangle CI maintainer or spatial-app-factory build cell; operator does not need to investigate the UI failure
+privacy:
+  gmail_body_externalized: false
+  personal_data_externalized: false
+  sensitive_data_externalized: false
+  git_slack_ceiling: sanitized workflow state, public repository pointers, narrow repair surface, and verification gate only
+effects:
+  email_sent: false
+  application_submitted: false
+  spend_or_payment: false
+  calendar_mutation: false
+  code_or_workflow_mutation: false
+  deployment_merge_publication: false
+  account_or_security_change: false
+  scheduled_task_mutation: false
+  destructive_deletion: false
+honest_flaw: The logs establish the immediate Chromium sandbox launch failure, but only a bounded patch and rerun can prove there are no later design-test failures hidden behind this infrastructure gate.
