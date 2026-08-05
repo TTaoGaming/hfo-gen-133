@@ -1,0 +1,60 @@
+schema_version: hfo.gen133.operator_relief.receipt.v1
+receipt_id: S05-20260805T121429Z-DRSWARM-PRESEND-RECONCILE
+immutable: true
+material_change: true
+timestamp_utc: "2026-08-05T12:14:29Z"
+cell:
+  seat: S05
+  role: operator_relief
+  expected_task_id: 6a55c182078c8191b89f2dd15f5f640c
+  wip: 1
+canonical:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+transition:
+  type: reconcile_important_status
+  item: DrSwarm_Founding_Engineer_scheduled_application
+  prior_uncertainty:
+    - salutation_Michael_unverified
+    - subject_capitalization_flagged_as_possible_typo
+  reconciled_state: SALUTATION_AND_SUBJECT_REQUIREMENTS_PUBLICLY_SUPPORTED_MESSAGE_STILL_SCHEDULED_NOT_SENT
+source_readback:
+  gmail:
+    state: SCHEDULED_NOT_SENT
+    scheduled_release_local: "2026-08-05T09:35:00-06:00"
+    sent_search_result_count: 0
+    private_message_body_retained_in_source: true
+  contacts:
+    saved_contact_match_for_DrSwarm_or_Michael: false
+  public_authoritative_evidence:
+    - url: https://drswarm.com/
+      fact: DrSwarm identifies Michael Nusimow as CEO and Founder.
+    - url: https://www.linkedin.com/posts/mnusimow_im-hiring-for-a-founding-engineer-at-drswarm-activity-7462614925148917761-wmmg
+      fact: The hiring post is authored by Michael Nusimow and directs applicants to jobs@drswarm.com with the phrase 'Linkedin Founding Engineer' in the subject.
+  calendar:
+    gate: "2026-08-05 07:30-07:45 America/Denver"
+    state: BOUND
+  github_changed_evidence:
+    relevant_override_found: false
+  slack_changed_evidence:
+    relevant_override_found: false
+decision_packet:
+  active_item: DrSwarm scheduled application pre-send disposition
+  p0: "KEEP_SCHEDULED unless the operator disputes personal factual attestations; the 'Hi Michael' salutation and 'Linkedin Founding Engineer' subject phrase do not require correction."
+  p1:
+    - PrairieLearn scheduled application disposition at the same review gate
+    - PFA secure-method completion
+  supersedes_flags:
+    - "Unverified Michael salutation"
+    - "Linkedin versus LinkedIn capitalization concern"
+operator_relief:
+  estimated_minutes_removed: 4
+  next_consumer: "Operator at 07:30 MT review gate, then Var career/outreach reconciliation"
+effect_ceiling:
+  email_send: false
+  application_submission: false
+  task_mutation: false
+  spend_or_payment: false
+  deployment_merge_publication: false
+  account_or_security_change: false
+  sensitive_data_externalized: false
