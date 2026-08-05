@@ -1,0 +1,56 @@
+receipt_version: "1.0"
+receipt_type: OPERATOR_RELIEF_MATERIAL_CHANGE
+seat: S05
+cell: HFO_GEN133_OPERATOR_RELIEF
+expected_task_id: "6a55c182078c8191b89f2dd15f5f640c"
+wip_limit: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+observed_at_utc: "2026-08-05T19:14:33Z"
+identity_probe:
+  expected_task_id_match: true
+  connectors_observed:
+    - Gmail
+    - Google_Calendar
+    - GitHub
+    - Slack
+    - Google_Contacts_not_required_for_this_transition
+active_item:
+  id: LINKEDIN_SALES_NAVIGATOR_TRIAL_RENEWAL_EXPOSURE
+  status: DEADLINE_BOUND
+material_change:
+  source_system: Gmail
+  source_pointer:
+    message_id: "19fd30d54d577908"
+    attachment_name: LNKD_INVOICE_109288872153.pdf
+  sanitized_facts:
+    - Sales Navigator Core one-month free trial began 2026-08-05.
+    - Provider invoice shows zero charge at trial start.
+    - Provider states monthly renewal begins 2026-09-05 at USD 119.99 plus applicable taxes unless canceled before trial end.
+bounded_transition:
+  type: BIND_DEADLINE
+  target_system: Google_Calendar
+  event_id: "tacs581mull2c2lvkmjeslsr28"
+  event_title: Review Sales Navigator trial before renewal
+  start: "2026-09-03T09:00:00-06:00"
+  end: "2026-09-03T09:20:00-06:00"
+  visibility: private
+  reminders_minutes_before:
+    - 10080
+    - 1440
+    - 120
+  readback_verified: true
+priority_state:
+  p0: PFA_OWNERSHIP_AND_DOCUMENT_SCOPE_CLARIFICATION_BEFORE_PROVIDER_DOCUMENT_ACTION
+  p1:
+    - SALES_NAVIGATOR_VALUE_REVIEW_BEFORE_RENEWAL
+    - TECTANGLE_CORPORATE_RETURN_CLARIFICATION_DRAFT
+operator_minutes_removed: 6
+next_consumer: Var_budget_and_distribution_reconciliation
+claims_ceiling:
+  - Calendar binding does not cancel the subscription.
+  - No claim is made that the trial will produce qualified leads or income.
+  - No account, payment, email-send, application, deployment, merge, publication, or security action occurred.
+privacy:
+  private_bodies_externalized: false
+  git_contains_sanitized_facts_and_source_pointers_only: true
