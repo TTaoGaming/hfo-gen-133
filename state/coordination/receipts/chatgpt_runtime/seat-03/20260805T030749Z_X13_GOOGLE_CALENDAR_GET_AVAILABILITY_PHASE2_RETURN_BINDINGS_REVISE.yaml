@@ -1,0 +1,128 @@
+schema_id: hfo.gen133.s03.reducer_route.v1
+result: REVISE
+terminal: false
+correlation_id: X13_GOOGLE_CALENDAR_GET_AVAILABILITY_READONLY_001_PHASE2_MICRO_USE_20260805T024817Z
+reducer:
+  seat: S03
+  role: REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  carrier_task_id_expected: 6a539fc5130c81918c13624739fb2a60
+  carrier_task_id_observed: 6a539fc5130c81918c13624739fb2a60
+  carrier_task_id_match: true
+  carrier_enabled_observed: true
+  wip: 1
+  tools_observed:
+    - native_task_inventory_readback
+    - github_branch_search
+    - github_search_commits
+    - github_compare_commits
+    - github_commit_fetch
+    - github_file_readback
+    - github_create_file
+    - slack_changed_channel_read
+canonical_state:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+  branch_head_at_selection: 5c1ab7ef17344be2577a662c8787ec41714fd3e7
+prior_s03_cursor:
+  commit: 74a6ef44a5fd3b9cca717390ae0f73394b3ec03d
+  path: state/coordination/receipts/chatgpt_runtime/seat-03/20260805T020921Z_X13_GOOGLE_CALENDAR_GET_AVAILABILITY_PHASE1_RETURN_BINDINGS_REVISE.yaml
+changed_input_scan:
+  compare_status: ahead
+  commits_since_cursor: 19
+  selected_changed_claim_or_decision_event: true
+  selected_changed_current_pointer: true
+  selected_changed_producer_return: false
+  selected_changed_verdict: false
+  selected_changed_consumer_ack: false
+  selected_changed_terminal_receipt: false
+  selected_expiry_event: false
+  related_changed_verdict:
+    commit: b4b6d0b85bfd8cd1faea67d3b650adffea649b5b
+    classification: S04_PHASE1_STRUCTURAL_REVISE_SAME_PROVIDER_BINDING_WEIGHT_ZERO_NOT_APPLICABLE_AS_PHASE2_VERDICT
+  slack_scan_oldest_exclusive: 1785896079.936509
+  slack_phase2_claim_observed: true
+  slack_named_consumer_ack_observed: false
+selected_input:
+  classification: CHANGED_PHASE2_LAB_OBSERVATION_NOT_WORKITEM_BOUND_PRODUCER_RETURN
+  experiment_id: X13_GOOGLE_CALENDAR_GET_AVAILABILITY_READONLY_001
+  phase: 2_of_4
+  phase_status: PHASE2_ACCEPTED_WITH_GATES
+  operation: ONE_BOUNDED_PRIMARY_CALENDAR_FREEBUSY_QUERY_OVER_DISTINCT_30_MINUTE_WINDOW
+  event_commit: 7bccd7106bfbd213db4e65b5054d54016cb21539
+  event_path: state/coordination/experiments/cots_connector_x13/20260805T024817Z_GOOGLE_CALENDAR_GET_AVAILABILITY_PHASE2_MICRO_USE.md
+  event_blob_sha: a91667fa80ff95715f635bc544e6954194da4b8e
+  event_readback: true
+  current_commit: 90464e6aa94c42d394bbb17158d575bd6e583f1e
+  current_path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+  current_blob_sha: 92172821cd41b2932473b27c927649789e13a02f
+  current_version: 102
+  current_readback: true
+  admitted_claim: CONNECTOR_RETURNED_ONE_PRIMARY_CALENDAR_RESULT_WITH_ZERO_BUSY_BLOCKS_ZERO_PER_CALENDAR_ERRORS_AND_NO_CONNECTOR_ERROR_FOR_ONE_BOUNDED_30_MINUTE_READONLY_QUERY
+  source_disposition: OPEN_CAMPAIGN_PHASE2_OBSERVATION_ONLY_ZERO_ADOPTION_AND_FITNESS_CREDIT
+assessment:
+  real_producer_return: false
+  exact_git_bytes_bound: true
+  source_system_or_raw_provider_readback_bound: false
+  workitem_id_bound: false
+  workitem_claim_binding: false
+  acceptance_digest_bound: false
+  canonical_producer_return_digest_bound: false
+  exact_request_digest_bound: false
+  exact_response_digest_bound: false
+  exact_query_bounds_retained: false
+  exact_provider_timestamps_retained: false
+  zero_busy_result_independently_reproducible: false
+  authenticated_principal_bound: false
+  effective_scope_bound: false
+  upstream_request_id_or_http_metadata_bound: false
+  true_call_count_and_hidden_attempts_bound: false
+  commands_and_exit_codes: NOT_APPLICABLE_TO_CONNECTOR_OBSERVATION_BUT_AUTHORIZED_SOURCE_SYSTEM_READBACK_IS_ABSENT
+  rollback_bound_to_workitem: false
+  effect_ceiling_bound_to_workitem: false
+  producer_return_expiry_bound: false
+  honest_flaw_present: true
+  exact_stood_or_fell_tied_to_producer_digest: NOT_OBSERVED
+  named_consumer: NOT_ASSIGNED
+  consumer_ack: NOT_OBSERVED
+  independent_verification_closed: false
+  adoption_credit: 0
+  fitness_credit: 0
+missing_evidence_for_reconsideration:
+  - CLAIMED_WORKITEM_ID_EXACT_CLAIM_DIGEST_AND_ACCEPTANCE_DIGEST
+  - CANONICAL_PRODUCER_RETURN_DIGEST_TIED_TO_THE_CLAIM
+  - PRIVACY_SAFE_EXACT_REQUEST_AND_RESPONSE_DIGESTS_OR_AUTHORIZED_SAME_PRINCIPAL_FREEBUSY_SOURCE_READBACK
+  - EXACT_QUERY_BOUNDS_AND_PROVIDER_RETURN_TIMESTAMPS_SUFFICIENT_TO_REPRODUCE_THE_ZERO_BUSY_ASSERTION
+  - AUTHENTICATED_PRINCIPAL_EFFECTIVE_SCOPE_UPSTREAM_METHOD_REQUEST_ID_AND_TRUE_CALL_COUNT
+  - WORKITEM_EFFECT_CEILING_ROLLBACK_AND_PRODUCER_RETURN_EXPIRY
+  - DISTINCT_PROVIDER_EXACT_STOOD_OR_FELL_TIED_TO_THE_PRODUCER_DIGEST
+  - EXPLICIT_NAMED_CONSUMERACK_AFTER_STOOD
+route:
+  verifier: S04_HRIST_STRUCTURAL_PREFLIGHT
+  verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  verifier_enabled_observed: true
+  verifier_class: DISTINCT_NONPRODUCER_SAME_PROVIDER
+  route_effect: STRUCTURAL_PREFLIGHT_ONLY
+  binding_weight: 0
+  independence_status: SAME_PROVIDER_NONBINDING
+  requested_result_vocabulary: REVISE_OR_HOLD
+  exact_request:
+    - RECOMPUTE_PHASE2_EVENT_CURRENT_AND_ROUTE_BYTES_FROM_THE_BOUND_COMMIT_PATH_BLOB_TRIPLETS
+    - CONFIRM_EXACT_S03_S04_AND_X13_CARRIER_TASK_BINDINGS_ACTOR_CARRIER_SEPARATION_FRESHNESS_AUTHORITY_PRIVACY_AND_IDEMPOTENCY
+    - CONFIRM_THE_PHASE2_ACCEPTED_WITH_GATES_ARTIFACT_IS_A_LAB_OBSERVATION_NOT_A_WORKITEM_BOUND_PRODUCER_RETURN
+    - CONFIRM_EXACT_QUERY_BOUNDS_AND_PROVIDER_RETURN_TIMESTAMPS_WERE_NOT_RETAINED_SO_THE_ZERO_BUSY_ASSERTION_IS_NOT_EXACTLY_REPRODUCIBLE_FROM_GIT_BYTES
+    - CONFIRM_NO_AUTHORIZED_RAW_PROVIDER_PARITY_PRINCIPAL_SCOPE_REQUEST_ID_TRUE_CALL_COUNT_OR_CANONICAL_REQUEST_RESPONSE_RETURN_DIGEST_IS_BOUND
+    - CONFIRM_THE_PHASE1_S04_REVISE_IS_NOT_A_PHASE2_STOOD_OR_FELL_VERDICT_AND_HAS_BINDING_WEIGHT_ZERO
+    - CONFIRM_NO_DISTINCT_PROVIDER_STOOD_OR_FELL_NAMED_CONSUMER_OR_CONSUMERACK_EXISTS_FOR_THIS_CORRELATION
+    - CONFIRM_PHASE2_STATUS_ZERO_CREDIT_AND_OPEN_NEXT_PHASE_CANNOT_BE_LAUNDERED_INTO_TERMINAL_ACCEPTANCE
+    - BIND_ANY_PREFLIGHT_RESULT_TO_THIS_ROUTE_COMMIT_PATH_AND_BLOB_AFTER_READBACK
+  route_expiry_utc: 2026-08-06T03:07:49Z
+closure_gate:
+  terminal_receipt_allowed: false
+  reason: CLAIM_RETURN_EXACT_VERDICT_AND_CONSUMERACK_DO_NOT_BIND_TO_ONE_WORKITEM
+  implicit_consumer_ack_forbidden: true
+  next_valid_terminal_results:
+    - FELL
+    - STOOD_AND_ACKED
+honest_flaw: THE_PHASE2 EVENT PRESERVES A NARROW FAIL_CLOSED CLAIM AND ZERO CREDIT BUT EXACT PRIVATE QUERY_BOUNDS_AND PROVIDER TIMESTAMPS WERE INTENTIONALLY NOT RETAINED SO THE FREE WINDOW CANNOT BE REPRODUCED FROM GIT AND NO WORKITEM_DIGEST_RAW_PROVIDER_WITNESS_DISTINCT_PROVIDER_VERDICT_OR_NAMED_CONSUMERACK EXISTS
+valid_time_utc: 2026-08-05T03:07:49Z
+recorded_time_utc: 2026-08-05T03:07:49Z
