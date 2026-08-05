@@ -1,0 +1,229 @@
+---
+schema_id: hfo.gen133.s04_structural_preflight.v1
+result: REVISE
+seat: S04_STRUCTURAL_PREFLIGHT
+carrier_task_id_expected: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_observed: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+valid_time_utc: 2026-08-05T07:29:52Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+terminal_receipt: false
+---
+
+self_probe:
+  identity: S04_STRUCTURAL_PREFLIGHT
+  native_task_inventory_read: true
+  expected_task_exact_match: true
+  tools_used:
+    - native scheduled-task inventory readback
+    - authenticated GitHub recent-commit search
+    - authenticated exact commit, file, and blob readback
+    - deterministic UTF-8, Git-blob, JSON-canonicalization, and SHA-256 recomputation
+    - authenticated GitHub immutable create and post-write readback
+  tools_unavailable_or_not_binding:
+    - distinct-provider verifier
+    - transactional global Git candidate census
+    - provider-independent Slack delivery witness
+  candidate_edit_performed: false
+  task_mutation_performed: false
+  self_grading_performed: false
+  independent_quorum_claimed: false
+
+selection:
+  rule: NEWEST_IMMUTABLE_DIRECT_S04_CANDIDATE_NOT_AUTHORED_BY_S04
+  branch_head_observed_before_write: 33a2e35934cbc946c42f2535650ea6ed316a1ccd
+  candidate_id: X14_MUTANT_104_f1a48fc044c1
+  authoring_seat: X14_FALSE_GREEN_MUTATION_QA
+  commit: 1440dca4cec3b85673b8138bb972ceb1396ed156
+  path: state/coordination/experiments/false_green_x14/quarantine/20260805T065111Z_X12_DUPLICATE_IDEMPOTENCY_KEY.mutant.yaml
+  git_blob_sha1: 346d58c1bc9a7b524d2876b1b63697e928891ab6
+  exact_utf8_bytes: 9746
+  exact_sha256: 716581a1fdd561785257a5ae6285294f621040d4bb79db206c4faacff8b11163
+  recomputed_git_blob_match: true
+  authored_by_s04: false
+  directly_addressed_to_s04: true
+  immutable_commit_bound: true
+  x14_current_pointer:
+    commit: bf3a9c5c386351745f3b179eee43067ed5e4dcf3
+    observed_at_head: 33a2e35934cbc946c42f2535650ea6ed316a1ccd
+    path: state/coordination/experiments/false_green_x14/CURRENT.yaml
+    blob: 27213af51d214e9897fb71c1a640a4e2d698d2c9
+    version: 104
+    status: CAMPAIGN_26_WAKE_3_MUTANT_104_ROUTED_PENDING_VERDICTS
+  freshness:
+    candidate_valid_time_utc: 2026-08-05T06:51:11Z
+    candidate_expiry_utc: 2026-08-05T10:51:11Z
+    unexpired_at_verification: true
+    result: PASS
+
+schema_and_canonicalization:
+  candidate_schema_id: hfo.gen133.x14.false_green_mutant.v1
+  yaml_document_count: 2
+  yaml_mapping_count: 2
+  parse_result: PASS
+  overlay_algorithm: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  overlay_exact_utf8_bytes: 331
+  overlay_declared_sha256: f1a48fc044c136215ee99a996f33e8ff4522ef69e6f40dc1d5172c6bc374f8cd
+  overlay_recomputed_sha256: f1a48fc044c136215ee99a996f33e8ff4522ef69e6f40dc1d5172c6bc374f8cd
+  overlay_digest_match: true
+  mutated_field: canonical_receipt.idempotency_key
+  original_value: 8b8f356e5d7845938642cc0e22e23fe150db8b7984812642ea454c0bd65acc28
+  mutated_value: 8ccaf2bf4808b9ac0fc10ac936e4ab0732a7d88f62221981304ea59f0b35f3a8
+
+source_bindings:
+  selected_v103_receipt:
+    commit: fb159c3185c05b02cbb789568c065ab118ca6148
+    path: state/coordination/experiments/durable_object_x12/slack_receipts/8b8f356e5d7845938642cc0e22e23fe150db8b7984812642ea454c0bd65acc28.json
+    blob: 048a6b2c64abe3defe8b2a284f0bb1ce80230154
+    exact_utf8_bytes: 1639
+    exact_sha256: 5d74238feb31eb1990a03d5ca7639b62c5c9aa19becb0dc0b84a1f13cfc0df89
+    declared_canonical_receipt_sha256: 8a31d9426dbef200b0f4cd30f87f8c155b4bab7e7892f9b699880c047bd2a517
+    recomputed_declared_digest_match: true
+  selected_v103_claim:
+    commit: b5753c10cade31938915692abb805e7e4adfc914
+    path: state/coordination/experiments/durable_object_x12/idempotency_claims/8b8f356e5d7845938642cc0e22e23fe150db8b7984812642ea454c0bd65acc28.json
+    blob: be0554c60ad3e4d26c5715866e46f98ef9b9dfa0
+    exact_utf8_bytes: 3068
+    exact_sha256: 57085399969f9bba0e2800024b323305df15f8a9ecb3ecee9605586d78c04ff6
+    declared_claim_sha256: 645d3a5c046aaf5afc8b442e322d7796955eae729735ccc51547001962a30226
+    declared_semantic_intent_sha256: cc29f3cbab5b2c905588a7b3c05c695a3d895db85909a5b0aa5fd5047ed7cf2f
+    recomputed_claim_and_intent_digests_match: true
+    formula_recomputes_original_idempotency_key: true
+  selected_v103_event:
+    commit: 4602f6c4f0c86768f154738296a0c6d9f05fc94e
+    path: state/coordination/experiments/durable_object_x12/events/20260805T064438Z_V0102_TO_V0103_C25_STALE_PRIOR_BLOB_GITHUB_409_REJECTION.json
+    blob: 13e0d72a7eee3cf31941d9c127240b1ad02d55a3
+    exact_utf8_bytes: 6295
+    exact_sha256: 150fc50b4ded70e86d9d9f5ab1e81674d6794bbd5ac4a445bc4df9b1f0e1871d
+    declared_event_sha256: 15e82fb5e711a230c29ad20a94ec98ca7b3e83d1c6f304e730209730710178da
+    recomputed_declared_digest_match: true
+  selected_v103_outbox:
+    commit: b06a2cfd93b613c041031c5a8bed893b6192a03a
+    path: state/coordination/experiments/durable_object_x12/slack_outbox/8b8f356e5d7845938642cc0e22e23fe150db8b7984812642ea454c0bd65acc28.json
+    blob: a13c5ef1f0fba2040bdadd512bdfe2e51358f0c7
+    exact_utf8_bytes: 1826
+    exact_sha256: ca7876080a859888bae38a633a4d0cfd72248a1097a4933fc629f7e400e7e865
+    declared_outbox_sha256: 65f91c9021c0994fc6f587109ade5880e677dd3efb2fa533ea5a4595f45c9495
+    recomputed_declared_digest_match: true
+  selected_v103_current:
+    commit: 9dabaf21469c54070050327dd0a907338f2571b2
+    path: state/coordination/experiments/durable_object_x12/CURRENT.json
+    blob: df4627cabdf9a107e471feb8cbee33bd3f257863
+    exact_utf8_bytes: 7413
+    exact_sha256: 740b4a6bd43e8faa7b3d10cefbf8ff3fb1a36867c57140084c0aa08764530409
+    declared_projection_sha256: 52bafb5c1ede8c918bc7bd5e7c37a583414ef58bd0e6d628d1f93026e8812303
+    recomputed_declared_digest_match: true
+  prior_consumed_v101_receipt:
+    commit: 98b498bd5e00d75671fea44e08de5aba14ae5336
+    path: state/coordination/experiments/durable_object_x12/slack_receipts/8ccaf2bf4808b9ac0fc10ac936e4ab0732a7d88f62221981304ea59f0b35f3a8.json
+    blob: 3a1e49ba3bcbcc49bc3c35b981ae4f5d1f55c883
+    exact_utf8_bytes: 2658
+    exact_sha256: 4a804c908d02d7f7356ed76bd012c4a05e7b2bb82c2b1a7c73671d21ee2fe201
+    declared_canonical_receipt_sha256: 413dc47f65b6ab21623bb187f04dcada7cd5b27d3574e3a1e9c3765372b10d7f
+    recomputed_declared_digest_match: true
+  prior_consumed_v101_claim:
+    commit: 38b2fdba88edaab635a74155cbb9d43236591227
+    path: state/coordination/experiments/durable_object_x12/idempotency_claims/8ccaf2bf4808b9ac0fc10ac936e4ab0732a7d88f62221981304ea59f0b35f3a8.json
+    blob: 6c4380743da5885523475ef94737fa6e3e3a108e
+    exact_utf8_bytes: 2617
+    exact_sha256: 1bdf9f50aa15ca1944cbc081e766e4b3d1e3e044fd7247f9db8e4113e47e9d6a
+    declared_claim_sha256: 64d4e596075792ddb9376fb317b74812490d01aaff3fed4b827d9ab6ec67e5bc
+    declared_semantic_intent_sha256: d5ad53072ca5d1adef1a263a194e6ca321979fbe49899e2176f33659b7c93541
+    recomputed_claim_and_intent_digests_match: true
+    formula_recomputes_mutated_idempotency_key: true
+  all_git_blob_pointers_recomputed: true
+  all_declared_inner_digests_recomputed: true
+
+structural_checks:
+  authority:
+    result: PASS_WITH_QUARANTINE_CEILING
+    detail: The candidate is sealed, nonexecuting, source-preserving, and limited to internal Git routing; it grants no source, task, Slack, deployment, merge, publication, account, spend, or external-effect authority.
+  task_binding:
+    result: PASS
+    candidate_task_id: 6a513e4d9c4c81919db728f85db2dd79
+    source_task_id: 6a506f83df208191815dd17a8fd5baa3
+    structural_verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+    distinct_seat_task_id: 6a539fb148bc8191a30b6009dbf22438
+    live_enabled_exact_matches: true
+  actor_carrier_separation:
+    result: PASS_STRUCTURAL_ONLY
+    source_actor: X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+    mutant_carrier: X14_FALSE_GREEN_MUTATION_QA
+    structural_verifier: S04_STRUCTURAL_PREFLIGHT
+    advisory_verifier: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+    caveat: S04 and S09 are separate seats but remain ChatGPT same-provider evidence.
+  idempotency:
+    result: FAIL_REVISE
+    source_v103_key: 8b8f356e5d7845938642cc0e22e23fe150db8b7984812642ea454c0bd65acc28
+    injected_consumed_v101_key: 8ccaf2bf4808b9ac0fc10ac936e4ab0732a7d88f62221981304ea59f0b35f3a8
+    source_v103_transition: V102_TO_V103_STALE_PRIOR_BLOB_REJECTION
+    prior_v101_transition: V100_TO_V101_COMPENSATE_INVALID_POINTER
+    same_operation: false
+    nonce_match: false
+    version_match: false
+    claim_match: false
+    event_match: false
+    outbox_match: false
+    delivery_marker_match: false
+    slack_message_match: false
+    replay_collision: true
+    mutated_receipt_recomputed_canonical_sha256: 9053791c090fde3661652722bce3cdb38d1ab07bce0fa36fe53776d15863e4a9
+    unchanged_source_declared_canonical_sha256: 8a31d9426dbef200b0f4cd30f87f8c155b4bab7e7892f9b699880c047bd2a517
+    mutated_receipt_digest_match: false
+    conclusion: Reusing a valid previously consumed key for a different semantic intent does not create an idempotent retry; it creates an identity collision and also invalidates the unchanged receipt digest.
+  lease_and_expiry:
+    result: PASS_AT_VALID_TIME
+    selected_v103_expiry_utc: 2026-08-05T10:44:38Z
+    prior_v101_evidence_expiry_utc: 2026-08-05T08:45:31Z
+    candidate_route_expiry_utc: 2026-08-05T10:51:11Z
+    caveat: The route outlives the selected operation lease by 393 seconds and cannot extend operational authority; after source expiry it is forensic evidence only.
+  privacy:
+    result: PASS_SANITIZED_INTERNAL_METADATA
+    secret_or_private_body_externalized: false
+    caveat: Git and Slack correlation identifiers are internal metadata and do not confer publication authority.
+  rollback:
+    result: PASS
+    action: RETAIN_OR_IGNORE_QUARANTINED_MUTANT_AND_PRESERVE_BOTH_SOURCE_RECEIPTS_CURRENT_TASKS_AND_SLACK_STATE
+    source_restore_required: false
+    provider_restore_required: false
+  verifier:
+    result: NONTERMINAL
+    s04_result: REVISE
+    distinct_provider_result: NOT_OBSERVED
+    same_provider_status: SAME_PROVIDER_NONBINDING
+    binding_weight: 0
+  consumer:
+    named_consumers:
+      - X14_CAMPAIGN_REDUCER
+      - X12_DURABLE_OBJECT_CAMPAIGN_REDUCER
+    explicit_consumer_ack_observed: false
+    terminal_closure_permitted: false
+
+strongest_fake_green_mutant:
+  mutant_id: X14_MUTANT_104_f1a48fc044c1
+  false_green_claim: Accept the reused idempotency key because both receipts belong to X12, share the same object and task, and each has valid Git and Slack pointers.
+  rejection: The key is already consumed by the distinct v101 compensation semantic intent, while the selected source binds v103 with different nonce, claim, event, outbox, marker, and Slack message. The one-field overlay also breaks the source receipt canonical digest.
+  named_gate: S04_IDEMPOTENCY_KEY_UNIQUENESS_EXACT_VERSION_EVENT_OUTBOX_DELIVERY_MARKER_MESSAGE_AND_REPLAY_GATE
+  gate_result: CAUGHT
+
+verdict:
+  result: REVISE
+  reason_code: DUPLICATE_CONSUMED_IDEMPOTENCY_KEY_MISBOUND_TO_DISTINCT_OPERATION_AND_RECEIPT_DIGEST_INVALIDATED
+  permitted_next_state: KEEP_QUARANTINED_AND_REQUIRE_A_FRESH_KEY_DERIVED_FROM_THE_EXACT_V103_SEMANTIC_INTENT_OR_AN_EXACT_IDENTICAL_RETRY_WITH_ALL_DEPENDENT_BINDINGS_EQUAL
+  operational_effect_authorized: false
+  independent_verification_closed: false
+  same_provider_status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+
+honest_flaw: >-
+  Exact immutable Git bytes and declared digests were recomputed, but newest-candidate discovery used bounded GitHub
+  search and branch readback rather than a transactionally serialized global queue. Slack delivery was not independently
+  re-read as a provider witness, and no distinct-provider verifier consumed this result. This receipt is structural
+  preflight only and cannot establish exactly-once delivery, ConsumerAck, or independent closure.
