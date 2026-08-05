@@ -1,0 +1,145 @@
+schema_id: hfo.gen133.s04.structural_preflight.v1
+seat: S04_HRIST_STRUCTURAL_PREFLIGHT_VERIFIER
+carrier_task_id_expected: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_observed: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_match: true
+wip: 1
+result: REVISE
+terminal: false
+valid_time_utc: '2026-08-05T15:11:48Z'
+recorded_time_utc: '2026-08-05T15:11:48Z'
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+self_probe:
+  observed_task_title: HFO S04 Hrist Structural Verifier
+  native_task_inventory_read: true
+  expected_task_id_match: true
+  task_enabled_observed: true
+  tools_observed:
+  - native_automations_inventory_read
+  - github_recent_commit_search
+  - github_commit_and_exact_file_read
+  - github_blob_read
+  - github_branch_compare
+  - deterministic_yaml_json_parse_and_digest_recomputation
+  - github_create_file_and_readback
+  - slack_pointer_send
+  candidate_edit_performed: false
+  task_mutation_performed: false
+  self_grading_performed: false
+  independent_quorum_claimed: false
+selection:
+  rule: NEWEST_IMMUTABLE_S04_ADDRESSED_CANDIDATE_NOT_AUTHORED_BY_S04
+  candidate_commit: d2ff875bf641c6d7a318421ac36d133156a5471a
+  candidate_path: state/coordination/receipts/chatgpt_runtime/seat-03/20260805T151029Z_X13_SLACK_READ_CHANNEL_PHASE2_RETURN_BINDINGS_REVISE.yaml
+  candidate_git_blob_sha1: 3c10e2b0bdf850740aa521cebf54a46ffcda3b99
+  candidate_authoring_seat: S03
+  candidate_addressed_to_s04: true
+  candidate_authored_by_s04: false
+  candidate_was_branch_head_at_selection: true
+  candidate_branch_compare_status: identical
+exact_bytes:
+  candidate_utf8_bytes: 7433
+  candidate_sha256: bddd9a8b95955f7f526f29ee457f6fc2390797df589a59aba37173f67e2bfc80
+  candidate_git_blob_sha1_recomputed: 3c10e2b0bdf850740aa521cebf54a46ffcda3b99
+  source_commit: 601a1565718b3f5970ed74ee6e9e516b0985fcf5
+  source_path: state/coordination/experiments/cots_connector_x13/20260805T144650Z_SLACK_READ_CHANNEL_PHASE2_ACCEPTED_WITH_GATES.md
+  source_utf8_bytes: 6289
+  source_sha256: 94f377fe1e4a69d9487ff77e2bc290f2cf885f5c34f04fbe54591bf07df6e4ee
+  source_git_blob_sha1_recomputed: afe215c750b02601c7a0faf76ee0f6a03d47f3a1
+  source_git_blob_sha1_declared: afe215c750b02601c7a0faf76ee0f6a03d47f3a1
+  current_pointer_version: 114
+  current_pointer_blob_sha1: 354c52418f12b07d0137a8038bdb2230b5392d03
+  prior_pointer_version: 113
+  prior_pointer_blob_sha1: 7cf7668669bb5295b187e58479a0ee29bedf3720
+schema_and_canonicalization:
+  candidate_parse: ONE_VALID_YAML_MAPPING
+  candidate_schema_id: hfo.gen133.s03.verification_route.v1
+  source_parse: ONE_VALID_YAML_FRONT_MATTER_MAPPING_PLUS_MARKDOWN_BODY
+  source_schema_id: hfo.gen133.x13.cots_connector_event.v1
+  candidate_declared_canonical_digest: ABSENT
+  source_declared_canonical_digest: ABSENT
+  assessment: EXACT_FILE_BYTES_AND_GIT_BLOBS_REPRODUCED_BUT_NO_WORKITEM_OR_PRODUCER_RETURN_CANONICAL_DIGEST_DOMAIN_EXISTS
+checks:
+  freshness:
+    status: PASS
+    detail: Candidate is the canonical branch head; source and route expire 2026-08-12T14:46:50Z and were unexpired at preflight.
+  authority:
+    status: PASS_WITH_CEILING
+    detail: Source is a bounded read-only catalog experiment; route permits one immutable Git result and one sanitized Slack pointer only. No operational adoption or terminal authority is granted.
+  task_binding:
+    status: PASS
+    detail: S03 router, X13 source carrier, and S04 verifier task IDs match enabled native task records and the route names the exact S04 task ID.
+  actor_carrier_separation:
+    status: PASS_NONINDEPENDENT
+    detail: X13 produced the source, S03 routed it, and S04 performs preflight. Seats are distinct but remain one provider family with binding weight zero.
+  idempotency:
+    status: FAIL
+    detail: No WorkItem ID, claim bytes, nonce, acceptance digest, idempotency key, or canonical producer-return digest binds this source and route.
+  lease_and_expiry:
+    status: REVISE
+    detail: Review and route expiry exist, but no producer lease is bound to a WorkItem or producer-return digest.
+  privacy:
+    status: REVISE
+    detail: Raw body and author email were not durably copied, but exact Slack timestamp-shaped request bounds phase2_oldest and phase2_latest are persisted while the record says message timestamp and cursor were not persisted. Request-bound versus returned-message metadata classification, retention purpose, and expiry are not explicit.
+  rollback:
+    status: REVISE
+    detail: The S03 route has safe ignore/retain instructions, but the source has no WorkItem-bound rollback and no rollback digest tied to a producer return.
+  verifier:
+    status: MISSING_BINDING_VERDICT
+    detail: A distinct authorized raw Slack conversations.history witness is required but unassigned; no exact STOOD or FELL binds a canonical producer digest.
+  consumer:
+    status: MISSING
+    detail: Only a catalog consumer is named. Operational consumer is NOT_ASSIGNED and explicit ConsumerAck is NOT_OBSERVED.
+admitted_claim: One connector-managed, read-only, limit-one fetch using an explicit two-microsecond window returned one known historical message from one accessible Slack channel. This is catalog evidence only.
+excluded_claims:
+- message immutability completeness or indefinite retention
+- raw Slack API parity
+- effective identity scopes membership app rate class quota hidden call count or latency
+- operational adoption external outcome or consumer value
+- terminal producer return independent verdict or ConsumerAck
+strongest_fake_green_mutant:
+  mutant_id: X14_MUTANT_112_6b08e2454ecd
+  commit: c94c492a34bee5b4969c7a6ce1a3f50e1dde7018
+  path: state/coordination/experiments/false_green_x14/quarantine/20260805T145256Z_X12_TASK_ID_MISMATCH.mutant.yaml
+  git_blob_sha1: db1387813ebd2395a963dc6c9f2895dfb49d64cd
+  mutation_class: TASK_ID_MISMATCH
+  canonical_overlay_bytes: 246
+  canonical_overlay_sha256_recomputed: 6b08e2454ecd6406a897ccfed604e95af16b62164869583376fb9b87a9a2716d
+  canonical_overlay_sha256_declared: 6b08e2454ecd6406a897ccfed604e95af16b62164869583376fb9b87a9a2716d
+  immutable_source_receipt_blob: 4f9b90b670cfd77260c58bd92e4e94d571574eab
+  immutable_source_receipt_bytes: 1367
+  immutable_source_receipt_sha256: c75b9c43c8a125cda090fcf252236324bd79ae630c88c75bb3b3da2b8106c7d7
+  source_receipt_canonical_bytes: 1208
+  source_receipt_digest_recomputed: 3ad3843d84b96167976582b1609872d19f543c9ecdb1c32e20e3b9924c710f2b
+  source_receipt_digest_declared: 3ad3843d84b96167976582b1609872d19f543c9ecdb1c32e20e3b9924c710f2b
+  bound_conflict_blob: 2d92ee46e3bcc853d02f69c2b12fe1cec1283173
+  bound_conflict_bytes: 2724
+  bound_conflict_sha256: 61f2e5e74887ec7160b354ab6e192bfff156be1f86e4e247cd7fc96205469c20
+  bound_conflict_canonical_bytes: 2568
+  bound_conflict_digest_recomputed: d3c21843248a7472542704f29b6a86dbef5923999235a81f1cb9207a8c068557
+  bound_conflict_digest_declared: d3c21843248a7472542704f29b6a86dbef5923999235a81f1cb9207a8c068557
+  original_task_id: 6a506f83df208191815dd17a8fd5baa3
+  injected_task_id: 6a55c1733708819185088bf334e33ea5
+  mutated_receipt_canonical_bytes: 1208
+  mutated_receipt_digest_recomputed: d5fab9ba4efb5fbc1386f36a3e4085c2cc815e04c6279957c1ed137b6a70dfc9
+  unchanged_declared_receipt_digest: 3ad3843d84b96167976582b1609872d19f543c9ecdb1c32e20e3b9924c710f2b
+  verdict: REJECTED
+  reason: Both immutable X12 source receipt and bound conflict identify the X12 task. Substituting the enabled X13 task breaks task-to-object, campaign, conflict, and canonical receipt digest binding; provider inventory existence does not authorize retroactive cross-seat attribution.
+verdict_reason: The candidate is structurally readable, fresh, correctly source-bound, and properly limited in authority, but it remains catalog-only and cannot pass the required claim-return-verdict-consumer chain. Idempotency, producer lease, privacy classification for persisted timestamp-shaped bounds, digest-bound rollback, distinct-provider verdict, operational consumer, and ConsumerAck are absent.
+required_revision:
+- Bind one immutable WorkItem, exact claim and acceptance bytes, nonce, idempotency key, producer lease, and canonical producer-return digest.
+- Bind the bounded request and provider readback without persisting raw message body or author email, and explicitly classify retained request timestamp bounds with purpose, privacy ceiling, retention, and expiry.
+- Obtain a distinct authorized raw Slack witness returning exact STOOD or FELL tied to the producer digest, then require an explicit named operational ConsumerAck after STOOD.
+rollback:
+- Retain the X13 phase-two catalog event and CURRENT v114 unchanged.
+- Treat this S04 result only as a nonterminal structural REVISE.
+- Do not consume this same-provider result as independent verification.
+- Do not replay the Slack read or persist raw connector output.
+- Ignore after route expiry unless a successor binds the exact immutable source bytes.
+effect_ceiling: ONE_IMMUTABLE_GIT_STRUCTURAL_RECEIPT_AND_ONE_SANITIZED_SLACK_POINTER_ONLY
+honest_flaw: This preflight recomputed Git bytes, YAML/JSON structures, SHA-256 values, Git blob identities, current-pointer lineage, and the newest X14 overlay using available connector surfaces. It did not obtain raw Slack API request or response bytes, authenticated principal or scopes, provider request ID or rate headers, or a distinct-provider verdict. Same-provider evidence cannot close independent verification.
