@@ -1,0 +1,89 @@
+schema: hfo.gen133.operator_relief_receipt.v0_1
+seat: S05
+callsign: Operator-Relief Cell
+task_id_expected: 6a55c182078c8191b89f2dd15f5f640c
+task_id_probe: MATCH
+wip: 1
+valid_time_utc: 2026-08-05T14:19:00Z
+transaction_time_utc: COMMIT_METADATA_AUTHORITATIVE
+result: MATERIAL_CHANGE
+transition: STATUS_RECONCILED_AND_EXACT_OPERATOR_GATE_PREPARED
+
+active_item:
+  id: PRAIRIELEARN_EMAIL_SENT_ASHBY_ROUTE_GAP
+  state: EMAIL_SENT_SUPPLEMENTAL_ATS_ROUTE_UNRESOLVED
+
+source_readback:
+  gmail:
+    sent_message_pointer: gmail_message_19fd23952abbb724
+    observed_state: SENT
+    observed_timestamp: 2026-08-05T08:00:00-06:00
+    recipient_class: EMPLOYER_GENERAL_JOBS_INBOX
+    private_body_externalized: false
+    ats_receipt_search_window: 30d
+    matching_ashby_or_prairielearn_receipt_found: false
+    evidence_ceiling: NO_MATCHING_GMAIL_RECEIPT_DOES_NOT_PROVE_NO_PORTAL_SUBMISSION
+  github:
+    evidence_card_commit: c22705e049e45e22f543492940fcc84f9aef21f4
+    evidence_card_path: projects/income-lane/research/20260805T132933Z_S08_PRAIRIELEARN_CURRENT_APPLICATION_ROUTE_EMAIL_VS_ASHBY_BOUNDARY_EVIDENCE_CARD.md
+    supported_boundary: CURRENT_PUBLIC_ROUTE_IS_EXACT_ASHBY_JOB_ID_AND_EMAIL_IS_NOT_PROVEN_ROUTE_EQUIVALENT
+  slack:
+    evidence_pointer: C0BGNGPJFHU/1785936872.704499
+    changed_signal: S08_REVISE_ROUTE_BOUNDARY
+  calendar:
+    relevant_future_job_application_event_found: false
+  contacts:
+    contact_resolution_required: false
+
+reconciliation:
+  role_currently_listed: SUPPORTED_BY_S08_FRESH_READBACK
+  email_delivery_state: SENT
+  email_effect_class: SUPPLEMENTAL_OUTREACH_UNACKNOWLEDGED
+  primary_application_route: ASHBY_EXACT_JOB_ID
+  ats_submission_state: UNKNOWN
+  ats_receipt_state: NOT_FOUND_IN_GMAIL_SEARCH_WINDOW
+  duplicate_email_action: DO_NOT_RESEND
+  operator_gate:
+    choices:
+      - SUBMIT_VIA_CURRENT_ASHBY_ROUTE_AFTER_HUMAN_REVIEW
+      - DEFER_APPLICATION
+      - CLOSE_ROLE
+    prohibited_in_this_transition:
+      - APPLICATION_SUBMISSION
+      - EMAIL_SEND_OR_RESEND
+      - ACCOUNT_OR_TERMS_ACTION
+
+priority_projection:
+  p0:
+    item: PRAIRIELEARN_ASHBY_ROUTE_DISPOSITION
+    condition: EMAIL_ALREADY_SENT_BUT_NOT_PROVEN_AS_APPLICATION
+    smallest_operator_action: REVIEW_CURRENT_ASHBY_FORM_AND_CHOOSE_SUBMIT_DEFER_OR_CLOSE
+  p1:
+    - item: DRSWARM_SCHEDULED_EMAIL
+      state: SCHEDULED_FOR_2026-08-05T09:35:00-06:00_NOT_IN_SENT_AT_READBACK
+    - item: PFA_SECURE_METHOD_AND_DISCLOSURE_COMPLETION
+      state: CARRIED_FORWARD_NO_NEW_SOURCE_READBACK_THIS_WAKE
+
+operator_minutes_removed: 7
+minutes_basis: CROSS_SYSTEM_SENT_STATUS_ROUTE_AND_RECEIPT_RECONCILIATION
+next_consumer:
+  primary: OPERATOR
+  secondary: VAR_CAREER_OUTREACH_RECONCILIATION
+
+privacy:
+  private_message_body_retained_in_gmail: true
+  git_and_slack_ceiling: SANITIZED_FACTS_AND_POINTERS_ONLY
+
+effects:
+  email_sent_by_this_transition: false
+  application_submitted: false
+  spend_or_payment: false
+  calendar_or_task_mutation: false
+  deployment_merge_or_publication: false
+  account_or_security_change: false
+  destructive_deletion: false
+
+honest_flaw: >-
+  Gmail receipt absence cannot establish that no Ashby submission exists outside the searched mailbox,
+  and the employer may still monitor or accept the email inbox. The only supported correction is that
+  the sent email is not proven equivalent to the current canonical ATS route.
