@@ -1,0 +1,141 @@
+schema_id: hfo.gen133.s03.verification_route.v1
+seat: S03
+carrier_role: REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+carrier_task_id_expected: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_observed: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+result: REVISE
+terminal: false
+valid_time_utc: 2026-08-05T14:08:00Z
+recorded_time_utc: 2026-08-05T14:08:00Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+correlation_id: X13_SLACK_READ_CHANNEL_READONLY_004_PHASE1_BASELINE_20260805T134810Z
+
+self_probe:
+  native_task_inventory_read: true
+  observed_task_title: HFO S03 Ratatoskr Pacemaker
+  expected_task_id_match: true
+  github_branch_compare_available: true
+  github_exact_commit_file_readback_available: true
+  github_create_file_available: true
+  slack_changed_channel_read_available: true
+  slack_pointer_send_available: true
+  task_mutation_performed: false
+  producer_work_performed: false
+  self_verification_performed: false
+  external_world_effect_performed: false
+
+selection:
+  prior_s03_route_commit: abe0979495e4761eb5bd9e9fa920a83799971d07
+  changed_branch_compare_status: ahead
+  changed_commits_observed: 16
+  selected_source_commit: 09fdecbe00f3aa41668247a270b347ff768ea51d
+  selected_source_path: state/coordination/experiments/cots_connector_x13/20260805T134810Z_SLACK_READ_CHANNEL_PHASE1_ACCEPTED_WITH_GATES.md
+  selected_source_event_id: X13_SLACK_READ_CHANNEL_PHASE1_20260805T134810Z
+  selected_source_git_blob_sha1: 8cb7cde47cb7d66530238f2cd3e268df1637490a
+  selected_source_system_readback: GITHUB_CONTENTS_EXACT_COMMIT_PATH_AND_BLOB
+  selected_phase: 1_of_4
+  selected_result: PHASE1_ACCEPTED_WITH_GATES
+  source_review_expiry_utc: 2026-08-12T13:48:10Z
+  raw_slack_body_or_cursor_copied: false
+
+changed_input_scan:
+  slack_oldest_exclusive_ts: "1785935451.234919"
+  source_announcement_observed: true
+  exact_stood_or_fell_for_selected_producer_digest: NOT_OBSERVED
+  explicit_named_consumer_ack_for_selected_workitem: NOT_OBSERVED
+  prior_terminal_receipt_for_selected_workitem: NOT_OBSERVED
+  expiry_state: UNEXPIRED
+
+reduction:
+  real_workitem_claim: ABSENT
+  claim_acceptance_digest: ABSENT
+  canonical_producer_return_digest: ABSENT
+  exact_producer_bytes_or_source_system_readback: ABSENT
+  producer_commands_and_exit_codes: NOT_APPLICABLE_NO_PRODUCER_RETURN
+  producer_rollback_bound_to_digest: ABSENT
+  producer_effect_ceiling_bound_to_digest: ABSENT
+  producer_expiry_bound_to_digest: ABSENT
+  producer_honest_flaw_bound_to_digest: ABSENT
+  raw_authorized_slack_request_response_and_auth_context: ABSENT
+  distinct_provider_digest_bound_verdict: ABSENT
+  named_operational_consumer: ABSENT
+  explicit_consumer_ack: NOT_OBSERVED
+  admitted_claim: >-
+    The phase-one record is a bounded catalog observation that one connector call returned one newest
+    channel item and pagination state without mutation. It is not a WorkItem-bound producer return,
+    does not prove raw Slack parity, and cannot receive terminal verification or adoption credit.
+  forbidden_claims:
+    - PHASE1_ACCEPTED_WITH_GATES_IS_A_TERMINAL_WORKITEM_OUTCOME
+    - CONNECTOR_OBSERVATION_IS_A_CANONICAL_PRODUCER_RETURN
+    - FORMATTED_WRAPPER_OUTPUT_PROVES_RAW_SLACK_PARITY
+    - SAME_PROVIDER_PREFLIGHT_CLOSES_INDEPENDENT_VERIFICATION
+    - CATALOG_RETENTION_OR_SLACK_VISIBILITY_COUNTS_AS_CONSUMERACK
+
+route:
+  route_kind: EXACT_NONTERMINAL_REVISE_PACKET
+  target_verifier: S04_HRIST_NONPRODUCER_STRUCTURAL_PREFLIGHT
+  target_verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  target_is_source_producer: false
+  target_is_router: false
+  same_provider_status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  requested_result: REVISE
+  requested_checks:
+    - recompute exact route bytes and source commit path blob binding
+    - confirm the catalog event is not a WorkItem claim or producer return
+    - confirm no canonical producer-return digest exists
+    - confirm no exact STOOD or FELL is tied to a producer digest
+    - confirm no named operational consumer or explicit ConsumerAck exists
+    - confirm raw message body author identity message timestamp and cursor remain excluded
+    - preserve zero adoption and fitness credit
+  required_successor_before_terminal_consumption:
+    - immutable WorkItem claim and acceptance digests
+    - canonical producer return digest with exact bytes or authorized raw Slack readback
+    - rollback effect ceiling expiry and honest flaw bound to the producer digest
+    - distinct-provider STOOD or FELL tied exactly to that digest
+    - explicit named operational ConsumerAck after STOOD
+  expiry_utc: 2026-08-12T13:48:10Z
+
+route_binding:
+  canonicalization: UTF8_LF_TRAILING_NEWLINE
+  byte_count: 932
+  sha256: ffec9e777c4e2afdafa1f20d13c56148c27352116b9d092f42e913f34cba6b4b
+  text: |
+    correlation_id=X13_SLACK_READ_CHANNEL_READONLY_004_PHASE1_BASELINE_20260805T134810Z
+    source_event_id=X13_SLACK_READ_CHANNEL_PHASE1_20260805T134810Z
+    source_commit=09fdecbe00f3aa41668247a270b347ff768ea51d
+    source_path=state/coordination/experiments/cots_connector_x13/20260805T134810Z_SLACK_READ_CHANNEL_PHASE1_ACCEPTED_WITH_GATES.md
+    source_git_blob_sha1=8cb7cde47cb7d66530238f2cd3e268df1637490a
+    source_result=PHASE1_ACCEPTED_WITH_GATES
+    requested_result=REVISE
+    verifier=S04_HRIST_NONPRODUCER_STRUCTURAL_PREFLIGHT
+    verifier_task_id=6a52861fbdb08191b9ef33a0b9c3c15c
+    binding_weight=0
+    required_missing_bindings=WORKITEM_CLAIM_AND_ACCEPTANCE_DIGESTS|CANONICAL_PRODUCER_RETURN_DIGEST|RAW_AUTHORIZED_SLACK_REQUEST_RESPONSE_AND_AUTH_CONTEXT|DISTINCT_PROVIDER_DIGEST_BOUND_STOOD_OR_FELL|NAMED_OPERATIONAL_CONSUMER|EXPLICIT_CONSUMERACK
+    privacy_gate=DO_NOT_PERSIST_RAW_MESSAGE_BODY_AUTHOR_EMAIL_MESSAGE_TS_OR_CURSOR
+    expiry_utc=2026-08-12T13:48:10Z
+
+consumer_ack_tracking:
+  catalog_consumer: HFO_COTS_CAPABILITY_INVENTORY_CATALOG_ONLY
+  operational_consumer: NOT_ASSIGNED
+  explicit_named_consumer_ack: NOT_OBSERVED
+  implicit_ack_forbidden: true
+  terminal_receipt_written: false
+
+rollback:
+  - retain the immutable X13 phase-one event unchanged
+  - ignore this route after expiry unless a successor binds the exact source bytes
+  - do not consume any STOOD or FELL lacking the canonical producer digest
+  - do not infer ConsumerAck from catalog retention Git visibility or Slack visibility
+  - no task connector account branch source deployment merge publication or external provider state changed
+
+honest_flaw: >-
+  This reducer verified the native task identity, compared the canonical branch after the prior S03 route,
+  read the selected Git commit path and blob, and scanned changed public channel messages without copying
+  raw message content or cursor data. It did not obtain the raw Slack API request and response, authenticated
+  principal or scopes, a WorkItem claim, a canonical producer return, or a distinct-provider verdict.
+  Repository and Slack reads are not a transactional global census; this route is nonterminal and binding weight zero.
