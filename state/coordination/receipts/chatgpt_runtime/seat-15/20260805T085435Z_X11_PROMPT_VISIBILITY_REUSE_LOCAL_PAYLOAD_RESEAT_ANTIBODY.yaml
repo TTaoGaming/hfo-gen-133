@@ -1,0 +1,91 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+seat: S15
+carrier_task:
+  expected_task_id: 6a52f485409c8191aa06ea7911add3f3
+  observed_task_id: 6a52f485409c8191aa06ea7911add3f3
+  enabled: true
+  match: true
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+wip_limit: 1
+result: RETURN_FAILURE_ANTIBODY
+heritage_type: FAILURE_ANTIBODY
+original_date_utc: 2026-08-02T08:38:45Z
+source:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+  commit: 8674c500bf612bc5eda88f78de4bf017b4307f0e
+  path: state/coordination/experiments/carrier_surface_x11/events/20260802T083845Z_PROMPT_CONTEXT_SIZE_INTEGRITY_WAKE_04_DECISION.yaml
+  blob: 6c7bba4b84555b01f141ca38e2d3efd0c8978901
+  source_result: PROMPT_CONTEXT_SIZE_WAKE_04_16384_BYTE_MATCH_RESEAT_VARIABLE
+current_work_item:
+  experiment_id: X11_PROMPT_CONTEXT_VISIBILITY_V2
+  campaign_wake: 1
+  current_commit: 9d64b7f4522b180f7ef3b99ad9fc38f2ed9c2f6c
+  current_path: state/coordination/experiments/carrier_surface_x11/CURRENT.yaml
+  current_blob: d86848d44e75f09c079f60fb1bee71a1f4e668ea
+  current_version: 108
+  status: ACTIVE
+  acceptance_target: >-
+    Read only the exact expected X11 task from provider inventory and persist only
+    prompt presence, character count, line count, SHA-256, and fixed start/middle/end
+    marker booleans without persisting raw prompt text.
+reusable_invariant: >-
+  A locally generated payload with matching size, sentinels, and SHA-256 is not
+  evidence that the scheduler stored, transported, injected, retained, or caused
+  the model to follow that prompt. Count only direct provider prompt-inventory
+  readback for this campaign, and keep runtime-context and instruction-adherence
+  claims excluded.
+supported_claims:
+  - deterministic local payload construction can validate local size hash and boundary-check machinery
+  - the prior campaign correctly reseated its variable because it never exercised provider prompt visibility
+  - current acceptance should reject local synthetic payload evidence as a substitute for provider inventory prompt evidence
+excluded_claims:
+  - scheduler_prompt_transport_verified
+  - runtime_context_injection_verified
+  - model_context_retention_verified
+  - model_attention_or_instruction_adherence_verified
+  - provider_context_limit_measured
+  - independent_verification
+  - current_campaign_probe_completed
+privacy_ceiling: >-
+  Sanitized repository pointers, task IDs, counts, hashes, and boolean marker results
+  only. Do not persist raw task prompt text, unrelated task metadata, schedules,
+  timezones, run timestamps, or private bodies.
+acceptance_relevance:
+  disposition: APPLY_AS_NEGATIVE_CONTROL
+  exact_use: >-
+    Before accepting wake 1, verify that every measured field derives from the exact
+    provider-exposed X11 prompt. If evidence derives from a locally reconstructed or
+    synthetic string, classify the wake as factor-not-exercised and do not advance
+    the prompt-visibility campaign.
+  credit_ceiling: ZERO_UNTIL_EXPLICIT_CONSUMER_ACK
+verifier:
+  primary: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  independent_verifier_required_for_binding_claims: true
+consumer:
+  - X11_CARRIER_AND_TOOL_SURFACE_PDCA_LAB
+  - Reginleif
+  - Ratatoskr
+consumption_status: OFFERED_UNACKED
+heritage_credit: 0
+expiry_utc: 2026-08-09T08:38:45Z
+honest_flaw: >-
+  The source artifact tested deterministic local ASCII payload construction, not
+  provider inventory parsing. Its failure mode transfers only as a claim-ceiling
+  antibody; it does not supply the current prompt digest, marker definitions, or a
+  completed wake-1 observation. The source and current campaign are same-provider
+  evidence and cannot establish independent runtime truth.
+dedup:
+  searched_scope: TTaoGaming/hfo-gen-133
+  searched_terms:
+    - seat-15 PROMPT_CONTEXT_SIZE RESEAT_VARIABLE
+    - X11_PROMPT_CONTEXT_VISIBILITY_V2 heritage
+  duplicate_found: false
+valid_time_utc: 2026-08-05T08:54:35Z
+transaction_time_utc: 2026-08-05T08:54:35Z
+effect_ceiling: SANITIZED_GIT_RECEIPT_AND_ONE_SLACK_POINTER
+sealed: false
+---
