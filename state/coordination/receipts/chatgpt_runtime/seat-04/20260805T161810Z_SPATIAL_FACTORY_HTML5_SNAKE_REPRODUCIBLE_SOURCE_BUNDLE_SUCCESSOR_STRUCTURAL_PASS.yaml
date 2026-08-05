@@ -1,0 +1,220 @@
+schema_id: hfo.gen133.s04.structural_preflight.v1
+seat: S04_STRUCTURAL_PREFLIGHT_VERIFIER
+result: PASS_STRUCTURAL
+terminal: false
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+wip: 1
+valid_time_utc: 2026-08-05T16:18:10Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+
+self_probe:
+  expected_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  observed_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  task_id_match: true
+  task_enabled_observed: true
+  authenticated_github_actor: TTaoGaming
+  tools_observed:
+    - native_scheduled_task_inventory_read
+    - authenticated_github_commit_file_blob_branch_and_repository_read
+    - deterministic_utf8_yaml_sha256_and_git_blob_recomputation
+    - immutable_github_create_and_exact_readback
+    - authenticated_slack_pointer_post_after_readback
+  unavailable_surfaces:
+    - direct_target_host_shell
+    - chromium_runtime
+    - firefox_runtime
+    - direct_codex_or_claude_executor_ingress
+  task_mutation_performed: false
+  candidate_edit_performed: false
+  self_grading_performed: false
+  independent_quorum_claimed: false
+
+selection:
+  rule: NEWEST_IMMUTABLE_CANDIDATE_ADDRESSED_TO_S04_NOT_AUTHORED_BY_S04
+  selected_candidate:
+    authoring_seat: S02_ADMISSION_PULL
+    commit: d363ebba67d6141d376e11dd239901a7fe6ec878
+    path: projects/spatial-app-factory/claims/20260805T160714Z_SPATIAL_FACTORY_HTML5_SNAKE_REPRODUCIBLE_SOURCE_BUNDLE_HTML5SHIV_REMOVAL_SUCCESSOR.claim.yaml
+    git_blob_sha1: d322336cfeb35d891497ac749037a3db95cd7ec7
+    claim_id: S02_SPATIAL_FACTORY_HTML5_SNAKE_REPRODUCIBLE_SOURCE_BUNDLE_HTML5SHIV_REMOVAL_SUCCESSOR_20260805T160714Z
+    work_item_id: SPATIAL_FACTORY_HTML5_SNAKE_PENDING_DIRECTION_COMMAND_GATE_001
+    commit_time_utc: 2026-08-05T16:10:52Z
+    addressed_to_s04: true
+    authored_by_s04: false
+    immutable_commit_bound: true
+  candidate_exact_bytes:
+    canonicalization: EXACT_GITHUB_UTF8_BYTES
+    byte_count: 19553
+    sha256: 7b6002e8055cce59d3b839a8c707a6160b74fdc39cdc1a15bbc67f61a298547d
+    recomputed_git_blob_sha1: d322336cfeb35d891497ac749037a3db95cd7ec7
+    git_blob_match: true
+  schema:
+    yaml_document_count: 1
+    top_level_mapping: true
+    schema_id: hfo.gen133.s02_admission_claim.v1
+    result: CLAIMED
+    wip: 1
+    parse_result: PASS
+
+recomputation:
+  source_bundle:
+    canonicalization: UTF8_LF_NO_TERMINAL_LF
+    byte_count_declared: 2152
+    byte_count_recomputed: 2152
+    sha256_declared: f50698922a4eeea50807561406435d9ad39d1275029bf97c93f5b2452018a004
+    sha256_recomputed: f50698922a4eeea50807561406435d9ad39d1275029bf97c93f5b2452018a004
+    result: MATCH
+  acceptance_contract:
+    canonicalization: UTF8_LF_NO_TERMINAL_LF
+    byte_count_declared: 4875
+    byte_count_recomputed: 4875
+    sha256_declared: 0b6581b6b40b426e1ae6d598ac113d6daadff54d9c7d205780c8bc8e628d4f2b
+    sha256_recomputed: 0b6581b6b40b426e1ae6d598ac113d6daadff54d9c7d205780c8bc8e628d4f2b
+    result: MATCH
+  idempotency:
+    formula: WORKITEM_ID_LF_EXACT_SOURCE_BUNDLE_LF_ACCEPTANCE_SHA256
+    canonicalization: UTF8_LF_NO_TERMINAL_LF
+    canonical_input_byte_count_declared: 2280
+    canonical_input_byte_count_recomputed: 2280
+    canonical_input_sha256_declared: baf57a67b6f574ba2cb59facba49e7683b06648dcc685355f99f5e327da61357
+    canonical_input_sha256_recomputed: baf57a67b6f574ba2cb59facba49e7683b06648dcc685355f99f5e327da61357
+    key_declared: baf57a67b6f574ba2cb59facba49e7683b06648dcc685355f99f5e327da61357
+    result: MATCH
+
+source_pointer_checks:
+  predecessor_claim:
+    commit: aeb8298af5de81642fc1f63b4a8f783ac1f5ab4e
+    blob_declared: aa1d3088840f77cd9d7a874693a9071d69c1ffbd
+    blob_readback: aa1d3088840f77cd9d7a874693a9071d69c1ffbd
+    expiry_utc: 2026-08-05T14:08:53Z
+    authority_use: EXPIRED_BOUND_HISTORY_ONLY
+    result: MATCH
+  prior_s04_revise:
+    commit: bf83355664b016d8a174789a92f52adafa08a873
+    blob_declared: 3f0673f6af0706128dbea7bc34947f70656e4070
+    blob_readback: 3f0673f6af0706128dbea7bc34947f70656e4070
+    result: MATCH
+  s06_hold:
+    commit: e5570f4c2a78589f8651ecfb09643158c589d67a
+    blob_declared: 929bb800d9a0c08f83d1c924cab94d465dcce65f
+    blob_readback: 929bb800d9a0c08f83d1c924cab94d465dcce65f
+    result: MATCH
+  s08_html5shiv_card:
+    commit: e00655c51af34c82210af1b74801d009de45f4fd
+    blob_declared: 43a933afb68dd3d953cc4c6301dc643042986908
+    blob_readback: 43a933afb68dd3d953cc4c6301dc643042986908
+    decision: REVISE
+    expiry_utc: 2026-08-12T15:31:17Z
+    result: MATCH
+  upstream_pin:
+    repository: JDStraughan/html5-snake
+    commit: e3fe18a85a0555f0540cc0978fbab62822262a91
+    commit_resolved: true
+    approved_blobs:
+      README.md: bf29f270d27882138d6e50868a212b4780502ca8
+      game.js: c286389487bd68f15170fbb3add6a060f252d169
+      index.html: 61243962bab6846c3e06dba4358a547755dc1379
+      page.css: f380cefc081c1bac889330465f311195dbb83ab4
+    all_declared_blobs_match: true
+    public_distribution_chain_of_title: NOT_STOOD
+  target_base:
+    repository: TTaoGaming/TAGS
+    commit: 1271e25306fe8ef8baea32704cf022435703d498
+    commit_resolved: true
+
+structural_gates:
+  freshness:
+    candidate_valid_time_utc: 2026-08-05T16:07:14Z
+    preflight_time_utc: 2026-08-05T16:18:10Z
+    latest_permitted_non_hold_route_utc: 2026-08-05T16:25:00Z
+    route_window_open_at_preflight: true
+    producer_return_due_utc: 2026-08-05T18:15:00Z
+    lease_expires_utc: 2026-08-05T19:15:00Z
+    renewal_allowed: false
+    result: PASS
+  authority:
+    claim_ceiling: ISSUE_ONE_CONDITIONAL_INTERNAL_SUCCESSOR_CLAIM_ONLY
+    no_new_queue: true
+    no_implicit_executor_ingress: true
+    public_effect: NONE
+    result: PASS
+  task_binding:
+    s02_carrier_task_id: 6a55088a3d308191ac1cda97221f0957
+    s04_verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+    s06_route_owner_named: true
+    s07_task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+    s07_enabled_observed: false
+    result: PASS_WITH_DOWNSTREAM_HOLD_UNLESS_INGRESS_PROVEN
+  actor_carrier_separation:
+    admission_actor: S02_ADMISSION_PULL
+    structural_verifier: S04_STRUCTURAL_PREFLIGHT_VERIFIER
+    route_owner: S06_CODE_WORK_PACKET_COMPILER_AND_CODEX_BRIDGE
+    conditional_producer: S07_OR_SEPARATELY_PROVEN_DIRECT_EXECUTOR
+    runtime_verifier: DISTINCT_CHROMIUM_FIREFOX_NONPRODUCER_VERIFIER
+    reducer: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+    scheduled_task_ids_not_treated_as_external_provider_principals: true
+    result: PASS
+  privacy:
+    classification: INTERNAL_COORDINATION_PLUS_PUBLIC_REPOSITORY_POINTERS
+    private_body_copied: false
+    secrets_or_credentials_present: false
+    public_distribution_authorized: false
+    result: PASS
+  rollback:
+    before_effect: CLAIM_EXPIRY_AND_REJECT_BOUND_ROUTES
+    after_internal_branch_effect: ABANDON_UNMERGED_DEDICATED_BRANCH_PRESERVE_RECEIPTS
+    force_or_delete_authorized: false
+    result: PASS
+  verifier:
+    structural_result_scope: PASS_STRUCTURAL_ONLY
+    same_provider_status: SAME_PROVIDER_NONBINDING
+    binding_weight: 0
+    distinct_runtime_verdict_required: true
+    result: PASS
+  consumer:
+    immediate: S06_CODE_WORK_PACKET_COMPILER_AND_CODEX_BRIDGE
+    reducer: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+    final_ack_required: EXPLICIT_NAMED_SPATIAL_FACTORY_CONSUMER_ACK
+    consumer_ack_observed: false
+    implicit_ack_forbidden: true
+    result: PASS_NONTERMINAL
+
+strongest_fake_green_mutant:
+  mutant_id: X14_MUTANT_113_0336e0a5313a
+  commit: adf590a2a0ff0c478192e0011a95c11d863d4ec0
+  mutation_class: ACTOR_CARRIER_CONFLATION
+  canonical_overlay_byte_count_declared: 413
+  canonical_overlay_byte_count_recomputed: 413
+  canonical_overlay_sha256_declared: 0336e0a5313ae71ebee2c279fbbf0b325c000ec9a9dde8fbdf860aa8a1b968f6
+  canonical_overlay_sha256_recomputed: 0336e0a5313ae71ebee2c279fbbf0b325c000ec9a9dde8fbdf860aa8a1b968f6
+  verdict: REJECT
+  reason: >-
+    An enabled scheduled-task carrier ID does not authenticate the effective Slack connector actor,
+    principal, scopes, workspace membership, delegation, or custody. The immutable X13 source leaves
+    those external-authentication facts unknown, so carrier identity cannot be laundered into actor authority.
+
+decision:
+  result: PASS_STRUCTURAL
+  scope: >-
+    The successor claim repairs the prior missing canonical source bytes, acceptance binding,
+    idempotency reproduction, and route-clock defects. This permits only downstream consideration
+    of a bounded internal route while the route clock remains open. It does not prove executor ingress,
+    implementation, tests, provenance clearance, distribution rights, runtime behavior, ConsumerAck,
+    or independent verification.
+  downstream_gate: >-
+    S06 must HOLD unless direct executor ingress is separately proven. S07 is disabled at this
+    preflight. No merge, deployment, publication, send, spend, account change, task mutation,
+    permanent deletion, or unsupported outcome is authorized.
+  material_change: true
+  prior_related_s04_result: REVISE
+  independent_verification_status: OPEN
+
+honest_flaw: >-
+  GitHub search, branch probes, and scheduled-task inventory are nontransactional snapshots and may lag
+  concurrent changes. This preflight did not execute code, open a target branch, run Chromium or Firefox,
+  inspect connector credentials, establish public-distribution chain of title, obtain a distinct-provider
+  STOOD or FELL verdict, or observe ConsumerAck. SAME_PROVIDER_NONBINDING evidence has binding weight 0.
