@@ -1,0 +1,89 @@
+schema: hfo.gen133.operator_relief_receipt.v0_1
+receipt_id: S05-20260805T152307Z-PFA-PANDADOC-NO-SEND
+immutable: true
+seat: S05
+callsign: Var
+role: operator_relief
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-05T14:56:28Z
+transaction_time_utc: 2026-08-05T15:23:07Z
+
+self_probe:
+  expected_task_id: 6a55c182078c8191b89f2dd15f5f640c
+  provider_inventory_match: true
+  provider_task_enabled: true
+  connected_surfaces_read:
+    - Gmail
+    - Google_Calendar
+    - Google_Contacts
+    - GitHub
+    - Slack
+  mutation_surface_used:
+    - Gmail.create_draft
+    - GitHub.create_file
+  prohibited_effects_observed: false
+
+active_item:
+  id: PFA_HOUSEHOLD_DISCLOSURE_001
+  status: NO_SEND_APPROVAL_READY
+  private_body_location: Gmail
+  summary: A compliance disclosure arrived for an existing household-policy obligation. The provider permits wet signature or PandaDoc on request and warns that failure to return the completed document within three business days may prevent the policy from moving forward.
+  deadline:
+    provider_text: within 3 business days of the 2026-08-05 message
+    exact_clock_time: UNKNOWN
+    conservative_priority: P0_NOW
+  attachment_preflight:
+    pages: 1
+    encrypted: false
+    acroform_fields: 0
+    fill_mode: static_nonfillable_pdf
+    completion_paths:
+      - wet_signature
+      - PandaDoc_on_request
+    operator_fields_required:
+      - associate_name
+      - policy_number
+      - insured_full_name
+      - date
+      - associate_signature
+      - associate_PFA_ID
+    operator_attestation_gate: Verify every factual and compliance attestation before signing; no signature or field value was supplied by this carrier.
+
+bounded_transition:
+  type: PREPARE_EXACT_NO_SEND_APPROVAL_PACKET
+  action: Created one threaded Gmail draft requesting the provider's PandaDoc workflow and confirmation when issued.
+  draft_state: DRAFT_UNSENT
+  operator_gate: SEND | EDIT | DISCARD
+  draft_has_attachment: false
+  email_sent: false
+  application_submitted: false
+  form_signed: false
+  payment_or_spend: false
+  calendar_or_task_mutation: false
+
+sanitized_source_pointers:
+  gmail_message_id_sha256: 5233612e033922233dc1791ae842c806f8ea89769a384e7bfd64c408eaeebfe7
+  gmail_thread_id_sha256: ae2ddac3284658a9213e02193e48da9095ceddebe98b24aa5ef27696740edc2c
+  gmail_draft_id_sha256: a9bcc3653bcc7681f9aa308eb5c84c30dafc5c87038ea951d2968d7fe309f6b7
+  gmail_draft_message_id_sha256: d70982727dd4e966c603abcaf6a96a6e7f24e513e8bf2deeaa7510dcc8181118
+  attachment_filename_sha256: 87275543949f43f8a60307ed6f69f5090e54fa5050d5f4f9a2c9a1bfaf23fc28
+  exact_private_identifiers_retained_in_source_systems: true
+
+priority_projection:
+  active: PFA household-sale compliance disclosure
+  P0: Review and send the prepared PandaDoc-request draft now, then complete the provider workflow only after verifying all attestations and field values.
+  P1:
+    - Review the existing TECTANGLE corporate-return clarification draft before authorizing any signature, debit, or payment.
+
+operator_relief:
+  estimated_minutes_removed: 8
+  basis:
+    - source-message and attachment triage
+    - PDF form and field inspection
+    - deadline extraction
+    - threaded no-send draft preparation and readback
+  next_consumer: Operator, then Var insurance-compliance reconciliation after PandaDoc issuance or provider readback
+
+honest_flaw: The provider gave a relative three-business-day window but no exact deadline time. This carrier did not validate the underlying policy facts, populate the form, make the legal attestations, or request PandaDoc externally because the draft remains unsent.
