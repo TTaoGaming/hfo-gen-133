@@ -1,0 +1,58 @@
+schema_version: hfo.gen133.s05.operator_relief_receipt.v1
+receipt_id: S05-20260805T202100Z-PFA-SIGNED-DOCUMENT-SCOPE-CONFLICT
+immutable: true
+seat: S05
+expected_task_id: 6a55c182078c8191b89f2dd15f5f640c
+wip_limit: 1
+recorded_at_utc: 2026-08-05T20:21:00Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+
+transition:
+  type: NO_SEND_APPROVAL_PACKET_HARDENED
+  active_item: PFA signed-document ownership and scope conflict
+  material_change: true
+  summary: >-
+    Source readback showed that the operator completed a provider e-sign document
+    after the provider had stated that one referenced household policy belonged to
+    a different agent. A provider completion confirmation also arrived. The
+    existing unsent Gmail draft was updated in place to request exact document-to-
+    policy mapping, quarantine or voiding if mis-scoped, confirmation of no
+    processing, issuance of any correct remaining document, and a corrected
+    compliance deadline.
+  disposition: REVIEW_SEND_OR_EDIT_OR_DISCARD
+
+source_pointers:
+  gmail_thread_id: 19fb96ccc41d1a70
+  provider_scope_message_id: 19fd266fae7111a7
+  operator_completion_followup_message_id: 19fd37fbd59b827d
+  provider_esign_completion_message_id: 19fd37ec6c89b335
+  hardened_draft_message_id: 19fd3948f60cff41
+  hardened_draft_id: r-4143872117464409519
+  calendar_context_event_id: cdgmae9i74s62b9ncdgm8b9kckqmab9ocgs38bb570r3ic1h6hh6cdj1co
+
+readback:
+  draft_label_confirmed: DRAFT
+  recipient_confirmed: provider_underwriting_thread
+  threaded_reply_confirmed: true
+  email_sent_by_cell: false
+
+priorities:
+  p0: Review and send or edit the hardened provider clarification before any further document processing.
+  p1:
+    - Wait for written provider reconciliation and retain the completion receipt in the source system.
+    - Reconcile the separate corporate-return payment-method reply before authorizing payment.
+
+operator_relief:
+  estimated_minutes_removed: 9
+  next_consumer: Operator, then Var insurance-compliance reconciliation after provider readback
+
+safety:
+  private_bodies_externalized: false
+  email_sent: false
+  document_signed_by_cell: false
+  application_submitted: false
+  spend_or_payment: false
+  deployment_or_merge: false
+  task_mutation: false
+  destructive_deletion: false
