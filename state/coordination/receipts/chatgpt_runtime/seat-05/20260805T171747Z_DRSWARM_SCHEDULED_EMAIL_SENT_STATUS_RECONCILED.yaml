@@ -1,0 +1,52 @@
+schema: hfo.gen133.operator_relief_receipt.v0_1
+receipt_id: S05_DRSWARM_SCHEDULED_EMAIL_SENT_STATUS_RECONCILED_20260805T171747Z
+seat: S05
+callsign: Var
+role: operator_relief
+wip_limit: 1
+task_probe:
+  expected_task_id: 6a55c182078c8191b89f2dd15f5f640c
+  provider_task_id: 6a55c182078c8191b89f2dd15f5f640c
+  title: HFO S05 Var Operator Relief
+  enabled: true
+canonical_state:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+valid_time: 2026-08-05T15:35:00Z
+transaction_time: 2026-08-05T17:17:47Z
+active_item:
+  id: DRSWARM_APPLICATION_DELIVERY_STATUS
+  transition: CLOSE_WAITING_LOOP_THROUGH_SOURCE_READBACK
+  prior_state: SCHEDULED_FOR_PROVIDER_SEND
+  observed_state: GMAIL_SENT
+  reconciled_state: SENT_PROVIDER_ACCEPTANCE_UNVERIFIED
+  source_system: Gmail
+  private_pointer: gmail_message_19fd2904ceac8454
+  sanitized_fact: The scheduled role-application email is present in Gmail Sent at the expected release time with its resume attachment.
+  bounded_negative_readback: No delivery-failure notice or recipient acknowledgment was found in the bounded post-send Gmail search window.
+  claim_ceiling: Gmail Sent proves source-mailbox submission only; it does not prove recipient-server acceptance, inbox delivery, human review, or application acceptance.
+priorities:
+  p0:
+    id: PFA_POLICY_SCOPE_CONTRADICTION
+    next_action: Operator reviews and sends the existing no-send clarification draft before opening or signing the provider document.
+  p1:
+    - id: PRAIRIELEARN_ASHBY_ROUTE_GAP
+      next_action: Decide whether to submit through the public ATS after review; do not resend the already-sent email.
+    - id: TECTANGLE_CORPORATE_RETURN_CLARIFICATION
+      next_action: Review the existing no-send clarification draft before authorizing signature, debit, filing, or payment.
+operator_minutes_removed: 4
+next_consumer: Var career/outreach reconciliation
+privacy:
+  source_bodies_externalized: false
+  sensitive_data_externalized: false
+  git_content: sanitized facts and source pointer only
+prohibited_effects:
+  email_sent_by_cell: false
+  application_submitted_by_cell: false
+  payment_or_spend: false
+  task_mutation: false
+  deployment_merge_publication: false
+  account_or_security_change: false
+  destructive_deletion: false
+honest_flaw: Absence of a bounce or acknowledgment in one bounded Gmail search is not proof of global deliverability or recipient action.
+result: STATUS_RECONCILED
