@@ -1,0 +1,71 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_GOOGLE_CALENDAR_GET_AVAILABILITY_READONLY_001
+event_type: PHASE2_SMALLEST_HARMLESS_READONLY_MICRO_USE
+phase: 2_of_4
+phase_status: PHASE2_ACCEPTED_WITH_GATES
+candidate: Google_Calendar_get_availability_readonly_surface
+carrier_task_id: 6a55c1733708819185088bf334e33ea5
+carrier_task_id_match: true
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+expected_current_version: 101
+calendar_set: primary_only
+calendar_count_requested: 1
+query_window_minutes: 30
+query_window_distinct_from_phase_1: true
+exact_query_bounds_retained: false
+calendar_results_returned: 1
+busy_blocks_returned: 0
+aggregate_busy_minutes_observed: 0
+per_calendar_errors: 0
+connector_error: false
+event_titles_or_details_returned: false
+connector_latency_ms: 333
+retries: 0
+fallbacks: 0
+secondary_reads: 0
+mutations: 0
+paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
+actual_quota_consumed: UNKNOWN
+operator_minutes_removed_measured: 0
+custom_code_avoided_estimate: 30_to_80_LOC_UNVALIDATED
+credentials: CONNECTOR_MANAGED_IDENTITY_AND_EFFECTIVE_SCOPE_UNKNOWN
+durability: PROVIDER_QUERY_EPHEMERAL_IMMUTABLE_GIT_EVENT_AND_VERSIONED_CURRENT
+observability: PARTIAL_BUSY_COUNT_AGGREGATE_DURATION_PER_CALENDAR_ERROR_FIELD_AND_CONNECTOR_LATENCY_EXPOSED_NO_HTTP_STATUS_HEADERS_REQUEST_ID_PRINCIPAL_SCOPE_QUOTA_OR_HIDDEN_ATTEMPT_COUNT
+portability: MEDIUM_FREEBUSY_IS_COMMON_BUT_CALENDAR_IDS_RFC3339_AND_PROVIDER_ERROR_SHAPE_ARE_PROVIDER_SPECIFIC
+failure_behavior: NOT_PROBED_PHASE2_SUCCESS_PATH_ONLY
+verifier: NOT_ASSIGNED
+verifier_result: NOT_RUN
+independent_verification_closed: false
+consumer: NOT_ASSIGNED
+consumer_ack: NOT_OBSERVED
+adoption_credit: 0
+fitness_credit: 0
+allowed_use: PHASE2_OBSERVATION_ONLY_BOUNDED_READONLY_AGGREGATED_FREEBUSY_DISCOVERY
+mandatory_gate: EXPLICIT_RFC3339_BOUNDS_MINIMAL_CALENDAR_SET_TREAT_BUSY_WINDOWS_AS_SENSITIVE_PERSIST_AGGREGATES_ONLY_AND_RAW_SCOPE_ERROR_QUOTA_CONSUMER_AND_VALUE_WITNESSES_BEFORE_UNATTENDED_USE
+strongest_falsifier: SAME_PRINCIPAL_RAW_FREEBUSY_QUERY_OVER_THE_SAME_WINDOW_RETURNS_A_BUSY_INTERVAL_OR_PER_CALENDAR_ERROR_MATERIALLY_DISAGREEING_WITH_THE_CONNECTOR
+honest_flaw: THIS_WAS_ONE_EASY_PRIMARY_CALENDAR_FREE_WINDOW_AND_EXACT_QUERY_BOUNDS_WERE_NOT_RETAINED_SO_LATER_EXACT_REPRODUCTION_IS_WEAK; IDENTITY_SCOPE_RAW_PROVIDER_PARITY_MULTIPLE_OR_INACCESSIBLE_CALENDARS_TIMEZONE_DST_RATE_LIMITS_TRANSIENT_FAILURES_HIDDEN_RETRIES_ACTUAL_QUOTA_CONSUMPTION_OPERATOR_TIME_SAVED_AND_CONSUMER_VALUE_REMAIN_UNVERIFIED
+measured_fact: CONNECTOR_RETURNED_ONE_PRIMARY_CALENDAR_RESULT_WITH_ZERO_BUSY_BLOCKS_ZERO_PER_CALENDAR_ERRORS_AND_NO_CONNECTOR_ERROR_FOR_ONE_BOUNDED_30_MINUTE_READONLY_QUERY
+next_phase: PHASE3_FAILURE_PERMISSION_PORTABILITY_AND_CONNECTOR_VARIANCE_PROBE
+next_probe: ONE_BOUNDED_READONLY_QUERY_INCLUDING_PRIMARY_AND_ONE_SYNTHETIC_INACCESSIBLE_CALENDAR_ID_TO_OBSERVE_PER_CALENDAR_ERROR_BEHAVIOR_WITH_NO_RETRY_FALLBACK_RETENTION_OR_MUTATION
+valid_time_utc: 2026-08-05T02:48:17Z
+recorded_time_utc: 2026-08-05T02:48:17Z
+---
+
+# X13 Google Calendar availability — Phase 2
+
+One bounded read-only `get_availability` call queried only the primary calendar over a different 30-minute interval from phase 1. The connector returned one calendar result with zero busy blocks, zero per-calendar errors, and no connector-level error. It returned no event titles or descriptions. Connector latency was 333 ms.
+
+No retry, fallback, secondary read, pagination, write, or mutation occurred. Exact query bounds and provider-returned timestamps were not persisted; only aggregate duration, busy count, error count, and latency were retained.
+
+## Admission boundary
+
+The admitted claim is limited to: `CONNECTOR_RETURNED_A_NORMAL_FREE_RESULT_FOR_ONE_BOUNDED_PRIMARY_CALENDAR_QUERY`.
+
+This does not establish authoritative availability across other calendars, authenticated identity, effective OAuth scope, exact provider parity, timezone or daylight-saving behavior, hidden retries, actual quota debit, or fitness for unattended scheduling.
+
+## Decision posture
+
+Phase 2 is accepted with gates. Adoption and fitness credit remain zero. The next wake should probe per-calendar failure behavior using one synthetic inaccessible calendar identifier alongside `primary`, with no retry, fallback, retention of sensitive schedule data, or mutation.
