@@ -1,0 +1,99 @@
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+event_id: X11_NATIVE_TASKS_SANITIZED_INVENTORY_READ_V2_WAKE_04_DECISION_KEEP_20260805T044136Z
+experiment_id: X11_NATIVE_TASKS_SANITIZED_INVENTORY_READ_V2
+campaign_version: 4
+task_id_expected: 6a55089a9adc8191bda54541f7f9effa
+task_id_observed: 6a55089a9adc8191bda54541f7f9effa
+task_id_match: true
+carrier: HFO_GEN133_X11
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+prior_current_version: 103
+next_current_version: 104
+campaign_wake: 4
+campaign_target_wakes: 4
+accepted: true
+campaign_status: DECIDED
+campaign_disposition: KEEP
+baseline:
+  accepted_wakes: 3
+  mode: identical_read_only_native_tasks_inventory_probe
+  prior_permission_class: AUTHENTICATED_NATIVE_TASKS_INVENTORY_READ_AVAILABLE
+  prior_error_class: NONE
+hypothesis: the_read_only_native_tasks_inventory_surface_will_repeatedly_show_the_expected_X11_task_identity_and_enabled_state_without_requiring_login_or_mutation
+controlled_factor: native_tasks_read_visibility
+exact_probe:
+  action: automations.list
+  mode: read_only_native_tasks_inventory
+  expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+  expected_title: HFO X11 Carrier Surface PDCA Lab
+  persist_only:
+    - provider_call_success
+    - expected_task_visible
+    - expected_title_match
+    - enabled_state
+    - sanitized_active_HFO_task_count
+    - permission_class
+    - error_class
+    - latency_when_exposed
+    - operator_relay_minutes
+  privacy_gate: do_not_persist_unrelated_task_titles_prompt_bodies_schedules_timezones_or_run_metadata
+measured_result:
+  provider_call_success: true
+  expected_task_visible: true
+  expected_title_match: true
+  enabled_state: true
+  sanitized_active_HFO_task_count: 14
+  latency_ms: NOT_EXPOSED
+  operator_relay_minutes: 0
+  changed_capability: false
+  campaign_decision: true
+  andon: false
+  four_wake_provider_call_success: [true, true, true, true]
+  four_wake_expected_task_visible: [true, true, true, true]
+  four_wake_expected_title_match: [true, true, true, true]
+  four_wake_enabled_state: [true, true, true, true]
+  four_wake_sanitized_active_HFO_task_counts: [14, 14, 14, 14]
+  four_wake_latencies_ms: [NOT_EXPOSED, NOT_EXPOSED, NOT_EXPOSED, NOT_EXPOSED]
+permission_error:
+  permission_class: AUTHENTICATED_NATIVE_TASKS_INVENTORY_READ_AVAILABLE
+  error_class: NONE
+  latency_when_exposed: NOT_EXPOSED
+supported_claim: authenticated_read_only_native_tasks_inventory_visibility_of_expected_X11_task_identity_title_match_enabled_state_and_sanitized_active_HFO_task_count
+claim_ceiling: read_only_native_tasks_inventory_visibility_of_the_expected_task_identity_title_match_enabled_state_and_sanitized_active_HFO_task_count_only_not_execution_success_liveness_exactly_once_delivery_future_schedule_durability_or_independent_verification
+strongest_falsifier: the_inventory_read_fails_the_expected_task_is_absent_the_title_or_enabled_state_drifts_without_authorized_change_or_a_field_selective_surface_proves_the_broad_inventory_call_unnecessary
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer: [Reginleif, Ratatoskr]
+same_provider_independence_claim: false
+honest_flaw: the_provider_inventory_read_is_broad_and_same_provider_and_returned_unrelated_task_metadata_and_prompt_bodies_even_though_only_sanitized_fields_are_persisted
+campaign_decision_detail:
+  disposition: KEEP
+  rationale: four_identical_read_only_inventory_calls_all_exposed_the_expected_task_identity_title_match_enabled_state_and_the_same_sanitized_active_HFO_task_count_without_login_mutation_or_error
+  selected_next_factor: wake_timing
+  next_experiment_id: X11_PROVIDER_LAST_RUN_OFFSET_V2
+  next_probe:
+    campaign_wake: 1
+    mode: provider_last_run_offset_read_only
+    exact_action: call_automations_list_locate_only_the_expected_X11_task_and_compare_its_provider_exposed_previous_last_run_time_to_the_declared_nominal_minute_boundary_then_persist_only_signed_offset_seconds_direction_permission_error_latency_when_exposed_and_operator_relay_minutes
+    expected_current_version: 104
+    persist_only:
+      - provider_call_success
+      - expected_task_visible
+      - previous_last_run_time_present
+      - signed_offset_seconds
+      - offset_direction
+      - permission_class
+      - error_class
+      - latency_when_exposed
+      - operator_relay_minutes
+    privacy_gate: do_not_persist_raw_task_prompt_unrelated_task_metadata_or_raw_provider_run_timestamp
+    task_mutation_allowed: false
+    slack_write_each_probe_allowed: false
+    post_only_changed_capability_campaign_decision_or_andon: true
+    sensitive_readback_externalization_allowed: false
+    same_provider_independence_claim_allowed: false
+slack_action: POST_CAMPAIGN_DECISION
+sensitive_readback_externalized: false
+valid_time_utc: 2026-08-05T04:41:36Z
+sealed: true
