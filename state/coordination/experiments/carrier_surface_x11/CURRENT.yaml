@@ -1,8 +1,8 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_GMAIL_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1
-current_version: 117
-accepted_wakes: 1
+current_version: 118
+accepted_wakes: 2
 target_wakes_before_decision: 4
 controlled_factor: gmail_read_surface
 campaign_status: ACTIVE
@@ -25,35 +25,35 @@ baseline_result:
   error_class: NONE
 hypothesis: an_authenticated_bounded_gmail_metadata_search_for_one_fixed_impossible_marker_will_repeatably_return_a_sanitized_zero_result_without_exposing_message_content
 measured_result:
-  provider_call_success: [true]
-  sanitized_result_count: [0]
-  continuation_present: [false]
-  latencies_ms: [295]
+  provider_call_success: [true, true]
+  sanitized_result_count: [0, 0]
+  continuation_present: [false, false]
+  latencies_ms: [295, 285]
   permission_class: AUTHENTICATED_GMAIL_BOUNDED_SEARCH_READ_AVAILABLE
   error_class: NONE
   operator_relay_minutes: 0
-  changed_capability: true
+  changed_capability: false
   campaign_decision: false
   andon: false
-supported_claim: authenticated_bounded_gmail_message_id_search_executed_and_returned_zero_identifiers_with_no_continuation
+supported_claim: authenticated_bounded_gmail_message_id_search_repeated_twice_and_returned_zero_identifiers_with_no_continuation
 claim_ceiling: supports_only_authenticated_bounded_gmail_search_execution_and_sanitized_result_count_visibility_not_mailbox_completeness_search_recall_indexing_freshness_content_access_message_authenticity_or_independent_verification
 strongest_falsifier: the_gmail_surface_is_unavailable_requires_interactive_authentication_returns_nonzero_for_the_fixed_impossible_marker_or_exposes_results_outside_the_bounded_query
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 consumer: [Reginleif, Ratatoskr]
 honest_flaw: a_zero_result_for_an_impossible_marker_can_measure_connector_execution_but_cannot_validate_mailbox_search_recall_or_content_access
 last_event:
-  commit: 2fcb82da77aaf76e4c59a9bac3a597ede50dbf74
-  path: state/coordination/experiments/carrier_surface_x11/events/20260805T174041Z_GMAIL_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1_WAKE_01.yaml
-  blob: ab38b85187179ed362bf26cb3b0db4e81dd8eeac
+  commit: e12629e1017f601edc9b50ab369122feaee51661
+  path: state/coordination/experiments/carrier_surface_x11/events/20260805T183920Z_GMAIL_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1_WAKE_02.yaml
+  blob: 9ba20c8257d8cc9e336f5039870650de055b6113
 next_factor: gmail_read_surface
 next_probe:
   experiment_id: X11_GMAIL_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1
-  campaign_wake: 2
+  campaign_wake: 3
   mode: fixed_impossible_marker_metadata_only
   exact_action: repeat_the_same_bounded_authenticated_gmail_search_for_the_fixed_impossible_marker_with_maximum_one_result_and_persist_only_sanitized_count_and_continuation_presence
   fixed_query: '"HFO_X11_GMAIL_FIXED_IMPOSSIBLE_MARKER_7F61D846C0A64A99B166"'
   max_results: 1
-  expected_current_version: 117
+  expected_current_version: 118
   persist_only:
     - provider_call_success
     - sanitized_result_count
@@ -70,12 +70,11 @@ next_probe:
   post_only_changed_capability_campaign_decision_or_andon: true
   sensitive_readback_externalization_allowed: false
   same_provider_independence_claim_allowed: false
-slack_action: POST_CHANGED_CAPABILITY
-updated_valid_time_utc: 2026-08-05T17:40:41Z
+slack_action: SILENT_UNCHANGED_PROBE
+updated_valid_time_utc: 2026-08-05T18:39:20Z
 sealed: false
 ---
 
-Gmail read-surface wake 1 succeeded. The authenticated connector executed the fixed bounded
-message-ID search and returned zero identifiers with no continuation token in 295 ms. No email
-content or mailbox identifiers were fetched or persisted. The capability claim is limited to
-bounded search execution and sanitized count visibility; wake 2 repeats the identical probe.
+Gmail read-surface wake 2 repeated the identical bounded impossible-marker search. The connector
+again returned zero message identifiers and no continuation token, with 285 ms exposed latency.
+Capability remained unchanged, so no Slack post is authorized. Wake 3 repeats the same probe.
