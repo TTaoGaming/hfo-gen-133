@@ -1,0 +1,194 @@
+schema_id: hfo.gen133.s04.structural_preflight.v1
+result: REVISE
+terminal: false
+correlation_id: X13_GOOGLE_CALENDAR_GET_AVAILABILITY_READONLY_001_PHASE4_DECISION_20260805T044728Z
+seat:
+  id: S04
+  role: STRUCTURAL_PREFLIGHT_VERIFIER
+  wip: 1
+  carrier_task_id_expected: 6a52861fbdb08191b9ef33a0b9c3c15c
+  carrier_task_id_observed: 6a52861fbdb08191b9ef33a0b9c3c15c
+  carrier_task_id_match: true
+  carrier_enabled_observed: true
+  tools_observed:
+  - native_task_inventory_readback
+  - github_search_commits
+  - github_commit_fetch
+  - github_file_and_blob_readback
+  - local_utf8_sha256_git_blob_yaml_json_recompute
+  - github_create_file
+  - slack_pointer_write_available
+canonical_state:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+  branch_head_at_candidate_selection: 370f6da97d467fe5fa808747f65b380eac9c2eb0
+selection:
+  exactly_one_candidate_selected: true
+  newest_eligible_at_selection: true
+  candidate_addressed_to_s04: true
+  candidate_authored_by_s04: false
+  candidate_authoring_seat: S03
+  candidate_commit: 370f6da97d467fe5fa808747f65b380eac9c2eb0
+  candidate_path: state/coordination/receipts/chatgpt_runtime/seat-03/20260805T050902Z_X13_GOOGLE_CALENDAR_GET_AVAILABILITY_PHASE4_DECISION_BINDINGS_REVISE.yaml
+  candidate_blob_sha1: 4e50efaeb2cc1782b599e50fdc73d262e986f220
+  candidate_utf8_bytes: 7111
+  candidate_sha256: 562dfff9e485be150ab7180bf7c87c552920d9d55797c52685033fe838db8927
+  candidate_git_blob_recomputed_match: true
+  candidate_schema_id: hfo.gen133.s03.reducer_route.v1
+  candidate_yaml_documents: 1
+  candidate_yaml_root: mapping
+  candidate_valid_time_utc: '2026-08-05T05:09:02Z'
+  candidate_recorded_time_utc: '2026-08-05T05:09:02Z'
+  candidate_route_expiry_utc: '2026-08-06T05:09:02Z'
+  candidate_fresh_and_unexpired_at_preflight: true
+bound_sources:
+  phase4_event:
+    commit: 1f05c75b0ff107e72989cf85eecef3424fac7c78
+    path: state/coordination/experiments/cots_connector_x13/20260805T044728Z_GOOGLE_CALENDAR_GET_AVAILABILITY_PHASE4_ADOPT_WITH_GATES.md
+    blob_sha1: 609773a39e6b4b4e1995551fb3064338816edb39
+    utf8_bytes: 7591
+    sha256: 40e3ac527d74c92893fe83c959e0999c3ad42248c5236d96817d03d9f045833e
+    git_blob_recomputed_match: true
+    frontmatter_schema_id: hfo.gen133.x13.cots_connector_event.v1
+    frontmatter_mapping_valid: true
+    markdown_body_present: true
+    carrier_task_id: 6a55c1733708819185088bf334e33ea5
+    carrier_task_id_live_match: true
+    review_expiry_utc: '2026-08-12T04:47:28Z'
+  current_v104:
+    commit: 6d74fdc94d0c1b98d664a34c8cdff9c7b02afaac
+    path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    blob_sha1: f491c6ecd84a07b86c39b443359ec59f3732a24b
+    utf8_bytes: 6946
+    sha256: df34b3a3c88c2f4d27ada8ee8f8fb0aaf9b774c8c8c841ed1d6caefd9c882519
+    git_blob_recomputed_match: true
+    frontmatter_schema_id: hfo.gen133.x13.cots_connector_current.v1
+    frontmatter_mapping_valid: true
+    markdown_body_present: true
+    version: 104
+    prior_version: 103
+    last_event_commit_path_blob_match: true
+    carrier_task_id: 6a55c1733708819185088bf334e33ea5
+    carrier_task_id_live_match: true
+structural_assessment:
+  source_pointer_triplets_exact: true
+  schema_and_parse_surface_valid: true
+  canonicalization_or_digest_surface:
+    candidate_exact_git_bytes_bound: true
+    phase4_event_exact_git_bytes_bound: true
+    current_v104_exact_git_bytes_bound: true
+    canonical_producer_return_digest_bound: false
+    exact_request_digest_bound: false
+    exact_response_digest_bound: false
+    exact_query_bounds_retained: false
+    exact_provider_timestamps_retained: false
+  freshness:
+    route_unexpired: true
+    decision_review_unexpired: true
+    freshness_does_not_substitute_for_missing_workitem_or_return_binding: true
+  authority:
+    source_effect_ceiling: BOUNDED_READONLY_HUMAN_REVIEWED_AVAILABILITY_CHECK
+    source_disposition: CATALOG_ONLY_NONOPERATIONAL_ZERO_ADOPTION_AND_FITNESS_CREDIT
+    unattended_scheduling_authority: false
+    operational_adoption_authority: false
+    terminal_receipt_authority: false
+  task_binding:
+    s03_task_id_live_match: true
+    s04_task_id_live_match: true
+    x13_task_id_live_match: true
+    workitem_id_bound: false
+    claim_digest_bound: false
+    acceptance_digest_bound: false
+  actor_carrier_separation:
+    logical_s03_router_s04_verifier_x13_carrier_roles_distinct: true
+    authenticated_actor_principal_bound: false
+    carrier_task_id_is_not_actor_identity: true
+    same_provider_correlation_risk_present: true
+  idempotency:
+    current_version_transition_103_to_104_recorded: true
+    last_event_pointer_stable: true
+    nonce_bound: false
+    workitem_idempotency_key_bound: false
+    producer_return_idempotency_domain_bound: false
+  lease_and_expiry:
+    route_expiry_bound: true
+    catalog_review_expiry_bound: true
+    producer_lease_bound: false
+    producer_return_expiry_bound: false
+    workitem_lease_bound: false
+  privacy:
+    exact_busy_intervals_retained: false
+    event_titles_or_descriptions_retained: false
+    sanitized_aggregate_and_error_class_only: true
+    calendar_identifiers_and_busy_windows_classified_sensitive_by_source: true
+    raw_provider_request_or_response_externalized: false
+  rollback:
+    workitem_bound_rollback: false
+    workitem_bound_effect_ceiling: false
+    nonoperational_source_boundary_reduces_effect_risk_but_is_not_rollback: true
+  verifier:
+    same_provider_preflight_only: true
+    required_distinct_authorized_same_principal_raw_freebusy_witness: true
+    required_independent_verifier_assigned: false
+    digest_bound_stood_or_fell_observed: false
+  consumer:
+    named_catalog_consumer: HFO_COTS_CAPABILITY_INVENTORY
+    operational_consumer_assigned: false
+    consumer_ack_observed: false
+    catalog_consumer_is_not_operational_consumer_ack: true
+admitted_claim: ADOPT_WITH_GATES_IS_STRUCTURALLY_BOUND_ONLY_AS_A_BOUNDED_READONLY_HUMAN_REVIEWED_NONOPERATIONAL_CATALOG_DECISION_WITH_PER_CALENDAR_ERROR_INSPECTION_AND_FAIL_CLOSED_REQUIRED_CALENDAR_POLICY
+excluded_claim: THIS_PREFLIGHT_DOES_NOT_ESTABLISH_A_WORKITEM_BOUND_PRODUCER_RETURN_RAW_PROVIDER_PARITY_UNATTENDED_SCHEDULING_OPERATIONAL_ADOPTION_DISTINCT_PROVIDER_STOOD_OR_FELL_CONSUMER_ACK_OR_INDEPENDENT_CLOSURE
+strongest_candidate_specific_fake_green:
+  mutation: LAUNDER_PHASE4_ADOPT_WITH_GATES_OR_PRIOR_PHASE3_S04_REVISE_INTO_OPERATIONAL_PASS_STOOD_CONSUMER_ACK_OR_TERMINAL_CLOSURE
+  rejected: true
+  reason: THE_PHASE4_OBJECT_IS_A_CATALOG_DECISION_WITH_ZERO_ADOPTION_AND_FITNESS_CREDIT_AND_THE_PRIOR_S04_RESULT_IS PHASE3_ONLY SAME_PROVIDER_WEIGHT_ZERO; NEITHER_BINDS_A_WORKITEM_PRODUCER_RETURN_DISTINCT_VERDICT_OR_OPERATIONAL_CONSUMER_ACK
+strongest_available_quarantined_mutant:
+  mutant_id: X14_MUTANT_102_36c83fb5dab9
+  commit: 75195c7545ec972d9df3e0f6a650b95f2c605ee4
+  path: state/coordination/experiments/false_green_x14/quarantine/20260805T045355Z_X12_ACTOR_CARRIER_CONFLATION.mutant.yaml
+  blob_sha1: a1f1d1b865b03f42546e35e00707c23214f634c8
+  utf8_bytes: 5598
+  sha256: 017b9ff9a70bb664191051bd28faeb9d93c1233f79d2bff6efdc28d50d0a317a
+  git_blob_recomputed_match: true
+  yaml_documents: 2
+  mutation_class: ACTOR_CARRIER_CONFLATION
+  canonical_overlay_bytes_declared: 277
+  canonical_overlay_bytes_recomputed: 277
+  canonical_overlay_sha256_declared: 36c83fb5dab93e13be1974822fc516f3b73f11b9e83e99fcfdb6354cdea92edb
+  canonical_overlay_sha256_recomputed: 36c83fb5dab93e13be1974822fc516f3b73f11b9e83e99fcfdb6354cdea92edb
+  canonical_overlay_digest_match: true
+  source:
+    commit: 98b498bd5e00d75671fea44e08de5aba14ae5336
+    path: state/coordination/experiments/durable_object_x12/slack_receipts/8ccaf2bf4808b9ac0fc10ac936e4ab0732a7d88f62221981304ea59f0b35f3a8.json
+    blob_sha1: 3a1e49ba3bcbcc49bc3c35b981ae4f5d1f55c883
+    utf8_bytes: 2658
+    sha256: 4a804c908d02d7f7356ed76bd012c4a05e7b2bb82c2b1a7c73671d21ee2fe201
+    git_blob_recomputed_match: true
+    schema_id: hfo.gen133.x12.slack_delivery_receipt.v1
+    canonical_receipt_bytes: 2490
+    receipt_digest_sha256_declared: 413dc47f65b6ab21623bb187f04dcada7cd5b27d3574e3a1e9c3765372b10d7f
+    receipt_digest_sha256_recomputed: 413dc47f65b6ab21623bb187f04dcada7cd5b27d3574e3a1e9c3765372b10d7f
+    receipt_digest_match: true
+    source_consumer: Reginleif/Olrun
+    source_actor_principal_bound: false
+    source_consumer_ack_observed: false
+  verdict: REVISE
+  rejection_reason: A_SCHEDULED_TASK_ID_IS_A_CARRIER_SLOT_NOT_AN_AUTHENTICATED_ACTOR_OR_DOWNSTREAM_CONSUMER; REPLACING_THE_NAMED_CONSUMER_WITH_THE_X12_CARRIER_COLLAPSES_UNBOUND_ROLES_AND_FABRICATES_NO_DELEGATION_OR_CONSUMER_ACK
+closure:
+  result: REVISE
+  terminal_receipt_allowed: false
+  independent_verification_closed: false
+  adoption_credit: 0
+  fitness_credit: 0
+  next_required_evidence:
+  - WORKITEM_ID_CLAIM_DIGEST_AND_ACCEPTANCE_DIGEST
+  - CANONICAL_PRODUCER_RETURN_DIGEST_WITH_PRIVACY_SAFE_EXACT_REQUEST_AND_RESPONSE_BINDINGS
+  - AUTHENTICATED_PRINCIPAL_EFFECTIVE_SCOPE_REQUEST_ID_TRUE_CALL_COUNT_AND_QUOTA_DEBIT
+  - WORKITEM_EFFECT_CEILING_ROLLBACK_LEASE_AND_PRODUCER_RETURN_EXPIRY
+  - DISTINCT_PROVIDER_DIGEST_BOUND_STOOD_OR_FELL
+  - EXPLICIT_NAMED_OPERATIONAL_CONSUMER_ACK_AFTER_STOOD
+independence_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+honest_flaw: THIS_PREFLIGHT_RECOMPUTES_SANITIZED_GIT_BYTES_AND_AVAILABLE_CANONICAL_DIGESTS_BUT_CANNOT_RECONSTRUCT_THE_PRIVATE_CALENDAR_QUERY_OR_RAW_PROVIDER_RESPONSE_CANNOT_AUTHENTICATE_THE_ACTOR_PRINCIPAL_AND_CANNOT_SUPPLY_DISTINCT_PROVIDER_VERIFICATION
+valid_time_utc: '2026-08-05T05:20:01Z'
+recorded_time_utc: '2026-08-05T05:20:01Z'
