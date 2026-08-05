@@ -1,0 +1,138 @@
+---
+schema_id: hfo.gen133.s04.structural_preflight.v1
+result: REVISE
+terminal: false
+seat: S04_HRIST_STRUCTURAL_PREFLIGHT_VERIFIER
+carrier_task_title: HFO_S04_HRIST_STRUCTURAL_VERIFIER
+expected_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+observed_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+self_probe:
+  authenticated_github_login: TTaoGaming
+  tools_observed:
+    - native_automations_inventory_read
+    - github_authenticated_identity_read
+    - github_recent_commit_search
+    - github_exact_commit_read
+    - github_exact_file_and_blob_read
+    - github_canonical_branch_read
+    - deterministic_utf8_sha256_and_git_blob_sha1
+    - yaml_safe_parse
+    - github_create_file
+    - github_readback
+    - slack_direct_pointer
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+selection:
+  rule: NEWEST_IMMUTABLE_CANDIDATE_ADDRESSED_TO_S04_NOT_AUTHORED_BY_S04
+  selection_cutoff_utc: 2026-08-05T21:11:02Z
+  selected_candidate:
+    authoring_seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+    commit: dab0e094c17eaef3ec3ffbe7ca48899e42d0a497
+    commit_time_utc: 2026-08-05T21:08:54Z
+    path: state/coordination/receipts/chatgpt_runtime/seat-03/20260805T210714Z_X13_GOOGLE_CALENDAR_FREEBUSY_PHASE4_DECISION_BINDINGS_REVISE.yaml
+    git_blob_sha1: f67f03d0def09f760b52805cdf2ad11f607687b9
+    exact_utf8_bytes: 4456
+    sha256: 1b5f16ae872679ee34d6def1759c652c68e0207781e317d80bab3da2bdadfed3
+    branch_readback_blob_match: true
+    addressed_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+    authored_by_s04: false
+    newest_eligible_at_cutoff: true
+candidate_structure:
+  schema_id: hfo.gen133.s03.reducer_route.v1
+  parse_result: ONE_NONEMPTY_YAML_MAPPING_WITH_EXPLICIT_DOCUMENT_END
+  canonicalization_declared: false
+  exact_file_digest_recomputed: true
+  source_pointer_complete: true
+  source_pointer_blob_match: true
+source_binding:
+  commit: 50ce75a891b24bb70d5dd4beeee68ae10646ca91
+  path: state/coordination/experiments/cots_connector_x13/20260805T204648Z_GOOGLE_CALENDAR_FREEBUSY_PHASE4_DEFER.md
+  expected_git_blob_sha1: e87dbd3a93036540247f6f4c561e73a607f99330
+  recomputed_git_blob_sha1: e87dbd3a93036540247f6f4c561e73a607f99330
+  exact_utf8_bytes: 6472
+  sha256: 67355034f90bc179559049438458c01b7cf606bf4bec041bd13f97965325d84d
+  parse_result: ONE_YAML_FRONT_MATTER_MAPPING_PLUS_MARKDOWN_BODY
+  event_type: PHASE4_DECISION
+  source_decision: DEFER
+  campaign_status: CLOSED
+freshness:
+  candidate_valid_time_utc: 2026-08-05T21:07:14Z
+  candidate_commit_time_utc: 2026-08-05T21:08:54Z
+  source_valid_time_utc: 2026-08-05T20:46:48Z
+  route_expiry_utc: 2026-08-12T20:46:48Z
+  source_review_expiry_utc: 2026-08-12T20:46:48Z
+  route_open_at_preflight: true
+checks:
+  authority:
+    status: PASS_FOR_CATALOG_ONLY_ROUTE
+    evidence: IMMUTABLE_GIT_PACKET_AND_ONE_SANITIZED_SLACK_POINTER_ONLY
+    excluded: NO_OPERATIONAL_ADOPTION_OR_EXTERNAL_EFFECT_AUTHORITY
+  task_binding:
+    status: PASS
+    evidence: LIVE_ENABLED_S04_AUTOMATION_ID_MATCHES_ROUTE_TARGET
+  actor_carrier_separation:
+    status: REVISE
+    evidence: S03_ROUTE_X13_SOURCE_AND_S04_TARGET_LABELS_ARE_DISTINCT
+    defect: GIT_ACCOUNT_AND_CONNECTOR_PRINCIPALS_DO_NOT_AUTHENTICATE_SEAT_ACTOR_OR_FAILURE_DOMAIN_INDEPENDENCE
+  idempotency:
+    status: REVISE
+    defect: NO_WORKITEM_NONCE_ACCEPTANCE_DIGEST_OR_IDEMPOTENCY_KEY
+  lease_and_expiry:
+    status: REVISE
+    evidence: ROUTE_AND_REVIEW_EXPIRIES_PRESENT_AND_OPEN
+    defect: NO_WORKITEM_OR_PRODUCER_LEASE_BOUND_TO_A_PRODUCER_RETURN_DIGEST
+  privacy:
+    status: REVISE
+    evidence: SOURCE_STATES_FREEBUSY_METADATA_REMAINS_SENSITIVE_AND_LIMITS_USE_TO_CATALOG
+    defect: NO_WORKITEM_LEVEL_DATA_MINIMIZATION_RETENTION_OR_DELETION_BINDING
+  rollback:
+    status: REVISE
+    evidence: ROUTE_CAN_ONLY_BE_SUPERSEDED_AND_HAS_NO_EXTERNAL_OPERATIONAL_EFFECT
+    defect: NO_DIGEST_BOUND_OPERATIONAL_ROLLBACK_BECAUSE_NO_OPERATIONAL_WORKITEM_EXISTS
+  verifier:
+    status: REVISE
+    required: DISTINCT_AUTHORIZED_RAW_GOOGLE_CALENDAR_FREEBUSY_WITNESS_FOR_MATCHED_SUCCESS_AND_FAILURE_CASES
+    observed_result: NOT_RUN
+    producer_digest_binding: MISSING
+  consumer:
+    status: REVISE
+    catalog_consumer: HFO_COTS_CAPABILITY_INVENTORY_CATALOG_ONLY
+    operational_consumer: NOT_ASSIGNED
+    consumer_ack: NOT_OBSERVED
+  claim_and_return:
+    status: REVISE
+    workitem_claim: MISSING
+    acceptance_digest: MISSING
+    producer_return_digest: MISSING
+    raw_provider_readback: MISSING
+strongest_fake_green_mutant:
+  mutant_id: X14_MUTANT_118_6fed91ce0b59
+  commit: 4a8762cb689520b67e73922f866a0f55d4074453
+  path: state/coordination/experiments/false_green_x14/quarantine/20260805T205151Z_X12_EVIDENCE_INFLATION.mutant.yaml
+  git_blob_sha1: d7bac8b71b1a8cdd6a438cfbebe1d06f46e2536d
+  mutation_class: EVIDENCE_INFLATION
+  canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_bytes_declared: 396
+  canonical_overlay_bytes_recomputed: 396
+  canonical_digest_declared: 6fed91ce0b59a7e5862b11d45940969ff444c182ea3ba8d9df22289c495eaa99
+  canonical_digest_recomputed: 6fed91ce0b59a7e5862b11d45940969ff444c182ea3ba8d9df22289c495eaa99
+  direct_verdict: REVISE
+  rejection_reason: >-
+    A Ruby serializer handoff, GitHub contents write/readback, and one Slack delivery receipt are correlated evidence inside shared carrier and connector contexts. They do not establish independent cross-provider verification, an independent failure domain, end-to-end durable serializability, or ConsumerAck.
+decision:
+  result: REVISE
+  material_change: true
+  reason: >-
+    The phase-four source and S03 route are exact-byte reproducible, fresh, task-bound, and safely catalog-only, but they are intentionally nonterminal. No claimed WorkItem, acceptance digest, nonce or idempotency key, producer lease, canonical producer-return digest, authenticated raw Google provider and security-context witness, distinct digest-bound STOOD or FELL, named operational consumer, or ConsumerAck exists.
+  allowed_use: BOUNDED_HUMAN_REVIEWED_CATALOG_REFERENCE_ONLY
+  forbidden_use: OPERATIONAL_ADOPTION_AVAILABILITY_INFERENCE_INDEPENDENT_VERIFICATION_OR_QUORUM_CLOSURE
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+route_rollback: NO_EXTERNAL_OPERATIONAL_EFFECT_SUPERSEDE_ONLY_WITH_NEW_IMMUTABLE_RECEIPT
+valid_time_utc: 2026-08-05T21:13:41Z
+recorded_time_utc: 2026-08-05T21:13:41Z
+---
