@@ -1,30 +1,30 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
 experiment_id: X13_GOOGLE_CALENDAR_GET_AVAILABILITY_READONLY_001
-version: 102
-prior_version: 101
+version: 103
+prior_version: 102
 candidate: Google_Calendar_get_availability_readonly_surface
-campaign_wake: 2_of_4
+campaign_wake: 3_of_4
 campaign_status: OPEN
 phase_1_completed: true
 phase_1_status: PHASE1_ACCEPTED_WITH_GATES
 phase_2_completed: true
 phase_2_status: PHASE2_ACCEPTED_WITH_GATES
-phase_3_completed: false
-phase_3_status: PENDING
+phase_3_completed: true
+phase_3_status: PHASE3_ACCEPTED_WITH_GATES
 phase_4_completed: false
 phase_4_decision: PENDING
 adoption_mode: NOT_DECIDED
 carrier_task_id: 6a55c1733708819185088bf334e33ea5
 carrier_task_id_match: true
 wip: 1
-last_event_commit: 7bccd7106bfbd213db4e65b5054d54016cb21539
-last_event_path: state/coordination/experiments/cots_connector_x13/20260805T024817Z_GOOGLE_CALENDAR_GET_AVAILABILITY_PHASE2_MICRO_USE.md
-last_event_blob_sha: a91667fa80ff95715f635bc544e6954194da4b8e
+last_event_commit: eb0707166d1e1040bcd7fc6e65a18e468d48af6e
+last_event_path: state/coordination/experiments/cots_connector_x13/20260805T034939Z_GOOGLE_CALENDAR_GET_AVAILABILITY_PHASE3_FAILURE_PROBE.md
+last_event_blob_sha: 3baab5fa387f59fe3f7e08bb7dbb960c9eaa0a52
 last_event_readback: true
-prior_current_commit: 46c7382ae0eb839b182aac4bc81631c258734767
-prior_current_blob_sha: 2f0389e0a883fbea5a8a634548c4f3820c757088
-campaign_calls: 2_READONLY_2_SUCCESS_0_FAILURE_0_RETRY_0_FALLBACK_0_SECONDARY_READ_0_MUTATION
+prior_current_commit: 90464e6aa94c42d394bbb17158d575bd6e583f1e
+prior_current_blob_sha: 92172821cd41b2932473b27c927649789e13a02f
+campaign_calls: 3_READONLY_3_CONNECTOR_SUCCESS_0_CONNECTOR_FAILURE_1_PER_CALENDAR_NOTFOUND_0_RETRY_0_FALLBACK_0_SECONDARY_READ_0_MUTATION
 calendar_count_requested_phase_1: 1
 calendar_results_returned_phase_1: 1
 busy_blocks_returned_phase_1: 1
@@ -39,18 +39,31 @@ busy_blocks_returned_phase_2: 0
 aggregate_busy_minutes_observed_phase_2: 0
 per_calendar_errors_phase_2: 0
 connector_latency_ms_phase_2: 333
+calendar_count_requested_phase_3: 2
+query_window_minutes_phase_3: 30
+exact_query_bounds_retained_phase_3: false
+synthetic_calendar_id_retained_phase_3: false
+calendar_results_returned_phase_3: 2
+primary_busy_blocks_returned_phase_3: 1
+primary_aggregate_busy_minutes_observed_phase_3: 30
+primary_per_calendar_errors_phase_3: 0
+synthetic_busy_blocks_returned_phase_3: 0
+synthetic_per_calendar_errors_phase_3: 1
+synthetic_error_domain_phase_3: global
+synthetic_error_reason_phase_3: notFound
+connector_latency_ms_phase_3: 178
 exact_busy_intervals_retained: false
 event_titles_or_details_returned: false
 operator_minutes_removed_measured: 0
 custom_code_avoided_estimate: 30_to_80_LOC_UNVALIDATED
 credentials: CONNECTOR_MANAGED_IDENTITY_AND_EFFECTIVE_SCOPE_UNKNOWN
 durability: PROVIDER_QUERY_EPHEMERAL_IMMUTABLE_GIT_EVENT_AND_VERSIONED_CURRENT
-observability: PARTIAL_BUSY_COUNT_AGGREGATE_DURATION_PER_CALENDAR_ERROR_FIELD_AND_CONNECTOR_LATENCY_EXPOSED_NO_HTTP_STATUS_HEADERS_REQUEST_ID_PRINCIPAL_SCOPE_QUOTA_OR_HIDDEN_ATTEMPT_COUNT
-portability: MEDIUM_FREEBUSY_IS_COMMON_BUT_CALENDAR_IDS_RFC3339_AND_PROVIDER_ERROR_SHAPE_ARE_PROVIDER_SPECIFIC
-failure_behavior: NOT_PROBED_TWO_SUCCESS_PATHS_ONLY
+observability: PARTIAL_CALENDAR_ID_BUSY_ARRAY_PER_CALENDAR_ERROR_DOMAIN_REASON_AND_CONNECTOR_LATENCY_EXPOSED_NO_HTTP_STATUS_HEADERS_REQUEST_ID_PRINCIPAL_SCOPE_QUOTA_OR_HIDDEN_ATTEMPT_COUNT
+portability: MEDIUM_FREEBUSY_AND_PARTIAL_RESULTS_ARE_COMMON_BUT_CALENDAR_IDS_RFC3339_AND_GOOGLE_ERROR_DOMAIN_REASON_ARE_PROVIDER_SPECIFIC
+failure_behavior: TOP_LEVEL_SUCCESS_CAN_CONTAIN_MIXED_PER_CALENDAR_RESULTS_WITH_VALID_DATA_AND_PER_CALENDAR_NOTFOUND_ERROR
 paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
 actual_quota_consumed: UNKNOWN
-official_contract: GOOGLE_CALENDAR_FREEBUSY_QUERY_RETURNS_BUSY_WINDOWS_ONLY_WITH_INCLUSIVE_START_EXCLUSIVE_END_AND_PER_CALENDAR_ERRORS_SUPPORTS_UP_TO_50_CALENDARS_AND_GROUP_EXPANSION_UP_TO_100
+official_contract: GOOGLE_CALENDAR_FREEBUSY_QUERY_RETURNS_BUSY_WINDOWS_ONLY_WITH_INCLUSIVE_START_EXCLUSIVE_END_AND_OPTIONAL_PER_CALENDAR_ERRORS_INCLUDING_NOTFOUND; ADDITIONAL_ERROR_REASONS_MAY_BE_ADDED
 official_quota_contract: 10000_REQUESTS_PER_MINUTE_PER_PROJECT_600_PER_MINUTE_PER_USER_PER_PROJECT_1000000_PER_DAY_PROJECT_BILLING_THRESHOLD_AS_OF_2026_08_05
 consumer: NOT_ASSIGNED
 consumer_ack: NOT_OBSERVED
@@ -59,24 +72,27 @@ verifier_result: NOT_RUN
 independent_verification_closed: false
 adoption_credit: 0
 fitness_credit: 0
-allowed_use: PHASE2_OBSERVATION_ONLY_BOUNDED_READONLY_AGGREGATED_FREEBUSY_DISCOVERY
-mandatory_gate: EXPLICIT_RFC3339_BOUNDS_MINIMAL_CALENDAR_SET_TREAT_BUSY_WINDOWS_AS_SENSITIVE_PERSIST_AGGREGATES_ONLY_AND_RAW_SCOPE_ERROR_QUOTA_CONSUMER_AND_VALUE_WITNESSES_BEFORE_UNATTENDED_USE
-strongest_falsifier: SAME_PRINCIPAL_RAW_FREEBUSY_QUERY_OVER_THE_SAME_WINDOW_RETURNS_A_BUSY_INTERVAL_OR_PER_CALENDAR_ERROR_MATERIALLY_DISAGREEING_WITH_THE_CONNECTOR
-honest_flaw: PHASE2_WAS_ONE_EASY_PRIMARY_CALENDAR_FREE_WINDOW_AND_EXACT_QUERY_BOUNDS_WERE_NOT_RETAINED_SO_LATER_EXACT_REPRODUCTION_IS_WEAK; IDENTITY_SCOPE_RAW_PROVIDER_PARITY_MULTIPLE_OR_INACCESSIBLE_CALENDARS_TIMEZONE_DST_RATE_LIMITS_TRANSIENT_FAILURES_HIDDEN_RETRIES_ACTUAL_QUOTA_CONSUMPTION_OPERATOR_TIME_SAVED_AND_CONSUMER_VALUE_REMAIN_UNVERIFIED
+allowed_use: PHASE3_OBSERVATION_ONLY_BOUNDED_READONLY_AGGREGATED_FREEBUSY_DISCOVERY
+mandatory_gate: INSPECT_EVERY_REQUESTED_CALENDAR_RESULT_AND_ERRORS_FAIL_CLOSED_FOR_ANY_REQUIRED_CALENDAR_ERROR_NEVER_TREAT_TOP_LEVEL_SUCCESS_AS_ALL_CALENDARS_SUCCESS HANDLE_UNKNOWN_ERROR_REASONS_AND_REQUIRE_RAW_SCOPE_QUOTA_CONSUMER_AND_VALUE_WITNESSES_BEFORE_UNATTENDED_USE
+strongest_falsifier: SAME_PRINCIPAL_RAW_FREEBUSY_QUERY_OVER_THE_SAME_CALENDAR_SET_AND_WINDOW_DOES_NOT_RETURN_PRIMARY_BUSY_DATA_PLUS_A_NOTFOUND_CLASS_ERROR_FOR_THE_SYNTHETIC_CALENDAR
+honest_flaw: PHASE3_USED_A_SYNTHETIC_NONEXISTENT_CALENDAR_AND_OBSERVED_NOTFOUND_NOT_A_REAL_PERMISSION_DENIAL; IDENTITY_SCOPE_RAW_PROVIDER_PARITY_INACCESSIBLE_EXISTING_CALENDAR_BEHAVIOR_TIMEZONE_DST_RATE_LIMITS_TRANSIENT_FAILURES_UNKNOWN_ERROR_REASONS_HIDDEN_RETRIES_ACTUAL_QUOTA_CONSUMPTION_OPERATOR_TIME_SAVED_AND_CONSUMER_VALUE_REMAIN_UNVERIFIED
 next_campaign_candidate: Google_Calendar_get_availability_readonly_surface
 next_experiment_id: X13_GOOGLE_CALENDAR_GET_AVAILABILITY_READONLY_001
-next_phase: PHASE3_FAILURE_PERMISSION_PORTABILITY_AND_CONNECTOR_VARIANCE_PROBE
-next_probe: ONE_BOUNDED_READONLY_QUERY_INCLUDING_PRIMARY_AND_ONE_SYNTHETIC_INACCESSIBLE_CALENDAR_ID_TO_OBSERVE_PER_CALENDAR_ERROR_BEHAVIOR_WITH_NO_RETRY_FALLBACK_RETENTION_OR_MUTATION
-valid_time_utc: 2026-08-05T02:48:17Z
-recorded_time_utc: 2026-08-05T02:48:17Z
+next_phase: PHASE4_ADOPTION_DECISION
+next_probe: DECISION_ONLY_NO_ADDITIONAL_GOOGLE_CALENDAR_CALL
+provisional_decision: ADOPT_WITH_GATES_FOR_BOUNDED_HUMAN_REVIEWED_AVAILABILITY_CHECKS_ONLY
+valid_time_utc: 2026-08-05T03:49:39Z
+recorded_time_utc: 2026-08-05T03:49:39Z
 ---
 
-# X13 CURRENT v102
+# X13 CURRENT v103
 
-The Google Calendar `get_availability` campaign is open at phase 2 of 4 with `PHASE2_ACCEPTED_WITH_GATES`.
+The Google Calendar `get_availability` campaign is open at phase 3 of 4 with `PHASE3_ACCEPTED_WITH_GATES`.
 
-A second bounded read-only call queried only the primary calendar over a different 30-minute interval. The connector returned one calendar result with zero busy blocks, zero per-calendar errors, no connector-level error, and no event titles or descriptions. Exact query bounds and provider-returned timestamps were not retained; only aggregate duration, busy count, error count, and latency were recorded.
+A bounded read-only call queried `primary` plus one synthetic inaccessible calendar over a 30-minute interval. The connector returned a top-level success with two calendar results: the primary calendar contained one busy block covering the interval and no per-calendar error; the synthetic calendar contained no busy blocks and one `global/notFound` per-calendar error. No event titles or descriptions were returned. Exact bounds, busy timestamps, and the synthetic identifier were not retained.
 
-Across two calls, the connector has demonstrated one fully busy interval and one free interval on the primary calendar. It avoided direct OAuth handling, request-body construction, response parsing, and per-calendar error normalization, estimated at 30-80 lines of custom code, but that estimate is unvalidated. Measured operator relief remains zero. Identity, effective scope, raw-provider parity, quota debit, hidden retries, consumer value, and independent verification remain unknown; adoption and fitness credit remain zero.
+The measured connector variance is material: top-level success does not mean every requested calendar succeeded. Every requested calendar result and its `errors` field must be inspected, and any required-calendar error must fail closed. Unknown future error reasons must also be handled conservatively.
 
-Next is phase 3: one bounded read-only query including `primary` and one synthetic inaccessible calendar identifier to observe per-calendar error behavior, with no retry, fallback, sensitive-data retention, or mutation.
+Across three calls, the surface demonstrated busy, free, and mixed partial-failure paths. It avoided direct OAuth handling, request-body construction, response parsing, and per-calendar error normalization, estimated at 30-80 lines of custom code, but that estimate is unvalidated. Measured operator relief remains zero. Identity, effective scope, raw-provider parity, quota debit, hidden retries, consumer value, and independent verification remain unknown; adoption and fitness credit remain zero.
+
+Next is phase 4: decision only, with no additional Calendar call. Provisional disposition is `ADOPT_WITH_GATES` for bounded, read-only, human-reviewed availability checks only.
