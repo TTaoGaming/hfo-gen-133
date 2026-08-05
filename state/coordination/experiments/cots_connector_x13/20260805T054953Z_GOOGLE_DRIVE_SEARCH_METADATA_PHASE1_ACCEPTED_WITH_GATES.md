@@ -1,0 +1,101 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_GOOGLE_DRIVE_SEARCH_READONLY_002
+event_id: X13_DRIVE_SEARCH_METADATA_PHASE1_20260805T054953Z
+phase: 1
+campaign_wake: 1_of_4
+result: PHASE1_ACCEPTED_WITH_GATES
+expected_current_version: 104
+next_current_version: 105
+prior_current_path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+prior_current_blob_sha: f491c6ecd84a07b86c39b443359ec59f3732a24b
+carrier_task_id_expected: 6a55c1733708819185088bf334e33ea5
+carrier_task_id_observed: 6a55c1733708819185088bf334e33ea5
+carrier_task_id_match: true
+wip: 1
+candidate: Google_Drive_search_metadata_only_document_surface
+valid_time_utc: 2026-08-05T05:49:53Z
+recorded_time_utc: 2026-08-05T05:49:53Z
+review_expiry_utc: 2026-08-12T05:49:53Z
+official_contract:
+  files_list_url: https://developers.google.com/workspace/drive/api/reference/rest/v3/files/list
+  search_guide_url: https://developers.google.com/workspace/drive/api/guides/search-files
+  limits_url: https://developers.google.com/workspace/drive/api/guides/limits
+  facts:
+    - FILES_LIST_IS_READ_ONLY_AND_SUPPORTS_Q_PAGE_SIZE_PAGE_TOKEN_CORPORA_AND_SPACES
+    - FILES_LIST_MAY_RETURN_FEWER_THAN_PAGE_SIZE
+    - NEXT_PAGE_TOKEN_MEANS_MORE_RESULTS_MAY_EXIST
+    - REJECTED_PAGE_TOKEN_MUST_BE_DISCARDED_AND_PAGINATION_RESTARTED_FROM_FIRST_PAGE
+    - INCOMPLETE_SEARCH_TRUE_MEANS_RESULTS_MAY_BE_MISSING
+    - OMITTED_ORDER_BY_MEANS_RESULT_ORDER_IS_ARBITRARY
+    - DEFAULT_RAW_LIST_FIELDS_ARE_KIND_ID_NAME_MIMETYPE_AND_RESOURCEKEY_UNLESS_A_FIELD_MASK_CHANGES_THEM
+    - METADATA_READONLY_AND_READONLY_SCOPES_ARE_AVAILABLE_BUT_LIVE_CONNECTOR_SCOPE_IS_NOT_EXPOSED
+    - FILES_LIST_COSTS_100_QUOTA_UNITS_UNDER_THE_POST_2026_05_01_STANDARD_MODEL_WITH_GRANDFATHERING_POSSIBLE
+    - STANDARD_DRIVE_API_USE_HAS_NO_ADDITIONAL_COST_BELOW_THE_DAILY_THRESHOLD_AS_CURRENTLY_DOCUMENTED
+connector_contract:
+  item_type_document: ONE_METADATA_ONLY_PROVIDER_PAGE_NO_CONTENT_FETCH
+  best_effort_fetch: false
+  topn: 1
+  require_viewed_by_user: false
+  search_scope: CONNECTOR_DOCUMENTATION_SAYS_ALL_ACCESSIBLE_DRIVES_BY_DEFAULT
+phase1_probe:
+  operation: ONE_BOUNDED_READONLY_METADATA_SEARCH
+  query: HFO
+  query_class: SHORT_NONSECRET_PROJECT_ACRONYM
+  item_type: document
+  topn: 1
+  best_effort_fetch: false
+  require_viewed_by_user: false
+  results_returned: 1
+  content_hydrated: false
+  connector_error: null
+  continuation_token_surfaced: false
+  metadata_fields_observed:
+    - URL
+    - TITLE
+    - STABLE_ITEM_ID
+    - PARENT_IDS
+  raw_result_values_persisted: false
+  retries: 0_OBSERVED
+  fallbacks: 0_OBSERVED
+  secondary_reads: 0
+  mutations: 0
+  connector_latency_ms: NOT_EXPOSED
+measured_fact: CONNECTOR_RETURNED_ONE_METADATA_ONLY_DOCUMENT_RESULT_WITH_POINTER_AND_PARENT_METADATA_WITHOUT_CONTENT_HYDRATION
+connector_variance:
+  - WRAPPER_EXPOSED_URL_TITLE_ID_AND_PARENT_IDS_RATHER_THAN_THE_RAW_FILES_LIST_DEFAULT_FIELD_SET
+  - WRAPPER_DID_NOT_EXPOSE_INCOMPLETE_SEARCH_RAW_CORPUS_EFFECTIVE_FIELD_MASK_HTTP_STATUS_HEADERS_REQUEST_ID_IDENTITY_SCOPE_QUOTA_DEBIT_OR_HIDDEN_ATTEMPT_COUNT
+  - ITEM_TYPE_DOCUMENT_INCLUDED_A_GOOGLE_SHEETS_RESOURCE_AS_A_DOCUMENT_CLASS
+custom_code_avoided_estimate: 40_to_120_LOC_UNVALIDATED_FOR_AUTHENTICATED_QUERY_CONSTRUCTION_METADATA_MAPPING_AND_BASIC_PAGINATION_PLUMBING
+operator_minutes_removed_measured: 0
+operator_minutes_removed_estimate: NOT_CLAIMED
+credentials: CONNECTOR_MANAGED_AUTHENTICATION_OBSERVED_LIVE_IDENTITY_SCOPE_TOKEN_TYPE_AND_CREDENTIAL_CUSTODY_UNKNOWN
+durability: PROVIDER_STORED_METADATA_AND_STABLE_ITEM_ID_ONLY_NO_WORKFLOW_REPLAY_RESUME_TRANSACTION_OR_EXACTLY_ONCE_SEMANTICS
+observability: PARTIAL_RESULT_POINTER_TITLE_ID_AND_PARENT_IDS_EXPOSED_NO_RAW_REQUEST_RESPONSE_FIELD_MASK_CORPUS_INCOMPLETE_SEARCH_HTTP_HEADERS_REQUEST_ID_LATENCY_SCOPE_QUOTA_OR_RETRY_GRAPH
+portability: MEDIUM_METADATA_SEARCH_AND_OPAQUE_IDS_ARE_COMMON_URL_PARENT_ID_AND_ITEM_TYPE_TRANSLATION_ARE_PROVIDER_AND_CONNECTOR_SPECIFIC
+failure_behavior: SUCCESS_PATH_ONLY_ONE_RESULT_DOES_NOT_ESTABLISH_EMPTY_RESULT_PERMISSION_PAGINATION_RATE_LIMIT_OR_TRANSIENT_FAILURE_BEHAVIOR
+paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
+actual_quota_consumed: UNKNOWN_OFFICIAL_FILES_LIST_COST_IS_100_UNITS_BUT_CONNECTOR_FANOUT_AND_PROJECT_QUOTA_CLASS_ARE_UNEXPOSED
+consumer: HFO_COTS_CAPABILITY_INVENTORY_CATALOG_ONLY
+operational_consumer: NOT_ASSIGNED
+consumer_ack: NOT_OBSERVED
+verifier: DISTINCT_AUTHORIZED_SAME_PRINCIPAL_RAW_DRIVE_FILES_LIST_WITNESS_REQUIRED_NOT_ASSIGNED
+verifier_result: NOT_RUN
+adoption_credit: 0
+fitness_credit: 0
+allowed_use: BOUNDED_READONLY_HUMAN_REVIEWED_METADATA_DISCOVERY_WITH_COMPLETENESS_UNKNOWN
+mandatory_gate: SHORT_SPECIFIC_QUERY_LOW_TOPN_EXPLICIT_ITEM_TYPE_BEST_EFFORT_FETCH_FALSE_TREAT_METADATA_AS_SENSITIVE_DO_NOT_PERSIST_RAW_URL_ID_PARENT_OR_TITLE_WITHOUT_NAMED_CONSUMER_DO_NOT_INFER_CONTENT_IDENTITY_FRESHNESS_UNIQUENESS_CANONICALITY_ORDER_OR_COMPLETENESS_REQUIRE_INCOMPLETE_SEARCH_AND_CORPUS_VISIBILITY_BEFORE_ABSENCE_CLAIMS
+strongest_falsifier: SAME_PRINCIPAL_RAW_FILES_LIST_FOR_EQUIVALENT_QUERY_RETURNS_A_DIFFERENT_RESULT_SET_OR_INCOMPLETE_SEARCH_TRUE_OR_CONNECTOR_PERFORMS_CONTENT_FETCH_HIDDEN_PAGINATION_OR_UNBOUNDED_RETRIES
+honest_flaw: ONE_POSITIVE_QUERY_WITH_TOPN_ONE_DID_NOT_TEST_EMPTY_RESULTS_VALID_PAGINATION_INCOMPLETE_SEARCH_PERMISSION_DENIAL_RATE_LIMITS_TRANSIENT_FAILURES_IDENTITY_SCOPE_RAW_PROVIDER_PARITY_ACTUAL_QUOTA_OPERATOR_TIME_SAVED_OR_CONSUMER_VALUE
+next_phase: PHASE2_SMALLEST_HARMLESS_READONLY_MICRO_USE
+next_probe: ONE_BOUNDED_METADATA_ONLY_SEARCH_USING_A_SYNTHETIC_UNLIKELY_QUERY_TOPN_ONE_WITH_NO_PAGINATION_HYDRATION_RETRY_RETENTION_OR_MUTATION
+sealed: true
+---
+
+# X13 Google Drive metadata search phase 1
+
+One bounded, read-only Drive search returned one document-class result while `best_effort_fetch=false`, `item_type=document`, and `topn=1`. The connector surfaced pointer metadata, including a title, URL, stable item identifier, and parent identifiers, but no file body was fetched. Raw result values were deliberately not copied into this durable event.
+
+The useful COTS seam is narrow: authenticated metadata discovery without custom OAuth handling, request construction, or content parsing. The connector surface differs from raw `files.list`: it exposes transformed pointer fields but not the raw corpus, field mask, `incompleteSearch`, HTTP metadata, effective principal or scope, request count, latency, or quota debit. Therefore this wake earns no adoption or fitness credit.
+
+Use is limited to bounded, human-reviewed metadata discovery with completeness unknown. No global absence, canonicality, freshness, uniqueness, least-privilege, exact-cost, or workflow-durability claim is admitted.
