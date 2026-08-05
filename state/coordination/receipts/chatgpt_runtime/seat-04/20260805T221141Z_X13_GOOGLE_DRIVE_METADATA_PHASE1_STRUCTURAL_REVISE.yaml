@@ -1,0 +1,134 @@
+---
+schema_id: hfo.gen133.s04.structural_preflight.v1
+result: REVISE
+terminal: false
+seat: S04_HRIST_STRUCTURAL_PREFLIGHT_VERIFIER
+carrier_task_title: HFO_S04_HRIST_STRUCTURAL_VERIFIER
+expected_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+observed_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+selection:
+  rule: NEWEST_IMMUTABLE_S04_ADDRESSED_NOT_AUTHORED_BY_S04
+  selected_candidate_commit: e327d153bf2d79c3491551380eff63c13797c488
+  selected_candidate_path: state/coordination/receipts/chatgpt_runtime/seat-03/20260805T220714Z_X13_GOOGLE_DRIVE_METADATA_PHASE1_RETURN_BINDINGS_REVISE.yaml
+  selected_candidate_authoring_seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  selected_candidate_git_blob_sha1: 3727b6e8a78e33695112bb2f7911d10e9f9d9c33
+  selected_candidate_exact_utf8_bytes: 5324
+  selected_candidate_sha256: b1b15c26cc1ce086ae7851bfebcd600b5e445cc23f9d9310de2007b3e1450e01
+  branch_head_at_selection: e327d153bf2d79c3491551380eff63c13797c488
+  branch_compare_status: IDENTICAL_AHEAD_0_BEHIND_0
+  addressed_to_s04: true
+  authored_by_s04: false
+  material_change_from_prior_s04_correlation: true
+source:
+  correlation_id: X13_GOOGLE_DRIVE_METADATA_READONLY_006_PHASE1_BASELINE_20260805T214638Z
+  commit: 0a4ad63e2a80405605986b988cdb0f33395b97a0
+  path: state/coordination/experiments/cots_connector_x13/20260805T214638Z_GOOGLE_DRIVE_METADATA_PHASE1_ACCEPTED_WITH_GATES.md
+  git_blob_sha1_expected: 6a8497c17dba610d337e2bad346b5bad800f9f3b
+  git_blob_sha1_recomputed: 6a8497c17dba610d337e2bad346b5bad800f9f3b
+  exact_utf8_bytes: 3820
+  sha256: 02b4ee2ea7e0c3d32670cf0ae965293d5dde4b560660935f9a989cf8e07af2c4
+  pointer_match: true
+  current_pointer_commit: 51b412eb5c4042a1faa417232816e8fc45ab5301
+  current_pointer_version: 121
+  current_pointer_last_event_match: true
+schema_and_canonicalization:
+  candidate_yaml_mapping_parse: PASS
+  candidate_schema_id: hfo.gen133.s03.reducer_route.v1
+  source_frontmatter_yaml_mapping_parse: PASS
+  source_schema_id: hfo.gen133.x13.cots_connector_event.v1
+  candidate_git_blob_recompute: PASS
+  source_git_blob_recompute: PASS
+  exact_provider_request_canonicalization: MISSING_NORMALIZED_WRAPPER_DESCRIPTION_ONLY
+  exact_provider_return_canonicalization: MISSING_RETURNED_METADATA_BYTES_NOT_PERSISTED
+checks:
+  freshness:
+    result: PASS_ROUTE_AND_SOURCE_UNEXPIRED
+    source_valid_time_utc: 2026-08-05T21:46:38Z
+    route_valid_time_utc: 2026-08-05T22:07:14Z
+    review_and_route_expiry_utc: 2026-08-12T21:46:38Z
+  authority:
+    result: PASS_ONLY_AT_CATALOG_AND_PREFLIGHT_CEILING
+    allowed: BOUNDED_METADATA_DISCOVERY_AND_IMMUTABLE_PREFLIGHT_RECEIPT
+    excluded: OPERATIONAL_ADOPTION_DEPLOYMENT_ACCOUNT_OR_SCHEDULE_EFFECT
+  task_binding:
+    result: PASS
+    s04_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+    s03_task_id: 6a539fc5130c81918c13624739fb2a60
+    x13_task_id: 6a55c1733708819185088bf334e33ea5
+    all_observed_enabled_and_exact: true
+  actor_carrier_separation:
+    result: PASS_FOR_PREFLIGHT_ONLY
+    producer_carrier: X13_COTS_CONNECTOR_PDCA_LAB
+    router: S03_REDUCER_VERIFICATION_ROUTER
+    structural_preflight: S04_HRIST
+    limitation: ALL_CHATGPT_CARRIED_SAME_PROVIDER_NONBINDING
+  workitem_claim:
+    result: MISSING
+  acceptance_digest:
+    result: MISSING
+  idempotency:
+    result: MISSING
+    nonce: MISSING
+    idempotency_key: MISSING
+    replay_domain: MISSING
+  lease_and_expiry:
+    result: REVISE
+    review_expiry_present: true
+    producer_claim_lease_present: false
+    producer_return_digest_bound_expiry_present: false
+  privacy:
+    result: REVISE_FOR_OPERATIONAL_PROMOTION
+    positive_controls: NO_CONTENT_FETCH_RAW_IDENTIFIERS_NOT_PERSISTED_TOPN_ONE_MINIMAL_RETENTION_GATE
+    retained_sensitive_classes: SEARCH_TERM_CLASS_ACCESS_PATTERN_RESULT_SURFACE_CLASS_AND_TIMING
+    missing: EXPLICIT_RETENTION_DELETION_BOUNDARY_AND_DIGEST_BOUND_PRIVACY_CLASSIFICATION
+    breach_observed: false
+  rollback:
+    result: PASS_FOR_NO_EFFECT_CATALOG_PROBE_ONLY
+    operational_rollback_binding: MISSING_NOT_APPLICABLE_UNLESS_PROMOTED
+  verifier:
+    result: NOT_RUN
+    required: DISTINCT_AUTHORIZED_RAW_DRIVE_FILES_LIST_WITNESS_WITH_MATCHED_QUERY_MIME_CORPUS_AND_SECURITY_CONTEXT
+    digest_bound_stood_or_fell: MISSING
+  consumer:
+    catalog_consumer: HFO_COTS_CAPABILITY_INVENTORY_CATALOG_ONLY
+    operational_consumer: NOT_ASSIGNED
+    consumer_ack: NOT_OBSERVED
+  measured_outcome:
+    result: CATALOG_OBSERVATION_ONLY
+    supported: ONE_WRAPPER_METADATA_QUERY_RETURNED_ONE_SHEETS_SURFACE_WITHOUT_CONTENT
+    excluded: MIME_EXACTNESS_COMPLETENESS_IDENTITY_SCOPE_CORPUS_ACL_QUOTA_DURABILITY_PARITY_OPERATOR_VALUE
+    adoption_credit: 0
+    fitness_credit: 0
+strongest_fake_green_mutant:
+  mutant_id: X14_MUTANT_119_79f65df5c58c
+  commit: 3b1105e2bc1e2cd47765750e237786e01ee08b30
+  path: state/coordination/experiments/false_green_x14/quarantine/20260805T215228Z_X12_AUTHORITY_ESCALATION.mutant.yaml
+  mutation_class: AUTHORITY_ESCALATION
+  canonicalization_algorithm: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_exact_utf8_bytes: 336
+  canonical_overlay_sha256_expected: 79f65df5c58ccc505eb7fa820a5e326fa685d24fecfc00f17c43e5f89f8cedce
+  canonical_overlay_sha256_recomputed: 79f65df5c58ccc505eb7fa820a5e326fa685d24fecfc00f17c43e5f89f8cedce
+  digest_match: true
+  verdict: REVISE
+  rejection_reason: SLACK_TRANSPORT_ACCEPTANCE_AND_TASK_IDENTITY_DO_NOT_DELEGATE_SCHEDULE_DEPLOYMENT_OR_EXTERNAL_ACCOUNT_MUTATION_AUTHORITY
+decision:
+  result: REVISE
+  reason: >-
+    The immutable route and source bytes are internally coherent, current, task-bound, catalog-scoped, and privacy-aware, but they are not a WorkItem-bound producer return. Exact Drive query bytes and returned metadata bytes are absent, so provider parity and a canonical producer-return digest cannot be reproduced. Claim, acceptance, nonce, idempotency, producer lease, digest-bound expiry and rollback, distinct STOOD or FELL, operational consumer, and ConsumerAck are missing. The result may remain catalog-only with zero adoption and fitness credit; it must not be promoted operationally.
+  strongest_falsifier: >-
+    An immutable WorkItem chain binding this same source to exact claim and acceptance bytes, canonical raw Drive request and response metadata, effective identity and scopes, corpus and ACL context, MIME and pagination/completeness signals, nonce and idempotency, lease and expiry, rollback, a distinct digest-bound STOOD or FELL, a named operational consumer, and explicit ConsumerAck would overturn this REVISE.
+effect_ceiling: IMMUTABLE_GIT_PREFLIGHT_RECEIPT_AND_ONE_SANITIZED_SLACK_POINTER_ONLY
+rollback: NO_CANDIDATE_OR_PROVIDER_EFFECT; SUPERSEDE_ONLY_WITH_A_NEW_IMMUTABLE_RECEIPT
+honest_flaw: >-
+  This pass recomputed Git and canonical overlay bytes but did not and cannot authenticate raw Google Drive parity or effective security context from the wrapper evidence. It is same-provider structural preflight only and carries binding weight zero.
+valid_time_utc: 2026-08-05T22:11:41Z
+recorded_time_utc: 2026-08-05T22:11:41Z
+---
