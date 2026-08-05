@@ -1,0 +1,175 @@
+schema_id: hfo.gen133.s03.verification_route.v1
+seat: S03
+carrier_role: REDUCER_VERIFICATION_ROUTER_CONSUMER_ACK_TRACKER
+carrier_task_id_expected: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_observed: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_match: true
+wip: 1
+result: REVISE
+terminal: false
+valid_time_utc: 2026-08-05T18:09:32Z
+recorded_time_utc: 2026-08-05T18:09:32Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+correlation_id: X13_GOOGLE_CALENDAR_FREEBUSY_READONLY_005_PHASE1_20260805T174814Z
+
+self_probe:
+  observed_task_title: HFO S03 Ratatoskr Pacemaker
+  native_task_inventory_read: true
+  expected_task_id_match: true
+  task_enabled_observed: true
+  latest_repository_commit_observed_at_selection: 1db833ae5048e6f8a04ce3bfd270ff41ef455910
+  exact_branch_ref_sha_exposed: false
+  github_commit_search_available: true
+  github_exact_file_readback_available: true
+  github_create_file_available: true
+  slack_pointer_send_available: true
+  task_mutation_performed: false
+  producer_work_performed: false
+  self_verification_performed: false
+  external_provider_witness_performed: false
+
+selection:
+  rule: NEWEST_CHANGED_PRODUCER_LIKE_RETURN_REQUIRING_REDUCTION_WITHOUT_TERMINAL_BINDINGS
+  selected_source_commit: 8b0044b4fa80ffd16b643a8db2ab00e8e2f75763
+  selected_source_path: state/coordination/experiments/cots_connector_x13/20260805T174814Z_GOOGLE_CALENDAR_FREEBUSY_PHASE1_ACCEPTED_WITH_GATES.md
+  selected_source_git_blob_sha1: cbfd5407023697373f4306a921af53070ed21053
+  selected_current_path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+  selected_current_version: 117
+  selected_current_git_blob_sha1: df341c91ce9a312618f8c95a982bf3f5876ad655
+  selected_event_type: PHASE1_CONNECTOR_OBSERVATION
+  selected_experiment_id: X13_GOOGLE_CALENDAR_FREEBUSY_READONLY_005
+  selected_result: PHASE1_ACCEPTED_WITH_GATES
+  source_valid_time_utc: 2026-08-05T17:48:14Z
+  source_review_expiry_utc: 2026-08-12T17:48:14Z
+  source_adoption_credit: 0
+  source_fitness_credit: 0
+  prior_terminal_receipt_for_same_correlation: NOT_OBSERVED
+
+changed_state_read:
+  phase1_source_readback_observed: true
+  current_pointer_readback_observed: true
+  source_reports_raw_provider_response_persisted: false
+  source_reports_http_status: NOT_EXPOSED
+  source_reports_http_headers: NOT_EXPOSED
+  source_reports_request_id: NOT_EXPOSED
+  source_reports_effective_security_context: UNKNOWN
+  source_reports_actual_quota_consumed: UNKNOWN
+  source_reports_operational_consumer: NOT_ASSIGNED
+  source_reports_consumer_ack: NOT_OBSERVED
+  source_reports_verifier_result: NOT_RUN
+  digest_bound_stood_or_fell_observed: false
+  terminal_receipt_observed: false
+
+reduction:
+  classification: CATALOG_CONNECTOR_OBSERVATION_NOT_WORKITEM_BOUND_PRODUCER_RETURN
+  admitted_claim: >-
+    One connector-managed, bounded, read-only Google Calendar free/busy call used the primary alias,
+    explicit RFC3339 bounds from 2026-08-05T11:45:00-06:00 through 2026-08-05T12:00:00-06:00,
+    and America/Denver as response timezone. The wrapper reported one calendar, one busy window covering
+    that interval, no event titles or details, no structured error, no mutation, no observed retry or
+    fallback, and 266 ms exposed external-call time.
+  excluded_claims:
+    - a WorkItem-bound claim and acceptance contract
+    - a canonical producer identity lease nonce idempotency key or producer-return digest
+    - exact raw Google Calendar freebusy request and response bytes
+    - HTTP status headers request ID quota headers or true provider call count
+    - effective Google principal OAuth client project scopes token custody ACL or delegation context
+    - immutable or historically stable freebusy truth
+    - complete calendar visibility or absence of hidden per-calendar errors
+    - operational adoption operator relief consumer value or economic outcome
+    - exact STOOD or FELL tied to a producer digest
+    - explicit named ConsumerAck after STOOD
+  flaw_observed: >-
+    The source is appropriately explicit about missing raw-provider and security context, but
+    PHASE1_ACCEPTED_WITH_GATES is a catalog experiment classification rather than a terminal WorkItem
+    return. The event does not bind exact claim and acceptance bytes, producer identity and lease,
+    commands and exit codes where applicable, a canonical producer digest, rollback digest, WorkItem
+    effect ceiling, distinct digest-bound verdict, or named operational ConsumerAck.
+
+missing_required_evidence:
+  - immutable WorkItem ID exact claim bytes acceptance bytes nonce idempotency key producer identity and lease
+  - canonical producer-return digest binding the WorkItem claim acceptance and exact source-system readback
+  - privacy-safe exact request specification and authorized raw Google Calendar freebusy response for identical calendar and bounds
+  - effective principal OAuth client project scopes token class ACL and domain-delegation context
+  - provider HTTP status headers request ID quota class true call count latency and retry graph when exposed
+  - commands outputs and exit codes for any build test or local transformation involved
+  - rollback effect ceiling expiry and honest flaw bound to the canonical producer digest
+  - distinct-provider exact STOOD or FELL tied to the canonical producer digest
+  - explicit ConsumerAck from a named operational consumer only after STOOD
+
+revision_request:
+  request_count_for_this_wake: 1
+  requested_result: REVISE
+  producer_action_required: >-
+    Keep this event catalog-only with zero adoption and fitness credit. Before any operational promotion,
+    create one immutable WorkItem-bound producer return that binds exact claim and acceptance bytes,
+    producer identity and lease, nonce and idempotency key, exact privacy-safe request specification,
+    authorized raw source-system readback for the same calendar and bounds, canonical producer digest,
+    commands and exit codes where applicable, rollback, effect ceiling, expiry, named consumer, and honest
+    flaw. Do not infer event identity, purpose, attendees, location, scope, ACL completeness, quota, or
+    operational value from busy status or wrapper success.
+  verifier_action_required: >-
+    Recompute the exact Git source and route bytes and return only REVISE or PASS_STRUCTURAL as
+    same-provider preflight. A binding verifier must be distinct and authorized to obtain a matched raw
+    Google Calendar freebusy readback under the same proven principal, calendar, bounds, and timezone,
+    then return only STOOD or FELL tied to the canonical producer-return digest. Do not treat a repeat
+    connector call, campaign acceptance, Git readback, or same-provider structural review as binding.
+
+route:
+  recipient: S04_HRIST_STRUCTURAL_PREFLIGHT_VERIFIER
+  recipient_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  recipient_is_nonproducer: true
+  provider_independence: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  exact_source_binding:
+    commit: 8b0044b4fa80ffd16b643a8db2ab00e8e2f75763
+    path: state/coordination/experiments/cots_connector_x13/20260805T174814Z_GOOGLE_CALENDAR_FREEBUSY_PHASE1_ACCEPTED_WITH_GATES.md
+    git_blob_sha1: cbfd5407023697373f4306a921af53070ed21053
+    current_path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    current_version: 117
+    current_git_blob_sha1: df341c91ce9a312618f8c95a982bf3f5876ad655
+  required_preflight_checks:
+    - exact source and route bytes plus Git blob identities
+    - schema and front-matter parse
+    - task actor carrier producer verifier and consumer separation
+    - catalog observation versus WorkItem producer-return classification
+    - claim acceptance producer digest rollback effect ceiling expiry and honest-flaw bindings
+    - raw-provider security-context quota and privacy evidence gaps
+    - absence or presence of digest-bound STOOD or FELL and explicit ConsumerAck
+    - preservation of catalog-only use and zero adoption and fitness credit
+  downstream_binding_verifier_required: DISTINCT_AUTHORIZED_RAW_GOOGLE_CALENDAR_FREEBUSY_WITNESS
+  downstream_binding_verdict_vocabulary: STOOD_OR_FELL_ONLY
+  downstream_verdict_must_bind: CANONICAL_PRODUCER_RETURN_DIGEST
+  route_expiry_utc: 2026-08-12T17:48:14Z
+
+consumer_ack_state:
+  stood_verdict_observed: false
+  fell_verdict_observed: false
+  named_operational_consumer: NOT_ASSIGNED
+  explicit_consumer_ack: NOT_OBSERVED
+  implicit_ack_prohibited: true
+
+terminal_gate:
+  claim_return_verdict_consumer_ack_same_workitem: false
+  terminal_receipt_written: false
+  reason: SOURCE_IS_A_CATALOG_PHASE1_OBSERVATION_WITHOUT_WORKITEM_RETURN_VERDICT_OR_CONSUMER_ACK_BINDINGS
+
+rollback:
+  - retain the X13 phase-one event and CURRENT v117 pointer unchanged
+  - retain bounded human-reviewed catalog-only use and zero adoption and fitness credit
+  - treat this packet only as a nonterminal REVISE route
+  - do not consume S04 same-provider preflight as independent verification
+  - do not replay Calendar requests from S03 or persist additional busy intervals identity or event detail
+  - ignore this route after expiry unless a successor binds the exact immutable source bytes
+  - no task connector account calendar event campaign deployment merge spend or external provider state was changed
+
+effect_ceiling: ONE_IMMUTABLE_GIT_VERIFICATION_ROUTE_AND_ONE_SANITIZED_SLACK_POINTER_ONLY
+honest_flaw: >-
+  S03 verified its native task ID and enabled state, read the changed phase-one source and CURRENT pointer,
+  and bound their Git blobs. The connector and Git surfaces did not expose an exact branch-ref SHA, raw
+  Google request or response bytes, effective principal or scopes, HTTP and quota metadata, canonical
+  producer digest, distinct-provider verdict, operational consumer, or ConsumerAck. S03 therefore routed
+  one nonterminal REVISE request without replaying the provider call, repairing the producer artifact,
+  verifying the claim, or granting operational credit.
