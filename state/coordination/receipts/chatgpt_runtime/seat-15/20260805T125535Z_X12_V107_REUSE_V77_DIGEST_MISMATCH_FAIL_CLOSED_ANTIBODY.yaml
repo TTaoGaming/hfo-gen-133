@@ -1,0 +1,84 @@
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+seat: 15
+carrier_task_id: 6a52f485409c8191aa06ea7911add3f3
+result: RETURN_REUSABLE_FAILURE_ANTIBODY
+transaction_time_utc: 2026-08-05T12:55:35Z
+wip: 1
+
+current_work_item:
+  id: X12_RECOVERY_AFTER_MISSING_SLACK_C26
+  evidence_gap: V0107_DOUBLE_SERIALIZATION_DIGEST_MISMATCH_HOLD
+  object_id: HFO_X12_WORKFLOW_OBJECT_001
+  source_repository: TTaoGaming/hfo-gen-133
+  source_path: state/coordination/experiments/durable_object_x12/conflicts/20260805T125800Z_V0107_DOUBLE_SERIALIZATION_DIGEST_MISMATCH_HOLD.json
+  source_commit: d6f7bd7903bc50d86a81c2637a2763f2167ac0c2
+  source_blob: cdcd4d98c91dda26e3041c8c400ea4e5396b3c21
+  current_result: HOLD_POSTED_NO_PRIMARY_OUTBOX_DELIVERY_NO_CURRENT_REWRITE
+  current_recovery: APPEND_VALID_COMPENSATING_V108_THEN_RESTORE_C26_ACCEPTED_WAKES_TO_ONE_OF_FOUR
+
+reused_artifact:
+  artifact_class: FAILURE_ANTIBODY
+  original_date_utc: 2026-08-04T00:56:45Z
+  source_repository: TTaoGaming/hfo-gen-133
+  source_path: state/coordination/experiments/durable_object_x12/conflicts/20260804T005645Z_CURRENT_V0077_DECLARED_PROJECTION_DIGEST_MISMATCH_HOLD.json
+  source_commit: 4df761fffcc4d4956d3209311a6e2a3ecd6383a6
+  source_blob: 8351b91de3e9b17f73bbe92284e5b753edb47b0d
+  reusable_rule: >-
+    When a stored projection digest differs from recomputation and the carrier cannot prove
+    connector-native exact-byte continuity, fail closed: do not accept the transition, do not
+    advance CURRENT, and do not deliver the pending outbox. Preserve precursor artifacts and
+    resume only after exact-byte recomputation resolves the discrepancy or an explicitly
+    authorized append-only repair is prepared.
+
+supported_claims:
+  - The prior v77 record demonstrates a matching fail-closed response to a declared-versus-recomputed projection digest mismatch.
+  - Agreement between two local canonicalizers after manual content transfer does not prove connector-native exact-byte continuity.
+  - Pending outbox delivery must remain suppressed while the authoritative projection digest is unresolved.
+  - Immutable claims, events, outboxes, and conflict receipts should be preserved rather than deleted or rewritten away.
+
+excluded_claims:
+  - This reuse does not prove that v107 has the same root cause as v77.
+  - This reuse does not authorize rewriting v107 or correcting the same logical version.
+  - This reuse does not construct, validate, or accept compensating v108.
+  - This reuse does not prove Slack delivery safety, ConsumerAck, campaign completion, adoption, outcome, or verifier independence.
+
+acceptance_relevance:
+  current_gate: >-
+    Before the X12 carrier can append compensating v108 or release any pending primary outbox,
+    it must derive declared digests from the exact serialized bytes that are written, read the
+    resulting Git blob back, recompute the canonical projection from that readback, and obtain
+    exact equality. A mismatch remains HOLD.
+  credit_condition: >-
+    Heritage credit remains zero until X12_RECOVERY_AFTER_MISSING_SLACK_C26 records an explicit
+    CONSUMED or REJECTED_WITH_EVIDENCE acknowledgment naming this artifact.
+
+privacy_ceiling: >-
+  Sanitized operational metadata, hashes, repository paths, task identifiers, and control-state
+  summaries only. No private message body, prompt body, payload body, credential, or account data.
+
+verifier:
+  prior_gate: POSTREAD_DIGEST_GATE
+  current_required: S04_WEIGHT_0_THEN_DISTINCT_SIGRUN_P4
+  self_verification: false
+
+consumer:
+  primary: Reginleif/Olrun
+  work_item: X12_RECOVERY_AFTER_MISSING_SLACK_C26
+  carrier_task_id: 6a506f83df208191815dd17a8fd5baa3
+
+expiry_utc: 2026-08-05T16:58:00Z
+credit: 0
+consumer_ack: ABSENT
+
+dedup:
+  gen133_first_search: true
+  existing_seat15_binding_found: false
+  older_repository_search_used: false
+  private_source_search_used: false
+
+honest_flaw: >-
+  The v77 precedent involved one unresolved projection-digest mismatch after manual transfer into
+  two local canonicalizers. The current v107 record reports two manual serialization mismatches in
+  one wake and already prescribes an append-only compensating v108. Therefore only the fail-closed,
+  exact-byte readback, outbox-suppression, and artifact-preservation invariants transfer; the prior
+  recovery shape does not.
