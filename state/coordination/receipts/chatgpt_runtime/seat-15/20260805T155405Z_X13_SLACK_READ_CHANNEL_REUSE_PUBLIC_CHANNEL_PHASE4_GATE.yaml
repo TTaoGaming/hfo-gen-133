@@ -1,0 +1,105 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+result: RETURN
+artifact_kind: REUSABLE_PRIOR_ARTIFACT
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_match: true
+wip: 1
+valid_time_utc: 2026-08-05T15:54:05Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+expires_utc: 2026-08-08T08:47:25Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+privacy_ceiling: SANITIZED_REPOSITORY_CONNECTOR_ERROR_AND_CONTROL_METADATA_ONLY
+world_effect_ceiling: ONE_GIT_RECEIPT_THEN_ONE_SANITIZED_SLACK_POINTER
+heritage_credit: 0
+consumer_ack_status: NOT_OBSERVED
+binding_weight: 0
+---
+
+self_probe:
+  task_title_observed: HFO_S15_GONDUL_CONTINUOUS_HERITAGE
+  task_enabled_observed: true
+  github_read_write: AVAILABLE_AUTHENTICATED
+  slack_pointer_write: AVAILABLE_AUTHENTICATED_AFTER_GIT_READBACK
+  file_library_or_drive_needed: false
+  task_mutation_performed: false
+  self_verification_performed: false
+
+current_workitem:
+  workitem_id: X13_SLACK_READ_CHANNEL_READONLY_004_PHASE4_DECISION
+  experiment_id: X13_SLACK_READ_CHANNEL_READONLY_004
+  status: PHASE3_ACCEPTED_WITH_GATES_PHASE4_PENDING
+  source_commit: d5498ee4d74687fc429a2ae3d92b81b5fe26e190
+  source_path: state/coordination/experiments/cots_connector_x13/20260805T154956Z_SLACK_READ_CHANNEL_PHASE3_ACCEPTED_WITH_GATES.md
+  source_blob_sha1: c9e56facb2cea923d200a981ff3f8cd730e4f104
+  current_claim_ceiling: ONE_SYNTHETIC_INVALID_CHANNEL_READ_FAILED_CLOSED_WITH_CHANNEL_NOT_FOUND_NO_CONTENT_RETRY_FALLBACK_OR_MUTATION
+  named_consumer:
+    - X13_SLACK_READ_CHANNEL_READONLY_004_PHASE4_DECISION
+    - HFO_COTS_CAPABILITY_INVENTORY_CATALOG_ONLY
+  operational_consumer: NOT_ASSIGNED
+  consumer_ack: NOT_OBSERVED
+
+reusable_prior_artifact:
+  original_date_utc: 2026-08-01T08:47:25Z
+  source_repository: TTaoGaming/hfo-gen-133
+  source_commit: 86e2995365911ef5b7cd2b0d59a4e05d1cbac1b3
+  source_path: state/coordination/experiments/cots_connector_x13/20260801T084725Z_SLACK_PUBLIC_CHANNEL_PHASE4_ADOPT_WITH_GATES.md
+  source_blob_sha1: d238a375df59cacb7dac42bf8b3c3ae80d0844be
+  source_experiment: X13_SLACK_PUBLIC_CHANNEL_CONNECTOR_001
+  source_result: ADOPT_WITH_GATES
+  source_consumer: Ratatoskr_and_Olrun
+  source_consumer_ack: NOT_OBSERVED
+  source_binding_weight: 0
+
+reuse_contract:
+  reusable_invariant: >-
+    Adopt bounded Slack history reads only with exact channel and limit or time-window bounds. Treat
+    channel_not_found as ABSENT_OR_WRONG_WORKSPACE_OR_INSUFFICIENT_ACCESS, never as an existence,
+    permission, or repair oracle. Keep connector-managed identity, scope, workspace, membership,
+    app class, retry graph, request identifiers, rate limits, latency, retention, and independent
+    verification explicitly unknown. Same-provider read agreement is structural evidence only.
+  supported_claims:
+    - The prior four-phase Slack campaign reached ADOPT_WITH_GATES after bounded public-channel reads and an invalid-channel fail-closed probe.
+    - Its phase-4 decision required ambiguous channel_not_found handling, exact addressing, low-rate bounded calls, privacy minimization, named consumer, expiry, and distinct verification before higher-effect use.
+    - Those read-side gates directly apply to the current read_channel phase-4 catalog decision.
+  excluded_claims:
+    - This is not the current X13 phase-4 verdict and does not independently select ADOPT_WITH_GATES.
+    - The prior campaign's pointer post, message timestamp, permalink, immediate write readback, retry warning, or mutable-retention observations do not prove any write capability or durability for the current read-only candidate.
+    - No live token identity, scopes, workspace, membership, app-distribution class, quota, provider-native raw error parity, latency, ConsumerAck, operator minutes saved, or independent verifier result is established.
+    - The current synthetic failure does not prove that a real channel is absent or inaccessible.
+  acceptance_relevance: >-
+    Phase 4 may reuse the prior decision shape without another Slack call: classify the current surface
+    ADOPT_WITH_GATES only for bounded human-reviewed reads; preserve the ambiguity, identity, privacy,
+    quota, no-unchanged-retry, ConsumerAck, and distinct-verifier gates; withhold adoption and fitness
+    credit beyond the catalog until a named operational WorkItem consumes it.
+
+verification:
+  structural_verifier: S04_SAME_PROVIDER_NONBINDING_WEIGHT_0
+  required_distinct_verifier: DISTINCT_AUTHORIZED_RAW_SLACK_CONVERSATIONS_HISTORY_CLIENT_WITH_EXPLICIT_WORKSPACE_SCOPE_MEMBERSHIP_AND_RAW_ERROR_EVIDENCE
+  verifier_result: NOT_RUN
+
+consumption:
+  consumer: X13_SLACK_READ_CHANNEL_READONLY_004_PHASE4_DECISION
+  consumer_ack_required_for_heritage_credit: true
+  consumer_ack_observed: false
+  heritage_credit_awarded: 0
+
+deduplication:
+  gen133_searched_first: true
+  exact_current_experiment_id_seat15_match_found: false
+  source_already_states_same_error_rule: true
+  material_nonduplicate_value: >-
+    This receipt contributes only the prior completed phase-4 decision boundary and its read-versus-write
+    claim separation; it does not restate the current phase-3 measurement as new evidence.
+  older_github_drive_file_library_or_external_history_needed: false
+  limitation: GitHub code search is nontransactional and may lag a concurrent unindexed duplicate.
+
+honest_flaw: >-
+  The precedent bundled public-channel discovery, bounded reads, one authorized pointer write, immediate
+  write readback, and a valid-channel recovery after an invalid probe. The current campaign measured a
+  narrower read_channel wrapper and phase 3 did not perform a valid-channel recovery. Only the read-side
+  decision gates transfer. The source decision has no ConsumerAck, is same-provider nonbinding, and expires
+  on 2026-08-08T08:47:25Z.
