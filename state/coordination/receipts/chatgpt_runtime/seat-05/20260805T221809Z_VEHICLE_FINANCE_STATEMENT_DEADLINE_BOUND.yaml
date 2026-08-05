@@ -1,0 +1,48 @@
+schema: hfo.gen133.s05_operator_relief_receipt.v1
+receipt_id: S05_VEHICLE_FINANCE_STATEMENT_DEADLINE_BOUND_20260805T221809Z
+task_id: 6a55c182078c8191b89f2dd15f5f640c
+seat: S05
+callsign: Var
+repository: TTaoGaming/hfo-gen-133
+branch: agent/gen133-bootstrap-20260730
+wip: 1
+valid_time_utc: 2026-08-05T22:18:09Z
+result: DEADLINE_BOUND
+active_item:
+  id: VEHICLE_FINANCE_STATEMENT_2026_08
+  state_before: STATEMENT_AVAILABLE_DEADLINE_UNBOUND
+  state_after: PRIVATE_CALENDAR_REVIEW_BOUND
+  source_evidence:
+    gmail_message_id: 19fd3a01c2f22542
+    evidence_class: PROVIDER_EMAIL
+    provider_due_date: 2026-08-24
+  transition:
+    calendar_event_id: edlrv5j51nnrcbtbqcvgu9ta4c
+    review_start: 2026-08-21T10:30:00-06:00
+    review_end: 2026-08-21T10:50:00-06:00
+    timezone: America/Denver
+    visibility: private
+    reminders_minutes_before: [10080, 1440, 120]
+    instruction: VERIFY_PROVIDER_PORTAL_STATUS_AND_AVOID_DUPLICATE_PAYMENT
+priorities:
+  p0:
+    id: PFA_SIGNED_DOCUMENT_SCOPE_CONFLICT
+    next_action: OPERATOR_REVIEW_AND_SEND_EXISTING_NO_SEND_CLARIFICATION_BEFORE_FURTHER_PROCESSING
+  p1:
+    - id: VEHICLE_FINANCE_STATEMENT_2026_08
+      next_action: USE_PRIVATE_CALENDAR_BLOCK_TO_VERIFY_STATUS_BEFORE_DUE_DATE
+    - id: TECTANGLE_PAYMENT_METHOD_RECONCILIATION
+      next_action: WAIT_FOR_ACCOUNTANT_SOURCE_READBACK_BEFORE_AUTHORIZING_PAYMENT
+operator_minutes_removed_estimate: 6
+next_consumer: VAR_BUDGET_AND_FINANCE_RECONCILIATION
+privacy:
+  git_and_slack_ceiling: SANITIZED_STATUS_DATE_AND_OPAQUE_POINTERS_ONLY
+  private_body_retained_in: [GMAIL, GOOGLE_CALENDAR]
+effects:
+  calendar_event_created: true
+  email_sent: false
+  payment_made: false
+  task_mutated: false
+  application_submitted: false
+  account_or_security_changed: false
+honest_flaw: Calendar creation and reminder configuration do not prove reminder delivery, portal status, payment execution, or provider receipt. The operator must verify the provider portal before any payment action.
