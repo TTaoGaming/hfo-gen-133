@@ -1,0 +1,196 @@
+---
+schema_id: hfo.gen133.x14.false_green_mutant.v1
+mutant_id: X14_MUTANT_115_65878b56972c
+experiment_id: X14_FALSE_GREEN_MUTATION_001
+campaign_ordinal: 29
+campaign_wake: 2
+seat: X14_FALSE_GREEN_MUTATION_QA
+carrier_task_id_expected: 6a513e4d9c4c81919db728f85db2dd79
+carrier_task_id_observed: 6a513e4d9c4c81919db728f85db2dd79
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+mutation_subcase: CURRENT_VERSION_REPLAYED_TO_PRIOR_ACCEPTED_VERSION_WHILE_EVENT_OUTBOX_MARKER_AND_RECEIPT_REMAIN_V112
+status: QUARANTINED_NONEXECUTABLE_ROUTED_PENDING_VERDICTS
+valid_time_utc: 2026-08-05T17:53:33Z
+expires_utc: 2026-08-12T17:53:33Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+sealed: true
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+---
+
+self_probe:
+  identity: X14_FALSE_GREEN_MUTATION_QA
+  tools_observed:
+    - native_automations_inventory_read
+    - github_current_pointer_read
+    - github_recent_commit_search
+    - github_exact_commit_file_and_blob_read
+    - github_source_blob_dedup_search
+    - github_prior_verdict_search
+    - github_create_file
+    - github_expected_version_pointer_update
+    - github_readback
+    - deterministic_json_canonicalization_and_sha256
+    - slack_direct_route
+  expected_task_id_match: true
+  x14_task_enabled_observed: true
+  source_x12_task_id: 6a506f83df208191815dd17a8fd5baa3
+  source_x12_task_enabled_observed: true
+  s04_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  s04_enabled_observed: true
+  s09_task_id: 6a539fb148bc8191a30b6009dbf22438
+  s09_enabled_observed: true
+  task_mutation_performed: false
+  source_edit_performed: false
+  world_effect_performed: false
+  self_grading_performed: false
+  independent_quorum_claimed: false
+
+selection:
+  rule: NEWEST_IMMUTABLE_ELIGIBLE_CANDIDATE_NOT_AUTHORED_BY_X14_AND_NOT_PREVIOUSLY_MUTATED_AT_SAME_SOURCE_DIGEST
+  selection_cutoff_utc: 2026-08-05T17:53:33Z
+  selected_source:
+    authoring_seat: X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+    commit: 7fe6c69aee8b3582f8c9944e26e84401badfafec
+    path: state/coordination/experiments/durable_object_x12/slack_receipts/b30be40e4007e1f937fbebd008cf589525b74fbeedef4caaebc4022301b5ed17.json
+    git_blob_sha1: 54b87c2f2109a95f60fb13d443d60f2d6f049f45
+    source_digest_kind: GIT_BLOB_SHA1
+    source_digest: 54b87c2f2109a95f60fb13d443d60f2d6f049f45
+    source_task_id: 6a506f83df208191815dd17a8fd5baa3
+    source_schema_id: hfo.gen133.x12.slack_receipt.v1
+    source_object_id: HFO_X12_WORKFLOW_OBJECT_001
+    source_campaign_id: X12_CARRIER_VARIANCE_C27
+    source_campaign_wake: 1_of_4
+    source_status: ACCEPTED_EXPERIMENT_WAKE_SLACK_RECEIPT
+    source_current_version: 112
+    source_current_commit: 461026f0b665f45dddcc5f57f8b24542359ca64b
+    source_current_blob_sha1: 3de8526ce8a29e7d9b6faf48ea5aa0df6807265d
+    source_event_commit: 2d0421fb282aebfb71816c9e1d7e9797c2b9fe12
+    source_event_blob_sha1: 959fb433e9cb875b13d9d9df191456500659a581
+    source_event_transition: V0111_TO_V0112
+    source_outbox_commit: 1a27c353300ef97cc3fe26645818dc162b634dc7
+    source_outbox_blob_sha1: 816180c4074dcada8e9d874764930ff904a664be
+    source_idempotency_key: b30be40e4007e1f937fbebd008cf589525b74fbeedef4caaebc4022301b5ed17
+    source_delivery_marker: HFO-X12-DELIVERY:b30be40e4007e1f937fbebd008cf589525b74fbeedef4caaebc4022301b5ed17
+    source_effect_ceiling: ONE_ZERO_MATCH_SLACK_MARKER_SEARCH_ONE_SINGLE_SOURCE_CANONICAL_PAYLOAD_HANDOFF_ONE_OBSERVATION_ONE_CLAIM_ONE_OUTBOX_ONE_EVENT_ONE_FILE_LOCAL_CURRENT_UPDATE_ONE_SLACK_ADVANCE_POST_ONE_APPEND_ONLY_RECEIPT
+    source_consumer: Reginleif/Olrun
+    source_verifier: S04_WEIGHT_0_THEN_DISTINCT_SIGRUN_P4
+    source_valid_time_utc: 2026-08-05T17:44:50Z
+    source_git_commit_time_utc: 2026-08-05T17:50:58Z
+    source_expiry_utc: 2026-08-05T21:44:50Z
+    x14_route_expiry_utc: 2026-08-12T17:53:33Z
+  eligibility:
+    authored_by_x14: false
+    immutable_commit_bound: true
+    mutable_current_projection_excluded: true
+    prior_x14_mutation_at_source_digest_before_write: false
+    newest_immutable_candidate_at_cutoff: true
+  discovery_limit: >-
+    Exact source-blob search returned no prior X14 mutation before this write. Recent commit search and code indexing are not
+    transactionally atomic and can lag; eligibility is bound to the immutable Git commit and blob observed at the cutoff.
+
+negative_control:
+  copy_mode: QUARANTINED_OVERLAY_SOURCE_UNCHANGED
+  executable: false
+  exactly_one_overlay_field_changed: true
+  mutated_field: canonical_receipt.current_binding.version
+  original_value: 112
+  mutated_value: 111
+  mutation_semantics: >-
+    Replace only the copied Slack receipt's current-binding version with the already-consumed prior version 111. Preserve the exact
+    source commit, path, blob, task, object, campaign, event binding, outbox binding, idempotency key, delivery marker, Slack receipt,
+    effect ceiling, consumer, verifier, expiry, rollback, and honest flaw. The mutant therefore replays a prior version while every
+    immutable transition and delivery artifact still proves the accepted 111-to-112 advance.
+  source_file_rewritten: false
+  source_current_pointer_changed_by_mutant: false
+  scheduled_task_changed: false
+  slack_history_changed_by_mutant: false
+
+canonicalization:
+  algorithm: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_json: '{"mutated_field":"canonical_receipt.current_binding.version","mutated_value":111,"mutation_class":"DUPLICATE_IDEMPOTENCY_VERSION","original_value":112,"source_blob_sha1":"54b87c2f2109a95f60fb13d443d60f2d6f049f45"}'
+  canonical_byte_count: 213
+  canonical_mutation_digest_sha256: 65878b56972c7cb0104fcadcb280fb0f71d07b9580752e6010047afe93867657
+
+expected_rejection:
+  expected_verdict: REVISE
+  reason_code: CURRENT_BINDING_VERSION_REPLAYS_PRIOR_VERSION_AND_CONFLICTS_WITH_V111_TO_V112_EVENT_OUTBOX_AND_DELIVERY_RECEIPT
+  expected_rejection_reason: >-
+    Version 111 is the already-consumed prior state. The exact event path and binding prove a 111-to-112 transition, the immutable
+    CURRENT binding names commit 461026f0b665f45dddcc5f57f8b24542359ca64b and blob 3de8526ce8a29e7d9b6faf48ea5aa0df6807265d,
+    and the outbox, idempotency key, delivery marker, Slack timestamp, receipt digest, and rollback all belong to version 112.
+    Replacing only current_binding.version with 111 creates a replay/duplicate-version claim and must not earn accepted-wake,
+    delivery, idempotency, or state-advance credit.
+  named_gate: S04_DUPLICATE_IDEMPOTENCY_VERSION_EXACT_OBJECT_EXPECTED_PRIOR_NEXT_CURRENT_EVENT_OUTBOX_IDEMPOTENCY_DELIVERY_MARKER_SOURCE_DIGEST_AND_REPLAY_GATE
+  acceptance_condition: >-
+    S04 resolves the immutable source, recomputes the 213-byte overlay and SHA-256, binds the event, CURRENT, outbox, idempotency key,
+    delivery marker, and Slack receipt to the same object and 111-to-112 transition, identifies version 111 as an already-consumed
+    prior version, and returns REVISE without editing or replaying the source.
+  forbidden_false_green: >-
+    Accept the mutant because the idempotency key and Slack marker are unique, because the delivery exists, or because version 111
+    is adjacent to 112. Unique delivery evidence cannot authorize a duplicate or stale state version.
+
+routing:
+  structural_verifier: S04_STRUCTURAL_PREFLIGHT
+  structural_verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  direct_candidate_priority_required: true
+  distinct_verifier: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  distinct_verifier_task_id: 6a539fb148bc8191a30b6009dbf22438
+  distinct_verifier_route_status: AVAILABLE_AS_DISTINCT_SEAT_SAME_PROVIDER_NONBINDING
+  consumer: X14_CAMPAIGN_REDUCER_AND_X12_DURABLE_OBJECT_REDUCER
+  route_scope: DIRECT_MUTANT_REVIEW_NOT_POINTER_ONLY
+  expiry_utc: 2026-08-12T17:53:33Z
+
+campaign:
+  campaign_ordinal: 29
+  accepted_wakes_after_write: 2
+  decision_due: false
+  intended_mutants:
+    - X14_MUTANT_114_e19542ebae61
+    - X14_MUTANT_115_65878b56972c
+  current_factor: DUPLICATE_IDEMPOTENCY_VERSION
+  next_factor: FABRICATED_CONSUMER_ACK
+  direct_s04_route_results_observed_before_write: 0
+  embedded_s04_exact_rejections_observed_before_write: 1
+  distinct_s09_rejections_observed_before_write: 1
+  current_mutant_status: NEWLY_ROUTED_PENDING
+  distinct_provider_verdicts: 0
+  evidence_class: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+
+prior_verdict_observed:
+  mutant_114:
+    mutant_id: X14_MUTANT_114_e19542ebae61
+    mutation_class: STALE_SOURCE_DIGEST
+    direct_s04_route_result: NOT_OBSERVED
+    embedded_s04_exact_result: REJECT
+    embedded_s04_commit: e001c4ad0681a68f51019b1a46cf3efa775e23f7
+    embedded_s04_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260805T171851Z_X13_SLACK_READ_CHANNEL_PHASE4_STRUCTURAL_REVISE.yaml
+    embedded_s04_blob: 3f81140c012391e05c00acb24dd32fcfa22a75c6
+    distinct_s09_result: REVISE
+    distinct_s09_commit: babc670ab9d4921b65340cc31c1932c494af58a5
+    distinct_s09_path: state/coordination/votes/20260805T173500Z_S09_X14_MUTANT114_STALE_SOURCE_DIGEST_REVISE.vote.yaml
+    distinct_s09_blob: 2e1c25ee4cd4befc22b8546e15fe6eea907ec5cd
+    evidence_class: SAME_PROVIDER_NONBINDING
+    binding_weight: 0
+    campaign_29_retroactive_score_change_allowed: true
+
+rollback:
+  action: RETAIN_OR_IGNORE_QUARANTINE_ARTIFACT_PRESERVE_SOURCE_CURRENT_TASKS_SLACK_HISTORY_AND_PROVIDER_STATE_UNCHANGED
+  source_restore_required: false
+  provider_restore_required: false
+
+honest_flaw: >-
+  The replay is conspicuous because the unchanged event path, transition binding, CURRENT commit and blob, rollback text, outbox,
+  idempotency key, and delivery marker all identify version 112. It does not test an internally consistent duplicate where every
+  copied version field is replayed together, a reused idempotency key with a new payload, two writers racing the same expected
+  version, marker reuse across channels, or a valid retry after ambiguous provider acceptance. Candidate discovery and source-digest
+  dedup remain best-effort because GitHub indexing can lag. All observed verifier evidence is same-provider and nonbinding with
+  weight zero. No independent quorum is claimed. No source, task, schedule, deployment, merge, publication, account, spend,
+  permanent deletion, Slack history, or external provider state was modified.
