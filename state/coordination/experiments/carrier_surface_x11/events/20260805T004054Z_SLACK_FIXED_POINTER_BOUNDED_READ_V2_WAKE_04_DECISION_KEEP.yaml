@@ -1,0 +1,95 @@
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+event_id: X11_SLACK_FIXED_POINTER_BOUNDED_READ_V2_WAKE_04_DECISION_KEEP_20260805T004054Z
+experiment_id: X11_SLACK_FIXED_POINTER_BOUNDED_READ_V2
+campaign_version: 4
+task_id_expected: 6a55089a9adc8191bda54541f7f9effa
+task_id_observed: 6a55089a9adc8191bda54541f7f9effa
+task_id_match: true
+carrier: HFO_GEN133_X11
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+prior_current_version: 99
+next_current_version: 100
+campaign_wake: 4
+campaign_target_wakes: 4
+accepted: true
+campaign_status: DECIDED
+campaign_disposition: KEEP
+baseline:
+  accepted_wakes: 3
+  prior_result_counts: [1, 1, 1]
+  prior_target_timestamp_present: [true, true, true]
+  prior_expected_marker_present: [true, true, true]
+  prior_content_outside_bounded_window_observed: [false, false, false]
+  prior_permission_class: AUTHENTICATED_SLACK_CHANNEL_HISTORY_BOUNDED_READ_AVAILABLE
+  prior_error_class: NONE
+hypothesis: authenticated_Slack_channel_history_will_repeatedly_return_only_the_known_message_inside_the_fixed_one_second_envelope_with_the_target_timestamp_and_non_sensitive_marker_visible
+controlled_factor: slack_read_write
+exact_probe:
+  action: slack_read_channel
+  channel_id: C0BGNGPJFHU
+  oldest: '1785563052.000000'
+  latest: '1785563053.000000'
+  limit: 10
+  response_format: detailed
+  persist_only:
+    - result_count
+    - target_timestamp_present
+    - expected_marker_present
+    - permission_class
+    - error_class
+    - latency_when_exposed
+    - operator_relay_minutes
+measured_result:
+  result_count: 1
+  target_timestamp_present: true
+  expected_marker_present: true
+  content_outside_bounded_window_observed: false
+  four_wake_result_counts: [1, 1, 1, 1]
+  four_wake_target_timestamp_present: [true, true, true, true]
+  four_wake_expected_marker_present: [true, true, true, true]
+  four_wake_content_outside_bounded_window_observed: [false, false, false, false]
+  four_wake_latencies_ms: [NOT_EXPOSED, NOT_EXPOSED, NOT_EXPOSED, NOT_EXPOSED]
+  operator_relay_minutes: 0
+  changed_capability: false
+  campaign_decision: true
+  andon: false
+permission_error:
+  permission_class: AUTHENTICATED_SLACK_CHANNEL_HISTORY_BOUNDED_READ_AVAILABLE
+  error_class: NONE
+  latency_when_exposed: NOT_EXPOSED
+decision:
+  disposition: KEEP
+  keep_scope:
+    - bounded_authenticated_channel_history_read
+    - sanitized_result_count_visibility
+    - known_target_timestamp_presence_check
+    - expected_non_sensitive_marker_presence_check
+  rejected_claims:
+    - workspace_completeness
+    - native_Slack_filtering_semantics
+    - index_freshness
+    - message_authenticity
+    - Slack_write_visibility
+    - independent_verification
+strongest_falsifier: the_fixed_one_second_envelope_cannot_be_read_the_known_target_timestamp_or_expected_marker_is_absent_or_the_connector_returns_content_outside_the_bounded_channel_window
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer: [Reginleif, Ratatoskr]
+claim_ceiling: bounded_authenticated_Slack_channel_history_result_count_target_timestamp_and_non_sensitive_marker_visibility_only_not_workspace_completeness_native_Slack_semantics_index_freshness_message_authenticity_write_visibility_or_independent_verification
+same_provider_independence_claim: false
+honest_flaw: one_old_public_channel_pointer_tests_only_one_connector_history_path_and_cannot_separate_connector_filtering_from_native_Slack_semantics_or_prove_workspace_completeness_or_write_behavior
+next_factor: native_tasks_read_visibility
+next_campaign:
+  experiment_id: X11_NATIVE_TASKS_SANITIZED_INVENTORY_READ_V2
+  status: INITIALIZED_NOT_PROBED
+  accepted_wakes: 0
+  target_wakes_before_decision: 4
+  hypothesis: the_read_only_native_tasks_inventory_surface_will_repeatedly_show_the_expected_X11_task_identity_and_enabled_state_without_requiring_login_or_mutation
+  first_probe: call_automations_list_read_only_and_persist_only_provider_call_success_expected_task_visible_expected_title_match_enabled_state_sanitized_active_HFO_task_count_permission_error_latency_when_exposed_and_operator_relay_minutes
+  privacy_gate: do_not_persist_unrelated_task_titles_prompt_bodies_schedules_timezones_or_run_metadata
+  mutation_allowed: false
+slack_action: POST_CAMPAIGN_DECISION_AFTER_GIT_READBACK
+sensitive_readback_externalized: false
+valid_time_utc: 2026-08-05T00:40:54Z
+sealed: true
