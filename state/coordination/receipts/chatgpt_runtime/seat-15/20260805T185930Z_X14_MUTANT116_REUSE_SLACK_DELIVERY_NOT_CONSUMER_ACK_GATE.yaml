@@ -1,0 +1,155 @@
+---
+schema_id: hfo.gen133.heritage_reuse_result.v1
+result_id: S15_X14_MUTANT116_REUSE_SLACK_DELIVERY_NOT_CONSUMER_ACK_GATE_20260805T185930Z
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+task_id_match: true
+wip_limit: 1
+result: RETURN_REUSABLE_PRIOR_ARTIFACT
+artifact_class: TRANSPORT_RECEIPT_NOT_CONSUMER_ACK_FAILURE_ANTIBODY
+valid_time_utc: 2026-08-05T18:59:30Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+expires_utc: 2026-08-12T18:54:02Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+privacy_ceiling: SANITIZED_REPOSITORY_CONTROL_METADATA_AND_OPAQUE_SLACK_RECEIPT_KEYS_ONLY_NO_MESSAGE_BODY_PRIVATE_CHANNEL_NAME_USER_ID_OR_EMAIL
+world_effect_ceiling: ONE_IMMUTABLE_GIT_RECEIPT_AND_ONE_SANITIZED_SLACK_POINTER_ONLY
+binding_decision: false
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+heritage_credit: 0_PENDING_EXACT_NAMED_CONSUMER_ACK
+---
+
+self_probe:
+  identity_claim: HFO_GEN133_S15_HERITAGE_REUSE_AND_DEDUP_CELL
+  expected_task_id: 6a52f485409c8191aa06ea7911add3f3
+  observed_task_id: 6a52f485409c8191aa06ea7911add3f3
+  task_enabled_observed: true
+  observation_source: NATIVE_AUTOMATIONS_LIST_EXACT_MATCH
+  tools_used:
+    - native_automations_inventory_read
+    - github_recent_commit_search
+    - github_exact_commit_and_file_read
+    - github_prior_heritage_dedup_search
+    - github_create_file
+    - github_exact_readback
+    - slack_sanitized_pointer_post
+  task_mutation_performed: false
+  self_verification_performed: false
+
+current_workitem:
+  workitem_id: X14_MUTANT_116_285a48c95418
+  mutation_class: FABRICATED_CONSUMER_ACK
+  mutation_subcase: NAMED_CONSUMER_AND_PRODUCER_SLACK_DELIVERY_RECEIPT_LAUNDERED_AS_CONSUMER_AUTHORED_ACCEPTANCE
+  status: QUARANTINED_NONEXECUTABLE_ROUTED_PENDING_VERDICTS
+  candidate_commit: 2b774e433e2afcb39ee12af62b29b22567df58a6
+  candidate_path: state/coordination/experiments/false_green_x14/quarantine/20260805T185402Z_X12_FABRICATED_CONSUMER_ACK.mutant.yaml
+  candidate_blob_sha1: 4666e1aa1dd92003cf626571f46ebcc982610537
+  declared_canonical_mutation_digest_sha256: 285a48c95418551deac9eefed95990090b1928d980709268f6676f9b89fdb4da
+  declared_canonical_byte_count: 443
+  source_commit: d5281671cd6272bf8a5a8111125e37c7b29c6123
+  source_path: state/coordination/experiments/durable_object_x12/slack_receipts/1a8e09116b6c55098560063a916ee9a58c6627d1842c89b20fffe56403d6de6a.json
+  source_blob_sha1: 0b496734487ecd2d43ffa1f8fd226d2ebdf01174
+  source_transition: V0112_TO_V0113
+  source_consumer: Reginleif/Olrun
+  source_consumer_ack: ABSENT
+  source_slack_delivery_receipt_present: true
+  source_expiry_utc: 2026-08-05T22:44:36Z
+  verifier:
+    - S04_STRUCTURAL_PREFLIGHT
+    - S09_STRATEGIC_REASONING_AND_VOTING_CELL_SAME_PROVIDER_ADVISORY
+  consumer:
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_REDUCER
+  expiry_utc: 2026-08-12T18:54:02Z
+
+reused_prior_artifact:
+  original_date_utc: 2026-08-02T08:46:43Z
+  source_repository: TTaoGaming/hfo-gen-133
+  source_commit: 449f9b38893b825a2d8c356cb3911876f187ac03
+  source_path: state/coordination/experiments/cots_connector_x13/20260802T084643Z_SLACK_NATIVE_MESSAGE_RECEIPT_PHASE4_DECISION.md
+  source_blob_sha1: 81f2ece6986cc4a74e2002dcffe36dfb9794b252
+  source_experiment_id: X13_SLACK_NATIVE_MESSAGE_RECEIPT_001
+  source_decision: ADOPT_WITH_GATES
+  source_fitness_credit: 0_PENDING_SOURCE_BOUND_CONSUMER_ACK_AND_MEASURED_OPERATOR_OUTCOME
+  reuse_mode: DIRECT_TRANSPORT_SEMANTICS_PRECEDENT_ONLY_NOT_A_DIRECT_MUTANT_116_VERDICT
+  reusable_rule: >-
+    A Slack server-returned channel and timestamp, successful post, exact same-connector readback, delivery marker, or append-only producer receipt
+    proves at most bounded transport acceptance and structural reconciliation. It does not prove that the named downstream consumer read,
+    accepted, used, or consumed the exact source transition. ConsumerAck requires a separate consumer-authored immutable artifact binding
+    authenticated consumer identity and authority context, exact source commit/path/blob and transition, acceptance criterion and scope,
+    valid acknowledgement time, consumption result, downstream effect ceiling, and honest flaw.
+
+supported_claims:
+  - The prior X13 campaign directly observed a successful Slack post and exact readback keyed by the server-returned channel and timestamp.
+  - The prior decision explicitly classified same-connector readback as structural reconciliation rather than independent delivery verification.
+  - The prior decision assigned zero fitness credit pending source-bound ConsumerAck and measured operator outcome.
+  - The current X12 source names Reginleif/Olrun as intended consumer and records a producer-side Slack delivery receipt while consumer_ack remains ABSENT.
+  - Copying the producer delivery timestamp, source blob, transition, and consumer name into an ACK-shaped object does not add consumer authorship, authentication, acceptance scope, or consumption evidence.
+
+excluded_claims:
+  - This S15 receipt is not a direct verdict on mutant 116 and earns no caught-gate credit.
+  - It does not independently recompute the current 443 canonical bytes or declared SHA-256.
+  - It does not prove that Reginleif, Olrun, or another authorized consumer never acknowledged or consumed the source outside the exact repository evidence inspected.
+  - It does not validate Slack workspace identity, token scopes, channel membership, raw HTTP response, retention, immutability, exactly-once delivery, or independent cross-client readback.
+  - It grants no ConsumerAck, acceptance, closure, adoption, fitness, operator relief, campaign completion, operational consumption, or independent verification.
+
+acceptance_relevance:
+  exact_overlap: PRODUCER_SIDE_SLACK_DELIVERY_RECEIPT_AND_NAMED_INTENDED_CONSUMER_WITH_SOURCE_CONSUMER_ACK_ABSENT
+  expected_use: >-
+    S04 may reuse the prior transport boundary while independently resolving mutant 116 and the exact X12 source receipt. X14 and X12 reducers
+    may consume this pointer only after a direct exact-mutant verdict and an explicit record of which gate checks were reused.
+  required_current_checks:
+    - resolve mutant 116 at exact commit path and blob
+    - resolve the X12 source Slack receipt at exact commit path and blob
+    - recompute the declared 443 canonical bytes and SHA-256
+    - confirm canonical_receipt.consumer_ack is absent from the immutable source
+    - separate producer transport acceptance and same-connector readback from consumer-authored acceptance
+    - reject copied consumer names source digests transitions delivery markers and producer timestamps as substitute ConsumerAck provenance
+    - require a separately authored immutable consumer receipt with identity authority exact source binding acceptance criterion valid time consumption result and honest flaw
+  heritage_credit_condition: >-
+    Credit remains zero unless S04, X14_CAMPAIGN_REDUCER, or X12_DURABLE_OBJECT_REDUCER explicitly records consumption of this exact result ID,
+    commit, path, and blob and identifies the reused transport-versus-consumer-ack gate.
+
+verifier:
+  primary: S04_STRUCTURAL_PREFLIGHT
+  advisory: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  distinct_provider_or_nonproducer_consumed: false
+
+consumer:
+  named:
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_REDUCER
+  consumer_ack_observed: false
+
+expiry:
+  result_expiry_utc: 2026-08-12T18:54:02Z
+  earlier_invalidation:
+    - an exact direct verdict for mutant 116 is committed
+    - mutant 116 is superseded withdrawn or expires
+    - candidate or source blob no longer matches the bound bytes
+    - a distinct consumer-authored exact-source acknowledgement is committed
+
+dedup:
+  exact_mutant_116_heritage_match_before_write: false
+  nearest_prior_s15_controls:
+    - S15_X14_MUTANT094_REUSE_S04_FABRICATED_CONSUMER_ACK_GATE_20260804T205621Z
+    - S15_X14_MUTANT095_REUSE_SLACK_DELIVERY_UNSUPPORTED_PASS_EXACTLY_ONCE_DEDUP_GATE_20260804T215658Z
+  nonduplicate_delta: >-
+    Prior fabricated-ConsumerAck heritage bound generic missing consumer-authored provenance and explicitly listed transport delivery laundered
+    as acceptance as an untested subcase. Prior Slack-delivery heritage addressed unsupported PASS and exactly-once claims, not ConsumerAck.
+    This result binds the direct X13 Slack receipt decision to the current X12 producer-delivery-versus-consumer-acceptance mutation and adds no
+    broader architecture, verdict, or authority claim.
+
+rollback:
+  action: IGNORE_OR_SUPERSEDE_THIS_IMMUTABLE_HERITAGE_OFFER
+  source_restoration_required: false
+  external_effect_compensation_required: false
+
+honest_flaw: >-
+  The prior X13 campaign established only connector-level transport and readback semantics; it did not test a real downstream consumer reply,
+  authenticated consumer principal, delegated authority, partial consumption, stale acknowledgement, wrong transition, or an authentic weak
+  acknowledgement promoted above its scope. The current mutant is conspicuous because it reuses the producer delivery timestamp and the source
+  explicitly records consumer_ack ABSENT. GitHub code search can lag, so dedup is best-effort. All observed verifier evidence is same-provider
+  and nonbinding with weight zero; no independent quorum is claimed.
