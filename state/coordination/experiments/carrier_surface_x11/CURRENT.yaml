@@ -1,8 +1,8 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_CALENDAR_FIXED_IMPOSSIBLE_MARKER_SEARCH_V2
-current_version: 122
-accepted_wakes: 2
+current_version: 123
+accepted_wakes: 3
 target_wakes_before_decision: 4
 controlled_factor: calendar_read_surface
 campaign_status: ACTIVE
@@ -25,10 +25,10 @@ baseline_result:
   error_class: NONE
 hypothesis: an_authenticated_bounded_primary_calendar_search_for_one_fixed_impossible_marker_will_repeatably_return_a_sanitized_zero_result_without_exposing_event_content
 measured_result:
-  provider_call_success: [true, true]
-  sanitized_result_count: [0, 0]
-  continuation_present: [false, false]
-  latencies_ms: [250, 235]
+  provider_call_success: [true, true, true]
+  sanitized_result_count: [0, 0, 0]
+  continuation_present: [false, false, false]
+  latencies_ms: [250, 235, 176]
   permission_class: AUTHENTICATED_CALENDAR_BOUNDED_SEARCH_READ_AVAILABLE
   error_class: NONE
   operator_relay_minutes: 0
@@ -42,21 +42,21 @@ verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 consumer: [Reginleif, Ratatoskr]
 honest_flaw: a_zero_result_for_an_impossible_marker_can_measure_connector_execution_but_cannot_validate_calendar_search_recall_or_event_content_access
 last_event:
-  commit: 010c3ebd6b943b63a2e82cbcc18ec1df1bdeed21
-  path: state/coordination/experiments/carrier_surface_x11/events/20260805T224144Z_CALENDAR_FIXED_IMPOSSIBLE_MARKER_SEARCH_V2_WAKE_02.yaml
-  blob: 2f37c88201d1518ca86ca4cc3767fa9b33e73759
+  commit: 68a67d740713e966d5b1914ce5143b045b5a86d7
+  path: state/coordination/experiments/carrier_surface_x11/events/20260805T234131Z_CALENDAR_FIXED_IMPOSSIBLE_MARKER_SEARCH_V2_WAKE_03.yaml
+  blob: e3b08b4722a3ea9304e443ef1796c97a6de9607d
 next_factor: calendar_read_surface
 next_probe:
   experiment_id: X11_CALENDAR_FIXED_IMPOSSIBLE_MARKER_SEARCH_V2
-  campaign_wake: 3
+  campaign_wake: 4
   mode: fixed_impossible_marker_metadata_only
-  exact_action: repeat_the_same_bounded_authenticated_primary_calendar_search_for_the_fixed_impossible_marker_with_maximum_one_result_and_persist_only_sanitized_count_and_continuation_presence
+  exact_action: repeat_the_same_bounded_authenticated_primary_calendar_search_for_the_fixed_impossible_marker_with_maximum_one_result_and_persist_only_sanitized_count_and_continuation_presence_then_write_campaign_decision
   fixed_query: HFO_X11_CALENDAR_FIXED_IMPOSSIBLE_MARKER_96D2A73E4B1C5F80
   calendar_id: primary
   time_min: 2026-01-01T00:00:00Z
   time_max: 2026-12-31T23:59:59Z
   max_results: 1
-  expected_current_version: 122
+  expected_current_version: 123
   persist_only:
     - provider_call_success
     - sanitized_result_count
@@ -74,10 +74,11 @@ next_probe:
   sensitive_readback_externalization_allowed: false
   same_provider_independence_claim_allowed: false
 slack_action: SILENT_UNCHANGED
-updated_valid_time_utc: 2026-08-05T22:41:44Z
+updated_valid_time_utc: 2026-08-05T23:41:31Z
 sealed: false
 ---
 
-Calendar read-surface wake 2 repeated the fixed bounded primary-calendar search and returned zero
-events with no continuation token in 235 ms. The measured capability is unchanged, so no Slack
-post was emitted. Wake 3 repeats the identical probe under expected CURRENT version 122.
+Calendar read-surface wake 3 repeated the fixed bounded primary-calendar search and returned zero
+events with no continuation token in 176 ms. The measured capability is unchanged, so no Slack
+post was emitted. Wake 4 repeats the identical probe under expected CURRENT version 123 and writes
+the four-wake campaign decision.
