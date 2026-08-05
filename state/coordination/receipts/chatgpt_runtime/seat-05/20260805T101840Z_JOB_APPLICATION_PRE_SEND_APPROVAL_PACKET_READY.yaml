@@ -1,0 +1,90 @@
+schema: hfo.gen133.operator_relief_receipt.v0_1
+receipt_id: S05_JOB_APPLICATION_PRE_SEND_REVIEW_20260805T101840Z
+task_id: 6a55c182078c8191b89f2dd15f5f640c
+seat: S05
+callsign: Var
+wip: 1
+valid_time_utc: 2026-08-05T10:18:40Z
+result: NO_SEND_APPROVAL_PACKET_READY
+material_change: true
+
+active_item:
+  id: JOB_APPLICATION_PRE_SEND_REVIEW_20260805
+  state: EXACT_REVIEW_COMPLETE_AWAITING_OPERATOR_DISPOSITION
+  calendar_gate:
+    event_id: ts52qan70oi4arkpr6n4g1jccg
+    local_window: "2026-08-05T07:30:00-06:00/2026-08-05T07:45:00-06:00"
+  operator_gate: "KEEP_SCHEDULED | EDIT_OR_CANCEL_IN_GMAIL"
+
+priority:
+  p0:
+    item: "Review and disposition two scheduled job-application emails before the first release"
+    first_scheduled_release_local: "2026-08-05T08:00:00-06:00"
+  p1:
+    - "PFA secure-method and disclosure completion"
+    - "Tectangle nightly test-harness repair packet"
+
+applications:
+  - company: PrairieLearn
+    gmail_message_id: 19fd23952abbb724
+    scheduled_release_local: "2026-08-05T08:00:00-06:00"
+    attachment_filename: Tommy_Tai_PrairieLearn_Resume.pdf
+    attachment_sha256: d21d38ddca077932a3b37032e9f1f5c94cce7c5761c4a0a05512b9144459686a
+    visual_preflight: PASS_SINGLE_PAGE_NO_VISIBLE_CLIPPING
+    internal_consistency: PASS_WITH_OPERATOR_ATTESTATIONS
+    proposed_disposition: KEEP_SCHEDULED_AFTER_OPERATOR_CONFIRMATION
+    findings:
+      - "Email and resume consistently frame the candidate as an adjacent fit and explicitly disclaim production-stack experience."
+      - "Public-work descriptions and technology labels are internally aligned between email and attachment."
+      - "Sender display name is Tom Tai while the signature and resume use Tommy Tai; operator should confirm this identity presentation is intentional."
+      - "Citizenship and current availability are operator attestations and were not independently verified by this cell."
+      - "The target inbox, role availability, and cited employer engineering post were not independently reverified from a changed source in this wake."
+
+  - company: DrSwarm
+    gmail_message_id: 19fd2904ceac8454
+    scheduled_release_local: "2026-08-05T09:35:00-06:00"
+    attachment_filename: Tommy_Tai_DrSwarm_Resume.pdf
+    attachment_sha256: c3ad354b6357425920a847d9ef32f413733983c257ee8479b36dba30c7cbf5e6
+    visual_preflight: PASS_SINGLE_PAGE_NO_VISIBLE_CLIPPING
+    internal_consistency: PASS_WITH_UNVERIFIED_HIGH_SPECIFICITY_CLAIMS
+    proposed_disposition: EDIT_OR_KEEP_ONLY_AFTER_OPERATOR_ATTESTATION
+    findings:
+      - "Email and resume consistently disclose no production EHR, RCM, HIPAA, or named backend-stack experience."
+      - "The 28.1-hour, 103-probe, 9-provider, 24-model evaluation claim is repeated consistently, but its supporting receipt was not independently read in this wake."
+      - "The salutation names Michael, but no changed Gmail, GitHub, Slack, Calendar, or Contacts evidence read in this wake established that recipient identity."
+      - "Full-time availability, citizenship, Pacific-hours overlap, and willingness for contract-to-full-time or a paid trial are operator attestations."
+      - "Sender display name is Tom Tai while the signature and resume use Tommy Tai; operator should confirm this identity presentation is intentional."
+      - "The subject line uses 'Linkedin' rather than 'LinkedIn'; this is cosmetic but visible."
+
+supported_claims:
+  - "Both messages remain scheduled in Gmail and do not appear in Sent."
+  - "Both named PDF attachments were read, hashed, rendered, and visually inspected as single-page resumes without visible clipping or overlap."
+  - "The exact operator review block remains present before the first scheduled release."
+
+excluded_claims:
+  - "No claim is made that either role remains open or that either target inbox or salutation is current."
+  - "No employer, recipient, role-source, public URL, citizenship, availability, or internal mesh-metric claim was independently verified in this wake unless explicitly stated above."
+  - "No email was edited, cancelled, sent, or rescheduled, and no application was submitted by this cell."
+
+bounded_transition:
+  type: EXACT_NO_SEND_APPROVAL_PACKET
+  operator_work_removed: "Read both scheduled messages and attachments, performed attachment hash and visual preflight, reconciled internal consistency, and reduced the gate to named risks and exact dispositions."
+  operator_minutes_removed_estimate: 9
+  next_consumer: "Operator at the 07:30 Mountain review gate, then Var career/outreach reconciliation"
+  next_safe_action: "For PrairieLearn, confirm name and personal attestations then KEEP_SCHEDULED or edit/cancel. For DrSwarm, confirm the salutation and high-specificity mesh metrics plus personal attestations before KEEP_SCHEDULED; otherwise edit or cancel in Gmail."
+
+privacy:
+  private_bodies_externalized: false
+  git_payload: "Sanitized review findings, source-system IDs, attachment names, sizes-by-source omission, and cryptographic hashes only"
+
+effect_receipt:
+  email_sent: false
+  email_edited_or_cancelled: false
+  application_submitted: false
+  spend_or_payment: false
+  deployment_or_merge: false
+  account_or_security_change: false
+  task_mutation: false
+  destructive_action: false
+
+honest_flaw: "This cell verified internal consistency and PDF rendering only. It did not re-open the original job listings, validate employer ownership of the inboxes, or independently prove operator-only identity, availability, and experiment-metric claims."
