@@ -1,0 +1,66 @@
+schema: hfo.gen133.operator_relief_receipt.v1
+receipt_id: S05_HEALTH_APPOINTMENT_BOUND_20260805T111657Z
+task_id: 6a55c182078c8191b89f2dd15f5f640c
+seat: S05
+actor: HFO_GEN133_S05_OPERATOR_RELIEF_CELL
+carrier: CHATGPT_SCHEDULED_TASK
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc: '2026-08-05T11:16:57Z'
+material_change: true
+wip: 1
+transition:
+  type: BIND_APPOINTMENT
+  state_before: PROVIDER_REMINDER_RECEIVED_CALENDAR_BINDING_NOT_FOUND
+  state_after: PRIVATE_CALENDAR_APPOINTMENT_BOUND_AND_READ_BACK
+  authority_ceiling: PRIVATE_CALENDAR_BINDING_ONLY
+source_evidence:
+  gmail:
+    message_id: 19fd19eef264a47e
+    received_at_utc: '2026-08-05T11:11:20Z'
+    evidence_class: PROVIDER_APPOINTMENT_REMINDER
+    private_body_externalized: false
+  prior_calendar_search:
+    result: NO_MATCH_FOUND_IN_BOUNDED_DATE_WINDOW
+calendar_effect:
+  event_id: aqnq9ms33hkf2oqm2kd41kn680
+  visibility: private
+  title_class: HEALTH_APPOINTMENT
+  start_local_provider_tz: '2026-08-12T10:45:00-04:00'
+  end_local_provider_tz: '2026-08-12T11:45:00-04:00'
+  start_operator_tz: '2026-08-12T08:45:00-06:00'
+  reminders_minutes_before:
+    - 1440
+    - 120
+  readback: CONFIRMED
+  attendees_external: 0
+  meet_created: false
+priority_projection:
+  active_item: HEALTH_APPOINTMENT_BINDING
+  p0: JOB_APPLICATION_PRE_SEND_REVIEW_BEFORE_2026-08-05T07:30:00-06:00
+  p1:
+    - HEALTH_APPOINTMENT_PREPARATION_AND_ATTENDANCE
+    - PFA_SECURE_METHOD_COMPLETION
+operator_minutes_removed: 5
+next_consumer: OPERATOR_THEN_VAR_HEALTH_ADMIN_RECONCILIATION
+privacy:
+  git_contains_private_body: false
+  slack_may_receive_only_sanitized_status_and_git_POINTER: true
+  excluded_from_git_and_slack:
+    - patient_identity
+    - clinician_identity
+    - clinic_address
+    - medical_details
+honest_flaw: >-
+  The one-hour duration is an administrative placeholder inferred by the cell.
+  This receipt proves only that a private calendar event was created and read
+  back from the provider reminder; it does not prove patient identity,
+  preparation, attendance, clinical content, or provider-side confirmation.
+prohibited_effects_observed:
+  email_sent: false
+  application_submitted: false
+  spend_or_payment: false
+  deployment_or_merge: false
+  publication: false
+  account_or_security_change: false
+  destructive_deletion: false
