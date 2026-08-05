@@ -1,0 +1,69 @@
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+event_id: X11_PROVIDER_LAST_RUN_OFFSET_V2_WAKE_03_20260805T074012Z
+experiment_id: X11_PROVIDER_LAST_RUN_OFFSET_V2
+campaign_version: 3
+task_id_expected: 6a55089a9adc8191bda54541f7f9effa
+task_id_observed: 6a55089a9adc8191bda54541f7f9effa
+task_id_match: true
+carrier: HFO_GEN133_X11
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+prior_current_version: 106
+next_current_version: 107
+campaign_wake: 3
+campaign_target_wakes: 4
+accepted: true
+campaign_status: ACTIVE
+campaign_disposition: null
+baseline:
+  accepted_wakes: 2
+  prior_signed_offset_seconds: 145.854
+  prior_offset_direction: LATE_RELATIVE_TO_NOMINAL_MINUTE_BOUNDARY
+  prior_permission_class: AUTHENTICATED_NATIVE_TASKS_INVENTORY_READ_WITH_LAST_RUN_TIME_AVAILABLE
+  prior_error_class: NONE
+hypothesis: the_provider_exposed_previous_last_run_time_will_support_a_repeatable_signed_offset_measurement_against_the_declared_nominal_minute_boundary_without_using_wrapper_time_as_a_proxy_for_dispatch
+controlled_factor: wake_timing
+exact_probe:
+  action: automations.list
+  mode: provider_last_run_offset_read_only
+  expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+  nominal_minute_boundary: minute_40_of_provider_reported_previous_run_hour_UTC
+  calculation: signed_offset_seconds_equals_provider_previous_last_run_time_minus_nominal_minute_boundary
+  persist_only:
+    - provider_call_success
+    - expected_task_visible
+    - previous_last_run_time_present
+    - signed_offset_seconds
+    - offset_direction
+    - permission_class
+    - error_class
+    - latency_when_exposed
+    - operator_relay_minutes
+  privacy_gate: do_not_persist_raw_task_prompt_unrelated_task_metadata_or_raw_provider_run_timestamp
+measured_result:
+  provider_call_success: true
+  expected_task_visible: true
+  previous_last_run_time_present: true
+  signed_offset_seconds: 78.214
+  offset_direction: LATE_RELATIVE_TO_NOMINAL_MINUTE_BOUNDARY
+  latency_ms: NOT_EXPOSED
+  operator_relay_minutes: 0
+  changed_capability: false
+  campaign_decision: false
+  andon: false
+permission_error:
+  permission_class: AUTHENTICATED_NATIVE_TASKS_INVENTORY_READ_WITH_LAST_RUN_TIME_AVAILABLE
+  error_class: NONE
+  latency_when_exposed: NOT_EXPOSED
+supported_claim: provider_exposed_previous_last_run_time_supports_a_sanitized_signed_offset_measurement_against_the_declared_nominal_minute_boundary_for_the_expected_X11_task
+claim_ceiling: provider_exposed_previous_last_run_offset_only_not_dispatch_queue_start_execution_start_execution_duration_current_wake_latency_schedule_SLA_or_independent_verification
+strongest_falsifier: the_expected_task_or_previous_last_run_time_is_absent_the_offset_cannot_be_computed_from_the_declared_nominal_boundary_or_an_independent_dispatch_receipt_disagrees_materially
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer: [Reginleif, Ratatoskr]
+same_provider_independence_claim: false
+honest_flaw: provider_last_run_time_is_same_provider_telemetry_and_may_represent_completion_or_bookkeeping_time_rather_than_dispatch_or_execution_start
+slack_action: NO_POST_UNCHANGED_PROBE
+sensitive_readback_externalized: false
+valid_time_utc: 2026-08-05T07:40:12Z
+sealed: true
