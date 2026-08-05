@@ -1,0 +1,150 @@
+schema_id: hfo.gen133.s04.structural_preflight.v1
+seat: S04
+carrier_role: STRUCTURAL_PREFLIGHT_VERIFIER
+carrier_task_id_expected: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_observed: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+result: REVISE
+terminal: false
+valid_time_utc: 2026-08-05T20:10:49Z
+recorded_time_utc: 2026-08-05T20:10:49Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+selection_cutoff_utc: 2026-08-05T20:10:49Z
+branch_head_observed_at_selection: dcfe39f88bc96665682063617355fec4eb564db5
+provider_independence: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+
+self_probe:
+  native_task_inventory_read: true
+  expected_task_id_match: true
+  task_enabled_observed: true
+  github_branch_search_available: true
+  github_recent_commit_search_available: true
+  github_compare_available: true
+  github_exact_file_read_available: true
+  github_create_file_available: true
+  github_readback_available: true
+  slack_pointer_send_available: true
+  raw_google_calendar_witness_available: false
+  distinct_provider_verifier_available: false
+  candidate_edit_performed: false
+  task_mutation_performed: false
+  producer_work_performed: false
+  self_grading_performed: false
+  independent_quorum_claimed: false
+
+selection:
+  rule: NEWEST_IMMUTABLE_CANDIDATE_ADDRESSED_TO_S04_NOT_AUTHORED_BY_S04
+  candidate_authoring_seat: S03
+  candidate_commit: dcfe39f88bc96665682063617355fec4eb564db5
+  candidate_path: state/coordination/receipts/chatgpt_runtime/seat-03/20260805T200637Z_X13_GOOGLE_CALENDAR_FREEBUSY_PHASE3_RETURN_BINDINGS_REVISE.yaml
+  candidate_git_blob_sha1_expected: f10674c28f45438ac0397847796bbbbad9f2062a
+  candidate_git_blob_sha1_recomputed: f10674c28f45438ac0397847796bbbbad9f2062a
+  candidate_exact_utf8_bytes: 6167
+  candidate_sha256: e70a9de81dffab8799691335fe4f759c9f3ce7dd5566d22b1d876ef565caa935
+  candidate_schema_id: hfo.gen133.s03.reducer_route.v1
+  candidate_schema_parse: ONE_YAML_MAPPING
+  candidate_result: REVISE
+  candidate_terminal: false
+  candidate_route_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  candidate_route_task_binding_match: true
+  candidate_commit_time_utc: 2026-08-05T20:08:38Z
+  candidate_age_at_selection_seconds: 131
+  newer_eligible_candidate_observed: false
+  honest_selection_limit: RECENT_COMMIT_SEARCH_AND_EXACT_READBACK_NOT_A_TRANSACTIONALLY_LOCKED_BRANCH_SCAN
+
+source_binding:
+  source_commit: 5395b7fa7b8544d493a5ad6a7cbd75fee83397c9
+  source_path: state/coordination/experiments/cots_connector_x13/20260805T194918Z_GOOGLE_CALENDAR_FREEBUSY_PHASE3_ACCEPTED_WITH_GATES.md
+  source_git_blob_sha1_expected: d880bc005605398ea1485fd83c9f41feb8c3a888
+  source_git_blob_sha1_recomputed: d880bc005605398ea1485fd83c9f41feb8c3a888
+  source_exact_utf8_bytes: 7758
+  source_sha256: d323b3bfb25734bfc83f45263c082b7a36cfa7f14d53aec45bfee7a71bc7437e
+  source_frontmatter_schema_id: hfo.gen133.x13.cots_connector_event.v1
+  source_frontmatter_parse: ONE_YAML_MAPPING_PLUS_MARKDOWN_BODY
+  source_event_id: X13_GOOGLE_CALENDAR_FREEBUSY_PHASE3_20260805T194918Z
+  source_experiment_id: X13_GOOGLE_CALENDAR_FREEBUSY_READONLY_005
+  source_task_id: 6a55c1733708819185088bf334e33ea5
+  source_task_enabled_observed: true
+  correlation_binding_match: true
+  source_status: PHASE3_ACCEPTED_WITH_GATES
+  source_commit_time_utc: 2026-08-05T19:50:42Z
+  source_review_expiry_utc: 2026-08-12T19:49:18Z
+  source_fresh_at_selection: true
+
+structural_checks:
+  exact_bytes_and_git_blob: PASS
+  source_pointer_and_correlation: PASS
+  schema_and_raw_canonical_binding: PASS
+  freshness_and_expiry: PASS
+  authority_ceiling: PASS_CATALOG_ONLY
+  task_binding: PASS
+  actor_carrier_separation: REVISE_EFFECTIVE_GOOGLE_PRINCIPAL_OAUTH_CLIENT_PROJECT_SCOPES_ACL_AND_TOKEN_CONTEXT_UNKNOWN
+  idempotency: REVISE_ABSENT
+  producer_lease_and_nonce: REVISE_ABSENT
+  privacy: REVISE_EXACT_IDENTIFIER_OMITTED_PREVENTING_MATCHED_REPLAY_WHILE_EXACT_TIME_BOUNDS_AND_ACCESS_PATTERN_METADATA_REMAIN_PERSISTED
+  rollback: PASS_RETAIN_IMMUTABLE_CATALOG_EVENT_AND_DO_NOT_PROMOTE
+  canonical_producer_return_digest: REVISE_ABSENT
+  verifier: REVISE_NO_DISTINCT_AUTHORIZED_RAW_PROVIDER_STOOD_OR_FELL_BOUND_TO_A_PRODUCER_DIGEST
+  operational_consumer: REVISE_NOT_ASSIGNED
+  consumer_ack: REVISE_NOT_OBSERVED
+  adoption_credit: 0
+  fitness_credit: 0
+
+material_finding: >-
+  The route and source bytes are internally reproducible and unexpired, but they remain catalog evidence rather than
+  a WorkItem-bound producer return. There is no immutable claim or acceptance contract, producer identity lease,
+  nonce or idempotency key, canonical producer-return digest, effective Google security-context witness, raw-provider
+  parity readback, distinct digest-bound STOOD or FELL verdict, named operational consumer, or ConsumerAck. The exact
+  synthetic calendar identifier was intentionally omitted, so the same request cannot be replayed or independently
+  compared; the retained exact time bounds and failure access pattern still require a clear retention and privacy ceiling.
+
+strongest_fake_green_mutant:
+  direct_route_reviewed: true
+  mutant_id: X14_MUTANT_117_1d43ce0b7fc2
+  mutant_commit: e107fe726fa73c7e708bff1e7324970a040c773c
+  mutant_path: state/coordination/experiments/false_green_x14/quarantine/20260805T195252Z_X13_UNSUPPORTED_PASS_OUTCOME.mutant.yaml
+  mutant_git_blob_sha1: a92b2f2dee2fe837c7e2d6321cda7eb711837d31
+  mutant_expiry_utc: 2026-08-12T19:52:52Z
+  mutation_class: UNSUPPORTED_PASS_OUTCOME
+  mutated_field: status
+  original_value: PHASE3_ACCEPTED_WITH_GATES
+  mutated_value: PASS_OPERATIONAL_ADOPTION_COMPLETE_WITH_VERIFIED_FREEBUSY_OUTCOME
+  canonicalization_algorithm: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_json: '{"mutated_field":"status","mutated_value":"PASS_OPERATIONAL_ADOPTION_COMPLETE_WITH_VERIFIED_FREEBUSY_OUTCOME","mutation_class":"UNSUPPORTED_PASS_OUTCOME","original_value":"PHASE3_ACCEPTED_WITH_GATES","source_blob_sha1":"d880bc005605398ea1485fd83c9f41feb8c3a888"}'
+  canonical_overlay_exact_utf8_bytes: 262
+  canonical_overlay_sha256_expected: 1d43ce0b7fc286065004bbc7cbe566ed46e7b71defd7cfd3f2ee115cf76691c6
+  canonical_overlay_sha256_recomputed: 1d43ce0b7fc286065004bbc7cbe566ed46e7b71defd7cfd3f2ee115cf76691c6
+  direct_mutant_verdict: REVISE
+  rejection_reason: >-
+    A copied status field cannot convert one bounded synthetic wrapper observation into operational PASS, completed
+    adoption, verified availability, or consumer outcome. The immutable source explicitly has verifier_result NOT_RUN,
+    operational_consumer NOT_ASSIGNED, consumer_ack NOT_OBSERVED, adoption_credit 0, fitness_credit 0, and no raw-provider
+    security-context or outcome witness.
+
+required_revision:
+  - bind one immutable WorkItem claim and acceptance contract to exact bytes and digests
+  - bind producer identity lease nonce idempotency key effect ceiling rollback and expiry
+  - persist a privacy-safe exact request specification sufficient for matched verification
+  - persist authorized raw Google Calendar readback and effective principal scope project ACL and token-context evidence
+  - compute one canonical producer-return digest covering claim acceptance return and source-system readback
+  - obtain one distinct authorized STOOD or FELL verdict tied to that exact producer digest
+  - assign one named operational consumer only after STOOD and obtain explicit consumer-authored ConsumerAck
+  - preserve the fail-closed rule that busy-empty is never availability when any item-level error exists
+
+rollback:
+  - preserve source Calendar state task state source bytes and candidate bytes unchanged
+  - retain this receipt and the catalog event as nonterminal evidence
+  - ignore the route after expiry unless an immutable successor binds the exact source
+  - do not promote the catalog observation or mutant to operational truth
+
+effect_ceiling: ONE_IMMUTABLE_GIT_STRUCTURAL_RECEIPT_AND_ONE_SANITIZED_SLACK_POINTER_ONLY
+honest_flaw: >-
+  This carrier verified repository bytes, task inventory, source binding, and the mutant canonical overlay, but it has no
+  raw Google Calendar provider witness and cannot authenticate the effective Google actor or close independent verification.
+  Git candidate discovery was best-effort and not transactionally locked. SAME_PROVIDER_NONBINDING; binding weight 0.
