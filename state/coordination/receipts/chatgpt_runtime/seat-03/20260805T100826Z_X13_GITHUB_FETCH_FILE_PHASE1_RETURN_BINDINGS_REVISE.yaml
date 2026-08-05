@@ -1,0 +1,54 @@
+schema_id: hfo.gen133.s03.verification_route.v1
+seat: S03
+carrier_role: REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+carrier_task_id_expected: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_observed: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_match: true
+wip: 1
+result: REVISE
+terminal: false
+valid_time_utc: 2026-08-05T10:08:26Z
+recorded_time_utc: 2026-08-05T10:08:26Z
+correlation_id: X13_GITHUB_FETCH_FILE_READONLY_003_PHASE1_BASELINE_20260805T094741Z
+source_event_id: X13_GITHUB_FETCH_FILE_PHASE1_20260805T094741Z
+source_repository: TTaoGaming/hfo-gen-133
+source_branch: agent/gen133-bootstrap-20260730
+source_commit_sha: 940c3782b71f63e8bb7267241c3d84fd42360522
+source_path: state/coordination/experiments/cots_connector_x13/20260805T094741Z_GITHUB_FETCH_FILE_PHASE1_ACCEPTED_WITH_GATES.md
+source_blob_sha: a7cdc8db82aa89434c14fcb6d82fc59790507255
+source_review_expiry_utc: 2026-08-12T09:47:41Z
+changed_input_class: CATALOG_CONNECTOR_OBSERVATION
+claim_assessment: NOT_A_WORKITEM_BOUND_CLAIM
+producer_return_assessment: NOT_A_WORKITEM_BOUND_PRODUCER_RETURN
+observed_claim: ONE_BOUNDED_READONLY_FETCH_RETURNED_LINES_1_TO_20_OF_README_MD_FROM_A_MUTABLE_BRANCH_AND_SURFACED_BLOB_SHA_a77cfc55c6bf9b72b272d373092e4c0be92cb5a9_WITHOUT_OBSERVED_MUTATION
+missing_bindings:
+  - WORKITEM_ID_AND_IMMUTABLE_CLAIM_DIGEST
+  - CLAIM_ACCEPTANCE_DIGEST
+  - CANONICAL_PRODUCER_RETURN_DIGEST
+  - EXACT_RETURNED_TWENTY_LINE_BYTES_OR_AUTHORIZED_SOURCE_SYSTEM_READBACK_PINNED_TO_A_RESOLVED_COMMIT
+  - RESOLVED_COMMIT_SHA_FOR_THE_FETCHED_README
+  - AUTHENTICATED_PRINCIPAL_PERMISSION_SCOPE_AND_TRUE_CALL_COUNT
+  - COMMANDS_AND_EXIT_CODES_WHERE_APPLICABLE
+  - WORKITEM_ROLLBACK
+  - WORKITEM_EFFECT_CEILING
+  - PRODUCER_RETURN_EXPIRY_BINDING
+  - PRODUCER_RETURN_HONEST_FLAW_BOUND_TO_THE_WORKITEM
+  - DISTINCT_PROVIDER_STOOD_OR_FELL_TIED_TO_THE_PRODUCER_DIGEST
+  - NAMED_OPERATIONAL_CONSUMER
+  - EXPLICIT_NAMED_CONSUMERACK
+honest_flaw: THE_SOURCE_EVENT_SELF_REPORTS_A_SUCCESSFUL_SMALL_TEXT_FETCH_BUT_DID_NOT_PERSIST_THE_RETURNED_BYTES_OR_RESOLVED_COMMIT_AND_ASSIGNs_NO_OPERATIONAL_CONSUMER_SO_THE_CLAIM_CANNOT_BE_REPRODUCED_OR_TERMINALLY_CONSUMED_FROM_THIS_PACKET
+revise_request:
+  target: S04_STRUCTURAL_PREFLIGHT_VERIFIER
+  provider_relation: SAME_PROVIDER_NONPRODUCER
+  binding_weight: 0
+  exact_request: >-
+    Recompute the source event bytes at commit 940c3782b71f63e8bb7267241c3d84fd42360522 and blob a7cdc8db82aa89434c14fcb6d82fc59790507255. Return only PASS_STRUCTURAL, REVISE, HOLD, or BLOCKED. Confirm that the event is catalog-only and not a WorkItem-bound producer return; enumerate any missing claim, producer-digest, rollback, effect-ceiling, expiry, verifier, consumer, and ConsumerAck bindings. Do not perform the missing raw GitHub Contents parity fetch, do not repair the producer evidence, and state SAME_PROVIDER_NONBINDING with binding weight 0.
+independent_verification_required:
+  verifier: DISTINCT_AUTHORIZED_RAW_GITHUB_CONTENTS_WITNESS
+  requirement: SAME_PRINCIPAL_GET_REPOSITORY_CONTENT_PINNED_TO_A_RESOLVED_COMMIT_MUST_BIND_EXACT_BYTES_BLOB_SHA_REQUEST_RESPONSE_AND_PRODUCER_DIGEST
+  assigned: false
+verdict_consumed: false
+consumer_ack_consumed: false
+terminal_receipt_written: false
+implicit_consumer_ack: false
+prohibited_actions_observed: false
