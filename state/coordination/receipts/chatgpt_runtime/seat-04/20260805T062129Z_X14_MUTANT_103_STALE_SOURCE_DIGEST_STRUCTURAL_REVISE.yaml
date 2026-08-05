@@ -1,0 +1,168 @@
+---
+schema_id: hfo.gen133.s04.structural_preflight.v1
+result: REVISE
+seat: S04_STRUCTURAL_PREFLIGHT
+carrier_task_id_expected: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_observed: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+valid_time_utc: 2026-08-05T06:21:29Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+terminal_receipt: false
+---
+
+self_probe:
+  identity: S04_STRUCTURAL_PREFLIGHT
+  task_inventory_source: NATIVE_AUTOMATIONS_READBACK
+  tools_observed:
+    - native_automations_inventory_read
+    - authenticated_github_recent_commit_search
+    - authenticated_github_exact_commit_file_and_blob_read
+    - deterministic_utf8_sha1_sha256_and_yaml_parse
+    - authenticated_github_immutable_file_create_and_readback
+    - authenticated_slack_pointer_route
+  tools_unavailable_or_unused:
+    - target_host_checkout_or_shell
+    - raw_google_drive_api_witness
+    - distinct_provider_verifier
+  candidate_edit_performed: false
+  task_mutation_performed: false
+  self_grading_performed: false
+  independent_quorum_claimed: false
+
+selection:
+  rule: NEWEST_IMMUTABLE_DIRECT_S04_CANDIDATE_NOT_AUTHORED_BY_S04
+  selected_candidate:
+    commit: 0475d377a3c59a1c3f7fb1d1b604a819f5b98a15
+    path: state/coordination/experiments/false_green_x14/quarantine/20260805T055301Z_X13_GOOGLE_DRIVE_STALE_SOURCE_DIGEST.mutant.yaml
+    git_blob_sha1: bbb35114362959d7a349ffb15c695e86bb4a990a
+    authoring_seat: X14_FALSE_GREEN_MUTATION_QA
+    mutant_id: X14_MUTANT_103_64476c88ebc9
+    mutation_class: STALE_SOURCE_DIGEST
+    direct_s04_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  newer_commit_addressability_check:
+    status: NO_NEWER_IMMUTABLE_DIRECT_S04_CANDIDATE_FOUND
+    notes:
+      - newer X14 CURRENT updates are mutable campaign projections, not direct candidates
+      - newer S03 route targets a producer-return owner and a distinct browser-capable verifier, not S04
+  authored_by_s04: false
+  immutable_commit_bound: true
+  unexpired_at_verification: true
+  candidate_expiry_utc: 2026-08-12T05:49:53Z
+
+exact_bytes:
+  candidate:
+    utf8_lf_byte_count: 9164
+    sha256: 1f4bf8a272a8dd9e7468af1449d575c876dfacdfa36811aff668f79cdd3f3dd6
+    recomputed_git_blob_sha1: bbb35114362959d7a349ffb15c695e86bb4a990a
+    declared_or_fetched_git_blob_sha1: bbb35114362959d7a349ffb15c695e86bb4a990a
+    git_blob_match: true
+  selected_source_event:
+    commit: caabacd7bc746e62b50757651f2d6ec13872bff2
+    path: state/coordination/experiments/cots_connector_x13/20260805T054953Z_GOOGLE_DRIVE_SEARCH_METADATA_PHASE1_ACCEPTED_WITH_GATES.md
+    utf8_lf_byte_count: 6658
+    sha256: fe2e594561009b9c2c689a668645c835a0b9b99a946bb5c5cda0c365d31eb595
+    recomputed_git_blob_sha1: 36450fa813aa57205df11c65011ec9cbbfa03e30
+    declared_git_blob_sha1: 36450fa813aa57205df11c65011ec9cbbfa03e30
+    git_blob_match: true
+  expected_prior_current_v104:
+    path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    version: 104
+    utf8_lf_byte_count: 6946
+    sha256: df34b3a3c88c2f4d27ada8ee8f8fb0aaf9b774c8c8c841ed1d6caefd9c882519
+    recomputed_git_blob_sha1: f491c6ecd84a07b86c39b443359ec59f3732a24b
+    source_event_bound_blob_sha1: f491c6ecd84a07b86c39b443359ec59f3732a24b
+    git_blob_match: true
+  injected_stale_current_v103:
+    path_family: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    version: 103
+    utf8_lf_byte_count: 6491
+    sha256: 31343c30675d6e849777f181009e5d784ed6e2fe361423485685bd1f76339cb0
+    recomputed_git_blob_sha1: 14065f50c8ac2020965316acddb4fb80c455e416
+    mutant_injected_blob_sha1: 14065f50c8ac2020965316acddb4fb80c455e416
+    git_blob_match: true
+
+schema_and_canonicalization:
+  candidate_yaml_document_count: 2
+  candidate_yaml_document_types:
+    - mapping
+    - mapping
+  schema_id_match: true
+  source_schema_id_match: true
+  canonicalization_algorithm: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_byte_count: 262
+  canonical_overlay_sha256_recomputed: 64476c88ebc93bc92a8cb0ea8b55c2d8f216be0b041f70bdf14faf54863f4e7b
+  canonical_overlay_sha256_declared: 64476c88ebc93bc92a8cb0ea8b55c2d8f216be0b041f70bdf14faf54863f4e7b
+  canonical_overlay_match: true
+
+structural_checks:
+  source_pointer:
+    status: PASS
+    reason: selected source commit path and blob resolve exactly
+  freshness:
+    status: REVISE
+    reason: injected prior-current blob is valid immutable v103 bytes but the source transition explicitly expects v104 and binds blob f491c6ecd84a07b86c39b443359ec59f3732a24b
+  authority:
+    status: PASS_BOUNDED
+    reason: candidate is quarantined nonexecutable and grants no Drive task source CURRENT deployment merge publication or account effects
+  task_binding:
+    status: PASS
+    reason: S04 X14 X13 and S09 task IDs match enabled native provider inventory at verification time
+  actor_carrier_separation:
+    status: PASS
+    reason: X13 authored the source event X14 authored the quarantined mutant and S04 performs only structural preflight
+  idempotency:
+    status: PARTIAL
+    reason: immutable source blob mutant ID and canonical mutation digest bind this assay but no explicit nonce or idempotency key is present
+  lease:
+    status: PASS_WITH_LIMIT
+    reason: no renewable execution lease is claimed; the direct route is bounded by immutable commit and expiry
+  expiry:
+    status: PASS
+    reason: candidate and route expiry are 2026-08-12T05:49:53Z
+  privacy:
+    status: PASS
+    reason: no raw Drive title URL stable item ID parent ID file body credential or private result value is copied
+  rollback:
+    status: PASS
+    reason: retain or ignore the quarantine artifact; source CURRENT task Drive and provider state require no restoration
+  verifier:
+    status: NONTERMINAL
+    reason: S04 is the named structural verifier; S09 is a distinct seat but same-provider advisory evidence and no distinct-provider raw Drive witness is assigned
+  consumer:
+    status: PARTIAL
+    reason: X14 and X13 campaign reducers are named but the underlying source event has no assigned operational consumer and no ConsumerAck
+
+strongest_fake_green_mutant:
+  mutant_id: X14_MUTANT_103_64476c88ebc9
+  rejected_claim: ACCEPT_STALE_V103_BLOB_AS_THE_V104_PRIOR_POINTER_BECAUSE_THE_SHA_IS_VALID_AND_FROM_THE_SAME_SEAT_PATH_FAMILY
+  rejection_reason: A syntactically valid existing Git SHA does not bind the expected version or selected transition. The event requires v104 blob f491c6ecd84a07b86c39b443359ec59f3732a24b; injected blob 14065f50c8ac2020965316acddb4fb80c455e416 is exact v103 bytes.
+  named_gate: S04_SOURCE_COMMIT_PATH_BLOB_PRIOR_CURRENT_VERSION_DIGEST_FRESHNESS_AND_REPLAY_GATE
+  verdict: REVISE
+
+conclusion:
+  result: REVISE
+  material_change: true
+  reason: The negative control was caught exactly at the source-version freshness gate. All declared overlay bytes and digests reproduce, but the mutated prior-current pointer is stale and cannot be accepted as the v104 binding.
+  same_provider_status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  independent_verification_closed: false
+
+rollback:
+  - preserve the immutable quarantine artifact
+  - do not edit the source event or either CURRENT version
+  - ignore this result after candidate expiry
+  - require any later independent verdict to bind the exact candidate commit blob and source transition
+
+honest_flaw: >-
+  GitHub reads and native task inventory were available, and exact UTF-8 bytes, Git blob SHA-1 values, SHA-256 values,
+  YAML structure, and the canonical mutation overlay were recomputed. Recent-commit search and branch indexing are not
+  transactionally atomic, no raw same-principal Drive files.list witness was available, and no distinct-provider
+  verifier was available. This result tests a conspicuous adjacent-version stale digest, not SHA-1 collision behavior,
+  stale-cache aliasing, or a semantically similar stale blob from the same campaign.
