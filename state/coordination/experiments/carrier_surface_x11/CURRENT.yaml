@@ -1,81 +1,90 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
-experiment_id: X11_PROVIDER_LAST_RUN_OFFSET_V2
-current_version: 107
-accepted_wakes: 3
+experiment_id: X11_PROMPT_CONTEXT_VISIBILITY_V2
+current_version: 108
+accepted_wakes: 0
 target_wakes_before_decision: 4
-controlled_factor: wake_timing
+controlled_factor: prompt_context_size
 campaign_status: ACTIVE
 current_disposition: null
 prior_campaign:
-  experiment_id: X11_NATIVE_TASKS_SANITIZED_INVENTORY_READ_V2
-  final_version: 104
+  experiment_id: X11_PROVIDER_LAST_RUN_OFFSET_V2
+  final_version: 108
   disposition: KEEP
   accepted_wakes: 4
   decision_event:
-    commit: ad527c47b54ad8b8ed277402a5f28616fea3b183
-    path: state/coordination/experiments/carrier_surface_x11/events/20260805T044136Z_NATIVE_TASKS_SANITIZED_INVENTORY_READ_V2_WAKE_04_DECISION_KEEP.yaml
-    blob: ed10e1bc0a71cf40b950c3f679a495c21af27ee9
+    commit: 90b63e4fff12ae8db4d65cf889ca9cc076c9a99d
+    path: state/coordination/experiments/carrier_surface_x11/events/20260805T083922Z_PROVIDER_LAST_RUN_OFFSET_V2_WAKE_04_DECISION_KEEP.yaml
+    blob: 634ab5cdf84b430ec3f4b6e6312af8a38e2eb66f
 baseline_result:
-  mode: first_accepted_provider_last_run_offset_probe
+  mode: campaign_initialized_no_prompt_visibility_probe_on_decision_wake
   expected_task_id: 6a55089a9adc8191bda54541f7f9effa
-  permission_class: AUTHENTICATED_NATIVE_TASKS_INVENTORY_READ_WITH_LAST_RUN_TIME_AVAILABLE
+  permission_class: NOT_PROBED_THIS_CAMPAIGN
   error_class: NONE
-hypothesis: the_provider_exposed_previous_last_run_time_will_support_a_repeatable_signed_offset_measurement_against_the_declared_nominal_minute_boundary_without_using_wrapper_time_as_a_proxy_for_dispatch
+hypothesis: the_provider_exposed_expected_X11_prompt_will_remain_present_with_stable_sanitized_size_digest_and_fixed_start_middle_end_marker_visibility_across_four_identical_read_only_inventory_probes
 measured_result:
-  provider_call_success: [true, true, true]
-  expected_task_visible: [true, true, true]
-  previous_last_run_time_present: [true, true, true]
-  signed_offset_seconds: [273.824, 145.854, 78.214]
-  offset_direction: [LATE_RELATIVE_TO_NOMINAL_MINUTE_BOUNDARY, LATE_RELATIVE_TO_NOMINAL_MINUTE_BOUNDARY, LATE_RELATIVE_TO_NOMINAL_MINUTE_BOUNDARY]
-  latencies_ms: [NOT_EXPOSED, NOT_EXPOSED, NOT_EXPOSED]
-  permission_class: AUTHENTICATED_NATIVE_TASKS_INVENTORY_READ_WITH_LAST_RUN_TIME_AVAILABLE
+  provider_call_success: []
+  expected_task_visible: []
+  prompt_present: []
+  prompt_character_count: []
+  prompt_line_count: []
+  prompt_sha256: []
+  fixed_start_marker_present: []
+  fixed_middle_marker_present: []
+  fixed_end_marker_present: []
+  latencies_ms: []
+  permission_class: NOT_PROBED_THIS_CAMPAIGN
   error_class: NONE
   operator_relay_minutes: 0
   changed_capability: false
   campaign_decision: false
   andon: false
-supported_claim: provider_exposed_previous_last_run_time_supports_a_sanitized_signed_offset_measurement_against_the_declared_nominal_minute_boundary_for_the_expected_X11_task
-claim_ceiling: provider_exposed_previous_last_run_offset_only_not_dispatch_queue_start_execution_start_execution_duration_current_wake_latency_schedule_SLA_or_independent_verification
-strongest_falsifier: the_expected_task_or_previous_last_run_time_is_absent_the_offset_cannot_be_computed_from_the_declared_nominal_boundary_or_an_independent_dispatch_receipt_disagrees_materially
+supported_claim: not_yet_measured
+claim_ceiling: provider_inventory_prompt_visibility_and_sanitized_shape_digest_only_not_runtime_context_injection_model_attention_instruction_adherence_truncation_inside_execution_or_independent_verification
+strongest_falsifier: the_expected_task_or_prompt_is_absent_sanitized_size_or_digest_changes_without_authorized_task_mutation_any_fixed_marker_is_missing_or_execution_evidence_shows_runtime_context_differs_from_inventory_prompt
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 consumer: [Reginleif, Ratatoskr]
-honest_flaw: provider_last_run_time_is_same_provider_telemetry_and_may_represent_completion_or_bookkeeping_time_rather_than_dispatch_or_execution_start
+honest_flaw: provider_inventory_prompt_readback_is_same_provider_configuration_telemetry_and_does_not_prove_the_complete_prompt_reached_or_influenced_the_runtime_model_context
 last_event:
-  commit: 0f8b9e9c8ab71a821f7bfaaa24951116277feff2
-  path: state/coordination/experiments/carrier_surface_x11/events/20260805T074012Z_PROVIDER_LAST_RUN_OFFSET_V2_WAKE_03.yaml
-  blob: 28e7915becd429d34d9bf4b2eed6973a0ac6075c
-next_factor: wake_timing
+  commit: 90b63e4fff12ae8db4d65cf889ca9cc076c9a99d
+  path: state/coordination/experiments/carrier_surface_x11/events/20260805T083922Z_PROVIDER_LAST_RUN_OFFSET_V2_WAKE_04_DECISION_KEEP.yaml
+  blob: 634ab5cdf84b430ec3f4b6e6312af8a38e2eb66f
+next_factor: prompt_context_size
 next_probe:
-  experiment_id: X11_PROVIDER_LAST_RUN_OFFSET_V2
-  campaign_wake: 4
-  mode: provider_last_run_offset_read_only
-  exact_action: call_automations_list_locate_only_the_expected_X11_task_and_compare_its_provider_exposed_previous_last_run_time_to_the_declared_nominal_minute_boundary_then_persist_only_signed_offset_seconds_direction_permission_error_latency_when_exposed_and_operator_relay_minutes
-  expected_current_version: 107
+  experiment_id: X11_PROMPT_CONTEXT_VISIBILITY_V2
+  campaign_wake: 1
+  mode: sanitized_provider_prompt_visibility_read_only
+  exact_action: call_automations_list_locate_only_the_expected_X11_task_and_compute_prompt_character_count_line_count_sha256_and_presence_of_fixed_start_middle_end_markers_without_persisting_prompt_text
+  expected_current_version: 108
   persist_only:
     - provider_call_success
     - expected_task_visible
-    - previous_last_run_time_present
-    - signed_offset_seconds
-    - offset_direction
+    - prompt_present
+    - prompt_character_count
+    - prompt_line_count
+    - prompt_sha256
+    - fixed_start_marker_present
+    - fixed_middle_marker_present
+    - fixed_end_marker_present
     - permission_class
     - error_class
     - latency_when_exposed
     - operator_relay_minutes
-  privacy_gate: do_not_persist_raw_task_prompt_unrelated_task_metadata_or_raw_provider_run_timestamp
+  privacy_gate: do_not_persist_raw_task_prompt_unrelated_task_metadata_schedules_timezones_or_run_timestamps
   task_mutation_allowed: false
   slack_write_each_probe_allowed: false
   post_only_changed_capability_campaign_decision_or_andon: true
   sensitive_readback_externalization_allowed: false
   same_provider_independence_claim_allowed: false
-slack_action: NO_POST_UNCHANGED_PROBE
-updated_valid_time_utc: 2026-08-05T07:40:12Z
+slack_action: POST_CAMPAIGN_DECISION
+updated_valid_time_utc: 2026-08-05T08:39:22Z
 sealed: false
 ---
 
-Wake-timing campaign accepted wake 3 of 4. The native Tasks inventory exposed the
-expected X11 task and a previous last-run timestamp from which a sanitized signed offset
-of +78.214 seconds relative to the declared minute-40 boundary was computed. This is
-same-provider bookkeeping telemetry and does not identify dispatch start, execution start,
-or current-wake latency. Wake 4 repeats the identical read-only calculation and records
-the campaign decision.
+Wake-timing V2 completed four accepted wakes. The provider-exposed previous last-run
+telemetry yielded positive offsets of 273.824, 145.854, 78.214, and 88.531 seconds from
+the declared minute-40 boundary, with median 117.192 seconds. Decision KEEP applies only
+to repeatable sanitized offset calculation; the telemetry does not establish dispatch or
+execution latency and is not a schedule SLA. The next campaign measures only provider
+inventory visibility of the expected task prompt through sanitized size, digest, and fixed
+marker booleans without persisting prompt text.
