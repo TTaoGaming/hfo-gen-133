@@ -1,0 +1,113 @@
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+event_id: X11_PROJECT_CONTEXT_VISIBILITY_V1_WAKE_04_DECISION_KEEP_20260805T164128Z
+experiment_id: X11_PROJECT_CONTEXT_VISIBILITY_V1
+campaign_version: 1
+task_id_expected: 6a55089a9adc8191bda54541f7f9effa
+task_id_observed: 6a55089a9adc8191bda54541f7f9effa
+task_id_match: true
+carrier: HFO_GEN133_X11
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+prior_current_version: 115
+next_current_version: 116
+campaign_wake: 4
+campaign_target_wakes: 4
+accepted: true
+campaign_status: DECIDED
+campaign_disposition: KEEP
+baseline:
+  mode: first_accepted_sanitized_expected_task_project_context_metadata_probe
+  accepted_wakes: 3
+  provider_call_success: true
+  expected_task_visible: true
+  project_context_field_exposed: false
+  project_context_classification: NO_EXPLICIT_PROJECT_OR_CONTAINER_METADATA_EXPOSED
+  prior_permission_class: AUTHENTICATED_NATIVE_TASKS_EXPECTED_RECORD_READ_AVAILABLE
+  prior_error_class: NONE
+hypothesis: the_provider_expected_task_inventory_record_will_either_explicitly_expose_project_or_container_context_metadata_or_repeatably_expose_no_such_field_across_four_identical_read_only_probes
+controlled_factor: project_vs_nonproject_context
+exact_probe:
+  action: automations.list
+  mode: sanitized_expected_task_project_context_metadata_read_only
+  expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+  calculation: locate_only_the_expected_X11_task_record_then_inspect_for_explicit_project_or_container_context_metadata_and_persist_presence_classification_only
+  classification_vocabulary:
+    - EXPLICIT_PROJECT_OR_CONTAINER_METADATA_EXPOSED
+    - NO_EXPLICIT_PROJECT_OR_CONTAINER_METADATA_EXPOSED
+    - EXPECTED_TASK_NOT_VISIBLE
+    - SURFACE_UNAVAILABLE
+  persist_only:
+    - provider_call_success
+    - expected_task_visible
+    - project_context_field_exposed
+    - project_context_classification
+    - permission_class
+    - error_class
+    - latency_when_exposed
+    - operator_relay_minutes
+  privacy_gate: do_not_persist_raw_prompt_project_names_container_identifiers_unrelated_task_metadata_schedules_timezones_or_run_timestamps
+measured_result:
+  provider_call_success: true
+  expected_task_visible: true
+  project_context_field_exposed: false
+  project_context_classification: NO_EXPLICIT_PROJECT_OR_CONTAINER_METADATA_EXPOSED
+  latency_ms: NOT_EXPOSED
+  operator_relay_minutes: 0
+  changed_capability: false
+  campaign_decision: true
+  andon: false
+permission_error:
+  permission_class: AUTHENTICATED_NATIVE_TASKS_EXPECTED_RECORD_READ_AVAILABLE
+  error_class: NONE
+  latency_when_exposed: NOT_EXPOSED
+campaign_summary:
+  provider_call_success: [true, true, true, true]
+  expected_task_visible: [true, true, true, true]
+  project_context_field_exposed: [false, false, false, false]
+  project_context_classification:
+    - NO_EXPLICIT_PROJECT_OR_CONTAINER_METADATA_EXPOSED
+    - NO_EXPLICIT_PROJECT_OR_CONTAINER_METADATA_EXPOSED
+    - NO_EXPLICIT_PROJECT_OR_CONTAINER_METADATA_EXPOSED
+    - NO_EXPLICIT_PROJECT_OR_CONTAINER_METADATA_EXPOSED
+  latencies_ms: [NOT_EXPOSED, NOT_EXPOSED, NOT_EXPOSED, NOT_EXPOSED]
+  operator_relay_minutes: 0
+  decision: KEEP
+  decision_basis: four_identical_authenticated_bounded_reads_repeatably_exposed_the_expected_task_record_without_an_explicit_project_or_container_metadata_field
+supported_claim: the_native_expected_task_inventory_record_exposed_no_explicit_project_or_container_context_metadata_in_four_identical_bounded_probes
+claim_ceiling: inventory_schema_field_absence_only_not_proof_of_nonproject_execution_project_membership_hidden_context_inheritance_container_isolation_runtime_context_or_independent_verification
+strongest_falsifier: a_direct_provider_surface_or_later_identical_probe_exposes_explicit_project_or_container_context_metadata_for_the_expected_task_or_the_expected_task_record_shape_changes
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer: [Reginleif, Ratatoskr]
+same_provider_independence_claim: false
+honest_flaw: absence_of_an_explicit_inventory_field_cannot_distinguish_nonproject_execution_from_hidden_or_unexposed_project_context
+next_factor: gmail_read_surface
+next_campaign:
+  experiment_id: X11_GMAIL_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1
+  controlled_factor: gmail_read_surface
+  campaign_wake: 1
+  target_wakes: 4
+  baseline: none_yet
+  hypothesis: an_authenticated_bounded_gmail_metadata_search_for_one_fixed_impossible_marker_will_repeatably_return_a_sanitized_zero_result_without_exposing_message_content
+  exact_probe:
+    action: gmail_search
+    mode: fixed_impossible_marker_metadata_only
+    fixed_query: '"HFO_X11_GMAIL_FIXED_IMPOSSIBLE_MARKER_7F61D846C0A64A99B166"'
+    max_results: 1
+    persist_only:
+      - provider_call_success
+      - sanitized_result_count
+      - continuation_present
+      - permission_class
+      - error_class
+      - latency_when_exposed
+      - operator_relay_minutes
+    privacy_gate: do_not_fetch_or_persist_message_subject_sender_recipient_body_snippet_identifiers_labels_dates_or_unrelated_mailbox_metadata
+    login_or_reauthentication_allowed: false
+    gmail_mutation_allowed: false
+    sensitive_readback_externalization_allowed: false
+    same_provider_independence_claim_allowed: false
+slack_action: POST_CAMPAIGN_DECISION_AFTER_GIT_READBACK
+sensitive_readback_externalized: false
+valid_time_utc: 2026-08-05T16:41:28Z
+sealed: true
