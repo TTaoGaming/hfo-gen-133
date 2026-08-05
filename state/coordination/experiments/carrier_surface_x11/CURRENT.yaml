@@ -1,82 +1,81 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
-experiment_id: X11_NATIVE_TASKS_SANITIZED_INVENTORY_READ_V2
-current_version: 103
-accepted_wakes: 3
+experiment_id: X11_PROVIDER_LAST_RUN_OFFSET_V2
+current_version: 104
+accepted_wakes: 0
 target_wakes_before_decision: 4
-controlled_factor: native_tasks_read_visibility
+controlled_factor: wake_timing
 campaign_status: ACTIVE
 current_disposition: null
 prior_campaign:
-  experiment_id: X11_SLACK_FIXED_POINTER_BOUNDED_READ_V2
-  final_version: 100
+  experiment_id: X11_NATIVE_TASKS_SANITIZED_INVENTORY_READ_V2
+  final_version: 104
   disposition: KEEP
   accepted_wakes: 4
   decision_event:
-    commit: 1c5f469da97eda180589cc94bc0a228ff37b2cbcd
-    path: state/coordination/experiments/carrier_surface_x11/events/20260805T004054Z_SLACK_FIXED_POINTER_BOUNDED_READ_V2_WAKE_04_DECISION_KEEP.yaml
-    blob: 69e3f20bbfaeb9fd1ac1a17d4dd6c525d6dc28fc
+    commit: ad527c47b54ad8b8ed277402a5f28616fea3b183
+    path: state/coordination/experiments/carrier_surface_x11/events/20260805T044136Z_NATIVE_TASKS_SANITIZED_INVENTORY_READ_V2_WAKE_04_DECISION_KEEP.yaml
+    blob: ed10e1bc0a71cf40b950c3f679a495c21af27ee9
 baseline_result:
-  mode: campaign_initialized_no_native_tasks_probe_on_prior_wake
+  mode: campaign_initialized_no_provider_timing_probe_on_decision_wake
   expected_task_id: 6a55089a9adc8191bda54541f7f9effa
-  expected_title: HFO X11 Carrier Surface PDCA Lab
   permission_class: NOT_PROBED_THIS_CAMPAIGN
   error_class: NONE
-hypothesis: the_read_only_native_tasks_inventory_surface_will_repeatedly_show_the_expected_X11_task_identity_and_enabled_state_without_requiring_login_or_mutation
+hypothesis: the_provider_exposed_previous_last_run_time_will_support_a_repeatable_signed_offset_measurement_against_the_declared_nominal_minute_boundary_without_using_wrapper_time_as_a_proxy_for_dispatch
 measured_result:
-  provider_call_success: [true, true, true]
-  expected_task_visible: [true, true, true]
-  expected_title_match: [true, true, true]
-  enabled_state: [true, true, true]
-  sanitized_active_HFO_task_counts: [14, 14, 14]
-  latencies_ms: [NOT_EXPOSED, NOT_EXPOSED, NOT_EXPOSED]
-  permission_class: AUTHENTICATED_NATIVE_TASKS_INVENTORY_READ_AVAILABLE
+  provider_call_success: []
+  expected_task_visible: []
+  previous_last_run_time_present: []
+  signed_offset_seconds: []
+  offset_direction: []
+  latencies_ms: []
+  permission_class: NOT_PROBED_THIS_CAMPAIGN
   error_class: NONE
   operator_relay_minutes: 0
   changed_capability: false
   campaign_decision: false
   andon: false
-supported_claim: authenticated_read_only_native_tasks_inventory_visibility_of_expected_X11_task_identity_title_match_enabled_state_and_sanitized_active_HFO_task_count
-claim_ceiling: read_only_native_tasks_inventory_visibility_of_the_expected_task_identity_title_match_enabled_state_and_sanitized_active_HFO_task_count_only_not_execution_success_liveness_exactly_once_delivery_future_schedule_durability_or_independent_verification
-strongest_falsifier: the_inventory_read_fails_the_expected_task_is_absent_the_title_or_enabled_state_drifts_without_authorized_change_or_a_field_selective_surface_proves_the_broad_inventory_call_unnecessary
+supported_claim: not_yet_measured
+claim_ceiling: provider_exposed_previous_last_run_offset_only_not_dispatch_queue_start_execution_duration_current_wake_latency_schedule_sla_or_independent_verification
+strongest_falsifier: the_expected_task_or_previous_last_run_time_is_absent_the_offset_cannot_be_computed_from_the_declared_nominal_boundary_or_an_independent_dispatch_receipt_disagrees_materially
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 consumer: [Reginleif, Ratatoskr]
-honest_flaw: the_provider_inventory_read_is_broad_and_same_provider_and_returned_unrelated_task_metadata_and_prompt_bodies_even_though_only_sanitized_fields_are_persisted
+honest_flaw: provider_last_run_time_is_same_provider_telemetry_and_may_represent_completion_or_bookkeeping_time_rather_than_dispatch_or_execution_start
 last_event:
-  commit: ba4cd34812f7f293249d9dc578b85f45a622aed6
-  path: state/coordination/experiments/carrier_surface_x11/events/20260805T034016Z_NATIVE_TASKS_SANITIZED_INVENTORY_READ_V2_WAKE_03.yaml
-  blob: 8216193ae3e85b23789bbf69d70bf774920a2129
-next_factor: native_tasks_read_visibility
+  commit: ad527c47b54ad8b8ed277402a5f28616fea3b183
+  path: state/coordination/experiments/carrier_surface_x11/events/20260805T044136Z_NATIVE_TASKS_SANITIZED_INVENTORY_READ_V2_WAKE_04_DECISION_KEEP.yaml
+  blob: ed10e1bc0a71cf40b950c3f679a495c21af27ee9
+next_factor: wake_timing
 next_probe:
-  experiment_id: X11_NATIVE_TASKS_SANITIZED_INVENTORY_READ_V2
-  campaign_wake: 4
-  mode: repeat_read_only_native_tasks_inventory_then_write_campaign_decision
-  exact_action: call_automations_list_and_persist_only_provider_call_success_expected_task_visible_expected_title_match_enabled_state_sanitized_active_HFO_task_count_permission_class_error_class_latency_when_exposed_and_operator_relay_minutes_then_write_KEEP_REVISE_RESEAT_VARIABLE_or_HOLD
-  expected_current_version: 103
+  experiment_id: X11_PROVIDER_LAST_RUN_OFFSET_V2
+  campaign_wake: 1
+  mode: provider_last_run_offset_read_only
+  exact_action: call_automations_list_locate_only_the_expected_X11_task_and_compare_its_provider_exposed_previous_last_run_time_to_the_declared_nominal_minute_boundary_then_persist_only_signed_offset_seconds_direction_permission_error_latency_when_exposed_and_operator_relay_minutes
+  expected_current_version: 104
   persist_only:
     - provider_call_success
     - expected_task_visible
-    - expected_title_match
-    - enabled_state
-    - sanitized_active_HFO_task_count
+    - previous_last_run_time_present
+    - signed_offset_seconds
+    - offset_direction
     - permission_class
     - error_class
     - latency_when_exposed
     - operator_relay_minutes
-  privacy_gate: do_not_persist_unrelated_task_titles_prompt_bodies_schedules_timezones_or_run_metadata
+  privacy_gate: do_not_persist_raw_task_prompt_unrelated_task_metadata_or_raw_provider_run_timestamp
   task_mutation_allowed: false
   slack_write_each_probe_allowed: false
   post_only_changed_capability_campaign_decision_or_andon: true
   sensitive_readback_externalization_allowed: false
   same_provider_independence_claim_allowed: false
-slack_action: ABSTAIN_UNCHANGED
-updated_valid_time_utc: 2026-08-05T03:40:16Z
+slack_action: POST_CAMPAIGN_DECISION
+updated_valid_time_utc: 2026-08-05T04:41:36Z
 sealed: false
 ---
 
-Native Tasks sanitized inventory-read V2 accepted wake 3/4. The identical read-only
-provider inventory call again succeeded; the expected X11 task ID remained visible,
-the title still matched, the task remained enabled, and the sanitized active HFO task
-count remained 14. No capability changed, so no Slack post was made. This establishes
-inventory visibility only, not task execution, liveness, exactly-once delivery, future
-durability, or independent verification.
+Native Tasks sanitized inventory-read V2 completed four accepted wakes with the expected
+X11 task visible, title matched, enabled state true, and sanitized active HFO task count
+14 on every wake. Decision KEEP applies only to inventory visibility, not execution or
+liveness. The next campaign measures only the signed offset of the provider-exposed
+previous last-run timestamp against the declared nominal minute boundary; raw run
+metadata will not be persisted.
