@@ -1,0 +1,52 @@
+schema_version: "1.0"
+receipt_type: OPERATOR_RELIEF_STATUS_RECONCILIATION
+seat: S05
+expected_task_id: "6a55c182078c8191b89f2dd15f5f640c"
+observed_at_utc: "2026-08-05T00:16:35Z"
+canonical_branch: "agent/gen133-bootstrap-20260730"
+wip: 1
+
+active_item:
+  id: OUTBOUND_JOB_APPLICATION_QUEUE_20260805
+  priority: P0
+  prior_state: UNKNOWN_OR_POSSIBLY_SENT
+  reconciled_state: SCHEDULED_NOT_SENT
+  exact_classification: OPERATOR_REVIEW_REQUIRED_BEFORE_AUTOMATIC_EXTERNAL_EFFECT
+  material_change: "Two outbound job-application messages exist in Gmail's scheduled state, not sent state. The first is scheduled for 2026-08-05T08:00:00-06:00 and the second for 2026-08-05T09:35:00-06:00. Each has one tailored PDF attachment. No recipient reply or delivery/acceptance evidence exists."
+  false_green_gate: "Do not classify either application as submitted, delivered, received, reviewed, or accepted until Gmail SENT or recipient/provider readback exists."
+  operator_decision:
+    allowed_outcomes:
+      - KEEP_SCHEDULED
+      - EDIT_OR_CANCEL_IN_GMAIL
+    first_decision_deadline: "2026-08-05T08:00:00-06:00"
+  source_pointers:
+    prairielearn_message_id: "19fd23952abbb724"
+    prairielearn_thread_id: "19fced53544c3af4"
+    drswarm_message_id: "19fd2904ceac8454"
+    drswarm_thread_id: "19fcec342c4282f2"
+
+priorities:
+  p0: "Review or intentionally retain the two scheduled job-application emails before the first automatic send at 08:00 Mountain on August 5."
+  p1:
+    - "PFA secure-method response and compliance completion path"
+    - "Missouri fire-alarm and AC evidence"
+
+bounded_transition:
+  type: RECONCILE_IMPORTANT_STATUS
+  result: "Replaced a possible false-green 'applications sent' state with exact scheduled-not-sent status and one decision gate, preventing duplicate submission and avoiding manual mailbox inspection."
+  operator_minutes_removed_estimate: 6
+  next_consumer: "Operator, then Var career/outreach reconciliation cell"
+
+safety:
+  email_sent_by_this_cell: false
+  scheduled_email_changed_or_cancelled: false
+  application_submitted_by_this_cell: false
+  calendar_mutation_performed: false
+  spend_or_payment_performed: false
+  account_or_security_change_performed: false
+  task_mutation_performed: false
+  sensitive_body_externalized: false
+
+honest_limit:
+  - "Gmail scheduled-state readback proves queued future transmission, not successful future send or delivery."
+  - "The cell did not independently verify the underlying job postings, resume claims, or recipient mailbox validity in this bounded pass."
