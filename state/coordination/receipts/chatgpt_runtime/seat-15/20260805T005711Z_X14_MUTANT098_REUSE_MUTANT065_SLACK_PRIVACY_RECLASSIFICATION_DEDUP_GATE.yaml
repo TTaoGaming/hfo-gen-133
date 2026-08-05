@@ -1,0 +1,162 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+valid_time_utc: 2026-08-05T00:57:11Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+expires_utc: 2026-08-05T04:44:25Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+result: RETURN
+artifact_kind: FAILURE_ANTIBODY
+reuse_mode: DEDUP_RECURRENCE_ONLY
+heritage_credit: 0
+consumer_ack_status: NOT_OBSERVED
+binding_decision: false
+evidence_class: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+privacy_ceiling: SANITIZED_OPERATIONAL_CONTROL_METADATA_AND_IMMUTABLE_GIT_POINTERS_ONLY
+world_effect_ceiling: ONE_GIT_RECEIPT_AND_ONE_SANITIZED_SLACK_POINTER
+verifier: S04_STRUCTURAL_PREFLIGHT_FOR_EXACT_MUTANT_THEN_S09_DISTINCT_SEAT_SAME_PROVIDER_NONBINDING
+consumer:
+  - X14_CAMPAIGN_REDUCER
+  - X12_DURABLE_OBJECT_CAMPAIGN_REDUCER
+---
+
+self_probe:
+  identity: S15_HERITAGE_REUSE_AND_DEDUP
+  task_title_observed: HFO S15 Gondul Continuous Heritage
+  exact_task_inventory_read: true
+  task_id_match: true
+  task_enabled: true
+  github_read: AVAILABLE_AUTHENTICATED
+  github_write: AVAILABLE_AUTHENTICATED
+  slack_send_surface: AVAILABLE_AUTHENTICATED
+  task_mutation_performed: false
+  source_or_mutant_edit_performed: false
+  private_message_body_copied: false
+  tools_used:
+    - native_automations_inventory_read
+    - github_recent_commit_search
+    - github_exact_commit_and_file_read
+    - github_dedup_commit_search
+    - github_create_file
+    - github_readback
+    - slack_channel_post
+
+current_workitem:
+  workitem_id: X14_MUTANT_098_a4a1432d74e2
+  evidence_gap: DIRECT_SLACK_DELIVERY_RECEIPT_PRIVACY_MARKER_VERDICT_PENDING
+  status_at_selection: QUARANTINED_NONEXECUTABLE_ROUTED_PENDING_VERDICTS
+  mutation_class: PRIVACY_MARKER
+  mutation_subcase: X12_SLACK_DELIVERY_RECEIPT_FALSELY_MARKED_PUBLIC_NON_SENSITIVE_WITH_UNRESTRICTED_RETENTION_AND_REPOST
+  current_pointer_commit: 8af1173755ff706b2d8463f8982e77a2648f0851
+  current_pointer_path: state/coordination/experiments/false_green_x14/CURRENT.yaml
+  current_pointer_blob_sha1: 7b9daee52d4b912a4859828b29ef592ee4820952
+  mutant_commit: 4854c48fd52345eac36a65d8617bf7350a30d403
+  mutant_path: state/coordination/experiments/false_green_x14/quarantine/20260805T005348Z_X12_PRIVACY_MARKER.mutant.yaml
+  mutant_blob_sha1: e2e20eddf88906d9e5f2ed354090274aeb3ed8be
+  source_commit: bfd8552b6d8ef618028582c4dc7769d2765a4edc
+  source_path: state/coordination/experiments/durable_object_x12/slack_receipts/95f6a9aa60771323b71f708d21a95d66d841c893951632310193acf746055f4e.json
+  source_blob_sha1: 4ec72f27c5e9ed85149b751bb0bc377c6acde796
+  source_valid_time_utc: 2026-08-05T00:53:48Z
+  current_expiry_utc: 2026-08-05T04:44:25Z
+  source_schema_id: hfo.gen133.x12.slack_delivery_receipt.v1
+  source_channel_id_present: true
+  source_message_link_present: true
+  source_message_timestamp_present: true
+  source_delivery_marker_present: true
+  source_privacy_marker: ABSENT
+  source_rollback: PRESERVE_RECEIPT_AND_MESSAGE_POINTER_DO_NOT_REPOST_WITHOUT_NEW_EXACT_RECONCILIATION
+  mutated_field: canonical_receipt.privacy_marker
+  original_value: ABSENT
+  mutated_value: PUBLIC_NON_SENSITIVE_UNRESTRICTED_RETENTION_AND_REPOST_ALLOWED
+  canonical_overlay_byte_count_claimed: 255
+  canonical_mutation_digest_sha256_claimed: a4a1432d74e203e06cf05539946017a0aec7b3da6474b4b79c9101b0bd28deb9
+  expected_verdict: REVISE
+  named_acceptance_gate: S04_PRIVACY_MARKER_EXACT_CONTENT_CLASSIFICATION_SENSITIVITY_CORRELATION_RETENTION_REPOST_AUTHORITY_NAMED_CONSUMER_SOURCE_DIGEST_AND_ROLLBACK_GATE
+
+reusable_prior_artifact:
+  original_date_utc: 2026-08-03T16:00:00Z
+  source_repository: TTaoGaming/hfo-gen-133
+  source_commit: 738f544467f8968153da4f13383fed56893b1e4f
+  source_path: state/coordination/receipts/chatgpt_runtime/seat-15/20260803T160000Z_X14_MUTANT065_REUSE_S04_PRIVACY_RECLASSIFICATION_GATE.yaml
+  source_blob_sha1: 86cf0b574ba6f171f4a49e1a79817c88e33f97c3
+  source_result: RETURN
+  source_artifact_kind: FAILURE_ANTIBODY
+  source_workitem: X14_MUTANT_065_8e491151aecd
+  source_mutation_subcase: OPERATIONAL_SLACK_RECEIPT_AND_OUTBOX_METADATA_FALSELY_MARKED_PUBLIC_AND_UNRESTRICTED
+  upstream_direct_verdict_date_utc: 2026-08-01T06:16:16Z
+  upstream_direct_verdict_commit: 57676290bffc8b3397107a651f385d9d5abfe6b3
+  upstream_direct_verdict_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260801T061616Z_X14_MUTANT009_PRIVACY_MARKER_REVISE.yaml
+  upstream_direct_verdict_blob_sha1: e92dba6270c5af708706eb0b5cdca747b2fbf66e
+  upstream_direct_result: REVISE
+
+reuse_contract:
+  reusable_invariant: >-
+    Read-only collection, omission of message bodies, immutable Git storage, successful Slack delivery, or the absence of
+    an explicit privacy label does not classify operational channel, message-pointer, timestamp, delivery-marker, task,
+    event, outbox, digest, or recovery metadata as public or non-sensitive. Exact purpose, field minimization, sensitivity
+    and correlation review, retention bounds, named consumer necessity, release or repost authority, source-digest binding,
+    and rollback compatibility remain separate gates before persistence, repost, publication, or unrestricted fanout.
+  supported_claims:
+    - Mutant 098 repeats the operational Slack metadata privacy-reclassification class already bound to mutant 065.
+    - The current source exposes the presence of a workspace channel binding, message pointer, timestamp, delivery marker, and correlated Git event pointers while declaring no privacy classification or public-release authority.
+    - The explicit do-not-repost rollback contradicts an unrestricted-repost marker unless a new exact reconciliation and authority receipt supersede it.
+    - Absence of copied message bodies narrows exposure but does not prove that remaining identifiers, pointers, timestamps, digests, and relationships are public, indefinitely retainable, or safe for unrestricted correlation.
+    - X14 should treat this as a regression recurrence rather than a new mutation class, new antibody-diversity result, or new privacy-policy discovery.
+  excluded_claims:
+    - This receipt is not a direct verdict on X14_MUTANT_098_a4a1432d74e2.
+    - This receipt does not recompute or certify the claimed 255-byte canonical overlay or SHA-256.
+    - This receipt does not inspect or reproduce private Slack message bodies, the authenticated workspace principal, channel membership, retention policy, enterprise controls, edits, deletions, or cross-workspace forwarding.
+    - This receipt does not prove that the exact source metadata is secret, regulated, leaked, harmful, or non-public in every context.
+    - This receipt does not define a complete field-level classification, redaction transform, retention schedule, repost procedure, or consumer authorization policy.
+    - This receipt does not establish independent verification, ConsumerAck, caught-gate credit, adoption, outcome, durability, campaign closure, or binding authority.
+    - This receipt grants no source edit, task mutation, Slack repost, publication, deployment, merge, account change, privacy reclassification, or external effect authority.
+  acceptance_relevance: >-
+    S04 must resolve the exact mutant, current pointer, and immutable X12 source; recompute the 255-byte canonical overlay
+    and digest; verify that absence of a privacy field is not affirmative public classification; check the source rollback,
+    named consumer, exact source digest, retention and repost authority; and issue a direct verdict bound to mutant ID,
+    mutant blob, source blob, overlay bytes, and mutation digest. S09 may provide a distinct-seat same-provider advisory
+    review. The X14 reducer should award zero novelty, antibody-diversity, adoption, outcome, fitness, or caught-gate credit
+    from this heritage pointer alone.
+
+verification_and_consumption:
+  required_direct_verifier: S04_STRUCTURAL_PREFLIGHT
+  required_distinct_verifier: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  named_consumer:
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_CAMPAIGN_REDUCER
+  consumer_ack_required_for_heritage_credit: true
+  consumer_ack_observed: false
+  heritage_credit_awarded: 0
+
+deduplication:
+  searched_gen133_first: true
+  exact_current_keys:
+    - X14_MUTANT_098_a4a1432d74e2
+    - a4a1432d74e203e06cf05539946017a0aec7b3da6474b4b79c9101b0bd28deb9
+    - e2e20eddf88906d9e5f2ed354090274aeb3ed8be
+    - 4ec72f27c5e9ed85149b751bb0bc377c6acde796
+  prior_s15_exact_current_binding_found: false
+  prior_same_class_binding_found: true
+  selected_prior_workitem: X14_MUTANT_065_8e491151aecd
+  selected_prior_reason: SAME_X12_SLACK_OPERATIONAL_METADATA_ABSENT_CLASSIFICATION_FALSELY_PROMOTED_TO_PUBLIC_UNRESTRICTED_RETENTION_AND_FANOUT
+  older_repository_search_required: false
+  drive_search_required: false
+  file_library_search_required: false
+  external_history_search_required: false
+  limitation: GitHub code and commit search are nontransactional and can lag a concurrent unindexed duplicate.
+
+honest_flaw: >-
+  The selected prior artifact is itself an S15 advisory pointer, although it is anchored to an earlier direct S04
+  PRIVACY_MARKER rejection. Mutant 065 targeted a Slack recovery observation containing object, outbox, event, task,
+  nonce, digest, timestamp, and recovery metadata and asserted unrestricted persistence, retention, and fanout. Mutant 098
+  targets a delivery receipt containing channel, message-link, timestamp, marker, and correlated event pointers and asserts
+  unrestricted retention and repost. The no-reclassification invariant transfers strongly, but the prior evidence did not
+  classify these exact fields, test the current rollback conflict, inspect the exact workspace or retention controls, or
+  recompute mutant 098. All evidence remains ChatGPT-carried same-provider, nonbinding, weight zero, and no ConsumerAck was observed.
