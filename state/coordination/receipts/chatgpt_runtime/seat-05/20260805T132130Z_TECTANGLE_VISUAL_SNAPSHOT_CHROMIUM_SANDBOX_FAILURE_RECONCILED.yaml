@@ -1,0 +1,65 @@
+schema: hfo.gen133.operator_relief_receipt.v0_1
+receipt_id: S05_TECTANGLE_VISUAL_SNAPSHOT_CHROMIUM_SANDBOX_FAILURE_RECONCILED_20260805T132130Z
+task_id: 6a55c182078c8191b89f2dd15f5f640c
+seat: S05
+callsign_role: Var_Operator_Relief
+valid_time_utc: 2026-08-05T13:21:30Z
+transaction_time_utc: GIT_COMMIT_TIME
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+wip: 1
+result: STATUS_RECONCILED
+active_item: TECTANGLE_VISUAL_SNAPSHOT_DAILY_FAILURE
+p0: JOB_APPLICATION_PRESEND_DISPOSITION_BEFORE_2026-08-05T08:00:00-06:00
+p1:
+  - TECTANGLE_CI_PUPPETEER_SANDBOX_REPAIR_PACKET
+  - PFA_SECURE_METHOD_AND_DISCLOSURE_COMPLETION
+source_readback:
+  gmail:
+    evidence_class: PRIVATE_NOTIFICATION_READBACK_SANITIZED
+    observed: GitHub notified that Visual Snapshot Daily run 31007918699 failed on main at commit 49da03bd595d364789c219382ec6bec6f56b552d.
+    recurrence: At least five consecutive daily failure notifications were present for 2026-08-01 through 2026-08-05 on the same commit.
+    private_body_externalized: false
+  github_actions:
+    repository: TTaoGaming/Tectangle
+    workflow_run_id: 31007918699
+    job_id: 92312375510
+    job: visual-snapshot
+    conclusion: failure
+    failed_step: Run visual snapshot
+    skipped_step: Run P1+P2 seat screenshots
+    artifact_upload: success
+    artifact_id: 8931297293
+    artifact_sha256: 601acb01ae340cbec362a6247109069811c37549811325c359c7de07a378e233
+  workflow_source:
+    path: .github/workflows/visual_snapshot_daily.yml
+    ref: 49da03bd595d364789c219382ec6bec6f56b552d
+    behavior: Installs dependencies, starts a static server, runs the Puppeteer-backed visual snapshot, then P1/P2 screenshots, and uploads artifacts even on failure.
+diagnosis:
+  exact_error: Chromium failed to launch because the Ubuntu 24.04 runner exposed no usable sandbox under the current Puppeteer launch configuration.
+  failure_class: CI_BROWSER_LAUNCH_TEST_HARNESS
+  not_established:
+    - visual regression
+    - application defect
+    - production camera defect
+    - screenshot mismatch
+  secondary_warning: GitHub Actions reported Node.js 20 action-runtime deprecation, but this was not the failing step.
+  strongest_falsifier: A rerun on the same runner image and exact commit succeeds without changing browser launch or sandbox configuration.
+bounded_transition:
+  performed: Reconciled the notification to exact workflow job and log readback, isolated the failing step and error class, and prevented misclassification as a product visual regression.
+  proposed_not_performed: S06 should compile a bounded repair packet to inspect jest-puppeteer.config.cjs and add the smallest CI-scoped Chromium sandbox compatibility change with a rerun acceptance gate.
+operator_minutes_removed: 7
+next_consumer: S06_CODE_WORK_PACKET_COMPILER_THEN_S04_STRUCTURAL_PREFLIGHT
+privacy_ceiling: SANITIZED_PUBLIC_REPOSITORY_FACTS_AND_PRIVATE_SOURCE_POINTER_CLASS_ONLY
+effect_ceiling: READ_RECONCILE_RECEIPT_POINTER
+forbidden_effects_confirmed_absent:
+  - workflow_rerun
+  - code_patch
+  - deployment
+  - merge
+  - publication
+  - email_send
+  - application_submission
+  - payment
+  - task_mutation
+honest_flaw: Prior daily run logs were not individually opened, so recurrence is notification-level evidence; only the 2026-08-05 run received exact job-log diagnosis.
