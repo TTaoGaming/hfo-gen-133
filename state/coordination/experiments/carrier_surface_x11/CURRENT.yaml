@@ -1,8 +1,8 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_SLACK_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1
-current_version: 134
-accepted_wakes: 2
+current_version: 135
+accepted_wakes: 3
 target_wakes_before_decision: 4
 controlled_factor: slack_read_surface
 campaign_status: ACTIVE
@@ -19,10 +19,10 @@ prior_campaign:
 baseline_result: campaign_initialized_with_no_prior_Slack_read_surface_claim
 hypothesis: an_authenticated_bounded_public_Slack_search_for_one_fixed_impossible_marker_will_repeatably_return_a_sanitized_zero_result_without_fetching_or_persisting_message_content_or_identifiers
 measured_result:
-  provider_call_success: [true, true]
-  sanitized_result_count: [0, 0]
-  continuation_present: [false, false]
-  latencies_ms: [null, null]
+  provider_call_success: [true, true, true]
+  sanitized_result_count: [0, 0, 0]
+  continuation_present: [false, false, false]
+  latencies_ms: [null, null, null]
   latency_note: connector_latency_not_exposed
   permission_class: AUTHENTICATED_SLACK_PUBLIC_BOUNDED_SEARCH_READ_AVAILABLE
   error_class: NONE
@@ -39,11 +39,11 @@ consumer:
   - Ratatoskr
 honest_flaw: an_impossible_marker_zero_result_can_validate_bounded_public_search_execution_but_cannot_test_private_surfaces_workspace_completeness_recall_freshness_content_access_or_independent_verification
 last_event:
-  commit: b7bcba4bb97ef6bef0f4f856d13e7239eaca4d6a
-  path: state/coordination/experiments/carrier_surface_x11/events/20260806T104021Z_SLACK_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1_WAKE_02.yaml
-  blob: 5312a8299858a31fe567a274812b24f12d6060e6
+  commit: 3ded10680c378dbe7950c1d53888898ebbe8b27f
+  path: state/coordination/experiments/carrier_surface_x11/events/20260806T114120Z_SLACK_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1_WAKE_03.yaml
+  blob: 0dc5f9d5b15754eb1d59bb81271a4e8602809ce4
 wake_measurement:
-  campaign_wake: 2
+  campaign_wake: 3
   public_search_success: true
   exact_fixed_marker: HFO_X11_SLACK_FIXED_IMPOSSIBLE_MARKER_8E2A4C7D1B906F35
   sanitized_result_count: 0
@@ -58,10 +58,10 @@ wake_measurement:
 next_factor: slack_read_surface
 next_probe:
   experiment_id: X11_SLACK_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1
-  campaign_wake: 3
+  campaign_wake: 4
   mode: bounded_public_message_search
-  exact_action: repeat_the_identical_fixed_impossible_marker_public_Slack_search_with_maximum_one_result_include_context_false_and_persist_only_sanitized_measurements
-  expected_current_version: 134
+  exact_action: repeat_the_identical_fixed_impossible_marker_public_Slack_search_with_maximum_one_result_include_context_false_then_write_KEEP_REVISE_RESEAT_VARIABLE_or_HOLD_and_select_the_next_factor
+  expected_current_version: 135
   persist_only:
     - provider_call_success
     - sanitized_result_count
@@ -76,8 +76,8 @@ next_probe:
   sensitive_readback_externalization_allowed: false
   same_provider_independence_claim_allowed: false
 slack_action: NONE_UNCHANGED_SILENT
-updated_valid_time_utc: 2026-08-06T10:40:21Z
+updated_valid_time_utc: 2026-08-06T11:41:20Z
 sealed: false
 ---
 
-Slack public read surface V1 accepted wake 2 of 4. The identical bounded exact-marker search again returned zero results with no continuation and no persisted message content or identifiers. The next wake repeats the identical probe; unchanged results remain silent.
+Slack public read surface V1 accepted wake 3 of 4. The identical bounded exact-marker search again returned zero results with no continuation and no persisted message content or identifiers. The next wake performs the fourth identical probe and records the campaign decision; unchanged intermediate results remain silent.
