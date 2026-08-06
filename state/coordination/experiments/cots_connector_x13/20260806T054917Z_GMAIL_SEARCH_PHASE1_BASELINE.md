@@ -1,0 +1,74 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_GMAIL_SEARCH_READONLY_008
+event_type: PHASE1_BASELINE
+phase: 1_of_4
+status: PHASE1_ACCEPTED_WITH_GATES
+provisional_decision: ADOPT_WITH_GATES_CATALOG_ONLY
+carrier_task_id: 6a55c1733708819185088bf334e33ea5
+carrier_task_id_match: true
+wip: 1
+prior_current_version: 128
+expected_current_version: 129
+repository: TTaoGaming/hfo-gen-133
+ref: agent/gen133-bootstrap-20260730
+candidate: Gmail_search_email_ids_readonly_surface
+candidate_action: Gmail.search_email_ids
+canonical_request_sha256: c36911243697a33efef3f04af88309dc82a32b8dae0d7a7efc42645d17bc9747
+normalized_request_descriptor: '{"action":"Gmail.search_email_ids","label_ids":null,"max_results":1,"next_page_token":"","query":"newer_than:1d -in:spam -in:trash"}'
+query_class: RELATIVE_ONE_DAY_NONSPAM_NONTRASH
+max_results_requested: 1
+label_ids_requested: NONE
+next_page_token_supplied: false
+result_count_returned: 1
+next_page_token_returned: true
+raw_message_id_persisted: false
+raw_page_token_persisted: false
+message_subject_sender_body_or_attachment_hydrated: false
+connector_error: null
+connector_external_call_time_ms: 296
+retries: 0
+fallbacks: 0
+candidate_mutations: 0
+measured_fact: ONE_BOUNDED_READONLY_SEARCH_RETURNED_ONE_MESSAGE_ID_AND_A_CONTINUATION_TOKEN_WITHOUT_HYDRATING_SUBJECT_SENDER_BODY_THREAD_OR_ATTACHMENT_CONTENT
+andon: MAX_RESULTS_ONE_IS_ONLY_AN_OUTPUT_CAP_AND_THE_RETURNED_CONTINUATION_TOKEN_PROVES_MORE_RESULTS_MAY_EXIST; THE_RELATIVE_NEWER_THAN_QUERY_IS_TIME_DEPENDENT_AND_NOT STRICTLY_REPLAYABLE
+custom_code_avoided_estimate: 25_to_70_LOC_UNVALIDATED
+operator_minutes_removed_measured: 0
+credentials: CONNECTOR_MANAGED_EFFECTIVE_USER_PROJECT_TOKEN_TYPE_OAUTH_SCOPES_DELEGATION_AND_DOMAIN_WIDE_AUTHORITY_UNKNOWN
+durability: GIT_EVENT_IS_DURABLE_BUT_GMAIL_SEARCH_RESULTS_AND_RELATIVE_TIME_QUERY_ARE_DYNAMIC; RAW_PROVIDER_REQUEST_ID_RESPONSE_HEADERS_AND_RESULT_SIZE_ESTIMATE_ARE_UNAVAILABLE
+observability: CONNECTOR_EXPOSED_MESSAGE_ID_COUNT_CONTINUATION_PRESENCE_ERROR_STATE_AND_EXTERNAL_CALL_TIME_BUT OMITTED_THREAD_IDS_RESULT_SIZE_ESTIMATE_HTTP_STATUS_HEADERS_REQUEST_ID_EFFECTIVE_AUTH_SCOPE_AND_DIRECT_QUOTA_RECEIPT
+portability: LOW_TO_MEDIUM_GMAIL_SEARCH_SYNTAX_MESSAGE_IDS_AND_PAGE_TOKENS_ARE_PROVIDER_SPECIFIC; THE_HIGH_LEVEL_LIST_AND_PAGINATE_PATTERN_IS_PORTABLE
+failure_behavior: SUCCESS_PATH_ONLY; EMPTY_PERMISSION_RATE_LIMIT_TRANSIENT_AND_INVALID_QUERY_BEHAVIOR_NOT_TESTED
+paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
+official_nominal_quota_if_DIRECT_USERS_MESSAGES_LIST: 5_UNITS_PER_REQUEST
+actual_quota_consumed: UNKNOWN_WRAPPER_PROVIDER_PATH_PROJECT_AND_QUOTA_BUCKET_NOT_EXPOSED
+catalog_consumer: HFO_COTS_CAPABILITY_INVENTORY_CATALOG_ONLY
+operational_consumer: NOT_ASSIGNED
+consumer_ack: NOT_OBSERVED
+verifier: DISTINCT_RAW_GMAIL_USERS_MESSAGES_LIST_CALL_UNDER_THE_SAME_EFFECTIVE_PRINCIPAL_WITH_A_TIMESTAMP_BOUND_EQUIVALENT_QUERY_AND_MAXRESULTS_ONE
+verifier_result: NOT_RUN
+adoption_credit: 0
+fitness_credit: 0
+allowed_use: BOUNDED_HUMAN_REVIEWED_MESSAGE_ID_DISCOVERY_WITH_MINIMAL_RESULT_LIMIT_NO_CONTENT_HYDRATION_AND_FAIL_CLOSED_PAGINATION_HANDLING
+mandatory_gates: TREAT_MAX_RESULTS_AS_CAP_NOT_COUNT; CHECK_AND_HANDLE_NEXT_PAGE_TOKEN; DO_NOT_PERSIST_MESSAGE_IDS_OR_PAGE_TOKENS_BY_DEFAULT; DO_NOT_HYDRATE_MESSAGE_CONTENT_WITHOUT_A_BOUND_CONSUMER_NEED; DO_NOT_INFER_EFFECTIVE_SCOPE_IDENTITY_PROJECT_OR_QUOTA_FROM_SUCCESS; USE_ABSOLUTE_TIME_BOUNDS_FOR_REPLAYABLE_TESTS
+strongest_falsifier: A_MATCHED_RAW_GMAIL_MESSAGES_LIST_CALL_UNDER_THE_SAME_EFFECTIVE_PRINCIPAL_AND_TIME_BOUND_QUERY_RETURNS_NO_EQUIVALENT_RESULT_OR_REVEALS_MATERIALLY_DIFFERENT_PAGINATION_ERROR_SCOPE_OR_QUOTA_BEHAVIOR_HIDDEN_BY_THE_WRAPPER
+honest_flaw: THIS_IS_ONE_SUCCESSFUL_DYNAMIC_QUERY_RETURNING ONLY_IDS_WITHOUT_EMPTY_PERMISSION_INVALID_QUERY_RATE_LIMIT_TRANSIENT_PAGINATION_REPLAY_RAW_PROVIDER_PARITY_OPERATOR_SAVINGS_OR_CONSUMER_VALUE_TESTS
+official_contract_source: https://developers.google.com/workspace/gmail/api/reference/rest/v1/users.messages/list
+official_search_operator_source: https://support.google.com/mail/answer/7190
+official_quota_source: https://developers.google.com/workspace/gmail/api/reference/quota
+phase2_plan: REPEAT_A_TIMESTAMP_BOUND_EQUIVALENT_READONLY_ID_ONLY_QUERY_ONCE_AND_COMPARE_ONLY_RESULT_COUNT_CLASS_AND_CONTINUATION_PRESENCE_WITH_NO_CONTENT_HYDRATION
+valid_time_utc: 2026-08-06T05:49:17Z
+recorded_time_utc: 2026-08-06T05:49:17Z
+---
+
+# X13 Gmail search phase 1 — baseline accepted with gates
+
+One bounded `Gmail.search_email_ids` call used `max_results=1` and a one-day non-Spam/non-Trash query. The connector returned one message ID plus a continuation token in 296 ms, with no connector error. No subject, sender, body, thread, attachment, raw message ID, or raw page token was persisted in this event.
+
+The direct capability baseline is therefore narrow: the surface can perform read-only ID discovery and expose whether pagination continues without hydrating message content. The continuation token proves that `max_results=1` is an output cap, not a mailbox count or completeness claim.
+
+The official Gmail `users.messages.list` contract supports Gmail search syntax, `maxResults`, and `pageToken`; a successful response can include message IDs, thread IDs, a continuation token, and a result-size estimate. Full message details require a separate `messages.get` call. The connector omitted thread IDs, result-size estimate, HTTP/provider headers, request ID, effective scope, principal, project, and direct quota receipt.
+
+Google currently assigns five quota units to `messages.list`, but this wrapper did not prove that it used that exact raw method or expose the applicable Cloud project and quota bucket. The direct observed paid cost remains zero and actual quota consumption remains unknown.
+
+Provisional disposition is `ADOPT_WITH_GATES_CATALOG_ONLY`. Adoption and fitness credit remain zero. Phase 2 should use an absolute time-bounded, ID-only query so repeatability can be audited without exposing email content.
