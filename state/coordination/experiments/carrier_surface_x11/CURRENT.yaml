@@ -1,62 +1,61 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
-experiment_id: X11_CALENDAR_FIXED_IMPOSSIBLE_MARKER_SEARCH_V2
-current_version: 123
-accepted_wakes: 3
+experiment_id: X11_DRIVE_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1
+current_version: 124
+accepted_wakes: 0
 target_wakes_before_decision: 4
-controlled_factor: calendar_read_surface
+controlled_factor: drive_read_surface
 campaign_status: ACTIVE
 current_disposition: null
 prior_campaign:
-  experiment_id: X11_GMAIL_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1
-  final_version: 120
+  experiment_id: X11_CALENDAR_FIXED_IMPOSSIBLE_MARKER_SEARCH_V2
+  final_version: 124
   disposition: KEEP
   accepted_wakes: 4
   decision_event:
-    commit: e5902e8547815989c3516e458bed123266e9750c
-    path: state/coordination/experiments/carrier_surface_x11/events/20260805T203932Z_GMAIL_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1_WAKE_04_DECISION_KEEP.yaml
-    blob: b608d60af04fd322fd7be5a0b8b6c4f122061689
+    commit: 61e106a693c7ccbeccb12ceffcadb441ec1ad2c0
+    path: state/coordination/experiments/carrier_surface_x11/events/20260806T003927Z_CALENDAR_FIXED_IMPOSSIBLE_MARKER_SEARCH_V2_WAKE_04_DECISION_KEEP.yaml
+    blob: 6fe25102e1f69ecdba52f9e7ee6006d4827bdcc2
 baseline_result:
-  mode: fixed_impossible_marker_metadata_only
-  provider_call_success: true
-  sanitized_result_count: 0
-  continuation_present: false
-  permission_class: AUTHENTICATED_CALENDAR_BOUNDED_SEARCH_READ_AVAILABLE
-  error_class: NONE
-hypothesis: an_authenticated_bounded_primary_calendar_search_for_one_fixed_impossible_marker_will_repeatably_return_a_sanitized_zero_result_without_exposing_event_content
+  mode: none_yet
+  provider_call_success: null
+  sanitized_result_count: null
+  continuation_present: null
+  permission_class: UNMEASURED
+  error_class: UNMEASURED
+hypothesis: an_authenticated_bounded_google_drive_document_metadata_search_for_one_fixed_impossible_marker_will_repeatably_return_a_sanitized_zero_result_without_fetching_file_content
 measured_result:
-  provider_call_success: [true, true, true]
-  sanitized_result_count: [0, 0, 0]
-  continuation_present: [false, false, false]
-  latencies_ms: [250, 235, 176]
-  permission_class: AUTHENTICATED_CALENDAR_BOUNDED_SEARCH_READ_AVAILABLE
-  error_class: NONE
+  provider_call_success: []
+  sanitized_result_count: []
+  continuation_present: []
+  latencies_ms: []
+  permission_class: UNMEASURED
+  error_class: UNMEASURED
   operator_relay_minutes: 0
   changed_capability: false
   campaign_decision: false
   andon: false
-supported_claim: authenticated_bounded_primary_calendar_search_executed_and_returned_zero_events_with_no_continuation
-claim_ceiling: supports_only_authenticated_bounded_calendar_search_execution_and_sanitized_result_count_visibility_not_calendar_completeness_search_recall_indexing_freshness_event_content_access_event_authenticity_notification_delivery_or_independent_verification
-strongest_falsifier: the_calendar_surface_is_unavailable_requires_interactive_authentication_returns_nonzero_for_the_fixed_impossible_marker_or_exposes_results_outside_the_bounded_query
+supported_claim: none_yet
+claim_ceiling: future_probe_can_support_only_authenticated_bounded_google_drive_metadata_search_execution_and_sanitized_result_count_visibility_not_drive_completeness_search_recall_indexing_freshness_file_content_access_file_authenticity_sharing_visibility_or_independent_verification
+strongest_falsifier: the_drive_surface_is_unavailable_requires_interactive_authentication_returns_nonzero_for_the_fixed_impossible_marker_fetches_file_content_or_exposes_results_outside_the_bounded_query
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 consumer: [Reginleif, Ratatoskr]
-honest_flaw: a_zero_result_for_an_impossible_marker_can_measure_connector_execution_but_cannot_validate_calendar_search_recall_or_event_content_access
+honest_flaw: a_zero_result_for_an_impossible_marker_can_measure_connector_execution_but_cannot_validate_drive_search_recall_file_content_access_or_sharing_visibility
 last_event:
-  commit: 68a67d740713e966d5b1914ce5143b045b5a86d7
-  path: state/coordination/experiments/carrier_surface_x11/events/20260805T234131Z_CALENDAR_FIXED_IMPOSSIBLE_MARKER_SEARCH_V2_WAKE_03.yaml
-  blob: e3b08b4722a3ea9304e443ef1796c97a6de9607d
-next_factor: calendar_read_surface
+  commit: 61e106a693c7ccbeccb12ceffcadb441ec1ad2c0
+  path: state/coordination/experiments/carrier_surface_x11/events/20260806T003927Z_CALENDAR_FIXED_IMPOSSIBLE_MARKER_SEARCH_V2_WAKE_04_DECISION_KEEP.yaml
+  blob: 6fe25102e1f69ecdba52f9e7ee6006d4827bdcc2
+next_factor: drive_read_surface
 next_probe:
-  experiment_id: X11_CALENDAR_FIXED_IMPOSSIBLE_MARKER_SEARCH_V2
-  campaign_wake: 4
+  experiment_id: X11_DRIVE_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1
+  campaign_wake: 1
   mode: fixed_impossible_marker_metadata_only
-  exact_action: repeat_the_same_bounded_authenticated_primary_calendar_search_for_the_fixed_impossible_marker_with_maximum_one_result_and_persist_only_sanitized_count_and_continuation_presence_then_write_campaign_decision
-  fixed_query: HFO_X11_CALENDAR_FIXED_IMPOSSIBLE_MARKER_96D2A73E4B1C5F80
-  calendar_id: primary
-  time_min: 2026-01-01T00:00:00Z
-  time_max: 2026-12-31T23:59:59Z
-  max_results: 1
-  expected_current_version: 123
+  exact_action: run_one_bounded_authenticated_google_drive_document_metadata_search_for_the_fixed_impossible_marker_with_topn_one_and_best_effort_fetch_false_then_persist_only_sanitized_count_and_continuation_presence
+  fixed_query: HFO_X11_DRIVE_FIXED_IMPOSSIBLE_MARKER_5C19A7E2D84F6B30
+  topn: 1
+  item_type: document
+  best_effort_fetch: false
+  expected_current_version: 124
   persist_only:
     - provider_call_success
     - sanitized_result_count
@@ -65,20 +64,22 @@ next_probe:
     - error_class
     - latency_when_exposed
     - operator_relay_minutes
-  privacy_gate: do_not_fetch_or_persist_event_titles_attendees_descriptions_locations_identifiers_or_unrelated_calendar_metadata
+  privacy_gate: do_not_fetch_or_persist_file_names_content_urls_identifiers_owners_sharing_metadata_or_unrelated_drive_metadata
   login_or_reauthentication_allowed: false
-  calendar_mutation_allowed: false
+  drive_mutation_allowed: false
   task_mutation_allowed: false
   slack_write_each_probe_allowed: false
   post_only_changed_capability_campaign_decision_or_andon: true
   sensitive_readback_externalization_allowed: false
   same_provider_independence_claim_allowed: false
-slack_action: SILENT_UNCHANGED
-updated_valid_time_utc: 2026-08-05T23:41:31Z
+slack_action: POST_CAMPAIGN_DECISION
+updated_valid_time_utc: 2026-08-06T00:39:27Z
 sealed: false
 ---
 
-Calendar read-surface wake 3 repeated the fixed bounded primary-calendar search and returned zero
-events with no continuation token in 176 ms. The measured capability is unchanged, so no Slack
-post was emitted. Wake 4 repeats the identical probe under expected CURRENT version 123 and writes
-the four-wake campaign decision.
+Calendar read-surface V2 completed four accepted wakes. The authenticated connector repeatedly
+executed the fixed bounded impossible-marker search and returned zero events with no continuation
+token. Disposition is KEEP only for repeatable bounded search execution and sanitized count
+visibility; it does not establish calendar completeness, recall, freshness, content access,
+authenticity, notification delivery, or independent verification. The next campaign tests the
+Google Drive read surface with one fixed impossible-marker document-metadata-only bounded search.
