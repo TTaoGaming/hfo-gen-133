@@ -1,112 +1,87 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
-experiment_id: X11_GITHUB_CONTENTS_EVENT_POINTER_READBACK_V2
-current_version: 131
-accepted_wakes: 3
+experiment_id: X11_SLACK_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1
+current_version: 132
+accepted_wakes: 0
 target_wakes_before_decision: 4
-controlled_factor: git_read_write_surface
+controlled_factor: slack_read_surface
 campaign_status: ACTIVE
 current_disposition: null
 prior_campaign:
-  experiment_id: X11_DRIVE_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1
-  final_version: 128
+  experiment_id: X11_GITHUB_CONTENTS_EVENT_POINTER_READBACK_V2
+  final_version: 132
   disposition: KEEP
   accepted_wakes: 4
   decision_event:
-    commit: 8850898446f1441277f20f48d8e427116ecf1b57
-    path: state/coordination/experiments/carrier_surface_x11/events/20260806T043921Z_DRIVE_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1_WAKE_04_DECISION_KEEP.yaml
-    blob: cba964724d53476e2d6e956d2424ab021817fcf5
-baseline_result: required_GitHub_contents_event_create_and_expected_SHA_CURRENT_update_have_succeeded_during_prior_campaigns_but_were_not_isolated_as_the_single_control_factor_or_checked_for_exact_payload_and_version_readback
-hypothesis: the_required_git_first_event_create_and_expected_sha_current_update_can_be_exactly_read_back_from_the_canonical_branch_with_matching_payload_version_and_blob_receipts_without_extra_repository_mutation
+    commit: c1f6bc6613763451efd7a2ad7c7d5bc8cee2cf6f
+    path: state/coordination/experiments/carrier_surface_x11/events/20260806T083916Z_GITHUB_CONTENTS_EVENT_POINTER_READBACK_V2_WAKE_04_DECISION_KEEP.yaml
+    blob: 4484973757a7fb428bfe350e44f709077f4ade6d
+baseline_result: four_required_GitHub_contents_event_creates_expected_SHA_CURRENT_updates_and_exact_same_branch_path_payload_version_and_blob_readbacks_succeeded_without_extra_repository_mutation
+hypothesis: an_authenticated_bounded_Slack_search_for_one_fixed_impossible_marker_will_repeatably_return_a_sanitized_zero_result_without_fetching_or_persisting_message_content_or_identifiers
 measured_result:
-  event_create_success:
-    - true
-    - true
-    - true
-  event_exact_readback_success:
-    - true
-    - true
-    - true
-  current_expected_sha_update_success:
-    - true
-    - true
-    - true
-  current_exact_readback_success:
-    - true
-    - true
-    - true
-  version_match:
-    - true
-    - true
-    - true
-  payload_match:
-    - true
-    - true
-    - true
-  latencies_ms:
-    - event_create_external_call: 975
-      event_exact_readback: null
-      current_expected_sha_update: null
-      current_exact_readback: null
-    - event_create_external_call: 882
-      event_exact_readback: null
-      current_expected_sha_update: null
-      current_exact_readback: null
-    - event_create_external_call: 1103
-      event_exact_readback: null
-      current_expected_sha_update: null
-      current_exact_readback: null
-  latency_note: only_the_event_create_connector_external_call_time_was_exposed_for_each_wake_before_pointer_update;_no_comparable_end_to_end_latency_is_claimed
-  permission_class: AUTHENTICATED_GITHUB_CONTENTS_CREATE_UPDATE_AND_EXACT_READBACK_AVAILABLE
-  error_class: NONE
+  provider_call_success: []
+  sanitized_result_count: []
+  continuation_present: []
+  latencies_ms: []
+  permission_class: UNMEASURED
+  error_class: UNMEASURED
   operator_relay_minutes: 0
   changed_capability: false
   campaign_decision: false
   andon: false
-supported_claim: three_authenticated_GitHub_contents_creates_three_expected_SHA_updates_and_exact_same_branch_path_payload_version_and_blob_readbacks_succeeded_without_extra_repository_mutation
-claim_ceiling: exact_authenticated_github_contents_create_update_and_readback_receipts_only_not_repository_global_consistency_branch_protection_merge_safety_or_independent_verification
-strongest_falsifier: required_event_create_or_exact_path_readback_fails_current_expected_sha_update_is_rejected_without_concurrency_version_match_or_payload_match_fails_or_any_extra_repository_mutation_occurs
+supported_claim: no_Slack_read_surface_claim_yet_campaign_initialized_only
+claim_ceiling: no_claim_beyond_campaign_initialization_until_the_bounded_probe_executes
+strongest_falsifier: Slack_search_surface_is_missing_requires_interactive_authentication_returns_nonzero_for_the_fixed_impossible_marker_or_exposes_or_persists_unrelated_message_content_or_identifiers
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 consumer:
   - Reginleif
   - Ratatoskr
-honest_flaw: successful_same_provider_contents_readback_can_detect_local_write_or_version_mismatch_but_cannot_prove_repository_global_consistency_independent_verification_or_protection_against_other_writers;_the_immutable_event_is_predeclared_before_post_call_latency_is_known_so_CURRENT_is_the_complete_campaign_measurement_record
+honest_flaw: an_impossible_marker_zero_result_can_validate_bounded_connector_execution_but_not_workspace_completeness_search_recall_indexing_freshness_message_content_access_or_independent_verification
 last_event:
-  commit: 3555c661b3b90cb1d99170bd28101ac0f855cd39
-  path: state/coordination/experiments/carrier_surface_x11/events/20260806T074139Z_GITHUB_CONTENTS_EVENT_POINTER_READBACK_V2_WAKE_03.yaml
-  blob: 13b70bacff60962621d5678b8b8820a3bf03944c
-next_factor: git_read_write_surface
-next_probe:
+  commit: c1f6bc6613763451efd7a2ad7c7d5bc8cee2cf6f
+  path: state/coordination/experiments/carrier_surface_x11/events/20260806T083916Z_GITHUB_CONTENTS_EVENT_POINTER_READBACK_V2_WAKE_04_DECISION_KEEP.yaml
+  blob: 4484973757a7fb428bfe350e44f709077f4ade6d
+completed_campaign_measurement:
   experiment_id: X11_GITHUB_CONTENTS_EVENT_POINTER_READBACK_V2
-  campaign_wake: 4
-  mode: required_event_and_pointer_exact_readback
-  exact_action: use_the_required_immutable_event_create_and_expected_sha_current_update_as_the_probe_then_fetch_both_exact_paths_from_the_canonical_branch_and_compare_returned_utf8_payload_version_and_blob_sha_without_any_extra_repository_mutation_then_write_the_four_wake_campaign_decision_and_select_the_next_factor
-  expected_current_version: 131
+  event_create_success: [true, true, true, true]
+  event_exact_readback_success: [true, true, true, true]
+  current_expected_sha_update_success: [true, true, true, true]
+  current_exact_readback_success: [true, true, true, true]
+  version_match: [true, true, true, true]
+  payload_match: [true, true, true, true]
+  event_create_external_call_latency_ms: [975, 882, 1103, 1036]
+  permission_class: AUTHENTICATED_GITHUB_CONTENTS_CREATE_UPDATE_AND_EXACT_READBACK_AVAILABLE
+  error_class: NONE
+  operator_relay_minutes: 0
+  disposition: KEEP
+  supported_claim: repeatable_authenticated_GitHub_contents_create_expected_SHA_update_and_exact_same_branch_path_readback
+  claim_ceiling: exact_authenticated_github_contents_create_update_and_readback_receipts_only_not_repository_global_consistency_branch_protection_merge_safety_or_independent_verification
+  honest_flaw: immutable_events_predeclare_success_before_post_call_latency_is_known_so_CURRENT_is_the_complete_measurement_record_and_same_provider_readback_is_not_independent
+next_factor: slack_read_surface
+next_probe:
+  experiment_id: X11_SLACK_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1
+  campaign_wake: 1
+  mode: bounded_metadata_search
+  exact_action: run_one_bounded_read_only_Slack_search_for_the_fixed_impossible_marker_HFO_X11_SLACK_FIXED_IMPOSSIBLE_MARKER_8E2A4C7D1B906F35_with_maximum_one_result_then_persist_only_sanitized_count_continuation_permission_error_and_exposed_latency
+  expected_current_version: 132
   persist_only:
-    - event_create_success
-    - event_exact_readback_success
-    - current_expected_sha_update_success
-    - current_exact_readback_success
-    - version_match
-    - payload_match
+    - provider_call_success
+    - sanitized_result_count
+    - continuation_present
     - permission_class
     - error_class
     - latency_when_exposed
     - operator_relay_minutes
-  privacy_gate: persist_only_probe_control_fields_digests_and_git_receipts_no_unrelated_repository_content
-  extra_git_mutation_allowed: false
-  branch_creation_allowed: false
-  merge_or_publication_allowed: false
-  task_mutation_allowed: false
+  privacy_gate: no_message_content_subjects_parties_snippets_channels_timestamps_or_identifiers_persisted
   slack_write_each_probe_allowed: false
   post_only_changed_capability_campaign_decision_or_andon: true
   sensitive_readback_externalization_allowed: false
   same_provider_independence_claim_allowed: false
-slack_action: SILENT_UNCHANGED_PROBE
-updated_valid_time_utc: 2026-08-06T07:41:39Z
+slack_action: POST_CAMPAIGN_DECISION
+updated_valid_time_utc: 2026-08-06T08:39:16Z
 sealed: false
 ---
 
-GitHub contents read/write surface V2 has three accepted wakes. The required immutable event creates,
-expected-SHA CURRENT updates, and exact branch/path readbacks matched the expected payloads, versions,
-and blob receipts. No changed capability, campaign decision, or Andon was detected, so Slack remains silent.
+GitHub contents read/write surface V2 completed four accepted wakes with exact event and pointer
+readback matches. Disposition is KEEP within the stated claim ceiling. The next isolated factor is a
+bounded read-only Slack impossible-marker search; no Slack message content or identifiers may persist.
