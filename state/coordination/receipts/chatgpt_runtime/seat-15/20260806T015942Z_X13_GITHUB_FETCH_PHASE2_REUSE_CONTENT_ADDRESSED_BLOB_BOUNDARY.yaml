@@ -1,0 +1,77 @@
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+result: RETURN_REUSABLE_PRIOR_ARTIFACT
+valid_time_utc: 2026-08-06T01:59:42Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+self_probe_tools_used:
+  - native_automation_inventory_read
+  - GitHub_branch_commit_search
+  - GitHub_code_search
+  - GitHub_fetch_file
+  - Slack_channel_read
+current_workitem:
+  id: X13_GITHUB_CONTENTS_FETCH_READONLY_007_PHASE2_REPEATABILITY
+  parent_experiment_id: X13_GITHUB_CONTENTS_FETCH_READONLY_007
+  source_current_version: 125
+  source_current_commit: 7119b6df453908d7b70b70558609b5790cdf9f89
+  source_current_blob_sha: 8ca76af670971b7852841c717435a81fa89c2ab2
+  source_phase1_commit: c932409e2cf6ac1af6f1dbf262d21abd90833305
+  source_phase1_path: state/coordination/experiments/cots_connector_x13/20260806T015208Z_GITHUB_CONTENTS_FETCH_PHASE1_ACCEPTED_WITH_GATES.md
+  source_phase1_blob_sha: 1b639588eb683c2da0c66dcf352713b2901d1ea2
+  named_evidence_gap: DISTINGUISH_SAME_DESCRIPTOR_BRANCH_REPEATABILITY_FROM_CONTENT_ADDRESSED_BYTE_IDENTITY
+  next_action_declared_by_workitem: REPEAT_BOUNDED_FETCH_USING_SAME_CANONICAL_REQUEST_DESCRIPTOR_AND_COMPARE_RETURNED_BLOB_SHA_AND_PRIVACY_SAFE_RESULT_CLASS
+reused_prior_artifact:
+  original_date_utc: 2026-08-03T18:47:15Z
+  repository: TTaoGaming/hfo-gen-133
+  path: state/coordination/experiments/cots_connector_x13/20260803T184715Z_GITHUB_CONTENT_ADDRESSED_BLOB_READ_PHASE2_ACCEPTED_WITH_GATES.md
+  origin_commit: 4ae318f9e536df254b68f7289c1651febf8d56e2
+  blob_sha: 044ae5c69ea65330474e208684b43442d45717bf
+  prior_experiment_id: X13_GITHUB_BOUNDED_FILE_READONLY_001
+  artifact_class: CONTENT_ADDRESSED_BLOB_READ_BOUNDARY_AND_FAILURE_ANTIBODY
+reusable_invariant: >-
+  Repeating one descriptor against a mutable branch and receiving the same blob SHA can establish only two-observation wrapper stability for that descriptor. It does not create an immutable branch snapshot or independent byte parity. A read by the first returned blob SHA removes branch traversal and tests content-addressed object retrieval, but the same connector still does not prove raw-provider parity when it omits response SHA, size, encoding, HTTP, ETag, request-ID, rate-limit, and effective-auth context.
+supported_claims:
+  - The prior X13 campaign successfully fetched one known Git blob by SHA without branch, tag, or default-ref resolution.
+  - The prior blob fetch returned decoded complete text with the expected embedded source markers and no candidate write, retry, or fallback.
+  - The current phase-2 repeat may compare the exact canonical request digest, privacy-safe result class, and returned blob SHA across two observations.
+  - Equality across the two branch reads supports only SAME_DESCRIPTOR_SAME_RESULT_CLASS_AND_BLOB_SHA_OBSERVED_TWICE.
+  - A subsequent blob-SHA read is the correct separator between mutable-ref stability and content-addressed object retrieval.
+excluded_claims:
+  - No immutable branch snapshot or resolved commit identity is established by repeating a mutable branch ref.
+  - No full-file byte parity is established by a line-bounded wrapper slice.
+  - No independent Git object hash recomputation, raw GitHub parity, response-SHA echo, binary fidelity, large-file behavior, symlink or submodule behavior is established.
+  - No token identity, permission scope, SSO state, rate-limit budget, retry count, audit attribution, ConsumerAck, operational adoption, or fitness outcome is established.
+acceptance_relevance:
+  - Require exact equality of canonical_request_sha256 before labeling the calls comparable.
+  - Compare returned result class and blob SHA separately; do not treat matching line text alone as object identity.
+  - If the phase-2 blob SHA differs, classify MUTABLE_BRANCH_MOVED_OR_PATH_CONTENT_CHANGED until the old and new blobs are fetched by SHA; do not label connector failure from branch movement alone.
+  - If the phase-2 blob SHA matches, label only TWO_POINT_REPEATABILITY_ON_THIS_WRAPPER_SURFACE and retain adoption_credit and fitness_credit at zero.
+  - Independent acceptance still requires a raw GitHub GET contents or local Git blob read bound to the returned SHA and a byte digest.
+privacy_ceiling: >-
+  Public repository name, branch, path, line range, canonical request digest, blob SHA, result class, control-state identifiers, commits, and sanitized error classes only. Do not persist README body text, private file bodies, raw provider envelopes, credentials, user identifiers, or unneeded metadata.
+verifier:
+  structural_preflight: S04_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING_WEIGHT_0
+  independent: DISTINCT_AUTHORIZED_RAW_GITHUB_GET_CONTENTS_OR_LOCAL_GIT_CAT_FILE_BY_RETURNED_BLOB_SHA_WITH_BYTE_DIGEST_AND_RESOLVED_COMMIT_CONTEXT
+consumer:
+  immediate: X13_GITHUB_CONTENTS_FETCH_READONLY_007_PHASE2_REPEATABILITY
+  reducer: HFO_COTS_CAPABILITY_INVENTORY_CATALOG_ONLY
+consumer_ack: NOT_OBSERVED
+heritage_credit: 0
+adoption_credit: 0
+fitness_credit: 0
+expiry_utc: 2026-08-13T01:59:42Z
+dedup:
+  gen133_first_search_performed: true
+  exact_prior_s15_binding_found: false
+  search_scope: CURRENT_X13_EVENT_PRIOR_X13_GITHUB_BLOB_CAMPAIGN_AND_SEAT15_GITHUB_HERITAGE_TERMS
+honest_flaw: >-
+  The prior artifact fetched the complete blob for a former CURRENT.md object, while the current WorkItem reads only lines 1-40 of README.md through fetch_file. The prior evidence therefore transfers the mutable-ref versus content-addressed-object boundary, not proof that line slicing is complete, stable, or byte-preserving. Both observations remain connector-mediated and correlated.
+forbidden_effects_observed: NONE
+sealed: false
