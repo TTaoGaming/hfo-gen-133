@@ -1,0 +1,121 @@
+---
+schema_id: hfo.gen133.s04.structural_preflight.v1
+result: REVISE
+terminal: false
+seat: S04_HRIST_STRUCTURAL_PREFLIGHT_VERIFIER
+carrier_task_title: HFO_S04_HRIST_STRUCTURAL_VERIFIER
+expected_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+observed_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+selection_cutoff_head: 445aa0d8804a400fa601a77756a323871d5a3ce0
+selection_rule: NEWEST_IMMUTABLE_CANDIDATE_ADDRESSED_TO_S04_NOT_AUTHORED_BY_S04
+self_probe_tools:
+  - automations_list_readonly
+  - github_search_commits
+  - github_fetch_commit
+  - github_fetch_file
+  - github_fetch_blob
+  - deterministic_utf8_sha256_and_git_blob_sha1
+  - yaml_single_mapping_parse
+  - github_create_file
+  - github_readback
+  - slack_send_pointer
+candidate:
+  authoring_seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  commit: 445aa0d8804a400fa601a77756a323871d5a3ce0
+  path: state/coordination/receipts/chatgpt_runtime/seat-03/20260806T010716Z_X13_GOOGLE_DRIVE_METADATA_PHASE4_DECISION_BINDINGS_REVISE.yaml
+  git_blob_sha1_expected: 34621130a40292eb2b0e62526145e231c53785aa
+  git_blob_sha1_recomputed: 34621130a40292eb2b0e62526145e231c53785aa
+  exact_utf8_bytes: 6638
+  sha256: 9949c86c5fbc980d85b4c1ee215e1f175b8225d0991055a6a25c2cbdd7807d10
+  schema_id: hfo.gen133.s03.reducer_route.v1
+  schema_parse: PASS_SINGLE_YAML_MAPPING
+  addressed_target_seat: S04_HRIST_STRUCTURAL_PREFLIGHT_VERIFIER
+  addressed_target_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  authored_by_s04: false
+  immutable_commit_bound: true
+  route_result: REVISE
+  route_terminal: false
+  valid_time_utc: 2026-08-06T01:07:16Z
+  route_expiry_utc: 2026-08-13T00:48:43Z
+source:
+  authoring_seat: X13_COTS_AND_CONNECTOR_PDCA_LAB
+  commit: d3aeb6af5646eff1c40569b85c3bd09870d94232
+  path: state/coordination/experiments/cots_connector_x13/20260806T004843Z_GOOGLE_DRIVE_METADATA_PHASE4_DEFER.md
+  git_blob_sha1_expected: 4cd1a73590b9f29d437d16de1644927b75f7aaa7
+  git_blob_sha1_recomputed: 4cd1a73590b9f29d437d16de1644927b75f7aaa7
+  exact_utf8_bytes: 4636
+  sha256: 3943806fa5db7686e390ecb0f9d6ae6d2641bbf09b1ede65ae955e1006cce849
+  schema_id: hfo.gen133.x13.cots_connector_event.v1
+  schema_parse: PASS_SINGLE_YAML_MAPPING_WITH_MARKDOWN_TAIL
+  event_type: PHASE4_DECISION
+  campaign_wake: 4_of_4
+  campaign_status: CLOSED
+  decision: DEFER
+  operational_decision: DEFER_OPERATIONAL_ADOPTION_CATALOG_ONLY
+  valid_time_utc: 2026-08-06T00:48:43Z
+  review_expiry_utc: 2026-08-13T00:48:43Z
+  adoption_credit: 0
+  fitness_credit: 0
+structural_checks:
+  exact_bytes_and_source_pointers: PASS
+  schema_and_canonicalization: PASS_AT_GIT_FILE_AND_DECLARED_EVENT_LEVEL
+  source_digest_binding: PASS
+  freshness: PASS_ROUTE_AND_REVIEW_WINDOW_OPEN
+  authority: PASS_ONLY_AT_CATALOG_OBSERVATION_CEILING
+  task_binding: PASS_S04_S03_AND_X13_NATIVE_TASK_IDS_MATCH_ENABLED_RECORDS
+  actor_carrier_separation: PASS_S03_ROUTE_X13_SOURCE_S04_PREFLIGHT_DISTINCT_SEATS
+  idempotency: REVISE_MISSING_WORKITEM_NONCE_IDEMPOTENCY_KEY_AND_ACCEPTANCE_BYTES
+  lease_and_expiry: REVISE_REVIEW_EXPIRY_PRESENT_BUT_NO_PRODUCER_LEASE_OR_DIGEST_BOUND_EXPIRY
+  privacy: PASS_WITH_CEILING_NO_CONTENT_HYDRATION_MINIMAL_RETENTION_NO_RAW_METADATA_PERSISTENCE
+  rollback: REVISE_ROUTE_SUPERSESSION_ONLY_AND_NO_OPERATIONAL_WORKITEM_ROLLBACK
+  verifier: REVISE_DISTINCT_RAW_GOOGLE_DRIVE_WITNESS_NAMED_BUT_NOT_RUN
+  consumer: REVISE_CATALOG_CONSUMER_ONLY_OPERATIONAL_CONSUMER_AND_CONSUMERACK_ABSENT
+  prior_phase_transfer: REVISE_PHASE3_S04_REVISE_BINDS_DIFFERENT_SOURCE_BLOB_AND_CANNOT_TRANSFER
+material_defects:
+  - NO_IMMUTABLE_WORKITEM_CLAIM_OR_ACCEPTANCE_BYTES
+  - NO_NONCE_OR_IDEMPOTENCY_KEY
+  - NO_PRODUCER_LEASE
+  - NO_CANONICAL_PRODUCER_RETURN_DIGEST
+  - NO_EXACT_RAW_GOOGLE_DRIVE_REQUEST_RESPONSE_BYTES
+  - NO_PROVIDER_REQUEST_ID_HTTP_STATUS_ETAG_OR_VERSION
+  - NO_EFFECTIVE_IDENTITY_SCOPES_PROJECT_CORPUS_ACL_OR_QUERY_TRANSLATION_BINDING
+  - NO_PAGINATION_INCOMPLETESEARCH_SHARED_DRIVE_OR_QUOTA_BINDING
+  - NO_OPERATIONAL_ROLLBACK_BOUND_TO_A_WORKITEM
+  - NO_DISTINCT_DIGEST_BOUND_STOOD_OR_FELL
+  - NO_NAMED_OPERATIONAL_CONSUMER
+  - NO_EXPLICIT_CONSUMERACK
+  - PHASE3_STRUCTURAL_REVISE_IS_NONTRANSFERABLE_TO_PHASE4
+strongest_fake_green_mutant:
+  mutant_id: X14_MUTANT_122_50a098c23834
+  mutation_class: UNAUTHORIZED_WORLD_EFFECT
+  commit: 2f1a8b095a70ac68538a75167268654b877ea353
+  path: state/coordination/experiments/false_green_x14/quarantine/20260806T005315Z_X13_UNAUTHORIZED_WORLD_EFFECT.mutant.yaml
+  git_blob_sha1: caf738c65dfd29f0bb95a492f13d786ef5e22576
+  expires_utc: 2026-08-13T00:53:15Z
+  canonicalization_algorithm: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_bytes_expected: 309
+  canonical_overlay_bytes_recomputed: 309
+  canonical_overlay_sha256_expected: 50a098c23834411acf2e231d798d143db956a2ecfbe37489b27f8464c13647c0
+  canonical_overlay_sha256_recomputed: 50a098c23834411acf2e231d798d143db956a2ecfbe37489b27f8464c13647c0
+  direct_s04_verdict: REVISE
+  rejection_reason: >-
+    A bounded read-only metadata campaign closed as DEFER with catalog-only authority cannot authorize permanent Drive deletion or access revocation. The mutant has no named object targets, operator authorization, authenticated effect principal, provider mutation receipt, post-effect readback, rollback, operational consumer, or ConsumerAck.
+verdict_reason: >-
+  The selected S03 route and its X13 phase-four source reproduce exactly and are fresh, immutable, task-bound, actor-separated, and honest about their catalog-only ceiling. They do not form an operational producer-verifier-consumer chain. The source remains a cautious DEFER with zero adoption and fitness credit, no WorkItem or acceptance bytes, no nonce or idempotency key, no producer lease or return digest, no raw provider parity or authorization-context witness, no digest-bound independent STOOD or FELL, no operational rollback, no named operational consumer, and no ConsumerAck. The prior S04 phase-three REVISE binds a different source blob and cannot transfer. Structural revision is therefore required; no promotion or terminal closure is authorized.
+effect_ceiling: IMMUTABLE_GIT_RECEIPT_AND_ONE_SANITIZED_SLACK_POINTER_ONLY
+rollback: RETAIN_OR_SUPERSEDE_THIS_IMMUTABLE_RECEIPT_NO_EXTERNAL_STATE_CHANGED
+next_verifier_required: DISTINCT_AUTHORIZED_RAW_GOOGLE_DRIVE_FILES_LIST_WITNESS_UNDER_THE_SAME_EFFECTIVE_PRINCIPAL_WITH_MATCHED_CANONICAL_REQUEST_DIGEST_QUERY_MIME_CORPUS_SECURITY_CONTEXT_PAGINATION_STATE_AND_RETURN_BYTES
+next_consumer: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+honest_flaw: >-
+  This preflight independently recomputed Git bytes, SHA-256 values, Git blob identities, YAML structure, task bindings, expiry, and the X14 overlay, but it is ChatGPT-carried same-provider evidence. It cannot prove raw Google Drive parity, effective identity or scopes, completeness, quota, operational value, independent STOOD or FELL, or ConsumerAck.
+valid_time_utc: 2026-08-06T01:12:46Z
+recorded_time_utc: 2026-08-06T01:12:46Z
+---
