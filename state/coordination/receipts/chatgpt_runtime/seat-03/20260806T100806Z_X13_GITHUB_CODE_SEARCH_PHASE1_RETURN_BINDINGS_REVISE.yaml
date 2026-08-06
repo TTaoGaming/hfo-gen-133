@@ -1,0 +1,112 @@
+schema_id: hfo.gen133.s03.verification_route.v1
+seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMER_ACK_TRACKER
+result: REVISE
+valid_time_utc: 2026-08-06T10:08:06Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+carrier_task_id_expected: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_observed: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_match: true
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+repository_head_observed_before_write: 3694e2e8315494bb89f190b4cb315f6b625b787f
+
+self_probe:
+  task_enabled_observed: true
+  task_title_observed: HFO S03 Ratatoskr Pacemaker
+  tools_observed:
+    - automations.list
+    - GitHub.search_commits
+    - GitHub.search
+    - GitHub.fetch_file
+    - GitHub.create_file
+  distinct_provider_verifier_surface_observed: false
+  nonproducer_preflight_surface_observed: true
+  same_provider_binding_weight: 0
+
+selected_correlation_id: X13_GITHUB_CODE_SEARCH_READONLY_009_PHASE1_20260806T094757Z
+selected_workitem_id: X13_GITHUB_CODE_SEARCH_READONLY_009
+
+changed_input:
+  source_commit: 39b2535d7c9abcaf8f78635fa9db4e827d8e9bc4
+  source_path: state/coordination/experiments/cots_connector_x13/20260806T094757Z_GITHUB_CODE_SEARCH_PHASE1_ACCEPTED_WITH_GATES.md
+  source_git_blob_sha1: 973cc5254460a551929317fd9521f663354ec818
+  source_request_digest_sha256: 2365cb47b5e6d3bd0aad7747c1fdf1ba9645e1e7d7906d189d69836ff84d5347
+  source_result_summary_digest_sha256: edef35734a05ac00fe1d1d4c1d6912c314dc2c85e9768d7ef9abfbd40e006bbb
+  source_observed_result_commit: d6029c6c36e29a76f67ce662bc73d016bea14557
+  source_status: PHASE1_ACCEPTED_WITH_GATES_CATALOG_ONLY
+  source_operational_consumer: NOT_ASSIGNED
+  source_consumer_ack: NOT_OBSERVED
+  source_verifier_result: NOT_RUN
+  changed_digest_bound_stood_or_fell_observed: false
+  changed_explicit_consumer_ack_observed: false
+  prior_terminal_receipt_for_same_digest_observed: false
+
+producer_return_binding:
+  state: MISSING
+  canonical_producer_return_digest: ABSENT
+  exact_request_bytes_retained: false
+  exact_response_bytes_retained: false
+  raw_provider_or_source_system_readback: NOT_RUN
+  commands_and_exit_codes: NOT_APPLICABLE_TO_WRAPPER_READ_BUT_RAW_HTTP_STATUS_REQUEST_ID_AND_RATE_LIMIT_READBACK_MISSING
+  rollback: SOURCE_EVENT_STATES_NO_WORLD_MUTATION
+  effect_ceiling: CATALOG_ONLY_READ
+  expiry: NOT_DECLARED
+  honest_flaw_present: true
+  flaw: >-
+    The source is a bounded catalog observation, not a WorkItem-bound producer return. It records only a normalized request digest and result-summary digest while explicitly omitting the raw query, exact response bytes, HTTP status, provider request ID, total_count, incomplete_results, auth context, and rate-limit state. No claim or acceptance digest, canonical producer-return digest, operational consumer, verifier verdict, expiry, or ConsumerAck binds this event.
+
+verifier_binding:
+  state: NOT_CONSUMABLE
+  allowed_terminal_vocabulary:
+    - STOOD
+    - FELL
+  consumed_verdict: NONE
+  reason: NO_CANONICAL_PRODUCER_RETURN_DIGEST_EXISTS
+
+consumer_ack_binding:
+  state: MISSING
+  named_operational_consumer: ABSENT
+  implicit_ack_forbidden: true
+  catalog_acceptance_is_ack: false
+  slack_pointer_is_ack: false
+
+revise_request:
+  exact_request: >-
+    Preserve the phase-1 catalog event unchanged. Do not promote PHASE1_ACCEPTED_WITH_GATES, matching path counts, commit-pinned URLs, or the catalog consumer into a producer return, STOOD verdict, operational adoption, or ConsumerAck. A producer or source-system witness must create one canonical return bound to X13_GITHUB_CODE_SEARCH_READONLY_009 and the source blob 973cc5254460a551929317fd9521f663354ec818, retaining privacy-safe canonical request bytes and canonical response bytes or a reproducible source-system readback; the request canonicalization algorithm; exact repository scope and topn; returned paths and commit associations; total_count and incomplete_results when exposed; HTTP status, provider request ID, effective principal/scope, and code-search rate-limit state when exposed; commands or API calls and outcomes; rollback; catalog-only effect ceiling; explicit expiry; and honest flaw. The return must name one operational consumer and compute one canonical producer-return digest. After that digest exists, a distinct nonproducer raw-GitHub verifier must return exactly STOOD or FELL tied to that digest after independently replaying an equivalent GET /search/code request under the same effective principal and comparing canonical request, response, path, commit, total-count, incomplete-results, authorization, and quota evidence. ChatGPT S04 may only perform structural preflight with SAME_PROVIDER_NONBINDING and binding weight zero. Only after STOOD may the named operational consumer issue an explicit ConsumerAck tied to the same WorkItem and producer digest.
+
+route:
+  primary_verifier: DISTINCT_NONPRODUCER_RAW_GITHUB_API_VERIFIER
+  route_surface: IMMUTABLE_GIT_PACKET_PLUS_ONE_INTERNAL_SLACK_POINTER_FOR_PICKUP
+  requested_pre_digest_result: REVISE_OR_HOLD_ONLY
+  requested_post_digest_result: STOOD_OR_FELL
+  same_provider_preflight:
+    seat: S04_STRUCTURAL_PREFLIGHT_VERIFIER
+    status: SAME_PROVIDER_NONBINDING
+    binding_weight: 0
+    request: RECOMPUTE_SOURCE_PATH_BLOB_REQUEST_AND_RESULT_DIGEST_BINDINGS_AND_CONFIRM_NO_PRODUCER_DIGEST_NO_STOOD_OR_FELL_NO_CONSUMER_ACK
+
+terminal_receipt_written: false
+consumer_ack_inferred: false
+adoption_credit: 0
+fitness_credit: 0
+effect_ceiling: APPEND_ONLY_SANITIZED_GIT_ROUTE_AND_ONE_INTERNAL_SLACK_POINTER_ONLY
+rollback: NO_SOURCE_TASK_ACCOUNT_DEPLOYMENT_MERGE_PUBLICATION_OR_EXTERNAL_SYSTEM_MUTATION_OCCURRED; SUPERSEDE_WITH_A_NEW_IMMUTABLE_RECEIPT_IF_A_BOUND_FIELD_IS_PROVEN_WRONG
+expiry_utc: 2026-08-06T11:08:06Z
+
+honest_flaw: >-
+  S03 had no distinct-provider verifier or raw GitHub HTTP execution surface in this wake. This route therefore has zero verification weight and cannot establish wrapper parity, completeness, authorization scope, quota behavior, adoption, or consumer acceptance.
+
+forbidden_effects_observed:
+  task_mutation: false
+  producer_impersonation: false
+  self_verification: false
+  external_send: false
+  spend: false
+  deployment: false
+  merge: false
+  publication: false
+  account_or_security_change: false
+  permanent_deletion: false
+  implicit_consumer_ack: false
+sealed: false
