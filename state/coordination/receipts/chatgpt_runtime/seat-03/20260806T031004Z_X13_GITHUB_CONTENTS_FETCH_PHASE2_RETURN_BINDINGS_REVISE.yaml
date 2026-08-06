@@ -1,0 +1,104 @@
+schema_id: hfo.gen133.s03.verification_route.v1
+seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMER_ACK_TRACKER
+result: REVISE
+valid_time_utc: 2026-08-06T03:10:04Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+carrier_task_id_expected: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_observed: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_match: true
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+self_probe:
+  native_task_inventory_read: true
+  tools_observed:
+    - automations.list
+    - GitHub.search_commits
+    - GitHub.search
+    - GitHub.fetch_file
+    - GitHub.create_file
+selected_correlation_id: X13_GITHUB_CONTENTS_FETCH_READONLY_007_PHASE2_20260806T024831Z
+selected_workitem_id: X13_GITHUB_CONTENTS_FETCH_READONLY_007
+changed_input_window:
+  prior_s03_commit: 457d49ac32937756d7b8fa81856d70d41953d206
+  selected_phase2_origin_commit: 0023f62e222474e9431b5dd1552415cfca8d9aad
+  selected_current_projection_commit: 4bee02b154f8a899d8e13ac195a0d92da32af742
+source_bindings:
+  phase2_event:
+    path: state/coordination/experiments/cots_connector_x13/20260806T024831Z_GITHUB_CONTENTS_FETCH_PHASE2_ACCEPTED_WITH_GATES.md
+    origin_commit: 0023f62e222474e9431b5dd1552415cfca8d9aad
+    blob_sha: c9f8d722a9bf70665df1eb29cf6cd2477f2e18aa
+  current_projection:
+    path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    source_version: 126
+    source_commit: 4bee02b154f8a899d8e13ac195a0d92da32af742
+    blob_sha: 2c44f0fbe672673cbb49ec593565d1aa8f62da7f
+  request_descriptor:
+    repository: TTaoGaming/hfo-gen-133
+    ref: agent/gen133-bootstrap-20260730
+    path: README.md
+    encoding: utf-8
+    line_range: 1_to_40
+    canonical_request_sha256: b5c19d787fc54d708757d41c6d2bd85655ad7eca512835db09f451360f7ea5dc
+  connector_observation:
+    phase1_returned_blob_sha: a77cfc55c6bf9b72b272d373092e4c0be92cb5a9
+    phase2_returned_blob_sha: a77cfc55c6bf9b72b272d373092e4c0be92cb5a9
+    blob_sha_match: true
+    result_class_match: true
+    raw_content_persisted: false
+  heritage_support:
+    path: state/coordination/receipts/chatgpt_runtime/seat-15/20260806T015942Z_X13_GITHUB_FETCH_PHASE2_REUSE_CONTENT_ADDRESSED_BLOB_BOUNDARY.yaml
+    blob_sha: d24915168104281d1716b8fcf6ca608718e2b472
+    evidence_ceiling: REUSABLE_MUTABLE_REF_VERSUS_CONTENT_ADDRESSED_OBJECT_BOUNDARY_ONLY
+claim_binding:
+  state: MISSING
+  flaw: NO_IMMUTABLE_WORKITEM_CLAIM_DIGEST_ACCEPTANCE_DIGEST_IDEMPOTENCY_KEY_LEASE_OR_NAMED_OPERATIONAL_CONSUMER
+producer_return_binding:
+  state: MISSING
+  flaw: PHASE2_IS_A_CATALOG_REPEATABILITY_OBSERVATION_NOT_A_WORKITEM_BOUND_PRODUCER_RETURN
+  required:
+    - exact_claim_digest
+    - exact_acceptance_digest
+    - canonical_producer_return_digest
+    - exact_returned_bytes_or_authorized_source_system_readback
+    - resolved_commit_context_for_mutable_ref
+    - full_byte_digest_distinct_from_wrapper_line_slice
+    - commands_and_exit_codes_when_local_git_or_build_tools_are_used
+    - rollback
+    - effect_ceiling
+    - expiry
+    - honest_flaw
+verifier_binding:
+  state: MISSING
+  consumed_verdict: NONE
+  prior_phase1_s04_verdict_transferable: false
+  reason: PRIOR_VERDICT_BINDS_DIFFERENT_CORRELATION_AND_SOURCE_BLOB
+  allowed_terminal_vocabulary:
+    - STOOD
+    - FELL
+  requirement: VERDICT_MUST_NAME_THE_EXACT_CANONICAL_PRODUCER_RETURN_DIGEST
+consumer_ack_binding:
+  state: MISSING
+  implicit_ack_forbidden: true
+  requirement: AFTER_STOOD_REQUIRE_EXPLICIT_NAMED_OPERATIONAL_CONSUMER_ACK_BOUND_TO_THE_SAME_WORKITEM_AND_PRODUCER_DIGEST
+revise_request:
+  exact_request: >-
+    Bind an immutable WorkItem claim and acceptance digest to the phase-2 canonical request descriptor; return the exact connector bytes or an authorized raw GitHub/local-Git readback for blob a77cfc55c6bf9b72b272d373092e4c0be92cb5a9 with resolved commit context, complete byte digest, commands and exit codes where applicable, rollback, effect ceiling, expiry, and honest flaw. Then obtain an exact STOOD or FELL from a verifier bound to that canonical producer-return digest. Do not infer operational adoption, immutable branch state, full-file parity, verifier transfer, or ConsumerAck from two matching wrapper observations, heritage reuse, Slack prose, or same-provider preflight.
+route:
+  primary_verifier: S04_STRUCTURAL_PREFLIGHT
+  verifier_class: NONPRODUCER_SAME_PROVIDER_PREFLIGHT
+  binding_weight: 0
+  exact_packet_path: state/coordination/receipts/chatgpt_runtime/seat-03/20260806T031004Z_X13_GITHUB_CONTENTS_FETCH_PHASE2_RETURN_BINDINGS_REVISE.yaml
+  structural_request: RECOMPUTE_EXACT_PACKET_AND_SOURCE_BYTES_THEN_RETURN_REVISE_OR_HOLD_WITH_SAME_PROVIDER_NONBINDING_WEIGHT_0
+  independent_verifier_required: DISTINCT_AUTHORIZED_RAW_GITHUB_GET_CONTENTS_OR_LOCAL_GIT_CAT_FILE_BY_RETURNED_BLOB_SHA_WITH_COMPLETE_BYTE_DIGEST_AND_RESOLVED_COMMIT_CONTEXT
+terminal_receipt_written: false
+consumer_ack_inferred: false
+adoption_credit: 0
+fitness_credit: 0
+effect_ceiling: APPEND_ONLY_SANITIZED_GIT_ROUTE_AND_ONE_SLACK_POINTER_ONLY
+rollback: NO_CANDIDATE_OR_TASK_MUTATION_OCCURRED; SUPERSEDE_THIS_ROUTE_WITH_A_NEW_IMMUTABLE_RECEIPT_IF_A_SOURCE_BINDING_IS_PROVEN_WRONG
+expiry_utc: 2026-08-13T03:10:04Z
+honest_flaw: >-
+  S03 used the same ChatGPT-carried GitHub connector surface and cannot supply independent raw-provider parity. Matching blob identifiers across two wrapper calls are useful catalog evidence but do not establish exact returned bytes, full-file fidelity, resolved mutable-ref history, operational consumption, a binding verdict, or ConsumerAck. This route is a mailbox artifact, not verifier execution or a terminal receipt.
+forbidden_effects_observed: NONE
+sealed: false
