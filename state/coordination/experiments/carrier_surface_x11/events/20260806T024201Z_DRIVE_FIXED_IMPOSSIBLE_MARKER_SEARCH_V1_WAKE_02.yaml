@@ -1,0 +1,49 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+experiment_id: X11_DRIVE_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1
+event_type: ACCEPTED_WAKE
+campaign_wake: 2
+expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+current_version_before: 125
+current_version_after: 126
+accepted: true
+baseline:
+  mode: first_accepted_wake
+  provider_call_success: true
+  sanitized_result_count: 0
+  continuation_present: false
+  permission_class: AUTHENTICATED_GOOGLE_DRIVE_BOUNDED_DOCUMENT_METADATA_SEARCH_READ_AVAILABLE
+  error_class: NONE
+hypothesis: an_authenticated_bounded_google_drive_document_metadata_search_for_one_fixed_impossible_marker_will_repeatably_return_a_sanitized_zero_result_without_fetching_file_content
+controlled_factor: drive_read_surface
+exact_probe:
+  action: Google_Drive.search
+  query: HFO_X11_DRIVE_FIXED_IMPOSSIBLE_MARKER_5C19A7E2D84F6B30
+  topn: 1
+  item_type: document
+  best_effort_fetch: false
+measured_result:
+  provider_call_success: true
+  sanitized_result_count: 0
+  continuation_present: false
+  permission_class: AUTHENTICATED_GOOGLE_DRIVE_BOUNDED_DOCUMENT_METADATA_SEARCH_READ_AVAILABLE
+  error_class: NONE
+  latency_ms: 1592
+  operator_relay_minutes: 0
+  changed_capability: false
+  campaign_decision: false
+  andon: false
+strongest_falsifier: drive_surface_unavailable_or_interactive_authentication_required_or_nonzero_result_or_content_fetch_or_output_outside_the_bounded_query
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer: [Reginleif, Ratatoskr]
+honest_flaw: a_zero_result_for_an_impossible_marker_confirms_connector_execution_but_cannot_validate_drive_search_recall_file_content_access_sharing_visibility_or_indexing_freshness
+supported_claim: authenticated_bounded_google_drive_document_metadata_search_executed_with_zero_results_and_no_continuation
+claim_ceiling: bounded_metadata_search_execution_and_sanitized_count_visibility_only
+privacy_gate: no_file_names_content_urls_identifiers_owners_sharing_metadata_or_unrelated_drive_metadata_persisted
+prohibited_effects_observed: {task_mutation: false, drive_mutation: false, sensitive_readback_externalization: false, send: false, spend: false, deployment: false, merge: false, publication: false, account_or_security_change: false, destructive_deletion: false}
+recorded_valid_time_utc: 2026-08-06T02:42:01Z
+sealed: true
+---
