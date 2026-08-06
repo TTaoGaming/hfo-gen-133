@@ -1,0 +1,157 @@
+schema_id: hfo.gen133.s04.structural_preflight.v1
+seat: S04_STRUCTURAL_PREFLIGHT_VERIFIER
+result: REVISE
+valid_time_utc: 2026-08-06T06:20:06Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+self_probe:
+  expected_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  observed_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  task_id_match: true
+  task_enabled_observed: true
+  task_title_observed: HFO S04 Hrist Structural Verifier
+  tools_observed:
+    - automations.list
+    - GitHub.search_commits
+    - GitHub.fetch_commit
+    - GitHub.fetch_file
+    - GitHub.fetch_blob
+    - GitHub.create_file
+    - Slack.slack_send_message
+    - python_sha256_git_blob_yaml_json
+selection:
+  rule: NEWEST_IMMUTABLE_CANDIDATE_ADDRESSED_TO_S04_NOT_AUTHORED_BY_S04
+  selection_cutoff_utc: 2026-08-06T06:20:06Z
+  newest_repository_commit_observed: 403d317a7e9cbdffb7ab1b27f0562befbfdd22cb
+  newest_repository_commit_is_s04_candidate: false
+  candidate_commit: 64e672dec3a9b7edc940f033dc411f76a677306f
+  candidate_path: state/coordination/receipts/chatgpt_runtime/seat-03/20260806T061005Z_X13_GMAIL_SEARCH_PHASE1_RETURN_BINDINGS_REVISE.yaml
+  candidate_blob_sha1: 589918fdb8631bc7355791e76b6c9795c072d124
+  candidate_byte_count: 7972
+  candidate_sha256: 0bec9bd9bfc5f4de8c78339fb3b3343eb4b512bc79a5e65f484bfed967de32aa
+  candidate_schema_id: hfo.gen133.s03.verification_route.v1
+  candidate_authoring_seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMER_ACK_TRACKER
+  authored_by_s04: false
+  addressed_to_s04: true
+  address_evidence: route.primary_verifier=S04_STRUCTURAL_PREFLIGHT
+  newest_selection_limit: RECENT_COMMIT_SEARCH_IS_NOT_A_TRANSACTIONAL_BRANCH_HEAD_LOCK
+source_bindings:
+  phase1_event:
+    commit: db4e26cee37d52189af1d019f64e225a2c0f2f4b
+    path: state/coordination/experiments/cots_connector_x13/20260806T054917Z_GMAIL_SEARCH_PHASE1_BASELINE.md
+    blob_sha1: 8d4f4b9f81698a138e4a24724ffb65d711fc4699
+    byte_count: 6007
+    sha256: e919f7ac2907306d5afbc3a05a5a00c5da628ddef3251c2fae7ef2086fbf3e5c
+    schema_id: hfo.gen133.x13.cots_connector_event.v1
+    parse_result: ONE_FRONTMATTER_YAML_MAPPING_PLUS_MARKDOWN_BODY
+    status: PHASE1_ACCEPTED_WITH_GATES
+    provisional_decision: ADOPT_WITH_GATES_CATALOG_ONLY
+  current_projection:
+    commit: f1a8c676ef7ce61351de873242361829e3980175
+    path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    blob_sha1: 31231fc560ae02776524f08ddec7f880ca9c0a34
+    byte_count: 3020
+    sha256: 35f793a7cd75b2a44fa288765126b3eee4ecf663c9979e0f9a185b4a319d777a
+    schema_id: hfo.gen133.x13.cots_connector_current.v1
+    version: 129
+    points_to_phase1_event: true
+    campaign_status: OPEN
+canonicalization:
+  request_algorithm: UTF8_EXACT_VISIBLE_NORMALIZED_REQUEST_DESCRIPTOR
+  normalized_request_descriptor: '{"action":"Gmail.search_email_ids","label_ids":null,"max_results":1,"next_page_token":"","query":"newer_than:1d -in:spam -in:trash"}'
+  request_byte_count: 132
+  declared_request_sha256: c36911243697a33efef3f04af88309dc82a32b8dae0d7a7efc42645d17bc9747
+  recomputed_request_sha256: c36911243697a33efef3f04af88309dc82a32b8dae0d7a7efc42645d17bc9747
+  request_digest_match: true
+checks:
+  exact_bytes_and_source_pointers: PASS
+  schema_and_parse: PASS
+  source_projection_chain: PASS
+  freshness:
+    result: PASS_ROUTE_AND_REVIEW_EXPIRIES_LIVE
+    candidate_expiry_utc: 2026-08-13T06:10:05Z
+    current_review_expiry_utc: 2026-08-13T05:49:17Z
+    source_event_expiry: NOT_DECLARED
+  authority:
+    result: REVISE
+    ceiling: CATALOG_OBSERVATION_ONLY
+    flaw: NO_OPERATIONAL_ADOPTION_OR_EXTERNAL_EFFECT_AUTHORITY
+  task_binding:
+    result: PASS_FOR_S04_CARRIER
+    task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  actor_carrier_separation:
+    result: PASS_STRUCTURALLY_WITH_CORRELATION_LIMIT
+    source_actor: X13_COTS_CONNECTOR_PDCA
+    router_actor: S03_REDUCER
+    verifier_actor: S04_STRUCTURAL_PREFLIGHT
+    limitation: ALL_ARE_CHATGPT_CARRIED_SAME_PROVIDER
+  idempotency:
+    result: REVISE
+    flaw: NO_OPERATIONAL_WORKITEM_CLAIM_ACCEPTANCE_DIGEST_NONCE_IDEMPOTENCY_KEY_OR_CANONICAL_PRODUCER_RETURN_DIGEST
+  lease_and_expiry:
+    result: REVISE
+    route_expiry_present: true
+    review_expiry_present: true
+    producer_lease_present: false
+    source_event_expiry_present: false
+  privacy:
+    result: PASS_AT_CATALOG_CEILING
+    evidence: RAW_MESSAGE_ID_PAGE_TOKEN_SUBJECT_SENDER_BODY_THREAD_AND_ATTACHMENTS_NOT_PERSISTED
+    limitation: NO_DIGEST_BOUND_PRIVACY_SAFE_PROVIDER_READBACK_FOR_OPERATIONAL_VERIFICATION
+  rollback:
+    result: PASS_FOR_APPEND_ONLY_ROUTE
+    evidence: NO_GMAIL_TASK_PROVIDER_OR_SOURCE_MUTATION_OCCURRED
+    operational_rollback: NOT_APPLICABLE_BECAUSE_NO_OPERATIONAL_EFFECT_OCCURRED
+  verifier:
+    result: REVISE
+    source_verifier_result: NOT_RUN
+    exact_digest_bound_stood_or_fell: ABSENT
+    independent_provider_witness: ABSENT
+  consumer:
+    result: REVISE
+    catalog_consumer: HFO_COTS_CAPABILITY_INVENTORY_CATALOG_ONLY
+    operational_consumer: NOT_ASSIGNED
+    consumer_ack: NOT_OBSERVED
+decision:
+  reason_code: CATALOG_OBSERVATION_NOT_WORKITEM_BOUND_PRODUCER_RETURN
+  summary: >-
+    The packet, source event, projection chain, visible request canonicalization, privacy minimization, and append-only rollback are structurally coherent at a catalog-only ceiling. Operational promotion is not structurally admissible because the relative newer_than:1d request is time-dependent, no absolute replay window or exact privacy-safe response digest is bound, effective Gmail principal/scope/project/delegation/quota context is unknown, and no WorkItem claim, acceptance digest, nonce, idempotency key, producer lease, canonical producer-return digest, digest-bound STOOD or FELL, named operational consumer, or ConsumerAck exists.
+strongest_fake_green_mutant:
+  mutant_id: X14_MUTANT_127_f10c8db13990
+  mutant_commit: 255f193c099f6d26900625e7ba1f6a385f3d3306
+  mutant_path: state/coordination/experiments/false_green_x14/quarantine/20260806T055426Z_X12_FABRICATED_CONSUMER_ACK.mutant.yaml
+  mutant_blob_sha1: 66307d7c2cbdbf5588b13c06fac62c65dbc1a187
+  mutation_class: FABRICATED_CONSUMER_ACK
+  source_commit: cab9eefa4604bd009f90bd3e71558c4b5a26a40b
+  source_path: state/coordination/experiments/durable_object_x12/slack_receipts/e182baab17d1e0e5984a1bf9a93be6d6e25c0dc2cc865e12e6d83b334d29efb4.json
+  source_blob_sha1: 8d2600fa11d378e3e834a34eb343655344fa8803
+  source_byte_count: 3710
+  source_sha256: 080bd84edbd6ee9ef1c8934acfcf29bd557ce1b2ee4c5a6bb16437f1d4275496
+  source_receipt_body_byte_count: 3411
+  source_receipt_body_sha256: e779edd69f995c881cffaf66891c8655b901b34e504f54c3c6a5aa0fddc79f29
+  source_consumer_field: Reginleif/Olrun
+  source_slack_status: API_ACCEPTED
+  source_consumer_ack_field: ABSENT
+  canonical_overlay_algorithm: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_byte_count: 260
+  canonical_overlay_sha256_declared: f10c8db1399002bf631f7204467eeb6dbf8d415e56127dd6dda32e68ff4484e9
+  canonical_overlay_sha256_recomputed: f10c8db1399002bf631f7204467eeb6dbf8d415e56127dd6dda32e68ff4484e9
+  digest_match: true
+  direct_verdict: REVISE
+  rejection_reason: >-
+    Slack API_ACCEPTED proves producer-side message acceptance only. A named consumer, delivery marker, message timestamp, version advance, or absence of rejection cannot establish that Reginleif or Olrun read, accepted, used, or closed the workflow. The source has no authenticated consumer principal or task, independent ack event, ack digest, consumer-side readback, downstream state transition, or explicit acceptance semantics.
+material_change:
+  prior_s04_receipt_commit: 9697fadfa0f04f58b70cb1e69bb011463d6a6021
+  candidate_commit_is_newer_than_prior_s04_receipt: true
+  slack_pointer_required: true
+effect_ceiling: APPEND_ONLY_SANITIZED_GIT_RECEIPT_AND_ONE_CONCISE_SLACK_POINTER
+rollback: PRESERVE_SOURCE_CANDIDATE_TASK_SCHEDULE_GMAIL_SLACK_AND_CONSUMER_STATE; SUPERSEDE_ONLY_WITH_A_NEW_IMMUTABLE_RECEIPT_IF_A_BINDING_IS_PROVEN_WRONG
+honest_flaw: >-
+  Exact Git bytes, visible request canonicalization, and the X14 overlay were recomputed, but this seat did not receive raw Gmail HTTP envelopes, effective authorization telemetry, exact returned identifiers or page-token bytes, direct quota receipts, or an independent provider witness. Recent-commit discovery is best effort rather than a transactional branch-head lock. This verdict is structural preflight only.
+forbidden_effects_observed: NONE
+sealed: false
