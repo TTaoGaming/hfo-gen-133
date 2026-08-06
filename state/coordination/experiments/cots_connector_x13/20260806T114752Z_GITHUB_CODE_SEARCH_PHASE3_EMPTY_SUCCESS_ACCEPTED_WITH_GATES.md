@@ -1,0 +1,84 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_GITHUB_CODE_SEARCH_READONLY_009
+candidate: GitHub_repository_scoped_code_search_readonly_surface
+phase: 3
+campaign_wake: 3_of_4
+status: PHASE3_ACCEPTED_WITH_GATES_EMPTY_SUCCESS_NOT_ABSENCE
+carrier_task_id: 6a55c1733708819185088bf334e33ea5
+carrier_task_id_match: true
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+prior_current_version_expected: 134
+prior_current_blob_sha: 720b5a0616568ad799f32f6c0d50efbe29f81b35
+phase3_query_utf8: x13_synthetic_nonmatch_7f4c2a9e6d1b8c03
+phase3_canonical_request_algorithm: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+phase3_canonical_request_json: '{"action":"GitHub.search","org":"TTaoGaming","query":"x13_synthetic_nonmatch_7f4c2a9e6d1b8c03","repository_name":"hfo-gen-133","topn":3}'
+phase3_request_digest_sha256: ba1802f68476efdcb87deaab28153ac536af81184a354c186dc6495a4eae457d
+search_repository_scope: TTaoGaming/hfo-gen-133
+search_topn: 3
+results_returned: 0
+result_canonicalization: ORDERED_ARRAY_UTF8_JSON_NO_WHITESPACE_V1
+result_summary_digest_sha256: 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
+connector_error: null
+connector_is_error: false
+connector_external_call_time_ms: 230
+measured_fact: SYNTHETIC_NONMATCHING_REPOSITORY_SCOPED_QUERY_RETURNED_AN_EMPTY_RESULT_ARRAY_WITH_NULL_CONNECTOR_ERROR
+andon: EMPTY_SEARCH_SUCCESS_IS_NOT_AUTHORITATIVE_ABSENCE_BECAUSE_THE_SURFACE_IS_INDEX_DERIVED_DEFAULT_BRANCH_BOUND_TOPN_CAPPED_AND_OMITS_TOTAL_COUNT_INCOMPLETE_RESULTS_INDEX_FRESHNESS_AUTH_CONTEXT_AND_RATE_LIMIT_RECEIPTS
+interpretation: ZERO_INDEXED_MATCHES_RETURNED_BY_THIS_WRAPPER_CALL_ONLY
+candidate_calls_this_phase: 1_READONLY_CODE_SEARCH
+campaign_candidate_calls_total: 3_READONLY_CODE_SEARCH_CALLS
+successful_nonempty_calls: 2
+successful_empty_calls: 1
+connector_errors_observed: 0
+retries: 0
+fallbacks: 0
+mutations_by_candidate: 0
+content_hydrated_by_candidate: false
+custom_code_avoided_estimate: 40_to_120_LOC_UNVALIDATED
+operator_minutes_removed_measured: 0
+credentials: CONNECTOR_MANAGED_EFFECTIVE_SEARCH_PRINCIPAL_TOKEN_TYPE_SCOPE_SSO_AND_INSTALLATION_CONTEXT_NOT_EXPOSED
+durability: GIT_EVENT_DURABLE_EXACT_QUERY_AND_CANONICALIZATION_RECORDED_SEARCH_INDEX_AND_NEGATIVE_RESULT_MUTABLE
+observability: EMPTY_ARRAY_NULL_ERROR_AND_LATENCY_EXPOSED_TOTAL_COUNT_INCOMPLETE_RESULTS_PROVIDER_STATUS_HEADERS_REQUEST_ID_AUTH_CONTEXT_INDEX_FRESHNESS_AND_RATE_LIMIT_NOT_EXPOSED
+portability: LOW_TO_MEDIUM_GITHUB_SPECIFIC_INDEX_QUERY_REPOSITORY_SCOPE_AND_DEFAULT_BRANCH_MODEL
+failure_behavior: EMPTY_SUCCESS_DISTINGUISHED_FROM_CONNECTOR_ERROR_INVALID_QUERY_PERMISSION_INDEX_UNAVAILABLE_THROTTLE_AND_TRANSIENT_FAILURE_UNTESTED
+paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
+direct_cost_or_quota_evidence: NONE
+quota_contract: GITHUB_EXPOSES_A_DISTINCT_CODE_SEARCH_RATE_LIMIT_RESOURCE_BUT_THIS_WRAPPER_RETURNED_NO_DIRECT_DEBIT_OR_REMAINING_QUOTA
+catalog_consumer: HFO_COTS_CAPABILITY_INVENTORY_CATALOG_ONLY
+operational_consumer: NOT_ASSIGNED
+consumer_ack: NOT_OBSERVED
+verifier: DISTINCT_RAW_GITHUB_CODE_SEARCH_UNDER_THE_SAME_EFFECTIVE_PRINCIPAL_WITH_EXACT_QUERY_API_VERSION_TOTAL_COUNT_INCOMPLETE_RESULTS_RESPONSE_HEADERS_REQUEST_ID_RATE_LIMIT_AND_DEFAULT_BRANCH_HEAD_CAPTURED
+verifier_result: NOT_RUN
+provisional_decision: ADOPT_WITH_GATES_CATALOG_ONLY
+adoption_credit: 0
+fitness_credit: 0
+mandatory_gate: TREAT_EMPTY_AS_ZERO_INDEXED_MATCHES_RETURNED_NOT_ABSENCE; VERIFY_DEFAULT_BRANCH_AND_HEAD; TREAT_TOPN_AS_CAP_NOT_COMPLETENESS; REQUIRE_EXPLICIT_REF_GIT_TREE_OR_CONTENTS_WITNESS_FOR_CONSEQUENTIAL_NEGATIVE_CLAIMS; DO_NOT_INFER_AUTH_INDEX_FRESHNESS_OR_QUOTA; NO_UNBOUNDED_RETRY
+strongest_falsifier: A_DISTINCT_RAW_GITHUB_CODE_SEARCH_WITH_THE_EXACT_RECORDED_QUERY_AND_SAME_EFFECTIVE_PRINCIPAL_RETURNS_MATCHES_OR_SHOWS_THE_WRAPPER_CHANGED_QUERY_SCOPE_OR_BACKEND
+honest_flaw: THE_SYNTHETIC_QUERY_WAS_DESIGNED_TO_MISS_SO_THIS_PROBE_ONLY_ESTABLISHES_EMPTY_SUCCESS_SHAPE; IT_DID_NOT_TEST_INVALID_SYNTAX_PERMISSION_DENIAL_INDEX_UNAVAILABILITY_THROTTLING_TRANSIENT_FAILURE_RAW_PARITY_OPERATOR_SAVINGS_OR_CONSUMER_VALUE
+next_phase: PHASE4_DECISION_FROM_EXISTING_RECEIPTS_ONLY_NO_ADDITIONAL_CANDIDATE_CALL
+review_expiry_utc: 2026-08-13T11:47:52Z
+valid_time_utc: 2026-08-06T11:47:52Z
+recorded_time_utc: 2026-08-06T11:47:52Z
+---
+
+# X13 GitHub repository-scoped code search — phase 3 empty-success probe
+
+## Result
+
+One bounded read-only `GitHub.search` call used repository scope `TTaoGaming/hfo-gen-133`, `topn=3`, and the synthetic query `x13_synthetic_nonmatch_7f4c2a9e6d1b8c03`. The wrapper returned an empty result array, a null connector error, and 230 ms external-call latency. No file content was hydrated, and there was no retry, fallback, or candidate mutation.
+
+## Andon
+
+The empty-success response means only that this wrapper call returned zero indexed matches. It is not authoritative evidence that the token is absent from every Git object, branch, commit, inaccessible repository view, or not-yet-indexed state.
+
+GitHub documents code search as default-branch-bound and recommends combining it with other evidence for consequential investigation. GitHub also exposes a distinct `code_search` rate-limit resource, but this connector returned no `total_count`, `incomplete_results`, provider status, response headers, request ID, effective authentication context, index-freshness marker, or direct rate-limit debit.
+
+Primary references:
+
+- https://docs.github.com/en/enterprise-cloud@latest/code-security/reference/security-incident-response/investigation-tools
+- https://docs.github.com/en/rest/rate-limit/rate-limit
+- https://docs.github.com/en/rest/search/search#search-code
+
+No adoption or fitness credit is issued.
