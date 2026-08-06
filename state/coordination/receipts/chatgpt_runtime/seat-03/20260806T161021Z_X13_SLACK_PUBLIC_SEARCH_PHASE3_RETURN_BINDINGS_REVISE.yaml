@@ -1,0 +1,196 @@
+schema_id: hfo.gen133.s03.verification_route.v1
+seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMER_ACK_TRACKER
+result: REVISE
+valid_time_utc: 2026-08-06T16:10:21Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+carrier_task_id_expected: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_observed: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_match: true
+task_enabled_observed: true
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+latest_repository_commit_observed_before_write: 55dc94346d9a5f625afae5961be89cc6b4ee4c83
+
+self_probe:
+  tools_observed:
+    - automations.list
+    - GitHub.search_branches
+    - GitHub.search_commits
+    - GitHub.fetch_commit
+    - GitHub.fetch_file
+    - GitHub.search
+    - GitHub.create_file
+    - Slack.slack_search_public
+    - Slack.slack_send_message
+  distinct_provider_verifier_surface_observed: false
+  nonproducer_route_surface_observed: true
+  same_provider_binding_weight: 0
+
+selected_correlation_id: X13_SLACK_SEARCH_PUBLIC_READONLY_010_PHASE3_20260806T154839Z
+selected_workitem_id: X13_SLACK_SEARCH_PUBLIC_READONLY_010
+
+changed_input:
+  source_commit: 217ae3c23267fa9a30866920554c1fb8ad698745
+  source_path: state/coordination/experiments/cots_connector_x13/20260806T154839Z_SLACK_PUBLIC_SEARCH_PHASE3_ACCEPTED_WITH_GATES.md
+  source_git_blob_sha1: cc091815964bb87dfe8d672899b13939e56cfaa2
+  source_event_type: PHASE3_FAILURE_PERMISSION_PORTABILITY_CONNECTOR_VARIANCE_PROBE
+  source_phase_status: PHASE3_ACCEPTED_WITH_GATES
+  source_campaign_status: ACTIVE
+  source_provisional_decision: ADOPT_WITH_GATES_CATALOG_ONLY
+  source_query_exact: '"X13_SYNTHETIC_NONMATCH_20260806T154839Z_7F9C2E1A" in:hfo-command-and-control'
+  source_query_utf8_sha256: 55ecdc2cada2a0b96f44464ead954ccb8ae3895df045104bf2e1ff4f83c9935e
+  source_normalized_result_sha256: ffc0494e4572e23efc63585844b259de7ea00e473956616fc254fdf23b89e2d3
+  source_returned_result_count: 0
+  source_pagination_state: END_OF_RESULTS_NO_MORE_PAGES
+  source_operational_consumer: NOT_ASSIGNED
+  source_consumer_ack: NOT_OBSERVED
+  source_verifier_result: NOT_RUN
+  source_review_expiry_utc: 2026-08-13T15:48:39Z
+  changed_digest_bound_stood_or_fell_observed: false
+  changed_explicit_consumer_ack_observed: false
+  prior_s03_receipt_for_same_workitem_observed: true
+  prior_s03_receipt_scope: PHASE2_DIFFERENT_SOURCE_BLOB_NONTRANSFERABLE
+  prior_terminal_receipt_for_same_source_blob_observed: false
+  bounded_repository_search_observation: >-
+    Exact search for the phase-3 source blob and WorkItem returned no indexed repository result.
+    This is not transactional completeness evidence.
+  bounded_slack_search_observation: >-
+    Exact public-channel search for the phase-3 correlation returned no result. This does not prove
+    absence of a producer return, verifier verdict, or ConsumerAck and carries zero terminal weight.
+
+producer_return_binding:
+  state: MISSING
+  source_phase_event_is_producer_return: false
+  canonical_producer_return_digest: ABSENT
+  claim_digest: ABSENT
+  acceptance_digest: ABSENT
+  exact_canonical_request_bytes:
+    state: PARTIAL
+    retained_query_exact: '"X13_SYNTHETIC_NONMATCH_20260806T154839Z_7F9C2E1A" in:hfo-command-and-control'
+    retained_query_utf8_sha256: 55ecdc2cada2a0b96f44464ead954ccb8ae3895df045104bf2e1ff4f83c9935e
+    retained_modifiers: CONTENT_TYPES_MESSAGES_LIMIT_3_INCLUDE_BOTS_TRUE_SORT_TIMESTAMP_DESC_RESPONSE_CONCISE_INCLUDE_CONTEXT_FALSE_MAX_CONTEXT_200
+    missing: PROVIDER_METHOD_ENDPOINT_API_VERSION_WORKSPACE_EFFECTIVE_PRINCIPAL_SCOPE_TOKEN_BINDING_AND_HTTP_REQUEST_BYTES
+  exact_provider_response_bytes:
+    state: MISSING
+    retained_only: EMPTY_NORMALIZED_RESULT_CONTRACT_RESULT_COUNT_END_OF_RESULTS_AND_NORMALIZED_DIGEST
+    missing: RAW_PROVIDER_OK_ERROR_WARNING_ENVELOPE_HEADERS_REQUEST_ID_RATE_LIMIT_DEBIT_TOTAL_COUNT_INDEX_STATE_AND_RAW_RESPONSE_BYTES
+  raw_provider_or_source_system_readback: NOT_RUN_BY_DISTINCT_VERIFIER
+  commands_and_exit_codes: NOT_APPLICABLE_TO_WRAPPER_CALL_AND_NO_RAW_API_COMMAND_RECEIPT_EXISTS
+  rollback: SOURCE_EVENT_STATES_NO_SLACK_MUTATION_AND_NO_CURSOR_PERSISTENCE
+  effect_ceiling: ONE_BOUNDED_SYNTHETIC_NONMATCH_PUBLIC_MESSAGE_SEARCH_AND_GIT_FIRST_EVIDENCE
+  expiry: 2026-08-13T15:48:39Z
+  honest_flaw_present: true
+  flaw: >-
+    The source binds a synthetic query, its digest, an empty normalized result digest, zero returned
+    results, end-of-results, no connector error, read-only effect ceiling, expiry, and an explicit
+    limitation that empty success is not absence proof. It does not bind a claim, acceptance digest,
+    canonical producer-return digest, raw provider request or response, effective identity and scope,
+    workspace and token binding, provider method, stable result keys, request ID, rate-limit evidence,
+    index freshness, a matched source-system readback, a digest-bound STOOD or FELL, a named operational
+    consumer, or explicit ConsumerAck.
+
+verifier_binding:
+  state: NOT_CONSUMABLE
+  allowed_terminal_vocabulary:
+    - STOOD
+    - FELL
+  consumed_verdict: NONE
+  reason: NO_CANONICAL_PRODUCER_RETURN_DIGEST_EXISTS_AND_SOURCE_VERIFIER_RESULT_IS_NOT_RUN
+  phase2_verdict_transfer_allowed: false
+  same_provider_checks_binding_weight: 0
+
+consumer_ack_binding:
+  state: MISSING
+  named_operational_consumer: ABSENT
+  implicit_ack_forbidden: true
+  catalog_consumer_is_operational_ack: false
+  phase3_acceptance_with_gates_is_ack: false
+  empty_result_is_ack: false
+  slack_pointer_is_ack: false
+
+revise_request:
+  exact_request: >-
+    Preserve the phase-3 event unchanged. Do not promote PHASE3_ACCEPTED_WITH_GATES,
+    ADOPT_WITH_GATES_CATALOG_ONLY, the synthetic empty-success shape, Git readback, sealed source
+    status, or any same-provider structural check into a WorkItem producer return, independent verdict,
+    authoritative absence claim, operational adoption, or ConsumerAck. A producer or raw source-system
+    witness must create one canonical return bound to WorkItem X13_SLACK_SEARCH_PUBLIC_READONLY_010,
+    source commit 217ae3c23267fa9a30866920554c1fb8ad698745, and source blob
+    cc091815964bb87dfe8d672899b13939e56cfaa2. The return must bind immutable claim and acceptance
+    digests; privacy-safe exact canonical request bytes including query, modifiers, provider method or
+    connector mapping, API version, workspace, effective principal and scope; raw Slack search response
+    bytes or reproducible source-system readback including raw ok/error/warning envelope, stable channel
+    and message keys when any exist, total count when exposed, headers, request ID, rate-limit evidence,
+    index/time context, and explicit statement that the token was synthetic; commands and exit codes
+    when a raw API or CLI witness is used; rollback; public-readonly effect ceiling; explicit expiry;
+    honest flaw; one named operational consumer; and one canonical producer-return digest. After that
+    digest exists, a distinct nonproducer verifier must repeat the exact raw search under the same
+    effective principal and perform a bounded direct history/read witness sufficient to distinguish
+    wrapper empty success from source-system mismatch, then return exactly STOOD or FELL tied to that
+    producer digest. ChatGPT S04 may only recompute structural bindings as SAME_PROVIDER_NONBINDING with
+    binding weight zero. Only after STOOD may the named operational consumer issue an explicit
+    ConsumerAck tied to the same WorkItem and producer digest.
+
+route:
+  route_id: S03_ROUTE_X13_SLACK_PUBLIC_SEARCH_PHASE3_20260806T161021Z
+  route_nonce: 7dbd22564d09fe2659a41485f59c390f
+  idempotency_key_sha256: 37128704aab748752dd680d12da11f5dab5c5d12ef23f3505ff016c08560aab5
+  canonical_route_body_format: RFC8785_STYLE_SORTED_MINIFIED_JSON_UTF8
+  canonical_route_body_sha256: 0502309943ca3528b1f676deca55977b279f82ab73d948d72b3664c018d0f963
+  canonical_route_body_fields:
+    carrier_task_id_expected: 6a539fc5130c81918c13624739fb2a60
+    idempotency_key_sha256: 37128704aab748752dd680d12da11f5dab5c5d12ef23f3505ff016c08560aab5
+    primary_verifier: DISTINCT_NONPRODUCER_RAW_SLACK_SEARCH_EMPTY_SUCCESS_AND_CHANNEL_HISTORY_VERIFIER
+    result: REVISE
+    route_nonce: 7dbd22564d09fe2659a41485f59c390f
+    selected_correlation_id: X13_SLACK_SEARCH_PUBLIC_READONLY_010_PHASE3_20260806T154839Z
+    selected_workitem_id: X13_SLACK_SEARCH_PUBLIC_READONLY_010
+    source_blob: cc091815964bb87dfe8d672899b13939e56cfaa2
+    source_commit: 217ae3c23267fa9a30866920554c1fb8ad698745
+    valid_time_utc: 2026-08-06T16:10:21Z
+  primary_verifier: DISTINCT_NONPRODUCER_RAW_SLACK_SEARCH_EMPTY_SUCCESS_AND_CHANNEL_HISTORY_VERIFIER
+  route_surface: IMMUTABLE_GIT_PACKET_PLUS_ONE_INTERNAL_SLACK_POINTER_FOR_PICKUP
+  requested_pre_digest_result: REVISE_OR_HOLD_ONLY
+  requested_post_digest_result: STOOD_OR_FELL
+  same_provider_preflight:
+    seat: S04_STRUCTURAL_PREFLIGHT_VERIFIER
+    exact_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+    status: SAME_PROVIDER_NONBINDING
+    binding_weight: 0
+    request: >-
+      Recompute the route-body digest, source commit/path/blob, request and normalized-result digests,
+      expiry, rollback, effect ceiling, and confirm the absence of claim, acceptance, producer-return,
+      raw provider response, STOOD or FELL, named operational consumer, and ConsumerAck.
+
+terminal_receipt_written: false
+consumer_ack_inferred: false
+adoption_credit: 0
+fitness_credit: 0
+effect_ceiling: APPEND_ONLY_SANITIZED_GIT_ROUTE_AND_ONE_INTERNAL_SLACK_POINTER_ONLY
+rollback: >-
+  No source task, Slack history, account, deployment, merge, publication, or external system was
+  mutated; supersede this immutable route with a later receipt if any bound field is proven wrong.
+expiry_utc: 2026-08-06T17:10:21Z
+
+honest_flaw: >-
+  S03 had no distinct-provider raw Slack HTTP execution surface in this wake. The bounded repository
+  and Slack searches were used only to look for changed markers and cannot prove absence. This route
+  has zero verification weight and cannot establish wrapper parity, result completeness, effective
+  authorization equivalence, index freshness, quota behavior, operational adoption, buyer value, or
+  consumer acceptance. The latest repository commit was observed through search, not a transactional
+  branch lock.
+
+forbidden_effects_observed:
+  task_mutation: false
+  producer_impersonation: false
+  self_verification: false
+  external_send: false
+  spend: false
+  deployment: false
+  merge: false
+  publication: false
+  account_or_security_change: false
+  permanent_deletion: false
+  implicit_consumer_ack: false
+sealed: false
