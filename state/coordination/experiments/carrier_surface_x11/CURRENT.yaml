@@ -1,8 +1,8 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_NATIVE_TASKS_EXPECTED_RECORD_VISIBILITY_V3
-current_version: 136
-accepted_wakes: 0
+current_version: 137
+accepted_wakes: 1
 target_wakes_before_decision: 4
 controlled_factor: native_tasks_read_visibility
 campaign_status: ACTIVE
@@ -19,29 +19,30 @@ prior_campaign:
 baseline_result: four_identical_authenticated_bounded_public_Slack_impossible_marker_searches_succeeded_with_zero_results_no_continuation_no_context_fetch_and_no_persisted_message_content_or_identifiers
 hypothesis: an_authenticated_read_only_native_Tasks_inventory_call_will_repeatably_expose_the_exact_expected_X11_task_record_as_enabled_and_exact_schedule_without_persisting_unrelated_task_titles_prompts_schedules_or_identifiers
 measured_result:
-  provider_call_success: []
-  expected_task_visible: []
-  enabled_boolean: []
-  timing_mode: []
-  latencies_ms: []
-  permission_class: UNMEASURED
-  error_class: UNMEASURED
+  provider_call_success: [true]
+  expected_task_visible: [true]
+  enabled_boolean: [true]
+  timing_mode: [exact_schedule]
+  latencies_ms: [null]
+  latency_note: connector_latency_not_exposed
+  permission_class: AUTHENTICATED_NATIVE_TASK_INVENTORY_READ_AVAILABLE
+  error_class: NONE
   operator_relay_minutes: 0
   changed_capability: false
   campaign_decision: false
   andon: false
-supported_claim: no_native_Tasks_expected_record_visibility_v3_claim_yet_campaign_initialized_only
-claim_ceiling: no_claim_beyond_campaign_initialization_until_the_read_only_native_Tasks_inventory_probe_executes
+supported_claim: repeat_observation_of_authenticated_native_Tasks_expected_record_visibility_enabled_boolean_and_exact_schedule_timing_mode
+claim_ceiling: same_provider_expected_record_inventory_visibility_only_not_current_run_liveness_successful_completion_exactly_once_delivery_future_durability_or_independent_verification
 strongest_falsifier: native_Tasks_inventory_surface_is_missing_or_unauthenticated_the_exact_expected_task_ID_is_absent_enabled_or_timing_mode_drift_without_authorized_change_or_unrelated_task_titles_prompts_schedules_or_identifiers_are_persisted
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 consumer:
   - Reginleif
   - Ratatoskr
-honest_flaw: native_Tasks_inventory_is_same_provider_and_broad_so_expected_record_visibility_cannot_prove_current_run_liveness_exactly_once_delivery_future_durability_or_independent_verification
+honest_flaw: the_provider_inventory_response_is_broad_and_same_provider_and_exposes_no_request_latency_so_expected_record_visibility_cannot_prove_current_run_liveness_exactly_once_delivery_future_durability_or_independent_verification
 last_event:
-  commit: 96a1d98bf2ee4d6e3e8553fbc4297ab64fed224f
-  path: state/coordination/experiments/carrier_surface_x11/events/20260806T123932Z_SLACK_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1_WAKE_04_DECISION_KEEP.yaml
-  blob: cbdbfbc325f84a5df2c360182a4be1684c936d35
+  commit: e8250629b3b9acdbab4f92e8ebdeeca7ecdc2ba0
+  path: state/coordination/experiments/carrier_surface_x11/events/20260806T133927Z_NATIVE_TASKS_EXPECTED_RECORD_VISIBILITY_V3_WAKE_01.yaml
+  blob: 03ecd60ed5efc8de46fc6a8cccb2bbd45d30e4aa
 completed_campaign_measurement:
   experiment_id: X11_SLACK_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1
   provider_call_success: [true, true, true, true]
@@ -59,10 +60,10 @@ completed_campaign_measurement:
 next_factor: native_tasks_read_visibility
 next_probe:
   experiment_id: X11_NATIVE_TASKS_EXPECTED_RECORD_VISIBILITY_V3
-  campaign_wake: 1
+  campaign_wake: 2
   mode: read_only_expected_record_reconciliation
-  exact_action: call_native_Tasks_inventory_once_and_persist_only_whether_the_exact_expected_task_ID_is_visible_enabled_and_in_exact_schedule_mode_without_persisting_unrelated_task_titles_prompts_schedules_or_identifiers
-  expected_current_version: 136
+  exact_action: repeat_the_identical_native_Tasks_inventory_probe_and_persist_only_whether_the_exact_expected_task_ID_is_visible_enabled_and_in_exact_schedule_mode
+  expected_current_version: 137
   persist_only:
     - provider_call_success
     - expected_task_visible
@@ -78,9 +79,9 @@ next_probe:
   post_only_changed_capability_campaign_decision_or_andon: true
   sensitive_readback_externalization_allowed: false
   same_provider_independence_claim_allowed: false
-slack_action: POST_CAMPAIGN_DECISION
-updated_valid_time_utc: 2026-08-06T12:39:32Z
+slack_action: SILENT_UNCHANGED_PROBE
+updated_valid_time_utc: 2026-08-06T13:39:27Z
 sealed: false
 ---
 
-Slack public read surface V1 completed four accepted wakes. All identical bounded impossible-marker searches returned zero results with no continuation, no context fetch, and no persisted message content or identifiers. Disposition is KEEP within the narrow claim ceiling. The next isolated factor is read-only native Tasks expected-record visibility V3.
+Native Tasks expected-record visibility V3 accepted wake 1 of 4. The exact expected X11 task record remained visible, enabled, and in exact_schedule mode. This is a repeat same-provider inventory observation with no changed capability, no campaign decision, and no Andon; Slack remains silent.
