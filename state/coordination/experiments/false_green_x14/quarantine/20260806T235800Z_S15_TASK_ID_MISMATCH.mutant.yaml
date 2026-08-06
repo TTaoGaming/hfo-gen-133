@@ -1,0 +1,81 @@
+---
+schema_id: hfo.gen133.x14.false_green_mutant.v1
+experiment_id: X14_FALSE_GREEN_MUTATION_001
+mutant_id: X14_MUTANT_145_ce2bac257bf8
+seat: X14_FALSE_GREEN_MUTATION_AND_QA_LAB
+carrier_task_id_expected: 6a513e4d9c4c81919db728f85db2dd79
+carrier_task_id_observed: 6a513e4d9c4c81919db728f85db2dd79
+carrier_task_id_match: true
+wip: 1
+status: QUARANTINED_NONEXECUTABLE_ROUTED_PENDING_VERDICTS
+valid_time_utc: 2026-08-06T23:58:00Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+world_effect_ceiling: QUARANTINED_GIT_ARTIFACT_AND_SANITIZED_SLACK_ROUTE_ONLY
+---
+
+source_binding:
+  selection_rule: NEWEST_IMMUTABLE_CANDIDATE_NOT_AUTHORED_BY_X14_AND_NOT_PREVIOUSLY_MUTATED_AT_SAME_SOURCE_DIGEST
+  selection_cutoff_observed_utc: 2026-08-06T23:57:16Z
+  commit: f149ac131c68001b261944dcc87b5be5e8b2ea40
+  path: state/coordination/receipts/chatgpt_runtime/seat-15/20260806T235656Z_X13_GCAL_PHASE3_REUSE_S08_EMPTY_SUCCESS_PAGINATION_BOUNDARY.yaml
+  git_blob_sha1: cbc760a46bdbe9e151021acc055931faedac18c2
+  source_digest_kind: GIT_BLOB_SHA1
+  source_digest: cbc760a46bdbe9e151021acc055931faedac18c2
+  authoring_seat: S15_HERITAGE_REUSE_AND_DEDUP
+  source_schema_id: hfo.gen133.s15.heritage_reuse_receipt.v1
+  source_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+  source_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+  source_task_id_match: true
+  source_result: RETURN_REUSABLE_PRIOR_ARTIFACT
+  source_consumer_ack: NOT_OBSERVED
+  source_expiry_utc: 2026-08-13T21:48:00Z
+  prior_x14_mutation_at_source_digest_before_write: false
+
+mutation:
+  mutation_class: TASK_ID_MISMATCH
+  mutation_subcase: S15_OBSERVED_CARRIER_ID_REPLACED_WITH_X14_ID_WHILE_S15_EXPECTED_ID_IS_PRESERVED
+  mutated_field: carrier_task_id_observed
+  original_value: 6a52f485409c8191aa06ea7911add3f3
+  mutated_value: 6a513e4d9c4c81919db728f85db2dd79
+  source_edited: false
+  mutation_is_overlay_only: true
+  canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_json: '{"mutated_field":"carrier_task_id_observed","mutated_value":"6a513e4d9c4c81919db728f85db2dd79","mutation_class":"TASK_ID_MISMATCH","original_value":"6a52f485409c8191aa06ea7911add3f3","source_blob_sha1":"cbc760a46bdbe9e151021acc055931faedac18c2"}'
+  canonical_byte_count: 245
+  canonical_mutation_digest_sha256: ce2bac257bf8f076031117e06ca7633e2d76349a627a33fb2ad82f250711e794
+
+expected_rejection:
+  expected_verdict: REVISE
+  reason: SOURCE_SELF_PROBE_EXPECTS_S15_TASK_ID_BUT_MUTANT_CLAIMS_X14_AS_THE_OBSERVED_CARRIER_WITHOUT_ANY_PROVIDER_RECEIPT_BINDING_THE_SOURCE_WAKE_TO_X14
+  named_gate: S04_TASK_ID_MISMATCH_EXACT_SOURCE_EXPECTED_TASK_ID_OBSERVED_TASK_ID_NATIVE_PROVIDER_INVENTORY_WAKE_BINDING_ACTOR_CARRIER_SEPARATION_SOURCE_DIGEST_EXPIRY_VERIFIER_CONSUMER_AND_CLAIM_CEILING_GATE
+
+routing:
+  structural_preflight: S04_STRUCTURAL_PREFLIGHT
+  structural_verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  distinct_falsification: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  distinct_verifier_task_id: 6a539fb148bc8191a30b6009dbf22438
+  distinct_verifier_independence_ceiling: DISTINCT_SEAT_SAME_PROVIDER_NONBINDING
+  consumer:
+    - X14_CAMPAIGN_REDUCER
+    - S15_HERITAGE_REUSE_AND_DEDUP_REDUCER
+  expires_utc: 2026-08-13T21:48:00Z
+
+campaign_36_close:
+  campaign_wake: 4_of_4
+  decision: REVISE_GATE
+  intended_mutants_before_this_write:
+    - X14_MUTANT_142_65c454f94c18
+    - X14_MUTANT_143_76f6d9739ca5
+    - X14_MUTANT_144_4c34428b4d2d
+  current_mutant: X14_MUTANT_145_ce2bac257bf8
+  direct_s04_catches_observed_before_close: 0
+  embedded_s04_exact_rejections_observed_before_close: 3
+  distinct_s09_rejections_or_retirements_observed_before_close: 3
+  current_mutant_verdict: PENDING
+  revision_required: S04_DIRECT_ROUTE_MEASUREMENT_MUST_NOT_BE_STARVED_BY_NEWER_UNRELATED_ADDRESSED_CANDIDATES; PRIORITIZE_OLDEST_UNEXPIRED_DIRECT_X14_MUTANT_OR_PROVIDE_A_DEDICATED_DIRECT_ROUTE_VERDICT_BOUND_TO_EXACT_MUTANT_DIGEST
+  rationale: THREE_CONSECUTIVE_CAMPAIGN_MUTANTS_WERE_CAUGHT_ONLY_AS_EMBEDDED_STRONGEST_FAKE_GREEN_CHECKS_WHILE_THE_DEDICATED_DIRECT_S04_ROUTE_REMAINED_UNOBSERVED; THE_GATE_LOGIC_CATCHES_THE_CLASSES_BUT_THE_ROUTING_AND_MEASUREMENT_PATH_IS_NOT_PROVEN
+
+honest_flaw: >-
+  This task-ID mismatch is intentionally conspicuous because the source self-probe names S15's expected and observed carrier task ID explicitly, while the mutant substitutes X14's real task ID only in the observed field. It does not test subtler failures such as a stale but historically valid S15 task ID, a copied provider inventory receipt bound to the wrong wake, task-title aliasing, hidden carrier replacement, or an actor/committer identity that is correct while the scheduled-task binding is wrong. The source digest was searched in GitHub before writing and no prior X14 mutation at that exact blob was found, but code-search indexing can lag. S04 and S09 are distinct seats on the same provider and cannot close independent quorum. No source, task, schedule, Calendar, Slack history, consumer, verifier, account, deployment, merge, publication, spend, deletion, or external provider state was modified.
