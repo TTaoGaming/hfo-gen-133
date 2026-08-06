@@ -1,0 +1,124 @@
+schema_id: hfo.gen133.s03.verification_route.v1
+seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMER_ACK_TRACKER
+result: REVISE
+valid_time_utc: 2026-08-06T05:07:39Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+carrier_task_id_expected: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_observed: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_match: true
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+self_probe:
+  native_task_inventory_read: true
+  task_enabled_observed: true
+  task_title_observed: HFO S03 Ratatoskr Pacemaker
+  tools_observed:
+    - automations.list
+    - GitHub.search_commits
+    - GitHub.fetch_commit
+    - GitHub.fetch_file
+    - GitHub.create_file
+    - Slack.slack_read_channel
+    - Slack.slack_send_message
+selected_correlation_id: X13_GITHUB_CONTENTS_FETCH_READONLY_007_PHASE4_DECISION_20260806T044813Z
+selected_workitem_id: X13_GITHUB_CONTENTS_FETCH_READONLY_007
+changed_input_window:
+  prior_s03_commit: 28cfc16c185b42e77fdadd8c88e8459ddb2a189a
+  prior_s04_phase3_preflight_commit: 4ac9a7ce53991c0f0a18cb17a57d764b2e2d745a
+  selected_phase4_origin_commit: 28a60be3ce3b82b3db8eec7b39e1cf8faa21aa89
+  selected_current_projection_commit: f1b3d5ceaafb417b8d13b98fb14c1ce644dad663
+  slack_channel: C0BGNGPJFHU
+  slack_scan_after_utc: 2026-08-06T04:09:00Z
+  changed_consumer_ack_observed: false
+  changed_digest_bound_stood_or_fell_observed: false
+source_bindings:
+  phase4_event:
+    path: state/coordination/experiments/cots_connector_x13/20260806T044813Z_GITHUB_CONTENTS_FETCH_PHASE4_DEFER.md
+    origin_commit: 28a60be3ce3b82b3db8eec7b39e1cf8faa21aa89
+    blob_sha: 485d1ae653e0e3a857d0aebd56ae25bf9cec1060
+    event_id: X13_GITHUB_CONTENTS_FETCH_READONLY_007_PHASE4_DECISION_20260806T044813Z
+    event_status: DEFER
+    operational_decision: DEFER_OPERATIONAL_ADOPTION_CATALOG_ONLY
+    event_expiry_utc: NOT_DECLARED_IN_EVENT
+  current_projection:
+    path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    source_version: 128
+    source_commit: f1b3d5ceaafb417b8d13b98fb14c1ce644dad663
+    blob_sha: df34111a41bd2906dd7316a458fa3be639122f0f
+    points_to_phase4_event: true
+    review_expiry_utc: 2026-08-13T04:48:13Z
+  campaign_summary:
+    calls: 3
+    bounded_success_reads: 2
+    structured_404_reads: 1
+    repeated_success_blob_sha: a77cfc55c6bf9b72b272d373092e4c0be92cb5a9
+    exact_success_bytes_retained_in_phase4_event: false
+    exact_phase3_synthetic_path_retained_in_phase4_event: false
+    effective_principal_and_scopes_exposed: false
+    raw_provider_request_response_exposed: false
+    provider_request_id_and_headers_exposed: false
+    verifier_result_declared: NOT_RUN
+    operational_consumer_declared: NOT_ASSIGNED
+    consumer_ack_declared: NOT_OBSERVED
+    operator_minutes_removed_measured: 0
+    adoption_credit: 0
+    fitness_credit: 0
+claim_binding:
+  state: MISSING
+  flaw: NO_IMMUTABLE_OPERATIONAL_WORKITEM_CLAIM_DIGEST_ACCEPTANCE_DIGEST_NONCE_IDEMPOTENCY_KEY_LEASE_OR_NAMED_OPERATIONAL_CONSUMER
+producer_return_binding:
+  state: MISSING
+  flaw: PHASE4_IS_A_CATALOG_CAMPAIGN_DECISION_AND_SUMMARY_NOT_A_WORKITEM_BOUND_PRODUCER_RETURN
+  required:
+    - exact_claim_digest
+    - exact_acceptance_digest
+    - canonical_producer_return_digest
+    - exact_success_request_bytes_and_returned_bytes_or_source_system_readback
+    - exact_failure_request_bytes_including_synthetic_path_and_canonicalization_algorithm
+    - authorized_raw_GitHub_request_response_or_distinct_source_system_readback
+    - effective_principal_repository_ref_path_and_permission_context
+    - commands_and_exit_codes_when_raw_HTTP_or_local_Git_tools_are_used
+    - rollback
+    - effect_ceiling
+    - expiry
+    - honest_flaw
+verifier_binding:
+  state: MISSING
+  consumed_verdict: NONE
+  prior_phase3_s04_verdict_transferable: false
+  reason: PRIOR_S04_REVISE_BINDS_A_DIFFERENT_PHASE3_CORRELATION_EVENT_BLOB_AND_REQUEST_DESCRIPTOR_NOT_THE_PHASE4_DECISION_BLOB_OR_A_PRODUCER_RETURN_DIGEST
+  phase4_declared_verifier_result: NOT_RUN
+  allowed_terminal_vocabulary:
+    - STOOD
+    - FELL
+  requirement: VERDICT_MUST_NAME_THE_EXACT_CANONICAL_PRODUCER_RETURN_DIGEST
+consumer_ack_binding:
+  state: MISSING
+  implicit_ack_forbidden: true
+  named_operational_consumer: NOT_ASSIGNED
+  catalog_consumer: HFO_COTS_CAPABILITY_INVENTORY_CATALOG_ONLY
+  catalog_consumer_is_ack: false
+  slack_defer_prose_is_ack: false
+  requirement: AFTER_STOOD_REQUIRE_EXPLICIT_NAMED_OPERATIONAL_CONSUMER_ACK_BOUND_TO_THE_SAME_WORKITEM_AND_PRODUCER_DIGEST
+revise_request:
+  exact_request: >-
+    Treat the phase-4 DEFER record only as a catalog decision. To seek any terminal operational result, first bind an immutable WorkItem claim and acceptance digest to exact GitHub contents-fetch behavior. Return a canonical producer-return digest that retains the exact success and failure request bytes, the success returned bytes or matched source-system readback, the exact synthetic failure path and canonicalization algorithm, the explicit repository and immutable ref context, effective principal and permission context, raw provider request/response or distinct source-system readback, commands and exit codes when raw HTTP or local Git tools are used, rollback, effect ceiling, expiry, and honest flaw. Then obtain an exact STOOD or FELL from a distinct verifier naming that producer-return digest. After STOOD, obtain an explicit ConsumerAck from a named operational consumer bound to the same WorkItem and digest. Do not transfer the phase-3 S04 preflight, treat DEFER or catalog retention as a verdict or ConsumerAck, infer authoritative absence from wrapper 404, infer full-file parity from bounded line slices, or grant adoption or fitness credit.
+route:
+  primary_verifier: S04_STRUCTURAL_PREFLIGHT
+  verifier_class: NONPRODUCER_SAME_PROVIDER_PREFLIGHT
+  binding_weight: 0
+  exact_packet_path: state/coordination/receipts/chatgpt_runtime/seat-03/20260806T050739Z_X13_GITHUB_CONTENTS_FETCH_PHASE4_DECISION_BINDINGS_REVISE.yaml
+  structural_request: RECOMPUTE_EXACT_PACKET_PHASE4_EVENT_AND_CURRENT_BYTES; CHECK_CORRELATION_SOURCE_BLOBS_WORKITEM_CLAIM_PRODUCER_RETURN_VERDICT_CONSUMER_ACK_EXPIRY_AND_NO_TRANSFER_GATES; RETURN_REVISE_OR_HOLD_AS_SAME_PROVIDER_NONBINDING_WEIGHT_0
+  independent_verifier_required: DISTINCT_AUTHORIZED_RAW_GITHUB_CONTENTS_OR_LOCAL_GIT_SOURCE_SYSTEM_WITNESS_USING_EXACT_REQUEST_BYTES_EFFECTIVE_PRINCIPAL_REPOSITORY_IMMUTABLE_REF_PATH_AND_CANONICAL_PRODUCER_RETURN_DIGEST
+terminal_receipt_written: false
+consumer_ack_inferred: false
+adoption_credit: 0
+fitness_credit: 0
+effect_ceiling: APPEND_ONLY_SANITIZED_GIT_ROUTE_AND_ONE_SLACK_POINTER_ONLY
+rollback: NO_CANDIDATE_TASK_PROVIDER_OR_SOURCE_MUTATION_OCCURRED; SUPERSEDE_THIS_ROUTE_WITH_A_NEW_IMMUTABLE_RECEIPT_IF_A_SOURCE_BINDING_IS_PROVEN_WRONG
+expiry_utc: 2026-08-13T05:07:39Z
+honest_flaw: >-
+  S03 used the same ChatGPT-carried GitHub and Slack connector surfaces and cannot expose or independently validate the hidden authenticated principal, raw HTTP envelope, exact phase-3 synthetic path omitted from the event, provider permission state, or full returned bytes. The event and CURRENT bytes prove only that X13 recorded a catalog DEFER decision with zero adoption and fitness credit. This route is a mailbox artifact, not producer repair, verifier execution, an independent STOOD or FELL verdict, operational adoption, or ConsumerAck.
+forbidden_effects_observed: NONE
+sealed: false
