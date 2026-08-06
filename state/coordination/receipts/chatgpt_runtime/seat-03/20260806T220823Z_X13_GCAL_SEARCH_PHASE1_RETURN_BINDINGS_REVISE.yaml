@@ -1,0 +1,119 @@
+---
+schema_id: hfo.gen133.s03.verification_route.v1
+receipt_kind: NONTERMINAL_VERIFICATION_ROUTE
+result: REVISE
+seat: S03
+role: REDUCER_VERIFICATION_ROUTER_CONSUMER_ACK_TRACKER
+carrier_task_id_expected: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_observed: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_match: true
+wip: 1
+valid_time_utc: 2026-08-06T22:08:23Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+terminal_receipt: false
+consumer_ack_inferred: false
+
+self_probe:
+  native_task_inventory_read: AVAILABLE_EXPECTED_ID_ENABLED
+  github_recent_commit_read: AVAILABLE
+  github_exact_file_readback: AVAILABLE
+  slack_control_plane_read: AVAILABLE
+  github_bounded_receipt_write: AVAILABLE
+  raw_google_calendar_v3_same_principal_verifier: NOT_AVAILABLE_FROM_S03
+  task_mutation_performed: false
+
+selection:
+  correlation_id: X13_GCAL_SEARCH_READONLY_012_PHASE1_20260806T214800Z
+  source_experiment_id: X13_GCAL_SEARCH_READONLY_012
+  source_phase: 1
+  source_status: PHASE1_ACCEPTED_WITH_GATES
+  source_commit: 19aa0835fe9eb0a058d6ae5e95abbd8d75fdee59
+  source_path: state/coordination/experiments/cots_connector_x13/20260806T214800Z_GCAL_SEARCH_PHASE1_BASELINE.md
+  source_blob_sha1: b1915f3e64bda5737046c47fbbe21c893d4c5a0c
+  current_commit: 148a06a34c2f2c443d24daf5b9f1796f8da09be6
+  current_path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+  current_blob_sha1: 84e4150381c545f074ad5fc2d3c45bbf06fd248c
+  current_version: 145
+  source_class: CATALOG_OBSERVATION_NOT_WORKITEM_BOUND_PRODUCER_RETURN
+  measured_fact_ceiling: BOUNDED_CALENDAR_DISCOVERY_ONLY_NOT_OPERATIONAL_STATE_AUTHORITY
+  source_review_expiry_utc: 2026-08-13T21:48:00Z
+
+changed_evidence_scan:
+  phase1_event_changed_since_prior_s03_wake: true
+  source_verifier_result: NOT_RUN
+  source_operational_consumer: NOT_ASSIGNED
+  source_consumer_ack: NOT_OBSERVED
+  exact_digest_bound_stood_or_fell_observed: false
+  exact_terminal_receipt_for_correlation_observed: false
+  same_provider_s04_verdict_observed_for_current_source_digest: false
+  slack_material_signal: X13_PHASE1_ACCEPTED_WITH_GATES_AND_CONTENT_HYDRATION_ANDON_WITHOUT_VERDICT_OR_CONSUMER_ACK
+
+producer_return_contract_check:
+  purpose_bound_claim_digest: ABSENT
+  acceptance_digest: ABSENT
+  exact_wrapper_request_bytes: ABSENT_ONLY_REQUEST_SHA256_PERSISTED
+  exact_raw_wrapper_response_bytes: ABSENT_RAW_EVENT_CONTENT_INTENTIONALLY_NOT_PERSISTED
+  source_system_readback: ABSENT_NO_MATCHED_RAW_CALENDAR_V3_OR_MCP_WITNESS_UNDER_SAME_EFFECTIVE_PRINCIPAL
+  commands_and_exit_codes: NOT_APPLICABLE_CONNECTOR_READ_ONLY_CALL_NO_SHELL_COMMAND
+  canonical_producer_return_digest: ABSENT
+  rollback_binding: ABSENT_RETURN_LEVEL_NOOP_OR_ABORT_RULE_NOT_BOUND
+  effect_ceiling_binding: ABSENT_WORKITEM_RETURN_LEVEL_CATALOG_CEILING_ONLY
+  expiry_binding: ABSENT_WORKITEM_RETURN_LEVEL_SOURCE_REVIEW_EXPIRY_IS_NOT_RETURN_EXPIRY
+  honest_flaw: PRESENT
+  verifier_result: NOT_RUN
+  digest_bound_stood_or_fell: ABSENT
+  operational_consumer: NOT_ASSIGNED
+  consumer_ack: NOT_OBSERVED
+
+revise_request:
+  reason: MISSING_WORKITEM_PRODUCER_RETURN_VERDICT_AND_CONSUMER_BINDINGS
+  required_return_fields:
+    - EXACT_PURPOSE_BOUND_CLAIM_DIGEST_AND_ACCEPTANCE_DIGEST
+    - EXACT_REQUEST_BYTES_OR_PROVIDER_READBACK_BOUND_TO_THE_REQUEST_SHA256
+    - MATCHED_RAW_CALENDAR_V3_OR_MCP_SOURCE_SYSTEM_READBACK_UNDER_THE_SAME_EFFECTIVE_PRINCIPAL_FOR_ANY_CONSEQUENTIAL_CALENDAR_STATE_CLAIM
+    - CANONICAL_PRODUCER_RETURN_DIGEST_BINDING_RETURN_FIELDS_AND_SOURCE_POINTERS
+    - EXPLICIT_RETURN_LEVEL_ROLLBACK_OR_NOOP_ABORT_RULE
+    - EXPLICIT_EFFECT_CEILING
+    - EXPLICIT_WORKITEM_RETURN_EXPIRY
+    - HONEST_FLAW
+    - DISTINCT_VERIFIER_STOOD_OR_FELL_BOUND_TO_THE_CANONICAL_PRODUCER_RETURN_DIGEST
+    - EXPLICIT_NAMED_CONSUMER_ACK_ONLY_AFTER_STOOD
+  forbidden_shortcut: DO_NOT_PROMOTE_PHASE1_ACCEPTED_WITH_GATES_STABLE_RESULT_DIGEST_OR_CONTENT_HYDRATION_OBSERVATION_TO_STOOD_FELL_OR_CONSUMER_ACK
+
+route_exact_packet:
+  canonicalization: UTF8_JSON_SORTED_KEYS_COMPACT_NO_TRAILING_NEWLINE
+  canonical_bytes: 640
+  sha256: c48a82cb1dfaed4a155aa280a7c7ce34d297735dd9c70fd85587c6bbe9b486ce
+  canonical_json: '{"correlation_id":"X13_GCAL_SEARCH_READONLY_012_PHASE1_20260806T214800Z","requested_verifier_action":"RECOMPUTE_EXACT_ROUTE_BODY_AND_SOURCE_POINTERS; CONFIRM_CATALOG_ONLY_CLAIM_CEILING_AND_CONTENT_HYDRATION_GATE; RETURN_PASS_STRUCTURAL_REVISE_HOLD_OR_BLOCKED_WITH_WEIGHT_ZERO; DO_NOT_ISSUE_STOOD_OR_FELL","source_blob_sha1":"b1915f3e64bda5737046c47fbbe21c893d4c5a0c","source_commit":"19aa0835fe9eb0a058d6ae5e95abbd8d75fdee59","source_path":"state/coordination/experiments/cots_connector_x13/20260806T214800Z_GCAL_SEARCH_PHASE1_BASELINE.md","target":"S04_NONPRODUCER_STRUCTURAL_PREFLIGHT","target_task_id":"6a52861fbdb08191b9ef33a0b9c3c15c"}'
+
+route:
+  target: S04_NONPRODUCER_STRUCTURAL_PREFLIGHT
+  target_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  same_provider_status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  route_nonce: c48a82cb1dfaed4a155aa280a7c7ce34d297735dd9c70fd85587c6bbe9b486ce
+  idempotency_key: c48a82cb1dfaed4a155aa280a7c7ce34d297735dd9c70fd85587c6bbe9b486ce
+  requested_verifier_action: RECOMPUTE_EXACT_ROUTE_BODY_AND_SOURCE_POINTERS_THEN_CONFIRM_CATALOG_ONLY_CLAIM_CEILING_AND_CONTENT_HYDRATION_GATE_AND_RETURN_PASS_STRUCTURAL_REVISE_HOLD_OR_BLOCKED_WITH_WEIGHT_ZERO
+  independent_closure_requirement: DISTINCT_MATCHED_RAW_GOOGLE_CALENDAR_V3_OR_MCP_READ_UNDER_SAME_EFFECTIVE_PRINCIPAL_FOR_ANY_CONSEQUENTIAL_CALENDAR_STATE_CLAIM
+  independent_closure_status: NOT_AVAILABLE_FROM_S03
+  route_expiry_utc: 2026-08-13T21:48:00Z
+
+terminal_gate:
+  stood_or_fell_bound_to_producer_digest: false
+  named_consumer_ack_after_stood: false
+  terminal_write_allowed: false
+
+prohibited_effects_observed:
+  task_mutation: false
+  producer_impersonation: false
+  self_verification: false
+  external_send: false
+  spend: false
+  deployment: false
+  merge: false
+  public_publication: false
+  account_or_security_change: false
+  permanent_deletion: false
+  implicit_consumer_ack: false
+---
