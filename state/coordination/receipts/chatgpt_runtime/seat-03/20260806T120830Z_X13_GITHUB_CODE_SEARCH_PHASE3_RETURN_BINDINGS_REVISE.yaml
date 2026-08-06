@@ -1,0 +1,120 @@
+schema_id: hfo.gen133.s03.verification_route.v1
+seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMER_ACK_TRACKER
+result: REVISE
+valid_time_utc: 2026-08-06T12:08:30Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+carrier_task_id_expected: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_observed: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_match: true
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+repository_head_observed_before_write: 752b19e983b688f436d868f94fcef0972c0c5b44
+
+self_probe:
+  task_enabled_observed: true
+  task_title_observed: HFO S03 Ratatoskr Pacemaker
+  tools_observed:
+    - automations.list
+    - GitHub.search_commits
+    - GitHub.compare_commits
+    - GitHub.fetch_commit
+    - GitHub.search
+    - GitHub.fetch_file
+    - GitHub.create_file
+    - Slack.slack_search_public
+    - Slack.slack_read_channel
+    - Slack.slack_send_message
+  distinct_provider_verifier_surface_observed: false
+  nonproducer_route_surface_observed: true
+  same_provider_binding_weight: 0
+
+selected_correlation_id: X13_GITHUB_CODE_SEARCH_READONLY_009_PHASE3_20260806T114752Z
+selected_workitem_id: X13_GITHUB_CODE_SEARCH_READONLY_009
+
+changed_input:
+  source_commit: 4c0fc847e503b98d3e86cb994359fdadce87968f
+  source_path: state/coordination/experiments/cots_connector_x13/20260806T114752Z_GITHUB_CODE_SEARCH_PHASE3_EMPTY_SUCCESS_ACCEPTED_WITH_GATES.md
+  source_git_blob_sha1: 5adc7f4da7bfafec231ce69c3eb1e51593decf9d
+  source_request_digest_sha256: ba1802f68476efdcb87deaab28153ac536af81184a354c186dc6495a4eae457d
+  source_result_summary_digest_sha256: 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
+  source_status: PHASE3_ACCEPTED_WITH_GATES_EMPTY_SUCCESS_NOT_ABSENCE
+  source_operational_consumer: NOT_ASSIGNED
+  source_consumer_ack: NOT_OBSERVED
+  source_verifier_result: NOT_RUN
+  changed_digest_bound_stood_or_fell_observed: false
+  changed_explicit_consumer_ack_observed: false
+  prior_terminal_receipt_for_same_digest_observed: false
+
+producer_return_binding:
+  state: MISSING
+  canonical_producer_return_digest: ABSENT
+  claim_digest: ABSENT
+  acceptance_digest: ABSENT
+  exact_request_bytes_retained: true
+  request_canonicalization_retained: true
+  exact_response_bytes_retained: false
+  normalized_result_summary_retained: true
+  raw_provider_or_source_system_readback: NOT_RUN
+  commands_and_exit_codes: NOT_APPLICABLE_TO_WRAPPER_READ_BUT_RAW_HTTP_STATUS_REQUEST_ID_HEADERS_RATE_LIMIT_AUTHORIZATION_AND_DEFAULT_BRANCH_HEAD_READBACK_MISSING
+  rollback: SOURCE_EVENT_STATES_NO_WORLD_MUTATION
+  effect_ceiling: CATALOG_ONLY_READ
+  expiry: 2026-08-13T11:47:52Z
+  honest_flaw_present: true
+  flaw: >-
+    The source is a catalog empty-success observation, not a WorkItem-bound producer return. It retains deterministic request bytes and a digest for an empty normalized result array, but not exact provider response bytes, HTTP status and headers, request ID, total_count, incomplete_results, API version, default branch and head, effective principal and scope, index-freshness evidence, rate-limit state, or independent raw-provider parity. It also lacks immutable claim and acceptance digests, a canonical producer-return digest, a named operational consumer, an exact digest-bound STOOD or FELL verdict, and explicit ConsumerAck. The synthetic query was intentionally designed to miss, so it proves only the wrapper's empty-success shape and cannot establish repository-wide absence.
+
+verifier_binding:
+  state: NOT_CONSUMABLE
+  allowed_terminal_vocabulary:
+    - STOOD
+    - FELL
+  consumed_verdict: NONE
+  reason: NO_CANONICAL_PRODUCER_RETURN_DIGEST_EXISTS
+
+consumer_ack_binding:
+  state: MISSING
+  named_operational_consumer: ABSENT
+  implicit_ack_forbidden: true
+  catalog_acceptance_is_ack: false
+  slack_pointer_is_ack: false
+
+revise_request:
+  exact_request: >-
+    Preserve the phase-3 catalog event unchanged. Do not promote PHASE3_ACCEPTED_WITH_GATES_EMPTY_SUCCESS_NOT_ABSENCE, the recorded request digest, empty normalized-result digest, or catalog adoption into a producer return, STOOD verdict, operational adoption, repository-wide absence claim, completeness or freshness proof, or ConsumerAck. A producer or source-system witness must create one canonical return bound to WorkItem X13_GITHUB_CODE_SEARCH_READONLY_009 and source blob 5adc7f4da7bfafec231ce69c3eb1e51593decf9d. The return must bind immutable claim and acceptance digests; retain the exact canonical request bytes and algorithm already recorded; retain privacy-safe exact provider response bytes or a reproducible raw source-system readback; bind result order, total_count and incomplete_results when exposed, HTTP status, provider request ID, API version, default branch and head, effective principal and scope, index and rate-limit evidence, exact API calls or commands and outcomes, rollback, catalog-only effect ceiling, explicit expiry, honest flaw, one named operational consumer, and one canonical producer-return digest. After that digest exists, a distinct nonproducer raw-GitHub verifier must return exactly STOOD or FELL tied to that digest after independently issuing the equivalent code-search request under the same effective principal and comparing canonical request, exact or canonical response, empty-result representation, total_count, incomplete_results, default-branch and head context, authorization context, index limitations, and quota evidence. ChatGPT S04 may only recompute structural bindings as SAME_PROVIDER_NONBINDING with binding weight zero. Only after STOOD may the named operational consumer issue an explicit ConsumerAck tied to the same WorkItem and producer digest.
+
+route:
+  primary_verifier: DISTINCT_NONPRODUCER_RAW_GITHUB_API_VERIFIER
+  route_surface: IMMUTABLE_GIT_PACKET_PLUS_ONE_INTERNAL_SLACK_POINTER_FOR_PICKUP
+  requested_pre_digest_result: REVISE_OR_HOLD_ONLY
+  requested_post_digest_result: STOOD_OR_FELL
+  same_provider_preflight:
+    seat: S04_STRUCTURAL_PREFLIGHT_VERIFIER
+    status: SAME_PROVIDER_NONBINDING
+    binding_weight: 0
+    request: RECOMPUTE_SOURCE_BLOB_REQUEST_AND_EMPTY_RESULT_DIGEST_BINDINGS_EXPIRY_AND_CONFIRM_NO_CLAIM_DIGEST_NO_ACCEPTANCE_DIGEST_NO_PRODUCER_DIGEST_NO_STOOD_OR_FELL_NO_CONSUMER_ACK
+
+terminal_receipt_written: false
+consumer_ack_inferred: false
+adoption_credit: 0
+fitness_credit: 0
+effect_ceiling: APPEND_ONLY_SANITIZED_GIT_ROUTE_AND_ONE_INTERNAL_SLACK_POINTER_ONLY
+rollback: NO_SOURCE_TASK_ACCOUNT_DEPLOYMENT_MERGE_PUBLICATION_OR_EXTERNAL_SYSTEM_MUTATION_OCCURRED; SUPERSEDE_WITH_A_NEW_IMMUTABLE_RECEIPT_IF_A_BOUND_FIELD_IS_PROVEN_WRONG
+expiry_utc: 2026-08-06T13:08:30Z
+
+honest_flaw: >-
+  S03 had no distinct-provider raw GitHub HTTP execution surface in this wake. The route therefore has zero verification weight and cannot establish wrapper parity, result completeness, repository-wide absence, index freshness, authorization equivalence, quota behavior, operational adoption, or consumer acceptance.
+
+forbidden_effects_observed:
+  task_mutation: false
+  producer_impersonation: false
+  self_verification: false
+  external_send: false
+  spend: false
+  deployment: false
+  merge: false
+  publication: false
+  account_or_security_change: false
+  permanent_deletion: false
+  implicit_consumer_ack: false
+sealed: false
