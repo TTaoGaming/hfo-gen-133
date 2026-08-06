@@ -1,0 +1,123 @@
+schema_id: hfo.gen133.s04.structural_preflight.v1
+seat: S04_STRUCTURAL_PREFLIGHT_VERIFIER
+result: REVISE
+valid_time_utc: '2026-08-06T04:15:00Z'
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+self_probe:
+  carrier_task_id_expected: 6a52861fbdb08191b9ef33a0b9c3c15c
+  carrier_task_id_observed: 6a52861fbdb08191b9ef33a0b9c3c15c
+  carrier_task_id_match: true
+  carrier_enabled_observed: true
+  identity: S04_STRUCTURAL_PREFLIGHT_VERIFIER
+  tools_observed:
+  - automations.list
+  - GitHub.search_commits
+  - GitHub.fetch_commit
+  - GitHub.fetch_file
+  - GitHub.search_branches
+  - GitHub.create_file
+  - deterministic_utf8_sha256_git_blob_sha1_yaml_parse
+  - Slack.channel_history_or_search
+  - Slack.send_message
+selection:
+  rule: NEWEST_OBSERVED_IMMUTABLE_S04_ADDRESSED_CANDIDATE_NOT_AUTHORED_BY_S04
+  selection_cutoff_utc: '2026-08-06T04:15:00Z'
+  eligible_candidate_count_selected: 1
+  candidate:
+    authoring_seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMER_ACK_TRACKER
+    authored_by_s04: false
+    commit: 28cfc16c185b42e77fdadd8c88e8459ddb2a189a
+    path: state/coordination/receipts/chatgpt_runtime/seat-03/20260806T040846Z_X13_GITHUB_CONTENTS_FETCH_PHASE3_RETURN_BINDINGS_REVISE.yaml
+    git_blob_sha1: 61913c574c736c60b52ebce292414625f9487e8e
+    utf8_byte_count: 6927
+    sha256: 57f1f9748735008bcd33dd2423a2392cd3b402bc3a3401db9ecb5a375c871e85
+    schema_id: hfo.gen133.s03.verification_route.v1
+    schema_parse: PASS_SINGLE_YAML_MAPPING
+    addressed_to_s04: true
+    address_evidence: route.primary_verifier=S04_STRUCTURAL_PREFLIGHT_AND_exact_packet_path_and_structural_request_present
+    branch_readback_blob_match: true
+    newest_observed_eligible_at_cutoff: true
+    freshness_limit: RECENT_COMMIT_SEARCH_IS_BEST_EFFORT_AND_NOT_A_TRANSACTIONAL_BRANCH_HEAD_LOCK
+source_recomputation:
+  phase3_event:
+    commit: 4d7c4b78bd707b42d7efcbe2b159909996c9484f
+    path: state/coordination/experiments/cots_connector_x13/20260806T034735Z_GITHUB_CONTENTS_FETCH_PHASE3_ACCEPTED_WITH_GATES.md
+    git_blob_sha1_declared: e5bc2e5faf8b73f0cb55ff74d8260d67a8eda699
+    git_blob_sha1_recomputed: e5bc2e5faf8b73f0cb55ff74d8260d67a8eda699
+    git_blob_match: true
+    utf8_byte_count: 5334
+    sha256: f18a8392ac0daf8dfe6de941e3d9d289b9618a7fd5826e6e8156d41e970cf9e6
+    schema_parse: PASS_YAML_FRONT_MATTER_AND_MARKDOWN_BODY
+    expiry_utc: '2026-08-13T03:47:35Z'
+  current_projection:
+    commit: 79bc75b6a6cfb0d55194bf4f173205c50443f205
+    path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    version: 127
+    git_blob_sha1_declared: 12bcfdbedbd2a8bd19b0419b211bd3fd8d8a6e05
+    git_blob_sha1_recomputed: 12bcfdbedbd2a8bd19b0419b211bd3fd8d8a6e05
+    git_blob_match: true
+    utf8_byte_count: 5476
+    sha256: c050d5dfd4b0c34e0552a8dcec16013dc937c75b57fdf0a83976f6ccb5f0a9e1
+    points_to_phase3_event: true
+  request_descriptor:
+    repository: TTaoGaming/hfo-gen-133
+    ref: agent/gen133-bootstrap-20260730
+    path_class: SYNTHETIC_NONEXISTENT_PATH
+    exact_synthetic_path_exposed: false
+    encoding: utf-8
+    line_range: 1_to_10
+    declared_canonical_request_sha256: c861e80439cb6959b820150ca7d73a6d661eb60e59567b79217a39fe02d95d30
+    exact_canonical_request_bytes_exposed: false
+    canonicalization_algorithm_exposed: false
+    digest_recomputation: BLOCKED_BY_MISSING_EXACT_BYTES_AND_ALGORITHM
+structural_gates:
+  source_pointers: PASS_IMMUTABLE_COMMITS_PATHS_AND_GIT_BLOBS_RESOLVE
+  schema_and_canonicalization: REVISE_REQUEST_DIGEST_CANNOT_BE_RECOMPUTED
+  freshness: PASS_UNEXPIRED_WITH_BEST_EFFORT_NEWEST_SELECTION_LIMIT
+  authority: PASS_CATALOG_ONLY_AND_APPEND_ONLY_EFFECT_CEILING_NO_OPERATIONAL_PROMOTION
+  task_binding: PASS_S04_TASK_ID_MATCHED_ENABLED_AND_X13_S03_TASK_IDENTITIES_REMAIN_SEPARATE
+  actor_carrier_separation: PASS_S03_ROUTE_X13_SOURCE_X14_MUTANT_AND_S04_PREFLIGHT_ARE_NOT_LAUNDERED_INTO_ONE_ACTOR
+  idempotency: REVISE_NO_WORKITEM_CLAIM_DIGEST_ACCEPTANCE_DIGEST_NONCE_OR_IDEMPOTENCY_KEY
+  lease_and_expiry: REVISE_ROUTE_AND_EVENT_EXPIRIES_EXIST_BUT_NO_PRODUCER_LEASE_BOUND_TO_A_WORKITEM
+  privacy: PASS_WITH_CEILING_SYNTHETIC_PATH_RETAINED_AND_NOT_EXTERNALIZED_NO_SECRET_OR_PRIVATE_BODY_OBSERVED
+  rollback: PASS_FOR_APPEND_ONLY_ROUTE_SUPERSESSION_ONLY_NO_SOURCE_OR_PROVIDER_MUTATION
+  verifier: REVISE_NO_DISTINCT_DIGEST_BOUND_STOOD_OR_FELL
+  consumer: REVISE_NO_NAMED_OPERATIONAL_CONSUMER_OR_EXPLICIT_CONSUMER_ACK
+strongest_fake_green_mutant:
+  mutant_id: X14_MUTANT_125_526a8bff29c0
+  mutation_class: STALE_SOURCE_DIGEST
+  quarantine_commit: 54e7ea00f408ab867a8f77284aec2f6a9c8696c5
+  quarantine_path: state/coordination/experiments/false_green_x14/quarantine/20260806T035229Z_X13_STALE_SOURCE_DIGEST.mutant.yaml
+  quarantine_blob_sha1: c42eb7a25b232282f449c12b7f39e1921f6854cb
+  canonicalization_algorithm: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_json: '{"mutated_field":"canonical_request_sha256","mutated_value":"b5c19d787fc54d708757d41c6d2bd85655ad7eca512835db09f451360f7ea5dc","mutation_class":"STALE_SOURCE_DIGEST","original_value":"c861e80439cb6959b820150ca7d73a6d661eb60e59567b79217a39fe02d95d30","source_blob_sha1":"e5bc2e5faf8b73f0cb55ff74d8260d67a8eda699"}'
+  canonical_byte_count_declared: 312
+  canonical_byte_count_recomputed: 312
+  canonical_mutation_sha256_declared: 526a8bff29c0eb799700bbbf726f0734f943dec2c41dcc7571845f3f6bf4c6f5
+  canonical_mutation_sha256_recomputed: 526a8bff29c0eb799700bbbf726f0734f943dec2c41dcc7571845f3f6bf4c6f5
+  canonical_digest_match: true
+  phase3_request: SYNTHETIC_NONEXISTENT_PATH_UTF8_LINES_1_TO_10
+  phase3_request_sha256: c861e80439cb6959b820150ca7d73a6d661eb60e59567b79217a39fe02d95d30
+  stale_phase2_provenance_commit: 0023f62e222474e9431b5dd1552415cfca8d9aad
+  stale_phase2_request: README_MD_UTF8_LINES_1_TO_40
+  stale_phase2_request_sha256: b5c19d787fc54d708757d41c6d2bd85655ad7eca512835db09f451360f7ea5dc
+  direct_verdict: REVISE
+  reason: A_REAL_PHASE2_DIGEST_CANNOT_AUTHENTICATE_THE_DIFFERENT_PHASE3_REQUEST_DESCRIPTOR_OR_404_RESULT
+  named_gate: S04_STALE_SOURCE_DIGEST_EXACT_SOURCE_COMMIT_PATH_BLOB_EVENT_ID_PHASE_REQUEST_DESCRIPTOR_REQUEST_SHA256_RESULT_CLASS_VALID_TIME_EXPIRY_AND_CONSUMER_GATE
+  expires_utc: '2026-08-13T03:52:29Z'
+decision:
+  candidate_result: REVISE
+  material_change: true
+  reason: ROUTE_EVENT_AND_CURRENT_BYTES_ARE_COHERENT_BUT_THE_REQUEST_DIGEST_AND_OPERATIONAL_CHAIN_ARE_NOT_REPRODUCIBLY_BOUND
+  required_revision: BIND_ONE_IMMUTABLE_WORKITEM_CLAIM_ACCEPTANCE_DIGEST_NONCE_IDEMPOTENCY_KEY_AND_PRODUCER_LEASE; EXPOSE_EXACT_SYNTHETIC_PATH_CANONICAL_REQUEST_BYTES_AND_ALGORITHM; PRODUCE_A_CANONICAL_RETURN_DIGEST_WITH_AUTHORIZED_RAW_OR_DISTINCT_SOURCE_SYSTEM_READBACK; OBTAIN_DISTINCT_DIGEST_BOUND_STOOD_OR_FELL; THEN_REQUIRE_NAMED_OPERATIONAL_CONSUMER_ACK
+  independent_verification_required: true
+effect_ceiling: ONE_APPEND_ONLY_SANITIZED_GIT_RECEIPT_AND_ONE_CONCISE_SLACK_POINTER_ONLY
+rollback: PRESERVE_ALL_INPUTS; SUPERSEDE_THIS_RECEIPT_ONLY_WITH_A_NEW_IMMUTABLE_S04_RECEIPT_IF_A_RECOMPUTATION_IS_PROVEN_WRONG
+forbidden_effects_observed: NONE
+honest_flaw: S04_USED_THE_SAME_CHATGPT_CARRIED_GITHUB_AND_SLACK_CONNECTORS; THE_EFFECTIVE_GITHUB_PRINCIPAL_RAW_HTTP_ENVELOPE_EXACT_HIDDEN_SYNTHETIC_PATH_AND_PERMISSION_CONTEXT_REMAIN_UNAVAILABLE. THIS_PREFLIGHT_HAS_BINDING_WEIGHT_ZERO_AND_CANNOT_CLOSE_INDEPENDENT_VERIFICATION.
