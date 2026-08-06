@@ -1,0 +1,50 @@
+schema: hfo.gen133.s05.operator_relief_receipt.v0_1
+seat: S05
+expected_task_id: 6a55c182078c8191b89f2dd15f5f640c
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+transaction_time_utc: 2026-08-06T22:17:00Z
+result: MATERIAL_CHANGE
+transition: SCORE_MENTOR_SEARCH_OPEN -> SCORE_MENTOR_MATCH_CONFIRMED__CALL_INVITE_ACCEPTED__MEETING_OUTCOME_PENDING
+active_item: SCORE mentor onboarding and post-call handoff
+priority:
+  p0: Confirm receiving-bank credit/availability for the already-sent Fidelity wire; provider-side send alone does not close the money-movement loop.
+  p1:
+    - Capture the SCORE mentor call outcome and one concrete next step if the call occurred; otherwise reschedule from the existing thread rather than submitting another mentor request.
+    - Decide Colden board candidacy before the 2026-08-07 submission deadline.
+source_evidence:
+  gmail:
+    mentor_thread_pointer: gmail_thread_id:19fd8ef43ca75d11
+    invite_pointer: gmail_message_id:19fd903b6af101aa
+    duplicate_request_notice_pointer: gmail_thread_id:19fd8eb68ab3e6d5
+    sanitized_claims:
+      - SCORE matched the operator with a named mentor who replied directly.
+      - The mentor proposed and sent a 30-minute Google Meet invitation for 2026-08-06 15:45-16:15 America/Denver.
+      - The operator replied in-thread accepting that proposed time and provided a concise statement of the business/distribution problem to discuss.
+      - SCORE system notices state that additional mentor requests are rate-limited to one request per client within 24 hours; further duplicate requests should not be used as the next action.
+      - No post-call follow-up email was present in the changed Gmail window at receipt time.
+  calendar:
+    window_utc: 2026-08-06T21:30:00Z/2026-08-06T22:30:00Z
+    sanitized_claim: A bounded primary-calendar readback did not surface an accepted SCORE event in the meeting window; the Gmail invitation remains the authoritative appointment pointer for this receipt.
+  contacts:
+    query: David Eaton
+    sanitized_claim: No saved Google Contacts record was returned; the Gmail thread remains the authoritative contact route.
+  github:
+    prior_s05_commit: 143b3b2cb85d911f16b4bf8139d9c00b6b6eb7ba
+    changed_window_head_before_write: 9c1cf5836ac1291015b188c934a8b125f3510644
+  slack:
+    channel_id: C0BGNGPJFHU
+    cursor_after: '1786051117.000000'
+    sanitized_claim: Changed Slack evidence after the prior S05 pointer contained system/experiment activity but no newer SCORE mentor outcome.
+privacy:
+  level: SANITIZED_POINTERS_ONLY
+  excluded_from_git_slack:
+    - email bodies
+    - meeting URL and dial-in details
+    - personal/family scheduling details
+    - financial account and wire details
+operator_minutes_removed: 8
+next_consumer: Var income/distribution reconciliation; operator only for post-call outcome capture or reschedule if the meeting did not occur
+completion_gate: One source-backed post-call outcome or rescheduled appointment is recorded; no duplicate SCORE mentor request is submitted merely to create motion.
+honest_flaw: Source readback proves mentor match, invitation, and the operator's acceptance reply, but does not prove the video call actually occurred or what advice was given.
+forbidden_effects_observed: none
