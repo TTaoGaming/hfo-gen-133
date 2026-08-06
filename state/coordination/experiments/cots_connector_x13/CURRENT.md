@@ -1,13 +1,13 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
 experiment_id: X13_GMAIL_SEARCH_READONLY_008
-version: 129
-prior_version: 128
+version: 130
+prior_version: 129
 candidate: Gmail_search_email_ids_readonly_surface
-campaign_wake: 1_of_4
+campaign_wake: 2_of_4
 campaign_status: OPEN
 phase_1_status: PHASE1_ACCEPTED_WITH_GATES
-phase_2_status: PENDING
+phase_2_status: PHASE2_ACCEPTED_WITH_GATES
 phase_3_status: PENDING
 phase_4_status: PENDING
 provisional_decision: ADOPT_WITH_GATES_CATALOG_ONLY
@@ -15,44 +15,52 @@ operational_decision: NOT_DECIDED
 carrier_task_id: 6a55c1733708819185088bf334e33ea5
 carrier_task_id_match: true
 wip: 1
-last_event_commit: db4e26cee37d52189af1d019f64e225a2c0f2f4b
-last_event_path: state/coordination/experiments/cots_connector_x13/20260806T054917Z_GMAIL_SEARCH_PHASE1_BASELINE.md
-last_event_blob_sha: 8d4f4b9f81698a138e4a24724ffb65d711fc4699
+last_event_commit: 102886dfcfd08b63251d8c85823a95645d5d3d08
+last_event_path: state/coordination/experiments/cots_connector_x13/20260806T065056Z_GMAIL_SEARCH_PHASE2_ABSOLUTE_REPEATABILITY.md
+last_event_blob_sha: c43cf2c1d6f97002c2fac7aa4b6b038ff87d84ad
 last_event_readback: true
-prior_current_blob_sha: df34111a41bd2906dd7316a458fa3be639122f0f
-campaign_calls: 1_READONLY_ID_ONLY_SEARCH_SUCCESS
-measured_fact: BOUNDED_ID_ONLY_SEARCH_RETURNED_A_RESULT_AND_INDICATED_MORE_RESULTS_WITHOUT_CONTENT_HYDRATION
-andon: RESULT_LIMIT_IS_A_CAP_NOT_COMPLETENESS_AND_RELATIVE_TIME_SEARCH_IS_NOT_STRICTLY_REPLAYABLE
+prior_current_blob_sha: 31231fc560ae02776524f08ddec7f880ca9c0a34
+request_descriptor_sha256: 8dbd43e7b5402843e967281df095440bc00553882fd14244bd4bf67121f61cd6
+campaign_calls: 3_READONLY_ID_ONLY_SEARCH_CALLS_TOTAL
+phase_2_calls: 2_IDENTICAL_FIXED_WINDOW_SEARCHES
+message_id_digest_match: true
+continuation_token_digest_match: true
+measured_fact: TWO_IDENTICAL_FIXED_WINDOW_ID_ONLY_SEARCHES_RETURNED_THE_SAME_SINGLE_MESSAGE_ID_DIGEST_AND_CONTINUATION_TOKEN_DIGEST
+andon: EPOCH_SECOND_DATE_OPERATORS_WORKED_IN_CONNECTOR_BUT_ARE_NOT_DOCUMENTED_IN_OFFICIAL_GMAIL_SEARCH_HELP_SO_PORTABILITY_IS_UNPROVEN
 custom_code_avoided_estimate: 25_to_70_LOC_UNVALIDATED
 operator_minutes_removed_measured: 0
 credentials: CONNECTOR_MANAGED_EFFECTIVE_AUTH_CONTEXT_UNKNOWN
-durability: EVENT_IS_GIT_RECORDED_SEARCH_RESULT_IS_DYNAMIC
-observability: COUNT_PAGINATION_PRESENCE_ERROR_AND_LATENCY_EXPOSED_PROVIDER_HEADERS_IDENTITY_SCOPE_PROJECT_AND_DIRECT_QUOTA_NOT_EXPOSED
-portability: LOW_TO_MEDIUM_PROVIDER_SPECIFIC_SEARCH_AND_IDENTIFIERS
-failure_behavior: SUCCESS_PATH_ONLY
+durability: EVENT_IS_GIT_RECORDED_MAILBOX_RESULT_IS_DYNAMIC_BUT_FIXED_QUERY_DESCRIPTOR_IS_REPLAYABLE
+observability: RESULT_COUNT_CONTINUATION_PRESENCE_ERROR_STATE_CONNECTOR_ID_ACTION_AND_LATENCY_EXPOSED_PROVIDER_HEADERS_REQUEST_ID_IDENTITY_SCOPE_PROJECT_RESULT_SIZE_ESTIMATE_AND_DIRECT_QUOTA_NOT_EXPOSED
+portability: LOW_PROVIDER_SPECIFIC_QUERY_IDENTIFIERS_AND_UNDOCUMENTED_EPOCH_OPERATOR_FORM
+failure_behavior: SUCCESS_AND_NEAR_IMMEDIATE_REPEATABILITY_PATHS_ONLY
 paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
+nominal_quota_contract: 5_UNITS_PER_MESSAGES_LIST_REQUEST
+nominal_quota_if_one_to_one_phase_2: 10_UNITS
 actual_quota_consumed: UNKNOWN
 catalog_consumer: HFO_COTS_CAPABILITY_INVENTORY_CATALOG_ONLY
 operational_consumer: NOT_ASSIGNED
 consumer_ack: NOT_OBSERVED
-verifier: DISTINCT_RAW_PROVIDER_LIST_CALL_WITH_EQUIVALENT_ABSOLUTE_TIME_BOUNDS
+verifier: DISTINCT_RAW_GMAIL_USERS_MESSAGES_LIST_CALL_UNDER_SAME_PRINCIPAL_WITH_IDENTICAL_FIXED_QUERY
 verifier_result: NOT_RUN
 adoption_credit: 0
 fitness_credit: 0
-mandatory_gate: TREAT_LIMIT_AS_CAP; HANDLE_PAGINATION; MINIMIZE_IDENTIFIER_RETENTION; NO_CONTENT_HYDRATION_WITHOUT_BOUND_NEED; DO_NOT_INFER_AUTH_OR_QUOTA; USE_ABSOLUTE_TIME_BOUNDS_FOR_REPLAY
-strongest_falsifier: MATCHED_RAW_PROVIDER_CALL_RETURNS_MATERIALLY_DIFFERENT_RESULT_PAGINATION_ERROR_OR_QUOTA_BEHAVIOR
-honest_flaw: ONE_DYNAMIC_SUCCESS_CALL_WITHOUT_FAILURE_RAW_PARITY_OPERATOR_SAVINGS_OR_CONSUMER_VALUE_TESTS
-next_phase: PHASE2_PENDING
-next_probe: ABSOLUTE_TIME_BOUNDED_ID_ONLY_REPEATABILITY_PROBE
-review_expiry_utc: 2026-08-13T05:49:17Z
-valid_time_utc: 2026-08-06T05:49:17Z
-recorded_time_utc: 2026-08-06T05:49:17Z
+mandatory_gate: TREAT_LIMIT_AS_CAP; HANDLE_PAGINATION; MINIMIZE_IDENTIFIER_RETENTION; NO_CONTENT_HYDRATION_WITHOUT_BOUND_NEED; DO_NOT_INFER_AUTH_OR_QUOTA; DO_NOT_RELY_ON_UNDOCUMENTED_EPOCH_SYNTAX_OPERATIONALLY
+strongest_falsifier: RAW_PROVIDER_CALL_REJECTS_EPOCH_QUERY_OR_RETURNS_DIFFERENT_MESSAGE_OR_PAGINATION_STATE_UNDER_THE_SAME_PRINCIPAL
+honest_flaw: TWO_NEAR_IMMEDIATE_SUCCESS_CALLS_DO_NOT_TEST_LATER_REPLAY_MAILBOX_MUTATION_PERMISSION_FAILURE_EMPTY_RESULT_RATE_LIMIT_TRANSIENT_FAILURE_OR_OPERATIONAL_VALUE
+next_phase: PHASE3_PENDING
+next_probe: SYNTHETIC_NONMATCHING_FIXED_WINDOW_ID_ONLY_QUERY_OR_INVALID_QUERY_FAILURE_PROBE
+review_expiry_utc: 2026-08-13T06:50:56Z
+valid_time_utc: 2026-08-06T06:50:56Z
+recorded_time_utc: 2026-08-06T06:50:56Z
 ---
 
-# X13 CURRENT v129
+# X13 CURRENT v130
 
-The Gmail ID-only search campaign is open at wake 1 of 4 with provisional `ADOPT_WITH_GATES_CATALOG_ONLY`.
+The Gmail ID-only search campaign is open at wake 2 of 4 with provisional `ADOPT_WITH_GATES_CATALOG_ONLY`.
 
-A bounded read-only search returned a result and indicated additional results without hydrating message content. The result limit is only a cap, and a relative time query is not strictly replayable.
+Two identical fixed-window ID-only searches returned the same one-way message-ID digest and continuation-token digest without hydrating content. This establishes narrow near-immediate wrapper repeatability.
 
-Authorization context, provider headers, direct quota use, operator savings, and consumer value remain unknown. Adoption and fitness credit remain zero. Phase 2 is pending.
+The epoch-second `after:` and `before:` form worked through the connector, but official Gmail search help documents date forms rather than epoch seconds. Portability and long-term contract stability remain unproven.
+
+Authorization context, provider headers, direct quota use, failure behavior, operator savings, and consumer value remain unknown. Adoption and fitness credit remain zero. Phase 3 is pending.
