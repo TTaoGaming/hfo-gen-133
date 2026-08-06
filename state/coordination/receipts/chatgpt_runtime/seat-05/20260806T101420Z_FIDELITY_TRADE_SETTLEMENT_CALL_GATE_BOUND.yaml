@@ -1,0 +1,64 @@
+schema: hfo.gen133.operator_relief_receipt.v0_1
+seat: S05
+callsign: Var
+carrier: ChatGPT Cloud Scheduled Task
+expected_task_id: 6a55c182078c8191b89f2dd15f5f640c
+observed_task_id: 6a55c182078c8191b89f2dd15f5f640c
+wip_limit: 1
+repository: TTaoGaming/hfo-gen-133
+branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-06T10:14:20Z
+transaction_time_utc: 2026-08-06T10:14:20Z
+result: APPOINTMENT_PACKET_HARDENED
+material_change: true
+
+active_item:
+  id: FIDELITY_TOD_TRADE_TO_WIRE_READINESS
+  status: PROVIDER_TRADE_NOTICE_RECEIVED_SETTLEMENT_AND_SETTLED_CASH_UNVERIFIED
+  source_systems:
+    - system: Gmail
+      private_pointer: 'subject: Your trade confirmation is available'
+      received_at_utc: 2026-08-06T09:54:48Z
+      sanitized_fact: Fidelity issued a new confirmation covering four fund sales in the relevant family TOD account.
+      excluded_private_data:
+        - account identifier
+        - security names
+        - transaction prices
+        - links and email body
+    - system: Google Calendar
+      private_pointer: 'event: [P1] Call Fidelity — review and possibly wire to mom''s Cathay account'
+      event_id: climaopoc9gj4b9jckr32b9kchh6cbb16pgj2bb4cosj8db669i34pj670
+      starts_at: 2026-08-06T10:30:00-06:00
+
+bounded_transition:
+  type: BIND_CHANGED_PROVIDER_EVIDENCE_TO_EXISTING_APPOINTMENT
+  action: Updated the private Fidelity call packet to require readback of trade date, settlement date, net proceeds, remaining pending activity, and exact settled cash before any transfer decision.
+  safety_gate: The trade notice is not evidence that proceeds are settled or available to wire; no wire is authorized by the event.
+  readback: Calendar event re-read after update; time, private visibility, and no-attendee state remained intact.
+
+priority:
+  active: FIDELITY_TOD_TRADE_TO_WIRE_READINESS
+  p0: PFA_SIGNED_DOCUMENT_OWNERSHIP_SCOPE_CONFLICT_UNRESOLVED_DRAFT_UNSENT
+  p1:
+    - FIDELITY_SETTLEMENT_AND_SETTLED_CASH_PROVIDER_READBACK_AT_2026-08-06_CALL
+    - MISSOURI_AC_PRIOR_PAYMENT_AND_SERVICE_STATUS_READBACK
+
+operator_minutes_removed: 7
+next_consumer:
+  primary: Operator at the 2026-08-06 10:30 America/Denver Fidelity call
+  secondary: Var finance reconciliation
+
+privacy:
+  ceiling: SANITIZED_FACTS_AND_PRIVATE_SOURCE_POINTERS_ONLY
+  private_bodies_externalized: false
+
+forbidden_effects_observed:
+  email_sent: false
+  application_submitted: false
+  payment_or_wire_initiated: false
+  account_changed: false
+  task_mutated: false
+  deployment_or_merge: false
+  destructive_action: false
+
+honest_flaw: The Fidelity notification proves only that a trade confirmation is available for four sales. It does not prove who authorized the trades, the trade date, settlement completion, net proceeds, settled cash, tax treatment, or readiness for a wire. The calendar update does not prove the operator reviewed or completed the call.
