@@ -1,8 +1,8 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_SLACK_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1
-current_version: 132
-accepted_wakes: 0
+current_version: 133
+accepted_wakes: 1
 target_wakes_before_decision: 4
 controlled_factor: slack_read_surface
 campaign_status: ACTIVE
@@ -16,54 +16,52 @@ prior_campaign:
     commit: c1f6bc6613763451efd7a2ad7c7d5bc8cee2cf6f
     path: state/coordination/experiments/carrier_surface_x11/events/20260806T083916Z_GITHUB_CONTENTS_EVENT_POINTER_READBACK_V2_WAKE_04_DECISION_KEEP.yaml
     blob: 4484973757a7fb428bfe350e44f709077f4ade6d
-baseline_result: four_required_GitHub_contents_event_creates_expected_SHA_CURRENT_updates_and_exact_same_branch_path_payload_version_and_blob_readbacks_succeeded_without_extra_repository_mutation
-hypothesis: an_authenticated_bounded_Slack_search_for_one_fixed_impossible_marker_will_repeatably_return_a_sanitized_zero_result_without_fetching_or_persisting_message_content_or_identifiers
+baseline_result: campaign_initialized_with_no_prior_Slack_read_surface_claim
+hypothesis: an_authenticated_bounded_public_Slack_search_for_one_fixed_impossible_marker_will_repeatably_return_a_sanitized_zero_result_without_fetching_or_persisting_message_content_or_identifiers
 measured_result:
-  provider_call_success: []
-  sanitized_result_count: []
-  continuation_present: []
-  latencies_ms: []
-  permission_class: UNMEASURED
-  error_class: UNMEASURED
+  provider_call_success: [true]
+  sanitized_result_count: [0]
+  continuation_present: [false]
+  latencies_ms: [null]
+  latency_note: connector_latency_not_exposed
+  permission_class: AUTHENTICATED_SLACK_PUBLIC_BOUNDED_SEARCH_READ_AVAILABLE
+  error_class: NONE
   operator_relay_minutes: 0
-  changed_capability: false
+  changed_capability: true
   campaign_decision: false
   andon: false
-supported_claim: no_Slack_read_surface_claim_yet_campaign_initialized_only
-claim_ceiling: no_claim_beyond_campaign_initialization_until_the_bounded_probe_executes
-strongest_falsifier: Slack_search_surface_is_missing_requires_interactive_authentication_returns_nonzero_for_the_fixed_impossible_marker_or_exposes_or_persists_unrelated_message_content_or_identifiers
+supported_claim: authenticated_bounded_public_Slack_message_search_execution_and_sanitized_zero_result_visibility
+claim_ceiling: public_channel_search_execution_and_sanitized_count_visibility_only_not_workspace_completeness_private_or_DM_visibility_search_recall_indexing_freshness_message_content_access_authenticity_or_independent_verification
+strongest_falsifier: Slack_public_search_surface_becomes_missing_or_unauthenticated_the_same_fixed_marker_returns_nonzero_or_continuation_or_the_probe_fetches_or_persists_message_content_context_channels_timestamps_or_identifiers
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 consumer:
   - Reginleif
   - Ratatoskr
-honest_flaw: an_impossible_marker_zero_result_can_validate_bounded_connector_execution_but_not_workspace_completeness_search_recall_indexing_freshness_message_content_access_or_independent_verification
+honest_flaw: an_impossible_marker_zero_result_can_validate_bounded_public_search_execution_but_cannot_test_private_surfaces_workspace_completeness_recall_freshness_content_access_or_independent_verification
 last_event:
-  commit: c1f6bc6613763451efd7a2ad7c7d5bc8cee2cf6f
-  path: state/coordination/experiments/carrier_surface_x11/events/20260806T083916Z_GITHUB_CONTENTS_EVENT_POINTER_READBACK_V2_WAKE_04_DECISION_KEEP.yaml
-  blob: 4484973757a7fb428bfe350e44f709077f4ade6d
-completed_campaign_measurement:
-  experiment_id: X11_GITHUB_CONTENTS_EVENT_POINTER_READBACK_V2
-  event_create_success: [true, true, true, true]
-  event_exact_readback_success: [true, true, true, true]
-  current_expected_sha_update_success: [true, true, true, true]
-  current_exact_readback_success: [true, true, true, true]
-  version_match: [true, true, true, true]
-  payload_match: [true, true, true, true]
-  event_create_external_call_latency_ms: [975, 882, 1103, 1036]
-  permission_class: AUTHENTICATED_GITHUB_CONTENTS_CREATE_UPDATE_AND_EXACT_READBACK_AVAILABLE
+  commit: 6465692c4b0c57f2619575dfea427c06fe770bc8
+  path: state/coordination/experiments/carrier_surface_x11/events/20260806T094146Z_SLACK_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1_WAKE_01.yaml
+  blob: 7996e0006cb5a613ad13d45340a36cc513ec3350
+wake_measurement:
+  campaign_wake: 1
+  public_search_success: true
+  exact_fixed_marker: HFO_X11_SLACK_FIXED_IMPOSSIBLE_MARKER_8E2A4C7D1B906F35
+  sanitized_result_count: 0
+  continuation_present: false
+  include_context: false
+  maximum_results: 1
+  message_content_or_identifiers_persisted: false
+  permission_class: AUTHENTICATED_SLACK_PUBLIC_BOUNDED_SEARCH_READ_AVAILABLE
   error_class: NONE
+  latency_ms: null
   operator_relay_minutes: 0
-  disposition: KEEP
-  supported_claim: repeatable_authenticated_GitHub_contents_create_expected_SHA_update_and_exact_same_branch_path_readback
-  claim_ceiling: exact_authenticated_github_contents_create_update_and_readback_receipts_only_not_repository_global_consistency_branch_protection_merge_safety_or_independent_verification
-  honest_flaw: immutable_events_predeclare_success_before_post_call_latency_is_known_so_CURRENT_is_the_complete_measurement_record_and_same_provider_readback_is_not_independent
 next_factor: slack_read_surface
 next_probe:
   experiment_id: X11_SLACK_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1
-  campaign_wake: 1
-  mode: bounded_metadata_search
-  exact_action: run_one_bounded_read_only_Slack_search_for_the_fixed_impossible_marker_HFO_X11_SLACK_FIXED_IMPOSSIBLE_MARKER_8E2A4C7D1B906F35_with_maximum_one_result_then_persist_only_sanitized_count_continuation_permission_error_and_exposed_latency
-  expected_current_version: 132
+  campaign_wake: 2
+  mode: bounded_public_message_search
+  exact_action: repeat_the_identical_fixed_impossible_marker_public_Slack_search_with_maximum_one_result_include_context_false_and_persist_only_sanitized_measurements
+  expected_current_version: 133
   persist_only:
     - provider_call_success
     - sanitized_result_count
@@ -77,11 +75,9 @@ next_probe:
   post_only_changed_capability_campaign_decision_or_andon: true
   sensitive_readback_externalization_allowed: false
   same_provider_independence_claim_allowed: false
-slack_action: POST_CAMPAIGN_DECISION
-updated_valid_time_utc: 2026-08-06T08:39:16Z
+slack_action: POST_CHANGED_CAPABILITY
+updated_valid_time_utc: 2026-08-06T09:41:46Z
 sealed: false
 ---
 
-GitHub contents read/write surface V2 completed four accepted wakes with exact event and pointer
-readback matches. Disposition is KEEP within the stated claim ceiling. The next isolated factor is a
-bounded read-only Slack impossible-marker search; no Slack message content or identifiers may persist.
+Slack public read surface V1 accepted wake 1 of 4. The bounded exact-marker search returned zero results with no continuation and no persisted message content or identifiers. The next wake repeats the identical probe; unchanged results must remain silent.
