@@ -1,0 +1,53 @@
+schema_version: hfo.gen133.operator_relief_receipt.v1
+receipt_id: S05_AIR_WATER_PAYMENT_STATUS_DRAFT_CALL_PACKET_BOUND_20260806T141914Z
+created_utc: '2026-08-06T14:19:14Z'
+seat: S05
+cell: operator_relief
+wip_limit: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+self_probe:
+  expected_task_id_from_dispatch: 6a55c182078c8191b89f2dd15f5f640c
+  independent_runtime_task_id_probe: unavailable
+  connectors_read:
+    - gmail
+    - google_calendar
+    - google_contacts
+    - github
+    - slack
+active_item:
+  name: Air and Water mailed-payment receipt reconciliation
+  state_before: existing_unsent_threaded_draft_and_calendar_block_not_directly_bound
+  state_after: private_calendar_packet_binds_exact_unsent_draft_contact_route_and_done_gate
+bounded_transition:
+  type: appointment_hardened
+  material_change: true
+  actions:
+    - read_back_existing_threaded_gmail_draft
+    - bound_exact_private_draft_pointer_to_existing_calendar_event
+    - bound_authoritative_vendor_call_route_to_existing_calendar_event
+    - preserved_event_time_privacy_and_existing_reminders
+  source_pointers:
+    gmail_message_id: 19fd6655d7b32872
+    google_calendar_event_id: 3kkauj2toamdo2rqcmv5bs9t9o
+  sanitized_facts:
+    - first_half_payment_previously_confirmed_received_and_applied
+    - second_mailed_payment_still_requires_authoritative_receipt_and_credit_readback
+    - no_duplicate_payment_until_original_status_is_reconciled
+  operator_decision_gate: SEND_OR_EDIT_OR_DISCARD_EXISTING_DRAFT_OR_CALL_PROVIDER
+priority_frame:
+  p0: PFA signed-document ownership and scope clarification remains unsent
+  p1:
+    - Air and Water second-payment receipt and zero-balance confirmation
+    - Fidelity settled-cash and wire-readiness source readback
+operator_minutes_removed_estimate: 4
+next_consumer: Operator at the bound calendar block, then Var property and finance reconciliation
+boundaries:
+  email_sent: false
+  payment_or_spend: false
+  duplicate_payment_authorized: false
+  account_change: false
+  task_mutation: false
+  deployment_merge_or_publication: false
+  sensitive_body_externalized: false
+readback_required: true
