@@ -1,0 +1,36 @@
+schema_version: hfo.gen133.receipt.v1
+task_id: 6a55c182078c8191b89f2dd15f5f640c
+seat: S05
+recorded_at_utc: 2026-08-06T17:17:50Z
+transition: COLDEN_B18_AUGUST_PAYMENT_RECEIVED_LATE_FEE_PENDING
+material_change: true
+active_item: Colden unit B18 August association-payment reconciliation
+status:
+  provider_receipt_confirmed: true
+  provider_receipt_date: 2026-08-06
+  payment_amount_usd: 936.89
+  payment_method: money_order
+  matches_statement_balance: true
+  late_fee_status: unverified
+  stated_late_fee_risk_usd: 50.00
+bounded_transition:
+  from: statement balance due; provider receipt unverified
+  to: August principal payment provider-received; only possible late-fee posting remains open
+evidence_pointers:
+  gmail_payment_message_id: 19fd7ff477ae45d4
+  gmail_statement_message_id: 19f8bac758c5e6cd
+privacy: source bodies and private identifiers remain in Gmail; this receipt contains sanitized facts and source pointers only
+wip:
+  active: Colden unit B18 August association-payment reconciliation
+  p0: Obtain authoritative PFA policy-to-document mapping before further processing
+  p1:
+    - Confirm whether a late fee posts after the 2026-08-06 provider receipt
+    - Complete Air and Water second-payment receipt readback
+operator_minutes_removed: 6
+next_consumer: Var property and finance reconciliation
+guardrails:
+  email_sent: false
+  payment_initiated: false
+  calendar_changed: false
+  task_mutated: false
+  sensitive_data_externalized: false
