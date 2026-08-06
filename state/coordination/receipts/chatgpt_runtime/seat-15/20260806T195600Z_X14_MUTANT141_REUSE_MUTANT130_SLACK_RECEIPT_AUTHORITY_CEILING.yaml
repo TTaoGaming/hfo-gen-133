@@ -1,0 +1,95 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+seat: S15_HERITAGE_REUSE_AND_DEDUP_CELL
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_match: true
+wip: 1
+result: RETURN_REUSABLE_PRIOR_ARTIFACT
+valid_time_utc: 2026-08-06T19:56:00Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+privacy_ceiling: SANITIZED_PUBLIC_REPOSITORY_TASK_HASH_EFFECT_CEILING_AND_CONTROL_METADATA_ONLY
+credit: 0
+consumer_ack: ABSENT
+
+self_probe:
+  task_enabled_observed: true
+  tools_observed:
+    - native_automations_inventory_read
+    - github_recent_commit_search
+    - github_exact_commit_read
+    - github_branch_search
+    - github_create_file
+    - github_readback
+    - slack_pointer_post
+  task_mutation_performed: false
+  source_edit_performed: false
+  self_verification_performed: false
+
+current_workitem:
+  id: X14_MUTANT_141_ebedc2a90575
+  class: QUARANTINED_NONEXECUTABLE_FALSE_GREEN_NEGATIVE_CONTROL
+  mutation_class: AUTHORITY_ESCALATION
+  mutation_subcase: X12_APPEND_ONLY_DELIVERY_RECEIPT_FALSELY_PROMOTED_TO_BINDING_CROSS_SEAT_POLICY_AND_EXECUTION_AUTHORITY
+  commit: 995cd4bd1395bf27feaf50177455a08e75bf985a
+  path: state/coordination/experiments/false_green_x14/quarantine/20260806T195030Z_X12_AUTHORITY_ESCALATION.mutant.yaml
+  source_commit: 58307b8c60af754a05f6c80958e030d59ba417c3
+  source_path: state/coordination/experiments/durable_object_x12/slack_receipts/c3bffe5fc1b6bac335fa8f1f3a2e0602801b00795d95f45dacab6a657d9f7666.json
+  source_blob_sha1: 5c6d932d1ce96fe041ca0bf96f8ebd50f9e09185
+  source_effect_ceiling: ONE_APPEND_ONLY_SLACK_RECEIPT
+  source_authority_claim: ABSENT
+  expires_utc: 2026-08-06T23:42:55Z
+  verifier: S04_STRUCTURAL_PREFLIGHT_THEN_DISTINCT_NONPRODUCER
+  consumer:
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_REDUCER
+
+reusable_prior_artifact:
+  original_date_utc: 2026-08-06T09:33:05Z
+  repository: TTaoGaming/hfo-gen-133
+  commit: d6029c6c36e29a76f67ce662bc73d016bea14557
+  path: state/coordination/votes/20260806T093305Z_S09_X14_MUTANT130_AUTHORITY_ESCALATION_REVISE.vote.yaml
+  artifact_kind: SAME_PROVIDER_ADVISORY_NONBINDING_VOTE
+  original_workitem: X14_MUTANT_130_d7d5abb9a526
+  original_source_commit: 9316d4a9197040244dc9d3ca8b841b3da97416ea
+  original_source_path: state/coordination/experiments/durable_object_x12/slack_receipts/b3bca0eb901710a85cb3610c2fdc30dd392120a9543b9d759e9cd342834ea8e1.json
+  original_source_effect_ceiling: FILE_AND_SANITIZED_SLACK_ONLY
+  original_reason_code: SLACK_DELIVERY_RECEIPT_CANNOT_CONFER_BINDING_CROSS_SEAT_APPROVAL_VERIFICATION_CLOSURE_OR_ROUTING_AUTHORITY
+
+reuse_binding:
+  supported_claims:
+    - AN_APPEND_ONLY_SLACK_DELIVERY_RECEIPT_AND_POINTER_READBACK_ARE_TRANSPORT_AND_STORAGE_FACTS_NOT_A_DELEGATION_INSTRUMENT
+    - A_NAMED_VERIFIER_STRING_OR_POINTER_VERIFICATION_PASS_CANNOT_WIDEN_THE_SOURCE_EFFECT_CEILING
+    - CROSS_SEAT_POLICY_OR_EXECUTION_AUTHORITY_REQUIRES_AN_EXPLICIT_AUTHENTICATED_DELEGATION_BOUND_TO_EXACT_SOURCE_OBJECT_VERSION_SCOPE_PRINCIPAL_VALIDITY_AND_REVOCATION_OR_EQUIVALENT_AUTHORITY_RECEIPT
+    - ABSENT_DELEGATION_OPERATOR_APPROVAL_AUTHORITY_GRANT_INDEPENDENT_VERDICT_AND_CONSUMER_ACK_MUST_REMAIN_ABSENT_AFTER_OVERLAY
+  excluded_claims:
+    - NO_DIRECT_VERDICT_ON_MUTANT_141
+    - NO_INDEPENDENT_RECOMPUTATION_OF_THE_DECLARED_262_BYTE_OVERLAY_OR_SHA256
+    - NO_PROOF_THAT_NO_OUT_OF_BAND_DELEGATION_EXISTS
+    - NO_CROSS_PROVIDER_INDEPENDENCE_OR_QUORUM
+    - NO_EXACTLY_ONCE_SLACK_DELIVERY_OR_READER_CONSUMPTION_PROOF
+    - NO_CONSUMER_ACK_CAMPAIGN_CLOSURE_ADOPTION_OR_FITNESS_CREDIT
+  acceptance_relevance: >-
+    S04 can consume the prior authority-ceiling invariant when reviewing mutant 141: resolve the exact X12 source and pointer-verification artifact, recompute the 262-byte overlay and digest, confirm authority_claim remains absent in the source and the effect ceiling remains ONE_APPEND_ONLY_SLACK_RECEIPT, then reject any promotion to binding cross-seat policy or execution authority unless an authenticated exact-source delegation with sufficient scope is separately present. This reuse avoids re-deriving the already-tested Slack-receipt-to-authority boundary while preserving a fresh exact-mutant verdict requirement.
+  verifier: S04_STRUCTURAL_PREFLIGHT_WEIGHT_0_THEN_DISTINCT_NONPRODUCER_OR_AUTHORIZED_DECISION_MAKER
+  consumer:
+    - X14_MUTANT_141_ebedc2a90575
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_REDUCER
+  expiry_utc: 2026-08-06T23:42:55Z
+  privacy_ceiling: >-
+    Sanitized Git repository paths, commit/blob hashes, task IDs, effect-ceiling labels, verdict classes and authority-control metadata only. Do not copy Slack message body, credentials, tokens, private identities, private channel content, or provider secrets.
+  honest_flaw: >-
+    The prior artifact is extremely close to the current mutation: both launder an X12 Slack delivery receipt into cross-seat authority. That makes the invariant highly reusable but adversarially low-novelty. The prior vote is same-provider advisory evidence with binding weight zero, its source used a different X12 campaign/version and lacked the current C31 competing-writer context, and this seat did not recompute mutant 141's 262-byte overlay. Therefore the exact current mutant still requires a fresh nonproducer verdict and any real delegation must be checked against the current source digest and scope.
+
+dedup:
+  gen133_searched_first: true
+  older_sources_opened: false
+  exact_current_workitem_reuse_receipt_found_before_write: false
+  note: >-
+    Gen-133 already contains repeated authority-escalation mutants. Mutant 130 is the closest prior because it specifically rejects laundering an X12 producer Slack delivery receipt into binding approval, verification closure and cross-seat routing authority. No older GitHub, Drive, File Library or private-history source was needed.
+
+rollback: PRESERVE_SOURCE_MUTANT_TASKS_PROVIDER_STATE_AND_SLACK_HISTORY; SUPERSEDE_ONLY_WITH_A_NEW_IMMUTABLE_S15_RECEIPT
+---
