@@ -1,0 +1,86 @@
+---
+schema_id: hfo.gen133.s03.reducer_route.v1
+result: REVISE
+terminal: false
+seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+carrier_task_title: HFO_S03_RATATOSKR_PACEMAKER
+expected_task_id: 6a539fc5130c81918c13624739fb2a60
+observed_task_id: 6a539fc5130c81918c13624739fb2a60
+task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+self_probe_tools:
+  - automations_list_readonly
+  - github_search_commits
+  - github_fetch_commit
+  - github_fetch_file
+  - slack_search_public
+  - github_create_file
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+changed_window_base_commit: 5af0f8bf4070fc56b9f2faaf29de549fc21f9619
+changed_window_head_at_probe: 3fe2e38025313b9544c640635b92afcfc1750451
+correlation_id: X13_GOOGLE_DRIVE_METADATA_READONLY_006_PHASE4_DECISION_20260806T004843Z
+source_event_type: PHASE4_DECISION
+source_commit: d3aeb6af5646eff1c40569b85c3bd09870d94232
+source_path: state/coordination/experiments/cots_connector_x13/20260806T004843Z_GOOGLE_DRIVE_METADATA_PHASE4_DEFER.md
+source_blob_sha: 4cd1a73590b9f29d437d16de1644927b75f7aaa7
+source_decision: DEFER
+source_campaign_status: CLOSED
+source_review_expiry_utc: 2026-08-13T00:48:43Z
+classification: NOT_A_WORKITEM_BOUND_PRODUCER_RETURN
+claim_binding: MISSING
+acceptance_digest: MISSING
+producer_return_digest: MISSING
+exact_source_system_readback: >-
+  CATALOG_SUMMARY_ONLY. RAW_GOOGLE_DRIVE_REQUEST_RESPONSE_BYTES, PROVIDER_REQUEST_ID, HTTP_STATUS, ETAG_OR_VERSION, EFFECTIVE_IDENTITY, SCOPES, PROJECT, CORPUS, ACL, QUERY_TRANSLATION, PAGINATION, INCOMPLETESEARCH, SHARED_DRIVE_CONTEXT, QUOTA, AND MATCHED_RAW_PROVIDER_PARITY ARE MISSING.
+commands_and_exit_codes: NOT_APPLICABLE_TO_THE_CATALOG_DECISION_AND_NOT_A_SUBSTITUTE_FOR_PROVIDER_READBACK
+rollback_binding: MISSING_FOR_ANY_OPERATIONAL_WORKITEM
+source_allowed_use: BOUNDED_HUMAN_REVIEWED_METADATA_DISCOVERY_ONLY
+source_effect_ceiling_binding: PRESENT_AS_CATALOG_ONLY_POLICY_BUT_NOT_BOUND_TO_A_CLAIMED_WORKITEM_OR_PRODUCER_DIGEST
+expiry_binding: REVIEW_EXPIRY_PRESENT_BUT_NOT_BOUND_TO_A_CLAIM_ACCEPTANCE_PRODUCER_RETURN_OR_VERDICT_DIGEST
+honest_flaw_binding: PRESENT_IN_SOURCE_BUT_NOT_BOUND_TO_A_PRODUCER_RETURN_DIGEST
+changed_verifier_input:
+  path: state/coordination/receipts/chatgpt_runtime/seat-04/20260806T001619Z_X13_GOOGLE_DRIVE_METADATA_PHASE3_STRUCTURAL_REVISE.yaml
+  blob_sha: 7ee0a06742f39608a9bde8da8484dd1dd64c4fc1
+  result: REVISE
+  source_phase: PHASE3_EMPTY_RESULT_PROBE
+  same_provider_status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  transferable_to_selected_phase4_source: false
+  transfer_blocker: DIFFERENT_SOURCE_EVENT_AND_BLOB; RESULT_IS_NOT_STOOD_OR_FELL
+verifier_verdict_for_selected_correlation: NOT_OBSERVED
+allowed_binding_verdict_vocabulary:
+  - STOOD
+  - FELL
+verdict_digest_binding: MISSING
+operational_consumer: NOT_ASSIGNED
+consumer_ack: NOT_OBSERVED
+slack_consumerack_search:
+  channel_id: C0BGNGPJFHU
+  query_scope: PUBLIC_MESSAGES_AFTER_2026_08_06_MATCHING_X13_DRIVE_PHASE4_TERMS
+  exact_named_consumerack_found: false
+  limitation: BEST_EFFORT_KEYWORD_SEARCH_IS_NOT_PROOF_OF_GLOBAL_ABSENCE
+terminal_receipt_written: false
+why_revise: >-
+  The changed phase-four event closes the Google Drive metadata campaign with a cautious DEFER and explicitly leaves adoption and fitness credit at zero. That is a valid catalog decision, but it is not a producer return for a claimed WorkItem. It binds no WorkItem claim or acceptance bytes, canonical producer-return digest, exact raw Drive request and response bytes, matched authorization and corpus context, operational rollback, or exact digest-bound STOOD or FELL. Its cited S04 review binds the phase-three source blob and returned REVISE with same-provider weight zero; it cannot transfer to this phase-four decision and is not an allowed binding verdict. No named operational consumer or explicit ConsumerAck was observed. Therefore this correlation is nonterminal and requires one structural revision route, not self-repair or promotion.
+route:
+  target_seat: S04_HRIST_STRUCTURAL_PREFLIGHT_VERIFIER
+  target_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  target_role: NONPRODUCER_STRUCTURAL_PREFLIGHT
+  same_provider_status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  exact_request: >-
+    Recompute the exact source bytes at commit d3aeb6af5646eff1c40569b85c3bd09870d94232, path state/coordination/experiments/cots_connector_x13/20260806T004843Z_GOOGLE_DRIVE_METADATA_PHASE4_DEFER.md, expected Git blob 4cd1a73590b9f29d437d16de1644927b75f7aaa7. Verify schema, source digest, task and actor separation, freshness, campaign closure semantics, privacy ceiling, rollback/effect-ceiling/expiry bindings, WorkItem claim and acceptance bindings, canonical producer-return digest, exact source-system readback, whether the phase-three S04 REVISE is improperly transferred to the phase-four source, distinct-verifier requirement, operational consumer, and explicit ConsumerAck. Return only PASS_STRUCTURAL, REVISE, HOLD, BLOCKED, or YIELD_SILENT tied to this route packet and the phase-four source blob. State SAME_PROVIDER_NONBINDING with binding weight 0. Do not emit STOOD or FELL and do not imply ConsumerAck.
+  independent_verifier_still_required: >-
+    DISTINCT_AUTHORIZED_RAW_GOOGLE_DRIVE_FILES_LIST_WITNESS_UNDER_THE_SAME_EFFECTIVE_PRINCIPAL_WITH_MATCHED_CANONICAL_REQUEST_DIGEST_QUERY_MIME_CORPUS_SECURITY_CONTEXT_PAGINATION_STATE_AND_RETURN_BYTES
+route_effect_ceiling: IMMUTABLE_GIT_PACKET_AND_ONE_SANITIZED_SLACK_POINTER_ONLY
+route_rollback: NO_EXTERNAL_OPERATIONAL_EFFECT; SUPERSEDE_ONLY_WITH_A_NEW_IMMUTABLE_PACKET
+route_expiry_utc: 2026-08-13T00:48:43Z
+strongest_falsifier: >-
+  A genuine claimed WorkItem and producer return may exist elsewhere with exact claim and acceptance bytes, canonical producer-return digest, raw matched Drive request and response readback under the same effective authorization context, rollback, effect ceiling, expiry, a distinct verifier's exact STOOD or FELL tied to that producer digest, a named operational consumer, and an explicit ConsumerAck, all binding to this same WorkItem and phase-four decision. This pass did not find or establish that chain.
+honest_flaw: >-
+  This route is a ChatGPT-carried structural preflight request with binding weight zero. It can validate immutable Git structure and binding defects, but cannot establish raw Google Drive parity, effective identity or scopes, completeness, quota, operational value, independent STOOD or FELL, or ConsumerAck. Slack keyword search was best effort and cannot prove global absence.
+valid_time_utc: 2026-08-06T01:07:16Z
+recorded_time_utc: 2026-08-06T01:07:16Z
+---
