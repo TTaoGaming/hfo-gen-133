@@ -1,0 +1,117 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_match: true
+valid_time_utc: 2026-08-06T22:54:23Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+expires_utc: 2026-08-13T22:26:26Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+result: RETURN_REUSABLE_PRIOR_ARTIFACT
+artifact_kind: SOURCE_POINTER_AND_PRIVACY_FAILURE_ANTIBODY
+heritage_credit: 0
+consumer_ack_status: NOT_OBSERVED
+binding_decision: false
+evidence_class: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+privacy_ceiling: SANITIZED_CALENDAR_CONTROL_METADATA_HASHES_COUNTS_BOUNDS_AND_SOURCE_POINTERS_ONLY
+world_effect_ceiling: ONE_GIT_RECEIPT_AND_ONE_SANITIZED_SLACK_POINTER
+verifier: DISTINCT_SCHEMA_AND_MATCHED_RAW_CALENDAR_V3_EVENTS_LIST_FIELDS_PROJECTION_VERIFIER
+consumer:
+  - X13_GCAL_SEARCH_READONLY_012_PHASE2_CONTENT_MINIMIZATION_GATE
+  - HFO_COTS_CAPABILITY_INVENTORY
+---
+
+self_probe:
+  identity: S15_HERITAGE_REUSE_AND_DEDUP
+  task_id_match: true
+  github_read: AVAILABLE_AUTHENTICATED
+  github_write: AVAILABLE_AUTHENTICATED
+  slack_write: AVAILABLE_AUTHENTICATED
+  task_mutation_performed: false
+  private_calendar_body_copied: false
+
+current_workitem:
+  workitem_id: X13_GCAL_SEARCH_READONLY_012
+  campaign_wake: 2_of_4
+  campaign_status: ACTIVE
+  current_version: 146
+  current_pointer_path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+  current_pointer_blob_sha1: d167c85d12c107e6d2aa1cb7deb75b436fa7e237
+  current_event_commit: a4185d5fcaddefafad064e5c6cb6b818f12207ba
+  current_event_path: state/coordination/experiments/cots_connector_x13/20260806T224800Z_GCAL_SEARCH_PHASE2_REPLAY.md
+  current_event_blob_sha1: 78178bc420b5b2eaca2e6e2198f160739cfc4f26
+  current_phase_status: PHASE2_ACCEPTED_WITH_GATES
+  current_measured_fact: IDENTICAL_BOUNDED_REPLAY_RETURNED_3_EVENTS_WITH_MATCHING_ORDERED_DIGEST_AND_NO_ERROR_IN_307MS
+  current_privacy_signal: SEARCH_EVENTS_RETURNED_FULL_DESCRIPTION_TEXT_ON_BOTH_CALLS_DESPITE_TOOL_CONTRACT_DIRECTING_FULL_INFORMATION_TO_READ_EVENT
+  current_operational_consumer: NOT_ASSIGNED
+  current_consumer_ack: NOT_OBSERVED
+  current_adoption_credit: 0
+  current_fitness_credit: 0
+  current_next_phase: PHASE3_BOUNDED_SYNTHETIC_NONMATCHING_SEARCH_NO_RETRY_NO_AUTHORITATIVE_ABSENCE_CLAIM
+
+reusable_prior_artifact:
+  original_date_utc: 2026-08-06T22:26:26Z
+  source_repository: TTaoGaming/hfo-gen-133
+  source_commit: a80e02855ac3798d6e57db32b9240288047aaa65
+  source_path: state/coordination/receipts/chatgpt_runtime/seat-08/20260806T222626Z_S08_GCAL_SEARCH_PARTIAL_RESPONSE_PRIVACY_BOUNDARY_EVIDENCE_CARD.md
+  source_blob_sha1: 7f7e1c9410211b113d8f2c75fc77bc133ea899f1
+  source_decision: REVISE
+  source_named_consumer: X13_GCAL_SEARCH_READONLY_012_PHASE2_CONTENT_MINIMIZATION_GATE
+  source_verifier: DISTINCT_SCHEMA_AND_MATCHED_RAW_CALENDAR_V3_EVENTS_LIST_FIELDS_PROJECTION_VERIFIER
+  source_expiry_utc: 2026-08-13T22:26:26Z
+
+reuse_contract:
+  reusable_invariant: >-
+    Calendar search content hydration is not inherently required by the upstream Google Calendar events.list surface:
+    the provider supports partial-response field selection, while the currently exposed connector schema has no
+    caller-visible fields/projection control. Therefore the connector must be treated as content-hydrating for this
+    campaign, raw event bodies must not be persisted merely to support identifier/time-bound search, and a metadata-only
+    capability claim remains inadmissible until a distinct same-principal verifier demonstrates an equivalent minimized projection.
+  supported_claims:
+    - The prior S08 card is dated and source-bound to the same X13 Calendar-search experiment and explicitly names the phase-2 content-minimization gate as consumer.
+    - The current phase-2 event independently records content hydration again and preserves RAW_EVENT_CONTENT_NOT_PERSISTED plus SEARCH_IS_CONTENT_HYDRATING_NOT_METADATA_ONLY.
+    - The current phase-2 event reports matching request and ordered normalized-result digests across two bounded calls, but this repeatability does not lower the privacy/data-minimization gate.
+    - The upstream provider offers a lower-data partial-response mechanism according to the cited S08 evidence card; the wrapper surface observed by S08 did not expose caller-controlled projection.
+  excluded_claims:
+    - This receipt does not prove the connector backend directly invokes raw Calendar events.list.
+    - This receipt does not prove the connector cannot internally project or filter before returning its wrapper response.
+    - This receipt does not establish effective OAuth principal, granted scopes, least privilege, provider completeness, stable ordering, sync semantics, quota debit, or raw-provider parity.
+    - This receipt does not establish operational adoption, operator-minute savings, ConsumerAck, independent verification, campaign closure, or fitness credit.
+    - This receipt does not persist or repeat event titles, descriptions, attendees, URLs, locations, organizer data, or raw event bodies.
+  acceptance_relevance: >-
+    Treat the S08 artifact as the reusable phase-2 privacy/data-minimization boundary. X13 phases 3 and 4 should preserve
+    bounded windows and caps, avoid event-body persistence, and avoid any metadata-only or least-privilege claim unless
+    the named distinct verifier demonstrates a matched same-principal minimized projection. The current phase-2 receipt
+    semantically applies the same gate, but no explicit source-pointer ConsumerAck exists, so heritage/adoption/fitness credit remains zero.
+
+verification_and_consumption:
+  current_semantic_consumption_observed: true
+  explicit_source_pointer_consumption_observed: false
+  consumer_ack_observed: false
+  required_verifier: DISTINCT_SCHEMA_AND_MATCHED_RAW_CALENDAR_V3_EVENTS_LIST_FIELDS_PROJECTION_VERIFIER
+  named_consumer: X13_GCAL_SEARCH_READONLY_012_PHASE2_CONTENT_MINIMIZATION_GATE
+  downstream_consumer: HFO_COTS_CAPABILITY_INVENTORY
+  heritage_credit_awarded: 0
+
+deduplication:
+  searched_gen133_first: true
+  exact_current_binding_search_terms:
+    - X13_GCAL_SEARCH_READONLY_012_PHASE2_CONTENT_MINIMIZATION_GATE
+    - content hydration
+    - partial response privacy
+  prior_s15_exact_current_binding_found: false
+  related_older_s15_calendar_privacy_gate_found: true
+  related_prior_commit: 2e5d02b44072647e22f574175a495ff16dc254f1
+  selected_prior_reason: NEWER_EXACT_SAME_EXPERIMENT_ARTIFACT_WITH_NAMED_PHASE2_CONSUMER_AND_PROVIDER_PARTIAL_RESPONSE_BOUNDARY
+  older_repository_search_required: false
+  drive_or_file_library_search_required: false
+  limitation: GitHub search is best-effort and may miss an unindexed concurrent duplicate.
+
+honest_flaw: >-
+  The current phase-2 receipt does not explicitly cite the S08 artifact or record ConsumerAck, so semantic alignment is
+  not proof of intentional consumption. The S08 provider-boundary claim was not independently revalidated in this S15
+  wake, and the connector implementation remains opaque. Reuse is limited to the data-minimization/claim-ceiling invariant;
+  it does not replace the named distinct verifier or justify any adoption, privacy-compliance, or fitness credit.
