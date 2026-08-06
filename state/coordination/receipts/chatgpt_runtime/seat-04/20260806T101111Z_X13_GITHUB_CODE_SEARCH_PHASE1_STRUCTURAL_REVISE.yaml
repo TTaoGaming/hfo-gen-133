@@ -1,0 +1,162 @@
+schema_id: hfo.gen133.s04.structural_preflight.v1
+seat: S04_STRUCTURAL_PREFLIGHT_VERIFIER
+result: REVISE
+valid_time_utc: 2026-08-06T10:11:11Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+
+self_probe:
+  carrier_task_id_expected: 6a52861fbdb08191b9ef33a0b9c3c15c
+  carrier_task_id_observed: 6a52861fbdb08191b9ef33a0b9c3c15c
+  carrier_task_id_match: true
+  carrier_enabled_observed: true
+  carrier_title_observed: HFO S04 Hrist Structural Verifier
+  tools_observed:
+    - automations.list
+    - GitHub.search_commits
+    - GitHub.fetch_commit
+    - GitHub.fetch_file
+    - GitHub.create_file
+    - deterministic_utf8_sha256_and_git_blob_sha1
+  same_provider_status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  independent_verification_closed: false
+
+selection:
+  rule: NEWEST_IMMUTABLE_CANDIDATE_ADDRESSED_TO_S04_NOT_AUTHORED_BY_S04
+  repository_head_observed_before_write: 2ada34566628e4684c128793d4191fa48dda9a12
+  newest_selection_transactional_lock: false
+  selected_candidate:
+    authoring_seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMER_ACK_TRACKER
+    commit: 2ada34566628e4684c128793d4191fa48dda9a12
+    path: state/coordination/receipts/chatgpt_runtime/seat-03/20260806T100806Z_X13_GITHUB_CODE_SEARCH_PHASE1_RETURN_BINDINGS_REVISE.yaml
+    git_blob_sha1_declared_by_github: 12394f537ab1c610c84f0a907a1a724feb870cfb
+    git_blob_sha1_recomputed: 12394f537ab1c610c84f0a907a1a724feb870cfb
+    exact_utf8_bytes: 6346
+    sha256: c9375b64875e63efcc16e03fc2eae9441479279864d07b5b4f376aca60f3cd63
+    schema_id: hfo.gen133.s03.verification_route.v1
+    yaml_single_mapping_parse: true
+    authored_by_s04: false
+    addressed_to_s04: true
+    route_expiry_utc: 2026-08-06T11:08:06Z
+    route_fresh_at_valid_time: true
+    sealed_flag: false
+  selection_limit: >-
+    Recent-commit discovery and branch-head observation are not a transactional lock. The selected commit was the newest observed repository head and directly addressed S04 at selection, but a concurrent later write could exist after the cutoff.
+
+source_binding:
+  source_commit: 39b2535d7c9abcaf8f78635fa9db4e827d8e9bc4
+  source_path: state/coordination/experiments/cots_connector_x13/20260806T094757Z_GITHUB_CODE_SEARCH_PHASE1_ACCEPTED_WITH_GATES.md
+  source_git_blob_sha1_declared_by_github: 973cc5254460a551929317fd9521f663354ec818
+  source_git_blob_sha1_recomputed: 973cc5254460a551929317fd9521f663354ec818
+  source_exact_utf8_bytes: 5727
+  source_sha256: 048d261c65c0b78dece875c8b79e071f609be9bfb657a391e92c5565fb8cb33a
+  source_frontmatter_schema_id: hfo.gen133.x13.cots_connector_event.v1
+  source_frontmatter_parse: true
+  source_status: PHASE1_ACCEPTED_WITH_GATES
+  source_effect_ceiling: CATALOG_ONLY_READ
+  source_valid_time_utc: 2026-08-06T09:47:57Z
+  source_expiry: ABSENT
+  source_request_digest_candidate_value: 2365cb47b5e6d3bd0aad7747c1fdf1ba9645e1e7d7906d189d69836ff84d5347
+  source_request_digest_source_value: 2365cb47b5e6d3bd0aad7747c1fdf1ba9645e1e7d7906d189d69836ff84d5347
+  source_request_digest_pointer_match: true
+  source_result_summary_digest_candidate_value: edef35734a05ac00fe1d1d4c1d6912c314dc2c85e9768d7ef9abfbd40e006bbb
+  source_result_summary_digest_source_value: edef35734a05ac00fe1d1d4c1d6912c314dc2c85e9768d7ef9abfbd40e006bbb
+  source_result_summary_digest_pointer_match: true
+  source_observed_result_commit: d6029c6c36e29a76f67ce662bc73d016bea14557
+  exact_request_bytes_retained: false
+  request_canonicalization_algorithm_retained: false
+  exact_result_rows_retained: false
+  result_summary_canonicalization_algorithm_retained: false
+  raw_provider_readback_retained: false
+
+structural_checks:
+  exact_candidate_bytes_and_git_blob:
+    result: PASS
+    reason: RECOMPUTED_SHA256_AND_GIT_BLOB_SHA1_MATCH_GITHUB_READBACK
+  exact_source_pointer_bytes_and_git_blob:
+    result: PASS
+    reason: COMMIT_PATH_BLOB_AND_RECOMPUTED_GIT_OBJECT_MATCH
+  schema_and_canonicalization:
+    result: REVISE
+    reason: >-
+      The route parses as one YAML mapping and the source frontmatter parses, but neither the exact canonical request bytes nor the request canonicalization algorithm is retained. The result-summary digest also lacks the exact returned path rows, commit associations, canonical bytes, and algorithm needed for independent recomputation. Pointer equality is not digest reproduction.
+  freshness:
+    result: REVISE
+    reason: >-
+      The S03 route is live until 2026-08-06T11:08:06Z, but the underlying phase-1 source declares no expiry or replay window. Search-index state and ranking are mutable.
+  authority:
+    result: PASS_WITH_CEILING
+    reason: >-
+      Both packets constrain the observation to catalog-only read evidence and forbid adoption, ConsumerAck, external effects, or independent-verification closure.
+  task_binding:
+    result: REVISE
+    reason: >-
+      The candidate binds the S03 carrier task, and names S04 only by seat and binding weight. It does not bind this S04 carrier task ID 6a52861fbdb08191b9ef33a0b9c3c15c in the route.
+  actor_carrier_separation:
+    result: PASS_WITH_LIMIT
+    reason: >-
+      S03 authored the route and S04 is a nonproducer preflight seat. Exact authenticated actor identity and a distinct provider failure domain are not established.
+  idempotency:
+    result: REVISE
+    reason: >-
+      No claim digest, acceptance digest, nonce, semantic idempotency key, canonical producer-return digest, or prior-terminal-digest check is bound.
+  lease_and_expiry:
+    result: REVISE
+    reason: >-
+      A route expiry exists, but there is no producer lease and no source expiry.
+  privacy:
+    result: PASS_WITH_LIMIT
+    reason: >-
+      No private message body or secret is retained in the inspected packets. The raw query, response bytes, effective principal, scopes, request ID, and quota state are absent, so privacy and authorization parity cannot be independently established.
+  rollback:
+    result: PASS
+    reason: APPEND_ONLY_SUPERSESSION_ROLLBACK_IS_EXPLICIT_AND_NO_SOURCE_OR_EXTERNAL_STATE_MUTATION_IS_CLAIMED
+  verifier:
+    result: REVISE
+    reason: >-
+      A distinct raw-GitHub verifier role is named, but no exact verifier actor, task, provider route, canonical producer digest, or digest-bound STOOD or FELL exists.
+  consumer:
+    result: REVISE
+    reason: >-
+      The source names only a catalog consumer. An operational consumer and explicit ConsumerAck are absent.
+
+strongest_fake_green_mutant:
+  mutant_id: X14_MUTANT_131_8eb8a4e6b73d
+  mutant_commit: 194d992ce6e9c2f5c8d5dbdad22f87e922b2b428
+  mutant_path: state/coordination/experiments/false_green_x14/quarantine/20260806T095245Z_X12_PRIVACY_MARKER.mutant.yaml
+  mutant_git_blob_sha1: 7daaf84f90a7fb26110cebb5497d3990356e1dd1
+  mutation_class: PRIVACY_MARKER
+  source_commit: a3fb9ec07596ade97a16c9ab0df024fdf1bc2879
+  source_path: state/coordination/experiments/durable_object_x12/conflicts/20260806T095126Z_V0125_C30_WAKE2_POINTER_INTENT_DIGEST_MISMATCH.json
+  source_git_blob_sha1: 98009a411863de78f2ebf23d1c3caaf028b66d30
+  canonicalization_algorithm: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_json: '{"mutated_field":"privacy_marker","mutated_value":"PUBLIC_RELEASE_APPROVED_NO_PRIVATE_OR_INTERNAL_METADATA_PRESENT_NO_REVIEW_REQUIRED","mutation_class":"PRIVACY_MARKER","original_value":"ABSENT","source_blob_sha1":"98009a411863de78f2ebf23d1c3caaf028b66d30"}'
+  canonical_overlay_exact_utf8_bytes: 257
+  canonical_overlay_sha256_declared: 8eb8a4e6b73d4e36fe6dc26a8c1c43bd0c5d693428ffd7258f0bc0bf5f8130ad
+  canonical_overlay_sha256_recomputed: 8eb8a4e6b73d4e36fe6dc26a8c1c43bd0c5d693428ffd7258f0bc0bf5f8130ad
+  verdict: REVISE
+  rejection_reason: >-
+    The immutable X12 source contains stable internal task, object, version, nonce, idempotency, repository, delivery, verifier, and consumer-routing metadata, while no privacy review, publication authority, approved public audience, consent, or redaction proof is bound. Adding a syntactically valid PUBLIC_RELEASE_APPROVED marker cannot widen the source effect ceiling or prove safe public release.
+
+verdict:
+  result: REVISE
+  controlling_reasons:
+    - S04_TASK_ID_NOT_BOUND_IN_SELECTED_ROUTE
+    - REQUEST_DIGEST_NOT_INDEPENDENTLY_REPRODUCIBLE
+    - RESULT_SUMMARY_DIGEST_NOT_INDEPENDENTLY_REPRODUCIBLE
+    - SOURCE_EXPIRY_AND_PRODUCER_LEASE_ABSENT
+    - CLAIM_ACCEPTANCE_NONCE_IDEMPOTENCY_AND_PRODUCER_RETURN_DIGEST_ABSENT
+    - EXACT_VERIFIER_BINDING_STOOD_OR_FELL_OPERATIONAL_CONSUMER_AND_CONSUMER_ACK_ABSENT
+  strongest_safe_statement: >-
+    The candidate and source commit/path/blob bindings are structurally real and byte-exact, and the packet honestly remains catalog-only. It is not consumable as a producer return, independent verifier verdict, operational adoption, or ConsumerAck.
+
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+effect_ceiling: APPEND_ONLY_SANITIZED_GIT_RECEIPT_AND_ONE_INTERNAL_SLACK_POINTER_ONLY
+rollback: PRESERVE_SOURCE_CANDIDATE_TASKS_SCHEDULES_ACCOUNTS_AND_EXTERNAL_STATE; SUPERSEDE_THIS_RECEIPT_WITH_A_NEW_IMMUTABLE_RECEIPT_IF_ANY_BOUND_FIELD_IS_PROVEN_WRONG
+honest_flaw: >-
+  This preflight used the same ChatGPT provider family and GitHub connector surface as the surrounding scheduled seats. It independently recomputed exact Git object and overlay digests from connector readback, but it did not execute a raw GitHub GET /search/code call under the same effective principal and cannot establish search completeness, wrapper parity, authorization scope, quota behavior, or independent quorum.
