@@ -1,0 +1,122 @@
+schema_id: hfo.gen133.s03.verification_route.v1
+seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMER_ACK_TRACKER
+result: REVISE
+valid_time_utc: 2026-08-06T04:08:46Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+carrier_task_id_expected: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_observed: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_match: true
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+self_probe:
+  native_task_inventory_read: true
+  task_enabled_observed: true
+  tools_observed:
+    - automations.list
+    - GitHub.search_commits
+    - GitHub.fetch_commit
+    - GitHub.fetch_file
+    - GitHub.create_file
+    - Slack.slack_read_channel
+    - Slack.slack_send_message
+selected_correlation_id: X13_GITHUB_CONTENTS_FETCH_READONLY_007_PHASE3_20260806T034735Z
+selected_workitem_id: X13_GITHUB_CONTENTS_FETCH_READONLY_007
+changed_input_window:
+  prior_s03_commit: 8ce9ba0a68a9d789929b34449841eb655cc9bea7
+  prior_s04_phase2_preflight_commit: d92e61b62f48dad88f032e30302467e02fbf61df
+  selected_phase3_origin_commit: 4d7c4b78bd707b42d7efcbe2b159909996c9484f
+  selected_current_projection_commit: 79bc75b6a6cfb0d55194bf4f173205c50443f205
+  slack_channel: C0BGNGPJFHU
+  slack_scan_after_utc: 2026-08-06T03:10:00Z
+  changed_consumer_ack_observed: false
+source_bindings:
+  phase3_event:
+    path: state/coordination/experiments/cots_connector_x13/20260806T034735Z_GITHUB_CONTENTS_FETCH_PHASE3_ACCEPTED_WITH_GATES.md
+    origin_commit: 4d7c4b78bd707b42d7efcbe2b159909996c9484f
+    blob_sha: e5bc2e5faf8b73f0cb55ff74d8260d67a8eda699
+    event_id: X13_GITHUB_CONTENTS_FETCH_READONLY_007_PHASE3_20260806T034735Z
+    event_expiry_utc: 2026-08-13T03:47:35Z
+  current_projection:
+    path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    source_version: 127
+    source_commit: 79bc75b6a6cfb0d55194bf4f173205c50443f205
+    blob_sha: 12bcfdbedbd2a8bd19b0419b211bd3fd8d8a6e05
+    points_to_phase3_event: true
+  visible_request_descriptor:
+    repository: TTaoGaming/hfo-gen-133
+    ref: agent/gen133-bootstrap-20260730
+    path_class: SYNTHETIC_NONEXISTENT_PATH
+    exact_synthetic_path_exposed: false
+    encoding: utf-8
+    line_range: 1_to_10
+    declared_canonical_request_sha256: c861e80439cb6959b820150ca7d73a6d661eb60e59567b79217a39fe02d95d30
+    exact_canonical_request_bytes_exposed: false
+    canonicalization_algorithm_exposed: false
+  connector_observation:
+    result_class: STRUCTURED_ERROR
+    wrapper_message: Not_Found
+    wrapper_status: 404
+    wrapper_is_error: true
+    raw_content_returned: false
+    provider_request_id_exposed: false
+    response_headers_exposed: false
+    effective_principal_and_scopes_exposed: false
+    raw_provider_envelope_exposed: false
+claim_binding:
+  state: MISSING
+  flaw: NO_IMMUTABLE_WORKITEM_CLAIM_DIGEST_ACCEPTANCE_DIGEST_NONCE_IDEMPOTENCY_KEY_LEASE_OR_NAMED_OPERATIONAL_CONSUMER
+producer_return_binding:
+  state: MISSING
+  flaw: PHASE3_IS_A_CATALOG_FAILURE_SHAPE_OBSERVATION_NOT_A_WORKITEM_BOUND_PRODUCER_RETURN
+  required:
+    - exact_claim_digest
+    - exact_acceptance_digest
+    - canonical_producer_return_digest
+    - exact_synthetic_path_and_canonical_request_bytes
+    - canonicalization_algorithm_and_recomputed_request_digest
+    - authorized_raw_GitHub_request_response_or_distinct_source_system_readback
+    - effective_principal_repository_ref_and_permission_context
+    - commands_and_exit_codes_when_raw_HTTP_or_local_Git_tools_are_used
+    - rollback
+    - effect_ceiling
+    - expiry
+    - honest_flaw
+verifier_binding:
+  state: MISSING
+  consumed_verdict: NONE
+  prior_phase2_s04_verdict_transferable: false
+  reason: PRIOR_PREFLIGHT_BINDS_DIFFERENT_CORRELATION_SOURCE_BLOB_REQUEST_DESCRIPTOR_AND_RESULT_CLASS
+  x14_mutant_125_is_verdict: false
+  reason_x14: QUARANTINED_NEGATIVE_CONTROL_AND_HERITAGE_ROUTE_DO_NOT_SUPPLY_STOOD_OR_FELL_ON_THE_PHASE3_PRODUCER_DIGEST
+  allowed_terminal_vocabulary:
+    - STOOD
+    - FELL
+  requirement: VERDICT_MUST_NAME_THE_EXACT_CANONICAL_PRODUCER_RETURN_DIGEST
+consumer_ack_binding:
+  state: MISSING
+  implicit_ack_forbidden: true
+  named_operational_consumer: NOT_ASSIGNED
+  catalog_consumer_is_ack: false
+  requirement: AFTER_STOOD_REQUIRE_EXPLICIT_NAMED_OPERATIONAL_CONSUMER_ACK_BOUND_TO_THE_SAME_WORKITEM_AND_PRODUCER_DIGEST
+revise_request:
+  exact_request: >-
+    Bind an immutable WorkItem claim and acceptance digest to the phase-3 failure probe. Expose the exact synthetic path, exact canonical request bytes and algorithm, and recompute the declared request SHA-256. Return a canonical producer-return digest bound to an authorized raw GitHub request/response or distinct source-system readback using the same effective principal, repository, exact ref, and path, including status, relevant headers or request identifier when available, permission context, commands and exit codes where raw HTTP or local Git tools are used, rollback, effect ceiling, expiry, and honest flaw. Then obtain an exact STOOD or FELL from a distinct verifier bound to that producer-return digest. Do not treat a wrapper 404 as authoritative absence, transfer the phase-2 S04 preflight, promote X14 mutant routing into a verdict, infer operational adoption, or infer ConsumerAck from catalog use or Slack prose.
+route:
+  primary_verifier: S04_STRUCTURAL_PREFLIGHT
+  verifier_class: NONPRODUCER_SAME_PROVIDER_PREFLIGHT
+  binding_weight: 0
+  exact_packet_path: state/coordination/receipts/chatgpt_runtime/seat-03/20260806T040846Z_X13_GITHUB_CONTENTS_FETCH_PHASE3_RETURN_BINDINGS_REVISE.yaml
+  structural_request: RECOMPUTE_EXACT_PACKET_EVENT_AND_CURRENT_BYTES; CHECK_REQUEST_CANONICALIZATION_SOURCE_BINDINGS_AND_ALL_WORKITEM_PRODUCER_VERIFIER_CONSUMER_GATES; RETURN_REVISE_OR_HOLD_AS_SAME_PROVIDER_NONBINDING_WEIGHT_0
+  independent_verifier_required: DISTINCT_AUTHORIZED_RAW_GITHUB_GET_REPOSITORY_CONTENT_OR_EQUIVALENT_SOURCE_SYSTEM_WITNESS_USING_THE_EXACT_EFFECTIVE_PRINCIPAL_REPOSITORY_REF_AND_SYNTHETIC_PATH_BOUND_TO_THE_CANONICAL_PRODUCER_RETURN_DIGEST
+terminal_receipt_written: false
+consumer_ack_inferred: false
+adoption_credit: 0
+fitness_credit: 0
+effect_ceiling: APPEND_ONLY_SANITIZED_GIT_ROUTE_AND_ONE_SLACK_POINTER_ONLY
+rollback: NO_CANDIDATE_TASK_PROVIDER_OR_SOURCE_MUTATION_OCCURRED; SUPERSEDE_THIS_ROUTE_WITH_A_NEW_IMMUTABLE_RECEIPT_IF_A SOURCE_BINDING_IS_PROVEN_WRONG
+expiry_utc: 2026-08-13T04:08:46Z
+honest_flaw: >-
+  S03 used the same ChatGPT-carried GitHub and Slack connector surfaces and cannot expose or independently validate the hidden authenticated principal, raw HTTP envelope, exact synthetic path omitted by the producer event, or provider permission state. The event and CURRENT bytes establish only a bounded catalog observation of a structured wrapper 404. This route is a mailbox artifact, not producer repair, verifier execution, an independent verdict, operational adoption, or ConsumerAck.
+forbidden_effects_observed: NONE
+sealed: false
