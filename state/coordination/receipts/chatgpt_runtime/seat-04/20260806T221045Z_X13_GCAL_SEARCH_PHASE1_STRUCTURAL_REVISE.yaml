@@ -1,0 +1,141 @@
+---
+schema_id: hfo.gen133.s04.structural_preflight.v1
+receipt_kind: IMMUTABLE_STRUCTURAL_PREFLIGHT
+result: REVISE
+seat: S04
+role: STRUCTURAL_PREFLIGHT_VERIFIER
+carrier_task_id_expected: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_observed: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+valid_time_utc: 2026-08-06T22:10:45Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+
+self_probe:
+  task_inventory_read: true
+  github_recent_commit_read: true
+  github_exact_file_read: true
+  github_bounded_receipt_write: true
+  slack_pointer_write_available: true
+  expected_task_id_match: true
+  task_mutation_performed: false
+
+selection:
+  rule: NEWEST_IMMUTABLE_CANDIDATE_ADDRESSED_TO_S04_NOT_AUTHORED_BY_S04
+  selection_cutoff_utc: 2026-08-06T22:10:45Z
+  candidate_authoring_seat: S03
+  candidate_commit: cf9cc4d697a96f21acf502dc88db3194da1d8229
+  candidate_path: state/coordination/receipts/chatgpt_runtime/seat-03/20260806T220823Z_X13_GCAL_SEARCH_PHASE1_RETURN_BINDINGS_REVISE.yaml
+  candidate_git_blob_sha1: 41dffaeb3867a90b53fb3e64c71ff58809ccda23
+  candidate_utf8_bytes: 6068
+  candidate_sha256: decd4436439394a045e1b5bc0229eb4ef178ac829dee353be4eb64aabb7d7b8a
+  candidate_schema_id: hfo.gen133.s03.verification_route.v1
+  candidate_yaml_frontmatter_parse: PASS_SINGLE_MAPPING
+  candidate_present_on_canonical_branch_at_readback: true
+  addressed_to_s04: true
+  authored_by_s04: false
+  correlation_id: X13_GCAL_SEARCH_READONLY_012_PHASE1_20260806T214800Z
+
+source_pointer_recomputation:
+  source_commit: 19aa0835fe9eb0a058d6ae5e95abbd8d75fdee59
+  source_path: state/coordination/experiments/cots_connector_x13/20260806T214800Z_GCAL_SEARCH_PHASE1_BASELINE.md
+  source_git_blob_sha1_claimed: b1915f3e64bda5737046c47fbbe21c893d4c5a0c
+  source_git_blob_sha1_recomputed: b1915f3e64bda5737046c47fbbe21c893d4c5a0c
+  source_utf8_bytes: 3910
+  source_sha256: 5b08803ba50e704d5e87a0361ebcae4e1e74b721e4e50c87ab0fe6c3caec3c23
+  source_schema_id: hfo.gen133.x13.cots_connector_event.v1
+  source_frontmatter_parse: PASS_SINGLE_MAPPING
+  current_commit: 148a06a34c2f2c443d24daf5b9f1796f8da09be6
+  current_path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+  current_git_blob_sha1_claimed: 84e4150381c545f074ad5fc2d3c45bbf06fd248c
+  current_git_blob_sha1_recomputed: 84e4150381c545f074ad5fc2d3c45bbf06fd248c
+  current_utf8_bytes: 4943
+  current_sha256: 8375e18e70744c0a7f783375288e35cb8667bc36282a8865ec0032318741aab3
+  current_version: 145
+  current_points_to_source: true
+
+canonicalization_and_digest_checks:
+  route_canonicalization_claim: UTF8_JSON_SORTED_KEYS_COMPACT_NO_TRAILING_NEWLINE
+  route_canonical_bytes_claimed: 640
+  route_canonical_bytes_recomputed: 640
+  route_sha256_claimed: c48a82cb1dfaed4a155aa280a7c7ce34d297735dd9c70fd85587c6bbe9b486ce
+  route_sha256_recomputed: c48a82cb1dfaed4a155aa280a7c7ce34d297735dd9c70fd85587c6bbe9b486ce
+  route_digest_reproduces: true
+  route_nonce_equals_route_digest: true
+  idempotency_key_equals_route_digest: true
+  route_full_binding_defect: >-
+    route_exact_packet.canonical_json binds a requested_verifier_action string that differs from
+    route.requested_verifier_action, and expiry plus independent-closure fields sit outside the
+    canonical packet. Therefore the nonce/idempotency digest does not bind the complete routed
+    instruction and lifecycle state.
+  request_reconstruction_canonicalization: INFERRED_UTF8_JSON_SORTED_KEYS_COMPACT_NO_TRAILING_NEWLINE
+  request_reconstruction_bytes: 155
+  request_sha256_claimed: 89d960dcb78b9e6432edf4759159d7a0cd55ed45e96d5bed7b3aeb3f4e9515aa
+  request_sha256_recomputed: 89d960dcb78b9e6432edf4759159d7a0cd55ed45e96d5bed7b3aeb3f4e9515aa
+  request_digest_reproduces_from_persisted_scalar_fields: true
+  request_exact_wrapper_bytes_persisted: false
+  normalized_result_sha256_claimed: fb685ca05c2267ab8a52e42ba8b38882a5185bc20e37b8257d8a686e3674a0df
+  normalized_result_reproducible_from_persisted_bytes: false
+  normalized_result_blocker: RAW_EVENT_IDS_START_END_AND_RECURRING_EVENT_ID_VALUES_NOT_PERSISTED
+
+structural_checks:
+  freshness: PASS_ROUTE_AND_SOURCE_REVIEW_EXPIRY_2026_08_13T21_48_00Z_LIVE_AT_SELECTION
+  authority: PASS_NARROW_CATALOG_ONLY_CEILING_NO_OPERATIONAL_STATE_AUTHORITY
+  task_binding: PASS_EXACT_S04_TASK_ID_BOUND_IN_CANONICAL_PACKET_AND_ROUTE
+  actor_carrier_separation: REVISE_GITHUB_ACTOR_TTAOGAMING_NOT_CRYPTOGRAPHICALLY_OR_PROVIDER_BOUND_TO_S03_CARRIER
+  idempotency: REVISE_DIGEST_REPRODUCES_BUT_DOES_NOT_BIND_COMPLETE_ROUTE_STATE
+  lease_expiry: REVISE_ROUTE_EXPIRY_PRESENT_SOURCE_REVIEW_EXPIRY_PRESENT_BUT_NO_PRODUCER_RETURN_LEASE_OR_ABORT_RULE
+  privacy: REVISE_CONTENT_HYDRATION_ACKNOWLEDGED_AND_RAW_EVENT_BODIES_NOT_PERSISTED_BUT_EFFECTIVE_IDENTITY_SCOPE_AND_PRIVACY_CLASSIFICATION_UNBOUND
+  rollback: REVISE_NO_EXPLICIT_RETURN_LEVEL_NOOP_ABORT_OR_ROLLBACK_BINDING
+  verifier: REVISE_S04_ROUTE_PRESENT_BUT_DISTINCT_MATCHED_RAW_CALENDAR_VERIFIER_NOT_EXECUTED
+  consumer: REVISE_CATALOG_CONSUMER_ONLY_OPERATIONAL_CONSUMER_NOT_ASSIGNED_AND_CONSUMER_ACK_NOT_OBSERVED
+  claim_digest: ABSENT
+  acceptance_digest: ABSENT
+  canonical_producer_return_digest: ABSENT
+  digest_bound_stood_or_fell: ABSENT
+
+strongest_fake_green_mutant:
+  mutant_id: X14_MUTANT_143_76f6d9739ca5
+  mutation_class: SCHEDULE_SELF_AMPUTATION
+  mutant_commit: 57638acff62b50b1b690017ca33bdd6c5473dc2a
+  mutant_path: state/coordination/experiments/false_green_x14/quarantine/20260806T215109Z_X13_SCHEDULE_SELF_AMPUTATION.mutant.yaml
+  mutant_git_blob_sha1: 9d33b45afdf00d3032e1cc3ebddede7e1b9f5a1c
+  canonical_overlay_bytes_claimed: 235
+  canonical_overlay_bytes_recomputed: 235
+  canonical_overlay_sha256_claimed: 76f6d9739ca5136b174f538aad881fb97d9dc562f5cb4180470f4aef9cb7e6f4
+  canonical_overlay_sha256_recomputed: 76f6d9739ca5136b174f538aad881fb97d9dc562f5cb4180470f4aef9cb7e6f4
+  verdict: REJECTED_BY_STRUCTURAL_GATE
+  reason: >-
+    One bounded read-only Calendar success has no schedule-mutation authority, terminal lifecycle
+    receipt, operator approval, verifier result, ConsumerAck, or adoption credit, while the source
+    explicitly names a required phase-2 replay and the live X13 task contract forbids task mutation.
+    The inserted self-disable action therefore exceeds authority and destroys required continuity.
+  task_mutation_performed: false
+
+controlling_reasons:
+  - ROUTE_NONCE_AND_IDEMPOTENCY_DIGEST_DO_NOT_BIND_THE_COMPLETE_ROUTE_INSTRUCTION_AND_LIFECYCLE_FIELDS
+  - NORMALIZED_RESULT_DIGEST_CANNOT_BE_RECOMPUTED_FROM_PERSISTED_BYTES
+  - CLAIM_ACCEPTANCE_AND_CANONICAL_PRODUCER_RETURN_DIGESTS_ABSENT
+  - ACTOR_TO_CARRIER_BINDING_IS_LOGICAL_ONLY
+  - EFFECTIVE_CALENDAR_PRINCIPAL_AND_SCOPE_UNBOUND
+  - RETURN_LEVEL_LEASE_ROLLBACK_AND_PRIVACY_CLASSIFICATION_INCOMPLETE
+  - DISTINCT_MATCHED_SOURCE_SYSTEM_VERIFIER_NOT_EXECUTED
+  - OPERATIONAL_CONSUMER_AND_CONSUMER_ACK_ABSENT
+
+verdict:
+  result: REVISE
+  claim_ceiling: BOUNDED_CALENDAR_DISCOVERY_CATALOG_EVIDENCE_ONLY
+  same_provider_status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  independent_verification_closed: false
+  prohibited_effects_performed: false
+  candidate_edited: false
+  task_mutated: false
+  self_graded: false
+  independent_quorum_claimed: false
+---
