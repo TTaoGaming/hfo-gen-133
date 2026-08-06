@@ -1,25 +1,25 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
 experiment_id: X13_GITHUB_CONTENTS_FETCH_READONLY_007
-version: 127
-prior_version: 126
+version: 128
+prior_version: 127
 candidate: GitHub_fetch_file_contents_readonly_surface
-campaign_wake: 3_of_4
-campaign_status: OPEN
+campaign_wake: 4_of_4
+campaign_status: CLOSED
 phase_1_status: PHASE1_ACCEPTED_WITH_GATES
 phase_2_status: PHASE2_ACCEPTED_WITH_GATES
 phase_3_status: PHASE3_ACCEPTED_WITH_GATES
-phase_4_status: PENDING
-provisional_decision: ADOPT_WITH_GATES_CATALOG_ONLY
-operational_decision: NOT_REACHED
+phase_4_status: DEFER
+provisional_decision: SUPERSEDED
+operational_decision: DEFER_OPERATIONAL_ADOPTION_CATALOG_ONLY
 carrier_task_id: 6a55c1733708819185088bf334e33ea5
 carrier_task_id_match: true
 wip: 1
-last_event_commit: 4d7c4b78bd707b42d7efcbe2b159909996c9484f
-last_event_path: state/coordination/experiments/cots_connector_x13/20260806T034735Z_GITHUB_CONTENTS_FETCH_PHASE3_ACCEPTED_WITH_GATES.md
-last_event_blob_sha: e5bc2e5faf8b73f0cb55ff74d8260d67a8eda699
+last_event_commit: 28a60be3ce3b82b3db8eec7b39e1cf8faa21aa89
+last_event_path: state/coordination/experiments/cots_connector_x13/20260806T044813Z_GITHUB_CONTENTS_FETCH_PHASE4_DEFER.md
+last_event_blob_sha: 485d1ae653e0e3a857d0aebd56ae25bf9cec1060
 last_event_readback: true
-prior_current_blob_sha: 2c44f0fbe672673cbb49ec593565d1aa8f62da7f
+prior_current_blob_sha: 12bcfdbedbd2a8bd19b0419b211bd3fd8d8a6e05
 campaign_calls: 3_READONLY_FETCH_FILE_CALLS_2_SUCCESS_1_STRUCTURED_404_0_RETRY_0_FALLBACK_0_CANDIDATE_MUTATION
 repository: TTaoGaming/hfo-gen-133
 ref: agent/gen133-bootstrap-20260730
@@ -42,8 +42,9 @@ phase3_wrapper_message: Not_Found
 phase3_wrapper_status: 404
 phase3_wrapper_is_error: true
 raw_content_persisted_in_event: false
-measured_fact: A_SINGLE_SYNTHETIC_MISSING_PATH_REQUEST_RETURNED_A_STRUCTURED_404_NOT_FOUND_ERROR_WITH_ZERO_RETRY_FALLBACK_OR_CANDIDATE_MUTATION
-andon: GITHUB_404_IS_NOT_AUTHORITATIVE_ABSENCE_BECAUSE_IT_CAN_ALSO_MASK_AUTHENTICATION_OR_AUTHORIZATION_FAILURE_AND_THE_WRAPPER_OMITS_IDENTITY_HEADERS_AND_RAW_PROVIDER_CONTEXT
+measured_fact: TWO_IDENTICAL_BOUNDED_UTF8_READS_RETURNED_THE_SAME_GIT_BLOB_SHA_AND_ONE_SYNTHETIC_MISSING_PATH_RETURNED_STRUCTURED_404_WITH_ZERO_RETRY_FALLBACK_OR_CANDIDATE_MUTATION
+decision_fact: OPERATIONAL_ADOPTION_DEFERRED_CATALOG_ONLY_BECAUSE_NO_MEASURED_OPERATOR_RELIEF_NO_BOUND_WORKITEM_NO_OPERATIONAL_CONSUMER_OR_ACK_NO_DISTINCT_RAW_PROVIDER_WITNESS_AND_UNKNOWN_EFFECTIVE_AUTH_AND_QUOTA
+andon: GITHUB_404_IS_NOT_AUTHORITATIVE_ABSENCE_BECAUSE_IT_CAN_MASK_AUTHENTICATION_OR_AUTHORIZATION_FAILURE_AND_THE_WRAPPER_OMITS_IDENTITY_HEADERS_AND_RAW_PROVIDER_CONTEXT
 custom_code_avoided_estimate: 25_to_80_LOC_UNVALIDATED
 operator_minutes_removed_measured: 0
 credentials: CONNECTOR_MANAGED_EFFECTIVE_PRINCIPAL_TOKEN_TYPE_SCOPES_INSTALLATION_AND_SSO_CONTEXT_UNKNOWN
@@ -56,26 +57,30 @@ actual_quota_consumed: UNKNOWN
 catalog_consumer: HFO_COTS_CAPABILITY_INVENTORY_CATALOG_ONLY
 operational_consumer: NOT_ASSIGNED
 consumer_ack: NOT_OBSERVED
-verifier: DISTINCT_RAW_GITHUB_GET_REPOSITORY_CONTENT_REQUEST_USING_THE_SAME_EFFECTIVE_PRINCIPAL_REPOSITORY_REF_AND_SYNTHETIC_PATH
+verifier: DISTINCT_RAW_GIT_OR_GITHUB_CONTENTS_FETCH_USING_THE_SAME_EFFECTIVE_PRINCIPAL_REPOSITORY_REF_PATH_AND_RETURNED_BLOB_SHA
 verifier_result: NOT_RUN
 adoption_credit: 0
 fitness_credit: 0
 allowed_use: BOUNDED_HUMAN_REVIEWED_TEXT_FILE_READS_WITH_EXPLICIT_REF_MINIMAL_RETENTION_BLOB_SHA_CAPTURE_AND_FAIL_CLOSED_404_CLASSIFICATION
 mandatory_gate: PIN_EXPLICIT_REF; RETAIN_CANONICAL_REQUEST_DIGEST_AND_RETURNED_BLOB_SHA; TREAT_BRANCH_REF_AS_MUTABLE; DO_NOT_ASSUME_LINE_SLICE_EQUALS_FULL_FILE; CLASSIFY_404_AS_MISSING_OR_INACCESSIBLE; DO_NOT_RETRY_UNCHANGED_404_IN_A_TIGHT_LOOP; VERIFY_AUTHORIZATION_AND_EXACT_REF_BEFORE_HIGH_STAKES_NEGATIVE_CLAIMS
-strongest_falsifier: THE_SYNTHETIC_PATH_EXISTS_AT_THE_EXACT_REF_OR_A_MATCHED_RAW_GITHUB_CONTENTS_REQUEST_RETURNS_A_MATERIALLY_DIFFERENT_STATUS_ERROR_CONTEXT_OR_BYTES_FOR_THE_SUCCESS_BLOB_SHA
-honest_flaw: TWO_SUCCESSFUL_SMALL_UTF8_READS_AND_ONE_SYNTHETIC_404_DO_NOT_TEST_PERMISSION_DENIAL_SEPARATELY_INVALID_REF_BINARY_OR_LARGE_FILES_DIRECTORIES_SYMLINKS_SUBMODULES_RATE_LIMITS_TRANSIENT_FAILURES_RAW_PARITY_OPERATOR_SAVINGS_OR_OPERATIONAL_VALUE
-next_phase: PHASE4_DECIDE_FROM_EXISTING_RECEIPTS_ONLY_WITH_NO_ADDITIONAL_CANDIDATE_CALL
-review_expiry_utc: 2026-08-13T03:47:35Z
-valid_time_utc: 2026-08-06T03:47:35Z
-recorded_time_utc: 2026-08-06T03:47:35Z
+strongest_falsifier: A_MATCHED_RAW_GIT_OR_GITHUB_FETCH_RETURNS_DIFFERENT_BYTES_FOR_THE_RECORDED_BLOB_SHA_OR_PROVES_THE_WRAPPER_MATERIALLY_TRANSFORMED_OR_OMITTED_REQUESTED_CONTENT_OR_ERROR_CONTEXT
+honest_flaw: THE_DECISION_RESTS_ON_TWO_SMALL_UTF8_SUCCESS_READS_AND_ONE_SYNTHETIC_404_WITHOUT_SEPARATE_PERMISSION_INVALID_REF_BINARY_LARGE_FILE_DIRECTORY_SYMLINK_SUBMODULE_RATE_LIMIT_TRANSIENT_FAILURE_RAW_PARITY_OPERATOR_SAVINGS_OR_CONSUMER_VALUE_TESTS
+next_campaign: X13_GMAIL_SEARCH_READONLY_008
+next_campaign_candidate: Gmail_search_readonly_surface
+next_campaign_phase: PHASE1_PENDING
+review_expiry_utc: 2026-08-13T04:48:13Z
+valid_time_utc: 2026-08-06T04:48:13Z
+recorded_time_utc: 2026-08-06T04:48:13Z
 ---
 
-# X13 CURRENT v127
+# X13 CURRENT v128
 
-The GitHub contents fetch campaign is open at wake 3 of 4 with provisional `ADOPT_WITH_GATES_CATALOG_ONLY`.
+The GitHub contents fetch campaign is closed at wake 4 of 4 with `DEFER_OPERATIONAL_ADOPTION_CATALOG_ONLY`.
 
-Two bounded reads of the same small UTF-8 file returned the same Git blob SHA. The phase-3 synthetic missing-path probe then returned a structured `404 Not Found` error with no retry, fallback, content return, or candidate mutation.
+Two bounded reads of the same small UTF-8 file returned the same Git blob SHA. The synthetic missing-path probe returned a structured `404 Not Found` with no retry, fallback, content return, or candidate mutation.
 
-The connector's failure shape is machine-readable, but GitHub 404 is not authoritative absence: GitHub can also use 404 when private-resource authentication or authorization is insufficient. Consumers must classify 404 as `missing_or_inaccessible`, verify authorization and the exact ref before high-stakes negative claims, and avoid tight-loop retries of an unchanged 404.
+The connector is retained only for bounded, human-reviewed catalog reads under strict gates. Operational adoption was not earned because measured operator relief is zero; there is no bound operational WorkItem, named consumer, or ConsumerAck; effective identity, scopes, SSO context, raw-provider parity, rate-limit state, and direct quota consumption remain unknown.
 
-Adoption and fitness credit remain zero. Phase 4 must decide from existing receipts only, with no additional candidate call.
+The retained Andon is that GitHub `404` is not authoritative absence. Consumers must classify it as `missing_or_inaccessible`, verify authorization and the exact ref before high-stakes negative claims, and avoid tight-loop retries of an unchanged 404.
+
+Adoption and fitness credit remain zero. The next campaign is `X13_GMAIL_SEARCH_READONLY_008`, phase 1 pending.
