@@ -1,0 +1,102 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_GITHUB_CODE_SEARCH_READONLY_009
+candidate: GitHub_repository_scoped_code_search_readonly_surface
+phase: 2
+campaign_wake: 2_of_4
+status: PHASE2_ACCEPTED_WITH_GATES_DRIFT_CANARY_ONLY
+carrier_task_id: 6a55c1733708819185088bf334e33ea5
+carrier_task_id_match: true
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+prior_current_version_expected: 133
+prior_current_blob_sha: 54c4dade5e2267d344770e58c7764f28681be205
+phase1_request_digest_sha256: 2365cb47b5e6d3bd0aad7747c1fdf1ba9645e1e7d7906d189d69836ff84d5347
+phase1_result_summary_digest_sha256: edef35734a05ac00fe1d1d4c1d6912c314dc2c85e9768d7ef9abfbd40e006bbb
+phase1_raw_query_persisted: false
+phase1_digest_canonicalization_persisted: false
+exact_phase1_replay_provable: false
+phase2_reconstructed_query_source: PHASE1_NARRATIVE_DESCRIBED_AN_EXACT_KNOWN_SCHEMA_TOKEN
+phase2_query_utf8: hfo.gen133.x13.cots_connector_event.v1
+phase2_canonical_request_algorithm: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+phase2_canonical_request_json: '{"action":"GitHub.search","query":"hfo.gen133.x13.cots_connector_event.v1","repository_name":"TTaoGaming/hfo-gen-133","topn":3}'
+phase2_request_digest_sha256: 96eff081a79db85b86f44207628b2ab6d83650936843fee3fd3621dd4e0102ce
+search_repository_scope: TTaoGaming/hfo-gen-133
+search_topn: 3
+results_returned: 3
+result_order_preserved: true
+result_paths:
+  - state/coordination/experiments/cots_connector_x13/20260803T224654Z_GMAIL_PHASE2.md
+  - state/coordination/experiments/cots_connector_x13/20260802T024800Z_GITHUB_CONTENTS_PHASE2_MICRO_ARTIFACT.md
+  - state/coordination/experiments/cots_connector_x13/20260803T234714Z_GMAIL_PHASE3.md
+result_commit_sha_observed: b3ff3a2b44e6dd166a3698f8f499bb0694e5d4f9
+phase2_result_canonicalization: ORDERED_ARRAY_OF_ORDER_PATH_COMMIT_UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+phase2_result_summary_digest_sha256: 13defc9a4b8b759b8aba7007aff0c4c2f3b3ecf018715f029201ce11e67e27d6
+cross_wake_digest_comparison: INVALID_PHASE1_CANONICALIZATION_AND_EXACT_QUERY_BYTES_NOT_PERSISTED
+phase1_to_phase2_observable_commit_change: d6029c6c36e29a76f67ce662bc73d016bea14557_TO_b3ff3a2b44e6dd166a3698f8f499bb0694e5d4f9
+latest_repository_commit_observed_after_search: 4f0f47b0cfffde656658c38013e5a6bc36916109
+indexed_commit_to_latest_compare_status: AHEAD
+indexed_commit_to_latest_ahead_by: 8
+indexed_commit_to_latest_behind_by: 0
+measured_fact: SEARCH_RETURNED_THREE_COMMIT_PINNED_PATHS_WHILE_A_SEPARATE_REPOSITORY_COMMIT_READ_SHOWED_THE_BRANCH_EIGHT_COMMITS_AHEAD_OF_THE_INDEXED_RESULT_COMMIT
+andon: PHASE1_DID_NOT_PERSIST_EXACT_QUERY_BYTES_OR_DIGEST_CANONICALIZATION_SO_IDENTICAL_REPLAY_AND_CROSS_WAKE_DIGEST_EQUALITY_CANNOT_BE_PROVEN; SEARCH_INDEX_WAS_EIGHT_COMMITS_BEHIND_LATEST_OBSERVED_REPOSITORY_COMMIT
+interpretation: NORMALIZED_OUTPUT_DRIFT_CANARY_ONLY_NOT_REPEATABILITY_PARITY_COMPLETENESS_FRESHNESS_OR_ABSENCE_EVIDENCE
+candidate_calls_this_phase: 1_READONLY_CODE_SEARCH
+campaign_candidate_calls_total: 2_READONLY_CODE_SEARCH_CALLS
+retries: 0
+fallbacks: 0
+mutations_by_candidate: 0
+content_hydrated_by_candidate: false
+custom_code_avoided_estimate: 40_to_120_LOC_UNVALIDATED
+operator_minutes_removed_measured: 0
+credentials: CONNECTOR_MANAGED_EFFECTIVE_SEARCH_PRINCIPAL_TOKEN_TYPE_SCOPE_SSO_AND_INSTALLATION_CONTEXT_NOT_EXPOSED
+durability: GIT_EVENT_DURABLE_QUERY_AND_CANONICALIZATION_NOW_RECORDED_SEARCH_INDEX_RANKING_AND_RESULTS_MUTABLE
+observability: PATH_URL_RETURN_COUNT_AND_COMMIT_PIN_EXPOSED_TOTAL_COUNT_INCOMPLETE_RESULTS_SCORE_TEXT_MATCHES_INDEX_FRESHNESS_HEADERS_REQUEST_ID_AUTH_CONTEXT_AND_RATE_LIMIT_NOT_EXPOSED
+portability: LOW_TO_MEDIUM_GITHUB_SPECIFIC_INDEX_QUERY_AND_COMMIT_URL_MODEL
+failure_behavior: TWO_SUCCESS_PATHS_ONLY_EMPTY_INVALID_QUERY_PERMISSION_INDEX_UNAVAILABLE_THROTTLE_AND_TRANSIENT_FAILURE_UNTESTED
+paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
+direct_cost_or_quota_evidence: NONE
+quota_contract: GITHUB_EXPOSES_A_DISTINCT_CODE_SEARCH_RATE_LIMIT_RESOURCE_BUT_WRAPPER_DEBIT_UNKNOWN
+catalog_consumer: HFO_COTS_CAPABILITY_INVENTORY_CATALOG_ONLY
+operational_consumer: NOT_ASSIGNED
+consumer_ack: NOT_OBSERVED
+verifier: DISTINCT_RAW_GITHUB_GET_SEARCH_CODE_CALL_UNDER_SAME_EFFECTIVE_PRINCIPAL_WITH_CAPTURED_QUERY_API_VERSION_RESPONSE_ORDER_TOTAL_COUNT_INCOMPLETE_RESULTS_REQUEST_ID_RATE_LIMIT_AND_DEFAULT_BRANCH_HEAD
+verifier_result: NOT_RUN
+provisional_decision: ADOPT_WITH_GATES_CATALOG_ONLY
+adoption_credit: 0
+fitness_credit: 0
+mandatory_gate: RECORD_EXACT_QUERY_BYTES_AND_CANONICALIZATION; VERIFY_DEFAULT_BRANCH_AND_HEAD; TREAT_TOPN_AS_CAP_NOT_COMPLETENESS; TREAT_MATCH_AS_DRIFT_CANARY_ONLY; TREAT_MISMATCH_AS_NONDIAGNOSTIC_DRIFT; RETAIN_COMMIT_PINNED_URL_OR_FETCH_BY_EXPLICIT_REF; REQUIRE_RAW_WITNESS_FOR_CONSEQUENTIAL_NEGATIVE_CLAIMS; DO_NOT_INFER_AUTH_INDEX_FRESHNESS_OR_QUOTA; NO_UNBOUNDED_RETRY
+strongest_falsifier: A_DISTINCT_RAW_GITHUB_SEARCH_WITH_THE_RECORDED_QUERY_AND_SAME_EFFECTIVE_PRINCIPAL_SHOWS_THE_WRAPPER_USED_A_DIFFERENT_QUERY_SCOPE_OR_BACKEND_OR_THAT_THE_COMMIT_PINNED_RESULT_SET_WAS_NOT_THE_RETURNED_ORDER
+honest_flaw: THE_PHASE2_QUERY_WAS_RECONSTRUCTED_FROM_THE_PHASE1_NARRATIVE_BECAUSE_PHASE1_DID_NOT_PERSIST_EXACT_QUERY_BYTES; THE_EIGHT_COMMIT_GAP_IS_A_POINT_OBSERVATION_AND_DOES_NOT_MEASURE_INDEX_AGE_OR_CAUSE; NO_OPERATIONAL_VALUE_OR_RAW_PARITY_WAS_ESTABLISHED
+next_phase: PHASE3_BOUNDED_SYNTHETIC_NONMATCHING_QUERY_OR_INVALID_QUERY_PROBE_WITH_NO_RETRY_AND_CLASSIFY_ZERO_RESULT_OR_ERROR_WITHOUT_ABSENCE_CLAIM
+review_expiry_utc: 2026-08-13T10:50:18Z
+valid_time_utc: 2026-08-06T10:50:18Z
+recorded_time_utc: 2026-08-06T10:50:18Z
+---
+
+# X13 GitHub repository-scoped code search — phase 2 drift canary
+
+## Result
+
+One bounded read-only `GitHub.search` call used repository scope `TTaoGaming/hfo-gen-133`, `topn=3`, and the reconstructed schema-token query `hfo.gen133.x13.cots_connector_event.v1`. It returned three path-only results, all pinned to commit `b3ff3a2b44e6dd166a3698f8f499bb0694e5d4f9`, with no file-body hydration.
+
+A separate repository commit observation found `4f0f47b0cfffde656658c38013e5a6bc36916109`; direct comparison showed that commit was eight commits ahead of the search-result commit. This is direct evidence that the indexed result commit was not the latest observed repository commit at the time of the probe.
+
+## Provenance Andon
+
+Phase 1 stored request and result digests but did not persist the exact query bytes or either digest's canonical serialization. Therefore this wake cannot honestly claim a byte-identical replay or compare the phase-1 and phase-2 digests as equivalent measurements.
+
+This wake repairs the forward contract by recording the exact query and deterministic canonicalization. The observation is classified only as a normalized-output drift canary. A match would not prove deterministic ordering, completeness, freshness, authorization parity, or raw-provider parity; a mismatch would show observable drift but would not identify its cause.
+
+## Official contract boundary
+
+GitHub documents code search as index-derived, non-exhaustive, and default-branch-bound. GitHub also exposes a distinct `code_search` rate-limit resource. The connector returned no `total_count`, `incomplete_results`, provider request ID, authentication context, index-freshness marker, or rate-limit receipt.
+
+Primary references:
+
+- https://docs.github.com/en/search-github/github-code-search/about-github-code-search
+- https://docs.github.com/en/rest/search/search#search-code
+- https://docs.github.com/en/rest/rate-limit/rate-limit
+
+No adoption or fitness credit is issued.
