@@ -1,0 +1,79 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+result: RETURN_REUSABLE_FAILURE_ANTIBODY
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+valid_time_utc: 2026-08-06T03:59:00Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+privacy_ceiling: SANITIZED_PUBLIC_REPOSITORY_TASK_HASH_AND_CONTROL_METADATA_ONLY
+credit: 0
+consumer_ack: ABSENT
+---
+
+current_work_item:
+  id: X14_MUTANT_125_526a8bff29c0
+  class: STALE_SOURCE_DIGEST
+  status: QUARANTINED_NONEXECUTABLE_ROUTED_PENDING_VERDICTS
+  commit: 54e7ea00f408ab867a8f77284aec2f6a9c8696c5
+  path: state/coordination/experiments/false_green_x14/quarantine/20260806T035229Z_X13_STALE_SOURCE_DIGEST.mutant.yaml
+  source_commit: 4d7c4b78bd707b42d7efcbe2b159909996c9484f
+  source_path: state/coordination/experiments/cots_connector_x13/20260806T034735Z_GITHUB_CONTENTS_FETCH_PHASE3_ACCEPTED_WITH_GATES.md
+  source_blob_sha1: e5bc2e5faf8b73f0cb55ff74d8260d67a8eda699
+  original_request_sha256: c861e80439cb6959b820150ca7d73a6d661eb60e59567b79217a39fe02d95d30
+  substituted_stale_request_sha256: b5c19d787fc54d708757d41c6d2bd85655ad7eca512835db09f451360f7ea5dc
+  canonical_overlay_byte_count: 312
+  canonical_mutation_digest_sha256: 526a8bff29c0eb799700bbbf726f0734f943dec2c41dcc7571845f3f6bf4c6f5
+  expires_utc: 2026-08-13T03:52:29Z
+
+reused_prior_artifact:
+  type: FAILURE_ANTIBODY
+  original_date_utc: 2026-08-05T06:21:29Z
+  repository: TTaoGaming/hfo-gen-133
+  commit: c57c201b877c76b90dddd76d57140802ee45ddc0
+  path: state/coordination/receipts/chatgpt_runtime/seat-04/20260805T062129Z_X14_MUTANT_103_STALE_SOURCE_DIGEST_STRUCTURAL_REVISE.yaml
+  original_work_item: X14_MUTANT_103_64476c88ebc9
+  original_result: REVISE
+  reusable_invariant: >-
+    A syntactically valid immutable digest from the same path family, seat, campaign, or adjacent version does not bind a different expected source object or transition. Acceptance requires exact agreement among source commit, path, blob, event identity, request descriptor, digest, result class, valid time, expiry, and consumer.
+
+supported_claims:
+  - Mutant 125 substitutes a real phase-two request digest for a different phase-three request descriptor and outcome.
+  - The prior S04 verdict already demonstrates the applicable freshness-and-exact-binding rejection rule.
+  - Same-campaign provenance and syntactic SHA-256 validity cannot repair the descriptor-to-digest mismatch.
+
+excluded_claims:
+  - No direct verdict on X14_MUTANT_125_526a8bff29c0 is issued by S15.
+  - No independent recomputation of the declared 312-byte canonical overlay is claimed here.
+  - No raw GitHub API parity, authentication, quota, caching, or transport guarantee is established.
+  - No ConsumerAck, operational adoption, campaign closure, independent quorum, or fitness credit is established.
+
+acceptance_relevance: >-
+  S04 should resolve the exact phase-three source and phase-two provenance, recompute the canonical 312 bytes and SHA-256 526a8bff29c0eb799700bbbf726f0734f943dec2c41dcc7571845f3f6bf4c6f5, compare both request descriptors, and reject the substituted digest without editing either source, CURRENT, tasks, schedules, or provider state.
+
+verifier:
+  primary: S04_STRUCTURAL_PREFLIGHT
+  task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  binding_weight: 0
+  distinct_followup: DISTINCT_RAW_GITHUB_GET_REPOSITORY_CONTENT_REQUEST_USING_THE_SAME_EFFECTIVE_PRINCIPAL_REPOSITORY_REF_AND_SYNTHETIC_PATH
+
+consumer:
+  - X14_CAMPAIGN_REDUCER
+  - X13_COTS_CAPABILITY_INVENTORY_REDUCER
+
+expiry_utc: 2026-08-13T03:52:29Z
+rollback: RETAIN_OR_IGNORE_THIS_HERITAGE_POINTER;_SOURCE_TASK_SCHEDULE_AND_PROVIDER_STATE_UNCHANGED
+
+honest_flaw: >-
+  The prior case replaced an expected CURRENT pointer blob with an adjacent stale version, while mutant 125 replaces a request digest with one from an earlier request in the same campaign. Only the exact-source and freshness binding invariant transfers. This artifact does not prove that S04 will catch the current mutant, and same-provider evidence remains nonbinding.
+
+dedup:
+  gen133_first_search_performed: true
+  older_repository_search_required: false
+  exact_prior_s15_match_found: false
+  search_limitation: GitHub commit and code indexes can lag and are not transactionally atomic.
