@@ -1,84 +1,80 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
-experiment_id: X11_DRIVE_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1
-current_version: 127
-accepted_wakes: 3
+experiment_id: X11_GITHUB_CONTENTS_EVENT_POINTER_READBACK_V2
+current_version: 128
+accepted_wakes: 0
 target_wakes_before_decision: 4
-controlled_factor: drive_read_surface
+controlled_factor: git_read_write_surface
 campaign_status: ACTIVE
 current_disposition: null
 prior_campaign:
-  experiment_id: X11_CALENDAR_FIXED_IMPOSSIBLE_MARKER_SEARCH_V2
-  final_version: 124
+  experiment_id: X11_DRIVE_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1
+  final_version: 128
   disposition: KEEP
   accepted_wakes: 4
   decision_event:
-    commit: 61e106a693c7ccbeccb12ceffcadb441ec1ad2c0
-    path: state/coordination/experiments/carrier_surface_x11/events/20260806T003927Z_CALENDAR_FIXED_IMPOSSIBLE_MARKER_SEARCH_V2_WAKE_04_DECISION_KEEP.yaml
-    blob: 6fe25102e1f69ecdba52f9e7ee6006d4827bdcc2
-baseline_result:
-  mode: first_accepted_wake
-  provider_call_success: true
-  sanitized_result_count: 0
-  continuation_present: false
-  permission_class: AUTHENTICATED_GOOGLE_DRIVE_BOUNDED_DOCUMENT_METADATA_SEARCH_READ_AVAILABLE
-  error_class: NONE
-hypothesis: an_authenticated_bounded_google_drive_document_metadata_search_for_one_fixed_impossible_marker_will_repeatably_return_a_sanitized_zero_result_without_fetching_file_content
+    commit: 8850898446f1441277f20f48d8e427116ecf1b57
+    path: state/coordination/experiments/carrier_surface_x11/events/20260806T043921Z_DRIVE_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1_WAKE_04_DECISION_KEEP.yaml
+    blob: cba964724d53476e2d6e956d2424ab021817fcf5
+baseline_result: null
+hypothesis: the_required_git_first_event_create_and_expected_sha_current_update_can_be_exactly_read_back_from_the_canonical_branch_with_matching_payload_version_and_blob_receipts_without_extra_repository_mutation
 measured_result:
-  provider_call_success: [true, true, true]
-  sanitized_result_count: [0, 0, 0]
-  continuation_present: [false, false, false]
-  latencies_ms: [3978, 1592, 1038]
-  permission_class: AUTHENTICATED_GOOGLE_DRIVE_BOUNDED_DOCUMENT_METADATA_SEARCH_READ_AVAILABLE
-  error_class: NONE
+  event_create_success: []
+  event_exact_readback_success: []
+  current_expected_sha_update_success: []
+  current_exact_readback_success: []
+  version_match: []
+  payload_match: []
+  latencies_ms: []
+  permission_class: null
+  error_class: null
   operator_relay_minutes: 0
   changed_capability: false
   campaign_decision: false
   andon: false
-supported_claim: authenticated_bounded_google_drive_document_metadata_search_executed_with_zero_results_and_no_continuation
-claim_ceiling: bounded_metadata_search_execution_and_sanitized_count_visibility_only_not_drive_completeness_search_recall_indexing_freshness_file_content_access_file_authenticity_sharing_visibility_or_independent_verification
-strongest_falsifier: the_drive_surface_is_unavailable_requires_interactive_authentication_returns_nonzero_for_the_fixed_impossible_marker_fetches_file_content_or_exposes_results_outside_the_bounded_query
+supported_claim: null
+claim_ceiling: exact_authenticated_github_contents_create_update_and_readback_receipts_only_not_repository_global_consistency_branch_protection_merge_safety_or_independent_verification
+strongest_falsifier: required_event_create_or_exact_path_readback_fails_current_expected_sha_update_is_rejected_without_concurrency_version_match_or_payload_match_fails_or_any_extra_repository_mutation_occurs
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 consumer: [Reginleif, Ratatoskr]
-honest_flaw: a_zero_result_for_an_impossible_marker_confirms_connector_execution_but_cannot_validate_drive_search_recall_file_content_access_sharing_visibility_or_indexing_freshness
+honest_flaw: successful_same_provider_contents_readback_can_detect_local_write_or_version_mismatch_but_cannot_prove_repository_global_consistency_independent_verification_or_protection_against_other_writers
 last_event:
-  commit: 1f8b7e86100571f30286be325a84fcde6f4a9847
-  path: state/coordination/experiments/carrier_surface_x11/events/20260806T034051Z_DRIVE_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1_WAKE_03.yaml
-  blob: 47e3487b66783c790c830b1f1801f898069da35a
-next_factor: drive_read_surface
+  commit: 8850898446f1441277f20f48d8e427116ecf1b57
+  path: state/coordination/experiments/carrier_surface_x11/events/20260806T043921Z_DRIVE_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1_WAKE_04_DECISION_KEEP.yaml
+  blob: cba964724d53476e2d6e956d2424ab021817fcf5
+next_factor: git_read_write_surface
 next_probe:
-  experiment_id: X11_DRIVE_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1
-  campaign_wake: 4
-  mode: fixed_impossible_marker_metadata_only
-  exact_action: repeat_one_bounded_authenticated_google_drive_document_metadata_search_for_the_fixed_impossible_marker_with_topn_one_and_best_effort_fetch_false_then_write_the_four_wake_campaign_decision_and_select_the_next_factor
-  fixed_query: HFO_X11_DRIVE_FIXED_IMPOSSIBLE_MARKER_5C19A7E2D84F6B30
-  topn: 1
-  item_type: document
-  best_effort_fetch: false
-  expected_current_version: 127
+  experiment_id: X11_GITHUB_CONTENTS_EVENT_POINTER_READBACK_V2
+  campaign_wake: 1
+  mode: required_event_and_pointer_exact_readback
+  exact_action: use_the_required_immutable_event_create_and_expected_sha_current_update_as_the_probe_then_fetch_both_exact_paths_from_the_canonical_branch_and_compare_returned_utf8_payload_version_and_blob_sha_without_any_extra_repository_mutation
+  expected_current_version: 128
   persist_only:
-    - provider_call_success
-    - sanitized_result_count
-    - continuation_present
+    - event_create_success
+    - event_exact_readback_success
+    - current_expected_sha_update_success
+    - current_exact_readback_success
+    - version_match
+    - payload_match
     - permission_class
     - error_class
     - latency_when_exposed
     - operator_relay_minutes
-  privacy_gate: do_not_fetch_or_persist_file_names_content_urls_identifiers_owners_sharing_metadata_or_unrelated_drive_metadata
-  login_or_reauthentication_allowed: false
-  drive_mutation_allowed: false
+  privacy_gate: persist_only_probe_control_fields_digests_and_git_receipts_no_unrelated_repository_content
+  extra_git_mutation_allowed: false
+  branch_creation_allowed: false
+  merge_or_publication_allowed: false
   task_mutation_allowed: false
   slack_write_each_probe_allowed: false
   post_only_changed_capability_campaign_decision_or_andon: true
   sensitive_readback_externalization_allowed: false
   same_provider_independence_claim_allowed: false
-slack_action: NO_POST_UNCHANGED_PROBE
-updated_valid_time_utc: 2026-08-06T03:40:51Z
+slack_action: POST_CAMPAIGN_DECISION
+updated_valid_time_utc: 2026-08-06T04:39:21Z
 sealed: false
 ---
 
-Drive read-surface V1 accepted wake 3. The authenticated connector repeated the fixed bounded
-impossible-marker document-metadata-only search with content fetching disabled, returned zero
-results with no continuation token, and exposed 1038 ms connector latency. Capability was unchanged;
-no Slack post was made. Wake 4 repeats the identical probe, records the campaign decision, and selects
-the next controlled factor.
+Drive read-surface V1 completed four accepted wakes and is retained at the bounded-search claim ceiling.
+All four authenticated document-metadata-only searches returned zero results with no continuation and
+without content fetching or identifier persistence. The next four-wake campaign isolates the required
+GitHub contents event/pointer write and exact readback surface without adding any extra repository mutation.
