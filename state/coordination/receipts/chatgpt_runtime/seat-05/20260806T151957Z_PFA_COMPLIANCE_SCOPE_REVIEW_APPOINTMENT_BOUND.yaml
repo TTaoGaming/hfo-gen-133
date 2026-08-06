@@ -1,0 +1,49 @@
+schema_version: "hfo.gen133.operator_relief_receipt.v1"
+receipt_id: "S05-20260806T151957Z-PFA-COMPLIANCE-SCOPE-REVIEW-BOUND"
+created_at_utc: "2026-08-06T15:19:57Z"
+seat: "S05"
+expected_task_id: "6a55c182078c8191b89f2dd15f5f640c"
+branch: "agent/gen133-bootstrap-20260730"
+wip: 1
+material_change: true
+transition:
+  type: "bind_deadline_appointment"
+  status: "APPOINTMENT_BOUND_NO_SEND"
+  summary: >-
+    Bound a private 15-minute P0 review block immediately before the existing
+    morning follow-up stack. The event points to the exact unsent Gmail draft,
+    preserves SEND | EDIT | DISCARD as the operator decision, and requires an
+    authoritative policy-to-document mapping plus corrected compliance deadline
+    before any further document processing.
+  calendar_event_id: "fefh932htfpu5eibpu63o1vueo"
+  start_local: "2026-08-06T09:30:00-06:00"
+  end_local: "2026-08-06T09:45:00-06:00"
+  visibility: "private"
+  reminders_minutes: [10, 2]
+source_readback:
+  gmail_thread_id: "19fb96ccc41d1a70"
+  gmail_draft_message_id: "19fd3948f60cff41"
+  evidence_class: "conflicting compliance ownership and signed-document scope instructions"
+  private_bodies_externalized: false
+  sensitive_policy_identifiers_externalized: false
+control_state:
+  active_item: "PFA compliance signed-document scope reconciliation"
+  p0: "Obtain authoritative written policy-to-document mapping before further processing"
+  p1:
+    - "Air & Water second mailed-payment receipt readback"
+    - "Fidelity settled-cash and wire-readiness readback"
+operator_relief:
+  estimated_minutes_removed: 7
+  basis: >-
+    Eliminated thread reconstruction, draft hunting, and decision-gate assembly;
+    the operator now has one timed block with exact source pointer and done gate.
+  next_consumer: "Operator at the bound review block, then Var insurance/compliance reconciliation"
+effect_log:
+  email_sent: false
+  application_submitted: false
+  payment_or_spend: false
+  account_or_security_change: false
+  deployment_or_merge: false
+  publication: false
+  destructive_deletion: false
+  automation_task_mutation: false
