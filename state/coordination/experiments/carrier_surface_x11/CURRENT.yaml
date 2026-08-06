@@ -1,8 +1,8 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_DRIVE_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1
-current_version: 125
-accepted_wakes: 1
+current_version: 126
+accepted_wakes: 2
 target_wakes_before_decision: 4
 controlled_factor: drive_read_surface
 campaign_status: ACTIVE
@@ -25,14 +25,14 @@ baseline_result:
   error_class: NONE
 hypothesis: an_authenticated_bounded_google_drive_document_metadata_search_for_one_fixed_impossible_marker_will_repeatably_return_a_sanitized_zero_result_without_fetching_file_content
 measured_result:
-  provider_call_success: [true]
-  sanitized_result_count: [0]
-  continuation_present: [false]
-  latencies_ms: [3978]
+  provider_call_success: [true, true]
+  sanitized_result_count: [0, 0]
+  continuation_present: [false, false]
+  latencies_ms: [3978, 1592]
   permission_class: AUTHENTICATED_GOOGLE_DRIVE_BOUNDED_DOCUMENT_METADATA_SEARCH_READ_AVAILABLE
   error_class: NONE
   operator_relay_minutes: 0
-  changed_capability: true
+  changed_capability: false
   campaign_decision: false
   andon: false
 supported_claim: authenticated_bounded_google_drive_document_metadata_search_executed_with_zero_results_and_no_continuation
@@ -42,20 +42,20 @@ verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 consumer: [Reginleif, Ratatoskr]
 honest_flaw: a_zero_result_for_an_impossible_marker_confirms_connector_execution_but_cannot_validate_drive_search_recall_file_content_access_sharing_visibility_or_indexing_freshness
 last_event:
-  commit: ca46812412ee6dbd72827618684b8539ce23d198
-  path: state/coordination/experiments/carrier_surface_x11/events/20260806T013921Z_DRIVE_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1_WAKE_01.yaml
-  blob: ad617a0b381d516167e40d999bb25fc252c41b6d
+  commit: fe1849b2192c19957493e85bffbcb07fcc4bdbc4
+  path: state/coordination/experiments/carrier_surface_x11/events/20260806T024201Z_DRIVE_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1_WAKE_02.yaml
+  blob: d0a1bfaa1aaa8103f5120bea7698d93f0b885f50
 next_factor: drive_read_surface
 next_probe:
   experiment_id: X11_DRIVE_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1
-  campaign_wake: 2
+  campaign_wake: 3
   mode: fixed_impossible_marker_metadata_only
   exact_action: repeat_one_bounded_authenticated_google_drive_document_metadata_search_for_the_fixed_impossible_marker_with_topn_one_and_best_effort_fetch_false_then_persist_only_sanitized_count_and_continuation_presence
   fixed_query: HFO_X11_DRIVE_FIXED_IMPOSSIBLE_MARKER_5C19A7E2D84F6B30
   topn: 1
   item_type: document
   best_effort_fetch: false
-  expected_current_version: 125
+  expected_current_version: 126
   persist_only:
     - provider_call_success
     - sanitized_result_count
@@ -72,14 +72,12 @@ next_probe:
   post_only_changed_capability_campaign_decision_or_andon: true
   sensitive_readback_externalization_allowed: false
   same_provider_independence_claim_allowed: false
-slack_action: POST_CAPABILITY_DELTA
-updated_valid_time_utc: 2026-08-06T01:39:21Z
+slack_action: NO_POST_UNCHANGED_PROBE
+updated_valid_time_utc: 2026-08-06T02:42:01Z
 sealed: false
 ---
 
-Drive read-surface V1 accepted wake 1. The authenticated connector executed the fixed bounded
+Drive read-surface V1 accepted wake 2. The authenticated connector repeated the fixed bounded
 impossible-marker document-metadata-only search with content fetching disabled, returned zero
-results with no continuation token, and exposed 3978 ms connector latency. This supports only
-bounded metadata-search execution and sanitized count visibility; it does not establish Drive
-completeness, recall, freshness, content access, authenticity, sharing visibility, or independent
-verification. Wake 2 repeats the identical probe.
+results with no continuation token, and exposed 1592 ms connector latency. Capability was unchanged;
+no Slack post was made. Wake 3 repeats the identical probe.
