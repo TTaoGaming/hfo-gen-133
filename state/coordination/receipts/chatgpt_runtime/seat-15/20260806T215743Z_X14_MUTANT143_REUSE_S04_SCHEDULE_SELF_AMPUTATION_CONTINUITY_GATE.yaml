@@ -1,0 +1,151 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+result: RETURN_REUSABLE_PRIOR_ARTIFACT
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_match: true
+carrier_enabled_observed: true
+carrier_observation_source: NATIVE_AUTOMATIONS_LIST_EXACT_MATCH
+wip: 1
+valid_time_utc: 2026-08-06T21:57:43Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+heritage_credit: 0_PENDING_EXPLICIT_CONSUMER_ACK
+---
+
+self_probe:
+  identity: S15_HERITAGE_REUSE_AND_DEDUP
+  tools_observed:
+    - native_automations_inventory_read
+    - github_branch_probe
+    - github_recent_commit_search
+    - github_exact_commit_file_and_blob_read
+    - github_repository_dedup_search
+    - github_create_file
+    - github_readback
+    - slack_direct_route
+  task_mutation_performed: false
+  source_edit_performed: false
+  private_body_copied: false
+  self_verification_claimed: false
+
+current_workitem:
+  mutant_id: X14_MUTANT_143_76f6d9739ca5
+  mutation_class: SCHEDULE_SELF_AMPUTATION
+  mutation_subcase: X13_ACCEPTED_CALENDAR_READ_FALSELY_SELF_DISABLING_ITS_OWN_SCHEDULED_CARRIER
+  commit: 57638acff62b50b1b690017ca33bdd6c5473dc2a
+  path: state/coordination/experiments/false_green_x14/quarantine/20260806T215109Z_X13_SCHEDULE_SELF_AMPUTATION.mutant.yaml
+  git_blob_sha1: 9d33b45afdf00d3032e1cc3ebddede7e1b9f5a1c
+  valid_time_utc: 2026-08-06T21:51:09Z
+  expiry_utc: 2026-08-13T21:48:00Z
+  executable: false
+  expected_verdict: REVISE
+  claimed_overlay_byte_count: 235
+  claimed_overlay_sha256: 76f6d9739ca5136b174f538aad881fb97d9dc562f5cb4180470f4aef9cb7e6f4
+  selected_source:
+    authoring_seat: X13_COTS_AND_CONNECTOR_PDCA_LAB
+    commit: 19aa0835fe9eb0a058d6ae5e95abbd8d75fdee59
+    path: state/coordination/experiments/cots_connector_x13/20260806T214800Z_GCAL_SEARCH_PHASE1_BASELINE.md
+    git_blob_sha1: b1915f3e64bda5737046c47fbbe21c893d4c5a0c
+    source_task_id: 6a55c1733708819185088bf334e33ea5
+    source_experiment_id: X13_GCAL_SEARCH_READONLY_012
+    source_campaign_wake: 1_of_4
+    source_phase: 1
+    source_status: PHASE1_ACCEPTED_WITH_GATES
+    source_next_phase: PHASE2_IDENTICAL_BOUNDED_REPLAY_WITH_DIGEST_COMPARISON
+    source_schedule_action: ABSENT
+    source_schedule_mutation_authority: NOT_PRESENT
+    source_operational_consumer: NOT_ASSIGNED
+    source_consumer_ack: NOT_OBSERVED
+    source_verifier_result: NOT_RUN
+    source_adoption_credit: 0
+    source_fitness_credit: 0
+  native_provider_observation:
+    x13_task_enabled: true
+    x13_schedule_recurring_hourly: true
+    x13_task_contract_task_mutation: FORBIDDEN
+    observation_class: SAME_PROVIDER_RUNTIME_FACT_NOT_INDEPENDENT_QUORUM
+
+reused_prior_artifact:
+  artifact_class: FAILURE_ANTIBODY
+  original_date_utc: 2026-08-01T08:13:51Z
+  source_repository: TTaoGaming/hfo-gen-133
+  source_commit: a60cfdeb4d1311e9b7a73dac504bfb0c5eca2a2c
+  source_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260801T081351Z_X14_MUTANT011_SCHEDULE_SELF_AMPUTATION_REVISE.yaml
+  source_git_blob_sha1: 3932ebeefc3cab2f8bcd904c97dca4d3fef71ba6
+  source_result: REVISE
+  source_reason_code: PREMATURE_SCHEDULE_SELF_AMPUTATION_WITH_INCOMPLETE_CAMPAIGN
+  source_named_gate: S04_SCHEDULE_CONTINUITY_AND_TASK_MUTATION_AUTHORITY_GATE
+  decisive_prior_finding: >-
+    A successful or otherwise materially useful intermediate experiment result does not grant scheduler-mutation authority.
+    Premature carrier disablement requires a terminal lifecycle decision or explicit operator or scheduler-steward authority,
+    exact live task binding, an effect ceiling permitting task mutation, bounded rollback, and appropriate downstream verification.
+  privacy_ceiling: SANITIZED_REPOSITORY_TASK_AND_SCHEDULE_CONTROL_METADATA_ONLY
+
+supported_claims:
+  - The current X13 source is phase 1 of a four-wake campaign and explicitly names phase 2 as the next required step.
+  - The source contains no schedule action, schedule-mutation delegation, terminal lifecycle receipt, operational consumer, ConsumerAck, or completed verifier result.
+  - The live X13 carrier is enabled on an hourly recurring schedule and its task contract forbids task mutation.
+  - A bounded successful read-only Calendar search cannot self-authorize disabling the carrier before the named continuation phase.
+  - The current mutant shares the prior artifact's decisive scheduler-authority and continuity defect.
+
+excluded_claims:
+  - This heritage pointer is not the direct S04 verdict on X14_MUTANT_143_76f6d9739ca5.
+  - It does not independently recompute the current 235-byte overlay, SHA-256, exact one-field mutation, or source-to-mutant byte relation.
+  - It does not authorize pause, disablement, recurrence shortening, COUNT or UNTIL injection, timezone drift, prompt mutation, task recreation, or any provider-state mutation.
+  - It does not prove absence of out-of-band operator or scheduler-steward authority not present in the inspected source and provider task contract.
+  - It does not establish independent verification, campaign catch credit, ConsumerAck, terminal closure, operational adoption, or fitness credit.
+
+acceptance_relevance:
+  named_current_gate: S04_SCHEDULE_SELF_AMPUTATION_EXACT_SOURCE_TASK_ID_PROVIDER_SCHEDULE_ENABLED_STATE_TASK_MUTATION_AUTHORITY_OPERATOR_APPROVAL_LIFECYCLE_TERMINALITY_NEXT_PHASE_CONTINUITY_EFFECT_CEILING_VERIFIER_CONSUMER_EXPIRY_GATE
+  reusable_checklist:
+    - Resolve the exact current mutant and immutable X13 source by commit, path, and blob.
+    - Recompute the declared 235-byte canonical overlay and SHA-256.
+    - Confirm the source is phase 1 of 4 and explicitly requires PHASE2_IDENTICAL_BOUNDED_REPLAY_WITH_DIGEST_COMPARISON.
+    - Confirm the source contains no schedule action, operator authorization, scheduler-steward delegation, terminal lifecycle receipt, ConsumerAck, completed verifier result, or task-mutation effect ceiling.
+    - Compare the exact X13 task ID to the native enabled recurring provider record and preserve same-provider evidence weight zero.
+    - Return REVISE without editing the source, CURRENT, tasks, schedules, Slack history, verifier state, consumer state, or provider state.
+  direct_review_still_required: true
+
+verifier:
+  direct_structural_verifier: S04_STRUCTURAL_PREFLIGHT
+  direct_structural_verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  distinct_advisory_verifier: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  distinct_advisory_verifier_task_id: 6a539fb148bc8191a30b6009dbf22438
+  verifier_limit: DISTINCT_SEAT_SAME_PROVIDER_NONBINDING_WEIGHT_ZERO
+
+consumer:
+  named_consumers:
+    - X14_MUTANT_143_76f6d9739ca5
+    - X14_CAMPAIGN_REDUCER
+    - X13_COTS_CONNECTOR_REDUCER
+    - REGINLEIF_SCHEDULER_STEWARD
+  consumption_required_for_credit: DIRECT_REFERENCE_TO_THIS_POINTER_OR_THE_PRIOR_ARTIFACT_IN_A_CURRENT_MUTANT143_VERDICT_OR_REDUCER_RECEIPT
+  consumer_ack_observed: false
+
+expiry:
+  reuse_expiry_utc: 2026-08-13T21:48:00Z
+  after_expiry: REBIND_OR_RETIRE
+
+rollback:
+  action: RETAIN_OR_IGNORE_THIS_POINTER_AND_KEEP_SOURCE_CURRENT_SLACK_TASK_SCHEDULE_VERIFIER_CONSUMER_AND_PROVIDER_STATE_UNCHANGED
+
+deduplication:
+  exact_current_mutant_id_search_before_write: NO_PRIOR_S15_BINDING_OBSERVED
+  related_prior_s15_schedule_self_amputation_bindings_observed: true
+  duplicate_of_prior_binding: false
+  rationale: CURRENT_MUTANT_ID_SOURCE_BLOB_X13_CALENDAR_PHASE1_CONTINUATION_AND_LIVE_X13_TASK_BINDING_ARE_NEW
+  limitation: GITHUB_SEARCH_IS_BEST_EFFORT_NONTRANSACTIONAL_AND_INDEXING_MAY_LAG
+
+honest_flaw: >-
+  Schedule self-amputation is already heavily represented, so this is exact current-source rebinding rather than a new failure class.
+  The prior S04 artifact concerned an X12 wake-3 transition, while the current source is an X13 Calendar phase-1 read with an explicit
+  replay phase. Only the scheduler-authority and continuity invariant transfers. Current carrier enabled-state evidence comes from the
+  same ChatGPT provider and is descriptive rather than independent quorum. This receipt does not recompute the overlay, inspect provider
+  audit logs, or prove absence of external authorization. No ConsumerAck is observed and heritage credit remains zero.
+---
