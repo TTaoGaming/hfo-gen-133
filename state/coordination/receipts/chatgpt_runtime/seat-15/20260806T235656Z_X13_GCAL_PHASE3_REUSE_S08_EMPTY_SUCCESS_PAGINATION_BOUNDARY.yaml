@@ -1,0 +1,79 @@
+schema_id: hfo.gen133.s15.heritage_reuse_receipt.v1
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_match: true
+wip: 1
+result: RETURN_REUSABLE_PRIOR_ARTIFACT
+heritage_credit: 0
+heritage_credit_reason: NAMED_CURRENT_WORKITEM_PRESENT_BUT_EXPLICIT_SOURCE_POINTER_CONSUMER_ACK_NOT_OBSERVED
+
+current_workitem:
+  id: X13_GCAL_SEARCH_READONLY_012
+  phase_observed: 3_of_4
+  current_version: 147
+  status: ACTIVE
+  source_commit: 34ee7bc82b3844ae1e2923adc9829f619e047c92
+  source_path: state/coordination/experiments/cots_connector_x13/20260806T234800Z_GCAL_SEARCH_PHASE3_SYNTHETIC_EMPTY.md
+  source_blob_sha: 0cbff37deddeef4871f85f1b2743b2c4247e45dc
+  acceptance_relevance: >-
+    Phase 4 should preserve the distinction between EMPTY_SUCCESS_OBSERVED and authoritative absence.
+    Zero returned events are only interpretable with the exposed next-page-token and connector-error fields,
+    while completeness, authorization, indexing freshness, other-calendar behavior, and raw-provider parity stay open.
+
+reused_artifact:
+  original_date_utc: 2026-08-06T23:28:00Z
+  repository: TTaoGaming/hfo-gen-133
+  commit: 5f132a4d0f2b43aaa52173ad79a158083dd22fa5
+  path: state/coordination/receipts/chatgpt_runtime/seat-08/20260806T232800Z_S08_GCAL_PHASE3_SYNTHETIC_NONMATCH_PAGINATION_BOUNDARY_EVIDENCE_CARD.md
+  blob_sha: 98d4a9eec3afa2fdeda543a9b7c3aeff192347c7
+  artifact_class: EMPTY_OR_ERROR_SHAPE_PROBE_WITH_NEXT_PAGE_TOKEN_GATE
+  prior_consumer: X13_GCAL_SEARCH_READONLY_012_PHASE3_SYNTHETIC_NONMATCH_EMPTY_OR_ERROR_SHAPE_GATE
+
+supported_claims:
+  - A bounded synthetic query can characterize the exposed wrapper branch as empty, nonempty, or error for that exact request.
+  - When item count is zero, next_page_token must remain a semantic gate; zero items alone is not completeness evidence.
+  - The observed X13 phase-3 tuple of zero events, null next-page token, and no connector error supports EMPTY_SUCCESS_OBSERVED for that exact bounded call.
+  - EMPTY_SUCCESS_OBSERVED remains distinct from connector failure.
+
+excluded_claims:
+  - Calendar-wide or workspace-wide absence.
+  - Complete traversal or complete search corpus coverage.
+  - Exact q tokenization, literal matching, escaping, stemming, case folding, or query translation.
+  - Effective OAuth principal, scopes, private-event visibility, provider request identity, or actual quota debit.
+  - Index freshness, other-calendar behavior, permission-denial behavior, rate-limit behavior, transient-failure behavior, or raw-provider parity.
+  - Operational time savings, adoption, ConsumerAck, or fitness credit.
+
+privacy_ceiling: >-
+  Sanitized repository pointers, hashes, counts, request bounds, page-token presence/absence, error class,
+  and claim ceilings only. No Calendar event titles, descriptions, attendees, locations, organizer data,
+  URLs, raw event bodies, credentials, tokens, or private source-system content may be copied.
+
+verifier: DISTINCT_SAME_PRINCIPAL_RAW_CALENDAR_V3_EVENTS_LIST_EXACT_Q_WINDOW_MAXRESULTS_AND_PAGETOKEN_VERIFIER
+consumer:
+  - X13_GCAL_SEARCH_READONLY_012_PHASE4_DECISION_GATE
+  - HFO_COTS_CAPABILITY_INVENTORY
+consumer_ack: NOT_OBSERVED
+expiry_utc: 2026-08-13T21:48:00Z
+
+dedup:
+  gen133_first: true
+  prior_s15_binding_match_found: false
+  search_key: 5f132a4d_X13_GCAL_PHASE3_S08_EMPTY_SUCCESS_PAGINATION_BOUNDARY
+  older_history_searched: false
+
+honest_flaw: >-
+  The S08 card recommended max_results=1 and a freshly generated zzq-plus-32-hex token. The actual X13 phase-3
+  call used result_cap=3 and a different synthetic token. Therefore only the general empty/error/page-token claim
+  boundary transfers. The prior card does not prove that the exact X13 token had minimal collision probability,
+  and S15 did not rerun Calendar or independently verify provider parity.
+
+self_probe:
+  task_inventory_read: true
+  github_read_write_available: true
+  slack_read_write_surface_available: true
+  calendar_not_used_by_s15: true
+  drive_not_used_by_s15: true
+  file_library_not_used_by_s15: true
+
+valid_time_utc: 2026-08-06T23:56:56Z
