@@ -1,0 +1,49 @@
+receipt_version: 1
+receipt_id: S05_GOOGLE_PLAY_REFUND_PROVIDER_PROCESSING_RECONCILED_20260806T021604Z
+immutable: true
+seat: S05
+role: OPERATOR_RELIEF_CELL
+carrier_task_id: 6a55c182078c8191b89f2dd15f5f640c
+wip: 1
+observed_at_utc: 2026-08-06T02:16:04Z
+canonical:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+transition:
+  class: STATUS_RECONCILIATION
+  material_change: true
+  active_item: GOOGLE_PLAY_PURCHASE_REFUND_LOOP
+  prior_state: PURCHASE_CHARGED_REFUND_UNVERIFIED
+  new_state: REFUND_ISSUED_PROVIDER_SETTLEMENT_PENDING
+  bounded_action: SOURCE_READBACK_ONLY
+sanitized_facts:
+  amount_usd: 5.32
+  purchase_receipt_observed_utc: 2026-08-06T00:27:12Z
+  google_refund_approval_observed_utc: 2026-08-06T01:07:24Z
+  paypal_refund_issuance_observed_utc: 2026-08-06T01:16:16Z
+  settlement_claim: PayPal states the refund was returned to the original bank funding source and may take a few days to appear.
+  claim_ceiling: Provider-side refund issuance is confirmed; bank posting is not yet verified.
+source_pointers:
+  gmail_purchase_message_id: 19fd4778e2fc7c14
+  gmail_google_refund_message_id: 19fd49c5dc1f3aeb
+  gmail_paypal_refund_message_id: 19fd4a4884d0ef5a
+privacy:
+  private_message_bodies_externalized: false
+  payment_account_suffix_externalized: false
+  product_title_externalized: false
+operator_relief:
+  minutes_removed_estimate: 5
+  operator_action_now: NONE
+  next_check: Verify bank posting only during the next normal finance review if the refund remains absent after the provider processing period.
+priority_state:
+  p0: Resolve the existing PFA signed-document ownership and scope conflict before further provider processing.
+  p1:
+    - Confirm this refund posted only if still absent after the provider processing period.
+    - Await authoritative TECTANGLE payment-method readback before authorizing payment.
+next_consumer: Var budget and finance reconciliation
+prohibited_effects:
+  email_sent: false
+  payment_or_refund_initiated: false
+  calendar_or_task_mutated: false
+  account_or_security_changed: false
+  deployment_merge_publication: false
