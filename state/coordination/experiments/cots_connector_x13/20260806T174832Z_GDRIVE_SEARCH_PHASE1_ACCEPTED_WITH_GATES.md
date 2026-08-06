@@ -1,0 +1,107 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_GDRIVE_SEARCH_READONLY_011
+event_type: PHASE1_BASELINE
+campaign_wake: 1_of_4
+candidate: Google_Drive_search_readonly_surface
+phase_status: PHASE1_ACCEPTED_WITH_GATES
+provisional_decision: ADOPT_WITH_GATES_CATALOG_ONLY
+carrier_task_id: 6a55c1733708819185088bf334e33ea5
+carrier_task_id_match: true
+wip: 1
+prior_current_version: 140
+expected_current_version: 141
+candidate_calls_this_phase: 1
+successful_nonempty_calls: 1
+successful_empty_calls: 0
+connector_errors_observed: 0
+retries_total: 0
+fallbacks_total: 0
+candidate_mutations_total: 0
+content_hydration_calls: 0
+request_query_utf8_sha256: d760c5526d52f31070f11bb99528e3a3fef79a3200a390c0ac2b148540346b9c
+request_canonical_json_sha256: 79767544a7dad65b37076f7451004ef150c34b34a0004b963d3435865934cf44
+normalized_result_sha256: bf2c598f6fcb44b8ab456bec613adca06d05f43473e75f2943bbf3dbaeace43b
+normalization_contract: ORDERED_RESULTS_WITH_SORTED_JSON_KEYS_AND_COMPACT_SEPARATORS_OVER_ID_TITLE_URL_PARENT_IDS
+query_text_persisted: HFO
+result_cap: 3
+returned_results: 3
+item_type_requested: document
+metadata_only_requested: true
+require_viewed_by_user: false
+page_token_supplied: false
+next_page_token_exposed: false
+raw_result_ids_persisted: false
+raw_parent_ids_persisted: false
+measured_fact: ITEM_TYPE_DOCUMENT_RETURNED_ONE_GOOGLE_SHEETS_URL_AND_TWO_MARKDOWN_NAMED_GENERIC_DRIVE_FILES_SO_DOCUMENT_IS_A_WRAPPER_CATEGORY_NOT_A_GOOGLE_DOCS_ONLY_TYPE
+andon: WRAPPER_QUERY_MAPPING_RESULT_ORDER_MIME_CLASSIFICATION_EFFECTIVE_ACCESS_SCOPE_AND_COMPLETENESS_ARE_NOT_EXPOSED; ITEM_TYPE_DOCUMENT_MUST_NOT_BE_INTERPRETED_AS_GOOGLE_DOCS_MIME_ONLY
+custom_code_avoided_estimate: 50_to_150_LOC_UNVALIDATED
+operator_minutes_removed_measured: 0
+credentials: CONNECTOR_MANAGED_EFFECTIVE_IDENTITY_SCOPE_TOKEN_TYPE_STORAGE_PROJECT_DRIVE_BINDING_AND_PROVIDER_MAPPING_UNKNOWN
+durability: GIT_EVENT_DURABLE_DRIVE_FILE_IDS_USUALLY_STABLE_BUT_FILES_PERMISSIONS_PARENTAGE_SEARCH_INDEX_ORDER_AND_ACCESS_STATE_MUTABLE; NO_PROVIDER_REVISION_OR_ETAG_RECEIPT
+observability: RESULT_COUNT_ID_TITLE_URL_AND_PARENT_IDS_EXPOSED; MIME_TYPE_MODIFIED_TIME_OWNERS_DRIVE_ID_RESOURCE_KEY_ETAG_PROVIDER_FIELDS_NEXT_PAGE_TOKEN_REQUEST_ID_HEADERS_EFFECTIVE_PRINCIPAL_SCOPE_QUOTA_DEBIT_RETRY_AUDIT_AND_INDEX_FRESHNESS_NOT_EXPOSED
+portability: LOW_TO_MEDIUM_DUE_TO_WRAPPER_QUERY_SEMANTICS_ITEM_TYPE_TAXONOMY_GOOGLE_FILE_IDS_PARENT_IDS_AND_OPAQUE_PROVIDER_PAGINATION
+failure_behavior: ONE_NONEMPTY_METADATA_ONLY_SUCCESS_OBSERVED; EMPTY_PERMISSION_DENIAL_MALFORMED_QUERY_RATE_LIMIT_TRANSIENT_FAILURE_PAGINATION_AND_RAW_PROVIDER_PARITY_UNTESTED
+paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
+direct_cost_or_quota_evidence: NONE
+nominal_quota_contract_evidence: OFFICIAL_DRIVE_FILES_LIST_COSTS_100_QUOTA_UNITS_PER_REQUEST_AS_OF_2026_05_01_ONLY_IF_CONNECTOR_MAPS_ONE_TO_ONE_TO_FILES_LIST; CONNECTOR_MAPPING_AND_ACTUAL_DEBIT_UNKNOWN
+catalog_consumer: HFO_COTS_CAPABILITY_INVENTORY_CATALOG_ONLY
+operational_consumer: NOT_ASSIGNED
+consumer_ack: NOT_OBSERVED
+verifier: MATCHED_RAW_GOOGLE_DRIVE_V3_FILES_LIST_UNDER_SAME_EFFECTIVE_PRINCIPAL_WITH_EXPLICIT_Q_FIELDS_SPACES_CORPORA_PAGE_SIZE_AND_PAGE_TOKEN
+verifier_result: NOT_RUN
+adoption_credit: 0
+fitness_credit: 0
+mandatory_gates: METADATA_ONLY_BY_DEFAULT; TREAT_TOPN_AS_OUTPUT_CAP_NOT_COMPLETENESS; HANDLE_NEXT_PAGE_TOKEN_EXPLICITLY_WHEN_EXPOSED; DO_NOT_PERSIST_OPAQUE_PAGE_TOKEN_AS_DURABLE_STATE; TREAT_ITEM_TYPE_DOCUMENT_AS_WRAPPER_CATEGORY_NOT_GOOGLE_DOCS_ONLY; TREAT_RESULTS_AS_ACCESS_AND_INDEX_DEPENDENT_DISCOVERY; VERIFY_CONSEQUENTIAL_CLAIMS_WITH_MATCHED_RAW_PROVIDER_OR_DIRECT_FILE_METADATA_READ; DO_NOT_INFER_IDENTITY_SCOPE_PROJECT_CORPUS_QUERY_MAPPING_MIME_TYPE_INDEX_FRESHNESS_OR_QUOTA_FROM_SUCCESS; NO_UNBOUNDED_RETRY
+strongest_falsifier: A_MATCHED_RAW_DRIVE_V3_FILES_LIST_UNDER_THE_SAME_EFFECTIVE_PRINCIPAL_RETURNS_MATERIALLY_DIFFERENT_FILES_ORDER_PAGINATION_STATE_OR_MIME_CLASSIFICATION_OR_SHOWS_THE_WRAPPER_QUERY_SCOPE_DIFFERS
+honest_flaw: ONE_KNOWN_TOKEN_METADATA_ONLY_SEARCH_WITH_A_THREE_RESULT_CAP_DID_NOT_TEST_EMPTY_RESULTS_PERMISSION_BOUNDARIES_SHARED_DRIVE_VARIANCE_QUERY_ESCAPING_PAGINATION_INDEX_LAG_THROTTLING_TRANSIENT_FAILURE_RAW_PROVIDER_PARITY_OPERATOR_SAVINGS_OR_OPERATIONAL_CONSUMER_VALUE
+official_contract_sources:
+  - https://developers.google.com/workspace/drive/api/guides/search-files
+  - https://developers.google.com/workspace/drive/api/reference/rest/v3/files/list
+  - https://developers.google.com/workspace/drive/api/guides/limits
+next_phase: PHASE2_IDENTICAL_BOUNDED_METADATA_ONLY_REPLAY_AND_DIGEST_COMPARISON
+valid_time_utc: 2026-08-06T17:48:32Z
+recorded_time_utc: 2026-08-06T17:48:32Z
+---
+
+# X13 Google Drive search phase 1 — accepted with gates
+
+One bounded read-only Google Drive metadata search was executed with query `HFO`, `topn=3`, `item_type=document`, no page token, and content hydration disabled.
+
+## Direct baseline
+
+| Measure | Result |
+|---|---:|
+| Search calls | 1 |
+| Returned metadata results | 3 |
+| Content hydration | 0 |
+| Retries / fallbacks / mutations | 0 / 0 / 0 |
+| Operator minutes removed | 0 |
+| Custom code avoided | 50–150 LOC, unvalidated |
+| Surfaced paid cost | $0 |
+| Direct quota receipt | None |
+| Adoption / fitness credit | 0 / 0 |
+
+The wrapper returned file IDs, titles, URLs, and parent IDs. It did not expose MIME type, modification time, owners, Drive ID, resource key, ETag, provider request metadata, effective principal or scopes, quota debit, index freshness, or a visible next-page token.
+
+## Measured connector variance
+
+The requested wrapper category was `item_type=document`, yet the three results included one Google Sheets URL and two `.md`-named generic Drive files. Therefore `document` is a connector taxonomy, not proof of Google Docs MIME type. Consumers must not translate that category into `application/vnd.google-apps.document` without an explicit metadata witness.
+
+## Official contract boundary
+
+Google Drive v3 search is implemented through `files.list` with a `q` filter. The provider may return fewer items than the requested page size, and a populated `nextPageToken` means the result set is incomplete and another page is required. Search can target names, metadata, and indexed full text depending on the explicit query expression. This wrapper did not disclose its `q`, `fields`, `spaces`, `corpora`, order, or provider method mapping.
+
+Google's current usage documentation states that list operations such as `files.list` cost 100 quota units per request under the quota model updated May 1, 2026. That is only nominal contract evidence: the connector supplied no direct debit receipt and may not map one-to-one to `files.list`.
+
+## Gates
+
+Keep searches metadata-only by default. Treat `topn` as a cap, never completeness evidence. Handle a returned page token explicitly but do not treat it as durable state. Treat results as access- and index-dependent discovery. For consequential claims, use a matched raw-provider witness or direct file metadata read. Do not infer identity, scopes, project, corpus, MIME type, query mapping, freshness, or quota from wrapper success.
+
+## Honest flaw
+
+This was one known-token search with a three-result cap. It did not test empty behavior, access denial, shared-drive variance, escaping, pagination, rate limits, transient failures, raw-provider parity, measured time savings, or operational consumer value.
+
+## Next
+
+Repeat the exact bounded metadata-only request once, compare the normalized ordered-result digest, and record drift without claiming completeness or determinism.
