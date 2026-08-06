@@ -1,48 +1,82 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
-experiment_id: X11_WEB_FIXED_RFC_EDITOR_READ_V1
-current_version: 143
-accepted_wakes: 3
+experiment_id: X11_PROJECT_CONTEXT_EXPLICIT_VISIBILITY_V1
+current_version: 144
+accepted_wakes: 0
 target_wakes_before_decision: 4
-controlled_factor: web_research_surface
+controlled_factor: project_context_surface
 campaign_status: ACTIVE
 current_disposition: null
-baseline_result: prior_campaign_KEEP_native_Tasks_visibility_4_of_4
-hypothesis: fixed_read_only_RFC_Editor_RFC2606_HTML_open_repeatably_resolves_official_host_and_fixed_title_marker
+prior_campaign:
+  experiment_id: X11_WEB_FIXED_RFC_EDITOR_READ_V1
+  final_version: 144
+  disposition: KEEP
+  accepted_wakes: 4
+  decision_event:
+    commit: ea8fecc9a41a5338472238e46a9b18a184a9692c
+    path: state/coordination/experiments/carrier_surface_x11/events/20260806T203958Z_WEB_FIXED_RFC_EDITOR_READ_V1_WAKE_04_DECISION_KEEP.yaml
+    blob: ffa76a8ee22983f12511ae14933a9d650092833c
+baseline_result: four_identical_fixed_public_RFC_Editor_URL_retrievals_resolved_the_official_host_and_exposed_the_fixed_title_marker_with_zero_operator_relay_and_no_private_content_or_external_mutation
+hypothesis: an_explicit_project_context_identifier_or_project_nonproject_marker_may_be_readably_exposed_to_the_carrier_without_task_context_or_account_mutation;_if_not_exposed_that_absence_is_the_measurement
 measured_result:
-  provider_call_success: [true, true, true]
-  official_host_boolean: [true, true, true]
-  fixed_marker_present: [true, true, true]
-  latencies_ms: [null, null, null]
-  latency_note: web_retrieval_latency_not_exposed
-  permission_class: PUBLIC_WEB_FIXED_URL_READ_AVAILABLE
-  error_class: NONE
+  explicit_project_context_marker_exposed: []
+  project_identifier_exposed: []
+  latencies_ms: []
+  permission_class: UNMEASURED
+  error_class: UNMEASURED
   operator_relay_minutes: 0
   changed_capability: false
   campaign_decision: false
   andon: false
-supported_claim: three_identical_fixed_public_RFC_Editor_URL_retrievals_resolved_official_host_and_exposed_fixed_title_marker
-claim_ceiling: three_fixed_public_page_retrievals_only_not_search_breadth_freshness_browser_parity_general_internet_access_network_independence_or_source_authenticity
-strongest_falsifier: fixed_URL_fails_resolves_outside_official_host_or_fixed_marker_is_absent
+supported_claim: no_project_context_surface_claim_yet_campaign_initialized_only
+claim_ceiling: no_claim_beyond_campaign_initialization_until_the_read_only_visibility_probe_executes
+strongest_falsifier: an_explicit_project_context_marker_is_exposed_but_the_carrier_fails_to_detect_it_or_detection_requires_task_context_account_mutation_interactive_login_or_sensitive_externalization
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
-consumer: [Reginleif, Ratatoskr]
-honest_flaw: three_identical_fixed_public_page_reads_still_test_only_a_narrow_retrieval_path
+consumer:
+  - Reginleif
+  - Ratatoskr
+honest_flaw: this_probe_can_measure_only_explicitly_exposed_project_context_metadata_and_cannot_infer_hidden_project_assignment_or_compare_project_versus_nonproject_execution_without_authorized_reseating
 last_event:
-  commit: a164a3f53c98b4530632c5b715bdbecee1ac1ef7
-  path: state/coordination/experiments/carrier_surface_x11/events/20260806T193907Z_WEB_FIXED_RFC_EDITOR_READ_V1_WAKE_03.yaml
-  blob: 960f92ec47c391f632125dcce3c49b1d2c849120
-next_factor: web_research_surface
-next_probe:
+  commit: ea8fecc9a41a5338472238e46a9b18a184a9692c
+  path: state/coordination/experiments/carrier_surface_x11/events/20260806T203958Z_WEB_FIXED_RFC_EDITOR_READ_V1_WAKE_04_DECISION_KEEP.yaml
+  blob: ffa76a8ee22983f12511ae14933a9d650092833c
+completed_campaign_measurement:
   experiment_id: X11_WEB_FIXED_RFC_EDITOR_READ_V1
-  campaign_wake: 4
-  mode: fixed_public_page_read_only_marker_check_then_campaign_decision
-  expected_current_version: 143
+  provider_call_success: [true, true, true, true]
+  official_host_boolean: [true, true, true, true]
+  fixed_marker_present: [true, true, true, true]
+  latencies_ms: [null, null, null, null]
+  latency_note: web_retrieval_latency_not_exposed
+  permission_class: PUBLIC_WEB_FIXED_URL_READ_AVAILABLE
+  error_class: NONE
+  operator_relay_minutes: 0
+  disposition: KEEP
+  supported_claim: repeatable_fixed_public_RFC_Editor_page_retrieval_resolved_official_host_and_exposed_fixed_title_marker
+  claim_ceiling: repeatable_fixed_public_page_retrieval_only_not_search_breadth_freshness_browser_parity_general_internet_access_network_independence_or_source_authenticity_beyond_the_exposed_host
+  honest_flaw: four_identical_fixed_public_page_reads_still_test_only_one_narrow_retrieval_path
+next_factor: project_context_surface
+next_probe:
+  experiment_id: X11_PROJECT_CONTEXT_EXPLICIT_VISIBILITY_V1
+  campaign_wake: 1
+  mode: read_only_explicit_project_context_visibility
+  exact_action: inspect_only_tool_or_runtime_context_explicitly_exposed_to_this_carrier_for_a_project_context_identifier_or_project_nonproject_marker_without_mutating_task_context_or_account_and_persist_only_exposed_boolean_permission_error_class_latency_when_exposed_and_operator_relay_minutes;_absence_is_a_measurement_not_an_invitation_to_login_or_reseat
+  expected_current_version: 144
+  persist_only:
+    - explicit_project_context_marker_exposed
+    - project_identifier_exposed
+    - permission_class
+    - error_class
+    - latency_when_exposed
+    - operator_relay_minutes
   mutation_allowed: false
+  privacy_gate: no_sensitive_context_content_or_hidden_metadata_externalization
   slack_write_each_probe_allowed: false
   post_only_changed_capability_campaign_decision_or_andon: true
-slack_action: NO_POST_UNCHANGED
-updated_valid_time_utc: 2026-08-06T19:39:07Z
+  sensitive_readback_externalization_allowed: false
+  same_provider_independence_claim_allowed: false
+slack_action: POST_CAMPAIGN_DECISION
+updated_valid_time_utc: 2026-08-06T20:39:58Z
 sealed: false
 ---
 
-Web fixed RFC Editor read V1 accepted wake 3 of 4. Wake 4 repeats the identical probe and writes the campaign disposition.
+Web fixed RFC Editor read V1 completed four accepted wakes. All four identical public-page reads resolved the official RFC Editor host and exposed the fixed title marker. Disposition is KEEP within the narrow claim ceiling. The next isolated factor is explicit Project versus non-Project context visibility; absence of an exposed marker is a measurement, not an invitation to mutate or log in.
