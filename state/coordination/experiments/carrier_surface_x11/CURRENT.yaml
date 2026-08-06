@@ -1,8 +1,8 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_WEB_FIXED_RFC_EDITOR_READ_V1
-current_version: 142
-accepted_wakes: 2
+current_version: 143
+accepted_wakes: 3
 target_wakes_before_decision: 4
 controlled_factor: web_research_surface
 campaign_status: ACTIVE
@@ -10,10 +10,10 @@ current_disposition: null
 baseline_result: prior_campaign_KEEP_native_Tasks_visibility_4_of_4
 hypothesis: fixed_read_only_RFC_Editor_RFC2606_HTML_open_repeatably_resolves_official_host_and_fixed_title_marker
 measured_result:
-  provider_call_success: [true, true]
-  official_host_boolean: [true, true]
-  fixed_marker_present: [true, true]
-  latencies_ms: [null, null]
+  provider_call_success: [true, true, true]
+  official_host_boolean: [true, true, true]
+  fixed_marker_present: [true, true, true]
+  latencies_ms: [null, null, null]
   latency_note: web_retrieval_latency_not_exposed
   permission_class: PUBLIC_WEB_FIXED_URL_READ_AVAILABLE
   error_class: NONE
@@ -21,28 +21,28 @@ measured_result:
   changed_capability: false
   campaign_decision: false
   andon: false
-supported_claim: two_identical_fixed_public_RFC_Editor_URL_retrievals_resolved_official_host_and_exposed_fixed_title_marker
-claim_ceiling: two_fixed_public_page_retrievals_only_not_search_breadth_freshness_browser_parity_general_internet_access_network_independence_or_source_authenticity
+supported_claim: three_identical_fixed_public_RFC_Editor_URL_retrievals_resolved_official_host_and_exposed_fixed_title_marker
+claim_ceiling: three_fixed_public_page_retrievals_only_not_search_breadth_freshness_browser_parity_general_internet_access_network_independence_or_source_authenticity
 strongest_falsifier: fixed_URL_fails_resolves_outside_official_host_or_fixed_marker_is_absent
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 consumer: [Reginleif, Ratatoskr]
-honest_flaw: two_identical_fixed_public_page_reads_still_test_only_a_narrow_retrieval_path
+honest_flaw: three_identical_fixed_public_page_reads_still_test_only_a_narrow_retrieval_path
 last_event:
-  commit: c1e1f601c7a099442b0e32db2dc87207704c0597
-  path: state/coordination/experiments/carrier_surface_x11/events/20260806T183940Z_WEB_FIXED_RFC_EDITOR_READ_V1_WAKE_02.yaml
-  blob: a9cc90cf78895c1fdb9827efea437ad15d770438
+  commit: a164a3f53c98b4530632c5b715bdbecee1ac1ef7
+  path: state/coordination/experiments/carrier_surface_x11/events/20260806T193907Z_WEB_FIXED_RFC_EDITOR_READ_V1_WAKE_03.yaml
+  blob: 960f92ec47c391f632125dcce3c49b1d2c849120
 next_factor: web_research_surface
 next_probe:
   experiment_id: X11_WEB_FIXED_RFC_EDITOR_READ_V1
-  campaign_wake: 3
-  mode: fixed_public_page_read_only_marker_check
-  expected_current_version: 142
+  campaign_wake: 4
+  mode: fixed_public_page_read_only_marker_check_then_campaign_decision
+  expected_current_version: 143
   mutation_allowed: false
   slack_write_each_probe_allowed: false
   post_only_changed_capability_campaign_decision_or_andon: true
 slack_action: NO_POST_UNCHANGED
-updated_valid_time_utc: 2026-08-06T18:39:40Z
+updated_valid_time_utc: 2026-08-06T19:39:07Z
 sealed: false
 ---
 
-Web fixed RFC Editor read V1 accepted wake 2 of 4. Wake 3 repeats the identical probe.
+Web fixed RFC Editor read V1 accepted wake 3 of 4. Wake 4 repeats the identical probe and writes the campaign disposition.
