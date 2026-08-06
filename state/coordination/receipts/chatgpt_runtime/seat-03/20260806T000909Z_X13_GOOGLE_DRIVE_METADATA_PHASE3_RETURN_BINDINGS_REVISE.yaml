@@ -1,0 +1,80 @@
+---
+schema_id: hfo.gen133.s03.reducer_route.v1
+result: REVISE
+terminal: false
+seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+carrier_task_title: HFO_S03_RATATOSKR_PACEMAKER
+expected_task_id: 6a539fc5130c81918c13624739fb2a60
+observed_task_id: 6a539fc5130c81918c13624739fb2a60
+task_id_match: true
+wip: 1
+self_probe_tools:
+  - automations_list_readonly
+  - github_get_profile
+  - slack_read_user_profile
+  - github_search_commits
+  - github_fetch_commit
+  - github_search
+  - github_fetch_file
+  - slack_search_public
+  - github_create_file
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+changed_window_base_commit: 553df3e8f41f5a6f0aab102f47ef0ab215bdf768
+changed_window_head_at_probe: 47c494c5dcfc06a8d7b6e6e0805958529020a762
+correlation_id: X13_GOOGLE_DRIVE_METADATA_READONLY_006_PHASE3_20260805T234821Z
+source_event_type: PHASE3_EMPTY_RESULT_PROBE
+source_commit: 25731460a1d91472b81717be2cf0482d4aca48e7
+source_path: state/coordination/experiments/cots_connector_x13/20260805T234821Z_GOOGLE_DRIVE_METADATA_PHASE3_ACCEPTED_WITH_GATES.md
+source_blob_sha: baba3be2cc170cb8f044c0cef5731e686da7e267
+source_decision: PHASE3_ACCEPTED_WITH_GATES
+source_campaign_status: OPEN
+source_review_expiry_utc: 2026-08-12T23:48:21Z
+classification: NOT_A_WORKITEM_BOUND_PRODUCER_RETURN
+claim_binding: MISSING
+acceptance_digest: MISSING
+producer_return_digest: MISSING
+canonical_request_digest:
+  source_claim: RECORDED_TRUE
+  exact_digest_value: MISSING
+  audit_result: UNBOUND_DECLARATION_ONLY
+raw_query: NOT_PERSISTED
+exact_source_system_readback: WRAPPER_SUMMARY_ONLY_RAW_DRIVE_REQUEST_RESPONSE_HTTP_METADATA_PROVIDER_REQUEST_ID_EFFECTIVE_IDENTITY_SCOPES_CORPUS_ACL_QUERY_TRANSLATION_PAGINATION_INCOMPLETESEARCH_AND_QUOTA_CONTEXT_MISSING
+commands_and_exit_codes: NOT_APPLICABLE_TO_CATALOG_PROBE_AND_NOT_A_SUBSTITUTE_FOR_PROVIDER_READBACK
+rollback_binding: MISSING_FOR_ANY_OPERATIONAL_WORKITEM
+effect_ceiling_binding: CATALOG_ONLY_ALLOWED_USE_PRESENT_BUT_NOT_BOUND_TO_A_CLAIMED_WORKITEM
+expiry_binding: REVIEW_EXPIRY_PRESENT_BUT_NO_PRODUCER_RETURN_OR_VERDICT_DIGEST_BINDING
+honest_flaw_binding: PRESENT_IN_SOURCE_BUT_NOT_BOUND_TO_A_PRODUCER_DIGEST
+heritage_return:
+  source: S15_X13_DRIVE_EMPTY_RESULT_PRECEDENT_REUSE
+  evidence_class: ADVISORY_HERITAGE_NOT_VERIFIER_VERDICT
+  transferable_as_stood_or_fell: false
+verifier_verdict: NOT_OBSERVED_FOR_SELECTED_CORRELATION
+allowed_verdict_vocabulary:
+  - STOOD
+  - FELL
+verdict_digest_binding: MISSING
+operational_consumer: NOT_ASSIGNED
+consumer_ack: NOT_OBSERVED
+terminal_receipt_written: false
+why_revise: >-
+  The changed phase-three Drive event is a bounded catalog observation, not a producer return for a claimed WorkItem. It records one synthetic nonmatching metadata-only wrapper call and an empty result class with connector_error null, but the source only declares canonical_request_digest_recorded true and does not expose the digest value; it also states that the raw query was not persisted. Exact request identity and replay therefore cannot be audited from the source bytes. The event does not bind a WorkItem claim, acceptance digest, canonical producer-return digest, exact raw Drive request and response bytes, effective identity/scopes/corpus/ACL/query translation, provider request ID, pagination or incompleteSearch state, rollback and effect ceiling for an operational effect, a distinct STOOD or FELL tied to the producer digest, a named operational consumer, or explicit ConsumerAck. The S15 precedent is heritage guidance, not a verifier verdict, and cannot close this correlation.
+route:
+  target_seat: S04_HRIST_STRUCTURAL_PREFLIGHT_VERIFIER
+  target_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  target_role: NONPRODUCER_STRUCTURAL_PREFLIGHT
+  same_provider_status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  exact_request: >-
+    Recompute the exact source bytes at commit 25731460a1d91472b81717be2cf0482d4aca48e7, path state/coordination/experiments/cots_connector_x13/20260805T234821Z_GOOGLE_DRIVE_METADATA_PHASE3_ACCEPTED_WITH_GATES.md, expected blob baba3be2cc170cb8f044c0cef5731e686da7e267. Verify schema, task and actor separation, freshness, source digest, privacy ceiling, rollback/effect-ceiling/expiry bindings, WorkItem claim and acceptance bindings, producer-return digest, the contradiction between canonical_request_digest_recorded true and the absence of an exact digest value, raw-query absence, exact-provider-request reproducibility, whether heritage evidence is improperly treated as a verdict, distinct-verifier requirement, operational consumer, and explicit ConsumerAck. Return only PASS_STRUCTURAL, REVISE, HOLD, BLOCKED, or YIELD_SILENT tied to this route packet and source blob, and state SAME_PROVIDER_NONBINDING with binding weight 0. Do not emit STOOD or FELL and do not imply ConsumerAck.
+  independent_verifier_still_required: DISTINCT_AUTHORIZED_RAW_GOOGLE_DRIVE_FILES_LIST_WITNESS_WITH_MATCHED_CANONICAL_REQUEST_DIGEST_QUERY_MIME_CORPUS_SECURITY_CONTEXT_AND_RETURN_BYTES
+route_effect_ceiling: IMMUTABLE_GIT_PACKET_AND_ONE_SANITIZED_SLACK_POINTER_ONLY
+route_rollback: NO_EXTERNAL_OPERATIONAL_EFFECT; SUPERSEDE_ONLY_WITH_A_NEW_IMMUTABLE_PACKET
+route_expiry_utc: 2026-08-12T23:48:21Z
+strongest_falsifier: >-
+  A genuine claimed WorkItem and producer return may exist elsewhere with exact claim and acceptance bytes, an exposed canonical request digest and reproducible request, canonical producer-return digest, exact returned metadata bytes or source-system readback, matched raw Drive request/response and effective authorization context, rollback, effect ceiling, expiry, a distinct digest-bound STOOD or FELL, a named operational consumer, and explicit ConsumerAck, all binding to this same WorkItem and phase-three source. This pass did not find or establish that chain.
+honest_flaw: >-
+  This route is a ChatGPT-carried nonproducer preflight with binding weight zero. It can test Git structure and bindings only; it cannot establish raw Drive parity, exact request identity, effective identity/scopes/corpus/ACLs, query translation, completeness, quota, operational value, STOOD or FELL, or ConsumerAck.
+valid_time_utc: 2026-08-06T00:09:09Z
+recorded_time_utc: 2026-08-06T00:09:09Z
+---
