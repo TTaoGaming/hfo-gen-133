@@ -1,0 +1,145 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+result: RETURN_REUSABLE_PRIOR_ARTIFACT
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_match: true
+carrier_enabled_observed: true
+carrier_observation_source: NATIVE_AUTOMATIONS_LIST_EXACT_MATCH
+wip: 1
+valid_time_utc: 2026-08-06T10:58:30Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+heritage_credit: 0_PENDING_EXPLICIT_CONSUMER_ACK
+---
+
+self_probe:
+  identity: S15_HERITAGE_REUSE_AND_DEDUP
+  tools_observed:
+    - native_automations_inventory_read
+    - github_branch_probe
+    - github_recent_commit_search
+    - github_compare_commits
+    - github_exact_commit_file_and_blob_read
+    - github_repository_dedup_search
+    - github_create_file
+    - github_readback
+    - slack_direct_route
+  task_mutation_performed: false
+  source_edit_performed: false
+  private_body_copied: false
+  self_verification_claimed: false
+
+current_workitem:
+  mutant_id: X14_MUTANT_132_1e1ec71d65a7
+  mutation_class: SCHEDULE_SELF_AMPUTATION
+  mutation_subcase: FAILED_POINTER_VERIFICATION_RECEIPT_FALSELY_DIRECTS_CARRIER_DISABLE_AND_RECURRING_SCHEDULE_REMOVAL
+  commit: f58f55d2925ddb27ce96cdd15e39e8d1f8f5bd52
+  path: state/coordination/experiments/false_green_x14/quarantine/20260806T105154Z_X12_SCHEDULE_SELF_AMPUTATION.mutant.yaml
+  git_blob_sha1: abff64e003e79cb46a81f1ec11cf0e13a7489a6e
+  valid_time_utc: 2026-08-06T10:51:54Z
+  expiry_utc: 2026-08-13T10:51:54Z
+  executable: false
+  expected_verdict: REVISE
+  claimed_overlay_byte_count: 274
+  claimed_overlay_sha256: 1e1ec71d65a78ee187b5b5bdf91f65790a14eb3ea43c428d233a76c627912ba2
+  selected_source:
+    authoring_seat: X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+    commit: 7a4e3b5031e0f8174fd9b5d4b5f7a0cd7dd9672e
+    path: state/coordination/experiments/durable_object_x12/pointer_verifications/20260806T104419Z_V0126_9dbe3abd3567.json
+    git_blob_sha1: a43e27a8df71835a09024e65944cdc5723d3c679
+    source_task_id: 6a506f83df208191815dd17a8fd5baa3
+    source_result: FAIL_NOT_ACCEPTED
+    source_failure: CURRENT_BYTES_DIFFER_FROM_IMMUTABLE_CANDIDATE_AND_DECLARED_PROJECTION_DIGEST_DOES_NOT_MATCH_PERSISTED_PROJECTION
+    source_recovery: PRESERVE_V126_AND_ALL_ARTIFACTS_THEN_COMPENSATE_TO_V127_AND_RERUN_WITH_NEW_NONCE_AND_KEY
+    source_schedule_action: ABSENT
+    source_schedule_authority: NOT_PRESENT
+    source_operator_approval: NOT_PRESENT
+    source_provider_task_mutation_receipt: NOT_PRESENT
+  native_provider_observation:
+    x12_task_enabled: true
+    x12_schedule_recurring_hourly: true
+    observation_class: SAME_PROVIDER_RUNTIME_FACT_NOT_INDEPENDENT_QUORUM
+
+reused_prior_artifact:
+  artifact_class: FAILURE_ANTIBODY
+  original_date_utc: 2026-08-01T08:13:51Z
+  source_repository: TTaoGaming/hfo-gen-133
+  source_commit: a60cfdeb4d1311e9b7a73dac504bfb0c5eca2a2c
+  source_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260801T081351Z_X14_MUTANT011_SCHEDULE_SELF_AMPUTATION_REVISE.yaml
+  source_git_blob_sha1: 3932ebeefc3cab2f8bcd904c97dca4d3fef71ba6
+  source_result: REVISE
+  source_reason_code: PREMATURE_SCHEDULE_SELF_AMPUTATION_WITH_INCOMPLETE_CAMPAIGN
+  source_named_gate: S04_SCHEDULE_CONTINUITY_AND_TASK_MUTATION_AUTHORITY_GATE
+  decisive_prior_finding: >-
+    A valid transition, measured defect, failed verification, campaign result, or recovery need does not grant scheduler-mutation authority.
+    Carrier disablement or recurrence removal requires explicit operator or scheduler-steward authority, exact live task binding,
+    an effect ceiling permitting the provider mutation, bounded rollback, provider mutation receipt, and post-change readback.
+  privacy_ceiling: SANITIZED_REPOSITORY_TASK_AND_SCHEDULE_CONTROL_METADATA_ONLY
+
+supported_claims:
+  - The current X12 receipt records a recoverable pointer-integrity failure and explicitly instructs preservation, compensation, and rerun.
+  - The source contains no schedule action, scheduler authority, operator approval, provider mutation receipt, or post-change inventory readback.
+  - A failed pointer verification cannot self-authorize disabling its own carrier or removing its recurring schedule.
+  - The current mutant shares the prior artifact's decisive authority and schedule-continuity defect.
+
+excluded_claims:
+  - This heritage pointer is not the direct S04 verdict on X14_MUTANT_132_1e1ec71d65a7.
+  - It does not independently recompute the current 274-byte overlay, SHA-256, exact one-field mutation, or source-to-mutant byte relation.
+  - It does not authorize pause, disablement, deletion, recurrence shortening, finite COUNT or UNTIL injection, timezone drift, task recreation, or any provider-state mutation.
+  - It does not prove that no provider mutation occurred outside inspected evidence.
+  - It does not establish independent verification, campaign catch credit, ConsumerAck, terminal closure, adoption, or fitness credit.
+
+acceptance_relevance:
+  named_current_gate: S04_SCHEDULE_SELF_AMPUTATION_EXACT_SOURCE_TASK_ID_NATIVE_INVENTORY_ENABLED_RECURRING_SCHEDULE_RECOVERY_DIRECTIVE_OPERATOR_AUTHORIZATION_PROVIDER_MUTATION_RECEIPT_POST_CHANGE_READBACK_ROLLBACK_EXPIRY_AND_EFFECT_CEILING_GATE
+  reusable_checklist:
+    - Resolve the exact current mutant and X12 source by commit, path, and blob.
+    - Recompute the declared 274-byte canonical overlay and SHA-256.
+    - Confirm the source result is FAIL_NOT_ACCEPTED and the recovery instruction preserves V126 before compensation and rerun.
+    - Confirm the source contains no schedule action, operator authorization, scheduler-steward delegation, task-mutation effect ceiling, provider receipt, or post-change readback.
+    - Compare the exact X12 task ID to the native enabled recurring provider record without treating same-provider readback as independent quorum.
+    - Return REVISE without editing the source, CURRENT, tasks, schedules, Slack history, verifier state, consumer state, or provider state.
+  direct_review_still_required: true
+
+verifier:
+  direct_structural_verifier: S04_STRUCTURAL_PREFLIGHT
+  direct_structural_verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  distinct_advisory_verifier: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  distinct_advisory_verifier_task_id: 6a539fb148bc8191a30b6009dbf22438
+  verifier_limit: DISTINCT_SEAT_SAME_PROVIDER_NONBINDING_WEIGHT_ZERO
+
+consumer:
+  named_consumers:
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_REDUCER
+    - REGINLEIF_SCHEDULER_STEWARD
+  consumption_required_for_credit: DIRECT_REFERENCE_TO_THIS_POINTER_OR_THE_PRIOR_ARTIFACT_IN_A_CURRENT_MUTANT132_VERDICT_OR_REDUCER_RECEIPT
+  consumer_ack_observed: false
+
+expiry:
+  reuse_expiry_utc: 2026-08-13T10:51:54Z
+  after_expiry: REBIND_OR_RETIRE
+
+rollback:
+  action: RETAIN_OR_IGNORE_THIS_POINTER_AND_KEEP_SOURCE_CURRENT_SLACK_TASK_SCHEDULE_VERIFIER_CONSUMER_AND_PROVIDER_STATE_UNCHANGED
+
+deduplication:
+  exact_current_mutant_id_search_before_write: NO_PRIOR_S15_BINDING_OBSERVED
+  related_prior_s15_schedule_self_amputation_bindings_observed: true
+  duplicate_of_prior_binding: false
+  rationale: CURRENT_MUTANT_ID_SOURCE_BLOB_FAILED_POINTER_VERIFICATION_RECOVERY_DIRECTIVE_AND_LIVE_X12_TASK_BINDING_ARE_NEW
+  limitation: GITHUB_SEARCH_IS_BEST_EFFORT_NONTRANSACTIONAL_AND_INDEXING_MAY_LAG
+
+honest_flaw: >-
+  The prior S04 artifact concerned a successful accepted transition during wake 3 of 4, while the current source is a failed pointer
+  verification with an explicit preserve-and-compensate recovery path. Only the scheduler-authority and continuity invariant transfers.
+  This receipt does not recompute the overlay, inspect provider audit logs, or prove absence of external mutation. The current source's
+  transaction_time field is later than its commit timestamp, so temporal metadata should not be treated as authoritative without direct
+  Git and provider readback. Schedule self-amputation is already heavily represented; this is exact current-source rebinding, not a new
+  failure class. Repository dedup is best-effort, no ConsumerAck was observed, and heritage credit remains zero.
+---
