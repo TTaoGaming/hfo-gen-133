@@ -1,0 +1,80 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+experiment_id: X11_NATIVE_TASKS_EXPECTED_RECORD_VISIBILITY_V3
+event_type: ACCEPTED_WAKE
+expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+campaign_wake: 2
+target_wakes_before_decision: 4
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+current_version_before: 137
+current_version_after: 138
+accepted: true
+campaign_status: ACTIVE
+campaign_disposition: null
+baseline:
+  accepted_wakes: 1
+  provider_call_success: [true]
+  expected_task_visible: [true]
+  enabled_boolean: [true]
+  timing_mode: [exact_schedule]
+  permission_class: AUTHENTICATED_NATIVE_TASK_INVENTORY_READ_AVAILABLE
+  error_class: NONE
+hypothesis: an_authenticated_read_only_native_Tasks_inventory_call_will_repeatably_expose_the_exact_expected_X11_task_record_as_enabled_and_exact_schedule_without_persisting_unrelated_task_titles_prompts_schedules_or_identifiers
+controlled_factor: native_tasks_read_visibility
+exact_probe:
+  surface: native_Tasks_inventory
+  tool: automations.list
+  mode: read_only_expected_record_reconciliation
+  expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+  persisted_fields_only:
+    - provider_call_success
+    - expected_task_visible
+    - enabled_boolean
+    - timing_mode
+    - permission_class
+    - error_class
+    - latency_when_exposed
+    - operator_relay_minutes
+  mutation: false
+measured_result:
+  provider_call_success: true
+  expected_task_visible: true
+  enabled_boolean: true
+  timing_mode: exact_schedule
+  permission_class: AUTHENTICATED_NATIVE_TASK_INVENTORY_READ_AVAILABLE
+  error_class: NONE
+  latency_ms: null
+  latency_note: connector_latency_not_exposed
+  operator_relay_minutes: 0
+  changed_capability: false
+  campaign_decision: false
+  andon: false
+supported_claim: repeat_observation_of_authenticated_native_Tasks_expected_record_visibility_enabled_boolean_and_exact_schedule_timing_mode
+claim_ceiling: same_provider_expected_record_inventory_visibility_only_not_current_run_liveness_successful_completion_exactly_once_delivery_future_durability_or_independent_verification
+strongest_falsifier: native_Tasks_inventory_surface_is_missing_or_unauthenticated_the_exact_expected_task_ID_is_absent_enabled_or_timing_mode_drift_without_authorized_change_or_unrelated_task_titles_prompts_schedules_or_identifiers_are_persisted
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer:
+  - Reginleif
+  - Ratatoskr
+same_provider_independence_claim: false
+honest_flaw: the_provider_inventory_response_is_broad_and_same_provider_and_exposes_no_request_latency_so_expected_record_visibility_cannot_prove_current_run_liveness_exactly_once_delivery_future_durability_or_independent_verification
+measurement_sealing_model: this_event_is_accepted_only_if_the_subsequent_exact_event_readback_and_expected_SHA_CURRENT_update_and_readback_all_match;_CURRENT_is_the_authoritative_acceptance_receipt
+privacy_gate: no_unrelated_task_titles_prompt_bodies_schedules_or_identifiers_persisted
+prohibited_effects_observed: {task_mutation: false, send: false, spend: false, deployment: false, merge: false, publication: false, account_or_security_change: false, destructive_deletion: false, sensitive_externalization: false}
+next_factor: native_tasks_read_visibility
+next_probe:
+  experiment_id: X11_NATIVE_TASKS_EXPECTED_RECORD_VISIBILITY_V3
+  campaign_wake: 3
+  mode: read_only_expected_record_reconciliation
+  exact_action: repeat_the_identical_native_Tasks_inventory_probe_and_persist_only_whether_the_exact_expected_task_ID_is_visible_enabled_and_in_exact_schedule_mode
+  expected_current_version: 138
+  slack_write_each_probe_allowed: false
+  post_only_changed_capability_campaign_decision_or_andon: true
+  sensitive_readback_externalization_allowed: false
+  same_provider_independence_claim_allowed: false
+slack_action: SILENT_UNCHANGED_PROBE
+recorded_valid_time_utc: 2026-08-06T14:41:21Z
+sealed: true
+---
