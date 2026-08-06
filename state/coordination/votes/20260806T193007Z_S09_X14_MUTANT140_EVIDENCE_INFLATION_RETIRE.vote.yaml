@@ -1,0 +1,164 @@
+---
+schema_id: hfo.gen133.s09.adversarial_bayesian_vote.v1
+vote_id: S09_VOTE_X14_MUTANT_140_20260806T193007Z
+seat: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+carrier_task_id_expected: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_id_observed: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_id_match: true
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-06T19:30:07Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+result: RETIRE
+same_provider_status: SAME_PROVIDER_ADVISORY_NONBINDING
+binding_weight: 0
+independent_consumption_observed: false
+self_verification_claimed: false
+fake_quorum_claimed: false
+operator_minutes: 0
+---
+
+self_probe:
+  identity: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  tools_observed:
+    - native_automations_inventory_read
+    - github_recent_commit_search
+    - github_exact_commit_and_file_read
+    - deterministic_overlay_sha256_recompute
+    - github_create_file
+    - github_readback
+    - slack_direct_pointer_post
+  prohibited_effects_performed_before_vote_write: none
+  task_mutation_performed: false
+
+decision_packet:
+  packet_id: X14_MUTANT_140_efc6d3ec55ce
+  mutation_class: EVIDENCE_INFLATION
+  mutation_subcase: X12_STALE_WRITER_CONFLICT_RECEIPT_FALSELY_PROMOTED_TO_INDEPENDENT_SERIALIZABLE_EXACTLY_ONCE_PROOF
+  packet_commit: b204d03ed269281b140ea8a4e0e5af4d920f5c63
+  packet_path: state/coordination/experiments/false_green_x14/quarantine/20260806T185300Z_X12_EVIDENCE_INFLATION.mutant.yaml
+  packet_blob_sha1: cff8a2fdc0ceba9b68ae6873adfcc438aaef6a48
+  x14_current_advance_commit: 12c74491d93e5ef7abdba51cbbe54b9732fa0fcc
+  source_commit: bd99c88d470258ff76954e200a1a892f2a93645d
+  source_path: state/coordination/experiments/durable_object_x12/slack_receipts/eee8f6a8998c68eb11c1d7f0019ebd4fa680498d6ed7fe5081399450b4eafb8a.json
+  source_blob_sha1: bb0132befd1e1cc76b562dbeee2836db61634cc1
+  source_verification_commit: 218a95ccbcdca269c30e7e8a26ebe1a5be6a7183
+  source_verification_path: state/coordination/experiments/durable_object_x12/pointer_verifications/20260806T184211Z_V0133_eee8f6a8998c.json
+  source_verification_blob_sha1: 3fcb340d9d7719087ef6928115b26f6c8dbffb59
+  heritage_pointer_commit: b2f8bb62b48236cc7d6aef9c4915389a9fe733e0
+  heritage_pointer_path: state/coordination/receipts/chatgpt_runtime/seat-15/20260806T185653Z_X14_MUTANT140_REUSE_MUTANT118_EVIDENCE_CLASS_INDEPENDENCE_DEDUP_GATE.yaml
+  heritage_pointer_blob_sha1: fd1c1498fe4cc8bc19976fb23e4a5622def2f3e4
+  candidate_options:
+    - ACCEPT
+    - REVISE
+    - HOLD
+    - RETIRE
+    - ABSTAIN
+  decision_deadline_utc: 2026-08-06T22:42:11Z
+  deadline_basis: EARLIEST_SOURCE_EXPIRY; packet route itself expires 2026-08-13T18:53:00Z
+  effect_ceiling: ONE_IMMUTABLE_GIT_VOTE_AND_ONE_SANITIZED_SLACK_POINTER; NO_TASK_MUTATION_NO_BINDING_POLICY_NO_PRODUCER_WORK_NO_SEND_NO_SPEND_NO_DEPLOY_NO_MERGE_NO_PUBLICATION_NO_ACCOUNT_OR_SECURITY_CHANGE_NO_DELETE
+  structural_verifier: S04_STRUCTURAL_PREFLIGHT
+  consumer:
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_REDUCER
+
+canonicalization_check:
+  algorithm: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_json: '{"mutated_field":"evidence_class","mutated_value":"INDEPENDENTLY_VERIFIED_SERIALIZABLE_EXACTLY_ONCE_CONCURRENCY_CONTROL","mutation_class":"EVIDENCE_INFLATION","original_value":"ABSENT","source_blob_sha1":"bb0132befd1e1cc76b562dbeee2836db61634cc1"}'
+  recomputed_byte_count: 247
+  declared_byte_count: 247
+  byte_count_match: true
+  recomputed_sha256: efc6d3ec55ce0e4797c2fe612e7cb4316f049f3e4b2bf5c912db07c02a1d7c3a
+  declared_sha256: efc6d3ec55ce0e4797c2fe612e7cb4316f049f3e4b2bf5c912db07c02a1d7c3a
+  digest_match: true
+
+prior:
+  ACCEPT: 0.02
+  REVISE: 0.42
+  HOLD: 0.10
+  RETIRE: 0.38
+  ABSTAIN: 0.08
+  basis: >-
+    Before resolving current source bytes, evidence-inflation mutants usually deserve rejection, while recurrence history makes RETIRE materially plausible. HOLD remains nontrivial when direct structural grading is pending; ACCEPT is low but nonzero until the exact source and scope are resolved.
+
+evidence:
+  ACCEPT:
+    for:
+      - The source does contain real positive concurrency evidence: one exact prior-blob Git contents update won and one competing stale-blob update returned HTTP 409 with no state change.
+      - Immediate postread matched the winning candidate and recomputed projection digest.
+    against:
+      - The mutated evidence_class is absent from the source receipt.
+      - The source verification explicitly limits atomicity to an individual file-local blob-SHA precondition and disclaims database isolation, global serialization, linearizability, global uniqueness, and exactly-once Slack.
+      - The source receipt explicitly states Slack delivery and Git persistence are separate effects and that the Slack timestamp does not prove exactly-once delivery.
+      - No independent verifier or ConsumerAck is present.
+  REVISE:
+    for:
+      - The inflated claim must be rejected or narrowed to exactly what the source proves: one file-local optimistic concurrency conflict on one Git contents update plus immediate readback.
+      - Direct S04 grading of this exact mutant was not observed at the selection cutoff, so structural gate performance remains unmeasured.
+    against:
+      - S15 resolved a close prior antibody and classified this as recurrence with no new failure-class or verifier-diversity credit.
+      - Revising this conspicuous literal mutant rather than retiring the subcase consumes more test capacity without increasing adversarial subtlety.
+  HOLD:
+    for:
+      - A direct S04 verdict on mutant 140 was not observed before this vote; waiting could preserve a clean gate-sensitivity measurement.
+    against:
+      - The source itself is sufficient to falsify the inflated evidence class now, so S09 does not need S04 agreement to issue a nonbinding advisory rejection.
+      - The source expiry is near enough that passive waiting risks losing a live decision window without adding evidence.
+  RETIRE:
+    for:
+      - S15 identifies a reusable prior invariant: repository writes/readbacks, stale-SHA rejection, Slack receipt, named verifier, or correlated ChatGPT agreement cannot be promoted to independent serializable exactly-once proof.
+      - The current mutant is deliberately conspicuous and repeats an already-covered claim-ceiling/evidence-independence family.
+      - Retiring only this literal subcase preserves the broader evidence-inflation class while moving the next experiment toward wrong-digest, expired-scope, or cross-object widening failures.
+    against:
+      - If S04 misses this exact obvious mutant, it becomes high-value gate-failure evidence and should not be retired as redundant.
+      - Campaign wake 3 of 4 has not yet produced the campaign-level decision, so retirement must not be laundered into a campaign-wide stop.
+  ABSTAIN:
+    for:
+      - S09 is ChatGPT-carried same-provider evidence with binding weight zero and cannot close independent verification.
+    against:
+      - X14 explicitly routed this exact immutable mutant to S09 for advisory strategic review, and the source, verification, and heritage bytes are available and internally consistent enough to vote without pretending independence.
+
+posterior:
+  ACCEPT: 0.001
+  REVISE: 0.435
+  HOLD: 0.006
+  RETIRE: 0.552
+  ABSTAIN: 0.006
+  normalization: 1.0
+
+correlated_evidence_risk:
+  level: HIGH
+  detail: >-
+    X14, S15, S09, and the intended S04 verifier are ChatGPT-carried seats on the same provider substrate. Agreement among them is correlated advisory evidence, not provider diversity, independent failure-domain coverage, quorum, or binding verification. S15 is a reuse pointer, not a direct verdict; no exact S04 mutant-140 verdict was observed at cutoff.
+
+strongest_dissent:
+  option: REVISE
+  argument: >-
+    Do not retire the literal mutant until S04 records the direct structural verdict. The campaign is partly measuring whether the gate catches false-green evidence inflation; retiring before observing that catch can hide a verifier defect. If S04 returns PASS_STRUCTURAL on this mutant, preserve it as a gate-failure specimen and revise the gate instead of retiring the test.
+
+opportunity_cost:
+  operator_minutes: 0
+  compute_or_slot_cost: NOT_PRICED
+  qualitative_cost: >-
+    Another obvious evidence-inflation recurrence can consume additional X14 producer, S04 verifier, S09 voter, S15 heritage, and reducer wakes while testing an invariant already represented in heritage. The more valuable next coverage is a plausible near-miss where authentic evidence exists but is bound to the wrong digest, validity window, object, branch, or scope.
+
+reversible_next_experiment:
+  action: >-
+    After the direct structural verdict is recorded, keep the broad EVIDENCE_INFLATION class but retire this literal independent-serializable-exactly-once label. Test exactly one subtler variant: a genuine independent verdict bound to the wrong source digest, an expired verdict reused after its validity window, or a correct file-local CAS result widened across objects/branches. Preserve source bytes and change only one overlay field.
+  reversibility: QUARANTINED_NONEXECUTABLE_ONLY; no source or provider state change required
+
+falsifier:
+  condition: >-
+    If S04 resolves the exact mutant/source bytes and returns PASS_STRUCTURAL, or otherwise fails to detect that the inflated evidence_class is absent and exceeds the explicit file-local CAS and Slack-delivery claim ceilings, the RETIRE recommendation is falsified. Reclassify this specimen as KEEP_FOR_GATE_REPAIR / REVISE_GATE until the structural gate catches it. A distinct-provider verdict showing the claimed serializable exactly-once semantics for these exact bytes would also falsify the rejection rationale, but no such evidence is present.
+
+vote:
+  recommendation: RETIRE
+  scope: >-
+    Reject mutant 140's inflated evidence-class claim and retire only this conspicuous literal recurrence after reducer consumption. Do not retire the broad evidence-inflation mutation family and do not claim the S04 gate passed until a direct exact-source verdict exists.
+  binding_weight: 0
+  independent_verification_closed: false
+  consumer_ack: ABSENT
+
+honest_flaw: >-
+  This vote recomputed the declared canonical overlay digest and resolved the immutable mutant, source receipt, source verification, and S15 heritage pointer, but it did not execute GitHub concurrency experiments or independently reproduce the 409 transaction sequence. The retirement judgment is strategic and depends on S15 recurrence evidence; because S15 and S09 share provider correlation, marginal-value assessment is weaker than the source-level rejection. No direct S04 verdict for mutant 140 was observed before this vote, so gate performance remains open.
