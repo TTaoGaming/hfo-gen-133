@@ -1,25 +1,25 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
 experiment_id: X13_GDRIVE_SEARCH_READONLY_011
-version: 143
-prior_version: 142
+version: 144
+prior_version: 143
 candidate: Google_Drive_search_readonly_surface
-campaign_wake: 3_of_4
-campaign_status: IN_PROGRESS
+campaign_wake: 4_of_4
+campaign_status: COMPLETE
 phase_1_status: PHASE1_ACCEPTED_WITH_GATES
 phase_2_status: PHASE2_ACCEPTED_WITH_GATES
 phase_3_status: PHASE3_ACCEPTED_WITH_GATES
-phase_4_status: PENDING
+phase_4_status: DEFER
 provisional_decision: ADOPT_WITH_GATES_CATALOG_ONLY
-operational_decision: NOT_YET_DECIDED
+operational_decision: DEFER_OPERATIONAL_ADOPTION_CATALOG_ONLY
 carrier_task_id: 6a55c1733708819185088bf334e33ea5
 carrier_task_id_match: true
 wip: 1
-last_event_commit: ccf078eb28cbf142e2bdc4b3f73d85f28cf55ca3
-last_event_path: state/coordination/experiments/cots_connector_x13/20260806T194817Z_GDRIVE_SEARCH_PHASE3_ACCEPTED_WITH_GATES.md
-last_event_blob_sha: 4a2b8a85d0bc0cd90e304e730ad0ef635350c00a
+last_event_commit: 04fae7f06c569c6e03c46dad782a83219513113e
+last_event_path: state/coordination/experiments/cots_connector_x13/20260806T204800Z_GDRIVE_SEARCH_PHASE4_DEFER.md
+last_event_blob_sha: d519015654a9770c8048573c426e03f8155751b9
 last_event_readback: true
-prior_current_blob_sha: b052b3b9cb9d37f568d5e2e8ff073414264dab88
+prior_current_blob_sha: 11f0abf8be2bea52eda449ce67156a28f085b823
 campaign_calls: 3_BOUNDED_METADATA_ONLY_GDRIVE_SEARCHES
 successful_nonempty_calls: 2
 successful_empty_calls: 1
@@ -47,17 +47,16 @@ page_token_supplied: false
 next_page_token_exposed: false
 raw_result_ids_persisted: false
 raw_parent_ids_persisted: false
-phase_3_external_call_time_ms: 1800
-measured_fact: SYNTHETIC_NONMATCHING_METADATA_ONLY_QUERY_RETURNED_ZERO_RESULTS_WITH_NO_CONNECTOR_ERROR
-interpretation: EMPTY_SUCCESS_SHAPE_OBSERVED_ONLY_NOT_AUTHORITATIVE_ABSENCE
-andon: WRAPPER_DOES_NOT_EXPOSE_RAW_Q_CORPORA_INCOMPLETE_SEARCH_EFFECTIVE_SCOPE_OR_INDEX_FRESHNESS_SO_ZERO_RESULTS_CANNOT_PROVE_DRIVE_WIDE_ABSENCE
+measured_fact: THREE_BOUNDED_READONLY_CALLS_ESTABLISHED_NARROW_REPEATABILITY_AND_EMPTY_SUCCESS_SHAPE_WITH_ZERO_MEASURED_OPERATOR_MINUTES_AND_NO_OPERATIONAL_CONSUMER
+interpretation: BOUNDED_DISCOVERY_VALUE_ONLY_NOT_OPERATIONAL_STATE_AUTHORITY
+andon: WRAPPER_DOES_NOT_EXPOSE_RAW_Q_CORPORA_INCOMPLETE_SEARCH_EFFECTIVE_SCOPE_OR_INDEX_FRESHNESS_SO_RESULTS_CANNOT_PROVE_COMPLETE_DRIVE_STATE
 custom_code_avoided_estimate: 50_to_150_LOC_UNVALIDATED
 operator_minutes_removed_measured: 0
 credentials: CONNECTOR_MANAGED_EFFECTIVE_IDENTITY_AND_SCOPES_UNKNOWN
-durability: GIT_EVENTS_DURABLE_DRIVE_SEARCH_RESULTS_ORDER_AND_INDEX_MUTABLE_NO_PROVIDER_SNAPSHOT_RECEIPT
-observability: RESULT_COUNT_ID_TITLE_URL_PARENT_IDS_FOR_NONEMPTY_AND_EMPTY_SUCCESS_SHAPE_EXPOSED; MIME_MODIFIED_TIME_OWNER_RAW_Q_CORPUS_INCOMPLETE_SEARCH_REQUEST_ID_QUOTA_AND_FRESHNESS_NOT_EXPOSED
+durability: GIT_EVENTS_DURABLE_DRIVE_SEARCH_RESULTS_ORDER_INDEX_AND_AUTHORIZATION_VIEW_MUTABLE_NO_PROVIDER_SNAPSHOT_RECEIPT
+observability: RESULT_COUNT_ID_TITLE_URL_PARENT_IDS_AND_EMPTY_SUCCESS_SHAPE_EXPOSED; MIME_MODIFIED_TIME_OWNER_RAW_Q_CORPUS_INCOMPLETE_SEARCH_REQUEST_ID_QUOTA_AND_FRESHNESS_NOT_EXPOSED
 portability: LOW_TO_MEDIUM_WRAPPER_AND_DRIVE_SPECIFIC
-failure_behavior: TWO_NONEMPTY_MATCHING_REPLAYS_PLUS_ONE_EMPTY_SUCCESS; DENIAL_RATE_LIMIT_TRANSIENT_SHARED_DRIVE_AND_PAGINATION_FAILURE_UNTESTED
+failure_behavior: TWO_NONEMPTY_MATCHING_REPLAYS_PLUS_ONE_EMPTY_SUCCESS; DENIAL_RATE_LIMIT_TRANSIENT_SHARED_DRIVE_PAGINATION_AND_TOKEN_FAILURE_UNTESTED
 paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
 direct_cost_or_quota_evidence: NONE
 nominal_provider_quota_contract: GOOGLE_DOCS_2026_LIST_OPERATIONS_SUCH_AS_FILES_LIST_100_QUOTA_UNITS_MAPPING_AND_ACTUAL_DEBIT_UNVERIFIED
@@ -69,20 +68,21 @@ verifier_result: NOT_RUN
 adoption_credit: 0
 fitness_credit: 0
 mandatory_gate: METADATA_ONLY; TOPN_IS_A_CAP_NOT_COMPLETENESS; DOCUMENT_IS_A_WRAPPER_CATEGORY_NOT_GOOGLE_DOCS_MIME; EMPTY_MEANS_ZERO_VISIBLE_MATCHES_RETURNED_NOT_DRIVE_WIDE_ABSENCE; VERIFY_CONSEQUENTIAL_CLAIMS_WITH_DIRECT_METADATA_OR_MATCHED_PROVIDER; NO_UNBOUNDED_RETRY
-strongest_falsifier: AN_ACCESSIBLE_MATCHED_RAW_PROVIDER_QUERY_RETURNS_THE_SYNTHETIC_TOKEN_OR_SHOWS_MATERIALLY_DIFFERENT_SCOPE_QUERY_COMPLETENESS_OR_PERMISSION_STATE
-honest_flaw: THE_SYNTHETIC TOKEN_WAS_DESIGNED_TO_MISS_SO_PHASE3_TESTS_ONLY_EMPTY_SUCCESS_SHAPE_NOT_PERMISSION_DENIAL_SHARED_DRIVE_VARIANCE_PAGINATION_RATE_LIMIT_TRANSIENT_FAILURE_INDEX_LAG_RAW_PARITY_OPERATOR_SAVINGS_OR_CONSUMER_VALUE
-next_phase: PHASE4_DECISION_FROM_EXISTING_RECEIPTS_ONLY_NO_ADDITIONAL_GDRIVE_CANDIDATE_CALL
-review_expiry_utc: 2026-08-13T19:48:17Z
-valid_time_utc: 2026-08-06T19:48:17Z
-recorded_time_utc: 2026-08-06T19:48:17Z
+strongest_falsifier: A_MATCHED_RAW_DRIVE_V3_FILES_LIST_UNDER_THE_SAME_EFFECTIVE_PRINCIPAL_OR_A_REAL_CONSUMER_TRIAL_SHOWS_COMPLETE_STABLE_SCOPE_AND_MEASURED_OPERATOR_SAVINGS_SUFFICIENT_FOR_OPERATIONAL_ADOPTION
+honest_flaw: THREE_SMALL_CALLS_DID_NOT_TEST_PERMISSION_DENIAL_SHARED_DRIVE_VARIANCE_PAGINATION_RATE_LIMIT_TRANSIENT_FAILURE_INDEX_LAG_RAW_PROVIDER_PARITY_MEASURED_TIME_SAVINGS_OR_REAL_OPERATIONAL_CONSUMER_VALUE
+next_campaign_candidate: GOOGLE_CALENDAR_OR_GMAIL_READONLY_SURFACE_PENDING_SELECTION
+next_phase: NEW_CAMPAIGN_PHASE1_PENDING
+review_expiry_utc: 2026-08-13T20:48:00Z
+valid_time_utc: 2026-08-06T20:48:00Z
+recorded_time_utc: 2026-08-06T20:48:00Z
 ---
 
-# X13 CURRENT v143
+# X13 CURRENT v144
 
-The Google Drive metadata-search campaign is at wake 3 of 4 with provisional decision `ADOPT_WITH_GATES_CATALOG_ONLY` and zero adoption or fitness credit.
+The Google Drive metadata-search campaign is complete at wake 4 of 4 with operational decision `DEFER_OPERATIONAL_ADOPTION_CATALOG_ONLY` and zero adoption or fitness credit.
 
-Phase 3 used one bounded synthetic nonmatching metadata-only query. The connector returned zero results with no connector error, establishing only that empty success is distinguishable from tool failure. It does not establish Drive-wide absence because the wrapper does not expose raw provider query scope, corpora, `incompleteSearch`, effective authorization, or index freshness.
+Across three bounded read-only calls, two identical known-query searches returned the same ordered three-result digest and one synthetic nonmatching query returned an empty success. No retries, fallbacks, content hydration, Drive mutations, surfaced paid charges, measured operator-minute savings, or operational consumer acknowledgment were observed.
 
-Across the campaign there are now two matching nonempty known-query calls and one empty-success synthetic probe, with zero retries, zero content hydration, and zero Drive mutations.
+Retain the surface only for bounded human-reviewed discovery. Treat result caps as caps rather than completeness evidence, treat `document` as a wrapper category rather than a Google Docs MIME guarantee, and treat empty results as zero visible matches returned rather than Drive-wide absence. Consequential claims require direct metadata or a matched raw Drive v3 witness under the same effective principal.
 
-Next: phase-4 decision from existing receipts only; no additional Google Drive candidate call.
+Next: start a new four-wake read-only COTS campaign on a selected Calendar or Gmail surface; WIP remains 1.
