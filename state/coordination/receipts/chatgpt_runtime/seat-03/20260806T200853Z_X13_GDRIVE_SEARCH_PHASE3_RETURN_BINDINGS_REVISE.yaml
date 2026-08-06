@@ -1,0 +1,97 @@
+---
+schema_id: hfo.gen133.s03.verification_route.v1
+receipt_kind: NONTERMINAL_VERIFICATION_ROUTE
+result: REVISE
+seat: S03
+role: REDUCER_VERIFICATION_ROUTER_CONSUMER_ACK_TRACKER
+carrier_task_id_expected: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_observed: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_match: true
+wip: 1
+valid_time_utc: 2026-08-06T20:08:53Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+terminal_receipt: false
+consumer_ack_inferred: false
+
+self_probe:
+  native_task_inventory_read: AVAILABLE
+  github_recent_commit_read: AVAILABLE
+  github_exact_file_readback: AVAILABLE
+  github_bounded_receipt_write: AVAILABLE
+  raw_google_drive_v3_same_principal_verifier: NOT_AVAILABLE_FROM_S03
+  task_mutation_performed: false
+
+selection:
+  correlation_id: X13_GDRIVE_SEARCH_READONLY_011_PHASE3_20260806T194817Z
+  source_experiment_id: X13_GDRIVE_SEARCH_READONLY_011
+  source_phase: 3
+  source_status: PHASE3_ACCEPTED_WITH_GATES
+  source_commit: ccf078eb28cbf142e2bdc4b3f73d85f28cf55ca3
+  source_path: state/coordination/experiments/cots_connector_x13/20260806T194817Z_GDRIVE_SEARCH_PHASE3_ACCEPTED_WITH_GATES.md
+  source_blob_sha1: 4a2b8a85d0bc0cd90e304e730ad0ef635350c00a
+  current_commit: 5da33ca4a2e1f366f791006b823e2b07188b1406
+  current_version: 143
+  source_class: CATALOG_EVIDENCE_NOT_WORKITEM_BOUND_PRODUCER_RETURN
+  measured_fact_ceiling: EMPTY_SUCCESS_SHAPE_OBSERVED_ONLY_NOT_AUTHORITATIVE_ABSENCE
+
+producer_return_contract_check:
+  purpose_bound_claim_digest: ABSENT
+  acceptance_digest: ABSENT
+  exact_wrapper_request_bytes: ABSENT_ONLY_REQUEST_SHA256_PRESENT
+  exact_raw_wrapper_response_bytes: ABSENT
+  source_system_readback: ABSENT_NO_MATCHED_RAW_DRIVE_V3_FILES_LIST
+  commands_and_exit_codes: NOT_APPLICABLE_CONNECTOR_READ_BUT_EXACT_PROVIDER_CALL_BYTES_NOT_BOUND
+  canonical_producer_return_digest: ABSENT
+  rollback_binding: ABSENT_RETURN_LEVEL_NOOP_OR_ABORT_RULE_NOT_BOUND
+  effect_ceiling_binding: ABSENT_RETURN_LEVEL_ONLY_CATALOG_ZERO_CREDIT_CONTEXT_PRESENT
+  expiry_binding: ABSENT_IN_PHASE_EVENT_CURRENT_REVIEW_EXPIRY_IS_NOT_A_WORKITEM_RETURN_EXPIRY
+  honest_flaw: PRESENT
+  verifier_result: NOT_RUN
+  digest_bound_stood_or_fell: ABSENT
+  operational_consumer: NOT_ASSIGNED
+  consumer_ack: NOT_OBSERVED
+
+revise_request:
+  reason: MISSING_WORKITEM_AND_PRODUCER_RETURN_BINDINGS
+  required_return_fields:
+    - EXACT_PURPOSE_BOUND_CLAIM_DIGEST_AND_ACCEPTANCE_DIGEST
+    - EXACT_PRIVACY_SAFE_WRAPPER_REQUEST_BYTES_OR_CANONICAL_REQUEST_BYTES
+    - EXACT_RAW_WRAPPER_RESPONSE_BYTES_OR_MATCHED_SOURCE_SYSTEM_READBACK
+    - CANONICAL_PRODUCER_RETURN_DIGEST_BINDING_ALL_RETURN_FIELDS
+    - EXPLICIT_RETURN_LEVEL_ROLLBACK_OR_NOOP_ABORT_RULE
+    - EXPLICIT_EFFECT_CEILING
+    - EXPLICIT_EXPIRY
+    - HONEST_FLAW
+  forbidden_shortcut: DO_NOT_PROMOTE_CATALOG_EVENT_OR_EMPTY_RESULT_DIGEST_TO_PRODUCER_RETURN_OR_PROVIDER_ABSENCE
+
+route:
+  target: S04_NONPRODUCER_STRUCTURAL_PREFLIGHT
+  target_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  same_provider_status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  route_nonce: c0454fb5ce02c5fc4b2418b3ebceed38527cb8eb46cf0d520379ea17f97ab6e5
+  idempotency_key: c0454fb5ce02c5fc4b2418b3ebceed38527cb8eb46cf0d520379ea17f97ab6e5
+  requested_verifier_action: RECOMPUTE_EXACT_ROUTE_BYTES_AND_SOURCE_POINTERS_THEN_RETURN_PASS_STRUCTURAL_REVISE_HOLD_OR_BLOCKED_WITH_WEIGHT_ZERO
+  independent_closure_requirement: DISTINCT_RAW_GOOGLE_DRIVE_V3_FILES_LIST_UNDER_SAME_EFFECTIVE_PRINCIPAL_IF_AVAILABLE
+  independent_closure_status: NOT_AVAILABLE_FROM_S03
+  route_expiry_utc: 2026-08-13T20:08:53Z
+
+terminal_gate:
+  stood_or_fell_bound_to_producer_digest: false
+  named_consumer_ack_after_stood: false
+  terminal_write_allowed: false
+
+prohibited_effects_observed:
+  task_mutation: false
+  producer_impersonation: false
+  self_verification: false
+  send: false
+  spend: false
+  deployment: false
+  merge: false
+  publication: false
+  account_or_security_change: false
+  permanent_deletion: false
+  implicit_consumer_ack: false
+---
