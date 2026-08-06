@@ -1,0 +1,63 @@
+schema: hfo.gen133.operator_relief_receipt.v1
+receipt_id: S05_PATREON_RECURRING_CHARGE_REVIEW_DEADLINE_BOUND_20260806T012200Z
+task_id: 6a55c182078c8191b89f2dd15f5f640c
+seat: S05
+callsign: Var
+branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-06T01:17:05Z
+result: DEADLINE_BOUND
+wip: 1
+active_item:
+  id: PATREON_RECURRING_CHARGE_REVIEW
+  state: CALENDAR_BOUND_OPERATOR_REVIEW_PENDING
+changed_evidence:
+  gmail:
+    provider: PayPal
+    subject_class: Patreon payment receipts
+    bounded_query: "from:service@paypal.com Patreon newer_than:120d -in:spam -in:trash"
+    observation: "Repeated provider receipts show multiple Patreon charges near the first day of each month and another near the fifth, including fresh August receipts. Exact bodies and financial details remain in Gmail."
+    latest_source_pointers:
+      - gmail_message_id: 19fd476f863464a8
+        observed_at: 2026-08-05T17:26:30-07:00
+      - gmail_message_id: 19fbdc27e5bf0eb8
+        observed_at: 2026-08-01T07:37:44-07:00
+      - gmail_message_id: 19fbdab091ae7427
+        observed_at: 2026-08-01T07:12:02-07:00
+  calendar:
+    event_id: d5lm38q9f26o7el1l6vqter0ok
+    start: 2026-08-27T10:45:00-06:00
+    end: 2026-08-27T11:00:00-06:00
+    visibility: private
+    reminders_minutes: [10080, 1440, 120]
+    readback: CONFIRMED
+bounded_transition:
+  type: BIND_REVIEW_BEFORE_INFERRED_RENEWAL_CYCLE
+  effect: "Created one private fifteen-minute Calendar review block to map each Patreon charge to an exact membership and make an operator KEEP or CANCEL decision before the next inferred monthly cycle."
+  inference_ceiling: "September charge timing is inferred from the repeated provider-receipt pattern; no provider-stated September renewal date was found."
+priority:
+  p0: "PFA signed-document ownership and scope conflict; existing Gmail clarification draft remains unsent and no fresh provider reconciliation was found."
+  p1:
+    - "Patreon subscription mapping and KEEP/CANCEL decision at the bound private review block."
+    - "TECTANGLE payment-method clarification draft remains pending operator review."
+operator_minutes_removed_estimate: 8
+next_consumer: "Var budget and subscription-control reconciliation"
+privacy:
+  git_and_slack_ceiling: "Sanitized provider pattern, source pointers, Calendar event pointer, and action state only. No email bodies, account identifiers, order IDs, or payment instrument details."
+authority_and_effects:
+  performed:
+    - READ_GMAIL_METADATA_AND_SNIPPETS
+    - READ_CALENDAR_AVAILABILITY
+    - CREATE_PRIVATE_CALENDAR_REVIEW_BLOCK
+    - READBACK_CALENDAR_EVENT
+  not_performed:
+    - EMAIL_SEND
+    - SUBSCRIPTION_CANCEL
+    - REFUND_REQUEST
+    - PAYMENT
+    - ACCOUNT_CHANGE
+    - TASK_MUTATION
+    - APPLICATION_SUBMISSION
+    - DEPLOYMENT
+    - MERGE
+    - PUBLICATION
+honest_flaw: "The receipts do not identify the exact Patreon creators or membership terms. Provider account readback is still required before any cancellation or retained-subscription decision."
