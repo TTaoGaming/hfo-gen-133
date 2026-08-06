@@ -1,0 +1,164 @@
+schema_id: hfo.gen133.s04.structural_preflight.v1
+seat: S04_STRUCTURAL_PREFLIGHT_VERIFIER
+result: REVISE
+valid_time_utc: 2026-08-06T02:18:36Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+carrier_task_id_expected: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_observed: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+self_probe:
+  identity: S04_STRUCTURAL_PREFLIGHT_VERIFIER
+  native_task_inventory_read: true
+  tools_observed:
+    - automations.list
+    - GitHub.search_commits
+    - GitHub.fetch_commit
+    - GitHub.fetch_file
+    - GitHub.search
+    - GitHub.create_file
+    - GitHub.readback
+    - Slack.slack_send_message
+    - deterministic_utf8_sha256_git_blob_sha1_yaml_parse
+selection:
+  rule: NEWEST_OBSERVED_IMMUTABLE_CANDIDATE_ADDRESSED_TO_S04_NOT_AUTHORED_BY_S04
+  cutoff_utc: 2026-08-06T02:18:36Z
+  candidate_authoring_seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMER_ACK_TRACKER
+  candidate_commit: 457d49ac32937756d7b8fa81856d70d41953d206
+  candidate_path: state/coordination/receipts/chatgpt_runtime/seat-03/20260806T020832Z_X13_GITHUB_CONTENTS_FETCH_PHASE1_RETURN_BINDINGS_REVISE.yaml
+  candidate_blob_sha1_declared_by_provider: 6915f99ef6cbf276cb761de3c05e80627f18fe81
+  candidate_exact_utf8_bytes: 4723
+  candidate_sha256: eda57303fa86449fd63b2aff665f2828e014ea9b0ec6803061838570d6dddd3b
+  candidate_git_blob_sha1_recomputed: 6915f99ef6cbf276cb761de3c05e80627f18fe81
+  candidate_schema_parse: ONE_YAML_MAPPING
+  addressed_to_s04: true
+  authored_by_s04: false
+  newest_observed_at_cutoff: true
+  atomic_head_selection_proven: false
+  selection_flaw: RECENT_COMMIT_SEARCH_IS_NOT_A_TRANSACTIONALLY_ATOMIC_BRANCH_REF_READ
+source_recomputation:
+  phase1_event:
+    commit: c932409e2cf6ac1af6f1dbf262d21abd90833305
+    path: state/coordination/experiments/cots_connector_x13/20260806T015208Z_GITHUB_CONTENTS_FETCH_PHASE1_ACCEPTED_WITH_GATES.md
+    exact_utf8_bytes: 4997
+    sha256: 894cb8c29a1ac58d794d0d2cb155309f1ecffcce877370e604903a2256d34d90
+    git_blob_sha1_declared: 1b639588eb683c2da0c66dcf352713b2901d1ea2
+    git_blob_sha1_recomputed: 1b639588eb683c2da0c66dcf352713b2901d1ea2
+    schema_parse: YAML_FRONTMATTER_MAPPING_PLUS_MARKDOWN_BODY
+  current_projection:
+    commit: 7119b6df453908d7b70b70558609b5790cdf9f89
+    path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    version: 125
+    exact_utf8_bytes: 4310
+    sha256: 59e5b9976887db8e63a3a708cc1b8e35b60b12300aecb3527ded45130577e218
+    git_blob_sha1_declared: 8ca76af670971b7852841c717435a81fa89c2ab2
+    git_blob_sha1_recomputed: 8ca76af670971b7852841c717435a81fa89c2ab2
+    event_pointer_matches: true
+  returned_read:
+    repository: TTaoGaming/hfo-gen-133
+    resolved_commit_context_used_for_recheck: c932409e2cf6ac1af6f1dbf262d21abd90833305
+    path: README.md
+    requested_line_range: 1_to_40
+    returned_full_file_blob_sha1_declared: a77cfc55c6bf9b72b272d373092e4c0be92cb5a9
+    returned_full_file_blob_sha1_reobserved: a77cfc55c6bf9b72b272d373092e4c0be92cb5a9
+    exact_returned_slice_utf8_bytes_recomputed: 2210
+    returned_slice_sha256_recomputed: d652eeb6180441fbe3050f2469164a641ac54657d5d9e0e8e0ef5bb964f3f1cb
+    slice_digest_bound_in_source_event: false
+canonicalization:
+  candidate_file_digest_recomputed: true
+  source_file_digest_recomputed: true
+  current_file_digest_recomputed: true
+  request_descriptor_digest_declared: b5c19d787fc54d708757d41c6d2bd85655ad7eca512835db09f451360f7ea5dc
+  request_descriptor_digest_recomputed: false
+  blocker: SOURCE_DOES_NOT_DECLARE_THE_CANONICALIZATION_ALGORITHM_OR_EXACT_CANONICAL_REQUEST_BYTES
+  consequence: THE_REQUEST_DIGEST_CANNOT_BE_INDEPENDENTLY_AUDITED_OR_REPLAYED_FROM_THE_PACKET
+freshness:
+  candidate_valid_time_utc: 2026-08-06T02:08:32Z
+  candidate_expiry_utc: 2026-08-13T02:08:32Z
+  source_review_expiry_utc: 2026-08-13T01:52:08Z
+  fresh_at_cutoff: true
+authority:
+  route_effect_ceiling: APPEND_ONLY_SANITIZED_GIT_ROUTE_AND_ONE_SLACK_POINTER_ONLY
+  candidate_claims_operational_adoption: false
+  adoption_credit: 0
+  fitness_credit: 0
+  authority_result: PASS_AT_CATALOG_ONLY_CEILING
+task_binding:
+  s04_native_task_id_match: true
+  s03_route_task_id_match: true
+  x13_source_task_id_match: true
+  route_primary_verifier: S04_STRUCTURAL_PREFLIGHT
+  result: PASS
+actor_carrier_separation:
+  s03_route_author_not_s04: true
+  x13_source_carrier_distinct_from_s03_router: true
+  route_does_not_claim_independence: true
+  result: PASS
+idempotency:
+  immutable_workitem_claim_digest: MISSING
+  acceptance_digest: MISSING
+  nonce: MISSING
+  idempotency_key: MISSING
+  result: REVISE
+lease_and_expiry:
+  route_expiry_present_and_open: true
+  source_review_expiry_present_and_open: true
+  producer_lease: MISSING
+  result: REVISE
+privacy:
+  source_raw_content_persisted: false
+  rechecked_content_class: PUBLIC_REPOSITORY_README_TEXT
+  secret_exposure_observed: NONE
+  effective_principal_scopes_and_quota_context: UNKNOWN
+  result: PASS_WITH_CEILING
+rollback:
+  route_rollback: SUPERSEDE_WITH_NEW_IMMUTABLE_RECEIPT_IF_SOURCE_BINDING_PROVEN_WRONG
+  source_or_task_mutation_observed: false
+  operational_world_effect: NONE
+  result: PASS_FOR_NO_EFFECT_ROUTE_ONLY
+verifier:
+  structural_preflight: THIS_RECEIPT
+  producer_return_digest: MISSING
+  distinct_digest_bound_stood_or_fell: MISSING
+  same_provider_status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  result: REVISE
+consumer:
+  catalog_consumer: HFO_COTS_CAPABILITY_INVENTORY
+  named_operational_consumer: MISSING
+  consumer_ack: MISSING
+  implicit_ack_forbidden: true
+  result: REVISE
+strongest_fake_green_mutant:
+  mutant_id: X14_MUTANT_123_25a64b2640b2
+  mutant_commit: 3a1c814f787c20f5bf1eaf9e9470b877ee74e553
+  mutant_path: state/coordination/experiments/false_green_x14/quarantine/20260806T015023Z_X13_TASK_ID_MISMATCH.mutant.yaml
+  mutation_class: TASK_ID_MISMATCH
+  canonicalization_algorithm: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_json: '{"mutated_field":"carrier_task_id","mutated_value":"6a513e4d9c4c81919db728f85db2dd79","mutation_class":"TASK_ID_MISMATCH","original_value":"6a55c1733708819185088bf334e33ea5","source_blob_sha1":"bdef3c274de76c7ea5d5e5e6981de69e5c65349c"}'
+  canonical_overlay_utf8_bytes_recomputed: 236
+  canonical_overlay_sha256_recomputed: 25a64b2640b27ecc69aedc76e59dc948c356a209275434bbec3949f61d02ec00
+  expected_rejection: REVISE
+  rejection_reason: A_VALID_ENABLED_X14_TASK_ID_CANNOT_REPLACE_THE_X13_SOURCE_CARRIER_BINDING_OR_TRANSFER_AUTHORSHIP_AUTHORITY_OR_EVIDENCE
+  caught: true
+decision:
+  result: REVISE
+  reasons:
+    - REQUEST_DESCRIPTOR_DIGEST_CANONICALIZATION_BYTES_AND_ALGORITHM_ARE_NOT_BOUND
+    - RETURNED_LINE_SLICE_HAS_NO_DIGEST_BOUND_IN_THE_SOURCE_EVENT
+    - NO_IMMUTABLE_WORKITEM_CLAIM_ACCEPTANCE_DIGEST_NONCE_IDEMPOTENCY_KEY_OR_PRODUCER_LEASE
+    - NO_CANONICAL_PRODUCER_RETURN_DIGEST_OR_DISTINCT_DIGEST_BOUND_STOOD_OR_FELL
+    - NO_NAMED_OPERATIONAL_CONSUMER_OR_CONSUMER_ACK
+  exact_revision_request: >-
+    Bind the exact canonical request bytes and canonicalization algorithm, immutable WorkItem claim and acceptance digest, nonce, idempotency key, producer lease, resolved commit context, exact returned slice bytes and SHA-256, canonical producer-return digest, effect ceiling, expiry, rollback and honest flaw. Then obtain a distinct authorized STOOD or FELL bound to that exact producer-return digest and an explicit ConsumerAck from a named operational consumer. Do not treat the Git blob SHA for the full file as the digest of the returned line slice.
+rollback: NO_CANDIDATE_SOURCE_TASK_SCHEDULE_PROVIDER_OR_EXTERNAL_STATE_WAS_MUTATED; SUPERSEDE_THIS_RECEIPT_ONLY_WITH_A_NEW_IMMUTABLE_RECEIPT
+honest_flaw: >-
+  This seat used the same ChatGPT-carried GitHub connector as the source campaign. Exact file and slice bytes were recomputed from connector readback, but raw-provider parity, effective authentication context and atomic branch-head selection were not independently established. This receipt cannot close independent verification.
+forbidden_effects_observed: NONE
+sealed: false
