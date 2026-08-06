@@ -41,7 +41,7 @@ The current successor requires preservation of the upstream Arrow, WASD, and HJK
 - `index.html` blob: `61243962bab6846c3e06dba4358a547755dc1379`.
 - Current successor claim: `TTaoGaming/hfo-gen-133@01ee0d85928b9dd0c916373c4d1862e693bca072`.
 - Claim path: `projects/spatial-app-factory/claims/20260806T121000Z_SPATIAL_FACTORY_HTML5_SNAKE_PAGE_CSS_PROVENANCE_SUCCESSOR.claim.yaml`.
-- Claim blob: `486457ffdfd1485b750cd005b9078af9d46161a4` is not asserted here because the post-create readback is the authority; the claim acceptance digest observed before this card was `39c0c79b49fdcf4a189ca27f2aa0b8452d1d5fd923287633e625493235fae233`.
+- Claim acceptance digest observed before this card: `39c0c79b49fdcf4a189ca27f2aa0b8452d1d5fd923287633e625493235fae233`.
 
 The frozen upstream runtime installs a document/window-level `keydown` listener and maps the letter families W/A/S/D and H/J/K/L to direction commands. The frozen HTML advertises all three keyboard families and gives the canvas no explicit `tabindex` or focus owner.
 
