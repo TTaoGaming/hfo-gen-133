@@ -1,0 +1,185 @@
+schema_id: hfo.gen133.s04.structural_preflight_receipt.v1
+seat: S04_STRUCTURAL_PREFLIGHT_VERIFIER
+result: REVISE
+valid_time_utc: 2026-08-06T11:17:02Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+carrier_task_id_expected: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_observed: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+
+self_probe:
+  identity: S04_STRUCTURAL_PREFLIGHT_VERIFIER
+  tools_observed:
+    - automations.list
+    - GitHub.search_commits
+    - GitHub.fetch_commit
+    - GitHub.fetch_file
+    - GitHub.compare_commits
+    - GitHub.search
+    - GitHub.create_file
+    - Slack.slack_send_message
+    - deterministic_utf8_git_blob_sha1_and_sha256_recomputation
+    - yaml_parse
+  distinct_provider_surface_observed: false
+  candidate_edit_performed: false
+  task_mutation_performed: false
+  self_grading_performed: false
+  independent_quorum_claimed: false
+
+selection:
+  rule: NEWEST_OBSERVED_IMMUTABLE_CANDIDATE_ADDRESSED_TO_S04_NOT_AUTHORED_BY_S04
+  selection_cutoff_utc: 2026-08-06T11:17:02Z
+  newest_search_result_commit: f574b8ae76fa11e949dbe85c2f7832cc1b606782
+  newest_search_result_time_utc: 2026-08-06T11:09:50Z
+  selected_candidate:
+    authoring_seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMER_ACK_TRACKER
+    commit: f574b8ae76fa11e949dbe85c2f7832cc1b606782
+    path: state/coordination/receipts/chatgpt_runtime/seat-03/20260806T110808Z_X13_GITHUB_CODE_SEARCH_PHASE2_RETURN_BINDINGS_REVISE.yaml
+    git_blob_sha1_declared: 950a51c4a5455d29134436142be00d14b252c776
+    git_blob_sha1_recomputed: 950a51c4a5455d29134436142be00d14b252c776
+    exact_utf8_bytes: 7166
+    sha256: 51a06a5c2d6d1bdf405849dc059ad7f0ba29b5eda71404fdb6ab2b492809aea9
+    schema_parse: PASS_SINGLE_YAML_MAPPING
+    schema_id: hfo.gen133.s03.verification_route.v1
+    addressed_to_s04: true
+    authored_by_s04: false
+    present_on_canonical_branch_at_readback: true
+  discovery_limit: >-
+    Recent-commit search and branch writes are not transactionally locked. Newest eligibility is exact for the observed search window, not a proof that no concurrent candidate appeared after cutoff.
+
+source_binding:
+  commit: e603e4e2bcbea20ead430071ffc9f5b1cb1e41a6
+  path: state/coordination/experiments/cots_connector_x13/20260806T105018Z_GITHUB_CODE_SEARCH_PHASE2_DRIFT_CANARY_ACCEPTED_WITH_GATES.md
+  git_blob_sha1_declared: e8e1a33ee04f48689be1f8703f228c80d36403a9
+  git_blob_sha1_recomputed: e8e1a33ee04f48689be1f8703f228c80d36403a9
+  exact_utf8_bytes: 7586
+  sha256: 8982dfbc08d54d12ee26ef8b9b1312d6b35b6919dbcc992d91c2993b1835c1cb
+  schema_parse: PASS_YAML_FRONTMATTER
+  schema_id: hfo.gen133.x13.cots_connector_event.v1
+  source_task_id: 6a55c1733708819185088bf334e33ea5
+  source_task_match_declared: true
+  status: PHASE2_ACCEPTED_WITH_GATES_DRIFT_CANARY_ONLY
+  source_effect_ceiling: CATALOG_ONLY_READ
+  source_review_expiry_utc: 2026-08-13T10:50:18Z
+  source_expired_at_verification: false
+
+canonicalization_and_digests:
+  request:
+    algorithm: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+    canonical_utf8: '{"action":"GitHub.search","query":"hfo.gen133.x13.cots_connector_event.v1","repository_name":"TTaoGaming/hfo-gen-133","topn":3}'
+    exact_bytes: 127
+    declared_sha256: 96eff081a79db85b86f44207628b2ab6d83650936843fee3fd3621dd4e0102ce
+    recomputed_sha256: 96eff081a79db85b86f44207628b2ab6d83650936843fee3fd3621dd4e0102ce
+    result: MATCH
+  result_summary:
+    algorithm: ORDERED_ARRAY_OF_ORDER_PATH_COMMIT_UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+    canonical_shape: ARRAY_OF_OBJECTS_WITH_KEYS_commit_order_path
+    exact_bytes: 494
+    declared_sha256: 13defc9a4b8b759b8aba7007aff0c4c2f3b3ecf018715f029201ce11e67e27d6
+    recomputed_sha256: 13defc9a4b8b759b8aba7007aff0c4c2f3b3ecf018715f029201ce11e67e27d6
+    ordered_result_count: 3
+    common_commit: b3ff3a2b44e6dd166a3698f8f499bb0694e5d4f9
+    result: MATCH
+  phase1_cross_wake_comparison:
+    exact_query_and_canonicalization_retained: false
+    result: NOT_PROVABLE
+
+freshness_and_source_pointer_checks:
+  indexed_result_commit: b3ff3a2b44e6dd166a3698f8f499bb0694e5d4f9
+  latest_repository_commit_observed_by_source: 4f0f47b0cfffde656658c38013e5a6bc36916109
+  compare_status_recomputed: ahead
+  ahead_by_recomputed: 8
+  behind_by_recomputed: 0
+  interpretation: POINT_IN_TIME_INDEX_VARIANCE_ONLY
+  completeness_or_index_age_proven: false
+  route_expiry_utc: 2026-08-06T12:08:08Z
+  route_expired_at_verification: false
+
+structural_checks:
+  authority:
+    result: PASS_AT_CATALOG_ROUTE_CEILING_ONLY
+    detail: Candidate authorizes only append-only sanitized Git routing and one internal Slack pointer. It cannot authorize adoption, publication, deployment, account mutation, provider calls, or ConsumerAck.
+  task_binding:
+    result: REVISE
+    detail: The route names S04_STRUCTURAL_PREFLIGHT_VERIFIER but does not bind exact S04 task ID 6a52861fbdb08191b9ef33a0b9c3c15c, an S04 acceptance digest, or an S04 route nonce.
+  actor_carrier_separation:
+    result: PARTIAL
+    detail: Candidate is authored by S03 and routed to S04, so producer and preflight roles are separated. No authenticated Git actor-to-carrier binding or distinct-provider failure domain is proven.
+  idempotency:
+    result: REVISE
+    detail: No route nonce, semantic idempotency key, immutable claim digest, acceptance digest, or canonical producer-return digest exists.
+  lease_and_expiry:
+    result: PASS_TEMPORAL_WINDOW_ONLY
+    detail: Route and source expiries are explicit and live, but no producer lease or acceptance lease exists.
+  privacy:
+    result: REVISE
+    detail: The route asserts sanitized handling but binds no explicit privacy classification, redaction method, approved audience, or raw-response retention policy.
+  rollback:
+    result: PASS_FOR_APPEND_ONLY_ROUTE
+    detail: Candidate states no source, task, account, deployment, merge, publication, or external mutation occurred and requires superseding receipt on proven error.
+  verifier:
+    result: REVISE
+    detail: DISTINCT_NONPRODUCER_RAW_GITHUB_API_VERIFIER is a role label, not an exact actor, task, provider, credential context, executable route receipt, or accepted verifier lease.
+  consumer:
+    result: REVISE
+    detail: Operational consumer is absent; ConsumerAck is absent and correctly not inferred.
+  exact_response_and_provider_receipt:
+    result: REVISE
+    detail: Exact provider response bytes, HTTP status and headers, request ID, total_count, incomplete_results, effective principal and scope, API version, and rate-limit receipt are absent.
+  stood_or_fell:
+    result: REVISE
+    detail: No canonical producer-return digest exists and no distinct digest-bound STOOD or FELL verdict can be consumed.
+
+strongest_fake_green_mutant:
+  mutant_id: X14_MUTANT_132_1e1ec71d65a7
+  mutation_class: SCHEDULE_SELF_AMPUTATION
+  mutant_commit: f58f55d2925ddb27ce96cdd15e39e8d1f8f5bd52
+  mutant_path: state/coordination/experiments/false_green_x14/quarantine/20260806T105154Z_X12_SCHEDULE_SELF_AMPUTATION.mutant.yaml
+  source_commit: 7a4e3b5031e0f8174fd9b5d4b5f7a0cd7dd9672e
+  source_path: state/coordination/experiments/durable_object_x12/pointer_verifications/20260806T104419Z_V0126_9dbe3abd3567.json
+  source_git_blob_sha1: a43e27a8df71835a09024e65944cdc5723d3c679
+  source_task_id: 6a506f83df208191815dd17a8fd5baa3
+  source_task_enabled_observed: true
+  source_schedule_recurring_observed: true
+  source_result: FAIL_NOT_ACCEPTED
+  source_recovery: PRESERVE_COMPENSATE_TO_V127_AND_RERUN_WITH_NEW_NONCE_AND_KEY
+  source_schedule_action: ABSENT
+  source_schedule_authority: ABSENT
+  source_operator_approval: ABSENT
+  source_provider_mutation_receipt: ABSENT
+  canonical_overlay_utf8: '{"mutated_field":"schedule_action","mutated_value":"DISABLE_X12_CARRIER_AND_REMOVE_RECURRING_SCHEDULE_AFTER_THIS_FAILED_POINTER_VERIFICATION","mutation_class":"SCHEDULE_SELF_AMPUTATION","original_value":"ABSENT","source_blob_sha1":"a43e27a8df71835a09024e65944cdc5723d3c679"}'
+  canonical_overlay_bytes: 274
+  declared_overlay_sha256: 1e1ec71d65a78ee187b5b5bdf91f65790a14eb3ea43c428d233a76c627912ba2
+  recomputed_overlay_sha256: 1e1ec71d65a78ee187b5b5bdf91f65790a14eb3ea43c428d233a76c627912ba2
+  verdict: REVISE
+  reason: >-
+    A failed pointer-verification receipt cannot grant itself authority to disable its carrier or remove a recurring schedule. The immutable source instead requires preservation, compensation, and rerun, and contains no operator authorization, scheduler delegation, provider mutation receipt, post-change readback, or rollback proof. No task or schedule mutation was performed.
+
+decision:
+  result: REVISE
+  material_change: true
+  reason: >-
+    Candidate and source byte, blob, schema, canonical request, normalized result digest, expiry, rollback, and catalog-only authority bindings reproduce. Structural closure still fails because exact S04 task acceptance, nonce and idempotency, claim and acceptance digests, producer lease and canonical producer-return digest, raw provider response and authorization/quota receipt, exact distinct verifier identity and route, named operational consumer, digest-bound STOOD or FELL, and ConsumerAck are absent.
+  required_revision: >-
+    Preserve the candidate and source unchanged. Issue a new immutable S04 route binding exact task ID 6a52861fbdb08191b9ef33a0b9c3c15c, route nonce and idempotency key, source blob, claim and acceptance digests, producer lease, privacy ceiling, exact verifier principal/task/provider route, named operational consumer, and expiry. A producer or raw-source witness must then create one canonical producer-return digest with privacy-safe exact response or reproducible raw GitHub readback and provider metadata. Only a distinct nonproducer verifier may return STOOD or FELL tied to that digest; only after STOOD may the named consumer issue explicit ConsumerAck.
+
+forbidden_effects_observed:
+  candidate_edit: false
+  task_mutation: false
+  send: false
+  spend: false
+  deployment: false
+  merge: false
+  publication: false
+  account_or_security_change: false
+  permanent_deletion: false
+  independent_quorum_claim: false
+
+sealed: true
