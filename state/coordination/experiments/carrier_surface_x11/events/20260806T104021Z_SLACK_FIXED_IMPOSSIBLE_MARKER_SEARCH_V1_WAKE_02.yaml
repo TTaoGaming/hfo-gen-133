@@ -1,0 +1,72 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+experiment_id: X11_SLACK_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1
+event_type: ACCEPTED_WAKE
+expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+campaign_wake: 2
+target_wakes_before_decision: 4
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+current_version_before: 133
+current_version_after: 134
+accepted: true
+campaign_status: ACTIVE
+campaign_disposition: null
+baseline:
+  accepted_wakes: 1
+  supported_claim: authenticated_bounded_public_Slack_message_search_execution_and_sanitized_zero_result_visibility
+  prior_sanitized_result_count: 0
+  prior_continuation_present: false
+  permission_class: AUTHENTICATED_SLACK_PUBLIC_BOUNDED_SEARCH_READ_AVAILABLE
+  error_class: NONE
+hypothesis: an_authenticated_bounded_public_Slack_search_for_one_fixed_impossible_marker_will_repeatably_return_a_sanitized_zero_result_without_fetching_or_persisting_message_content_or_identifiers
+controlled_factor: slack_read_surface
+exact_probe:
+  surface: Slack_public_message_search
+  fixed_marker: HFO_X11_SLACK_FIXED_IMPOSSIBLE_MARKER_8E2A4C7D1B906F35
+  query_mode: exact_phrase_keyword_search
+  content_types: messages
+  maximum_results: 1
+  include_context: false
+  response_format: concise
+  mutation: false
+measured_result:
+  provider_call_success: true
+  sanitized_result_count: 0
+  continuation_present: false
+  permission_class: AUTHENTICATED_SLACK_PUBLIC_BOUNDED_SEARCH_READ_AVAILABLE
+  error_class: NONE
+  latency_ms: null
+  latency_note: connector_latency_not_exposed
+  operator_relay_minutes: 0
+  changed_capability: false
+  campaign_decision: false
+  andon: false
+supported_claim: authenticated_bounded_public_Slack_message_search_execution_and_sanitized_zero_result_visibility
+claim_ceiling: public_channel_search_execution_and_sanitized_count_visibility_only_not_workspace_completeness_private_or_DM_visibility_search_recall_indexing_freshness_message_content_access_authenticity_or_independent_verification
+strongest_falsifier: Slack_public_search_surface_becomes_missing_or_unauthenticated_the_same_fixed_marker_returns_nonzero_or_continuation_or_the_probe_fetches_or_persists_message_content_context_channels_timestamps_or_identifiers
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer:
+  - Reginleif
+  - Ratatoskr
+same_provider_independence_claim: false
+honest_flaw: an_impossible_marker_zero_result_can_validate_bounded_public_search_execution_but_cannot_test_private_surfaces_workspace_completeness_recall_freshness_content_access_or_independent_verification
+measurement_sealing_model: this_event_is_accepted_only_if_the_subsequent_exact_event_readback_and_expected_SHA_CURRENT_update_and_readback_all_match;_CURRENT_is_the_authoritative_acceptance_receipt
+privacy_gate: no_message_content_subjects_parties_snippets_channels_timestamps_or_identifiers_persisted
+prohibited_effects_observed: {task_mutation: false, send: false, spend: false, deployment: false, merge: false, publication: false, account_or_security_change: false, destructive_deletion: false, sensitive_externalization: false}
+next_factor: slack_read_surface
+next_probe:
+  experiment_id: X11_SLACK_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1
+  campaign_wake: 3
+  mode: bounded_public_message_search
+  exact_action: repeat_the_identical_fixed_impossible_marker_public_Slack_search_with_maximum_one_result_include_context_false_and_persist_only_sanitized_measurements
+  expected_current_version: 134
+  slack_write_each_probe_allowed: false
+  post_only_changed_capability_campaign_decision_or_andon: true
+  sensitive_readback_externalization_allowed: false
+  same_provider_independence_claim_allowed: false
+slack_action: NONE_UNCHANGED_SILENT
+recorded_valid_time_utc: 2026-08-06T10:40:21Z
+sealed: true
+---
