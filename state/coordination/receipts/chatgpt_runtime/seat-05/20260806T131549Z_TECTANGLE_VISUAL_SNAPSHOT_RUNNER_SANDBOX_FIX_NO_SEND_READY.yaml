@@ -1,0 +1,100 @@
+schema: hfo.gen133.operator_relief_receipt.v1
+receipt_id: S05-20260806T131549Z-TECTANGLE-VISUAL-SNAPSHOT-SANDBOX
+seat: S05
+expected_task_id: 6a55c182078c8191b89f2dd15f5f640c
+wip: 1
+timestamp_utc: 2026-08-06T13:15:49Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+material_change: true
+
+active_item:
+  id: TECTANGLE_VISUAL_SNAPSHOT_RUN_31103684665
+  state_before: FAILED_CAUSE_UNRECONCILED
+  state_after: RUNNER_SANDBOX_FAILURE_RECONCILED_NO_PRODUCT_REGRESSION_CLAIM
+  source_repository: TTaoGaming/Tectangle
+  source_commit: 49da03bd595d364789c219382ec6bec6f56b552d
+
+priority_control:
+  p0:
+    id: PFA_SIGNED_DOCUMENT_OWNERSHIP_SCOPE_CLARIFICATION
+    state: NO_FRESH_PROVIDER_REPLY_IN_CHANGED_MAIL_SCAN_CLARIFICATION_REMAINS_UNSENT
+  p1:
+    - id: TECTANGLE_VISUAL_SNAPSHOT_CI_SANDBOX_FIX
+      state: EXACT_NO_SEND_APPROVAL_PACKET_READY
+    - id: MISSOURI_HVAC_SOURCE_READBACK_CALL
+      state: PRIVATE_APPOINTMENT_BOUND_FOR_2026-08-06T08:00:00-06:00
+
+transition:
+  type: PREPARE_EXACT_NO_SEND_APPROVAL_PACKET
+  result: READY
+  summary: >-
+    GitHub Actions run 31103684665 did not reach visual comparison. Dependency
+    install, static-server startup, and artifact upload succeeded; Puppeteer
+    failed during Jest globalSetup because Chromium 140 could not obtain a
+    usable sandbox on the ubuntu-24.04 hosted runner. This is an execution-
+    environment failure, not evidence of a visual or product regression.
+
+source_evidence:
+  gmail_message_id: 19fd727e13c50e91
+  github_run_url: https://github.com/TTaoGaming/Tectangle/actions/runs/31103684665
+  github_run_id: 31103684665
+  github_job_id: 92623310215
+  failed_step: Run visual snapshot
+  successful_steps:
+    - Install deps
+    - Start static server
+    - Wait for server
+    - Upload artifacts
+  exact_error: "No usable sandbox; Chromium launch aborted in zygote_host_impl_linux.cc on Ubuntu 23.10+ style AppArmor/user-namespace restrictions."
+  workflow_path: .github/workflows/visual_snapshot_daily.yml
+  workflow_blob: 99bb10d1f6079664597b5809b195b1bfbc0c71b0
+  puppeteer_config_path: jest-puppeteer.config.cjs
+  puppeteer_config_blob: baec64c737cc5597fe17d77aeed0e931d7ce50b7
+
+no_send_approval_packet:
+  decision_required: ONE_OF
+  options:
+    - code: APPROVE_RUNNER_PIN
+      preferred: true
+      exact_change: "Change only .github/workflows/visual_snapshot_daily.yml runs-on from ubuntu-latest to ubuntu-22.04."
+      rationale: "Avoids disabling Chromium sandbox while isolating the runner-image regression."
+    - code: APPROVE_CI_ONLY_SANDBOX_BYPASS
+      preferred: false
+      exact_change: >-
+        In jest-puppeteer.config.cjs, append --no-sandbox and
+        --disable-setuid-sandbox only when process.env.CI is truthy; do not
+        apply these flags to local or production browser launches.
+      rationale: "Smallest immediate workaround, but weakens browser-process isolation in CI."
+    - code: DEFER_FIX
+      preferred: false
+      exact_change: "No repository change; accept continued scheduled failure and alert noise."
+  verification_gate:
+    - Re-run the same Visual Snapshot Daily workflow after the chosen change.
+    - Require Puppeteer globalSetup to launch successfully.
+    - Require both visual-snapshot and P1+P2 screenshot steps to execute.
+    - Require expected PNG artifacts to upload.
+    - Do not update golden images or baselines as part of the environment fix.
+    - Keep Node 20 deprecation and npm audit findings as separate follow-up work; neither caused this run failure.
+  next_consumer: TECTANGLE_CI_BUILDER_THEN_DISTINCT_VISUAL_REGRESSION_VERIFIER
+
+operator_relief:
+  estimated_minutes_removed: 12
+  removed_work:
+    - Open and classify the failed workflow notification.
+    - Locate the failed job and exact failing step.
+    - Separate runner-environment failure from product-regression evidence.
+    - Locate the workflow and Puppeteer configuration patch surfaces.
+    - Define bounded decision options and a no-baseline-mutation verification gate.
+
+guardrails_observed:
+  email_sent: false
+  application_submitted: false
+  spend_or_payment: false
+  deployment_or_merge: false
+  workflow_rerun: false
+  account_or_security_change: false
+  destructive_action: false
+  private_body_externalized: false
+
+next_consumer: TECTANGLE_CI_BUILDER_THEN_DISTINCT_VISUAL_REGRESSION_VERIFIER
