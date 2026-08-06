@@ -1,8 +1,8 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_GITHUB_CONTENTS_EVENT_POINTER_READBACK_V2
-current_version: 128
-accepted_wakes: 0
+current_version: 129
+accepted_wakes: 1
 target_wakes_before_decision: 4
 controlled_factor: git_read_write_surface
 campaign_status: ACTIVE
@@ -16,39 +16,52 @@ prior_campaign:
     commit: 8850898446f1441277f20f48d8e427116ecf1b57
     path: state/coordination/experiments/carrier_surface_x11/events/20260806T043921Z_DRIVE_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1_WAKE_04_DECISION_KEEP.yaml
     blob: cba964724d53476e2d6e956d2424ab021817fcf5
-baseline_result: null
+baseline_result: required_GitHub_contents_event_create_and_expected_SHA_CURRENT_update_have_succeeded_during_prior_campaigns_but_were_not_isolated_as_the_single_control_factor_or_checked_for_exact_payload_and_version_readback
 hypothesis: the_required_git_first_event_create_and_expected_sha_current_update_can_be_exactly_read_back_from_the_canonical_branch_with_matching_payload_version_and_blob_receipts_without_extra_repository_mutation
 measured_result:
-  event_create_success: []
-  event_exact_readback_success: []
-  current_expected_sha_update_success: []
-  current_exact_readback_success: []
-  version_match: []
-  payload_match: []
-  latencies_ms: []
-  permission_class: null
-  error_class: null
+  event_create_success:
+    - true
+  event_exact_readback_success:
+    - true
+  current_expected_sha_update_success:
+    - true
+  current_exact_readback_success:
+    - true
+  version_match:
+    - true
+  payload_match:
+    - true
+  latencies_ms:
+    - event_create_external_call: 975
+      event_exact_readback: null
+      current_expected_sha_update: null
+      current_exact_readback: null
+  latency_note: only_the_event_create_connector_external_call_time_was_exposed_before_pointer_update;_no_comparable_end_to_end_latency_is_claimed
+  permission_class: AUTHENTICATED_GITHUB_CONTENTS_CREATE_UPDATE_AND_EXACT_READBACK_AVAILABLE
+  error_class: NONE
   operator_relay_minutes: 0
   changed_capability: false
   campaign_decision: false
   andon: false
-supported_claim: null
+supported_claim: one_authenticated_GitHub_contents_create_one_expected_SHA_update_and_exact_same_branch_path_payload_version_and_blob_readback_succeeded_without_extra_repository_mutation
 claim_ceiling: exact_authenticated_github_contents_create_update_and_readback_receipts_only_not_repository_global_consistency_branch_protection_merge_safety_or_independent_verification
 strongest_falsifier: required_event_create_or_exact_path_readback_fails_current_expected_sha_update_is_rejected_without_concurrency_version_match_or_payload_match_fails_or_any_extra_repository_mutation_occurs
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
-consumer: [Reginleif, Ratatoskr]
+consumer:
+  - Reginleif
+  - Ratatoskr
 honest_flaw: successful_same_provider_contents_readback_can_detect_local_write_or_version_mismatch_but_cannot_prove_repository_global_consistency_independent_verification_or_protection_against_other_writers
 last_event:
-  commit: 8850898446f1441277f20f48d8e427116ecf1b57
-  path: state/coordination/experiments/carrier_surface_x11/events/20260806T043921Z_DRIVE_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1_WAKE_04_DECISION_KEEP.yaml
-  blob: cba964724d53476e2d6e956d2424ab021817fcf5
+  commit: 3c31899b4c8b1df9aef1278fadea654d58b7e83c
+  path: state/coordination/experiments/carrier_surface_x11/events/20260806T054140Z_GITHUB_CONTENTS_EVENT_POINTER_READBACK_V2_WAKE_01.yaml
+  blob: 3fa01ffe39472a0b670c50b40a2e079b7c816bb4
 next_factor: git_read_write_surface
 next_probe:
   experiment_id: X11_GITHUB_CONTENTS_EVENT_POINTER_READBACK_V2
-  campaign_wake: 1
+  campaign_wake: 2
   mode: required_event_and_pointer_exact_readback
   exact_action: use_the_required_immutable_event_create_and_expected_sha_current_update_as_the_probe_then_fetch_both_exact_paths_from_the_canonical_branch_and_compare_returned_utf8_payload_version_and_blob_sha_without_any_extra_repository_mutation
-  expected_current_version: 128
+  expected_current_version: 129
   persist_only:
     - event_create_success
     - event_exact_readback_success
@@ -69,12 +82,11 @@ next_probe:
   post_only_changed_capability_campaign_decision_or_andon: true
   sensitive_readback_externalization_allowed: false
   same_provider_independence_claim_allowed: false
-slack_action: POST_CAMPAIGN_DECISION
-updated_valid_time_utc: 2026-08-06T04:39:21Z
+slack_action: SILENT_UNCHANGED_PROBE
+updated_valid_time_utc: 2026-08-06T05:43:04Z
 sealed: false
 ---
 
-Drive read-surface V1 completed four accepted wakes and is retained at the bounded-search claim ceiling.
-All four authenticated document-metadata-only searches returned zero results with no continuation and
-without content fetching or identifier persistence. The next four-wake campaign isolates the required
-GitHub contents event/pointer write and exact readback surface without adding any extra repository mutation.
+GitHub contents read/write surface V2 has one accepted wake. The required immutable event create,
+expected-SHA CURRENT update, and exact branch/path readbacks matched the expected payloads, versions,
+and blob receipts. No changed capability, campaign decision, or Andon was detected, so Slack remains silent.
