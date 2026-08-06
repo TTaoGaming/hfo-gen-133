@@ -1,87 +1,48 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_WEB_FIXED_RFC_EDITOR_READ_V1
-current_version: 140
-accepted_wakes: 0
+current_version: 141
+accepted_wakes: 1
 target_wakes_before_decision: 4
 controlled_factor: web_research_surface
 campaign_status: ACTIVE
 current_disposition: null
-prior_campaign:
-  experiment_id: X11_NATIVE_TASKS_EXPECTED_RECORD_VISIBILITY_V3
-  final_version: 140
-  disposition: KEEP
-  accepted_wakes: 4
-  decision_event:
-    commit: e39f4f44d69df09a336db71f8993b3e89f4d090f
-    path: state/coordination/experiments/carrier_surface_x11/events/20260806T163809Z_NATIVE_TASKS_EXPECTED_RECORD_VISIBILITY_V3_WAKE_04_DECISION_KEEP.yaml
-    blob: 6cdba3123a9b9222af8d09b70a3e86b64e49c11d
-baseline_result: four_identical_authenticated_native_Tasks_inventory_reads_exposed_the_exact_expected_X11_record_as_enabled_and_exact_schedule_with_zero_operator_relay_and_no_persisted_unrelated_task_metadata
-hypothesis: a_fixed_read_only_web_open_of_the_official_RFC_Editor_RFC_2606_HTML_page_will_repeatably_resolve_the_official_host_and_expose_the_fixed_title_marker_without_search_personalization_private_content_or_external_mutation
+baseline_result: prior_campaign_KEEP_native_Tasks_visibility_4_of_4
+hypothesis: fixed_read_only_RFC_Editor_RFC2606_HTML_open_repeatably_resolves_official_host_and_fixed_title_marker
 measured_result:
-  provider_call_success: []
-  official_host_boolean: []
-  fixed_marker_present: []
-  latencies_ms: []
-  permission_class: UNMEASURED
-  error_class: UNMEASURED
-  operator_relay_minutes: 0
-  changed_capability: false
-  campaign_decision: false
-  andon: false
-supported_claim: no_web_fixed_RFC_Editor_read_v1_claim_yet_campaign_initialized_only
-claim_ceiling: no_claim_beyond_campaign_initialization_until_the_fixed_public_page_probe_executes
-strongest_falsifier: the_web_surface_is_missing_or_unauthenticated_the_fixed_URL_fails_or_resolves_outside_www_rfc_editor_org_the_fixed_title_marker_is_absent_or_the_probe_requires_search_personalization_private_content_or_external_mutation
-verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
-consumer:
-  - Reginleif
-  - Ratatoskr
-honest_flaw: one_fixed_public_page_can_test_only_a_narrow_web_retrieval_path_and_cannot_establish_search_breadth_freshness_browser_parity_general_internet_access_network_independence_or_source_authenticity_beyond_the_exposed_host
-last_event:
-  commit: e39f4f44d69df09a336db71f8993b3e89f4d090f
-  path: state/coordination/experiments/carrier_surface_x11/events/20260806T163809Z_NATIVE_TASKS_EXPECTED_RECORD_VISIBILITY_V3_WAKE_04_DECISION_KEEP.yaml
-  blob: 6cdba3123a9b9222af8d09b70a3e86b64e49c11d
-completed_campaign_measurement:
-  experiment_id: X11_NATIVE_TASKS_EXPECTED_RECORD_VISIBILITY_V3
-  provider_call_success: [true, true, true, true]
-  expected_task_visible: [true, true, true, true]
-  enabled_boolean: [true, true, true, true]
-  timing_mode: [exact_schedule, exact_schedule, exact_schedule, exact_schedule]
-  latencies_ms: [null, null, null, null]
-  latency_note: connector_latency_not_exposed
-  permission_class: AUTHENTICATED_NATIVE_TASK_INVENTORY_READ_AVAILABLE
+  provider_call_success: [true]
+  official_host_boolean: [true]
+  fixed_marker_present: [true]
+  latencies_ms: [null]
+  latency_note: web_retrieval_latency_not_exposed
+  permission_class: PUBLIC_WEB_FIXED_URL_READ_AVAILABLE
   error_class: NONE
   operator_relay_minutes: 0
-  disposition: KEEP
-  supported_claim: repeatable_authenticated_same_provider_expected_record_inventory_visibility_enabled_boolean_and_exact_schedule_timing_mode
-  claim_ceiling: same_provider_expected_record_inventory_visibility_only_not_current_run_liveness_successful_completion_exactly_once_delivery_future_durability_unrelated_inventory_correctness_or_independent_verification
-  honest_flaw: the_provider_inventory_response_is_broad_and_same_provider_and_exposes_no_request_latency_so_expected_record_visibility_cannot_prove_current_run_liveness_exactly_once_delivery_future_durability_or_independent_verification
+  changed_capability: true
+  campaign_decision: false
+  andon: false
+supported_claim: fixed_public_RFC_Editor_URL_retrieval_resolved_official_host_and_exposed_fixed_title_marker
+claim_ceiling: one_fixed_public_page_retrieval_only_not_search_breadth_freshness_browser_parity_general_internet_access_network_independence_or_source_authenticity
+strongest_falsifier: fixed_URL_fails_resolves_outside_official_host_or_fixed_marker_is_absent
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer: [Reginleif, Ratatoskr]
+honest_flaw: one_fixed_public_page_tests_only_a_narrow_retrieval_path
+last_event:
+  commit: 72ebd4bd127463a4100a2b76d71dcc17cf910562
+  path: state/coordination/experiments/carrier_surface_x11/events/20260806T174156Z_WEB_FIXED_RFC_EDITOR_READ_V1_WAKE_01.yaml
+  blob: 01d0a84252f48e3a99511cd881e926583a1f0a94
 next_factor: web_research_surface
 next_probe:
   experiment_id: X11_WEB_FIXED_RFC_EDITOR_READ_V1
-  campaign_wake: 1
+  campaign_wake: 2
   mode: fixed_public_page_read_only_marker_check
-  exact_action: open_https_www_rfc_editor_org_rfc_rfc2606_html_once_and_persist_only_call_success_official_host_boolean_fixed_title_marker_boolean_permission_error_latency_when_exposed_and_operator_relay_minutes
-  fixed_url: https://www.rfc-editor.org/rfc/rfc2606.html
-  fixed_marker: Reserved Top Level DNS Names
-  expected_current_version: 140
-  persist_only:
-    - provider_call_success
-    - official_host_boolean
-    - fixed_marker_present
-    - permission_class
-    - error_class
-    - latency_when_exposed
-    - operator_relay_minutes
+  expected_current_version: 141
   mutation_allowed: false
-  privacy_gate: public_page_only_no_query_personalization_cookies_or_private_content_persisted
   slack_write_each_probe_allowed: false
   post_only_changed_capability_campaign_decision_or_andon: true
-  sensitive_readback_externalization_allowed: false
-  same_provider_independence_claim_allowed: false
-slack_action: POST_CAMPAIGN_DECISION
-updated_valid_time_utc: 2026-08-06T16:38:09Z
+slack_action: POST_CHANGED_CAPABILITY
+updated_valid_time_utc: 2026-08-06T17:41:56Z
 sealed: false
 ---
 
-Native Tasks expected-record visibility V3 completed four accepted wakes. The exact expected X11 task record remained visible, enabled, and in exact_schedule mode on all four same-provider inventory reads. Disposition is KEEP within the narrow claim ceiling. The next isolated factor is a fixed read-only public RFC Editor web retrieval probe.
+Web fixed RFC Editor read V1 accepted wake 1 of 4. Wake 2 repeats the identical probe.
