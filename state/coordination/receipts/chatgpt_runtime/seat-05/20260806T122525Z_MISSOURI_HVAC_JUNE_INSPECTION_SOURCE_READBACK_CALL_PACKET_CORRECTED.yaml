@@ -1,0 +1,81 @@
+schema: hfo.gen133.operator_relief_receipt.v0_1
+receipt_id: S05_MISSOURI_HVAC_JUNE_INSPECTION_SOURCE_READBACK_20260806T122525Z
+immutable: true
+task:
+  expected_id: 6a55c182078c8191b89f2dd15f5f640c
+  observed_id: 6a55c182078c8191b89f2dd15f5f640c
+  title: HFO S05 Var Operator Relief
+  wip_limit: 1
+carrier:
+  seat: S05
+  role: OPERATOR_RELIEF_CELL
+  provider_surface: ChatGPT_Scheduled_Task
+valid_time: 2026-08-06T12:25:25Z
+transaction_time: COMMIT_METADATA_AUTHORITATIVE
+canonical:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+active_item:
+  id: MISSOURI_HVAC_PAYMENT_AND_LATER_REPAIR_RECONCILIATION
+  state_before: JUNE_OR_JULY_INSPECTION_SERVICE_DOCUMENTATION_UNVERIFIED
+  state_after: JUNE_INSPECTION_CERTIFICATE_AND_WORK_ORDER_DOCUMENTED_PAYMENT_CREDIT_AND_LATER_AC_REPAIR_UNVERIFIED
+priority:
+  p0: PFA_SIGNED_DOCUMENT_OWNERSHIP_AND_SCOPE_CLARIFICATION_UNSENT
+  p1:
+    - MISSOURI_HVAC_PAYMENT_CREDIT_AND_LATER_REPAIR_STATUS
+    - TECTANGLE_PAYMENT_APPROVAL_PACKET_OPERATOR_REVIEW
+source_evidence:
+  gmail:
+    privacy: PRIVATE_BODY_RETAINED_IN_GMAIL
+    pointers:
+      - subject: "Fwd: Crabapple"
+        attachment_class: CITY_HVAC_CERTIFICATE_IMAGE
+        attachment_sha256: f7e2cf6dc7099cee59c66c8dc66e1a6e5ff03f2735a3ba75fc1e465b7c42a97d
+      - subject: "Fwd: Crabapple"
+        attachment_class: CONTRACTOR_WORK_ORDER_IMAGE
+        attachment_sha256: a810edb1eee461525850627ad3bfbee9b300630587a225ad3de129bcac051375
+      - subject: "You paid Grant Heating and Air Conditioning $105.00"
+        evidence_class: PAYMENT_PROVIDER_CONFIRMATION
+    sanitized_facts:
+      - A signed City heating-and-ventilation certificate exists for the Missouri rental and is dated 2026-06-10.
+      - A companion contractor work order dated 2026-06-10 records a 105 USD inspection and safety-check charge.
+      - A payment-provider receipt records 105 USD paid on 2026-07-14.
+    excluded_claims:
+      - Payment credited to contractor ledger is not proved.
+      - City acceptance or current certificate sufficiency is not proved.
+      - Later air-conditioning failure diagnosis, repair, or completion is not proved.
+      - No July inspection is proved by these documents.
+  calendar:
+    event_id: s88gqqjk3h2ivriaj09agtr8kg
+    privacy: PRIVATE
+transition:
+  type: APPOINTMENT_PACKET_CORRECTION_AND_SOURCE_BINDING
+  bounded_effects:
+    - Corrected the private Calendar event from an ambiguous July-inspection premise to the documented June inspection chronology.
+    - Bound the contractor business call route inside the private Calendar event.
+    - Reframed the call around payment credit, City-document sufficiency, and the separate later AC repair status.
+    - Preserved event time, private visibility, and 60-minute and 15-minute reminders.
+  prohibited_effects_confirmed_absent:
+    - EMAIL_SEND
+    - PAYMENT
+    - SERVICE_AUTHORIZATION
+    - TASK_MUTATION
+    - APPLICATION_SUBMISSION
+    - ACCOUNT_CHANGE
+    - DEPLOYMENT
+    - MERGE
+    - PUBLICATION
+readback:
+  calendar_title: "[P1] Call Grant HVAC — confirm payment credit + current AC repair status"
+  calendar_time: 2026-08-06T08:00:00-06:00/2026-08-06T08:15:00-06:00
+  calendar_visibility: private
+  reminders_minutes_before:
+    - 60
+    - 15
+operator_minutes_removed: 10
+next_consumer:
+  primary: OPERATOR_AT_2026-08-06T08:00:00-06:00_CALL
+  secondary: VAR_PROPERTY_AND_FINANCE_RECONCILIATION
+stop_condition: Do not authorize a duplicate diagnostic charge, major replacement, or payment without written scope and operator approval.
+honest_flaw: The attachment readback establishes a June certificate and work order, but does not prove contractor payment credit, City acceptance, or completion of the later AC issue.
+result: MATERIAL_CHANGE
