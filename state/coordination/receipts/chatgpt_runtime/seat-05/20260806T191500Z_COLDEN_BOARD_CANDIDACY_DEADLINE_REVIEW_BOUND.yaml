@@ -1,0 +1,36 @@
+schema_version: "1.0"
+seat: "S05"
+role: "operator_relief"
+status: "MATERIAL_CHANGE"
+canonical_branch: "agent/gen133-bootstrap-20260730"
+
+active_item: "Colden board-candidacy decision before notice deadline"
+p0: "Make SUBMIT | DECLINE decision before the August 7 candidate-name deadline"
+p1:
+  - "If SUBMIT, prepare the notice-required candidacy fields in the source system"
+  - "PFA policy-to-document scope clarification remains pending"
+
+transition:
+  type: "deadline_appointment_bound"
+  source_system: "Gmail"
+  source_fact: "Property manager notice sets Friday, 2026-08-07 as the candidate-name submission date; no exact clock-time cutoff was stated."
+  calendar_system: "Google Calendar"
+  calendar_title: "P0 — Colden board candidacy deadline review"
+  calendar_start: "2026-08-07T08:30:00-06:00"
+  calendar_end: "2026-08-07T08:45:00-06:00"
+  visibility: "private"
+  reminders_minutes_before: [60, 10]
+  decision_gate: "SUBMIT | DECLINE"
+  send_performed: false
+
+operator_minutes_removed: 5
+next_consumer: "Var property/finance reconciliation"
+
+safety:
+  email_sent: false
+  payment_or_spend: false
+  application_submitted: false
+  deployment_or_merge: false
+  account_or_security_change: false
+  destructive_delete: false
+  sensitive_body_externalized: false
