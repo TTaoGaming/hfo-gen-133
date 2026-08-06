@@ -1,0 +1,146 @@
+schema_id: hfo.gen133.s03.verification_route.v1
+seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMER_ACK_TRACKER
+result: REVISE
+valid_time_utc: 2026-08-06T08:07:34Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+carrier_task_id_expected: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_observed: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_match: true
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+self_probe:
+  native_task_inventory_read: true
+  task_enabled_observed: true
+  task_title_observed: HFO S03 Ratatoskr Pacemaker
+  tools_observed:
+    - automations.list
+    - GitHub.search_commits
+    - GitHub.search
+    - GitHub.fetch_commit
+    - GitHub.fetch_file
+    - GitHub.create_file
+    - Slack.slack_read_channel
+    - Slack.slack_send_message
+selected_correlation_id: X13_GMAIL_SEARCH_READONLY_008_PHASE3_20260806T074749Z
+selected_workitem_id: X13_GMAIL_SEARCH_READONLY_008
+changed_input_window:
+  prior_s03_commit: ad386aa1d91e0e6f547c3b0c9c66d0ac0a370afc
+  phase2_s04_verdict_commit: dd03780d37bb6db8aee4389afd45f319a9d6c7e0
+  selected_phase3_origin_commit: 1c6824da08cec785b850503c8f5a9c22d1fe3807
+  selected_current_projection_commit: f0458f78e3bb19c25e9c8af13798cce3c5bbff81
+  slack_channel: C0BGNGPJFHU
+  slack_scan_after_message_ts: '1786000159.448929'
+  changed_consumer_ack_observed: false
+  changed_digest_bound_stood_or_fell_observed: false
+source_bindings:
+  phase3_event:
+    path: state/coordination/experiments/cots_connector_x13/20260806T074749Z_GMAIL_SEARCH_PHASE3_EMPTY_SUCCESS.md
+    origin_commit: 1c6824da08cec785b850503c8f5a9c22d1fe3807
+    blob_sha: 318b95850c8c058f358a59da7e91164e349c9643
+    event_id: X13_GMAIL_SEARCH_READONLY_008_PHASE3_20260806T074749Z
+    event_status: PHASE3_ACCEPTED_WITH_GATES
+    request_descriptor_sha256: 72caef78337d6ddd28432e6ef539e32b2f06645163de15613f01f0c95e02ee87
+    synthetic_token_sha256: 83130a0181efea504c7381da711988e68fad7fb08b1dfbb12a750b6a0056436b
+    request_shape: DOCUMENTED_DATE_BOUNDS_SYNTHETIC_QUOTED_NONMATCH_EXCLUDE_SPAM_TRASH_MAX_RESULTS_1_ID_ONLY
+    calls_this_wake: 1
+    result_count: 0
+    continuation_present: false
+    connector_error_present: false
+    error_http_status_present: false
+    external_latency_ms: 314
+    raw_query_persisted: false
+    raw_message_ids_persisted: false
+    raw_page_tokens_persisted: false
+    content_hydration: false
+    verifier_result: NOT_RUN
+    operational_consumer: NOT_ASSIGNED
+    consumer_ack: NOT_OBSERVED
+    event_expiry_utc: NOT_DECLARED_IN_EVENT
+  current_projection:
+    path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    source_version: 131
+    source_commit: f0458f78e3bb19c25e9c8af13798cce3c5bbff81
+    blob_sha: 98a43038ba4308ebd5356ee7c05ad360ee5c1e3d
+    points_to_phase3_event: true
+    campaign_status: OPEN
+    provisional_decision: ADOPT_WITH_GATES_CATALOG_ONLY
+    operational_decision: NOT_DECIDED
+    review_expiry_utc: 2026-08-13T07:47:49Z
+  changed_slack_evidence:
+    phase3_announcement_present: true
+    announcement_is_consumer_ack: false
+    digest_bound_stood_or_fell_present: false
+    explicit_named_operational_consumer_ack_present: false
+  prior_verdict_boundary:
+    phase2_s04_verdict_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260806T071716Z_X13_GMAIL_SEARCH_PHASE2_STRUCTURAL_REVISE.yaml
+    phase2_s04_verdict_commit: dd03780d37bb6db8aee4389afd45f319a9d6c7e0
+    phase2_s04_result: REVISE
+    phase2_s04_same_provider_status: SAME_PROVIDER_NONBINDING
+    phase2_s04_binding_weight: 0
+    transfer_to_phase3_allowed: false
+    reason: DIFFERENT_CORRELATION_SOURCE_COMMIT_BLOB_REQUEST_DESCRIPTOR_AND_RESULT_SEMANTICS_REQUIRE_FRESH_RECOMPUTATION
+claim_binding:
+  state: MISSING
+  flaw: NO_IMMUTABLE_OPERATIONAL_WORKITEM_CLAIM_DIGEST_ACCEPTANCE_DIGEST_NONCE_IDEMPOTENCY_KEY_LEASE_OR_NAMED_OPERATIONAL_CONSUMER
+producer_return_binding:
+  state: MISSING
+  flaw: PHASE3_IS_A_CATALOG_EMPTY_SUCCESS_OBSERVATION_NOT_A_WORKITEM_BOUND_CANONICAL_PRODUCER_RETURN
+  available_but_insufficient:
+    - ONE_SYNTHETIC_NONMATCH_REQUEST_DESCRIPTOR_DIGEST_WITHOUT_CANONICAL_REQUEST_BYTES
+    - ONE_SYNTHETIC_TOKEN_DIGEST_WITHOUT_THE_CANONICAL_QUERY_BYTES
+    - EMPTY_IDENTIFIER_LIST_NULL_CONTINUATION_NULL_CONNECTOR_ERROR_AND_LATENCY_DECLARATIONS
+    - NO_CONTENT_HYDRATION_RETRY_FALLBACK_SEND_WRITE_OR_MAILBOX_MUTATION_DECLARATIONS
+    - HONEST_FLAW_CLAIM_CEILING_AND_CATALOG_GATES
+  missing:
+    - exact_claim_digest
+    - exact_acceptance_digest
+    - canonical_producer_return_digest
+    - canonical_request_bytes_and_canonicalization_algorithm
+    - independently_recomputable_privacy_safe_response_digest_binding_exact_returned_bytes
+    - raw_authorized_Gmail_request_response_or_distinct_source_system_readback
+    - raw_provider_resultSizeEstimate_headers_request_id_and_query_translation_where_exposed
+    - effective_principal_scope_project_delegation_and_quota_context
+    - commands_and_exit_codes_when_raw_HTTP_or_local_tools_are_used
+    - rollback_bound_inside_the_producer_return
+    - explicit_effect_ceiling_bound_inside_the_producer_return
+    - producer_return_expiry
+    - honest_flaw_bound_to_the_canonical_producer_return_digest
+  privacy_note: RAW_MAIL_IDENTIFIERS_NEED_NOT_BE EXTERNALIZED; A DISTINCT_AUTHORIZED_VERIFIER_MAY_RECOMPUTE_PRIVACY_SAFE_DIGESTS_FROM_SOURCE_SYSTEM_BYTES_AND_BIND_THEM_TO_THE_CANONICAL_PRODUCER_RETURN_DIGEST
+verifier_binding:
+  state: MISSING
+  consumed_verdict: NONE
+  phase3_declared_verifier_result: NOT_RUN
+  allowed_terminal_vocabulary:
+    - STOOD
+    - FELL
+  requirement: VERDICT_MUST_NAME_THE_EXACT_CANONICAL_PRODUCER_RETURN_DIGEST_AND_RECOMPUTE_THE_CANONICAL_REQUEST_AND_PRIVACY_SAFE_RESPONSE_BINDINGS_UNDER_THE_SAME_EFFECTIVE_PRINCIPAL
+consumer_ack_binding:
+  state: MISSING
+  implicit_ack_forbidden: true
+  named_operational_consumer: NOT_ASSIGNED
+  catalog_consumer: HFO_COTS_CAPABILITY_INVENTORY_CATALOG_ONLY
+  catalog_retention_is_ack: false
+  slack_announcement_is_ack: false
+  requirement: AFTER_STOOD_REQUIRE_EXPLICIT_NAMED_OPERATIONAL_CONSUMER_ACK_BOUND_TO_THE_SAME_WORKITEM_CLAIM_AND_PRODUCER_RETURN_DIGEST
+revise_request:
+  exact_request: >-
+    Treat the Gmail phase-3 record only as narrow catalog evidence that one synthetic nonmatching ID-only wrapper call returned an empty list, no continuation token, and no connector error. To seek a terminal operational result, bind an immutable WorkItem claim and acceptance digest to one exact read-only Gmail search behavior and a named operational consumer. Produce one canonical producer return whose digest binds the canonical absolute-time request bytes and canonicalization algorithm, the exact synthetic token/query semantics, privacy-safe exact response-byte digests or authorized source-system readback, result-count and continuation semantics, effective principal/scope/project/delegation/quota context where exposed, raw provider resultSizeEstimate/headers/request ID/query translation where exposed, commands and exit codes for any raw HTTP or local tooling, rollback, explicit effect ceiling, expiry, and honest flaw. The current request-descriptor hash, synthetic-token hash, empty identifier list, null continuation, null connector error, 314 ms latency, PHASE3_ACCEPTED_WITH_GATES, CURRENT v131, X14 negative-control routing, and Slack announcement are not enough because canonical request and response bytes were not retained, verifier_result is NOT_RUN, no operational consumer is assigned, and no ConsumerAck exists. Obtain an exact STOOD or FELL from a distinct authorized verifier naming the canonical producer-return digest. After STOOD, obtain an explicit named ConsumerAck bound to the same WorkItem and producer-return digest. Do not transfer the phase-2 S04 verdict, any X14 mutant expectation, or any heritage antibody to this phase-3 source blob.
+route:
+  primary_verifier: S04_STRUCTURAL_PREFLIGHT
+  verifier_class: NONPRODUCER_SAME_PROVIDER_PREFLIGHT
+  binding_weight: 0
+  exact_packet_path: state/coordination/receipts/chatgpt_runtime/seat-03/20260806T080734Z_X13_GMAIL_SEARCH_PHASE3_RETURN_BINDINGS_REVISE.yaml
+  structural_request: RECOMPUTE_EXACT_PACKET_PHASE3_EVENT_AND_CURRENT_BYTES; CHECK_CORRELATION_SOURCE_BLOBS_CLAIM_ACCEPTANCE_CANONICAL_REQUEST_BYTES_CANONICALIZATION_RESPONSE_DIGEST_RECOMPUTABILITY_EMPTY_SUCCESS_CLAIM_CEILING_AUTH_CONTEXT_ROLLBACK_EFFECT_CEILING_EXPIRY_VERDICT_CONSUMER_ACK_AND_NO_TRANSFER_GATES; RETURN_REVISE_OR_HOLD_AS_SAME_PROVIDER_NONBINDING_WEIGHT_0
+  independent_verifier_required: DISTINCT_AUTHORIZED_RAW_GMAIL_USERS_MESSAGES_LIST_OR_EQUIVALENT_SOURCE_SYSTEM_WITNESS_USING_THE_SAME_EFFECTIVE_PRINCIPAL_CANONICAL_ABSOLUTE_TIME_SYNTHETIC_QUERY_MAXRESULTS_ONE_AND_CANONICAL_PRODUCER_RETURN_DIGEST
+terminal_receipt_written: false
+consumer_ack_inferred: false
+adoption_credit: 0
+fitness_credit: 0
+effect_ceiling: APPEND_ONLY_SANITIZED_GIT_ROUTE_AND_ONE_SLACK_POINTER_ONLY
+rollback: NO_GMAIL_TASK_PROVIDER_OR_SOURCE_MUTATION_OCCURRED; SUPERSEDE_THIS_ROUTE_WITH_A_NEW_IMMUTABLE_RECEIPT_IF_A_SOURCE_BINDING_IS_PROVEN_WRONG
+expiry_utc: 2026-08-13T08:07:34Z
+honest_flaw: >-
+  S03 used the same ChatGPT-carried GitHub and Slack surfaces and did not receive canonical Gmail request bytes, raw Gmail HTTP envelopes, effective identity or scope telemetry, exact provider response bytes, resultSizeEstimate, direct quota receipts, or an independent provider witness. A synthetic query designed to miss and returning an empty wrapper result establishes only the wrapper empty-success path; it does not prove authoritative absence, raw-provider parity, a WorkItem-bound producer return, independent STOOD or FELL, operational adoption, consumer value, or ConsumerAck.
+forbidden_effects_observed: NONE
+sealed: false
