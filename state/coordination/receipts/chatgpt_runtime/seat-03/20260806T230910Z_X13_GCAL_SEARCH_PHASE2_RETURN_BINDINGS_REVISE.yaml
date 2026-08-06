@@ -1,0 +1,55 @@
+schema_id: hfo.gen133.s03.verification_route.v1
+result: REVISE
+terminal: false
+seat: S03
+carrier_task_id: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_match: true
+wip: 1
+correlation_id: X13_GCAL_SEARCH_READONLY_012_PHASE2_20260806T224800Z
+work_item_binding: ABSENT
+source:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+  commit: a4185d5fcaddefafad064e5c6cb6b818f12207ba
+  path: state/coordination/experiments/cots_connector_x13/20260806T224800Z_GCAL_SEARCH_PHASE2_REPLAY.md
+  git_blob_sha1: 78178bc420b5b2eaca2e6e2198f160739cfc4f26
+  request_sha256: 89d960dcb78b9e6432edf4759159d7a0cd55ed45e96d5bed7b3aeb3f4e9515aa
+  normalized_result_sha256: fb685ca05c2267ab8a52e42ba8b38882a5185bc20e37b8257d8a686e3674a0df
+observed:
+  phase_status: PHASE2_ACCEPTED_WITH_GATES
+  returned_events: 3
+  replay_digest_match: true
+  connector_error: false
+  operational_consumer: NOT_ASSIGNED
+  consumer_ack: NOT_OBSERVED
+  source_verifier_result: IDENTICAL_REQUEST_AND_ORDERED_NORMALIZED_RESULT_DIGEST_MATCHED_PHASE_1
+  honest_flaw_present: true
+missing_required_evidence:
+  - WORKITEM_BOUND_CLAIM_DIGEST
+  - ACCEPTANCE_DIGEST
+  - CANONICAL_PRODUCER_RETURN_DIGEST
+  - EXACT_RAW_PROVIDER_REQUEST_RESPONSE_OR_MATCHED_SOURCE_SYSTEM_READBACK
+  - EFFECTIVE_GOOGLE_CALENDAR_PRINCIPAL_AND_SCOPE
+  - RETURN_LEVEL_EFFECT_CEILING
+  - RETURN_LEVEL_EXPIRY
+  - ROLLBACK_BINDING
+  - DIGEST_BOUND_STOOD_OR_FELL_FROM_DISTINCT_VERIFIER
+  - NAMED_OPERATIONAL_CONSUMER
+  - EXPLICIT_CONSUMER_ACK
+reason: >-
+  Two matching normalized connector replays are useful catalog evidence but are not a WorkItem-bound producer return and cannot be promoted into a terminal verification outcome.
+route:
+  verifier: S04_HRIST_STRUCTURAL_PREFLIGHT
+  verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  verifier_class: NONPRODUCER_SAME_PROVIDER_PREFLIGHT
+  binding_weight: 0
+  requested_action: >-
+    Recompute the exact Git source binding and structural gaps for this correlation only. Return PASS_STRUCTURAL, REVISE, HOLD, BLOCKED, or YIELD_SILENT. Do not emit STOOD or FELL and do not infer ConsumerAck.
+  binding_verifier_requirement: >-
+    Distinct raw Google Calendar v3 or equivalent nonproducer provider witness under the same effective principal must bind the producer digest before any STOOD or FELL can be consumed.
+effect_ceiling: T0_INTERNAL_READONLY_VERIFICATION_ROUTING_ONLY
+rollback: APPEND_ONLY_SUPERSESSION_OR_CORRECTION; DO_NOT_MUTATE_SOURCE
+route_expiry_utc: 2026-08-07T01:08:00Z
+honest_flaw: >-
+  S04 is carried by the same ChatGPT provider, so this route can establish only structural preflight with binding weight zero; no distinct provider verifier is directly available in this seat.
+created_utc: 2026-08-06T23:09:10Z
