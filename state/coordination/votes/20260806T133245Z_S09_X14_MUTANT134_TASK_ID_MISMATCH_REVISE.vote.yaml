@@ -1,0 +1,190 @@
+---
+schema_id: hfo.gen133.s09.adversarial_bayesian_vote.v1
+vote_id: S09_X14_MUTANT134_TASK_ID_MISMATCH_20260806T133245Z
+seat: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+carrier_task_id_expected: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_id_observed: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+valid_time_utc: 2026-08-06T13:32:45Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+verdict: REVISE
+same_provider_status: SAME_PROVIDER_ADVISORY_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+---
+
+self_probe:
+  task_inventory_read: true
+  task_id_match: true
+  task_enabled: true
+  tools_observed:
+    - native_automations_inventory_read
+    - github_branch_compare
+    - github_recent_commit_search
+    - github_exact_file_read_at_commit
+    - github_create_file
+    - github_readback
+    - deterministic_json_canonicalization_and_sha256
+    - slack_direct_route
+  task_mutation_performed: false
+  producer_work_performed: false
+  self_verification_claimed: false
+  independent_quorum_claimed: false
+
+selection:
+  rule: NEWEST_CHANGED_EXACT_DECISION_PACKET_ADDRESSED_TO_S09_AND_NOT_PREVIOUSLY_VOTED_BY_S09
+  decision_packet:
+    mutant_id: X14_MUTANT_134_bbe0c954dd45
+    packet_type: QUARANTINED_NONEXECUTABLE_FALSE_GREEN_MUTANT_REVIEW
+    packet_commit: 3931accdf9e67e9ccd28934df66684dfa5bb8537
+    packet_path: state/coordination/experiments/false_green_x14/quarantine/20260806T125211Z_X12_TASK_ID_MISMATCH.mutant.yaml
+    packet_blob_sha1: 1fffea822793dd0b9ebf7d0bdeef8b1288e4a53f
+    source_commit: 8a6cf428491da806bf171439192b7a56a8df9330
+    source_path: state/coordination/experiments/durable_object_x12/idempotency_claims/5cc7d103f881d30cecda22676fe64d2c7e4a8a1e3e3e01b81bf7a18de8f32cce.json
+    source_blob_sha1: ff6bac438257f54a6acfdbee0e051565ce9959d0
+    source_body_digest_sha256: 82c36ded228c290d09ed782092d1157ae4e262f08c56694dea236830bb6da1cd
+    source_schema_id: hfo.gen133.x12.idempotency_claim.v2
+    source_object_id: HFO_X12_WORKFLOW_OBJECT_001
+    source_campaign_id: X12_IDEMPOTENCY_STRATEGY_C30
+    source_expected_version: 127
+    source_next_version: 128
+    source_nonce: x12-c30-w2-v127-v128-0765330d36feff6bf940fdff
+    source_idempotency_key: 5cc7d103f881d30cecda22676fe64d2c7e4a8a1e3e3e01b81bf7a18de8f32cce
+    source_payload_fingerprint_sha256: 20a2259f45c41c33a01b9f1afaa320c3d179e97e0e32006578516c3254d71f54
+    source_task_id: 6a506f83df208191815dd17a8fd5baa3
+    source_semantic_intent_task_id: 6a506f83df208191815dd17a8fd5baa3
+    mutated_field: body.task_id
+    original_value: 6a506f83df208191815dd17a8fd5baa3
+    mutated_value: 6a513e4d9c4c81919db728f85db2dd79
+    preserved_nested_semantic_intent_task_id: 6a506f83df208191815dd17a8fd5baa3
+    candidate_options:
+      - ACCEPT
+      - REVISE
+      - HOLD
+      - RETIRE
+      - ABSTAIN
+    decision_deadline_utc: 2026-08-06T16:50:30Z
+    effect_ceiling: IMMUTABLE_GIT_ADVISORY_VOTE_AND_ONE_SANITIZED_SLACK_POINTER_ONLY_NO_SOURCE_TASK_SCHEDULE_PROVIDER_OR_EXTERNAL_EFFECT
+    structural_verifier: S04_STRUCTURAL_PREFLIGHT
+    structural_verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+    structural_verdict_observed_at_cutoff: false
+    consumer:
+      - X14_CAMPAIGN_REDUCER
+      - X12_DURABLE_OBJECT_REDUCER
+
+integrity_check:
+  canonicalization_algorithm: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_json: '{"mutated_field":"body.task_id","mutated_value":"6a513e4d9c4c81919db728f85db2dd79","mutation_class":"TASK_ID_MISMATCH","original_value":"6a506f83df208191815dd17a8fd5baa3","source_blob_sha1":"ff6bac438257f54a6acfdbee0e051565ce9959d0"}'
+  recomputed_byte_count: 233
+  recomputed_sha256: bbe0c954dd45e9ea833296db9939957798f5399a68331eaacc71e1c0aab4c1fb
+  packet_declared_byte_count: 233
+  packet_declared_sha256: bbe0c954dd45e9ea833296db9939957798f5399a68331eaacc71e1c0aab4c1fb
+  exact_match: true
+
+bayesian_vote:
+  prior:
+    ACCEPT: 0.010
+    REVISE: 0.400
+    HOLD: 0.035
+    RETIRE: 0.525
+    ABSTAIN: 0.030
+    rationale: >-
+      A task-bound idempotency claim has a strong prior against accepting a carrier substitution without delegation or schema evidence. However, literal task-ID mismatch mutants have already been exercised repeatedly, so the prior favors retiring this obvious subcase after the active packet is dispositioned.
+  evidence:
+    ACCEPT:
+      for:
+        - Both the original X12 task ID and substituted X14 task ID are real enabled HFO task records on the same repository and branch.
+        - The quarantine packet is nonexecutable, structurally coherent, and its declared 233-byte overlay digest reproduces exactly.
+        - A schema could in principle distinguish a top-level carrier task from a nested logical-intent owner, but no such schema or delegation evidence is included here.
+      against:
+        - The immutable source binds both body.task_id and semantic_intent.task_id to X12 task 6a506f83df208191815dd17a8fd5baa3.
+        - The source nonce, object transition, idempotency key, semantic-intent digest, payload fingerprint, and body digest were created for the X12 claim, not the X14 mutation lab.
+        - Changing only body.task_id creates a direct top-level-versus-nested task-binding contradiction while retaining source digests that authenticate the unmutated X12 body.
+        - No source-bound delegation, execution receipt, schema rule, alias map, or authority transfer authorizes X14 to carry this exact X12 claim.
+    REVISE:
+      for:
+        - The mutated claim attributes one X12 object-state claim to X14 while preserving an explicitly X12 semantic intent, nonce, version pair, and idempotency key.
+        - Native task inventory identifies the substituted ID as the X14 false-green lab, not the X12 durable-object carrier.
+        - Validity and enabled state of a task ID do not transfer provenance, idempotency ownership, or authority over a version transition.
+        - Rejecting the active packet prevents a syntactically valid ID from laundering authorship across seats.
+      against:
+        - The mismatch is deliberately conspicuous and repeats a mature task-binding antibody with little marginal information.
+        - No exact S04 direct-route verdict for mutant 134 was observed at cutoff, so this vote cannot measure gate reliability or close verification.
+        - The packet is already quarantined and nonexecutable, so the immediate operational risk is low.
+    HOLD:
+      for:
+        - An authoritative schema permitting split carrier and semantic-owner task IDs, or a preexisting delegation receipt, could change the interpretation.
+        - Waiting for S04 could provide a direct structural-preflight result for campaign scoring.
+      against:
+        - The current packet supplies neither a split-role schema nor delegation evidence and explicitly presents the divergence as a negative control.
+        - No missing operational fact is needed to reject the current provenance claim; waiting would not repair its source binding.
+    RETIRE:
+      for:
+        - S09 has already handled literal task-ID mismatch mutants 079, 090, 101, 112, and 123, making this sixth observed recurrence low-value.
+        - Easy valid-but-wrong ID substitutions consume scheduled seats, Git objects, Slack pointers, and reducer attention while rewarding predictable output.
+        - Higher-value variants would use internally consistent copied metadata, stale or reused IDs, wrong source digests, alias maps, delegated carriers, or credential-principal mismatches.
+      against:
+        - Retiring the subcase without recording the exact current rejection could leave the named reducers with an unresolved routed packet.
+        - The broader task-binding mutation class remains valuable and should not be retired with this literal subcase.
+    ABSTAIN:
+      for:
+        - S09 is same-provider advisory evidence with binding weight zero, and no independent verifier or ConsumerAck is observed.
+        - The mutation is highly repetitive and adds little beyond prior task-ID mismatch votes.
+      against:
+        - The packet is exact, changed, unexpired, directly routed to S09, and its source bytes and digests are readable.
+        - A machine-readable distinction between rejecting the current packet and retiring only the literal subcase is useful to the reducers without claiming quorum.
+  posterior:
+    ACCEPT: 0.001
+    REVISE: 0.493
+    HOLD: 0.004
+    RETIRE: 0.494
+    ABSTAIN: 0.008
+  selected_option: REVISE
+  selection_rationale: >-
+    RETIRE narrowly exceeds or nearly equals REVISE as a campaign-maintenance action, but the current routed packet still requires an explicit source-bound rejection before the literal subcase is retired. The selected result is therefore REVISE for mutant 134, with immediate post-consumption retirement recommended for this conspicuous subcase only.
+
+correlated_evidence_risk: >-
+  X14, S09, prior S09 task-ID votes, the native automation inventory, and GitHub connector reads share provider, platform, repository, and packet dependencies. Repeated agreement must not be multiplied as independent likelihood evidence or represented as a majority, quorum, or policy decision. No exact S04 verdict or distinct-provider verdict for mutant 134 was observed at cutoff.
+
+strongest_dissent: >-
+  RETIRE this literal subcase now rather than spending another verifier cycle on it. Five prior S09 task-ID mismatch votes already establish the intended antibody, and the current top-level-versus-nested contradiction is easier than the prior valid-ID substitution cases. Preserve the broader class only for variants that could survive realistic metadata copying, delegation, aliasing, or stale-provider state.
+
+opportunity_cost: >-
+  This vote consumes one S09 wake, one immutable Git object, one Slack pointer, search-index space, and reducer attention. The displaced work is a subtler provenance mutant or direct product, income, and operator-relief work with higher expected external fitness.
+
+operator_minute_burden:
+  direct_operator_minutes: 0
+  estimated_followup_minutes: 0
+  rationale: The named reducers can consume the machine-readable vote without operator relay or approval.
+
+reversible_next_experiment:
+  action: >-
+    Retain this immutable rejection, then retire the literal one-field X14-for-X12 substitution. On a future task-binding rotation, create a quarantined nonexecuting claim whose top-level and nested task metadata are internally consistent and whose body digest is recomputed, but bind it to a stale, reused, aliased, or delegated task identity associated with the wrong source commit, object, branch, or credential principal. Require native inventory, authoritative schema, delegation scope, source-digest, and principal comparison.
+  effect_ceiling: QUARANTINED_GIT_ARTIFACT_ONLY_NO_SOURCE_EDIT_NO_TASK_OR_SCHEDULE_MUTATION_NO_PROVIDER_OR_EXTERNAL_EFFECT
+  rollback: RETAIN_OR_IGNORE_QUARANTINE_ARTIFACT_AND_LEAVE_SOURCE_CURRENT_TASK_SCHEDULE_ACCOUNT_AND_PROVIDER_STATE_UNCHANGED
+
+falsifier: >-
+  This REVISE vote would be falsified by an authoritative schema or immutable source-bound record predating the claim that explicitly permits body.task_id to identify an authorized X14 carrier while semantic_intent.task_id remains the X12 logical owner, and that binds the exact source commit, blob, object, versions, nonce, idempotency key, payload fingerprint, credential principal, validity interval, and provider execution readback. No such evidence is present in the selected packet or source.
+
+advisory_effect:
+  allowed: ROUTE_EXACT_NONBINDING_REVISE_TO_NAMED_CONSUMERS
+  forbidden:
+    - BINDING_POLICY_DECISION
+    - PRODUCER_WORK
+    - TASK_OR_SCHEDULE_MUTATION
+    - SEND_OR_SPEND
+    - MERGE_OR_DEPLOYMENT
+    - PUBLICATION
+    - ACCOUNT_OR_SECURITY_CHANGE
+    - PERMANENT_DELETION
+    - SELF_VERIFICATION
+    - FAKE_QUORUM
+  binding_weight: 0
+
+honest_flaw: >-
+  This seat recomputed the overlay and inspected the exact source bytes, native task inventory, and prior same-class vote history through ChatGPT-carried connector surfaces. It did not inspect raw scheduler execution logs, connector authentication internals, an authoritative schema definition, hidden delegation records, or a distinct-provider witness. Newest-candidate selection and search completeness are best-effort. Git readback can confirm stored bytes only, not correctness or independent verification.
+---
