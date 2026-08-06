@@ -1,0 +1,119 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse_result.v1
+result: RETURN
+artifact_type: FAILURE_ANTIBODY_DEDUP_POINTER
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+valid_time_utc: 2026-08-06T18:56:53Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+privacy_ceiling: SANITIZED_REPOSITORY_HASH_TASK_AND_OPAQUE_SLACK_RECEIPT_METADATA_ONLY
+effect_ceiling: ONE_IMMUTABLE_GIT_HERITAGE_POINTER_AND_ONE_SANITIZED_SLACK_POINTER
+heritage_credit: 0_PENDING_EXPLICIT_CURRENT_WORKITEM_CONSUMPTION
+consumer_ack: ABSENT
+binding_weight: 0
+same_provider_status: SAME_PROVIDER_NONBINDING
+expiry_utc: 2026-08-06T22:42:11Z
+---
+
+self_probe:
+  identity: S15_HERITAGE_REUSE_AND_DEDUP
+  tools_observed:
+    - native_automations_inventory_read
+    - github_recent_commit_search
+    - github_exact_commit_and_file_read
+    - github_repository_dedup_search
+    - github_create_file
+    - github_readback
+    - slack_direct_route
+  prohibited_effects_performed: none
+  task_mutation_performed: false
+  source_or_current_pointer_edit_performed: false
+  self_verification_claimed: false
+
+current_workitem:
+  workitem_id: X14_MUTANT_140_efc6d3ec55ce
+  experiment_id: X14_FALSE_GREEN_MUTATION_001
+  campaign_ordinal: 35
+  campaign_wake: 3
+  mutation_class: EVIDENCE_INFLATION
+  mutation_subcase: X12_STALE_WRITER_CONFLICT_RECEIPT_FALSELY_PROMOTED_TO_INDEPENDENT_SERIALIZABLE_EXACTLY_ONCE_PROOF
+  mutant_commit: b204d03ed269281b140ea8a4e0e5af4d920f5c63
+  mutant_path: state/coordination/experiments/false_green_x14/quarantine/20260806T185300Z_X12_EVIDENCE_INFLATION.mutant.yaml
+  mutant_blob_sha1: cff8a2fdc0ceba9b68ae6873adfcc438aaef6a48
+  canonical_mutation_digest_sha256: efc6d3ec55ce0e4797c2fe612e7cb4316f049f3e4b2bf5c912db07c02a1d7c3a
+  canonical_byte_count: 247
+  mutated_field: evidence_class
+  original_value: ABSENT
+  mutated_value: INDEPENDENTLY_VERIFIED_SERIALIZABLE_EXACTLY_ONCE_CONCURRENCY_CONTROL
+  source_commit: bd99c88d470258ff76954e200a1a892f2a93645d
+  source_path: state/coordination/experiments/durable_object_x12/slack_receipts/eee8f6a8998c68eb11c1d7f0019ebd4fa680498d6ed7fe5081399450b4eafb8a.json
+  source_blob_sha1: bb0132befd1e1cc76b562dbeee2836db61634cc1
+  source_status: VERSION_ADVANCE_AND_COMPETING_WRITER_CONFLICT
+  source_competing_writer_http_status: 409
+  source_competing_writer_result: REJECTED_STALE_BLOB_SHA_NO_STATE_CHANGE
+  source_evidence_class: ABSENT
+  source_consumer_ack: ABSENT
+  source_expiry_utc: 2026-08-06T22:42:11Z
+  route_expiry_utc: 2026-08-13T18:53:00Z
+  named_gate: S04_EVIDENCE_INFLATION_EXACT_SOURCE_CONFLICT_SEMANTICS_GIT_CONTENTS_CAS_SCOPE_POINTER_READBACK_DELIVERY_RECEIPT_EVIDENCE_CLASS_INDEPENDENCE_SERIALIZABILITY_EXACTLY_ONCE_CONSUMER_ACK_EXPIRY_AND_CLAIM_CEILING_GATE
+
+reused_prior_artifact:
+  original_date_utc: 2026-08-05T20:57:27Z
+  repository: TTaoGaming/hfo-gen-133
+  commit: 9b77c53168a274057e1f4e197a4ea7c09706a7a8
+  path: state/coordination/receipts/chatgpt_runtime/seat-15/20260805T205727Z_X14_MUTANT118_REUSE_MUTANT085_EVIDENCE_LABEL_INFLATION_DEDUP_GATE.yaml
+  blob_sha1: 547b6e553cd53e902210fb81e91ebd3d1a013830
+  prior_workitem: X14_MUTANT_118_6fed91ce0b59
+  prior_source_type: X12_SLACK_DELIVERY_RECEIPT_AND_GITHUB_CONTENTS_READBACK
+  prior_mutation_subcase: SAME_CARRIER_SERIALIZER_AND_CONNECTOR_RECEIPT_PROMOTED_TO_INDEPENDENT_CROSS_PROVIDER_END_TO_END_PROOF
+  reusable_invariant: >-
+    Exact source bytes bound the evidence class. A successful GitHub contents write or stale-SHA rejection, immediate pointer readback, serializer handoff, Slack outbox or delivery receipt, named verifier, or agreement among correlated ChatGPT seats cannot establish an independent provider or failure domain, end-to-end serializability, exactly-once execution or delivery, ConsumerAck, adoption, or binding weight. Each stronger evidence class requires its own immutable source-bound receipt from the actor or verifier that actually supplies that class.
+
+supported_claims:
+  - The current source proves one winning GitHub contents update to version 133, one competing stale-blob-SHA update rejected with HTTP 409 and no state change, one immediate pointer-verification artifact, and one producer-side Slack delivery receipt.
+  - The current source explicitly states that Slack delivery and Git receipt persistence are separate effects and that the Slack timestamp does not prove exactly-once delivery.
+  - The prior artifact classifies escalation from bounded X12 transport and repository receipts into independent cross-provider durability and serializability proof as recurrence of the exact-source claim-ceiling, evidence-class, independence, and receipt-separation failure family.
+  - Mutant 140 therefore has a reusable prior failure antibody and earns no new failure-class, independence, serializability, exactly-once, or verifier-diversity credit from this pointer.
+
+excluded_claims:
+  - This artifact is not a direct verdict on X14_MUTANT_140_efc6d3ec55ce.
+  - The declared 247-byte canonical overlay and SHA-256 were not independently recomputed by S15.
+  - One stale-SHA conflict does not prove database serializability, global ordering, cross-branch exclusion, force-push resistance, exactly-once execution, or exactly-once Slack delivery.
+  - One immediate readback and one Slack receipt do not prove downstream consumption, ConsumerAck, independent failure-domain coverage, or cross-provider verification.
+  - No campaign catch, completion, adoption, fitness, independent quorum, production outcome, or binding decision is established.
+
+acceptance_relevance:
+  current_consumer:
+    - X14_MUTANT_140_efc6d3ec55ce
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_REDUCER
+  verifier: S04_STRUCTURAL_PREFLIGHT_EXACT_MUTANT_REVIEW
+  advisory_falsifier: S09_STRATEGIC_REASONING_AND_VOTING_SAME_PROVIDER_WEIGHT_0
+  required_use: >-
+    Treat mutant 140 as recurrence evidence only. Resolve the exact mutant, source, and verification blobs; recompute the declared 247 canonical bytes and SHA-256; confirm evidence_class is absent from the source; preserve the narrow scope of one GitHub stale-SHA conflict and the source disclaimer on exactly-once Slack delivery; distinguish producer receipts and immediate readback from independent serializability, exactly-once, ConsumerAck, and cross-provider evidence; and return a direct verdict without granting campaign credit from this heritage pointer.
+  credit_condition: EXACT_CURRENT_WORKITEM_CONSUMER_ACK_BOUND_TO_THIS_ARTIFACT_AND_DOWNSTREAM_DECISION
+  current_credit: 0
+
+heritage_dedup:
+  exact_current_mutant_id_search_before_write: NO_MATCH_FOUND_INDEX_MAY_LAG
+  closest_prior_binding: X14_MUTANT_118_6fed91ce0b59
+  dedup_disposition: RECURRENCE_BINDING_ONLY_NO_NEW_FAILURE_CLASS_OR_ANTIBODY_DIVERSITY_CREDIT
+  search_limit: GitHub branch observation, recent-commit search, and code indexing are nontransactional and may lag concurrent writes.
+
+expiry:
+  expires_utc: 2026-08-06T22:42:11Z
+  expiry_rule: EARLIEST_OF_SOURCE_EXPIRY_MUTANT_BYTES_CHANGED_SOURCE_BLOB_CHANGED_GOVERNING_CAMPAIGN_SUPERSESSION_OR_EXACT_CONSUMER_SUPERSESSION
+
+rollback:
+  action: IGNORE_OR_SUPERSEDE_THIS_IMMUTABLE_POINTER
+  source_or_mutant_edit_required: false
+  external_compensation_required: false
+
+honest_flaw: >-
+  The prior mutant 118 began from a successful version transition and Slack delivery receipt, while mutant 140 adds a real competing-writer 409 rejection. That conflict narrows one concurrency uncertainty but still proves only one optimistic Git contents-API comparison on one path; it does not establish independent verification, database serializability, exactly-once execution or delivery, or global exclusion. The prior artifact's front-matter expiry has passed, so only its historical failure invariant is reused; all current acceptance and expiry bindings come from mutant 140 and its source. Search can miss concurrent duplicates, S15 did not recompute the current overlay, and all available reviewer seats remain ChatGPT-carried with binding weight zero.
