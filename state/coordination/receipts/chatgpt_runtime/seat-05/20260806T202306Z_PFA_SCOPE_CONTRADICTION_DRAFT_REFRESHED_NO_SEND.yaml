@@ -1,0 +1,41 @@
+schema: hfo.gen133.operator_relief_receipt.v0_1
+seat: S05
+task_id_expected: 6a55c182078c8191b89f2dd15f5f640c
+task_id_observed: 6a55c182078c8191b89f2dd15f5f640c
+task_id_match: true
+valid_time_utc: 2026-08-06T20:23:06Z
+transaction_time_source: github_commit_metadata
+wip: 1
+result: DRAFT_REFRESHED_NO_SEND
+active_item: PFA household-sale disclosure scope reconciliation
+priority:
+  p0: Obtain authoritative policy-to-document mapping and wrong-document disposition before any further signing
+  p1:
+    - Colden board candidacy decision before 2026-08-07 deadline
+    - Air and Water second mailed-payment receipt readback
+source_evidence:
+  gmail_thread_id: 19fb96ccc41d1a70
+  changed_outbound_message_id: 19fd8a89fbe455be
+  changed_outbound_time: 2026-08-06T13:59:15-06:00
+  draft_id: r-4143872117464409519
+  draft_message_id_after_refresh: 19fd8be6cdd4171b
+  calendar_scope: primary calendar reviewed for 2026-08-07 obligations
+  github_scope: recent Gen-133 commits reviewed; no competing S05 obligation state found
+  slack_scope: C0BGNGPJFHU reviewed since prior S05 run; no operator-obligation reply superseding this state found
+sanitized_facts:
+  - The same underwriting thread contains contradictory instructions about whether the referenced household-sale disclosure belonged to this operator or a different agent.
+  - The operator sent a new follow-up at 13:59 Mountain saying another PandaDoc may still be needed, but no authoritative underwriting reply has arrived in the changed evidence window.
+  - The existing unsent threaded draft was refreshed to ask for written confirmation of intended document scope, disposition of any incorrectly completed document, exact remaining disclosure set, separate-PandaDoc requirement, and deadline.
+transition:
+  type: exact_no_send_approval_packet
+  effect: gmail_draft_updated_only
+  email_sent: false
+  application_submitted: false
+  spend_or_payment: false
+  calendar_mutated: false
+  task_mutated: false
+operator_minutes_removed_estimate: 8
+next_consumer: Operator, then Var insurance/compliance reconciliation
+privacy_ceiling: Git and Slack may carry only sanitized status and source pointers; private email bodies and policy identifiers remain in Gmail
+stop_condition: Do not sign or complete another household-sale disclosure until underwriting provides authoritative written scope mapping
+honest_flaw: The refreshed draft reduces ambiguity but does not resolve the underlying compliance state until underwriting replies.
