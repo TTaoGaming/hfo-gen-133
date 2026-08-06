@@ -1,0 +1,287 @@
+---
+schema_id: hfo.gen133.s06_executor_packet.v1
+result: HOLD
+packet_id: S06_SPATIAL_FACTORY_HTML5_SNAKE_S04_PASS_AFTER_ROUTE_DEADLINE_HOLD_20260806T012038Z
+work_item_id: SPATIAL_FACTORY_HTML5_SNAKE_PENDING_DIRECTION_COMMAND_GATE_001
+seat: S06_CODE_WORK_PACKET_COMPILER_AND_CODEX_BRIDGE
+wip: 1
+carrier_task_id_expected: 6a57972b9df081918680ce67c4ecb197
+carrier_task_id_observed: 6a57972b9df081918680ce67c4ecb197
+carrier_task_id_match: true
+valid_time_utc: 2026-08-06T01:20:38Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+expiry_utc: 2026-08-06T03:07:52Z
+sealed: false
+
+self_probe:
+  identity: HFO_GEN133_S06_CODE_WORK_PACKET_COMPILER_AND_CODEX_BRIDGE
+  task_enabled_observed: true
+  task_title_observed: HFO S06 Huginn-Muninn Codex Bridge
+  available_surfaces:
+    - authenticated_github_read_write_readback
+    - authenticated_slack_public_read_write
+    - native_scheduled_task_inventory_read
+  direct_ingress_discovery:
+    codex_connector_action_exposed: false
+    claude_connector_action_exposed: false
+    target_host_shell_exposed: false
+  unavailable_surfaces:
+    - direct_codex_executor_ingress
+    - direct_claude_executor_ingress
+    - target_host_shell
+    - chromium
+    - firefox
+  s07_task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+  s07_enabled_observed: false
+  direct_executor_ingress_proven: false
+  implementation_performed: false
+  target_commands_executed: false
+  tests_executed: false
+  task_mutation_performed: false
+
+selection:
+  changed_since_prior_s06_packet: true
+  selected_claim_sha: dffe9705d9ac7aa5dac04a44418e290b1dc54a63
+  selected_claim_path: projects/spatial-app-factory/claims/20260805T230752Z_SPATIAL_FACTORY_HTML5_SNAKE_VISIBILITY_HIDDEN_CANCELLATION_SUCCESSOR.claim.yaml
+  selected_claim_blob: 7c964895f5124e339e74085c415929beb5eecaa0
+  claim_result: CLAIMED
+  claim_status_at_observation: UNEXPIRED_ROUTE_WINDOW_CLOSED
+  claim_acceptance_sha256: 85028cf49246561f09b5c3e5e3d6aa9746832725c69b633989d726c511d245b9
+  claim_idempotency_key: 29d23f0166a75f3886c8e1935e00b7e45cd55611aab05e8d0fe085da7ee2b2b2
+  changed_edge: >-
+    S04 commit f64252bef0e40d0db83b929892ab5e41bd2d8253 now returns exact-claim
+    PASS_STRUCTURAL for the selected successor. This materially changes the prior S06 HOLD, which
+    lacked the exact preflight. The pass does not grant execution clearance, and it arrived before
+    this observation but the claim's non-HOLD route deadline is now closed.
+
+claim:
+  sha: dffe9705d9ac7aa5dac04a44418e290b1dc54a63
+  repository: TTaoGaming/hfo-gen-133
+  path: projects/spatial-app-factory/claims/20260805T230752Z_SPATIAL_FACTORY_HTML5_SNAKE_VISIBILITY_HIDDEN_CANCELLATION_SUCCESSOR.claim.yaml
+  blob: 7c964895f5124e339e74085c415929beb5eecaa0
+  source_bundle_sha256: 3b624489272160ae79bf073f3f01265577d31de433fff7ce6361f82b2e3eeec0
+  acceptance_sha256: 85028cf49246561f09b5c3e5e3d6aa9746832725c69b633989d726c511d245b9
+  idempotency_key: 29d23f0166a75f3886c8e1935e00b7e45cd55611aab05e8d0fe085da7ee2b2b2
+
+structural_preflight:
+  result: PASS_STRUCTURAL
+  commit: f64252bef0e40d0db83b929892ab5e41bd2d8253
+  path: state/coordination/receipts/chatgpt_runtime/seat-04/20260805T232621Z_SPATIAL_FACTORY_HTML5_SNAKE_VISIBILITY_HIDDEN_CANCELLATION_SUCCESSOR_STRUCTURAL_PASS.yaml
+  blob: bd5067e8e55eaadb30f6da29299e3b268d25ac61
+  exact_claim_binding: true
+  same_provider_status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  downstream_execution_clearance: NOT_GRANTED
+
+executor_target:
+  repository: TTaoGaming/TAGS
+  base_sha: 1271e25306fe8ef8baea32704cf022435703d498
+  branch_rule: agent/html5-snake-pending-direction-canary-*
+  proposed_branch_if_fresh_successor_reopens_route: agent/html5-snake-pending-direction-canary-dffe9705
+  branch_observed: false
+  allowed_paths:
+    - prototypes/html5-snake-spatial-canary/**
+  forbidden_paths:
+    - .github/**
+    - '**/settings/**'
+    - '**/secrets/**'
+    - '**/releases/**'
+    - '**/packages/**'
+    - '**/deploy/**'
+    - '**/deployment/**'
+    - any_path_outside_prototypes/html5-snake-spatial-canary/**
+  upstream_repository: JDStraughan/html5-snake
+  upstream_sha: e3fe18a85a0555f0540cc0978fbab62822262a91
+  allowed_upstream_files:
+    README.md: bf29f270d27882138d6e50868a212b4780502ca8
+    game.js: c286389487bd68f15170fbb3add6a060f252d169
+    index.html: 61243962bab6846c3e06dba4358a547755dc1379
+    page.css: f380cefc081c1bac889330465f311195dbb83ab4
+
+goal: >-
+  Produce one internal unmerged HTML5 Snake canary rooted at the exact TAGS base. Preserve the MIT
+  notice and file-level provenance, remove external and prototype-polluting behavior, contain all
+  runtime state lexically, converge Arrow and spatial DIRECT_COMMAND input on one requestDirection
+  seam, enforce one pending perpendicular direction per movement tick, and treat
+  document.visibilityState hidden as an independent exactly-once cancellation boundary with
+  release-to-rearm.
+
+current_red_evidence:
+  exact_claim_bound_s04_pass_structural: OBSERVED
+  execution_clearance_from_s04: NOT_GRANTED
+  route_deadline_state: CLOSED
+  direct_codex_executor_ingress: NOT_AVAILABLE
+  direct_claude_executor_ingress: NOT_AVAILABLE
+  target_host_shell: NOT_AVAILABLE
+  s07_builder_state: DISABLED
+  exact_chromium_harness_command: NOT_BOUND
+  exact_firefox_harness_command: NOT_BOUND
+  target_branch_search: NO_MATCHING_BRANCH_OBSERVED
+  target_repository_commit_search: NO_SNAKE_COMMIT_OBSERVED
+  conforming_producer_return: NOT_OBSERVED
+  changed_revise_evidence:
+    commit: 19037fc2d92e36662e0f6f5fcc28f4d5f993adaf
+    path: projects/spatial-app-factory/research/20260805T212605Z_S08_HTML5_SNAKE_VISIBILITY_HIDDEN_INPUT_CANCELLATION_BOUNDARY_EVIDENCE_CARD.md
+    blob: ded52c564303478f94255cb72a4293a39e5464f5
+    result: REVISE
+    finding: >-
+      Hidden visibility must independently clear pending intent, cancel BEGIN or HELD exactly once
+      without COMMIT, reject commands while hidden, and require neutral release after visibility,
+      focus, and ownership are revalidated.
+
+route_decision:
+  route_issued: false
+  result: HOLD
+  reasons:
+    - CLAIM_NON_HOLD_ROUTE_DEADLINE_CLOSED
+    - REQUIRED_6600_SECOND_EXECUTION_RETURN_BUFFER_NO_LONGER_EXISTS
+    - DIRECT_EXECUTOR_INGRESS_NOT_PROVEN
+    - S07_DISABLED
+    - EXACT_BROWSER_HARNESS_COMMANDS_NOT_BOUND
+  route_or_slack_is_execution: false
+  producer_return_consumed: false
+
+required_commands:
+  authorization_state: NOT_AUTHORIZED_FOR_THIS_CLAIM_AFTER_ROUTE_DEADLINE
+  preserved_repository_commands_for_a_fresh_successor_only:
+    - "git clone --filter=blob:none https://github.com/TTaoGaming/TAGS.git TAGS"
+    - "cd TAGS"
+    - "git checkout --detach 1271e25306fe8ef8baea32704cf022435703d498"
+    - "git switch -c agent/html5-snake-pending-direction-canary-<fresh-claim-prefix>"
+    - "test \"$(git merge-base HEAD 1271e25306fe8ef8baea32704cf022435703d498)\" = \"1271e25306fe8ef8baea32704cf022435703d498\""
+    - "git diff --name-only 1271e25306fe8ef8baea32704cf022435703d498...HEAD"
+    - "git grep -nE 'Object\\.prototype\\.getKey|keyCode|for[[:space:]]*\\([^)]*in|new[[:space:]]+(PointerEvent|MouseEvent)|dispatchEvent|setPointerCapture|releasePointerCapture|http://' -- prototypes/html5-snake-spatial-canary || true"
+    - "git grep -nE 'visibilitychange|visibilityState|requestDirection|DIRECT_COMMAND|REQUIRE_RELEASE' -- prototypes/html5-snake-spatial-canary"
+    - "node --check prototypes/html5-snake-spatial-canary/game.js"
+    - "git status --short"
+  browser_commands:
+    chromium: NOT_BOUND_TYPED_HOLD
+    firefox: NOT_BOUND_TYPED_HOLD
+    reason: >-
+      No harness path, package script, binary locator, fixture entry point, or executable Chromium and
+      Firefox command is bound to the claim. Inventing commands would manufacture executability.
+  commands_executed_this_wake: []
+
+acceptance_tests:
+  structural:
+    - exact S04 PASS_STRUCTURAL binds claim SHA, path, blob, source bundle, acceptance digest, idempotency key, and clocks
+    - branch is rooted exactly at TTaoGaming/TAGS@1271e25306fe8ef8baea32704cf022435703d498
+    - every changed path is under prototypes/html5-snake-spatial-canary/**
+    - copied upstream bytes match only the four allowlisted blobs from JDStraughan/html5-snake@e3fe18a85a0555f0540cc0978fbab62822262a91
+    - complete MIT notice and file-level provenance manifest exist in packaged bytes
+    - html5shiv locators, plaintext HTTP, activatable external navigation, and unexpected network requests are absent
+  namespace_and_input:
+    - Object.prototype has no own getKey before or after page load and no native prototype is written
+    - all runnable JavaScript bindings are explicitly declared inside a lexical boundary
+    - global own-property delta is zero or exactly one documented mutation-bounded adapter namespace
+    - injected globals game, snake, food, keys, i, and lastKey do not alter traces
+    - native Arrow and spatial DIRECT_COMMAND converge on exactly one requestDirection seam
+    - no DOM hit testing, synthetic pointer or mouse event, dispatchEvent, pointer capture, or fabricated pointer identity is used
+    - at most one valid perpendicular pending direction is accepted per movement tick
+    - rejected requests mutate no direction, pending state, action count, cancellation count, or activation state
+  visibility_hidden:
+    - visibilityState hidden independently clears pending keyboard and spatial intent
+    - visible-to-hidden during BEGIN or HELD emits exactly one CANCEL, no COMMIT, and enters REQUIRE_RELEASE
+    - Arrow and DIRECT_COMMAND are rejected while hidden without state mutation
+    - hidden-to-visible does not auto-resume, auto-commit, replay held input, increment action count, or auto-rearm
+    - visibility, focus, ownership, and neutral release are revalidated before fresh acceptance
+    - duplicate visibility notifications do not duplicate cancellation or transitions
+  browser_and_determinism:
+    - exact-SHA Chromium and Firefox fixtures cover pending Arrow then hidden, spatial HELD then hidden, hidden-neutral rejection, held-input visibility restore, neutral release then fresh command, and blur-only versus hidden-only versus combined sequences
+    - 8 fps and 60 fps traces match for pending and committed direction, activation and cancellation counts, focus, ownership, visibility, rearm state, global namespace delta, and zero unexpected network requests
+  producer_return_schema:
+    - runtime_and_model
+    - target_branch_and_exact_sha
+    - base_sha
+    - changed_paths
+    - exact_commands
+    - exit_codes
+    - outputs
+    - blockers
+    - rollback
+    - honest_flaw
+
+effect_ceiling:
+  permitted:
+    - this_one_immutable_internal_hold_packet
+    - one_internal_unmerged_target_branch_only_after_a_fresh_claim_reopens_all_route_gates
+    - changes_only_under_prototypes/html5-snake-spatial-canary/**
+    - local_or_ephemeral_test_execution_by_an_authorized_producer
+  prohibited:
+    - merge
+    - push_by_s06
+    - deploy
+    - publication
+    - release
+    - send
+    - spend
+    - account_change
+    - security_change
+    - task_mutation
+    - destructive_git_operation
+    - production_code_self_implementation_by_s06
+    - invented_test_or_browser_pass
+    - unsupported_outcome_claim
+
+time_budget_ceiling:
+  observed_at_utc: 2026-08-06T01:20:38Z
+  route_deadline_utc: 2026-08-06T00:37:52Z
+  producer_return_due_utc: 2026-08-06T02:27:52Z
+  lease_expiry_utc: 2026-08-06T03:07:52Z
+  minimum_execution_plus_return_seconds: 6600
+  route_deadline_overdue_seconds: 2566
+  producer_return_seconds_remaining: 4034
+  lease_seconds_remaining: 6434
+  execution_return_buffer_deficit_seconds: 2566
+  current_clock_gate: CLOSED
+  no_route_after_deadline: true
+budget_ceiling:
+  external_spend_usd: 0
+  operator_minutes: 0
+  new_services_or_accounts: forbidden
+
+rollback:
+  current_run: NO_TARGET_EFFECT_TO_ROLL_BACK
+  future_executor: >-
+    Delete only a dedicated unmerged ephemeral target branch after preserving producer evidence. Do
+    not force-push, rewrite shared history, delete canonical receipts, or modify the canonical base.
+
+verifier:
+  structural:
+    seat: S04_STRUCTURAL_PREFLIGHT_VERIFIER
+    task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+    observed_result: PASS_STRUCTURAL_EXACT_CLAIM_BINDING
+    receipt_commit: f64252bef0e40d0db83b929892ab5e41bd2d8253
+    independence: SAME_PROVIDER_NONBINDING_WEIGHT_ZERO
+  runtime:
+    required: DISTINCT_NONPRODUCER_CHROMIUM_FIREFOX_VISIBILITY_HIDDEN_INPUT_VERIFIER
+    verdict: DIGEST_BOUND_STOOD_OR_FELL
+    observed: false
+
+consumer:
+  immediate: S06_CODE_WORK_PACKET_COMPILER_AND_CODEX_BRIDGE
+  reducer: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  final_ack: EXPLICIT_NAMED_SPATIAL_FACTORY_CONSUMER_ACK
+  implicit_ack_forbidden: true
+
+strongest_falsifier: >-
+  This HOLD is false only if an immutable receipt proves that a direct Codex, Claude, S07, or target-host
+  route was issued before 2026-08-06T00:37:52Z with exact runnable Chromium and Firefox commands and the
+  complete 6600-second execution-and-return buffer, followed by a conforming direct producer return naming
+  runtime/model, branch/SHA, base SHA, changed paths, exact commands, exit codes, outputs, blockers, rollback,
+  and honest flaw. No matching target branch, TAGS Snake commit, Slack route pointer, or producer return was
+  observed at 2026-08-06T01:20:38Z.
+
+honest_flaw: >-
+  GitHub and Slack connector searches can miss an unindexed, private, or differently named producer artifact.
+  This packet therefore states the exact searches and strongest falsifier rather than claiming global absence.
+  It does not prove browser behavior, provenance clearance, distribution authority, independent verification,
+  or ConsumerAck.
+
+next_required_transition: >-
+  Reject new execution under this claim after the closed route deadline. A fresh changed S02 successor must
+  bind the same acceptance contract or a later evidence delta, provide a fresh complete route and producer-return
+  window, and separately bind proven direct executor ingress plus exact executable Chromium and Firefox harness
+  commands before S06 may issue DISPATCHED.
