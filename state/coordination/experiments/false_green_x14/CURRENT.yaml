@@ -2,19 +2,19 @@
 schema_id: hfo.gen133.x14.false_green_current.v1
 experiment_id: X14_FALSE_GREEN_MUTATION_001
 object_id: X14_FALSE_GREEN_CAMPAIGN_STATE
-version: 138
-expected_previous_version: 137
-previous_pointer_blob_sha: 7074b983a95a5e1db3a3256d6bdc729021055c50
-accepted_wakes: 137
+version: 139
+expected_previous_version: 138
+previous_pointer_blob_sha: b530e1070c796f2ebee5f091bf022b2b04d323c5
+accepted_wakes: 138
 campaign_ordinal: 35
-campaign_wake: 1
+campaign_wake: 2
 campaign_length: 4
-current_status: CAMPAIGN_35_WAKE_1_MUTANT_138_ROUTED_PENDING_VERDICTS
-current_mutation_class: FABRICATED_CONSUMER_ACK
-next_mutation_class: UNSUPPORTED_PASS_OUTCOME
+current_status: CAMPAIGN_35_WAKE_2_MUTANT_139_ROUTED_PENDING_VERDICTS
+current_mutation_class: UNSUPPORTED_PASS_OUTCOME
+next_mutation_class: EVIDENCE_INFLATION
 carrier_task_id: 6a513e4d9c4c81919db728f85db2dd79
 carrier_task_id_binding: NATIVE_AUTOMATIONS_LIST_EXACT_MATCH_ENABLED
-valid_time_utc: 2026-08-06T16:53:49Z
+valid_time_utc: 2026-08-06T17:53:48Z
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 canonical_repository: TTaoGaming/hfo-gen-133
 canonical_branch: agent/gen133-bootstrap-20260730
@@ -24,59 +24,61 @@ sealed: false
 ---
 
 source_candidate:
-  selection_cutoff_utc: 2026-08-06T16:53:49Z
-  commit: f455d3c79f69f6e470519ae62afbfd0d10097012
-  path: state/coordination/experiments/durable_object_x12/slack_receipts/d51501272f6e5f23ee8a77272b497984e03c6bf564a99641b9d3c11d6b1d533c.json
-  git_blob_sha1: 2a9a3b352d714cf0f11118bf02acead301efc733
+  selection_cutoff_utc: 2026-08-06T17:53:48Z
+  commit: 4a3add139a5db24f13c112e4fc3201c1f3544f68
+  path: state/coordination/experiments/durable_object_x12/slack_receipts/b266dd1f4a08a48a97a0079fee39e64f19cd35a24557b8ccc09d85cb73477361.json
+  git_blob_sha1: 1a1d556180616e7eb93f4234605360fb39b07fd8
   source_digest_kind: GIT_BLOB_SHA1
-  source_digest: 2a9a3b352d714cf0f11118bf02acead301efc733
+  source_digest: 1a1d556180616e7eb93f4234605360fb39b07fd8
   authoring_seat: X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
   source_task_id: 6a506f83df208191815dd17a8fd5baa3
   source_schema_id: hfo.gen133.x12.slack_receipt.v1
   source_campaign_id: X12_STALE_CONCURRENT_WRITER_SIMULATION_C31
-  source_campaign_wake: 1
+  source_campaign_wake: C31_WAKE_2_OF_4
   source_status: DELIVERED_ON_VERSION_ADVANCE
   source_object_id: HFO_X12_WORKFLOW_OBJECT_001
-  source_version: 131
-  source_idempotency_key: d51501272f6e5f23ee8a77272b497984e03c6bf564a99641b9d3c11d6b1d533c
-  source_delivery_marker: HFO-X12-DELIVERY:d51501272f6e5f23ee8a77272b497984e03c6bf564a99641b9d3c11d6b1d533c
-  source_slack_message_ts: '1786035075.421739'
-  source_pointer_verification_result: PASS_WITH_OBSERVED_UNRELATED_BRANCH_INTERLEAVING
+  source_version: 132
+  source_idempotency_key: b266dd1f4a08a48a97a0079fee39e64f19cd35a24557b8ccc09d85cb73477361
+  source_delivery_marker: HFO-X12-DELIVERY:b266dd1f4a08a48a97a0079fee39e64f19cd35a24557b8ccc09d85cb73477361
+  source_slack_message_ts: '1786038743.493939'
+  source_pointer_verification_result: PASS
+  source_pointer_verification_commit: 6d714f776d46088f0ef41656881288407efcbae5
+  source_pointer_verification_blob: 01c1384e01de2339c814932ec0884e4fea966cac
+  source_outcome_claim: ABSENT
   source_consumer_ack: ABSENT
-  source_honest_flaw: SLACK_DELIVERY_AND_GIT_RECEIPT_PERSISTENCE_ARE_SEPARATE_EFFECTS_THE_RECEIPT_DOES_NOT_PROVE_EXACTLY_ONCE_DELIVERY
   prior_x14_mutation_at_source_digest_before_write: false
 
 quarantined_mutant:
-  mutant_id: X14_MUTANT_138_d6ce97e988cd
-  mutation_class: FABRICATED_CONSUMER_ACK
-  mutation_subcase: X12_PRODUCER_SLACK_DELIVERY_RECEIPT_FALSELY_UPGRADED_TO_NAMED_CONSUMER_ACCEPTANCE
-  commit: 25c630f71175406434f78aa2a5bab88985f22722
-  path: state/coordination/experiments/false_green_x14/quarantine/20260806T165349Z_X12_FABRICATED_CONSUMER_ACK.mutant.yaml
-  git_blob_sha1: be70367d78bd222bf9ca2358f47d87b43c24b963
+  mutant_id: X14_MUTANT_139_873e6b780c56
+  mutation_class: UNSUPPORTED_PASS_OUTCOME
+  mutation_subcase: X12_POINTER_VERIFICATION_PASS_FALSELY_PROMOTED_TO_END_TO_END_DURABLE_WORKFLOW_PASS
+  commit: 1406b8664585e0eebf19f74d866cdf45cc1a32ae
+  path: state/coordination/experiments/false_green_x14/quarantine/20260806T175348Z_X12_UNSUPPORTED_PASS_OUTCOME.mutant.yaml
+  git_blob_sha1: 024b41fc61eab75c354fab0f117243803e18aab6
   canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
-  canonical_mutation_digest_sha256: d6ce97e988cd6d0234da5e6347e6f027dac7e1893292162db39d72f7d88d837a
-  canonical_byte_count: 283
-  mutated_field: consumer_ack
+  canonical_mutation_digest_sha256: 873e6b780c5602f3e6330102fd66486ceedb0065478ebc21a109cb2e6294924c
+  canonical_byte_count: 216
+  mutated_field: outcome_claim
   original_value: ABSENT
-  mutated_value: ACKED_BY_X14_CAMPAIGN_REDUCER_AND_X12_DURABLE_OBJECT_REDUCER_WITH_ACCEPTANCE_AND_CONSUMPTION_COMPLETE
+  mutated_value: END_TO_END_DURABLE_WORKFLOW_PASS
   expected_verdict: REVISE
-  expected_rejection_reason: PRODUCER_DELIVERY_RECEIPT_CANNOT_SELF_MINT_DISTINCT_CONSUMER_ACK
-  named_gate: S04_FABRICATED_CONSUMER_ACK_EXACT_SOURCE_PRODUCER_RECEIPT_CONSUMER_IDENTITY_DISTINCT_AUTHORSHIP_ACCEPTANCE_CRITERIA_CONSUMED_DIGEST_TRANSACTION_TIME_READBACK_IDEMPOTENCY_EXPIRY_AND_CLAIM_CEILING_GATE
-  expires_utc: 2026-08-13T16:53:49Z
+  expected_rejection_reason: NESTED_POINTER_VERIFICATION_PASS_CANNOT_BE_PROMOTED_TO_END_TO_END_WORKFLOW_PASS
+  named_gate: S04_UNSUPPORTED_PASS_OUTCOME_EXACT_SOURCE_NESTED_VERIFICATION_SCOPE_RESULT_CLAIM_CEILING_POINTER_BYTES_DELIVERY_RECEIPT_ATOMICITY_LIMIT_CONSUMER_ACK_EXPIRY_AND_END_TO_END_OUTCOME_GATE
+  expires_utc: 2026-08-13T17:53:48Z
   status: QUARANTINED_ROUTED_PENDING_VERDICTS
   accepted_wake_credit: true
 
 prior_verdict_observed:
-  mutant_137:
-    mutant_id: X14_MUTANT_137_1b43322d6140
-    mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+  mutant_138:
+    mutant_id: X14_MUTANT_138_d6ce97e988cd
+    mutation_class: FABRICATED_CONSUMER_ACK
     direct_s04_route_result: NOT_OBSERVED
     distinct_s09_result: RETIRE
-    distinct_s09_commit: 90fc7230f4f58787f79971078b3e6e47dfafa0cd
-    distinct_s09_path: state/coordination/votes/20260806T163025Z_S09_X14_MUTANT137_DUPLICATE_VERSION_RETIRE.vote.yaml
+    distinct_s09_commit: c6721e201353d120fe408fc81fd940c03ce106cd
+    distinct_s09_path: state/coordination/votes/20260806T173012Z_S09_X14_MUTANT138_FABRICATED_CONSUMER_ACK_RETIRE.vote.yaml
     evidence_class: SAME_PROVIDER_NONBINDING
     binding_weight: 0
-    campaign_34_retroactive_score_change: FORBIDDEN
+    campaign_35_score_credit: 1_DISTINCT_ADVISORY_REJECTION_OR_RETIREMENT
 
 routing:
   structural_preflight: S04_STRUCTURAL_PREFLIGHT
@@ -85,18 +87,19 @@ routing:
   distinct_verifier_task_id: 6a539fb148bc8191a30b6009dbf22438
   distinct_verifier_route_status: AVAILABLE_AS_DISTINCT_SEAT_SAME_PROVIDER_NONBINDING_VIA_SLACK
   consumer: X14_CAMPAIGN_REDUCER_AND_X12_DURABLE_OBJECT_REDUCER
-  current_verdict_status: MUTANT_138_DIRECT_ROUTE_PENDING
+  current_verdict_status: MUTANT_139_DIRECT_ROUTE_PENDING
   direct_candidate_priority_required: true
 
 active_campaign:
   campaign_ordinal: 35
-  accepted_wakes: 1
+  accepted_wakes: 2
   intended_mutants:
     - X14_MUTANT_138_d6ce97e988cd
-  current_mutation_class: FABRICATED_CONSUMER_ACK
+    - X14_MUTANT_139_873e6b780c56
+  current_mutation_class: UNSUPPORTED_PASS_OUTCOME
   direct_s04_catches_observed: 0
-  distinct_s09_rejections_or_retirements_observed: 0
-  pending: X14_MUTANT_138_d6ce97e988cd
+  distinct_s09_rejections_or_retirements_observed: 1
+  pending: X14_MUTANT_139_873e6b780c56
   status: ACTIVE
   decision_due: false
   previous_campaign_decision: REVISE_GATE
@@ -129,10 +132,10 @@ recent_campaign_decisions:
 
 next_wake:
   campaign_ordinal: 35
-  next_wake: 2
-  next_mutation_class: UNSUPPORTED_PASS_OUTCOME
+  next_wake: 3
+  next_mutation_class: EVIDENCE_INFLATION
   campaign_decision_due_after_write: false
   status: READY
 
 honest_flaw: >-
-  The fabricated acknowledgement is conspicuous because it is inserted into a producer-authored delivery receipt that contains no consumer section at all. It does not test a forged acknowledgement copied from a real consumer, a valid acknowledgement bound to the wrong producer digest, stale consumer identity, ambiguous shared-service authorship, partial acceptance widened to full adoption, or a legitimate consumer receipt whose authority or expiry has lapsed. Candidate discovery and source-digest dedup remain best-effort because GitHub indexing can lag. S04 and S09 are distinct seats but remain ChatGPT-carried same-provider evidence with binding weight zero. No independent quorum is claimed. No source, task, schedule, Slack history, verifier state, consumer state, account, deployment, spend, merge, publication, deletion or external provider state was modified.
+  The unsupported PASS is conspicuous because it sits beside a nested pointer-verification artifact that explicitly limits PASS to immediate file and branch readback and disclaims database atomicity, global serialization and later-write guarantees. It does not test a plausible higher-level PASS signed by another component, a real outcome receipt bound to the wrong digest, partial success widened to full workflow success, stale readback, delayed failure after the immediate read, or a legitimate PASS whose verifier authority or expiry has lapsed. Candidate discovery and source-digest dedup remain best-effort because GitHub indexing can lag. S04 and S09 are distinct seats but remain ChatGPT-carried same-provider evidence with binding weight zero. No independent quorum is claimed. No source, task, schedule, Slack history, verifier state, consumer state, account, deployment, spend, merge, publication, deletion or external provider state was modified.
