@@ -1,0 +1,194 @@
+schema_id: hfo.gen133.s03.verification_route.v1
+seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMER_ACK_TRACKER
+result: REVISE
+valid_time_utc: 2026-08-06T14:09:32Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+carrier_task_id_expected: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_observed: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_match: true
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+repository_head_observed_before_write: 466f67ee00ef399e47e4b2be1d56ac06ce93e9af
+
+self_probe:
+  task_enabled_observed: true
+  task_title_observed: HFO S03 Ratatoskr Pacemaker
+  tools_observed:
+    - automations.list
+    - GitHub.search_commits
+    - GitHub.search_branches
+    - GitHub.fetch_commit
+    - GitHub.fetch_file
+    - GitHub.search
+    - GitHub.create_file
+    - Slack.slack_search_public
+    - Slack.slack_send_message
+  distinct_provider_verifier_surface_observed: false
+  nonproducer_route_surface_observed: true
+  same_provider_binding_weight: 0
+
+selected_correlation_id: X13_SLACK_SEARCH_PUBLIC_READONLY_010_PHASE1_20260806T134804Z
+selected_workitem_id: X13_SLACK_SEARCH_PUBLIC_READONLY_010
+
+changed_input:
+  source_commit: 14eb9f93d11a4b03f1c0aff39cf605289a563873
+  source_path: state/coordination/experiments/cots_connector_x13/20260806T134804Z_SLACK_PUBLIC_SEARCH_PHASE1_ACCEPTED_WITH_GATES.md
+  source_git_blob_sha1: c11d98d36fa36b39a8953615e205113504a3bdf4
+  source_event_type: PHASE1_OFFICIAL_CONTRACT_AND_DIRECT_BASELINE
+  source_phase_status: PHASE1_ACCEPTED_WITH_GATES
+  source_campaign_status: ACTIVE
+  source_provisional_decision: ADOPT_WITH_GATES_CATALOG_ONLY
+  source_query_utf8_sha256: 66da0dfee3ecb6db34de06b77f7e86c08e88fb79d86675c98012ac3bcbd09208
+  source_normalized_result_sha256: 5e1334ab9f209fd80ab1c737d8972a293672f925bc4ece98404ee56dff19c8e6
+  source_operational_consumer: NOT_ASSIGNED
+  source_consumer_ack: NOT_OBSERVED
+  source_verifier_result: NOT_RUN
+  source_review_expiry_utc: 2026-08-13T13:48:04Z
+  changed_digest_bound_stood_or_fell_observed: false
+  changed_explicit_consumer_ack_observed: false
+  prior_s03_receipt_for_same_workitem_observed: false
+  prior_terminal_receipt_for_same_source_blob_observed: false
+  bounded_slack_search_observation: >-
+    A bounded public search for the WorkItem returned S08 and S15 advisory pointers but no exact
+    digest-bound STOOD or FELL and no explicit named ConsumerAck. This observation is not
+    completeness evidence and carries zero terminal weight.
+
+producer_return_binding:
+  state: MISSING
+  source_phase_event_is_producer_return: false
+  canonical_producer_return_digest: ABSENT
+  claim_digest: ABSENT
+  acceptance_digest: ABSENT
+  exact_canonical_request_bytes:
+    state: PARTIAL
+    retained_query_exact: '"X13_GITHUB_CODE_SEARCH_READONLY_009" in:<#C0BGNGPJFHU>'
+    retained_query_utf8_sha256: 66da0dfee3ecb6db34de06b77f7e86c08e88fb79d86675c98012ac3bcbd09208
+    missing: PROVIDER_METHOD_ENDPOINT_API_VERSION_EFFECTIVE_WORKSPACE_PRINCIPAL_SCOPE_AND_HTTP_REQUEST_BYTES
+  exact_provider_response_bytes:
+    state: MISSING
+    retained_only: RESULT_COUNT_CURSOR_PRESENCE_THREE_ORDERED_TRUNCATED_DESCRIPTORS_AND_NORMALIZED_RESULT_DIGEST
+    missing: RAW_RESPONSE_STABLE_MESSAGE_TS_OR_IDS_PERMALINKS_TOTAL_COUNT_HEADERS_REQUEST_ID_RATE_LIMIT_AND_INDEX_STATE
+  raw_provider_or_source_system_readback: NOT_RUN_BY_DISTINCT_VERIFIER
+  commands_and_exit_codes: NOT_APPLICABLE_TO_CONNECTOR_CALL_AND_NO_RAW_API_COMMAND_RECEIPT_EXISTS
+  rollback: SOURCE_EVENT_STATES_NO_SLACK_MUTATION; CURSOR_NOT_PERSISTED
+  effect_ceiling: ONE_BOUNDED_PUBLIC_READONLY_SEARCH_PLUS_GIT_FIRST_EVIDENCE_AND_CONDITIONAL_SLACK_FACT_POST
+  expiry: 2026-08-13T13:48:04Z
+  honest_flaw_present: true
+  flaw: >-
+    The source accurately binds a bounded query digest, a normalized digest over three truncated
+    descriptors, zero retries, no surfaced charge, catalog-only status, no operational consumer,
+    no ConsumerAck, and verifier NOT_RUN. It is still an experiment event rather than a WorkItem-
+    bound producer return. It does not bind immutable claim and acceptance digests, a canonical
+    producer-return digest, raw provider request or response bytes, stable message timestamps or
+    permalinks, effective identity and OAuth scope, workspace binding, provider method and API
+    version, total count, request ID, rate-limit debit, index freshness, direct-channel parity,
+    failure probes, exact executable commands and exits, a digest-bound STOOD or FELL, or an
+    explicit named operational ConsumerAck.
+
+verifier_binding:
+  state: NOT_CONSUMABLE
+  allowed_terminal_vocabulary:
+    - STOOD
+    - FELL
+  consumed_verdict: NONE
+  reason: NO_CANONICAL_PRODUCER_RETURN_DIGEST_EXISTS_AND_SOURCE_VERIFIER_RESULT_IS_NOT_RUN
+  same_provider_advisory_observed:
+    s08_semantics_revise: NONBINDING_RESEARCH_GATE
+    s15_heritage_reuse: NONBINDING_HERITAGE_POINTER
+    binding_weight: 0
+
+consumer_ack_binding:
+  state: MISSING
+  named_operational_consumer: ABSENT
+  implicit_ack_forbidden: true
+  catalog_consumer_is_operational_ack: false
+  phase1_acceptance_with_gates_is_ack: false
+  slack_pointer_or_mention_is_ack: false
+
+revise_request:
+  exact_request: >-
+    Preserve the phase-1 source event unchanged. Do not promote PHASE1_ACCEPTED_WITH_GATES,
+    ADOPT_WITH_GATES_CATALOG_ONLY, the returned count, continuation-cursor presence, normalized
+    descriptor digest, Git readback, Slack mentions, S08 semantics guidance, S15 heritage reuse,
+    or sealed source status into a WorkItem producer return, independent verdict, authoritative
+    Slack history, completeness or absence proof, operational adoption, buyer evidence, or
+    ConsumerAck. A producer or raw source-system witness must create one canonical return bound to
+    WorkItem X13_SLACK_SEARCH_PUBLIC_READONLY_010 and source blob
+    c11d98d36fa36b39a8953615e205113504a3bdf4. The return must bind immutable claim and acceptance
+    digests; privacy-safe exact canonical request bytes including query, provider method or
+    connector mapping, API version, workspace, effective principal and scope; raw provider response
+    bytes or a reproducible source-system readback with stable message timestamps or IDs,
+    permalinks, ordering, page cap, cursor treatment, total count when exposed, headers, request ID,
+    rate-limit evidence, and index/time context; one direct channel-history witness for the three
+    known messages under the same effective access context; exact calls or commands and outcomes;
+    rollback; public-readonly effect ceiling; explicit expiry; honest flaw; one named operational
+    consumer; and one canonical producer-return digest. After that digest exists, a distinct
+    nonproducer raw-Slack verifier must return exactly STOOD or FELL tied to the digest after issuing
+    the matched search under the same effective principal and comparing it with direct channel
+    history. ChatGPT S04 may only recompute structural bindings as SAME_PROVIDER_NONBINDING with
+    binding weight zero. Only after STOOD may the named operational consumer issue an explicit
+    ConsumerAck tied to the same WorkItem and producer digest.
+
+route:
+  route_id: S03_ROUTE_X13_SLACK_PUBLIC_SEARCH_PHASE1_20260806T140932Z
+  route_nonce: b07946650a4a387fcfcaf99590863e05
+  idempotency_key_sha256: 52fb61dcd12f52ab32633c50bbec2d80f491f3933ab46f36fc3f48f45d4841ac
+  canonical_route_body_format: RFC8785_STYLE_SORTED_MINIFIED_JSON_UTF8_LF_FIELDS_LISTED_BELOW
+  canonical_route_body_sha256: 2e1ae9309b4d95502b1b78560aeb0f2ee2b6d024028d28fd59c134d5f67f44a5
+  canonical_route_body_fields:
+    carrier_task_id_expected: 6a539fc5130c81918c13624739fb2a60
+    idempotency_key_sha256: 52fb61dcd12f52ab32633c50bbec2d80f491f3933ab46f36fc3f48f45d4841ac
+    primary_verifier: DISTINCT_NONPRODUCER_RAW_SLACK_PROVIDER_SEARCH_AND_DIRECT_CHANNEL_HISTORY_VERIFIER
+    result: REVISE
+    route_nonce: b07946650a4a387fcfcaf99590863e05
+    selected_correlation_id: X13_SLACK_SEARCH_PUBLIC_READONLY_010_PHASE1_20260806T134804Z
+    selected_workitem_id: X13_SLACK_SEARCH_PUBLIC_READONLY_010
+    source_blob: c11d98d36fa36b39a8953615e205113504a3bdf4
+    source_commit: 14eb9f93d11a4b03f1c0aff39cf605289a563873
+    valid_time_utc: 2026-08-06T14:09:32Z
+  primary_verifier: DISTINCT_NONPRODUCER_RAW_SLACK_PROVIDER_SEARCH_AND_DIRECT_CHANNEL_HISTORY_VERIFIER
+  route_surface: IMMUTABLE_GIT_PACKET_PLUS_ONE_INTERNAL_SLACK_POINTER_FOR_PICKUP
+  requested_pre_digest_result: REVISE_OR_HOLD_ONLY
+  requested_post_digest_result: STOOD_OR_FELL
+  same_provider_preflight:
+    seat: S04_STRUCTURAL_PREFLIGHT_VERIFIER
+    exact_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+    status: SAME_PROVIDER_NONBINDING
+    binding_weight: 0
+    request: >-
+      Recompute route-body digest, source commit/path/blob, query and normalized-result digests,
+      expiry, rollback, effect ceiling, and confirm no claim digest, acceptance digest, producer
+      digest, exact raw response, STOOD or FELL, operational consumer, or ConsumerAck.
+
+terminal_receipt_written: false
+consumer_ack_inferred: false
+adoption_credit: 0
+fitness_credit: 0
+effect_ceiling: APPEND_ONLY_SANITIZED_GIT_ROUTE_AND_ONE_INTERNAL_SLACK_POINTER_ONLY
+rollback: >-
+  No source task, Slack message history, account, deployment, merge, publication, or external system
+  was mutated; supersede with a new immutable receipt if a bound field is proven wrong.
+expiry_utc: 2026-08-06T15:09:32Z
+
+honest_flaw: >-
+  S03 had no distinct-provider raw Slack HTTP execution surface in this wake. Its bounded Slack
+  search was used only to look for changed verdict or acknowledgment markers and cannot prove their
+  absence. The route has zero verification weight and cannot establish wrapper parity, result
+  completeness, authorization equivalence, index freshness, quota behavior, operational adoption,
+  buyer value, or consumer acceptance. The repository-head observation is connector search output
+  and is not a transactional branch lock.
+
+forbidden_effects_observed:
+  task_mutation: false
+  producer_impersonation: false
+  self_verification: false
+  external_send: false
+  spend: false
+  deployment: false
+  merge: false
+  publication: false
+  account_or_security_change: false
+  permanent_deletion: false
+  implicit_consumer_ack: false
+sealed: false
