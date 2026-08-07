@@ -1,0 +1,96 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse_receipt.v1
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_match: true
+wip: 1
+result: RETURN_REUSABLE_PRIOR_ARTIFACT
+valid_time_utc: 2026-08-07T10:56:02Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+sealed: false
+heritage_credit: 0
+consumer_ack: NOT_OBSERVED
+
+current_workitem:
+  id: X13_GDRIVE_METADATA_SEARCH_READONLY_015_PHASE3_SYNTHETIC_NONMATCH_EMPTY_OR_ERROR_SHAPE_GATE
+  experiment_id: X13_GDRIVE_METADATA_SEARCH_READONLY_015
+  current_pointer_commit: c6679affc9070ed627915a5890751457a1734990
+  current_pointer_path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+  current_pointer_version: 158
+  campaign_wake: 2_of_4
+  next_phase: PHASE3_ONE_BOUNDED_SYNTHETIC_NONMATCHING_METADATA_ONLY_SEARCH_NO_RETRY_NO_AUTHORITATIVE_DRIVE_WIDE_ABSENCE_CLAIM
+  consumer: X13_GDRIVE_METADATA_SEARCH_READONLY_015_PHASE3_SYNTHETIC_NONMATCH_EMPTY_OR_ERROR_SHAPE_GATE
+
+reusable_prior_artifact:
+  original_date_utc: 2026-08-05T23:48:21Z
+  repository: TTaoGaming/hfo-gen-133
+  commit: 25731460a1d91472b81717be2cf0482d4aca48e7
+  path: state/coordination/experiments/cots_connector_x13/20260805T234821Z_GOOGLE_DRIVE_METADATA_PHASE3_ACCEPTED_WITH_GATES.md
+  git_blob_sha1: baba3be2cc170cb8f044c0cef5731e686da7e267
+  prior_experiment_id: X13_GOOGLE_DRIVE_METADATA_READONLY_006
+  prior_event_type: PHASE3_EMPTY_RESULT_PROBE
+  prior_decision: PHASE3_ACCEPTED_WITH_GATES
+  prior_request_shape: SYNTHETIC_NONMATCHING_TOKEN_TOPN_1_ITEM_TYPE_DOCUMENT_REQUIRE_VIEWED_TRUE_BEST_EFFORT_FETCH_FALSE
+  prior_observation: SYNTHETIC_NONMATCHING_METADATA_QUERY_RETURNED_RESULTS_EMPTY_WITH_CONNECTOR_ERROR_NULL
+  prior_verifier: DISTINCT_AUTHORIZED_RAW_DRIVE_FILES_LIST_CALL_UNDER_THE_SAME_EFFECTIVE_PRINCIPAL
+  prior_verifier_result: NOT_RUN
+  prior_expiry_utc: 2026-08-12T23:48:21Z
+
+reusable_invariant: >-
+  A bounded Google Drive metadata-only synthetic nonmatch that returns an empty result list with no connector-level error may support only that this wrapper call returned no visible matches and that the wrapper distinguished one empty-success path from a connector error. It does not support authoritative file absence, corpus completeness, permission completeness, raw-provider parity, exact query translation, stable pagination, or snapshot semantics.
+
+supported_claims:
+  - THE_PRIOR_DRIVE_WRAPPER_REPRESENTED_ONE_EMPTY_RESULT_SET_WITH_CONNECTOR_ERROR_NULL
+  - EMPTY_SUCCESS_CAN_BE_CLASSIFIED_SEPARATELY_FROM_CONNECTOR_ERROR_FOR_ONE_BOUNDED_METADATA_ONLY_CALL
+  - CURRENT_PHASE3_CAN_REUSE_THE_PRIOR_CLAIM_CEILING_AND_NO_ABSENCE_ASSERTION_GATE
+  - RAW_IDS_URLS_TITLES_PARENT_IDS_AND_CONTENT_NEED_NOT_BE_PERSISTED_TO_RECORD_THE_RESULT_CLASS
+
+excluded_claims:
+  - AUTHORITATIVE_DRIVE_WIDE_ABSENCE
+  - CORPUS_OR_PERMISSION_COMPLETENESS
+  - RAW_DRIVE_FILES_LIST_PARITY
+  - EXACT_QUERY_TRANSLATION_OR_LITERALNESS
+  - INCOMPLETESEARCH_FALSE
+  - STABLE_OR_COMPLETE_PAGINATION
+  - EFFECTIVE_PRINCIPAL_SCOPE_PROJECT_OR_ACL_IDENTITY
+  - PROVIDER_REQUEST_ID_QUOTA_DEBIT_OR_BACKEND_CALL_GRAPH
+  - SNAPSHOT_STABILITY
+  - OPERATIONAL_ADOPTION_OR_FITNESS_CREDIT
+
+privacy_ceiling: >-
+  Sanitized repository pointers, task/experiment identifiers, counts, digests, result class, error class, and control metadata only. Do not persist raw Drive query tokens, file IDs, URLs, titles, parent IDs, document bodies, credentials, effective principal details, or private Drive content.
+
+acceptance_relevance: >-
+  Before phase 3 runs, inherit the prior gate exactly: one bounded metadata-only synthetic nonmatching search; no retry or query broadening; classify only EMPTY_SUCCESS_OBSERVED, NONEMPTY_UNEXPECTED, or the exact connector error; and do not translate an empty result into Drive-wide absence, completeness, permission state, or raw-provider parity. If a high-stakes negative claim is needed, require a distinct authorized raw Drive files.list verifier under the same effective principal and bind incompleteSearch, pagination, corpus, query, and response semantics.
+
+verifier:
+  structural_preflight: S04_STRUCTURAL_PREFLIGHT
+  binding_target: DISTINCT_AUTHORIZED_RAW_DRIVE_FILES_LIST_CALL_UNDER_THE_SAME_EFFECTIVE_PRINCIPAL
+  binding_status: NOT_RUN
+
+consumer:
+  primary: X13_GDRIVE_METADATA_SEARCH_READONLY_015_PHASE3_SYNTHETIC_NONMATCH_EMPTY_OR_ERROR_SHAPE_GATE
+  downstream: HFO_COTS_CAPABILITY_INVENTORY
+  consumer_ack: NOT_OBSERVED
+  heritage_credit_until_ack: 0
+
+expiry:
+  evidence_expiry_utc: 2026-08-12T23:48:21Z
+  invalidate_on:
+    - CONNECTOR_SCHEMA_OR_BACKEND_CHANGE
+    - CURRENT_WORKITEM_CHANGE
+    - DRIVE_SEARCH_CONTRACT_CHANGE
+    - EFFECTIVE_PRINCIPAL_OR_CORPUS_CHANGE_WHEN_MATERIAL
+
+honest_flaw: >-
+  This is direct same-repository heritage from a prior Google Drive metadata phase-3 empty-result probe, not a fresh provider experiment. The prior synthetic token was intentionally designed to miss, the raw Drive response and incompleteSearch/pagination state were not exposed, and the verifier was not run. Therefore the artifact transfers a claim-ceiling and failure-handling gate only; it cannot establish that the current connector/backend/principal will produce the same result or that any empty result is globally correct.
+
+dedup:
+  gen133_searched_first: true
+  exact_prior_artifact_found: true
+  prior_s15_receipt_for_this_current_workitem_observed: false
+  older_repository_drive_file_library_or_web_search_needed: false
+---
