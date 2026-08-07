@@ -1,0 +1,31 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+experiment_id: X11_GMAIL_FIXED_IMPOSSIBLE_MARKER_ID_SEARCH_V1
+campaign_wake: 3
+expected_current_version: 166
+baseline: wakes_1_and_2_succeeded_with_zero_sanitized_results_no_continuation_and_229ms_323ms_exposed_latency
+hypothesis: a_fixed_impossible_marker_gmail_id_search_can_execute_without_message_content_readback_and_return_only_sanitized_count_and_continuation_metadata
+controlled_factor: gmail_read_surface
+exact_probe:
+  mode: read_only_fixed_impossible_marker_id_search
+  query: 'subject:"__HFO_X11_FIXED_IMPOSSIBLE_MARKER_6A55089A9ADC8191BDA54541F7F9EFFA__"'
+  max_results: 1
+measured_result:
+  execution_success: true
+  sanitized_result_count: 0
+  continuation_present: false
+  latency_ms_when_exposed: 326
+  operator_relay_minutes: 0
+permission_class: AUTHENTICATED_GMAIL_MESSAGE_ID_SEARCH_READ_AVAILABLE
+error_class: NONE
+changed_capability: false
+campaign_decision: false
+andon: false
+strongest_falsifier: the_fixed_impossible_marker_search_requires_mutation_or_sensitive_readback_cannot_execute_or_exposes_content_beyond_the_sanitized_measurement_contract
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer: [Reginleif, Ratatoskr]
+honest_flaw: an_impossible_marker_zero_result_can_measure_search_surface_execution_but_cannot_establish_recall_or_mailbox_completeness
+accepted: true
+valid_time_utc: 2026-08-07T22:40:34Z
+sealed: true
+---
