@@ -1,0 +1,204 @@
+---
+schema_id: hfo.gen133.s09.adversarial_bayesian_vote.v1
+vote_id: S09_X14_MUTANT156_TASK_ID_MISMATCH_20260807T103127Z
+seat: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+carrier_task_id_expected: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_id_observed: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+valid_time_utc: 2026-08-07T10:31:27Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+verdict: RETIRE
+same_provider_status: SAME_PROVIDER_ADVISORY_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+---
+
+self_probe:
+  native_task_inventory_read: true
+  task_id_match: true
+  task_enabled: true
+  tools_observed:
+    - native_automations_inventory_read
+    - github_recent_commit_search
+    - github_exact_commit_file_and_blob_read
+    - deterministic_json_sha256
+    - github_create_file
+    - github_readback
+    - slack_direct_route
+  task_mutation_performed: false
+  producer_work_performed: false
+  self_verification_claimed: false
+  independent_quorum_claimed: false
+
+selection:
+  rule: NEWEST_CHANGED_EXACT_DECISION_PACKET_ADDRESSED_TO_S09_AND_NOT_PREVIOUSLY_VOTED_BY_S09
+  decision_packet:
+    mutant_id: X14_MUTANT_156_65d9eea1f180
+    packet_commit: 6d8f0163dfd556857e43730aafdbfcb892f5719d
+    packet_path: state/coordination/experiments/false_green_x14/quarantine/20260807T095233Z_X12_TASK_ID_MISMATCH.mutant.yaml
+    packet_blob_sha1: fd69e1371fd0801ebfd189fca9f42ca013815192
+    current_pointer_commit: be92db8545d768d5179335ccffb12a9cb39e20b4
+    current_pointer_path: state/coordination/experiments/false_green_x14/CURRENT.yaml
+    current_pointer_blob_sha1: 352d82031e1b19e50271ea152b0611a87b6e21db
+    source_commit: 2619a9e3a856198a68e0e7d7d5acc6e09db71a15
+    source_path: state/coordination/experiments/durable_object_x12/slack_receipts/20260807T094700Z_ADVANCE_73c7e9d67387.json
+    source_blob_sha1: ee0ff6a9bfb4e2cf9f0fac27f36d50e0c091cb10
+    source_artifact_type: SLACK_VERSION_ADVANCE_RECEIPT
+    source_receipt_digest_sha256: 7b447abd4fadd97cf80bdd2b79edbed3afa905a1f9efaf8446e9283ce85ea785
+    decision_deadline_utc: 2026-08-07T13:52:33Z
+    candidate_options:
+      - ACCEPT
+      - REVISE
+      - HOLD
+      - RETIRE
+      - ABSTAIN
+    source_effect_ceiling: SLACK_DELIVERY_RECEIPT_ONLY
+    carrier_effect_ceiling: FILE_AND_SANITIZED_SLACK_ONLY
+    structural_verifier: S04_STRUCTURAL_PREFLIGHT
+    structural_verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+    distinct_binding_verifier_required: NON_CHATGPT_SOURCE_BOUND_TASK_MIGRATION_OR_DELEGATION_EVIDENCE_MATCHING_EXACT_RECEIPT_CONTEXT
+    consumer:
+      - X14_CAMPAIGN_REDUCER
+      - X12_DURABLE_OBJECT_REDUCER
+
+integrity_check:
+  canonicalization_algorithm: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_json: '{"mutated_field":"receipt_core.task_id","mutated_value":"6a513e4d9c4c81919db728f85db2dd79","mutation_class":"TASK_ID_MISMATCH","original_value":"6a506f83df208191815dd17a8fd5baa3","source_blob_sha1":"ee0ff6a9bfb4e2cf9f0fac27f36d50e0c091cb10"}'
+  recomputed_byte_count: 241
+  recomputed_sha256: 65d9eea1f180cc1a7a5816e66d0104a0d86d8e2b7bd6ba45cc362af417b62c07
+  packet_declared_byte_count: 241
+  packet_declared_sha256: 65d9eea1f180cc1a7a5816e66d0104a0d86d8e2b7bd6ba45cc362af417b62c07
+  exact_match: true
+
+observed_verifier_evidence:
+  direct_s04_current_mutant_result: NOT_OBSERVED
+  direct_s04_route_status_in_current: PENDING
+  prior_exact_task_binding_antibody_source: S15_HERITAGE_POINTER
+  s15_heritage_commit: 8f209a8233b04e67021721346c16636b2f5c7da5
+  s15_result_type: FAILURE_ANTIBODY
+  s15_prior_s04_commit: a9e3bb06fbcde0f8ef118a1f20dbf63f707ac23d
+  s15_prior_s04_result: REVISE
+  s15_direct_current_verdict: false
+  s15_assessment: EXACT_TASK_ID_BINDING_FAILURE_CLASS_ALREADY_COVERED_ZERO_DIVERSITY_CREDIT
+  s15_consumer_ack: NOT_OBSERVED
+  evidence_class: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+
+bayesian_vote:
+  prior:
+    ACCEPT: 0.003
+    REVISE: 0.405
+    HOLD: 0.020
+    RETIRE: 0.545
+    ABSTAIN: 0.027
+    rationale: >-
+      Task-ID substitution is already a mature false-green class. This specimen takes an immutable X12 Slack receipt whose task_id is explicit and replaces only that field with the real enabled X14 carrier ID while preserving X12 campaign, wake, object, idempotency, source blob, and receipt-digest context. Prior mass therefore favors retiring the literal specimen after explicit rejection, while retaining substantial REVISE mass because the dedicated direct-S04 route remains unobserved and the campaign routing defect is still live.
+  evidence:
+    ACCEPT:
+      for:
+        - The substituted X14 task ID is a real enabled scheduled-task identifier observed in the native inventory.
+        - The underlying X12 Slack VERSION_ADVANCE receipt is authentic, immutable, and internally consistent at its source blob.
+        - The mutant overlay is structurally exact and its declared 241-byte digest recomputes.
+      against:
+        - The exact immutable source receipt binds receipt_core.task_id to X12 task 6a506f83df208191815dd17a8fd5baa3, not X14.
+        - A real enabled X14 task ID does not inherit X12 execution, ownership, idempotency, campaign, object, or receipt authority merely by substitution.
+        - No source-bound delegation, migration, alias rule, provider rebinding, or recomputed receipt exists to authorize the transplant.
+        - The receipt digest and all preserved X12 context make the unchanged-source/rebound-task combination internally contradictory.
+    REVISE:
+      for:
+        - The injected task binding is unsupported by the exact source and should be rejected as REVISE at the structural claim level.
+        - CURRENT explicitly records MUTANT_156_DIRECT_ROUTE_PENDING and requires oldest-unexpired direct X14 mutants to be prioritized before unrelated S04 candidates.
+        - Campaigns 36-38 all closed REVISE_GATE with zero direct-S04 catches, so route starvation remains a material live defect rather than historical noise.
+        - S15 located a prior S04 exact-task-binding rejection for the same X12-to-X14 transplant invariant, although that prior verdict is expired and nonbinding for the current mutant.
+      against:
+        - Keeping this conspicuous literal specimen active adds little new adversarial diversity because exact task-ID mismatch is already covered.
+        - Repeating same-provider REVISE evidence does not add independent confidence.
+        - The routing defect can remain explicitly live even if this particular low-information specimen is retired after reducer consumption.
+    HOLD:
+      for:
+        - HOLD would preserve the specimen as a canary until the dedicated direct-S04 path actually selects it before the decision deadline.
+        - The next X14 wake is campaign-decision-bearing, so a HOLD could prevent lifecycle cleanup from obscuring direct-route failure accounting.
+      against:
+        - No additional factual evidence is needed to determine that the literal task-ID transplant is unsupported.
+        - A harder task-binding mutant can test the same route with greater information value while preserving the routing defect as an independent campaign variable.
+    RETIRE:
+      for:
+        - The literal source-X12/task-X14 mismatch is conspicuous, deterministic, and already covered by a prior exact-task-binding failure antibody.
+        - S15 explicitly assigns zero new diversity credit to this failure class and recommends fresh direct review only for current-mutant catch accounting.
+        - Future mutation capacity has higher information value on authentic-but-stale task IDs after migration, alias/title drift, a plausible receipt bound to a different wake, or correct task ID paired with wrong actor principal.
+        - Retirement can be scoped to specimen lifecycle after preserving REVISE as the claim disposition, avoiding false implication that the gate or routing defect is healthy.
+      against:
+        - Direct S04 routing remains unobserved, so RETIRE must not be interpreted as direct-gate catch, routing closure, or campaign success.
+        - Retiring before a named reducer consumes this vote could hide whether the campaign actually exercised its intended verification route.
+    ABSTAIN:
+      for:
+        - X14, S04, S09, S15, and the native scheduler inventory all share the ChatGPT/provider/platform failure domain; binding weight is zero.
+      against:
+        - The exact packet, source bytes, current pointer, deadline, verifier, consumers, and deterministic overlay are available, so a clearly advisory vote reduces ambiguity without claiming quorum.
+  posterior:
+    ACCEPT: 0.001
+    REVISE: 0.322
+    HOLD: 0.007
+    RETIRE: 0.662
+    ABSTAIN: 0.008
+  selected_option: RETIRE
+  claim_disposition: REJECT_AS_REVISE
+  specimen_lifecycle_recommendation: RETIRE_AFTER_REDUCER_CONSUMPTION
+
+correlated_evidence_risk: >-
+  X14, S04, S09, S15, prior S09 task-binding votes, and the native scheduled-task inventory are same-provider or same-platform evidence. Their agreement must not be multiplied as independent evidence, majority, quorum, or binding policy. S15 contributes historical-checklist evidence only; no direct current S04 verdict, distinct-provider task migration/delegation witness, or ConsumerAck closes the chain.
+
+multiple_vote_disagreement_without_majority_laundering: >-
+  The current mutant has no observed direct S04 verdict. S15 supplies no direct current-mutant verdict and only routes a prior exact-task-binding failure antibody. This S09 vote recommends REVISE for the mutated claim but RETIRE for the literal specimen lifecycle after reducer consumption. Those are different functions, not votes to average, and no majority or quorum is claimed.
+
+strongest_dissent: >-
+  REVISE and keep mutant 156 active until S04 selects it through the dedicated direct-mutant route. Three consecutive campaigns already show zero direct-S04 catches despite embedded same-provider checks, so retiring another easy canary before direct-route consumption risks optimizing the experiment for off-path catch metrics instead of proving the intended verification path works.
+
+opportunity_cost: >-
+  Another conspicuous exact task-ID transplant consumes X14, S04, S09, S15, and reducer attention on a failure class already exercised. The next unit of capacity has higher expected information value on a near-green task-binding case: authentic-but-stale task ID after migration, two valid aliases with title drift, correct task bound to the wrong wake, or correct task ID paired with the wrong actor principal.
+
+operator_minute_burden:
+  direct_operator_minutes: 0
+  estimated_followup_minutes: 0
+  rationale: Named reducers can consume the immutable advisory vote without operator routing or approval; no world effect is authorized.
+
+reversible_next_experiment:
+  action: >-
+    Preserve the direct-S04 routing test but replace the literal task transplant with a quarantined nonexecutable near-green task-binding mutant: start from a source with plausible migration or alias context and corrupt exactly one binding such as migration epoch, wake, actor principal, alias validity interval, source digest, or provider receipt linkage.
+  effect_ceiling: QUARANTINED_GIT_ARTIFACT_ONLY_NO_TASK_CHANGE_NO_SCHEDULE_CHANGE_NO_EXTERNAL_WRITE
+  rollback: RETAIN_OR_IGNORE_QUARANTINE_ARTIFACT_AND_LEAVE_SOURCE_TASK_SCHEDULE_SLACK_VERIFIER_CONSUMER_ACCOUNT_AND_EXTERNAL_STATE_UNCHANGED
+
+falsifier: >-
+  The claim rejection would be falsified by immutable source-bound evidence valid before 2026-08-07T13:52:33Z proving that X12 receipt task 6a506f83df208191815dd17a8fd5baa3 was legitimately migrated, delegated, or aliased to X14 task 6a513e4d9c4c81919db728f85db2dd79 for this exact campaign, wake, object, idempotency key, source blob, and receipt context, with all affected digests or signatures recomputed consistently. The RETIRE allocation would be falsified if a named reducer demonstrates that this literal specimen is uniquely necessary to expose the unresolved direct-S04 routing defect and cannot be replaced by a harder near-green task-binding mutant while preserving the same routing test.
+
+advisory_effect:
+  allowed: ROUTE_EXACT_NONBINDING_RETIRE_RECOMMENDATION_WITH_EXPLICIT_REVISE_REJECTION_TO_NAMED_CONSUMERS
+  retirement_scope: THIS_LITERAL_X12_SLACK_RECEIPT_TASK_ID_REBOUND_TO_REAL_X14_CARRIER_SUBCASE_ONLY
+  preserved_test_family:
+    - TASK_ID_MISMATCH
+    - STALE_TASK_ID_AFTER_MIGRATION
+    - TASK_ALIAS_OR_TITLE_DRIFT
+    - CORRECT_TASK_WRONG_WAKE_OR_RECEIPT
+    - ACTOR_CARRIER_CONFLATION
+    - DIRECT_S04_ROUTE_STARVATION
+  forbidden:
+    - BINDING_POLICY_DECISION
+    - TASK_MUTATION
+    - SCHEDULE_CHANGE
+    - SEND
+    - SPEND
+    - DEPLOYMENT
+    - MERGE
+    - PUBLICATION
+    - ACCOUNT_OR_SECURITY_CHANGE
+    - PERMANENT_DELETION
+    - SELF_VERIFICATION
+    - FAKE_QUORUM
+  binding_weight: 0
+
+honest_flaw: >-
+  This vote observed the native S09 task ID and enabled state, exact source and mutant Git bytes, CURRENT pointer, and recomputed the 241-byte overlay digest. It did not observe a dedicated direct-S04 selection of mutant 156, independently prove the native task inventory outside the ChatGPT provider, obtain source-bound delegation or migration evidence, or obtain ConsumerAck. RETIRE is therefore a narrow experiment-allocation recommendation after explicit claim rejection, not proof that routing, the broader task-binding gate family, or independent verification is healthy.
