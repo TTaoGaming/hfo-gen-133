@@ -1,72 +1,56 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
-experiment_id: X11_CALENDAR_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1
-current_version: 155
-accepted_wakes: 3
+experiment_id: X11_WAKE_TIMING_DRIFT_V1
+current_version: 156
+accepted_wakes: 0
 target_wakes_before_decision: 4
-controlled_factor: calendar_read_surface
+controlled_factor: wake_timing
 campaign_status: ACTIVE
 current_disposition: null
 prior_campaign:
-  experiment_id: X11_SLACK_WRITE_SURFACE_GATED_VISIBILITY_V1
-  final_version: 152
+  experiment_id: X11_CALENDAR_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1
+  final_version: 156
   disposition: KEEP
   accepted_wakes: 4
   decision_event:
-    commit: d62f8cff3a740290917b400570c120296cdacf05
-    path: state/coordination/experiments/carrier_surface_x11/events/20260807T043952Z_SLACK_WRITE_SURFACE_GATED_VISIBILITY_V1_WAKE_04_DECISION_KEEP.yaml
-    blob: b0f260fe1e8de2a6f7d9391c00b3fb9aebdf74a0
-baseline_result: campaign_initialized_with_no_accepted_calendar_read_probe_results
-hypothesis: the_authenticated_Google_Calendar_read_surface_may_execute_a_bounded_primary_calendar_search_for_a_fixed_impossible_marker_and_return_a_sanitized_zero_result_without_event_content_readback_or_operator_relay
+    commit: 249293236683c85b829dc6d5085eaf64503201a7
+    path: state/coordination/experiments/carrier_surface_x11/events/20260807T094031Z_CALENDAR_READ_WAKE_04_KEEP.yaml
+    blob: dd0b99547bdf9fed7865814366a294690bf5fa05
+baseline_result: campaign_initialized_with_no_accepted_wake_timing_samples
+hypothesis: elapsed_time_between_accepted_X11_events_can_be_measured_repeatably_without_operator_relay_or_schedule_mutation
 measured_result:
-  search_execution_success: [true, true, true]
-  sanitized_result_count: [0, 0, 0]
-  continuation_present: [false, false, false]
-  latencies_ms: [479, 212, 206]
-  latency_note: connector_exposed_external_call_time_ms
-  permission_class: AUTHENTICATED_GOOGLE_CALENDAR_BOUNDED_SEARCH_READ_AVAILABLE
+  elapsed_seconds: []
+  clock_source_class: RUNTIME_WALL_CLOCK
+  permission_class: RUNTIME_TIME_READ_AVAILABLE
   error_class: NONE
   operator_relay_minutes: 0
   changed_capability: false
   campaign_decision: false
   andon: false
-supported_claim: identical_authenticated_bounded_primary_calendar_search_execution_and_sanitized_zero_result_visibility_observed_three_times
-claim_ceiling: bounded_primary_calendar_search_execution_and_sanitized_count_visibility_only_not_calendar_completeness_recall_indexing_freshness_event_content_access_authenticity_or_independent_verification
-strongest_falsifier: the_Google_Calendar_search_surface_is_missing_or_unauthenticated_or_the_identical_bounded_probe_returns_an_execution_error_while_the_carrier_reports_success
+supported_claim: no_wake_timing_claim_yet
+claim_ceiling: observed_elapsed_time_between_accepted_events_only_not_scheduler_exactness_delivery_guarantee_or_exactly_once_execution
+strongest_falsifier: current_time_or_prior_accepted_event_timestamp_is_unavailable_or_elapsed_time_cannot_be_computed
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 consumer:
   - Reginleif
   - Ratatoskr
-honest_flaw: three_impossible_marker_zero_results_test_repeatable_authenticated_bounded_search_execution_but_cannot_establish_calendar_completeness_recall_indexing_freshness_or_event_content_access
+honest_flaw: elapsed_time_between_accepted_events_includes_tool_and_persistence_delay_and_does_not_isolate_scheduler_delay
 last_event:
-  commit: c42d52de0289a83808010a8a3ece077ecf0d8063
-  path: state/coordination/experiments/carrier_surface_x11/events/20260807T084014Z_CALENDAR_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1_WAKE_03.yaml
-  blob: 0145c245c87ebb5a2e978450313b76149478a1b8
-next_factor: calendar_read_surface
+  commit: 249293236683c85b829dc6d5085eaf64503201a7
+  path: state/coordination/experiments/carrier_surface_x11/events/20260807T094031Z_CALENDAR_READ_WAKE_04_KEEP.yaml
+  blob: dd0b99547bdf9fed7865814366a294690bf5fa05
+next_factor: wake_timing
 next_probe:
-  experiment_id: X11_CALENDAR_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1
-  campaign_wake: 4
-  mode: bounded_read_only_calendar_search
-  exact_action: search_primary_calendar_for_fixed_impossible_marker___HFO_X11_IMPOSSIBLE_CALENDAR_MARKER_7F9E2C1A___within_2026-01-01T00:00:00Z_to_2026-01-02T00:00:00Z_max_results_1;_persist_only_execution_success_sanitized_result_count_continuation_presence_permission_error_class_latency_when_exposed_and_operator_relay_minutes;_do_not_read_event_content
-  expected_current_version: 155
-  persist_only:
-    - search_execution_success
-    - sanitized_result_count
-    - continuation_present
-    - permission_class
-    - error_class
-    - latency_when_exposed
-    - operator_relay_minutes
+  experiment_id: X11_WAKE_TIMING_DRIFT_V1
+  campaign_wake: 1
+  mode: read_only_elapsed_time_measurement
+  exact_action: fetch_CURRENT_and_prior_accepted_event_timestamp;_capture_current_UTC_wall_clock;_compute_elapsed_seconds;_persist_only_elapsed_seconds_clock_source_permission_error_class_and_operator_relay_minutes;_do_not_persist_scheduler_configuration
+  expected_current_version: 156
   mutation_allowed: false
-  event_content_readback_allowed: false
-  interactive_login_allowed: false
-  privacy_gate: no_event_titles_descriptions_attendees_identifiers_or_calendar_metadata_externalization
+  operator_relay_allowed: false
   post_only_changed_capability_campaign_decision_or_andon: true
-  sensitive_readback_externalization_allowed: false
-  same_provider_independence_claim_allowed: false
-slack_action: NONE_UNCHANGED_PROBE
-updated_valid_time_utc: 2026-08-07T08:40:14Z
+updated_valid_time_utc: 2026-08-07T09:40:31Z
 sealed: false
 ---
 
-Google Calendar fixed impossible-marker read V1 accepted wake 3 of 4. The identical bounded primary-calendar search again executed successfully, returned zero sanitized matches with no continuation token, exposed 206 ms connector latency, and required no operator relay. Wake 4 repeats the identical bounded read-only probe and will issue the four-wake campaign disposition. No event content was read back or externalized, and no Slack post is authorized for this unchanged wake.
+Calendar read campaign completed 4 of 4 with KEEP. The next campaign measures only elapsed wall-clock time between accepted X11 events; it does not expose scheduler configuration and cannot prove scheduler exactness or exactly-once execution.
