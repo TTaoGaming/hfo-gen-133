@@ -1,0 +1,84 @@
+schema: hfo.gen133.operator_relief_receipt.v0_1
+seat: S05
+expected_task_id: 6a55c182078c8191b89f2dd15f5f640c
+self_probe:
+  task_id_match: true
+  task_enabled: true
+  wip: 1
+valid_time_utc: 2026-08-07T13:15:39Z
+result: STATUS_RECONCILED
+active_item: TECTANGLE_SHARED_CHROMIUM_SANDBOX_CI_FAILURE
+priority:
+  p0: FIDELITY_ACTIVITY_EXPECTEDNESS_AND_RECEIVING_BANK_VERIFICATION
+  p1:
+    - COLDEN_BOARD_CANDIDACY_DECISION_2026-08-07
+    - TECTANGLE_SHARED_BROWSER_HARNESS_CI_REPAIR
+transition:
+  kind: reconcile_important_status
+  summary: >-
+    A new Visual Snapshot Daily failure was read back to its exact GitHub Actions
+    job and log. Checkout, Node setup, dependency install, static-server startup,
+    and server readiness succeeded. The visual-snapshot step then failed during
+    Jest globalSetup because Chromium reported "No usable sandbox" on the Ubuntu
+    24.04 hosted runner, before visual assertions executed; the downstream seat
+    screenshot step was skipped and the artifact-upload step still succeeded.
+    This is the same browser-launch failure class previously observed in the
+    separate Design Audit workflow at the same Tectangle commit. The bounded
+    reconciliation therefore consolidates two workflow failures into one shared
+    CI/browser-harness repair lane instead of two apparent product regressions.
+  operator_minutes_removed_estimate: 8
+  next_consumer: S06_CODE_WORK_PACKET_COMPILER
+claim_ceiling:
+  supported:
+    - Visual Snapshot Daily run 31178534225 failed on main at commit 49da03bd595d364789c219382ec6bec6f56b552d.
+    - Job visual-snapshot id 92866012870 passed checkout, Node setup, npm ci, static-server startup, and wait-on readiness.
+    - Step Run visual snapshot failed during Jest globalSetup before visual assertions because Chromium reported No usable sandbox on Ubuntu 24.04.
+    - Step Run P1+P2 seat screenshots was skipped after the browser-launch failure.
+    - Artifact upload succeeded and produced visual-snapshots artifact id 8993847675.
+    - Prior S05 receipt records Design Audit run 31154280221 at the same commit failing with the same Chromium No usable sandbox class before design-audit assertions.
+    - Two separate workflows at the same commit now exhibit the same browser-launch blocker, increasing evidence for a shared CI/browser-harness issue.
+  excluded:
+    - No claim that Tectangle is regression-free.
+    - No claim that either workflow's application assertions pass.
+    - No claim that the shared root cause is proven to be solely the GitHub runner image, Puppeteer version, Chromium version, AppArmor policy, or repository configuration.
+    - No claim that --no-sandbox is an approved or safe permanent fix.
+    - No rerun, patch, workflow mutation, merge, deployment, publication, or task mutation was performed.
+sources:
+  gmail:
+    message_id: 19fdc370a8462870
+    subject_class: GITHUB_ACTIONS_FAILURE_NOTIFICATION
+    private_body_externalized: false
+  github_actions:
+    repository: TTaoGaming/Tectangle
+    run_id: 31178534225
+    job_id: 92866012870
+    commit: 49da03bd595d364789c219382ec6bec6f56b552d
+    workflow: Visual Snapshot Daily
+    failed_step: Run visual snapshot
+    failure_class: CHROMIUM_SANDBOX_UNAVAILABLE_ON_HOSTED_RUNNER
+    artifact_id: 8993847675
+  prior_s05_receipt:
+    path: state/coordination/receipts/chatgpt_runtime/seat-05/20260807T071534Z_TECTANGLE_DESIGN_AUDIT_CI_SANDBOX_FAILURE_RECONCILED.yaml
+    blob: 6fbdb08c646754d81b14379398c6f12f34d607ad
+changed_source_readback:
+  calendar: Existing Fidelity 07:30 and Colden 08:30 private decision blocks remain present; no new material calendar delta used for this transition.
+  slack: No newer Tectangle operator-obligation delta was observed in C0BGNGPJFHU since the prior S05 cursor.
+  contacts: No contact lookup was required because this transition has no recipient-resolution dependency.
+privacy:
+  private_email_body_copied_to_git: false
+  sensitive_identifiers_externalized: false
+effects:
+  email_send: false
+  application_submission: false
+  spend_or_payment: false
+  deployment: false
+  merge: false
+  publication: false
+  account_or_security_change: false
+  destructive_delete: false
+  scheduled_task_mutation: false
+honest_flaw: >-
+  The two failing workflows are correlated: they use the same repository commit,
+  hosted-runner environment family, and Puppeteer/Chromium launch path. This is
+  strong consolidation evidence but not an independent causal experiment. A
+  bounded repair test is still required before declaring the CI root cause fixed.
