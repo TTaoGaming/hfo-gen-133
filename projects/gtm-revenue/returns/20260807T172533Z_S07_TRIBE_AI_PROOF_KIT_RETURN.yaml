@@ -1,0 +1,87 @@
+schema_id: hfo.gen133.gtm_proof_kit_return.v1
+return_id: GTM-S07-TRIBE_AI-RETURN-20260807T172533Z
+task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+result: KIT_RETURNED
+valid_time_utc: 2026-08-07T17:25:33Z
+expiry_utc: 2026-08-14T16:28:00Z
+target: Tribe AI
+species: CHANNEL_PARTNER
+route: RELATIONSHIP_FIRST_WITH_OPTIONAL_APPLY
+privacy: PUBLIC_SOURCE_ONLY
+effect_ceiling: T0_PREP_GIT_NO_SEND
+
+source_target_card:
+  path: projects/gtm-revenue/research/20260807T162800Z_CHANNEL_PARTNER_TRIBE_AI_TARGET_CARD.md
+  blob_sha: 1faf85c1744ae2a1f3b9802efcfdcc815ff978d4
+  creation_commit: da1b7f24dcf901577c116ff91d3824d564abfba7
+  source_evidence_digest_sha256: c91a1959ba299cf7b094fd5e0c02d4fd9b2d61f82b4019b17520a09dbb3ed29c
+  unexpired_at_pickup: true
+  duplicate_kit_at_same_digest_found_before_build: false
+
+candidate:
+  path: projects/gtm-revenue/kits/tribe-ai/FORWARD_DEPLOYED_AGENT_DELIVERY_ASSURANCE_SCORECARD.md
+  blob_sha: 88891db968a7250bc70c9c056bc17b3ac6bbe85a
+  creation_commit: 03237b290197ce36c37bb61ad9c1a988f9165bf8
+  readback: PASS
+  artifact_type: forward_deployed_agent_delivery_assurance_scorecard
+  approximately_two_minute_use: true
+  claims_internal_Tribe_failure: false
+  no_send: true
+
+changed_paths:
+  - projects/gtm-revenue/kits/tribe-ai/FORWARD_DEPLOYED_AGENT_DELIVERY_ASSURANCE_SCORECARD.md
+  - projects/gtm-revenue/returns/20260807T172533Z_S07_TRIBE_AI_PROOF_KIT_RETURN.yaml
+
+public_sources_rechecked_2026_08_07:
+  - https://www.tribe.ai/articles/introducing-our-cto
+  - https://www.tribe.ai/careers
+  - https://www.tribe.ai/articles/the-role-thats-forging-a-new-path-for-ai-engineers
+  - https://www.tribe.ai/
+
+source_reconciliation:
+  supported:
+    - Tribe publicly says it is scaling engagement complexity and volume and bringing on hundreds of Forward Deployed Engineers in 2026.
+    - Tribe explicitly says it wants enduring IP that makes later engagements faster.
+    - Tribe's current careers page lists Forward Deployed Engineer, Agentic Adoption and other FDE/GTM roles.
+    - Tribe's own field writing names reliability, governance, auditability, security policies and cost ceilings as enterprise AI constraints.
+  hypothesis_only:
+    - Tribe has repeated assurance review/rework cost large enough to justify an external specialist or reusable assurance layer.
+    - Tribe wants this operator as a contractor, network practitioner or employee.
+  contradiction_or_staleness:
+    - The S08 card cited https://www.tribe.ai/companies/custom-solutions as current on 2026-08-07, but a fresh fetch during this S07 run returned 404. The kit does not rely on that URL.
+
+assumptions:
+  - A lightweight vendor-neutral release preflight is potentially useful to an FDE/practice lead.
+  - Mandatory release-boundary checks should not be averaged away by a composite score.
+  - Any economic value claim requires real engagement baseline data; none is asserted.
+
+falsifier: >-
+  Retire or revise the artifact if authoritative Tribe field feedback establishes that
+  these assurance checks are already lightweight, consistently adopted and create
+  negligible repeated review/rework cost, or if another repeated delivery bottleneck
+  has materially higher economic consequence.
+
+rollback_delete_path:
+  - delete projects/gtm-revenue/kits/tribe-ai/FORWARD_DEPLOYED_AGENT_DELIVERY_ASSURANCE_SCORECARD.md using its exact blob SHA if rejected before downstream consumption
+  - preserve this immutable producer return as the historical receipt; do not rewrite it
+
+verifier:
+  required: S04 Hrist Structural Preflight
+  instruction: >-
+    S04: verify exact target-card digest/blob, candidate blob/readback, source-backed
+    versus hypothesis wording, no-send boundary, source freshness including the
+    detected 404 drift, and the strongest fake-green claim. Return structural verdict
+    without editing the candidate or claiming independent cross-provider quorum.
+
+consumer: operator
+external_effects_performed: []
+outreach_sent: false
+application_submitted: false
+spend: false
+publication_outside_operator_repo: false
+
+honest_flaw: >-
+  The scorecard is a plausible reusable engineering preflight derived from public Tribe
+  operating signals, not evidence that Tribe has the hypothesized delivery-assurance
+  pain or would value this specific artifact. One originally cited S08 page also
+  returned 404 during fresh verification; the candidate deliberately excludes it.
