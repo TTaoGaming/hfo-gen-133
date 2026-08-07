@@ -1,0 +1,56 @@
+schema_id: hfo.gen133.s03.verification_route.v1
+result: REVISE
+terminal: false
+seat: S03
+carrier_task_id: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_match: true
+wip: 1
+correlation_id: X13_GCAL_SEARCH_READONLY_012_PHASE3_20260806T234800Z
+work_item_binding: ABSENT
+source:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+  commit: 34ee7bc82b3844ae1e2923adc9829f619e047c92
+  path: state/coordination/experiments/cots_connector_x13/20260806T234800Z_GCAL_SEARCH_PHASE3_SYNTHETIC_EMPTY.md
+  git_blob_sha1: 0cbff37deddeef4871f85f1b2743b2c4247e45dc
+  request_sha256: ae59cd708385e577b23c78865ae687ed8d0f9b08f52b7521f8c2826ab8a02abd
+  normalized_result_sha256: 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
+observed:
+  phase_status: PHASE3_ACCEPTED_WITH_GATES
+  returned_events: 0
+  next_page_token_exposed: false
+  connector_error: false
+  operational_consumer: NOT_ASSIGNED
+  consumer_ack: NOT_OBSERVED
+  source_verifier_result: WRAPPER_RETURNED_ZERO_EVENTS_NEXT_PAGE_TOKEN_NULL_AND_NO_ERROR_IN_665MS
+  source_interpretation: EMPTY_SUCCESS_IS_DISTINCT_FROM_CONNECTOR_FAILURE_BUT_IS_NOT_EVIDENCE_OF_CALENDAR_WIDE_ABSENCE
+  honest_flaw_present: true
+missing_required_evidence:
+  - WORKITEM_BOUND_CLAIM_DIGEST
+  - ACCEPTANCE_DIGEST
+  - CANONICAL_PRODUCER_RETURN_DIGEST
+  - EXACT_RAW_PROVIDER_REQUEST_RESPONSE_OR_MATCHED_SOURCE_SYSTEM_READBACK
+  - EFFECTIVE_GOOGLE_CALENDAR_PRINCIPAL_AND_SCOPE
+  - RETURN_LEVEL_EFFECT_CEILING
+  - RETURN_LEVEL_EXPIRY
+  - ROLLBACK_BINDING
+  - DIGEST_BOUND_STOOD_OR_FELL_FROM_DISTINCT_VERIFIER
+  - NAMED_OPERATIONAL_CONSUMER
+  - EXPLICIT_CONSUMER_ACK
+reason: >-
+  The synthetic empty-success probe is useful bounded catalog evidence, but it is not a WorkItem-bound producer return and cannot support a terminal verification outcome.
+route:
+  verifier: S04_HRIST_STRUCTURAL_PREFLIGHT
+  verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  verifier_class: NONPRODUCER_SAME_PROVIDER_PREFLIGHT
+  binding_weight: 0
+  requested_action: >-
+    Recompute the exact Git source binding and structural gaps for this correlation only. Return PASS_STRUCTURAL, REVISE, HOLD, BLOCKED, or YIELD_SILENT. Do not emit STOOD or FELL and do not infer ConsumerAck.
+  binding_verifier_requirement: >-
+    A distinct raw Google Calendar v3 or equivalent nonproducer provider witness under the same effective principal must bind the canonical producer-return digest before any STOOD or FELL can be consumed.
+effect_ceiling: T0_INTERNAL_READONLY_VERIFICATION_ROUTING_ONLY
+rollback: APPEND_ONLY_SUPERSESSION_OR_CORRECTION; DO_NOT_MUTATE_SOURCE
+route_expiry_utc: 2026-08-07T01:08:00Z
+honest_flaw: >-
+  S04 is carried by the same ChatGPT provider, so this route can establish only structural preflight with binding weight zero; no distinct provider verifier is directly available in this seat.
+created_utc: 2026-08-07T00:08:55Z
