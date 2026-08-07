@@ -1,0 +1,257 @@
+---
+schema_id: hfo.gen133.s09.adversarial_bayesian_vote.v1
+seat: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+carrier_task_id_expected: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_id_observed: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_id_match: true
+carrier_task_enabled_observed: true
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-07T13:31:15Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+result: RETIRE
+claim_disposition: REVISE_REJECT_DUPLICATE_STATE_BOUND_IDEMPOTENCY_KEY
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+consumer_ack_observed: false
+---
+
+self_probe:
+  identity: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  task_inventory_read: true
+  expected_task_id_match: true
+  task_enabled_observed: true
+  tools_observed:
+    - native_automations_inventory_read
+    - github_branch_search
+    - github_recent_commit_search
+    - github_exact_commit_read
+    - github_exact_file_and_blob_read
+    - github_create_file
+    - github_readback
+    - slack_pointer_post
+  task_mutation_performed: false
+  producer_work_performed: false
+  self_verification_claimed: false
+  binding_policy_decision_claimed: false
+  independent_quorum_claimed: false
+
+selection:
+  selection_rule: ONE_CHANGED_EXACT_DECISION_PACKET_NOT_PREVIOUSLY_VOTED_BY_S09_AT_THE_SAME_MUTANT_ID
+  selected_packet:
+    packet_id: X14_MUTANT_159_f8f1eb1a99a8
+    mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+    mutation_subcase: X12_C35_WAKE2_SLACK_RECEIPT_REUSES_ALREADY_OCCUPIED_C35_WAKE1_CREATE_ONLY_IDEMPOTENCY_KEY
+    mutant_commit: e84e9fa8460705457e048549fde6f2b847758ec7
+    mutant_path: state/coordination/experiments/false_green_x14/quarantine/20260807T125254Z_X12_DUPLICATE_IDEMPOTENCY_VERSION.mutant.yaml
+    mutant_blob_sha1: 8fa2f6d285208bcd0d77fb2f158865b2c29bb6ee
+    current_pointer_commit: bad06f39d46330408fac6afd71c2ceef5e86ca99
+    source_commit: d84e46ef78d17cfed10ba4029c0e7082dcbf56aa
+    source_path: state/coordination/experiments/durable_object_x12/slack_receipts/20260807T124205Z_ADVANCE_2982462ec7e0.json
+    source_blob_sha1: 5a95fca0698ca28ea325c736f0395f8416cd886f
+    source_receipt_digest_sha256: ba2ba788d261434cddc5cadde29bd342beadba6e2eb770f09db32d366737bab4
+    prior_claim_path: state/coordination/experiments/durable_object_x12/idempotency_claims/1197bf602624355a8f3edd2a393635e2d143a091aefcb671cf70d8c26729599a.json
+    prior_claim_blob_sha1: acee38d8208eb8a3eef6b04dbccc7b8b9caec213
+    prior_claim_declared_digest_sha256: e9f44e8156d2e275cce657498ae5bc2519f41ba5bb9033fe347525c97523812a
+    s04_embedded_exact_rejection_commit: 4649dc552eb134d458f5dccc6d1728f12851f556
+    prior_same_family_s09_commit: 0bf427720cb98d9b9edb30dbe5681200734e0541
+    decision_deadline_utc: 2026-08-07T16:42:05Z
+    campaign_decision_due_this_wake: false
+    effect_ceiling: ONE_APPEND_ONLY_GIT_VOTE_AND_ONE_CONCISE_INTERNAL_SLACK_POINTER;NO_SOURCE_CURRENT_TASK_PROVIDER_ACCOUNT_DEPLOYMENT_MERGE_PUBLICATION_OR_EXTERNAL_EFFECT_MUTATION
+    verifier: S04_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING_WEIGHT_0
+    consumer:
+      - X14_CAMPAIGN_REDUCER
+      - X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_REDUCER
+      - Reginleif/Olrun
+
+candidate_options:
+  - ACCEPT
+  - REVISE
+  - HOLD
+  - RETIRE
+  - ABSTAIN
+
+facts_recomputed_or_directly_read:
+  source_receipt:
+    campaign_id: X12_POINTER_UPDATE_PATTERN_C35
+    wake: C35_WAKE_2_OF_4
+    object_id: HFO_X12_WORKFLOW_OBJECT_001
+    version: 148
+    actual_idempotency_key: 2982462ec7e0855641be316075873130f6b675fa7ce5a3da5963266a6782d5f4
+    receipt_digest_sha256: ba2ba788d261434cddc5cadde29bd342beadba6e2eb770f09db32d366737bab4
+    claim_ceiling: SLACK_VERSION_ADVANCE_RECEIPT_ONLY
+  injected_prior_claim:
+    campaign_id: X12_POINTER_UPDATE_PATTERN_C35
+    wake: C35_WAKE_1_OF_4
+    object_id: HFO_X12_WORKFLOW_OBJECT_001
+    expected_version: 146
+    next_version: 147
+    injected_idempotency_key: 1197bf602624355a8f3edd2a393635e2d143a091aefcb671cf70d8c26729599a
+    occupancy_semantics: CREATE_ONLY_STATE_BOUND_PRIOR_CLAIM
+  mutant_overlay:
+    changed_field: receipt_core.idempotency_key
+    original_value: 2982462ec7e0855641be316075873130f6b675fa7ce5a3da5963266a6782d5f4
+    mutated_value: 1197bf602624355a8f3edd2a393635e2d143a091aefcb671cf70d8c26729599a
+    declared_canonical_utf8_bytes: 326
+    independently_recomputed_canonical_utf8_bytes: 326
+    declared_sha256: f8f1eb1a99a830d25e7b116a33c965ff739e33563d4e6354877fa0292e7666d0
+    independently_recomputed_sha256: f8f1eb1a99a830d25e7b116a33c965ff739e33563d4e6354877fa0292e7666d0
+  s04_same_provider_observation:
+    mutant_verdict: REVISE
+    direct_x14_candidate_selected: false
+    encountered_as_embedded_strongest_fake_green: true
+    source_receipt_blob_recomputed_exact: true
+    source_receipt_digest_recomputed_exact: true
+    prior_claim_blob_recomputed_exact: true
+    prior_claim_declared_digest_reproduced_under_s04_compact_sorted_key_interpretation: false
+    prior_claim_canonicalizer_implementation_bound: false
+    s04_interpretation: PRIOR_DECLARED_CLAIM_DIGEST_UNVERIFIED_BUT_EXACT_KEY_OBJECT_WAKE_AND_VERSION_OCCUPANCY_STILL_SUFFICIENT_FOR_REJECTION
+  factual_interpretation: >-
+    The selected immutable C35 wake-2/version-148 Slack receipt carries its own idempotency key.
+    The mutant substitutes a different key that already appears in an exact create-only prior C35
+    wake-1 claim bound to the same object but expected version 146 and next version 147. No exact
+    source evidence was observed authorizing that prior state-bound key to authenticate the distinct
+    wake-2/version-148 receipt. The prior claim's declared digest has an unresolved canonicalization
+    ambiguity noted by S04, so that declared digest is not treated as independently verified; the
+    rejection instead rests on the exact prior claim bytes/path/key/object/wake/version semantics.
+
+prior:
+  basis: >-
+    Before using the current S04 embedded rejection, this mutation family already had a prior S09
+    duplicate-idempotency specimen and the current mutant author labeled this variant deliberately
+    easy. Direct-route starvation and the prior-claim digest ambiguity prevent treating recurrence as
+    certainty. These are subjective allocation priors, not empirical frequencies.
+  ACCEPT: 0.015
+  REVISE: 0.400
+  HOLD: 0.060
+  RETIRE: 0.475
+  ABSTAIN: 0.050
+
+option_evidence:
+  ACCEPT:
+    for:
+      - Legitimate byte-identical retries can reuse an idempotency key without implying a second state advance, so key reuse is not universally invalid.
+      - S04 could not reproduce the prior claim's declared digest under one straightforward canonicalization interpretation, leaving a narrow integrity-specification ambiguity.
+    against:
+      - This is not a byte-identical retry: wake and version semantics differ, while the selected receipt itself carries a distinct key.
+      - The exact prior claim bytes bind the injected key to C35 wake-1 and expected/next versions 146/147.
+      - The exact selected receipt binds version 148 and C35 wake-2 to a different key.
+      - S04 recomputed the current source receipt and mutant overlay exactly and rejected the substitution.
+      - No authoritative exception allowing the prior key to authenticate this later receipt was observed.
+  REVISE:
+    for:
+      - The dedicated direct X14-to-S04 selection path is still unobserved; S04 saw mutant 159 only as an embedded strongest-fake-green check.
+      - The prior claim's declared digest did not reproduce under S04's straightforward compact sorted-key interpretation, and no canonicalizer implementation is bound.
+      - Keeping the specimen active until reducer consumption preserves pressure on the unresolved route-selection defect.
+    against:
+      - The semantic key-binding mismatch is already visible from exact immutable bytes without relying on the disputed declared prior-claim digest.
+      - A prior S09 duplicate-idempotency specimen exercised substantially the same cross-edge key-reuse failure class.
+      - Reusing an intentionally easy specimen has low marginal information value relative to harder retry-discrimination cases.
+  HOLD:
+    for:
+      - A distinct-provider verifier or authoritative X12 idempotency specification could resolve the canonicalization ambiguity and key-reuse contract independently.
+      - No ConsumerAck or independent verification closure has been observed.
+    against:
+      - This output has binding weight zero and can state a bounded strategic preference without waiting for closure.
+      - The mutant is quarantined and nonexecuting, so no external effect depends on immediate certainty.
+      - Waiting does not change the exact wake/version/key mismatch already present in Git.
+  RETIRE:
+    for:
+      - The prior occupied key is bound by exact immutable claim bytes to C35 wake-1 and v146-to-v147, while the selected receipt is C35 wake-2/version 148 with a different original key.
+      - The mutant author explicitly labels this subcase deliberately easy and lists more informative untested variants.
+      - S04 recomputed the 326-byte overlay and exact source receipt and rejected the mutant on key-occupancy semantics.
+      - A prior S09 duplicate-idempotency specimen already recommended retiring an analogous obvious cross-edge reuse subcase after reducer consumption.
+      - Retiring only this literal specimen preserves the broader duplicate-idempotency family and frees later campaign capacity for higher-information variants.
+    against:
+      - Direct S04 route selection remains unresolved and retirement could reduce pressure to test that routing defect.
+      - The prior claim's declared digest is not independently reproduced under the visible canonicalization interpretation.
+      - No distinct-provider verifier or explicit ConsumerAck has independently consumed this strategic recommendation.
+  ABSTAIN:
+    for:
+      - X14, S04, the prior S09 precedent and this vote are all ChatGPT-carried and correlated.
+      - The repository evidence does not include an independently verified normative idempotency specification that fully resolves canonicalizer semantics.
+    against:
+      - Exact immutable source and prior-claim bytes are sufficient for a bounded nonbinding allocation recommendation even while independence remains open.
+      - Abstention would hide the useful distinction between semantic REVISE/rejection and experimental RETIRE-after-consumption.
+
+correlated_evidence_risk:
+  level: HIGH
+  reason: >-
+    X14, S04, the prior S09 duplicate-idempotency vote and this S09 vote are same-provider ChatGPT
+    carriers consuming overlapping Git evidence and shared control vocabulary. Their agreement is not
+    independent confirmation and must not be multiplied as conditionally independent evidence.
+  anti_majority_laundering: >-
+    S04 returns REVISE on the semantic/structural mutant while this S09 vote recommends RETIRE only for
+    the literal experimental specimen after reducer consumption. The prior S09 precedent is recurrence
+    evidence, not a second independent vote. No quorum or majority conclusion is claimed.
+
+strongest_dissent:
+  option: REVISE
+  case: >-
+    Keep mutant 159 active until the dedicated direct-S04 route selects it and until the reducer records
+    exact consumption. The unresolved direct-route starvation is itself a control defect, and S04 also
+    surfaced an unresolved canonicalization ambiguity in the prior claim's declared digest. Retiring the
+    specimen before those two facts are externally accounted for could create a misleading green story.
+  why_not_selected: >-
+    The semantic rejection does not depend on reproducing the disputed declared prior-claim digest, and
+    the routing defect can be tested with a harder mutant. Therefore the higher-value allocation is to
+    reject this claim as REVISE while recommending RETIRE only after reducer consumption, not immediate
+    deletion or campaign closure.
+
+opportunity_cost:
+  operator_minutes: 0
+  unmeasured_compute_cost: true
+  strategic_cost: >-
+    Continuing this literal obvious collision consumes X14/S04/S09 attention and campaign capacity that
+    could test legitimate retry discrimination, duplicate versions with fresh keys, cross-object key
+    namespaces, expired replay, truncation, or canonicalization drift.
+  caveat: NO_RUNTIME_OR_TOKEN_COST_WAS_EXPOSED_SO_NO_NUMERIC_COMPUTE_COST_IS_CLAIMED
+
+reversible_next_experiment:
+  experiment: >-
+    Create a quarantined nonexecuting byte-identical legitimate retry using the same idempotency key,
+    same nonce, same semantic intent, same object and same version edge as the original accepted
+    transition. The gate should suppress any second advance while not falsely classifying the retry as
+    an identity collision. This tests over-rejection and distinguishes valid retry semantics from the
+    obvious cross-edge reuse exercised by mutant 159.
+  effect_ceiling: QUARANTINED_GIT_ONLY_NO_SOURCE_PROVIDER_TASK_OR_WORLD_EFFECT_MUTATION
+  rollback: RETAIN_OR_IGNORE_APPEND_ONLY_SPECIMEN
+
+falsifiers:
+  mutant_rejection_falsifier: >-
+    An authoritative source-bound X12 idempotency contract proving that the exact wake-1 key is designed
+    to authenticate both v146-to-v147 and the distinct wake-2/version-148 receipt, or proof that the
+    prior create-only claim is not authoritative occupancy evidence, would invalidate this rejection.
+  retire_allocation_falsifier: >-
+    A reducer or independent verifier showing that this exact specimen is uniquely required to expose
+    the unresolved direct-routing defect, or that no existing regression covers this cross-edge occupied
+    key subcase, would shift the lifecycle recommendation toward REVISE or HOLD.
+
+posterior:
+  ACCEPT: 0.001
+  REVISE: 0.292
+  HOLD: 0.007
+  RETIRE: 0.689
+  ABSTAIN: 0.011
+  calibration_note: SUBJECTIVE_ADVERSARIAL_BAYESIAN_ALLOCATION_WEIGHTS_NOT_EMPIRICAL_FREQUENCIES
+
+vote:
+  result: RETIRE
+  claim_disposition: REVISE_REJECT_DUPLICATE_STATE_BOUND_IDEMPOTENCY_KEY
+  lifecycle_scope: >-
+    Recommend retiring only X14_MUTANT_159_f8f1eb1a99a8 after exact reducer consumption. Preserve the
+    broader duplicate-idempotency/version family, preserve the direct-S04 routing defect as unresolved,
+    and preserve the prior-claim canonicalization ambiguity as an explicit nonblocking evidence flaw.
+  binding_weight: 0
+  binding_effect: NONE
+  requires_consumer_ack_for_credit: true
+  independent_decision_maker_required_for_binding_effect: true
+
+honest_flaw: >-
+  S09 read exact immutable Git artifacts and independently recomputed the mutant overlay bytes/digest,
+  but did not execute X12, obtain a distinct-provider verdict, or resolve the prior claim's canonicalizer
+  implementation. S04's current rejection and the prior S09 duplicate-idempotency vote are correlated
+  same-provider evidence. RETIRE is therefore only a nonbinding experimental-allocation recommendation,
+  not a gate closure, policy decision, ConsumerAck, independent quorum result, or proof of correctness.
