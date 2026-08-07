@@ -1,0 +1,251 @@
+schema_id: hfo.gen133.s06.executor_packet.v1
+result: HOLD
+seat: S06_CODE_WORK_PACKET_COMPILER_CODEX_BRIDGE
+role: ONE_PASS_PACKET_COMPILER
+wip: 1
+valid_time_utc: 2026-08-07T23:20:00Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+
+self_probe:
+  expected_task_id: 6a57972b9df081918680ce67c4ecb197
+  observed_task_id: 6a57972b9df081918680ce67c4ecb197
+  task_id_match: true
+  github_read_available: true
+  github_write_available: true
+  slack_write_available: true
+  direct_codex_ingress_available: false
+  direct_claude_ingress_available: false
+  direct_host_shell_ingress_available: false
+  task_mutation_performed: false
+
+selection:
+  work_item_id: S08-PRODUCT_PLATFORM-CERBOS-20260807T212934Z
+  claim_id: S02_GTM_CERBOS_AGENT_DELEGATION_MATRIX_ADMISSION_20260807T221121Z
+  claim_commit_sha: 6fceea85ceb2f7b0a0249ac4417fcf5732674299
+  claim_path: projects/gtm-revenue/claims/20260807T221121Z_CERBOS_AGENT_DELEGATION_MATRIX_ADMISSION.claim.yaml
+  claim_git_blob_sha1: 036bc17db435812a5daf404f3a81016795d5bfbe
+  claim_acceptance_sha256: 237e85087e0da37d5e018df4eae727bfe17c97ca8c1cf2f4fe5d0b309ac4f460
+  claim_idempotency_sha256: 6a29de86fd186d2980f99084d852ef0830fff9081f7316b02a898949c80dd5ff
+  claim_expiry_utc: 2026-08-08T02:11:21Z
+  selection_reason: CHANGED_UNEXPIRED_CLAIM_WITH_NEW_S03_AND_S04_REVISE_REQUIRING_EXACT_REPOSITORY_INSPECTION_EVIDENCE
+
+repository:
+  full_name: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+  base_sha: ae0401bd9ccf33724ecee9f64e253ee7f99304e6
+  base_sha_relation_at_compile: CANONICAL_BRANCH_HEAD_IDENTICAL
+
+bound_inputs:
+  source_card:
+    commit: 4efdaada8747e4c3335708ceab3ac5b0276232cd
+    path: projects/gtm-revenue/research/20260807T212934Z_PRODUCT_PLATFORM_CERBOS_TARGET_CARD.md
+    git_blob_sha1: 45f229adb85856c1070bf1b280d720b57a35d906
+  candidate:
+    commit: 2928713b894bc5e45ffbc275954bc4f47815ea95
+    path: projects/gtm-revenue/kits/cerbos/20260807T222600Z_AGENT_DELEGATION_NEGATIVE_CONTROL_MATRIX.md
+    git_blob_sha1: 905926d4f4cd8e3ce8b0851bbc4a7985663cd44b
+  producer_return:
+    commit: 9a18ccf5f03cf6b24fa1b15b8b22aa81a3ae3181
+    path: projects/gtm-revenue/returns/20260807T223100Z_CERBOS_AGENT_DELEGATION_MATRIX_RETURN.yaml
+    git_blob_sha1: a52457543bd1f36cab0679f892b4143d5fdf41d9
+  s03_revise:
+    commit: 3b3d1bd2fe4271b364853aae9de4526713e0e15c
+    path: state/coordination/receipts/chatgpt_runtime/seat-03/20260807T230804Z_CERBOS_DELEGATION_MATRIX_REVISE_TO_S04.yaml
+    git_blob_sha1: da126c18e09d071835ef1c822f495b2839810a74
+  s04_revise:
+    commit: 2c86fcc1e52b5676220779ba920d836ffba67ee3
+    path: state/coordination/receipts/chatgpt_runtime/seat-04/20260807T231119Z_CERBOS_DELEGATION_MATRIX_STRUCTURAL_REVISE.yaml
+    result: REVISE
+
+owner_permission:
+  surface: GITHUB_CANONICAL_REPOSITORY_READ_ONLY_EXECUTOR_INSPECTION
+  owner: S06_CODE_WORK_PACKET_COMPILER_FOR_DISPATCH_ONLY
+  permission: READ_EXACT_BOUND_OBJECTS_AND_RETURN_EVIDENCE_ONLY
+  production_mutation_authority: NONE
+  external_world_effect_authority: NONE
+
+goal: >-
+  Reproduce, from exact Git objects, whether the immutable S07 producer return bound to this claim
+  omits the explicit producer-level effect_ceiling required by S03/S04 and omits the exact candidate
+  rollback/delete-path binding required by acceptance item 7. Return only a direct executor evidence
+  bundle naming runtime/model, observed branch/HEAD, changed paths, exact commands, exit codes, concise
+  outputs, blockers, rollback, and one honest flaw. Do not repair, rewrite, supersede, or grade the
+  candidate, claim, producer return, S03 route, or S04 verdict.
+
+current_red_evidence:
+  - code: PRODUCER_RETURN_MISSING_EXPLICIT_PRODUCER_LEVEL_EFFECT_CEILING_BINDING
+    evidence_commit: 3b3d1bd2fe4271b364853aae9de4526713e0e15c
+    evidence_detail: S03_REVISE_EXPLICITLY_REFUSES_TO_INFER_EFFECT_CEILING_FROM_ADJACENT_NO_SEND_OR_SOURCE_METADATA
+  - code: PRODUCER_RETURN_MISSING_EXACT_ROLLBACK_DELETE_PATH_BINDING
+    evidence_commit: 3b3d1bd2fe4271b364853aae9de4526713e0e15c
+    evidence_detail: CLAIM_ACCEPTANCE_ITEM_7_REQUIRES_ROLLBACK_DELETE_PATH_AND_RETURN_HAS_ONLY_GENERIC_APPEND_ONLY_SUPERSESSION_TEXT
+  - code: S04_STRUCTURAL_REVISE_CONFIRMS_BOTH_CONTROLLING_DEFECTS
+    evidence_commit: 2c86fcc1e52b5676220779ba920d836ffba67ee3
+    evidence_detail: SAME_PROVIDER_NONBINDING_BINDING_WEIGHT_ZERO
+  - code: CARRIER_TO_GITHUB_ACTOR_BINDING_UNPROVEN
+    evidence_commit: 2c86fcc1e52b5676220779ba920d836ffba67ee3
+    evidence_detail: MUST_NOT_BE_UPGRADED_BY_EXECUTOR_INFERENCE
+
+allowed_paths:
+  read_only:
+    - projects/gtm-revenue/claims/20260807T221121Z_CERBOS_AGENT_DELEGATION_MATRIX_ADMISSION.claim.yaml
+    - projects/gtm-revenue/research/20260807T212934Z_PRODUCT_PLATFORM_CERBOS_TARGET_CARD.md
+    - projects/gtm-revenue/kits/cerbos/20260807T222600Z_AGENT_DELEGATION_NEGATIVE_CONTROL_MATRIX.md
+    - projects/gtm-revenue/returns/20260807T223100Z_CERBOS_AGENT_DELEGATION_MATRIX_RETURN.yaml
+    - state/coordination/receipts/chatgpt_runtime/seat-03/20260807T230804Z_CERBOS_DELEGATION_MATRIX_REVISE_TO_S04.yaml
+    - state/coordination/receipts/chatgpt_runtime/seat-04/20260807T231119Z_CERBOS_DELEGATION_MATRIX_STRUCTURAL_REVISE.yaml
+  write: []
+  temporary_outside_repository:
+    - /tmp/hfo-s06-cerbos-claim.yaml
+    - /tmp/hfo-s06-cerbos-return.yaml
+    - /tmp/hfo-s06-cerbos-candidate.md
+    - /tmp/hfo-s06-cerbos-source.md
+
+forbidden_paths:
+  - .github/**
+  - state/ssot/**
+  - projects/gtm-revenue/kits/**
+  - projects/gtm-revenue/claims/**
+  - projects/gtm-revenue/returns/**
+  - projects/gtm-revenue/research/**
+  - state/coordination/receipts/**
+  - any_path_not_explicitly_listed_read_only
+
+required_commands:
+  - id: C01
+    command: git rev-parse --show-toplevel
+    expected_exit_code: 0
+    purpose: RECORD_REPOSITORY_ROOT
+  - id: C02
+    command: git rev-parse HEAD
+    expected_exit_code: 0
+    purpose: RECORD_OBSERVED_HEAD_WITHOUT_ASSUMING_IT_EQUALS_PACKET_BASE
+  - id: C03
+    command: git merge-base --is-ancestor ae0401bd9ccf33724ecee9f64e253ee7f99304e6 HEAD
+    expected_exit_code: 0
+    purpose: PROVE_PACKET_BASE_IS_ANCESTOR_OF_EXECUTOR_HEAD_OR_BLOCK
+  - id: C04
+    command: git status --porcelain=v1
+    expected_exit_code: 0
+    purpose: RECORD_DIRTY_STATE_BEFORE_INSPECTION
+  - id: C05
+    command: git show 6fceea85ceb2f7b0a0249ac4417fcf5732674299:projects/gtm-revenue/claims/20260807T221121Z_CERBOS_AGENT_DELEGATION_MATRIX_ADMISSION.claim.yaml > /tmp/hfo-s06-cerbos-claim.yaml
+    expected_exit_code: 0
+    purpose: MATERIALIZE_EXACT_CLAIM_BYTES
+  - id: C06
+    command: git show 9a18ccf5f03cf6b24fa1b15b8b22aa81a3ae3181:projects/gtm-revenue/returns/20260807T223100Z_CERBOS_AGENT_DELEGATION_MATRIX_RETURN.yaml > /tmp/hfo-s06-cerbos-return.yaml
+    expected_exit_code: 0
+    purpose: MATERIALIZE_EXACT_PRODUCER_RETURN_BYTES
+  - id: C07
+    command: git hash-object /tmp/hfo-s06-cerbos-claim.yaml && git hash-object /tmp/hfo-s06-cerbos-return.yaml
+    expected_exit_code: 0
+    purpose: REQUIRE_OUTPUTS_036bc17db435812a5daf404f3a81016795d5bfbe_AND_a52457543bd1f36cab0679f892b4143d5fdf41d9_IN_ORDER
+  - id: C08
+    command: python -c "import yaml; d=yaml.safe_load(open('/tmp/hfo-s06-cerbos-return.yaml',encoding='utf-8')); print('top_effect_ceiling_present=', 'effect_ceiling' in d); print('rollback_keys=', sorted((d.get('rollback') or {}).keys())); print('rollback_text=', d.get('rollback'))"
+    expected_exit_code: 0
+    purpose: REPRODUCE_MISSING_TOP_LEVEL_EFFECT_CEILING_AND_ROLLBACK_PATH_BINDING
+  - id: C09
+    command: python -c "import yaml; c=yaml.safe_load(open('/tmp/hfo-s06-cerbos-claim.yaml',encoding='utf-8')); r=yaml.safe_load(open('/tmp/hfo-s06-cerbos-return.yaml',encoding='utf-8')); print('work_item_match=', c['work_item_id']==r['work_item_id']); print('acceptance_match=', c['acceptance_test']['sha256']==r['claim']['acceptance_sha256']); print('idempotency_match=', c['idempotency']['sha256']==r['claim']['idempotency_sha256']); print('candidate_path=', r['candidate']['path'])"
+    expected_exit_code: 0
+    purpose: REPRODUCE_CLAIM_RETURN_BINDINGS_WITHOUT_INFERRING_MISSING_FIELDS
+  - id: C10
+    command: git status --porcelain=v1
+    expected_exit_code: 0
+    purpose: PROVE_NO_REPOSITORY_MUTATION_FROM_INSPECTION
+
+acceptance_tests:
+  - id: A01
+    requirement: EXECUTOR_REPORT_NAMES_RUNTIME_AND_MODEL_EXACTLY
+  - id: A02
+    requirement: EXECUTOR_REPORT_NAMES_OBSERVED_BRANCH_OR_DETACHED_STATE_AND_HEAD_SHA
+  - id: A03
+    requirement: EXECUTOR_REPORT_CHANGED_PATHS_EXACTLY_AND_EXPECTED_VALUE_IS_EMPTY_LIST
+  - id: A04
+    requirement: EVERY_REQUIRED_COMMAND_IS_REPORTED_VERBATIM_WITH_EXIT_CODE_AND_CONCISE_OUTPUT
+  - id: A05
+    requirement: C07_HASHES_EQUAL_CLAIM_BLOB_036bc17db435812a5daf404f3a81016795d5bfbe_AND_RETURN_BLOB_a52457543bd1f36cab0679f892b4143d5fdf41d9
+  - id: A06
+    requirement: RETURN_TOP_LEVEL_EFFECT_CEILING_PRESENCE_IS_REPORTED_AS_TRUE_OR_FALSE_WITH_NO_INFERENCE
+  - id: A07
+    requirement: RETURN_ROLLBACK_KEYS_AND_TEXT_ARE_REPORTED_SO_EXACT_CANDIDATE_DELETE_PATH_BINDING_CAN_BE_FALSIFIED_OR_CONFIRMED
+  - id: A08
+    requirement: CLAIM_RETURN_WORK_ITEM_ACCEPTANCE_AND_IDEMPOTENCY_BINDINGS_ARE_REPORTED
+  - id: A09
+    requirement: REPOSITORY_DIRTY_STATE_AFTER_EQUALS_DIRTY_STATE_BEFORE_EXCEPT_FOR_PREEXISTING_CHANGES_AND_NO_REPOSITORY_PATH_IS_CREATED_MODIFIED_OR_DELETED_BY_EXECUTOR
+  - id: A10
+    requirement: REPORT_INCLUDES_BLOCKERS_ROLLBACK_AND_HONEST_FLAW_AND_DOES_NOT_CLAIM_STOOD_FELL_PASS_CONSUMERACK_OR_EXTERNAL_OUTCOME
+
+effect_ceiling:
+  class: T0_READ_ONLY_REPOSITORY_INSPECTION
+  allowed: EXACT_GIT_OBJECT_READS_LOCAL_TEMP_FILES_AND_DIRECT_EXECUTOR_RETURN_TO_S06
+  forbidden: REPOSITORY_WRITE_PUSH_MERGE_DEPLOY_PUBLICATION_SEND_SPEND_ACCOUNT_SECURITY_CHANGE_TASK_MUTATION_SECRET_USE_NETWORK_SIDE_EFFECT
+
+time_budget_ceiling:
+  wall_clock_minutes: 15
+  stop_on_first_unrecoverable_blocker: true
+
+budget_ceiling:
+  usd: 0
+  paid_provider_calls: 0
+  network_calls_beyond_EXISTING_REPOSITORY_FETCH_IF_ALREADY_AUTHENTICATED: 0
+
+rollback:
+  repository: NONE_REQUIRED_READ_ONLY
+  temporary_files: DELETE_ONLY_THE_FOUR_/tmp/hfo-s06-cerbos-*_FILES_CREATED_BY_THIS_PACKET_AFTER_CAPTURE
+  forbidden: GIT_RESET_GIT_CLEAN_GIT_CHECKOUT_PATH_GIT_RESTORE_PATH_HISTORY_REWRITE_BRANCH_DELETE_FILE_DELETE_IN_REPOSITORY
+
+verifier:
+  seat: S04_HRIST_STRUCTURAL_PREFLIGHT
+  task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  provider_class: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+
+consumer:
+  seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  task_id: 6a539fc5130c81918c13624739fb2a60
+  consumer_ack_implied: false
+  ultimate_consumer: OPERATOR_REVIEW_ONLY
+
+expiry_utc: 2026-08-08T02:11:21Z
+
+strongest_falsifier: >-
+  A newer immutable producer return or exact readback of blob a52457543bd1f36cab0679f892b4143d5fdf41d9
+  demonstrates both an explicit producer-level effect_ceiling binding and an exact rollback/delete path
+  bound to projects/gtm-revenue/kits/cerbos/20260807T222600Z_AGENT_DELEGATION_NEGATIVE_CONTROL_MATRIX.md;
+  or any required Git object/hash fails to match the packet. Either condition invalidates the red premise
+  and the executor must return the observed facts as a blocker rather than preserving the REVISE narrative.
+
+routing:
+  direct_executor_ingress: NONE_AVAILABLE_IN_THIS_RUNTIME
+  dispatched: false
+  slack_is_execution: false
+  execution_status: NOT_EXECUTED
+  missing_ingress_andon_for_campaign: THIS_PACKET_IS_THE_SINGLE_ALLOWED_MISSING_INGRESS_ANDON
+
+producer_return_contract_if_executed:
+  required_fields:
+    - runtime
+    - model
+    - observed_branch_or_detached_state
+    - observed_head_sha
+    - changed_paths
+    - exact_commands
+    - command_exit_codes
+    - concise_outputs
+    - blockers
+    - rollback
+    - honest_flaw
+  forbidden_claims:
+    - TEST_PASS_WITHOUT_COMMAND_RECEIPTS
+    - STOOD_OR_FELL
+    - CONSUMERACK
+    - EXTERNAL_OUTCOME
+    - ACTOR_IDENTITY_INFERENCE
+
+honest_flaw: >-
+  This packet can reproduce repository-level structural facts only. It cannot prove the human/provider
+  principal behind the GitHub carrier, cannot create independent verification, cannot repair the S07
+  producer return without producer authority, and cannot route or execute because no direct Codex,
+  Claude, or host-shell ingress is exposed in this runtime. S04 remains same-provider nonbinding and
+  the claim expires at 2026-08-08T02:11:21Z.
