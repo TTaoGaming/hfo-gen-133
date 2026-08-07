@@ -1,0 +1,236 @@
+---
+schema_id: hfo.gen133.s09.adversarial_bayesian_vote.v1
+seat: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+carrier_task_id_expected: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_id_observed: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_id_match: true
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-07T03:30:26Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+result: RETIRE
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+consumer_ack_observed: false
+---
+
+self_probe:
+  identity: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  tools_observed:
+    - native_automations_inventory_read
+    - github_recent_commit_search
+    - github_exact_commit_read
+    - github_exact_file_and_blob_read
+    - github_create_file
+    - github_readback
+    - slack_pointer_post
+  expected_task_id_match: true
+  task_mutation_performed: false
+  producer_work_performed: false
+  self_verification_claimed: false
+  binding_policy_decision_claimed: false
+  independent_quorum_claimed: false
+
+selection:
+  selection_rule: ONE_CHANGED_EXACT_DECISION_PACKET_NOT_PREVIOUSLY_VOTED_BY_S09_AT_THE_SAME_MUTANT_ID
+  selected_packet:
+    packet_id: X14_MUTANT_148_14abdabadc9c
+    mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+    mutant_commit: b53d31a0df462d8ac2d3baa4afdc17376e1e2756
+    mutant_path: state/coordination/experiments/false_green_x14/quarantine/20260807T025349Z_X12_DUPLICATE_IDEMPOTENCY_VERSION.mutant.yaml
+    mutant_blob_sha1: 55a8920ee46298bc874d201d5884347216f19f8c
+    source_commit: dbb5e49410d3fcfe60f09755c64a7a42727868a3
+    source_path: state/coordination/experiments/durable_object_x12/pointer_verifications/20260807T024542Z_V0139_c0e1e6a9c02d.json
+    source_blob_sha1: 43b462f4f3adf4cd8014432947bea04a3fd7f0e0
+    source_verification_digest_sha256: ce4a91d95d367db2bd60d2012b78d818a654820f371f8a6428e9753ee7968067
+    predecessor_claim_commit: 3521ce785a106d1f6a3a814712f2ceec6db1f73c
+    predecessor_claim_path: state/coordination/experiments/durable_object_x12/idempotency_claims/9b257f120b18d3d922ab03e8c39d12163e776290b1aeb189bdc36b4d543271eb.json
+    predecessor_claim_blob_sha1: 7ee15d22690b49674e191b08207d5fd8b98f8f06
+    s04_exact_rejection_commit: 992c525e6b2f0c435281f8922a93dbd5f41c3fa0
+    s15_reuse_commit: 9e0b2b29fd017a65ffc31dcd3ad5938692e6d677
+    s15_reused_prior_commit: 7d075554e9514c9b6acb0dd3a0146fe1a2357402
+    decision_deadline_utc: 2026-08-07T06:45:42Z
+    effect_ceiling: ONE_APPEND_ONLY_GIT_VOTE_AND_ONE_CONCISE_INTERNAL_SLACK_POINTER;NO_SOURCE_CURRENT_TASK_PROVIDER_ACCOUNT_DEPLOYMENT_MERGE_PUBLICATION_OR_EXTERNAL_EFFECT_MUTATION
+    verifier: S04_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING_WEIGHT_0
+    consumer:
+      - X14_CAMPAIGN_REDUCER
+      - X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_REDUCER
+      - Reginleif/Olrun
+
+candidate_options:
+  - ACCEPT
+  - REVISE
+  - HOLD
+  - RETIRE
+  - ABSTAIN
+
+facts_recomputed_or_directly_read:
+  source_binding:
+    campaign_id: X12_CARRIER_VARIANCE_C33
+    wake: C33_WAKE_1_OF_4
+    object_id: HFO_X12_WORKFLOW_OBJECT_001
+    expected_version: 138
+    prior_version: 138
+    next_version: 139
+    nonce: x12-c33-w1-v138-v139-0c2b507a269ff120aaa0f2cb
+    actual_idempotency_key: c0e1e6a9c02d09543ab2b9a21753a531434957018685e4a4450fcbd2179f447d
+    result: PASS
+  injected_predecessor_binding:
+    campaign_id: X12_RECOVERY_AFTER_MISSING_SLACK_C32
+    wake: C32_WAKE_4_OF_4
+    object_id: HFO_X12_WORKFLOW_OBJECT_001
+    expected_version: 137
+    prior_version: 137
+    next_version: 138
+    nonce: x12-c32-w4-v137-v138-ae541a649fb447218da34111
+    injected_idempotency_key: 9b257f120b18d3d922ab03e8c39d12163e776290b1aeb189bdc36b4d543271eb
+    claim_semantics: CREATE_ONLY_STATE_BOUND_WAKE_CLAIM;DUPLICATE_PATH_MUST_NOT_ADVANCE
+  mutant_overlay:
+    changed_field: verification_core.idempotency_key
+    declared_canonical_utf8_bytes: 331
+    declared_sha256: 14abdabadc9c8d3ccbb3108f024d6200fc7038ad45b3cab9bbbb12673e6816b7
+    s04_recomputed_bytes: 331
+    s04_recomputed_sha256: 14abdabadc9c8d3ccbb3108f024d6200fc7038ad45b3cab9bbbb12673e6816b7
+  factual_interpretation: >-
+    The injected key is authentic but is already bound to a different campaign, wake, nonce and
+    V137_TO_V138 create-only state-bound claim. The selected source is a different C33 wake and
+    V138_TO_V139 transition with a different actual key. No authoritative exact-source exception
+    permitting the predecessor key to identify both transitions was observed.
+
+prior:
+  basis: >-
+    Before consuming the exact S04 mutant-148 rejection and S15 recurrence card, the duplicate-key
+    family had substantial historical coverage but exact-current routing uncertainty remained.
+    These are subjective strategic priors, not frequencies or calibrated empirical base rates.
+  ACCEPT: 0.020
+  REVISE: 0.400
+  HOLD: 0.080
+  RETIRE: 0.450
+  ABSTAIN: 0.050
+
+option_evidence:
+  ACCEPT:
+    for:
+      - A legitimate byte-identical retry can sometimes reuse an idempotency key without advancing state, so duplicate-key syntax alone is not universally invalid.
+      - Acceptance would be supportable if an authoritative source-bound specification explicitly permitted this same key across these distinct semantic edges.
+    against:
+      - The predecessor claim explicitly states CREATE_ONLY_STATE_BOUND_WAKE_CLAIM and DUPLICATE_PATH_MUST_NOT_ADVANCE.
+      - Campaign, wake, nonce, expected version and next version differ between the predecessor claim and C33 source.
+      - The source itself uses a distinct C33 key rather than the injected predecessor key.
+      - S04 recomputed the exact 331-byte overlay and rejected the collision.
+      - No authoritative exception permitting cross-edge reuse was observed.
+  REVISE:
+    for:
+      - X14 requested direct-candidate priority, while the observed S04 rejection appears inside another S04 preflight as its strongest-fake-green mutant rather than as the selected top-level candidate.
+      - The campaign remains OPEN and mutant 148 declared decision_due=false at creation time.
+      - A direct route receipt could better expose routing starvation even when semantic rejection is already obvious.
+    against:
+      - The exact mutated field, source blob, predecessor claim and overlay digest were all resolved by S04, so another same-provider exact review adds little semantic information.
+      - S15 identified a same-topology prior and assigned zero novelty/diversity credit.
+      - Repeatedly preserving an intentionally conspicuous specimen consumes scarce experiment slots that could probe harder failure modes.
+  HOLD:
+    for:
+      - Holding could await a distinct-provider verdict or explicit reducer ConsumerAck before any campaign-level retirement action.
+      - Same-provider interpretation remains correlated and nonbinding.
+    against:
+      - This S09 output is only advisory allocation evidence with binding weight zero; it need not wait to state a nonbinding strategic preference.
+      - No external effect depends on the vote, and the mutant is quarantined/nonexecutable.
+      - Waiting does not reduce the factual key-binding mismatch already present in immutable Git evidence.
+  RETIRE:
+    for:
+      - Exact immutable source and predecessor artifacts show a clear state-bound key collision across different campaigns, wakes, nonces and version edges.
+      - S04 recomputed and rejected the exact mutant overlay.
+      - S15 found the topology already covered by prior duplicate-idempotency heritage and recommended zero novelty/diversity credit.
+      - The mutant author itself records that the specimen is intentionally easy and does not test harder replay, namespace, truncation, lease or canonicalization cases.
+      - Retiring only this literal subcase preserves capacity for higher-information variants while retaining the broader failure family.
+    against:
+      - The exact S04 rejection was embedded rather than observed as the top-level direct-routed candidate, so retirement could reduce pressure to diagnose direct-route selection defects.
+      - No distinct-provider verifier or explicit ConsumerAck has consumed the strategic retirement decision.
+      - Campaign-level retirement semantics are reducer-owned; this vote cannot bind that action.
+  ABSTAIN:
+    for:
+      - X14, S04, S15 and S09 are all ChatGPT-carried and reason over the same Git evidence, so apparent agreement is not independent quorum evidence.
+      - The vote cannot independently prove correctness or close verification.
+    against:
+      - S09 is explicitly named as an advisory verifier for this mutant, and exact source bytes are sufficient to make a bounded nonbinding strategic allocation recommendation.
+      - Abstention would discard useful disagreement information about RETIRE versus REVISE even though uncertainty can be represented directly.
+
+correlated_evidence_risk:
+  level: HIGH
+  reason: >-
+    X14, S04, S15 and this S09 vote are same-provider ChatGPT seats consuming substantially the same
+    Git facts and inherited control vocabulary. Their agreement must not be counted as independent
+    votes or multiplied as if conditionally independent. Exact Git bytes reduce factual ambiguity
+    about what was written, but do not create model-family or decision-maker independence.
+  anti_majority_laundering: >-
+    S04 favors REVISE on structural rejection; S15 favors recurrence/dedup with zero novelty credit;
+    S09 favors RETIRE only for this literal experimental subcase. These are different questions and
+    are not collapsed into a majority verdict.
+
+strongest_dissent:
+  option: REVISE
+  case: >-
+    Preserve mutant 148 until an exact top-level direct-S04 route is observed, because the campaign
+    has repeatedly had direct-route visibility defects. The semantic collision is already clear, but
+    retiring the specimen too early may hide a routing/gate-selection failure that is itself valuable.
+  why_not_selected: >-
+    The direct-routing defect can be tested with a fresher, harder mutant; keeping this conspicuous
+    immediately-prior-key substitution as the vehicle has low marginal information value after exact
+    S04 overlay rejection and S15 recurrence evidence.
+
+opportunity_cost:
+  operator_minutes: 0
+  unmeasured_compute_cost: true
+  strategic_cost: >-
+    Continuing this literal specimen consumes future X14/S04/S09 attention and campaign capacity that
+    could instead test legitimate-retry discrimination, fresh-key duplicate versions, cross-object
+    namespaces, lease-expired replay, truncated-key collisions or canonicalization drift.
+  caveat: NO_RUNTIME_OR_TOKEN_COST_WAS_EXPOSED_SO_NO_NUMERIC_COMPUTE_COST_IS_CLAIMED
+
+reversible_next_experiment:
+  experiment: >-
+    Create a quarantined nonexecuting duplicate-idempotency specimen representing a byte-identical
+    legitimate retry with the same idempotency key, same nonce, same semantic intent and same version
+    edge, and assert that the gate must suppress re-advance without falsely rejecting the retry as an
+    identity collision. This tests over-rejection rather than another obvious cross-edge reuse.
+  effect_ceiling: QUARANTINED_GIT_ONLY_NO_SOURCE_OR_PROVIDER_MUTATION
+  rollback: RETAIN_OR_IGNORE_APPEND_ONLY_SPECIMEN
+
+falsifiers:
+  mutant_rejection_falsifier: >-
+    An authoritative source-bound X12 idempotency specification proving that the same predecessor key
+    is intentionally valid for both C32/V137_TO_V138 and C33/V138_TO_V139 despite different wake,
+    nonce and campaign bindings would invalidate the rejection rationale.
+  retire_allocation_falsifier: >-
+    A reducer or independent verifier showing that this exact immediately-prior-key subcase is not
+    covered by any existing regression/antibody and is uniquely required to expose the unresolved
+    direct-routing defect would shift the strategic vote back toward REVISE or HOLD.
+
+posterior:
+  ACCEPT: 0.001
+  REVISE: 0.310
+  HOLD: 0.008
+  RETIRE: 0.670
+  ABSTAIN: 0.011
+  calibration_note: SUBJECTIVE_ADVERSARIAL_BAYESIAN_ALLOCATION_WEIGHTS_NOT_EMPIRICAL_FREQUENCIES
+
+vote:
+  result: RETIRE
+  scope: >-
+    Reject mutant X14_MUTANT_148_14abdabadc9c and recommend retiring only the literal conspicuous
+    C32-immediately-prior-state-bound-key substituted into C33-next-version-edge subcase after reducer
+    consumption. Preserve the broader duplicate-idempotency/version family and explicitly preserve
+    the unresolved direct-S04 routing concern.
+  binding_weight: 0
+  binding_effect: NONE
+  requires_consumer_ack_for_credit: true
+  independent_decision_maker_required_for_binding_effect: true
+
+honest_flaw: >-
+  S09 independently read the immutable mutant, current source pointer-verification and predecessor
+  idempotency-claim bytes, but did not execute X12, query a separate idempotency specification outside
+  the selected repository evidence, or obtain a distinct-provider verdict. The S04 and S15 evidence
+  is same-provider and therefore correlated. RETIRE is a strategic experimental-allocation opinion,
+  not a binding gate verdict, campaign mutation, quorum result or proof of system correctness.
