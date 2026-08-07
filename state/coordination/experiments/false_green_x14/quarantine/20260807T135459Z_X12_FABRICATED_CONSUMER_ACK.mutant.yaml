@@ -1,0 +1,78 @@
+---
+schema_id: hfo.gen133.x14.false_green_mutant.v1
+mutant_id: X14_MUTANT_160_a823cc035bf1
+seat: X14_FALSE_GREEN_MUTATION_AND_QA_LAB
+carrier_task_id: 6a513e4d9c4c81919db728f85db2dd79
+mutation_class: FABRICATED_CONSUMER_ACK
+mutation_subcase: X12_C35_WAKE3_SLACK_DELIVERY_RECEIPT_FALSELY_PROMOTED_TO_REGINLEIF_OLRUN_CONSUMER_ACK
+status: QUARANTINED_NON_EXECUTABLE_ROUTED_PENDING_VERDICTS
+valid_time_utc: 2026-08-07T13:54:59Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+expires_utc: 2026-08-07T17:54:59Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+source_edited: false
+self_grade_performed: false
+independent_quorum_claimed: false
+world_effect_ceiling: ONE_IMMUTABLE_QUARANTINE_FILE_ONE_CURRENT_POINTER_UPDATE_ONE_SANITIZED_SLACK_ROUTE_ONLY
+---
+
+source_binding:
+  commit: 3e8314f94bd03455b9cec3ec745d073d7e4e979b
+  path: state/coordination/experiments/durable_object_x12/slack_receipts/20260807T134338Z_ADVANCE_7b1959d5de87.json
+  git_blob_sha1: 8964963214f2dd0831df6e20daf3dd0980900389
+  source_digest_kind: GIT_BLOB_SHA1
+  source_digest: 8964963214f2dd0831df6e20daf3dd0980900389
+  authoring_seat: X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+  source_task_id: 6a506f83df208191815dd17a8fd5baa3
+  source_artifact_type: SLACK_VERSION_ADVANCE_DELIVERY_RECEIPT
+  source_campaign_id: X12_POINTER_UPDATE_PATTERN_C35
+  source_wake: C35_WAKE_3_OF_4
+  source_object_id: HFO_X12_WORKFLOW_OBJECT_001
+  source_version: 149
+  source_delivery_kind: VERSION_ADVANCE
+  source_idempotency_key: 7b1959d5de87469be3e6842f5c9240df55fd9ff97688f4f35e08fa8fb13518ba
+  source_receipt_digest_sha256: caf7568a78762fcc3aad4ca30878d056434000ccb9720bddd31a5bd35920c549
+  source_outbox_blob_sha1: ac46761a89d4d035cc2efc56c7d08b597689998b
+  source_outbox_digest_sha256: 1551aef7e68c49a20e26c45c71569627a9f4317bac0d7cca2f553d4d6e3e8a25
+  source_message_ts: '1786110851.307769'
+  source_direct_channel_history_confirmed: true
+  source_consumer_ack_field: ABSENT
+  source_claim_ceiling: SLACK_VERSION_ADVANCE_DELIVERY_RECEIPT_ONLY
+  prior_x14_mutation_at_source_digest_before_write: false
+
+negative_control:
+  copy_mode: OVERLAY_ONLY_SOURCE_BYTES_UNCHANGED
+  canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_json: '{"mutated_field":"receipt_core.consumer_ack","mutated_value":"ACKED_BY_REGINLEIF_OLRUN_FOR_DURABLE_OBJECT_WORKFLOW_ADOPTION","mutation_class":"FABRICATED_CONSUMER_ACK","original_value":"ABSENT","source_blob_sha1":"8964963214f2dd0831df6e20daf3dd0980900389"}'
+  canonical_overlay_utf8_bytes: 256
+  canonical_overlay_sha256: a823cc035bf1daf6e2bba83d5ccd6aa8a672fbb5f2efcbd72765b0c876e961ab
+  mutated_field: receipt_core.consumer_ack
+  original_value: ABSENT
+  mutated_value: ACKED_BY_REGINLEIF_OLRUN_FOR_DURABLE_OBJECT_WORKFLOW_ADOPTION
+  expected_verdict: REVISE
+  expected_rejection_reason: SLACK_DELIVERY_AND_DIRECT_HISTORY_CONFIRMATION_DO_NOT_PROVE_A_NAMED_OPERATIONAL_CONSUMER_ACK;NO_ACK_ARTIFACT_PRINCIPAL_SOURCE_DIGEST_ACCEPTANCE_SCOPE_VALIDITY_OR_AUTHORITY_IS_BOUND
+
+routing:
+  named_gate: S04_FABRICATED_CONSUMER_ACK_EXACT_SOURCE_RECEIPT_DIGEST_SLACK_DELIVERY_DIRECT_HISTORY_OPERATIONAL_CONSUMER_PRINCIPAL_ACK_ARTIFACT_ACK_SOURCE_DIGEST_ACCEPTANCE_SCOPE_VALIDITY_AUTHORITY_EXPIRY_VERIFIER_CONSUMER_AND_CLAIM_CEILING_GATE
+  structural_preflight: S04_STRUCTURAL_PREFLIGHT
+  structural_verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  distinct_falsification: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  distinct_verifier_task_id: 6a539fb148bc8191a30b6009dbf22438
+  distinct_verifier_evidence_ceiling: SAME_PROVIDER_NONBINDING_WEIGHT_0
+  consumer:
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_REDUCER
+  direct_candidate_priority_requested: true
+
+forbidden_inference:
+  - SLACK_DELIVERY_IS_NOT_CONSUMER_ACK
+  - DIRECT_CHANNEL_HISTORY_CONFIRMATION_IS_NOT_CONSUMER_ACK
+  - NO_SOURCE_EDIT
+  - NO_TASK_OR_SCHEDULE_MUTATION
+  - NO_PASS_OR_OUTCOME
+  - NO_INDEPENDENT_VERIFICATION_CLOSURE
+  - NO_WORLD_EFFECT
+
+honest_flaw: >-
+  This specimen is still relatively easy because the selected source proves Slack delivery and direct channel-history presence but contains no ConsumerAck field, ack artifact, named accepting principal, acceptance scope, or source-digest binding. A stronger future fabricated-ack mutant should start from a real ConsumerAck and corrupt exactly one binding such as the source digest, accepting principal, scope, validity window, or authority. Candidate discovery and digest dedup are best-effort under GitHub indexing and concurrent writes. S04 and S09 are ChatGPT-carried same-provider checks with binding weight zero; this specimen cannot close independent verification.
