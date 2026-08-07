@@ -1,0 +1,85 @@
+schema_id: hfo.gen133.s03.verification_route.v2
+result: REVISE
+seat: S03
+role: REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+carrier_task_id_expected: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_observed: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_match: true
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+correlation_id: X13_SLACK_PUBLIC_SEARCH_READONLY_014_PHASE2_20260807T064801Z
+terminal_receipt: false
+valid_time_utc: 2026-08-07T07:10:02Z
+expiry_utc: 2026-08-14T07:10:02Z
+
+selection:
+  changed_source_commit: 10c4b370570163f4eddb636876a9820ed896d866
+  source_path: state/coordination/experiments/cots_connector_x13/20260807T064801Z_SLACK_PUBLIC_SEARCH_PHASE2.md
+  source_git_blob_sha1: 27c275daeffee01cabeb9261d712a85023c79c95
+  source_phase: 2_of_4
+  source_status: PHASE2_ACCEPTED_WITH_GATES
+  source_provisional_decision: ADOPT_WITH_GATES_CATALOG_ONLY
+  source_review_expiry_utc: 2026-08-14T06:48:01Z
+  prior_s03_phase1_route_commit: c457c07b618bebbe3757e38282bd6727eb11e0e0
+  prior_s04_phase1_preflight_commit: 83b7aa8236d9e623ebd42988caa1eb6445de12d2
+
+observed_claim_ceiling:
+  request_sha256: 2d02b6d67358c8db48793322c05dee668ac7bce6a1418346da346b5a9d88105c
+  phase1_request_digest_match: true
+  phase2_normalized_result_sha256: adba6bdc5a9b3e2032f1d5e1f361279865f6ade600e8a63f76a983541ccf25c1
+  phase1_normalized_result_sha256: 13934babbacd5fb3c3b438516638fe4cb49332ebfda335487a49c8d60a8dad49
+  ordered_result_digest_match_phase1: false
+  measured_fact: IDENTICAL_BOUNDED_REQUEST_RETURNED_THREE_CONTENT_HYDRATING_RESULTS_WITH_CURSOR_BUT_ORDERED_RESULT_DIGEST_CHANGED_FROM_PHASE1
+  allowed_interpretation: NEWEST_FIRST_PUBLIC_SLACK_SEARCH_IS_A_MUTABLE_DISCOVERY_SURFACE_NOT_A_REPLAYABLE_SNAPSHOT_ON_A_MUTABLE_CORPUS
+  forbidden_inference: RESULT_VARIANCE_ALONE_DOES_NOT_ESTABLISH_PROVIDER_INSTABILITY_COMPLETENESS_EFFECTIVE_AUTHORIZATION_OR_RAW_PROVIDER_PARITY
+
+producer_return_gate:
+  real_workitem_bound_producer_return: false
+  workitem_id: missing
+  claim_digest: missing
+  acceptance_digest: missing
+  canonical_producer_return_digest: missing
+  exact_result_preimage_or_distinct_source_system_digest_witness: missing
+  effective_principal_and_scopes: unknown
+  return_level_effect_ceiling: missing
+  return_level_expiry: missing
+  return_level_rollback: missing
+  commands_and_exit_codes: not_applicable_to_catalog_connector_read_but_no_equivalent_provider_request_id_or_raw_provider_receipt_is_bound
+  honest_flaw_present_in_source: true
+  revise_reason: CATALOG_REPLAY_EVIDENCE_IS_NOT_PROMOTABLE_TO_A_REAL_WORKITEM_BOUND_PRODUCER_RETURN
+
+verifier_gate:
+  addressed_to: S04_HRIST_STRUCTURAL_PREFLIGHT
+  target_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  verification_class: SAME_PROVIDER_NONBINDING_PREFLIGHT
+  binding_weight: 0
+  consume_only: STOOD_OR_FELL_TIED_TO_CANONICAL_PRODUCER_RETURN_DIGEST
+  digest_bound_stood_or_fell_observed: false
+  independent_verification_closed: false
+  requested_check: RECOMPUTE_ROUTE_CANONICALIZATION_AND_SOURCE_POINTER_BINDING; CONFIRM_PHASE2_REPLAY_CLAIM_CEILING; DO_NOT_PROMOTE_CATALOG_EVIDENCE; RETURN_REVISE_UNLESS_A_REAL_WORKITEM_PRODUCER_DIGEST_AND_DISTINCT_WITNESS_EXIST
+
+consumer_gate:
+  catalog_consumer: HFO_COTS_CAPABILITY_INVENTORY
+  operational_consumer: NOT_ASSIGNED
+  explicit_named_consumerack: absent
+  implicit_consumerack_forbidden: true
+  terminal_closure_allowed: false
+
+route_authority:
+  effect_ceiling: GIT_APPEND_ONLY_INTERNAL_VERIFICATION_ROUTE_PLUS_ONE_REQUIRED_SLACK_POINTER
+  rollback: APPEND_ONLY_SUPERSESSION_DO_NOT_DELETE
+  task_mutation: forbidden
+  producer_impersonation: forbidden
+  self_verification: forbidden
+  merge_deploy_publish_send_spend_account_security_change_permanent_delete: forbidden
+
+route_canonicalization:
+  algorithm: UTF8_JSON_SORTED_KEYS_COMPACT_V1
+  canonical_preimage: '{"binding_weight":0,"correlation_id":"X13_SLACK_PUBLIC_SEARCH_READONLY_014_PHASE2_20260807T064801Z","result":"REVISE","source_blob_sha1":"27c275daeffee01cabeb9261d712a85023c79c95","source_commit":"10c4b370570163f4eddb636876a9820ed896d866","source_path":"state/coordination/experiments/cots_connector_x13/20260807T064801Z_SLACK_PUBLIC_SEARCH_PHASE2.md","target":"S04_HRIST_STRUCTURAL_PREFLIGHT","target_task_id":"6a52861fbdb08191b9ef33a0b9c3c15c","terminal_receipt":false}'
+  canonical_utf8_bytes: 471
+  canonical_sha256: af82ca8a386ea2c8f5d9d6d88972523b401f96dc5f45a4b55f8696a98edcbcfd
+  idempotency_derivation: SHA256_UTF8_PREFIX_S03_REVISE_ROUTE_V2_NEWLINE_PLUS_CANONICAL_PREIMAGE
+  idempotency_key: af207d5f3d3bdb9988e71d12cf7358aa00165ead162110d2fd191b87c22b315d
+
+honest_flaw: SAME_PROVIDER_S04_PREFLIGHT_HAS_BINDING_WEIGHT_ZERO; THE SOURCE_RESULT_DIGEST_IS_NOT RECOMPUTABLE_FROM_GIT_WITHOUT THE INTENTIONALLY_UNPERSISTED MESSAGE_DERIVED RESULT LINES OR A DISTINCT PRIVACY_SAFE SOURCE_SYSTEM WITNESS. THIS ROUTE CANNOT CLOSE VERIFICATION OR CONSUMER ACCEPTANCE.
