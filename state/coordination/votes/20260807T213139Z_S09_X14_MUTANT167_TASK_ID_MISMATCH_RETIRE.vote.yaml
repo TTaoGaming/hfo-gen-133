@@ -1,0 +1,175 @@
+---
+schema_id: hfo.gen133.s09.adversarial_bayesian_vote.v1
+seat: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+carrier_task_id_expected: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_id_observed: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+valid_time_utc: 2026-08-07T21:31:39Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+result: RETIRE
+claim_disposition: REVISE
+binding_decision: false
+evidence_class: SAME_PROVIDER_ADVISORY_PLUS_EXACT_IMMUTABLE_SOURCE_READBACK
+binding_weight: 0
+independent_verification_closed: false
+world_effect_ceiling: ONE_IMMUTABLE_GIT_VOTE_ONE_SANITIZED_SLACK_POINTER
+operator_minutes_required: 0
+---
+
+self_probe:
+  native_task_inventory_read: AVAILABLE
+  expected_task_present_enabled_match: true
+  expected_task_title_observed: HFO S09 Sigrun Recovery Queue
+  tools_observed:
+    - native_automations_inventory_read
+    - github_branch_search
+    - github_code_search
+    - github_exact_file_read
+    - github_create_file
+    - github_readback
+    - slack_pointer_send
+  task_mutation_performed: false
+
+selection:
+  decision_packet_id: X14_MUTANT_167_39daf80d5038
+  mutation_class: TASK_ID_MISMATCH
+  mutation_subcase: X12_OUTBOX_BOUND_TO_VALID_BUT_WRONG_X13_CARRIER_TASK_ID
+  decision_deadline_utc: 2026-08-08T00:45:34Z
+  candidate_options:
+    - ACCEPT
+    - REVISE
+    - HOLD
+    - RETIRE
+    - ABSTAIN
+  effect_ceiling: ONE_IMMUTABLE_GIT_VOTE_ONE_SANITIZED_SLACK_POINTER
+  verifier: S04_STRUCTURAL_PREFLIGHT
+  consumers:
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+  source_shas:
+    current_pointer_blob_sha1: 03624317c130f51506dd7b97572c7a3663d8a607
+    mutant_commit: 15e813836b36be0be360f0c6e7c814cf95e3e231
+    mutant_blob_sha1: f88845c681818ecaad42dfc301d8892936dcc1c1
+    source_commit: f73009e360b17242883f324aae74d7a8acd42a41
+    source_blob_sha1: 023327d8303590fc86b5ca63b9950f36528b1058
+    s04_result_blob_sha1: 61189218502dcc6f9e234a3bfe8703ae0b0c2d24
+    s15_reuse_blob_sha1: bf8071bed129a95018fbd79969770121f7b31928
+  canonical_overlay:
+    method: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+    utf8_bytes: 248
+    sha256: 39daf80d50381e3873445b6c0ad251c7d216ba3f2f8efa2d1caa9db778c6d4aa
+
+prior:
+  ACCEPT: 0.05
+  REVISE: 0.45
+  HOLD: 0.15
+  RETIRE: 0.25
+  ABSTAIN: 0.10
+  rationale: >-
+    Before exact packet inspection, task-binding mutants should usually be revised when the injected carrier identity breaks immutable source context; retirement requires evidence that the literal specimen is a low-information recurrence already caught by the intended gate.
+
+evidence:
+  exact_source:
+    for_revise_and_retire:
+      - The immutable X12 Slack outbox binds task_id 6a506f83df208191815dd17a8fd5baa3 together with X12 campaign X12_STALE_CONCURRENT_WRITER_SIMULATION_C37, object HFO_X12_WORKFLOW_OBJECT_001, wake C37_WAKE_2_OF_4, version edge 155 to 156, nonce, idempotency material, expiry and source digest.
+      - Native task inventory this wake shows source task 6a506f83df208191815dd17a8fd5baa3 as the enabled X12 Durable Object PDCA Lab and injected task 6a55c1733708819185088bf334e33ea5 as the distinct enabled X13 COTS and Connector PDCA Lab.
+      - The mutant changes only outbox_core.binding.task_id from the X12 carrier to the genuine enabled X13 carrier while retaining the X12 source context.
+    weak_for_accept:
+      - The injected identifier is provider-real and enabled, so a validator that checks only task existence or enabled state could accept it.
+    against_accept:
+      - No exact source-bound delegation, migration, alias, carrier-transfer receipt, or recomputation of affected X12 bindings authorizes the cross-seat substitution.
+      - Provider-real task existence is not evidence that the task owns or may inherit the source campaign, object, wake, version, nonce, idempotency or authority context.
+  s04_direct_review:
+    for_revise:
+      - S04 directly selected this exact mutant, recomputed mutant and source Git blobs, the 248-byte canonical overlay, overlay digest, outbox-core digest and message digest, and returned REVISE.
+      - S04 identified the controlling defect as transplanting a genuine enabled X13 task ID into an exact X12-bound source without delegation, migration or consistent rebinding evidence.
+    against_binding_certainty:
+      - S04 is ChatGPT-carried same-provider evidence with declared binding weight zero and cannot close independent verification.
+  s15_heritage:
+    for_retire:
+      - S15 mapped mutant 167 to an existing exact-task-binding/native-inventory failure antibody and assigned zero new antibody-diversity credit.
+      - The historical antibody already rejects genuine-enabled-task existence as sufficient authority for cross-seat rebinding.
+    against_overweighting:
+      - S15 did not independently recompute mutant 167's overlay, its historical prior is expired as a live verdict, and S15 is same-provider evidence with binding weight zero.
+  evidence_for_each_option:
+    ACCEPT:
+      for:
+        - The injected X13 task ID is genuine and enabled in the native provider inventory.
+      against:
+        - Genuine enabled existence does not establish source-bound ownership, delegation or migration authority.
+        - Exact immutable source bytes bind the X12 task and X12 campaign context; direct S04 review rejects the transplant.
+    REVISE:
+      for:
+        - The literal task-binding claim is unsupported by exact source bytes and breaks the source authoring-seat/campaign/object/wake/version context.
+        - Direct S04 exact-mutant review returned REVISE.
+      against:
+        - Keeping this conspicuous recurrence active after exact direct catch consumes verifier/reducer bandwidth with little new coverage.
+    HOLD:
+      for:
+        - Independent distinct-provider verification remains open and no named consumer acknowledgement was observed at this cutoff.
+        - Same-provider agreement must not be laundered into quorum.
+      against:
+        - The advisory correctness question is already well specified from exact immutable bytes and native task inventory; HOLD adds little information before expiry.
+    RETIRE:
+      for:
+        - The intended S04 direct route caught this exact mutant.
+        - S15 identifies the task-binding failure class as mature and gives this recurrence zero new diversity credit.
+        - Retaining a conspicuous cross-seat mismatch diverts cycles from harder migration and stale-binding cases.
+      against:
+        - Retirement should be lifecycle-only after exact reducer consumption; it must not erase the mutation class or imply independent verification closure.
+    ABSTAIN:
+      for:
+        - Binding authority is zero and independent verification is absent.
+      against:
+        - The packet is exact, unexpired, directly addressed to S09, and has enough immutable primary evidence for a nonbinding advisory vote.
+
+correlated_evidence_risk:
+  level: HIGH
+  detail: >-
+    S04, S15 and S09 are ChatGPT-carried scheduled cells on the same provider. S15 explicitly reuses a prior S04 failure antibody, increasing correlation. Native task inventory and exact Git bytes are primary provider/artifact evidence but do not make the semantic votes independent. No distinct-provider STOOD/FELL receipt is present here.
+  anti_laundering_rule: SAME_PROVIDER_AGREEMENT_COUNTS_AS_ADVISORY_STRUCTURE_ONLY_NOT_QUORUM
+
+strongest_dissent:
+  option: REVISE
+  argument: >-
+    Reject the task-ID transplant but keep mutant 167 live until the named reducers consume the exact mutant, S04 result and S09 vote. Retirement before exact consumption could hide pickup or ConsumerAck failure, and three consecutive direct S04 catches would still not prove globally starvation-free routing.
+
+opportunity_cost:
+  if_not_retired_after_consumption: >-
+    Additional S04/S09/X14 cycles would be spent re-proving a conspicuous cross-seat task mismatch instead of testing a legitimate carrier migration, stale historical task identity, or correct-task/wrong-actor case where only one binding is subtly stale.
+  if_retired_too_early: >-
+    The system may lose evidence about reducer pickup, ConsumerAck discipline, recurrence handling, or routing health before this exact specimen is consumed.
+
+operator_minute_burden:
+  measured_or_estimated_minutes: 0
+  basis: AUTOMATED_GIT_AND_SLACK_COORDINATION_ONLY_NO_OPERATOR_ACTION_REQUIRED
+
+posterior:
+  ACCEPT: 0.001
+  REVISE: 0.315
+  HOLD: 0.010
+  RETIRE: 0.665
+  ABSTAIN: 0.009
+  normalization_check: 1.000
+
+vote:
+  result: RETIRE
+  semantics: >-
+    RETIRE is a lifecycle recommendation for literal mutant 167 only after exact reducer consumption. The cross-seat task-ID transplant itself is REVISE/reject. Preserve the TASK_ID_MISMATCH mutation class, direct-route measurement, same-provider binding-weight-zero caveat, and independent-verification debt.
+
+reversible_next_experiment:
+  proposal: >-
+    Start from a genuine source-bound carrier migration or delegation where X12 is intentionally reseated to another valid task and all normal bindings are recomputed. Corrupt exactly one adjacent binding, such as authoring-seat claim, campaign/object/wake relation, idempotency preimage, nonce, source digest, or actor principal, while keeping the migrated task ID itself valid. A second useful variant is a stale historical X12 task ID that remains syntactically plausible. Require S04 to distinguish the near-green mutant from the valid migrated control.
+  reversibility: QUARANTINED_NON_EXECUTABLE_OVERLAY_ONLY_NO_SOURCE_EDIT_NO_EXTERNAL_EFFECT
+
+falsifier:
+  - Exact source-bound delegation or migration evidence authorizing task 6a55c1733708819185088bf334e33ea5 for this X12 campaign/object/wake/version context, together with consistent recomputation of all affected bindings, would falsify the current claim rejection.
+  - Failure of the named reducers to consume the exact mutant, S04 result and S09 vote before expiry would falsify immediate specimen retirement and should move lifecycle disposition to REVISE or HOLD rather than silently dropping it.
+  - A distinct non-ChatGPT verifier producing source-bound evidence that the injected task binding is valid would overturn this advisory posterior.
+
+honest_flaw: >-
+  Mutant 167 is still an easy negative control because the immutable source visibly names an X12 campaign while the injected provider-real task belongs to X13. The direct S04 catch is useful routing evidence, but it does not establish global routing reliability. All ChatGPT-carried judgments remain correlated and binding weight zero, no ConsumerAck was observed at this cutoff, and no independent distinct-provider verdict closes the claim.
