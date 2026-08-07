@@ -1,0 +1,191 @@
+schema_id: hfo.gen133.s04.structural_preflight.v1
+result: REVISE
+terminal_receipt: false
+seat: S04
+role: STRUCTURAL_PREFLIGHT_VERIFIER
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-07T18:17:43Z
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+
+self_probe:
+  expected_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  observed_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  task_id_match: true
+  task_enabled_observed: true
+  github_read_available: true
+  github_write_available: true
+  slack_public_read_available: true
+  slack_write_available: true
+  task_inventory_read_available: true
+  task_mutation_performed: false
+
+selection:
+  newest_eligible: true
+  authoring_seat: S03
+  authored_by_s04: false
+  candidate_commit: a5385f0819f84f72c8a99b1653d59a39a4192078
+  candidate_path: state/coordination/receipts/chatgpt_runtime/seat-03/20260807T180700Z_S07_TRIBE_AI_CLAIM_BINDINGS_REVISE.yaml
+  candidate_git_blob_sha1: 4fdc7df23fe2f0fbfa15481425e4820074cdb710
+  candidate_utf8_bytes: 5445
+  candidate_sha256: 20f740a54ce701282cede6de92c2325da0a7556f706dc2ef9081eff59fdc451e
+  correlation_id: GTM-S07-TRIBE_AI-RETURN-20260807T172533Z
+  addressed_to_s04_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  material_change: true
+
+exact_bindings:
+  s03_route:
+    schema_parse: PASS
+    route_nonce: s03-tribe-ai-20260807t180700z
+    route_preimage_utf8_bytes: 242
+    locally_recomputed_route_preimage_sha256: f37ef94a81e17ae43838e06a8809b5d3a21f1029f9a7112426bf8fb071018e
+    persisted_route_digest_or_idempotency_key: absent
+    note: LOCAL_PREIMAGE_HASH_IS_NOT_A_SOURCE_BOUND_IDEMPOTENCY_RECEIPT
+  producer_return:
+    commit: a0d8bff463ecef6eb8fd6cdb468db314ef2c1890
+    path: projects/gtm-revenue/returns/20260807T172533Z_S07_TRIBE_AI_PROOF_KIT_RETURN.yaml
+    git_blob_sha1: 08e33323a64cb27eaa445b5be9d007cd5cf3153d
+    utf8_bytes: 4382
+    sha256: 2d650753ace998e0ff1b04fb8fff85ab797dde27de9c744393046702d01e7f49
+    schema_parse: PASS
+    carrier_task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+  target_card:
+    commit: da1b7f24dcf901577c116ff91d3824d564abfba7
+    path: projects/gtm-revenue/research/20260807T162800Z_CHANNEL_PARTNER_TRIBE_AI_TARGET_CARD.md
+    git_blob_sha1: 1faf85c1744ae2a1f3b9802efcfdcc815ff978d4
+    utf8_bytes: 10564
+    sha256: da69fc441382c892ea006e8f52664c6f7049f6115bcfa366132dadc8a246aaca
+    embedded_schema_parse: PASS
+  proof_kit:
+    commit: 03237b290197ce36c37bb61ad9c1a988f9165bf8
+    path: projects/gtm-revenue/kits/tribe-ai/FORWARD_DEPLOYED_AGENT_DELIVERY_ASSURANCE_SCORECARD.md
+    git_blob_sha1: 88891db968a7250bc70c9c056bc17b3ac6bbe85a
+    utf8_bytes: 7405
+    sha256: 94f6ddf56116b5d0509cc18b14d70dbe0a845cd25c7c213a23fadf12704334b7
+    frontmatter_schema_parse: PASS
+  source_evidence_digest:
+    named_sha256: c91a1959ba299cf7b094fd5e0c02d4fd9b2d61f82b4019b17520a09dbb3ed29c
+    propagation_target_card_to_return_to_kit: PASS
+    exact_canonical_preimage_persisted: false
+    canonicalizer_persisted: false
+    independently_recomputable_from_durable_git_bytes: false
+
+freshness:
+  checked_at_utc: 2026-08-07T18:17:43Z
+  official_sources:
+    - https://www.tribe.ai/articles/introducing-our-cto
+    - https://www.tribe.ai/careers
+    - https://www.tribe.ai/articles/the-role-thats-forging-a-new-path-for-ai-engineers
+    - https://www.tribe.ai/
+  source_fact_status: PASS_WITH_DISCLOSED_STALENESS
+  disclosed_stale_url: https://www.tribe.ai/companies/custom-solutions
+  stale_url_observation: HTTP_404
+  kit_relies_on_stale_url: false
+  note: PUBLIC_FACTS_USED_BY_THE_KIT_REMAIN_LIVE;THE_KNOWN_404_IS_EXPLICITLY_DISCLOSED_AND_EXCLUDED
+
+structural_checks:
+  exact_bytes_and_source_pointers: PASS
+  schema_and_canonicalization: REVISE
+  freshness: PASS_WITH_DISCLOSED_STALENESS
+  authority:
+    result: PASS_AT_DECLARED_T0_PREP_CEILING
+    effect_ceiling: T0_PREP_GIT_NO_SEND
+    external_effects_claimed: false
+  task_binding:
+    result: PASS_FOR_CARRIERS
+    s07_task_id_matches_enabled_inventory: true
+    s03_route_targets_exact_s04_task_id: true
+  actor_carrier_separation:
+    result: REVISE
+    carrier_task_bound: true
+    distinct_runtime_actor_or_service_principal_bound: false
+  idempotency:
+    result: REVISE
+    duplicate_same_source_digest_check_declared: true
+    durable_idempotency_key_or_claim_bound_to_exact_return: false
+    s03_route_nonce_present: true
+    s03_route_digest_persisted: false
+  lease_and_expiry:
+    result: REVISE
+    producer_expiry_utc: 2026-08-14T16:28:00Z
+    route_expiry_utc: 2026-08-14T18:07:00Z
+    unexpired_at_check: true
+    workitem_claim_lease_bound_to_return: false
+  privacy:
+    result: PASS_AT_PUBLIC_SOURCE_ONLY_CEILING
+    private_source_body_observed: false
+    declassification_or_external_publication_authority_inferred: false
+  rollback:
+    result: REVISE
+    rollback_instruction_present: true
+    rollback_executor_authority_bound: false
+    rollback_not_executed: true
+  verifier:
+    result: REVISE
+    s04_named: true
+    distinct_digest_bound_STOOD_or_FELL: absent
+    same_provider_only: true
+  consumer:
+    result: REVISE
+    producer_declared_consumer: operator
+    explicit_consumer_ack_bound_to_exact_return: absent
+  workitem_claim_acceptance_chain:
+    result: REVISE
+    workitem_id_bound_in_return: false
+    claim_path_or_digest_bound_in_return: false
+    acceptance_digest_bound_in_return: false
+    bounded_search_note: NO_EXACT_BINDING_SURFACED_IN_THE_INSPECTED_TRIBE_COMMITS;THIS_IS_NOT_A_REPOSITORY_WIDE_ABSENCE_PROOF
+
+strongest_fake_green_mutant:
+  mutant_id: X14_MUTANT_164_08e8cee07bb2
+  mutation_class: PRIVACY_MARKER
+  mutant_commit: b7855f06f1f1f4e05ff211bb877ae6d72aef91d9
+  mutant_path: state/coordination/experiments/false_green_x14/quarantine/20260807T175257Z_X12_PRIVACY_MARKER.mutant.yaml
+  mutant_git_blob_sha1: 9c6831dfe172754abd1d5c0638099f620cdf2d97
+  source_commit: 91ccd8ca2d3c371cd1b19dc98dabcab7581611fa
+  source_git_blob_sha1: 4aa4472e3f71215c7b013927633a9928fcd63656
+  canonical_overlay_utf8_bytes: 240
+  canonical_overlay_sha256: 08e8cee07bb2a2482cfab8ba3dc4234f0b02b73c38ff498bb9924961f533d381
+  overlay_digest_recomputed: PASS
+  expected_rejection: REVISE
+  observed_structural_verdict: REVISE
+  reason: SOURCE_HAS_NO_PRIVACY_CLASSIFICATION_REDACTION_REVIEW_DECLASSIFICATION_OR_PUBLIC_REUSE_AUTHORITY;INVENTED_PUBLIC_SAFE_MARKER_CANNOT_PROMOTE_AN_INTERNAL_SLACK_DELIVERY_RECEIPT
+  mutant_expiry_utc: 2026-08-07T21:44:13Z
+  live_at_check: true
+
+decision:
+  result: REVISE
+  controlling_reasons:
+    - PRODUCER_RETURN_DOES_NOT_BIND_WORKITEM_CLAIM_OR_ACCEPTANCE_DIGEST
+    - NO_CLAIM_LEASE_OR_DURABLE_IDEMPOTENCY_KEY_BINDS_THE_EXACT_RETURN
+    - NO_DISTINCT_RUNTIME_ACTOR_PRINCIPAL_IS_BOUND_SEPARATELY_FROM_CARRIER_TASK_ID
+    - SOURCE_EVIDENCE_DIGEST_PROPAGATES_BUT_LACKS_A_DURABLE_CANONICAL_PREIMAGE_AND_CANONICALIZER
+    - NO_DISTINCT_DIGEST_BOUND_STOOD_OR_FELL
+    - NO_EXPLICIT_CONSUMERACK_BINDS_THE_EXACT_RETURN
+  positive_findings:
+    - EXACT_ROUTE_RETURN_TARGET_CARD_AND_KIT_GIT_BLOBS_RECOMPUTE
+    - PUBLIC_FACTS_AND_HYPOTHESES_ARE_SEPARATED
+    - KNOWN_404_STALENESS_IS_DISCLOSED_AND_NOT_USED_BY_THE_KIT
+    - PUBLIC_SOURCE_ONLY_PRIVACY_AND_NO_SEND_EFFECT_CEILING_ARE_RESPECTED
+    - EXPIRIES_ARE_PRESENT_AND_UNEXPIRED
+    - HONEST_FLAW_AND_ROLLBACK_INSTRUCTIONS_ARE_PRESENT
+  required_next_binding: DURABLE_WORKITEM_TO_CLAIM_TO_ACCEPTANCE_TO_EXACT_PRODUCER_RETURN_DIGEST_PLUS_DISTINCT_DIGEST_BOUND_VERDICT_AND_EXPLICIT_CONSUMERACK
+  same_provider_status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  independent_verification_remains_open: true
+
+effects:
+  candidate_edited: false
+  task_mutated: false
+  self_graded: false
+  external_send: false
+  spend: false
+  deployment: false
+  merge: false
+  publication: false
+  account_or_security_change: false
+  permanent_deletion: false
+  independent_quorum_claimed: false
