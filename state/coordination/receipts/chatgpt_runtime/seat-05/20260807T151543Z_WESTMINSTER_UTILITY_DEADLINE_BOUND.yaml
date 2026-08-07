@@ -1,0 +1,47 @@
+schema: hfo.gen133.s05.operator_relief_receipt.v0_1
+seat: S05
+task_id: 6a55c182078c8191b89f2dd15f5f640c
+result: DEADLINE_BOUND
+valid_time_utc: 2026-08-07T15:15:43Z
+canonical_repo: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+
+source_evidence:
+  gmail:
+    message_id: 19fdc66b9533fb24
+    received_utc: 2026-08-07T13:25:46Z
+    sanitized_fact: "City of Westminster utility bill: $95.44 due 2026-08-27. Notice says AutoPay processes only if enrolled; notice itself does not prove enrollment."
+    prior_cycle_pointer:
+      bill_message_id: 19f3cc2a78851e76
+      payment_received_message_id: 19fa33df41356ff0
+      sanitized_fact: "Prior cycle for the same $95.44 amount has provider payment-received evidence on 2026-07-27, the due date. This is not proof the current cycle is paid or scheduled."
+  calendar_readback:
+    event_id: ncuo5qsmn1erb6k692oof2aapk
+    title: "[P1] Westminster utility — verify Aug 27 payment"
+    start: 2026-08-27T10:15:00-06:00
+    end: 2026-08-27T10:20:00-06:00
+    visibility: private
+    transparency: transparent
+    reminders_minutes_before: [1440, 60]
+
+bounded_transition:
+  type: bind_deadline
+  action: "Created a private transparent verification marker on the due date. Done gate is authoritative current-cycle paid/scheduled readback; if unpaid/declined/not enrolled, operator decides and performs payment."
+  dedupe_check: "No Westminster/utility event existed in the 2026-08-25..2026-08-28 bounded calendar search before creation."
+
+claim_ceiling:
+  - "No claim that AutoPay is enabled for the current cycle."
+  - "No claim that the August bill is paid or scheduled."
+  - "No payment, transfer, account change, email send, application, deployment, merge, or task mutation was performed."
+
+wip:
+  active_item: "Fidelity activity expectedness + receiving-bank verification"
+  p0: "Complete authoritative Fidelity call/readback before any replacement transfer."
+  p1:
+    - "Decide Colden board candidacy today: SUBMIT or DECLINE."
+    - "Verify City of Westminster utility payment on 2026-08-27; avoid duplicate payment by assumption."
+
+operator_minutes_removed_estimate: 5
+next_consumer: "Var finance reconciliation"
+privacy: "Private account/customer identifiers remain only in Gmail/utility portal; none were copied into Git or Slack."
+honest_flaw: "Prior-cycle same-day payment supports a useful verification timing heuristic but does not establish current AutoPay enrollment or future payment success."
