@@ -1,0 +1,140 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse_result.v1
+result: RETURN_REUSABLE_PRIOR_ARTIFACT
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_binding: NATIVE_AUTOMATIONS_INVENTORY_EXACT_MATCH
+carrier_enabled_observed: true
+wip: 1
+valid_time_utc: 2026-08-07T05:01:27Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+privacy_ceiling: SANITIZED_PUBLIC_REPOSITORY_CONTROL_METADATA_ONLY
+evidence_class: SAME_PROVIDER_HISTORICAL_PRECEDENT_NONBINDING
+binding_weight: 0
+heritage_credit: 0_PENDING_EXPLICIT_CURRENT_WORKITEM_CONSUMER_ACK
+world_effect_ceiling: ONE_IMMUTABLE_GIT_RECEIPT_AND_ONE_SANITIZED_SLACK_POINTER
+---
+
+self_probe:
+  task_id_match: true
+  task_enabled_observed: true
+  task_title_observed: HFO S15 Gondul Continuous Heritage
+  tools_observed:
+    - native_automations_inventory_read
+    - github_recent_commit_search
+    - github_compare_commits
+    - github_repository_search
+    - github_exact_file_and_blob_read
+    - github_create_file
+    - github_readback
+    - slack_send_message
+  task_mutation_performed: false
+
+current_workitem:
+  type: NAMED_X14_EVIDENCE_GAP
+  experiment_id: X14_FALSE_GREEN_MUTATION_001
+  campaign_ordinal: 38
+  campaign_wake: 1
+  mutant_id: X14_MUTANT_150_611b8fcfad80
+  mutant_commit: 4455cee945b34ae0ba87084f87c824814e7bda97
+  mutant_path: state/coordination/experiments/false_green_x14/quarantine/20260807T045250Z_X12_UNSUPPORTED_PASS_OUTCOME.mutant.yaml
+  mutation_class: UNSUPPORTED_PASS_OUTCOME
+  mutation_subcase: X12_POINTER_INTENT_FALSELY_PROMOTED_TO_COMPLETED_PASS
+  mutated_field: outcome
+  original_value: ABSENT
+  mutated_value: PASS_POINTER_INTENT_AUTHORIZED_TRANSITION_COMPLETE
+  canonical_mutation_byte_count: 228
+  canonical_mutation_digest_sha256: 611b8fcfad80c15800f7f0387a7e82603150deb0d55d797aca948ef086430c33
+  source_commit: 8fd60ea30eecc3e232aad6bbb2cb0bc2dccb1352
+  source_path: state/coordination/experiments/durable_object_x12/pointer_intents/20260807T044530Z_V0140_TO_V0141_22c572da0d57.json
+  source_blob_sha1: c6439090a5d0dbef528f1dfd58da9cf46a6d7cee
+  source_schema_id: hfo.gen133.x12.pointer_intent.v1
+  source_campaign_id: X12_CARRIER_VARIANCE_C33
+  source_wake: C33_WAKE_3_OF_4
+  source_expected_version: 140
+  source_next_version: 141
+  source_consumer: Reginleif/Olrun
+  source_verifier: S04_WEIGHT_0_THEN_DISTINCT_SIGRUN_P4
+  source_expiry_utc: 2026-08-07T08:45:30Z
+  source_terminal_outcome_present: false
+  source_final_current_readback_present: false
+  source_pointer_verification_present: false
+  source_consumer_ack_present: false
+  source_effect_ceiling: ONE_DUPLICATE_EVENT_SEARCH_ONE_CREATE_ONLY_CLAIM_ONE_CLAIM_POSTREAD_ONE_IMMUTABLE_EVENT_ONE_EVENT_POSTREAD_ONE_CANDIDATE_ONE_CANDIDATE_POSTREAD_ONE_POINTER_INTENT_ONE_FINAL_CURRENT_REVALIDATION_ONE_FILE_LOCAL_CURRENT_UPDATE_TWO_CURRENT_POSTREADS_ONE_COMMIT_SCOPE_FETCH_ONE_VERIFICATION_ONE_SLACK_ADVANCE_ONE_SLACK_RECEIPT
+  named_gate: S04_UNSUPPORTED_PASS_OUTCOME_EXACT_SOURCE_ARTIFACT_TYPE_INTENT_VS_RESULT_FINAL_CURRENT_REVALIDATION_UPDATE_COMMIT_READBACK_POINTER_VERIFICATION_CONSUMER_ACK_SOURCE_DIGEST_EXPIRY_AND_CLAIM_CEILING_GATE
+  verifier:
+    - S04_STRUCTURAL_PREFLIGHT
+    - S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  consumer:
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_REDUCER
+  expiry_utc: 2026-08-07T08:45:30Z
+
+reused_artifact:
+  artifact_type: FAILURE_ANTIBODY
+  original_date_utc: 2026-08-01T15:14:16Z
+  source_repository: TTaoGaming/hfo-gen-133
+  source_commit: 66aba18acce8a669a4df8503f78c2c99143425de
+  source_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260801T151416Z_X14_MUTANT018_UNSUPPORTED_PASS_OUTCOME_REVISE.yaml
+  source_blob_sha1: ee4fac96a2df59558a935a5e60709863e70cfe70
+  original_mutant_id: X14_MUTANT_018_815258ffdee8
+  original_result: REVISE
+  original_named_gate: S04_OUTCOME_CLAIM_CEILING_AND_INDEPENDENCE_GATE
+  original_authoring_seat: S04_STRUCTURAL_PREFLIGHT
+  original_binding_weight: 0
+  original_independent_verification_closed: false
+
+supported_claims:
+  - Bounded intermediate evidence cannot be lexically or structurally promoted into terminal PASS beyond the exact source claim ceiling.
+  - A named next transition, verifier, consumer, candidate, idempotency key, or gate is evidence of planned control structure, not evidence that the transition completed or passed.
+  - Independent PASS requires a distinct verifier receipt bound to exact source bytes; downstream outcome or adoption additionally requires the relevant terminal effect readback and source-bound ConsumerAck when that credit is claimed.
+  - For the current X12 source, pointer_intent is pre-update control evidence only; the exact source bytes contain no terminal outcome field and explicitly require final-current revalidation before update.
+
+excluded_claims:
+  - This heritage receipt is not a direct verdict on X14_MUTANT_150_611b8fcfad80.
+  - This heritage receipt does not independently recompute or certify the current 228 canonical mutation bytes or SHA-256.
+  - This heritage receipt does not prove the V140-to-V141 transition failed or succeeded outside the selected pointer-intent source artifact.
+  - This heritage receipt does not inspect later CURRENT update, pointer verification, Slack receipt, ConsumerAck, provider state, or distinct-provider verification unless separately cited by the verifier.
+  - This heritage receipt does not establish terminal PASS, exactly-once behavior, serializability, ConsumerAck, adoption, campaign catch credit, fitness credit, independent quorum, or binding credit.
+
+acceptance_relevance: >-
+  The 2026-08-01 S04 precedent establishes the controlling failure invariant: a bounded nonterminal source cannot be
+  widened into PASS, terminality, workflow consumption, adoption, or binding outcome without exact downstream
+  evidence. For X14_MUTANT_150, S04 should resolve the exact mutant and pointer-intent source blobs, recompute the
+  declared 228-byte overlay and SHA-256, classify the selected source as INTENT_NOT_TERMINAL_RESULT, confirm that
+  the source requires final CURRENT revalidation before update, and require exact update/readback plus pointer
+  verification and any claimed ConsumerAck before accepting a terminal PASS outcome.
+
+deduplication:
+  exact_current_mutant_repository_search: NO_PRIOR_S15_RESULT_FOUND_BEST_EFFORT
+  source_digest_prior_x14_mutation_at_selection_cutoff: false
+  closest_prior_s15_unsupported_pass_bindings:
+    - X14_MUTANT_073
+    - X14_MUTANT_095
+  duplicate_class_decision: RECURRENCE_OF_EXISTING_UNSUPPORTED_PASS_OUTCOME_CLAIM_CEILING_ANTIBODY
+  novelty_credit: 0
+  antibody_diversity_credit: 0
+  current_binding_decision: MATERIAL_ONLY_AS_NEW_WORKITEM_SOURCE_DIGEST_ARTIFACT_TYPE_CONSUMER_AND_EXPIRY_BINDING
+  reducer_instruction: DO_NOT_COUNT_AS_NEW_MUTATION_CLASS_OR_INDEPENDENT_FAILURE_ANTIBODY
+  limitation: GitHub code-search indexing and concurrent commit visibility are nontransactional and may lag.
+
+privacy:
+  admitted: task IDs, repository paths, commits, blob digests, mutation metadata, version numbers, gate names, verifier labels, consumer-role labels, effect-ceiling metadata, and sanitized Slack channel ID
+  excluded: Slack bodies, credentials, account data, personal identifiers, private-channel content, connector payload bodies, and hidden provider state
+
+verifier: S04_STRUCTURAL_PREFLIGHT_THEN_S09_DISTINCT_SEAT_OUTCOME_FALSIFICATION
+consumer: X14_CAMPAIGN_REDUCER_AND_X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_REDUCER
+expiry_utc: 2026-08-07T08:45:30Z
+rollback: retain or ignore this immutable heritage receipt; never apply the quarantined overlay or edit source, CURRENT, tasks, Slack history, verifier state, consumer state, or provider state
+
+honest_flaw: >-
+  The reused 2026-08-01 S04 artifact concerned a Calendar phase result inflated into independent PASS, adoption,
+  terminality, and workflow consumption, whereas mutant 150 injects only one outcome field into an X12 pointer-intent
+  artifact. The generic claim-ceiling and terminal-evidence invariant transfers, but connector/source schema, exact
+  bytes, overlay shape, and downstream evidence chain differ. The prior artifact is expired as live acceptance
+  evidence and is used only as historical failure coverage. S15 did not recompute the current overlay and cannot
+  exclude later out-of-band transition receipts; current exact-mutant review remains S04's job. SAME_PROVIDER_NONBINDING;
+  binding weight and heritage credit remain zero until explicit current-consumer acknowledgment exists.
