@@ -1,50 +1,65 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
-experiment_id: X13_SLACK_PUBLIC_SEARCH_READONLY_014
-version: 156
-prior_version: 155
-candidate: Slack_slack_search_public_readonly_surface
-campaign_wake: 4_of_4
-campaign_status: CLOSED
+experiment_id: X13_GDRIVE_METADATA_SEARCH_READONLY_015
+version: 157
+prior_version: 156
+candidate: Google_Drive_metadata_only_document_search
+campaign_wake: 1_of_4
+campaign_status: ACTIVE
 phase_1_status: PHASE1_ACCEPTED_WITH_GATES
-phase_2_status: PHASE2_ACCEPTED_WITH_GATES
-phase_3_status: PHASE3_ACCEPTED_WITH_GATES
-phase_4_status: PHASE4_COMPLETE
-phase_4_decision: ADOPT_WITH_GATES
-operational_decision: ADOPT_WITH_GATES_CATALOG_ONLY
+phase_2_status: NOT_RUN
+phase_3_status: NOT_RUN
+phase_4_status: NOT_RUN
+phase_4_decision: UNKNOWN
+operational_decision: UNDECIDED
 wip: 1
-last_event_commit: 89b6cc2ce92ca0bf06a89b4402f060f726f4e91e
-last_event_path: state/coordination/experiments/cots_connector_x13/20260807T084847Z_SLACK_PUBLIC_SEARCH_PHASE4_DECISION.md
-last_event_blob_sha: 3461aa0f95998d77493173aa6d95ecd8eb5957e1
+last_event_commit: 31dd309588156010ed14e10d8baa928723336d8b
+last_event_path: state/coordination/experiments/cots_connector_x13/20260807T094914Z_GDRIVE_METADATA_SEARCH_PHASE1_BASELINE.md
+last_event_blob_sha: 458dc4281203580719856d8b54860c0237eb5f0d
 last_event_readback: true
-campaign_calls: 3_BOUNDED_READONLY_SLACK_PUBLIC_SEARCHES
-successful_nonempty_calls: 2
-successful_empty_calls: 1
+campaign_calls: 1_BOUNDED_READONLY_GDRIVE_METADATA_SEARCH
+successful_nonempty_calls: 1
+successful_empty_calls: 0
 connector_errors_observed: 0
 retries_total: 0
 fallbacks_total: 0
 candidate_mutations_total: 0
+content_hydration_requested: false
+content_hydration_observed: false
+raw_drive_metadata_persisted_in_receipt: false
+request_digest_sha256: 10d22ab08a13d84dbe724be7a76fa44a50af51617bd6edbbb9248241cd882ceb
+ordered_metadata_result_digest_sha256: 8638e3335ea369bfebeec28ca607021e8f74a3db623461d45be7b1781953708a
 operator_minutes_removed_measured: 0
-custom_code_avoided_estimate: 80_to_200_LOC_UNVALIDATED
+custom_code_avoided_estimate: 50_to_150_LOC_UNVALIDATED
 paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
 direct_cost_or_quota_evidence: NONE_FROM_CONNECTOR
-adoption_credit: 1
+provider_contract_quota_units: FILES_LIST_100_UNITS_IN_CURRENT_POST_MAY1_2026_STANDARDIZED_MODEL
+provider_contract_quota_regime_actual: UNKNOWN_CONNECTOR_PROJECT_MAY_BE_GRANDFATHERED_IF_USED_NOV2025_TO_APR2026
+credentials: CONNECTOR_MANAGED_EFFECTIVE_PRINCIPAL_AND_SCOPE_UNKNOWN
+durability: GIT_RECEIPT_DURABLE;DRIVE_SEARCH_VIEW_MUTABLE
+observability: METADATA_VISIBLE_WITHOUT_BODY_HYDRATION;PROVIDER_REQUEST_ID_RATE_HEADERS_LATENCY_QUOTA_DEBIT_AND_INCOMPLETE_SEARCH_NOT_SURFACED
+portability: MEDIUM_DRIVE_QUERY_AND_CORPUS_SEMANTICS_PROVIDER_SPECIFIC
+failure_behavior: PHASE1_HAPPY_PATH_ONLY
+verifier: GITHUB_EVENT_AND_CURRENT_READBACK_PLUS_GOOGLE_DRIVE_V3_PRIMARY_DOCS
+consumer: X13_NEXT_WAKE_ONLY_NO_OPERATIONAL_CONSUMER_ACK
+adoption_credit: 0
 fitness_credit: 0
-adoption_scope: CATALOG_AND_BOUNDED_PUBLIC_DISCOVERY_ONLY
-mandatory_gate: BOUNDED_PUBLIC_ONLY_SEARCH; SMALL_LIMIT; INCLUDE_CONTEXT_FALSE; DO_NOT_PERSIST_RAW_CONTENT_OR_CURSOR; NEXT_CURSOR_MEANS_MORE_RESULTS_MAY_EXIST; EMPTY_SUCCESS_IS_NOT_WORKSPACE_ABSENCE; RESULTS_ARE_MUTABLE_NOT_SNAPSHOT_STABLE; NO_UNBOUNDED_RETRY; CONSEQUENTIAL_CLAIMS_REQUIRE_DIRECT_THREAD_CHANNEL_OR_MATCHED_PROVIDER_WITNESS
-strongest_falsifier: MATCHED_NATIVE_SLACK_SEARCH_UNDER_THE_SAME_ACTING_IDENTITY_MATERIALLY_DISAGREES_ON_RESULT_VISIBILITY_QUERY_SCOPE_OR_PAGINATION_FOR_THE_SAME_BOUNDED_PROBES
-honest_flaw: NO_OPERATIONAL_CONSUMER_ACK_OR_MEASURED_OPERATOR_SAVINGS; MESSAGE_CONTENT_HYDRATES_ON_NONEMPTY_SEARCH; PERMISSION_DENIAL_PRIVATE_SCOPE_VARIANCE_CURSOR_REPLAY_THROTTLING_TRANSIENT_FAILURE_INDEX_LAG_NATIVE_PARITY_EFFECTIVE_SCOPE_REQUEST_ID_AND_ACTUAL_QUOTA_DEBIT_REMAIN_UNTESTED_OR_UNEXPOSED
-next_phase: NEW_CAMPAIGN_PHASE1_ON_ONE_NEW_CANDIDATE
-valid_time_utc: 2026-08-07T08:48:47Z
-recorded_time_utc: 2026-08-07T08:48:47Z
+mandatory_gate: METADATA_ONLY; BEST_EFFORT_FETCH_FALSE; SMALL_TOPN; DO_NOT_PERSIST_RAW_IDS_URLS_TITLES_PARENT_IDS; NO_COMPLETENESS_CLAIM_WITHOUT_PAGINATION_AND_INCOMPLETESEARCH_EVIDENCE; NO_UNBOUNDED_RETRY
+strongest_falsifier: MATCHED_NATIVE_DRIVE_V3_FILES_LIST_UNDER_THE_SAME_EFFECTIVE_PRINCIPAL_MATERIALLY_DISAGREES_ON_RESULT_SCOPE_ORDERING_PAGINATION_OR_METADATA_ONLY_BEHAVIOR
+honest_flaw: ONE_SUCCESSFUL_BOUNDED_METADATA_QUERY_ONLY; PAGINATION_COMPLETENESS_PERMISSION_DENIAL_SHARED_DRIVE_VARIANCE_TRANSIENT_FAILURE_RATE_LIMIT_NATIVE_PARITY_EFFECTIVE_SCOPE_ACTUAL_QUOTA_DEBIT_OPERATOR_SAVINGS_AND_CONSUMER_VALUE_REMAIN_UNTESTED_OR_UNEXPOSED
+next_phase: PHASE2_IDENTICAL_BOUNDED_METADATA_ONLY_REPLAY_AND_DIGEST_COMPARISON
+valid_time_utc: 2026-08-07T09:49:14Z
+recorded_time_utc: 2026-08-07T09:49:14Z
 ---
 
-# X13 CURRENT v156
+# X13 CURRENT v157
 
-`X13_SLACK_PUBLIC_SEARCH_READONLY_014` is closed at wake 4 of 4 with `ADOPT_WITH_GATES` for bounded public discovery/catalog only.
+`X13_GDRIVE_METADATA_SEARCH_READONLY_015` is active at wake 1 of 4 with Phase 1 accepted with gates.
 
-Evidence remains three prior read-only calls: two nonempty successes and one empty success, with no candidate call in phase 4. The surface is useful for discovery but not authoritative completeness or snapshot replay. Nonempty searches hydrate message content; identical newest-first replay changed after corpus mutation; empty success means only zero visible matches from that call.
+One bounded metadata-only document search returned three Drive metadata records with no document-body hydration requested or observed. Raw Drive identifiers, URLs, titles, and parent IDs were not persisted in the Git receipt; only counts and digests were retained.
 
-Adoption credit is 1. Fitness credit remains 0 because no operational consumer acknowledgement or measured operator-minute savings were observed.
+The connector gives a useful least-data discovery surface but omits several native `files.list` observability signals in the returned resource, including provider request identity, effective OAuth principal/scopes, latency, quota debit, and `incompleteSearch`; pagination state was not surfaced in this call. Therefore this result is not completeness evidence.
 
-Next wake: start one new candidate campaign at phase 1 with WIP=1.
+Current Google Drive docs assign `files.list` 100 quota units under the post-May-1-2026 standardized model, but projects that used Drive API between November 2025 and April 2026 may retain prior quotas. The connector project regime and actual debit are unknown.
+
+Adoption credit 0; fitness credit 0. Next wake: identical bounded metadata-only replay and ordered digest comparison.
