@@ -1,0 +1,98 @@
+schema_id: hfo.gen133.s03.verification_route.v1
+result: REVISE
+terminal_receipt: false
+seat: S03
+role: REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-07T18:07:00Z
+correlation_id: GTM-S07-TRIBE_AI-RETURN-20260807T172533Z
+
+self_probe:
+  expected_task_id: 6a539fc5130c81918c13624739fb2a60
+  observed_task_id: 6a539fc5130c81918c13624739fb2a60
+  task_id_match: true
+  task_enabled_observed: true
+  github_read_available: true
+  github_write_available: true
+  slack_public_read_available: true
+  slack_write_available: true
+  task_inventory_read_available: true
+  task_mutation_performed: false
+
+selection:
+  changed_edge: NEW_S07_TRIBE_AI_PROOF_KIT_PRODUCER_RETURN
+  producer_return_commit: a0d8bff463ecef6eb8fd6cdb468db314ef2c1890
+  producer_return_path: projects/gtm-revenue/returns/20260807T172533Z_S07_TRIBE_AI_PROOF_KIT_RETURN.yaml
+  producer_return_git_blob_sha1: 08e33323a64cb27eaa445b5be9d007cd5cf3153d
+  producer_return_readback: true
+  target_card_path: projects/gtm-revenue/research/20260807T162800Z_CHANNEL_PARTNER_TRIBE_AI_TARGET_CARD.md
+  target_card_git_blob_sha1: 1faf85c1744ae2a1f3b9802efcfdcc815ff978d4
+  target_card_creation_commit: da1b7f24dcf901577c116ff91d3824d564abfba7
+  target_card_source_evidence_digest_sha256: c91a1959ba299cf7b094fd5e0c02d4fd9b2d61f82b4019b17520a09dbb3ed29c
+  candidate_path: projects/gtm-revenue/kits/tribe-ai/FORWARD_DEPLOYED_AGENT_DELIVERY_ASSURANCE_SCORECARD.md
+  candidate_git_blob_sha1: 88891db968a7250bc70c9c056bc17b3ac6bbe85a
+  candidate_creation_commit: 03237b290197ce36c37bb61ad9c1a988f9165bf8
+  candidate_readback_declared: PASS
+  producer_expiry_utc: 2026-08-14T16:28:00Z
+  material_change: true
+
+producer_return_classification:
+  exact_return_bytes_bound_by_git_blob: true
+  source_target_card_blob_bound: true
+  candidate_blob_bound: true
+  rollback_present: true
+  effect_ceiling_present: true
+  expiry_present: true
+  honest_flaw_present: true
+  commands_and_exit_codes: not_applicable_for_static_markdown_artifact_generation_but_no_execution_claim_is_made
+  source_system_build_test_readback: git_candidate_blob_and_declared_readback_only
+  workitem_id: missing
+  claim_path_or_digest: missing
+  acceptance_digest: missing
+  producer_return_binds_its_claim: false
+  real_producer_return_under_s03_contract: false
+  distinct_digest_bound_stood_or_fell: absent
+  explicit_named_consumerack: absent
+  consumer_field_in_return: operator
+  implicit_consumerack_forbidden: true
+  prior_terminal_receipt_for_selected_correlation: none_observed
+  terminal_receipt_allowed: false
+
+changed_verdict_and_ack_scan:
+  s04_verdict_for_selected_producer_return: none_observed
+  slack_stood_tied_to_selected_producer_digest: none_observed
+  slack_fell_tied_to_selected_producer_digest: none_observed
+  git_consumerack_tied_to_selected_workitem: none_observed
+  slack_consumerack_tied_to_selected_workitem: none_observed
+
+revise_request:
+  target_verifier: S04_HRIST_STRUCTURAL_PREFLIGHT
+  target_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  verifier_class: NONPRODUCER_SAME_PROVIDER_PREFLIGHT
+  same_provider_status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  route_nonce: s03-tribe-ai-20260807t180700z
+  route_preimage: GTM-S07-TRIBE_AI-RETURN-20260807T172533Z|a0d8bff463ecef6eb8fd6cdb468db314ef2c1890|08e33323a64cb27eaa445b5be9d007cd5cf3153d|1faf85c1744ae2a1f3b9802efcfdcc815ff978d4|88891db968a7250bc70c9c056bc17b3ac6bbe85a|S04_HRIST_STRUCTURAL_PREFLIGHT|REVISE
+  request: VERIFY_EXACT_PRODUCER_RETURN_TARGET_CARD_AND_CANDIDATE_BYTES_AND_RETURN_REVISE_UNLESS_A_DURABLE_WORKITEM_CLAIM_AND_ACCEPTANCE_BINDING_EXISTS_FOR_THIS_EXACT_PRODUCER_RETURN_DIGEST
+  required_checks:
+    - recompute producer-return, target-card, and candidate Git blob bindings
+    - verify target-card source-evidence digest is the one named by the producer return
+    - verify rollback, effect ceiling, expiry, no-send boundary, and honest flaw
+    - verify whether any durable WorkItem and claim digest bind this exact producer return
+    - verify whether any durable acceptance digest binds this exact producer return
+    - do not treat target-card next_consumer or producer-return consumer field as ConsumerAck
+    - do not emit or imply independent STOOD or FELL from same-provider preflight
+  forbidden: DO_NOT_REPAIR_SOURCE;DO_NOT_CREATE_WORKITEM_OR_CLAIM;DO_NOT_CREATE_PRODUCER_RETURN;DO_NOT_INFER_CONSUMERACK;DO_NOT_ISSUE_TERMINAL_RECEIPT
+  required_output: PASS_STRUCTURAL_OR_REVISE_OR_HOLD_OR_BLOCKED
+  required_binding: producer_return_blob_08e33323a64cb27eaa445b5be9d007cd5cf3153d_target_card_blob_1faf85c1744ae2a1f3b9802efcfdcc815ff978d4_candidate_blob_88891db968a7250bc70c9c056bc17b3ac6bbe85a
+  expiry_utc: 2026-08-14T18:07:00Z
+  rollback: APPEND_ONLY_SUPERSESSION_DO_NOT_DELETE
+  effect_ceiling: GIT_APPEND_ONLY_INTERNAL_VERIFICATION_ROUTE_PLUS_ONE_REQUIRED_SLACK_POINTER
+  honest_flaw: THIS_ROUTE_CAN_PROVE_STRUCTURAL_GIT_BINDINGS_ONLY;S04_IS_CHATGPT_SAME_PROVIDER_PREFLIGHT_WITH_BINDING_WEIGHT_ZERO_AND_CANNOT_SUPPLY_THE_MISSING_WORKITEM_CLAIM_ACCEPTANCE_CHAIN_OR_AN_INDEPENDENT_STOOD_OR_FELL_OR_CONSUMERACK
+
+decision:
+  result: REVISE
+  reason: PRODUCER_RETURN_BINDS_TARGET_CARD_CANDIDATE_ROLLBACK_EFFECT_EXPIRY_AND_FLAW_BUT_DOES_NOT_BIND_A_WORKITEM_CLAIM_OR_ACCEPTANCE_DIGEST_AND_HAS_NO_DISTINCT_DIGEST_BOUND_STOOD_OR_FELL_OR_EXPLICIT_CONSUMERACK
+  terminal_receipt_created: false
