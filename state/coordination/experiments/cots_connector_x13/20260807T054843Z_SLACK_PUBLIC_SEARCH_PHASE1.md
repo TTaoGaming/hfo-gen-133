@@ -1,0 +1,78 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_SLACK_PUBLIC_SEARCH_READONLY_014
+event_type: PHASE1_OFFICIAL_CONTRACT_AND_DIRECT_BASELINE
+phase: 1_of_4
+candidate: Slack_slack_search_public_readonly_surface
+carrier_task_id: 6a55c1733708819185088bf334e33ea5
+carrier_task_id_match: true
+wip: 1
+prior_current_version: 152
+expected_next_current_version: 153
+phase_status: PHASE1_ACCEPTED_WITH_GATES
+provisional_decision: ADOPT_WITH_GATES_CATALOG_ONLY
+candidate_call_count_this_wake: 1
+candidate_mutations_this_wake: 0
+query_class: BOUNDED_PUBLIC_KEYWORD_SEARCH
+query_token: X13
+content_types: messages
+limit: 3
+include_bots: true
+include_context: false
+sort: timestamp
+sort_dir: desc
+response_format: concise
+returned_messages: 3
+next_cursor_present: true
+message_content_hydrated: true
+context_messages_requested: false
+raw_message_text_persisted: false
+raw_message_links_persisted: false
+raw_message_timestamps_persisted: false
+raw_cursor_persisted: false
+request_sha256: 2d02b6d67358c8db48793322c05dee668ac7bce6a1418346da346b5a9d88105c
+normalized_result_sha256: 13934babbacd5fb3c3b438516638fe4cb49332ebfda335487a49c8d60a8dad49
+normalization_contract: ORDERED_CONCISE_SEARCH_RESULT_LINES_PLUS_BOOLEAN_CURSOR_PRESENCE_HASHED; RAW_SLACK_MESSAGE_TEXT_LINKS_TIMESTAMPS_AND_CURSOR_NOT_PERSISTED
+connector_error_observed: false
+retries: 0
+fallbacks: 0
+external_call_time_ms: NOT_EXPOSED_BY_CONNECTOR
+measured_fact: BOUNDED_PUBLIC_SEARCH_RETURNED_THREE_CONTENT_HYDRATING_MESSAGE_RESULTS_WITH_CURSOR_AND_NO_CONNECTOR_ERROR
+interpretation: DIRECT_PUBLIC_KEYWORD_DISCOVERY_WORKS_FOR_THIS_QUERY_BUT_RESULT_IS_CONTENT_HYDRATING_AND_FIRST_PAGE_IS_NOT_COMPLETENESS_EVIDENCE
+andon: SEARCH_RESULT_EXPOSES_MESSAGE_CONTENT_AUTHOR_CHANNEL_AND_TIME_METADATA; PROVIDER_ENDPOINT_TOKEN_CLASS_EFFECTIVE_SCOPES_REQUEST_ID_RATE_LIMIT_HEADERS_AND_ACTUAL_QUOTA_DEBIT_ARE_NOT_EXPOSED
+custom_code_avoided_estimate: 80_to_200_LOC_UNVALIDATED
+operator_minutes_removed_measured: 0
+credentials: CONNECTOR_MANAGED_EFFECTIVE_SLACK_PRINCIPAL_TOKEN_CLASS_AND_SCOPES_UNKNOWN
+durability: GIT_EVENT_DURABLE_SLACK_SEARCH_VIEW_AND_MESSAGES_MUTABLE_NO_PROVIDER_SNAPSHOT_RECEIPT
+observability: RESULT_COUNT_CONTENT_SNIPPETS_AND_CURSOR_PRESENCE_EXPOSED; PROVIDER_REQUEST_ID_EFFECTIVE_SCOPE_RATE_LIMIT_HEADERS_CALL_TIME_AND_QUOTA_DEBIT_NOT_EXPOSED
+portability: LOW_TO_MEDIUM_SLACK_SEARCH_SYNTAX_AND_CONNECTOR_RESPONSE_SPECIFIC
+failure_behavior: ONE_SUCCESS_WITH_PAGINATION_OBSERVED; EMPTY_RESULT_PERMISSION_DENIAL_RATE_LIMIT_TRANSIENT_FAILURE_AND_CURSOR_REPLAY_UNTESTED
+paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
+direct_cost_or_quota_evidence: NONE_FROM_CONNECTOR
+official_contract_primary: https://docs.slack.dev/reference/methods/assistant.search.context/
+official_contract_baseline: REAL_TIME_SEARCH_CAN_SEARCH_PUBLIC_MESSAGES; DEFAULT_CHANNEL_TYPE_PUBLIC; PUBLIC_SCOPE_SEARCH_READ_PUBLIC; LIMIT_MAX_20; CURSOR_PAGINATION; CONTEXT_MESSAGES_OPTIONAL; SPECIAL_RATE_LIMIT_MOST_TEAMS_10_PLUS_PER_MINUTE_AND_USER_LIMIT_10_PER_MINUTE; PAGINATED_REQUESTS_COUNT
+provider_mapping: WRAPPER_CONTRACT_CLOSELY_MATCHES_ASSISTANT_SEARCH_CONTEXT_BUT_EXACT_UNDERLYING_ENDPOINT_AND_TOKEN_CLASS_NOT_EXPOSED_SO_MAPPING_IS_INFERENTIAL_NOT_DIRECT
+catalog_consumer: HFO_COTS_CAPABILITY_INVENTORY
+operational_consumer: NOT_ASSIGNED
+consumer_ack: NOT_OBSERVED
+verifier: DIRECT_SLACK_CONNECTOR_RECEIPT_PLUS_OFFICIAL_SLACK_REAL_TIME_SEARCH_CONTRACT_PLUS_GIT_EVENT_READBACK
+adoption_credit: 0
+fitness_credit: 0
+mandatory_gate: PUBLIC_ONLY_SEARCH; BOUNDED_QUERY; SMALL_LIMIT; INCLUDE_CONTEXT_FALSE; DO_NOT_PERSIST_RAW_MESSAGE_TEXT_LINKS_TIMESTAMPS_OR_CURSOR; NEXT_CURSOR_MEANS_MORE_RESULTS_MAY_EXIST; DO_NOT_INFER_COMPLETENESS_OR_EFFECTIVE_AUTHORIZATION; NO_UNBOUNDED_RETRY; CONSEQUENTIAL_CLAIMS_REQUIRE_DIRECT_THREAD_CHANNEL_OR_MATCHED_PROVIDER_WITNESS
+strongest_falsifier: IDENTICAL_REPLAY_OR_MATCHED_RAW_SLACK_SEARCH_UNDER_SAME_EFFECTIVE_PRINCIPAL_RETURNS_MATERIALLY_DIFFERENT_PUBLIC_SCOPE_ORDERING_PAGINATION_OR_AUTHORIZATION_SEMANTICS_OR_WRAPPER_SURFACES_PRIVATE_CHANNEL_RESULTS_THROUGH_PUBLIC_ONLY_CALL
+honest_flaw: ONE_SUCCESSFUL_X13_QUERY_ONLY; CONTENT_HYDRATING_SEARCH; NO_EMPTY_SUCCESS_PERMISSION_DENIAL_CURSOR_REPLAY_RATE_LIMIT_TRANSIENT_FAILURE_RAW_PROVIDER_PARITY_PROVIDER_REQUEST_ID_EFFECTIVE_SCOPE_CALL_TIME_OR_ACTUAL_QUOTA_DEBIT_TEST
+next_phase: IDENTICAL_BOUNDED_REPLAY_AND_ORDERED_DIGEST_COMPARISON_WITH_NO_RAW_MESSAGE_PERSISTENCE
+review_expiry_utc: 2026-08-14T05:48:43Z
+valid_time_utc: 2026-08-07T05:48:43Z
+recorded_time_utc: 2026-08-07T05:48:43Z
+---
+
+# X13 Slack Public Search Phase 1
+
+One bounded read-only `slack_search_public` call searched public Slack messages for `X13`, limited to three results, sorted newest-first, with bots included and surrounding context disabled. The call returned three message results and a next-page cursor with no connector error or mutation.
+
+The direct capability baseline is useful but not least-data: even `concise` search results hydrate message text snippets plus author/channel/time metadata. The Git receipt therefore stores only counts, booleans, contract facts, and hashes; raw message text, message links, timestamps, and the cursor are not persisted.
+
+Slack's current Real-time Search contract (`assistant.search.context`) closely matches the wrapper shape: public channels are the default channel type, `search:read.public` is the public-search scope, results are capped at 20 per page, pagination is cursor-based, and surrounding context is optional. Slack documents special limits of 10+ requests/minute for most teams plus a 10 requests/minute user-level limit, with paginated requests counting toward the limit. The connector does not expose its underlying endpoint, token class, effective scopes, provider request ID, rate-limit headers, call time, or actual quota debit, so exact provider mapping remains inferential.
+
+Phase 1 is accepted with gates for catalog/discovery evaluation only. No adoption or fitness credit is awarded. Phase 2 should replay the identical bounded query and compare request/result digests without persisting raw Slack content.
