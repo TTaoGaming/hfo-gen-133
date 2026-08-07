@@ -1,0 +1,128 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+result_id: S15_X13_SLACK_PHASE3_REUSE_S08_SYNTHETIC_NONMATCH_EMPTY_SUCCESS_GATE
+result_class: REUSABLE_PRIOR_ARTIFACT
+status: OFFERED_NOT_CONSUMED
+wip: 1
+
+carrier_self_probe:
+  seat: 15
+  expected_task_id: 6a52f485409c8191aa06ea7911add3f3
+  observed_task_id: 6a52f485409c8191aa06ea7911add3f3
+  task_id_match: true
+  task_identity_evidence: NATIVE_AUTOMATION_INVENTORY_READBACK
+  github_tools_observed: SEARCH_COMMITS_SEARCH_FETCH_COMMIT_FETCH_FILE_CREATE_FILE
+  slack_tools_observed: SEND_MESSAGE_AVAILABLE
+  automation_inventory_read_observed: true
+  file_library_used: false
+  google_drive_used: false
+  older_repository_used: false
+
+current_workitem:
+  id: X13_SLACK_PUBLIC_SEARCH_READONLY_014
+  phase: PHASE3_SYNTHETIC_NONMATCH_EMPTY_OR_ERROR_SHAPE
+  status: PENDING
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+  pointer_path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+  pointer_blob_sha: 9b23b551a62a7713a665092385893f999a26e357
+  pointer_version: 154
+  last_event_commit: 10c4b370570163f4eddb636876a9820ed896d866
+  last_event_path: state/coordination/experiments/cots_connector_x13/20260807T064801Z_SLACK_PUBLIC_SEARCH_PHASE2.md
+  phase_2_measured_fact: IDENTICAL_BOUNDED_REQUEST_CHANGED_ORDERED_RESULT_DIGEST_AFTER_NEW_MATCHING_MESSAGES_APPEARED
+  acceptance_need: >-
+    Execute one bounded synthetic nonmatching public Slack search with no retry; distinguish
+    empty-success from connector error without widening the observation into authoritative
+    workspace absence, completeness, parser-literalness, or permission claims.
+
+reusable_prior_artifact:
+  original_date_utc: '2026-08-06T15:28:20Z'
+  source_repository: TTaoGaming/hfo-gen-133
+  source_branch: agent/gen133-bootstrap-20260730
+  source_path: state/coordination/receipts/chatgpt_runtime/seat-08/20260806T152820Z_S08_SLACK_PUBLIC_SEARCH_SYNTHETIC_NONMATCH_QUERY_DESIGN_EVIDENCE_CARD.md
+  source_commit: 38a825f50616741dc84365728b0b364fbc19afa6
+  source_blob_sha: 0f7df6911440c20f22d8da94e546b7628080be3d
+  source_consumer: X13_SLACK_SEARCH_PUBLIC_READONLY_010_PHASE3_SYNTHETIC_NONMATCH_EMPTY_OR_ERROR_SHAPE_GATE
+  reusable_invariant: >-
+    A freshly generated single token shaped as zzq plus 32 lowercase hexadecimal characters,
+    withheld from Slack until after the call, materially reduces modifier, natural-language,
+    and self-contamination risk. A successful zero-item response supports only that the
+    connector accepted this exact query and returned no visible public-message match in that
+    observation; it does not prove absence or completeness.
+
+reuse_binding:
+  supported_claims:
+    - ONE_HIGH_ENTROPY_SINGLE_TOKEN_PROBE_CAN_EXERCISE_EMPTY_SUCCESS_VS_ERROR_WITH_LOW_COLLISION_RISK
+    - WITHHOLDING_THE_RAW_PROBE_TOKEN_FROM_SLACK_BEFORE_THE_CALL_REDUCES_OBSERVER_SELF_CONTAMINATION
+    - EMPTY_SUCCESS_OBSERVED_SUPPORTS_ONLY_NO_VISIBLE_PUBLIC_MESSAGE_MATCH_IN_THIS_OBSERVATION
+    - STRUCTURED_CONNECTOR_ERROR_SUPPORTS_ONLY_THE_OBSERVED_ERROR_CLASS_AND_CALL_PARAMETERS
+    - CURRENT_PHASE2_OBSERVER_EFFECT_MAKES_PRECALL_TOKEN_WITHHOLDING_ACCEPTANCE_RELEVANT
+  excluded_claims:
+    - WORKSPACE_WIDE_ABSENCE
+    - PUBLIC_CHANNEL_COMPLETENESS
+    - QUERY_PARSER_LITERALNESS
+    - FRESH_INDEXING_OR_STABLE_FUTURE_BEHAVIOR
+    - PERMISSION_OR_EFFECTIVE_AUTHORIZATION_COMPLETENESS
+    - RAW_PROVIDER_PARITY
+    - EXACT_BACKEND_METHOD_OR_TOKEN_CLASS
+    - RATE_LIMIT_REQUEST_ID_QUOTA_DEBIT_OR_EFFECTIVE_SCOPE
+    - BUYER_MARKET_OR_DEMAND_ABSENCE
+  acceptance_relevance: >-
+    Phase 3 should generate the token immediately before the single bounded public-search call,
+    avoid publishing or logging the raw token before execution, use a small limit with context
+    disabled, perform no cursor follow and no retry, and classify the response only as
+    EMPTY_SUCCESS_OBSERVED, NONEMPTY_UNEXPECTED, or the exact connector error class. The prior
+    design is especially relevant because phase 2 directly observed that status traffic carrying
+    the probe token can enter later newest-first search results.
+  consumption_test: >-
+    Heritage credit becomes eligible only if X13_SLACK_PUBLIC_SEARCH_READONLY_014 phase 3 cites
+    this exact receipt or source pointer and uses its low-contamination query shape plus bounded
+    empty-success/error claim ceiling.
+  heritage_credit: 0_PENDING_EXACT_CURRENT_CONSUMER_ACK
+
+privacy_ceiling:
+  class: SANITIZED_PUBLIC_SEARCH_CONTROL_METADATA_ONLY
+  allowed_in_git:
+    - task_and_workitem_ids
+    - repository_commit_path_blob_metadata
+    - request_shape_without_raw_probe_token
+    - counts_booleans_hashes_and_error_class
+    - sanitized_capability_and_claim_ceiling
+  prohibited:
+    - raw_slack_message_bodies
+    - message_links_or_timestamps_from_search_results
+    - raw_cursor_values
+    - raw_synthetic_probe_token_before_execution
+    - private_channel_dm_or_thread_content
+    - credentials_tokens_effective_scopes_or_personal_data
+
+verifier:
+  structural: S04_HRIST_STRUCTURAL_PREFLIGHT
+  distinct_required: DISTINCT_SAME_PRINCIPAL_RAW_SLACK_PUBLIC_SEARCH_QUERY_GRAMMAR_AND_EMPTY_ENVELOPE_VERIFIER
+  same_provider_binding_weight: 0
+  self_verification: PROHIBITED
+
+consumer:
+  primary: X13_SLACK_PUBLIC_SEARCH_READONLY_014_PHASE3_SYNTHETIC_NONMATCH_EMPTY_OR_ERROR_SHAPE_GATE
+  reducer: HFO_COTS_CAPABILITY_INVENTORY
+consumer_ack: NOT_OBSERVED
+expiry_utc: '2026-08-13T15:28:20Z'
+
+honest_flaw: >-
+  The prior S08 card was bound to earlier experiment X13_SLACK_SEARCH_PUBLIC_READONLY_010 and to
+  the connector schema observed on 2026-08-06, not to the current experiment bytes. The exact
+  Slack backend, effective principal/scopes, parser behavior, index freshness, and raw-provider
+  envelope remain opaque. A high-entropy token lowers collision risk but cannot prove true
+  nonexistence, and the current producer must still execute and classify the fresh call directly.
+
+dedup:
+  gen133_first_search_terms:
+    - S08_SLACK_PUBLIC_SEARCH_SYNTHETIC_NONMATCH_QUERY_DESIGN X13_SLACK_PUBLIC_SEARCH_READONLY_014 seat-15
+    - Slack search zero results absence proof synthetic nonmatching public search empty success
+  current_binding_duplicate_found: false
+  older_sources_needed: false
+
+valid_time_utc: '2026-08-07T06:55:18Z'
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+sealed: false
+---
