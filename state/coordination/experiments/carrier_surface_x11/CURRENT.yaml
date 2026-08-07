@@ -1,8 +1,8 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_SLACK_WRITE_SURFACE_GATED_VISIBILITY_V1
-current_version: 149
-accepted_wakes: 1
+current_version: 150
+accepted_wakes: 2
 target_wakes_before_decision: 4
 controlled_factor: slack_write_surface_gated_visibility
 campaign_status: ACTIVE
@@ -19,17 +19,17 @@ prior_campaign:
 baseline_result: four_identical_runtime_or_tool_context_inspections_exposed_no_explicit_Project_non_Project_marker_or_project_identifier;_this_is_stable_absence_only_and_does_not_identify_actual_Project_membership_or_behavioral_difference
 hypothesis: the_connected_Slack_surface_may_expose_a_message_write_action_readably_without_invoking_a_probe_only_send;_real_write_success_may_only_be_observed_when_a_separate_campaign_decision_or_Andon_already_authorizes_a_post
 measured_result:
-  slack_message_write_action_exposed: [true]
-  real_write_observed_only_if_already_authorized: [false]
-  latencies_ms: [null]
+  slack_message_write_action_exposed: [true, true]
+  real_write_observed_only_if_already_authorized: [false, false]
+  latencies_ms: [null, null]
   latency_note: tool_action_schema_discovery_exposes_no_discrete_provider_write_latency
   permission_class: CONNECTED_SLACK_MESSAGE_WRITE_ACTION_SCHEMA_EXPOSED
   error_class: NONE
   operator_relay_minutes: 0
-  changed_capability: true
+  changed_capability: false
   campaign_decision: false
   andon: false
-supported_claim: the_connected_Slack_tool_surface_exposed_a_slack_send_message_action_schema_during_one_accepted_wake_without_invoking_a_probe_only_send
+supported_claim: the_connected_Slack_tool_surface_exposed_a_slack_send_message_action_schema_during_two_accepted_wakes_without_invoking_a_probe_only_send
 claim_ceiling: action_schema_visibility_only_not_authenticated_write_permission_or_success;_no_probe_only_send_was_invoked_and_no_real_write_success_is_claimed
 strongest_falsifier: the_connected_Slack_tool_surface_does_not_expose_a_message_write_action_but_the_probe_reports_that_it_does
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
@@ -38,16 +38,16 @@ consumer:
   - Ratatoskr
 honest_flaw: action_schema_visibility_does_not_establish_channel_specific_permission_or_provider_side_write_success_and_the_no_probe_only_send_gate_prevents_direct_write_testing_except_on_separately_authorized_campaign_decision_or_Andon_posts
 last_event:
-  commit: 31bb6be95bd7ef39e7fdf9b775771dd06fb7b53a
-  path: state/coordination/experiments/carrier_surface_x11/events/20260807T013904Z_SLACK_WRITE_SURFACE_GATED_VISIBILITY_V1_WAKE_01.yaml
-  blob: 5c8a1e1001ff6b19ba77437d3b2e7961ea8c2c58
+  commit: bf589b47dc123ae94ee8b0a0b5e8071ed95b0f9a
+  path: state/coordination/experiments/carrier_surface_x11/events/20260807T023917Z_SLACK_WRITE_SURFACE_GATED_VISIBILITY_V1_WAKE_02.yaml
+  blob: a33a0d249e66e639f32a71d3398926ded9b5425f
 next_factor: slack_write_surface_gated_visibility
 next_probe:
   experiment_id: X11_SLACK_WRITE_SURFACE_GATED_VISIBILITY_V1
-  campaign_wake: 2
+  campaign_wake: 3
   mode: read_only_write_action_surface_visibility
   exact_action: repeat_the_identical_inspection_only_of_whether_the_connected_Slack_tool_surface_exposes_a_message_write_action_without_invoking_a_probe_only_send;_if_a_separate_campaign_decision_or_Andon_requires_a_Slack_post_that_authorized_post_may_supply_real_write_success_evidence_without_an_extra_message
-  expected_current_version: 149
+  expected_current_version: 150
   persist_only:
     - slack_message_write_action_exposed
     - real_write_observed_only_if_already_authorized
@@ -61,9 +61,9 @@ next_probe:
   post_only_changed_capability_campaign_decision_or_andon: true
   sensitive_readback_externalization_allowed: false
   same_provider_independence_claim_allowed: false
-slack_action: POST_CHANGED_CAPABILITY_AFTER_THIS_POINTER_READBACK
-updated_valid_time_utc: 2026-08-07T01:39:04Z
+slack_action: NONE_UNCHANGED_PROBE
+updated_valid_time_utc: 2026-08-07T02:39:17Z
 sealed: false
 ---
 
-Slack write-surface gated visibility V1 accepted wake 1 of 4. The connected Slack tool schema explicitly exposes a message-send action, but the probe invoked no send and therefore establishes no authenticated write success or channel-specific permission. Wake 2 repeats the identical schema-only visibility probe. A changed-capability Slack post is authorized only after this pointer readback.
+Slack write-surface gated visibility V1 accepted wake 2 of 4. The connected Slack tool schema again exposes the slack_send_message action. No send was invoked, no authenticated write success is claimed, and the capability measurement is unchanged from wake 1. Wake 3 repeats the identical schema-only visibility probe; no Slack post is authorized for this unchanged wake.
