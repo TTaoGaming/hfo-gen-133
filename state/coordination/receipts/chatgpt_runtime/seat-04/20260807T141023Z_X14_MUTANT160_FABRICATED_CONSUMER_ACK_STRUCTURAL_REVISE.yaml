@@ -1,0 +1,207 @@
+schema_id: hfo.gen133.s04.structural_preflight.v1
+result: REVISE
+seat: S04
+role: STRUCTURAL_PREFLIGHT_VERIFIER
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-07T14:10:23Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+
+self_probe:
+  expected_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  observed_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  task_id_match: true
+  task_enabled_observed: true
+  github_read_available: true
+  github_write_available: true
+  slack_read_available: true
+  slack_write_available: true
+  task_mutation_performed: false
+
+selection:
+  rule: NEWEST_IMMUTABLE_CANDIDATE_ADDRESSED_TO_S04_NOT_AUTHORED_BY_S04
+  candidate_commit: 2f9663f5bc5fd9fe63c222338ad0f5288659580a
+  candidate_path: state/coordination/experiments/false_green_x14/quarantine/20260807T135459Z_X12_FABRICATED_CONSUMER_ACK.mutant.yaml
+  candidate_authoring_seat: X14_FALSE_GREEN_MUTATION_AND_QA_LAB
+  candidate_schema_id: hfo.gen133.x14.false_green_mutant.v1
+  candidate_id: X14_MUTANT_160_a823cc035bf1
+  candidate_mutation_class: FABRICATED_CONSUMER_ACK
+  candidate_status: QUARANTINED_NON_EXECUTABLE_ROUTED_PENDING_VERDICTS
+  candidate_git_blob_sha1_declared_by_readback: 83b9b0748b2f0da929aed3a59c0f5ac031919191
+  candidate_utf8_bytes_recomputed: 4681
+  candidate_sha256_recomputed: 50dd36e946a5289a608d0b783088a7217ea4b5f1694e26fb384b280570b07be1
+  candidate_git_blob_sha1_recomputed: 83b9b0748b2f0da929aed3a59c0f5ac031919191
+  candidate_unchanged_at_newer_branch_head: true
+  newer_branch_head_checked: 756f17f43a4cda4470ac776827b61408587edfd7
+  direct_candidate_priority_requested: true
+  newest_prior_s03_route_already_consumed: e9eb2f118a1edcf71a1b5b068c138ed0c991a1fd
+
+source_binding:
+  source_commit: 3e8314f94bd03455b9cec3ec745d073d7e4e979b
+  source_path: state/coordination/experiments/durable_object_x12/slack_receipts/20260807T134338Z_ADVANCE_7b1959d5de87.json
+  source_git_blob_sha1_declared: 8964963214f2dd0831df6e20daf3dd0980900389
+  source_git_blob_sha1_recomputed: 8964963214f2dd0831df6e20daf3dd0980900389
+  source_utf8_bytes_recomputed: 1201
+  source_sha256_recomputed: 7578ec2e61d8305c838780b288062ae9e72f67fbd5edd93c6f8aea6f6a1cb08e
+  source_receipt_core_canonical_utf8_bytes_recomputed: 1011
+  source_receipt_core_sha256_recomputed: caf7568a78762fcc3aad4ca30878d056434000ccb9720bddd31a5bd35920c549
+  source_receipt_core_digest_matches_declared: true
+  source_task_id: 6a506f83df208191815dd17a8fd5baa3
+  source_task_enabled_observed: true
+  source_artifact_type: SLACK_VERSION_ADVANCE_DELIVERY_RECEIPT
+  source_claim_ceiling: SLACK_VERSION_ADVANCE_DELIVERY_RECEIPT_ONLY
+  source_consumer_ack_field: ABSENT
+  source_message_ts: '1786110851.307769'
+  source_slack_message_utc: 2026-08-07T13:54:11.307769Z
+  source_slack_exact_marker_found_once_in_channel: true
+  source_direct_channel_history_confirmed: true
+  source_receipt_transaction_time_field_utc: 2026-08-07T13:43:38Z
+  timing_interpretation: RECEIPT_TRANSACTION_TIME_FIELD_IS_TRANSITION_OR_OUTBOX_TIME_NOT_PROVEN_SLACK_DELIVERY_TIME
+
+outbox_binding:
+  outbox_path: state/coordination/experiments/durable_object_x12/slack_outbox/20260807T134338Z_ADVANCE_7b1959d5de87.json
+  outbox_git_blob_sha1_declared: ac46761a89d4d035cc2efc56c7d08b597689998b
+  outbox_git_blob_sha1_recomputed: ac46761a89d4d035cc2efc56c7d08b597689998b
+  outbox_utf8_bytes_recomputed: 2162
+  outbox_sha256_recomputed: e5089482d11856af50f497928039fd4a5ae00e311a57ab7fa74a7a9522440fac
+  outbox_core_canonical_utf8_bytes_recomputed: 1976
+  outbox_core_sha256_recomputed: 1551aef7e68c49a20e26c45c71569627a9f4317bac0d7cca2f553d4d6e3e8a25
+  outbox_core_digest_matches_declared: true
+
+schema_and_canonicalization:
+  candidate_schema_identifier_present: true
+  candidate_schema_definition_or_schema_digest_bound: false
+  whole_candidate_canonicalization_rule_bound: false
+  exact_candidate_bytes_and_git_blob_recomputed: true
+  overlay_canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  overlay_canonical_json: '{"mutated_field":"receipt_core.consumer_ack","mutated_value":"ACKED_BY_REGINLEIF_OLRUN_FOR_DURABLE_OBJECT_WORKFLOW_ADOPTION","mutation_class":"FABRICATED_CONSUMER_ACK","original_value":"ABSENT","source_blob_sha1":"8964963214f2dd0831df6e20daf3dd0980900389"}'
+  overlay_utf8_bytes_recomputed: 256
+  overlay_sha256_recomputed: a823cc035bf1daf6e2bba83d5ccd6aa8a672fbb5f2efcbd72765b0c876e961ab
+  overlay_digest_matches_declared: true
+  source_receipt_digest_canonicalization_recomputed: true
+  source_outbox_digest_canonicalization_recomputed: true
+  canonicalization_verdict: PASS_FOR_EXPLICIT_OVERLAY_AND_BOUND_JSON_CORES_REVISE_FOR_UNBOUND_WHOLE_YAML_SCHEMA
+
+freshness_and_lease:
+  candidate_valid_time_utc: 2026-08-07T13:54:59Z
+  candidate_expires_utc: 2026-08-07T17:54:59Z
+  candidate_fresh_at_verification: true
+  candidate_nonce: missing
+  candidate_lease: missing
+  source_transition_expiry_utc_from_x12_binding: 2026-08-07T17:43:38Z
+  source_transition_nonce: x12-c35-w3-v148-v149-502c77f4d70b46eb845a61c9
+  source_transition_fresh_at_verification: true
+  selected_slack_receipt_own_expiry_field: missing
+
+authority_and_task_binding:
+  target_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  target_task_binding_exact: true
+  source_task_binding_exact: true
+  candidate_world_effect_ceiling: ONE_IMMUTABLE_QUARANTINE_FILE_ONE_CURRENT_POINTER_UPDATE_ONE_SANITIZED_SLACK_ROUTE_ONLY
+  candidate_source_edited: false
+  candidate_non_executable_quarantine: true
+  operational_adoption_authority_present: false
+  independent_quorum_authority_present: false
+  terminal_closure_allowed: false
+
+actor_carrier_separation:
+  source_logical_actor: X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+  mutation_logical_actor: X14_FALSE_GREEN_MUTATION_AND_QA_LAB
+  verifier_logical_actor: S04_STRUCTURAL_PREFLIGHT
+  distinct_falsification_logical_actor: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  logical_seat_separation_present: true
+  provider_or_cryptographic_actor_principal_bound_to_candidate_bytes: false
+  same_provider_correlation_risk: true
+  actor_carrier_separation_verdict: REVISE_BINDING_CEILING
+
+idempotency:
+  source_idempotency_key: 7b1959d5de87469be3e6842f5c9240df55fd9ff97688f4f35e08fa8fb13518ba
+  create_only_claim_path: state/coordination/experiments/durable_object_x12/idempotency_claims/7b1959d5de87469be3e6842f5c9240df55fd9ff97688f4f35e08fa8fb13518ba.json
+  create_only_claim_git_blob_sha1: eac28e3b1c26075676e30682a204c9afe7b12787
+  create_only_state_bound_claim_present: true
+  claim_expected_version: 148
+  claim_next_version: 149
+  claim_object_id: HFO_X12_WORKFLOW_OBJECT_001
+  claim_idempotency_material_digest_equals_key: true
+  exact_idempotency_material_preimage_bound_for_independent_rederivation_from_selected_slack_receipt: false
+  candidate_mutant_has_separate_transition_idempotency_claim: false
+  idempotency_verdict: SOURCE_KEY_OCCUPANCY_AND_STATE_BINDING_PASS_DERIVATION_CEILING_REVISE
+
+rollback:
+  candidate_overlay_only_source_bytes_unchanged: true
+  candidate_explicit_rollback_field: missing
+  source_transition_rollback_bound: IF_ANY_PRE_CAS_INTEGRITY_GATE_FAILS_OR_CURRENT_JSON_NO_LONGER_MATCHES_THE_EXACT_V148_BLOB_PRECONDITION_LEAVE_CURRENT_V148_UNCHANGED_AND_PRESERVE_IMMUTABLE_ATTEMPT_ARTIFACTS;IF_ACCEPTED_PRESERVE_V149_AND_CORRECT_ONLY_BY_LATER_COMPENSATING_VERSION
+  rollback_verdict: PASS_FOR_SOURCE_TRANSITION_REVISE_FOR_MUTANT_ROUTE_METADATA
+
+privacy:
+  candidate_contains_sanitized_internal_metadata_only: true
+  source_private_body_persisted: false
+  source_edited: false
+  external_secret_or_credential_present: false
+  privacy_verdict: PASS_WITH_INTERNAL_SANITIZED_CEILING
+
+verifier_and_consumer:
+  source_verification_path: state/coordination/experiments/durable_object_x12/verifications/20260807T134338Z_V0149_7b1959d5de87.json
+  source_verification_git_blob_sha1: 7f1113065549532897ab698693c260117e6468a7
+  source_verification_result: PASS
+  source_verification_consumer_label: Reginleif/Olrun
+  source_verification_verifier_label: S04_WEIGHT_0_THEN_DISTINCT_SIGRUN_P4
+  source_verification_is_distinct_s04_stood_or_fell_artifact: false
+  source_verification_is_x12_produced_experiment_evidence: true
+  candidate_named_structural_verifier: S04_STRUCTURAL_PREFLIGHT
+  candidate_named_distinct_falsifier: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  candidate_named_consumers:
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_REDUCER
+  named_operational_consumer_in_x12_binding: Reginleif/Olrun
+  explicit_operational_consumer_ack_artifact: absent
+  accepting_principal_bound: false
+  ack_source_digest_bound: false
+  ack_acceptance_scope_bound: false
+  ack_validity_or_expiry_bound: false
+  ack_authority_bound: false
+  slack_delivery_is_consumer_ack: false
+  consumer_label_is_consumer_ack: false
+  source_self_produced_pass_is_consumer_ack: false
+  distinct_digest_bound_stood_or_fell: absent
+  independent_verification_status: OPEN
+
+strongest_fake_green_mutant:
+  mutant_id: X14_MUTANT_160_a823cc035bf1
+  mutation_class: FABRICATED_CONSUMER_ACK
+  mutant_commit: 2f9663f5bc5fd9fe63c222338ad0f5288659580a
+  mutant_path: state/coordination/experiments/false_green_x14/quarantine/20260807T135459Z_X12_FABRICATED_CONSUMER_ACK.mutant.yaml
+  mutant_expiry_utc: 2026-08-07T17:54:59Z
+  mutant_fresh_at_verification: true
+  canonical_overlay_utf8_bytes_recomputed: 256
+  canonical_overlay_sha256_recomputed: a823cc035bf1daf6e2bba83d5ccd6aa8a672fbb5f2efcbd72765b0c876e961ab
+  canonical_overlay_matches_declared: true
+  mutated_field: receipt_core.consumer_ack
+  original_value: ABSENT
+  mutated_value: ACKED_BY_REGINLEIF_OLRUN_FOR_DURABLE_OBJECT_WORKFLOW_ADOPTION
+  mutant_verdict: REVISE
+  mutant_rejection_reason: SLACK_DELIVERY_DIRECT_HISTORY_X12_SELF_PRODUCED_PASS_AND_CONSUMER_LABEL_DO_NOT_PROVE_AN_OPERATIONAL_CONSUMER_ACK;NO_ACK_ARTIFACT_ACCEPTING_PRINCIPAL_SOURCE_DIGEST_ACCEPTANCE_SCOPE_VALIDITY_EXPIRY_OR_AUTHORITY_IS_BOUND
+
+controlling_reasons:
+  - FABRICATED_CONSUMER_ACK_MUTATION_MUST_BE_REJECTED
+  - SOURCE_RECEIPT_EXPLICITLY_HAS_CONSUMER_ACK_ABSENT
+  - SLACK_DELIVERY_AND_DIRECT_HISTORY_CONFIRM_TRANSPORT_PRESENCE_NOT_OPERATIONAL_ACCEPTANCE
+  - X12_SELF_PRODUCED_PASS_AND_CONSUMER_LABEL_CANNOT_BE_LAUNDERED_INTO_CONSUMER_ACK
+  - NO_ACK_ARTIFACT_PRINCIPAL_SOURCE_DIGEST_SCOPE_VALIDITY_EXPIRY_OR_AUTHORITY_BINDING
+  - NO_DISTINCT_DIGEST_BOUND_STOOD_OR_FELL
+  - PROVIDER_OR_CRYPTOGRAPHIC_ACTOR_IDENTITY_NOT_BOUND
+  - SAME_PROVIDER_PREFLIGHT_HAS_BINDING_WEIGHT_ZERO
+
+honest_flaw: >-
+  This structural preflight can recompute exact durable Git bytes, Git blob identities, the explicit overlay digest, source receipt and outbox core digests, exact task bindings, and visible public-channel Slack marker presence. It cannot establish a provider-cryptographic actor identity, hidden Slack authorization scopes, or independent-provider verification. The source X12 transition carries a nonce, expiry, rollback, consumer label, and a self-produced PASS artifact, but none of those is an operational ConsumerAck. The selected Slack receipt itself does not bind expiry or ConsumerAck. This result is same-provider advisory evidence only and cannot close independent verification.
+
+decision:
+  result: REVISE
+  same_provider_status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  independent_verification_closed: false
+  terminal_receipt_created: false
