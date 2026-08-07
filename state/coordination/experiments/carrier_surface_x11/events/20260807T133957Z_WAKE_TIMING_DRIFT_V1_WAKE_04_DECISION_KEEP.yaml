@@ -1,0 +1,36 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+experiment_id: X11_WAKE_TIMING_DRIFT_V1
+campaign_wake: 4
+expected_current_version: 159
+resulting_current_version: 160
+accepted: true
+disposition: KEEP
+baseline: three_accepted_elapsed_time_samples
+hypothesis: elapsed_time_between_accepted_events_is_repeatably_measurable
+controlled_factor: wake_timing
+exact_probe: read_current_and_prior_event_time_then_compute_elapsed_seconds
+measured_result:
+  elapsed_seconds: 3614.0
+  clock_source_class: RUNTIME_WALL_CLOCK
+  permission_class: RUNTIME_TIME_READ_AVAILABLE
+  error_class: NONE
+  latency: NOT_EXPOSED
+  operator_relay_minutes: 0
+campaign_aggregate:
+  successes: 4
+  elapsed_seconds: [3483.826231, 3764.983789, 3503.18998, 3614.0]
+  mean_elapsed_seconds: 3591.5
+  range_seconds: 281.157558
+  max_absolute_offset_from_3600_seconds: 164.983789
+strongest_falsifier: required_time_value_is_unavailable_or_elapsed_interval_cannot_be_computed
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer: [Reginleif, Ratatoskr]
+honest_flaw: observed_elapsed_time_is_between_accepted_event_timestamps_and_includes_processing_delay_so_it_does_not_measure_scheduler_invocation_exactness
+supported_claim: four_observed_elapsed_times_between_accepted_events_are_measurable
+claim_ceiling: observed_elapsed_time_only_not_scheduler_exactness_or_delivery_guarantee
+next_factor: web_research_search_surface
+next_experiment_id: X11_WEB_FIXED_QUERY_SEARCH_V1
+valid_time_utc: 2026-08-07T13:39:57Z
+sealed: true
+---
