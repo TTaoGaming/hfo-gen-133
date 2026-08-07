@@ -1,25 +1,26 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
 experiment_id: X13_GMAIL_SEARCH_IDS_READONLY_013
-version: 151
-prior_version: 150
+version: 152
+prior_version: 151
 candidate: Gmail_search_email_ids_readonly_surface
-campaign_wake: 3_of_4
-campaign_status: ACTIVE
+campaign_wake: 4_of_4
+campaign_status: CLOSED
 phase_1_status: PHASE1_ACCEPTED_WITH_GATES
 phase_2_status: PHASE2_ACCEPTED_WITH_GATES
 phase_3_status: PHASE3_ACCEPTED_WITH_GATES
-phase_4_status: PENDING
+phase_4_status: PHASE4_COMPLETE
+phase_4_decision: ADOPT_WITH_GATES
 provisional_decision: ADOPT_WITH_GATES_CATALOG_ONLY
-operational_decision: NOT_YET_DECIDED
+operational_decision: ADOPT_WITH_GATES_FOR_BOUNDED_ID_ONLY_DISCOVERY_AND_CATALOG_USE
 carrier_task_id: 6a55c1733708819185088bf334e33ea5
 carrier_task_id_match: true
 wip: 1
-last_event_commit: 3b568ea773724f46f8a7df93792cbf6dff25f162
-last_event_path: state/coordination/experiments/cots_connector_x13/20260807T034850Z_GMAIL_SEARCH_IDS_PHASE3_EMPTY_SUCCESS.md
-last_event_blob_sha: f02e57439a6503bb198e27ea536d6a75b8d2a302
+last_event_commit: ffdffe043c4ea8f2a4739d66f69a6498f9e415d3
+last_event_path: state/coordination/experiments/cots_connector_x13/20260807T044801Z_GMAIL_SEARCH_IDS_PHASE4_ADOPT_WITH_GATES.md
+last_event_blob_sha: fa8398f732195569de0637c889bdf96de23de959
 last_event_readback: true
-prior_current_blob_sha: 91e75fbb3d2056c60b25639f8bf5a4d4cfa8cc70
+prior_current_blob_sha: 49396d64b7668213a1b7128f92829542f4afd096
 campaign_calls: 3_BOUNDED_READONLY_GMAIL_SEARCH_EMAIL_IDS
 successful_nonempty_calls: 2
 successful_empty_calls: 1
@@ -51,9 +52,9 @@ raw_next_page_token_persisted: false
 external_call_time_ms_phase_1: 405
 external_call_time_ms_phase_2: 639
 external_call_time_ms_phase_3: 231
-measured_fact: SYNTHETIC_NONMATCHING_ID_ONLY_QUERY_RETURNED_EMPTY_SUCCESS_WITH_NO_CONNECTOR_ERROR_OR_CONTENT_HYDRATION
-interpretation: CONNECTOR_DISTINGUISHES_EMPTY_SUCCESS_FROM_ERROR_FOR_THIS CALL; EMPTY SUCCESS IS ZERO VISIBLE MATCHES RETURNED BY THIS CALL ONLY NOT AUTHORITATIVE MAILBOX ABSENCE
-andon: PAGINATION_PRESENT_ON_NONEMPTY_MAX_RESULTS_THREE_CALLS_AND EFFECTIVE_AUTHORIZATION_CONNECTOR_TO_PROVIDER_MAPPING_RESULT_SIZE_ESTIMATE_PROVIDER_REQUEST_ID_AND ACTUAL_QUOTA_DEBIT_REMAIN UNKNOWN
+measured_fact: THREE_CALL_EVIDENCE_SET_SHOWS_ID_ONLY_SEARCH_WITH_TWO_REPEATABLE_NONEMPTY_FIRST_PAGES_AND_ONE_EMPTY_SUCCESS_WITHOUT_CONTENT_HYDRATION_OR_MUTATION
+interpretation: SAFE_AS_BOUNDED_LEAST_DATA_DISCOVERY_PRIMITIVE_WITH_GATES; NOT_COMPLETENESS_AUTHORIZATION_STABLE_PROVIDER_ORDERING_OR_PROVIDER_PARITY_EVIDENCE
+andon: PAGINATION_PRESENT_ON_NONEMPTY_CALLS; EFFECTIVE_AUTHORIZATION_PROVIDER_MAPPING_PROVIDER_REQUEST_ID_AND_ACTUAL_QUOTA_DEBIT_REMAIN_UNKNOWN
 custom_code_avoided_estimate: 40_to_120_LOC_UNVALIDATED
 operator_minutes_removed_measured: 0
 credentials: CONNECTOR_MANAGED_EFFECTIVE_IDENTITY_AND_OAUTH_SCOPES_UNKNOWN
@@ -67,25 +68,26 @@ nominal_provider_quota_contract: GMAIL_API_MESSAGES_LIST_COSTS_5_QUOTA_UNITS; 12
 catalog_consumer: HFO_COTS_CAPABILITY_INVENTORY
 operational_consumer: NOT_ASSIGNED
 consumer_ack: NOT_OBSERVED
-verifier: DIRECT_CONNECTOR_RECEIPTS_PLUS_PHASE1_PHASE2_DIGEST_COMPARISON_PLUS_PHASE3_EMPTY_SUCCESS_RECEIPT_PLUS_EVENT_READBACK_AND_CURRENT_READBACK; MATCHED_RAW_PROVIDER_CALL_NOT_RUN
-verifier_result: PHASE3_RETURNED_ZERO_IDS_NO_PAGE_TOKEN_NO_ERROR_NO_CONTENT_HYDRATION; EMPTY_SUCCESS SHAPE CONFIRMED FOR THIS CALL
-adoption_credit: 0
+verifier: PHASE1_PHASE2_PHASE3_DIRECT_CONNECTOR_RECEIPTS_PLUS_DIGEST_COMPARISON_PLUS_PHASE4_GIT_EVENT_READBACK_PLUS_OFFICIAL_GMAIL_CONTRACT; MATCHED_RAW_PROVIDER_CALL_NOT_RUN
+verifier_result: PHASE4_ADOPT_WITH_GATES_FOR_BOUNDED_ID_ONLY_DISCOVERY_CATALOG_USE_ONLY
+adoption_credit: 1
+adoption_credit_scope: CATALOG_CAPABILITY_ONLY
 fitness_credit: 0
-mandatory_gate: BOUNDED_QUERY; SMALL_MAX_RESULTS; DO_NOT_PERSIST_RAW_MESSAGE_IDS_OR_PAGE_TOKEN; REPLAY_MATCH_ESTABLISHES_ONLY_NARROW_NEAR_TERM_REPEATABILITY NOT COMPLETENESS OR PROVIDER ORDERING GUARANTEE; MAX_RESULTS IS A CAP NOT COMPLETENESS; NEXT_PAGE_TOKEN MEANS MORE PAGES MAY EXIST; EMPTY SUCCESS MEANS ZERO VISIBLE MATCHES RETURNED BY THAT CALL ONLY; DO NOT INFER EFFECTIVE SCOPE FROM WRAPPER SUCCESS; NO UNBOUNDED RETRY; CONSEQUENTIAL MAILBOX CLAIMS REQUIRE MESSAGE READ OR MATCHED PROVIDER WITNESS
-strongest_falsifier: MATCHED_RAW_GMAIL_V1_USERS_MESSAGES_LIST_CALL_UNDER_SAME_EFFECTIVE_PRINCIPAL_RETURNS_THE_SYNTHETIC_TOKEN_OR_REVEALS_MATERIALLY_DIFFERENT_ORDER_PAGINATION_QUERY_SCOPE_AUTHORIZATION_OR_COMPLETENESS_SEMANTICS
-honest_flaw: SYNTHETIC_TOKEN_WAS_DESIGNED_TO_MISS_SO_PHASE3_TESTS_EMPTY_SUCCESS_SHAPE_ONLY; PERMISSION_DENIAL_SPAM_TRASH_SCOPE_VARIANCE_PAGINATION_REPLAY_RATE_LIMIT_TRANSIENT_FAILURE_INDEX_LAG_RAW_PROVIDER_PARITY_OPERATOR_SAVINGS_AND_CONSUMER_VALUE_REMAIN_UNTESTED
-next_phase: PHASE4_DECISION_FROM_EXISTING_THREE_CALL_EVIDENCE_ONLY_NO_ADDITIONAL_GMAIL_CANDIDATE_CALL
-review_expiry_utc: 2026-08-14T03:48:50Z
-valid_time_utc: 2026-08-07T03:48:50Z
-recorded_time_utc: 2026-08-07T03:48:50Z
+mandatory_gate: BOUNDED_QUERY; SMALL_MAX_RESULTS; DO_NOT_PERSIST_RAW_MESSAGE_IDS_OR PAGE_TOKEN; NEXT_PAGE_TOKEN_MEANS_MORE_PAGES_MAY_EXIST; MAX_RESULTS_IS_A_CAP_NOT_COMPLETENESS; EMPTY_SUCCESS_MEANS_ZERO_VISIBLE_MATCHES_RETURNED_BY THAT CALL ONLY; DO_NOT_INFER_EFFECTIVE_SCOPE_FROM_WRAPPER_SUCCESS; NO_UNBOUNDED_RETRY; CONSEQUENTIAL_MAILBOX_CLAIMS_REQUIRE MESSAGE_READ_OR_MATCHED_PROVIDER_WITNESS
+strongest_falsifier: MATCHED_RAW_GMAIL_V1_USERS_MESSAGES_LIST_CALL_UNDER_SAME_EFFECTIVE_PRINCIPAL_REVEALS_MATERIALLY_DIFFERENT_ORDER_PAGINATION_QUERY_SCOPE_AUTHORIZATION_OR_COMPLETENESS_SEMANTICS_OR_WRAPPER_STARTS_HYDRATING_MESSAGE_CONTENT
+honest_flaw: NO_OPERATIONAL_CONSUMER_OR_MEASURED_OPERATOR_SAVINGS; PERMISSION_DENIAL_SPAM_TRASH_SCOPE_VARIANCE_PAGINATION_REPLAY_RATE_LIMIT_TRANSIENT_FAILURE_INDEX_LAG_RAW_PROVIDER_PARITY_PROVIDER_REQUEST_ID_EFFECTIVE_SCOPE_AND_ACTUAL_QUOTA_DEBIT_REMAIN_UNTESTED_OR_UNEXPOSED
+next_campaign: SELECT_ONE_NEW_CANDIDATE_AT_NEXT_WAKE_WITH_WIP_ONE
+review_expiry_utc: 2026-08-14T04:48:01Z
+valid_time_utc: 2026-08-07T04:48:01Z
+recorded_time_utc: 2026-08-07T04:48:01Z
 ---
 
-# X13 CURRENT v151
+# X13 CURRENT v152
 
-The Gmail read-only ID-search campaign is active at wake 3 of 4. Phases 1 through 3 are accepted with gates; operational adoption remains undecided and adoption/fitness credit remain zero.
+The Gmail ID-only read campaign is closed at wake 4 of 4 with **ADOPT_WITH_GATES** for bounded discovery/catalog use only.
 
-Across three bounded calls, two nonempty calls returned the same ordered ID digest with pagination present, while the phase-3 synthetic nonmatching query returned an empty success with no connector error. No message content was hydrated and no raw Gmail IDs or page tokens were persisted.
+Across three bounded calls, two nonempty calls returned the same ordered ID digest with pagination present, while a synthetic nonmatching query returned an empty success with no connector error. No message content was hydrated, no raw Gmail IDs or page tokens were persisted, and no Gmail state was mutated.
 
-The measured evidence supports narrow catalog/discovery use only. Pagination prevents completeness claims on the nonempty calls, while the empty result means only zero visible matches returned by that call. Effective authorization, raw-provider parity, denial/rate-limit/transient behavior, pagination replay, measured operator savings, and operational consumer value remain unknown.
+The capability is adopted as a least-data discovery primitive, not as evidence of completeness, authoritative absence, effective authorization, stable provider ordering, or raw-provider parity. Adoption credit is catalog-only; fitness credit remains zero because no operational consumer acknowledged value and no operator minutes were measured as removed.
 
-Next wake: phase-4 decision from the existing three-call evidence set only, with no additional Gmail candidate call.
+Next wake: select one new candidate and begin a new four-wake campaign with WIP=1.
