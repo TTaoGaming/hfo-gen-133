@@ -1,69 +1,69 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
-experiment_id: X11_PROJECT_CONTEXT_EXPLICIT_VISIBILITY_V1
-current_version: 147
-accepted_wakes: 3
+experiment_id: X11_SLACK_WRITE_SURFACE_GATED_VISIBILITY_V1
+current_version: 148
+accepted_wakes: 0
 target_wakes_before_decision: 4
-controlled_factor: project_context_surface
+controlled_factor: slack_write_surface_gated_visibility
 campaign_status: ACTIVE
 current_disposition: null
 prior_campaign:
-  experiment_id: X11_WEB_FIXED_RFC_EDITOR_READ_V1
-  final_version: 144
-  disposition: KEEP
+  experiment_id: X11_PROJECT_CONTEXT_EXPLICIT_VISIBILITY_V1
+  final_version: 148
+  disposition: HOLD
   accepted_wakes: 4
   decision_event:
-    commit: ea8fecc9a41a5338472238e46a9b18a184a9692c
-    path: state/coordination/experiments/carrier_surface_x11/events/20260806T203958Z_WEB_FIXED_RFC_EDITOR_READ_V1_WAKE_04_DECISION_KEEP.yaml
-    blob: ffa76a8ee22983f12511ae14933a9d650092833c
-baseline_result: four_identical_fixed_public_RFC_Editor_URL_retrievals_resolved_the_official_host_and_exposed_the_fixed_title_marker_with_zero_operator_relay_and_no_private_content_or_external_mutation
-hypothesis: an_explicit_project_context_identifier_or_project_nonproject_marker_may_be_readably_exposed_to_the_carrier_without_task_context_or_account_mutation;_if_not_exposed_that_absence_is_the_measurement
+    commit: 35f5702f5f81d772ed1b012eca748ed4b05126bf
+    path: state/coordination/experiments/carrier_surface_x11/events/20260807T004002Z_PROJECT_CONTEXT_EXPLICIT_VISIBILITY_V1_WAKE_04_DECISION_HOLD.yaml
+    blob: 31741d7215ed53a5ff554af1cb336f773f86eb6c
+baseline_result: four_identical_runtime_or_tool_context_inspections_exposed_no_explicit_Project_non_Project_marker_or_project_identifier;_this_is_stable_absence_only_and_does_not_identify_actual_Project_membership_or_behavioral_difference
+hypothesis: the_connected_Slack_surface_may_expose_a_message_write_action_readably_without_invoking_a_probe_only_send;_real_write_success_may_only_be_observed_when_a_separate_campaign_decision_or_Andon_already_authorizes_a_post
 measured_result:
-  explicit_project_context_marker_exposed: [false, false, false]
-  project_identifier_exposed: [false, false, false]
-  latencies_ms: [null, null, null]
-  latency_note: runtime_context_inspection_has_no_discrete_provider_latency_exposed
-  permission_class: RUNTIME_CONTEXT_READ_AVAILABLE_PROJECT_METADATA_NOT_EXPOSED
-  error_class: EXPLICIT_PROJECT_CONTEXT_MARKER_ABSENT
+  slack_message_write_action_exposed: []
+  real_write_observed_only_if_already_authorized: []
+  latencies_ms: []
+  latency_note: action_surface_visibility_has_no_discrete_provider_latency_unless_an_already_authorized_post_is_executed
+  permission_class: null
+  error_class: null
   operator_relay_minutes: 0
   changed_capability: false
   campaign_decision: false
   andon: false
-supported_claim: this_carrier_runtime_exposed_no_explicit_project_context_marker_or_project_identifier_during_three_accepted_wakes
-claim_ceiling: explicit_marker_absence_only_not_evidence_of_nonproject_execution_hidden_project_assignment_project_isolation_or_project_nonproject_behavioral_difference
-strongest_falsifier: a_runtime_or_tool_surface_explicitly_exposes_a_project_context_marker_or_project_identifier_to_this_carrier_without_mutation_but_the_probe_reports_absence
+supported_claim: none_yet_campaign_initialized
+claim_ceiling: exposed_write_action_visibility_is_not_authenticated_write_success;_no_probe_only_send_is_allowed_and_any_real_write_evidence_is_limited_to_otherwise_authorized_campaign_decision_or_Andon_posts
+strongest_falsifier: the_runtime_or_connected_tool_surface_exposes_no_Slack_message_write_action_but_the_probe_reports_one_or_an_already_authorized_post_fails_while_the_probe_claims_success
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 consumer:
   - Reginleif
   - Ratatoskr
-honest_flaw: absence_of_an_explicit_marker_cannot_determine_whether_the_carrier_is_actually_running_inside_or_outside_a_Project_and_cannot_compare_project_versus_nonproject_execution_without_authorized_reseating
+honest_flaw: schema_or_action_visibility_alone_cannot_establish_permission_to_write_and_the_no_probe_only_send_gate_means_real_write_success_can_only_be_sampled_opportunistically_on_separately_authorized_posts
 last_event:
-  commit: db4b8144f707aa5597a300d0aeb8c00a40bd4844
-  path: state/coordination/experiments/carrier_surface_x11/events/20260806T234534Z_PROJECT_CONTEXT_EXPLICIT_VISIBILITY_V1_WAKE_03.yaml
-  blob: ffcf7a4ec90f558b1a185b482c7e2f1762e96836
-next_factor: project_context_surface
+  commit: 35f5702f5f81d772ed1b012eca748ed4b05126bf
+  path: state/coordination/experiments/carrier_surface_x11/events/20260807T004002Z_PROJECT_CONTEXT_EXPLICIT_VISIBILITY_V1_WAKE_04_DECISION_HOLD.yaml
+  blob: 31741d7215ed53a5ff554af1cb336f773f86eb6c
+next_factor: slack_write_surface_gated_visibility
 next_probe:
-  experiment_id: X11_PROJECT_CONTEXT_EXPLICIT_VISIBILITY_V1
-  campaign_wake: 4
-  mode: read_only_explicit_project_context_visibility
-  exact_action: repeat_the_identical_inspection_only_of_runtime_or_tool_context_explicitly_exposed_to_this_carrier_for_a_project_context_identifier_or_project_nonproject_marker_without_mutating_task_context_or_account_and_persist_only_exposed_boolean_permission_error_class_latency_when_exposed_and_operator_relay_minutes_then_write_KEEP_REVISE_RESEAT_VARIABLE_or_HOLD_and_select_the_next_factor
-  expected_current_version: 147
+  experiment_id: X11_SLACK_WRITE_SURFACE_GATED_VISIBILITY_V1
+  campaign_wake: 1
+  mode: read_only_write_action_surface_visibility
+  exact_action: inspect_only_whether_the_connected_Slack_tool_surface_exposes_a_message_write_action_without_invoking_a_probe_only_send;_if_a_separate_campaign_decision_or_Andon_requires_a_Slack_post_that_authorized_post_may_supply_real_write_success_evidence_without_an_extra_message
+  expected_current_version: 148
   persist_only:
-    - explicit_project_context_marker_exposed
-    - project_identifier_exposed
+    - slack_message_write_action_exposed
+    - real_write_observed_only_if_already_authorized
     - permission_class
     - error_class
     - latency_when_exposed
     - operator_relay_minutes
   mutation_allowed: false
-  privacy_gate: no_sensitive_context_content_or_hidden_metadata_externalization
-  slack_write_each_probe_allowed: false
+  probe_only_send_allowed: false
+  privacy_gate: no_sensitive_message_content_or_unrelated_channel_metadata_externalization
   post_only_changed_capability_campaign_decision_or_andon: true
   sensitive_readback_externalization_allowed: false
   same_provider_independence_claim_allowed: false
-slack_action: SKIP_UNCHANGED
-updated_valid_time_utc: 2026-08-06T23:45:34Z
+slack_action: POST_PRIOR_CAMPAIGN_DECISION_AFTER_THIS_POINTER_READBACK
+updated_valid_time_utc: 2026-08-07T00:40:02Z
 sealed: false
 ---
 
-Project-context explicit visibility V1 accepted wake 3 of 4. No explicit Project/non-Project marker or project identifier was exposed by the runtime or tool context available to this carrier. This is unchanged from wakes 1 and 2, so no Slack write is warranted. Wake 4 repeats the identical read-only probe, writes the campaign disposition, and selects the next factor.
+Project-context explicit visibility V1 completed 4/4 with the same absent-marker result and disposition HOLD. Four absences do not identify actual Project membership or establish a Project-versus-non-Project behavioral difference, so no reseating or hidden-state inference is authorized. The next campaign tests only gated Slack message-write action visibility; it forbids probe-only sends and may count real write success only when a separate campaign decision or Andon already authorizes a post.
