@@ -1,0 +1,65 @@
+schema: hfo.gen133.operator_relief_receipt.v0_1
+seat: S05
+expected_task_id: 6a55c182078c8191b89f2dd15f5f640c
+wip: 1
+valid_time_utc: 2026-08-07T07:15:34Z
+result: STATUS_RECONCILED
+active_item: TECTANGLE_DESIGN_AUDIT_CI_FAILURE
+priority:
+  p0: FIDELITY_ACTIVITY_EXPECTEDNESS_AND_RECEIVING_BANK_VERIFICATION
+  p1:
+    - COLDEN_BOARD_CANDIDACY_DECISION_2026-08-07
+    - TECTANGLE_DESIGN_AUDIT_CI_REPAIR
+transition:
+  kind: reconcile_important_status
+  summary: >-
+    Fresh GitHub Actions failure was read back to the exact failed job and log.
+    Design-token validation and the 59-page UI canon canary passed; the design-audit
+    test step then failed in Jest globalSetup because Chromium could not launch on
+    the Ubuntu 24.04 hosted runner with a usable sandbox. The failure occurred
+    before design-audit assertions, so it is classified as CI/browser-launch
+    infrastructure failure, not proven product or design regression.
+  operator_minutes_removed_estimate: 8
+  next_consumer: S06_CODE_WORK_PACKET_COMPILER
+claim_ceiling:
+  supported:
+    - Workflow Design Audit run 31154280221 failed on main at commit 49da03bd595d364789c219382ec6bec6f56b552d.
+    - Job audit id 92790294237 passed dependency install, static server readiness, design-token validation, and UI canon canary.
+    - Step Run design audit tests failed during Jest globalSetup before test assertions because Chromium reported No usable sandbox on the Ubuntu 24.04 hosted runner.
+    - The UI canon canary reported PASS for 59 dev pages.
+  excluded:
+    - No claim that the application is regression-free.
+    - No claim that the design-audit assertions themselves pass.
+    - No claim that --no-sandbox is an approved or safe permanent fix.
+    - No rerun, patch, merge, deployment, or task mutation was performed.
+sources:
+  gmail:
+    message_id: 19fdaed97d065bd2
+    subject_class: GITHUB_ACTIONS_FAILURE_NOTIFICATION
+    private_body_externalized: false
+  github_actions:
+    repository: TTaoGaming/Tectangle
+    run_id: 31154280221
+    job_id: 92790294237
+    commit: 49da03bd595d364789c219382ec6bec6f56b552d
+    workflow: Design Audit
+    failed_step: Run design audit tests
+    failure_class: CHROMIUM_SANDBOX_UNAVAILABLE_ON_HOSTED_RUNNER
+privacy:
+  private_email_body_copied_to_git: false
+  sensitive_identifiers_externalized: false
+effects:
+  email_send: false
+  application_submission: false
+  spend_or_payment: false
+  deployment: false
+  merge: false
+  publication: false
+  account_or_security_change: false
+  destructive_delete: false
+  scheduled_task_mutation: false
+honest_flaw: >-
+  This receipt diagnoses one workflow run only. It does not yet prove whether the
+  failure is caused by a runner-image policy change, a Puppeteer/Chromium version
+  change, repository configuration drift, or some combination; a bounded repair
+  experiment is still required.
