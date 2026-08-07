@@ -1,8 +1,8 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_WEB_FIXED_QUERY_SEARCH_V1
-current_version: 162
-accepted_wakes: 2
+current_version: 163
+accepted_wakes: 3
 target_wakes_before_decision: 4
 controlled_factor: web_research_search_surface
 campaign_status: ACTIVE
@@ -29,13 +29,22 @@ measured_result:
       latency_ms: null
       latency_note: web_search_latency_not_exposed
       operator_relay_minutes: 0
+    - wake: 3
+      execution_success: true
+      rfc_editor_result_present: true
+      sanitized_result_count: 5
+      permission_class: PUBLIC_WEB_FIXED_QUERY_SEARCH_AVAILABLE
+      error_class: NONE
+      latency_ms: null
+      latency_note: web_search_latency_not_exposed
+      operator_relay_minutes: 0
   permission_class: PUBLIC_WEB_FIXED_QUERY_SEARCH_AVAILABLE
   error_class: NONE
   operator_relay_minutes: 0
   changed_capability: false
   campaign_decision: false
   andon: false
-supported_claim: two_fixed_public_search_queries_returned_RFC_Editor_results_including_RFC_2606
+supported_claim: three_fixed_public_search_queries_returned_RFC_Editor_results_including_RFC_2606
 claim_ceiling: fixed_public_web_search_query_only_not_search_breadth_freshness_ranking_stability_browser_parity_general_internet_access_network_independence_or_source_authenticity_beyond_exposed_result_hosts
 strongest_falsifier: the_fixed_query_execution_becomes_unavailable_returns_no_rfc_editor_result_requires_authenticated_or_sensitive_access_or_requires_external_mutation
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
@@ -46,17 +55,17 @@ prior_campaign:
   disposition: KEEP
   supported_claim: four_observed_elapsed_times_between_accepted_events_are_measurable
 last_event:
-  commit: 871bbff107cb0b815b39ef87cb9431484539e6e5
-  path: state/coordination/experiments/carrier_surface_x11/events/20260807T163836Z_WEB_FIXED_QUERY_SEARCH_V1_WAKE_02.yaml
-  blob: b729947b9c5b1413246754f9ae54e77a3aac8509
+  commit: 85ce79c1e400878617395faafb8489d68b15c118
+  path: state/coordination/experiments/carrier_surface_x11/events/20260807T173817Z_WEB_FIXED_QUERY_SEARCH_V1_WAKE_03.yaml
+  blob: afd8480b32f740ef9e98c7ffbb02fa422838bf57
 next_factor: web_research_search_surface
 next_probe:
   experiment_id: X11_WEB_FIXED_QUERY_SEARCH_V1
-  campaign_wake: 3
-  mode: read_only_fixed_public_web_search
+  campaign_wake: 4
+  mode: read_only_fixed_public_web_search_then_campaign_decision
   exact_query: site:rfc-editor.org RFC 2606 Reserved Top Level DNS Names
   persist_only: [execution_success, rfc_editor_result_present, sanitized_result_count, permission_class, error_class, latency_when_exposed, operator_relay_minutes]
-  expected_current_version: 162
-updated_valid_time_utc: 2026-08-07T16:38:36Z
+  expected_current_version: 163
+updated_valid_time_utc: 2026-08-07T17:38:17Z
 sealed: false
 ---
