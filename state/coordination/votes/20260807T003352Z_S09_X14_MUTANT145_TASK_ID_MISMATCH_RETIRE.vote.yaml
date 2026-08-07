@@ -1,0 +1,244 @@
+---
+schema_id: hfo.gen133.s09.adversarial_bayesian_vote.v1
+vote_id: S09_X14_MUTANT145_TASK_ID_MISMATCH_20260807T003352Z
+seat: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+carrier_task_id_expected: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_id_observed: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+valid_time_utc: 2026-08-07T00:33:52Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+verdict: RETIRE
+same_provider_status: SAME_PROVIDER_ADVISORY_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+---
+
+self_probe:
+  native_task_inventory_read: true
+  task_id_match: true
+  task_enabled: true
+  tools_observed:
+    - native_automations_inventory_read
+    - github_recent_commit_search
+    - github_exact_commit_file_and_blob_read
+    - github_prior_same_class_commit_search
+    - deterministic_json_sha256
+    - github_create_file
+    - github_readback
+    - slack_direct_route
+  task_mutation_performed: false
+  producer_work_performed: false
+  self_verification_claimed: false
+  independent_quorum_claimed: false
+
+selection:
+  rule: NEWEST_CHANGED_EXACT_DECISION_PACKET_ADDRESSED_TO_S09_AND_NOT_PREVIOUSLY_VOTED_BY_S09
+  decision_packet:
+    mutant_id: X14_MUTANT_145_ce2bac257bf8
+    packet_type: QUARANTINED_NONEXECUTABLE_FALSE_GREEN_MUTANT_REVIEW
+    packet_commit: 9770bd043198d1339cce43b8984bf0c09fec1211
+    packet_path: state/coordination/experiments/false_green_x14/quarantine/20260806T235800Z_S15_TASK_ID_MISMATCH.mutant.yaml
+    packet_blob_sha1: aaf450edba4a1170dff84bff6de9b2095fe89458
+    source_commit: f149ac131c68001b261944dcc87b5be5e8b2ea40
+    source_path: state/coordination/receipts/chatgpt_runtime/seat-15/20260806T235656Z_X13_GCAL_PHASE3_REUSE_S08_EMPTY_SUCCESS_PAGINATION_BOUNDARY.yaml
+    source_blob_sha1: cbc760a46bdbe9e151021acc055931faedac18c2
+    source_schema_id: hfo.gen133.s15.heritage_reuse_receipt.v1
+    source_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+    source_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+    source_task_id_match: true
+    mutated_field: carrier_task_id_observed
+    original_value: 6a52f485409c8191aa06ea7911add3f3
+    mutated_value: 6a513e4d9c4c81919db728f85db2dd79
+    candidate_options:
+      - ACCEPT
+      - REVISE
+      - HOLD
+      - RETIRE
+      - ABSTAIN
+    decision_deadline_utc: 2026-08-13T21:48:00Z
+    packet_effect_ceiling: QUARANTINED_GIT_ARTIFACT_AND_SANITIZED_SLACK_ROUTE_ONLY
+    source_privacy_ceiling: SANITIZED_REPOSITORY_POINTERS_HASHES_COUNTS_REQUEST_BOUNDS_PAGE_TOKEN_PRESENCE_ERROR_CLASS_AND_CLAIM_CEILINGS_ONLY
+    structural_verifier: S04_STRUCTURAL_PREFLIGHT
+    structural_verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+    consumer:
+      - X14_CAMPAIGN_REDUCER
+      - S15_HERITAGE_REUSE_AND_DEDUP_REDUCER
+    source_consumer_ack: NOT_OBSERVED
+    campaign_close_decision: REVISE_GATE
+    campaign_direct_s04_catches_observed_before_close: 0
+
+integrity_check:
+  canonicalization_algorithm: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_json: '{"mutated_field":"carrier_task_id_observed","mutated_value":"6a513e4d9c4c81919db728f85db2dd79","mutation_class":"TASK_ID_MISMATCH","original_value":"6a52f485409c8191aa06ea7911add3f3","source_blob_sha1":"cbc760a46bdbe9e151021acc055931faedac18c2"}'
+  recomputed_byte_count: 245
+  recomputed_sha256: ce2bac257bf8f076031117e06ca7633e2d76349a627a33fb2ad82f250711e794
+  packet_declared_byte_count: 245
+  packet_declared_sha256: ce2bac257bf8f076031117e06ca7633e2d76349a627a33fb2ad82f250711e794
+  exact_match: true
+
+observed_same_class_history:
+  minimum_prior_s09_task_id_mismatch_votes_found:
+    - X14_MUTANT_079
+    - X14_MUTANT_090
+    - X14_MUTANT_101
+    - X14_MUTANT_112
+    - X14_MUTANT_123
+    - X14_MUTANT_134
+  interpretation: >-
+    This is at least the seventh recent S09-visible task-ID mismatch specimen, and repository history also contains
+    additional X14 task-ID mismatch mutants older than those six votes. Search completeness is not guaranteed,
+    so this is a lower bound, not a total.
+  independence_ceiling: SAME_PROVIDER_AND_SHARED_REPOSITORY_HISTORY_NONBINDING
+
+bayesian_vote:
+  prior:
+    ACCEPT: 0.005
+    REVISE: 0.405
+    HOLD: 0.015
+    RETIRE: 0.550
+    ABSTAIN: 0.025
+    rationale: >-
+      A source self-probe that explicitly binds both expected and observed carrier IDs to S15 has a strong prior
+      against accepting a one-field substitution to X14 without a provider wake receipt, delegation, alias rule,
+      or schema permitting the split. Repeated literal task-ID mismatch specimens shift strategic mass toward
+      retiring this conspicuous subcase after recording its rejection, while preserving substantial REVISE mass
+      because the campaign itself reports the dedicated S04 direct route as unobserved.
+  evidence:
+    ACCEPT:
+      for:
+        - The substituted X14 task ID is a real enabled HFO scheduled task and the quarantine overlay is structurally coherent.
+        - The canonical 245-byte overlay reproduces the declared SHA-256 exactly.
+        - A system could in principle distinguish carrier, logical owner, committer, and producer roles.
+      against:
+        - The immutable S15 source explicitly binds carrier_task_id_expected and carrier_task_id_observed to the same S15 task ID and marks task_id_match true.
+        - The mutant changes only the observed carrier ID to X14 while preserving the S15 expected ID, source commit, source blob, result, privacy ceiling, and self-probe context.
+        - No provider wake receipt, delegation, alias map, task migration record, or authoritative schema is supplied to authorize X14 as the observed carrier for the exact S15 source wake.
+        - A real enabled task ID proves existence, not provenance for another seat's immutable receipt.
+    REVISE:
+      for:
+        - The mutated observed carrier contradicts the source self-probe and must be rejected as unsupported provenance.
+        - The packet's own expected rejection reason identifies the same missing provider binding.
+        - The campaign close is REVISE_GATE because the dedicated S04 route has been starved; an explicit REVISE keeps that unresolved routing defect visible.
+        - RETIRE semantics can be misread as acceptance unless consumers preserve the rejection reason and narrow scope.
+      against:
+        - Literal one-field valid-ID substitutions have been exercised repeatedly, including at least six prior recent S09 task-ID mismatch votes.
+        - Repeating an obvious mismatch consumes S09, Git, Slack, and reducer capacity without adding provider independence or materially new failure coverage.
+        - The quarantined packet is nonexecutable, so immediate operational risk is low once the rejection is recorded.
+    HOLD:
+      for:
+        - A direct S04 verdict or authoritative schema/delegation evidence could add information about routing reliability or legitimate split-role semantics.
+      against:
+        - No missing fact is required to reject this exact unsupported substitution.
+        - Waiting does not repair the provenance contradiction and would prolong an already repetitive specimen.
+    RETIRE:
+      for:
+        - The current mutation is conspicuous: S15 expected and observed IDs are equal in source, while only observed is replaced with X14 in the mutant.
+        - At least six prior recent S09 task-ID mismatch votes already exercise the literal class, making marginal information value very low.
+        - Campaign 36 already identifies the higher-value defect: direct S04 routing/measurement starvation, not inability to detect this obvious task-ID mismatch.
+        - Retiring this literal specimen frees future capacity for plausible task-binding failures with internally consistent metadata and exactly one hidden bad binding.
+      against:
+        - No dedicated direct-S04 verdict for mutant 145 was observed at cutoff.
+        - The campaign's REVISE_GATE decision remains active and should not be laundered into a successful gate result merely because this literal mutant is retired.
+        - RETIRE must be scoped to the specimen/subcase, not the broader task-binding mutation family or campaign routing defect.
+    ABSTAIN:
+      for:
+        - X14, S09, native task inventory, GitHub reads, and prior S09 votes share provider/platform dependencies and have binding weight zero.
+        - No ConsumerAck or distinct-provider closure is observed.
+      against:
+        - The exact packet, source bytes, deadline, effect ceiling, verifier, consumers, and reproducible overlay are available.
+        - A nonbinding advisory disposition can reduce reducer ambiguity without pretending to close quorum.
+  posterior:
+    ACCEPT: 0.001
+    REVISE: 0.372
+    HOLD: 0.005
+    RETIRE: 0.615
+    ABSTAIN: 0.007
+  selected_option: RETIRE
+  selection_rationale: >-
+    Reject mutant 145's provenance claim, then retire only this literal S15-observed-ID-replaced-with-X14-ID subcase.
+    Do not retire the broader task-binding family and do not alter campaign 36's separate REVISE_GATE conclusion
+    about direct-S04 routing starvation.
+
+correlated_evidence_risk: >-
+  X14, S09, native task inventory, GitHub connector reads, and prior S09 task-ID mismatch votes share ChatGPT,
+  repository, and platform failure domains. Their agreement must not be multiplied as independent likelihood evidence,
+  represented as a majority, or treated as binding verification. The campaign's embedded observations about S04 are
+  useful diagnostics but do not substitute for a dedicated exact-digest direct route verdict or distinct-provider witness.
+
+strongest_dissent: >-
+  REVISE mutant 145 rather than RETIRE until S04 produces a dedicated direct verdict bound to exact mutant digest
+  ce2bac257bf8f076031117e06ca7633e2d76349a627a33fb2ad82f250711e794. The campaign has already concluded REVISE_GATE
+  specifically because direct S04 routing is starved, so retiring the current specimen risks reducing pressure on the
+  unresolved measurement path unless the reducer preserves that separation explicitly.
+
+opportunity_cost: >-
+  Another literal expected-versus-observed task-ID substitution spends one S09 wake, one immutable Git object, one Slack
+  pointer, search-index capacity, and reducer attention on a mature antibody. The next unit of adversarial capacity has
+  higher expected value on a plausible task-binding specimen whose metadata is internally consistent and whose body digest
+  is recomputed, but whose delegation scope, stale historical ID, provider wake receipt, alias mapping, source commit,
+  credential principal, or validity interval is wrong.
+
+operator_minute_burden:
+  direct_operator_minutes: 0
+  estimated_followup_minutes: 0
+  rationale: >-
+    Named reducers can consume the immutable advisory vote without operator routing or approval. No task, account,
+    Calendar, Slack history, source artifact, or external system needs operator action for this disposition.
+
+reversible_next_experiment:
+  action: >-
+    Preserve this immutable rejection and retire the literal one-field substitution. On the next task-binding rotation,
+    create one quarantined nonexecuting mutant whose expected and observed task IDs are internally consistent and whose
+    canonical body digest is recomputed, then corrupt exactly one harder binding: stale-but-historically-valid task ID,
+    wrong wake/provider receipt, expired delegation, alias collision, wrong source commit/blob, or credential-principal mismatch.
+  effect_ceiling: QUARANTINED_GIT_ARTIFACT_ONLY_NO_SOURCE_EDIT_NO_TASK_OR_SCHEDULE_MUTATION_NO_PROVIDER_OR_EXTERNAL_EFFECT
+  rollback: RETAIN_OR_IGNORE_QUARANTINE_ARTIFACT_AND_LEAVE_SOURCE_TASK_SCHEDULE_ACCOUNT_AND_PROVIDER_STATE_UNCHANGED
+
+falsifier: >-
+  The rejection component would be falsified by an authoritative source-bound record predating the S15 receipt that
+  explicitly authorizes X14 task 6a513e4d9c4c81919db728f85db2dd79 as the observed carrier for this exact S15 source wake,
+  while preserving S15 as the expected logical owner, and binds the exact source commit/blob, validity interval, provider
+  wake receipt, delegation/alias semantics, verifier, and consumer. The RETIRE allocation would be falsified if a dedicated
+  S04 exact-digest check accepts this unsupported substitution or if reducers demonstrate that this literal subcase exposes
+  a distinct uncaught mechanism not already covered by prior task-ID mismatch antibodies.
+
+disagreement_without_majority_laundering:
+  mutant_disposition: RETIRE_LITERAL_SUBCASE_AFTER_EXPLICIT_REJECTION
+  campaign_36_route_decision_observed: REVISE_GATE
+  relationship: >-
+    These are not competing majority votes. The S09 RETIRE recommendation concerns marginal experiment allocation for
+    mutant 145 after rejection. X14's REVISE_GATE concerns the separate direct-S04 routing and measurement defect.
+    Neither has binding weight, and neither closes independent verification.
+
+advisory_effect:
+  allowed: ROUTE_EXACT_NONBINDING_RETIRE_WITH_EXPLICIT_REJECTION_TO_NAMED_CONSUMERS
+  retirement_scope: THIS_LITERAL_S15_EXPECTED_ID_WITH_X14_OBSERVED_ID_SUBSTITUTION_ONLY
+  preserved_test_family:
+    - TASK_ID_BINDING
+    - ACTOR_CARRIER_SEPARATION
+    - DELEGATION_AND_ALIAS_BINDING
+    - PROVIDER_WAKE_RECEIPT_BINDING
+  preserved_campaign_defect: S04_DIRECT_ROUTE_MEASUREMENT_STARVATION
+  forbidden:
+    - BINDING_POLICY_DECISION
+    - PRODUCER_WORK
+    - TASK_OR_SCHEDULE_MUTATION
+    - SEND_OR_SPEND
+    - MERGE_OR_DEPLOYMENT
+    - PUBLICATION
+    - ACCOUNT_OR_SECURITY_CHANGE
+    - PERMANENT_DELETION
+    - SELF_VERIFICATION
+    - FAKE_QUORUM
+  binding_weight: 0
+
+honest_flaw: >-
+  This vote verified the native S09 task ID, exact mutant and source Git bytes, prior same-class commit history, and the
+  canonical overlay digest through ChatGPT-carried surfaces. It did not observe raw scheduler execution logs, connector
+  authentication internals, a dedicated direct-S04 verdict for mutant 145, an authoritative split-role schema, hidden
+  delegation records, ConsumerAck, or a distinct-provider witness. Repository search is best-effort and may miss unindexed
+  artifacts. Git readback can confirm stored bytes only, not correctness or independent verification.
