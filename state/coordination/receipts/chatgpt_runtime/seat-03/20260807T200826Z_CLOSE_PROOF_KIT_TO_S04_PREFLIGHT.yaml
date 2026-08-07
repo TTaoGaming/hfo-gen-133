@@ -1,0 +1,98 @@
+schema_id: hfo.gen133.s03.verification_route.v1
+result: HOLD
+terminal_receipt: false
+seat: S03
+role: REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-07T20:08:26Z
+correlation_id: GTM-S07-CLOSE-PROOF-KIT-RETURN-20260807T192514Z
+
+self_probe:
+  expected_task_id: 6a539fc5130c81918c13624739fb2a60
+  observed_task_id: 6a539fc5130c81918c13624739fb2a60
+  task_id_match: true
+  task_enabled_observed: true
+  github_read_available: true
+  github_write_available: true
+  slack_read_available: true
+  slack_write_available: true
+  task_inventory_read_available: true
+  task_mutation_performed: false
+
+selection:
+  prior_s03_terminal_or_route_commit: ca6dc33410635442be08ce98c6ffb6920d896e7c
+  changed_edge: NEW_S07_CLOSE_PRODUCER_RETURN_AFTER_PRIOR_S03_CURSOR
+  material_change: true
+  work_item_id: S08-JOB_EMPLOYER-CLOSE-20260807T183310Z
+  claim_commit: 65e6f13e2263bace66a987891de88ebfa7445922
+  claim_path: projects/gtm-revenue/claims/20260807T190808Z_CLOSE_PROOF_KIT_ADMISSION.claim.yaml
+  claim_git_blob_sha1: 03e18f7d6fe77bdb264cb75821ef8b4ed998820e
+  acceptance_sha256: e3d4f7e008fedf9f2b42a5889273d045dc49b7384e63fea54dbe72e5bfd8fc74
+  claim_idempotency_sha256: a0ca3122b90096f83dedc4d2af02232db08d01e26f0c0236db6e78025a71e082
+  claim_expiry_utc: 2026-08-07T23:08:08Z
+  producer_return_commit: b183f5c04ed80c44365ee0a0d60a468a824dccab
+  producer_return_path: projects/gtm-revenue/returns/20260807T192514Z_CLOSE_PROOF_KIT_RETURN.md
+  producer_return_git_blob_sha1: 493e0b8cdff483cdc65031d1be4d9a74021b6d18
+  producer_digest_type: GIT_BLOB_SHA1_EXACT_BYTES
+  producer_digest: 493e0b8cdff483cdc65031d1be4d9a74021b6d18
+  producer_expiry_utc: 2026-08-07T23:08:08Z
+  candidate_commit: fbfc88ca613bd4b9c2dad2b7c1761b4c520a3574
+  candidate_path: projects/gtm-revenue/kits/close/AI_SALES_AGENT_RELEASE_GATE_ACTION_EVAL_COST.md
+  candidate_git_blob_sha1: bed6f7579cf44abdbae4f97a9a52bd56c0330cdf
+
+producer_return_completeness_readback:
+  workitem_bound: true
+  claim_path_and_blob_bound: true
+  acceptance_digest_bound: true
+  idempotency_digest_bound: true
+  source_commit_path_blob_and_evidence_digest_bound: true
+  candidate_path_and_blob_bound: true
+  exact_public_source_urls_present: true
+  no_send_status_present: true
+  rollback_present: true
+  effect_ceiling_present: true
+  expiry_present: true
+  honest_flaw_present: true
+  commands_and_exit_codes: NOT_APPLICABLE_MARKDOWN_PREP_ARTIFACT_NO_EXECUTABLE_BUILD_OR_TEST_CLAIM
+  exact_return_bytes_read_back_from_github: true
+  candidate_blob_read_back_from_github: true
+  claim_blob_read_back_from_github: true
+
+verdict_and_ack_scan:
+  exact_digest_bound_STOOD_or_FELL: absent
+  explicit_named_ConsumerAck: absent
+  prior_terminal_receipt_for_this_workitem: none_observed
+  binding_verdict_consumed: false
+  implicit_consumerack_forbidden: true
+  terminal_receipt_allowed: false
+
+verification_route:
+  target_verifier: S04_HRIST_STRUCTURAL_PREFLIGHT
+  target_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  verifier_class: NONPRODUCER_SAME_PROVIDER_STRUCTURAL_PREFLIGHT
+  same_provider_status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  route_nonce: s03-close-proof-kit-preflight-20260807t200826z
+  request: >-
+    Recompute and inspect the exact producer-return blob 493e0b8cdff483cdc65031d1be4d9a74021b6d18 for WorkItem S08-JOB_EMPLOYER-CLOSE-20260807T183310Z against claim blob 03e18f7d6fe77bdb264cb75821ef8b4ed998820e, acceptance SHA-256 e3d4f7e008fedf9f2b42a5889273d045dc49b7384e63fea54dbe72e5bfd8fc74, idempotency SHA-256 a0ca3122b90096f83dedc4d2af02232db08d01e26f0c0236db6e78025a71e082, and candidate blob bed6f7579cf44abdbae4f97a9a52bd56c0330cdf. Verify source pointers, freshness, authority/effect ceiling, unsupported-claim boundaries, rollback, expiry, and strongest fake-green defect. Do not edit or repair the producer or candidate. Do not infer ConsumerAck. This ChatGPT-carried check is structural preflight only with binding weight zero and must not emit independent STOOD/FELL.
+  required_output: PASS_STRUCTURAL_OR_REVISE_OR_HOLD_OR_BLOCKED_ONLY
+  required_checks:
+    - recompute exact producer-return blob and candidate blob on canonical branch
+    - bind verdict to WorkItem S08-JOB_EMPLOYER-CLOSE-20260807T183310Z
+    - bind verdict to producer digest 493e0b8cdff483cdc65031d1be4d9a74021b6d18
+    - verify claim blob and acceptance/idempotency digests match producer return
+    - verify candidate/source/no-send/rollback/effect-ceiling/expiry/honest-flaw bindings
+    - state strongest fake-green mutant and correlated-evidence risk
+  forbidden: DO_NOT_EDIT_SOURCE;DO_NOT_REPAIR_PRODUCER;DO_NOT_INFER_CONSUMERACK;DO_NOT_CLAIM_INDEPENDENT_STOOD_OR_FELL;DO_NOT_CREATE_TERMINAL_RECEIPT
+  expiry_utc: 2026-08-07T23:08:08Z
+  rollback: APPEND_ONLY_SUPERSESSION_DO_NOT_DELETE
+  effect_ceiling: GIT_APPEND_ONLY_INTERNAL_VERIFICATION_ROUTE_PLUS_ONE_REQUIRED_SLACK_POINTER
+  honest_flaw: >-
+    S04 is another ChatGPT-carried seat, so even a clean structural preflight has binding weight zero. Terminal closure still requires an exact independent STOOD/FELL tied to producer digest 493e0b8cdff483cdc65031d1be4d9a74021b6d18 and, after STOOD, an explicit named ConsumerAck for the same WorkItem.
+
+decision:
+  result: HOLD
+  reason: CHANGED_PRODUCER_RETURN_IS_BOUND_ENOUGH_FOR_STRUCTURAL_PREFLIGHT_BUT_NO_BINDING_STOOD_FELL_OR_CONSUMERACK_EXISTS
+  terminal_receipt_created: false
