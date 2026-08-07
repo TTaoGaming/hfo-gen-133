@@ -1,0 +1,127 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+result: RETURN
+result_type: FAILURE_ANTIBODY
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_match: true
+current_workitem_valid_time_utc: '2026-08-07T22:52:15Z'
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+expires_utc: '2026-08-08T02:43:26Z'
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+privacy_ceiling: SANITIZED_REPOSITORY_TASK_HASH_VERSION_AND_CONTROL_METADATA_ONLY
+world_effect_ceiling: ONE_GIT_RECEIPT_AND_ONE_SANITIZED_SLACK_POINTER
+heritage_credit: 0
+heritage_credit_condition: EXACT_CURRENT_CONSUMER_ACK_BOUND_TO_X14_MUTANT_169_f5adf888a470_AND_THIS_RECEIPT
+binding_weight: 0
+sealed: false
+---
+
+self_probe:
+  task_title_observed: HFO S15 Gondul Continuous Heritage
+  task_enabled_observed: true
+  expected_task_id_match: true
+  canonical_branch_observed: true
+  tools_observed:
+    - native_automations_inventory_read
+    - github_branch_search
+    - github_recent_commit_search
+    - github_exact_commit_and_file_read
+    - github_create_file
+    - github_readback
+    - slack_send_message
+  task_mutation_performed: false
+  self_verification_performed: false
+
+current_workitem:
+  id: X14_MUTANT_169_f5adf888a470
+  class: STALE_SOURCE_DIGEST
+  subcase: X12_RECOVERY_V156_TO_V157_PRIOR_DIGEST_REPLACED_WITH_REAL_STALE_V155_PROJECTION_DIGEST
+  status: QUARANTINED_ROUTED_PENDING_VERDICTS
+  workitem_commit: 8978b5d6d5bdeac771752b330d533f5f484e1986
+  current_pointer_commit: f87834f1dfd4c7fff152ce657cff3eb7fba6071e
+  path: state/coordination/experiments/false_green_x14/quarantine/20260807T225215Z_X12_STALE_SOURCE_DIGEST.mutant.yaml
+  blob_sha1: 604f9020996b6ea7103deed954955b4a90666851
+  source_commit: 8214d32ba4dd546bf666281744becc1df2ab5c92
+  source_path: state/coordination/experiments/durable_object_x12/slack_receipts/20260807T224326Z_ADVANCE_RECOVERY_22e1fdf178a9.json
+  source_blob_sha1: c047d3da2c43bbaac3f7871010882d8b55fad387
+  source_campaign: X12_STALE_CONCURRENT_WRITER_SIMULATION_C37
+  source_wake: C37_WAKE_3_OF_4
+  source_object_id: HFO_X12_WORKFLOW_OBJECT_001
+  source_expected_version: 156
+  source_prior_version: 156
+  source_next_version: 157
+  source_recovery_generation: 1
+  source_parent_failed_claim_key: 4b73102db38ecbaa97daf5b64cc43092819c97bdf6cc6980de75dbf12b6d4d9c
+  original_prior_digest_sha256: 3d935e9cfd9ea15212af5c52b310bb45514450b81ad8d262be4b27bf4ee2bf85
+  mutated_prior_digest_sha256: d274e6bf19d56ecc156b59d56b1e8f933272a6ecca8f0b0478736e60d29abcac
+  mutated_value_provenance_commit: 09051ac40ea5bfc1233e85a0f6581251d9cd3ac9
+  mutated_value_provenance_relation: AUTHENTIC_X12_C37_WAKE2_V155_PROJECTION_DIGEST
+  canonical_mutation_digest_sha256: f5adf888a4700536be54da6294757e1ad5e94a957593d9a32844575b62c3eb8b
+  canonical_overlay_utf8_bytes: 328
+  expected_verdict: REVISE
+  named_gate: S04_STALE_SOURCE_DIGEST_EXACT_SOURCE_OBJECT_PRIOR_EXPECTED_NEXT_VERSION_RECOVERY_GENERATION_PARENT_LINEAGE_PRIOR_DIGEST_CURRENT_STATE_SOURCE_DIGEST_EXPIRY_VERIFIER_CONSUMER_AND_CLAIM_CEILING_GATE
+  verifier: S04_STRUCTURAL_PREFLIGHT
+  consumer:
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+
+reusable_prior_artifact:
+  original_date_utc: '2026-08-05T09:44:00Z'
+  repository: TTaoGaming/hfo-gen-133
+  commit: 6b43dd34d69c919d5f5f8891911f9493e2901fb1
+  path: state/coordination/experiments/durable_object_x12/writer_observations/20260805T094400Z_V0104_STALE_PRIOR_DIGEST_PREFLIGHT_REJECTED.json
+  blob_sha1: a92a0d7d935644d61685f0a273689e14e3414fce
+  observation_digest_sha256: 7279e7e2b28b8f9bd166251a03aecb5740700fd7b444b00a15f523c087827961
+  artifact_role: DIRECT_X12_STALE_PRIOR_DIGEST_PREFLIGHT_REJECTION
+  reusable_invariant: >-
+    A transition candidate whose supplied prior-state digest does not equal the exact current projection digest for the bound expected/prior version must be rejected before write. A digest can be historically authentic and still be stale for the current transition; authenticity of the old digest does not bind it to a newer prior version, recovery generation, parent lineage, or transition receipt.
+  supported_claims:
+    - X12 already recorded REJECT_PRIOR_DIGEST_MISMATCH_NO_WRITE when a candidate supplied a prior digest that differed from the exact current projection digest at the bound version.
+    - The preflight preserved current state unchanged and did not attempt the write after detecting the mismatch.
+    - Mutant 169 injects the authentic C37 wake-2 v155 projection digest into a C37 wake-3 recovery receipt that explicitly binds prior_version 156 to a different exact projection digest.
+    - The historical observation is therefore reusable as a failure antibody for prior-version-to-prior-digest binding.
+  excluded_claims:
+    - This heritage receipt is not a direct S04 verdict on X14_MUTANT_169_f5adf888a470.
+    - S15 did not recompute the mutant's declared 328-byte canonical overlay or SHA-256.
+    - The historical observation did not test this recovery generation, parent failed-claim lineage, Slack receipt serialization, or current exact source bytes.
+    - The historical observation did not prove GitHub/database serializability, linearizability, distributed locking, simultaneous independent writers, or exactly-once behavior.
+    - This does not prove ConsumerAck, independent verification, campaign closure for mutant 169, adoption, execution, or fitness credit.
+
+acceptance_relevance:
+  direct_binding: >-
+    The live source receipt binds prior_version 156 and prior_digest_sha256 3d935e9cfd9ea15212af5c52b310bb45514450b81ad8d262be4b27bf4ee2bf85 for recovery generation 1. The injected d274e6bf19d56ecc156b59d56b1e8f933272a6ecca8f0b0478736e60d29abcac is authentic history from C37 wake 2 where it bound version 155. Reuse the historical X12 preflight rule only as a structural rejection antibody: current acceptance still requires S04 to resolve the exact source and stale-provenance bytes, recompute the current overlay, and verify object/version/recovery/parent lineage bindings.
+  verifier: S04_STRUCTURAL_PREFLIGHT
+  next_consumer:
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+  consumer_ack_status: NOT_OBSERVED
+  same_provider_status: SAME_PROVIDER_NONBINDING
+
+heritage_dedup:
+  gen133_searched_first: true
+  older_generation_search_required: false
+  exact_current_workitem_s15_receipt_before_write: NOT_OBSERVED_IN_RECENT_COMMIT_READBACK
+  same_class_prior_s15_bindings_exist: true
+  duplicate_status: DISTINCT_CURRENT_WORKITEM_REBOUND_TO_MORE_FIELD_EXACT_X12_PRIOR_DIGEST_PREFLIGHT_ARTIFACT
+  new_antibody_coverage_claimed: false
+  materiality_basis: CURRENT_MUTANT_169_NAMES_X14_AND_X12_CONSUMERS_AND_INJECTS_AN_AUTHENTIC_BUT_WRONG_PRIOR_VERSION_DIGEST
+  search_limit: BEST_EFFORT_NONTRANSACTIONAL_GITHUB_INDEX_AND_RECENT_COMMIT_READBACK_MAY_MISS_CONCURRENT_UNINDEXED_WRITES
+
+privacy:
+  ceiling: SANITIZED_REPOSITORY_TASK_HASH_VERSION_AND_CONTROL_METADATA_ONLY
+  excluded_data:
+    - private Slack bodies
+    - credentials_or_tokens
+    - customer_or_personal_data
+    - raw private source-system content
+
+expiry:
+  current_workitem_expires_utc: '2026-08-08T02:43:26Z'
+  reused_artifact_historical_only: true
+  reuse_scope: HISTORICAL_FAILURE_ANTIBODY_ONLY
+
+honest_flaw: >-
+  The reused X12 observation is a sequential same-carrier application preflight at version 104, not a direct verifier verdict on this version-156 recovery receipt. It proves only that this code path previously treated prior-digest mismatch as a no-write condition. It did not exercise true concurrent writers, provider-level transaction guarantees, a recovery parent lineage, or Slack receipt canonicalization. Mutant 169 is also relatively easy because its injected digest is explicitly documented as the immediately preceding v155 projection digest. S15 did not recompute the 328-byte overlay and does not grade the mutant. GitHub dedup is best-effort and may miss a concurrent unindexed receipt.
