@@ -1,0 +1,51 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+experiment_id: X11_WEB_FIXED_QUERY_SEARCH_V1
+event_type: CAMPAIGN_WAKE_ACCEPTED_AND_DECISION
+campaign_wake: 4
+target_wakes_before_decision: 4
+current_version_before: 163
+baseline: three_prior_fixed_public_queries_each_returned_at_least_one_RFC_Editor_result_including_RFC_2606
+hypothesis: a_fixed_public_query_can_retrieve_at_least_one_rfc_editor_result_without_authenticated_or_sensitive_access
+controlled_factor: web_research_search_surface
+exact_probe:
+  mode: read_only_fixed_public_web_search
+  query: site:rfc-editor.org RFC 2606 Reserved Top Level DNS Names
+  mutation: none
+measured_result:
+  execution_success: true
+  rfc_editor_result_present: true
+  sanitized_result_count: 14
+  permission_class: PUBLIC_WEB_FIXED_QUERY_SEARCH_AVAILABLE
+  error_class: NONE
+  latency_ms: null
+  latency_note: web_search_latency_not_exposed
+  operator_relay_minutes: 0
+campaign_summary:
+  accepted_wakes: 4
+  successful_query_runs: 4
+  rfc_editor_result_present_runs: 4
+  sanitized_result_counts: [5, 6, 5, 14]
+  permission_class: PUBLIC_WEB_FIXED_QUERY_SEARCH_AVAILABLE
+  error_class: NONE
+  operator_relay_minutes: 0
+disposition: KEEP
+disposition_basis: four_of_four_fixed_public_queries_executed_and_returned_at_least_one_RFC_Editor_result_including_RFC_2606
+supported_claim: four_fixed_public_search_queries_returned_RFC_Editor_results_including_RFC_2606
+claim_ceiling: fixed_public_web_search_query_only_not_search_breadth_freshness_ranking_stability_browser_parity_general_internet_access_network_independence_or_source_authenticity_beyond_exposed_result_hosts
+strongest_falsifier: the_fixed_query_execution_becomes_unavailable_returns_no_rfc_editor_result_requires_authenticated_or_sensitive_access_or_requires_external_mutation
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer: [Reginleif, Ratatoskr]
+honest_flaw: one_query_shape_cannot_establish_search_breadth_freshness_ranking_stability_or_network_independence_and_sanitized_result_count_varies_with_tool_specific_result_truncation
+next_factor: gmail_read_surface
+next_probe:
+  experiment_id: X11_GMAIL_FIXED_IMPOSSIBLE_MARKER_ID_SEARCH_V1
+  campaign_wake: 1
+  mode: read_only_fixed_impossible_marker_id_search
+  exact_query: 'subject:"__HFO_X11_FIXED_IMPOSSIBLE_MARKER_6A55089A9ADC8191BDA54541F7F9EFFA__"'
+  max_results: 1
+  persist_only: [execution_success, sanitized_result_count, continuation_present, permission_class, error_class, latency_when_exposed, operator_relay_minutes]
+  expected_current_version: 164
+valid_time_utc: 2026-08-07T18:40:23Z
+sealed: true
+---
