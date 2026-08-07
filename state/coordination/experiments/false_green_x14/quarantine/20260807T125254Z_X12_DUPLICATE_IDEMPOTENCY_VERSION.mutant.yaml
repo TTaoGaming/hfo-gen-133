@@ -1,0 +1,89 @@
+---
+schema_id: hfo.gen133.x14.false_green_mutant.v1
+mutant_id: X14_MUTANT_159_f8f1eb1a99a8
+seat: X14_FALSE_GREEN_MUTATION_AND_QA_LAB
+carrier_task_id: 6a513e4d9c4c81919db728f85db2dd79
+mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+mutation_subcase: X12_C35_WAKE2_SLACK_RECEIPT_REUSES_ALREADY_OCCUPIED_C35_WAKE1_CREATE_ONLY_IDEMPOTENCY_KEY
+status: QUARANTINED_NON_EXECUTABLE_ROUTED_PENDING_VERDICTS
+valid_time_utc: 2026-08-07T12:52:54Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+expires_utc: 2026-08-07T16:42:05Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+source_edited: false
+self_grade_performed: false
+independent_quorum_claimed: false
+world_effect_ceiling: ONE_IMMUTABLE_QUARANTINE_FILE_ONE_CURRENT_POINTER_UPDATE_ONE_SANITIZED_SLACK_ROUTE_ONLY
+---
+
+source_binding:
+  commit: d84e46ef78d17cfed10ba4029c0e7082dcbf56aa
+  path: state/coordination/experiments/durable_object_x12/slack_receipts/20260807T124205Z_ADVANCE_2982462ec7e0.json
+  git_blob_sha1: 5a95fca0698ca28ea325c736f0395f8416cd886f
+  source_digest_kind: GIT_BLOB_SHA1
+  source_digest: 5a95fca0698ca28ea325c736f0395f8416cd886f
+  authoring_seat: X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+  source_task_id: 6a506f83df208191815dd17a8fd5baa3
+  source_artifact_type: SLACK_VERSION_ADVANCE_RECEIPT
+  source_campaign_id: X12_POINTER_UPDATE_PATTERN_C35
+  source_wake: C35_WAKE_2_OF_4
+  source_object_id: HFO_X12_WORKFLOW_OBJECT_001
+  source_version: 148
+  source_delivery_kind: VERSION_ADVANCE
+  source_idempotency_key: 2982462ec7e0855641be316075873130f6b675fa7ce5a3da5963266a6782d5f4
+  source_receipt_digest_sha256: ba2ba788d261434cddc5cadde29bd342beadba6e2eb770f09db32d366737bab4
+  source_claim_ceiling: SLACK_VERSION_ADVANCE_RECEIPT_ONLY
+  source_consumer: Reginleif/Olrun
+  source_verifier: S04_WEIGHT_0_THEN_DISTINCT_SIGRUN_P4
+  source_expiry_utc: 2026-08-07T16:42:05Z
+  prior_x14_mutation_at_source_digest_before_write: false
+
+negative_control:
+  copy_mode: OVERLAY_ONLY_SOURCE_BYTES_UNCHANGED
+  canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_json: '{"mutated_field":"receipt_core.idempotency_key","mutated_value":"1197bf602624355a8f3edd2a393635e2d143a091aefcb671cf70d8c26729599a","mutation_class":"DUPLICATE_IDEMPOTENCY_VERSION","original_value":"2982462ec7e0855641be316075873130f6b675fa7ce5a3da5963266a6782d5f4","source_blob_sha1":"5a95fca0698ca28ea325c736f0395f8416cd886f"}'
+  canonical_overlay_utf8_bytes: 326
+  canonical_overlay_sha256: f8f1eb1a99a830d25e7b116a33c965ff739e33563d4e6354877fa0292e7666d0
+  mutated_field: receipt_core.idempotency_key
+  original_value: 2982462ec7e0855641be316075873130f6b675fa7ce5a3da5963266a6782d5f4
+  mutated_value: 1197bf602624355a8f3edd2a393635e2d143a091aefcb671cf70d8c26729599a
+  untouched_source_version: 148
+  expected_verdict: REVISE
+  expected_rejection_reason: IDEMPOTENCY_KEY_ALREADY_OCCUPIED_BY_PRIOR_CREATE_ONLY_C35_WAKE1_CLAIM_FOR_V146_TO_V147_AND_CANNOT_AUTHENTICATE_DISTINCT_WAKE2_VERSION148_RECEIPT
+
+prior_key_occupancy_evidence:
+  claim_path: state/coordination/experiments/durable_object_x12/idempotency_claims/1197bf602624355a8f3edd2a393635e2d143a091aefcb671cf70d8c26729599a.json
+  claim_git_blob_sha1: acee38d8208eb8a3eef6b04dbccc7b8b9caec213
+  claim_campaign_id: X12_POINTER_UPDATE_PATTERN_C35
+  claim_wake: C35_WAKE_1_OF_4
+  claim_expected_version: 146
+  claim_next_version: 147
+  claim_object_id: HFO_X12_WORKFLOW_OBJECT_001
+  claim_idempotency_key: 1197bf602624355a8f3edd2a393635e2d143a091aefcb671cf70d8c26729599a
+  claim_digest_sha256: e9f44e8156d2e275cce657498ae5bc2519f41ba5bb9033fe347525c97523812a
+  occupancy_semantics: CREATE_ONLY_STATE_BOUND_PRIOR_CLAIM
+
+routing:
+  named_gate: S04_DUPLICATE_IDEMPOTENCY_VERSION_EXACT_SOURCE_OBJECT_ID_WAKE_CAMPAIGN_VERSION_EXPECTED_PRIOR_NEXT_VERSION_CREATE_ONLY_PRIOR_KEY_OCCUPANCY_IDEMPOTENCY_KEY_RECEIPT_DIGEST_SOURCE_DIGEST_EXPIRY_VERIFIER_CONSUMER_AND_CLAIM_CEILING_GATE
+  structural_preflight: S04_STRUCTURAL_PREFLIGHT
+  structural_verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  distinct_falsification: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  distinct_verifier_task_id: 6a539fb148bc8191a30b6009dbf22438
+  distinct_verifier_evidence_ceiling: SAME_PROVIDER_NONBINDING_WEIGHT_0
+  consumer:
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_REDUCER
+  direct_candidate_priority_requested: true
+
+forbidden_inference:
+  - QUARANTINE_FILE_IS_NOT_AN_EXECUTABLE_RECEIPT
+  - NO_SOURCE_EDIT
+  - NO_TASK_OR_SCHEDULE_MUTATION
+  - NO_CONSUMER_ACK
+  - NO_PASS_OR_OUTCOME
+  - NO_INDEPENDENT_VERIFICATION_CLOSURE
+  - NO_WORLD_EFFECT
+
+honest_flaw: >-
+  This duplicate-idempotency specimen is deliberately easy because the injected key names a real create-only prior C35 wake-1 claim for the same object but the immediately preceding v146-to-v147 transition, while the selected source is C35 wake-2/version 148. It tests prior-key occupancy with one field corrupted, not harder cases such as a byte-identical legitimate retry, duplicate version with a fresh key, a key collision across object namespaces, expired replay, truncated-key comparison, or canonicalization drift. Candidate discovery and digest dedup are best-effort under GitHub indexing and concurrent writes. S04 and S09 are ChatGPT-carried same-provider checks with binding weight zero; this specimen cannot close independent verification.
