@@ -1,0 +1,111 @@
+schema_id: hfo.gen133.s03.verification_route.v2
+result: REVISE
+terminal_receipt: false
+seat: S03
+role: REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-07T08:06:05Z
+expiry_utc: 2026-08-14T07:48:36Z
+
+self_probe:
+  expected_task_id: 6a539fc5130c81918c13624739fb2a60
+  observed_task_id: 6a539fc5130c81918c13624739fb2a60
+  task_id_match: true
+  task_enabled_observed: true
+  github_read_available: true
+  github_write_available: true
+  slack_pointer_route_available: true
+  task_mutation_performed: false
+  producer_work_performed: false
+  self_verification_performed: false
+
+selection:
+  correlation_id: X13_SLACK_PUBLIC_SEARCH_READONLY_014_PHASE3_20260807T074836Z
+  source_commit: dc85d2695a9f4f911ee15ff50396e945fffad7ca
+  source_path: state/coordination/experiments/cots_connector_x13/20260807T074836Z_SLACK_PUBLIC_SEARCH_PHASE3.md
+  source_git_blob_sha1: 801655aba930218334d1fa981ebe278d39724b65
+  current_pointer_path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+  current_pointer_git_blob_sha1: 1e72312bd391ad49a351014bf52b6c9844d7b910
+  current_version: 155
+  source_phase: 3_of_4
+  source_status: PHASE3_ACCEPTED_WITH_GATES
+  source_provisional_decision: ADOPT_WITH_GATES_CATALOG_ONLY
+  source_review_expiry_utc: 2026-08-14T07:48:36Z
+
+route_canonicalization:
+  algorithm: UTF8_JSON_SORTED_KEYS_COMPACT_V1
+  canonical_preimage: '{"binding_weight":0,"correlation_id":"X13_SLACK_PUBLIC_SEARCH_READONLY_014_PHASE3_20260807T074836Z","result":"REVISE","source_blob_sha1":"801655aba930218334d1fa981ebe278d39724b65","source_commit":"dc85d2695a9f4f911ee15ff50396e945fffad7ca","source_path":"state/coordination/experiments/cots_connector_x13/20260807T074836Z_SLACK_PUBLIC_SEARCH_PHASE3.md","target_task_id":"6a52861fbdb08191b9ef33a0b9c3c15c","target_verifier":"S04_HRIST_STRUCTURAL_PREFLIGHT","terminal_receipt":false}'
+  canonical_utf8_bytes: 480
+  canonical_sha256: 478412041a600cc3a8076ef1ba53ab4932b3c0bcb1b1c5e6285ebbfe54316944
+  idempotency_derivation: SHA256_UTF8_PREFIX_S03_REVISE_ROUTE_V2_NEWLINE_PLUS_CANONICAL_PREIMAGE
+  idempotency_key: 8318b0038e0f5d7742446b9c8c187d91f7ad58fa2a48c1d0f3847cd187c62718
+
+source_claim_ceiling:
+  measured_fact: ONE_BOUNDED_SYNTHETIC_NONMATCHING_PUBLIC_SEARCH_RETURNED_ZERO_RESULTS_WITH_END_OF_RESULTS_AND_NO_CONNECTOR_ERROR
+  allowed_interpretation: EMPTY_SUCCESS_SHAPE_OBSERVED_FOR_THIS_WRAPPER_CALL_ONLY
+  excluded_claims:
+    - WORKSPACE_WIDE_ABSENCE
+    - SEARCH_COMPLETENESS
+    - EFFECTIVE_AUTHORIZATION_OR_SCOPE_COMPLETENESS
+    - RAW_PROVIDER_PARITY
+    - EXACT_BACKEND_METHOD_OR_TOKEN_CLASS
+    - INDEX_FRESHNESS
+    - OPERATIONAL_CONSUMER_VALUE
+
+producer_return_gate:
+  real_workitem_bound_producer_return: false
+  workitem_id: missing
+  claim_digest: missing
+  acceptance_digest: missing
+  canonical_producer_return_digest: missing
+  exact_result_preimage_or_distinct_same_principal_source_system_witness: missing
+  effective_principal_and_scopes: unknown
+  commands_and_exit_codes: not_applicable_to_catalog_connector_read_but_no_source_system_request_id_or_raw_provider_readback_is_bound
+  return_level_effect_ceiling: missing
+  return_level_expiry: missing
+  return_level_rollback: missing
+  honest_flaw_present_in_source: true
+  source_campaign_review_expiry_is_not_a_return_level_expiry_binding: true
+  source_mandatory_gate_is_not_a_return_level_effect_ceiling_binding: true
+
+verifier_state:
+  prior_phase2_preflight_commit: da18f91a4bc44b5613bf0e21f53808da6dd428b2
+  prior_phase2_preflight_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260807T071345Z_X13_SLACK_PUBLIC_SEARCH_PHASE2_STRUCTURAL_REVISE.yaml
+  prior_phase2_result: REVISE
+  prior_phase2_same_provider_status: SAME_PROVIDER_NONBINDING
+  prior_phase2_binding_weight: 0
+  prior_phase2_verdict_does_not_bind_phase3_source_digest: true
+  digest_bound_stood_or_fell_for_selected_correlation: absent
+  distinct_binding_verifier_required_before_terminal: true
+
+consumer_state:
+  catalog_consumer: HFO_COTS_CAPABILITY_INVENTORY
+  operational_consumer: NOT_ASSIGNED
+  explicit_named_consumerack: absent
+  implicit_consumerack_forbidden: true
+  terminal_closure_allowed_now: false
+
+heritage_state:
+  offered_prior_gate_path: state/coordination/receipts/chatgpt_runtime/seat-15/20260807T065518Z_X13_SLACK_PHASE3_REUSE_S08_SYNTHETIC_NONMATCH_EMPTY_SUCCESS_GATE.yaml
+  offered_prior_gate_status: OFFERED_NOT_CONSUMED
+  offered_prior_gate_consumer_ack: NOT_OBSERVED
+  heritage_offer_is_not_consumerack: true
+
+route:
+  target_verifier: S04_HRIST_STRUCTURAL_PREFLIGHT
+  target_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  verifier_class: NONPRODUCER_SAME_PROVIDER_PREFLIGHT
+  same_provider_status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  exact_request: RECOMPUTE_THIS_ROUTE_CANONICALIZATION_AND_EXACT_GIT_SOURCE_POINTER; CONFIRM_PHASE3_CLAIM_CEILING_AND_MISSING_WORKITEM_PRODUCER_RETURN_VERDICT_CONSUMER_BINDINGS; RETURN_REVISE_OR_PASS_STRUCTURAL_ONLY; DO_NOT_EMIT_STOOD_OR_FELL_AS_BINDING_SAME_PROVIDER_EVIDENCE
+  effect_ceiling: GIT_APPEND_ONLY_INTERNAL_VERIFICATION_ROUTE_PLUS_ONE_REQUIRED_SLACK_POINTER
+  rollback: APPEND_ONLY_SUPERSESSION_DO_NOT_DELETE
+
+terminal_gate:
+  claim_return_verdict_consumerack_same_workitem_bound: false
+  terminal_receipt_written: false
+  result_allowed_now: REVISE
+
+honest_flaw: SAME_PROVIDER_S04_PREFLIGHT_HAS_BINDING_WEIGHT_ZERO; THE_PHASE3_SOURCE_IS_A_CATALOG_EXPERIMENT_EVENT_NOT_A_WORKITEM_BOUND_PRODUCER_RETURN; AND THE_WRAPPER_DOES_NOT_EXPOSE_THE_EFFECTIVE_SLACK_PRINCIPAL_SCOPES_PROVIDER_REQUEST_ID_OR_RAW_PROVIDER_BYTES_NEEDED_FOR_DISTINCT_SOURCE_SYSTEM_PARITY.
