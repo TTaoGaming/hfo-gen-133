@@ -1,0 +1,86 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+experiment_id: X11_SLACK_WRITE_SURFACE_GATED_VISIBILITY_V1
+event_type: CAMPAIGN_DECISION
+expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+campaign_wake: 4
+target_wakes_before_decision: 4
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+current_version_before: 151
+current_version_after: 152
+accepted: true
+campaign_status: COMPLETE
+campaign_disposition: KEEP
+baseline:
+  accepted_wakes: 3
+  supported_claim: the_connected_Slack_tool_surface_exposed_a_slack_send_message_action_schema_during_three_accepted_wakes_without_invoking_a_probe_only_send
+  permission_class: CONNECTED_SLACK_MESSAGE_WRITE_ACTION_SCHEMA_EXPOSED
+  error_class: NONE
+hypothesis: the_connected_Slack_surface_will_continue_to_expose_a_message_write_action_readably_without_invoking_a_probe_only_send;_real_write_success_may_only_be_observed_when_a_separate_campaign_decision_or_Andon_already_authorizes_a_post
+controlled_factor: slack_write_surface_gated_visibility
+exact_probe:
+  surface: connected_Slack_tool_action_schema_only
+  action: inspect_only_for_slack_send_message_action_schema
+  probe_only_send: false
+  count_real_write_only_if_separately_authorized: true
+  interactive_login: false
+  sensitive_message_readback: false
+measured_result:
+  slack_message_write_action_exposed: true
+  real_write_observed_only_if_already_authorized: false
+  permission_class: CONNECTED_SLACK_MESSAGE_WRITE_ACTION_SCHEMA_EXPOSED
+  error_class: NONE
+  latency_ms: null
+  latency_note: tool_action_schema_discovery_exposes_no_discrete_provider_write_latency
+  operator_relay_minutes: 0
+  changed_capability: false
+  campaign_decision: true
+  andon: false
+campaign_summary:
+  slack_message_write_action_exposed: [true, true, true, true]
+  real_write_observed_only_if_already_authorized: [false, false, false, false]
+  latencies_ms: [null, null, null, null]
+  permission_class: CONNECTED_SLACK_MESSAGE_WRITE_ACTION_SCHEMA_EXPOSED
+  error_class: NONE
+  operator_relay_minutes: 0
+supported_claim: the_connected_Slack_tool_surface_exposed_a_slack_send_message_action_schema_during_four_accepted_wakes_without_invoking_a_probe_only_send
+claim_ceiling: repeatable_action_schema_visibility_only_not_authenticated_write_permission_channel_specific_permission_or_provider_side_write_success;_no_probe_only_send_was_invoked_and_no_real_write_success_is_used_to_justify_this_disposition
+disposition_rationale: KEEP_because_four_identical_schema_only_inspections_repeatedly_exposed_the_message_write_action_with_zero_operator_relay_and_no_probe_only_send;_retain_the_capability_as_a_gated_action_surface_observation_not_as_proof_of_write_success
+strongest_falsifier: the_connected_Slack_tool_surface_does_not_expose_a_message_write_action_but_the_probe_reports_that_it_does
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer:
+  - Reginleif
+  - Ratatoskr
+same_provider_independence_claim: false
+honest_flaw: action_schema_visibility_does_not_establish_authenticated_or_channel_specific_write_permission_or_provider_side_write_success_and_the_no_probe_only_send_gate_prevents_direct_write_testing_except_on_separately_authorized_campaign_decision_or_Andon_posts
+measurement_sealing_model: this_event_is_accepted_only_if_exact_event_readback_and_expected_SHA_CURRENT_update_and_readback_match;_CURRENT_is_the_authoritative_acceptance_receipt
+privacy_gate: persist_only_action_visibility_booleans_permission_error_class_and_latency_no_message_content_or_unrelated_channel_metadata
+prohibited_effects_observed: {task_mutation: false, send: false, spend: false, deployment: false, merge: false, publication: false, account_or_security_change: false, destructive_deletion: false, sensitive_externalization: false}
+next_factor: calendar_read_surface
+next_probe:
+  experiment_id: X11_CALENDAR_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1
+  campaign_wake: 1
+  mode: bounded_read_only_calendar_search
+  exact_action: search_primary_calendar_for_fixed_impossible_marker___HFO_X11_IMPOSSIBLE_CALENDAR_MARKER_7F9E2C1A___within_2026-01-01T00:00:00Z_to_2026-01-02T00:00:00Z_max_results_1;_persist_only_execution_success_sanitized_result_count_continuation_presence_permission_error_class_latency_when_exposed_and_operator_relay_minutes;_do_not_read_event_content
+  expected_current_version: 152
+  persist_only:
+    - search_execution_success
+    - sanitized_result_count
+    - continuation_present
+    - permission_class
+    - error_class
+    - latency_when_exposed
+    - operator_relay_minutes
+  mutation_allowed: false
+  event_content_readback_allowed: false
+  interactive_login_allowed: false
+  privacy_gate: no_event_titles_descriptions_attendees_identifiers_or_calendar_metadata_externalization
+  post_only_changed_capability_campaign_decision_or_andon: true
+  sensitive_readback_externalization_allowed: false
+  same_provider_independence_claim_allowed: false
+slack_action: POST_CAMPAIGN_DECISION_AFTER_GIT_READBACK
+recorded_valid_time_utc: 2026-08-07T04:39:52Z
+sealed: true
+---
