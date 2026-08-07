@@ -1,0 +1,67 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+experiment_id: X11_WEB_FIXED_QUERY_SEARCH_V1
+event_type: ACCEPTED_WAKE
+expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+campaign_wake: 2
+target_wakes_before_decision: 4
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+current_version_before: 161
+current_version_after: 162
+accepted: true
+campaign_status: ACTIVE
+campaign_disposition: null
+baseline:
+  accepted_wakes: 1
+  supported_claim: one_fixed_public_search_query_returned_RFC_Editor_results_including_RFC_2606
+  permission_class: PUBLIC_WEB_FIXED_QUERY_SEARCH_AVAILABLE
+  error_class: NONE
+hypothesis: a_fixed_public_query_can_retrieve_at_least_one_rfc_editor_result_without_authenticated_or_sensitive_access
+controlled_factor: web_research_search_surface
+exact_probe:
+  surface: public_web_search
+  fixed_query: site:rfc-editor.org RFC 2606 Reserved Top Level DNS Names
+  domain_scope: rfc-editor.org
+  mutation: false
+measured_result:
+  execution_success: true
+  rfc_editor_result_present: true
+  sanitized_result_count: 6
+  permission_class: PUBLIC_WEB_FIXED_QUERY_SEARCH_AVAILABLE
+  error_class: NONE
+  latency_ms: null
+  latency_note: web_search_latency_not_exposed
+  operator_relay_minutes: 0
+  changed_capability: false
+  campaign_decision: false
+  andon: false
+supported_claim: two_fixed_public_search_queries_returned_RFC_Editor_results_including_RFC_2606
+claim_ceiling: fixed_public_web_search_query_only_not_search_breadth_freshness_ranking_stability_browser_parity_general_internet_access_network_independence_or_source_authenticity_beyond_exposed_result_hosts
+strongest_falsifier: the_fixed_query_execution_becomes_unavailable_returns_no_rfc_editor_result_requires_authenticated_or_sensitive_access_or_requires_external_mutation
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer:
+  - Reginleif
+  - Ratatoskr
+same_provider_independence_claim: false
+honest_flaw: one_query_shape_cannot_establish_search_breadth_freshness_ranking_stability_or_network_independence_and_sanitized_result_count_can_vary_with_tool_specific_truncation
+measurement_sealing_model: accepted_only_after_exact_event_readback_and_expected_SHA_CURRENT_update_and_readback_match
+privacy_gate: public_search_only_no_authenticated_or_private_content_persisted
+prohibited_effects_observed: {task_mutation: false, send: false, spend: false, deployment: false, merge: false, publication: false, account_or_security_change: false, destructive_deletion: false, sensitive_externalization: false}
+next_factor: web_research_search_surface
+next_probe:
+  experiment_id: X11_WEB_FIXED_QUERY_SEARCH_V1
+  campaign_wake: 3
+  mode: read_only_fixed_public_web_search
+  exact_query: site:rfc-editor.org RFC 2606 Reserved Top Level DNS Names
+  persist_only: [execution_success, rfc_editor_result_present, sanitized_result_count, permission_class, error_class, latency_when_exposed, operator_relay_minutes]
+  expected_current_version: 162
+  slack_write_each_probe_allowed: false
+  post_only_changed_capability_campaign_decision_or_andon: true
+  sensitive_readback_externalization_allowed: false
+  same_provider_independence_claim_allowed: false
+slack_action: SILENT_UNCHANGED_PROBE
+recorded_valid_time_utc: 2026-08-07T16:38:36Z
+sealed: true
+---
