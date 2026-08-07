@@ -1,0 +1,137 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+result: RETURN_REUSABLE_PRIOR_ARTIFACT
+result_type: FAILURE_ANTIBODY
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+valid_time_utc: '2026-08-07T23:57:29Z'
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+expires_utc: '2026-08-08T03:49:51Z'
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+privacy_ceiling: SANITIZED_PUBLIC_REPOSITORY_TASK_HASH_VERSION_AND_CONTROL_METADATA_ONLY
+world_effect_ceiling: ONE_APPEND_ONLY_GIT_RECEIPT_AND_ONE_SANITIZED_SLACK_POINTER
+heritage_credit: 0
+heritage_credit_condition: EXACT_CONSUMER_ACK_BOUND_TO_X14_MUTANT_170_981237d04cae_AND_THIS_RECEIPT
+sealed: false
+---
+
+self_probe:
+  identity: S15_HERITAGE_REUSE_AND_DEDUP
+  task_title_observed: HFO S15 Gondul Continuous Heritage
+  expected_task_id_match: true
+  task_enabled_observed: true
+  tools_observed:
+    - native_automations_inventory_read
+    - github_current_pointer_read
+    - github_recent_commit_search
+    - github_exact_commit_file_read
+    - github_create_file
+    - github_readback
+    - slack_pointer_post
+  task_mutation_performed: false
+  private_body_copied: false
+  self_verification_claimed: false
+
+surface_owner_permission:
+  surface: TTaoGaming/hfo-gen-133 branch agent/gen133-bootstrap-20260730 plus Slack channel C0BGNGPJFHU
+  owner: S15_HERITAGE_REUSE_AND_DEDUP_FOR_THIS_APPEND_ONLY_RECEIPT_ONLY
+  permission: ONE_SANITIZED_GIT_FIRST_RECEIPT_THEN_ONE_MATERIAL_SLACK_POINTER;NO_SOURCE_EDIT_NO_TASK_MUTATION_NO_EXTERNAL_EFFECT
+
+current_workitem:
+  id: X14_MUTANT_170_981237d04cae
+  class: DUPLICATE_IDEMPOTENCY_VERSION
+  mutation_subcase: X13_PHASE3_PRIOR_CURRENT_VERSION_170_DUPLICATED_TO_EXPECTED_CURRENT_VERSION_171
+  status: QUARANTINED_NON_EXECUTABLE_ROUTED_PENDING_VERDICTS
+  mutant_commit: c5c7cf307a6fb1c548ff93a5ee53498324f5bdd4
+  mutant_path: state/coordination/experiments/false_green_x14/quarantine/20260807T235250Z_X13_DUPLICATE_IDEMPOTENCY_VERSION.mutant.yaml
+  mutant_blob_sha1: 2b8592e35594629be344c7343841ad1da34436e0
+  canonical_overlay_sha256: 981237d04caee6a617cd3416540e37e9ed23d5d1578e9a7e717e6aa8914cfd7c
+  canonical_overlay_utf8_bytes: 193
+  bound_source_commit: 254f5b3083ee2a5a60d6581bae3b6505b09bf1b0
+  bound_source_path: state/coordination/experiments/cots_connector_x13/20260807T234951Z_SLACK_PUBLIC_MESSAGE_SEARCH_PHASE3_EMPTY.md
+  bound_source_blob_sha1: a8474073f810b57791d33317d4de426de2772c7b
+  bound_source_experiment_id: X13_SLACK_PUBLIC_MESSAGE_SEARCH_READONLY_018
+  source_prior_current_version: 170
+  source_expected_current_version: 171
+  mutated_prior_current_version: 171
+  resulting_transition: 171_TO_171_DUPLICATE_ZERO_STEP
+  source_consumer: HFO_COMMAND_AND_CONTROL_DISCOVERY_CANDIDATE_NO_DOWNSTREAM_CONSUMER_ACK
+  named_gate: S04_DUPLICATE_IDEMPOTENCY_VERSION_EXACT_SOURCE_PRIOR_EXPECTED_VERSION_PHASE_WAKE_REQUEST_DIGEST_SOURCE_DIGEST_EXPIRY_VERIFIER_CONSUMER_AND_CLAIM_CEILING_GATE
+  expected_verdict: REVISE
+
+reusable_prior_artifact:
+  original_date_utc: '2026-08-06T15:55:00Z'
+  repository: TTaoGaming/hfo-gen-133
+  commit: 55dc94346d9a5f625afae5961be89cc6b4ee4c83
+  path: state/coordination/receipts/chatgpt_runtime/seat-15/20260806T155500Z_X14_MUTANT137_REUSE_S04_DUPLICATE_VERSION_MONOTONICITY_GATE.yaml
+  blob_sha1: dd28c12148f8298cc8e258cb8694e2d26d054b4a
+  prior_workitem: X14_MUTANT_137_1b43322d6140
+  prior_subcase: X13_PHASE3_EXPECTED_NEXT_VERSION_FALSELY_REUSES_PRIOR_CURRENT_VERSION
+  artifact_role: DUPLICATE_VERSION_ZERO_STEP_MONOTONICITY_FAILURE_ANTIBODY
+  exact_reusable_invariant: >-
+    Apply the overlay before evaluating transition semantics. A fresh versioned event must preserve an exact
+    prior-to-expected monotonic edge; if either side is mutated until prior equals expected, the result is a
+    duplicate zero-step claim, not a fresh transition. Authentic source bytes, eventual CURRENT state, or a
+    valid overlay digest cannot authorize that no-op as accepted work without exact same-intent/same-body
+    idempotency evidence and a prior acceptance receipt bound to the same event identity.
+
+supported_claims:
+  - Gen-133 already contains a directly analogous S15 heritage binding for an X13 phase-three event whose one-field version overlay collapsed a valid monotonic edge into a same-version no-op.
+  - Mutant 137 changed expected-next to prior; mutant 170 is the mirror transformation, changing prior to expected. Both produce prior_equals_expected after overlay.
+  - The reusable gate is post-overlay transition monotonicity and replay provenance, not the direction of the one-field corruption.
+  - The current X13 source binds prior_current_version 170 and expected_current_version 171; mutant 170 changes only prior_current_version to 171.
+
+excluded_claims:
+  - This receipt is not the direct S04 verdict on mutant 170.
+  - S15 did not independently recompute the declared 193-byte canonical overlay or SHA-256.
+  - S15 did not prove absence of every possible out-of-band idempotency or acceptance receipt.
+  - This receipt does not establish CAS, serializability, linearizability, exactly-once behavior, concurrent-writer safety, ConsumerAck, adoption, campaign closure, fitness, or independent verification.
+  - The prior artifact does not transfer its old expiry or consumer acknowledgement to mutant 170.
+
+acceptance_relevance:
+  direct_binding: >-
+    S04 can consume the prior antibody by resolving mutant 170 and its exact X13 source, confirming the source
+    170-to-171 edge, applying the one-field overlay prior_current_version=171, and rejecting the resulting
+    171-to-171 zero-step claim. Eventual CURRENT version 171 is not evidence that the source event itself had
+    prior version 171. Any idempotent-retry exception must be proven by exact event identity, canonical body,
+    semantic intent, idempotency binding, and prior acceptance evidence rather than inferred from version equality.
+  required_direct_checks:
+    - exact mutant commit-path-blob readback
+    - exact source commit-path-blob readback
+    - exact 193-byte canonical overlay and SHA-256 recomputation
+    - source prior_current_version 170 and expected_current_version 171 confirmation
+    - post-overlay prior_equals_expected zero-step detection
+    - request-descriptor and source-digest preservation
+    - event identity and any exact same-body replay or prior-acceptance evidence
+    - expiry, verifier, consumers, privacy and claim-ceiling preservation
+    - REVISE with SAME_PROVIDER_NONBINDING and binding_weight_0
+  verifier: S04_STRUCTURAL_PREFLIGHT
+  next_consumer:
+    - X14_CAMPAIGN_REDUCER
+    - X13_COTS_CONNECTOR_PDCA_LAB
+  consumer_ack_status: NOT_OBSERVED
+
+heritage_dedup:
+  gen133_searched_first: true
+  query_basis:
+    - exact mutant ID X14_MUTANT_170_981237d04cae
+    - duplicate idempotency version prior equals expected zero-step
+    - prior X13 phase-three duplicate-version mutants
+    - existing S15 heritage bindings for duplicate-version monotonicity
+  exact_existing_s15_binding_for_mutant_170_at_selection_cutoff: NOT_FOUND
+  closest_reusable_prior: X14_MUTANT_137_1b43322d6140_S15_HERITAGE_BINDING
+  duplicate_status: DISTINCT_CURRENT_WORKITEM_BINDING_TO_EXISTING_FAILURE_ANTIBODY
+  search_authority: BEST_EFFORT_NONTRANSACTIONAL_GITHUB_INDEX_CAN_LAG
+
+honest_flaw: >-
+  Mutant 170 is nearly the mirror image of mutant 137 and therefore adds almost no antibody diversity. The old
+  specimen changed expected-next down to prior; the current specimen changes prior up to expected. That symmetry
+  makes this reuse strong for the zero-step monotonicity invariant but weak as new test coverage. The prior S15
+  artifact is same-provider nonbinding heritage, and this receipt neither recomputes mutant 170's overlay nor
+  inspects a transactional idempotency store, concurrent writers, or a legitimate ambiguous retry path. GitHub
+  search/dedup can lag, so exact-duplicate discovery is best effort rather than transactional proof.
