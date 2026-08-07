@@ -1,0 +1,61 @@
+---
+schema_id: hfo.gen133.x14.false_green_correction.v1
+experiment_id: X14_FALSE_GREEN_MUTATION_001
+seat: X14_FALSE_GREEN_MUTATION_QA
+carrier_task_id: 6a513e4d9c4c81919db728f85db2dd79
+correction_id: X14_CORRECTION_MUTANT153_CAMPAIGN38_EVIDENCE_001
+valid_time_utc: 2026-08-07T06:53:29Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+correction_class: SELF_AUTHORED_CAMPAIGN_EVIDENCE_METADATA_CORRECTION
+world_effect_ceiling: IMMUTABLE_GIT_CORRECTION_AND_SANITIZED_SLACK_ANDON_POINTER_ONLY
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+---
+
+corrected_artifact:
+  mutant_id: X14_MUTANT_153_4a6dabe3ebed
+  commit: 6f8a4de8be1c6e28352739a407f0ead25dd2b485
+  path: state/coordination/experiments/false_green_x14/quarantine/20260807T065229Z_X13_PRIVACY_MARKER.mutant.yaml
+  git_blob_sha1: f44213feeee9d5cc9883e3310a162ab8262c27a6
+  mutation_overlay_affected_by_correction: false
+  source_binding_affected_by_correction: false
+  expected_rejection_affected_by_correction: false
+  campaign_decision_affected_by_correction: false
+
+error:
+  field: prior_verdict_observed.mutant_150.embedded_s04_commit
+  erroneous_value: 6a91de5b6dca3ba5261ca62dcc74dfdd99c52bdd_UNKNOWN_IF_COMMIT_LOOKUP_REQUIRED
+  reason: UNVERIFIED_PLACEHOLDER_WAS_WRITTEN_AS_A_FIELD_VALUE_AND_MUST_NOT_BE_TREATED_AS_A_GIT_COMMIT_SHA
+  severity: ANDON_FALSE_GREEN_EVIDENCE_METADATA
+
+correction:
+  mutant_150:
+    mutant_id: X14_MUTANT_150_611b8fcfad80
+    mutation_class: UNSUPPORTED_PASS_OUTCOME
+    direct_s04_route_result: NOT_OBSERVED_AT_CUTOFF
+    embedded_s04_exact_rejection_result: REVISE
+    embedded_s04_result_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260807T052148Z_X13_GMAIL_SEARCH_IDS_PHASE4_DECISION_STRUCTURAL_REVISE.yaml
+    embedded_s04_result_blob_sha1: f216f20dcf9a218540eb6196474ab8cb3e40f81b
+    embedded_s04_creation_commit: UNRESOLVED_FROM_CURRENT_CONNECTOR_OBSERVATIONS_DO_NOT_INVENT
+    distinct_s09_result: RETIRE
+    distinct_s09_commit: 6f87616f0ff1e267ad5c083de84fc152c3275a8a
+    evidence_class: SAME_PROVIDER_NONBINDING
+    binding_weight: 0
+  correction_rule: USE_EXACT_PATH_AND_BLOB_FOR_THE_S04_RECEIPT_UNTIL_ITS_CREATION_COMMIT_IS_RESOLVED; NEVER_PROMOTE_THE_ERRONEOUS_PLACEHOLDER_TO_A_COMMIT_SHA
+
+campaign_38_effect:
+  direct_s04_catches_observed: 0
+  embedded_s04_exact_rejections_observed: 2
+  distinct_s09_rejections_or_retirements_observed: 2
+  uncaught_prior_mutant: X14_MUTANT_151_8da0ed24a69c
+  current_mutant_pending: X14_MUTANT_153_4a6dabe3ebed
+  decision: REVISE_GATE
+  decision_changed_by_correction: false
+
+rollback:
+  action: PRESERVE_IMMUTABLE_MUTANT153_AND_THIS_APPEND_ONLY_CORRECTION; DO_NOT_EDIT_OR_DELETE_THE_PRIOR_MUTANT_FILE
+
+honest_flaw: >-
+  This correction repairs only one self-authored campaign-evidence metadata field. It does not retroactively change the immutable mutant file, does not resolve the S04 receipt's creation commit, and does not upgrade any same-provider evidence. The exact S04 result path and blob are sufficient to preserve the observed embedded REVISE without inventing a commit SHA. No source, task, schedule, Slack history, verifier state, consumer state, account, deployment, merge, publication, spend, deletion, or external-provider state was modified.
