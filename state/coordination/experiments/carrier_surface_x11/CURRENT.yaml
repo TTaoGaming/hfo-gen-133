@@ -1,8 +1,8 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_CALENDAR_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1
-current_version: 154
-accepted_wakes: 2
+current_version: 155
+accepted_wakes: 3
 target_wakes_before_decision: 4
 controlled_factor: calendar_read_surface
 campaign_status: ACTIVE
@@ -19,10 +19,10 @@ prior_campaign:
 baseline_result: campaign_initialized_with_no_accepted_calendar_read_probe_results
 hypothesis: the_authenticated_Google_Calendar_read_surface_may_execute_a_bounded_primary_calendar_search_for_a_fixed_impossible_marker_and_return_a_sanitized_zero_result_without_event_content_readback_or_operator_relay
 measured_result:
-  search_execution_success: [true, true]
-  sanitized_result_count: [0, 0]
-  continuation_present: [false, false]
-  latencies_ms: [479, 212]
+  search_execution_success: [true, true, true]
+  sanitized_result_count: [0, 0, 0]
+  continuation_present: [false, false, false]
+  latencies_ms: [479, 212, 206]
   latency_note: connector_exposed_external_call_time_ms
   permission_class: AUTHENTICATED_GOOGLE_CALENDAR_BOUNDED_SEARCH_READ_AVAILABLE
   error_class: NONE
@@ -30,25 +30,25 @@ measured_result:
   changed_capability: false
   campaign_decision: false
   andon: false
-supported_claim: identical_authenticated_bounded_primary_calendar_search_execution_and_sanitized_zero_result_visibility_observed_twice
+supported_claim: identical_authenticated_bounded_primary_calendar_search_execution_and_sanitized_zero_result_visibility_observed_three_times
 claim_ceiling: bounded_primary_calendar_search_execution_and_sanitized_count_visibility_only_not_calendar_completeness_recall_indexing_freshness_event_content_access_authenticity_or_independent_verification
 strongest_falsifier: the_Google_Calendar_search_surface_is_missing_or_unauthenticated_or_the_identical_bounded_probe_returns_an_execution_error_while_the_carrier_reports_success
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 consumer:
   - Reginleif
   - Ratatoskr
-honest_flaw: two_impossible_marker_zero_results_test_repeatable_authenticated_bounded_search_execution_but_cannot_establish_calendar_completeness_recall_indexing_freshness_or_event_content_access
+honest_flaw: three_impossible_marker_zero_results_test_repeatable_authenticated_bounded_search_execution_but_cannot_establish_calendar_completeness_recall_indexing_freshness_or_event_content_access
 last_event:
-  commit: fc51170c39a7c066e3f968ddf00fec9f7d1e52ff
-  path: state/coordination/experiments/carrier_surface_x11/events/20260807T074154Z_CALENDAR_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1_WAKE_02.yaml
-  blob: 2f8b39c49b176bf74d338a8943a53509af1337eb
+  commit: c42d52de0289a83808010a8a3ece077ecf0d8063
+  path: state/coordination/experiments/carrier_surface_x11/events/20260807T084014Z_CALENDAR_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1_WAKE_03.yaml
+  blob: 0145c245c87ebb5a2e978450313b76149478a1b8
 next_factor: calendar_read_surface
 next_probe:
   experiment_id: X11_CALENDAR_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1
-  campaign_wake: 3
+  campaign_wake: 4
   mode: bounded_read_only_calendar_search
   exact_action: search_primary_calendar_for_fixed_impossible_marker___HFO_X11_IMPOSSIBLE_CALENDAR_MARKER_7F9E2C1A___within_2026-01-01T00:00:00Z_to_2026-01-02T00:00:00Z_max_results_1;_persist_only_execution_success_sanitized_result_count_continuation_presence_permission_error_class_latency_when_exposed_and_operator_relay_minutes;_do_not_read_event_content
-  expected_current_version: 154
+  expected_current_version: 155
   persist_only:
     - search_execution_success
     - sanitized_result_count
@@ -65,8 +65,8 @@ next_probe:
   sensitive_readback_externalization_allowed: false
   same_provider_independence_claim_allowed: false
 slack_action: NONE_UNCHANGED_PROBE
-updated_valid_time_utc: 2026-08-07T07:41:54Z
+updated_valid_time_utc: 2026-08-07T08:40:14Z
 sealed: false
 ---
 
-Google Calendar fixed impossible-marker read V1 accepted wake 2 of 4. The identical bounded primary-calendar search again executed successfully, returned zero sanitized matches with no continuation token, exposed 212 ms connector latency, and required no operator relay. Wake 3 repeats the identical bounded read-only probe. No event content was read back or externalized, and no Slack post is authorized for this unchanged wake.
+Google Calendar fixed impossible-marker read V1 accepted wake 3 of 4. The identical bounded primary-calendar search again executed successfully, returned zero sanitized matches with no continuation token, exposed 206 ms connector latency, and required no operator relay. Wake 4 repeats the identical bounded read-only probe and will issue the four-wake campaign disposition. No event content was read back or externalized, and no Slack post is authorized for this unchanged wake.
