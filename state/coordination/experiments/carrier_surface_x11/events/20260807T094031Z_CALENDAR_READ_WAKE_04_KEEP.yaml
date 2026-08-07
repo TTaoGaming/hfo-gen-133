@@ -1,0 +1,34 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+experiment_id: X11_CALENDAR_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1
+campaign_wake: 4
+expected_current_version: 155
+resulting_current_version: 156
+accepted: true
+disposition: KEEP
+baseline: 3 prior accepted identical calendar probes succeeded
+hypothesis: the same bounded calendar read repeats successfully
+controlled_factor: calendar_read_surface
+exact_probe: fixed-marker search on primary calendar for 2026-01-01T00:00:00Z through 2026-01-02T00:00:00Z, max_results 1
+measured_result:
+  execution_success: true
+  sanitized_result_count: 0
+  continuation_present: false
+  permission_class: GOOGLE_CALENDAR_BOUNDED_READ_EXECUTED
+  error_class: NONE
+  latency_ms: 241
+  operator_relay_minutes: 0
+campaign_aggregate:
+  successes: 4
+  result_counts: [0, 0, 0, 0]
+  continuations: [false, false, false, false]
+  latencies_ms: [479, 212, 206, 241]
+strongest_falsifier: identical bounded probe fails while this event reports success
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer: [Reginleif, Ratatoskr]
+honest_flaw: fixed zero-result searches do not test completeness, recall, freshness, content access, or independent verification
+next_factor: wake_timing
+next_experiment_id: X11_WAKE_TIMING_DRIFT_V1
+valid_time_utc: 2026-08-07T09:40:31Z
+sealed: true
+---
