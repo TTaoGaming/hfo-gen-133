@@ -1,0 +1,184 @@
+schema_id: hfo.gen133.s04.structural_preflight.v1
+result: REVISE
+seat: S04_HRIST_STRUCTURAL_PREFLIGHT
+role: STRUCTURAL_PREFLIGHT_VERIFIER
+wip: 1
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+valid_time_utc: 2026-08-07T02:12:25Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+
+self_probe:
+  expected_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  observed_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  task_id_match: true
+  task_enabled: true
+  tools_observed:
+    - native_automations_inventory_read
+    - github_recent_commit_search
+    - github_exact_commit_read
+    - github_exact_file_and_blob_read
+    - github_branch_discovery
+    - deterministic_sha1_git_blob_recompute
+    - deterministic_sha256_recompute
+    - deterministic_json_canonicalization
+    - github_create_file
+    - github_readback
+    - slack_direct_route
+  candidate_edit_performed: false
+  task_mutation_performed: false
+  self_grading_performed: false
+  independent_quorum_claimed: false
+
+selection:
+  selection_cutoff_utc: 2026-08-07T02:12:25Z
+  rule: NEWEST_IMMUTABLE_CANDIDATE_ADDRESSED_TO_S04_NOT_AUTHORED_BY_S04
+  candidate_commit: bc58127f85d325eb163e0447c733e6364d5b9dbe
+  candidate_path: state/coordination/receipts/chatgpt_runtime/seat-03/20260807T020816Z_X13_GMAIL_SEARCH_IDS_PHASE1_BINDINGS_REVISE.yaml
+  candidate_authoring_seat: S03
+  candidate_git_author_login: TTaoGaming
+  candidate_git_blob_sha1: 65a57647985da495a770832ee5319839e0dc981c
+  candidate_exact_utf8_bytes: 5207
+  candidate_sha256: 35badb7e29ce9f05a5f350ee883813e3fd118299154096f2487481ebbec1ed57
+  candidate_git_blob_sha1_recomputed: 65a57647985da495a770832ee5319839e0dc981c
+  immutable_commit_bound: true
+  addressed_to_s04: true
+  authored_by_s04: false
+  candidate_result: REVISE
+  correlation_id: X13_GMAIL_SEARCH_IDS_READONLY_013_PHASE1_20260807T014949Z
+
+source_recomputation:
+  source_event:
+    commit: 177a161d36d07b4639178564d5e9ca80737410a2
+    path: state/coordination/experiments/cots_connector_x13/20260807T014949Z_GMAIL_SEARCH_IDS_PHASE1_BASELINE.md
+    git_blob_sha1: be25a439185f34ec8293a16320668fae60377000
+    exact_utf8_bytes: 4798
+    sha256: d35ff47fa90906219ead3d1b24ea27099ce2cf6f01be684c8e7794e46213fba9
+    git_blob_sha1_recomputed: be25a439185f34ec8293a16320668fae60377000
+  source_current:
+    commit: f66ad525b89a3e01e658ae9ab414138e2fe69dc0
+    path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+    version: 149
+    git_blob_sha1: 732309e6550c424b04943e64ad1a4e848f955e0d
+    exact_utf8_bytes: 5388
+    sha256: cc782e37c61a98118f125ea335aab91428c50a39dec77a2dfd31181523a2a2c5
+    git_blob_sha1_recomputed: 732309e6550c424b04943e64ad1a4e848f955e0d
+    phase_2_status: PENDING
+  s15_contradiction:
+    commit: 0dae63ae4ee5619b6a7a2a12aa7a7edbe5a872d5
+    path: state/coordination/receipts/chatgpt_runtime/seat-15/20260807T015448Z_X13_GMAIL_PHASE1_REUSE_S08_DATE_LITERAL_TIMEZONE_CONTRADICTION.yaml
+    git_blob_sha1: 4c114f8378c343fd1eb0ea7b43fb36116a9ba27f
+    exact_utf8_bytes: 5358
+    sha256: 895f255014b173cf71d104c8f50db8873072765f639dd507b866f94635c1f128
+    git_blob_sha1_recomputed: 4c114f8378c343fd1eb0ea7b43fb36116a9ba27f
+    reused_s08_commit: a348e0002580ba1b3ee2e24118e9ca8cb3013b05
+    reused_s08_blob_sha1: 69f953e1a77c06a864e9a13131cafa996fba36de
+    reused_s08_blob_readback_match: true
+    contradiction_bound_to_current_query: true
+  request_digest:
+    canonicalization_status: RECONSTRUCTED_COMPACT_SORTED_JSON_NOT_DECLARED_BY_SOURCE
+    canonical_json: '{"max_results":3,"query":"after:2026/07/30 before:2026/08/08 -in:spam -in:trash"}'
+    exact_utf8_bytes: 81
+    sha256_recomputed: deea67e1897a313be60455d1004de694b170ac9aea4900b30956f2955c5de828
+    sha256_recorded: deea67e1897a313be60455d1004de694b170ac9aea4900b30956f2955c5de828
+    digest_match: true
+  normalized_result_digest:
+    normalization_contract: ORDERED_MESSAGE_IDS_PLUS_BOOLEAN_NEXT_PAGE_TOKEN_PRESENCE
+    sha256_recorded: 4fa78819291c56fc127d851403f232b29124caf38d99565ac35c9567e0c3932d
+    recomputation_status: NOT_RECOMPUTABLE_FROM_GIT_BY_DESIGN
+    reason: RAW_MESSAGE_IDS_AND_NEXT_PAGE_TOKEN_ARE_NOT_PERSISTED
+    false_green_ceiling: DIGEST_EXISTENCE_DOES_NOT_PROVE_RESULT_BYTES_WITHOUT_MATCHED_SOURCE_SYSTEM_READBACK
+
+structural_checks:
+  schema:
+    status: REVISE
+    reason: ROUTE_SCHEMA_IS_PARSEABLE_BUT_HAS_NO_CANONICAL_ROUTE_PACKET_DIGEST_OR_SCHEMA_BOUND_CANONICALIZATION_RULE
+  freshness:
+    status: PASS_STRUCTURAL_SUBCHECK
+    route_expiry_utc: 2026-08-14T01:28:00Z
+    source_review_expiry_utc: 2026-08-14T01:49:49Z
+    s15_expiry_utc: 2026-08-14T01:28:00Z
+    observed_live_at_valid_time: true
+  authority:
+    status: PASS_STRUCTURAL_SUBCHECK
+    effect_ceiling: GIT_APPEND_ONLY_ROUTE_RECEIPT_PLUS_ONE_REQUIRED_SLACK_POINTER; NO_GMAIL_OR_TASK_MUTATION
+    authority_escalation_observed: false
+  task_binding:
+    status: PASS_STRUCTURAL_SUBCHECK
+    s04_task_id_exact_match: true
+    s04_task_enabled: true
+    s03_task_id: 6a539fc5130c81918c13624739fb2a60
+    s03_task_enabled: true
+    x13_task_id: 6a55c1733708819185088bf334e33ea5
+    x13_task_enabled: true
+    s15_task_id: 6a52f485409c8191aa06ea7911add3f3
+    s15_task_enabled: true
+  actor_carrier_separation:
+    status: REVISE
+    reason: LOGICAL_SEAT_AND_TASK_IDS_EXIST_BUT_GIT_AUTHOR_TTAOGAMING_IS_NOT_PROVIDER_OR_CRYPTOGRAPHIC_PROOF_OF_THE_SPECIFIC_S03_CARRIER_WAKE
+  idempotency:
+    status: REVISE
+    reason: ROUTE_HAS_CORRELATION_ID_BUT_NO_NONCE_IDEMPOTENCY_KEY_DERIVATION_OR_CREATE_ONLY_DEDUP_BINDING
+  lease_and_expiry:
+    status: REVISE
+    reason: ROUTE_EXPIRY_EXISTS_BUT_NO_NONRENEWABLE_CLAIM_OR_PRODUCER_RETURN_LEASE_IS_BOUND
+  privacy:
+    status: PASS_STRUCTURAL_WITH_VERIFICATION_GAP
+    ceiling: RAW_MESSAGE_IDS_PAGE_TOKEN_SUBJECTS_SENDERS_RECIPIENTS_SNIPPETS_BODIES_ATTACHMENTS_NOT_PERSISTED
+    gap: NORMALIZED_RESULT_DIGEST_CANNOT_BE_RECOMPUTED_WITHOUT_PRIVACY_PRESERVING_SOURCE_BOUND_READBACK
+  rollback:
+    status: PASS_STRUCTURAL_SUBCHECK
+    rule: DELETE_NOT_AUTHORIZED; SUPERSEDE_ONLY_WITH_A_LATER_APPEND_ONLY_RECEIPT_IF_THIS_ROUTE_IS_PROVEN_WRONG
+  verifier:
+    status: REVISE
+    reason: S04_ROUTE_IS_EXACT_AND_WEIGHT_ZERO_BUT_DISTINCT_MATCHED_RAW_GMAIL_OR_SOURCE_BOUND_CONNECTOR_VERIFIER_HAS_NOT_EXECUTED_OR_RETURNED_DIGEST_BOUND_STOOD_OR_FELL
+  consumer:
+    status: REVISE
+    operational_consumer: NOT_ASSIGNED
+    consumer_ack: NOT_OBSERVED
+  workitem_chain:
+    status: REVISE
+    missing:
+      - workitem_id
+      - claim_digest
+      - acceptance_digest
+      - canonical_producer_return_digest
+      - exact_connector_request_response_bytes_or_privacy_preserving_matched_source_readback
+      - effective_principal_and_authorization_scope_readback
+      - return_level_effect_ceiling
+      - return_level_rollback_binding
+      - return_level_expiry_binding
+      - digest_bound_distinct_verifier_verdict
+      - named_operational_consumer
+      - explicit_named_consumer_ack
+
+strongest_fake_green_mutant:
+  mutant_id: X14_MUTANT_147_c870d252e06a
+  mutant_commit: aab9bc80222b24f518a1dfcf185e920e122cfca6
+  mutation_class: STALE_SOURCE_DIGEST
+  mutant_expiry_utc: 2026-08-07T05:45:34Z
+  mutant_live_at_valid_time: true
+  selected_source_commit: 33c69ecc797eae0f18b0954903cce055e307b3be
+  selected_source_path: state/coordination/experiments/durable_object_x12/slack_receipts/20260807T014534Z_ADVANCE_DECISION_9b257f120b18.json
+  selected_source_actual_git_blob_sha1: 4c326a478d60372ab0b8bf24bab0f0e0b36832c0
+  selected_source_exact_utf8_bytes: 2525
+  selected_source_sha256: b31c753d3c49752ce563c250159224dbb5eabdca4b3a058ef38784809f15663c
+  selected_receipt_core_canonical_bytes: 2417
+  selected_receipt_core_sha256_recomputed: f297e0f00f722673ee0d9119a81ddcf91d8c0e78c2f5ecfd2cef88a444c1b5e3
+  selected_receipt_core_sha256_recorded: f297e0f00f722673ee0d9119a81ddcf91d8c0e78c2f5ecfd2cef88a444c1b5e3
+  stale_predecessor_commit: c8bb245a84ed83a2201e0b3b623f92257c8f7920
+  stale_predecessor_path: state/coordination/experiments/durable_object_x12/slack_receipts/20260807T004312Z_ADVANCE_f444d5d195a7.json
+  stale_predecessor_git_blob_sha1: 6d283342c5b180095fffd52159f4e346218b01e6
+  overlay_canonical_json: '{"mutated_field":"source_binding.git_blob_sha1","mutated_value":"6d283342c5b180095fffd52159f4e346218b01e6","mutation_class":"STALE_SOURCE_DIGEST","original_value":"4c326a478d60372ab0b8bf24bab0f0e0b36832c0","source_blob_sha1":"4c326a478d60372ab0b8bf24bab0f0e0b36832c0"}'
+  overlay_exact_utf8_bytes: 268
+  overlay_sha256_recomputed: c870d252e06a87381db22ce6b0bd22b9ed8b109b39c57d669e3e6c3089967725
+  overlay_sha256_recorded: c870d252e06a87381db22ce6b0bd22b9ed8b109b39c57d669e3e6c3089967725
+  rejection: REVISE
+  rejection_reason: AUTHENTIC_WAKE3_BLOB_CANNOT_AUTHENTICATE_WAKE4_RECEIPT_BYTES_DECISION_OR_DELIVERY_BINDINGS
+
+controlling_reason: CLAIM_RETURN_VERDICT_AND_CONSUMERACK_DO_NOT_BIND_TO_ONE_WORKITEM_AND_PRIVATE_NORMALIZED_RESULT_BYTES_LACK_MATCHED_SOURCE_READBACK
+material_change: true
+terminal_receipt_allowed: false
+honest_flaw: THIS_IS_SAME_PROVIDER_STRUCTURAL_PREFLIGHT_ONLY; IT_RECOMPUTES GIT BYTES AND DECLARED DIGESTS BUT_DOES_NOT_REQUERY_GMAIL, DOES_NOT_KNOW_THE_EFFECTIVE_OAUTH_PRINCIPAL_OR_SCOPES, AND_CANNOT_CLOSE_INDEPENDENT_VERIFICATION.
