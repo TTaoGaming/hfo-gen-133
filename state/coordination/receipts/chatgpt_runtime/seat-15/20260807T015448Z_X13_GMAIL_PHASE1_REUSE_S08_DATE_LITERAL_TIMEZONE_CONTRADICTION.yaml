@@ -1,0 +1,66 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse_receipt.v1
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_match: true
+carrier_task_enabled: true
+wip: 1
+valid_time_utc: 2026-08-07T01:54:48Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+result: RETURN_CONTRADICTION_REUSABLE_PRIOR_ARTIFACT
+
+current_workitem: X13_GMAIL_SEARCH_IDS_READONLY_013
+current_phase: PHASE1_ACCEPTED_WITH_GATES_PHASE2_PENDING
+current_source_commit: 177a161d36d07b4639178564d5e9ca80737410a2
+current_source_path: state/coordination/experiments/cots_connector_x13/20260807T014949Z_GMAIL_SEARCH_IDS_PHASE1_BASELINE.md
+current_source_blob: be25a439185f34ec8293a16320668fae60377000
+current_pointer_commit: f66ad525b89a3e01e658ae9ab414138e2fe69dc0
+current_pointer_path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+current_query_shape: DATE_LITERALS_IN_GMAIL_Q
+current_query_sanitized: 'after:2026/07/30 before:2026/08/08 -in:spam -in:trash'
+current_next_phase: PHASE2_IDENTICAL_BOUNDED_REPLAY_AND_ORDERED_DIGEST_COMPARISON
+
+reused_artifact_original_date_utc: 2026-08-07T01:28:00Z
+reused_artifact_source_repository: TTaoGaming/hfo-gen-133
+reused_artifact_source_commit: a348e0002580ba1b3ee2e24118e9ca8cb3013b05
+reused_artifact_source_path: state/coordination/receipts/chatgpt_runtime/seat-08/20260807T012800Z_S08_GMAIL_SEARCH_DATE_LITERAL_TIMEZONE_BOUNDARY_EVIDENCE_CARD.md
+reused_artifact_source_blob: 69f953e1a77c06a864e9a13131cafa996fba36de
+reused_artifact_decision: REVISE
+reused_artifact_invariant: GMAIL_Q_DATE_LITERALS_ARE_PROVIDER_DOCUMENTED_AS_PST_MIDNIGHT_BOUNDS; USE_EPOCH_SECONDS_WHEN_EXACT_OTHER_TIMEZONE_BOUNDS_MATTER
+
+contradiction: S08_REVISE_PRECEDES_X13_PHASE1_BUT_X13_PHASE1_USED_DATE_LITERALS_AND_LABELS_THE_RUN_A_BOUNDED_BASELINE; AN_IDENTICAL_PHASE2_REPLAY_WOULD_RETEST_THE_SAME_PST_BASED_QUERY_NOT_AN_EXACT_MOUNTAIN_OR_UTC_WINDOW
+
+supported_claims:
+  - S08 recorded the provider-documented date-literal boundary and the epoch-seconds escape hatch before the current X13 phase-1 event existed.
+  - The current X13 phase-1 immutable source uses after/before date literals rather than epoch seconds.
+  - The current X13 pointer requires phase 2 to replay the phase-1 request identically, so changing to epoch seconds would intentionally break request-digest identity with phase 1.
+  - Therefore an identical phase-2 replay can measure repeatability of the same date-literal query, but cannot by itself upgrade that query into an exact Mountain-time or UTC-window witness.
+  - The current phase-1 source separately records next_page_token_present=true, so the first bounded page is not completeness evidence.
+
+excluded_claims:
+  - No claim that the three returned message IDs are wrong, stale, or outside the operator's intended broad window.
+  - No claim that the connector maps one-to-one to raw Gmail users.messages.list or that it performs no hidden translation.
+  - No claim that the connector result ordering is globally deterministic, that the mailbox is complete, or that absence can be inferred.
+  - No Gmail mailbox call, raw-provider call, message read, private-body read, or page-token replay was performed by S15.
+  - No claim that the effective OAuth principal or scopes are known.
+
+privacy_ceiling: SANITIZED_REPOSITORY_POINTERS_HASHES_QUERY_SHAPE_COUNTS_AND_CONTROL_METADATA_ONLY; NO_MESSAGE_IDS_PAGE_TOKENS_SUBJECTS_SENDERS_RECIPIENTS_SNIPPETS_BODIES_ATTACHMENTS_OR_PRIVATE_MAILBOX_CONTENT
+
+acceptance_relevance: >-
+  Before X13 interprets this campaign as an exact timezone-bounded Gmail baseline, consume the S08 gate explicitly. If phase 2 remains an identical replay, label its scope as repeatability of the same provider-defined date-literal/PST-bound query. If exact Mountain/UTC boundaries are required, begin a corrected epoch-second request as a new request contract rather than laundering it as an identical replay of phase 1. Preserve zero adoption/fitness credit until a named consumer acknowledges the corrected claim ceiling.
+
+verifier: S04_STRUCTURAL_PREFLIGHT_CONFIRM_CURRENT_SOURCE_QUERY_AND_S08_SOURCE_BINDING; MATCHED_RAW_PROVIDER_OR_SOURCE_BOUND_CONNECTOR_TRACE_ONLY_IF_CLAIMING_CONNECTOR_TRANSLATION_BEYOND_THE_DOCUMENTED_PROVIDER_RULE
+consumer: X13_GMAIL_SEARCH_IDS_READONLY_013_PHASE2_QUERY_CONTRACT_GATE
+secondary_consumer: HFO_COTS_CAPABILITY_INVENTORY
+consumer_ack: NOT_OBSERVED
+heritage_credit: 0
+expiry_utc: 2026-08-14T01:28:00Z
+
+honest_flaw: >-
+  S15 did not independently re-browse Google's documentation or call Gmail; it reuses the exact S08 evidence card and current immutable X13 receipts. The current X13 window is broad enough that a timezone-boundary shift may not materially change the sample, so this is a claim-ceiling and replay-contract correction, not evidence that the observed result set was operationally wrong.
+
+dedup_note: >-
+  Gen-133 was searched first. Existing S15 Gmail heritage hits concern actor/carrier, observation-bound failure taxonomy, and older adoption gates; no existing S15 receipt was found for this exact date-literal timezone contradiction. Slack already contains the earlier S08 research pointer, but this receipt is materially new because the contradictory X13 phase-1 event was committed afterward.
+---
