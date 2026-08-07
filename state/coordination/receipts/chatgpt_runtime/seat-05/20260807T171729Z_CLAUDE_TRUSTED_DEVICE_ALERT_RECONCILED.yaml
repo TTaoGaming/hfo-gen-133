@@ -1,0 +1,48 @@
+schema: hfo.gen133.s05.operator_relief_receipt.v1
+seat: S05
+callsign: Var
+expected_task_id: 6a55c182078c8191b89f2dd15f5f640c
+branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-07T17:17:29Z
+transition: RECONCILE_IMPORTANT_STATUS
+result: KNOWN_DEVICE_MODEL_SESSION_UNCONFIRMED
+active_item: claude_trusted_device_expectedness
+priority:
+  p0: claude_trusted_device_expectedness
+  p1:
+    - fidelity_authoritative_wire_status_at_2026-08-07T14:30:00-06:00
+    - johanna_pfa_document_scope_check_at_2026-08-07T17:15:00-06:00
+source_pointers:
+  gmail_fresh_alert_message_id: 19fdd371f8fbcf82
+  gmail_historical_same_device_model_message_id: 19fb489f4fa8a187
+  calendar_primary_window_readback: 2026-08-07T17:00:00Z/2026-08-07T23:59:59Z
+  slack_changed_cursor_after_unix: 1786119769.0
+  github_recent_commit_head_observed: 4e8e2b614468eea5a1f8374e12966b2fd6d5a07c
+facts:
+  - Fresh Anthropic security notice reports a new trusted Claude device on Google Pixel 7a in Denver at 2026-08-07T17:13:00Z.
+  - Historical Gmail evidence shows the same Google Pixel 7A device model was successfully validated for another account on 2026-07-30.
+  - Gmail search found no prior message with the fresh alert IP address; device-model reuse does not prove session identity.
+  - Changed Slack and Git evidence since the prior S05 cursor contained no corroborating security incident or trusted-device registration signal.
+  - Calendar readback shows a near-term hard operator commitment; no calendar mutation was needed for this reconciliation.
+decision_gate:
+  recognized_now: Close as expected only if the operator recognizes adding Claude on the Pixel 7a at about 11:13 MDT today.
+  unrecognized_now: Use the official Claude account device-management/security path immediately; do not rely on the device-model match.
+claim_ceiling:
+  - The Pixel 7a is a historically used device model associated with the operator's accounts.
+  - This receipt does not prove the 2026-08-07 Claude trusted-device event was authorized.
+  - No account/security setting was changed.
+privacy:
+  private_message_bodies_externalized: false
+  ip_address_externalized: false
+  sensitive_identifiers_externalized: false
+operator_minutes_removed_estimate: 6
+next_consumer: operator_then_var_security_reconciliation
+wip: 1
+no_effects:
+  - no_email_send
+  - no_application_submission
+  - no_spend_or_payment
+  - no_deployment_or_merge
+  - no_account_or_security_change
+  - no_scheduled_task_mutation
+honest_flaw: Historical device-model evidence reduces ambiguity but cannot authenticate the current Claude session; explicit operator recognition or provider device readback is still required for closure.
