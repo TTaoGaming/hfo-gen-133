@@ -1,8 +1,8 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_WEB_FIXED_QUERY_SEARCH_V1
-current_version: 160
-accepted_wakes: 0
+current_version: 161
+accepted_wakes: 1
 target_wakes_before_decision: 4
 controlled_factor: web_research_search_surface
 campaign_status: ACTIVE
@@ -10,35 +10,44 @@ current_disposition: null
 baseline_result: fixed_public_url_read_campaign_kept_but_public_search_surface_not_yet_isolated
 hypothesis: a_fixed_public_query_can_retrieve_at_least_one_rfc_editor_result_without_authenticated_or_sensitive_access
 measured_result:
-  query_runs: []
-  permission_class: NOT_YET_PROBED
+  query_runs:
+    - wake: 1
+      execution_success: true
+      rfc_editor_result_present: true
+      sanitized_result_count: 5
+      permission_class: PUBLIC_WEB_FIXED_QUERY_SEARCH_AVAILABLE
+      error_class: NONE
+      latency_ms: null
+      latency_note: web_search_latency_not_exposed
+      operator_relay_minutes: 0
+  permission_class: PUBLIC_WEB_FIXED_QUERY_SEARCH_AVAILABLE
   error_class: NONE
   operator_relay_minutes: 0
-  changed_capability: false
+  changed_capability: true
   campaign_decision: false
   andon: false
-supported_claim: none_yet
-claim_ceiling: fixed_public_web_search_query_only
-strongest_falsifier: fixed_query_execution_is_unavailable
+supported_claim: one_fixed_public_search_query_returned_RFC_Editor_results_including_RFC_2606
+claim_ceiling: one_fixed_public_web_search_query_only_not_search_breadth_freshness_ranking_stability_browser_parity_general_internet_access_network_independence_or_source_authenticity_beyond_exposed_result_hosts
+strongest_falsifier: the_fixed_query_execution_becomes_unavailable_returns_no_rfc_editor_result_requires_authenticated_or_sensitive_access_or_requires_external_mutation
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 consumer: [Reginleif, Ratatoskr]
-honest_flaw: one_fixed_query_cannot_establish_search_breadth_freshness_ranking_stability_or_network_independence
+honest_flaw: one_fixed_query_cannot_establish_search_breadth_freshness_ranking_stability_or_network_independence_and_result_count_may_reflect_tool_specific_truncation
 prior_campaign:
   experiment_id: X11_WAKE_TIMING_DRIFT_V1
   disposition: KEEP
   supported_claim: four_observed_elapsed_times_between_accepted_events_are_measurable
 last_event:
-  commit: 54e07a5cd9e256c1e8b40d302cb35b4c8d156162
-  path: state/coordination/experiments/carrier_surface_x11/events/20260807T133957Z_WAKE_TIMING_DRIFT_V1_WAKE_04_DECISION_KEEP.yaml
-  blob: f5925f59b1f965e724f16241a92969d10b1e2728
+  commit: 85635030bb2d0de248706e1e8e0c69c9df4fd44c
+  path: state/coordination/experiments/carrier_surface_x11/events/20260807T144220Z_WEB_FIXED_QUERY_SEARCH_V1_WAKE_01.yaml
+  blob: 9714d9ad3e9bf2441a042296907413a105e389b0
 next_factor: web_research_search_surface
 next_probe:
   experiment_id: X11_WEB_FIXED_QUERY_SEARCH_V1
-  campaign_wake: 1
+  campaign_wake: 2
   mode: read_only_fixed_public_web_search
   exact_query: site:rfc-editor.org RFC 2606 Reserved Top Level DNS Names
   persist_only: [execution_success, rfc_editor_result_present, sanitized_result_count, permission_class, error_class, latency_when_exposed, operator_relay_minutes]
-  expected_current_version: 160
-updated_valid_time_utc: 2026-08-07T13:39:57Z
+  expected_current_version: 161
+updated_valid_time_utc: 2026-08-07T14:42:20Z
 sealed: false
 ---
