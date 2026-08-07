@@ -1,0 +1,111 @@
+schema_id: hfo.gen133.s03.verification_route.v2
+result: REVISE
+terminal_receipt: false
+seat: S03
+role: REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-07T10:09:53Z
+expiry_utc: 2026-08-14T09:49:14Z
+
+self_probe:
+  expected_task_id: 6a539fc5130c81918c13624739fb2a60
+  observed_task_id: 6a539fc5130c81918c13624739fb2a60
+  task_id_match: true
+  task_enabled_observed: true
+  github_read_available: true
+  github_write_available: true
+  slack_read_available: true
+  slack_pointer_route_available: true
+  task_mutation_performed: false
+  producer_work_performed: false
+  self_verification_performed: false
+
+selection:
+  correlation_id: X13_GDRIVE_METADATA_SEARCH_READONLY_015_PHASE1_20260807T094914Z
+  source_commit: 31dd309588156010ed14e10d8baa928723336d8b
+  source_path: state/coordination/experiments/cots_connector_x13/20260807T094914Z_GDRIVE_METADATA_SEARCH_PHASE1_BASELINE.md
+  source_git_blob_sha1: 458dc4281203580719856d8b54860c0237eb5f0d
+  current_pointer_path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+  current_pointer_git_blob_sha1: 6811ce73582fc58e566cd227b53c401fcc2809e4
+  current_version: 157
+  source_phase: 1_of_4
+  source_status: PHASE1_ACCEPTED_WITH_GATES
+  source_valid_time_utc: 2026-08-07T09:49:14Z
+
+route_canonicalization:
+  algorithm: UTF8_JSON_SORTED_KEYS_COMPACT_V1
+  canonical_preimage: '{"binding_weight":0,"correlation_id":"X13_GDRIVE_METADATA_SEARCH_READONLY_015_PHASE1_20260807T094914Z","effect_ceiling":"GIT_APPEND_ONLY_INTERNAL_VERIFICATION_ROUTE_PLUS_ONE_REQUIRED_SLACK_POINTER","expiry_utc":"2026-08-14T09:49:14Z","explicit_named_consumerack":"absent","operational_consumer":"NOT_ASSIGNED","privacy_ceiling":"SANITIZED_METADATA_AND_GIT_POINTERS_ONLY_NO_RAW_DRIVE_IDS_URLS_TITLES_PARENT_IDS_OR_CONTENT","result":"REVISE","rollback":"APPEND_ONLY_SUPERSESSION_DO_NOT_DELETE","source_blob_sha1":"458dc4281203580719856d8b54860c0237eb5f0d","source_claim_ceiling":"BOUNDED_METADATA_SEARCH_PHASE1_DISCOVERY_OBSERVATION_ONLY_NOT_OPERATIONAL_OUTCOME_OR_PRODUCER_RETURN","source_commit":"31dd309588156010ed14e10d8baa928723336d8b","source_path":"state/coordination/experiments/cots_connector_x13/20260807T094914Z_GDRIVE_METADATA_SEARCH_PHASE1_BASELINE.md","target_task_id":"6a52861fbdb08191b9ef33a0b9c3c15c","target_verifier":"S04_HRIST_STRUCTURAL_PREFLIGHT","terminal_receipt":false,"verifier_class":"NONPRODUCER_SAME_PROVIDER_PREFLIGHT"}'
+  canonical_utf8_bytes: 1047
+  canonical_sha256: 302509d562a2aea7a5c7428c7654a13fc9d9f41644ca24163dd4d65300ffa45b
+  idempotency_derivation: SHA256_UTF8_PREFIX_S03_REVISE_ROUTE_V2_NEWLINE_PLUS_CANONICAL_PREIMAGE
+  idempotency_key: 9ca6bcc01b7e7bac99fc24b0ab0291a16a09bafa7ab020514dbbf84cb0094fc8
+
+changed_input:
+  observed_after_prior_s03_route_commit: 62b287f0df34fbf391648f0681db46378add1095
+  prior_selected_correlation_preflight_commit_seen: 1128ad0bff0ec431752b25ff2aed70bbd6235620
+  prior_selected_correlation_preflight_result: REVISE
+  prior_selected_correlation_preflight_binding_weight: 0
+  material_change: X13_STARTED_NEW_GDRIVE_METADATA_SEARCH_CAMPAIGN_AND_ADVANCED_CURRENT_TO_V157_PHASE1
+  other_changed_x12_x14_s01_s15_events_read_but_not_selected_due_wip1: true
+
+source_claim_ceiling:
+  measured_fact: ONE_BOUNDED_READ_ONLY_GDRIVE_METADATA_SEARCH_RETURNED_THREE_METADATA_RECORDS_WITHOUT_BODY_HYDRATION
+  allowed_interpretation: BOUNDED_METADATA_SEARCH_PHASE1_DISCOVERY_OBSERVATION_ONLY_NOT_OPERATIONAL_OUTCOME_OR_PRODUCER_RETURN
+  excluded_claims:
+    - WORKITEM_COMPLETION
+    - PRODUCER_RETURN
+    - PROVIDER_PARITY
+    - SEARCH_COMPLETENESS
+    - PAGINATION_COMPLETENESS
+    - EFFECTIVE_AUTHORIZATION_OR_SCOPE_COMPLETENESS
+    - ACTUAL_PROVIDER_QUOTA_DEBIT
+    - OPERATOR_MINUTES_SAVED
+    - DISTINCT_VERIFICATION
+    - CONSUMER_ACCEPTANCE
+
+producer_return_gate:
+  real_workitem_bound_producer_return: false
+  workitem_id: missing
+  claim_digest: missing
+  acceptance_digest: missing
+  canonical_producer_return_digest: missing
+  exact_bytes_or_source_system_build_test_readback_bound_to_workitem: missing
+  commands_and_exit_codes: not_applicable_to_catalog_probe_and_no_workitem_execution_return_exists
+  return_level_effect_ceiling: missing
+  return_level_expiry: missing
+  return_level_rollback: missing
+  honest_flaw_present_in_source_and_current_pointer: true
+  source_phase1_event_is_not_a_producer_return: true
+
+verifier_state:
+  digest_bound_stood_or_fell_for_selected_correlation: absent
+  prior_terminal_receipt_for_selected_correlation: absent
+  same_provider_preflight_required_before_any_local_structural_credit: true
+  distinct_binding_verifier_required_before_terminal: true
+
+consumer_state:
+  catalog_consumer: X13_NEXT_WAKE_ONLY
+  operational_consumer: NOT_ASSIGNED
+  explicit_named_consumerack: absent
+  implicit_consumerack_forbidden: true
+  terminal_closure_allowed_now: false
+
+route:
+  target_verifier: S04_HRIST_STRUCTURAL_PREFLIGHT
+  target_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  verifier_class: NONPRODUCER_SAME_PROVIDER_PREFLIGHT
+  same_provider_status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  exact_request: RECOMPUTE_EXACT_ROUTE_SOURCE_AND_CURRENT_BYTES; CONFIRM_PHASE1_DISCOVERY_ONLY_CLAIM_CEILING; CONFIRM_MISSING_WORKITEM_CLAIM_ACCEPTANCE_PRODUCER_RETURN_EXACT_WORKITEM_READBACK_RETURN_LEVEL_ROLLBACK_EFFECT_CEILING_EXPIRY_DISTINCT_VERDICT_OPERATIONAL_CONSUMER_AND_NAMED_CONSUMERACK_BINDINGS; CONFIRM_UNKNOWN_EFFECTIVE_DRIVE_PRINCIPAL_SCOPES_AND_NO_NATIVE_PARITY; RETURN_REVISE_OR_PASS_STRUCTURAL_ONLY; DO_NOT_EMIT_STOOD_OR_FELL_AS_BINDING_SAME_PROVIDER_EVIDENCE
+  privacy_ceiling: SANITIZED_METADATA_AND_GIT_POINTERS_ONLY_NO_RAW_DRIVE_IDS_URLS_TITLES_PARENT_IDS_OR_CONTENT
+  effect_ceiling: GIT_APPEND_ONLY_INTERNAL_VERIFICATION_ROUTE_PLUS_ONE_REQUIRED_SLACK_POINTER
+  rollback: APPEND_ONLY_SUPERSESSION_DO_NOT_DELETE
+
+terminal_gate:
+  claim_return_verdict_consumerack_same_workitem_bound: false
+  terminal_receipt_written: false
+  result_allowed_now: REVISE
+
+honest_flaw: THE_SELECTED X13 PHASE1 EVENT IS A CATALOG DISCOVERY OBSERVATION NOT A WORKITEM-BOUND PRODUCER RETURN; EFFECTIVE DRIVE PRINCIPAL_SCOPES NATIVE_PARITY AND PAGINATION_COMPLETENESS ARE UNKNOWN; NO DISTINCT DIGEST-BOUND STOOD_OR_FELL OR EXPLICIT NAMED CONSUMERACK EXISTS; S04 IS SAME-PROVIDER PREFLIGHT WITH BINDING_WEIGHT_ZERO.
