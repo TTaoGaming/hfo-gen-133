@@ -1,0 +1,56 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_GMAIL_SEARCH_IDS_READONLY_013
+phase: 4
+wake: 4_of_4
+candidate: Gmail_search_email_ids_readonly_surface
+carrier_task_id: 6a55c1733708819185088bf334e33ea5
+prior_current_version: 151
+expected_current_version_after: 152
+operation: DECISION_FROM_EXISTING_THREE_CALL_EVIDENCE_ONLY
+candidate_calls_added_phase_4: 0
+campaign_calls_total: 3
+successful_nonempty_calls: 2
+successful_empty_calls: 1
+connector_errors_observed: 0
+retries_total: 0
+fallbacks_total: 0
+candidate_mutations_total: 0
+message_content_hydrated: false
+raw_message_ids_persisted: false
+raw_next_page_token_persisted: false
+phase_4_decision: ADOPT_WITH_GATES
+operational_decision: ADOPT_WITH_GATES_FOR_BOUNDED_ID_ONLY_DISCOVERY_AND_CATALOG_USE
+custom_code_avoided_estimate: 40_to_120_LOC_UNVALIDATED
+operator_minutes_removed_measured: 0
+credentials: CONNECTOR_MANAGED_EFFECTIVE_IDENTITY_AND_SCOPES_UNKNOWN
+durability: GIT_DECISION_EVENT_DURABLE_GMAIL_SEARCH_VIEW_MUTABLE
+observability: RESULT_COUNT_PAGE_TOKEN_PRESENCE_ERROR_AND_CALL_TIME_EXPOSED; PROVIDER_REQUEST_ID_EFFECTIVE_SCOPE_AND_ACTUAL_QUOTA_DEBIT_NOT_EXPOSED
+portability: LOW_TO_MEDIUM_GMAIL_QUERY_SYNTAX_AND_WRAPPER_SPECIFIC
+failure_behavior: TWO_NONEMPTY_SUCCESSES_WITH_PAGINATION_PLUS_ONE_EMPTY_SUCCESS; DENIAL_RATE_LIMIT_TRANSIENT_FAILURE_AND_PAGINATION_REPLAY_UNTESTED
+paid_cost_usd_observed: 0
+direct_cost_or_quota_evidence: NONE_FROM_CONNECTOR
+catalog_consumer: HFO_COTS_CAPABILITY_INVENTORY
+operational_consumer: NOT_ASSIGNED
+consumer_ack: NOT_OBSERVED
+verifier: PRIOR_DIRECT_CONNECTOR_RECEIPTS_PLUS_DIGEST_COMPARISON_PLUS_GIT_READBACK_PLUS_OFFICIAL_GMAIL_CONTRACT
+adoption_credit: 1
+adoption_credit_scope: CATALOG_CAPABILITY_ONLY
+fitness_credit: 0
+mandatory_gate: BOUNDED_QUERY; SMALL_MAX_RESULTS; DO_NOT_PERSIST_RAW_MESSAGE_IDS_OR_PAGE_TOKEN; NEXT_PAGE_TOKEN_PREVENTS_COMPLETENESS_CLAIMS; EMPTY_SUCCESS_IS_NOT_AUTHORITATIVE_ABSENCE; NO_UNBOUNDED_RETRY; CONSEQUENTIAL_MAILBOX_CLAIMS_REQUIRE_MESSAGE_READ_OR_MATCHED_PROVIDER_WITNESS
+strongest_falsifier: MATCHED_RAW_GMAIL_LIST_CALL_UNDER_SAME_EFFECTIVE_PRINCIPAL_MATERIALLY_DISAGREES_ON_SCOPE_ORDERING_PAGINATION_AUTHORIZATION_OR_COMPLETENESS_OR_WRAPPER_STARTS_HYDRATING_CONTENT
+honest_flaw: NO_OPERATIONAL_CONSUMER_OR_MEASURED_OPERATOR_SAVINGS; DENIAL_SCOPE_VARIANCE_PAGINATION_REPLAY_RATE_LIMIT_TRANSIENT_FAILURE_INDEX_LAG_RAW_PROVIDER_PARITY_AND_ACTUAL_QUOTA_DEBIT_REMAIN_UNTESTED
+phase_status: PHASE4_COMPLETE
+campaign_status: CLOSED
+next_campaign: SELECT_ONE_NEW_CANDIDATE_AT_NEXT_WAKE_WITH_WIP_ONE
+valid_time_utc: 2026-08-07T04:48:01Z
+recorded_time_utc: 2026-08-07T04:48:01Z
+---
+
+# X13 Gmail ID-only search — Phase 4
+
+Decision: **ADOPT_WITH_GATES** for bounded ID-only discovery/catalog use. No additional Gmail candidate call was made.
+
+The three-call evidence set contains two matching nonempty first-page digests with pagination present and one empty-success call. No message content was hydrated and no Gmail state was mutated.
+
+This supports a least-data discovery primitive, not completeness, authoritative absence, effective authorization, or provider parity. Adoption credit is catalog-only; fitness credit remains zero because no operational consumer or measured operator-minute savings were observed.
