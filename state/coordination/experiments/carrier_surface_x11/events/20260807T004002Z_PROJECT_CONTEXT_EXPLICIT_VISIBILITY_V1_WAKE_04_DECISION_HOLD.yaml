@@ -1,0 +1,83 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+experiment_id: X11_PROJECT_CONTEXT_EXPLICIT_VISIBILITY_V1
+event_type: CAMPAIGN_DECISION
+expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+campaign_wake: 4
+target_wakes_before_decision: 4
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+current_version_before: 147
+current_version_after: 148
+accepted: true
+campaign_status: COMPLETE
+campaign_disposition: HOLD
+baseline:
+  accepted_wakes: 3
+  supported_claim: this_carrier_runtime_exposed_no_explicit_project_context_marker_or_project_identifier_during_three_accepted_wakes
+  permission_class: RUNTIME_CONTEXT_READ_AVAILABLE_PROJECT_METADATA_NOT_EXPOSED
+  error_class: EXPLICIT_PROJECT_CONTEXT_MARKER_ABSENT
+hypothesis: an_explicit_project_context_identifier_or_project_nonproject_marker_may_be_readably_exposed_to_the_carrier_without_task_context_or_account_mutation;_if_not_exposed_that_absence_is_the_measurement
+controlled_factor: project_context_surface
+exact_probe:
+  surface: explicitly_exposed_runtime_or_tool_context_only
+  action: inspect_only_for_an_explicit_project_context_identifier_or_project_nonproject_marker
+  task_context_mutation: false
+  account_mutation: false
+  interactive_login: false
+  hidden_metadata_inference: false
+measured_result:
+  explicit_project_context_marker_exposed: false
+  project_identifier_exposed: false
+  permission_class: RUNTIME_CONTEXT_READ_AVAILABLE_PROJECT_METADATA_NOT_EXPOSED
+  error_class: EXPLICIT_PROJECT_CONTEXT_MARKER_ABSENT
+  latency_ms: null
+  latency_note: runtime_context_inspection_has_no_discrete_provider_latency_exposed
+  operator_relay_minutes: 0
+  changed_capability: false
+  campaign_decision: true
+  andon: false
+campaign_summary:
+  explicit_project_context_marker_exposed: [false, false, false, false]
+  project_identifier_exposed: [false, false, false, false]
+  latencies_ms: [null, null, null, null]
+  permission_class: RUNTIME_CONTEXT_READ_AVAILABLE_PROJECT_METADATA_NOT_EXPOSED
+  error_class: EXPLICIT_PROJECT_CONTEXT_MARKER_ABSENT
+  operator_relay_minutes: 0
+supported_claim: this_carrier_runtime_exposed_no_explicit_project_context_marker_or_project_identifier_during_four_accepted_wakes
+claim_ceiling: explicit_marker_absence_only_not_evidence_of_nonproject_execution_hidden_project_assignment_project_isolation_or_project_nonproject_behavioral_difference
+disposition_rationale: HOLD_because_four_repeat_absence_measurements_are_stable_but_the_requested_Project_versus_non_Project_behavioral_comparison_remains_unidentifiable_without_an_explicit_marker_or_authorized_context_reseating;_do_not_infer_non_Project_execution
+strongest_falsifier: a_runtime_or_tool_surface_explicitly_exposes_a_project_context_marker_or_project_identifier_to_this_carrier_without_mutation_but_the_probe_reports_absence
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer:
+  - Reginleif
+  - Ratatoskr
+same_provider_independence_claim: false
+honest_flaw: four_absent_marker_observations_still_cannot_determine_actual_Project_membership_or_compare_Project_and_non_Project_execution_and_no_authorized_reseating_was_performed
+measurement_sealing_model: this_event_is_accepted_only_if_exact_event_readback_and_expected_SHA_CURRENT_update_and_readback_match;_CURRENT_is_the_authoritative_acceptance_receipt
+privacy_gate: persist_only_boolean_visibility_and_permission_error_class_no_context_content_hidden_metadata_or_identifiers
+prohibited_effects_observed: {task_mutation: false, send: false, spend: false, deployment: false, merge: false, publication: false, account_or_security_change: false, destructive_deletion: false, sensitive_externalization: false}
+next_factor: slack_write_surface_gated_visibility
+next_probe:
+  experiment_id: X11_SLACK_WRITE_SURFACE_GATED_VISIBILITY_V1
+  campaign_wake: 1
+  mode: read_only_write_action_surface_visibility
+  exact_action: inspect_only_whether_the_connected_Slack_tool_surface_exposes_a_message_write_action_without_invoking_a_probe_only_send;_if_a_separate_campaign_decision_or_Andon_requires_a_Slack_post_that_authorized_post_may_supply_real_write_success_evidence_without_an_extra_message
+  expected_current_version: 148
+  persist_only:
+    - slack_message_write_action_exposed
+    - real_write_observed_only_if_already_authorized
+    - permission_class
+    - error_class
+    - latency_when_exposed
+    - operator_relay_minutes
+  mutation_allowed: false
+  probe_only_send_allowed: false
+  post_only_changed_capability_campaign_decision_or_andon: true
+  sensitive_readback_externalization_allowed: false
+  same_provider_independence_claim_allowed: false
+slack_action: POST_CAMPAIGN_DECISION_AFTER_GIT_READBACK
+recorded_valid_time_utc: 2026-08-07T00:40:02Z
+sealed: true
+---
