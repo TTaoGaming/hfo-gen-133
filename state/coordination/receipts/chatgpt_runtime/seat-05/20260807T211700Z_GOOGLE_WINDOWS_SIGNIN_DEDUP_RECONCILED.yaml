@@ -1,0 +1,89 @@
+schema: hfo.gen133.s05.operator_relief_receipt.v1
+seat: S05
+callsign: Var
+expected_task_id: 6a55c182078c8191b89f2dd15f5f640c
+branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-07T21:17:00Z
+transition: RECONCILE_IMPORTANT_STATUS
+result: SINGLE_GOOGLE_WINDOWS_SIGNIN_EVENT_TWO_NOTIFICATIONS_EXPECTEDNESS_UNCONFIRMED
+wip: 1
+
+self_probe:
+  task_id_match: true
+  required_surfaces_available:
+    - gmail
+    - calendar
+    - contacts
+    - github
+    - slack
+
+control_state:
+  active_item: google_windows_signin_expectedness
+  p0: google_windows_signin_expectedness
+  p1:
+    - claude_trusted_device_expectedness
+    - fidelity_authoritative_wire_status
+
+changed_evidence:
+  gmail:
+    primary_alert_message_id: 19fde0e4f08df0c9
+    recovery_copy_message_id: 19fde0e613e9353e
+    observed_at_utc: 2026-08-07T21:08:25Z
+    sanitized_fact: Google reported a new sign-in to the operator account from a Windows device; the recovery mailbox received a copy of that same security alert at the same timestamp.
+    deduplication: treat the primary alert plus recovery copy as one security event, not two independent sign-ins.
+    evidence_ceiling: the email body does not expose a device fingerprint, IP address, or location sufficient to authenticate the current session.
+    historical_context: prior Gmail contains same-account Windows sign-in alerts, including one on 2026-02-18; recurrence alone does not prove the current event was authorized.
+  calendar:
+    fidelity_event_id: dm2co9682c8a6nl33bmap5ekb0
+    fidelity_window_state: the private 14:30-15:00 MDT reconciliation block has ended; Calendar itself contains no authoritative call outcome.
+    pfa_event_id: p0q243f6mcngjv2859taci6gog
+    pfa_window_state: the private 17:15 MDT scope-check block remains later today.
+    mutation_this_wake: false
+  contacts:
+    read_this_wake: false
+    reason: no changed contact-resolution edge was required for this security reconciliation.
+  github:
+    prior_security_receipt: state/coordination/receipts/chatgpt_runtime/seat-05/20260807T171729Z_CLAUDE_TRUSTED_DEVICE_ALERT_RECONCILED.yaml
+    prior_control_receipt: state/coordination/receipts/chatgpt_runtime/seat-05/20260807T191720Z_PFA_SECOND_POLICY_PANDADOC_SCOPE_DRAFT_REFRESHED.yaml
+  slack:
+    changed_window_after_unix: 1786133760
+    observed_state: no matching Google/Windows security corroboration or closure signal found in C0BGNGPJFHU during the bounded changed window.
+
+bounded_transition:
+  action: deduplicated two source notifications into one security event and reduced the remaining operator work to a single recognition decision.
+  decision_gate:
+    recognized: if the operator recognizes a new Google sign-in on a Windows device at about 15:08 MDT today, close this event as expected.
+    unrecognized: if not recognized, use Google's official account security-activity path immediately; do not infer safety from historical Windows-alert recurrence.
+  account_or_security_change_performed: false
+
+operator_relief:
+  estimated_minutes_removed: 5
+  removed_work:
+    - prevents double-counting the primary alert and recovery copy as two incidents.
+    - preserves the exact evidence ceiling so the operator does not need to reread both messages.
+    - reduces closure to one explicit recognized-versus-unrecognized decision.
+  next_consumer: operator_then_var_security_reconciliation
+
+privacy:
+  private_message_bodies_externalized: false
+  account_identifier_externalized: false
+  security_activity_url_externalized: false
+  ip_or_location_externalized: false
+
+claim_ceiling:
+  - Gmail proves one Google security alert event with a matching recovery-copy notification at the same timestamp.
+  - This receipt does not prove the Windows sign-in was authorized.
+  - Historical Windows sign-in alerts are context only and do not authenticate the current event.
+  - No account/security setting was changed.
+
+no_effects:
+  - no_email_send
+  - no_application_submission
+  - no_spend_or_payment
+  - no_deployment_or_merge
+  - no_publication
+  - no_account_or_security_change
+  - no_destructive_deletion
+  - no_scheduled_task_mutation
+
+honest_flaw: The Gmail alert lacks the provider-side device/session detail needed for independent authentication; only operator recognition or direct Google security-activity readback can close expectedness safely.
