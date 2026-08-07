@@ -1,0 +1,81 @@
+schema: hfo.gen133.operator_relief_receipt.v0_1
+seat: S05
+expected_task_id: 6a55c182078c8191b89f2dd15f5f640c
+wip: 1
+valid_time_utc: 2026-08-07T09:16:06Z
+result: STATUS_RECONCILED
+active_item: TECTANGLE_HEX_TIERS_NIGHTLY_CI_FAILURE
+priority:
+  p0: FIDELITY_ACTIVITY_EXPECTEDNESS_AND_RECEIVING_BANK_VERIFICATION
+  p1:
+    - COLDEN_BOARD_CANDIDACY_DECISION_2026-08-07
+    - TECTANGLE_CI_REPAIR
+transition:
+  kind: reconcile_important_status
+  summary: >-
+    Fresh GitHub Actions failure notification was read back to the exact workflow run,
+    job, and decoded job log. The nightly Hex Tiers daily bundle completed checkout,
+    Node setup, dependency installation, HTTP-server startup, and dependency-cruiser
+    validation. The daily tier then failed while Mocha was loading
+    September2025/TectangleHexagonal/tests/unit/camera.constraints.test.mjs because
+    the browser global `navigator` was not defined in the Node test environment.
+    The failure happened before the affected test module could execute assertions, so
+    this run is classified as a CI/test-harness browser-global assumption failure,
+    not proof of a product regression.
+  operator_minutes_removed_estimate: 8
+  next_consumer: S06_CODE_WORK_PACKET_COMPILER
+claim_ceiling:
+  supported:
+    - Workflow run 31161904068 on TTaoGaming/Tectangle main at commit 49da03bd595d364789c219382ec6bec6f56b552d failed.
+    - Job 92813933410 named nightly ran on GitHub-hosted Windows Server 2025.
+    - Checkout, Node 18 setup, npm ci, HTTP server startup, and dependency-cruiser validation succeeded.
+    - `npm run -s hex:tier:daily` failed with `ReferenceError: navigator is not defined` at `September2025/TectangleHexagonal/tests/unit/camera.constraints.test.mjs:26:1`.
+    - The failing command exited with code 1.
+  excluded:
+    - No claim that the Tectangle application itself regressed.
+    - No claim that any camera behavior assertion failed; module loading failed first.
+    - No claim that all Hex Tiers workflows share the same root cause.
+    - No claim that dependency audit warnings caused this run failure.
+    - No rerun, code patch, merge, deployment, task mutation, or account change was performed.
+sources:
+  gmail:
+    message_id: 19fdb5a9371f7943
+    subject_class: GITHUB_ACTIONS_FAILURE_NOTIFICATION
+    private_body_externalized: false
+  github_actions:
+    repository: TTaoGaming/Tectangle
+    workflow: Hex Tiers — Nightly (daily bundle)
+    run_id: 31161904068
+    job_id: 92813933410
+    commit: 49da03bd595d364789c219382ec6bec6f56b552d
+    failed_step: Run daily tier
+    failure_class: NODE_TEST_BROWSER_GLOBAL_NAVIGATOR_UNDEFINED
+    exact_test_path: September2025/TectangleHexagonal/tests/unit/camera.constraints.test.mjs
+    exact_test_line: 26
+  calendar:
+    fidelity_p0_event_present: true
+    colden_deadline_event_present: true
+    material_change_observed_this_wake: false
+  slack:
+    channels_checked:
+      - C0BGNGPJFHU
+      - C0BGC646A1H
+    material_operator_obligation_change_observed_this_wake: false
+privacy:
+  private_email_body_copied_to_git: false
+  sensitive_identifiers_externalized: false
+effects:
+  email_send: false
+  application_submission: false
+  spend_or_payment: false
+  deployment: false
+  merge: false
+  publication: false
+  account_or_security_change: false
+  destructive_delete: false
+  scheduled_task_mutation: false
+honest_flaw: >-
+  This receipt diagnoses only run 31161904068. It does not establish whether the
+  correct repair is to polyfill/mock `navigator`, move browser-dependent tests to a
+  browser environment, or change test selection. A bounded code/test repair packet
+  should reproduce the failure before choosing a fix.
