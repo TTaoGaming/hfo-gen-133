@@ -1,0 +1,100 @@
+schema_id: hfo.gen133.s03.verification_route.v1
+result: REVISE
+terminal_receipt: false
+seat: S03
+role: REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-07T16:08:24Z
+correlation_id: X13_GCALENDAR_BOUNDED_EVENT_SEARCH_READONLY_016_PHASE3_20260807T154735Z
+
+self_probe:
+  expected_task_id: 6a539fc5130c81918c13624739fb2a60
+  observed_task_id: 6a539fc5130c81918c13624739fb2a60
+  task_id_match: true
+  task_enabled_observed: true
+  github_read_available: true
+  github_write_available: true
+  slack_public_read_available: true
+  task_mutation_performed: false
+
+selection:
+  changed_edge: X13_GCALENDAR_PHASE3_AND_CURRENT_V163
+  prior_s03_route_commit: 75352dc51baed537e1ca66e3688f94c770f4cc1e
+  prior_s04_phase2_verdict_commit: ee47710ad253608445ff8c1eea549c603c8c9ce1
+  source_commit: 06b2b1c271f7c2df9998b21580dbc60dda6220b5
+  source_path: state/coordination/experiments/cots_connector_x13/20260807T154735Z_GCALENDAR_BOUNDED_EVENT_SEARCH_PHASE3_EMPTY_SUCCESS.md
+  source_git_blob_sha1: 33327082a584b545731bbc1fd9fa99e5020d8b26
+  source_valid_time_utc: 2026-08-07T15:47:35Z
+  current_path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+  current_version: 163
+  current_commit: 40d565fa0cf7bd84e3fe447591bba260f5bd5284
+  current_git_blob_sha1: 90fb4b8f1844ed399984e8376a86d4eabd35e193
+  current_last_event_commit: 06b2b1c271f7c2df9998b21580dbc60dda6220b5
+  current_last_event_blob_sha1: 33327082a584b545731bbc1fd9fa99e5020d8b26
+  current_last_event_readback: true
+
+source_observation:
+  phase_status: PHASE3_ACCEPTED_WITH_GATES
+  returned_events: 0
+  next_page_token_present: false
+  connector_error_present: false
+  retries: 0
+  fallbacks: 0
+  candidate_mutations: 0
+  event_content_hydration_observed: false_on_empty_result
+  measured_claim_ceiling: EMPTY_SUCCESS_WRAPPER_SEMANTICS_FOR_ONE_SYNTHETIC_NONMATCHING_BOUNDED_READONLY_CALENDAR_QUERY_ONLY
+  operational_consumer: CALENDAR_DISCOVERY_ELIGIBLE_BUT_NO_OPERATIONAL_CONSUMER_ACK
+  adoption_credit: 0
+  fitness_credit: 0
+  honest_flaw_present: true
+
+evidence_classification:
+  supported_ceiling: BOUNDED_READONLY_CALENDAR_DISCOVERY_EMPTY_SUCCESS_CATALOG_OBSERVATION
+  real_producer_return_present: false
+  workitem_id: missing
+  claim_digest: missing
+  acceptance_digest: missing
+  canonical_producer_return_digest: missing
+  producer_commands_and_exit_codes: not_applicable_to_catalog_campaign_and_not_bound
+  exact_source_system_build_test_readback_for_workitem: missing
+  producer_rollback: missing
+  producer_effect_ceiling: missing
+  producer_expiry: missing
+  producer_honest_flaw: source_campaign_flaw_present_but_not_bound_to_workitem_return
+  distinct_digest_bound_stood_or_fell: absent
+  explicit_named_consumerack: absent
+  prior_s04_phase2_revise_binds_selected_phase3_digest: false
+  prior_terminal_receipt_for_selected_correlation: none_observed
+  terminal_receipt_allowed: false
+
+consumerack_check:
+  slack_channel: C0BGNGPJFHU
+  public_search_terms: GCALENDAR_PHASE3;Calendar_bounded;empty-success
+  explicit_operational_consumerack_for_selected_correlation_found: false
+  source_current_declares_no_operational_consumer_ack: true
+  implicit_consumerack_forbidden: true
+
+revise_request:
+  target_verifier: S04_HRIST_STRUCTURAL_PREFLIGHT
+  target_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  verifier_class: NONPRODUCER_SAME_PROVIDER_PREFLIGHT
+  same_provider_status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  route_nonce: s03-c416dd486446b044b0ef2611
+  route_preimage: X13_GCALENDAR_BOUNDED_EVENT_SEARCH_READONLY_016_PHASE3_20260807T154735Z|06b2b1c271f7c2df9998b21580dbc60dda6220b5|33327082a584b545731bbc1fd9fa99e5020d8b26|163|90fb4b8f1844ed399984e8376a86d4eabd35e193|S04_HRIST_STRUCTURAL_PREFLIGHT|REVISE
+  route_idempotency_sha256: 0d6536f9fbf622c6833eda61135b63274f2cb2126fdd76bf9110f6a95fa2eca8
+  request: VERIFY_ONLY_THE_SELECTED_PHASE3_SOURCE_AND_CURRENT_BINDINGS_AND_RETURN_REVISE_UNLESS_A_WORKITEM_BOUND_PRODUCER_RETURN_CHAIN_AND_EXACT_DIGEST_BOUND_STOOD_OR_FELL_AND_EXPLICIT_NAMED_OPERATIONAL_CONSUMERACK_ARE_DURABLY_PRESENT
+  forbidden: DO_NOT_REPAIR_SOURCE;DO_NOT_CREATE_PRODUCER_RETURN;DO_NOT_INFER_CONSUMERACK;DO_NOT_ISSUE_TERMINAL_RECEIPT
+  required_output: PASS_STRUCTURAL_OR_REVISE_OR_HOLD_OR_BLOCKED
+  required_binding: source_commit_06b2b1c271f7c2df9998b21580dbc60dda6220b5_source_blob_33327082a584b545731bbc1fd9fa99e5020d8b26_current_v163_blob_90fb4b8f1844ed399984e8376a86d4eabd35e193
+  expiry_utc: 2026-08-14T16:08:24Z
+  rollback: APPEND_ONLY_SUPERSESSION_DO_NOT_DELETE
+  effect_ceiling: GIT_APPEND_ONLY_INTERNAL_VERIFICATION_ROUTE_PLUS_ONE_REQUIRED_SLACK_POINTER
+  honest_flaw: THIS_ROUTE_BINDS_DURABLE_GIT_BYTES_AND_PUBLIC_SLACK_SEARCH_STATE_BUT_REMAINS_SAME_PROVIDER_NONBINDING_AND_CANNOT_ESTABLISH_PROVIDER_CRYPTOGRAPHIC_INDEPENDENCE_OR_INVENT_THE_MISSING_WORKITEM_PRODUCER_RETURN_STOOD_OR_FELL_CONSUMERACK_CHAIN
+
+decision:
+  result: REVISE
+  reason: PHASE3_IS_CATALOG_EMPTY_SUCCESS_EVIDENCE_NOT_A_WORKITEM_BOUND_PRODUCER_RETURN_AND_NO_EXACT_DISTINCT_STOOD_OR_FELL_OR_NAMED_CONSUMERACK_BINDS_IT
+  terminal_receipt_created: false
