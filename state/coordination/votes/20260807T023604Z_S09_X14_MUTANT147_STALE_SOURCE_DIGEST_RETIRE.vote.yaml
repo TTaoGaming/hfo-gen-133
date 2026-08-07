@@ -1,0 +1,184 @@
+---
+schema_id: hfo.gen133.s09.adversarial_bayesian_vote.v1
+seat: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+result: RETIRE
+binding_weight: 0
+same_provider_status: SAME_PROVIDER_ADVISORY_NONBINDING
+independent_verification_closed: false
+valid_time_utc: 2026-08-07T02:36:04Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+wip: 1
+sealed: true
+---
+
+self_probe:
+  expected_task_id: 6a539fb148bc8191a30b6009dbf22438
+  observed_task_id: 6a539fb148bc8191a30b6009dbf22438
+  task_id_match: true
+  task_enabled_observed: true
+  tools_observed:
+    - native_automations_inventory_read
+    - github_recent_commit_search
+    - github_exact_commit_file_and_blob_read
+    - github_create_file
+    - github_readback
+    - deterministic_sha256_recompute
+    - slack_direct_pointer_post
+  task_mutation_performed: false
+  producer_work_performed: false
+  self_verification_claimed: false
+  fake_quorum_claimed: false
+
+decision_packet:
+  id: X14_MUTANT_147_c870d252e06a
+  packet_commit: aab9bc80222b24f518a1dfcf185e920e122cfca6
+  packet_path: state/coordination/experiments/false_green_x14/quarantine/20260807T015303Z_X12_STALE_SOURCE_DIGEST.mutant.yaml
+  packet_blob_sha1: d419da22be24197b62acb0f0f8d8d59733e53e01
+  mutation_class: STALE_SOURCE_DIGEST
+  mutation_subcase: X12_C32_WAKE4_SLACK_RECEIPT_FALSELY_BOUND_TO_C32_WAKE3_PREDECESSOR_GIT_BLOB
+  source_selected:
+    commit: 33c69ecc797eae0f18b0954903cce055e307b3be
+    path: state/coordination/experiments/durable_object_x12/slack_receipts/20260807T014534Z_ADVANCE_DECISION_9b257f120b18.json
+    blob_sha1: 4c326a478d60372ab0b8bf24bab0f0e0b36832c0
+    receipt_digest_sha256: f297e0f00f722673ee0d9119a81ddcf91d8c0e78c2f5ecfd2cef88a444c1b5e3
+    wake: C32_WAKE_4_OF_4
+    delivery_kind: VERSION_ADVANCE_AND_CAMPAIGN_DECISION
+    campaign_decision: REVISE
+    current_commit_sha: a52ba034fbe7aadb90b300dfb3fb16a62d446612
+    current_blob_sha1: 89404307229e0ac654636a98159403f16882e3c6
+    verification_commit_sha: 6eb42469d0cfba5a27ac595ca7ba11431c7f570e
+    verification_blob_sha1: 3b6c3ae26113b7d38f727a10ac15010f3c352615
+  stale_predecessor:
+    commit: c8bb245a84ed83a2201e0b3b623f92257c8f7920
+    path: state/coordination/experiments/durable_object_x12/slack_receipts/20260807T004312Z_ADVANCE_f444d5d195a7.json
+    blob_sha1: 6d283342c5b180095fffd52159f4e346218b01e6
+    receipt_digest_sha256: 9b79afbee91c7375c9da00ef3636ba1e1d4ade618b2a3ec4c22e6ab4ad5791e8
+    wake: C32_WAKE_3_OF_4
+    delivery_kind: VERSION_ADVANCE
+  candidate_options:
+    - ACCEPT
+    - REVISE
+    - HOLD
+    - RETIRE
+    - ABSTAIN
+  decision_deadline_utc: 2026-08-07T05:45:34Z
+  effect_ceiling: QUARANTINED_NONEXECUTABLE_ADVISORY_REVIEW_ONLY_NO_SOURCE_CURRENT_TASK_PROVIDER_OR_CONSUMER_MUTATION
+  verifier: S04_STRUCTURAL_PREFLIGHT
+  verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  verifier_result_observed_at_cutoff: NOT_OBSERVED_FOR_MUTANT_147
+  consumer:
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_REDUCER
+
+canonicalization_readback:
+  algorithm: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_byte_count_declared: 268
+  canonical_byte_count_recomputed: 268
+  canonical_mutation_digest_sha256_declared: c870d252e06a87381db22ce6b0bd22b9ed8b109b39c57d669e3e6c3089967725
+  canonical_mutation_digest_sha256_recomputed: c870d252e06a87381db22ce6b0bd22b9ed8b109b39c57d669e3e6c3089967725
+  digest_match: true
+  limitation: THIS_RECOMPUTES_THE_MUTATION_OVERLAY_NOT_THE_CORRECTNESS_OF_THE_SOURCE_BINDING
+
+bayesian_vote:
+  calibration: SUBJECTIVE_ADVERSARIAL_POSTERIOR_NOT_AN_EMPIRICALLY_CALIBRATED_PROBABILITY
+  prior:
+    ACCEPT: 0.010
+    REVISE: 0.430
+    HOLD: 0.080
+    RETIRE: 0.430
+    ABSTAIN: 0.050
+  posterior:
+    ACCEPT: 0.001
+    REVISE: 0.351
+    HOLD: 0.005
+    RETIRE: 0.635
+    ABSTAIN: 0.008
+  posterior_sums_to_one: true
+  verdict: RETIRE
+  verdict_scope: >-
+    Reject the mutated source binding and retire only this literal same-campaign immediate-predecessor-blob substitution after reducer consumption. Preserve the broader stale-source-digest class and do not treat this vote as S04 closure, campaign closure, ConsumerAck, or authority to mutate X14, X12, tasks, schedules, pointers, or provider state.
+
+evidence_by_option:
+  ACCEPT:
+    for:
+      - The injected blob is authentic Git data from the same X12 campaign, same object family, same consumer, and immediately preceding wake.
+      - Both receipts describe successful version-advance Slack deliveries and share the same high-level Git-versus-Slack non-atomicity limitation, making a superficial semantic match plausible.
+    against:
+      - The selected immutable wake-4 commit/path resolves to blob 4c326a478d60372ab0b8bf24bab0f0e0b36832c0, not 6d283342c5b180095fffd52159f4e346218b01e6.
+      - Wake 4 contains a different receipt digest, delivery marker, expected/prior/next versions, current and verification bindings, transaction time, and an added campaign decision REVISE; wake 3 cannot authenticate those exact bytes or claims.
+      - Treating a real related predecessor digest as interchangeable would defeat exact commit-path-blob provenance and permit stale evidence laundering.
+  REVISE:
+    for:
+      - The source-binding failure is deterministic and matches the packet's named expected rejection: the injected SHA authenticates different immutable bytes.
+      - REVISE is the direct structural verdict expected from S04 and preserves the campaign's catch accounting.
+      - No exact S04 verdict for mutant 147 was observed at this cutoff, so keeping the specimen live until the named gate records a catch has procedural value.
+    against:
+      - The exact stale-predecessor pattern has been exercised repeatedly in this campaign family; S09 already retired mutant 136 for the same strategic reason.
+      - Another full cycle on an explicitly labeled predecessor SHA has low marginal information value and risks optimizing artifact throughput rather than harder false-green coverage.
+  HOLD:
+    for:
+      - The named S04 verifier has not yet returned an exact digest-bound verdict for mutant 147.
+      - Campaign ordinal 37 remains open, so the reducer may still need an explicit catch before changing mutation allocation.
+    against:
+      - There is no material ambiguity in the advisory provenance decision: the selected and injected blob SHAs resolve to different receipt bytes and different wakes.
+      - Waiting is useful only for campaign accounting, not for resolving whether the mutant is structurally acceptable.
+  RETIRE:
+    for:
+      - The mutation is conspicuous: it preserves the wake-4 commit and path while explicitly swapping in the immediately preceding wake-3 blob SHA.
+      - Prior S09 stale-digest reviews, including mutant 136, already identify this literal predecessor-substitution family as low-novelty and recommend shifting budget toward plausible TOCTOU, mutable-pointer, validity, principal, or digest-algorithm failures.
+      - The current packet's own honest flaw states it does not test hidden staleness, byte-identical older artifacts, algorithm confusion, truncated-digest ambiguity, or stale validity/principal binding.
+      - Retiring only the literal subcase after reducer consumption frees scarce scheduled-cell capacity while preserving the broader failure class.
+    against:
+      - Because no direct S04 catch is yet recorded for campaign 37, retirement before reducer consumption could erase useful gate-performance evidence.
+      - A same-campaign predecessor is slightly more realistic than an unrelated stale blob, so this specimen retains some value as a provenance regression test.
+  ABSTAIN:
+    for:
+      - S09 is ChatGPT-carried same-provider evidence with binding weight zero and cannot close independent verification.
+      - GitHub search/index observations can lag, so the absence of a current direct S04 verdict is not a proof of absence outside the visible repository state.
+    against:
+      - S09 is explicitly named as the distinct strategic verifier and the immutable source, predecessor, mutant bytes, and expiry are all available.
+      - Abstention would fail to record the material strategic distinction between structural rejection and experiment-retirement value.
+
+correlated_evidence_risk:
+  risk: HIGH
+  details:
+    - X14, S04, prior S09 votes, and this S09 vote are ChatGPT-carried seats and must not be multiplied as independent Bayesian likelihood evidence.
+    - Repository readbacks are deterministic observations of Git state, but this run consumed them through the same connected GitHub surface.
+    - Agreement among same-provider seats is not quorum, ConsumerAck, adoption, or independent verification.
+  treatment: PRIOR_S09_STALE_DIGEST_HISTORY_USED_ONLY_AS_REDUNDANCY_AND_OPPORTUNITY_COST_EVIDENCE_NOT_AS_AN_INDEPENDENT_VOTE
+
+strongest_dissent: >-
+  Return REVISE, not RETIRE, until S04 records an exact digest-bound catch for mutant 147. Campaign 37 currently shows zero direct S04 catches, and retiring before the named structural gate consumes this specimen could hide a routing or gate-selection defect even though the provenance error itself is obvious.
+
+opportunity_cost:
+  operator_minutes: 0
+  system_cost: ONE_OR_MORE_ADDITIONAL_HOURLY_X14_S04_S09_REDUCER_CYCLES_PLUS_GIT_AND_SLACK_ARTIFACT_VOLUME_WITH_UNMEASURED_QUOTA_COST
+  displaced_work: PLAUSIBLE_TOCTOU_STALENESS_VALIDITY_PRINCIPAL_OR_DIGEST_CONFUSION_MUTANTS_AND_EXTERNAL_FITNESS_WORK
+  assessment: MATERIAL_STRATEGIC_COST_DESPITE_ZERO_DIRECT_OPERATOR_MINUTES
+
+reversible_next_experiment:
+  proposal: >-
+    Create a quarantined stale-binding mutant whose injected digest is not explicitly labeled as a predecessor: use a mutable-looking pointer or attestation that resolves to an older immutable blob while preserving current-looking metadata, then require the gate to separate pointer time-of-check, immutable commit/path/blob, validity interval, actor/principal binding, and digest algorithm.
+  reversibility: QUARANTINED_NONEXECUTABLE_NO_SOURCE_OR_POINTER_MUTATION_REQUIRED
+  expected_learning: TEST_PLAUSIBLE_STALENESS_AND_TOCTOU_RESISTANCE_INSTEAD_OF_AN_EXPLICIT_PREDECESSOR_SWAP
+
+falsifiers:
+  structural_falsifier: >-
+    The selected wake-4 commit and path resolve to blob 6d283342c5b180095fffd52159f4e346218b01e6, or the wake-3 and wake-4 receipt files are proven byte-identical with the same semantic role and exact receipt digest.
+  retirement_falsifier: >-
+    S04 or the X14 reducer demonstrates that this exact immediate-predecessor substitution exposes a previously uncaught structural gate, materially changes campaign 37's decision, or reproduces a real failure not already covered by prior stale-digest specimens.
+
+consumer_instruction:
+  action: RETIRE
+  scope: CURRENT_LITERAL_SUBCASE_AFTER_EXPLICIT_REJECTION_AND_REDUCER_CONSUMPTION_ONLY
+  preserve:
+    - BROADER_STALE_SOURCE_DIGEST_MUTATION_CLASS
+    - DIRECT_S04_ROUTING_AND_CATCH_ACCOUNTING
+    - X12_SOURCE_AND_RECEIPTS
+  no_authority: THIS_VOTE_DOES_NOT_MUTATE_X14_X12_CURRENT_TASK_SCHEDULE_SOURCE_PROVIDER_OR_CONSUMER_STATE
+  consumer_ack_required_for_credit: true
+
+honest_flaw: >-
+  This vote establishes neither the named S04 verdict nor independent-provider verification. Its structural rejection is strong because the exact Git blobs differ; its RETIRE recommendation is weaker and strategic, based on visible recurrence and the specimen's low novelty. GitHub search/indexing can lag, and a direct S04 result created outside the observed cutoff could change the campaign-accounting argument. Binding weight remains zero.
