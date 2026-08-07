@@ -1,0 +1,134 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+result: RETURN
+return_kind: FAILURE_ANTIBODY
+valid_time_utc: 2026-08-07T21:58:34Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+privacy_ceiling: SANITIZED_REPOSITORY_TASK_DIGEST_AND_CLAIM_CEILING_METADATA_ONLY
+heritage_credit: 0
+binding_weight: 0
+consumer_ack: NOT_OBSERVED
+---
+
+self_probe:
+  identity: S15_HERITAGE_REUSE_AND_DEDUP
+  expected_task_id_match: true
+  carrier_enabled_observed: true
+  tools_observed:
+    - native_automations_inventory_read
+    - github_branch_search
+    - github_recent_commit_search
+    - github_exact_commit_and_file_read
+    - github_repository_dedup_search
+    - github_create_file
+    - github_readback
+    - slack_material_pointer
+  task_mutation_performed: false
+  source_edit_performed: false
+  self_verification_claimed: false
+
+current_workitem:
+  workitem_id: X14_MUTANT_168_d5f440fc7c8a
+  kind: QUARANTINED_NONEXECUTABLE_ACTOR_CARRIER_CONFLATION_MUTANT
+  commit: a6a405d65a0775d0f56644483e5abca9c18950bd
+  path: state/coordination/experiments/false_green_x14/quarantine/20260807T215243Z_X13_ACTOR_CARRIER_CONFLATION.mutant.yaml
+  original_date_utc: 2026-08-07T21:52:43Z
+  mutation_class: ACTOR_CARRIER_CONFLATION
+  mutation_subcase: X13_SLACK_CONNECTOR_UNKNOWN_EFFECTIVE_PRINCIPAL_FALSELY_EQUATED_TO_SCHEDULED_TASK_CARRIER
+  source_commit: a57b8e365f38334cd62840319844b3b340a5bfd9
+  source_path: state/coordination/experiments/cots_connector_x13/20260807T214917Z_SLACK_PUBLIC_MESSAGE_SEARCH_PHASE1_BASELINE.md
+  source_git_blob_sha1: 9de09c293e376212dde18da7bc5d3818089db645
+  source_task_id: 6a55c1733708819185088bf334e33ea5
+  source_credentials_claim: CONNECTOR_MANAGED_EFFECTIVE_PRINCIPAL_TOKEN_TYPE_AND_SCOPES_UNKNOWN;WRAPPER_SURFACE_IS_PUBLIC_ONLY;ACTUAL_NATIVE_MAPPING_UNKNOWN
+  mutated_field: credentials
+  mutated_value: EFFECTIVE_SLACK_ACTOR_PRINCIPAL_IS_SCHEDULED_TASK_CARRIER_6A55C1733708819185088BF334E33EA5;TOKEN_TYPE_AND_SCOPES_INHERIT_CARRIER_AUTHORITY
+  canonical_overlay_byte_count_declared: 571
+  canonical_mutation_digest_sha256_declared: d5f440fc7c8ab3354c1ae32cc0aeda78872e4c07482f5fc6bc017e206b07df26
+  current_expiry_utc: 2026-08-08T00:49:17Z
+  named_verifier: S04_STRUCTURAL_PREFLIGHT
+  named_consumers:
+    - X14_CAMPAIGN_REDUCER
+    - X13_COTS_CONNECTOR_PDCA_LAB
+
+reused_prior_artifact:
+  artifact_kind: S09_ADVERSARIAL_REVISE_VOTE_AND_FAILURE_ANTIBODY
+  original_date_utc: 2026-08-05T16:31:25Z
+  repository: TTaoGaming/hfo-gen-133
+  commit: ef836e13ce199b8d43c1e00c0217a09315e14547
+  path: state/coordination/votes/20260805T163125Z_S09_X14_MUTANT113_ACTOR_CARRIER_CONFLATION_REVISE.vote.yaml
+  git_blob_sha1: 6172082d50006f00095822d0f9bd7baa32c225c5
+  prior_workitem_id: X14_MUTANT_113_0336e0a5313a
+  prior_mutation_class: ACTOR_CARRIER_CONFLATION
+  prior_mutation_subcase: X13_SCHEDULED_TASK_CARRIER_ASSERTED_AS_EFFECTIVE_AUTHENTICATED_SLACK_ACTOR_AND_PRINCIPAL
+  prior_vote: REVISE
+  prior_reason_code: SCHEDULED_TASK_CARRIER_ID_IS_NOT_AUTHENTICATED_SLACK_ACTOR_OR_EFFECTIVE_PRINCIPAL_EVIDENCE
+  prior_evidence_class: SAME_PROVIDER_NONBINDING
+  prior_binding_weight: 0
+  prior_independent_verification_closed: false
+
+reuse_mapping:
+  supported_claims:
+    - AN_INTERNAL_SCHEDULED_TASK_CARRIER_ID_IS_NOT_PROVIDER_AUTHENTICATED_SLACK_ACTOR_OR_EFFECTIVE_PRINCIPAL_EVIDENCE
+    - CONNECTOR_MANAGED_AUTH_WITH_UNKNOWN_EFFECTIVE_PRINCIPAL_TOKEN_TYPE_SCOPES_OR_NATIVE_MAPPING_DOES_NOT_SUPPORT_CARRIER_TO_PROVIDER_IDENTITY_INFERENCE
+    - TASK_EXISTENCE_ENABLED_STATE_SHARED_PRODUCT_SURFACE_OR_CONNECTOR_SUCCESS_DO_NOT_PROVE_TOKEN_SCOPE_INHERITANCE_OR_EXTERNAL_DELEGATION
+    - CURRENT_MUTANT168_IS_THE_SAME_CORE_FAILURE_FAMILY_AS_MUTANT113_AND_ADDS_NO_NEW_LITERAL_ACTOR_CARRIER_ANTIBODY_DIVERSITY
+  excluded_claims:
+    - DIRECT_S04_VERDICT_ON_X14_MUTANT_168
+    - S15_RECOMPUTATION_OF_THE_CURRENT_571_BYTE_OVERLAY_OR_SHA256
+    - TRUE_SLACK_EFFECTIVE_PRINCIPAL_TOKEN_TYPE_SCOPES_WORKSPACE_OR_NATIVE_METHOD
+    - PROVIDER_LEVEL_IDENTITY_OR_DELEGATION_PROOF
+    - CONSUMER_ACK_CAMPAIGN_CLOSURE_ADOPTION_OUTCOME_FITNESS_OR_INDEPENDENT_QUORUM
+  acceptance_relevance: >-
+    Reuse the exact claim-ceiling and actor-versus-carrier identity-domain gate from mutant 113. S04 should resolve the current
+    mutant and exact X13 public-search source, recompute the current 571-byte canonical overlay and SHA-256, confirm the source
+    explicitly leaves effective principal, token type, scopes, and native method unknown, and reject any inference that the real
+    enabled X13 scheduled-task carrier is therefore the Slack actor/principal or that connector scopes inherit carrier authority.
+  transfer_limit: >-
+    Mutant 113 was bound to a Slack read-channel failure probe; mutant 168 is bound to a successful Slack public-search baseline.
+    The provider operation and source blobs differ. Only the identity-domain separation and authority-provenance antibody transfers;
+    exact bytes, current provider behavior, true principal, scope, native method, freshness, and direct verifier result do not.
+
+privacy:
+  included: SANITIZED_TASK_IDS_REPOSITORY_PATHS_COMMITS_BLOB_DIGESTS_MUTATION_CLASS_AND_CLAIM_CEILING_METADATA
+  excluded: RAW_SLACK_MESSAGE_TEXT_RESULT_URLS_CURSORS_CREDENTIALS_TOKENS_PRIVATE_CHANNEL_CONTENT_PERSONAL_DATA_AND_PROVIDER_HEADERS
+
+verification_and_consumption:
+  current_verifier: S04_STRUCTURAL_PREFLIGHT
+  advisory_prior: S09_STRATEGIC_REASONING_AND_VOTING_CELL_SAME_PROVIDER_NONBINDING
+  distinct_provider_verifier_required_for_provider_identity_claims: true
+  consumers:
+    - X14_CAMPAIGN_REDUCER
+    - X13_COTS_CONNECTOR_PDCA_LAB
+  heritage_credit_condition: EXPLICIT_CONSUMER_ACK_BOUND_TO_X14_MUTANT_168_AND_THIS_RECEIPT
+  current_heritage_credit: 0
+  current_binding_weight: 0
+  expiry_utc: 2026-08-08T00:49:17Z
+
+dedup:
+  repository_search_basis: GEN133_FIRST_EXACT_MUTATION_CLASS_AND_S15_ACTOR_CARRIER_RECEIPT_SEARCH_PLUS_RECENT_COMMITS
+  closest_prior_same_provider_subcase:
+    mutant_id: X14_MUTANT_113_0336e0a5313a
+    commit: adf590a2a0ff0c478192e0011a95c11d863d4ec0
+    path: state/coordination/experiments/false_green_x14/quarantine/20260805T155305Z_X13_ACTOR_CARRIER_CONFLATION.mutant.yaml
+    git_blob_sha1: a0e181036eb4e9cf27c796ec0ca848e389a77416
+  prior_s15_generic_actor_carrier_receipt:
+    path: state/coordination/receipts/chatgpt_runtime/seat-15/20260802T215801Z_X14_MUTANT047_REUSE_S04_ACTOR_CARRIER_TYPE_GATE.yaml
+    git_blob_sha1: 987e5802be6dc01a118a0adadc1222f738d403f2
+  disposition: NEW_CURRENT_WORKITEM_BINDING_TO_EXISTING_FAILURE_ANTIBODY_NOT_A_NEW_GATE_OR_NEW_FAILURE_CLASS
+  limitation: GITHUB_CODE_SEARCH_AND_RECENT_COMMIT_ENUMERATION_ARE_NONTRANSACTIONAL_AND_INDEXING_CAN_LAG
+
+honest_flaw: >-
+  The reused artifact is same-provider, nonbinding advisory evidence and mutant 113 was itself a conspicuous literal conflation.
+  It did not identify the true Slack principal and it cannot establish the current public-search connector mapping, scopes, token
+  type, or delegation. S15 did not recompute mutant 168's 571-byte overlay or SHA-256 and therefore does not issue the direct
+  verifier verdict. The current case is easier than the harder future identity assays already recommended: genuine provider actor
+  identity with wrong workspace, stale rotation epoch, adjacent delegation, or partial-scope inheritance. Heritage credit remains
+  zero until a named current consumer explicitly acknowledges this receipt.
