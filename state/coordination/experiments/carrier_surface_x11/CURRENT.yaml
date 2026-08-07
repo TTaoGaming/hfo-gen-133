@@ -1,25 +1,16 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_WAKE_TIMING_DRIFT_V1
-current_version: 156
-accepted_wakes: 0
+current_version: 157
+accepted_wakes: 1
 target_wakes_before_decision: 4
 controlled_factor: wake_timing
 campaign_status: ACTIVE
 current_disposition: null
-prior_campaign:
-  experiment_id: X11_CALENDAR_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1
-  final_version: 156
-  disposition: KEEP
-  accepted_wakes: 4
-  decision_event:
-    commit: 249293236683c85b829dc6d5085eaf64503201a7
-    path: state/coordination/experiments/carrier_surface_x11/events/20260807T094031Z_CALENDAR_READ_WAKE_04_KEEP.yaml
-    blob: dd0b99547bdf9fed7865814366a294690bf5fa05
-baseline_result: campaign_initialized_with_no_accepted_wake_timing_samples
-hypothesis: elapsed_time_between_accepted_X11_events_can_be_measured_repeatably_without_operator_relay_or_schedule_mutation
+baseline_result: one_accepted_elapsed_time_sample
+hypothesis: elapsed_time_between_accepted_events_is_repeatably_measurable
 measured_result:
-  elapsed_seconds: []
+  elapsed_seconds: [3483.826231]
   clock_source_class: RUNTIME_WALL_CLOCK
   permission_class: RUNTIME_TIME_READ_AVAILABLE
   error_class: NONE
@@ -27,30 +18,22 @@ measured_result:
   changed_capability: false
   campaign_decision: false
   andon: false
-supported_claim: no_wake_timing_claim_yet
-claim_ceiling: observed_elapsed_time_between_accepted_events_only_not_scheduler_exactness_delivery_guarantee_or_exactly_once_execution
-strongest_falsifier: current_time_or_prior_accepted_event_timestamp_is_unavailable_or_elapsed_time_cannot_be_computed
+supported_claim: one_observed_elapsed_time_between_accepted_events
+claim_ceiling: observed_elapsed_time_only
+strongest_falsifier: required_time_value_is_unavailable
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
-consumer:
-  - Reginleif
-  - Ratatoskr
-honest_flaw: elapsed_time_between_accepted_events_includes_tool_and_persistence_delay_and_does_not_isolate_scheduler_delay
+consumer: [Reginleif, Ratatoskr]
+honest_flaw: observed_elapsed_time_includes_processing_delay
 last_event:
-  commit: 249293236683c85b829dc6d5085eaf64503201a7
-  path: state/coordination/experiments/carrier_surface_x11/events/20260807T094031Z_CALENDAR_READ_WAKE_04_KEEP.yaml
-  blob: dd0b99547bdf9fed7865814366a294690bf5fa05
+  commit: 016ae7e2ad1576221cada053573feee8406b73d9
+  path: state/coordination/experiments/carrier_surface_x11/events/20260807T103834Z_WAKE_TIMING_DRIFT_V1_WAKE_01.yaml
+  blob: 3445b9355bcb8a03844c1df1ee82e3163cd8397e
 next_factor: wake_timing
 next_probe:
   experiment_id: X11_WAKE_TIMING_DRIFT_V1
-  campaign_wake: 1
+  campaign_wake: 2
   mode: read_only_elapsed_time_measurement
-  exact_action: fetch_CURRENT_and_prior_accepted_event_timestamp;_capture_current_UTC_wall_clock;_compute_elapsed_seconds;_persist_only_elapsed_seconds_clock_source_permission_error_class_and_operator_relay_minutes;_do_not_persist_scheduler_configuration
-  expected_current_version: 156
-  mutation_allowed: false
-  operator_relay_allowed: false
-  post_only_changed_capability_campaign_decision_or_andon: true
-updated_valid_time_utc: 2026-08-07T09:40:31Z
+  expected_current_version: 157
+updated_valid_time_utc: 2026-08-07T10:38:34.826231Z
 sealed: false
 ---
-
-Calendar read campaign completed 4 of 4 with KEEP. The next campaign measures only elapsed wall-clock time between accepted X11 events; it does not expose scheduler configuration and cannot prove scheduler exactness or exactly-once execution.
