@@ -1,0 +1,65 @@
+schema: hfo.gen133.s05.operator_relief_receipt.v1
+seat: S05
+expected_task_id: 6a55c182078c8191b89f2dd15f5f640c
+task_id_self_probe: MATCH
+wip: 1
+valid_time_utc: '2026-08-07T00:14:14Z'
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+result: STATUS_RECONCILED
+active_item: fidelity_wire_status_reconciliation
+transition:
+  kind: reconcile_important_status
+  from: one_fidelity_wire_sent_receiving_bank_pending
+  to: one_wire_sent_receiving_bank_pending_plus_separate_wire_disbursement_canceled_not_completed
+  material_change: true
+sanitized_evidence:
+  - source: gmail
+    pointer: gmail:message:19fd8d448952718a
+    fact: earlier_fidelity_wire_from_one_account_was_reported_sent_to_receiving_bank
+  - source: gmail
+    pointer: gmail:message:19fd98649106caa2
+    fact: later_fidelity_bank_wire_disbursement_from_a_different_account_was_reported_canceled_or_not_completed
+  - source: gmail
+    pointer: gmail:message:19fd91bef3f1bbcd
+    fact: fidelity_secure_message_notification_exists_but_its_private_body_is_not_available_in_gmail
+  - source: google_calendar
+    pointer: gcal:event:climaopoc9gj4b9jckr32b9kchh6cbb16pgj2bb4cosj8db669i34pj670
+    fact: existing_fidelity_review_event_explicitly_did_not_authorize_a_wire
+  - source: github
+    pointer: commit:143b3b2cb85d911f16b4bf8139d9c00b6b6eb7ba
+    fact: prior_state_tracked_the_earlier_sent_wire_as_receiving_bank_pending
+  - source: slack
+    pointer: channel:C0BGNGPJFHU:after:1786058347.210129
+    fact: no_new_wire_specific_coordination_signal_observed
+operator_obligation_delta:
+  corrected:
+    - do_not_treat_the_new_cancellation_alert_as_reversing_the_earlier_sent_wire_without_account_match
+    - track_the_canceled_disbursement_as_a_separate_waiting_loop
+  now_bound:
+    - verify_receiving_bank_credit_or_availability_for_the_earlier_sent_wire
+    - verify_whether_the_separate_canceled_disbursement_was_expected_before_any_retry
+    - read_the_fidelity_secure_message_in_the_provider_communication_center_if_it_is_needed_to_explain_the_cancellation
+priority:
+  p0: verify_whether_the_separate_canceled_fidelity_disbursement_was_expected_before_any_retry
+  p1:
+    - confirm_receiving_bank_credit_or_availability_for_the_earlier_sent_wire
+    - obtain_authoritative_pfa_policy_to_document_scope_mapping_before_another_disclosure
+stop_condition: do_not_retry_any_canceled_wire_from_this_cell
+next_safe_operator_gate: review_fidelity_alert_history_and_provider_secure_message_then_choose_retry_or_no_action
+privacy:
+  private_bodies_externalized: false
+  sensitive_identifiers_externalized: false
+  amounts_destinations_and_account_suffixes_externalized: false
+  note: only sanitized status and source-system pointers persisted
+effect_ceiling:
+  email_send: false
+  application_submission: false
+  spend_or_payment: false
+  deployment_or_merge: false
+  publication: false
+  account_or_security_change: false
+  task_mutation: false
+operator_minutes_removed_estimate: 8
+next_consumer: Var_finance_reconciliation
+honest_flaw: source_readback_proves_two_distinct_fidelity_account_alerts_with_different_outcomes_but_does_not_prove_the_reason_for_the_cancellation_or_receiving_bank_credit_for_the_earlier_sent_wire
