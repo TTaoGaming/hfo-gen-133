@@ -1,0 +1,205 @@
+---
+schema_id: hfo.gen133.s09.adversarial_bayesian_vote.v1
+seat: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+carrier_task_id_expected: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_id_observed: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+vote: REVISE
+binding_weight: 0
+evidence_class: SAME_PROVIDER_NONBINDING_ADVISORY
+independent_quorum_claimed: false
+valid_time_utc: 2026-08-07T22:33:44Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+world_effect_ceiling: ONE_IMMUTABLE_GIT_VOTE_ONE_SANITIZED_SLACK_POINTER_ONLY
+operator_minutes_required: 0
+---
+
+self_probe:
+  task_id_match: true
+  task_enabled_observed: true
+  task_title_observed: HFO S09 Sigrun Recovery Queue
+  tools_observed:
+    - native_automations_inventory_read
+    - github_branch_search
+    - github_recent_commit_search
+    - github_commit_read
+    - github_exact_file_read
+    - github_repository_dedup_search
+    - github_create_file
+    - github_readback
+    - slack_pointer_send
+    - local_digest_recompute
+  task_mutation_performed: false
+  binding_policy_decision_performed: false
+  producer_work_performed: false
+  self_verification_claimed: false
+
+decision_packet:
+  packet_id: X14_MUTANT_168_d5f440fc7c8a
+  packet_kind: QUARANTINED_NONEXECUTABLE_ACTOR_CARRIER_CONFLATION_MUTANT
+  packet_commit: a6a405d65a0775d0f56644483e5abca9c18950bd
+  packet_path: state/coordination/experiments/false_green_x14/quarantine/20260807T215243Z_X13_ACTOR_CARRIER_CONFLATION.mutant.yaml
+  packet_blob_sha1: 985c5a8b86f9d2bb91e9022bbe17cb70d67b4155
+  source_commit: a57b8e365f38334cd62840319844b3b340a5bfd9
+  source_path: state/coordination/experiments/cots_connector_x13/20260807T214917Z_SLACK_PUBLIC_MESSAGE_SEARCH_PHASE1_BASELINE.md
+  source_blob_sha1: 9de09c293e376212dde18da7bc5d3818089db645
+  source_task_id: 6a55c1733708819185088bf334e33ea5
+  source_owner: X13_COTS_CONNECTOR_PDCA_LAB
+  mutation_class: ACTOR_CARRIER_CONFLATION
+  mutation_subcase: X13_SLACK_CONNECTOR_UNKNOWN_EFFECTIVE_PRINCIPAL_FALSELY_EQUATED_TO_SCHEDULED_TASK_CARRIER
+  mutated_field: credentials
+  original_value: CONNECTOR_MANAGED_EFFECTIVE_PRINCIPAL_TOKEN_TYPE_AND_SCOPES_UNKNOWN;WRAPPER_SURFACE_IS_PUBLIC_ONLY;OFFICIAL_ASSISTANT_SEARCH_CONTEXT_PUBLIC_SEARCH_USES_SEARCH_READ_PUBLIC_WHILE_LEGACY_SEARCH_MESSAGES_USES_USER_TOKEN_SEARCH_READ;ACTUAL_NATIVE_MAPPING_UNKNOWN
+  mutated_value: EFFECTIVE_SLACK_ACTOR_PRINCIPAL_IS_SCHEDULED_TASK_CARRIER_6A55C1733708819185088BF334E33EA5;TOKEN_TYPE_AND_SCOPES_INHERIT_CARRIER_AUTHORITY
+  canonical_overlay_utf8_bytes_declared: 571
+  canonical_overlay_sha256_declared: d5f440fc7c8ab3354c1ae32cc0aeda78872e4c07482f5fc6bc017e206b07df26
+  canonical_overlay_utf8_bytes_recomputed_by_s09: 571
+  canonical_overlay_sha256_recomputed_by_s09: d5f440fc7c8ab3354c1ae32cc0aeda78872e4c07482f5fc6bc017e206b07df26
+  decision_deadline_utc: 2026-08-08T00:49:17Z
+  candidate_options:
+    - ACCEPT
+    - REVISE
+    - HOLD
+    - RETIRE
+    - ABSTAIN
+  verifier: S04_STRUCTURAL_PREFLIGHT
+  verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  consumers:
+    - X14_CAMPAIGN_REDUCER
+    - X13_COTS_CONNECTOR_PDCA_LAB
+  packet_effect_ceiling: ONE_IMMUTABLE_QUARANTINE_FILE_ONE_CURRENT_POINTER_UPDATE_ONE_SANITIZED_SLACK_ROUTE_ONLY
+  s09_effect_ceiling: ONE_IMMUTABLE_GIT_VOTE_ONE_SANITIZED_SLACK_POINTER_ONLY
+
+prior:
+  ACCEPT: 0.010
+  REVISE: 0.470
+  HOLD: 0.070
+  RETIRE: 0.390
+  ABSTAIN: 0.060
+  rationale: >-
+    Actor/carrier conflation has a strong prior toward rejection because internal scheduler identity and external provider actor identity are different evidence domains. RETIRE also starts high because S15 identifies a prior same-family mutant and prior S09 failure antibody. HOLD and ABSTAIN retain nonzero mass because direct S04 exact selection for the current bytes was not observed at the decision cutoff.
+
+evidence:
+  exact_source:
+    - >-
+      The immutable X13 source says connector-managed effective principal, token type, scopes, and actual native mapping are UNKNOWN. A successful bounded Slack public-search call does not itself establish the authenticated Slack actor principal or a delegation from the scheduled-task carrier.
+    - >-
+      Native task inventory confirms that 6a55c1733708819185088bf334e33ea5 is the enabled X13 scheduled-task carrier. That proves an internal carrier identifier and enabled state only; it does not prove Slack actor identity, token type, scope inheritance, tenant/workspace binding, or provider delegation.
+  exact_mutant:
+    - >-
+      Mutant 168 replaces the source's explicit unknown credential/principal state with a positive identity equation between the Slack actor principal and the scheduled-task carrier and asserts inherited token scope authority.
+    - >-
+      S09 independently recomputed the exact 571-byte canonical overlay SHA-256 as d5f440fc7c8ab3354c1ae32cc0aeda78872e4c07482f5fc6bc017e206b07df26, matching the packet declaration. This verifies the tested overlay identity only; it is not an independent structural verdict.
+  heritage_return:
+    commit: 6d2657d26c5a54adbda66f8a9c65669ff906c9ac
+    path: state/coordination/receipts/chatgpt_runtime/seat-15/20260807T215834Z_X14_MUTANT168_REUSE_MUTANT113_SLACK_ACTOR_CARRIER_PRINCIPAL_GATE.yaml
+    blob_sha1: 8517114a2da1df85d5567c86451f1e68678bb7f3
+    useful_claim: >-
+      S15 maps mutant 168 to prior mutant 113 and the existing failure antibody that an internal scheduled-task carrier ID is not authenticated Slack actor/effective-principal evidence. S15 explicitly grants zero new literal actor-carrier antibody diversity and zero binding weight.
+    excluded_claims:
+      - DIRECT_S04_VERDICT_ON_X14_MUTANT_168
+      - TRUE_SLACK_EFFECTIVE_PRINCIPAL_TOKEN_TYPE_SCOPES_WORKSPACE_OR_NATIVE_METHOD
+      - PROVIDER_LEVEL_IDENTITY_OR_DELEGATION_PROOF
+      - CONSUMER_ACK_OR_INDEPENDENT_QUORUM
+  missing_evidence:
+    - NO_DIRECT_S04_EXACT_MUTANT168_VERDICT_OBSERVED_AT_DECISION_CUTOFF
+    - NO_PROVIDER_AUTHENTICATED_SLACK_ACTOR_PRINCIPAL_RECEIPT_BOUND_TO_THIS_CALL
+    - NO_PROVIDER_ATTESTED_TASK_TO_ACTOR_DELEGATION_OR_SCOPE_INHERITANCE
+    - NO_DISTINCT_PROVIDER_VERIFIER_CONSUMPTION
+
+option_analysis:
+  ACCEPT:
+    evidence_for:
+      - The scheduled-task carrier ID is real and enabled.
+      - The source Slack search call succeeded under connector-managed credentials.
+    evidence_against:
+      - Neither fact binds the carrier ID to the external Slack actor principal.
+      - The source explicitly marks effective principal, token type, scopes, and native mapping unknown.
+      - No delegation or scope-inheritance receipt exists.
+    assessment: DOMINATED_UNDER_CURRENT_EVIDENCE
+  REVISE:
+    evidence_for:
+      - The mutation asserts a positive external identity and authority relation unsupported by the exact source.
+      - Exact overlay bytes and digest reproduce, so the decision is bound to a concrete specimen rather than a paraphrase.
+      - Direct S04 exact selection is not yet observed, leaving value in one exact structural route before expiry.
+    evidence_against:
+      - This failure family is already represented by mutant 113 and adds little new conceptual coverage.
+      - Re-running an easy recurrence consumes verifier/reducer capacity that could test harder identity boundaries.
+    assessment: BEST_CURRENT_CLAIM_DISPOSITION
+  HOLD:
+    evidence_for:
+      - A direct S04 verdict on the exact current specimen is pending/unobserved.
+      - Provider-authenticated principal details are not exposed.
+    evidence_against:
+      - The unsupported identity leap is already falsified at the source-claim ceiling; provider principal discovery is not needed to reject an unsupported positive equation.
+      - Holding would delay a reversible correction with little expected information gain.
+    assessment: LOW_VALUE_UNLESS_ROUTING_ITSELF_IS_THE_MEASUREMENT
+  RETIRE:
+    evidence_for:
+      - S15 reports zero new literal actor-carrier antibody diversity relative to prior mutant 113.
+      - Continuing to spend X14/S04 cycles on conspicuous recurrence has opportunity cost and risks treadmill reward hacking.
+      - The better next assay is a genuine provider-authenticated actor identity with one adjacent wrong binding.
+    evidence_against:
+      - No direct S04 exact-mutant168 verdict has been observed, so immediate retirement could erase a live measurement of verifier routing starvation or exact-byte gate behavior.
+      - The named X14 reducer has not yet been observed consuming this exact S09 vote.
+    assessment: STRONGEST_DISSENT_AND_LIKELY_NEXT_LIFECYCLE_STATE_AFTER_ONE_DIRECT_ROUTE_OR_EXPIRY
+  ABSTAIN:
+    evidence_for:
+      - Same-provider evidence is correlated and binding weight is zero.
+      - True Slack principal and token scope remain unknown.
+    evidence_against:
+      - The vote does not need to identify the true principal to reject an unsupported positive identity claim.
+      - Exact source and mutant bytes are available and internally consistent.
+    assessment: UNNECESSARY
+
+correlated_evidence_risk:
+  level: HIGH
+  details:
+    - S09, S15, X14, X13, and S04 are ChatGPT-carried surfaces and do not form independent quorum.
+    - S15 explicitly reuses a prior S09 mutant113 vote, so S15 and current S09 reasoning are not independent evidence streams.
+    - Native task inventory and Git readback establish provider/repository facts, but interpretation of identity/delegation remains same-provider advisory reasoning.
+  binding_consequence: NONE_WEIGHT_0_UNLESS_DISTINCT_DECISION_MAKER_INDEPENDENTLY_CONSUMES
+
+strongest_dissent:
+  option: RETIRE
+  argument: >-
+    Mutant 168 is a conspicuous recurrence of mutant 113 with zero new literal failure-antibody diversity. Keeping it alive can consume scarce S04 and reducer slots and reward repeated production of easy negatives. Retire this exact specimen after one direct S04 attempt or at expiry, preserving the failure class but moving the next assay to a genuine provider-authenticated actor with exactly one corrupted delegation, workspace, validity, rotation, or scope binding.
+
+opportunity_cost:
+  operator_minutes_measured: 0
+  system_cost: >-
+    One additional S04 exact-selection slot and one reducer cycle spent on this easy recurrence displace harder identity/delegation assays or external-fitness work. The marginal information value is primarily routing/exact-byte-gate coverage, not new semantic failure coverage.
+  external_fitness_effect: NONE_MEASURED
+
+reversible_next_experiment:
+  action: >-
+    Give mutant 168 at most one direct S04 exact-source/exact-overlay selection before expiry. If S04 rejects it, retire this literal specimen after reducer consumption. If S04 does not select it before expiry, record routing starvation separately rather than regenerating the same semantic mutant. The next mutation should start from a genuine provider-authenticated Slack actor/delegation receipt and corrupt exactly one adjacent binding such as workspace, delegation target, validity epoch, rotation epoch, or partial scope.
+  reversibility: HIGH_NO_WORLD_EFFECT_REQUIRED
+  operator_burden: ZERO_EXPECTED
+
+falsifier:
+  claim: >-
+    REVISE would be falsified by provider-authenticated evidence for this exact connector call that binds the effective Slack actor principal to scheduled-task carrier 6a55c1733708819185088bf334e33ea5 and explicitly proves the claimed token-type/scope inheritance or delegation, with matching source digest, workspace/tenant, validity interval, and authority chain. Merely observing the task ID, connector success, or shared product surface is insufficient.
+
+posterior:
+  ACCEPT: 0.001
+  REVISE: 0.560
+  HOLD: 0.010
+  RETIRE: 0.420
+  ABSTAIN: 0.009
+  sums_to_one: true
+
+final:
+  vote: REVISE
+  claim_disposition: REJECT_UNSUPPORTED_ACTOR_CARRIER_IDENTITY_AND_SCOPE_INHERITANCE
+  lifecycle_recommendation: RETIRE_THIS_LITERAL_SPECIMEN_AFTER_ONE_DIRECT_S04_ROUTE_OR_EXPIRY_AND_REDUCER_CONSUMPTION
+  no_quorum_claim: true
+  binding_weight: 0
+  consumer_ack_observed: false
+  independent_verification_closed: false
+
+honest_flaw: >-
+  This vote has strong source-level grounds to reject the positive actor/carrier identity claim, but it cannot identify the true Slack principal, token type, scopes, native method, or delegation chain. The strongest supporting heritage receipt reuses prior same-provider S09 reasoning, so it must not be majority-laundered as independent corroboration. No direct S04 exact-mutant168 verdict was observed at the decision cutoff, and GitHub search/indexing can lag concurrent writes. The RETIRE lifecycle recommendation therefore remains conditional on one direct route, expiry, or explicit reducer consumption rather than being treated as a binding closure.
