@@ -1,0 +1,69 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_GMAIL_SEARCH_IDS_READONLY_013
+phase: 3
+wake: 3_of_4
+candidate: Gmail_search_email_ids_readonly_surface
+carrier_task_id: 6a55c1733708819185088bf334e33ea5
+carrier_task_id_match: true
+wip: 1
+prior_current_version: 150
+expected_current_version_after: 151
+operation: ONE_BOUNDED_SYNTHETIC_NONMATCHING_GMAIL_SEARCH_EMAIL_IDS
+query: '"X13-NOMATCH-20260807T034850Z-9f4a7c21" after:2026/07/30 before:2026/08/08 -in:spam -in:trash'
+max_results: 3
+request_sha256: 7abd1319f5d8e68dda4791907aa9444d90b045223a575c9084108bc5ee6a7350
+normalization_contract: CANONICAL_JSON_SORTED_KEYS_COMPACT_OF_ORDERED_MESSAGE_IDS_PLUS_BOOLEAN_NEXT_PAGE_TOKEN_PRESENCE
+normalized_result_sha256: 9021274fcfd2d962995b8a710f3f9a8b2ac261c6ececf5d9bb5aa36f08eb35d8
+returned_message_ids: 0
+next_page_token_present: false
+message_content_hydrated: false
+connector_error: false
+external_call_time_ms: 231
+retries: 0
+fallbacks: 0
+candidate_mutations: 0
+raw_message_ids_persisted: false
+raw_next_page_token_persisted: false
+measured_fact: SYNTHETIC_NONMATCHING_ID_ONLY_QUERY_RETURNED_EMPTY_SUCCESS_WITH_NO_CONNECTOR_ERROR_OR_CONTENT_HYDRATION
+interpretation: CONNECTOR_DISTINGUISHES_EMPTY_SUCCESS_FROM_ERROR_FOR_THIS_CALL; EMPTY_SUCCESS_IS_NOT_AUTHORITATIVE_MAILBOX_ABSENCE
+andon: EFFECTIVE_IDENTITY_SCOPE_QUERY_TRANSLATION_RESULT_SIZE_ESTIMATE_PROVIDER_REQUEST_ID_AND_ACTUAL_QUOTA_DEBIT_REMAIN_UNEXPOSED; PERMISSION_DENIAL_RATE_LIMIT_TRANSIENT_FAILURE_AND_PAGINATION_REPLAY_REMAIN_UNTESTED
+custom_code_avoided_estimate: 40_to_120_LOC_UNVALIDATED
+operator_minutes_removed_measured: 0
+credentials: CONNECTOR_MANAGED_EFFECTIVE_IDENTITY_AND_OAUTH_SCOPES_UNKNOWN
+durability: GIT_EVENT_DURABLE_GMAIL_MAILBOX_AND_SEARCH_VIEW_MUTABLE_NO_PROVIDER_SNAPSHOT_RECEIPT
+observability: RESULT_COUNT_PAGE_TOKEN_PRESENCE_ERROR_AND_EXTERNAL_CALL_TIME_EXPOSED; RESULT_SIZE_ESTIMATE_PROVIDER_REQUEST_ID_EFFECTIVE_SCOPE_AND_ACTUAL_QUOTA_DEBIT_NOT_EXPOSED
+portability: LOW_TO_MEDIUM_GMAIL_QUERY_SYNTAX_AND_WRAPPER_SPECIFIC
+failure_behavior: EMPTY_SUCCESS_OBSERVED_AND_DISTINGUISHED_FROM_CONNECTOR_ERROR; PERMISSION_DENIAL_RATE_LIMIT_TRANSIENT_FAILURE_AND_PAGINATION_REPLAY_UNTESTED
+paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
+direct_cost_or_quota_evidence: NONE_FROM_CONNECTOR
+nominal_provider_quota_contract: GMAIL_API_MESSAGES_LIST_COSTS_5_QUOTA_UNITS; 1200000_UNITS_PER_MINUTE_PROJECT; 6000_UNITS_PER_MINUTE_USER_PROJECT; 80000000_UNITS_PER_DAY_PROJECT_BILLING_THRESHOLD; CONNECTOR_MAPPING_AND_DEBIT_UNVERIFIED
+official_contract_urls:
+  - https://developers.google.com/workspace/gmail/api/reference/rest/v1/users.messages/list
+  - https://developers.google.com/workspace/gmail/api/reference/quota
+catalog_consumer: HFO_COTS_CAPABILITY_INVENTORY
+operational_consumer: NOT_ASSIGNED
+consumer_ack: NOT_OBSERVED
+verifier: DIRECT_GMAIL_CONNECTOR_RECEIPT_PLUS_GIT_EVENT_READBACK_AND_CURRENT_READBACK; MATCHED_RAW_PROVIDER_CALL_NOT_RUN
+verifier_result: PHASE3_EMPTY_SUCCESS_WITH_ZERO_IDS_NO_PAGE_TOKEN_NO_ERROR_AND_NO_CONTENT_HYDRATION
+adoption_credit: 0
+fitness_credit: 0
+mandatory_gate: BOUNDED_QUERY; SMALL_MAX_RESULTS; DO_NOT_PERSIST_RAW_MESSAGE_IDS_OR_PAGE_TOKEN; EMPTY_SUCCESS_MEANS_ZERO_VISIBLE_MATCHES_RETURNED_BY_THIS_CALL_ONLY; DO_NOT_TREAT_AS_AUTHORITATIVE_MAILBOX_ABSENCE; DO_NOT_INFER_EFFECTIVE_SCOPE_FROM_WRAPPER_SUCCESS; NO_UNBOUNDED_RETRY; CONSEQUENTIAL_MAILBOX_CLAIMS_REQUIRE_MESSAGE_READ_OR_MATCHED_PROVIDER_WITNESS
+strongest_falsifier: MATCHED_RAW_GMAIL_V1_USERS_MESSAGES_LIST_CALL_UNDER_SAME_EFFECTIVE_PRINCIPAL_RETURNS_THE_SYNTHETIC_TOKEN_OR_REVEALS_MATERIALLY_DIFFERENT_QUERY_SCOPE_AUTHORIZATION_OR_COMPLETENESS_SEMANTICS
+honest_flaw: SYNTHETIC_TOKEN_WAS_DESIGNED_TO_MISS_SO_THIS TESTS_EMPTY_SUCCESS_SHAPE_ONLY_NOT_PERMISSION_DENIAL_SPAM_TRASH_VARIANCE_PAGINATION_REPLAY_RATE_LIMIT_TRANSIENT_FAILURE_INDEX_LAG_RAW_PROVIDER_PARITY_OPERATOR_SAVINGS_OR_CONSUMER_VALUE
+phase_status: PHASE3_ACCEPTED_WITH_GATES
+provisional_decision: ADOPT_WITH_GATES_CATALOG_ONLY
+next_phase: PHASE4_DECISION_FROM_EXISTING_THREE_CALL_EVIDENCE_ONLY_NO_ADDITIONAL_GMAIL_CANDIDATE_CALL
+valid_time_utc: 2026-08-07T03:48:50Z
+recorded_time_utc: 2026-08-07T03:48:50Z
+---
+
+# X13 Gmail ID-only search — Phase 3
+
+A single bounded synthetic nonmatching `search_email_ids` call returned zero message IDs, no next-page token, and no connector error in 231 ms. No message content was hydrated, no raw Gmail identifiers were persisted, and no Gmail state was mutated.
+
+This is evidence only that the wrapper can return an empty-success shape distinct from connector failure for this call. It is not evidence of authoritative mailbox absence or completeness because the effective principal/scopes, raw provider query translation, provider request identity, result-size estimate, and actual quota debit are not exposed.
+
+Google's official `users.messages.list` contract states that list responses contain message IDs/thread IDs, use `nextPageToken` for pagination, and support `q`/label filters. Google's current quota contract assigns `messages.list` 5 quota units. Those provider contracts are nominal here because this connector's exact mapping and debit are not directly witnessed.
+
+Phase 4 should make the adoption decision from the existing three-call evidence set only, with no additional Gmail candidate call.
