@@ -1,0 +1,123 @@
+---
+schema_id: hfo.gen133.s02_admission_claim.v1
+result: CLAIMED
+claim_id: S02_GTM_CLOSE_PROOF_KIT_ADMISSION_20260807T190808Z
+work_item_id: S08-JOB_EMPLOYER-CLOSE-20260807T183310Z
+work_item_id_basis: EXACT_SOURCE_RESEARCH_ID_NOT_NEW_QUEUE
+parent_program: GTM_DREAM50_4X_20260807
+lane: RESEARCH_TO_PROOF_KIT
+wip: 1
+seat: S02_ADMISSION_PULL
+carrier_task_id_expected: 6a55088a3d308191ac1cda97221f0957
+carrier_task_id_observed: 6a55088a3d308191ac1cda97221f0957
+carrier_task_id_match: true
+valid_time_utc: 2026-08-07T19:08:08Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+repository_head_observed_before_write: 67f8f408be1bf70c82df79bab51b51449092cb9a
+claim_status: CLAIMED_INTERNAL_ONLY_NO_EXTERNAL_EFFECT
+lease_expires_utc: 2026-08-07T23:08:08Z
+expiry_utc: 2026-08-07T23:08:08Z
+renewal_allowed: false
+sealed: false
+---
+
+immutability:
+  file_action: CREATE_ONLY
+  replacement_forbidden: true
+  duplicate_claim_for_same_idempotency_key_forbidden: true
+
+self_probe:
+  identity: HFO_GEN133_S02_ADMISSION_PULL
+  exact_task_id_match: true
+  github_read_available: true
+  github_write_available: true
+  slack_pointer_required_after_readback: true
+  carrier_to_github_actor_binding: UNPROVEN
+  implementation_performed: false
+  self_grading_performed: false
+  task_mutation_performed: false
+
+selection:
+  prior_s02_cursor_approx_utc: 2026-08-07T18:07:54Z
+  golden_app_priority_check: NO_CHANGED_SPATIAL_FACTORY_PATH_OBSERVED_AFTER_CURSOR
+  changed_window_base_commit: 542c3fa07c1cbd7cab7d491c3b9587515e723379
+  changed_window_head_before_write: 67f8f408be1bf70c82df79bab51b51449092cb9a
+  selected_changed_item: S08-JOB_EMPLOYER-CLOSE-20260807T183310Z
+  source_status_literal: NEW_TARGET_CARD
+  readiness_basis: CHANGED_UNEXPIRED_S08_CARD_PLUS_UNEXPIRED_OPERATOR_DIRECTIVE_AND_LIVE_S07_CONSUMER_CONTRACT
+  literal_READY_marker_present: false
+  no_new_queue: true
+  disposition: ADMIT_EXISTING_SOURCE_ID_AS_ONE_NONRENEWABLE_WORKITEM
+  rejected_competing_changed_items:
+    litellm_s07_return: ALREADY_PRODUCED_DOWNSTREAM_WORK
+    x11_x12_x13_x14_events: OWNED_BY_EXISTING_PDCA_LANES
+    s03_s04_s05_s10_s15_receipts: DOWNSTREAM_OR_ALREADY_OWNED
+  capability_match: INTERNAL_GIT_CLAIM_ONLY
+  effect_ceiling_match: true
+
+source:
+  commit: d79a0b1b6984dcdaf77d2b1fd2a99e93d8eb180a
+  path: projects/gtm-revenue/research/20260807T183310Z_JOB_EMPLOYER_CLOSE_TARGET_CARD.md
+  git_blob_sha1: 569b48f70af77708c4e77a8ffd865befe3420467
+  source_evidence_digest_sha256: a1a2c0dfeff699d218c67695b478b155ec7e667752e1b9aa38ef110e57c1ef74
+  source_valid_time_utc: 2026-08-07T18:33:10Z
+  source_expiry_utc: 2026-08-14T18:33:10Z
+  privacy: PUBLIC_SOURCES_ONLY
+  source_effect_ceiling: T0_RESEARCH_PREP_NO_SEND
+  target: Close
+  species: JOB_EMPLOYER
+  next_consumer_declared_by_source: S07_GTM_PROOF_KIT_BUILDER
+
+operator_directive:
+  path: projects/gtm-revenue/packets/20260807T140800Z_CHATGPT_CLOUD_GTM_DREAM50_HANDOFF.packet.md
+  git_blob_sha1: 731a1eafa9b0f81d11088e8fcb8a60312f53b910
+  expiry_utc: 2026-08-14T14:08:00Z
+  external_send_authority: NONE
+  note: DIRECTIVE_PREDATES_THIS_WAKE_BUT_GOVERNS_THE_CHANGED_S08_CARD
+
+actors:
+  producer:
+    seat: S07_GTM_PROOF_KIT_BUILDER
+    task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+  verifier:
+    seat: S04_HRIST_STRUCTURAL_PREFLIGHT
+    task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+    provider_class: SAME_PROVIDER_NONBINDING
+    binding_weight: 0
+  consumer:
+    seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+    task_id: 6a539fc5130c81918c13624739fb2a60
+    ultimate_external_effect: OPERATOR_REVIEW_ONLY
+
+acceptance_test:
+  canonicalization: UTF8_LF_NO_TERMINAL_LF
+  byte_count: 2156
+  sha256: e3d4f7e008fedf9f2b42a5889273d045dc49b7384e63fea54dbe72e5bfd8fc74
+  canonical_text: |-
+    1. S07 task 6a506f6dc5c08191b95f1707d7f00c2d is the producer and must consume exactly source commit d79a0b1b6984dcdaf77d2b1fd2a99e93d8eb180a, path projects/gtm-revenue/research/20260807T183310Z_JOB_EMPLOYER_CLOSE_TARGET_CARD.md, Git blob 569b48f70af77708c4e77a8ffd865befe3420467, evidence digest a1a2c0dfeff699d218c67695b478b155ec7e667752e1b9aa38ef110e57c1ef74.
+    2. Produce at most one public-safe two-minute utility artifact for Close under projects/gtm-revenue/kits/close/ centered on the source card's AI Sales Agent Release Gate — Action × Eval × Cost Scorecard; do not broaden into a new target, queue, campaign, or implementation project.
+    3. The artifact must separate source-backed facts from hypotheses, avoid claims of Close incidents, failures, savings, compliance defects, or operator production scale without evidence, and include WHY_THIS_MAY_MATTER, HOW_TO_USE_IN_2_MINUTES, source links, assumptions, strongest falsifier, and an optional operator-reviewed no-send note.
+    4. No email, LinkedIn/DM, application submission, account creation, terms acceptance, spend, paid call, deployment, merge, external publication, private-data use, or autonomous negotiation is authorized.
+    5. The producer return must be immutable under projects/gtm-revenue/returns/, bind this work_item_id, claim path or digest, this acceptance SHA-256, target-card commit/path/blob/evidence digest, candidate path/blob, exact source URLs, no-send status, rollback/delete path, S04 verifier task 6a52861fbdb08191b9ef33a0b9c3c15c, S03 consumer task 6a539fc5130c81918c13624739fb2a60, expiry, and honest flaw.
+    6. S04 may return same-provider structural preflight only with binding weight 0; it cannot supply independent STOOD/FELL or ConsumerAck. S03 must not infer ConsumerAck from target-card next_consumer or producer-return consumer prose.
+    7. Claim expiry is 2026-08-07T23:08:08Z and source-card expiry remains 2026-08-14T18:33:10Z. Work after claim expiry requires a changed-source successor, not renewal.
+    8. Rollback is append-only supersession plus deletion of an unmerged candidate by its producer if needed; no history rewrite or permanent deletion is authorized.
+
+idempotency:
+  canonical_preimage: S08-JOB_EMPLOYER-CLOSE-20260807T183310Z|d79a0b1b6984dcdaf77d2b1fd2a99e93d8eb180a|projects/gtm-revenue/research/20260807T183310Z_JOB_EMPLOYER_CLOSE_TARGET_CARD.md|569b48f70af77708c4e77a8ffd865befe3420467|e3d4f7e008fedf9f2b42a5889273d045dc49b7384e63fea54dbe72e5bfd8fc74
+  sha256: a0ca3122b90096f83dedc4d2af02232db08d01e26f0c0236db6e78025a71e082
+
+rollback:
+  mode: APPEND_ONLY_SUPERSESSION
+  destructive_delete_authorized: false
+  history_rewrite_authorized: false
+
+effect_ceiling:
+  claim: T0_RESEARCH_PREP_NO_SEND
+  allowed: INTERNAL_GIT_CLAIM_AND_REQUIRED_SLACK_POINTER
+  forbidden: SEND_SPEND_DEPLOY_MERGE_EXTERNAL_PUBLICATION_ACCOUNT_OR_SECURITY_CHANGE_PERMANENT_DELETE
+
+honest_flaw: >-
+  The source card is explicitly NEW_TARGET_CARD, not literally tagged READY. Admission relies on the unexpired operator directive and the currently enabled S07 contract that defines the newest unconsumed S08 target card as its input. This claim does not prove independent verification, recipient demand, hiring fit, application readiness, production-scale operator experience, ConsumerAck, or any external outcome. Carrier-to-GitHub actor binding also remains unproven.
