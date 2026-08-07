@@ -1,0 +1,73 @@
+schema_id: hfo.gen133.s04.structural_preflight.v1
+result: REVISE
+terminal: false
+seat: S04
+carrier_task_id_expected: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_observed: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_match: true
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+candidate:
+  authoring_seat: S03
+  commit: 1b95082a0964b0aa1e19d2129e7c858a1bb4c843
+  path: state/coordination/receipts/chatgpt_runtime/seat-03/20260807T000855Z_X13_GCAL_SEARCH_PHASE3_RETURN_BINDINGS_REVISE.yaml
+  git_blob_sha1: d600257c311d37f6b7a9db580fdf9e3482762814
+  exact_utf8_bytes: 2875
+  sha256: 321f3a85e9384329a37d87332a0b9ca789b88d74dae5895ddd6587fd98b0d001
+  created_utc: 2026-08-07T00:08:55Z
+  route_expiry_utc: 2026-08-07T01:08:00Z
+  correlation_id: X13_GCAL_SEARCH_READONLY_012_PHASE3_20260806T234800Z
+source:
+  commit: 34ee7bc82b3844ae1e2923adc9829f619e047c92
+  path: state/coordination/experiments/cots_connector_x13/20260806T234800Z_GCAL_SEARCH_PHASE3_SYNTHETIC_EMPTY.md
+  git_blob_sha1_claimed: 0cbff37deddeef4871f85f1b2743b2c4247e45dc
+  git_blob_sha1_recomputed: 0cbff37deddeef4871f85f1b2743b2c4247e45dc
+  exact_utf8_bytes: 4949
+  sha256: 096abd183d6e5f05310fc91702b505e535899662a86bdf687eeee563c4717620
+  current_projection:
+    version: 147
+    blob_sha1: aca0fa8ed1a4240b8d17aae63b06336662680444
+    last_event_commit: 34ee7bc82b3844ae1e2923adc9829f619e047c92
+    last_event_blob_sha1: 0cbff37deddeef4871f85f1b2743b2c4247e45dc
+recomputation:
+  candidate_yaml_single_mapping: true
+  source_frontmatter_single_mapping: true
+  request_canonicalization: UTF8_JSON_SORTED_KEYS_COMPACT_SEPARATORS
+  request_canonical_bytes: 203
+  request_sha256_claimed: ae59cd708385e577b23c78865ae687ed8d0f9b08f52b7521f8c2826ab8a02abd
+  request_sha256_recomputed: ae59cd708385e577b23c78865ae687ed8d0f9b08f52b7521f8c2826ab8a02abd
+  normalized_empty_result_canonical_json: "[]"
+  normalized_empty_result_bytes: 2
+  normalized_result_sha256_claimed: 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
+  normalized_result_sha256_recomputed: 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
+checks:
+  freshness: PASS_LIVE_ROUTE_AT_SELECTION
+  authority: PASS_T0_INTERNAL_READONLY_VERIFICATION_ROUTING_ONLY
+  task_binding: PASS_EXACT_S04_TASK_ID
+  actor_carrier_separation: REVISE_GITHUB_ACTOR_IS_SHARED_TTAOGAMING_AND_NO_PROVIDER_WAKE_RECEIPT_BINDS_THIS_COMMIT_TO_S03
+  idempotency: REVISE_NO_NONCE_OR_SEMANTIC_IDEMPOTENCY_KEY_OR_DERIVATION
+  lease_expiry: PARTIAL_ROUTE_EXPIRY_PRESENT_BUT_NO_PRODUCER_RETURN_LEASE_OR_SOURCE_RETURN_EXPIRY
+  privacy: PARTIAL_SOURCE_PERSISTS_NO_EVENT_BODY_BUT_EFFECTIVE_PRINCIPAL_SCOPE_AND_EXPLICIT_PRIVACY_CLASSIFICATION_ARE_UNBOUND
+  rollback: PASS_APPEND_ONLY_SUPERSESSION_OR_CORRECTION_DO_NOT_MUTATE_SOURCE
+  verifier: REVISE_DISTINCT_RAW_CALENDAR_OR_EQUIVALENT_WITNESS_REQUIRED_BUT_NOT_EXECUTED
+  consumer: REVISE_OPERATIONAL_CONSUMER_NOT_ASSIGNED_AND_CONSUMER_ACK_NOT_OBSERVED
+  work_item_claim_acceptance: REVISE_WORKITEM_BINDING_CLAIM_DIGEST_ACCEPTANCE_DIGEST_AND_CANONICAL_PRODUCER_RETURN_DIGEST_ABSENT
+  consequence_ceiling: PASS_SOURCE_INTERPRETATION_LIMITS_EMPTY_SUCCESS_TO_ZERO_VISIBLE_MATCHES_NOT_CALENDAR_WIDE_ABSENCE
+strongest_fake_green_mutant:
+  mutant_id: X14_MUTANT_145_ce2bac257bf8
+  source_commit: 9770bd043198d1339cce43b8984bf0c09fec1211
+  mutation_class: TASK_ID_MISMATCH
+  canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_bytes: 245
+  canonical_overlay_sha256_claimed: ce2bac257bf8f076031117e06ca7633e2d76349a627a33fb2ad82f250711e794
+  canonical_overlay_sha256_recomputed: ce2bac257bf8f076031117e06ca7633e2d76349a627a33fb2ad82f250711e794
+  verdict: REVISE
+  rejection_reason: S15_EXPECTED_TASK_ID_IS_PRESERVED_BUT_OBSERVED_CARRIER_IS_REPLACED_WITH_X14_WITHOUT_A_PROVIDER_RECEIPT_BINDING_THE_SOURCE_WAKE_TO_X14
+controlling_reason: >-
+  Exact candidate and source bytes, source pointers, request digest, empty-result normalization, S04 task route, narrow authority, and append-only rollback all reproduce. Structural closure still fails because there is no WorkItem-bound claim/acceptance/producer-return digest chain, no reproducible idempotency binding, no provider receipt separating Git actor from scheduled carrier, no producer-return lease, no effective Calendar principal/scope binding, no executed distinct source-system verifier, and no named operational consumer or ConsumerAck.
+independence:
+  class: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  independent_verification_closed: false
+created_utc: 2026-08-07T00:11:06Z
