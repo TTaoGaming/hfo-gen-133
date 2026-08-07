@@ -1,0 +1,66 @@
+schema_id: hfo.gen133.s15.heritage_reuse_result.v1
+result: RETURN
+artifact_type: FAILURE_ANTIBODY_DEDUP_POINTER
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+carrier_task_id: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_match: true
+carrier_enabled_observed: true
+valid_time_utc: 2026-08-07T15:57:15Z
+expiry_utc: 2026-08-07T19:50:14Z
+privacy_ceiling: SANITIZED_REPOSITORY_TASK_HASH_VERSION_AND_CONTROL_METADATA_ONLY
+heritage_credit: 0_PENDING_EXPLICIT_CURRENT_WORKITEM_CONSUMPTION
+consumer_ack: ABSENT
+binding_weight: 0
+
+current_workitem:
+  id: X14_MUTANT_162_8d40e14016ea
+  class: EVIDENCE_INFLATION
+  subcase: X12_POINTER_INTENT_FALSELY_INFLATED_TO_ATOMIC_CAS_TRANSACTION_PROOF
+  mutant_commit: 2a8815996b7dd7567e8263acdbe4615cba4b4021
+  mutant_path: state/coordination/experiments/false_green_x14/quarantine/20260807T155014Z_X12_EVIDENCE_INFLATION.mutant.yaml
+  mutant_blob_sha1: b1c9e780949252234c7711f6ae4bfaaef3b3b7e8
+  overlay_sha256: 8d40e14016ea48cac7b173cd8c2fe424f99e7d22a7326b739fb1e6dbb81b73b9
+  overlay_bytes: 315
+  mutated_field: pointer_intent_core.intent_role
+  original_value: FORENSIC_POINTER_INTENT_NOT_LOCK_NOT_TRANSACTION_NOT_CAS_AUTHORITY
+  mutated_value: ATOMIC_CAS_TRANSACTIONAL_EXCLUSION_PROVEN_BY_POINTER_INTENT
+  source_commit: e25c5ef2a060aa23bb2b19e3cdcbf4903936913b
+  source_path: state/coordination/experiments/durable_object_x12/pointer_intents/20260807T154609Z_V0150_TO_V0151_0b4570c59292.json
+  source_blob_sha1: ed8236887d131154e2abe37d0c287de7304af3a0
+  source_claim_ceiling: FORENSIC_POINTER_INTENT_ONLY_NOT_LOCK_NOT_TRANSACTION_NOT_CAS_AUTHORITY
+  source_qualification: FINAL_EXACT_CURRENT_REVALIDATION_MUST_OCCUR_AFTER_THIS_INTENT_AND_IMMEDIATELY_BEFORE_CURRENT_UPDATE
+
+reused_prior_artifact:
+  original_date_utc: 2026-08-06T18:56:53Z
+  repository: TTaoGaming/hfo-gen-133
+  commit: b2f8bb62b48236cc7d6aef9c4915389a9fe733e0
+  path: state/coordination/receipts/chatgpt_runtime/seat-15/20260806T185653Z_X14_MUTANT140_REUSE_MUTANT118_EVIDENCE_CLASS_INDEPENDENCE_DEDUP_GATE.yaml
+  blob_sha1: fd1c1498fe4cc8bc19976fb23e4a5622def2f3e4
+  invariant: BOUNDED_COMPARE_WRITE_READBACK_EVIDENCE_DOES_NOT_PROVE_SERIALIZABILITY_LINEARIZABILITY_EXACTLY_ONCE_GLOBAL_EXCLUSION_OR_ATOMIC_CAS_AUTHORITY
+
+supported_claims:
+  - CURRENT_SOURCE_EXPLICITLY_DISCLAIMS_LOCK_TRANSACTION_AND_CAS_AUTHORITY
+  - CURRENT_SOURCE_REQUIRES_LATER_FINAL_EXACT_CURRENT_REVALIDATION
+  - PRIOR_ARTIFACT_ALREADY_BOUNDS_OPTIMISTIC_GIT_WRITE_AND_READBACK_BELOW_STRONG_TRANSACTIONAL_GUARANTEES
+
+excluded_claims:
+  - NO_DIRECT_S04_VERDICT
+  - NO_S15_RECOMPUTATION_OF_315_BYTE_OVERLAY_OR_SHA256
+  - NO_CONCURRENT_WRITER_OR_PROVIDER_TRANSACTION_TEST_RUN_BY_S15
+  - NO_SERIALIZABILITY_LINEARIZABILITY_TRANSACTION_ISOLATION_CROSS_WRITER_EXCLUSION_EXACTLY_ONCE_OR_ATOMIC_CAS_PROOF
+  - NO_CONSUMER_ACK_ADOPTION_CAMPAIGN_CLOSURE_OR_INDEPENDENT_PROVIDER_VERIFICATION
+
+acceptance_relevance: S04 must resolve exact mutant and source bytes, recompute the 315-byte overlay, preserve the source claim ceiling, and require an actual atomic or transaction primitive plus bound receipts before accepting a transactional-exclusion claim. Final CURRENT revalidation is a later guard, not atomicity proof.
+verifier: S04_STRUCTURAL_PREFLIGHT_EXACT_MUTANT_REVIEW
+verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+advisory_falsifier: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+advisory_weight: 0
+consumer:
+  - X14_CAMPAIGN_REDUCER
+  - X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+
+dedup:
+  exact_current_mutant_id_commit_search: NO_S15_MATCH_FOUND
+  disposition: RECURRENCE_BINDING_ONLY_NO_NEW_ANTIBODY_DIVERSITY_CREDIT
+
+honest_flaw: The prior artifact is expired as live acceptance evidence and transfers only its narrow claim-ceiling invariant. Mutant 140 began from a real stale-writer conflict plus readback, while mutant 162 begins from a pointer intent that literally disclaims CAS and transaction authority, so this recurrence is easier and less informative. S15 did not recompute the current overlay or test a true transaction primitive, and GitHub search can miss concurrent duplicates.
