@@ -2,19 +2,19 @@
 schema_id: hfo.gen133.x14.false_green_current.v1
 experiment_id: X14_FALSE_GREEN_MUTATION_001
 object_id: X14_FALSE_GREEN_CAMPAIGN_STATE
-version: 147
-expected_previous_version: 146
-previous_pointer_blob_sha: 7afe194f927026c2b5de4fe23e3c6a5577acc412
-accepted_wakes: 146
+version: 148
+expected_previous_version: 147
+previous_pointer_blob_sha: e0fa7559edf39def742cc3b19105e9f6b539f0f6
+accepted_wakes: 147
 campaign_ordinal: 37
-campaign_wake: 2
+campaign_wake: 3
 campaign_length: 4
-current_status: CAMPAIGN_37_WAKE_2_MUTANT_147_ROUTED_PENDING_VERDICTS
-current_mutation_class: STALE_SOURCE_DIGEST
-next_mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+current_status: CAMPAIGN_37_WAKE_3_MUTANT_148_ROUTED_PENDING_VERDICTS
+current_mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+next_mutation_class: FABRICATED_CONSUMER_ACK
 carrier_task_id: 6a513e4d9c4c81919db728f85db2dd79
 carrier_task_id_binding: NATIVE_AUTOMATIONS_LIST_EXACT_MATCH_ENABLED
-valid_time_utc: 2026-08-07T01:53:03Z
+valid_time_utc: 2026-08-07T02:53:49Z
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 canonical_repository: TTaoGaming/hfo-gen-133
 canonical_branch: agent/gen133-bootstrap-20260730
@@ -24,62 +24,64 @@ sealed: false
 ---
 
 source_candidate:
-  selection_cutoff_observed_utc: 2026-08-07T01:52:31Z
-  commit: 33c69ecc797eae0f18b0954903cce055e307b3be
-  path: state/coordination/experiments/durable_object_x12/slack_receipts/20260807T014534Z_ADVANCE_DECISION_9b257f120b18.json
-  git_blob_sha1: 4c326a478d60372ab0b8bf24bab0f0e0b36832c0
+  selection_cutoff_observed_utc: 2026-08-07T02:52:00Z
+  commit: dbb5e49410d3fcfe60f09755c64a7a42727868a3
+  path: state/coordination/experiments/durable_object_x12/pointer_verifications/20260807T024542Z_V0139_c0e1e6a9c02d.json
+  git_blob_sha1: 43b462f4f3adf4cd8014432947bea04a3fd7f0e0
   source_digest_kind: GIT_BLOB_SHA1
-  source_digest: 4c326a478d60372ab0b8bf24bab0f0e0b36832c0
+  source_digest: 43b462f4f3adf4cd8014432947bea04a3fd7f0e0
   authoring_seat: X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
   source_task_id: 6a506f83df208191815dd17a8fd5baa3
-  source_schema_id: hfo.gen133.x12.slack_receipt.v1
-  source_campaign_id: X12_RECOVERY_AFTER_MISSING_SLACK_C32
-  source_wake: C32_WAKE_4_OF_4
-  source_delivery_kind: VERSION_ADVANCE_AND_CAMPAIGN_DECISION
-  source_campaign_decision: REVISE
-  source_receipt_digest_sha256: f297e0f00f722673ee0d9119a81ddcf91d8c0e78c2f5ecfd2cef88a444c1b5e3
-  source_current_commit_sha: a52ba034fbe7aadb90b300dfb3fb16a62d446612
-  source_current_blob_sha: 89404307229e0ac654636a98159403f16882e3c6
-  source_verification_commit_sha: 6eb42469d0cfba5a27ac595ca7ba11431c7f570e
-  source_verification_blob_sha: 3b6c3ae26113b7d38f727a10ac15010f3c352615
-  source_verification_digest_sha256: 2e9715cab8926aae1876c9d5aae40f81134ad1e2f37ac2f8f7e2f3d0674fc14c
+  source_schema_id: hfo.gen133.x12.pointer_verification.v1
+  source_campaign_id: X12_CARRIER_VARIANCE_C33
+  source_wake: C33_WAKE_1_OF_4
+  source_object_id: HFO_X12_WORKFLOW_OBJECT_001
+  source_expected_version: 138
+  source_prior_version: 138
+  source_next_version: 139
+  source_idempotency_key: c0e1e6a9c02d09543ab2b9a21753a531434957018685e4a4450fcbd2179f447d
+  source_result: PASS
+  source_verification_digest_sha256: ce4a91d95d367db2bd60d2012b78d818a654820f371f8a6428e9753ee7968067
+  source_current_commit_sha: bc754c8ad88b595d0e25dc52c78729b949a1c52a
+  source_current_blob_sha: 26cd132859400ff780228a0a9737b79aca0bfd1e
   source_consumer: Reginleif/Olrun
   source_verifier: S04_WEIGHT_0_THEN_DISTINCT_SIGRUN_P4
-  source_expiry_utc: 2026-08-07T05:45:34Z
-  source_atomicity_limit: SLACK_DELIVERY_OCCURRED_AFTER_VERIFIED_GIT_STATE_ADVANCE_AS_A_SEPARATE_EFFECT;GIT_AND_SLACK_HAVE_NO_SHARED_TRANSACTION_OR_EXACTLY_ONCE_DELIVERY
+  source_expiry_utc: 2026-08-07T06:45:42Z
+  source_atomicity_limit: THE_CURRENT_UPDATE_IS_ONE_FILE_LOCAL_CONTENTS_API_COMMIT_GATED_BY_PRIOR_BLOB_SHA;CLAIM_EVENT_CANDIDATE_INTENT_VERIFICATION_SLACK_AND_RECEIPT_ARE_SEPARATE_COMMITS_OR_EXTERNAL_EFFECTS;NO_CROSS_FILE_TRANSACTION_OR_DATABASE_GUARANTEE
   prior_x14_mutation_at_source_digest_before_write: false
 
 quarantined_mutant:
-  mutant_id: X14_MUTANT_147_c870d252e06a
-  mutation_class: STALE_SOURCE_DIGEST
-  mutation_subcase: X12_C32_WAKE4_SLACK_RECEIPT_FALSELY_BOUND_TO_C32_WAKE3_PREDECESSOR_GIT_BLOB
-  commit: aab9bc80222b24f518a1dfcf185e920e122cfca6
-  path: state/coordination/experiments/false_green_x14/quarantine/20260807T015303Z_X12_STALE_SOURCE_DIGEST.mutant.yaml
-  git_blob_sha1: d419da22be24197b62acb0f0f8d8d59733e53e01
+  mutant_id: X14_MUTANT_148_14abdabadc9c
+  mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+  mutation_subcase: X12_C33_WAKE1_VERIFICATION_FALSELY_REUSES_C32_WAKE4_STATE_BOUND_IDEMPOTENCY_KEY
+  commit: b53d31a0df462d8ac2d3baa4afdc17376e1e2756
+  path: state/coordination/experiments/false_green_x14/quarantine/20260807T025349Z_X12_DUPLICATE_IDEMPOTENCY_VERSION.mutant.yaml
+  git_blob_sha1: 55a8920ee46298bc874d201d5884347216f19f8c
   canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
-  canonical_mutation_digest_sha256: c870d252e06a87381db22ce6b0bd22b9ed8b109b39c57d669e3e6c3089967725
-  canonical_byte_count: 268
-  mutated_field: source_binding.git_blob_sha1
-  original_value: 4c326a478d60372ab0b8bf24bab0f0e0b36832c0
-  mutated_value: 6d283342c5b180095fffd52159f4e346218b01e6
-  stale_predecessor_commit: c8bb245a84ed83a2201e0b3b623f92257c8f7920
-  stale_predecessor_wake: C32_WAKE_3_OF_4
+  canonical_mutation_digest_sha256: 14abdabadc9c8d3ccbb3108f024d6200fc7038ad45b3cab9bbbb12673e6816b7
+  canonical_byte_count: 331
+  mutated_field: verification_core.idempotency_key
+  original_value: c0e1e6a9c02d09543ab2b9a21753a531434957018685e4a4450fcbd2179f447d
+  mutated_value: 9b257f120b18d3d922ab03e8c39d12163e776290b1aeb189bdc36b4d543271eb
+  duplicate_claim_commit: 3521ce785a106d1f6a3a814712f2ceec6db1f73c
+  duplicate_claim_blob_sha: 7ee15d22690b49674e191b08207d5fd8b98f8f06
+  duplicate_claim_transition: V137_TO_V138_C32_WAKE4
   expected_verdict: REVISE
-  expected_rejection_reason: THE_INJECTED_GIT_BLOB_SHA_AUTHENTICATES_C32_WAKE3_PREDECESSOR_BYTES_NOT_THE_SELECTED_WAKE4_ADVANCE_AND_CAMPAIGN_DECISION_RECEIPT;A_REAL_RELATED_STALE_DIGEST_CANNOT_BIND_WAKE4_CLAIMS
-  named_gate: S04_STALE_SOURCE_DIGEST_EXACT_SOURCE_COMMIT_PATH_CURRENT_BLOB_PREDECESSOR_BLOB_WAKE_CAMPAIGN_RECEIPT_DIGEST_VERIFICATION_BINDINGS_CANONICAL_BYTES_EXPIRY_VERIFIER_CONSUMER_AND_CLAIM_CEILING_GATE
-  expires_utc: 2026-08-07T05:45:34Z
+  expected_rejection_reason: THE_INJECTED_IDEMPOTENCY_KEY_IS_ALREADY_BOUND_BY_A_CREATE_ONLY_C32_WAKE4_CLAIM_TO_V137_TO_V138;REUSING_IT_FOR_C33_WAKE1_V138_TO_V139_COLLIDES_WAKE_NONCE_CAMPAIGN_AND_VERSION_BINDINGS_AND_MUST_NOT_AUTHORIZE_A_NEW_PASS_OR_ADVANCE
+  named_gate: S04_DUPLICATE_IDEMPOTENCY_VERSION_EXACT_SOURCE_OBJECT_ID_EXPECTED_PRIOR_NEXT_VERSION_NONCE_IDEMPOTENCY_KEY_CREATE_ONLY_CLAIM_PATH_PRIOR_KEY_OCCUPANCY_WAKE_CAMPAIGN_SOURCE_DIGEST_EXPIRY_VERIFIER_CONSUMER_AND_CLAIM_CEILING_GATE
+  expires_utc: 2026-08-07T06:45:42Z
   status: QUARANTINED_ROUTED_PENDING_VERDICTS
   accepted_wake_credit: true
 
 prior_verdict_observed:
-  mutant_146:
-    mutant_id: X14_MUTANT_146_430b12fb9ac3
-    mutation_class: ACTOR_CARRIER_CONFLATION
+  mutant_147:
+    mutant_id: X14_MUTANT_147_c870d252e06a
+    mutation_class: STALE_SOURCE_DIGEST
     direct_s04_route_result: NOT_OBSERVED
     embedded_s04_exact_rejection_result: NOT_OBSERVED
     distinct_s09_result: RETIRE
-    distinct_s09_commit: ef957982e872d0a8170b3f2b5d7941bfa1fd74e3
-    distinct_s09_path: state/coordination/votes/20260807T013340Z_S09_X14_MUTANT146_ACTOR_CARRIER_CONFLATION_RETIRE.vote.yaml
+    distinct_s09_commit: 307336fd880e32ff27642c50c33fa72605f4a92e
+    distinct_s09_path: state/coordination/votes/20260807T023604Z_S09_X14_MUTANT147_STALE_SOURCE_DIGEST_RETIRE.vote.yaml
     evidence_class: SAME_PROVIDER_NONBINDING
     binding_weight: 0
 
@@ -90,20 +92,21 @@ routing:
   distinct_verifier_task_id: 6a539fb148bc8191a30b6009dbf22438
   distinct_verifier_route_status: AVAILABLE_AS_DISTINCT_SEAT_SAME_PROVIDER_NONBINDING_VIA_SLACK
   consumer: X14_CAMPAIGN_REDUCER_AND_X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_REDUCER
-  current_verdict_status: MUTANT_147_DIRECT_ROUTE_PENDING
+  current_verdict_status: MUTANT_148_DIRECT_ROUTE_PENDING
   direct_candidate_priority_required: true
 
 active_campaign:
   campaign_ordinal: 37
-  accepted_wakes: 2
+  accepted_wakes: 3
   intended_mutants:
     - X14_MUTANT_146_430b12fb9ac3
     - X14_MUTANT_147_c870d252e06a
-  current_mutation_class: STALE_SOURCE_DIGEST
+    - X14_MUTANT_148_14abdabadc9c
+  current_mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
   direct_s04_catches_observed: 0
   embedded_s04_exact_rejections_observed: 0
-  distinct_s09_rejections_or_retirements_observed: 1
-  pending: X14_MUTANT_147_c870d252e06a
+  distinct_s09_rejections_or_retirements_observed: 2
+  pending: X14_MUTANT_148_14abdabadc9c
   decision: NONE
   status: OPEN
   decision_due: false
@@ -130,10 +133,10 @@ recent_campaign_decisions:
 
 next_wake:
   campaign_ordinal: 37
-  next_wake: 3
-  next_mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
-  campaign_decision_due_after_write: false
+  next_wake: 4
+  next_mutation_class: FABRICATED_CONSUMER_ACK
+  campaign_decision_due_after_write: true
   status: READY
 
 honest_flaw: >-
-  Mutant 147 is deliberately catchable because the selected wake-4 commit/path resolve directly to blob 4c326a478d60372ab0b8bf24bab0f0e0b36832c0 while the injected 6d283342c5b180095fffd52159f4e346218b01e6 is the immediately preceding wake-3 receipt from the same X12 campaign. This is better than an arbitrary wrong digest because the stale digest is authentic and closely related, but it still does not test a stale digest hidden behind a mutable pointer, an older byte-identical file, algorithm confusion, truncated-hash ambiguity, or a current byte digest paired with expired principal/validity evidence. Source-digest dedup and newest-candidate discovery remain best-effort under GitHub indexing/concurrency. Mutant 146 has an S09 RETIRE advisory at same-provider nonbinding weight zero and no dedicated S04 direct verdict observed. S04 and S09 remain same-provider seats and cannot close independent quorum. No source, task, schedule, Slack history, consumer, verifier, account, deployment, merge, publication, spend, deletion, or external provider state was modified.
+  Mutant 148 is deliberately catchable because the injected value is the exact filename/key of an existing create-only X12 claim for C32 wake 4 and v137-to-v138, while the selected C33 wake-1 verification preserves a different nonce, campaign, wake and v138-to-v139 transition. It does not test byte-identical legitimate retries, a fresh key paired with a duplicated version, cross-object key namespace collision, truncated-key ambiguity, lease-expired replay, or duplicate semantics hidden by a changed canonicalization rule. Source-digest dedup and newest-candidate discovery remain best-effort under GitHub indexing/concurrency. Mutant 147 has an S09 RETIRE advisory at same-provider nonbinding weight zero and no dedicated S04 direct verdict observed. S04 and S09 remain same-provider seats and cannot close independent quorum. No source, task, schedule, Slack history, consumer, verifier, account, deployment, merge, publication, spend, deletion, or external provider state was modified.
