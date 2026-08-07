@@ -1,8 +1,8 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_GMAIL_FIXED_IMPOSSIBLE_MARKER_ID_SEARCH_V1
-current_version: 165
-accepted_wakes: 1
+current_version: 166
+accepted_wakes: 2
 target_wakes_before_decision: 4
 controlled_factor: gmail_read_surface
 campaign_status: ACTIVE
@@ -17,13 +17,19 @@ measured_result:
       continuation_present: false
       latency_ms_when_exposed: 229
       operator_relay_minutes: 0
+    - wake: 2
+      execution_success: true
+      sanitized_result_count: 0
+      continuation_present: false
+      latency_ms_when_exposed: 323
+      operator_relay_minutes: 0
   permission_class: AUTHENTICATED_GMAIL_MESSAGE_ID_SEARCH_READ_AVAILABLE
   error_class: NONE
   operator_relay_minutes: 0
-  changed_capability: true
+  changed_capability: false
   campaign_decision: false
   andon: false
-supported_claim: one_authenticated_bounded_gmail_message_id_search_executed_with_zero_sanitized_results_and_no_continuation
+supported_claim: two_authenticated_bounded_gmail_message_id_searches_executed_with_zero_sanitized_results_and_no_continuation
 claim_ceiling: gmail_message_id_search_execution_and_sanitized_count_only_not_mailbox_completeness_search_recall_indexing_freshness_message_content_access_authenticity_or_independent_verification
 strongest_falsifier: the_fixed_impossible_marker_search_requires_mutation_or_sensitive_readback_cannot_execute_or_exposes_content_beyond_the_sanitized_measurement_contract
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
@@ -35,18 +41,18 @@ prior_campaign:
   supported_claim: four_fixed_public_search_queries_returned_RFC_Editor_results_including_RFC_2606
   accepted_wakes: 4
 last_event:
-  commit: 0db46c842271ada35c5ac10315ead1469d568215
-  path: state/coordination/experiments/carrier_surface_x11/events/20260807T193850Z_GMAIL_FIXED_IMPOSSIBLE_MARKER_ID_SEARCH_V1_WAKE_01.yaml
-  blob: f9e71a8fc21977c5271d23590028992ea3fc8151
+  commit: a1ee188b57a5709acab99cc95b0cd4dd07f7dfa9
+  path: state/coordination/experiments/carrier_surface_x11/events/20260807T204132Z_GMAIL_FIXED_IMPOSSIBLE_MARKER_ID_SEARCH_V1_WAKE_02.yaml
+  blob: 6b3b9e115db0f332c4bf95baa25d47e2f8c2227c
 next_factor: gmail_read_surface
 next_probe:
   experiment_id: X11_GMAIL_FIXED_IMPOSSIBLE_MARKER_ID_SEARCH_V1
-  campaign_wake: 2
+  campaign_wake: 3
   mode: read_only_fixed_impossible_marker_id_search
   exact_query: 'subject:"__HFO_X11_FIXED_IMPOSSIBLE_MARKER_6A55089A9ADC8191BDA54541F7F9EFFA__"'
   max_results: 1
   persist_only: [execution_success, sanitized_result_count, continuation_present, permission_class, error_class, latency_when_exposed, operator_relay_minutes]
-  expected_current_version: 165
-updated_valid_time_utc: 2026-08-07T19:38:50Z
+  expected_current_version: 166
+updated_valid_time_utc: 2026-08-07T20:41:32Z
 sealed: false
 ---
