@@ -1,0 +1,61 @@
+schema: hfo.gen133.s05.operator_relief_receipt.v0_1
+result: DEADLINE_BOUND
+seat: S05
+task_id: 6a55c182078c8191b89f2dd15f5f640c
+valid_time: '2026-08-07T17:16:11-06:00'
+transaction_time: git_commit_metadata
+canonical_repo: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+wip: 1
+
+active_item:
+  id: NORTHWESTERN_SECURE_SERVICE_MESSAGE
+  state: DEADLINE_BOUND_SCOPE_UNVERIFIED
+  sanitized_fact: >-
+    A newly forwarded Northwestern Mutual secure-service notice for Johanna
+    requires secure-reader access before 2026-08-21 16:04 CDT. The visible
+    notice and encrypted wrapper do not identify the exact policy/form and do
+    not establish that this is the separate PFA second-policy item.
+
+source_pointers:
+  gmail_message_id: 19fde29ef89a0392
+  gmail_body_copied_to_git: false
+  secure_url_copied_to_git: false
+  service_request_identifier_copied_to_git: false
+  calendar_event_id: j6fvm829fl37oi5th5vq250sng
+
+bounded_transition:
+  type: BIND_DEADLINE
+  calendar_start: '2026-08-20T10:00:00-06:00'
+  calendar_end: '2026-08-20T10:15:00-06:00'
+  calendar_visibility: private
+  calendar_transparency: transparent
+  reminders_minutes_before: [1440, 60]
+  done_gate: >-
+    Open the original source-system message/secure reader and bind the exact
+    policy/form/service-request scope to an authoritative source, or record
+    the exact blocker, owner, and next step.
+
+priority:
+  p0: CHATGPT_PRO_CONTINUITY_BEFORE_2026-08-09
+  p1:
+    - GOOGLE_WINDOWS_SIGNIN_EXPECTEDNESS
+    - NORTHWESTERN_SECURE_SERVICE_MESSAGE_SCOPE_BEFORE_2026-08-21
+
+claim_ceiling:
+  - The source notice proves a secure service message exists and gives an access cutoff.
+  - It does not expose the protected message body, exact policy, form, or disposition.
+  - It does not prove equivalence with the PFA second-policy PandaDoc obligation.
+  - No signing, submission, reply, or policy/account change was performed.
+
+operator_minutes_removed_estimate: 5
+next_consumer: operator -> Var insurance reconciliation
+
+forbidden_effects_performed: []
+privacy:
+  private_bodies_externalized: false
+  sensitive_identifiers_externalized: false
+honest_flaw: >-
+  The secure message itself remains unread because its protected contents are
+  available only through Northwestern Mutual's secure reader; scope therefore
+  remains unverified until source-system readback by an authorized human.
