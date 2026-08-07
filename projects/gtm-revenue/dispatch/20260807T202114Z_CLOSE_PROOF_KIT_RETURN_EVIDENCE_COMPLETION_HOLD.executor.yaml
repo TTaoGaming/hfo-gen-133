@@ -1,0 +1,184 @@
+---
+schema_id: hfo.gen133.s06_executor_packet.v1
+result: HOLD
+seat: S06_CODE_WORK_PACKET_COMPILER_CODEX_BRIDGE
+carrier_task_id_expected: 6a57972b9df081918680ce67c4ecb197
+carrier_task_id_observed: 6a57972b9df081918680ce67c4ecb197
+carrier_task_id_match: true
+valid_time_utc: 2026-08-07T20:21:14Z
+wip: 1
+repository: TTaoGaming/hfo-gen-133
+branch: agent/gen133-bootstrap-20260730
+work_item_id: S08-JOB_EMPLOYER-CLOSE-20260807T183310Z
+claim_commit_sha: 65e6f13e2263bace66a987891de88ebfa7445922
+claim_blob_sha: 03e18f7d6fe77bdb264cb75821ef8b4ed998820e
+claim_path: projects/gtm-revenue/claims/20260807T190808Z_CLOSE_PROOF_KIT_ADMISSION.claim.yaml
+claim_acceptance_sha256: e3d4f7e008fedf9f2b42a5889273d045dc49b7384e63fea54dbe72e5bfd8fc74
+claim_expiry_utc: 2026-08-07T23:08:08Z
+base_sha: fbfc88ca613bd4b9c2dad2b7c1761b4c520a3574
+base_role: EXISTING_CANDIDATE_CREATION_COMMIT_READ_ONLY
+producer_expected:
+  seat: S07_GTM_PROOF_KIT_BUILDER
+  task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+verifier:
+  seat: S04_HRIST_STRUCTURAL_PREFLIGHT
+  task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  binding_weight: 0
+consumer:
+  seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  task_id: 6a539fc5130c81918c13624739fb2a60
+route_status: NOT_DISPATCHED_NO_DIRECT_CODEX_CLAUDE_OR_HOST_INGRESS_EXPOSED
+---
+
+goal: >-
+  Perform repository inspection only on the already-created Close proof-kit candidate and append one successor producer return that supplies the execution evidence missing from the current S07 return. Do not alter the candidate, claim, source card, acceptance text, task configuration, or any external system. The successor return must report the actual runtime/model identity if exposed, canonical branch and observed HEAD SHA, exact changed paths, every command actually run, each exit code, bounded stdout/stderr summaries, blockers, rollback, effect ceiling, expiry, and honest flaw. If runtime/model identity or command execution cannot be observed directly, return HOLD rather than inventing them.
+
+allowed_paths:
+  read_only:
+    - projects/gtm-revenue/claims/20260807T190808Z_CLOSE_PROOF_KIT_ADMISSION.claim.yaml
+    - projects/gtm-revenue/research/20260807T183310Z_JOB_EMPLOYER_CLOSE_TARGET_CARD.md
+    - projects/gtm-revenue/kits/close/AI_SALES_AGENT_RELEASE_GATE_ACTION_EVAL_COST.md
+    - projects/gtm-revenue/returns/20260807T192514Z_CLOSE_PROOF_KIT_RETURN.md
+  write_only:
+    - projects/gtm-revenue/returns/20260807T*_CLOSE_PROOF_KIT_RETURN_EVIDENCE_SUCCESSOR.md
+forbidden_paths:
+  - projects/gtm-revenue/claims/**
+  - projects/gtm-revenue/research/**
+  - projects/gtm-revenue/kits/**
+  - state/**
+  - .github/**
+  - '** except the one successor return path above'
+
+current_red_evidence:
+  existing_return_commit_sha: b183f5c04ed80c44365ee0a0d60a468a824dccab
+  existing_return_blob_sha: 493e0b8cdff483cdc65031d1be4d9a74021b6d18
+  existing_return_path: projects/gtm-revenue/returns/20260807T192514Z_CLOSE_PROOF_KIT_RETURN.md
+  candidate_creation_commit_sha: fbfc88ca613bd4b9c2dad2b7c1761b4c520a3574
+  candidate_blob_sha: bed6f7579cf44abdbae4f97a9a52bd56c0330cdf
+  source_card_blob_sha: 569b48f70af77708c4e77a8ffd865befe3420467
+  missing_from_existing_return:
+    - actual runtime identity
+    - actual model identity
+    - canonical branch observed by producer runtime
+    - observed runtime HEAD SHA
+    - exact commands actually executed
+    - per-command exit codes
+    - bounded stdout/stderr or equivalent command outputs
+    - explicit blockers field
+  note: >-
+    The existing return does bind WorkItem, claim blob, acceptance digest, candidate path/blob, source URLs, rollback, verifier, consumer, expiry, no-send status, and honest flaw. S03 has routed it for structural review, but S06's stricter direct-return consumption contract is not satisfied by those bindings alone.
+
+required_commands:
+  - id: C01
+    command: 'git branch --show-current'
+    expected: 'agent/gen133-bootstrap-20260730'
+  - id: C02
+    command: 'git rev-parse HEAD'
+    expected: 'RECORD_EXACT_SHA_NO_PREDECLARED_VALUE'
+  - id: C03
+    command: 'git cat-file -e 65e6f13e2263bace66a987891de88ebfa7445922^{commit}'
+    expected_exit_code: 0
+  - id: C04
+    command: 'git cat-file -e fbfc88ca613bd4b9c2dad2b7c1761b4c520a3574^{commit}'
+    expected_exit_code: 0
+  - id: C05
+    command: 'git hash-object projects/gtm-revenue/claims/20260807T190808Z_CLOSE_PROOF_KIT_ADMISSION.claim.yaml'
+    expected: '03e18f7d6fe77bdb264cb75821ef8b4ed998820e'
+  - id: C06
+    command: 'git hash-object projects/gtm-revenue/research/20260807T183310Z_JOB_EMPLOYER_CLOSE_TARGET_CARD.md'
+    expected: '569b48f70af77708c4e77a8ffd865befe3420467'
+  - id: C07
+    command: 'git hash-object projects/gtm-revenue/kits/close/AI_SALES_AGENT_RELEASE_GATE_ACTION_EVAL_COST.md'
+    expected: 'bed6f7579cf44abdbae4f97a9a52bd56c0330cdf'
+  - id: C08
+    command: 'git hash-object projects/gtm-revenue/returns/20260807T192514Z_CLOSE_PROOF_KIT_RETURN.md'
+    expected: '493e0b8cdff483cdc65031d1be4d9a74021b6d18'
+  - id: C09
+    command: 'git diff-tree --no-commit-id --name-only -r fbfc88ca613bd4b9c2dad2b7c1761b4c520a3574'
+    expected_exact_lines:
+      - projects/gtm-revenue/kits/close/AI_SALES_AGENT_RELEASE_GATE_ACTION_EVAL_COST.md
+  - id: C10
+    command: "python3 - <<'PY'\nfrom pathlib import Path\np=Path('projects/gtm-revenue/kits/close/AI_SALES_AGENT_RELEASE_GATE_ACTION_EVAL_COST.md')\ns=p.read_text(encoding='utf-8')\nrequired=['WHY_THIS_MAY_MATTER','HOW_TO_USE_IN_2_MINUTES','STRONGEST FALSIFIER','OPTIONAL OPERATOR-REVIEWED OUTREACH NOTE — NO SEND','https://jobs.ashbyhq.com/Close/29f5c695-8282-4407-ac09-2b61b9f2fc1e','https://close.com/blog/introducing-chloe','https://close.com/changelog','https://close.com/blog/close-claude-crm-integration','world_effect_ceiling: T0_PREP_NO_SEND']\nmissing=[x for x in required if x not in s]\nprint({'missing':missing,'bytes':len(s.encode('utf-8'))})\nraise SystemExit(1 if missing else 0)\nPY"
+    expected_exit_code: 0
+  - id: C11
+    command: 'git status --short'
+    expected_before_successor_write: 'CLEAN_OR_ONLY_PREEXISTING_UNRELATED_CHANGES_EXPLICITLY_REPORTED_AS_BLOCKER'
+  - id: C12
+    command: 'git diff --name-only -- projects/gtm-revenue/kits/close/AI_SALES_AGENT_RELEASE_GATE_ACTION_EVAL_COST.md'
+    expected: 'EMPTY'
+
+acceptance_tests:
+  - id: A01
+    test: carrier task ID self-probe equals 6a57972b9df081918680ce67c4ecb197 for S06 packet provenance; producer successor must separately name its own S07 task/runtime identity.
+  - id: A02
+    test: C01 equals the canonical branch exactly and C02 records a concrete observed HEAD SHA.
+  - id: A03
+    test: C03 through C08 all succeed and all four Git blob hashes match the frozen claim/source/candidate/current-return blobs above.
+  - id: A04
+    test: C09 reports exactly one path, the frozen Close candidate path, for the candidate-creation commit.
+  - id: A05
+    test: C10 exits 0 with missing=[]; no source-backed-fact versus hypothesis boundary is silently removed.
+  - id: A06
+    test: C11/C12 prove the frozen candidate was not modified by this evidence-completion run; unrelated preexisting dirty state must be named as a blocker, not overwritten.
+  - id: A07
+    test: successor producer return names actual runtime, actual model when exposed, branch, observed HEAD SHA, exact changed paths, exact commands actually run, exit codes, bounded outputs, blockers, rollback, effect ceiling, expiry, and honest flaw.
+  - id: A08
+    test: the only write is one new immutable successor return under projects/gtm-revenue/returns/; no candidate/source/claim/task/external mutation occurs.
+  - id: A09
+    test: successor return explicitly states whether every acceptance test STOOD or FELL; it must not manufacture independent verification or ConsumerAck.
+
+required_successor_return_fields:
+  - producer_runtime
+  - producer_model
+  - producer_task_id
+  - branch
+  - observed_head_sha
+  - changed_paths
+  - commands
+  - exit_codes
+  - outputs
+  - blockers
+  - rollback
+  - effect_ceiling
+  - expiry_utc
+  - honest_flaw
+
+effect_ceiling:
+  class: T0_REPOSITORY_INSPECTION_AND_INTERNAL_RETURN_ONLY
+  allowed:
+    - read repository bytes
+    - execute read-only repository inspection commands
+    - create one immutable successor return inside allowed write path
+  forbidden:
+    - candidate modification
+    - source or claim modification
+    - task or schedule mutation
+    - push to another branch
+    - merge
+    - deploy
+    - external publication
+    - email or DM send
+    - application submission
+    - spend or paid provider call
+    - account or security change
+    - destructive Git operation
+
+time_budget_ceiling:
+  wall_clock_minutes: 20
+  hard_stop_utc: 2026-08-07T23:08:08Z
+  rule: STOP_BEFORE_CLAIM_EXPIRY
+budget_ceiling:
+  usd: 0
+  paid_provider_calls: 0
+
+rollback:
+  mode: APPEND_ONLY_SUPERSESSION
+  candidate_rollback: NONE_EXPECTED_CANDIDATE_READ_ONLY
+  successor_return_if_wrong: append a superseding return; do not rewrite history
+  destructive_git: FORBIDDEN
+
+strongest_falsifier: >-
+  Any exact inspection showing a branch mismatch; claim/source/candidate/current-return blob mismatch; unexpected path in the candidate creation commit; candidate working-tree modification; missing required artifact section/source URL; inability to identify the runtime/model honestly; or inability to execute and capture the required commands with exit codes. Any one of these forces HOLD/FELL and forbids a conforming producer-return claim.
+
+honest_flaw: >-
+  This packet can specify a reproducible evidence-completion procedure but cannot execute it because this S06 carrier exposes GitHub, Slack, and scheduler inventory surfaces only; no direct Codex, Claude, or host executor ingress is available in this wake. A Git/Slack route would not constitute execution. The original S07 return may still be perfectly useful as a GTM artifact return, but it does not satisfy S06's stricter direct-producer-return schema because runtime/model/commands/exit codes/outputs/blockers are absent.
