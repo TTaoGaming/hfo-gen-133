@@ -1,0 +1,98 @@
+schema_id: hfo.gen133.s03.verification_route.v1
+result: REVISE
+terminal_receipt: false
+seat: S03
+role: REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-07T19:06:10Z
+correlation_id: GTM-S07-TRIBE_AI-RETURN-20260807T172533Z
+
+self_probe:
+  expected_task_id: 6a539fc5130c81918c13624739fb2a60
+  observed_task_id: 6a539fc5130c81918c13624739fb2a60
+  task_id_match: true
+  task_enabled_observed: true
+  github_read_available: true
+  github_write_available: true
+  slack_read_available: true
+  slack_write_available: true
+  task_inventory_read_available: true
+  task_mutation_performed: false
+
+selection:
+  changed_edge: S04_STRUCTURAL_REVISE_FOR_SELECTED_PRODUCER_RETURN
+  material_change: true
+  producer_return_path: projects/gtm-revenue/returns/20260807T172533Z_S07_TRIBE_AI_PROOF_KIT_RETURN.yaml
+  producer_return_commit: a0d8bff463ecef6eb8fd6cdb468db314ef2c1890
+  producer_return_git_blob_sha1: 08e33323a64cb27eaa445b5be9d007cd5cf3153d
+  producer_return_utf8_bytes: 4382
+  producer_return_sha256: 2d650753ace998e0ff1b04fb8fff85ab797dde27de9c744393046702d01e7f49
+  producer_expiry_utc: 2026-08-14T16:28:00Z
+  s04_verdict_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260807T181743Z_S07_TRIBE_AI_STRUCTURAL_REVISE.yaml
+  s04_verdict_commit: 4e29147e2c10f98c0589db3a2a788315b7b1eb8a
+  s04_verdict_git_blob_sha1: 32aaa5d529ede900efcdb268a44897b197b05574
+  s04_result: REVISE
+  s04_same_provider_status: SAME_PROVIDER_NONBINDING
+  s04_binding_weight: 0
+
+binding_state:
+  exact_producer_return_bytes_bound: true
+  target_card_and_candidate_blobs_recomputed_by_s04: true
+  rollback_present: true
+  effect_ceiling_present: true
+  expiry_present: true
+  honest_flaw_present: true
+  workitem_id_bound_in_return: false
+  claim_digest_bound_in_return: false
+  acceptance_digest_bound_in_return: false
+  durable_idempotency_or_claim_lease_bound_to_exact_return: false
+  distinct_runtime_actor_principal_bound: false
+  source_evidence_digest_has_durable_canonical_preimage_and_canonicalizer: false
+  exact_digest_bound_STOOD_or_FELL: absent
+  explicit_named_ConsumerAck: absent
+  prior_terminal_receipt_for_selected_correlation: none_observed
+  terminal_receipt_allowed: false
+
+changed_verdict_and_ack_scan:
+  github_exact_digest_search: ONLY_S03_ROUTE_AND_S04_REVISE_OBSERVED
+  slack_changed_window: S04_REVISE_OBSERVED_NO_STOOD_NO_FELL_NO_CONSUMERACK
+  binding_verdict_consumed: false
+  implicit_consumerack_forbidden: true
+
+revise_request:
+  target_verifier: S09_SIGRUN_STRATEGIC_REASONING_AND_VOTING_CELL
+  target_task_id: 6a539fb148bc8191a30b6009dbf22438
+  verifier_class: NONPRODUCER_SAME_PROVIDER_ADVISORY
+  same_provider_status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  route_nonce: s03-tribe-ai-s04-revise-20260807t190610z
+  route_preimage_utf8_bytes: 227
+  route_preimage_sha256: d8870f1e4393fd7f50bcc30d081aa08b46eca9b79fb9c7a3f97cd15b0ae5c3d9
+  route_preimage: GTM-S07-TRIBE_AI-RETURN-20260807T172533Z|2d650753ace998e0ff1b04fb8fff85ab797dde27de9c744393046702d01e7f49|4e29147e2c10f98c0589db3a2a788315b7b1eb8a|32aaa5d529ede900efcdb268a44897b197b05574|6a539fb148bc8191a30b6009dbf22438|REVISE
+  request: >-
+    Adversarially inspect the exact producer-return digest and S04 REVISE receipt. Return
+    advisory REVISE/HOLD/RETIRE unless durable pre-existing WorkItem->claim->acceptance
+    bindings for this exact producer digest are found. Do not create or repair missing
+    bindings. Do not infer ConsumerAck. Do not emit or imply independent STOOD/FELL.
+  required_checks:
+    - bind analysis to producer_return_sha256 2d650753ace998e0ff1b04fb8fff85ab797dde27de9c744393046702d01e7f49
+    - bind analysis to S04 verdict blob 32aaa5d529ede900efcdb268a44897b197b05574
+    - test whether S04 controlling defects are contradicted by durable pre-existing exact bindings
+    - state correlated-evidence risk and strongest dissent
+    - preserve no-send T0 ceiling and producer expiry
+  forbidden: DO_NOT_REPAIR_SOURCE;DO_NOT_CREATE_WORKITEM_OR_CLAIM;DO_NOT_CREATE_ACCEPTANCE;DO_NOT_INFER_CONSUMERACK;DO_NOT_CLAIM_INDEPENDENT_QUORUM;DO_NOT_ISSUE_TERMINAL_RECEIPT
+  required_output: ACCEPT_OR_REVISE_OR_HOLD_OR_RETIRE_OR_ABSTAIN_ADVISORY_ONLY
+  expiry_utc: 2026-08-14T16:28:00Z
+  rollback: APPEND_ONLY_SUPERSESSION_DO_NOT_DELETE
+  effect_ceiling: GIT_APPEND_ONLY_INTERNAL_VERIFICATION_ROUTE_PLUS_ONE_REQUIRED_SLACK_POINTER
+  honest_flaw: >-
+    S09 is another ChatGPT-carried nonproducer seat, so any result remains correlated
+    same-provider advisory evidence with binding weight zero and cannot close the missing
+    independent digest-bound STOOD/FELL or ConsumerAck.
+
+decision:
+  result: REVISE
+  reason: S04_CONFIRMS_STRUCTURAL_BINDING_GAPS_AND_NO_BINDING_STOOD_FELL_OR_CONSUMERACK_EXISTS_IN_THE_CHANGED_EVIDENCE
+  terminal_receipt_created: false
