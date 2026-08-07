@@ -1,71 +1,46 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
-experiment_id: X11_WEB_FIXED_QUERY_SEARCH_V1
-current_version: 163
-accepted_wakes: 3
+experiment_id: X11_GMAIL_FIXED_IMPOSSIBLE_MARKER_ID_SEARCH_V1
+current_version: 164
+accepted_wakes: 0
 target_wakes_before_decision: 4
-controlled_factor: web_research_search_surface
+controlled_factor: gmail_read_surface
 campaign_status: ACTIVE
 current_disposition: null
-baseline_result: fixed_public_url_read_campaign_kept_but_public_search_surface_not_yet_isolated
-hypothesis: a_fixed_public_query_can_retrieve_at_least_one_rfc_editor_result_without_authenticated_or_sensitive_access
+baseline_result: web_fixed_query_search_surface_kept_4_of_4_with_rfc_editor_result_present
+hypothesis: a_fixed_impossible_marker_gmail_id_search_can_execute_without_message_content_readback_and_return_only_sanitized_count_and_continuation_metadata
 measured_result:
-  query_runs:
-    - wake: 1
-      execution_success: true
-      rfc_editor_result_present: true
-      sanitized_result_count: 5
-      permission_class: PUBLIC_WEB_FIXED_QUERY_SEARCH_AVAILABLE
-      error_class: NONE
-      latency_ms: null
-      latency_note: web_search_latency_not_exposed
-      operator_relay_minutes: 0
-    - wake: 2
-      execution_success: true
-      rfc_editor_result_present: true
-      sanitized_result_count: 6
-      permission_class: PUBLIC_WEB_FIXED_QUERY_SEARCH_AVAILABLE
-      error_class: NONE
-      latency_ms: null
-      latency_note: web_search_latency_not_exposed
-      operator_relay_minutes: 0
-    - wake: 3
-      execution_success: true
-      rfc_editor_result_present: true
-      sanitized_result_count: 5
-      permission_class: PUBLIC_WEB_FIXED_QUERY_SEARCH_AVAILABLE
-      error_class: NONE
-      latency_ms: null
-      latency_note: web_search_latency_not_exposed
-      operator_relay_minutes: 0
-  permission_class: PUBLIC_WEB_FIXED_QUERY_SEARCH_AVAILABLE
-  error_class: NONE
+  query_runs: []
+  permission_class: UNMEASURED
+  error_class: UNMEASURED
   operator_relay_minutes: 0
   changed_capability: false
   campaign_decision: false
   andon: false
-supported_claim: three_fixed_public_search_queries_returned_RFC_Editor_results_including_RFC_2606
-claim_ceiling: fixed_public_web_search_query_only_not_search_breadth_freshness_ranking_stability_browser_parity_general_internet_access_network_independence_or_source_authenticity_beyond_exposed_result_hosts
-strongest_falsifier: the_fixed_query_execution_becomes_unavailable_returns_no_rfc_editor_result_requires_authenticated_or_sensitive_access_or_requires_external_mutation
+supported_claim: null
+claim_ceiling: gmail_message_id_search_execution_and_sanitized_count_only_not_mailbox_completeness_search_recall_indexing_freshness_message_content_access_authenticity_or_independent_verification
+strongest_falsifier: the_fixed_impossible_marker_search_requires_mutation_or_sensitive_readback_cannot_execute_or_exposes_content_beyond_the_sanitized_measurement_contract
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 consumer: [Reginleif, Ratatoskr]
-honest_flaw: one_query_shape_cannot_establish_search_breadth_freshness_ranking_stability_or_network_independence_and_sanitized_result_count_can_vary_with_tool_specific_truncation
+honest_flaw: an_impossible_marker_zero_result_can_measure_search_surface_execution_but_cannot_establish_recall_or_mailbox_completeness
 prior_campaign:
-  experiment_id: X11_WAKE_TIMING_DRIFT_V1
-  disposition: KEEP
-  supported_claim: four_observed_elapsed_times_between_accepted_events_are_measurable
-last_event:
-  commit: 85ce79c1e400878617395faafb8489d68b15c118
-  path: state/coordination/experiments/carrier_surface_x11/events/20260807T173817Z_WEB_FIXED_QUERY_SEARCH_V1_WAKE_03.yaml
-  blob: afd8480b32f740ef9e98c7ffbb02fa422838bf57
-next_factor: web_research_search_surface
-next_probe:
   experiment_id: X11_WEB_FIXED_QUERY_SEARCH_V1
-  campaign_wake: 4
-  mode: read_only_fixed_public_web_search_then_campaign_decision
-  exact_query: site:rfc-editor.org RFC 2606 Reserved Top Level DNS Names
-  persist_only: [execution_success, rfc_editor_result_present, sanitized_result_count, permission_class, error_class, latency_when_exposed, operator_relay_minutes]
-  expected_current_version: 163
-updated_valid_time_utc: 2026-08-07T17:38:17Z
+  disposition: KEEP
+  supported_claim: four_fixed_public_search_queries_returned_RFC_Editor_results_including_RFC_2606
+  accepted_wakes: 4
+last_event:
+  commit: c3866b53427222d03c56aaed89e71f94c7e97888
+  path: state/coordination/experiments/carrier_surface_x11/events/20260807T184023Z_WEB_FIXED_QUERY_SEARCH_V1_WAKE_04.yaml
+  blob: 7088f33ce953d85d3dcb4eecd84b9767b0df7707
+next_factor: gmail_read_surface
+next_probe:
+  experiment_id: X11_GMAIL_FIXED_IMPOSSIBLE_MARKER_ID_SEARCH_V1
+  campaign_wake: 1
+  mode: read_only_fixed_impossible_marker_id_search
+  exact_query: 'subject:"__HFO_X11_FIXED_IMPOSSIBLE_MARKER_6A55089A9ADC8191BDA54541F7F9EFFA__"'
+  max_results: 1
+  persist_only: [execution_success, sanitized_result_count, continuation_present, permission_class, error_class, latency_when_exposed, operator_relay_minutes]
+  expected_current_version: 164
+updated_valid_time_utc: 2026-08-07T18:40:23Z
 sealed: false
 ---
