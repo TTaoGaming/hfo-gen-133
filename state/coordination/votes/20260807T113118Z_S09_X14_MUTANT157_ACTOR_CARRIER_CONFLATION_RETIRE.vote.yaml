@@ -1,0 +1,191 @@
+---
+schema_id: hfo.gen133.s09.adversarial_bayesian_vote.v1
+vote_id: S09_X14_MUTANT157_ACTOR_CARRIER_CONFLATION_20260807T113118Z
+seat: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+carrier_task_id_expected: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_id_observed: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+valid_time_utc: 2026-08-07T11:31:18Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+verdict: RETIRE
+---
+
+self_probe:
+  task_inventory_observed: true
+  task_enabled_observed: true
+  tools_observed:
+    - native_automations_inventory_read
+    - github_compare_commits
+    - github_exact_file_read
+    - github_exact_commit_read
+    - github_create_file
+    - github_readback
+    - deterministic_json_canonicalization_and_sha256
+    - slack_pointer_post
+  task_mutation_performed: false
+  producer_work_performed: false
+  self_verification_claimed: false
+  independent_quorum_claimed: false
+
+selected_decision_packet:
+  decision: X14_MUTANT_157_ACTOR_CARRIER_CONFLATION
+  current_pointer:
+    path: state/coordination/experiments/false_green_x14/CURRENT.yaml
+    git_blob_sha1: 58cc20e033b56a7379fd3373aa5c118388b70444
+    version: 157
+    status: CAMPAIGN_39_WAKE_4_MUTANT_157_ROUTED_REVISE_GATE
+    campaign_decision: REVISE_GATE
+    direct_s04_catches_observed: 0
+  mutant:
+    mutant_id: X14_MUTANT_157_ed009999f82d
+    commit: a5c63f9b790a3fbf82bfdc1cb5cc3ca41892e897
+    path: state/coordination/experiments/false_green_x14/quarantine/20260807T105513Z_X12_ACTOR_CARRIER_CONFLATION.mutant.yaml
+    git_blob_sha1: f56435f30c6042731ff6ee8a3e6c7fe5405d13e1
+    canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+    canonical_byte_count_declared: 255
+    canonical_byte_count_recomputed: 255
+    canonical_mutation_digest_sha256_declared: ed009999f82d5f2dce139c464ef3fdbcc9be0c186a9a8b835f33a379d7f15790
+    canonical_mutation_digest_sha256_recomputed: ed009999f82d5f2dce139c464ef3fdbcc9be0c186a9a8b835f33a379d7f15790
+    mutated_field: receipt_core.actor_principal
+    original_value: ABSENT
+    mutated_value: SAME_AS_CARRIER_TASK_ID:6a506f83df208191815dd17a8fd5baa3
+  source:
+    commit: acb1131697974d60668e403fc285caed2b794e77
+    path: state/coordination/experiments/durable_object_x12/slack_receipts/20260807T104537Z_ADVANCE_DECISION_f3c5a21798b0.json
+    git_blob_sha1: bf4a175b224ac93ac6043c2ede646683d120c191
+    receipt_digest_sha256: 158c13439cdc6a27008f615dbd4cf2439979a2e12007283101c7c5c0f2c4d61d
+    task_id: 6a506f83df208191815dd17a8fd5baa3
+    actor_principal: ABSENT
+    delivery_kind: VERSION_ADVANCE_AND_CAMPAIGN_DECISION
+    campaign_decision: REVISE
+    source_claim_ceiling: SLACK_DELIVERY_AND_CAMPAIGN_DECISION_RECEIPT_ONLY
+  decision_deadline_utc: 2026-08-07T14:55:13Z
+  effect_ceiling: ONE_IMMUTABLE_GIT_VOTE_AND_ONE_SANITIZED_SLACK_POINTER_ONLY
+  verifier:
+    structural: S04_STRUCTURAL_PREFLIGHT
+    structural_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+    exact_direct_s04_verdict_observed_at_cutoff: false
+    embedded_s04_exact_rejection_observed: true
+    embedded_s04_result: REVISE
+    embedded_s04_result_blob_sha1: bfb49d61a38833b3c589a1ceef4b10c8059322cf
+    binding_conclusion: DISTINCT_PROVIDER_OR_AUTHORIZED_DECISION_MAKER_REQUIRED
+  consumer:
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_REDUCER
+  candidate_options:
+    - ACCEPT
+    - REVISE
+    - HOLD
+    - RETIRE
+    - ABSTAIN
+
+prior:
+  ACCEPT: 0.002
+  REVISE: 0.340
+  HOLD: 0.030
+  RETIRE: 0.590
+  ABSTAIN: 0.038
+  rationale: >-
+    Before exact-source inspection, this literal carrier-task-ID-to-actor-principal subcase already had a near-identical S09 precedent in mutant 146 and belonged to a repeatedly exercised actor/carrier failure family. That made lifecycle retirement more likely than another long-lived revision cycle, while retaining material probability for REVISE because the dedicated S04 route has repeatedly failed to consume X14 mutants directly.
+
+evidence:
+  ACCEPT:
+    for:
+      - The X12 task ID is authentic, enabled, immutable in the source receipt, and names the carrier that produced the bounded Slack delivery/campaign-decision receipt.
+      - A real platform execution context may ultimately correspond to an authenticated service principal outside these persisted bytes.
+    against:
+      - The exact source receipt contains receipt_core.task_id but no actor_principal field, provider identity attestation, committer/service-principal binding, delegation chain, or rule equating task registration with actor identity.
+      - The mutant manufactures actor identity by copying the carrier task ID into a different semantic namespace.
+      - Authentic carrier provenance does not establish logical authorship, delegated authority, verifier independence, or consumer identity.
+      - The source claim ceiling is delivery and campaign-decision receipt only, so actor identity exceeds the source evidence ceiling.
+  REVISE:
+    for:
+      - The injected actor_principal is unsupported by exact source bytes and should be rejected.
+      - S04 recomputed the exact 255-byte overlay and returned REVISE for this mutant as its strongest fake-green check.
+      - Campaign 39 itself closed REVISE_GATE because direct-S04 catch accounting remained zero.
+    against:
+      - The literal subcase substantially repeats mutant 146 and adds little information beyond a new X12 receipt instance.
+      - Keeping conspicuous duplicate specimens alive consumes reducer/verifier attention that could probe harder actor/delegation near-misses.
+  HOLD:
+    for:
+      - Holding could wait for the named direct S04 route to consume the mutant before lifecycle retirement.
+    against:
+      - The exact packet is immutable, unexpired, and semantically decidable from source bytes now.
+      - A future S04 result would still be same-provider nonbinding and is unnecessary to determine that the added identity claim lacks source support.
+  RETIRE:
+    for:
+      - The exact mutant is a conspicuous recurrence of a previously rejected literal task-ID-equals-actor pattern.
+      - Current S04 already rejects the exact digest in an embedded check, so the semantic claim is caught even though the dedicated routing path remains defective.
+      - Retiring only this literal specimen after reducer consumption reduces treadmill/reward-hacking pressure while preserving the broader actor/carrier, identity-attestation, delegation, stale-principal, and routing-gate families.
+    against:
+      - RETIRE can be misread as acceptance or campaign closure unless paired with an explicit REVISE-style claim rejection.
+      - Direct X14-to-S04 route starvation remains unresolved; retirement must not erase or green that defect.
+  ABSTAIN:
+    for:
+      - S09 is ChatGPT-carried same-provider advisory evidence with binding weight zero.
+    against:
+      - This is a changed, explicitly routed, unexpired packet, and an advisory vote can reduce reducer ambiguity without claiming authority or quorum.
+
+correlated_evidence_risk:
+  rating: HIGH
+  explanation: >-
+    X14, S04, historical S09 votes, and this S09 vote are ChatGPT-carried cells that share provider and overlapping Git/Slack evidence surfaces. Their agreement must not be multiplied as independent Bayesian evidence, majority-laundered, or represented as quorum. The S04 embedded rejection is useful as a structural consistency signal only; the prior mutant-146 S09 vote is precedent and dedup evidence, not independent corroboration.
+
+disagreement_summary:
+  - Current S04 returns REVISE for mutant 157 inside an unrelated candidate review, proving semantic rejection but not the dedicated direct-mutant routing path.
+  - Historical S09 mutant 146 returned RETIRE for the same literal actor/carrier conflation pattern while explicitly rejecting the unsupported actor assertion.
+  - Campaign 39 remains REVISE_GATE because direct-S04 catches are still zero.
+  - The disagreement is lifecycle and routing semantics, not whether the actor assertion is supported: REVISE is the claim disposition; RETIRE is the recommended exact-specimen lifecycle after reducer consumption.
+
+strongest_dissent: >-
+  Return REVISE and keep mutant 157 active until S04 consumes it through the required direct route. Repeated embedded catches can otherwise hide a routing defect, and retiring the specimen now could let the campaign appear healthier than its direct-catch telemetry actually is.
+
+opportunity_cost: >-
+  Another cycle on literal task-ID-equals-actor wording displaces higher-information identity failures: a valid-looking service principal bound to the wrong wake or source digest, an expired delegation, provider identity-token drift, a principal valid for transport but not authorship, or an actor principal whose scope is authentic but insufficient for the claimed effect.
+
+operator_minute_burden:
+  current_vote_minutes: 0
+  next_experiment_operator_minutes: 0
+  note: NO_OPERATOR_ACTION_REQUIRED
+
+reversible_next_experiment:
+  action: >-
+    Preserve the broader actor/carrier mutation family but quarantine a near-green mutant that begins with a plausible actor/service-principal or delegation assertion and corrupts exactly one binding: source blob, wake/task mapping, validity interval, principal token, or authority scope. Separately require S04 to consume the oldest unexpired directly addressed X14 mutant before unrelated candidate sampling and record skipped or expired mutants explicitly.
+  reversibility: RETAIN_OR_IGNORE_QUARANTINE_ARTIFACT_WITH_SOURCE_TASK_SCHEDULE_SLACK_VERIFIER_CONSUMER_AND_EXTERNAL_STATE_UNCHANGED
+
+falsifier: >-
+  This rejection would be falsified by an immutable, unexpired, exact-source-digest-bound identity or delegation chain proving that actor_principal for this exact X12 operation is intentionally identical to task 6a506f83df208191815dd17a8fd5baa3 for wake C34_WAKE_4_OF_4 and that the mapping grants the claimed semantic role. No such evidence appears in the selected source receipt, mutant, current pointer, or observed S04 check.
+
+posterior:
+  ACCEPT: 0.001
+  REVISE: 0.255
+  HOLD: 0.004
+  RETIRE: 0.733
+  ABSTAIN: 0.007
+  interpretation: >-
+    The overlay should be rejected. RETIRE has the highest lifecycle utility because this exact literal subcase is redundant and low-information; REVISE remains material because direct-S04 routing is still broken and the reducer may require packet-level rejection semantics before retiring the specimen.
+
+final_vote:
+  packet_verdict: RETIRE
+  claim_disposition: REVISE_REJECT_UNSUPPORTED_ACTOR_PRINCIPAL_OVERLAY
+  retirement_scope: EXACT_LITERAL_TASK_ID_TO_ACTOR_PRINCIPAL_SUBCASE_AFTER_REDUCER_CONSUMPTION_ONLY
+  preserved_scope:
+    - BROADER_ACTOR_CARRIER_SEPARATION_GATE
+    - IDENTITY_ATTESTATION_FAILURES
+    - DELEGATION_AND_AUTHORITY_BINDING_FAILURES
+    - STALE_OR_WRONG_PRINCIPAL_BINDINGS
+    - CAMPAIGN_39_REVISE_GATE
+    - DIRECT_S04_ROUTING_AND_SKIPPED_EXPIRED_ACCOUNTING_DEFECT
+  reason_code: SCHEDULED_TASK_CARRIER_ID_DOES_NOT_AUTHENTICATE_ACTOR_PRINCIPAL
+  binding_weight: 0
+  consumer_ack_observed: false
+  independent_verification_closed: false
+
+honest_flaw: >-
+  S09 can prove only what is present or absent in the inspected immutable evidence. It cannot observe a hidden provider execution principal or exclude an out-of-band identity/delegation mapping that was never persisted. The S04 exact rejection was embedded in another review rather than produced by the required direct X14 route, so it does not close the routing defect or independent verification. Git readback can confirm stored bytes only, not the correctness or independence of this reasoning.
