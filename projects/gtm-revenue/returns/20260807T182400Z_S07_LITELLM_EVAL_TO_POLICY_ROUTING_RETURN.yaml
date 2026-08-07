@@ -1,0 +1,121 @@
+schema_id: hfo.gen133.gtm_proof_kit_return.v1
+return_id: GTM-S07-LITELLM-RETURN-20260807T182400Z
+task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+result: KIT_RETURNED
+valid_time_utc: 2026-08-07T18:24:00Z
+expiry_utc: 2026-08-14T17:28:00Z
+target: LiteLLM
+species: PRODUCT_PLATFORM
+route: RELATIONSHIP_FIRST_PRODUCT_ECOSYSTEM_TEST
+privacy: PUBLIC_SOURCE_ONLY
+effect_ceiling: T0_PREP_GIT_NO_SEND
+
+self_probe:
+  expected_task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+  observed_task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+  task_id_match: true
+  task_enabled_observed: true
+  github_read_available: true
+  github_write_available: true
+  web_read_available: true
+  task_mutation_performed: false
+
+selection_checks:
+  target_verified: LiteLLM
+  unexpired_at_pickup: true
+  duplicate_kit_at_same_target_card_digest_found_before_build: false
+  pain_hypothesis_ceiling: HYPOTHESIS_ONLY_NO_CUSTOMER_BASELINE_NO_DEMAND_CLAIM
+  best_persona: AI_or_ML_platform_engineer_owning_shared_LiteLLM_gateway;LiteLLM_product_or_engineering_lead_for_router_agent_MCP_controls
+  allowed_paths:
+    - projects/gtm-revenue/kits/litellm/**
+    - projects/gtm-revenue/returns/**
+  required_verifier: S04 Hrist Structural Preflight
+  consumer: operator
+
+source_target_card:
+  card_id: GTM-S08-PRODUCT_PLATFORM-LITELLM-20260807T172800Z
+  path: projects/gtm-revenue/research/20260807T172800Z_PRODUCT_PLATFORM_LITELLM_TARGET_CARD.md
+  git_blob_sha1: af26529c68d9dbd974d3dfbd2f248229a779a996
+  source_evidence_digest_sha256: 39f5c768c6697dfccd9cf08994f58a03c02c8c9eac99a6914669d4978bd965b8
+  card_expiry_utc: 2026-08-14T17:28:00Z
+  readback: PASS
+
+candidate:
+  path: projects/gtm-revenue/kits/litellm/20260807T182400Z_LITELLM_EVAL_TO_POLICY_ROUTING_CHECKLIST.md
+  git_blob_sha1: 4a2872b7330351107a30691f08d9b1697695cd04
+  creation_commit: b06e926d0277fc3d0631612f8167caae792c81ae
+  readback: PASS
+  artifact_type: eval_to_policy_routing_preflight_checklist
+  approximately_two_minute_use: true
+  source_backed_facts_separated_from_hypothesis: true
+  claims_LiteLLM_missing_controls: false
+  no_send: true
+
+changed_paths:
+  - projects/gtm-revenue/kits/litellm/20260807T182400Z_LITELLM_EVAL_TO_POLICY_ROUTING_CHECKLIST.md
+  - projects/gtm-revenue/returns/20260807T182400Z_S07_LITELLM_EVAL_TO_POLICY_ROUTING_RETURN.yaml
+
+public_sources_rechecked_2026_08_07:
+  - https://docs.litellm.ai/blog/router-plugins-on-the-proxy
+  - https://docs.litellm.ai/blog/auto-router-spend-visibility
+  - https://docs.litellm.ai/blog/auto-router-context-and-benchmarks
+  - https://docs.litellm.ai/blog/litellm-microsoft-assert
+  - https://www.litellm.ai/ai-gateway
+
+source_reconciliation:
+  supported:
+    - Router Plugins receive routing context, can narrow candidate_models and can publish downstream signals; LiteLLM names tenant policy and budget caps among motivating custom signals.
+    - Router Plugin documentation says an empty plugin-filtered candidate pool raises rather than silently falling back to the full pool.
+    - The August 6 AutoRouter update adds savings and usage visibility plus per-request classifier-cost reporting and invites design-partner feedback.
+    - The August 4 Auto Router v1.97 post publishes quality and cost/usage routing changes and benchmarks.
+    - LiteLLM x Microsoft ASSERT explicitly turns organizational policy into targeted agent-evaluation scenarios before production.
+    - LiteLLM's current AI Gateway page publicly positions budgets/rate limits, guardrails, RBAC, routing, MCP/Agent gateway surfaces and Datadog/OpenTelemetry logging.
+  hypothesis_only:
+    - Enterprise LiteLLM users experience recurring engineering or audit cost binding held-out eval evidence and organizational policy to runtime model/tool authority.
+    - A portable eval-to-policy deployment contract would reduce that work or create commercial willingness to pay.
+    - LiteLLM product leadership wants an external OPA/Rego-style adapter or this operator's help.
+  excluded_claims:
+    - no claim of LiteLLM security, governance, routing or evaluation deficiency
+    - no claim of customer savings, incidents, policy bypasses, deployments or willingness to pay
+    - no claim of official LiteLLM-to-OPA integration or endorsement
+
+assumptions:
+  - target user runs LiteLLM as shared platform infrastructure
+  - policy and eval evidence can be versioned and evaluated before broadening model or tool authority
+  - vendor-neutral policy adapter is preferable to assuming one policy engine
+
+falsifier: >-
+  Retire or materially revise if authoritative LiteLLM/ASSERT functionality already binds
+  eval-verdict version and expiry directly to runtime model/tool authorization and auditable
+  routing decisions with negligible recurring user implementation burden, or if real users
+  consistently identify a different higher-cost problem.
+
+rollback_delete_path:
+  - delete projects/gtm-revenue/kits/litellm/20260807T182400Z_LITELLM_EVAL_TO_POLICY_ROUTING_CHECKLIST.md using exact blob 4a2872b7330351107a30691f08d9b1697695cd04 if rejected before downstream consumption
+  - preserve this producer return as immutable history; supersede rather than rewrite
+
+verifier:
+  required: S04 Hrist Structural Preflight
+  instruction: >-
+    S04: verify exact target-card blob and source-evidence digest, candidate blob/readback,
+    five fresh public source URLs, source-backed-versus-hypothesis wording, no-send boundary,
+    rollback, expiry, and strongest fake-green interpretation. Check specifically that the
+    candidate does not imply LiteLLM lacks Router Plugins, ASSERT, RBAC/guardrails, observability
+    or current AutoRouter cost visibility. Return structural verdict without editing candidate
+    or claiming cross-provider independent quorum.
+  same_provider_status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+
+consumer: operator
+external_effects_performed: []
+outreach_sent: false
+application_submitted: false
+spend: false
+publication_outside_operator_repo: false
+
+honest_flaw: >-
+  This artifact is grounded in current first-party LiteLLM product evidence but still lacks direct
+  customer discovery. Its core pain is a testable ecosystem hypothesis, not demonstrated demand.
+  The producer return also does not invent a separate WorkItem/claim/acceptance chain that the S07
+  contract did not authorize; downstream reducers requiring such a chain should return REVISE
+  rather than laundering the target card into an implicit claim.
