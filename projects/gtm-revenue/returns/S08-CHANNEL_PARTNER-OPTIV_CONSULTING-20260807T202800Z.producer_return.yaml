@@ -1,0 +1,129 @@
+---
+schema_id: hfo.gen133.gtm_producer_return.v1
+result: KIT_RETURNED
+seat: S07_GTM_PROOF_KIT_BUILDER
+carrier_task_id_expected: 6a506f6dc5c08191b95f1707d7f00c2d
+carrier_task_id_observed: 6a506f6dc5c08191b95f1707d7f00c2d
+carrier_task_id_match: true
+valid_time_utc: 2026-08-07T21:26:00Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+privacy: PUBLIC_SOURCES_ONLY
+effect_ceiling: T0_RESEARCH_PREP_ONLY
+no_send: true
+---
+
+work_item:
+  id: S08-CHANNEL_PARTNER-OPTIV_CONSULTING-20260807T202800Z
+  target: Optiv Consulting
+  species: CHANNEL_PARTNER
+
+admission_claim:
+  path: projects/gtm-revenue/claims/20260807T210549Z_OPTIV_CONSULTING_PROOF_KIT_ADMISSION.claim.yaml
+  blob_sha1: b9e4af68f045e91e7e852586f5fea8b09467db05
+  claim_id: S02_GTM_OPTIV_CONSULTING_PROOF_KIT_ADMISSION_20260807T210549Z
+  claim_commit_sha: 7b85d1e2895b5bf05e5e1bb607d61311a12bc61a
+  acceptance_sha256: 88e6df0e66535e7148211d1766d28871c9b529c804608724907ea7f5fa118caf
+  idempotency_sha256: 310c97a7d408085d6ef00e2b1d527252e93271ff35ca0cce3a91449e76d901d3
+  lease_expires_utc: 2026-08-08T01:05:49Z
+
+source_target_card:
+  commit_sha: dbc355f14510705c1ff787c434b4e2df5b033f8d
+  path: projects/gtm-revenue/research/20260807T202800Z_CHANNEL_PARTNER_OPTIV_CONSULTING_TARGET_CARD.md
+  blob_sha1: 258b124cbe80cf950cd6aada09ac0dd4772efde8
+  evidence_digest_sha256: 6050284dc586664e7143d67aaea992bf1b37c06ab01d203e7fbbe2f2597d3301
+  source_expiry_utc: 2026-08-14T20:28:00Z
+
+candidate:
+  title: Agentic AI Engagement Assurance Gate — FDE/Consultant Edition
+  path: projects/gtm-revenue/kits/optiv-consulting/AGENTIC_AI_ENGAGEMENT_ASSURANCE_GATE_FDE_CONSULTANT.md
+  creation_commit_sha: f177ca4c4133c0552c4dd2e480c36b4226991417
+  blob_sha1: a4d66bacc7f21aa7d8145db97d17e471ec87e589
+  readback: PASS
+  status: CANDIDATE_FOR_S04_STRUCTURAL_PREFLIGHT
+  claim_boundary: COMPARISON_ARTIFACT_NOT_A_FINDING
+
+changed_paths:
+  - projects/gtm-revenue/kits/optiv-consulting/AGENTIC_AI_ENGAGEMENT_ASSURANCE_GATE_FDE_CONSULTANT.md
+  - projects/gtm-revenue/returns/S08-CHANNEL_PARTNER-OPTIV_CONSULTING-20260807T202800Z.producer_return.yaml
+
+public_source_recheck:
+  checked_utc: 2026-08-07T21:24:00Z
+  status: PASS_WITH_HYPOTHESIS_CEILING
+  exact_urls:
+    - https://www.optiv.com/company/press-releases/optiv-sells-advisory-consulting-and-transformation-act-business-vobis
+    - https://cysecureservices.com/
+    - https://www.vobisventures.com/
+  supported:
+    - Optiv announced the ACT sale to Vobis Ventures on 2026-06-02, effective 2026-06-01, and described Optiv Consulting as its priority services partner for the next year.
+    - Optiv Consulting currently describes 500+ consultants/FDEs, 800+ enterprise clients served, 200+ services, AI Security & Governance, AI-assisted delivery, and institutional learning across engagements.
+    - Vobis Ventures currently frames its cybersecurity thesis around the agentic-AI era, including machine identity/zero trust and AI governance.
+  excluded:
+    - No evidence that Optiv Consulting currently lacks an assurance layer.
+    - No evidence of incidents, compliance failures, savings, margin improvement, buyer demand, subcontractor demand, or need for this exact external framework.
+
+artifact_contract_result:
+  leads_with_plausible_problem_hypothesis: true
+  why_this_may_matter: present
+  how_to_use_in_2_minutes: present
+  ten_gates: 10
+  source_backed_facts: present
+  assumptions_and_hypotheses: present
+  disconfirming_evidence: present
+  strongest_falsifier: present
+  source_links: present
+  optional_operator_reviewed_no_send_note: present
+  unsupported_deficiency_or_outcome_claims: none_intended
+
+runtime_evidence:
+  substrate: ChatGPT_cloud
+  model_identifier: UNEXPOSED_BY_RUNTIME
+  shell_executor_available: false
+  commands_executed: []
+  command_exit_codes: []
+  note: >-
+    No shell command, local checkout, Codex executor, Claude executor, deployment or paid provider call was available or claimed. Candidate creation and readback used the authenticated GitHub connector; fresh public-source checks used read-only web research. This return does not fabricate command-level evidence requested by the separate S06 HOLD packet.
+  tools_used:
+    - native scheduled-task inventory readback
+    - GitHub search/fetch_file/create_file/readback
+    - read-only public web search
+
+verifier:
+  seat: S04_HRIST_STRUCTURAL_PREFLIGHT
+  task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  provider_class: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  route: >-
+    S04 must structurally preflight exact candidate blob a4d66bacc7f21aa7d8145db97d17e471ec87e589 against the admission claim and source-card bindings. S07 does not self-grade.
+
+consumer:
+  seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  task_id: 6a539fc5130c81918c13624739fb2a60
+  ultimate_external_effect: OPERATOR_REVIEW_ONLY
+  consumer_ack_inferred: false
+
+external_effects:
+  email_sent: false
+  linkedin_or_dm_sent: false
+  application_submitted: false
+  account_created: false
+  terms_accepted: false
+  spend: false
+  paid_provider_call: false
+  deployed: false
+  merged: false
+  external_publication: false
+  private_data_used: false
+  autonomous_negotiation: false
+
+rollback_delete_path:
+  mode: APPEND_ONLY_SUPERSESSION_OR_LEAVE_UNMERGED
+  history_rewrite: forbidden
+  permanent_delete: forbidden
+  candidate_delete: only_by_authorized_producer_if_unmerged_and_required_by_claim
+  external_effect_reversal_needed: false
+
+expiry_utc: 2026-08-08T01:05:49Z
+
+honest_flaw: >-
+  The artifact is a concise comparison surface built from public messaging, not evidence from an Optiv Consulting delivery engagement. Its most important uncertainty is whether the hypothesized cross-engagement assurance/reuse friction exists at all; Optiv Consulting already advertises mature AI Security & Governance and continuous quality/risk practices. The runtime also exposed no shell/local checkout, so no command-level repository diff or sha256 utility execution is claimed; GitHub connector create/readback and provider blob identifiers are the available byte-level receipts.
