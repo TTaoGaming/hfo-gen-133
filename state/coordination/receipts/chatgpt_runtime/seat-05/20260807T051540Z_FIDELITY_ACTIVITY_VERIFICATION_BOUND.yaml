@@ -1,0 +1,56 @@
+schema: hfo.gen133.operator_relief_receipt.v1
+seat: S05
+role: operator_relief
+task_probe:
+  expected_task_id: 6a55c182078c8191b89f2dd15f5f640c
+  observed_task_id: 6a55c182078c8191b89f2dd15f5f640c
+  match: true
+canonical:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-07T05:15:40Z
+result: MATERIAL_CHANGE
+transition: DEADLINE_APPOINTMENT_BOUND
+active_item: FIDELITY_SAME_DAY_ACTIVITY_VERIFICATION
+priority:
+  p0: VERIFY_EXPECTEDNESS_OF_PROFILE_CHANGE_SENT_WIRE_AND_SEPARATE_CANCELED_DISBURSEMENT_AND_READ_SECURE_MESSAGE_BEFORE_ANY_RETRY
+  p1:
+    - CONFIRM_RECEIVING_BANK_CREDIT_OR_AVAILABILITY_FOR_EARLIER_PROVIDER_REPORTED_SENT_WIRE
+    - DECIDE_COLDEN_BOARD_CANDIDACY_BEFORE_2026_08_07_DEADLINE
+source_evidence:
+  gmail:
+    private_bodies_externalized: false
+    sanitized_sequence:
+      - SAME_DAY_PHONE_NUMBER_CHANGE_ALERT
+      - OUTGOING_WIRE_INITIATION_ALERT
+      - PROVIDER_REPORTED_SENT_WIRE
+      - SECURE_MESSAGE_NOTICE
+      - SEPARATE_CANCELED_DISBURSEMENT_ALERT
+    claim_ceiling: SEQUENCE_CONFIRMED_BY_PROVIDER_EMAILS_ONLY
+    excluded_claims:
+      - NO_CLAIM_THAT_ACTIVITY_WAS_AUTHORIZED_OR_UNAUTHORIZED
+      - NO_CLAIM_THAT_CANCELED_DISBURSEMENT_REVERSED_EARLIER_SENT_WIRE
+      - NO_CLAIM_OF_RECEIVING_BANK_CREDIT
+  calendar:
+    private_event_created: true
+    title_sanitized: P0_FIDELITY_ACTIVITY_VERIFICATION
+    start_local: 2026-08-07T07:30:00-06:00
+    end_local: 2026-08-07T07:45:00-06:00
+    readback_verified: true
+    decision_gate: EXPECTED_ALL_ACTIVITY_OR_USE_OFFICIAL_FIDELITY_SECURITY_ROUTE_BEFORE_ANY_RETRY
+world_effects:
+  email_sent: false
+  transfer_initiated: false
+  payment_made: false
+  account_changed: false
+  security_changed: false
+  task_mutated: false
+  deployment: false
+operator_minutes_removed_estimate: 10
+next_consumer: OPERATOR_AT_PRIVATE_CALENDAR_BLOCK_THEN_VAR_FINANCE_RECONCILIATION
+honest_flaw: EMAIL_ALERTS_AND_CALENDAR_BINDING_DO_NOT_PROVE_AUTHORIZATION_SECURE_MESSAGE_CONTENT_OR_RECEIVING_BANK_SETTLEMENT
+privacy:
+  account_numbers_externalized: false
+  transfer_amounts_externalized: false
+  phone_number_externalized: false
+  secure_message_body_externalized: false
