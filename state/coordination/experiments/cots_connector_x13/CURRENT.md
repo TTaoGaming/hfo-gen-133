@@ -1,26 +1,27 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
 experiment_id: X13_GCAL_SEARCH_READONLY_012
-version: 147
-prior_version: 146
+version: 148
+prior_version: 147
 candidate: Google_Calendar_search_events_readonly_surface
-campaign_wake: 3_of_4
-campaign_status: ACTIVE
+campaign_wake: 4_of_4
+campaign_status: COMPLETE
 phase_1_status: PHASE1_ACCEPTED_WITH_GATES
 phase_2_status: PHASE2_ACCEPTED_WITH_GATES
 phase_3_status: PHASE3_ACCEPTED_WITH_GATES
-phase_4_status: PENDING
-provisional_decision: ADOPT_WITH_GATES_CATALOG_ONLY
-operational_decision: PENDING
+phase_4_status: DECISION_DEFER
+provisional_decision: CLOSED
+operational_decision: DEFER_OPERATIONAL_ADOPTION_CATALOG_ONLY
 carrier_task_id: 6a55c1733708819185088bf334e33ea5
 carrier_task_id_match: true
 wip: 1
-last_event_commit: 34ee7bc82b3844ae1e2923adc9829f619e047c92
-last_event_path: state/coordination/experiments/cots_connector_x13/20260806T234800Z_GCAL_SEARCH_PHASE3_SYNTHETIC_EMPTY.md
-last_event_blob_sha: 0cbff37deddeef4871f85f1b2743b2c4247e45dc
+last_event_commit: ebb22312f8e06b4059c70e70c715ce5e5313e61a
+last_event_path: state/coordination/experiments/cots_connector_x13/20260807T004800Z_GCAL_SEARCH_PHASE4_DECISION.md
+last_event_blob_sha: ead084a7e700678429cba2c2c76e8daee95b5a52
 last_event_readback: true
-prior_current_blob_sha: d167c85d12c107e6d2aa1cb7deb75b436fa7e237
+prior_current_blob_sha: aca0fa8ed1a4240b8d17aae63b06336662680444
 campaign_calls: 3_BOUNDED_READONLY_CALENDAR_SEARCHES
+phase_4_candidate_calls: 0
 successful_nonempty_calls: 2
 successful_empty_calls: 1
 connector_errors_observed: 0
@@ -51,8 +52,8 @@ content_hydration_observed: true_ON_MATCHING_CALLS; false_ON_PHASE3_EMPTY_CALL
 external_call_time_ms_phase_1: 246
 external_call_time_ms_phase_2: 307
 external_call_time_ms_phase_3: 665
-measured_fact: SYNTHETIC_NONMATCHING_BOUNDED_SEARCH_RETURNED_ZERO_EVENTS_NULL_PAGE_TOKEN_AND_NO_CONNECTOR_ERROR_IN_665MS
-interpretation: EMPTY_SUCCESS_DISTINGUISHED_FROM_CONNECTOR_FAILURE_BUT_NOT_AUTHORITATIVE_ABSENCE; MATCHING_SEARCH_REMAINS_CONTENT_HYDRATING
+measured_fact: PHASE4_DECISION_FROM_EXISTING_RECEIPTS_ONLY_WITH_ZERO_ADDITIONAL_CALENDAR_CALLS
+interpretation: NATIVE_CALENDAR_SEARCH_IS_USEFUL_FOR_BOUNDED_HUMAN_REVIEWED_DISCOVERY_BUT_NOT_ESTABLISHED_FOR_AUTHORITATIVE_OPERATIONAL_STATE_OR_ABSENCE_CLAIMS
 andon: SEARCH_EVENTS_HYDRATES_FULL_EVENT_DESCRIPTIONS_WHEN_MATCHES_EXIST_AND_EMPTY_SUCCESS_CANNOT_BE_PROMOTED_TO_CALENDAR_WIDE_ABSENCE
 custom_code_avoided_estimate: 60_to_180_LOC_UNVALIDATED
 operator_minutes_removed_measured: 0
@@ -63,29 +64,32 @@ portability: LOW_TO_MEDIUM_GOOGLE_CALENDAR_AND_WRAPPER_SPECIFIC
 failure_behavior: EMPTY_SUCCESS_DISTINGUISHED_FROM_CONNECTOR_ERROR; PERMISSION_DENIAL_RATE_LIMIT_TRANSIENT_OTHER_CALENDAR_PAGINATION_AND_PERMISSION_VARIANCE_UNTESTED
 paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
 direct_cost_or_quota_evidence: NONE_FROM_CONNECTOR
-nominal_provider_quota_contract: GOOGLE_CALENDAR_2026_DOCS_REPORT_10000_REQUESTS_PER_MIN_PROJECT_600_PER_MIN_USER_PROJECT_AND_1000000_PER_DAY_PROJECT_THRESHOLD; STANDARD_USE_NO_ADDITIONAL_COST_UNDER_THRESHOLD; CONNECTOR_MAPPING_AND_DEBIT_UNVERIFIED
+nominal_provider_quota_contract: GOOGLE_CALENDAR_2026_DOCS_REPORT_10000_REQUESTS_PER_MIN_PROJECT_600_PER_MIN_USER_PROJECT_AND_1000000_PER_DAY_PROJECT_THRESHOLD; CONNECTOR_MAPPING_AND_DEBIT_UNVERIFIED
 catalog_consumer: HFO_COTS_CAPABILITY_INVENTORY
 operational_consumer: NOT_ASSIGNED
 consumer_ack: NOT_OBSERVED
-verifier: TWO_IDENTICAL_MATCHING_REPLAY_DIGESTS_PLUS_ONE_DIRECT_EMPTY_SUCCESS_RECEIPT_AND_OFFICIAL_GOOGLE_CALENDAR_EVENTS_LIST_CONTRACT; MATCHED_RAW_PROVIDER_CALL_NOT_RUN
-verifier_result: PHASE1_PHASE2_REQUEST_AND_ORDERED_RESULT_DIGESTS_MATCHED; PHASE3_EMPTY_RESULT_RETURNED_WITH_NULL_PAGE_TOKEN_AND_NO_ERROR
+verifier: TWO_IDENTICAL_MATCHING_REPLAY_DIGESTS_PLUS_ONE_SYNTHETIC_EMPTY_SUCCESS_RECEIPT_PLUS_PHASE4_EVENT_AND_CURRENT_READBACK; MATCHED_RAW_PROVIDER_CALL_NOT_RUN
+verifier_result: PHASE1_PHASE2_REQUEST_AND_ORDERED_RESULT_DIGESTS_MATCHED; PHASE3_EMPTY_RESULT_RETURNED_WITH_NULL_PAGE_TOKEN_AND_NO_ERROR; PHASE4_CLOSED_WITHOUT_NEW_CALENDAR_CALL
 adoption_credit: 0
 fitness_credit: 0
 mandatory_gate: EXPLICIT_TIME_BOUNDS; SMALL_RESULT_CAP; SEARCH_IS_CONTENT_HYDRATING_NOT_METADATA_ONLY; DO_NOT_PERSIST_EVENT_CONTENT; EMPTY_SUCCESS_MEANS_ZERO_VISIBLE_MATCHES_RETURNED_NOT_AUTHORITATIVE_ABSENCE; MAX_RESULTS_IS_A_CAP_NOT_COMPLETENESS; CONSEQUENTIAL_CLAIMS_REQUIRE_DIRECT_EVENT_READ_OR_MATCHED_PROVIDER_WITNESS; NO_UNBOUNDED_RETRY
 strongest_falsifier: MATCHED_RAW_CALENDAR_V3_EVENTS_LIST_CALL_UNDER_SAME_EFFECTIVE_PRINCIPAL_RETURNS_MATERIALLY_DIFFERENT_SCOPE_ORDER_PAGINATION_CONTENT_AUTHORIZATION_OR_EMPTY_RESULT_SEMANTICS_OR_A_REAL_CONSUMER_TRIAL_FAILS_TO_SAVE_OPERATOR_TIME
-honest_flaw: THREE_SMALL_PRIMARY_CALENDAR_CALLS_DO_NOT_TEST_PERMISSION_DENIAL_OTHER_CALENDARS_PAGINATION_RATE_LIMIT_TRANSIENT_FAILURE_INDEX_LAG_RAW_PROVIDER_PARITY_MEASURED_TIME_SAVINGS_OR_OPERATIONAL_CONSUMER_VALUE_AND_THE_SYNTHETIC_TOKEN_WAS_DESIGNED_TO_MISS
-next_phase: PHASE4_DECISION_FROM_EXISTING_RECEIPTS_ONLY_NO_ADDITIONAL_CALENDAR_CANDIDATE_CALL
-review_expiry_utc: 2026-08-13T21:48:00Z
-valid_time_utc: 2026-08-06T23:48:00Z
-recorded_time_utc: 2026-08-06T23:49:09Z
+honest_flaw: THREE_SMALL_PRIMARY_CALENDAR_CALLS_DO_NOT_TEST_PERMISSION_DENIAL_OTHER_CALENDARS_PAGINATION_RATE_LIMIT_TRANSIENT_FAILURE_INDEX_LAG_RAW_PROVIDER_PARITY_MEASURED_TIME_SAVINGS_OR_OPERATIONAL_CONSUMER_VALUE_AND_MATCHING_SEARCH_HYDRATED_FULL_EVENT_DESCRIPTIONS
+next_campaign_candidate: Gmail_readonly_search_or_list_surface
+next_phase: PHASE1_OFFICIAL_CONTRACT_AND_BOUNDED_DIRECT_BASELINE
+review_expiry_utc: 2026-08-14T00:48:00Z
+valid_time_utc: 2026-08-07T00:48:00Z
+recorded_time_utc: 2026-08-07T00:48:00Z
 ---
 
-# X13 CURRENT v147
+# X13 CURRENT v148
 
-The Google Calendar read-only search campaign is active at wake 3 of 4. A bounded synthetic nonmatching primary-calendar query returned zero events, a null next-page token, and no connector error in 665 ms with no retry, fallback, content read, or mutation.
+The Google Calendar read-only search campaign is complete at wake 4 of 4. Operational adoption is **DEFERRED**; retain the connector only for bounded, human-reviewed catalog/discovery use with the recorded gates.
 
-This distinguishes the wrapper's empty-success shape from connector failure. It does not establish Calendar-wide absence, completeness, effective authorization, other-calendar behavior, index freshness, pagination, throttling/transient-failure handling, or raw-provider parity.
+Across three bounded read-only primary-calendar searches, two matching calls returned identical request and ordered normalized-result digests, while one synthetic nonmatching call returned zero events, a null next-page token, and no connector error. Phase 4 made no additional Calendar candidate call.
 
-The privacy Andon remains active because matching searches hydrated full event descriptions. Keep explicit time bounds and small result caps, do not persist event bodies, and require direct-event or matched-provider evidence for consequential negative claims.
+The decisive limitation is that matching `search_events` calls hydrated full event descriptions while the campaign established no measured operator-minute savings, operational consumer, effective authorization model, raw-provider parity, actual quota debit, completeness semantics, or tested denial/rate-limit/transient behavior. Empty success remains non-authoritative absence evidence.
 
-No operator-minute savings, direct quota debit, operational consumer acknowledgment, adoption credit, or fitness credit are established. Next wake should make the phase-4 decision from existing receipts only, with no additional Calendar candidate call.
+Do not build a replacement Calendar search layer. Use the native connector when bounded discovery is sufficient; require direct-event or matched-provider evidence before consequential scheduling or absence claims. Adoption and fitness credit remain zero.
+
+Next campaign candidate: Gmail read-only search/list surface, phase 1 pending.
