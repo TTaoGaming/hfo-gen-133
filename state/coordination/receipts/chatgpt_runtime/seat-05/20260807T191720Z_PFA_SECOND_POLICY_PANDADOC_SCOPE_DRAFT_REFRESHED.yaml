@@ -1,0 +1,78 @@
+schema: hfo.gen133.s05.operator_relief_receipt.v1
+seat: S05
+callsign: Var
+expected_task_id: 6a55c182078c8191b89f2dd15f5f640c
+branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-07T19:17:20Z
+transition: PREPARE_EXACT_NO_SEND_APPROVAL_PACKET
+result: SECOND_PANDADOC_RECEIVED_SCOPE_STILL_UNBOUND
+wip: 1
+
+control_state:
+  active_item: johanna_pfa_second_policy_scope_confirmation
+  p0: claude_trusted_device_expectedness
+  p1:
+    - fidelity_authoritative_wire_status_at_2026-08-07T14:30:00-06:00
+    - johanna_pfa_second_policy_scope_confirmation
+
+changed_evidence:
+  gmail:
+    source_message_id: 19fdda2fee6ccd69
+    observed_at_utc: 2026-08-07T19:10:43Z
+    sanitized_fact: underwriting acknowledged receipt of the first household-sale form and supplied a PandaDoc link for a second policy
+    unresolved_fact: the latest reply did not identify the exact policy number or insured name for that second PandaDoc
+    prior_context_ceiling: the existing thread contains contradictory scope/ownership guidance, so the link alone is not sufficient to prove which policy should be signed
+  calendar:
+    event_id: p0q243f6mcngjv2859taci6gog
+    observed_state: existing private 2026-08-07T17:15:00-06:00 PFA scope-check block remains in place
+    mutation_this_wake: false
+  contacts:
+    query: Peter Luu
+    observed_state: no matching saved Google Contact found
+    effect: recipient identity remains source-bound to the existing Gmail thread, not Contacts
+  github:
+    prior_control_receipt: state/coordination/receipts/chatgpt_runtime/seat-05/20260807T181654Z_CRABAPPLE_SECOND_PAYMENT_RECEIPT_CONFIRMED_CLOSED.yaml
+    prior_control_state: Claude trusted-device expectedness remained P0; Fidelity and Johanna PFA remained P1
+  slack:
+    changed_window_after_unix: 1786127041
+    observed_state: no changed PFA/Johanna operator-obligation signal found in C0BGNGPJFHU during the bounded window
+
+bounded_transition:
+  action: refreshed the existing Gmail draft in the same underwriting thread; no new draft was created and nothing was sent
+  draft_id: r-4143872117464409519
+  draft_message_id_after_update: 19fdda893720715d
+  draft_status_readback: DRAFT
+  packet_goal: obtain written confirmation of the exact policy number and insured name before the operator signs the second PandaDoc
+  decision_gate: do not sign the second PandaDoc until underwriting binds it to the exact policy/insured identity
+
+operator_relief:
+  estimated_minutes_removed: 7
+  removed_work:
+    - closed the waiting question of whether underwriting replied with another PandaDoc
+    - reduced the remaining operator decision to one exact verification question rather than rereading the contradictory thread
+    - preserved a ready-to-review no-send reply in Gmail
+  next_consumer: operator_then_var_insurance_reconciliation
+
+privacy:
+  private_message_bodies_externalized: false
+  pandadoc_token_externalized: false
+  policy_number_externalized: false
+  insured_identifier_externalized: false
+
+claim_ceiling:
+  - Underwriting replied and provided a second PandaDoc link.
+  - The latest reply does not itself prove which exact policy the link belongs to.
+  - The refreshed Gmail draft is prepared but unsent.
+  - This receipt does not prove the first form was applied to the correct policy or that any compliance requirement is complete.
+
+no_effects:
+  - no_email_send
+  - no_application_submission
+  - no_spend_or_payment
+  - no_deployment_or_merge
+  - no_publication
+  - no_account_or_security_change
+  - no_destructive_deletion
+  - no_scheduled_task_mutation
+
+honest_flaw: The provider's phrase "second policy" may be sufficient in its internal workflow, but the email body does not expose the exact policy/insured binding needed to safely sign without relying on inference.
