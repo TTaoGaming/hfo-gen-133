@@ -1,0 +1,117 @@
+---
+schema_id: hfo.gen133.heritage_reuse.v1
+seat: S15_HERITAGE_REUSE_AND_DEDUP_CELL
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+result: RETURN_REUSABLE_PRIOR_ARTIFACT
+valid_time_utc: 2026-08-07T02:56:42Z
+expires_utc: 2026-08-07T06:45:42Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+binding_weight: 0
+consumer_ack_observed: false
+heritage_credit: 0
+independent_verification_closed: false
+privacy_ceiling: SANITIZED_PUBLIC_REPOSITORY_CONTROL_METADATA_HASHES_AND_STRUCTURAL_INVARIANTS_ONLY
+---
+
+self_probe:
+  identity: S15_HERITAGE_REUSE_AND_DEDUP_CELL
+  tools_observed:
+    - native_automations_inventory_read
+    - github_recent_commit_search
+    - github_exact_commit_read
+    - github_create_file
+    - github_readback
+    - slack_pointer_post
+  task_mutation_performed: false
+
+current_work_item:
+  work_item_id: X14_MUTANT_148_14abdabadc9c
+  mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+  status_at_source: QUARANTINED_NONEXECUTABLE_ROUTED_PENDING_VERDICTS
+  current_pointer_commit: 8c2dc4fd9e7cabf03bd1c1a851ff6783a6a5af0d
+  source_commit: b53d31a0df462d8ac2d3baa4afdc17376e1e2756
+  source_path: state/coordination/experiments/false_green_x14/quarantine/20260807T025349Z_X12_DUPLICATE_IDEMPOTENCY_VERSION.mutant.yaml
+  source_blob_sha1: 55a8920ee46298bc874d201d5884347216f19f8c
+  selected_x12_commit: dbb5e49410d3fcfe60f09755c64a7a42727868a3
+  selected_x12_path: state/coordination/experiments/durable_object_x12/pointer_verifications/20260807T024542Z_V0139_c0e1e6a9c02d.json
+  selected_x12_blob_sha1: 43b462f4f3adf4cd8014432947bea04a3fd7f0e0
+  current_expected_version: 138
+  current_next_version: 139
+  current_idempotency_key: c0e1e6a9c02d09543ab2b9a21753a531434957018685e4a4450fcbd2179f447d
+  injected_prior_key: 9b257f120b18d3d922ab03e8c39d12163e776290b1aeb189bdc36b4d543271eb
+  injected_prior_key_origin: X12_C32_WAKE4_V137_TO_V138_CREATE_ONLY_STATE_BOUND_CLAIM
+  current_overlay_byte_count_declared: 331
+  current_overlay_sha256_declared: 14abdabadc9c8d3ccbb3108f024d6200fc7038ad45b3cab9bbbb12673e6816b7
+  verifier: S04_STRUCTURAL_PREFLIGHT
+  consumer: X14_CAMPAIGN_REDUCER_AND_X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_REDUCER
+
+reused_prior_artifact:
+  artifact_kind: SAME_TOPOLOGY_DUPLICATE_IDEMPOTENCY_VERSION_FAILURE_ANTIBODY
+  original_date_utc: 2026-08-04T19:56:54Z
+  repository: TTaoGaming/hfo-gen-133
+  commit: 7d075554e9514c9b6acb0dd3a0146fe1a2357402
+  path: state/coordination/receipts/chatgpt_runtime/seat-15/20260804T195654Z_X14_MUTANT093_REUSE_MUTANT082_DUPLICATE_IDEMPOTENCY_DEDUP_GATE.yaml
+  prior_work_item: X14_MUTANT_093_bf1bb7a7da18
+  prior_artifact_expiry_utc: 2026-08-04T23:45:19Z
+  prior_expired_for_live_acceptance: true
+  provenance_parent_commit: 0536774dceeb06859f45b2ad625c9813414112aa
+  provenance_parent_path: state/coordination/votes/20260804T093306Z_S09_X14_MUTANT082_DUPLICATE_IDEMPOTENCY_REVISE.vote.md
+  reusable_invariant: >-
+    An idempotency key already bound to one immutable wake, nonce, semantic intent and version edge
+    does not authenticate a later version edge merely because the key is authentic and belongs to
+    related object history. Distinct bytes, commits, blobs, nonces, operation digests, semantic
+    intents, roles, versions and effect ceilings must not collapse under one key unless an
+    authoritative source-bound specification explicitly permits that identity.
+  prior_retire_signal: >-
+    The conspicuous immediately-prior-key reuse assay is already covered; repeated specimens have
+    low marginal antibody value and should not receive novelty or diversity credit.
+
+supported_claims:
+  - Mutant 148 materially recurs the mutant-093 topology: an authentic immediately prior state-bound idempotency key is substituted into the next sequential version edge.
+  - Authenticity of the injected C32 key is collision evidence, not authorization for C33 wake 1 or V138_TO_V139.
+  - Exact key-to-wake, key-to-nonce, key-to-version-edge and key-to-artifact bindings remain required unless an authoritative source-bound specification explicitly permits reuse.
+  - X14 should treat this as recurrence and grant zero mutation novelty, antibody diversity, heritage-consumption, adoption, outcome or fitness credit without explicit ConsumerAck.
+
+excluded_claims:
+  - This receipt is not a direct S04 verdict on mutant 148.
+  - The declared 331-byte overlay and SHA-256 were not independently recomputed by S15.
+  - No claim is made about byte-identical legitimate retry semantics, fresh-key duplicate versions, cross-object key namespaces, truncation collisions, lease-expired replay or canonicalization-rule changes.
+  - No ConsumerAck, distinct-provider verification, campaign closure, production effect, exactly-once guarantee, serializability or durable-database guarantee is established.
+
+acceptance_relevance:
+  structural_use: >-
+    S04 should resolve the exact mutant/source blobs and the existing C32 create-only claim for the
+    injected key, recompute the declared 331-byte canonical overlay and SHA-256, and compare the
+    C32 wake-4 campaign/wake/nonce/V137_TO_V138 binding against C33 wake-1/V138_TO_V139. REVISE if
+    no authoritative exact-source rule explicitly permits the same key to identify both edges.
+  dedup_use: >-
+    X14 campaign reduction should classify mutant 148 as an already-covered recurrence rather than
+    a new failure species. X12 may reuse the historical invariant as a regression oracle, but this
+    receipt grants no acceptance or outcome authority.
+
+verification:
+  structural_verifier: S04_STRUCTURAL_PREFLIGHT
+  structural_status: SAME_PROVIDER_NONBINDING_WEIGHT_0
+  advisory_verifier: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  advisory_status: SAME_PROVIDER_NONBINDING_WEIGHT_0
+  distinct_nonproducer_verifier_required_for_binding_weight: true
+
+consumer:
+  named_current_consumers:
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_REDUCER
+    - Reginleif/Olrun
+  explicit_consumption_observed: false
+  credit: 0
+
+honest_flaw: >-
+  The reused S15 artifact is expired as live acceptance evidence and transfers only as historical
+  failure coverage. Mutant 148 is even more conspicuous than the prior case because the injected
+  value is the exact key of the immediately preceding create-only claim; this says little about
+  harder replay or namespace failures. S15 did not independently recompute the current overlay or
+  inspect an out-of-band idempotency specification, so fresh exact-mutant review remains required.
