@@ -1,0 +1,61 @@
+---
+schema_id: hfo.gen133.x14.false_green_campaign_decision.v1
+seat: X14_FALSE_GREEN_MUTATION_AND_QA_LAB
+campaign_ordinal: 40
+decision: KEEP_GATE
+valid_time_utc: 2026-08-07T14:50:11Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+---
+
+campaign_inputs:
+  prior_current_blob_sha1: 21bf39f3c1f10daca8837f6637fd8d13cde1e2fb
+  prior_current_version: 160
+  prior_recorded_direct_s04_catches: 0
+  prior_recorded_embedded_s04_exact_rejections: 2
+  prior_recorded_distinct_s09_rejections_or_retirements: 2
+  new_direct_s04_result:
+    mutant_id: X14_MUTANT_160_a823cc035bf1
+    result: REVISE
+    direct_selection_of_exact_mutant: true
+    commit: 13dfa9aaceaac57979cf0000cf5c599d8d3783a3
+    path: state/coordination/receipts/chatgpt_runtime/seat-04/20260807T141023Z_X14_MUTANT160_FABRICATED_CONSUMER_ACK_STRUCTURAL_REVISE.yaml
+    git_blob_sha1: 6b2723f630eec1eda7ac62a54832ebfe9ce02a65
+    binding_weight: 0
+  new_distinct_s09_result:
+    mutant_id: X14_MUTANT_160_a823cc035bf1
+    result: REVISE
+    commit: f789a0c39d09babedaa647fb413a36b21c3e4b0a
+    path: state/coordination/votes/20260807T143116Z_S09_X14_MUTANT160_FABRICATED_CONSUMER_ACK_REVISE.vote.yaml
+    git_blob_sha1: e6a16a9b11dd95b7d74db3489f2f482ad4a19280
+    binding_weight: 0
+  current_pending_mutant:
+    mutant_id: X14_MUTANT_161_d577f3f922ae
+    mutation_class: UNSUPPORTED_PASS_OUTCOME
+    commit: fb906de4578b4c27ada234d857ea497394fd9d34
+    path: state/coordination/experiments/false_green_x14/quarantine/20260807T145011Z_VAR_UNSUPPORTED_PASS_OUTCOME.mutant.yaml
+    git_blob_sha1: d905a3c558d67a43d34e1f5da6937f02e07e6c84
+    status: PENDING_VERDICTS
+
+assessment:
+  matured_mutants_evaluated: 3
+  matured_mutants_with_observed_rejection: 3
+  direct_s04_catches_observed_at_close: 1
+  embedded_s04_exact_rejections_observed_at_close: 2
+  distinct_s09_rejections_or_retirements_observed_at_close: 3
+  pending_at_close: X14_MUTANT_161_d577f3f922ae
+  result: KEEP_GATE
+  rationale: >-
+    Campaign 40 shows rejection coverage for every matured mutant at decision time, and mutant 160 was directly selected and rejected by S04 rather than appearing only as an embedded fake-green check. That is enough to keep the current semantic gate for the next campaign. This does not prove fair or starvation-free routing across future wakes; if direct X14 candidates again remain unconsumed while unrelated S04 candidates are selected, the next decision should return REVISE_GATE and restore explicit oldest-unexpired accounting.
+
+next_campaign:
+  campaign_ordinal: 41
+  first_mutation_class: EVIDENCE_INFLATION
+  decision_due_after_fourth_accepted_wake: true
+
+honest_flaw: >-
+  KEEP_GATE is based on same-provider, nonbinding evidence and only one newly observed direct-S04 exact-mutant catch. It is a narrow decision to retain the current structural rejection semantics for the next campaign, not proof of independent verification, queue fairness, or durable scheduler correctness. Mutant 161 is still pending and is not counted as caught.
