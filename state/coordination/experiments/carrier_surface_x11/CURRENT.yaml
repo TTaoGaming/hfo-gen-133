@@ -1,39 +1,44 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
-experiment_id: X11_WAKE_TIMING_DRIFT_V1
-current_version: 159
-accepted_wakes: 3
+experiment_id: X11_WEB_FIXED_QUERY_SEARCH_V1
+current_version: 160
+accepted_wakes: 0
 target_wakes_before_decision: 4
-controlled_factor: wake_timing
+controlled_factor: web_research_search_surface
 campaign_status: ACTIVE
 current_disposition: null
-baseline_result: three_accepted_elapsed_time_samples
-hypothesis: elapsed_time_between_accepted_events_is_repeatably_measurable
+baseline_result: fixed_public_url_read_campaign_kept_but_public_search_surface_not_yet_isolated
+hypothesis: a_fixed_public_query_can_retrieve_at_least_one_rfc_editor_result_without_authenticated_or_sensitive_access
 measured_result:
-  elapsed_seconds: [3483.826231, 3764.983789, 3503.18998]
-  clock_source_class: RUNTIME_WALL_CLOCK
-  permission_class: RUNTIME_TIME_READ_AVAILABLE
+  query_runs: []
+  permission_class: NOT_YET_PROBED
   error_class: NONE
   operator_relay_minutes: 0
   changed_capability: false
   campaign_decision: false
   andon: false
-supported_claim: three_observed_elapsed_times_between_accepted_events
-claim_ceiling: observed_elapsed_time_only
-strongest_falsifier: required_time_value_is_unavailable
+supported_claim: none_yet
+claim_ceiling: fixed_public_web_search_query_only
+strongest_falsifier: fixed_query_execution_is_unavailable
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 consumer: [Reginleif, Ratatoskr]
-honest_flaw: observed_elapsed_time_includes_processing_delay
-last_event:
-  commit: e2e44df5b5adb59cfdac5a0f1f8abbbefed34943
-  path: state/coordination/experiments/carrier_surface_x11/events/20260807T123943Z_WAKE_TIMING_DRIFT_V1_WAKE_03.yaml
-  blob: 3f1e9b5225a00683b5f7362bbd783b53e3889ab6
-next_factor: wake_timing
-next_probe:
+honest_flaw: one_fixed_query_cannot_establish_search_breadth_freshness_ranking_stability_or_network_independence
+prior_campaign:
   experiment_id: X11_WAKE_TIMING_DRIFT_V1
-  campaign_wake: 4
-  mode: read_only_elapsed_time_measurement_then_campaign_decision
-  expected_current_version: 159
-updated_valid_time_utc: 2026-08-07T12:39:43Z
+  disposition: KEEP
+  supported_claim: four_observed_elapsed_times_between_accepted_events_are_measurable
+last_event:
+  commit: 54e07a5cd9e256c1e8b40d302cb35b4c8d156162
+  path: state/coordination/experiments/carrier_surface_x11/events/20260807T133957Z_WAKE_TIMING_DRIFT_V1_WAKE_04_DECISION_KEEP.yaml
+  blob: f5925f59b1f965e724f16241a92969d10b1e2728
+next_factor: web_research_search_surface
+next_probe:
+  experiment_id: X11_WEB_FIXED_QUERY_SEARCH_V1
+  campaign_wake: 1
+  mode: read_only_fixed_public_web_search
+  exact_query: site:rfc-editor.org RFC 2606 Reserved Top Level DNS Names
+  persist_only: [execution_success, rfc_editor_result_present, sanitized_result_count, permission_class, error_class, latency_when_exposed, operator_relay_minutes]
+  expected_current_version: 160
+updated_valid_time_utc: 2026-08-07T13:39:57Z
 sealed: false
 ---
