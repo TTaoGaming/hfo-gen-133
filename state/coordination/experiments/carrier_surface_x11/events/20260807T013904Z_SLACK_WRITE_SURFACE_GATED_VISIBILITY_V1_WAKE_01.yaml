@@ -1,0 +1,76 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+experiment_id: X11_SLACK_WRITE_SURFACE_GATED_VISIBILITY_V1
+event_type: PROBE_ACCEPTED
+expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+campaign_wake: 1
+target_wakes_before_decision: 4
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+current_version_before: 148
+current_version_after: 149
+accepted: true
+campaign_status: ACTIVE
+campaign_disposition: null
+baseline:
+  accepted_wakes: 0
+  supported_claim: none_yet_campaign_initialized
+  permission_class: null
+  error_class: null
+hypothesis: the_connected_Slack_surface_may_expose_a_message_write_action_readably_without_invoking_a_probe_only_send;_real_write_success_may_only_be_observed_when_a_separate_campaign_decision_or_Andon_already_authorizes_a_post
+controlled_factor: slack_write_surface_gated_visibility
+exact_probe:
+  surface: connected_Slack_tool_action_schema_only
+  action: inspect_only_whether_a_message_write_action_is_exposed
+  observed_action_name: slack_send_message
+  probe_only_send_invoked: false
+  interactive_login: false
+  message_content_read: false
+  unrelated_channel_metadata_read: false
+measured_result:
+  slack_message_write_action_exposed: true
+  real_write_observed_only_if_already_authorized: false
+  permission_class: CONNECTED_SLACK_MESSAGE_WRITE_ACTION_SCHEMA_EXPOSED
+  error_class: NONE
+  latency_ms: null
+  latency_note: tool_action_schema_discovery_exposes_no_discrete_provider_write_latency
+  operator_relay_minutes: 0
+  changed_capability: true
+  campaign_decision: false
+  andon: false
+supported_claim: the_connected_Slack_tool_surface_exposed_a_slack_send_message_action_schema_during_this_wake_without_invoking_a_probe_only_send
+claim_ceiling: action_schema_visibility_only_not_authenticated_write_permission_or_success;_no_probe_only_send_was_invoked_and_no_real_write_success_is_claimed
+strongest_falsifier: the_connected_Slack_tool_surface_does_not_expose_a_message_write_action_but_the_probe_reports_that_it_does
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer:
+  - Reginleif
+  - Ratatoskr
+same_provider_independence_claim: false
+honest_flaw: action_schema_visibility_does_not_establish_channel_specific_permission_or_provider_side_write_success_and_the_no_probe_only_send_gate_prevents_direct_write_testing_on_this_wake
+measurement_sealing_model: this_event_is_accepted_only_if_exact_event_readback_and_expected_SHA_CURRENT_update_and_readback_match;_CURRENT_is_the_authoritative_acceptance_receipt
+privacy_gate: persist_only_action_visibility_boolean_permission_error_class_latency_when_exposed_and_operator_relay_minutes_no_sensitive_message_content_or_unrelated_channel_metadata
+prohibited_effects_observed: {task_mutation: false, send: false, spend: false, deployment: false, merge: false, publication: false, account_or_security_change: false, destructive_deletion: false, sensitive_externalization: false}
+next_factor: slack_write_surface_gated_visibility
+next_probe:
+  experiment_id: X11_SLACK_WRITE_SURFACE_GATED_VISIBILITY_V1
+  campaign_wake: 2
+  mode: read_only_write_action_surface_visibility
+  exact_action: repeat_the_identical_inspection_only_of_whether_the_connected_Slack_tool_surface_exposes_a_message_write_action_without_invoking_a_probe_only_send;_if_a_separate_campaign_decision_or_Andon_requires_a_Slack_post_that_authorized_post_may_supply_real_write_success_evidence_without_an_extra_message
+  expected_current_version: 149
+  persist_only:
+    - slack_message_write_action_exposed
+    - real_write_observed_only_if_already_authorized
+    - permission_class
+    - error_class
+    - latency_when_exposed
+    - operator_relay_minutes
+  mutation_allowed: false
+  probe_only_send_allowed: false
+  post_only_changed_capability_campaign_decision_or_andon: true
+  sensitive_readback_externalization_allowed: false
+  same_provider_independence_claim_allowed: false
+slack_action: POST_CHANGED_CAPABILITY_AFTER_GIT_READBACK
+recorded_valid_time_utc: 2026-08-07T01:39:04Z
+sealed: true
+---
