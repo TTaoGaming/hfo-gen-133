@@ -1,21 +1,21 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
 experiment_id: X13_GCALENDAR_BOUNDED_EVENT_SEARCH_READONLY_016
-version: 163
-prior_version: 162
+version: 164
+prior_version: 163
 candidate: Google_Calendar_bounded_keyword_event_search
-campaign_wake: 3_of_4
-campaign_status: ACTIVE
+campaign_wake: 4_of_4
+campaign_status: CLOSED
 phase_1_status: PHASE1_ACCEPTED_WITH_GATES
 phase_2_status: PHASE2_ACCEPTED_WITH_GATES
 phase_3_status: PHASE3_ACCEPTED_WITH_GATES
-phase_4_status: PENDING
-phase_4_decision: PENDING
-operational_decision: PENDING
+phase_4_status: PHASE4_DECIDED
+phase_4_decision: ADOPT_WITH_GATES
+operational_decision: ADOPT_WITH_GATES_BOUNDED_DISCOVERY_CATALOG_ONLY
 wip: 1
-last_event_commit: 06b2b1c271f7c2df9998b21580dbc60dda6220b5
-last_event_path: state/coordination/experiments/cots_connector_x13/20260807T154735Z_GCALENDAR_BOUNDED_EVENT_SEARCH_PHASE3_EMPTY_SUCCESS.md
-last_event_blob_sha: 33327082a584b545731bbc1fd9fa99e5020d8b26
+last_event_commit: 65134d2fc6d13698080f8187149e7aba8a0498b0
+last_event_path: state/coordination/experiments/cots_connector_x13/20260807T164852Z_GCALENDAR_BOUNDED_EVENT_SEARCH_PHASE4_DECISION.md
+last_event_blob_sha: f3f366e1296a8cc5af3e4072ca10c8fc0223c46e
 last_event_readback: true
 campaign_calls: 3_BOUNDED_READONLY_GCALENDAR_SEARCHES
 successful_nonempty_calls: 2
@@ -45,28 +45,30 @@ durability: GIT_RECEIPT_DURABLE;CALENDAR_SEARCH_VIEW_MUTABLE
 observability: RETURN_COUNT_NEXT_PAGE_TOKEN_PRESENCE_CONTENT_FIELDS_ERROR_SHAPE_AND_EXTERNAL_CALL_TIME_VISIBLE;PROVIDER_REQUEST_ID_RATE_HEADERS_ACCESS_ROLE_EFFECTIVE_SCOPE_ACTUAL_QUOTA_DEBIT_NOT_SURFACED
 portability: MEDIUM_QUERY_TIME_WINDOW_AND_EVENT_RESOURCE_SEMANTICS_GOOGLE_SPECIFIC
 failure_behavior: TWO_NONEMPTY_SUCCESSES_PLUS_ONE_EMPTY_SUCCESS;EMPTY_RESULT_DISTINGUISHABLE_FROM_CONNECTOR_ERROR;NO_PERMISSION_DENIAL_PRIVATE_VISIBILITY_SECONDARY_SHARED_CALENDAR_VARIANCE_RATE_LIMIT_TRANSIENT_FAILURE_OR_PAGINATION_REPLAY_TESTED
-verifier: DIRECT_GOOGLE_CALENDAR_CONNECTOR_PHASE3_RECEIPT_PLUS_PHASE1_PHASE2_GIT_RECEIPTS_PLUS_GITHUB_EVENT_AND_CURRENT_READBACK
+verifier: PHASE1_PHASE2_PHASE3_DIRECT_CONNECTOR_RECEIPTS_PLUS_GITHUB_IMMUTABLE_EVENT_AND_CURRENT_READBACK
 consumer: CALENDAR_DISCOVERY_ELIGIBLE_BUT_NO_OPERATIONAL_CONSUMER_ACK
-adoption_credit: 0
+adoption_credit: 1_CATALOG_ONLY
 fitness_credit: 0
-mandatory_gate: EXPLICIT_BOUNDED_RFC3339_WINDOW;SMALL_MAX_RESULTS;READONLY_SEARCH;TIME_MIN_IS_EXCLUSIVE_LOWER_BOUND_ON_EVENT_END_AND_TIME_MAX_IS_EXCLUSIVE_UPPER_BOUND_ON_EVENT_START;DO_NOT_PERSIST_RAW_EVENT_IDS_TITLES_DESCRIPTIONS_ATTENDEES_LINKS_PAGE_TOKENS_OR_SYNTHETIC_QUERY;TREAT_RESULTS_AS_MUTABLE_DISCOVERY;NO_COMPLETENESS_OR ABSENCE_CLAIM_FROM_EMPTY_SUCCESS;CONSEQUENTIAL_CLAIMS_REQUIRE_READ_EVENT_OR_MATCHED_NATIVE_PROVIDER_WITNESS_WITH_PAGINATION_VISIBILITY_EVIDENCE;NO_UNBOUNDED_RETRY
-strongest_falsifier: MATCHED_NATIVE_GOOGLE_CALENDAR_V3_EVENTS_LIST_UNDER_SAME_EFFECTIVE_PRINCIPAL_AND_SAME_BOUNDED_QUERY_RETURNS_MATERIALLY_DIFFERENT_EMPTY_NONEMPTY_SHAPE_VISIBILITY_PAGINATION_OR_ERROR_AUTHORIZATION_OUTCOME_WITHOUT_INTERVENING_CALENDAR_MUTATION_OR_INDEXING_CHANGE
-honest_flaw: SYNTHETIC_TOKEN_WAS_INTENTIONALLY_DESIGNED_TO_MISS_SO_PHASE3_TESTED_ONLY_EMPTY_SUCCESS_SEMANTICS_NOT_PERMISSION_DENIAL_OR_PROVIDER_FAILURE;PRIVATE_EVENT_VISIBILITY_SECONDARY_SHARED_CALENDAR_VARIANCE_RECURRENCE_EXPANSION_PAGINATION_REPLAY_RATE_LIMIT_TRANSIENT_FAILURE_INDEX_LAG_NATIVE_PARITY_EFFECTIVE_SCOPE_ACTUAL_QUOTA_DEBIT_OPERATOR_SAVINGS_AND_OPERATIONAL_CONSUMER_VALUE_UNTESTED
-next_phase: PHASE4_DECISION_FROM_FROZEN_THREE_CALL_EVIDENCE_SET_NO_ADDITIONAL_CALENDAR_CANDIDATE_CALL
-valid_time_utc: 2026-08-07T15:47:35Z
-recorded_time_utc: 2026-08-07T15:47:35Z
+mandatory_gate: EXPLICIT_BOUNDED_RFC3339_WINDOW;SMALL_MAX_RESULTS;READONLY_SEARCH;TIME_MIN_IS_EXCLUSIVE_LOWER_BOUND_ON_EVENT_END_AND_TIME_MAX_IS_EXCLUSIVE_UPPER_BOUND_ON_EVENT_START;DO_NOT_PERSIST_RAW_EVENT_IDS_TITLES_DESCRIPTIONS_ATTENDEES_LINKS_PAGE_TOKENS_OR_SYNTHETIC_QUERY;TREAT_RESULTS_AS_MUTABLE_DISCOVERY;NO_COMPLETENESS_OR ABSENCE_CLAIM_FROM_EMPTY_SUCCESS;MISSING_NEXT_PAGE_TOKEN_IS_WRAPPER_LOCAL_NOT_GLOBAL_COMPLETENESS;CONSEQUENTIAL_CLAIMS_REQUIRE_READ_EVENT_OR_MATCHED_NATIVE_PROVIDER_WITNESS_WITH_PAGINATION_VISIBILITY_EVIDENCE;NO_UNBOUNDED_RETRY;PROVIDER_ERRORS_FAIL_CLOSED_NOT_AS_ABSENCE
+strongest_falsifier: MATCHED_NATIVE_GOOGLE_CALENDAR_V3_EVENTS_LIST_UNDER_SAME_EFFECTIVE_PRINCIPAL_AND_SAME_BOUNDED_QUERY_RETURNS_MATERIALLY_DIFFERENT_RESULT_SET_EMPTY_NONEMPTY_SHAPE_VISIBILITY_PAGINATION_OR_ERROR_AUTHORIZATION_OUTCOME_WITHOUT_INTERVENING_CALENDAR_MUTATION_OR_INDEXING_CHANGE
+honest_flaw: PERMISSION_DENIAL_PRIVATE_EVENT_VISIBILITY_SECONDARY_SHARED_CALENDAR_VARIANCE_RECURRENCE_EXPANSION_PAGINATION_REPLAY_RATE_LIMIT_TRANSIENT_FAILURE_INDEX_LAG_NATIVE_PARITY_EFFECTIVE_SCOPE_PROVIDER_REQUEST_ID_ACTUAL_QUOTA_DEBIT_OPERATOR_SAVINGS_AND_OPERATIONAL_CONSUMER_VALUE_UNTESTED;NONEMPTY_SEARCH_HYDRATES_EVENT_CONTENT_SO_SURFACE_IS_NOT_LEAST_DATA_ID_ONLY
+next_phase: NEW_CANDIDATE_PHASE1_NEXT_WAKE_WIP1
+valid_time_utc: 2026-08-07T16:48:52Z
+recorded_time_utc: 2026-08-07T16:48:52Z
 ---
 
-# X13 CURRENT v163
+# X13 CURRENT v164
 
-`X13_GCALENDAR_BOUNDED_EVENT_SEARCH_READONLY_016` is active at wake 3 of 4.
+`X13_GCALENDAR_BOUNDED_EVENT_SEARCH_READONLY_016` is closed at wake 4 of 4.
 
-Phase 3 decision: **PHASE3_ACCEPTED_WITH_GATES** for bounded read-only Calendar keyword discovery.
+Phase 4 decision: **ADOPT_WITH_GATES** for bounded read-only Google Calendar discovery/catalog use only.
 
-Measured evidence: one synthetic nonmatching search against `primary` in the same explicit RFC3339 window and `max_results=3` returned zero events with no next-page token and no connector error. There were zero retries, fallbacks, or Calendar mutations; external call time was 212 ms. This establishes only that the connector can represent an empty bounded search distinctly from an error.
+The decision used the frozen three-call evidence set and issued no additional Calendar candidate call. Two bounded nonempty searches succeeded and one bounded intentionally nonmatching search returned an empty success; no connector errors, retries, fallbacks, or Calendar mutations were observed. Phase-1 and Phase-2 request and ordered-result digests matched over the short replay interval.
 
-No Calendar-wide or completeness claim follows from the empty success. Search visibility, permissions, indexing, other calendars, recurrence behavior, and pagination remain potential sources of omission. Raw Calendar content and the synthetic query token were not persisted in the X13 receipt.
+Adoption credit is `1_CATALOG_ONLY`; fitness credit remains `0`. Measured operator-minute savings remain zero and no operational consumer has acknowledged value. Custom-code avoidance remains an unvalidated `60–180 LOC` estimate.
 
-Across the campaign: three bounded read-only candidate calls produced two nonempty successes and one empty success, with zero observed connector errors/retries/fallbacks/mutations. Adoption credit remains 0 and fitness credit remains 0. Measured operator-minute savings remain zero and no operational consumer has acknowledged value.
+Mandatory gates remain: explicit bounded RFC3339 window, small result cap, read-only use, correct overlap semantics, no raw Calendar-content persistence in X13 receipts, mutable-discovery treatment, no absence/completeness claim from empty success or missing wrapper page token, consequential claims require direct event retrieval or a matched native-provider witness, and provider errors fail closed with no unbounded retry.
 
-Next wake: Phase 4 decision from the frozen three-call evidence set only; issue no additional Calendar candidate call.
+Honest flaw: permission denial, private/shared-calendar variance, recurrence expansion, pagination replay, rate limiting, transient failure, index lag, native parity, effective OAuth scope/principal, provider request identity, actual quota debit, measured operator savings, and consumer value remain untested or unexposed. Nonempty search hydrates event content and therefore is not a least-data ID-only surface.
+
+Next wake: start exactly one new candidate at Phase 1 with WIP=1.
