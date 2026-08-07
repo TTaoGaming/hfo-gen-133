@@ -1,25 +1,25 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
 experiment_id: X13_GDRIVE_METADATA_SEARCH_READONLY_015
-version: 158
-prior_version: 157
+version: 159
+prior_version: 158
 candidate: Google_Drive_metadata_only_document_search
-campaign_wake: 2_of_4
+campaign_wake: 3_of_4
 campaign_status: ACTIVE
 phase_1_status: PHASE1_ACCEPTED_WITH_GATES
 phase_2_status: PHASE2_ACCEPTED_WITH_GATES
-phase_3_status: NOT_RUN
+phase_3_status: PHASE3_ACCEPTED_WITH_GATES
 phase_4_status: NOT_RUN
 phase_4_decision: UNKNOWN
 operational_decision: UNDECIDED
 wip: 1
-last_event_commit: b1e5c5dc1fcf2a0215c9a78f11fc9944052b77c3
-last_event_path: state/coordination/experiments/cots_connector_x13/20260807T104920Z_GDRIVE_METADATA_SEARCH_PHASE2_REPLAY.md
-last_event_blob_sha: 9cac491353dd5ed882b40cffc5cc4358b0e4f16b
+last_event_commit: 1a58950ece15df1d408f7714532493ca33841a4d
+last_event_path: state/coordination/experiments/cots_connector_x13/20260807T114602Z_GDRIVE_METADATA_SEARCH_PHASE3_EMPTY_SUCCESS.md
+last_event_blob_sha: 57664cbd08b90d777e4d933f54a2e7eb77a0904c
 last_event_readback: true
-campaign_calls: 2_BOUNDED_READONLY_GDRIVE_METADATA_SEARCHES
+campaign_calls: 3_BOUNDED_READONLY_GDRIVE_METADATA_SEARCHES
 successful_nonempty_calls: 2
-successful_empty_calls: 0
+successful_empty_calls: 1
 connector_errors_observed: 0
 retries_total: 0
 fallbacks_total: 0
@@ -31,37 +31,40 @@ request_digest_sha256: 10d22ab08a13d84dbe724be7a76fa44a50af51617bd6edbbb9248241c
 phase1_phase2_request_digest_match: true
 ordered_metadata_result_digest_sha256: 8638e3335ea369bfebeec28ca607021e8f74a3db623461d45be7b1781953708a
 phase1_phase2_ordered_result_digest_match: true
+phase3_request_digest_sha256: 973cb9c2a7816e976180d8eee8b94e02801d315918d937e1a1b58cd37c600d2b
+phase3_normalized_empty_result_shape_digest_sha256: dae25c8cdb5f678700acae1a8b6d062aaf97900fa5e663058e80ef395a9364dc
+phase3_connector_call_time_ms: 1129
 operator_minutes_removed_measured: 0
 custom_code_avoided_estimate: 50_to_150_LOC_UNVALIDATED
-paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
+paid_cost_usd_observed: 0_NO_PAID_COST_SURFACED
 direct_cost_or_quota_evidence: NONE_FROM_CONNECTOR
 provider_contract_quota_units: FILES_LIST_100_UNITS_IN_CURRENT_POST_MAY1_2026_STANDARDIZED_MODEL
 provider_contract_quota_regime_actual: UNKNOWN_CONNECTOR_PROJECT_MAY_BE_GRANDFATHERED_IF_USED_NOV2025_TO_APR2026
 credentials: CONNECTOR_MANAGED_EFFECTIVE_PRINCIPAL_AND_SCOPE_UNKNOWN
 durability: GIT_RECEIPT_DURABLE;DRIVE_SEARCH_VIEW_MUTABLE
-observability: METADATA_VISIBLE_WITHOUT_BODY_HYDRATION;IDENTICAL_REPLAY_ORDERED_DIGEST_STABLE;PROVIDER_REQUEST_ID_RATE_HEADERS_LATENCY_QUOTA_DEBIT_INCOMPLETE_SEARCH_AND_USABLE_PAGINATION_STATE_NOT_SURFACED
-portability: MEDIUM_DRIVE_QUERY_AND_CORPUS_SEMANTICS_PROVIDER_SPECIFIC
-failure_behavior: TWO_HAPPY_PATH_NONEMPTY_CALLS_ONLY;NEAR_TERM_REPEATABILITY_OBSERVED
-verifier: GITHUB_EVENT_AND_CURRENT_READBACK_PLUS_PHASE1_PHASE2_DIGEST_MATCH
+observability: METADATA_VISIBLE_WITHOUT_BODY_HYDRATION;IDENTICAL_PHASE1_PHASE2_REPLAY_ORDERED_DIGEST_STABLE;EMPTY_SUCCESS_DISTINGUISHABLE_FROM_CONNECTOR_ERROR_AT_WRAPPER_LEVEL;PHASE3_CALL_TIME_SURFACED;PROVIDER_REQUEST_ID_RATE_HEADERS_QUOTA_DEBIT_INCOMPLETE_SEARCH_EFFECTIVE_SCOPE_AND_AUTHORITATIVE_COMPLETENESS_STATE_NOT_SURFACED
+portability: MEDIUM_DRIVE_QUERY_CORPUS_AND_AUTHORIZATION_SEMANTICS_PROVIDER_SPECIFIC
+failure_behavior: TWO_NONEMPTY_SUCCESSES_PLUS_ONE_EMPTY_SUCCESS;NO_PERMISSION_DENIAL_TRANSIENT_FAILURE_OR_RATE_LIMIT_TESTED
+verifier: DIRECT_GOOGLE_DRIVE_CONNECTOR_RECEIPT_PLUS_GITHUB_EVENT_AND_CURRENT_READBACK
 consumer: X13_NEXT_WAKE_ONLY_NO_OPERATIONAL_CONSUMER_ACK
 adoption_credit: 0
 fitness_credit: 0
-mandatory_gate: METADATA_ONLY; BEST_EFFORT_FETCH_FALSE; SMALL_TOPN; DO_NOT_PERSIST_RAW_IDS_URLS_TITLES_PARENT_IDS; NO_COMPLETENESS_CLAIM_WITHOUT_PAGINATION_AND_INCOMPLETESEARCH_EVIDENCE; NO_UNBOUNDED_RETRY
-strongest_falsifier: IDENTICAL_REPLAY_OR_MATCHED_NATIVE_DRIVE_V3_FILES_LIST_UNDER_THE_SAME_EFFECTIVE_PRINCIPAL_MATERIALLY_DISAGREES_ON_RESULT_SCOPE_ORDERING_PAGINATION_OR_METADATA_ONLY_BEHAVIOR
-honest_flaw: TWO_MATCHING_THREE_RESULT_METADATA_CALLS_DO_NOT_ESTABLISH_COMPLETENESS_OR_SNAPSHOT_STABILITY; PAGINATION_EMPTY_SUCCESS_PERMISSION_DENIAL_SHARED_DRIVE_VARIANCE_TRANSIENT_FAILURE_RATE_LIMIT_NATIVE_PARITY_EFFECTIVE_SCOPE_ACTUAL_QUOTA_DEBIT_OPERATOR_SAVINGS_AND_CONSUMER_VALUE_REMAIN_UNTESTED_OR_UNEXPOSED
-next_phase: PHASE3_ONE_BOUNDED_SYNTHETIC_NONMATCHING_METADATA_ONLY_SEARCH_NO_RETRY_NO_AUTHORITATIVE_DRIVE_WIDE_ABSENCE_CLAIM
-valid_time_utc: 2026-08-07T10:49:20Z
-recorded_time_utc: 2026-08-07T10:49:20Z
+mandatory_gate: METADATA_ONLY; BEST_EFFORT_FETCH_FALSE; SMALL_TOPN; DO_NOT_PERSIST_RAW_IDS_URLS_TITLES_PARENT_IDS_OR_PROBE_TOKENS; EMPTY_SUCCESS_IS_NOT_DRIVE_WIDE_ABSENCE; NO_COMPLETENESS_CLAIM_WITHOUT_PAGINATION_AND_INCOMPLETESEARCH_EVIDENCE; NO_UNBOUNDED_RETRY
+strongest_falsifier: MATCHED_NATIVE_DRIVE_V3_FILES_LIST_UNDER_THE_SAME_EFFECTIVE_PRINCIPAL_RETURNS_A_MATCH_FOR_THE_SYNTHETIC_QUERY_OR_MATERIALLY_DISAGREES_ON_QUERY_SCOPE_AUTHORIZATION_PAGINATION_OR_EMPTY_RESULT_SEMANTICS
+honest_flaw: SYNTHETIC_TOKEN_WAS DESIGNED_TO_MISS_SO_PHASE3_TESTS_ONLY_EMPTY_SUCCESS_SHAPE; PERMISSION_DENIAL_SHARED_DRIVE_VARIANCE_PAGINATION_REPLAY_INCOMPLETESEARCH_RATE_LIMIT_TRANSIENT_FAILURE_INDEX_LAG_NATIVE_PARITY_EFFECTIVE_SCOPE_ACTUAL_QUOTA_DEBIT_OPERATOR_SAVINGS_AND_CONSUMER_VALUE_REMAIN_UNTESTED_OR_UNEXPOSED
+next_phase: PHASE4_DECIDE_FROM_EXISTING_THREE_CALL_EVIDENCE_ONLY_NO_ADDITIONAL_GDRIVE_CANDIDATE_CALL
+valid_time_utc: 2026-08-07T11:46:02Z
+recorded_time_utc: 2026-08-07T11:46:02Z
 ---
 
-# X13 CURRENT v158
+# X13 CURRENT v159
 
-`X13_GDRIVE_METADATA_SEARCH_READONLY_015` is active at wake 2 of 4 with Phase 2 accepted with gates.
+`X13_GDRIVE_METADATA_SEARCH_READONLY_015` is active at wake 3 of 4 with Phase 3 accepted with gates.
 
-The identical bounded metadata-only document search was replayed once. It again returned three metadata records with no document-body hydration requested or observed. The canonical request digest exactly matched Phase 1, and the ordered digest over returned `(id,title)` pairs also exactly matched Phase 1.
+A single bounded synthetic nonmatching metadata-only document search returned zero results while the connector error, error-code, and HTTP-status error fields were all null. No retry, fallback, Drive mutation, or document-body hydration occurred. The connector surfaced 1129 ms external call time for this wake.
 
-This establishes narrow near-term repeatability for this one bounded query only. It does not establish Drive-wide completeness, immutable ordering, or snapshot semantics. Provider request identity, effective OAuth principal/scopes, latency, quota debit, `incompleteSearch`, and usable pagination state remain unexposed by the connector return.
+This establishes only that the wrapper can represent an empty successful search distinctly from a connector error. It does not establish Drive-wide absence or completeness because effective OAuth identity/scopes, raw provider request identity, `incompleteSearch`, and authoritative pagination/completeness state remain unexposed.
 
-Raw Drive identifiers, URLs, titles, and parent IDs were not persisted in the Git receipt. Adoption credit 0; fitness credit 0.
+Across the campaign there are now two bounded nonempty successes and one bounded empty success, with zero observed connector errors, retries, fallbacks, mutations, or body hydration. Raw Drive identifiers, URLs, titles, parent IDs, pagination tokens, and the synthetic probe token were not persisted. Adoption credit 0; fitness credit 0.
 
-Next wake: one bounded synthetic nonmatching metadata-only search, no retry, and no authoritative Drive-wide absence claim.
+Next wake: Phase 4 decision from the existing three-call evidence set only; no additional Drive candidate call.
