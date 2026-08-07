@@ -1,0 +1,41 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+experiment_id: X11_SLACK_WRITE_SURFACE_GATED_VISIBILITY_V1
+expected_task_id: 6a55089a9adc8191bda54541f7f9effa
+campaign_wake: 2
+accepted_wake: true
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+baseline: wake_1_exposed_the_connected_Slack_slack_send_message_action_schema_without_invoking_a_send;_no_authenticated_write_success_or_channel_specific_permission_was_established
+hypothesis: the_connected_Slack_surface_will_continue_to_expose_a_message_write_action_readably_without_invoking_a_probe_only_send
+controlled_factor: slack_write_surface_gated_visibility
+exact_probe: inspect_only_whether_the_connected_Slack_tool_surface_exposes_a_slack_send_message_action_schema;_do_not_invoke_send;_count_real_write_only_if_a_separate_campaign_decision_or_Andon_already_authorizes_a_post
+measured_result:
+  slack_message_write_action_exposed: true
+  real_write_observed_only_if_already_authorized: false
+  permission_class: CONNECTED_SLACK_MESSAGE_WRITE_ACTION_SCHEMA_EXPOSED
+  error_class: NONE
+  latency_ms: null
+  latency_note: tool_action_schema_discovery_exposes_no_discrete_provider_write_latency
+  operator_relay_minutes: 0
+  changed_capability: false
+  campaign_decision: false
+  andon: false
+strongest_falsifier: the_connected_Slack_tool_surface_does_not_expose_a_slack_send_message_action_but_the_probe_reports_that_it_does
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer:
+  - Reginleif
+  - Ratatoskr
+honest_flaw: action_schema_visibility_does_not_establish_authenticated_or_channel_specific_write_permission_or_provider_side_write_success;_the_no_probe_only_send_gate_prevents_direct_write_testing_except_on_separately_authorized_campaign_decision_or_Andon_posts
+claim_ceiling: action_schema_visibility_only_not_authenticated_write_permission_or_success;_no_probe_only_send_was_invoked_and_no_real_write_success_is_claimed
+prior_current:
+  expected_version: 149
+  blob_sha: a516e9c02b3d360140ef2f931739fb0c704836de
+next_expected_version: 150
+slack_post_required: false
+valid_time_utc: 2026-08-07T02:39:17Z
+sealed: true
+---
+
+Wake 2 repeated the identical schema-only Slack write-surface probe. The slack_send_message action schema remained exposed; no send was invoked, no authenticated write success is claimed, and the result is unchanged from wake 1.
