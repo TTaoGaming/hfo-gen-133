@@ -1,24 +1,24 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
 experiment_id: X13_GDRIVE_METADATA_SEARCH_READONLY_015
-version: 157
-prior_version: 156
+version: 158
+prior_version: 157
 candidate: Google_Drive_metadata_only_document_search
-campaign_wake: 1_of_4
+campaign_wake: 2_of_4
 campaign_status: ACTIVE
 phase_1_status: PHASE1_ACCEPTED_WITH_GATES
-phase_2_status: NOT_RUN
+phase_2_status: PHASE2_ACCEPTED_WITH_GATES
 phase_3_status: NOT_RUN
 phase_4_status: NOT_RUN
 phase_4_decision: UNKNOWN
 operational_decision: UNDECIDED
 wip: 1
-last_event_commit: 31dd309588156010ed14e10d8baa928723336d8b
-last_event_path: state/coordination/experiments/cots_connector_x13/20260807T094914Z_GDRIVE_METADATA_SEARCH_PHASE1_BASELINE.md
-last_event_blob_sha: 458dc4281203580719856d8b54860c0237eb5f0d
+last_event_commit: b1e5c5dc1fcf2a0215c9a78f11fc9944052b77c3
+last_event_path: state/coordination/experiments/cots_connector_x13/20260807T104920Z_GDRIVE_METADATA_SEARCH_PHASE2_REPLAY.md
+last_event_blob_sha: 9cac491353dd5ed882b40cffc5cc4358b0e4f16b
 last_event_readback: true
-campaign_calls: 1_BOUNDED_READONLY_GDRIVE_METADATA_SEARCH
-successful_nonempty_calls: 1
+campaign_calls: 2_BOUNDED_READONLY_GDRIVE_METADATA_SEARCHES
+successful_nonempty_calls: 2
 successful_empty_calls: 0
 connector_errors_observed: 0
 retries_total: 0
@@ -28,7 +28,9 @@ content_hydration_requested: false
 content_hydration_observed: false
 raw_drive_metadata_persisted_in_receipt: false
 request_digest_sha256: 10d22ab08a13d84dbe724be7a76fa44a50af51617bd6edbbb9248241cd882ceb
+phase1_phase2_request_digest_match: true
 ordered_metadata_result_digest_sha256: 8638e3335ea369bfebeec28ca607021e8f74a3db623461d45be7b1781953708a
+phase1_phase2_ordered_result_digest_match: true
 operator_minutes_removed_measured: 0
 custom_code_avoided_estimate: 50_to_150_LOC_UNVALIDATED
 paid_cost_usd_observed: 0_NO_CHARGE_SURFACED
@@ -37,29 +39,29 @@ provider_contract_quota_units: FILES_LIST_100_UNITS_IN_CURRENT_POST_MAY1_2026_ST
 provider_contract_quota_regime_actual: UNKNOWN_CONNECTOR_PROJECT_MAY_BE_GRANDFATHERED_IF_USED_NOV2025_TO_APR2026
 credentials: CONNECTOR_MANAGED_EFFECTIVE_PRINCIPAL_AND_SCOPE_UNKNOWN
 durability: GIT_RECEIPT_DURABLE;DRIVE_SEARCH_VIEW_MUTABLE
-observability: METADATA_VISIBLE_WITHOUT_BODY_HYDRATION;PROVIDER_REQUEST_ID_RATE_HEADERS_LATENCY_QUOTA_DEBIT_AND_INCOMPLETE_SEARCH_NOT_SURFACED
+observability: METADATA_VISIBLE_WITHOUT_BODY_HYDRATION;IDENTICAL_REPLAY_ORDERED_DIGEST_STABLE;PROVIDER_REQUEST_ID_RATE_HEADERS_LATENCY_QUOTA_DEBIT_INCOMPLETE_SEARCH_AND_USABLE_PAGINATION_STATE_NOT_SURFACED
 portability: MEDIUM_DRIVE_QUERY_AND_CORPUS_SEMANTICS_PROVIDER_SPECIFIC
-failure_behavior: PHASE1_HAPPY_PATH_ONLY
-verifier: GITHUB_EVENT_AND_CURRENT_READBACK_PLUS_GOOGLE_DRIVE_V3_PRIMARY_DOCS
+failure_behavior: TWO_HAPPY_PATH_NONEMPTY_CALLS_ONLY;NEAR_TERM_REPEATABILITY_OBSERVED
+verifier: GITHUB_EVENT_AND_CURRENT_READBACK_PLUS_PHASE1_PHASE2_DIGEST_MATCH
 consumer: X13_NEXT_WAKE_ONLY_NO_OPERATIONAL_CONSUMER_ACK
 adoption_credit: 0
 fitness_credit: 0
 mandatory_gate: METADATA_ONLY; BEST_EFFORT_FETCH_FALSE; SMALL_TOPN; DO_NOT_PERSIST_RAW_IDS_URLS_TITLES_PARENT_IDS; NO_COMPLETENESS_CLAIM_WITHOUT_PAGINATION_AND_INCOMPLETESEARCH_EVIDENCE; NO_UNBOUNDED_RETRY
-strongest_falsifier: MATCHED_NATIVE_DRIVE_V3_FILES_LIST_UNDER_THE_SAME_EFFECTIVE_PRINCIPAL_MATERIALLY_DISAGREES_ON_RESULT_SCOPE_ORDERING_PAGINATION_OR_METADATA_ONLY_BEHAVIOR
-honest_flaw: ONE_SUCCESSFUL_BOUNDED_METADATA_QUERY_ONLY; PAGINATION_COMPLETENESS_PERMISSION_DENIAL_SHARED_DRIVE_VARIANCE_TRANSIENT_FAILURE_RATE_LIMIT_NATIVE_PARITY_EFFECTIVE_SCOPE_ACTUAL_QUOTA_DEBIT_OPERATOR_SAVINGS_AND_CONSUMER_VALUE_REMAIN_UNTESTED_OR_UNEXPOSED
-next_phase: PHASE2_IDENTICAL_BOUNDED_METADATA_ONLY_REPLAY_AND_DIGEST_COMPARISON
-valid_time_utc: 2026-08-07T09:49:14Z
-recorded_time_utc: 2026-08-07T09:49:14Z
+strongest_falsifier: IDENTICAL_REPLAY_OR_MATCHED_NATIVE_DRIVE_V3_FILES_LIST_UNDER_THE_SAME_EFFECTIVE_PRINCIPAL_MATERIALLY_DISAGREES_ON_RESULT_SCOPE_ORDERING_PAGINATION_OR_METADATA_ONLY_BEHAVIOR
+honest_flaw: TWO_MATCHING_THREE_RESULT_METADATA_CALLS_DO_NOT_ESTABLISH_COMPLETENESS_OR_SNAPSHOT_STABILITY; PAGINATION_EMPTY_SUCCESS_PERMISSION_DENIAL_SHARED_DRIVE_VARIANCE_TRANSIENT_FAILURE_RATE_LIMIT_NATIVE_PARITY_EFFECTIVE_SCOPE_ACTUAL_QUOTA_DEBIT_OPERATOR_SAVINGS_AND_CONSUMER_VALUE_REMAIN_UNTESTED_OR_UNEXPOSED
+next_phase: PHASE3_ONE_BOUNDED_SYNTHETIC_NONMATCHING_METADATA_ONLY_SEARCH_NO_RETRY_NO_AUTHORITATIVE_DRIVE_WIDE_ABSENCE_CLAIM
+valid_time_utc: 2026-08-07T10:49:20Z
+recorded_time_utc: 2026-08-07T10:49:20Z
 ---
 
-# X13 CURRENT v157
+# X13 CURRENT v158
 
-`X13_GDRIVE_METADATA_SEARCH_READONLY_015` is active at wake 1 of 4 with Phase 1 accepted with gates.
+`X13_GDRIVE_METADATA_SEARCH_READONLY_015` is active at wake 2 of 4 with Phase 2 accepted with gates.
 
-One bounded metadata-only document search returned three Drive metadata records with no document-body hydration requested or observed. Raw Drive identifiers, URLs, titles, and parent IDs were not persisted in the Git receipt; only counts and digests were retained.
+The identical bounded metadata-only document search was replayed once. It again returned three metadata records with no document-body hydration requested or observed. The canonical request digest exactly matched Phase 1, and the ordered digest over returned `(id,title)` pairs also exactly matched Phase 1.
 
-The connector gives a useful least-data discovery surface but omits several native `files.list` observability signals in the returned resource, including provider request identity, effective OAuth principal/scopes, latency, quota debit, and `incompleteSearch`; pagination state was not surfaced in this call. Therefore this result is not completeness evidence.
+This establishes narrow near-term repeatability for this one bounded query only. It does not establish Drive-wide completeness, immutable ordering, or snapshot semantics. Provider request identity, effective OAuth principal/scopes, latency, quota debit, `incompleteSearch`, and usable pagination state remain unexposed by the connector return.
 
-Current Google Drive docs assign `files.list` 100 quota units under the post-May-1-2026 standardized model, but projects that used Drive API between November 2025 and April 2026 may retain prior quotas. The connector project regime and actual debit are unknown.
+Raw Drive identifiers, URLs, titles, and parent IDs were not persisted in the Git receipt. Adoption credit 0; fitness credit 0.
 
-Adoption credit 0; fitness credit 0. Next wake: identical bounded metadata-only replay and ordered digest comparison.
+Next wake: one bounded synthetic nonmatching metadata-only search, no retry, and no authoritative Drive-wide absence claim.
