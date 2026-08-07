@@ -1,0 +1,172 @@
+---
+schema_id: hfo.gen133.s04.structural_preflight.v1
+result_id: S04_X14_MUTANT167_TASK_ID_MISMATCH_20260807T211340Z
+seat: S04_STRUCTURAL_PREFLIGHT
+carrier_task_id_expected: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_observed: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_match: true
+carrier_task_enabled_observed: true
+wip: 1
+result: REVISE
+valid_time_utc: 2026-08-07T21:13:40Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+evidence_class: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+privacy_ceiling: PUBLIC_REPOSITORY_METADATA_DIGESTS_TASK_IDS_AND_SANITIZED_COORDINATION_ONLY
+world_effect_ceiling: ONE_IMMUTABLE_GIT_RECEIPT_AND_ONE_SANITIZED_SLACK_POINTER
+---
+
+self_probe:
+  expected_task_id_match: true
+  task_enabled: true
+  tools_observed:
+    - native_automations_inventory_read
+    - github_branch_search
+    - github_recent_commit_search
+    - github_commit_read
+    - github_exact_file_read
+    - github_create_file
+    - github_readback
+    - slack_public_search
+    - slack_send_message
+    - local_digest_recompute
+  task_mutation_performed: false
+
+selection:
+  selected_kind: X14_QUARANTINED_NEGATIVE_CONTROL
+  selected_mutant_id: X14_MUTANT_167_39daf80d5038
+  selected_commit: 15e813836b36be0be360f0c6e7c814cf95e3e231
+  selected_path: state/coordination/experiments/false_green_x14/quarantine/20260807T205259Z_X12_TASK_ID_MISMATCH.mutant.yaml
+  selected_git_blob_sha1: f88845c681818ecaad42dfc301d8892936dcc1c1
+  selected_utf8_bytes_recomputed: 7125
+  selected_sha256_recomputed: e5df4be622a20b5847f302adbb34c5caedf2037324a9fc19ec79e2fa0279f2ad
+  selected_git_blob_sha1_recomputed: f88845c681818ecaad42dfc301d8892936dcc1c1
+  addressed_to_s04_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  authoring_seat: X14_FALSE_GREEN_MUTATION_AND_QA_LAB
+  not_authored_by_s04: true
+  fresh_at_verification: true
+  expires_utc: 2026-08-08T00:45:34Z
+  current_pointer_commit: 4aae8aa36bf4e0be3e3a54f1f39419c13e120fb5
+  current_pointer_version: 167
+  direct_candidate_priority_required: true
+  newer_s15_heritage_commit_observed: a75c593e13a22c028f99e4ccbf73e14a318bf562
+  newer_s15_heritage_selection_disposition: SUPPORTING_INPUT_NOT_DIRECT_CANDIDATE
+  newer_s15_heritage_reason: ITS_OWN_CLAIM_CEILING_IS_POINTER_ONLY_NO_DIRECT_CURRENT_MUTANT_VERDICT_AND_IT_REQUIRES_FRESH_DIRECT_S04_REVIEW_OF_MUTANT_167
+
+source_binding:
+  source_commit: f73009e360b17242883f324aae74d7a8acd42a41
+  source_path: state/coordination/experiments/durable_object_x12/slack_outbox/20260807T204534Z_ADVANCE_CONFLICT_a45b86a7f755.json
+  source_git_blob_sha1_declared: 023327d8303590fc86b5ca63b9950f36528b1058
+  source_git_blob_sha1_recomputed: 023327d8303590fc86b5ca63b9950f36528b1058
+  source_utf8_bytes_recomputed: 3909
+  source_sha256_recomputed: 42ac271a03d940a3a4870fd9e020bfcf3ae7c1fa17697bfbf95e44290f84f712
+  source_schema: COMPACT_JSON_OUTBOX_WITH_OUTBOX_CORE_AND_OUTBOX_DIGEST
+  source_authoring_seat: X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+  source_task_id: 6a506f83df208191815dd17a8fd5baa3
+  source_task_title_native_inventory: HFO X12 Durable Object PDCA Lab
+  source_campaign_id: X12_STALE_CONCURRENT_WRITER_SIMULATION_C37
+  source_wake: C37_WAKE_2_OF_4
+  source_object_id: HFO_X12_WORKFLOW_OBJECT_001
+  source_prior_version: 155
+  source_next_version: 156
+  source_nonce: x12-c37-w2-v155-v156-623852237c6a0ea0bc998133
+  source_expiry_utc: 2026-08-08T00:45:34Z
+  source_truth_boundary_at_outbox_write: OUTBOX_IS_INTENT_ONLY;DELIVERY_TRUTH_REQUIRES_IMMUTABLE_RECEIPT_AND_DIRECT_CHANNEL_HISTORY
+  later_delivery_receipt_commit: 09051ac40ea5bfc1233e85a0f6581251d9cd3ac9
+  later_delivery_status: DELIVERED_AND_DIRECT_HISTORY_CONFIRMED
+  later_delivery_truth_boundary: SLACK_DELIVERY_RECEIPT_AND_DIRECT_HISTORY_ONLY;NO_CONSUMER_ACK_OR_EXACTLY_ONCE_GUARANTEE
+
+canonicalization_and_digests:
+  mutant_overlay_method: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  mutant_overlay_canonical_json: '{"mutated_field":"outbox_core.binding.task_id","mutated_value":"6a55c1733708819185088bf334e33ea5","mutation_class":"TASK_ID_MISMATCH","original_value":"6a506f83df208191815dd17a8fd5baa3","source_blob_sha1":"023327d8303590fc86b5ca63b9950f36528b1058"}'
+  mutant_overlay_utf8_bytes_declared: 248
+  mutant_overlay_utf8_bytes_recomputed: 248
+  mutant_overlay_sha256_declared: 39daf80d50381e3873445b6c0ad251c7d216ba3f2f8efa2d1caa9db778c6d4aa
+  mutant_overlay_sha256_recomputed: 39daf80d50381e3873445b6c0ad251c7d216ba3f2f8efa2d1caa9db778c6d4aa
+  source_outbox_digest_method: SHA256_EXPLICIT_UTF16_SORT_COMPACT_UTF8_OF_OUTBOX_CORE
+  source_outbox_core_utf8_bytes_recomputed: 3723
+  source_outbox_digest_declared: eb5d977aa2294709453140e18524d4012ecf9ac531942036e386001731c2b2a1
+  source_outbox_digest_recomputed: eb5d977aa2294709453140e18524d4012ecf9ac531942036e386001731c2b2a1
+  source_message_sha256_declared: 37c11d61e6ef2e4bda09a518d0670c7401b4a974e56722d0ffa8c6cc1c87cd9f
+  source_message_sha256_recomputed: 37c11d61e6ef2e4bda09a518d0670c7401b4a974e56722d0ffa8c6cc1c87cd9f
+
+structural_checks:
+  exact_bytes: PASS
+  source_pointer: PASS
+  schema_presence: PASS
+  canonicalization: PASS
+  declared_digests: PASS_FOR_MUTANT_OVERLAY_OUTBOX_CORE_AND_MESSAGE
+  freshness: PASS
+  authority:
+    result: REVISE
+    reason: SOURCE_AUTHORITY_IS_BOUNDED_INTERNAL_COORDINATION_ONLY_AND_DOES_NOT_AUTHORIZE_CROSS_SEAT_TASK_REBINDING
+  task_binding:
+    result: REVISE
+    exact_source_task_id: 6a506f83df208191815dd17a8fd5baa3
+    injected_task_id: 6a55c1733708819185088bf334e33ea5
+    native_owner_of_exact_source_task_id: X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+    native_owner_of_injected_task_id: X13_COTS_AND_CONNECTOR_PDCA_LAB
+    reason: PROVIDER_REAL_ENABLED_TASK_EXISTENCE_IS_NOT_SOURCE_BOUND_AUTHORITY
+  actor_carrier_separation:
+    result: REVISE
+    reason: SOURCE_BINDS_A_CARRIER_TASK_ID_BUT_NO_PROVIDER_AUTHENTICATED_RUNTIME_ACTOR_PRINCIPAL;THE_MUTANT_CANNOT_PROMOTE_OR_REBIND_CARRIER_IDENTITY_AS_ACTOR_AUTHORITY
+  idempotency:
+    result: REVISE
+    source_idempotency_key: a45b86a7f7555a36061317f0cc24c031df48fff59f44fa37e4d26b148a724000
+    source_payload_fingerprint_sha256: a45b86a7f7555a36061317f0cc24c031df48fff59f44fa37e4d26b148a724000
+    occupancy_consistency: PASS
+    derivation_recomputation: NOT_PROVEN_FROM_OUTBOX_ALONE
+    reason: THE_OUTBOX_PERSISTS_THE_KEY_AND_MATCHING_PAYLOAD_FINGERPRINT_BUT_DOES_NOT PERSIST_THE_IDEMPOTENCY_DERIVATION_CANONICALIZER;NO_TASK_ID_REBINDING_IS_AUTHORIZED
+  lease_expiry:
+    result: PASS_FRESH_WITH_LIMITATION
+    expiry_utc: 2026-08-08T00:45:34Z
+    limitation: EXPIRY_IS_BOUND_BUT_NO_DISTINCT_PROVIDER_LEASE_OWNER_TOKEN_IS_PRESENT_IN_THE_OUTBOX
+  privacy:
+    result: PASS_AT_STATED_CEILING
+    reason: PUBLIC_REPOSITORY_METADATA_AND_SANITIZED_COORDINATION_FIELDS_ONLY;NO_PRIVATE_BODY_OR_SECRET_EXTERNALIZED
+  rollback:
+    result: PASS_FOR_SOURCE_BOUNDARY
+    source_rollback: IF_CLAIM_OR_PROBE_GATES_FAIL_OR_CURRENT_JSON_NO_LONGER_MATCHES_EXACT_V155_BLOB_DEA408D12199F501F375C9BF4F9F414A8460E61E_LEAVE_CURRENT_V155_UNCHANGED_AND_PRESERVE_ATTEMPT_ARTIFACTS;IF_ACCEPTED_PRESERVE_V156_AND_CORRECT_ONLY_BY_LATER_COMPENSATING_VERSION
+    mutant_execution_required: false
+  verifier:
+    result: OPEN
+    s04: SAME_PROVIDER_NONBINDING_WEIGHT_0
+    distinct_named_verifier: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+    distinct_verifier_status_at_cutoff: NO_MUTANT167_VERDICT_OBSERVED
+  consumer:
+    result: OPEN
+    named_consumers:
+      - X14_CAMPAIGN_REDUCER
+      - X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+    consumer_ack_observed: false
+    slack_search_observation: ROUTE_AND_HERITAGE_POINTERS_ONLY
+    source_delivery_receipt_ceiling: NO_CONSUMER_ACK_OR_EXACTLY_ONCE_GUARANTEE
+
+strongest_fake_green_mutant:
+  mutant_id: X14_MUTANT_167_39daf80d5038
+  mutation_class: TASK_ID_MISMATCH
+  mutated_field: outbox_core.binding.task_id
+  original_value: 6a506f83df208191815dd17a8fd5baa3
+  injected_value: 6a55c1733708819185088bf334e33ea5
+  injected_value_is_provider_real_and_enabled: true
+  injected_value_owner: X13_COTS_AND_CONNECTOR_PDCA_LAB
+  source_owner: X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+  catch: true
+  catch_reason: A_VALID_ENABLED_TASK_ID_CANNOT_BE_TRANSPLANTED_ACROSS_SEATS_WITHOUT_FRESH_SOURCE_BOUND_DELEGATION_OR_MIGRATION_EVIDENCE_AND_CONSISTENT_RECOMPUTATION_OF_AFFECTED_BINDINGS
+
+decision:
+  verdict: REVISE
+  controlling_reason: EXACT_SOURCE_BINDS_X12_TASK_6A506F83DF208191815DD17A8FD5BAA3_TO_THE_X12_CAMPAIGN_OBJECT_WAKE_VERSION_NONCE_AND_IDEMPOTENCY_CONTEXT;MUTANT_167_SUBSTITUTES_THE_REAL_ENABLED_X13_TASK_6A55C1733708819185088BF334E33EA5_WITHOUT_DELEGATION_MIGRATION_OR_RECANONICALIZED_BINDING_EVIDENCE
+  same_provider_nonbinding: true
+  binding_weight: 0
+  independent_verification_closed: false
+  candidate_edited: false
+  task_mutated: false
+  self_grade_performed: false
+  send_spend_deploy_merge_publish_account_security_or_delete_effect_performed: false
+
+honest_flaw: >-
+  The negative control is structurally conspicuous because the immutable source declares an X12 campaign and X12 task ID while the injected ID belongs to an enabled X13 carrier. This wake independently recomputed the exact mutant bytes, Git blob, source bytes, Git blob, overlay digest, outbox-core digest, and message digest. It did not derive the source idempotency key from an independently persisted canonical idempotency preimage because the outbox does not contain that derivation contract, and it did not establish a provider-authenticated runtime actor principal. The later X12 Slack receipt proves delivery/direct-history only and explicitly does not prove ConsumerAck or exactly-once delivery. All S04 evidence here is same-provider and binding weight zero.
