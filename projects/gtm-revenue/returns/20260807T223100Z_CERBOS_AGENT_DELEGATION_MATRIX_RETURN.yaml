@@ -1,0 +1,114 @@
+schema_id: hfo.gen133.gtm.producer_return.v0_1
+result: KIT_RETURNED
+valid_time_utc: 2026-08-07T22:31:00Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+seat: S07_GTM_PROOF_KIT_BUILDER
+carrier: ChatGPT_cloud_S07
+task_id_expected: 6a506f6dc5c08191b95f1707d7f00c2d
+task_id_observed: 6a506f6dc5c08191b95f1707d7f00c2d
+task_id_match: true
+wip: 1
+work_item_id: S08-PRODUCT_PLATFORM-CERBOS-20260807T212934Z
+target: Cerbos
+species: PRODUCT_PLATFORM
+route: RELATIONSHIP_ONLY_PRODUCT_ECOSYSTEM
+privacy: PUBLIC_SOURCES_ONLY
+external_effects_performed: NONE
+no_send_status: NO_SEND_NO_APPLICATION_NO_EXTERNAL_PUBLICATION
+
+claim:
+  path: projects/gtm-revenue/claims/20260807T221121Z_CERBOS_AGENT_DELEGATION_MATRIX_ADMISSION.claim.yaml
+  commit: 6fceea85ceb2f7b0a0249ac4417fcf5732674299
+  claim_id: S02_GTM_CERBOS_AGENT_DELEGATION_MATRIX_ADMISSION_20260807T221121Z
+  idempotency_sha256: 6a29de86fd186d2980f99084d852ef0830fff9081f7316b02a898949c80dd5ff
+  acceptance_sha256: 237e85087e0da37d5e018df4eae727bfe17c97ca8c1cf2f4fe5d0b309ac4f460
+  expiry_utc: 2026-08-08T02:11:21Z
+
+source_card:
+  commit: 4efdaada8747e4c3335708ceab3ac5b0276232cd
+  path: projects/gtm-revenue/research/20260807T212934Z_PRODUCT_PLATFORM_CERBOS_TARGET_CARD.md
+  git_blob_sha1: 45f229adb85856c1070bf1b280d720b57a35d906
+  source_binding_digest_sha256: efca83b0cce1fbf342f22533ba27bff5c06ac22c605da5ca374bc09d7ab6e66b
+  source_expiry_utc: 2026-08-14T21:29:34Z
+
+candidate:
+  commit: 2928713b894bc5e45ffbc275954bc4f47815ea95
+  path: projects/gtm-revenue/kits/cerbos/20260807T222600Z_AGENT_DELEGATION_NEGATIVE_CONTROL_MATRIX.md
+  git_blob_sha1: 905926d4f4cd8e3ce8b0851bbc4a7985663cd44b
+  readback: PASS
+  status: CANDIDATE_UNVERIFIED
+  artifact: Agent Delegation Negative-Control Matrix — MCP × A2A × Gateway
+  acceptance_summary:
+    negative_controls: 10
+    required_core_control_families_present: 8_of_8
+    why_this_may_matter_present: true
+    how_to_use_in_2_minutes_present: true
+    facts_vs_hypothesis_separated: true
+    assumptions_present: true
+    strongest_falsifier_present: true
+    evidence_links_present: true
+    optional_outreach_note_present: true
+    outreach_note_status: OPERATOR_REVIEW_ONLY_NO_SEND
+    deeper_assurance_pack_built: false
+
+changed_paths:
+  - projects/gtm-revenue/kits/cerbos/20260807T222600Z_AGENT_DELEGATION_NEGATIVE_CONTROL_MATRIX.md
+  - projects/gtm-revenue/returns/20260807T223100Z_CERBOS_AGENT_DELEGATION_MATRIX_RETURN.yaml
+
+source_recheck:
+  rechecked_utc: 2026-08-07T22:29:00Z
+  claim_ceiling: PUBLIC_FIRST_PARTY_DOCUMENTATION_ONLY
+  supported:
+    - Cerbos publicly documents Agent Gateway authorization for MCP, A2A, and LLM traffic with runtime context and per-decision audit logging.
+    - Cerbos publicly documents A2A authorization using user identity, source agent, target agent, task type, and runtime context, with each inter-agent interaction individually authorized.
+    - Cerbos publicly documents MCP authorization at tool/data-access boundaries and explicitly discusses privilege escalation through unrestricted tool access.
+    - Cerbos Hub publicly documents managed validation/testing/signing/distribution of policy changes plus policy execution traces.
+  excluded:
+    - No evidence establishes that Cerbos has a current production defect, customer incident, compliance failure, missing test suite, demand for external services, or savings opportunity.
+    - No evidence establishes that the recipient persona wants unsolicited outreach or that this artifact will create a meeting, partnership, job, contract, or revenue.
+
+exact_source_urls:
+  - https://www.cerbos.dev/features-benefits-and-use-cases/ai-gateway-authorization
+  - https://www.cerbos.dev/ecosystem/agent-gateway
+  - https://www.cerbos.dev/ecosystem/a2a
+  - https://www.cerbos.dev/ecosystem/mcp
+  - https://docs.cerbos.dev/cerbos-hub/index.html
+  - https://docs.cerbos.dev/cerbos/latest/cli/cerbos.html
+  - https://www.cerbos.dev/blog/fine-grained-authorization-for-ai-gateways
+  - https://www.cerbos.dev/about
+
+verifier_route:
+  verifier: S04_HRIST_STRUCTURAL_PREFLIGHT
+  task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  provider_class: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  exact_candidate_blob: 905926d4f4cd8e3ce8b0851bbc4a7985663cd44b
+  requested_result_vocabulary: PASS_STRUCTURAL|REVISE|HOLD|BLOCKED
+  instruction: >-
+    S04 must inspect the exact candidate blob above against the S02 acceptance contract,
+    provenance/source bindings, privacy/effect ceiling, expiry, actor/carrier separation,
+    idempotency, no-send boundary, rollback, and strongest fake-green mutant. A structural
+    PASS does not constitute independent STOOD/FELL and cannot imply ConsumerAck.
+
+consumer_route:
+  consumer: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  task_id: 6a539fc5130c81918c13624739fb2a60
+  ultimate_consumer: OPERATOR_REVIEW_ONLY
+  consumer_ack_implied: false
+
+rollback:
+  mode: APPEND_ONLY_SUPERSESSION
+  destructive_delete_performed: false
+  permanent_delete_authorized: false
+  history_rewrite_authorized: false
+  note: >-
+    If the candidate is rejected or superseded, preserve this return and source bindings;
+    create a successor artifact/return rather than rewriting history.
+
+honest_flaw: >-
+  This artifact is derived from Cerbos public product and documentation surfaces, not discovery
+  with Cerbos employees or customers. The expensive pain remains a product-extension hypothesis.
+  Cerbos already has mature native policy testing and may already maintain equivalent unpublished
+  end-to-end delegation regression suites, making this matrix redundant. S04 is same-provider
+  structural preflight with binding weight zero, and no independent verdict, ConsumerAck,
+  outreach, application, meeting, demand signal, revenue, or other external outcome exists.
