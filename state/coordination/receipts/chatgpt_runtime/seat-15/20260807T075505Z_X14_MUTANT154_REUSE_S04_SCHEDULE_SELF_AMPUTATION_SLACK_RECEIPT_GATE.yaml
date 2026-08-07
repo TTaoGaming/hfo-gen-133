@@ -1,0 +1,136 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+result: RETURN_REUSABLE_PRIOR_ARTIFACT
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+valid_time_utc: 2026-08-07T07:55:05Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+heritage_credit: 0_PENDING_EXPLICIT_CURRENT_CONSUMER_ACK
+---
+
+self_probe:
+  identity: S15_HERITAGE_REUSE_AND_DEDUP
+  tools_observed:
+    - native_automations_inventory_read
+    - github_exact_branch_file_read
+    - github_commit_search
+    - github_exact_commit_file_and_blob_read
+    - github_create_file
+    - github_readback
+    - slack_direct_route
+  task_mutation_performed: false
+  source_edit_performed: false
+  private_body_copied: false
+  self_verification_claimed: false
+
+current_workitem:
+  mutant_id: X14_MUTANT_154_321ed4249cca
+  mutation_class: SCHEDULE_SELF_AMPUTATION
+  mutation_subcase: X12_SLACK_ADVANCE_RECEIPT_FALSELY_COMMANDS_OWN_CARRIER_DISABLE_AFTER_ACCEPTANCE
+  commit: 0f27f7b638deca51d22161de663fd21c4b40eb92
+  path: state/coordination/experiments/false_green_x14/quarantine/20260807T075158Z_X12_SCHEDULE_SELF_AMPUTATION.mutant.yaml
+  git_blob_sha1: 51cb5d075301fd3b2dd23798ae292c5e1f4dbc4d
+  valid_time_utc: 2026-08-07T07:51:58Z
+  expiry_utc: 2026-08-07T11:51:58Z
+  expected_verdict: REVISE
+  claimed_overlay_byte_count: 241
+  claimed_overlay_sha256: 321ed4249ccae0b3fc5a5875ae208218275e82ce1dfa668f1a808f8af54ba085
+  selected_source:
+    authoring_seat: X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+    commit: 958f1d3afb213ab4b8e61b4b702baddfb1626e04
+    path: state/coordination/experiments/durable_object_x12/slack_receipts/20260807T074421Z_ADVANCE_0651602dac79.json
+    git_blob_sha1: 85597597c59d15bcb14e8f1b7fda9e528f96b019
+    source_artifact_type: SLACK_VERSION_ADVANCE_RECEIPT
+    source_campaign_id: X12_EVENT_CANONICALIZATION_C34
+    source_wake: C34_WAKE_1_OF_4
+    source_version: 143
+    source_task_id: 6a506f83df208191815dd17a8fd5baa3
+    source_schedule_action: ABSENT
+    source_task_mutation_receipt: ABSENT
+    source_claim_ceiling: SLACK_DELIVERY_RECEIPT_ONLY_NO_SCHEDULE_OR_TASK_MUTATION_AUTHORITY
+  runtime_observation:
+    x12_carrier_enabled: true
+    x12_contract_task_mutation: FORBIDDEN
+    observation_class: SAME_PROVIDER_RUNTIME_FACT_NOT_INDEPENDENT_QUORUM
+
+reused_prior_artifact:
+  artifact_class: FAILURE_ANTIBODY
+  original_date_utc: 2026-08-01T08:13:51Z
+  source_repository: TTaoGaming/hfo-gen-133
+  source_commit: a60cfdeb4d1311e9b7a73dac504bfb0c5eca2a2c
+  source_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260801T081351Z_X14_MUTANT011_SCHEDULE_SELF_AMPUTATION_REVISE.yaml
+  source_git_blob_sha1: 3932ebeefc3cab2f8bcd904c97dca4d3fef71ba6
+  source_result: REVISE
+  source_reason_code: PREMATURE_SCHEDULE_SELF_AMPUTATION_WITH_INCOMPLETE_CAMPAIGN
+  source_named_gate: S04_SCHEDULE_CONTINUITY_AND_TASK_MUTATION_AUTHORITY_GATE
+  decisive_prior_finding: >-
+    Intermediate success or authentic state advancement does not create scheduler-mutation authority. Carrier disablement requires a terminal lifecycle decision or explicit operator or scheduler-steward authority, exact live task binding, an effect ceiling permitting task mutation, bounded rollback, and downstream verification appropriate to that effect.
+  privacy_ceiling: SANITIZED_REPOSITORY_TASK_SCHEDULE_AND_DELIVERY_CONTROL_METADATA_ONLY
+
+supported_claims:
+  - The current source is only a Slack VERSION_ADVANCE receipt for X12 object version 143 and contains no schedule action or task-mutation receipt.
+  - The current source is wake 1 of 4, so continuation is structurally nonterminal absent a distinct lifecycle decision.
+  - The observed X12 carrier remains enabled and its task contract forbids task mutation.
+  - Authentic receipt acceptance and object-version advancement cannot by themselves authorize disabling the scheduled carrier.
+  - The current mutant is a recurrence of the prior schedule-authority and lifecycle-continuity failure class.
+
+excluded_claims:
+  - This receipt is not the direct S04 verdict on X14_MUTANT_154_321ed4249cca.
+  - S15 did not independently recompute the current 241-byte overlay, SHA-256, or exact one-field source-to-mutant relation.
+  - It does not prove that no out-of-band operator or scheduler-steward authorization exists outside the inspected source and task contract.
+  - It does not establish independent-provider verification, campaign closure, ConsumerAck, operational adoption, exactly-once semantics, serializability, or fitness credit.
+  - It does not authorize any schedule, task, source, CURRENT, Slack, verifier, or consumer mutation.
+
+acceptance_relevance:
+  named_current_gate: S04_SCHEDULE_SELF_AMPUTATION_EXACT_SOURCE_RECEIPT_CLASS_TASK_ID_PROVIDER_ENABLED_STATE_TASK_MUTATION_RECEIPT_TASK_MUTATION_AUTHORITY_CARRIER_CONTRACT_LIFECYCLE_TERMINALITY_NEXT_WAKE_CONTINUITY_SOURCE_DIGEST_EXPIRY_VERIFIER_CONSUMER_AND_CLAIM_CEILING_GATE
+  reusable_checklist:
+    - Resolve the exact mutant and immutable X12 Slack receipt by commit, path, and blob.
+    - Recompute the declared 241-byte canonical overlay and SHA-256.
+    - Confirm source artifact class is SLACK_VERSION_ADVANCE_RECEIPT and source wake is C34_WAKE_1_OF_4.
+    - Confirm source schedule action and task-mutation receipt are absent.
+    - Confirm the exact X12 task binding, observed provider enabled state, and carrier contract prohibition on task mutation.
+    - Reject any inference from authentic receipt acceptance or object-version advance to scheduler-mutation authority.
+    - Preserve source, CURRENT, tasks, schedules, Slack history, verifier state, consumer state, and provider state unchanged.
+  direct_review_still_required: true
+
+verifier:
+  direct_structural_verifier: S04_STRUCTURAL_PREFLIGHT
+  direct_structural_verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  distinct_advisory_verifier: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  distinct_advisory_verifier_task_id: 6a539fb148bc8191a30b6009dbf22438
+  verifier_limit: DISTINCT_SEAT_SAME_PROVIDER_NONBINDING_WEIGHT_ZERO
+
+consumer:
+  named_consumers:
+    - X14_MUTANT_154_321ed4249cca
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_REDUCER
+  consumption_required_for_credit: DIRECT_REFERENCE_TO_THIS_RECEIPT_OR_THE_REUSED_PRIOR_ARTIFACT_IN_A_CURRENT_MUTANT154_VERDICT_OR_REDUCER_RECEIPT
+  consumer_ack_observed: false
+
+expiry:
+  reuse_expiry_utc: 2026-08-07T11:51:58Z
+  after_expiry: REBIND_OR_RETIRE
+
+rollback:
+  action: RETAIN_OR_IGNORE_THIS_POINTER_AND_KEEP_SOURCE_CURRENT_TASK_SCHEDULE_SLACK_VERIFIER_CONSUMER_AND_PROVIDER_STATE_UNCHANGED
+
+deduplication:
+  exact_current_mutant_commit_search_before_write: ONLY_X14_MUTANT_CREATION_COMMIT_OBSERVED_NO_PRIOR_S15_BINDING
+  related_schedule_self_amputation_bindings_observed: true
+  duplicate_of_prior_binding: false
+  rationale: CURRENT_MUTANT_ID_SOURCE_BLOB_X12_SLACK_RECEIPT_WAKE_AND_RECEIPT_CLASS_ARE_NEW
+  limitation: GITHUB_COMMIT_SEARCH_AND_CODE_INDEXING_ARE_BEST_EFFORT_NONTRANSACTIONAL_AND_MAY_LAG
+
+honest_flaw: >-
+  Schedule self-amputation is already well covered, so this is exact current-source rebinding rather than a new failure class. The prior S04 artifact concerned an X12 durable-object wake-3 event with an explicit NONE_UNTIL_WAKE_4 decision, while the current source is a separate X12 Slack delivery receipt at wake 1 of 4. Only the scheduler-authority and lifecycle-continuity invariant transfers. The current specimen is conspicuous because the source receipt class and carrier contract already make the injected disable action easy to reject. Runtime enabled-state evidence is same-provider descriptive evidence with binding weight zero. S15 did not recompute the mutant overlay or inspect external authorization logs, and no ConsumerAck is observed.
+---
