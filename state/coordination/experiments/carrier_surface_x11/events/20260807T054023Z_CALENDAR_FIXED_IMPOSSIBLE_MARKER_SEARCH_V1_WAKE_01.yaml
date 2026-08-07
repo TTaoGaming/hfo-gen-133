@@ -1,0 +1,47 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+experiment_id: X11_CALENDAR_FIXED_IMPOSSIBLE_MARKER_SEARCH_V1
+campaign_wake: 1
+accepted_wake: true
+expected_current_version_before: 152
+current_version_after: 153
+baseline: campaign_initialized_with_no_accepted_calendar_read_probe_results
+hypothesis: the_authenticated_Google_Calendar_read_surface_may_execute_a_bounded_primary_calendar_search_for_a_fixed_impossible_marker_and_return_a_sanitized_zero_result_without_event_content_readback_or_operator_relay
+controlled_factor: calendar_read_surface
+exact_probe:
+  action: Google_Calendar.search
+  calendar_id: primary
+  query: __HFO_X11_IMPOSSIBLE_CALENDAR_MARKER_7F9E2C1A__
+  time_min: 2026-01-01T00:00:00Z
+  time_max: 2026-01-02T00:00:00Z
+  max_results: 1
+  read_event_content: false
+measured_result:
+  search_execution_success: true
+  sanitized_result_count: 0
+  continuation_present: false
+  permission_class: AUTHENTICATED_GOOGLE_CALENDAR_BOUNDED_SEARCH_READ_AVAILABLE
+  error_class: NONE
+  latency_ms: 479
+  operator_relay_minutes: 0
+  changed_capability: true
+  campaign_decision: false
+  andon: false
+supported_claim: authenticated_bounded_primary_calendar_search_execution_and_sanitized_zero_result_visibility_observed_once
+claim_ceiling: bounded_primary_calendar_search_execution_and_sanitized_count_visibility_only_not_calendar_completeness_recall_indexing_freshness_event_content_access_authenticity_or_independent_verification
+strongest_falsifier: the_Google_Calendar_search_surface_is_missing_or_unauthenticated_or_the_identical_bounded_probe_returns_an_execution_error_while_the_carrier_reports_success
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer:
+  - Reginleif
+  - Ratatoskr
+honest_flaw: one_impossible_marker_zero_result_tests_authenticated_bounded_search_execution_but_cannot_establish_calendar_completeness_recall_indexing_freshness_or_event_content_access
+privacy_gate: no_event_titles_descriptions_attendees_identifiers_or_calendar_metadata_persisted_or_externalized
+slack_action: POST_CHANGED_CAPABILITY_AFTER_POINTER_READBACK
+mutation_allowed: false
+sensitive_readback_externalization_allowed: false
+same_provider_independence_claim_allowed: false
+valid_time_utc: 2026-08-07T05:40:23Z
+sealed: true
+---
+
+Accepted wake 1 of 4 for the fixed impossible-marker Google Calendar read campaign. The bounded primary-calendar search executed successfully, returned zero sanitized matches with no continuation token, and exposed 479 ms connector latency. No event-content readback, calendar mutation, interactive login, or operator relay occurred.
