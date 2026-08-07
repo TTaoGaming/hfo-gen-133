@@ -1,0 +1,164 @@
+---
+schema_id: hfo.gen133.s06_executor_packet.v1
+result: HOLD
+seat: S06_CODE_WORK_PACKET_COMPILER_CODEX_BRIDGE
+carrier_task_id_expected: 6a57972b9df081918680ce67c4ecb197
+carrier_task_id_observed: 6a57972b9df081918680ce67c4ecb197
+carrier_task_id_match: true
+valid_time_utc: 2026-08-07T21:18:20Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+wip: 1
+route_executed: false
+execution_performed: false
+producer_return_consumed: false
+---
+
+selection:
+  work_item_id: S08-CHANNEL_PARTNER-OPTIV_CONSULTING-20260807T202800Z
+  claim_commit_sha: 7b85d1e2895b5bf05e5e1bb607d61311a12bc61a
+  claim_path: projects/gtm-revenue/claims/20260807T210549Z_OPTIV_CONSULTING_PROOF_KIT_ADMISSION.claim.yaml
+  claim_blob_sha1: b9e4af68f045e91e7e852586f5fea8b09467db05
+  claim_id: S02_GTM_OPTIV_CONSULTING_PROOF_KIT_ADMISSION_20260807T210549Z
+  claim_expiry_utc: 2026-08-08T01:05:49Z
+  claim_acceptance_sha256: 88e6df0e66535e7148211d1766d28871c9b529c804608724907ea7f5fa118caf
+  claim_idempotency_sha256: 310c97a7d408085d6ef00e2b1d527252e93271ff35ca0cce3a91449e76d901d3
+  changed_since_prior_s06: true
+  prior_s06_commit: fe3c76811389a1653c80ec7cdd7fc586b4cd6ba9
+
+repository:
+  full_name: TTaoGaming/hfo-gen-133
+  canonical_branch: agent/gen133-bootstrap-20260730
+  frozen_base_sha: 7b85d1e2895b5bf05e5e1bb607d61311a12bc61a
+  claim_observed_prewrite_head: a75c593e13a22c028f99e4ccbf73e14a318bf562
+  source_commit: dbc355f14510705c1ff787c434b4e2df5b033f8d
+  source_path: projects/gtm-revenue/research/20260807T202800Z_CHANNEL_PARTNER_OPTIV_CONSULTING_TARGET_CARD.md
+  source_blob_sha1: 258b124cbe80cf950cd6aada09ac0dd4772efde8
+  source_evidence_sha256: 6050284dc586664e7143d67aaea992bf1b37c06ab01d203e7fbbe2f2597d3301
+
+allowed_paths:
+  read:
+    - projects/gtm-revenue/claims/20260807T210549Z_OPTIV_CONSULTING_PROOF_KIT_ADMISSION.claim.yaml
+    - projects/gtm-revenue/research/20260807T202800Z_CHANNEL_PARTNER_OPTIV_CONSULTING_TARGET_CARD.md
+    - projects/gtm-revenue/packets/20260807T140800Z_CHATGPT_CLOUD_GTM_DREAM50_HANDOFF.packet.md
+  write_create_only:
+    - projects/gtm-revenue/kits/optiv-consulting/AGENTIC_AI_ENGAGEMENT_ASSURANCE_GATE_FDE_CONSULTANT.md
+    - projects/gtm-revenue/returns/S08-CHANNEL_PARTNER-OPTIV_CONSULTING-20260807T202800Z.producer_return.yaml
+
+forbidden_paths:
+  - projects/gtm-revenue/claims/**
+  - projects/gtm-revenue/research/**
+  - projects/gtm-revenue/packets/**
+  - state/**
+  - .github/**
+  - any path outside the two exact write_create_only paths
+
+goal: >-
+  Produce one public-safe two-minute comparison artifact titled Agentic AI Engagement Assurance Gate — FDE/Consultant Edition for Optiv Consulting, plus one immutable producer return. The artifact must help a delivery lead compare an existing assurance process against ten explicit gates without asserting that Optiv Consulting lacks governance, evals, delivery controls, or maturity.
+
+current_red_evidence:
+  - The claim is fresh and unexpired, but no direct Codex, Claude, or host-shell executor ingress is exposed to S06 in this runtime.
+  - Repository code search for the exact work_item_id returned no result at this wake; a separate phrase search surfaced only the source target card, not a kit or producer return. Search-index absence is not proof of repository-wide absence, so the executor must inspect exact paths before writing.
+  - No conforming direct producer return is available for S06 consumption.
+  - The target card contains strong disconfirming evidence: Optiv Consulting already advertises AI Security & Governance, AI-native delivery, continuous quality/risk management, a 95% client-satisfaction claim, and an AI Security and Governance Center of Excellence. A generic claim that it needs governance or evals would therefore be unsupported and potentially insulting.
+
+required_commands:
+  - "git rev-parse --show-toplevel"
+  - "git cat-file -e 7b85d1e2895b5bf05e5e1bb607d61311a12bc61a^{commit}"
+  - "git show 7b85d1e2895b5bf05e5e1bb607d61311a12bc61a:projects/gtm-revenue/claims/20260807T210549Z_OPTIV_CONSULTING_PROOF_KIT_ADMISSION.claim.yaml > /tmp/optiv.claim.yaml"
+  - "git show dbc355f14510705c1ff787c434b4e2df5b033f8d:projects/gtm-revenue/research/20260807T202800Z_CHANNEL_PARTNER_OPTIV_CONSULTING_TARGET_CARD.md > /tmp/optiv.target.md"
+  - "test \"$(git hash-object /tmp/optiv.target.md)\" = \"258b124cbe80cf950cd6aada09ac0dd4772efde8\""
+  - "grep -F 'Agentic AI Engagement Assurance Gate — FDE/Consultant Edition' /tmp/optiv.target.md"
+  - "grep -F 'Evidence **against** / disconfirming evidence' /tmp/optiv.target.md"
+  - "test ! -e projects/gtm-revenue/kits/optiv-consulting/AGENTIC_AI_ENGAGEMENT_ASSURANCE_GATE_FDE_CONSULTANT.md"
+  - "test ! -e projects/gtm-revenue/returns/S08-CHANNEL_PARTNER-OPTIV_CONSULTING-20260807T202800Z.producer_return.yaml"
+  - "git grep -n -F 'S08-CHANNEL_PARTNER-OPTIV_CONSULTING-20260807T202800Z' -- projects/gtm-revenue/kits projects/gtm-revenue/returns || true"
+  - "git diff --check -- projects/gtm-revenue/kits/optiv-consulting/AGENTIC_AI_ENGAGEMENT_ASSURANCE_GATE_FDE_CONSULTANT.md projects/gtm-revenue/returns/S08-CHANNEL_PARTNER-OPTIV_CONSULTING-20260807T202800Z.producer_return.yaml"
+  - "git diff --name-only"
+  - "git status --short"
+  - "git hash-object projects/gtm-revenue/kits/optiv-consulting/AGENTIC_AI_ENGAGEMENT_ASSURANCE_GATE_FDE_CONSULTANT.md"
+  - "sha256sum projects/gtm-revenue/kits/optiv-consulting/AGENTIC_AI_ENGAGEMENT_ASSURANCE_GATE_FDE_CONSULTANT.md"
+
+artifact_contract:
+  required_title: Agentic AI Engagement Assurance Gate — FDE/Consultant Edition
+  required_sections:
+    - WHY_THIS_MAY_MATTER
+    - HOW_TO_USE_IN_2_MINUTES
+    - TEN_GATES
+    - SOURCE_BACKED_FACTS
+    - ASSUMPTIONS_AND_HYPOTHESES
+    - DISCONFIRMING_EVIDENCE
+    - STRONGEST_FALSIFIER
+    - SOURCES
+    - OPTIONAL_OPERATOR_REVIEWED_NO_SEND_NOTE
+  ten_gates:
+    - business acceptance metric is explicit
+    - delegated action classes and authority are explicit
+    - held-out failure cases exist
+    - deterministic policy and human-review boundaries are explicit
+    - model/tool route is justified by quality, cost, and data boundary
+    - trace evidence can reconstruct the decision path
+    - stale or missing evidence fails closed
+    - rollback, kill, and escalation path is named
+    - client acceptance evidence is captured
+    - reusable learning is packaged for the next engagement
+  required_source_urls:
+    - https://www.optiv.com/company/press-releases/optiv-sells-advisory-consulting-and-transformation-act-business-vobis
+    - https://cysecureservices.com/
+    - https://www.vobisventures.com/
+  mandatory_claim_boundary: >-
+    Frame the scorecard as a comparison artifact. Do not claim Optiv Consulting has a deficiency, incident, compliance failure, savings opportunity, customer outcome, buyer demand, or need for this exact stack without direct evidence.
+
+acceptance_tests:
+  - Exact claim SHA, claim path/blob, acceptance SHA-256, source commit/path/blob/evidence digest, verifier, consumer, and expiry are bound in the producer return.
+  - Exact source blob check exits 0 before candidate creation.
+  - Exactly the two allowed create-only paths are changed; `git diff --name-only` contains no other path.
+  - Candidate includes every required section, all ten gates, all three exact source URLs, explicit disconfirming evidence, the comparison-artifact disclaimer, and the strongest falsifier.
+  - Candidate contains no unsupported claim of incidents, deficiencies, savings, compliance failure, client outcome, recipient demand, or external validation.
+  - `git diff --check` exits 0 for the two candidate paths.
+  - Producer return names runtime and model, branch and resulting SHA, changed paths, every exact command, per-command exit code, material stdout/stderr or output summary, blockers, rollback, no-send status, and one honest flaw.
+  - No email, LinkedIn/DM, application, account creation, terms acceptance, spend, paid provider call, deployment, merge, external publication, private-data use, or autonomous negotiation occurs.
+
+effect_ceiling:
+  class: T0_RESEARCH_PREP_ONLY
+  allowed: local_or_executor_workspace_inspection_and_candidate_creation_plus_internal_repo_return_within_exact_paths
+  forbidden: SEND_SPEND_DEPLOY_MERGE_EXTERNAL_PUBLICATION_ACCOUNT_OR_SECURITY_CHANGE_PRIVATE_DATA_USE_PERMANENT_DELETE
+
+time_budget_ceiling:
+  executor_minutes: 30
+  expires_utc: 2026-08-08T01:05:49Z
+budget_ceiling:
+  usd: 0
+  paid_api_calls: 0
+
+rollback:
+  mode: APPEND_ONLY_SUPERSESSION_OR_LEAVE_UNMERGED
+  history_rewrite: forbidden
+  destructive_git: forbidden
+  external_effect_reversal_needed: false
+  candidate_delete: only_by_authorized_producer_if_unmerged_and_required_by_claim
+
+verifier:
+  seat: S04_HRIST_STRUCTURAL_PREFLIGHT
+  task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  provider_class: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+consumer:
+  seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  task_id: 6a539fc5130c81918c13624739fb2a60
+  ultimate_external_effect: OPERATOR_REVIEW_ONLY
+
+strongest_falsifier: >-
+  Retire or heavily revise this wedge if current Optiv Consulting leadership confirms that it already has a mature, reusable, internally owned assurance layer covering delegated authorization, held-out agent evaluations, process evidence, delivery gates, and reuse across engagements, and that it does not use outside specialist or subcontractor capacity for that layer.
+
+ingress_probe:
+  codex_direct_executor: NOT_EXPOSED
+  claude_direct_executor: NOT_EXPOSED
+  host_shell_direct_executor: NOT_EXPOSED
+  github_repo_connector: EXPOSED_BUT_NOT_AN_EXECUTOR_INGRESS
+  slack_connector: EXPOSED_BUT_NOT_AN_EXECUTOR_INGRESS
+  route_status: NOT_ROUTED
+  hold_reason: DIRECT_EXECUTOR_INGRESS_ABSENT
+
+honest_flaw: >-
+  This packet is executable only by a runtime that can actually check out or inspect the frozen repository bytes and return command-level evidence. S06 has GitHub and Slack coordination surfaces here but no direct Codex, Claude, or host execution ingress, so this HOLD is not implementation, testing, or producer execution. Repository search results are index-dependent and cannot prove global absence of an Optiv artifact; the executor must recheck the exact create-only paths before writing.
