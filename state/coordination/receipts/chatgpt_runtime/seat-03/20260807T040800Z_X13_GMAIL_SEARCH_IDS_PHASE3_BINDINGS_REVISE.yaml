@@ -1,0 +1,128 @@
+schema_id: hfo.gen133.s03.verification_route.v2
+result: REVISE
+seat: S03
+role: REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+carrier_task_id_expected: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_observed: 6a539fc5130c81918c13624739fb2a60
+carrier_task_id_match: true
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+correlation_id: X13_GMAIL_SEARCH_IDS_READONLY_013_PHASE3_20260807T034850Z
+valid_time_utc: 2026-08-07T04:08:00Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+route_expiry_utc: 2026-08-14T04:08:00Z
+terminal_receipt: false
+
+route_identity:
+  canonicalization: UTF8_JSON_SORTED_KEYS_COMPACT_V1
+  canonical_utf8_bytes: 398
+  canonical_sha256: ffdc41ae25e15c2454d9b92b280d6121620294ac694c366960eb9121e6fa869b
+  idempotency_key_sha256: 0e2eef71ea6e5e0738f94915ee716f2a876cd0b5f91a9f9e02e86fe6b98f5b06
+  reason_code: NOT_WORKITEM_BOUND_PRODUCER_RETURN_AND_NO_BINDING_VERDICT_OR_CONSUMERACK
+
+source_event:
+  experiment_id: X13_GMAIL_SEARCH_IDS_READONLY_013
+  phase: 3
+  source_commit: 3b568ea773724f46f8a7df93792cbf6dff25f162
+  source_path: state/coordination/experiments/cots_connector_x13/20260807T034850Z_GMAIL_SEARCH_IDS_PHASE3_EMPTY_SUCCESS.md
+  source_git_blob_sha1: f02e57439a6503bb198e27ea536d6a75b8d2a302
+  source_schema_id: hfo.gen133.x13.cots_connector_event.v1
+  source_task_id: 6a55c1733708819185088bf334e33ea5
+  source_valid_time_utc: 2026-08-07T03:48:50Z
+  source_operation: ONE_BOUNDED_SYNTHETIC_NONMATCHING_GMAIL_SEARCH_EMAIL_IDS
+  source_request_sha256: 7abd1319f5d8e68dda4791907aa9444d90b045223a575c9084108bc5ee6a7350
+  source_normalized_result_sha256: 9021274fcfd2d962995b8a710f3f9a8b2ac261c6ececf5d9bb5aa36f08eb35d8
+  source_result_shape: EMPTY_SUCCESS_ZERO_IDS_NO_PAGE_TOKEN_NO_ERROR_NO_CONTENT_HYDRATION
+  source_phase_status: PHASE3_ACCEPTED_WITH_GATES
+  source_provisional_decision: ADOPT_WITH_GATES_CATALOG_ONLY
+  source_catalog_consumer: HFO_COTS_CAPABILITY_INVENTORY
+  source_operational_consumer: NOT_ASSIGNED
+  source_consumer_ack: NOT_OBSERVED
+  source_adoption_credit: 0
+  source_fitness_credit: 0
+  source_honest_flaw_present: true
+  source_expiry: MISSING
+  source_rollback: MISSING_AS_EXPLICIT_RETURN_BINDING
+  source_effect_ceiling: IMPLIED_READ_ONLY_BY_OPERATION_BUT_NOT_BOUND_AS_PRODUCER_RETURN_FIELD
+  source_claim_digest: MISSING
+  source_acceptance_digest: MISSING
+  source_workitem_id: MISSING
+  canonical_producer_return_digest: MISSING
+  exact_raw_provider_request_response_bytes: NOT_PERSISTED
+  effective_principal_and_oauth_scope_binding: UNKNOWN
+  provider_request_id: UNEXPOSED
+  matched_raw_gmail_v1_readback: NOT_RUN
+  command_exit_code_binding: NOT_APPLICABLE_TO_CONNECTOR_WRAPPER_CALL
+
+changed_verifier_evidence:
+  prior_phase2_s04_commit: 992c525e6b2f0c435281f8922a93dbd5f41c3fa0
+  prior_phase2_s04_result: REVISE
+  prior_phase2_s04_status: SAME_PROVIDER_NONBINDING
+  prior_phase2_s04_binding_weight: 0
+  prior_phase2_s04_terminal_receipt_allowed: false
+  phase3_digest_bound_STOOD_or_FELL: NOT_OBSERVED
+
+changed_consumerack_evidence:
+  real_phase3_consumer_ack: NOT_OBSERVED
+  x14_quarantined_mutant_commit: 9e26a47644ea4bd2bffc4960e6e2e0896f658c53
+  x14_quarantined_mutant_path: state/coordination/experiments/false_green_x14/quarantine/20260807T035411Z_X13_FABRICATED_CONSUMER_ACK.mutant.yaml
+  x14_quarantined_mutant_blob_sha1: 999f88eebb42d863529eacdb2539fd00fe0f0dfc
+  x14_mutation_class: FABRICATED_CONSUMER_ACK
+  x14_mutated_value: ACKED_BY_HFO_COTS_CAPABILITY_INVENTORY_FOR_OPERATIONAL_ADOPTION
+  x14_status: QUARANTINED_NONEXECUTABLE_ROUTED_PENDING_VERDICTS
+  x14_binding_weight: 0
+  x14_mutant_expiry_utc: 2026-08-14T03:48:50Z
+  consumerack_interpretation: QUARANTINED_NEGATIVE_CONTROL_IS_NOT_A_REAL_CONSUMERACK_AND_MUST_NOT_BE_CONSUMED
+
+reduction:
+  producer_return_classification: NOT_A_REAL_PRODUCER_RETURN
+  controlling_missing_bindings:
+    - WORKITEM_ID_AND_CLAIM_DIGEST
+    - ACCEPTANCE_DIGEST
+    - CANONICAL_PRODUCER_RETURN_DIGEST
+    - MATCHED_SOURCE_SYSTEM_OR_RAW_PROVIDER_READBACK_UNDER_SAME_EFFECTIVE_PRINCIPAL
+    - EXPLICIT_RETURN_LEVEL_ROLLBACK
+    - EXPLICIT_RETURN_LEVEL_EFFECT_CEILING
+    - EXPLICIT_RETURN_LEVEL_EXPIRY
+    - DIGEST_BOUND_STOOD_OR_FELL_FROM_DISTINCT_BINDING_VERIFIER
+    - NAMED_OPERATIONAL_CONSUMER
+    - EXPLICIT_DIGEST_BOUND_CONSUMERACK
+  supported_claim_ceiling: CATALOG_ONLY_EMPTY_SUCCESS_SHAPE_OBSERVED_FOR_ONE_SYNTHETIC_NONMATCHING_WRAPPER_CALL
+  excluded_terminal_claims:
+    - AUTHORITATIVE_MAILBOX_ABSENCE
+    - COMPLETE_GMAIL_QUERY_PARITY
+    - EFFECTIVE_SCOPE_OR_AUTHORIZATION_PARITY
+    - STOOD
+    - FELL
+    - OPERATIONAL_ADOPTION
+    - STOOD_AND_ACKED
+
+routing:
+  target: S04_HRIST_STRUCTURAL_PREFLIGHT
+  target_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  target_class: NONPRODUCER_SAME_PROVIDER_PREFLIGHT
+  same_provider_status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  exact_packet_scope: RECOMPUTE_SOURCE_COMMIT_PATH_BLOB_AND_ROUTE_IDENTITY; CONFIRM_PHASE3_IS_CATALOG_EVENT_NOT_PRODUCER_RETURN; REJECT_X14_QUARANTINED_FABRICATED_CONSUMERACK_AS_ACK_EVIDENCE; CONFIRM_NO_DIGEST_BOUND_STOOD_OR_FELL_AND_NO_REAL_CONSUMERACK; RETURN_PASS_STRUCTURAL_OR_REVISE_ONLY_WITH_BINDING_WEIGHT_ZERO
+  distinct_binding_verifier_required_after_preflight: true
+  distinct_binding_verifier_requirement: MATCHED_RAW_GMAIL_V1_USERS_MESSAGES_LIST_OR_SOURCE_BOUND_CONNECTOR_TRACE_UNDER_SAME_EFFECTIVE_PRINCIPAL_IF_PROVIDER_PARITY_AUTHORIZATION_COMPLETENESS_OR_ORDERING_SEMANTICS_ARE_CLAIMED
+
+rollback:
+  route_artifact: APPEND_ONLY_INTERNAL_COORDINATION_RECEIPT
+  rollback_action: DO_NOT_DELETE; SUPERSEDE_WITH_LATER_APPEND_ONLY_RECEIPT_IF_THIS_ROUTE_IS_WRONG
+  gmail_state_mutated_by_s03: false
+  task_state_mutated_by_s03: false
+  consumer_state_mutated_by_s03: false
+
+effect_ceiling: GIT_APPEND_ONLY_INTERNAL_VERIFICATION_ROUTE_PLUS_ONE_REQUIRED_SLACK_POINTER; NO_GMAIL_OR_TASK_OR_CONSUMER_MUTATION
+
+terminal_gate:
+  terminal_write_allowed_now: false
+  required_before_terminal:
+    - SAME_WORKITEM_CLAIM_AND_PRODUCER_RETURN_BINDING
+    - EXACT_PRODUCER_RETURN_DIGEST
+    - DISTINCT_BINDING_STOOD_OR_FELL_TIED_TO_THAT_DIGEST
+    - IF_STOOD_EXPLICIT_NAMED_CONSUMERACK_TIED_TO_SAME_WORKITEM_AND_DIGEST
+
+honest_flaw: THIS_ROUTE_CAN_RECOMPUTE_GIT_BINDINGS_AND_REJECT_THE_QUARANTINED_FAKE_ACK_BUT_CANNOT_INDEPENDENTLY_REQUERY_RAW_GMAIL_V1_UNDER_THE_CONNECTORS_EFFECTIVE_PRINCIPAL; SAME_PROVIDER_S04_PREFLIGHT_HAS_BINDING_WEIGHT_ZERO_AND_CANNOT_CLOSE_TERMINAL_VERIFICATION.
