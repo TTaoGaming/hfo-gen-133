@@ -1,24 +1,24 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
 experiment_id: X13_GCALENDAR_BOUNDED_EVENT_SEARCH_READONLY_016
-version: 161
-prior_version: 160
+version: 162
+prior_version: 161
 candidate: Google_Calendar_bounded_keyword_event_search
-campaign_wake: 1_of_4
+campaign_wake: 2_of_4
 campaign_status: ACTIVE
 phase_1_status: PHASE1_ACCEPTED_WITH_GATES
-phase_2_status: PENDING
+phase_2_status: PHASE2_ACCEPTED_WITH_GATES
 phase_3_status: PENDING
 phase_4_status: PENDING
 phase_4_decision: PENDING
 operational_decision: PENDING
 wip: 1
-last_event_commit: fe45da9dad9d27c8c32a45c8953be5afbcf18bcf
-last_event_path: state/coordination/experiments/cots_connector_x13/20260807T134933Z_GCALENDAR_BOUNDED_EVENT_SEARCH_PHASE1_BASELINE.md
-last_event_blob_sha: 709f1d80486b42b3b901532e76472637d1c267d4
+last_event_commit: 5b38ef407d9ec27f488827a5b9f723b272d28d3d
+last_event_path: state/coordination/experiments/cots_connector_x13/20260807T144909Z_GCALENDAR_BOUNDED_EVENT_SEARCH_PHASE2_REPLAY.md
+last_event_blob_sha: f34e46e62a0d8d7eb428e85cde01b1c7b3e2a390
 last_event_readback: true
-campaign_calls: 1_BOUNDED_READONLY_GCALENDAR_SEARCH
-successful_nonempty_calls: 1
+campaign_calls: 2_BOUNDED_READONLY_GCALENDAR_SEARCHES
+successful_nonempty_calls: 2
 successful_empty_calls: 0
 connector_errors_observed: 0
 retries_total: 0
@@ -28,8 +28,11 @@ event_content_hydration_observed: true
 raw_calendar_content_persisted_in_receipt: false
 request_digest_sha256: ddee55c7b58dab58713adc1946cf1e966f2336d639ed5afd0e8cc95fb7498d4c
 phase1_ordered_result_digest_sha256: 0ab726a1b9f8b223ebd0eb9c6d074ac57f9f9de1550f10b02fd2608d44f9ff5c
-phase1_normalized_wrapper_shape_digest_sha256: c3674c1fc40004e945a0eafc1829f7c32e91c65f1c137b50e40a1066dc8376d4
+phase2_ordered_result_digest_sha256: 0ab726a1b9f8b223ebd0eb9c6d074ac57f9f9de1550f10b02fd2608d44f9ff5c
+phase1_phase2_request_digest_match: true
+phase1_phase2_ordered_result_digest_match: true
 phase1_connector_call_time_ms: 334
+phase2_connector_call_time_ms: 437
 measured_overlap_boundary_behavior: TRUE_ONE_RETURNED_EVENT_STARTED_BEFORE_TIMEMIN_AND_ENDED_AFTER_TIMEMIN
 operator_minutes_removed_measured: 0
 custom_code_avoided_estimate: 60_to_180_LOC_UNVALIDATED
@@ -40,29 +43,29 @@ credentials: CONNECTOR_MANAGED_EFFECTIVE_PRINCIPAL_AND_SCOPES_UNKNOWN
 durability: GIT_RECEIPT_DURABLE;CALENDAR_SEARCH_VIEW_MUTABLE
 observability: RETURN_COUNT_NEXT_PAGE_TOKEN_PRESENCE_CONTENT_FIELDS_AND_EXTERNAL_CALL_TIME_VISIBLE;PROVIDER_REQUEST_ID_RATE_HEADERS_ACCESS_ROLE_EFFECTIVE_SCOPE_ACTUAL_QUOTA_DEBIT_NOT_SURFACED
 portability: MEDIUM_QUERY_TIME_WINDOW_AND_EVENT_RESOURCE_SEMANTICS_GOOGLE_SPECIFIC
-failure_behavior: ONE_NONEMPTY_HAPPY_PATH;NO_PERMISSION_DENIAL_PRIVATE_VISIBILITY_SECONDARY_CALENDAR_VARIANCE_RATE_LIMIT_TRANSIENT_FAILURE_OR_PAGINATION_REPLAY_TESTED
-verifier: DIRECT_GOOGLE_CALENDAR_CONNECTOR_RECEIPT_PLUS_OFFICIAL_GOOGLE_CONTRACT_PLUS_GITHUB_EVENT_AND_CURRENT_READBACK
+failure_behavior: TWO_NONEMPTY_HAPPY_PATHS_WITH_MATCHED_ORDERED_DIGEST;NO_PERMISSION_DENIAL_PRIVATE_VISIBILITY_SECONDARY_CALENDAR_VARIANCE_RATE_LIMIT_TRANSIENT_FAILURE_OR_PAGINATION_REPLAY_TESTED
+verifier: DIRECT_GOOGLE_CALENDAR_CONNECTOR_REPLAY_PLUS_PHASE1_GIT_RECEIPT_PLUS_GITHUB_EVENT_AND_CURRENT_READBACK
 consumer: CALENDAR_DISCOVERY_ELIGIBLE_BUT_NO_OPERATIONAL_CONSUMER_ACK
 adoption_credit: 0
 fitness_credit: 0
 mandatory_gate: EXPLICIT_BOUNDED_RFC3339_WINDOW;SMALL_MAX_RESULTS;READONLY_SEARCH;TIME_MIN_IS_EXCLUSIVE_LOWER_BOUND_ON_EVENT_END_AND_TIME_MAX_IS_EXCLUSIVE_UPPER_BOUND_ON_EVENT_START;DO_NOT_PERSIST_RAW_EVENT_IDS_TITLES_DESCRIPTIONS_ATTENDEES_LINKS_OR_PAGE_TOKENS;TREAT_RESULTS_AS_MUTABLE_DISCOVERY;NO_COMPLETENESS_OR_ABSENCE_CLAIM_WITHOUT_PAGINATION_EVIDENCE;CONSEQUENTIAL_CLAIMS_REQUIRE_READ_EVENT_OR_MATCHED_NATIVE_PROVIDER_WITNESS;NO_UNBOUNDED_RETRY
-strongest_falsifier: MATCHED_NATIVE_GOOGLE_CALENDAR_V3_EVENTS_LIST_UNDER_THE_SAME_EFFECTIVE_PRINCIPAL_MATERIALLY_DISAGREES_ON_QUERY_SCOPE_OVERLAP_WINDOW_SEMANTICS_RESULT_VISIBILITY_ORDERING_PAGINATION_OR_CONTENT_HYDRATION_BEHAVIOR
-honest_flaw: ONE_SUCCESSFUL_KEYWORD_QUERY_ONLY;EMPTY_SUCCESS_PERMISSION_DENIAL_PRIVATE_EVENT_VISIBILITY_SECONDARY_SHARED_CALENDAR_VARIANCE_RECURRENCE_EXPANSION_PAGINATION_REPLAY_RATE_LIMIT_TRANSIENT_FAILURE_NATIVE_PARITY_EFFECTIVE_SCOPE_ACTUAL_QUOTA_DEBIT_OPERATOR_SAVINGS_AND_OPERATIONAL_CONSUMER_VALUE_UNTESTED
-next_phase: PHASE2_IDENTICAL_BOUNDED_REPLAY_AND_ORDERED_DIGEST_COMPARISON
-valid_time_utc: 2026-08-07T13:50:07Z
-recorded_time_utc: 2026-08-07T13:50:07Z
+strongest_falsifier: LATER_IDENTICAL_BOUNDED_SEARCH_OR_MATCHED_NATIVE_GOOGLE_CALENDAR_V3_EVENTS_LIST_UNDER_SAME_EFFECTIVE_PRINCIPAL_MATERIALLY_DISAGREES_ON_SCOPE_OVERLAP_VISIBILITY_ORDERING_PAGINATION_OR_CONTENT_HYDRATION_WITHOUT_INTERVENING_CALENDAR_MUTATION
+honest_flaw: TWO_CALL_DIGEST_MATCH_IS_ONLY_SHORT_HORIZON_REPEATABILITY_ON_ONE_KEYWORD_WINDOW;EMPTY_SUCCESS_PERMISSION_DENIAL_PRIVATE_EVENT_VISIBILITY_SECONDARY_SHARED_CALENDAR_VARIANCE_RECURRENCE_EXPANSION_PAGINATION_REPLAY_RATE_LIMIT_TRANSIENT_FAILURE_NATIVE_PARITY_EFFECTIVE_SCOPE_ACTUAL_QUOTA_DEBIT_OPERATOR_SAVINGS_AND_OPERATIONAL_CONSUMER_VALUE_UNTESTED
+next_phase: PHASE3_SYNTHETIC_NONMATCHING_BOUNDED_SEARCH_NO_RETRY_NO_ABSENCE_CLAIM
+valid_time_utc: 2026-08-07T14:49:09Z
+recorded_time_utc: 2026-08-07T14:49:09Z
 ---
 
-# X13 CURRENT v161
+# X13 CURRENT v162
 
-`X13_GCALENDAR_BOUNDED_EVENT_SEARCH_READONLY_016` is active at wake 1 of 4.
+`X13_GCALENDAR_BOUNDED_EVENT_SEARCH_READONLY_016` is active at wake 2 of 4.
 
-Phase 1 decision: **PHASE1_ACCEPTED_WITH_GATES** for bounded read-only Calendar keyword discovery.
+Phase 2 decision: **PHASE2_ACCEPTED_WITH_GATES** for bounded read-only Calendar keyword discovery.
 
-Measured evidence: one primary-calendar search with explicit RFC3339 bounds and `max_results=3` returned two events, no next-page token, no connector error, no retry/fallback/mutation, and 334 ms external call time. The wrapper hydrated event content/metadata. No raw event IDs, titles, descriptions, attendee identities, links, or tokens were persisted in the Git receipt.
+Measured evidence: the identical primary-calendar search with the same explicit RFC3339 bounds, free-text query, and `max_results=3` returned two events again with no next-page token, no connector error, no retry/fallback/mutation, and 437 ms external call time. The canonical request digest and ordered `{id, summary, start, end}` result digest exactly matched Phase 1. Raw Calendar content was not persisted in the X13 receipt.
 
-Important boundary fact: one returned event started before `time_min` but ended after it. This matches Google's native `events.list` contract: `timeMin` filters on event end, while `timeMax` filters on event start. The search window therefore means overlap, not start-time containment.
+Interpretation is deliberately narrow: this is short-horizon repeatability evidence, not snapshot, completeness, or immutable-ordering evidence. The Phase 1 overlap-window boundary semantics remain mandatory.
 
 Adoption credit remains 0 and fitness credit remains 0. Measured operator-minute savings remain zero and no operational consumer has acknowledged value.
 
-Next wake: replay the identical bounded read-only request once and compare request plus ordered-result digests; persist no raw Calendar content.
+Next wake: issue one bounded synthetic nonmatching search in the same explicit window, with no retry and no calendar-wide absence claim.
