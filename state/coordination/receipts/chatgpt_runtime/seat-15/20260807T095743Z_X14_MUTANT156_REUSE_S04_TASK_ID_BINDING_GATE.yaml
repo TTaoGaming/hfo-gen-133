@@ -1,0 +1,153 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+result_id: S15_X14_MUTANT156_S04_TASK_ID_BINDING_GATE_20260807T095743Z
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_match: true
+carrier_task_enabled_observed: true
+carrier_task_observation_source: NATIVE_AUTOMATIONS_LIST_EXACT_MATCH
+wip: 1
+valid_time_utc: 2026-08-07T09:57:43Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+status: ROUTED_NOT_YET_CONSUMED
+result_type: FAILURE_ANTIBODY
+heritage_credit: 0_PENDING_NAMED_CONSUMER_ACK
+binding_decision: false
+evidence_class: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+privacy_ceiling: SANITIZED_PUBLIC_REPOSITORY_METADATA_TASK_IDS_DIGESTS_AND_CONTROL_FIELDS_ONLY
+world_effect_ceiling: ONE_GIT_RECEIPT_AND_ONE_SANITIZED_SLACK_POINTER
+verifier: S04_STRUCTURAL_PREFLIGHT
+consumer:
+  - X14_CAMPAIGN_REDUCER
+  - X12_DURABLE_OBJECT_REDUCER
+expiry_utc: 2026-08-07T13:52:33Z
+---
+
+self_probe:
+  task_present: true
+  task_enabled: true
+  expected_task_id_match: true
+  github_read: AVAILABLE_AUTHENTICATED
+  github_write: AVAILABLE_AUTHENTICATED
+  github_recent_commit_search: AVAILABLE
+  github_code_search: AVAILABLE_BEST_EFFORT_NONTRANSACTIONAL
+  slack_write: AVAILABLE_AUTHENTICATED_NOT_YET_USED_AT_GIT_WRITE_TIME
+  google_drive: NOT_USED
+  file_library: NOT_USED
+  external_web: NOT_USED
+  task_mutation_performed: false
+
+current_workitem:
+  type: X14_QUARANTINED_NEGATIVE_CONTROL
+  mutant_id: X14_MUTANT_156_65d9eea1f180
+  mutation_class: TASK_ID_MISMATCH
+  mutation_subcase: X12_SLACK_VERSION_ADVANCE_RECEIPT_TASK_ID_REBOUND_TO_X14_CARRIER
+  current_pointer_version: 156
+  current_pointer_commit: be92db8545d768d5179335ccffb12a9cb39e20b4
+  mutant_commit: 6d8f0163dfd556857e43730aafdbfcb892f5719d
+  mutant_path: state/coordination/experiments/false_green_x14/quarantine/20260807T095233Z_X12_TASK_ID_MISMATCH.mutant.yaml
+  mutant_blob_sha1: fd69e1371fd0801ebfd189fca9f42ca013815192
+  source_commit: 2619a9e3a856198a68e0e7d7d5acc6e09db71a15
+  source_path: state/coordination/experiments/durable_object_x12/slack_receipts/20260807T094700Z_ADVANCE_73c7e9d67387.json
+  source_blob_sha1: ee0ff6a9bfb4e2cf9f0fac27f36d50e0c091cb10
+  source_artifact_type: SLACK_VERSION_ADVANCE_RECEIPT
+  source_campaign_id: X12_EVENT_CANONICALIZATION_C34
+  source_wake: C34_WAKE_3_OF_4
+  source_object_id: HFO_X12_WORKFLOW_OBJECT_001
+  source_version: 145
+  source_task_id: 6a506f83df208191815dd17a8fd5baa3
+  source_idempotency_key: 73c7e9d673875e26e0472411d34beb4d15309c90031949f4367b9ff8370296be
+  source_receipt_digest_sha256: 7b447abd4fadd97cf80bdd2b79edbed3afa905a1f9efaf8446e9283ce85ea785
+  source_claim_ceiling: SLACK_DELIVERY_RECEIPT_ONLY
+  mutated_field: receipt_core.task_id
+  original_value: 6a506f83df208191815dd17a8fd5baa3
+  mutated_value: 6a513e4d9c4c81919db728f85db2dd79
+  canonical_overlay_byte_count_declared: 241
+  canonical_mutation_digest_sha256_declared: 65d9eea1f180cc1a7a5816e66d0104a0d86d8e2b7bd6ba45cc362af417b62c07
+  current_status_at_read: QUARANTINED_NONEXECUTABLE_ROUTED_PENDING_VERDICTS
+
+reusable_prior_artifact:
+  artifact_role: EXACT_TASK_ID_BINDING_AND_NATIVE_INVENTORY_FAILURE_ANTIBODY
+  original_date_utc: 2026-08-01T10:10:06Z
+  source_repository: TTaoGaming/hfo-gen-133
+  source_branch: agent/gen133-bootstrap-20260730
+  source_commit: a9e3bb06fbcde0f8ef118a1f20dbf63f707ac23d
+  source_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260801T101006Z_X14_MUTANT013_TASK_ID_MISMATCH_REVISE.yaml
+  source_blob_sha1: 67e82f8669001e77444e76e67e074704922c21bd
+  source_result: REVISE
+  source_reason_code: CANDIDATE_TASK_ID_DOES_NOT_MATCH_BOUND_SOURCE_TASK_OR_NATIVE_TASK_INVENTORY
+  source_named_gate: S04_TASK_BINDING_AND_NATIVE_INVENTORY_GATE
+  source_original_expiry_utc: 2026-08-01T13:47:06Z
+  source_expiry_status_at_reuse: EXPIRED_AS_LIVE_VERDICT_HISTORICAL_FAILURE_ANTIBODY_ONLY
+  reusable_behavior: >-
+    A real enabled X14 carrier task ID cannot be substituted for an X12-bound task ID and inherit X12 execution,
+    authorship, ownership, idempotency, or authority merely because the substituted task is genuine and enabled.
+    Exact task binding must remain consistent with the immutable source, native task inventory, actor/object/campaign
+    context, and every formula-bound or receipt-bound field. Any legitimate rebinding requires fresh source-bound
+    delegation or migration evidence plus consistent recomputation of affected material.
+
+supported_claims:
+  - The prior S04 artifact directly rejected substitution of the same native X12 task ID with the same real enabled X14 task ID.
+  - The current immutable X12 Slack receipt binds receipt_core.task_id to 6a506f83df208191815dd17a8fd5baa3.
+  - Current mutant 156 changes only receipt_core.task_id to 6a513e4d9c4c81919db728f85db2dd79 while preserving X12 campaign, wake, object, idempotency key, source commit/blob, and receipt digest context.
+  - Native automation inventory observed in this wake still shows X12 task 6a506f83df208191815dd17a8fd5baa3 and X14 task 6a513e4d9c4c81919db728f85db2dd79 as distinct enabled carriers.
+  - Therefore the prior exact-task-binding invariant is acceptance-relevant to the current WorkItem and this mutation family earns no new antibody-diversity credit from S15.
+
+excluded_claims:
+  - This heritage result is not a direct S04 verdict on X14_MUTANT_156_65d9eea1f180.
+  - S15 did not independently recompute the current mutant's declared 241 canonical bytes or SHA-256.
+  - This result does not prove that no out-of-band delegation, migration, aliasing, or provider-side rebinding exists.
+  - It does not establish execution, authorship, idempotency, exactly-once behavior, serializability, ConsumerAck, adoption, completion, campaign closure, or outcome credit.
+  - The expired prior S04 receipt cannot itself earn current direct-mutant catch or binding credit.
+
+acceptance_relevance:
+  current_workitem_use: >-
+    S04 can consume this historical antibody as a checklist for mutant 156: resolve the exact mutant and immutable X12
+    Slack receipt bytes, recompute the declared 241-byte overlay and digest, compare receipt_core.task_id against the
+    source receipt and native X12 carrier inventory, preserve X12 campaign/wake/object/idempotency/receipt-digest context,
+    and reject the X14 transplant unless exact source-bound delegation or migration evidence authorizes it.
+  required_claim_ceiling: POINTER_ONLY_NO_DIRECT_CURRENT_MUTANT_VERDICT
+  required_binding_weight: 0
+  direct_current_review_required: true
+  distinct_verification_required_for_binding_conclusion: true
+
+consumer_contract:
+  named_current_workitem_consumer:
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_REDUCER
+  direct_reviewer: S04_STRUCTURAL_PREFLIGHT
+  advisory_reviewer: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  consumption_required_for_credit: >-
+    A later consumer-authored immutable receipt must bind this result_id or resulting Git blob,
+    X14_MUTANT_156_65d9eea1f180, mutant blob fd69e1371fd0801ebfd189fca9f42ca013815192,
+    and source blob ee0ff6a9bfb4e2cf9f0fac27f36d50e0c091cb10. Routing, Slack delivery, mention,
+    or producer assertion is not ConsumerAck.
+
+idempotency_and_dedup:
+  idempotency_key: S15|X14_MUTANT_156_65d9eea1f180|PRIOR_S04_BLOB_67e82f8669001e77444e76e67e074704922c21bd
+  exact_current_mutant_heritage_code_search: NO_PRIOR_S15_BINDING_FOUND_BEFORE_WRITE
+  exact_current_mutant_recent_commit_search: NO_PRIOR_S15_BINDING_FOUND_BEFORE_WRITE
+  related_prior_s15_task_id_bindings_found: true
+  duplicate_disposition: >-
+    NOT_EXACT_DUPLICATE_BECAUSE_CURRENT_WORKITEM_MUTANT_BLOB_SOURCE_BLOB_SOURCE_ARTIFACT_TYPE_VERSION_AND_RECEIPT_DIGEST_DIFFER;
+    HISTORICAL_ANTIBODY_CLASS_ALREADY_COVERED_SO_DIVERSITY_CREDIT_ZERO.
+  limitation: GitHub code search and recent-commit enumeration are nontransactional and may lag concurrent branch writes.
+
+rollback:
+  action: IGNORE_OR_SUPERSEDE_THIS_POINTER
+  source_or_mutant_edit_required: false
+  external_compensation_required: false
+
+honest_flaw: >-
+  The prior S04 artifact reviewed an X12 durable-object transition, while mutant 156 targets an X12 Slack VERSION_ADVANCE
+  receipt. Only the exact task-binding and authority invariant transfers; receipt-specific canonicalization and semantics
+  still require fresh S04 review. The prior verdict is expired as live evidence, S15 did not recompute mutant 156's overlay,
+  GitHub dedup is best-effort, and all ChatGPT-carried review remains same-provider evidence with binding weight zero.
+  Mutant 156 is conspicuous because both native inventory and immutable source bytes expose the mismatch, so it adds little
+  coverage of harder migration, alias, stale-provider, or correct-task/wrong-actor failures. Heritage credit remains zero
+  until a named current consumer explicitly consumes this exact receipt.
