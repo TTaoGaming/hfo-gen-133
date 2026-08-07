@@ -1,0 +1,76 @@
+---
+schema_id: hfo.gen133.x14.false_green_mutant.v1
+experiment_id: X14_FALSE_GREEN_MUTATION_001
+mutant_id: X14_MUTANT_146_430b12fb9ac3
+seat: X14_FALSE_GREEN_MUTATION_AND_QA_LAB
+carrier_task_id_expected: 6a513e4d9c4c81919db728f85db2dd79
+carrier_task_id_observed: 6a513e4d9c4c81919db728f85db2dd79
+carrier_task_id_match: true
+wip: 1
+status: QUARANTINED_NONEXECUTABLE_ROUTED_PENDING_VERDICTS
+valid_time_utc: 2026-08-07T00:52:08Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+world_effect_ceiling: QUARANTINED_GIT_ARTIFACT_AND_SANITIZED_SLACK_ROUTE_ONLY
+---
+
+source_binding:
+  selection_rule: NEWEST_IMMUTABLE_CANDIDATE_NOT_AUTHORED_BY_X14_AND_NOT_PREVIOUSLY_MUTATED_AT_SAME_SOURCE_DIGEST
+  selection_cutoff_observed_utc: 2026-08-07T00:48:45Z
+  commit: c8bb245a84ed83a2201e0b3b623f92257c8f7920
+  path: state/coordination/experiments/durable_object_x12/slack_receipts/20260807T004312Z_ADVANCE_f444d5d195a7.json
+  git_blob_sha1: 6d283342c5b180095fffd52159f4e346218b01e6
+  source_digest_kind: GIT_BLOB_SHA1
+  source_digest: 6d283342c5b180095fffd52159f4e346218b01e6
+  authoring_seat: X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+  source_schema_id: hfo.gen133.x12.slack_receipt.v1
+  source_task_id: 6a506f83df208191815dd17a8fd5baa3
+  source_wake: C32_WAKE_3_OF_4
+  source_delivery_kind: VERSION_ADVANCE
+  source_receipt_digest_sha256: 9b79afbee91c7375c9da00ef3636ba1e1d4ade618b2a3ec4c22e6ab4ad5791e8
+  source_actor_principal: NOT_ASSERTED
+  source_consumer: Reginleif/Olrun
+  source_consumer_ack: NOT_ASSERTED
+  source_expiry_utc: 2026-08-07T04:43:12Z
+  source_atomicity_limit: SLACK_DELIVERY_OCCURRED_AFTER_VERIFIED_GIT_STATE_ADVANCE_AS_A_SEPARATE_EFFECT;GIT_AND_SLACK_HAVE_NO_SHARED_TRANSACTION_OR_EXACTLY_ONCE_DELIVERY
+  prior_x14_mutation_at_source_digest_before_write: false
+
+mutation:
+  mutation_class: ACTOR_CARRIER_CONFLATION
+  mutation_subcase: X12_SCHEDULED_TASK_ID_FALSELY_PROMOTED_TO_ACTOR_PRINCIPAL_IDENTITY
+  mutated_field: actor_principal
+  original_value: NOT_ASSERTED
+  mutated_value: SAME_AS_CARRIER_TASK_ID:6a506f83df208191815dd17a8fd5baa3
+  source_edited: false
+  mutation_is_overlay_only: true
+  canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_json: '{"mutated_field":"actor_principal","mutated_value":"SAME_AS_CARRIER_TASK_ID:6a506f83df208191815dd17a8fd5baa3","mutation_class":"ACTOR_CARRIER_CONFLATION","original_value":"NOT_ASSERTED","source_blob_sha1":"6d283342c5b180095fffd52159f4e346218b01e6"}'
+  canonical_byte_count: 248
+  canonical_mutation_digest_sha256: 430b12fb9ac302af040d1fe3cf8722607d6349b669d14eb18cf69e36274fef97
+
+expected_rejection:
+  expected_verdict: REVISE
+  reason: A_SCHEDULED_TASK_ID_BINDS_THE_CARRIER_OR_WAKE_SURFACE_NOT_THE_ACTOR_PRINCIPAL;THE_SOURCE_ASSERTS_NO_ACTOR_PRINCIPAL_OR_DISTINCT_IDENTITY_ATTESTATION_SO_EQUATING_ACTOR_WITH_CARRIER_IS_UNSUPPORTED
+  named_gate: S04_ACTOR_CARRIER_CONFLATION_EXACT_SOURCE_TASK_BINDING_CARRIER_WAKE_PROVENANCE_ACTOR_PRINCIPAL_DISTINCTNESS_PROVIDER_IDENTITY_ATTESTATION_COMMITTER_OR_SERVICE_PRINCIPAL_SOURCE_DIGEST_EXPIRY_VERIFIER_CONSUMER_AND_CLAIM_CEILING_GATE
+
+routing:
+  structural_preflight: S04_STRUCTURAL_PREFLIGHT
+  structural_verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  distinct_falsification: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  distinct_verifier_task_id: 6a539fb148bc8191a30b6009dbf22438
+  distinct_verifier_independence_ceiling: DISTINCT_SEAT_SAME_PROVIDER_NONBINDING
+  consumer:
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_REDUCER
+  expires_utc: 2026-08-07T04:43:12Z
+
+campaign_37:
+  campaign_wake: 1_of_4
+  current_mutant: X14_MUTANT_146_430b12fb9ac3
+  current_mutant_verdict: PENDING
+  campaign_decision_due_after_write: false
+  next_mutation_class: STALE_SOURCE_DIGEST
+
+honest_flaw: >-
+  This actor/carrier conflation is deliberately visible because the selected X12 receipt exposes a task_id but no actor-principal field, and the quarantine overlay simply promotes that carrier identifier into actor identity. It does not test harder near-misses such as a genuine service-principal assertion bound to the wrong wake, a committer identity copied from a different commit, delegated execution with an expired principal binding, or a provider-generated actor token whose carrier mapping is stale. GitHub code search for the exact source blob returned no prior X14 mutation before this write, but indexing can lag. S04 and S09 are distinct seats on the same provider and cannot close independent quorum. No source, task, schedule, Slack history, consumer, verifier, account, deployment, merge, publication, spend, deletion, or external provider state was modified.
