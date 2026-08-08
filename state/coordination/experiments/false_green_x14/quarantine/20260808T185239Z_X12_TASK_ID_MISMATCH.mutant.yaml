@@ -1,0 +1,113 @@
+---
+schema_id: hfo.gen133.x14.false_green_mutant.v1
+mutant_id: X14_MUTANT_189_3de6837f7b14
+seat: X14_FALSE_GREEN_MUTATION_AND_QA_LAB
+carrier_task_id: 6a513e4d9c4c81919db728f85db2dd79
+mutation_class: TASK_ID_MISMATCH
+mutation_subcase: X12_C41_W1_DELIVERY_RECEIPT_FALSELY_BOUND_TO_S04_TASK_ID
+status: QUARANTINED_NON_EXECUTABLE_ROUTED_PENDING_VERDICTS
+valid_time_utc: 2026-08-08T18:52:39Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+expires_utc: 2026-08-08T22:52:39Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+source_edited: false
+self_grade_performed: false
+independent_quorum_claimed: false
+world_effect_ceiling: ONE_IMMUTABLE_QUARANTINE_FILE_ONE_CURRENT_POINTER_UPDATE_ONE_SANITIZED_INTERNAL_SLACK_ROUTE_ONLY
+---
+
+self_probe:
+  expected_task_id: 6a513e4d9c4c81919db728f85db2dd79
+  observed_task_id: 6a513e4d9c4c81919db728f85db2dd79
+  task_id_match: true
+  task_enabled_observed: true
+  tools_observed:
+    - native_automations_inventory_read
+    - github_branch_search
+    - github_recent_commit_search
+    - github_exact_commit_read
+    - github_exact_file_read
+    - github_digest_dedup_search
+    - github_create_file
+    - github_update_file
+    - github_readback
+    - slack_send_message
+    - local_digest_recompute
+  task_mutation_performed: false
+
+source_binding:
+  selection_cutoff_observed_utc: 2026-08-08T18:52:39Z
+  newest_observed_eligible_before_cutoff: true
+  commit: 42b53f250db963838344238cd204d1bedc784de7
+  commit_created_at_utc: 2026-08-08T18:50:37Z
+  path: state/coordination/experiments/durable_object_x12/slack_receipts/20260808T184510Z_C41_W1_V175_e445906d05ad.json
+  git_blob_sha1: 958bd9e464fb2505df83c8d2536d6257005cbf6d
+  source_digest_kind: GIT_BLOB_SHA1
+  source_digest: 958bd9e464fb2505df83c8d2536d6257005cbf6d
+  canonical_branch_blob_match: true
+  authoring_seat: X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+  source_task_id: 6a506f83df208191815dd17a8fd5baa3
+  source_task_title_from_native_inventory: HFO X12 Durable Object PDCA Lab
+  source_task_enabled_observed: true
+  source_artifact_type: IMMUTABLE_SLACK_DELIVERY_RECEIPT
+  source_campaign_id: X12_POINTER_UPDATE_PATTERN_C41
+  source_version: 175
+  source_wake: C41_WAKE_1_OF_4
+  source_consumer: Reginleif/Olrun
+  prior_x14_mutation_at_source_digest_before_write: false
+  dedup_evidence: EXACT_GITHUB_SEARCH_FOR_SOURCE_BLOB_SHA1_RETURNED_NO_X14_REFERENCE_BEFORE_WRITE
+
+negative_control:
+  copy_mode: OVERLAY_ONLY_SOURCE_BYTES_UNCHANGED
+  canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_json: '{"mutated_field":"receipt_core.task_id","mutated_value":"6a52861fbdb08191b9ef33a0b9c3c15c","mutation_class":"TASK_ID_MISMATCH","original_value":"6a506f83df208191815dd17a8fd5baa3","source_blob_sha1":"958bd9e464fb2505df83c8d2536d6257005cbf6d"}'
+  canonical_overlay_utf8_bytes: 241
+  canonical_overlay_sha256: 3de6837f7b14d5ddd916e1a92b16aa6db7f23ce5900aecc9716d2ce13054ed34
+  mutated_field: receipt_core.task_id
+  original_value: 6a506f83df208191815dd17a8fd5baa3
+  mutated_value: 6a52861fbdb08191b9ef33a0b9c3c15c
+  expected_verdict: REVISE
+  expected_rejection_reason: EXACT_SOURCE_RECEIPT_IS_AUTHORED_BY_AND_BOUND_TO_THE_X12_CARRIER_TASK_ID;SUBSTITUTING_THE_ACTIVE_S04_VERIFIER_TASK_ID_BREAKS_SOURCE_TASK_BINDING_AND_MUST_BE_REJECTED_AS_TASK_ID_MISMATCH
+
+routing:
+  named_gate: S04_TASK_ID_BINDING_EXACT_SOURCE_COMMIT_PATH_BLOB_EXPECTED_SOURCE_TASK_ID_MUTATED_TASK_ID_CARRIER_ROLE_EXPIRY_VERIFIER_CONSUMER_AND_CLAIM_CEILING_GATE
+  structural_preflight: S04_STRUCTURAL_PREFLIGHT
+  structural_verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  structural_verifier_enabled_observed: true
+  distinct_falsification: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  distinct_verifier_task_id: 6a539fb148bc8191a30b6009dbf22438
+  distinct_verifier_enabled_observed: true
+  distinct_verifier_evidence_ceiling: SAME_PROVIDER_NONBINDING_WEIGHT_0
+  consumer:
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+    - Reginleif/Olrun
+  direct_candidate_priority_requested: true
+  route_effect_ceiling: ONE_SANITIZED_INTERNAL_SLACK_POINTER_AFTER_GIT_READBACK
+  routing_contract_status: DIRECT_ROUTE_HEALTH_REQUIRES_ACTUAL_S04_SELECTION_OR_DIGEST_BOUND_SKIP;SEMANTIC_EMBEDDED_CATCH_TRACKED_SEPARATELY
+
+campaign_evaluation:
+  campaign_ordinal: 47
+  matured_mutants_evaluated:
+    - X14_MUTANT_186_d9c20c459e15
+    - X14_MUTANT_187_858b946ec852
+    - X14_MUTANT_188_0979dff5ad41
+  semantic_catches_observed: 3
+  semantic_catches_possible: 3
+  direct_s04_primary_selections_observed: 0
+  embedded_s04_exact_rejections_observed: 3
+  distinct_s09_rejections_or_retirements_observed: 3
+  decision: REVISE_GATE
+  reason: SEMANTIC_SENSITIVITY_IS_GREEN_FOR_ALL_THREE_MATURED_MUTANTS_BUT_DIRECT_ROUTE_CONSUMPTION_REMAINS_ZERO_OF_THREE;KEEP_SEMANTIC_GATES_AND_REVISE_THE_ROUTING_SLA_OR_SELECTOR_CONTRACT_SO_EMBEDDED_CATCHES_ARE_NOT_LAUNDERED_AS_DIRECT_ROUTE_SUCCESS
+
+forbidden_inference:
+  - ACTIVE_S04_TASK_ID_DOES_NOT_PROVE_X12_RECEIPT_AUTHORSHIP_OR_CARRIER_BINDING
+  - SAME_PROVIDER_CHECKS_DO_NOT_CLOSE_INDEPENDENT_VERIFICATION
+  - EMBEDDED_S04_MUTANT_CHECK_DOES_NOT_COUNT_AS_DIRECT_PRIMARY_SELECTION
+  - NO_SOURCE_EDIT
+  - NO_TASK_OR_SCHEDULE_MUTATION
+  - NO_WORLD_EFFECT_PERFORMED
+
+honest_flaw: >-
+  Mutant 189 is easy because both the immutable X12 receipt and the native task inventory expose the correct X12 task ID, while the injected value is the live S04 verifier task ID. It tests exact task-binding enforcement, not a subtle reseat or delegated carrier migration. A stronger task-ID assay should begin from a legitimate task reseat or replacement and corrupt exactly one historical/current binding, delegation receipt, effective-time boundary, or supersession edge. Candidate discovery and digest dedup are best-effort under concurrent Git writes and indexing lag. S04 and S09 are ChatGPT-carried same-provider checks with binding weight zero and cannot close independent verification.
