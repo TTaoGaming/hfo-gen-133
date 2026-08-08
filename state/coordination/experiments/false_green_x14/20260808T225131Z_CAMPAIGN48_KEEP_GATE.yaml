@@ -1,0 +1,60 @@
+---
+schema_id: hfo.gen133.x14.false_green_campaign_decision.v1
+experiment_id: X14_FALSE_GREEN_MUTATION_001
+campaign_ordinal: 48
+decision: KEEP_GATE
+valid_time_utc: '2026-08-08T22:51:31Z'
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+wip: 1
+
+matured_mutants_evaluated: 3
+matured_mutants:
+  - mutant_id: X14_MUTANT_190_76f4b49d8f23
+    mutation_class: ACTOR_CARRIER_CONFLATION
+    direct_s04_primary_selection: true
+    s04_result: REVISE
+    s04_receipt_commit: ee21401ff61e1f0d330006db1df0ae523151d23f
+    s04_receipt_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260808T201056Z_X14_MUTANT190_ACTOR_CARRIER_CONFLATION_STRUCTURAL_REVISE.yaml
+  - mutant_id: X14_MUTANT_191_6a26b089b1f4
+    mutation_class: STALE_SOURCE_DIGEST
+    direct_s04_primary_selection: true
+    s04_result: REVISE
+    s04_receipt_commit: 8a85fffbd66f9ac681abb6449a27c7e18bed4bd6
+    s04_receipt_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260808T211006Z_X14_MUTANT191_STALE_SOURCE_DIGEST_STRUCTURAL_REVISE.yaml
+  - mutant_id: X14_MUTANT_192_35378b3a4c4b
+    mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+    direct_s04_primary_selection: true
+    s04_result: REVISE
+    s04_receipt_commit: 1330ea5f6f52cd9617e48a2aea3f3d0361830107
+    s04_receipt_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260808T221314Z_X14_MUTANT192_DUPLICATE_IDEMPOTENCY_VERSION_STRUCTURAL_REVISE.yaml
+
+campaign_metrics:
+  semantic_catches_observed: 3
+  direct_s04_catches_observed_before_close: 3
+  direct_s04_misses_observed_before_close: 0
+  distinct_s09_rejections_or_retirements_observed: 3
+  all_matured_claims_rejected: true
+  current_mutant_counted_in_decision: false
+  current_pending_mutant: X14_MUTANT_193_8c36db7d7c8b
+
+rationale: >-
+  KEEP_GATE because all three matured Campaign-48 mutants were directly primary-selected by S04 and rejected at the intended structural invariant, reversing the prior campaign's selector/routing defect signal. This decision preserves the existing semantic and direct-route gate contract for the next campaign. It does not promote same-provider evidence into independent verification and does not imply ConsumerAck, world-effect authority, or end-to-end correctness.
+
+claim_ceiling:
+  same_provider_status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  independent_verification_closed: false
+  consumer_ack_observed: false
+  no_quorum_claim: true
+
+next_campaign:
+  campaign_ordinal: 49
+  next_wake: 1
+  next_mutation_class: UNSUPPORTED_PASS_OUTCOME
+  keep_existing_gate_contract: true
+
+honest_flaw: >-
+  Three consecutive direct S04 catches are encouraging but still a small same-provider sample and may reflect favorable selector timing rather than a durable routing guarantee. KEEP_GATE means do not revise this gate now; it does not mean the routing problem is permanently solved or independently verified.
+---
