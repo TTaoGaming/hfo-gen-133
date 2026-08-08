@@ -1,0 +1,29 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_GCAL_CALENDARLIST_READONLY_023
+candidate: Google_Calendar_list_calendars
+phase: 1
+phase_status: PREFLIGHT_READY
+wip: 1
+expected_current_version: 188
+request_descriptor_canonicalization: UTF8_JSON_SORTED_KEYS_COMPACT_SEPARATORS_NO_ASCII_ESCAPING
+request_descriptor_canonical_json: '{"max_results":5,"next_page_token":null}'
+request_descriptor_sha256: 219a67b0de7cc4cb6a6a94dbc340b96ad8b0aafa1f086e3653787727417132f7
+planned_result_canonicalization: UTF8_JSON_ARRAY_OF_CALENDAR_IDS_ORDERED_COMPACT_NO_ASCII_ESCAPING
+privacy_gate: DO_NOT_PERSIST_RAW_CALENDAR_IDS_NAMES_DESCRIPTIONS_LOCATIONS_OR_OTHER_RETURNED_CALENDAR_METADATA_IN_X13_RECEIPTS;PERSIST_COUNT_CURSOR_PRESENCE_PRIMARY_PRESENT_AND_HASHED_ORDERED_IDS_ONLY
+mutation_gate: READ_ONLY_LIST_ONLY_NO_EVENT_READ_NO_EVENT_WRITE_NO_CALENDARLIST_INSERT_UPDATE_DELETE_NO_SEND_NO_SPEND
+official_contract_baseline: GOOGLE_CALENDAR_CALENDARLIST_LIST_GET_USERS_ME_CALENDARLIST_REQUIRES_AUTHORIZATION_MAXRESULTS_DEFAULT_100_MAX_250_SUPPORTS_PAGETOKEN_RETURNS_ITEMS_NEXTPAGETOKEN_OR_NEXTSYNCTOKEN;LEAST_PRIVILEGE_SCOPE_CALENDAR_CALENDARLIST_READONLY_AVAILABLE
+official_quota_baseline: GOOGLE_CALENDAR_API_CURRENT_2026_DEFAULTS_10000_REQUESTS_PER_MINUTE_PER_PROJECT_600_PER_MINUTE_PER_USER_PER_PROJECT_1000000_REQUESTS_PER_DAY_PER_PROJECT_BILLING_THRESHOLD;STANDARD_USE_NO_ADDITIONAL_COST_AT_PRESENT;ACTUAL_CONNECTOR_DEBIT_UNKNOWN
+official_sources:
+  - https://developers.google.com/workspace/calendar/api/v3/reference/calendarList/list
+  - https://developers.google.com/workspace/calendar/api/auth
+  - https://developers.google.com/workspace/calendar/api/guides/quota
+strongest_falsifier_planned: MATCHED_PROVIDER_DIRECT_CALENDARLIST_LIST_UNDER_SAME_EFFECTIVE_PRINCIPAL_MATERIALLY_DISAGREES_ON_BOUNDED_FIRST_PAGE_OR_CONNECTOR_HYDRATES_EVENT_CONTENT_OR_MUTATES_CALENDAR_STATE
+consumer: HFO_COMMAND_AND_CONTROL_CALENDAR_ID_DISCOVERY_CANDIDATE_NO_DOWNSTREAM_ACK
+valid_time_utc: 2026-08-08T17:49:29Z
+recorded_time_utc: 2026-08-08T17:49:29Z
+---
+
+# X13 Google Calendar CalendarList Phase 1 Preflight
+
+Start one new WIP=1 adopt-before-invent campaign for bounded read-only calendar-list discovery. Persist and verify the exact privacy-safe request before the direct connector call. Returned calendar identifiers and metadata are treated as private connector data and must not be copied into durable X13 receipts; only bounded counts, cursor presence, primary-calendar presence, and an ordered-ID digest may be retained.
