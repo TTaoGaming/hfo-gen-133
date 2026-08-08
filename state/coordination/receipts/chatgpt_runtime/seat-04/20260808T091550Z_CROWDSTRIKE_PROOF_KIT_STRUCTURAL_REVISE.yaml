@@ -1,0 +1,133 @@
+schema_id: hfo.gen133.s04_structural_preflight.v1
+result: REVISE
+seat: S04_HRIST_STRUCTURAL_PREFLIGHT
+wip: 1
+valid_time_utc: 2026-08-08T09:15:50Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+
+self_probe:
+  expected_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  observed_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  task_id_match: true
+  task_enabled_observed: true
+  github_read_available: true
+  github_write_available: true
+  slack_write_available: true
+  task_inventory_read_available: true
+  task_mutation_performed: false
+  candidate_edit_performed: false
+  self_grading_performed: false
+
+selection:
+  rule: NEWEST_IMMUTABLE_S04_ADDRESSED_NOT_S04_AUTHORED
+  candidate_authoring_seat: S03
+  candidate_commit: 61fc8da6214506d0bed6d4a47931af6d7bc4514f
+  candidate_path: state/coordination/receipts/chatgpt_runtime/seat-03/20260808T091056Z_CROWDSTRIKE_PROOF_KIT_HOLD_TO_S04.yaml
+  candidate_git_blob_sha1: 83c6700dd06baa88457a95332e55dfcc080767a0
+  correlation_id: GTM-S07-CROWDSTRIKE-RETURN-20260808T082936Z
+  work_item_id: S07_CROWDSTRIKE_AGENT_PROMOTION_EVIDENCE_GATE_V1
+
+exact_recomputation:
+  route_utf8_bytes: 7481
+  route_sha256: ded767bbc1c54f518b61182bd648b10505ef8db0c1a6a939d36c3caf4d26bd9c
+  route_git_blob_sha1: 83c6700dd06baa88457a95332e55dfcc080767a0
+  producer_return_commit: 93b3f0b9ea33f513af86d647e49df2cc1bd861f4
+  producer_return_path: projects/gtm-revenue/returns/20260808T082936Z_S07_CROWDSTRIKE_AGENT_PROMOTION_EVIDENCE_GATE_RETURN.md
+  producer_return_utf8_bytes: 7202
+  producer_return_sha256: 0683681318a2feb460775870ee5d9641ecea66e9b4f1dd444e9ef0319850474f
+  producer_return_git_blob_sha1: ea2e9409304d990f0aeb1e635cff0bf84d8f372f
+  claim_commit: b1f52d1427e63028b06aadadbbac7bfa75f4f9a6
+  claim_path: projects/gtm-revenue/claims/20260808T080439Z_CROWDSTRIKE_AGENT_PROMOTION_EVIDENCE_GATE_ADMISSION.claim.yaml
+  claim_git_blob_sha1: e0bbfc9a27d35461d7731a70b0a9c66882ab8997
+  source_binding_preimage_utf8_bytes: 172
+  source_binding_sha256: a393376c5f89461298eea422d4bc1dbb7cf2c0bdd6728d9c627215d2bd0e5710
+  acceptance_canonicalization: UTF8_LF_NO_TERMINAL_LF
+  acceptance_utf8_bytes: 3508
+  acceptance_sha256: 18ae8061124174a7a04f13225592f6069ef20720061455661922145787f775aa
+  idempotency_preimage_utf8_bytes: 286
+  idempotency_sha256: cfcae8cf002750672685b2f0280b19bc5ccac0473ac6de314dfe97fbbe9800d2
+  target_card_commit: 035c132f5f80963d115f19cdd57c3a9f734769fb
+  target_card_path: projects/gtm-revenue/research/20260808T072945Z_ENTERPRISE_BUYER_CROWDSTRIKE_TARGET_CARD.md
+  target_card_git_blob_sha1: d1aaa28787404c3af04a72923f1cb0531e794aa8
+  target_card_declared_evidence_digest_sha256: bf10f8721a7b8d1a1f24742d8faa7f6f1989dba2232bccedb8292dec6cd6ccc7
+  proof_candidate_commit: caac9f7603cb98cab539ba9f283e6c767cf122ce
+  proof_candidate_path: projects/gtm-revenue/kits/crowdstrike/20260808T082809Z_AGENT_PROMOTION_EVIDENCE_GATE.md
+  proof_candidate_utf8_bytes: 5754
+  proof_candidate_sha256: c888c6acdc7e6a987b36733db7307d375b12df63733cf1f44ef338cec343bc99
+  proof_candidate_git_blob_sha1: 1c7cae2ffd9b6e78c0383b6a4476bd4b4bb5d8d3
+
+checks:
+  schema_chain: PASS
+  exact_source_pointers: PASS
+  freshness: PASS_UNEXPIRED_AT_VALID_TIME
+  authority: PASS_T0_RESEARCH_PREP_ONLY_NO_SEND
+  task_binding: PASS_EXACT_S07_S04_S03_TASK_IDS
+  actor_carrier_separation: PASS_UNPROVEN_NOT_CONFLATED
+  claim_idempotency: PASS_CANONICAL_DIGEST_REPRODUCED
+  route_idempotency: REVISE_NONCANONICAL_NONCE_ONLY
+  lease_expiry: PASS_CLAIM_LEASE_AND_EXPIRY_PRESENT
+  privacy: PASS_PUBLIC_SOURCES_ONLY
+  rollback: PASS_APPEND_ONLY_SUPERSESSION_AND_EXACT_RETRACTABLE_CANDIDATE_PATH
+  verifier: PASS_S04_SAME_PROVIDER_NONBINDING_WEIGHT_ZERO
+  consumer: PASS_S03_BOUND_NO_CONSUMERACK_INFERRED
+  required_ten_promotion_gate_checks: PASS_ALL_10_PRESENT
+  required_five_negative_controls: PASS_ALL_5_PRESENT
+  source_backed_vs_hypothesis_separation: PASS
+  target_card_evidence_digest: REVISE_OPAQUE_NO_DURABLE_CANONICAL_PREIMAGE_OR_CANONICALIZATION_RULE
+  independent_stood_or_fell: ABSENT
+  explicit_consumer_ack: ABSENT
+
+controlling_defect: >-
+  The target card declares evidence digest
+  bf10f8721a7b8d1a1f24742d8faa7f6f1989dba2232bccedb8292dec6cd6ccc7
+  and downstream artifacts bind it, but the immutable card does not persist the
+  canonical evidence preimage or canonicalization rule. S04 therefore cannot
+  independently recompute that digest from the bound artifact. Exact Git blob
+  identity remains valid, but the declared evidence digest is not structurally
+  reproducible. Route replay equivalence is also nonce-only rather than bound
+  by a canonical route idempotency digest.
+
+strongest_fake_green_mutant:
+  mutant_id: X14_MUTANT_179_3723561e6ce8
+  mutation_class: ACTOR_CARRIER_CONFLATION
+  mutant_commit: 645bc0f30dde9c388224978211f2fbe91a71365c
+  mutant_path: state/coordination/experiments/false_green_x14/quarantine/20260808T085142Z_X13_ACTOR_CARRIER_CONFLATION.mutant.yaml
+  mutant_git_blob_sha1: 2eaf30fac1e14ba8072d5f86cd6d2b53b8646176
+  canonical_overlay_utf8_bytes: 69
+  canonical_overlay_sha256: 3723561e6ce80192db170606a558f1468d6a47f90a6e5dea0904681cd36c2046
+  source_commit: f9185d4dfb6a00056f47b1ff860e276ee37b1fd9
+  source_path: state/coordination/experiments/cots_connector_x13/20260808T084953Z_CALENDAR_FREEBUSY_PHASE4_ADOPT_WITH_GATES.md
+  source_git_blob_sha1: f981df3a2eb1ae851b84f1c3ac3374fd5a8b42f3
+  source_actor_carrier_mapping_present: false
+  verdict: CAUGHT_REVISE
+  reason: >-
+    A GitHub commit account and semantic authoring seat do not authenticate the
+    scheduled carrier. No immutable source-bound delegation or attestation maps
+    TTaoGaming to the X13 scheduled carrier.
+
+independence:
+  evidence_class: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  independent_verification_closed: false
+  independent_stood_or_fell: ABSENT
+  explicit_named_consumer_ack: ABSENT
+
+world_effects:
+  candidate_edited: false
+  task_mutation: false
+  send: false
+  spend: false
+  deployment: false
+  merge: false
+  publication: false
+  account_or_security_change: false
+  permanent_deletion: false
+  independent_quorum_claim: false
+
+honest_flaw: >-
+  This pass verifies durable Git structure and canonical digests that expose
+  their preimages. It does not independently validate the underlying public
+  CrowdStrike claims, close independent verification, or prove carrier-to-GitHub
+  principal delegation. Same-provider structural evidence remains advisory only.
