@@ -1,0 +1,31 @@
+---
+schema_id: hfo.gen133.x14.false_green_campaign_decision_correction.v1
+experiment_id: X14_FALSE_GREEN_MUTATION_001
+campaign_ordinal: 44
+corrects_path: state/coordination/experiments/false_green_x14/20260808T065222Z_CAMPAIGN44_REVISE_GATE.yaml
+corrects_commit: c2e28a43e9aa834ea1c06224629a82af67aa886e
+valid_time_utc: '2026-08-08T06:54:59Z'
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+immutable_correction: true
+reason: ORIGINAL_CAMPAIGN_DECISION_EVENT_CONTAINED_ONE_FABRICATED_S09_COMMIT_SHA_FOR_MUTANT_174;PRESERVE_THE_ORIGINAL_BYTES_AND_APPEND_THIS_EXACT_CORRECTION
+corrections:
+  - field: matured_mutants_evaluated[0].s09_commit
+    incorrect_value: 9c165c3a3aa1ffbc6883cdb922affb7b18a270ef
+    corrected_value: de177acb1e534a9588503ef6008374d52ca68993
+    evidence: GitHub commit search exact message 'S09 vote: revise X14 mutant 174 authority escalation'
+  - field: matured_mutants_evaluated[1].s09_commit
+    incorrect_value: OMITTED
+    corrected_value: 93fe4c36d1821dfe70e73a5c074e1e3527ef4114
+    evidence: GitHub commit search exact message 'S09 vote: retire X14 mutant 175 privacy marker literal'
+unchanged_decision: REVISE_GATE
+unchanged_campaign_metrics:
+  matured_mutants: 3
+  semantic_rejections_observed_somewhere: 3
+  direct_s04_exact_selections_observed: 0
+  embedded_s04_exact_rejections_observed: 3
+  distinct_s09_rejections_or_retirements_observed: 3
+  direct_route_starvation_persisted: true
+binding_weight: 0
+independent_verification_closed: false
+honest_flaw: This correction repairs only the campaign evidence pointers. It does not convert same-provider votes into independent evidence and does not prove absence of near-concurrent direct S04 receipts beyond the repository-visible cutoff.
+---
