@@ -1,0 +1,82 @@
+---
+schema_id: hfo.gen133.x14.campaign_decision.v1
+experiment_id: X14_FALSE_GREEN_MUTATION_001
+campaign_ordinal: 45
+decision: REVISE_GATE
+valid_time_utc: '2026-08-08T10:52:09Z'
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+
+matured_mutants_evaluated:
+  - mutant_id: X14_MUTANT_178_7f8e23a15b0e
+    mutation_class: TASK_ID_MISMATCH
+    direct_s04_primary_selection: true
+    s04_commit: fda207673d295606f56d9315d9eeed54cb15bfa7
+    s04_result: REVISE_TASK_ID_MISMATCH_CAUGHT
+    s09_commit: 6b2d4ebf8381656202b0a9afa588812fb8be738a
+    s09_semantic_disposition: REVISE_REJECT_TASK_ID_MISMATCH
+    caught: true
+  - mutant_id: X14_MUTANT_179_3723561e6ce8
+    mutation_class: ACTOR_CARRIER_CONFLATION
+    direct_s04_primary_selection: false
+    embedded_s04_exact_rejection: true
+    s04_commit: 5bcfe9d50095f1e80cdbf5af3637d44d044608e5
+    s04_result: CAUGHT_REVISE
+    s09_commit: 553615fab07407be3e220559c1eb0e7a7de0020e
+    s09_semantic_disposition: REVISE_REJECT_UNSUPPORTED_ACTOR_CARRIER_IDENTITY
+    caught: true
+  - mutant_id: X14_MUTANT_180_70c967cda30e
+    mutation_class: STALE_SOURCE_DIGEST
+    direct_s04_primary_selection: false
+    embedded_s04_exact_rejection: true
+    s04_commit: 75b0d696c32f7004bc679cb1ed2564bd8e178f4b
+    s04_result: CAUGHT_REVISE
+    s09_commit: 707c41ea71f9ed467b025c59493f1e5422887937
+    s09_semantic_disposition: REVISE_REJECT_STALE_SOURCE_DIGEST
+    caught: true
+
+campaign_metrics:
+  matured_mutants: 3
+  semantic_catches_observed: 3
+  direct_s04_primary_catches_observed: 1
+  embedded_s04_exact_rejections_observed: 2
+  distinct_s09_rejections_observed: 3
+  all_matured_mutants_caught: true
+  same_provider_binding_weight: 0
+  independent_verification_closed: false
+  consumer_ack_observed: false
+
+controlling_defect: >-
+  The semantic gates caught all three matured mutants, but the direct routing contract remains structurally inconsistent with the active S04 selector. Native task readback shows S04 is instructed to select the newest immutable S04-addressed candidate, while X14 CURRENT has been requiring oldest-unexpired direct-X14 priority or an explicit digest-bound skip. Campaign 45 improved to one direct X14 selection out of three, but the remaining two were only embedded fake-green checks. Treating that selector mismatch as a semantic gate failure would keep generating low-novelty mutants without fixing the owner-side routing contract.
+
+required_gate_revision: >-
+  DECOMPOSE_SEMANTIC_SENSITIVITY_FROM_ROUTING_SLA. Count an exact S04 embedded recomputation as evidence that the named structural invariant is sensitive, but keep it nonbinding and distinct from direct-route consumption. Do not declare direct-route health unless S04 actually selects the mutant or emits an explicit digest-bound skip. Do not repeat obvious low-novelty mutants solely to measure a priority rule that is absent from S04's active selector contract; route-contract alignment belongs to the S04/coordination owner and requires separate authorized change.
+
+pending_fourth_mutant:
+  mutant_id: X14_MUTANT_181_5548f3d683f1
+  mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+  status: QUARANTINED_PENDING_ROUTE_AND_VERDICT
+  excluded_from_matured_catch_count: true
+
+next_campaign:
+  campaign_ordinal: 46
+  next_mutation_class: FABRICATED_CONSUMER_ACK
+
+honest_flaw: >-
+  Campaign 45 has strong exact-Git evidence for semantic rejection but no independent verifier and no ConsumerAck. Two of three S04 catches were embedded while S04 was grading unrelated primary candidates, so those checks do not prove direct routing. GitHub indexing and concurrent writes can still hide a late direct verdict; this decision is bounded to repository-visible evidence at the stated cutoff. No task or selector was mutated.
+
+world_effects:
+  task_mutation: false
+  schedule_mutation: false
+  source_edit: false
+  send_external: false
+  spend: false
+  deployment: false
+  merge: false
+  publication: false
+  account_or_security_change: false
+  secret_exposure: false
+  permanent_deletion: false
+  independent_quorum_claim: false
+---
