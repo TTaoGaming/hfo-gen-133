@@ -1,0 +1,253 @@
+---
+schema_id: hfo.gen133.s06_executor_packet.v1
+result: HOLD
+seat: S06_CODE_WORK_PACKET_COMPILER_CODEX_BRIDGE
+carrier_task_id_expected: 6a57972b9df081918680ce67c4ecb197
+carrier_task_id_observed: 6a57972b9df081918680ce67c4ecb197
+carrier_task_id_match: true
+wip: 1
+valid_time_utc: 2026-08-08T08:21:16Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+base_sha: fda207673d295606f56d9315d9eeed54cb15bfa7
+base_sha_basis: LATEST_OBSERVED_REPOSITORY_COMMIT_BEFORE_PACKET_WRITE
+work_item_id: S07_CROWDSTRIKE_AGENT_PROMOTION_EVIDENCE_GATE_V1
+claim_sha: b1f52d1427e63028b06aadadbbac7bfa75f4f9a6
+claim_path: projects/gtm-revenue/claims/20260808T080439Z_CROWDSTRIKE_AGENT_PROMOTION_EVIDENCE_GATE_ADMISSION.claim.yaml
+claim_blob_sha1: e0bbfc9a27d35461d7731a70b0a9c66882ab8997
+claim_acceptance_sha256: 18ae8061124174a7a04f13225592f6069ef20720061455661922145787f775aa
+claim_expiry_utc: 2026-08-08T12:04:39Z
+source_commit: 035c132f5f80963d115f19cdd57c3a9f734769fb
+source_path: projects/gtm-revenue/research/20260808T072945Z_ENTERPRISE_BUYER_CROWDSTRIKE_TARGET_CARD.md
+source_blob_sha1: d1aaa28787404c3af04a72923f1cb0531e794aa8
+source_evidence_digest_sha256: bf10f8721a7b8d1a1f24742d8faa7f6f1989dba2232bccedb8292dec6cd6ccc7
+candidate_path: projects/gtm-revenue/kits/crowdstrike/20260808T082116Z_AGENT_PROMOTION_EVIDENCE_GATE.md
+producer_return_path: projects/gtm-revenue/returns/20260808T082116Z_S07_CROWDSTRIKE_AGENT_PROMOTION_EVIDENCE_GATE_RETURN.md
+verifier:
+  seat: S04_HRIST_STRUCTURAL_PREFLIGHT
+  task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  binding_weight: 0
+consumer:
+  seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  task_id: 6a539fc5130c81918c13624739fb2a60
+---
+
+self_probe:
+  exact_task_id_match: true
+  github_read: AVAILABLE
+  github_write: AVAILABLE_FOR_PACKET_ONLY
+  slack_read: AVAILABLE
+  slack_write: AVAILABLE_FOR_REQUIRED_POINTER
+  direct_codex_ingress: UNAVAILABLE
+  direct_claude_ingress: UNAVAILABLE
+  direct_canonical_host_shell_ingress: UNAVAILABLE
+  github_actions_new_dispatch_ingress: UNAVAILABLE_ON_EXPOSED_TOOL_SURFACE
+  route_performed: false
+  execution_performed: false
+  producer_return_consumed: false
+
+selection:
+  changed_claim_commit: b1f52d1427e63028b06aadadbbac7bfa75f4f9a6
+  changed_after_prior_s06_wake: true
+  unexpired_at_selection: true
+  source_status: TARGET_CARD_READY
+  requires: ARTIFACT_BUILD_PLUS_REPOSITORY_INSPECTION_AND_ACCEPTANCE_EVIDENCE
+  downstream_producer: S07_GTM_PROOF_KIT_BUILDER
+  selected_reason: >-
+    A new source-bound CrowdStrike WorkItem was admitted after the prior S06 wake and remains
+    unexpired. It explicitly requires one compact internal proof artifact and acceptance
+    evidence. No exact candidate or direct producer return for this claim was observed before
+    packet compilation, so S06 may compile one executor packet but may not claim execution.
+
+current_red_evidence:
+  candidate_for_exact_claim: NOT_OBSERVED
+  direct_producer_return_for_exact_claim: NOT_OBSERVED
+  source_hypothesis_status: UNMET_DEMAND_NOT_PROVEN
+  source_disconfirming_evidence: >-
+    CrowdStrike publicly presents AgentWorks governance/testing, continuous agent identity and
+    quantitative agent evaluation capability, so an external promotion gate may duplicate an
+    already adequate internal system.
+  source_digest_recomputation:
+    declared_digest: bf10f8721a7b8d1a1f24742d8faa7f6f1989dba2232bccedb8292dec6cd6ccc7
+    canonical_preimage_in_bound_card: NOT_OBSERVED
+    canonicalization_rule_in_bound_card: NOT_OBSERVED
+    instruction: DO_NOT_INVENT_OR_CLAIM_RECOMPUTATION
+  actor_binding:
+    carrier_to_authenticated_github_principal: UNPROVEN
+    instruction: DO_NOT_CONFLATE_COMMIT_AUTHOR_WITH_SCHEDULED_TASK_IDENTITY
+
+allowed_paths:
+  read:
+    - projects/gtm-revenue/claims/20260808T080439Z_CROWDSTRIKE_AGENT_PROMOTION_EVIDENCE_GATE_ADMISSION.claim.yaml
+    - projects/gtm-revenue/research/20260808T072945Z_ENTERPRISE_BUYER_CROWDSTRIKE_TARGET_CARD.md
+    - projects/gtm-revenue/TARGET_UNIVERSE_4X_DREAM50_V1.md
+    - projects/gtm-revenue/packets/20260807T140800Z_CHATGPT_CLOUD_GTM_DREAM50_HANDOFF.packet.md
+  write_if_direct_executor_available:
+    - projects/gtm-revenue/kits/crowdstrike/20260808T082116Z_AGENT_PROMOTION_EVIDENCE_GATE.md
+    - projects/gtm-revenue/returns/20260808T082116Z_S07_CROWDSTRIKE_AGENT_PROMOTION_EVIDENCE_GATE_RETURN.md
+
+forbidden_paths:
+  - .github/**
+  - projects/gtm-revenue/claims/**
+  - projects/gtm-revenue/research/**
+  - projects/gtm-revenue/packets/**
+  - state/ssot/**
+  - state/coordination/schedules/**
+  - "**/.env*"
+  - "**/*secret*"
+
+forbidden_effects:
+  - TASK_MUTATION
+  - PUSH
+  - MERGE
+  - DEPLOY
+  - EXTERNAL_PUBLICATION
+  - EMAIL_OR_DM_SEND
+  - APPLICATION_SUBMISSION
+  - ACCOUNT_CREATION
+  - TERMS_ACCEPTANCE
+  - SPEND_OR_PAID_CALL
+  - SECURITY_TESTING
+  - PRIVATE_DATA_USE
+  - AUTONOMOUS_NEGOTIATION
+  - DESTRUCTIVE_GIT
+  - INVENT_TEST_PASS
+  - INVENT_BASELINE
+  - INVENT_CUSTOMER_DEMAND
+  - CLAIM_INDEPENDENT_VERIFICATION
+  - CLAIM_CONSUMER_ACK
+
+execution_goal: >-
+  On a directly identified Codex, Claude, or canonical-host executor only, inspect the frozen
+  claim and source bytes and produce at most one compact public-safe CrowdStrike work sample:
+  "Agent Promotion Evidence Gate — Quality × Authority × Human Command × Trace". It must be a
+  two-minute internal utility artifact, not a diagnosis or outreach asset, and must preserve the
+  unknown baseline, disconfirming evidence, strongest falsifier, relationship-only/no-send
+  ceiling, and all five source negative controls. Produce an immutable producer-return artifact
+  only if the executor actually ran the commands and can report direct runtime/model evidence.
+
+required_commands:
+  - id: C01
+    command: "git rev-parse --show-toplevel"
+    purpose: prove repository checkout
+  - id: C02
+    command: "git remote get-url origin"
+    purpose: bind repository origin
+  - id: C03
+    command: "git branch --show-current"
+    purpose: record actual branch or detached status
+  - id: C04
+    command: "git rev-parse HEAD"
+    purpose: record actual checkout SHA
+  - id: C05
+    command: "git rev-parse b1f52d1427e63028b06aadadbbac7bfa75f4f9a6:projects/gtm-revenue/claims/20260808T080439Z_CROWDSTRIKE_AGENT_PROMOTION_EVIDENCE_GATE_ADMISSION.claim.yaml"
+    expected_stdout_exact: e0bbfc9a27d35461d7731a70b0a9c66882ab8997
+  - id: C06
+    command: "git rev-parse 035c132f5f80963d115f19cdd57c3a9f734769fb:projects/gtm-revenue/research/20260808T072945Z_ENTERPRISE_BUYER_CROWDSTRIKE_TARGET_CARD.md"
+    expected_stdout_exact: d1aaa28787404c3af04a72923f1cb0531e794aa8
+  - id: C07
+    command: "git show b1f52d1427e63028b06aadadbbac7bfa75f4f9a6:projects/gtm-revenue/claims/20260808T080439Z_CROWDSTRIKE_AGENT_PROMOTION_EVIDENCE_GATE_ADMISSION.claim.yaml | grep -nE 'work_item_id: S07_CROWDSTRIKE_AGENT_PROMOTION_EVIDENCE_GATE_V1|sha256: 18ae8061124174a7a04f13225592f6069ef20720061455661922145787f775aa|expiry_utc: 2026-08-08T12:04:39Z'"
+    expected_exit_code: 0
+  - id: C08
+    command: "git show 035c132f5f80963d115f19cdd57c3a9f734769fb:projects/gtm-revenue/research/20260808T072945Z_ENTERPRISE_BUYER_CROWDSTRIKE_TARGET_CARD.md | grep -nE 'status: TARGET_CARD_READY|route: RELATIONSHIP_ONLY|Strongest falsifier|Evidence against / disconfirming evidence|five negative controls|unauthorized action|stale principal context|missing trace|model swap|rollback path absent'"
+    expected_exit_code: 0
+  - id: C09
+    command: "git grep -nF 'S07_CROWDSTRIKE_AGENT_PROMOTION_EVIDENCE_GATE_V1' fda207673d295606f56d9315d9eeed54cb15bfa7 -- projects/gtm-revenue/kits projects/gtm-revenue/returns || true"
+    purpose: fail-open search is forbidden; manually inspect output and stop if an exact prior candidate/return already binds this claim
+  - id: C10
+    command: "mkdir -p projects/gtm-revenue/kits/crowdstrike"
+    purpose: prepare only the allowed candidate directory
+  - id: C11
+    command: "${EDITOR:-vi} projects/gtm-revenue/kits/crowdstrike/20260808T082116Z_AGENT_PROMOTION_EVIDENCE_GATE.md"
+    purpose: create exactly one candidate using the frozen claim/source contract; noninteractive executors may write the same exact path by their native file-write primitive
+  - id: C12
+    command: "python - <<'PY'\nfrom pathlib import Path\np=Path('projects/gtm-revenue/kits/crowdstrike/20260808T082116Z_AGENT_PROMOTION_EVIDENCE_GATE.md')\ns=p.read_text(encoding='utf-8')\nrequired=['WHY_THIS_MAY_MATTER','HOW_TO_USE_IN_2_MINUTES','held-out','grounded','allowed tool','human-principal','real-time authorization','human-command','fail-closed','trace','cost','latency','rollback','unauthorized action','stale principal context','missing trace','model swap','rollback path absent','median agent-promotion cycle time','Strongest falsifier','RELATIONSHIP_ONLY']\nmissing=[x for x in required if x.lower() not in s.lower()]\nprint('missing=',missing)\nraise SystemExit(1 if missing else 0)\nPY"
+    expected_exit_code: 0
+  - id: C13
+    command: "python - <<'PY'\nfrom pathlib import Path\ns=Path('projects/gtm-revenue/kits/crowdstrike/20260808T082116Z_AGENT_PROMOTION_EVIDENCE_GATE.md').read_text(encoding='utf-8').lower()\nforbidden=['crowdstrike wants outside help','bartley richardson owns procurement','crowdstrike has a deficient','guaranteed improvement','proven savings']\nhits=[x for x in forbidden if x in s]\nprint('forbidden_hits=',hits)\nraise SystemExit(1 if hits else 0)\nPY"
+    expected_exit_code: 0
+  - id: C14
+    command: "git diff --check -- projects/gtm-revenue/kits/crowdstrike/20260808T082116Z_AGENT_PROMOTION_EVIDENCE_GATE.md"
+    expected_exit_code: 0
+  - id: C15
+    command: "git diff -- projects/gtm-revenue/kits/crowdstrike/20260808T082116Z_AGENT_PROMOTION_EVIDENCE_GATE.md"
+    purpose: capture exact candidate diff for evidence
+  - id: C16
+    command: "git status --short"
+    purpose: enumerate changed paths and prove no forbidden path changed
+  - id: C17
+    command: "sha256sum projects/gtm-revenue/kits/crowdstrike/20260808T082116Z_AGENT_PROMOTION_EVIDENCE_GATE.md"
+    purpose: bind candidate bytes in direct producer return
+
+acceptance_tests:
+  - id: A01
+    test: DIRECT_EXECUTOR_IDENTITY
+    pass_condition: "Return names runtime and exact model/version; inferred identity is rejected."
+  - id: A02
+    test: CHECKOUT_AND_SOURCE_BINDING
+    pass_condition: "C01-C08 execute with recorded exit codes; C05 and C06 match exact expected Git blobs."
+  - id: A03
+    test: IDEMPOTENCY
+    pass_condition: "C09 is manually reviewed. If an exact candidate or producer return already binds claim b1f52d1427e63028b06aadadbbac7bfa75f4f9a6, stop without creating a duplicate."
+  - id: A04
+    test: CONTENT_CONTRACT
+    pass_condition: "C12 exits 0 and candidate visibly covers held-out quality, groundedness, allowed actions, agent+human-principal binding, real-time authorization, human-command boundary, deterministic fail-closed cases, trace completeness, cost/latency and rollback owner plus all five negative controls."
+  - id: A05
+    test: CLAIM_DISCIPLINE
+    pass_condition: "Candidate labels the pain as hypothesis, states baseline unknown, carries disconfirming evidence, no-send relationship-only status, exact public source links, and does not diagnose CrowdStrike or invent procurement/demand/outcome claims."
+  - id: A06
+    test: STRONGEST_FALSIFIER_PRESERVED
+    pass_condition: "Candidate states that an adequate low-overhead internal CrowdStrike promotion system binding evals, authorization, human command, trace and rollback would make this gate redundant."
+  - id: A07
+    test: PATH_EFFECT_CEILING
+    pass_condition: "C16 shows only the two exact allowed write paths, or candidate only before return creation; any other changed path fails. No commit, push, merge, deploy, send or publication occurs."
+  - id: A08
+    test: DIRECT_PRODUCER_RETURN_COMPLETE
+    pass_condition: "Return names runtime/model, branch/SHA, changed paths, exact commands, exit codes, bounded outputs, blockers, rollback, candidate SHA-256, and honest flaw. The immutable return file may be created only from that actual command ledger."
+  - id: A09
+    test: NO_FALSE_GREEN
+    pass_condition: "No test-pass, source-digest recomputation, actor delegation, independent STOOD/FELL, ConsumerAck, customer demand or external outcome is invented."
+
+effect_ceiling:
+  class: T0_INTERNAL_RESEARCH_PREPARATION_ONLY
+  repository_scope: EXACT_ALLOWED_PATHS_ONLY
+  commit_authority: NONE
+  push_authority: NONE
+  external_world_effect_authority: NONE
+  network_calls: NO_NEW_EXTERNAL_CALLS_REQUIRED
+  spend_ceiling_usd: 0
+
+time_budget_ceiling:
+  wall_clock_minutes: 25
+  stop_on_expiry: true
+  claim_expiry_utc: 2026-08-08T12:04:39Z
+
+rollback:
+  mode: WORKTREE_ONLY_DISCARD_EXACT_NEW_PATHS_IF_EXECUTION_FAILS
+  instructions: >-
+    Do not commit. If this packet creates bytes that fail acceptance, remove only the two exact
+    newly-created allowed paths or leave them uncommitted for producer review; never use git
+    reset --hard, git clean, history rewrite, force push or broad deletion.
+  history_rewrite_authorized: false
+  destructive_git_authorized: false
+
+strongest_falsifier: >-
+  CrowdStrike already operates a low-overhead internal AgentWorks promotion system that
+  automatically binds held-out evaluations, model/tool regression, per-action identity and
+  authorization invariants, human-command boundaries, trace evidence and rollback into release
+  approval at an acceptable cycle time. If durable evidence establishes that condition, this
+  proposed gate is redundant and the executor must stop rather than polish a duplicate artifact.
+
+route:
+  direct_ingress_available: false
+  attempted: false
+  reason: NO_DIRECT_CODEX_CLAUDE_OR_CANONICAL_HOST_EXECUTOR_SURFACE_EXPOSED
+  slack_post_is_execution: false
+
+honest_flaw: >-
+  This packet only compiles the already-admitted WorkItem into an exact bounded executor contract.
+  It does not prove CrowdStrike has an unmet problem, does not prove the proposed artifact adds
+  value beyond CrowdStrike's existing governance/evaluation stack, and does not execute any build.
+  Carrier-to-GitHub actor binding remains unproven, the source evidence digest lacks a durable
+  canonical preimage/rule in the bound target card, and no independent verification or ConsumerAck exists.
