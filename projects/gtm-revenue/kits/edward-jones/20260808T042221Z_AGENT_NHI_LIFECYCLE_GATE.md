@@ -57,7 +57,7 @@ Evidence:
 1. https://careers.edwardjones.com/job/23605272/non-human-identity-architect-pam-and-authn-tempe-az/
 2. https://careers.edwardjones.com/job/23595486/senior-security-engineer-non-human-identity-tempe-az/
 3. https://www.edwardjones.com/us-en/why-edward-jones/news-media/press-releases/ai-future-financial-advisor-research-2026
-4. https://www.edwardjones.com/us-en/why-edwardjones/news-media/thought-leadership/firm-leadership/frank-laquinta
+4. https://www.edwardjones.com/us-en/why-edward-jones/news-media/thought-leadership/firm-leadership/frank-laquinta
 
 ## HYPOTHESES / ASSUMPTIONS / FALSIFIER
 
