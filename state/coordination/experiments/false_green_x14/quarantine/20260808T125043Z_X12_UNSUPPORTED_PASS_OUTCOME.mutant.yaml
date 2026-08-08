@@ -1,0 +1,96 @@
+---
+schema_id: hfo.gen133.x14.false_green_mutant.v1
+experiment_id: X14_FALSE_GREEN_MUTATION_001
+mutant_id: X14_MUTANT_183_9962c7cfb528
+authoring_seat: X14_FALSE_GREEN_MUTATION_AND_QA_LAB
+quarantine: true
+executable: false
+valid_time_utc: '2026-08-08T12:50:43Z'
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+carrier_task_id: 6a513e4d9c4c81919db728f85db2dd79
+carrier_task_id_binding: NATIVE_AUTOMATIONS_LIST_EXACT_MATCH_ENABLED_NO_TASK_MUTATION
+
+source:
+  authoring_seat: X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+  source_task_id: 6a506f83df208191815dd17a8fd5baa3
+  source_task_title_from_native_inventory: HFO X12 Durable Object PDCA Lab
+  source_task_enabled_observed: true
+  source_commit: 5e20fbad66e7139822b0430037a1c4736d4a69cc
+  source_path: state/coordination/experiments/durable_object_x12/slack_receipts/20260808T124458Z_C39_W3_V169_ba1a1700f1d3.json
+  source_git_blob_sha1_actual: 6f27f8e8fc7c8f35e1c7e4895bca89fbf7127232
+  source_digest_kind: GIT_BLOB_SHA1
+  source_schema_id: hfo.gen133.x12.slack_receipt.v1
+  source_campaign_id: X12_CARRIER_VARIANCE_C39
+  source_object_id: HFO_X12_WORKFLOW_OBJECT_001
+  source_version: 169
+  source_wake: C39_WAKE_3_OF_4
+  source_consumer: Reginleif/Olrun
+  source_consumer_ack_claimed: false
+  source_direct_channel_history_confirmed: true
+  source_exactly_once_claimed: false
+  source_send_count: 1
+  source_delivery_marker: '[X12:C39:W3:V169:BA1A1700F1D3]'
+  source_message_ts: '1786193327.367559'
+  source_claim_ceiling: ONE_OBSERVED_SLACK_DELIVERY_PLUS_DIRECT_CHANNEL_HISTORY_CONFIRMATION_NO_CONSUMER_ACK_NO_EXACTLY_ONCE_NO_END_TO_END_PASS
+  prior_x14_mutation_at_source_digest_before_write: false
+  source_snapshot_relevant_fields:
+    consumer: Reginleif/Olrun
+    consumer_ack_claimed: false
+    direct_channel_history_confirmed: true
+    exactly_once_claimed: false
+    send_count: 1
+    recovery_resend_performed: false
+    outcome: ABSENT
+
+mutation:
+  mutation_class: UNSUPPORTED_PASS_OUTCOME
+  mutation_subcase: X12_DELIVERY_RECEIPT_FALSELY_PROMOTES_DELIVERY_CONFIRMATION_TO_END_TO_END_WORKFLOW_PASS
+  mutated_field: receipt_core.outcome
+  correct_value: ABSENT
+  mutated_value: PASS_END_TO_END_WORKFLOW_COMPLETE
+  invariant_violated: DELIVERY_OR_PROVIDER_HISTORY_CONFIRMATION_CANNOT_BE_PROMOTED_TO_END_TO_END_PASS_WITHOUT_SOURCE_BOUND_VERIFIER_RESULT_AND_REQUIRED_CONSUMER_ACCEPTANCE
+  canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_json: '{"receipt_core":{"outcome":"PASS_END_TO_END_WORKFLOW_COMPLETE"}}'
+  canonical_overlay_utf8_bytes: 64
+  canonical_mutation_digest_sha256: 9962c7cfb5289107f2e282d5d5b79653edf162be36ffc53197fc9f8bb769c043
+
+expected_verdict: REVISE
+expected_rejection_reason: SOURCE_RECEIPT_PROVES_ONLY_ONE_SLACK_SEND_AND_DIRECT_CHANNEL_HISTORY_CONFIRMATION_WHILE_EXPLICITLY_BINDING_CONSUMER_ACK_CLAIMED_FALSE_AND_EXACTLY_ONCE_CLAIMED_FALSE;MUTANT_ADDS_END_TO_END_WORKFLOW_PASS_WITHOUT_ANY_SOURCE_BOUND_STRUCTURAL_OR_INDEPENDENT_VERIFIER_PASS_OR_REQUIRED_CONSUMER_ACCEPTANCE;REJECT_BEFORE_PROMOTING_DELIVERY_EVIDENCE_TO_WORKFLOW_OUTCOME
+named_gate: S04_UNSUPPORTED_PASS_OUTCOME_EXACT_SOURCE_COMMIT_PATH_BLOB_RECEIPT_CORE_OUTCOME_DELIVERY_EVIDENCE_CONSUMER_ACK_EXACTLY_ONCE_EXPIRY_VERIFIER_CONSUMER_AND_CLAIM_CEILING_GATE
+verifier:
+  structural_preflight_seat: S04_STRUCTURAL_PREFLIGHT
+  structural_preflight_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  expected_result: REVISE
+  binding_weight: 0
+  evidence_class: SAME_PROVIDER_NONBINDING
+  distinct_verifier_seat: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  distinct_verifier_task_id: 6a539fb148bc8191a30b6009dbf22438
+  distinct_verifier_available_at_wake: true
+  independent_verification_closed: false
+consumer:
+  - X14_CAMPAIGN_REDUCER
+  - X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+  - Reginleif/Olrun
+expires_utc: '2026-08-08T16:50:43Z'
+status: QUARANTINED_AWAITING_ROUTE
+world_effect_ceiling: QUARANTINED_GIT_ARTIFACT_PLUS_SANITIZED_INTERNAL_SLACK_ROUTE_ONLY
+
+honest_flaw: >-
+  This unsupported-PASS mutant is conspicuous because the authentic artifact is only a Slack delivery receipt and contains no outcome field, verifier PASS, ConsumerAck, or exactly-once claim. It tests whether the verifier prevents delivery evidence from inflating into end-to-end workflow success. A stronger future specimen should start from a legitimate narrow structural PASS and corrupt exactly one scope, consumer, evidence digest, effect ceiling, environment, or outcome boundary so the false promotion is plausible rather than syntactically obvious. Same-provider verification has binding weight zero and cannot close independent verification.
+
+world_effects:
+  source_edited: false
+  task_mutation: false
+  schedule_mutation: false
+  send_external: false
+  spend: false
+  deployment: false
+  merge: false
+  publication: false
+  account_or_security_change: false
+  secret_exposure: false
+  permanent_deletion: false
+  independent_quorum_claim: false
+---
