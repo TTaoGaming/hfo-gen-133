@@ -1,0 +1,63 @@
+schema: hfo.gen133.s05.operator_relief_receipt.v0_1
+result: STATUS_RECONCILED
+seat: S05
+task_id: 6a55c182078c8191b89f2dd15f5f640c
+valid_time: '2026-08-07T19:16:35-06:00'
+transaction_time: git_commit_metadata
+canonical_repo: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+wip: 1
+
+active_item:
+  id: NORTHWESTERN_1035_SIGNATURE_RETURN
+  state: SIGNATURE_REQUEST_SENT_WAITING_RETURN
+  sanitized_fact: >-
+    Fresh Gmail readback shows a 1035-related service-request PDF was sent to a
+    known contact after today's Northwestern follow-up. The conversation thread
+    currently contains only that sent message, so recipient signature/return is
+    not yet proven.
+
+source_pointers:
+  gmail_message_id: 19fded4c2462c50b
+  gmail_thread_id: 19fded48c944e36d
+  google_contact_id: otherContacts/c1039334469706588062
+  prior_calendar_event_id: 5j0ce90l47mr9h9labljvplpa8
+  gmail_body_copied_to_git: false
+  recipient_address_copied_to_git: false
+  attachment_filename_copied_to_git: false
+  policy_identifier_copied_to_git: false
+
+bounded_transition:
+  type: RECONCILE_IMPORTANT_STATUS
+  mutation_surface: none
+  transition: >-
+    Reconciled the Northwestern 1035 item from ambiguous post-call state to
+    authoritative SENT_WAITING_RETURN using Gmail thread readback plus contact
+    and Calendar context. No duplicate follow-up was created while the fresh
+    signature request is outstanding.
+  done_gate: >-
+    Gmail/source-system evidence shows the signed 1035 service request returned
+    or another authoritative source gives the exact blocker and next step.
+
+priority:
+  p0: CHATGPT_PRO_CONTINUITY_BEFORE_2026-08-09
+  p1:
+    - GOOGLE_WINDOWS_SIGNIN_EXPECTEDNESS
+    - NORTHWESTERN_1035_SIGNATURE_RETURN
+
+claim_ceiling:
+  - Gmail proves a 1035-related PDF message was sent to the known contact.
+  - The thread has no returned signed document or reply at this readback.
+  - Sending the file does not prove signature, submission to Northwestern, carrier receipt, processing, or completion of the 1035 exchange.
+
+operator_minutes_removed_estimate: 5
+next_consumer: Var morning control -> operator insurance follow-up
+
+forbidden_effects_performed: []
+privacy:
+  private_bodies_externalized: false
+  sensitive_identifiers_externalized: false
+honest_flaw: >-
+  S05 did not inspect or externalize the private PDF body; therefore this receipt
+  cannot assert which exact fields remain unsigned or whether additional forms
+  will be required after the signed file returns.
