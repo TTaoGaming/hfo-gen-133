@@ -1,8 +1,8 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_CALENDAR_FIXED_IMPOSSIBLE_MARKER_EVENT_SEARCH_V1
-current_version: 174
-accepted_wakes: 2
+current_version: 175
+accepted_wakes: 3
 target_wakes_before_decision: 4
 controlled_factor: calendar_read_surface
 campaign_status: ACTIVE
@@ -27,13 +27,21 @@ measured_result:
       error_class: NONE
       latency_ms_exposed: 654
       operator_relay_minutes: 0
+    - wake: 3
+      execution_success: true
+      sanitized_result_count: 0
+      continuation_present: false
+      permission_class: CALENDAR_EVENT_SEARCH_READ_AVAILABLE
+      error_class: NONE
+      latency_ms_exposed: 885
+      operator_relay_minutes: 0
   permission_class: CALENDAR_EVENT_SEARCH_READ_AVAILABLE
   error_class: NONE
   operator_relay_minutes: 0
   changed_capability: false
   campaign_decision: false
   andon: false
-supported_claim: two_authenticated_bounded_calendar_event_searches_executed_with_zero_sanitized_results_no_continuation_and_no_event_detail_readback
+supported_claim: three_authenticated_bounded_calendar_event_searches_executed_with_zero_sanitized_results_no_continuation_and_no_event_detail_readback
 claim_ceiling: does_not_establish_calendar_completeness_recall_index_freshness_event_detail_access_source_authenticity_or_independent_verification
 strongest_falsifier: the_fixed_impossible_marker_calendar_search_requires_mutation_cannot_execute_or_exposes_event_content_beyond_the_sanitized_measurement_contract
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
@@ -45,13 +53,13 @@ prior_campaign:
   supported_claim: four_authenticated_drive_metadata_only_document_searches_executed_without_content_fetch_and_returned_zero_sanitized_results_and_no_continuation
   accepted_wakes: 4
 last_event:
-  commit: 0ff18cd9bbdb93b6b3710bcd977abc4f4a765c43
-  path: state/coordination/experiments/carrier_surface_x11/events/20260808T084149Z_CALENDAR_FIXED_IMPOSSIBLE_MARKER_EVENT_SEARCH_V1_WAKE_02.yaml
-  blob: 1d4b2a0dbf7b4a5777a7a991b97f44013fae4835
+  commit: 7e9a4235e76cdbda921b42e360822758dc06dfb7
+  path: state/coordination/experiments/carrier_surface_x11/events/20260808T093910Z_CALENDAR_FIXED_IMPOSSIBLE_MARKER_EVENT_SEARCH_V1_WAKE_03.yaml
+  blob: e7810829aff96d0bc27000dc5a989c0d6f763aef
 next_factor: calendar_read_surface
 next_probe:
   experiment_id: X11_CALENDAR_FIXED_IMPOSSIBLE_MARKER_EVENT_SEARCH_V1
-  campaign_wake: 3
+  campaign_wake: 4
   mode: read_only_fixed_impossible_marker_bounded_search
   exact_query: '__HFO_X11_FIXED_IMPOSSIBLE_MARKER_6A55089A9ADC8191BDA54541F7F9EFFA__'
   max_results: 1
@@ -59,7 +67,7 @@ next_probe:
   time_min: '2000-01-01T00:00:00Z'
   time_max: '2000-01-02T00:00:00Z'
   persist_only: [execution_success, sanitized_result_count, continuation_present, permission_class, error_class, latency_when_exposed, operator_relay_minutes]
-  expected_current_version: 174
-updated_valid_time_utc: 2026-08-08T08:42:20Z
+  expected_current_version: 175
+updated_valid_time_utc: 2026-08-08T09:40:00Z
 sealed: false
 ---
