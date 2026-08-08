@@ -1,0 +1,156 @@
+---
+schema_id: hfo.gen133.s09.adversarial_bayesian_vote.v1
+seat: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+carrier_task_id_expected: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_id_observed: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_enabled_observed: true
+wip: 1
+valid_time_utc: '2026-08-08T02:30:16Z'
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+evidence_class: SAME_PROVIDER_ADVISORY_NONBINDING
+binding_weight: 0
+result: RETIRE
+claim_disposition: REVISE_REJECT_UNSUPPORTED_EXACTLY_ONCE_PROMOTION
+world_effect_ceiling: ONE_IMMUTABLE_GIT_VOTE_AND_ONE_SANITIZED_SLACK_POINTER_ONLY
+---
+
+self_probe:
+  task_id_match: true
+  task_enabled_observed: true
+  tools_observed:
+    - native_automations_inventory_read
+    - github_recent_commit_search
+    - github_compare_commits
+    - github_exact_file_read
+    - github_create_file
+    - github_readback
+    - slack_send_message
+  task_mutation_performed: false
+
+decision_packet:
+  mutant_id: X14_MUTANT_172_4f8cfb1093c4
+  mutant_commit: ef13211d53753cbbadfd04707e83b99b07c08513
+  mutant_path: state/coordination/experiments/false_green_x14/quarantine/20260808T015322Z_X12_UNSUPPORTED_PASS_OUTCOME.mutant.yaml
+  mutant_blob_sha1: 3dd598368224326e58187a9c96dbe8be70929b4e
+  mutation_class: UNSUPPORTED_PASS_OUTCOME
+  mutation_subcase: X12_C38_WAKE2_SLACK_DELIVERY_EXACTLY_ONCE_FALSE_TO_TRUE
+  source_commit: f00975423c1de6f05584fe83f6c6880ce11149ce
+  source_path: state/coordination/experiments/durable_object_x12/slack_receipts/20260808T014600Z_ADVANCE_RECOVERY_CONFIRMED_9ce2c901eaf7.json
+  source_blob_sha1: 2a994395a58dfdd053338fd1458cfb6e63749fb3
+  source_receipt_digest_sha256: 0eda9a5ad3acbfd0731de2660f66b1c40b1845464371a375f631901ee930ffff
+  canonical_overlay_utf8_bytes_declared: 212
+  canonical_overlay_sha256_declared: 4f8cfb1093c40695f2fc61f1708e7f88dd32424171062d9c11810137c4040344
+  mutated_field: receipt_core.delivery.exactly_once_claimed
+  original_value: false
+  mutated_value: true
+  candidate_options:
+    - ACCEPT
+    - REVISE
+    - HOLD
+    - RETIRE
+    - ABSTAIN
+  decision_deadline_utc: '2026-08-08T05:52:00Z'
+  effect_ceiling: ONE_IMMUTABLE_GIT_VOTE_AND_ONE_SANITIZED_SLACK_POINTER_ONLY
+  verifier: S04_STRUCTURAL_PREFLIGHT
+  verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  consumers:
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+
+prior:
+  ACCEPT: 0.05
+  REVISE: 0.40
+  HOLD: 0.15
+  RETIRE: 0.30
+  ABSTAIN: 0.10
+  rationale: >-
+    Before reading the exact source and current heritage return, unsupported-outcome mutants usually deserve rejection but may retain one current routing measurement before literal retirement. Accept remains possible only if source-bound evidence independently supports the promoted outcome.
+
+evidence:
+  source_facts:
+    - The exact X12 delivery receipt binds direct_channel_history_confirmed=true, pre_send_direct_history_marker_present=false, send_count_this_wake=1, recovery_resend_performed=false, and exactly_once_claimed=false.
+    - The source honest flaw explicitly states that history precheck plus postread reduces duplicate risk but does not create a shared Git-Slack transaction or exactly-once delivery, and that ambiguous provider acknowledgement loss was not tested.
+    - Mutant 172 changes only receipt_core.delivery.exactly_once_claimed from false to true while preserving the exact source blob binding.
+    - S15 returned mutant-095 as same-provider historical precedent for the same Slack unsupported-outcome/exactly-once claim-ceiling family, assigned novelty_credit=0 and antibody_diversity_credit=0, and did not claim a direct S04 verdict.
+    - Repository commit search at the vote cutoff showed mutant-172 creation and the S15 heritage binding, but no direct S04 exact-mutant-172 verdict was observed. Search/index freshness and concurrent writes remain nontransactional, so absence is not proof of nonexistence.
+
+  ACCEPT:
+    for:
+      - One send is recorded and the marker is visible in direct channel history after the send.
+      - The receipt binds an idempotency key and a stable marker, which are ingredients that can reduce duplicate risk.
+    against:
+      - The source explicitly sets exactly_once_claimed=false.
+      - A history miss before send plus one send plus a post-send observation does not prove behavior under ambiguous acknowledgement loss, retry races, concurrent writers, deletion/edit visibility, or provider transaction semantics.
+      - No source-bound transactional or provider guarantee was found that upgrades the exact source event to exactly-once semantics.
+
+  REVISE:
+    for:
+      - The promoted true value is directly contradicted by the exact immutable source and its honest flaw.
+      - A current direct S04 route would still measure whether the named gate catches this exact source/digest binding.
+    against:
+      - The literal semantic class already has close prior coverage through mutant 095, so retaining this easy specimen has low marginal information value after one exact route or expiry.
+
+  HOLD:
+    for:
+      - A late direct S04 verdict or newly surfaced source-bound provider evidence could change lifecycle handling before expiry.
+    against:
+      - The claim-level contradiction is already explicit in source bytes; waiting does not make the unsupported true value more credible.
+      - The packet has a finite expiry and a named current verifier, so indefinite hold would waste routing capacity.
+
+  RETIRE:
+    for:
+      - S15 identifies this as recurrence of an existing Slack exactly-once claim-ceiling antibody with zero novelty/diversity credit.
+      - The specimen is intentionally easy: source bytes explicitly deny the promoted claim, making repeated rediscovery low information.
+      - Higher-value testing would use ambiguous acknowledgement/retry evidence where the surrounding facts plausibly tempt a false green.
+    against:
+      - No direct S04 exact-mutant-172 verdict was observed at this cutoff; immediate retirement before one exact route or reducer consumption could erase a useful routing-starvation measurement.
+
+  ABSTAIN:
+    for:
+      - Same-provider evidence cannot supply binding independent verification, and Git search visibility may lag concurrent writes.
+    against:
+      - The exact mutant and exact source were readable and internally consistent enough to support a nonbinding advisory lifecycle vote.
+
+correlated_evidence_risk:
+  level: HIGH
+  detail: >-
+    X14, S15, S04, and this S09 carrier are ChatGPT-carried surfaces. S15 is historical same-provider evidence with binding weight zero, and this vote is also weight zero. No majority, quorum, or independent closure is inferred. The exact source is producer-authored evidence about its own Slack delivery receipt; it is strong for what the source literally says but does not independently validate external provider semantics.
+
+strongest_dissent:
+  option: REVISE
+  case: >-
+    Keep the literal specimen alive only long enough for one exact S04 selection, because the named gate has not been directly observed against mutant 172 at this cutoff. A direct current miss is itself useful evidence about routing/gate coverage and should not be hidden by premature lifecycle retirement.
+
+opportunity_cost: >-
+  Each additional verifier/reducer slot spent on this explicit false-to-true exactly-once promotion displaces a harder mutant based on ambiguous provider acknowledgement, retry, or concurrent-writer evidence where the claim ceiling is less obvious. The likely marginal information gain is therefore low after one exact route or expiry.
+
+operator_minute_burden:
+  measured_operator_minutes: 0
+  requested_operator_minutes: 0
+  note: No operator action is required for this advisory vote; any manual escalation would be unjustified at the current effect ceiling.
+
+reversible_next_experiment: >-
+  Route mutant 172 exactly once to S04 before 2026-08-08T05:52:00Z if not already consumed. If S04 does not select it, record routing starvation rather than generating an equivalent easy mutant. After direct verdict or expiry plus reducer consumption, retire only this literal specimen while retaining the broader exactly-once claim-ceiling antibody. The next higher-information mutant should begin from an immutable provider or connector receipt with ambiguous acknowledgement/retry evidence and promote exactly one narrowly unsupported terminal property.
+
+falsifier: >-
+  This RETIRE lifecycle recommendation is falsified if a distinct verifier or reducer demonstrates that mutant 172 exercises a materially untested gate path not represented by the mutant-095 antibody, or that keeping this exact specimen yields new routing coverage. The claim-level rejection is falsified only by source-bound immutable evidence establishing exactly-once semantics for this exact delivery boundary, including acknowledgement/retry ambiguity, idempotency scope, duplicate suppression across relevant writers, and provider or transaction guarantees sufficient for the asserted claim.
+
+posterior:
+  ACCEPT: 0.001
+  REVISE: 0.290
+  HOLD: 0.015
+  RETIRE: 0.680
+  ABSTAIN: 0.014
+  sum: 1.000
+
+vote: RETIRE
+vote_scope: >-
+  RETIRE applies only to the literal mutant-172 specimen after one exact S04 route or expiry and reducer consumption. The mutated exactly-once claim itself is REVISE/reject. Preserve the broader mutation class, routing evidence, and independent-verification debt.
+
+consumer_instruction: >-
+  X14_CAMPAIGN_REDUCER and X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB may consume this as same-provider advisory evidence only. Do not count it as binding verification, new antibody diversity, quorum, ConsumerAck, or proof of exactly-once semantics.
+
+honest_flaw: >-
+  The exact source makes this vote unusually easy because it literally denies exactly-once semantics. Git commit/code-search visibility is nontransactional and may lag, so the absence of a direct S04 mutant-172 result at the cutoff is only an observation, not proof that no such verdict exists elsewhere or was created concurrently. This vote does not independently recompute the declared canonical overlay digest and does not inspect Slack provider-internal acknowledgement logs.
