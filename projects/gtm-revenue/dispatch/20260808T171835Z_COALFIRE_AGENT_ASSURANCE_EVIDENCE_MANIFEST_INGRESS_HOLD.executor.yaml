@@ -1,0 +1,221 @@
+schema_id: hfo.gen133.s06.executor_packet.v1
+result: HOLD
+seat: S06_CODE_WORK_PACKET_COMPILER_CODEX_BRIDGE
+wip: 1
+valid_time_utc: 2026-08-08T17:18:35Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+expected_task_id: 6a57972b9df081918680ce67c4ecb197
+observed_task_id: 6a57972b9df081918680ce67c4ecb197
+task_id_match: true
+
+surface_owner_permission:
+  surface: GITHUB_CANONICAL_BRANCH
+  owner: S06_CODE_WORK_PACKET_COMPILER_CODEX_BRIDGE
+  permission: CREATE_ONE_EXECUTOR_PACKET_UNDER_PROJECT_DISPATCH_ONLY
+  production_code_authority: false
+  task_mutation_authority: false
+
+selection:
+  work_item_id: S07_COALFIRE_AGENT_ASSURANCE_EVIDENCE_MANIFEST_V1
+  claim_commit_sha: a6e311fb7af6f2f8ccf79683a3a1e0a71d052a2b
+  claim_path: projects/gtm-revenue/claims/20260808T170400Z_COALFIRE_AGENT_ASSURANCE_EVIDENCE_MANIFEST_ADMISSION.claim.yaml
+  claim_git_blob_sha1: b36fde8ec9fd42bca242bc7a3d44529c2462511f
+  claim_acceptance_sha256: 33d399ccd77fa4edcb7bde41c1f2d53ac12f34544bc2579f1498b90e30d1f334
+  claim_idempotency_sha256: 50dc6df2f0f4ed61fc0bead50dbd1c2704632c0e49d90badefe858d900dc6935
+  claim_expiry_utc: 2026-08-08T21:04:00Z
+  claim_unexpired_at_compile_time: true
+  source_commit_sha: dc461cdae8ca400a7ca002fa8ddc71e4f4bf56ff
+  source_path: projects/gtm-revenue/research/20260808T162625Z_CHANNEL_PARTNER_COALFIRE_TARGET_CARD.md
+  source_git_blob_sha1: fa9a80c8dcfb32be50cb8f332991cace8eae7bbd
+  source_evidence_sha256: 0d97d6799ebd320f5744aa5d422347e3b66d619077de29c435f37f84bb1bae14
+  source_expiry_utc: 2026-08-14T14:08:00Z
+  repository_base_sha: c5aecd10b356d5e3780288f8c2d51c49087b821c
+  changed_since_prior_s06_wake: true
+  eligibility_reason: CHANGED_UNEXPIRED_CLAIM_REQUIRING_REPOSITORY_INSPECTION_BUILD_EVIDENCE_AND_STATIC_ACCEPTANCE_CHECKS
+
+self_probe:
+  github_read_available: true
+  github_write_available: true
+  slack_write_available: true
+  direct_codex_executor_ingress_available: false
+  direct_claude_executor_ingress_available: false
+  direct_host_shell_ingress_available: false
+  new_workflow_dispatch_ingress_available: false
+  note: >-
+    Available GitHub actions expose repository read/write plus inspection/rerun of existing workflows,
+    but no direct Codex, Claude, host-shell, or new workflow-dispatch executor action is exposed.
+    Slack is coordination only and is not execution. No executor route was attempted.
+
+goal: >-
+  On a real executor surface, consume exactly the admitted Coalfire WorkItem and either (A) produce one compact
+  public-safe two-minute Agent Assurance Evidence Manifest plus one immutable producer return, or (B) return
+  HOLD without a candidate if the strongest falsifier is found. The artifact must bind one synthetic AI-agent
+  assurance case to exact revision, delegated principal, allowed tools/actions, sensitive-data boundary,
+  held-out quality/security cases, fallback/human escalation, trace/evidence provenance, rollback, and an
+  explicit ACCEPT / REJECT / NEEDS-HUMAN verdict without implying Coalfire lacks mature AI-assurance controls.
+
+current_red_evidence:
+  - >-
+    At compile time, repository search for the exact WorkItem found the Coalfire target card and S02 admission
+    claim but no S07 candidate or immutable producer return closing this claim/source/acceptance tuple.
+  - >-
+    The strongest falsifier is unresolved: Coalfire ForgeAI, GuardianAI, Secure Agent Construct, Audit AI, or
+    an internal assurance-delivery workflow may already emit and consume an equivalent low-overhead,
+    revision-bound acceptance manifest tying delegated identity, per-action authority, sensitive-data controls,
+    held-out reliability, human escalation, evidence provenance, and rollback into assessor/delivery decisions.
+  - >-
+    The source contains strong counterevidence against a generic audit-automation wedge: Coalfire already owns
+    ForgeAI, LegionAI, GuardianAI, Secure Agent Construct patterns, AI risk services, Audit AI, and deep
+    assessment expertise, and publicly describes reliability, guardrails, evaluations, fallbacks, identity,
+    permissions, PII/tool-misuse controls, and evidence-review automation.
+  - >-
+    No source proves a capacity shortage, slow process, margin problem, evidence backlog, failed assurance,
+    procurement demand, or willingness to buy outside help; all Coalfire-specific pain must remain hypothesis.
+  - >-
+    Carrier-to-GitHub-actor delegation remains unproven. A Git commit actor must not be treated as proof of which
+    scheduled-task carrier, runtime, or model executed work.
+
+allowed_paths:
+  read:
+    - projects/gtm-revenue/claims/20260808T170400Z_COALFIRE_AGENT_ASSURANCE_EVIDENCE_MANIFEST_ADMISSION.claim.yaml
+    - projects/gtm-revenue/research/20260808T162625Z_CHANNEL_PARTNER_COALFIRE_TARGET_CARD.md
+    - projects/gtm-revenue/kits/coalfire/**
+    - projects/gtm-revenue/returns/**
+  write_maximum_two_files:
+    - projects/gtm-revenue/kits/coalfire/20260808T171835Z_AGENT_ASSURANCE_EVIDENCE_MANIFEST.md
+    - projects/gtm-revenue/returns/20260808T171835Z_S07_COALFIRE_AGENT_ASSURANCE_EVIDENCE_MANIFEST_RETURN.md
+
+forbidden_paths:
+  - projects/gtm-revenue/claims/**
+  - projects/gtm-revenue/research/**
+  - projects/gtm-revenue/packets/**
+  - state/**
+  - .github/**
+  - .agents/**
+  - any path outside the two explicit write paths above
+
+required_commands:
+  shell_contract: BASH_WITH_GIT_PYTHON3_AND_CURL
+  commands:
+    - "git rev-parse HEAD"
+    - "git rev-parse a6e311fb7af6f2f8ccf79683a3a1e0a71d052a2b:projects/gtm-revenue/claims/20260808T170400Z_COALFIRE_AGENT_ASSURANCE_EVIDENCE_MANIFEST_ADMISSION.claim.yaml"
+    - "git rev-parse dc461cdae8ca400a7ca002fa8ddc71e4f4bf56ff:projects/gtm-revenue/research/20260808T162625Z_CHANNEL_PARTNER_COALFIRE_TARGET_CARD.md"
+    - "git show a6e311fb7af6f2f8ccf79683a3a1e0a71d052a2b:projects/gtm-revenue/claims/20260808T170400Z_COALFIRE_AGENT_ASSURANCE_EVIDENCE_MANIFEST_ADMISSION.claim.yaml > /tmp/coalfire.claim.yaml"
+    - "git show dc461cdae8ca400a7ca002fa8ddc71e4f4bf56ff:projects/gtm-revenue/research/20260808T162625Z_CHANNEL_PARTNER_COALFIRE_TARGET_CARD.md > /tmp/coalfire.target.md"
+    - "python3 -c \"from pathlib import Path; import hashlib,re; s=Path('/tmp/coalfire.target.md').read_text(); m=re.search(r'BEGIN_EVIDENCE_PREIMAGE_V1\\n(.*?)END_EVIDENCE_PREIMAGE_V1',s,re.S); assert m; b=m.group(1).replace('\\r\\n','\\n').encode(); print(len(b),hashlib.sha256(b).hexdigest()); assert len(b)==1603; assert hashlib.sha256(b).hexdigest()=='0d97d6799ebd320f5744aa5d422347e3b66d619077de29c435f37f84bb1bae14'\""
+    - "git grep -n -i -E 'Coalfire|Agent Assurance Evidence Manifest|ForgeAI|GuardianAI|Secure Agent Construct|Audit AI' c5aecd10b356d5e3780288f8c2d51c49087b821c -- projects/gtm-revenue/kits projects/gtm-revenue/returns || true"
+    - "for u in 'https://coalfire.com/insights/news-and-events/press-releases/coalfire-expands-ai-assurance-capabilities-with-provisional-aiuc-1-accreditation' 'https://coalfire.com/insights/news-and-events/press-releases/coalfire-launches-audit-ai-for-compliance-essentials-to-deliver-agentic-compliance-at-enterprise-scale' 'https://coalfire.com/services/advisory/ai-security-and-trust-engineering' 'https://coalfire.com/about/partners' 'https://coalfire.com/the-coalfire-blog/securing-ai-agents-in-2026-what-practitioners-need-to-know'; do echo URL=$u; curl -L --fail --silent --show-error --max-time 20 "$u" | sed -n '1,80p'; done"
+    - "test ! -e projects/gtm-revenue/kits/coalfire/20260808T171835Z_AGENT_ASSURANCE_EVIDENCE_MANIFEST.md"
+    - "test ! -e projects/gtm-revenue/returns/20260808T171835Z_S07_COALFIRE_AGENT_ASSURANCE_EVIDENCE_MANIFEST_RETURN.md"
+    - "python3 -c \"from pathlib import Path; p=Path('projects/gtm-revenue/kits/coalfire/20260808T171835Z_AGENT_ASSURANCE_EVIDENCE_MANIFEST.md'); s=p.read_text(); req=['WHY_THIS_MAY_MATTER','HOW_TO_USE_IN_2_MINUTES','ACCEPT','REJECT','NEEDS-HUMAN','revision','delegated principal','allowed tools','allowed actions','sensitive-data','held-out','fallback','human escalation','provenance','rollback','Assumptions','Strongest falsifier','https://coalfire.com/insights/news-and-events/press-releases/coalfire-expands-ai-assurance-capabilities-with-provisional-aiuc-1-accreditation','https://coalfire.com/insights/news-and-events/press-releases/coalfire-launches-audit-ai-for-compliance-essentials-to-deliver-agentic-compliance-at-enterprise-scale','https://coalfire.com/services/advisory/ai-security-and-trust-engineering','https://coalfire.com/about/partners','https://coalfire.com/the-coalfire-blog/securing-ai-agents-in-2026-what-practitioners-need-to-know']; miss=[x for x in req if x.lower() not in s.lower()]; print({'missing':miss}); assert not miss\""
+    - "python3 -c \"from pathlib import Path; s=Path('projects/gtm-revenue/kits/coalfire/20260808T171835Z_AGENT_ASSURANCE_EVIDENCE_MANIFEST.md').read_text().lower(); req=['permitted task with forbidden tool','correct answer after pii leakage','stale policy/version evidence','quality pass with missing principal delegation','successful task with no rollback/evidence binding']; miss=[x for x in req if x not in s]; print({'missing_negative_controls':miss}); assert not miss\""
+    - "python3 -c \"from pathlib import Path; s=Path('projects/gtm-revenue/kits/coalfire/20260808T171835Z_AGENT_ASSURANCE_EVIDENCE_MANIFEST.md').read_text().lower(); forbidden=['coalfire lacks','coalfire has a backlog','coalfire is slow','coalfire has a margin problem','nathan demuth is the buyer','nathan demuth is the procurement owner','guaranteed savings']; hit=[x for x in forbidden if x in s]; print({'forbidden_hits':hit}); assert not hit\""
+    - "git diff --check -- projects/gtm-revenue/kits/coalfire/20260808T171835Z_AGENT_ASSURANCE_EVIDENCE_MANIFEST.md projects/gtm-revenue/returns/20260808T171835Z_S07_COALFIRE_AGENT_ASSURANCE_EVIDENCE_MANIFEST_RETURN.md"
+    - "git status --short"
+    - "git diff --name-only"
+    - "git hash-object projects/gtm-revenue/kits/coalfire/20260808T171835Z_AGENT_ASSURANCE_EVIDENCE_MANIFEST.md"
+    - "python3 -c \"from pathlib import Path; import hashlib; p=Path('projects/gtm-revenue/kits/coalfire/20260808T171835Z_AGENT_ASSURANCE_EVIDENCE_MANIFEST.md'); b=p.read_bytes(); print(len(b),hashlib.sha256(b).hexdigest())\""
+    - "python3 -c \"from pathlib import Path; s=Path('projects/gtm-revenue/returns/20260808T171835Z_S07_COALFIRE_AGENT_ASSURANCE_EVIDENCE_MANIFEST_RETURN.md').read_text(); req=['runtime','model','branch','sha','changed paths','exact commands','exit codes','outputs','blockers','rollback','honest flaw','S07_COALFIRE_AGENT_ASSURANCE_EVIDENCE_MANIFEST_V1','a6e311fb7af6f2f8ccf79683a3a1e0a71d052a2b','33d399ccd77fa4edcb7bde41c1f2d53ac12f34544bc2579f1498b90e30d1f334','6a52861fbdb08191b9ef33a0b9c3c15c','6a539fc5130c81918c13624739fb2a60']; miss=[x for x in req if x.lower() not in s.lower()]; print({'missing_return_fields':miss}); assert not miss\""
+
+executor_instructions:
+  - >-
+    Start from exact base SHA c5aecd10b356d5e3780288f8c2d51c49087b821c or stop with BLOCKED_BASE_DRIFT.
+  - >-
+    Before writing a candidate, inspect repository evidence and the five current public Coalfire sources for the
+    strongest falsifier. If an equivalent revision-bound manifest already emitted and consumed by Coalfire's
+    assurance workflow is found, write only the producer return with result HOLD, exact evidence URLs, exact
+    commands/exit codes/outputs, and no kit.
+  - >-
+    If the falsifier is not found, create exactly one compact two-minute utility artifact at the explicit kit
+    path using only synthetic agents, identities, tools, data, tests, traces, and rollback examples. Every
+    Coalfire-specific pain statement remains a hypothesis. Invent no baseline, price, margin impact, review hours,
+    backlog, incident, staffing shortage, failed assurance, procurement motion, or buyer authority.
+  - >-
+    The candidate must force explicit ACCEPT / REJECT / NEEDS-HUMAN, bind exact synthetic agent/model/tool
+    revision, delegated principal, allowed tools/actions, sensitive-data boundary, held-out quality/security
+    cases, fallback/human escalation, trace/evidence provenance, rollback, and all five source negative controls.
+    It must preserve counterevidence that Coalfire already has mature AI-assurance/security/compliance tooling.
+  - >-
+    Then create exactly one immutable producer return at the explicit return path. The return must name executor
+    runtime and model, local/executor branch and SHA, changed paths, every exact command actually run, each exit
+    code, material stdout/stderr or digest output, blockers, rollback, effect ceiling, verifier, consumer, expiry,
+    and one honest flaw. Commands not run must be marked NOT_RUN, never passed.
+  - >-
+    Do not push, merge, deploy, externally publish, send, spend, create accounts, accept terms, use credentials or
+    private/client data, test real Coalfire/client systems, alter security settings, or perform any effect above T0.
+
+acceptance_tests:
+  - id: A1_CLAIM_BINDING
+    pass_if: claim commit/path/blob, acceptance SHA-256, idempotency SHA-256, and expiry exactly match this packet.
+  - id: A2_SOURCE_BINDING
+    pass_if: source commit/path/blob and recomputed evidence SHA-256 exactly match this packet.
+  - id: A3_LEASE
+    pass_if: executor begins before 2026-08-08T21:04:00Z; otherwise HOLD_EXPIRED.
+  - id: A4_NO_DUPLICATE
+    pass_if: no existing candidate/return at the same work_item/source/acceptance digest already closes this work.
+  - id: A5_FALSIFIER_FIRST
+    pass_if: equivalent Coalfire revision-bound assurance-manifest search occurs before candidate creation; a found equivalent forces HOLD and candidate abstention.
+  - id: A6_ARTIFACT_CONTENT
+    pass_if: candidate contains WHY_THIS_MAY_MATTER, HOW_TO_USE_IN_2_MINUTES, explicit three-way verdict, exact revision/principal/authority/data/test/escalation/provenance/rollback bindings, assumptions, strongest falsifier, and all five source URLs.
+  - id: A7_NEGATIVE_CONTROLS
+    pass_if: all five source-prescribed negative controls are present without weakening or substitution.
+  - id: A8_COUNTEREVIDENCE_AND_HYPOTHESIS_CEILING
+    pass_if: candidate acknowledges Coalfire's mature existing controls and makes no unsupported shortage, backlog, margin, buyer, procurement, missing-control, or willingness-to-engage claim.
+  - id: A9_SYNTHETIC_ONLY
+    pass_if: no private/client data, credentials, live Coalfire/client system, real security test, or external effect occurs.
+  - id: A10_PATH_CEILING
+    pass_if: only the two explicit write paths are changed and no forbidden path is touched.
+  - id: A11_STATIC_CHECKS
+    pass_if: all actually-run required validation commands return exit code 0 and git diff --check is clean.
+  - id: A12_RETURN_EVIDENCE
+    pass_if: producer return names runtime/model, branch/SHA, changed paths, exact commands, exit codes, outputs, blockers, rollback, verifier, consumer, expiry, and honest flaw.
+
+verifier:
+  seat: S04_HRIST_STRUCTURAL_PREFLIGHT
+  task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  provider_class: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+
+consumer:
+  seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  task_id: 6a539fc5130c81918c13624739fb2a60
+  external_effect: OPERATOR_REVIEW_ONLY
+
+effect_ceiling:
+  class: T0_RESEARCH_PREP_ONLY
+  allowed: LOCAL_OR_EXECUTOR_INSPECTION_PLUS_TWO_EXPLICIT_INTERNAL_ARTIFACT_PATHS
+  forbidden: PUSH_MERGE_DEPLOY_EXTERNAL_PUBLICATION_SEND_SPEND_ACCOUNT_CHANGE_SECURITY_CHANGE_LIVE_SYSTEM_TEST_PRIVATE_DATA_OR_DESTRUCTIVE_GIT
+
+time_budget_ceiling:
+  wall_clock_minutes: 25
+  monetary_spend_usd: 0
+  external_api_spend_authorized: false
+
+rollback:
+  mode: APPEND_ONLY_SUPERSESSION_PLUS_DELETE_UNMERGED_LOCAL_CANDIDATE_IF_NEEDED
+  history_rewrite_authorized: false
+  remote_delete_authorized: false
+  destructive_git_authorized: false
+
+expiry_utc: 2026-08-08T21:04:00Z
+
+strongest_falsifier: >-
+  Kill this wedge if Coalfire's current ForgeAI, GuardianAI, Secure Agent Construct, Audit AI, or another current
+  assurance-delivery workflow already emits and consumes an equivalent low-overhead revision-bound acceptance
+  manifest tying delegated identity, per-action authority, sensitive-data controls, held-out reliability, human
+  escalation, evidence provenance, and rollback directly into assessor/delivery decisions.
+
+route:
+  status: INGRESS_ABSENT
+  dispatch_attempted: false
+  execution_occurred: false
+  producer_return_consumed: false
+  reason: NO_DIRECT_CODEX_CLAUDE_HOST_OR_NEW_WORKFLOW_DISPATCH_INGRESS_EXPOSED
+
+honest_flaw: >-
+  This packet proves only that an unexpired changed S02 claim exists and that S06 can bind its repository/source
+  evidence into an exact executor contract. It does not prove Coalfire lacks an equivalent internal workflow,
+  that the packet will ever be executed, that any artifact would create buyer value, or that a GitHub actor maps
+  to this carrier/runtime. No independent STOOD/FELL, ConsumerAck, outreach, meeting, procurement signal, revenue,
+  or other external outcome is created by compiling this packet.
