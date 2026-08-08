@@ -1,0 +1,242 @@
+schema_id: hfo.gen133.s06.executor_packet.v1
+result: HOLD
+seat: S06_CODE_WORK_PACKET_COMPILER_CODEX_BRIDGE
+wip: 1
+valid_time_utc: 2026-08-08T18:20:23Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+
+self_probe:
+  expected_task_id: 6a57972b9df081918680ce67c4ecb197
+  observed_task_id: 6a57972b9df081918680ce67c4ecb197
+  task_id_match: true
+  task_enabled_observed: true
+  github_read_available: true
+  github_write_available: true
+  slack_write_available: true
+  task_inventory_read_available: true
+  direct_codex_ingress_available: false
+  direct_claude_ingress_available: false
+  direct_host_shell_ingress_available: false
+  github_workflow_dispatch_ingress_available: false
+  execution_performed_by_s06: false
+  task_mutation_performed: false
+
+selection:
+  work_item_id: S07_PORTKEY_AGENT_AUTHORITY_CHANGE_REGRESSION_GATE_V1
+  changed_claim_commit: dbb3db2c37709fbeb7004cd32f407ed87c585cda
+  claim_path: projects/gtm-revenue/claims/20260808T180400Z_PORTKEY_AGENT_AUTHORITY_CHANGE_REGRESSION_GATE_ADMISSION.claim.yaml
+  claim_git_blob_sha1: ea3342e4a1e50bb0793458ff9908cdb1c93ee445
+  claim_status: CLAIMED_INTERNAL_ONLY_NO_EXTERNAL_EFFECT
+  claim_expiry_utc: 2026-08-08T22:04:00Z
+  source_expiry_utc: 2026-08-14T14:08:00Z
+  selected_because: CHANGED_UNEXPIRED_CLAIM_REQUIRING_REPOSITORY_INSPECTION_BUILD_ARTIFACT_AND_STATIC_ACCEPTANCE_EVIDENCE
+  duplicate_search_result: NO_EXISTING_PORTKEY_KIT_OR_PRODUCER_RETURN_FOUND_AT_PACKET_COMPILE_TIME
+
+repository:
+  full_name: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+  base_sha: bd5b1a573480f2fd901e358d531c868f91e1a35a
+  claim_sha: dbb3db2c37709fbeb7004cd32f407ed87c585cda
+  source_commit: 6071853f7f0392910d434d35a23865bd46001817
+  source_path: projects/gtm-revenue/research/20260808T172800Z_PRODUCT_PLATFORM_PORTKEY_TARGET_CARD.md
+  source_git_blob_sha1: 030e08bf281910bc1a318de1318b39d8926fd4fc
+  source_binding_digest_sha256: 6efb1e02191786e48a86aee6763ea52b8bc0684235f24ec63c8d623ff34362ae
+  source_evidence_digest_sha256: bea6368a9c42ca90b7758286f93148e9887890cb93d21a2cea9b04c06cc7c736
+  acceptance_sha256: 0a17236e3c7b0f343b23466ac16338ce2bbcd8892ae9fb46d964188e0e7082af
+
+execution_identity:
+  producer_seat: S07_GTM_PROOF_KIT_BUILDER
+  producer_task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+  executor_role: SUBSTRATE_ONLY_NOT_PRODUCER_IDENTITY
+  verifier_seat: S04_HRIST_STRUCTURAL_PREFLIGHT
+  verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  verifier_binding_weight: 0
+  consumer_seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  consumer_task_id: 6a539fc5130c81918c13624739fb2a60
+
+allowed_paths:
+  read:
+    - projects/gtm-revenue/claims/20260808T180400Z_PORTKEY_AGENT_AUTHORITY_CHANGE_REGRESSION_GATE_ADMISSION.claim.yaml
+    - projects/gtm-revenue/research/20260808T172800Z_PRODUCT_PLATFORM_PORTKEY_TARGET_CARD.md
+    - projects/gtm-revenue/kits/portkey/**
+    - projects/gtm-revenue/returns/**
+  write_if_and_only_if_falsifier_not_met:
+    - projects/gtm-revenue/kits/portkey/20260808T182023Z_AGENT_AUTHORITY_CHANGE_DIFF.md
+    - projects/gtm-revenue/returns/20260808T182023Z_S07_PORTKEY_AGENT_AUTHORITY_CHANGE_REGRESSION_GATE_RETURN.md
+  scratch_only_outside_repo:
+    - /tmp/hfo-portkey-s06/**
+
+forbidden_paths:
+  - .github/**
+  - state/ssot/**
+  - state/coordination/**
+  - projects/gtm-revenue/claims/**
+  - projects/gtm-revenue/research/**
+  - projects/gtm-revenue/packets/**
+  - any_repo_path_not_explicitly_listed_under_allowed_paths.write_if_and_only_if_falsifier_not_met
+
+goal: >-
+  Falsifier-first repository/public-source inspection followed, only if the wedge survives, by exactly
+  one concise public-safe two-minute Agent Authority Change Diff for one synthetic Portkey gateway
+  policy/config change. Make before/after authority reviewable across Principal x Agent x Capability x
+  Budget x Evidence, cover all six required negative-control classes, preserve Portkey counterevidence,
+  bind rollback, and emit one immutable S07 producer return with exact execution evidence. Do not build
+  the deeper A2A + MCP harness.
+
+current_red_evidence:
+  - NO_DIRECT_EXECUTOR_INGRESS_EXPOSED_TO_S06_THIS_WAKE;PACKET_IS_NOT_EXECUTION
+  - NO_PORTKEY_KIT_OR_PRODUCER_RETURN_FOUND_BY_REPOSITORY_SEARCH_AT_BASE_SHA
+  - STRONGEST_FALSIFIER_UNRESOLVED:PORTKEY_MAY_ALREADY_HAVE_EQUIVALENT_NATIVE_VERSION_DIFF_NEGATIVE_TEST_APPROVAL_ROLLBACK_WORKFLOW
+  - NO_RUNTIME_MODEL_COMMAND_EXIT_CODE_OUTPUT_LEDGER_EXISTS_FOR_THIS_WORK_ITEM
+  - NO_INDEPENDENT_STOOD_OR_FELL_OR_CONSUMERACK_EXISTS_FOR_THIS_WORK_ITEM
+
+required_commands:
+  - id: C01
+    command: "set -euo pipefail; git rev-parse --show-toplevel; git branch --show-current; git rev-parse HEAD; git status --short"
+    purpose: "Prove repository, branch, base, and cleanliness before touching candidate bytes."
+  - id: C02
+    command: "test \"$(git branch --show-current)\" = 'agent/gen133-bootstrap-20260730' && test \"$(git rev-parse HEAD)\" = 'bd5b1a573480f2fd901e358d531c868f91e1a35a'"
+    purpose: "Fail closed on base drift. If HEAD differs, return HOLD and do not write candidate bytes."
+  - id: C03
+    command: "git cat-file -e dbb3db2c37709fbeb7004cd32f407ed87c585cda^{commit} && git show dbb3db2c37709fbeb7004cd32f407ed87c585cda:projects/gtm-revenue/claims/20260808T180400Z_PORTKEY_AGENT_AUTHORITY_CHANGE_REGRESSION_GATE_ADMISSION.claim.yaml > /tmp/hfo-portkey-s06/claim.yaml"
+    purpose: "Bind the immutable claim."
+  - id: C04
+    command: "git cat-file -e 6071853f7f0392910d434d35a23865bd46001817^{commit} && git show 6071853f7f0392910d434d35a23865bd46001817:projects/gtm-revenue/research/20260808T172800Z_PRODUCT_PLATFORM_PORTKEY_TARGET_CARD.md > /tmp/hfo-portkey-s06/source.md && test \"$(git hash-object /tmp/hfo-portkey-s06/source.md)\" = '030e08bf281910bc1a318de1318b39d8926fd4fc'"
+    purpose: "Recompute exact target-card blob binding."
+  - id: C05
+    command: "python - <<'PY'\nfrom pathlib import Path\nimport hashlib,re\np=Path('/tmp/hfo-portkey-s06/claim.yaml').read_text()\nm=re.search(r'acceptance_test:\\n(?:.*\\n)*?  canonical_text: \\|-\\n(.*?)(?=\\nidempotency:)',p,re.S)\nassert m, 'acceptance canonical_text missing'\nlines=[]\nfor line in m.group(1).splitlines():\n    assert line.startswith('    ') or line==''\n    lines.append(line[4:] if line.startswith('    ') else '')\ns='\\n'.join(lines).rstrip('\\n')\nprint(len(s.encode()), hashlib.sha256(s.encode()).hexdigest())\nassert hashlib.sha256(s.encode()).hexdigest()=='0a17236e3c7b0f343b23466ac16338ce2bbcd8892ae9fb46d964188e0e7082af'\nPY"
+    purpose: "Recompute the exact acceptance contract before implementation."
+  - id: C06
+    command: "mkdir -p /tmp/hfo-portkey-s06 && rg -n -i 'portkey|agent gateway|mcp gateway|authority change|policy regression|rollback|negative control' projects/gtm-revenue --glob '!dispatch/**' > /tmp/hfo-portkey-s06/repo_hits.txt || true; cat /tmp/hfo-portkey-s06/repo_hits.txt"
+    purpose: "Search for prior equivalent Gen-133 work before creating anything."
+  - id: C07
+    command: "python - <<'PY'\nfrom pathlib import Path\nurls=['https://portkey.ai/blog/why-every-agent-vulnerability-is-a-trust-boundary-failure/','https://portkey.ai/docs/product/mcp-gateway/mcp-registry','https://portkey.ai/blog/agent-gateway/','https://portkey.ai/blog/series-a-funding/']\nPath('/tmp/hfo-portkey-s06/urls.txt').write_text('\\n'.join(urls)+'\\n')\nPY\nwhile read -r u; do echo \"===== $u\"; curl -LfsS --max-time 20 \"$u\" | rg -i -m 40 'version|diff|simulate|simulation|regression|approval|rollback|policy|budget|identity|access|trace' || true; done < /tmp/hfo-portkey-s06/urls.txt"
+    purpose: "Read-only primary-source falsifier probe; no account, credentials, or live customer system."
+  - id: C08
+    command: "test ! -e projects/gtm-revenue/kits/portkey/20260808T182023Z_AGENT_AUTHORITY_CHANGE_DIFF.md && test ! -e projects/gtm-revenue/returns/20260808T182023Z_S07_PORTKEY_AGENT_AUTHORITY_CHANGE_REGRESSION_GATE_RETURN.md"
+    purpose: "Create-only idempotency guard."
+  - id: C09
+    command: "python - <<'PY'\n# Executor writes candidate only after C01-C08 pass and strongest falsifier is NOT met.\n# Candidate must be public-safe synthetic Markdown; no live Portkey calls or credentials.\nPY"
+    purpose: "Explicit phase boundary: implementation is conditional, not automatic."
+  - id: C10
+    command: "python - <<'PY'\nfrom pathlib import Path\np=Path('projects/gtm-revenue/kits/portkey/20260808T182023Z_AGENT_AUTHORITY_CHANGE_DIFF.md')\ns=p.read_text()\nrequired=['WHY_THIS_MAY_MATTER','HOW_TO_USE_IN_2_MINUTES','Principal','Agent','Capability','Budget','Evidence','cross-tenant','hidden-tool','identity-loss','budget-bypass','stale-policy','trace-correlation','rollback','strongest falsifier','https://portkey.ai/blog/why-every-agent-vulnerability-is-a-trust-boundary-failure/','https://portkey.ai/docs/product/mcp-gateway/mcp-registry','https://portkey.ai/blog/agent-gateway/','https://portkey.ai/blog/series-a-funding/']\nmissing=[x for x in required if x.lower() not in s.lower()]\nassert not missing, missing\nfor banned in ['Portkey lacks','Portkey is missing','confirmed backlog','confirmed incident','Rohit Agarwal is the buyer','willing to engage']:\n    assert banned.lower() not in s.lower(), banned\nprint({'bytes':len(s.encode()),'sha256':__import__('hashlib').sha256(s.encode()).hexdigest()})\nPY"
+    purpose: "Static acceptance test for required surface and hypothesis ceiling."
+  - id: C11
+    command: "git diff --check -- projects/gtm-revenue/kits/portkey/20260808T182023Z_AGENT_AUTHORITY_CHANGE_DIFF.md projects/gtm-revenue/returns/20260808T182023Z_S07_PORTKEY_AGENT_AUTHORITY_CHANGE_REGRESSION_GATE_RETURN.md"
+    purpose: "Reject whitespace/patch corruption."
+  - id: C12
+    command: "git status --short -- projects/gtm-revenue/kits/portkey/20260808T182023Z_AGENT_AUTHORITY_CHANGE_DIFF.md projects/gtm-revenue/returns/20260808T182023Z_S07_PORTKEY_AGENT_AUTHORITY_CHANGE_REGRESSION_GATE_RETURN.md"
+    purpose: "Enumerate exactly changed allowed paths."
+  - id: C13
+    command: "git diff --name-only -- . | python -c \"import sys; a=[x.strip() for x in sys.stdin if x.strip()]; allowed={'projects/gtm-revenue/kits/portkey/20260808T182023Z_AGENT_AUTHORITY_CHANGE_DIFF.md','projects/gtm-revenue/returns/20260808T182023Z_S07_PORTKEY_AGENT_AUTHORITY_CHANGE_REGRESSION_GATE_RETURN.md'}; bad=[x for x in a if x not in allowed]; print('changed',a); assert not bad,bad\""
+    purpose: "Fail if the executor touched any forbidden repo path."
+  - id: C14
+    command: "git diff -- projects/gtm-revenue/kits/portkey/20260808T182023Z_AGENT_AUTHORITY_CHANGE_DIFF.md projects/gtm-revenue/returns/20260808T182023Z_S07_PORTKEY_AGENT_AUTHORITY_CHANGE_REGRESSION_GATE_RETURN.md"
+    purpose: "Capture exact candidate/return output for producer ledger."
+
+acceptance_tests:
+  - AT01_BASE_EXACT: "Executor started on branch agent/gen133-bootstrap-20260730 at base bd5b1a573480f2fd901e358d531c868f91e1a35a; any drift returns HOLD without writes."
+  - AT02_BINDINGS_RECOMPUTE: "Claim commit/path/blob, source commit/path/blob, source digest contract, and acceptance SHA-256 all reproduce exactly."
+  - AT03_FALSIFIER_FIRST: "Repository and four primary Portkey sources are inspected before candidate creation; equivalent native workflow causes HOLD with zero candidate changes."
+  - AT04_ONE_ARTIFACT_ONLY: "At most one new candidate exists at the exact allowed kit path; deeper A2A+MCP harness is absent."
+  - AT05_AUTHORITY_DIFF_SURFACE: "Candidate exposes before/after Principal x Agent x Capability x Budget x Evidence and newly reachable agents/tools/skills, identity-mode, workspace/user, budget/routing deltas."
+  - AT06_NEGATIVE_CONTROLS: "All six classes appear: cross-tenant access, hidden-tool direct call, identity-loss, budget-bypass, stale-policy, trace-correlation failure."
+  - AT07_HYPOTHESIS_CEILING: "No unsupported diagnosis, incident/backlog claim, procurement signal, savings baseline, buyer claim, or willingness-to-engage claim."
+  - AT08_ROLLBACK_AND_SOURCES: "One explicit rollback condition, strongest falsifier, HOW_TO_USE_IN_2_MINUTES, WHY_THIS_MAY_MATTER, assumptions, and all four exact primary URLs are present."
+  - AT09_PATH_CEILING: "Only the two exact write paths may change; no claims/research/state/.github/production code changes."
+  - AT10_RETURN_LEDGER: "Producer return names runtime/model, branch and starting/base SHA, changed paths, every exact command actually executed, per-command exit code, compact outputs, blockers, rollback, candidate blob/digest, claim and acceptance bindings, verifier, consumer, expiry, and honest flaw."
+  - AT11_NO_FALSE_GREEN: "No PASS/green/verified/ConsumerAck/independent verdict is inferred from packet creation, static checks, same-provider review, or Slack routing."
+
+effect_ceiling:
+  level: T0_RESEARCH_PREP_ONLY
+  allowed:
+    - READ_ONLY_PUBLIC_PRIMARY_SOURCE_FETCH
+    - READ_ONLY_REPOSITORY_INSPECTION
+    - CREATE_EXACT_TWO_INTERNAL_GIT_ARTIFACTS_IF_FALSIFIER_SURVIVES
+  forbidden:
+    - OUTREACH_OR_EMAIL_OR_DM_OR_APPLICATION
+    - ACCOUNT_CREATION_OR_TERMS_ACCEPTANCE
+    - PAID_PROVIDER_CALL_OR_SPEND
+    - LIVE_PORTKEY_SYSTEM_OR_CREDENTIAL_OR_CUSTOMER_DATA_USE
+    - SECURITY_TESTING_AGAINST_REAL_SYSTEMS
+    - PUSH_OR_MERGE_OR_DEPLOY_OR_EXTERNAL_PUBLICATION
+    - TASK_OR_ACCOUNT_OR_SECURITY_CHANGE
+    - DESTRUCTIVE_GIT_OR_HISTORY_REWRITE
+
+time_budget_ceiling:
+  wall_clock_minutes: 25
+  external_cost_usd: 0
+  paid_api_calls: 0
+  max_candidate_files: 1
+  max_return_files: 1
+
+rollback:
+  mode: APPEND_ONLY_SUPERSESSION
+  if_uncommitted_candidate_created: "Remove only the two exact uncommitted allowed-path files; do not use destructive Git commands against tracked history."
+  if_committed_by_executor_without_authority: "STOP; report exact SHA as blocker. Do not reset, revert, push, merge, or rewrite history."
+  destructive_git_authorized: false
+  history_rewrite_authorized: false
+
+verifier:
+  seat: S04_HRIST_STRUCTURAL_PREFLIGHT
+  task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  class: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  may_close_independent_verification: false
+
+consumer:
+  seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  task_id: 6a539fc5130c81918c13624739fb2a60
+  consumer_ack_must_be_explicit: true
+  operator_review_only: true
+
+expiry:
+  packet_expiry_utc: 2026-08-08T22:04:00Z
+  source_expiry_utc: 2026-08-14T14:08:00Z
+  renewal_allowed: false
+  after_expiry: HOLD_AND_REQUIRE_CHANGED_SOURCE_SUCCESSOR
+
+strongest_falsifier: >-
+  Kill the wedge and return HOLD with no candidate writes if current Portkey material or repository
+  evidence shows a low-overhead native workflow that versions agent/MCP access-policy changes,
+  computes before/after authority diffs, executes negative authorization and budget tests, binds the
+  result to deployment approval, and supports auditable rollback to the exact prior policy/config revision.
+
+direct_producer_return_contract:
+  required_fields:
+    - runtime
+    - model
+    - executor_identity_or_surface
+    - repository
+    - branch
+    - starting_base_sha
+    - resulting_sha_if_any
+    - changed_paths
+    - exact_commands_executed
+    - per_command_exit_codes
+    - compact_outputs
+    - blockers
+    - candidate_path_blob_sha1_sha256_if_any
+    - rollback
+    - verifier
+    - consumer
+    - expiry_utc
+    - honest_flaw
+  reject_if_missing_any_required_field: true
+  route_or_slack_post_counts_as_execution: false
+
+routing:
+  direct_executor_ingress: NONE_EXPOSED_THIS_WAKE
+  dispatched: false
+  slack_pointer_after_git_readback_required: true
+  unchanged_missing_ingress_andon_allowed_again_for_same_campaign: false
+
+honest_flaw: >-
+  This packet improves executor specificity but does not execute the WorkItem. No direct Codex, Claude,
+  host shell, or workflow-dispatch ingress is exposed to S06, and no runtime/model command ledger exists
+  yet. The technical wedge is also unusually vulnerable to redundancy because Portkey already owns the
+  core authentication, access-control, policy, budget, guardrail, tracing, registry, and credential
+  isolation surfaces. The correct executor outcome may therefore be HOLD after falsifier inspection,
+  not artifact creation. Packet compilation, Git commit, readback, or Slack routing cannot be counted as
+  implementation, verification, ConsumerAck, or external fitness.
