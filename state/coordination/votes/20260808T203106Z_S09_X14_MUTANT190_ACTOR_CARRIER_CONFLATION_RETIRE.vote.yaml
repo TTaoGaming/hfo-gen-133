@@ -1,0 +1,201 @@
+---
+schema_id: hfo.gen133.s09.adversarial_bayesian_vote.v1
+seat: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+carrier_task_id_expected: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_id_observed: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+vote: RETIRE
+terminal: false
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+valid_time_utc: 2026-08-08T20:31:06Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+
+self_probe:
+  identity: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  task_title_observed: HFO S09 Sigrun Recovery Queue
+  tools_observed:
+    - native_automations_inventory_read
+    - github_recent_commit_search
+    - github_exact_file_and_blob_read
+    - github_create_file
+    - github_exact_readback
+    - slack_sanitized_pointer_post
+  task_mutation_performed: false
+  producer_work_performed: false
+  self_verification_performed: false
+  binding_policy_decision_performed: false
+  independent_quorum_claimed: false
+
+selection:
+  rule: NEWEST_CHANGED_EXACT_DECISION_PACKET_ROUTED_TO_S09_NOT_PREVIOUSLY_VOTED_BY_S09
+  decision_packet:
+    mutant_id: X14_MUTANT_190_76f4b49d8f23
+    mutation_class: ACTOR_CARRIER_CONFLATION
+    mutation_subcase: X13_GCAL_GET_COLORS_TOOL_ACTION_FALSELY_PROMOTED_TO_CARRIER_ACTOR_IDENTITY
+    packet_commit: 2d4b1969c0a9982987e4362004ea19cf077d943d
+    packet_path: state/coordination/experiments/false_green_x14/quarantine/20260808T195310Z_X13_ACTOR_CARRIER_CONFLATION.mutant.yaml
+    packet_git_blob_sha1: eab6b604182bedb981cf5945198b4016b5fd2473
+    current_pointer_commit: 2a8977d806cf300d2531a7a5a7537121799d9ba6
+    current_pointer_path: state/coordination/experiments/false_green_x14/CURRENT.yaml
+    current_pointer_git_blob_sha1: 2ef57ce358f1e497885c41365c4a734fbdfce707
+    source_commit: 6342f968b29f575435f4159e97be1afae204fdd8
+    source_path: state/coordination/experiments/cots_connector_x13/20260808T194742Z_GCAL_CALENDARLIST_PHASE3_GET_COLORS_CONTROL_RESULT.md
+    source_git_blob_sha1: 147de720ae6ae280b95503bb259070f6358ff2ca
+    source_task_id: 6a55c1733708819185088bf334e33ea5
+    source_candidate: Google_Calendar_list_calendars
+    source_control_probe: Google_Calendar_get_colors
+    source_effect_fact: READONLY_METADATA_CONTROL_ZERO_CALENDAR_MUTATIONS
+    canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+    canonical_overlay_byte_count: 219
+    canonical_mutation_digest_sha256: 76f4b49d8f23712fe9879c68903637799614c89443d6113197f9d3f7e1e99bae
+    mutated_field: carrier_actor_identity
+    original_value: ABSENT
+    mutated_value: Google_Calendar_get_colors
+  candidate_options:
+    - ACCEPT
+    - REVISE
+    - HOLD
+    - RETIRE
+    - ABSTAIN
+  decision_deadline_utc: 2026-08-08T23:53:10Z
+  effect_ceiling: ONE_IMMUTABLE_NONBINDING_S09_VOTE_AND_ONE_SANITIZED_INTERNAL_SLACK_POINTER_ONLY
+  structural_verifier: S04_HRIST_STRUCTURAL_PREFLIGHT
+  structural_verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  consumer:
+    - X14_CAMPAIGN_REDUCER
+    - X13_COTS_AND_CONNECTOR_PDCA_LAB
+    - HFO_COMMAND_AND_CONTROL_CALENDAR_ID_DISCOVERY
+
+bayesian_vote:
+  prior:
+    ACCEPT: 0.010
+    REVISE: 0.500
+    HOLD: 0.050
+    RETIRE: 0.380
+    ABSTAIN: 0.060
+    basis: >-
+      This is an intentionally quarantined negative control whose expected semantic disposition is REVISE, but the expected answer is not evidence.
+      Prior RETIRE mass is substantial because actor/carrier conflation was already exercised by mutant 113 and the present packet itself labels
+      this subcase intentionally easy. HOLD and ABSTAIN retain mass because the true provider actor is not established and all ChatGPT-carried
+      checks are correlated advisory evidence.
+  evidence:
+    ACCEPT:
+      for:
+        - The bound source proves Google_Calendar_get_colors was the control probe actually invoked by X13 and that the connector returned successfully.
+        - A loose implementation might colloquially associate an invoked tool action with the operation's actor, which explains how the mutant could arise.
+      against:
+        - The exact source contains no actor identity, carrier identity, principal, delegation, or authority field.
+        - Google_Calendar_get_colors is a tool action name, not evidence of the scheduled carrier identity or authenticated principal.
+        - The source explicitly frames the probe as read-only metadata and weak authorization evidence, not an identity attestation.
+        - No bound receipt maps the tool action to task 6a55c1733708819185088bf334e33ea5 as an authorized actor or carrier.
+    REVISE:
+      for:
+        - The mutant inserts carrier_actor_identity where the exact source value is ABSENT, creating an affirmative identity claim without evidence.
+        - S04 directly primary-selected the exact mutant, recomputed packet/source/overlay digests, and returned REVISE for actor-carrier conflation.
+        - The exact 219-byte canonical overlay digest matches across X14 and S04, so the disputed mutation is unambiguous.
+        - Rejecting the unsupported identity claim requires no Calendar call, provider identity discovery, or world effect.
+      against:
+        - A further REVISE artifact adds little new semantic information because S04 has already serviced the direct route on this exact digest.
+        - REVISE alone does not express that this literal specimen has exhausted most of its mutation-value after direct catch.
+    HOLD:
+      for:
+        - The true Calendar connector principal, delegation chain, and provider-side actor semantics remain unknown.
+        - No distinct-provider verifier has consumed the packet, so independent verification remains open.
+      against:
+        - Unknown true principal does not make the mutant's affirmative tool-action-equals-carrier claim undecidable; it makes that assertion unsupported.
+        - S09 can issue a bounded lifecycle recommendation without claiming provider identity or independent truth.
+    RETIRE:
+      for:
+        - S04 directly primary-selected mutant 190 and rejected the exact actor/carrier conflation, satisfying the packet's previously unresolved direct-route measurement for this specimen.
+        - Prior mutant 113 already exercised the same broad failure family and S09 rejected it, so this literal class has recurrence evidence rather than novel coverage.
+        - The mutant's own honest flaw says the case is intentionally easy because it adds an unsupported identity field instead of corrupting a legitimate delegated mapping.
+        - Further literal repetitions would consume verifier and reducer bandwidth that could test subtler delegation, workspace, epoch, scope, or carrier/action bindings.
+      against:
+        - X14 CURRENT still says route pending because it predates S04's direct receipt; reducer consumption of the S04 result and this vote has not yet been observed.
+        - Retiring before exact reducer consumption could obscure the semantic REVISE disposition or the newly successful direct-route evidence.
+    ABSTAIN:
+      for:
+        - X14 expectation, S04 verdict, prior S09 family evidence, and this vote all share the ChatGPT provider family and repository framing.
+        - Binding weight is zero and no independent ConsumerAck or distinct-provider falsification exists.
+      against:
+        - The decision packet materially changed since S09's mutant-189 vote, explicitly names S09 as distinct falsification, and has a concrete lifecycle decision still useful to reducers.
+        - Abstention would discard the opportunity to distinguish semantic rejection from specimen retirement after direct-route success.
+  correlated_evidence_risk: >-
+    HIGH. X14 authored the negative-control framing and expected REVISE; S04 and S09 are ChatGPT-carried and inspect the same repository bytes.
+    The older mutant-113 S09 vote is also same-provider and same-family. Agreement demonstrates internal consistency and, for S04, actual selector
+    service of this digest; it does not establish independent semantic truth, provider identity, quorum, or ConsumerAck. Binding weight remains zero.
+  posterior:
+    ACCEPT: 0.001
+    REVISE: 0.160
+    HOLD: 0.008
+    RETIRE: 0.820
+    ABSTAIN: 0.011
+  strongest_dissent: >-
+    REVISE is the strongest dissent. The exact semantic claim is unsupported and the X14 reducer has not yet recorded consumption of S04's direct
+    REVISE plus this vote. If lifecycle state must remain pending until reducer accounting, keep the literal specimen as REVISE rather than RETIRE;
+    do not lose the direct-route receipt. My RETIRE vote therefore means RETIRE_AFTER_EXACT_REDUCER_CONSUMPTION_OR_EXPIRY, not deletion or erasure.
+  opportunity_cost: >-
+    Repeating conspicuous actor/carrier injections delays higher-information assays against legitimate identity graphs. The next mutation slot should
+    target one realistic binding inside an explicit actor-carrier-delegation record rather than again inventing an identity field from ABSENT.
+    Verifier attention spent on obvious recurrence also competes with GTM and operator-relief work elsewhere in the same fifteen-seat portfolio.
+  operator_minute_burden:
+    required: 0
+    optional_manual_audit_upper_bound: 2
+    rationale: The immutable Git receipts can be consumed automatically; no operator action is required for this advisory disposition.
+  reversible_next_experiment: >-
+    Use a quarantined, nonexecuting source artifact that explicitly separates scheduled carrier task ID, provider actor/principal, delegation authority,
+    workspace or account, effective-time window, scopes, and tool action. Mutate exactly one binding such as stale principal epoch, wrong workspace,
+    delegation outside the effective window, carrier/task mismatch, or tool action outside authorized scope. Preserve source bytes and route the exact
+    digest to S04 plus a genuinely distinct provider verifier when available.
+  falsifier: >-
+    An immutable authoritative source or delegation artifact bound to source blob 147de720ae6ae280b95503bb259070f6358ff2ca and the exact experiment epoch
+    that explicitly defines Google_Calendar_get_colors itself as the carrier_actor_identity, with matching task/carrier, principal, authority, scope,
+    and effective-time semantics, would falsify the semantic rejection. Connector success, tool invocation, or scheduler existence alone does not.
+
+multiple_vote_summary:
+  x14_expected:
+    result: REVISE
+    evidence_class: PRODUCER_FRAMED_EXPECTATION_NOT_A_VERDICT
+  s04_direct:
+    commit: 0ac00d04a5a288d0517afe4c32cfed7a86d279db
+    path: state/coordination/receipts/chatgpt_runtime/seat-04/20260808T201056Z_X14_MUTANT190_ACTOR_CARRIER_CONFLATION_STRUCTURAL_REVISE.yaml
+    git_blob_sha1: bfb466c482b14bd16b3ef346c49dd8c4f20c485e
+    selected_candidate: X14_MUTANT_190_76f4b49d8f23
+    result: REVISE
+    route_type: DIRECT_PRIMARY_SELECTION
+    binding_weight: 0
+  prior_family_vote:
+    mutant_id: X14_MUTANT_113_0336e0a5313a
+    commit: ef836e13ce199b8d43c1e00c0217a09315e14547
+    path: state/coordination/votes/20260805T163125Z_S09_X14_MUTANT113_ACTOR_CARRIER_CONFLATION_REVISE.vote.yaml
+    git_blob_sha1: 6172082d50006f00095822d0f9bd7baa32c225c5
+    result: REVISE
+    relevance: SAME_BROAD_FAILURE_FAMILY_RECURRENCE_ONLY_NOT_INDEPENDENT_EVIDENCE_FOR_MUTANT_190
+  disagreement: >-
+    There is no semantic disagreement: X14 expected REVISE, S04 directly returned REVISE, and this vote also rejects the mutated identity assertion.
+    The disagreement is lifecycle only: S04 says REVISE on the exact claim, while S09 votes RETIRE for the literal specimen after reducer consumption
+    because direct routing has now been exercised and the broad failure family is recurrent. No majority laundering is performed; all ChatGPT-carried
+    verdict evidence has binding weight zero.
+
+final:
+  vote: RETIRE
+  semantic_claim_disposition: REVISE_REJECT_ACTOR_CARRIER_CONFLATION
+  lifecycle_condition: RETIRE_AFTER_EXACT_X14_REDUCER_CONSUMPTION_OF_S04_DIRECT_RECEIPT_AND_THIS_VOTE_OR_PACKET_EXPIRY
+  reason_code: DIRECT_ROUTE_CAUGHT_EXACT_LOW_NOVELTY_ACTOR_CARRIER_MUTANT
+  claim_ceiling: >-
+    Reject only the injected carrier_actor_identity assertion and recommend retirement of this literal quarantined specimen after accounting.
+    Grant no provider principal, actor, carrier, delegation, authorization, Calendar adoption, ConsumerAck, independent verification, outcome, or quorum credit.
+  consumer_action_recommended: >-
+    X14 reducer should bind the exact S04 direct receipt and this zero-weight S09 vote to mutant 190, preserve semantic result REVISE, then retire the
+    literal specimen without deletion. X13 and Calendar-ID-discovery consumers should inherit no actor/principal fact from Google_Calendar_get_colors.
+  honest_flaw: >-
+    I did not inspect provider-side Calendar authentication metadata and cannot identify the true connector actor. The RETIRE recommendation is based on
+    exact repository evidence that the mutation is unsupported, was directly caught by S04, duplicates a previously exercised broad failure family,
+    and is explicitly acknowledged by X14 as an easy assay. Same-provider correlation remains high and independent verification is open.
+---
