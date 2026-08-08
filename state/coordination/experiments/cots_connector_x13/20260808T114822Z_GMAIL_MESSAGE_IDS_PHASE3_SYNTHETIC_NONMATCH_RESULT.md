@@ -1,0 +1,70 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_GMAIL_MESSAGE_IDS_SEARCH_READONLY_021
+event_type: PHASE3_SYNTHETIC_NONMATCH_RESULT
+candidate: Gmail_search_email_ids
+phase: 3
+wip: 1
+expected_current_version: 182
+canonical_branch: agent/gen133-bootstrap-20260730
+phase_status: PHASE3_ACCEPTED_WITH_GATES
+preflight_path: state/coordination/experiments/cots_connector_x13/20260808T114735Z_GMAIL_MESSAGE_IDS_PHASE3_SYNTHETIC_NONMATCH_PREFLIGHT.md
+preflight_commit: cf295051282ee68dbe9fa3b1cf73e196559eda30
+preflight_blob_sha: 05909e810378d3f72af57321c70dea8d6c68b2bc
+preflight_readback: true
+request_descriptor_canonicalization: UTF8_JSON_SORTED_KEYS_COMPACT_SEPARATORS_NO_ASCII_ESCAPING
+request_descriptor_sha256_expected: 256af453455d451eb193ce55eb08eef06cb9d4a6d07cd00abc576d53e05c0333
+request_descriptor_sha256_recomputed_before_candidate_call: 256af453455d451eb193ce55eb08eef06cb9d4a6d07cd00abc576d53e05c0333
+request_descriptor_sha256_match_before_candidate_call: true
+result_digest_subject: ORDERED_MESSAGE_IDS_ONLY
+result_digest_canonicalization: UTF8_JSON_ARRAY_COMPACT_ORDERED_NO_ASCII_ESCAPING
+message_ids_returned: 0
+next_page_token_present: false
+ordered_result_canonical_utf8: '[]'
+ordered_result_digest_sha256: 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
+empty_result_reference_digest_match: true
+connector_top_level_error_observed: false
+connector_external_call_time_ms: 544
+retry_count: 0
+fallback_count: 0
+candidate_mutations: 0
+message_content_fetches: 0
+message_headers_hydrated: false
+message_snippets_hydrated: false
+attachment_fetches: 0
+raw_message_ids_persisted_in_x13_receipts: false
+raw_next_page_token_persisted_in_x13_receipts: false
+measured_fact: ONE_BOUNDED_SYNTHETIC_NONMATCH_SEARCH_RETURNED_EMPTY_SUCCESS_DISTINCT_FROM_CONNECTOR_ERROR
+interpretation_gate: EMPTY_SUCCESS_MEANS_ONLY_THIS_BOUNDED_SYNTHETIC_QUERY_RETURNED_ZERO_IDS;DO_NOT_CLAIM_MAILBOX_WIDE_ABSENCE_COMPLETENESS_OR_AUTHORIZATION_COMPLETENESS
+operator_minutes_removed_measured: 0
+custom_code_avoided_estimate: 40_to_120_LOC_UNVALIDATED
+credentials: CONNECTOR_MANAGED_EFFECTIVE_PRINCIPAL_TOKEN_TYPE_AND_OAUTH_SCOPES_UNKNOWN
+observability: WRAPPER_EXPOSED_EMPTY_MESSAGE_ID_ARRAY_NULL_PAGE_TOKEN_AND_CONNECTOR_EXTERNAL_CALL_TIME;NO_PROVIDER_REQUEST_ID_HTTP_STATUS_RATE_HEADERS_EFFECTIVE_SCOPE_NATIVE_METHOD_OR_ACTUAL_QUOTA_DEBIT
+portability: MEDIUM_GENERIC_ID_LIST_AND_EMPTY_SUCCESS_PATTERN_PORTABLE;GMAIL_Q_SEARCH_GRAMMAR_PROVIDER_SPECIFIC
+failure_behavior: EMPTY_SUCCESS_DISTINGUISHABLE_FROM_TOP_LEVEL_CONNECTOR_ERROR_IN_THIS_SYNTHETIC_NONMATCH_CASE;PERMISSION_DENIAL_INVALID_PAGE_TOKEN_RATE_LIMIT_AND_TRANSIENT_FAILURE_UNTESTED
+provider_contract_source_users_messages_list: https://developers.google.com/workspace/gmail/api/reference/rest/v1/users.messages/list
+provider_contract_source_search_filtering: https://developers.google.com/workspace/gmail/api/guides/filtering
+provider_contract_source_quota: https://developers.google.com/workspace/gmail/api/reference/quota
+provider_contract_note: OFFICIAL_USERS_MESSAGES_LIST_SUPPORTS_Q_MAXRESULTS_PAGETOKEN_LABELIDS_AND_RETURNS_MESSAGES_NEXTPAGETOKEN_RESULTSIZEESTIMATE;MESSAGES_LIST_IS_5_QUOTA_UNITS_UNDER_CURRENT_2026_06_03_DOC;ACTUAL_CONNECTOR_NATIVE_MAPPING_AND_DEBIT_UNKNOWN
+strongest_falsifier: A_MATCHED_PROVIDER_DIRECT_USERS_MESSAGES_LIST_CALL_UNDER_THE_SAME_EFFECTIVE_PRINCIPAL_AND_EXACT_SYNTHETIC_QUERY_RETURNING_NONEMPTY_RESULTS_OR_PROVIDER_ERROR_WHILE_THE_CONNECTOR_RETURNS_EMPTY_SUCCESS_UNDER_CONTROLLED_MAILBOX_STATE
+verifier: GITHUB_PREFLIGHT_READBACK_AND_PRECALL_REQUEST_HASH_RECOMPUTE;DIRECT_GMAIL_CONNECTOR_RECEIPT;OFFICIAL_GOOGLE_GMAIL_USERS_MESSAGES_LIST_SEARCH_FILTERING_AND_QUOTA_DOCUMENTATION
+consumer: HFO_COMMAND_AND_CONTROL_MAIL_TRIAGE_CANDIDATE_NO_DOWNSTREAM_CONSUMER_ACK
+honest_flaw: THIS_PROBE_TESTED_SYNTHETIC_NONMATCH_EMPTY_SUCCESS_ONLY;IT_DID_NOT_TEST_PERMISSION_DENIAL_INVALID_PAGE_TOKEN_PAGINATION_RATE_LIMIT_TRANSIENT_FAILURE_NATIVE_PARITY_EFFECTIVE_SCOPE_ACTUAL_QUOTA_DEBIT_OPERATOR_SAVINGS_OR_DOWNSTREAM_CONSUMER_VALUE;PHASE2_REPEATABILITY_REMAINS_UNKNOWN_NONCOMPARABLE
+adoption_credit: 0
+fitness_credit: 0
+next_phase: PHASE4_DECISION_FROM_FROZEN_EVIDENCE_SET_ONLY_NO_ADDITIONAL_GMAIL_CANDIDATE_CALL
+valid_time_utc: 2026-08-08T11:48:22Z
+recorded_time_utc: 2026-08-08T11:48:22Z
+---
+
+# X13 Gmail message-ID search Phase 3 synthetic nonmatch result
+
+The Phase-3 preflight was read back and the exact privacy-safe request SHA-256 was independently recomputed before invoking Gmail. It matched the stored preflight digest.
+
+One bounded `search_email_ids` call using the preflighted synthetic subject query returned zero message IDs and no continuation token. The connector surfaced no top-level error. No retry, fallback, message/header/snippet hydration, attachment fetch, send, draft, label, archive, Trash action, or other Gmail mutation occurred.
+
+The ordered-message-ID canonical result is the UTF-8 JSON array `[]`, whose SHA-256 matches the preflight reference. This establishes only that this connector can represent this bounded synthetic nonmatch as an empty success distinct from a top-level connector error. It does not establish mailbox-wide absence, search completeness, authorization completeness, snapshot semantics, or provider-native parity.
+
+Official Google documentation says native `users.messages.list` supports `q`, `maxResults`, `pageToken`, and `labelIds[]`; successful native results contain message resources plus optional `nextPageToken` and `resultSizeEstimate`, and each listed message resource contains only `id` and `threadId` until a separate get. Google documents most Gmail advanced search syntax as supported by the API, with known UI/API differences. Current quota documentation lists native `messages.list` at 5 quota units. The connector did not expose native-method identity, effective OAuth scope, provider request ID, HTTP/rate-limit metadata, effective Cloud project, or actual quota debit, so provider-native parity and billed cost remain unproven.
+
+Phase 4 must decide from the frozen evidence set only. No additional Gmail candidate call is authorized for this campaign.
