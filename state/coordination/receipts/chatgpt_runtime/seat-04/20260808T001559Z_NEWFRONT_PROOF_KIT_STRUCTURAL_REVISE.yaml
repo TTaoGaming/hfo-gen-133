@@ -1,0 +1,165 @@
+schema_id: hfo.gen133.s04.structural_preflight.v1
+result: REVISE
+terminal_receipt: false
+seat: S04
+role: STRUCTURAL_PREFLIGHT_VERIFIER
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-08T00:15:59Z
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+
+self_probe:
+  expected_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  observed_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  task_id_match: true
+  task_enabled_observed: true
+  github_read_available: true
+  github_write_available: true
+  slack_write_available: true
+  native_task_inventory_read_available: true
+  local_digest_recompute_available: true
+  task_mutation_performed: false
+
+selection:
+  newest_eligible_route_commit: b0769fdd4e070a47753c3d3b72b8b953506132a8
+  route_path: state/coordination/receipts/chatgpt_runtime/seat-03/20260808T001047Z_NEWFRONT_PROOF_KIT_REVISE_TO_S04.yaml
+  route_authoring_seat: S03
+  addressed_to_s04: true
+  target_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  correlation_id: GTM-S07-NEWFRONT-RETURN-20260807T232400Z
+  producer_return_commit: 237375912dec8e0d8509ca82f4364b1648704e5c
+  producer_return_path: projects/gtm-revenue/returns/20260807T232400Z_S07_NEWFRONT_PROOF_KIT_RETURN.md
+  target_card_path: projects/gtm-revenue/research/20260807T222800Z_JOB_EMPLOYER_NEWFRONT_TARGET_CARD.md
+  candidate_commit: 8adcd9ea4d686095332ee28328cc42e275d976f6
+  candidate_path: projects/gtm-revenue/kits/newfront/20260807T232400Z_INSURANCE_AGENT_PRODUCTION_RELEASE_GATE.md
+
+exact_byte_recompute:
+  route:
+    utf8_bytes: 6488
+    sha256: 50a800e0b60f17f54d81ec181e4c16dce0bc1de1fa94ca443f64b7226764e7fc
+    recomputed_git_blob_sha1: 07524b97e78889e6cb174f13c7bb0ffe0e345244
+    github_readback_git_blob_sha1: 07524b97e78889e6cb174f13c7bb0ffe0e345244
+    exact_match: true
+  producer_return:
+    utf8_bytes: 5668
+    sha256: d3c07a3305b3648bd09af2dc7a308a384f57b2e7a94bf04a8336651c22981228
+    recomputed_git_blob_sha1: c5ad616bac3ba8700c6ec5645828453e85c30436
+    github_readback_git_blob_sha1: c5ad616bac3ba8700c6ec5645828453e85c30436
+    exact_match: true
+  target_card:
+    utf8_bytes: 7905
+    sha256: 897674b53dbc90eafa14af2476ff39e3a39402f6a7b9e868a67c88e1a2e66399
+    recomputed_git_blob_sha1: 2ece7a606a2ff7d3149acf7ae02cfd68aeaf25dd
+    github_readback_git_blob_sha1: 2ece7a606a2ff7d3149acf7ae02cfd68aeaf25dd
+    exact_match: true
+  candidate:
+    utf8_bytes: 6400
+    sha256: 9e5ec6c503a87c3b48983ad4801236f4718c76a529c7383712c8da06bf6b0739
+    recomputed_git_blob_sha1: 880af6a227cec6399c1b19ad99f27d3f86b70b64
+    github_readback_git_blob_sha1: 880af6a227cec6399c1b19ad99f27d3f86b70b64
+    exact_match: true
+
+schema_and_digest_checks:
+  route_schema: hfo.gen133.s03.verification_route.v1
+  producer_return_schema: hfo.gen133.gtm.producer_return.v1
+  target_card_schema: hfo.gen133.gtm.target_card.v1
+  candidate_schema: hfo.gen133.gtm.proof_kit.v1
+  target_card_evidence_digest_sha256: da0736faf0a68b75bf6d2c5001ef2c03de94cba99d283a36eb577d8cdbb7753f
+  target_card_evidence_digest_propagates_consistently: true
+  target_card_evidence_digest_independently_recomputed: false
+  target_card_evidence_digest_blocker: NO_DURABLE_CANONICAL_PREIMAGE_OR_CANONICALIZER_FOR_EVIDENCE_DIGEST
+  route_idempotency_digest_present: false
+  route_nonce_present: true
+  producer_claim_idempotency_digest_present: false
+  acceptance_digest_present: false
+
+freshness_and_binding:
+  route_valid_time_utc: 2026-08-08T00:10:47Z
+  producer_valid_time_utc: 2026-08-07T23:24:00Z
+  producer_expiry_utc: 2026-08-14T22:28:00Z
+  unexpired_at_valid_time: true
+  producer_task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+  producer_task_enabled_observed: true
+  target_card_task_id: 6a526109ba348191b5f23ad3172ad568
+  target_card_task_enabled_observed: true
+  work_item_bound: false
+  immutable_claim_bound: false
+  claim_lease_bound: false
+  acceptance_digest_bound: false
+  claim_idempotency_bound: false
+
+structural_checks:
+  authority:
+    status: REVISE
+    reason: PRODUCER_RETURN_HAS_EXTERNAL_SEND_AUTHORITY_NONE_AND_NO_SEND_BOUNDARY_BUT_LACKS_EXPLICIT_PRODUCER_LEVEL_EFFECT_CEILING_FIELD
+  actor_carrier_separation:
+    status: REVISE
+    reason: CARRIER_TASK_IDS_ARE_PROVIDER_READBACK_FACTS_BUT_GITHUB_ACTOR_PRINCIPAL_OR_DELEGATION_IS_NOT_BOUND_TO_THE_PRODUCER_RETURN
+  idempotency:
+    status: REVISE
+    reason: ROUTE_NONCE_EXISTS_BUT_NO_CANONICAL_DIGEST;PRODUCER_RETURN_HAS_NO_WORKITEM_CLAIM_OR_IDEMPOTENCY_DIGEST
+  lease_expiry:
+    status: REVISE
+    reason: PRODUCER_AND_ROUTE_EXPIRY_EXIST_BUT_NO_CLAIM_LEASE_EXISTS_BECAUSE_NO_CLAIM_IS_BOUND
+  privacy:
+    status: PASS_WITHIN_STRUCTURAL_CEILING
+    reason: PUBLIC_SOURCES_ONLY;NO_PRIVATE_DATA_OBSERVED;NO_SEND_NO_APPLICATION_BOUNDARY_EXPLICIT
+  rollback:
+    status: PASS_WITHIN_STRUCTURAL_CEILING
+    reason: APPEND_ONLY_SUPERSESSION_AND_OPERATOR_APPROVED_DELETE_ONLY_CANDIDATE_PATH_ARE_EXPLICIT;NO_EXTERNAL_EFFECT_REQUIRES_ROLLBACK
+  verifier:
+    status: PASS_ROUTE_ONLY
+    reason: S04_IS_EXPLICITLY_NAMED_BUT_THIS_RESULT_IS_SAME_PROVIDER_NONBINDING_WEIGHT_ZERO
+  consumer:
+    status: REVISE_FOR_CLOSURE
+    reason: OPERATOR_IS_NAMED_CONSUMER_BUT_NO_EXPLICIT_CONSUMER_ACK_AND_NO_DISTINCT_DIGEST_BOUND_STOOD_OR_FELL_EXIST
+  candidate_claim_ceiling:
+    status: PASS_WITHIN_STRUCTURAL_CEILING
+    reason: LIVE_ROLE_CONTRADICTION_IS_EXPOSED;CURRENT_APPLICATION_STATUS_IS_UNRESOLVED;NO_UNSUPPORTED_SAVINGS_INCIDENT_COMPATIBILITY_OR_DEPLOYMENT_CLAIM_OBSERVED
+
+strongest_fake_green_mutant:
+  mutant_id: X14_MUTANT_170_981237d04cae
+  mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+  mutant_git_blob_sha1: 2b8592e35594629be344c7343841ad1da34436e0
+  source_git_blob_sha1: a8474073f810b57791d33317d4de426de2772c7b
+  source_prior_current_version: 170
+  source_expected_current_version: 171
+  mutated_prior_current_version: 171
+  canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_utf8_bytes: 193
+  canonical_overlay_sha256_recomputed: 981237d04caee6a617cd3416540e37e9ed23d5d1578e9a7e717e6aa8914cfd7c
+  canonical_overlay_sha256_declared: 981237d04caee6a617cd3416540e37e9ed23d5d1578e9a7e717e6aa8914cfd7c
+  digest_match: true
+  verdict: REVISE
+  rejection_reason: MUTATING_PRIOR_170_TO_171_COLLAPSES_THE_REQUIRED_170_TO_171_TRANSITION_INTO_A_ZERO_STEP_DUPLICATE;EVENTUAL_CURRENT_171_CANNOT_AUTHENTICATE_THAT_MUTATED_TRANSITION
+
+missing_required_evidence:
+  - WORKITEM_ID_AND_IMMUTABLE_CLAIM
+  - CLAIM_LEASE
+  - ACCEPTANCE_DIGEST_AND_CANONICAL_PREIMAGE
+  - CLAIM_IDEMPOTENCY_DIGEST_AND_CANONICAL_PREIMAGE
+  - EXPLICIT_PRODUCER_LEVEL_EFFECT_CEILING
+  - GITHUB_ACTOR_PRINCIPAL_OR_EXPLICIT_DELEGATION_BINDING
+  - TARGET_CARD_EVIDENCE_DIGEST_CANONICAL_PREIMAGE_AND_CANONICALIZER
+  - DISTINCT_DIGEST_BOUND_STOOD_OR_FELL
+  - EXPLICIT_NAMED_CONSUMER_ACK
+
+decision:
+  result: REVISE
+  reason: NEWFRONT_RETURN_IS_EXACTLY_BOUND_TO_CARD_AND_CANDIDATE_AND_PRESERVES_PRIVACY_ROLLBACK_EXPIRY_AND_NO_SEND_BUT_LACKS_WORKITEM_CLAIM_ACCEPTANCE_IDEMPOTENCY_EXPLICIT_EFFECT_CEILING_AND_ACTOR_BINDING
+  candidate_edited: false
+  task_mutation_performed: false
+  self_grading_performed: false
+  external_send_performed: false
+  deployment_performed: false
+  merge_performed: false
+  publication_performed: false
+  account_or_security_change_performed: false
+  permanent_deletion_performed: false
+  independent_quorum_claimed: false
+
+same_provider_notice: SAME_PROVIDER_NONBINDING
+binding_weight_notice: 0
