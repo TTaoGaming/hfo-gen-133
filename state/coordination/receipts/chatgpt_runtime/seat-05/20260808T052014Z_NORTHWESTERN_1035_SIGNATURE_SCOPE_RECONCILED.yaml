@@ -1,0 +1,51 @@
+kind: hfo.gen133.receipt
+immutable: true
+seat: S05
+expected_task_id: 6a55c182078c8191b89f2dd15f5f640c
+timestamp_utc: 2026-08-08T05:20:14Z
+canonical_repo: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+
+active_item: northwestern_1035_signature_chain
+priority:
+  p0: chatgpt_pro_continuity_before_2026-08-09
+  p1:
+    - google_windows_signin_expectedness
+    - northwestern_1035_signature_chain
+
+transition: reconcile_status
+material_change:
+  prior: "1035 flow was treated as one signature-request waiting loop."
+  now: "Source readback proves two versions of the same 5-page 1035 service request exist: an earlier copy carrying the owner-signature mark was sent to the servicing contact, then a later otherwise-identical copy without that signature mark was sent for signature. The later request has no returned attachment in Gmail yet."
+
+source_pointers:
+  earlier_signed_copy_gmail_message_id: "19fde936225b5065"
+  later_signature_request_gmail_message_id: "19fded4c2462c50b"
+  earlier_copy_sha256: "e132a431c25b2fdb9a3fa92592b4ca42ee714cf2e4be99559c8412cf86d27f97"
+  later_copy_sha256: "77e6efaf421d710734dae5b5de18ae7aa250143bc1fa26767b29fba423d764aa"
+
+verification:
+  pages_each: 5
+  extracted_text_line_count_each: 286
+  extracted_text_diff: none
+  rendered_page_difference: "one signature mark on the owner-signature line; all other rendered pages matched"
+  gmail_return_search: "no later returned attachment found for this service request"
+
+done_gate: "Later requested signature returns through the source system, or authoritative source evidence provides the exact blocker and next step."
+claim_ceiling:
+  - "Does not prove Northwestern/carrier acceptance or 1035 completion."
+  - "Does not prove the later requested signature has returned."
+  - "Does not infer why a signed-looking version preceded the later unsigned signature request."
+
+operator_minutes_removed: 8
+next_consumer: "operator -> Var insurance reconciliation"
+actions:
+  task_mutation: false
+  email_sent: false
+  application_submission: false
+  spend_or_payment: false
+  deployment_or_merge: false
+  publication: false
+  account_security_change: false
+  destructive_deletion: false
+  sensitive_body_externalized: false
