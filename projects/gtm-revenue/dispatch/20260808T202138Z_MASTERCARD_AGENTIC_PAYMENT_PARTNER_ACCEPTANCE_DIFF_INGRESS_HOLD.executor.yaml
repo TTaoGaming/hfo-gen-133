@@ -1,0 +1,236 @@
+schema_id: hfo.gen133.s06.executor_packet.v1
+result: HOLD
+seat: S06_CODE_WORK_PACKET_COMPILER_CODEX_BRIDGE
+wip: 1
+valid_time_utc: 2026-08-08T20:21:38Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+
+self_probe:
+  expected_task_id: 6a57972b9df081918680ce67c4ecb197
+  observed_task_id: 6a57972b9df081918680ce67c4ecb197
+  task_id_match: true
+  github_read_available: true
+  github_write_available: true
+  slack_write_available: true
+  direct_codex_ingress_available: false
+  direct_claude_ingress_available: false
+  direct_host_shell_ingress_available: false
+  github_workflow_dispatch_ingress_available: false
+  execution_performed_by_s06: false
+  task_mutation_performed: false
+
+selection:
+  work_item_id: S07_MASTERCARD_AGENTIC_PAYMENT_PARTNER_ACCEPTANCE_DIFF_V1
+  changed_claim_commit: 5453d7859b380ad49553517d2c55cb56055c3fa9
+  claim_path: projects/gtm-revenue/claims/20260808T200400Z_MASTERCARD_AGENTIC_PAYMENT_PARTNER_ACCEPTANCE_DIFF_ADMISSION.claim.yaml
+  claim_git_blob_sha1: 4d5ff925df4fcf8540c34b4bfd5a6e99f80a498c
+  claim_status: CLAIMED_INTERNAL_ONLY_NO_EXTERNAL_EFFECT
+  claim_expiry_utc: 2026-08-09T00:04:00Z
+  source_expiry_utc: 2026-08-14T14:08:00Z
+  selected_because: CHANGED_UNEXPIRED_CLAIM_REQUIRING_REPOSITORY_INSPECTION_PUBLIC_SOURCE_FALSIFIER_CHECK_ARTIFACT_BUILD_AND_STATIC_ACCEPTANCE_EVIDENCE
+  duplicate_search_result: EXACT_WORK_ITEM_SEARCH_FOUND_ONLY_TARGET_CARD_AND_CLAIM;NO_MASTERCARD_KIT_OR_PRODUCER_RETURN_OBSERVED_AT_COMPILE_TIME
+
+repository:
+  full_name: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+  base_sha: e988fc9a6662affcf08a2168b45a13e4cb51db75
+  base_semantics: LAST_OBSERVED_BRANCH_HEAD_BEFORE_PACKET_WRITE;EXECUTOR_MUST_REQUIRE_ANCESTRY_AND_REJECT_MATERIAL_DRIFT_ON_BOUND_OR_WRITE_PATHS
+  claim_sha: 5453d7859b380ad49553517d2c55cb56055c3fa9
+  source_commit: f0cfb7a3ea45661d82a0d2113e17870a45194a84
+  source_path: projects/gtm-revenue/research/20260808T192834Z_ENTERPRISE_BUYER_MASTERCARD_TARGET_CARD.md
+  source_git_blob_sha1: 231539edac31c90c944f11915360a7290c2e70d8
+  source_binding_digest_sha256: eb06fe2169b2dc31a6097deeb0df48405fcc9a42a848c521d9aef7e2c8c271c0
+  source_evidence_digest_sha256: 27eda5467f01017e5894bd94101655b03dcccf30850874478cb38259b13311f8
+  acceptance_sha256: 25970a9b342c37c6eeb12908dade76f5a88f54cc496e2f526b566d5d5e97b6f4
+  idempotency_sha256: 340490f5d956380582d923b3797b2a9c4aaebd974bf68e9a2731a9c5a6177257
+
+execution_identity:
+  producer_seat: S07_GTM_PROOF_KIT_BUILDER
+  producer_task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+  executor_role: SUBSTRATE_ONLY_NOT_PRODUCER_IDENTITY
+  verifier_seat: S04_HRIST_STRUCTURAL_PREFLIGHT
+  verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  verifier_class: SAME_PROVIDER_NONBINDING
+  verifier_binding_weight: 0
+  consumer_seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  consumer_task_id: 6a539fc5130c81918c13624739fb2a60
+
+allowed_paths:
+  read:
+    - projects/gtm-revenue/claims/20260808T200400Z_MASTERCARD_AGENTIC_PAYMENT_PARTNER_ACCEPTANCE_DIFF_ADMISSION.claim.yaml
+    - projects/gtm-revenue/research/20260808T192834Z_ENTERPRISE_BUYER_MASTERCARD_TARGET_CARD.md
+    - projects/gtm-revenue/kits/mastercard/**
+    - projects/gtm-revenue/returns/**
+  write_if_and_only_if_falsifier_not_met:
+    - projects/gtm-revenue/kits/mastercard/20260808T202138Z_AGENTIC_PAYMENT_PARTNER_CHANGE_ACCEPTANCE_DIFF.md
+    - projects/gtm-revenue/returns/20260808T202138Z_S07_MASTERCARD_AGENTIC_PAYMENT_PARTNER_ACCEPTANCE_DIFF_RETURN.md
+  scratch_only_outside_repo:
+    - /tmp/hfo-mastercard-s06/**
+
+forbidden_paths:
+  - .github/**
+  - state/**
+  - projects/gtm-revenue/claims/**
+  - projects/gtm-revenue/research/**
+  - projects/gtm-revenue/packets/**
+  - any_repo_path_not_explicitly_listed_under_allowed_paths.write_if_and_only_if_falsifier_not_met
+
+goal: >-
+  Perform falsifier-first repository and current-primary-source inspection and, only if the wedge survives,
+  produce exactly one concise public-safe two-minute Agentic Payment Partner Change Acceptance Diff for one
+  synthetic Agent Pay or Agent Pay for Machines partner revision. Make the before/after revision reviewable
+  across Agent x Intent x Permission x Rail x Evidence, including agent credential and principal,
+  authenticated/verifiable intent, allowed transaction classes, spend or velocity ceiling, payment rail,
+  approval or step-up condition, trace/evidence pointer, replay/revocation check, dispute/rollback trigger,
+  and one explicit GO/HOLD verdict. Preserve Mastercard counterevidence and stop before any deeper harness.
+
+current_red_evidence:
+  - NO_DIRECT_CODEX_CLAUDE_HOST_OR_WORKFLOW_DISPATCH_INGRESS_EXPOSED_TO_S06_THIS_WAKE;PACKET_IS_NOT_EXECUTION
+  - EXACT_MASTERCARD_WORK_ITEM_SEARCH_FOUND_TARGET_CARD_AND_CLAIM_BUT_NO_KIT_OR_PRODUCER_RETURN_AT_COMPILE_TIME
+  - STRONGEST_FALSIFIER_UNRESOLVED:MASTERCARD_MAY_ALREADY_HAVE_EQUIVALENT_LOW_OVERHEAD_VERSIONED_PARTNER_ACCEPTANCE_MECHANISM
+  - MASTERCARD_ALREADY_EXPOSES_REGISTERED_TRACEABLE_AGENTS_NETWORK_TOKEN_GOVERNANCE_VERIFIABLE_INTENT_EXPLICIT_CONSENT_AUTHORIZATION_CONTROLS_MULTI_RAIL_SETTLEMENT_LIVE_AGENTIC_PAYMENTS_AND_SPECIALIST_ECOSYSTEM_PARTNERS
+  - NO_RUNTIME_MODEL_BRANCH_SHA_CHANGED_PATH_COMMAND_EXIT_CODE_OUTPUT_BLOCKER_ROLLBACK_LEDGER_EXISTS_FOR_THIS_WORK_ITEM
+  - NO_INDEPENDENT_STOOD_OR_FELL_OR_CONSUMERACK_EXISTS_FOR_THIS_WORK_ITEM
+
+required_commands:
+  - id: C01
+    command: "set -euo pipefail; mkdir -p /tmp/hfo-mastercard-s06; git rev-parse --show-toplevel; git branch --show-current; git rev-parse HEAD; git status --short"
+    purpose: Prove repository, branch, current head, and cleanliness before candidate bytes.
+  - id: C02
+    command: "test \"$(git branch --show-current)\" = 'agent/gen133-bootstrap-20260730'; git cat-file -e e988fc9a6662affcf08a2168b45a13e4cb51db75^{commit}; git merge-base --is-ancestor e988fc9a6662affcf08a2168b45a13e4cb51db75 HEAD; git diff --name-only e988fc9a6662affcf08a2168b45a13e4cb51db75..HEAD > /tmp/hfo-mastercard-s06/post_base_paths.txt; cat /tmp/hfo-mastercard-s06/post_base_paths.txt"
+    purpose: Allow the packet commit and unrelated append-only progress while failing closed if the frozen base is not an ancestor; later scope checks reject material drift.
+  - id: C03
+    command: "git cat-file -e 5453d7859b380ad49553517d2c55cb56055c3fa9^{commit}; git show 5453d7859b380ad49553517d2c55cb56055c3fa9:projects/gtm-revenue/claims/20260808T200400Z_MASTERCARD_AGENTIC_PAYMENT_PARTNER_ACCEPTANCE_DIFF_ADMISSION.claim.yaml > /tmp/hfo-mastercard-s06/claim.yaml; test \"$(git hash-object /tmp/hfo-mastercard-s06/claim.yaml)\" = '4d5ff925df4fcf8540c34b4bfd5a6e99f80a498c'"
+    purpose: Bind immutable claim bytes.
+  - id: C04
+    command: "git cat-file -e f0cfb7a3ea45661d82a0d2113e17870a45194a84^{commit}; git show f0cfb7a3ea45661d82a0d2113e17870a45194a84:projects/gtm-revenue/research/20260808T192834Z_ENTERPRISE_BUYER_MASTERCARD_TARGET_CARD.md > /tmp/hfo-mastercard-s06/source.md; test \"$(git hash-object /tmp/hfo-mastercard-s06/source.md)\" = '231539edac31c90c944f11915360a7290c2e70d8'"
+    purpose: Bind exact target-card bytes.
+  - id: C05
+    command: "python - <<'PY'\nfrom pathlib import Path\nimport hashlib,re\np=Path('/tmp/hfo-mastercard-s06/claim.yaml').read_text()\nm=re.search(r'acceptance_test:\\n(?:.*\\n)*?  canonical_text: \\|-\\n(.*?)(?=\\nidempotency:)',p,re.S)\nassert m, 'acceptance canonical_text missing'\nlines=[]\nfor line in m.group(1).splitlines():\n    assert line.startswith('    ') or line==''\n    lines.append(line[4:] if line.startswith('    ') else '')\ns='\\n'.join(lines).rstrip('\\n')\nh=hashlib.sha256(s.encode()).hexdigest()\nprint({'bytes':len(s.encode()),'sha256':h})\nassert len(s.encode())==4530\nassert h=='25970a9b342c37c6eeb12908dade76f5a88f54cc496e2f526b566d5d5e97b6f4'\nPY"
+    purpose: Recompute frozen acceptance contract before implementation.
+  - id: C06
+    command: "python - <<'PY'\nfrom pathlib import Path\nimport hashlib,re\ns=Path('/tmp/hfo-mastercard-s06/source.md').read_text().replace('\\r\\n','\\n')\nm=re.search(r'BEGIN_EVIDENCE_PREIMAGE_V1\\n(.*?)END_EVIDENCE_PREIMAGE_V1',s,re.S)\nassert m, 'evidence preimage missing'\npre=m.group(1)\nassert pre.endswith('\\n')\nh=hashlib.sha256(pre.encode('utf-8')).hexdigest()\nprint({'bytes':len(pre.encode()),'sha256':h})\nassert len(pre.encode())==1647\nassert h=='27eda5467f01017e5894bd94101655b03dcccf30850874478cb38259b13311f8'\nPY"
+    purpose: Recompute target-card evidence digest from durable canonical preimage.
+  - id: C07
+    command: "rg -n -i 'Mastercard|Agent Pay|Agent Pay for Machines|Verifiable Intent|Agentic Payment Partner Change Acceptance Diff' projects/gtm-revenue --glob '!dispatch/**' > /tmp/hfo-mastercard-s06/repo_hits.txt || true; cat /tmp/hfo-mastercard-s06/repo_hits.txt"
+    purpose: Falsifier-first repo deduplication; equivalent prior kit or return means HOLD/reuse, not duplicate creation.
+  - id: C08
+    command: "python - <<'PY'\nfrom pathlib import Path\nurls=['https://www.mastercard.com/us/en/news-and-trends/press/2026/june/mastercard-launches-agent-pay-for-machines.html','https://www.mastercard.com/us/en/news-and-trends/stories/2026/mastercard-agentic-commerce-vision.html','https://www.mastercard.com/news/europe/en/newsroom/press-releases/en/2026/worldline-ing-and-mastercard-complete-a-live-end-to-end-european-agentic-payment-in-production/','https://www.mastercard.com/us/en/business/artificial-intelligence/mastercard-agent-pay.html']\nPath('/tmp/hfo-mastercard-s06/urls.txt').write_text('\\n'.join(urls)+'\\n')\nPY\nwhile read -r u; do echo \"===== $u\"; curl -LfsS --max-time 20 \"$u\" | rg -i -m 80 'agent|intent|permission|spend|velocity|rail|token|trace|audit|replay|revok|dispute|rollback|approval|promotion|certif|partner' || true; done < /tmp/hfo-mastercard-s06/urls.txt"
+    purpose: Read-only primary-source falsifier probe; equivalent low-overhead revision-bound acceptance mechanism means HOLD.
+  - id: C09
+    command: "test ! -e projects/gtm-revenue/kits/mastercard/20260808T202138Z_AGENTIC_PAYMENT_PARTNER_CHANGE_ACCEPTANCE_DIFF.md; test ! -e projects/gtm-revenue/returns/20260808T202138Z_S07_MASTERCARD_AGENTIC_PAYMENT_PARTNER_ACCEPTANCE_DIFF_RETURN.md; ! rg -n 'S07_MASTERCARD_AGENTIC_PAYMENT_PARTNER_ACCEPTANCE_DIFF_V1' projects/gtm-revenue/kits/mastercard projects/gtm-revenue/returns 2>/dev/null"
+    purpose: Create-only and WorkItem-level idempotency guard.
+  - id: C10
+    command: "python - <<'PY'\n# Conditional implementation boundary only.\n# Write candidate and producer return only after C01-C09 pass and strongest falsifier is NOT met.\n# Use only public-safe synthetic agents, merchants, transactions, cards/accounts/stablecoins, policies, and mock integration data.\nPY"
+    purpose: Make conditionality explicit; packet compilation is not implementation.
+  - id: C11
+    command: "python - <<'PY'\nfrom pathlib import Path\nimport hashlib\np=Path('projects/gtm-revenue/kits/mastercard/20260808T202138Z_AGENTIC_PAYMENT_PARTNER_CHANGE_ACCEPTANCE_DIFF.md')\ns=p.read_text()\nrequired=['WHY_THIS_MAY_MATTER','HOW_TO_USE_IN_2_MINUTES','Agent','Intent','Permission','Rail','Evidence','credential','principal','Verifiable Intent','transaction class','spend','velocity','payment rail','approval','step-up','trace','replay','revocation','dispute','rollback','GO','HOLD','assumptions','strongest falsifier','https://www.mastercard.com/us/en/news-and-trends/press/2026/june/mastercard-launches-agent-pay-for-machines.html','https://www.mastercard.com/us/en/news-and-trends/stories/2026/mastercard-agentic-commerce-vision.html','https://www.mastercard.com/news/europe/en/newsroom/press-releases/en/2026/worldline-ing-and-mastercard-complete-a-live-end-to-end-european-agentic-payment-in-production/','https://www.mastercard.com/us/en/business/artificial-intelligence/mastercard-agent-pay.html']\nmissing=[x for x in required if x.lower() not in s.lower()]\nassert not missing, missing\nprint({'bytes':len(s.encode()),'sha256':hashlib.sha256(s.encode()).hexdigest()})\nPY"
+    purpose: Static acceptance for the required review surface and four source links.
+  - id: C12
+    command: "python - <<'PY'\nfrom pathlib import Path\ns=Path('projects/gtm-revenue/kits/mastercard/20260808T202138Z_AGENTIC_PAYMENT_PARTNER_CHANGE_ACCEPTANCE_DIFF.md').read_text().lower()\nbanned=['mastercard lacks','mastercard is missing','confirmed bottleneck','slow certification','missing control','staffing gap','incident at mastercard','willing to engage','procurement authority','guaranteed savings']\nfor x in banned: assert x not in s, x\nfor x in ['hypothesis','synthetic','relationship_only','no-send']:\n    assert x in s, x\nPY"
+    purpose: Enforce hypothesis ceiling and no-send/public-safe framing.
+  - id: C13
+    command: "git diff --check -- projects/gtm-revenue/kits/mastercard/20260808T202138Z_AGENTIC_PAYMENT_PARTNER_CHANGE_ACCEPTANCE_DIFF.md projects/gtm-revenue/returns/20260808T202138Z_S07_MASTERCARD_AGENTIC_PAYMENT_PARTNER_ACCEPTANCE_DIFF_RETURN.md"
+    purpose: Reject whitespace or patch corruption.
+  - id: C14
+    command: "git status --short; git diff --name-only; git ls-files --others --exclude-standard"
+    purpose: Executor must prove changed paths are limited to the two explicitly allowed write paths; any other executor-caused path is HOLD.
+  - id: C15
+    command: "python - <<'PY'\nfrom pathlib import Path\np=Path('projects/gtm-revenue/returns/20260808T202138Z_S07_MASTERCARD_AGENTIC_PAYMENT_PARTNER_ACCEPTANCE_DIFF_RETURN.md')\ns=p.read_text().lower()\nrequired=['runtime','model','branch','sha','changed paths','commands','exit codes','outputs','blockers','rollback','honest flaw','s07_mastercard_agentic_payment_partner_acceptance_diff_v1','5453d7859b380ad49553517d2c55cb56055c3fa9','25970a9b342c37c6eeb12908dade76f5a88f54cc496e2f526b566d5d5e97b6f4','6a52861fbdb08191b9ef33a0b9c3c15c','6a539fc5130c81918c13624739fb2a60','relationship_only','no-send']\nmissing=[x for x in required if x not in s]\nassert not missing, missing\nPY"
+    purpose: Enforce the direct-producer-return evidence contract required before S06 may consume a return.
+
+acceptance_tests:
+  - claim and source bytes reproduce exact Git blob SHA-1 bindings
+  - acceptance canonical text reproduces 4530 UTF-8 bytes and SHA-256 25970a9b342c37c6eeb12908dade76f5a88f54cc496e2f526b566d5d5e97b6f4
+  - source evidence preimage reproduces 1647 UTF-8 bytes and SHA-256 27eda5467f01017e5894bd94101655b03dcccf30850874478cb38259b13311f8
+  - falsifier-first repo and current-primary-source inspection does not reveal an equivalent low-overhead revision-bound acceptance mechanism
+  - exactly one candidate diff exists at the allowed kit path and exactly one immutable producer return exists at the allowed return path
+  - candidate covers Agent x Intent x Permission x Rail x Evidence plus before/after revision and explicit GO/HOLD
+  - candidate preserves Mastercard maturity counterevidence, hypothesis framing, four public evidence links, assumptions, strongest falsifier, RELATIONSHIP_ONLY, and no-send status
+  - changed paths caused by executor are limited to the two allowed write paths
+  - producer return names runtime/model, branch/SHA, changed paths, exact commands, exit codes, outputs, blockers, rollback, and honest flaw
+
+effect_ceiling:
+  level: T0_RESEARCH_PREP_ONLY
+  allowed: READ_ONLY_REPO_AND_PUBLIC_SOURCE_INSPECTION_PLUS_TWO_INTERNAL_UNMERGED_CANDIDATE_FILES
+  forbidden: OUTREACH_APPLICATION_EMAIL_DM_ACCOUNT_CREATION_TERMS_ACCEPTANCE_SPEND_PAID_CALL_LIVE_MASTERCARD_SYSTEM_USE_CREDENTIALS_PAYMENT_ACTION_DEPLOY_MERGE_EXTERNAL_PUBLICATION_PRIVATE_DATA_AUTONOMOUS_NEGOTIATION_SECURITY_TESTING
+
+time_budget_ceiling:
+  wall_clock_minutes: 25
+  spend_usd: 0
+  network: READ_ONLY_PUBLIC_HTTPS_ONLY
+  stop_conditions:
+    - strongest falsifier met
+    - claim expired
+    - frozen claim/source/digest binding fails
+    - base SHA is not an ancestor of executor HEAD
+    - material post-base drift touches this WorkItem source, claim, kit, or return paths
+    - duplicate equivalent kit or producer return exists
+    - any forbidden path or external effect would be required
+
+rollback:
+  mode: APPEND_ONLY_SUPERSESSION_PLUS_DELETE_UNMERGED_EXECUTOR_CANDIDATE_IF_NEEDED
+  allowed_delete_paths:
+    - projects/gtm-revenue/kits/mastercard/20260808T202138Z_AGENTIC_PAYMENT_PARTNER_CHANGE_ACCEPTANCE_DIFF.md
+    - projects/gtm-revenue/returns/20260808T202138Z_S07_MASTERCARD_AGENTIC_PAYMENT_PARTNER_ACCEPTANCE_DIFF_RETURN.md
+  history_rewrite_authorized: false
+  merge_revert_authorized: false
+  destructive_git_authorized: false
+
+verifier:
+  seat: S04_HRIST_STRUCTURAL_PREFLIGHT
+  task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  class: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  required_after_producer_return: true
+  cannot_supply: INDEPENDENT_STOOD_FELL_OR_CONSUMERACK
+
+consumer:
+  seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  task_id: 6a539fc5130c81918c13624739fb2a60
+  ultimate_external_effect: OPERATOR_REVIEW_ONLY
+  consumerack_must_not_be_inferred: true
+
+expiry:
+  claim_expiry_utc: 2026-08-09T00:04:00Z
+  source_expiry_utc: 2026-08-14T14:08:00Z
+  after_claim_expiry: HOLD_REQUIRES_CHANGED_SOURCE_SUCCESSOR_NO_RENEWAL
+
+strongest_falsifier: >-
+  Kill this wedge if Mastercard already provides partner teams a low-overhead, versioned acceptance mechanism
+  that binds the exact Agent Pay or Agent Pay for Machines revision to agent identity, Verifiable Intent,
+  permission/spend policy, rail behavior, held-out negative tests, audit evidence, dispute/rollback conditions,
+  and production promotion; also kill it if partner certification is not a material engineering/reviewer cost
+  surface or is intentionally handled entirely by existing Mastercard and ecosystem tooling.
+
+route:
+  status: INGRESS_HOLD
+  direct_executor_route_used: false
+  slack_pointer_is_execution: false
+  github_packet_is_execution: false
+  route_only_when_direct_ingress_available: CODEX_OR_CLAUDE_OR_HOST
+
+producer_return_contract:
+  consume_only_if_direct_return_names:
+    - runtime
+    - model
+    - branch
+    - sha
+    - changed_paths
+    - exact_commands
+    - exit_codes
+    - outputs
+    - blockers
+    - rollback
+    - honest_flaw
+  missing_any_field_result: HOLD
+
+honest_flaw: >-
+  This packet proves only that S06 observed one changed, unexpired, source-bound Mastercard claim and compiled
+  a falsifier-first executor contract. It does not prove the wedge is differentiated, that Mastercard has a
+  slow or expensive partner-certification process, that any buyer/budget exists, or that an executor ran.
+  Mastercard already exposes mature identity, intent, authorization, tokenization, traceability, multi-rail
+  settlement, live production agentic payments, and specialist partner controls; those facts may falsify the
+  proposed artifact. No direct Codex, Claude, host-shell, or workflow-dispatch ingress was exposed this wake,
+  so no execution or producer return exists from S06.
