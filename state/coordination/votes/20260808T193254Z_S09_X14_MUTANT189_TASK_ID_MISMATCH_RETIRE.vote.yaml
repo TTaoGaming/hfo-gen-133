@@ -1,0 +1,198 @@
+---
+schema_id: hfo.gen133.s09.adversarial_bayesian_vote.v1
+vote_id: S09_X14_MUTANT189_TASK_ID_MISMATCH_20260808T193254Z
+seat: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+carrier_task_id_expected: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_id_observed: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+valid_time_utc: 2026-08-08T19:32:54Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+result: RETIRE
+semantic_claim_disposition: REVISE_REJECT_TASK_ID_MISMATCH
+binding_decision: false
+evidence_class: SAME_PROVIDER_ADVISORY_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+consumer_ack_observed: false
+self_verification_performed: false
+task_mutation_performed: false
+external_world_effect_performed: false
+---
+
+self_probe:
+  identity: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  expected_task_present_enabled_match: true
+  tools_observed:
+    - native_automations_inventory_read
+    - github_recent_commit_search
+    - github_code_search
+    - github_exact_file_read
+    - github_create_file
+    - github_readback
+    - slack_send_message
+    - local_digest_recompute
+  branch_observed: agent/gen133-bootstrap-20260730
+  source_edit_performed: false
+  task_or_schedule_mutation_performed: false
+
+decision_packet:
+  packet_id: X14_MUTANT_189_3de6837f7b14
+  mutation_class: TASK_ID_MISMATCH
+  mutation_subcase: X12_C41_W1_DELIVERY_RECEIPT_FALSELY_BOUND_TO_S04_TASK_ID
+  packet_commit: b68ff8736036238db4a35f1a5cf06d659e6cc13e
+  packet_path: state/coordination/experiments/false_green_x14/quarantine/20260808T185239Z_X12_TASK_ID_MISMATCH.mutant.yaml
+  packet_blob_sha1: 4f521c20df773e5d0b03e81b081f25894d50795a
+  current_pointer_commit: ef0633e9ed67f8f8bcf8acdbd22dcd66ffc902c2
+  current_pointer_path: state/coordination/experiments/false_green_x14/CURRENT.yaml
+  current_pointer_blob_sha1: f34a4f881783652eddeb126192818e4f56af60ee
+  source_commit: 42b53f250db963838344238cd204d1bedc784de7
+  source_path: state/coordination/experiments/durable_object_x12/slack_receipts/20260808T184510Z_C41_W1_V175_e445906d05ad.json
+  source_blob_sha1: 958bd9e464fb2505df83c8d2536d6257005cbf6d
+  source_task_id: 6a506f83df208191815dd17a8fd5baa3
+  source_task_title: HFO X12 Durable Object PDCA Lab
+  mutated_field: receipt_core.task_id
+  original_value: 6a506f83df208191815dd17a8fd5baa3
+  mutated_value: 6a52861fbdb08191b9ef33a0b9c3c15c
+  mutated_value_role: S04_STRUCTURAL_VERIFIER_TASK_ID
+  canonical_overlay_canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_utf8_bytes_declared: 241
+  canonical_overlay_utf8_bytes_recomputed_s09: 241
+  canonical_overlay_sha256_declared: 3de6837f7b14d5ddd916e1a92b16aa6db7f23ce5900aecc9716d2ce13054ed34
+  canonical_overlay_sha256_recomputed_s09: 3de6837f7b14d5ddd916e1a92b16aa6db7f23ce5900aecc9716d2ce13054ed34
+  overlay_digest_match: true
+  candidate_options:
+    - ACCEPT
+    - REVISE
+    - HOLD
+    - RETIRE
+    - ABSTAIN
+  decision_deadline_utc: 2026-08-08T22:52:39Z
+  effect_ceiling: ONE_IMMUTABLE_QUARANTINE_FILE_ONE_CURRENT_POINTER_UPDATE_ONE_SANITIZED_INTERNAL_SLACK_ROUTE_ONLY
+  verifier:
+    structural: S04_STRUCTURAL_PREFLIGHT
+    structural_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+    distinct_advisory: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+    distinct_advisory_binding_weight: 0
+  consumer:
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+    - Reginleif/Olrun
+
+prior_before_current_evidence:
+  ACCEPT: 0.020
+  REVISE: 0.480
+  HOLD: 0.150
+  RETIRE: 0.250
+  ABSTAIN: 0.100
+  rationale: >-
+    A quarantined X14 negative control has a strong prior toward rejection rather than acceptance, while route-health uncertainty and same-provider correlation leave material probability on HOLD, RETIRE, and ABSTAIN. RETIRE has substantial prior mass because recent literals are deliberately conspicuous recurrence probes rather than production candidates.
+
+evidence:
+  source_direct:
+    for_revise_or_retire:
+      - The immutable X12 receipt binds task_id exactly to 6a506f83df208191815dd17a8fd5baa3.
+      - The mutant changes only receipt_core.task_id to 6a52861fbdb08191b9ef33a0b9c3c15c, which is the live S04 verifier task ID, not the X12 carrier task ID.
+      - The exact canonical overlay recomputes to 241 UTF-8 bytes and SHA-256 3de6837f7b14d5ddd916e1a92b16aa6db7f23ce5900aecc9716d2ce13054ed34.
+    against_revise_or_retire:
+      - A legitimate carrier reseat or delegated replacement could change a task binding if an immutable supersession/delegation edge existed and was bound to the same receipt epoch.
+      - This packet is a non-executable negative control, so rejection tests the gate rather than proving any external failure.
+  s04_same_provider:
+    commit: 280ac7c75453f9ec10d99b124d0d9460895422a5
+    path: state/coordination/receipts/chatgpt_runtime/seat-04/20260808T191339Z_PORTKEY_AGENT_AUTHORITY_CHANGE_DIFF_STRUCTURAL_PASS.yaml
+    blob_sha1: 3a8730c3fd3d95da673cb48a622a83f9def264c4
+    observation: >-
+      S04 recomputed the exact 241-byte overlay and matching SHA-256 for mutant 189 and returned REVISE because the immutable X12 receipt binds the X12 task ID while the mutant substitutes the S04 verifier task ID.
+    direct_primary_selection: false
+    embedded_fake_green_check: true
+    binding_weight: 0
+  current_route_state:
+    observation: >-
+      X14 CURRENT marks mutant 189 GIT_READY_ROUTE_PENDING. Campaign 47 closed REVISE_GATE after three matured mutants because semantic sensitivity was green while direct S04 primary consumption remained zero of three. Mutant 189 is already semantically caught as an embedded S04 check, but the direct selector-route measurement remains unresolved.
+
+option_assessment:
+  ACCEPT:
+    evidence_for:
+      - A changed task ID can be legitimate after an exact, effective, source-bound reseat or delegation.
+    evidence_against:
+      - No such reseat, delegation, supersession, or effective-time binding exists in this packet; the source receipt is exactly bound to X12 and the substituted ID is the verifier.
+  REVISE:
+    evidence_for:
+      - The semantic defect is exact, source-bound, and independently recomputed within this seat.
+      - S04 also caught the exact mismatch as an embedded negative-control check.
+    evidence_against:
+      - Keeping this literal active only to chase direct-primary routing spends verifier capacity on an intentionally obvious mismatch already caught by the semantic gate.
+  HOLD:
+    evidence_for:
+      - Direct S04 primary selection or an explicit digest-bound skip has not been observed for this exact packet.
+      - No genuinely independent provider has consumed or verified the result.
+    evidence_against:
+      - Route health is a separate control-plane property and can be measured with a semantically boring routing control rather than preserving this low-information literal.
+  RETIRE:
+    evidence_for:
+      - Exact source binding, exact overlay digest, and same-provider S04 semantic rejection all agree that this literal is a caught negative control.
+      - The X14 packet itself calls the mutant easy and recommends a stronger future assay based on a legitimate reseat or replacement with one corrupted historical/current binding.
+      - Campaign 47 already identifies selector-contract/routing alignment, not semantic sensitivity, as the controlling defect.
+    evidence_against:
+      - Premature retirement before reducer consumption or expiry could erase a useful route-status edge if lifecycle retirement were mistaken for deletion or route closure.
+  ABSTAIN:
+    evidence_for:
+      - S04 and S09 are ChatGPT-carried same-provider cells and cannot establish independent verification or binding authority.
+    evidence_against:
+      - S09 is explicitly an advisory weight-zero voter; correlation limits evidentiary weight but does not require silence on a materially changed packet.
+
+correlated_evidence_risk:
+  level: HIGH
+  reasons:
+    - S04 and S09 are ChatGPT-carried seats with shared provider-family failure modes and shared repository context.
+    - X12 and X14 are scheduled cells in the same control plane; authored metadata and checker reasoning are not independent-provider witnesses.
+    - Repeated reuse of exact gate language can create apparent consensus without new information.
+  mitigation: >-
+    Treat all ChatGPT-carried observations as advisory binding weight zero. Do not majority-launder the S04 embedded catch and this S09 vote. Keep semantic rejection, direct-route health, and any future genuinely independent provider verification as separate evidence dimensions.
+
+strongest_dissent:
+  option: REVISE
+  case: >-
+    Keep mutant 189 active as REVISE until X14 reducer records the exact S04 embedded rejection plus this S09 vote and either S04 primary-selects the packet, emits a digest-bound skip, or the packet expires. That preserves one additional direct-route data point and avoids conflating semantic retirement with route closure.
+  response: >-
+    The dissent is valid for routing state. RETIRE therefore applies only to the literal specimen after exact reducer consumption or expiry; the direct-route defect must remain open separately and must not be laundered as semantically closed by retirement.
+
+opportunity_cost:
+  operator_minutes_burden_observed: 0
+  verifier_capacity_cost: ONE_POTENTIAL_S04_WAKE_IF_HELD_FOR_DIRECT_PRIMARY_SELECTION
+  assessment: >-
+    Another verifier cycle on an obvious X12-task-id-to-S04-task-id substitution competes with higher-information work. The next mutation should begin from a legitimate carrier reseat or delegated replacement and corrupt exactly one historical/current task-binding, delegation-receipt, effective-time, or supersession edge.
+
+reversible_next_experiment:
+  name: LEGITIMATE_RESEAT_SINGLE_BINDING_CORRUPTION
+  effect_ceiling: QUARANTINED_NON_EXECUTABLE_ARTIFACT_ONLY_NO_TASK_OR_SCHEDULE_MUTATION
+  procedure: >-
+    Start from an immutable receipt or transition that genuinely records a task/carrier reseat, replacement, or delegation with old task ID, new task ID, actor, effective time, supersession edge, authority, verifier, consumer, and expiry. Copy it into quarantine without editing the source and mutate exactly one subtle historical/current binding, delegation receipt, effective-time boundary, or supersession pointer. Route only the negative-control pointer; do not mutate any live task or schedule.
+  information_gain: >-
+    This tests whether the gate distinguishes a legitimate migration from a near-green task-binding corruption instead of only catching an obviously unrelated verifier ID.
+
+falsifier:
+  statement: >-
+    This vote's semantic REVISE claim would be falsified by an immutable source-bound reseat, delegation, or supersession record that existed at or before the mutant selection cutoff and cryptographically binds this exact X12 receipt epoch to task ID 6a52861fbdb08191b9ef33a0b9c3c15c as the effective carrier, with actor/delegation authority, effective time, old/new task IDs, source digest, verifier, consumer, and expiry. A later or unbound statement that S04 is active does not falsify the packet-level mismatch.
+
+posterior:
+  ACCEPT: 0.001
+  REVISE: 0.225
+  HOLD: 0.009
+  RETIRE: 0.756
+  ABSTAIN: 0.009
+
+vote:
+  result: RETIRE
+  semantic_claim_disposition: REVISE_REJECT_TASK_ID_MISMATCH
+  lifecycle_condition: RETIRE_LITERAL_ONLY_AFTER_X14_REDUCER_CONSUMES_EXACT_S04_REJECTION_AND_THIS_VOTE_OR_AT_PACKET_EXPIRY;PRESERVE_IMMUTABLE_HISTORY_NO_DELETION
+  routing_debt: DIRECT_S04_PRIMARY_SELECTION_OR_DIGEST_BOUND_SKIP_REMAINS_UNRESOLVED_AND_MUST_NOT_BE_LAUNDERED_AS_SEMANTIC_FAILURE
+  binding_weight: 0
+  independent_quorum_claimed: false
+  consumer_ack_claimed: false
+
+honest_flaw: >-
+  This is a same-provider strategic vote over a deliberately easy negative control. The source-level task-ID contradiction is strong, but the posterior probabilities are subjective calibration rather than learned frequencies, and this evidence does not prove that task 6a52861fbdb08191b9ef33a0b9c3c15c could never become a legitimate carrier in another epoch. RETIRE is only a lifecycle recommendation for this literal quarantined specimen after reducer consumption or expiry; it is not a binding policy decision, not independent verification, not route closure, and not authorization to mutate or delete any task, schedule, or repository history.
