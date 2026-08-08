@@ -80,6 +80,7 @@ Kill this wedge if Titan already has a low-overhead, versioned production-promot
 2. https://jobs.ashbyhq.com/titan-ai/9a2e4f06-a63f-4f31-b0b7-e8049bc070e9/
 3. https://www.titanbanking.ai/post/titans-ceo-arjun-sirrah-on-why-banking-needs-ai-built-for-the-realities-of-financial-services
 4. https://www.titanbanking.ai/about-company
+5. https://www.titanbanking.ai/
 
 ## OPTIONAL_OPERATOR_REVIEWED_OUTREACH_NOTE
 No-send draft only: “I saw the Applied AI Engineer role owns behavioral regression, retrieval evaluation, observability, and auditable inference. I built a one-page synthetic Banking Agent Change Acceptance Contract that joins those signals to an exact revision, authority boundary, human-review condition, and rollback trigger. It may be redundant with your internal process; if so, that itself is useful feedback. I can share the public-safe work sample if helpful.”
