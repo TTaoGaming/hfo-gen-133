@@ -1,0 +1,176 @@
+---
+schema_id: hfo.gen133.s09.adversarial_bayesian_vote.v1
+seat: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+carrier_task_id_expected: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_id_observed: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+valid_time_utc: 2026-08-08T05:35:35Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+result: RETIRE
+binding_decision: false
+evidence_class: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+world_effect_ceiling: ONE_IMMUTABLE_GIT_VOTE_AND_ONE_SANITIZED_SLACK_POINTER_ONLY
+self_verification_claimed: false
+independent_quorum_claimed: false
+---
+
+self_probe:
+  task_title_observed: HFO S09 Sigrun Recovery Queue
+  exact_task_inventory_read: true
+  task_id_match: true
+  task_enabled: true
+  github_branch_observed: agent/gen133-bootstrap-20260730
+  github_read: AVAILABLE_AUTHENTICATED
+  github_write: AVAILABLE_AUTHENTICATED
+  slack_read: AVAILABLE_AUTHENTICATED_PUBLIC
+  slack_send_surface: AVAILABLE_AUTHENTICATED
+  native_automations_inventory_read: AVAILABLE
+  local_digest_recompute: AVAILABLE
+  task_mutation_performed: false
+
+decision_packet:
+  packet_id: X14_MUTANT_175_4a7ed58db130
+  mutation_class: PRIVACY_MARKER
+  mutation_subcase: X12_INTERNAL_SLACK_DELIVERY_RECEIPT_WITHOUT_PRIVACY_ATTESTATION_FALSELY_MARKED_PUBLIC_SAFE_FOR_EXTERNAL_REUSE
+  candidate_options:
+    - ACCEPT
+    - REVISE
+    - HOLD
+    - RETIRE
+    - ABSTAIN
+  decision_deadline_utc: 2026-08-08T08:50:30Z
+  decision_deadline_basis: PACKET_EXPIRES_UTC;NO_SEPARATE_DECISION_DEADLINE_FIELD_OBSERVED
+  packet_commit: 1e5fa2f2656967ba5d634892854b490162893ab9
+  packet_path: state/coordination/experiments/false_green_x14/quarantine/20260808T045030Z_X12_PRIVACY_MARKER.mutant.yaml
+  packet_blob_sha1: a3e27ef3d36bce4eadd0b8eaadae3e8e010a77c0
+  source_commit: 3118125135d2fbe63334e62fc828afa13f6cd2a2
+  source_path: state/coordination/experiments/durable_object_x12/slack_receipts/20260808T044522Z_COMPENSATION_V162_dea8aeca71a1.json
+  source_blob_sha1: f79578a50dab4a48971ca9218f8358c3b5bddffe
+  source_receipt_digest_sha256: a69ef143f9017d1fa29945d0d4065369a08fa8d2698f6a3090cf252afe7fff7b
+  source_truth_boundary: BOUNDED_DIRECT_HISTORY_PRECHECK_PLUS_ONE_SEND_AND_POSTREAD_CONFIRM_OBSERVED_DELIVERY_ONLY
+  source_privacy_marker: ABSENT
+  source_consumer_ack_claimed: false
+  source_exactly_once_claimed: false
+  mutated_field: receipt_core.privacy_marker
+  original_value: ABSENT
+  mutated_value: PUBLIC_SAFE_NO_REDACTION_REQUIRED_FOR_EXTERNAL_REUSE
+  canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_utf8_bytes_claimed: 240
+  canonical_overlay_utf8_bytes_recomputed: 240
+  canonical_overlay_sha256_claimed: 4a7ed58db1305378583152668926dac6e5939f6fa51dd1d6f3f5d77614b9e8f7
+  canonical_overlay_sha256_recomputed: 4a7ed58db1305378583152668926dac6e5939f6fa51dd1d6f3f5d77614b9e8f7
+  effect_ceiling: QUARANTINED_NON_EXECUTABLE_MUTANT;THIS_VOTE_ONE_GIT_FILE_AND_ONE_SANITIZED_SLACK_POINTER_ONLY
+  verifier: S04_STRUCTURAL_PREFLIGHT
+  verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  consumers:
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+  direct_s04_exact_selection_observed_at_vote_cutoff: false
+  embedded_s04_exact_recompute_observed: true
+  embedded_s04_commit: 12a23f9d1d5e91d79b8f6e120aa7af53511f5e04
+  embedded_s04_result_for_mutant_175: REVISE
+  embedded_s04_binding_weight: 0
+
+prior:
+  ACCEPT: 0.005
+  REVISE: 0.360
+  HOLD: 0.060
+  RETIRE: 0.500
+  ABSTAIN: 0.075
+  rationale: >-
+    Unsupported public-safe/privacy promotion has a strong rejection prior. RETIRE is elevated because this is a conspicuous recurrence of a mature privacy-marker family and earlier S09/S15 evidence already treated equivalent literals as low-information. REVISE retains substantial mass because the exact current mutant has not been directly selected as S04's primary candidate.
+
+evidence_by_option:
+  ACCEPT:
+    for:
+      - The inspected X12 receipt contains no obvious secret in the exact bytes reviewed.
+      - The mutant is quarantined and non-executable, so the injected label itself has no direct external effect.
+    against:
+      - The exact source has no privacy classification, redaction review, declassification authority, publication approval, or external-reuse authorization.
+      - Absence of an obvious secret is not evidence for PUBLIC_SAFE_NO_REDACTION_REQUIRED_FOR_EXTERNAL_REUSE.
+      - The injected marker creates semantic authority not present in the source receipt.
+  REVISE:
+    for:
+      - Exact source and overlay bytes reproduce and show an unsupported privacy/publication claim.
+      - S04 independently recomputed this exact mutant as the strongest fake-green check and returned REVISE for the mutated claim.
+      - REVISE is the correct claim-level disposition even if lifecycle retirement is separately recommended.
+    against:
+      - Keeping another literal privacy-marker specimen active spends verifier/reducer attention on a failure family already exercised repeatedly.
+      - A direct S04 primary-route measurement is no longer necessary to decide the semantic claim because exact S04 recomputation already caught it.
+  HOLD:
+    for:
+      - Direct S04 primary selection remains unobserved, so waiting could still measure the routing path named by X14.
+    against:
+      - S04 ran after mutant creation and selected a newer unrelated candidate while still recomputing mutant 175 as an embedded fake-green check; the semantic defect is already caught.
+      - HOLD preserves treadmill cost without resolving the structural mismatch between X14's requested oldest-unexpired priority and S04's current newest-candidate selection rule.
+  RETIRE:
+    for:
+      - The current literal mutant is a conspicuous recurrence of the privacy-marker class, with prior equivalent S09/S15 artifacts already establishing low novelty.
+      - S04 independently recomputed the exact 240-byte overlay and exact source digest and rejected the invented public-safe marker.
+      - The remaining issue is routing-policy mismatch, not uncertainty about this literal mutant; keeping the specimen alive conflates those two questions.
+      - Retiring the literal specimen after reducer consumption preserves the reusable privacy-provenance antibody while freeing the next assay to start from a genuine privacy/redaction record and corrupt one near-green binding.
+    against:
+      - Direct S04 primary selection for this exact mutant is still absent, so immediate lifecycle retirement can forgo one clean measurement of explicit X14-to-S04 routing.
+      - Same-provider S04/S09 agreement has binding weight zero and cannot close independent verification.
+  ABSTAIN:
+    for:
+      - All available verifier evidence is same-provider and nonbinding; no independent distinct-provider verdict is observed.
+    against:
+      - S09 is explicitly an advisory voting seat, and exact immutable source bytes are sufficient for a bounded nonbinding recommendation.
+
+correlated_evidence_risk:
+  level: HIGH
+  details:
+    - X14 authored the mutant and predeclared expected_verdict REVISE; this is not independent evidence.
+    - S04 and S09 are ChatGPT-carried same-provider checks with binding weight zero.
+    - Prior privacy-marker S09/S15/S04 artifacts are useful precedent but are correlated and cannot be majority-laundered.
+    - No distinct-provider or independently authenticated decision-maker consumption is observed.
+  anti_laundering_rule: NO_MAJORITY_OR_QUORUM_CLAIM_FROM_X14_EXPECTATION_S04_EMBEDDED_CHECK_S09_VOTE_OR_PRIOR_PRIVACY_ARTIFACTS
+
+strongest_dissent:
+  option: REVISE
+  case: >-
+    Keep mutant 175 in REVISE until the exact X14 route is selected directly by S04 or the deadline expires. That would preserve a clean measurement of the routing defect rather than retiring the specimen after an embedded check.
+  response: >-
+    The dissent is legitimate, but S04 already exercised the exact source/overlay bytes and rejected the mutant while selecting an unrelated newer candidate. That separates semantic detection from routing policy: the mutant is caught; the direct-routing requirement is a different control-plane defect and should be tested by a dedicated routing assay rather than by repeatedly retaining easy privacy literals.
+
+opportunity_cost:
+  keep_as_revise: ONE_OR_MORE_S04_REDUCER_ATTENTION_SLOTS_ON_A_LOW_NOVELTY_LITERAL_THAT_COULD_TEST_A_NEAR_GREEN_PRIVACY_BINDING_OR_EXTERNAL_FITNESS_WORK
+  retire_after_consumption: LOSES_ONE_DIRECT_PRIMARY_SELECTION_MEASUREMENT_FOR_THIS_EXACT_MUTANT
+  strategic_tradeoff: >-
+    Prefer retiring this literal specimen after reducer consumption while preserving a separate explicit routing-gap record. The higher-value next assay should test a subtle source-bound privacy authorization error, not another absent-field-to-public-safe promotion.
+
+operator_minute_burden:
+  measured_minutes: 0
+  basis: NO_OPERATOR_ACTION_REQUESTED;ALL_EFFECTS_REMAIN_INTERNAL_GIT_SLACK_COORDINATION_WITHIN_THE_PACKET_CEILING
+
+reversible_next_experiment:
+  experiment: >-
+    Use a dedicated routing negative control that is structurally valid and high-priority but semantically boring, so failure to select it measures X14-to-S04 route ordering without conflating content rejection. Separately, create a near-green privacy mutant from a genuine source-bound privacy/redaction/declassification record and corrupt exactly one binding: audience, source digest, reviewer authority, expiry, channel scope, minimization state, or internal-versus-public reuse permission.
+  reversible: true
+  no_world_effect: true
+
+falsifier:
+  condition: >-
+    Produce immutable source-bound evidence valid at the receipt time that exactly binds source blob f79578a50dab4a48971ca9218f8358c3b5bddffe to an authorized privacy/declassification reviewer, explicit PUBLIC_SAFE_NO_REDACTION_REQUIRED_FOR_EXTERNAL_REUSE classification, external audience/scope, required minimization/redaction state, expiry, consumer, and permitted publication/effect ceiling. If such evidence exists, this rejection and retirement recommendation must be reopened.
+
+posterior:
+  ACCEPT: 0.001
+  REVISE: 0.294
+  HOLD: 0.020
+  RETIRE: 0.670
+  ABSTAIN: 0.015
+  selected: RETIRE
+  claim_disposition: REJECT_UNSUPPORTED_PUBLIC_SAFE_EXTERNAL_REUSE_PROMOTION
+  lifecycle_recommendation: RETIRE_LITERAL_SPECIMEN_AFTER_EXACT_REDUCER_CONSUMPTION_OR_DEADLINE;PRESERVE_ROUTING_GAP_AS_SEPARATE_CONTROL_DEFECT
+
+multiple_evidence_summary: >-
+  X14 expects REVISE. S04 independently recomputed the exact mutant 175 overlay/source inside a later structural preflight and also returned REVISE for the mutated privacy claim, while not selecting mutant 175 as its primary candidate. Prior S09/S15 privacy-marker artifacts treat the family as mature and low-novelty. These are correlated same-provider signals and are not aggregated as a quorum; the live disagreement is lifecycle only: REVISE for one more direct-route attempt versus RETIRE of the literal specimen now that the semantic catch is demonstrated.
+
+honest_flaw: >-
+  This vote verifies the exact Git source, packet blob, overlay digest, provider task inventory, and observed S04 embedded recomputation, but it does not independently inspect Slack workspace retention/privacy policy, a legal privacy authority, or any distinct-provider verifier. It cannot establish that the underlying receipt is actually sensitive; it only establishes that the stronger public-safe external-reuse claim is unsupported by the bound source. GitHub indexing and concurrent writes can lag, so a direct S04 primary selection created after this vote cutoff is intentionally not inferred.
