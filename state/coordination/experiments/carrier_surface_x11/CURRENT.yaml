@@ -1,8 +1,8 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_CALENDAR_FIXED_IMPOSSIBLE_MARKER_EVENT_SEARCH_V1
-current_version: 172
-accepted_wakes: 0
+current_version: 173
+accepted_wakes: 1
 target_wakes_before_decision: 4
 controlled_factor: calendar_read_surface
 campaign_status: ACTIVE
@@ -10,14 +10,22 @@ current_disposition: null
 baseline_result: drive_fixed_impossible_marker_metadata_search_surface_kept_4_of_4_with_zero_sanitized_results_and_no_continuation
 hypothesis: a_fixed_impossible_marker_bounded_calendar_search_can_execute_without_event_detail_readback_and_return_only_sanitized_result_count_and_continuation_metadata
 measured_result:
-  query_runs: []
-  permission_class: NOT_YET_MEASURED
-  error_class: NOT_YET_MEASURED
+  query_runs:
+    - wake: 1
+      execution_success: true
+      sanitized_result_count: 0
+      continuation_present: false
+      permission_class: CALENDAR_EVENT_SEARCH_READ_AVAILABLE
+      error_class: NONE
+      latency_ms_exposed: 245
+      operator_relay_minutes: 0
+  permission_class: CALENDAR_EVENT_SEARCH_READ_AVAILABLE
+  error_class: NONE
   operator_relay_minutes: 0
-  changed_capability: false
+  changed_capability: true
   campaign_decision: false
   andon: false
-supported_claim: no_calendar_read_surface_claim_yet
+supported_claim: one_authenticated_bounded_calendar_event_search_executed_with_zero_sanitized_results_no_continuation_and_no_event_detail_readback
 claim_ceiling: does_not_establish_calendar_completeness_recall_index_freshness_event_detail_access_source_authenticity_or_independent_verification
 strongest_falsifier: the_fixed_impossible_marker_calendar_search_requires_mutation_cannot_execute_or_exposes_event_content_beyond_the_sanitized_measurement_contract
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
@@ -29,13 +37,13 @@ prior_campaign:
   supported_claim: four_authenticated_drive_metadata_only_document_searches_executed_without_content_fetch_and_returned_zero_sanitized_results_and_no_continuation
   accepted_wakes: 4
 last_event:
-  commit: 43f09d6a2be2998821aa158e7b9dc27a11655260
-  path: state/coordination/experiments/carrier_surface_x11/events/20260808T064008Z_DRIVE_FIXED_IMPOSSIBLE_MARKER_METADATA_SEARCH_V1_WAKE_04.yaml
-  blob: 08ecfca98c7e3ffc7bb924e70da119ad62895c80
+  commit: e83aae71e026c2a135bc01e32919e91a4e6b24e4
+  path: state/coordination/experiments/carrier_surface_x11/events/20260808T073833Z_CALENDAR_FIXED_IMPOSSIBLE_MARKER_EVENT_SEARCH_V1_WAKE_01.yaml
+  blob: 72517b79e55c6410061bf8cd23490c6de3b652a8
 next_factor: calendar_read_surface
 next_probe:
   experiment_id: X11_CALENDAR_FIXED_IMPOSSIBLE_MARKER_EVENT_SEARCH_V1
-  campaign_wake: 1
+  campaign_wake: 2
   mode: read_only_fixed_impossible_marker_bounded_search
   exact_query: '__HFO_X11_FIXED_IMPOSSIBLE_MARKER_6A55089A9ADC8191BDA54541F7F9EFFA__'
   max_results: 1
@@ -43,7 +51,7 @@ next_probe:
   time_min: '2000-01-01T00:00:00Z'
   time_max: '2000-01-02T00:00:00Z'
   persist_only: [execution_success, sanitized_result_count, continuation_present, permission_class, error_class, latency_when_exposed, operator_relay_minutes]
-  expected_current_version: 172
-updated_valid_time_utc: 2026-08-08T06:40:08Z
+  expected_current_version: 173
+updated_valid_time_utc: 2026-08-08T07:39:01Z
 sealed: false
 ---
