@@ -1,0 +1,80 @@
+---
+schema_id: hfo.gen133.x14.false_green_mutant.v1
+experiment_id: X14_FALSE_GREEN_MUTATION_001
+mutant_id: X14_MUTANT_178_7f8e23a15b0e
+mutation_class: TASK_ID_MISMATCH
+mutation_subcase: X13_CALENDAR_PHASE3_EVENT_FALSELY_BOUND_TO_X12_SCHEDULED_CARRIER
+status: QUARANTINED_NON_EXECUTABLE_ROUTED_PENDING_VERDICTS
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc: '2026-08-08T07:52:53Z'
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+expires_utc: '2026-08-08T11:52:53Z'
+wip: 1
+source:
+  commit: 6ac4d925b6fc3d7c352178d4503725ef243ca1c7
+  path: state/coordination/experiments/cots_connector_x13/20260808T074801Z_CALENDAR_FREEBUSY_PHASE3_NOTFOUND_NESTED_ERROR.md
+  git_blob_sha1: d90fd946273870ccb276ba0886311079b225afa1
+  source_digest_kind: GIT_BLOB_SHA1
+  source_digest: d90fd946273870ccb276ba0886311079b225afa1
+  authoring_seat: X13_COTS_AND_CONNECTOR_PDCA_LAB
+  authentic_carrier_task_id_from_native_inventory: 6a55c1733708819185088bf334e33ea5
+  authentic_carrier_title_from_native_inventory: HFO X13 COTS and Connector PDCA Lab
+  source_event_type: PHASE3_FAILURE_PERMISSION_CONNECTOR_VARIANCE_PROBE
+  source_status: PHASE3_ACCEPTED_WITH_GATES
+  source_candidate: Google_Calendar_get_availability_busy_only
+  source_top_level_error_observed: false
+  source_per_calendar_error_reason: notFound
+  source_busy_interval_count: 0
+  prior_x14_mutation_at_source_digest_before_write: false
+negative_control_copy:
+  copy_mode: SOURCE_IMMUTABLE_POINTER_PLUS_SINGLE_FIELD_CANONICAL_OVERLAY
+  source_bytes_edited: false
+  executable: false
+  mutated_field: carrier_task_id
+  original_value: ABSENT_IN_SOURCE_EVENT
+  mutated_value: 6a506f83df208191815dd17a8fd5baa3
+  mutated_value_native_title: HFO X12 Durable Object PDCA Lab
+  canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_json: '{"carrier_task_id":"6a506f83df208191815dd17a8fd5baa3"}'
+  canonical_overlay_utf8_bytes: 54
+  canonical_mutation_digest_sha256: 7f8e23a15b0e5aa7f3627ad3a5d83916709496e7df610131bae1451a0cc056f7
+expected_verdict: REVISE
+expected_rejection_reason: SOURCE_COMMIT_PATH_AND_EXPERIMENT_IDENTIFY_X13;NATIVE_TASK_INVENTORY_BINDS_X13_TO_6A55C1733708819185088BF334E33EA5;MUTANT_BINDS_THE_EVENT_TO_X12_TASK_6A506F83DF208191815DD17A8FD5BAA3;A_TASK_ID_CANNOT_BE_INFERRED_OR_REBOUND_ACROSS_DISTINCT_SCHEDULED_CARRIERS;REJECT_BEFORE_CONSUMING_PHASE3_OUTCOME
+named_gate: S04_TASK_ID_MISMATCH_EXACT_SOURCE_COMMIT_PATH_BLOB_AUTHORING_SEAT_NATIVE_CARRIER_ID_TITLE_EXPIRY_VERIFIER_CONSUMER_AND_CLAIM_CEILING_GATE
+verifier:
+  structural_preflight: S04_STRUCTURAL_PREFLIGHT
+  task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  binding_weight: 0
+  evidence_class: SAME_PROVIDER_NONBINDING
+  may_grade_own_mutant: false
+distinct_verifier:
+  seat: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  task_id: 6a539fb148bc8191a30b6009dbf22438
+  availability: ENABLED_OBSERVED_NATIVE_INVENTORY
+  binding_weight: 0
+  evidence_class: DISTINCT_SEAT_SAME_PROVIDER_ADVISORY_NONBINDING
+consumer:
+  primary: X14_CAMPAIGN_REDUCER
+  source_owner: X13_COTS_AND_CONNECTOR_PDCA_LAB
+routing:
+  route_target_s04: true
+  route_target_distinct_verifier: true
+  slack_channel_id: C0BGNGPJFHU
+  direct_candidate_priority_required: true
+  required_selector_behavior: OLDEST_UNEXPIRED_DIRECT_X14_FIRST_OR_DIGEST_BOUND_SKIP
+world_effect_ceiling: QUARANTINED_GIT_ARTIFACT_PLUS_SANITIZED_INTERNAL_SLACK_ROUTE_ONLY
+forbidden_effects_preserved:
+  - NO_SOURCE_EDIT
+  - NO_TASK_OR_SCHEDULE_MUTATION
+  - NO_EXTERNAL_SEND
+  - NO_SPEND
+  - NO_DEPLOYMENT
+  - NO_MERGE
+  - NO_PUBLICATION
+  - NO_ACCOUNT_OR_SECURITY_CHANGE
+  - NO_SECRET_EXPOSURE
+  - NO_PERMANENT_DELETION
+  - NO_INDEPENDENT_QUORUM_CLAIM
+honest_flaw: This is a conspicuous task-ID mismatch because the injected ID belongs to a different live HFO carrier and the selected X13 event path and experiment identity are explicit. It measures whether structural verification cross-binds repository provenance to native carrier identity; it does not test a subtler stale replacement-task ID, title-preserving reseat, or same-role migration. Candidate discovery and digest dedup are best-effort under concurrent Git writes and indexing lag.
+---
