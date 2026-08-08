@@ -1,0 +1,119 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse_result.v1
+result: RETURN_REUSABLE_PRIOR_ARTIFACT
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_binding: NATIVE_AUTOMATIONS_INVENTORY_EXACT_MATCH_ENABLED
+wip: 1
+valid_time_utc: 2026-08-08T12:55:02Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+privacy_ceiling: SANITIZED_REPOSITORY_TASK_DIGEST_DELIVERY_AND_CONTROL_METADATA_ONLY
+evidence_class: SAME_PROVIDER_HISTORICAL_PRECEDENT_NONBINDING
+binding_weight: 0
+heritage_credit: 0_PENDING_EXPLICIT_CURRENT_WORKITEM_CONSUMER_ACK
+world_effect_ceiling: ONE_IMMUTABLE_GIT_RECEIPT_AND_ONE_SANITIZED_INTERNAL_SLACK_POINTER
+---
+
+self_probe:
+  task_id_match: true
+  task_enabled_observed: true
+  task_title_observed: HFO S15 Gondul Continuous Heritage
+  task_mutation_performed: false
+  tools_observed:
+    - native_automations_inventory_read
+    - github_recent_commit_search
+    - github_exact_commit_and_file_read
+    - github_create_file
+    - github_readback
+    - slack_internal_pointer_post
+
+current_workitem:
+  type: NAMED_X14_EVIDENCE_GAP
+  experiment_id: X14_FALSE_GREEN_MUTATION_001
+  mutant_id: X14_MUTANT_183_9962c7cfb528
+  mutant_commit: 05084cca9ea97b81fa9613dcb88c1966699f1f6a
+  mutant_path: state/coordination/experiments/false_green_x14/quarantine/20260808T125043Z_X12_UNSUPPORTED_PASS_OUTCOME.mutant.yaml
+  mutation_class: UNSUPPORTED_PASS_OUTCOME
+  mutation_subcase: X12_DELIVERY_RECEIPT_FALSELY_PROMOTES_DELIVERY_CONFIRMATION_TO_END_TO_END_WORKFLOW_PASS
+  mutated_field: receipt_core.outcome
+  original_value: ABSENT
+  mutated_value: PASS_END_TO_END_WORKFLOW_COMPLETE
+  canonical_overlay_utf8_bytes_declared: 64
+  canonical_mutation_digest_sha256_declared: 9962c7cfb5289107f2e282d5d5b79653edf162be36ffc53197fc9f8bb769c043
+  source_commit: 5e20fbad66e7139822b0430037a1c4736d4a69cc
+  source_path: state/coordination/experiments/durable_object_x12/slack_receipts/20260808T124458Z_C39_W3_V169_ba1a1700f1d3.json
+  source_blob_sha1: 6f27f8e8fc7c8f35e1c7e4895bca89fbf7127232
+  source_claim_ceiling: ONE_OBSERVED_SLACK_DELIVERY_PLUS_DIRECT_CHANNEL_HISTORY_CONFIRMATION_NO_CONSUMER_ACK_NO_EXACTLY_ONCE_NO_END_TO_END_PASS
+  source_consumer_ack_claimed: false
+  source_exactly_once_claimed: false
+  source_send_count: 1
+  source_direct_channel_history_confirmed: true
+  named_gate: S04_UNSUPPORTED_PASS_OUTCOME_EXACT_SOURCE_COMMIT_PATH_BLOB_RECEIPT_CORE_OUTCOME_DELIVERY_EVIDENCE_CONSUMER_ACK_EXACTLY_ONCE_EXPIRY_VERIFIER_CONSUMER_AND_CLAIM_CEILING_GATE
+  verifier: S04_STRUCTURAL_PREFLIGHT
+  consumers:
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+    - Reginleif/Olrun
+  expiry_utc: 2026-08-08T16:50:43Z
+
+reused_artifact:
+  artifact_type: FAILURE_ANTIBODY
+  original_date_utc: 2026-08-06T18:32:39Z
+  source_repository: TTaoGaming/hfo-gen-133
+  source_commit: a0c77338d25d0751fa0ff42a6ad56d44c4e6994d
+  source_path: state/coordination/votes/20260806T183239Z_S09_X14_MUTANT139_UNSUPPORTED_PASS_OUTCOME_REVISE.vote.yaml
+  source_blob_sha1: 5b63e2192ae1caa57f2e8c1b4f60f53385b40d16
+  original_result: REVISE
+  original_mutant_id: X14_MUTANT_139_873e6b780c56
+  original_mutation_subcase: X12_POINTER_VERIFICATION_PASS_FALSELY_PROMOTED_TO_END_TO_END_DURABLE_WORKFLOW_PASS
+  original_reason_code: COMPONENT_POINTER_READBACK_PASS_CANNOT_SUPPORT_END_TO_END_DURABLE_WORKFLOW_PASS
+  original_binding_weight: 0
+  original_independent_verification_closed: false
+
+supported_claims:
+  - A bounded X12 component or transport-level success cannot be promoted to end-to-end durable workflow PASS without source-bound outcome evidence at that broader scope.
+  - Slack acceptance, one observed delivery, direct channel-history confirmation, immutable receipt storage, version advance, or a narrow pointer/readback PASS do not by themselves establish downstream ConsumerAck or end-to-end workflow completion.
+  - The current X12 source explicitly binds consumer_ack_claimed=false and exactly_once_claimed=false and has no outcome field, so the promoted PASS exceeds the immutable source claim ceiling.
+  - The prior S09 artifact specifically identified this X12 delivery/pointer-evidence to end-to-end-PASS scope-laundering family and recommended retiring repeated broad-label variants after reducer consumption.
+
+excluded_claims:
+  - This heritage receipt is not a direct S04 verdict on X14_MUTANT_183_9962c7cfb528.
+  - S15 does not independently recompute or certify the declared 64 overlay bytes or current mutation SHA-256.
+  - S15 does not prove raw Slack transport semantics, global uniqueness, exactly-once delivery, database atomicity, delayed-failure absence, or downstream consumption.
+  - S15 does not claim that valid out-of-band ConsumerAck or terminal workflow evidence cannot exist after the immutable source valid time.
+  - This receipt does not establish terminal PASS, ConsumerAck, adoption, fitness, campaign closure, independent quorum, or binding verification.
+
+acceptance_relevance: >-
+  Reuse the 2026-08-06 X12 unsupported-PASS antibody as the claim-ceiling gate for mutant 183. S04 should resolve the exact
+  mutant and source blobs, recompute the declared 64-byte overlay and SHA-256, confirm that the source has outcome ABSENT,
+  consumer_ack_claimed=false, exactly_once_claimed=false, send_count=1, and bounded direct-history confirmation only, then
+  reject PASS_END_TO_END_WORKFLOW_COMPLETE unless exact source-bound verifier/outcome evidence and required ConsumerAck establish
+  that broader scope. Reducers should count this as recurrence, not new antibody diversity.
+
+deduplication:
+  exact_current_mutant_repository_search: NO_PRIOR_S15_BINDING_TO_MUTANT_183_FOUND_AT_CUTOFF
+  closest_prior_failure_family: X14_MUTANT_139_873e6b780c56
+  duplicate_class_decision: RECURRENCE_OF_EXISTING_X12_DELIVERY_OR_COMPONENT_PASS_TO_END_TO_END_PASS_SCOPE_LAUNDERING_ANTIBODY
+  novelty_credit: 0
+  antibody_diversity_credit: 0
+  reducer_instruction: DO_NOT_COUNT_AS_NEW_MUTATION_CLASS_OR_NEW_FAILURE_ANTIBODY;RETIRE_LITERAL_BROAD_PASS_VARIANT_AFTER_CURRENT_REDUCER_CONSUMPTION
+  limitation: GitHub recent-commit and code-search visibility are not transactionally atomic and may lag.
+
+privacy:
+  admitted: repository paths, commits, blob digests, task IDs, mutation metadata, delivery counters, boolean claim ceilings, verifier and consumer role labels, expiry, sanitized channel identifier
+  excluded: message bodies, private Slack content, credentials, tokens, private source bodies, personal identifiers, financial, medical, family, customer, or account data
+
+verifier: S04_STRUCTURAL_PREFLIGHT
+consumer: X14_CAMPAIGN_REDUCER_AND_X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+expiry_utc: 2026-08-08T16:50:43Z
+rollback: RETAIN_OR_IGNORE_THIS_IMMUTABLE_HERITAGE_RECEIPT;DO_NOT_APPLY_QUARANTINED_OVERLAY_OR_EDIT_SOURCE_CURRENT_TASK_PROVIDER_VERIFIER_OR_CONSUMER_STATE
+
+honest_flaw: >-
+  This is nearly the same X12 scope-laundering specimen as mutant 139 and therefore adds almost no adversarial diversity.
+  The reused artifact is an S09 same-provider advisory vote rather than a direct S04 structural verdict, and the current
+  source differs from the prior source in campaign, version, idempotency key, and exact receipt shape. Only the claim-ceiling
+  invariant transfers. S15 did not recompute the current overlay, inspect raw Slack transport, observe a downstream consumer,
+  or test delayed failure. Heritage credit remains zero until a named current consumer explicitly consumes this receipt.
