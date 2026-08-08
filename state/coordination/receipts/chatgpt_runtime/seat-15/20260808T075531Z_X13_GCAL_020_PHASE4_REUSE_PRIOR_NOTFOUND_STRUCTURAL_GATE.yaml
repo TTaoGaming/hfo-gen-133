@@ -1,0 +1,84 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+seat: S15
+role: HERITAGE_REUSE_AND_DEDUP
+wip: 1
+valid_time_utc: 2026-08-08T07:55:31Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+self_probe_task_identity: MATCH_FROM_RUNTIME_CONTEXT
+self_probe_tools: GITHUB_READ_WRITE_AND_SLACK_POINTER_AVAILABLE
+result: RETURN_REUSABLE_PRIOR_ARTIFACT
+
+current_workitem:
+  id: X13_GCAL_FREEBUSY_READONLY_020_PHASE4_DECISION_FROM_FROZEN_EVIDENCE
+  experiment_id: X13_GCAL_FREEBUSY_READONLY_020
+  current_version: 179
+  current_commit: ec0823eb2148c02cff589a5c88505a9fde1931dd
+  current_path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+  current_blob_sha1: 9caa2ad008c6ff12a4ab8c9e0f951a1dd5111c25
+  phase3_event_commit: 6ac4d925b6fc3d7c352178d4503725ef243ca1c7
+  phase3_event_path: state/coordination/experiments/cots_connector_x13/20260808T074801Z_CALENDAR_FREEBUSY_PHASE3_NOTFOUND_NESTED_ERROR.md
+  phase3_event_blob_sha1: d90fd946273870ccb276ba0886311079b225afa1
+  live_state: PHASE3_ACCEPTED_WITH_GATES_NEXT_PHASE4_DECISION_NO_ADDITIONAL_CALENDAR_CALL
+  named_consumer: HFO_COMMAND_AND_CONTROL_SCHEDULING_CANDIDATE_NO_DOWNSTREAM_CONSUMER_ACK
+
+reusable_prior_artifact:
+  original_date_utc: 2026-08-04T04:16:47Z
+  repository: TTaoGaming/hfo-gen-133
+  commit: 3e5716e4c87b12e425cf1b394e7b445d56e9a80c
+  path: state/coordination/receipts/chatgpt_runtime/seat-04/20260804T041647Z_X13_GOOGLE_CALENDAR_FREEBUSY_PHASE3_STRUCTURAL_REVISE.yaml
+  blob_sha1: 263aadd5bd30a7a2d21384467648e5ff850d2e2f
+  prior_result: REVISE
+  prior_verifier: S04_STRUCTURAL_PREFLIGHT_VERIFIER
+  same_provider_status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+
+reusable_antibody: >-
+  A top-level successful Calendar FreeBusy connector result containing busy=[] is not availability evidence when a nested
+  per-calendar error exists. global/notFound is not authoritative resource absence or permission truth, and a bounded
+  read-only connector observation cannot be promoted by itself to operational readiness, adoption credit, fitness credit,
+  authorization completeness, or independent verification.
+
+supported_claims:
+  - CURRENT v179 independently preserves the same nested-error claim ceiling: inspect per-calendar errors before treating busy=[] as free.
+  - CURRENT v179 independently preserves that notFound is ambiguous between nonexistent and inaccessible resources.
+  - The prior S04 receipt is reusable as a Phase4 promotion gate against converting connector-shape success into scheduling readiness or adoption credit.
+  - Heritage novelty credit is zero because this is recurrence of an already-tested failure class.
+
+excluded_claims:
+  - The prior S04 verdict is not a direct verdict on the 2026-08-08 Phase3 event or CURRENT v179 bytes.
+  - The prior artifact does not establish the current authenticated Calendar principal, OAuth scopes, native HTTP status, provider request id, raw-provider parity, quota debit, or retry telemetry.
+  - The prior artifact does not negate the current improvement that Phase3 persisted an exact privacy-safe request preimage before the call.
+  - No claim of authoritative absence, permission denial, exact replay of Phase1, availability, ConsumerAck, downstream adoption, fitness, independent quorum, or operational scheduling readiness is supported.
+
+privacy_ceiling: >-
+  Sanitized repository/task/version/digest/result-class/error-class metadata only. Do not persist real calendar email IDs,
+  raw busy ranges, event details, credentials, tokens, provider headers, or private calendar content in this heritage receipt.
+
+acceptance_relevance: >-
+  Phase4 may consume this prior only as a claim-ceiling and promotion gate. A KEEP/ADOPT decision must preserve the current
+  mandatory rule that nested per-calendar errors are inspected before busy=[] is interpreted, preserve notFound ambiguity,
+  keep adoption/fitness at zero absent downstream ConsumerAck and measured value, and avoid asserting independent verification
+  or provider parity. The current persisted Phase3 request preimage fixes one older reproducibility gap but does not close
+  authenticated-principal, raw-provider, ConsumerAck, or operational-readiness gaps.
+
+verifier: S04_STRUCTURAL_PREFLIGHT
+consumer: X13_GCAL_FREEBUSY_READONLY_020_PHASE4_DECISION_FROM_FROZEN_EVIDENCE
+heritage_credit: 0
+heritage_credit_condition: EXPLICIT_CURRENT_CONSUMER_ACK_AND_CONSUMPTION_NOT_OBSERVED
+expiry_utc: 2026-08-15T07:55:31Z
+expiry_early_if: CURRENT_WORKITEM_EVENT_CONNECTOR_CONTRACT_EFFECTIVE_PRINCIPAL_OR_PHASE4_EVIDENCE_SET_MATERIALLY_CHANGES
+
+honest_flaw: >-
+  The reused receipt is same-provider structural evidence from an older Calendar FreeBusy campaign and is nonbinding. Its
+  source lacked several bindings that the current Phase3 now improves, especially a persisted exact privacy-safe request
+  preimage. Therefore only the nested-error interpretation, authority ceiling, and no-promotion-without-consumer-evidence
+  antibody transfers; the older blanket structural REVISE must not be copied wholesale onto the current experiment.
+
+dedup:
+  gen133_first_search: COMPLETE
+  matching_seat15_reuse_for_current_workitem_found: false
+  older_repository_or_drive_search_needed: false
+---
