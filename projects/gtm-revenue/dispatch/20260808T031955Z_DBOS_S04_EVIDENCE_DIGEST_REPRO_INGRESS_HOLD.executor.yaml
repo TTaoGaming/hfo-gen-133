@@ -1,0 +1,243 @@
+schema_id: hfo.gen133.s06.executor_packet.v1
+result: HOLD
+seat: S06_CODE_WORK_PACKET_COMPILER_CODEX_BRIDGE
+wip: 1
+valid_time_utc: 2026-08-08T03:19:55Z
+
+self_probe:
+  expected_task_id: 6a57972b9df081918680ce67c4ecb197
+  observed_task_id: 6a57972b9df081918680ce67c4ecb197
+  task_id_match: true
+  task_enabled_observed: true
+  github_read_available: true
+  github_write_available: true
+  slack_write_available: true
+  automation_inventory_read_available: true
+  direct_codex_ingress_available: false
+  direct_claude_ingress_available: false
+  direct_host_ingress_available: false
+  github_workflow_dispatch_available: false
+  note: The exposed GitHub surface can inspect and append this dispatch artifact but exposes no direct Codex/Claude/host-shell or new workflow-dispatch execution ingress.
+
+selection:
+  work_item_id: S07_DBOS_DURABLE_AGENT_SIDE_EFFECT_ACCEPTANCE_GATE_V1
+  material_change: true
+  changed_edge: NEW_S04_REVISE_AFTER_S07_RETURN_AND_S03_ROUTE
+  claim_status: CLAIMED_INTERNAL_ONLY_NO_EXTERNAL_EFFECT
+  claim_commit_sha: d7c0292f47e55c1f94fedeb9a160f00a27f48b1f
+  claim_path: projects/gtm-revenue/claims/20260808T020423Z_DBOS_DURABLE_AGENT_SIDE_EFFECT_ACCEPTANCE_GATE_ADMISSION.claim.yaml
+  claim_blob_sha1: b5f4135a4c47125b5a4cf6ad36bbb6b556e65dc0
+  claim_expiry_utc: 2026-08-08T06:04:23Z
+  acceptance_sha256: 42df5fa216b1ef98fedcb41426bf55f9aacbc188b8d47ec009c5625a3c92a100
+  claim_idempotency_sha256: a9461d2c1de92a91680e3fea5342d1738154a85111116ec76e8f555cab57a92c
+  target_evidence_digest_sha256: 7956742d6a6c06f992e0541d64cc585b6fcaa10c699d2306d5b03368ec9ce999
+
+repository:
+  full_name: TTaoGaming/hfo-gen-133
+  canonical_branch: agent/gen133-bootstrap-20260730
+  base_sha_observed_before_write: 5a5f5794895fe46e21c231509a9ae7501c71b3e9
+  base_ref_status_before_write: IDENTICAL_TO_CANONICAL_BRANCH
+
+inputs:
+  target_card:
+    commit: dd84a966d3f4ec470b8edb08beb12ac75708067c
+    path: projects/gtm-revenue/research/20260808T012628Z_PRODUCT_PLATFORM_DBOS_TARGET_CARD.md
+    blob_sha1: b22af8409df129ea73e755197863eabd256a230a
+    evidence_digest_sha256: 7956742d6a6c06f992e0541d64cc585b6fcaa10c699d2306d5b03368ec9ce999
+  producer_candidate:
+    commit: 0f5c81f31bdfe3e6ace74f898f200127c2b58227
+    path: projects/gtm-revenue/kits/dbos/20260808T022600Z_DURABLE_AGENT_SIDE_EFFECT_ACCEPTANCE_GATE.md
+    blob_sha1: 72bf1cefea5a9ad49c695476abb6377305378530
+  producer_return:
+    commit: 71fd511832704ee9835f7f53b01a3ff0311dbb5e
+    path: projects/gtm-revenue/returns/20260808T022800Z_S07_DBOS_PROOF_KIT_RETURN.md
+    blob_sha1: 1d234b1effb2620af764cd7777369047f0078d87
+  reducer_route:
+    commit: 627e001edf15b9545ea3232ae9056e99019c8dfc
+    path: state/coordination/receipts/chatgpt_runtime/seat-03/20260808T030917Z_DBOS_PROOF_KIT_HOLD_TO_S04.yaml
+    blob_sha1: af1b6cb8d8768292564269f28b1a9bf017a6a471
+  structural_verdict:
+    commit: 5a5f5794895fe46e21c231509a9ae7501c71b3e9
+    path: state/coordination/receipts/chatgpt_runtime/seat-04/20260808T031632Z_DBOS_PROOF_KIT_STRUCTURAL_REVISE.yaml
+    blob_sha1: 83180fea1476ca9880d004495d2376e823dbc9ae
+    result: REVISE
+    binding_weight: 0
+
+allowed_paths:
+  - projects/gtm-revenue/claims/20260808T020423Z_DBOS_DURABLE_AGENT_SIDE_EFFECT_ACCEPTANCE_GATE_ADMISSION.claim.yaml
+  - projects/gtm-revenue/research/20260808T012628Z_PRODUCT_PLATFORM_DBOS_TARGET_CARD.md
+  - projects/gtm-revenue/kits/dbos/20260808T022600Z_DURABLE_AGENT_SIDE_EFFECT_ACCEPTANCE_GATE.md
+  - projects/gtm-revenue/returns/20260808T022800Z_S07_DBOS_PROOF_KIT_RETURN.md
+  - state/coordination/receipts/chatgpt_runtime/seat-03/20260808T030917Z_DBOS_PROOF_KIT_HOLD_TO_S04.yaml
+  - state/coordination/receipts/chatgpt_runtime/seat-04/20260808T031632Z_DBOS_PROOF_KIT_STRUCTURAL_REVISE.yaml
+  - READ_ONLY_REPOSITORY_WIDE_GIT_GREP_FOR_EXACT_TARGET_EVIDENCE_DIGEST_AND_CANONICALIZATION_MARKERS
+
+forbidden_paths:
+  - '**/*'
+forbidden_paths_exception: NO_EXECUTOR_WRITES_ANYWHERE; READ_ONLY_ACCESS_ONLY_AS_LISTED_ABOVE
+
+goal: >-
+  Independently reproduce the DBOS claim/source/candidate/return/route/S04 bindings and determine whether the declared target-card evidence digest has any durable canonical preimage plus canonicalization rule that exactly recomputes it. Return a direct executor evidence record sufficient for S06 consumption rules: runtime/model, observed branch and HEAD SHA, changed paths, every exact command executed, per-command exit code and captured output, blockers, rollback, and honest flaw. Do not edit the target card, claim, candidate, return, route, verdict, or any production/source artifact; do not repair or re-grade the WorkItem.
+
+current_red_evidence:
+  - S04 returned REVISE at 2026-08-08T03:16:32Z for this exact WorkItem.
+  - S04 independently reproduced the claim acceptance SHA-256 42df5fa216b1ef98fedcb41426bf55f9aacbc188b8d47ec009c5625a3c92a100.
+  - S04 independently reproduced the source-binding SHA-256 6391b026e751960b02b84a7ac02a4c8ac63a8259d333cd89bc12f89a07d6f0f0.
+  - S04 independently reproduced the claim idempotency SHA-256 a9461d2c1de92a91680e3fea5342d1738154a85111116ec76e8f555cab57a92c.
+  - S04 found the target-card evidence digest 7956742d6a6c06f992e0541d64cc585b6fcaa10c699d2306d5b03368ec9ce999 declared and propagated but no durable canonical preimage or canonicalization rule sufficient to recompute it.
+  - The target card itself declares evidence_digest_sha256 but no adjacent evidence-digest canonical preimage or canonicalization field.
+  - Carrier-to-GitHub actor binding remains explicitly unproven; no independent STOOD/FELL or ConsumerAck exists.
+  - The S07 producer return is not consumable by S06 as a direct executor return because it does not provide concrete runtime/model, exact command transcript, per-command exit codes/outputs, and explicit blockers from an executor runtime.
+  - S06 has no direct Codex, Claude, canonical-host, or workflow-dispatch executor ingress in this wake; this packet is compiled but not executed.
+
+required_commands:
+  - id: C01
+    command: 'git rev-parse --show-toplevel'
+    expected: 'exit 0; output names the intended hfo-gen-133 checkout root'
+  - id: C02
+    command: 'git remote get-url origin'
+    expected: 'exit 0; output resolves to TTaoGaming/hfo-gen-133'
+  - id: C03
+    command: 'git branch --show-current'
+    expected: 'exit 0; exact output agent/gen133-bootstrap-20260730'
+  - id: C04
+    command: 'git rev-parse HEAD'
+    expected: 'exit 0; capture exact observed HEAD SHA; do not substitute packet base SHA if checkout has advanced'
+  - id: C05
+    command: 'git merge-base --is-ancestor 5a5f5794895fe46e21c231509a9ae7501c71b3e9 HEAD'
+    expected: 'exit 0; packet base is equal to or an ancestor of observed HEAD'
+  - id: C06
+    command: 'git status --porcelain=v1'
+    expected: 'exit 0; empty output before inspection'
+  - id: C07
+    command: 'git rev-parse d7c0292f47e55c1f94fedeb9a160f00a27f48b1f^{commit} && git hash-object projects/gtm-revenue/claims/20260808T020423Z_DBOS_DURABLE_AGENT_SIDE_EFFECT_ACCEPTANCE_GATE_ADMISSION.claim.yaml'
+    expected: 'exit 0; commit resolves exactly and file hash equals b5f4135a4c47125b5a4cf6ad36bbb6b556e65dc0'
+  - id: C08
+    command: 'git rev-parse dd84a966d3f4ec470b8edb08beb12ac75708067c^{commit} && git hash-object projects/gtm-revenue/research/20260808T012628Z_PRODUCT_PLATFORM_DBOS_TARGET_CARD.md'
+    expected: 'exit 0; file hash equals b22af8409df129ea73e755197863eabd256a230a'
+  - id: C09
+    command: 'git rev-parse 0f5c81f31bdfe3e6ace74f898f200127c2b58227^{commit} && git hash-object projects/gtm-revenue/kits/dbos/20260808T022600Z_DURABLE_AGENT_SIDE_EFFECT_ACCEPTANCE_GATE.md'
+    expected: 'exit 0; file hash equals 72bf1cefea5a9ad49c695476abb6377305378530'
+  - id: C10
+    command: 'git rev-parse 71fd511832704ee9835f7f53b01a3ff0311dbb5e^{commit} && git hash-object projects/gtm-revenue/returns/20260808T022800Z_S07_DBOS_PROOF_KIT_RETURN.md'
+    expected: 'exit 0; file hash equals 1d234b1effb2620af764cd7777369047f0078d87'
+  - id: C11
+    command: 'git rev-parse 627e001edf15b9545ea3232ae9056e99019c8dfc^{commit} && git hash-object state/coordination/receipts/chatgpt_runtime/seat-03/20260808T030917Z_DBOS_PROOF_KIT_HOLD_TO_S04.yaml'
+    expected: 'exit 0; file hash equals af1b6cb8d8768292564269f28b1a9bf017a6a471'
+  - id: C12
+    command: 'git rev-parse 5a5f5794895fe46e21c231509a9ae7501c71b3e9^{commit} && git hash-object state/coordination/receipts/chatgpt_runtime/seat-04/20260808T031632Z_DBOS_PROOF_KIT_STRUCTURAL_REVISE.yaml'
+    expected: 'exit 0; file hash equals 83180fea1476ca9880d004495d2376e823dbc9ae'
+  - id: C13
+    command: "python - <<'PY'\nfrom pathlib import Path\nimport hashlib,re\np=Path('projects/gtm-revenue/claims/20260808T020423Z_DBOS_DURABLE_AGENT_SIDE_EFFECT_ACCEPTANCE_GATE_ADMISSION.claim.yaml')\ns=p.read_text(encoding='utf-8').replace('\\r\\n','\\n')\nm=re.search(r'acceptance_test:\\n(?:.*\\n)*?  canonical_text: \\|-\\n((?:    .*\\n?)*)\\nidempotency:',s)\nassert m, 'canonical_text block not found'\nlines=[]\nfor line in m.group(1).splitlines():\n    assert line.startswith('    ')\n    lines.append(line[4:])\npre='\\n'.join(lines).encode('utf-8')\nprint(len(pre))\nprint(hashlib.sha256(pre).hexdigest())\nassert len(pre)==3226\nassert hashlib.sha256(pre).hexdigest()=='42df5fa216b1ef98fedcb41426bf55f9aacbc188b8d47ec009c5625a3c92a100'\nPY"
+    expected: 'exit 0; byte count 3226 and exact acceptance SHA-256 match'
+  - id: C14
+    command: "python - <<'PY'\nfrom pathlib import Path\nimport hashlib,re\ns=Path('projects/gtm-revenue/claims/20260808T020423Z_DBOS_DURABLE_AGENT_SIDE_EFFECT_ACCEPTANCE_GATE_ADMISSION.claim.yaml').read_text(encoding='utf-8').replace('\\r\\n','\\n')\nsm=re.search(r'source_binding_canonical_preimage: (.+)\\n  source_binding_digest_sha256: ([0-9a-f]{64})',s)\nassert sm, 'source binding block not found'\nsa=hashlib.sha256(sm.group(1).encode('utf-8')).hexdigest()\nprint(sa)\nprint(sm.group(2))\nassert sa==sm.group(2)=='6391b026e751960b02b84a7ac02a4c8ac63a8259d333cd89bc12f89a07d6f0f0'\nim=re.search(r'idempotency:\\n  canonical_preimage: (.+)\\n  sha256: ([0-9a-f]{64})',s)\nassert im, 'idempotency block not found'\nia=hashlib.sha256(im.group(1).encode('utf-8')).hexdigest()\nprint(ia)\nprint(im.group(2))\nassert ia==im.group(2)=='a9461d2c1de92a91680e3fea5342d1738154a85111116ec76e8f555cab57a92c'\nPY"
+    expected: 'exit 0; source-binding and idempotency digests exactly reproduce'
+  - id: C15
+    command: "python - <<'PY'\nfrom pathlib import Path\nimport hashlib,re\np=Path('projects/gtm-revenue/research/20260808T012628Z_PRODUCT_PLATFORM_DBOS_TARGET_CARD.md')\nb=p.read_bytes()\ns=b.decode('utf-8').replace('\\r\\n','\\n')\ndeclared='7956742d6a6c06f992e0541d64cc585b6fcaa10c699d2306d5b03368ec9ce999'\nprint('declared',declared)\nprint('raw_file_sha256',hashlib.sha256(b).hexdigest())\nprint('lf_file_sha256',hashlib.sha256(s.encode('utf-8')).hexdigest())\nprint('lf_no_terminal_lf_sha256',hashlib.sha256(s.rstrip('\\n').encode('utf-8')).hexdigest())\nfor key in ('evidence_digest_canonical_preimage','evidence_digest_canonicalization','evidence_canonical_preimage','evidence_canonicalization'):\n    print(key, bool(re.search(r'(?m)^'+re.escape(key)+r':',s)))\nPY"
+    expected: 'exit 0; capture all outputs. If any whole-file candidate hash equals the declared digest or an explicit evidence-digest preimage/canonicalization field is present, flag S04 REVISE as potentially falsified and stop before inference.'
+  - id: C16
+    command: "git grep -n --fixed-strings '7956742d6a6c06f992e0541d64cc585b6fcaa10c699d2306d5b03368ec9ce999' -- . || true"
+    expected: 'exit 0; enumerate every durable repository occurrence of the exact target evidence digest; occurrence alone is not a canonical preimage'
+  - id: C17
+    command: "git grep -n -E 'evidence_digest_(canonical_preimage|canonicalization)|evidence_(canonical_preimage|canonicalization)' -- . || true"
+    expected: 'exit 0; enumerate any durable evidence-digest canonicalization/preimage markers. Any exact DBOS-bound preimage plus rule must be returned verbatim with path and commit before concluding the S04 red evidence stands.'
+  - id: C18
+    command: "python - <<'PY'\nfrom pathlib import Path\nimport re\npaths=[\n'projects/gtm-revenue/research/20260808T012628Z_PRODUCT_PLATFORM_DBOS_TARGET_CARD.md',\n'projects/gtm-revenue/claims/20260808T020423Z_DBOS_DURABLE_AGENT_SIDE_EFFECT_ACCEPTANCE_GATE_ADMISSION.claim.yaml',\n'projects/gtm-revenue/returns/20260808T022800Z_S07_DBOS_PROOF_KIT_RETURN.md',\n'state/coordination/receipts/chatgpt_runtime/seat-03/20260808T030917Z_DBOS_PROOF_KIT_HOLD_TO_S04.yaml',\n'state/coordination/receipts/chatgpt_runtime/seat-04/20260808T031632Z_DBOS_PROOF_KIT_STRUCTURAL_REVISE.yaml']\nd='7956742d6a6c06f992e0541d64cc585b6fcaa10c699d2306d5b03368ec9ce999'\nfor path in paths:\n    s=Path(path).read_text(encoding='utf-8').replace('\\r\\n','\\n')\n    print(path, 'digest_occurrences', s.count(d))\n    for m in re.finditer(d,s):\n        lo=max(0,s.rfind('\\n',0,m.start()-500)+1); hi=s.find('\\n',m.end()+500)\n        if hi<0: hi=len(s)\n        print(s[lo:hi])\nPY"
+    expected: 'exit 0; capture local context around every declared DBOS evidence-digest occurrence in the bound evidence surfaces; do not invent a preimage from prose.'
+  - id: C19
+    command: 'git diff --exit-code && git status --porcelain=v1'
+    expected: 'exit 0; no diff; final status output empty'
+
+acceptance_tests:
+  - runtime_model_named: true
+  - repository_origin_verified: true
+  - canonical_branch_named_and_observed: true
+  - observed_head_sha_named: true
+  - packet_base_is_ancestor_of_observed_head: true
+  - changed_paths_named_exactly_use_empty_array_if_none: true
+  - exact_commands_c01_through_c19_returned_verbatim: true
+  - every_command_has_exit_code: true
+  - every_command_has_captured_stdout_and_stderr_or_explicit_empty_output: true
+  - blockers_field_present_even_if_none: true
+  - claim_commit_and_blob_match: true
+  - target_card_commit_and_blob_match: true
+  - candidate_commit_and_blob_match: true
+  - producer_return_commit_and_blob_match: true
+  - s03_route_commit_and_blob_match: true
+  - s04_verdict_commit_and_blob_match: true
+  - acceptance_digest_recomputed_exactly: true
+  - source_binding_digest_recomputed_exactly: true
+  - idempotency_digest_recomputed_exactly: true
+  - target_evidence_digest_disposition_required: 'FOUND_RECOMPUTABLE_PREIMAGE | NO_RECOMPUTABLE_PREIMAGE_FOUND_IN_DURABLE_EVIDENCE'
+  - if_found_preimage_then_exact_path_commit_rule_preimage_and_recomputed_sha256_required: true
+  - if_no_preimage_found_then_search_scope_and_nonproof_of_global_absence_explicitly_named: true
+  - worktree_clean_before_and_after: true
+  - no_repository_write: true
+  - no_external_effect: true
+  - rollback_named: true
+  - honest_flaw_named: true
+  - direct_executor_return_required_for_s06_consumption: true
+
+required_executor_return_schema:
+  result: EXECUTOR_EVIDENCE_RETURN
+  runtime_model: REQUIRED
+  repository: TTaoGaming/hfo-gen-133
+  branch: REQUIRED_OBSERVED
+  head_sha: REQUIRED_OBSERVED
+  changed_paths: REQUIRED_ARRAY_USE_EMPTY_ARRAY_IF_NONE
+  commands:
+    each_command_requires: [id, exact_command, exit_code, stdout, stderr]
+  target_evidence_digest_disposition: REQUIRED
+  target_evidence_digest_reproduction:
+    canonicalization_rule: REQUIRED_IF_FOUND
+    canonical_preimage: REQUIRED_IF_FOUND
+    recomputed_sha256: REQUIRED_IF_FOUND
+    durable_path: REQUIRED_IF_FOUND
+    durable_commit: REQUIRED_IF_FOUND
+  blockers: REQUIRED_ARRAY_USE_EMPTY_ARRAY_IF_NONE
+  rollback: REQUIRED
+  honest_flaw: REQUIRED
+  no_world_effect_attestation: REQUIRED
+
+effect_ceiling:
+  class: T0_READ_ONLY_REPOSITORY_INSPECTION_AND_LOCAL_HASHING
+  allowed: READ_ONLY_GIT_INSPECTION_LOCAL_HASHING_AND_REPOSITORY_WIDE_TEXT_SEARCH
+  forbidden: WRITE_COMMIT_PUSH_MERGE_DEPLOY_PUBLISH_SEND_SPEND_ACCOUNT_SECURITY_CHANGE_NETWORK_SIDE_EFFECT_DESTRUCTIVE_GIT_TASK_MUTATION
+
+time_budget_ceiling:
+  wall_clock_minutes: 20
+  stop_on_first_irreconcilable_object_identity_mismatch: true
+budget_ceiling:
+  external_spend_usd: 0
+  paid_provider_calls: 0
+
+rollback:
+  mode: NOOP_READ_ONLY
+  requirement: Worktree must be clean before and after. If any mutation occurs, stop and report it as a blocker; do not use reset, clean, checkout-discard, force, delete, or any other destructive Git operation to repair it.
+
+verifier:
+  seat: S04_HRIST_STRUCTURAL_PREFLIGHT
+  task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  provider_class: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+
+consumer:
+  seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  task_id: 6a539fc5130c81918c13624739fb2a60
+  ultimate_effect: OPERATOR_REVIEW_ONLY
+
+expiry_utc: 2026-08-08T06:04:23Z
+
+strongest_falsifier: >-
+  The controlling S04 REVISE reason is falsified if a direct executor demonstrates, from durable Git evidence bound to this exact DBOS target card, an explicit canonicalization rule and exact canonical preimage whose SHA-256 recomputes to 7956742d6a6c06f992e0541d64cc585b6fcaa10c699d2306d5b03368ec9ce999. The S06 HOLD is separately falsified only by a direct producer/executor return that also names runtime/model, observed branch/HEAD, changed paths, exact commands, exit codes, outputs, blockers, rollback, and honest flaw. A Slack route, Git packet, propagated digest string, or same-provider prose is not execution evidence.
+
+routing:
+  direct_executor_route_performed: false
+  reason: NO_DIRECT_CODEX_CLAUDE_CANONICAL_HOST_OR_NEW_WORKFLOW_DISPATCH_INGRESS_EXPOSED
+  missing_ingress_andon_for_campaign: DBOS_FIRST_AND_ONLY_THIS_CAMPAIGN_UNLESS_INGRESS_STATE_CHANGES
+  slack_is_execution: false
+  git_packet_is_execution: false
+
+honest_flaw: >-
+  This packet can freeze exact immutable objects and specify a reproducible falsification assay, but S06 cannot execute it on the operator's canonical host or prove global absence of an undocumented digest construction. Repository-wide text search can show whether a durable preimage/rule is present in visible Git text, not whether S08 used an external transient computation that was never persisted. No command/test result is claimed here, and RETURN_CONSUMED remains forbidden until a direct executor return satisfies the required schema.
