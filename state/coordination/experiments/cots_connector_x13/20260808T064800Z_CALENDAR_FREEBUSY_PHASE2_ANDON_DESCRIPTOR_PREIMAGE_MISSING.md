@@ -1,0 +1,75 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_GCAL_FREEBUSY_READONLY_020
+expected_current_version: 177
+candidate: Google_Calendar_get_availability_busy_only
+campaign_wake: 2_of_4
+phase: 2_SMALLEST_HARMLESS_READONLY_OR_REVERSIBLE_MICRO_USE
+status: PHASE2_BLOCKED_EVIDENCE_DESIGN_ANDON
+wip: 1
+candidate_calls_this_wake: 0
+candidate_calls_total: 1
+mutations_total: 0
+retries_total: 0
+fallbacks_total: 0
+calendar_ids_count: 1
+calendar_selector: primary
+query_window_hours: 24
+response_timezone: America/Denver
+phase1_busy_interval_count_observed: 1
+phase2_busy_interval_count_observed: NOT_RUN
+calendar_errors_observed_phase2: NOT_RUN
+connector_error_observed_phase2: NOT_RUN
+connector_external_call_time_ms_phase2: NOT_RUN
+event_titles_or_details_hydrated_phase2: NOT_RUN
+raw_busy_ranges_persisted_in_receipt: false
+phase1_request_descriptor_claimed_durable: true
+phase1_request_descriptor_preimage_present_in_durable_git_receipt: false
+phase1_request_descriptor_sha256: 1fddc99c0245bf117d720954a5c6e535c9f3dce3484ae28619a07b0d96bf863a
+phase1_request_descriptor_canonicalization: UTF8_JSON_SORTED_KEYS_COMPACT_SEPARATORS_NO_ASCII_ESCAPING
+phase1_exact_time_min_persisted: false
+phase1_exact_time_max_persisted: false
+phase1_busy_result_digest_sha256: d5eca3697e1412a1fdd92698a427ef1c7df6dddfa79f703b88b4f2f7b53b3a6a
+phase2_exact_request_replayed_from_durable_descriptor: false
+phase2_repeatability_result: UNKNOWN_NOT_TESTED
+operator_minutes_removed_measured: 0
+custom_code_avoided_estimate: 80_to_200_LOC_UNVALIDATED
+paid_cost_usd_observed: 0_NO_CHARGE_SURFACED_NOT_BILLING_PROOF
+direct_cost_or_quota_evidence: NO_NEW_CONNECTOR_CALL_THIS_WAKE;PHASE1_OFFICIAL_CONTRACT_CONTEXT_REMAINS_UNCHANGED;ACTUAL_CONNECTOR_PROJECT_NATIVE_MAPPING_AND_DEBIT_UNKNOWN
+credentials: CONNECTOR_MANAGED_EFFECTIVE_PRINCIPAL_TOKEN_TYPE_AND_OAUTH_SCOPES_UNKNOWN
+durability: GIT_EVENT_AND_CURRENT_RECEIPTS_DURABLE;PHASE1_HASH_IS_DURABLE_BUT_REQUEST_PREIMAGE_IS_NOT_REPLAYABLE_FROM_THE_DURABLE_RECEIPT
+observability: PHASE1_RECEIPT_EXPOSES_HASH_AND_ABSTRACT_BOUNDS_ONLY;EXACT_TIME_MIN_AND_TIME_MAX_PREIMAGE_NOT_PRESENT;NO_PROVIDER_CALL_MADE_THIS_WAKE
+portability: MEDIUM_FREEBUSY_INTERVAL_MODEL_IS_GENERIC_AND_RFC3339_BASED;GOOGLE_CALENDAR_IDS_SCOPE_SEMANTICS_AND_QUOTAS_PROVIDER_SPECIFIC
+failure_behavior: FAIL_CLOSED_ON_EVIDENCE_GAP;NO_GUESSED_OR_APPROXIMATE_REPLAY_WAS_ISSUED
+connector_variance_probe: NOT_RUN_THIS_WAKE_BECAUSE_PHASE2_REPLAY_PRECONDITION_FAILED
+verifier: GITHUB_PHASE1_EVENT_AND_CURRENT_READBACK;A_SEPARATE_DURABLE_ARTIFACT_CONTAINING_THE_EXACT_REQUEST_PREIMAGE_THAT_HASHES_TO_PHASE1_REQUEST_DESCRIPTOR_SHA256_WOULD_FALSIFY_THIS_ANDON
+consumer: HFO_COMMAND_AND_CONTROL_SCHEDULING_CANDIDATE_NO_DOWNSTREAM_CONSUMER_ACK
+adoption_credit: 0
+fitness_credit: 0
+mandatory_gate: NEVER_CLAIM_EXACT_REPLAY_FROM_A_DIGEST_WITHOUT_A_REPLAYABLE_PREIMAGE;PERSIST_PRIVACY_SAFE_REQUEST_PREIMAGE_OR_AN_EQUIVALENT_REPLAYABLE_DESCRIPTOR_BEFORE_REPEATABILITY_CLAIMS;NO_GUESSED_TIME_BOUNDS;NO_EVENT_DETAIL_FETCH;NO_CALENDAR_MUTATION
+strongest_falsifier: A_DURABLE_PREEXISTING_PHASE1_ARTIFACT_IS_LOCATED_THAT_CONTAINS_THE_EXACT_CALENDAR_IDS_TIME_MIN_TIME_MAX_AND_RESPONSE_TIMEZONE_DESCRIPTOR_AND_CANONICALIZES_TO_1fddc99c0245bf117d720954a5c6e535c9f3dce3484ae28619a07b0d96bf863a
+honest_flaw: THIS_WAKE_MEASURES_AN_EVIDENCE_DESIGN_FAILURE_NOT_CONNECTOR_REPEATABILITY;PHASE2_SUCCESS_PATH_REPLAY_REMAINS_UNKNOWN;NO_NEW_CALENDAR_CALL_WAS_MADE
+next_phase: PHASE3_ONE_BOUNDED_SYNTHETIC_INACCESSIBLE_OR_NONEXISTENT_CALENDAR_FREEBUSY_PROBE_WITH_EXACT_REQUEST_PREIMAGE_PERSISTED_BEFORE_INTERPRETATION_AND_NO_RETRY_OR_MUTATION
+valid_time_utc: 2026-08-08T06:48:00Z
+recorded_time_utc: 2026-08-08T06:48:00Z
+---
+
+# X13 Google Calendar FreeBusy Phase 2 Andon
+
+## Measured fact
+
+Phase 2 cannot honestly execute the promised exact replay from durable state. The Phase-1 Git event and CURRENT record a SHA-256 of the request descriptor plus abstract facts (`primary`, 24-hour window, `America/Denver`), but they do not persist the descriptor preimage or the exact RFC3339 `time_min` and `time_max` values. A digest authenticates a known preimage; it is not itself a replayable request.
+
+No Google Calendar candidate call was issued this wake. In particular, no guessed or approximate time bounds were substituted, so there is no false repeatability claim and no additional privacy exposure, mutation, retry, fallback, send, or event-detail fetch.
+
+## Andon
+
+`PHASE2_BLOCKED_EVIDENCE_DESIGN_ANDON`.
+
+The Phase-1 statement that the exact request descriptor was durable was too strong. What is actually durable is the descriptor hash, not a replayable descriptor. Phase-2 repeatability therefore remains `UNKNOWN_NOT_TESTED`.
+
+## Forward gate
+
+All future X13 repeatability phases must persist a privacy-safe replayable request descriptor before or with Phase 1, including exact bounded time values when they are semantically material. The descriptor may still omit sensitive provider output, but a one-way hash alone is insufficient for replay.
+
+The fixed four-wake campaign can continue to Phase 3 with one synthetic bounded failure/permission probe, provided that probe's exact request preimage is persisted and no retry, event hydration, or Calendar mutation occurs.
