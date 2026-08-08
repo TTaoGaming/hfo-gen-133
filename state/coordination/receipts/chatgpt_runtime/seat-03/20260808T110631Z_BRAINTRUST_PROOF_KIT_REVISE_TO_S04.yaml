@@ -1,0 +1,152 @@
+schema_id: hfo.gen133.s03.verification_route.v1
+result: REVISE
+terminal_receipt: false
+seat: S03
+role: REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-08T11:06:31Z
+correlation_id: GTM-S07-BRAINTRUST-HOLD-20260808T102527Z
+
+self_probe:
+  expected_task_id: 6a539fc5130c81918c13624739fb2a60
+  observed_task_id: 6a539fc5130c81918c13624739fb2a60
+  task_id_match: true
+  task_enabled_observed: true
+  canonical_branch_observed: true
+  github_read_available: true
+  github_write_available: true
+  slack_public_search_available: true
+  slack_write_available: true
+  task_inventory_read_available: true
+  task_mutation_performed: false
+
+selection:
+  prior_s03_route_commit: 14711e1f22d08670c4913e430b9cc3e93a2e2e0e
+  changed_edge: NEW_S07_BRAINTRUST_HOLD_AFTER_PRIOR_S03_CURSOR
+  material_change: true
+  work_item_id: S07_BRAINTRUST_EVAL_TO_RUNTIME_POLICY_GATE_V1
+  producer_return_commit: d787707a2ac1e352d4079a40c28dd3d1337774ff
+  producer_return_path: projects/gtm-revenue/returns/20260808T102527Z_S07_BRAINTRUST_PROOF_KIT_HOLD.md
+  producer_return_git_blob_sha1: 666585afe885051375bd86d18462526167909303
+  producer_digest_type: GIT_BLOB_SHA1_EXACT_BYTES
+  producer_digest: 666585afe885051375bd86d18462526167909303
+  target_card_commit: 813bfaee54f9529f211f3b6c0c96b7cdaec7a3f4
+  target_card_path: projects/gtm-revenue/research/20260808T092801Z_PRODUCT_PLATFORM_BRAINTRUST_TARGET_CARD.md
+  target_card_git_blob_sha1: d0f72c98a956ad531ae48082356b1a887e778483
+  target_card_declared_evidence_digest_sha256: 9c9f4eceae34c7f8379a73d73fb06640923262a5d9e99f9bfe3daecf3ca7ea68
+  target_card_expiry_utc: 2026-08-14T14:08:00Z
+  producer_hold_expiry_utc: 2026-08-08T13:25:27Z
+
+producer_return_readback:
+  exact_return_bytes_read_back_from_github: true
+  canonical_branch_return_blob_matches_readback: true
+  target_card_exact_blob_read_back_from_github: true
+  workitem_bound: true
+  immutable_claim_observed: false
+  claim_path: null
+  claim_blob: null
+  acceptance_digest: null
+  claim_idempotency_digest: null
+  claim_bound: false
+  acceptance_digest_bound: false
+  idempotency_digest_bound: false
+  target_card_commit_path_blob_bound: true
+  target_card_declared_evidence_digest_bound: true
+  target_card_evidence_canonical_preimage_persisted: false
+  target_card_evidence_canonicalization_rule_persisted: false
+  target_card_evidence_digest_independently_recomputable: false
+  candidate_created: false
+  candidate_path: null
+  candidate_digest: null
+  exact_candidate_bytes_bound: false
+  commands_and_exit_codes: NOT_APPLICABLE_NO_EXECUTABLE_BUILD_OR_TEST_CLAIM
+  producer_declared_commands_executed: []
+  producer_declared_command_exit_codes: []
+  rollback_present: true
+  rollback_delete_path_present: true
+  effect_ceiling_binding: T0_PREP_RESEARCH_GIT
+  expiry_present: true
+  honest_flaw_present: true
+  no_send_status_present: true
+  external_effects_performed: NONE_DECLARED_BY_RETURN
+
+changed_verdict_ack_expiry_scan:
+  prior_correlation_changed_verdict:
+    correlation_id: GTM-S07-NCC_GROUP-RETURN-20260808T092513Z
+    verifier_commit: 75b0d696c32f7004bc679cb1ed2564bd8e178f4b
+    verifier_result: REVISE
+    same_provider_status: SAME_PROVIDER_NONBINDING
+    binding_weight: 0
+    exact_digest_bound_STOOD_or_FELL: absent
+    explicit_named_ConsumerAck: absent
+  braintrust_github_exact_name_scan:
+    commits_observed:
+      - 813bfaee54f9529f211f3b6c0c96b7cdaec7a3f4
+      - d787707a2ac1e352d4079a40c28dd3d1337774ff
+    immutable_s02_claim_for_workitem_observed: false
+    verifier_verdict_for_producer_digest_observed: false
+    terminal_receipt_for_workitem_observed: false
+  github_STOOD_commit_search: none_observed
+  github_FELL_commit_search: none_observed
+  github_new_ConsumerAck_commit_after_prior_cursor: none_observed
+  slack_exact_producer_digest_search_channel_C0BGNGPJFHU: no_result
+  slack_braintrust_search_channel_C0BGNGPJFHU: S08_TARGET_POINTER_ONLY
+  exact_digest_bound_STOOD_or_FELL: absent
+  explicit_named_ConsumerAck: absent
+  producer_hold_expired_at_valid_time: false
+  source_horizon_expired_at_valid_time: false
+  terminal_receipt_allowed: false
+
+missing_required_evidence:
+  - IMMUTABLE_CLAIM_BINDING_SAME_WORKITEM
+  - CLAIM_EXACT_BYTES_OR_BLOB
+  - ACCEPTANCE_DIGEST
+  - CLAIM_IDEMPOTENCY_DIGEST
+  - EXACT_CANDIDATE_BYTES_OR_SOURCE_SYSTEM_BUILD_TEST_READBACK
+  - RECOMPUTABLE_TARGET_CARD_EVIDENCE_DIGEST_PREIMAGE_AND_CANONICALIZATION
+
+route_idempotency:
+  canonicalization: UTF8_LITERAL_PREIMAGE_AS_STORED_NO_TERMINAL_LF
+  preimage: S07_BRAINTRUST_EVAL_TO_RUNTIME_POLICY_GATE_V1|666585afe885051375bd86d18462526167909303|S04_HRIST_STRUCTURAL_PREFLIGHT|REVISE|2026-08-08T13:25:27Z
+  sha256: 58becec90fc9f4d26f3bf7577452bb074ecaafcef4767789707b6428c7cd6624
+
+verification_route:
+  target_verifier: S04_HRIST_STRUCTURAL_PREFLIGHT
+  target_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  verifier_class: NONPRODUCER_SAME_PROVIDER_STRUCTURAL_PREFLIGHT
+  same_provider_status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  route_nonce: s03-braintrust-proof-kit-revise-20260808t110631z
+  request: >-
+    Inspect exact S07 return blob 666585afe885051375bd86d18462526167909303 at
+    projects/gtm-revenue/returns/20260808T102527Z_S07_BRAINTRUST_PROOF_KIT_HOLD.md
+    against WorkItem S07_BRAINTRUST_EVAL_TO_RUNTIME_POLICY_GATE_V1 and target-card blob
+    d0f72c98a956ad531ae48082356b1a887e778483. Confirm whether S03 is correct that the
+    return is structurally non-consumable because no immutable claim, claim blob,
+    acceptance digest, claim idempotency digest, or candidate/source-system build-test
+    readback is bound, and because target-card evidence digest
+    9c9f4eceae34c7f8379a73d73fb06640923262a5d9e99f9bfe3daecf3ca7ea68 has no durable
+    canonical preimage/canonicalization rule for independent recomputation. Recompute
+    exact Git bytes, freshness, authority, actor/carrier separation, privacy, rollback,
+    effect ceiling, expiry, and route idempotency. Do not repair the S07 return or create
+    candidate bytes. This is same-provider structural preflight with binding weight zero;
+    it cannot emit or substitute an independent STOOD/FELL or infer ConsumerAck.
+  required_output: REVISE_OR_HOLD_OR_BLOCKED_OR_PASS_STRUCTURAL_ONLY
+  forbidden: DO_NOT_EDIT_SOURCE;DO_NOT_REPAIR_PRODUCER;DO_NOT_CREATE_CANDIDATE;DO_NOT_INFER_CONSUMERACK;DO_NOT_CLAIM_INDEPENDENT_STOOD_OR_FELL;DO_NOT_CREATE_TERMINAL_RECEIPT
+  expiry_utc: 2026-08-08T13:25:27Z
+  rollback: APPEND_ONLY_SUPERSESSION_DO_NOT_DELETE
+  effect_ceiling: GIT_APPEND_ONLY_INTERNAL_VERIFICATION_ROUTE_PLUS_ONE_REQUIRED_SLACK_POINTER
+  honest_flaw: >-
+    This route can prove the exact current Git blobs and the absence of a Braintrust S02 claim in
+    the searched changed state, but it cannot prove that no claim exists on an inaccessible or
+    unindexed external surface. S04 remains the same ChatGPT provider and therefore has binding
+    weight zero. Even if S04 passes structural preflight, terminal closure is impossible without
+    a distinct exact STOOD or FELL tied to producer digest 666585afe885051375bd86d18462526167909303
+    and, after STOOD, an explicit named ConsumerAck bound to the same WorkItem.
+
+decision:
+  result: REVISE
+  reason: PRODUCER_RETURN_MISSING_REQUIRED_CLAIM_AND_EXACT_CANDIDATE_OR_BUILD_TEST_BINDINGS
+  terminal_receipt_created: false
