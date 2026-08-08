@@ -1,0 +1,178 @@
+schema_id: hfo.gen133.s04.structural_preflight.v1
+result: PASS_STRUCTURAL
+terminal_receipt: false
+seat: S04_HRIST_STRUCTURAL_PREFLIGHT
+wip: 1
+valid_time_utc: 2026-08-08T19:13:39Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+
+self_probe:
+  expected_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  observed_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  task_id_match: true
+  task_enabled_observed: true
+  github_read_available: true
+  github_write_available: true
+  slack_public_read_available: true
+  slack_write_available: true
+  task_inventory_read_available: true
+  task_mutation_performed: false
+  tools_observed:
+    - native_automations_inventory_read
+    - github_recent_commit_search
+    - github_exact_commit_read
+    - github_exact_file_read
+    - github_create_file
+    - github_readback
+    - slack_public_channel_read
+    - slack_send_message
+    - local_sha256_recompute
+
+selection:
+  newest_repo_commit_observed_before_write: 880238e34fb8168f56153a65c0c936d28ccde9b9
+  selected_candidate_type: S03_VERIFICATION_ROUTE_TO_S04
+  selected_candidate_authored_by_s04: false
+  route_commit: 880238e34fb8168f56153a65c0c936d28ccde9b9
+  route_path: state/coordination/receipts/chatgpt_runtime/seat-03/20260808T190753Z_PORTKEY_AGENT_AUTHORITY_CHANGE_DIFF_HOLD_TO_S04.yaml
+  route_git_blob_sha1: 3d1163714703d477ba28b3bb537b4136d1f4a90b
+  work_item_id: S07_PORTKEY_AGENT_AUTHORITY_CHANGE_REGRESSION_GATE_V1
+  producer_return_commit: 066398c960aea36f9418c2b1525beca16a606bdf
+  producer_return_path: projects/gtm-revenue/returns/20260808T182428Z_S07_PORTKEY_AGENT_AUTHORITY_CHANGE_DIFF_RETURN.md
+  producer_return_git_blob_sha1: d6836d4778a09823dd7a60b9436df754bcac04f4
+  claim_commit: dbb3db2c37709fbeb7004cd32f407ed87c585cda
+  claim_path: projects/gtm-revenue/claims/20260808T180400Z_PORTKEY_AGENT_AUTHORITY_CHANGE_REGRESSION_GATE_ADMISSION.claim.yaml
+  claim_git_blob_sha1: ea3342e4a1e50bb0793458ff9908cdb1c93ee445
+  candidate_commit: 738a5718ed5e74a596923efdf6d2c284a781cb77
+  candidate_path: projects/gtm-revenue/kits/portkey/20260808T182428Z_AGENT_AUTHORITY_CHANGE_DIFF.md
+  candidate_git_blob_sha1: 692a9c399d28a8852711b5b657401c5ace919205
+  target_card_commit: 6071853f7f0392910d434d35a23865bd46001817
+  target_card_path: projects/gtm-revenue/research/20260808T172800Z_PRODUCT_PLATFORM_PORTKEY_TARGET_CARD.md
+  target_card_git_blob_sha1: 030e08bf281910bc1a318de1318b39d8926fd4fc
+
+exact_bytes_and_source_pointers:
+  mode: IMMUTABLE_COMMIT_BOUND_GITHUB_FILE_READBACK_WITH_EXACT_GIT_BLOB_SHA1
+  route_blob_match: true
+  producer_return_blob_match: true
+  claim_blob_match: true
+  candidate_blob_match: true
+  target_card_blob_match: true
+  local_full_file_sha256_contract_required: false
+  note: Git commit/path/blob identities bind exact bytes; canonical SHA256 contracts below were independently recomputed from their declared preimages.
+
+schema_and_canonicalization:
+  route_schema: hfo.gen133.s03.verification_route.v1
+  claim_schema: hfo.gen133.s02_admission_claim.v1
+  producer_return_schema: hfo.gen133.gtm.producer_return.v1
+  target_card_schema: hfo.gen133.gtm.target_card.v1
+  route_idempotency_canonicalization: UTF8_LITERAL_PREIMAGE_AS_STORED_NO_TERMINAL_LF
+  acceptance_canonicalization: UTF8_LF_NO_TERMINAL_LF
+  evidence_canonicalization: UTF8_LF_EXACT_BLOCK_V1
+
+recomputed_digests:
+  route_idempotency:
+    utf8_bytes: 151
+    sha256_declared: faae7a3143225d5afc766ebeb6d8a2dc2c57703ed91f355f97313cd668ad31ca
+    sha256_recomputed: faae7a3143225d5afc766ebeb6d8a2dc2c57703ed91f355f97313cd668ad31ca
+    match: true
+  claim_source_binding:
+    utf8_bytes: 168
+    sha256_declared: 6efb1e02191786e48a86aee6763ea52b8bc0684235f24ec63c8d623ff34362ae
+    sha256_recomputed: 6efb1e02191786e48a86aee6763ea52b8bc0684235f24ec63c8d623ff34362ae
+    match: true
+  acceptance_test:
+    utf8_bytes: 4118
+    sha256_declared: 0a17236e3c7b0f343b23466ac16338ce2bbcd8892ae9fb46d964188e0e7082af
+    sha256_recomputed: 0a17236e3c7b0f343b23466ac16338ce2bbcd8892ae9fb46d964188e0e7082af
+    match: true
+  claim_idempotency:
+    utf8_bytes: 287
+    sha256_declared: 4dc0778fa53a2b5ccd90e3a54424e59ff671a1a77a9aa4a8701ba16cb115ee58
+    sha256_recomputed: 4dc0778fa53a2b5ccd90e3a54424e59ff671a1a77a9aa4a8701ba16cb115ee58
+    match: true
+  target_evidence:
+    utf8_bytes: 1178
+    sha256_declared: bea6368a9c42ca90b7758286f93148e9887890cb93d21a2cea9b04c06cc7c736
+    sha256_recomputed: bea6368a9c42ca90b7758286f93148e9887890cb93d21a2cea9b04c06cc7c736
+    match: true
+
+freshness_and_lease:
+  claim_lease_expires_utc: 2026-08-08T22:04:00Z
+  claim_expiry_utc: 2026-08-08T22:04:00Z
+  producer_return_effective_until_utc: 2026-08-08T22:04:00Z
+  source_expiry_utc: 2026-08-14T14:08:00Z
+  unexpired_at_valid_time: true
+  renewal_allowed: false
+
+bindings_and_authority:
+  producer_task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+  producer_task_id_matches_native_inventory: true
+  verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  verifier_task_id_matches_native_inventory: true
+  consumer_task_id: 6a539fc5130c81918c13624739fb2a60
+  consumer_task_id_matches_native_inventory: true
+  admission_task_id: 6a55088a3d308191ac1cda97221f0957
+  admission_task_id_matches_native_inventory: true
+  authority_ceiling: T0_RESEARCH_PREP_ONLY
+  external_effects_authorized: false
+  external_effects_declared_by_return: NONE
+  no_send_status: true
+  private_data_used: false
+  privacy: PUBLIC_SAFE_SYNTHETIC_ONLY
+  route: RELATIONSHIP_ONLY
+  actor_carrier_binding: UNPROVEN
+  actor_carrier_conflation_detected: false
+  actor_carrier_inference_performed: false
+  rollback_mode: APPEND_ONLY_SUPERSESSION
+  candidate_withdrawal_path_bounded_to_producer_or_controller_authorization: true
+  history_rewrite_forbidden: true
+  permanent_deletion_authorized: false
+
+candidate_acceptance_scan:
+  one_public_safe_two_minute_artifact: true
+  before_after_authority_diff_present: true
+  six_negative_control_classes_present: true
+  explicit_rollback_condition_present: true
+  source_backed_facts_separated_from_hypothesis: true
+  current_native_overlap_and_falsifier_preserved: true
+  exact_public_source_urls_present: true
+  no_savings_incident_buyer_or_procurement_invention: true
+  no_live_portkey_system_use: true
+  no_executable_build_or_test_claim_requiring_command_exit_code_readback: true
+
+strongest_fake_green_mutant:
+  mutant_id: X14_MUTANT_189_3de6837f7b14
+  mutant_commit: b68ff8736036238db4a35f1a5cf06d659e6cc13e
+  mutant_path: state/coordination/experiments/false_green_x14/quarantine/20260808T185239Z_X12_TASK_ID_MISMATCH.mutant.yaml
+  mutant_git_blob_sha1: 4f521c20df773e5d0b03e81b081f25894d50795a
+  mutation_class: TASK_ID_MISMATCH
+  source_commit: 42b53f250db963838344238cd204d1bedc784de7
+  source_path: state/coordination/experiments/durable_object_x12/slack_receipts/20260808T184510Z_C41_W1_V175_e445906d05ad.json
+  source_git_blob_sha1: 958bd9e464fb2505df83c8d2536d6257005cbf6d
+  source_task_id_exact: 6a506f83df208191815dd17a8fd5baa3
+  mutated_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  canonical_overlay_utf8_bytes: 241
+  overlay_sha256_declared: 3de6837f7b14d5ddd916e1a92b16aa6db7f23ce5900aecc9716d2ce13054ed34
+  overlay_sha256_recomputed: 3de6837f7b14d5ddd916e1a92b16aa6db7f23ce5900aecc9716d2ce13054ed34
+  overlay_digest_match: true
+  verdict: REVISE
+  rejection_reason: IMMUTABLE_X12_RECEIPT_BINDS_X12_TASK_ID;SUBSTITUTING_S04_TASK_ID_BREAKS_EXACT_SOURCE_TASK_BINDING
+
+independence_and_consumer:
+  exact_digest_bound_independent_STOOD_or_FELL_observed: false
+  explicit_named_consumer_ack_observed: false
+  public_slack_latest_portkey_route_observed: true
+  terminal_closure_allowed: false
+  structural_pass_claim_ceiling: SAME_PROVIDER_NONBINDING_WEIGHT_0_ONLY
+
+decision:
+  result: PASS_STRUCTURAL
+  reason: EXACT_IMMUTABLE_GIT_BINDINGS_AND_ALL_DECLARED_CANONICAL_DIGEST_CONTRACTS_RECOMPUTE;FRESHNESS_AUTHORITY_TASK_BINDING_ACTOR_CARRIER_SEPARATION_IDEMPOTENCY_PRIVACY_ROLLBACK_VERIFIER_CONSUMER_AND_FAKE_GREEN_MUTANT_GATES_PASS_WITHIN_T0_STRUCTURAL_CEILING
+  independent_verification_required: true
+  consumer_ack_required_after_independent_STOOD: true
+  terminal_receipt_created: false
+  same_provider_status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
