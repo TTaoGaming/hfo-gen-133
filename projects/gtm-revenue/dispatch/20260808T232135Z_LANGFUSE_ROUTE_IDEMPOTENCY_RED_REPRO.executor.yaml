@@ -1,0 +1,199 @@
+schema_id: hfo.gen133.s06.executor_packet.v1
+result: HOLD
+seat: S06_CODE_WORK_PACKET_COMPILER_CODEX_BRIDGE
+expected_task_id: 6a57972b9df081918680ce67c4ecb197
+wip: 1
+valid_time_utc: 2026-08-08T23:21:35Z
+
+work_item:
+  id: S07_LANGFUSE_EVAL_TO_AUTHORITY_RELEASE_CONTRACT_V1
+  state: CLAIMED_UNEXPIRED_CHANGED_BY_S04_REVISE
+  claim_commit_sha: 1899fa670a334cffac04b116a39a309f48aa4ddd
+  claim_path: projects/gtm-revenue/claims/20260808T220400Z_LANGFUSE_EVAL_TO_AUTHORITY_RELEASE_CONTRACT_ADMISSION.claim.yaml
+  claim_blob_sha1: 9596f6ed80816e560b0ea1be4c80d1a94b8d8aa9
+  claim_expiry_utc: 2026-08-09T02:04:00Z
+
+repository:
+  name: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+  base_sha: 3de8e866b629c5f7e11022559d2a37dca65743ca
+  base_sha_semantics: FIRST_COMMIT_CONTAINING_CURRENT_S04_REVISE_RED_EVIDENCE_NOT_ASSUMED_BRANCH_TIP
+
+changed_trigger:
+  kind: S04_STRUCTURAL_PREFLIGHT_REVISE
+  commit: 3de8e866b629c5f7e11022559d2a37dca65743ca
+  path: state/coordination/receipts/chatgpt_runtime/seat-04/20260808T231026Z_LANGFUSE_AGENT_RELEASE_EVIDENCE_CONTRACT_STRUCTURAL_REVISE.yaml
+  blob_sha1: 21fddb93d6160379800bd76da03b6637dbcf6b6d
+  prior_route_commit: bafcdc5b2feba9eb9f4430f6326cb1f902298e6e
+  prior_route_path: state/coordination/receipts/chatgpt_runtime/seat-03/20260808T230732Z_LANGFUSE_PRODUCER_RETURN_HOLD_TO_S04.yaml
+  prior_route_blob_sha1: 8001b9e5e28b384c0181ef20bc7415312f853cdd
+
+allowed_paths:
+  read:
+    - projects/gtm-revenue/claims/20260808T220400Z_LANGFUSE_EVAL_TO_AUTHORITY_RELEASE_CONTRACT_ADMISSION.claim.yaml
+    - projects/gtm-revenue/returns/20260808T222700Z_S07_LANGFUSE_AGENT_RELEASE_EVIDENCE_CONTRACT_RETURN.md
+    - projects/gtm-revenue/kits/langfuse/20260808T222400Z_AGENT_RELEASE_EVIDENCE_CONTRACT.md
+    - state/coordination/receipts/chatgpt_runtime/seat-03/20260808T230732Z_LANGFUSE_PRODUCER_RETURN_HOLD_TO_S04.yaml
+    - state/coordination/receipts/chatgpt_runtime/seat-04/20260808T231026Z_LANGFUSE_AGENT_RELEASE_EVIDENCE_CONTRACT_STRUCTURAL_REVISE.yaml
+    - state/coordination/**
+    - projects/gtm-revenue/**
+  write: []
+  nonrepo_temp:
+    - /tmp/s06_langfuse_before.status
+    - /tmp/s06_langfuse_after.status
+
+forbidden_paths:
+  - .github/**
+  - projects/**/src/**
+  - projects/**/app/**
+  - projects/**/production/**
+  - projects/gtm-revenue/claims/**
+  - projects/gtm-revenue/kits/**
+  - projects/gtm-revenue/returns/**
+  - state/coordination/receipts/chatgpt_runtime/seat-03/**
+  - state/coordination/receipts/chatgpt_runtime/seat-04/**
+  - any task/provider/account/security configuration
+
+goal: >-
+  Reproduce and classify the new S04 route-level idempotency red without repairing it.
+  Determine from repository evidence whether hfo.gen133.s03_verification_route.v1 has a formal
+  route-level replay identity/idempotency/nonce requirement, whether accepted prior S03 routes
+  consistently carry such a field, and whether the current Langfuse route is uniquely deficient.
+  Return evidence only. Do not edit source, route, verifier receipt, candidate, claim, tests,
+  workflow configuration, or production code.
+
+current_red_evidence:
+  s04_result: REVISE
+  terminal_receipt: false
+  route_idempotency_contract_present: false
+  route_idempotency_recomputable: false
+  route_nonce_present: false
+  route_idempotency_gate: REVISE
+  reason: CURRENT_S03_GTM_ROUTE_DOES_NOT_PERSIST_A_ROUTE_LEVEL_REPLAY_IDENTITY_OR_NONCE_SO_S04_CANNOT_RECOMPUTE_THE_ROUTE_IDEMPOTENCY_GATE_WITHOUT_INVENTING_OR_REPAIRING_SOURCE_BYTES
+  caveat: >-
+    S04 states this gate is based on its required idempotency check and adjacent route pattern,
+    not on a separately located formal schema mandating a particular field name.
+
+required_commands:
+  - id: C01
+    command: "git status --porcelain=v1 > /tmp/s06_langfuse_before.status"
+  - id: C02
+    command: "git rev-parse --verify 3de8e866b629c5f7e11022559d2a37dca65743ca^{commit}"
+    expected_stdout: 3de8e866b629c5f7e11022559d2a37dca65743ca
+  - id: C03
+    command: "git rev-parse 1899fa670a334cffac04b116a39a309f48aa4ddd:projects/gtm-revenue/claims/20260808T220400Z_LANGFUSE_EVAL_TO_AUTHORITY_RELEASE_CONTRACT_ADMISSION.claim.yaml"
+    expected_stdout: 9596f6ed80816e560b0ea1be4c80d1a94b8d8aa9
+  - id: C04
+    command: "git rev-parse bafcdc5b2feba9eb9f4430f6326cb1f902298e6e:state/coordination/receipts/chatgpt_runtime/seat-03/20260808T230732Z_LANGFUSE_PRODUCER_RETURN_HOLD_TO_S04.yaml"
+    expected_stdout: 8001b9e5e28b384c0181ef20bc7415312f853cdd
+  - id: C05
+    command: "git rev-parse 3de8e866b629c5f7e11022559d2a37dca65743ca:state/coordination/receipts/chatgpt_runtime/seat-04/20260808T231026Z_LANGFUSE_AGENT_RELEASE_EVIDENCE_CONTRACT_STRUCTURAL_REVISE.yaml"
+    expected_stdout: 21fddb93d6160379800bd76da03b6637dbcf6b6d
+  - id: C06
+    command: "git show bafcdc5b2feba9eb9f4430f6326cb1f902298e6e:state/coordination/receipts/chatgpt_runtime/seat-03/20260808T230732Z_LANGFUSE_PRODUCER_RETURN_HOLD_TO_S04.yaml | grep -nEi 'schema_id|idempot|nonce|replay|correlation_id|work_item_id'"
+  - id: C07
+    command: "git show 3de8e866b629c5f7e11022559d2a37dca65743ca:state/coordination/receipts/chatgpt_runtime/seat-04/20260808T231026Z_LANGFUSE_AGENT_RELEASE_EVIDENCE_CONTRACT_STRUCTURAL_REVISE.yaml | grep -nEi 'route_idempotency|route_nonce|reason|honest_flaw'"
+  - id: C08
+    command: "git grep -n -Ei 'hfo\.gen133\.s03_verification_route\.v1|route[-_ ]level.*idempot|route[-_ ]level.*nonce|replay identity' 3de8e866b629c5f7e11022559d2a37dca65743ca -- state/coordination projects/gtm-revenue | head -250"
+  - id: C09
+    command: "git ls-tree -r --name-only 3de8e866b629c5f7e11022559d2a37dca65743ca | grep -Ei 'schema|contract|route|idempot|nonce' | head -250"
+  - id: C10
+    command: "git grep -l 'schema_id: hfo.gen133.s03_verification_route.v1' 3de8e866b629c5f7e11022559d2a37dca65743ca -- state/coordination | head -100"
+  - id: C11
+    command: "python - <<'PY'\nimport subprocess,re\nbase='3de8e866b629c5f7e11022559d2a37dca65743ca'\np=subprocess.run(['git','grep','-l','schema_id: hfo.gen133.s03_verification_route.v1',base,'--','state/coordination'],text=True,capture_output=True)\nprint('git_grep_exit=',p.returncode)\npaths=[]\nfor line in p.stdout.splitlines():\n    path=line.split(':',1)[1] if ':' in line else line\n    paths.append(path)\nfor path in paths[:100]:\n    q=subprocess.run(['git','show',f'{base}:{path}'],text=True,capture_output=True)\n    txt=q.stdout\n    flags={k:bool(re.search(k,txt,re.I)) for k in ['idempot','nonce','replay']}\n    print(path,flags)\nPY"
+  - id: C12
+    command: "git diff --name-only 3de8e866b629c5f7e11022559d2a37dca65743ca --"
+    note: REPORT_ONLY_DO_NOT_ASSUME_POST_BASE_COMMITS_ARE_EXECUTOR_CHANGES
+  - id: C13
+    command: "git status --porcelain=v1 > /tmp/s06_langfuse_after.status && diff -u /tmp/s06_langfuse_before.status /tmp/s06_langfuse_after.status"
+    expected_exit_code: 0
+
+acceptance_tests:
+  - id: A01_BINDINGS
+    pass_if: C02_C03_C04_C05_ALL_EXIT_0_AND_STDOUT_MATCHES_EXPECTED_SHA
+  - id: A02_FORMAL_CONTRACT
+    classify: CONFIRMED_RED
+    pass_if: >-
+      Repository evidence at the frozen base contains an authoritative schema/contract or
+      consistently accepted S03 route precedent that requires a recomputable route-level replay
+      identity/idempotency/nonce and the bound Langfuse route lacks it.
+  - id: A03_FALSIFIER
+    classify: FALSIFIED_RED
+    pass_if: >-
+      An authoritative route schema says no such route-level field is required, or accepted
+      prior S03 routes demonstrate that S04's added idempotency/nonce requirement is not a
+      canonical gate. In that case do not propose a repair; report the verifier-gate mismatch.
+  - id: A04_INCONCLUSIVE
+    classify: INCONCLUSIVE
+    pass_if: >-
+      No authoritative schema/contract exists and precedent is mixed or insufficient. Report
+      exact evidence; do not infer a requirement from field-name frequency alone.
+  - id: A05_NO_MUTATION
+    pass_if: C13_EXIT_0_AND_NO_NEW_WORKTREE_DELTA_FROM_EXECUTOR
+  - id: A06_DIRECT_RETURN_SHAPE
+    pass_if: >-
+      Direct producer return names runtime/model, checked-out branch and HEAD SHA, changed_paths,
+      every exact command with exit code and material stdout/stderr, blockers, rollback performed
+      or not-needed, classification, and one honest flaw.
+
+effect_ceiling:
+  level: T0_REPOSITORY_INSPECTION_ONLY
+  allowed:
+    - read repository at frozen SHAs
+    - local nonrepo temporary status files
+    - direct return to caller
+  forbidden:
+    - repository mutation
+    - task mutation
+    - production-code implementation
+    - test-pass invention
+    - push
+    - merge
+    - deploy
+    - publication
+    - send
+    - spend
+    - account_or_security_change
+    - destructive_git_operation
+
+time_budget_ceiling:
+  wall_clock_minutes: 15
+  external_spend_usd: 0
+  paid_provider_calls: 0
+
+rollback:
+  repository: NOT_NEEDED_READ_ONLY
+  temp_files: REMOVE_ONLY_IF_CREATED_BY_EXECUTOR
+  destructive_git: FORBIDDEN
+
+verifier:
+  seat: S04_HRIST_STRUCTURAL_PREFLIGHT
+  task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  authority: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+
+consumer:
+  seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  task_id: 6a539fc5130c81918c13624739fb2a60
+  consumer_ack_inference_forbidden: true
+
+expiry_utc: 2026-08-09T02:04:00Z
+
+strongest_falsifier: >-
+  S04's red is not canonical if no authoritative S03 route contract requires a route-level
+  replay identity/idempotency/nonce and accepted prior routes do not consistently enforce one.
+  In that case the defect is verifier-gate drift, not the Langfuse WorkItem; do not manufacture
+  a route repair or claim closure.
+
+route_status:
+  direct_codex_ingress: NOT_EXPOSED
+  direct_claude_ingress: NOT_EXPOSED
+  direct_host_shell_ingress: NOT_EXPOSED
+  execution_occurred: false
+  producer_return_consumed: false
+
+honest_flaw: >-
+  This packet can establish only whether the new S04 route-idempotency red is supported by
+  repository contract evidence at the frozen base. It cannot independently validate Langfuse
+  product need, commercial value, or provide binding STOOD/FELL/ConsumerAck, and no direct
+  executor ingress is available in this carrier.
