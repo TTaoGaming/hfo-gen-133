@@ -1,0 +1,249 @@
+---
+schema_id: hfo.gen133.s06_executor_packet.v1
+result: HOLD
+seat: S06_CODE_WORK_PACKET_COMPILER_CODEX_BRIDGE
+callsign: HUGINN_MUNINN_CODEX_BRIDGE
+wip: 1
+valid_time_utc: 2026-08-08T13:22:30Z
+expected_task_id: 6a57972b9df081918680ce67c4ecb197
+observed_task_id: 6a57972b9df081918680ce67c4ecb197
+task_id_match: true
+repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+base_sha_observed_before_write: e3925c61735d2231060e925731cb1287e6813895
+
+self_probe:
+  github_read: true
+  github_write: true
+  slack_write: true
+  native_task_inventory_read: true
+  direct_codex_ingress: false
+  direct_claude_ingress: false
+  direct_host_shell_ingress: false
+  github_new_workflow_dispatch_ingress: false
+  route_attempted: false
+  execution_claimed: false
+  producer_return_consumed: false
+
+selection:
+  work_item_id: S07_KROLL_AGENTIC_SECURITY_AUTOMATION_ACCEPTANCE_GATE_V1
+  changed_claim_commit: 8a0b3f63a358c0c62c9913c581a2497be422d7b4
+  claim_path: projects/gtm-revenue/claims/20260808T131430Z_KROLL_AGENTIC_SECURITY_AUTOMATION_ACCEPTANCE_GATE_ADMISSION.claim.yaml
+  claim_blob_sha1: 73e80d052871bda29f39249c75c8823fe5e2a25a
+  claim_acceptance_sha256: 68a452b51cdd0a051bbf354a109f61943f0f8667e0315ec055ac7150eb82075d
+  claim_expiry_utc: 2026-08-08T17:14:30Z
+  source_commit: 9b6474f302f18a830db2766993006a27b686b7b5
+  source_path: projects/gtm-revenue/research/20260808T122800Z_CHANNEL_PARTNER_KROLL_TARGET_CARD.md
+  source_blob_sha1: 684f91eec8008091fbea6f1bc9ce9756fb50ef38
+  source_evidence_digest_sha256: 8274af460eab25b86bd12642da9366df07874ab6a7de8dc19c50927f20cf5efa
+  source_binding_digest_sha256: 7d277bd8f4a5524f44409feaa990d3279663b7c5b1b333c093c743c733f97732
+  idempotency_sha256: aff1e23e1cf78f16e4139922aef3eb7060e1dc8fb6e4a5588d2f23be57ee142e
+  changed_unexpired_claimed: true
+  duplicate_executor_packet_found_before_write: false
+  producer_task_enabled_observed: true
+  producer_last_run_observed_utc: 2026-08-08T12:27:30.334505Z
+  producer_last_run_predates_claim: true
+
+owner_permission_gate:
+  surface: INTERNAL_GIT_REPOSITORY_AND_OPTIONAL_PUBLIC_READ_ONLY_WEB
+  owner: S07_GTM_PROOF_KIT_BUILDER
+  permission: CLAIM_8a0b3f63a358c0c62c9913c581a2497be422d7b4_T0_RESEARCH_PREP_ONLY
+  allowed_effect: INTERNAL_LOCAL_OR_OPERATOR_CONTROLLED_REPO_CANDIDATE_PREPARATION_ONLY
+  forbidden_effect: SEND_SPEND_DEPLOY_MERGE_EXTERNAL_PUBLICATION_ACCOUNT_SECURITY_CHANGE_OR_REAL_SYSTEM_TEST
+
+executor_goal: >-
+  Reproduce the claim/source bindings and evidence digest, inspect the repository and exact public-source
+  evidence for a stronger already-existing Kroll/APEX/AgentWorks promotion gate, and only if the wedge
+  survives that falsifier, produce exactly one compact public-safe two-minute Kroll Agentic Security
+  Automation Acceptance Card plus one evidence-rich executor return. Do not build the deeper synthetic
+  SOC automation harness.
+
+current_red_evidence:
+  - No candidate for this exact Kroll claim/digest was found before packet compilation.
+  - No direct Codex, Claude, host-shell, or new workflow-dispatch ingress is exposed to S06 this wake.
+  - The claim explicitly leaves carrier-to-GitHub authenticated-actor delegation UNPROVEN.
+  - Kroll already has mature APEX, AI-security testing, AI-governance, managed-service and CrowdStrike delivery capability; equivalence is a live kill condition, not a reason to manufacture differentiation.
+  - No independent STOOD/FELL verdict or ConsumerAck exists for this WorkItem at packet compilation.
+
+allowed_paths:
+  read:
+    - projects/gtm-revenue/claims/20260808T131430Z_KROLL_AGENTIC_SECURITY_AUTOMATION_ACCEPTANCE_GATE_ADMISSION.claim.yaml
+    - projects/gtm-revenue/research/20260808T122800Z_CHANNEL_PARTNER_KROLL_TARGET_CARD.md
+    - projects/gtm-revenue/kits/kroll/**
+    - projects/gtm-revenue/returns/**
+  local_write_if_falsifier_survives:
+    - projects/gtm-revenue/kits/kroll/20260808T132230Z_KROLL_AGENTIC_SECURITY_AUTOMATION_ACCEPTANCE_CARD.md
+    - projects/gtm-revenue/returns/20260808T132230Z_KROLL_AGENTIC_SECURITY_AUTOMATION_ACCEPTANCE_GATE.executor_return.yaml
+
+forbidden_paths:
+  - state/ssot/**
+  - state/identity/**
+  - .github/**
+  - '**/.env*'
+  - '**/secrets/**'
+  - any_path_not_explicitly_allowed_above
+
+required_commands:
+  - id: C01
+    command: "set -euo pipefail"
+    expected: shell_strict_mode
+  - id: C02
+    command: "git status --short"
+    expected: record_preexisting_worktree_state_without_cleaning_it
+  - id: C03
+    command: "git rev-parse --show-toplevel && git branch --show-current && git rev-parse HEAD"
+    expected: record_runtime_repository_branch_and_sha
+  - id: C04
+    command: "git fetch --no-tags origin agent/gen133-bootstrap-20260730"
+    expected: exit_0_or_return_BLOCKED_WITH_exact_network_auth_error
+  - id: C05
+    command: "git cat-file -e e3925c61735d2231060e925731cb1287e6813895^{commit} && git cat-file -e 8a0b3f63a358c0c62c9913c581a2497be422d7b4^{commit} && git cat-file -e 9b6474f302f18a830db2766993006a27b686b7b5^{commit}"
+    expected: all_bound_commits_exist
+  - id: C06
+    command: "git merge-base --is-ancestor 8a0b3f63a358c0c62c9913c581a2497be422d7b4 e3925c61735d2231060e925731cb1287e6813895 && git merge-base --is-ancestor 9b6474f302f18a830db2766993006a27b686b7b5 e3925c61735d2231060e925731cb1287e6813895"
+    expected: exit_0_both_sources_reachable_from_frozen_base
+  - id: C07
+    command: "git show 8a0b3f63a358c0c62c9913c581a2497be422d7b4:projects/gtm-revenue/claims/20260808T131430Z_KROLL_AGENTIC_SECURITY_AUTOMATION_ACCEPTANCE_GATE_ADMISSION.claim.yaml > /tmp/hfo_s06_kroll_claim.yaml && git show 9b6474f302f18a830db2766993006a27b686b7b5:projects/gtm-revenue/research/20260808T122800Z_CHANNEL_PARTNER_KROLL_TARGET_CARD.md > /tmp/hfo_s06_kroll_source.md"
+    expected: exact_frozen_bytes_materialized
+  - id: C08
+    command: "test \"$(git hash-object /tmp/hfo_s06_kroll_claim.yaml)\" = 73e80d052871bda29f39249c75c8823fe5e2a25a && test \"$(git hash-object /tmp/hfo_s06_kroll_source.md)\" = 684f91eec8008091fbea6f1bc9ce9756fb50ef38"
+    expected: exit_0_blob_bindings_reproduce
+  - id: C09
+    command: |-
+      python - <<'PY'
+      import hashlib, pathlib, re, textwrap
+      claim = pathlib.Path('/tmp/hfo_s06_kroll_claim.yaml').read_text(encoding='utf-8').replace('\r\n','\n')
+      source = pathlib.Path('/tmp/hfo_s06_kroll_source.md').read_text(encoding='utf-8').replace('\r\n','\n')
+      m = re.search(r'\n  canonical_text: \|-\n(.*?)\n\nidempotency:\n', claim, re.S)
+      assert m, 'claim canonical_text block missing'
+      canonical = textwrap.dedent(m.group(1))
+      got_accept = hashlib.sha256(canonical.encode()).hexdigest()
+      assert got_accept == '68a452b51cdd0a051bbf354a109f61943f0f8667e0315ec055ac7150eb82075d', got_accept
+      begin='BEGIN_EVIDENCE_PREIMAGE_V1\n'; end='END_EVIDENCE_PREIMAGE_V1'
+      pre = source.split(begin,1)[1].split(end,1)[0]
+      assert pre.endswith('\n')
+      got_evidence = hashlib.sha256(pre.encode()).hexdigest()
+      assert got_evidence == '8274af460eab25b86bd12642da9366df07874ab6a7de8dc19c50927f20cf5efa', got_evidence
+      source_binding='9b6474f302f18a830db2766993006a27b686b7b5|projects/gtm-revenue/research/20260808T122800Z_CHANNEL_PARTNER_KROLL_TARGET_CARD.md|684f91eec8008091fbea6f1bc9ce9756fb50ef38'
+      assert hashlib.sha256(source_binding.encode()).hexdigest() == '7d277bd8f4a5524f44409feaa990d3279663b7c5b1b333c093c743c733f97732'
+      idem='S07_KROLL_AGENTIC_SECURITY_AUTOMATION_ACCEPTANCE_GATE_V1|9b6474f302f18a830db2766993006a27b686b7b5|projects/gtm-revenue/research/20260808T122800Z_CHANNEL_PARTNER_KROLL_TARGET_CARD.md|684f91eec8008091fbea6f1bc9ce9756fb50ef38|68a452b51cdd0a051bbf354a109f61943f0f8667e0315ec055ac7150eb82075d'
+      assert hashlib.sha256(idem.encode()).hexdigest() == 'aff1e23e1cf78f16e4139922aef3eb7060e1dc8fb6e4a5588d2f23be57ee142e'
+      print('acceptance_sha256', got_accept)
+      print('evidence_sha256', got_evidence)
+      print('source_binding_sha256', hashlib.sha256(source_binding.encode()).hexdigest())
+      print('idempotency_sha256', hashlib.sha256(idem.encode()).hexdigest())
+      PY
+    expected: four_digest_bindings_reproduce_exactly
+  - id: C10
+    command: "git grep -n -I -E 'Kroll|APEX|AgentWorks|Agentic Security Automation Acceptance|delegated principal|promotion gate' e3925c61735d2231060e925731cb1287e6813895 -- projects/gtm-revenue/kits projects/gtm-revenue/returns projects/gtm-revenue/research || true"
+    expected: inspect_for_existing_equivalent_before_writing
+  - id: C11
+    command: "for u in 'https://www.kroll.com/en/events/2026/kroll-at-fal-con' 'https://www.kroll.com/en/newsroom/kroll-crowdstrike-partnership-joint-innovation-customer-outcomes-award-win' 'https://www.kroll.com/en/publications/cyber/regulatory-cliff-edge' 'https://www.kroll.com/en/services/cyber/cybersecurity-transformation/ai-risk-management' 'https://www.kroll.com/en/services/cyber/crowdstrike-partnership'; do curl -L --fail --silent --show-error --max-time 20 \"$u\" -o /tmp/\"$(printf %s \"$u\" | sha256sum | cut -d' ' -f1)\".html || exit 41; done"
+    expected: public_read_only_source_fetch_or_return_BLOCKED_no_claim_of_current_equivalence_check
+  - id: C12
+    command: "grep -RniE 'APEX|AgentWorks|ROI|authority|delegat|human|rollback|trace|evidence|cost|token|held-out|promotion' /tmp/*.html | head -n 250 || true"
+    expected: record_public_text_signals_used_for_equivalence_falsifier
+  - id: C13
+    command: "test ! -e projects/gtm-revenue/kits/kroll/20260808T132230Z_KROLL_AGENTIC_SECURITY_AUTOMATION_ACCEPTANCE_CARD.md && test ! -e projects/gtm-revenue/returns/20260808T132230Z_KROLL_AGENTIC_SECURITY_AUTOMATION_ACCEPTANCE_GATE.executor_return.yaml"
+    expected: no_overwrite
+  - id: C14
+    command: "test -f projects/gtm-revenue/kits/kroll/20260808T132230Z_KROLL_AGENTIC_SECURITY_AUTOMATION_ACCEPTANCE_CARD.md && test -f projects/gtm-revenue/returns/20260808T132230Z_KROLL_AGENTIC_SECURITY_AUTOMATION_ACCEPTANCE_GATE.executor_return.yaml"
+    expected: run_only_if_falsifier_survives_and_files_were_created
+  - id: C15
+    command: |-
+      python - <<'PY'
+      from pathlib import Path
+      p=Path('projects/gtm-revenue/kits/kroll/20260808T132230Z_KROLL_AGENTIC_SECURITY_AUTOMATION_ACCEPTANCE_CARD.md')
+      s=p.read_text(encoding='utf-8')
+      required=[
+        'WHY_THIS_MAY_MATTER','HOW_TO_USE_IN_2_MINUTES','expected value','held-out','delegated principal',
+        'allowed tools','allowed data','allowed actions','per-action authority','human escalation','model/token cost',
+        'trace/evidence','failure fallback','rollback','exact automation','useful automation outside authority',
+        'cheaper route that drops a held-out detection','tool action without a delegated principal',
+        'missing trace/evidence','passes quality but exceeds the economic threshold','strongest falsifier',
+        'Baseline and savings are unknown'
+      ]
+      miss=[x for x in required if x.lower() not in s.lower()]
+      assert not miss, miss
+      urls=[
+        'https://www.kroll.com/en/events/2026/kroll-at-fal-con',
+        'https://www.kroll.com/en/newsroom/kroll-crowdstrike-partnership-joint-innovation-customer-outcomes-award-win',
+        'https://www.kroll.com/en/publications/cyber/regulatory-cliff-edge',
+        'https://www.kroll.com/en/services/cyber/cybersecurity-transformation/ai-risk-management',
+        'https://www.kroll.com/en/services/cyber/crowdstrike-partnership']
+      assert all(u in s for u in urls)
+      forbidden=['Kroll has a gap','Kroll needs outside help','Robb Mayeski is the buyer','guaranteed savings','production improvement proven']
+      bad=[x for x in forbidden if x.lower() in s.lower()]
+      assert not bad, bad
+      print('candidate_static_gate=PASS')
+      PY
+    expected: candidate_contains_required_controls_without_known_overclaim_phrases
+  - id: C16
+    command: "git diff --check -- projects/gtm-revenue/kits/kroll/20260808T132230Z_KROLL_AGENTIC_SECURITY_AUTOMATION_ACCEPTANCE_CARD.md projects/gtm-revenue/returns/20260808T132230Z_KROLL_AGENTIC_SECURITY_AUTOMATION_ACCEPTANCE_GATE.executor_return.yaml"
+    expected: exit_0
+  - id: C17
+    command: "git status --short -- projects/gtm-revenue/kits/kroll/20260808T132230Z_KROLL_AGENTIC_SECURITY_AUTOMATION_ACCEPTANCE_CARD.md projects/gtm-revenue/returns/20260808T132230Z_KROLL_AGENTIC_SECURITY_AUTOMATION_ACCEPTANCE_GATE.executor_return.yaml && git diff -- projects/gtm-revenue/kits/kroll/20260808T132230Z_KROLL_AGENTIC_SECURITY_AUTOMATION_ACCEPTANCE_CARD.md projects/gtm-revenue/returns/20260808T132230Z_KROLL_AGENTIC_SECURITY_AUTOMATION_ACCEPTANCE_GATE.executor_return.yaml"
+    expected: capture_exact_changed_paths_and_bytes_for_direct_return
+
+acceptance_tests:
+  - AT01: Runtime reports runtime/provider/model, repository, observed branch, observed HEAD SHA, and whether checkout is detached.
+  - AT02: Claim blob, source blob, acceptance SHA-256, source evidence SHA-256, source-binding SHA-256, and idempotency SHA-256 all reproduce exactly.
+  - AT03: Executor records the exact stdout/stderr and exit code for every C01-C17 command actually attempted; skipped commands are explicitly SKIPPED_WITH_REASON.
+  - AT04: Strongest falsifier is tested before candidate creation; equivalent current Kroll/APEX/AgentWorks low-overhead cross-control promotion coverage causes HOLD and no candidate bytes.
+  - AT05: If the falsifier survives, exactly one candidate exists at the allowed kit path and contains the full ROI x authority x reliability x evidence promotion matrix plus all five negative controls.
+  - AT06: Kroll-specific pain remains explicitly hypothetical; no invented baseline, savings, incident, backlog, buyer intent, procurement signal, or production outcome.
+  - AT07: Candidate carries all five exact public source URLs, assumptions, measurable metric definition, strongest falsifier, and at most one operator-reviewed no-send relationship note.
+  - AT08: No path outside the two allowed local-write paths is changed by the executor.
+  - AT09: No send, spend, deployment, merge, publication, account/security change, credential use, private/customer data use, or real-system security test occurs.
+  - AT10: Executor return names runtime/model, branch/SHA, changed paths, exact commands, exit codes, outputs, blockers, rollback, expiry, verifier, consumer, and one honest flaw; absence of any field makes the return non-consumable by S06.
+  - AT11: Same-provider S04 structural preflight, if later produced, is binding_weight=0 and is not represented as independent STOOD/FELL or ConsumerAck.
+
+effect_ceiling:
+  level: T0_RESEARCH_PREP_ONLY
+  network_read: PUBLIC_GET_ONLY_TO_THE_FIVE_BOUND_KROLL_URLS
+  repository_write: LOCAL_CANDIDATE_AND_RETURN_ONLY_IF_FALSIFIER_SURVIVES
+  external_effects: NONE
+
+ceilings:
+  time_minutes: 25
+  direct_cost_usd: 0
+  paid_api_calls: 0
+  output_count_max: 2
+
+rollback:
+  if_uncommitted: >-
+    Leave pre-existing worktree state untouched. Remove only the two newly created allowed-path files if this executor created them and validation failed; never clean/reset unrelated paths.
+  if_local_commit_created_by_executor_runtime: >-
+    Do not push, merge, force-update, rewrite history, or delete shared refs. Report the local commit SHA and mark it NOT_PUBLISHED; rollback is append-only supersession or operator-directed disposal of the isolated local worktree.
+  shared_history_rewrite: forbidden
+
+verifier:
+  seat: S04_HRIST_STRUCTURAL_PREFLIGHT
+  task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  class: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+consumer:
+  seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  task_id: 6a539fc5130c81918c13624739fb2a60
+expiry_utc: 2026-08-08T17:14:30Z
+
+strongest_falsifier: >-
+  Kill this wedge if Kroll's current APEX/AgentWorks delivery process already binds the use-case ROI
+  decision to versioned held-out quality thresholds, per-action authority, human escalation, model/token
+  cost limits, trace/evidence completeness and rollback for the exact promoted automation with low
+  delivery overhead. In that case this gift is redundant.
+
+route:
+  direct_ingress_available: false
+  disposition: DO_NOT_ROUTE
+  reason: >-
+    S06 can write/read GitHub, post Slack, and read native task inventory, but no direct Codex, Claude,
+    host-shell, or new workflow-dispatch execution surface is exposed. A Slack pointer or scheduled-task
+    existence is not execution evidence.
+
+honest_flaw: >-
+  This packet is a compiler artifact, not execution. Its frozen base SHA was the newest canonical commit
+  observed immediately before the write, but concurrent seats may advance the branch after that observation.
+  Public Kroll pages can change or reject curl, so failure to fetch them must remain BLOCKED rather than being
+  laundered into a passed equivalence check. Even a clean candidate would prove only internal artifact quality,
+  not Kroll demand, buyer intent, delivery benefit, independent verification, ConsumerAck, or revenue.
