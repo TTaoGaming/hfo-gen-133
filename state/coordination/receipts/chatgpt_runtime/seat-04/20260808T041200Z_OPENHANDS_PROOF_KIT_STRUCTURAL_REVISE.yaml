@@ -1,0 +1,130 @@
+schema_id: hfo.gen133.s04.structural_preflight.v1
+result: REVISE
+terminal_receipt: false
+seat: S04_HRIST_STRUCTURAL_PREFLIGHT
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-08T04:12:00Z
+correlation_id: GTM-S07-OPENHANDS-RETURN-20260808T032400Z
+
+self_probe:
+  expected_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  observed_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  task_id_match: true
+  task_enabled_observed: true
+  github_branch_observed: agent/gen133-bootstrap-20260730
+  github_read_available: true
+  github_write_available: true
+  slack_write_available: true
+  task_mutation_performed: false
+
+selection:
+  route_commit: b705b0ccda794396fbc0d7565f9cd321721e76b1
+  route_path: state/coordination/receipts/chatgpt_runtime/seat-03/20260808T040647Z_OPENHANDS_PROOF_KIT_HOLD_TO_S04.yaml
+  route_git_blob_sha1: 33439032a1338e574bb2fc8b7a2646cff519d610
+  selected_work_item_id: S07_OPENHANDS_ENTERPRISE_AGENT_PROMOTION_GATE_V1
+  selected_authoring_seat: S07_GTM_PROOF_KIT_BUILDER
+  addressed_to_s04: true
+  authored_by_s04: false
+  material_change_since_prior_s04: true
+
+bindings:
+  producer_return:
+    commit: 270c0c102132a0331a7b816cbe361f75938d6032
+    path: projects/gtm-revenue/returns/20260808T032400Z_S07_OPENHANDS_PROOF_KIT_RETURN.md
+    git_blob_sha1: f7bbd15b844d7b9a7d124a5c3795a91f5fbf67b7
+    canonical_branch_blob_match: true
+  claim:
+    path: projects/gtm-revenue/claims/20260808T030401Z_OPENHANDS_ENTERPRISE_AGENT_PROMOTION_GATE_ADMISSION.claim.yaml
+    git_blob_sha1: 35bbaba7f313552ca27489f26689ff162f2a1a68
+    canonical_branch_blob_match: true
+  target_card:
+    commit: 07e1ee8571dd3a7de4e74992d43cab9db9465a5b
+    path: projects/gtm-revenue/research/20260808T023517Z_JOB_EMPLOYER_OPENHANDS_TARGET_CARD.md
+    git_blob_sha1: f6c3fb7bd9bc7748735ee3bb6ae521bdaeab6eed
+    canonical_branch_blob_match: true
+    evidence_digest_sha256: 9d438c8653b5dfa2e1891b61327908cfee34d3ff515c144057cf49baf2531390
+  candidate:
+    commit: faba4d93d3ecb626a235c809fadb8907ba1c7387
+    path: projects/gtm-revenue/kits/openhands/20260808T032300Z_ENTERPRISE_AGENT_PROMOTION_GATE.md
+    git_blob_sha1: d3d1017eb00dc415953ccc0f5b9ec42d0bc648e0
+    canonical_branch_blob_match: true
+
+recomputation:
+  source_binding:
+    canonicalization: UTF8_LITERAL_PREIMAGE
+    utf8_bytes: 166
+    sha256: 06deb418859571075945501fdae4f1e1b235b82a5bd7398290d6fe5f26323542
+    matches_claim: true
+  acceptance:
+    canonicalization: UTF8_LF_NO_TERMINAL_LF
+    utf8_bytes: 3436
+    sha256: 58928b6e9729df1eb882b0325e8e706e66ae9a0d1113e6a40b7b80946a201678
+    matches_claim: true
+  idempotency:
+    canonicalization: UTF8_LITERAL_PREIMAGE
+    utf8_bytes: 280
+    sha256: e538da2aeef7d0f29803975519d13f20112478eb0d8f38cc667f719311323c66
+    matches_claim: true
+  target_card_evidence_digest:
+    sha256: 9d438c8653b5dfa2e1891b61327908cfee34d3ff515c144057cf49baf2531390
+    canonical_preimage_present_in_durable_target_card: false
+    canonicalization_rule_present_in_durable_target_card: false
+    independently_recomputable_from_bound_card: false
+
+structural_checks:
+  schema_and_source_pointers: PASS
+  freshness: PASS
+  claim_lease_expiry_utc: 2026-08-08T07:04:01Z
+  source_horizon_expiry_utc: 2026-08-14T14:08:00Z
+  claim_unexpired_at_valid_time: true
+  source_unexpired_at_valid_time: true
+  authority: PASS_WITH_UNPROVEN_ACTOR_BINDING
+  producer_effect_ceiling: T0_RESEARCH_PREP_ONLY
+  external_send_authority: NONE
+  external_effects_declared: NONE
+  task_binding: PASS
+  actor_carrier_separation: UNPROVEN_NOT_CONFLATED
+  carrier_to_github_actor_binding: UNPROVEN
+  idempotency: PASS
+  privacy: PASS_PUBLIC_SOURCES_ONLY
+  rollback: PASS_APPEND_ONLY_SUPERSESSION
+  candidate_delete_requires_explicit_operator_authorization: true
+  permanent_deletion_authorized: false
+  verifier: S04_HRIST_STRUCTURAL_PREFLIGHT
+  verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  consumer: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  consumer_task_id: 6a539fc5130c81918c13624739fb2a60
+  explicit_consumer_ack: absent
+  exact_digest_bound_independent_STOOD_or_FELL: absent
+
+strongest_fake_green_mutant:
+  mutant_id: X14_MUTANT_174_d588b7bb9ab3
+  commit: 9a614b40c3420ae7f44d348fb802e855e10835de
+  path: state/coordination/experiments/false_green_x14/quarantine/20260808T035205Z_X13_AUTHORITY_ESCALATION.mutant.yaml
+  git_blob_sha1: 3e0600d5de7ec53b4ffa4f58f72e68158c91fb3a
+  mutation_class: AUTHORITY_ESCALATION
+  source_commit: d98589be2b88d237fbbd61ce025b5b360317ddcc
+  source_path: state/coordination/experiments/cots_connector_x13/20260808T034800Z_DRIVE_METADATA_DOCUMENT_SEARCH_PHASE3_EMPTY_SUCCESS.md
+  source_git_blob_sha1: b1a0f588e6843b8ada17756ff7d8ae3611d55f16
+  overlay_canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  overlay_utf8_bytes: 1494
+  overlay_sha256: d588b7bb9ab3b1d6defa89f3cf4bd2bd3ee83e601aebc4bcf020c522b266d784
+  overlay_digest_recomputed_match: true
+  original_value_exact_source_match: false
+  exact_source_mismatch: MUTANT_USES_PARENT_IDS_OR_PAGE_TOKENS_WHILE_BOUND_SOURCE_HAS_PARENT_IDS_OR_SPACE_PAGE_TOKENS
+  authority_escalation_caught: true
+  rejection_reason: MUTANT_ORIGINAL_VALUE_IS_NOT_EXACT_SOURCE_AND_MUTATED_VALUE_ESCALATES_EXPLICIT_READONLY_PERMISSION_TO_UNAUTHORIZED_DRIVE_READWRITE_SHARE_AUTHORITY
+
+decision:
+  result: REVISE
+  reason: TARGET_CARD_EVIDENCE_DIGEST_IS_PROPAGATED_AND_BOUND_BUT_HAS_NO_DURABLE_CANONICAL_PREIMAGE_OR_CANONICALIZATION_RULE_FOR_INDEPENDENT_RECOMPUTATION
+  secondary_observation: CARRIER_TO_GITHUB_ACTOR_BINDING_REMAINS_UNPROVEN_BUT_IS_DISCLOSED_AND_NOT_CONFLATED
+  same_provider_status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  independent_verification_closed: false
+  terminal_receipt_created: false
+  candidate_edited: false
+  task_mutated: false
+  external_effect_performed: false
