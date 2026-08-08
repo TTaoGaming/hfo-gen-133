@@ -1,8 +1,8 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_DRIVE_FIXED_IMPOSSIBLE_MARKER_METADATA_SEARCH_V1
-current_version: 168
-accepted_wakes: 0
+current_version: 169
+accepted_wakes: 1
 target_wakes_before_decision: 4
 controlled_factor: drive_read_surface
 campaign_status: ACTIVE
@@ -10,15 +10,20 @@ current_disposition: null
 baseline_result: gmail_fixed_impossible_marker_id_search_surface_kept_4_of_4_with_zero_sanitized_results_and_no_continuation
 hypothesis: a_fixed_impossible_marker_drive_metadata_only_search_can_execute_without_file_content_fetch_and_return_only_sanitized_result_count_and_continuation_metadata
 measured_result:
-  query_runs: []
-  permission_class: UNMEASURED
+  query_runs:
+    - wake: 1
+      execution_success: true
+      sanitized_result_count: 0
+      continuation_present: false
+      latency_ms_exposed: 2750
+  permission_class: AUTHENTICATED_DRIVE_METADATA_SEARCH_READ_AVAILABLE
   error_class: NONE
   operator_relay_minutes: 0
-  changed_capability: false
+  changed_capability: true
   campaign_decision: false
   andon: false
-supported_claim: unmeasured_drive_metadata_only_search_surface
-claim_ceiling: no_drive_capability_claim_until_an_accepted_probe_is_written_pointer_advanced_and_read_back
+supported_claim: one_authenticated_drive_metadata_only_document_search_executed_without_content_fetch_and_returned_zero_sanitized_results
+claim_ceiling: does_not_establish_drive_completeness_recall_index_freshness_file_content_access_source_authenticity_or_independent_verification
 strongest_falsifier: the_fixed_impossible_marker_search_requires_content_fetch_or_mutation_cannot_execute_or_exposes_content_beyond_the_sanitized_measurement_contract
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 consumer: [Reginleif, Ratatoskr]
@@ -29,20 +34,20 @@ prior_campaign:
   supported_claim: four_authenticated_bounded_gmail_message_id_searches_executed_with_zero_sanitized_results_and_no_continuation
   accepted_wakes: 4
 last_event:
-  commit: c746990b6c22f9241053286315f74f3112b99ca5
-  path: state/coordination/experiments/carrier_surface_x11/events/20260808T023906Z_GMAIL_FIXED_IMPOSSIBLE_MARKER_ID_SEARCH_V1_WAKE_04_DECISION_KEEP.yaml
-  blob: 79b7a47dfa5866826cdc25f7ff9f6294836867ee
+  commit: 11cf4d19b2d3719854c97774ee546ab63a4507a7
+  path: state/coordination/experiments/carrier_surface_x11/events/20260808T034059Z_DRIVE_FIXED_IMPOSSIBLE_MARKER_METADATA_SEARCH_V1_WAKE_01.yaml
+  blob: aeabdca9a74cbf482dede916843f283663222cf2
 next_factor: drive_read_surface
 next_probe:
   experiment_id: X11_DRIVE_FIXED_IMPOSSIBLE_MARKER_METADATA_SEARCH_V1
-  campaign_wake: 1
+  campaign_wake: 2
   mode: read_only_fixed_impossible_marker_metadata_search
   exact_query: '__HFO_X11_FIXED_IMPOSSIBLE_MARKER_6A55089A9ADC8191BDA54541F7F9EFFA__'
   topn: 1
   item_type: document
   best_effort_fetch: false
   persist_only: [execution_success, sanitized_result_count, continuation_present, permission_class, error_class, latency_when_exposed, operator_relay_minutes]
-  expected_current_version: 168
-updated_valid_time_utc: 2026-08-08T02:39:06Z
+  expected_current_version: 169
+updated_valid_time_utc: 2026-08-08T03:40:59Z
 sealed: false
 ---
