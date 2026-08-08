@@ -1,0 +1,188 @@
+schema_id: hfo.gen133.s04.structural_preflight.v1
+result: REVISE
+terminal_receipt: false
+seat: S04_HRIST_STRUCTURAL_PREFLIGHT
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-08T05:10:25Z
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+
+self_probe:
+  expected_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  observed_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  task_id_match: true
+  task_enabled_observed: true
+  github_read_available: true
+  github_write_available: true
+  task_inventory_read_available: true
+  task_mutation_performed: false
+
+selection:
+  selection_cutoff_utc: 2026-08-08T05:10:25Z
+  newest_eligible_route_commit_observed: 4f546790ec1a16ec22b54c84394ceaded77f7504
+  route_path: state/coordination/receipts/chatgpt_runtime/seat-03/20260808T050644Z_EDWARD_JONES_PROOF_KIT_HOLD_TO_S04.yaml
+  route_git_blob_sha1: b033afedebb00771eba7b58c2986bdfe1aec75b7
+  route_authoring_seat: S03
+  not_authored_by_s04: true
+  addressed_to_s04: true
+  addressed_s04_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  correlation_id: GTM-S07-EDWARD_JONES-RETURN-20260808T042221Z
+  work_item_id: S07_EDWARD_JONES_AGENT_NHI_LIFECYCLE_GATE_V1
+
+exact_source_bindings:
+  producer_return:
+    commit: e233ee24a069544b18be6a1ba6b92ed85464091b
+    path: projects/gtm-revenue/returns/20260808T042221Z_S07_EDWARD_JONES_PROOF_KIT_RETURN.md
+    git_blob_sha1: acf8d4ad17a4504206dc439c145232638b42c96a
+    commit_path_blob_readback_match: true
+  admission_claim:
+    commit: 91e8119c605f62c4c524532117115893c2a835fd
+    path: projects/gtm-revenue/claims/20260808T040534Z_EDWARD_JONES_AGENT_NHI_LIFECYCLE_GATE_ADMISSION.claim.yaml
+    git_blob_sha1: c70e8e1707c6482ecf6c7aee6bb5384225dae105
+    commit_path_blob_readback_match: true
+  target_card:
+    commit: dbb2a9982d2aedb3fb4b3021e3ebbd1b8b7106fa
+    path: projects/gtm-revenue/research/20260808T032943Z_ENTERPRISE_BUYER_EDWARD_JONES_TARGET_CARD.md
+    git_blob_sha1: 90681e969b1365d0d9336b2875dbfe9cf1ce81f1
+    commit_path_blob_readback_match: true
+    evidence_digest_sha256: 498235d11dbd04d8ee4080784a2327041246a5cd3e1bcaddcf94a60a423450df
+  candidate:
+    commit: 1a38228f3c0c832245ffb455360dbc2b8b55ca60
+    path: projects/gtm-revenue/kits/edward-jones/20260808T042221Z_AGENT_NHI_LIFECYCLE_GATE.md
+    git_blob_sha1: b47f38d636b34fd69e66d3a3da23222ee89b9cd7
+    commit_path_blob_readback_match: true
+
+recomputation:
+  candidate_full_bytes:
+    canonicalization: EXACT_UTF8_LF_BYTES_AS_GITHUB_BLOB
+    byte_count: 5958
+    sha256: d01521e16fa723b8381fa87b79a7e1ab69bd81b26c7db3c23789d9f505aa523d
+    recomputed_git_blob_sha1: b47f38d636b34fd69e66d3a3da23222ee89b9cd7
+    matches_bound_candidate: true
+  source_binding:
+    canonicalization: EXACT_LITERAL_PIPE_JOINED_PREIMAGE
+    canonical_preimage_utf8_bytes: 173
+    sha256: 245cb4b4214573a2a44c799b118cf373079b944d45c49b33a07e18e6969c2252
+    matches_claim: true
+  acceptance_test:
+    canonicalization: UTF8_LF_NO_TERMINAL_LF
+    canonical_preimage_utf8_bytes: 3381
+    sha256: 040da0d7f1ba21ddc4911343fa06d9ff8684cdd4d98d5c5f2b6bc5a932532778
+    matches_claim: true
+  idempotency:
+    canonicalization: EXACT_LITERAL_PIPE_JOINED_PREIMAGE
+    canonical_preimage_utf8_bytes: 283
+    sha256: 96efc33bf4a38b7cc6301c28447e465b1b913c00f4b0bdd6ea7e35c728adf955
+    matches_claim: true
+  target_card_evidence_digest:
+    claimed_sha256: 498235d11dbd04d8ee4080784a2327041246a5cd3e1bcaddcf94a60a423450df
+    canonical_preimage_present: false
+    canonicalization_rule_present: false
+    independently_recomputable: false
+    disposition: REVISE
+
+structural_checks:
+  schema:
+    route: PASS
+    producer_return: PASS
+    admission_claim: PASS
+    target_card: PASS_WITH_DIGEST_GAP
+    candidate: PASS
+  freshness:
+    claim_expiry_utc: 2026-08-08T08:05:34Z
+    claim_fresh_at_valid_time: true
+    source_expiry_utc: 2026-08-13T12:00:00Z
+    source_fresh_at_valid_time: true
+  authority:
+    claim_effect_ceiling: T0_RESEARCH_PREP_ONLY
+    candidate_effect_ceiling: T0_RESEARCH_PREP_ONLY
+    producer_return_no_world_effect_boundary_present: true
+    external_send_authority: NONE
+    unauthorized_world_effect_observed: false
+  task_binding:
+    s07_expected_task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+    s07_provider_enabled_observed: true
+    s04_expected_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+    s04_provider_enabled_observed: true
+    s03_expected_task_id: 6a539fc5130c81918c13624739fb2a60
+    s03_provider_enabled_observed: true
+    producer_return_runtime_native_task_id_readback: UNAVAILABLE_TO_PRODUCER_SURFACE
+  actor_carrier_separation:
+    claim_carrier_to_github_actor_binding: UNPROVEN
+    authenticated_github_actor_to_s07_carrier_delegation_bound: false
+    carrier_identity_conflated_with_github_actor: false
+    disposition: REVISE_UNPROVEN_ACTOR_BINDING
+  idempotency:
+    claim_idempotency_digest_recomputed: true
+    duplicate_same_key_authorized: false
+  lease_expiry:
+    claim_lease_fresh: true
+    renewal_allowed: false
+  privacy:
+    target_card: PUBLIC_SOURCES_ONLY
+    candidate: PUBLIC_SOURCES_ONLY
+    private_data_observed_in_candidate: false
+    external_reuse_authority_created: false
+    disposition: PASS_AT_T0_INTERNAL_PREP_CEILING
+  rollback:
+    append_only_supersession: true
+    candidate_delete_path_bound: projects/gtm-revenue/kits/edward-jones/20260808T042221Z_AGENT_NHI_LIFECYCLE_GATE.md
+    permanent_deletion_authorized: false
+    external_rollback_needed: false
+  verifier:
+    structural_verifier: S04_HRIST_STRUCTURAL_PREFLIGHT
+    same_provider_nonbinding: true
+    binding_weight: 0
+    may_emit_independent_STOOD_or_FELL: false
+  consumer:
+    next_consumer: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+    explicit_consumer_ack_observed: false
+    implicit_consumer_ack_forbidden: true
+
+candidate_content_checks:
+  nine_required_lifecycle_checks_present: true
+  five_required_negative_controls_present: true
+  why_this_may_matter_present: true
+  how_to_use_in_2_minutes_present: true
+  source_backed_facts_separated_from_hypotheses: true
+  unknown_baseline_preserved: true
+  strongest_falsifier_present: true
+  unsupported_savings_incident_compliance_outcome_claim_observed: false
+  optional_relationship_note_marked_no_send: true
+
+strongest_fake_green_mutant:
+  mutant_id: X14_MUTANT_175_4a7ed58db130
+  mutation_class: PRIVACY_MARKER
+  mutant_commit: 1e5fa2f2656967ba5d634892854b490162893ab9
+  source_blob_sha1: f79578a50dab4a48971ca9218f8358c3b5bddffe
+  source_full_utf8_bytes: 1435
+  source_git_blob_sha1_recomputed: f79578a50dab4a48971ca9218f8358c3b5bddffe
+  source_receipt_core_canonicalization: SHA256_SORTED_COMPACT_UTF8_OF_RECEIPT_CORE
+  source_receipt_core_utf8_bytes: 1258
+  source_receipt_core_sha256_recomputed: a69ef143f9017d1fa29945d0d4065369a08fa8d2698f6a3090cf252afe7fff7b
+  canonical_overlay_utf8_bytes: 240
+  canonical_overlay_sha256_recomputed: 4a7ed58db1305378583152668926dac6e5939f6fa51dd1d6f3f5d77614b9e8f7
+  source_privacy_marker_present: false
+  source_declassification_or_publication_authority_present: false
+  mutated_claim: PUBLIC_SAFE_NO_REDACTION_REQUIRED_FOR_EXTERNAL_REUSE
+  verdict: REVISE
+  rejection_reason: INVENTED_PUBLIC_SAFE_MARKER_HAS_NO_SOURCE_BOUND_PRIVACY_REVIEW_OR_EXTERNAL_REUSE_AUTHORITY
+
+decision:
+  result: REVISE
+  controlling_reasons:
+    - TARGET_CARD_EVIDENCE_DIGEST_LACKS_DURABLE_CANONICAL_PREIMAGE_AND_CANONICALIZATION_RULE_SO_CANNOT_BE_INDEPENDENTLY_RECOMPUTED
+    - PRODUCER_CARRIER_TO_GITHUB_ACTOR_DELEGATION_REMAINS_UNPROVEN;PROVIDER_TASK_EXISTENCE_DOES_NOT_AUTHENTICATE_THE_GITHUB_WRITER
+  noncontrolling_open_state:
+    - NO_EXACT_DIGEST_BOUND_INDEPENDENT_STOOD_OR_FELL
+    - NO_EXPLICIT_NAMED_CONSUMER_ACK
+  candidate_edited: false
+  self_grading_performed: false
+  terminal_receipt_created: false
+  independent_quorum_claimed: false
+
+honest_flaw: >-
+  This preflight independently recomputed the candidate full-byte SHA-256/Git blob, the claim source-binding, acceptance and idempotency digests, and the newest X14 mutant overlay/source receipt digest. Exact Git commit/path/blob readbacks bind the other immutable files. The target-card evidence digest itself remains non-reproducible because the card stores neither its canonical preimage nor its canonicalization rule. Same-provider provider inventory confirms task existence/enabled state but does not authenticate which GitHub principal produced the S07 writes, so actor/carrier attribution remains intentionally unproven.
