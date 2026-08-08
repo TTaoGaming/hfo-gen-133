@@ -1,0 +1,81 @@
+---
+schema_id: hfo.gen133.x14.false_green_mutant.v1
+mutant_id: X14_MUTANT_194_ba9423296671
+experiment_id: X14_FALSE_GREEN_MUTATION_001
+campaign_ordinal: 49
+campaign_wake: 1
+wip: 1
+quarantine: true
+executable: false
+authoring_seat: X14_FALSE_GREEN_MUTATION_AND_QA_LAB
+carrier_task_id: 6a513e4d9c4c81919db728f85db2dd79
+valid_time_utc: '2026-08-08T23:52:35Z'
+expires_utc: '2026-08-09T03:52:35Z'
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+
+source_binding:
+  source_commit: 9e8598507e2acaa9f9b8b9adfa5fd81b943b18d7
+  source_path: state/coordination/experiments/durable_object_x12/slack_receipts/20260808T234410Z_C42_W2_V180_2fe3b490c1d9.json
+  source_git_blob_sha1: b125df0966ebcf0e02686989154d15517458a9cf
+  source_digest_kind: GIT_BLOB_SHA1
+  source_digest: b125df0966ebcf0e02686989154d15517458a9cf
+  source_authoring_seat: X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+  source_task_id: 6a506f83df208191815dd17a8fd5baa3
+  source_campaign_id: X12_STALE_CONCURRENT_WRITER_SIMULATION_C42
+  source_wake: C42_WAKE_2_OF_4
+  source_version: 180
+  source_artifact_type: IMMUTABLE_SLACK_DELIVERY_RECEIPT
+  source_delivery_send_count: 1
+  source_postread_marker_confirmed: true
+  source_consumer_ack_claimed: false
+  source_exactly_once_claimed: false
+  source_consumer: Reginleif/Olrun
+  source_claim_ceiling: ONE_BOUNDED_SLACK_DELIVERY_WITH_MARKER_CONFIRMATION_NOT_END_TO_END_PASS_NOT_EXACTLY_ONCE_NOT_CONSUMER_ACK
+  prior_x14_mutation_at_source_digest_before_write: false
+
+mutation:
+  mutation_class: UNSUPPORTED_PASS_OUTCOME
+  mutation_subcase: X12_DELIVERY_RECEIPT_FALSELY_PROMOTED_TO_END_TO_END_PASS
+  exactly_one_mutated_field: outcome
+  original_value: ABSENT
+  mutated_value: PASS_END_TO_END
+  canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_json: '{"outcome":"PASS_END_TO_END"}'
+  canonical_overlay_utf8_bytes: 29
+  canonical_overlay_sha256: ba9423296671956c457c7d6b9a0c4ff423f57bf9b4888d2c3a5895989e7ad5d9
+
+expected_rejection:
+  expected_verdict: REVISE
+  expected_rejection_reason: EXACT_SOURCE_IS_ONLY_A_SINGLE_SLACK_DELIVERY_RECEIPT_WITH_MARKER_CONFIRMATION;SOURCE_EXPLICITLY_SETS_CONSUMER_ACK_CLAIMED_FALSE_AND_EXACTLY_ONCE_CLAIMED_FALSE;NO_DISTINCT_END_TO_END_VERIFIER_VERDICT_OR_CONSUMER_ACK_IS_BOUND;REJECT_PROMOTION_OF_TRANSPORT_RECEIPT_TO_PASS_END_TO_END
+  named_gate: S04_UNSUPPORTED_PASS_OUTCOME_EXACT_SOURCE_COMMIT_PATH_BLOB_DELIVERY_CLAIM_CEILING_CONSUMER_ACK_EXACTLY_ONCE_DISTINCT_VERDICT_EXPIRY_VERIFIER_GATE
+  invariant_under_test: A_TRANSPORT_DELIVERY_RECEIPT_MUST_NOT_BE_PROMOTED_TO_END_TO_END_PASS_WITHOUT_A_DISTINCT_SOURCE_BOUND_VERDICT_AND_REQUIRED_CONSUMER_ACK
+
+routing:
+  structural_preflight: S04_STRUCTURAL_PREFLIGHT
+  structural_verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  distinct_falsification: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  distinct_verifier_task_id: 6a539fb148bc8191a30b6009dbf22438
+  distinct_verifier_evidence_ceiling: SAME_PROVIDER_ADVISORY_NONBINDING_WEIGHT_0
+  consumer:
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+    - Reginleif/Olrun
+  route_effect_ceiling: ONE_SANITIZED_INTERNAL_SLACK_POINTER_AFTER_GIT_READBACK
+
+world_effect_ceiling:
+  source_edit: false
+  task_mutation: false
+  send_external: false
+  spend: false
+  deployment: false
+  merge: false
+  publication: false
+  account_or_security_change: false
+  secret_exposure: false
+  permanent_deletion: false
+  independent_quorum_claim: false
+
+honest_flaw: >-
+  This is an intentionally easy unsupported-PASS mutant because the selected X12 receipt explicitly keeps both consumer_ack_claimed and exactly_once_claimed false. A stronger assay should start from a legitimate partial PASS or verifier result and corrupt exactly one outcome scope, stage boundary, accepted source digest, verifier identity, expiry, or ConsumerAck dependency while keeping the rest plausible. Same-provider S04/S09 evidence remains nonbinding with weight zero and cannot close independent verification.
+---
