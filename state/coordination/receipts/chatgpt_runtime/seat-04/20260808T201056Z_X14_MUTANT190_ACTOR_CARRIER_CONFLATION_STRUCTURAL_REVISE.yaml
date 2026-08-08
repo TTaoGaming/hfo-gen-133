@@ -1,0 +1,156 @@
+---
+schema_id: hfo.gen133.s04_structural_preflight.v1
+result: REVISE
+seat: S04_HRIST_STRUCTURAL_PREFLIGHT
+wip: 1
+valid_time_utc: 2026-08-08T20:10:56Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+expected_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+observed_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+task_id_match: true
+same_provider_class: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+consumer_ack_observed: false
+---
+
+selection:
+  selection_cutoff_utc: 2026-08-08T20:10:56Z
+  selected_candidate: X14_MUTANT_190_76f4b49d8f23
+  selected_commit: 2d4b1969c0a9982987e4362004ea19cf077d943d
+  selected_path: state/coordination/experiments/false_green_x14/quarantine/20260808T195310Z_X13_ACTOR_CARRIER_CONFLATION.mutant.yaml
+  selected_authoring_seat: X14_FALSE_GREEN_MUTATION_AND_QA_LAB
+  addressed_to_s04: true
+  authored_by_s04: false
+  concurrent_later_input_policy: WIP1_SELECTION_FROZEN_AT_FIRST_REPOSITORY_OBSERVATION
+  note: S03 Titan route commit 2629d78b2ce7ba003d5ca1356e411597104ef3f7 appeared after the frozen selection cutoff and was not consumed in this pass.
+
+candidate_exact_bytes:
+  utf8_bytes: 6731
+  sha256: 820cb7699278493eff8e14d10e071a65684792bbd0396323b0f218db496c3c06
+  git_blob_sha1_recomputed: eab6b604182bedb981cf5945198b4016b5fd2473
+  git_blob_sha1_readback: eab6b604182bedb981cf5945198b4016b5fd2473
+  exact_blob_match: true
+
+source_binding:
+  commit: 6342f968b29f575435f4159e97be1afae204fdd8
+  path: state/coordination/experiments/cots_connector_x13/20260808T194742Z_GCAL_CALENDARLIST_PHASE3_GET_COLORS_CONTROL_RESULT.md
+  declared_git_blob_sha1: 147de720ae6ae280b95503bb259070f6358ff2ca
+  recomputed_utf8_bytes: 2476
+  recomputed_sha256: aaeee7dbd4ea4e6cad6dba507181c4bb2cb3d09fd815eef6a12ae2de42090ca0
+  recomputed_git_blob_sha1: 147de720ae6ae280b95503bb259070f6358ff2ca
+  source_pointer_match: true
+  preflight_commit: 92bd2634def3975343abb1bd4b0cbee78052012b
+  preflight_blob_sha1: e718db092543bb3767f4fc0cf13c6531f6004f27
+
+canonicalization_and_digests:
+  mutant_overlay_canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  mutant_overlay_utf8_bytes_recomputed: 219
+  mutant_overlay_sha256_recomputed: 76f4b49d8f23712fe9879c68903637799614c89443d6113197f9d3f7e1e99bae
+  mutant_overlay_sha256_declared: 76f4b49d8f23712fe9879c68903637799614c89443d6113197f9d3f7e1e99bae
+  mutant_overlay_digest_match: true
+  source_request_descriptor_canonicalization: UTF8_JSON_SORTED_KEYS_COMPACT_SEPARATORS_NO_ASCII_ESCAPING
+  source_request_descriptor_utf8_bytes_recomputed: 55
+  source_request_descriptor_sha256_recomputed: c6a5f2fa7f130bee935720381ceb6dea7b6a7539d9e5e839e2a14fa4f64fdcce
+  source_request_descriptor_sha256_declared: c6a5f2fa7f130bee935720381ceb6dea7b6a7539d9e5e839e2a14fa4f64fdcce
+  source_request_descriptor_digest_match: true
+
+freshness_and_expiry:
+  mutant_valid_time_utc: 2026-08-08T19:53:10Z
+  mutant_expires_utc: 2026-08-08T23:53:10Z
+  unexpired_at_selection_cutoff: true
+  source_valid_time_utc: 2026-08-08T19:47:42Z
+  freshness_status: CURRENT_FOR_THIS_PASS
+
+authority:
+  source_control_probe: Google_Calendar_get_colors
+  source_event_type: CONTROL_RESULT
+  source_effect_observation: READONLY_METADATA_CONTROL_ZERO_CALENDAR_MUTATIONS
+  mutant_effect_ceiling: ONE_IMMUTABLE_QUARANTINE_FILE_ONE_CURRENT_POINTER_UPDATE_ONE_SANITIZED_INTERNAL_SLACK_ROUTE_ONLY
+  authority_status: PASS_WITHIN_QUARANTINE_CEILING
+
+task_binding:
+  x14_task_id_declared: 6a513e4d9c4c81919db728f85db2dd79
+  x14_task_id_native_inventory: 6a513e4d9c4c81919db728f85db2dd79
+  x13_source_task_id_declared: 6a55c1733708819185088bf334e33ea5
+  x13_source_task_id_native_inventory: 6a55c1733708819185088bf334e33ea5
+  s04_task_id_declared: 6a52861fbdb08191b9ef33a0b9c3c15c
+  s04_task_id_native_inventory: 6a52861fbdb08191b9ef33a0b9c3c15c
+  task_binding_status: PASS
+
+actor_carrier_separation:
+  source_actor_or_carrier_identity_field_present: false
+  source_control_probe_field: Google_Calendar_get_colors
+  mutant_field: carrier_actor_identity
+  mutant_original_value: ABSENT
+  mutant_value: Google_Calendar_get_colors
+  verdict: REVISE
+  reason: TOOL_ACTION_NAME_IS_NOT_A_CARRIER_OR_AUTHORIZED_ACTOR_IDENTITY_AND_NO_DELEGATION_BINDING_EXISTS
+
+idempotency:
+  explicit_idempotency_key_present: false
+  bounded_dedup_material_present: true
+  dedup_basis: SOURCE_GIT_BLOB_PLUS_CANONICAL_MUTATION_OVERLAY_DIGEST
+  status: REVISE_SECONDARY
+  reason: MUTANT_SCHEMA_HAS_DIGEST_DEDUP_BUT_NO_EXPLICIT_IDEMPOTENCY_KEY_OR_REPLAY_CONTRACT
+
+privacy:
+  source_raw_palette_values_persisted: false
+  source_persisted_content_class: AGGREGATE_METADATA_ONLY
+  mutant_explicit_privacy_field_present: false
+  status: REVISE_SECONDARY
+  reason: PRIVACY_BEHAVIOR_IS_SAFE_IN_BOUND_SOURCE_BUT_MUTANT_DOES_NOT_BIND_AN_EXPLICIT_PRIVACY_MARKER
+
+rollback:
+  source_edited: false
+  candidate_quarantined_non_executable: true
+  explicit_rollback_field_present: false
+  effective_safe_rollback: IGNORE_OR_APPEND_ONLY_SUPERSEDE_QUARANTINE_ARTIFACT_SOURCE_UNCHANGED
+  status: REVISE_SECONDARY
+
+verifier_and_consumer:
+  structural_verifier: S04_HRIST_STRUCTURAL_PREFLIGHT
+  structural_verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  distinct_falsification: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  distinct_verifier_task_id: 6a539fb148bc8191a30b6009dbf22438
+  distinct_verifier_evidence_ceiling: SAME_PROVIDER_NONBINDING_WEIGHT_0
+  consumers:
+    - X14_CAMPAIGN_REDUCER
+    - X13_COTS_AND_CONNECTOR_PDCA_LAB
+    - HFO_COMMAND_AND_CONTROL_CALENDAR_ID_DISCOVERY
+  consumer_ack_observed: false
+
+strongest_fake_green_mutant:
+  mutant_id: X14_MUTANT_190_76f4b49d8f23
+  mutation_class: ACTOR_CARRIER_CONFLATION
+  expected_verdict: REVISE
+  observed_structural_verdict: REVISE
+  caught: true
+  reason: EXACT_SOURCE_NAMES_GOOGLE_CALENDAR_GET_COLORS_ONLY_AS_CONTROL_PROBE_AND_BINDS_NO_ACTOR_OR_CARRIER_IDENTITY
+
+decision:
+  result: REVISE
+  controlling_reason: ACTOR_CARRIER_CONFLATION_BREAKS_EXACT_IDENTITY_AND_AUTHORITY_BINDING
+  secondary_reasons:
+    - NO_EXPLICIT_IDEMPOTENCY_REPLAY_CONTRACT
+    - NO_EXPLICIT_PRIVACY_MARKER_IN_MUTANT
+    - NO_EXPLICIT_ROLLBACK_FIELD_IN_MUTANT
+  claim_ceiling: STRUCTURAL_PREFLIGHT_ONLY
+  same_provider_class: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  independent_verification_closed: false
+  consumer_ack_observed: false
+
+no_effect_receipt:
+  candidate_edited: false
+  task_mutation: false
+  send: false
+  spend: false
+  deployment: false
+  merge: false
+  publication: false
+  account_or_security_change: false
+  permanent_deletion: false
+  independent_quorum_claim: false
