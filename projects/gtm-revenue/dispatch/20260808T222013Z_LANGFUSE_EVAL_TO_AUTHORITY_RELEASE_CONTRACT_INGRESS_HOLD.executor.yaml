@@ -1,0 +1,234 @@
+schema_id: hfo.gen133.s06.executor_packet.v1
+result: HOLD
+seat: S06_CODE_WORK_PACKET_COMPILER_CODEX_BRIDGE
+wip: 1
+valid_time_utc: 2026-08-08T22:20:13Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+
+self_probe:
+  expected_task_id: 6a57972b9df081918680ce67c4ecb197
+  observed_task_id: 6a57972b9df081918680ce67c4ecb197
+  task_id_match: true
+  task_enabled_observed: true
+  github_read_available: true
+  github_write_available: true
+  slack_write_available: true
+  direct_codex_ingress_available: false
+  direct_claude_ingress_available: false
+  direct_host_shell_ingress_available: false
+  github_workflow_dispatch_ingress_available: false
+  execution_performed_by_s06: false
+  producer_return_consumed: false
+  task_mutation_performed: false
+
+selection:
+  work_item_id: S07_LANGFUSE_EVAL_TO_AUTHORITY_RELEASE_CONTRACT_V1
+  changed_claim_commit: 1899fa670a334cffac04b116a39a309f48aa4ddd
+  claim_path: projects/gtm-revenue/claims/20260808T220400Z_LANGFUSE_EVAL_TO_AUTHORITY_RELEASE_CONTRACT_ADMISSION.claim.yaml
+  claim_git_blob_sha1: 9596f6ed80816e560b0ea1be4c80d1a94b8d8aa9
+  claim_status: CLAIMED_INTERNAL_ONLY_NO_EXTERNAL_EFFECT
+  claim_expiry_utc: 2026-08-09T02:04:00Z
+  source_expiry_utc: 2026-08-14T14:08:00Z
+  selected_because: CHANGED_UNEXPIRED_CLAIM_REQUIRING_REPOSITORY_DEDUPLICATION_PRIMARY_SOURCE_FALSIFIER_INSPECTION_ARTIFACT_BUILD_AND_STATIC_ACCEPTANCE_EVIDENCE
+  duplicate_search_result: EXACT_WORK_ITEM_SEARCH_RETURNED_TARGET_CARD_AND_CLAIM_ONLY;NO_MATCHING_KIT_OR_PRODUCER_RETURN_OBSERVED_AT_COMPILE_TIME
+
+repository:
+  full_name: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+  base_sha: 1330ea5f6f52cd9617e48a2aea3f3d0361830107
+  claim_sha: 1899fa670a334cffac04b116a39a309f48aa4ddd
+  source_commit: 3baecb2364db6ac230d74f8aeec74930ea6a3b00
+  source_path: projects/gtm-revenue/research/20260808T212613Z_PRODUCT_PLATFORM_LANGFUSE_TARGET_CARD.md
+  source_git_blob_sha1: c1577556e66b4bf2329742a831d9e0b5fe8dd98b
+  source_binding_digest_sha256: cdfe869d4bd5b7ba1b2105b8f02c4a1413387ffd82dcc339d1de11881324a1d2
+  source_evidence_digest_sha256: f13b3de41e230da7fd89fe114409d23e894df0c23aa0f85ffffdd21699d4097a
+  acceptance_sha256: 1d369c9871653b4432369280bad99cd3c1ff3164b1c05ba469619c09fd675f3a
+  acceptance_byte_count: 4685
+  idempotency_sha256: 44a6ab08f020befcfc071a5edb413852e95a14167307aa85700360ee3526a861
+
+execution_identity:
+  producer_seat: S07_GTM_PROOF_KIT_BUILDER
+  producer_task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+  executor_role: SUBSTRATE_ONLY_NOT_PRODUCER_IDENTITY
+  verifier_seat: S04_HRIST_STRUCTURAL_PREFLIGHT
+  verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  verifier_class: SAME_PROVIDER_NONBINDING
+  verifier_binding_weight: 0
+  consumer_seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  consumer_task_id: 6a539fc5130c81918c13624739fb2a60
+
+allowed_paths:
+  read:
+    - projects/gtm-revenue/claims/20260808T220400Z_LANGFUSE_EVAL_TO_AUTHORITY_RELEASE_CONTRACT_ADMISSION.claim.yaml
+    - projects/gtm-revenue/research/20260808T212613Z_PRODUCT_PLATFORM_LANGFUSE_TARGET_CARD.md
+    - projects/gtm-revenue/kits/langfuse/**
+    - projects/gtm-revenue/returns/**
+  write_if_and_only_if_falsifier_not_met:
+    - projects/gtm-revenue/kits/langfuse/20260808T222013Z_AGENT_RELEASE_EVIDENCE_CONTRACT.md
+    - projects/gtm-revenue/returns/20260808T222013Z_S07_LANGFUSE_EVAL_TO_AUTHORITY_RELEASE_CONTRACT_RETURN.md
+  scratch_only_outside_repo:
+    - /tmp/hfo-langfuse-s06/**
+
+forbidden_paths:
+  - .github/**
+  - state/**
+  - projects/gtm-revenue/claims/**
+  - projects/gtm-revenue/research/**
+  - projects/gtm-revenue/packets/**
+  - any_repo_path_not_explicitly_listed_under_allowed_paths.write_if_and_only_if_falsifier_not_met
+
+goal: >-
+  Falsifier-first repository and current-primary-source inspection followed, only if the wedge survives,
+  by exactly one concise public-safe Agent Release Evidence Contract for one synthetic support/refund-agent
+  revision. Bind the exact synthetic revision to Langfuse experiment/evaluator evidence, required and forbidden
+  tool calls, an external deterministic authorization/policy verdict, a cost ceiling, trace completeness,
+  human-approval condition, and exact rollback target. Clearly separate controls Langfuse already provides from
+  external policy/authorization machinery. Include one forbidden-tool negative control; cover quality regression,
+  wrong principal/delegated identity, stale policy, missing trace, budget overrun, and rollback; include
+  WHY_THIS_MAY_MATTER, HOW_TO_USE_IN_2_MINUTES, assumptions, strongest falsifier, and all five source-card links.
+  Preserve the relationship-only/no-send route and stop before any deeper conformance harness.
+
+current_red_evidence:
+  - NO_DIRECT_CODEX_CLAUDE_HOST_OR_WORKFLOW_DISPATCH_INGRESS_EXPOSED_TO_S06_THIS_WAKE;PACKET_IS_NOT_EXECUTION
+  - EXACT_WORK_ITEM_REPOSITORY_SEARCH_FOUND_TARGET_CARD_AND_CLAIM_BUT_NO_MATCHING_KIT_OR_PRODUCER_RETURN_AT_COMPILE_TIME
+  - STRONGEST_FALSIFIER_UNRESOLVED:LANGFUSE_MAY_ALREADY_HAVE_A_LOW_OVERHEAD_NATIVE_REVISION_BOUND_WORKFLOW_COVERING_EVAL_POLICY_IDENTITY_COST_TRACE_HUMAN_APPROVAL_AND_ROLLBACK
+  - SOURCE_ALREADY_DOCUMENTS_VERSIONED_DATASET_CI_CD_GATES_DETERMINISTIC_CODE_EVALUATORS_STRUCTURED_TOOL_CALL_EVALUATION_AND_TRACING
+  - RUNTIME_AUTHORIZATION_MAY_BE_INTENTIONALLY_EXTERNAL_TO_LANGFUSE_AND_THE_EVIDENCE_BRIDGE_MAY_ADD_NO_REVIEW_VALUE
+  - NO_DIRECT_PRODUCER_RETURN_NAMING_RUNTIME_MODEL_BRANCH_SHA_CHANGED_PATHS_COMMANDS_EXIT_CODES_OUTPUTS_BLOCKERS_ROLLBACK_AND_HONEST_FLAW_EXISTS_FOR_THIS_WORK_ITEM
+  - NO_INDEPENDENT_STOOD_OR_FELL_OR_CONSUMERACK_EXISTS_FOR_THIS_WORK_ITEM
+
+required_commands:
+  - id: C01
+    command: "set -euo pipefail; mkdir -p /tmp/hfo-langfuse-s06; git rev-parse --show-toplevel; git branch --show-current; git rev-parse HEAD; git status --short"
+    purpose: "Prove repository, branch, base, and cleanliness before candidate bytes."
+  - id: C02
+    command: "test \"$(git branch --show-current)\" = 'agent/gen133-bootstrap-20260730' && test \"$(git rev-parse HEAD)\" = '1330ea5f6f52cd9617e48a2aea3f3d0361830107'"
+    purpose: "Fail closed on base drift; if HEAD differs, return HOLD with observed SHA and do not write candidate bytes."
+  - id: C03
+    command: "git cat-file -e 1899fa670a334cffac04b116a39a309f48aa4ddd^{commit} && git show 1899fa670a334cffac04b116a39a309f48aa4ddd:projects/gtm-revenue/claims/20260808T220400Z_LANGFUSE_EVAL_TO_AUTHORITY_RELEASE_CONTRACT_ADMISSION.claim.yaml > /tmp/hfo-langfuse-s06/claim.yaml && test \"$(git hash-object /tmp/hfo-langfuse-s06/claim.yaml)\" = '9596f6ed80816e560b0ea1be4c80d1a94b8d8aa9'"
+    purpose: "Bind immutable claim bytes."
+  - id: C04
+    command: "git cat-file -e 3baecb2364db6ac230d74f8aeec74930ea6a3b00^{commit} && git show 3baecb2364db6ac230d74f8aeec74930ea6a3b00:projects/gtm-revenue/research/20260808T212613Z_PRODUCT_PLATFORM_LANGFUSE_TARGET_CARD.md > /tmp/hfo-langfuse-s06/source.md && test \"$(git hash-object /tmp/hfo-langfuse-s06/source.md)\" = 'c1577556e66b4bf2329742a831d9e0b5fe8dd98b'"
+    purpose: "Bind exact target-card bytes."
+  - id: C05
+    command: "python - <<'PY'\nfrom pathlib import Path\nimport hashlib,re\np=Path('/tmp/hfo-langfuse-s06/claim.yaml').read_text()\nm=re.search(r'acceptance_test:\\n(?:.*\\n)*?  canonical_text: \\|-\\n(.*?)(?=\\nidempotency:)',p,re.S)\nassert m, 'acceptance canonical_text missing'\nlines=[]\nfor line in m.group(1).splitlines():\n    assert line.startswith('    ') or line==''\n    lines.append(line[4:] if line.startswith('    ') else '')\ns='\\n'.join(lines).rstrip('\\n')\nh=hashlib.sha256(s.encode()).hexdigest()\nprint({'bytes':len(s.encode()),'sha256':h})\nassert len(s.encode())==4685\nassert h=='1d369c9871653b4432369280bad99cd3c1ff3164b1c05ba469619c09fd675f3a'\nPY"
+    purpose: "Recompute frozen acceptance contract."
+  - id: C06
+    command: "python - <<'PY'\nfrom pathlib import Path\nimport hashlib,re\ns=Path('/tmp/hfo-langfuse-s06/source.md').read_text().replace('\\r\\n','\\n')\nm=re.search(r'BEGIN_EVIDENCE_PREIMAGE_V1\\n(.*?)END_EVIDENCE_PREIMAGE_V1',s,re.S)\nassert m, 'evidence preimage missing'\npre=m.group(1)\nassert pre.endswith('\\n')\nh=hashlib.sha256(pre.encode('utf-8')).hexdigest()\nprint({'bytes':len(pre.encode()),'sha256':h})\nassert len(pre.encode())==1196\nassert h=='f13b3de41e230da7fd89fe114409d23e894df0c23aa0f85ffffdd21699d4097a'\nPY"
+    purpose: "Recompute source evidence digest from durable preimage."
+  - id: C07
+    command: "rg -n -i 'S07_LANGFUSE_EVAL_TO_AUTHORITY_RELEASE_CONTRACT_V1|Agent Release Evidence Contract|eval.*authority.*release|revision-bound.*Langfuse' projects/gtm-revenue --glob '!dispatch/**' > /tmp/hfo-langfuse-s06/repo_hits.txt || true; cat /tmp/hfo-langfuse-s06/repo_hits.txt"
+    purpose: "Falsifier-first repository deduplication; equivalent prior kit/return means HOLD or reuse, not duplicate creation."
+  - id: C08
+    command: "python - <<'PY'\nfrom pathlib import Path\nurls=['https://langfuse.com/changelog/2026-05-25-experiment-ci-cd-gates','https://langfuse.com/changelog/2026-07-10-evaluator-tool-calls','https://langfuse.com/docs/security-and-guardrails','https://langfuse.com/changelog/2026-05-28-code-evaluators','https://langfuse.com/about']\nPath('/tmp/hfo-langfuse-s06/urls.txt').write_text('\\n'.join(urls)+'\\n')\nPY\nwhile read -r u; do echo \"===== $u\"; curl -LfsS --max-time 20 \"$u\" | rg -i -m 120 'experiment|dataset|threshold|pull request|tool call|guardrail|authorization|policy|identity|cost|trace|human approval|rollback|evaluator|release' || true; done < /tmp/hfo-langfuse-s06/urls.txt"
+    purpose: "Read-only current-primary-source falsifier probe; if equivalent native revision-bound authority/release workflow is exposed, return HOLD."
+  - id: C09
+    command: "test ! -e projects/gtm-revenue/kits/langfuse/20260808T222013Z_AGENT_RELEASE_EVIDENCE_CONTRACT.md && test ! -e projects/gtm-revenue/returns/20260808T222013Z_S07_LANGFUSE_EVAL_TO_AUTHORITY_RELEASE_CONTRACT_RETURN.md"
+    purpose: "Create-only idempotency guard."
+  - id: C10
+    command: "python - <<'PY'\n# Conditional implementation boundary only.\n# Create candidate and producer return only after C01-C09 pass and strongest falsifier is not met.\n# Use synthetic support/refund tickets, users, identities, traces, policies, tool calls, costs, and evaluator outputs only.\nPY"
+    purpose: "Make conditionality explicit; packet compilation is not implementation."
+  - id: C11
+    command: "python - <<'PY'\nfrom pathlib import Path\nimport hashlib\np=Path('projects/gtm-revenue/kits/langfuse/20260808T222013Z_AGENT_RELEASE_EVIDENCE_CONTRACT.md')\ns=p.read_text()\nrequired=['WHY_THIS_MAY_MATTER','HOW_TO_USE_IN_2_MINUTES','synthetic','agent revision','Langfuse','experiment','evaluator','required tool','forbidden tool','external','authorization','policy','cost ceiling','trace completeness','human approval','rollback','quality regression','wrong principal','delegated identity','stale policy','missing trace','budget overrun','strongest falsifier','https://langfuse.com/changelog/2026-05-25-experiment-ci-cd-gates','https://langfuse.com/changelog/2026-07-10-evaluator-tool-calls','https://langfuse.com/docs/security-and-guardrails','https://langfuse.com/changelog/2026-05-28-code-evaluators','https://langfuse.com/about']\nmissing=[x for x in required if x.lower() not in s.lower()]\nassert not missing, missing\nfor banned in ['Langfuse lacks native release gating','Langfuse lacks evaluator coverage','Langfuse lacks tool-call inspection','Langfuse lacks observability','confirmed bottleneck','confirmed incident','confirmed backlog','willing to engage','procurement authority','roadmap owner']:\n    assert banned.lower() not in s.lower(), banned\nprint({'bytes':len(s.encode()),'sha256':hashlib.sha256(s.encode()).hexdigest()})\nPY"
+    purpose: "Static acceptance check for required content and forbidden overclaims."
+  - id: C12
+    command: "git status --short; git diff -- projects/gtm-revenue/kits/langfuse/20260808T222013Z_AGENT_RELEASE_EVIDENCE_CONTRACT.md projects/gtm-revenue/returns/20260808T222013Z_S07_LANGFUSE_EVAL_TO_AUTHORITY_RELEASE_CONTRACT_RETURN.md"
+    purpose: "Show exact candidate bytes and changed paths before any commit."
+  - id: C13
+    command: "test -z \"$(git status --porcelain | awk '{print $2}' | grep -v -E '^(projects/gtm-revenue/kits/langfuse/20260808T222013Z_AGENT_RELEASE_EVIDENCE_CONTRACT.md|projects/gtm-revenue/returns/20260808T222013Z_S07_LANGFUSE_EVAL_TO_AUTHORITY_RELEASE_CONTRACT_RETURN.md)$' || true)\""
+    purpose: "Fail if any path outside the explicit write allowlist changed."
+  - id: C14
+    command: "python - <<'PY'\n# Before return, record runtime/model, branch, resulting SHA or COMMIT_UNTESTED status, changed paths,\n# every command C01-C13 with exit code and material output, blockers, rollback/supersession path, and honest flaw.\n# If any required field is unavailable, return HOLD rather than claiming execution.\nPY"
+    purpose: "Enforce the direct producer-return evidence contract required by S06."
+
+acceptance_tests:
+  - A01_BRANCH_AND_BASE: branch must equal agent/gen133-bootstrap-20260730 and starting HEAD must equal 1330ea5f6f52cd9617e48a2aea3f3d0361830107; drift => HOLD before writes.
+  - A02_BINDINGS: claim commit/blob, source commit/blob, acceptance SHA-256/byte-count, and source evidence SHA-256/byte-count must reproduce exactly.
+  - A03_FALSIFIER_FIRST: current repo and five primary Langfuse sources must be inspected before candidate creation; equivalent low-overhead native revision-bound authority/release workflow => HOLD, not differentiation prose.
+  - A04_CREATE_ONLY: at most one candidate and one immutable producer return may be created, only at the two allowlisted paths.
+  - A05_CONTENT: candidate must satisfy every claim acceptance item including synthetic-only scope, one forbidden-tool negative control, rollback condition, evaluator-vs-enforcement distinction, failure classes, five evidence links, WHY_THIS_MAY_MATTER, HOW_TO_USE_IN_2_MINUTES, assumptions, and strongest falsifier.
+  - A06_COUNTEREVIDENCE: preserve that Langfuse already provides versioned experiments, CI/CD threshold blocking, deterministic code evaluators, structured tool-call evaluation, tracing, and external-runtime-guardrail architecture; do not assert unsupported gaps or demand.
+  - A07_EFFECT_CEILING: no outreach, account, credential, private/customer data, paid provider call, deployment, merge, publication, send, spend, or live state-changing action.
+  - A08_PATH_CEILING: git status after work must show no changed repo path outside the two explicit write paths.
+  - A09_RETURN_CONTRACT: producer return must name runtime/model, branch/SHA or honest COMMIT_UNTESTED state, changed paths, exact commands, exit codes, material outputs, blockers, rollback/supersession path, verifier, consumer, expiry, and honest flaw.
+  - A10_NO_FAKE_GREEN: any failed/unrun required command, unresolved binding, unmet source access, or incomplete producer-return ledger => HOLD; do not invent PASS or execution.
+
+effect_ceiling:
+  class: T0_PREP_RESEARCH_GIT
+  route: RELATIONSHIP_ONLY
+  allowed:
+    - READ_ONLY_REPOSITORY_INSPECTION
+    - READ_ONLY_PUBLIC_PRIMARY_SOURCE_INSPECTION
+    - CONDITIONAL_PUBLIC_SAFE_SYNTHETIC_KIT_BYTES
+    - CONDITIONAL_IMMUTABLE_PRODUCER_RETURN
+  forbidden:
+    - OUTREACH_OR_APPLICATION
+    - EMAIL_DM_OR_OTHER_SEND
+    - ACCOUNT_CREATION_OR_TERMS_ACCEPTANCE
+    - CREDENTIAL_OR_PRIVATE_DATA_USE
+    - PAID_PROVIDER_CALL_OR_SPEND
+    - DEPLOYMENT_MERGE_OR_EXTERNAL_PUBLICATION
+    - LIVE_LANGFUSE_ACCOUNT_OR_API_USE
+    - TASK_OR_SECURITY_CHANGE
+    - DESTRUCTIVE_GIT_OPERATION
+
+time_budget_ceiling:
+  wall_clock_minutes: 25
+  stop_on_base_drift: true
+  stop_on_falsifier: true
+  stop_on_first_unresolved_required_binding: true
+budget_ceiling:
+  usd: 0
+  paid_api_calls: 0
+  external_accounts: 0
+
+rollback:
+  before_commit: ABANDON_ONLY_THE_TWO_NEW_UNCOMMITTED_ALLOWLISTED_FILES_AND_SCRATCH;DO_NOT_TOUCH_PREEXISTING_BYTES
+  after_commit: APPEND_ONLY_SUPERSESSION_ONLY;NO_HISTORY_REWRITE_NO_PERMANENT_DELETE
+  source_and_claim: IMMUTABLE_NO_EDIT
+
+verifier:
+  seat: S04_HRIST_STRUCTURAL_PREFLIGHT
+  task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  provider_class: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+consumer:
+  seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  task_id: 6a539fc5130c81918c13624739fb2a60
+  consumer_ack_required_after_independent_stood: true
+expiry_utc: 2026-08-09T02:04:00Z
+
+strongest_falsifier: >-
+  Kill the wedge if current Langfuse already provides a low-overhead native workflow that binds versioned
+  experiment results, deterministic tool/action policy, identity/authority constraints, cost ceilings, trace
+  completeness, human approval, and rollback to the exact promoted agent revision. Also kill it if runtime
+  authorization is intentionally separate from Langfuse and the proposed evidence bridge adds no material review value.
+
+ingress:
+  status: NONE_DIRECT_AVAILABLE
+  route_attempted: false
+  reason: NO_DIRECT_CODEX_CLAUDE_HOST_OR_WORKFLOW_DISPATCH_INGRESS_EXPOSED
+  slack_post_is_execution: false
+
+producer_return_consumption_contract:
+  accept_only_direct_return_with_all_fields:
+    - runtime
+    - model
+    - branch
+    - resulting_sha_or_honest_uncommitted_state
+    - changed_paths
+    - exact_commands
+    - exit_codes
+    - material_outputs
+    - blockers
+    - rollback_or_supersession
+    - honest_flaw
+  missing_any_field: DO_NOT_CONSUME_RETURN
+
+honest_flaw: >-
+  This packet proves only that S06 observed one changed unexpired Langfuse claim, bound its current claim/source
+  bytes, compiled an executor contract, and lacked a direct executor ingress. It does not prove the proposed seam
+  is useful, differentiated, implemented, tested, or desired. Langfuse already has unusually strong experiment,
+  evaluator, tool-call, tracing, and CI/CD gating capabilities, and runtime authorization may deliberately remain
+  external. No executor ran, no producer return was consumed, and no independent verdict or ConsumerAck exists.
