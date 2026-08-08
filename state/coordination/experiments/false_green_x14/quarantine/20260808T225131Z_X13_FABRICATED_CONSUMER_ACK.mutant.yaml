@@ -1,0 +1,83 @@
+---
+schema_id: hfo.gen133.x14.false_green_mutant.v1
+mutant_id: X14_MUTANT_193_8c36db7d7c8b
+experiment_id: X14_FALSE_GREEN_MUTATION_001
+campaign_ordinal: 48
+campaign_wake: 4
+wip: 1
+quarantine: true
+executable: false
+authoring_seat: X14_FALSE_GREEN_MUTATION_AND_QA_LAB
+carrier_task_id: 6a513e4d9c4c81919db728f85db2dd79
+valid_time_utc: '2026-08-08T22:51:31Z'
+expires_utc: '2026-08-09T02:51:31Z'
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+
+source_binding:
+  source_commit: 5bcde525b0d5223dee0d80b5189fde52b2aac912
+  source_path: state/coordination/experiments/cots_connector_x13/20260808T224715Z_GDRIVE_METADATA_SEARCH_PHASE2_RESULT.md
+  source_git_blob_sha1: 9be775c242d0a1ae95d8007dc77eeb6b3b2a2df4
+  source_digest_kind: GIT_BLOB_SHA1
+  source_digest: 9be775c242d0a1ae95d8007dc77eeb6b3b2a2df4
+  source_authoring_seat: X13_COTS_AND_CONNECTOR_PDCA_LAB
+  source_task_id: 6a55c1733708819185088bf334e33ea5
+  source_experiment_id: X13_GDRIVE_METADATA_SEARCH_READONLY_024
+  source_phase: 2
+  source_phase_status: PHASE2_ACCEPTED_WITH_GATES
+  source_expected_current_version: 193
+  observed_source_projection_after_event_version: 194
+  observed_source_projection_after_event_commit: dc9d14a29ac7420a8d35cdf2fbae8f04ccd1e3f3
+  observed_source_projection_after_event_last_event_commit: 5bcde525b0d5223dee0d80b5189fde52b2aac912
+  observed_source_projection_after_event_last_event_blob_sha1: 9be775c242d0a1ae95d8007dc77eeb6b3b2a2df4
+  source_consumer: HFO_COMMAND_AND_CONTROL_DRIVE_DOCUMENT_DISCOVERY
+  source_adoption_credit: 0
+  source_fitness_credit: 0
+  source_text_claim_ceiling: REPEATABILITY_FACT_NOT_ADOPTION_DECISION
+  prior_x14_mutation_at_source_digest_before_write: false
+
+mutation:
+  mutation_class: FABRICATED_CONSUMER_ACK
+  mutation_subcase: X13_PHASE2_REPEATABILITY_RESULT_FALSELY_ASSERTS_DOWNSTREAM_CONSUMER_ACCEPTANCE
+  exactly_one_mutated_field: consumer_ack
+  original_value: ABSENT
+  mutated_value: ACKED_ACCEPTED_BY_HFO_COMMAND_AND_CONTROL_DRIVE_DOCUMENT_DISCOVERY
+  canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_json: '{"consumer_ack":"ACKED_ACCEPTED_BY_HFO_COMMAND_AND_CONTROL_DRIVE_DOCUMENT_DISCOVERY"}'
+  canonical_overlay_utf8_bytes: 85
+  canonical_overlay_sha256: 8c36db7d7c8bb458bb3b70a37f64ba1ca66b33b1958b3b43553406dfb802651d
+
+expected_rejection:
+  expected_verdict: REVISE
+  expected_rejection_reason: EXACT_SOURCE_PHASE2_RESULT_NAMES_A_CONSUMER_BUT_CONTAINS_NO_CONSUMER_ACK_AND_EXPLICITLY_SAYS_THIS_IS_A_REPEATABILITY_FACT_NOT_AN_ADOPTION_DECISION;NO_SEPARATE_DIGEST_BOUND_ACK_FROM_HFO_COMMAND_AND_CONTROL_DRIVE_DOCUMENT_DISCOVERY_EXISTS_IN_THE_SELECTED_SOURCE_OR_OBSERVED_X13_CURRENT;REJECT_FABRICATED_ACCEPTANCE_WITHOUT_STATE_ADVANCE_OR_CREDIT
+  named_gate: S04_FABRICATED_CONSUMER_ACK_EXACT_SOURCE_COMMIT_PATH_BLOB_SOURCE_CLAIM_CEILING_DISTINCT_ACK_ARTIFACT_CONSUMER_IDENTITY_EXPIRY_VERIFIER_AND_NO_IMPLICIT_ACCEPTANCE_GATE
+  invariant_under_test: NAMING_A_CONSUMER_OR_OBSERVING_REPEATABILITY_MUST_NOT_BE_PROMOTED_TO_CONSUMER_ACCEPTANCE_WITHOUT_AN_EXPLICIT_SOURCE_BOUND_ACK_FROM_THE_NAMED_CONSUMER
+
+routing:
+  structural_preflight: S04_STRUCTURAL_PREFLIGHT
+  structural_verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  distinct_falsification: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  distinct_verifier_task_id: 6a539fb148bc8191a30b6009dbf22438
+  distinct_verifier_evidence_ceiling: SAME_PROVIDER_ADVISORY_NONBINDING_WEIGHT_0
+  consumer:
+    - X14_CAMPAIGN_REDUCER
+    - X13_COTS_AND_CONNECTOR_PDCA_LAB
+    - HFO_COMMAND_AND_CONTROL_DRIVE_DOCUMENT_DISCOVERY
+  route_effect_ceiling: ONE_SANITIZED_INTERNAL_SLACK_POINTER_AFTER_GIT_READBACK
+
+world_effect_ceiling:
+  source_edit: false
+  task_mutation: false
+  send_external: false
+  spend: false
+  deployment: false
+  merge: false
+  publication: false
+  account_or_security_change: false
+  secret_exposure: false
+  permanent_deletion: false
+  independent_quorum_claim: false
+
+honest_flaw: >-
+  This is a relatively easy ConsumerAck mutant because the selected X13 source explicitly says it is a repeatability fact, not an adoption decision, and its adoption and fitness credits are both zero. A stronger assay should start from a legitimate downstream acknowledgment and corrupt exactly one consumer identity, source digest, accepted claim scope, expiry, or acknowledgment artifact binding while keeping the rest plausible. Same-provider S04/S09 evidence remains nonbinding with weight zero and cannot close independent verification.
+---
