@@ -1,0 +1,64 @@
+schema: hfo.gen133.s05.operator_relief.v0_1
+receipt_id: S05_FIDELITY_MONDAY_CALL_BOUND_EARLY_20260808T211611Z
+task:
+  expected_task_id: 6a55c182078c8191b89f2dd15f5f640c
+  task_id_self_probe: MATCH
+  title: HFO S05 Var Operator Relief
+  wip: 1
+canonical:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-08T21:16:11Z
+result: DEADLINE_BOUND
+active_item: FIDELITY_MONDAY_CALL_BINDING
+priority:
+  p0: CHATGPT_PRO_CONTINUITY_BEFORE_2026_08_09
+  p1:
+    - FIDELITY_AUTHORITATIVE_WIRE_DISPOSITION
+    - GOOGLE_WINDOWS_SIGNIN_EXPECTEDNESS
+source_readback:
+  automation_provider:
+    sanitized_fact: Native task inventory exposes HFO S05 Var Operator Relief with exact expected task ID and enabled state; no task mutation performed.
+  calendar:
+    - pointer: gcal:74pm4e1icor32bb370q38b9kc8rm2b9pccp3cb9n6lh6acpjcopm2c9j6o
+      sanitized_fact: A dedicated Fidelity call is now bound for 2026-08-10 10:30-11:30 America/Denver.
+    - pointer: gcal:jm925ebddm25jbbum3eq0ei35c
+      sanitized_fact: The older 2026-08-11 10:15-10:30 follow-up remains present and contains a stale SENT/COMPLETED starting assumption already corrected by prior S05 source readback.
+  gmail:
+    - pointer: gmail:19fd98649106caa2
+      sanitized_fact: Latest bounded Fidelity alert still says the recent bank-wire disbursement was canceled or not completed; no replacement/completion evidence was found in the bounded read.
+    - pointer: gmail:19fde4b476c77303
+      sanitized_fact: Google Play still states ChatGPT Pro benefits end on 2026-08-09; no later renewal/reversal confirmation was found in the bounded read.
+  contacts:
+    sanitized_fact: No saved Google Contact matching Fidelity was found; no private contact body was externalized.
+  github:
+    - pointer: state/coordination/receipts/chatgpt_runtime/seat-05/20260808T201632Z_FIDELITY_1035_CALENDAR_ASSUMPTIONS_RECONCILED.yaml
+      sanitized_fact: Prior S05 receipt already repaired the unsafe SENT/COMPLETED assumption and held authoritative Fidelity disposition open.
+  slack:
+    - pointer: C0BGNGPJFHU/since/1786220345.210329
+      sanitized_fact: No changed Slack evidence in the bounded read resolves the Fidelity disposition or ChatGPT Pro continuity; unrelated scheduler and GTM deltas were not promoted into operator WIP.
+bounded_transition:
+  type: bind_earlier_execution_window_and_deduplicate_followup
+  disposition: Treat the 2026-08-10 10:30-11:30 Fidelity call as the next execution gate. Do not spend operator time deciding when to call. The 2026-08-11 follow-up is fallback verification only if Monday does not produce an authoritative disposition; its stale SENT/COMPLETED wording must not be used as a premise.
+  monday_call_gate: Obtain authoritative Fidelity status for the canceled/not-completed wire, reason or required remediation if available, whether any replacement action is needed, and one reference/next step. Do not initiate a transfer from this receipt.
+  stop_condition: Do not close from Calendar presence, email wording, or absence of a new alert; closure requires authoritative Fidelity readback or operator call result.
+claim_ceiling:
+  - Calendar binding is not proof the call will occur.
+  - Fidelity email evidence does not prove who canceled the wire or whether a replacement exists.
+  - This receipt does not modify or cancel either Calendar event.
+  - This receipt does not resolve ChatGPT Pro continuity or Google sign-in expectedness.
+operator_minutes_removed_estimate: 6
+next_consumer: VAR_EVENING_CONTROL
+privacy: SANITIZED_POINTERS_ONLY
+world_effects:
+  email_send: false
+  application_submission: false
+  spend_or_payment: false
+  deployment: false
+  merge: false
+  publication_outside_operator_controlled_repo: false
+  account_or_security_change: false
+  destructive_delete: false
+  scheduled_task_mutation: false
+  calendar_mutation: false
+honest_flaw: The Monday slot removes scheduling ambiguity and prevents duplicate planning, but only an authoritative Fidelity result can resolve the financial obligation.
