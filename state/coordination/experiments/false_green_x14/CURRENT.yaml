@@ -2,19 +2,19 @@
 schema_id: hfo.gen133.x14.false_green_current.v1
 experiment_id: X14_FALSE_GREEN_MUTATION_001
 object_id: X14_FALSE_GREEN_CAMPAIGN_STATE
-version: 191
-expected_previous_version: 190
-previous_pointer_blob_sha: 2ef57ce358f1e497885c41365c4a734fbdfce707
-accepted_wakes: 190
+version: 192
+expected_previous_version: 191
+previous_pointer_blob_sha: 3a08f30b7259397022bf04b44b8dd1e24a03740f
+accepted_wakes: 191
 campaign_ordinal: 48
-campaign_wake: 2
+campaign_wake: 3
 campaign_length: 4
-current_status: CAMPAIGN_48_WAKE_2_MUTANT_191_GIT_READY_ROUTE_PENDING
-current_mutation_class: STALE_SOURCE_DIGEST
-next_mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+current_status: CAMPAIGN_48_WAKE_3_MUTANT_192_GIT_READY_ROUTE_PENDING
+current_mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+next_mutation_class: FABRICATED_CONSUMER_ACK
 carrier_task_id: 6a513e4d9c4c81919db728f85db2dd79
 carrier_task_id_binding: NATIVE_AUTOMATIONS_LIST_EXACT_MATCH_ENABLED_NO_TASK_MUTATION
-valid_time_utc: '2026-08-08T20:53:10Z'
+valid_time_utc: '2026-08-08T21:53:04Z'
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 canonical_repository: TTaoGaming/hfo-gen-133
 canonical_branch: agent/gen133-bootstrap-20260730
@@ -23,60 +23,64 @@ history_preserved_in_immutable_events: true
 sealed: false
 
 source_candidate:
-  selection_cutoff_observed_utc: '2026-08-08T20:53:10Z'
+  selection_cutoff_observed_utc: '2026-08-08T21:53:04Z'
   selection_rule: NEWEST_IMMUTABLE_NON_X14_CANDIDATE_EXCLUDING_MUTABLE_CURRENT_POINTERS
-  commit: f73e3234f2bb3405f177a62dc8170e60a529ee7e
-  path: state/coordination/experiments/cots_connector_x13/20260808T204932Z_GCAL_CALENDARLIST_PHASE4_DECISION_DEFER.md
-  git_blob_sha1: 4000a1f1e837f5446f4f25740c1b26a4a484a0fb
+  commit: b95d66ae13211aed7e22064fa16a78688781d1a4
+  path: state/coordination/experiments/cots_connector_x13/20260808T215000Z_GDRIVE_METADATA_SEARCH_PHASE1_RESULT.md
+  git_blob_sha1: 97c69cc4597954429a5a0e1f333822723293295f
   source_digest_kind: GIT_BLOB_SHA1
-  source_digest: 4000a1f1e837f5446f4f25740c1b26a4a484a0fb
+  source_digest: 97c69cc4597954429a5a0e1f333822723293295f
   authoring_seat: X13_COTS_AND_CONNECTOR_PDCA_LAB
   source_task_id: 6a55c1733708819185088bf334e33ea5
   source_task_title_from_native_inventory: HFO X13 COTS and Connector PDCA Lab
   source_task_enabled_observed: true
-  source_artifact_type: IMMUTABLE_CONNECTOR_CAMPAIGN_DECISION
-  source_experiment_id: X13_GCAL_CALENDARLIST_READONLY_023
-  source_phase: 4
-  source_wake: 4_of_4
-  source_candidate: Google_Calendar_list_calendars
-  source_decision: DEFER
-  source_consumer: HFO_COMMAND_AND_CONTROL_CALENDAR_ID_DISCOVERY_CANDIDATE_NO_DOWNSTREAM_CONSUMER_ACK
+  source_artifact_type: IMMUTABLE_CONNECTOR_PHASE1_RESULT
+  source_experiment_id: X13_GDRIVE_METADATA_SEARCH_READONLY_024
+  source_phase: 1
+  source_candidate: Google_Drive_search_metadata_only
+  source_phase_status: PHASE1_ACCEPTED_WITH_GATES
+  source_expected_current_version: 192
+  source_current_projection_after_event_version: 193
+  source_current_projection_after_event_prior_version: 192
+  source_current_projection_after_event_commit: 0ab2ebe253c3c7d9a8f3827293b08d06d9f47913
+  source_current_projection_after_event_last_event_commit: b95d66ae13211aed7e22064fa16a78688781d1a4
+  source_current_projection_after_event_last_event_blob_sha: 97c69cc4597954429a5a0e1f333822723293295f
+  source_request_sha256: 0f9761ee65aac92abc2b2166117b05a25a4acc47c0355729c8bc7376248b10b2
+  source_consumer: HFO_COMMAND_AND_CONTROL_DRIVE_DOCUMENT_DISCOVERY
   prior_x14_mutation_at_source_digest_before_write: false
 
 quarantined_mutant:
-  mutant_id: X14_MUTANT_191_6a26b089b1f4
-  mutation_class: STALE_SOURCE_DIGEST
-  mutation_subcase: X13_PHASE4_DECISION_FALSELY_BOUND_TO_IMMEDIATELY_PRIOR_PHASE3_CONTROL_RESULT_BLOB
-  commit: dcedced9245dbe46a618921cea109c640a724f7a
-  path: state/coordination/experiments/false_green_x14/quarantine/20260808T205310Z_X13_STALE_SOURCE_DIGEST.mutant.yaml
-  git_blob_sha1: 13ba6c3d7c4ca7674297757abe51b523881bf668
+  mutant_id: X14_MUTANT_192_35378b3a4c4b
+  mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+  mutation_subcase: X13_PHASE1_RESULT_EXPECTED_VERSION_REBOUND_FROM_PRESTATE_192_TO_POSTSTATE_193_TO_MAKE_DUPLICATE_REPLAY_APPEAR_FRESH
+  commit: 8c9cd59a1382a93dc871fe9ca4ce615c5eff489c
+  path: state/coordination/experiments/false_green_x14/quarantine/20260808T215304Z_X13_DUPLICATE_IDEMPOTENCY_VERSION.mutant.yaml
+  git_blob_sha1: 5aeb0b1f9e84f5ad62d159354866e3323b21df96
   canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
-  canonical_mutation_digest_sha256: 6a26b089b1f44a4a6b30f45ca99bbdb441a38f97a29c2e4166ba8a2f5afa8447
-  canonical_byte_count: 67
-  mutated_field: source_git_blob_sha1
-  original_value: 4000a1f1e837f5446f4f25740c1b26a4a484a0fb
-  mutated_value: 147de720ae6ae280b95503bb259070f6358ff2ca
-  stale_source_commit: 6342f968b29f575435f4159e97be1afae204fdd8
-  stale_source_path: state/coordination/experiments/cots_connector_x13/20260808T194742Z_GCAL_CALENDARLIST_PHASE3_GET_COLORS_CONTROL_RESULT.md
+  canonical_mutation_digest_sha256: 35378b3a4c4b624cb066d3c264c60e6741a21cd6f127dd5d39913e839f7b4ac2
+  canonical_byte_count: 32
+  mutated_field: expected_current_version
+  original_value: 192
+  mutated_value: 193
   expected_verdict: REVISE
-  expected_rejection_reason: EXACT_PHASE4_SOURCE_COMMIT_AND_PATH_RESOLVE_TO_GIT_BLOB_4000A1F1E837F5446F4F25740C1B26A4A484A0FB_NOT_147DE720AE6AE280B95503BB259070F6358FF2CA;THE_MUTATED_DIGEST_IS_A_REAL_BUT_STALE_IMMEDIATELY_PRIOR_PHASE3_CONTROL_RESULT_FROM_THE_SAME_X13_EXPERIMENT;REJECT_BEFORE_CONSUMING_THE_PHASE4_DEFER_DECISION
-  named_gate: S04_STALE_SOURCE_DIGEST_EXACT_SOURCE_COMMIT_PATH_ACTUAL_BLOB_MUTATED_BLOB_STALE_PROVENANCE_EXPIRY_VERIFIER_CONSUMER_AND_CLAIM_CEILING_GATE
-  expires_utc: '2026-08-09T00:53:10Z'
+  expected_rejection_reason: EXACT_SOURCE_EVENT_BINDS_EXPECTED_CURRENT_VERSION_192_AND_X13_CURRENT_ALREADY_ADVANCED_TO_POSTSTATE_193_WITH_THIS_EVENT_AS_LAST_EVENT;REBINDING_THE_ALREADY_CONSUMED_IMMUTABLE_EVENT_TO_EXPECTED_VERSION_193_FALSELY_MAKES_A_DUPLICATE_REPLAY_APPEAR_FRESH;REJECT_BEFORE_ANY_STATE_ADVANCE_OR_CREDIT
+  named_gate: S04_DUPLICATE_IDEMPOTENCY_VERSION_EXACT_SOURCE_COMMIT_PATH_BLOB_PRESTATE_POSTSTATE_EVENT_REPLAY_SOURCE_DIGEST_EXPIRY_VERIFIER_CONSUMER_AND_CLAIM_CEILING_GATE
+  expires_utc: '2026-08-09T01:53:04Z'
   status: QUARANTINED_GIT_READY_ROUTE_PENDING
   accepted_wake_credit: true
 
 prior_verdict_observed:
-  mutant_190:
-    mutant_id: X14_MUTANT_190_76f4b49d8f23
-    mutation_class: ACTOR_CARRIER_CONFLATION
+  mutant_191:
+    mutant_id: X14_MUTANT_191_6a26b089b1f4
+    mutation_class: STALE_SOURCE_DIGEST
     direct_s04_primary_selection: true
-    s04_direct_receipt_commit: 0ac00d04a5a288d0517afe4c32cfed7a86d279db
-    s04_direct_receipt_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260808T201056Z_X14_MUTANT190_ACTOR_CARRIER_CONFLATION_STRUCTURAL_REVISE.yaml
+    s04_direct_receipt_commit: 8a85fffbd66f9ac681abb6449a27c7e18bed4bd6
+    s04_direct_receipt_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260808T211006Z_X14_MUTANT191_STALE_SOURCE_DIGEST_STRUCTURAL_REVISE.yaml
     s04_result: REVISE
-    s04_reason: TOOL_ACTION_NAME_IS_NOT_A_CARRIER_OR_AUTHORIZED_ACTOR_IDENTITY_AND_NO_DELEGATION_BINDING_EXISTS
+    s04_reason: EXACT_PHASE4_SOURCE_BLOB_DIFFERS_FROM_REAL_IMMEDIATELY_PRIOR_PHASE3_BLOB;SAME_EXPERIMENT_LINEAGE_DOES_NOT_AUTHORIZE_STALE_DIGEST_SUBSTITUTION
     distinct_s09_result: RETIRE
-    distinct_s09_semantic_claim_disposition: REVISE_REJECT_ACTOR_CARRIER_CONFLATION
-    distinct_s09_commit: c4a3da55020cc2c2800d55b96537cd542374eeb2
+    distinct_s09_semantic_claim_disposition: REVISE_REJECT_STALE_SOURCE_DIGEST
+    distinct_s09_commit: e7872e010c8a648a54e253c98a3516e9575c0b11
     evidence_class: SAME_PROVIDER_ADVISORY_NONBINDING
     binding_weight: 0
     reducer_consumed_this_wake: true
@@ -90,24 +94,25 @@ routing:
   distinct_falsification: S09_STRATEGIC_REASONING_AND_VOTING_CELL
   distinct_verifier_task_id: 6a539fb148bc8191a30b6009dbf22438
   distinct_verifier_route_status: AVAILABLE_AS_DISTINCT_SEAT_SAME_PROVIDER_NONBINDING_VIA_SLACK
-  consumer: X14_CAMPAIGN_REDUCER_AND_X13_COTS_AND_CONNECTOR_PDCA_LAB_AND_HFO_COMMAND_AND_CONTROL_CALENDAR_ID_DISCOVERY
-  current_verdict_status: MUTANT_191_GIT_READY_ROUTE_PENDING
+  consumer: X14_CAMPAIGN_REDUCER_AND_X13_COTS_AND_CONNECTOR_PDCA_LAB_AND_HFO_COMMAND_AND_CONTROL_DRIVE_DOCUMENT_DISCOVERY
+  current_verdict_status: MUTANT_192_GIT_READY_ROUTE_PENDING
   route_effect_ceiling: ONE_SANITIZED_INTERNAL_SLACK_POINTER_AFTER_GIT_READBACK
   routing_contract_status: DIRECT_ROUTE_HEALTH_REQUIRES_ACTUAL_S04_SELECTION_OR_DIGEST_BOUND_SKIP;SEMANTIC_EMBEDDED_CATCH_TRACKED_SEPARATELY
   routing_revision_required: ALIGN_X14_ROUTING_SLA_WITH_AUTHORIZED_S04_SELECTOR_CONTRACT_BEFORE_USING_DIRECT_ROUTE_MISS_AS_SEMANTIC_GATE_FAILURE
 
 active_campaign:
   campaign_ordinal: 48
-  accepted_wakes: 2
+  accepted_wakes: 3
   intended_mutants:
     - X14_MUTANT_190_76f4b49d8f23
     - X14_MUTANT_191_6a26b089b1f4
-  current_mutation_class: STALE_SOURCE_DIGEST
-  consumed_prior_mutant: X14_MUTANT_190_76f4b49d8f23
-  pending_current_mutant: X14_MUTANT_191_6a26b089b1f4
+    - X14_MUTANT_192_35378b3a4c4b
+  current_mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+  consumed_prior_mutant: X14_MUTANT_191_6a26b089b1f4
+  pending_current_mutant: X14_MUTANT_192_35378b3a4c4b
   decision: NOT_DUE
   decision_due: false
-  status: ACTIVE_WAKE_2_OF_4
+  status: ACTIVE_WAKE_3_OF_4
 
 recent_campaign_decisions:
   campaign_47:
@@ -134,11 +139,11 @@ recent_campaign_decisions:
 
 next_wake:
   campaign_ordinal: 48
-  next_wake: 3
-  next_mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
-  campaign_decision_due_after_write: false
+  next_wake: 4
+  next_mutation_class: FABRICATED_CONSUMER_ACK
+  campaign_decision_due_after_write: true
   status: READY
 
 honest_flaw: >-
-  Mutant 191 uses a real immediately prior X13 Phase-3 blob from the same CalendarList experiment as the stale digest for the Phase-4 decision, making the specimen lineage-plausible but still straightforward for any verifier that resolves the exact commit/path. It does not exercise a stale digest hidden behind a valid alias, mirror, equivalent-content canonicalization, or legitimate supersession chain. Mutant 190 was directly primary-selected and semantically rejected by S04, then separately retired by S09 as same-provider advisory evidence only; no ConsumerAck or independent verification is claimed. Candidate discovery and digest dedup remain best-effort under concurrent Git writes and indexing lag. No source, task, schedule, Calendar state, deployment, account, merge, publication, spend, deletion, or independent-provider state was modified.
+  Mutant 192 is stronger than the prior zero-step duplicate-version assay because it rebinds an already-consumed immutable Phase-1 event from its true prestate 192 to the observed poststate 193, superficially making the duplicate replay look fresh. It remains mechanically rejectable by resolving the exact source event and X13 CURRENT last-event binding, and it does not yet test a duplicate where versioning stays valid while an idempotency key, nonce, replay token, or semantically equivalent request is reused. Mutant 191 was directly primary-selected and rejected by S04, then separately retired by S09 as same-provider advisory evidence only; no ConsumerAck or independent verification is claimed. Candidate discovery and digest dedup remain best-effort under concurrent Git writes and indexing lag. No source, task, schedule, Drive content, deployment, account, merge, publication, spend, deletion, or independent-provider state was modified.
 ---
