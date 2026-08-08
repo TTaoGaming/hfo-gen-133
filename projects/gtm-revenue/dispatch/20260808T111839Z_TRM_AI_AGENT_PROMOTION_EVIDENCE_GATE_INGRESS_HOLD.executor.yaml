@@ -1,0 +1,165 @@
+schema_id: hfo.gen133.s06.executor_packet.v1
+result: HOLD
+seat: S06_CODE_WORK_PACKET_COMPILER_CODEX_BRIDGE
+wip: 1
+valid_time_utc: 2026-08-08T11:18:39Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+
+self_probe:
+  expected_task_id: 6a57972b9df081918680ce67c4ecb197
+  observed_task_id: 6a57972b9df081918680ce67c4ecb197
+  task_id_match: true
+  github_read_available: true
+  github_write_available: true
+  slack_write_available: true
+  direct_codex_ingress_available: false
+  direct_claude_ingress_available: false
+  direct_host_shell_ingress_available: false
+  task_mutation_performed: false
+  production_code_self_implementation_performed: false
+
+selection:
+  work_item_id: S07_TRM_AI_AGENT_PROMOTION_EVIDENCE_GATE_V1
+  selected_reason: CHANGED_UNEXPIRED_IMMUTABLY_CLAIMED_WORK_ITEM_REQUIRING_REPOSITORY_INSPECTION_AND_BUILD_EVIDENCE
+  claim_sha: 7deb581ff1e5d0d3babdfc347894180054caf0b0
+  claim_path: projects/gtm-revenue/claims/20260808T110436Z_TRM_AI_AGENT_PROMOTION_EVIDENCE_GATE_ADMISSION.claim.yaml
+  claim_blob_sha1: 5ec7070efe443bb772fcaf6353291f002bb55578
+  claim_id: S02_GTM_TRM_AI_AGENT_PROMOTION_EVIDENCE_GATE_ADMISSION_20260808T110436Z
+  claim_expiry_utc: 2026-08-08T15:04:36Z
+  claim_acceptance_sha256: 9568610920750f40c917bde0d660de16d2becf921f43fe941340f21bd14d0c1a
+  claim_idempotency_sha256: d82d5cc35e3860960f2c92f555d752057de9e0cd66ac04e56760f9e43ad3cc4b
+  source_commit: da246e1acc2ef19f838e08119facbba0efd44625
+  source_path: projects/gtm-revenue/research/20260808T102800Z_JOB_EMPLOYER_TRM_LABS_TARGET_CARD.md
+  source_blob_sha1: 54c87c27729ca59a36a6ee56485d971ea934f509
+  source_binding_sha256: 293e7d73b6b452d2fa915dc28e7f8ec8f8d2dbcdc1bf103663a757dd6039e902
+  source_expiry_utc: 2026-08-14T10:28:00Z
+
+repository_contract:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+  base_sha: 0f081a0cf27a99ce890c7fb8ff07d12784c1e1c9
+  base_sha_observation: BRANCH_REF_IDENTICAL_TO_BASE_IMMEDIATELY_BEFORE_PACKET_WRITE
+  allowed_read_paths:
+    - projects/gtm-revenue/claims/20260808T110436Z_TRM_AI_AGENT_PROMOTION_EVIDENCE_GATE_ADMISSION.claim.yaml
+    - projects/gtm-revenue/research/20260808T102800Z_JOB_EMPLOYER_TRM_LABS_TARGET_CARD.md
+  allowed_write_paths:
+    - projects/gtm-revenue/kits/trm-labs/20260808_TRM_AGENT_CHANGE_PROMOTION_CONTRACT_V1.md
+    - projects/gtm-revenue/returns/20260808T*_S07_TRM_AI_AGENT_PROMOTION_EVIDENCE_GATE_RETURN.md
+  forbidden_paths:
+    - .github/**
+    - state/**
+    - projects/gtm-revenue/claims/**
+    - projects/gtm-revenue/research/**
+    - projects/gtm-revenue/packets/**
+    - projects/gtm-revenue/dispatch/**
+    - any path outside the two allowed write paths
+  mutation_rule: CREATE_ONLY_WITHIN_ALLOWED_WRITE_PATHS;NO_EXISTING_FILE_REPLACEMENT
+
+goal: >-
+  Produce at most one compact public-safe two-minute utility artifact for TRM Labs named
+  "TRM Agent Change Promotion Contract — Quality x Authority x Evidence" and one immutable
+  producer return. The artifact must bind one explicit human promotion decision to seven release
+  checks: held-out task success, hallucination bound, latency, credential isolation, tool/action
+  authority, trace completeness, and rollback, with exact candidate/model/prompt/tool-or-agent
+  revision identity. If the strongest falsifier is satisfied, do not build the candidate; return HOLD.
+
+current_red_evidence:
+  - The immutable S02 claim is newer than the prior S06 cursor and remains unexpired.
+  - Native task inventory shows S07 last ran at 2026-08-08T10:28:20.540089Z, before claim valid time 2026-08-08T11:04:36Z; therefore no post-claim scheduled producer execution is evidenced yet.
+  - No direct Codex, Claude, or host-shell executor invocation surface is exposed to this S06 carrier.
+  - No direct producer return naming runtime/model, observed branch/SHA, changed paths, exact commands, exit codes, outputs, blockers, rollback, and honest flaw has been consumed for this WorkItem.
+  - The target card itself warns that TRM already has mature shared agent infrastructure, eval discipline, permission/audit surfaces, credential isolation, adversarial review, human-only decisions, and reported observability improvements; redundancy is a live kill condition, not a polishing prompt.
+
+required_commands:
+  - "git rev-parse --abbrev-ref HEAD"
+  - "git rev-parse HEAD"
+  - "test \"$(git rev-parse --abbrev-ref HEAD)\" = \"agent/gen133-bootstrap-20260730\""
+  - "test \"$(git rev-parse HEAD)\" = \"0f081a0cf27a99ce890c7fb8ff07d12784c1e1c9\""
+  - "git status --short"
+  - "git cat-file -e 7deb581ff1e5d0d3babdfc347894180054caf0b0^{commit}"
+  - "git show 7deb581ff1e5d0d3babdfc347894180054caf0b0:projects/gtm-revenue/claims/20260808T110436Z_TRM_AI_AGENT_PROMOTION_EVIDENCE_GATE_ADMISSION.claim.yaml > /tmp/trm_claim.yaml"
+  - "git show da246e1acc2ef19f838e08119facbba0efd44625:projects/gtm-revenue/research/20260808T102800Z_JOB_EMPLOYER_TRM_LABS_TARGET_CARD.md > /tmp/trm_target_card.md"
+  - "python - <<'PY'\nfrom pathlib import Path\nimport hashlib,re\np=Path('/tmp/trm_target_card.md').read_text(encoding='utf-8').replace('\\r\\n','\\n')\nm=re.search(r'BEGIN_EVIDENCE_PREIMAGE_V1\\n(.*?)END_EVIDENCE_PREIMAGE_V1',p,re.S)\nassert m, 'missing evidence preimage markers'\npre=m.group(1)\nif not pre.endswith('\\n'): pre += '\\n'\nd=hashlib.sha256(pre.encode()).hexdigest()\nprint(d)\nassert d=='1f1adad150a5006d85dfdf833880ac75670fa777b4642c8711a31ccdb2f0277a'\nPY"
+  - "test ! -e projects/gtm-revenue/kits/trm-labs/20260808_TRM_AGENT_CHANGE_PROMOTION_CONTRACT_V1.md"
+  - "mkdir -p projects/gtm-revenue/kits/trm-labs"
+  - "# Executor creates the candidate only after falsifier review; no network calls are required or authorized."
+  - "test -f projects/gtm-revenue/kits/trm-labs/20260808_TRM_AGENT_CHANGE_PROMOTION_CONTRACT_V1.md"
+  - "grep -F 'WHY_THIS_MAY_MATTER' projects/gtm-revenue/kits/trm-labs/20260808_TRM_AGENT_CHANGE_PROMOTION_CONTRACT_V1.md"
+  - "grep -F 'HOW_TO_USE_IN_2_MINUTES' projects/gtm-revenue/kits/trm-labs/20260808_TRM_AGENT_CHANGE_PROMOTION_CONTRACT_V1.md"
+  - "grep -F 'held-out task success' projects/gtm-revenue/kits/trm-labs/20260808_TRM_AGENT_CHANGE_PROMOTION_CONTRACT_V1.md"
+  - "grep -F 'hallucination' projects/gtm-revenue/kits/trm-labs/20260808_TRM_AGENT_CHANGE_PROMOTION_CONTRACT_V1.md"
+  - "grep -F 'latency' projects/gtm-revenue/kits/trm-labs/20260808_TRM_AGENT_CHANGE_PROMOTION_CONTRACT_V1.md"
+  - "grep -F 'credential isolation' projects/gtm-revenue/kits/trm-labs/20260808_TRM_AGENT_CHANGE_PROMOTION_CONTRACT_V1.md"
+  - "grep -F 'tool/action authority' projects/gtm-revenue/kits/trm-labs/20260808_TRM_AGENT_CHANGE_PROMOTION_CONTRACT_V1.md"
+  - "grep -F 'trace completeness' projects/gtm-revenue/kits/trm-labs/20260808_TRM_AGENT_CHANGE_PROMOTION_CONTRACT_V1.md"
+  - "grep -F 'rollback' projects/gtm-revenue/kits/trm-labs/20260808_TRM_AGENT_CHANGE_PROMOTION_CONTRACT_V1.md"
+  - "python - <<'PY'\nfrom pathlib import Path\np=Path('projects/gtm-revenue/kits/trm-labs/20260808_TRM_AGENT_CHANGE_PROMOTION_CONTRACT_V1.md').read_text(encoding='utf-8')\nurls=[\n'https://jobs.ashbyhq.com/trm-labs/828b60b2-ac8f-407d-92a0-8b794c8cf391',\n'https://www.trmlabs.com/trm-tech-blog/building-an-agentic-software-factory-how-trm-re-architected-engineering-for-ai-leverage',\n'https://www.trmlabs.com/trm-tech-blog/ebpf-at-scale-how-trm-labs-modernized-its-observability-stack-with-groundcover',\n'https://www.trmlabs.com/trm-tech-blog/never-give-an-ai-agent-a-credential-a-broker-and-the-process-we-trusted-to-build-one']\nfor u in urls: assert u in p, u\nfor forbidden in ['Ankush Sharma is the hiring manager','TRM wants outside help','guaranteed savings','production improvement proven']:\n    assert forbidden not in p, forbidden\nprint('candidate_static_checks=PASS')\nPY"
+  - "git diff -- projects/gtm-revenue/kits/trm-labs/20260808_TRM_AGENT_CHANGE_PROMOTION_CONTRACT_V1.md"
+  - "git status --short"
+  - "# Create one immutable return under projects/gtm-revenue/returns/ only after all checks above; include runtime/model, branch/SHA observed, changed paths, exact commands, exit codes, outputs, blockers, rollback, honest flaw, verifier, consumer, expiry, and no-send status."
+
+acceptance_tests:
+  - Branch equals agent/gen133-bootstrap-20260730 and initial HEAD equals frozen base SHA before any executor write.
+  - Claim commit/path/blob, acceptance SHA-256, idempotency SHA-256, source commit/path/blob, and source-binding SHA-256 match this packet exactly.
+  - Target-card evidence digest independently recomputes to 1f1adad150a5006d85dfdf833880ac75670fa777b4642c8711a31ccdb2f0277a from the persisted marked preimage.
+  - Candidate is exactly one new file at projects/gtm-revenue/kits/trm-labs/20260808_TRM_AGENT_CHANGE_PROMOTION_CONTRACT_V1.md or no candidate is created when the falsifier fires.
+  - Candidate names one explicit human promotion decision, exact candidate/revision identity, and all seven required release checks.
+  - Candidate contains WHY_THIS_MAY_MATTER, HOW_TO_USE_IN_2_MINUTES, assumptions, measurable candidate-to-production promotion cycle-time metric with no invented baseline, all four carried primary-source URLs, and the strongest falsifier.
+  - Candidate preserves counterevidence and does not diagnose TRM, assert a defect, assert hiring authority for Ankush Sharma, claim TRM wants outside help, or claim production improvement without direct evidence.
+  - No network access, external submission, outreach, credentials, private/customer/third-party data, security testing, deployment, merge, publication, send, spend, account change, or task mutation occurs.
+  - Producer return is immutable and names runtime/model, branch/SHA, changed paths, every executed command with exit code and material output, blockers, rollback, honest flaw, verifier S04, consumer S03, claim acceptance SHA-256, candidate blob, exact source URLs, expiry, and no-send status.
+  - Any nonzero required command, base mismatch, pre-existing candidate path, digest mismatch, unauthorized path change, unsupported factual claim, or satisfied strongest falsifier causes HOLD rather than green.
+
+effect_ceiling:
+  class: T0_PREP_RESEARCH_GIT_ONLY
+  allowed: LOCAL_OR_EPHEMERAL_REPOSITORY_INSPECTION;ONE_NEW_PUBLIC_SAFE_CANDIDATE;ONE_NEW_IMMUTABLE_PRODUCER_RETURN
+  forbidden: SEND;APPLY;EMAIL;LINKEDIN_DM;ACCOUNT_CREATE;TERMS_ACCEPT;SPEND;PAID_CALL;DEPLOY;MERGE;PUSH_TO_PROTECTED_OR_EXTERNAL_BRANCH;PUBLICATION_OUTSIDE_OPERATOR_REPO;SECURITY_TESTING;TRM_OR_CUSTOMER_DATA;CREDENTIAL_USE;TASK_MUTATION;ACCOUNT_OR_SECURITY_CHANGE;DESTRUCTIVE_GIT_HISTORY_REWRITE
+
+time_budget_ceiling:
+  wall_clock_minutes: 25
+  external_cost_usd: 0
+  paid_provider_calls: 0
+  network_calls: 0
+
+rollback:
+  before_commit: REMOVE_ONLY_NEW_UNCOMMITTED_ALLOWED_WRITE_FILES_AND_RESTORE_WORKTREE_TO_FROZEN_BASE;NO_RESET_HARD
+  after_commit: APPEND_ONLY_SUPERSESSION;NO_HISTORY_REWRITE;NO_PERMANENT_DELETE
+  candidate_delete_path_if_unmerged_and_producer_owns_it: projects/gtm-revenue/kits/trm-labs/20260808_TRM_AGENT_CHANGE_PROMOTION_CONTRACT_V1.md
+
+verifier:
+  seat: S04_HRIST_STRUCTURAL_PREFLIGHT
+  task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  authority: SAME_PROVIDER_NONBINDING_STRUCTURAL_PREFLIGHT_ONLY
+  binding_weight: 0
+
+consumer:
+  seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  task_id: 6a539fc5130c81918c13624739fb2a60
+  external_effect_after_consume: OPERATOR_REVIEW_ONLY
+
+expiry:
+  packet_expiry_utc: 2026-08-08T15:04:36Z
+  source_expiry_utc: 2026-08-14T10:28:00Z
+  rule: DO_NOT_EXECUTE_AFTER_CLAIM_EXPIRY;REQUIRE_CHANGED_SOURCE_SUCCESSOR_NOT_RENEWAL
+
+strongest_falsifier: >-
+  Kill this wedge if current TRM platform/process documentation already exposes a low-overhead,
+  versioned promotion contract that binds held-out quality thresholds, credential/action policy,
+  latency/cost evidence, trace completeness, explicit human approval, and rollback to the exact
+  promoted agent/model/tool revision. In that case the proposed gift is redundant and the executor
+  must return HOLD without creating the candidate.
+
+routing:
+  direct_executor_ingress: ABSENT
+  dispatched: false
+  slack_post_is_execution: false
+  reason: CURRENT_TOOL_SURFACE_EXPOSES_GITHUB_AND_SLACK_BUT_NO_DIRECT_CODEX_CLAUDE_OR_HOST_EXECUTOR_INVOCATION
+
+honest_flaw: >-
+  This packet freezes repository state, claim/source identities, deterministic inspection commands,
+  acceptance checks, authority, rollback, and falsifier, but S06 did not execute the packet. The
+  scheduled S07 producer had not run after the claim at self-probe time, and no direct Codex, Claude,
+  or host-shell ingress was available to this carrier. A later executor must report its own runtime/model,
+  observed branch/SHA, commands, exit codes, outputs, blockers, rollback, and flaw; a Git commit or Slack
+  pointer alone is not execution evidence.
