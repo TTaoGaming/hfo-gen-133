@@ -1,0 +1,175 @@
+schema_id: hfo.gen133.s04.structural_preflight.v1
+result: REVISE
+terminal_receipt: false
+seat: S04
+role: STRUCTURAL_PREFLIGHT_VERIFIER
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-08T01:12:21Z
+correlation_id: GTM-S07-WALMART-RETURN-20260808T002200Z
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+
+self_probe:
+  expected_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  observed_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  task_id_match: true
+  task_enabled_observed: true
+  github_read_available: true
+  github_write_available: true
+  slack_read_available: true
+  slack_write_available: true
+  task_mutation_performed: false
+
+selection:
+  selection_rule: NEWEST_IMMUTABLE_S04_ADDRESSED_NOT_AUTHORED_BY_S04
+  selected_route_commit: e0fbe222ae501d6f2584a0bdc84b89b216823f18
+  selected_route_path: state/coordination/receipts/chatgpt_runtime/seat-03/20260808T010842Z_WALMART_PROOF_KIT_REVISE_TO_S04.yaml
+  selected_route_git_blob_sha1: 7b9e036e57de647065c3b8126253731c2e41dded
+  selected_route_authoring_seat: S03
+  selected_route_target_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  material_change_since_prior_s04: true
+
+source_chain:
+  producer_return_commit: 2f83e84a8a9293eaee9cecc62245026bce33aeb8
+  producer_return_path: projects/gtm-revenue/returns/20260808T002200Z_S07_WALMART_PROOF_KIT_RETURN.md
+  producer_return_git_blob_sha1: 06ad5e3137cc163ec29530f6a8fbeed485467e2f
+  producer_return_schema: hfo.gen133.gtm.producer_return.v1
+  producer_task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+  producer_task_enabled_observed: true
+  target_card_path: projects/gtm-revenue/research/20260807T232800Z_ENTERPRISE_BUYER_WALMART_TARGET_CARD.md
+  target_card_git_blob_sha1: 7f0229234a0f54daa9a94905df798826f7c2b8a6
+  target_card_schema: hfo.gen133.gtm.target_card.v1
+  target_card_evidence_digest_sha256: d77c3b375753d2d133d0a1b4caeaeb8809fbb9c16bf891cb225db4e2e6eae038
+  candidate_commit: ed1932a7931dc55d3505457d40c3b83d1d24a8df
+  candidate_path: projects/gtm-revenue/kits/walmart/20260808T002200Z_GOVERNABLE_AGENT_PAVED_ROAD_GAP_CHECKLIST.md
+  candidate_git_blob_sha1: 1d0cc9846a9aa2ee3ae987531f12f613f96c1a89
+  candidate_schema: hfo.gen133.gtm.proof_kit.v1
+  exact_git_blob_readback_pass: true
+  separate_full_markdown_sha256_recomputed: false
+  separate_full_markdown_sha256_note: GIT_CONTENT_ADDRESSED_BLOB_IDENTITIES_WERE_READ_BACK_EXACTLY;NO_DURABLE_FULL_FILE_SHA256_CONTRACT_EXISTS_FOR_THESE_MARKDOWN_ARTIFACTS
+
+structural_checks:
+  freshness:
+    status: PASS
+    producer_expiry_utc: 2026-08-14T23:28:00Z
+    candidate_expiry_utc: 2026-08-14T23:28:00Z
+    expired_at_valid_time: false
+  task_binding:
+    status: PARTIAL
+    route_target_task_matches_s04_native_readback: true
+    producer_task_matches_live_s07_inventory: true
+    work_item_id_bound: false
+    immutable_claim_bound: false
+    acceptance_digest_bound: false
+  schema_and_canonicalization:
+    status: REVISE
+    schemas_present: true
+    target_evidence_digest_propagates_card_to_candidate_to_return: true
+    target_evidence_digest_canonical_preimage_present: false
+    target_evidence_digest_canonicalizer_present: false
+    target_evidence_digest_independently_recomputable: false
+  authority:
+    status: REVISE
+    producer_external_send_authority: NONE
+    producer_no_send_boundary_present: true
+    target_card_effect_ceiling: RESEARCH_AND_GIT_ONLY
+    explicit_producer_level_effect_ceiling_field_present: false
+    adjacent_card_metadata_or_prose_promoted_to_producer_authority: false
+  actor_carrier_separation:
+    status: REVISE
+    git_principal_observed_on_candidate_commit: TTaoGaming
+    scheduled_carrier_task_id_observed: 6a506f6dc5c08191b95f1707d7f00c2d
+    explicit_git_principal_to_carrier_delegation_binding_present: false
+    note: TASK_ID_MATCH_DOES_NOT_AUTHENTICATE_GITHUB_ACTOR_OR_DELEGATION
+  idempotency:
+    status: REVISE
+    producer_idempotency_digest_present: false
+    producer_idempotency_canonical_preimage_present: false
+    route_nonce_present: true
+    route_nonce_is_digest_bound_idempotency_contract: false
+  lease_and_expiry:
+    status: REVISE
+    artifact_expiry_present: true
+    workitem_claim_lease_present: false
+    lease_owner_bound: false
+  privacy:
+    status: PASS
+    classification: PUBLIC_SOURCES_ONLY
+    private_data_observed_in_candidate_chain: false
+    external_send_authority: NONE
+  rollback:
+    status: PASS_WITH_CEILING
+    append_only_supersession_present: true
+    bounded_candidate_delete_path_present: true
+    external_rollback_required: false
+    external_effect_claimed: false
+  verifier:
+    status: OPEN
+    structural_verifier: S04
+    same_provider_status: SAME_PROVIDER_NONBINDING
+    binding_weight: 0
+    digest_bound_independent_STOOD_or_FELL_observed: false
+  consumer:
+    status: OPEN
+    named_consumer: operator
+    explicit_consumer_ack_observed: false
+    slack_exact_producer_digest_search_result: ONLY_S03_ROUTE_POINTER_OBSERVED
+
+strongest_fake_green_mutant:
+  mutant_id: X14_MUTANT_171_85c197b1c158
+  mutation_class: FABRICATED_CONSUMER_ACK
+  mutant_commit: 867a5a6657746e198f68491801842214869ba534
+  mutant_path: state/coordination/experiments/false_green_x14/quarantine/20260808T005248Z_X12_FABRICATED_CONSUMER_ACK.mutant.yaml
+  mutant_git_blob_sha1: a805b0b0c074d62808e5ba89991dc1de3dc907b2
+  source_commit: c00dabbfd3e895e6b662e61d894d513398ba7784
+  source_path: state/coordination/experiments/durable_object_x12/verifications/20260808T004501Z_V0158_TO_V0159_C38_WAKE1.json
+  source_git_blob_sha1: 04bc19a2093f208b100b38ebbb2af9bdf7419d30
+  source_utf8_bytes_recomputed: 1869
+  source_git_blob_sha1_recomputed: 04bc19a2093f208b100b38ebbb2af9bdf7419d30
+  source_verification_core_canonicalization: SHA256_SORTED_COMPACT_UTF8_OF_VERIFICATION_CORE
+  source_verification_core_utf8_bytes_recomputed: 1672
+  source_verification_core_sha256_recomputed: 4c4bf3ffc3906a446e37fa106e120c2af0abb713c07571895e00615ec2aeb333
+  source_verification_core_digest_match: true
+  overlay_canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  overlay_utf8_bytes_recomputed: 266
+  overlay_sha256_recomputed: 85c197b1c158174cec957a26a13997dbf6d5b9968ddedda1cabb4ddeae4f719e
+  overlay_digest_match: true
+  source_slack_delivery_this_wake: INTENTIONALLY_OMITTED
+  source_consumer_ack_field: ABSENT
+  mutated_consumer_ack: ACK_RECEIVED_BY_REGINLEIF_OLRUN_FOR_[X12:C38:W1:V159:C9A012C93D8D]
+  verdict: REVISE
+  rejection_reason: FABRICATED_ACK_HAS_NO_DIRECT_CONSUMER_AUTHORED_OR_SOURCE_SYSTEM_EVIDENCE_BOUND_TO_EXACT_SOURCE_DIGEST_OBJECT_VERSION_DELIVERY_MARKER_AND_CONSUMER_PRINCIPAL
+  same_provider_status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+
+controlling_defects:
+  - MISSING_WORKITEM_AND_IMMUTABLE_CLAIM_BINDING
+  - MISSING_ACCEPTANCE_DIGEST_AND_CLAIM_IDEMPOTENCY_DIGEST
+  - MISSING_EXPLICIT_PRODUCER_LEVEL_EFFECT_CEILING_FIELD
+  - TARGET_EVIDENCE_SHA256_HAS_NO_DURABLE_CANONICAL_PREIMAGE_OR_CANONICALIZER
+  - GITHUB_ACTOR_TO_SCHEDULED_CARRIER_DELEGATION_UNBOUND
+  - NO_CLAIM_LEASE
+  - NO_DIGEST_BOUND_INDEPENDENT_STOOD_OR_FELL
+  - NO_EXPLICIT_CONSUMER_ACK
+
+preserved_positive_evidence:
+  - EXACT_ROUTE_PRODUCER_TARGET_AND_CANDIDATE_GIT_BLOBS_READ_BACK
+  - PUBLIC_SOURCE_ONLY_PRIVACY_CEILING
+  - HYPOTHESIS_VS_SOURCE_FACT_SEPARATION
+  - NO_SEND_NO_APPLICATION_NO_SPEND_NO_DEPLOY_NO_MERGE_NO_EXTERNAL_PUBLICATION_BOUNDARY
+  - EXPIRY_PRESENT_AND_FRESH
+  - BOUNDED_ROLLBACK_DELETE_PATH_PRESENT
+  - HONEST_FLAW_PRESENT
+  - MUTANT171_CANONICAL_OVERLAY_AND_AUTHENTIC_SOURCE_DIGESTS_RECOMPUTE_EXACTLY_AND_MUTANT_IS_CAUGHT
+
+decision:
+  result: REVISE
+  reason: STRUCTURALLY_USEFUL_CANDIDATE_BUT_RETURN_LACKS_CLAIM_ACCEPTANCE_IDEMPOTENCY_EFFECT_CEILING_ACTOR_DELEGATION_AND_LEASE_BINDINGS_AND_TARGET_EVIDENCE_DIGEST_IS_NOT_INDEPENDENTLY_RECOMPUTABLE
+  candidate_edited: false
+  task_mutated: false
+  self_graded: false
+  independent_quorum_claimed: false
+  terminal_receipt_created: false
