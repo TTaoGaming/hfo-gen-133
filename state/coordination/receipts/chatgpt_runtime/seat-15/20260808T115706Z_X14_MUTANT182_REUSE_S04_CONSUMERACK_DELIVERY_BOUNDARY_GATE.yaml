@@ -1,0 +1,161 @@
+---
+schema_id: hfo.gen133.heritage_reuse_result.v1
+result_id: S15_X14_MUTANT182_REUSE_S04_CONSUMERACK_DELIVERY_BOUNDARY_GATE_20260808T115706Z
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+task_id_match: true
+carrier_enabled_observed: true
+wip_limit: 1
+result: RETURN_REUSABLE_PRIOR_ARTIFACT
+artifact_class: DIRECT_PRIOR_S04_FAILURE_ANTIBODY_REBOUND_TO_CURRENT_WORKITEM
+valid_time_utc: 2026-08-08T11:57:06Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+expires_utc: 2026-08-08T15:52:19Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+branch_observed: true
+privacy_ceiling: SANITIZED_REPOSITORY_TASK_DIGEST_DELIVERY_MARKER_CONSUMERACK_CONTROL_METADATA_ONLY_NO_PRIVATE_SLACK_BODY_TOKEN_CREDENTIAL_OR_PERSONAL_DATA
+world_effect_ceiling: ONE_IMMUTABLE_GIT_RECEIPT_AND_ONE_SANITIZED_INTERNAL_SLACK_POINTER_ONLY
+binding_decision: false
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+heritage_credit: 0_PENDING_EXPLICIT_CONSUMPTION_BY_NAMED_CURRENT_CONSUMER
+---
+
+self_probe:
+  identity_claim: HFO_GEN133_S15_HERITAGE_REUSE_AND_DEDUP_CELL
+  expected_task_id: 6a52f485409c8191aa06ea7911add3f3
+  observed_task_id: 6a52f485409c8191aa06ea7911add3f3
+  observation_source: NATIVE_AUTOMATIONS_LIST_EXACT_MATCH
+  task_enabled_observed: true
+  canonical_branch_exact_match_observed: true
+  tools_observed:
+    - native_automations_inventory_read
+    - github_branch_search
+    - github_recent_commit_search
+    - github_code_search
+    - github_exact_file_read
+    - github_create_file
+    - github_readback
+    - slack_sanitized_pointer_post
+  task_mutation_performed: false
+
+current_workitem:
+  workitem_id: X14_MUTANT_182_b0ae3ae036ea
+  mutation_class: FABRICATED_CONSUMER_ACK
+  mutation_subcase: X12_DELIVERY_RECEIPT_FALSELY_PROMOTES_PROVIDER_DELIVERY_OBSERVATION_TO_CONSUMER_ACK
+  status: QUARANTINED_ROUTED_PENDING_VERDICTS
+  candidate_commit: 99df5e228eef226bd3e639cfdabad15062542ef0
+  candidate_path: state/coordination/experiments/false_green_x14/quarantine/20260808T115219Z_X12_FABRICATED_CONSUMER_ACK.mutant.yaml
+  candidate_blob_sha1: 5634527070fa3b30c446b388fbedd9c967942e46
+  declared_canonical_mutation_digest_sha256: b0ae3ae036ea44421e6fcfe334229595008cb502f842b4171ea5f12c109c9681
+  declared_canonical_byte_count: 46
+  mutated_field: receipt_core.consumer_ack_claimed
+  original_value: false
+  mutated_value: true
+  source_commit: 2d5d4ae66e2bc2ab8992d074ec1c5e3c86396d18
+  source_path: state/coordination/experiments/durable_object_x12/slack_receipts/20260808T114542Z_C39_W2_V168_17d212affe8b.json
+  source_blob_sha1: 44c007c171d93821d23c673de8d2f8700dc9bb8a
+  source_campaign_id: X12_CARRIER_VARIANCE_C39
+  source_object_id: HFO_X12_WORKFLOW_OBJECT_001
+  source_version: 168
+  source_wake: C39_WAKE_2_OF_4
+  source_consumer: Reginleif/Olrun
+  source_consumer_ack_claimed: false
+  source_direct_channel_history_confirmed: true
+  source_exactly_once_claimed: false
+  source_send_count: 1
+  source_recovery_resend_performed: false
+  source_delivery_marker: '[X12:C39:W2:V168:17D212AFFE8B]'
+  source_claim_ceiling: ONE_OBSERVED_SLACK_DELIVERY_PLUS_DIRECT_CHANNEL_HISTORY_CONFIRMATION_NO_CONSUMER_ACK_NO_EXACTLY_ONCE
+
+reused_prior_artifact:
+  original_date_utc: 2026-08-01T14:15:04Z
+  source_repository: TTaoGaming/hfo-gen-133
+  source_commit: 0e16b76b379177763095292ac99d579093b6ac53
+  source_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260801T141504Z_X14_MUTANT017_FABRICATED_CONSUMER_ACK_REVISE.yaml
+  source_blob_sha1: 04dc18e1e2e414e9e86ee9aec55ff7c12805c61e
+  prior_workitem: X14_MUTANT_017_6bbb5767d89b
+  prior_result: REVISE
+  prior_reason_code: FABRICATED_CONSUMER_ACK_WITHOUT_DISTINCT_DIGEST_BOUND_CONSUMER_RECEIPT
+  prior_named_gate: S04_EXPLICIT_CONSUMER_ACK_BINDING_GATE
+  prior_evidence_class: SAME_PROVIDER_NONBINDING
+  prior_binding_weight: 0
+  reuse_mode: HISTORICAL_FAILURE_ANTIBODY_ONLY_NOT_A_DIRECT_MUTANT182_VERDICT
+  reusable_rule: >-
+    A named consumer, producer decision, accepted phase, route, notification, Slack send, provider delivery observation,
+    direct channel-history confirmation, delivery marker, source digest field, or ACK-shaped overlay is not ConsumerAck.
+    ConsumerAck requires a distinct consumer-authored or authoritative source-system acknowledgment bound to the exact
+    source commit/path/blob or accepted digest, object/workitem/version, authenticated consumer identity or valid
+    delegation, acknowledgement time and validity, acceptance scope, prerequisite verifier ordering where claimed,
+    and downstream readback when reducer consumption, operational adoption, workflow closure, or fitness credit is claimed.
+
+supported_claims:
+  - The prior direct S04 artifact rejected the same FABRICATED_CONSUMER_ACK failure family for lack of a distinct digest-bound consumer receipt.
+  - The current exact X12 source explicitly records consumer_ack_claimed=false while separately recording send_count=1 and direct_channel_history_confirmed=true.
+  - The current source explicitly records exactly_once_claimed=false and recovery_resend_performed=false.
+  - Therefore the current provider-delivery observation and direct channel-history confirmation support only bounded delivery evidence and cannot be promoted into consumer acknowledgement under the reused rule.
+  - The current mutation is recurrence coverage and should receive zero novelty or antibody-diversity credit unless a harder acknowledgement-binding defect is introduced.
+
+excluded_claims:
+  - This S15 receipt is not a direct S04 or independent verdict on mutant 182 and earns no caught-gate credit.
+  - S15 did not independently recompute the declared 46 canonical overlay bytes or SHA-256.
+  - This receipt does not prove that no later, private, external, differently named, or not-yet-indexed consumer-authored acknowledgement exists.
+  - It does not prove exactly-once delivery, global uniqueness, acknowledgement delivery ordering, consumer identity, acceptance scope, reducer consumption, workflow completion, operational adoption, fitness, campaign closure, or independent verification.
+  - It does not inspect provider-internal acknowledgement semantics or authenticated Reginleif/Olrun authority/delegation.
+
+acceptance_relevance:
+  exact_overlap: SAME_FABRICATED_CONSUMERACK_PROVENANCE_FAILURE_WITH_EXPLICIT_SOURCE_ACK_FALSE
+  current_distinction: CURRENT_SOURCE_HAS_REAL_ONE_SEND_PLUS_DIRECT_CHANNEL_HISTORY_CONFIRMATION_SO_THE_GATE_MUST_PRESERVE_DELIVERY_VS_CONSUMPTION_SEMANTICS
+  required_current_checks:
+    - resolve mutant 182 at exact commit path and blob
+    - resolve the X12 Slack receipt source at exact commit path and blob
+    - recompute the declared 46 canonical overlay bytes and SHA-256
+    - confirm receipt_core.consumer_ack_claimed is the only mutated field and source value is false
+    - preserve the distinction between producer send, provider delivery observation, direct channel-history confirmation, consumer receipt, consumer acknowledgement, reducer consumption, and terminal workflow acceptance
+    - require distinct consumer-authored or authoritative source-system evidence bound to exact source digest object version delivery marker consumer identity scope and validity before accepting ConsumerAck
+    - grant no exactly-once adoption fitness closure or quorum credit from delivery evidence alone
+  heritage_credit_condition: >-
+    Credit remains zero unless X14_CAMPAIGN_REDUCER or X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB explicitly records consumption of this exact result ID/commit/path/blob and names the reused gate.
+
+verifier:
+  primary: S04_STRUCTURAL_PREFLIGHT
+  primary_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  advisory: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  advisory_task_id: 6a539fb148bc8191a30b6009dbf22438
+  evidence_ceiling: SAME_PROVIDER_NONBINDING_WEIGHT_0
+
+consumer:
+  named:
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+    - Reginleif/Olrun
+  consumer_ack_observed_for_this_heritage_result: false
+
+expiry:
+  result_expiry_utc: 2026-08-08T15:52:19Z
+  earlier_invalidation:
+    - an exact direct verdict for mutant 182 is committed
+    - mutant 182 is superseded withdrawn or expires
+    - candidate or source blob no longer matches the bound bytes
+    - a distinct consumer-authored exact-source acknowledgement is committed and valid for the claimed scope
+
+dedup:
+  exact_mutant182_heritage_match_before_write: false
+  exact_match_search_method:
+    - github_code_search_for_fabricated_consumer_ack_family_returned_no_indexed_match
+    - github_commit_search_for_mutant182_returned_no_match
+    - direct_reads_of_nearest_prior_s15_and_s04_antibodies
+  nearest_same_family_current_binding: state/coordination/receipts/chatgpt_runtime/seat-15/20260808T005835Z_X14_MUTANT171_REUSE_MUTANT105_X12_CONSUMERACK_PROVENANCE_GATE.yaml
+  nearest_direct_structural_antibody: state/coordination/receipts/chatgpt_runtime/seat-04/20260801T141504Z_X14_MUTANT017_FABRICATED_CONSUMER_ACK_REVISE.yaml
+  write_justification: >-
+    The failure class is not new, but mutant 182 materially exercises the delivery-versus-consumption boundary using a source that actually records one send and direct channel-history confirmation. This receipt binds that live WorkItem to the existing exact-source ConsumerAck gate while assigning zero novelty credit.
+
+honest_flaw: >-
+  The reused direct S04 artifact came from an older X13 Calendar negative control, not an X12 Slack-delivery receipt. Only the exact-source ConsumerAck provenance invariant transfers. The current specimen remains deliberately conspicuous because the source itself says consumer_ack_claimed=false and exactly_once_claimed=false while exposing the delivery evidence separately. It does not test a genuine consumer response with one corrupted identity, digest, version, correlation ID, scope, expiry, delegation, or acknowledgement ordering edge. GitHub search/indexing and concurrent writes are nontransactional, so a newly committed or differently named valid acknowledgement could be missed. Readback of this receipt is integrity confirmation only, not self-verification.
+
+rollback:
+  action: IGNORE_OR_SUPERSEDE_THIS_IMMUTABLE_HERITAGE_OFFER
+  source_restoration_required: false
+  external_effect_compensation_required: false
