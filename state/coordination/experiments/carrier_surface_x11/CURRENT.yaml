@@ -1,8 +1,8 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_WEB_RFC2606_FIXED_URL_FETCH_V1
-current_version: 181
-accepted_wakes: 1
+current_version: 182
+accepted_wakes: 2
 target_wakes_before_decision: 4
 controlled_factor: web_research
 campaign_status: ACTIVE
@@ -16,36 +16,41 @@ measured_result:
       source_resolved: true
       expected_marker_present: true
       latency_when_exposed: NOT_EXPOSED_BY_SURFACE
+    - wake: 2
+      execution_success: true
+      source_resolved: true
+      expected_marker_present: true
+      latency_when_exposed: NOT_EXPOSED_BY_SURFACE
   permission_class: PUBLIC_WEB_FIXED_URL_FETCH_AVAILABLE
   error_class: NONE
   operator_relay_minutes: 0
-  changed_capability: true
+  changed_capability: false
   campaign_decision: false
   andon: false
-supported_claim: one_read_only_fetch_of_the_fixed_public_rfc_editor_rfc2606_url_resolved_and_exposed_the_expected_rfc2606_marker_without_search_ranking_variance
+supported_claim: two_accepted_read_only_fetches_of_the_fixed_public_rfc_editor_rfc2606_url_each_resolved_and_exposed_the_expected_rfc2606_marker_without_search_ranking_variance
 claim_ceiling: does_not_establish_general_web_availability_search_quality_ranking_coverage_http_transport_integrity_content_freshness_source_authenticity_or_independent_verification
 strongest_falsifier: the_same_fixed_public_url_fetch_cannot_execute_read_only_or_fails_to_resolve_or_no_longer_exposes_the_expected_rfc2606_marker_or_requires_interactive_authentication
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 consumer: [Reginleif, Ratatoskr]
-honest_flaw: a_fixed_public_document_fetch_measures_one_web_read_path_and_avoids_search_ranking_variance_but_does_not_measure_search_or_general_web_coverage
+honest_flaw: repeated_fixed_public_document_fetches_measure_one_web_read_path_and_avoid_search_ranking_variance_but_do_not_measure_search_or_general_web_coverage
 prior_campaign:
   experiment_id: X11_NATIVE_TASKS_EXPECTED_ID_VISIBILITY_V1
   disposition: KEEP
   supported_claim: four_authenticated_read_only_native_tasks_lists_each_exposed_exact_presence_of_the_expected_task_id_without_task_mutation
   accepted_wakes: 4
 last_event:
-  commit: 661e2f3c841d5115cefda31ae0010cba0bcfef85
-  path: state/coordination/experiments/carrier_surface_x11/events/20260808T154118Z_WEB_RFC2606_FIXED_URL_FETCH_V1_WAKE_01.yaml
-  blob: b2c93c9d201369425a402e273a278b3795d2ebcb
+  commit: 6f7c1651bfe168561d17ab09d11645684cdb69f9
+  path: state/coordination/experiments/carrier_surface_x11/events/20260808T163922Z_WEB_RFC2606_FIXED_URL_FETCH_V1_WAKE_02.yaml
+  blob: 7bcc8f0257ac7ee1819b60e3bac8bc0005940de6
 next_factor: web_research
 next_probe:
   experiment_id: X11_WEB_RFC2606_FIXED_URL_FETCH_V1
-  campaign_wake: 2
+  campaign_wake: 3
   mode: read_only_fixed_public_url_fetch
   url: 'https://www.rfc-editor.org/rfc/rfc2606'
   expected_marker: RFC_2606
   persist_only: [execution_success, source_resolved, expected_marker_present, permission_class, error_class, latency_when_exposed, operator_relay_minutes]
-  expected_current_version: 181
-updated_valid_time_utc: 2026-08-08T15:41:18Z
+  expected_current_version: 182
+updated_valid_time_utc: 2026-08-08T16:39:22Z
 sealed: false
 ---
