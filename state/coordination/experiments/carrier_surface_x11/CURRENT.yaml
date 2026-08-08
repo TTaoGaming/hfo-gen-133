@@ -1,8 +1,8 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_DRIVE_FIXED_IMPOSSIBLE_MARKER_METADATA_SEARCH_V1
-current_version: 170
-accepted_wakes: 2
+current_version: 171
+accepted_wakes: 3
 target_wakes_before_decision: 4
 controlled_factor: drive_read_surface
 campaign_status: ACTIVE
@@ -21,13 +21,18 @@ measured_result:
       sanitized_result_count: 0
       continuation_present: false
       latency_ms_exposed: 2405
+    - wake: 3
+      execution_success: true
+      sanitized_result_count: 0
+      continuation_present: false
+      latency_ms_exposed: 806
   permission_class: AUTHENTICATED_DRIVE_METADATA_SEARCH_READ_AVAILABLE
   error_class: NONE
   operator_relay_minutes: 0
   changed_capability: false
   campaign_decision: false
   andon: false
-supported_claim: two_authenticated_drive_metadata_only_document_searches_executed_without_content_fetch_and_returned_zero_sanitized_results
+supported_claim: three_authenticated_drive_metadata_only_document_searches_executed_without_content_fetch_and_returned_zero_sanitized_results
 claim_ceiling: does_not_establish_drive_completeness_recall_index_freshness_file_content_access_source_authenticity_or_independent_verification
 strongest_falsifier: the_fixed_impossible_marker_search_requires_content_fetch_or_mutation_cannot_execute_or_exposes_content_beyond_the_sanitized_measurement_contract
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
@@ -39,20 +44,20 @@ prior_campaign:
   supported_claim: four_authenticated_bounded_gmail_message_id_searches_executed_with_zero_sanitized_results_and_no_continuation
   accepted_wakes: 4
 last_event:
-  commit: c3baceb80dd601ceebed8a00e748558b8dbb09a9
-  path: state/coordination/experiments/carrier_surface_x11/events/20260808T044207Z_DRIVE_FIXED_IMPOSSIBLE_MARKER_METADATA_SEARCH_V1_WAKE_02.yaml
-  blob: b3d3911a7a95502f53dcdb4363b57e126064a4df
+  commit: d498dc1a3cc0e0e468f2149485554a6736f7fb33
+  path: state/coordination/experiments/carrier_surface_x11/events/20260808T054205Z_DRIVE_FIXED_IMPOSSIBLE_MARKER_METADATA_SEARCH_V1_WAKE_03.yaml
+  blob: 39ba0b255750a88b57d84008665c9b546be06104
 next_factor: drive_read_surface
 next_probe:
   experiment_id: X11_DRIVE_FIXED_IMPOSSIBLE_MARKER_METADATA_SEARCH_V1
-  campaign_wake: 3
+  campaign_wake: 4
   mode: read_only_fixed_impossible_marker_metadata_search
   exact_query: '__HFO_X11_FIXED_IMPOSSIBLE_MARKER_6A55089A9ADC8191BDA54541F7F9EFFA__'
   topn: 1
   item_type: document
   best_effort_fetch: false
   persist_only: [execution_success, sanitized_result_count, continuation_present, permission_class, error_class, latency_when_exposed, operator_relay_minutes]
-  expected_current_version: 170
-updated_valid_time_utc: 2026-08-08T04:42:07Z
+  expected_current_version: 171
+updated_valid_time_utc: 2026-08-08T05:42:05Z
 sealed: false
 ---
