@@ -1,0 +1,194 @@
+schema_id: hfo.gen133.s06.executor_packet.v1
+result: HOLD
+seat: S06_CODE_WORK_PACKET_COMPILER_CODEX_BRIDGE
+wip: 1
+valid_time_utc: 2026-08-08T02:18:19Z
+
+self_probe:
+  expected_task_id: 6a57972b9df081918680ce67c4ecb197
+  observed_task_id: 6a57972b9df081918680ce67c4ecb197
+  task_id_match: true
+  task_enabled_observed: true
+  github_read_available: true
+  github_write_available: true
+  slack_write_available: true
+  automation_inventory_read_available: true
+  direct_codex_ingress_available: false
+  direct_claude_ingress_available: false
+  direct_host_ingress_available: false
+  note: GitHub repository mutation is available only for this append-only dispatch artifact; no canonical host checkout or executor runtime is exposed.
+
+selection:
+  work_item_id: S08-CHANNEL_PARTNER-GUIDEPOINT_SECURITY-20260808T002938Z
+  material_change: true
+  changed_edge: NEW_S07_PRODUCER_RETURN_PLUS_S03_ROUTE_AFTER_PRIOR_S06_PACKET
+  claim_status: CLAIMED_INTERNAL_ONLY_NO_EXTERNAL_EFFECT
+  claim_commit_sha: b8fd9f98cefc92aa13de46e5e1976d1facf3cddd
+  claim_path: projects/gtm-revenue/claims/20260808T010521Z_GUIDEPOINT_SECURITY_AGENTIC_APPSEC_ACCEPTANCE_GATE_ADMISSION.claim.yaml
+  claim_blob_sha1: cd2b4c5090de0b77782559b01c931450aefc2b39
+  claim_expiry_utc: 2026-08-08T05:05:21Z
+  acceptance_sha256: 7fd068d1a1d326cc0bfda2426b51c1a4b9db7cb44f40fffca8e7da37340e0d9f
+  claim_idempotency_sha256: ce024e8d4bfa6fb27a7f046a3b29d0e0d217506bebf102757dede1be121691e1
+
+repository:
+  full_name: TTaoGaming/hfo-gen-133
+  canonical_branch: agent/gen133-bootstrap-20260730
+  base_sha_observed_before_write: 41b1feda0369cd5118f53f3f242cdc038c420fbd
+
+inputs:
+  target_card:
+    commit: 2013764f7f219f007be32071d45ec81abe0e3e4c
+    path: projects/gtm-revenue/research/20260808T002938Z_CHANNEL_PARTNER_GUIDEPOINT_SECURITY_TARGET_CARD.md
+    blob_sha1: f7951a7d80b1e3efb0e2694ef6193b74aa5507b1
+    evidence_digest_sha256: 2d6f7d925ec694e64f7f27f667bc5c2fa77b23915935ef9cfcf45427bd102e11
+  producer_candidate:
+    commit: 335017de0168cdec6794d892bb6213d2dbecc03c
+    path: projects/gtm-revenue/kits/guidepoint-security/20260808T012200Z_AGENTIC_APPSEC_ACCEPTANCE_GATE.md
+    blob_sha1: dd02ba9695f98065770a595bc48ca8bd3f46cb21
+  producer_return:
+    commit: 33ab8a3a018e7da415e5d63e3be792dea1945098
+    path: projects/gtm-revenue/returns/20260808T012400Z_S07_GUIDEPOINT_SECURITY_PROOF_KIT_RETURN.md
+    blob_sha1: 083cb87802319129ea2af254f9402e422c54b479
+  reducer_route:
+    commit: 41b1feda0369cd5118f53f3f242cdc038c420fbd
+    path: state/coordination/receipts/chatgpt_runtime/seat-03/20260808T020900Z_GUIDEPOINT_PROOF_KIT_HOLD_TO_S04.yaml
+    blob_sha1: 38269e257ea46aa9330502515c145673e31dc991
+
+allowed_paths:
+  - projects/gtm-revenue/claims/20260808T010521Z_GUIDEPOINT_SECURITY_AGENTIC_APPSEC_ACCEPTANCE_GATE_ADMISSION.claim.yaml
+  - projects/gtm-revenue/research/20260808T002938Z_CHANNEL_PARTNER_GUIDEPOINT_SECURITY_TARGET_CARD.md
+  - projects/gtm-revenue/kits/guidepoint-security/20260808T012200Z_AGENTIC_APPSEC_ACCEPTANCE_GATE.md
+  - projects/gtm-revenue/returns/20260808T012400Z_S07_GUIDEPOINT_SECURITY_PROOF_KIT_RETURN.md
+  - state/coordination/receipts/chatgpt_runtime/seat-03/20260808T020900Z_GUIDEPOINT_PROOF_KIT_HOLD_TO_S04.yaml
+
+forbidden_paths:
+  - '**/*'
+forbidden_paths_exception: READ_ONLY_ACCESS_ONLY_TO_ALLOWED_PATHS_ABOVE; NO_REPOSITORY_WRITES_BY_EXECUTOR
+
+goal: >-
+  Reproduce the exact Git and acceptance bindings for the GuidePoint S07 producer return and return a direct executor evidence record sufficient for S06 consumption rules: runtime/model identity, observed branch and HEAD SHA, changed paths, every exact command executed, per-command exit code and output, explicit blockers, rollback, and honest flaw. Do not repair, edit, re-grade, send, publish, merge, deploy, or create a replacement candidate.
+
+current_red_evidence:
+  - The S07 return exists and is claim/candidate/source-bound, but it does not name a concrete executor runtime/model.
+  - The S07 return does not provide an observed executor branch/HEAD SHA from an execution checkout.
+  - The S07 return declares no exact executed command transcript, per-command exit codes, or command outputs.
+  - The S07 return does not provide an explicit executor blocker field; it only states the native carrier-ID readback is unavailable and gives an honest flaw.
+  - S03 routed the return to S04 at 2026-08-08T02:09:00Z and observed no exact digest-bound S04 verdict or ConsumerAck at that time.
+  - S06 has no direct Codex, Claude, or canonical host executor ingress in this wake; therefore this packet is compiled but not executed.
+
+required_commands:
+  - id: C01
+    command: 'git rev-parse --show-toplevel'
+    expected: 'exit 0; output names the intended hfo-gen-133 checkout root'
+  - id: C02
+    command: 'git remote get-url origin'
+    expected: 'exit 0; output resolves to TTaoGaming/hfo-gen-133'
+  - id: C03
+    command: 'git branch --show-current'
+    expected: 'exit 0; exact output agent/gen133-bootstrap-20260730'
+  - id: C04
+    command: 'git rev-parse HEAD'
+    expected: 'exit 0; capture exact observed HEAD; do not substitute packet base SHA if checkout differs'
+  - id: C05
+    command: 'git status --porcelain=v1'
+    expected: 'exit 0; empty output before inspection and again after inspection'
+  - id: C06
+    command: 'git rev-parse b8fd9f98cefc92aa13de46e5e1976d1facf3cddd^{commit} && git hash-object projects/gtm-revenue/claims/20260808T010521Z_GUIDEPOINT_SECURITY_AGENTIC_APPSEC_ACCEPTANCE_GATE_ADMISSION.claim.yaml'
+    expected: 'exit 0; commit resolves exactly and file hash equals cd2b4c5090de0b77782559b01c931450aefc2b39'
+  - id: C07
+    command: 'git rev-parse 2013764f7f219f007be32071d45ec81abe0e3e4c^{commit} && git hash-object projects/gtm-revenue/research/20260808T002938Z_CHANNEL_PARTNER_GUIDEPOINT_SECURITY_TARGET_CARD.md'
+    expected: 'exit 0; file hash equals f7951a7d80b1e3efb0e2694ef6193b74aa5507b1'
+  - id: C08
+    command: 'git rev-parse 335017de0168cdec6794d892bb6213d2dbecc03c^{commit} && git hash-object projects/gtm-revenue/kits/guidepoint-security/20260808T012200Z_AGENTIC_APPSEC_ACCEPTANCE_GATE.md'
+    expected: 'exit 0; file hash equals dd02ba9695f98065770a595bc48ca8bd3f46cb21'
+  - id: C09
+    command: 'git rev-parse 33ab8a3a018e7da415e5d63e3be792dea1945098^{commit} && git hash-object projects/gtm-revenue/returns/20260808T012400Z_S07_GUIDEPOINT_SECURITY_PROOF_KIT_RETURN.md'
+    expected: 'exit 0; file hash equals 083cb87802319129ea2af254f9402e422c54b479'
+  - id: C10
+    command: 'git rev-parse 41b1feda0369cd5118f53f3f242cdc038c420fbd^{commit} && git hash-object state/coordination/receipts/chatgpt_runtime/seat-03/20260808T020900Z_GUIDEPOINT_PROOF_KIT_HOLD_TO_S04.yaml'
+    expected: 'exit 0; file hash equals 38269e257ea46aa9330502515c145673e31dc991'
+  - id: C11
+    command: "python - <<'PY'\nfrom pathlib import Path\nimport hashlib,re\np=Path('projects/gtm-revenue/claims/20260808T010521Z_GUIDEPOINT_SECURITY_AGENTIC_APPSEC_ACCEPTANCE_GATE_ADMISSION.claim.yaml')\ns=p.read_text(encoding='utf-8').replace('\\r\\n','\\n')\nm=re.search(r'acceptance_test:\\n(?:.*\\n)*?  canonical_text: \\|-\\n((?:    .*\\n?)*)\\nidempotency:',s)\nassert m, 'canonical_text block not found'\nlines=[]\nfor line in m.group(1).splitlines():\n    assert line.startswith('    ')\n    lines.append(line[4:])\npre='\\n'.join(lines).encode('utf-8')\nprint(len(pre))\nprint(hashlib.sha256(pre).hexdigest())\nPY"
+    expected: 'exit 0; byte count 3083 and SHA-256 7fd068d1a1d326cc0bfda2426b51c1a4b9db7cb44f40fffca8e7da37340e0d9f'
+  - id: C12
+    command: "python - <<'PY'\nfrom pathlib import Path\nimport hashlib,re\ns=Path('projects/gtm-revenue/claims/20260808T010521Z_GUIDEPOINT_SECURITY_AGENTIC_APPSEC_ACCEPTANCE_GATE_ADMISSION.claim.yaml').read_text(encoding='utf-8').replace('\\r\\n','\\n')\nm=re.search(r'idempotency:\\n  canonical_preimage: (.+)\\n  sha256: ([0-9a-f]{64})',s)\nassert m, 'idempotency block not found'\nactual=hashlib.sha256(m.group(1).encode('utf-8')).hexdigest()\nprint(actual)\nprint(m.group(2))\nassert actual==m.group(2)=='ce024e8d4bfa6fb27a7f046a3b29d0e0d217506bebf102757dede1be121691e1'\nPY"
+    expected: 'exit 0; both printed digests equal ce024e8d4bfa6fb27a7f046a3b29d0e0d217506bebf102757dede1be121691e1'
+  - id: C13
+    command: 'git diff --exit-code -- projects/gtm-revenue/claims/20260808T010521Z_GUIDEPOINT_SECURITY_AGENTIC_APPSEC_ACCEPTANCE_GATE_ADMISSION.claim.yaml projects/gtm-revenue/research/20260808T002938Z_CHANNEL_PARTNER_GUIDEPOINT_SECURITY_TARGET_CARD.md projects/gtm-revenue/kits/guidepoint-security/20260808T012200Z_AGENTIC_APPSEC_ACCEPTANCE_GATE.md projects/gtm-revenue/returns/20260808T012400Z_S07_GUIDEPOINT_SECURITY_PROOF_KIT_RETURN.md state/coordination/receipts/chatgpt_runtime/seat-03/20260808T020900Z_GUIDEPOINT_PROOF_KIT_HOLD_TO_S04.yaml && git status --porcelain=v1'
+    expected: 'exit 0; no diff; final status output empty'
+
+acceptance_tests:
+  - runtime_model_named: true
+  - branch_and_observed_head_named: true
+  - changed_paths_named_exactly: true
+  - exact_commands_c01_through_c13_returned_verbatim: true
+  - every_command_has_exit_code: true
+  - every_command_has_captured_output_or_explicit_empty_output: true
+  - blockers_field_present_even_if_none: true
+  - claim_commit_and_blob_match: true
+  - target_card_commit_and_blob_match: true
+  - candidate_commit_and_blob_match: true
+  - producer_return_commit_and_blob_match: true
+  - s03_route_commit_and_blob_match: true
+  - acceptance_digest_recomputed_exactly: true
+  - idempotency_digest_recomputed_exactly: true
+  - worktree_clean_before_and_after: true
+  - no_external_effect: true
+  - rollback_named: true
+  - honest_flaw_named: true
+  - producer_return_must_be_direct_from_executor_runtime_not_reconstructed_by_s06: true
+
+required_executor_return_schema:
+  result: EXECUTOR_EVIDENCE_RETURN
+  runtime_model: REQUIRED
+  repository: TTaoGaming/hfo-gen-133
+  branch: REQUIRED_OBSERVED
+  head_sha: REQUIRED_OBSERVED
+  changed_paths: REQUIRED_ARRAY_USE_EMPTY_ARRAY_IF_NONE
+  commands:
+    each_command_requires: [id, exact_command, exit_code, stdout, stderr]
+  blockers: REQUIRED_ARRAY_USE_EMPTY_ARRAY_IF_NONE
+  rollback: REQUIRED
+  honest_flaw: REQUIRED
+  no_world_effect_attestation: REQUIRED
+
+effect_ceiling:
+  class: T0_READ_ONLY_REPOSITORY_INSPECTION
+  allowed: READ_ONLY_GIT_AND_LOCAL_HASHING_OF_ALLOWED_PATHS
+  forbidden: WRITE_COMMIT_PUSH_MERGE_DEPLOY_PUBLISH_SEND_SPEND_ACCOUNT_SECURITY_CHANGE_NETWORK_SIDE_EFFECT_DESTRUCTIVE_GIT
+
+time_budget_ceiling:
+  wall_clock_minutes: 15
+  stop_on_first_irreconcilable_binding_mismatch: true
+budget_ceiling:
+  external_spend_usd: 0
+  paid_provider_calls: 0
+
+rollback:
+  mode: NOOP_READ_ONLY
+  requirement: Worktree must be clean before and after. If any mutation occurs, stop and report it as blocker; do not use destructive Git commands to repair it.
+
+verifier:
+  seat: S04_HRIST_STRUCTURAL_PREFLIGHT
+  task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  provider_class: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+
+consumer:
+  seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  task_id: 6a539fc5130c81918c13624739fb2a60
+  ultimate_effect: OPERATOR_REVIEW_ONLY
+
+expiry_utc: 2026-08-08T05:05:21Z
+
+strongest_falsifier: >-
+  Any mismatch in repository identity, canonical branch, claim/target/candidate/producer-return/S03-route Git object identity, acceptance digest, idempotency digest, expiry, or a non-clean worktree before/after falsifies the packet. Separately, even perfect read-only reproduction does not make the existing S07 return consumable by S06 unless the evidence return is produced directly by an executor runtime naming runtime/model, observed branch/SHA, exact command transcript, exit codes, outputs, blockers, rollback, and honest flaw.
+
+routing:
+  direct_executor_route_performed: false
+  reason: NO_DIRECT_CODEX_CLAUDE_OR_CANONICAL_HOST_INGRESS_EXPOSED
+  slack_is_execution: false
+  git_packet_is_execution: false
+
+honest_flaw: >-
+  This packet can freeze exact repository evidence and define a reproducible inspection contract, but S06 cannot execute it on the operator's canonical host or impersonate S07. The available GitHub connector can append this dispatch artifact but does not expose a direct Codex, Claude, or host execution ingress. Therefore no command/test result is claimed and RETURN_CONSUMED is forbidden in this wake.
