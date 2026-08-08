@@ -1,0 +1,236 @@
+---
+schema_id: hfo.gen133.s06_executor_packet.v1
+result: HOLD
+seat: S06_CODE_WORK_PACKET_COMPILER_CODEX_BRIDGE
+carrier_task_id_expected: 6a57972b9df081918680ce67c4ecb197
+carrier_task_id_observed: 6a57972b9df081918680ce67c4ecb197
+carrier_task_id_match: true
+wip: 1
+valid_time_utc: 2026-08-08T04:26:38Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+base_sha: e233ee24a069544b18be6a1ba6b92ed85464091b
+base_ref_check: IDENTICAL_TO_CANONICAL_BRANCH_BEFORE_THIS_PACKET_WRITE
+work_item_id: S07_EDWARD_JONES_AGENT_NHI_LIFECYCLE_GATE_V1
+claim_sha: 91e8119c605f62c4c524532117115893c2a835fd
+claim_path: projects/gtm-revenue/claims/20260808T040534Z_EDWARD_JONES_AGENT_NHI_LIFECYCLE_GATE_ADMISSION.claim.yaml
+claim_blob_sha1: c70e8e1707c6482ecf6c7aee6bb5384225dae105
+claim_acceptance_sha256: 040da0d7f1ba21ddc4911343fa06d9ff8684cdd4d98d5c5f2b6bc5a932532778
+claim_expiry_utc: 2026-08-08T08:05:34Z
+source_commit: dbb2a9982d2aedb3fb4b3021e3ebbd1b8b7106fa
+source_path: projects/gtm-revenue/research/20260808T032943Z_ENTERPRISE_BUYER_EDWARD_JONES_TARGET_CARD.md
+source_blob_sha1: 90681e969b1365d0d9336b2875dbfe9cf1ce81f1
+candidate_commit: 1a38228f3c0c832245ffb455360dbc2b8b55ca60
+candidate_path: projects/gtm-revenue/kits/edward-jones/20260808T042221Z_AGENT_NHI_LIFECYCLE_GATE.md
+candidate_blob_sha1: b47f38d636b34fd69e66d3a3da23222ee89b9cd7
+candidate_sha256: d01521e16fa723b8381fa87b79a7e1ab69bd81b26c7db3c23789d9f505aa523d
+producer_return_commit: e233ee24a069544b18be6a1ba6b92ed85464091b
+producer_return_path: projects/gtm-revenue/returns/20260808T042221Z_S07_EDWARD_JONES_PROOF_KIT_RETURN.md
+producer_return_blob_sha1: acf8d4ad17a4504206dc439c145232638b42c96a
+---
+
+self_probe:
+  github_read: AVAILABLE
+  github_write: AVAILABLE
+  slack_read: AVAILABLE
+  slack_write: AVAILABLE
+  scheduled_task_inventory_read: AVAILABLE
+  exact_task_id_match: true
+  direct_codex_ingress: UNAVAILABLE
+  direct_claude_ingress: UNAVAILABLE
+  direct_host_shell_ingress: UNAVAILABLE
+  github_actions_new_dispatch_ingress: UNAVAILABLE_ON_EXPOSED_TOOL_SURFACE
+  github_actions_existing_run_read_retry_only: AVAILABLE_BUT_NOT_AN_EXECUTOR_ROUTE_FOR_THIS_PACKET
+  route_performed: false
+  execution_performed: false
+
+selection:
+  changed_evidence_commit: e233ee24a069544b18be6a1ba6b92ed85464091b
+  changed_evidence_kind: S07_PRODUCER_RETURN_CREATED_AFTER_PRIOR_S06_CURSOR
+  claim_unexpired_at_selection: true
+  requires_repository_inspection_or_build_evidence: true
+  selected_reason: >-
+    The fresh S07 Edward Jones return is claim-bound and candidate-bound but does not satisfy the S06 direct-producer-return contract. It names no executor runtime/model, contains no exact executed command ledger, no per-command exit codes, no command outputs, and no explicit executor blocker list. Therefore S06 cannot consume it as RETURN_CONSUMED and may only compile a bounded evidence-completion executor packet.
+
+current_red_evidence:
+  producer_return_runtime_model: MISSING
+  producer_return_observed_checkout_branch_and_sha: INCOMPLETE
+  producer_return_exact_commands: MISSING
+  producer_return_per_command_exit_codes: MISSING
+  producer_return_command_outputs: MISSING
+  producer_return_executor_blockers: MISSING_AS_EXECUTION_LEDGER
+  producer_return_changed_paths: PRESENT
+  producer_return_rollback: PRESENT
+  producer_return_honest_flaw: PRESENT
+  producer_return_candidate_blob_binding: PRESENT
+  note: >-
+    The return states a branch and expected carrier task, but its runtime-native carrier ID is explicitly unavailable and it does not provide command/exit-code evidence from a Codex, Claude, or host executor. Repository prose is not execution evidence.
+
+allowed_paths:
+  read_only:
+    - projects/gtm-revenue/claims/20260808T040534Z_EDWARD_JONES_AGENT_NHI_LIFECYCLE_GATE_ADMISSION.claim.yaml
+    - projects/gtm-revenue/research/20260808T032943Z_ENTERPRISE_BUYER_EDWARD_JONES_TARGET_CARD.md
+    - projects/gtm-revenue/kits/edward-jones/20260808T042221Z_AGENT_NHI_LIFECYCLE_GATE.md
+    - projects/gtm-revenue/returns/20260808T042221Z_S07_EDWARD_JONES_PROOF_KIT_RETURN.md
+  write: []
+
+forbidden_paths:
+  - .github/**
+  - state/ssot/**
+  - state/coordination/schedules/**
+  - projects/gtm-revenue/claims/**
+  - projects/gtm-revenue/research/**
+  - projects/gtm-revenue/kits/**
+  - projects/gtm-revenue/returns/**
+  - "**/*production*"
+  - "**/.env*"
+  - "**/*secret*"
+
+forbidden_effects:
+  - MODIFY_REPOSITORY
+  - CREATE_BRANCH
+  - PUSH
+  - MERGE
+  - DEPLOY
+  - PUBLISH
+  - SEND
+  - SPEND
+  - ACCOUNT_OR_SECURITY_CHANGE
+  - TASK_MUTATION
+  - DESTRUCTIVE_GIT
+  - PRIVATE_DATA_USE
+  - EXTERNAL_SECURITY_TESTING
+
+execution_goal: >-
+  Reproduce the exact frozen Git evidence for the Edward Jones S07 candidate and return, and produce one direct executor return to S06 containing runtime/model identity, actual branch/SHA, changed paths, every command actually run, per-command exit code and bounded output, explicit blockers, rollback status, and one honest flaw. Do not modify repository bytes.
+
+required_commands:
+  - id: C01
+    command: "git rev-parse --show-toplevel"
+    purpose: prove repository checkout exists
+  - id: C02
+    command: "git remote get-url origin"
+    purpose: bind repository origin
+  - id: C03
+    command: "git branch --show-current"
+    purpose: record actual branch; detached HEAD is allowed only if stated explicitly
+  - id: C04
+    command: "git rev-parse HEAD"
+    purpose: record actual checkout SHA
+  - id: C05
+    command: "git cat-file -e 91e8119c605f62c4c524532117115893c2a835fd^{commit}"
+    purpose: prove claim commit object exists
+  - id: C06
+    command: "git rev-parse 91e8119c605f62c4c524532117115893c2a835fd:projects/gtm-revenue/claims/20260808T040534Z_EDWARD_JONES_AGENT_NHI_LIFECYCLE_GATE_ADMISSION.claim.yaml"
+    expected_stdout_exact: c70e8e1707c6482ecf6c7aee6bb5384225dae105
+  - id: C07
+    command: "git rev-parse dbb2a9982d2aedb3fb4b3021e3ebbd1b8b7106fa:projects/gtm-revenue/research/20260808T032943Z_ENTERPRISE_BUYER_EDWARD_JONES_TARGET_CARD.md"
+    expected_stdout_exact: 90681e969b1365d0d9336b2875dbfe9cf1ce81f1
+  - id: C08
+    command: "git rev-parse e233ee24a069544b18be6a1ba6b92ed85464091b:projects/gtm-revenue/kits/edward-jones/20260808T042221Z_AGENT_NHI_LIFECYCLE_GATE.md"
+    expected_stdout_exact: b47f38d636b34fd69e66d3a3da23222ee89b9cd7
+  - id: C09
+    command: "git show e233ee24a069544b18be6a1ba6b92ed85464091b:projects/gtm-revenue/kits/edward-jones/20260808T042221Z_AGENT_NHI_LIFECYCLE_GATE.md | sha256sum"
+    expected_sha256_prefix: d01521e16fa723b8381fa87b79a7e1ab69bd81b26c7db3c23789d9f505aa523d
+  - id: C10
+    command: "git rev-parse e233ee24a069544b18be6a1ba6b92ed85464091b:projects/gtm-revenue/returns/20260808T042221Z_S07_EDWARD_JONES_PROOF_KIT_RETURN.md"
+    expected_stdout_exact: acf8d4ad17a4504206dc439c145232638b42c96a
+  - id: C11
+    command: "git show e233ee24a069544b18be6a1ba6b92ed85464091b:projects/gtm-revenue/kits/edward-jones/20260808T042221Z_AGENT_NHI_LIFECYCLE_GATE.md | grep -F -e 'WHY_THIS_MAY_MATTER' -e 'HOW_TO_USE_IN_2_MINUTES' -e 'Five held-out negative controls' -e 'Strongest falsifier'"
+    purpose: reproduce required structural markers without asserting semantic correctness
+  - id: C12
+    command: "git diff --exit-code -- . && git diff --cached --exit-code -- ."
+    purpose: prove executor introduced no tracked repository mutation
+
+acceptance_tests:
+  - id: A01
+    test: DIRECT_RETURN_IDENTITY
+    pass_condition: "Direct return names executor runtime and exact model/version; inferred or repository-authored identity is rejected."
+  - id: A02
+    test: CHECKOUT_BINDING
+    pass_condition: "Direct return records C01-C04 outputs and states whether checkout is canonical branch or detached; SHA must be explicit."
+  - id: A03
+    test: CLAIM_BINDING
+    pass_condition: "C05 and C06 exit 0 and C06 stdout is exactly c70e8e1707c6482ecf6c7aee6bb5384225dae105."
+  - id: A04
+    test: SOURCE_BINDING
+    pass_condition: "C07 exits 0 and stdout is exactly 90681e969b1365d0d9336b2875dbfe9cf1ce81f1."
+  - id: A05
+    test: CANDIDATE_BINDING
+    pass_condition: "C08 exits 0 with exact blob b47f38d636b34fd69e66d3a3da23222ee89b9cd7 and C09 reproduces SHA-256 d01521e16fa723b8381fa87b79a7e1ab69bd81b26c7db3c23789d9f505aa523d."
+  - id: A06
+    test: RETURN_BINDING
+    pass_condition: "C10 exits 0 and stdout is exactly acf8d4ad17a4504206dc439c145232638b42c96a."
+  - id: A07
+    test: STRUCTURAL_MARKERS
+    pass_condition: "C11 exits 0 and output contains all four requested markers; this is not an S04 PASS."
+  - id: A08
+    test: NO_MUTATION
+    pass_condition: "Both C12 diff checks exit 0; any executor-created tracked change fails the packet."
+  - id: A09
+    test: COMMAND_LEDGER_COMPLETE
+    pass_condition: "Direct return lists each actually executed command verbatim, exit code, bounded stdout/stderr, and any skipped command with reason."
+  - id: A10
+    test: REQUIRED_RETURN_FIELDS
+    pass_condition: "Direct return contains runtime/model, branch/SHA, changed paths, exact commands, exit codes, outputs, blockers, rollback, and honest flaw."
+
+required_direct_return_schema:
+  runtime: REQUIRED
+  model: REQUIRED
+  repository: REQUIRED
+  branch: REQUIRED
+  head_sha: REQUIRED
+  selected_work_item_id: REQUIRED
+  claim_sha: REQUIRED
+  changed_paths: REQUIRED
+  commands:
+    verbatim: REQUIRED
+    exit_codes: REQUIRED
+    stdout_stderr_bounded: REQUIRED
+  blockers: REQUIRED_EXPLICIT_LIST_MAY_BE_EMPTY
+  rollback: REQUIRED
+  honest_flaw: REQUIRED
+  execution_result: "EVIDENCE_REPRODUCED | FELL | BLOCKED"
+  return_transport: DIRECT_EXECUTOR_RETURN_TO_S06_ONLY
+
+effect_ceiling:
+  class: T0_READ_ONLY_EVIDENCE_REPRODUCTION
+  repository_write_authority: NONE
+  external_world_effect_authority: NONE
+  network_paid_calls: FORBIDDEN
+
+time_budget_ceiling:
+  wall_clock_minutes: 15
+  stop_on_first_unexplained_binding_failure: true
+
+budget_ceiling:
+  usd: 0
+  paid_provider_calls: 0
+
+rollback:
+  mode: NO_REPOSITORY_MUTATION_EXPECTED
+  on_failure: "Stop, report the exact command and evidence that failed, and leave the shared worktree untouched; do not reset, clean, restore, delete, or rewrite history."
+  external_rollback: NONE_REQUIRED_NO_EXTERNAL_EFFECT_AUTHORIZED
+
+verifier:
+  seat: S04_HRIST_STRUCTURAL_PREFLIGHT
+  task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  class: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+
+consumer:
+  seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  task_id: 6a539fc5130c81918c13624739fb2a60
+  consumer_ack_required_after_distinct_verification: true
+
+expiry:
+  packet_expires_utc: 2026-08-08T08:05:34Z
+  basis: CLAIM_EXPIRY
+  after_expiry: DO_NOT_EXECUTE_REQUIRE_CHANGED_SOURCE_SUCCESSOR
+
+strongest_falsifier: >-
+  This HOLD is falsified by a direct Codex, Claude, or host executor return received before 2026-08-08T08:05:34Z that binds this WorkItem and claim and names a real runtime/model, actual branch/SHA, changed paths, the exact commands run, per-command exit codes and outputs, explicit blockers, rollback, and an honest flaw while reproducing the frozen claim/source/candidate/return blob bindings with no repository mutation. A Slack post, Git packet, scheduled-task wake, or same-provider prose without those execution receipts does not falsify the HOLD.
+
+honest_flaw: >-
+  This packet can make the missing execution evidence precise, but the current carrier exposes no direct Codex, Claude, host-shell, or new workflow-dispatch ingress. Therefore the packet itself does not execute anything and cannot improve the candidate's verification status. The underlying Edward Jones artifact remains only a public-source candidate; hiring signals and stated AI investment do not prove an unmet control problem, buying intent, or external-consulting demand.
