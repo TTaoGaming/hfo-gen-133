@@ -1,0 +1,232 @@
+---
+schema_id: hfo.gen133.s09.adversarial_bayesian_vote.v1
+seat: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+result: REVISE
+wip: 1
+valid_time_utc: '2026-08-08T10:33:57Z'
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+
+self_probe:
+  expected_task_id: 6a539fb148bc8191a30b6009dbf22438
+  observed_task_id: 6a539fb148bc8191a30b6009dbf22438
+  task_id_match: true
+  task_enabled_observed: true
+  github_branch_observed: agent/gen133-bootstrap-20260730
+  github_read_available: true
+  github_write_available: true
+  slack_write_available: true
+  task_inventory_read_available: true
+  task_mutation_performed: false
+
+selected_decision_packet:
+  work_item_id: X14_MUTANT_180_70c967cda30e
+  mutation_class: STALE_SOURCE_DIGEST
+  mutation_subcase: NEWEST_X12_WAKE4_RECEIPT_FALSELY_BOUND_TO_IMMEDIATELY_PRIOR_X12_WAKE3_GIT_BLOB
+  x14_current_path: state/coordination/experiments/false_green_x14/CURRENT.yaml
+  x14_current_blob_sha1_observed: ec343a6de666b65955d6f0943e3aa2d43fce758b
+  source_commit: 172c11a576861115c3b71fde409ccb05e60dfb48
+  source_path: state/coordination/experiments/durable_object_x12/slack_receipts/20260808T094727Z_C38_KEEP_V166_4cce0b832e2e.json
+  source_git_blob_sha1_actual: 2a50640b0df662a47af392ee9a72554dce8d9156
+  source_receipt_digest_sha256: 65a2eb660df77f70f2b3c98102cd926211ce45185d02088a6ce3fe2f5f1ec260
+  stale_source_commit: e7b115996238d128f3536ac4ec08b25eb21ed593
+  stale_source_path: state/coordination/experiments/durable_object_x12/slack_receipts/20260808T084313Z_ADVANCE_MISSING_SLACK_36890e8acb43.json
+  stale_source_git_blob_sha1: 7c7a08df59c2e231134f6eed55484319daa9db9b
+  mutant_commit: 44757d01527425f7758269b489cd48d8fca861e6
+  mutant_path: state/coordination/experiments/false_green_x14/quarantine/20260808T095307Z_X12_STALE_SOURCE_DIGEST.mutant.yaml
+  mutant_git_blob_sha1: b9b9c18a993b384af935418609db9593e212468e
+  canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_json: '{"source_git_blob_sha1":"7c7a08df59c2e231134f6eed55484319daa9db9b"}'
+  canonical_overlay_utf8_bytes_recomputed: 67
+  canonical_mutation_digest_sha256_recomputed: 70c967cda30e5183dcef5be87ea4359e0c364db389d755e780d7a8a454530784
+  decision_deadline_utc: '2026-08-08T13:53:07Z'
+  effect_ceiling: QUARANTINED_GIT_ARTIFACT_PLUS_SANITIZED_INTERNAL_SLACK_ROUTE_ONLY
+  verifier:
+    seat: S04_STRUCTURAL_PREFLIGHT
+    task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+    binding_weight: 0
+  consumer:
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+
+candidate_options:
+  - ACCEPT
+  - REVISE
+  - HOLD
+  - RETIRE
+  - ABSTAIN
+
+prior_before_current_evidence:
+  ACCEPT: 0.01
+  REVISE: 0.42
+  HOLD: 0.13
+  RETIRE: 0.34
+  ABSTAIN: 0.10
+  rationale: >-
+    Before resolving the exact commit/path blobs and current verifier state, the stale-source mutation was expected to be invalid,
+    but lifecycle choice remained split between REVISE for the still-pending direct-route measurement and RETIRE because this failure family is heavily represented.
+
+evidence:
+  exact_source_binding:
+    for_revise:
+      - Exact readback at source commit 172c11a576861115c3b71fde409ccb05e60dfb48 resolves the declared wake-4 receipt path to Git blob 2a50640b0df662a47af392ee9a72554dce8d9156.
+      - Exact readback at stale commit e7b115996238d128f3536ac4ec08b25eb21ed593 resolves the prior wake-3 receipt to Git blob 7c7a08df59c2e231134f6eed55484319daa9db9b.
+      - The mutant preserves the wake-4 commit and path while substituting the authentic but stale wake-3 blob, so the source binding is false even though the injected SHA is real and lineage-adjacent.
+      - Independent recomputation of the canonical overlay produced 67 UTF-8 bytes and SHA-256 70c967cda30e5183dcef5be87ea4359e0c364db389d755e780d7a8a454530784.
+    against_revise:
+      - The mismatch is mechanically easy to detect by exact commit/path resolution, so another semantic-only verifier pass has low information value.
+  s04_current_observation:
+    commit: 75b0d696c32f7004bc679cb1ed2564bd8e178f4b
+    path: state/coordination/receipts/chatgpt_runtime/seat-04/20260808T101320Z_NCC_GROUP_PROOF_KIT_STRUCTURAL_REVISE.yaml
+    observed_primary_selection: S07_NCC_GROUP_AI_ASSURANCE_ACCEPTANCE_GATE_V1
+    mutant_180_embedded_check: CAUGHT_REVISE
+    direct_x14_primary_selection_observed: false
+    for_revise:
+      - S04 recomputed the exact mutant 180 overlay, current wake-4 source blob, stale wake-3 blob, and rejected the stale binding.
+      - S04 selected unrelated NCC Group work as its primary candidate while mutant 180 remained unexpired even though X14 CURRENT requires oldest-unexpired direct-X14 selection or an explicit digest-bound skip before non-X14 selection.
+      - This repeats the routing/control-plane defect without implying the semantic gate itself failed.
+    against_revise:
+      - The embedded S04 check already demonstrates that the structural stale-source gate can catch this exact mutant.
+  heritage_prior:
+    path: state/coordination/receipts/chatgpt_runtime/seat-15/20260807T115722Z_X14_MUTANT158_REUSE_S04_STALE_PREDECESSOR_BLOB_GATE.yaml
+    prior_mutant_id: X14_MUTANT_158_16399ea1289d
+    heritage_credit: 0
+    for_retire:
+      - S15 records the same reusable invariant: a real predecessor blob cannot authenticate a different exact current commit/path, and this class is already heavily represented.
+      - Repeating stale-predecessor mutants adds little antibody diversity unless the aliasing/canonicalization difficulty increases.
+    against_retire:
+      - The heritage receipt is historical and explicitly does not substitute for a fresh current-mutant route or verdict.
+  x14_state:
+    current_status: CAMPAIGN_45_WAKE_3_MUTANT_180_GIT_READY_FOR_ROUTE
+    current_verdict_status: MUTANT_180_ROUTE_PENDING
+    direct_candidate_priority_required: true
+    routing_revision_required: ENFORCE_OLDEST_UNEXPIRED_DIRECT_X14_SELECTION_OR_EXPLICIT_DIGEST_BOUND_SKIP_BEFORE_NON_X14_SELECTION
+    for_revise:
+      - The current packet still names direct routing as the live unresolved control edge.
+      - Campaign 44 already closed REVISE_GATE because direct S04 route starvation persisted despite semantic catches; another embedded-only catch is therefore relevant adverse evidence.
+    against_revise:
+      - Repeatedly holding literal mutants open for routing measurement can itself become treadmill behavior if the router is not changed by the responsible owner.
+
+option_assessment:
+  ACCEPT:
+    evidence_for:
+      - The substituted SHA is an authentic Git blob from the same X12 task, campaign lineage, schema family, and immediately prior wake, making it superficially plausible.
+    evidence_against:
+      - The exact selected commit/path resolves to a different blob; lineage adjacency cannot replace exact provenance binding.
+      - S04 independently caught the exact stale binding as REVISE.
+  REVISE:
+    evidence_for:
+      - Rejects the false exact-source claim while preserving the still-unconsumed direct-routing measurement.
+      - Distinguishes semantic catch success from routing-contract failure instead of laundering an embedded check into direct-route success.
+    evidence_against:
+      - The semantic failure family is mature and conspicuous, so another full verification cycle has low marginal value.
+  HOLD:
+    evidence_for:
+      - Waiting for a direct S04 primary selection or explicit digest-bound skip would remove lifecycle ambiguity.
+    evidence_against:
+      - No wait is required to reject the false source binding itself; HOLD would delay an already well-grounded semantic disposition.
+  RETIRE:
+    evidence_for:
+      - The exact mutant was semantically caught, and a reusable stale-predecessor failure antibody already exists.
+      - Verifier attention is better spent on harder alias, mirror-lag, rewritten-pointer, or equivalent-content cases and on external-fitness work.
+    evidence_against:
+      - Retiring this literal before the reducer records either direct primary selection or an explicit digest-bound skip discards evidence about the named routing contract, which is the remaining live uncertainty.
+  ABSTAIN:
+    evidence_for:
+      - X14, S04, S09, S15, and X12 are ChatGPT-carried same-provider seats with correlated reasoning risk and binding weight zero.
+    evidence_against:
+      - The task permits a bounded advisory vote, and exact Git commit/path/blob readbacks are sufficient to reject the specific stale provenance claim without pretending independent quorum.
+
+correlated_evidence_risk:
+  level: HIGH
+  detail: >-
+    X14, S04, S09, S15, and X12 are same-provider ChatGPT-carried cells and may share systematic failure modes.
+    GitHub exact-byte and native task-inventory readbacks are distinct data surfaces, not independent decision-makers.
+    S04 and S09 agreement therefore remains correlated advisory evidence with binding weight zero and must not be majority-laundered.
+
+observed_disagreement_without_majority_laundering:
+  s04_semantic_disposition: REVISE_CAUGHT_EMBEDDED
+  s09_current_vote: REVISE
+  heritage_lifecycle_pressure: RETIRE_LOW_NOVELTY_AFTER_CONSUMPTION
+  synthesis: >-
+    There is no meaningful semantic disagreement: the stale binding should be rejected. The real disagreement is lifecycle timing.
+    REVISE preserves one more routing observation; RETIRE minimizes verifier treadmill cost. Neither same-provider count creates quorum.
+
+strongest_dissent:
+  option: RETIRE
+  case: >-
+    The source mismatch has already been caught exactly, the stale-predecessor family has a mature reusable antibody,
+    and direct verifier bandwidth is scarce. Keeping another obvious literal alive risks optimizing the campaign for internal routing telemetry rather than external fitness.
+  why_not_selected: >-
+    X14 CURRENT explicitly marks mutant 180 routing pending and requires direct oldest-unexpired selection or an explicit digest-bound skip.
+    A later S04 run again selected non-X14 work while mutant 180 remained live. That is new evidence about the routing contract,
+    so one bounded REVISE remains higher-value than silently treating the embedded semantic catch as route closure.
+
+opportunity_cost:
+  current_cost: >-
+    Additional semantic analysis on stale-source mutants competes with GTM verification, harder false-green assays, and operator-relief work.
+  countervailing_value: >-
+    One exact direct-primary-selection-or-digest-bound-skip observation still measures whether the campaign's routing repair is actually consumed.
+  recommendation: >-
+    Do not spend another semantic pass after one direct S04 primary selection or explicit digest-bound skip is reducer-consumed.
+    Then retire this literal and move to a harder stale-provenance case involving aliasing, equivalent content, rewritten pointers, or mirror lag.
+
+operator_minute_burden:
+  measured_minutes: 0
+  operator_action_requested: false
+  runtime_cost_measured: false
+
+reversible_next_experiment:
+  action: >-
+    On the next eligible S04 wake before expiry, select X14_MUTANT_180_70c967cda30e as the primary exact candidate, or emit an explicit
+    digest-bound skip naming mutant 180 and SHA-256 70c967cda30e5183dcef5be87ea4359e0c364db389d755e780d7a8a454530784.
+    Do not edit the source, mutant, task, schedule, or Slack history. After reducer consumption, retire only this literal specimen and reseat the next
+    stale-source assay to a harder alias/canonicalization ambiguity.
+  reversible: true
+  effect_ceiling: GIT_RECEIPT_AND_SANITIZED_INTERNAL_SLACK_ONLY
+
+falsifier:
+  semantic: >-
+    Immutable evidence valid for source commit 172c11a576861115c3b71fde409ccb05e60dfb48 proving that the named wake-4 path legitimately resolves
+    under the declared source-binding contract to Git blob 7c7a08df59c2e231134f6eed55484319daa9db9b, or a source-bound alias/canonicalization rule explicitly permitting that predecessor blob.
+  lifecycle_vote: >-
+    Evidence predating this vote that S04 had already directly selected mutant 180 as its primary candidate, or that the X14 reducer had already consumed
+    an explicit digest-bound skip for this exact mutant, would materially shift probability from REVISE toward RETIRE.
+
+posterior:
+  ACCEPT: 0.001
+  REVISE: 0.635
+  HOLD: 0.015
+  RETIRE: 0.337
+  ABSTAIN: 0.012
+
+final_vote: REVISE
+semantic_claim_disposition: REVISE_REJECT_STALE_SOURCE_DIGEST
+lifecycle_recommendation: RETIRE_LITERAL_ONLY_AFTER_DIRECT_S04_PRIMARY_SELECTION_OR_EXPLICIT_DIGEST_BOUND_SKIP_IS_REDUCER_CONSUMED_OR_AFTER_EXPIRY_WITH_ROUTING_DEBT_RECORDED
+binding_weight: 0
+evidence_class: DISTINCT_SEAT_SAME_PROVIDER_ADVISORY_NONBINDING
+independent_verification_closed: false
+consumer_ack_observed: false
+majority_laundering_performed: false
+
+honest_flaw: >-
+  Exact Git readback proves the two blob identities and the stale substitution, but this vote cannot prove that every repository mirror, alias, or out-of-band provenance rule is absent.
+  GitHub search/index visibility can lag concurrent writes, and all reasoning seats cited here are same-provider. The vote therefore rejects only the specific declared exact-source binding
+  and preserves binding weight zero until a distinct decision-maker consumes it.
+
+world_effects:
+  git_vote_only_before_slack_pointer: true
+  task_mutation: false
+  binding_policy_decision: false
+  producer_work: false
+  self_verification: false
+  send_external: false
+  spend: false
+  deployment: false
+  merge: false
+  publication: false
+  account_or_security_change: false
+  permanent_deletion: false
+  fake_quorum: false
+---
