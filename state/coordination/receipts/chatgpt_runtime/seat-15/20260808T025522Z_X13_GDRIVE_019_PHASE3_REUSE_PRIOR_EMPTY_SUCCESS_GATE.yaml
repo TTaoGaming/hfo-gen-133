@@ -1,0 +1,110 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse_receipt.v1
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_match: true
+wip: 1
+result: RETURN_REUSABLE_PRIOR_ARTIFACT
+valid_time_utc: 2026-08-08T02:55:22Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+sealed: false
+heritage_credit: 0
+consumer_ack: NOT_OBSERVED
+
+self_probe:
+  tools_observed:
+    - GitHub.search_branches
+    - GitHub.search_commits
+    - GitHub.fetch_commit
+    - GitHub.create_file
+    - GitHub.fetch_file
+    - Slack.slack_search_public
+    - Slack.slack_send_message
+  task_surface_mutated: false
+
+current_workitem:
+  id: X13_GDRIVE_METADATA_DOCUMENT_SEARCH_READONLY_019_PHASE3_SYNTHETIC_NONMATCH_EMPTY_OR_ERROR_SHAPE_GATE
+  experiment_id: X13_GDRIVE_METADATA_DOCUMENT_SEARCH_READONLY_019
+  current_pointer_commit: 725a201cdd2c057cc1edfb43a80c4b893d14bf49
+  current_pointer_path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+  current_pointer_version: 174
+  campaign_wake: 2_of_4
+  status: ACTIVE_PHASE2_ACCEPTED_WITH_GATES_PHASE3_NOT_RUN
+  next_phase: PHASE3_ONE_BOUNDED_SYNTHETIC_NONMATCHING_METADATA_ONLY_SEARCH_PERSIST_EXACT_REQUEST_TEST_EMPTY_SUCCESS_ERROR_DISTINCTION_NO_CONTENT_FETCH_NO_PAGINATION_NO_ABSENCE_CLAIM
+  named_consumer: X13_GDRIVE_METADATA_DOCUMENT_SEARCH_READONLY_019_PHASE3_SYNTHETIC_NONMATCH_EMPTY_OR_ERROR_SHAPE_GATE
+
+reusable_prior_artifact:
+  original_date_utc: 2026-08-05T23:48:21Z
+  repository: TTaoGaming/hfo-gen-133
+  commit: 25731460a1d91472b81717be2cf0482d4aca48e7
+  path: state/coordination/experiments/cots_connector_x13/20260805T234821Z_GOOGLE_DRIVE_METADATA_PHASE3_ACCEPTED_WITH_GATES.md
+  git_blob_sha1: baba3be2cc170cb8f044c0cef5731e686da7e267
+  prior_experiment_id: X13_GOOGLE_DRIVE_METADATA_READONLY_006
+  prior_event_type: PHASE3_EMPTY_RESULT_PROBE
+  prior_decision: PHASE3_ACCEPTED_WITH_GATES
+  prior_observation: SYNTHETIC_NONMATCHING_METADATA_QUERY_RETURNED_RESULTS_EMPTY_WITH_CONNECTOR_ERROR_NULL
+  prior_verifier: DISTINCT_AUTHORIZED_RAW_DRIVE_FILES_LIST_CALL_UNDER_THE_SAME_EFFECTIVE_PRINCIPAL
+  prior_verifier_result: NOT_RUN
+  prior_review_expiry_utc: 2026-08-12T23:48:21Z
+
+reusable_invariant: >-
+  A bounded metadata-only synthetic nonmatch that returns an empty result list with no connector-level error may support only that this wrapper call returned no visible matches and represented an empty-success path distinctly from a connector error. It does not establish Drive-wide absence, corpus or permission completeness, raw-provider parity, exact query translation, stable pagination, incompleteSearch=false, or snapshot semantics.
+
+supported_claims:
+  - PRIOR_WRAPPER_REPRESENTED_ONE_EMPTY_RESULT_SET_WITH_CONNECTOR_ERROR_NULL
+  - EMPTY_SUCCESS_RESULT_CLASS_CAN_BE_DISTINGUISHED_FROM_CONNECTOR_ERROR_FOR_ONE_BOUNDED_METADATA_ONLY_CALL
+  - CURRENT_PHASE3_CAN_REUSE_THE_PRIOR_NO_ABSENCE_ASSERTION_AND_CLAIM_CEILING_GATE
+  - RAW_FILE_IDS_URLS_TITLES_PARENT_IDS_AND_CONTENT_ARE_NOT_REQUIRED_IN_THE_SANITIZED_HERITAGE_RECEIPT
+
+excluded_claims:
+  - CURRENT_PHASE3_WILL_RETURN_EMPTY
+  - AUTHORITATIVE_DRIVE_WIDE_ABSENCE
+  - CORPUS_PERMISSION_OR_ACL_COMPLETENESS
+  - RAW_DRIVE_FILES_LIST_PARITY
+  - EXACT_QUERY_TRANSLATION_OR_LITERALNESS
+  - INCOMPLETESEARCH_FALSE
+  - STABLE_OR_COMPLETE_PAGINATION
+  - EFFECTIVE_PRINCIPAL_SCOPE_PROJECT_OR_ACL_IDENTITY
+  - PROVIDER_REQUEST_ID_HTTP_STATUS_QUOTA_DEBIT_OR_BACKEND_CALL_GRAPH
+  - SNAPSHOT_STABILITY
+  - OPERATIONAL_ADOPTION_FITNESS_OR_CONSUMER_ACK
+
+privacy_ceiling: >-
+  Sanitized repository pointers, task and experiment identifiers, counts, digests, result class, error class, and control metadata only. Do not persist raw Drive query tokens, file IDs, URLs, titles, parent IDs, document bodies, credentials, effective-principal details, page tokens, or private Drive content.
+
+acceptance_relevance: >-
+  Before current Phase 3 runs, inherit the prior gate only: one bounded metadata-only synthetic nonmatching search; persist the exact privacy-safe request descriptor before interpretation; no retry, broadening, content fetch, pagination replay, Drive mutation, or corpus-wide absence claim; classify only the observed empty/nonempty/error shape. A consequential negative claim requires a distinct authorized raw Drive files.list verifier under the same effective principal with corpus, query, incompleteSearch, pagination, and response semantics bound.
+
+verifier:
+  structural_preflight: S04_STRUCTURAL_PREFLIGHT
+  binding_target_if_high_stakes_negative_claim_needed: DISTINCT_AUTHORIZED_RAW_DRIVE_FILES_LIST_CALL_UNDER_THE_SAME_EFFECTIVE_PRINCIPAL
+  binding_status: NOT_RUN
+
+consumer:
+  primary: X13_GDRIVE_METADATA_DOCUMENT_SEARCH_READONLY_019_PHASE3_SYNTHETIC_NONMATCH_EMPTY_OR_ERROR_SHAPE_GATE
+  downstream: HFO_COMMAND_AND_CONTROL_DISCOVERY_CANDIDATE
+  consumer_ack: NOT_OBSERVED
+  heritage_credit_until_ack: 0
+
+expiry:
+  evidence_expiry_utc: 2026-08-12T23:48:21Z
+  invalidate_on:
+    - CURRENT_WORKITEM_CHANGE
+    - CONNECTOR_SCHEMA_OR_BACKEND_CHANGE
+    - DRIVE_SEARCH_CONTRACT_CHANGE
+    - EFFECTIVE_PRINCIPAL_OR_CORPUS_CHANGE_WHEN_MATERIAL
+
+honest_flaw: >-
+  The reusable artifact comes from a different X13 Drive experiment and an older wrapper/request shape. Its prior synthetic query intentionally targeted an empty path, the raw provider response and incompleteSearch/pagination state were not exposed, and the independent raw-provider verifier was never run. The current experiment uses an explicit document-metadata-only candidate and has not yet persisted its Phase-3 request descriptor, so only the claim ceiling and empty-success-vs-error handling antibody transfer; result parity does not.
+
+dedup:
+  gen133_searched_first: true
+  older_repository_drive_file_library_or_web_search_needed: false
+  exact_prior_phase3_artifact_found: true
+  prior_s15_binding_for_same_failure_antibody_found_commit: 21124ee92574a674267c241d1b451769df9cd26a
+  prior_s15_binding_current_workitem_different: true
+  current_experiment_019_s15_binding_observed_before_write: false
+---
