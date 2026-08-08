@@ -1,0 +1,143 @@
+schema_id: hfo.gen133.s04.structural_preflight.v1
+result: REVISE
+terminal_receipt: false
+seat: S04_HRIST_STRUCTURAL_PREFLIGHT
+role: STRUCTURAL_PREFLIGHT_VERIFIER
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-08T11:14:12Z
+correlation_id: GTM-S07-BRAINTRUST-HOLD-20260808T102527Z
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+
+self_probe:
+  expected_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  observed_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  task_id_match: true
+  task_enabled_observed: true
+  github_read_available: true
+  github_write_available: true
+  slack_write_available: true
+  task_mutation_performed: false
+
+selection:
+  newest_eligible_candidate: true
+  candidate_kind: S03_VERIFICATION_ROUTE_FOR_S07_HOLD
+  candidate_authored_by_this_seat: false
+  route_commit: c4efabb3e118f68bb2e4e54615d48d8e30c26910
+  route_path: state/coordination/receipts/chatgpt_runtime/seat-03/20260808T110631Z_BRAINTRUST_PROOF_KIT_REVISE_TO_S04.yaml
+  route_git_blob_sha1: fa18ae9fa753cd97d8ae47e51dd706d1d682aa34
+  producer_return_commit: d787707a2ac1e352d4079a40c28dd3d1337774ff
+  producer_return_path: projects/gtm-revenue/returns/20260808T102527Z_S07_BRAINTRUST_PROOF_KIT_HOLD.md
+  producer_return_git_blob_sha1: 666585afe885051375bd86d18462526167909303
+  target_card_commit: 813bfaee54f9529f211f3b6c0c96b7cdaec7a3f4
+  target_card_path: projects/gtm-revenue/research/20260808T092801Z_PRODUCT_PLATFORM_BRAINTRUST_TARGET_CARD.md
+  target_card_git_blob_sha1: d0f72c98a956ad531ae48082356b1a887e778483
+  work_item_id: S07_BRAINTRUST_EVAL_TO_RUNTIME_POLICY_GATE_V1
+
+exact_byte_and_source_readback:
+  route_exact_git_blob_readback: true
+  producer_return_exact_git_blob_readback: true
+  target_card_exact_git_blob_readback: true
+  full_file_sha256_recomputed_locally: false
+  limitation: CONNECTOR_EXPOSED_EXACT_UTF8_AND_GIT_BLOB_IDENTITIES_BUT_NO_LOCAL_CHECKOUT_OR_BYTE_STREAM_BRIDGE
+  source_pointer_binding: PASS
+
+schema_and_digest_checks:
+  route_schema: hfo.gen133.s03.verification_route.v1
+  producer_return_schema: hfo.gen133.s07_gtm_proof_kit_return.v1
+  target_card_schema: hfo.gen133.gtm_target_card.v1
+  route_idempotency_canonicalization: UTF8_LITERAL_PREIMAGE_AS_STORED_NO_TERMINAL_LF
+  route_idempotency_preimage_utf8_bytes: 145
+  route_idempotency_sha256_recomputed: 58becec90fc9f4d26f3bf7577452bb074ecaafcef4767789707b6428c7cd6624
+  route_idempotency_sha256_matches_declared: true
+  target_card_declared_evidence_digest_sha256: 9c9f4eceae34c7f8379a73d73fb06640923262a5d9e99f9bfe3daecf3ca7ea68
+  target_card_evidence_canonical_preimage_persisted: false
+  target_card_evidence_canonicalization_rule_persisted: false
+  target_card_evidence_digest_independently_recomputable: false
+
+admission_and_candidate_checks:
+  immutable_claim_observed_for_same_work_item: false
+  claim_exact_blob_bound: false
+  acceptance_digest_bound: false
+  claim_idempotency_digest_bound: false
+  claim_lease_bound: false
+  candidate_created: false
+  candidate_exact_bytes_bound: false
+  source_system_build_test_readback_bound: false
+  controlling_gap: MISSING_IMMUTABLE_CLAIM_ACCEPTANCE_IDEMPOTENCY_LEASE_AND_CANDIDATE_OR_BUILD_TEST_BINDING
+
+freshness_and_expiry:
+  route_valid_time_utc: 2026-08-08T11:06:31Z
+  route_expiry_utc: 2026-08-08T13:25:27Z
+  producer_hold_expiry_utc: 2026-08-08T13:25:27Z
+  target_card_expiry_utc: 2026-08-14T14:08:00Z
+  route_fresh_at_verification_time: true
+  producer_hold_fresh_at_verification_time: true
+  target_card_fresh_at_verification_time: true
+
+authority_privacy_rollback:
+  producer_effect_ceiling: T0_PREP_RESEARCH_GIT
+  route_effect_ceiling: GIT_APPEND_ONLY_INTERNAL_VERIFICATION_ROUTE_PLUS_ONE_REQUIRED_SLACK_POINTER
+  privacy: PUBLIC_SAFE_SYNTHETIC_ONLY
+  external_effects_observed_or_declared: NONE
+  no_send_boundary: PASS
+  rollback_mode: APPEND_ONLY_SUPERSESSION_DO_NOT_REWRITE
+  rollback_delete_path_present: true
+
+task_actor_carrier_separation:
+  s04_task_binding_native_readback: PASS
+  s03_task_binding_native_readback: PASS
+  s07_task_binding_native_readback: PASS
+  x14_task_binding_native_readback: PASS
+  x13_task_binding_native_readback: PASS
+  github_route_commit_author_login: TTaoGaming
+  immutable_actor_to_carrier_delegation_binding: UNPROVEN
+  actor_carrier_conflation_performed: false
+
+verifier_and_consumer:
+  verifier: S04_HRIST_STRUCTURAL_PREFLIGHT
+  verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  downstream_consumer: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  operator_consumer: VAR_PRIVATE_CRM_ONLY_AFTER_VERIFIED_CANDIDATE_EXISTS
+  exact_digest_bound_STOOD_or_FELL_observed: false
+  explicit_named_ConsumerAck_observed: false
+
+strongest_fake_green_mutant:
+  mutant_id: X14_MUTANT_181_5548f3d683f1
+  mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+  mutant_commit: 8a09c41be056cab6dfc42043f9eb005894ec2bcb
+  mutant_path: state/coordination/experiments/false_green_x14/quarantine/20260808T105209Z_X13_DUPLICATE_IDEMPOTENCY_VERSION.mutant.yaml
+  mutant_git_blob_sha1: 694429619b22ab76b628c8bce53d2cb3df5e2182
+  source_commit: 63182d159723d91dc9566cfef04f291812d71ff6
+  source_path: state/coordination/experiments/cots_connector_x13/20260808T105038Z_GMAIL_MESSAGE_IDS_PHASE2_REPLAY_RESULT_DIGEST_ANDON.md
+  source_git_blob_sha1: aa569d4d6e2c7d9c26bee38706f978478b78d2b2
+  source_expected_current_version: 181
+  source_next_current_version: 182
+  source_current_projection_commit: f727554b965dacbb5e1eb8a1c7ffe5b83a620a61
+  source_current_projection_version: 182
+  mutated_next_current_version: 181
+  canonical_overlay_utf8_bytes_recomputed: 28
+  canonical_overlay_sha256_recomputed: 5548f3d683f1ab40c104c5e6bdc9183f00149c2b5312a7832a915a1956e2234c
+  canonical_overlay_sha256_matches_declared: true
+  gate_result: REJECT_MUTANT
+  rejection_reason: ZERO_STEP_DUPLICATE_VERSION_TRANSITION_REUSES_PRETRANSITION_VERSION
+
+decision:
+  result: REVISE
+  reason: PRODUCER_RETURN_IS_NOT_STRUCTURALLY_CONSUMABLE_WITHOUT_IMMUTABLE_CLAIM_ACCEPTANCE_IDEMPOTENCY_LEASE_AND_CANDIDATE_OR_BUILD_TEST_BINDINGS_AND_TARGET_EVIDENCE_DIGEST_IS_NOT_INDEPENDENTLY_RECOMPUTABLE
+  terminal_receipt_created: false
+  same_provider_status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  independent_verification_closed: false
+
+honest_flaw: >-
+  This preflight independently recomputed the route idempotency digest and the strongest current
+  X14 mutation overlay, and read back exact Git blob identities for the route, producer return,
+  target card, mutant, and mutant source. It did not obtain a local checkout or a machine-readable
+  byte-stream bridge from the connector, so it did not independently recompute whole-file SHA-256
+  values from local byte arrays. Git blob identity therefore carries the exact-byte binding in this
+  wake. That limitation does not change the REVISE outcome because the controlling admission,
+  candidate, lease, and target-evidence canonicalization fields are absent in the immutable sources.
