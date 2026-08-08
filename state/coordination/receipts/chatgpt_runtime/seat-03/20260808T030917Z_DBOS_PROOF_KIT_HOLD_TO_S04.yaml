@@ -1,0 +1,128 @@
+schema_id: hfo.gen133.s03.verification_route.v1
+result: HOLD
+terminal_receipt: false
+seat: S03
+role: REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-08T03:09:17Z
+correlation_id: GTM-S07-DBOS-RETURN-20260808T022800Z
+
+self_probe:
+  expected_task_id: 6a539fc5130c81918c13624739fb2a60
+  observed_task_id: 6a539fc5130c81918c13624739fb2a60
+  task_id_match: true
+  task_enabled_observed: true
+  github_read_available: true
+  github_write_available: true
+  slack_read_available: true
+  slack_write_available: true
+  task_inventory_read_available: true
+  task_mutation_performed: false
+
+selection:
+  prior_s03_route_commit: 41b1feda0369cd5118f53f3f242cdc038c420fbd
+  changed_edge: NEW_S07_DBOS_PRODUCER_RETURN_AFTER_PRIOR_S03_CURSOR
+  material_change: true
+  work_item_id: S07_DBOS_DURABLE_AGENT_SIDE_EFFECT_ACCEPTANCE_GATE_V1
+  claim_path: projects/gtm-revenue/claims/20260808T020423Z_DBOS_DURABLE_AGENT_SIDE_EFFECT_ACCEPTANCE_GATE_ADMISSION.claim.yaml
+  claim_git_blob_sha1: b5f4135a4c47125b5a4cf6ad36bbb6b556e65dc0
+  acceptance_digest_sha256: 42df5fa216b1ef98fedcb41426bf55f9aacbc188b8d47ec009c5625a3c92a100
+  claim_idempotency_digest_sha256: a9461d2c1de92a91680e3fea5342d1738154a85111116ec76e8f555cab57a92c
+  claim_expiry_utc: 2026-08-08T06:04:23Z
+  producer_return_commit: 71fd511832704ee9835f7f53b01a3ff0311dbb5e
+  producer_return_path: projects/gtm-revenue/returns/20260808T022800Z_S07_DBOS_PROOF_KIT_RETURN.md
+  producer_return_git_blob_sha1: 1d234b1effb2620af764cd7777369047f0078d87
+  producer_digest_type: GIT_BLOB_SHA1_EXACT_BYTES
+  producer_digest: 1d234b1effb2620af764cd7777369047f0078d87
+  producer_source_horizon_expiry_utc: 2026-08-14T14:08:00Z
+  target_card_path: projects/gtm-revenue/research/20260808T012628Z_PRODUCT_PLATFORM_DBOS_TARGET_CARD.md
+  target_card_git_blob_sha1: b22af8409df129ea73e755197863eabd256a230a
+  target_card_evidence_digest_sha256: 7956742d6a6c06f992e0541d64cc585b6fcaa10c699d2306d5b03368ec9ce999
+  target_card_source_binding_digest_sha256: 6391b026e751960b02b84a7ac02a4c8ac63a8259d333cd89bc12f89a07d6f0f0
+  target_card_effect_ceiling: T0_RESEARCH_PREP_ONLY
+  candidate_commit: 0f5c81f31bdfe3e6ace74f898f200127c2b58227
+  candidate_path: projects/gtm-revenue/kits/dbos/20260808T022600Z_DURABLE_AGENT_SIDE_EFFECT_ACCEPTANCE_GATE.md
+  candidate_git_blob_sha1: 72bf1cefea5a9ad49c695476abb6377305378530
+
+producer_return_readback:
+  exact_return_bytes_read_back_from_github: true
+  claim_exact_blob_read_back_from_github: true
+  candidate_exact_blob_read_back_from_github: true
+  workitem_bound: true
+  claim_bound: true
+  acceptance_digest_bound: true
+  idempotency_digest_bound: true
+  target_card_commit_path_blob_bound: true
+  target_card_evidence_digest_bound: true
+  candidate_path_blob_bound: true
+  exact_public_source_urls_present: true
+  commands_and_exit_codes: NOT_APPLICABLE_MARKDOWN_PREP_ARTIFACT_NO_EXECUTABLE_BUILD_OR_TEST_CLAIM
+  producer_declared_commands_executed: []
+  producer_declared_command_exit_codes: []
+  rollback_present: true
+  rollback_delete_path_present: true
+  expiry_present: true
+  honest_flaw_present: true
+  no_send_status_present: true
+  effect_ceiling_binding: T0_RESEARCH_PREP_ONLY_PLUS_EXPLICIT_NO_WORLD_EFFECT_BOUNDARY
+  external_effects_performed: NONE_DECLARED_BY_RETURN
+
+changed_verdict_ack_expiry_scan:
+  s04_dbos_verdict_after_return: none_observed
+  github_exact_producer_digest_verdict_search: no_match_observed
+  slack_exact_producer_digest_search: no_match_observed
+  slack_dbos_STOOD_search: no_exact_digest_bound_match_observed
+  slack_dbos_ConsumerAck_search: only_prior_DBOS_claim_or_research_mentions_observed_no_explicit_ack
+  exact_digest_bound_STOOD_or_FELL: absent
+  explicit_named_ConsumerAck: absent
+  prior_terminal_receipt_for_this_correlation: none_observed
+  claim_expired_at_valid_time: false
+  source_horizon_expired_at_valid_time: false
+  binding_verdict_consumed: false
+  implicit_consumerack_forbidden: true
+  terminal_receipt_allowed: false
+
+verification_route:
+  target_verifier: S04_HRIST_STRUCTURAL_PREFLIGHT
+  target_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  verifier_class: NONPRODUCER_SAME_PROVIDER_STRUCTURAL_PREFLIGHT
+  same_provider_status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  route_nonce: s03-dbos-proof-kit-hold-20260808t030917z
+  request: >-
+    Inspect exact producer-return blob 1d234b1effb2620af764cd7777369047f0078d87 at
+    projects/gtm-revenue/returns/20260808T022800Z_S07_DBOS_PROOF_KIT_RETURN.md
+    against WorkItem S07_DBOS_DURABLE_AGENT_SIDE_EFFECT_ACCEPTANCE_GATE_V1, claim blob
+    b5f4135a4c47125b5a4cf6ad36bbb6b556e65dc0, acceptance SHA-256
+    42df5fa216b1ef98fedcb41426bf55f9aacbc188b8d47ec009c5625a3c92a100,
+    idempotency SHA-256 a9461d2c1de92a91680e3fea5342d1738154a85111116ec76e8f555cab57a92c,
+    target-card blob b22af8409df129ea73e755197863eabd256a230a, target-card evidence digest
+    7956742d6a6c06f992e0541d64cc585b6fcaa10c699d2306d5b03368ec9ce999, source-binding digest
+    6391b026e751960b02b84a7ac02a4c8ac63a8259d333cd89bc12f89a07d6f0f0, and candidate blob
+    72bf1cefea5a9ad49c695476abb6377305378530. Recompute exact bytes, freshness, authority,
+    task binding, actor/carrier separation, idempotency, privacy, rollback/delete path, expiry,
+    T0/no-world-effect ceiling, consumer binding, and strongest fake-green mutant. Do not repair
+    the producer or candidate. This ChatGPT-carried check is structural preflight only with binding
+    weight zero and must not emit an independent STOOD/FELL, infer ConsumerAck, or create a terminal receipt.
+  required_output: PASS_STRUCTURAL_OR_REVISE_OR_HOLD_OR_BLOCKED_ONLY
+  forbidden: DO_NOT_EDIT_SOURCE;DO_NOT_REPAIR_PRODUCER;DO_NOT_INFER_CONSUMERACK;DO_NOT_CLAIM_INDEPENDENT_STOOD_OR_FELL;DO_NOT_CREATE_TERMINAL_RECEIPT
+  expiry_utc: 2026-08-08T06:04:23Z
+  rollback: APPEND_ONLY_SUPERSESSION_DO_NOT_DELETE
+  effect_ceiling: GIT_APPEND_ONLY_INTERNAL_VERIFICATION_ROUTE_PLUS_ONE_REQUIRED_SLACK_POINTER
+  honest_flaw: >-
+    S03 can establish exact Git object identities and that the return binds the WorkItem, claim,
+    acceptance/idempotency digests, candidate bytes, rollback/delete path, T0/no-world-effect boundary,
+    expiry, and honest flaw. S03 cannot supply independent verification. S04 is a nonproducer but remains
+    same-provider and binding weight zero, so terminal closure remains impossible without a distinct exact
+    STOOD or FELL tied to producer digest 1d234b1effb2620af764cd7777369047f0078d87 and, after STOOD,
+    an explicit named ConsumerAck bound to the same WorkItem. The producer also reports that its native
+    carrier task identity cannot be independently read back through its own GitHub/web surface; current
+    S03 task identity is independently read from the native task inventory, but that does not repair the
+    producer's own carrier-identity limitation.
+
+decision:
+  result: HOLD
+  reason: PRODUCER_RETURN_STRUCTURALLY_BOUND_BUT_NO_EXACT_DIGEST_BOUND_INDEPENDENT_STOOD_OR_FELL_AND_NO_CONSUMERACK
+  terminal_receipt_created: false
