@@ -1,0 +1,133 @@
+schema_id: hfo.gen133.s03.verification_route.v1
+result: REVISE
+terminal_receipt: false
+seat: S03
+role: REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-08T01:08:42Z
+correlation_id: GTM-S07-WALMART-RETURN-20260808T002200Z
+
+self_probe:
+  expected_task_id: 6a539fc5130c81918c13624739fb2a60
+  observed_task_id: 6a539fc5130c81918c13624739fb2a60
+  task_id_match: true
+  task_enabled_observed: true
+  github_read_available: true
+  github_write_available: true
+  slack_read_available: true
+  slack_write_available: true
+  task_inventory_read_available: true
+  task_mutation_performed: false
+
+selection:
+  prior_s03_route_commit: b0769fdd4e070a47753c3d3b72b8b953506132a8
+  changed_edge: NEW_S07_WALMART_PRODUCER_RETURN_AFTER_PRIOR_S03_CURSOR
+  material_change: true
+  correlation_id_source: S03_DERIVED_FROM_IMMUTABLE_PRODUCER_RETURN_PATH_FOR_ROUTING_ONLY
+  work_item_id: MISSING
+  claim_path: MISSING
+  claim_git_blob_sha1: MISSING
+  acceptance_digest: MISSING
+  claim_idempotency_digest: MISSING
+  producer_return_commit: 2f83e84a8a9293eaee9cecc62245026bce33aeb8
+  producer_return_path: projects/gtm-revenue/returns/20260808T002200Z_S07_WALMART_PROOF_KIT_RETURN.md
+  producer_return_git_blob_sha1: 06ad5e3137cc163ec29530f6a8fbeed485467e2f
+  producer_digest_type: GIT_BLOB_SHA1_EXACT_BYTES
+  producer_digest: 06ad5e3137cc163ec29530f6a8fbeed485467e2f
+  producer_expiry_utc: 2026-08-14T23:28:00Z
+  target_card_path: projects/gtm-revenue/research/20260807T232800Z_ENTERPRISE_BUYER_WALMART_TARGET_CARD.md
+  target_card_git_blob_sha1: 7f0229234a0f54daa9a94905df798826f7c2b8a6
+  target_card_evidence_digest_sha256: d77c3b375753d2d133d0a1b4caeaeb8809fbb9c16bf891cb225db4e2e6eae038
+  target_card_effect_ceiling: RESEARCH_AND_GIT_ONLY
+  candidate_commit: ed1932a7931dc55d3505457d40c3b83d1d24a8df
+  candidate_path: projects/gtm-revenue/kits/walmart/20260808T002200Z_GOVERNABLE_AGENT_PAVED_ROAD_GAP_CHECKLIST.md
+  candidate_git_blob_sha1: 1d0cc9846a9aa2ee3ae987531f12f613f96c1a89
+
+producer_return_readback:
+  exact_return_bytes_read_back_from_github: true
+  target_card_exact_blob_read_back_from_github: true
+  candidate_exact_blob_read_back_from_github: true
+  workitem_bound: false
+  claim_bound: false
+  acceptance_digest_bound: false
+  idempotency_digest_bound: false
+  target_card_blob_bound: true
+  target_card_evidence_digest_bound: true
+  candidate_path_blob_bound: true
+  exact_public_source_urls_present: true
+  commands_and_exit_codes: NOT_APPLICABLE_MARKDOWN_PREP_ARTIFACT_NO_EXECUTABLE_BUILD_OR_TEST_CLAIM
+  producer_declared_commands_executed: []
+  producer_declared_command_exit_codes: []
+  rollback_present: true
+  rollback_delete_path_present: true
+  expiry_present: true
+  honest_flaw_present: true
+  no_send_status_present: true
+  effect_boundary_prose_present: true
+  explicit_producer_effect_ceiling_binding: false
+  external_effects_performed: NONE_OBSERVED_FROM_RETURN
+
+missing_required_evidence:
+  workitem_claim_binding:
+    status: MISSING
+    reason: >-
+      The producer return binds a target card and candidate, but it does not bind a WorkItem,
+      immutable claim, claim acceptance digest, or claim idempotency digest. S03 may not promote
+      an S08 target-card handoff into a claimed WorkItem by inference.
+  producer_effect_ceiling_binding:
+    status: MISSING_EXPLICIT_BINDING
+    reason: >-
+      The target card has effect_ceiling RESEARCH_AND_GIT_ONLY and the producer return contains a
+      no-send/effect-boundary paragraph, but the producer return does not bind an explicit producer-level
+      effect_ceiling. S03 does not substitute adjacent source-card metadata or prose for the required return binding.
+
+changed_verdict_ack_expiry_scan:
+  s04_walmart_verdict_after_return: none_observed
+  github_exact_producer_digest_verdict_search: no_match_observed
+  slack_exact_producer_digest_search: no_match_observed
+  exact_digest_bound_STOOD_or_FELL: absent
+  explicit_named_ConsumerAck: absent
+  prior_terminal_receipt_for_this_correlation: none_observed
+  producer_expired_at_valid_time: false
+  binding_verdict_consumed: false
+  implicit_consumerack_forbidden: true
+  terminal_receipt_allowed: false
+
+verification_route:
+  target_verifier: S04_HRIST_STRUCTURAL_PREFLIGHT
+  target_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  verifier_class: NONPRODUCER_SAME_PROVIDER_STRUCTURAL_PREFLIGHT
+  same_provider_status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  route_nonce: s03-walmart-proof-kit-revise-20260808t010842z
+  request: >-
+    REVISE the exact producer-return blob 06ad5e3137cc163ec29530f6a8fbeed485467e2f
+    at projects/gtm-revenue/returns/20260808T002200Z_S07_WALMART_PROOF_KIT_RETURN.md.
+    Do not repair the return. Verify that it lacks a WorkItem/claim binding, claim acceptance digest,
+    claim idempotency digest, and explicit producer-level effect_ceiling binding while preserving exact
+    target-card blob 7f0229234a0f54daa9a94905df798826f7c2b8a6, evidence digest
+    d77c3b375753d2d133d0a1b4caeaeb8809fbb9c16bf891cb225db4e2e6eae038, candidate blob
+    1d0cc9846a9aa2ee3ae987531f12f613f96c1a89, public-source ceiling, rollback/delete path, expiry,
+    no-send boundary, and honest flaw. Recompute exact bytes, freshness, authority, actor/carrier separation,
+    privacy, rollback, expiry, and strongest fake-green mutant. This ChatGPT-carried check is structural
+    preflight only with binding weight zero. It must not emit an independent STOOD/FELL, infer ConsumerAck,
+    create a WorkItem/claim, repair producer bytes, or create a terminal receipt.
+  required_output: PASS_STRUCTURAL_OR_REVISE_OR_HOLD_OR_BLOCKED_ONLY
+  forbidden: DO_NOT_EDIT_SOURCE;DO_NOT_REPAIR_PRODUCER;DO_NOT_CREATE_WORKITEM_OR_CLAIM;DO_NOT_INFER_CONSUMERACK;DO_NOT_CLAIM_INDEPENDENT_STOOD_OR_FELL;DO_NOT_CREATE_TERMINAL_RECEIPT
+  expiry_utc: 2026-08-14T23:28:00Z
+  rollback: APPEND_ONLY_SUPERSESSION_DO_NOT_DELETE
+  effect_ceiling: GIT_APPEND_ONLY_INTERNAL_VERIFICATION_ROUTE_PLUS_ONE_REQUIRED_SLACK_POINTER
+  honest_flaw: >-
+    S03 can prove exact Git object identities and that the return contains target-card/candidate bindings,
+    public source URLs, rollback, expiry, no-send boundaries, and an honest flaw. S03 cannot infer the missing
+    WorkItem/claim/acceptance/idempotency or explicit producer-level effect ceiling from the target card or
+    surrounding prose. S04 is same-provider nonbinding with weight zero, so terminal closure remains impossible
+    without a distinct exact STOOD/FELL tied to producer digest 06ad5e3137cc163ec29530f6a8fbeed485467e2f
+    and, after STOOD, an explicit named ConsumerAck bound to the same WorkItem.
+
+decision:
+  result: REVISE
+  reason: PRODUCER_RETURN_NOT_BOUND_TO_WORKITEM_CLAIM_ACCEPTANCE_IDEMPOTENCY_AND_MISSING_EXPLICIT_PRODUCER_EFFECT_CEILING
+  terminal_receipt_created: false
