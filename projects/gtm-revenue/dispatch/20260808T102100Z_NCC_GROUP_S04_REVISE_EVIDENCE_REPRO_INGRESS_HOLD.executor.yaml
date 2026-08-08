@@ -1,0 +1,197 @@
+schema_id: hfo.gen133.s06.executor_packet.v1
+result: HOLD
+seat: S06_CODE_WORK_PACKET_COMPILER_CODEX_BRIDGE
+wip: 1
+expected_task_id: 6a57972b9df081918680ce67c4ecb197
+observed_task_id: 6a57972b9df081918680ce67c4ecb197
+task_id_match: true
+repository: TTaoGaming/hfo-gen-133
+branch: agent/gen133-bootstrap-20260730
+base_sha: 898b9a5b1667a312ed66b9c47653ee6b525aa967
+work_item_id: S07_NCC_GROUP_AI_ASSURANCE_ACCEPTANCE_GATE_V1
+claim_sha: 8149abce5461eeebd0c7c97e679426775940fc1b
+claim_path: projects/gtm-revenue/claims/20260808T090649Z_NCC_GROUP_AI_ASSURANCE_ACCEPTANCE_GATE_ADMISSION.claim.yaml
+claim_blob_sha1: fe901b94e66de2fe531e64cc5ed2e3e69b1c778d
+claim_expiry_utc: 2026-08-08T13:06:49Z
+source_expiry_utc: 2026-08-14T14:08:00Z
+packet_status: COMPILED_NOT_EXECUTED
+route_status: DIRECT_CODEX_CLAUDE_HOST_INGRESS_NOT_EXPOSED
+
+selection:
+  changed_edge: S04_REVISE_75b0d696c32f7004bc679cb1ed2564bd8e178f4b_AFTER_S03_ROUTE_14711e1f22d08670c4913e430b9cc3e93a2e2e0e
+  eligibility: UNEXPIRED_CLAIMED_WORKITEM_REQUIRING_REPOSITORY_INSPECTION_AND_BUILD_EVIDENCE
+  s04_result: REVISE
+  s04_commit: 75b0d696c32f7004bc679cb1ed2564bd8e178f4b
+  s04_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260808T101320Z_NCC_GROUP_PROOF_KIT_STRUCTURAL_REVISE.yaml
+  s04_blob_sha1: 3ca0ec85d98cb349582f6e91bd787edd592c7b91
+
+frozen_objects:
+  target_card:
+    commit: c5c8027707f0af3abaaae370bd74446f65ad03e8
+    path: projects/gtm-revenue/research/20260808T082800Z_CHANNEL_PARTNER_NCC_GROUP_TARGET_CARD.md
+    blob_sha1: 96583bb2d0443538451586d1dca45d6d1cc0b23c
+    declared_evidence_digest_sha256: fe661ccc6c01cea0b8e5384442c8405547ba9f2d03b4ca54786407fd6ed8f64f
+  candidate:
+    commit: b59e624359fe49e0325d55304a6bc5f4587158d0
+    path: projects/gtm-revenue/kits/ncc-group/20260808T092359Z_AI_ASSISTED_SECURITY_ENGAGEMENT_ACCEPTANCE_GATE.md
+    blob_sha1: e5d61340a2452e17e0604fc56d48940ad83b86f3
+  producer_return:
+    commit: 4a4de53893631fd9848264d02b00ef8164aa108f
+    path: projects/gtm-revenue/returns/20260808T092513Z_S07_NCC_GROUP_AI_ASSURANCE_ACCEPTANCE_GATE_RETURN.md
+    blob_sha1: 6315348f20f77246db56ee112fce807058f038c8
+  s03_route:
+    commit: 14711e1f22d08670c4913e430b9cc3e93a2e2e0e
+    path: state/coordination/receipts/chatgpt_runtime/seat-03/20260808T100936Z_NCC_GROUP_PROOF_KIT_HOLD_TO_S04.yaml
+    blob_sha1: 4554fedf16b72a19e4e0375ca4e69cbe22e6bf39
+  s04_verdict:
+    commit: 75b0d696c32f7004bc679cb1ed2564bd8e178f4b
+    path: state/coordination/receipts/chatgpt_runtime/seat-04/20260808T101320Z_NCC_GROUP_PROOF_KIT_STRUCTURAL_REVISE.yaml
+    blob_sha1: 3ca0ec85d98cb349582f6e91bd787edd592c7b91
+
+allowed_paths:
+  - projects/gtm-revenue/claims/20260808T090649Z_NCC_GROUP_AI_ASSURANCE_ACCEPTANCE_GATE_ADMISSION.claim.yaml
+  - projects/gtm-revenue/research/20260808T082800Z_CHANNEL_PARTNER_NCC_GROUP_TARGET_CARD.md
+  - projects/gtm-revenue/kits/ncc-group/20260808T092359Z_AI_ASSISTED_SECURITY_ENGAGEMENT_ACCEPTANCE_GATE.md
+  - projects/gtm-revenue/returns/20260808T092513Z_S07_NCC_GROUP_AI_ASSURANCE_ACCEPTANCE_GATE_RETURN.md
+  - state/coordination/receipts/chatgpt_runtime/seat-03/20260808T100936Z_NCC_GROUP_PROOF_KIT_HOLD_TO_S04.yaml
+  - state/coordination/receipts/chatgpt_runtime/seat-04/20260808T101320Z_NCC_GROUP_PROOF_KIT_STRUCTURAL_REVISE.yaml
+  - .git/objects/
+  - .git/refs/
+forbidden_paths:
+  - ALL_REPOSITORY_WRITES
+  - ALL_PRODUCTION_CODE_PATHS
+  - ALL_GITHUB_WORKFLOW_MUTATIONS
+  - ALL_SECRETS_CREDENTIALS_AND_PRIVATE_DATA
+  - ALL_PATHS_NOT_EXPLICITLY_LISTED_ABOVE
+
+goal: >-
+  On a direct executor only, perform a read-only reproduction of the NCC Group S04
+  structural REVISE and return an executor evidence ledger. Determine whether a durable
+  target-card evidence-digest canonical preimage plus canonicalization rule actually
+  exists at or before the frozen target-card commit, and whether S03 route replay
+  equivalence is cryptographically bound anywhere in the frozen repository history.
+  Reproduce exact Git object identities and candidate acceptance-surface facts without
+  editing the candidate or repairing any red. The return is evidence only, not an
+  independent STOOD/FELL verdict and not ConsumerAck.
+
+current_red_evidence:
+  controlling:
+    source: S04_75b0d696c32f7004bc679cb1ed2564bd8e178f4b
+    red: TARGET_CARD_EVIDENCE_DIGEST_HAS_NO_DURABLE_CANONICAL_PREIMAGE_OR_CANONICALIZATION_RULE_AND_CANNOT_BE_INDEPENDENTLY_RECOMPUTED
+  secondary:
+    - PRODUCER_RETURN_DOES_NOT_PROVE_CREATION_TIME_CARRIER_OBSERVATION_OR_ACTOR_TO_CARRIER_DELEGATION
+    - S03_ROUTE_HAS_NONCE_BUT_NO_CANONICAL_ROUTE_IDEMPOTENCY_DIGEST
+    - EXACT_DIGEST_BOUND_INDEPENDENT_STOOD_OR_FELL_ABSENT
+    - EXPLICIT_NAMED_CONSUMERACK_ABSENT
+  producer_return_consumability_red: >-
+    S07 return does not name a direct executor runtime/model, observed checkout branch/SHA,
+    exact executed commands with per-command exit codes and outputs, or an explicit blocker
+    ledger; therefore S06 must not label it RETURN_CONSUMED.
+
+required_commands:
+  - "date -u +%Y-%m-%dT%H:%M:%SZ"
+  - "git rev-parse --show-toplevel"
+  - "git remote get-url origin"
+  - "git branch --show-current"
+  - "git rev-parse HEAD"
+  - "git merge-base --is-ancestor 75b0d696c32f7004bc679cb1ed2564bd8e178f4b 898b9a5b1667a312ed66b9c47653ee6b525aa967"
+  - "git rev-parse 8149abce5461eeebd0c7c97e679426775940fc1b:projects/gtm-revenue/claims/20260808T090649Z_NCC_GROUP_AI_ASSURANCE_ACCEPTANCE_GATE_ADMISSION.claim.yaml"
+  - "git rev-parse c5c8027707f0af3abaaae370bd74446f65ad03e8:projects/gtm-revenue/research/20260808T082800Z_CHANNEL_PARTNER_NCC_GROUP_TARGET_CARD.md"
+  - "git rev-parse b59e624359fe49e0325d55304a6bc5f4587158d0:projects/gtm-revenue/kits/ncc-group/20260808T092359Z_AI_ASSISTED_SECURITY_ENGAGEMENT_ACCEPTANCE_GATE.md"
+  - "git rev-parse 4a4de53893631fd9848264d02b00ef8164aa108f:projects/gtm-revenue/returns/20260808T092513Z_S07_NCC_GROUP_AI_ASSURANCE_ACCEPTANCE_GATE_RETURN.md"
+  - "git rev-parse 14711e1f22d08670c4913e430b9cc3e93a2e2e0e:state/coordination/receipts/chatgpt_runtime/seat-03/20260808T100936Z_NCC_GROUP_PROOF_KIT_HOLD_TO_S04.yaml"
+  - "git rev-parse 75b0d696c32f7004bc679cb1ed2564bd8e178f4b:state/coordination/receipts/chatgpt_runtime/seat-04/20260808T101320Z_NCC_GROUP_PROOF_KIT_STRUCTURAL_REVISE.yaml"
+  - "git cat-file blob 96583bb2d0443538451586d1dca45d6d1cc0b23c | sha256sum"
+  - "git cat-file blob e5d61340a2452e17e0604fc56d48940ad83b86f3 | sha256sum"
+  - "git cat-file blob 6315348f20f77246db56ee112fce807058f038c8 | sha256sum"
+  - "git cat-file blob 3ca0ec85d98cb349582f6e91bd787edd592c7b91 | sha256sum"
+  - "git grep -n --fixed-strings 'fe661ccc6c01cea0b8e5384442c8405547ba9f2d03b4ca54786407fd6ed8f64f' c5c8027707f0af3abaaae370bd74446f65ad03e8 -- projects state || true"
+  - "git grep -n -E 'canonical[_ -]?(preimage|ization)|evidence[_ -]?digest' c5c8027707f0af3abaaae370bd74446f65ad03e8 -- projects/gtm-revenue/research/20260808T082800Z_CHANNEL_PARTNER_NCC_GROUP_TARGET_CARD.md || true"
+  - "git grep -n -E 'route.*idempot|idempot.*route|canonical.*route|route.*digest' 898b9a5b1667a312ed66b9c47653ee6b525aa967 -- state/coordination/receipts/chatgpt_runtime/seat-03 projects/gtm-revenue || true"
+  - "git cat-file blob e5d61340a2452e17e0604fc56d48940ad83b86f3 | grep -n -E 'outside scope|missing evidence|model swap|privileged tool call|named human disposition'"
+  - "git status --porcelain=v1 -- projects/gtm-revenue/claims/20260808T090649Z_NCC_GROUP_AI_ASSURANCE_ACCEPTANCE_GATE_ADMISSION.claim.yaml projects/gtm-revenue/research/20260808T082800Z_CHANNEL_PARTNER_NCC_GROUP_TARGET_CARD.md projects/gtm-revenue/kits/ncc-group/20260808T092359Z_AI_ASSISTED_SECURITY_ENGAGEMENT_ACCEPTANCE_GATE.md projects/gtm-revenue/returns/20260808T092513Z_S07_NCC_GROUP_AI_ASSURANCE_ACCEPTANCE_GATE_RETURN.md state/coordination/receipts/chatgpt_runtime/seat-03/20260808T100936Z_NCC_GROUP_PROOF_KIT_HOLD_TO_S04.yaml state/coordination/receipts/chatgpt_runtime/seat-04/20260808T101320Z_NCC_GROUP_PROOF_KIT_STRUCTURAL_REVISE.yaml"
+
+acceptance_tests:
+  - id: A1_REPOSITORY_IDENTITY
+    pass_when: origin resolves to TTaoGaming/hfo-gen-133 and observed branch is agent/gen133-bootstrap-20260730; report any detached-head state explicitly.
+  - id: A2_FROZEN_OBJECT_BINDINGS
+    pass_when: all six git rev-parse object results exactly equal the declared blob SHA-1 values in this packet.
+  - id: A3_BASE_ANCESTRY
+    pass_when: S04 commit 75b0d696c32f7004bc679cb1ed2564bd8e178f4b is an ancestor of base_sha 898b9a5b1667a312ed66b9c47653ee6b525aa967.
+  - id: A4_CLAIM_FRESHNESS
+    pass_when: executor UTC start time is strictly before 2026-08-08T13:06:49Z; otherwise stop and return EXPIRED without further work.
+  - id: A5_EVIDENCE_DIGEST_REPRODUCIBILITY
+    pass_when: return FOUND with exact commit/path/blob, persisted canonical preimage, canonicalization rule, recomputation command, exit code and recomputed SHA-256 matching fe661ccc6c01cea0b8e5384442c8405547ba9f2d03b4ca54786407fd6ed8f64f, or return NOT_FOUND with exact search commands/outputs. NOT_FOUND confirms only the bounded search result; it is not an independent verdict.
+  - id: A6_ROUTE_REPLAY_BINDING
+    pass_when: return FOUND with exact route canonical preimage/digest binding and recomputation evidence, or NOT_FOUND with exact search commands/outputs. Do not invent an idempotency rule from the nonce.
+  - id: A7_CANDIDATE_NEGATIVE_CONTROLS
+    pass_when: the exact candidate blob exposes all five required negative-control concepts in command output; otherwise report the missing concept and command failure.
+  - id: A8_NO_MUTATION
+    pass_when: scoped git status output is empty before return; if nonempty, stop and report paths without reset, checkout, clean, deletion or repair.
+  - id: A9_DIRECT_RETURN_CONTRACT
+    pass_when: executor return names runtime, model/version, repository, observed branch, observed HEAD, changed_paths (expected []), every exact command, every exit code, salient stdout/stderr, blockers, rollback, and honest_flaw.
+  - id: A10_NO_FALSE_CLOSURE
+    pass_when: executor does not claim independent STOOD/FELL, ConsumerAck, deployment, external outcome, or correction of the S04 REVISE.
+
+effect_ceiling:
+  class: T0_READ_ONLY_REPOSITORY_INSPECTION
+  allowed:
+    - local_read_only_git_object_and_worktree_inspection
+    - stdout_stderr_evidence_return_to_direct_executor_ingress
+  forbidden:
+    - repository_write
+    - candidate_edit
+    - test_expectation_edit
+    - git_commit_push_merge_rebase_reset_checkout_clean_delete
+    - workflow_dispatch_or_rerun
+    - network_side_effect
+    - external_send_or_publication
+    - spend_or_paid_provider_call
+    - account_or_security_change
+
+time_budget_ceiling:
+  wall_clock_minutes: 20
+  cost_usd: 0
+  stop_on_first_integrity_mismatch: true
+
+rollback:
+  executor: NO_MUTATION_EXPECTED_STOP_AND_REPORT_ANY_DIRTY_PATH_DO_NOT_REPAIR
+  packet: APPEND_ONLY_SUPERSESSION_ONLY_NO_HISTORY_REWRITE_NO_DELETE
+
+verifier:
+  seat: S04_HRIST_STRUCTURAL_PREFLIGHT
+  task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  class: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+consumer:
+  seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  task_id: 6a539fc5130c81918c13624739fb2a60
+expiry_utc: 2026-08-08T13:06:49Z
+
+strongest_falsifier: >-
+  A durable canonical preimage plus explicit canonicalization rule that was persisted at or
+  before target-card commit c5c8027707f0af3abaaae370bd74446f65ad03e8 and that independently recomputes
+  fe661ccc6c01cea0b8e5384442c8405547ba9f2d03b4ca54786407fd6ed8f64f would falsify
+  S04's controlling REVISE reason. If found, return the exact object and recomputation
+  evidence and do not repeat the missing-preimage red as fact.
+
+direct_producer_return_required_fields:
+  - runtime
+  - model_and_version
+  - repository
+  - observed_branch
+  - observed_head_sha
+  - changed_paths
+  - exact_commands
+  - per_command_exit_codes
+  - salient_stdout_stderr
+  - blockers
+  - rollback
+  - honest_flaw
+
+honest_flaw: >-
+  This packet can make a future direct executor's evidence reproducible, but this carrier
+  has no direct Codex, Claude, or canonical-host execution ingress. GitHub and Slack are
+  coordination/storage surfaces here, not executor proof. The packet therefore remains
+  HOLD and does not repair the target-card digest canonicalization gap, route idempotency
+  gap, actor/carrier delegation gap, missing independent verdict, or missing ConsumerAck.
