@@ -1,0 +1,113 @@
+---
+schema_id: hfo.gen133.s04.structural_preflight.v1
+seat: S04_STRUCTURAL_PREFLIGHT
+carrier_task_id_expected: 6a52861fbdb08191b9ef33a0b9c3c15c
+carrier_task_id_observed: 6a52861fbdb08191b9ef33a0b9c3c15c
+task_id_match: true
+result: REVISE
+binding_class: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+wip: 1
+valid_time_utc: 2026-08-08T21:10:06Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+candidate_authored_by_this_seat: false
+candidate_selected_as_newest_eligible: true
+candidate:
+  mutant_id: X14_MUTANT_191_6a26b089b1f4
+  authoring_seat: X14_FALSE_GREEN_MUTATION_AND_QA_LAB
+  commit: dcedced9245dbe46a618921cea109c640a724f7a
+  path: state/coordination/experiments/false_green_x14/quarantine/20260808T205310Z_X13_STALE_SOURCE_DIGEST.mutant.yaml
+  git_blob_sha1_declared_by_readback: 13ba6c3d7c4ca7674297757abe51b523881bf668
+  utf8_bytes_recomputed: 6748
+  sha256_recomputed: bc4e7b317dfb01f02ee916e2c413df98bb6fb8916a26b2ad2af6d691d4542884
+  git_blob_sha1_recomputed: 13ba6c3d7c4ca7674297757abe51b523881bf668
+  exact_bytes_match_git_blob: true
+  valid_time_utc: 2026-08-08T20:53:10Z
+  expires_utc: 2026-08-09T00:53:10Z
+freshness:
+  status: PASS
+  unexpired_at_preflight: true
+source_pointer:
+  commit: f73e3234f2bb3405f177a62dc8170e60a529ee7e
+  path: state/coordination/experiments/cots_connector_x13/20260808T204932Z_GCAL_CALENDARLIST_PHASE4_DECISION_DEFER.md
+  git_blob_sha1_declared: 4000a1f1e837f5446f4f25740c1b26a4a484a0fb
+  utf8_bytes_recomputed: 5076
+  sha256_recomputed: ae34cfad14d7b76f5c43a64470c50388fabe53b7399e493b108864f36d9cd303
+  git_blob_sha1_recomputed: 4000a1f1e837f5446f4f25740c1b26a4a484a0fb
+  exact_pointer_match: true
+schema_and_canonicalization:
+  mutant_schema: hfo.gen133.x14.false_green_mutant.v1
+  status: PASS
+  overlay_canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  overlay_json: '{"source_git_blob_sha1":"147de720ae6ae280b95503bb259070f6358ff2ca"}'
+  overlay_utf8_bytes_recomputed: 67
+  overlay_sha256_recomputed: 6a26b089b1f44a4a6b30f45ca99bbdb441a38f97a29c2e4166ba8a2f5afa8447
+  overlay_digest_matches_candidate: true
+authority:
+  status: PASS
+  candidate_effect_ceiling: QUARANTINED_NON_EXECUTABLE_INTERNAL_ROUTE_ONLY
+  calendar_world_effect_observed: false
+  task_or_schedule_mutation_observed: false
+task_binding:
+  status: PASS
+  x14_task_id: 6a513e4d9c4c81919db728f85db2dd79
+  x13_source_task_id: 6a55c1733708819185088bf334e33ea5
+  s04_verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+actor_carrier_separation:
+  status: UNPROVEN_NOT_INFERRED
+  note: GitHub account actor-to-carrier delegation is not cryptographically bound by this candidate; no identity conflation was used.
+idempotency:
+  status: PASS_WITH_CAVEAT
+  basis: exact source-blob dedup search plus mutation-id digest prefix
+  caveat: no standalone cryptographic idempotency key; candidate itself acknowledges concurrent-write and search-index lag.
+lease_and_expiry:
+  status: PASS
+  expires_utc: 2026-08-09T00:53:10Z
+privacy:
+  status: PASS
+  evidence: source persists no raw calendar IDs, calendar metadata, profile identity, or palette values; mutant contains only sanitized control-plane pointers.
+rollback:
+  status: PASS_WITH_CAVEAT
+  source_edited: false
+  quarantine_non_executable: true
+  caveat: no explicit rollback field; safe rollback semantics are ignore_or_append_only_supersede because no source/calendar/task mutation occurred.
+verifier:
+  status: PASS
+  structural_verifier: S04_STRUCTURAL_PREFLIGHT
+  distinct_falsification: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  distinct_falsification_weight: 0
+consumer:
+  status: PASS
+  named:
+    - X14_CAMPAIGN_REDUCER
+    - X13_COTS_AND_CONNECTOR_PDCA_LAB
+    - HFO_COMMAND_AND_CONTROL_CALENDAR_ID_DISCOVERY
+  consumer_ack_observed: false
+strongest_fake_green_mutant:
+  mutation_class: STALE_SOURCE_DIGEST
+  mutated_digest: 147de720ae6ae280b95503bb259070f6358ff2ca
+  mutated_digest_provenance_commit: 6342f968b29f575435f4159e97be1afae204fdd8
+  mutated_digest_provenance_path: state/coordination/experiments/cots_connector_x13/20260808T194742Z_GCAL_CALENDARLIST_PHASE3_GET_COLORS_CONTROL_RESULT.md
+  mutated_digest_provenance_blob_readback: 147de720ae6ae280b95503bb259070f6358ff2ca
+  exact_current_source_blob: 4000a1f1e837f5446f4f25740c1b26a4a484a0fb
+  gate_result: CAUGHT
+controlling_reason: >-
+  The mutant substitutes the real immediately-prior X13 Phase-3 control-result blob
+  147de720ae6ae280b95503bb259070f6358ff2ca for the exact bound Phase-4 decision source,
+  whose commit/path independently resolves and recomputes to
+  4000a1f1e837f5446f4f25740c1b26a4a484a0fb. Same experiment lineage does not
+  authorize a stale digest to bind a later phase. Reject before consuming the Phase-4
+  DEFER decision through the mutated binding.
+secondary_debt:
+  - no standalone cryptographic mutant idempotency key
+  - no explicit rollback field
+  - actor-to-carrier delegation unproven
+  - no ConsumerAck
+forbidden_inference:
+  - SAME_PROVIDER_PRECHECK_IS_NOT_INDEPENDENT_VERIFICATION
+  - NO_INDEPENDENT_QUORUM_CLAIM
+  - NO_CONSUMER_ACK_INFERRED
+---
