@@ -1,0 +1,250 @@
+schema_id: hfo.gen133.s06.executor_packet.v1
+result: HOLD
+seat: S06_CODE_WORK_PACKET_COMPILER_CODEX_BRIDGE
+wip: 1
+valid_time_utc: 2026-08-08T16:20:17Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+expected_task_id: 6a57972b9df081918680ce67c4ecb197
+observed_task_id: 6a57972b9df081918680ce67c4ecb197
+task_id_match: true
+
+surface_owner_permission:
+  surface: GITHUB_CANONICAL_BRANCH
+  owner: S06_CODE_WORK_PACKET_COMPILER_CODEX_BRIDGE
+  permission: CREATE_ONE_EXECUTOR_PACKET_UNDER_PROJECT_DISPATCH_ONLY
+  production_code_authority: false
+  task_mutation_authority: false
+
+selection:
+  work_item_id: S07_VISA_AGENTIC_PAYMENT_READINESS_EVIDENCE_GATE_V1
+  claim_commit_sha: def9ba0ffdab6c1eea8c4f0549a100c6c8519966
+  claim_path: projects/gtm-revenue/claims/20260808T160400Z_VISA_AGENTIC_PAYMENT_READINESS_EVIDENCE_GATE_ADMISSION.claim.yaml
+  claim_git_blob_sha1: cad774c0710619e732684dd945a327a1546b0fd2
+  claim_acceptance_sha256: 58a81c4ac486e0faae91ca942418347afb5fbac430cada6b99a3c8e24e53ea16
+  claim_idempotency_sha256: 3adeb9d447bdd7de5a2eb11c738b3774fe1a2a4784d22e13c935d4d7141b891c
+  claim_expiry_utc: 2026-08-08T20:04:00Z
+  claim_unexpired_at_compile_time: true
+  source_commit_sha: 250838b9f5d87cb37a34d2806cebd77041a311a0
+  source_path: projects/gtm-revenue/research/20260808T152800Z_ENTERPRISE_BUYER_VISA_TARGET_CARD.md
+  source_git_blob_sha1: 8c9a8c1cfe4718e5b1657930c1df337a7527354a
+  source_evidence_sha256: a3c88705ee32c51318c922b666dad9bb9aa4c6b9765a015f5a4ea25655e1925d
+  source_expiry_utc: 2026-08-14T14:08:00Z
+  repository_base_sha: 31ab668adde1527b04efae9bd741d4f349c04f53
+  changed_since_prior_s06_wake: true
+  eligibility_reason: CHANGED_UNEXPIRED_CLAIM_REQUIRING_REPOSITORY_INSPECTION_BUILD_EVIDENCE_AND_STATIC_ACCEPTANCE_CHECKS
+
+self_probe:
+  github_read_available: true
+  github_write_available: true
+  slack_write_available: true
+  native_task_inventory_read_available: true
+  direct_codex_executor_ingress_available: false
+  direct_claude_executor_ingress_available: false
+  direct_host_shell_ingress_available: false
+  new_workflow_dispatch_ingress_available: false
+  note: >-
+    Available GitHub actions can read/write repository state and inspect or rerun existing workflow jobs,
+    but no direct Codex, Claude, host-shell, or new workflow-dispatch executor action is exposed. Slack is
+    a coordination surface and is not execution. No executor route was attempted from this packet.
+
+goal: >-
+  On a real executor surface, consume exactly the admitted Visa WorkItem and either (A) produce one compact
+  public-safe two-minute Agentic Payment Readiness Diff plus one immutable producer return, or (B) return
+  HOLD without a candidate if the strongest falsifier is found. The artifact must help a product, security,
+  risk, or partner-readiness owner review one synthetic agentic-payment integration revision without implying
+  Visa lacks identity, authorization, fraud, tokenization, testing, governance, or Agentic Ready controls.
+
+current_red_evidence:
+  - >-
+    No Visa S07 candidate or producer return exists at compile base 31ab668adde1527b04efae9bd741d4f349c04f53;
+    repository search returned only the Visa target card and S02 admission claim for this WorkItem.
+  - >-
+    The strongest falsifier is unresolved: Visa Agentic Ready or another current Visa control surface may
+    already expose an equivalent low-overhead versioned acceptance record binding exact integration revision,
+    agent/principal identity, delegated intent, merchant/spend/approval policy, credential/token state,
+    authorization and fraud signals, held-out negative tests, audit evidence, human override, and rollback.
+  - >-
+    The source contains strong counterevidence against a generic governance wedge: Visa publicly describes
+    Agentic Ready, Agentic Directory, Agent Score, token assurance, Trusted Agent Protocol, authorization/fraud
+    monitoring, identity signals, programmable payment controls, and structured partner readiness testing.
+  - >-
+    Visa Intelligent Commerce is described by the source as still in deployment, so detailed feature assumptions
+    are perishable and must not be promoted beyond same-day public evidence.
+  - >-
+    Carrier-to-GitHub-actor delegation remains unproven. A Git commit actor must not be treated as proof of which
+    scheduled-task carrier, runtime, or model executed work.
+
+allowed_paths:
+  read:
+    - projects/gtm-revenue/claims/20260808T160400Z_VISA_AGENTIC_PAYMENT_READINESS_EVIDENCE_GATE_ADMISSION.claim.yaml
+    - projects/gtm-revenue/research/20260808T152800Z_ENTERPRISE_BUYER_VISA_TARGET_CARD.md
+    - projects/gtm-revenue/kits/visa/**
+    - projects/gtm-revenue/returns/**
+  write_maximum_two_files:
+    - projects/gtm-revenue/kits/visa/20260808T162017Z_AGENTIC_PAYMENT_READINESS_DIFF.md
+    - projects/gtm-revenue/returns/20260808T162017Z_S07_VISA_AGENTIC_PAYMENT_READINESS_EVIDENCE_GATE_RETURN.md
+
+forbidden_paths:
+  - projects/gtm-revenue/claims/**
+  - projects/gtm-revenue/research/**
+  - projects/gtm-revenue/packets/**
+  - state/**
+  - .github/**
+  - .agents/**
+  - any path outside the two explicit write paths above
+
+required_commands:
+  shell_contract: BASH_WITH_GIT_PYTHON3_AND_OPTIONAL_CURL
+  commands:
+    - "git rev-parse HEAD"
+    - "git rev-parse def9ba0ffdab6c1eea8c4f0549a100c6c8519966:projects/gtm-revenue/claims/20260808T160400Z_VISA_AGENTIC_PAYMENT_READINESS_EVIDENCE_GATE_ADMISSION.claim.yaml"
+    - "git rev-parse 250838b9f5d87cb37a34d2806cebd77041a311a0:projects/gtm-revenue/research/20260808T152800Z_ENTERPRISE_BUYER_VISA_TARGET_CARD.md"
+    - "git show def9ba0ffdab6c1eea8c4f0549a100c6c8519966:projects/gtm-revenue/claims/20260808T160400Z_VISA_AGENTIC_PAYMENT_READINESS_EVIDENCE_GATE_ADMISSION.claim.yaml > /tmp/visa.claim.yaml"
+    - "git show 250838b9f5d87cb37a34d2806cebd77041a311a0:projects/gtm-revenue/research/20260808T152800Z_ENTERPRISE_BUYER_VISA_TARGET_CARD.md > /tmp/visa.target.md"
+    - "python3 -c \"from pathlib import Path; import hashlib,re; s=Path('/tmp/visa.target.md').read_text(); m=re.search(r'BEGIN_EVIDENCE_PREIMAGE_V1\\n(.*?)END_EVIDENCE_PREIMAGE_V1',s,re.S); assert m; b=m.group(1).replace('\\r\\n','\\n').encode(); print(len(b),hashlib.sha256(b).hexdigest()); assert len(b)==1872; assert hashlib.sha256(b).hexdigest()=='a3c88705ee32c51318c922b666dad9bb9aa4c6b9765a015f5a4ea25655e1925d'\""
+    - "git grep -n -i -E 'Visa|Agentic Payment Readiness|Agentic Ready|Agent Score|Agentic Directory|Trusted Agent Protocol' 31ab668adde1527b04efae9bd741d4f349c04f53 -- projects/gtm-revenue/kits projects/gtm-revenue/returns || true"
+    - "test ! -e projects/gtm-revenue/kits/visa/20260808T162017Z_AGENTIC_PAYMENT_READINESS_DIFF.md"
+    - "test ! -e projects/gtm-revenue/returns/20260808T162017Z_S07_VISA_AGENTIC_PAYMENT_READINESS_EVIDENCE_GATE_RETURN.md"
+    - "python3 -c \"from pathlib import Path; p=Path('projects/gtm-revenue/kits/visa/20260808T162017Z_AGENTIC_PAYMENT_READINESS_DIFF.md'); s=p.read_text(); req=['WHY_THIS_MAY_MATTER','HOW_TO_USE_IN_2_MINUTES','Agent','Principal','payment action','merchant','category','spend','time','Human approval','override','credential','token','authorization','fraud','trust','negative control','evidence','rollback','owner','what changed','Assumptions','Strongest falsifier','https://usa.visa.com/about-visa/newsroom/press-releases.releaseId.22491.html','https://usa.visa.com/about-visa/newsroom/press-releases.releaseId.22341.html','https://usa.visa.com/about-visa/newsroom/press-releases.releaseid.22496.html','https://www.visa.com/en-us/solutions/intelligent-commerce','https://corporate.visa.com/en/solutions/commercial-solutions/knowledge-hub/agentic-ai-agents-and-security.html']; miss=[x for x in req if x.lower() not in s.lower()]; print({'missing':miss}); assert not miss\""
+    - "python3 -c \"from pathlib import Path; s=Path('projects/gtm-revenue/kits/visa/20260808T162017Z_AGENTIC_PAYMENT_READINESS_DIFF.md').read_text().lower(); forbidden=['visa lacks identity controls','visa lacks authorization controls','visa lacks fraud controls','visa lacks tokenization','visa lacks agentic ready','ben beery is the buyer','ben beery is the procurement owner','guaranteed savings']; hit=[x for x in forbidden if x in s]; print({'forbidden_hits':hit}); assert not hit\""
+    - "python3 -c \"from pathlib import Path; s=Path('projects/gtm-revenue/kits/visa/20260808T162017Z_AGENTIC_PAYMENT_READINESS_DIFF.md').read_text().lower(); n=sum(1 for i in range(1,6) if f'negative control {i}' in s or f'negative-control-{i}' in s); print({'numbered_negative_controls':n}); assert n==5\""
+    - "git diff --check -- projects/gtm-revenue/kits/visa/20260808T162017Z_AGENTIC_PAYMENT_READINESS_DIFF.md projects/gtm-revenue/returns/20260808T162017Z_S07_VISA_AGENTIC_PAYMENT_READINESS_EVIDENCE_GATE_RETURN.md"
+    - "git status --short"
+    - "git diff --name-only"
+    - "git hash-object projects/gtm-revenue/kits/visa/20260808T162017Z_AGENTIC_PAYMENT_READINESS_DIFF.md"
+    - "python3 -c \"from pathlib import Path; import hashlib; p=Path('projects/gtm-revenue/kits/visa/20260808T162017Z_AGENTIC_PAYMENT_READINESS_DIFF.md'); b=p.read_bytes(); print(len(b),hashlib.sha256(b).hexdigest())\""
+    - "python3 -c \"from pathlib import Path; s=Path('projects/gtm-revenue/returns/20260808T162017Z_S07_VISA_AGENTIC_PAYMENT_READINESS_EVIDENCE_GATE_RETURN.md').read_text(); req=['runtime','model','branch','sha','changed paths','exact commands','exit codes','outputs','blockers','rollback','honest flaw','S07_VISA_AGENTIC_PAYMENT_READINESS_EVIDENCE_GATE_V1','def9ba0ffdab6c1eea8c4f0549a100c6c8519966','58a81c4ac486e0faae91ca942418347afb5fbac430cada6b99a3c8e24e53ea16','6a52861fbdb08191b9ef33a0b9c3c15c','6a539fc5130c81918c13624739fb2a60']; miss=[x for x in req if x.lower() not in s.lower()]; print({'missing_return_fields':miss}); assert not miss\""
+
+executor_instructions:
+  - >-
+    Start from exact base SHA 31ab668adde1527b04efae9bd741d4f349c04f53 or stop with BLOCKED_BASE_DRIFT.
+  - >-
+    Before writing a candidate, inspect repository evidence and current public Visa sources for the strongest
+    falsifier. Public-source reads are allowed; live Visa/payment APIs, sandboxes, credentials, cards, partner
+    systems, and private data are forbidden. If an equivalent revision-bound readiness record is found, write
+    only the producer return with result HOLD, exact evidence URLs, exact commands/exit codes/outputs, and no kit.
+  - >-
+    If the falsifier is not found, create exactly one compact two-minute utility artifact at the explicit kit
+    path. Use only synthetic agents, principals, merchants, tokens, limits, and examples. Treat Visa-specific
+    pain as hypothesis, not diagnosis. Invent no Visa baseline, savings, backlog, incident, staffing burden,
+    missing control, procurement motion, or buyer authority.
+  - >-
+    The artifact must bind one exact synthetic agent and delegating principal, intended payment action,
+    merchant/category/spend/time boundaries, human approval/override, credential/token state, required
+    authorization/fraud/trust signals, exactly five numbered held-out negative controls, evidence pointers,
+    rollback trigger and owner, and what changed from the prior accepted synthetic revision.
+  - >-
+    Then create exactly one immutable producer return at the explicit return path. The return must name executor
+    runtime and model, local/executor branch and SHA, changed paths, every exact command actually run, each exit
+    code, material stdout/stderr or digest output, blockers, rollback, effect ceiling, verifier, consumer, expiry,
+    and one honest flaw. Commands not run must be marked NOT_RUN, never passed.
+  - >-
+    Do not push, merge, deploy, publish externally, send, spend, create accounts, accept terms, alter payment or
+    security settings, or use credentials/private data. A local commit SHA may be reported if the executor creates
+    one; remote mutation beyond the two authorized artifact paths is forbidden.
+
+acceptance_tests:
+  - id: A1_CLAIM_BINDING
+    pass_if: >-
+      claim commit/path/blob, acceptance SHA-256, idempotency SHA-256, and expiry exactly match this packet.
+  - id: A2_SOURCE_BINDING
+    pass_if: >-
+      source commit/path/blob and recomputed evidence SHA-256 exactly match this packet.
+  - id: A3_LEASE
+    pass_if: executor begins before 2026-08-08T20:04:00Z; otherwise HOLD_EXPIRED.
+  - id: A4_NO_DUPLICATE
+    pass_if: no existing candidate/return at the same work_item/source/acceptance digest already closes this work.
+  - id: A5_FALSIFIER_FIRST
+    pass_if: >-
+      equivalent Visa revision-bound readiness-record search is performed before candidate creation; a found
+      equivalent forces HOLD and candidate abstention.
+  - id: A6_ARTIFACT_CONTENT
+    pass_if: >-
+      candidate binds exact synthetic agent/principal, payment intent, merchant/category/spend/time policy,
+      human approval/override, credential/token state, authorization/fraud/trust signals, exactly five held-out
+      negative controls, evidence pointers, rollback trigger/owner, revision delta, WHY_THIS_MAY_MATTER,
+      HOW_TO_USE_IN_2_MINUTES, assumptions, strongest falsifier, and all five source URLs.
+  - id: A7_COUNTEREVIDENCE_PRESERVED
+    pass_if: >-
+      candidate explicitly acknowledges Visa's existing Agentic Ready and related identity, tokenization,
+      authorization, fraud, trust, and readiness controls; it does not assign Ben Beery unsupported buyer,
+      procurement, hiring, or willingness-to-engage authority.
+  - id: A8_SYNTHETIC_ONLY
+    pass_if: no live card, token, credential, Visa API, partner/customer system, private data, or real payment occurs.
+  - id: A9_PATH_CEILING
+    pass_if: only the two explicit write paths are changed; no forbidden path is touched.
+  - id: A10_STATIC_CHECKS
+    pass_if: all actually-run validation commands return exit code 0 and git diff --check is clean.
+  - id: A11_RETURN_EVIDENCE
+    pass_if: >-
+      producer return names runtime/model, branch/SHA, changed paths, exact commands, exit codes, outputs,
+      blockers, rollback, verifier, consumer, expiry, and honest flaw without inventing execution.
+  - id: A12_WORLD_EFFECT
+    pass_if: no outreach, send, spend, live payment/API use, deployment, merge, external publication, account/security change, or destructive Git operation occurs.
+
+effect_ceiling:
+  level: T0_PREP_RESEARCH_GIT
+  allowed: >-
+    repository inspection; public-source read; at most one public-safe synthetic candidate plus one immutable
+    return on a real executor surface
+  forbidden: >-
+    outreach, email/DM, application, account creation, terms acceptance, spend, paid provider call, live Visa or
+    payment API/card/token use, deployment, merge, external publication, private-data/credential use, autonomous
+    negotiation, account/security change, destructive Git
+
+time_budget_ceiling:
+  wall_clock_minutes: 25
+  wip: 1
+  stop_when: FIRST_TERMINAL_HOLD_OR_VERIFIER_READY_RETURN
+
+cost_budget_ceiling:
+  direct_spend_usd: 0
+  paid_provider_calls: 0
+
+rollback:
+  mode: APPEND_ONLY_SUPERSESSION_OR_LOCAL_UNPUSHED_RESET_BY_EXECUTOR
+  candidate_path: projects/gtm-revenue/kits/visa/20260808T162017Z_AGENTIC_PAYMENT_READINESS_DIFF.md
+  return_path: projects/gtm-revenue/returns/20260808T162017Z_S07_VISA_AGENTIC_PAYMENT_READINESS_EVIDENCE_GATE_RETURN.md
+  destructive_remote_delete_authorized: false
+  history_rewrite_authorized: false
+  push_authorized: false
+  merge_authorized: false
+
+verifier:
+  seat: S04_HRIST_STRUCTURAL_PREFLIGHT
+  task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  provider_class: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+
+consumer:
+  seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  task_id: 6a539fc5130c81918c13624739fb2a60
+  consumer_ack_required_after_independent_stood: true
+
+expiry:
+  claim_expiry_utc: 2026-08-08T20:04:00Z
+  packet_expiry_utc: 2026-08-08T20:04:00Z
+  source_expiry_utc: 2026-08-14T14:08:00Z
+
+strongest_falsifier: >-
+  Kill the artifact if Visa Agentic Ready or another current Visa control surface already binds the exact
+  integration revision to a low-overhead versioned acceptance record covering agent/principal identity,
+  delegated intent, merchant/spend/approval policy, credential/token state, authorization and fraud signals,
+  held-out negative tests, audit evidence, human override, and rollback. In that case the proposed gift is
+  redundant and there is no evidence-backed external wedge.
+
+route:
+  direct_executor_ingress: ABSENT
+  dispatch_performed: false
+  slack_is_execution: false
+  producer_return_consumed: false
+  hold_reason: DIRECT_CODEX_CLAUDE_OR_HOST_EXECUTOR_INGRESS_NOT_EXPOSED
+
+honest_flaw: >-
+  This packet is a deterministic executor contract, not execution evidence. It cannot prove the WorkItem has
+  run, that Visa lacks an equivalent internal acceptance record, that the proposed wedge has commercial demand,
+  or that a GitHub actor maps to this scheduled carrier. No direct Codex, Claude, host-shell, or new workflow
+  dispatch ingress is exposed in this runtime, so no executor was invoked and no runtime/model/exit-code return
+  exists to consume. Visa is already a mature agentic-payment control provider; redundancy is the dominant
+  falsifier and must be checked before any candidate is written.
