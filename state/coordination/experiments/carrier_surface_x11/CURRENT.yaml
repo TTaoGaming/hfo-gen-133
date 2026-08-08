@@ -1,8 +1,8 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_SLACK_FIXED_POINTER_BOUNDED_READ_V3
-current_version: 184
-accepted_wakes: 0
+current_version: 185
+accepted_wakes: 1
 target_wakes_before_decision: 4
 controlled_factor: slack_read_write
 campaign_status: ACTIVE
@@ -10,39 +10,45 @@ current_disposition: null
 baseline_result: web_rfc2606_fixed_url_fetch_kept_4_of_4_with_execution_success_source_resolution_and_expected_rfc2606_marker_present_on_each_read_only_fetch
 hypothesis: the_authenticated_slack_channel_history_surface_will_repeatedly_return_only_the_known_message_inside_the_fixed_one_second_envelope_with_the_target_timestamp_and_non_sensitive_marker_visible
 measured_result:
-  query_runs: []
-  permission_class: NOT_YET_PROBED
-  error_class: NOT_YET_PROBED
+  query_runs:
+    - wake: 1
+      result_count: 1
+      target_timestamp_present: true
+      expected_marker_present: true
+      content_outside_bounded_window_observed: false
+      latency_when_exposed: NOT_EXPOSED_BY_SURFACE
+  permission_class: AUTHENTICATED_SLACK_CHANNEL_HISTORY_BOUNDED_READ_AVAILABLE
+  error_class: NONE
   operator_relay_minutes: 0
   changed_capability: false
   campaign_decision: false
   andon: false
-supported_claim: campaign_initialized_not_yet_probed
-claim_ceiling: no_slack_v3_capability_claim_until_an_accepted_probe_is_git_first_persisted_pointer_advanced_and_read_back
+supported_claim: one_accepted_v3_authenticated_bounded_slack_channel_history_read_returned_exactly_one_result_with_the_known_target_timestamp_and_non_sensitive_marker_and_no_content_observed_outside_the_one_second_envelope
+claim_ceiling: bounded_authenticated_slack_channel_history_result_count_target_timestamp_and_non_sensitive_marker_visibility_only_not_workspace_completeness_native_slack_semantics_index_freshness_message_authenticity_write_visibility_or_independent_verification
 strongest_falsifier: the_fixed_one_second_envelope_cannot_be_read_the_known_target_timestamp_or_expected_marker_is_absent_or_the_connector_returns_content_outside_the_bounded_channel_window
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 consumer: [Reginleif, Ratatoskr]
-honest_flaw: one_old_public_channel_pointer_tests_only_one_connector_history_path_and_cannot_separate_connector_filtering_from_native_slack_semantics_or_prove_workspace_completeness_or_write_behavior
+honest_flaw: this_v3_campaign_repeats_an_already_kept_old_public_pointer_and_so_measures_repeatability_but_cannot_separate_connector_filtering_from_native_slack_semantics_or_prove_workspace_completeness_or_write_behavior
 prior_campaign:
   experiment_id: X11_WEB_RFC2606_FIXED_URL_FETCH_V1
   disposition: KEEP
   supported_claim: four_accepted_read_only_fetches_of_the_fixed_public_rfc_editor_rfc2606_url_each_resolved_and_exposed_the_expected_rfc2606_marker_without_search_ranking_variance
   accepted_wakes: 4
 last_event:
-  commit: 6dd506225c8e18fca16f6e1b01361770ab1776e6
-  path: state/coordination/experiments/carrier_surface_x11/events/20260808T184012Z_WEB_RFC2606_FIXED_URL_FETCH_V1_WAKE_04_DECISION_KEEP.yaml
-  blob: e0e3c4e081ef912b1770dc5cbc82c34725c67811
+  commit: 81d7fdb92c578e4f4ac14d663a61bee43ab2c7f3
+  path: state/coordination/experiments/carrier_surface_x11/events/20260808T193900Z_SLACK_FIXED_POINTER_BOUNDED_READ_V3_WAKE_01.yaml
+  blob: 975755ffbc955a596d0e37f952ec27146b5f88ec
 next_factor: slack_read_write
 next_probe:
   experiment_id: X11_SLACK_FIXED_POINTER_BOUNDED_READ_V3
-  campaign_wake: 1
+  campaign_wake: 2
   mode: authenticated_bounded_channel_history_read_only
   channel_id: C0BGNGPJFHU
   oldest: '1785563052.000000'
   latest: '1785563053.000000'
   limit: 10
   persist_only: [result_count, target_timestamp_present, expected_marker_present, content_outside_bounded_window_observed, permission_class, error_class, latency_when_exposed, operator_relay_minutes]
-  expected_current_version: 184
-updated_valid_time_utc: 2026-08-08T18:40:12Z
+  expected_current_version: 185
+updated_valid_time_utc: 2026-08-08T19:39:00Z
 sealed: false
 ---
