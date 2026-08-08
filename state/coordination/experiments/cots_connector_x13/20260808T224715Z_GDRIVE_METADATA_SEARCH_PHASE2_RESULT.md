@@ -1,0 +1,57 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_GDRIVE_METADATA_SEARCH_READONLY_024
+expected_current_version: 193
+phase: 2
+kind: RESULT
+candidate: Google_Drive_search_metadata_only
+phase_status: PHASE2_ACCEPTED_WITH_GATES
+wip: 1
+preflight_commit: c57ae76922b359b3899cf24fa1a19134f6176ff5
+preflight_blob_sha: abb734b2531512afb38f891a3395e0fc86a25d60
+preflight_readback: true
+request_sha256_recomputed: 0f9761ee65aac92abc2b2166117b05a25a4acc47c0355729c8bc7376248b10b2
+request_sha256_matches_phase1: true
+result_count: 5
+phase1_result_count: 5
+result_count_matches_phase1: true
+result_ordered_id_sha256: e0b48b1d71593436c4ff9104b5ef6d3226af198d1dbd7c7b4eefa04a32c892cd
+phase1_result_ordered_id_sha256: e0b48b1d71593436c4ff9104b5ef6d3226af198d1dbd7c7b4eefa04a32c892cd
+result_ordered_id_sha256_matches_phase1: true
+repeatability_observation: EXACT_MATCH_COUNT_AND_ORDERED_ID_DIGEST_ACROSS_TWO_WAKES
+continuation_token_observed: false
+content_hydration_observed: false
+mutations_total_this_wake: 0
+retries_total_this_wake: 0
+fallbacks_total_this_wake: 0
+connector_errors_total_this_wake: 0
+raw_drive_metadata_persisted_in_x13: false
+connector_document_bucket_included_spreadsheet_url: true
+operator_minutes_removed_measured: 0
+custom_code_avoided_estimate: 40_to_120_LOC_UNVALIDATED
+custom_code_avoided_realized: 0
+paid_cost_usd_observed: 0_NO_CHARGE_SURFACED_NOT_BILLING_PROOF
+direct_cost_or_quota_evidence: NO_NEW_DIRECT_DEBIT_OR_BILLING_EVIDENCE_THIS_WAKE;PHASE1_OFFICIAL_CONTRACT_CONTEXT_REMAINS_UNCHANGED
+credentials: GOOGLE_DRIVE_CONNECTOR_MANAGED_EFFECTIVE_PRINCIPAL_OAUTH_SCOPE_TOKEN_TYPE_CLOUD_PROJECT_AND_NATIVE_METHOD_UNKNOWN
+observability: DIRECT_CONNECTOR_RETURNED_5_METADATA_RESULTS_AND_PRIVACY_SAFE_REPEATABILITY_DIGEST_MATCHED;NO_PROVIDER_REQUEST_ID_HTTP_STATUS_RATE_HEADERS_LATENCY_EFFECTIVE_SCOPE_NATIVE_METHOD_OR_ACTUAL_QUOTA_DEBIT_EXPOSED
+portability: MEDIUM_GENERIC_METADATA_SEARCH_PORTABLE_BUT_CONNECTOR_QUERY_ITEM_TYPE_AND_PAGINATION_EXPOSURE_WRAPPER_SPECIFIC
+durability: GIT_PHASE2_PREFLIGHT_AND_RESULT_DURABLE;PRIVACY_SAFE_COUNT_AND_DIGEST_ONLY;NO_RAW_DRIVE_IDS_TITLES_URLS_OWNERS_SNIPPETS_CONTENT_OR_PAGE_TOKENS_PERSISTED
+failure_behavior: NOT_YET_PROBED;PHASE3_PENDING
+verifier: GITHUB_PHASE2_PREFLIGHT_READBACK_PLUS_DIRECT_GOOGLE_DRIVE_SEARCH_RECEIPT_PLUS_PRIVACY_SAFE_DIGEST_RECOMPUTATION
+consumer: HFO_COMMAND_AND_CONTROL_DRIVE_DOCUMENT_DISCOVERY
+adoption_credit: 0
+fitness_credit: 0
+mandatory_gate: METADATA_ONLY;TOPN_LE_5_DURING_CAMPAIGN;NO_CONTENT_HYDRATION;NO_MUTATION;NO_RAW_IDS_TITLES_URLS_OWNERS_SNIPPETS_OR_PAGE_TOKENS_IN_X13_RECEIPTS;DO_NOT_INFER_COMPLETENESS_FROM_RESULT_COUNT_OR_ABSENT_CONTINUATION_TOKEN;TREAT_ITEM_TYPE_DOCUMENT_AS_CONNECTOR_DEFINED
+strongest_falsifier: A_FUTURE_IDENTICAL_REPLAY_MATERIALLY_DISAGREES_WITHOUT_DRIVE_STATE_CHANGE_OR_PROVIDER_DIRECT_EQUIVALENT_UNDER_SAME_PRINCIPAL_RETURNS_MATERIALLY_DIFFERENT_ACCESSIBLE_MATCHES
+honest_flaw: REPEATABILITY_IS_ONLY_TWO_BOUNDED_WAKES;RESULTS_HIT_TOPN_CAP;NO_CONTINUATION_TOKEN_EXPOSED;NO_FAILURE_PERMISSION_OR_QUOTA_PATH_TESTED;NATIVE_METHOD_SCOPE_COMPLETENESS_AND_STATE_STABILITY_UNKNOWN
+valid_time_utc: 2026-08-08T22:47:15Z
+recorded_time_utc: 2026-08-08T22:47:15Z
+---
+
+# X13 Google Drive metadata search — Phase 2 result
+
+The exact durable Phase-1 metadata-only request was replayed once after Git preflight readback and request-hash recomputation. It again returned exactly five results. The privacy-safe SHA-256 over the compact JSON array of ordered result IDs exactly matched Phase 1, so bounded result count and ordering were repeatable across these two wakes.
+
+No raw Drive IDs, titles, URLs, owners, snippets, content, or page tokens were copied into this X13 receipt. No content hydration, retry, fallback, connector error, or Drive mutation was observed. The connector-defined `document` bucket still included a spreadsheet URL, and the result count still hit the `topn=5` cap, so completeness and native MIME semantics remain unproven.
+
+This is a repeatability fact, not an adoption decision. Phase 3 should use one bounded harmless failure/permission/connector-variance probe without content hydration or mutation.
