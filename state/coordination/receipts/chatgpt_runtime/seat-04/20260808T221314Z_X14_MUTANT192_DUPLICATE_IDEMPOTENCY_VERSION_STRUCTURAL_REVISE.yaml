@@ -1,0 +1,141 @@
+---
+schema_id: hfo.gen133.s04.structural_preflight_receipt.v1
+seat: S04_STRUCTURAL_PREFLIGHT
+result: REVISE
+valid_time_utc: 2026-08-08T22:13:14Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+wip: 1
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+
+self_probe:
+  expected_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  observed_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  task_id_match: true
+  task_enabled_observed: true
+  tools_observed:
+    - native_automations_inventory_read
+    - github_recent_commit_search
+    - github_exact_commit_read
+    - github_exact_file_read
+    - github_exact_blob_read
+    - github_create_file
+    - github_readback
+    - local_sha256_git_blob_recompute
+    - slack_pointer_post
+  task_mutation_performed: false
+
+selection:
+  rule: NEWEST_IMMUTABLE_CANDIDATE_ADDRESSED_TO_S04_NOT_AUTHORED_BY_S04
+  selection_cutoff_utc: 2026-08-08T22:13:14Z
+  candidate_id: X14_MUTANT_192_35378b3a4c4b
+  candidate_commit: 8c9cd59a1382a93dc871fe9ca4ce615c5eff489c
+  candidate_path: state/coordination/experiments/false_green_x14/quarantine/20260808T215304Z_X13_DUPLICATE_IDEMPOTENCY_VERSION.mutant.yaml
+  candidate_authoring_seat: X14_FALSE_GREEN_MUTATION_AND_QA_LAB
+  candidate_created_at_utc: 2026-08-08T21:54:47Z
+  candidate_expires_utc: 2026-08-09T01:53:04Z
+  candidate_unexpired_at_selection: true
+  later_s15_artifact_is_not_reselected_candidate: true
+  later_s15_reason: HERITAGE_REUSE_RECEIPT_EXPLICITLY_SAYS_NOT_A_DIRECT_S04_VERDICT_AND_NAMES_THIS_MUTANT_AS_PENDING
+  prior_s04_receipt_for_exact_mutant_observed: false
+
+exact_candidate_recompute:
+  utf8_bytes: 8022
+  sha256: 4ddc368c65025e68d003837fc7e934ebf49a647fc68d7780f0a4edd66cc51c49
+  git_blob_sha1_recomputed: 5aeb0b1f9e84f5ad62d159354866e3323b21df96
+  git_blob_sha1_readback: 5aeb0b1f9e84f5ad62d159354866e3323b21df96
+  exact_blob_match: true
+  yaml_parse: PASS_FIRST_DOCUMENT_WITH_EMPTY_TRAILING_DOCUMENT_MARKER
+  schema_id: hfo.gen133.x14.false_green_mutant.v1
+
+source_binding:
+  source_commit: b95d66ae13211aed7e22064fa16a78688781d1a4
+  source_path: state/coordination/experiments/cots_connector_x13/20260808T215000Z_GDRIVE_METADATA_SEARCH_PHASE1_RESULT.md
+  source_git_blob_sha1_declared: 97c69cc4597954429a5a0e1f333822723293295f
+  source_git_blob_sha1_recomputed: 97c69cc4597954429a5a0e1f333822723293295f
+  source_utf8_bytes: 4775
+  source_sha256: b16880404a97ae07c0701352dd452e1da9ba4028c306495abdfab2598dff0b7a
+  source_blob_match: true
+  source_schema_id: hfo.gen133.x13.cots_connector_event.v1
+  source_expected_current_version: 192
+  source_phase: 1
+  source_phase_status: PHASE1_ACCEPTED_WITH_GATES
+  source_claim_ceiling: PHASE1_METADATA_ONLY_ACCEPTED_WITH_GATES_NO_ADOPTION_NO_FITNESS_NO_COMPLETENESS_NO_CONSUMER_ACK
+
+preflight_and_canonicalization:
+  preflight_commit: 2f9f6b1a2522ae9f6583337086febf7dc1664b63
+  preflight_blob_sha1: 3021195ad80c63d4cb2bb32bfd343a4b010389b2
+  request_canonical_json: '{"best_effort_fetch":false,"item_type":"document","query":"HFO","require_viewed_by_user":false,"topn":5}'
+  request_canonical_utf8_bytes: 104
+  request_sha256_recomputed: 0f9761ee65aac92abc2b2166117b05a25a4acc47c0355729c8bc7376248b10b2
+  request_sha256_declared: 0f9761ee65aac92abc2b2166117b05a25a4acc47c0355729c8bc7376248b10b2
+  request_digest_match: true
+  mutant_overlay_canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  mutant_overlay_json: '{"expected_current_version":193}'
+  mutant_overlay_utf8_bytes: 32
+  mutant_overlay_sha256_recomputed: 35378b3a4c4b624cb066d3c264c60e6741a21cd6f127dd5d39913e839f7b4ac2
+  mutant_overlay_sha256_declared: 35378b3a4c4b624cb066d3c264c60e6741a21cd6f127dd5d39913e839f7b4ac2
+  mutant_overlay_digest_match: true
+
+poststate_binding:
+  current_commit: 0ab2ebe253c3c7d9a8f3827293b08d06d9f47913
+  current_path: state/coordination/experiments/cots_connector_x13/CURRENT.md
+  current_blob_sha1: d7a3ead9ec8edc35f5edcdc12755b6946deb57e0
+  current_version: 193
+  current_prior_version: 192
+  current_last_event_commit: b95d66ae13211aed7e22064fa16a78688781d1a4
+  current_last_event_blob_sha1: 97c69cc4597954429a5a0e1f333822723293295f
+  exact_source_is_already_consumed_last_event: true
+
+structural_checks:
+  freshness: PASS_UNEXPIRED
+  authority: PASS_QUARANTINED_NONEXECUTABLE_INTERNAL_EFFECT_CEILING_ONLY
+  task_binding: PASS_S04_X14_X13_S09_IDS_MATCH_ENABLED_PROVIDER_INVENTORY
+  actor_carrier_separation: UNPROVEN_NOT_INFERRED
+  actor_observed: TTaoGaming
+  carrier_claimed: X14_FALSE_GREEN_MUTATION_AND_QA_LAB
+  actor_to_carrier_delegation_evidence: NONE_OBSERVED
+  idempotency: FAIL_DUPLICATE_REPLAY_LAUNDERING
+  idempotency_reason: IMMUTABLE_SOURCE_EVENT_EXPECTS_PRESTATE_192_AND_IS_ALREADY_BOUND_AS_CURRENT_V193_LAST_EVENT;REBINDING_EXPECTED_CURRENT_VERSION_TO_193_DOES_NOT_CREATE_A_FRESH_EVENT
+  lease_expiry: PASS_UNEXPIRED_AT_SELECTION
+  privacy: PASS_WITH_SOURCE_GATE_AND_OVERLAY_ONLY_NO_RAW_DRIVE_METADATA
+  rollback: PASS_WITH_CAVEAT_QUARANTINE_IGNORE_SOURCE_UNCHANGED_NO_EXPLICIT_ROLLBACK_FIELD_IN_MUTANT
+  verifier: PASS_S04_BOUND_DISTINCT_S09_NAMED_BUT_SAME_PROVIDER_NONBINDING
+  consumer: PASS_X14_REDUCER_X13_LAB_HFO_COMMAND_AND_CONTROL_NAMED
+  consumer_ack_observed: false
+
+strongest_fake_green_mutant:
+  mutant_id: X14_MUTANT_192_35378b3a4c4b
+  mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+  disposition: CAUGHT_REVISE
+  reason: MUTANT_REBINDS_THE_ALREADY_CONSUMED_EVENT_PRESTATE_FROM_192_TO_POSTSTATE_193_SO_A_DUPLICATE_REPLAY_CAN_APPEAR_FRESH
+  rejection_gate: SOURCE_COMMIT_PATH_BLOB_PLUS_PRESTATE_POSTSTATE_LAST_EVENT_IDENTITY_MUST_FORM_ONE_MONOTONIC_TRANSITION
+  no_state_advance_or_credit_authorized: true
+
+verdict:
+  result: REVISE
+  controlling_reason: DUPLICATE_REPLAY_LAUNDERING_BY_REBINDING_EXPECTED_CURRENT_VERSION_TO_ALREADY_OBSERVED_POSTSTATE
+  secondary_debt:
+    - MUTANT_HAS_NO_EXPLICIT_ROLLBACK_FIELD
+    - GITHUB_ACTOR_TO_X14_CARRIER_DELEGATION_REMAINS_UNPROVEN
+    - NO_CONSUMER_ACK
+  independent_verification: OPEN
+  same_provider_status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+
+world_effects:
+  candidate_edited: false
+  source_edited: false
+  task_mutation: false
+  send_external: false
+  spend: false
+  deployment: false
+  merge: false
+  publication: false
+  account_or_security_change: false
+  permanent_deletion: false
+  independent_quorum_claim: false
+---
