@@ -2,19 +2,19 @@
 schema_id: hfo.gen133.x14.false_green_current.v1
 experiment_id: X14_FALSE_GREEN_MUTATION_001
 object_id: X14_FALSE_GREEN_CAMPAIGN_STATE
-version: 170
-expected_previous_version: 169
-previous_pointer_blob_sha: 87f10cbab872b0f61e9b13e388be6b6f679609ed
-accepted_wakes: 169
+version: 171
+expected_previous_version: 170
+previous_pointer_blob_sha: 98c12891f6fcb7d6c760cd23225315eab6b12e37
+accepted_wakes: 170
 campaign_ordinal: 43
-campaign_wake: 1
+campaign_wake: 2
 campaign_length: 4
-current_status: CAMPAIGN_43_WAKE_1_MUTANT_170_ROUTED_PENDING
-current_mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
-next_mutation_class: FABRICATED_CONSUMER_ACK
+current_status: CAMPAIGN_43_WAKE_2_MUTANT_171_ROUTED_PENDING
+current_mutation_class: FABRICATED_CONSUMER_ACK
+next_mutation_class: UNSUPPORTED_PASS_OUTCOME
 carrier_task_id: 6a513e4d9c4c81919db728f85db2dd79
 carrier_task_id_binding: NATIVE_AUTOMATIONS_LIST_EXACT_MATCH_ENABLED
-valid_time_utc: '2026-08-07T23:52:50Z'
+valid_time_utc: '2026-08-08T00:52:48Z'
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 canonical_repository: TTaoGaming/hfo-gen-133
 canonical_branch: agent/gen133-bootstrap-20260730
@@ -22,60 +22,62 @@ world_effect_ceiling: FILE_AND_SANITIZED_SLACK_ONLY
 history_preserved_in_immutable_events: true
 sealed: false
 source_candidate:
-  selection_cutoff_observed_utc: '2026-08-07T23:52:50Z'
-  commit: 254f5b3083ee2a5a60d6581bae3b6505b09bf1b0
-  path: state/coordination/experiments/cots_connector_x13/20260807T234951Z_SLACK_PUBLIC_MESSAGE_SEARCH_PHASE3_EMPTY.md
-  git_blob_sha1: a8474073f810b57791d33317d4de426de2772c7b
+  selection_cutoff_observed_utc: '2026-08-08T00:52:48Z'
+  commit: c00dabbfd3e895e6b662e61d894d513398ba7784
+  path: state/coordination/experiments/durable_object_x12/verifications/20260808T004501Z_V0158_TO_V0159_C38_WAKE1.json
+  git_blob_sha1: 04bc19a2093f208b100b38ebbb2af9bdf7419d30
   source_digest_kind: GIT_BLOB_SHA1
-  source_digest: a8474073f810b57791d33317d4de426de2772c7b
-  authoring_seat: X13_COTS_CONNECTOR_PDCA_LAB
-  source_task_id: 6a55c1733708819185088bf334e33ea5
-  source_task_title_from_native_inventory: HFO X13 COTS and Connector PDCA Lab
-  source_artifact_type: IMMUTABLE_COTS_CONNECTOR_PHASE_EVENT
-  source_experiment_id: X13_SLACK_PUBLIC_MESSAGE_SEARCH_READONLY_018
-  source_phase: 3
-  source_wake: 3_of_4
-  source_status: PHASE3_ACCEPTED_WITH_GATES
-  source_prior_current_version: 170
-  source_expected_current_version: 171
-  source_request_descriptor_sha256: 1ee7312fdf02e7dc1d1fd8373fd2c75e5eba70fdfd008691e5e03721941d6c8d
-  source_returned_message_count: 0
-  source_truth_boundary: EMPTY_SUCCESS_DISTINCT_FROM_OBSERVED_ERROR_ONLY;NOT_WORKSPACE_WIDE_ABSENCE_NOT_SEARCH_COMPLETENESS_NOT_AUTHORIZATION_COMPLETENESS_NOT_INDEX_FRESHNESS
-  source_verifier: DIRECT_SLACK_CONNECTOR_RECEIPT_PLUS_DURABLE_EXACT_REQUEST_DESCRIPTOR_PLUS_GITHUB_IMMUTABLE_EVENT_AND_CURRENT_READBACK
-  source_consumer: HFO_COMMAND_AND_CONTROL_DISCOVERY_CANDIDATE_NO_DOWNSTREAM_CONSUMER_ACK
+  source_digest: 04bc19a2093f208b100b38ebbb2af9bdf7419d30
+  authoring_seat: X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+  source_task_id: 6a506f83df208191815dd17a8fd5baa3
+  source_task_title_from_native_inventory: HFO X12 Durable Object PDCA Lab
+  source_artifact_type: IMMUTABLE_POST_ADVANCE_VERIFICATION
+  source_campaign_id: X12_RECOVERY_AFTER_MISSING_SLACK_C38
+  source_wake: C38_WAKE_1_OF_4
+  source_object_id: HFO_X12_WORKFLOW_OBJECT_001
+  source_expected_version: 158
+  source_next_version: 159
+  source_delivery_marker: '[X12:C38:W1:V159:C9A012C93D8D]'
+  source_slack_delivery_this_wake: INTENTIONALLY_OMITTED
+  source_status: PASS_ADVANCE_WITH_SIMULATED_MISSING_SLACK
+  source_next_wake_rule: RECONCILE_EXACT_OUTBOX_MARKER_USING_DIRECT_CHANNEL_HISTORY_BEFORE_ANY_SEND;DO_NOT_REAPPLY_V159
+  source_verifier: S04_WEIGHT_0_THEN_DISTINCT_SIGRUN_P4
+  source_consumer: Reginleif/Olrun
+  source_verified_at_utc: '2026-08-08T00:45:01Z'
+  source_consumer_ack_field: ABSENT
   source_expiry_utc: NOT_DECLARED_BY_SOURCE
   source_provider_enabled_observed_at_selection: true
   prior_x14_mutation_at_source_digest_before_write: false
 quarantined_mutant:
-  mutant_id: X14_MUTANT_170_981237d04cae
-  mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
-  mutation_subcase: X13_PHASE3_PRIOR_CURRENT_VERSION_170_DUPLICATED_TO_EXPECTED_CURRENT_VERSION_171
-  commit: c5c7cf307a6fb1c548ff93a5ee53498324f5bdd4
-  path: state/coordination/experiments/false_green_x14/quarantine/20260807T235250Z_X13_DUPLICATE_IDEMPOTENCY_VERSION.mutant.yaml
-  git_blob_sha1: 2b8592e35594629be344c7343841ad1da34436e0
+  mutant_id: X14_MUTANT_171_85c197b1c158
+  mutation_class: FABRICATED_CONSUMER_ACK
+  mutation_subcase: X12_C38_WAKE1_MISSING_SLACK_VERIFICATION_FABRICATED_REGINLEIF_OLRUN_ACK
+  commit: 867a5a6657746e198f68491801842214869ba534
+  path: state/coordination/experiments/false_green_x14/quarantine/20260808T005248Z_X12_FABRICATED_CONSUMER_ACK.mutant.yaml
+  git_blob_sha1: a805b0b0c074d62808e5ba89991dc1de3dc907b2
   canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
-  canonical_mutation_digest_sha256: 981237d04caee6a617cd3416540e37e9ed23d5d1578e9a7e717e6aa8914cfd7c
-  canonical_byte_count: 193
-  mutated_field: prior_current_version
-  original_value: 170
-  mutated_value: 171
+  canonical_mutation_digest_sha256: 85c197b1c158174cec957a26a13997dbf6d5b9968ddedda1cabb4ddeae4f719e
+  canonical_byte_count: 266
+  mutated_field: verification_core.consumer_ack
+  original_value: ABSENT
+  mutated_value: ACK_RECEIVED_BY_REGINLEIF_OLRUN_FOR_[X12:C38:W1:V159:C9A012C93D8D]
   expected_verdict: REVISE
-  expected_rejection_reason: EXACT_SOURCE_BINDS_PRIOR_CURRENT_VERSION_170_TO_EXPECTED_CURRENT_VERSION_171_FOR_X13_PHASE3;MUTATING_PRIOR_TO_171_MAKES_PRIOR_EQUAL_EXPECTED_AND_COLLAPSES_THE_REQUIRED_MONOTONIC_VERSION_TRANSITION_INTO_A_DUPLICATE_ZERO_STEP_CLAIM;A_VALID_EVENT_MUST_NOT_GAIN_ACCEPTANCE_MERELY_BECAUSE_EVENTUAL_CURRENT_VERSION_171_EXISTS
-  named_gate: S04_DUPLICATE_IDEMPOTENCY_VERSION_EXACT_SOURCE_PRIOR_EXPECTED_VERSION_PHASE_WAKE_REQUEST_DIGEST_SOURCE_DIGEST_EXPIRY_VERIFIER_CONSUMER_AND_CLAIM_CEILING_GATE
-  expires_utc: '2026-08-08T03:49:51Z'
+  expected_rejection_reason: EXACT_SOURCE_EXPLICITLY_STATES_SLACK_DELIVERY_THIS_WAKE_WAS_INTENTIONALLY_OMITTED_AND_CONTAINS_NO_CONSUMER_ACK;PASS_ADVANCE_APPLIES_TO_THE_INTERNAL_OBJECT_TRANSITION_NOT_TO_DOWNSTREAM_CONSUMER_ACCEPTANCE;A_CONSUMER_ACK_REQUIRES_DIRECT_CONSUMER_AUTHORED_OR_SOURCE_SYSTEM_READBACK_BOUND_TO_THE_EXACT_DELIVERY_MARKER_SOURCE_DIGEST_OBJECT_VERSION_AND_ACK_IDENTITY
+  named_gate: S04_FABRICATED_CONSUMER_ACK_EXACT_SOURCE_DELIVERY_MARKER_SLACK_DELIVERY_STATE_DIRECT_HISTORY_CONSUMER_IDENTITY_ACK_PROVENANCE_SOURCE_DIGEST_EXPIRY_VERIFIER_CONSUMER_AND_CLAIM_CEILING_GATE
+  expires_utc: '2026-08-08T04:45:01Z'
   status: QUARANTINED_ROUTED_PENDING_VERDICTS
   accepted_wake_credit: true
 prior_verdict_observed:
-  mutant_169:
-    mutant_id: X14_MUTANT_169_f5adf888a470
-    mutation_class: STALE_SOURCE_DIGEST
+  mutant_170:
+    mutant_id: X14_MUTANT_170_981237d04cae
+    mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
     direct_s04_route_result: NOT_OBSERVED_AT_CUTOFF
     direct_s04_exact_selection: false
     distinct_s09_result: REVISE
-    distinct_s09_claim_disposition: REVISE_REJECT_STALE_PRIOR_DIGEST_BINDING
-    distinct_s09_commit: 314483509095a66e6a7867f1f3fe802d86a20ed9
-    distinct_s09_result_path: state/coordination/votes/20260807T233132Z_S09_X14_MUTANT169_STALE_SOURCE_DIGEST_REVISE.vote.yaml
-    evidence_class: SAME_PROVIDER_NONBINDING
+    distinct_s09_claim_disposition: REJECT_ZERO_STEP_VERSION_MUTATION
+    distinct_s09_commit: 615ab0749f601e87a29eb02d9d240aae36b156a1
+    distinct_s09_result_path: state/coordination/votes/20260808T003002Z_S09_X14_MUTANT170_DUPLICATE_IDEMPOTENCY_VERSION_REVISE.vote.yaml
+    evidence_class: SAME_PROVIDER_ADVISORY_NONBINDING
     binding_weight: 0
     reducer_consumed_this_wake: true
     consumer_ack_observed: false
@@ -86,18 +88,19 @@ routing:
   distinct_falsification: S09_STRATEGIC_REASONING_AND_VOTING_CELL
   distinct_verifier_task_id: 6a539fb148bc8191a30b6009dbf22438
   distinct_verifier_route_status: AVAILABLE_AS_DISTINCT_SEAT_SAME_PROVIDER_NONBINDING_VIA_SLACK
-  consumer: X14_CAMPAIGN_REDUCER_AND_X13_COTS_CONNECTOR_PDCA_LAB
-  current_verdict_status: MUTANT_170_DIRECT_ROUTE_PENDING
+  consumer: X14_CAMPAIGN_REDUCER_AND_X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+  current_verdict_status: MUTANT_171_DIRECT_ROUTE_PENDING
   direct_candidate_priority_required: true
   routing_revision_required: KEEP_OLDEST_UNEXPIRED_DIRECTLY_ADDRESSED_X14_PRIORITY_AND_RECORD_SKIP_OR_EXPIRY
 active_campaign:
   campaign_ordinal: 43
-  accepted_wakes: 1
+  accepted_wakes: 2
   intended_mutants:
     - X14_MUTANT_170_981237d04cae
-  current_mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
-  consumed_prior_mutant: X14_MUTANT_169_f5adf888a470
-  pending_current_mutant: X14_MUTANT_170_981237d04cae
+    - X14_MUTANT_171_85c197b1c158
+  current_mutation_class: FABRICATED_CONSUMER_ACK
+  consumed_prior_mutant: X14_MUTANT_170_981237d04cae
+  pending_current_mutant: X14_MUTANT_171_85c197b1c158
   decision: NOT_DUE
   decision_due: false
   status: ACTIVE
@@ -124,8 +127,8 @@ recent_campaign_decisions:
     distinct_s09_rejections_or_retirements_observed_before_close: 3
 next_wake:
   campaign_ordinal: 43
-  next_wake: 2
-  next_mutation_class: FABRICATED_CONSUMER_ACK
+  next_wake: 3
+  next_mutation_class: UNSUPPORTED_PASS_OUTCOME
   campaign_decision_due_after_write: false
   status: READY
-honest_flaw: Mutant 170 is deliberately easy because prior_current_version and expected_current_version become identical. It probes whether a shallow verifier mistakes eventual CURRENT version 171 for proof that the source event represented a valid 170-to-171 transition. It does not yet test a harder duplicate idempotency collision where the same legitimate idempotency key or version is reused with a different plausible payload, nor same-version alternate canonicalization. Candidate discovery and digest dedup remain best-effort under GitHub indexing and concurrent writes. No source, task, schedule, consumer, verifier, account, deployment, merge, publication, spend, deletion, or external-provider state was modified.
+honest_flaw: Mutant 171 is conspicuous because the authentic source explicitly says Slack delivery was intentionally omitted and has no ConsumerAck field. It tests default-deny acknowledgement provenance, not a subtle forged acknowledgement. A stronger future variant should replay a real consumer-authored ack from another marker, object version, source digest, or consumer identity while preserving plausible structure. Mutant 170 was rejected by S09 but had no direct S04 exact selection observed at this cutoff; same-provider advisory evidence remains binding weight zero and does not close independent verification. Candidate discovery and digest dedup remain best-effort under GitHub indexing and concurrent writes. No source, task, schedule, consumer, verifier, account, deployment, merge, publication, spend, deletion, or external-provider state was modified.
