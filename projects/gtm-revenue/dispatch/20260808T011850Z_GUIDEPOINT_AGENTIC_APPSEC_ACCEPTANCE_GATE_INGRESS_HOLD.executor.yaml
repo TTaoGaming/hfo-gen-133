@@ -1,0 +1,228 @@
+schema_id: hfo.gen133.s06.executor_packet.v1
+result: HOLD
+seat: S06_CODE_WORK_PACKET_COMPILER_CODEX_BRIDGE
+wip: 1
+valid_time_utc: 2026-08-08T01:18:50Z
+expected_task_id: 6a57972b9df081918680ce67c4ecb197
+observed_task_id: 6a57972b9df081918680ce67c4ecb197
+task_id_match: true
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+base_sha: 5f2ec210cd20d0b6b6cab406d98efd0b3a570a5d
+base_sha_branch_readback: IDENTICAL
+
+selection:
+  work_item_id: S08-CHANNEL_PARTNER-GUIDEPOINT_SECURITY-20260808T002938Z
+  claim_commit_sha: b8fd9f98cefc92aa13de46e5e1976d1facf3cddd
+  claim_path: projects/gtm-revenue/claims/20260808T010521Z_GUIDEPOINT_SECURITY_AGENTIC_APPSEC_ACCEPTANCE_GATE_ADMISSION.claim.yaml
+  claim_blob_sha1: cd2b4c5090de0b77782559b01c931450aefc2b39
+  claim_id: S02_GTM_GUIDEPOINT_AGENTIC_APPSEC_ACCEPTANCE_GATE_ADMISSION_20260808T010521Z
+  claim_status: CLAIMED_INTERNAL_ONLY_NO_EXTERNAL_EFFECT
+  claim_expiry_utc: 2026-08-08T05:05:21Z
+  acceptance_sha256: 7fd068d1a1d326cc0bfda2426b51c1a4b9db7cb44f40fffca8e7da37340e0d9f
+  idempotency_sha256: ce024e8d4bfa6fb27a7f046a3b29d0e0d217506bebf102757dede1be121691e1
+  changed_and_unexpired_at_compile_time: true
+  capability_basis: REPOSITORY_INSPECTION_PLUS_BOUNDED_ARTIFACT_BUILD_EVIDENCE
+
+source_binding:
+  source_commit_sha: 2013764f7f219f007be32071d45ec81abe0e3e4c
+  source_path: projects/gtm-revenue/research/20260808T002938Z_CHANNEL_PARTNER_GUIDEPOINT_SECURITY_TARGET_CARD.md
+  source_blob_sha1: f7951a7d80b1e3efb0e2694ef6193b74aa5507b1
+  source_binding_digest_sha256: 8041f850ad95a3f9620762ae5ba4af2d4cfd13541d4a29a6c3ac304a5550c1eb
+  source_expiry_utc: 2026-08-14T14:08:00Z
+  privacy: PUBLIC_SOURCES_ONLY
+  route: RELATIONSHIP_ONLY_CHANNEL_DISCOVERY_FIRST
+
+route:
+  direct_codex_ingress_available: false
+  direct_claude_ingress_available: false
+  direct_host_shell_ingress_available: false
+  github_read_write_available: true
+  slack_write_available: true
+  dispatched: false
+  reason: NO_DIRECT_EXECUTOR_INGRESS_EXPOSED_TO_THIS_CARRIER
+  note: A_GIT_PACKET_OR_SLACK_POINTER_IS_NOT_EXECUTION
+
+goal: >-
+  On an isolated local executor branch from the exact base SHA, inspect the frozen GuidePoint claim and target-card bytes, prove there is no already-consumed producer output at the same WorkItem/acceptance binding, then create at most one public-safe two-minute "Agentic AppSec Acceptance Gate — Speed × Detection × Authority" artifact plus one immutable producer-return artifact. The work must stay inside the claim ceiling, preserve disconfirming evidence, and return exact repository/build evidence. This is a bounded artifact-build and repository-evidence task, not a production deployment or a claim that GuidePoint has an unmet defect.
+
+current_red_evidence:
+  - NO_DIRECT_CODEX_CLAUDE_OR_HOST_EXECUTOR_INGRESS_IS_AVAILABLE_TO_S06
+  - NO_GUIDEPOINT_PRODUCER_RETURN_OR_KIT_BOUND_TO_THIS_WORK_ITEM_WAS_OBSERVED_AT_COMPILE_TIME
+  - CLAIM_SELF_REPORTS_CARRIER_TO_GITHUB_ACTOR_BINDING_UNPROVEN
+  - TARGET_CARD_SAYS_GUIDEPOINT_MAY_ALREADY_HAVE_MATURE_INTERNAL_EVAL_AND_QA_METHODS
+  - EXTERNAL_DEMAND_AND_COMMERCIAL_USEFULNESS_ARE_UNPROVEN
+  - SAME_PROVIDER_S04_CAN_ONLY_SUPPLY_NONBINDING_STRUCTURAL_PREFLIGHT_WEIGHT_ZERO
+
+allowed_paths:
+  read_only:
+    - projects/gtm-revenue/claims/20260808T010521Z_GUIDEPOINT_SECURITY_AGENTIC_APPSEC_ACCEPTANCE_GATE_ADMISSION.claim.yaml
+    - projects/gtm-revenue/research/20260808T002938Z_CHANNEL_PARTNER_GUIDEPOINT_SECURITY_TARGET_CARD.md
+    - projects/gtm-revenue/packets/20260807T140800Z_CHATGPT_CLOUD_GTM_DREAM50_HANDOFF.packet.md
+    - projects/gtm-revenue/kits/guidepoint-security/
+    - projects/gtm-revenue/returns/
+  write_only_new_files:
+    - projects/gtm-revenue/kits/guidepoint-security/20260808T011850Z_AGENTIC_APPSEC_ACCEPTANCE_GATE_SPEED_DETECTION_AUTHORITY.md
+    - projects/gtm-revenue/returns/20260808T011850Z_GUIDEPOINT_EXECUTOR_RETURN.md
+
+forbidden_paths:
+  - projects/gtm-revenue/claims/**
+  - projects/gtm-revenue/research/**
+  - projects/gtm-revenue/packets/**
+  - state/**
+  - .github/**
+  - '**/CURRENT*'
+  - '**/*task*'
+  - '**/*schedule*'
+  - any_existing_file
+
+required_commands:
+  - "git status --porcelain=v1"
+  - "git rev-parse HEAD"
+  - "git switch -c executor/guidepoint-agentic-appsec-gate-20260808T011850Z 5f2ec210cd20d0b6b6cab406d98efd0b3a570a5d"
+  - "test \"$(git rev-parse HEAD)\" = \"5f2ec210cd20d0b6b6cab406d98efd0b3a570a5d\""
+  - "test \"$(git rev-parse b8fd9f98cefc92aa13de46e5e1976d1facf3cddd:projects/gtm-revenue/claims/20260808T010521Z_GUIDEPOINT_SECURITY_AGENTIC_APPSEC_ACCEPTANCE_GATE_ADMISSION.claim.yaml)\" = \"cd2b4c5090de0b77782559b01c931450aefc2b39\""
+  - "test \"$(git rev-parse 2013764f7f219f007be32071d45ec81abe0e3e4c:projects/gtm-revenue/research/20260808T002938Z_CHANNEL_PARTNER_GUIDEPOINT_SECURITY_TARGET_CARD.md)\" = \"f7951a7d80b1e3efb0e2694ef6193b74aa5507b1\""
+  - "git grep -n \"S08-CHANNEL_PARTNER-GUIDEPOINT-SECURITY-20260808T002938Z\" -- projects/gtm-revenue/returns projects/gtm-revenue/kits/guidepoint-security || true"
+  - "git log --all --format='%H %cI %s' -- projects/gtm-revenue/kits/guidepoint-security projects/gtm-revenue/returns | head -200"
+  - "python - <<'PY'\nfrom pathlib import Path\np=Path('projects/gtm-revenue/kits/guidepoint-security/20260808T011850Z_AGENTIC_APPSEC_ACCEPTANCE_GATE_SPEED_DETECTION_AUTHORITY.md')\ns=p.read_text(encoding='utf-8')\nrequired=['WHY_THIS_MAY_MATTER','HOW_TO_USE_IN_2_MINUTES','baseline','held-out','false-positive','human-review','least-privilege','auditable','data boundary','trace','fails closed','override','rollback','Strongest falsifier']\nmissing=[x for x in required if x.lower() not in s.lower()]\nassert not missing, missing\nassert '40–60%' not in s and '40-60%' not in s, 'marketing performance figure must not be restated as verified performance'\nprint('candidate_content_checks=PASS')\nPY"
+  - "git diff --check -- projects/gtm-revenue/kits/guidepoint-security/20260808T011850Z_AGENTIC_APPSEC_ACCEPTANCE_GATE_SPEED_DETECTION_AUTHORITY.md projects/gtm-revenue/returns/20260808T011850Z_GUIDEPOINT_EXECUTOR_RETURN.md"
+  - "git diff --name-only 5f2ec210cd20d0b6b6cab406d98efd0b3a570a5d --"
+  - "git status --short"
+
+build_requirements:
+  candidate:
+    path: projects/gtm-revenue/kits/guidepoint-security/20260808T011850Z_AGENTIC_APPSEC_ACCEPTANCE_GATE_SPEED_DETECTION_AUTHORITY.md
+    must_include:
+      - compact WHY_THIS_MAY_MATTER
+      - compact HOW_TO_USE_IN_2_MINUTES
+      - named manual_or_baseline comparison
+      - held_out vulnerable_and_clean cases
+      - explicit detection_quality threshold
+      - explicit false_positive threshold
+      - explicit human_review boundary
+      - least_privilege auditable agent_tool_and_action_authority
+      - documented model_tool_route_and_data_boundary
+      - reconstructable evidence_to_finding_trace
+      - fail_closed handling for missing_or_stale evidence
+      - captured reviewer_override_or_correction_feedback
+      - explicit client_ready acceptance_and_rollback criteria
+      - current public evidence links already carried by frozen source card
+      - assumptions
+      - strongest falsifier
+      - optional operator_reviewed_no_send outreach note at most one
+    must_preserve:
+      - GUIDEPOINT_ALREADY_REPORTS_HUMAN_VALIDATION
+      - GUIDEPOINT_ALREADY_HAS_AI_GOVERNANCE_AND_APPSEC_CAPABILITY
+      - GUIDEPOINT_MAY_ALREADY_HAVE_MATURE_INTERNAL_QA_EVAL_METHODS
+    must_not_claim:
+      - known GuidePoint incident or control failure
+      - known compliance defect
+      - verified 40_to_60_percent performance
+      - measured operator savings
+      - recipient demand
+      - internal compatibility
+      - deployment outcome
+      - external specialist need
+  producer_return:
+    path: projects/gtm-revenue/returns/20260808T011850Z_GUIDEPOINT_EXECUTOR_RETURN.md
+    must_bind:
+      - work_item_id
+      - claim_commit_sha
+      - claim_path
+      - claim_blob_sha1
+      - acceptance_sha256
+      - source_commit_sha
+      - source_path
+      - source_blob_sha1
+      - candidate_path
+      - candidate_blob_or_local_object_id_if_available
+      - exact source URLs copied from frozen card
+      - no_send status
+      - rollback_or_delete_path
+      - verifier S04 task 6a52861fbdb08191b9ef33a0b9c3c15c
+      - consumer S03 task 6a539fc5130c81918c13624739fb2a60
+      - expiry_utc 2026-08-08T05:05:21Z
+      - honest_flaw
+
+acceptance_tests:
+  - EXACT_CLAIM_BLOB_MATCHES_cd2b4c5090de0b77782559b01c931450aefc2b39
+  - EXACT_SOURCE_BLOB_MATCHES_f7951a7d80b1e3efb0e2694ef6193b74aa5507b1
+  - NO_PREEXISTING_SAME_WORKITEM_PRODUCER_RETURN_AT_START_OR_EXECUTOR_RETURNS_BLOCKED_DUPLICATE
+  - ONLY_TWO_NEW_ALLOWED_OUTPUT_PATHS_CHANGE
+  - CANDIDATE_CONTENT_CHECK_SCRIPT_EXITS_0
+  - GIT_DIFF_CHECK_EXITS_0
+  - NO_EXISTING_FILE_IS_MODIFIED
+  - NO_EXTERNAL_WORLD_EFFECT_OCCURS
+  - DIRECT_PRODUCER_RETURN_NAMES_RUNTIME_MODEL_BRANCH_SHA_CHANGED_PATHS_EXACT_COMMANDS_EXIT_CODES_OUTPUTS_BLOCKERS_ROLLBACK_AND_HONEST_FLAW
+
+producer_return_contract:
+  required_direct_return_fields:
+    - runtime
+    - model
+    - branch
+    - sha
+    - changed_paths
+    - exact_commands
+    - per_command_exit_codes
+    - salient_outputs
+    - blockers
+    - rollback
+    - honest_flaw
+  consume_rule: S06_MAY_RETURN_RETURN_CONSUMED_ONLY_IF_ALL_FIELDS_ARE_PRESENT_AND_BOUND_TO_THIS_PACKET
+
+effect_ceiling:
+  allowed:
+    - READ_FROZEN_PUBLIC_SAFE_REPO_INPUTS
+    - CREATE_LOCAL_EXECUTOR_BRANCH
+    - CREATE_AT_MOST_TWO_NEW_INTERNAL_REPO_FILES_AT_EXACT_ALLOWED_PATHS
+    - LOCAL_TESTS_AND_HASH_READBACK
+    - LOCAL_COMMIT_IF_NEEDED_FOR_SHA_EVIDENCE
+  forbidden:
+    - PUSH
+    - MERGE
+    - DEPLOY
+    - EXTERNAL_PUBLICATION
+    - SEND
+    - APPLICATION_SUBMISSION
+    - ACCOUNT_CREATION_OR_CHANGE
+    - TERMS_ACCEPTANCE
+    - SPEND_OR_PAID_PROVIDER_CALL
+    - PRIVATE_DATA_USE
+    - SECURITY_OR_CREDENTIAL_CHANGE
+    - TASK_OR_SCHEDULE_MUTATION
+    - DESTRUCTIVE_GIT_OPERATION
+    - HISTORY_REWRITE
+    - EXISTING_FILE_MODIFICATION
+
+time_budget_ceiling:
+  wall_clock_minutes: 25
+  monetary_usd: 0
+  paid_provider_calls: 0
+
+rollback:
+  mode: LOCAL_ONLY_DISCARD_UNPUSHED_BRANCH_OR_DELETE_ONLY_NEW_UNMERGED_OUTPUT_FILES
+  allowed_delete_paths_if_unpushed_and_executor_created_them:
+    - projects/gtm-revenue/kits/guidepoint-security/20260808T011850Z_AGENTIC_APPSEC_ACCEPTANCE_GATE_SPEED_DETECTION_AUTHORITY.md
+    - projects/gtm-revenue/returns/20260808T011850Z_GUIDEPOINT_EXECUTOR_RETURN.md
+  remote_rollback_required: false
+  history_rewrite_forbidden: true
+
+verifier:
+  seat: S04_HRIST_STRUCTURAL_PREFLIGHT
+  task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  provider_class: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+
+consumer:
+  seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  task_id: 6a539fc5130c81918c13624739fb2a60
+  ultimate_external_effect: OPERATOR_REVIEW_ONLY
+
+expiry_utc: 2026-08-08T05:05:21Z
+
+strongest_falsifier: >-
+  Retire this wedge if GuidePoint can already demonstrate a standardized internal benchmark and release system that measures cycle-time gains and detection quality, captures human corrections, enforces agent/tool authority and traceability across engagements, and has no need for external specialist capacity on that layer.
+
+honest_flaw: >-
+  This packet is compiler output only. No direct Codex, Claude, or host executor ingress is exposed to S06, so none of the required commands ran and no candidate, test result, branch, SHA, or producer return is claimed. The target's business need remains a hypothesis sourced from public material about an already-functioning mature security consultancy.
