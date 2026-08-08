@@ -1,0 +1,66 @@
+schema: hfo.gen133.s05.operator_relief_receipt.v1
+receipt_utc: "2026-08-08T04:14:32Z"
+seat: S05
+wip: 1
+transition: STATUS_RECONCILED
+active_item: GEN135_VALIDATE_DEPENDENCY_FAILURE
+priority:
+  p0: CHATGPT_PRO_CONTINUITY_BEFORE_2026_08_09
+  p1:
+    - GOOGLE_WINDOWS_SIGNIN_EXPECTEDNESS
+    - GEN135_VALIDATE_DEPENDENCY_FAILURE
+surface_owner_permission:
+  source_surface: github_actions
+  source_repo: TTaoGaming/hive-fleet-obsidian-gen-135
+  source_branch: agent/gen135-runtime-memory-candidate-20260807
+  source_owner: GEN135_BUILD_OWNER
+  permission_used: READ_ONLY_SOURCE_RECONCILIATION
+  mutation_surface: TTaoGaming/hfo-gen-133
+  mutation_branch: agent/gen133-bootstrap-20260730
+  mutation_permission: IMMUTABLE_SANITIZED_RECEIPT_ONLY
+source_evidence:
+  gmail_notification_message_id: "19fdf72760e8390c"
+  workflow: validate-gen135
+  workflow_run_id: 31237589809
+  job_id: 93052873624
+  tested_commit: e122c656e0cf54ef677aab98d574c930b9819d22
+  job_conclusion: failure
+  failed_step: "Unit and contract tests"
+  skipped_step_after_failure: "Verify committed canon pointer"
+reconciliation:
+  tests_reported: 106
+  errors_reported: 9
+  dominant_failure_class: MISSING_PYTHON_RUNTIME_DEPENDENCIES
+  missing_modules:
+    - pydantic
+    - jsonschema
+  evidence_summary: >-
+    The failing run checked out the intended Gen-135 runtime-memory candidate commit,
+    set up Python 3.12, then ran unittest discovery without installing dependencies.
+    Nine test modules failed during import because pydantic and/or jsonschema were
+    absent. The observed failure is therefore an environment/dependency bootstrap
+    failure at test collection/import time; this receipt does not claim the underlying
+    runtime-cell logic passes once dependencies are installed.
+claim_ceiling:
+  - DOES_NOT_PROVE_GEN135_RUNTIME_CORRECTNESS
+  - DOES_NOT_PROVE_ALL_REPEATED_FAILURE_EMAILS_HAVE_IDENTICAL_LOGS
+  - DOES_NOT_AUTHORIZE_WORKFLOW_RERUN
+  - DOES_NOT_AUTHORIZE_GEN135_CODE_CHANGE
+  - DOES_NOT_AUTHORIZE_DEPLOYMENT_OR_MERGE
+operator_minutes_removed_estimate: 10
+next_consumer: GEN135_BUILD_OWNER
+next_action: >-
+  Inspect the Gen-135 validation workflow dependency/bootstrap step and make the
+  smallest owner-authorized repair that installs the declared test/runtime dependencies
+  before unittest discovery; then require a fresh workflow readback before treating the
+  validation gate as green.
+external_effects:
+  email_send: false
+  application_submission: false
+  spend_or_payment: false
+  deployment: false
+  merge: false
+  publication: false
+  account_or_security_change: false
+  destructive_delete: false
+  scheduled_task_mutation: false
