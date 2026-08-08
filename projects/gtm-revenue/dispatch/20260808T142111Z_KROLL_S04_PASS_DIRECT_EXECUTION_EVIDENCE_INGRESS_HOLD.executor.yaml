@@ -1,0 +1,180 @@
+---
+schema_id: hfo.gen133.s06_executor_packet.v1
+result: HOLD
+seat: S06_CODE_WORK_PACKET_COMPILER_CODEX_BRIDGE
+callsign: HUGINN_MUNINN_CODEX_BRIDGE
+wip: 1
+valid_time_utc: 2026-08-08T14:21:11Z
+expected_task_id: 6a57972b9df081918680ce67c4ecb197
+observed_task_id: 6a57972b9df081918680ce67c4ecb197
+task_id_match: true
+repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+base_sha: cb741958096b28dfdbd8b6862cc280e60a445d5c
+
+self_probe:
+  scheduled_task_inventory_read: true
+  exact_task_id_observed: true
+  github_read: true
+  github_write: true
+  slack_write: true
+  direct_codex_ingress: false
+  direct_claude_ingress: false
+  direct_host_shell_ingress: false
+  route_attempted: false
+  execution_claimed: false
+  producer_return_consumed: false
+
+selection:
+  work_item_id: S07_KROLL_AGENTIC_SECURITY_AUTOMATION_ACCEPTANCE_GATE_V1
+  changed_edge: NEW_S04_PASS_STRUCTURAL_AFTER_PRIOR_S06_PACKET
+  changed_unexpired_claimed: true
+  claim_commit: 8a0b3f63a358c0c62c9913c581a2497be422d7b4
+  claim_path: projects/gtm-revenue/claims/20260808T131430Z_KROLL_AGENTIC_SECURITY_AUTOMATION_ACCEPTANCE_GATE_ADMISSION.claim.yaml
+  claim_blob_sha1: 73e80d052871bda29f39249c75c8823fe5e2a25a
+  claim_acceptance_sha256: 68a452b51cdd0a051bbf354a109f61943f0f8667e0315ec055ac7150eb82075d
+  claim_expiry_utc: 2026-08-08T17:14:30Z
+  source_commit: 9b6474f302f18a830db2766993006a27b686b7b5
+  source_path: projects/gtm-revenue/research/20260808T122800Z_CHANNEL_PARTNER_KROLL_TARGET_CARD.md
+  source_blob_sha1: 684f91eec8008091fbea6f1bc9ce9756fb50ef38
+  candidate_commit: 43bbbb9647961142fdecacb19cc0f9ac5c80e770
+  candidate_path: projects/gtm-revenue/kits/kroll/20260808T132335Z_AGENTIC_SECURITY_AUTOMATION_ACCEPTANCE_CARD.md
+  candidate_blob_sha1: 174aef5ca4a735530903db51155306955118f576
+  candidate_sha256: 748c2147ec0c7fb63f83464a76054afabaf753ab818f6903023afe02d6389182
+  producer_return_commit: 3fb67469f03e310e606230b099a42a8fd38649be
+  producer_return_path: projects/gtm-revenue/returns/20260808T132900Z_S07_KROLL_AGENTIC_SECURITY_AUTOMATION_ACCEPTANCE_CARD_RETURN.md
+  producer_return_blob_sha1: 8d5d6a6d387d94de82c5515c0c77d9017da3fa39
+  s03_route_commit: b1d60419f898908e146cb173a94e81a021e20506
+  s03_route_path: state/coordination/receipts/chatgpt_runtime/seat-03/20260808T140844Z_KROLL_AGENTIC_SECURITY_ACCEPTANCE_HOLD_TO_S04.yaml
+  s03_route_blob_sha1: 472501791d8e9a64b87e87f5e149daa772d152c3
+  s04_structural_commit: cb741958096b28dfdbd8b6862cc280e60a445d5c
+  s04_structural_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260808T141748Z_KROLL_AGENTIC_SECURITY_ACCEPTANCE_STRUCTURAL_PASS.yaml
+  s04_structural_blob_sha1: 426a601e8622605c561618983497057ddc6fb7e0
+  s04_result: PASS_STRUCTURAL
+  s04_binding_weight: 0
+
+owner_permission_gate:
+  surface: INTERNAL_REPOSITORY_READBACK_AND_EPHEMERAL_LOCAL_TMP_ONLY
+  owner: S07_GTM_PROOF_KIT_BUILDER
+  permission: CLAIM_8a0b3f63a358c0c62c9913c581a2497be422d7b4_T0_RESEARCH_PREP_ONLY
+  effect_ceiling: T0_READ_ONLY_REPRODUCTION
+
+executor_goal: >-
+  Reproduce the exact Kroll claim, source, candidate, S07 return, S03 route and new S04
+  PASS_STRUCTURAL bindings without changing repository bytes. Determine whether the exact S07 producer
+  return satisfies the stricter S06 direct-return consumption contract. Return a complete direct
+  execution ledger naming runtime/model, observed branch/SHA, changed paths, every exact command,
+  exit code, stdout/stderr, blockers, rollback and honest flaw. Do not repair, rewrite or promote the candidate.
+
+current_red_evidence:
+  - S04 now structurally passes the exact candidate and digest bindings, but is SAME_PROVIDER_NONBINDING with binding weight 0.
+  - The exact S07 producer return does not name executor runtime/model.
+  - The exact S07 producer return does not provide an exact command-by-command execution ledger with exit codes and outputs.
+  - The exact S07 producer return does not provide an explicit blocker ledger under the S06 direct-return contract.
+  - No exact digest-bound independent STOOD or FELL is present in the new S04 result.
+  - No explicit named ConsumerAck is present in the new S04 result.
+  - Carrier-to-GitHub authenticated-actor delegation remains unproven.
+  - No direct Codex, Claude or host-shell ingress is exposed to S06 this wake.
+
+allowed_paths:
+  read_only:
+    - projects/gtm-revenue/claims/20260808T131430Z_KROLL_AGENTIC_SECURITY_AUTOMATION_ACCEPTANCE_GATE_ADMISSION.claim.yaml
+    - projects/gtm-revenue/research/20260808T122800Z_CHANNEL_PARTNER_KROLL_TARGET_CARD.md
+    - projects/gtm-revenue/kits/kroll/20260808T132335Z_AGENTIC_SECURITY_AUTOMATION_ACCEPTANCE_CARD.md
+    - projects/gtm-revenue/returns/20260808T132900Z_S07_KROLL_AGENTIC_SECURITY_AUTOMATION_ACCEPTANCE_CARD_RETURN.md
+    - state/coordination/receipts/chatgpt_runtime/seat-03/20260808T140844Z_KROLL_AGENTIC_SECURITY_ACCEPTANCE_HOLD_TO_S04.yaml
+    - state/coordination/receipts/chatgpt_runtime/seat-04/20260808T141748Z_KROLL_AGENTIC_SECURITY_ACCEPTANCE_STRUCTURAL_PASS.yaml
+  ephemeral_write:
+    - /tmp/hfo_s06_kroll_*
+
+forbidden_paths:
+  - projects/gtm-revenue/kits/kroll/**:WRITE
+  - projects/gtm-revenue/returns/**:WRITE
+  - state/ssot/**
+  - state/identity/**
+  - .github/**
+  - '**/.env*'
+  - '**/secrets/**'
+  - any_repository_write
+
+required_commands:
+  - id: C01
+    command: "set -euo pipefail"
+    expected: strict_shell_mode
+  - id: C02
+    command: "printf 'runtime_uname='; uname -a; printf 'git_version='; git --version; printf 'python_version='; python --version 2>&1"
+    expected: record_runtime_versions
+  - id: C03
+    command: "git status --short && git rev-parse --show-toplevel && git branch --show-current && git rev-parse HEAD"
+    expected: record_worktree_branch_and_head_without_cleaning_or_mutation
+  - id: C04
+    command: "for c in cb741958096b28dfdbd8b6862cc280e60a445d5c 8a0b3f63a358c0c62c9913c581a2497be422d7b4 9b6474f302f18a830db2766993006a27b686b7b5 43bbbb9647961142fdecacb19cc0f9ac5c80e770 3fb67469f03e310e606230b099a42a8fd38649be b1d60419f898908e146cb173a94e81a021e20506; do git cat-file -e \"$c^{commit}\"; done"
+    expected: exit_0_all_bound_commits_exist
+  - id: C05
+    command: "git show 8a0b3f63a358c0c62c9913c581a2497be422d7b4:projects/gtm-revenue/claims/20260808T131430Z_KROLL_AGENTIC_SECURITY_AUTOMATION_ACCEPTANCE_GATE_ADMISSION.claim.yaml > /tmp/hfo_s06_kroll_claim.yaml && git show 9b6474f302f18a830db2766993006a27b686b7b5:projects/gtm-revenue/research/20260808T122800Z_CHANNEL_PARTNER_KROLL_TARGET_CARD.md > /tmp/hfo_s06_kroll_source.md && git show 43bbbb9647961142fdecacb19cc0f9ac5c80e770:projects/gtm-revenue/kits/kroll/20260808T132335Z_AGENTIC_SECURITY_AUTOMATION_ACCEPTANCE_CARD.md > /tmp/hfo_s06_kroll_candidate.md && git show 3fb67469f03e310e606230b099a42a8fd38649be:projects/gtm-revenue/returns/20260808T132900Z_S07_KROLL_AGENTIC_SECURITY_AUTOMATION_ACCEPTANCE_CARD_RETURN.md > /tmp/hfo_s06_kroll_s07_return.md && git show b1d60419f898908e146cb173a94e81a021e20506:state/coordination/receipts/chatgpt_runtime/seat-03/20260808T140844Z_KROLL_AGENTIC_SECURITY_ACCEPTANCE_HOLD_TO_S04.yaml > /tmp/hfo_s06_kroll_s03.yaml && git show cb741958096b28dfdbd8b6862cc280e60a445d5c:state/coordination/receipts/chatgpt_runtime/seat-04/20260808T141748Z_KROLL_AGENTIC_SECURITY_ACCEPTANCE_STRUCTURAL_PASS.yaml > /tmp/hfo_s06_kroll_s04.yaml"
+    expected: exact_frozen_bytes_materialized
+  - id: C06
+    command: "test \"$(git hash-object /tmp/hfo_s06_kroll_claim.yaml)\" = 73e80d052871bda29f39249c75c8823fe5e2a25a && test \"$(git hash-object /tmp/hfo_s06_kroll_source.md)\" = 684f91eec8008091fbea6f1bc9ce9756fb50ef38 && test \"$(git hash-object /tmp/hfo_s06_kroll_candidate.md)\" = 174aef5ca4a735530903db51155306955118f576 && test \"$(git hash-object /tmp/hfo_s06_kroll_s07_return.md)\" = 8d5d6a6d387d94de82c5515c0c77d9017da3fa39 && test \"$(git hash-object /tmp/hfo_s06_kroll_s03.yaml)\" = 472501791d8e9a64b87e87f5e149daa772d152c3 && test \"$(git hash-object /tmp/hfo_s06_kroll_s04.yaml)\" = 426a601e8622605c561618983497057ddc6fb7e0"
+    expected: exit_0_all_blob_bindings_reproduce
+  - id: C07
+    command: "printf 'candidate_sha256='; sha256sum /tmp/hfo_s06_kroll_candidate.md; printf 'candidate_bytes='; wc -c < /tmp/hfo_s06_kroll_candidate.md"
+    expected: sha256_748c2147ec0c7fb63f83464a76054afabaf753ab818f6903023afe02d6389182_and_8371_bytes
+  - id: C08
+    command: "grep -nE '^(result: PASS_STRUCTURAL|  binding_weight: 0|  exact_digest_bound_independent_STOOD_or_FELL_observed: false|  explicit_named_ConsumerAck_observed: false|  carrier_to_github_actor_binding: UNPROVEN)' /tmp/hfo_s06_kroll_s04.yaml"
+    expected: structural_pass_is_nonbinding_and_does_not_close_independence_or_consumerack
+  - id: C09
+    command: "python - <<'PY'\nfrom pathlib import Path\ns=Path('/tmp/hfo_s06_kroll_s07_return.md').read_text(encoding='utf-8')\nrequired=['runtime/model','exact commands','exit codes','outputs','blockers']\nfor x in required:\n    print(x, x.lower() in s.lower())\nassert not ('runtime/model' in s.lower() and 'exit codes' in s.lower() and 'blockers' in s.lower()), 'S07 return appears to contain newer direct-execution contract fields; inspect manually and retire this packet'\nprint('s06_direct_consumption_contract=NOT_SATISFIED_BY_FROZEN_S07_RETURN')\nPY"
+    expected: original_S07_return_remains_ineligible_for_S06_RETURN_CONSUMED
+  - id: C10
+    command: "grep -nE 'commands_and_exit_codes: NOT_APPLICABLE|reason: PRODUCER_RETURN_IS_A_MARKDOWN_WORK_SAMPLE|decision:|result: HOLD|exact_digest_bound_independent_STOOD_or_FELL: absent|explicit_named_ConsumerAck_for_same_workitem: absent' /tmp/hfo_s06_kroll_s03.yaml"
+    expected: record_S03_markdown_only_routing_ceiling_and_missing_independent_outcome
+  - id: C11
+    command: "git status --short"
+    expected: no_repository_changes_created_by_reproduction
+
+acceptance_tests:
+  - exact task ID equals 6a57972b9df081918680ce67c4ecb197.
+  - claim is still unexpired at executor start; if expired, return HOLD without further work.
+  - all six Git blob bindings reproduce exactly.
+  - candidate SHA-256 equals 748c2147ec0c7fb63f83464a76054afabaf753ab818f6903023afe02d6389182 and byte count equals 8371.
+  - S04 result is PASS_STRUCTURAL but SAME_PROVIDER_NONBINDING/binding weight 0 with no independent STOOD/FELL and no ConsumerAck.
+  - frozen S07 return is explicitly classified against the S06 direct-return contract; no missing runtime/command evidence may be invented.
+  - executor changes no repository path.
+  - direct executor return names runtime/provider and exact model, observed repository/branch/HEAD, changed_paths as an explicit list, every required command verbatim, each exit code, bounded stdout/stderr, blockers as an explicit list, rollback, and honest flaw.
+  - any unavailable runtime/model identity, command failure, digest mismatch, expiry, or repository mutation yields HOLD/BLOCKED rather than PASS.
+
+effect_ceiling:
+  allowed: READ_ONLY_GIT_REPRODUCTION_AND_EPHEMERAL_TMP
+  forbidden: REPO_WRITE_SEND_SPEND_DEPLOY_MERGE_PUBLICATION_ACCOUNT_SECURITY_CHANGE_REAL_SYSTEM_TEST
+
+time_budget_ceiling:
+  wall_clock_minutes: 15
+  provider_calls: 0
+budget_ceiling:
+  usd: 0
+
+rollback:
+  repository: NONE_REQUIRED_READ_ONLY
+  ephemeral: rm -f /tmp/hfo_s06_kroll_claim.yaml /tmp/hfo_s06_kroll_source.md /tmp/hfo_s06_kroll_candidate.md /tmp/hfo_s06_kroll_s07_return.md /tmp/hfo_s06_kroll_s03.yaml /tmp/hfo_s06_kroll_s04.yaml
+
+verifier:
+  seat: S04_HRIST_STRUCTURAL_PREFLIGHT
+  task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+consumer:
+  seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  task_id: 6a539fc5130c81918c13624739fb2a60
+expiry_utc: 2026-08-08T17:14:30Z
+
+strongest_falsifier: >-
+  If a newer exact direct producer return for this same claim/candidate digest already exists and names
+  runtime/model, observed branch/SHA, changed paths, every exact executed command, exit codes, outputs,
+  blockers, rollback and honest flaw, or if the frozen S07 return itself demonstrably contains all of those
+  fields, this packet is obsolete and S06 must consume that direct return instead of preserving this HOLD.
+
+honest_flaw: >-
+  This packet can reproduce Git-bound structural evidence but cannot itself create independent verification,
+  prove carrier-to-GitHub actor delegation, establish ConsumerAck, or recover missing historical runtime/model
+  and command telemetry from the S07 producer. With no direct executor ingress exposed to S06, this wake
+  creates only an exact Git packet and does not claim execution.
