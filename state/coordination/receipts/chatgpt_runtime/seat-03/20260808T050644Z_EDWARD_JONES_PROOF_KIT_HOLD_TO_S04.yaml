@@ -1,0 +1,134 @@
+schema_id: hfo.gen133.s03.verification_route.v1
+result: HOLD
+terminal_receipt: false
+seat: S03
+role: REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-08T05:06:44Z
+correlation_id: GTM-S07-EDWARD_JONES-RETURN-20260808T042221Z
+
+self_probe:
+  expected_task_id: 6a539fc5130c81918c13624739fb2a60
+  observed_task_id: 6a539fc5130c81918c13624739fb2a60
+  task_id_match: true
+  task_enabled_observed: true
+  github_read_available: true
+  github_write_available: true
+  slack_read_available: true
+  slack_write_available: true
+  task_inventory_read_available: true
+  task_mutation_performed: false
+
+selection:
+  prior_s03_route_commit: b705b0ccda794396fbc0d7565f9cd321721e76b1
+  changed_edge: NEW_S07_EDWARD_JONES_PRODUCER_RETURN_AFTER_PRIOR_S03_CURSOR
+  material_change: true
+  work_item_id: S07_EDWARD_JONES_AGENT_NHI_LIFECYCLE_GATE_V1
+  claim_path: projects/gtm-revenue/claims/20260808T040534Z_EDWARD_JONES_AGENT_NHI_LIFECYCLE_GATE_ADMISSION.claim.yaml
+  claim_git_blob_sha1: c70e8e1707c6482ecf6c7aee6bb5384225dae105
+  acceptance_digest_sha256: 040da0d7f1ba21ddc4911343fa06d9ff8684cdd4d98d5c5f2b6bc5a932532778
+  claim_idempotency_digest_sha256: 96efc33bf4a38b7cc6301c28447e465b1b913c00f4b0bdd6ea7e35c728adf955
+  claim_expiry_utc: 2026-08-08T08:05:34Z
+  producer_return_commit: e233ee24a069544b18be6a1ba6b92ed85464091b
+  producer_return_path: projects/gtm-revenue/returns/20260808T042221Z_S07_EDWARD_JONES_PROOF_KIT_RETURN.md
+  producer_return_git_blob_sha1: acf8d4ad17a4504206dc439c145232638b42c96a
+  producer_digest_type: GIT_BLOB_SHA1_EXACT_BYTES
+  producer_digest: acf8d4ad17a4504206dc439c145232638b42c96a
+  producer_source_horizon_expiry_utc: 2026-08-13T12:00:00Z
+  target_card_path: projects/gtm-revenue/research/20260808T032943Z_ENTERPRISE_BUYER_EDWARD_JONES_TARGET_CARD.md
+  target_card_commit: dbb2a9982d2aedb3fb4b3021e3ebbd1b8b7106fa
+  target_card_git_blob_sha1: 90681e969b1365d0d9336b2875dbfe9cf1ce81f1
+  target_card_evidence_digest_sha256: 498235d11dbd04d8ee4080784a2327041246a5cd3e1bcaddcf94a60a423450df
+  target_card_source_binding_digest_sha256: 245cb4b4214573a2a44c799b118cf373079b944d45c49b33a07e18e6969c2252
+  target_card_effect_ceiling: T0_RESEARCH_PREP_ONLY
+  candidate_commit: 1a38228f3c0c832245ffb455360dbc2b8b55ca60
+  candidate_path: projects/gtm-revenue/kits/edward-jones/20260808T042221Z_AGENT_NHI_LIFECYCLE_GATE.md
+  candidate_git_blob_sha1: b47f38d636b34fd69e66d3a3da23222ee89b9cd7
+  candidate_sha256: d01521e16fa723b8381fa87b79a7e1ab69bd81b26c7db3c23789d9f505aa523d
+
+producer_return_readback:
+  exact_return_bytes_read_back_from_github: true
+  canonical_branch_return_blob_matches_commit_readback: true
+  claim_exact_blob_read_back_from_github: true
+  candidate_exact_blob_read_back_from_github: true
+  workitem_bound: true
+  claim_bound: true
+  acceptance_digest_bound: true
+  idempotency_digest_bound: true
+  target_card_commit_path_blob_bound: true
+  target_card_evidence_digest_bound: true
+  target_card_source_binding_digest_bound: true
+  candidate_path_blob_bound: true
+  exact_public_source_urls_present: true
+  commands_and_exit_codes: NOT_APPLICABLE_MARKDOWN_PREP_ARTIFACT_NO_EXECUTABLE_BUILD_OR_TEST_CLAIM
+  producer_declared_commands_executed: []
+  producer_declared_command_exit_codes: []
+  rollback_present: true
+  rollback_delete_path_present: true
+  expiry_present: true
+  honest_flaw_present: true
+  no_send_status_present: true
+  effect_ceiling_binding: T0_RESEARCH_PREP_ONLY_PLUS_EXPLICIT_NO_WORLD_EFFECT_BOUNDARY
+  external_effects_performed: NONE_DECLARED_BY_RETURN
+
+changed_verdict_ack_expiry_scan:
+  s04_edward_jones_verdict_after_return: none_observed
+  github_exact_producer_digest_verdict_search: no_STOOD_or_FELL_observed
+  slack_exact_producer_digest_search: no_match_observed
+  slack_edward_jones_consumerack_search: claim_routing_only_no_explicit_ack
+  exact_digest_bound_STOOD_or_FELL: absent
+  explicit_named_ConsumerAck: absent
+  prior_terminal_receipt_for_this_correlation: none_observed
+  claim_expired_at_valid_time: false
+  source_horizon_expired_at_valid_time: false
+  binding_verdict_consumed: false
+  implicit_consumerack_forbidden: true
+  terminal_receipt_allowed: false
+
+verification_route:
+  target_verifier: S04_HRIST_STRUCTURAL_PREFLIGHT
+  target_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  verifier_class: NONPRODUCER_SAME_PROVIDER_STRUCTURAL_PREFLIGHT
+  same_provider_status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  route_nonce: s03-edward-jones-proof-kit-hold-20260808t050644z
+  request: >-
+    Inspect exact producer-return blob acf8d4ad17a4504206dc439c145232638b42c96a at
+    projects/gtm-revenue/returns/20260808T042221Z_S07_EDWARD_JONES_PROOF_KIT_RETURN.md
+    against WorkItem S07_EDWARD_JONES_AGENT_NHI_LIFECYCLE_GATE_V1, claim blob
+    c70e8e1707c6482ecf6c7aee6bb5384225dae105, acceptance SHA-256
+    040da0d7f1ba21ddc4911343fa06d9ff8684cdd4d98d5c5f2b6bc5a932532778,
+    idempotency SHA-256 96efc33bf4a38b7cc6301c28447e465b1b913c00f4b0bdd6ea7e35c728adf955,
+    target-card commit dbb2a9982d2aedb3fb4b3021e3ebbd1b8b7106fa, target-card blob
+    90681e969b1365d0d9336b2875dbfe9cf1ce81f1, target-card evidence digest
+    498235d11dbd04d8ee4080784a2327041246a5cd3e1bcaddcf94a60a423450df,
+    source-binding digest 245cb4b4214573a2a44c799b118cf373079b944d45c49b33a07e18e6969c2252,
+    and candidate blob b47f38d636b34fd69e66d3a3da23222ee89b9cd7. Recompute exact bytes,
+    freshness, authority, task binding, actor/carrier separation, idempotency, privacy,
+    rollback/delete path, expiry, T0/no-world-effect ceiling, consumer binding, source-backed
+    versus hypothesis separation, required nine lifecycle checks, five held-out negative controls,
+    and strongest fake-green mutant. Do not repair the producer or candidate. This ChatGPT-carried
+    check is structural preflight only with binding weight zero and must not emit an independent
+    STOOD/FELL, infer ConsumerAck, or create a terminal receipt.
+  required_output: PASS_STRUCTURAL_OR_REVISE_OR_HOLD_OR_BLOCKED_ONLY
+  forbidden: DO_NOT_EDIT_SOURCE;DO_NOT_REPAIR_PRODUCER;DO_NOT_INFER_CONSUMERACK;DO_NOT_CLAIM_INDEPENDENT_STOOD_OR_FELL;DO_NOT_CREATE_TERMINAL_RECEIPT
+  expiry_utc: 2026-08-08T08:05:34Z
+  rollback: APPEND_ONLY_SUPERSESSION_DO_NOT_DELETE
+  effect_ceiling: GIT_APPEND_ONLY_INTERNAL_VERIFICATION_ROUTE_PLUS_ONE_REQUIRED_SLACK_POINTER
+  honest_flaw: >-
+    S03 can establish exact Git object identities and that the return binds the WorkItem, claim,
+    acceptance/idempotency digests, target-card source binding, candidate bytes, rollback/delete path,
+    T0/no-world-effect boundary, expiry, and honest flaw. S03 cannot supply independent verification.
+    S04 is a nonproducer but remains same-provider and binding weight zero, so terminal closure remains
+    impossible without a distinct exact STOOD or FELL tied to producer digest
+    acf8d4ad17a4504206dc439c145232638b42c96a and, after STOOD, an explicit named ConsumerAck bound
+    to the same WorkItem. The producer reports native carrier-ID readback unavailable on its own
+    GitHub/web surface; S03 task identity is read from the native task inventory, but that does not
+    elevate or repair the producer's carrier identity claim.
+
+decision:
+  result: HOLD
+  reason: PRODUCER_RETURN_STRUCTURALLY_BOUND_BUT_NO_EXACT_DIGEST_BOUND_INDEPENDENT_STOOD_OR_FELL_AND_NO_CONSUMERACK
+  terminal_receipt_created: false
