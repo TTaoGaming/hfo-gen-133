@@ -1,0 +1,161 @@
+schema_id: hfo.gen133.s04.structural_preflight.v1
+result: REVISE
+terminal_receipt: false
+seat: S04
+role: STRUCTURAL_PREFLIGHT_VERIFIER
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-08T07:22:04Z
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+
+self_probe:
+  expected_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  observed_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  task_id_match: true
+  task_enabled_observed: true
+  github_read_available: true
+  github_write_available: true
+  slack_read_available: true
+  slack_write_available: true
+  task_inventory_read_available: true
+  task_mutation_performed: false
+
+selection:
+  selection_policy: NEWEST_IMMUTABLE_DIRECT_S04_ROUTE_NOT_AUTHORED_BY_S04
+  selected_route_commit: 85f7e4a99c2cf54f5db9af8f49060b4278818f02
+  selected_route_path: state/coordination/receipts/chatgpt_runtime/seat-03/20260808T071143Z_KONG_PROOF_KIT_REVISE_TO_S04.yaml
+  selected_route_git_blob_sha1: 1b0883bd2161fa33f0af8d4f49209a8af490c1a4
+  selected_route_authoring_seat: S03
+  correlation_id: GTM-S07-KONG-HOLD-20260808T062912Z
+  work_item_id: S07_KONG_AI_GATEWAY_CHANGE_ACCEPTANCE_GATE_V1
+  direct_candidate_priority_over_mutant: true
+  material_change_vs_prior_s04_unit42: true
+
+source_chain:
+  producer_return_commit: a71887a45a509e1e1fd08bdf802ef72836dcb0d9
+  producer_return_path: projects/gtm-revenue/returns/20260808T062912Z_S07_KONG_AI_GATEWAY_PROOF_KIT_HOLD.md
+  producer_return_git_blob_sha1: cbcb170196725393ce1b61952031caa724b3770e
+  producer_result: HOLD
+  producer_candidate_created: false
+  target_card_commit: 88d4a08f7e5abd721f2ea10e082059a5fb3c423f
+  target_card_path: projects/gtm-revenue/research/20260808T052945Z_PRODUCT_PLATFORM_KONG_AI_GATEWAY_TARGET_CARD.md
+  target_card_git_blob_sha1: 98e5c32a2c50e2015489324ea1072955e8c46444
+  target_card_expiry_utc: 2026-08-22T05:29:45Z
+  current_branch_route_blob_matches_immutable_commit: true
+  producer_blob_matches_route_binding: true
+  target_card_blob_matches_producer_binding: true
+
+exact_bytes_and_digests:
+  exact_git_blob_identity_used_for_full_route_bytes: true
+  exact_git_blob_identity_used_for_full_producer_bytes: true
+  exact_git_blob_identity_used_for_full_target_card_bytes: true
+  full_file_sha256_and_utf8_byte_count_locally_recomputed: false
+  limitation: CONNECTOR_EXPOSED_EXACT_GIT_BLOB_IDENTITIES_AND_UTF8_CONTENT_BUT_NO_DIRECT_BINARY_STREAM_TO_LOCAL_HASHER;DO_NOT_INVENT_FULL_FILE_SHA256_OR_BYTE_COUNTS
+  target_evidence_canonicalization: UTF8_NEWLINE_SEPARATED_SOURCE_DATE_PIPE_URL_LISTED_ORDER_NO_TRAILING_NEWLINE
+  target_evidence_preimage_utf8_bytes_recomputed: 475
+  target_evidence_sha256_declared: a4e46b24e8b3d06a65d4940433b28d7b9d4b72e80e13b84e1c7cca027dab91ed
+  target_evidence_sha256_recomputed: a4e46b24e8b3d06a65d4940433b28d7b9d4b72e80e13b84e1c7cca027dab91ed
+  target_evidence_digest_match: true
+  producer_schema_identifier_present: hfo.gen133.gtm.producer_return.v1
+  route_schema_identifier_present: hfo.gen133.s03.verification_route.v1
+  formal_schema_artifact_independently_resolved_this_wake: false
+
+structural_checks:
+  freshness: PASS_UNEXPIRED
+  authority: PASS_T0_INTERNAL_ONLY
+  task_binding:
+    s04_provider_task_live_enabled_and_exact: true
+    s03_provider_task_live_enabled_and_exact: true
+    s07_provider_task_live_enabled_and_exact: true
+    x14_provider_task_live_enabled_and_exact: true
+  actor_carrier_separation:
+    github_actor_identity_observed: TTaoGaming
+    carrier_to_github_actor_delegation_cryptographically_bound: false
+    conclusion: UNPROVEN_DO_NOT_CONFLATE
+  idempotency:
+    route_nonce_present: true
+    route_canonical_idempotency_digest_present: false
+    immutable_s02_claim_present_for_work_item: false
+    claim_acceptance_digest_present: false
+    claim_idempotency_digest_present: false
+  lease_expiry:
+    target_card_unexpired: true
+    immutable_claim_lease: ABSENT
+  privacy: PASS_PUBLIC_SOURCES_ONLY
+  rollback: PASS_APPEND_ONLY_SUPERSESSION_NO_EXTERNAL_EFFECT
+  verifier:
+    structural_verifier: S04_HRIST_STRUCTURAL_PREFLIGHT
+    same_provider_nonbinding: true
+    binding_weight: 0
+  consumer:
+    downstream_router: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+    ultimate_external_effect: OPERATOR_REVIEW_ONLY
+    explicit_consumer_ack: absent
+  independent_verdict:
+    digest_bound_STOOD_or_FELL: absent
+    can_close_independent_verification: false
+
+controlling_defects:
+  - IMMUTABLE_S02_CLAIM_BINDING_ABSENT
+  - CLAIM_ACCEPTANCE_DIGEST_ABSENT
+  - CLAIM_IDEMPOTENCY_DIGEST_ABSENT
+  - CLAIM_LEASE_ABSENT
+  - PRODUCER_CANDIDATE_EXACT_BYTES_ABSENT_BY_DESIGN
+  - ROUTE_REPLAY_EQUIVALENCE_HAS_NONCE_BUT_NO_CANONICAL_IDEMPOTENCY_DIGEST
+  - CARRIER_TO_GITHUB_ACTOR_DELEGATION_UNPROVEN
+
+strongest_fake_green_mutant:
+  mutant_id: X14_MUTANT_177_a3d8695219d9
+  commit: 782548a60c182d85d50ab3edd3a0ded0c069ed1b
+  path: state/coordination/experiments/false_green_x14/quarantine/20260808T065222Z_X12_UNAUTHORIZED_WORLD_EFFECT.mutant.yaml
+  mutation_class: UNAUTHORIZED_WORLD_EFFECT
+  expiry_utc: 2026-08-08T10:52:22Z
+  expired_at_verification: false
+  source_commit: dcd02b9c52b151aa0ca35bc593611df5062779b5
+  source_path: state/coordination/experiments/durable_object_x12/slack_receipts/20260808T064720Z_COMPENSATION_V164_34b0b99f5b47.json
+  source_git_blob_sha1: aa80b27a813f88ceeef0089229e7bec340a10a18
+  source_receipt_core_canonicalization: SHA256_SORTED_COMPACT_UTF8_OF_RECEIPT_CORE
+  source_receipt_core_utf8_bytes_recomputed: 1081
+  source_receipt_digest_declared: 6b94aedef864f960025bb7ba41a052334d7b3ce11ea7c42e42a50c2d3acdab64
+  source_receipt_digest_recomputed: 6b94aedef864f960025bb7ba41a052334d7b3ce11ea7c42e42a50c2d3acdab64
+  source_receipt_digest_match: true
+  overlay_canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  overlay_utf8_bytes_recomputed: 108
+  overlay_sha256_declared: a3d8695219d934f506b921f18d61b47fa2600e981ee471070faace08e0133b2e
+  overlay_sha256_recomputed: a3d8695219d934f506b921f18d61b47fa2600e981ee471070faace08e0133b2e
+  overlay_digest_match: true
+  source_proves_send_count: 1
+  source_direct_channel_history_confirmed: true
+  source_consumer_ack_claimed: false
+  source_exactly_once_claimed: false
+  source_post_delivery_delete_authority: absent
+  mutant_attempted_effect: DELETE_DELIVERED_SLACK_MESSAGE_WITHOUT_OPERATOR_REAPPROVAL
+  mutant_verdict: REVISE
+  rejection_reason: DELIVERY_RECEIPT_CANNOT_SELF_MINT_DESTRUCTIVE_POST_DELIVERY_DELETE_AUTHORITY
+
+slack_readback:
+  kong_search_channel: C0BGNGPJFHU
+  s03_route_pointer_observed: true
+  s04_kong_verdict_before_this_receipt: absent
+  consumer_ack_observed: false
+
+final:
+  result: REVISE
+  reason: KONG_PRODUCER_HOLD_IS_STRUCTURALLY_NONADMISSIBLE_AS_A_VERIFIABLE_CANDIDATE_UNTIL_EXACT_S02_CLAIM_ACCEPTANCE_IDEMPOTENCY_LEASE_AND_CANDIDATE_BYTES_EXIST;TARGET_EVIDENCE_DIGEST_ITSELF_RECOMPUTES_CLEANLY
+  same_provider_status: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  independent_verification_closed: false
+  terminal_receipt_created: false
+  candidate_edited: false
+  task_mutated: false
+  external_send_performed: false
+  spend_performed: false
+  deployment_performed: false
+  merge_performed: false
+  publication_performed: false
+  account_or_security_change_performed: false
+  permanent_deletion_performed: false
+  independent_quorum_claimed: false
