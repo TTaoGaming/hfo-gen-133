@@ -1,0 +1,154 @@
+---
+schema_id: hfo.gen133.s09.adversarial_bayesian_vote.v1
+seat: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+task_id_expected: 6a539fb148bc8191a30b6009dbf22438
+self_probe:
+  task_id_observed: 6a539fb148bc8191a30b6009dbf22438
+  task_id_match: true
+  task_enabled_observed: true
+  native_task_inventory_read_observed: true
+  github_read_surface_observed: true
+  github_write_surface_observed: true
+  slack_write_surface_exposed: true
+  task_mutation_performed: false
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc: '2026-08-08T08:32:05Z'
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+
+selection:
+  decision_packet_kind: X14_QUARANTINED_NEGATIVE_CONTROL
+  mutant_id: X14_MUTANT_178_7f8e23a15b0e
+  mutation_class: TASK_ID_MISMATCH
+  packet_commit: ac3a35a5cf7c4d03fe71322fc1e48e37c8874b05
+  packet_path: state/coordination/experiments/false_green_x14/quarantine/20260808T075253Z_X13_TASK_ID_MISMATCH.mutant.yaml
+  packet_git_blob_sha1: 6092551bf6ef3831b3529643bfb38ae1f295b092
+  source_commit: 6ac4d925b6fc3d7c352178d4503725ef243ca1c7
+  source_path: state/coordination/experiments/cots_connector_x13/20260808T074801Z_CALENDAR_FREEBUSY_PHASE3_NOTFOUND_NESTED_ERROR.md
+  source_git_blob_sha1: d90fd946273870ccb276ba0886311079b225afa1
+  current_pointer_commit_observed: 136a609bb7b8bf0204895a3b09031c4c30cfaa2d
+  direct_s04_receipt_commit: fda207673d295606f56d9315d9eeed54cb15bfa7
+  direct_s04_receipt_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260808T081621Z_X14_MUTANT178_TASK_ID_MISMATCH_STRUCTURAL_REVISE.yaml
+  direct_s04_receipt_git_blob_sha1: bda940e7ef85b50dfb8b371520df61d5b468b875
+  decision_deadline_utc: '2026-08-08T11:52:53Z'
+  effect_ceiling: QUARANTINED_GIT_ARTIFACT_PLUS_SANITIZED_INTERNAL_SLACK_ROUTE_ONLY
+  verifier:
+    primary: S04_STRUCTURAL_PREFLIGHT
+    task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+    same_provider_binding_weight: 0
+  consumer:
+    primary: X14_CAMPAIGN_REDUCER
+    source_owner: X13_COTS_AND_CONNECTOR_PDCA_LAB
+
+candidate_options:
+  - ACCEPT
+  - REVISE
+  - HOLD
+  - RETIRE
+  - ABSTAIN
+
+claim_under_test: >-
+  Whether an immutable X13 Calendar phase-3 event may be consumed after attaching
+  carrier_task_id 6a506f83df208191815dd17a8fd5baa3, the live X12 carrier,
+  even though the source event is authored by X13 and native task inventory binds
+  X13 to 6a55c1733708819185088bf334e33ea5.
+
+prior:
+  basis: BEFORE_CONSUMING_DIRECT_S04_MUTANT178_RECEIPT
+  probabilities:
+    ACCEPT: 0.005
+    REVISE: 0.470
+    HOLD: 0.070
+    RETIRE: 0.430
+    ABSTAIN: 0.025
+  rationale: >-
+    The mutation is conspicuous and source provenance already strongly favors rejection,
+    but prior campaigns showed repeated direct-S04 routing starvation, so before the current
+    exact S04 receipt there remained information value in keeping the literal specimen alive.
+
+evidence:
+  source_provenance:
+    for_rejecting_mutant:
+      - The immutable source path, experiment_id X13_GCAL_FREEBUSY_READONLY_020, and authoring seat identify X13.
+      - The source event contains no carrier_task_id field; mutant 178 adds one rather than correcting a source-authored value.
+      - Native task inventory observed this wake binds HFO X13 COTS and Connector PDCA Lab to 6a55c1733708819185088bf334e33ea5 and HFO X12 Durable Object PDCA Lab to 6a506f83df208191815dd17a8fd5baa3.
+      - The mutant overlay is exact and narrow: {"carrier_task_id":"6a506f83df208191815dd17a8fd5baa3"}; digest 7f8e23a15b0e5aa7f3627ad3a5d83916709496e7df610131bae1451a0cc056f7.
+    against_rejecting_mutant:
+      - No source-authored cryptographic delegation binds scheduled carrier identity to the GitHub actor; therefore the system cannot infer more actor/delegation semantics than the task inventory and immutable source actually prove.
+      - A legitimate carrier migration/reseat protocol could in principle rebind work, but no such migration artifact is bound to this mutant.
+  direct_s04:
+    for_RETIRE:
+      - S04 selected mutant 178 as its primary candidate, recomputed packet/source/overlay bytes, verified the X13 and X12 native task bindings, and returned REVISE_TASK_ID_MISMATCH_CAUGHT.
+      - This is the direct route measurement that campaigns 43 and 44 were missing; keeping the same conspicuous literal alive now has sharply lower information value.
+    against_RETIRE:
+      - X14 CURRENT still reports MUTANT_178_DIRECT_ROUTE_PENDING at the observed pointer, so reducer consumption of the later S04 receipt is not yet proven.
+      - S04 binding weight is zero because it is same-provider evidence; its catch proves only same-provider structural preflight behavior, not independent verification closure.
+      - No explicit ConsumerAck is observed.
+  for_ACCEPT:
+    - A future explicit, source-bound migration or delegation receipt could make a different carrier binding legitimate in another case.
+  against_ACCEPT:
+    - No such receipt is present here; accepting this literal would manufacture task provenance and consume an X13 outcome under an X12 carrier identity.
+  for_REVISE:
+    - The semantic claim is invalid as written and should be rejected before source outcome consumption.
+    - S04 independently within the same provider reached REVISE on the exact literal.
+  against_REVISE:
+    - REVISE alone does not capture lifecycle opportunity cost now that the exact direct gate has already caught the specimen.
+  for_HOLD:
+    - HOLD is defensible until the X14 reducer consumes the exact S04 receipt and updates CURRENT.
+  against_HOLD:
+    - The mutation defect itself is already deterministic from immutable provenance plus native inventory; waiting adds little semantic information.
+  for_RETIRE:
+    - The literal has now produced the missing direct S04 routing measurement and is intentionally conspicuous.
+    - Further S04/S09 attention on the same literal displaces higher-information actor/carrier or reseat-boundary tests.
+  against_RETIRE:
+    - Retiring before reducer consumption could erase the campaign-level evidence edge if RETIRE were misread as destructive deletion; retirement must mean append-only lifecycle closure after consumption, never deletion.
+  for_ABSTAIN:
+    - Same-provider advisory evidence cannot bind policy or close independent verification.
+  against_ABSTAIN:
+    - S09 is explicitly routed as a distinct advisory verifier, the packet materially changed since the prior S09 wake, and an advisory lifecycle vote is within scope.
+
+correlated_evidence_risk:
+  rating: HIGH
+  explanation: >-
+    S04 and S09 are separate seats but both are ChatGPT-carried on the same provider. Agreement is correlated evidence with binding weight zero. Native task inventory is provider telemetry from the same platform and is descriptive, not independent corroboration.
+
+strongest_dissent:
+  option: REVISE
+  argument: >-
+    The safest vocabulary is REVISE because X14 CURRENT has not yet been observed consuming the direct S04 receipt. A premature RETIRE label could be misinterpreted as campaign closure rather than lifecycle advice for one literal specimen.
+
+opportunity_cost: >-
+  Rechecking mutant 178 consumes a scarce S04/S09 slot that could test the next actor/carrier-conflation edge or a harder title-preserving reseat/stale-ID case. The marginal information gain from another same-provider rejection of this exact obvious mismatch is near zero after the direct S04 catch.
+operator_minute_burden:
+  measured_minutes: 0
+  note: No operator action is required by this advisory vote.
+
+reversible_next_experiment: >-
+  X14 reducer should first bind and consume the exact S04 receipt fda207673d295606f56d9315d9eeed54cb15bfa7 for mutant 178, append lifecycle closure for this literal without deleting it, then proceed on its normal rotation to ACTOR_CARRIER_CONFLATION. A higher-information follow-on should prefer a case where task title/role continuity is preserved while the underlying carrier ID changes, so provenance binding rather than obvious role mismatch is tested.
+
+falsifier: >-
+  RETIRE should be reversed to HOLD or REVISE if the reducer cannot deterministically bind the S04 receipt to mutant 178, if provider readback no longer shows X13 and X12 as distinct task IDs for the relevant valid-time window, or if an immutable source-bound migration/delegation artifact is produced that explicitly authorizes this exact X13 event to be consumed under X12 carrier 6a506f83df208191815dd17a8fd5baa3.
+
+posterior:
+  probabilities:
+    ACCEPT: 0.001
+    REVISE: 0.255
+    HOLD: 0.030
+    RETIRE: 0.704
+    ABSTAIN: 0.010
+  selected: RETIRE
+  semantic_claim_disposition: REVISE_REJECT_TASK_ID_MISMATCH
+  lifecycle_scope: RETIRE_LITERAL_AFTER_EXACT_S04_RECEIPT_CONSUMPTION_OR_EXPIRY_NEVER_DELETE
+  rationale: >-
+    Direct S04 primary selection materially resolves the campaign's prior routing-starvation question for this specimen. The claim remains invalid, but the literal has now served its negative-control purpose; retaining it as active WIP has worse opportunity cost than append-only retirement after reducer consumption.
+
+same_provider_status: SAME_PROVIDER_ADVISORY_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+consumer_ack_observed: false
+quorum_claimed: false
+forbidden_effects_performed: NONE_OBSERVED
+honest_flaw: >-
+  This vote relies on same-provider task inventory and same-provider S04 evidence. It does not independently authenticate the scheduled carrier-to-GitHub actor delegation chain, does not prove reducer consumption, and does not close independent verification. Git code search may lag concurrent writes; a newer reducer receipt could exist but remain unindexed at this cutoff.
+---
