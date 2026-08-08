@@ -1,63 +1,49 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
-experiment_id: X11_DRIVE_FIXED_IMPOSSIBLE_MARKER_METADATA_SEARCH_V1
-current_version: 171
-accepted_wakes: 3
+experiment_id: X11_CALENDAR_FIXED_IMPOSSIBLE_MARKER_EVENT_SEARCH_V1
+current_version: 172
+accepted_wakes: 0
 target_wakes_before_decision: 4
-controlled_factor: drive_read_surface
+controlled_factor: calendar_read_surface
 campaign_status: ACTIVE
 current_disposition: null
-baseline_result: gmail_fixed_impossible_marker_id_search_surface_kept_4_of_4_with_zero_sanitized_results_and_no_continuation
-hypothesis: a_fixed_impossible_marker_drive_metadata_only_search_can_execute_without_file_content_fetch_and_return_only_sanitized_result_count_and_continuation_metadata
+baseline_result: drive_fixed_impossible_marker_metadata_search_surface_kept_4_of_4_with_zero_sanitized_results_and_no_continuation
+hypothesis: a_fixed_impossible_marker_bounded_calendar_search_can_execute_without_event_detail_readback_and_return_only_sanitized_result_count_and_continuation_metadata
 measured_result:
-  query_runs:
-    - wake: 1
-      execution_success: true
-      sanitized_result_count: 0
-      continuation_present: false
-      latency_ms_exposed: 2750
-    - wake: 2
-      execution_success: true
-      sanitized_result_count: 0
-      continuation_present: false
-      latency_ms_exposed: 2405
-    - wake: 3
-      execution_success: true
-      sanitized_result_count: 0
-      continuation_present: false
-      latency_ms_exposed: 806
-  permission_class: AUTHENTICATED_DRIVE_METADATA_SEARCH_READ_AVAILABLE
-  error_class: NONE
+  query_runs: []
+  permission_class: NOT_YET_MEASURED
+  error_class: NOT_YET_MEASURED
   operator_relay_minutes: 0
   changed_capability: false
   campaign_decision: false
   andon: false
-supported_claim: three_authenticated_drive_metadata_only_document_searches_executed_without_content_fetch_and_returned_zero_sanitized_results
-claim_ceiling: does_not_establish_drive_completeness_recall_index_freshness_file_content_access_source_authenticity_or_independent_verification
-strongest_falsifier: the_fixed_impossible_marker_search_requires_content_fetch_or_mutation_cannot_execute_or_exposes_content_beyond_the_sanitized_measurement_contract
+supported_claim: no_calendar_read_surface_claim_yet
+claim_ceiling: does_not_establish_calendar_completeness_recall_index_freshness_event_detail_access_source_authenticity_or_independent_verification
+strongest_falsifier: the_fixed_impossible_marker_calendar_search_requires_mutation_cannot_execute_or_exposes_event_content_beyond_the_sanitized_measurement_contract
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 consumer: [Reginleif, Ratatoskr]
-honest_flaw: an_impossible_marker_zero_result_can_measure_search_surface_execution_but_cannot_establish_recall_or_drive_completeness
+honest_flaw: an_impossible_marker_zero_result_can_measure_search_surface_execution_but_cannot_establish_recall_or_calendar_completeness
 prior_campaign:
-  experiment_id: X11_GMAIL_FIXED_IMPOSSIBLE_MARKER_ID_SEARCH_V1
+  experiment_id: X11_DRIVE_FIXED_IMPOSSIBLE_MARKER_METADATA_SEARCH_V1
   disposition: KEEP
-  supported_claim: four_authenticated_bounded_gmail_message_id_searches_executed_with_zero_sanitized_results_and_no_continuation
+  supported_claim: four_authenticated_drive_metadata_only_document_searches_executed_without_content_fetch_and_returned_zero_sanitized_results_and_no_continuation
   accepted_wakes: 4
 last_event:
-  commit: d498dc1a3cc0e0e468f2149485554a6736f7fb33
-  path: state/coordination/experiments/carrier_surface_x11/events/20260808T054205Z_DRIVE_FIXED_IMPOSSIBLE_MARKER_METADATA_SEARCH_V1_WAKE_03.yaml
-  blob: 39ba0b255750a88b57d84008665c9b546be06104
-next_factor: drive_read_surface
+  commit: 43f09d6a2be2998821aa158e7b9dc27a11655260
+  path: state/coordination/experiments/carrier_surface_x11/events/20260808T064008Z_DRIVE_FIXED_IMPOSSIBLE_MARKER_METADATA_SEARCH_V1_WAKE_04.yaml
+  blob: 08ecfca98c7e3ffc7bb924e70da119ad62895c80
+next_factor: calendar_read_surface
 next_probe:
-  experiment_id: X11_DRIVE_FIXED_IMPOSSIBLE_MARKER_METADATA_SEARCH_V1
-  campaign_wake: 4
-  mode: read_only_fixed_impossible_marker_metadata_search
+  experiment_id: X11_CALENDAR_FIXED_IMPOSSIBLE_MARKER_EVENT_SEARCH_V1
+  campaign_wake: 1
+  mode: read_only_fixed_impossible_marker_bounded_search
   exact_query: '__HFO_X11_FIXED_IMPOSSIBLE_MARKER_6A55089A9ADC8191BDA54541F7F9EFFA__'
-  topn: 1
-  item_type: document
-  best_effort_fetch: false
+  max_results: 1
+  calendar_id: primary
+  time_min: '2000-01-01T00:00:00Z'
+  time_max: '2000-01-02T00:00:00Z'
   persist_only: [execution_success, sanitized_result_count, continuation_present, permission_class, error_class, latency_when_exposed, operator_relay_minutes]
-  expected_current_version: 171
-updated_valid_time_utc: 2026-08-08T05:42:05Z
+  expected_current_version: 172
+updated_valid_time_utc: 2026-08-08T06:40:08Z
 sealed: false
 ---
