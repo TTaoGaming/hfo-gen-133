@@ -1,73 +1,45 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
-experiment_id: X11_CALENDAR_FIXED_IMPOSSIBLE_MARKER_EVENT_SEARCH_V1
-current_version: 175
-accepted_wakes: 3
+experiment_id: X11_NATIVE_TASKS_EXPECTED_ID_VISIBILITY_V1
+current_version: 176
+accepted_wakes: 0
 target_wakes_before_decision: 4
-controlled_factor: calendar_read_surface
+controlled_factor: native_tasks_read_visibility
 campaign_status: ACTIVE
 current_disposition: null
-baseline_result: drive_fixed_impossible_marker_metadata_search_surface_kept_4_of_4_with_zero_sanitized_results_and_no_continuation
-hypothesis: a_fixed_impossible_marker_bounded_calendar_search_can_execute_without_event_detail_readback_and_return_only_sanitized_result_count_and_continuation_metadata
+baseline_result: calendar_fixed_impossible_marker_event_search_surface_kept_4_of_4_with_zero_sanitized_results_no_continuation_and_no_event_detail_readback
+hypothesis: a_read_only_native_tasks_list_can_expose_whether_the_expected_task_id_is_visible_without_task_mutation_or_persisting_task_prompt_content
 measured_result:
-  query_runs:
-    - wake: 1
-      execution_success: true
-      sanitized_result_count: 0
-      continuation_present: false
-      permission_class: CALENDAR_EVENT_SEARCH_READ_AVAILABLE
-      error_class: NONE
-      latency_ms_exposed: 245
-      operator_relay_minutes: 0
-    - wake: 2
-      execution_success: true
-      sanitized_result_count: 0
-      continuation_present: false
-      permission_class: CALENDAR_EVENT_SEARCH_READ_AVAILABLE
-      error_class: NONE
-      latency_ms_exposed: 654
-      operator_relay_minutes: 0
-    - wake: 3
-      execution_success: true
-      sanitized_result_count: 0
-      continuation_present: false
-      permission_class: CALENDAR_EVENT_SEARCH_READ_AVAILABLE
-      error_class: NONE
-      latency_ms_exposed: 885
-      operator_relay_minutes: 0
-  permission_class: CALENDAR_EVENT_SEARCH_READ_AVAILABLE
-  error_class: NONE
+  query_runs: []
+  permission_class: NOT_YET_MEASURED
+  error_class: NOT_YET_MEASURED
   operator_relay_minutes: 0
   changed_capability: false
   campaign_decision: false
   andon: false
-supported_claim: three_authenticated_bounded_calendar_event_searches_executed_with_zero_sanitized_results_no_continuation_and_no_event_detail_readback
-claim_ceiling: does_not_establish_calendar_completeness_recall_index_freshness_event_detail_access_source_authenticity_or_independent_verification
-strongest_falsifier: the_fixed_impossible_marker_calendar_search_requires_mutation_cannot_execute_or_exposes_event_content_beyond_the_sanitized_measurement_contract
+supported_claim: no_native_tasks_read_visibility_claim_yet
+claim_ceiling: does_not_establish_task_execution_history_schedule_correctness_prompt_integrity_current_run_provenance_or_mutation_permission
+strongest_falsifier: native_tasks_list_is_unavailable_or_unauthenticated_the_expected_task_id_cannot_be_determined_without_sensitive_readback_or_the_probe_requires_task_mutation
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 consumer: [Reginleif, Ratatoskr]
-honest_flaw: an_impossible_marker_zero_result_can_measure_search_surface_execution_but_cannot_establish_recall_or_calendar_completeness
+honest_flaw: expected_task_id_presence_would_measure_list_visibility_only_and_would_not_prove_schedule_correctness_or_that_this_run_came_from_that_task
 prior_campaign:
-  experiment_id: X11_DRIVE_FIXED_IMPOSSIBLE_MARKER_METADATA_SEARCH_V1
+  experiment_id: X11_CALENDAR_FIXED_IMPOSSIBLE_MARKER_EVENT_SEARCH_V1
   disposition: KEEP
-  supported_claim: four_authenticated_drive_metadata_only_document_searches_executed_without_content_fetch_and_returned_zero_sanitized_results_and_no_continuation
+  supported_claim: four_authenticated_bounded_calendar_event_searches_executed_with_zero_sanitized_results_no_continuation_and_no_event_detail_readback
   accepted_wakes: 4
 last_event:
-  commit: 7e9a4235e76cdbda921b42e360822758dc06dfb7
-  path: state/coordination/experiments/carrier_surface_x11/events/20260808T093910Z_CALENDAR_FIXED_IMPOSSIBLE_MARKER_EVENT_SEARCH_V1_WAKE_03.yaml
-  blob: e7810829aff96d0bc27000dc5a989c0d6f763aef
-next_factor: calendar_read_surface
+  commit: 87016b103ea0c0822ec6a33fa7b5c6aea87fde31
+  path: state/coordination/experiments/carrier_surface_x11/events/20260808T104014Z_CALENDAR_FIXED_IMPOSSIBLE_MARKER_EVENT_SEARCH_V1_WAKE_04.yaml
+  blob: 18bd2a0a9792a0295407f81eb961c32695de16a8
+next_factor: native_tasks_read_visibility
 next_probe:
-  experiment_id: X11_CALENDAR_FIXED_IMPOSSIBLE_MARKER_EVENT_SEARCH_V1
-  campaign_wake: 4
-  mode: read_only_fixed_impossible_marker_bounded_search
-  exact_query: '__HFO_X11_FIXED_IMPOSSIBLE_MARKER_6A55089A9ADC8191BDA54541F7F9EFFA__'
-  max_results: 1
-  calendar_id: primary
-  time_min: '2000-01-01T00:00:00Z'
-  time_max: '2000-01-02T00:00:00Z'
-  persist_only: [execution_success, sanitized_result_count, continuation_present, permission_class, error_class, latency_when_exposed, operator_relay_minutes]
-  expected_current_version: 175
-updated_valid_time_utc: 2026-08-08T09:40:00Z
+  experiment_id: X11_NATIVE_TASKS_EXPECTED_ID_VISIBILITY_V1
+  campaign_wake: 1
+  mode: read_only_native_tasks_list_expected_id_presence
+  expected_task_id: '6a55089a9adc8191bda54541f7f9effa'
+  persist_only: [execution_success, expected_task_id_present, matched_count, permission_class, error_class, latency_when_exposed, operator_relay_minutes]
+  expected_current_version: 176
+updated_valid_time_utc: 2026-08-08T10:40:14Z
 sealed: false
 ---
