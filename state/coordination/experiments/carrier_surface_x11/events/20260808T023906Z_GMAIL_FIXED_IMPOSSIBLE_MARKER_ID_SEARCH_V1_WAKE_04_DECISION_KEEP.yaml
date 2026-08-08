@@ -1,0 +1,35 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+experiment_id: X11_GMAIL_FIXED_IMPOSSIBLE_MARKER_ID_SEARCH_V1
+campaign_wake: 4
+accepted: true
+expected_current_version: 167
+baseline: wakes_1_to_3_success_zero_results_no_continuation
+hypothesis: fixed_impossible_marker_id_search_executes_without_message_content_readback_and_returns_only_sanitized_metadata
+controlled_factor: gmail_read_surface
+exact_probe: 'Gmail.search_email_ids fixed impossible subject marker; max_results=1'
+measured_result:
+  execution_success: true
+  sanitized_result_count: 0
+  continuation_present: false
+  latency_ms_when_exposed: 153
+  operator_relay_minutes: 0
+permission_class: AUTHENTICATED_GMAIL_MESSAGE_ID_SEARCH_READ_AVAILABLE
+error_class: NONE
+campaign_results:
+  sanitized_result_counts: [0, 0, 0, 0]
+  continuation_present: [false, false, false, false]
+  latency_ms_when_exposed: [229, 323, 326, 153]
+  operator_relay_minutes: 0
+campaign_decision: KEEP
+supported_claim: four_authenticated_bounded_gmail_message_id_searches_executed_with_zero_sanitized_results_and_no_continuation
+claim_ceiling: gmail_message_id_search_execution_and_sanitized_count_only_not_mailbox_completeness_search_recall_indexing_freshness_message_content_access_authenticity_or_independent_verification
+strongest_falsifier: the_fixed_search_requires_mutation_or_sensitive_readback_cannot_execute_or_exposes_content_beyond_the_sanitized_measurement_contract
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer: [Reginleif, Ratatoskr]
+honest_flaw: an_impossible_marker_zero_result_can_measure_search_surface_execution_but_cannot_establish_recall_or_mailbox_completeness
+next_factor: drive_read_surface
+next_experiment_id: X11_DRIVE_FIXED_IMPOSSIBLE_MARKER_METADATA_SEARCH_V1
+valid_time_utc: 2026-08-08T02:39:06Z
+sealed: true
+---
