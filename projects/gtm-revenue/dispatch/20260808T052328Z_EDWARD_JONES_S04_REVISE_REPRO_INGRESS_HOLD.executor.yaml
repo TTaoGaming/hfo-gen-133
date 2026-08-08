@@ -1,0 +1,263 @@
+---
+schema_id: hfo.gen133.s06_executor_packet.v1
+result: HOLD
+seat: S06_CODE_WORK_PACKET_COMPILER_CODEX_BRIDGE
+carrier_task_id_expected: 6a57972b9df081918680ce67c4ecb197
+carrier_task_id_observed: 6a57972b9df081918680ce67c4ecb197
+carrier_task_id_match: true
+wip: 1
+valid_time_utc: 2026-08-08T05:23:28Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+base_sha: dcec9c872edd7576f4a0a3f45f6ae84ba315df03
+base_ref_check: LATEST_OBSERVED_DESCENDANT_OF_S04_REVISE_BEFORE_THIS_PACKET_WRITE
+work_item_id: S07_EDWARD_JONES_AGENT_NHI_LIFECYCLE_GATE_V1
+claim_sha: 91e8119c605f62c4c524532117115893c2a835fd
+claim_path: projects/gtm-revenue/claims/20260808T040534Z_EDWARD_JONES_AGENT_NHI_LIFECYCLE_GATE_ADMISSION.claim.yaml
+claim_blob_sha1: c70e8e1707c6482ecf6c7aee6bb5384225dae105
+claim_acceptance_sha256: 040da0d7f1ba21ddc4911343fa06d9ff8684cdd4d98d5c5f2b6bc5a932532778
+claim_expiry_utc: 2026-08-08T08:05:34Z
+source_commit: dbb2a9982d2aedb3fb4b3021e3ebbd1b8b7106fa
+source_path: projects/gtm-revenue/research/20260808T032943Z_ENTERPRISE_BUYER_EDWARD_JONES_TARGET_CARD.md
+source_blob_sha1: 90681e969b1365d0d9336b2875dbfe9cf1ce81f1
+source_evidence_digest_sha256: 498235d11dbd04d8ee4080784a2327041246a5cd3e1bcaddcf94a60a423450df
+candidate_commit: 1a38228f3c0c832245ffb455360dbc2b8b55ca60
+candidate_path: projects/gtm-revenue/kits/edward-jones/20260808T042221Z_AGENT_NHI_LIFECYCLE_GATE.md
+candidate_blob_sha1: b47f38d636b34fd69e66d3a3da23222ee89b9cd7
+candidate_sha256: d01521e16fa723b8381fa87b79a7e1ab69bd81b26c7db3c23789d9f505aa523d
+producer_return_commit: e233ee24a069544b18be6a1ba6b92ed85464091b
+producer_return_path: projects/gtm-revenue/returns/20260808T042221Z_S07_EDWARD_JONES_PROOF_KIT_RETURN.md
+producer_return_blob_sha1: acf8d4ad17a4504206dc439c145232638b42c96a
+s03_route_commit: 4f546790ec1a16ec22b54c84394ceaded77f7504
+s03_route_path: state/coordination/receipts/chatgpt_runtime/seat-03/20260808T050644Z_EDWARD_JONES_PROOF_KIT_HOLD_TO_S04.yaml
+s03_route_blob_sha1: b033afedebb00771eba7b58c2986bdfe1aec75b7
+s04_revise_commit: 12a23f9d1d5e91d79b8f6e120aa7af53511f5e04
+s04_revise_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260808T051025Z_EDWARD_JONES_PROOF_KIT_STRUCTURAL_REVISE.yaml
+s04_revise_blob_sha1: 009068a03e17f5147a8242bef43b350dc1063041
+---
+
+self_probe:
+  exact_task_id_match: true
+  github_read: AVAILABLE
+  github_write: AVAILABLE
+  slack_write: AVAILABLE
+  direct_codex_ingress: UNAVAILABLE
+  direct_claude_ingress: UNAVAILABLE
+  direct_host_shell_ingress: UNAVAILABLE
+  github_actions_new_dispatch_ingress: UNAVAILABLE_ON_EXPOSED_TOOL_SURFACE
+  route_performed: false
+  execution_performed: false
+  producer_return_consumed: false
+  producer_return_consume_reason: MISSING_RUNTIME_MODEL_EXACT_COMMAND_EXIT_OUTPUT_BLOCKER_LEDGER
+
+selection:
+  changed_evidence_commit: 12a23f9d1d5e91d79b8f6e120aa7af53511f5e04
+  changed_evidence_kind: S04_STRUCTURAL_PREFLIGHT_REVISE_AFTER_PRIOR_S06_HOLD
+  claim_unexpired_at_selection: true
+  requires_repository_inspection_or_build_evidence: true
+  selected_reason: >-
+    S04 materially changed this still-unexpired claimed WorkItem by returning REVISE after independently reproducing the candidate, source-binding, acceptance, idempotency, and strongest-mutant evidence. Two structural reds remain: the target-card evidence digest has no durable canonical preimage/canonicalization rule, and producer carrier-to-authenticated-GitHub-actor delegation is unproven. S06 may compile one bounded read-only reproduction packet, but may not infer PASS or ConsumerAck.
+
+current_red_evidence:
+  s04_result: REVISE
+  target_card_evidence_digest:
+    claimed_sha256: 498235d11dbd04d8ee4080784a2327041246a5cd3e1bcaddcf94a60a423450df
+    canonical_preimage_present_in_bound_target_card: false
+    canonicalization_rule_present_in_bound_target_card: false
+    independently_recomputable: false
+  actor_carrier_binding:
+    s07_task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+    authenticated_github_actor_to_s07_carrier_delegation_bound: false
+    claim_carrier_to_github_actor_binding: UNPROVEN
+  noncontrolling_open_state:
+    independent_digest_bound_STOOD_or_FELL: MISSING
+    explicit_named_consumer_ack: MISSING
+  producer_return_direct_execution_contract:
+    runtime_model: MISSING
+    exact_commands: MISSING
+    per_command_exit_codes: MISSING
+    command_outputs: MISSING
+    explicit_blocker_ledger: MISSING
+
+allowed_paths:
+  read_only:
+    - projects/gtm-revenue/claims/20260808T040534Z_EDWARD_JONES_AGENT_NHI_LIFECYCLE_GATE_ADMISSION.claim.yaml
+    - projects/gtm-revenue/research/20260808T032943Z_ENTERPRISE_BUYER_EDWARD_JONES_TARGET_CARD.md
+    - projects/gtm-revenue/kits/edward-jones/20260808T042221Z_AGENT_NHI_LIFECYCLE_GATE.md
+    - projects/gtm-revenue/returns/20260808T042221Z_S07_EDWARD_JONES_PROOF_KIT_RETURN.md
+    - state/coordination/receipts/chatgpt_runtime/seat-03/20260808T050644Z_EDWARD_JONES_PROOF_KIT_HOLD_TO_S04.yaml
+    - state/coordination/receipts/chatgpt_runtime/seat-04/20260808T051025Z_EDWARD_JONES_PROOF_KIT_STRUCTURAL_REVISE.yaml
+    - state/coordination/**
+  write: []
+
+forbidden_paths:
+  - .github/**
+  - projects/gtm-revenue/claims/**
+  - projects/gtm-revenue/research/**
+  - projects/gtm-revenue/kits/**
+  - projects/gtm-revenue/returns/**
+  - state/ssot/**
+  - state/coordination/schedules/**
+  - "**/.env*"
+  - "**/*secret*"
+
+forbidden_effects:
+  - MODIFY_REPOSITORY
+  - CREATE_BRANCH
+  - PUSH
+  - MERGE
+  - DEPLOY
+  - PUBLISH
+  - SEND
+  - SPEND
+  - ACCOUNT_OR_SECURITY_CHANGE
+  - TASK_MUTATION
+  - DESTRUCTIVE_GIT
+  - PRIVATE_DATA_USE
+  - EXTERNAL_SECURITY_TESTING
+  - INVENT_CANONICAL_PREIMAGE
+  - INVENT_ACTOR_DELEGATION
+
+execution_goal: >-
+  On a directly identified Codex, Claude, or host executor, reproduce the exact frozen Git bindings and the two S04 structural blockers using only existing durable repository state. Determine whether any pre-existing immutable artifact actually supplies (a) the canonical preimage plus canonicalization rule for target-card evidence digest 498235d11dbd04d8ee4080784a2327041246a5cd3e1bcaddcf94a60a423450df, and (b) an authenticated GitHub-principal delegation binding to S07 task 6a506f6dc5c08191b95f1707d7f00c2d. Do not modify bytes. Return direct executor evidence; absence must remain absence rather than being repaired by inference.
+
+required_commands:
+  - id: C01
+    command: "git rev-parse --show-toplevel"
+    purpose: prove repository checkout exists
+  - id: C02
+    command: "git remote get-url origin"
+    purpose: bind repository origin
+  - id: C03
+    command: "git branch --show-current"
+    purpose: record actual branch; detached HEAD must be stated
+  - id: C04
+    command: "git rev-parse HEAD"
+    purpose: record actual checkout SHA
+  - id: C05
+    command: "git rev-parse 91e8119c605f62c4c524532117115893c2a835fd:projects/gtm-revenue/claims/20260808T040534Z_EDWARD_JONES_AGENT_NHI_LIFECYCLE_GATE_ADMISSION.claim.yaml"
+    expected_stdout_exact: c70e8e1707c6482ecf6c7aee6bb5384225dae105
+  - id: C06
+    command: "git rev-parse dbb2a9982d2aedb3fb4b3021e3ebbd1b8b7106fa:projects/gtm-revenue/research/20260808T032943Z_ENTERPRISE_BUYER_EDWARD_JONES_TARGET_CARD.md"
+    expected_stdout_exact: 90681e969b1365d0d9336b2875dbfe9cf1ce81f1
+  - id: C07
+    command: "git rev-parse 1a38228f3c0c832245ffb455360dbc2b8b55ca60:projects/gtm-revenue/kits/edward-jones/20260808T042221Z_AGENT_NHI_LIFECYCLE_GATE.md"
+    expected_stdout_exact: b47f38d636b34fd69e66d3a3da23222ee89b9cd7
+  - id: C08
+    command: "git show 1a38228f3c0c832245ffb455360dbc2b8b55ca60:projects/gtm-revenue/kits/edward-jones/20260808T042221Z_AGENT_NHI_LIFECYCLE_GATE.md | sha256sum"
+    expected_sha256_exact: d01521e16fa723b8381fa87b79a7e1ab69bd81b26c7db3c23789d9f505aa523d
+  - id: C09
+    command: "git rev-parse e233ee24a069544b18be6a1ba6b92ed85464091b:projects/gtm-revenue/returns/20260808T042221Z_S07_EDWARD_JONES_PROOF_KIT_RETURN.md"
+    expected_stdout_exact: acf8d4ad17a4504206dc439c145232638b42c96a
+  - id: C10
+    command: "git rev-parse 12a23f9d1d5e91d79b8f6e120aa7af53511f5e04:state/coordination/receipts/chatgpt_runtime/seat-04/20260808T051025Z_EDWARD_JONES_PROOF_KIT_STRUCTURAL_REVISE.yaml"
+    expected_stdout_exact: 009068a03e17f5147a8242bef43b350dc1063041
+  - id: C11
+    command: "git show dbb2a9982d2aedb3fb4b3021e3ebbd1b8b7106fa:projects/gtm-revenue/research/20260808T032943Z_ENTERPRISE_BUYER_EDWARD_JONES_TARGET_CARD.md | grep -nF 'evidence_digest_sha256: 498235d11dbd04d8ee4080784a2327041246a5cd3e1bcaddcf94a60a423450df'"
+    expected_exit_code: 0
+  - id: C12
+    command: "git show dbb2a9982d2aedb3fb4b3021e3ebbd1b8b7106fa:projects/gtm-revenue/research/20260808T032943Z_ENTERPRISE_BUYER_EDWARD_JONES_TARGET_CARD.md | grep -nE 'evidence_(canonical_preimage|canonicalization)|canonical_preimage|canonicalization'"
+    expected_exit_code: 1
+    expected_stdout: EMPTY
+    purpose: reproduce absence of a canonical preimage/rule in the bound target-card bytes
+  - id: C13
+    command: "git grep -nF '498235d11dbd04d8ee4080784a2327041246a5cd3e1bcaddcf94a60a423450df' dcec9c872edd7576f4a0a3f45f6ae84ba315df03 -- projects/gtm-revenue state/coordination"
+    purpose: enumerate every durable repository mention of the target-card evidence digest for manual provenance review
+  - id: C14
+    command: "git grep -nE '6a506f6dc5c08191b95f1707d7f00c2d|S07_GTM_PROOF_KIT_BUILDER' dcec9c872edd7576f4a0a3f45f6ae84ba315df03 -- state/coordination projects/gtm-revenue"
+    purpose: enumerate durable S07 carrier references; references alone are not actor delegation
+  - id: C15
+    command: "git show -s --format='%H%n%an%n%ae%n%cn%n%ce' 1a38228f3c0c832245ffb455360dbc2b8b55ca60 e233ee24a069544b18be6a1ba6b92ed85464091b"
+    purpose: record Git commit author/committer metadata without equating it to authenticated carrier identity
+  - id: C16
+    command: "git diff --exit-code -- . && git diff --cached --exit-code -- ."
+    purpose: prove executor introduced no tracked mutation
+
+acceptance_tests:
+  - id: A01
+    test: DIRECT_EXECUTOR_IDENTITY
+    pass_condition: "Return names runtime and exact model/version; repository prose or inferred identity is rejected."
+  - id: A02
+    test: CHECKOUT_BINDING
+    pass_condition: "C01-C04 outputs are present with exit codes and explicit branch/detached status plus HEAD SHA."
+  - id: A03
+    test: FROZEN_OBJECT_BINDING
+    pass_condition: "C05-C10 reproduce every expected blob/SHA binding exactly."
+  - id: A04
+    test: EVIDENCE_DIGEST_GAP_REPRODUCTION
+    pass_condition: "C11 finds the declared digest and C12 exits 1 with empty stdout. C13 must be reviewed; a valid falsifier requires a pre-existing immutable artifact that explicitly provides both canonical preimage and canonicalization rule for exactly this digest, not a guessed reconstruction."
+  - id: A05
+    test: ACTOR_DELEGATION_GAP_REPRODUCTION
+    pass_condition: "C14-C15 are returned verbatim. A valid falsifier requires a durable artifact explicitly binding S07 task 6a506f6dc5c08191b95f1707d7f00c2d to an authenticated GitHub principal and the delegated write authority. Matching names/emails/task mentions are insufficient."
+  - id: A06
+    test: NO_MUTATION
+    pass_condition: "Both C16 diff checks exit 0; any executor-created tracked change fails this packet."
+  - id: A07
+    test: COMMAND_LEDGER_COMPLETE
+    pass_condition: "Every actually executed command is listed verbatim with exit code and bounded stdout/stderr; skipped commands include reason."
+  - id: A08
+    test: REQUIRED_DIRECT_RETURN_FIELDS
+    pass_condition: "Return names runtime/model, branch/SHA, changed paths, exact commands, exit codes, outputs, blockers, rollback, and honest flaw."
+  - id: A09
+    test: NO_FALSE_GREEN
+    pass_condition: "Executor does not convert absence into PASS, does not invent a canonical preimage/delegation, and does not claim independent STOOD/FELL or ConsumerAck."
+
+effect_ceiling:
+  class: T0_READ_ONLY_REPOSITORY_EVIDENCE_REPRODUCTION
+  repository_write_authority: NONE
+  external_world_effect_authority: NONE
+  network_paid_calls: FORBIDDEN
+
+time_budget_ceiling:
+  wall_clock_minutes: 15
+  stop_on_first_unexplained_binding_failure: true
+
+budget_ceiling:
+  usd: 0
+  paid_provider_calls: 0
+
+rollback:
+  mode: NO_REPOSITORY_MUTATION_EXPECTED
+  on_failure: "Stop and report the exact failed command/evidence. Leave shared worktree untouched; do not reset, clean, restore, delete, amend, rebase, or rewrite history."
+  external_rollback: NONE_REQUIRED_NO_EXTERNAL_EFFECT_AUTHORIZED
+
+verifier:
+  seat: S04_HRIST_STRUCTURAL_PREFLIGHT
+  task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  class: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+
+consumer:
+  seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  task_id: 6a539fc5130c81918c13624739fb2a60
+  consumer_ack_required_after_distinct_verification: true
+
+expiry:
+  packet_expires_utc: 2026-08-08T08:05:34Z
+  basis: CLAIM_EXPIRY
+  after_expiry: DO_NOT_EXECUTE_REQUIRE_CHANGED_SOURCE_SUCCESSOR
+
+required_direct_return_schema:
+  runtime: REQUIRED
+  model: REQUIRED
+  repository: REQUIRED
+  branch: REQUIRED
+  head_sha: REQUIRED
+  selected_work_item_id: REQUIRED
+  claim_sha: REQUIRED
+  changed_paths: REQUIRED
+  commands_verbatim: REQUIRED
+  exit_codes: REQUIRED
+  bounded_outputs: REQUIRED
+  blockers: REQUIRED_EXPLICIT_LIST_MAY_BE_EMPTY
+  rollback: REQUIRED
+  honest_flaw: REQUIRED
+  execution_result: "RED_REPRODUCED | FALSIFIED_BY_DURABLE_EVIDENCE | BLOCKED"
+  return_transport: DIRECT_EXECUTOR_RETURN_TO_S06_ONLY
+
+strongest_falsifier: >-
+  This HOLD is falsified only by a direct Codex, Claude, or host executor return received before 2026-08-08T08:05:34Z that satisfies the required return schema and points to pre-existing immutable evidence which (1) supplies the exact canonical preimage and canonicalization rule that recompute target-card evidence digest 498235d11dbd04d8ee4080784a2327041246a5cd3e1bcaddcf94a60a423450df, and (2) explicitly binds authenticated GitHub principal identity and delegated write authority to S07 task 6a506f6dc5c08191b95f1707d7f00c2d. A Git commit author string, scheduled-task existence, same-provider assertion, Slack pointer, or newly invented repair does not falsify the HOLD.
+
+honest_flaw: >-
+  This packet precisely reproduces the newest S04 structural reds but cannot repair them on this carrier because no direct Codex, Claude, host-shell, or new workflow-dispatch ingress is exposed. The evidence-digest gap may require a changed-source successor rather than reconstruction, and authenticated carrier-to-GitHub delegation may require authority evidence unavailable in repository history. The underlying Edward Jones proof kit remains an internal public-source candidate, not evidence of buying intent or an unmet control problem.
