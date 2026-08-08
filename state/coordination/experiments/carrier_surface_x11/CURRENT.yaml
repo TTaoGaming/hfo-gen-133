@@ -1,8 +1,8 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_NATIVE_TASKS_EXPECTED_ID_VISIBILITY_V1
-current_version: 178
-accepted_wakes: 2
+current_version: 179
+accepted_wakes: 3
 target_wakes_before_decision: 4
 controlled_factor: native_tasks_read_visibility
 campaign_status: ACTIVE
@@ -21,13 +21,18 @@ measured_result:
       expected_task_id_present: true
       matched_count: 1
       latency_when_exposed: NOT_EXPOSED_BY_SURFACE
+    - wake: 3
+      execution_success: true
+      expected_task_id_present: true
+      matched_count: 1
+      latency_when_exposed: NOT_EXPOSED_BY_SURFACE
   permission_class: AUTHENTICATED_NATIVE_TASKS_LIST_READ_AVAILABLE
   error_class: NONE
   operator_relay_minutes: 0
   changed_capability: false
   campaign_decision: false
   andon: false
-supported_claim: two_authenticated_read_only_native_tasks_lists_each_exposed_exact_presence_of_the_expected_task_id_without_task_mutation
+supported_claim: three_authenticated_read_only_native_tasks_lists_each_exposed_exact_presence_of_the_expected_task_id_without_task_mutation
 claim_ceiling: does_not_establish_task_execution_history_schedule_correctness_prompt_integrity_current_run_provenance_or_mutation_permission
 strongest_falsifier: a_repeat_native_tasks_list_fails_or_is_unauthenticated_or_the_expected_task_id_is_absent_or_ambiguous_without_sensitive_readback
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
@@ -39,17 +44,17 @@ prior_campaign:
   supported_claim: four_authenticated_bounded_calendar_event_searches_executed_with_zero_sanitized_results_no_continuation_and_no_event_detail_readback
   accepted_wakes: 4
 last_event:
-  commit: 0aa2650c4e18724faa52b2de1cc8f166a679e17c
-  path: state/coordination/experiments/carrier_surface_x11/events/20260808T123907Z_NATIVE_TASKS_EXPECTED_ID_VISIBILITY_V1_WAKE_02.yaml
-  blob: 9c9a74f3fc0743286d984c73930c85c415b123c4
+  commit: 8050475a4dc2ad954c952067e33cb42dabfeb4cc
+  path: state/coordination/experiments/carrier_surface_x11/events/20260808T133929Z_NATIVE_TASKS_EXPECTED_ID_VISIBILITY_V1_WAKE_03.yaml
+  blob: 1fdef0fe3c0a0bf1e370a97b8eadfa9ed8e8b735
 next_factor: native_tasks_read_visibility
 next_probe:
   experiment_id: X11_NATIVE_TASKS_EXPECTED_ID_VISIBILITY_V1
-  campaign_wake: 3
+  campaign_wake: 4
   mode: read_only_native_tasks_list_expected_id_presence
   expected_task_id: '6a55089a9adc8191bda54541f7f9effa'
   persist_only: [execution_success, expected_task_id_present, matched_count, permission_class, error_class, latency_when_exposed, operator_relay_minutes]
-  expected_current_version: 178
-updated_valid_time_utc: 2026-08-08T12:39:07Z
+  expected_current_version: 179
+updated_valid_time_utc: 2026-08-08T13:39:29Z
 sealed: false
 ---
