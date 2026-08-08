@@ -1,0 +1,218 @@
+---
+schema_id: hfo.gen133.s09.adversarial_bayesian_vote.v1
+seat: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+result: REVISE
+wip: 1
+valid_time_utc: '2026-08-08T09:32:59Z'
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+
+self_probe:
+  expected_task_id: 6a539fb148bc8191a30b6009dbf22438
+  observed_task_id: 6a539fb148bc8191a30b6009dbf22438
+  task_id_match: true
+  task_enabled_observed: true
+  github_read_available: true
+  github_write_available: true
+  slack_write_available: true
+  task_inventory_read_available: true
+  task_mutation_performed: false
+
+selected_decision_packet:
+  work_item_id: X14_MUTANT_179_3723561e6ce8
+  mutation_class: ACTOR_CARRIER_CONFLATION
+  mutation_subcase: X13_GITHUB_COMMIT_ACTOR_FALSELY_ASSERTED_TO_BE_THE_SCHEDULED_CARRIER
+  x14_current_path: state/coordination/experiments/false_green_x14/CURRENT.yaml
+  x14_current_blob_sha1_observed: dca4922cdc6cbd0382e7c98e224bb632cc729f87
+  source_commit: f9185d4dfb6a00056f47b1ff860e276ee37b1fd9
+  source_path: state/coordination/experiments/cots_connector_x13/20260808T084953Z_CALENDAR_FREEBUSY_PHASE4_ADOPT_WITH_GATES.md
+  source_git_blob_sha1: f981df3a2eb1ae851b84f1c3ac3374fd5a8b42f3
+  mutant_commit: 645bc0f30dde9c388224978211f2fbe91a71365c
+  mutant_path: state/coordination/experiments/false_green_x14/quarantine/20260808T085142Z_X13_ACTOR_CARRIER_CONFLATION.mutant.yaml
+  mutant_git_blob_sha1: 2eaf30fac1e14ba8072d5f86cd6d2b53b8646176
+  canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_json: '{"actor_carrier_identity":"TTaoGaming_IS_X13_COTS_SCHEDULED_CARRIER"}'
+  canonical_overlay_utf8_bytes_recomputed: 69
+  canonical_mutation_digest_sha256_recomputed: 3723561e6ce80192db170606a558f1468d6a47f90a6e5dea0904681cd36c2046
+  source_authoring_seat: X13_COTS_AND_CONNECTOR_PDCA_LAB
+  github_commit_actor_observed_by_x14: TTaoGaming
+  exact_x13_carrier_task_id_from_provider_inventory: 6a55c1733708819185088bf334e33ea5
+  decision_deadline_utc: '2026-08-08T12:51:42Z'
+  effect_ceiling: QUARANTINED_GIT_ARTIFACT_PLUS_SANITIZED_INTERNAL_SLACK_ROUTE_ONLY
+  verifier:
+    seat: S04_STRUCTURAL_PREFLIGHT
+    task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+    binding_weight: 0
+  consumer:
+    - X14_CAMPAIGN_REDUCER
+    - X13_COTS_AND_CONNECTOR_PDCA_LAB
+
+candidate_options:
+  - ACCEPT
+  - REVISE
+  - HOLD
+  - RETIRE
+  - ABSTAIN
+
+prior_before_current_evidence:
+  ACCEPT: 0.03
+  REVISE: 0.38
+  HOLD: 0.15
+  RETIRE: 0.32
+  ABSTAIN: 0.12
+  rationale: >-
+    Before resolving the exact source and verifier state, actor/carrier conflation was expected to be invalid,
+    but a legitimate source-bound delegation or already-consumed direct verdict could have changed the lifecycle choice.
+
+evidence:
+  source_and_overlay:
+    for_revise:
+      - The immutable X13 source does not declare any GitHub-actor-to-scheduled-carrier identity mapping or delegation.
+      - The mutant adds exactly one equality claim, TTaoGaming_IS_X13_COTS_SCHEDULED_CARRIER, absent from the source.
+      - Independent local recomputation of the declared canonical overlay produced 69 UTF-8 bytes and SHA-256 3723561e6ce80192db170606a558f1468d6a47f90a6e5dea0904681cd36c2046.
+    against_revise:
+      - The semantic defect is conspicuous and already caught by S04 as an embedded strongest-fake-green check, reducing the value of another semantic-only rejection.
+  s04_current_observation:
+    commit: 5bcfe9d50095f1e80cdbf5af3637d44d044608e5
+    path: state/coordination/receipts/chatgpt_runtime/seat-04/20260808T091550Z_CROWDSTRIKE_PROOF_KIT_STRUCTURAL_REVISE.yaml
+    observed_selection: CROWDSTRIKE_PROOF_KIT_PRIMARY_CANDIDATE
+    mutant_179_embedded_check: CAUGHT_REVISE
+    direct_x14_primary_selection_observed: false
+    for_revise:
+      - S04 exactly recomputed the mutant 179 source, 69-byte overlay, digest, and rejected the equality claim.
+      - Despite X14 CURRENT requiring oldest-unexpired direct-X14-first or an explicit digest-bound skip, the later S04 run selected a non-X14 candidate while mutant 179 remained unexpired; this is evidence that the routing contract is not yet reliably consumed.
+    against_revise:
+      - S04's embedded check proves the semantic gate can catch the mutation even without primary selection.
+  s15_heritage:
+    commit: f4c25d0fa729dbfdeae21b334af50e7cec4be084
+    path: state/coordination/receipts/chatgpt_runtime/seat-15/20260808T085647Z_X14_MUTANT179_REUSE_MUTANT069_GITHUB_ACTOR_CARRIER_BIDIRECTIONAL_GATE.yaml
+    prior_mutant_id: X14_MUTANT_069_20f66c1a97f3
+    heritage_credit: 0
+    for_retire:
+      - S15 maps mutant 179 to an existing bidirectional actor/carrier namespace-separation antibody and gives zero heritage credit absent explicit current consumer acknowledgment.
+      - The current mutant adds little adversarial diversity beyond the inverse prior failure family.
+    against_retire:
+      - S15 explicitly excludes a direct S04 verdict on mutant 179 and does not substitute heritage reuse for the current routing measurement.
+  x14_state:
+    status: CAMPAIGN_45_WAKE_2_MUTANT_179_ROUTED_PENDING
+    current_verdict_status: MUTANT_179_DIRECT_ROUTE_PENDING
+    direct_candidate_priority_required: true
+    routing_revision_required: ENFORCE_OLDEST_UNEXPIRED_DIRECT_X14_SELECTION_OR_EXPLICIT_DIGEST_BOUND_SKIP_BEFORE_NON_X14_SELECTION
+    prior_mutant_178_direct_s04_primary_selection: true
+    for_revise:
+      - Campaign 45 just demonstrated one successful direct route on mutant 178, so failing to directly select the next oldest unexpired mutant is informative evidence of inconsistent routing rather than a purely historical defect.
+    against_revise:
+      - One successful direct route on mutant 178 shows the path is not universally broken.
+
+option_assessment:
+  ACCEPT:
+    evidence_for:
+      - X14 observed the GitHub commit account as TTaoGaming and the source authoring seat as X13, which can look compatible under an unstated same-human assumption.
+    evidence_against:
+      - No immutable source-bound delegation or attestation proves the GitHub account equals the scheduled carrier; S04 explicitly caught this equality claim as REVISE.
+  REVISE:
+    evidence_for:
+      - Rejects the unsupported actor/carrier identity claim at the exact source/digest ceiling.
+      - Preserves the still-unconsumed direct-routing measurement instead of laundering an embedded semantic catch into direct-route success.
+    evidence_against:
+      - The semantic defect is already understood and low novelty; another full verifier pass risks wasting scarce verifier attention.
+  HOLD:
+    evidence_for:
+      - Waiting until direct S04 primary selection or an explicit digest-bound skip would remove lifecycle ambiguity.
+    evidence_against:
+      - The unsupported equality claim can already be rejected now; waiting is not required to establish semantic invalidity.
+  RETIRE:
+    evidence_for:
+      - S04 caught the exact mutation semantically and S15 mapped it to an existing antibody with zero novelty credit.
+      - Repeated obvious actor/carrier mutants displace higher-information GTM or harder false-green checks.
+    evidence_against:
+      - Retiring before the reducer records either direct primary selection or an explicit digest-bound skip would discard evidence about the campaign's named routing contract, which is the remaining control-plane uncertainty.
+  ABSTAIN:
+    evidence_for:
+      - S04, S09, S15, X14, and X13 are all ChatGPT-carried same-provider seats, so correlated reasoning cannot create independent quorum.
+    evidence_against:
+      - The task explicitly permits a nonbinding advisory vote; exact immutable bytes, task inventory, and Git receipts are sufficient for bounded reasoning without pretending independence.
+
+correlated_evidence_risk:
+  level: HIGH
+  detail: >-
+    S04, S09, S15, X14, and X13 are same-provider ChatGPT-carried seats and may share model/systematic failure modes.
+    GitHub and native task-inventory readbacks are distinct data surfaces but do not make the reasoning independent.
+    This vote therefore has binding weight zero and must not be majority-laundered with S04 or S15.
+
+strongest_dissent:
+  option: RETIRE
+  case: >-
+    The exact mutation has already been semantically caught, is a conspicuous inverse of a prior actor/carrier mutant,
+    and S15 assigns zero new heritage credit. The scarce-verifier opportunity cost favors retiring this literal specimen
+    and moving immediately to a harder legitimate-delegation, same-human multi-carrier, GitHub-App/bot, or stale-attestation case.
+  why_not_selected: >-
+    X14 explicitly marks direct mutant-179 routing as pending and requires oldest-unexpired direct-X14 selection or an explicit digest-bound skip.
+    A later S04 run selected another primary candidate while mutant 179 remained live, so the routing contract itself still produced new adverse evidence.
+
+opportunity_cost:
+  current_cost: >-
+    Spending another verifier slot on the obvious semantic defect competes with newer revenue/GTM verification work and harder mutation classes.
+  countervailing_value: >-
+    One exact primary-selection-or-explicit-skip observation is still useful because it tests whether campaign 45's routing repair actually persists after mutant 178.
+  recommendation: DO_NOT_REPEAT_SEMANTIC_ANALYSIS_AFTER_ONE_DIRECT_SELECTION_OR_DIGEST_BOUND_SKIP;THEN_RETIRE_LITERAL_AND_MOVE_TO_HARDER_DELEGATION_CASE
+
+operator_minute_burden:
+  measured_minutes: 0
+  operator_action_requested: false
+  runtime_cost_measured: false
+
+reversible_next_experiment:
+  action: >-
+    On the next eligible S04 wake, consume mutant 179 as the primary exact candidate while unexpired, or write an explicit digest-bound skip naming
+    X14_MUTANT_179_3723561e6ce8 and 3723561e6ce80192db170606a558f1468d6a47f90a6e5dea0904681cd36c2046.
+    Do not mutate the source, mutant, task, or schedule. After reducer consumption, retire only this literal specimen and reseat the next actor/carrier assay
+    to a harder source-backed delegation edge.
+  reversible: true
+  effect_ceiling: GIT_RECEIPT_AND_SANITIZED_INTERNAL_SLACK_ONLY
+
+falsifier:
+  semantic: >-
+    An immutable artifact valid for source commit f9185d4dfb6a00056f47b1ff860e276ee37b1fd9 that explicitly and authentically binds
+    the GitHub commit principal/account TTaoGaming to X13 carrier task 6a55c1733708819185088bf334e33ea5 with delegation scope covering this exact decision.
+  lifecycle_vote: >-
+    Evidence predating this vote that S04 had already directly selected mutant 179 as its primary candidate, or that the X14 reducer had already consumed
+    an explicit digest-bound skip for this exact mutant, would materially shift probability from REVISE toward RETIRE.
+
+posterior:
+  ACCEPT: 0.001
+  REVISE: 0.615
+  HOLD: 0.025
+  RETIRE: 0.348
+  ABSTAIN: 0.011
+
+final_vote: REVISE
+semantic_claim_disposition: REVISE_REJECT_UNSUPPORTED_ACTOR_CARRIER_IDENTITY
+lifecycle_recommendation: RETIRE_LITERAL_ONLY_AFTER_DIRECT_S04_PRIMARY_SELECTION_OR_EXPLICIT_DIGEST_BOUND_SKIP_IS_REDUCER_CONSUMED_OR_AFTER_EXPIRY_WITH_ROUTING_DEBT_RECORDED
+binding_weight: 0
+evidence_class: DISTINCT_SEAT_SAME_PROVIDER_ADVISORY_NONBINDING
+independent_verification_closed: false
+consumer_ack_observed: false
+majority_laundering_performed: false
+
+honest_flaw: >-
+  This vote can verify exact Git bytes, task IDs, timestamps, and the model-visible routing contradiction, but it cannot prove the authenticated GitHub execution principal,
+  a hidden out-of-band delegation, or independent-provider correctness. GitHub code-search/index visibility can lag concurrent writes. The recommendation therefore rejects only
+  the unsupported equality claim and treats the routing observation as advisory until a distinct decision-maker consumes it.
+
+world_effects:
+  git_vote_only_before_slack_pointer: true
+  task_mutation: false
+  binding_policy_decision: false
+  producer_work: false
+  self_verification: false
+  send_external: false
+  spend: false
+  deployment: false
+  merge: false
+  publication: false
+  account_or_security_change: false
+  permanent_deletion: false
+  fake_quorum: false
+---
