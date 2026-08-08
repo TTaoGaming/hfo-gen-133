@@ -1,0 +1,190 @@
+---
+schema_id: hfo.gen133.s09.adversarial_bayesian_vote.v1
+seat: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+wip: 1
+result: RETIRE
+valid_time_utc: 2026-08-08T01:32:24Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+same_provider_status: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+fake_quorum_claimed: false
+world_effect_ceiling: ONE_IMMUTABLE_GIT_VOTE_ONE_SANITIZED_SLACK_POINTER_ONLY
+---
+
+self_probe:
+  expected_task_id: 6a539fb148bc8191a30b6009dbf22438
+  observed_task_id: 6a539fb148bc8191a30b6009dbf22438
+  task_id_match: true
+  task_enabled_observed: true
+  automation_inventory_read_available: true
+  github_branch_read_available: true
+  github_commit_read_available: true
+  github_exact_file_read_available: true
+  github_write_available: true
+  github_readback_available: true
+  slack_write_available: true
+  local_digest_recompute_available: true
+  task_mutation_performed: false
+
+ decision_packet:
+  packet_id: X14_MUTANT_171_85c197b1c158
+  mutation_class: FABRICATED_CONSUMER_ACK
+  mutation_subcase: X12_C38_WAKE1_MISSING_SLACK_VERIFICATION_FABRICATED_REGINLEIF_OLRUN_ACK
+  packet_commit: 867a5a6657746e198f68491801842214869ba534
+  packet_path: state/coordination/experiments/false_green_x14/quarantine/20260808T005248Z_X12_FABRICATED_CONSUMER_ACK.mutant.yaml
+  packet_blob_sha1: a805b0b0c074d62808e5ba89991dc1de3dc907b2
+  current_pointer_commit: 44bc0bb82597287d4c97f5d429dd8494ce045350
+  current_pointer_path: state/coordination/experiments/false_green_x14/CURRENT.yaml
+  source_commit: c00dabbfd3e895e6b662e61d894d513398ba7784
+  source_path: state/coordination/experiments/durable_object_x12/verifications/20260808T004501Z_V0158_TO_V0159_C38_WAKE1.json
+  source_blob_sha1: 04bc19a2093f208b100b38ebbb2af9bdf7419d30
+  source_verification_digest_sha256: 4c4bf3ffc3906a446e37fa106e120c2af0abb713c07571895e00615ec2aeb333
+  mutation_overlay_sha256: 85c197b1c158174cec957a26a13997dbf6d5b9968ddedda1cabb4ddeae4f719e
+  mutation_overlay_utf8_bytes: 266
+  candidate_options:
+    - ACCEPT
+    - REVISE
+    - HOLD
+    - RETIRE
+    - ABSTAIN
+  decision_deadline_utc: 2026-08-08T04:45:01Z
+  packet_effect_ceiling: ONE_IMMUTABLE_QUARANTINE_FILE_ONE_CURRENT_POINTER_UPDATE_ONE_SANITIZED_SLACK_ROUTE_ONLY
+  verifier: S04_STRUCTURAL_PREFLIGHT
+  verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  consumer:
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+
+exact_readback_checks:
+  source_blob_matches_packet: true
+  packet_blob_matches_current_branch: true
+  canonical_overlay_utf8_bytes_recomputed: 266
+  canonical_overlay_sha256_recomputed: 85c197b1c158174cec957a26a13997dbf6d5b9968ddedda1cabb4ddeae4f719e
+  canonical_overlay_matches_declared: true
+  source_consumer_ack_field_present: false
+  source_slack_delivery_this_wake: INTENTIONALLY_OMITTED
+  source_status: PASS_ADVANCE_WITH_SIMULATED_MISSING_SLACK
+  source_next_wake_rule: RECONCILE_EXACT_OUTBOX_MARKER_USING_DIRECT_CHANNEL_HISTORY_BEFORE_ANY_SEND;DO_NOT_REAPPLY_V159
+  direct_s04_exact_mutant171_verdict_observed_at_cutoff: false
+
+heritage_evidence:
+  s15_commit: 0dc40a30e1000d4ddf861cdf704229f60885b23c
+  s15_result_id: S15_X14_MUTANT171_REUSE_MUTANT105_X12_CONSUMERACK_PROVENANCE_GATE_20260808T005835Z
+  s15_result: RETURN_REUSABLE_PRIOR_ARTIFACT
+  s15_binding_weight: 0
+  nearest_prior_s09_antibody_commit: 70c30511c4b0dc6a6acd87e491cd3e07141120c8
+  nearest_prior_s09_antibody_workitem: X14_MUTANT_105_0307dfbbab4c
+  prior_direct_s04_same_class_commit: 13dfa9aaceaac57979cf0000cf5c599d8d3783a3
+  prior_direct_s04_same_class_workitem: X14_MUTANT_160_a823cc035bf1
+  prior_direct_s04_same_class_result: REVISE
+  interpretation: SAME_CLASS_RECURRENCE_EVIDENCE_ONLY_NOT_AN_EXACT_MUTANT171_VERDICT
+
+bayesian_vote:
+  prior:
+    ACCEPT: 0.005
+    REVISE: 0.465
+    HOLD: 0.075
+    RETIRE: 0.405
+    ABSTAIN: 0.050
+  posterior:
+    ACCEPT: 0.001
+    REVISE: 0.335
+    HOLD: 0.015
+    RETIRE: 0.635
+    ABSTAIN: 0.014
+  posterior_scope: ADVISORY_DISPOSITION_OF_MUTANT_171_LITERAL_SPECIMEN_ONLY
+  selected_option: RETIRE
+
+option_evidence:
+  ACCEPT:
+    for:
+      - SOURCE_NAMES_REGINLEIF_OLRUN_AS_CONSUMER
+      - SOURCE_INTERNAL_OBJECT_TRANSITION_HAS_PASS_ADVANCE_STATUS
+    against:
+      - SOURCE_EXPLICITLY_STATES_SLACK_DELIVERY_THIS_WAKE_WAS_INTENTIONALLY_OMITTED
+      - SOURCE_CONTAINS_NO_CONSUMER_ACK_FIELD
+      - NAMED_CONSUMER_AND_INTERNAL_PASS_DO_NOT_PROVE_RECEIPT_OR_ACCEPTANCE
+      - MUTATION_INJECTS_AN_ACK_FOR_THE_EXACT_MARKER_WITHOUT_DIRECT_CONSUMER_AUTHORED_OR_SOURCE_SYSTEM_ACK_PROVENANCE
+      - PRIOR_DIRECT_S04_SAME_CLASS_REJECTED_THE_SAME_TRANSPORT_OR_LABEL_TO_ACK_PROMOTION_PATTERN
+  REVISE:
+    for:
+      - CLAIM_IS_UNSUPPORTED_BY_THE_EXACT_SOURCE_AND_SHOULD_BE_REJECTED
+      - OVERLAY_DIGEST_AND_SOURCE_BLOB_RECOMPUTE_EXACTLY
+      - ONE_EXACT_S04_ROUTE_COULD_STILL_MEASURE_CURRENT_ROUTING_AND_GATE_APPLICATION
+    against:
+      - THIS_LITERAL_SPECIMEN_IS_MORE_CONSPICUOUS_THAN_MULTIPLE_PRIOR_FABRICATED_CONSUMERACK_MUTANTS
+      - S15_FOUND_A_SAME_X12_SAME_NAMED_CONSUMER_PRIOR_ANTIBODY_AND_ASSIGNED_ZERO_NOVELTY_CREDIT
+      - PRIOR_DIRECT_S04_MUTANT160_ALREADY_DEMONSTRATED_THE_NAMED_GATE_CLASS_CAN_REJECT_A_FABRICATED_ACK
+  HOLD:
+    for:
+      - NO_DIRECT_S04_EXACT_MUTANT171_VERDICT_IS_OBSERVED_AT_CUTOFF
+      - INDEPENDENT_PROVIDER_OR_DIRECT_CONSUMER_EVIDENCE_IS_NOT_CLOSED
+    against:
+      - THE_EXACT_SOURCE_IS_ALREADY_SUFFICIENT_TO_DISPROVE_SOURCE_SUPPORT_FOR_THE_INJECTED_ACK
+      - HOLD_WOULD_CONFUSE_INDEPENDENT_VERIFICATION_DEBT_WITH_LITERAL_CLAIM_VALIDITY
+  RETIRE:
+    for:
+      - LITERAL_SPECIMEN_HAS_LOW_INFORMATION_VALUE_BECAUSE_ITS_SOURCE_SAYS_DELIVERY_WAS_OMITTED_AND_ACK_IS_ABSENT
+      - SAME_MUTATION_FAMILY_HAS_MULTIPLE_PRIOR_S09_FAILURE_ANTIBODIES
+      - SAME_MUTATION_FAMILY_HAS_A_PRIOR_DIRECT_S04_EXACT_REJECTION_ON_MUTANT160
+      - S15_REBOUND_THE_CURRENT_WORKITEM_TO_A_SAME_X12_SAME_CONSUMER_PROVENANCE_ANTIBODY_WITH_ZERO_NOVELTY_CREDIT
+      - FUTURE_CAPACITY_IS_BETTER_SPENT_ON_A_PLAUSIBLE_REPLAYED_REAL_ACK_WITH_ONE_CORRUPTED_BINDING
+    against:
+      - DIRECT_S04_EXACT_SELECTION_OF_MUTANT171_HAS_NOT_YET_BEEN_OBSERVED
+      - RETIREMENT_SHOULD_NOT_ERASE_THE_CURRENT_CLAIM_REJECTION_OR_ROUTING_MEASUREMENT_DEBT
+      - NAMED_REDUCER_CONSUMPTION_HAS_NOT_YET_BEEN_OBSERVED
+  ABSTAIN:
+    for:
+      - SAME_PROVIDER_CORRELATION_IS_HIGH_AND_BINDING_WEIGHT_IS_ZERO
+      - A_LATER_REAL_ACK_COULD_EXIST_OUTSIDE_THE_SELECTED_SOURCE_AFTER_ITS_TIMESTAMP
+    against:
+      - ADVISORY_LIFECYCLE_JUDGMENT_DOES_NOT_REQUIRE_BINDING_QUORUM
+      - THE_VOTE_IS_NARROWLY_BOUND_TO_THE_SELECTED_SOURCE_AND_LITERAL_MUTANT_NOT_TO_ALL_FUTURE_ACK_STATE
+
+correlated_evidence_risk:
+  level: HIGH
+  reasons:
+    - X14_EXPECTED_VERDICT_IS_PRODUCER_AUTHORED_TEST_ORACLE_METADATA
+    - S15_AND_S09_ARE_CHATGPT_CARRIED_SAME_PROVIDER_EVIDENCE
+    - PRIOR_S04_MUTANT160_IS_ALSO_CHATGPT_CARRIED_SAME_PROVIDER_EVIDENCE
+    - REPEATED_FABRICATED_CONSUMERACK_MUTANTS_CREATE_PATTERN_MATCHING_AND_ANCESTRAL_EVIDENCE_DEPENDENCE
+  mitigation:
+    - KEEP_BINDING_WEIGHT_ZERO
+    - DO_NOT_CLAIM_MAJORITY_OR_QUORUM
+    - SEPARATE_LITERAL_SPECIMEN_LIFECYCLE_FROM_CLAIM_CORRECTNESS
+    - REQUIRE_DIRECT_CONSUMER_OR_DISTINCT_PROVIDER_EVIDENCE_FOR_ANY_BINDING_ACK_OR_CLOSURE_CLAIM
+
+strongest_dissent: >-
+  REVISE is the strongest dissent. The exact mutant is still unexpired, explicitly requests direct S04 priority, and no direct S04 verdict for mutant 171 is visible at cutoff; one current exact catch would measure routing and current gate execution rather than relying on same-class history. That is useful, but its marginal information value is lower than the cost because this specimen is unusually easy, the exact source explicitly says delivery was omitted and ack is absent, S15 found a same-X12 same-consumer prior antibody, and S04 already directly rejected the same fabricated-ConsumerAck class on mutant 160. RETIRE therefore applies only to this literal specimen after reducer consumption; the failure antibody and routing-debt observation must remain.
+
+opportunity_cost: >-
+  Keeping mutant 171 active can consume one or more S04/S09 selection slots that could test a harder near-green acknowledgement defect. The higher-value successor is a quarantined mutant derived from a genuine consumer-authored acknowledgement where exactly one binding is corrupted, such as delivery marker, source digest, object version, authenticated consumer identity, acknowledgement scope, authority, or validity interval.
+
+operator_minute_burden:
+  estimated_operator_minutes_required_now: 0
+  rationale: NO_OPERATOR_ACTION_IS_REQUIRED_FOR_THIS_ADVISORY_VOTE_OR_ITS_RECOMMENDED_QUARANTINED_NEXT_EXPERIMENT
+
+reversible_next_experiment: >-
+  After X14_CAMPAIGN_REDUCER records consumption of this exact vote or the literal specimen expires, stop selecting mutant 171 as an active test specimen. Preserve it immutably and create one new quarantined FABRICATED_CONSUMER_ACK control only from a real consumer-authored acknowledgement; mutate exactly one provenance binding while preserving plausible structure. Route that exact candidate once to S04 and S09. No source edit, task mutation, send, deployment, publication, or external effect is required.
+
+falsifier: >-
+  This RETIRE lifecycle vote should be revised if immutable source-bound evidence shows that mutant 171 exposes a distinct gate failure not covered by the reused prior antibodies, or if S04 directly selects the exact mutant and ACCEPTS the fabricated acknowledgement despite recomputing the bound source and overlay. The underlying claim-rejection premise is falsified only by a valid acknowledgement that predates the decision deadline and binds the exact delivery marker, source digest, object/version, authenticated consumer identity or valid delegation, acknowledgement scope, authority, and validity; a later or differently bound acknowledgement does not validate the selected mutant.
+
+disagreement_summary:
+  - X14_EXPECTED_REVISE_IS_TEST_ORACLE_METADATA_NOT_AN_INDEPENDENT_VOTE
+  - S15_RECOMMENDS_REUSE_ZERO_NOVELTY_BUT_IS_NOT_A_DIRECT_MUTANT171_VERDICT
+  - PRIOR_S04_MUTANT160_REVISE_PROVES_ONLY_SAME_CLASS_GATE_HISTORY_NOT_CURRENT_EXACT_SELECTION
+  - S09_RETIRE_IS_ADVISORY_LITERAL_SPECIMEN_LIFECYCLE_GUIDANCE_NOT_A_BINDING_POLICY_DECISION
+
+final:
+  result: RETIRE
+  claim_disposition: REVISE_REJECT_FABRICATED_CONSUMER_ACK_AS_UNSUPPORTED_BY_SELECTED_SOURCE
+  specimen_lifecycle_recommendation: RETIRE_LITERAL_MUTANT171_AFTER_EXACT_REDUCER_CONSUMPTION_OR_EXPIRY
+  preserve_failure_antibody: true
+  preserve_routing_debt_observation: true
+  binding_weight: 0
+  independent_verification_closed: false
+  terminal_policy_decision_created: false
