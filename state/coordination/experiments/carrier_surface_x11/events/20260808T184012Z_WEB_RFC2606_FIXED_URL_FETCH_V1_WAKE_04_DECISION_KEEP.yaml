@@ -1,0 +1,83 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+event_id: X11_WEB_RFC2606_FIXED_URL_FETCH_V1_WAKE_04_DECISION_KEEP_20260808T184012Z
+experiment_id: X11_WEB_RFC2606_FIXED_URL_FETCH_V1
+campaign_wake: 4
+target_wakes_before_decision: 4
+accepted: true
+campaign_status: DECIDED
+campaign_disposition: KEEP
+baseline:
+  accepted_wakes: 3
+  prior_execution_success: [true, true, true]
+  prior_source_resolved: [true, true, true]
+  prior_expected_marker_present: [true, true, true]
+  prior_permission_class: PUBLIC_WEB_FIXED_URL_FETCH_AVAILABLE
+  prior_error_class: NONE
+hypothesis: a_fixed_public_rfc_editor_url_can_be_fetched_read_only_without_search_ranking_variance_and_with_only_sanitized_surface_measurements_persisted
+controlled_factor: web_research
+exact_probe:
+  surface: web
+  operation: open_fixed_public_url_read_only
+  url: 'https://www.rfc-editor.org/rfc/rfc2606'
+  expected_marker: RFC_2606
+  persisted_fields_only: [execution_success, source_resolved, expected_marker_present, permission_class, error_class, latency_when_exposed, operator_relay_minutes]
+measured_result:
+  execution_success: true
+  source_resolved: true
+  expected_marker_present: true
+  four_wake_execution_success: [true, true, true, true]
+  four_wake_source_resolved: [true, true, true, true]
+  four_wake_expected_marker_present: [true, true, true, true]
+  permission_class: PUBLIC_WEB_FIXED_URL_FETCH_AVAILABLE
+  error_class: NONE
+  latency_when_exposed: NOT_EXPOSED_BY_SURFACE
+  four_wake_latencies: [NOT_EXPOSED_BY_SURFACE, NOT_EXPOSED_BY_SURFACE, NOT_EXPOSED_BY_SURFACE, NOT_EXPOSED_BY_SURFACE]
+  operator_relay_minutes: 0
+changed_capability: false
+campaign_decision: true
+andon: false
+acceptance_eligible: true
+decision:
+  disposition: KEEP
+  keep_scope:
+    - fixed_public_url_read_only_fetch
+    - deterministic_expected_marker_presence_check
+    - sanitized_execution_and_resolution_visibility
+  rejected_claims:
+    - general_web_availability
+    - search_quality
+    - ranking_coverage
+    - http_transport_integrity
+    - content_freshness
+    - source_authenticity
+    - independent_verification
+supported_claim: four_accepted_read_only_fetches_of_the_fixed_public_rfc_editor_rfc2606_url_each_resolved_and_exposed_the_expected_rfc2606_marker_without_search_ranking_variance
+claim_ceiling: does_not_establish_general_web_availability_search_quality_ranking_coverage_http_transport_integrity_content_freshness_source_authenticity_or_independent_verification
+strongest_falsifier: the_same_fixed_public_url_fetch_cannot_execute_read_only_or_fails_to_resolve_or_no_longer_exposes_the_expected_rfc2606_marker_or_requires_interactive_authentication
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer: [Reginleif, Ratatoskr]
+honest_flaw: repeated_fixed_public_document_fetches_measure_one_web_read_path_and_avoid_search_ranking_variance_but_do_not_measure_search_or_general_web_coverage
+expected_current_version: 183
+next_expected_current_version: 184
+next_factor: slack_read_write
+next_campaign:
+  experiment_id: X11_SLACK_FIXED_POINTER_BOUNDED_READ_V3
+  status: INITIALIZED_NOT_PROBED
+  accepted_wakes: 0
+  target_wakes_before_decision: 4
+  hypothesis: the_authenticated_slack_channel_history_surface_will_repeatedly_return_only_the_known_message_inside_the_fixed_one_second_envelope_with_the_target_timestamp_and_non_sensitive_marker_visible
+  first_probe:
+    surface: slack
+    operation: read_channel_history_bounded_read_only
+    channel_id: C0BGNGPJFHU
+    oldest: '1785563052.000000'
+    latest: '1785563053.000000'
+    limit: 10
+    persist_only: [result_count, target_timestamp_present, expected_marker_present, content_outside_bounded_window_observed, permission_class, error_class, latency_when_exposed, operator_relay_minutes]
+  mutation_allowed: false
+sensitive_readback_externalized: false
+task_mutation_performed: false
+valid_time_utc: 2026-08-08T18:40:12Z
+sealed: true
+---
