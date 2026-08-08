@@ -1,0 +1,37 @@
+---
+schema_id: hfo.gen133.x11.carrier_surface_event.v1
+experiment_id: X11_NATIVE_TASKS_EXPECTED_ID_VISIBILITY_V1
+campaign_wake: 3
+expected_current_version: 178
+controlled_factor: native_tasks_read_visibility
+baseline: wake_2_exact_expected_task_id_present_once_on_authenticated_read_only_native_tasks_list
+hypothesis: repeat_read_only_native_tasks_list_preserves_exact_expected_task_id_visibility_without_task_mutation_or_persisting_task_prompt_content
+exact_probe:
+  surface: native_tasks
+  operation: list_read_only
+  match_rule: exact_expected_task_id_presence_only
+  expected_task_id: '6a55089a9adc8191bda54541f7f9effa'
+  persisted_fields_only: [execution_success, expected_task_id_present, matched_count, permission_class, error_class, latency_when_exposed, operator_relay_minutes]
+measured_result:
+  execution_success: true
+  expected_task_id_present: true
+  matched_count: 1
+  permission_class: AUTHENTICATED_NATIVE_TASKS_LIST_READ_AVAILABLE
+  error_class: NONE
+  latency_when_exposed: NOT_EXPOSED_BY_SURFACE
+  operator_relay_minutes: 0
+changed_capability: false
+campaign_decision: false
+andon: false
+acceptance_eligible: true
+supported_claim: three_authenticated_read_only_native_tasks_lists_each_exposed_exact_presence_of_the_expected_task_id_without_task_mutation
+claim_ceiling: does_not_establish_task_execution_history_schedule_correctness_prompt_integrity_current_run_provenance_or_mutation_permission
+strongest_falsifier: a_repeat_native_tasks_list_fails_or_is_unauthenticated_or_the_expected_task_id_is_absent_or_ambiguous_without_sensitive_readback
+verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
+consumer: [Reginleif, Ratatoskr]
+honest_flaw: repeated_expected_task_id_presence_measures_list_visibility_only_and_does_not_prove_schedule_correctness_or_that_this_run_came_from_that_task
+sensitive_readback_externalized: false
+task_mutation_performed: false
+valid_time_utc: 2026-08-08T13:39:29Z
+sealed: true
+---
