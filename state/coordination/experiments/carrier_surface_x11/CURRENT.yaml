@@ -1,8 +1,8 @@
 ---
 schema_id: hfo.gen133.x11.carrier_surface_current.v1
 experiment_id: X11_NATIVE_TASKS_EXPECTED_ID_VISIBILITY_V1
-current_version: 176
-accepted_wakes: 0
+current_version: 177
+accepted_wakes: 1
 target_wakes_before_decision: 4
 controlled_factor: native_tasks_read_visibility
 campaign_status: ACTIVE
@@ -10,36 +10,41 @@ current_disposition: null
 baseline_result: calendar_fixed_impossible_marker_event_search_surface_kept_4_of_4_with_zero_sanitized_results_no_continuation_and_no_event_detail_readback
 hypothesis: a_read_only_native_tasks_list_can_expose_whether_the_expected_task_id_is_visible_without_task_mutation_or_persisting_task_prompt_content
 measured_result:
-  query_runs: []
-  permission_class: NOT_YET_MEASURED
-  error_class: NOT_YET_MEASURED
+  query_runs:
+    - wake: 1
+      execution_success: true
+      expected_task_id_present: true
+      matched_count: 1
+      latency_when_exposed: NOT_EXPOSED_BY_SURFACE
+  permission_class: AUTHENTICATED_NATIVE_TASKS_LIST_READ_AVAILABLE
+  error_class: NONE
   operator_relay_minutes: 0
-  changed_capability: false
+  changed_capability: true
   campaign_decision: false
   andon: false
-supported_claim: no_native_tasks_read_visibility_claim_yet
+supported_claim: one_authenticated_read_only_native_tasks_list_exposed_exact_presence_of_the_expected_task_id_without_task_mutation
 claim_ceiling: does_not_establish_task_execution_history_schedule_correctness_prompt_integrity_current_run_provenance_or_mutation_permission
-strongest_falsifier: native_tasks_list_is_unavailable_or_unauthenticated_the_expected_task_id_cannot_be_determined_without_sensitive_readback_or_the_probe_requires_task_mutation
+strongest_falsifier: a_repeat_native_tasks_list_fails_or_is_unauthenticated_or_the_expected_task_id_is_absent_or_ambiguous_without_sensitive_readback
 verifier: S04_HRIST_STRUCTURAL_PREFLIGHT_SAME_PROVIDER_NONBINDING
 consumer: [Reginleif, Ratatoskr]
-honest_flaw: expected_task_id_presence_would_measure_list_visibility_only_and_would_not_prove_schedule_correctness_or_that_this_run_came_from_that_task
+honest_flaw: expected_task_id_presence_measures_list_visibility_only_and_does_not_prove_schedule_correctness_or_that_this_run_came_from_that_task
 prior_campaign:
   experiment_id: X11_CALENDAR_FIXED_IMPOSSIBLE_MARKER_EVENT_SEARCH_V1
   disposition: KEEP
   supported_claim: four_authenticated_bounded_calendar_event_searches_executed_with_zero_sanitized_results_no_continuation_and_no_event_detail_readback
   accepted_wakes: 4
 last_event:
-  commit: 87016b103ea0c0822ec6a33fa7b5c6aea87fde31
-  path: state/coordination/experiments/carrier_surface_x11/events/20260808T104014Z_CALENDAR_FIXED_IMPOSSIBLE_MARKER_EVENT_SEARCH_V1_WAKE_04.yaml
-  blob: 18bd2a0a9792a0295407f81eb961c32695de16a8
+  commit: 6b2f2b765249f0346de993dd6800cbfa32594a3c
+  path: state/coordination/experiments/carrier_surface_x11/events/20260808T114159Z_NATIVE_TASKS_EXPECTED_ID_VISIBILITY_V1_WAKE_01.yaml
+  blob: 7913cf33112ea2419d0fb97aa9ded13c0ebbc0a2
 next_factor: native_tasks_read_visibility
 next_probe:
   experiment_id: X11_NATIVE_TASKS_EXPECTED_ID_VISIBILITY_V1
-  campaign_wake: 1
+  campaign_wake: 2
   mode: read_only_native_tasks_list_expected_id_presence
   expected_task_id: '6a55089a9adc8191bda54541f7f9effa'
   persist_only: [execution_success, expected_task_id_present, matched_count, permission_class, error_class, latency_when_exposed, operator_relay_minutes]
-  expected_current_version: 176
-updated_valid_time_utc: 2026-08-08T10:40:14Z
+  expected_current_version: 177
+updated_valid_time_utc: 2026-08-08T11:41:59Z
 sealed: false
 ---
