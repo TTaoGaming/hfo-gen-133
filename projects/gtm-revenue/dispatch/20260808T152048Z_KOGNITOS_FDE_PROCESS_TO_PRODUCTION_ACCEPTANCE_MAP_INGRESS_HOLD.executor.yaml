@@ -1,0 +1,230 @@
+schema_id: hfo.gen133.s06.executor_packet.v1
+result: HOLD
+seat: S06_CODE_WORK_PACKET_COMPILER_CODEX_BRIDGE
+wip: 1
+valid_time_utc: 2026-08-08T15:20:48Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+expected_task_id: 6a57972b9df081918680ce67c4ecb197
+observed_task_id: 6a57972b9df081918680ce67c4ecb197
+task_id_match: true
+
+selection:
+  work_item_id: S07_KOGNITOS_FDE_PROCESS_TO_PRODUCTION_ACCEPTANCE_MAP_V1
+  claim_commit_sha: af8a7b86f6c26bdbcf4d25faf2f84e196f3e92ee
+  claim_path: projects/gtm-revenue/claims/20260808T150400Z_KOGNITOS_FDE_PROCESS_TO_PRODUCTION_ACCEPTANCE_MAP_ADMISSION.claim.yaml
+  claim_git_blob_sha1: dc8386e88f7f436014613f43abe510ca8161a5f6
+  claim_acceptance_sha256: 332126404ca60d904a7637af01c2618c2194a5b1791ea16b556c6ed63980dee2
+  claim_idempotency_sha256: 8dcca18b802ce9a39a8e85a9394eec05f01b4c7a44a5842dd8b59c4f26c449a3
+  claim_expiry_utc: 2026-08-08T19:04:00Z
+  claim_unexpired_at_compile_time: true
+  source_commit_sha: c36562e0278e7824fb96402d6e9df6e11885afdf
+  source_path: projects/gtm-revenue/research/20260808T142800Z_JOB_EMPLOYER_KOGNITOS_TARGET_CARD.md
+  source_git_blob_sha1: 0610a28b6d6d8ab968d2534af672a8bf6144a3d9
+  source_evidence_sha256: b26b8e2943b1e2112aee225796ad2e36d1c66555316427b00de2ca40b33750a3
+  source_expiry_utc: 2026-08-14T14:08:00Z
+  repository_base_sha: 6fd1384757600d3b75a2ce2107dfe0bbe39d74a9
+  changed_since_prior_s06_wake: true
+  eligibility_reason: CHANGED_UNEXPIRED_CLAIM_REQUIRING_REPOSITORY_INSPECTION_AND_BUILD_EVIDENCE
+
+self_probe:
+  github_read_available: true
+  github_write_available: true
+  slack_write_available: true
+  native_task_inventory_read_available: true
+  direct_codex_executor_ingress_available: false
+  direct_claude_executor_ingress_available: false
+  direct_host_shell_ingress_available: false
+  new_workflow_dispatch_ingress_available: false
+  note: >-
+    Available GitHub actions can read/write repository state and inspect or rerun existing workflow
+    jobs, but no direct Codex, Claude, host-shell, or new workflow-dispatch executor action is exposed.
+    Slack is a coordination surface and is not execution.
+
+goal: >-
+  On a real executor surface, consume exactly the admitted Kognitos WorkItem and either (A) produce
+  one compact public-safe Process-to-Production Acceptance Contract plus one immutable producer return,
+  or (B) return HOLD without a candidate if the strongest falsifier is found. The artifact must help
+  an FDE/process owner define evidence-backed production readiness for one automation without implying
+  that Kognitos lacks deterministic execution, regression testing, draft-safe testing, human guidance,
+  or auditability.
+
+current_red_evidence:
+  - >-
+    No Kognitos S07 candidate or producer return was observed in the branch history at compile base
+    6fd1384757600d3b75a2ce2107dfe0bbe39d74a9; the only Kognitos commits observed were source card
+    c36562e0278e7824fb96402d6e9df6e11885afdf and admission claim
+    af8a7b86f6c26bdbcf4d25faf2f84e196f3e92ee.
+  - >-
+    The strongest falsifier is unresolved: Kognitos may already expose an equivalent low-overhead,
+    versioned customer-deployment contract binding KPI/baseline, process rules, integrations,
+    exception/human authority, held-out regression evidence, go-live evidence, rollback, time-to-value,
+    and exact promoted automation revision.
+  - >-
+    The source explicitly contains counterevidence against a generic governance pitch: Kognitos already
+    advertises deterministic execution, built-in regression testing, draft-safe testing, human guidance
+    on deviations, and auditability.
+  - >-
+    Carrier-to-GitHub-actor delegation is unproven. A Git commit actor must not be treated as proof of
+    which scheduled-task carrier or model executed the work.
+
+allowed_paths:
+  read:
+    - projects/gtm-revenue/claims/20260808T150400Z_KOGNITOS_FDE_PROCESS_TO_PRODUCTION_ACCEPTANCE_MAP_ADMISSION.claim.yaml
+    - projects/gtm-revenue/research/20260808T142800Z_JOB_EMPLOYER_KOGNITOS_TARGET_CARD.md
+    - projects/gtm-revenue/kits/kognitos/**
+    - projects/gtm-revenue/returns/**
+  write_maximum_two_files:
+    - projects/gtm-revenue/kits/kognitos/20260808T152048Z_PROCESS_TO_PRODUCTION_ACCEPTANCE_CONTRACT.md
+    - projects/gtm-revenue/returns/20260808T152048Z_S07_KOGNITOS_FDE_PROCESS_TO_PRODUCTION_ACCEPTANCE_MAP_RETURN.md
+
+forbidden_paths:
+  - projects/gtm-revenue/claims/**
+  - projects/gtm-revenue/research/**
+  - projects/gtm-revenue/packets/**
+  - state/**
+  - .github/**
+  - .agents/**
+  - any path outside the two explicit write paths above
+
+required_commands:
+  shell_contract: BASH_WITH_GIT_AND_PYTHON3
+  commands:
+    - "git rev-parse HEAD"
+    - "git rev-parse af8a7b86f6c26bdbcf4d25faf2f84e196f3e92ee:projects/gtm-revenue/claims/20260808T150400Z_KOGNITOS_FDE_PROCESS_TO_PRODUCTION_ACCEPTANCE_MAP_ADMISSION.claim.yaml"
+    - "git rev-parse c36562e0278e7824fb96402d6e9df6e11885afdf:projects/gtm-revenue/research/20260808T142800Z_JOB_EMPLOYER_KOGNITOS_TARGET_CARD.md"
+    - "git show af8a7b86f6c26bdbcf4d25faf2f84e196f3e92ee:projects/gtm-revenue/claims/20260808T150400Z_KOGNITOS_FDE_PROCESS_TO_PRODUCTION_ACCEPTANCE_MAP_ADMISSION.claim.yaml > /tmp/kognitos.claim.yaml"
+    - "git show c36562e0278e7824fb96402d6e9df6e11885afdf:projects/gtm-revenue/research/20260808T142800Z_JOB_EMPLOYER_KOGNITOS_TARGET_CARD.md > /tmp/kognitos.target.md"
+    - "python3 -c \"from pathlib import Path; import hashlib,re; s=Path('/tmp/kognitos.target.md').read_text(); m=re.search(r'BEGIN_EVIDENCE_PREIMAGE_V1\\n(.*?)END_EVIDENCE_PREIMAGE_V1',s,re.S); assert m; b=(m.group(1).replace('\\r\\n','\\n')).encode(); print(len(b),hashlib.sha256(b).hexdigest()); assert len(b)==1073; assert hashlib.sha256(b).hexdigest()=='b26b8e2943b1e2112aee225796ad2e36d1c66555316427b00de2ca40b33750a3'\""
+    - "git grep -n -i -E 'Kognitos|Process-to-Production|time-to-value|held-out|rollback' 6fd1384757600d3b75a2ce2107dfe0bbe39d74a9 -- projects/gtm-revenue/kits projects/gtm-revenue/returns || true"
+    - "test ! -e projects/gtm-revenue/kits/kognitos/20260808T152048Z_PROCESS_TO_PRODUCTION_ACCEPTANCE_CONTRACT.md"
+    - "test ! -e projects/gtm-revenue/returns/20260808T152048Z_S07_KOGNITOS_FDE_PROCESS_TO_PRODUCTION_ACCEPTANCE_MAP_RETURN.md"
+    - "python3 -c \"from pathlib import Path; p=Path('projects/gtm-revenue/kits/kognitos/20260808T152048Z_PROCESS_TO_PRODUCTION_ACCEPTANCE_CONTRACT.md'); s=p.read_text(); req=['WHY_THIS_MAY_MATTER','HOW_TO_USE_IN_2_MINUTES','Business KPI','Baseline','Process rules','Integration','Exception','Human','held-out','Go-live','Rollback','Owner','Revision','Assumptions','Strongest falsifier','https://jobs.ashbyhq.com/kognitos/75ef6778-ee45-4eb5-b2fa-02834f78a986','https://www.kognitos.com/platform/','https://docs.kognitos.com/guides/getting-started/quick-start','https://www.kognitos.com/about-us/']; miss=[x for x in req if x.lower() not in s.lower()]; print({'missing':miss}); assert not miss\""
+    - "python3 -c \"from pathlib import Path; s=Path('projects/gtm-revenue/kits/kognitos/20260808T152048Z_PROCESS_TO_PRODUCTION_ACCEPTANCE_CONTRACT.md').read_text().lower(); forbidden=['kognitos lacks regression testing','kognitos lacks deterministic execution','neeraj mathur is the hiring manager','neeraj mathur is the recruiter','guaranteed savings']; hit=[x for x in forbidden if x in s]; print({'forbidden_hits':hit}); assert not hit\""
+    - "git diff --check -- projects/gtm-revenue/kits/kognitos/20260808T152048Z_PROCESS_TO_PRODUCTION_ACCEPTANCE_CONTRACT.md projects/gtm-revenue/returns/20260808T152048Z_S07_KOGNITOS_FDE_PROCESS_TO_PRODUCTION_ACCEPTANCE_MAP_RETURN.md"
+    - "git status --short"
+    - "git diff --name-only"
+    - "git hash-object projects/gtm-revenue/kits/kognitos/20260808T152048Z_PROCESS_TO_PRODUCTION_ACCEPTANCE_CONTRACT.md"
+    - "python3 -c \"from pathlib import Path; import hashlib; p=Path('projects/gtm-revenue/kits/kognitos/20260808T152048Z_PROCESS_TO_PRODUCTION_ACCEPTANCE_CONTRACT.md'); b=p.read_bytes(); print(len(b),hashlib.sha256(b).hexdigest())\""
+    - "python3 -c \"from pathlib import Path; s=Path('projects/gtm-revenue/returns/20260808T152048Z_S07_KOGNITOS_FDE_PROCESS_TO_PRODUCTION_ACCEPTANCE_MAP_RETURN.md').read_text(); req=['runtime','model','branch','sha','changed paths','exact commands','exit codes','outputs','blockers','rollback','honest flaw','S07_KOGNITOS_FDE_PROCESS_TO_PRODUCTION_ACCEPTANCE_MAP_V1','af8a7b86f6c26bdbcf4d25faf2f84e196f3e92ee','332126404ca60d904a7637af01c2618c2194a5b1791ea16b556c6ed63980dee2','6a52861fbdb08191b9ef33a0b9c3c15c','6a539fc5130c81918c13624739fb2a60']; miss=[x for x in req if x.lower() not in s.lower()]; print({'missing_return_fields':miss}); assert not miss\""
+
+executor_instructions:
+  - >-
+    Start from exact base SHA 6fd1384757600d3b75a2ce2107dfe0bbe39d74a9 or stop with BLOCKED_BASE_DRIFT.
+  - >-
+    Before writing a candidate, inspect repository evidence and current public Kognitos sources for the
+    strongest falsifier. If an equivalent versioned customer-deployment contract is found, write only
+    the producer return with result HOLD, source evidence, exact commands/exit codes/outputs, and no kit.
+  - >-
+    If the falsifier is not found, create exactly one compact two-minute utility artifact at the explicit
+    kit path. Treat Kognitos-specific pain as hypothesis, not diagnosis. Do not invent baseline, savings,
+    customer incident, backlog, staffing problem, buyer authority, or missing controls.
+  - >-
+    Then create exactly one immutable producer return at the explicit return path. The return must name
+    executor runtime and model, local/executor branch and SHA, changed paths, every exact command actually
+    run, each exit code, material stdout/stderr or digest output, blockers, rollback, effect ceiling,
+    verifier, consumer, expiry, and one honest flaw. Commands not run must be marked NOT_RUN, never passed.
+  - >-
+    Do not push, merge, deploy, publish externally, send, spend, create accounts, accept terms, or use
+    Kognitos/customer/private data or credentials. A local commit SHA may be reported if the executor
+    creates one; remote mutation beyond the two authorized artifact paths is forbidden.
+
+acceptance_tests:
+  - id: A1_CLAIM_BINDING
+    pass_if: >-
+      claim commit/path/blob, acceptance SHA-256, idempotency SHA-256, and expiry exactly match this packet.
+  - id: A2_SOURCE_BINDING
+    pass_if: >-
+      source commit/path/blob and recomputed evidence SHA-256 exactly match this packet.
+  - id: A3_LEASE
+    pass_if: executor begins before 2026-08-08T19:04:00Z; otherwise HOLD_EXPIRED.
+  - id: A4_NO_DUPLICATE
+    pass_if: no existing candidate/return at the same work_item/source/acceptance digest already closes this work.
+  - id: A5_FALSIFIER_FIRST
+    pass_if: >-
+      equivalent Kognitos customer-deployment contract search is performed before candidate creation; a found
+      equivalent forces HOLD and candidate abstention.
+  - id: A6_ARTIFACT_CONTENT
+    pass_if: >-
+      candidate binds KPI/baseline, deterministic process rules, integration dependencies, exception/human
+      approval boundaries, five held-out acceptance cases, go-live evidence, rollback trigger, owner, exact
+      automation revision, WHY_THIS_MAY_MATTER, HOW_TO_USE_IN_2_MINUTES, assumptions, strongest falsifier,
+      and all four source URLs.
+  - id: A7_COUNTEREVIDENCE_PRESERVED
+    pass_if: >-
+      candidate does not imply Kognitos lacks deterministic execution, regression testing, draft-safe testing,
+      human guidance, or auditability and does not assign Neeraj Mathur unsupported hiring/recruiting authority.
+  - id: A8_PATH_CEILING
+    pass_if: only the two explicit write paths are changed; no forbidden path is touched.
+  - id: A9_STATIC_CHECKS
+    pass_if: all actually-run validation commands return exit code 0 and git diff --check is clean.
+  - id: A10_RETURN_EVIDENCE
+    pass_if: >-
+      producer return names runtime/model, branch/SHA, changed paths, exact commands, exit codes, outputs,
+      blockers, rollback, verifier, consumer, expiry, and honest flaw without inventing execution.
+  - id: A11_WORLD_EFFECT
+    pass_if: no application, outreach, send, spend, deployment, merge, external publication, account/security change, or destructive Git operation occurs.
+
+effect_ceiling:
+  level: T0_PREP_RESEARCH_GIT
+  allowed: >-
+    repository inspection; public-source read; at most one public-safe candidate plus one immutable return on a real executor surface
+  forbidden: >-
+    application submission, outreach, email/DM, account creation, terms acceptance, spend, paid provider call,
+    deployment, merge, external publication, private-data/credential use, autonomous negotiation, destructive Git
+
+time_budget_ceiling:
+  wall_clock_minutes: 25
+  wip: 1
+  stop_when: FIRST_TERMINAL_HOLD_OR_VERIFIER_READY_RETURN
+
+cost_budget_ceiling:
+  direct_spend_usd: 0
+  paid_provider_calls: 0
+
+rollback:
+  mode: APPEND_ONLY_SUPERSESSION_OR_LOCAL_UNPUSHED_RESET_BY_EXECUTOR
+  candidate_path: projects/gtm-revenue/kits/kognitos/20260808T152048Z_PROCESS_TO_PRODUCTION_ACCEPTANCE_CONTRACT.md
+  return_path: projects/gtm-revenue/returns/20260808T152048Z_S07_KOGNITOS_FDE_PROCESS_TO_PRODUCTION_ACCEPTANCE_MAP_RETURN.md
+  destructive_remote_delete_authorized: false
+  history_rewrite_authorized: false
+  push_authorized: false
+  merge_authorized: false
+
+verifier:
+  seat: S04_HRIST_STRUCTURAL_PREFLIGHT
+  task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  provider_class: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+
+consumer:
+  seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  task_id: 6a539fc5130c81918c13624739fb2a60
+  external_effect_after_consumer: OPERATOR_REVIEW_ONLY
+
+expiry:
+  executor_packet_expiry_utc: 2026-08-08T19:04:00Z
+  source_expiry_utc: 2026-08-14T14:08:00Z
+  after_expiry: HOLD_NO_EXECUTION_REQUIRES_CHANGED_SOURCE_SUCCESSOR
+
+strongest_falsifier: >-
+  Kill the wedge if current Kognitos material already exposes a low-overhead, versioned customer-deployment
+  contract that directly binds business KPI/baseline, process rules, integration dependencies,
+  exception/human authority, held-out regression evidence, go-live evidence, rollback, time-to-value, and the
+  exact promoted automation revision. In that case, producing another generic acceptance checklist is redundant.
+
+routing:
+  direct_executor_ingress: NONE_EXPOSED
+  slack_is_execution: false
+  github_pointer_is_execution: false
+  dispatch_execution_performed: false
+  producer_return_consumed: false
+  missing_ingress_andon_scope: KOGNITOS_FDE_PROCESS_TO_PRODUCTION_ACCEPTANCE_MAP_V1
+  missing_ingress_andon_repeat_allowed_without_changed_ingress: false
+
+honest_flaw: >-
+  This packet is executable specification, not execution. It was compiled from an admitted, unexpired claim and
+  source-bound target card, but no direct Codex, Claude, host-shell, or new workflow-dispatch ingress is exposed
+  to this carrier. Repository search cannot prove the strongest falsifier absent from Kognitos' private FDE
+  process, and same-provider S04 verification remains nonbinding. No candidate, command result, external outcome,
+  independent STOOD/FELL, ConsumerAck, interview, or revenue is claimed by this packet.
