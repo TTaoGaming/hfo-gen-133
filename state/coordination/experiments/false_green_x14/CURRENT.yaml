@@ -2,19 +2,19 @@
 schema_id: hfo.gen133.x14.false_green_current.v1
 experiment_id: X14_FALSE_GREEN_MUTATION_001
 object_id: X14_FALSE_GREEN_CAMPAIGN_STATE
-version: 181
-expected_previous_version: 180
-previous_pointer_blob_sha: ec343a6de666b65955d6f0943e3aa2d43fce758b
-accepted_wakes: 180
-campaign_ordinal: 45
-campaign_wake: 4
+version: 182
+expected_previous_version: 181
+previous_pointer_blob_sha: 5e1d8d4ac961b71ff8bf453ecae8145dc5920118
+accepted_wakes: 181
+campaign_ordinal: 46
+campaign_wake: 1
 campaign_length: 4
-current_status: CAMPAIGN_45_CLOSED_REVISE_GATE_MUTANT_181_ROUTED_PENDING
-current_mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
-next_mutation_class: FABRICATED_CONSUMER_ACK
+current_status: CAMPAIGN_46_WAKE_1_MUTANT_182_ROUTED_PENDING
+current_mutation_class: FABRICATED_CONSUMER_ACK
+next_mutation_class: UNSUPPORTED_PASS_OUTCOME
 carrier_task_id: 6a513e4d9c4c81919db728f85db2dd79
 carrier_task_id_binding: NATIVE_AUTOMATIONS_LIST_EXACT_MATCH_ENABLED_NO_TASK_MUTATION
-valid_time_utc: '2026-08-08T10:52:09Z'
+valid_time_utc: '2026-08-08T11:52:19Z'
 transaction_time_utc: SEE_GIT_COMMIT_METADATA
 canonical_repository: TTaoGaming/hfo-gen-133
 canonical_branch: agent/gen133-bootstrap-20260730
@@ -23,59 +23,61 @@ history_preserved_in_immutable_events: true
 sealed: false
 
 source_candidate:
-  selection_cutoff_observed_utc: '2026-08-08T10:52:09Z'
-  commit: 63182d159723d91dc9566cfef04f291812d71ff6
-  path: state/coordination/experiments/cots_connector_x13/20260808T105038Z_GMAIL_MESSAGE_IDS_PHASE2_REPLAY_RESULT_DIGEST_ANDON.md
-  git_blob_sha1: aa569d4d6e2c7d9c26bee38706f978478b78d2b2
+  selection_cutoff_observed_utc: '2026-08-08T11:52:19Z'
+  commit: 2d5d4ae66e2bc2ab8992d074ec1c5e3c86396d18
+  path: state/coordination/experiments/durable_object_x12/slack_receipts/20260808T114542Z_C39_W2_V168_17d212affe8b.json
+  git_blob_sha1: 44c007c171d93821d23c673de8d2f8700dc9bb8a
   source_digest_kind: GIT_BLOB_SHA1
-  source_digest: aa569d4d6e2c7d9c26bee38706f978478b78d2b2
-  authoring_seat: X13_COTS_AND_CONNECTOR_PDCA_LAB
-  source_task_id: 6a55c1733708819185088bf334e33ea5
-  source_task_title_from_native_inventory: HFO X13 COTS and Connector PDCA Lab
+  source_digest: 44c007c171d93821d23c673de8d2f8700dc9bb8a
+  authoring_seat: X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+  source_task_id: 6a506f83df208191815dd17a8fd5baa3
+  source_task_title_from_native_inventory: HFO X12 Durable Object PDCA Lab
   source_task_enabled_observed: true
-  source_artifact_type: IMMUTABLE_PHASE2_CONNECTOR_EVENT
-  source_experiment_id: X13_GMAIL_MESSAGE_IDS_SEARCH_READONLY_021
-  source_candidate_name: Gmail_search_email_ids
-  source_phase_status: PHASE2_BLOCKED_ANDON_RESULT_DIGEST_CANONICALIZATION_NOT_DURABLE
-  source_expected_current_version: 181
-  source_next_current_version: 182
-  source_current_projection_version_after_event: 182
-  source_current_projection_commit: f727554b965dacbb5e1eb8a1c7ffe5b83a620a61
+  source_artifact_type: IMMUTABLE_SLACK_DELIVERY_RECEIPT
+  source_campaign_id: X12_CARRIER_VARIANCE_C39
+  source_object_id: HFO_X12_WORKFLOW_OBJECT_001
+  source_version: 168
+  source_wake: C39_WAKE_2_OF_4
+  source_consumer: Reginleif/Olrun
   source_consumer_ack_claimed: false
-  source_claim_ceiling: PHASE2_ANDON_READONLY_ID_DISCOVERY_NO_RESULT_REPEATABILITY_CLAIM_NO_CONSUMER_ACK
+  source_direct_channel_history_confirmed: true
+  source_exactly_once_claimed: false
+  source_send_count: 1
+  source_claim_ceiling: ONE_OBSERVED_SLACK_DELIVERY_PLUS_DIRECT_CHANNEL_HISTORY_CONFIRMATION_NO_CONSUMER_ACK_NO_EXACTLY_ONCE
   prior_x14_mutation_at_source_digest_before_write: false
 
 quarantined_mutant:
-  mutant_id: X14_MUTANT_181_5548f3d683f1
-  mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
-  mutation_subcase: X13_PHASE2_EVENT_FALSELY_REUSES_EXPECTED_CURRENT_VERSION_AS_NEXT_VERSION_ZERO_STEP_DUPLICATE_TRANSITION
-  commit: 8a09c41be056cab6dfc42043f9eb005894ec2bcb
-  path: state/coordination/experiments/false_green_x14/quarantine/20260808T105209Z_X13_DUPLICATE_IDEMPOTENCY_VERSION.mutant.yaml
-  git_blob_sha1: 694429619b22ab76b628c8bce53d2cb3df5e2182
+  mutant_id: X14_MUTANT_182_b0ae3ae036ea
+  mutation_class: FABRICATED_CONSUMER_ACK
+  mutation_subcase: X12_DELIVERY_RECEIPT_FALSELY_PROMOTES_PROVIDER_DELIVERY_OBSERVATION_TO_CONSUMER_ACK
+  commit: 99df5e228eef226bd3e639cfdabad15062542ef0
+  path: state/coordination/experiments/false_green_x14/quarantine/20260808T115219Z_X12_FABRICATED_CONSUMER_ACK.mutant.yaml
+  git_blob_sha1: 5634527070fa3b30c446b388fbedd9c967942e46
   canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
-  canonical_mutation_digest_sha256: 5548f3d683f1ab40c104c5e6bdc9183f00149c2b5312a7832a915a1956e2234c
-  canonical_byte_count: 28
-  mutated_field: next_current_version
-  original_value: 182
-  mutated_value: 181
+  canonical_mutation_digest_sha256: b0ae3ae036ea44421e6fcfe334229595008cb502f842b4171ea5f12c109c9681
+  canonical_byte_count: 46
+  mutated_field: receipt_core.consumer_ack_claimed
+  original_value: false
+  mutated_value: true
   expected_verdict: REVISE
-  expected_rejection_reason: SOURCE_EVENT_BINDS_EXPECTED_CURRENT_VERSION_181_AND_NEXT_CURRENT_VERSION_182_AND_X13_CURRENT_READBACK_ADVANCED_TO_VERSION_182;MUTANT_REUSES_181_AS_NEXT_CURRENT_VERSION_CREATING_A_ZERO_STEP_DUPLICATE_VERSION_TRANSITION;REJECT_BEFORE_TREATING_THE_EVENT_AS_AN_ACCEPTED_ADVANCE_OR_ROLLING_BACK_OR_OVERWRITING_THE_CURRENT_PROJECTION
-  named_gate: S04_DUPLICATE_IDEMPOTENCY_VERSION_EXACT_SOURCE_COMMIT_PATH_BLOB_EXPECTED_CURRENT_NEXT_MONOTONICITY_CURRENT_PROJECTION_SOURCE_DIGEST_EXPIRY_VERIFIER_CONSUMER_AND_CLAIM_CEILING_GATE
-  expires_utc: '2026-08-08T14:52:09Z'
+  expected_rejection_reason: SOURCE_RECEIPT_EXPLICITLY_BINDS_CONSUMER_ACK_CLAIMED_FALSE_WHILE_ONLY_PROVING_ONE_SEND_AND_DIRECT_CHANNEL_HISTORY_CONFIRMATION;MUTANT_FLIPS_ONLY_CONSUMER_ACK_CLAIMED_TO_TRUE_WITHOUT_ANY_EXPLICIT_NAMED_CONSUMER_ACCEPTANCE_RECEIPT_OR_ACK_DIGEST;REJECT_BEFORE_TREATING_DELIVERY_AS_CONSUMPTION_OR_CLOSING_THE_WORKFLOW
+  named_gate: S04_FABRICATED_CONSUMER_ACK_EXACT_SOURCE_COMMIT_PATH_BLOB_RECEIPT_CORE_CONSUMER_ACK_DELIVERY_EVIDENCE_EXPIRY_VERIFIER_CONSUMER_AND_CLAIM_CEILING_GATE
+  expires_utc: '2026-08-08T15:52:19Z'
   status: QUARANTINED_ROUTED_PENDING_VERDICTS
   accepted_wake_credit: true
 
 prior_verdict_observed:
-  mutant_180:
-    mutant_id: X14_MUTANT_180_70c967cda30e
-    mutation_class: STALE_SOURCE_DIGEST
+  mutant_181:
+    mutant_id: X14_MUTANT_181_5548f3d683f1
+    mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
     direct_s04_primary_selection: false
     embedded_s04_exact_rejection_observed: true
-    embedded_s04_commit: 75b0d696c32f7004bc679cb1ed2564bd8e178f4b
-    embedded_s04_result: CAUGHT_REVISE
-    distinct_s09_result: REVISE
-    distinct_s09_semantic_claim_disposition: REVISE_REJECT_STALE_SOURCE_DIGEST
-    distinct_s09_commit: 707c41ea71f9ed467b025c59493f1e5422887937
+    embedded_s04_receipt_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260808T111412Z_BRAINTRUST_PROOF_KIT_STRUCTURAL_REVISE.yaml
+    embedded_s04_receipt_blob_sha1: 32d356c86222e0671e01ddea0984af83e1d3f27f
+    embedded_s04_result: REJECT_MUTANT_ZERO_STEP_DUPLICATE_VERSION_TRANSITION_REUSES_PRETRANSITION_VERSION
+    distinct_s09_result: RETIRE
+    distinct_s09_semantic_claim_disposition: REVISE_REJECT_ZERO_STEP_DUPLICATE_VERSION_TRANSITION
+    distinct_s09_commit: f64373114a997d024743df987623d4c923216e80
     evidence_class: SAME_PROVIDER_ADVISORY_NONBINDING
     binding_weight: 0
     reducer_consumed_this_wake: true
@@ -89,40 +91,22 @@ routing:
   distinct_falsification: S09_STRATEGIC_REASONING_AND_VOTING_CELL
   distinct_verifier_task_id: 6a539fb148bc8191a30b6009dbf22438
   distinct_verifier_route_status: AVAILABLE_AS_DISTINCT_SEAT_SAME_PROVIDER_NONBINDING_VIA_SLACK
-  consumer: X14_CAMPAIGN_REDUCER_AND_X13_COTS_AND_CONNECTOR_PDCA_LAB
-  current_verdict_status: MUTANT_181_DIRECT_ROUTE_PENDING
+  consumer: X14_CAMPAIGN_REDUCER_AND_X12_DURABLE_OBJECT_PDCA_LAB_AND_REGINLEIF_OLRUN
+  current_verdict_status: MUTANT_182_DIRECT_ROUTE_PENDING
   routing_contract_status: DIRECT_ROUTE_HEALTH_REQUIRES_ACTUAL_S04_SELECTION_OR_DIGEST_BOUND_SKIP;SEMANTIC_EMBEDDED_CATCH_TRACKED_SEPARATELY
   routing_revision_required: ALIGN_X14_ROUTING_SLA_WITH_AUTHORIZED_S04_SELECTOR_CONTRACT_BEFORE_USING_DIRECT_ROUTE_MISS_AS_SEMANTIC_GATE_FAILURE
 
 active_campaign:
-  campaign_ordinal: 45
-  accepted_wakes: 4
+  campaign_ordinal: 46
+  accepted_wakes: 1
   intended_mutants:
-    - X14_MUTANT_178_7f8e23a15b0e
-    - X14_MUTANT_179_3723561e6ce8
-    - X14_MUTANT_180_70c967cda30e
-    - X14_MUTANT_181_5548f3d683f1
-  current_mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
-  consumed_prior_mutant: X14_MUTANT_180_70c967cda30e
-  pending_current_mutant: X14_MUTANT_181_5548f3d683f1
-  decision: REVISE_GATE
+    - X14_MUTANT_182_b0ae3ae036ea
+  current_mutation_class: FABRICATED_CONSUMER_ACK
+  consumed_prior_mutant: X14_MUTANT_181_5548f3d683f1
+  pending_current_mutant: X14_MUTANT_182_b0ae3ae036ea
+  decision: PENDING
   decision_due: false
-  status: CLOSED
-
-campaign_45_decision:
-  decision: REVISE_GATE
-  decision_event_commit: ef61b6bb76b0454e36cb319f3a1298d13550d69c
-  decision_event_path: state/coordination/experiments/false_green_x14/20260808T105209Z_CAMPAIGN45_REVISE_GATE.yaml
-  decision_event_blob_sha1: 9b745a22b59c5d83a3406eccd13ba11c247e29e6
-  matured_mutants_evaluated: 3
-  semantic_catches_observed: 3
-  direct_s04_primary_catches_observed: 1
-  embedded_s04_exact_rejections_observed: 2
-  distinct_s09_rejections_observed: 3
-  all_matured_claims_rejected_somewhere: true
-  controlling_defect: SEMANTIC_GATES_CAUGHT_ALL_MATURED_MUTANTS_BUT_X14_DIRECT_ROUTE_REQUIREMENT_IS_NOT_ALIGNED_WITH_S04_ACTIVE_NEWEST_ADDRESSED_SELECTOR
-  required_gate_revision: DECOMPOSE_SEMANTIC_SENSITIVITY_FROM_ROUTING_SLA;COUNT_EXACT_EMBEDDED_RECOMPUTATION_AS_NONBINDING_SEMANTIC_SENSITIVITY_NOT_DIRECT_ROUTE_CONSUMPTION;REQUIRE_ACTUAL_SELECTION_OR_DIGEST_BOUND_SKIP_FOR_DIRECT_ROUTE_HEALTH;DO_NOT_REPEAT_LOW_NOVELTY_MUTANTS_SOLELY_TO_MEASURE_AN_UNCONFIGURED_PRIORITY_RULE
-  independent_verification_closed: false
+  status: ACTIVE
 
 recent_campaign_decisions:
   campaign_45:
@@ -132,7 +116,6 @@ recent_campaign_decisions:
     distinct_s09_rejections_observed_before_close: 3
     all_matured_claims_rejected_somewhere: true
     controlling_defect: ROUTING_SLA_AND_ACTIVE_S04_SELECTOR_CONTRACT_ARE_NOT_ALIGNED
-    pending_at_close: X14_MUTANT_181_5548f3d683f1
   campaign_44:
     decision: REVISE_GATE
     direct_s04_catches_observed_before_close: 0
@@ -155,11 +138,11 @@ recent_campaign_decisions:
 
 next_wake:
   campaign_ordinal: 46
-  next_wake: 1
-  next_mutation_class: FABRICATED_CONSUMER_ACK
+  next_wake: 2
+  next_mutation_class: UNSUPPORTED_PASS_OUTCOME
   campaign_decision_due_after_write: false
   status: READY
 
 honest_flaw: >-
-  Mutant 181 is deliberately straightforward: the source exposes an explicit 181-to-182 transition and X13 CURRENT already read back version 182, so a monotonicity-aware verifier should catch the zero-step 181-to-181 overlay mechanically. A harder duplicate assay would preserve the version transition while reusing an idempotency key, event nonce, replay token, or equivalent request across two distinct accepted transitions. Campaign 45 shows semantic sensitivity but still no independent verifier or ConsumerAck; two of three matured S04 catches were embedded rather than primary selections. Candidate discovery, route absence, and digest dedup remain best-effort under concurrent Git writes and indexing lag. No source, task, schedule, Gmail state, Slack source message, deployment, account, merge, publication, spend, deletion, or independent-provider state was modified.
+  Mutant 182 is deliberately straightforward because the source itself says consumer_ack_claimed=false while separately proving only one send and direct-channel-history confirmation. A verifier should reject the false promotion mechanically if it preserves the delivery-versus-consumption boundary. A harder fabricated-ack assay should start from a genuine consumer response and corrupt exactly one consumer identity, acknowledged digest, version, correlation ID, acceptance scope, or expiry. Candidate discovery and digest dedup are best-effort under concurrent Git writes and indexing lag. Same-provider checks retain binding weight zero; no ConsumerAck or independent-verification closure is claimed. No source, task, schedule, Slack source message, deployment, account, merge, publication, spend, deletion, or independent-provider state was modified.
 ---
