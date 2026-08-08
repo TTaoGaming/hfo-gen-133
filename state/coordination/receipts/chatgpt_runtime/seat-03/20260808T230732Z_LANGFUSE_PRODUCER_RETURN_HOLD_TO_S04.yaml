@@ -1,0 +1,106 @@
+schema_id: hfo.gen133.s03_verification_route.v1
+result: HOLD
+terminal: false
+seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+expected_task_id: 6a539fc5130c81918c13624739fb2a60
+observed_task_id: 6a539fc5130c81918c13624739fb2a60
+task_id_match: true
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-08T23:07:32Z
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+correlation_id: GTM-S07-LANGFUSE-RETURN-20260808T222700Z
+work_item_id: S07_LANGFUSE_EVAL_TO_AUTHORITY_RELEASE_CONTRACT_V1
+
+selection:
+  prior_s03_material_route_commit: ca9b341f519098adf35f4ac7083b325304d57ef4
+  changed_claim_commit: 1899fa670a334cffac04b116a39a309f48aa4ddd
+  changed_producer_return_commit: 8a3fb854711415efd824e73994dfa1985f0bb66d
+  selected_reason: NEW_POST_CURSOR_PRODUCER_RETURN_WITH_UNEXPIRED_BOUND_CLAIM
+  claim_expiry_utc: 2026-08-09T02:04:00Z
+  source_expiry_utc: 2026-08-14T14:08:00Z
+  expired: false
+
+claim_binding:
+  path: projects/gtm-revenue/claims/20260808T220400Z_LANGFUSE_EVAL_TO_AUTHORITY_RELEASE_CONTRACT_ADMISSION.claim.yaml
+  git_blob_sha1: 9596f6ed80816e560b0ea1be4c80d1a94b8d8aa9
+  acceptance_sha256: 1d369c9871653b4432369280bad99cd3c1ff3164b1c05ba469619c09fd675f3a
+  idempotency_sha256: 44a6ab08f020befcfc071a5edb413852e95a14167307aa85700360ee3526a861
+  effect_ceiling: T0_RESEARCH_PREP_ONLY
+  rollback_mode: APPEND_ONLY_SUPERSESSION
+
+producer_return_binding:
+  producer: S07_GTM_PROOF_KIT_BUILDER
+  producer_task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+  path: projects/gtm-revenue/returns/20260808T222700Z_S07_LANGFUSE_AGENT_RELEASE_EVIDENCE_CONTRACT_RETURN.md
+  create_commit: 8a3fb854711415efd824e73994dfa1985f0bb66d
+  producer_digest_type: GIT_BLOB_SHA1
+  producer_digest: 303d20da51ea469da3853dfc2304168d974e6900
+  claim_blob_bound_by_return: 9596f6ed80816e560b0ea1be4c80d1a94b8d8aa9
+  acceptance_sha256_bound_by_return: 1d369c9871653b4432369280bad99cd3c1ff3164b1c05ba469619c09fd675f3a
+  idempotency_sha256_bound_by_return: 44a6ab08f020befcfc071a5edb413852e95a14167307aa85700360ee3526a861
+  rollback_bound: APPEND_ONLY_SUPERSESSION_NO_PERMANENT_DELETE
+  effect_ceiling_bound: T0_RESEARCH_PREP_GIT_ONLY
+  expiry_bound: 2026-08-09T02:04:00Z
+  honest_flaw_bound: LANGFUSE_ALREADY_OWNS_MOST_EVAL_RELEASE_PRIMITIVES_AND_RUNTIME_AUTHORIZATION_MAY_INTENTIONALLY_REMAIN_EXTERNAL_SO_BRIDGE_MAY_BE_REDUNDANT
+  commands_and_exit_codes: NOT_APPLICABLE_MARKDOWN_ONLY_PREPARATION_ARTIFACT_NO_BUILD_OR_TEST_EXECUTION_CLAIMED
+  source_system_readback: EXACT_GITHUB_CONTENT_BLOBS_OBSERVED
+
+candidate_binding:
+  path: projects/gtm-revenue/kits/langfuse/20260808T222400Z_AGENT_RELEASE_EVIDENCE_CONTRACT.md
+  create_commit: e0a4d987aad433d7af52c58303efb50d416c89a2
+  git_blob_sha1_returned: 31b7d48dcaf9ab34cb27e87e35b256ad4a830e71
+  git_blob_sha1_readback_observed: 31b7d48dcaf9ab34cb27e87e35b256ad4a830e71
+  exact_blob_match: true
+  utf8_bytes_returned: 5549
+  sha256_returned: 1639d553193a333334a6cc7e83accbd9889dabcbd203a08d8caf531ac22a29b6
+  public_safe_synthetic_only: true
+
+verdict_state:
+  exact_independent_stood_or_fell_tied_to_producer_digest: NONE_OBSERVED
+  same_provider_preflight_for_this_producer_digest: NONE_OBSERVED
+  consumer_ack: NONE_OBSERVED
+  prior_terminal_receipt_for_work_item: NONE_OBSERVED
+  terminal_receipt_written: false
+
+route:
+  verifier: S04_HRIST_STRUCTURAL_PREFLIGHT
+  verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  verifier_role: NONPRODUCER_SAME_PROVIDER_PREFLIGHT
+  provider_class: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  exact_packet_instruction: >-
+    Recompute the unchanged producer-return blob 303d20da51ea469da3853dfc2304168d974e6900,
+    claim blob 9596f6ed80816e560b0ea1be4c80d1a94b8d8aa9, and candidate blob
+    31b7d48dcaf9ab34cb27e87e35b256ad4a830e71 against the canonical branch.
+    Check schema, task/actor separation, claim and acceptance binding, candidate bytes,
+    expiry, rollback, T0 effect ceiling, public-safe privacy boundary, no-send status,
+    idempotency, and honest flaw. Return only PASS_STRUCTURAL, REVISE, HOLD, BLOCKED,
+    or YIELD_SILENT and explicitly preserve SAME_PROVIDER_NONBINDING with binding weight 0.
+    Do not emit STOOD/FELL or ConsumerAck and do not edit candidate/producer bytes.
+  independent_followup_required: true
+  independent_verdict_vocabulary_required_by_s03: STOOD_OR_FELL
+  consumer_after_stood: EXPLICIT_NAMED_CONSUMERACK_REQUIRED
+
+safety:
+  producer_impersonation: false
+  self_verification: false
+  task_mutation: false
+  send: false
+  spend: false
+  deployment: false
+  merge: false
+  external_publication: false
+  account_or_security_change: false
+  permanent_deletion: false
+  implicit_consumer_ack: false
+
+honest_flaw: >-
+  This S03 route establishes only that the new Langfuse producer return and its claim/candidate
+  bindings are present and unexpired in GitHub at this wake and that the candidate Git blob readback
+  matches the producer return. S03 did not independently recompute the candidate SHA-256 from raw
+  bytes, did not execute any build or tests, and has no distinct-provider verifier surface in this
+  carrier. S04 is therefore only a nonproducer same-provider structural preflight with binding weight
+  zero. No exact producer-digest-bound STOOD/FELL and no explicit named ConsumerAck were observed, so
+  no terminal Gen-133 receipt is authorized.
