@@ -1,0 +1,156 @@
+---
+schema_id: hfo.gen133.s09.adversarial_bayesian_vote.v1
+seat: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+result: REVISE
+wip: 1
+valid_time_utc: '2026-08-08T03:33:18Z'
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+binding_weight: 0
+evidence_class: SAME_PROVIDER_ADVISORY_NONBINDING
+independent_verification_closed: false
+quorum_claimed: false
+
+self_probe:
+  expected_task_id: 6a539fb148bc8191a30b6009dbf22438
+  observed_task_id: 6a539fb148bc8191a30b6009dbf22438
+  task_id_match: true
+  task_enabled_observed: true
+  canonical_branch_observed: true
+  tools_observed:
+    - native_automations_inventory_read
+    - github_branch_read
+    - github_search
+    - github_exact_file_read
+    - github_create_file
+    - github_readback
+    - slack_send_message
+  task_mutation_performed: false
+
+decision_packet:
+  packet_id: X14_MUTANT_173_8bf41fc77c00
+  mutation_class: EVIDENCE_INFLATION
+  mutation_subcase: S15_HERITAGE_CREDIT_ZERO_TO_ONE_WITHOUT_CONSUMER_ACK
+  mutant_commit: 4ac3c49f677c56d23bc8099c6597114fdd9e32ba
+  mutant_path: state/coordination/experiments/false_green_x14/quarantine/20260808T025657Z_S15_EVIDENCE_INFLATION.mutant.yaml
+  mutant_git_blob_sha1: 2b734babdc0222ad1c79702e0713eda3d88ee49c
+  source_commit: db88cda2ce85daad0c960f7ea42201cc6ddf4b0d
+  source_path: state/coordination/receipts/chatgpt_runtime/seat-15/20260808T025522Z_X13_GDRIVE_019_PHASE3_REUSE_PRIOR_EMPTY_SUCCESS_GATE.yaml
+  source_git_blob_sha1: 825c4aac2c72fc1e899e4197694bfa919aa25bec
+  canonical_overlay_sha256: 8bf41fc77c00eb58807798109fdce0aad89f767d921f7480976596b6b2582f2f
+  canonical_overlay_utf8_bytes: 172
+  source_heritage_credit: 0
+  mutated_heritage_credit: 1
+  source_consumer_ack: NOT_OBSERVED
+  source_heritage_credit_until_ack: 0
+  decision_deadline_utc: '2026-08-08T06:56:57Z'
+  packet_effect_ceiling: ONE_IMMUTABLE_QUARANTINE_FILE_ONE_CURRENT_POINTER_UPDATE_ONE_SANITIZED_SLACK_ROUTE_ONLY
+  s09_effect_ceiling: ONE_IMMUTABLE_GIT_VOTE_ONE_SANITIZED_SLACK_POINTER_ONLY
+  verifier:
+    seat: S04_STRUCTURAL_PREFLIGHT
+    task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  consumers:
+    - X14_CAMPAIGN_REDUCER
+    - S15_HERITAGE_REUSE_AND_DEDUP
+    - X13_GDRIVE_METADATA_DOCUMENT_SEARCH_READONLY_019_PHASE3_SYNTHETIC_NONMATCH_EMPTY_OR_ERROR_SHAPE_GATE
+  candidate_options:
+    - ACCEPT
+    - REVISE
+    - HOLD
+    - RETIRE
+    - ABSTAIN
+
+prior:
+  ACCEPT: 0.020
+  REVISE: 0.500
+  HOLD: 0.100
+  RETIRE: 0.300
+  ABSTAIN: 0.080
+  rationale: Intentionally quarantined X14 mutants normally deserve rejection-oriented priors, but lifecycle retirement and routing measurement remain distinct questions.
+
+evidence:
+  ACCEPT:
+    for:
+      - A heritage system could in principle define artifact-discovery credit independently of downstream ConsumerAck.
+    against:
+      - The exact source sets heritage_credit to 0.
+      - The exact source sets consumer_ack to NOT_OBSERVED.
+      - The exact source separately binds heritage_credit_until_ack to 0.
+      - No source-authored delegation or superseding version was found that permits credit 1 for this exact WorkItem before acknowledgment.
+  REVISE:
+    for:
+      - The mutant changes exactly one bounded field from source value 0 to 1 while the source explicitly preserves zero credit until ConsumerAck.
+      - The source states only a reusable claim-ceiling antibody transfers; current Phase-3 result parity and operational adoption fitness are excluded.
+      - S04 later recomputed the exact 172-byte overlay digest and returned REVISE for this exact mutant as its strongest fake-green check.
+      - Campaign 43 already returned REVISE_GATE because direct S04 routing starvation recurred despite an existing priority rule.
+    against:
+      - S04's exact catch was embedded inside a different candidate preflight, not an observed direct X14 selection, so it does not close the routing question.
+      - The semantic defect is conspicuous and therefore yields limited new information about subtle evidence inflation.
+  HOLD:
+    for:
+      - A direct S04 route is still repository-unobserved and could add routing evidence before expiry.
+    against:
+      - Exact immutable source bytes are already sufficient to reject the mutated credit claim; uncertainty is about routing/lifecycle, not claim validity.
+  RETIRE:
+    for:
+      - The mutant is intentionally conspicuous and its own honest flaw recommends a harder future evidence-inflation specimen.
+      - S04 already caught the exact semantic defect with a digest-bound recomputation, reducing marginal value of repeated semantic checks.
+      - Continuing equivalent mutants spends scarce verifier/reducer attention that could test genuine ConsumerAck plus a one-unit overcount of independent evidence weight, novelty, coverage, or sample size.
+    against:
+      - Retiring before one direct S04 selection or expiry plus reducer consumption would erase a useful measurement of the campaign's controlling routing-starvation defect.
+  ABSTAIN:
+    for:
+      - Git search visibility is nontransactional and concurrent writes can lag indexing.
+    against:
+      - The current pointer, exact mutant, exact source, and later S04 exact-mutant check were all content-addressably readable; there is enough evidence to vote without pretending absence is proof.
+
+correlated_evidence_risk:
+  assessment: HIGH_FOR_JUDGMENT_LOW_FOR_EXACT_BYTES
+  detail: S04 and S09 are ChatGPT-carried same-provider advisory checks and therefore do not constitute independent corroboration. Exact Git source and mutant blobs are content-addressed facts, but interpretation agreement across S04/S09 has binding weight zero.
+
+observed_disagreement_without_majority_laundering:
+  - source: X14_CURRENT_CAMPAIGN_43
+    position: REVISE_GATE
+    basis: DIRECT_S04_ROUTE_STARVATION_RECURRED
+  - source: S04_EMBEDDED_EXACT_MUTANT_CHECK
+    position: REVISE
+    basis: SOURCE_BINDS_ZERO_CREDIT_AND_NO_CONSUMER_ACK
+  - source: S09_THIS_VOTE
+    position: REVISE
+    basis: REJECT_MUTATED_CREDIT_CLAIM_AND_KEEP_LITERAL_SPECIMEN_ONLY_LONG_ENOUGH_TO_MEASURE_DIRECT_ROUTING_OR_EXPIRY
+  note: These are correlated same-provider signals, not a majority or quorum.
+
+strongest_dissent:
+  option: RETIRE
+  argument: The exact semantic defect has already been caught with digest-bound recomputation and the specimen is deliberately low-information; after reducer consumption, continued lifetime mostly burns verifier opportunity.
+
+opportunity_cost:
+  if_revise: One S04 direct-selection opportunity and one reducer slot remain occupied by a conspicuous mutant instead of a harder evidence-inflation assay.
+  if_retire_now: Loses a clean direct-routing measurement for the campaign's controlling starvation defect.
+
+operator_minute_burden:
+  measured_minutes: 0
+  note: No operator relay or review was required for this vote; future operator burden is not inferred.
+
+reversible_next_experiment:
+  action: Keep mutant 173 eligible only until one exact direct S04 selection or its existing expiry. If direct selection occurs, consume the digest-bound result and retire this literal specimen. If expiry occurs first, record routing starvation rather than regenerating an equivalent mutant. The next evidence-inflation mutant should preserve a genuine ConsumerAck and overcount exactly one bounded unit of independent evidence weight, novelty, coverage, or sample size.
+  reversibility: Append-only Git/Slack evidence only; no task, policy, account, deployment, or external-state mutation.
+
+falsifiers:
+  claim_falsifier: A source-authored immutable superseding receipt for the same WorkItem and evidence epoch that explicitly permits heritage_credit=1 before ConsumerAck, with a bound semantic rule explaining why heritage_credit_until_ack=0 no longer controls.
+  routing_falsifier: A digest-bound S04 receipt that directly selects X14_MUTANT_173_8bf41fc77c00 before expiry would falsify the claim that this exact mutant remained directly route-starved.
+
+posterior:
+  ACCEPT: 0.001
+  REVISE: 0.580
+  HOLD: 0.015
+  RETIRE: 0.390
+  ABSTAIN: 0.014
+
+verdict: REVISE
+claim_disposition: REJECT_UNSUPPORTED_HERITAGE_CREDIT_PROMOTION
+lifecycle_recommendation: RETIRE_LITERAL_SPECIMEN_AFTER_ONE_DIRECT_S04_SELECTION_OR_EXPIRY_PLUS_REDUCER_CONSUMPTION
+
+honest_flaw: This vote can establish only an advisory interpretation of exact Git evidence. S04's exact mutant rejection was embedded in another structural preflight rather than observed as a direct X14 route, and Git search/index timing can hide concurrent writes. No independent distinct-provider verifier or ConsumerAck was observed, so binding weight remains zero.
+---
