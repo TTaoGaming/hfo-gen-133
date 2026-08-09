@@ -1,0 +1,143 @@
+---
+schema_id: hfo.gen133.s09.adversarial_bayesian_vote.v1
+vote_id: S09_X14_MUTANT217_20260809T233143Z
+seat: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+carrier_task_id_expected: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_id_observed: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_enabled_observed: true
+carrier_task_id_match: true
+wip: 1
+verdict: RETIRE
+semantic_claim_disposition: REVISE_REJECT_MUTATED_CLAIM
+retire_condition: AFTER_EXACT_REDUCER_CONSUMPTION_OR_PACKET_EXPIRY
+binding_weight: 0
+evidence_class: SAME_PROVIDER_ADVISORY_NONBINDING
+independent_verification_closed: false
+consumer_ack_claimed: false
+quorum_claimed: false
+valid_time_utc: '2026-08-09T23:31:43Z'
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+
+self_probe:
+  native_task_inventory_read: true
+  expected_task_present: true
+  expected_task_enabled: true
+  git_read_surface_available: true
+  git_write_surface_available: true
+  slack_pointer_surface_available: true
+  task_mutation_performed: false
+  source_edit_performed: false
+  self_verification_claimed: false
+  prohibited_effects_performed: none
+
+exact_decision_packet:
+  workitem_id: X14_MUTANT_217_db5dae6427f3
+  candidate_options:
+    - ACCEPT
+    - REVISE
+    - HOLD
+    - RETIRE
+    - ABSTAIN
+  decision_deadline_utc: '2026-08-10T02:52:00Z'
+  effect_ceiling: QUARANTINED_GIT_FILE_PLUS_ONE_SANITIZED_INTERNAL_SLACK_ROUTE_ONLY
+  verifier: S04_STRUCTURAL_PREFLIGHT
+  verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  distinct_advisory_verifier: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  consumers:
+    - X14_CAMPAIGN_REDUCER
+    - X13_COTS_CONNECTOR_REDUCER
+  source:
+    path: state/coordination/experiments/cots_connector_x13/20260809T225004Z_GITHUB_PR_CHANGED_FILENAMES_PHASE2_REPLAY.md
+    commit_sha: 83aef40ce3aa5b28b60cc704f0237bb3c7bc7845
+    git_blob_sha1: 0f9c5e522cebd890b46100ffa1abfdda4315aa00
+    source_status: PHASE2_ACCEPTED_WITH_GATES
+    custom_code_avoided_estimate: 20_to_60_LOC_UNVALIDATED
+    custom_code_avoided_realized_by_this_candidate: 0
+    operator_minutes_removed_measured: 0
+  mutant:
+    path: state/coordination/experiments/false_green_x14/quarantine/20260809T225200Z_X13_EVIDENCE_INFLATION.mutant.yaml
+    commit_sha: d7fba2c3faded1b0754849e009d419ae711e75e2
+    git_blob_sha1: 60642f68d1a092e335644630ca4ed8532d9128cc
+    mutation_class: EVIDENCE_INFLATION
+    mutation_subcase: UNVALIDATED_CODE_AVOIDANCE_ESTIMATE_FALSELY_PROMOTED_TO_CONFIRMED_REALIZED_VALUE
+    mutated_field: custom_code_avoided_realized_by_this_candidate
+    original_value: 0
+    mutated_value: 60_LOC_CONFIRMED_REALIZED
+    canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+    canonical_overlay_bytes_declared: 229
+    canonical_overlay_bytes_recomputed: 229
+    canonical_overlay_sha256_declared: db5dae6427f3b7fb2190a05d72375563f0bbcefec4e7359c3691226630c8e9b6
+    canonical_overlay_sha256_recomputed: db5dae6427f3b7fb2190a05d72375563f0bbcefec4e7359c3691226630c8e9b6
+
+prior:
+  ACCEPT: 0.010
+  REVISE: 0.390
+  HOLD: 0.070
+  RETIRE: 0.480
+  ABSTAIN: 0.050
+
+option_evidence:
+  ACCEPT:
+    for:
+      - The quarantined mutant is structurally well-bound to one immutable source blob and its declared canonical overlay reproduces exactly.
+    against:
+      - Structural integrity of a negative-control artifact is not evidence that its substituted quantitative claim is true.
+      - The source explicitly records an UNVALIDATED 20-to-60 LOC estimate and realized custom-code avoidance of zero, not 60 confirmed realized LOC.
+  REVISE:
+    for:
+      - The source directly contradicts the mutated realized value and provides no implementation inventory, replacement diff, downstream adoption, named ConsumerAck, or reproducible realized-savings measurement supporting 60 LOC.
+      - Promoting the upper edge of an unvalidated estimate into a confirmed realized outcome collapses estimate into measurement and exceeds the source claim ceiling.
+    against:
+      - The semantic defect is already covered by prior measured-benefit provenance antibodies; another terminal REVISE adds little new failure-class information once the exact rejection has been routed to the reducers.
+  HOLD:
+    for:
+      - A short hold is defensible if an exact predating source-bound measurement or superseding receipt exists but has not yet been consumed.
+      - Campaign route health remains separately open because direct digest-bound S04 primary consumption has not been observed for recent matured mutants.
+    against:
+      - The packet itself is unexpired, exact, readable, and internally sufficient to reject the mutated quantitative claim; waiting does not convert zero realized value into 60 confirmed LOC.
+  RETIRE:
+    for:
+      - S15 classified mutant 217 as recurrence binding only with no new failure class or antibody-diversity credit and reused an older S09 measured-benefit provenance gate.
+      - The same evidence-inflation family previously rejected conspicuous estimate-to-realized or zero-to-positive substitutions, so keeping this specimen active beyond exact reducer consumption spends verifier capacity on a saturated assay.
+    against:
+      - The current mutant is still pending in X14 CURRENT and should not disappear before the X14/X13 reducers have an exact digest-bound semantic rejection or the packet expires.
+  ABSTAIN:
+    for:
+      - Abstention would be appropriate if task identity, source bytes, mutant bytes, deadline, verifier, consumer, or canonicalization could not be established.
+    against:
+      - All required packet bindings were available; the live task inventory matched the expected S09 ID and the canonical overlay recomputed exactly.
+
+correlated_evidence_risk: >-
+  S09, S15, S04, X14, and the source-producing X13 carrier are ChatGPT-carried or same-provider surfaces. S15's reuse of the prior S09 antibody is not a new independent observation, and agreement among same-provider seats must not be multiplied into quorum confidence. GitHub durability proves bytes and provenance pointers, not semantic independence. Binding weight therefore remains zero unless a distinct decision-maker independently consumes the result.
+
+posterior:
+  ACCEPT: 0.001
+  REVISE: 0.252
+  HOLD: 0.032
+  RETIRE: 0.704
+  ABSTAIN: 0.011
+
+strongest_dissent: >-
+  REVISE is the strongest dissent. The exact semantic disposition should remain REVISE until X14/X13 reducer consumption is durably bound, because retiring the specimen too early could erase route-accounting evidence. This vote therefore rejects the mutated claim now but recommends RETIRE only after exact reducer consumption or expiry; it does not claim direct S04 route closure.
+
+opportunity_cost: >-
+  Another hourly verifier wake spent retaining this easy estimate-to-realized mutant displaces higher-information assays: a genuine nonzero measured saving bound to the wrong source digest, duplicated credit across overlapping intervals, a confidence interval promoted beyond its denominator or sample scope, or a valid measurement attached to the wrong consumer or effective time.
+
+operator_minute_burden:
+  current_operator_minutes: 0
+  avoided_operator_minutes_claimed: 0
+  note: No operator action is required and no benefit credit is granted.
+
+reversible_next_experiment: >-
+  Start from a source with a genuine nonzero realized measurement and mutate exactly one provenance edge while preserving every neighboring fact: source digest, named consumer, sample/denominator, measurement window, attribution boundary, or no-double-counting key. Keep the specimen quarantined and non-executable so it can be retired without touching source or provider state.
+
+falsifier: >-
+  This semantic rejection would be falsified by a predating immutable authoritative measurement receipt that explicitly binds the exact GitHub PR-filename candidate and source event to 60 realized LOC of replaced custom code, with a reproducible baseline and implementation/replacement comparison, exact measurement method and window, named consumer and acknowledgment, causal attribution, and a no-double-counting rule. No such receipt is present in the inspected packet.
+
+multiple_vote_handling: >-
+  S15 supports the same rejection family through heritage reuse, but that is correlated same-provider advisory evidence and is not majority-laundered. No independent quorum or ConsumerAck is claimed.
+
+honest_flaw: >-
+  The packet is unusually easy because the authentic source places the unvalidated estimate and realized-zero field next to each other. The vote can verify the exact byte relationships and reject the internal contradiction, but it cannot prove provider-independent truth or global absence of a predating superseding measurement outside the minimum inspected evidence. RETIRE is therefore a lifecycle recommendation after consumption or expiry, not acceptance of the mutated claim.
+---
