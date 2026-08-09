@@ -1,0 +1,69 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_GMAIL_MESSAGE_ID_SEARCH_READONLY_026
+event_type: PHASE3_RESULT
+phase: 3
+campaign_wake: 3_of_4
+expected_current_version: 202
+next_current_version: 203
+candidate: Gmail_search_email_ids_readonly
+phase_status: PHASE3_ACCEPTED_WITH_GATES
+wip: 1
+phase3_preflight_commit: 68e4a0c9656325db09a829ebd004b045ef787857
+phase3_preflight_blob_sha: 8f34f671e6dd2cc47bdea147a97bd5e6032a0073
+phase3_preflight_readback: true
+canonical_request_sha256_verified: true
+probe_type: SYNTHETIC_INVALID_PAGE_TOKEN_READONLY
+candidate_invocations_total: 3
+usable_candidate_results: 2
+phase3_expected_failure_observed: true
+phase3_error_type: google_api_error
+phase3_error_code: invalidArgument
+phase3_error_status: INVALID_ARGUMENT
+phase3_error_reason: invalidArgument
+phase3_error_message_class: FAILED_TO_SEARCH_EMAIL_IDS
+structured_error_observed: true
+provider_http_status_exposed: false
+provider_request_id_exposed: false
+rate_limit_headers_exposed: false
+native_method_exposed: false
+actual_quota_debit_exposed: false
+raw_message_ids_persisted: false
+raw_page_token_persisted: false
+content_hydrations_total: 0
+connector_errors_total: 1
+expected_connector_errors_total: 1
+retries_total: 0
+fallbacks_total: 0
+candidate_mutations_total: 0
+operator_minutes_removed_measured: 0
+custom_code_avoided_estimate: 30_to_90_LOC_UNVALIDATED
+custom_code_avoided_realized_by_this_candidate: 0
+paid_cost_usd_observed: 0_NO_CHARGE_SURFACED_NOT_BILLING_PROOF
+direct_cost_or_quota_evidence: NO_NEW_DIRECT_QUOTA_OR_BILLING_EVIDENCE;ERROR_RECEIPT_EXPOSED_NO_QUOTA_DEBIT_RATE_HEADERS_OR_BILLING_METADATA
+credentials: GMAIL_CONNECTOR_MANAGED_EFFECTIVE_SCOPE_PRINCIPAL_AND_CLOUD_PROJECT_UNKNOWN;SUCCESS_PATH_QUERY_FILTERING_AND_FAILURE_PATH_INVALID_TOKEN_VALIDATION_PROVE_USABLE_ACCESS_FOR_THESE_CALLS_ONLY
+durability: GIT_PHASE1_PHASE2_AND_PHASE3_PREFLIGHT_AND_RESULT_EVENTS_DURABLE_ON_CANONICAL_BRANCH;PHASE3_PREFLIGHT_READ_BACK_BEFORE_PROBE
+observability: STRUCTURED_GOOGLE_API_ERROR_WITH_INVALID_ARGUMENT_CODE_STATUS_AND_REASON;NO_PROVIDER_HTTP_STATUS_REQUEST_ID_RATE_HEADERS_NATIVE_METHOD_EFFECTIVE_SCOPE_OR_QUOTA_DEBIT_EXPOSED
+portability: MEDIUM_NATIVE_GMAIL_LISTING_ALSO_USES_PAGE_TOKENS_BUT_CONNECTOR_NATIVE_MAPPING_TOKEN_ENCODING_ORDERING_AND_SCOPE_REMAIN_UNPROVEN
+failure_behavior: SYNTHETIC_MALFORMED_PAGE_TOKEN_FAILED_CLOSED_WITH_STRUCTURED_INVALID_ARGUMENT;NO_RETRY_FALLBACK_CONTENT_HYDRATION_OR_MUTATION_OBSERVED
+verifier: GITHUB_PHASE3_PREFLIGHT_READBACK_PLUS_DIRECT_GMAIL_SEARCH_EMAIL_IDS_ERROR_RECEIPT
+consumer: HFO_BOUNDED_MAILBOX_DISCOVERY_AND_PREFLIGHT_FILTERING
+adoption_credit: 0
+fitness_credit: 0
+mandatory_gate: READ_ONLY;ID_ONLY;BOUNDED_MAX_RESULTS;NO_CONTENT_HYDRATION;NO_RAW_MAILBOX_IDENTIFIERS_IN_X13_RECEIPTS;NO_COMPLETENESS_OR_STABLE_ORDER_INFERENCE;TOKEN_ERRORS_FAIL_CLOSED_WITHOUT_AUTOMATIC_RETRY
+strongest_falsifier: PHASE4_EVIDENCE_REVIEW_FINDS_SUCCESS_PATH_NOT_USEFUL_WITHOUT_UNVERIFIED_PAGINATION_OR_PERMISSION_SCOPE_OR_FAILURE_PATH_NOT_PORTABLE_ENOUGH_FOR_SAFE_ADOPTION
+honest_flaw: MALFORMED_TOKEN_FAILURE IS ONLY_ONE_FAILURE_CLASS;VALID_PAGINATION_PERMISSION_DENIAL_RATE_LIMITING_EFFECTIVE_SCOPE_NATIVE_MAPPING_COMPLETENESS_ORDERING_AND_ACTUAL_QUOTA_DEBIT_REMAIN_UNVERIFIED
+next_phase: PHASE4_DECISION_FROM_FROZEN_EVIDENCE_ONLY_NO_ADDITIONAL_GMAIL_CANDIDATE_CALL
+valid_time_utc: 2026-08-09T07:49:00Z
+recorded_time_utc: 2026-08-09T07:49:00Z
+---
+
+# X13 Phase 3 Result — Gmail message-ID search
+
+The single authorized malformed-page-token probe failed closed with a structured connector error: `google_api_error`, code/reason `invalidArgument`, status `INVALID_ARGUMENT`, message class `Failed to search email ids`.
+
+No message content was hydrated. No raw Gmail message IDs or provider page tokens were persisted. No retry, fallback, or mailbox mutation was requested or observed.
+
+This is positive failure-path evidence for one malformed-token class only. It does not establish valid pagination, permission-denial behavior, rate limiting, effective OAuth scope/principal, native API mapping, completeness, ordering, or actual quota debit.
+
+Phase 3 is accepted with gates. Phase 4 must decide from the frozen evidence set only, with no additional Gmail candidate call.
