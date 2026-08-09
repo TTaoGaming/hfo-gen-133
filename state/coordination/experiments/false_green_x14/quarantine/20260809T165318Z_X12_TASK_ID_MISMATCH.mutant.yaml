@@ -1,0 +1,50 @@
+---
+schema_id: hfo.gen133.x14.false_green_mutant.v1
+mutant_id: X14_MUTANT_211_c5aa54501477
+status: QUARANTINED_NON_EXECUTABLE
+carrier_task_id: 6a513e4d9c4c81919db728f85db2dd79
+carrier_task_id_match_observed: true
+source:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+  path: state/coordination/experiments/durable_object_x12/verifications/20260809T164551Z_V0194_TO_V0195_C46_WAKE1_POINTER_PATTERN.json
+  commit_sha: e24407eb2ac398d3234d42e44e328b9e273d22cc
+  git_blob_sha1: 1daf9d070981a194306437067df45975502ec0b0
+  source_digest_kind: GIT_BLOB_SHA1
+  source_digest: 1daf9d070981a194306437067df45975502ec0b0
+  authoring_seat: X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+  source_task_id: 6a506f83df208191815dd17a8fd5baa3
+  source_task_enabled_observed: true
+  source_valid_time_utc: '2026-08-09T16:45:51Z'
+  source_status: PASS_ADVANCE_C46_WAKE1_IMMUTABLE_POINTER_INTENT_BEFORE_FILE_LOCAL_CURRENT_CAS_WITH_POSTREAD
+  source_consumer: Reginleif/Olrun
+mutation:
+  mutation_class: TASK_ID_MISMATCH
+  mutation_subcase: X12_VERIFICATION_FALSELY_BINDS_X13_COTS_CARRIER_TASK_ID
+  mutated_field: verification_core.task_id
+  original_value: 6a506f83df208191815dd17a8fd5baa3
+  mutated_value: 6a55c1733708819185088bf334e33ea5
+  canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_bytes: 246
+  canonical_overlay_sha256: c5aa545014774a964e382da2d7da56b6229ad38ba1ef894f3e09cab29a38494f
+  canonical_overlay_json: '{"mutated_field":"verification_core.task_id","mutated_value":"6a55c1733708819185088bf334e33ea5","mutation_class":"TASK_ID_MISMATCH","original_value":"6a506f83df208191815dd17a8fd5baa3","source_blob_sha1":"1daf9d070981a194306437067df45975502ec0b0"}'
+expected_verdict: REVISE
+expected_rejection_reason: SOURCE_IS_AN_X12_C46_DURABLE_OBJECT_VERIFICATION_AND_NATIVE_INVENTORY_BINDS_X12_TO_TASK_6a506f83df208191815dd17a8fd5baa3;SUBSTITUTING_THE_ENABLED_X13_COTS_TASK_ID_BREAKS_EXACT_SOURCE_CARRIER_AND_CAMPAIGN_BINDING_AND_MUST_NOT_BE_ACCEPTED_AS_VALID_EXECUTION_IDENTITY
+named_gate: S04_TASK_ID_SOURCE_CARRIER_NATIVE_INVENTORY_CAMPAIGN_AND_DIGEST_BINDING_GATE
+verifier: S04_STRUCTURAL_PREFLIGHT
+verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+distinct_verifier: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+distinct_verifier_task_id: 6a539fb148bc8191a30b6009dbf22438
+consumer:
+  - X14_CAMPAIGN_REDUCER
+  - X12_DURABLE_OBJECT_REDUCER
+created_valid_time_utc: '2026-08-09T16:53:18Z'
+expires_utc: '2026-08-09T20:53:18Z'
+effect_ceiling: QUARANTINED_GIT_FILE_PLUS_ONE_SANITIZED_INTERNAL_SLACK_ROUTE_ONLY
+source_edited: false
+task_mutation_performed: false
+world_effect_performed: false
+self_graded: false
+honest_flaw: >-
+  This specimen is source-local but comparatively easy because it swaps the authentic X12 task ID for the currently enabled X13 COTS carrier ID while leaving the X12 campaign, source path, and object context unchanged. A stronger task-ID assay should begin from a legitimate delegated or multi-carrier receipt and corrupt exactly one task-to-actor, task-to-campaign, or task-to-effect binding while preserving all neighboring identity evidence.
+---
