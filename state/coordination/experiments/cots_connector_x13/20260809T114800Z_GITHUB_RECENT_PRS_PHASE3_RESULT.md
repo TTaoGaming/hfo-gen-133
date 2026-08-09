@@ -1,0 +1,61 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_GITHUB_RECENT_PRS_READONLY_027
+event_type: PHASE3_RESULT
+expected_current_version: 206
+planned_next_version: 207
+candidate: GitHub_get_users_recent_prs_in_repo_readonly
+campaign_wake: 3_of_4
+phase_3_status: PHASE3_ACCEPTED_WITH_GATES_ANDON
+wip: 1
+preflight_path: state/coordination/experiments/cots_connector_x13/20260809T114800Z_GITHUB_RECENT_PRS_PHASE3_PREFLIGHT.md
+preflight_commit: ad3ef95c02c87c106150f298cbcd3314316e048c
+preflight_blob_sha: 4302a59b3e9935048f0fa1df5963b0bf661fde9b
+preflight_readback: true
+request_sha256: 991a9f8879ee0e4ef498a99d68466dcfdc53c3d8360ecfed32ceef343d09e9c5
+request_sha256_verified_after_readback: true
+probe_class: BOUNDED_HARMLESS_FAILURE_AND_ERROR_MAPPING
+candidate_invocations_total_campaign: 3
+usable_candidate_results_campaign: 2
+expected_connector_errors_total_campaign: 1
+phase3_error_is_structured: true
+phase3_error_message: Validation Failed
+phase3_error_status: 422
+phase3_error_resource: Search
+phase3_error_field: q
+phase3_error_code: invalid
+phase3_error_permission_nonexistence_distinguishable: false
+phase3_error_detail: THE_LISTED_USERS_AND_REPOSITORIES_CANNOT_BE_SEARCHED_EITHER_BECAUSE_RESOURCES_DO_NOT_EXIST_OR_CALLER_LACKS_PERMISSION
+phase3_external_call_time_ms: UNKNOWN_NOT_EXPOSED_IN_DIRECT_RECEIPT
+retries_total_campaign: 0_OBSERVED
+fallbacks_total_campaign: 0_OBSERVED
+candidate_mutations_total_campaign: 0
+operator_minutes_removed_measured: 0
+custom_code_avoided_estimate: 40_to_100_LOC_UNVALIDATED
+custom_code_avoided_realized_by_this_candidate: 0
+paid_cost_usd_observed: 0_NO_CHARGE_SURFACED_NOT_BILLING_PROOF
+direct_cost_or_quota_evidence: NO_DIRECT_RATE_LIMIT_HEADER_SEARCH_RESOURCE_DEBIT_REQUEST_ID_OR_BILLING_METADATA_OBSERVED
+credentials: CONNECTOR_MANAGED;EFFECTIVE_TOKEN_TYPE_PERMISSIONS_AND_RATE_LIMIT_IDENTITY_UNKNOWN
+durability: GIT_PHASE1_PHASE2_PHASE3_PREFLIGHT_AND_RESULT_EVENTS_DURABLE_ON_CANONICAL_BRANCH_WITH_READBACK_REQUIRED
+audit_observability: STRUCTURED_422_VALIDATION_FAILURE_EXPOSED_WITH_SEARCH_Q_INVALID_DETAIL;NO_NATIVE_QUERY_RATE_HEADERS_REQUEST_ID_TOKEN_TYPE_PERMISSIONS_OR_QUOTA_DEBIT
+portability: MEDIUM;FAILURE_SHAPE_IS_GITHUB_SEARCH_LIKE_BUT_CONNECTOR_NATIVE_QUERY_SORT_PAGINATION_AND_AUTHENTICATED_USER_BINDING_REMAIN_UNPROVEN
+failure_behavior: FAILS_CLOSED_WITH_STRUCTURED_422_FOR_CLEARLY_NONEXISTENT_REPOSITORY_BUT_ERROR_TEXT_CONFLATES_NONEXISTENCE_WITH_PERMISSION_DENIAL
+verifier: DIRECT_GITHUB_CONNECTOR_ERROR_RECEIPT_PLUS_GIT_PREFLIGHT_AND_RESULT_READBACK
+consumer: HFO_BOUNDED_PULL_REQUEST_INTAKE_AND_OPERATOR_REVIEW_PRECHECK
+adoption_credit: 0
+fitness_credit: 0
+mandatory_gate: READ_ONLY;REPOSITORY_SCOPED;BOUNDED_LIMIT;NO_DIFF;NO_COMMENTS;DO_NOT_PERSIST_PR_BODY_OR_COMMENT_TEXT;DO_NOT_INFER_PERMISSION_DENIAL_VS_NONEXISTENCE_FROM_THIS_422;NO_COMPLETENESS_STABLE_ORDER_NATIVE_QUERY_RATE_LIMIT_OR_PERMISSION_INFERENCE
+strongest_falsifier: A_NAMED_DOWNSTREAM_CONSUMER_REQUIRES_FIELD_MINIMIZATION_BODY_NONDISCLOSURE_AUTHORITATIVE_COMPLETENESS_STABLE_SORT_EXPLICIT_RATE_LIMIT_CONTROL_OR_RELIABLE_PERMISSION_VS_NONEXISTENCE_CLASSIFICATION
+honest_flaw: SUCCESS_CALLS_OVERRETURN_FULL_PR_BODY_TEXT_AND_FAILURE_CALL_DOES_NOT_DISTINGUISH_NONEXISTENT_RESOURCE_FROM_INSUFFICIENT_PERMISSION
+next_phase: PHASE4_DECISION_FROM_FROZEN_EVIDENCE_ONLY_NO_ADDITIONAL_CANDIDATE_CALL
+valid_time_utc: 2026-08-09T11:48:00Z
+recorded_time_utc: 2026-08-09T11:48:00Z
+---
+
+# Phase 3 result
+
+The one authorized failure-path probe targeted a clearly synthetic nonexistent repository with `limit=1`, `state=all`, diffs disabled, and comments disabled. The connector failed closed with a structured GitHub Search-style error: HTTP/status `422`, message `Validation Failed`, resource `Search`, field `q`, code `invalid`.
+
+The error detail explicitly says the listed users/repositories cannot be searched because they either do not exist or the caller lacks permission. This is diagnostic enough to stop safely, but it does **not** distinguish nonexistence from permission denial. No retry, fallback, PR mutation, diff/comment hydration, or persistence of PR body/comment text occurred in this probe.
+
+Phase 3 therefore adds a gate: consumers must not infer authorization state from this 422 class. Phase 4 should decide from the frozen three-invocation evidence set only, with no additional candidate call.
