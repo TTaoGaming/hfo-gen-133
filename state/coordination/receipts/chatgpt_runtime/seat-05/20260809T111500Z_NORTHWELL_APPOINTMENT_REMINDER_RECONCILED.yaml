@@ -1,0 +1,32 @@
+schema: hfo.gen133.s05.operator_relief.receipt.v1
+seat: S05
+expected_task_id: 6a55c182078c8191b89f2dd15f5f640c
+wip: 1
+timestamp_utc: 2026-08-09T11:15:00Z
+canonical:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+status: MATERIAL_CHANGE
+transition: NORTHWELL_APPOINTMENT_REMINDER_RECONCILED
+active_item: NORTHWELL_APPOINTMENT_STATUS
+priority:
+  p0: CHATGPT_PRO_CONTINUITY_AUTHORITATIVE_DISPOSITION
+  p1:
+    - FIDELITY_AUTHORITATIVE_WIRE_DISPOSITION_MONDAY
+    - NORTHWELL_APPOINTMENT_PREP_FOR_2026_08_12
+source_pointers:
+  gmail_message_id: 19fe635726f369e0
+  calendar_event_id: aqnq9ms33hkf2oqm2kd41kn680
+sanitized_facts:
+  - A fresh provider reminder arrived at 2026-08-09T11:08:09Z for the existing 2026-08-12 10:45 America/New_York medical appointment.
+  - Primary Calendar already contains a matching accepted event at 2026-08-12T10:45:00-04:00; no duplicate Calendar action is needed.
+  - The reminder and Calendar agree on appointment time and location.
+  - This readback found no cancellation or reschedule signal; it does not prove check-in or preparation is complete.
+privacy:
+  - Patient name, clinician name, street address, phone number, and message body remain only in Gmail/MyNorthwell/Calendar source systems.
+actions_taken:
+  - Reconciled fresh Gmail reminder against the existing Calendar event.
+  - Closed duplicate-scheduling ambiguity; preserved the existing event unchanged.
+prohibited_actions_performed: []
+operator_minutes_removed: 6
+next_consumer: VAR_MORNING_CONTROL
