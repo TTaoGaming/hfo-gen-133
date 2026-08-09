@@ -1,0 +1,147 @@
+---
+schema_id: hfo.gen133.s09.adversarial_bayesian_vote.v1
+vote_id: S09_X14_MUTANT205_UNSUPPORTED_PASS_OUTCOME_20260809T113110Z
+seat: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+carrier_task_id_expected: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_id_observed: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_enabled_observed: true
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc: '2026-08-09T11:31:10Z'
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+evidence_class: SAME_PROVIDER_ADVISORY_NONBINDING
+binding_weight: 0
+result: REVISE
+
+self_probe:
+  task_id_match: true
+  task_enabled_observed: true
+  task_mutation_performed: false
+  tools_observed:
+    - native_automations_inventory_read
+    - github_recent_commit_search
+    - github_exact_file_and_commit_read
+    - github_create_file
+    - github_readback
+    - slack_internal_pointer_post_available
+
+decision_packet:
+  mutant_id: X14_MUTANT_205_b2d4acb96ad7
+  mutation_class: UNSUPPORTED_PASS_OUTCOME
+  mutation_subcase: X12_SCOPED_RECOVERY_PASS_PROMOTED_TO_END_TO_END_EXACTLY_ONCE_DURABLE_SLACK_DELIVERY
+  packet_commit_sha: 62015a2022d6c3860023418d9e8aa54e36b5d26d
+  packet_blob_sha1: c6bdc1a23ee8a3e73d095a6e252705fbefca05c1
+  packet_path: state/coordination/experiments/false_green_x14/quarantine/20260809T105240Z_X12_C44_W4_UNSUPPORTED_PASS_OUTCOME.mutant.yaml
+  canonical_overlay_sha256: b2d4acb96ad711e33a16a93d15a1318542f504735c81001528c1e929387dcaae
+  canonical_overlay_utf8_bytes: 331
+  source_commit_sha: 5540c2ebceef76ec198d4b719a826ee7cbf21a0d
+  source_blob_sha1: 256f26e9817270926474e2bfb4964ddbcbda0a47
+  source_path: state/coordination/experiments/durable_object_x12/verifications/20260809T104423Z_V0189_TO_V0190_C44_WAKE4_RECOVERY_RESEAT.json
+  current_pointer_commit_sha: d5c852b4428cee95281af5fcc41b32fd559fd7a1
+  current_pointer_blob_sha1: 8be9139a3221c4d0a1572650d7f46dd787cf9b74
+  campaign_decision_commit_sha: 194eea274a47772113f2a008d89f30c81bdd7662
+  campaign_decision_blob_sha1: 73a2dbb92918b97cfe7b6b2b3163dc9576fec412
+  candidate_options:
+    - ACCEPT
+    - REVISE
+    - HOLD
+    - RETIRE
+    - ABSTAIN
+  decision_deadline_utc: '2026-08-09T14:52:40Z'
+  effect_ceiling: QUARANTINED_GIT_FILE_PLUS_ONE_SANITIZED_INTERNAL_SLACK_ROUTE_ONLY
+  verifier: S04_STRUCTURAL_PREFLIGHT
+  consumers:
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_PDCA_LAB
+  current_route_status: GIT_READY_ROUTE_PENDING
+
+prior:
+  ACCEPT: 0.020
+  REVISE: 0.380
+  HOLD: 0.280
+  RETIRE: 0.220
+  ABSTAIN: 0.100
+  rationale: >-
+    Before reading the exact source and current campaign state, an unsupported-PASS mutant is more likely to require revision than acceptance, but direct-verifier timing, duplicate-antibody value, and same-provider correlation leave meaningful HOLD, RETIRE, and ABSTAIN mass.
+
+evidence:
+  ACCEPT:
+    for:
+      - The authentic X12 source records a real bounded recovery advance to v190, a direct Slack transition-marker readback, and a persisted recovery verification.
+    against:
+      - The authentic source explicitly states NO_DATABASE_TRANSACTION_OR_EXACTLY_ONCE_CLAIMED.
+      - The source explicitly states Slack global uniqueness, ConsumerAck, and exactly-once are not proven.
+      - The source explicitly states Git artifacts/current updates and Slack are separate effects and disclaims cross-system transactional guarantees.
+      - The mutated verdict therefore asserts a broader end-to-end outcome than the source proves.
+  REVISE:
+    for:
+      - The mutation changes only verification_core.verdict from a scoped recovery PASS to PASS_END_TO_END_EXACTLY_ONCE_DURABLE_SLACK_DELIVERY while adjacent source limits directly contradict the added claim.
+      - X14 itself names the exact S04 outcome-claim-ceiling/ConsumerAck/cross-effect-atomicity gate and expects REVISE.
+      - S15 returned a prior direct S04 failure antibody, mutant 183, for the same end-to-end/ConsumerAck/exactly-once scope-laundering family and assigned zero novelty credit.
+      - CURRENT records mutant 205 as pending and campaign 51's controlling defect as missing direct digest-bound S04 primary consumption, so a REVISE vote can reject the semantics while preserving the specimen for route accounting.
+    against:
+      - The specimen is intentionally easy because its source disclaimers sit adjacent to the mutated verdict; it adds little adversarial diversity.
+      - No direct S04 primary verdict on mutant 205 was observed at selection cutoff.
+  HOLD:
+    for:
+      - Direct S04 primary selection is still unresolved and the packet remains unexpired until 14:52:40Z.
+      - Campaigns 49-51 show semantic catches can coexist with broken primary-selector routing, so waiting for a digest-bound S04 verdict or skip/deferral has control value.
+    against:
+      - The semantic false-green defect is already strongly source-local and does not require waiting to reject the broadened claim.
+  RETIRE:
+    for:
+      - S15 classifies the mutant as recurrence of an existing unsupported-PASS family with novelty_credit 0 and antibody_diversity_credit 0.
+      - The adjacent explicit disclaimers make further semantic learning from this specimen low value.
+    against:
+      - Retiring before exact reducer consumption, direct S04 verdict, durable digest-bound skip/deferral, or expiry would discard a live measurement of the known selector-route defect.
+  ABSTAIN:
+    for:
+      - X12, X14, S15, and this S09 carrier are same-provider/correlated evidence; no independent quorum or positive binding weight exists.
+    against:
+      - S09 is explicitly an advisory adversarial voter, and the exact source bytes are sufficient to produce a bounded weight-zero semantic recommendation without claiming independent verification.
+
+correlated_evidence_risk:
+  level: HIGH
+  details: >-
+    The current source, mutation lab, heritage reuse, and S09 vote are ChatGPT-carried or same-provider evidence. S15's reused S04 artifact is historical same-provider precedent, not an independent current verdict. Agreement must not be majority-laundered into quorum, ConsumerAck, or positive binding weight.
+
+strongest_dissent:
+  option: HOLD
+  argument: >-
+    Preserve the exact unexpired specimen without lifecycle disposition until S04 directly selects the digest or emits a durable digest-bound skip/deferral, because campaign 51 identifies primary-selector routing rather than semantic sensitivity as the controlling defect.
+
+opportunity_cost:
+  keep_live: >-
+    One low-novelty pending mutant continues to consume scarce verifier/routing attention and may compete with campaign-52 evidence-inflation work.
+  retire_now: >-
+    Loses a clean exact-digest probe of the repeated zero-direct-selection defect and could falsely make route health look better by removing the pending specimen.
+
+operator_minute_burden:
+  observed_or_required_minutes: 0
+  basis: No operator action, external send, spend, deployment, merge, publication, or account/security change is required by this advisory vote.
+
+reversible_next_experiment: >-
+  Keep mutant 205 quarantined and request exactly one direct digest-bound S04 primary verdict on b2d4acb96ad711e33a16a93d15a1318542f504735c81001528c1e929387dcaae, or a durable digest-bound skip/deferral reason, before expiry. Separately, the next unsupported-PASS assay should start from a near-valid bounded PASS without an adjacent explicit contradiction and mutate one less-obvious consequence edge.
+
+falsifier: >-
+  This REVISE recommendation is falsified if exact source-bound evidence, valid for this packet and within the claimed scope, proves end-to-end exactly-once durable Slack delivery across the Git/Slack boundary including ConsumerAck, duplicate suppression/global uniqueness or equivalent idempotency semantics, and the required cross-effect guarantee. The route-debt rationale is separately falsified if a direct digest-bound S04 verdict or durable skip/deferral for this exact mutant already existed before this vote but was missed by repository visibility/indexing.
+
+posterior:
+  ACCEPT: 0.001
+  REVISE: 0.636
+  HOLD: 0.232
+  RETIRE: 0.121
+  ABSTAIN: 0.010
+
+vote:
+  disposition: REVISE
+  semantic_disposition: REVISE_REJECT_MUTATED_END_TO_END_EXACTLY_ONCE_CLAIM
+  lifecycle_guidance: RETAIN_QUARANTINED_UNTIL_DIRECT_S04_DIGEST_BOUND_VERDICT_OR_SKIP_DEFERRAL_X14_REDUCER_CONSUMPTION_OR_EXPIRY_THEN_RETIRE_HISTORY_PRESERVED
+  independent_verification_closed: false
+  consumer_ack_closed: false
+  binding_weight: 0
+
+honest_flaw: >-
+  This vote relies on repository-visible same-provider artifacts and a historical S04 antibody; it does not independently reproduce Slack transport behavior, cross-system atomicity, acknowledgement-loss/retry races, or any database primitive. The source's explicit negative guarantees make the semantic rejection unusually easy, so confidence in REVISE should not be mistaken for evidence that the S04 primary-selector route works.
+---
