@@ -1,0 +1,169 @@
+---
+schema_id: hfo.gen133.s09.adversarial_bayesian_vote.v1
+seat: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+result: REVISE
+binding_weight: 0
+binding_class: SAME_PROVIDER_ADVISORY_NONBINDING
+wip: 1
+valid_time_utc: 2026-08-09T19:30:55Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+sealed: false
+
+self_probe:
+  expected_task_id: 6a539fb148bc8191a30b6009dbf22438
+  task_id_match_from_runtime_instruction: true
+  github_read_available: true
+  github_write_available: true
+  slack_pointer_write_available: true
+  task_mutation_performed: false
+  self_verification_performed: false
+
+selected_decision_packet:
+  packet_id: X14_MUTANT_213_7db05e0a7cf4
+  packet_path: state/coordination/experiments/false_green_x14/quarantine/20260809T185214Z_X13_STALE_SOURCE_DIGEST.mutant.yaml
+  packet_commit_sha: ea39b348d74268b37448a1c70951b43361848422
+  packet_blob_sha1: b2e4bfe27b2d257a07ca1b656583d4b1c7cbd324
+  source_path: state/coordination/experiments/cots_connector_x13/20260809T184900Z_GOOGLE_DRIVE_DOCUMENT_METADATA_SEARCH_PHASE2_PREFLIGHT.md
+  source_commit_sha: b9586ef434d52a58e323f9bfecbde418b9747e92
+  source_blob_sha1: 9d4c959cc965125644ba023180d13e8dadcca90b
+  source_experiment: X13_GOOGLE_DRIVE_DOCUMENT_METADATA_SEARCH_READONLY_029
+  source_phase: PHASE2_PREFLIGHT
+  source_bound_current_phase1_digest_sha256: 9e7528559ea056b1cb10633c493a81e0070a9d6909567f18ed2b1e2e5d928bf7
+  stale_substituted_digest_sha256: e0b48b1d71593436c4ff9104b5ef6d3226af198d1dbd7c7b4eefa04a32c892cd
+  stale_value_origin_experiment: X13_GDRIVE_METADATA_SEARCH_READONLY_024
+  stale_value_origin_commit_sha: b95d66ae13211aed7e22064fa16a78688781d1a4
+  stale_value_origin_blob_sha1: 97c69cc4597954429a5a0e1f333822723293295f
+  stale_value_origin_path: state/coordination/experiments/cots_connector_x13/20260808T215000Z_GDRIVE_METADATA_SEARCH_PHASE1_RESULT.md
+  candidate_options:
+    - ACCEPT
+    - REVISE
+    - HOLD
+    - RETIRE
+    - ABSTAIN
+  decision_deadline_utc: 2026-08-09T22:52:14Z
+  effect_ceiling: QUARANTINED_GIT_FILE_PLUS_ONE_SANITIZED_INTERNAL_SLACK_ROUTE_ONLY
+  verifier: S04_STRUCTURAL_PREFLIGHT
+  verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  consumers:
+    - X14_CAMPAIGN_REDUCER
+    - X13_COTS_CONNECTOR_REDUCER
+
+integrity_observation:
+  declared_canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  declared_overlay_bytes: 326
+  recomputed_overlay_bytes: 326
+  declared_overlay_sha256: 7db05e0a7cf4ff372f9e610d98da16099c4efd77f51d87934a33cc4ff01bad60
+  recomputed_overlay_sha256: 7db05e0a7cf4ff372f9e610d98da16099c4efd77f51d87934a33cc4ff01bad60
+  interpretation: HASH_INTEGRITY_OF_THE_MUTATION_OVERLAY_DOES_NOT_VALIDATE_THE_STALE_VALUE_FOR_THE_CURRENT_SOURCE_BINDING
+
+prior:
+  ACCEPT: 0.02
+  REVISE: 0.45
+  HOLD: 0.20
+  RETIRE: 0.20
+  ABSTAIN: 0.13
+  rationale: >-
+    Before reading source-local evidence, stale-source-digest mutants have a high base rate of needing revision, but this family is heavily exercised and lifecycle retirement is plausible. HOLD and ABSTAIN retain material mass because a legitimate replay, alias, or supersession artifact could in principle authorize reuse of an older authentic digest.
+
+evidence:
+  source_local:
+    - >-
+      Experiment 029 Phase-1 result records ordered_result_id_digest_sha256=9e752855... and its Phase-2 preflight explicitly binds phase1_ordered_result_id_digest_sha256 to that exact value for the replay.
+    - >-
+      The mutant substitutes e0b48b1... from experiment 024, a real prior Google Drive metadata result. Authentic historical origin makes the mutation structurally plausible but does not establish authority to rebind experiment 029 Phase-2 to experiment 024.
+    - >-
+      The source artifact is a preflight for exact replay of the current Phase-1 result, so freshness and exact experiment/wake/source binding are decision-relevant semantics rather than cosmetic metadata.
+  corroborating_same_provider:
+    - >-
+      S15 bound mutant 213 to an existing S04 stale-source failure antibody and explicitly marked that heritage binding_weight=0, heritage_credit=0, and not a direct S04 verdict on mutant 213.
+    - >-
+      X14 CURRENT closes campaign 53 as REVISE_GATE because direct S04 primary selection remained zero across the three matured prior mutants; mutant 213 itself remains pending and is not counted as caught.
+
+option_analysis:
+  ACCEPT:
+    evidence_for:
+      - The substituted digest is authentic and comes from the same broad Google Drive metadata-search family.
+      - The mutation overlay itself is internally hash-consistent.
+    evidence_against:
+      - Experiment 029 Phase-2 explicitly binds the current experiment-029 Phase-1 digest, not the prior experiment-024 digest.
+      - No source-bound alias, supersession, replay-equivalence, or migration artifact authorizing the older digest was found in the selected packet or source chain.
+      - Accepting would cause the exact replay comparison to target the wrong upstream result set.
+  REVISE:
+    evidence_for:
+      - Restoring 9e752855... preserves the explicit experiment-029 Phase-1-to-Phase-2 binding.
+      - The failure is localized to one mutated field and is reversible without world effects.
+      - The stale value is real but belongs to a distinct prior experiment ordinal and prior-day result, strengthening the case that freshness/effective-source binding matters.
+    evidence_against:
+      - This is a heavily represented failure family and the current cross-experiment substitution is only moderately hard, so another semantic REVISE adds little novelty.
+      - No direct S04 verdict on this exact digest was observed at vote time.
+  HOLD:
+    evidence_for:
+      - Direct S04 primary route health is still unresolved and current-mutant digest-bound selection/deferral would be useful control evidence.
+      - A legitimate pre-existing alias or supersession artifact could theoretically authorize the historical digest.
+    evidence_against:
+      - The selected source bytes already bind the current digest unambiguously; no such authorizing artifact is named or linked.
+      - Holding semantic disposition would delay rejection of a localized, non-executable stale binding with little additional safety benefit.
+  RETIRE:
+    evidence_for:
+      - Stale-source-digest rejection is heavily represented in Gen-133, and S15 reports no new antibody coverage.
+      - The current mutant is relatively easy because the stale digest comes from a different prior experiment ordinal rather than a same-experiment superseded result.
+    evidence_against:
+      - Lifecycle retirement before exact X14/X13 reducer consumption or expiry could erase useful route-accounting evidence for this named packet.
+      - RETIRE is a lifecycle decision, not a reason to semantically accept the stale binding.
+  ABSTAIN:
+    evidence_for:
+      - S09 has same-provider binding weight zero and cannot close independent verification.
+      - Search and concurrent-route observations are best-effort and may lag.
+    evidence_against:
+      - The source-local mismatch is explicit enough to support a bounded advisory semantic vote without claiming quorum or independent closure.
+
+correlated_evidence_risk:
+  assessment: HIGH
+  explanation: >-
+    S09, S15, prior S04 ChatGPT-carried receipts, and X14 route observations are same-provider or same-control-plane evidence. They must not be multiplied as independent likelihood terms. S15's prior antibody is treated as one correlated corroborating family-level signal only, with binding weight zero.
+
+strongest_dissent:
+  option: RETIRE
+  argument: >-
+    The mutation class is saturated and mutant 213 is only moderately hard. After exact reducer consumption or expiry, keeping this literal specimen active has lower information value than moving to a same-experiment superseded-digest assay where experiment ID, request digest, adjacent version, principal, and result shape all remain plausible and only effective-time/freshness binding distinguishes the fault.
+
+opportunity_cost:
+  assessment: >-
+    Repeatedly spending S04/S09 attention on obvious cross-experiment stale digests risks optimizing for easy catches while the stated control defect is direct digest-bound S04 route consumption. The next experiment should maximize selector-route and freshness-binding information, not mutation count.
+
+operator_minute_burden:
+  minutes: 0
+  rationale: NO_OPERATOR_ACTION_REQUIRED_FOR_THIS_ADVISORY_VOTE
+
+reversible_next_experiment:
+  recommendation: >-
+    After reducer handling or expiry, mutate a source that has an authorized same-experiment replay or version transition and replace only the current result digest with an immediately superseded digest from that same experiment. Preserve experiment ID, request digest, principal, candidate, surrounding version bindings, and result shape. Require one direct digest-bound S04 primary verdict or durable digest-bound skip/deferral receipt. This is reversible because the specimen remains quarantined and non-executable.
+
+falsifier:
+  strongest: >-
+    A predating immutable authoritative artifact that explicitly binds experiment 029 Phase-2 wake 2 to e0b48b1d71593436c4ff9104b5ef6d3226af198d1dbd7c7b4eefa04a32c892cd as an authorized alias, superseding equivalent, or replay target for the current Phase-1 result would materially falsify REVISE.
+
+posterior:
+  ACCEPT: 0.001
+  REVISE: 0.586
+  HOLD: 0.061
+  RETIRE: 0.341
+  ABSTAIN: 0.011
+  decision: REVISE
+  semantic_disposition: REJECT_STALE_EXPERIMENT_024_DIGEST_FOR_EXPERIMENT_029_PHASE2_BINDING
+  lifecycle_note: RETIRE_LITERAL_SPECIMEN_AFTER_EXACT_REDUCER_CONSUMPTION_OR_EXPIRY_IF_NO_NEW_ROUTE_EVIDENCE
+
+independence_and_authority:
+  independent_verification_closed: false
+  consumer_ack_observed: false
+  quorum_claimed: false
+  binding_policy_decision_made: false
+  producer_work_performed: false
+  deployment_performed: false
+  merge_performed: false
+  publication_performed: false
+  spend_performed: false
+  account_or_security_change_performed: false
+  permanent_deletion_performed: false
+---
