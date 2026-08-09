@@ -1,22 +1,22 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
 experiment_id: X13_GDRIVE_METADATA_SEARCH_READONLY_024
-version: 195
-prior_version: 194
+version: 196
+prior_version: 195
 previous_experiment_id: X13_GCAL_CALENDARLIST_READONLY_023
 candidate: Google_Drive_search_metadata_only
-campaign_wake: 3_of_4
-campaign_status: ACTIVE_PHASE3_ACCEPTED_WITH_GATES
+campaign_wake: 4_of_4
+campaign_status: CLOSED_ADOPT_WITH_GATES
 phase_1_status: PHASE1_ACCEPTED_WITH_GATES
 phase_2_status: PHASE2_ACCEPTED_WITH_GATES
 phase_3_status: PHASE3_ACCEPTED_WITH_GATES
-phase_4_status: PENDING
-phase_4_decision: PENDING
-operational_decision: PENDING
+phase_4_status: PHASE4_DECIDED
+phase_4_decision: ADOPT_WITH_GATES
+operational_decision: ADOPT_FOR_BOUNDED_METADATA_DISCOVERY_ONLY
 wip: 1
-last_event_commit: 0c7f206ac641b0580e0b823fafe936fd29d4f54c
-last_event_path: state/coordination/experiments/cots_connector_x13/20260808T234803Z_GDRIVE_METADATA_SEARCH_PHASE3_RESULT.md
-last_event_blob_sha: dc07f9e6eb1b6d4f81901d76214b7a92b65158dd
+last_event_commit: d8f83c1960aa4476b82c6b2209b729ec7d75b734
+last_event_path: state/coordination/experiments/cots_connector_x13/20260809T004800Z_GDRIVE_METADATA_SEARCH_PHASE4_DECISION.md
+last_event_blob_sha: d6b3a204be3af75860574652a4b7e918812f72ac
 last_event_readback: true
 phase1_preflight_commit: 2f9f6b1a2522ae9f6583337086febf7dc1664b63
 phase1_preflight_blob_sha: 3021195ad80c63d4cb2bb32bfd343a4b010389b2
@@ -51,32 +51,32 @@ custom_code_avoided_realized_by_this_candidate: 0
 paid_cost_usd_observed: 0_NO_CHARGE_SURFACED_NOT_BILLING_PROOF
 direct_cost_or_quota_evidence: DIRECT_DRIVE_V3_FILES_LIST_MAPPING_AND_PROVIDER_HTTP_400_ERROR_BODY_OBSERVED_PHASE3;NO_ACTUAL_QUOTA_DEBIT_BILLING_OR_RATE_HEADERS_EXPOSED
 credentials: GOOGLE_DRIVE_CONNECTOR_MANAGED_EFFECTIVE_PRINCIPAL_OAUTH_SCOPE_TOKEN_TYPE_AND_CLOUD_PROJECT_UNKNOWN;NATIVE_METHOD_DIRECTLY_OBSERVED_AS_DRIVE_V3_FILES_LIST
-durability: GIT_PHASE1_PHASE2_PHASE3_PREFLIGHT_AND_RESULT_EVENTS_DURABLE_AND_READ_BACK;PRIVACY_SAFE_SUCCESS_DIGEST_PERSISTED;NO_RAW_DRIVE_IDS_TITLES_URLS_OWNERS_SNIPPETS_CONTENT_OR_VALID_PAGE_TOKENS_PERSISTED
+durability: GIT_PHASE1_PHASE2_PHASE3_PREFLIGHT_AND_RESULT_EVENTS_PLUS_PHASE4_DECISION_DURABLE_AND_READ_BACK;PRIVACY_SAFE_SUCCESS_DIGEST_PERSISTED;NO_RAW_DRIVE_IDS_TITLES_URLS_OWNERS_SNIPPETS_CONTENT_OR_VALID_PAGE_TOKENS_PERSISTED
 observability: TWO_SUCCESS_CALLS_RETURNED_5_METADATA_RESULTS_WITH_IDENTICAL_ORDERED_ID_DIGEST;PHASE3_FAILURE_EXPOSED_PROVIDER_HTTP_400_INVALID_ARGUMENT_REASON_INVALID_LOCATION_PAGETOKEN_AND_NATIVE_REQUEST_URL;NO_PROVIDER_REQUEST_ID_RATE_HEADERS_EFFECTIVE_SCOPE_OR_ACTUAL_QUOTA_DEBIT_EXPOSED
 portability: MEDIUM_NATIVE_FILES_LIST_AND_CURSOR_PAGINATION_STANDARD_BUT_CONNECTOR_QUERY_DOCUMENT_MIME_BUCKET_AND_ALLDRIVES_DEFAULTS_WRAPPER_SPECIFIC
 failure_behavior: FAIL_CLOSED_ON_SYNTHETIC_INVALID_PAGE_TOKEN_WITH_PROVIDER_SPECIFIC_400_INVALID_ARGUMENT_AND_LOCATION_PAGETOKEN_PRESERVED
-verifier: GITHUB_PHASE1_PHASE2_PHASE3_PREFLIGHT_AND_RESULT_READBACK_PLUS_DIRECT_GOOGLE_DRIVE_RECEIPTS_PLUS_PRIVACY_SAFE_DIGEST_RECOMPUTATION_PLUS_OFFICIAL_GOOGLE_DRIVE_FILES_LIST_AND_ERROR_DOCUMENTATION
+verifier: GITHUB_PHASE1_PHASE2_PHASE3_PREFLIGHT_AND_RESULT_READBACK_PLUS_PHASE4_DECISION_READBACK_PLUS_DIRECT_GOOGLE_DRIVE_RECEIPTS
 consumer: HFO_COMMAND_AND_CONTROL_DRIVE_DOCUMENT_DISCOVERY
-adoption_credit: 0
+adoption_credit: 1
 fitness_credit: 0
-mandatory_gate: METADATA_ONLY;TOPN_LE_5_DURING_CAMPAIGN;NO_CONTENT_HYDRATION;NO_MUTATION;NO_RAW_IDS_TITLES_URLS_OWNERS_SNIPPETS_OR_VALID_PAGE_TOKENS_IN_X13_RECEIPTS;DO_NOT_INFER_COMPLETENESS;TREAT_ITEM_TYPE_DOCUMENT_AS_CONNECTOR_DEFINED_MIME_BUCKET;FAIL_CLOSED_ON_CONNECTOR_OR_PROVIDER_ERRORS
+mandatory_gate: METADATA_ONLY;BOUNDED_RESULTS;NO_CONTENT_HYDRATION_BY_DEFAULT;NO_MUTATION;NO_RAW_DRIVE_METADATA_IN_X13_RECEIPTS;DO_NOT_INFER_COMPLETENESS;TREAT_ITEM_TYPE_DOCUMENT_AS_CONNECTOR_DEFINED_MIME_BUCKET;FAIL_CLOSED_ON_CONNECTOR_OR_PROVIDER_ERRORS;REQUIRE_SEPARATE_BOUNDED_CAMPAIGN_BEFORE_PAGINATION_OR_AUTHORITATIVE_INVENTORY_DEPENDENCE
 strongest_falsifier: A_PROVIDER_DIRECT_EQUIVALENT_UNDER_THE_SAME_PRINCIPAL_RETURNS_MATERIALLY_DIFFERENT_ACCESSIBLE_MATCHES_OR_CONNECTOR_LATER_ACCEPTS_INVALID_PAGINATION_STATE_WITHOUT_ERROR_OR_HIDES_A_MATERIAL_AUTH_FAILURE
-honest_flaw: ONLY_TWO_SUCCESS_WAKES_AND_ONE_SYNTHETIC_FAILURE_PROBE;BOTH_SUCCESS_CALLS_HIT_TOPN_CAP;NO_NONEMPTY_PAGINATION_PERMISSION_DENIAL_REAL_TOKEN_EXPIRY_OR_RATE_LIMIT_TEST;EFFECTIVE_OAUTH_SCOPE_PRINCIPAL_CLOUD_PROJECT_COMPLETENESS_AND_ACTUAL_QUOTA_DEBIT_UNKNOWN
-next_phase: PHASE4_DECISION_FROM_FROZEN_EVIDENCE_ONLY_NO_ADDITIONAL_GOOGLE_DRIVE_CANDIDATE_CALL
-valid_time_utc: 2026-08-08T23:48:34Z
-recorded_time_utc: 2026-08-08T23:48:34Z
+honest_flaw: ONLY_TWO_SUCCESS_WAKES_AND_ONE_SYNTHETIC_FAILURE_PROBE;BOTH_SUCCESS_CALLS_HIT_TOPN_CAP;NO_VALID_PAGINATION_PERMISSION_DENIAL_REAL_TOKEN_EXPIRY_RATE_LIMIT_OR_AUTHORITATIVE_COMPLETENESS_TEST;EFFECTIVE_OAUTH_SCOPE_PRINCIPAL_CLOUD_PROJECT_AND_ACTUAL_QUOTA_DEBIT_UNKNOWN
+next_phase: START_NEW_CANDIDATE_PHASE1_NEXT_WAKE
+valid_time_utc: 2026-08-09T00:48:40Z
+recorded_time_utc: 2026-08-09T00:48:40Z
 ---
 
-# X13 CURRENT v195
+# X13 CURRENT v196
 
-`X13_GDRIVE_METADATA_SEARCH_READONLY_024` is active at wake 3 of 4 with Phase 3 **ACCEPTED_WITH_GATES**.
+`X13_GDRIVE_METADATA_SEARCH_READONLY_024` is closed at wake 4 of 4 with **ADOPT_WITH_GATES**.
 
-The bounded synthetic-invalid-page-token probe failed closed with a provider-specific HTTP 400 / `INVALID_ARGUMENT`; the connector preserved `pageToken` as the invalid parameter and exposed the underlying native request as Google Drive v3 `files.list`. This materially improves failure observability and resolves the native-method mapping for the tested path.
+The connector is adopted only for bounded, metadata-only Drive discovery. Two capped success wakes matched on result count and ordered-result digest, and the failure probe failed closed with provider-specific HTTP 400 semantics while exposing Google Drive v3 `files.list` as the underlying operation.
 
-The connector translation is now directly observed: `query=HFO` becomes Drive name/full-text matching, `item_type=document` expands to a wrapper-defined MIME bucket including Docs, Sheets, Slides and common document formats, trashed items are excluded, all accessible drives are included, and `topn=5` maps to `pageSize=5`.
+The adoption does not cover exhaustive inventory or pagination-dependent workflows. Both successes hit the result cap; no valid continuation flow, permission-denial behavior, rate-limit behavior, authoritative completeness, effective access scope, or actual quota debit was demonstrated. The connector-defined `document` category must not be treated as Google Docs-only.
 
-Campaign evidence is now three bounded calls: two repeatable metadata-only successes and one explicit invalid-pagination failure, with zero retries, fallbacks, content hydrations, or Drive mutations. Effective OAuth scope/principal, quota debit, rate-limit behavior, permission denial, and completeness remain unknown.
+Mandatory gates remain metadata-only by default, bounded result counts, no mutation, no raw Drive metadata persisted in X13 receipts, no completeness inference from capped results, and fail-closed behavior on connector/provider errors. Any dependency on pagination or authoritative inventory requires a separate bounded campaign.
 
-Measured operator savings remain `0`; realized custom-code avoidance remains `0`; the `40–120 LOC` estimate is unvalidated; adoption/fitness credit remains `0 / 0`.
+Measured operator savings remain `0`; realized custom-code avoidance remains `0`; the `40–120 LOC` estimate remains unvalidated. Adoption credit is `1`; fitness credit remains `0` pending demonstrated downstream consumer value.
 
-Next wake: Phase 4 decision from the frozen evidence set only; no additional Google Drive candidate call, WIP=1.
+Next wake: start exactly one new candidate at Phase 1, WIP=1.
