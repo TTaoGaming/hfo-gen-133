@@ -1,0 +1,51 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_GITHUB_PR_CHANGED_FILENAMES_READONLY_030
+event_type: PHASE2_REPLAY_RESULT
+expected_current_version: 217
+candidate: GitHub.list_pr_changed_filenames
+campaign_wake: 2_of_4
+wip: 1
+repository: TTaoGaming/hfo-gen-133
+target_pr_number: 10
+candidate_invocations_this_event: 1
+candidate_invocations_total_after_event: 2
+result_filename_count_phase2: 26
+ordered_filename_digest_phase2_sha256: 503d2de2bca9c417c86d1de25d5527363d5e318f3cbf997cf7810258b9e12206
+phase1_filename_count: 26
+phase1_ordered_filename_digest_sha256: 503d2de2bca9c417c86d1de25d5527363d5e318f3cbf997cf7810258b9e12206
+count_matches_phase1: true
+ordered_digest_matches_phase1: true
+raw_filename_persisted: false
+connector_external_call_time_phase2_ms: 487
+connector_errors_total_after_event: 0
+retries_total_after_event: 0
+fallbacks_total_after_event: 0
+candidate_mutations_total_after_event: 0
+patch_diff_content_comment_hydration_observed: false
+operator_minutes_removed_measured: 0
+custom_code_avoided_estimate: 20_to_60_LOC_UNVALIDATED
+custom_code_avoided_realized_by_this_candidate: 0
+paid_cost_usd_observed: 0_NO_CHARGE_SURFACED_NOT_BILLING_PROOF
+direct_quota_evidence: NONE_FROM_CONNECTOR_RECEIPT
+credentials: CONNECTOR_MANAGED_EFFECTIVE_PRINCIPAL_AND_PERMISSION_GRANT_UNKNOWN
+durability: PHASE2_PREFLIGHT_AND_RESULT_GIT_FIRST_ON_CANONICAL_BRANCH
+observability: TWO_26_FILENAME_SUCCESSES;PHASE2_487MS;ORDERED_DIGEST_STABLE;NO_NATIVE_REQUEST_ID_HTTP_STATUS_RATE_HEADERS_PAGE_COUNT_OR_QUOTA_DEBIT_SURFACED
+portability: HIGH_TO_GITHUB_REST_PULLS_FILES_RESOURCE_BUT_WRAPPER_AUTO_PAGINATION_AND_3000_FILE_CAP_HANDLING_UNVERIFIED
+failure_behavior: NOT_YET_PROBED
+verifier: GIT_DURABLE_READBACK_PLUS_DIRECT_GITHUB_RECEIPT_PLUS_PHASE1_DIGEST_COMPARISON
+consumer: HFO_PR_BLAST_RADIUS_AND_TARGETED_PATCH_SELECTION_GATES
+mandatory_gate: READ_ONLY;KNOWN_SMALL_PR_ONLY_UNTIL_PAGINATION_VARIANCE_IS_PROBED;DO_NOT_FETCH_PATCHES_CONTENT_OR_COMMENTS;DO_NOT_PERSIST_RAW_FILENAMES_UNLESS_MINIMUM_NECESSARY;NO_AUTHORITATIVE_COMPLETENESS_RATE_LIMIT_PERMISSION_OR_COST_CLAIMS
+strongest_falsifier: MULTI_PAGE_PR_IS_SILENTLY_TRUNCATED_OR_WRAPPER_EXCEEDS_OPERATOR_BOUNDEDNESS_REQUIREMENT
+honest_flaw: EXACT_REPLAY_ONLY_PROVES_STABILITY_ON_THIS_KNOWN_SMALL_26_FILE_PR;WRAPPER_STILL_EXPOSES_NO_CALLER_PAGE_PER_PAGE_OR_MAX_FILES_BOUND
+phase2_status: PHASE2_ACCEPTED_WITH_GATES
+next_phase: PHASE3_ONE_BOUNDED_READ_ONLY_FAILURE_OR_CONNECTOR_VARIANCE_PROBE_NO_PATCH_CONTENT
+valid_time_utc: 2026-08-09T22:50:04Z
+recorded_time_utc: 2026-08-09T22:50:04Z
+---
+
+# Phase 2 exact replay result
+
+The exact Phase-1 request was replayed once. It returned 26 filenames in 487 ms. Filename count and the ordered newline-joined SHA-256 digest matched Phase 1 exactly. No patch, diff, repository file content, PR comment, or other candidate surface was fetched, and no candidate mutation was observed.
+
+This establishes repeatability only for the known-small 26-file PR. It does not establish caller-bounded pagination, completeness on multi-page PRs, permission behavior, rate-limit behavior, native request count, quota debit, billing, or effective connector principal/scope.
