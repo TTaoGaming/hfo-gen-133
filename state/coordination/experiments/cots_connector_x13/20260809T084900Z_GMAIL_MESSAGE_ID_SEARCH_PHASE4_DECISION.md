@@ -1,0 +1,69 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_GMAIL_MESSAGE_ID_SEARCH_READONLY_026
+event_type: PHASE4_DECISION
+expected_current_version: 203
+candidate: Gmail_search_email_ids_readonly
+campaign_wake: 4_of_4
+phase_4_decision: ADOPT_WITH_GATES
+operational_decision: ADOPT_WITH_GATES_BOUNDED_ID_ONLY_FIRST_PAGE_DISCOVERY
+wip: 1
+candidate_invocations_total: 3
+usable_candidate_results: 2
+phase1_result_count: 5
+phase2_result_count: 5
+phase2_result_count_match_phase1: true
+phase1_next_page_token_observed: true
+phase2_next_page_token_observed: true
+phase2_next_page_token_presence_match_phase1: true
+phase2_ordered_message_id_digest_match_phase1: true
+phase3_probe_type: SYNTHETIC_INVALID_PAGE_TOKEN_READONLY
+phase3_expected_failure_observed: true
+phase3_error_type: google_api_error
+phase3_error_code: invalidArgument
+phase3_error_status: INVALID_ARGUMENT
+phase3_error_reason: invalidArgument
+phase3_structured_error_observed: true
+raw_message_ids_persisted: false
+raw_page_token_persisted: false
+content_hydrations_total: 0
+connector_errors_total: 1
+expected_connector_errors_total: 1
+retries_total: 0
+fallbacks_total: 0
+candidate_mutations_total: 0
+operator_minutes_removed_measured: 0
+custom_code_avoided_estimate: 30_to_90_LOC_UNVALIDATED
+custom_code_avoided_realized_by_this_candidate: 0
+paid_cost_usd_observed: 0_NO_CHARGE_SURFACED_NOT_BILLING_PROOF
+direct_cost_or_quota_evidence: NO_DIRECT_CONNECTOR_QUOTA_DEBIT_RATE_LIMIT_HEADER_CLOUD_PROJECT_OR_BILLING_METADATA_OBSERVED;PHASE1_OFFICIAL_GMAIL_QUOTA_BASELINE_IS_CONTEXT_ONLY_NOT_DIRECT_DEBIT_EVIDENCE
+credentials: CONNECTOR_MANAGED;EFFECTIVE_OAUTH_SCOPE_PRINCIPAL_AND_CLOUD_PROJECT_UNKNOWN;EVIDENCE_PROVES_USABLE_ACCESS_ONLY_FOR_TWO_BOUNDED_QUERY_FILTERED_SUCCESSES_AND_ONE_STRUCTURED_INVALID_TOKEN_FAILURE
+durability: GIT_PHASE1_PHASE2_PHASE3_PREFLIGHT_AND_RESULT_EVENTS_DURABLE_AND_READ_BACK_ON_CANONICAL_BRANCH;PHASE4_USES_FROZEN_EVIDENCE_ONLY
+observability: SUCCESS_PATH_EXPOSES_RESULT_COUNT_TOKEN_PRESENCE_WRAPPER_TIMING_AND_PRIVACY_SAFE_ORDERED_ID_DIGEST;FAILURE_PATH_EXPOSES_STRUCTURED_GOOGLE_API_ERROR_CODE_STATUS_REASON;NO_PROVIDER_HTTP_STATUS_REQUEST_ID_RATE_HEADERS_NATIVE_METHOD_SCOPE_OR_QUOTA_DEBIT
+portability: MEDIUM;QUERY_LABEL_MAX_RESULTS_AND_PAGE_TOKEN_CONCEPTS_ALIGN_WITH_NATIVE_GMAIL_LISTING_BUT_CONNECTOR_MAPPING_TOKEN_ENCODING_ORDERING_SCOPE_AND_VALID_PAGINATION_REMAIN_UNPROVEN
+failure_behavior: SYNTHETIC_MALFORMED_PAGE_TOKEN_FAILED_CLOSED_WITH_STRUCTURED_INVALID_ARGUMENT_AND_NO_RETRY_FALLBACK_HYDRATION_OR_MUTATION;PERMISSION_DENIAL_RATE_LIMIT_AND_VALID_PAGINATION_UNPROBED
+verifier: GITHUB_PHASE1_PHASE2_PHASE3_DURABLE_READBACK_PLUS_DIRECT_GMAIL_SEARCH_EMAIL_IDS_SUCCESS_AND_ERROR_RECEIPTS
+consumer: HFO_BOUNDED_MAILBOX_DISCOVERY_AND_PREFLIGHT_FILTERING
+adoption_credit: 1
+fitness_credit: 0
+mandatory_gate: READ_ONLY;ID_ONLY;BOUNDED_MAX_RESULTS;FIRST_PAGE_DISCOVERY_ONLY;NO_CONTENT_HYDRATION;NO_RAW_MAILBOX_IDENTIFIERS_OR_PAGE_TOKENS_IN_X13_RECEIPTS;NO_COMPLETENESS_OR_STABLE_ORDER_INFERENCE;NO_CURSOR_OR_PAGE_TOKEN_DEPENDENT_WORKFLOW;TOKEN_ERRORS_FAIL_CLOSED_WITHOUT_AUTOMATIC_RETRY;NO_SCOPE_OR_QUOTA_ASSUMPTIONS
+strongest_falsifier: A_NAMED_DOWNSTREAM_CONSUMER_REQUIRES_AUTHORITATIVE_COMPLETENESS_RELIABLE_MULTI_PAGE_TRAVERSAL_PERMISSION_SCOPE_ACCOUNTABILITY_OR_RATE_LIMIT_CONTROL;CURRENT_EVIDENCE_DOES_NOT_SUPPORT_THOSE_REQUIREMENTS
+honest_flaw: TWO_MATCHING_CAPPED_PAGES_DO_NOT_PROVE_STABLE_ORDERING_OR_COMPLETENESS;RELATIVE_30_DAY_WINDOW_CAN_DRIFT;ONLY_ONE_FAILURE_CLASS_WAS_PROBED;VALID_PAGINATION_PERMISSION_DENIAL_RATE_LIMITING_EFFECTIVE_SCOPE_NATIVE_MAPPING_AND_ACTUAL_QUOTA_DEBIT_REMAIN_UNVERIFIED
+next_phase: START_EXACTLY_ONE_NEW_CANDIDATE_AT_PHASE1_ON_NEXT_WAKE_WIP1
+valid_time_utc: 2026-08-09T08:49:00Z
+recorded_time_utc: 2026-08-09T08:49:00Z
+---
+
+# X13 Gmail message-ID search Phase 4 decision
+
+Decision: **ADOPT_WITH_GATES**.
+
+Adopt only the narrow capability actually evidenced: bounded, read-only, ID-only, first-page Gmail discovery/filtering for HFO mailbox preflight. Two identical capped success pages establish bounded usability and short-horizon repeatability for the tested query. One malformed page-token probe failed closed with a structured `INVALID_ARGUMENT` error and no observed retry, fallback, hydration, or mutation.
+
+Do **not** adopt authoritative mailbox inventory, completeness claims, stable-order assumptions, or page-token-dependent workflows. Valid pagination, permission denial, rate limiting, effective OAuth scope/principal, native API mapping, and actual quota debit remain unverified.
+
+Measured operator minutes removed: `0`. Realized custom-code avoidance: `0`. Estimated avoidance remains `30–90 LOC`, unvalidated. Adoption credit becomes `1`; fitness credit remains `0` until a named consumer demonstrates measured downstream value.
+
+Mandatory gates: read-only; ID-only; bounded `max_results`; first-page discovery only; no content hydration; do not persist raw message IDs or page tokens in X13 receipts; no completeness or stable-order inference; no token-dependent workflow; token errors fail closed without automatic retry; do not infer access scope or quota from successful calls.
+
+Strongest falsifier: any named consumer requiring authoritative completeness, reliable multi-page traversal, permission-scope accountability, or rate-limit control. Current evidence is insufficient for those needs.
