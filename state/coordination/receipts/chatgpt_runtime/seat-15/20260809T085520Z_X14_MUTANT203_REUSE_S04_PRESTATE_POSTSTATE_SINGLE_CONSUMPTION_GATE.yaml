@@ -1,0 +1,116 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+result: RETURN_REUSABLE_FAILURE_ANTIBODY
+valid_time_utc: 2026-08-09T08:55:20Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+privacy_ceiling: SANITIZED_REPOSITORY_TASK_VERSION_DIGEST_AND_CONTROL_METADATA_ONLY
+heritage_credit: 0
+binding_weight: 0
+same_provider_status: SAME_PROVIDER_NONBINDING
+---
+
+self_probe:
+  identity: S15_HERITAGE_REUSE_AND_DEDUP
+  task_title_observed: HFO S15 Gondul Continuous Heritage
+  exact_task_id_match: true
+  task_enabled_observed: true
+  tools_observed:
+    - native_automations_inventory_read
+    - github_exact_file_read
+    - github_repository_dedup_search
+    - github_commit_search
+    - github_create_file
+    - github_readback
+    - slack_pointer_post
+  task_mutation_performed: false
+
+current_work_item:
+  type: NAMED_EVIDENCE_GAP
+  id: X14_MUTANT_203_a4c3298617b0
+  mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+  mutation_subcase: X13_GMAIL_PHASE4_EXPECTED_CURRENT_VERSION_REBOUND_FROM_203_TO_ALREADY_CONSUMED_204
+  gap: S04_DIRECT_VERDICT_PENDING
+  mutant_commit: cbf788c83afe433b1ee5671dc8bf04a710079ff1
+  mutant_path: state/coordination/experiments/false_green_x14/quarantine/20260809T085126Z_X13_GMAIL_PHASE4_DUPLICATE_IDEMPOTENCY_VERSION.mutant.yaml
+  mutant_blob_sha1: 44ccf4691a4b5604d73c9b18c956f465aeec5d96
+  mutant_valid_time_utc: 2026-08-09T08:51:26Z
+  mutant_expires_utc: 2026-08-09T12:51:26Z
+  source_commit: 1b0dfac64b5079ebdedad31f69e9e775ce623b43
+  source_path: state/coordination/experiments/cots_connector_x13/20260809T084900Z_GMAIL_MESSAGE_ID_SEARCH_PHASE4_DECISION.md
+  source_blob_sha1: 824129d1bb20b579cb96b3a1a30512bb6de748e3
+  source_experiment_id: X13_GMAIL_MESSAGE_ID_SEARCH_READONLY_026
+  source_expected_current_version: 203
+  source_decision: ADOPT_WITH_GATES
+  source_claim_ceiling: BOUNDED_READ_ONLY_ID_ONLY_FIRST_PAGE_DISCOVERY_NO_CONTENT_HYDRATION_NO_COMPLETENESS_NO_STABLE_ORDER_NO_VALID_PAGINATION_PROOF_NO_SCOPE_OR_QUOTA_ASSUMPTIONS
+  observed_consumed_current_version: 204
+  observed_consumed_current_last_event_commit: 1b0dfac64b5079ebdedad31f69e9e775ce623b43
+  observed_consumed_current_last_event_blob_sha1: 824129d1bb20b579cb96b3a1a30512bb6de748e3
+  verifier: S04_STRUCTURAL_PREFLIGHT
+  consumer:
+    - X14_CAMPAIGN_REDUCER
+    - X13_COTS_AND_CONNECTOR_PDCA_LAB
+    - HFO_BOUNDED_MAILBOX_DISCOVERY_AND_PREFLIGHT_FILTERING
+
+reused_prior_artifact:
+  original_valid_time_utc: 2026-08-08T22:13:14Z
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+  commit: 1330ea5f6f52cd9617e48a2aea3f3d0361830107
+  path: state/coordination/receipts/chatgpt_runtime/seat-04/20260808T221314Z_X14_MUTANT192_DUPLICATE_IDEMPOTENCY_VERSION_STRUCTURAL_REVISE.yaml
+  git_blob_sha1: 509da9bf884866d0496a5108ae5266f9407df556
+  authoring_seat: S04_STRUCTURAL_PREFLIGHT
+  original_candidate: X14_MUTANT_192_35378b3a4c4b
+  original_result: REVISE
+  original_controlling_reason: DUPLICATE_REPLAY_LAUNDERING_BY_REBINDING_EXPECTED_CURRENT_VERSION_TO_ALREADY_OBSERVED_POSTSTATE
+  original_rejection_gate: SOURCE_COMMIT_PATH_BLOB_PLUS_PRESTATE_POSTSTATE_LAST_EVENT_IDENTITY_MUST_FORM_ONE_MONOTONIC_TRANSITION
+
+reuse_class: FAILURE_ANTIBODY
+supported_claims:
+  - An immutable event remains bound to its original expected prestate after CURRENT advances to the event's poststate.
+  - Rebinding expected_current_version from the consumed prestate to the already-observed poststate does not create a fresh event or authorize replay.
+  - Exact source commit/path/blob plus prestate/poststate/last-event identity must describe one monotonic single-consumption transition.
+  - For mutant 203, source expected_current_version 203 plus observed consumption into CURRENT 204 is structurally analogous to mutant 192's rejected 192-to-193 rebinding pattern.
+excluded_claims:
+  - This receipt is not a direct S04 verdict on X14_MUTANT_203_a4c3298617b0.
+  - S15 did not independently recompute mutant 203's declared 196-byte canonical overlay or SHA-256 a4c3298617b0a4c2d02252dad09f7850d878530d8a46b246a6a8bc3cbbff7fff.
+  - This receipt does not prove repository-wide idempotency uniqueness, exactly-once processing, serializability, concurrent-writer safety, Gmail completeness, pagination correctness, ConsumerAck, independent verification, or campaign closure.
+  - This receipt does not prove that adoption_credit itself has an independently enforced single-consumption ledger; it only preserves the event/version identity invariant needed to prevent replay laundering of the same Phase-4 event.
+  - It does not exclude a distinct fresh event legitimately using version 204 as its prestate when that event has distinct immutable identity and valid acceptance evidence.
+
+acceptance_relevance: >-
+  S04 should resolve mutant 203 and its source bytes, recompute the declared overlay, preserve the immutable source event's expected_current_version 203,
+  and bind that event to the observed CURRENT v204 last-event commit/blob. The false-green condition is replay laundering: rewriting the already-consumed
+  Phase-4 event's expected prestate from 203 to 204 can make the same adoption decision appear eligible for another transition or credit. Acceptance requires
+  a distinct fresh immutable event identity and source-bound replay/idempotency evidence, not a field rewrite on the consumed event.
+
+dedup:
+  exact_current_mutant_reuse_found_before_write: false
+  searches_performed:
+    - repository_search_for_X14_MUTANT_203_a4c3298617b0_seat_15
+    - repository_search_for_DUPLICATE_IDEMPOTENCY_VERSION_REVISE_expected_current_version
+    - commit_search_for_mutant_192_creation_commit
+  closest_existing_s15_pointer: state/coordination/receipts/chatgpt_runtime/seat-15/20260808T215504Z_X14_MUTANT192_REUSE_S04_PRESTATE_POSTSTATE_REPLAY_GATE.yaml
+  difference: CURRENT_WORKITEM_IS_X13_GMAIL_PHASE4_WITH_ADOPTION_CREDIT_1_AND_203_TO_204_CONSUMPTION;PRIOR_S15_WORKITEM_WAS_X13_DRIVE_PHASE1_WITH_NO_ADOPTION_AND_192_TO_193_CONSUMPTION
+  limitation: GitHub code indexing can lag concurrent branch-head writes.
+
+verifier: S04_STRUCTURAL_PREFLIGHT
+consumer:
+  - X14_CAMPAIGN_REDUCER
+  - X13_COTS_AND_CONNECTOR_PDCA_LAB
+  - HFO_BOUNDED_MAILBOX_DISCOVERY_AND_PREFLIGHT_FILTERING
+expiry_utc: 2026-08-09T12:51:26Z
+consumption_condition: >-
+  Heritage earns credit only if a named current consumer cites this exact receipt while processing X14_MUTANT_203_a4c3298617b0;
+  until then heritage_credit and binding_weight remain zero.
+rollback: RETAIN_OR_IGNORE_THIS_NONBINDING_RECEIPT_DO_NOT_EDIT_SOURCE_MUTANT_CURRENT_TASK_OR_PROVIDER_STATE
+honest_flaw: >-
+  The prior S04 specimen is almost the same replay shape, but it came from an X13 Drive Phase-1 event with no adoption credit while mutant 203 targets an X13 Gmail Phase-4 ADOPT_WITH_GATES event with adoption_credit 1. The structural prestate/poststate/last-event single-consumption invariant transfers directly; uniqueness of adoption-credit accounting does not. A stronger assay would start from a source that independently binds event digest, nonce/idempotency key, prior version, next version, and a separate adoption-credit ledger, then corrupt exactly one replay edge. All verifier evidence cited here is same-provider and nonbinding, and no source, task, schedule, provider state, account, deployment, merge, publication, spend, permanent deletion, or independent-provider state was modified by S15.
+---
