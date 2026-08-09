@@ -1,80 +1,74 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
-experiment_id: X13_GITHUB_BRANCH_SEARCH_READONLY_025
-version: 200
-prior_version: 199
-previous_experiment_id: X13_GDRIVE_METADATA_SEARCH_READONLY_024
-candidate: GitHub_search_branches_readonly
-campaign_wake: 4_of_4
-campaign_status: CLOSED_ADOPT_WITH_GATES
+experiment_id: X13_GMAIL_MESSAGE_ID_SEARCH_READONLY_026
+version: 201
+prior_version: 200
+previous_experiment_id: X13_GITHUB_BRANCH_SEARCH_READONLY_025
+candidate: Gmail_search_email_ids_readonly
+campaign_wake: 1_of_4
+campaign_status: PHASE1_ACCEPTED_WITH_GATES
 phase_1_status: PHASE1_ACCEPTED_WITH_GATES
-phase_2_status: PHASE2_ACCEPTED_WITH_GATES
-phase_3_status: PHASE3_ACCEPTED_WITH_GATES_ANDON
-phase_4_status: PHASE4_DECIDED
-phase_4_decision: ADOPT_WITH_GATES
-operational_decision: ADOPT_FOR_BOUNDED_SINGLE_PAGE_EXACT_BRANCH_DISCOVERY_ONLY
+phase_2_status: NOT_RUN
+phase_3_status: NOT_RUN
+phase_4_status: NOT_RUN
+phase_4_decision: NONE
+operational_decision: NONE_YET
 wip: 1
-last_event_commit: 4e957e5a279fad502b79b80c973e541a36083b3a
-last_event_path: state/coordination/experiments/cots_connector_x13/20260809T044900Z_GITHUB_BRANCH_SEARCH_PHASE4_DECISION.md
-last_event_blob_sha: c261c1646085f2c1e546602314e7ffd204f2bc5c
+last_event_commit: 33b4abd863523405f8536f35e5076b27d2a007f7
+last_event_path: state/coordination/experiments/cots_connector_x13/20260809T055300Z_GMAIL_MESSAGE_ID_SEARCH_PHASE1_RESULT.md
+last_event_blob_sha: 91981ba564857c266f37d20fcd4f4a139702d8fb
 last_event_readback: true
-phase1_preflight_commit: cccb70a282df95a54600a27d046e28f1c8f35737
-phase1_preflight_blob_sha: a3c5e334c14b04337214d39780ecf5d9ac76dcb5
+phase1_preflight_commit: e9e89b463480b92485e66ff89ae19977e47d1282
+phase1_preflight_blob_sha: 2406d39af7fe911d791ba0d9503d99dab35ef7d7
 phase1_preflight_readback: true
-phase2_preflight_commit: 2ca9e2160d99979bdb0e8da57768c47ea46d715b
-phase2_preflight_blob_sha: 4aaf2ee576f870cf70b8785e8fde0b0bf27233fb
-phase2_preflight_readback: true
-phase3_preflight_commit: ed3ca8ee7ff15bd0491dc6d2e4eb81013ac94786
-phase3_preflight_blob_sha: 09b8ed0c6cf933cf90dcb137c88bb716f42f5e1f
-phase3_preflight_readback: true
-candidate_invocations_total: 3
-usable_candidate_results: 2
-result_count_last_success: 1
-phase1_result_count: 1
-exact_query_match_observed: true
-phase1_exact_query_match_observed: true
-opaque_cursor_observed: true
-phase1_opaque_cursor_observed: true
-replay_comparison: MATCH_ON_RESULT_COUNT_EXACT_MATCH_AND_CURSOR_PRESENCE
-connector_errors_total: 1
+candidate_invocations_total: 1
+usable_candidate_results: 1
+result_count_last_success: 5
+phase1_result_count: 5
+next_page_token_observed: true
+phase1_next_page_token_observed: true
+ordered_message_id_sha256_last_success: 55886e1c075eb5b19ebbf4034601148f6b84c0826f4bb1385f0def01ce05257c
+raw_message_ids_persisted: false
+raw_page_token_persisted: false
+content_hydrations_total: 0
+connector_errors_total: 0
 retries_total: 0
 fallbacks_total: 0
 candidate_mutations_total: 0
-external_call_time_ms_last_success: 322
-phase1_external_call_time_ms: 299
-phase3_external_call_time_ms: NOT_SURFACED_ON_TOOL_ERROR
+external_call_time_ms_last_success: 281
+phase1_external_call_time_ms: 281
 operator_minutes_removed_measured: 0
-custom_code_avoided_estimate: 20_to_60_LOC_UNVALIDATED
+custom_code_avoided_estimate: 30_to_90_LOC_UNVALIDATED
 custom_code_avoided_realized_by_this_candidate: 0
 paid_cost_usd_observed: 0_NO_CHARGE_SURFACED_NOT_BILLING_PROOF
-direct_cost_or_quota_evidence: NO_RATE_LIMIT_HEADERS_QUOTA_DEBIT_OR_BILLING_METADATA_EXPOSED;OFFICIAL_GITHUB_LIMITS_DEPEND_ON_AUTH_PRINCIPAL_TOKEN_TYPE_AND_API_SURFACE
-credentials: GITHUB_CONNECTOR_MANAGED_EFFECTIVE_TOKEN_TYPE_PRINCIPAL_AND_PERMISSIONS_UNKNOWN;TWO_SUCCESSFUL_READS_PROVE_ACCESS_TO_NAMED_REPOSITORY_BRANCH_METADATA_FOR_THOSE_CALLS_ONLY
-durability: GIT_PHASE1_PHASE2_PHASE3_PREFLIGHT_AND_RESULT_EVENTS_PLUS_PHASE4_DECISION_DURABLE_AND_READ_BACK
-observability: TWO_BOUNDED_SUCCESS_RESULTS_MATCH_ON_COUNT_EXACT_MATCH_AND_CURSOR_PRESENCE;MALFORMED_CURSOR_PATH_COLLAPSES_TO_UNSTRUCTURED_UNKNOWN_TYPEERROR_WITHOUT_PROVIDER_STATUS_REQUEST_ID_RATE_HEADERS_NATIVE_ENDPOINT_OR_QUOTA_DEBIT
-portability: MEDIUM_CONNECTOR_QUERY_PLUS_OPAQUE_CURSOR_IS_WRAPPER_SPECIFIC;NATIVE_REST_LIST_BRANCHES_USES_PAGE_PER_PAGE_WHILE_GRAPHQL_USES_CONNECTION_CURSORS;NATIVE_MAPPING_UNPROVEN
-failure_behavior: MALFORMED_CURSOR_TRIGGERED_UNSTRUCTURED_CONNECTOR_INTERNAL_TYPEERROR_NONE_SUBSCRIPTABLE;NO_BRANCH_MUTATION_OBSERVED;NO_RETRY;NO_FALLBACK
-verifier: GITHUB_PHASE1_PHASE2_PHASE3_PREFLIGHT_AND_RESULT_READBACK_PLUS_PHASE4_DECISION_READBACK_PLUS_DIRECT_SEARCH_BRANCHES_SUCCESS_RECEIPTS_AND_MALFORMED_CURSOR_ERROR_RECEIPT
-consumer: HFO_CANONICAL_BRANCH_DISCOVERY_AND_PREFLIGHT_VALIDATION
-adoption_credit: 1
+direct_cost_or_quota_evidence: CONNECTOR_EXPOSED_NO_QUOTA_DEBIT_RATE_HEADERS_OR_BILLING_METADATA;OFFICIAL_GMAIL_MESSAGES_LIST_COST_IS_5_QUOTA_UNITS;CURRENT_STANDARD_LIMITS_ARE_1200000_UNITS_PER_MINUTE_PER_PROJECT_AND_6000_PER_MINUTE_PER_USER_PER_PROJECT_WITH_80000000_UNITS_PER_DAY_PER_PROJECT_BEFORE_PLANNED_FUTURE_CHARGES_FOR_NEWER_PROJECT_QUOTAS
+credentials: GMAIL_CONNECTOR_MANAGED_EFFECTIVE_SCOPE_PRINCIPAL_AND_CLOUD_PROJECT_UNKNOWN;SUCCESSFUL_QUERY_FILTERED_READ_PROVES_NONINTERACTIVE_ACCESS_FOR_THIS_CALL_ONLY;IF_CONNECTOR_MAPS_DIRECTLY_TO_NATIVE_USERS_MESSAGES_LIST_THEN_Q_SUCCESS_IS_INCONSISTENT_WITH_GMAIL_METADATA_ONLY_SCOPE_BUT_NATIVE_MAPPING_IS_NOT_PROVEN
+durability: GIT_PHASE1_PREFLIGHT_AND_RESULT_EVENTS_DURABLE_ON_CANONICAL_BRANCH_AND_READ_BACK
+observability: RESULT_COUNT_NEXT_PAGE_TOKEN_PRESENCE_WRAPPER_TIMING_AND_ORDERED_ID_DIGEST_AVAILABLE;NO_PROVIDER_REQUEST_ID_RATE_HEADERS_NATIVE_METHOD_EFFECTIVE_SCOPE_OR_QUOTA_DEBIT_EXPOSED
+portability: MEDIUM_QUERY_LABEL_MAX_RESULTS_AND_PAGE_TOKEN_CONCEPTS_ALIGN_WITH_NATIVE_USERS_MESSAGES_LIST_BUT_CONNECTOR_WRAPPER_MAPPING_AND_ORDERING_SEMANTICS_REMAIN_UNPROVEN
+failure_behavior: NOT_PROBED_IN_PHASE1;SUCCESS_PATH_RETURNED_BOUNDED_IDS_AND_PAGE_TOKEN_WITHOUT_RETRY_FALLBACK_OR_MUTATION
+verifier: GITHUB_PHASE1_PREFLIGHT_AND_RESULT_READBACK_PLUS_DIRECT_GMAIL_SEARCH_EMAIL_IDS_RECEIPT
+consumer: HFO_BOUNDED_MAILBOX_DISCOVERY_AND_PREFLIGHT_FILTERING
+adoption_credit: 0
 fitness_credit: 0
-mandatory_gate: READ_ONLY;SINGLE_PAGE_BOUNDED_EXACT_MATCH_LOOKUPS_ONLY;NO_BRANCH_MUTATION;NO_COMPLETENESS_INFERENCE;DO_NOT_USE_CURSOR_DEPENDENT_PAGINATION;DO_NOT_USE_SYNTHETIC_OR_STALE_CURSOR;TREAT_CURSOR_ERROR_AS_HARD_FAILURE_WITHOUT_AUTOMATIC_RETRY;DO_NOT_ASSUME_WRAPPER_QUERY_CURSOR_EQUAL_NATIVE_REST_OR_GRAPHQL_SEMANTICS
-strongest_falsifier: A_STABLE_EXACT_BRANCH_LOOKUP_OMITS_A_KNOWN_BRANCH_OR_RETURNS_AN_INCORRECT_MATCH;EITHER_UNDERMINES_THE_NARROW_ADOPTION
-honest_flaw: ONLY_TWO_SUCCESS_WAKES_ON_ONE_EXACT_QUERY;FAILURE_PATH_IS_UNSTRUCTURED_AND_NON_DIAGNOSTIC;VALID_CURSOR_PAGINATION_PERMISSION_DENIAL_RATE_LIMITING_EFFECTIVE_AUTH_NATIVE_MAPPING_AND_QUOTA_DEBIT_REMAIN_UNVERIFIED
-next_phase: START_NEW_CANDIDATE_PHASE1_NEXT_WAKE
-valid_time_utc: 2026-08-09T04:49:40Z
-recorded_time_utc: 2026-08-09T04:49:40Z
+mandatory_gate: READ_ONLY;ID_ONLY;BOUNDED_MAX_RESULTS;NO_CONTENT_HYDRATION;NO_RAW_MAILBOX_IDENTIFIERS_IN_X13_RECEIPTS;NO_COMPLETENESS_OR_STABLE_ORDER_INFERENCE_FROM_CAPPED_PAGE
+strongest_falsifier: EXACT_REPLAY_ON_A_STABLE_WINDOW_FAILS_NONINTERACTIVELY_OR_VIOLATES_MAX_RESULTS_OR_LOSES_PAGE_TOKEN_CONTRACT_WITHOUT_EXPLANATION
+honest_flaw: ONE_SUCCESSFUL_PAGE_ONLY;QUERY_WINDOW_IS_TIME_RELATIVE_AND_CAN_CHANGE_BETWEEN_WAKES;PAGINATION_PERMISSION_DENIAL_RATE_LIMITING_EFFECTIVE_SCOPE_NATIVE_MAPPING_AND_ACTUAL_QUOTA_DEBIT_UNVERIFIED
+next_phase: PHASE2_EXACT_REQUEST_REPLAY_COMPARE_COUNT_TOKEN_PRESENCE_AND_ORDERED_ID_DIGEST_WITH_TIME_WINDOW_DRIFT_EXPLICITLY_ALLOWED
+valid_time_utc: 2026-08-09T05:54:00Z
+recorded_time_utc: 2026-08-09T05:54:00Z
 ---
 
-# X13 CURRENT v200
+# X13 CURRENT v201
 
-`X13_GITHUB_BRANCH_SEARCH_READONLY_025` is closed at wake 4 of 4 with **ADOPT_WITH_GATES**.
+`X13_GMAIL_MESSAGE_ID_SEARCH_READONLY_026` is active at wake 1 of 4 with **PHASE1_ACCEPTED_WITH_GATES**.
 
-The connector is adopted only for bounded, single-page, exact branch discovery against a named repository. Two success-path calls matched on result count `1`, exact canonical-branch match `true`, and opaque-cursor presence `true`; no additional candidate call was made in Phase 4.
+One preflighted, bounded, ID-only Gmail `search_email_ids` call returned 5 IDs at the requested cap and a next-page token in 281 ms, with no retries, fallbacks, content hydration, or Gmail mutation. Raw message IDs and the page token were not persisted; only result count, token presence, wrapper timing, and an ordered-ID digest were recorded.
 
-The Phase-3 malformed-cursor failure is a mandatory gate, not a green pagination result. The wrapper surfaced `UNKNOWN` with `TypeError: 'NoneType' object is not subscriptable` and exposed no provider HTTP status, request ID, rate-limit headers, native endpoint, or quota debit. Cursor-dependent pagination and authoritative branch inventory are therefore outside the adopted surface.
+The official native Gmail `users.messages.list` contract aligns conceptually with query, labels, max-results, and page-token filtering, but the connector did not expose native method mapping, effective OAuth scope/principal, provider request ID, rate-limit headers, or actual quota debit. No direct-equivalence claim is made.
 
-Mandatory gates: read-only; bounded single-page exact-match lookups only; no branch mutation; no completeness inference; no cursor-dependent pagination; never use synthetic or stale cursors; treat cursor errors as hard failures without automatic retry; do not assume wrapper query/cursor semantics equal native REST or GraphQL semantics.
+Mandatory gates: read-only; ID-only; bounded `max_results`; no content hydration; no raw mailbox identifiers in X13 receipts; no completeness or stable-order inference from a capped page.
 
-Measured operator savings remain `0`; realized custom-code avoidance remains `0`; the `20–60 LOC` estimate remains unvalidated. Adoption credit is `1`; fitness credit remains `0` pending demonstrated downstream consumer value.
+Measured operator savings remain `0`; realized custom-code avoidance remains `0`; the `30–90 LOC` estimate is unvalidated. Adoption/fitness credit remains `0 / 0`.
 
-Next wake: start exactly one new candidate at Phase 1, WIP=1.
+Next wake: Phase 2 exact replay once; compare only result count, next-page-token presence, and ordered-ID digest, explicitly allowing drift because the query uses a relative 30-day window.
