@@ -1,21 +1,21 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
 experiment_id: X13_GOOGLE_DRIVE_DOCUMENT_METADATA_SEARCH_READONLY_029
-version: 214
-prior_version: 213
+version: 215
+prior_version: 214
 candidate: Google_Drive.search_document_metadata_readonly
-campaign_wake: 2_of_4
-campaign_status: ACTIVE_PHASE2
+campaign_wake: 3_of_4
+campaign_status: ACTIVE_PHASE3
 phase_1_status: PHASE1_ACCEPTED_WITH_GATES_ANDON
 phase_2_status: PHASE2_ACCEPTED_WITH_GATES_ANDON
-phase_3_status: NOT_RUN
+phase_3_status: PHASE3_ACCEPTED_WITH_GATES
 phase_4_status: NOT_RUN
 phase_4_decision: NONE
 operational_decision: PENDING
 wip: 1
-last_event_commit: ee34dc8b2bbd12749433c8279da841d85d3c8e12
-last_event_path: state/coordination/experiments/cots_connector_x13/20260809T185000Z_GOOGLE_DRIVE_DOCUMENT_METADATA_SEARCH_PHASE2_RESULT.md
-last_event_blob_sha: dbf1b1978722a22f92d811d2ac94805132e0fabb
+last_event_commit: 0c5d73d22949fe7de14e3b3c50064bed5a4edfa2
+last_event_path: state/coordination/experiments/cots_connector_x13/20260809T195045Z_GOOGLE_DRIVE_DOCUMENT_METADATA_SEARCH_PHASE3_RESULT.md
+last_event_blob_sha: 433189ef07613632f3c7d4a8adbac0e6f05e51c2
 last_event_readback: true
 phase1_preflight_commit: 0e02d523c96f2ae8c9ade5f7dffbae4fdf77be73
 phase1_preflight_blob_sha: a55afb4d686d224f05793dedef174414a12b2ebf
@@ -27,8 +27,13 @@ phase2_preflight_blob_sha: 9d4c959cc965125644ba023180d13e8dadcca90b
 phase2_result_commit: ee34dc8b2bbd12749433c8279da841d85d3c8e12
 phase2_result_blob_sha: dbf1b1978722a22f92d811d2ac94805132e0fabb
 phase2_result_readback: true
-candidate_invocations_total: 2
-usable_candidate_results: 2
+phase3_preflight_commit: a95fc9ff6e4bf2728054116b959b2791f335a440
+phase3_preflight_blob_sha: e24b8d745501b6b8f2cfbf0215899701e8ed090f
+phase3_result_commit: 0c5d73d22949fe7de14e3b3c50064bed5a4edfa2
+phase3_result_blob_sha: 433189ef07613632f3c7d4a8adbac0e6f05e51c2
+phase3_result_readback: true
+candidate_invocations_total: 3
+usable_candidate_results: 3
 expected_failure_probes_total: 0
 connector_errors_total: 0
 retries_total: 0
@@ -36,43 +41,50 @@ fallbacks_total: 0
 candidate_mutations_total: 0
 result_count_phase1: 5
 result_count_phase2: 5
+result_count_phase3: 5
 ordered_result_id_digest_phase1_sha256: 9e7528559ea056b1cb10633c493a81e0070a9d6909567f18ed2b1e2e5d928bf7
 ordered_result_id_digest_phase2_sha256: 9e7528559ea056b1cb10633c493a81e0070a9d6909567f18ed2b1e2e5d928bf7
-ordered_result_id_digest_match: true
+ordered_result_id_digest_match_phase1_phase2: true
+ordered_result_id_digest_phase3_sha256: ec99783ce07c863bf48ba2bf6138056baf6c3a355b1dc0105964852d0d846412
 next_page_token_phase1_observed: false
 next_page_token_phase2_observed: false
+next_page_token_phase3_observed: false
 file_content_hydration_phase1_observed: false
 file_content_hydration_phase2_observed: false
-item_type_variance_reproduced: true
+file_content_hydration_phase3_observed: false
+item_type_variance_reproduced_phase1_phase2: true
+phase3_native_mime_filter_result_class: FIVE_OF_FIVE_DOCS_GOOGLE_COM_DOCUMENT_PATH_NO_SPREADSHEET_OBSERVED
+phase3_raw_mime_type_echo_observed: false
 operator_minutes_removed_measured: 0
 custom_code_avoided_estimate: 30_to_100_LOC_UNVALIDATED
 custom_code_avoided_realized_by_this_candidate: 0
 paid_cost_usd_observed: 0_NO_CHARGE_SURFACED_NOT_BILLING_PROOF
+direct_quota_evidence: NONE_FROM_CONNECTOR_RECEIPT
 credentials: CONNECTOR_MANAGED_EFFECTIVE_SCOPE_AND_PRINCIPAL_UNKNOWN
-durability: PHASE1_AND_PHASE2_GIT_PREFLIGHT_AND_RESULT_READ_BACK_ON_CANONICAL_BRANCH
-observability: TWO_BOUNDED_SUCCESSES;MATCHING_5_RESULT_ORDERED_ID_DIGEST;NO_CONTENT_HYDRATION;DOCUMENT_TAXONOMY_VARIANCE_REPRODUCED;NO_NATIVE_REQUEST_ID_RATE_HEADERS_SCOPE_QUOTA_DEBIT_OR_LATENCY_SURFACED
-portability: MEDIUM_HIGH_TO_DRIVE_FILES_LIST_QUERY_AND_PAGINATION_CONCEPTS_BUT_CONNECTOR_DOCUMENT_TAXONOMY_IS_BROADER_THAN_GOOGLE_DOCS_MIME_SEMANTICS
-failure_behavior: UNPROBED
-verifier: GIT_DURABLE_READBACK_PLUS_DIRECT_DRIVE_RECEIPT
+durability: PHASE1_PHASE2_PHASE3_GIT_PREFLIGHT_AND_RESULT_READ_BACK_ON_CANONICAL_BRANCH
+observability: THREE_BOUNDED_SUCCESSES;PHASE1_PHASE2_MATCHING_5_RESULT_ORDERED_ID_DIGEST;NO_CONTENT_HYDRATION;DOCUMENT_TAXONOMY_VARIANCE_REPRODUCED_WITHOUT_RAW_FILTER;PHASE3_EXPLICIT_NATIVE_MIME_FILTER_RETURNED_5_OF_5_DOCUMENT_URLS;NO_NATIVE_REQUEST_ID_RATE_HEADERS_SCOPE_QUOTA_DEBIT_LATENCY_OR_MIME_ECHO_SURFACED
+portability: HIGHER_WITH_EXPLICIT_NATIVE_DRIVE_Q_MIMETYPE_FILTER;CONNECTOR_ITEM_TYPE_DOCUMENT_ALONE_IS_NOT_GOOGLE_DOCS_ONLY;EXACT_NATIVE_MAPPING_SCOPE_AND_PAGINATION_UNVERIFIED
+failure_behavior: NOT_DIRECTLY_PROBED;CONNECTOR_VARIANCE_PATH_PROBED_INSTEAD
+verifier: GIT_DURABLE_READBACK_PLUS_DIRECT_DRIVE_RECEIPT_PLUS_OFFICIAL_DRIVE_Q_AND_MIME_CONTRACT
 consumer: HFO_BOUNDED_DRIVE_DISCOVERY_FOR_OPERATOR_CONTROL_LOOPS
 adoption_credit: 0
 fitness_credit: 0
-mandatory_gate: READ_ONLY;ITEM_TYPE_DOCUMENT;BEST_EFFORT_FETCH_FALSE;TOPN_5;NO_SECOND_PAGE;DO_NOT_PERSIST_RAW_NAMES_IDS_URLS_PARENT_IDS_OR_PAGE_TOKENS;DOCUMENT_ITEM_TYPE_NOT_GOOGLE_DOCS_ONLY;NO_COMPLETENESS_SCOPE_RATE_LIMIT_OR_QUOTA_ASSUMPTIONS
-strongest_falsifier: PHASE3_FAILURE_PROBE_MUTATES_OR_LEAKS_CONTENT;CONSUMER_REQUIRES_GOOGLE_DOCS_ONLY_MIME_SEMANTICS_OR_AUTHORITATIVE_COMPLETENESS
-honest_flaw: REPLAY_STABILITY_SHOWN_ONLY_FOR_ONE_QUERY_AND_ONE_PROVIDER_PAGE;DOCUMENT_ITEM_TYPE_REPEATEDLY_INCLUDED_A_SPREADSHEET;NO_PERMISSION_FAILURE_VALID_PAGINATION_SCOPE_RATE_LIMIT_QUOTA_DEBIT_LATENCY_OR_COMPLETENESS_EVIDENCE
-next_phase: PHASE3_ONE_BOUNDED_HARMLESS_NONMUTATING_FAILURE_OR_PERMISSION_VARIANCE_PROBE
-valid_time_utc: 2026-08-09T18:50:30Z
-recorded_time_utc: 2026-08-09T18:50:30Z
+mandatory_gate: READ_ONLY;BEST_EFFORT_FETCH_FALSE;TOPN_5;NO_SECOND_PAGE;DO_NOT_PERSIST_RAW_NAMES_IDS_URLS_PARENT_IDS_OR_PAGE_TOKENS;ITEM_TYPE_DOCUMENT_IS_BROAD;WHEN_GOOGLE_DOCS_ONLY_SEMANTICS_MATTER_REQUIRE_SPECIAL_FILTER_QUERY_STR_MIMETYPE_APPLICATION_VND_GOOGLE_APPS_DOCUMENT;NO_AUTHORITATIVE_COMPLETENESS_SCOPE_RATE_LIMIT_QUOTA_OR_PERMISSION_ASSUMPTIONS
+strongest_falsifier: FUTURE_EXPLICIT_GOOGLE_DOCS_MIME_FILTER_RETURNS_A_NON_DOCS_RESOURCE_OR_CONNECTOR_MAPPING_IGNORES_SPECIAL_FILTER_QUERY_STR;CONSUMER_REQUIRES_AUTHORITATIVE_COMPLETENESS_OR_PERMISSION_CLASSIFICATION
+honest_flaw: PHASE3_DID_NOT_PROBE_PERMISSION_FAILURE;CONNECTOR_DID_NOT_ECHO_MIME_TYPE;FIVE_DOCUMENT_URLS_ARE_STRONG_BUT_NOT_AUTHORITATIVE_PROOF_OF_NATIVE_MIME_FILTER_APPLICATION;NO_VALID_PAGINATION_SCOPE_RATE_LIMIT_QUOTA_DEBIT_BILLING_LATENCY_OR_COMPLETENESS_EVIDENCE
+next_phase: PHASE4_DECISION_FROM_FROZEN_EVIDENCE_ONLY_NO_ADDITIONAL_CANDIDATE_CALL
+valid_time_utc: 2026-08-09T19:51:15Z
+recorded_time_utc: 2026-08-09T19:51:15Z
 ---
 
-# X13 CURRENT v214
+# X13 CURRENT v215
 
-`X13_GOOGLE_DRIVE_DOCUMENT_METADATA_SEARCH_READONLY_029` is active at wake 2 of 4 with **PHASE2_ACCEPTED_WITH_GATES_ANDON**.
+`X13_GOOGLE_DRIVE_DOCUMENT_METADATA_SEARCH_READONLY_029` is active at wake 3 of 4 with **PHASE3_ACCEPTED_WITH_GATES**.
 
-The exact bounded Phase-1 Drive metadata request was replayed once. It again returned five results; the privacy-safe ordered-ID digest matched Phase 1 exactly. No next-page token, file-content hydration, retry, fallback, connector error, or Drive mutation was observed.
+Phase 3 used exactly one bounded, read-only connector-variance probe. The connector's raw Drive `q` filter was set to the official Google Docs MIME type while retaining `item_type=document`, `topn=5`, and `best_effort_fetch=false`. It returned five metadata results; all five provider URLs were Google Docs `/document/` resources and no spreadsheet resource was observed. No next-page token, content hydration, retry, fallback, connector error, or Drive mutation was observed.
 
-Measured variance/Andon reproduced: connector `item_type=document` again included a spreadsheet resource. Treat this taxonomy as a broad connector document/file category, not as a Google Docs MIME-type guarantee. No direct receipt established completeness, valid pagination, OAuth principal/scope, rate-limit behavior, native method mapping, quota debit, billing, or latency.
+This is practical evidence that native Drive MIME filtering can gate the connector's broader `document` taxonomy without custom code. It is not authoritative proof of provider-side MIME enforcement because the connector did not echo the raw `mimeType` field. Permission-denial behavior, completeness, valid pagination, OAuth principal/scope, native request mapping, rate-limit behavior, quota debit, billing, and latency remain unproven.
 
-Measured operator savings remain `0`; realized custom-code avoidance remains `0`; the `30–100 LOC` estimate remains unvalidated. Adoption and fitness credit remain `0 / 0`.
+Measured operator savings remain `0`; realized custom-code avoidance remains `0`; the `30–100 LOC` estimate remains unvalidated. Adoption and fitness credit remain `0 / 0` pending Phase 4.
 
-Next wake: Phase 3 exactly one bounded, harmless, non-mutating failure/permission/connector-variance probe. Do not fetch file contents or mutate Drive state. WIP remains 1.
+Next wake: Phase 4 decision from the frozen Phase 1–3 evidence only. No additional Drive candidate call. WIP remains 1.
