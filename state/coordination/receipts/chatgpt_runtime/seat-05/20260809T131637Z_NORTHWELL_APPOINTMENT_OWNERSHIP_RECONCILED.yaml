@@ -1,0 +1,36 @@
+schema: hfo.gen133.s05.operator_relief_receipt.v0_1
+seat: S05
+callsign: VAR_OPERATOR_RELIEF
+task_id: 6a55c182078c8191b89f2dd15f5f640c
+result: STATUS_RECONCILED
+valid_time: 2026-08-09T13:16:37Z
+canonical_repo: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+wip: 1
+active_item: NORTHWELL_AUG12_APPOINTMENT_OWNERSHIP
+priority:
+  p0: CHATGPT_PRO_CONTINUITY_AUTHORITATIVE_DISPOSITION
+  p1:
+    - FIDELITY_AUTHORITATIVE_WIRE_DISPOSITION_MONDAY
+    - NORTHWELL_AUG12_APPOINTMENT_OWNERSHIP
+source_evidence:
+  gmail:
+    message_id: 19fe635726f369e0
+    fact_ceiling: "Reminder confirms an Aug 12 appointment but the named patient in the source does not match the operator identity; ownership is therefore not proven."
+  calendar:
+    event_id: otdvnjtnb7mcoir6or84sr3gn0
+    fact_ceiling: "Existing Aug 9 verification block explicitly requires classifying the Aug 12 appointment as operator-owned, corrected, or not-operator before any change."
+transition:
+  type: reconcile_status
+  before: "Prior S05 prose treated the appointment as the operator's medical appointment."
+  after: "Appointment exists, but operator ownership is unresolved; keep the existing verification gate and do not treat Calendar presence as proof of patient ownership."
+operator_action_packet:
+  no_send: true
+  exact_gate: "At the existing Aug 9 verification block, use MyNorthwell authoritative readback to classify VERIFIED_AS_SCHEDULED | TIME_LOCATION_CORRECTED | NOT_OPERATOR_APPOINTMENT."
+  prohibited: "Do not cancel, reschedule, or otherwise mutate the medical appointment until ownership and time/location are authoritative."
+privacy:
+  git_slack: sanitized_fact_and_source_pointer_only
+  private_body: source_system_only
+operator_minutes_removed_estimate: 6
+next_consumer: VAR_MORNING_CONTROL
+honest_flaw: "Gmail reminder establishes the named patient mismatch but does not by itself prove who owns the MyNorthwell account or whether the operator is coordinating care for that patient."
