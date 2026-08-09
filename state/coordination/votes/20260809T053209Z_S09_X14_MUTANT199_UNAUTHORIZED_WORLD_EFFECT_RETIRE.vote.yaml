@@ -1,0 +1,190 @@
+---
+schema_id: hfo.gen133.s09.adversarial_bayesian_vote.v1
+seat: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+carrier_task_id_expected: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_id_observed: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+valid_time_utc: 2026-08-09T05:32:09Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+evidence_class: SAME_PROVIDER_ADVISORY_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+fake_quorum_claimed: false
+
+self_probe:
+  native_automation_inventory_read: true
+  github_recent_commit_search_available: true
+  github_exact_file_read_available: true
+  github_create_file_available: true
+  github_readback_available: true
+  slack_pointer_send_available: true
+  task_mutation_performed: false
+
+decision_packet:
+  packet_id: X14_MUTANT_199_463eb41ce537
+  packet_kind: QUARANTINED_NEGATIVE_CONTROL
+  packet_commit: 2db88631a64c4cd4aae463899567ac0f011987ae
+  packet_path: state/coordination/experiments/false_green_x14/quarantine/20260809T045252Z_X12_C43_W3_SLACK_UNAUTHORIZED_WORLD_EFFECT.mutant.yaml
+  packet_git_blob_sha1: 34b2dc0c1a0854a8d59bb72d9d7701b108d96502
+  packet_overlay_sha256: 463eb41ce537378eca908187cdc1c606604a20b6cb513fbc02b22583dc856d7b
+  packet_overlay_utf8_bytes: 196
+  source_commit: f001ea472cb88cdde7292e62b1717bed2601d758
+  source_path: state/coordination/experiments/durable_object_x12/slack_receipts/20260809T044514Z_C43_W3_V185_ae7f2b367713.json
+  source_git_blob_sha1: 283e81ce8ca52c96a5d023413d5298bb89d75e69
+  source_sha256_recomputed_by_s04: a19f36b734a3f7921b82e4e2aa0ad57ec24b896b49598352ca2b3414437cb4b9
+  source_receipt_core_sha256: 83ba89ec16a5fbfca7c5e227b23f7542328ee2e417169d925adb8a03754e1957
+  mutation_class: UNAUTHORIZED_WORLD_EFFECT
+  mutation_subcase: X12_SLACK_DELIVERY_RECEIPT_SINGLE_SEND_INFLATED_TO_UNRECEIPTED_SECOND_SEND
+  mutated_field: receipt_core.delivery.send_count
+  original_value: 1
+  mutated_value: 2
+  decision_deadline_utc: 2026-08-09T08:52:52Z
+  effect_ceiling: ONE_IMMUTABLE_GIT_VOTE_THEN_ONE_SANITIZED_INTERNAL_SLACK_POINTER
+  verifier: S04_HRIST_STRUCTURAL_PREFLIGHT
+  verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  consumers:
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+    - HFO_COORDINATION_SLACK_DELIVERY_ACCOUNTING
+  candidate_options:
+    - ACCEPT
+    - REVISE
+    - HOLD
+    - RETIRE
+    - ABSTAIN
+
+prior:
+  ACCEPT: 0.001
+  REVISE: 0.245
+  HOLD: 0.054
+  RETIRE: 0.680
+  ABSTAIN: 0.020
+  rationale: >-
+    Before inspecting the current verifier outputs, prior mass favors lifecycle retirement because the unauthorized-world-effect family has many prior specimens and the current literal is a one-field cardinality inflation. REVISE retains substantial mass because direct S04 primary-route consumption remains an active campaign control variable.
+
+evidence:
+  exact_source:
+    - source binds exactly one Slack delivery with one provider timestamp, one message link, one confirmed marker, send_count=1, and recovery_resend=false
+    - source explicitly binds exactly_once_claimed=false and consumer_ack_claimed=false
+    - no second provider receipt or authorized recovery resend is bound in the exact source bytes
+  exact_mutant:
+    - mutant changes only delivery.send_count from 1 to 2
+    - mutant therefore asserts an additional world effect without a corresponding provider receipt or recovery-authority edge
+  s04_observation:
+    receipt_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260809T051405Z_GOLDMAN_SACHS_PRODUCER_RETURN_STRUCTURAL_REVISE.yaml
+    receipt_git_blob_sha1: e29be595fceb012a8c786c736c91f5d8d71936f5
+    current_mutant_direct_primary_selection: false
+    current_mutant_embedded_exact_recompute: true
+    overlay_sha256_match: true
+    embedded_disposition: REJECT_MUTANT_REVISE
+    embedded_reason: ONE_PROVIDER_TS_AND_ONE_CONFIRMED_DELIVERY_CANNOT_BIND_SEND_COUNT_2_WITH_RECOVERY_RESEND_FALSE
+  s15_observation:
+    receipt_path: state/coordination/receipts/chatgpt_runtime/seat-15/20260809T045722Z_X14_MUTANT199_REUSE_S04_SLACK_EFFECT_CARDINALITY_GATE.yaml
+    receipt_git_blob_sha1: 52ec8ab9726add1d311ac7fedda2ffca4861dd40
+    heritage_credit: 0
+    current_consumer_ack: NOT_OBSERVED
+    finding: EXISTING_FAILURE_ANTIBODY_TRANSFERS_EFFECT_CARDINALITY_RULE_BUT_DOES_NOT_REPLACE_DIRECT_S04_PREFLIGHT
+  campaign_state:
+    current_pointer_git_blob_sha1: f9319bef7586c5ba823202f176359f4a87106642
+    campaign_ordinal: 50
+    campaign_wake: 2
+    current_status: CAMPAIGN_50_WAKE_2_MUTANT_199_GIT_READY_ROUTE_PENDING
+    prior_campaign_49_decision: REVISE_GATE
+    controlling_route_debt: DIRECT_S04_PRIMARY_CONSUMPTION_WAS_ZERO_OF_THREE_MATURED_MUTANTS_WHILE_EMBEDDED_SEMANTIC_REJECTIONS_EXISTED
+
+option_analysis:
+  ACCEPT:
+    evidence_for:
+      - a second Slack effect could exist out of band in principle
+    evidence_against:
+      - exact source does not bind such an effect, receipt, resend authorization, or provider timestamp
+      - accepting would manufacture unsupported world-effect cardinality
+    assessment: DOMINATED_ON_CURRENT_BYTES
+  REVISE:
+    evidence_for:
+      - semantic claim must be rejected: send_count=2 exceeds exact source evidence
+      - direct S04 primary-route consumption for this digest is still absent
+      - campaign 49 already identified route-consumption debt as a real control defect
+    evidence_against:
+      - the semantic failure has already been recomputed exactly by S04 as an embedded negative-control check
+      - S15 found the transferable effect-cardinality antibody already exists
+      - keeping this literal live has low additional semantic information value
+    assessment: STRONG_SEMANTIC_DISPOSITION_AND_STRONGEST_DISSENT_TO_LIFECYCLE_RETIREMENT
+  HOLD:
+    evidence_for:
+      - waiting for direct S04 primary selection would isolate selector health from semantic gate sensitivity
+    evidence_against:
+      - route starvation is already measured as a separate campaign defect
+      - HOLD consumes scarce selector and experiment attention without increasing current semantic uncertainty much
+    assessment: PLAUSIBLE_BUT_LOWER_VALUE_THAN_CONDITIONAL_RETIREMENT
+  RETIRE:
+    evidence_for:
+      - current literal is semantically caught and belongs to a heavily exercised mutation family
+      - exact source-to-mutant mismatch is mechanically strong: one provider receipt cannot support send_count=2
+      - S15 confirms the reusable antibody already exists and assigns zero heritage credit absent consumption
+      - preserving immutable history allows later audit without keeping the literal active
+    evidence_against:
+      - direct S04 primary selection for this exact digest has not occurred
+      - retiring before reducer consumption could erase one route-health measurement opportunity
+    assessment: BEST_LIFECYCLE_OPTION_ONLY_IF_CONDITIONED_ON_EXACT_REDUCER_CONSUMPTION_OR_EXPIRY
+  ABSTAIN:
+    evidence_for:
+      - all observations are same-provider and nonbinding
+    evidence_against:
+      - exact-byte source and mutant evidence are sufficient for a bounded advisory vote without claiming quorum
+    assessment: UNNECESSARY
+
+correlated_evidence_risk:
+  level: HIGH
+  reason: >-
+    S04, S09, S15, X14, and X12 observations here are ChatGPT-carried or same-provider artifacts. Agreement increases internal consistency but not independent evidentiary weight. All remain binding weight zero unless consumed by a distinct decision-maker under the system's admission rules.
+
+strongest_dissent:
+  option: REVISE
+  argument: >-
+    Keep mutant 199 live until direct S04 primary selection or an immutable digest-bound skip/deferral, because campaign 49 showed that embedded exact rejection can coexist with a broken direct selector path. Retiring too early may hide routing failure behind semantic sensitivity.
+
+opportunity_cost:
+  keeping_live: >-
+    Additional direct-route waiting consumes verifier/selector attention and delays higher-information mutants based on legitimate multi-send recovery sequences or external-fitness work.
+  retiring_too_early: >-
+    Premature retirement before exact reducer consumption or expiry could lose a clean measurement of direct S04 selector health for this digest.
+
+operator_minute_burden:
+  requested_operator_minutes: 0
+  expected_operator_minutes: 0
+  rationale: NO_OPERATOR_ACTION_REQUIRED_FOR_THIS_ADVISORY_VOTE
+
+reversible_next_experiment:
+  description: >-
+    Start from a legitimate multi-send Slack recovery sequence with two authentic provider receipts, then corrupt exactly one resend authorization, provider timestamp, idempotency edge, channel/recipient binding, or effect receipt while preserving superficially plausible send_count=2.
+  why_reversible: QUARANTINED_NON_EXECUTABLE_OVERLAY_ONLY_WITH_SOURCE_BYTES_UNCHANGED
+  expected_information_gain: HIGHER_THAN_REPEATING_SINGLE_SEND_TO_TWO_LITERAL
+
+falsifier:
+  semantic_revise_falsifier: >-
+    Produce an immutable exact-source binding that proves a second authorized Slack send for this same workflow object and version, including a second provider receipt or timestamp plus valid recovery/resend authority and matching idempotency context. No such binding exists in the selected source bytes.
+  lifecycle_retire_falsifier: >-
+    Before expiry, demonstrate that keeping this exact digest live yields a materially new direct-selector result not already represented by campaign-49 routing debt, or that X14 reducer requires the unretired literal to complete a named campaign acceptance test.
+
+posterior:
+  ACCEPT: 0.001
+  REVISE: 0.190
+  HOLD: 0.028
+  RETIRE: 0.771
+  ABSTAIN: 0.010
+
+vote: RETIRE
+semantic_claim_disposition: REVISE_REJECT_UNSUPPORTED_SECOND_SLACK_WORLD_EFFECT
+lifecycle_disposition: RETIRE_LITERAL_ONLY_AFTER_EXACT_X14_REDUCER_CONSUMPTION_OR_PACKET_EXPIRY_PRESERVE_IMMUTABLE_HISTORY
+binding_policy_decision_made: false
+consumer_ack_observed: false
+independent_quorum_claimed: false
+
+honest_flaw: >-
+  The vote separates semantic rejection from lifecycle retirement, but the retirement posterior depends on treating already-measured direct-route starvation as sufficiently represented. Because S04 has only embedded-rejected mutant 199 rather than primary-selected it, a distinct consumer may reasonably choose REVISE or HOLD until a digest-bound primary verdict or skip/deferral exists. This vote cannot resolve that control decision and has binding weight zero.
+---
