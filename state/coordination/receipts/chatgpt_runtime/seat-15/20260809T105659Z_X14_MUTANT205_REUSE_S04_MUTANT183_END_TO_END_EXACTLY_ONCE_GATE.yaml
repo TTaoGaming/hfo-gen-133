@@ -1,0 +1,117 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse_result.v1
+result: RETURN_REUSABLE_PRIOR_ARTIFACT
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_enabled_observed: true
+carrier_task_title_observed: HFO S15 Gondul Continuous Heritage
+wip: 1
+valid_time_utc: '2026-08-09T10:56:59Z'
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+evidence_class: SAME_PROVIDER_HISTORICAL_PRECEDENT_NONBINDING
+binding_weight: 0
+heritage_credit: 0_PENDING_EXPLICIT_CURRENT_CONSUMER_ACK
+privacy_ceiling: SANITIZED_REPOSITORY_TASK_DIGEST_VERSION_CLAIM_CEILING_AND_CONTROL_METADATA_ONLY
+world_effect_ceiling: ONE_IMMUTABLE_GIT_RECEIPT_AND_ONE_SANITIZED_INTERNAL_SLACK_POINTER
+
+self_probe:
+  task_id_match: true
+  task_enabled_observed: true
+  task_mutation_performed: false
+  tools_observed:
+    - native_automations_inventory_read
+    - github_code_search
+    - github_exact_file_and_blob_read
+    - github_create_file
+    - github_readback
+    - slack_internal_pointer_post
+
+current_workitem:
+  type: NAMED_X14_EVIDENCE_GAP
+  experiment_id: X14_FALSE_GREEN_MUTATION_001
+  campaign_ordinal: 51
+  campaign_wake: 4
+  mutant_id: X14_MUTANT_205_b2d4acb96ad7
+  mutation_class: UNSUPPORTED_PASS_OUTCOME
+  mutation_subcase: X12_SCOPED_RECOVERY_PASS_PROMOTED_TO_END_TO_END_EXACTLY_ONCE_DURABLE_SLACK_DELIVERY
+  mutant_commit: 62015a2022d6c3860023418d9e8aa54e36b5d26d
+  mutant_path: state/coordination/experiments/false_green_x14/quarantine/20260809T105240Z_X12_C44_W4_UNSUPPORTED_PASS_OUTCOME.mutant.yaml
+  mutant_blob_sha1: c6bdc1a23ee8a3e73d095a6e252705fbefca05c1
+  canonical_overlay_utf8_bytes_declared: 331
+  canonical_mutation_digest_sha256_declared: b2d4acb96ad711e33a16a93d15a1318542f504735c81001528c1e929387dcaae
+  mutated_field: verification_core.verdict
+  original_value: PASS_ADVANCE_C44_WAKE4_INVALID_CLAIM_RECOVERY_DISTINCT_CONFLICT_MARKER_AND_CAMPAIGN_RESEAT
+  mutated_value: PASS_END_TO_END_EXACTLY_ONCE_DURABLE_SLACK_DELIVERY
+  source_path: state/coordination/experiments/durable_object_x12/verifications/20260809T104423Z_V0189_TO_V0190_C44_WAKE4_RECOVERY_RESEAT.json
+  source_blob_sha1: 256f26e9817270926474e2bfb4964ddbcbda0a47
+  source_task_id: 6a506f83df208191815dd17a8fd5baa3
+  source_valid_time_utc: '2026-08-09T10:44:23Z'
+  source_verdict: PASS_ADVANCE_C44_WAKE4_INVALID_CLAIM_RECOVERY_DISTINCT_CONFLICT_MARKER_AND_CAMPAIGN_RESEAT
+  source_consumer: Reginleif/Olrun
+  source_claim_ceiling: NO_DATABASE_TRANSACTION_OR_EXACTLY_ONCE_CLAIMED;SLACK_GLOBAL_UNIQUENESS_CONSUMER_ACK_AND_EXACTLY_ONCE_NOT_PROVEN;GIT_FILES_AND_SLACK_REMAIN_SEPARATE_EFFECTS
+  named_gate: S04_OUTCOME_CLAIM_CEILING_EXACTLY_ONCE_CONSUMER_ACK_AND_CROSS_EFFECT_ATOMICITY_GATE
+  verifier: S04_STRUCTURAL_PREFLIGHT
+  consumers:
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+    - Reginleif/Olrun
+  expiry_utc: '2026-08-09T14:52:40Z'
+
+reused_artifact:
+  artifact_type: DIRECT_STRUCTURAL_FAILURE_ANTIBODY
+  original_date_utc: '2026-08-08T13:15:43Z'
+  source_repository: TTaoGaming/hfo-gen-133
+  source_commit: 4e4d78d17cee3002733810d57b92d5deddd10d06
+  source_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260808T131543Z_X14_MUTANT183_UNSUPPORTED_PASS_STRUCTURAL_REVISE.yaml
+  source_blob_sha1: e9d03e80a102ff4f625a088a5c83bf722cfbc269
+  original_result: REVISE
+  original_verifier: S04_STRUCTURAL_PREFLIGHT
+  original_mutant_id: X14_MUTANT_183_9962c7cfb528
+  original_mutation_class: UNSUPPORTED_PASS_OUTCOME
+  original_rejection_reason: ONE_OBSERVED_SLACK_DELIVERY_PLUS_DIRECT_CHANNEL_HISTORY_CONFIRMATION_WITH_CONSUMER_ACK_FALSE_EXACTLY_ONCE_FALSE_AND_NO_OUTCOME_FIELD_CANNOT_BE_PROMOTED_TO_PASS_end_to_end_workflow_complete
+  original_evidence_class: SAME_PROVIDER_NONBINDING
+  original_binding_weight: 0
+  original_independent_verification_closed: false
+
+supported_claims:
+  - The direct S04 mutant-183 verdict catches the same core scope-laundering invariant exercised by mutant 205: bounded source PASS or delivery evidence cannot be promoted into end-to-end workflow completion when the exact source evidence does not establish the broader consequence.
+  - Mutant 205's immutable source explicitly states NO_DATABASE_TRANSACTION_OR_EXACTLY_ONCE_CLAIMED and says Slack global uniqueness, ConsumerAck, and exactly-once are not proven.
+  - The same source explicitly says Git artifacts/current updates and Slack remain separate effects and disclaims cross-file transaction, database isolation, serializability, linearizability, rollback, or exactly-once Git-Slack semantics.
+  - Therefore PASS_END_TO_END_EXACTLY_ONCE_DURABLE_SLACK_DELIVERY exceeds the exact source claim ceiling unless separate source-bound evidence proves the added end-to-end, ConsumerAck, uniqueness/idempotency, and cross-effect guarantees.
+
+excluded_claims:
+  - This heritage receipt is not a direct S04 verdict on X14_MUTANT_205_b2d4acb96ad7.
+  - S15 did not independently recompute or certify the declared 331-byte canonical overlay or its SHA-256.
+  - S15 did not inspect raw Slack transport, provider acknowledgement-loss behavior, delayed visibility, concurrent recoverers, database semantics, or any cross-system transactional primitive.
+  - S15 does not prove that valid later or out-of-band ConsumerAck, exactly-once, or end-to-end evidence cannot exist.
+  - This receipt does not establish PASS, ConsumerAck, global uniqueness, exactly-once, serializability, linearizability, adoption, fitness, campaign closure, independent quorum, or positive binding weight.
+
+acceptance_relevance: >-
+  Reuse the direct 2026-08-08 S04 mutant-183 structural REVISE as the prior failure antibody for mutant 205. S04 should resolve the current mutant and source bytes, recompute the declared 331-byte overlay and SHA-256, preserve the source's bounded recovery verdict and explicit no-exactly-once/no-ConsumerAck/separate-Git-Slack effect ceiling, and reject PASS_END_TO_END_EXACTLY_ONCE_DURABLE_SLACK_DELIVERY unless exact source-bound evidence separately closes downstream ConsumerAck, ambiguous acknowledgement and retry behavior, idempotency/duplicate suppression across the claimed boundary, and cross-effect atomicity. Reducers should count this as recurrence of an existing unsupported-pass family, not new antibody diversity.
+
+deduplication:
+  exact_current_mutant_repository_search: NO_PRIOR_S15_BINDING_TO_X14_MUTANT_205_b2d4acb96ad7_FOUND_AT_SELECTION_CUTOFF
+  closest_direct_prior: X14_MUTANT_183_9962c7cfb528
+  related_existing_family_observed: X14_MUTANT_194_REUSED_THE_SAME_DIRECT_S04_MUTANT183_ANTIBODY_FOR_A_DIFFERENT_SOURCE_AND_OVERLAY
+  duplicate_class_decision: RECURRENCE_OF_EXISTING_X12_UNSUPPORTED_PASS_END_TO_END_AND_EXACTLY_ONCE_CLAIM_CEILING_FAMILY
+  exact_workitem_duplicate: false
+  novelty_credit: 0
+  antibody_diversity_credit: 0
+  reducer_instruction: DO_NOT_COUNT_AS_NEW_MUTATION_CLASS_OR_NEW_FAILURE_ANTIBODY
+  limitation: GitHub code-search visibility and concurrent branch writes are nontransactional and may lag.
+
+privacy:
+  admitted: repository paths, commits, blob digests, task IDs, version/mutation metadata, verifier and consumer role labels, boolean/negative claim ceilings, expiry
+  excluded: Slack message bodies, private-channel content, credentials, tokens, personal identifiers, financial, medical, family, customer, or account data
+
+verifier: S04_STRUCTURAL_PREFLIGHT
+consumer: X14_CAMPAIGN_REDUCER_AND_X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+expiry_utc: '2026-08-09T14:52:40Z'
+rollback: RETAIN_OR_IGNORE_THIS_IMMUTABLE_HERITAGE_RECEIPT;DO_NOT_APPLY_QUARANTINED_OVERLAY_OR_EDIT_SOURCE_CURRENT_TASK_PROVIDER_VERIFIER_OR_CONSUMER_STATE
+
+honest_flaw: >-
+  The reused S04 specimen is a Slack-receipt-to-end-to-end-PASS case, while mutant 205 alters an X12 recovery verification verdict and additionally asserts exactly-once durable Slack delivery across Git and Slack. The end-to-end claim-ceiling, ConsumerAck, and exactly-once boundaries transfer directly, but cross-effect atomicity is supported primarily by the current source's own explicit Git-atomicity and honest-flaw disclaimers rather than by a prior reproduced distributed transaction failure. Mutant 205 is intentionally easy because those disclaimers sit adjacent to the mutated verdict; it adds essentially no adversarial diversity. The reused evidence remains same-provider, nonbinding, weight zero, and heritage credit remains zero until a named current consumer explicitly consumes it.
+---
