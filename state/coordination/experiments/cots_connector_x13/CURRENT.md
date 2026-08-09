@@ -1,33 +1,43 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
 experiment_id: X13_GMAIL_MESSAGE_ID_SEARCH_READONLY_026
-version: 201
-prior_version: 200
+version: 202
+prior_version: 201
 previous_experiment_id: X13_GITHUB_BRANCH_SEARCH_READONLY_025
 candidate: Gmail_search_email_ids_readonly
-campaign_wake: 1_of_4
-campaign_status: PHASE1_ACCEPTED_WITH_GATES
+campaign_wake: 2_of_4
+campaign_status: PHASE2_ACCEPTED_WITH_GATES
 phase_1_status: PHASE1_ACCEPTED_WITH_GATES
-phase_2_status: NOT_RUN
+phase_2_status: PHASE2_ACCEPTED_WITH_GATES
 phase_3_status: NOT_RUN
 phase_4_status: NOT_RUN
 phase_4_decision: NONE
 operational_decision: NONE_YET
 wip: 1
-last_event_commit: 33b4abd863523405f8536f35e5076b27d2a007f7
-last_event_path: state/coordination/experiments/cots_connector_x13/20260809T055300Z_GMAIL_MESSAGE_ID_SEARCH_PHASE1_RESULT.md
-last_event_blob_sha: 91981ba564857c266f37d20fcd4f4a139702d8fb
+last_event_commit: 5183d108e407b470db74df79444c25dd2d3e1950
+last_event_path: state/coordination/experiments/cots_connector_x13/20260809T064900Z_GMAIL_MESSAGE_ID_SEARCH_PHASE2_RESULT.md
+last_event_blob_sha: bd9a0220331411a57b43cac1a33e6eb004f68586
 last_event_readback: true
 phase1_preflight_commit: e9e89b463480b92485e66ff89ae19977e47d1282
 phase1_preflight_blob_sha: 2406d39af7fe911d791ba0d9503d99dab35ef7d7
 phase1_preflight_readback: true
-candidate_invocations_total: 1
-usable_candidate_results: 1
+phase2_preflight_commit: ce68e6a6fedad954ecb5a4dbf0132a2398ffa572
+phase2_preflight_blob_sha: 4c9964973e9bc18e6c241ce9c5b06c32369e120c
+phase2_preflight_readback: true
+candidate_invocations_total: 2
+usable_candidate_results: 2
 result_count_last_success: 5
 phase1_result_count: 5
+phase2_result_count: 5
+phase2_result_count_match_phase1: true
 next_page_token_observed: true
 phase1_next_page_token_observed: true
+phase2_next_page_token_observed: true
+phase2_next_page_token_presence_match_phase1: true
 ordered_message_id_sha256_last_success: 55886e1c075eb5b19ebbf4034601148f6b84c0826f4bb1385f0def01ce05257c
+phase1_ordered_message_id_sha256: 55886e1c075eb5b19ebbf4034601148f6b84c0826f4bb1385f0def01ce05257c
+phase2_ordered_message_id_sha256: 55886e1c075eb5b19ebbf4034601148f6b84c0826f4bb1385f0def01ce05257c
+phase2_ordered_message_id_digest_match_phase1: true
 raw_message_ids_persisted: false
 raw_page_token_persisted: false
 content_hydrations_total: 0
@@ -35,40 +45,41 @@ connector_errors_total: 0
 retries_total: 0
 fallbacks_total: 0
 candidate_mutations_total: 0
-external_call_time_ms_last_success: 281
+external_call_time_ms_last_success: 656
 phase1_external_call_time_ms: 281
+phase2_external_call_time_ms: 656
 operator_minutes_removed_measured: 0
 custom_code_avoided_estimate: 30_to_90_LOC_UNVALIDATED
 custom_code_avoided_realized_by_this_candidate: 0
 paid_cost_usd_observed: 0_NO_CHARGE_SURFACED_NOT_BILLING_PROOF
-direct_cost_or_quota_evidence: CONNECTOR_EXPOSED_NO_QUOTA_DEBIT_RATE_HEADERS_OR_BILLING_METADATA;OFFICIAL_GMAIL_MESSAGES_LIST_COST_IS_5_QUOTA_UNITS;CURRENT_STANDARD_LIMITS_ARE_1200000_UNITS_PER_MINUTE_PER_PROJECT_AND_6000_PER_MINUTE_PER_USER_PER_PROJECT_WITH_80000000_UNITS_PER_DAY_PER_PROJECT_BEFORE_PLANNED_FUTURE_CHARGES_FOR_NEWER_PROJECT_QUOTAS
-credentials: GMAIL_CONNECTOR_MANAGED_EFFECTIVE_SCOPE_PRINCIPAL_AND_CLOUD_PROJECT_UNKNOWN;SUCCESSFUL_QUERY_FILTERED_READ_PROVES_NONINTERACTIVE_ACCESS_FOR_THIS_CALL_ONLY;IF_CONNECTOR_MAPS_DIRECTLY_TO_NATIVE_USERS_MESSAGES_LIST_THEN_Q_SUCCESS_IS_INCONSISTENT_WITH_GMAIL_METADATA_ONLY_SCOPE_BUT_NATIVE_MAPPING_IS_NOT_PROVEN
-durability: GIT_PHASE1_PREFLIGHT_AND_RESULT_EVENTS_DURABLE_ON_CANONICAL_BRANCH_AND_READ_BACK
+direct_cost_or_quota_evidence: NO_NEW_DIRECT_QUOTA_OR_BILLING_EVIDENCE;CONNECTOR_EXPOSED_NO_QUOTA_DEBIT_RATE_HEADERS_OR_BILLING_METADATA;PHASE1_OFFICIAL_BASELINE_REMAINS_CONTEXT_ONLY
+credentials: GMAIL_CONNECTOR_MANAGED_EFFECTIVE_SCOPE_PRINCIPAL_AND_CLOUD_PROJECT_UNKNOWN;TWO_NONINTERACTIVE_QUERY_FILTERED_SUCCESSES_PROVE_USABLE_ACCESS_FOR_THESE_CALLS_ONLY
+durability: GIT_PHASE1_AND_PHASE2_PREFLIGHT_AND_RESULT_EVENTS_DURABLE_ON_CANONICAL_BRANCH_AND_READ_BACK
 observability: RESULT_COUNT_NEXT_PAGE_TOKEN_PRESENCE_WRAPPER_TIMING_AND_ORDERED_ID_DIGEST_AVAILABLE;NO_PROVIDER_REQUEST_ID_RATE_HEADERS_NATIVE_METHOD_EFFECTIVE_SCOPE_OR_QUOTA_DEBIT_EXPOSED
-portability: MEDIUM_QUERY_LABEL_MAX_RESULTS_AND_PAGE_TOKEN_CONCEPTS_ALIGN_WITH_NATIVE_USERS_MESSAGES_LIST_BUT_CONNECTOR_WRAPPER_MAPPING_AND_ORDERING_SEMANTICS_REMAIN_UNPROVEN
-failure_behavior: NOT_PROBED_IN_PHASE1;SUCCESS_PATH_RETURNED_BOUNDED_IDS_AND_PAGE_TOKEN_WITHOUT_RETRY_FALLBACK_OR_MUTATION
-verifier: GITHUB_PHASE1_PREFLIGHT_AND_RESULT_READBACK_PLUS_DIRECT_GMAIL_SEARCH_EMAIL_IDS_RECEIPT
+portability: MEDIUM_QUERY_LABEL_MAX_RESULTS_AND_PAGE_TOKEN_CONCEPTS_ALIGN_CONCEPTUALLY_WITH_NATIVE_GMAIL_LISTING_BUT_CONNECTOR_MAPPING_ORDERING_AND_TOKEN_SEMANTICS_REMAIN_UNPROVEN
+failure_behavior: NOT_YET_PROBED;TWO_SUCCESS_PATH_CALLS_RETURNED_BOUNDED_IDS_AND_PAGE_TOKEN_WITHOUT_RETRY_FALLBACK_OR_MUTATION
+verifier: GITHUB_PHASE2_PREFLIGHT_AND_RESULT_READBACK_PLUS_DIRECT_GMAIL_SEARCH_EMAIL_IDS_RECEIPT
 consumer: HFO_BOUNDED_MAILBOX_DISCOVERY_AND_PREFLIGHT_FILTERING
 adoption_credit: 0
 fitness_credit: 0
 mandatory_gate: READ_ONLY;ID_ONLY;BOUNDED_MAX_RESULTS;NO_CONTENT_HYDRATION;NO_RAW_MAILBOX_IDENTIFIERS_IN_X13_RECEIPTS;NO_COMPLETENESS_OR_STABLE_ORDER_INFERENCE_FROM_CAPPED_PAGE
-strongest_falsifier: EXACT_REPLAY_ON_A_STABLE_WINDOW_FAILS_NONINTERACTIVELY_OR_VIOLATES_MAX_RESULTS_OR_LOSES_PAGE_TOKEN_CONTRACT_WITHOUT_EXPLANATION
-honest_flaw: ONE_SUCCESSFUL_PAGE_ONLY;QUERY_WINDOW_IS_TIME_RELATIVE_AND_CAN_CHANGE_BETWEEN_WAKES;PAGINATION_PERMISSION_DENIAL_RATE_LIMITING_EFFECTIVE_SCOPE_NATIVE_MAPPING_AND_ACTUAL_QUOTA_DEBIT_UNVERIFIED
-next_phase: PHASE2_EXACT_REQUEST_REPLAY_COMPARE_COUNT_TOKEN_PRESENCE_AND_ORDERED_ID_DIGEST_WITH_TIME_WINDOW_DRIFT_EXPLICITLY_ALLOWED
-valid_time_utc: 2026-08-09T05:54:00Z
-recorded_time_utc: 2026-08-09T05:54:00Z
+strongest_falsifier: FAILURE_PERMISSION_OR_TOKEN_VARIANCE_PROBE_REVEALS_UNSAFE_FALLBACK_MUTATION_OR_NONDIAGNOSTIC_BEHAVIOR_THAT_PREVENTS_FAIL_CLOSED_USE
+honest_flaw: TWO_MATCHING_CAPPED_PAGES_DO_NOT_PROVE_STABLE_ORDERING_OR_COMPLETENESS;RELATIVE_WINDOW_CAN_DRIFT;VALID_PAGINATION_PERMISSION_DENIAL_RATE_LIMITING_EFFECTIVE_SCOPE_NATIVE_MAPPING_AND_ACTUAL_QUOTA_DEBIT_REMAIN_UNVERIFIED
+next_phase: PHASE3_ONE_BOUNDED_HARMLESS_FAILURE_PERMISSION_OR_CONNECTOR_VARIANCE_PROBE_NO_CONTENT_HYDRATION_NO_GMAIL_MUTATION
+valid_time_utc: 2026-08-09T06:50:00Z
+recorded_time_utc: 2026-08-09T06:50:00Z
 ---
 
-# X13 CURRENT v201
+# X13 CURRENT v202
 
-`X13_GMAIL_MESSAGE_ID_SEARCH_READONLY_026` is active at wake 1 of 4 with **PHASE1_ACCEPTED_WITH_GATES**.
+`X13_GMAIL_MESSAGE_ID_SEARCH_READONLY_026` is active at wake 2 of 4 with **PHASE2_ACCEPTED_WITH_GATES**.
 
-One preflighted, bounded, ID-only Gmail `search_email_ids` call returned 5 IDs at the requested cap and a next-page token in 281 ms, with no retries, fallbacks, content hydration, or Gmail mutation. Raw message IDs and the page token were not persisted; only result count, token presence, wrapper timing, and an ordered-ID digest were recorded.
+The exact Phase-1 bounded, ID-only Gmail request was replayed once. It again returned 5 results at the requested cap and a next-page token, and the privacy-safe ordered-result digest exactly matched Phase 1. Wrapper time was 656 ms versus 281 ms in Phase 1. Across two candidate calls there were no observed connector errors, retries, fallbacks, content hydrations, or Gmail mutations.
 
-The official native Gmail `users.messages.list` contract aligns conceptually with query, labels, max-results, and page-token filtering, but the connector did not expose native method mapping, effective OAuth scope/principal, provider request ID, rate-limit headers, or actual quota debit. No direct-equivalence claim is made.
+This is bounded repeatability evidence only. The query uses a live relative 30-day window, and two matching capped pages do not establish completeness or guaranteed ordering. Valid pagination, permission-denial behavior, rate limiting, native method mapping, effective access scope, and actual quota debit remain unverified.
 
-Mandatory gates: read-only; ID-only; bounded `max_results`; no content hydration; no raw mailbox identifiers in X13 receipts; no completeness or stable-order inference from a capped page.
+Mandatory gates remain: read-only; ID-only; bounded `max_results`; no content hydration; no raw mailbox identifiers in X13 receipts; no completeness or stable-order inference from a capped page.
 
 Measured operator savings remain `0`; realized custom-code avoidance remains `0`; the `30–90 LOC` estimate is unvalidated. Adoption/fitness credit remains `0 / 0`.
 
-Next wake: Phase 2 exact replay once; compare only result count, next-page-token presence, and ordered-ID digest, explicitly allowing drift because the query uses a relative 30-day window.
+Next wake: Phase 3 — one bounded harmless failure/permission/connector-variance probe, with no content hydration or Gmail mutation.
