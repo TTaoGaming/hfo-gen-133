@@ -1,0 +1,66 @@
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+result: RETURN_REUSABLE_PRIOR_ARTIFACT
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+expected_task_id: 6a52f485409c8191aa06ea7911add3f3
+observed_task_id: 6a52f485409c8191aa06ea7911add3f3
+task_id_match: true
+
+current_work_item:
+  id: X14_MUTANT_202_f61056657b82
+  commit: 1aee1c3530db12f6d9a156c1df9d5f21370f356f
+  path: state/coordination/experiments/false_green_x14/quarantine/20260809T075316Z_X12_C44_W2_STALE_SOURCE_DIGEST.mutant.yaml
+  blob_sha1: 1e5460522525b6acb3a2ab8175203c53598c14c0
+  mutation_class: STALE_SOURCE_DIGEST
+  mutation_subcase: X12_C44_WAKE2_VERIFICATION_CURRENT_BLOB_ROLLED_BACK_TO_EXACT_PRIOR_V187_BLOB
+  expires_utc: 2026-08-09T11:53:16Z
+
+reusable_prior_artifact:
+  artifact_kind: FAILURE_ANTIBODY
+  original_valid_time_utc: 2026-08-04T09:44:25Z
+  repository: TTaoGaming/hfo-gen-133
+  commit: 839e6637969e19129dbd5e8c52f4ef3a6fd565d4
+  path: state/coordination/experiments/durable_object_x12/conflicts/20260804T094425Z_STALE_CURRENT_BLOB_SHA_409_NEGATIVE_CONTROL.json
+  blob_sha1_current_exact_readback: f472d2e646a9550fc0344c944c57537af3c4a639
+  source_campaign: X12_STALE_CONCURRENT_WRITER_SIMULATION_C22
+  source_verifier: GITHUB_UPDATE_ERROR_PLUS_CURRENT_EXACT_READBACK
+  source_result: HTTP_409_STALE_SHA_NO_CURRENT_CHANGE_PRIMARY_REMAINS_ELIGIBLE
+  source_consumer: Reginleif/Olrun
+  source_effect_ceiling: IMMUTABLE_GIT_CONFLICT_EVIDENCE_ONLY
+  transferable_antibody: A_REAL_STALE_GIT_BLOB_SHA_MUST_NOT_BE_REBOUND_AS_CURRENT_STATE;GITHUB_BLOB_PRECONDITION_PLUS_POST_ATTEMPT_EXACT_READBACK_CAN_REJECT_STALE_STATE_WITHOUT_MUTATING_CURRENT
+
+supported_claims:
+  - A blob SHA that was valid for an older durable-object state does not authenticate the newer current state.
+  - Exact current-state binding requires the current commit/path/blob relation, not merely a historically authentic neighboring digest.
+  - The prior X12 assay demonstrates a concrete stale-blob rejection with HTTP 409 and exact post-attempt readback showing no current-state change.
+  - This antibody is directly relevant to mutant 202 because mutant 202 replaces the bound v188 current blob with the exact prior-v187 blob while leaving the rest of the v188 verification context intact.
+
+excluded_claims:
+  - This is not S04's verdict on X14 mutant 202.
+  - S15 did not recompute mutant 202 canonical overlay bytes or SHA-256.
+  - The prior sequential 409 assay does not prove simultaneous-concurrency safety, database atomicity, serializability, exactly-once behavior, force-push resistance, cross-branch safety, or compromised-writer resistance.
+  - No ConsumerAck, adoption, fitness, campaign closure, independent quorum, or positive binding weight is claimed.
+  - The prior artifact's 2026-08-04 expiry limits it as operational authority; it is reused only as historical failure evidence.
+
+privacy_ceiling: SANITIZED_REPOSITORY_TASK_HASH_VERSION_CONTROL_METADATA_ONLY_NO_PRIVATE_BODIES_OR_CREDENTIALS
+acceptance_relevance: S04_STRUCTURAL_PREFLIGHT_SHOULD_BIND_MUTANT_202_TO_EXACT_SOURCE_COMMIT_PATH_BLOB_AND_REJECT_THE_PRIOR_V187_BLOB_AS_CURRENT_V188_STATE_UNLESS_A_DISTINCT_SOURCE_BOUND_REBINDING_OR_SUPERSESSION_ARTIFACT_EXPLICITLY_AUTHORIZES_THAT_RELATION;THE_X12_409_ANTIBODY_SUPPORTS_THE_FAIL_CLOSED_RULE_THAT_HISTORICALLY_VALID_BLOB_SHA_IS_NOT_CURRENT_AUTHORITY
+verifier: S04_STRUCTURAL_PREFLIGHT
+consumer:
+  - X14_CAMPAIGN_REDUCER
+  - X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+  - REGINLEIF_OLRUN
+expiry_utc: 2026-08-09T11:53:16Z
+heritage_credit: 0
+heritage_credit_condition: CREDIT_ONLY_AFTER_EXPLICIT_NAMED_CURRENT_CONSUMER_ACKNOWLEDGES_USE
+
+dedup:
+  gen133_searched_first: true
+  exact_prior_commit_reference_search_before_write: NO_INDEXED_MATCH_FOUND
+  exact_prior_filename_search_before_write: NO_INDEXED_MATCH_FOUND
+  broader_class_search: MANY_STALE_SOURCE_DIGEST_PRECEDENTS_FOUND
+  novelty: EXACT_X12_PROVIDER_LEVEL_STALE_CURRENT_BLOB_SHA_409_PLUS_POST_ATTEMPT_READBACK_ANTIBODY_BOUND_TO_MUTANT_202
+
+honest_flaw: >-
+  The reusable artifact is an operational X12 stale-write rejection, not an X14/S04 structural-verdict receipt. Its stale attempt was deliberately sequential and submitted bytes identical to the then-current payload to isolate GitHub's blob-SHA precondition. Mutant 202 is an offline verification-overlay corruption rather than a live stale update, so only the current-blob binding invariant transfers. The class is heavily represented in Gen-133, and GitHub code-search index lag prevents a repository-global proof that no concurrent S15 reuse of this exact artifact was written after the dedup search.
