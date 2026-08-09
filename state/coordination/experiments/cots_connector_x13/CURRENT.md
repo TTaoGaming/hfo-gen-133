@@ -1,22 +1,22 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
 experiment_id: X13_GITHUB_BRANCH_SEARCH_READONLY_025
-version: 198
-prior_version: 197
+version: 199
+prior_version: 198
 previous_experiment_id: X13_GDRIVE_METADATA_SEARCH_READONLY_024
 candidate: GitHub_search_branches_readonly
-campaign_wake: 2_of_4
+campaign_wake: 3_of_4
 campaign_status: ACTIVE
 phase_1_status: PHASE1_ACCEPTED_WITH_GATES
 phase_2_status: PHASE2_ACCEPTED_WITH_GATES
-phase_3_status: NOT_RUN
+phase_3_status: PHASE3_ACCEPTED_WITH_GATES_ANDON
 phase_4_status: NOT_RUN
 phase_4_decision: UNKNOWN
-operational_decision: EVALUATING_BOUNDED_BRANCH_DISCOVERY
+operational_decision: EVALUATING_BOUNDED_BRANCH_DISCOVERY_WITH_FAILURE_PATH_ANDON
 wip: 1
-last_event_commit: b3eaf8fc88cc2f84ac592f8581b06e99664a6c50
-last_event_path: state/coordination/experiments/cots_connector_x13/20260809T024841Z_GITHUB_BRANCH_SEARCH_PHASE2_RESULT.md
-last_event_blob_sha: 2cb2a15d5d6be964d636eebf9da8818efaeca791
+last_event_commit: 19b496cad2fb612a8faa9a6afecdab47be2242bd
+last_event_path: state/coordination/experiments/cots_connector_x13/20260809T035021Z_GITHUB_BRANCH_SEARCH_PHASE3_RESULT.md
+last_event_blob_sha: 622100e5af116c706a454668241422227eee988f
 last_event_readback: true
 phase1_preflight_commit: cccb70a282df95a54600a27d046e28f1c8f35737
 phase1_preflight_blob_sha: a3c5e334c14b04337214d39780ecf5d9ac76dcb5
@@ -24,7 +24,10 @@ phase1_preflight_readback: true
 phase2_preflight_commit: 2ca9e2160d99979bdb0e8da57768c47ea46d715b
 phase2_preflight_blob_sha: 4aaf2ee576f870cf70b8785e8fde0b0bf27233fb
 phase2_preflight_readback: true
-candidate_invocations_total: 2
+phase3_preflight_commit: ed3ca8ee7ff15bd0491dc6d2e4eb81013ac94786
+phase3_preflight_blob_sha: 09b8ed0c6cf933cf90dcb137c88bb716f42f5e1f
+phase3_preflight_readback: true
+candidate_invocations_total: 3
 usable_candidate_results: 2
 result_count_last_success: 1
 phase1_result_count: 1
@@ -33,44 +36,45 @@ phase1_exact_query_match_observed: true
 opaque_cursor_observed: true
 phase1_opaque_cursor_observed: true
 replay_comparison: MATCH_ON_RESULT_COUNT_EXACT_MATCH_AND_CURSOR_PRESENCE
-connector_errors_total: 0
+connector_errors_total: 1
 retries_total: 0
 fallbacks_total: 0
 candidate_mutations_total: 0
-external_call_time_ms_last: 322
+external_call_time_ms_last_success: 322
 phase1_external_call_time_ms: 299
+phase3_external_call_time_ms: NOT_SURFACED_ON_TOOL_ERROR
 operator_minutes_removed_measured: 0
 custom_code_avoided_estimate: 20_to_60_LOC_UNVALIDATED
 custom_code_avoided_realized_by_this_candidate: 0
 paid_cost_usd_observed: 0_NO_CHARGE_SURFACED_NOT_BILLING_PROOF
-direct_cost_or_quota_evidence: NO_RATE_LIMIT_HEADERS_QUOTA_DEBIT_OR_BILLING_METADATA_EXPOSED;OFFICIAL_GITHUB_REST_LIMITS_DEPEND_ON_AUTH_PRINCIPAL_AND_TOKEN_TYPE
-credentials: GITHUB_CONNECTOR_MANAGED_EFFECTIVE_TOKEN_TYPE_PRINCIPAL_AND_PERMISSIONS_UNKNOWN;TWO_SUCCESSES_PROVE_ACCESS_TO_NAMED_REPOSITORY_BRANCH_METADATA_FOR_THESE_CALLS_ONLY
-durability: GIT_PHASE1_AND_PHASE2_PREFLIGHT_RESULT_EVENTS_DURABLE_AND_READ_BACK
-observability: TWO_BOUNDED_RESULTS_MATCH_ON_COUNT_EXACT_MATCH_AND_CURSOR_PRESENCE;WRAPPER_LATENCIES_299MS_AND_322MS;NO_NATIVE_ENDPOINT_HTTP_STATUS_REQUEST_ID_RATE_HEADERS_TOKEN_SCOPE_OR_QUOTA_DEBIT_EXPOSED
-portability: MEDIUM_NATIVE_LIST_BRANCHES_STANDARD_BUT_CONNECTOR_QUERY_FILTER_AND_OPAQUE_CURSOR_WRAPPER_SPECIFIC
-failure_behavior: NOT_YET_PROBED
-verifier: GITHUB_PHASE2_PREFLIGHT_AND_RESULT_READBACK_PLUS_DIRECT_SEARCH_BRANCHES_REPLAY_PLUS_PHASE1_RECEIPT
+direct_cost_or_quota_evidence: NO_RATE_LIMIT_HEADERS_QUOTA_DEBIT_OR_BILLING_METADATA_EXPOSED;OFFICIAL_GITHUB_LIMITS_DEPEND_ON_AUTH_PRINCIPAL_TOKEN_TYPE_AND_API_SURFACE
+credentials: GITHUB_CONNECTOR_MANAGED_EFFECTIVE_TOKEN_TYPE_PRINCIPAL_AND_PERMISSIONS_UNKNOWN;TWO_SUCCESSFUL_READS_PROVE_ACCESS_TO_NAMED_REPOSITORY_BRANCH_METADATA_FOR_THOSE_CALLS_ONLY
+durability: GIT_PHASE1_PHASE2_PHASE3_PREFLIGHT_AND_RESULT_EVENTS_DURABLE_AND_READ_BACK
+observability: TWO_BOUNDED_SUCCESS_RESULTS_MATCH_ON_COUNT_EXACT_MATCH_AND_CURSOR_PRESENCE;MALFORMED_CURSOR_PATH_COLLAPSES_TO_UNSTRUCTURED_UNKNOWN_TYPEERROR_WITHOUT_PROVIDER_STATUS_REQUEST_ID_RATE_HEADERS_NATIVE_ENDPOINT_OR_QUOTA_DEBIT
+portability: MEDIUM_NATIVE_REST_LIST_BRANCHES_USES_PER_PAGE_AND_INTEGER_PAGE_WHILE_CONNECTOR_SEARCH_USES_QUERY_PLUS_OPAQUE_CURSOR;OPAQUE_CURSOR_IS_WRAPPER_SPECIFIC_UNTIL_NATIVE_MAPPING_PROVEN
+failure_behavior: MALFORMED_CURSOR_TRIGGERED_UNSTRUCTURED_CONNECTOR_INTERNAL_TYPEERROR_NONE_SUBSCRIPTABLE;NO_BRANCH_MUTATION_OBSERVED;NO_RETRY;NO_FALLBACK
+verifier: GITHUB_PHASE3_PREFLIGHT_AND_RESULT_READBACK_PLUS_DIRECT_SEARCH_BRANCHES_MALFORMED_CURSOR_TOOL_ERROR_PLUS_PHASE1_PHASE2_SUCCESS_RECEIPTS
 consumer: HFO_CANONICAL_BRANCH_DISCOVERY_AND_PREFLIGHT_VALIDATION
 adoption_credit: 0
 fitness_credit: 0
-mandatory_gate: READ_ONLY;BOUNDED_PAGE_SIZE;NO_BRANCH_MUTATION;NO_COMPLETENESS_INFERENCE_FROM_ONE_MATCH_OR_CURSOR_PRESENCE;DO_NOT_ASSUME_WRAPPER_QUERY_CURSOR_EQUAL_NATIVE_LIST_BRANCHES_SEMANTICS
-strongest_falsifier: PROVIDER_DIRECT_BRANCH_LIST_UNDER_THE_SAME_EFFECTIVE_PRINCIPAL_FAILS_TO_INCLUDE_THE_MATCHED_BRANCH_OR_WRAPPER_SEARCH_OMITS_A_KNOWN_MATCH_UNDER_STABLE_STATE
-honest_flaw: TWO_SUCCESSFUL_REPLAYS_ONLY;NO_FAILURE_PERMISSION_RATE_LIMIT_OR_VALID_PAGINATION_PROBE;OPAQUE_CURSOR_SEMANTICS_AND_NATIVE_ENDPOINT_MAPPING_UNKNOWN;EFFECTIVE_AUTH_PRINCIPAL_AND_RATE_DEBIT_UNKNOWN
-next_phase: PHASE3_ONE_BOUNDED_HARMLESS_FAILURE_PERMISSION_OR_CONNECTOR_VARIANCE_PROBE_NO_BRANCH_MUTATION
-valid_time_utc: 2026-08-09T02:48:55Z
-recorded_time_utc: 2026-08-09T02:48:55Z
+mandatory_gate: READ_ONLY;BOUNDED_PAGE_SIZE;NO_BRANCH_MUTATION;NO_COMPLETENESS_INFERENCE;DO_NOT_USE_SYNTHETIC_OR_STALE_CURSOR_IN_PRODUCTION;TREAT_CURSOR_ERROR_AS_HARD_FAILURE_WITHOUT_AUTOMATIC_RETRY;DO_NOT_ASSUME_WRAPPER_QUERY_CURSOR_EQUAL_NATIVE_REST_OR_GRAPHQL_SEMANTICS
+strongest_falsifier: A_VALID_CONNECTOR_ISSUED_CURSOR_FAILS_SIMILARLY_UNDER_STABLE_STATE_OR_WRAPPER_SEARCH_OMITS_A_KNOWN_BRANCH_MATCH;EITHER_WOULD_UNDERMINE_ADOPTION
+honest_flaw: FAILURE_PATH_IS_NOT_STRUCTURED_OR_DIAGNOSTIC;CONNECTOR_HIDES_PROVIDER_STATUS_AND_THREW_INTERNAL_NONE_TYPEERROR_ON_MALFORMED_CURSOR;VALID_CURSOR_PAGINATION_PERMISSION_DENIAL_RATE_LIMITING_EFFECTIVE_AUTH_AND_QUOTA_DEBIT_REMAIN_UNVERIFIED
+next_phase: PHASE4_DECISION_FROM_FROZEN_EVIDENCE_ONLY_NO_ADDITIONAL_GITHUB_CANDIDATE_CALL
+valid_time_utc: 2026-08-09T03:50:53Z
+recorded_time_utc: 2026-08-09T03:50:53Z
 ---
 
-# X13 CURRENT v198
+# X13 CURRENT v199
 
-`X13_GITHUB_BRANCH_SEARCH_READONLY_025` is active at wake 2 of 4 with **PHASE2_ACCEPTED_WITH_GATES**.
+`X13_GITHUB_BRANCH_SEARCH_READONLY_025` is active at wake 3 of 4 with **PHASE3_ACCEPTED_WITH_GATES_ANDON**.
 
-The exact durable Phase-1 request was replayed once after Git-first preflight readback and digest verification. Phase 1 and Phase 2 match on the authorized comparison fields: result count `1`, exact-match presence `true`, and opaque-cursor presence `true`. Observed wrapper external-call times were 299 ms and 322 ms. No connector error, retry, fallback, or repository mutation was observed across the two candidate calls.
+Two bounded success-path calls remain repeatable on result count `1`, exact canonical-branch match `true`, and opaque-cursor presence `true`. Phase 3 then supplied one synthetic malformed cursor after Git-first preflight readback and SHA-256 verification. The connector did not return a structured validation or provider error; it surfaced `UNKNOWN` with `TypeError: 'NoneType' object is not subscriptable`.
 
-This is bounded repeatability evidence only. It does not prove repository-wide completeness, stable cursor value or semantics, native REST endpoint mapping, effective token permissions, rate-limit behavior, or actual quota debit.
+No branch mutation was observed, and there was no retry or fallback. The failure path nevertheless has poor observability: no provider HTTP status, provider error body, request ID, rate-limit headers, native endpoint, or quota debit was exposed.
 
-Mandatory gates remain: read only, bounded page size, no branch mutation, no completeness inference from one match or cursor presence, and no assumption that connector query/cursor semantics equal the native REST contract.
+Mandatory gates now add: do not use synthetic or stale cursors in production, treat any cursor error as a hard failure without automatic retry, and do not assume the wrapper's query/cursor behavior equals native REST or GraphQL semantics. GitHub's documented REST `List branches` surface uses `per_page` plus integer `page`; GitHub GraphQL uses opaque connection cursors, but this connector's native mapping remains unproven.
 
 Measured operator savings remain `0`; realized custom-code avoidance remains `0`; estimated avoidance is `20–60 LOC` unvalidated; adoption/fitness credit remains `0 / 0`.
 
-Next wake: Phase 3 one harmless bounded failure/permission/connector-variance probe without branch mutation.
+Next wake: Phase 4 decision from the frozen evidence set only. No additional GitHub candidate call.
