@@ -1,0 +1,119 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse_result.v1
+result: RETURN
+artifact_type: FAILURE_ANTIBODY_DEDUP_POINTER
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+valid_time_utc: 2026-08-09T00:57:00Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+privacy_ceiling: SANITIZED_REPOSITORY_TASK_HASH_VERSION_VERIFIER_LABEL_AND_CONTROL_METADATA_ONLY
+effect_ceiling: ONE_IMMUTABLE_GIT_HERITAGE_POINTER_AND_ONE_SANITIZED_INTERNAL_SLACK_POINTER
+heritage_credit: 0_PENDING_EXPLICIT_CURRENT_WORKITEM_CONSUMPTION
+consumer_ack: ABSENT
+binding_weight: 0
+same_provider_status: SAME_PROVIDER_NONBINDING
+expiry_utc: 2026-08-09T04:51:39Z
+---
+
+self_probe:
+  identity: S15_HERITAGE_REUSE_AND_DEDUP
+  tools_observed:
+    - native_automations_inventory_read
+    - github_recent_commit_search
+    - github_exact_commit_and_file_read
+    - github_repository_dedup_search
+    - github_create_file
+    - github_readback
+    - slack_direct_route
+  prohibited_effects_performed: none
+  task_mutation_performed: false
+  source_or_current_pointer_edit_performed: false
+  self_verification_claimed: false
+
+current_workitem:
+  workitem_id: X14_MUTANT_195_010559bf67ed
+  experiment_id: X14_FALSE_GREEN_MUTATION_001
+  campaign_ordinal: 49
+  campaign_wake: 2
+  mutation_class: EVIDENCE_INFLATION
+  mutation_subcase: X12_VERIFICATION_FALSELY_PROMOTED_TO_INDEPENDENT_QUORUM_WEIGHT_1
+  mutant_commit: 14bffd9f43e7a3100d171756c1c0b50e3f02f81e
+  mutant_path: state/coordination/experiments/false_green_x14/quarantine/20260809T005139Z_X12_EVIDENCE_INFLATION.mutant.yaml
+  mutant_blob_sha1: 918daffe56c28e32ceff3e45d41295e5a7c24fe2
+  canonical_mutation_digest_sha256: 010559bf67ed9aa28221f9fb0599a00845c43bac468abb0d5889ffa8bb2b0039
+  canonical_byte_count: 75
+  mutated_field: verification_core.evidence_class
+  original_value: ABSENT
+  mutated_value: INDEPENDENT_QUORUM_VERIFIED_WEIGHT_1
+  source_commit: bc3da0f716ad1ee96c7b6a53d5e9b8e74bd89293
+  source_path: state/coordination/experiments/durable_object_x12/verifications/20260809T004409Z_V0180_TO_V0181_C42_WAKE3_BYTE_DISTINCT_SEMANTIC_EQUIVALENT_LOSER_REJECT.json
+  source_blob_sha1: e91dfb18e3e7730590fc5c88f7a8521253eee21d
+  source_result: PASS_ADVANCE_C42_WAKE3_BYTE_DISTINCT_SEMANTIC_EQUIVALENT_STALE_WRITER_REJECT
+  source_verifier_field: S04_WEIGHT_0_THEN_DISTINCT_SIGRUN_P4
+  source_evidence_class: ABSENT
+  source_binding_weight: ABSENT
+  source_independent_quorum_claim: ABSENT
+  source_consumer: NOT_BOUND_IN_SELECTED_SOURCE
+  source_claim_ceiling: PASS_IS_BOUND_TO_X12_WAKE3_STALE_WRITER_AND_BYTE_DISTINCT_SEMANTIC_EQUIVALENCE_CHECKS_ONLY
+  named_gate: S04_EVIDENCE_INFLATION_EXACT_SOURCE_COMMIT_PATH_BLOB_VERIFIER_EVIDENCE_CLASS_BINDING_WEIGHT_DISTINCT_PROVIDER_RECEIPT_QUORUM_AND_CLAIM_SCOPE_GATE
+
+reused_prior_artifact:
+  original_date_utc: 2026-08-06T18:56:53Z
+  repository: TTaoGaming/hfo-gen-133
+  commit: 335bbbc9611749f7405d051941fe67fb2e83543d
+  path: state/coordination/receipts/chatgpt_runtime/seat-15/20260806T185653Z_X14_MUTANT140_REUSE_MUTANT118_EVIDENCE_CLASS_INDEPENDENCE_DEDUP_GATE.yaml
+  blob_sha1: d3e3d43436ff13e00fc478624ec8791a2bd3c955
+  prior_workitem: X14_MUTANT_140_efc6d3ec55ce
+  prior_mutation_class: EVIDENCE_INFLATION
+  prior_mutation_subcase: X12_STALE_WRITER_CONFLICT_RECEIPT_FALSELY_PROMOTED_TO_INDEPENDENT_SERIALIZABLE_EXACTLY_ONCE_PROOF
+  reusable_invariant: >-
+    Exact source bytes bind the evidence class and evidence weight. A successful bounded verification, stale-writer rejection, named verifier label, producer receipt, immediate readback, or agreement among correlated ChatGPT seats does not itself establish an independent provider or failure domain, independent quorum, serializability, exactly-once behavior, ConsumerAck, adoption, or positive binding weight. Every stronger evidence class requires a distinct immutable source-bound receipt from the actor or verifier that actually supplies that class.
+
+supported_claims:
+  - The current exact source proves the listed X12 wake-3 checks and a bounded PASS result for stale-writer plus byte-distinct semantic-equivalence checks.
+  - The current exact source contains a verifier label string but contains no evidence_class, binding_weight, independent-provider receipt, or independent-quorum field.
+  - The prior S15 artifact already classifies promotion from bounded X12 verification/receipt evidence into independent proof as the same exact-source claim-ceiling and evidence-class inflation failure family.
+  - Mutant 195 therefore has a reusable prior failure antibody and earns no new evidence-class, provider-independence, quorum, or binding-weight credit from this pointer.
+
+excluded_claims:
+  - This artifact is not a direct S04 verdict on X14_MUTANT_195_010559bf67ed.
+  - S15 did not independently recompute the declared 75-byte overlay or its SHA-256.
+  - The literal verifier value S04_WEIGHT_0_THEN_DISTINCT_SIGRUN_P4 is not proof that a distinct provider or positive-weight verifier receipt exists.
+  - No independent quorum, cross-provider verification, serializability, exactly-once behavior, ConsumerAck, adoption, fitness, campaign closure, or production outcome is established.
+  - Absence of a field in the selected source does not prove no valid out-of-band evidence exists elsewhere; such evidence must be source-bound before it can support this mutant's promoted claim.
+
+acceptance_relevance:
+  verifier: S04_STRUCTURAL_PREFLIGHT
+  structural_verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  advisory_falsifier: S09_STRATEGIC_REASONING_AND_VOTING_CELL_SAME_PROVIDER_WEIGHT_0
+  current_consumer:
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+  required_use: >-
+    Resolve the exact mutant and source blobs; recompute the declared 75 canonical bytes and SHA-256; preserve the source PASS claim ceiling; distinguish the literal verifier label from a distinct provider receipt; require digest-bound evidence for evidence_class, binding_weight, provider independence, quorum membership and threshold before accepting any INDEPENDENT_QUORUM_VERIFIED_WEIGHT_1 claim.
+  credit_condition: EXACT_CURRENT_WORKITEM_CONSUMER_ACK_BOUND_TO_THIS_ARTIFACT_AND_DOWNSTREAM_DECISION
+  current_credit: 0
+
+heritage_dedup:
+  exact_current_mutant_id_search_before_write: NO_MATCH_FOUND_INDEX_MAY_LAG
+  closest_prior_binding: X14_MUTANT_140_efc6d3ec55ce
+  dedup_disposition: RECURRENCE_BINDING_ONLY_NO_NEW_FAILURE_CLASS_OR_ANTIBODY_DIVERSITY_CREDIT
+  search_scope: GEN133_FIRST_ONLY;NO_OLDER_REPOSITORY_DRIVE_FILE_LIBRARY_OR_EXTERNAL_HISTORY_REQUIRED
+
+expiry:
+  expires_utc: 2026-08-09T04:51:39Z
+  expiry_rule: EARLIEST_OF_CURRENT_MUTANT_EXPIRY_MUTANT_BYTES_CHANGED_SOURCE_BLOB_CHANGED_GOVERNING_CAMPAIGN_SUPERSESSION_OR_EXACT_CONSUMER_SUPERSESSION
+
+rollback:
+  action: IGNORE_OR_SUPERSEDE_THIS_IMMUTABLE_POINTER
+  source_or_mutant_edit_required: false
+  external_compensation_required: false
+
+honest_flaw: >-
+  The current specimen is easier than the reused mutant 140 because its own source verifier label explicitly contains S04_WEIGHT_0 while evidence_class and binding_weight are absent. That makes the unsupported promotion conspicuous and adds essentially no adversarial diversity. The reusable invariant transfers, but this pointer cannot determine whether a separate valid external verifier receipt exists elsewhere, and S15 did not recompute the current mutation overlay.
