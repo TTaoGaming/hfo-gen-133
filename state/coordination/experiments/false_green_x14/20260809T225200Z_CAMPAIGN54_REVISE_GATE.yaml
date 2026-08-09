@@ -1,0 +1,40 @@
+---
+schema_id: hfo.gen133.x14.false_green_campaign_decision.v1
+experiment_id: X14_FALSE_GREEN_MUTATION_001
+campaign_ordinal: 54
+campaign_length: 4
+decision: REVISE_GATE
+valid_time_utc: '2026-08-09T22:52:00Z'
+carrier_task_id: 6a513e4d9c4c81919db728f85db2dd79
+carrier_task_id_match_observed: true
+matured_mutants_evaluated:
+  - mutant_id: X14_MUTANT_214_98cdcad7bd2f
+    mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+    s09_semantic_rejection_observed: true
+    direct_s04_primary_selection_observed: false
+  - mutant_id: X14_MUTANT_215_edc8a56718d4
+    mutation_class: FABRICATED_CONSUMER_ACK
+    s09_semantic_rejection_observed: true
+    direct_s04_primary_selection_observed: false
+  - mutant_id: X14_MUTANT_216_627415db51d7
+    mutation_class: UNSUPPORTED_PASS_OUTCOME
+    s09_semantic_rejection_observed: true
+    direct_s04_primary_selection_observed: false
+    s09_vote_path: state/coordination/votes/20260809T223156Z_S09_X14_MUTANT216_UNSUPPORTED_PASS_OUTCOME_RETIRE.vote.yaml
+pending_current_mutant:
+  mutant_id: X14_MUTANT_217_db5dae6427f3
+  mutation_class: EVIDENCE_INFLATION
+  counted_as_caught: false
+summary:
+  matured_mutants: 3
+  same_provider_s09_semantic_rejections: 3
+  direct_digest_bound_s04_primary_verdicts: 0
+  pending_current_mutants: 1
+controlling_defect: DIRECT_S04_ROUTE_CONSUMPTION_REMAINS_UNOBSERVED_FOR_ALL_THREE_MATURED_MUTANTS;SAME_PROVIDER_S09_REJECTIONS_AND_EMBEDDED_S04_ASSAYS_DO_NOT_CLOSE_PRIMARY_ROUTE_HEALTH
+required_revision: FOR_EACH_ADDRESSED_MUTANT_RECORD_EITHER_A_DIRECT_DIGEST_BOUND_S04_PRIMARY_VERDICT_OR_A_DURABLE_DIGEST_BOUND_SKIP_OR_DEFERRAL_REASON
+claim_ceiling: SAME_PROVIDER_ADVISORY_EVIDENCE_ONLY_BINDING_WEIGHT_ZERO_NO_INDEPENDENT_QUORUM
+next_campaign_ordinal: 55
+next_mutation_class: AUTHORITY_ESCALATION
+honest_flaw: >-
+  The semantic rejection evidence is strong for all three matured mutants, but direct-route non-observation is negative evidence gathered under concurrent Git writes and connector indexing lag. This decision therefore revises route accounting rather than claiming the semantic gates themselves failed, and it does not treat same-provider S04 or S09 activity as independent verification.
+---
