@@ -1,0 +1,59 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_GOOGLE_CALENDAR_EVENT_SEARCH_READONLY_028
+event_type: PHASE3_RESULT
+expected_current_version: 210
+candidate: Google_Calendar.search_events_readonly
+campaign_wake: 3_of_4
+wip: 1
+preflight_commit: 0659fa461aec874e1c788a7992f7d8cb1cfa8c5d
+preflight_blob_sha: a4e17f42244b58c2c196d03fc8384cc4df636795
+preflight_readback: true
+request_sha256: 1539815963e0d533683a002d651b196d9d3ee4e4ac50c194d8a8d5e21f7302b6
+probe_target: CLEARLY_SYNTHETIC_NONEXISTENT_CALENDAR_ID
+candidate_invocations_total: 3
+usable_candidate_results: 2
+expected_failure_probes_total: 1
+phase3_http_status: 404
+phase3_google_reason: notFound
+phase3_google_message: Not_Found
+phase3_connector_surface: ToolError_NOT_FOUND_WITH_EMBEDDED_GOOGLE_HTTP_ERROR
+phase3_retry_observed: false
+phase3_fallback_observed: false
+phase3_candidate_mutation_observed: false
+phase3_event_hydration_observed: false
+phase3_failure_closed: true
+phase3_permission_classification: AMBIGUOUS_BY_NATIVE_CONTRACT
+phase3_official_contract_finding: GOOGLE_CALENDAR_404_NOTFOUND_CAN_MEAN_RESOURCE_NEVER_EXISTED_OR_CALENDAR_NOT_ACCESSIBLE_TO_USER
+phase3_official_contract_source: https://developers.google.com/workspace/calendar/api/guides/errors
+operator_minutes_removed_measured: 0
+custom_code_avoided_estimate: 40_to_120_LOC_UNVALIDATED
+custom_code_avoided_realized_by_this_candidate: 0
+paid_cost_usd_observed: 0_NO_CHARGE_SURFACED_NOT_BILLING_PROOF
+direct_cost_or_quota_evidence: NO_NEW_DIRECT_COST_OR_QUOTA_TELEMETRY_EXPOSED_IN_PHASE3_ERROR
+credentials: CONNECTOR_MANAGED;PHASE3_404_DOES_NOT_REVEAL_EFFECTIVE_OAUTH_SCOPE_PRINCIPAL_OR_TOKEN_TYPE
+durability: GIT_PHASE1_PHASE2_AND_PHASE3_PREFLIGHT_RESULT_EVENTS_DURABLE_ON_CANONICAL_BRANCH_WITH_READBACK_REQUIRED
+observability: STRUCTURED_404_REASON_NOTFOUND_AND_MESSAGE_EXPOSED;NO_NATIVE_REQUEST_ID_RATE_HEADERS_SCOPE_PRINCIPAL_OR_QUOTA_DEBIT_EXPOSED
+portability: MEDIUM_HIGH_FOR_REQUEST_SHAPE_AND_STANDARD_404_SEMANTICS;PERMISSION_VS_NONEXISTENCE_REMAINS_INTENTIONALLY_AMBIGUOUS_IN_NATIVE_GOOGLE_CONTRACT
+failure_behavior: FAILS_CLOSED_ON_SYNTHETIC_NONEXISTENT_CALENDAR_WITH_STRUCTURED_404_NOTFOUND;DO_NOT_RETRY_AS_DISCOVERY_LOGIC_WITHOUT_HIGHER_LEVEL_POLICY
+verifier: DIRECT_GOOGLE_CALENDAR_CONNECTOR_RECEIPT_PLUS_GOOGLE_OFFICIAL_CALENDAR_API_ERROR_GUIDE_PLUS_GITHUB_DURABLE_READBACK
+consumer: HFO_BOUNDED_CALENDAR_INTAKE_FOR_OPERATOR_CONTROL_LOOPS
+adoption_credit: 0
+fitness_credit: 0
+mandatory_gate: READ_ONLY;PRIMARY_CALENDAR_ONLY_FOR_SUCCESS_ENVELOPE;EXPLICIT_TIME_WINDOW;MAX_RESULTS_5_ON_SUCCESS_PATH;ASSUME_FULL_EVENT_TEXT_MAY_BE_HYDRATED;DO_NOT_PERSIST_EVENT_TITLES_DESCRIPTIONS_LOCATIONS_URLS_IDS_OR_PAGE_TOKENS;TREAT_404_NOTFOUND_AS NONEXISTENT_OR_INACCESSIBLE;NO_SCOPE_PRINCIPAL_RATE_LIMIT_OR_QUOTA_ASSUMPTIONS
+strongest_falsifier: A_DOWNSTREAM_CONSUMER_REQUIRES_METADATA_ONLY_DISCLOSURE_AUTHORITATIVE_COMPLETE_RESULTS_OR_MUST_DISTINGUISH_NONEXISTENT_CALENDAR_FROM_INSUFFICIENT_PERMISSION_WITHOUT_AN_ADDITIONAL_AUTHORIZATION_AWARE_SURFACE
+honest_flaw: PHASE3_CONFIRMS_FAIL_CLOSED_STRUCTURED_404_BUT_NATIVE_GOOGLE_SEMANTICS_EXPLICITLY_COLLAPSE_NONEXISTENCE_AND_INACCESSIBILITY;EARLIER_FULL_EVENT_TEXT_HYDRATION_AND_LACK_OF_FIELD_SELECTION_REMAIN_UNRESOLVED
+next_phase: PHASE4_DECISION_FROM_FROZEN_EVIDENCE_ONLY_NO_ADDITIONAL_CALENDAR_CANDIDATE_CALL
+valid_time_utc: 2026-08-09T15:52:00Z
+recorded_time_utc: 2026-08-09T15:52:00Z
+---
+
+# Phase 3 result
+
+Exactly one bounded, non-mutating failure/permission probe was executed after Git-first preflight readback. A clearly synthetic nonexistent calendar ID produced a connector `NOT_FOUND` ToolError carrying the native Google Calendar-style HTTP `404`, reason `notFound`, message `Not Found`.
+
+The probe failed closed: no event was returned or hydrated, no retry or fallback was observed, and no Calendar mutation occurred. This is useful structured failure behavior, but it does not provide permission classification. Google's official Calendar API error guide states that 404 `notFound` can occur both when a resource has never existed and when the user cannot access a calendar. X13 therefore treats 404 as `NONEXISTENT_OR_INACCESSIBLE`, not proof of either condition.
+
+The campaign now has three candidate invocations: two bounded first-page successes and one expected structured failure probe. The prior data-minimization Andon remains: successful search calls hydrate full event text and URLs with no field selector. Operator minutes removed remain 0; realized custom-code avoidance remains 0; the 40–120 LOC estimate remains unvalidated.
+
+Next wake: Phase 4 decision from the frozen evidence set only. No additional Calendar candidate call.
