@@ -1,22 +1,22 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
 experiment_id: X13_GITHUB_BRANCH_SEARCH_READONLY_025
-version: 199
-prior_version: 198
+version: 200
+prior_version: 199
 previous_experiment_id: X13_GDRIVE_METADATA_SEARCH_READONLY_024
 candidate: GitHub_search_branches_readonly
-campaign_wake: 3_of_4
-campaign_status: ACTIVE
+campaign_wake: 4_of_4
+campaign_status: CLOSED_ADOPT_WITH_GATES
 phase_1_status: PHASE1_ACCEPTED_WITH_GATES
 phase_2_status: PHASE2_ACCEPTED_WITH_GATES
 phase_3_status: PHASE3_ACCEPTED_WITH_GATES_ANDON
-phase_4_status: NOT_RUN
-phase_4_decision: UNKNOWN
-operational_decision: EVALUATING_BOUNDED_BRANCH_DISCOVERY_WITH_FAILURE_PATH_ANDON
+phase_4_status: PHASE4_DECIDED
+phase_4_decision: ADOPT_WITH_GATES
+operational_decision: ADOPT_FOR_BOUNDED_SINGLE_PAGE_EXACT_BRANCH_DISCOVERY_ONLY
 wip: 1
-last_event_commit: 19b496cad2fb612a8faa9a6afecdab47be2242bd
-last_event_path: state/coordination/experiments/cots_connector_x13/20260809T035021Z_GITHUB_BRANCH_SEARCH_PHASE3_RESULT.md
-last_event_blob_sha: 622100e5af116c706a454668241422227eee988f
+last_event_commit: 4e957e5a279fad502b79b80c973e541a36083b3a
+last_event_path: state/coordination/experiments/cots_connector_x13/20260809T044900Z_GITHUB_BRANCH_SEARCH_PHASE4_DECISION.md
+last_event_blob_sha: c261c1646085f2c1e546602314e7ffd204f2bc5c
 last_event_readback: true
 phase1_preflight_commit: cccb70a282df95a54600a27d046e28f1c8f35737
 phase1_preflight_blob_sha: a3c5e334c14b04337214d39780ecf5d9ac76dcb5
@@ -49,32 +49,32 @@ custom_code_avoided_realized_by_this_candidate: 0
 paid_cost_usd_observed: 0_NO_CHARGE_SURFACED_NOT_BILLING_PROOF
 direct_cost_or_quota_evidence: NO_RATE_LIMIT_HEADERS_QUOTA_DEBIT_OR_BILLING_METADATA_EXPOSED;OFFICIAL_GITHUB_LIMITS_DEPEND_ON_AUTH_PRINCIPAL_TOKEN_TYPE_AND_API_SURFACE
 credentials: GITHUB_CONNECTOR_MANAGED_EFFECTIVE_TOKEN_TYPE_PRINCIPAL_AND_PERMISSIONS_UNKNOWN;TWO_SUCCESSFUL_READS_PROVE_ACCESS_TO_NAMED_REPOSITORY_BRANCH_METADATA_FOR_THOSE_CALLS_ONLY
-durability: GIT_PHASE1_PHASE2_PHASE3_PREFLIGHT_AND_RESULT_EVENTS_DURABLE_AND_READ_BACK
+durability: GIT_PHASE1_PHASE2_PHASE3_PREFLIGHT_AND_RESULT_EVENTS_PLUS_PHASE4_DECISION_DURABLE_AND_READ_BACK
 observability: TWO_BOUNDED_SUCCESS_RESULTS_MATCH_ON_COUNT_EXACT_MATCH_AND_CURSOR_PRESENCE;MALFORMED_CURSOR_PATH_COLLAPSES_TO_UNSTRUCTURED_UNKNOWN_TYPEERROR_WITHOUT_PROVIDER_STATUS_REQUEST_ID_RATE_HEADERS_NATIVE_ENDPOINT_OR_QUOTA_DEBIT
-portability: MEDIUM_NATIVE_REST_LIST_BRANCHES_USES_PER_PAGE_AND_INTEGER_PAGE_WHILE_CONNECTOR_SEARCH_USES_QUERY_PLUS_OPAQUE_CURSOR;OPAQUE_CURSOR_IS_WRAPPER_SPECIFIC_UNTIL_NATIVE_MAPPING_PROVEN
+portability: MEDIUM_CONNECTOR_QUERY_PLUS_OPAQUE_CURSOR_IS_WRAPPER_SPECIFIC;NATIVE_REST_LIST_BRANCHES_USES_PAGE_PER_PAGE_WHILE_GRAPHQL_USES_CONNECTION_CURSORS;NATIVE_MAPPING_UNPROVEN
 failure_behavior: MALFORMED_CURSOR_TRIGGERED_UNSTRUCTURED_CONNECTOR_INTERNAL_TYPEERROR_NONE_SUBSCRIPTABLE;NO_BRANCH_MUTATION_OBSERVED;NO_RETRY;NO_FALLBACK
-verifier: GITHUB_PHASE3_PREFLIGHT_AND_RESULT_READBACK_PLUS_DIRECT_SEARCH_BRANCHES_MALFORMED_CURSOR_TOOL_ERROR_PLUS_PHASE1_PHASE2_SUCCESS_RECEIPTS
+verifier: GITHUB_PHASE1_PHASE2_PHASE3_PREFLIGHT_AND_RESULT_READBACK_PLUS_PHASE4_DECISION_READBACK_PLUS_DIRECT_SEARCH_BRANCHES_SUCCESS_RECEIPTS_AND_MALFORMED_CURSOR_ERROR_RECEIPT
 consumer: HFO_CANONICAL_BRANCH_DISCOVERY_AND_PREFLIGHT_VALIDATION
-adoption_credit: 0
+adoption_credit: 1
 fitness_credit: 0
-mandatory_gate: READ_ONLY;BOUNDED_PAGE_SIZE;NO_BRANCH_MUTATION;NO_COMPLETENESS_INFERENCE;DO_NOT_USE_SYNTHETIC_OR_STALE_CURSOR_IN_PRODUCTION;TREAT_CURSOR_ERROR_AS_HARD_FAILURE_WITHOUT_AUTOMATIC_RETRY;DO_NOT_ASSUME_WRAPPER_QUERY_CURSOR_EQUAL_NATIVE_REST_OR_GRAPHQL_SEMANTICS
-strongest_falsifier: A_VALID_CONNECTOR_ISSUED_CURSOR_FAILS_SIMILARLY_UNDER_STABLE_STATE_OR_WRAPPER_SEARCH_OMITS_A_KNOWN_BRANCH_MATCH;EITHER_WOULD_UNDERMINE_ADOPTION
-honest_flaw: FAILURE_PATH_IS_NOT_STRUCTURED_OR_DIAGNOSTIC;CONNECTOR_HIDES_PROVIDER_STATUS_AND_THREW_INTERNAL_NONE_TYPEERROR_ON_MALFORMED_CURSOR;VALID_CURSOR_PAGINATION_PERMISSION_DENIAL_RATE_LIMITING_EFFECTIVE_AUTH_AND_QUOTA_DEBIT_REMAIN_UNVERIFIED
-next_phase: PHASE4_DECISION_FROM_FROZEN_EVIDENCE_ONLY_NO_ADDITIONAL_GITHUB_CANDIDATE_CALL
-valid_time_utc: 2026-08-09T03:50:53Z
-recorded_time_utc: 2026-08-09T03:50:53Z
+mandatory_gate: READ_ONLY;SINGLE_PAGE_BOUNDED_EXACT_MATCH_LOOKUPS_ONLY;NO_BRANCH_MUTATION;NO_COMPLETENESS_INFERENCE;DO_NOT_USE_CURSOR_DEPENDENT_PAGINATION;DO_NOT_USE_SYNTHETIC_OR_STALE_CURSOR;TREAT_CURSOR_ERROR_AS_HARD_FAILURE_WITHOUT_AUTOMATIC_RETRY;DO_NOT_ASSUME_WRAPPER_QUERY_CURSOR_EQUAL_NATIVE_REST_OR_GRAPHQL_SEMANTICS
+strongest_falsifier: A_STABLE_EXACT_BRANCH_LOOKUP_OMITS_A_KNOWN_BRANCH_OR_RETURNS_AN_INCORRECT_MATCH;EITHER_UNDERMINES_THE_NARROW_ADOPTION
+honest_flaw: ONLY_TWO_SUCCESS_WAKES_ON_ONE_EXACT_QUERY;FAILURE_PATH_IS_UNSTRUCTURED_AND_NON_DIAGNOSTIC;VALID_CURSOR_PAGINATION_PERMISSION_DENIAL_RATE_LIMITING_EFFECTIVE_AUTH_NATIVE_MAPPING_AND_QUOTA_DEBIT_REMAIN_UNVERIFIED
+next_phase: START_NEW_CANDIDATE_PHASE1_NEXT_WAKE
+valid_time_utc: 2026-08-09T04:49:40Z
+recorded_time_utc: 2026-08-09T04:49:40Z
 ---
 
-# X13 CURRENT v199
+# X13 CURRENT v200
 
-`X13_GITHUB_BRANCH_SEARCH_READONLY_025` is active at wake 3 of 4 with **PHASE3_ACCEPTED_WITH_GATES_ANDON**.
+`X13_GITHUB_BRANCH_SEARCH_READONLY_025` is closed at wake 4 of 4 with **ADOPT_WITH_GATES**.
 
-Two bounded success-path calls remain repeatable on result count `1`, exact canonical-branch match `true`, and opaque-cursor presence `true`. Phase 3 then supplied one synthetic malformed cursor after Git-first preflight readback and SHA-256 verification. The connector did not return a structured validation or provider error; it surfaced `UNKNOWN` with `TypeError: 'NoneType' object is not subscriptable`.
+The connector is adopted only for bounded, single-page, exact branch discovery against a named repository. Two success-path calls matched on result count `1`, exact canonical-branch match `true`, and opaque-cursor presence `true`; no additional candidate call was made in Phase 4.
 
-No branch mutation was observed, and there was no retry or fallback. The failure path nevertheless has poor observability: no provider HTTP status, provider error body, request ID, rate-limit headers, native endpoint, or quota debit was exposed.
+The Phase-3 malformed-cursor failure is a mandatory gate, not a green pagination result. The wrapper surfaced `UNKNOWN` with `TypeError: 'NoneType' object is not subscriptable` and exposed no provider HTTP status, request ID, rate-limit headers, native endpoint, or quota debit. Cursor-dependent pagination and authoritative branch inventory are therefore outside the adopted surface.
 
-Mandatory gates now add: do not use synthetic or stale cursors in production, treat any cursor error as a hard failure without automatic retry, and do not assume the wrapper's query/cursor behavior equals native REST or GraphQL semantics. GitHub's documented REST `List branches` surface uses `per_page` plus integer `page`; GitHub GraphQL uses opaque connection cursors, but this connector's native mapping remains unproven.
+Mandatory gates: read-only; bounded single-page exact-match lookups only; no branch mutation; no completeness inference; no cursor-dependent pagination; never use synthetic or stale cursors; treat cursor errors as hard failures without automatic retry; do not assume wrapper query/cursor semantics equal native REST or GraphQL semantics.
 
-Measured operator savings remain `0`; realized custom-code avoidance remains `0`; estimated avoidance is `20–60 LOC` unvalidated; adoption/fitness credit remains `0 / 0`.
+Measured operator savings remain `0`; realized custom-code avoidance remains `0`; the `20–60 LOC` estimate remains unvalidated. Adoption credit is `1`; fitness credit remains `0` pending demonstrated downstream consumer value.
 
-Next wake: Phase 4 decision from the frozen evidence set only. No additional GitHub candidate call.
+Next wake: start exactly one new candidate at Phase 1, WIP=1.
