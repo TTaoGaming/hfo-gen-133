@@ -1,22 +1,22 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
 experiment_id: X13_GITHUB_RECENT_PRS_READONLY_027
-version: 206
-prior_version: 205
+version: 207
+prior_version: 206
 previous_experiment_id: X13_GMAIL_MESSAGE_ID_SEARCH_READONLY_026
 candidate: GitHub_get_users_recent_prs_in_repo_readonly
-campaign_wake: 2_of_4
+campaign_wake: 3_of_4
 campaign_status: ACTIVE
 phase_1_status: PHASE1_ACCEPTED_WITH_GATES
 phase_2_status: PHASE2_ACCEPTED_WITH_GATES
-phase_3_status: PENDING
+phase_3_status: PHASE3_ACCEPTED_WITH_GATES_ANDON
 phase_4_status: PENDING
 phase_4_decision: PENDING
 operational_decision: PENDING
 wip: 1
-last_event_commit: a919c22305430b6fb37ad15b3b0eeb23d24571bc
-last_event_path: state/coordination/experiments/cots_connector_x13/20260809T104800Z_GITHUB_RECENT_PRS_PHASE2_RESULT.md
-last_event_blob_sha: 3c819a9bb4d1faa89865d2239938de002f105dd0
+last_event_commit: 4554bb7b874c178b04d18f22f79ad718a6e416e7
+last_event_path: state/coordination/experiments/cots_connector_x13/20260809T114800Z_GITHUB_RECENT_PRS_PHASE3_RESULT.md
+last_event_blob_sha: e4f2433e9a7e833478cb446f0d45dd478e28fb76
 last_event_readback: true
 phase1_preflight_commit: a5aa6f19f4afada4840090c3751f4e2058c3d961
 phase1_preflight_blob_sha: 23ea60f33c0a177491cc1a7130957bfe567ae3e8
@@ -31,7 +31,15 @@ phase2_result_blob_sha: 3c819a9bb4d1faa89865d2239938de002f105dd0
 phase2_result_readback: true
 phase2_request_sha256: 28c55b337428c8262d093d9639eab7a81ed987f74a3c7fed877e869f9c9b94cf
 phase2_request_sha256_matches_phase1: true
-candidate_invocations_total: 2
+phase3_preflight_commit: ad3ef95c02c87c106150f298cbcd3314316e048c
+phase3_preflight_blob_sha: 4302a59b3e9935048f0fa1df5963b0bf661fde9b
+phase3_preflight_readback: true
+phase3_result_commit: 4554bb7b874c178b04d18f22f79ad718a6e416e7
+phase3_result_blob_sha: e4f2433e9a7e833478cb446f0d45dd478e28fb76
+phase3_result_readback: true
+phase3_request_sha256: 991a9f8879ee0e4ef498a99d68466dcfdc53c3d8360ecfed32ceef343d09e9c5
+phase3_request_sha256_verified: true
+candidate_invocations_total: 3
 usable_candidate_results: 2
 result_count_last_success: 5
 phase1_result_count: 5
@@ -49,46 +57,53 @@ diff_fields_requested: false
 comments_requested: false
 body_text_returned_despite_minimal_request: true
 body_text_returned_on_both_successes: true
-connector_errors_total: 0
-expected_connector_errors_total: 0
+connector_errors_total: 1
+expected_connector_errors_total: 1
+phase3_error_status: 422
+phase3_error_message: Validation Failed
+phase3_error_resource: Search
+phase3_error_field: q
+phase3_error_code: invalid
+phase3_error_permission_nonexistence_distinguishable: false
 retries_total: 0
 fallbacks_total: 0
 candidate_mutations_total: 0
 external_call_time_ms_last_success: 1254
 phase1_external_call_time_ms: 1618
 phase2_external_call_time_ms: 1254
+phase3_external_call_time_ms: UNKNOWN_NOT_EXPOSED_IN_DIRECT_RECEIPT
 operator_minutes_removed_measured: 0
 custom_code_avoided_estimate: 40_to_100_LOC_UNVALIDATED
 custom_code_avoided_realized_by_this_candidate: 0
 paid_cost_usd_observed: 0_NO_CHARGE_SURFACED_NOT_BILLING_PROOF
 direct_cost_or_quota_evidence: NO_DIRECT_CONNECTOR_RATE_LIMIT_HEADER_SEARCH_RESOURCE_DEBIT_REQUEST_ID_OR_BILLING_METADATA_OBSERVED;OFFICIAL_GITHUB_DOCS_CONTEXT_ONLY
 credentials: CONNECTOR_MANAGED;RESULTS_USER_SCOPED;EFFECTIVE_TOKEN_TYPE_PERMISSIONS_AND_RATE_LIMIT_IDENTITY_UNKNOWN
-durability: GIT_PHASE1_AND_PHASE2_PREFLIGHT_AND_RESULT_EVENTS_DURABLE_AND_READ_BACK_ON_CANONICAL_BRANCH
-observability: TWO_BOUNDED_SUCCESS_PATHS_EXPOSE_PR_METADATA_AND_WRAPPER_TIMING;FULL_PR_BODY_TEXT_RETURNED_WITHOUT_A_SUPPRESSION_PARAMETER_ON_BOTH_CALLS;NO_NATIVE_QUERY_SORT_RATE_HEADERS_REQUEST_ID_TOKEN_TYPE_PERMISSIONS_OR_QUOTA_DEBIT
-portability: MEDIUM;CONNECTOR_DESCRIPTION_SAYS_IT_PAGINATES_AN_UNDERLYING_GITHUB_SEARCH_ENDPOINT;EXACT_QUERY_SORT_PAGINATION_AND_AUTHENTICATED_USER_BINDING_REMAIN_UNPROVEN
-failure_behavior: NOT_YET_PROBED;PHASE3_REQUIRED
-verifier: GITHUB_PHASE2_PREFLIGHT_AND_RESULT_READBACK_PLUS_DIRECT_GITHUB_CONNECTOR_SUCCESS_RECEIPT
+durability: GIT_PHASE1_PHASE2_PHASE3_PREFLIGHT_AND_RESULT_EVENTS_DURABLE_AND_READ_BACK_ON_CANONICAL_BRANCH
+observability: TWO_BOUNDED_SUCCESS_PATHS_EXPOSE_PR_METADATA_AND_WRAPPER_TIMING;FULL_PR_BODY_TEXT_RETURNED_WITHOUT_A_SUPPRESSION_PARAMETER_ON_BOTH_SUCCESS_CALLS;STRUCTURED_422_FAILURE_EXPOSED_FOR_NONEXISTENT_REPOSITORY;NO_NATIVE_QUERY_SORT_RATE_HEADERS_REQUEST_ID_TOKEN_TYPE_PERMISSIONS_OR_QUOTA_DEBIT
+portability: MEDIUM;CONNECTOR_DESCRIPTION_SAYS_IT_PAGINATES_AN_UNDERLYING_GITHUB_SEARCH_ENDPOINT;PHASE3_FAILURE_SHAPE_IS_GITHUB_SEARCH_LIKE;EXACT_QUERY_SORT_PAGINATION_AND_AUTHENTICATED_USER_BINDING_REMAIN_UNPROVEN
+failure_behavior: FAILS_CLOSED_WITH_STRUCTURED_422_VALIDATION_FAILED_FOR_CLEARLY_NONEXISTENT_REPOSITORY;ERROR_TEXT_CONFLATES_RESOURCE_NONEXISTENCE_WITH_PERMISSION_DENIAL
+verifier: GITHUB_PHASE3_PREFLIGHT_AND_RESULT_READBACK_PLUS_DIRECT_GITHUB_CONNECTOR_ERROR_RECEIPT
 consumer: HFO_BOUNDED_PULL_REQUEST_INTAKE_AND_OPERATOR_REVIEW_PRECHECK
 adoption_credit: 0
 fitness_credit: 0
-mandatory_gate: READ_ONLY;REPOSITORY_SCOPED;BOUNDED_LIMIT;NO_DIFF;NO_COMMENTS;DO_NOT_PERSIST_PR_BODY_OR_COMMENT_TEXT_IN_X13_RECEIPTS;NO_COMPLETENESS_STABLE_ORDER_NATIVE_QUERY_RATE_LIMIT_OR_PERMISSION_INFERENCE
-strongest_falsifier: A_NAMED_DOWNSTREAM_CONSUMER_REQUIRES_FIELD_MINIMIZATION_NO_BODY_DISCLOSURE_AUTHORITATIVE_COMPLETENESS_STABLE_SORT_OR_EXPLICIT_RATE_LIMIT_CONTROL
-honest_flaw: CONNECTOR_REPEATEDLY_RETURNED_FULL_PR_BODY_TEXT_DESPITE_DIFF_AND_COMMENTS_BEING_DISABLED;THIS_IS_NOT_A_METADATA_ONLY_SURFACE_AND_INCREASES_UNNECESSARY_DATA_EXPOSURE
-next_phase: PHASE3_ONE_BOUNDED_HARMLESS_FAILURE_PERMISSION_OR_CONNECTOR_VARIANCE_PROBE_NO_PR_MUTATION
-valid_time_utc: 2026-08-09T10:49:00Z
-recorded_time_utc: 2026-08-09T10:49:00Z
+mandatory_gate: READ_ONLY;REPOSITORY_SCOPED;BOUNDED_LIMIT;NO_DIFF;NO_COMMENTS;DO_NOT_PERSIST_PR_BODY_OR_COMMENT_TEXT_IN_X13_RECEIPTS;DO_NOT_INFER_PERMISSION_DENIAL_VS_NONEXISTENCE_FROM_422;NO_COMPLETENESS_STABLE_ORDER_NATIVE_QUERY_RATE_LIMIT_OR_PERMISSION_INFERENCE
+strongest_falsifier: A_NAMED_DOWNSTREAM_CONSUMER_REQUIRES_FIELD_MINIMIZATION_NO_BODY_DISCLOSURE_AUTHORITATIVE_COMPLETENESS_STABLE_SORT_EXPLICIT_RATE_LIMIT_CONTROL_OR_RELIABLE_PERMISSION_VS_NONEXISTENCE_CLASSIFICATION
+honest_flaw: CONNECTOR_REPEATEDLY_RETURNED_FULL_PR_BODY_TEXT_DESPITE_DIFF_AND_COMMENTS_BEING_DISABLED;PHASE3_422_ERROR_ALSO_CONFLATES_NONEXISTENT_RESOURCE_WITH_INSUFFICIENT_PERMISSION
+next_phase: PHASE4_DECISION_FROM_FROZEN_EVIDENCE_ONLY_NO_ADDITIONAL_CANDIDATE_CALL
+valid_time_utc: 2026-08-09T11:49:00Z
+recorded_time_utc: 2026-08-09T11:49:00Z
 ---
 
-# X13 CURRENT v206
+# X13 CURRENT v207
 
-`X13_GITHUB_RECENT_PRS_READONLY_027` is active at wake 2 of 4 with **PHASE2_ACCEPTED_WITH_GATES**.
+`X13_GITHUB_RECENT_PRS_READONLY_027` is active at wake 3 of 4 with **PHASE3_ACCEPTED_WITH_GATES_ANDON**.
 
-The exact Phase-1 bounded read-only request was replayed once. It again returned five results with the same ordered PR-number digest: five open drafts and zero merged PRs. No authorized comparison field drifted between Phase 1 and Phase 2.
+The single authorized failure-path probe targeted a clearly synthetic nonexistent repository with a one-result cap and no diff/comments. The connector failed closed with a structured `422 Validation Failed` Search error (`field=q`, `code=invalid`). Its detail explicitly conflates two causes — resource nonexistence and insufficient permission — so consumers must not infer authorization state from this failure class.
 
-The data-minimization Andon repeated: the connector returned full PR body text even though diffs and comments were disabled. This remains a non-metadata-only surface; X13 must not persist returned PR body/comment text or use this connector where field minimization/body non-disclosure is mandatory.
+The success-path data-minimization Andon remains unresolved: both prior bounded calls returned full PR body text despite diffs and comments being disabled. X13 must not persist returned PR body/comment text and must not use this surface where metadata-only retrieval or body non-disclosure is mandatory.
 
-Across two candidate calls there were zero observed connector errors, retries, fallbacks, or repository mutations. No direct GitHub rate-limit header, search-resource debit, request ID, native query, token type, permissions, quota debit, or billing metadata was exposed.
+Across three candidate invocations there are two bounded successes and one expected structured failure, with zero observed retries, fallbacks, or PR mutations. No direct GitHub rate-limit header, search-resource debit, request ID, native query, token type, permissions, quota debit, or billing metadata was exposed.
 
 Measured operator savings remain `0`; realized custom-code avoidance remains `0`; the `40–100 LOC` estimate is unvalidated. Adoption/fitness credit remains `0 / 0`.
 
-Next wake: Phase 3 — one bounded harmless failure/permission/connector-variance probe with no PR mutation.
+Next wake: Phase 4 — decide from the frozen evidence set only. No additional candidate call.
