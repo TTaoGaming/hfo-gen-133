@@ -1,0 +1,169 @@
+schema_id: hfo.gen133.s04.structural_preflight.v1
+result: REVISE
+terminal_receipt: false
+seat: S04_HRIST_STRUCTURAL_PREFLIGHT
+expected_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+observed_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+task_id_match: true
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-09T21:13:02Z
+
+self_probe:
+  provider_task_inventory_read: true
+  github_branch_observed: agent/gen133-bootstrap-20260730
+  github_read_write_available: true
+  slack_write_available: true
+  task_mutation_performed: false
+
+selection:
+  rule: NEWEST_IMMUTABLE_CANDIDATE_ADDRESSED_TO_S04_NOT_AUTHORED_BY_S04
+  selected: true
+  route_path: state/coordination/receipts/chatgpt_runtime/seat-03/20260809T210720Z_AETNA_PRODUCER_RETURN_REVISE_TO_S04.yaml
+  route_commit: 9edba3a441cd2c44817f75358b94549491af7ac1
+  route_git_blob_sha1: ab7d4d67ea2904f84d4411575fe7a3da984f59a1
+  route_utf8_bytes: 6362
+  route_sha256: 1613ebaef578e7103ea91fdc6fbfe2ede1936751f758fbe04e19b87f2cf7406e
+  route_authoring_seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  correlation_id: GTM-S07-AETNA-RETURN-20260809T202800Z
+  work_item_id: S07_AETNA_CLAIMS_AGENT_RELEASE_DELTA_CARD_V1
+
+producer_return:
+  path: projects/gtm-revenue/returns/20260809T202800Z_S07_AETNA_CLAIMS_AGENT_RELEASE_DELTA_CARD_RETURN.md
+  create_commit: fa6cea97bacd8181ada37c514423ce02392e1315
+  git_blob_sha1: e00a9c996fae22abad5504d3e893d5dec7ee7453
+  utf8_bytes: 6281
+  sha256: 5e83f75361964603de449084ba4a034dd114b00998f0e8142b8a28698cfacb94
+  schema_id: hfo.gen133.gtm.producer_return.v1
+  producer: S07_GTM_PROOF_KIT_BUILDER
+  producer_task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+  result: KIT_RETURNED
+  explicit_work_item_id_contract_field: false
+  admission_claim_bound: false
+  admission_claim_path: NOT_BOUND
+  admission_claim_git_blob_sha1: NOT_BOUND
+  admission_acceptance_digest: NOT_BOUND
+  admission_idempotency_digest: NOT_BOUND
+  admission_lease_expiry: NOT_BOUND
+  expiry_utc: 2026-08-14T14:08:00Z
+
+candidate:
+  path: projects/gtm-revenue/kits/aetna-cvs-health/20260809T202600Z_CLAIMS_AGENT_RELEASE_DELTA_CARD.md
+  create_commit: fdc3c76ca1deb3de8dc07877f74339382d53e4c4
+  git_blob_sha1: 3f2baaff4cee606b0bc79146c561880f4468070a
+  utf8_bytes: 6059
+  sha256: d6294caec3f7d77e3cd08d8c7bb9a8f051a8cdc2c04cb04b56f0d5524e95ea03
+  return_binding_match: true
+  privacy_class: PUBLIC_SAFE_SYNTHETIC_ONLY
+  private_data_observed: false
+
+target_card:
+  path: projects/gtm-revenue/research/20260809T192800Z_ENTERPRISE_BUYER_AETNA_CVS_HEALTH_TARGET_CARD.md
+  source_commit: 80e161107af960b55f3b4de74d17ba3c67921852
+  git_blob_sha1: e5ec9833f21a9a6465f3571c080865b6d361526e
+  schema_id: hfo.gen133.gtm.target_card.v1
+  expiry_utc: 2026-08-14T14:08:00Z
+  evidence_contract: hfo.gen133.s08.evidence.v1_UTF8_LF_EXACT_PREIMAGE_WITH_FINAL_NEWLINE
+  evidence_preimage_bytes: 1137
+  evidence_sha256_declared: eabeacee67265501708a1d4a74dadfbcb4058ba223863c4b8c4aee8ca0622ab9
+  evidence_sha256_recomputed: eabeacee67265501708a1d4a74dadfbcb4058ba223863c4b8c4aee8ca0622ab9
+  evidence_digest_match: true
+  current_primary_source_reachability: PASS_TWO_OFFICIAL_CVS_HEALTH_PAGES
+  claim_ceiling_consistent_with_sources: true
+
+route_idempotency:
+  canonicalization: UTF8_EXACT_PREIMAGE_NO_TERMINAL_LF
+  preimage_bytes: 161
+  sha256_declared: aa257b2ac606c9ca5f55d9585618df4861a189082f74921ca841eb8771034d1e
+  sha256_recomputed: aa257b2ac606c9ca5f55d9585618df4861a189082f74921ca841eb8771034d1e
+  match: true
+
+structural_checks:
+  exact_bytes_and_source_pointers: PASS
+  schema_and_canonicalization: PASS
+  freshness: PASS_UNEXPIRED_AND_PRIMARY_SOURCES_REACHABLE
+  authority: PASS_T0_PREP_ONLY
+  task_binding: PASS_NATIVE_TASK_IDS_MATCH_ARTIFACT_BINDINGS
+  actor_carrier_separation: UNPROVEN_NOT_INFERRED
+  idempotency: REVISE_CLAIM_IDEMPOTENCY_NOT_BOUND_ROUTE_IDEMPOTENCY_PASSES
+  lease_expiry: REVISE_CLAIM_LEASE_NOT_BOUND_ARTIFACT_EXPIRY_UNEXPIRED
+  privacy: PASS_PUBLIC_SAFE_SYNTHETIC_ONLY
+  rollback: PASS_OPERATOR_AUTHORIZED_FUTURE_DELETE_ONLY_PRESERVE_IMMUTABLE_RETURN
+  verifier: PASS_S04_BOUND_AS_NONPRODUCER_PREFLIGHT_ONLY
+  consumer: PASS_NAMED_OPERATOR_NO_CONSUMER_ACK
+  admission_and_workitem_binding: REVISE
+
+actor_carrier:
+  git_principal_observed: TTaoGaming
+  declared_producer_carrier: S07_GTM_PROOF_KIT_BUILDER
+  declared_route_carrier: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  task_registration_observed: true
+  predating_digest_bound_delegation_edge_observed: false
+  conclusion: UNPROVEN_NOT_INFERRED
+
+controlling_defect:
+  class: MISSING_IMMUTABLE_ADMISSION_AND_EXPLICIT_WORKITEM_BINDING
+  reason: >-
+    The immutable S07 producer return does not contain an explicit work_item_id contract field and binds no immutable
+    S02 admission claim path/blob, acceptance digest, claim idempotency digest, or claim lease/expiry. The exact candidate
+    bytes and target evidence digest are reproducible, but those successes cannot substitute for admission. A later S02
+    claim cannot retroactively change these immutable producer-return bytes.
+  required_revision: >-
+    After a valid unexpired immutable S02 admission claim exists for this exact WorkItem, S07 must emit a superseding
+    immutable producer return binding work_item_id, claim path/blob, acceptance digest, idempotency digest, claim
+    lease/expiry, exact candidate bytes/readback, rollback, effect ceiling, expiry, and honest flaw.
+
+strongest_fake_green_mutant:
+  mutant_id: X14_MUTANT_215_edc8a56718d4
+  mutation_class: FABRICATED_CONSUMER_ACK
+  path: state/coordination/experiments/false_green_x14/quarantine/20260809T205157Z_X13_FABRICATED_CONSUMER_ACK.mutant.yaml
+  create_commit: 8f88f23a9613eef14e4640be1df24336c7ace98a
+  source_path: state/coordination/experiments/cots_connector_x13/20260809T204900Z_GOOGLE_DRIVE_DOCUMENT_METADATA_SEARCH_PHASE4_ADOPT_WITH_GATES.md
+  source_commit: 3cea4acf61628331dda9421df389c67c202e9650
+  source_git_blob_sha1: ad7fa119494d83db17dec2085bcc3d21284730e2
+  canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_bytes: 272
+  canonical_overlay_sha256_declared: edc8a56718d416a20479e7ebe90a092546b974d55fe146fb2e26d02795271054
+  canonical_overlay_sha256_recomputed: edc8a56718d416a20479e7ebe90a092546b974d55fe146fb2e26d02795271054
+  digest_match: true
+  authentic_source_consumer_named: HFO_BOUNDED_DRIVE_DISCOVERY_FOR_OPERATOR_CONTROL_LOOPS
+  authentic_source_explicit_consumer_ack: false
+  authentic_source_measured_operator_value: NONE_YET
+  verdict: REVISE
+  rejection_reason: >-
+    Naming an intended consumer and recording adoption credit do not prove ConsumerAck. No immutable acknowledgement
+    binds the source digest, consumer identity, acknowledgement action, and effective time, so the injected acknowledgement
+    cannot close consumption or fitness.
+
+independence:
+  verifier_class: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  independent_verification_closed: false
+  digest_bound_independent_STOOD_or_FELL_observed: false
+  explicit_named_ConsumerAck_observed: false
+
+rollback:
+  this_receipt: APPEND_ONLY_SUPERSESSION_IF_INCORRECT
+  candidate: OPERATOR_AUTHORIZED_FUTURE_DELETE_ONLY
+  destructive_delete_authorized: false
+
+effect_ceiling:
+  level: T0_INTERNAL_COORDINATION_GIT_SLACK_POINTER_ONLY
+  forbidden:
+    - candidate_editing
+    - task_mutation
+    - self_grading
+    - external_send
+    - spend
+    - deployment
+    - merge
+    - public_publication
+    - account_or_security_change
+    - permanent_deletion
+    - independent_quorum_claim
+
+honest_flaw: >-
+  Repository absence checks are bounded and were not treated as global proof. This same-provider S04 preflight verifies
+  structure only; it cannot establish independent STOOD/FELL, delegation from the Git principal to the declared carrier,
+  or ConsumerAck.
