@@ -1,0 +1,59 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_GITHUB_BRANCH_SEARCH_READONLY_025
+event_type: PHASE3_RESULT
+expected_current_version: 198
+candidate: GitHub_search_branches_readonly
+campaign_wake: 3_of_4
+phase_status: PHASE3_ACCEPTED_WITH_GATES_ANDON
+wip: 1
+preflight_commit: ed3ca8ee7ff15bd0491dc6d2e4eb81013ac94786
+preflight_blob_sha: 09b8ed0c6cf933cf90dcb137c88bb716f42f5e1f
+preflight_readback: true
+request_sha256_verified: true
+probe_kind: MALFORMED_OPAQUE_CURSOR_FAILURE_VARIANCE
+candidate_invocations_total: 3
+usable_candidate_results: 2
+connector_errors_total: 1
+retries_total: 0
+fallbacks_total: 0
+candidate_mutations_total: 0
+phase3_result: CONNECTOR_ERROR
+connector_error_class: UNKNOWN
+connector_error_surface: "TypeError: 'NoneType' object is not subscriptable"
+provider_http_status_observed: false
+provider_error_body_observed: false
+provider_request_id_observed: false
+rate_limit_headers_observed: false
+external_call_time_ms_observed: NOT_SURFACED_ON_TOOL_ERROR
+failure_behavior: MALFORMED_CURSOR_TRIGGERED_UNSTRUCTURED_CONNECTOR_INTERNAL_TYPEERROR;NO_BRANCH_MUTATION_OBSERVED;NO_RETRY;NO_FALLBACK
+operator_minutes_removed_measured: 0
+custom_code_avoided_estimate: 20_to_60_LOC_UNVALIDATED
+custom_code_avoided_realized_by_this_candidate: 0
+paid_cost_usd_observed: 0_NO_CHARGE_SURFACED_NOT_BILLING_PROOF
+direct_cost_or_quota_evidence: NO_RATE_LIMIT_HEADERS_QUOTA_DEBIT_OR_BILLING_METADATA_EXPOSED
+credentials: GITHUB_CONNECTOR_MANAGED_EFFECTIVE_TOKEN_TYPE_PRINCIPAL_AND_PERMISSIONS_UNKNOWN;TWO_SUCCESSFUL_READS_PROVE_ACCESS_TO_NAMED_REPOSITORY_BRANCH_METADATA_FOR_THOSE_CALLS_ONLY
+durability: GIT_PHASE1_PHASE2_PHASE3_PREFLIGHT_AND_RESULT_EVENTS_DURABLE;PHASE3_RESULT_TO_BE_READ_BACK_BEFORE_CURRENT_UPDATE
+observability: SUCCESS_PATH_EXPOSES_BOUNDED_RESULTS_AND_OPAQUE_CURSOR;MALFORMED_CURSOR_PATH_COLLAPSES_TO_UNSTRUCTURED_UNKNOWN_TYPEERROR_WITHOUT_PROVIDER_STATUS_REQUEST_ID_RATE_HEADERS_OR_NATIVE_ENDPOINT
+portability: MEDIUM_NATIVE_REST_LIST_BRANCHES_USES_PER_PAGE_AND_INTEGER_PAGE_WHILE_CONNECTOR_SEARCH_USES_QUERY_PLUS_OPAQUE_CURSOR;OPAQUE_CURSOR_RESEMBLES_GRAPHQL_STYLE_BUT_NATIVE_MAPPING_NOT_PROVEN
+verifier: GITHUB_PHASE3_PREFLIGHT_READBACK_AND_DIGEST_VERIFICATION_PLUS_DIRECT_SEARCH_BRANCHES_MALFORMED_CURSOR_TOOL_ERROR
+consumer: HFO_CANONICAL_BRANCH_DISCOVERY_AND_PREFLIGHT_VALIDATION
+adoption_credit: 0
+fitness_credit: 0
+mandatory_gate: READ_ONLY;BOUNDED_PAGE_SIZE;NO_BRANCH_MUTATION;NO_COMPLETENESS_INFERENCE;DO_NOT_USE_SYNTHETIC_OR_STALE_CURSOR_IN_PRODUCTION;TREAT_ANY_CURSOR_ERROR_AS_HARD_FAILURE_WITHOUT_AUTOMATIC_RETRY;DO_NOT_ASSUME_NATIVE_ENDPOINT_OR_GRAPHQL_MAPPING
+strongest_falsifier: A_VALID_CONNECTOR_ISSUED_CURSOR_FAILS_SIMILARLY_UNDER_STABLE_STATE_OR_WRAPPER_SEARCH_OMITS_A_KNOWN_BRANCH_MATCH;EITHER_WOULD_UNDERMINE_ADOPTION
+honest_flaw: FAILURE_PATH_IS_NOT_STRUCTURED_OR_DIAGNOSTIC;THE CONNECTOR HIDES PROVIDER_STATUS_AND_THREW_AN_INTERNAL_NONE_TYPEERROR_ON_A_MALFORMED_CURSOR;VALID_CURSOR_PAGINATION_PERMISSION_DENIAL_RATE_LIMITING_EFFECTIVE_AUTH_AND_QUOTA_DEBIT_REMAIN_UNVERIFIED
+next_phase: PHASE4_DECISION_FROM_FROZEN_EVIDENCE_ONLY_NO_ADDITIONAL_GITHUB_CANDIDATE_CALL
+valid_time_utc: 2026-08-09T03:50:21Z
+recorded_time_utc: 2026-08-09T03:50:21Z
+---
+
+# X13 GitHub Branch Search Phase 3 Result
+
+The Git-first synthetic malformed-cursor probe did not return a structured validation or provider error. The connector surfaced `UNKNOWN` with `TypeError: 'NoneType' object is not subscriptable`.
+
+This is a measured connector failure-path Andon. No branch mutation was observed, and the wake performed no retry or fallback, but the error surface did not preserve an HTTP status, provider error body, request ID, rate-limit headers, native endpoint, or useful cursor validation detail.
+
+The result strengthens the wrapper-variance finding. GitHub's documented REST `List branches` contract uses `per_page` and integer `page`; GitHub GraphQL uses opaque cursors for connection pagination. The connector's query-plus-opaque-cursor surface therefore remains wrapper-specific, and this probe does not establish whether the connector maps to REST, GraphQL, or another internal service.
+
+Phase 4 must decide from the frozen evidence set only; no additional GitHub candidate call is authorized next wake.
