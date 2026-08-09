@@ -1,0 +1,142 @@
+schema_id: hfo.gen133.s04_structural_preflight.v1
+result: REVISE
+terminal_receipt: false
+seat: S04_HRIST_STRUCTURAL_PREFLIGHT
+expected_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+observed_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+task_id_match: true
+task_enabled_observed: true
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-09T09:13:58Z
+selection_cutoff_utc: 2026-08-09T09:13:58Z
+
+verifier_class: SAME_PROVIDER_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+
+self_probe:
+  native_task_inventory_read: true
+  github_branch_observed: agent/gen133-bootstrap-20260730
+  github_read_available: true
+  github_write_available: true
+  slack_connector_available: true
+  task_mutation_performed: false
+
+selection:
+  newest_observed_repository_commit_at_cutoff: dbbf4648467ff47dfa3a667be5ac2efc57a95ec5
+  newest_eligible_candidate_commit: dbbf4648467ff47dfa3a667be5ac2efc57a95ec5
+  route_path: state/coordination/receipts/chatgpt_runtime/seat-03/20260809T090806Z_ZURICH_PRODUCER_RETURN_REVISE_TO_S04.yaml
+  route_git_blob_sha1: 286cb91aa4b041efb20f9de89b1b7671da587f61
+  route_authoring_seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  route_expected_task_id: 6a539fc5130c81918c13624739fb2a60
+  route_observed_task_id: 6a539fc5130c81918c13624739fb2a60
+  route_git_actor: TTaoGaming
+  actor_carrier_separation: UNPROVEN_NOT_INFERRED
+  candidate_not_authored_by_s04: true
+
+binding:
+  correlation_id: GTM-S07-ZURICH-RETURN-20260809T083300Z
+  work_item_id: S07_ZURICH_AGENTIC_PILOT_PROMOTION_EVIDENCE_CARD_V1
+  producer: S07_GTM_PROOF_KIT_BUILDER
+  producer_task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+  producer_return_path: projects/gtm-revenue/returns/20260809T083300Z_S07_ZURICH_AGENTIC_PILOT_TO_PRODUCTION_EVIDENCE_CARD_RETURN.md
+  producer_return_git_blob_sha1: 401f321789aa1046fad59d0c2fed055b785db120
+  candidate_path: projects/gtm-revenue/kits/zurich-insurance/20260809T082500Z_AGENTIC_PILOT_TO_PRODUCTION_EVIDENCE_CARD.md
+  candidate_create_commit: 3ae6dab00ac45f27ebaa2402edd1d0653af9ed00
+  candidate_git_blob_sha1: 8e038493862e8399e8d39d456e873b6ea77a2493
+  candidate_declared_utf8_bytes: 8357
+  candidate_declared_sha256: ab82494251f8c2a2333d9fab43ddee57fc49eda57d0c0da6b6cfbd0004765c1c
+  candidate_digest_recompute_status: EXACT_GIT_BLOB_READBACK_CONFIRMED_BUT_DECLARED_SHA256_AND_BYTE_COUNT_NOT_LOCALLY_RECOMPUTED_FROM_CONNECTOR_PAYLOAD
+  target_card_path: projects/gtm-revenue/research/20260809T072800Z_ENTERPRISE_BUYER_ZURICH_INSURANCE_TARGET_CARD.md
+  target_card_git_blob_sha1: 02fd828ca885e7046508d8bdc5663b03511f91be
+  target_declared_evidence_digest_sha256: c85d06d516f2e5d75453280eca20a6f032c8eccc2cceab85522bb894e5f7b30f
+  target_evidence_digest_recompute_status: FAIL_NO_BOUND_CANONICAL_PREIMAGE_OR_CANONICALIZATION
+  target_expiry_utc: 2026-08-14T14:08:00Z
+  producer_return_expiry_utc: 2026-08-14T14:08:00Z
+
+route_idempotency:
+  canonicalization: UTF8_EXACT_PREIMAGE_NO_TERMINAL_LF
+  preimage: GTM-S07-ZURICH-RETURN-20260809T083300Z|S07_ZURICH_AGENTIC_PILOT_PROMOTION_EVIDENCE_CARD_V1|401f321789aa1046fad59d0c2fed055b785db120|REVISE|S04_HRIST_STRUCTURAL_PREFLIGHT
+  preimage_utf8_bytes: 169
+  declared_sha256: da2c7b997a54758ef582a065290f0f5e4897875339d464f07ed3b043817d87ad
+  recomputed_sha256: da2c7b997a54758ef582a065290f0f5e4897875339d464f07ed3b043817d87ad
+  match: true
+
+checks:
+  schema_and_canonical_route: PASS
+  exact_source_pointers: PASS_EXACT_GIT_BLOB_READBACK
+  freshness: PASS_UNEXPIRED
+  authority: PASS_T0_PREP_RESEARCH_GIT_ONLY
+  task_binding: PASS_NATIVE_TASK_IDS_MATCH_DECLARATIONS
+  actor_carrier_separation: UNPROVEN_NOT_INFERRED
+  route_idempotency: PASS_RECOMPUTED
+  admission_claim: REVISE_NOT_BOUND
+  admission_claim_path: NOT_OBSERVED
+  admission_claim_blob: NOT_OBSERVED
+  admission_acceptance_digest: NOT_OBSERVED
+  admission_idempotency_digest: NOT_OBSERVED
+  admission_lease_expiry: NOT_OBSERVED
+  lease_expiry: REVISE_ADMISSION_CLAIM_LEASE_MISSING_WHILE_ARTIFACT_EXPIRIES_ARE_BOUND
+  privacy: PASS_PUBLIC_SAFE_SYNTHETIC_ONLY
+  rollback: PASS_BOUND_APPEND_ONLY_OR_OPERATOR_CONTROLLED_LATER_COMMIT
+  verifier: PASS_S04_NAMED_SAME_PROVIDER_WEIGHT_0
+  consumer: PASS_S03_THEN_OPERATOR_NAMED_BUT_NO_ACK
+  target_evidence_digest: REVISE_NOT_INDEPENDENTLY_RECOMPUTABLE
+
+controlling_revision:
+  - MISSING_IMMUTABLE_S02_ADMISSION_CLAIM_BINDINGS_FOR_EXACT_WORK_ITEM
+  - MISSING_CLAIM_PATH_BLOB_ACCEPTANCE_DIGEST_IDEMPOTENCY_DIGEST_AND_LEASE_EXPIRY
+  - TARGET_CARD_EVIDENCE_DIGEST_LACKS_BOUND_CANONICAL_PREIMAGE_AND_CANONICALIZATION
+  search_absence_treated_as_global_proof: false
+  controlling_evidence: PRODUCER_RETURN_EXPLICITLY_RECORDS_IMMUTABLE_CLAIM_NOT_OBSERVED_AND_BINDS_NO_CLAIM_FIELDS
+
+fake_green_control:
+  mutant_id: X14_MUTANT_203_a4c3298617b0
+  mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+  mutant_path: state/coordination/experiments/false_green_x14/quarantine/20260809T085126Z_X13_GMAIL_PHASE4_DUPLICATE_IDEMPOTENCY_VERSION.mutant.yaml
+  mutant_git_blob_sha1: 44ccf4691a4b5604d73c9b18c956f465aeec5d96
+  source_event_path: state/coordination/experiments/cots_connector_x13/20260809T084900Z_GMAIL_MESSAGE_ID_SEARCH_PHASE4_DECISION.md
+  source_event_git_blob_sha1: 824129d1bb20b579cb96b3a1a30512bb6de748e3
+  source_expected_current_version: 203
+  consumed_current_version: 204
+  current_advance_commit: 4dc02d3bdd7f5adf4a92456c49a6e37d1ea574cd
+  canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_json: '{"mutated_field":"expected_current_version","mutated_value":204,"mutation_class":"DUPLICATE_IDEMPOTENCY_VERSION","original_value":203,"source_blob_sha1":"824129d1bb20b579cb96b3a1a30512bb6de748e3"}'
+  canonical_overlay_utf8_bytes: 196
+  declared_overlay_sha256: a4c3298617b0a4c2d02252dad09f7850d878530d8a46b246a6a8bc3cbbff7fff
+  recomputed_overlay_sha256: a4c3298617b0a4c2d02252dad09f7850d878530d8a46b246a6a8bc3cbbff7fff
+  overlay_digest_match: true
+  expected_verdict: REVISE
+  observed_structural_verdict: REVISE
+  rejection_reason: SAME_IMMUTABLE_PHASE4_EVENT_WAS_ALREADY_CONSUMED_FROM_EXPECTED_VERSION_203_INTO_CURRENT_VERSION_204;REBINDING_EXPECTED_VERSION_TO_204_IS_A_REPLAY_EDGE_AND_CANNOT_CREATE_A_FRESH_TRANSITION_OR_SECOND_ADOPTION_CREDIT
+  embedded_assay_only: true
+  direct_primary_selection_credit: false
+
+privacy_and_effect_ceiling:
+  privacy_class: PUBLIC_SAFE_SYNTHETIC_ONLY
+  route_effect_ceiling: T0_INTERNAL_COORDINATION_GIT_ONLY
+  producer_effect_ceiling: T0_PREP_RESEARCH_GIT
+  send_authorized: false
+  spend_authorized: false
+  deploy_authorized: false
+  merge_authorized: false
+  publication_authorized: false
+  account_or_security_change_authorized: false
+  permanent_delete_authorized: false
+  task_mutation_authorized: false
+
+rollback:
+  route_artifact: APPEND_ONLY_SUPERSESSION_IF_INCORRECT
+  producer_return: IMMUTABLE_APPEND_ONLY_SUPERSESSION_IF_INCORRECT
+  candidate: DELETE_ONLY_BY_LATER_OPERATOR_CONTROLLED_COMMIT_IF_REQUIRED_GIT_HISTORY_REMAINS
+
+verification_and_consumption:
+  explicit_named_consumer_ack_observed: false
+  digest_bound_independent_stood_or_fell_observed: false
+  independent_verification_remains_open: true
+  same_provider_checks_can_close_independent_verification: false
+
+honest_flaw: >-
+  Exact Git blob identities for the route, producer return, candidate, target card, X14 mutant, and X13 source were read back, and the explicit route-idempotency preimage plus X14 overlay digest were recomputed. The connector surface did not provide a direct byte-stream handoff into the local digest tool for the full candidate, so the producer-declared candidate UTF-8 byte count and SHA-256 are recorded but not represented here as independently recomputed. GitHub code-search absence was not used as proof that no S02 claim exists; the controlling structural defect is the producer return's own explicit non-observation and missing claim-binding fields.
