@@ -1,0 +1,52 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_GOOGLE_CALENDAR_EVENT_SEARCH_READONLY_028
+phase: 4
+event_type: DECISION
+expected_current_version: 211
+decision: ADOPT_WITH_GATES
+candidate: Google_Calendar.search_events_readonly
+wip: 1
+candidate_invocations_total: 3
+usable_candidate_results: 2
+expected_failure_probes_total: 1
+phase1_result_count: 5
+phase2_result_count: 5
+phase1_next_page_token_present: true
+phase2_next_page_token_present: true
+phase2_ordered_event_id_digest_matches_phase1: true
+connector_errors_total: 1
+retries_total: 0
+fallbacks_total: 0
+candidate_mutations_total: 0
+operator_minutes_removed_measured: 0
+custom_code_avoided_estimate: 40_to_120_LOC_UNVALIDATED
+custom_code_avoided_realized_by_this_candidate: 0
+paid_cost_usd_observed: 0_NO_CHARGE_SURFACED_NOT_BILLING_PROOF
+adoption_credit: 1
+fitness_credit: 0
+credentials: CONNECTOR_MANAGED;USABLE_READ_ACCESS_REPEATED_FOR_PRIMARY_CALENDAR_BOUNDED_WINDOW;EFFECTIVE_OAUTH_SCOPE_PRINCIPAL_AND_TOKEN_TYPE_UNKNOWN
+observability: SUCCESS_PATH_EXPOSES_RESULT_COUNT_NEXT_PAGE_TOKEN_PRESENCE_ORDERED_EVENT_ID_DIGEST_AND_WRAPPER_TIMING;FAILURE_PATH_EXPOSES_STRUCTURED_404_NOTFOUND;NO_NATIVE_REQUEST_ID_RATE_HEADERS_SCOPE_PRINCIPAL_OR_QUOTA_DEBIT
+portability: MEDIUM_HIGH;REQUEST_PARAMETERS_MAP_CLOSELY_TO_STANDARD_GOOGLE_CALENDAR_EVENT_LIST_CONCEPTS;404_NOTFOUND_IS_PORTABLE_AS_NONEXISTENT_OR_INACCESSIBLE;FIELD_SELECTION_ORDERING_VALID_PAGINATION_AND_NATIVE_MAPPING_NOT_PROVEN
+failure_behavior: FAILS_CLOSED_ON_CLEARLY_SYNTHETIC_NONEXISTENT_CALENDAR_WITH_STRUCTURED_404_NOTFOUND;DO_NOT_USE_404_AS_PERMISSION_CLASSIFIER
+durability: GIT_PHASE1_PHASE2_PHASE3_AND_PHASE4_EVENTS_DURABLE_ON_CANONICAL_BRANCH_WITH_READBACK_REQUIRED
+consumer: HFO_BOUNDED_CALENDAR_INTAKE_FOR_OPERATOR_CONTROL_LOOPS
+mandatory_gate: READ_ONLY;PRIMARY_CALENDAR_ONLY_FOR_PROVEN_SUCCESS_ENVELOPE;EXPLICIT_TIME_WINDOW;MAX_RESULTS_5;ASSUME_FULL_EVENT_TEXT_MAY_BE_HYDRATED;DO_NOT_PERSIST_EVENT_TITLES_DESCRIPTIONS_LOCATIONS_URLS_IDS_OR_PAGE_TOKENS_IN_X13_RECEIPTS;DO_NOT_INFER_COMPLETENESS_WHEN_NEXT_PAGE_TOKEN_PRESENT;TREAT_404_NOTFOUND_AS_NONEXISTENT_OR_INACCESSIBLE;NO_SCOPE_PRINCIPAL_RATE_LIMIT_OR_QUOTA_ASSUMPTIONS
+strongest_falsifier: A_DOWNSTREAM_CONSUMER_REQUIRES_METADATA_ONLY_OR_FREEBUSY_ONLY_DISCLOSURE_AUTHORITATIVE_COMPLETE_WINDOW_RESULTS_EXPLICIT_SCOPE_PRINCIPAL_ACCOUNTABILITY_RATE_LIMIT_TELEMETRY_OR_MUST_DISTINGUISH_NONEXISTENT_FROM_INACCESSIBLE_CALENDAR_WITHOUT_AN_ADDITIONAL_AUTHORIZATION_AWARE_SURFACE
+honest_flaw: FULL_EVENT_TEXT_HYDRATION_REPRODUCED_WITH_NO_FIELD_SELECTOR;TWO_MATCHING_CAPPED_FIRST_PAGE_SUCCESSES_DO_NOT_PROVE_COMPLETENESS_CONTRACTUAL_ORDER_VALID_PAGINATION_RATE_LIMIT_BEHAVIOR_NATIVE_MAPPING_OR_ACTUAL_QUOTA_DEBIT;PHASE3_STRUCTURED_404_FAILS_CLOSED_BUT_CANNOT_CLASSIFY_NONEXISTENCE_VS_PERMISSION_DENIAL
+verifier: GITHUB_PHASE1_PHASE2_PHASE3_DURABLE_READBACK_PLUS_DIRECT_GOOGLE_CALENDAR_CONNECTOR_RECEIPTS_AND_PHASE4_FROZEN_EVIDENCE_REVIEW
+valid_time_utc: 2026-08-09T16:49:16Z
+recorded_time_utc: 2026-08-09T16:49:16Z
+---
+
+# X13 Phase 4 Decision — Google Calendar event search
+
+Decision: **ADOPT_WITH_GATES**.
+
+The evidence supports adopting this connector only for bounded, read-only Calendar intake on the already-proven primary-calendar envelope. Two capped first-page searches returned five events, both exposed a next-page token, and the privacy-safe ordered event-ID digest matched across the two success wakes. A third bounded probe failed closed with structured `404 notFound` and no retry, fallback, event hydration, or Calendar mutation.
+
+The connector is not adopted as a metadata-only, free/busy-only, authoritative-completeness, pagination-guaranteed, permission-classifying, or quota-observable surface. Successful calls hydrated full event summary/description text, URLs, and other fields with no field selector. A non-empty next-page token prevents completeness claims. The `404 notFound` surface is ambiguous between nonexistent and inaccessible calendars and must never be treated as a permission classifier.
+
+Measured operator minutes removed remain `0`. Realized custom-code avoidance remains `0`; the `40–120 LOC` estimate is still unvalidated. No direct billing or quota debit evidence was surfaced. Adoption credit becomes `1`; fitness credit remains `0`.
+
+No additional Calendar candidate call was made in Phase 4. The decision is based only on the frozen Phase 1–3 evidence set.
