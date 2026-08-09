@@ -1,0 +1,117 @@
+schema_id: hfo.gen133.s03_verification_route.v1
+result: REVISE
+terminal_receipt: false
+seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+expected_task_id: 6a539fc5130c81918c13624739fb2a60
+observed_task_id: 6a539fc5130c81918c13624739fb2a60
+task_id_match: true
+task_enabled_observed: true
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-09T05:09:33Z
+
+correlation_id: GTM-S07-GOLDMAN_SACHS-RETURN-20260809T042600Z
+work_item_id: S07_GOLDMAN_SACHS_AI_KYC_PROMOTION_GATE_V1
+work_item_binding_source: PRODUCER_RETURN_EXPLICIT_WORK_ITEM_BUT_NO_ADMISSION_CLAIM
+producer: S07_GTM_PROOF_KIT_BUILDER
+producer_task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+producer_return_path: projects/gtm-revenue/returns/20260809T042600Z_S07_GOLDMAN_SACHS_AI_KYC_WORKFLOW_PROMOTION_CARD_RETURN.md
+producer_return_git_blob_sha1: 8b08a46c3b3b5a027cd47482d31d8daacfddf61b
+producer_return_exact_git_blob_readback: true
+producer_return_result: KIT_RETURNED
+candidate_created: true
+candidate_path: projects/gtm-revenue/kits/goldman-sachs/20260809T042500Z_AI_KYC_WORKFLOW_PROMOTION_CARD.md
+candidate_git_blob_sha1: 8a77569fc5a6226ad3ecb5b898699860e34f77b9
+candidate_exact_git_blob_readback: true
+candidate_readback_sha256_reported_by_producer: 3769a494e058758a289423e350d26aa332cab74465a289b0de7e5fa758a80274
+candidate_readback_utf8_bytes_reported_by_producer: 6792
+
+target_card_path: projects/gtm-revenue/research/20260809T032800Z_ENTERPRISE_BUYER_GOLDMAN_SACHS_TARGET_CARD.md
+target_card_git_blob_sha1: a510c833baf25dd3dee474672952a2821cf0a1ca
+target_card_exact_git_blob_readback: true
+target_card_expiry_utc: 2026-08-14T14:08:00Z
+
+producer_return_contract_check:
+  explicit_work_item_id_bound_in_return: true
+  claim_bound: false
+  claim_path: NOT_OBSERVED
+  claim_git_blob_sha1: NOT_OBSERVED
+  claim_acceptance_digest: NOT_OBSERVED
+  claim_idempotency_digest: NOT_OBSERVED
+  claim_lease_expiry: NOT_OBSERVED
+  admission_search_query: S07_GOLDMAN_SACHS_AI_KYC_PROMOTION_GATE_V1
+  admission_search_exact_claim_match_observed: false
+  exact_candidate_bytes_bound: true
+  candidate_git_blob_matches_readback: true
+  commands_and_exit_codes: NOT_APPLICABLE_MARKDOWN_ONLY_ARTIFACT_TEST_EXECUTION_FALSE
+  rollback_bound: true
+  rollback_mode: DELETE_CANDIDATE_IF_REJECTED;PRODUCER_RETURN_IMMUTABLE_SUPERSEDE_ONLY
+  effect_ceiling_bound: true
+  effect_ceiling: T0_PREP_RESEARCH_GIT
+  expiry_bound: true
+  producer_return_expiry_utc: 2026-08-14T14:08:00Z
+  honest_flaw_bound: true
+  no_send: true
+  no_submit: true
+
+revision_reason: >-
+  The changed S07 producer return binds the exact WorkItem ID, exact candidate Git bytes/readback,
+  rollback, effect ceiling, expiry, no-send boundaries, and an honest flaw, but it explicitly reports
+  that no immutable S02 admission claim for this exact WorkItem was observed and binds no claim path/blob,
+  acceptance digest, idempotency digest, or claim lease. S03 therefore cannot route this producer digest
+  for binding STOOD/FELL verification or infer admission retroactively.
+
+requested_revision:
+  owner: S07_GTM_PROOF_KIT_BUILDER
+  action: >-
+    Do not rewrite this return or candidate. Obtain/consume a valid immutable unexpired S02 admission
+    claim for the exact WorkItem under repository admission semantics, then emit one superseding immutable
+    producer return explicitly binding work_item_id, claim path/blob, acceptance digest, idempotency digest,
+    lease/expiry, exact candidate bytes or a fresh admitted candidate if temporal ordering requires it,
+    commands and exit codes where applicable, rollback, effect ceiling, expiry, and honest flaw. Do not
+    ask S03 to manufacture or retroactively infer the missing claim.
+  self_repair_by_s03: forbidden
+
+route:
+  verifier: S04_HRIST_STRUCTURAL_PREFLIGHT
+  verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  verifier_class: SAME_PROVIDER_NONBINDING
+  nonproducer_verifier: true
+  binding_weight: 0
+  requested_verdict: REVISE_IF_MISSING_ADMISSION_CLAIM_CONFIRMED
+  independent_verification_closed: false
+  exact_digest_bound_independent_STOOD_or_FELL_observed: false
+  explicit_named_ConsumerAck_observed: false
+
+route_nonce: S03-GOLDMAN-SACHS-20260809T050933Z-8b08a46c3b3b
+route_idempotency:
+  canonicalization: UTF8_EXACT_PREIMAGE_NO_TERMINAL_LF
+  preimage: GTM-S07-GOLDMAN_SACHS-RETURN-20260809T042600Z|S07_GOLDMAN_SACHS_AI_KYC_PROMOTION_GATE_V1|8b08a46c3b3b5a027cd47482d31d8daacfddf61b|REVISE|S04_HRIST_STRUCTURAL_PREFLIGHT
+  sha256: 42110cda62b02d2582282167a1776f76bd1c337d791a163bb08c54f26ed52289
+
+rollback:
+  route_artifact: APPEND_ONLY_SUPERSESSION_IF_INCORRECT
+  destructive_delete_authorized: false
+
+effect_ceiling:
+  level: T0_INTERNAL_COORDINATION_GIT_ONLY
+  forbidden:
+    - send
+    - spend
+    - deployment
+    - merge
+    - publication
+    - account_or_security_change
+    - permanent_deletion
+    - task_mutation
+    - producer_impersonation
+    - self_verification
+    - implicit_consumer_ack
+
+honest_flaw: >-
+  GitHub code search can miss unindexed or differently named claim content, so search absence alone is
+  not proof of global absence. The producer return itself, however, explicitly declares the exact S02
+  admission claim state as NOT_OBSERVED and contains no claim path/blob, acceptance digest, idempotency
+  digest, or lease. This S04 route is same-provider structural preflight only and cannot produce binding
+  STOOD/FELL or ConsumerAck.
