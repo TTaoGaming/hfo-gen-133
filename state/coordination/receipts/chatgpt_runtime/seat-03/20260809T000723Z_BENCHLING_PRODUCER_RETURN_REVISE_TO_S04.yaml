@@ -1,0 +1,103 @@
+schema_id: hfo.gen133.s03_verification_route.v1
+result: REVISE
+terminal_receipt: false
+seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+expected_task_id: 6a539fc5130c81918c13624739fb2a60
+observed_task_id: 6a539fc5130c81918c13624739fb2a60
+task_id_match: true
+task_enabled_observed: true
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-09T00:07:23Z
+
+correlation_id: GTM-S07-BENCHLING-RETURN-20260808T232730Z
+work_item_id: S07_BENCHLING_AGENT_PROTOTYPE_GRADUATION_GATE_V1
+producer: S07_GTM_PROOF_KIT_BUILDER
+producer_task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+producer_return_path: projects/gtm-revenue/returns/20260808T232730Z_S07_BENCHLING_AGENT_PROTOTYPE_GRADUATION_CARD_RETURN.md
+producer_return_git_blob_sha1: 950df97791eeeb014e6f8580aa54529186f347e8
+producer_return_exact_git_blob_readback: true
+candidate_path: projects/gtm-revenue/kits/benchling/20260808T232400Z_AGENT_PROTOTYPE_GRADUATION_CARD.md
+candidate_git_blob_sha1: 09db9f1e366cc841432fc901fd425835b42a17a9
+candidate_exact_git_blob_readback: true
+
+target_card_path: projects/gtm-revenue/research/20260808T222800Z_JOB_EMPLOYER_BENCHLING_TARGET_CARD.md
+target_card_git_blob_sha1: 5e70a715e85744403b148b6a886dd18c01e1b978
+target_card_expiry_utc: 2026-08-14T14:08:00Z
+
+producer_return_contract_check:
+  claim_bound: false
+  claim_path: NOT_OBSERVED
+  claim_git_blob_sha1: NOT_OBSERVED
+  claim_acceptance_digest: NOT_OBSERVED
+  claim_idempotency_digest: NOT_OBSERVED
+  admission_search_query: hfo.gen133.s02_admission_claim.v1 Benchling
+  admission_search_result_count: 0
+  exact_candidate_bytes_bound: true
+  commands_and_exit_codes: NOT_APPLICABLE_MARKDOWN_ONLY_PREPARATION_ARTIFACT
+  rollback_bound: true
+  rollback_mode: APPEND_ONLY_SUPERSESSION
+  effect_ceiling_bound: true
+  effect_ceiling: T0_PREP_RESEARCH_GIT_ONLY
+  expiry_bound: PARTIAL_TARGET_CARD_EXPIRY_ONLY
+  producer_return_or_claim_expiry: NOT_OBSERVED
+  honest_flaw_bound: true
+  no_send: true
+  no_submit: true
+
+revision_reason: >-
+  The producer return explicitly states admission.status=NOT_OBSERVED and binds no immutable S02
+  admission claim, claim acceptance digest, or claim idempotency digest for this WorkItem. The
+  reducer contract requires a real producer return to bind its claim. The return also exposes only
+  the target-card expiry, not a WorkItem claim/producer-return expiry. Do not infer or manufacture
+  either missing binding.
+
+requested_revision:
+  owner: S07_GTM_PROOF_KIT_BUILDER
+  action: >-
+    Return a superseding producer return only after an immutable S02 admission claim for the exact
+    WorkItem exists and is bound by path/blob plus acceptance/idempotency digests and an explicit
+    WorkItem lease/expiry. Preserve the current candidate and return bytes; do not rewrite history.
+  self_repair_by_s03: forbidden
+
+route:
+  verifier: S04_HRIST_STRUCTURAL_PREFLIGHT
+  verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  verifier_class: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  requested_verdict: REVISE_IF_MISSING_CLAIM_BINDING_CONFIRMED
+  independent_verification_closed: false
+  exact_digest_bound_independent_STOOD_or_FELL_observed: false
+  explicit_named_ConsumerAck_observed: false
+
+route_nonce: S03-BENCHLING-20260809T000723Z-950df97791ee
+route_idempotency:
+  canonicalization: UTF8_EXACT_PREIMAGE_NO_TERMINAL_LF
+  preimage: GTM-S07-BENCHLING-RETURN-20260808T232730Z|S07_BENCHLING_AGENT_PROTOTYPE_GRADUATION_GATE_V1|950df97791eeeb014e6f8580aa54529186f347e8|REVISE|S04_HRIST_STRUCTURAL_PREFLIGHT
+  sha256: bd09b4474fbd8214e7da8e8f6eefe7376e333120a9a397d2b9b81194cbf63959
+
+rollback:
+  route_artifact: APPEND_ONLY_SUPERSESSION_IF_INCORRECT
+  destructive_delete_authorized: false
+
+effect_ceiling:
+  level: T0_INTERNAL_COORDINATION_GIT_ONLY
+  forbidden:
+    - send
+    - spend
+    - deployment
+    - merge
+    - publication
+    - account_or_security_change
+    - permanent_deletion
+    - task_mutation
+    - producer_impersonation
+    - self_verification
+    - implicit_consumer_ack
+
+honest_flaw: >-
+  Repository code search can miss unindexed or differently named content, so the zero-result admission
+  search is supporting evidence rather than proof of global absence. The producer return itself is
+  stronger evidence because it explicitly declares admission NOT_OBSERVED. This route is same-provider
+  structural preflight only and cannot produce binding STOOD/FELL or ConsumerAck.
