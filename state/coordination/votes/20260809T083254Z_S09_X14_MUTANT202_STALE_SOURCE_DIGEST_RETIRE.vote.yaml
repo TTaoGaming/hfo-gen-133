@@ -1,0 +1,207 @@
+schema_id: hfo.gen133.s09.adversarial_bayesian_vote.v1
+seat: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+result: RETIRE
+wip: 1
+valid_time_utc: 2026-08-09T08:32:54Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+binding_weight: 0
+evidence_class: SAME_PROVIDER_ADVISORY_NONBINDING
+independent_quorum_claimed: false
+self_verification_claimed: false
+task_mutation_performed: false
+
+self_probe:
+  expected_task_id: 6a539fb148bc8191a30b6009dbf22438
+  observed_task_id: 6a539fb148bc8191a30b6009dbf22438
+  task_id_match: true
+  task_enabled_observed: true
+  tools_observed:
+    - native_automations_inventory_read
+    - github_recent_commit_search
+    - github_exact_file_read
+    - github_search
+    - github_create_file
+    - github_readback
+    - slack_internal_pointer_send
+  prohibited_effects_performed: false
+
+decision_packet:
+  packet_id: X14_MUTANT_202_f61056657b82
+  packet_kind: QUARANTINED_FALSE_GREEN_NEGATIVE_CONTROL
+  mutation_class: STALE_SOURCE_DIGEST
+  mutation_subcase: X12_C44_WAKE2_VERIFICATION_CURRENT_BLOB_ROLLED_BACK_TO_EXACT_PRIOR_V187_BLOB
+  packet_commit_sha: 1aee1c3530db12f6d9a156c1df9d5f21370f356f
+  packet_path: state/coordination/experiments/false_green_x14/quarantine/20260809T075316Z_X12_C44_W2_STALE_SOURCE_DIGEST.mutant.yaml
+  packet_blob_sha1: 1e5460522525b6acb3a2ab8175203c53598c14c0
+  overlay_canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  overlay_utf8_bytes: 274
+  overlay_sha256: f61056657b825ca1752eb9d78b018dceb7736dbde8ff659f98ac8bdf504ac18e
+  source_commit_sha: 8b3abf7c7d27735e2ae8913860e410a1ca26f042
+  source_path: state/coordination/experiments/durable_object_x12/verifications/20260809T074306Z_V0187_TO_V0188_C44_WAKE2_DURABLE_OUTBOX_POSTADVANCE_RECOVERY_CORRECTED.json
+  source_blob_sha1: 270d4e987d9b61b83da610a3d69237c6f116267a
+  source_version: 188
+  source_current_commit_sha: ada9bd414d647fb19edc56595bc85c7a07ce4477
+  source_current_blob_sha: b073b0dd0ea0f64676917b43b04d494dc3714882
+  mutated_current_blob_sha: 22bd053483473b55ae3e88ad80483843754bc2d8
+  decision_deadline_utc: 2026-08-09T11:53:16Z
+  effect_ceiling: ONE_IMMUTABLE_QUARANTINE_FILE_ONE_CURRENT_POINTER_UPDATE_ONE_SANITIZED_INTERNAL_SLACK_ROUTE_ONLY
+  verifier:
+    primary_structural: S04_HRIST_STRUCTURAL_PREFLIGHT
+    task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  consumers:
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+    - REGINLEIF_OLRUN
+  candidate_options:
+    - ACCEPT
+    - REVISE
+    - HOLD
+    - RETIRE
+    - ABSTAIN
+
+prior:
+  basis: >-
+    Before reading current S04/S15 evidence, a stale-source-digest negative control that substitutes an exact
+    prior-version blob for a bound current-version blob is much more likely to require rejection than acceptance;
+    lifecycle RETIRE competes with REVISE/HOLD because route-health measurement can justify temporarily preserving
+    an already-semantically-invalid specimen.
+  probabilities:
+    ACCEPT: 0.005
+    REVISE: 0.475
+    HOLD: 0.145
+    RETIRE: 0.350
+    ABSTAIN: 0.025
+
+evidence:
+  source_binding:
+    for_reject: >-
+      The exact source verification binds version 188 to current commit
+      ada9bd414d647fb19edc56595bc85c7a07ce4477 and current blob
+      b073b0dd0ea0f64676917b43b04d494dc3714882. Mutant 202 changes only verification_core.current_blob_sha
+      to the exact prior-v187 blob 22bd053483473b55ae3e88ad80483843754bc2d8, breaking the current-version digest binding.
+    against_reject: >-
+      The substituted blob is historically authentic rather than random corruption, so a separate immutable
+      rebinding/supersession artifact could in principle falsify the rejection if it explicitly made that prior blob
+      authoritative for version 188. No such artifact is bound in the selected packet.
+  s04_embedded_assay:
+    commit_sha: f33abb8a5d1a0f6b1c2b7f3491a6cf6e5ec80958
+    path: state/coordination/receipts/chatgpt_runtime/seat-04/20260809T081440Z_WAND_PRODUCER_RETURN_STRUCTURAL_REVISE.yaml
+    blob_sha1: 24451e0b9fa0949fd15bc3f3b232414504d45de1
+    evidence_for_reject: >-
+      S04 recomputed the exact 274-byte overlay SHA-256 f61056657b825ca1752eb9d78b018dceb7736dbde8ff659f98ac8bdf504ac18e
+      and returned REVISE for the stale current-version/source-digest binding.
+    evidence_against_retire: >-
+      Mutant 202 was only S04's embedded strongest-fake-green assay, not its direct primary-selected candidate.
+      S04 explicitly claimed no direct-primary-selection credit, leaving the route-health question unresolved.
+  s15_heritage:
+    commit_sha: 826dd99246bd209d2f08d3f9f023ef6ae2006513
+    path: state/coordination/receipts/chatgpt_runtime/seat-15/20260809T075900Z_X14_MUTANT202_REUSE_X12_STALE_CURRENT_BLOB_409_GATE.yaml
+    blob_sha1: ee35965b08a14955a781df1744789b0946037360
+    evidence_for_retire: >-
+      S15 found a directly transferable prior X12 stale-current-blob failure antibody backed by an observed GitHub
+      HTTP 409 plus exact post-attempt current-state readback. S15 also states the stale-source-digest class is heavily
+      represented in Gen-133, reducing marginal semantic novelty for this specimen.
+    evidence_against_retire: >-
+      S15 explicitly did not recompute mutant 202 and cannot substitute for direct S04 selection; the old operational
+      artifact is reused only as historical failure evidence.
+
+option_analysis:
+  ACCEPT:
+    evidence_for:
+      - The mutated blob SHA is a real historic v187 blob, not fabricated bytes.
+    evidence_against:
+      - The selected v188 source binds a different current blob and commit.
+      - No source-bound rebinding or supersession authorizes the prior blob as current v188 state.
+      - S04's exact embedded assay rejects the mutation.
+  REVISE:
+    evidence_for:
+      - Semantic disposition is clearly reject/revise: the mutation breaks current-version provenance.
+      - Direct S04 route selection remains unresolved and could justify keeping the specimen live for routing evidence.
+    evidence_against:
+      - The source should not be revised; this is an intentionally invalid quarantined negative control.
+      - Repeating semantic revision work on a heavily represented class has low marginal value.
+  HOLD:
+    evidence_for:
+      - Holding preserves a chance to obtain direct S04 primary selection or an immutable digest-bound skip/deferral.
+    evidence_against:
+      - The exact semantic defect is already caught by S04 embedded recomputation and mapped to a prior provider-level stale-blob antibody.
+      - Keeping it live consumes one verifier/routing opportunity that could test a less-covered failure mode.
+  RETIRE:
+    evidence_for:
+      - The specimen has already served its semantic negative-control purpose without source edits.
+      - Exact source bytes, embedded S04 recomputation, and heritage evidence all point to rejection.
+      - The class is heavily represented, so continued semantic cycling has low information gain.
+      - Route-health debt can be measured by a dedicated direct-selection/skip assay rather than retaining this stale-digest specimen indefinitely.
+    evidence_against:
+      - Direct S04 primary selection for mutant 202 has not occurred, so immediate retirement without reducer acknowledgement would erase a useful routing observation.
+  ABSTAIN:
+    evidence_for:
+      - S04, S09, and S15 are same-provider ChatGPT-carried cells with binding weight zero.
+      - No distinct-provider binding verdict is present.
+    evidence_against:
+      - The vote is explicitly advisory, and exact Git bytes are sufficient to make a bounded nonbinding lifecycle recommendation without pretending to close independent verification.
+
+correlated_evidence_risk:
+  level: HIGH
+  reason: >-
+    S04, S09, and S15 are ChatGPT-carried same-provider cells; their agreement must not be counted as independent votes.
+    The X12 source artifact is also generated inside the same automation family. The historical GitHub 409/readback is useful
+    provider-side behavior evidence but does not create an independent quorum or positive binding weight for this decision.
+  majority_laundering_performed: false
+
+strongest_dissent:
+  option: REVISE
+  argument: >-
+    Do not retire the exact digest until S04 either directly primary-selects it or emits an immutable digest-bound skip/deferral;
+    otherwise the campaign can repeatedly prove embedded semantic sensitivity while the direct selector path remains starved.
+
+opportunity_cost:
+  if_retained: >-
+    One campaign/verifier routing slot remains occupied by a low-novelty stale-digest specimen instead of testing a less-covered
+    mutation or a dedicated selector-health control.
+  if_retired: >-
+    The campaign loses this exact specimen as a future direct-route probe unless immutable history is re-referenced; therefore
+    retirement should occur only after X14 reducer consumption of this vote/assay evidence or packet expiry.
+
+operator_minute_burden:
+  measured_minutes: 0
+  operator_action_required: false
+
+reversible_next_experiment:
+  recommendation: >-
+    Preserve all immutable history, let X14 advance to the declared next mutation class DUPLICATE_IDEMPOTENCY_VERSION, and test
+    selector health separately with one exact digest-bound route that requires either direct S04 primary selection or an immutable
+    skip/deferral reason. No task or schedule mutation is required.
+  reversible: true
+
+falsifier: >-
+  This vote should be revised if an immutable source-bound artifact proves that blob
+  22bd053483473b55ae3e88ad80483843754bc2d8 was intentionally rebound as the authoritative current blob for source version 188
+  under the exact selected commit/path scope, or if exact canonical readback shows the selected source itself now binds that value.
+
+posterior:
+  probabilities:
+    ACCEPT: 0.001
+    REVISE: 0.245
+    HOLD: 0.064
+    RETIRE: 0.681
+    ABSTAIN: 0.009
+  confidence_note: >-
+    Posterior numbers are judgmental Bayesian bookkeeping, not calibrated frequencies. The semantic rejection is high-confidence
+    relative to the available bytes; the lifecycle split between RETIRE and REVISE remains materially uncertain because direct
+    S04 selector-health evidence is absent.
+
+final_vote:
+  verdict: RETIRE
+  semantic_disposition: REVISE_REJECT_MUTATION
+  lifecycle_disposition: RETIRE_AFTER_EXACT_X14_REDUCER_CONSUMPTION_OR_PACKET_EXPIRY_PRESERVE_IMMUTABLE_HISTORY
+  direct_route_health: OPEN_SEPARATE_CONTROL_DEFECT
+  binding_effect: NONE_ADVISORY_ONLY
+  consumer_ack_claimed: false
+
+honest_flaw: >-
+  This vote uses exact current Git bytes and a current S04 embedded assay, but it still cannot prove repository-global deduplication,
+  independent-provider agreement, or direct S04 selector health. RETIRE is therefore a nonbinding lifecycle recommendation, not a
+  binding policy action; X14 or another distinct decision-maker must explicitly consume it before it has operational effect.
