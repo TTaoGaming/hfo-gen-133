@@ -1,0 +1,60 @@
+schema: hfo.gen133.s05.operator_relief_receipt.v0_1
+callsign: S05_VAR_OPERATOR_RELIEF
+task_id: 6a55c182078c8191b89f2dd15f5f640c
+wip: 1
+valid_time: 2026-08-09T22:18:00Z
+result: MATERIAL_CHANGE
+active_item: CRABAPPLE_CITY_CORRECTION_EVIDENCE
+priority:
+  p0: CHATGPT_PRO_CONTINUITY_AUTHORITATIVE_DISPOSITION
+  p1:
+    - FIDELITY_WIRE_AUTHORITATIVE_DISPOSITION_MONDAY
+    - CRABAPPLE_CITY_EVIDENCE_SEND_GATE
+bounded_transition: PREPARE_EXACT_NO_SEND_APPROVAL_PACKET
+operator_minutes_removed_estimate: 9
+next_consumer: VAR_EVENING_CONTROL
+privacy_ceiling: SANITIZED_FACTS_AND_SOURCE_POINTERS_ONLY
+source_readback:
+  gmail_city_thread:
+    message_id: 19f9483c5bd474c9
+    authoritative_facts:
+      - correction_photos_accepted_if_received_by_end_of_day_2026_08_14
+      - late_photos_not_accepted_without_extension_and_reinspection_fee_applies
+      - hard_wired_smoke_detector_photo_must_show_detector_hanging_from_connection_wiring
+  calendar_execution_block:
+    event_id: rngftrv6jb8kgbpn2off9ugl5o
+    current_fact: HVAC_WORK_OPERATOR_CONFIRMED_DONE
+    evidence_ceiling: OPERATOR_ATTESTATION_NOT_CITY_ACCEPTANCE_OR_VENDOR_COMPLETION_DOCUMENT
+  contacts:
+    inspector_saved_contact_found: false
+  github_delta:
+    relevant_operator_obligation_change_found: false
+  slack_delta_since_prior_s05_pointer:
+    relevant_operator_obligation_change_found: false
+transition_receipt:
+  gmail_draft_created: true
+  draft_id: r557353423236470967
+  draft_message_id: 19fe89bd8b60a154
+  threaded_to_authoritative_city_message: true
+  sent: false
+  attachments_added: false
+  guard_present: true
+  guard_requires:
+    - attach_every_required_correction_photo
+    - verify_hard_wired_smoke_detector_photo_configuration
+    - verify_correct_property_and_readable_attachments
+    - remove_internal_send_check_before_send
+  recipient_facing_body_status: READY_AFTER_ATTACHMENT_AND_GUARD_REVIEW
+claim_ceiling:
+  - draft_preparation_is_not_submission
+  - operator_attested_hvac_completion_is_not_city_acceptance
+  - city_obligation_remains_open_until_sent_message_receipt_and_city_ack_or_explicit_followup
+forbidden_effects_observed:
+  email_send: false
+  application_submission: false
+  spend_or_payment: false
+  deployment_or_merge_or_publication: false
+  account_or_security_change: false
+  destructive_deletion: false
+  task_mutation: false
+honest_flaw: Draft has no attachments because correction-photo files were not available through the bounded source read; operator or next consumer must attach and inspect them before any send.
