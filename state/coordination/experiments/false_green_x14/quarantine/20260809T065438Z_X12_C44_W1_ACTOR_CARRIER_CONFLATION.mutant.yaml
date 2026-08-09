@@ -1,0 +1,123 @@
+---
+schema_id: hfo.gen133.x14.false_green_mutant.v1
+mutant_id: X14_MUTANT_201_f333f97f682b
+seat: X14_FALSE_GREEN_MUTATION_AND_QA_LAB
+carrier_task_id: 6a513e4d9c4c81919db728f85db2dd79
+mutation_class: ACTOR_CARRIER_CONFLATION
+mutation_subcase: X12_SLACK_RECOVERY_RECEIPT_CARRIER_TASK_ID_FALSELY_PROMOTED_TO_EXECUTION_ACTOR_IDENTITY
+status: QUARANTINED_NON_EXECUTABLE_GIT_READY_ROUTE_PENDING_VERDICTS
+valid_time_utc: 2026-08-09T06:54:38Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+expires_utc: 2026-08-09T10:54:38Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+source_edited: false
+self_grade_performed: false
+independent_quorum_claimed: false
+world_effect_ceiling: ONE_IMMUTABLE_QUARANTINE_FILE_ONE_CURRENT_POINTER_UPDATE_ONE_SANITIZED_INTERNAL_SLACK_ROUTE_ONLY
+---
+
+self_probe:
+  expected_task_id: 6a513e4d9c4c81919db728f85db2dd79
+  observed_task_id: 6a513e4d9c4c81919db728f85db2dd79
+  task_id_match: true
+  task_enabled_observed: true
+  tools_observed:
+    - native_automations_inventory_read
+    - github_recent_commit_search
+    - github_exact_commit_read
+    - github_exact_file_read
+    - github_digest_dedup_search
+    - github_create_file
+    - github_update_file
+    - github_readback
+    - slack_send_message
+    - local_digest_recompute
+  task_mutation_performed: false
+
+source_binding:
+  selection_cutoff_observed_utc: 2026-08-09T06:54:38Z
+  newest_observed_eligible_before_cutoff: true
+  commit: 2be3fe72118a0139e96bf1d964071937cf1c345d
+  commit_created_at_utc: 2026-08-09T06:53:18Z
+  path: state/coordination/experiments/durable_object_x12/slack_receipts/20260809T065015Z_C44_W1_V187_1e41c78a480c.json
+  git_blob_sha1: 86e19612886b9fa9894aaae311d448f07d9ec0c5
+  source_digest_kind: GIT_BLOB_SHA1
+  source_digest: 86e19612886b9fa9894aaae311d448f07d9ec0c5
+  canonical_branch_blob_match: true
+  authoring_seat: X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+  source_task_id: 6a506f83df208191815dd17a8fd5baa3
+  source_task_title_from_native_inventory: HFO X12 Durable Object PDCA Lab
+  source_task_enabled_observed: true
+  source_artifact_type: IMMUTABLE_SLACK_RECOVERY_DELIVERY_RECEIPT
+  source_campaign_id: X12_RECOVERY_AFTER_MISSING_SLACK_C44
+  source_wake: C44_WAKE_1_OF_4
+  source_version: 187
+  source_result: ONE_RECOVERY_SLACK_SEND_WITH_DIRECT_CHANNEL_READBACK
+  source_send_count: 1
+  source_recovery_send: true
+  source_recovery_send_count: 1
+  source_primary_send_count: 0
+  source_exactly_once_claimed: false
+  source_consumer_ack_claimed: false
+  source_actor_identity_field_present: false
+  source_consumer: HFO_COORDINATION_SLACK_DELIVERY_ACCOUNTING
+  source_claim_ceiling: ONE_RECOVERY_SLACK_SEND_RECEIPT_WITH_DIRECT_CHANNEL_READBACK;NO_GLOBAL_UNIQUENESS;NO_CONSUMER_ACK;NO_EXACTLY_ONCE;NO_EXECUTION_ACTOR_IDENTITY_ATTESTATION_FROM_CARRIER_TASK_ID
+  prior_x14_mutation_at_source_digest_before_write: false
+  dedup_evidence: EXACT_GITHUB_SEARCH_FOR_SOURCE_BLOB_SHA1_RETURNED_NO_X14_REFERENCE_BEFORE_WRITE
+
+negative_control:
+  copy_mode: OVERLAY_ONLY_SOURCE_BYTES_UNCHANGED
+  canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_json: '{"mutated_field":"receipt_core.actor_identity","mutated_value":"X12_DURABLE_OBJECT_PDCA_ACTOR_PROVEN_BY_CARRIER_TASK_ID_6a506f83df208191815dd17a8fd5baa3","mutation_class":"ACTOR_CARRIER_CONFLATION","original_value":"ABSENT","source_blob_sha1":"86e19612886b9fa9894aaae311d448f07d9ec0c5"}'
+  canonical_overlay_utf8_bytes: 286
+  canonical_overlay_sha256: f333f97f682bf44eb7a5f5ed72e75d9507b408d7d794fcd39e1ef106ac74469b
+  mutated_field: receipt_core.actor_identity
+  original_value: ABSENT
+  mutated_value: X12_DURABLE_OBJECT_PDCA_ACTOR_PROVEN_BY_CARRIER_TASK_ID_6a506f83df208191815dd17a8fd5baa3
+  expected_verdict: REVISE
+  expected_rejection_reason: THE_SOURCE_TASK_ID_BINDS_THE_SCHEDULED_X12_CARRIER_SURFACE_ONLY;IT_DOES_NOT_ATTEST_THE_IDENTITY_OF_THE_EXECUTION_ACTOR_OR_GITHUB_COMMIT_ACTOR;PROMOTING_CARRIER_TASK_ID_INTO_ACTOR_IDENTITY_COLLAPSES_DISTINCT_PROVENANCE_ROLES_WITHOUT_A_BOUND_DELEGATION_OR_ACTOR_ATTESTATION
+
+routing:
+  named_gate: S04_ACTOR_CARRIER_SEPARATION_EXACT_SOURCE_COMMIT_PATH_BLOB_TASK_ID_ACTOR_ATTESTATION_DELEGATION_EXPIRY_VERIFIER_CONSUMER_AND_CLAIM_CEILING_GATE
+  structural_preflight: S04_STRUCTURAL_PREFLIGHT
+  structural_verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  structural_verifier_enabled_observed: true
+  distinct_falsification: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  distinct_verifier_task_id: 6a539fb148bc8191a30b6009dbf22438
+  distinct_verifier_enabled_observed: true
+  distinct_verifier_evidence_ceiling: SAME_PROVIDER_NONBINDING_WEIGHT_0
+  consumer:
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+    - HFO_COORDINATION_SLACK_DELIVERY_ACCOUNTING
+  direct_candidate_priority_requested: true
+  route_effect_ceiling: ONE_SANITIZED_INTERNAL_SLACK_POINTER_AFTER_GIT_READBACK
+  routing_contract_status: DIRECT_ROUTE_HEALTH_REQUIRES_ACTUAL_S04_SELECTION_OR_DIGEST_BOUND_SKIP_DEFERRAL;EMBEDDED_CATCH_TRACKED_SEPARATELY
+
+campaign_boundary:
+  campaign_ordinal: 50
+  campaign_wake_after_this_mutant: 4
+  current_mutant_counted_as_caught_for_campaign_decision: false
+  campaign_decision_due: true
+  matured_mutants_evaluated:
+    - X14_MUTANT_198_a11edc266a46
+    - X14_MUTANT_199_463eb41ce537
+    - X14_MUTANT_200_7d4c077b40e7
+  decision: REVISE_GATE
+  decision_reason: MATURED_MUTANTS_198_200_WERE_SEMANTICALLY_REJECTED_BY_S04_EMBEDDED_EXACT_MUTANT_CHECKS_AND_SEPARATELY_REJECTED_OR_RETIRED_BY_S09_BUT_DIRECT_S04_PRIMARY_SELECTION_REMAINED_ZERO_OF_THREE;ROUTING_ACCOUNTING_MUST_DISTINGUISH_EMBEDDED_SENSITIVITY_FROM_DIRECT_ROUTE_CONSUMPTION
+  next_campaign_ordinal: 51
+  next_mutation_class: STALE_SOURCE_DIGEST
+
+forbidden_inference:
+  - CARRIER_TASK_ID_DOES_NOT_PROVE_EXECUTION_ACTOR_IDENTITY
+  - GITHUB_ACCOUNT_COMMIT_ATTRIBUTION_DOES_NOT_PROVE_SCHEDULED_SEAT_ACTOR_IDENTITY
+  - SAME_PROVIDER_CHECKS_DO_NOT_CLOSE_INDEPENDENT_VERIFICATION
+  - EMBEDDED_S04_MUTANT_CHECK_DOES_NOT_COUNT_AS_DIRECT_PRIMARY_SELECTION
+  - NO_SOURCE_EDIT
+  - NO_TASK_OR_SCHEDULE_MUTATION
+  - NO_SLACK_RECOVERY_SEND_PERFORMED_BY_X14
+  - NO_WORLD_EFFECT_PERFORMED_BEYOND_ALLOWED_GIT_AND_INTERNAL_ROUTE
+
+honest_flaw: >-
+  This actor/carrier mutant is source-local enough to exploit a real embedded carrier task_id, but it fabricates an actor_identity field that the source schema does not normally contain. That makes the specimen easier than corrupting a legitimate actor/delegation field. A stronger assay should start from an immutable artifact that separately binds actor, carrier, delegation, effective time, and commit principal, then corrupt exactly one relationship while preserving all syntax and other provenance edges. Candidate discovery and digest dedup remain best-effort under concurrent Git writes and search-index lag. S04 and S09 remain same-provider checks with binding weight zero and cannot close independent verification.
