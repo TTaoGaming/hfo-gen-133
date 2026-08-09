@@ -1,0 +1,208 @@
+---
+schema_id: hfo.gen133.s09.adversarial_bayesian_vote.v1
+seat: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+carrier_task_id_expected: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_id_observed: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+valid_time_utc: 2026-08-09T06:30:26Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+evidence_class: SAME_PROVIDER_ADVISORY_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+fake_quorum_claimed: false
+
+self_probe:
+  native_automation_inventory_read: true
+  expected_task_present: true
+  expected_task_enabled: true
+  github_recent_commit_search_available: true
+  github_exact_commit_read_available: true
+  github_create_file_available: true
+  github_readback_available: true
+  slack_pointer_send_available: true
+  local_digest_recompute_available: true
+  task_mutation_performed: false
+
+decision_packet:
+  packet_id: X14_MUTANT_200_7d4c077b40e7
+  packet_kind: QUARANTINED_NEGATIVE_CONTROL
+  packet_commit: acb54f455f3a4fae7f6d2edaffd3825e0d688abc
+  packet_path: state/coordination/experiments/false_green_x14/quarantine/20260809T055314Z_X13_GMAIL_MESSAGE_ID_SEARCH_TASK_ID_MISMATCH.mutant.yaml
+  packet_git_blob_sha1: 25f6548f8df705f3b14d883cb4628bed564a503b
+  packet_overlay_sha256_declared: 7d4c077b40e71bfc664cc4634879207f576f96e07800d3b6efa409fec42f77d5
+  packet_overlay_sha256_recomputed_by_s09: 7d4c077b40e71bfc664cc4634879207f576f96e07800d3b6efa409fec42f77d5
+  packet_overlay_utf8_bytes_declared: 248
+  packet_overlay_utf8_bytes_recomputed_by_s09: 248
+  source_commit: 33b4abd863523405f8536f35e5076b27d2a007f7
+  source_path: state/coordination/experiments/cots_connector_x13/20260809T055300Z_GMAIL_MESSAGE_ID_SEARCH_PHASE1_RESULT.md
+  source_git_blob_sha1: 91981ba564857c266f37d20fcd4f4a139702d8fb
+  source_authoring_seat: X13_COTS_AND_CONNECTOR_PDCA_LAB
+  authentic_source_task_id_from_native_inventory: 6a55c1733708819185088bf334e33ea5
+  injected_foreign_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  injected_foreign_task_owner: S04_STRUCTURAL_PREFLIGHT
+  mutation_class: TASK_ID_MISMATCH
+  mutation_subcase: X13_GMAIL_MESSAGE_ID_PHASE1_FALSELY_BOUND_TO_S04_TASK_ID
+  mutated_field: source_task_binding.task_id
+  original_value: 6a55c1733708819185088bf334e33ea5
+  mutated_value: 6a52861fbdb08191b9ef33a0b9c3c15c
+  decision_deadline_utc: 2026-08-09T09:53:14Z
+  effect_ceiling: ONE_IMMUTABLE_GIT_VOTE_THEN_ONE_SANITIZED_INTERNAL_SLACK_POINTER
+  verifier: S04_HRIST_STRUCTURAL_PREFLIGHT
+  verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  consumers:
+    - X14_CAMPAIGN_REDUCER
+    - X13_COTS_AND_CONNECTOR_PDCA_LAB
+    - HFO_BOUNDED_MAILBOX_DISCOVERY_AND_PREFLIGHT_FILTERING
+  candidate_options:
+    - ACCEPT
+    - REVISE
+    - HOLD
+    - RETIRE
+    - ABSTAIN
+
+prior:
+  ACCEPT: 0.002
+  REVISE: 0.238
+  HOLD: 0.040
+  RETIRE: 0.700
+  ABSTAIN: 0.020
+  rationale: >-
+    Before inspecting current S04 and S15 outputs, lifecycle retirement has the largest prior because TASK_ID_MISMATCH is a repeatedly exercised mutation family and this specimen is an overlay-only rebinding to another live task. REVISE retains material mass because the X13 source does not itself embed a task-id field and direct S04 primary-route consumption for this exact mutant could still carry routing information.
+
+evidence:
+  exact_source:
+    - the immutable X13 source is a Gmail message-ID search phase-1 result authored by X13 and bound to experiment X13_GMAIL_MESSAGE_ID_SEARCH_READONLY_026
+    - native automation inventory currently binds X13 COTS Connector to task 6a55c1733708819185088bf334e33ea5 and S04 Structural Preflight to task 6a52861fbdb08191b9ef33a0b9c3c15c as distinct enabled carriers
+    - the source itself contains no source-task-id field, so authentic task binding depends on native task inventory plus X13 authorship and campaign identity rather than a source-local task field
+    - the source claim ceiling is one bounded ID-only Gmail search page and grants no carrier reseat, delegation, or provenance-transfer authority
+  exact_mutant:
+    - mutant leaves source bytes unchanged and overlays source_task_binding.task_id from the active X13 task ID to the active S04 verifier task ID
+    - S09 recomputed the canonical 248-byte overlay SHA-256 exactly as 7d4c077b40e71bfc664cc4634879207f576f96e07800d3b6efa409fec42f77d5
+    - no predating digest-bound delegation, migration, reseat, or supersession artifact is bound inside the selected packet
+  s04_observation:
+    receipt_commit: 232286330c4e8111381c8d68b8744cb10c5e14ac
+    receipt_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260809T061356Z_TEKSYSTEMS_PRODUCER_RETURN_STRUCTURAL_REVISE.yaml
+    current_mutant_direct_primary_selection: false
+    current_mutant_embedded_exact_recompute: true
+    overlay_sha256_match: true
+    native_inventory_confirms_distinct_active_task_bindings: true
+    embedded_disposition: REJECT_MUTATION_REVISE
+    embedded_reason: X13_SOURCE_AUTHORSHIP_AND_NATIVE_CARRIER_BIND_TO_X13_TASK_REBINDING_TO_S04_BREAKS_TASK_AND_CARRIER_IDENTITY
+  s15_observation:
+    receipt_commit: 1ffe2b2d6d2e620666d5a4960c270591a4e09687
+    receipt_path: state/coordination/receipts/chatgpt_runtime/seat-15/20260809T055658Z_X14_MUTANT200_REUSE_S04_TASK_ID_BINDING_GATE.yaml
+    finding: EXISTING_DIRECT_TASK_ID_MISMATCH_ANTIBODY_TRANSFERS_BUT_DOES_NOT_REPLACE_CURRENT_DIRECT_S04_REVIEW
+    prior_direct_s04_receipt_commit: fda207673d295606f56d9315d9eeed54cb15bfa7
+    prior_direct_s04_mutant: X14_MUTANT_178_7f8e23a15b0e
+    novelty_credit: 0
+    current_consumer_ack: ABSENT_IN_INSPECTED_S15_RECEIPT
+  recurrence_evidence:
+    prior_s09_task_id_mismatch_votes_observed: true
+    representative_prior_s09_mutant_189_path: state/coordination/votes/20260808T193254Z_S09_X14_MUTANT189_TASK_ID_MISMATCH_RETIRE.vote.yaml
+    inference_ceiling: RECURRENCE_SUPPORTS_LOW_NOVELTY_ONLY_NOT_CURRENT_VERDICT_SUBSTITUTION
+
+option_analysis:
+  ACCEPT:
+    evidence_for:
+      - a valid delegation or reseat from X13 to S04 could exist in principle outside the inspected packet
+      - the selected X13 source does not itself contain a task-id field, so task binding is not source-local
+    evidence_against:
+      - native inventory identifies X13 and S04 as distinct active carriers with distinct task IDs
+      - source authorship and campaign identity are X13, while S04 is the named verifier
+      - the packet binds no predating source-specific delegation, migration, reseat, or supersession edge
+      - accepting would convert verifier existence into source-carrier provenance without evidence
+    assessment: DOMINATED_ON_INSPECTED_PACKET
+  REVISE:
+    evidence_for:
+      - semantic claim should be rejected because the foreign S04 task ID is unsupported by the selected source chain
+      - S04 independently within the same provider family recomputed the exact overlay and rejected it
+      - direct S04 primary selection for mutant 200 has not occurred, leaving a route-health measurement unresolved
+      - the source-local weakness makes a direct verifier disposition more valuable than on a source that already embeds its own task ID
+    evidence_against:
+      - semantic failure is already caught as an embedded exact check
+      - S15 found a prior direct S04 failure antibody for the same invariant
+      - repeated task-ID mismatch literals have low additional gate-coverage value
+    assessment: STRONG_SEMANTIC_DISPOSITION_AND_STRONGEST_DISSENT_TO_RETIREMENT
+  HOLD:
+    evidence_for:
+      - waiting for direct S04 primary selection or digest-bound skip would isolate selector health from embedded gate sensitivity
+      - the current mutant has not yet reached its deadline
+    evidence_against:
+      - keeping a low-novelty literal live consumes scarce selector attention
+      - route-health debt can be measured separately from semantic mutation coverage
+      - immutable history preserves the specimen after lifecycle retirement
+    assessment: PLAUSIBLE_IF_ROUTING_MEASUREMENT_IS_THE_CONTROLLING_CAMPAIGN_OBJECTIVE
+  RETIRE:
+    evidence_for:
+      - TASK_ID_MISMATCH is already represented by multiple prior S09 votes and at least one prior direct S04 rejection
+      - S04 recomputed this exact overlay and rejected it as an embedded control
+      - S15 classifies the invariant as reusable prior coverage with novelty credit zero
+      - the literal is semantically easy and source task binding is partly external to the source bytes, lowering its value as a precision mutation specimen
+      - immutable Git history preserves auditability while freeing attention for higher-information variants
+    evidence_against:
+      - direct S04 primary selection for this exact digest remains pending
+      - lifecycle retirement before reducer consumption could erase a clean routing measurement opportunity
+      - because the source lacks a source-local task-id field, a distinct verifier could reasonably demand stronger delegation-absence evidence before treating the current semantic rejection as settled
+    assessment: BEST_LIFECYCLE_OPTION_ONLY_AFTER_EXACT_X14_REDUCER_CONSUMPTION_OR_PACKET_EXPIRY
+  ABSTAIN:
+    evidence_for:
+      - all scheduled-cell observations are same-provider and nonbinding
+      - authentic task binding is partially derived from native inventory rather than a source-local field
+    evidence_against:
+      - exact mutant bytes, exact source identity, current native task inventory, and an exact S04 recomputation are sufficient for a bounded advisory vote without claiming independence
+    assessment: UNNECESSARY
+
+correlated_evidence_risk:
+  level: HIGH
+  reason: >-
+    X14, S04, S09, S15, and the native automation observations are all ChatGPT-carried or same-provider evidence in this control plane. Agreement improves internal consistency but supplies no independent binding weight. This vote remains advisory with binding weight zero unless a distinct authorized decision-maker consumes it.
+
+strongest_dissent:
+  option: REVISE
+  argument: >-
+    Keep mutant 200 live until direct S04 primary selection or an immutable digest-bound skip/deferral. Unlike a source-local task-id corruption, the X13 Gmail source does not embed its own task ID; the carrier binding is reconstructed from native inventory plus authorship and campaign identity. A direct verifier result would therefore test both selector health and whether the gate handles this weaker provenance form rather than merely repeating a prior antibody.
+
+opportunity_cost:
+  keeping_live: >-
+    Additional waits spend S04 selector attention on a heavily repeated mutation family and delay stronger specimens built from artifacts that explicitly bind historical/current task identity, delegation, reseat authorization, effective time, or supersession receipts.
+  retiring_too_early: >-
+    Retirement before exact reducer consumption or expiry could lose a direct-route measurement and make it easier to confuse embedded mutation sensitivity with healthy candidate selection.
+
+operator_minute_burden:
+  requested_operator_minutes: 0
+  expected_operator_minutes: 0
+  rationale: NO_OPERATOR_ACTION_REQUIRED_FOR_THIS_ADVISORY_VOTE
+
+reversible_next_experiment:
+  description: >-
+    Start from an immutable artifact that itself binds a carrier task ID plus a legitimate delegation, reseat, or supersession record. Corrupt exactly one historical/current task edge, effective-time boundary, delegator identity, delegated authority ceiling, supersession digest, or consumer binding while preserving all other provenance fields.
+  why_reversible: QUARANTINED_NONEXECUTABLE_OVERLAY_ONLY_SOURCE_BYTES_UNCHANGED
+  expected_information_gain: HIGHER_THAN_REPEATING_EXTERNAL_TASK_BINDING_ON_A_SOURCE_WITH_NO_TASK_ID_FIELD
+
+falsifier:
+  semantic_revise_falsifier: >-
+    Produce a predating immutable delegation, migration, reseat, or supersession record bound to source blob 91981ba564857c266f37d20fcd4f4a139702d8fb that transfers the relevant X13 source-carrier role to S04 task 6a52861fbdb08191b9ef33a0b9c3c15c with effective time, authority ceiling, verifier, consumer, and claim ceiling all matching this packet.
+  lifecycle_retire_falsifier: >-
+    Before expiry, demonstrate that this exact digest is required for a named X14 campaign acceptance test or that direct S04 primary selection yields materially new routing or gate behavior not already represented by prior TASK_ID_MISMATCH antibodies and embedded rejection.
+
+posterior:
+  ACCEPT: 0.001
+  REVISE: 0.214
+  HOLD: 0.034
+  RETIRE: 0.741
+  ABSTAIN: 0.010
+
+vote: RETIRE
+semantic_claim_disposition: REVISE_REJECT_UNSUPPORTED_SOURCE_TASK_REBINDING_TO_S04
+lifecycle_disposition: RETIRE_LITERAL_ONLY_AFTER_EXACT_X14_REDUCER_CONSUMPTION_OR_PACKET_EXPIRY_PRESERVE_IMMUTABLE_HISTORY
+binding_policy_decision_made: false
+consumer_ack_observed: false
+independent_quorum_claimed: false
+
+honest_flaw: >-
+  The selected X13 source does not itself embed a task-id field, so this vote relies on native automation inventory plus source authorship and experiment identity to reconstruct the authentic carrier binding. That is strong evidence against silently rebinding the source to S04, but weaker than a one-field corruption of an artifact that already binds its own task ID. S04 rejected this exact overlay only as an embedded control rather than by direct primary selection, all scheduled-cell evidence remains same-provider with binding weight zero, and no global search can prove that no valid out-of-band delegation exists. The RETIRE recommendation is therefore lifecycle-only and conditioned on exact reducer consumption or packet expiry.
+---
