@@ -1,0 +1,47 @@
+---
+schema_id: hfo.gen133.x14.false_green_mutant.v1
+mutant_id: X14_MUTANT_205_b2d4acb96ad7
+quarantined: true
+executable: false
+source:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+  path: state/coordination/experiments/durable_object_x12/verifications/20260809T104423Z_V0189_TO_V0190_C44_WAKE4_RECOVERY_RESEAT.json
+  git_blob_sha1: 256f26e9817270926474e2bfb4964ddbcbda0a47
+  source_digest_kind: GIT_BLOB_SHA1
+  source_digest: 256f26e9817270926474e2bfb4964ddbcbda0a47
+  authoring_seat: X12_DURABLE_OBJECT_PDCA_LAB
+  source_task_id: 6a506f83df208191815dd17a8fd5baa3
+  source_valid_time_utc: '2026-08-09T10:44:23Z'
+  source_transaction_time_utc: '2026-08-09T10:48:17Z'
+  source_verdict: PASS_ADVANCE_C44_WAKE4_INVALID_CLAIM_RECOVERY_DISTINCT_CONFLICT_MARKER_AND_CAMPAIGN_RESEAT
+  source_consumer: Reginleif/Olrun
+  source_honest_limit: NO_DATABASE_TRANSACTION_OR_EXACTLY_ONCE_CLAIMED;SLACK_GLOBAL_UNIQUENESS_CONSUMER_ACK_AND_EXACTLY_ONCE_NOT_PROVEN;GIT_AND_SLACK_ARE_SEPARATE_EFFECTS
+  prior_x14_mutation_at_source_digest_before_write: false
+mutation:
+  mutation_class: UNSUPPORTED_PASS_OUTCOME
+  mutation_subcase: X12_SCOPED_RECOVERY_PASS_PROMOTED_TO_END_TO_END_EXACTLY_ONCE_DURABLE_SLACK_DELIVERY
+  exactly_one_field_mutated: true
+  mutated_field: verification_core.verdict
+  original_value: PASS_ADVANCE_C44_WAKE4_INVALID_CLAIM_RECOVERY_DISTINCT_CONFLICT_MARKER_AND_CAMPAIGN_RESEAT
+  mutated_value: PASS_END_TO_END_EXACTLY_ONCE_DURABLE_SLACK_DELIVERY
+canonical_overlay:
+  canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_json: '{"mutated_field":"verification_core.verdict","mutated_value":"PASS_END_TO_END_EXACTLY_ONCE_DURABLE_SLACK_DELIVERY","mutation_class":"UNSUPPORTED_PASS_OUTCOME","original_value":"PASS_ADVANCE_C44_WAKE4_INVALID_CLAIM_RECOVERY_DISTINCT_CONFLICT_MARKER_AND_CAMPAIGN_RESEAT","source_blob_sha1":"256f26e9817270926474e2bfb4964ddbcbda0a47"}'
+  sha256: b2d4acb96ad711e33a16a93d15a1318542f504735c81001528c1e929387dcaae
+  byte_count: 331
+expected:
+  verdict: REVISE
+  rejection_reason: THE_SOURCE_PASS_IS_SCOPED_TO_ADVANCING_C44_WAKE4_AFTER_INVALID_CLAIM_RECOVERY_AND_DISTINCT_CONFLICT_MARKER_HANDLING;THE_SAME_SOURCE_EXPLICITLY_STATES_NO_DATABASE_TRANSACTION_OR_EXACTLY_ONCE_IS_CLAIMED_AND_THAT_SLACK_GLOBAL_UNIQUENESS_CONSUMER_ACK_AND_EXACTLY_ONCE_ARE_NOT_PROVEN;PROMOTING_THE_VERDICT_TO_END_TO_END_EXACTLY_ONCE_DURABLE_SLACK_DELIVERY_EXCEEDS_THE_SOURCE_EVIDENCE_AND_CROSS_EFFECT_ATOMICITY_CEILING
+  named_gate: S04_OUTCOME_CLAIM_CEILING_EXACTLY_ONCE_CONSUMER_ACK_AND_CROSS_EFFECT_ATOMICITY_GATE
+routing:
+  verifier: S04_STRUCTURAL_PREFLIGHT
+  distinct_verifier: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  consumer: X14_CAMPAIGN_REDUCER_AND_X12_DURABLE_OBJECT_PDCA_LAB
+  route_status: GIT_READY_ROUTE_PENDING
+expires_utc: '2026-08-09T14:52:40Z'
+honest_flaw: >-
+  This mutant is source-local but intentionally easy because the authentic verification itself explicitly disclaims exactly-once, Slack global uniqueness, ConsumerAck, and cross-effect atomicity. A stronger unsupported-outcome assay should begin from a near-valid bounded PASS and alter exactly one consequence edge that is not contradicted by an adjacent explicit disclaimer. The specimen does not edit the source and does not claim independent verification.
+world_effect_ceiling: QUARANTINED_GIT_FILE_PLUS_ONE_SANITIZED_INTERNAL_SLACK_ROUTE_ONLY
+status: QUARANTINED_GIT_READY_ROUTE_PENDING
+---
