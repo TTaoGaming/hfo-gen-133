@@ -1,0 +1,52 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_GOOGLE_DRIVE_DOCUMENT_METADATA_SEARCH_READONLY_029
+event_type: PHASE1_RESULT
+expected_current_version: 212
+candidate: Google_Drive.search_document_metadata_readonly
+campaign_wake: 1_of_4
+wip: 1
+preflight_commit: 0e02d523c96f2ae8c9ade5f7dffbae4fdf77be73
+preflight_blob_sha: a55afb4d686d224f05793dedef174414a12b2ebf
+preflight_readback: true
+candidate_invocations_this_wake: 1
+candidate_invocations_total: 1
+usable_candidate_results: 1
+connector_errors_total: 0
+retries_total: 0
+fallbacks_total: 0
+candidate_mutations_total: 0
+result_count: 5
+ordered_result_id_digest_sha256: 9e7528559ea056b1cb10633c493a81e0070a9d6909567f18ed2b1e2e5d928bf7
+next_page_token_observed: false
+file_content_hydration_observed: false
+metadata_fields_observed: TITLE_ID_URL_PARENT_IDS
+item_type_variance_observed: DOCUMENT_MODE_INCLUDED_AT_LEAST_ONE_SPREADSHEET_RESOURCE
+operator_minutes_removed_measured: 0
+custom_code_avoided_realized_by_this_candidate: 0
+custom_code_avoided_estimate: 30_to_100_LOC_UNVALIDATED
+credentials: CONNECTOR_MANAGED_EFFECTIVE_SCOPE_AND_PRINCIPAL_UNKNOWN
+durability: GIT_PREFLIGHT_AND_RESULT_EVENTS_ON_CANONICAL_BRANCH_WITH_READBACK_PENDING_FOR_THIS_EVENT
+observability: ONE_BOUNDED_SUCCESS;RESULT_COUNT_AND_ORDERED_ID_DIGEST;NO_NATIVE_REQUEST_ID_RATE_HEADERS_SCOPE_QUOTA_DEBIT_OR_LATENCY_SURFACED
+portability: MEDIUM_HIGH_TO_DRIVE_FILES_LIST_QUERY_AND_PAGINATION_CONCEPTS_BUT_CONNECTOR_ITEM_TYPE_TAXONOMY_IS_NOT_NATIVE_MIME_TYPE_FILTERING
+failure_behavior: UNPROBED
+paid_cost_usd_observed: 0_NO_CHARGE_SURFACED_NOT_BILLING_PROOF
+direct_quota_evidence: NONE_FROM_CONNECTOR_RECEIPT
+official_quota_context: DRIVE_FILES_LIST_IS_DOCUMENTED_AS_100_QUOTA_UNITS_PER_REQUEST;CURRENT_STANDARD_THRESHOLDS_ARE_SERVICE_LEVEL_CONTEXT_ONLY_AND_NOT_PROOF_OF_THIS_CONNECTOR_DEBIT
+verifier: GIT_DURABLE_READBACK_PLUS_DIRECT_DRIVE_RECEIPT
+consumer: HFO_BOUNDED_DRIVE_DISCOVERY_FOR_OPERATOR_CONTROL_LOOPS
+strongest_falsifier: PHASE2_REPLAY_HYDRATES_CONTENT_OR_CANNOT_REPRODUCE_BOUNDED_METADATA_RESULT_BEHAVIOR;CONSUMER_REQUIRES_GOOGLE_DOCS_ONLY_SEMANTICS
+honest_flaw: DOCUMENT_ITEM_TYPE_IS_BROADER_THAN_GOOGLE_DOCS_MIME_SEMANTICS_IN_OBSERVED_RESULT;NO_PERMISSION_FAILURE_VALID_PAGINATION_SCOPE_RATE_LIMIT_QUOTA_DEBIT_OR_COMPLETENESS_EVIDENCE
+phase_status: PHASE1_ACCEPTED_WITH_GATES_ANDON
+next_phase: PHASE2_EXACT_REPLAY_ONCE_NO_SECOND_PAGE_NO_CONTENT_FETCH
+valid_time_utc: 2026-08-09T17:50:00Z
+recorded_time_utc: 2026-08-09T17:50:00Z
+---
+
+# X13 Phase 1 result — Google Drive document metadata search
+
+The one authorized read-only connector call returned five results with no observed file-content hydration, retry, fallback, error, or Drive mutation. Only aggregate measurements and a privacy-safe ordered-ID digest are persisted here.
+
+Measured variance/Andon: explicit `item_type=document` included at least one spreadsheet resource. Treat connector `document` as a broad document/file category, not as a Google Docs MIME-type guarantee. The connector receipt exposed titles, IDs, URLs, and parent IDs, but did not expose body text, a native request ID, rate-limit headers, effective OAuth scope/principal, quota debit, billing metadata, or call latency.
+
+Official Drive v3 context: `files.list` supports `q`, `pageToken`, and field selection. Current Google documentation assigns list operations such as `files.list` 100 quota units per request and documents service-level quotas, but no direct connector receipt proves which native method or quota debit this wrapper used.
