@@ -1,0 +1,168 @@
+schema_id: hfo.gen133.s04_structural_preflight.v1
+result: REVISE
+terminal_receipt: false
+seat: S04_HRIST_STRUCTURAL_PREFLIGHT
+expected_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+observed_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+task_id_match: true
+task_enabled_observed: true
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-09T22:11:43Z
+
+self_probe:
+  provider_task_inventory_read: true
+  github_read_write_available: true
+  slack_connector_available: true
+  task_mutation_performed: false
+  candidate_edit_performed: false
+
+selection:
+  selection_rule: NEWEST_IMMUTABLE_CANDIDATE_ADDRESSED_TO_S04_NOT_AUTHORED_BY_S04
+  selected_route_commit: fa380bbc8a479a5319d89004f06bae46ae95545e
+  selected_route_path: state/coordination/receipts/chatgpt_runtime/seat-03/20260809T220934Z_SLALOM_PRODUCER_RETURN_REVISE_TO_S04.yaml
+  selected_route_authored_by: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+  selected_correlation_id: GTM-S07-SLALOM-RETURN-20260809T212800Z
+  selected_work_item_id: S07_SLALOM_AGENT_AUTHORITY_PROOF_GATE_V1
+  selected_producer: S07_GTM_PROOF_KIT_BUILDER
+  route_valid_time_utc: 2026-08-09T22:09:34Z
+  material_change_since_prior_s04_receipt: true
+
+exact_recomputation:
+  route:
+    utf8_bytes: 6480
+    sha256: 80f148a640dba6702df681d40840140b3099b8e26863fa8bab9e0fcba741f81d
+    recomputed_git_blob_sha1: f7d8866a4e34dbb45de27f05057f50ff10527937
+    provider_git_blob_sha1: f7d8866a4e34dbb45de27f05057f50ff10527937
+    exact_blob_match: true
+  producer_return:
+    path: projects/gtm-revenue/returns/20260809T212800Z_S07_SLALOM_AGENT_AUTHORITY_PROOF_GATE_RETURN.md
+    create_commit: be9e6d4bbf8af1eb87822e5c054f02f708585941
+    utf8_bytes: 7517
+    sha256: 240c5f81652128e99b8ede9b88ec8263f13209b9c39621df845c21a89b5b0e42
+    recomputed_git_blob_sha1: 987b947cd56331d02c051979f5a81cec45e7205f
+    provider_git_blob_sha1: 987b947cd56331d02c051979f5a81cec45e7205f
+    exact_blob_match: true
+  candidate:
+    path: projects/gtm-revenue/kits/slalom/20260809T212600Z_AGENT_AUTHORITY_PROOF_GATE_CARD.md
+    create_commit: 1d2eb4f995b37fcd97c3a7e5fd4ed65dbcae5081
+    utf8_bytes: 5579
+    sha256_recomputed: fae00bcbed4d886827123258a3b2ec82e9d6b50bd50f8fa30ff67b92123f9e33
+    sha256_bound_by_return: fae00bcbed4d886827123258a3b2ec82e9d6b50bd50f8fa30ff67b92123f9e33
+    recomputed_git_blob_sha1: 0c78b1280b519b26314e6a44188c4798ecfda557
+    provider_git_blob_sha1: 0c78b1280b519b26314e6a44188c4798ecfda557
+    exact_bytes_and_digest_match: true
+
+schema_and_canonicalization:
+  route_schema: hfo.gen133.s03_verification_route.v1
+  producer_return_schema: hfo.gen133.gtm.producer_return.v1
+  target_card_schema: hfo.gen133.gtm.target_card.v1
+  route_idempotency:
+    canonicalization: UTF8_EXACT_PREIMAGE_NO_TERMINAL_LF
+    preimage_bytes: 158
+    sha256_recomputed: f4405de6a6e00e408adb239265d4eb7759bce66c10fa3de141d8e7fdda510bb9
+    sha256_declared: f4405de6a6e00e408adb239265d4eb7759bce66c10fa3de141d8e7fdda510bb9
+    match: true
+  target_evidence:
+    target_card_path: projects/gtm-revenue/research/20260809T202933Z_CHANNEL_PARTNER_SLALOM_TARGET_CARD.md
+    target_card_commit: d3bb52c46ce7e42e989e8c8ecdeddb6e42c09f37
+    target_card_blob_sha1: 39d92ae69b0c28f995c4e569de31bc1c2cf4824c
+    canonicalization: UTF8_LF_EXACT_PREIMAGE_WITH_FINAL_NEWLINE
+    preimage_bytes: 775
+    sha256_recomputed: 5dbd9612b75b9ebba02490757cca7d913f15ec28253431f75a78560f9b2353b4
+    sha256_declared: 5dbd9612b75b9ebba02490757cca7d913f15ec28253431f75a78560f9b2353b4
+    match: true
+
+structural_checks:
+  freshness:
+    route_fresh_at_valid_time: true
+    producer_expiry_utc: 2026-08-14T14:08:00Z
+    target_expiry_utc: 2026-08-14T14:08:00Z
+    expired: false
+  authority:
+    producer_effect_ceiling: PUBLIC_SAFE_SYNTHETIC_ONLY / T0_PREP_RESEARCH_GIT
+    route_effect_ceiling: T0_INTERNAL_COORDINATION_GIT_SLACK_POINTER_ONLY
+    no_external_send_or_deploy_authority: true
+    candidate_contains_only_operator_reviewed_no_send_outreach_note: true
+  task_binding:
+    s04_expected_task_id_match: true
+    s03_task_id_bound_and_provider_observed: true
+    s07_task_id_bound_and_provider_observed: true
+    s08_task_id_bound_and_provider_observed: true
+  actor_carrier_separation:
+    git_principal_observed: TTaoGaming
+    declared_route_carrier: S03
+    declared_producer_carrier: S07
+    cryptographic_or_digest_bound_delegation_edge_observed: false
+    disposition: UNPROVEN_NOT_INFERRED
+  admission_claim:
+    explicit_work_item_id_bound_in_return: true
+    admission_claim_bound_in_immutable_return: false
+    claim_path: NOT_BOUND
+    claim_blob: NOT_BOUND
+    claim_acceptance_digest: NOT_BOUND
+    claim_idempotency_digest: NOT_BOUND
+    claim_lease_expiry: NOT_BOUND
+    controlling_defect: true
+    note: A_LATER_CLAIM_CANNOT_RETROACTIVELY_BIND_THIS_IMMUTABLE_PRODUCER_RETURN
+  idempotency:
+    route_preimage_recomputed: true
+    route_digest_match: true
+    prior_s04_receipt_for_same_route_digest_observed_in_bounded_search: false
+    global_absence_claimed: false
+  privacy:
+    privacy_ceiling: PUBLIC_SAFE_SYNTHETIC_ONLY
+    private_data_required_or_observed: false
+  rollback:
+    candidate_rollback_bound: true
+    rollback_mode: OPERATOR_AUTHORIZED_FUTURE_DELETE_CANDIDATE_ONLY_PRESERVE_IMMUTABLE_RETURN
+    destructive_action_performed: false
+  verifier:
+    requested_verifier: S04_HRIST_STRUCTURAL_PREFLIGHT
+    verifier_task_id_match: true
+    same_provider_nonbinding: true
+    binding_weight: 0
+    independent_verification_closed: false
+  consumer:
+    producer_return_consumer: OPERATOR
+    target_next_consumer: S07
+    implicit_consumer_ack_observed: false
+    digest_bound_independent_STOOD_or_FELL_observed: false
+
+strongest_fake_green_mutant:
+  mutant_id: X14_MUTANT_216_627415db51d7
+  path: state/coordination/experiments/false_green_x14/quarantine/20260809T215202Z_X13_UNSUPPORTED_PASS_OUTCOME.mutant.yaml
+  commit: 473d0dd494133fece01e2f0f8ded610ca7a6154f
+  git_blob_sha1: 10fbfbae5090b373f1369b27ddb3d32f5f123147
+  utf8_bytes: 3251
+  sha256: 010fd906dfd7fdec67ef62a8d9cdc22269ad9a1ad8973c1eed4918f636d40ea1
+  mutation_class: UNSUPPORTED_PASS_OUTCOME
+  canonical_overlay_bytes: 236
+  canonical_overlay_sha256_recomputed: 627415db51d7fcc876b58aa33bdd2d7f7727d273d98b8a9fd4f377565973a9c4
+  canonical_overlay_sha256_declared: 627415db51d7fcc876b58aa33bdd2d7f7727d273d98b8a9fd4f377565973a9c4
+  source_path: state/coordination/experiments/cots_connector_x13/20260809T214901Z_GITHUB_PR_CHANGED_FILENAMES_PHASE1_BASELINE.md
+  source_commit: da14a1555101cb157f024fbfeaae33f9f26e1269
+  source_blob_sha1_recomputed_readback_match: true
+  source_status: PHASE1_ACCEPTED_WITH_GATES_ANDON
+  source_failure_behavior: NOT_YET_PROBED
+  source_next_wake: PHASE2_EXACT_REPLAY
+  mutated_value: PASS_COMPLETE_ALL_PHASES_VERIFIED
+  rejection: REVISE
+  rejection_reason: PHASE1_SOURCE_CANNOT_SUPPORT_ALL_PHASES_COMPLETE_OR_VERIFIED
+
+verdict:
+  result: REVISE
+  controlling_reason: MISSING_IMMUTABLE_S02_ADMISSION_BINDING_IN_SELECTED_PRODUCER_RETURN
+  requested_revision_owner: S07_GTM_PROOF_KIT_BUILDER
+  requested_revision: AFTER_VALID_IMMUTABLE_UNEXPIRED_S02_ADMISSION_CLAIM_EXISTS_EMIT_A_SUPERSEDING_IMMUTABLE_PRODUCER_RETURN_BINDING_CLAIM_PATH_BLOB_ACCEPTANCE_DIGEST_IDEMPOTENCY_DIGEST_LEASE_EXPIRY_AND_EXACT_CANDIDATE_BYTES
+  same_provider_nonbinding: SAME_PROVIDER_NONBINDING
+  binding_weight: 0
+  independent_verification_closed: false
+
+honest_flaw: >-
+  Repository and Slack absence checks are bounded and were not treated as global absence proof. The controlling
+  defect does not depend on global absence: the selected immutable producer return itself explicitly says
+  admission_claim_bound=false and binds no S02 claim path/blob/acceptance/idempotency/lease fields. Git commit
+  principal TTaoGaming is not a cryptographic delegation proof for the declared S03/S07 carriers. This S04
+  result is same-provider structural preflight only and cannot close independent verification or ConsumerAck.
