@@ -1,0 +1,115 @@
+---
+schema_id: hfo.gen133.x14.false_green_mutant.v1
+mutant_id: X14_MUTANT_203_a4c3298617b0
+seat: X14_FALSE_GREEN_MUTATION_AND_QA_LAB
+carrier_task_id: 6a513e4d9c4c81919db728f85db2dd79
+mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+mutation_subcase: X13_GMAIL_PHASE4_EXPECTED_CURRENT_VERSION_REBOUND_FROM_203_TO_ALREADY_CONSUMED_204
+status: QUARANTINED_NON_EXECUTABLE_GIT_READY_ROUTE_PENDING_VERDICTS
+valid_time_utc: 2026-08-09T08:51:26Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+expires_utc: 2026-08-09T12:51:26Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+source_edited: false
+self_grade_performed: false
+independent_quorum_claimed: false
+world_effect_ceiling: ONE_IMMUTABLE_QUARANTINE_FILE_ONE_CURRENT_POINTER_UPDATE_ONE_SANITIZED_INTERNAL_SLACK_ROUTE_ONLY
+---
+
+self_probe:
+  expected_task_id: 6a513e4d9c4c81919db728f85db2dd79
+  observed_task_id: 6a513e4d9c4c81919db728f85db2dd79
+  task_id_match: true
+  task_enabled_observed: true
+  tools_observed:
+    - native_automations_inventory_read
+    - github_recent_commit_search
+    - github_exact_commit_read
+    - github_exact_file_read
+    - github_digest_dedup_search
+    - github_create_file
+    - github_update_file
+    - github_readback
+    - slack_send_message
+    - local_digest_recompute
+  task_mutation_performed: false
+
+source_binding:
+  selection_cutoff_observed_utc: 2026-08-09T08:51:26Z
+  newest_observed_eligible_before_cutoff: true
+  commit: 1b0dfac64b5079ebdedad31f69e9e775ce623b43
+  commit_created_at_utc: 2026-08-09T08:50:32Z
+  path: state/coordination/experiments/cots_connector_x13/20260809T084900Z_GMAIL_MESSAGE_ID_SEARCH_PHASE4_DECISION.md
+  git_blob_sha1: 824129d1bb20b579cb96b3a1a30512bb6de748e3
+  source_digest_kind: GIT_BLOB_SHA1
+  source_digest: 824129d1bb20b579cb96b3a1a30512bb6de748e3
+  canonical_branch_blob_match: true
+  authoring_seat: X13_COTS_AND_CONNECTOR_PDCA_LAB
+  source_task_id: 6a55c1733708819185088bf334e33ea5
+  source_task_title_from_native_inventory: HFO X13 COTS and Connector PDCA Lab
+  source_task_enabled_observed: true
+  source_artifact_type: IMMUTABLE_COTS_PHASE4_DECISION
+  source_campaign_id: X13_GMAIL_MESSAGE_ID_SEARCH_READONLY_026
+  source_wake: PHASE4_WAKE_4_OF_4
+  source_expected_current_version: 203
+  source_decision: ADOPT_WITH_GATES
+  source_operational_decision: ADOPT_WITH_GATES_BOUNDED_ID_ONLY_FIRST_PAGE_DISCOVERY
+  source_consumer: HFO_BOUNDED_MAILBOX_DISCOVERY_AND_PREFLIGHT_FILTERING
+  source_claim_ceiling: BOUNDED_READ_ONLY_ID_ONLY_FIRST_PAGE_DISCOVERY;NO_CONTENT_HYDRATION;NO_COMPLETENESS;NO_STABLE_ORDER;NO_VALID_PAGINATION_PROOF;NO_SCOPE_OR_QUOTA_ASSUMPTIONS
+  consumed_by_current_version: 204
+  consumed_current_blob_sha1: 67bf2ab4b0ab3506c43e794726536e6876902d86
+  consumed_current_last_event_commit: 1b0dfac64b5079ebdedad31f69e9e775ce623b43
+  consumed_current_last_event_blob_sha1: 824129d1bb20b579cb96b3a1a30512bb6de748e3
+  prior_x14_mutation_at_source_digest_before_write: false
+  dedup_evidence: EXACT_GITHUB_SEARCH_FOR_SOURCE_BLOB_SHA1_RETURNED_NO_X14_REFERENCE_BEFORE_WRITE
+
+negative_control:
+  copy_mode: OVERLAY_ONLY_SOURCE_BYTES_UNCHANGED
+  canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_json: '{"mutated_field":"expected_current_version","mutated_value":204,"mutation_class":"DUPLICATE_IDEMPOTENCY_VERSION","original_value":203,"source_blob_sha1":"824129d1bb20b579cb96b3a1a30512bb6de748e3"}'
+  canonical_overlay_utf8_bytes: 196
+  canonical_overlay_sha256: a4c3298617b0a4c2d02252dad09f7850d878530d8a46b246a6a8bc3cbbff7fff
+  mutated_field: expected_current_version
+  original_value: 203
+  mutated_value: 204
+  expected_verdict: REVISE
+  expected_rejection_reason: THE_IMMUTABLE_PHASE4_EVENT_IS_BOUND_TO_EXPECTED_CURRENT_VERSION_203_AND_HAS_ALREADY_BEEN_CONSUMED_ONCE_BY_X13_CURRENT_V204_WITH_THE_SAME_EVENT_COMMIT_AND_BLOB;REBINDING_ONLY_EXPECTED_CURRENT_VERSION_TO_204_MAKES_THE_ALREADY_CONSUMED_EVENT_APPEAR_FRESH_FOR_REPLAY_AND_COULD_FALSELY_AUTHORIZE_A_DUPLICATE_PHASE4_TRANSITION_OR_ADOPTION_CREDIT
+
+routing:
+  named_gate: S04_EXACT_EVENT_DIGEST_EXPECTED_VERSION_SINGLE_CONSUMPTION_IDEMPOTENCY_AND_REPLAY_GATE
+  structural_preflight: S04_STRUCTURAL_PREFLIGHT
+  structural_verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  structural_verifier_enabled_observed: true
+  distinct_falsification: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  distinct_verifier_task_id: 6a539fb148bc8191a30b6009dbf22438
+  distinct_verifier_enabled_observed: true
+  distinct_verifier_evidence_ceiling: SAME_PROVIDER_NONBINDING_WEIGHT_0
+  consumer:
+    - X14_CAMPAIGN_REDUCER
+    - X13_COTS_AND_CONNECTOR_PDCA_LAB
+    - HFO_BOUNDED_MAILBOX_DISCOVERY_AND_PREFLIGHT_FILTERING
+  direct_candidate_priority_requested: true
+  route_effect_ceiling: ONE_SANITIZED_INTERNAL_SLACK_POINTER_AFTER_GIT_AND_CURRENT_READBACK
+  routing_contract_status: CAMPAIGN_51_WAKE_2_DIRECT_ROUTE_HEALTH_REQUIRES_ACTUAL_S04_SELECTION_OR_DIGEST_BOUND_SKIP_DEFERRAL;EMBEDDED_CATCH_TRACKED_SEPARATELY
+
+campaign_boundary:
+  campaign_ordinal: 51
+  campaign_wake_after_this_mutant: 2
+  current_mutant_counted_as_caught_for_campaign_decision: false
+  campaign_decision_due: false
+  prior_campaign_decision: REVISE_GATE
+  next_mutation_class: FABRICATED_CONSUMER_ACK
+
+forbidden_inference:
+  - SAME_EVENT_DIGEST_CANNOT_BE_REBOUND_TO_A_LATER_EXPECTED_VERSION_TO_CREATE_A_NEW_TRANSITION
+  - ADOPTION_CREDIT_ONE_CANNOT_BE_REPLAYED_WITHOUT_A_NEW_IMMUTABLE_SOURCE_EVENT_AND_VALID_VERSION_EDGE
+  - SAME_PROVIDER_CHECKS_DO_NOT_CLOSE_INDEPENDENT_VERIFICATION
+  - EMBEDDED_S04_MUTANT_CHECK_DOES_NOT_COUNT_AS_DIRECT_PRIMARY_SELECTION
+  - NO_SOURCE_EDIT
+  - NO_TASK_OR_SCHEDULE_MUTATION
+  - NO_GMAIL_CALL_OR_CONTENT_HYDRATION_PERFORMED_BY_X14
+  - NO_WORLD_EFFECT_PERFORMED_BEYOND_ALLOWED_GIT_AND_INTERNAL_ROUTE
+
+honest_flaw: >-
+  The source event has an explicit expected_current_version and a durable CURRENT v204 readback that proves this exact event was consumed once, so the replay defect is concrete. However, the source does not carry a separate explicit idempotency key or nonce; this assay therefore relies on the verifier treating the immutable event digest plus version-transition history as the single-consumption identity. A stronger duplicate/idempotency mutant would start from a source that independently binds WorkItem ID, idempotency key, nonce, prior version, next version, and accepted event digest, then corrupt exactly one replay edge. Candidate discovery and digest dedup remain best-effort under concurrent Git writes and search-index lag. S04 and S09 remain same-provider checks with binding weight zero and cannot close independent verification.
