@@ -1,0 +1,138 @@
+schema_id: hfo.gen133.s03_verification_route.v1
+result: REVISE
+terminal_receipt: false
+seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+expected_task_id: 6a539fc5130c81918c13624739fb2a60
+observed_task_id: 6a539fc5130c81918c13624739fb2a60
+task_id_match: true
+task_enabled_observed: true
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-09T22:09:34Z
+
+self_probe:
+  provider_task_inventory_read: true
+  github_branch_observed: agent/gen133-bootstrap-20260730
+  github_read_write_available: true
+  slack_connector_available: true
+  task_mutation_performed: false
+
+changed_window:
+  prior_s03_route_commit: 9edba3a441cd2c44817f75358b94549491af7ac1
+  selected_changed_producer_return_observed: true
+  selected_workitem_prior_s03_route_observed: false
+  selected_workitem_exact_digest_bound_STOOD_or_FELL_observed: false
+  selected_workitem_explicit_named_ConsumerAck_observed: false
+  selected_workitem_terminal_receipt_observed: false
+
+correlation_id: GTM-S07-SLALOM-RETURN-20260809T212800Z
+work_item_id: S07_SLALOM_AGENT_AUTHORITY_PROOF_GATE_V1
+producer: S07_GTM_PROOF_KIT_BUILDER
+producer_task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+producer_return_path: projects/gtm-revenue/returns/20260809T212800Z_S07_SLALOM_AGENT_AUTHORITY_PROOF_GATE_RETURN.md
+producer_return_create_commit: be9e6d4bbf8af1eb87822e5c054f02f708585941
+producer_return_git_blob_sha1: 987b947cd56331d02c051979f5a81cec45e7205f
+producer_return_exact_git_blob_readback: true
+producer_return_result: KIT_RETURNED
+candidate_created: true
+candidate_path: projects/gtm-revenue/kits/slalom/20260809T212600Z_AGENT_AUTHORITY_PROOF_GATE_CARD.md
+candidate_utf8_bytes_bound_by_return: 5579
+candidate_sha256_bound_by_return: fae00bcbed4d886827123258a3b2ec82e9d6b50bd50f8fa30ff67b92123f9e33
+candidate_git_blob_sha1_bound_by_return: 0c78b1280b519b26314e6a44188c4798ecfda557
+candidate_create_commit_bound_by_return: 1d2eb4f995b37fcd97c3a7e5fd4ed65dbcae5081
+candidate_independent_git_blob_readback_by_s03: MATCH
+candidate_sha256_independently_recomputed_by_s03: false
+
+producer_return_contract_check:
+  explicit_work_item_id_bound_in_return: true
+  claim_bound: false
+  admission_claim_observed_by_producer: false
+  admission_claim_status: NOT_OBSERVED_IN_BOUNDED_SEARCH
+  claim_path: NOT_BOUND
+  claim_git_blob_sha1: NOT_BOUND
+  claim_acceptance_digest: NOT_BOUND
+  claim_idempotency_digest: NOT_BOUND
+  claim_lease_expiry: NOT_BOUND
+  exact_candidate_bytes_or_source_readback_bound: true
+  commands_and_exit_codes: NOT_APPLICABLE_MARKDOWN_ONLY_ARTIFACT_TEST_EXECUTION_NOT_CLAIMED
+  rollback_bound: true
+  rollback_mode: DELETE_CANDIDATE_ONLY_BY_LATER_OPERATOR_AUTHORIZED_COMMIT_IF_REJECTED;PRESERVE_IMMUTABLE_RETURN
+  effect_ceiling_bound: true
+  producer_return_effect_ceiling: PUBLIC_SAFE_SYNTHETIC_ONLY / T0_PREP_RESEARCH_GIT
+  expiry_bound: true
+  producer_return_expiry_utc: 2026-08-14T14:08:00Z
+  honest_flaw_bound: true
+  no_send: true
+  no_submit: true
+  no_deploy: true
+  no_merge: true
+  no_spend: true
+
+changed_evidence_checks:
+  bounded_git_workitem_search_claim_observed: false
+  bounded_git_candidate_digest_search_STOOD_or_FELL_observed: false
+  bounded_slack_workitem_search_only_target_pickup_observed: true
+  bounded_slack_candidate_digest_search_STOOD_or_FELL_or_ConsumerAck_observed: false
+
+revision_reason: >-
+  The changed S07 producer return explicitly binds the WorkItem, candidate byte count/SHA-256/Git blob/create commit,
+  rollback, PUBLIC_SAFE_SYNTHETIC_ONLY / T0_PREP_RESEARCH_GIT effect ceiling, expiry, no-send/no-submit boundaries,
+  and an honest flaw, and S03 independently read back the candidate Git blob. However, the immutable producer return
+  explicitly states admission_claim_bound=false and binds no immutable S02 claim path/blob, acceptance digest,
+  idempotency digest, or lease. Claim evidence is therefore missing and S03 must request revision rather than infer,
+  retrofit, or self-repair it.
+
+requested_revision:
+  owner: S07_GTM_PROOF_KIT_BUILDER
+  action: >-
+    Do not rewrite this immutable return. After a valid immutable unexpired S02 admission claim exists for this exact
+    WorkItem, emit one superseding immutable producer return that explicitly binds the claim path/blob, acceptance digest,
+    idempotency digest, lease/expiry, exact candidate bytes/readback or a fresh admitted candidate when temporal ordering
+    requires it, commands and exit codes where applicable, rollback, effect ceiling, expiry, and honest flaw. Do not ask
+    S03 to infer, fabricate, or backfill the claim.
+  self_repair_by_s03: forbidden
+
+route:
+  verifier: S04_HRIST_STRUCTURAL_PREFLIGHT
+  verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  verifier_class: SAME_PROVIDER_NONBINDING
+  nonproducer_verifier: true
+  binding_weight: 0
+  requested_verdict: REVISE_IF_MISSING_ADMISSION_BINDING_CONFIRMED
+  independent_verification_closed: false
+  exact_digest_bound_independent_STOOD_or_FELL_observed: false
+  explicit_named_ConsumerAck_observed: false
+
+route_nonce: S03-SLALOM-20260809T220934Z-987b947cd563
+route_idempotency:
+  canonicalization: UTF8_EXACT_PREIMAGE_NO_TERMINAL_LF
+  preimage: GTM-S07-SLALOM-RETURN-20260809T212800Z|S07_SLALOM_AGENT_AUTHORITY_PROOF_GATE_V1|987b947cd56331d02c051979f5a81cec45e7205f|REVISE|S04_HRIST_STRUCTURAL_PREFLIGHT
+  sha256: f4405de6a6e00e408adb239265d4eb7759bce66c10fa3de141d8e7fdda510bb9
+
+rollback:
+  route_artifact: APPEND_ONLY_SUPERSESSION_IF_INCORRECT
+  destructive_delete_authorized: false
+
+effect_ceiling:
+  level: T0_INTERNAL_COORDINATION_GIT_SLACK_POINTER_ONLY
+  forbidden:
+    - external_send
+    - spend
+    - deployment
+    - merge
+    - public_publication
+    - account_or_security_change
+    - permanent_deletion
+    - task_mutation
+    - producer_impersonation
+    - self_verification
+    - implicit_consumer_ack
+
+honest_flaw: >-
+  S03 independently fetched the candidate and observed the same Git blob SHA-1 bound by the producer return, but did not
+  independently recompute the candidate SHA-256 because the producer return's explicit absence of admission binding is
+  already dispositive for this contract. GitHub code-search indexing and Slack searches are bounded and absence is not
+  global proof. A later S02 claim would not retroactively change these immutable producer-return bytes; a superseding
+  producer return is still required. This S04 route is same-provider structural preflight only and cannot produce binding
+  STOOD/FELL or ConsumerAck.
