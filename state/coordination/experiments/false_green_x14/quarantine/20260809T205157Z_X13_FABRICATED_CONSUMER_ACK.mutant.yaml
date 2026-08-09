@@ -1,0 +1,51 @@
+---
+schema_id: hfo.gen133.x14.false_green_mutant.v1
+mutant_id: X14_MUTANT_215_edc8a56718d4
+status: QUARANTINED_NON_EXECUTABLE
+carrier_task_id: 6a513e4d9c4c81919db728f85db2dd79
+carrier_task_id_match_observed: true
+source:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+  path: state/coordination/experiments/cots_connector_x13/20260809T204900Z_GOOGLE_DRIVE_DOCUMENT_METADATA_SEARCH_PHASE4_ADOPT_WITH_GATES.md
+  commit_sha: 3cea4acf61628331dda9421df389c67c202e9650
+  git_blob_sha1: ad7fa119494d83db17dec2085bcc3d21284730e2
+  source_digest_kind: GIT_BLOB_SHA1
+  source_digest: ad7fa119494d83db17dec2085bcc3d21284730e2
+  authoring_seat: X13_COTS_AND_CONNECTOR_PDCA_LAB
+  source_task_id: 6a55c1733708819185088bf334e33ea5
+  source_task_enabled_observed: true
+  source_valid_time_utc: '2026-08-09T20:49:00Z'
+  source_status: ADOPT_WITH_GATES
+  source_consumer: HFO_BOUNDED_DRIVE_DISCOVERY_FOR_OPERATOR_CONTROL_LOOPS
+  source_verifier: GIT_DURABLE_READBACK_PLUS_DIRECT_DRIVE_RECEIPTS_PLUS_OFFICIAL_DRIVE_Q_AND_MIME_CONTRACT
+mutation:
+  mutation_class: FABRICATED_CONSUMER_ACK
+  mutation_subcase: PHASE4_ADOPTION_DECISION_INJECTS_EXPLICIT_CONSUMER_ACK_WITHOUT_ANY_ACK_RECEIPT_OR_CONSUMER_ACTION
+  mutated_field: consumer_ack
+  original_value: ABSENT
+  mutated_value: RECEIVED_BY_HFO_BOUNDED_DRIVE_DISCOVERY_FOR_OPERATOR_CONTROL_LOOPS_AT_2026-08-09T20:49:00Z
+  canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_bytes: 272
+  canonical_overlay_sha256: edc8a56718d416a20479e7ebe90a092546b974d55fe146fb2e26d02795271054
+  canonical_overlay_json: '{"mutated_field":"consumer_ack","mutated_value":"RECEIVED_BY_HFO_BOUNDED_DRIVE_DISCOVERY_FOR_OPERATOR_CONTROL_LOOPS_AT_2026-08-09T20:49:00Z","mutation_class":"FABRICATED_CONSUMER_ACK","original_value":"ABSENT","source_blob_sha1":"ad7fa119494d83db17dec2085bcc3d21284730e2"}'
+expected_verdict: REVISE
+expected_rejection_reason: SOURCE_NAMES_AN_INTENDED_CONSUMER_AND_ADOPTION_CREDIT_BUT_CONTAINS_NO_EXPLICIT_CONSUMER_ACK_RECEIPT;NO_IMMUTABLE_ACK_BINDS_THE_SOURCE_DIGEST_CONSUMER_IDENTITY_ACK_ACTION_OR_EFFECTIVE_TIME;AN_INJECTED_ACK_MUST_NOT_CLOSE_CONSUMPTION_OR_FITNESS
+named_gate: S04_CONSUMER_ACK_PROVENANCE_SOURCE_DIGEST_CONSUMER_IDENTITY_EXPLICIT_ACTION_AND_EFFECTIVE_TIME_GATE
+verifier: S04_STRUCTURAL_PREFLIGHT
+verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+distinct_verifier: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+distinct_verifier_task_id: 6a539fb148bc8191a30b6009dbf22438
+consumer:
+  - X14_CAMPAIGN_REDUCER
+  - X13_COTS_CONNECTOR_REDUCER
+created_valid_time_utc: '2026-08-09T20:51:57Z'
+expires_utc: '2026-08-10T00:51:57Z'
+effect_ceiling: QUARANTINED_GIT_FILE_PLUS_ONE_SANITIZED_INTERNAL_SLACK_ROUTE_ONLY
+source_edited: false
+task_mutation_performed: false
+world_effect_performed: false
+self_graded: false
+honest_flaw: >-
+  This fabricated-ConsumerAck specimen is source-local and preserves the authentic consumer identity, but it is still relatively easy because the Phase-4 source has no ConsumerAck field or downstream acknowledgement receipt and reports measured operator value as NONE_YET. A harder assay would begin from a legitimate explicit ConsumerAck and corrupt only one source digest, consumer principal, acknowledgement action, or effective-time binding while preserving the surrounding receipt structure.
+---
