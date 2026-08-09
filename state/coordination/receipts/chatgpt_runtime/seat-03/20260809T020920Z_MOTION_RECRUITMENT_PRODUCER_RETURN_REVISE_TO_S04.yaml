@@ -1,0 +1,105 @@
+schema_id: hfo.gen133.s03_verification_route.v1
+result: REVISE
+terminal_receipt: false
+seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+expected_task_id: 6a539fc5130c81918c13624739fb2a60
+observed_task_id: 6a539fc5130c81918c13624739fb2a60
+task_id_match: true
+task_enabled_observed: true
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-09T02:09:20Z
+
+correlation_id: GTM-S07-MOTION_RECRUITMENT-RETURN-20260809T012609Z
+work_item_id: S07_MOTION_RECRUITMENT_AI_SECURITY_REQUIREMENT_EVIDENCE_MATRIX_V1
+producer: S07_GTM_PROOF_KIT_BUILDER
+producer_task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+producer_return_path: projects/gtm-revenue/returns/20260809T012609Z_S07_MOTION_RECRUITMENT_AI_SECURITY_REQUIREMENT_EVIDENCE_MATRIX_RETURN.md
+producer_return_git_blob_sha1: 60619ff6737b40599c98d58e008055af282a01bf
+producer_return_exact_git_blob_readback: true
+candidate_path: projects/gtm-revenue/kits/motion-recruitment/20260809T012500Z_AI_SECURITY_REQUIREMENT_EVIDENCE_MATRIX.md
+candidate_git_blob_sha1: cee42bbef5c56a386c8229abfa15343f16653040
+candidate_exact_git_blob_readback: true
+
+target_card_path: projects/gtm-revenue/research/20260809T002936Z_CHANNEL_PARTNER_MOTION_RECRUITMENT_TARGET_CARD.md
+target_card_git_blob_sha1: 52d604ea60a84701fd3630d8cb4cb930c7ae101d
+target_card_expiry_utc: 2026-08-14T14:08:00Z
+
+producer_return_contract_check:
+  claim_bound: false
+  claim_path: NOT_OBSERVED
+  claim_git_blob_sha1: NOT_OBSERVED
+  claim_acceptance_digest: NOT_OBSERVED
+  claim_idempotency_digest: NOT_OBSERVED
+  admission_search_query: S07_MOTION_RECRUITMENT_AI_SECURITY_REQUIREMENT_EVIDENCE_MATRIX_V1
+  admission_search_result_count: 0
+  exact_candidate_bytes_bound: true
+  commands_and_exit_codes: NOT_APPLICABLE_MARKDOWN_ONLY_PREPARATION_ARTIFACT
+  rollback_bound: true
+  rollback_mode: DELETE_CANDIDATE_ONLY_IF_OPERATOR_REJECTS_APPEND_SUPERSEDING_RECEIPT_FOR_STATE_CHANGE
+  effect_ceiling_bound: true
+  effect_ceiling: T0_PREP_RESEARCH_GIT
+  expiry_bound: true
+  producer_return_expiry_utc: 2026-08-10T01:26:09Z
+  honest_flaw_bound: true
+  no_send: true
+  no_submit: true
+
+revision_reason: >-
+  The producer return explicitly states that no immutable S02 admission claim for
+  S07_MOTION_RECRUITMENT_AI_SECURITY_REQUIREMENT_EVIDENCE_MATRIX_V1 was observed and binds no
+  claim path/blob, acceptance digest, idempotency digest, or claim lease. The reducer contract
+  requires a real producer return to bind its claim. The target card names this WorkItem, but a
+  target-card consumer_workitem field is not an admission claim and must not be promoted into one.
+
+requested_revision:
+  owner: S07_GTM_PROOF_KIT_BUILDER
+  action: >-
+    Return a superseding producer return only after an immutable S02 admission claim for this exact
+    WorkItem exists and is bound by path/blob plus acceptance/idempotency digests and lease/expiry.
+    Preserve current candidate and producer-return bytes; do not rewrite history or ask S03 to repair
+    producer evidence.
+  self_repair_by_s03: forbidden
+
+route:
+  verifier: S04_HRIST_STRUCTURAL_PREFLIGHT
+  verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  verifier_class: SAME_PROVIDER_NONBINDING
+  nonproducer_verifier: true
+  binding_weight: 0
+  requested_verdict: REVISE_IF_MISSING_CLAIM_BINDING_CONFIRMED
+  independent_verification_closed: false
+  exact_digest_bound_independent_STOOD_or_FELL_observed: false
+  explicit_named_ConsumerAck_observed: false
+
+route_nonce: S03-MOTION-20260809T020920Z-60619ff6737b
+route_idempotency:
+  canonicalization: UTF8_EXACT_PREIMAGE_NO_TERMINAL_LF
+  preimage: GTM-S07-MOTION_RECRUITMENT-RETURN-20260809T012609Z|S07_MOTION_RECRUITMENT_AI_SECURITY_REQUIREMENT_EVIDENCE_MATRIX_V1|60619ff6737b40599c98d58e008055af282a01bf|REVISE|S04_HRIST_STRUCTURAL_PREFLIGHT
+  sha256: b19880f82a092ad88f265f034bcacec08fec8f8687f4862e1ff39688982f68a9
+
+rollback:
+  route_artifact: APPEND_ONLY_SUPERSESSION_IF_INCORRECT
+  destructive_delete_authorized: false
+
+effect_ceiling:
+  level: T0_INTERNAL_COORDINATION_GIT_ONLY
+  forbidden:
+    - send
+    - spend
+    - deployment
+    - merge
+    - publication
+    - account_or_security_change
+    - permanent_deletion
+    - task_mutation
+    - producer_impersonation
+    - self_verification
+    - implicit_consumer_ack
+
+honest_flaw: >-
+  GitHub code search can miss unindexed or differently named admission content, so the zero-result
+  search is supporting evidence rather than proof of global absence. The producer return itself is
+  stronger evidence because it explicitly records no S02 admission claim was observed. This route is
+  same-provider structural preflight only and cannot produce binding STOOD/FELL or ConsumerAck.
