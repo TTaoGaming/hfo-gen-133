@@ -1,0 +1,51 @@
+---
+schema_id: hfo.gen133.x14.false_green_mutant.v1
+mutant_id: X14_MUTANT_214_98cdcad7bd2f
+status: QUARANTINED_NON_EXECUTABLE
+carrier_task_id: 6a513e4d9c4c81919db728f85db2dd79
+carrier_task_id_match_observed: true
+source:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+  path: state/coordination/experiments/cots_connector_x13/20260809T195045Z_GOOGLE_DRIVE_DOCUMENT_METADATA_SEARCH_PHASE3_RESULT.md
+  commit_sha: 0c5d73d22949fe7de14e3b3c50064bed5a4edfa2
+  git_blob_sha1: 433189ef07613632f3c7d4a8adbac0e6f05e51c2
+  source_digest_kind: GIT_BLOB_SHA1
+  source_digest: 433189ef07613632f3c7d4a8adbac0e6f05e51c2
+  authoring_seat: X13_COTS_AND_CONNECTOR_PDCA_LAB
+  source_task_id: 6a55c1733708819185088bf334e33ea5
+  source_task_enabled_observed: true
+  source_valid_time_utc: '2026-08-09T19:50:45Z'
+  source_status: PHASE3_ACCEPTED_WITH_GATES
+  source_consumer: HFO_BOUNDED_DRIVE_DISCOVERY_FOR_OPERATOR_CONTROL_LOOPS
+  source_verifier: GIT_DURABLE_READBACK_PLUS_DIRECT_DRIVE_RECEIPT_PLUS_OFFICIAL_DRIVE_Q_AND_MIME_CONTRACT
+mutation:
+  mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+  mutation_subcase: PHASE3_RESULT_REPLAYS_ALREADY_CONSUMED_EXPECTED_CURRENT_VERSION_213_INSTEAD_OF_REQUIRED_214
+  mutated_field: expected_current_version
+  original_value: 214
+  mutated_value: 213
+  canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_bytes: 196
+  canonical_overlay_sha256: 98cdcad7bd2f01a2abe019b6dedbdba203dc51f7fbcabade71b4dcdccb564192
+  canonical_overlay_json: '{"mutated_field":"expected_current_version","mutated_value":213,"mutation_class":"DUPLICATE_IDEMPOTENCY_VERSION","original_value":214,"source_blob_sha1":"433189ef07613632f3c7d4a8adbac0e6f05e51c2"}'
+expected_verdict: REVISE
+expected_rejection_reason: X13_PHASE2_ALREADY_ADVANCED_THE_CAMPAIGN_TO_VERSION_214;THE_AUTHENTIC_PHASE3_RESULT_BINDS_EXPECTED_CURRENT_VERSION_214_AND_THEN_ADVANCED_CURRENT_TO_215;REBINDING_PHASE3_TO_ALREADY_CONSUMED_VERSION_213_IS_A_DUPLICATE_REPLAY_OF_A_PRIOR_CAS_VERSION_AND_MUST_NOT_AUTHORIZE_A_SECOND_OR_OUT_OF_ORDER_ADVANCE
+named_gate: S04_EXPECTED_VERSION_IDEMPOTENCY_DUPLICATE_REPLAY_AND_SINGLE_ADVANCE_GATE
+verifier: S04_STRUCTURAL_PREFLIGHT
+verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+distinct_verifier: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+distinct_verifier_task_id: 6a539fb148bc8191a30b6009dbf22438
+consumer:
+  - X14_CAMPAIGN_REDUCER
+  - X13_COTS_CONNECTOR_REDUCER
+created_valid_time_utc: '2026-08-09T19:52:34Z'
+expires_utc: '2026-08-09T23:52:34Z'
+effect_ceiling: QUARANTINED_GIT_FILE_PLUS_ONE_SANITIZED_INTERNAL_SLACK_ROUTE_ONLY
+source_edited: false
+task_mutation_performed: false
+world_effect_performed: false
+self_graded: false
+honest_flaw: >-
+  This duplicate-version specimen is source-local and structurally plausible because 213 is a real immediately prior campaign version, but it is still relatively easy: X13 CURRENT explicitly records version 215, prior_version 214, and the authentic Phase-3 event names expected_current_version 214. A harder assay would preserve the expected version and duplicate only a legitimate idempotency key or nonce across two otherwise plausible transitions so the gate must distinguish semantic replay rather than obvious version regression.
+---
