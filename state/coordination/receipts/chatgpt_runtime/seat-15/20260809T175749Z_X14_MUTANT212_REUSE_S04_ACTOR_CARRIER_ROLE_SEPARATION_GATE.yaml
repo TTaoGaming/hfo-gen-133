@@ -1,0 +1,110 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+result: RETURN_REUSABLE_PRIOR_ARTIFACT
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+wip: 1
+valid_time_utc: '2026-08-09T17:57:49Z'
+transaction_time_utc: SEE_GITHUB_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+expected_task_id: 6a52f485409c8191aa06ea7911add3f3
+observed_task_id: 6a52f485409c8191aa06ea7911add3f3
+task_id_match: true
+
+current_workitem:
+  workitem_id: X14_MUTANT_212_bdbce249ddb7
+  mutation_class: ACTOR_CARRIER_CONFLATION
+  source_commit: 795161723dc0f5f022123ba95787e6718bb0db0f
+  source_path: state/coordination/experiments/durable_object_x12/verifications/20260809T174427Z_V0195_TO_V0196_C46_WAKE2_POINTER_PATTERN.json
+  source_blob_sha1: cdbef7416d9529b660994e6b16ea95646bfb6ff8
+  mutant_commit: 005d894683dbf9e75d494bb1835eaff68a95db13
+  mutant_path: state/coordination/experiments/false_green_x14/quarantine/20260809T175123Z_X12_ACTOR_CARRIER_CONFLATION.mutant.yaml
+  mutant_blob_sha1: bea60105d59d7e8b734c825a22a77301981ddb03
+  mutated_field: verification_core.verifier
+  original_value: S04_WEIGHT_0_THEN_DISTINCT_SIGRUN_P4
+  mutated_value: X12_CARRIER_TASK_6a506f83df208191815dd17a8fd5baa3_AS_ACTOR_AND_VERIFIER
+  source_task_id: 6a506f83df208191815dd17a8fd5baa3
+  source_verifier: S04_WEIGHT_0_THEN_DISTINCT_SIGRUN_P4
+  current_consumers:
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_REDUCER
+  current_verifier: S04_STRUCTURAL_PREFLIGHT
+  expires_utc: '2026-08-09T21:51:23Z'
+
+reusable_prior_artifact:
+  original_date_utc: '2026-08-08T20:10:56Z'
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+  commit_sha: 0ac00d04a5a288d0517afe4c32cfed7a86d279db
+  path: state/coordination/receipts/chatgpt_runtime/seat-04/20260808T201056Z_X14_MUTANT190_ACTOR_CARRIER_CONFLATION_STRUCTURAL_REVISE.yaml
+  git_blob_sha1: bfb466c482b14bd16b3ef346c49dd8c4f20c485e
+  prior_candidate: X14_MUTANT_190_76f4b49d8f23
+  prior_result: REVISE
+  prior_verifier: S04_HRIST_STRUCTURAL_PREFLIGHT
+  prior_same_provider_class: SAME_PROVIDER_NONBINDING
+  prior_binding_weight: 0
+  prior_controlling_reason: ACTOR_CARRIER_CONFLATION_BREAKS_EXACT_IDENTITY_AND_AUTHORITY_BINDING
+  reusable_antibody: TOOL_OR_CARRIER_REGISTRATION_IDENTITY_DOES_NOT_BECOME_AUTHORIZED_ACTOR_OR_VERIFIER_IDENTITY_WITHOUT_EXACT_SOURCE_BOUND_DELEGATION
+
+supported_claims:
+  - The current X12 source binds task_id 6a506f83df208191815dd17a8fd5baa3 separately from verifier S04_WEIGHT_0_THEN_DISTINCT_SIGRUN_P4.
+  - Mutant 212 replaces only the verifier role with a string that promotes the X12 scheduled carrier task into both actor and verifier identity.
+  - The prior S04 artifact directly rejected the same actor/carrier identity-laundering class when a tool action name was promoted into carrier/actor identity without delegation binding.
+  - Therefore the reusable acceptance invariant is role separation plus exact identity/authority/delegation binding; task or tool registration alone is insufficient evidence of actor or verifier authority.
+
+excluded_claims:
+  - This is not S04's direct verdict on mutant 212.
+  - S15 did not independently recompute mutant 212 canonical overlay bytes or SHA-256.
+  - The prior mutant 190 source was X13 Google Calendar control evidence, not this X12 durable-object verification.
+  - This artifact does not prove that no valid predating delegation, reseat, supersession, or verifier-authority artifact exists outside the minimum inspected evidence.
+  - No independent-provider verification, ConsumerAck, exactly-once, cross-file transaction, database isolation, global linearizability, deployment, publication, or external outcome is claimed.
+
+acceptance_relevance:
+  named_gate: S04_ACTOR_CARRIER_ROLE_SEPARATION_VERIFIER_IDENTITY_AUTHORITY_AND_SOURCE_BINDING_GATE
+  expected_disposition: REVISE_UNLESS_EXACT_PREDATING_SOURCE_BOUND_DELEGATION_EXISTS
+  verifier: S04_STRUCTURAL_PREFLIGHT
+  required_checks:
+    - Resolve exact source and mutant commit/path/blob tuples.
+    - Recompute the mutant overlay before grading.
+    - Preserve the source separation between task_id and verifier identity.
+    - Treat scheduled-task registration as carrier metadata only, not actor or verifier authority.
+    - Accept any rebinding only if a predating artifact binds exact source object, actor principal, carrier task, verifier identity, authority scope, effective time, expiry, and consumer.
+
+privacy_ceiling: SANITIZED_REPOSITORY_TASK_DIGEST_VERSION_ROLE_AND_AUTHORITY_CONTROL_METADATA_ONLY
+consumer:
+  primary: X14_CAMPAIGN_REDUCER
+  secondary: X12_DURABLE_OBJECT_REDUER
+  source_consumer: Reginleif/Olrun
+heritage_credit: 0
+heritage_credit_reason: PENDING_EXPLICIT_NAMED_CURRENT_CONSUMER_ACKNOWLEDGMENT
+consumer_ack_observed: false
+independent_verification_closed: false
+
+dedup:
+  current_workitem_duplicate_observed: false
+  actor_carrier_family_prior_reuse_exists: true
+  selected_prior_reason: DIRECT_S04_CAUGHT_SPECIMEN_WITH_EXACT_ROLE_SEPARATION_REASON_IS_MORE_REUSABLE_THAN_GENERATING_A_NEW_ANTIBODY
+  search_ceiling: BEST_EFFORT_GEN133_COMMIT_AND_PATH_SEARCH_UNDER_CONNECTOR_INDEX_LAG
+
+expiry_utc: '2026-08-09T21:51:23Z'
+
+honest_flaw: >-
+  The prior S04 specimen promoted a Google Calendar tool action name into actor/carrier identity, whereas mutant 212 promotes an X12 scheduled-task ID into both actor and verifier identity. The shared failure invariant is exact role and authority separation, but the prior artifact is not a byte-for-byte analogue and does not test a legitimate delegated multi-carrier case. This mutation is comparatively easy because the authentic X12 source already places task_id and verifier in separate fields. A stronger future assay would begin with explicit actor principal, carrier task, verifier, delegated authority, and effective-time bindings, then corrupt exactly one actor-to-carrier or carrier-to-verifier edge while preserving neighboring evidence.
+
+no_effect_receipt:
+  source_edited: false
+  task_mutation: false
+  private_body_copied: false
+  canon_promotion: false
+  self_verification: false
+  send: false
+  spend: false
+  deployment: false
+  merge: false
+  publication: false
+  account_or_security_change: false
+  permanent_deletion: false
+  seal: false
+  immunize: false
+  permaweb_upload: false
+---
