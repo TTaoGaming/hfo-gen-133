@@ -1,0 +1,58 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_GITHUB_BRANCH_SEARCH_READONLY_025
+event_type: PHASE2_RESULT
+expected_current_version: 197
+candidate: GitHub_search_branches_readonly
+campaign_wake: 2_of_4
+phase_status: PHASE2_ACCEPTED_WITH_GATES
+wip: 1
+preflight_commit: 2ca9e2160d99979bdb0e8da57768c47ea46d715b
+preflight_blob_sha: 4aaf2ee576f870cf70b8785e8fde0b0bf27233fb
+preflight_readback: true
+request_sha256_verified: true
+candidate_invocations_total: 2
+usable_candidate_results: 2
+result_count: 1
+phase1_result_count: 1
+exact_query_match_observed: true
+phase1_exact_query_match_observed: true
+opaque_cursor_observed: true
+phase1_opaque_cursor_observed: true
+replay_comparison: MATCH_ON_RESULT_COUNT_EXACT_MATCH_AND_CURSOR_PRESENCE
+connector_errors_total: 0
+retries_total: 0
+fallbacks_total: 0
+candidate_mutations_total: 0
+external_call_time_ms_observed: 322
+phase1_external_call_time_ms_observed: 299
+operator_minutes_removed_measured: 0
+custom_code_avoided_estimate: 20_to_60_LOC_UNVALIDATED
+custom_code_avoided_realized_by_this_candidate: 0
+paid_cost_usd_observed: 0_NO_CHARGE_SURFACED_NOT_BILLING_PROOF
+direct_cost_or_quota_evidence: NO_RATE_LIMIT_HEADERS_QUOTA_DEBIT_OR_BILLING_METADATA_EXPOSED
+credentials: GITHUB_CONNECTOR_MANAGED_EFFECTIVE_TOKEN_TYPE_PRINCIPAL_AND_PERMISSIONS_UNKNOWN;TWO_SUCCESSES_PROVE_ACCESS_TO_NAMED_REPOSITORY_BRANCH_METADATA_FOR_THESE_CALLS_ONLY
+durability: GIT_PHASE1_AND_PHASE2_PREFLIGHT_RESULT_EVENTS_DURABLE_AND_READ_BACK
+observability: TWO_BOUNDED_RESULTS_MATCH_ON_COUNT_EXACT_MATCH_AND_CURSOR_PRESENCE;WRAPPER_LATENCIES_299MS_AND_322MS;NO_NATIVE_ENDPOINT_HTTP_STATUS_REQUEST_ID_RATE_HEADERS_TOKEN_SCOPE_OR_QUOTA_DEBIT_EXPOSED
+portability: MEDIUM_NATIVE_GITHUB_BRANCH_LISTING_STANDARD_BUT_CONNECTOR_QUERY_FILTER_AND_OPAQUE_CURSOR_WRAPPER_SPECIFIC
+failure_behavior: NOT_YET_PROBED
+verifier: GITHUB_PHASE2_PREFLIGHT_READBACK_PLUS_DIRECT_SEARCH_BRANCHES_REPLAY_PLUS_PHASE1_RECEIPT
+consumer: HFO_CANONICAL_BRANCH_DISCOVERY_AND_PREFLIGHT_VALIDATION
+adoption_credit: 0
+fitness_credit: 0
+mandatory_gate: READ_ONLY;BOUNDED_PAGE_SIZE;NO_BRANCH_MUTATION;NO_COMPLETENESS_INFERENCE_FROM_ONE_MATCH_OR_CURSOR_PRESENCE;DO_NOT_ASSUME_WRAPPER_QUERY_CURSOR_EQUAL_NATIVE_LIST_BRANCHES_SEMANTICS
+strongest_falsifier: PROVIDER_DIRECT_BRANCH_LIST_UNDER_THE_SAME_EFFECTIVE_PRINCIPAL_FAILS_TO_INCLUDE_THE_MATCHED_BRANCH_OR_WRAPPER_SEARCH_OMITS_A_KNOWN_MATCH_UNDER_STABLE_STATE
+honest_flaw: TWO_SUCCESSFUL_REPLAYS_ONLY;NO_FAILURE_PERMISSION_RATE_LIMIT_OR_VALID_PAGINATION_PROBE;OPAQUE_CURSOR_SEMANTICS_AND_NATIVE_ENDPOINT_MAPPING_UNKNOWN;EFFECTIVE_AUTH_PRINCIPAL_AND_RATE_DEBIT_UNKNOWN
+valid_time_utc: 2026-08-09T02:48:41Z
+recorded_time_utc: 2026-08-09T02:48:41Z
+---
+
+# X13 GitHub Branch Search Phase 2 Result
+
+The exact durable Phase-1 request was replayed once after Git-first preflight readback and digest verification. It again returned exactly one branch matching `agent/gen133-bootstrap-20260730`, and an opaque cursor was again present.
+
+Phase 1 and Phase 2 therefore match on the only authorized comparison fields: result count `1`, exact-match presence `true`, and cursor presence `true`. Observed wrapper external-call times were 299 ms and 322 ms. No connector error, retry, fallback, or repository mutation was observed across the two candidate calls.
+
+This is bounded repeatability evidence only. It does not prove repository-wide completeness, stable cursor value/semantics, native REST endpoint mapping, effective token permissions, rate-limit behavior, or actual quota debit.
+
+Phase 3 should run one harmless bounded failure/permission/connector-variance probe without branch mutation.
