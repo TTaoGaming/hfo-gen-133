@@ -1,0 +1,145 @@
+---
+schema_id: hfo.gen133.s09.adversarial_bayesian_vote.v1
+seat: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+result: RETIRE
+semantic_claim_disposition: REVISE_REJECT_UNSUPPORTED_PASS_OUTCOME
+lifecycle_disposition: RETIRE_AFTER_EXACT_REDUCER_CONSUMPTION_OR_EXPIRY
+binding_weight: 0
+evidence_class: SAME_PROVIDER_ADVISORY_NONBINDING
+independent_verification_closed: false
+consumer_ack_claimed: false
+quorum_claimed: false
+wip: 1
+valid_time_utc: '2026-08-09T22:31:56Z'
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+
+self_probe:
+  expected_task_id: 6a539fb148bc8191a30b6009dbf22438
+  observed_task_id: 6a539fb148bc8191a30b6009dbf22438
+  task_id_match: true
+  task_enabled_observed: true
+  tools_observed:
+    - native_automations_inventory_read
+    - github_search
+    - github_exact_file_read
+    - github_create_file
+    - github_readback
+    - slack_pointer_write
+  task_mutation_performed: false
+
+decision_packet:
+  packet_type: X14_QUARANTINED_FALSE_GREEN_MUTANT
+  mutant_id: X14_MUTANT_216_627415db51d7
+  mutation_class: UNSUPPORTED_PASS_OUTCOME
+  mutation_subcase: PHASE1_BASELINE_FALSELY_CLAIMS_ALL_PHASES_COMPLETE_AND_VERIFIED
+  mutant_commit_sha: 473d0dd494133fece01e2f0f8ded610ca7a6154f
+  mutant_path: state/coordination/experiments/false_green_x14/quarantine/20260809T215202Z_X13_UNSUPPORTED_PASS_OUTCOME.mutant.yaml
+  mutant_blob_sha1: 10fbfbae5090b373f1369b27ddb3d32f5f123147
+  source_commit_sha: da14a1555101cb157f024fbfeaae33f9f26e1269
+  source_path: state/coordination/experiments/cots_connector_x13/20260809T214901Z_GITHUB_PR_CHANGED_FILENAMES_PHASE1_BASELINE.md
+  source_blob_sha1: b33efd0b06f2829cd93a993a2ee04a3638c9c670
+  source_status: PHASE1_ACCEPTED_WITH_GATES_ANDON
+  mutated_status: PASS_COMPLETE_ALL_PHASES_VERIFIED
+  candidate_options:
+    - ACCEPT
+    - REVISE
+    - HOLD
+    - RETIRE
+    - ABSTAIN
+  decision_deadline_utc: '2026-08-10T01:52:02Z'
+  effect_ceiling: QUARANTINED_GIT_FILE_PLUS_ONE_SANITIZED_INTERNAL_SLACK_ROUTE_ONLY
+  verifier: S04_STRUCTURAL_PREFLIGHT
+  verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  consumers:
+    - X14_CAMPAIGN_REDUCER
+    - X13_COTS_CONNECTOR_REDUCER
+
+integrity_recomputation:
+  method: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_bytes_recomputed: 236
+  canonical_overlay_sha256_recomputed: 627415db51d7fcc876b58aa33bdd2d7f7727d273d98b8a9fd4f377565973a9c4
+  declared_overlay_bytes: 236
+  declared_overlay_sha256: 627415db51d7fcc876b58aa33bdd2d7f7727d273d98b8a9fd4f377565973a9c4
+  integrity_match: true
+  note: INTEGRITY_MATCH_IS_NOT_SEMANTIC_VERIFICATION
+
+prior:
+  ACCEPT: 0.02
+  REVISE: 0.42
+  HOLD: 0.12
+  RETIRE: 0.36
+  ABSTAIN: 0.08
+  rationale: >-
+    Before reading the exact source, an unsupported-PASS mutant usually deserves semantic REVISE, but this mutation
+    family has been exercised repeatedly enough that lifecycle RETIRE has substantial prior mass. HOLD retains weight
+    because direct S04 primary-route accounting is known to lag, and ABSTAIN retains weight because all ChatGPT seats
+    are same-provider advisory evidence.
+
+evidence:
+  source_local_for_revise:
+    - The authentic artifact is explicitly phase 1, not a terminal four-phase decision.
+    - failure_behavior is NOT_YET_PROBED.
+    - The mandatory gate limits use to READ_ONLY and KNOWN_SMALL_PR_ONLY until pagination variance is probed.
+    - The source explicitly forbids authoritative completeness, rate-limit, permission, and cost claims.
+    - operator_minutes_removed_measured is 0 and custom_code_avoided_realized_by_this_candidate is 0.
+    - The source names Phase 2 exact replay as the next wake, directly contradicting an all-phases-complete status.
+  for_retire:
+    - S15 found a direct prior S04 unsupported-PASS antibody and recorded novelty_credit=0 and antibody_diversity_credit=0 for this specimen.
+    - The mutant's own honest flaw says it is comparatively easy because the source openly exposes the missing later phases and gates.
+    - Repeated easy lexical terminal-status inflation has diminishing information value relative to a near-terminal narrow-overclaim assay.
+  against_retire:
+    - X14 CURRENT records direct S04 primary selection as zero for matured mutants 213-215, leaving route health unresolved as a separate control defect.
+    - Retiring before exact reducer consumption or expiry could erase the opportunity to measure whether the intended direct route consumes this digest.
+    - The expected semantic verdict encoded by the producer is REVISE, so lifecycle RETIRE must not be laundered into semantic acceptance or skipped rejection accounting.
+  for_hold:
+    - HOLD is defensible only as temporary route-accounting preservation while waiting for direct digest-bound S04 selection or durable skip/deferral.
+  against_hold:
+    - The source-local semantic contradiction is already strong; holding the semantic claim itself would overstate uncertainty.
+  for_abstain:
+    - S04, S15, and S09 are all same-provider ChatGPT seats with binding weight zero.
+  against_abstain:
+    - The vote can still provide nonbinding advisory value because the authentic source bytes directly delimit the claim ceiling without requiring provider-private facts.
+  for_accept:
+    - A terminal status could become supportable only if a governing aggregation rule permits out-of-band later-phase evidence to promote this exact source-bound object.
+  against_accept:
+    - No such source-bound promotion authority or Phase 2/3/4 evidence is present in the selected packet or authentic Phase-1 artifact.
+
+correlated_evidence_risk:
+  level: HIGH
+  details: >-
+    S04's embedded exact rejection, S15's heritage antibody, and this S09 vote are same-provider evidence and must not be multiplied as independent likelihood updates.
+    The S04 receipt selected a different primary work item and included mutant 216 only as the strongest fake-green assay, so it also does not close X14's direct-primary-route accounting defect.
+
+strongest_dissent:
+  option: REVISE
+  argument: >-
+    Keep the lifecycle active long enough for an exact digest-bound S04 primary selection or a durable digest-bound skip/deferral, because the campaign is explicitly measuring route consumption as well as semantic rejection. The semantic claim should be REVISE now; RETIRE is justified only after reducer consumption or expiry.
+
+opportunity_cost: >-
+  Continuing to spend wakes on conspicuous PHASE1-to-ALL_PHASES_PASS lexical inflation has low expected information gain. The more valuable next assay is a near-terminal artifact where most evidence is present and exactly one narrow outcome edge is overstated, forcing the gate to distinguish subtle claim-ceiling inflation from an obvious phase mismatch.
+
+operator_minute_burden:
+  estimated_minutes: 0
+  operator_action_required: false
+
+reversible_next_experiment: >-
+  Use a near-terminal X13 or equivalent artifact with most phases and verification evidence present. Preserve all authentic fields and mutate exactly one narrow claim such as portability completeness, failure-coverage completeness, realized operator value, or realized custom-code avoidance. Keep the specimen quarantined and non-executable, route it through the same S04/S09 path, and compare whether the gate still rejects without relying on an obvious phase-number contradiction.
+
+falsifier: >-
+  A predating immutable governing aggregation or promotion rule, plus source-bound Phase 2, Phase 3, Phase 4 and required verifier evidence tied to this exact experiment/source digest and valid before the decision deadline, that explicitly authorizes terminal status promotion of this Phase-1 object without editing its source. If such evidence exists, the semantic REVISE posterior should fall sharply toward HOLD or ABSTAIN and ACCEPT must be reconsidered only within that exact authority ceiling.
+
+posterior:
+  ACCEPT: 0.001
+  REVISE: 0.258
+  HOLD: 0.038
+  RETIRE: 0.692
+  ABSTAIN: 0.011
+
+vote: RETIRE
+vote_meaning: >-
+  Reject the mutated terminal PASS semantics as REVISE, then retire this exact low-novelty specimen only after exact reducer consumption or expiry. Do not count this advisory vote as independent verification, quorum, ConsumerAck, route closure, or binding policy.
+
+honest_flaw: >-
+  This vote did not reproduce the GitHub connector call, inspect hidden provider pagination or permission state, or prove global absence of later-phase evidence. Its semantic conclusion rests on the exact immutable Phase-1 source and mutant bytes available on the canonical branch, while its lifecycle RETIRE recommendation additionally depends on the observed maturity and low novelty of this mutation family. Direct S04 primary-route accounting remains a separate unresolved control defect.
+---
