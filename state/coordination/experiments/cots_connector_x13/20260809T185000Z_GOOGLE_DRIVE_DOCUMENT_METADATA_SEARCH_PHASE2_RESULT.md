@@ -1,0 +1,60 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_GOOGLE_DRIVE_DOCUMENT_METADATA_SEARCH_READONLY_029
+event_type: PHASE2_RESULT
+expected_current_version: 213
+candidate: Google_Drive.search_document_metadata_readonly
+campaign_wake: 2_of_4
+wip: 1
+preflight_commit: b9586ef434d52a58e323f9bfecbde418b9747e92
+preflight_blob_sha: 9d4c959cc965125644ba023180d13e8dadcca90b
+preflight_readback: true
+candidate_request_sha256: 81deb918b3bef5f68c1819a101a10fe6130a114c552a94ea0773c1ab2769e47d
+candidate_invocations_this_wake: 1
+candidate_invocations_total: 2
+usable_candidate_results: 2
+expected_failure_probes_total: 0
+connector_errors_total: 0
+retries_total: 0
+fallbacks_total: 0
+candidate_mutations_total: 0
+result_count_phase1: 5
+result_count_phase2: 5
+ordered_result_id_digest_phase1_sha256: 9e7528559ea056b1cb10633c493a81e0070a9d6909567f18ed2b1e2e5d928bf7
+ordered_result_id_digest_phase2_sha256: 9e7528559ea056b1cb10633c493a81e0070a9d6909567f18ed2b1e2e5d928bf7
+ordered_result_id_digest_match: true
+next_page_token_phase1_observed: false
+next_page_token_phase2_observed: false
+file_content_hydration_phase1_observed: false
+file_content_hydration_phase2_observed: false
+metadata_fields_observed: TITLE_ID_URL_PARENT_IDS
+item_type_variance_phase1_observed: DOCUMENT_MODE_INCLUDED_AT_LEAST_ONE_SPREADSHEET_RESOURCE
+item_type_variance_phase2_observed: DOCUMENT_MODE_INCLUDED_AT_LEAST_ONE_SPREADSHEET_RESOURCE
+item_type_variance_reproduced: true
+operator_minutes_removed_measured: 0
+custom_code_avoided_realized_by_this_candidate: 0
+custom_code_avoided_estimate: 30_to_100_LOC_UNVALIDATED
+credentials: CONNECTOR_MANAGED_EFFECTIVE_SCOPE_AND_PRINCIPAL_UNKNOWN
+durability: GIT_PREFLIGHT_AND_RESULT_EVENTS_ON_CANONICAL_BRANCH_WITH_READBACK_PENDING_FOR_THIS_EVENT
+observability: TWO_BOUNDED_SUCCESSES;MATCHING_5_RESULT_ORDERED_ID_DIGEST;NO_CONTENT_HYDRATION;DOCUMENT_TAXONOMY_VARIANCE_REPRODUCED;NO_NATIVE_REQUEST_ID_RATE_HEADERS_SCOPE_QUOTA_DEBIT_OR_LATENCY_SURFACED
+portability: MEDIUM_HIGH_TO_DRIVE_FILES_LIST_QUERY_AND_PAGINATION_CONCEPTS_BUT_CONNECTOR_DOCUMENT_TAXONOMY_IS_BROADER_THAN_GOOGLE_DOCS_MIME_SEMANTICS
+failure_behavior: UNPROBED
+paid_cost_usd_observed: 0_NO_CHARGE_SURFACED_NOT_BILLING_PROOF
+direct_quota_evidence: NONE_FROM_CONNECTOR_RECEIPT
+verifier: GIT_DURABLE_READBACK_PLUS_DIRECT_DRIVE_RECEIPT
+consumer: HFO_BOUNDED_DRIVE_DISCOVERY_FOR_OPERATOR_CONTROL_LOOPS
+strongest_falsifier: PHASE3_FAILURE_PROBE_MUTATES_OR_LEAKS_CONTENT;CONSUMER_REQUIRES_GOOGLE_DOCS_ONLY_MIME_SEMANTICS_OR_AUTHORITATIVE_COMPLETENESS
+honest_flaw: REPLAY_STABILITY_SHOWN_ONLY_FOR_ONE_QUERY_AND_ONE_PROVIDER_PAGE;DOCUMENT_ITEM_TYPE_REPEATEDLY_INCLUDED_A_SPREADSHEET;NO_PERMISSION_FAILURE_VALID_PAGINATION_SCOPE_RATE_LIMIT_QUOTA_DEBIT_LATENCY_OR_COMPLETENESS_EVIDENCE
+phase_status: PHASE2_ACCEPTED_WITH_GATES_ANDON
+next_phase: PHASE3_ONE_BOUNDED_HARMLESS_NONMUTATING_FAILURE_OR_PERMISSION_VARIANCE_PROBE
+valid_time_utc: 2026-08-09T18:50:00Z
+recorded_time_utc: 2026-08-09T18:50:00Z
+---
+
+# X13 Phase 2 result — Google Drive document metadata exact replay
+
+The exact bounded Phase-1 request was replayed once after Git-first preflight/readback. It again returned five metadata results. The privacy-safe ordered-ID digest matched Phase 1 exactly, no next-page token was surfaced, and no file-content hydration, retry, fallback, connector error, or Drive mutation was observed.
+
+Measured variance/Andon reproduced: explicit `item_type=document` again included a spreadsheet resource. Connector `document` taxonomy is therefore not equivalent to a Google Docs MIME-type filter. No raw names, IDs, URLs, parent IDs, snippets, content, or page tokens are persisted in this event.
+
+This replay establishes bounded one-page repeatability only. It does not establish authoritative completeness, valid pagination, OAuth principal/scope, permission-denial behavior, native method mapping, rate-limit behavior, quota debit, billing, or latency.
