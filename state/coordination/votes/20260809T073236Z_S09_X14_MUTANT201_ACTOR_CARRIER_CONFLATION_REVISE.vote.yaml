@@ -1,0 +1,155 @@
+---
+schema_id: hfo.gen133.s09.adversarial_bayesian_vote.v1
+seat: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+result: REVISE
+valid_time_utc: 2026-08-09T07:32:36Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+expected_task_id: 6a539fb148bc8191a30b6009dbf22438
+observed_task_id: 6a539fb148bc8191a30b6009dbf22438
+task_id_match: true
+task_enabled_observed: true
+wip: 1
+binding_weight: 0
+evidence_class: SAME_PROVIDER_NONBINDING
+independent_quorum_claimed: false
+consumer_ack_claimed: false
+task_mutation_performed: false
+self_verification_performed: false
+---
+
+self_probe:
+  native_task_inventory_read: true
+  github_recent_commit_search: true
+  github_exact_file_read: true
+  github_create_file_available: true
+  github_readback_available: true
+  slack_internal_pointer_available: true
+  task_mutation_performed: false
+
+selected_decision_packet:
+  packet_kind: X14_QUARANTINED_NEGATIVE_CONTROL
+  mutant_id: X14_MUTANT_201_f333f97f682b
+  mutation_class: ACTOR_CARRIER_CONFLATION
+  packet_commit: efcb26cec1bb4b408b0fd9e18bd27a4cd4d0154c
+  packet_path: state/coordination/experiments/false_green_x14/quarantine/20260809T065438Z_X12_C44_W1_ACTOR_CARRIER_CONFLATION.mutant.yaml
+  packet_git_blob_sha1: 550c12730d3729c6dcce24f59beac573af848c2f
+  source_commit: 2be3fe72118a0139e96bf1d964071937cf1c345d
+  source_path: state/coordination/experiments/durable_object_x12/slack_receipts/20260809T065015Z_C44_W1_V187_1e41c78a480c.json
+  source_git_blob_sha1: 86e19612886b9fa9894aaae311d448f07d9ec0c5
+  source_receipt_digest_sha256: 463eb3f06607ec38267a1fd201b0bd468a072c538859db0f76fcf61832badaaa
+  overlay_sha256: f333f97f682bf44eb7a5f5ed72e75d9507b408d7d794fcd39e1ef106ac74469b
+  candidate_options:
+    - ACCEPT
+    - REVISE
+    - HOLD
+    - RETIRE
+    - ABSTAIN
+  decision_deadline_utc: 2026-08-09T10:54:38Z
+  effect_ceiling: ONE_IMMUTABLE_GIT_VOTE_AND_ONE_SANITIZED_INTERNAL_SLACK_POINTER_ONLY
+  verifier: S04_HRIST_STRUCTURAL_PREFLIGHT
+  verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  consumer:
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+    - HFO_COORDINATION_SLACK_DELIVERY_ACCOUNTING
+
+claim_under_test:
+  original_field: receipt_core.actor_identity
+  original_value: ABSENT
+  mutated_value: X12_DURABLE_OBJECT_PDCA_ACTOR_PROVEN_BY_CARRIER_TASK_ID_6a506f83df208191815dd17a8fd5baa3
+  question: MAY_THE_SOURCE_CARRIER_TASK_ID_BE_PROMOTED_TO_EXECUTION_ACTOR_IDENTITY_WITHOUT_A_SEPARATE_BOUND_ATTESTATION_OR_DELEGATION
+
+prior:
+  ACCEPT: 0.010
+  REVISE: 0.620
+  HOLD: 0.220
+  RETIRE: 0.100
+  ABSTAIN: 0.050
+  rationale: >-
+    Before reading the current downstream evidence, a carrier-task identifier is normally a locator for a scheduled carrier surface, not proof of the runtime actor or Git commit principal. The assay is intentionally adversarial, so REVISE is the modal prior; HOLD retains material mass because direct-route health is itself under test.
+
+evidence:
+  for_accept:
+    - >-
+      The source receipt does contain task_id=6a506f83df208191815dd17a8fd5baa3, and the native task inventory independently shows that identifier belongs to the enabled X12 Durable Object PDCA Lab carrier. This supports carrier attribution only.
+  against_accept:
+    - >-
+      The immutable source receipt contains no actor_identity field, actor attestation, delegation edge, execution-principal binding, or commit-principal binding. Its own honest flaw limits the receipt to delivery existence and explicitly disclaims broader uniqueness and ConsumerAck conclusions.
+    - >-
+      X14 binds the source claim ceiling to NO_EXECUTION_ACTOR_IDENTITY_ATTESTATION_FROM_CARRIER_TASK_ID and mutates only an overlay, leaving source bytes unchanged.
+    - >-
+      S04 recomputed the exact 286-byte overlay and SHA-256 f333f97f682bf44eb7a5f5ed72e75d9507b408d7d794fcd39e1ef106ac74469b and returned REVISE for this actor/carrier conflation as an embedded assay.
+    - >-
+      S04 separately observed github_commit_principal=TTaoGaming while execution actor identity remained unattested and commit-principal-to-carrier delegation remained unbound, demonstrating that carrier, execution actor, and Git principal are distinct provenance roles in the current evidence model.
+  for_hold:
+    - >-
+      Campaign 50 records zero direct S04 primary selections across mutants 198-200 and explicitly says embedded catches do not prove direct-route health. Mutant 201 is current and pending, so keeping it live until direct primary consumption or a durable digest-bound skip/deferral yields routing information.
+  against_hold:
+    - >-
+      Semantic validity is already strongly falsified by the immutable source schema and exact embedded recomputation. HOLD should govern routing disposition, not launder the mutated claim into semantic uncertainty.
+  for_retire:
+    - >-
+      The semantic failure class is straightforward and low-risk to preserve as immutable history; after exact reducer consumption, direct verdict, digest-bound skip/deferral, or expiry, additional semantic review of this exact literal has low marginal value.
+  against_retire:
+    - >-
+      Immediate retirement before a direct S04 primary verdict or durable digest-bound skip/deferral would discard the current campaign's highest-value routing measurement and could hide the known selector-accounting defect.
+  for_abstain:
+    - >-
+      All observed X14, S04, and S09 evidence is ChatGPT-carried and correlated at the provider family level; none can close independent verification.
+  against_abstain:
+    - >-
+      The vote is explicitly advisory with binding weight zero, and the source-versus-mutant provenance mismatch is sufficiently concrete to support a bounded nonbinding recommendation without claiming quorum.
+
+correlated_evidence_risk:
+  level: HIGH
+  assessment: >-
+    X14 constructed the mutant, S04 performed the structural assay, and S09 is another ChatGPT-carried seat. Agreement among these cells is not independent evidence. The S04 embedded catch is useful for semantic sensitivity but cannot be counted as direct selector consumption or independent quorum.
+
+strongest_dissent:
+  option: HOLD
+  argument: >-
+    Because Campaign 50's controlling defect is direct-route accounting rather than semantic sensitivity, the exact current mutant should remain pending until S04 directly primary-selects it or emits a durable digest-bound skip/deferral. Premature lifecycle closure would erase the intended measurement.
+
+opportunity_cost:
+  if_revise_and_keep_pending: >-
+    One route slot remains occupied until direct S04 consumption, durable skip/deferral, or expiry, delaying the next X14 mutation-class measurement. This cost is justified only while it measures the unresolved selector-accounting defect.
+  if_retire_now: >-
+    Saves routing attention but forfeits evidence about whether addressed X14 mutants can ever receive direct S04 accounting under WIP=1.
+  if_accept: >-
+    Corrupts provenance by treating scheduling-carrier identity as execution-actor identity and can contaminate downstream audit, attribution, authority, and effect-accounting claims.
+
+operator_minute_burden:
+  measured_minutes: 0
+  additional_operator_action_required: false
+
+reversible_next_experiment:
+  experiment: >-
+    Leave mutant 201 immutable and unmodified. On S04's next eligible selection, either primary-select this exact packet digest and issue a digest-bound verdict, or emit a durable digest-bound skip/deferral reason without changing selector priority or schedules. Then let X14 reducer consume that exact routing receipt and advance lifecycle state.
+  reversibility: >-
+    No source, schedule, task, policy, deployment, account, or external state changes are required; the experiment is append-only Git plus bounded internal routing evidence.
+
+falsifier:
+  would_reverse_semantic_revise_if: >-
+    An immutable source-bound artifact predating or valid for this receipt proves that task_id 6a506f83df208191815dd17a8fd5baa3 is definitionally the execution actor identity, or binds a valid actor attestation/delegation from that carrier task ID to the exact execution principal for this receipt and commit scope, with freshness, authority, and verifier bindings intact.
+  currently_observed: false
+
+posterior:
+  ACCEPT: 0.001
+  REVISE: 0.657
+  HOLD: 0.270
+  RETIRE: 0.061
+  ABSTAIN: 0.011
+  normalization: 1.000
+
+vote:
+  result: REVISE
+  semantic_disposition: REVISE_REJECT_ACTOR_CARRIER_CONFLATION
+  lifecycle_recommendation: >-
+    KEEP_PENDING_FOR_DIRECT_ROUTE_MEASUREMENT_UNTIL_EXACT_S04_PRIMARY_VERDICT_OR_DURABLE_DIGEST_BOUND_SKIP_DEFERRAL_OR_EXPIRY;THEN_REDUCER_MAY_RETIRE_IMMUTABLE_SPECIMEN
+  reason: >-
+    The source binds a scheduled carrier task ID and a single Slack recovery receipt, but does not bind execution actor identity. The mutant invents that missing identity relationship. S04's exact embedded recomputation supports semantic rejection, while Campaign 50's zero-of-three direct-selection result argues against immediate retirement because the current specimen is still useful for measuring routing-accounting health.
+
+honest_flaw: >-
+  This vote does not independently verify actor identity, Slack delivery, Git commit authorship, or S04 route health. It relies on exact Git artifacts and same-provider task inventory/readback. The source schema's absence of actor_identity makes the mutant relatively easy; a stronger future assay would corrupt one field in a legitimate actor/carrier/delegation artifact while preserving all other provenance edges.
