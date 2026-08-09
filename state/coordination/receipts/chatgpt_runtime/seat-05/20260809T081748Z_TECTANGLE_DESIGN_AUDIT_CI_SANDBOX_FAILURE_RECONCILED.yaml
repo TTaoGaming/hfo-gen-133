@@ -1,0 +1,77 @@
+schema: hfo.gen133.s05.operator_relief_receipt.v1
+seat: S05
+callsign: VAR_OPERATOR_RELIEF
+expected_task_id: 6a55c182078c8191b89f2dd15f5f640c
+wip: 1
+valid_time: 2026-08-09T02:17:48-06:00
+transaction_time: COMMIT_METADATA
+result: CHANGED
+transition: TECTANGLE_DESIGN_AUDIT_FAILURE_RECONCILED_TO_NO_SEND_REPAIR_PACKET
+active_item: TECTANGLE_DESIGN_AUDIT_CI_FAILURE
+priority:
+  p0: CHATGPT_PRO_CONTINUITY
+  p1:
+    - FIDELITY_AUTHORITATIVE_WIRE_DISPOSITION_MONDAY
+    - TECTANGLE_DESIGN_AUDIT_CI_REPAIR
+waiting_demoted:
+  - PROPERTY_ANNUAL_MEETING_LOGISTICS_PENDING_FORMAL_NOTICE
+source_readback:
+  gmail:
+    pointer: gmail:19fe53165598c265
+    sanitized_fact: GitHub notification reports the Tectangle Design Audit failed on main commit 49da03b.
+  github:
+    repo: TTaoGaming/Tectangle
+    commit: 49da03bd595d364789c219382ec6bec6f56b552d
+    workflow_run_id: 31298720168
+    workflow_job_id: 93207932348
+    workflow_path: .github/workflows/design_audit.yml
+    puppeteer_config_path: jest-puppeteer.config.cjs
+    observed_pass_before_failure:
+      - dependency_install
+      - static_server_start_and_wait
+      - design_token_validation
+      - ui_canon_canary_59_dev_pages
+    failing_step: Run design audit tests
+    observed_root_error: Puppeteer/Chromium failed to launch because the GitHub-hosted Ubuntu runner reported No usable sandbox.
+    config_fact: The exact Puppeteer launch args include disable-gpu-sandbox but do not include no-sandbox or disable-setuid-sandbox.
+    audit_command_fact: hex:design:audit invokes Jest with JEST_PUPPETEER_CONFIG=jest-puppeteer.config.cjs against the v4_ui_smoke screenshot test.
+    excluded_claims:
+      - No claim that a design assertion failed; the browser did not launch far enough to execute the screenshot assertions.
+      - No claim that commit 49da03b introduced the sandbox failure.
+      - Node 20 deprecation warnings are not classified as this run's root failure.
+      - npm audit vulnerability counts are not classified as this run's root failure.
+  slack:
+    channel: C0BGNGPJFHU
+    sanitized_fact: No newer S05 or operator pointer in the bounded channel delta closed this CI failure or ChatGPT Pro continuity.
+  calendar:
+    status: NOT_READ
+    reason: This transition has no calendar-bound action; changed-only privacy ceiling applied.
+  contacts:
+    status: NOT_READ
+    reason: This transition has no contact-bound action; changed-only privacy ceiling applied.
+operator_packet:
+  mode: NO_SEND_NO_CODE_MUTATION
+  target: TTaoGaming/Tectangle Design Audit workflow
+  repair_hypothesis:
+    preferred_smallest_candidate: Add Chromium no-sandbox launch only when process.env.CI is true in jest-puppeteer.config.cjs; optionally pair disable-setuid-sandbox if the runner still requires it.
+    safer_alternative: Use a runner or browser configuration that preserves a working Chromium sandbox rather than disabling it.
+  exact_sequence:
+    - Inspect the exact hex:design:audit command and jest-puppeteer.config.cjs at commit 49da03bd595d364789c219382ec6bec6f56b552d.
+    - Make the smallest CI-scoped Puppeteer launch change; do not change design expectations, screenshot baselines, or golden assertions to force green.
+    - Run one new Design Audit workflow attempt tied to the exact repair commit.
+    - Read back the new job logs and distinguish browser launch from assertion results.
+  acceptance:
+    - Chromium launches during Run design audit tests.
+    - The v4_ui_smoke screenshot assertions actually execute.
+    - Design token validation remains green.
+    - UI Canon M3 canary remains green.
+    - Full job success is required before calling the CI repaired.
+  security_note: Disabling Chromium sandboxing reduces browser isolation; if no-sandbox is chosen, scope it to the ephemeral CI runner only and prefer a sandbox-preserving runner when practical.
+  close_condition: A new workflow run tied to the repair commit demonstrates that the design-audit assertions execute and reaches a terminal result.
+  stop_condition: S05 performs no code change and no workflow rerun.
+operator_minutes_removed_estimate: 10
+next_consumer: S06_CODE_WORK_PACKET_COMPILER
+privacy_ceiling: SANITIZED_FACTS_AND_SOURCE_POINTERS_ONLY
+effect_ceiling: READ_RECONCILE_INTERNAL_RECEIPT_AND_SLACK_POINTER_ONLY
+forbidden_effects_observed: []
+honest_flaw: The browser-launch failure is source-readback evidence, but the smallest working repair has not been executed or verified because S05 is not authorized to mutate code or rerun CI.
