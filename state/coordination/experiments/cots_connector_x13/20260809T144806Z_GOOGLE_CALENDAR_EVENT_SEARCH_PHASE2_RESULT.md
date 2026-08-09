@@ -1,0 +1,73 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_GOOGLE_CALENDAR_EVENT_SEARCH_READONLY_028
+candidate: Google_Calendar.search_events_readonly
+phase: 2
+phase_status: PHASE2_ACCEPTED_WITH_GATES_ANDON
+wip: 1
+expected_current_version: 209
+preflight_commit: 82e92933bf1bdf45a886c2ebe2f98f032a699190
+preflight_blob_sha: 55ff2ce510beecbf39d5ff5cafe4bd7f8b07af91
+preflight_readback: true
+request_sha256: 9f53e69c34059f00164e5f9f28a2b2488ec976ffaec270526da4c38d61ef56c9
+request_sha256_verified_from_readback: true
+candidate_invocations_this_wake: 1
+candidate_invocations_total: 2
+result_count: 5
+phase1_result_count: 5
+result_count_matches_phase1: true
+next_page_token_present: true
+phase1_next_page_token_present: true
+next_page_token_presence_matches_phase1: true
+ordered_event_id_sha256: 84959cc9a6e8d247c67a89be2882264457fb2978eab8060898ea82b893aec776
+phase1_ordered_event_id_sha256: 84959cc9a6e8d247c67a89be2882264457fb2978eab8060898ea82b893aec776
+ordered_event_id_digest_matches_phase1: true
+connector_error: false
+retries_observed: 0
+fallbacks_observed: 0
+candidate_mutations: 0
+external_call_time_ms: 305
+phase1_external_call_time_ms: 448
+body_fields_hydrated: summary,location,color_id,start,end,url,description,my_response_status,transparency,attachments,recurring_event_id,original_start_time,display_url,display_title
+sensitive_event_text_returned: true
+data_minimization_andon_reproduced: true
+raw_event_content_persisted_in_x13_receipt: false
+raw_event_ids_persisted_in_x13_receipt: false
+pagination_token_persisted_in_x13_receipt: false
+second_page_fetched: false
+operator_minutes_removed_measured: 0
+custom_code_avoided_estimate: 40_to_120_LOC_UNVALIDATED
+custom_code_avoided_realized_by_this_candidate: 0
+paid_cost_usd_observed: 0_NO_CHARGE_SURFACED_NOT_BILLING_PROOF
+direct_cost_or_quota_evidence: CONNECTOR_EXPOSED_NO_QUOTA_DEBIT_RATE_LIMIT_HEADERS_REQUEST_ID_OR_BILLING_METADATA;PHASE1_OFFICIAL_GOOGLE_CALENDAR_DOCS_CONTEXT_RETAINED_WITHOUT_NEW_PHASE2_CLAIM
+credentials: CONNECTOR_MANAGED;USABLE_READ_ACCESS_REPEATED_FOR_PRIMARY_CALENDAR_BOUNDED_WINDOW;EFFECTIVE_OAUTH_SCOPE_PRINCIPAL_AND_TOKEN_TYPE_NOT_EXPOSED
+durability: GIT_PHASE2_PREFLIGHT_WRITTEN_AND_READ_BACK_ON_CANONICAL_BRANCH;PHASE2_RESULT_PENDING_READBACK_AT_WRITE_TIME
+observability: RESULT_COUNT_NEXT_PAGE_TOKEN_PRESENCE_ORDERED_ID_DIGEST_AND_WRAPPER_TIMING_AVAILABLE;FULL_EVENT_SUMMARY_DESCRIPTION_AND_URL_FIELDS_REHYDRATED_AGAIN;NO_NATIVE_HTTP_STATUS_REQUEST_ID_RATE_HEADERS_SCOPE_PRINCIPAL_OR_QUOTA_DEBIT_EXPOSED
+portability: MEDIUM_HIGH;BOUNDED_PARAMETERS_REPLAYED_EXACTLY;ORDERING_AND_PAGINATION_CONTRACT_REMAIN_UNPROVEN
+failure_behavior: NOT_YET_PROBED
+verifier: DIRECT_GOOGLE_CALENDAR_CONNECTOR_PHASE2_RECEIPT_PLUS_GIT_PHASE2_PREFLIGHT_READBACK_PLUS_PHASE1_DURABLE_EVIDENCE
+consumer: HFO_BOUNDED_CALENDAR_INTAKE_FOR_OPERATOR_CONTROL_LOOPS
+mandatory_gate: READ_ONLY;PRIMARY_CALENDAR_ONLY_FOR_THIS_CAMPAIGN;EXPLICIT_TIME_WINDOW;MAX_RESULTS_5;ASSUME_FULL_EVENT_TEXT_MAY_BE_HYDRATED;DO_NOT_PERSIST_EVENT_TITLES_DESCRIPTIONS_LOCATIONS_URLS_IDS_OR_PAGE_TOKENS_IN_X13_RECEIPTS;DO_NOT_INFER_COMPLETENESS_WHEN_NEXT_PAGE_TOKEN_PRESENT;NO_SCOPE_PRINCIPAL_RATE_LIMIT_OR_QUOTA_ASSUMPTIONS
+strongest_falsifier: A_DOWNSTREAM_CONSUMER_REQUIRES_METADATA_ONLY_OR_FREEBUSY_ONLY_DISCLOSURE_AUTHORITATIVE_COMPLETE_WINDOW_RESULTS_EXPLICIT_SCOPE_PRINCIPAL_ACCOUNTABILITY_OR_RATE_LIMIT_TELEMETRY
+honest_flaw: PHASE2_REPRODUCED_FULL_EVENT_TEXT_HYDRATION_WITH_NO_FIELD_SELECTOR;TWO_MATCHING_FIRST_PAGE_SUCCESSES_DO_NOT PROVE_COMPLETENESS_STABLE_ORDER_VALID_PAGINATION_PERMISSION_DENIAL_OR_RATE_LIMIT_BEHAVIOR
+valid_time_utc: 2026-08-09T14:48:06Z
+recorded_time_utc: 2026-08-09T14:48:06Z
+---
+
+# X13 Google Calendar event search Phase 2 result
+
+## Exact bounded replay
+
+The exact Phase-1 request was replayed once after Git-first preflight readback. The connector again returned five events and a next-page token. The ordered event-ID SHA-256 matched Phase 1 exactly, so the bounded first page was repeatable across these two wakes. Wrapper time was 305 ms versus 448 ms in Phase 1.
+
+Across the two candidate invocations there are 2 bounded successes, 0 observed connector errors, 0 retries, 0 fallbacks, and 0 calendar mutations. Page 2 was not fetched.
+
+## Data-minimization Andon reproduced
+
+The connector again hydrated full event summary/description text plus URLs and other event fields. X13 persisted only aggregates and the privacy-safe digest, never raw event text, IDs, URLs, or page tokens. This surface remains gated away from metadata-only or free/busy-only workloads.
+
+## Phase-2 disposition
+
+`PHASE2_ACCEPTED_WITH_GATES_ANDON`. Repeatability is established only for this capped first page and exact bounded window. Completeness, contractual ordering, valid pagination, permission-denial classification, rate-limit behavior, effective OAuth scope/principal, native mapping, and actual quota debit remain unverified.
+
+Next wake: Phase 3. Run exactly one bounded harmless non-mutating failure/permission/connector-variance probe. Do not mutate calendar state and do not persist raw event content.
