@@ -1,0 +1,131 @@
+schema_id: hfo.gen133.s03_verification_route.v1
+result: REVISE
+terminal_receipt: false
+seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+expected_task_id: 6a539fc5130c81918c13624739fb2a60
+observed_task_id: 6a539fc5130c81918c13624739fb2a60
+task_id_match: true
+task_enabled_observed: true
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-09T17:09:12Z
+
+self_probe:
+  provider_task_inventory_read: true
+  github_branch_observed: agent/gen133-bootstrap-20260730
+  github_read_write_available: true
+  slack_connector_available: true
+  task_mutation_performed: false
+
+changed_window:
+  prior_s03_route_commit: a0e3437d9376c025105b2dcd2530737c5ecb8520
+  selected_changed_producer_return_observed: true
+  selected_workitem_prior_s03_route_observed: false
+  selected_workitem_exact_digest_bound_STOOD_or_FELL_observed: false
+  selected_workitem_explicit_named_ConsumerAck_observed: false
+  selected_workitem_terminal_receipt_observed: false
+
+correlation_id: GTM-S07-WELLS_FARGO-RETURN-20260809T162700Z
+work_item_id: S07_WELLS_FARGO_REGULATED_AI_CHANGE_PROMOTION_CARD_V1
+work_item_binding_source: PRODUCER_RETURN_EXPLICIT_WORKITEM_BUT_NO_ADMISSION_CLAIM
+producer: S07_GTM_PROOF_KIT_BUILDER
+producer_task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+producer_return_path: projects/gtm-revenue/returns/20260809T162700Z_S07_WELLS_FARGO_REGULATED_AI_CHANGE_PROMOTION_CARD_RETURN.md
+producer_return_create_commit: 7a68a7f3f2aa11e78af1d66c1fa70aef39b6e403
+producer_return_git_blob_sha1: 45af995473ab54352c8f010ed5077edb8053387c
+producer_return_exact_git_blob_readback: true
+producer_return_result: KIT_RETURNED
+candidate_created: true
+candidate_path: projects/gtm-revenue/kits/wells-fargo/20260809T162400Z_REGULATED_AI_CHANGE_PROMOTION_CARD.md
+candidate_utf8_bytes_bound_by_return: 7808
+candidate_sha256_bound_by_return: b78c998275108d44453842b05b66024b612d67298b7a7f77b889c4194b708a54
+candidate_git_blob_sha1_bound_by_return: 12bfec931931938c013a70f8f0861fdab2730343
+candidate_create_commit_bound_by_return: ab997b4f486e376ce66048f1040e23ec95dfb5f5
+candidate_exact_byte_readback_bound_by_return: MATCH
+candidate_independent_readback_by_s03: false
+
+producer_return_contract_check:
+  explicit_work_item_id_bound_in_return: true
+  claim_bound: false
+  admission_claim_observed_by_producer: false
+  claim_path: NOT_BOUND
+  claim_git_blob_sha1: NOT_BOUND
+  claim_acceptance_digest: NOT_BOUND
+  claim_idempotency_digest: NOT_BOUND
+  claim_lease_expiry: NOT_BOUND
+  exact_candidate_bytes_or_source_readback_bound: true
+  commands_and_exit_codes: NOT_APPLICABLE_MARKDOWN_ONLY_ARTIFACT_TEST_EXECUTION_NOT_CLAIMED
+  rollback_bound: true
+  rollback_mode: DELETE_CANDIDATE_ONLY_BY_LATER_OPERATOR_CONTROLLED_COMMIT_IF_REJECTED;PRESERVE_IMMUTABLE_RETURN
+  effect_ceiling_bound: true
+  producer_return_effect_ceiling: T0_PREP_RESEARCH_GIT
+  expiry_bound: true
+  producer_return_expiry_utc: 2026-08-14T14:08:00Z
+  honest_flaw_bound: true
+  target_evidence_digest_recomputable: false
+  no_send: true
+  no_submit: true
+  no_deploy: true
+  no_merge: true
+  no_spend: true
+
+revision_reason: >-
+  The changed S07 producer return binds the WorkItem, exact candidate byte count/SHA-256/Git blob/create commit and
+  exact-byte readback, rollback, T0_PREP_RESEARCH_GIT effect ceiling, expiry, no-send/no-submit boundaries, and an honest
+  flaw. It explicitly states that no immutable S02 admission claim was observed and binds no claim path/blob, acceptance
+  digest, idempotency digest, or lease. Because the required claim is absent from these immutable producer-return bytes,
+  S03 cannot route this return toward binding verification even if a claim exists elsewhere or appears later.
+
+requested_revision:
+  owner: S07_GTM_PROOF_KIT_BUILDER
+  action: >-
+    Do not rewrite this immutable return. After a valid immutable unexpired S02 admission claim exists for this exact
+    WorkItem, emit one superseding immutable producer return that explicitly binds work_item_id, claim path/blob,
+    acceptance digest, idempotency digest, lease/expiry, exact candidate bytes/readback or a fresh admitted candidate
+    when temporal ordering requires it, commands and exit codes where applicable, rollback, effect ceiling, expiry,
+    and honest flaw. Do not ask S03 to infer, fabricate, or backfill the claim.
+  self_repair_by_s03: forbidden
+
+route:
+  verifier: S04_HRIST_STRUCTURAL_PREFLIGHT
+  verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  verifier_class: SAME_PROVIDER_NONBINDING
+  nonproducer_verifier: true
+  binding_weight: 0
+  requested_verdict: REVISE_IF_MISSING_ADMISSION_BINDING_CONFIRMED
+  independent_verification_closed: false
+  exact_digest_bound_independent_STOOD_or_FELL_observed: false
+  explicit_named_ConsumerAck_observed: false
+
+route_nonce: S03-WELLS-FARGO-20260809T170912Z-45af995473ab
+route_idempotency:
+  canonicalization: UTF8_EXACT_PREIMAGE_NO_TERMINAL_LF
+  preimage: GTM-S07-WELLS_FARGO-RETURN-20260809T162700Z|S07_WELLS_FARGO_REGULATED_AI_CHANGE_PROMOTION_CARD_V1|45af995473ab54352c8f010ed5077edb8053387c|REVISE|S04_HRIST_STRUCTURAL_PREFLIGHT
+  sha256: a63759c8e33ae63748c36a194962c5a0d36427b5ff7cf9d6ac11d5c751ee6844
+
+rollback:
+  route_artifact: APPEND_ONLY_SUPERSESSION_IF_INCORRECT
+  destructive_delete_authorized: false
+
+effect_ceiling:
+  level: T0_INTERNAL_COORDINATION_GIT_SLACK_POINTER_ONLY
+  forbidden:
+    - external_send
+    - spend
+    - deployment
+    - merge
+    - public_publication
+    - account_or_security_change
+    - permanent_deletion
+    - task_mutation
+    - producer_impersonation
+    - self_verification
+    - implicit_consumer_ack
+
+honest_flaw: >-
+  S03 did not independently fetch and hash the candidate because the missing immutable admission binding in the selected
+  producer-return bytes is already dispositive for this contract. The repository search for a prior S03 Wells Fargo route
+  and for a digest-bound verifier verdict is bounded and absence is not global proof. A later S02 claim would not
+  retroactively alter or bind these immutable producer-return bytes; a superseding producer return is still required.
+  This S04 route is same-provider structural preflight only and cannot produce binding STOOD/FELL or ConsumerAck.
