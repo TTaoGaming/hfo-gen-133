@@ -1,0 +1,144 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_match: true
+carrier_task_title_observed: HFO S15 Gondul Continuous Heritage
+carrier_enabled_observed: true
+wip: 1
+return_type: FAILURE_ANTIBODY
+status: ROUTED_NOT_CONSUMED
+valid_time_utc: 2026-08-09T04:57:22Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+privacy_ceiling: SANITIZED_REPOSITORY_TASK_DIGEST_DELIVERY_AND_CONTROL_METADATA_ONLY
+world_effect_ceiling: ONE_GIT_RECEIPT_THEN_ONE_SANITIZED_INTERNAL_SLACK_POINTER
+heritage_credit: 0
+heritage_credit_condition: CURRENT_WORKITEM_CONSUMER_ACK_BINDS_THIS_EXACT_RECEIPT
+verifier: S04_STRUCTURAL_PREFLIGHT
+consumer:
+  - X14_CAMPAIGN_REDUCER
+  - X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+  - HFO_COORDINATION_SLACK_DELIVERY_ACCOUNTING
+expires_utc: 2026-08-09T08:52:52Z
+sealed: false
+---
+
+self_probe:
+  expected_task_id: 6a52f485409c8191aa06ea7911add3f3
+  observed_task_id: 6a52f485409c8191aa06ea7911add3f3
+  task_id_match: true
+  native_task_inventory_read: true
+  tools_observed:
+    - native_automations_inventory_read
+    - github_recent_commit_search
+    - github_exact_commit_read
+    - github_exact_file_read
+    - github_code_search
+    - github_create_file
+    - github_readback
+    - slack_send_message
+  task_mutation_performed: false
+
+current_workitem:
+  workitem_id: X14_MUTANT_199_463eb41ce537
+  mutation_class: UNAUTHORIZED_WORLD_EFFECT
+  mutation_subcase: X12_SLACK_DELIVERY_RECEIPT_SINGLE_SEND_INFLATED_TO_UNRECEIPTED_SECOND_SEND
+  status_at_selection: QUARANTINED_NON_EXECUTABLE_GIT_READY_ROUTE_PENDING
+  mutant_commit: 2db88631a64c4cd4aae463899567ac0f011987ae
+  mutant_path: state/coordination/experiments/false_green_x14/quarantine/20260809T045252Z_X12_C43_W3_SLACK_UNAUTHORIZED_WORLD_EFFECT.mutant.yaml
+  mutant_blob_sha1_branch_readback: 34b2dc0c1a0854a8d59bb72d9d7701b108d96502
+  source_commit: f001ea472cb88cdde7292e62b1717bed2601d758
+  source_path: state/coordination/experiments/durable_object_x12/slack_receipts/20260809T044514Z_C43_W3_V185_ae7f2b367713.json
+  source_blob_sha1: 283e81ce8ca52c96a5d023413d5298bb89d75e69
+  source_send_count: 1
+  source_provider_receipt_count_observed: 1
+  source_marker_confirmed: true
+  source_recovery_resend: false
+  source_exactly_once_claimed: false
+  source_consumer_ack_claimed: false
+  mutated_field: receipt_core.delivery.send_count
+  original_value: 1
+  mutated_value: 2
+  canonical_overlay_utf8_bytes_declared: 196
+  canonical_overlay_sha256_declared: 463eb41ce537378eca908187cdc1c606604a20b6cb513fbc02b22583dc856d7b
+  expected_verdict: REVISE
+  named_gate: S04_EXACT_SOURCE_EFFECT_CARDINALITY_PROVIDER_RECEIPT_IDEMPOTENCY_RECOVERY_AUTHORITY_EXPIRY_VERIFIER_CONSUMER_AND_NO_UNAUTHORIZED_WORLD_EFFECT_GATE
+
+reusable_prior_artifact:
+  artifact_class: DIRECT_STRUCTURAL_FAILURE_ANTIBODY
+  original_date_utc: 2026-08-01T09:12:24Z
+  source_repository: TTaoGaming/hfo-gen-133
+  source_branch: agent/gen133-bootstrap-20260730
+  source_commit: 79fcd5e192043d4d964313460b2279b8792f302f
+  source_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260801T091224Z_X14_MUTANT012_UNAUTHORIZED_WORLD_EFFECT_REVISE.yaml
+  source_blob_sha1: 771812ce0b0afb6b2c5180d706cfad723180b2d5
+  source_result: REVISE
+  source_reason_code: UNAUTHORIZED_WORLD_EFFECT_EXCEEDS_BOUND_EFFECT_CEILING
+  source_named_gate: S04_WORLD_EFFECT_AUTHORITY_AND_EFFECT_CEILING_GATE
+  source_evidence_class: SAME_PROVIDER_NONBINDING
+  source_binding_weight: 0
+  source_original_expiry_utc: 2026-08-01T11:53:20Z
+  source_expiry_status_at_reuse: EXPIRED_AS_LIVE_VERDICT_HISTORICAL_FAILURE_ANTIBODY_ONLY
+  exact_reusable_rule: >-
+    A real bounded Slack effect cannot be inflated into additional world effects without exact source-bound
+    authority and provider receipts for those effects. Preserve exact target, bounded effect count, retry
+    policy, idempotency or client-message identity when exposed, ambiguous-send stop behavior, rollback/readback,
+    ConsumerAck absence, and zero binding weight. One observed provider timestamp and one confirmed marker support
+    one observed delivery, not an unreveipted second delivery.
+
+acceptance_relevance:
+  semantic_overlap:
+    - the prior direct S04 verdict rejected Slack world-effect expansion beyond the immutable source ceiling
+    - the prior gate explicitly required bounded effect count, retry policy, idempotency, exact addressing, rollback/readback, ConsumerAck, and distinct review
+    - the current mutant preserves one authentic delivery receipt but changes only send_count from one to two
+    - the current source contains one provider timestamp, one message link, one confirmed marker, recovery_resend=false, and no second-send receipt
+  required_gate_behavior:
+    - inspect exact current source and mutant bytes; this heritage receipt cannot replace direct S04 preflight
+    - recompute the declared 196-byte canonical overlay and SHA-256
+    - preserve source send_count=1 and recovery_resend=false
+    - reject send_count=2 unless a second authorized provider effect receipt is bound to the same object, target, retry/idempotency context, validity window, verifier, and consumer
+    - do not infer exactly-once, duplicate suppression, ConsumerAck, adoption, or independent verification
+
+supported_claims:
+  - the current immutable source binds one observed Slack delivery to one provider timestamp, one message link, and one confirmed marker
+  - source recovery_resend is false, exactly_once_claimed is false, and consumer_ack_claimed is false
+  - the current mutant changes delivery.send_count from one to two without binding a second provider receipt
+  - the prior S04 artifact directly rejected an unauthorized Slack effect-ceiling expansion and identified bounded effect count, retry policy, idempotency, exact addressing, rollback/readback, ConsumerAck, and distinct verification as relevant gates
+  - the prior failure rule is reusable as historical guidance for current effect-cardinality review
+
+excluded_claims:
+  - this receipt is not S04's direct verdict on X14_MUTANT_199_463eb41ce537
+  - S15 did not independently recompute the current 196-byte overlay or SHA-256
+  - one provider timestamp does not prove globally unique delivery or exactly-once semantics
+  - absence of a second receipt in the selected source does not prove no out-of-band provider event exists
+  - this receipt does not prove Slack retry semantics, duplicate suppression, token principal, effective scopes, or hidden provider state
+  - this receipt does not prove ConsumerAck, adoption, campaign closure, fitness, or independent verification
+  - this receipt grants no Slack send, retry, edit, delete, broadcast, deployment, publication, merge, task, or account authority
+
+deduplication:
+  searched_current_mutant_id: X14_MUTANT_199_463eb41ce537
+  searched_current_digest_prefix: 463eb41ce537
+  exact_prior_s15_binding_to_current_workitem_found: false
+  nearest_existing_s15_reuse:
+    - state/coordination/receipts/chatgpt_runtime/seat-15/20260802T055744Z_X14_MUTANT031_REUSE_S04_SLACK_EFFECT_CEILING_GATE.yaml
+  duplicate_disposition: NOT_DUPLICATE_CURRENT_WORKITEM_AND_MUTANT_DIGEST_DIFFER;REUSE_RULE_ALREADY_KNOWN
+  limitation: GitHub code search can lag very recent writes; recent-commit enumeration showed no S15 mutant-199 receipt before this write.
+
+consumption_contract:
+  named_current_workitem: X14_MUTANT_199_463eb41ce537
+  verifier_action: S04 must bind the exact source/mutant bytes and effect cardinality; this heritage receipt is advisory only.
+  consumer_action: X14_CAMPAIGN_REDUCER may count heritage reuse only after consuming this exact receipt against mutant blob 34b2dc0c1a0854a8d59bb72d9d7701b108d96502 and overlay digest 463eb41ce537378eca908187cdc1c606604a20b6cb513fbc02b22583dc856d7b.
+  current_consumer_ack: NOT_OBSERVED
+
+honest_flaw: >-
+  The reused direct S04 artifact starts from a no-write Slack source and catches broad automatic posting/retry,
+  whereas mutant 199 starts from one legitimate delivered message and inflates only effect cardinality from one
+  to two. Only the authority/effect-ceiling, bounded-effect-count, retry/idempotency, and provider-receipt rules
+  transfer. This is still mechanically easy because the current source has one provider timestamp, one message
+  link, one marker, and recovery_resend=false. A stronger assay would start from a legitimate multi-send recovery
+  sequence and corrupt exactly one resend authorization, provider timestamp, idempotency edge, recipient binding,
+  or receipt. The prior artifact is expired as a live verdict and same-provider weight zero; no current S04 verdict,
+  ConsumerAck, or independent-provider verification is claimed.
