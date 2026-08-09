@@ -1,0 +1,56 @@
+---
+schema_id: hfo.gen133.x14.false_green_mutant.v1
+mutant_id: X14_MUTANT_213_7db05e0a7cf4
+status: QUARANTINED_NON_EXECUTABLE
+carrier_task_id: 6a513e4d9c4c81919db728f85db2dd79
+carrier_task_id_match_observed: true
+source:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+  path: state/coordination/experiments/cots_connector_x13/20260809T184900Z_GOOGLE_DRIVE_DOCUMENT_METADATA_SEARCH_PHASE2_PREFLIGHT.md
+  commit_sha: b9586ef434d52a58e323f9bfecbde418b9747e92
+  git_blob_sha1: 9d4c959cc965125644ba023180d13e8dadcca90b
+  source_digest_kind: GIT_BLOB_SHA1
+  source_digest: 9d4c959cc965125644ba023180d13e8dadcca90b
+  authoring_seat: X13_COTS_AND_CONNECTOR_PDCA_LAB
+  source_task_id: 6a55c1733708819185088bf334e33ea5
+  source_task_enabled_observed: true
+  source_valid_time_utc: '2026-08-09T18:49:00Z'
+  source_status: PHASE2_PREFLIGHT
+  source_consumer: HFO_BOUNDED_DRIVE_DISCOVERY_FOR_OPERATOR_CONTROL_LOOPS
+  source_verifier: GIT_DURABLE_READBACK_PLUS_DIRECT_DRIVE_RECEIPT
+mutation:
+  mutation_class: STALE_SOURCE_DIGEST
+  mutation_subcase: PHASE2_PREFLIGHT_REBINDS_CURRENT_PHASE1_RESULT_TO_PRIOR_GDRIVE_CAMPAIGN_RESULT_DIGEST
+  mutated_field: phase1_ordered_result_id_digest_sha256
+  original_value: 9e7528559ea056b1cb10633c493a81e0070a9d6909567f18ed2b1e2e5d928bf7
+  mutated_value: e0b48b1d71593436c4ff9104b5ef6d3226af198d1dbd7c7b4eefa04a32c892cd
+  stale_value_origin:
+    experiment_id: X13_GDRIVE_METADATA_SEARCH_READONLY_024
+    source_commit_sha: b95d66ae13211aed7e22064fa16a78688781d1a4
+    source_path: state/coordination/experiments/cots_connector_x13/20260808T215000Z_GDRIVE_METADATA_SEARCH_PHASE1_RESULT.md
+    original_field: result_ordered_id_sha256
+  canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_bytes: 326
+  canonical_overlay_sha256: 7db05e0a7cf4ff372f9e610d98da16099c4efd77f51d87934a33cc4ff01bad60
+  canonical_overlay_json: '{"mutated_field":"phase1_ordered_result_id_digest_sha256","mutated_value":"e0b48b1d71593436c4ff9104b5ef6d3226af198d1dbd7c7b4eefa04a32c892cd","mutation_class":"STALE_SOURCE_DIGEST","original_value":"9e7528559ea056b1cb10633c493a81e0070a9d6909567f18ed2b1e2e5d928bf7","source_blob_sha1":"9d4c959cc965125644ba023180d13e8dadcca90b"}'
+expected_verdict: REVISE
+expected_rejection_reason: PHASE2_PREFLIGHT_FOR_EXPERIMENT_029_EXPLICITLY_BINDS_THE_CURRENT_PHASE1_ORDERED_RESULT_DIGEST_9E752855;THE_MUTANT_SUBSTITUTES_A_SYNTACTICALLY_VALID_BUT_STALE_DIGEST_FROM_PRIOR_EXPERIMENT_024_SO_REPLAY_COMPARISON_WOULD_TARGET_THE_WRONG_UPSTREAM_RESULT_AND_BREAK_EXACT_CAMPAIGN_WAKE_AND_SOURCE_BINDING
+named_gate: S04_SOURCE_DIGEST_FRESHNESS_UPSTREAM_CAMPAIGN_BINDING_AND_REPLAY_INTEGRITY_GATE
+verifier: S04_STRUCTURAL_PREFLIGHT
+verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+distinct_verifier: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+distinct_verifier_task_id: 6a539fb148bc8191a30b6009dbf22438
+consumer:
+  - X14_CAMPAIGN_REDUCER
+  - X13_COTS_CONNECTOR_REDUCER
+created_valid_time_utc: '2026-08-09T18:52:14Z'
+expires_utc: '2026-08-09T22:52:14Z'
+effect_ceiling: QUARANTINED_GIT_FILE_PLUS_ONE_SANITIZED_INTERNAL_SLACK_ROUTE_ONLY
+source_edited: false
+task_mutation_performed: false
+world_effect_performed: false
+self_graded: false
+honest_flaw: >-
+  This stale-digest specimen is stronger than a random hash substitution because the replacement is a real prior Google Drive metadata-result digest from the same broad connector family, so syntax and semantic shape remain plausible. It is still moderately easy because the stale value comes from a different experiment ordinal and prior-day campaign; a harder assay would reuse a superseded digest from the same experiment after an authorized replay or version transition so only freshness/effective-time binding distinguishes it.
+---
