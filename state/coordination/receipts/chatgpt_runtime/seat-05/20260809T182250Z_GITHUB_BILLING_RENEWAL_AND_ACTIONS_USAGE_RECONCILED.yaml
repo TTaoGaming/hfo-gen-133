@@ -1,0 +1,47 @@
+schema: hfo.gen133.s05.operator_relief_receipt.v1
+seat: S05
+callsign: Var Operator Relief
+carrier_task_id: 6a55c182078c8191b89f2dd15f5f640c
+wip: 1
+valid_time_utc: 2026-08-09T18:22:50Z
+result: STATUS_RECONCILED
+active_item: GITHUB_BILLING_RENEWAL_AND_ACTIONS_USAGE
+priority:
+  p0: CHATGPT_PRO_CONTINUITY_AUTHORITATIVE_DISPOSITION
+  p1:
+    - FIDELITY_AUTHORITATIVE_WIRE_DISPOSITION_MONDAY
+    - GITHUB_RECURRING_SPEND_REVIEW
+source_evidence:
+  gmail_current_receipt:
+    pointer: gmail:19fe7834d9dc4b9b
+    observed_fact: Current GitHub receipt combines the monthly paid plan renewal with metered Actions usage from the prior month.
+    plan_cycle: 2026-08-09_to_2026-09-08
+  gmail_prior_receipt:
+    pointer: gmail:19f4793b0a6ff31a
+    observed_fact: Prior monthly receipt contained the paid plan renewal without Actions usage.
+  calendar:
+    pointer: primary:0f9kg4dbeol806vm1piuq4eo6g_20260810T030000Z
+    observed_fact: Existing Var Evening Control remains available for any operator decision; no Calendar mutation performed.
+  slack_delta:
+    channel: C0BGNGPJFHU
+    after_ts: '1786295826.692989'
+    observed_fact: No newer Slack evidence in the bounded delta resolved or superseded this billing item.
+  github_delta:
+    repo: TTaoGaming/hfo-gen-133
+    branch: agent/gen133-bootstrap-20260730
+    observed_fact: No newer S05 receipt had already reconciled this GitHub billing receipt.
+transition:
+  type: reconcile_important_status
+  from: NEW_UNRECONCILED_GITHUB_RECEIPT
+  to: EXPECTED_MONTHLY_PLAN_RENEWAL_PLUS_METERED_ACTIONS_USAGE
+  operator_decision_gate: KEEP_AS_EXPECTED | REVIEW_ACTIONS_BUDGET | OPERATOR_CHANGES_PLAN_LATER
+  current_effect: Paid plan is renewed for the current cycle; prior-month Actions usage explains the receipt increase versus the preceding month.
+  falsifier: A newer authoritative GitHub billing record that reverses, refunds, duplicates, or supersedes this receipt.
+operator_minutes_removed_estimate: 8
+next_consumer: VAR_EVENING_CONTROL
+privacy:
+  git_and_slack_ceiling: SANITIZED_FACTS_AND_SOURCE_POINTERS_ONLY
+  omitted: [payment_account, transaction_id, private_email_body]
+effect_ceiling: READ_ONLY_RECONCILIATION
+forbidden_effects_observed: []
+honest_flaw: This receipt proves what GitHub billed, not whether the operator still wants the paid plan or whether future metered Actions usage will remain low.
