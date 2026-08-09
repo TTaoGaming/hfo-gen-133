@@ -1,0 +1,60 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_GITHUB_RECENT_PRS_READONLY_027
+event_type: PHASE2_RESULT
+campaign_wake: 2_of_4
+candidate: GitHub_get_users_recent_prs_in_repo_readonly
+wip: 1
+phase2_status: PHASE2_ACCEPTED_WITH_GATES
+request_sha256: 28c55b337428c8262d093d9639eab7a81ed987f74a3c7fed877e869f9c9b94cf
+request_sha256_matches_phase1: true
+result_count: 5
+ordered_pr_number_sha256: 891dfafb35f12d4125a542bd7ae3d2241bcf7e231cd7f4c4dfac64bf8d947e8f
+ordered_pr_number_digest_matches_phase1: true
+state_open_count: 5
+state_open_count_matches_phase1: true
+draft_true_count: 5
+draft_true_count_matches_phase1: true
+merged_true_count: 0
+merged_true_count_matches_phase1: true
+body_text_returned_despite_minimal_request: true
+body_text_returned_matches_phase1: true
+include_diff_requested: false
+include_comments_requested: false
+connector_errors_this_call: 0
+retries_this_call: 0
+fallbacks_this_call: 0
+candidate_mutations_this_call: 0
+external_call_time_ms: 1254
+phase1_external_call_time_ms: 1618
+candidate_invocations_total_after_event: 2
+usable_candidate_results_total_after_event: 2
+operator_minutes_removed_measured: 0
+custom_code_avoided_estimate: 40_to_100_LOC_UNVALIDATED
+custom_code_avoided_realized_by_this_candidate: 0
+paid_cost_usd_observed: 0_NO_CHARGE_SURFACED_NOT_BILLING_PROOF
+direct_cost_or_quota_evidence: NO_DIRECT_CONNECTOR_RATE_LIMIT_HEADER_SEARCH_RESOURCE_DEBIT_REQUEST_ID_OR_BILLING_METADATA_OBSERVED
+credentials: CONNECTOR_MANAGED;EFFECTIVE_TOKEN_TYPE_PERMISSIONS_AND_RATE_LIMIT_IDENTITY_UNKNOWN
+durability: GIT_PHASE2_PREFLIGHT_AND_RESULT_EVENTS_DURABLE_ON_CANONICAL_BRANCH
+observability: BOUNDED_SUCCESS_REPEATED_WITH_AGGREGATES_AND_WRAPPER_TIMING;FULL_PR_BODY_TEXT_AGAIN_RETURNED_WITHOUT_A_SUPPRESSION_PARAMETER;NO_NATIVE_QUERY_SORT_RATE_HEADERS_REQUEST_ID_TOKEN_TYPE_PERMISSIONS_OR_QUOTA_DEBIT
+portability: MEDIUM_UNCHANGED;EXACT_NATIVE_QUERY_SORT_PAGINATION_AND_AUTHENTICATED_USER_BINDING_REMAIN_UNPROVEN
+failure_behavior: NOT_YET_PROBED;PHASE3_REQUIRED
+verifier: GITHUB_PHASE2_PREFLIGHT_READBACK_PLUS_DIRECT_CONNECTOR_SUCCESS_RECEIPT_PLUS_RESULT_READBACK
+consumer: HFO_BOUNDED_PULL_REQUEST_INTAKE_AND_OPERATOR_REVIEW_PRECHECK
+adoption_credit: 0
+fitness_credit: 0
+mandatory_gate: READ_ONLY;REPOSITORY_SCOPED;BOUNDED_LIMIT;NO_DIFF;NO_COMMENTS;DO_NOT_PERSIST_PR_BODY_OR_COMMENT_TEXT_IN_X13_RECEIPTS;NO_COMPLETENESS_STABLE_ORDER_NATIVE_QUERY_RATE_LIMIT_OR_PERMISSION_INFERENCE
+strongest_falsifier: A_NAMED_DOWNSTREAM_CONSUMER_REQUIRES_FIELD_MINIMIZATION_NO_BODY_DISCLOSURE_AUTHORITATIVE_COMPLETENESS_STABLE_SORT_OR_EXPLICIT_RATE_LIMIT_CONTROL
+honest_flaw: CONNECTOR_REPEATEDLY_RETURNS_FULL_PR_BODY_TEXT_DESPITE_DIFF_AND_COMMENTS_BEING_DISABLED;THIS_IS_NOT_A_METADATA_ONLY_SURFACE_AND_INCREASES_UNNECESSARY_DATA_EXPOSURE
+next_phase: PHASE3_ONE_BOUNDED_HARMLESS_FAILURE_PERMISSION_OR_CONNECTOR_VARIANCE_PROBE_NO_PR_MUTATION
+valid_time_utc: 2026-08-09T10:48:00Z
+recorded_time_utc: 2026-08-09T10:48:00Z
+---
+
+# X13 GitHub Recent PRs Phase 2 Result
+
+The exact Phase-1 bounded read-only request was replayed once. It returned five results again, with the same ordered PR-number digest, five open PRs, five drafts, and zero merged PRs. The repository did not drift on the authorized comparison fields during this replay.
+
+The Phase-1 data-minimization Andon repeated: full PR body text was returned despite `include_diff=false` and `include_comments=false`. X13 did not persist that body text in this event. No PR mutation, retry, fallback, diff fetch, comment fetch, or pagination expansion occurred.
+
+This is bounded repeatability evidence only. It does not establish completeness, stable ordering as a contract, native query mapping, permissions, rate-limit behavior, quota debit, or safe failure behavior.
