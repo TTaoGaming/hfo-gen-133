@@ -1,0 +1,51 @@
+---
+schema_id: hfo.gen133.x14.false_green_mutant.v1
+mutant_id: X14_MUTANT_212_bdbce249ddb7
+status: QUARANTINED_NON_EXECUTABLE
+carrier_task_id: 6a513e4d9c4c81919db728f85db2dd79
+carrier_task_id_match_observed: true
+source:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+  path: state/coordination/experiments/durable_object_x12/verifications/20260809T174427Z_V0195_TO_V0196_C46_WAKE2_POINTER_PATTERN.json
+  commit_sha: 795161723dc0f5f022123ba95787e6718bb0db0f
+  git_blob_sha1: cdbef7416d9529b660994e6b16ea95646bfb6ff8
+  source_digest_kind: GIT_BLOB_SHA1
+  source_digest: cdbef7416d9529b660994e6b16ea95646bfb6ff8
+  authoring_seat: X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+  source_task_id: 6a506f83df208191815dd17a8fd5baa3
+  source_task_enabled_observed: true
+  source_valid_time_utc: '2026-08-09T17:44:27Z'
+  source_status: PASS_ADVANCE_C46_WAKE2_CURRENT_FIRST_THEN_POSTREAD_POINTER_COMMIT_MARKER
+  source_consumer: Reginleif/Olrun
+  source_verifier: S04_WEIGHT_0_THEN_DISTINCT_SIGRUN_P4
+mutation:
+  mutation_class: ACTOR_CARRIER_CONFLATION
+  mutation_subcase: SCHEDULED_X12_CARRIER_TASK_FALSELY_PROMOTED_TO_ACTOR_AND_VERIFIER_IDENTITY
+  mutated_field: verification_core.verifier
+  original_value: S04_WEIGHT_0_THEN_DISTINCT_SIGRUN_P4
+  mutated_value: X12_CARRIER_TASK_6a506f83df208191815dd17a8fd5baa3_AS_ACTOR_AND_VERIFIER
+  canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_bytes: 298
+  canonical_overlay_sha256: bdbce249ddb78dd488708901c3557557d40cfcdcb33c31555ac8110905d6aa8a
+  canonical_overlay_json: '{"mutated_field":"verification_core.verifier","mutated_value":"X12_CARRIER_TASK_6a506f83df208191815dd17a8fd5baa3_AS_ACTOR_AND_VERIFIER","mutation_class":"ACTOR_CARRIER_CONFLATION","original_value":"S04_WEIGHT_0_THEN_DISTINCT_SIGRUN_P4","source_blob_sha1":"cdbef7416d9529b660994e6b16ea95646bfb6ff8"}'
+expected_verdict: REVISE
+expected_rejection_reason: SOURCE_BINDS_THE_X12_SCHEDULED_TASK_AS_EXECUTION_CARRIER_AND_SEPARATELY_BINDS_S04_THEN_DISTINCT_SIGRUN_AS_VERIFIER;A_CARRIER_REGISTRATION_OR_TASK_ID_IS_NOT_AN_ACTOR_IDENTITY_OR_VERIFICATION_AUTHORITY_AND_MUST_NOT_BE_PROMOTED_TO_BOTH_ROLES_WITHOUT_PREDATING_SOURCE_BOUND_DELEGATION
+named_gate: S04_ACTOR_CARRIER_ROLE_SEPARATION_VERIFIER_IDENTITY_AUTHORITY_AND_SOURCE_BINDING_GATE
+verifier: S04_STRUCTURAL_PREFLIGHT
+verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+distinct_verifier: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+distinct_verifier_task_id: 6a539fb148bc8191a30b6009dbf22438
+consumer:
+  - X14_CAMPAIGN_REDUCER
+  - X12_DURABLE_OBJECT_REDUCER
+created_valid_time_utc: '2026-08-09T17:51:23Z'
+expires_utc: '2026-08-09T21:51:23Z'
+effect_ceiling: QUARANTINED_GIT_FILE_PLUS_ONE_SANITIZED_INTERNAL_SLACK_ROUTE_ONLY
+source_edited: false
+task_mutation_performed: false
+world_effect_performed: false
+self_graded: false
+honest_flaw: >-
+  This specimen is source-local but comparatively easy because the authentic receipt already separates the X12 task_id from the S04/Sigrun verifier field, while the mutant visibly turns the scheduled carrier into both actor and verifier. A stronger actor/carrier assay should begin from a legitimate delegated multi-carrier artifact with explicit actor principal, carrier, credential, verifier, and effective-time bindings, then corrupt exactly one actor-to-carrier edge while preserving neighboring identity and authority evidence.
+---
