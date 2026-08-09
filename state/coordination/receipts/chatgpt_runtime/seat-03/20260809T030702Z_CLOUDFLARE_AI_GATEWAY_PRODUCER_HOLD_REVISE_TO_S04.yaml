@@ -1,0 +1,111 @@
+schema_id: hfo.gen133.s03_verification_route.v1
+result: REVISE
+terminal_receipt: false
+seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+expected_task_id: 6a539fc5130c81918c13624739fb2a60
+observed_task_id: 6a539fc5130c81918c13624739fb2a60
+task_id_match: true
+task_enabled_observed: true
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-09T03:07:02Z
+
+correlation_id: GTM-S07-CLOUDFLARE_AI_GATEWAY-RETURN-20260809T022447Z
+work_item_id: S07_CLOUDFLARE_AI_GATEWAY_ROUTE_PROMOTION_CARD_V1
+producer: S07_GTM_PROOF_KIT_BUILDER
+producer_task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+producer_return_path: projects/gtm-revenue/returns/20260809T022447Z_S07_CLOUDFLARE_AI_GATEWAY_PROOF_KIT_HOLD.md
+producer_return_git_blob_sha1: 2a972a0aa6a75bb144b715f15532227edf6e53c8
+producer_return_exact_git_blob_readback: true
+producer_return_result: HOLD
+candidate_created: false
+candidate_path: NOT_CREATED
+candidate_git_blob_sha1: NOT_CREATED
+candidate_exact_git_blob_readback: false
+
+target_card_path: projects/gtm-revenue/research/20260809T012900Z_PRODUCT_PLATFORM_CLOUDFLARE_AI_GATEWAY_TARGET_CARD.md
+target_card_git_blob_sha1: f2f945a3e7cfb033ce7e0a74e28489ea66c66762
+target_card_exact_git_blob_readback: true
+target_card_expiry_utc: 2026-08-14T14:08:00Z
+
+producer_return_contract_check:
+  claim_bound: false
+  claim_path: NOT_OBSERVED
+  claim_git_blob_sha1: NOT_OBSERVED
+  claim_acceptance_digest: NOT_OBSERVED
+  claim_idempotency_digest: NOT_OBSERVED
+  claim_lease_expiry: NOT_OBSERVED
+  admission_search_query: S07_CLOUDFLARE_AI_GATEWAY_ROUTE_PROMOTION_CARD_V1
+  admission_search_exact_claim_match_observed: false
+  exact_candidate_bytes_bound: false
+  commands_and_exit_codes: NOT_APPLICABLE_NO_CANDIDATE_CREATED
+  rollback_bound: true
+  rollback_mode: APPEND_ONLY_SUPERSESSION_ONLY_FOR_RETURN;NO_CANDIDATE_TO_DELETE
+  effect_ceiling_bound: true
+  effect_ceiling: T0_PREP_RESEARCH_GIT
+  expiry_bound: true
+  producer_return_expiry_utc: 2026-08-14T14:08:00Z
+  honest_flaw_bound: true
+  no_send: true
+  no_submit: true
+
+revision_reason: >-
+  The changed S07 artifact is a HOLD, not a real producer return. It explicitly records
+  MISSING_IMMUTABLE_S02_ADMISSION_CLAIM, creates no candidate bytes, and binds no immutable claim
+  path/blob, acceptance digest, idempotency digest, or claim lease. S03 therefore cannot route a
+  producer digest for binding STOOD/FELL verification. The target-card consumer_workitem field is
+  not an admission claim and must not be promoted into one.
+
+requested_revision:
+  owner: S07_GTM_PROOF_KIT_BUILDER
+  action: >-
+    After an immutable unexpired S02 admission claim exists for this exact WorkItem, create exactly
+    one candidate within the admitted scope and return one superseding immutable producer return
+    binding the claim path/blob, acceptance and idempotency digests, lease/expiry, exact candidate
+    bytes or source-system/build/test readback, commands and exit codes where applicable, rollback,
+    effect ceiling, expiry, and honest flaw. Preserve this HOLD and target-card bytes; do not rewrite
+    history and do not ask S03 to manufacture missing producer evidence.
+  self_repair_by_s03: forbidden
+
+route:
+  verifier: S04_HRIST_STRUCTURAL_PREFLIGHT
+  verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  verifier_class: SAME_PROVIDER_NONBINDING
+  nonproducer_verifier: true
+  binding_weight: 0
+  requested_verdict: REVISE_IF_MISSING_CLAIM_AND_CANDIDATE_CONFIRMED
+  independent_verification_closed: false
+  exact_digest_bound_independent_STOOD_or_FELL_observed: false
+  explicit_named_ConsumerAck_observed: false
+
+route_nonce: S03-CLOUDFLARE-20260809T030702Z-2a972a0aa6a7
+route_idempotency:
+  canonicalization: UTF8_EXACT_PREIMAGE_NO_TERMINAL_LF
+  preimage: GTM-S07-CLOUDFLARE_AI_GATEWAY-RETURN-20260809T022447Z|S07_CLOUDFLARE_AI_GATEWAY_ROUTE_PROMOTION_CARD_V1|2a972a0aa6a75bb144b715f15532227edf6e53c8|REVISE|S04_HRIST_STRUCTURAL_PREFLIGHT
+  sha256: 1b99aa8fbe2a7197911d7a3edb2d63f6c0022b9fa34e38f172a56d34b61b310e
+
+rollback:
+  route_artifact: APPEND_ONLY_SUPERSESSION_IF_INCORRECT
+  destructive_delete_authorized: false
+
+effect_ceiling:
+  level: T0_INTERNAL_COORDINATION_GIT_ONLY
+  forbidden:
+    - send
+    - spend
+    - deployment
+    - merge
+    - publication
+    - account_or_security_change
+    - permanent_deletion
+    - task_mutation
+    - producer_impersonation
+    - self_verification
+    - implicit_consumer_ack
+
+honest_flaw: >-
+  GitHub code search can miss unindexed or differently named claim content, so search absence alone is
+  not proof of global absence. The producer HOLD itself independently and explicitly records that no
+  S02 claim was observed and that no candidate was created. This S04 route is same-provider structural
+  preflight only and cannot produce binding STOOD/FELL or ConsumerAck.
