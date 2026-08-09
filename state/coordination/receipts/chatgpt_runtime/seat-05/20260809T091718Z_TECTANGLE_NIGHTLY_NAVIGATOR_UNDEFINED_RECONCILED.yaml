@@ -1,0 +1,73 @@
+schema: hfo.gen133.s05.operator_relief_receipt.v1
+seat: S05
+expected_task_id: 6a55c182078c8191b89f2dd15f5f640c
+self_probe:
+  task_id_match: true
+  canonical_repo: TTaoGaming/hfo-gen-133
+  canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-09T09:17:18Z
+transaction_time_utc: provider_commit_time
+result: STATUS_RECONCILED
+active_item: TECTANGLE_NIGHTLY_CI_FAILURE
+priority:
+  p0: CHATGPT_PRO_CONTINUITY_UNRESOLVED
+  p1:
+    - FIDELITY_AUTHORITATIVE_WIRE_DISPOSITION_MONDAY
+    - TECTANGLE_CI_REPAIR
+changed_evidence:
+  gmail:
+    message_id: 19fe59bdd3cf3723
+    fact: GitHub notified that Tectangle Hex Tiers nightly run 31303181167 failed on main at 49da03b.
+  github:
+    repository: TTaoGaming/Tectangle
+    commit: 49da03bd595d364789c219382ec6bec6f56b552d
+    workflow_run_id: 31303181167
+    job_id: 93219184213
+    workflow_path: .github/workflows/hex-tiers-nightly.yml
+    runner: windows-2025-vs2026
+    node_under_test: 18.20.8
+    failing_step: Run daily tier
+    first_terminal_error: 'ReferenceError: navigator is not defined'
+    failing_test_path: September2025/TectangleHexagonal/tests/unit/camera.constraints.test.mjs
+    failing_line: 26
+    source_fact: The test assigns navigator.mediaDevices without first defining a navigator object in the Node/Mocha environment.
+    upstream_passes_before_failure:
+      - checkout
+      - setup-node
+      - npm ci
+      - http server start
+      - dependency-cruiser boundary check
+    distinction: This is a Windows/Node unit-test environment failure and is separate from the earlier Ubuntu Puppeteer Chromium sandbox launch failure.
+  calendar:
+    fact: Existing Fidelity call remains bound for 2026-08-10 10:30-11:30 America/Denver; no calendar mutation performed.
+  contacts:
+    fact: No saved Google Contact matching Fidelity was found; no contact mutation performed.
+  slack:
+    fact: Prior S05 Tectangle design-audit repair packet is present in C0BGNGPJFHU; no downstream S06 consumption was observed in changed Slack evidence before this receipt.
+bounded_transition:
+  type: exact_no_send_work_packet
+  target_consumer: S06_CODE_WORK_PACKET_COMPILER
+  packet:
+    goal: Make the Hex Tiers nightly unit-test environment define navigator/mediaDevices before camera.constraints.test.mjs mutates it, without weakening production browser behavior.
+    smallest_hypothesis: Test harness setup is missing a Node-side navigator stub; repair should be test-scoped or harness-scoped, not a production global mutation.
+    allowed_focus:
+      - September2025/TectangleHexagonal/tests/unit/camera.constraints.test.mjs
+      - an existing shared unit-test setup/harness if one already governs these Mocha tests
+      - package/test configuration only if required to load that setup consistently
+    forbidden_shortcuts:
+      - skip or delete the failing test
+      - make the assertion vacuous
+      - hide the failure with unconditional try/catch
+      - mutate production app code solely to satisfy Node test globals
+    acceptance:
+      - exact failing test loads without ReferenceError
+      - camera constraints assertions still execute
+      - hex:test:unit completes beyond this test
+      - hex:tier:daily is re-run only by an authorized executor and returns exact exit code
+      - earlier design-audit sandbox failure remains tracked separately
+    falsifier: If a shared test bootstrap already defines navigator before this file and the run still lacks it, inspect bootstrap loading/order instead of adding a second stub.
+operator_minutes_removed: 10
+privacy_ceiling: Sanitized source-system facts and opaque source IDs only; no private message bodies copied.
+effect_ceiling: Read/reconcile/packet only; no code change, rerun, deployment, merge, send, spend, task mutation, account/security change, or destructive action.
+next_consumer: S06_CODE_WORK_PACKET_COMPILER
+honest_flaw: This receipt diagnoses the first terminal nightly error from the captured run only; downstream failures may appear after navigator is fixed.
