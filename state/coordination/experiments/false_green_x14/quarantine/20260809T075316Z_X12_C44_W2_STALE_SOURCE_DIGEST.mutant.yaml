@@ -1,0 +1,114 @@
+---
+schema_id: hfo.gen133.x14.false_green_mutant.v1
+mutant_id: X14_MUTANT_202_f61056657b82
+seat: X14_FALSE_GREEN_MUTATION_AND_QA_LAB
+carrier_task_id: 6a513e4d9c4c81919db728f85db2dd79
+mutation_class: STALE_SOURCE_DIGEST
+mutation_subcase: X12_C44_WAKE2_VERIFICATION_CURRENT_BLOB_ROLLED_BACK_TO_EXACT_PRIOR_V187_BLOB
+status: QUARANTINED_NON_EXECUTABLE_GIT_READY_ROUTE_PENDING_VERDICTS
+valid_time_utc: 2026-08-09T07:53:16Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+expires_utc: 2026-08-09T11:53:16Z
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+source_edited: false
+self_grade_performed: false
+independent_quorum_claimed: false
+world_effect_ceiling: ONE_IMMUTABLE_QUARANTINE_FILE_ONE_CURRENT_POINTER_UPDATE_ONE_SANITIZED_INTERNAL_SLACK_ROUTE_ONLY
+---
+
+self_probe:
+  expected_task_id: 6a513e4d9c4c81919db728f85db2dd79
+  observed_task_id: 6a513e4d9c4c81919db728f85db2dd79
+  task_id_match: true
+  task_enabled_observed: true
+  tools_observed:
+    - native_automations_inventory_read
+    - github_recent_commit_search
+    - github_exact_commit_read
+    - github_exact_file_read
+    - github_digest_dedup_search
+    - github_create_file
+    - github_update_file
+    - github_readback
+    - slack_send_message
+    - local_digest_recompute
+  task_mutation_performed: false
+
+source_binding:
+  selection_cutoff_observed_utc: 2026-08-09T07:53:16Z
+  newest_observed_eligible_before_cutoff: true
+  commit: 8b3abf7c7d27735e2ae8913860e410a1ca26f042
+  commit_created_at_utc: 2026-08-09T07:49:14Z
+  path: state/coordination/experiments/durable_object_x12/verifications/20260809T074306Z_V0187_TO_V0188_C44_WAKE2_DURABLE_OUTBOX_POSTADVANCE_RECOVERY_CORRECTED.json
+  git_blob_sha1: 270d4e987d9b61b83da610a3d69237c6f116267a
+  source_digest_kind: GIT_BLOB_SHA1
+  source_digest: 270d4e987d9b61b83da610a3d69237c6f116267a
+  canonical_branch_blob_match: true
+  authoring_seat: X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+  source_task_id: 6a506f83df208191815dd17a8fd5baa3
+  source_task_title_from_native_inventory: HFO X12 Durable Object PDCA Lab
+  source_task_enabled_observed: true
+  source_artifact_type: IMMUTABLE_DURABLE_OBJECT_VERIFICATION
+  source_campaign_id: X12_RECOVERY_AFTER_MISSING_SLACK_C44
+  source_wake: C44_WAKE_2_OF_4
+  source_version: 188
+  source_verdict: PASS_ADVANCE_C44_WAKE2_DURABLE_OUTBOX_POSTADVANCE_RECOVERY_WITH_PRECOMMIT_DIGEST_REPAIR
+  source_current_commit_sha: ada9bd414d647fb19edc56595bc85c7a07ce4477
+  source_current_blob_sha: b073b0dd0ea0f64676917b43b04d494dc3714882
+  immutable_prior_v187_blob_sha: 22bd053483473b55ae3e88ad80483843754bc2d8
+  immutable_prior_v187_evidence_path: state/coordination/experiments/durable_object_x12/events/20260809T074306Z_V0187_TO_V0188_C44_WAKE2_DURABLE_OUTBOX_POSTADVANCE_RECOVERY_CORRECTED.json
+  immutable_prior_v187_evidence_blob_sha1: e9df1890680669ee1dd1ce047dbbecfe6eecba16
+  source_consumer: REGINLEIF_OLRUN_AND_X12_CAMPAIGN_STATE
+  source_claim_ceiling: V187_TO_V188_FILE_LOCAL_CURRENT_ADVANCE_WITH_DURABLE_OUTBOX_POSTADVANCE_RECOVERY_AND_INTERNAL_VERIFICATION;NO_DATABASE_ATOMICITY;NO_EXACTLY_ONCE;NO_CONSUMER_ACK;NO_INDEPENDENT_QUORUM
+  prior_x14_mutation_at_source_digest_before_write: false
+  dedup_evidence: EXACT_GITHUB_SEARCH_FOR_SOURCE_BLOB_SHA1_RETURNED_NO_X14_REFERENCE_BEFORE_WRITE
+
+negative_control:
+  copy_mode: OVERLAY_ONLY_SOURCE_BYTES_UNCHANGED
+  canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_json: '{"mutated_field":"verification_core.current_blob_sha","mutated_value":"22bd053483473b55ae3e88ad80483843754bc2d8","mutation_class":"STALE_SOURCE_DIGEST","original_value":"b073b0dd0ea0f64676917b43b04d494dc3714882","source_blob_sha1":"270d4e987d9b61b83da610a3d69237c6f116267a"}'
+  canonical_overlay_utf8_bytes: 274
+  canonical_overlay_sha256: f61056657b825ca1752eb9d78b018dceb7736dbde8ff659f98ac8bdf504ac18e
+  mutated_field: verification_core.current_blob_sha
+  original_value: b073b0dd0ea0f64676917b43b04d494dc3714882
+  mutated_value: 22bd053483473b55ae3e88ad80483843754bc2d8
+  expected_verdict: REVISE
+  expected_rejection_reason: THE_VERIFICATION_BINDS_V188_TO_CURRENT_COMMIT_ADA9BD414D647FB19EDC56595BC85C7A07CE4477_AND_CURRENT_BLOB_B073B0DD0EA0F64676917B43B04D494DC3714882;REPLACING_ONLY_CURRENT_BLOB_SHA_WITH_THE_EXACT_PRIOR_V187_BLOB_22BD053483473B55AE3E88AD80483843754BC2D8_CREATES_A_STALE_DIGEST_BINDING_AND_BREAKS_INTERNAL_CURRENT_BLOB_MATCH_AND_VERSION_TRANSITION_PROVENANCE
+
+routing:
+  named_gate: S04_FRESH_SOURCE_DIGEST_EXACT_COMMIT_PATH_BLOB_VERSION_TRANSITION_CANONICALIZATION_EXPIRY_VERIFIER_CONSUMER_AND_CLAIM_CEILING_GATE
+  structural_preflight: S04_STRUCTURAL_PREFLIGHT
+  structural_verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  structural_verifier_enabled_observed: true
+  distinct_falsification: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  distinct_verifier_task_id: 6a539fb148bc8191a30b6009dbf22438
+  distinct_verifier_enabled_observed: true
+  distinct_verifier_evidence_ceiling: SAME_PROVIDER_NONBINDING_WEIGHT_0
+  consumer:
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+    - REGINLEIF_OLRUN
+  direct_candidate_priority_requested: true
+  route_effect_ceiling: ONE_SANITIZED_INTERNAL_SLACK_POINTER_AFTER_GIT_READBACK
+  routing_contract_status: CAMPAIGN_51_WAKE_1_DIRECT_ROUTE_HEALTH_REQUIRES_ACTUAL_S04_SELECTION_OR_DIGEST_BOUND_SKIP_DEFERRAL;EMBEDDED_CATCH_TRACKED_SEPARATELY
+
+campaign_boundary:
+  campaign_ordinal: 51
+  campaign_wake_after_this_mutant: 1
+  current_mutant_counted_as_caught_for_campaign_decision: false
+  campaign_decision_due: false
+  prior_campaign_decision: REVISE_GATE
+  next_mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+
+forbidden_inference:
+  - PRIOR_VERSION_BLOB_CANNOT_BE_REUSED_AS_CURRENT_VERSION_BLOB_WITHOUT_EXACT_REBINDING
+  - SAME_PROVIDER_CHECKS_DO_NOT_CLOSE_INDEPENDENT_VERIFICATION
+  - EMBEDDED_S04_MUTANT_CHECK_DOES_NOT_COUNT_AS_DIRECT_PRIMARY_SELECTION
+  - NO_SOURCE_EDIT
+  - NO_TASK_OR_SCHEDULE_MUTATION
+  - NO_SLACK_RECOVERY_SEND_PERFORMED_BY_X14
+  - NO_WORLD_EFFECT_PERFORMED_BEYOND_ALLOWED_GIT_AND_INTERNAL_ROUTE
+
+honest_flaw: >-
+  This stale-digest mutant is source-local and uses a real prior-version blob SHA from the immutable accepted-event evidence, but it is still comparatively easy because the verification also embeds the correct v188 current blob in current_blob_matches_update_return and binds the v188 current commit. A stronger assay would substitute a stale or alternate digest that remains internally self-consistent across several correlated fields yet is still wrong against the immutable source commit. Candidate discovery and digest dedup remain best-effort under concurrent Git writes and search-index lag. S04 and S09 remain same-provider checks with binding weight zero and cannot close independent verification.
