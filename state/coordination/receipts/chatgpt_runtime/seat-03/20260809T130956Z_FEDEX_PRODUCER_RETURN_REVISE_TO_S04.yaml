@@ -1,0 +1,128 @@
+schema_id: hfo.gen133.s03_verification_route.v1
+result: REVISE
+terminal_receipt: false
+seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+expected_task_id: 6a539fc5130c81918c13624739fb2a60
+observed_task_id: 6a539fc5130c81918c13624739fb2a60
+task_id_match: true
+task_enabled_observed: true
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-09T13:09:56Z
+
+self_probe:
+  provider_task_inventory_read: true
+  github_branch_observed: agent/gen133-bootstrap-20260730
+  github_read_write_available: true
+  slack_connector_available: true
+  task_mutation_performed: false
+
+changed_window:
+  prior_s03_route_commit: df10479a11707f4c704d766f415a2d98a28900b2
+  branch_compare_status: ahead
+  branch_compare_ahead_by: 21
+  changed_claim_for_selected_workitem_observed: false
+  changed_terminal_receipt_for_selected_workitem_observed: false
+
+correlation_id: GTM-S07-FEDEX-RETURN-20260809T122800Z
+work_item_id: S07_FEDEX_AGENTIC_EXCEPTION_ACTION_GATE_V1
+work_item_binding_source: PRODUCER_RETURN_EXPLICIT_WORKITEM_BUT_NO_ADMISSION_CLAIM
+producer: S07_GTM_PROOF_KIT_BUILDER
+producer_task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+producer_return_path: projects/gtm-revenue/returns/20260809T122800Z_S07_FEDEX_AGENTIC_EXCEPTION_ACTION_PROMOTION_CARD_RETURN.md
+producer_return_git_blob_sha1: 7c0e63fb7bf44a5a935d3e524ce84a5a172a00ec
+producer_return_exact_git_blob_readback: true
+producer_return_result: KIT_RETURNED
+candidate_created: true
+candidate_path: projects/gtm-revenue/kits/fedex/20260809T122500Z_AGENTIC_EXCEPTION_ACTION_PROMOTION_CARD.md
+candidate_utf8_bytes_bound_by_return: 9419
+candidate_sha256_bound_by_return: 696ba3218c93af78ec0eb6f0eee1744de7ee71d7fe79a7d88636fb8ad5b8fc43
+candidate_git_blob_sha1_bound_by_return: dcbae770dc7c32cb1539081264515827670205cb
+candidate_create_commit_bound_by_return: 24ea2ed58b1cbe8c12251228ebcb67f13df700ea
+candidate_independent_readback_by_s03: false
+
+producer_return_contract_check:
+  explicit_work_item_id_bound_in_return: true
+  claim_bound: false
+  admission_claim_observed_by_producer: false
+  claim_path: NOT_BOUND
+  claim_git_blob_sha1: NOT_BOUND
+  claim_acceptance_digest: NOT_BOUND
+  claim_idempotency_digest: NOT_BOUND
+  claim_lease_expiry: NOT_BOUND
+  exact_candidate_bytes_or_readback_bound: true
+  commands_and_exit_codes: NOT_APPLICABLE_MARKDOWN_ONLY_ARTIFACT_TEST_EXECUTION_FALSE
+  rollback_bound: true
+  rollback_mode: DELETE_CANDIDATE_ONLY_BY_LATER_OPERATOR_CONTROLLED_COMMIT_IF_REJECTED;PRESERVE_IMMUTABLE_RETURN
+  effect_ceiling_bound: true
+  producer_return_effect_ceiling: T0_PREP_RESEARCH_GIT
+  expiry_bound: true
+  producer_return_expiry_utc: 2026-08-14T14:08:00Z
+  honest_flaw_bound: true
+  target_evidence_digest_recomputable: false
+  no_send: true
+  no_submit: true
+  no_deploy: true
+  no_merge: true
+  no_spend: true
+
+revision_reason: >-
+  The changed S07 producer return explicitly binds the WorkItem, candidate byte count/SHA-256/Git blob/readback commit,
+  rollback, T0_PREP_RESEARCH_GIT effect ceiling, expiry, no-send/no-submit boundaries, and an honest flaw, but it
+  explicitly records admission_claim_observed=false and binds no immutable S02 claim path/blob, acceptance digest,
+  idempotency digest, or lease. A target card or producer intent cannot substitute for the required admission binding.
+  S03 therefore cannot route this producer return toward terminal verification.
+
+requested_revision:
+  owner: S07_GTM_PROOF_KIT_BUILDER
+  action: >-
+    Do not rewrite this immutable return. After a valid immutable unexpired S02 admission claim exists for the exact
+    WorkItem, emit one superseding immutable producer return that explicitly binds work_item_id, claim path/blob,
+    acceptance digest, idempotency digest, lease/expiry, exact candidate bytes/readback or a fresh admitted candidate
+    if temporal ordering requires it, commands and exit codes where applicable, rollback, effect ceiling, expiry,
+    and honest flaw. Do not ask S03 to infer, fabricate, or backfill the claim.
+  self_repair_by_s03: forbidden
+
+route:
+  verifier: S04_HRIST_STRUCTURAL_PREFLIGHT
+  verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  verifier_class: SAME_PROVIDER_NONBINDING
+  nonproducer_verifier: true
+  binding_weight: 0
+  requested_verdict: REVISE_IF_MISSING_ADMISSION_BINDING_CONFIRMED
+  independent_verification_closed: false
+  exact_digest_bound_independent_STOOD_or_FELL_observed: false
+  explicit_named_ConsumerAck_observed: false
+
+route_nonce: S03-FEDEX-20260809T130956Z-7c0e63fb7bf4
+route_idempotency:
+  canonicalization: UTF8_EXACT_PREIMAGE_NO_TERMINAL_LF
+  preimage: GTM-S07-FEDEX-RETURN-20260809T122800Z|S07_FEDEX_AGENTIC_EXCEPTION_ACTION_GATE_V1|7c0e63fb7bf44a5a935d3e524ce84a5a172a00ec|REVISE|S04_HRIST_STRUCTURAL_PREFLIGHT
+  sha256: f6e3032f9ef040ed9ce07a7d1a2e7444b591be20cfc0825030af9378ea68f9ed
+
+rollback:
+  route_artifact: APPEND_ONLY_SUPERSESSION_IF_INCORRECT
+  destructive_delete_authorized: false
+
+effect_ceiling:
+  level: T0_INTERNAL_COORDINATION_GIT_SLACK_POINTER_ONLY
+  forbidden:
+    - external_send
+    - spend
+    - deployment
+    - merge
+    - public_publication
+    - account_or_security_change
+    - permanent_deletion
+    - task_mutation
+    - producer_impersonation
+    - self_verification
+    - implicit_consumer_ack
+
+honest_flaw: >-
+  S03 did not independently fetch or hash the candidate because this pass is a reducer/router and the selected defect
+  is already terminal for this return contract: the producer return itself explicitly lacks claim binding. Repository
+  search/index absence would not prove global absence, and a later S02 claim would not retroactively bind these immutable
+  producer-return bytes; a superseding producer return is still required. This S04 route is same-provider structural
+  preflight only and cannot produce binding STOOD/FELL or ConsumerAck.
