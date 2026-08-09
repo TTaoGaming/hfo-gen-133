@@ -1,0 +1,57 @@
+---
+schema_id: hfo.gen133.x14.false_green_campaign_decision.v1
+experiment_id: X14_FALSE_GREEN_MUTATION_001
+campaign_ordinal: 51
+decision: REVISE_GATE
+decision_basis: DIRECT_ROUTE_ACCOUNTING_DEFECT_PERSISTS_WHILE_SEMANTIC_GATES_CATCH_EMBEDDED_EXACT_MUTANTS
+matured_mutants_evaluated:
+  - mutant_id: X14_MUTANT_202_f61056657b82
+    mutation_class: STALE_SOURCE_DIGEST
+    semantic_rejection_observed: true
+    direct_s04_primary_selection: false
+    s04_catch_mode: EMBEDDED_EXACT_ASSAY
+    s09_semantic_disposition: REVISE_REJECT
+    s09_lifecycle_disposition: RETIRE_AFTER_X14_CONSUMPTION_OR_EXPIRY
+    evidence_class: SAME_PROVIDER_NONBINDING
+    binding_weight: 0
+  - mutant_id: X14_MUTANT_203_a4c3298617b0
+    mutation_class: DUPLICATE_IDEMPOTENCY_VERSION
+    semantic_rejection_observed: true
+    direct_s04_primary_selection: false
+    s04_catch_mode: EMBEDDED_EXACT_ASSAY
+    s09_semantic_disposition: REVISE_REJECT
+    s09_lifecycle_disposition: RETIRE_AFTER_X14_CONSUMPTION_OR_EXPIRY
+    evidence_class: SAME_PROVIDER_NONBINDING
+    binding_weight: 0
+  - mutant_id: X14_MUTANT_204_dcdd9ebd9986
+    mutation_class: FABRICATED_CONSUMER_ACK
+    semantic_rejection_observed: true
+    direct_s04_primary_selection: false
+    s04_catch_mode: EMBEDDED_EXACT_ASSAY
+    s09_semantic_disposition: REVISE_REJECT
+    s09_lifecycle_disposition: RETIRE_AFTER_X14_CONSUMPTION_OR_EXPIRY
+    evidence_class: SAME_PROVIDER_NONBINDING
+    binding_weight: 0
+summary:
+  direct_s04_primary_catches: 0
+  embedded_s04_exact_rejections: 3
+  distinct_s09_semantic_rejections_or_retirements: 3
+  all_matured_semantically_rejected_somewhere: true
+  independent_verification_closed: false
+  consumer_ack_closed: false
+controlling_defect: DIRECT_S04_ROUTE_CONSUMPTION_REMAINS_ZERO_OF_THREE_MATURED_MUTANTS;EMBEDDED_EXACT_ASSAY_CATCHES_PROVE_SEMANTIC_SENSITIVITY_BUT_DO_NOT_PROVE_THE_ADDRESSED_PRIMARY_SELECTOR_ROUTE_WORKS
+required_revision: REQUIRE_EACH_ADDRESSED_UNEXPIRED_MUTANT_TO_RECEIVE_EITHER_A_DIRECT_DIGEST_BOUND_S04_PRIMARY_VERDICT_OR_A_DURABLE_DIGEST_BOUND_SKIP_OR_DEFERRAL_REASON;DO_NOT_COUNT_EMBEDDED_RECOMPUTATION_AS_DIRECT_ROUTE_HEALTH
+current_mutant:
+  mutant_id: X14_MUTANT_205_b2d4acb96ad7
+  mutation_class: UNSUPPORTED_PASS_OUTCOME
+  status: PENDING_NOT_COUNTED_AS_CAUGHT
+next_campaign:
+  campaign_ordinal: 52
+  first_mutation_class: EVIDENCE_INFLATION
+verifier: S04_STRUCTURAL_PREFLIGHT
+consumer: X14_CAMPAIGN_REDUCER_AND_S04_SELECTOR_CONTRACT_OWNER
+valid_time_utc: '2026-08-09T10:53:00Z'
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+honest_flaw: >-
+  The decision is based on same-provider S04/S09 evidence and distinguishes semantic sensitivity from route health. It does not claim independent quorum. Slack search is used as a discovery/readback surface for the most recent S04/S09 dispositions, so exact Git receipt enumeration can lag concurrent branch writes; the durable decision therefore limits itself to the repeated directly observed selector defect and does not infer unseen verdicts.
+---
