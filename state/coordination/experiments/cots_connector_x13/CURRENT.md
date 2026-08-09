@@ -1,29 +1,35 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
 experiment_id: X13_GITHUB_PR_CHANGED_FILENAMES_READONLY_030
-version: 217
-prior_version: 216
+version: 218
+prior_version: 217
 candidate: GitHub.list_pr_changed_filenames
-campaign_wake: 1_of_4
-campaign_status: ACTIVE_PHASE1_ACCEPTED_WITH_GATES_ANDON
+campaign_wake: 2_of_4
+campaign_status: ACTIVE_PHASE2_ACCEPTED_WITH_GATES
 phase_1_status: PHASE1_ACCEPTED_WITH_GATES_ANDON
-phase_2_status: NOT_RUN
+phase_2_status: PHASE2_ACCEPTED_WITH_GATES
 phase_3_status: NOT_RUN
 phase_4_status: NOT_RUN
 phase_4_decision: NONE
 operational_decision: PENDING_PHASE4
 wip: 1
-last_event_commit: da14a1555101cb157f024fbfeaae33f9f26e1269
-last_event_path: state/coordination/experiments/cots_connector_x13/20260809T214901Z_GITHUB_PR_CHANGED_FILENAMES_PHASE1_BASELINE.md
-last_event_blob_sha: b33efd0b06f2829cd93a993a2ee04a3638c9c670
+last_event_commit: 83aef40ce3aa5b28b60cc704f0237bb3c7bc7845
+last_event_path: state/coordination/experiments/cots_connector_x13/20260809T225004Z_GITHUB_PR_CHANGED_FILENAMES_PHASE2_REPLAY.md
+last_event_blob_sha: 0f9c5e522cebd890b46100ffa1abfdda4315aa00
 last_event_readback: true
 phase1_preflight_commit: d67cae4157e6f138f40c00b9b57018cfd8dd323d
 phase1_preflight_blob_sha: ccd8303794037a7cc67e7c8166a304662d2c7dee
 phase1_result_commit: da14a1555101cb157f024fbfeaae33f9f26e1269
 phase1_result_blob_sha: b33efd0b06f2829cd93a993a2ee04a3638c9c670
 phase1_result_readback: true
-candidate_invocations_total: 1
-usable_candidate_results: 1
+phase2_preflight_commit: 30f50e4235c6f71b80efbaa6fa0b4be89e3c73ce
+phase2_preflight_blob_sha: d2612cb0c789734a02c957e8247a36e7b7448cfa
+phase2_preflight_readback: true
+phase2_result_commit: 83aef40ce3aa5b28b60cc704f0237bb3c7bc7845
+phase2_result_blob_sha: 0f9c5e522cebd890b46100ffa1abfdda4315aa00
+phase2_result_readback: true
+candidate_invocations_total: 2
+usable_candidate_results: 2
 expected_failure_probes_total: 0
 connector_errors_total: 0
 retries_total: 0
@@ -31,37 +37,42 @@ fallbacks_total: 0
 candidate_mutations_total: 0
 target_pr_number: 10
 result_filename_count_phase1: 26
+result_filename_count_phase2: 26
 ordered_filename_digest_phase1_sha256: 503d2de2bca9c417c86d1de25d5527363d5e318f3cbf997cf7810258b9e12206
+ordered_filename_digest_phase2_sha256: 503d2de2bca9c417c86d1de25d5527363d5e318f3cbf997cf7810258b9e12206
+phase2_count_matches_phase1: true
+phase2_ordered_digest_matches_phase1: true
 raw_filename_persisted: false
 connector_external_call_time_phase1_ms: 486
+connector_external_call_time_phase2_ms: 487
 operator_minutes_removed_measured: 0
 custom_code_avoided_estimate: 20_to_60_LOC_UNVALIDATED
 custom_code_avoided_realized_by_this_candidate: 0
 paid_cost_usd_observed: 0_NO_CHARGE_SURFACED_NOT_BILLING_PROOF
 direct_quota_evidence: NONE_FROM_CONNECTOR_RECEIPT
 credentials: CONNECTOR_MANAGED_EFFECTIVE_PRINCIPAL_AND_PERMISSION_GRANT_UNKNOWN
-durability: PHASE1_PREFLIGHT_AND_RESULT_READ_BACK_ON_CANONICAL_BRANCH
-observability: ONE_26_FILENAME_SUCCESS_IN_486MS;FILENAMES_ONLY;NO_PATCH_DIFF_CONTENT_COMMENT_HYDRATION;NO_NATIVE_REQUEST_ID_HTTP_STATUS_RATE_HEADERS_PAGE_COUNT_OR_QUOTA_DEBIT_SURFACED
+durability: PHASE1_AND_PHASE2_PREFLIGHT_AND_RESULTS_READ_BACK_ON_CANONICAL_BRANCH
+observability: TWO_26_FILENAME_SUCCESSES_486MS_AND_487MS;ORDERED_DIGEST_STABLE;FILENAMES_ONLY;NO_PATCH_DIFF_CONTENT_COMMENT_HYDRATION;NO_NATIVE_REQUEST_ID_HTTP_STATUS_RATE_HEADERS_PAGE_COUNT_OR_QUOTA_DEBIT_SURFACED
 portability: HIGH_TO_GITHUB_REST_PULLS_FILES_RESOURCE_BUT_WRAPPER_AUTO_PAGINATION_AND_3000_FILE_CAP_HANDLING_UNVERIFIED
 failure_behavior: NOT_YET_PROBED
-verifier: GIT_DURABLE_READBACK_PLUS_DIRECT_GITHUB_RECEIPT_PLUS_OFFICIAL_GITHUB_PULLS_FILES_AND_PERMISSION_CONTRACT
+verifier: GIT_DURABLE_READBACK_PLUS_DIRECT_GITHUB_RECEIPTS_PLUS_PHASE1_PHASE2_DIGEST_COMPARISON
 consumer: HFO_PR_BLAST_RADIUS_AND_TARGETED_PATCH_SELECTION_GATES
-mandatory_gate: READ_ONLY;KNOWN_SMALL_PR_ONLY_UNTIL_PAGINATION_VARIANCE_IS_PROBED;DO_NOT_FETCH_PATCHES_CONTENT_OR_COMMENTS;DO_NOT_PERSIST_RAW_FILENAMES_UNLESS_MINIMUM_NECESSARY;NO_AUTHORITATIVE_COMPLETENESS_RATE_LIMIT_PERMISSION_OR COST_CLAIMS
-strongest_falsifier: KNOWN_PR_CHANGED_FILE_COUNT_DISAGREES_WITH_CONNECTOR_FILENAME_COUNT_OR_MULTI_PAGE_PR_IS_SILENTLY_TRUNCATED_OR_WRAPPER_EXCEEDS_OPERATOR_BOUNDEDNESS_REQUIREMENT
-honest_flaw: WRAPPER_EXPOSES_NO PER_PAGE_PAGE_OR_MAX_FILES_BOUND_AND_CLAIMS_ALL_PAGE_PAGINATION;LARGE_PR_CALL_CAN_FAN_OUT_TO_MANY_PROVIDER_REQUESTS_UP_TO_GITHUBS_3000_FILE_RESPONSE_CAP;PAGE_COUNT_RATE_HEADERS_AND_EFFECTIVE_PERMISSION_ARE_HIDDEN
-next_phase: PHASE2_EXACT_REPLAY_SAME_KNOWN_SMALL_PR_COMPARE_COUNT_AND_ORDERED_DIGEST_NO_PATCH_CONTENT
-valid_time_utc: 2026-08-09T21:49:30Z
-recorded_time_utc: 2026-08-09T21:49:30Z
+mandatory_gate: READ_ONLY;KNOWN_SMALL_PR_ONLY_UNTIL_PAGINATION_VARIANCE_IS_PROBED;DO_NOT_FETCH_PATCHES_CONTENT_OR_COMMENTS;DO_NOT_PERSIST_RAW_FILENAMES_UNLESS_MINIMUM_NECESSARY;NO_AUTHORITATIVE_COMPLETENESS_RATE_LIMIT_PERMISSION_OR_COST_CLAIMS
+strongest_falsifier: MULTI_PAGE_PR_IS_SILENTLY_TRUNCATED_OR_WRAPPER_EXCEEDS_OPERATOR_BOUNDEDNESS_REQUIREMENT
+honest_flaw: TWO_STABLE_READS_ONLY_PROVE_REPEATABILITY_ON_THIS_KNOWN_SMALL_26_FILE_PR;WRAPPER_EXPOSES_NO_CALLER_PAGE_PER_PAGE_OR_MAX_FILES_BOUND_AND_NATIVE_REQUEST_COUNT_RATE_HEADERS_AND_EFFECTIVE_PERMISSION_REMAIN_HIDDEN
+next_phase: PHASE3_ONE_BOUNDED_READ_ONLY_FAILURE_PERMISSION_OR_CONNECTOR_VARIANCE_PROBE_NO_PATCH_CONTENT
+valid_time_utc: 2026-08-09T22:50:04Z
+recorded_time_utc: 2026-08-09T22:50:04Z
 ---
 
-# X13 CURRENT v217
+# X13 CURRENT v218
 
-`X13_GITHUB_PR_CHANGED_FILENAMES_READONLY_030` is active at wake 1 of 4 with **PHASE1_ACCEPTED_WITH_GATES_ANDON**.
+`X13_GITHUB_PR_CHANGED_FILENAMES_READONLY_030` is active at wake 2 of 4 with **PHASE2_ACCEPTED_WITH_GATES**.
 
-The direct read-only baseline on PR #10 returned 26 changed filenames in 486 ms with no connector error, retry, fallback, patch/diff/content/comment hydration, or GitHub mutation observed. Raw filenames were not copied into the durable event; only aggregate count and ordered-list digest were persisted.
+The exact Phase-1 request was replayed once on PR #10. Phase 2 again returned 26 changed filenames, and the privacy-safe ordered filename digest matched Phase 1 exactly. Candidate call time was 487 ms versus 486 ms in Phase 1. No connector error, retry, fallback, patch/diff/content/comment hydration, or GitHub mutation was observed.
 
-The connector removes manual REST pagination and filename extraction, but exposes no caller-controlled page, per-page, or maximum-file bound while claiming to traverse all pages. Until pagination variance is explicitly probed, use only on known-small PRs and make no completeness, permission, rate-limit, quota, or cost claims.
+The result establishes repeatability on this known-small PR only. The connector still exposes no caller-controlled page, per-page, or maximum-file bound while claiming to traverse all pages. Do not generalize to multi-page PR completeness, permission classification, rate-limit/quota behavior, or cost.
 
 Measured operator savings remain `0`; realized custom-code avoidance remains `0`; `20–60 LOC` is an unvalidated estimate.
 
-Next wake: Phase 2 exact replay on the same known-small PR; compare filename count and ordered digest; no patch/content call. WIP remains 1.
+Next wake: Phase 3 exactly one bounded, harmless, read-only failure/permission/connector-variance probe. No patch/content call. WIP remains 1.
