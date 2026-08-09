@@ -1,0 +1,62 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_GOOGLE_DRIVE_DOCUMENT_METADATA_SEARCH_READONLY_029
+event_type: PHASE3_RESULT
+expected_current_version: 214
+candidate: Google_Drive.search_document_metadata_readonly
+campaign_wake: 3_of_4
+wip: 1
+preflight_commit: a95fc9ff6e4bf2728054116b959b2791f335a440
+preflight_blob_sha: e24b8d745501b6b8f2cfbf0215899701e8ed090f
+preflight_readback: true
+candidate_request_sha256: f1b655f8b8bdd8f94629f2e5f861cdf6cd2e6a9f3a9d63bf640a82c98d75a38d
+probe_class: CONNECTOR_VARIANCE_PORTABILITY
+candidate_invocations_this_wake: 1
+candidate_invocations_total: 3
+usable_candidate_results: 3
+expected_failure_probes_total: 0
+connector_errors_total: 0
+retries_total: 0
+fallbacks_total: 0
+candidate_mutations_total: 0
+result_count_phase3: 5
+ordered_result_id_digest_phase3_sha256: ec99783ce07c863bf48ba2bf6138056baf6c3a355b1dc0105964852d0d846412
+next_page_token_phase3_observed: false
+file_content_hydration_phase3_observed: false
+metadata_fields_observed_phase3: TITLE_ID_URL_PARENT_IDS
+raw_mime_type_echo_observed: false
+provider_url_resource_class_phase3: FIVE_OF_FIVE_DOCS_GOOGLE_COM_DOCUMENT_PATH
+spreadsheet_resource_phase3_observed: false
+item_type_variance_phase1_observed: DOCUMENT_MODE_INCLUDED_AT_LEAST_ONE_SPREADSHEET_RESOURCE
+item_type_variance_phase2_observed: DOCUMENT_MODE_INCLUDED_AT_LEAST_ONE_SPREADSHEET_RESOURCE
+native_mime_filter_variance_probe: OBSERVED_RESULT_SET_NARROWED_TO_DOCUMENT_URL_CLASS_WITH_NO_SPREADSHEET_RESOURCE
+native_mime_filter_claim_strength: PROVISIONAL_BECAUSE_CONNECTOR_DID_NOT_ECHO_MIME_TYPE
+operator_minutes_removed_measured: 0
+custom_code_avoided_realized_by_this_candidate: 0
+custom_code_avoided_estimate: 30_to_100_LOC_UNVALIDATED
+credentials: CONNECTOR_MANAGED_EFFECTIVE_SCOPE_AND_PRINCIPAL_UNKNOWN
+durability: GIT_PREFLIGHT_AND_RESULT_EVENTS_ON_CANONICAL_BRANCH_WITH_READBACK_PENDING_FOR_THIS_EVENT
+observability: THREE_BOUNDED_READS;PHASE3_RAW_DRIVE_Q_FILTER_RETURNED_5_OF_5_DOCUMENT_URLS;NO_CONTENT_HYDRATION;NO_NATIVE_REQUEST_ID_RATE_HEADERS_SCOPE_QUOTA_DEBIT_LATENCY_OR_MIME_ECHO_SURFACED
+portability: HIGHER_WITH_EXPLICIT_NATIVE_DRIVE_Q_MIMETYPE_FILTER;STILL_CONNECTOR_MAPPING_AND_SCOPE_UNVERIFIED
+failure_behavior: NOT_DIRECTLY_PROBED;CONNECTOR_VARIANCE_PATH_PROBED_INSTEAD
+paid_cost_usd_observed: 0_NO_CHARGE_SURFACED_NOT_BILLING_PROOF
+direct_quota_evidence: NONE_FROM_CONNECTOR_RECEIPT
+verifier: GIT_DURABLE_READBACK_PLUS_DIRECT_DRIVE_RECEIPT_PLUS_OFFICIAL_DRIVE_Q_AND_MIME_CONTRACT
+consumer: HFO_BOUNDED_DRIVE_DISCOVERY_FOR_OPERATOR_CONTROL_LOOPS
+strongest_falsifier: FUTURE_EXPLICIT_GOOGLE_DOCS_MIME_FILTER_RETURNS_A_NON_DOCS_RESOURCE_OR_CONNECTOR_MAPPING_IGNORES_SPECIAL_FILTER_QUERY_STR
+honest_flaw: PHASE3_DID_NOT_PROBE_PERMISSION_FAILURE;CONNECTOR_DID_NOT_ECHO_MIME_TYPE;FIVE_DOCUMENT_URLS_ARE_STRONG_BUT_NOT_AUTHORITATIVE_PROOF_OF_NATIVE_MIME_FILTER_APPLICATION;NO_COMPLETENESS_SCOPE_RATE_LIMIT_QUOTA_DEBIT_BILLING_OR_LATENCY_EVIDENCE
+phase_status: PHASE3_ACCEPTED_WITH_GATES
+next_phase: PHASE4_DECISION_FROM_FROZEN_EVIDENCE_ONLY_NO_ADDITIONAL_CANDIDATE_CALL
+valid_time_utc: 2026-08-09T19:50:45Z
+recorded_time_utc: 2026-08-09T19:50:45Z
+---
+
+# X13 Phase 3 result — Drive native MIME-filter connector variance probe
+
+Exactly one bounded read-only call used the connector's raw Drive `q` filter with `mimeType = 'application/vnd.google-apps.document'`, while retaining `item_type=document`, `topn=5`, and `best_effort_fetch=false`.
+
+The connector returned five metadata results. All five provider URLs used the Google Docs `/document/` resource path; no spreadsheet resource was observed. No next-page token, file-content hydration, retry, fallback, connector error, or Drive mutation was observed. The connector did not echo a raw `mimeType` field, so this is strong connector-variance evidence that the native filter narrows the result class, but not authoritative proof of the exact provider-side query mapping.
+
+This resolves the earlier practical Google-Docs-only taxonomy problem provisionally without custom code: when Google Docs semantics matter, require the explicit raw Drive MIME filter rather than trusting connector `item_type=document` alone. It does not establish permission-denial behavior, authoritative completeness, OAuth principal/scope, rate-limit behavior, direct quota debit, billing, latency, or exact native request mapping.
+
+Official contract basis: Drive v3 `files.list` accepts `q`; `mimeType` is a supported query term; Google documents `application/vnd.google-apps.document` as Google Docs and `application/vnd.google-apps.spreadsheet` as Google Sheets.
