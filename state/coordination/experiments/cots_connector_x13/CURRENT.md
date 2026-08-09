@@ -1,21 +1,21 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
 experiment_id: X13_GITHUB_PR_CHANGED_FILENAMES_READONLY_030
-version: 218
-prior_version: 217
+version: 219
+prior_version: 218
 candidate: GitHub.list_pr_changed_filenames
-campaign_wake: 2_of_4
-campaign_status: ACTIVE_PHASE2_ACCEPTED_WITH_GATES
+campaign_wake: 3_of_4
+campaign_status: ACTIVE_PHASE3_ACCEPTED_WITH_GATES
 phase_1_status: PHASE1_ACCEPTED_WITH_GATES_ANDON
 phase_2_status: PHASE2_ACCEPTED_WITH_GATES
-phase_3_status: NOT_RUN
+phase_3_status: PHASE3_ACCEPTED_WITH_GATES
 phase_4_status: NOT_RUN
 phase_4_decision: NONE
 operational_decision: PENDING_PHASE4
 wip: 1
-last_event_commit: 83aef40ce3aa5b28b60cc704f0237bb3c7bc7845
-last_event_path: state/coordination/experiments/cots_connector_x13/20260809T225004Z_GITHUB_PR_CHANGED_FILENAMES_PHASE2_REPLAY.md
-last_event_blob_sha: 0f9c5e522cebd890b46100ffa1abfdda4315aa00
+last_event_commit: 0801c9553311632f2ec782d566ad700202a404d8
+last_event_path: state/coordination/experiments/cots_connector_x13/20260809T235200Z_GITHUB_PR_CHANGED_FILENAMES_PHASE3_FAILURE_PROBE.md
+last_event_blob_sha: 728b5db0d872a572090c171e7b9d0892bf2437e9
 last_event_readback: true
 phase1_preflight_commit: d67cae4157e6f138f40c00b9b57018cfd8dd323d
 phase1_preflight_blob_sha: ccd8303794037a7cc67e7c8166a304662d2c7dee
@@ -28,51 +28,64 @@ phase2_preflight_readback: true
 phase2_result_commit: 83aef40ce3aa5b28b60cc704f0237bb3c7bc7845
 phase2_result_blob_sha: 0f9c5e522cebd890b46100ffa1abfdda4315aa00
 phase2_result_readback: true
-candidate_invocations_total: 2
+phase3_preflight_commit: 2ad3f91bc4cbecc05e18c56a1f5a4f655a12a950
+phase3_preflight_blob_sha: a40de3186f9f16af72af489a5f145652b4f1c21f
+phase3_preflight_readback: true
+phase3_result_commit: 0801c9553311632f2ec782d566ad700202a404d8
+phase3_result_blob_sha: 728b5db0d872a572090c171e7b9d0892bf2437e9
+phase3_result_readback: true
+candidate_invocations_total: 3
 usable_candidate_results: 2
-expected_failure_probes_total: 0
+expected_failure_probes_total: 1
 connector_errors_total: 0
 retries_total: 0
 fallbacks_total: 0
 candidate_mutations_total: 0
+git_coordination_write_conflicts_observed_total: 1
 target_pr_number: 10
+phase3_probe_pr_number: 2147483647
 result_filename_count_phase1: 26
 result_filename_count_phase2: 26
 ordered_filename_digest_phase1_sha256: 503d2de2bca9c417c86d1de25d5527363d5e318f3cbf997cf7810258b9e12206
 ordered_filename_digest_phase2_sha256: 503d2de2bca9c417c86d1de25d5527363d5e318f3cbf997cf7810258b9e12206
 phase2_count_matches_phase1: true
 phase2_ordered_digest_matches_phase1: true
+phase3_observed_http_status: 404
+phase3_observed_error_message: Not_Found
+phase3_failure_classification: NONEXISTENT_OR_INACCESSIBLE
+phase3_permission_classification_proven: false
 raw_filename_persisted: false
 connector_external_call_time_phase1_ms: 486
 connector_external_call_time_phase2_ms: 487
+connector_external_call_time_phase3_ms: NOT_SURFACED
 operator_minutes_removed_measured: 0
 custom_code_avoided_estimate: 20_to_60_LOC_UNVALIDATED
 custom_code_avoided_realized_by_this_candidate: 0
 paid_cost_usd_observed: 0_NO_CHARGE_SURFACED_NOT_BILLING_PROOF
 direct_quota_evidence: NONE_FROM_CONNECTOR_RECEIPT
 credentials: CONNECTOR_MANAGED_EFFECTIVE_PRINCIPAL_AND_PERMISSION_GRANT_UNKNOWN
-durability: PHASE1_AND_PHASE2_PREFLIGHT_AND_RESULTS_READ_BACK_ON_CANONICAL_BRANCH
-observability: TWO_26_FILENAME_SUCCESSES_486MS_AND_487MS;ORDERED_DIGEST_STABLE;FILENAMES_ONLY;NO_PATCH_DIFF_CONTENT_COMMENT_HYDRATION;NO_NATIVE_REQUEST_ID_HTTP_STATUS_RATE_HEADERS_PAGE_COUNT_OR_QUOTA_DEBIT_SURFACED
-portability: HIGH_TO_GITHUB_REST_PULLS_FILES_RESOURCE_BUT_WRAPPER_AUTO_PAGINATION_AND_3000_FILE_CAP_HANDLING_UNVERIFIED
-failure_behavior: NOT_YET_PROBED
-verifier: GIT_DURABLE_READBACK_PLUS_DIRECT_GITHUB_RECEIPTS_PLUS_PHASE1_PHASE2_DIGEST_COMPARISON
+durability: PHASE1_PHASE2_PHASE3_PREFLIGHT_AND_RESULTS_READ_BACK_ON_CANONICAL_BRANCH;ONE_UNRELATED_BRANCH_HEAD_409_DURING_PHASE3_RESULT_PERSISTENCE_RESOLVED_AFTER_REREAD_WITH_CURRENT_STILL_V218
+observability: TWO_26_FILENAME_SUCCESSES_486MS_AND_487MS_WITH_STABLE_ORDERED_DIGEST_PLUS_ONE_STRUCTURED_404_NOT_FOUND_FAILURE;FILENAMES_ONLY_ON_SUCCESSES;NO_PATCH_DIFF_CONTENT_COMMENT_HYDRATION;NO_NATIVE_REQUEST_ID_RATE_HEADERS_PAGE_COUNT_QUOTA_DEBIT_OR_PHASE3_ERROR_LATENCY_SURFACED
+portability: HIGH_TO_GITHUB_REST_PULLS_FILES_RESOURCE_WITH_404_AUTHORIZATION_AMBIGUITY_GATE;WRAPPER_AUTO_PAGINATION_AND_3000_FILE_CAP_HANDLING_UNVERIFIED
+failure_behavior: FAIL_CLOSED_ON_CLEARLY_SYNTHETIC_MISSING_PR_WITH_STRUCTURED_404_NOT_FOUND;DO_NOT_CLASSIFY_EXISTENCE_OR_PERMISSION_FROM_404
+verifier: GIT_DURABLE_READBACK_PLUS_DIRECT_GITHUB_RECEIPTS_PLUS_PHASE1_PHASE2_DIGEST_COMPARISON_PLUS_OFFICIAL_GITHUB_REST_TROUBLESHOOTING
 consumer: HFO_PR_BLAST_RADIUS_AND_TARGETED_PATCH_SELECTION_GATES
-mandatory_gate: READ_ONLY;KNOWN_SMALL_PR_ONLY_UNTIL_PAGINATION_VARIANCE_IS_PROBED;DO_NOT_FETCH_PATCHES_CONTENT_OR_COMMENTS;DO_NOT_PERSIST_RAW_FILENAMES_UNLESS_MINIMUM_NECESSARY;NO_AUTHORITATIVE_COMPLETENESS_RATE_LIMIT_PERMISSION_OR_COST_CLAIMS
+mandatory_gate: READ_ONLY;KNOWN_SMALL_PR_ONLY;404_MEANS_NONEXISTENT_OR_INACCESSIBLE_NOT_PERMISSION_PROOF;NO_RETRY_ON_STABLE_404;DO_NOT_FETCH_PATCHES_CONTENT_OR_COMMENTS;DO_NOT_PERSIST_RAW_FILENAMES_UNLESS_MINIMUM_NECESSARY;NO_AUTHORITATIVE_COMPLETENESS_RATE_LIMIT_PERMISSION_OR_COST_CLAIMS
 strongest_falsifier: MULTI_PAGE_PR_IS_SILENTLY_TRUNCATED_OR_WRAPPER_EXCEEDS_OPERATOR_BOUNDEDNESS_REQUIREMENT
-honest_flaw: TWO_STABLE_READS_ONLY_PROVE_REPEATABILITY_ON_THIS_KNOWN_SMALL_26_FILE_PR;WRAPPER_EXPOSES_NO_CALLER_PAGE_PER_PAGE_OR_MAX_FILES_BOUND_AND_NATIVE_REQUEST_COUNT_RATE_HEADERS_AND_EFFECTIVE_PERMISSION_REMAIN_HIDDEN
-next_phase: PHASE3_ONE_BOUNDED_READ_ONLY_FAILURE_PERMISSION_OR_CONNECTOR_VARIANCE_PROBE_NO_PATCH_CONTENT
-valid_time_utc: 2026-08-09T22:50:04Z
-recorded_time_utc: 2026-08-09T22:50:04Z
+honest_flaw: PHASE3_PROBED_ONLY_A_SYNTHETIC_MISSING_PR_AND_CANNOT_RESOLVE_GITHUB_404_AUTHORIZATION_AMBIGUITY;WRAPPER_STILL_EXPOSES_NO_CALLER_PAGE_PER_PAGE_OR_MAX_FILES_BOUND_AND_NATIVE_REQUEST_COUNT_RATE_HEADERS_AND_EFFECTIVE_PERMISSION_REMAIN_HIDDEN
+next_phase: PHASE4_DECIDE_FROM_FROZEN_EVIDENCE_NO_ADDITIONAL_CANDIDATE_CALL
+valid_time_utc: 2026-08-09T23:53:00Z
+recorded_time_utc: 2026-08-09T23:53:00Z
 ---
 
-# X13 CURRENT v218
+# X13 CURRENT v219
 
-`X13_GITHUB_PR_CHANGED_FILENAMES_READONLY_030` is active at wake 2 of 4 with **PHASE2_ACCEPTED_WITH_GATES**.
+`X13_GITHUB_PR_CHANGED_FILENAMES_READONLY_030` is active at wake 3 of 4 with **PHASE3_ACCEPTED_WITH_GATES**.
 
-The exact Phase-1 request was replayed once on PR #10. Phase 2 again returned 26 changed filenames, and the privacy-safe ordered filename digest matched Phase 1 exactly. Candidate call time was 487 ms versus 486 ms in Phase 1. No connector error, retry, fallback, patch/diff/content/comment hydration, or GitHub mutation was observed.
+Phase 3 made exactly one bounded read-only failure-contract call using a clearly synthetic missing pull-request number. The connector failed closed with structured `404 Not Found`; no filenames, patch, diff, repository content, comments, retry, fallback, or GitHub mutation were observed. GitHub documents that some inaccessible private resources also return `404`, so the result is classified only as `NONEXISTENT_OR_INACCESSIBLE`, never as permission or existence proof.
 
-The result establishes repeatability on this known-small PR only. The connector still exposes no caller-controlled page, per-page, or maximum-file bound while claiming to traverse all pages. Do not generalize to multi-page PR completeness, permission classification, rate-limit/quota behavior, or cost.
+Across the campaign there are now two stable 26-filename successes plus one expected structured failure. The main unresolved boundedness gate remains: the wrapper exposes no caller-controlled page, per-page, or maximum-file bound while claiming to traverse all pages. One Git-first result write encountered an unrelated branch-head `409`; after reread, CURRENT was still v218 and the immutable result write succeeded without another candidate invocation.
 
-Measured operator savings remain `0`; realized custom-code avoidance remains `0`; `20–60 LOC` is an unvalidated estimate.
+Measured operator savings remain `0`; realized custom-code avoidance remains `0`; `20–60 LOC` remains an unvalidated estimate.
 
-Next wake: Phase 3 exactly one bounded, harmless, read-only failure/permission/connector-variance probe. No patch/content call. WIP remains 1.
+Next wake: Phase 4 decision from the frozen Phase 1–3 evidence set only. No additional candidate call. WIP remains 1.
