@@ -1,0 +1,133 @@
+schema_id: hfo.gen133.s03_verification_route.v1
+result: REVISE
+terminal_receipt: false
+seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+expected_task_id: 6a539fc5130c81918c13624739fb2a60
+observed_task_id: 6a539fc5130c81918c13624739fb2a60
+task_id_match: true
+task_enabled_observed: true
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-09T21:07:20Z
+
+self_probe:
+  provider_task_inventory_read: true
+  github_branch_observed: agent/gen133-bootstrap-20260730
+  github_read_write_available: true
+  slack_connector_available: true
+  task_mutation_performed: false
+
+changed_window:
+  prior_s03_route_commit: 3ea41af0bc4ff14b0bbd7c31e5e45f97a1ec9a22
+  selected_changed_producer_return_observed: true
+  selected_workitem_prior_s03_route_observed: false
+  selected_workitem_exact_digest_bound_STOOD_or_FELL_observed: false
+  selected_workitem_explicit_named_ConsumerAck_observed: false
+  selected_workitem_terminal_receipt_observed: false
+
+correlation_id: GTM-S07-AETNA-RETURN-20260809T202800Z
+work_item_id: S07_AETNA_CLAIMS_AGENT_RELEASE_DELTA_CARD_V1
+work_item_binding_source: PRODUCER_RETURN_STRUCTURAL_DEBT_SEARCH_STRING_ONLY_NOT_EXPLICIT_CONTRACT_FIELD
+producer: S07_GTM_PROOF_KIT_BUILDER
+producer_task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+producer_return_path: projects/gtm-revenue/returns/20260809T202800Z_S07_AETNA_CLAIMS_AGENT_RELEASE_DELTA_CARD_RETURN.md
+producer_return_create_commit: fa6cea97bacd8181ada37c514423ce02392e1315
+producer_return_git_blob_sha1: e00a9c996fae22abad5504d3e893d5dec7ee7453
+producer_return_exact_git_blob_readback: true
+producer_return_result: KIT_RETURNED
+candidate_created: true
+candidate_path: projects/gtm-revenue/kits/aetna-cvs-health/20260809T202600Z_CLAIMS_AGENT_RELEASE_DELTA_CARD.md
+candidate_utf8_bytes_bound_by_return: 6059
+candidate_sha256_bound_by_return: d6294caec3f7d77e3cd08d8c7bb9a8f051a8cdc2c04cb04b56f0d5524e95ea03
+candidate_git_blob_sha1_bound_by_return: 3f2baaff4cee606b0bc79146c561880f4468070a
+candidate_create_commit_bound_by_return: fdc3c76ca1deb3de8dc07877f74339382d53e4c4
+candidate_independent_git_blob_readback_by_s03: MATCH
+candidate_sha256_independently_recomputed_by_s03: false
+
+producer_return_contract_check:
+  explicit_work_item_id_bound_in_return: false
+  claim_bound: false
+  admission_claim_observed_by_producer: false
+  claim_path: NOT_BOUND
+  claim_git_blob_sha1: NOT_BOUND
+  claim_acceptance_digest: NOT_BOUND
+  claim_idempotency_digest: NOT_BOUND
+  claim_lease_expiry: NOT_BOUND
+  exact_candidate_bytes_or_source_readback_bound: true
+  commands_and_exit_codes: NOT_APPLICABLE_MARKDOWN_ONLY_ARTIFACT_TEST_EXECUTION_NOT_CLAIMED
+  rollback_bound: true
+  rollback_mode: DELETE_CANDIDATE_ONLY_BY_LATER_OPERATOR_AUTHORIZED_COMMIT_IF_REJECTED;PRESERVE_IMMUTABLE_RETURN
+  effect_ceiling_bound: true
+  producer_return_effect_ceiling: PUBLIC_SAFE_SYNTHETIC_ONLY / T0_PREP_RESEARCH_GIT
+  expiry_bound: true
+  producer_return_expiry_utc: 2026-08-14T14:08:00Z
+  honest_flaw_bound: true
+  target_evidence_digest_recomputable: true
+  no_send: true
+  no_submit: true
+  no_deploy: true
+  no_merge: true
+  no_spend: true
+
+revision_reason: >-
+  The changed S07 producer return binds the candidate byte count/SHA-256/Git blob/create commit, rollback,
+  PUBLIC_SAFE_SYNTHETIC_ONLY / T0_PREP_RESEARCH_GIT effect ceiling, expiry, no-send/no-submit boundaries, and an honest
+  flaw, and S03 independently read back the candidate Git blob. However, the immutable return does not contain an explicit
+  work_item_id contract field and explicitly states that no immutable S02 admission claim was observed. It therefore binds
+  no claim path/blob, acceptance digest, idempotency digest, or lease. S03 cannot infer or retrofit those bindings from the
+  target card, later repository state, or prose.
+
+requested_revision:
+  owner: S07_GTM_PROOF_KIT_BUILDER
+  action: >-
+    Do not rewrite this immutable return. After a valid immutable unexpired S02 admission claim exists for this exact
+    WorkItem, emit one superseding immutable producer return that explicitly binds work_item_id, claim path/blob,
+    acceptance digest, idempotency digest, lease/expiry, exact candidate bytes/readback or a fresh admitted candidate when
+    temporal ordering requires it, commands and exit codes where applicable, rollback, effect ceiling, expiry, and honest
+    flaw. Do not ask S03 to infer, fabricate, or backfill the claim.
+  self_repair_by_s03: forbidden
+
+route:
+  verifier: S04_HRIST_STRUCTURAL_PREFLIGHT
+  verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  verifier_class: SAME_PROVIDER_NONBINDING
+  nonproducer_verifier: true
+  binding_weight: 0
+  requested_verdict: REVISE_IF_MISSING_WORKITEM_OR_ADMISSION_BINDING_CONFIRMED
+  independent_verification_closed: false
+  exact_digest_bound_independent_STOOD_or_FELL_observed: false
+  explicit_named_ConsumerAck_observed: false
+
+route_nonce: S03-AETNA-20260809T210720Z-e00a9c996fae
+route_idempotency:
+  canonicalization: UTF8_EXACT_PREIMAGE_NO_TERMINAL_LF
+  preimage: GTM-S07-AETNA-RETURN-20260809T202800Z|S07_AETNA_CLAIMS_AGENT_RELEASE_DELTA_CARD_V1|e00a9c996fae22abad5504d3e893d5dec7ee7453|REVISE|S04_HRIST_STRUCTURAL_PREFLIGHT
+  sha256: aa257b2ac606c9ca5f55d9585618df4861a189082f74921ca841eb8771034d1e
+
+rollback:
+  route_artifact: APPEND_ONLY_SUPERSESSION_IF_INCORRECT
+  destructive_delete_authorized: false
+
+effect_ceiling:
+  level: T0_INTERNAL_COORDINATION_GIT_SLACK_POINTER_ONLY
+  forbidden:
+    - external_send
+    - spend
+    - deployment
+    - merge
+    - public_publication
+    - account_or_security_change
+    - permanent_deletion
+    - task_mutation
+    - producer_impersonation
+    - self_verification
+    - implicit_consumer_ack
+
+honest_flaw: >-
+  S03 independently fetched the candidate and observed the same Git blob SHA-1 bound by the producer return, but did not
+  independently recompute the candidate SHA-256 because the missing explicit WorkItem/admission binding in the selected
+  immutable return is already dispositive for this contract. Repository and Slack absence checks are bounded and absence is
+  not global proof. A later S02 claim would not retroactively alter these immutable producer-return bytes; a superseding
+  producer return is still required. This S04 route is same-provider structural preflight only and cannot produce binding
+  STOOD/FELL or ConsumerAck.
