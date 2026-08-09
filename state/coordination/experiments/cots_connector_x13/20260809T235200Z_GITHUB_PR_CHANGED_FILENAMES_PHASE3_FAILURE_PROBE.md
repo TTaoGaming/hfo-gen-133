@@ -1,0 +1,54 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_GITHUB_PR_CHANGED_FILENAMES_READONLY_030
+event_type: PHASE3_FAILURE_PROBE_RESULT
+expected_current_version: 218
+candidate: GitHub.list_pr_changed_filenames
+campaign_wake: 3_of_4
+wip: 1
+repository: TTaoGaming/hfo-gen-133
+probe_pr_number: 2147483647
+probe_type: CLEARLY_SYNTHETIC_NONEXISTENT_PR_READ_ONLY_FAILURE_CONTRACT
+candidate_invocations_this_event: 1
+candidate_invocations_total_after_event: 3
+usable_candidate_results_after_event: 2
+expected_failure_probes_total_after_event: 1
+observed_http_status: 404
+observed_error_message: Not_Found
+observed_error_documentation_target: GITHUB_REST_PULLS_LIST_PULL_REQUEST_FILES
+failure_classification: NONEXISTENT_OR_INACCESSIBLE
+permission_classification_proven: false
+connector_errors_total_after_event: 0
+retries_observed_total_after_event: 0
+fallbacks_observed_total_after_event: 0
+candidate_mutations_total_after_event: 0
+patch_diff_content_comment_hydration_observed: false
+error_latency_ms: NOT_SURFACED
+operator_minutes_removed_measured: 0
+custom_code_avoided_estimate: 20_to_60_LOC_UNVALIDATED
+custom_code_avoided_realized_by_this_candidate: 0
+paid_cost_usd_observed: 0_NO_CHARGE_SURFACED_NOT_BILLING_PROOF
+direct_quota_evidence: NONE_FROM_CONNECTOR_RECEIPT
+credentials: CONNECTOR_MANAGED_EFFECTIVE_PRINCIPAL_AND_PERMISSION_GRANT_UNKNOWN
+durability: PHASE3_PREFLIGHT_AND_RESULT_GIT_FIRST_ON_CANONICAL_BRANCH
+observability: STRUCTURED_404_NOT_FOUND_WITH_DOCUMENTATION_URL;NO_NATIVE_REQUEST_ID_RATE_HEADERS_QUOTA_DEBIT_OR_ERROR_LATENCY_SURFACED
+portability: HIGH_TO_GITHUB_REST_PULLS_FILES_FAILURE_MODEL_WITH_AUTHORIZATION_AMBIGUITY_GATE
+failure_behavior: FAIL_CLOSED_ON_SYNTHETIC_MISSING_PR_WITH_STRUCTURED_404_NOT_FOUND;DO_NOT_CLASSIFY_EXISTENCE_OR_PERMISSION_FROM_404
+verifier: GIT_DURABLE_READBACK_PLUS_DIRECT_GITHUB_CONNECTOR_RECEIPT_PLUS_OFFICIAL_GITHUB_REST_TROUBLESHOOTING
+consumer: HFO_PR_BLAST_RADIUS_AND_TARGETED_PATCH_SELECTION_GATES
+mandatory_gate: READ_ONLY;KNOWN_SMALL_PR_ONLY;404_MEANS_NONEXISTENT_OR_INACCESSIBLE_NOT_PERMISSION_PROOF;NO_RETRY_ON_STABLE_404;DO_NOT_FETCH_PATCHES_CONTENT_OR_COMMENTS;NO_AUTHORITATIVE_COMPLETENESS_RATE_LIMIT_PERMISSION_OR_COST_CLAIMS
+strongest_falsifier: CONNECTOR_RETRIES_FALLS_BACK_MUTATES_OR_MISCLASSIFIES_A_STABLE_404_AS_PERMISSION_OR_EXISTENCE_PROOF
+honest_flaw: PHASE3_PROBED_ONLY_A_CLEARLY_SYNTHETIC_MISSING_PR;IT_DID_NOT_TEST_A_KNOWN_EXISTING_BUT_FORBIDDEN_PR_AND_CANNOT_RESOLVE_GITHUB_404_AUTHORIZATION_AMBIGUITY
+phase3_status: PHASE3_ACCEPTED_WITH_GATES
+next_phase: PHASE4_DECIDE_FROM_FROZEN_EVIDENCE_NO_ADDITIONAL_CANDIDATE_CALL
+valid_time_utc: 2026-08-09T23:52:00Z
+recorded_time_utc: 2026-08-09T23:52:00Z
+---
+
+# Phase 3 failure-contract probe result
+
+Exactly one bounded read-only call targeted a clearly synthetic nonexistent pull-request number. The connector failed closed with a structured `404 Not Found` and its GitHub REST documentation target. No filenames, patch, diff, repository content, comments, retry, fallback, or GitHub mutation were observed.
+
+This is not permission proof. GitHub documents that some inaccessible private resources intentionally return `404 Not Found`, so X13 classifies this result only as `NONEXISTENT_OR_INACCESSIBLE`. The connector also surfaced no native request ID, rate-limit headers, quota debit, effective principal/scope, or error latency.
+
+Phase 4 must decide from the frozen Phase 1–3 evidence set only; no additional candidate call is authorized.
