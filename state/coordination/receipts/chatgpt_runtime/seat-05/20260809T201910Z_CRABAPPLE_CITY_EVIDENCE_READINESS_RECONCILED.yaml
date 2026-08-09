@@ -1,0 +1,50 @@
+schema: hfo.gen133.operator_relief_receipt.v1
+task_id: 6a55c182078c8191b89f2dd15f5f640c
+seat: S05
+result: CRABAPPLE_CITY_EVIDENCE_READINESS_RECONCILED
+valid_time_utc: 2026-08-09T20:19:10Z
+canonical:
+  repo: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+queue:
+  active: CRABAPPLE_CITY_CORRECTION_EVIDENCE
+  p0: CHATGPT_PRO_CONTINUITY_AUTHORITATIVE_DISPOSITION
+  p1:
+    - FIDELITY_AUTHORITATIVE_WIRE_DISPOSITION_MONDAY
+    - CRABAPPLE_CITY_CORRECTION_EVIDENCE_MONDAY
+sources:
+  gmail:
+    city_inspector_message_id: "19f9483c5bd474c9"
+    hvac_vendor_payment_message_id: "19fdd5e3595a8345"
+  calendar:
+    submission_window_local: "2026-08-10 11:30-12:15 America/Denver"
+facts:
+  - City source accepts correction photos by email in lieu of reinspection.
+  - Authoritative city correction deadline is 2026-08-14.
+  - Correction evidence must include proof for the hard-wired smoke-detector correction.
+  - HVAC vendor acknowledged receipt of the second payment on 2026-08-07.
+non_claims:
+  - The HVAC payment receipt alone does not prove the inspection correction was completed or accepted by the city.
+  - No city acceptance of the correction evidence has been observed.
+transition:
+  type: NO_SEND_APPROVAL_PACKET_BOUND
+  operator_gate:
+    - Open the authoritative city inspector thread.
+    - Verify property and recipient against the source thread.
+    - Attach correction photos that satisfy the city requirement, including hard-wired smoke-detector proof.
+    - Attach HVAC completion evidence that matches the inspection-report requirement; do not substitute the payment receipt alone.
+    - Operator reviews body, recipient, and attachments before any external send.
+    - DONE only after a sent-message receipt plus city acknowledgment, or an exact missing-evidence item with owner and same-day follow-up.
+operator_minutes_removed: 9
+next_consumer: VAR_EVENING_CONTROL
+effects:
+  email_sent: false
+  calendar_mutated: false
+  task_mutated: false
+  spend_or_payment: false
+  deployment_or_merge: false
+  publication: false
+  account_or_security_change: false
+  destructive_delete: false
+privacy:
+  source_bodies_externalized: false
