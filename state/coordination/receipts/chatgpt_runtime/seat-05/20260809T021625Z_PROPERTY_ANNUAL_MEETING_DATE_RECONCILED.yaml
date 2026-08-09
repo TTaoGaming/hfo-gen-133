@@ -1,0 +1,46 @@
+schema: hfo.gen133.operator_relief_receipt.v1
+seat: S05
+expected_task_id: 6a55c182078c8191b89f2dd15f5f640c
+wip: 1
+observed_at_utc: 2026-08-09T02:16:25Z
+material_change: true
+transition: STATUS_RECONCILED
+active_item: PROPERTY_ANNUAL_MEETING_DATE_RECEIVED
+p0: CHATGPT_PRO_CONTINUITY_BEFORE_2026-08-09_END
+p1:
+  - FIDELITY_AUTHORITATIVE_WIRE_DISPOSITION_MONDAY
+  - PROPERTY_ANNUAL_MEETING_LOGISTICS
+source_checks:
+  gmail:
+    changed: true
+    sanitized_fact: Property manager sent a new annual-meeting notice at 2026-08-09T01:17:50Z; meeting date is 2026-08-19.
+    source_pointer: Gmail search hint "Annual Meeting" around 2026-08-09T01:17Z.
+    claim_ceiling: Notice gives the meeting date but not meeting time; a later ballot-service notice is expected to provide meeting notice and voting instructions.
+  calendar:
+    changed: false
+    sanitized_fact: No matching annual-meeting event was found in the primary calendar for 2026-08-18 through 2026-08-20.
+  contacts:
+    changed: false
+    sanitized_fact: No matching saved Google Contact for the property manager was found.
+  github:
+    changed_relevant_to_operator_obligation: false
+    sanitized_fact: New repository activity in the run window was unrelated to this operator obligation; no newer S05 obligation receipt superseded the prior ChatGPT Pro gate.
+  slack:
+    changed_relevant_to_operator_obligation: false
+    sanitized_fact: No new operator-obligation disposition appeared in the checked command-and-control or synthesis channels during the run window.
+bounded_transition:
+  result: Meeting date captured; exact time remains unknown, so no calendar mutation is authorized. Next gate is source readback of the expected ballot-service notice/voting instructions, then bind the exact appointment if a time is provided.
+  operator_minutes_removed: 6
+  next_consumer: VAR_EVENING_CONTROL
+safety:
+  email_sent: false
+  application_submitted: false
+  spend_or_payment: false
+  calendar_mutation: false
+  task_mutation: false
+  account_or_security_change: false
+  deployment: false
+  merge: false
+  external_publication: false
+  destructive_deletion: false
+  sensitive_body_externalized: false
