@@ -1,0 +1,40 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse.v1
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+carrier_task_id: 6a52f485409c8191aa06ea7911add3f3
+valid_time_utc: 2026-08-09T19:57:54Z
+result: RETURN_REUSABLE_FAILURE_ANTIBODY
+current_workitem: X14_MUTANT_214_98cdcad7bd2f
+current_mutation: expected_current_version_214_to_213
+current_source:
+  repository: TTaoGaming/hfo-gen-133
+  path: state/coordination/experiments/cots_connector_x13/20260809T195045Z_GOOGLE_DRIVE_DOCUMENT_METADATA_SEARCH_PHASE3_RESULT.md
+  commit: 0c5d73d22949fe7de14e3b3c50064bed5a4edfa2
+  blob: 433189ef07613632f3c7d4a8adbac0e6f05e51c2
+prior_artifact:
+  original_date_utc: 2026-08-01T19:11:14Z
+  repository: TTaoGaming/hfo-gen-133
+  path: state/coordination/receipts/chatgpt_runtime/seat-04/20260801T191114Z_X13_DRIVE_PHASE2_EVENT_REPLAY_BINDING_REVISE.yaml
+  commit: a17afc333cff71ac891f92204af629b827abe2dc
+  blob: 7e425add5d131741f4c1c0b32d202fc75bc91b9c
+  result: REVISE
+  gate: S04_EVENT_REPLAY_BINDING_AND_SOURCE_PROVENANCE_GATE
+supported_claims:
+  - Event replay identity includes expected prior/current/next version bindings.
+  - Reusing an already-consumed prior version cannot authorize a second or out-of-order advance without separate source-bound replay authority.
+  - Event ID, immutable path, blob and versions help deduplicate but do not prove exactly-once consumption.
+excluded_claims:
+  - Not a direct S04 verdict on mutant 214.
+  - S15 did not recompute the mutant overlay digest.
+  - No database atomicity, linearizable CAS, exactly-once, ConsumerAck, independent quorum, Drive completeness, permission-scope or outcome claim.
+privacy_ceiling: SANITIZED_REPOSITORY_TASK_VERSION_DIGEST_CONTROL_METADATA_ONLY
+acceptance_relevance: Preserve source expected_current_version 214; reject rebinding to consumed version 213 unless a distinct immutable replay or supersession artifact binds this source digest, event identity, version chain, validity window and consumer.
+verifier: S04_STRUCTURAL_PREFLIGHT
+consumer:
+  - X14_CAMPAIGN_REDUCER
+  - X13_COTS_CONNECTOR_REDUCER
+expiry_utc: 2026-08-09T23:52:34Z
+heritage_credit: 0_PENDING_NAMED_CURRENT_CONSUMER_CONSUMPTION
+dedup: NO_SEAT15_MATCH_FOUND_FOR_PRIOR_COMMIT_A17AFC333CFF71AC891F92204AF629B827ABE2DC
+honest_flaw: The prior receipt reviewed an older X13 Drive Phase-2 event with incomplete replay bindings; mutant 214 changes an explicit Phase-3 version from 214 to 213. Only the monotonic replay/version-binding rule transfers, and the current mutant remains relatively easy because the authentic source visibly states version 214.
+---
