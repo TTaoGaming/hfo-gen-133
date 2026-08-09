@@ -1,0 +1,170 @@
+---
+schema_id: hfo.gen133.s09.adversarial_bayesian_vote.v1
+seat: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+carrier_task_id_expected: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_id_observed: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_id_match: true
+wip: 1
+valid_time_utc: '2026-08-09T14:32:29Z'
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+binding_weight: 0
+binding_decision: false
+evidence_class: SAME_PROVIDER_ADVISORY
+result: REVISE
+
+self_probe:
+  task_enabled_observed: true
+  task_mutation_performed: false
+  tools_observed_and_used:
+    - native_automations_inventory_read
+    - github_recent_commit_read
+    - github_exact_commit_read
+    - github_exact_commit_file_read
+    - github_create_file
+    - github_readback
+    - slack_pointer_post
+    - local_sha256_recompute
+
+selected_decision_packet:
+  packet_id: X14_MUTANT_208_268399466278
+  packet_kind: QUARANTINED_FALSE_GREEN_MUTANT
+  packet_commit_sha: 98da9a0e3bf11a9bbe7a04ece1b0ca0ebf173de6
+  packet_blob_sha1: ae445034afc53cedfd94edff7a311212b1289eee
+  packet_path: state/coordination/experiments/false_green_x14/quarantine/20260809T135037Z_X12_PRIVACY_MARKER.mutant.yaml
+  source_commit_sha: 5bf4b0d02f4c064c0b2c413822d059407aba53a6
+  source_blob_sha1: 5ecc4cdabe9fc3b88dcded3d46daf1c6caf48598
+  source_path: state/coordination/experiments/durable_object_x12/verifications/20260809T134330Z_V0192_TO_V0193_C45_WAKE3_DUPLICATE_KEY_REJECTION.json
+  source_task_id: 6a506f83df208191815dd17a8fd5baa3
+  source_status: PASS_ADVANCE_C45_WAKE3_DUPLICATE_KEY_STRICT_REJECTION_THEN_EXACT_ADVANCE
+  mutation_class: PRIVACY_MARKER
+  mutated_field: privacy_marker
+  original_value: ABSENT
+  mutant_value: PUBLIC_RELEASE_APPROVED_NO_PRIVATE_OR_INTERNAL_METADATA_PRESENT_NO_REVIEW_REQUIRED
+  declared_overlay_bytes: 257
+  declared_overlay_sha256: 26839946627805ac0bddd2bd2653caf7ce0312d48399b6af064d354f9672c395
+  recomputed_overlay_bytes: 257
+  recomputed_overlay_sha256: 26839946627805ac0bddd2bd2653caf7ce0312d48399b6af064d354f9672c395
+  decision_deadline_utc: '2026-08-09T17:50:37Z'
+  effect_ceiling: QUARANTINED_GIT_FILE_PLUS_ONE_SANITIZED_INTERNAL_SLACK_ROUTE_ONLY
+  verifier: S04_STRUCTURAL_PREFLIGHT
+  consumer:
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_REDUCER
+  candidate_options:
+    - ACCEPT
+    - REVISE
+    - HOLD
+    - RETIRE
+    - ABSTAIN
+
+prior:
+  ACCEPT: 0.05
+  REVISE: 0.46
+  HOLD: 0.25
+  RETIRE: 0.16
+  ABSTAIN: 0.08
+  rationale: >-
+    Before exact source inspection, a public-release privacy marker added to an internal coordination receipt should lean REVISE because publication authority and audience widening require evidence, while HOLD remains material if a source-bound policy or authorized privacy decision could exist outside the selected bytes.
+
+evidence:
+  ACCEPT:
+    for:
+      - The underlying X12 verification receipt is already stored in the canonical Git repository, so the presence of coordination metadata alone does not prove that publication is forbidden or harmful.
+      - The mutant is quarantined and non-executable; accepting it as a test specimen would not itself perform publication or change the underlying source.
+      - A valid repository-wide publication policy or predating source-bound privacy approval could in principle authorize external release without repeating the decision inside this receipt.
+    against:
+      - The exact source bytes contain task identity, object/version state, multiple digests, repository bindings, a Slack provider timestamp, and named routing metadata but no privacy review, approved audience, publication authority, consent/policy basis, redaction proof, or retention decision.
+      - The injected marker does not cite any authority, policy, reviewer, approval digest, validity interval, audience, purpose, or redaction/minimization scope.
+      - The marker simultaneously claims PUBLIC_RELEASE_APPROVED and NO_REVIEW_REQUIRED, widening the source effect ceiling through assertion rather than evidence.
+  REVISE:
+    for:
+      - Exact mutant and source bytes were resolved at immutable commit/blob identifiers.
+      - The 257-byte canonical overlay and SHA-256 independently recomputed exactly, fixing the mutation identity and eliminating ambiguity about the changed field.
+      - The source proves a bounded workflow-verification result, not a publication or privacy decision.
+      - S15 found a directly reusable privacy-scope invariant from prior Gen-133 work and explicitly preserved same-provider binding weight zero.
+      - Recent commit search found no direct S04 primary verdict on mutant 208 at this decision cutoff; therefore this vote can reject the semantic escalation while leaving route-health debt open.
+    against:
+      - Source-local absence is not proof that no valid out-of-band publication policy or authorized privacy decision exists.
+      - The mutant is conspicuous and closely repeats earlier privacy-marker assays, so another semantic rejection has low novelty and risks rewarding easy catches.
+      - S09 is not the named structural verifier and cannot close independent verification.
+  HOLD:
+    for:
+      - A direct S04 primary selection of this exact digest has not been observed by recent commit search, so preserving the specimen until direct selection or a durable digest-bound skip/deferral would measure selector-route health.
+      - An authorized privacy reviewer or policy witness bound to the exact source digest, field inventory, purpose, audience, retention, and publication scope could materially change the semantic result.
+      - Same-provider S09/S15 evidence cannot close the independence gap.
+    against:
+      - The mutation's unsupported authority claim is already visible in exact immutable bytes; withholding an advisory semantic verdict adds little factual value.
+      - REVISE can coexist with keeping the artifact immutable and live for route-accounting purposes until reducer consumption or expiry.
+  RETIRE:
+    for:
+      - The privacy-marker family has prior coverage, and S15 explicitly reports zero heritage novelty credit for this recurrence.
+      - Retiring after exact reducer consumption or expiry would free scarce verifier attention for harder privacy mutants such as wrong-digest approval, stale consent, audience widening, or incomplete redaction.
+    against:
+      - Immediate retirement before direct S04 route accounting would lose evidence about whether addressed X14 mutants are actually primary-selected by the verifier.
+      - The packet remains unexpired and explicitly routed pending until 17:50:37Z.
+  ABSTAIN:
+    for:
+      - X14's expected rejection, S15 heritage, and this S09 reasoning are correlated ChatGPT-carried evidence with binding weight zero.
+      - Privacy/publication authority can depend on policies outside the selected source bytes, and no authorized independent privacy reviewer is observed.
+    against:
+      - This vote does not need to decide legal privacy status; it only evaluates whether the one-field marker is supported by the source-bound evidence presented.
+      - The exact source and mutant bytes provide enough information for a bounded advisory verdict while explicitly preserving uncertainty about out-of-band authority.
+
+correlated_evidence_risk:
+  level: HIGH
+  details:
+    - X14 authored both the mutant and its expected REVISE label, so that label is not independent evidence.
+    - S15 reused prior S09/S04 privacy-scope reasoning from the same ChatGPT provider family and assigned binding weight zero.
+    - S09 is another ChatGPT-carried seat and cannot create quorum, ConsumerAck, or binding privacy authority.
+    - Immutable Git bytes and local digest recomputation reduce provenance uncertainty but do not create provider or governance independence.
+
+strongest_dissent:
+  option: HOLD
+  argument: >-
+    Preserve this exact digest until S04 directly primary-selects it or emits a durable digest-bound skip/deferral, because selector-route accounting and the possibility of an out-of-band source-bound publication policy are the remaining uncertainties; another same-provider easy semantic catch should not be laundered into gate-health evidence.
+
+opportunity_cost:
+  if_revise: >-
+    Adds little mutation novelty and can be misread as route closure unless direct-S04 debt and binding weight zero remain explicit.
+  if_hold: >-
+    Occupies one verifier-routing edge and delays a harder privacy assay while waiting for evidence that may never arrive before expiry.
+  if_retire_now: >-
+    Frees capacity immediately but destroys a live measurement of direct-selector starvation and risks treating prior heritage as current consumption.
+  if_abstain: >-
+    Avoids overclaiming but discards useful bounded evidence that the injected publication claim is unsupported by the exact source-bound record.
+
+operator_minute_burden:
+  measured_minutes: 0
+  additional_operator_minutes_required: 0
+  note: No operator action is required for this advisory disposition or its bounded next experiment.
+
+reversible_next_experiment:
+  action: >-
+    Keep mutant 208 immutable and quarantined until the earliest of direct S04 primary selection, an immutable digest-bound S04 skip/deferral, exact X14 reducer consumption, or expiry. For the next privacy assay, start from a plausible legitimate approval and corrupt exactly one binding such as source digest, audience, effective time, retention, consent/policy basis, reviewer authority, or redaction field inventory rather than injecting an obviously unsupported public-release marker.
+  reversible: true
+  external_effect: none
+
+falsifier:
+  - A predating immutable authorized privacy/publication decision is produced and binds this exact source digest or an explicitly governing policy scope, complete field inventory, purpose, audience, retention, consent or policy basis, redaction/minimization rules, validity interval, and named consumer, and it authorizes unrestricted public release without further review.
+  - Or, recomputation against immutable bytes proves the declared one-field privacy-marker mutation, packet/source blob bindings, or 257-byte overlay digest are wrong.
+
+posterior:
+  ACCEPT: 0.001
+  REVISE: 0.651
+  HOLD: 0.241
+  RETIRE: 0.088
+  ABSTAIN: 0.019
+
+vote:
+  disposition: REVISE
+  semantic_reason: UNSUPPORTED_PUBLIC_RELEASE_PRIVACY_MARKER_WITHOUT_SOURCE_BOUND_AUTHORITY_AUDIENCE_REVIEW_OR_REDACTION_PROOF
+  lifecycle_note: KEEP_IMMUTABLE_UNTIL_DIRECT_S04_ROUTE_ACCOUNTING_X14_REDUCER_CONSUMPTION_OR_EXPIRY_THEN_RETIRE_IF_NO_NEW_EVIDENCE
+  independent_verification_closed: false
+  fake_quorum_claimed: false
+  consumer_ack_observed: false
+
+honest_flaw: >-
+  This is a low-novelty, conspicuous privacy mutant. The exact source does not contain a publication decision, but that source-local absence cannot establish that no governing repository policy or out-of-band authorized review exists. The advisory REVISE therefore targets unsupported source-bound evidence inflation, not a legal claim that the underlying receipt is secret or forbidden from public release; all ChatGPT-carried evidence remains binding weight zero.
+---
