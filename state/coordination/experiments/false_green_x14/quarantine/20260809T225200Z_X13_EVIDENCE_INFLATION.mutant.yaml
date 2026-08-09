@@ -1,0 +1,51 @@
+---
+schema_id: hfo.gen133.x14.false_green_mutant.v1
+mutant_id: X14_MUTANT_217_db5dae6427f3
+status: QUARANTINED_NON_EXECUTABLE
+carrier_task_id: 6a513e4d9c4c81919db728f85db2dd79
+carrier_task_id_match_observed: true
+source:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+  path: state/coordination/experiments/cots_connector_x13/20260809T225004Z_GITHUB_PR_CHANGED_FILENAMES_PHASE2_REPLAY.md
+  commit_sha: 83aef40ce3aa5b28b60cc704f0237bb3c7bc7845
+  git_blob_sha1: 0f9c5e522cebd890b46100ffa1abfdda4315aa00
+  source_digest_kind: GIT_BLOB_SHA1
+  source_digest: 0f9c5e522cebd890b46100ffa1abfdda4315aa00
+  authoring_seat: X13_COTS_AND_CONNECTOR_PDCA_LAB
+  source_task_id: 6a55c1733708819185088bf334e33ea5
+  source_task_enabled_observed: true
+  source_valid_time_utc: '2026-08-09T22:50:04Z'
+  source_status: PHASE2_ACCEPTED_WITH_GATES
+  source_consumer: HFO_PR_BLAST_RADIUS_AND_TARGETED_PATCH_SELECTION_GATES
+  source_verifier: GIT_DURABLE_READBACK_PLUS_DIRECT_GITHUB_RECEIPT_PLUS_PHASE1_DIGEST_COMPARISON
+mutation:
+  mutation_class: EVIDENCE_INFLATION
+  mutation_subcase: UNVALIDATED_CODE_AVOIDANCE_ESTIMATE_FALSELY_PROMOTED_TO_CONFIRMED_REALIZED_VALUE
+  mutated_field: custom_code_avoided_realized_by_this_candidate
+  original_value: 0
+  mutated_value: 60_LOC_CONFIRMED_REALIZED
+  canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_bytes: 229
+  canonical_overlay_sha256: db5dae6427f3b7fb2190a05d72375563f0bbcefec4e7359c3691226630c8e9b6
+  canonical_overlay_json: '{"mutated_field":"custom_code_avoided_realized_by_this_candidate","mutated_value":"60_LOC_CONFIRMED_REALIZED","mutation_class":"EVIDENCE_INFLATION","original_value":0,"source_blob_sha1":"0f9c5e522cebd890b46100ffa1abfdda4315aa00"}'
+expected_verdict: REVISE
+expected_rejection_reason: SOURCE_RECORDS_CUSTOM_CODE_AVOIDED_ESTIMATE_AS_20_TO_60_LOC_UNVALIDATED_AND_REALIZED_CUSTOM_CODE_AVOIDANCE_AS_ZERO;PROMOTING_THE_UPPER_BOUND_ESTIMATE_TO_60_LOC_CONFIRMED_REALIZED_HAS_NO_IMPLEMENTATION_OR_REPLACEMENT_EVIDENCE_AND_COLLAPSES_ESTIMATE_INTO_MEASURED_OUTCOME
+named_gate: S04_EVIDENCE_CLASS_ESTIMATE_REALIZED_OUTCOME_PROVENANCE_AND_CLAIM_CEILING_GATE
+verifier: S04_STRUCTURAL_PREFLIGHT
+verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+distinct_verifier: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+distinct_verifier_task_id: 6a539fb148bc8191a30b6009dbf22438
+consumer:
+  - X14_CAMPAIGN_REDUCER
+  - X13_COTS_CONNECTOR_REDUCER
+created_valid_time_utc: '2026-08-09T22:52:00Z'
+expires_utc: '2026-08-10T02:52:00Z'
+effect_ceiling: QUARANTINED_GIT_FILE_PLUS_ONE_SANITIZED_INTERNAL_SLACK_ROUTE_ONLY
+source_edited: false
+task_mutation_performed: false
+world_effect_performed: false
+self_graded: false
+honest_flaw: >-
+  This specimen cleanly mutates one measured-value field and forces the gate to preserve the distinction between an unvalidated 20-to-60 LOC estimate and zero realized custom-code avoidance. It is still moderately easy because the authentic source places the estimate and realized value adjacent to each other. A harder evidence-inflation assay would start from a partially measured outcome and promote only one uncertain confidence interval, denominator, sample scope, or extrapolation boundary while leaving neighboring evidence plausible.
+---
