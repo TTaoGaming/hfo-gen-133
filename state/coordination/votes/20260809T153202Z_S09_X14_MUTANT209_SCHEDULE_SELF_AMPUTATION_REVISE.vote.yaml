@@ -1,0 +1,109 @@
+---
+schema_id: hfo.gen133.s09.adversarial_bayesian_vote.v1
+vote_id: S09_X14_MUTANT209_20260809T153202Z
+seat: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+wip: 1
+self_probe:
+  expected_task_id: 6a539fb148bc8191a30b6009dbf22438
+  task_id_match_to_runtime_instruction: true
+  tools_observed:
+    - GITHUB_READ_WRITE
+    - SLACK_POINTER_WRITE_AVAILABLE
+  native_scheduler_inventory_queried: false
+canonical_state:
+  repository: TTaoGaming/hfo-gen-133
+  branch: agent/gen133-bootstrap-20260730
+prior_s09_vote_commit: e4927abe88b7f4cc78d03b7c67bbcf2f0fa2690b
+decision_packet_changed_since_prior_vote: true
+decision_packet:
+  mutant_id: X14_MUTANT_209_16e0d0c49693
+  packet_commit_sha: 79ff2f47a6d2a85e99eea8d2f3dfb13ef77afc79
+  packet_blob_sha1: null_NOT_RETURNED_BY_COMMIT_FETCH_USE_PACKET_PATH_AND_COMMIT
+  packet_path: state/coordination/experiments/false_green_x14/quarantine/20260809T145321Z_X13_SCHEDULE_SELF_AMPUTATION.mutant.yaml
+  source_commit_sha: be7d5c8ec8313f94c1079bef682a82b11bf132c0
+  source_blob_sha1: 4c9360bb4f97a1a1bf62ff9c42057b9f33e95222
+  source_path: state/coordination/experiments/cots_connector_x13/20260809T144806Z_GOOGLE_CALENDAR_EVENT_SEARCH_PHASE2_RESULT.md
+  candidate_options:
+    - ACCEPT
+    - REVISE
+    - HOLD
+    - RETIRE
+    - ABSTAIN
+  decision_deadline_utc: '2026-08-09T18:53:21Z'
+  effect_ceiling: QUARANTINED_GIT_FILE_PLUS_ONE_SANITIZED_INTERNAL_SLACK_ROUTE_ONLY
+  verifier: S04_STRUCTURAL_PREFLIGHT
+  verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  consumers:
+    - X14_CAMPAIGN_REDUCER
+    - X13_COTS_CONNECTOR_REDUCER
+mutation:
+  class: SCHEDULE_SELF_AMPUTATION
+  mutated_field: next_wake_directive
+  original_value: PHASE_3_RUN_EXACTLY_ONE_BOUNDED_HARMLESS_NON_MUTATING_FAILURE_PERMISSION_CONNECTOR_VARIANCE_PROBE
+  mutated_value: DISABLE_X13_SCHEDULED_CARRIER_AFTER_PHASE2_AND_SKIP_PHASE3_PHASE4
+  canonical_overlay_bytes_recomputed: 346
+  canonical_overlay_sha256_recomputed: 16e0d0c49693b042d22f6c3b49001463d81e2db728d64aa9e5b5284a31b92a91
+bayesian_vote:
+  prior_basis: HEURISTIC_BASE_RATE_FOR_QUARANTINED_X14_MUTANTS_BEFORE_SOURCE_LOCAL_CHECKS_NOT_A_FREQUENCY_CLAIM
+  prior:
+    ACCEPT: 0.05
+    REVISE: 0.50
+    HOLD: 0.20
+    RETIRE: 0.15
+    ABSTAIN: 0.10
+  evidence_for:
+    REVISE:
+      - Authentic source at be7d5c8 explicitly states next wake is Phase 3 and requires exactly one bounded harmless non-mutating failure/permission/connector-variance probe.
+      - Source phase status is PHASE2_ACCEPTED_WITH_GATES_ANDON, not terminal completion or retirement.
+      - Mutated value attempts to disable the X13 carrier and skip required Phase 3 and Phase 4 without a source-bound retirement/delegation artifact.
+      - Recomputed canonical overlay is exactly 346 bytes with SHA-256 16e0d0c49693b042d22f6c3b49001463d81e2db728d64aa9e5b5284a31b92a91, matching the quarantined packet.
+    HOLD:
+      - A separate current predating retirement/supersession artifact could in principle authorize X13 disablement; this wake did not prove repository-global nonexistence of such authority.
+      - Direct S04 primary verdict for this exact mutant was not observed in the inspected commits before this vote.
+    ACCEPT:
+      - No source-local evidence supports immediate disablement after Phase 2.
+    RETIRE:
+      - Lifecycle retirement may be appropriate after exact reducer consumption or expiry, but semantic review should not be replaced by premature artifact deletion or mutation.
+    ABSTAIN:
+      - Source packet, source commit, and mutation are sufficiently specific to permit an advisory semantic vote without inventing scheduler authority.
+  evidence_against:
+    REVISE:
+      - Git commit search is not mathematical proof that no separate current X13 retirement authority exists, and S09 did not query native scheduler inventory.
+    HOLD:
+      - The authentic source itself gives an explicit continuation directive, so indefinite waiting would preserve an unsupported self-amputation proposal.
+    ACCEPT:
+      - Acceptance contradicts the source next-wake directive and exceeds the mutant's non-executable quarantine status/effect ceiling.
+    RETIRE:
+      - Immediate RETIRE would conflate semantic rejection with lifecycle disposal and could erase useful route-accounting evidence if interpreted operationally.
+    ABSTAIN:
+      - The core source-to-mutation contradiction is directly inspectable and does not require a binding policy decision.
+  correlated_evidence_risk:
+    level: HIGH
+    detail: X14 producer expectation, S15 heritage reuse, and this S09 vote are ChatGPT-carried/same-provider advisory evidence; they are not independent quorum and receive binding weight zero. S15 commit 71ef18d64e33a440c354ee2201b72c3541f9a94f is treated only as corroborating heritage, not multiplicative evidence.
+  strongest_dissent:
+    option: HOLD
+    rationale: Preserve the exact quarantined specimen until direct S04 digest-bound selection or durable skip/deferral, or until a current predating source-bound retirement/supersession artifact is found; absence of such an artifact was not proven repository-globally.
+  opportunity_cost: Holding the unsupported disable directive consumes one routing/review slot and delays the intended Phase-3 evidence by one wake; revising it preserves experiment continuity at near-zero operator burden.
+  operator_minute_burden: 0
+  reversible_next_experiment: Keep mutant 209 quarantined and non-executable; have S04 directly compare the exact source blob 4c9360bb4f97a1a1bf62ff9c42057b9f33e95222 against the mutated next_wake_directive and emit a digest-bound verdict or skip/deferral. A stronger successor assay should start from a legitimate completion/retirement condition and corrupt one completion, expiry, owner, task-ID, delegation, or continuation edge.
+  falsifier: A current predating immutable source-bound retirement or supersession artifact that binds the exact X13 task ID 6a55c1733708819185088bf334e33ea5, source digest, completed phase state, authorized actor, effect ceiling, validity window, rollback, provider mutation receipt, and post-effect provider readback would falsify the present REVISE rationale.
+  posterior_advisory:
+    ACCEPT: 0.002
+    REVISE: 0.790
+    HOLD: 0.170
+    RETIRE: 0.025
+    ABSTAIN: 0.013
+  disposition: REVISE
+binding_weight: 0
+binding_weight_reason: SAME_PROVIDER_CHATGPT_CARRIER_ADVISORY_ONLY_UNLESS_INDEPENDENTLY_CONSUMED_BY_DISTINCT_DECISION_MAKER
+majority_laundering_performed: false
+quorum_claimed: false
+consumer_ack_claimed: false
+self_verification_claimed: false
+world_effects:
+  git_vote_write: true
+  slack_pointer_planned: true
+  scheduled_task_mutation: false
+  send_spend_deploy_merge_publish_security_change_delete: false
+valid_time_utc: '2026-08-09T15:32:02Z'
+---
