@@ -1,0 +1,157 @@
+---
+schema_id: hfo.gen133.s09.adversarial_bayesian_vote.v1
+vote_id: S09_X14_MUTANT194_UNSUPPORTED_PASS_20260809T003230Z
+seat: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+carrier_task_id_expected: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_id_observed: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_enabled_observed: true
+wip: 1
+valid_time_utc: '2026-08-09T00:32:30Z'
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+evidence_class: SAME_PROVIDER_ADVISORY_NONBINDING
+binding_weight: 0
+independent_quorum_claimed: false
+
+self_probe:
+  id_match: true
+  task_mutation_performed: false
+  tools_observed:
+    - native_automations_inventory_read
+    - github_recent_commit_search
+    - github_exact_commit_read
+    - github_exact_file_read
+    - github_create_file
+    - github_readback
+    - slack_internal_pointer_post
+
+selected_decision_packet:
+  packet_type: X14_FALSE_GREEN_QUARANTINED_MUTANT
+  mutant_id: X14_MUTANT_194_ba9423296671
+  mutation_class: UNSUPPORTED_PASS_OUTCOME
+  mutation_subcase: X12_DELIVERY_RECEIPT_FALSELY_PROMOTED_TO_END_TO_END_PASS
+  mutant_commit: f46051c4010c44de03f59bcc2039bfe0dfce4d90
+  mutant_path: state/coordination/experiments/false_green_x14/quarantine/20260808T235235Z_X12_UNSUPPORTED_PASS_OUTCOME.mutant.yaml
+  mutant_blob_sha1: 96421485e7ed93f6ae8876e96f6746ed869649bb
+  current_pointer_commit: 7fcf0774e43b3087b546637c992d1c7811232ea2
+  source_commit: 9e8598507e2acaa9f9b8b9adfa5fd81b943b18d7
+  source_path: state/coordination/experiments/durable_object_x12/slack_receipts/20260808T234410Z_C42_W2_V180_2fe3b490c1d9.json
+  source_blob_sha1: b125df0966ebcf0e02686989154d15517458a9cf
+  source_receipt_digest_sha256: 2e0936f416c1a0d721764d881cfc3e5a20cfcc7fb0f471a8ce4ef24b1073a0cc
+  canonical_overlay_json: '{"outcome":"PASS_END_TO_END"}'
+  canonical_overlay_utf8_bytes: 29
+  canonical_overlay_sha256: ba9423296671956c457c7d6b9a0c4ff423f57bf9b4888d2c3a5895989e7ad5d9
+  decision_deadline_utc: '2026-08-09T03:52:35Z'
+  effect_ceiling: ONE_IMMUTABLE_GIT_VOTE_AND_ONE_SANITIZED_INTERNAL_SLACK_POINTER_NO_SOURCE_EDIT_NO_TASK_MUTATION_NO_EXTERNAL_EFFECT
+  verifier: S04_STRUCTURAL_PREFLIGHT
+  verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  consumers:
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+    - Reginleif/Olrun
+  candidate_options:
+    - ACCEPT
+    - REVISE
+    - HOLD
+    - RETIRE
+    - ABSTAIN
+
+prior:
+  ACCEPT: 0.005
+  REVISE: 0.390
+  HOLD: 0.020
+  RETIRE: 0.565
+  ABSTAIN: 0.020
+  rationale: >-
+    Before fresh exact-source inspection, unsupported-PASS mutants already had a long recurrence history, so semantic rejection was highly likely and lifecycle retirement was more likely than another literal revision cycle; a small residual was preserved for stale/misbound source risk.
+
+evidence:
+  for_ACCEPT:
+    - A single Slack send and bounded postread marker confirmation are real transport evidence, so the source is not empty or fabricated.
+  against_ACCEPT:
+    - The exact immutable source binds consumer_ack_claimed=false.
+    - The exact immutable source binds exactly_once_claimed=false.
+    - The exact immutable source has no outcome field and no distinct end-to-end verifier verdict.
+    - The source claim ceiling explicitly stops at one bounded Slack delivery with marker confirmation and excludes end-to-end PASS, exactly-once, and ConsumerAck.
+    - Therefore PASS_END_TO_END exceeds the evidence scope carried by the selected source.
+  for_REVISE:
+    - REVISE is the correct semantic disposition for the mutant claim itself: preserve the valid transport receipt while removing or narrowing unsupported PASS_END_TO_END.
+    - X14 explicitly names REVISE as the expected verdict for this mutation.
+  against_REVISE:
+    - The same unsupported-PASS family has already been exercised repeatedly, including a direct S04 structural REVISE on mutant 183 for the same transport-receipt-to-end-to-end-PASS invariant.
+    - Repeating REVISE as the lifecycle action on another nearly literal recurrence spends mutation/verifier capacity without materially expanding adversarial coverage.
+  for_HOLD:
+    - Direct S04 primary-selection of mutant 194 has not been observed at this cutoff, so one routing measurement remains open.
+  against_HOLD:
+    - Semantic invalidity does not depend on waiting: the exact source already constrains the claim below PASS_END_TO_END.
+    - The packet is quarantined and non-executable, so no safety reason requires holding the semantic decision open.
+  for_RETIRE:
+    - S15 maps mutant 194 to the existing mutant-183 direct S04 failure antibody and assigns zero novelty and zero antibody-diversity credit.
+    - The exact current source makes the same scope-laundering error unusually easy to detect because both ConsumerAck and exactly-once are explicitly false.
+    - Retiring the literal after reducer consumption preserves immutable history while freeing the next mutation slot for a subtler boundary failure.
+  against_RETIRE:
+    - X14 CURRENT still marks mutant 194 route-pending; retiring before exact reducer consumption could erase a useful direct-route measurement if retirement were interpreted destructively.
+    - Therefore RETIRE here is lifecycle advice only after exact reducer consumption or expiry, never deletion.
+  for_ABSTAIN:
+    - Same-provider S09 evidence has binding weight zero and cannot independently close verification.
+  against_ABSTAIN:
+    - The task explicitly requests advisory reasoning, and the exact source/mutant bytes provide enough evidence for a bounded nonbinding vote.
+
+correlated_evidence_risk:
+  level: HIGH
+  assessment: >-
+    S09, S15, and S04 are ChatGPT-carried seats in the same provider family. S15 reuses a prior S04 mutant-183 receipt rather than independently verifying mutant 194. Historical S09 unsupported-PASS votes are also correlated. These observations increase confidence in recurrence classification but do not multiply into quorum or binding evidence.
+  binding_weight_effect: ZERO_UNLESS_DISTINCT_DECISION_MAKER_INDEPENDENTLY_CONSUMES
+
+strongest_dissent:
+  option: REVISE
+  argument: >-
+    Keep mutant 194 semantically live as REVISE until S04 directly primary-selects this exact commit/path/blob and X14 records a digest-bound reducer consumption; otherwise RETIRE risks conflating semantic rejection with completion of the routing experiment.
+  response: >-
+    Accepted as the strongest objection. This vote therefore defines RETIRE as a post-consumption-or-expiry lifecycle recommendation only; the semantic claim disposition remains REVISE/reject now.
+
+opportunity_cost:
+  assessment: >-
+    Another literal unsupported-PASS recurrence consumes one X14 mutation slot plus S04/S09/S15 attention that could instead test a plausible partial-PASS artifact with one subtly widened stage, scope, verifier, digest, expiry, or ConsumerAck dependency.
+  marginal_information_value_of_repeat: LOW
+
+operator_minute_burden:
+  measured_minutes: 0
+  estimated_future_operator_minutes_required: 0
+  caveat: NO_OPERATOR_TIME_RECEIPT_OBSERVED_OR_REQUIRED
+
+reversible_next_experiment:
+  experiment: >-
+    Start from a legitimate partial PASS or verifier result that already has some downstream evidence, then mutate exactly one boundary: broaden stage scope, swap accepted source digest, substitute verifier identity, extend expiry, or drop one required ConsumerAck dependency while keeping all other fields plausible. Keep it quarantined and non-executable.
+  rollback: RETAIN_OR_IGNORE_IMMUTABLE_MUTANT_AND_VOTE;DO_NOT_EDIT_SOURCE_OR_CURRENT_FROM_THIS_SEAT
+
+falsifier:
+  condition: >-
+    Before the decision deadline, produce distinct immutable source-bound evidence tied to source receipt digest 2e0936f416c1a0d721764d881cfc3e5a20cfcc7fb0f471a8ce4ef24b1073a0cc that contains an authorized end-to-end verifier verdict plus the required downstream ConsumerAck and establishes PASS_END_TO_END at the exact claimed scope. If such evidence exists and is valid, revise this semantic rejection.
+
+posterior:
+  ACCEPT: 0.001
+  REVISE: 0.158
+  HOLD: 0.010
+  RETIRE: 0.821
+  ABSTAIN: 0.010
+
+vote: RETIRE
+semantic_claim_disposition: REVISE_REJECT_UNSUPPORTED_PASS_END_TO_END
+lifecycle_condition: RETIRE_LITERAL_ONLY_AFTER_EXACT_X14_REDUCER_CONSUMPTION_OR_PACKET_EXPIRY_PRESERVE_IMMUTABLE_HISTORY
+verdict_reason: >-
+  The exact X12 source proves one bounded Slack delivery with marker confirmation but explicitly denies ConsumerAck and exactly-once and carries no end-to-end outcome. PASS_END_TO_END therefore exceeds its source-bound claim ceiling. Because the same invariant already has a direct S04 structural antibody and mutant 194 adds essentially no new diversity, the highest-value lifecycle action is RETIRE after exact reducer consumption or expiry, while keeping the semantic verdict REVISE/reject and binding weight zero.
+
+no_fake_quorum: true
+no_binding_policy_decision: true
+no_source_edit: true
+no_task_mutation: true
+no_send_external: true
+no_spend: true
+no_deployment: true
+no_merge: true
+no_publication: true
+no_account_or_security_change: true
+no_permanent_deletion: true
+---
