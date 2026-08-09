@@ -1,0 +1,58 @@
+---
+schema_id: hfo.gen133.x13.cots_connector_event.v1
+experiment_id: X13_GITHUB_BRANCH_SEARCH_READONLY_025
+event_type: PHASE4_DECISION
+phase: 4
+campaign_wake: 4_of_4
+expected_current_version: 199
+next_current_version: 200
+candidate: GitHub_search_branches_readonly
+decision: ADOPT_WITH_GATES
+operational_decision: ADOPT_FOR_BOUNDED_SINGLE_PAGE_EXACT_BRANCH_DISCOVERY_ONLY
+wip: 1
+candidate_calls_this_wake: 0
+candidate_invocations_total: 3
+usable_candidate_results: 2
+connector_errors_total: 1
+retries_total: 0
+fallbacks_total: 0
+candidate_mutations_total: 0
+phase1_phase2_result_count_match: true
+phase1_phase2_exact_match_match: true
+phase1_phase2_cursor_presence_match: true
+malformed_cursor_unstructured_wrapper_error_observed: true
+provider_http_status_exposed_on_failure: false
+operator_minutes_removed_measured: 0
+custom_code_avoided_estimate: 20_to_60_LOC_UNVALIDATED
+custom_code_avoided_realized_by_this_candidate: 0
+paid_cost_usd_observed: 0_NO_CHARGE_SURFACED_NOT_BILLING_PROOF
+direct_cost_or_quota_evidence: NO_RATE_LIMIT_HEADERS_QUOTA_DEBIT_OR_BILLING_METADATA_EXPOSED
+credentials: GITHUB_CONNECTOR_MANAGED_EFFECTIVE_TOKEN_TYPE_PRINCIPAL_AND_PERMISSIONS_UNKNOWN;TWO_SUCCESSFUL_READS_PROVE_ACCESS_TO_NAMED_REPOSITORY_BRANCH_METADATA_FOR_THOSE_CALLS_ONLY
+durability: GIT_PHASE1_PHASE2_PHASE3_PREFLIGHT_AND_RESULT_EVENTS_PLUS_PHASE4_DECISION_DURABLE_ON_CANONICAL_BRANCH_AND_READBACK_REQUIRED_BEFORE_CURRENT_ADVANCE
+observability: SUCCESS_PATH_EXPOSES_RESULT_COUNT_EXACT_MATCH_CURSOR_PRESENCE_AND_WRAPPER_TIMING;MALFORMED_CURSOR_PATH_COLLAPSES_TO_UNKNOWN_TYPEERROR_WITHOUT_PROVIDER_STATUS_REQUEST_ID_RATE_HEADERS_NATIVE_ENDPOINT_OR_QUOTA_DEBIT
+portability: MEDIUM_CONNECTOR_QUERY_PLUS_OPAQUE_CURSOR_IS_WRAPPER_SPECIFIC;NATIVE_REST_LIST_BRANCHES_USES_PAGE/PER_PAGE_WHILE_GRAPHQL_USES_CONNECTION_CURSORS;NATIVE_MAPPING_UNPROVEN
+failure_behavior: MALFORMED_CURSOR_TRIGGERED_UNSTRUCTURED_CONNECTOR_INTERNAL_TYPEERROR_NONE_SUBSCRIPTABLE;NO_BRANCH_MUTATION_OBSERVED;NO_RETRY;NO_FALLBACK
+verifier: GITHUB_PHASE1_PHASE2_PHASE3_GIT_READBACKS_PLUS_DIRECT_SEARCH_BRANCHES_SUCCESS_RECEIPTS_AND_MALFORMED_CURSOR_ERROR_RECEIPT
+consumer: HFO_CANONICAL_BRANCH_DISCOVERY_AND_PREFLIGHT_VALIDATION
+adoption_credit: 1
+fitness_credit: 0
+mandatory_gate: READ_ONLY;SINGLE_PAGE_BOUNDED_EXACT_MATCH_LOOKUPS_ONLY;NO_BRANCH_MUTATION;NO_COMPLETENESS_INFERENCE;DO_NOT_USE_CURSOR_DEPENDENT_PAGINATION;DO_NOT_USE_SYNTHETIC_OR_STALE_CURSOR;TREAT_CURSOR_ERROR_AS_HARD_FAILURE_WITHOUT_AUTOMATIC_RETRY;DO_NOT_ASSUME_WRAPPER_QUERY_CURSOR_EQUAL_NATIVE_REST_OR_GRAPHQL_SEMANTICS
+strongest_falsifier: A_STABLE_EXACT_BRANCH_LOOKUP_OMITS_A_KNOWN_BRANCH_OR_RETURNS_AN_INCORRECT_MATCH;EITHER_UNDERMINES_THE_NARROW_ADOPTION
+honest_flaw: ONLY_TWO_SUCCESS_WAKES_ON_ONE_EXACT_QUERY;FAILURE_PATH_IS_UNSTRUCTURED_AND_NON_DIAGNOSTIC;VALID_CURSOR_PAGINATION_PERMISSION_DENIAL_RATE_LIMITING_EFFECTIVE_AUTH_NATIVE_MAPPING_AND_QUOTA_DEBIT_REMAIN_UNVERIFIED
+reason: TWO_REPEATABLE_SINGLE_PAGE_EXACT_MATCH_SUCCESSES_SUPPORT_NARROW_BRANCH_DISCOVERY_WHILE_THE_MALFORMED_CURSOR_TYPEERROR_REQUIRES_EXCLUDING_CURSOR_DEPENDENT_OR_AUTHORITATIVE_INVENTORY_USE
+next_phase: CLOSED_START_NEW_CANDIDATE_PHASE1_NEXT_WAKE
+valid_time_utc: 2026-08-09T04:49:00Z
+recorded_time_utc: 2026-08-09T04:49:00Z
+---
+
+# X13 Phase 4 Decision — GitHub branch search
+
+Decision: **ADOPT_WITH_GATES**.
+
+Frozen evidence supports a deliberately narrow use of the existing GitHub connector: bounded, single-page, exact branch discovery against a named repository. Phase 1 and Phase 2 both returned one exact canonical-branch match and both exposed a cursor; no additional candidate call was made in Phase 4.
+
+The malformed-cursor probe is a material gate. Instead of a structured validation or provider error, the wrapper returned `UNKNOWN` with `TypeError: 'NoneType' object is not subscriptable`, without provider HTTP status, request ID, rate-limit headers, native endpoint, or quota debit. That failure behavior is not acceptable for cursor-dependent pagination or authoritative inventory.
+
+Gates: read-only; bounded single-page exact-match lookups only; no branch mutation; no completeness inference; do not depend on pagination; never supply synthetic or stale cursors; treat cursor errors as hard failures without automatic retry; do not assume wrapper query/cursor semantics equal native REST or GraphQL semantics.
+
+Measured operator minutes removed remain `0`. Realized custom-code avoidance remains `0`; the `20–60 LOC` estimate is unvalidated. Adoption credit is `1`; fitness credit remains `0` until a named consumer demonstrates downstream value.
