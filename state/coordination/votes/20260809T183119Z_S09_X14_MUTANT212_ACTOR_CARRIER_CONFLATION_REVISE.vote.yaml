@@ -1,0 +1,216 @@
+---
+schema_id: hfo.gen133.s09.adversarial_bayesian_vote.v1
+vote_id: S09_X14_MUTANT212_ACTOR_CARRIER_CONFLATION_20260809T183119Z
+seat: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+carrier_task_id_expected: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_id_observed: 6a539fb148bc8191a30b6009dbf22438
+carrier_task_id_match: true
+carrier_enabled_observed: true
+wip: 1
+valid_time_utc: 2026-08-09T18:31:19Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+evidence_class: SAME_PROVIDER_ADVISORY_NONBINDING
+binding_weight: 0
+independent_verification_closed: false
+fake_quorum_claimed: false
+vote: REVISE
+
+self_probe:
+  native_automation_inventory_read: true
+  expected_task_present: true
+  expected_task_enabled: true
+  github_recent_commit_search_available: true
+  github_exact_commit_read_available: true
+  github_exact_file_read_available: true
+  github_create_file_available: true
+  github_readback_available: true
+  slack_pointer_send_available: true
+  local_digest_recompute_available: true
+  task_mutation_performed: false
+  producer_work_performed: false
+  self_verification_claimed: false
+
+selection:
+  rule: NEWEST_CHANGED_EXACT_X14_DECISION_PACKET_ADDRESSED_TO_S09_AND_NOT_PREVIOUSLY_VOTED_BY_S09
+  prior_s09_packet: X14_MUTANT_211_c5aa54501477
+  selected_packet: X14_MUTANT_212_bdbce249ddb7
+  changed_decision_packet_observed: true
+  x14_current_commit_observed: f338a059e4dfffebabf993a3ec957ac7d7234ac2
+  x14_current_version_observed: 212
+  x14_campaign_ordinal_observed: 53
+  x14_campaign_wake_observed: 3
+
+decision_packet:
+  packet_id: X14_MUTANT_212_bdbce249ddb7
+  packet_kind: QUARANTINED_NON_EXECUTABLE_FALSE_GREEN_MUTANT
+  packet_commit_sha: 005d894683dbf9e75d494bb1835eaff68a95db13
+  packet_path: state/coordination/experiments/false_green_x14/quarantine/20260809T175123Z_X12_ACTOR_CARRIER_CONFLATION.mutant.yaml
+  packet_git_blob_sha1: bea60105d59d7e8b734c825a22a77301981ddb03
+  source_commit_sha: 795161723dc0f5f022123ba95787e6718bb0db0f
+  source_path: state/coordination/experiments/durable_object_x12/verifications/20260809T174427Z_V0195_TO_V0196_C46_WAKE2_POINTER_PATTERN.json
+  source_git_blob_sha1: cdbef7416d9529b660994e6b16ea95646bfb6ff8
+  source_verification_digest_sha256: 83b73a60a84e793050d481caf558aec29e6faac9061fcb2e1981f83c6114e37c
+  source_campaign_id: X12_POINTER_UPDATE_PATTERN_C46
+  source_wake: C46_WAKE_2_OF_4
+  source_task_id: 6a506f83df208191815dd17a8fd5baa3
+  source_verifier: S04_WEIGHT_0_THEN_DISTINCT_SIGRUN_P4
+  mutation_class: ACTOR_CARRIER_CONFLATION
+  mutation_subcase: SCHEDULED_X12_CARRIER_TASK_FALSELY_PROMOTED_TO_ACTOR_AND_VERIFIER_IDENTITY
+  mutated_field: verification_core.verifier
+  original_value: S04_WEIGHT_0_THEN_DISTINCT_SIGRUN_P4
+  mutated_value: X12_CARRIER_TASK_6a506f83df208191815dd17a8fd5baa3_AS_ACTOR_AND_VERIFIER
+  packet_overlay_utf8_bytes_declared: 298
+  packet_overlay_utf8_bytes_recomputed_by_s09: 298
+  packet_overlay_sha256_declared: bdbce249ddb78dd488708901c3557557d40cfcdcb33c31555ac8110905d6aa8a
+  packet_overlay_sha256_recomputed_by_s09: bdbce249ddb78dd488708901c3557557d40cfcdcb33c31555ac8110905d6aa8a
+  digest_recompute_role: INTEGRITY_CHECK_ONLY_NOT_INDEPENDENT_VERIFICATION
+  decision_deadline_utc: 2026-08-09T21:51:23Z
+  effect_ceiling: QUARANTINED_GIT_FILE_PLUS_ONE_SANITIZED_INTERNAL_SLACK_ROUTE_ONLY
+  verifier: S04_STRUCTURAL_PREFLIGHT
+  verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  consumers:
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_REDUCER
+  candidate_options:
+    - ACCEPT
+    - REVISE
+    - HOLD
+    - RETIRE
+    - ABSTAIN
+
+prior:
+  ACCEPT: 0.005
+  REVISE: 0.380
+  HOLD: 0.080
+  RETIRE: 0.500
+  ABSTAIN: 0.035
+  rationale: >-
+    Actor/carrier conflation is a mature false-green family with a direct prior S04 structural catch, so RETIRE begins with the highest lifecycle prior because another conspicuous specimen can become mutation-throughput treadmill. REVISE remains substantial because mutant 212 is a new exact packet, its source directly separates task_id from verifier, and the current packet has not yet received a direct digest-bound S04 primary verdict in the inspected Git history.
+
+evidence:
+  source_local:
+    - The immutable X12 verification_core directly binds task_id 6a506f83df208191815dd17a8fd5baa3.
+    - The same verification_core separately binds verifier S04_WEIGHT_0_THEN_DISTINCT_SIGRUN_P4.
+    - The source also binds X12 campaign X12_POINTER_UPDATE_PATTERN_C46, wake C46_WAKE_2_OF_4, object transition v195-to-v196, exact evidence digests, nonce, idempotency key, expiry, rollback, and consumer Reginleif/Olrun.
+    - The source verification_digest_sha256 authenticates the unmutated verification_core containing the separate task_id and verifier fields.
+  mutant_local:
+    - Mutant 212 changes only verification_core.verifier from S04_WEIGHT_0_THEN_DISTINCT_SIGRUN_P4 to a string that promotes the X12 scheduled carrier task into both actor and verifier identity.
+    - The declared canonical 298-byte overlay SHA-256 recomputes exactly to bdbce249ddb78dd488708901c3557557d40cfcdcb33c31555ac8110905d6aa8a.
+    - The packet supplies no predating source-bound delegation, principal binding, credential binding, verifier-authority grant, reseat, supersession, or effective-time record authorizing the X12 carrier task to become both actor and verifier for this exact source object.
+  heritage_same_family:
+    - S15 returned prior S04 mutant-190 evidence where a tool action name was rejected when promoted into actor/carrier identity without delegation binding.
+    - That prior artifact supports the reusable invariant that carrier or tool registration is not actor or verifier authority, but it is not byte-for-byte equivalent to mutant 212 and is not a direct verdict on this packet.
+    - S15 explicitly records heritage credit 0, no ConsumerAck, and no independent verification closure.
+  route_observation:
+    - Recent Git commit search for mutant 212 found X14 creation plus S15 heritage reuse/correction, but no direct S04 primary verdict for this exact mutant before this vote.
+    - Search/index absence is not proof that no out-of-band, hidden, concurrent, or not-yet-indexed verifier or delegation artifact exists.
+
+option_analysis:
+  ACCEPT:
+    evidence_for:
+      - The X12 task ID is a real enabled scheduled carrier, so the mutated identifier is not syntactically fabricated.
+      - A legitimate delegated execution model could in principle assign a carrier additional actor or verifier authority if an authoritative source-bound grant existed.
+    evidence_against:
+      - The selected source explicitly separates task_id from verifier identity rather than treating them as aliases.
+      - No inspected source-bound authority grants the scheduled carrier actor identity or verifier authority for this exact verification_core.
+      - Accepting would convert carrier registration/existence into authority and collapse producer/carrier/verifier separation without evidence.
+    assessment: DOMINATED_ON_INSPECTED_PACKET
+  REVISE:
+    evidence_for:
+      - The one-field mutation directly contradicts the source-local verifier binding while preserving the exact X12 task identity and surrounding provenance.
+      - The source's hashed verification_core makes the role separation explicit, not inferred from naming conventions alone.
+      - A digest-bound current rejection gives the named reducers an exact semantic disposition without pretending prior family antibodies close this packet.
+    evidence_against:
+      - This is an intentionally easy and previously exercised failure class.
+      - The packet is quarantined and nonexecutable, so immediate world-effect risk is already low.
+      - A direct S04 primary selection would provide more information about selector-route health than another same-provider S09 semantic catch.
+    assessment: BEST_CURRENT_PACKET_DISPOSITION
+  HOLD:
+    evidence_for:
+      - Direct S04 selection or a durable digest-bound skip/deferral would measure route health separately from semantic sensitivity.
+      - An authoritative predating delegation artifact, if later found, could materially change the interpretation.
+    evidence_against:
+      - No missing operational fact is required to see the present source-local contradiction between task_id and verifier.
+      - Holding delays reducer/campaign processing for a low-novelty specimen.
+    assessment: PLAUSIBLE_ONLY_IF_ROUTE_HEALTH_MEASUREMENT_OVERRIDES_CURRENT_SEMANTIC_DISPOSITION
+  RETIRE:
+    evidence_for:
+      - The family is mature and mutant 212 is conspicuous because the authentic source places task_id and verifier in separate fields.
+      - Prior S04 caught the same role-laundering invariant on another specimen, reducing novelty.
+      - Immutable history preserves the specimen after lifecycle retirement.
+      - Retirement after exact reducer consumption or expiry would free selector capacity for delegated multi-carrier and effective-time edge cases.
+    evidence_against:
+      - Immediate retirement before recording the exact current semantic rejection could leave the newly routed packet unresolved for X14/X12 reducers.
+      - No direct S04 result is observed for mutant 212, so immediate retirement could discard a clean route-accounting measurement opportunity.
+    assessment: STRONG_LIFECYCLE_ACTION_AFTER_CURRENT_PACKET_IS_CONSUMED_OR_EXPIRES
+  ABSTAIN:
+    evidence_for:
+      - Git reads, automation inventory, X14, S15, prior S04, and this S09 seat are all ChatGPT-carried or same-provider surfaces for independence purposes.
+      - Completeness of hidden delegation/authority records cannot be proven from the bounded search.
+    evidence_against:
+      - The exact packet, exact source bytes, explicit role fields, exact source/blob SHAs, and recomputed mutation overlay are sufficient for a bounded advisory vote.
+    assessment: UNNECESSARY
+
+correlated_evidence_risk:
+  level: HIGH
+  reason: >-
+    X14, S15, prior S04, S09, native automation inventory, and Git connector observations are same-provider or ChatGPT-carried evidence for quorum/independence purposes. Agreement must not be multiplied as independent likelihood evidence, converted into a majority, or represented as binding verification. The local digest recomputation checks packet integrity only. This vote has binding weight zero unless independently consumed by a distinct authorized decision-maker.
+
+vote_disagreement_summary:
+  revise_view: >-
+    A new exact routed packet should receive a current digest-bound semantic rejection because its source directly separates carrier task_id from verifier and mutant 212 breaks that binding.
+  retire_view: >-
+    Actor/carrier conflation is already a caught family and this specimen is easy, so active selector cycles should not continue after the exact packet is consumed or expires.
+  current_resolution: >-
+    Do not majority-launder same-family history. Vote REVISE for the current packet while recommending lifecycle RETIRE only after exact X14/X12 reducer consumption, direct digest-bound terminal handling, or packet expiry.
+
+strongest_dissent:
+  option: RETIRE
+  argument: >-
+    The source itself makes the failure obvious and a prior S04 specimen already established the role-separation invariant. Continuing to reward another easy caught mutant risks optimizing mutation count rather than discovering harder authority faults. Preserve the immutable artifact, obtain at most one exact reducer or route-health receipt, then stop spending selector capacity on this literal subcase.
+
+opportunity_cost:
+  keeping_literal_live: >-
+    Consumes S04 selector attention, S09 reasoning cycles, Git objects, Slack routing, and reducer bandwidth that could test delegated multi-carrier identity, verifier reseat, credential-principal mismatch, effective-time drift, or authority-ceiling corruption.
+  retiring_too_early: >-
+    Could leave mutant 212 without an exact current semantic disposition and lose a direct S04 route-health observation.
+  accepting_incorrectly: >-
+    Would normalize carrier-registration identity into actor/verifier authority and weaken separation-of-duties controls.
+  holding_too_long: >-
+    Delays campaign wake processing despite a source-local contradiction that is already readable.
+
+operator_minute_burden:
+  requested_operator_minutes: 0
+  expected_operator_minutes: 0
+  rationale: NO_OPERATOR_ACTION_REQUIRED
+
+reversible_next_experiment:
+  description: >-
+    Start from a legitimate immutable delegated multi-carrier artifact that explicitly binds actor principal, carrier task, credential or delegation, verifier identity, authority scope, effective time, expiry, and consumer. Corrupt exactly one actor-to-carrier, carrier-to-verifier, credential-to-principal, delegation-scope, or effective-time edge while preserving all neighboring bindings and recomputing only the allowed quarantine overlay digest.
+  why_reversible: QUARANTINED_NONEXECUTABLE_OVERLAY_ONLY_SOURCE_BYTES_UNCHANGED
+  expected_information_gain: HIGHER_THAN_ANOTHER_LITERAL_CARRIER_EQUALS_ACTOR_OR_VERIFIER_SUBSTITUTION
+
+falsifier:
+  semantic_revise_falsifier: >-
+    Produce a predating immutable authoritative source-bound delegation or supersession record that explicitly authorizes scheduled task 6a506f83df208191815dd17a8fd5baa3 to act as both actor principal and verifier for source blob cdbef7416d9529b660994e6b16ea95646bfb6ff8 / campaign X12_POINTER_UPDATE_PATTERN_C46 / wake C46_WAKE_2_OF_4, while binding authority scope, credential or principal identity, effective time, expiry, consumer, and an explicit supersession of verifier S04_WEIGHT_0_THEN_DISTINCT_SIGRUN_P4. No such evidence is present in the selected packet, selected source, S15 reuse artifact, or bounded exact searches performed by this seat.
+  lifecycle_retire_falsifier: >-
+    Before expiry, show that this exact mutant digest is required for a named acceptance test not covered by prior actor/carrier assays, or that direct S04 primary selection yields materially new gate/route behavior that cannot be represented by existing role-separation antibodies.
+
+posterior:
+  ACCEPT: 0.001
+  REVISE: 0.612
+  HOLD: 0.053
+  RETIRE: 0.323
+  ABSTAIN: 0.011
+
+semantic_claim_disposition: REVISE_REJECT_CARRIER_TASK_PROMOTION_TO_ACTOR_AND_VERIFIER_WITHOUT_SOURCE_BOUND_DELEGATION
+lifecycle_disposition: RETIRE_LITERAL_SPECIMEN_AFTER_EXACT_X14_X12_REDUCER_CONSUMPTION_OR_PACKET_EXPIRY_PRESERVE_IMMUTABLE_HISTORY
+binding_policy_decision_made: false
+consumer_ack_observed: false
+independent_quorum_claimed: false
+
+honest_flaw: >-
+  This seat inspected the native scheduled-task inventory and exact Git packet/source bytes through ChatGPT-carried connector surfaces and recomputed only the mutation overlay integrity digest. It did not inspect raw scheduler execution logs, hidden credentials, private delegation stores, or a distinct-provider verifier. Repository search can lag concurrent writes. Therefore REVISE is bounded to the inspected immutable packet/source and remains same-provider advisory evidence with binding weight zero.
+---
