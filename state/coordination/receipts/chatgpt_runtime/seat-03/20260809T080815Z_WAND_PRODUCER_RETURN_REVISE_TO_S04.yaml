@@ -1,0 +1,127 @@
+schema_id: hfo.gen133.s03_verification_route.v1
+result: REVISE
+terminal_receipt: false
+seat: S03_REDUCER_VERIFICATION_ROUTER_CONSUMERACK_TRACKER
+expected_task_id: 6a539fc5130c81918c13624739fb2a60
+observed_task_id: 6a539fc5130c81918c13624739fb2a60
+task_id_match: true
+task_enabled_observed: true
+wip: 1
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+valid_time_utc: 2026-08-09T08:08:15Z
+
+self_probe:
+  provider_task_inventory_read: true
+  github_branch_observed: agent/gen133-bootstrap-20260730
+  github_read_write_available: true
+  slack_connector_available: true
+  task_mutation_performed: false
+
+correlation_id: GTM-S07-WAND-RETURN-20260809T072700Z
+work_item_id: S07_WAND_FDE_DEPLOYMENT_ACCEPTANCE_CARD_V1
+work_item_binding_source: PRODUCER_RETURN_EXPLICIT_WORK_ITEM_BUT_NO_ADMISSION_CLAIM
+producer: S07_GTM_PROOF_KIT_BUILDER
+producer_task_id: 6a506f6dc5c08191b95f1707d7f00c2d
+producer_return_path: projects/gtm-revenue/returns/20260809T072700Z_S07_WAND_ENTERPRISE_AGENT_DEPLOYMENT_ACCEPTANCE_CARD_RETURN.md
+producer_return_git_blob_sha1: f10cf46b49a9de05e07c2af557ced0a3c6833f3e
+producer_return_exact_git_blob_readback: true
+producer_return_result: KIT_RETURNED
+candidate_created: true
+candidate_path: projects/gtm-revenue/kits/wand-ai/20260809T072400Z_ENTERPRISE_AGENT_DEPLOYMENT_ACCEPTANCE_CARD.md
+candidate_git_blob_sha1: 7975e73cbca1a326946628028f7e44a69a4153ce
+candidate_exact_git_blob_readback: true
+candidate_create_commit: a3d1e9c5465e609e513a2711d0756f0d51a3e932
+
+target_card_path: projects/gtm-revenue/research/20260809T062900Z_JOB_EMPLOYER_WAND_AI_TARGET_CARD.md
+target_card_git_blob_sha1: 25d77a74a3197137813d4aba17f6bd3b0017a00e
+target_card_exact_git_blob_readback: true
+target_card_expiry_utc: 2026-08-14T14:08:00Z
+
+producer_return_contract_check:
+  explicit_work_item_id_bound_in_return: true
+  claim_bound: false
+  claim_path: NOT_OBSERVED
+  claim_git_blob_sha1: NOT_OBSERVED
+  claim_acceptance_digest: NOT_OBSERVED
+  claim_idempotency_digest: NOT_OBSERVED
+  claim_lease_expiry: NOT_OBSERVED
+  admission_search_query: S07_WAND_FDE_DEPLOYMENT_ACCEPTANCE_CARD_V1
+  admission_search_exact_claim_match_observed: false
+  exact_candidate_bytes_bound: true
+  candidate_git_blob_matches_readback: true
+  commands_and_exit_codes: NOT_APPLICABLE_MARKDOWN_ONLY_ARTIFACT_TEST_EXECUTION_FALSE
+  rollback_bound: true
+  rollback_mode: DELETE_CANDIDATE_IF_REJECTED_PRESERVE_GIT_HISTORY;PRODUCER_RETURN_IMMUTABLE_SUPERSEDE_ONLY
+  effect_ceiling_bound: true
+  producer_return_effect_ceiling: T0_PREP_RESEARCH_GIT
+  expiry_bound: true
+  producer_return_expiry_utc: 2026-08-14T14:08:00Z
+  honest_flaw_bound: true
+  no_send: true
+  no_submit: true
+  no_deploy: true
+  no_merge: true
+  no_spend: true
+
+revision_reason: >-
+  The changed S07 producer return binds the exact WorkItem ID, exact candidate Git bytes/readback,
+  rollback, explicit T0_PREP_RESEARCH_GIT effect ceiling, expiry, no-send/no-submit boundaries, and an
+  honest flaw, but it explicitly states that no immutable S02 admission claim was observed and binds no
+  claim path/blob, acceptance digest, idempotency digest, or claim lease. The S08 target card naming this
+  consumer WorkItem is not an admission claim. S03 cannot infer or manufacture admission from target-card
+  routing or producer intent.
+
+requested_revision:
+  owner: S07_GTM_PROOF_KIT_BUILDER
+  action: >-
+    Do not rewrite this return or candidate. Obtain/consume a valid immutable unexpired S02 admission claim
+    for the exact WorkItem under repository admission semantics, then emit one superseding immutable producer
+    return explicitly binding work_item_id, claim path/blob, acceptance digest, idempotency digest, lease/expiry,
+    exact candidate bytes or a fresh admitted candidate if temporal ordering requires it, commands and exit codes
+    where applicable, rollback, effect ceiling, expiry, and honest flaw. Do not ask S03 to manufacture or
+    retroactively infer the missing claim.
+  self_repair_by_s03: forbidden
+
+route:
+  verifier: S04_HRIST_STRUCTURAL_PREFLIGHT
+  verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  verifier_class: SAME_PROVIDER_NONBINDING
+  nonproducer_verifier: true
+  binding_weight: 0
+  requested_verdict: REVISE_IF_MISSING_ADMISSION_CLAIM_CONFIRMED
+  independent_verification_closed: false
+  exact_digest_bound_independent_STOOD_or_FELL_observed: false
+  explicit_named_ConsumerAck_observed: false
+
+route_nonce: S03-WAND-20260809T080815Z-f10cf46b49a9
+route_idempotency:
+  canonicalization: UTF8_EXACT_PREIMAGE_NO_TERMINAL_LF
+  preimage: GTM-S07-WAND-RETURN-20260809T072700Z|S07_WAND_FDE_DEPLOYMENT_ACCEPTANCE_CARD_V1|f10cf46b49a9de05e07c2af557ced0a3c6833f3e|REVISE|S04_HRIST_STRUCTURAL_PREFLIGHT
+  sha256: eb03bf58a39dba05beb8e67ee4d5cabccf00435c24b69ac0d23c14f3fd4714ed
+
+rollback:
+  route_artifact: APPEND_ONLY_SUPERSESSION_IF_INCORRECT
+  destructive_delete_authorized: false
+
+effect_ceiling:
+  level: T0_INTERNAL_COORDINATION_GIT_ONLY
+  forbidden:
+    - send
+    - spend
+    - deployment
+    - merge
+    - publication
+    - account_or_security_change
+    - permanent_deletion
+    - task_mutation
+    - producer_impersonation
+    - self_verification
+    - implicit_consumer_ack
+
+honest_flaw: >-
+  GitHub code search can miss unindexed or differently named claim content, so search absence is not proof of
+  global absence. The producer return itself nevertheless contains no claim binding fields and explicitly says
+  immutable_s02_claim_observed_for_exact_work_item is false. Slack search surfaced only the S08 target-card
+  pointer for this WorkItem, not an independent STOOD/FELL or ConsumerAck. This S04 route is same-provider
+  structural preflight only and cannot produce binding STOOD/FELL or ConsumerAck.
