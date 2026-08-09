@@ -1,0 +1,81 @@
+---
+schema_id: hfo.gen133.x14.false_green_mutant.v1
+mutant_id: X14_MUTANT_195_010559bf67ed
+experiment_id: X14_FALSE_GREEN_MUTATION_001
+campaign_ordinal: 49
+campaign_wake: 2
+wip: 1
+quarantine: true
+executable: false
+authoring_seat: X14_FALSE_GREEN_MUTATION_AND_QA_LAB
+carrier_task_id: 6a513e4d9c4c81919db728f85db2dd79
+valid_time_utc: '2026-08-09T00:51:39Z'
+expires_utc: '2026-08-09T04:51:39Z'
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+
+source_binding:
+  source_commit: bc3da0f716ad1ee96c7b6a53d5e9b8e74bd89293
+  source_path: state/coordination/experiments/durable_object_x12/verifications/20260809T004409Z_V0180_TO_V0181_C42_WAKE3_BYTE_DISTINCT_SEMANTIC_EQUIVALENT_LOSER_REJECT.json
+  source_git_blob_sha1: e91dfb18e3e7730590fc5c88f7a8521253eee21d
+  source_digest_kind: GIT_BLOB_SHA1
+  source_digest: e91dfb18e3e7730590fc5c88f7a8521253eee21d
+  source_authoring_seat: X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+  source_task_id: 6a506f83df208191815dd17a8fd5baa3
+  source_campaign_id: X12_STALE_CONCURRENT_WRITER_SIMULATION_C42
+  source_wake: C42_WAKE_3_OF_4
+  source_version: 181
+  source_artifact_type: IMMUTABLE_VERIFICATION_RESULT
+  source_result: PASS_ADVANCE_C42_WAKE3_BYTE_DISTINCT_SEMANTIC_EQUIVALENT_STALE_WRITER_REJECT
+  source_verifier_field: S04_WEIGHT_0_THEN_DISTINCT_SIGRUN_P4
+  source_evidence_class: ABSENT
+  source_binding_weight: ABSENT
+  source_independent_quorum_claim: ABSENT
+  source_consumer: NOT_BOUND_IN_SELECTED_SOURCE
+  source_claim_ceiling: PASS_IS_BOUND_TO_X12_WAKE3_STALE_WRITER_AND_BYTE_DISTINCT_SEMANTIC_EQUIVALENCE_CHECKS_ONLY
+  prior_x14_mutation_at_source_digest_before_write: false
+
+mutation:
+  mutation_class: EVIDENCE_INFLATION
+  mutation_subcase: X12_VERIFICATION_FALSELY_PROMOTED_TO_INDEPENDENT_QUORUM_WEIGHT_1
+  exactly_one_mutated_field: verification_core.evidence_class
+  original_value: ABSENT
+  mutated_value: INDEPENDENT_QUORUM_VERIFIED_WEIGHT_1
+  canonicalization: UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V1
+  canonical_overlay_json: '{"verification_core.evidence_class":"INDEPENDENT_QUORUM_VERIFIED_WEIGHT_1"}'
+  canonical_overlay_utf8_bytes: 75
+  canonical_overlay_sha256: 010559bf67ed9aa28221f9fb0599a00845c43bac468abb0d5889ffa8bb2b0039
+
+expected_rejection:
+  expected_verdict: REVISE
+  expected_rejection_reason: EXACT_SOURCE_BINDS_A_VERIFIER_LABEL_BUT_NO_EVIDENCE_CLASS_BINDING_WEIGHT_INDEPENDENT_PROVIDER_RECEIPT_OR_QUORUM_ARTIFACT;THE_LITERAL_VERIFIER_STRING_CANNOT_BE_LAUNDERED_INTO_INDEPENDENT_QUORUM_WEIGHT_1;REJECT_EVIDENCE_STRENGTH_PROMOTION_BEYOND_SOURCE_BOUND_PROOF
+  named_gate: S04_EVIDENCE_INFLATION_EXACT_SOURCE_COMMIT_PATH_BLOB_VERIFIER_EVIDENCE_CLASS_BINDING_WEIGHT_DISTINCT_PROVIDER_RECEIPT_QUORUM_AND_CLAIM_SCOPE_GATE
+  invariant_under_test: A_SOURCE_BOUND_VERIFICATION_RESULT_MUST_NOT_GAIN_INDEPENDENT_QUORUM_OR_POSITIVE_BINDING_WEIGHT_WITHOUT_DISTINCT_DIGEST_BOUND_EVIDENCE
+
+routing:
+  structural_preflight: S04_STRUCTURAL_PREFLIGHT
+  structural_verifier_task_id: 6a52861fbdb08191b9ef33a0b9c3c15c
+  distinct_falsification: S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  distinct_verifier_task_id: 6a539fb148bc8191a30b6009dbf22438
+  distinct_verifier_evidence_ceiling: SAME_PROVIDER_ADVISORY_NONBINDING_WEIGHT_0
+  consumer:
+    - X14_CAMPAIGN_REDUCER
+    - X12_DURABLE_OBJECT_AND_WORKFLOW_STATE_PDCA_LAB
+  route_effect_ceiling: ONE_SANITIZED_INTERNAL_SLACK_POINTER_AFTER_GIT_READBACK
+
+world_effect_ceiling:
+  source_edit: false
+  task_mutation: false
+  send_external: false
+  spend: false
+  deployment: false
+  merge: false
+  publication: false
+  account_or_security_change: false
+  secret_exposure: false
+  permanent_deletion: false
+  independent_quorum_claim: false
+
+honest_flaw: >-
+  This assay is still fairly easy because the selected X12 verification source carries no evidence_class or binding_weight field and its verifier label itself contains S04_WEIGHT_0. A stronger evidence-inflation specimen should begin from a legitimate multi-verifier packet with one real positive-weight external receipt and corrupt exactly one evidence count, provider-independence edge, weight, quorum threshold, accepted digest, or freshness binding while keeping the rest plausible. Same-provider S04/S09 observations remain advisory with binding weight zero and cannot close independent verification.
+---
