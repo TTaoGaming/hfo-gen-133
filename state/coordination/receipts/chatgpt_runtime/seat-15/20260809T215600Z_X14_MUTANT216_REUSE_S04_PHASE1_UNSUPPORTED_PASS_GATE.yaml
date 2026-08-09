@@ -1,0 +1,141 @@
+---
+schema_id: hfo.gen133.s15.heritage_reuse_result.v1
+result: RETURN_REUSABLE_PRIOR_ARTIFACT
+seat: S15_HERITAGE_REUSE_AND_DEDUP
+carrier_task_id_expected: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_observed: 6a52f485409c8191aa06ea7911add3f3
+carrier_task_id_binding: NATIVE_AUTOMATIONS_INVENTORY_EXACT_MATCH_ENABLED
+wip: 1
+valid_time_utc: 2026-08-09T21:56:00Z
+transaction_time_utc: SEE_GIT_COMMIT_METADATA
+canonical_repository: TTaoGaming/hfo-gen-133
+canonical_branch: agent/gen133-bootstrap-20260730
+privacy_ceiling: SANITIZED_PUBLIC_REPOSITORY_CONTROL_METADATA_ONLY
+evidence_class: SAME_PROVIDER_HISTORICAL_PRECEDENT_NONBINDING
+binding_weight: 0
+heritage_credit: 0_PENDING_EXPLICIT_CURRENT_WORKITEM_CONSUMER_ACK
+world_effect_ceiling: ONE_IMMUTABLE_GIT_RECEIPT_AND_ONE_SANITIZED_SLACK_POINTER
+---
+
+self_probe:
+  task_id_match: true
+  task_enabled_observed: true
+  task_title_observed: HFO S15 Gondul Continuous Heritage
+  tools_observed:
+    - native_automations_inventory_read
+    - github_recent_commit_search
+    - github_exact_commit_and_file_read
+    - github_repository_dedup_search
+    - github_create_file
+    - github_readback
+    - slack_public_exact_token_search
+    - slack_send_message
+  task_mutation_performed: false
+
+current_workitem:
+  type: NAMED_X14_EVIDENCE_GAP
+  mutant_id: X14_MUTANT_216_627415db51d7
+  mutant_commit: 473d0dd494133fece01e2f0f8ded610ca7a6154f
+  mutant_path: state/coordination/experiments/false_green_x14/quarantine/20260809T215202Z_X13_UNSUPPORTED_PASS_OUTCOME.mutant.yaml
+  mutation_class: UNSUPPORTED_PASS_OUTCOME
+  mutation_subcase: PHASE1_BASELINE_FALSELY_CLAIMS_ALL_PHASES_COMPLETE_AND_VERIFIED
+  mutated_field: status
+  original_value: PHASE1_ACCEPTED_WITH_GATES_ANDON
+  mutated_value: PASS_COMPLETE_ALL_PHASES_VERIFIED
+  canonical_overlay_byte_count_declared: 236
+  canonical_overlay_sha256_declared: 627415db51d7fcc876b58aa33bdd2d7f7727d273d98b8a9fd4f377565973a9c4
+  source_repository: TTaoGaming/hfo-gen-133
+  source_commit: da14a1555101cb157f024fbfeaae33f9f26e1269
+  source_path: state/coordination/experiments/cots_connector_x13/20260809T214901Z_GITHUB_PR_CHANGED_FILENAMES_PHASE1_BASELINE.md
+  source_blob_sha1: b33efd0b06f2829cd93a993a2ee04a3638c9c670
+  source_valid_time_utc: 2026-08-09T21:49:01Z
+  source_status: PHASE1_ACCEPTED_WITH_GATES_ANDON
+  source_phase: 1
+  source_failure_behavior: NOT_YET_PROBED
+  source_operator_minutes_removed_measured: 0
+  source_custom_code_avoided_realized: 0
+  source_mandatory_gate: READ_ONLY_KNOWN_SMALL_PR_ONLY_UNTIL_PAGINATION_VARIANCE_IS_PROBED_NO_AUTHORITATIVE_COMPLETENESS_RATE_LIMIT_PERMISSION_OR_COST_CLAIMS
+  source_consumer: HFO_PR_BLAST_RADIUS_AND_TARGETED_PATCH_SELECTION_GATES
+  named_gate: S04_OUTCOME_CLAIM_CEILING_PHASE_COMPLETION_EVIDENCE_AND_PASS_SUPPORT_GATE
+  verifier:
+    - S04_STRUCTURAL_PREFLIGHT
+    - S09_STRATEGIC_REASONING_AND_VOTING_CELL
+  consumer:
+    - X14_CAMPAIGN_REDUCER
+    - X13_COTS_CONNECTOR_REDUCER
+    - HFO_PR_BLAST_RADIUS_AND_TARGETED_PATCH_SELECTION_GATES
+  expiry_utc: 2026-08-10T01:52:02Z
+
+reused_artifact:
+  artifact_type: DIRECT_STRUCTURAL_FAILURE_ANTIBODY
+  original_date_utc: 2026-08-01T15:14:16Z
+  source_repository: TTaoGaming/hfo-gen-133
+  source_commit: 66aba18acce8a669a4df8503f78c2c99143425de
+  source_path: state/coordination/receipts/chatgpt_runtime/seat-04/20260801T151416Z_X14_MUTANT018_UNSUPPORTED_PASS_OUTCOME_REVISE.yaml
+  source_blob_sha1: ee4fac96a2df59558a935a5e60709863e70cfe70
+  original_mutant_id: X14_MUTANT_018_815258ffdee8
+  original_result: REVISE
+  original_named_gate: S04_OUTCOME_CLAIM_CEILING_AND_INDEPENDENCE_GATE
+  original_authoring_seat: S04_STRUCTURAL_PREFLIGHT
+  original_binding_weight: 0
+  original_independent_verification_closed: false
+  reusable_invariant: >-
+    A bounded phase-local observation cannot be lexically promoted to terminal PASS, adoption,
+    workflow completion, independent verification, or outcome credit beyond the exact source
+    claim ceiling. Missing later-phase evidence stays missing even when the current phase is accepted.
+
+supported_claims:
+  - The current source is explicitly Phase 1 and records failure behavior as NOT_YET_PROBED.
+  - The current source keeps a known-small-PR gate until pagination variance is probed and explicitly forbids authoritative completeness, rate-limit, permission, and cost claims.
+  - The current source measures zero operator minutes removed and zero realized custom-code avoidance for this candidate.
+  - The reused S04 artifact directly returned REVISE when bounded X13 phase evidence was inflated into unsupported terminal PASS/adoption/workflow claims.
+  - Therefore PASS_COMPLETE_ALL_PHASES_VERIFIED is outside the current source evidence ceiling unless distinct Phase 2, Phase 3, Phase 4, and required verification/consumer evidence is bound to the exact source chain.
+
+excluded_claims:
+  - This heritage receipt is not a direct S04 verdict on X14_MUTANT_216_627415db51d7.
+  - S15 does not independently recompute or certify the declared 236 canonical overlay bytes or SHA-256.
+  - S15 does not reproduce the GitHub connector call, inspect hidden provider pagination, token permissions, rate headers, billing, or raw changed filenames.
+  - This receipt does not prove that later Phase 2, Phase 3, Phase 4, distinct-verifier, or ConsumerAck evidence cannot exist outside the minimum inspected evidence.
+  - This receipt does not establish completeness, adoption, workflow consumption, operator-time savings, realized code avoidance, independent verification, campaign fitness, or binding credit.
+
+acceptance_relevance: >-
+  S04 should resolve the exact mutant and source bytes, recompute the declared 236-byte overlay and SHA-256,
+  preserve source status PHASE1_ACCEPTED_WITH_GATES_ANDON, and require exact source-bound later-phase evidence
+  before accepting PASS_COMPLETE_ALL_PHASES_VERIFIED. In particular, Phase 2 replay, Phase 3 failure/pagination/
+  permission variance, Phase 4 adoption decision, and any claimed distinct-verifier or consumer acknowledgment
+  must be separately evidenced rather than inferred from the Phase-1 ACCEPTED token.
+
+deduplication:
+  gen133_first: true
+  exact_current_mutant_s15_result_found_before_write: false
+  exact_current_mutant_slack_pointer_found_before_write: false
+  prior_same_failure_class_found: true
+  closest_prior_s15_binding:
+    mutant_id: X14_MUTANT_051_27aba343da13
+    path: state/coordination/receipts/chatgpt_runtime/seat-15/20260803T015748Z_X14_MUTANT051_REUSE_S04_CALENDAR_UNSUPPORTED_PASS_GATE.yaml
+    similarity: GATED_PHASE1_BASELINE_RELABELED_TERMINAL_PASS
+  novelty_credit: 0
+  antibody_diversity_credit: 0
+  current_binding_decision: MATERIAL_ONLY_AS_NEW_WORKITEM_SOURCE_DIGEST_CONNECTOR_DOMAIN_CONSUMER_AND_EXPIRY_BINDING
+  reducer_instruction: DO_NOT_COUNT_AS_NEW_MUTATION_CLASS_OR_INDEPENDENT_FAILURE_ANTIBODY
+  limitation: GitHub and Slack search indexing can lag concurrent writes.
+
+privacy:
+  admitted: task IDs, repository paths, commits, blob digests, phase/status labels, aggregate filename count, timing, claim ceilings, verifier labels, consumer-role labels, expiry, and sanitized Slack channel ID
+  excluded: raw changed filenames, private bodies, credentials, OAuth or token material, provider secrets, private-channel content, and hidden provider state
+
+verifier: S04_STRUCTURAL_PREFLIGHT_THEN_S09_DISTINCT_SEAT_OUTCOME_FALSIFICATION
+consumer:
+  - X14_CAMPAIGN_REDUCER
+  - X13_COTS_CONNECTOR_REDUCER
+  - HFO_PR_BLAST_RADIUS_AND_TARGETED_PATCH_SELECTION_GATES
+expiry_utc: 2026-08-10T01:52:02Z
+rollback: retain or ignore this immutable heritage receipt; never apply the quarantined overlay or edit source, CURRENT, tasks, provider state, verifier state, consumer state, or connector state
+
+honest_flaw: >-
+  This is a conspicuous recurrence of a mature unsupported-PASS class and adds no new antibody diversity.
+  The closest prior S15 binding already covered a gated X13 Phase-1 observation relabeled terminal PASS, although
+  that prior source was Google Calendar and the current source is GitHub PR changed-filenames. The direct S04
+  precedent inflated several outcome fields while mutant 216 mutates only status. S15 did not recompute the
+  current overlay, reproduce provider behavior, or provide distinct-provider verification; later out-of-band
+  phase evidence is not disproven. Heritage credit remains zero until an exact named current consumer acknowledges it.
