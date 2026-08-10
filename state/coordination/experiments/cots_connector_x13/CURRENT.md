@@ -1,21 +1,21 @@
 ---
 schema_id: hfo.gen133.x13.cots_connector_current.v1
 experiment_id: X13_GITHUB_PR_CHANGED_FILENAMES_READONLY_030
-version: 219
-prior_version: 218
+version: 220
+prior_version: 219
 candidate: GitHub.list_pr_changed_filenames
-campaign_wake: 3_of_4
-campaign_status: ACTIVE_PHASE3_ACCEPTED_WITH_GATES
+campaign_wake: 4_of_4
+campaign_status: CLOSED_ADOPT_WITH_GATES
 phase_1_status: PHASE1_ACCEPTED_WITH_GATES_ANDON
 phase_2_status: PHASE2_ACCEPTED_WITH_GATES
 phase_3_status: PHASE3_ACCEPTED_WITH_GATES
-phase_4_status: NOT_RUN
-phase_4_decision: NONE
-operational_decision: PENDING_PHASE4
+phase_4_status: PHASE4_ACCEPTED
+phase_4_decision: ADOPT_WITH_GATES
+operational_decision: ADOPT_WITH_GATES_BOUNDED_READONLY_ADVISORY_ONLY
 wip: 1
-last_event_commit: 0801c9553311632f2ec782d566ad700202a404d8
-last_event_path: state/coordination/experiments/cots_connector_x13/20260809T235200Z_GITHUB_PR_CHANGED_FILENAMES_PHASE3_FAILURE_PROBE.md
-last_event_blob_sha: 728b5db0d872a572090c171e7b9d0892bf2437e9
+last_event_commit: 03607c2e966afc6352bbcfe35e96331ee5444882
+last_event_path: state/coordination/experiments/cots_connector_x13/20260810T004850Z_GITHUB_PR_CHANGED_FILENAMES_PHASE4_DECISION_ADOPT_WITH_GATES.md
+last_event_blob_sha: 493b781f7326c3fb4022c6e72c7548a90aa8093c
 last_event_readback: true
 phase1_preflight_commit: d67cae4157e6f138f40c00b9b57018cfd8dd323d
 phase1_preflight_blob_sha: ccd8303794037a7cc67e7c8166a304662d2c7dee
@@ -34,6 +34,9 @@ phase3_preflight_readback: true
 phase3_result_commit: 0801c9553311632f2ec782d566ad700202a404d8
 phase3_result_blob_sha: 728b5db0d872a572090c171e7b9d0892bf2437e9
 phase3_result_readback: true
+phase4_result_commit: 03607c2e966afc6352bbcfe35e96331ee5444882
+phase4_result_blob_sha: 493b781f7326c3fb4022c6e72c7548a90aa8093c
+phase4_result_readback: true
 candidate_invocations_total: 3
 usable_candidate_results: 2
 expected_failure_probes_total: 1
@@ -64,28 +67,31 @@ custom_code_avoided_realized_by_this_candidate: 0
 paid_cost_usd_observed: 0_NO_CHARGE_SURFACED_NOT_BILLING_PROOF
 direct_quota_evidence: NONE_FROM_CONNECTOR_RECEIPT
 credentials: CONNECTOR_MANAGED_EFFECTIVE_PRINCIPAL_AND_PERMISSION_GRANT_UNKNOWN
-durability: PHASE1_PHASE2_PHASE3_PREFLIGHT_AND_RESULTS_READ_BACK_ON_CANONICAL_BRANCH;ONE_UNRELATED_BRANCH_HEAD_409_DURING_PHASE3_RESULT_PERSISTENCE_RESOLVED_AFTER_REREAD_WITH_CURRENT_STILL_V218
+durability: PHASE1_PHASE2_PHASE3_PREFLIGHT_AND_RESULTS_PLUS_PHASE4_DECISION_READ_BACK_ON_CANONICAL_BRANCH;ONE_UNRELATED_BRANCH_HEAD_409_DURING_PHASE3_RESULT_PERSISTENCE_RESOLVED_AFTER_REREAD_WITHOUT_ANOTHER_CANDIDATE_CALL
 observability: TWO_26_FILENAME_SUCCESSES_486MS_AND_487MS_WITH_STABLE_ORDERED_DIGEST_PLUS_ONE_STRUCTURED_404_NOT_FOUND_FAILURE;FILENAMES_ONLY_ON_SUCCESSES;NO_PATCH_DIFF_CONTENT_COMMENT_HYDRATION;NO_NATIVE_REQUEST_ID_RATE_HEADERS_PAGE_COUNT_QUOTA_DEBIT_OR_PHASE3_ERROR_LATENCY_SURFACED
 portability: HIGH_TO_GITHUB_REST_PULLS_FILES_RESOURCE_WITH_404_AUTHORIZATION_AMBIGUITY_GATE;WRAPPER_AUTO_PAGINATION_AND_3000_FILE_CAP_HANDLING_UNVERIFIED
 failure_behavior: FAIL_CLOSED_ON_CLEARLY_SYNTHETIC_MISSING_PR_WITH_STRUCTURED_404_NOT_FOUND;DO_NOT_CLASSIFY_EXISTENCE_OR_PERMISSION_FROM_404
-verifier: GIT_DURABLE_READBACK_PLUS_DIRECT_GITHUB_RECEIPTS_PLUS_PHASE1_PHASE2_DIGEST_COMPARISON_PLUS_OFFICIAL_GITHUB_REST_TROUBLESHOOTING
+verifier: GIT_DURABLE_READBACK_PLUS_DIRECT_GITHUB_RECEIPTS_PLUS_PHASE1_PHASE2_DIGEST_COMPARISON;KNOWN_MULTI_PAGE_RAW_PROVIDER_WITNESS_STILL_MISSING
 consumer: HFO_PR_BLAST_RADIUS_AND_TARGETED_PATCH_SELECTION_GATES
-mandatory_gate: READ_ONLY;KNOWN_SMALL_PR_ONLY;404_MEANS_NONEXISTENT_OR_INACCESSIBLE_NOT_PERMISSION_PROOF;NO_RETRY_ON_STABLE_404;DO_NOT_FETCH_PATCHES_CONTENT_OR_COMMENTS;DO_NOT_PERSIST_RAW_FILENAMES_UNLESS_MINIMUM_NECESSARY;NO_AUTHORITATIVE_COMPLETENESS_RATE_LIMIT_PERMISSION_OR_COST_CLAIMS
-strongest_falsifier: MULTI_PAGE_PR_IS_SILENTLY_TRUNCATED_OR_WRAPPER_EXCEEDS_OPERATOR_BOUNDEDNESS_REQUIREMENT
-honest_flaw: PHASE3_PROBED_ONLY_A_SYNTHETIC_MISSING_PR_AND_CANNOT_RESOLVE_GITHUB_404_AUTHORIZATION_AMBIGUITY;WRAPPER_STILL_EXPOSES_NO_CALLER_PAGE_PER_PAGE_OR_MAX_FILES_BOUND_AND_NATIVE_REQUEST_COUNT_RATE_HEADERS_AND_EFFECTIVE_PERMISSION_REMAIN_HIDDEN
-next_phase: PHASE4_DECIDE_FROM_FROZEN_EVIDENCE_NO_ADDITIONAL_CANDIDATE_CALL
-valid_time_utc: 2026-08-09T23:53:00Z
-recorded_time_utc: 2026-08-09T23:53:00Z
+adoption_credit: 1
+fitness_credit: 0
+mandatory_gate: READ_ONLY;KNOWN_SMALL_PR_ONLY;404_MEANS_NONEXISTENT_OR_INACCESSIBLE_NOT_PERMISSION_PROOF;NO_RETRY_ON_STABLE_404;DO_NOT_FETCH_PATCH_DIFF_CONTENT_OR_COMMENTS_AS_PART_OF_THIS_CAPABILITY;DO_NOT_PERSIST_RAW_FILENAMES_UNLESS_MINIMUM_NECESSARY;NO_AUTHORITATIVE_MULTI_PAGE_COMPLETENESS_RATE_LIMIT_PERMISSION_COST_OR_QUOTA_CLAIMS;INDEPENDENT_RAW_PROVIDER_WITNESS_REQUIRED_FOR_HIGH_ASSURANCE_GATES
+strongest_falsifier: KNOWN_MULTI_PAGE_PR_IS_SILENTLY_TRUNCATED_OR_WRAPPER_AUTO_PAGINATION_EXCEEDS_OPERATOR_BOUNDEDNESS_REQUIREMENT_WITHOUT_EXPOSING_REQUEST_COUNT_OR_LIMIT_CONTROL
+honest_flaw: CAMPAIGN_EXERCISED_ONLY_ONE_KNOWN_SMALL_26_FILE_PR_TWICE_AND_ONE_SYNTHETIC_404;MULTI_PAGE_AUTO_PAGINATION_TRUNCATION_NATIVE_REQUEST_COUNT_RATE_LIMITS_HIDDEN_RETRIES_EFFECTIVE_PERMISSION_LARGE_PR_BEHAVIOR_CONSUMER_VALUE_AND_ACTUAL_OPERATOR_TIME_SAVINGS_REMAIN_UNVERIFIED
+next_candidate: GitHub.get_pr_info_bounded_readonly_metadata_surface
+next_phase: PHASE1_START_NEW_CAMPAIGN_WIP1
+valid_time_utc: 2026-08-10T00:48:50Z
+recorded_time_utc: 2026-08-10T00:48:50Z
 ---
 
-# X13 CURRENT v219
+# X13 CURRENT v220
 
-`X13_GITHUB_PR_CHANGED_FILENAMES_READONLY_030` is active at wake 3 of 4 with **PHASE3_ACCEPTED_WITH_GATES**.
+`X13_GITHUB_PR_CHANGED_FILENAMES_READONLY_030` is closed at wake 4 of 4 with **ADOPT_WITH_GATES**.
 
-Phase 3 made exactly one bounded read-only failure-contract call using a clearly synthetic missing pull-request number. The connector failed closed with structured `404 Not Found`; no filenames, patch, diff, repository content, comments, retry, fallback, or GitHub mutation were observed. GitHub documents that some inaccessible private resources also return `404`, so the result is classified only as `NONEXISTENT_OR_INACCESSIBLE`, never as permission or existence proof.
+Adopt only for bounded, read-only, advisory filename discovery on known-small pull requests. Two direct reads of PR #10 returned the same 26 filenames by count and ordered digest, while one synthetic missing-PR probe failed closed with structured `404 Not Found`. Treat `404` only as `NONEXISTENT_OR_INACCESSIBLE`; do not infer permission or existence.
 
-Across the campaign there are now two stable 26-filename successes plus one expected structured failure. The main unresolved boundedness gate remains: the wrapper exposes no caller-controlled page, per-page, or maximum-file bound while claiming to traverse all pages. One Git-first result write encountered an unrelated branch-head `409`; after reread, CURRENT was still v218 and the immutable result write succeeded without another candidate invocation.
+The unresolved boundedness gate is material: the wrapper exposes no caller-controlled page, per-page, or maximum-file bound, and multi-page auto-pagination has not been independently verified. Do not use this surface for authoritative large-PR completeness or high-assurance merge, release, security, permission, quota, rate-limit, or cost claims without an independent raw-provider witness.
 
-Measured operator savings remain `0`; realized custom-code avoidance remains `0`; `20–60 LOC` remains an unvalidated estimate.
+Measured operator savings remain `0`; realized custom-code avoidance remains `0`; `20–60 LOC` remains an unvalidated estimate. Adoption credit is `1`; fitness credit is `0`.
 
-Next wake: Phase 4 decision from the frozen Phase 1–3 evidence set only. No additional candidate call. WIP remains 1.
+Next wake: start `GitHub.get_pr_info_bounded_readonly_metadata_surface` at Phase 1. WIP remains 1.
