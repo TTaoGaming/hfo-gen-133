@@ -1,0 +1,62 @@
+schema: hfo.gen133.s05.operator_relief_receipt.v0_1
+callsign: S05_VAR_OPERATOR_RELIEF
+task_id: 6a55c182078c8191b89f2dd15f5f640c
+wip: 1
+valid_time: 2026-08-10T00:17:18Z
+result: MATERIAL_CHANGE
+active_item: CRABAPPLE_CITY_CORRECTION_EVIDENCE
+priority:
+  p0: CHATGPT_PRO_CONTINUITY_AUTHORITATIVE_DISPOSITION
+  p1:
+    - FIDELITY_WIRE_AUTHORITATIVE_DISPOSITION_MONDAY
+    - CRABAPPLE_CITY_EVIDENCE_SEND_GATE
+bounded_transition: RECONCILE_DUPLICATE_CALENDAR_EXECUTION_BLOCKS
+operator_minutes_removed_estimate: 6
+next_consumer: VAR_MORNING_CONTROL
+privacy_ceiling: SANITIZED_FACTS_AND_SOURCE_POINTERS_ONLY
+source_readback:
+  gmail_city_thread:
+    authoritative_message_id: 19f9483c5bd474c9
+    recipient_source_of_truth: GMAIL_AUTHORITATIVE_CITY_THREAD
+    current_draft_message_id: 19fe89bd8b60a154
+    sent: false
+    attachments_present: false
+  calendar:
+    primary_execution_event:
+      event_id: rngftrv6jb8kgbpn2off9ugl5o
+      start: 2026-08-10T11:30:00-06:00
+      role: PRIMARY_EXECUTION_BLOCK
+    backup_stop_line_event:
+      event_id: 6au58d1425osqs175sar65rf8o
+      start: 2026-08-13T08:00:00-06:00
+      role: FINAL_PRE_DEADLINE_STOP_LINE
+    duplicate_late_block:
+      event_id: 8eq6cuuimdpkac892oeed26bk8
+      start: 2026-08-13T11:30:00-06:00
+      role: DUPLICATE_REFERENCE_ONLY
+      defect: CALENDAR_RECIPIENT_NAME_TEXT_CONFLICTS_WITH_AUTHORITATIVE_GMAIL_THREAD
+  contacts:
+    authoritative_city_contact_saved_contact_found: false
+  slack_delta_since_prior_s05_pointer:
+    relevant_operator_obligation_change_found: false
+transition_receipt:
+  normalized_execution_order:
+    - use Monday primary execution block first
+    - if unresolved use Aug-13 08:00 stop-line as backup
+    - do not treat Aug-13 11:30 duplicate block as recipient authority
+    - resolve recipient only from authoritative Gmail city thread before any operator-reviewed send
+  calendar_mutation_performed: false
+  gmail_send_performed: false
+claim_ceiling:
+  - calendar_reconciliation_is_not_city_submission
+  - duplicate_calendar_text_does_not_override_authoritative_source_recipient
+  - city_obligation_remains_open_until sent_message_receipt_and_city_ack_or_explicit_followup
+forbidden_effects_observed:
+  email_send: false
+  application_submission: false
+  spend_or_payment: false
+  deployment_or_merge_or_publication: false
+  account_or_security_change: false
+  destructive_deletion: false
+  task_mutation: false
+honest_flaw: Calendar search does not expose event modification timestamps, so this receipt proves a newly reconciled duplication/conflict, not that the duplicate events themselves were created or edited during this wake.
